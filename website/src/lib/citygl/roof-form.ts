@@ -1003,14 +1003,56 @@ export function stepForm(
  * published plane and the eave drops `half` below it, so the drawn surface's
  * median is the published median and no vertex stands over the measured top.
  */
+/**
+ * THE FASCIA'S DEPTH, WORLD METRES — DECLARED.
+ *
+ * A real barge board is about 25 mm of timber and 150-225 mm deep. 0.22 is
+ * the deep end of that, chosen because what this band is actually standing
+ * for is the board AND the shadow the overhang throws behind it, which from
+ * overhead are one dark line and not two.
+ */
+/** the most rise a drawn house roof may have over its eave — see `gablePlan` */
+export const HOUSE_MAX_HALFRISE_M = 3.2;
+export const EAVE_FASCIA_M = 0.22;
+/** the ridge cap's half-width and how far it stands proud of the slopes */
+export const RIDGE_HALF_M = 0.20;
+export const RIDGE_LIFT_M = 0.05;
 export const HOUSE_PITCH_DEG = 30;
 export const HOUSE_BAY_PROUD_M = 0.9;
 export const HOUSE_BAY_SHARE = 0.55;
 
 /** the half-rise the authored gable will take on this plan, or 0 if it refuses */
-export function gableHalf(ring: FormRing, hM: number, gid = 0, pitchDeg?: number): number {
+/**
+ * THE ONE PLACE THE HOUSE'S GEOMETRY IS DECIDED — AND IT IS ONE PLACE ON
+ * PURPOSE.
+ *
+ * The caller needs the roof's half-rise BEFORE it builds the wall, because
+ * the wall stops where the eave starts. The builder needs the same number
+ * again a hundred lines later. Two functions computing it separately is
+ * exactly the fault `hipForm` had — *"a caller that passes slope only to
+ * `hipPlan` builds the wall to one pitch and draws the roof at another"* —
+ * and it came back here in a new costume: `gableHalf` took `min(w, d)` for
+ * the span while `gableForm` picked its span from `alongX`, which
+ * `houseVary.cross` flips on one house in four. On those houses the gable's
+ * eave landed BELOW the wall top and the building's flat deck showed all
+ * round it as a pale apron.
+ *
+ * So there is one plan, both of them read it, and neither derives anything.
+ */
+export interface GablePlan {
+  readonly x0: number; readonly y0: number;
+  readonly x1: number; readonly y1: number;
+  /** does the ridge run along X? */
+  readonly alongX: boolean;
+  /** the roof's rise above the eave, world metres */
+  readonly half: number;
+}
+
+export function gablePlan(
+  ring: FormRing, hM: number, gid = 0, pitchDeg?: number,
+): GablePlan | null {
   const { x, y, off, n } = ring;
-  if (n < 3 || n > FORM_MAX_VERTS) return 0;
+  if (n < 3 || n > FORM_MAX_VERTS) return null;
   let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
   for (let i = 0; i < n; i++) {
     const px = x[off + i], py = y[off + i];
@@ -1018,11 +1060,33 @@ export function gableHalf(ring: FormRing, hM: number, gid = 0, pitchDeg?: number
     if (py < y0) y0 = py; if (py > y1) y1 = py;
   }
   const w = x1 - x0, d = y1 - y0;
-  if (!(w > 2 && d > 2)) return 0;
-  const span = Math.min(w, d);
-  const half = Math.min(PITCH_MAX_HALFRISE_M * 1.6,
-    (span / 2) * Math.tan(((pitchDeg ?? houseVary(gid).pitch) * Math.PI) / 180) * 0.5);
-  return half > 0.3 && hM - half > 0 ? half : 0;
+  if (!(w > 2 && d > 2)) return null;
+  const vary = houseVary(gid);
+  const alongX = (w >= d) !== vary.cross;
+  const span = alongX ? d : w;                 // across the ridge
+  /* ── AND THE PITCH DRAWN IS THE PITCH DECLARED ──────────────────────
+     `houseVary` states the range and the reason — *"24-34 degrees, because
+     under 22 a roof reads flat from this camera"* — and this line used to
+     multiply the resulting rise by 0.5, which drew every one of them at
+     12-17 and put the whole stock under its own stated floor. The rise over
+     half a span at an angle is `tan` of that angle, with nothing else in it.
+
+     The cap moves with it. `PITCH_MAX_HALFRISE_M` is 1.3 and belongs to
+     `hipPlan`, where it bounds a roof MEASURED off a scan and a runaway
+     reading has to be refused; a house's pitch is authored and cannot run
+     away. 3.2 m of half-rise is a 6.4 m ridge over the eave, which a
+     two-storey house with a full attic actually has, and it only ever binds
+     on a plan wider than about 11 m. */
+  const half = Math.min(
+    HOUSE_MAX_HALFRISE_M,
+    (span / 2) * Math.tan(((pitchDeg ?? vary.pitch) * Math.PI) / 180),
+  );
+  if (!(half > 0.3) || !(hM - half > 0)) return null;
+  return { x0, y0, x1, y1, alongX, half };
+}
+
+export function gableHalf(ring: FormRing, hM: number, gid = 0, pitchDeg?: number): number {
+  return gablePlan(ring, hM, gid, pitchDeg)?.half ?? 0;
 }
 
 /**
@@ -1128,23 +1192,12 @@ export function gableForm(
   opts: { pitchDeg?: number; bay?: boolean; gid?: number; eave?: number } = {},
 ): boolean {
   const vary = houseVary(opts.gid ?? 0);
-  const { x, y, off, n } = ring;
-  if (n < 3 || n > FORM_MAX_VERTS) return false;
-  let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
-  for (let i = 0; i < n; i++) {
-    const px = x[off + i], py = y[off + i];
-    if (px < x0) x0 = px; if (px > x1) x1 = px;
-    if (py < y0) y0 = py; if (py > y1) y1 = py;
-  }
+  /* ONE PLAN, and the caller sized the wall off the same call — see
+     `gablePlan`. Nothing here re-derives the span or the rise. */
+  const P = gablePlan(ring, hM, opts.gid ?? 0, opts.pitchDeg);
+  if (!P) return false;
+  const { x0, y0, x1, y1, alongX, half } = P;
   const w = x1 - x0, d = y1 - y0;
-  if (!(w > 2 && d > 2)) return false;
-  const alongX = (w >= d) !== vary.cross;
-  const span = alongX ? d : w;                 // across the ridge
-  const half = Math.min(
-    PITCH_MAX_HALFRISE_M * 1.6,
-    (span / 2) * Math.tan(((opts.pitchDeg ?? vary.pitch) * Math.PI) / 180) * 0.5,
-  );
-  if (!(half > 0.3) || !(hM - half > 0)) return false;
 
   const eaveH = hM - half, ridge = hM + half;
   const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
@@ -1179,6 +1232,53 @@ export function gableForm(
     const h0 = V(x0, y1, eaveH, wall), h1 = V(x1, y1, eaveH, wall);
     const h2 = V(cx, y1, ridge, wall);
     sink.tri(h0, h1, h2);
+  }
+
+  /* ── THE ROOF HAS A THICKNESS, AND THAT IS MOST OF WHY IT READS AS ONE ──
+     Everything above draws the roof as two triangles per slope: a sheet of
+     paper with no edge. From almost overhead the sheet's silhouette is one
+     hard line against the ground, and a hard line with nothing behind it is
+     the exact thing that reads as cardboard.
+
+     A real roof ends in a board — a fascia along the eave, a barge board up
+     the rake — and under that board is the shadow of the overhang. Both are
+     the same 0.22 m of dark, so both are drawn as one skirt hung off the
+     roof's whole boundary. It costs six quads and it is the difference
+     between a lid and a roof.
+
+     The boundary is walked as a loop so the eave and the rake get the same
+     treatment without either being special-cased. */
+  {
+    const fc = shadeRGB(roof, 0.46);
+    const loop: [number, number, number][] = alongX
+      ? [[rx0, ry0, eaveH], [rx1, ry0, eaveH], [rx1, cy, ridge],
+         [rx1, ry1, eaveH], [rx0, ry1, eaveH], [rx0, cy, ridge]]
+      : [[rx0, ry0, eaveH], [cx, ry0, ridge], [rx1, ry0, eaveH],
+         [rx1, ry1, eaveH], [cx, ry1, ridge], [rx0, ry1, eaveH]];
+    for (let k = 0; k < 6; k++) {
+      const A = loop[k], B = loop[(k + 1) % 6];
+      const t0 = V(A[0], A[1], A[2], fc), t1 = V(B[0], B[1], B[2], fc);
+      const b0 = V(A[0], A[1], A[2] - EAVE_FASCIA_M, fc);
+      const b1 = V(B[0], B[1], B[2] - EAVE_FASCIA_M, fc);
+      sink.tri(t0, t1, b1); sink.tri(t0, b1, b0);
+    }
+  }
+
+  /* ── AND A CAP ON THE RIDGE ──────────────────────────────────────────
+     Where two slopes meet they are capped, and the cap stands a little proud
+     of both. Without it the ridge is a value change between two shades of
+     the same colour, which at this camera is the softest line on the roof
+     and should be the sharpest — it is the roof's own horizon. */
+  {
+    const rcp = shadeRGB(roof, 0.74);
+    const z = ridge + RIDGE_LIFT_M;
+    const q = alongX
+      ? [[rx0, cy - RIDGE_HALF_M], [rx1, cy - RIDGE_HALF_M],
+         [rx1, cy + RIDGE_HALF_M], [rx0, cy + RIDGE_HALF_M]]
+      : [[cx - RIDGE_HALF_M, ry0], [cx - RIDGE_HALF_M, ry1],
+         [cx + RIDGE_HALF_M, ry1], [cx + RIDGE_HALF_M, ry0]];
+    const v = q.map((c) => V(c[0], c[1], z, rcp));
+    sink.tri(v[0], v[1], v[2]); sink.tri(v[0], v[2], v[3]);
   }
 
   if (vary.chimney) {

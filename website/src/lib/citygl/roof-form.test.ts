@@ -3,6 +3,11 @@ import { describe, expect, it } from "vitest";
 import { DE, PITCH_MAX_HALFRISE_M, PITCH_RUN } from "@/lib/city/roofs";
 import {
   capForm,
+  gableForm,
+  gableHalf,
+  gablePlan,
+  EAVE_FASCIA_M,
+  HOUSE_MAX_HALFRISE_M,
   corniceProjM,
   FORM_MAX_VERTS,
   HIP_MAX_VERTS,
@@ -704,5 +709,75 @@ describe("shadeRGB", () => {
   it("leaves a value of 1 exactly alone — the coping is the raw palette entry", () => {
     const c: [number, number, number] = [0.31, 0.42, 0.17];
     expect(shadeRGB(c, 1)).toEqual(c);
+  });
+});
+
+
+// ── the house ───────────────────────────────────────────────────────────────
+
+/**
+ * THE FAULT THIS BLOCK EXISTS FOR, AND IT HAS NOW HAPPENED TWICE.
+ *
+ * `hipForm` had it first: the caller sized the wall by calling `hipPlan` and
+ * the builder re-derived its own plan, so a slope passed to one and not the
+ * other built the wall to one pitch and drew the roof at another. It came
+ * back on the gable in a new costume — `gableHalf` took `min(w, d)` as the
+ * span while `gableForm` chose its span from `alongX`, which `houseVary`
+ * flips on one house in four. On those the eave landed BELOW the wall top and
+ * the building's flat deck showed all round the roof as a pale apron.
+ *
+ * Neither version was visible in a unit test that only checked the geometry
+ * one call produced. What catches it is the AGREEMENT between the two calls,
+ * so that is what is asserted, over enough ids to hit every branch of the
+ * variation.
+ */
+describe("gablePlan is the only plan", () => {
+  it("gableHalf equals the rise gableForm actually draws, for every id", () => {
+    const R = rect(9, 22);
+    const H = 9;
+    let crossed = 0;
+    for (let gid = 1; gid <= 400; gid++) {
+      const half = gableHalf(R, H, gid);
+      const P = gablePlan(R, H, gid);
+      expect(P, `gid ${gid}`).not.toBeNull();
+      expect(half).toBeCloseTo(P!.half, 10);
+      /* the ridge really does turn on some of them, which is the branch the
+         old code disagreed on — a test that never crossed would prove nothing */
+      if (!P!.alongX) crossed++;
+      const r = recorder();
+      expect(gableForm(r.sink, R, 0, H, [0.5, 0.5, 0.5], [0.8, 0.8, 0.8], { gid })).toBe(true);
+      /* the eave is the wall top the caller sized, and nothing the builder
+         drew may sit below it */
+      const lowest = Math.min(...r.h);
+      expect(lowest, `gid ${gid} drew below its own eave`)
+        .toBeGreaterThanOrEqual(-EAVE_FASCIA_M - 1e-6);
+      /* and the ridge is exactly one half-rise above it */
+      expect(Math.max(...r.h)).toBeGreaterThan(half);
+    }
+    expect(crossed, "no id turned its ridge — the branch is untested")
+      .toBeGreaterThan(20);
+  });
+
+  it("refuses a plan it cannot roof, and leaves the sink untouched", () => {
+    const r = recorder();
+    /* under 2 m on a side is not a house */
+    expect(gableForm(r.sink, rect(1.5, 30), 0, 9, [0.5, 0.5, 0.5], [0.8, 0.8, 0.8], { gid: 7 }))
+      .toBe(false);
+    expect(gableHalf(rect(1.5, 30), 9, 7)).toBe(0);
+    /* and a building shorter than its own roof would be */
+    expect(gableForm(r.sink, rect(20, 20), 0, 0.4, [0.5, 0.5, 0.5], [0.8, 0.8, 0.8], { gid: 7 }))
+      .toBe(false);
+    expect(r.x.length).toBe(0);
+    expect(r.tris.length).toBe(0);
+  });
+
+  it("draws the pitch it declares, and caps the rise rather than the angle", () => {
+    /* 30 degrees over a 10 m span is 10/2 * tan(30) = 2.887 m of rise. The
+       0.5 this used to carry drew it at 1.44, which is 16 degrees — under
+       `houseVary`'s own stated floor of 22. */
+    const half = gableHalf(rect(10, 40), 12, 0, 30);
+    expect(half).toBeCloseTo(5 * Math.tan(Math.PI / 6), 4);
+    /* the cap binds on a wide plan and nowhere else */
+    expect(gableHalf(rect(60, 80), 30, 0, 30)).toBe(HOUSE_MAX_HALFRISE_M);
   });
 });

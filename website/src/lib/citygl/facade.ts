@@ -1333,3 +1333,101 @@ export function wallFamilyRGB(
 export function wallJitter(gid: number): number {
   return 1 + tri(gid) * FACADE_TINT_V;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   A PITCHED ROOF IS A DIFFERENT MATERIAL FROM A FLAT ONE, AND THE
+   PHOTOGRAPH ONLY MEASURED ONE OF THEM WELL.
+   ═══════════════════════════════════════════════════════════════════════
+
+   The 32-entry roof palette is measured off an aerial photograph and
+   `palette.ts` §39 is right about what it carries: the real value of a real
+   roof, on the picture's scale. It is also measured looking STRAIGHT DOWN,
+   which is the correct view of a flat roof and a poor one of a pitched roof —
+   an aerial pixel over a gable is two slopes at two angles to the sun plus
+   whatever sky the north face is reflecting, averaged. Tar and gravel comes
+   through that honestly. A dark composition shingle does not: it comes back
+   pale, and `roofTone` then pulls it 26 % toward its own grey, 18 % toward
+   paper and lifts it 16 % more, because those numbers were chosen for a TOP
+   FACE IN DAYLIGHT and a flat roof is exactly that.
+
+   MEASURED, and this is the reason the Sunset reads as one material: the
+   single-family row of `UMAT_ROOF` is `[3, 15, 3, 8, 13, 8, 1, 11]`, indexed
+   by height band and era. A low single-family house — which is most of the
+   west side — reaches two of those eight. Two entries, put through a
+   transform that narrows everything toward paper, is one pale grey over
+   forty thousand houses.
+
+   ── SO THE PITCHED ROOF GETS A DECLARED MATERIAL ─────────────────────────
+   Same shape as `wallFamilyRGB` and for the same reason: the table entry is
+   the anchor, the family is the spread, and the draw is keyed on the
+   building's published id so a house is the same house in every year.
+
+   What is claimed: nothing about any individual roof. No register records
+   what a San Francisco house is roofed with — not the assessor roll, not the
+   survey, not the 2023 scan, which measures a surface and not a substance.
+   This is art direction, and it is confined to the roofs this renderer
+   already draws as an authored form. A FLAT ROOF IS NOT TOUCHED: the
+   photograph measured it looking straight at it, and it stays exactly as it
+   was.
+*/
+
+/**
+ * Composition shingle and slate — what a pre-war San Francisco house is
+ * actually topped with, and dark, which is the whole difference from the
+ * pale aerial mean.
+ */
+const SHINGLE_HEX: readonly string[] = [
+  "#4b4a46", "#585049", "#4e5450", "#4c545e",
+  "#635a4e", "#414346", "#6a635a", "#55504b",
+];
+
+/**
+ * The Mediterranean Revival roof, and the one genuinely COLOURED roof this
+ * city has. Three of eight are clay, which puts tile on roughly a third of
+ * the 1925-50 stock — the share that reads as characteristic of the Marina
+ * and the outer avenues without turning a blockface into a tile field.
+ */
+const TILE_HEX: readonly string[] = [
+  "#8a4e33", "#a0603c", "#78452f",
+  "#5b524a", "#4e5450", "#635a4e", "#4c545e", "#55504b",
+];
+
+const FAM_SHINGLE = toLin(SHINGLE_HEX);
+const FAM_TILE = toLin(TILE_HEX);
+
+/**
+ * How far a pitched roof travels from its table entry toward its material.
+ *
+ * Not 1.0. The measured entry still carries the ORDER — a roof the photograph
+ * found dark stays darker than its neighbour — and at 0.82 that ordering
+ * survives as about a fifth of the final value while the material decides the
+ * rest. Set against the wall's 0.97 deliberately: a wall's table entry is a
+ * material code and one key covers a fifth of the city, so there is little
+ * left to preserve; a roof's is a photometric measurement of that particular
+ * roof, and throwing all of it away would be discarding real information.
+ */
+export const ROOF_FAMILY_MIX = 0.94;
+
+/**
+ * One pitched roof's colour: its measured entry, moved toward a material from
+ * the family its era belongs to. `base` is the palette entry in the
+ * renderer's working (linear) space. Callers must only reach this for roofs
+ * they are drawing as an authored pitched form — see the header.
+ */
+export function roofFamilyRGB(
+  base: readonly [number, number, number],
+  gid: number,
+  fam: FaFamily,
+): [number, number, number] {
+  const set = fam === "revival" ? FAM_TILE : FAM_SHINGLE;
+  const h = mix32(gid ^ 0x7f4a7c15);
+  const t = set[h % set.length];
+  /* the amount travels too, so a family is a spread and not eight stripes —
+     `wallFamilyRGB` §the amount travels too */
+  const k = ROOF_FAMILY_MIX * (0.55 + 0.45 * (((h >>> 9) & 1023) / 1023));
+  return [
+    base[0] + (t[0] - base[0]) * k,
+    base[1] + (t[1] - base[1]) * k,
+    base[2] + (t[2] - base[2]) * k,
+  ];
+}

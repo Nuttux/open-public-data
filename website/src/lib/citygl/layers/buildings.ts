@@ -96,6 +96,7 @@ import {
   familyHasBay,
   familyPitchedRoof,
   familyOfEra,
+  roofFamilyRGB,
   type FaFamily,
   FACADE_TILES,
   TILE_CURTAIN,
@@ -327,6 +328,19 @@ const ROOF_DM = 0.1;
 /** over this a building is not a house whatever its class says, and an
  *  authored gable on a block of flats reads as a barn on a tower */
 const HOUSE_MAX_H = 16;
+
+/**
+ * HOW MUCH FINER THE STIPPLE IS ON A HOUSE — a scale on `ROOF_GRAIN_M`, so
+ * 4.6 puts the tile at 3.24 m instead of 14.9.
+ *
+ * The published tile is 150 marks on its side whatever that side measures.
+ * At 14.9 m over a 7.6 x 5 m gable slope that is a dozen marks a metre and a
+ * half across, which reads as measles; at 3.24 m the same marks are 0.32 m,
+ * which is a shingle course, and the mip chain still averages them away as
+ * the camera pulls back. The number is the tile side that puts one mark at
+ * roughly the size of one composition shingle.
+ */
+const HOUSE_GRAIN = 4.6;
 
 /**
  * DEV ONLY, the `__cityWA` idiom: force every footprint to one appearance
@@ -623,6 +637,7 @@ export function buildingsMesh(
     return V + exElev.length - 1;
   };
   const sink: FormSink & {
+    grain: number;
     vertexUV: (
       x: number, y: number, elevM: number, hM2: number,
       r: number, g: number, b: number, u: number, v: number,
@@ -641,11 +656,27 @@ export function buildingsMesh(
        which is why `uv` can be reused for them at all: the walls read the
        same attribute and take their bays and storeys off the three fixed
        rings. See `roof-grain.ts` §and no second uv set. */
+    /* ── AND THE TILE IS NOT ONE SIZE, BECAUSE A ROOF IS NOT ONE ROOF ───
+       `ROOF_GRAIN_M` is 14.9 and its own note says what it was measured for:
+       the 48 px published tile at the street stop, over TAR AND GRAVEL. That
+       is the right size on the roof it was measured on — a commercial deck
+       forty metres across, where 150 marks in 14.9 m read as tooth.
+
+       It is the wrong size on a house. A Sunset lot is 25 ft wide, so a
+       gable slope is about 7.6 m by 5 m and half a tile covers the whole
+       thing: the same 150 marks land as a dozen soft blobs a metre and a half
+       across, which is measles rather than material. MEASURED off a blown-up
+       capture of one roof before this existed — the marks resolve at roughly
+       30 screen pixels each at the street stop.
+
+       So the caller scales the tile for the surface it is about to draw, and
+       `grain` is that scale: 1 leaves the measured tile exactly as it was,
+       and a house sets it higher for a finer one. Nothing else changes — same
+       texture, same mip chain, same multiply. */
+    grain: 1,
     vertex(x, y, elevM, hM2, r, g, b) {
-      return pushVert(
-        x, y, elevM, hM2, r, g, b,
-        x / ROOF_GRAIN_M, (y + hM2) / ROOF_GRAIN_M,
-      );
+      const k = sink.grain / ROOF_GRAIN_M;
+      return pushVert(x, y, elevM, hM2, r, g, b, x * k, (y + hM2) * k);
     },
     vertexUV: pushVert,
     tri(a, b, c2) {
@@ -972,7 +1003,15 @@ export function buildingsMesh(
        aerial photograph measured over that footprint and the wall is the
        renderer's own table entry, which is what the Canvas path also does at
        `ri` / `wi`. */
-    const rc = roofRGB[mat.roof[i] * 4 + mat.shade[i]] ?? [0.6, 0.58, 0.54];
+    const rc0 = roofRGB[mat.roof[i] * 4 + mat.shade[i]] ?? [0.6, 0.58, 0.54];
+    /* ── AND A PITCHED ROOF IS A DIFFERENT MATERIAL ──────────────────────
+       Only where this layer is already drawing an authored pitched form.
+       A flat roof keeps the photograph exactly — the camera that measured it
+       was looking straight at it. `facade.ts` §A PITCHED ROOF IS A DIFFERENT
+       MATERIAL has the measurement and the reason. */
+    const rc = houseHalf > 0
+      ? roofFamilyRGB(rc0 as [number, number, number], tb.gid[i], fam)
+      : rc0;
     /* THE TABLE ENTRY IS THE ANCHOR, NOT THE ANSWER. One key covers every
        building on a fifth of this city's blocks — `facade.ts` §the blockface
        is one colour has the measurement — so each footprint moves from its
@@ -1210,8 +1249,12 @@ export function buildingsMesh(
        So the record chooses WHO — the survey's family, or the era's — and the
        FORM is authored. See `roof-form.ts` §a house, drawn as a house. */
     if (houseHalf > 0) {
+      /* a house's roof is shingle or tile, not gravel — a finer tile, and
+         the sink's own note has the measurement */
+      sink.grain = HOUSE_GRAIN;
       roofed = gableForm(sink, ring, elev, hM, rc, wc,
         { gid: tb.gid[i], bay: familyHasBay(fam), eave: familyEave(fam) });
+      sink.grain = 1;
     }
     if (!roofed && plan) roofed = hipForm(sink, ring, elev, hM, rc);
     /* ── AND THE TRAY BUILDS ITS FASCIA ─────────────────────────────────
