@@ -99,3 +99,20 @@ no subject on this page") rather than dressing the tally up as an event.
 Supervisors DO belong in a line when they are the event rather than the
 arithmetic: "Four supervisors sent to the League of California Municipalities
 convention" is a real thing that happened.
+
+THE TALLY IS A WALL IN THE MIDDLE OF THE RECORD — READ PAST IT. In 10.2% of
+records (9,213 of 90,443, measured) the Board's paperwork runs
+[number] [VOTE] [what it was about], and the substance is on the FAR SIDE of the
+roll call:
+
+    Ordinance No. 118-58. Finally Passed by the following vote: Ayes:
+    Supervisors Blake, Casey, Dobbs, Ertola, Ferdon, Halley, McMahon, Rolph,
+    Sullivan, Zirpoli — 10. Absent: Supervisor McCarty — 1. ORDERING THE
+    IMPROVEMENT OF BOWDOIN STREET, BETWEEN GAVEN AND SWEENY STREETS …
+
+Stop at the tally and you write "Passed by ten supervisors, one absent" — the
+arithmetic, and nothing a reader wanted. Read past it:
+
+    GOOD: Bowdoin Street improvement between Gaven and Sweeny finally passed
+
+The names in a roll call are never the content of a line. Neither is the count.
