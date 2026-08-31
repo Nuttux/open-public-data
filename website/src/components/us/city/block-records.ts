@@ -2180,13 +2180,33 @@ export function threadsIn(
   for (const [slug, hits] of buckets) {
     const thread = bySlug.get(slug);
     if (!thread || hits.length < minHits) continue;
-    /* NEWEST FIRST, by the volume's own date. The Board printed most items
-       twice — a first reading and a final passage weeks apart — and the shards
-       hand them over in file order, so two identical paragraphs arrived out of
-       sequence and read as a duplicate. */
+    /* ── WHAT THE READER CAN SEE FIRST ─────────────────────────────────
+       The mask is matched against the item's FULL text and the row publishes a
+       FRAGMENT of it. MEASURED over the shipped shards: of 78,837 subject
+       marks, **only 41 % are visible in the line printed on the row**. So a
+       reader who presses `Liquor licences · 28` and reads down the list meets
+       rows that never mention liquor — the mark is right about the decision
+       and the line is too short to show it.
+
+       The count stays the mask's, because the mask is the true one. The ORDER
+       does not: the rows whose own line carries the subject come first, so the
+       evidence is what a reader meets and the rest follows. Nothing is hidden
+       and nothing is claimed that the reader cannot check at the top of the
+       list.
+
+       Within each half, newest first — the Board printed most items twice, a
+       first reading and a final passage weeks apart, and file order put them
+       out of sequence so they read as a duplicate. */
+    const rx = threadRx(thread.p);
+    const shows = (r: BlockDecision) => (rx && rx.test(r.t ?? "") ? 0 : 1);
     const sorted = hits
       .slice()
-      .sort((a, b) => b.y - a.y || (b.d ?? "").localeCompare(a.d ?? ""));
+      .sort(
+        (a, b) =>
+          shows(a) - shows(b) ||
+          b.y - a.y ||
+          (b.d ?? "").localeCompare(a.d ?? ""),
+      );
     let y0 = Infinity;
     let y1 = -Infinity;
     for (const h of sorted) {

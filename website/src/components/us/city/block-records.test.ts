@@ -794,6 +794,21 @@ describe("threadsIn", () => {
       .toEqual(["Paving and grading", "Stables"]);
   });
 
+  /* ── THE EVIDENCE COMES FIRST ─────────────────────────────────────────
+     The mask is matched against the item's full text and the row publishes a
+     fragment: of 78,837 subject marks in the tree, only 41 % are visible in
+     the line printed on the row. The count stays the mask's, because the mask
+     is the true one; the ORDER puts the rows a reader can check at the top. */
+  it("leads with the rows whose own line shows the subject", () => {
+    const stables = thread({ l: "Stables", p: "\\bstable\\b", n: 900 });
+    const rows = [
+      marked(2000, [0], { t: "A line that says nothing about it." }),
+      marked(1910, [0], { t: "Granting a stable for 22 horses." }),
+    ];
+    expect(threadsIn(file(stables), SUBS, rows)[0].rows.map((r) => r.y))
+      .toEqual([1910, 2000]);
+  });
+
   it("puts the rows in date order, newest first", () => {
     const rows = [
       marked(1909, [0], { d: "02-21" }),

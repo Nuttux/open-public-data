@@ -3449,3 +3449,64 @@ ones fall behind the solid ones.
 plain local count — so one section had two rules. Both sides now use damped lift, and the
 Tenderloin surfaces `Shelters and homelessness (17)` and `Dance halls (30)` where it used to show
 its five biggest and least distinguishing subjects.
+
+
+## 33. Block T10, 2026-08-31 — the fiche stops re-matching and reads what the pipeline knew
+
+The subjects were being found twice: once in `build_index.py` against the item's own source
+text, and again in the browser against the shortened line published beside it. Only the second
+one was on screen.
+
+`build_index.py` says why in its own note, and it is the same measurement §31 arrived at
+independently:
+
+> *"the published line is a median of 136 characters and the item behind it 520, so the same
+> regex run in the browser would find 17 % of the homelessness record. Tagged once, here, and
+> carried on the row as `m`."*
+
+The subjects ride the same way, as `sm`. **The browser could not read it, because the
+bit-to-subject table was never published** — so `threadsIn` went on compiling patterns and
+running them over a fragment.
+
+### a. What changed
+
+* `publish_subjects.py` emits `blocks/subjects.json` — 6 KB, bit → slug, label and note, read
+  out of `themes.load_subjects()` so it cannot drift from the masks already in the tree.
+* `threadsIn` no longer matches anything. It decodes `sm` and counts.
+
+MEASURED across the shipped shards: the mask knows a subject for **56,975 rows** where
+re-matching in the browser found **32,142**. On real blocks every count rises and subjects the
+fragment had hidden appear:
+
+| block | before | after |
+|---|---|---|
+| South of Market | horses 33 · liquor 27 · env review 21 · shelters 5 | horses **43** · liquor 28 · env review **34** · shelters **10** · laundries **11** |
+| Tenderloin | hotels 8 · theatres 2 | hotels **14** · theatres **6** · shelters **3** |
+| Haight Ashbury | street lights 4 · railroads 3 · paving 3 | sewers **6** · railroads 5 · paving 5 · streetcars **4** |
+
+### b. THE BIT THAT WOULD HAVE VANISHED IN SILENCE
+
+There are 41 subjects and JavaScript's bitwise operators coerce to int32, so `sm & (1 << 34)`
+reads bit 2. Four subjects sit past bit 32 — **`Liquor licences` among them**, one of the
+busiest in the record — and they would have gone missing with no error anywhere. `subjectSet`
+uses division and modulo, and two tests hold the line: one reads bit 40, one proves bit 34 is
+not confused with bit 2.
+
+### c. The join is by slug, not by position
+
+`subjects.json` is ordered by bit; `threads.json` is ordered by size. Joining them on index
+would relabel every subject on the map. All 41 slugs were checked to line up before the swap.
+
+### d. A trap for whoever touches the classification next
+
+The frozen classifier (`sf_bos_classification.csv`, 124,284 rows, 99.3 % of decisions) keys on
+`volume|item-index`. The fiche's rows carry `volume/page`. Joining those two **looks** like it
+works — 67 % of pages match — and is wrong: a page holds up to 43 records. Five of seven sampled
+rows came back with plainly wrong labels; a subdivision was labelled `public-money / budget`.
+The valid key is the item index, which only the builder has.
+
+### e. State
+
+**949 tests**, typecheck clean. One unrelated failure on the branch —
+`engine-is-city-free.test.ts`, `systems.ts` naming San Francisco — belongs to the uncommitted
+graphics work, not to this.
