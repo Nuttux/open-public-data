@@ -218,6 +218,14 @@ const SHORE_RIM_CELL_K = 0.5;
 const SHORE_INK_K = 0.25;
 
 /**
+ * The reference's own stroke, CSS pixels — `lineWidth 4.0`. The coast may be
+ * drawn wider than this in metres, and at the close cameras it always is, but
+ * it may not be drawn HEAVIER: past this width the alpha comes down to hold
+ * the product. See the note by the meshes.
+ */
+const SHORE_REF_PX = 4;
+
+/**
  * HOW MANY MESHES THE 50,897 MASSES ARE SPLIT OVER, ALONG EACH AXIS.
  *
  * An `InstancedMesh` is culled as ONE object: a single city-wide mesh is
@@ -741,6 +749,8 @@ export function groundDetailLayer(
   /** per blob mesh: the ground metres under each instance */
   const blobY: { mesh: InstancedMesh; ground: Float32Array }[] = [];
   let zexNow = o.zex;
+  /** set once the coast is built; see §AND ITS WEIGHT IS CONSERVED */
+  let shoreWeight: ((scalePxPerM: number) => void) | null = null;
 
   const land = landProbe(data, o.landmask ?? null);
   const yGround = (x: number, y: number): number => o.elevAt(x, y) * zexNow;
@@ -767,6 +777,32 @@ export function groundDetailLayer(
        goes back to being centred on the line, which is what the reference's
        own `stroke()` does everywhere. */
     const probeM = land.cellM * 0.75;
+    /* ── AND THE SEGMENT BETWEEN THEM, NOT ONLY ITS TWO ENDS ─────────────
+       The gate above lifts the pen on a VERTEX that fails, and its own note
+       says what that is for: *"a run of offshore vertices leaves a gap rather
+       than a chord across open water."* It cannot see the case where there is
+       no run — where ONE segment joins two vertices that are both near land
+       and crosses two kilometres of bay in between. The published ring closes
+       itself across open water and a simplified coast joins one headland to
+       the next, and both are exactly that shape.
+
+       MEASURED over the shipped ring: 271 segments, median 214 m, and a
+       longest of **9,673 m**. That one chord is the white ribbon that has
+       been crossing the bay at every waterfront camera in this map.
+
+       So a segment is walked at the mask's own cell and is drawn only if the
+       whole of it is near land. 24 samples is a ceiling on the cost of one
+       segment, not a resolution: at the shipped cell it bounds a chord at
+       about 1.3 km, and nothing that long is a shore. */
+    const wholeOnShore = (ax: number, ay: number, bx: number, by: number): boolean => {
+      const L = Math.hypot(bx - ax, by - ay);
+      const n = Math.min(24, Math.ceil(L / land.cellM));
+      for (let k = 1; k < n; k++) {
+        const t = k / n;
+        if (!land.near(ax + (bx - ax) * t, ay + (by - ay) * t)) return false;
+      }
+      return true;
+    };
     for (const ring of coast) {
       let pen = false;
       for (let i = 0; i < ring.length; i++) {
@@ -793,9 +829,11 @@ export function groundDetailLayer(
           const ly = (dx / L) * probeM;
           const leftWet = !land.at(mx + lx, my + ly);
           const rightWet = !land.at(mx - lx, my - ly);
-          const shift = leftWet === rightWet ? 0 : leftWet ? halfRim : -halfRim;
-          segQuad(ax, ay, x, y, halfRim, shift, yShore, rim);
-          segQuad(ax, ay, x, y, halfInk, 0, yShore, ink);
+          if (wholeOnShore(ax, ay, x, y)) {
+            const shift = leftWet === rightWet ? 0 : leftWet ? halfRim : -halfRim;
+            segQuad(ax, ay, x, y, halfRim, shift, yShore, rim);
+            segQuad(ax, ay, x, y, halfInk, 0, yShore, ink);
+          }
         }
         pen = true;
       }
@@ -826,6 +864,37 @@ export function groundDetailLayer(
         meshes.push(m);
         flat.push(m);
       }
+    }
+    /* ── AND ITS WEIGHT IS CONSERVED ACROSS THE ZOOM RANGE ───────────────
+       `SHORE_RIM_CELL_K`'s own note states the problem and then accepts it:
+       *"One world width has to serve a 36x zoom range; this is the half of
+       that range it was chosen for."* MEASURED at this city's four stops,
+       against the reference's 4.0 px stroke:
+
+           city      10.34 m/px      2.6 px
+           district   3.10            8.7
+           block      1.03           26.1
+           street     0.31           86.7
+
+       A 27 m band at 87 px is a pale beach, which is what the note calls it.
+       It does not have to be accepted, because a band is not a line: a stroke
+       twice as wide at half the alpha lays down the SAME light. So the alpha
+       is scaled to hold the drawn weight at the reference's own stroke, which
+       leaves the wide cameras exactly as they were — 2.6 px is already under
+       4 and the factor clamps at 1 — and takes the close ones back to the
+       weight the coast was drawn at when it was tuned. */
+    if (mRim || mInk) {
+      const base: [number, number][] = [];
+      if (mRim) base.push([0, (mRim.material as MeshLambertMaterial).opacity]);
+      if (mInk) base.push([1, (mInk.material as MeshLambertMaterial).opacity]);
+      shoreWeight = (scalePxPerM: number): void => {
+        const wPx = 2 * halfRim * scalePxPerM;
+        const k = wPx > 0 ? Math.min(1, SHORE_REF_PX / wPx) : 1;
+        for (const [which, a] of base) {
+          const m = which === 0 ? mRim : mInk;
+          if (m) (m.material as MeshLambertMaterial).opacity = a * k;
+        }
+      };
     }
   }
 
@@ -1338,6 +1407,12 @@ export function groundDetailLayer(
   return {
     name: "ground-detail",
     meshes,
+    /* the coast's alpha follows the camera, not the band — the quantity it
+       has to hold is the stroke's weight in PIXELS. See §AND ITS WEIGHT IS
+       CONSERVED. */
+    onFrame(cam) {
+      shoreWeight?.(cam.scale);
+    },
     /* NO `onYear`. The park register's own date fields are a single GIS load
        (`trees.ts` §THE DATE FIELD WAS CHECKED BEFORE IT WAS USED), the
        shoreline is undated, and THE CANOPY CHUNK PUBLISHES NO YEAR AT ALL —
