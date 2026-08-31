@@ -832,6 +832,12 @@ export function buildingsMesh(
     const stepped =
       stepRows && stepRows.length > 1 &&
       stepRows[stepRows.length - 1].h < hMFull - 2.0;
+    if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
+      const g = globalThis as { __cityGLStepSeen?: { rows: number; stepped: number } };
+      g.__cityGLStepSeen ??= { rows: 0, stepped: 0 };
+      if (stepRows) g.__cityGLStepSeen.rows++;
+      if (stepped) g.__cityGLStepSeen.stepped++;
+    }
     const hM = stepped ? stepRows![stepRows!.length - 1].h : hMFull;
     const elev = o.elevAt(tb.cx[i], tb.cy[i]);
 
@@ -1162,10 +1168,14 @@ export function buildingsMesh(
         const from = rows[k + 1].h;
         const to = Math.min(hMFull, rows[k].h);
         if (!(to > from)) continue;
-        if (stepForm(sink, ring, tb.cx[i], tb.cy[i], rows[k].share,
-                     elev, from, to, wc, rc)) {
-          topH = Math.max(topH, to);
+        const okStep = stepForm(sink, ring, tb.cx[i], tb.cy[i], rows[k].share,
+                                elev, from, to, wc, rc);
+        if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
+          const g = globalThis as { __cityGLStep?: { tried: number; drew: number } };
+          g.__cityGLStep ??= { tried: 0, drew: 0 };
+          g.__cityGLStep.tried++; if (okStep) g.__cityGLStep.drew++;
         }
+        if (okStep) topH = Math.max(topH, to);
       }
     }
     /* ── AND WHAT IS STANDING ON THE TOP SURFACE ────────────────────────

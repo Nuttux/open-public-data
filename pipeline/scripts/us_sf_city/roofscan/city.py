@@ -104,7 +104,12 @@ def do_tile(arg):
         if not m.any(): continue
         x, y, z, c = x[m], y[m], z[m], c[m]
         npts += len(x)
-        ix = ((x-bx0)/CELL).astype(np.int32); iy = ((y-by0)/CELL).astype(np.int32)
+        #  CLIP, do not trust the mask. `m` keeps x < bx1, but the index is
+        #  computed in floating point and a point a hair inside the edge can
+        #  still round to `nx`. Ran 8,900 tiles before one did — hours in, on
+        #  a tile at the raster's own edge.
+        ix = np.clip(((x-bx0)/CELL).astype(np.int32), 0, nx-1)
+        iy = np.clip(((y-by0)/CELL).astype(np.int32), 0, ny-1)
         np.maximum.at(dsm, (iy, ix), z)
         g = c == 2
         if g.any(): np.minimum.at(dtm, (iy[g], ix[g]), z[g])
