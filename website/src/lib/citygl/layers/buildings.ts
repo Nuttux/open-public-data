@@ -94,6 +94,7 @@ import {
   familyCornice,
   familyEave,
   familyHasBay,
+  familyHipShare,
   familyPitchedRoof,
   familyOfEra,
   roofFamilyRGB,
@@ -341,6 +342,18 @@ const HOUSE_MAX_H = 16;
  * roughly the size of one composition shingle.
  */
 const HOUSE_GRAIN = 4.6;
+
+/**
+ * THE HEIGHT BELOW WHICH THE SCAN'S LEVELS ARE NOT DRAWN.
+ *
+ * `HOUSE_MAX_H` is 16 and is the ceiling on what may be drawn as a house.
+ * This is the same number for the same reason from the other side: under it
+ * the extractor's "levels" are not massing, and above it they are. Set equal
+ * so there is exactly one boundary in this file between a building the
+ * drawing authors and a building the scan describes, and no band where both
+ * have a say.
+ */
+const HOUSE_STEP_MIN_H = HOUSE_MAX_H;
 
 /**
  * DEV ONLY, the `__cityWA` idiom: force every footprint to one appearance
@@ -886,8 +899,23 @@ export function buildingsMesh(
        facade — the survey gives their extent and nothing about their walls. */
     const hMFull = roofHeight(tb.h[i], tb.hf[i]);
     const stepRows = o.roof?.steps.get(tb.gid[i]);
+    /* ── AND A HOUSE DOES NOT STEP ──────────────────────────────────────
+       The scan's levels are a real measurement of a real thing on a tower:
+       a podium, a setback, a crown, each one tens of metres of building that
+       genuinely stops before the top. On a two-storey house the same
+       extractor is reading a porch roof, a dormer, a neighbour's parapet
+       caught inside an oversized ring — and the drawing then stacked an
+       inset slab THROUGH the authored gable, which at this camera is two
+       nearly-coplanar surfaces fighting for the depth buffer. That is the
+       grey shape that appeared to show THROUGH a roof in every close capture
+       of the Sunset, and it is the same anachronism the rooftop objects were
+       taken out for: undated 2023 detail sitting on a footprint dated 1930.
+
+       A building under `HOUSE_STEP_MIN_H` keeps its measured height and its
+       measured footprint and loses only the levels between. */
     const stepped =
       stepRows && stepRows.length > 1 &&
+      hMFull >= HOUSE_STEP_MIN_H &&
       stepRows[stepRows.length - 1].h < hMFull - 2.0;
     if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
       const g = globalThis as { __cityGLStepSeen?: { rows: number; stepped: number } };
@@ -1252,8 +1280,12 @@ export function buildingsMesh(
       /* a house's roof is shingle or tile, not gravel — a finer tile, and
          the sink's own note has the measurement */
       sink.grain = HOUSE_GRAIN;
-      roofed = gableForm(sink, ring, elev, hM, rc, wc,
-        { gid: tb.gid[i], bay: familyHasBay(fam), eave: familyEave(fam) });
+      roofed = gableForm(sink, ring, elev, hM, rc, wc, {
+        gid: tb.gid[i],
+        bay: familyHasBay(fam),
+        eave: familyEave(fam),
+        hip: familyHipShare(fam),
+      });
       sink.grain = 1;
     }
     if (!roofed && plan) roofed = hipForm(sink, ring, elev, hM, rc);

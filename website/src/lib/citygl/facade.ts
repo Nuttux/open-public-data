@@ -325,6 +325,31 @@ export function familyPitchedRoof(f: FaFamily): boolean {
 }
 
 /** how far this family's eave oversails, as a multiple of the ordinary one */
+/**
+ * HOW OFTEN THIS FAMILY HIPS ITS ROOF RATHER THAN GABLING IT.
+ *
+ * The two are the same roof at the same pitch and they read completely
+ * differently from above — a gable is two slopes and a straight ridge running
+ * wall to wall, a hip is four slopes and a ridge that stops short at both
+ * ends. From this camera that is the single most legible difference between
+ * one house and the next, and drawing every house with one of them is most of
+ * what made a blockface read as repeated.
+ *
+ * The shares are art direction, and they follow what each family actually is:
+ * a Mediterranean Revival house is hipped almost by definition, which is why
+ * the tile shows on all four sides; a Victorian presents a gable to the
+ * street, which is the front-gabled row this city is read by. Classical sits
+ * between, because the era built both.
+ */
+export function familyHipShare(f: FaFamily): number {
+  switch (f) {
+    case "revival":   return 0.72;
+    case "classical": return 0.34;
+    case "victorian": return 0.14;
+    default:          return 0;
+  }
+}
+
 export function familyEave(f: FaFamily): number {
   switch (f) {
     case "revival":   return 1.7;   // the wide Craftsman / Mediterranean eave

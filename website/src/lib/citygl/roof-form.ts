@@ -1014,6 +1014,8 @@ export function stepForm(
 /** the most rise a drawn house roof may have over its eave — see `gablePlan` */
 export const HOUSE_MAX_HALFRISE_M = 3.2;
 export const EAVE_FASCIA_M = 0.22;
+/** how far a roof may oversail a PARTY wall — see `gableForm` §the overhang */
+export const PARTY_EAVE_M = 0.12;
 /** the ridge cap's half-width and how far it stands proud of the slopes */
 export const RIDGE_HALF_M = 0.20;
 export const RIDGE_LIFT_M = 0.05;
@@ -1040,33 +1042,110 @@ export const HOUSE_BAY_SHARE = 0.55;
  * So there is one plan, both of them read it, and neither derives anything.
  */
 export interface GablePlan {
-  readonly x0: number; readonly y0: number;
-  readonly x1: number; readonly y1: number;
-  /** does the ridge run along X? */
-  readonly alongX: boolean;
+  /** the plan's own centre, world metres */
+  readonly ox: number; readonly oy: number;
+  /** the unit vector along the plan's LONG axis, and its left normal */
+  readonly ux: number; readonly uy: number;
+  readonly nx: number; readonly ny: number;
+  /** half-extents in that frame: `hu` along the long axis, `hv` across it */
+  readonly hu: number; readonly hv: number;
+  /** does the ridge run along the long axis? `houseVary.cross` turns it */
+  readonly alongU: boolean;
   /** the roof's rise above the eave, world metres */
   readonly half: number;
 }
 
+/**
+ * THE HOUSE'S PLAN, IN THE HOUSE'S OWN FRAME — AND THE FRAME IS THE WHOLE
+ * POINT.
+ *
+ * ── WHY THERE IS ONE PLAN ────────────────────────────────────────────────
+ * The caller needs the roof's half-rise BEFORE it builds the wall, because
+ * the wall stops where the eave starts. The builder needs the same number
+ * again a hundred lines later. Two functions computing it separately is
+ * exactly the fault `hipForm` had — *"a caller that passes slope only to
+ * `hipPlan` builds the wall to one pitch and draws the roof at another"* —
+ * and it came back here in a new costume: `gableHalf` took `min(w, d)` for
+ * the span while `gableForm` picked its span from the ridge axis, which
+ * `houseVary.cross` flips on one house in four. So there is one plan, both
+ * read it, and neither derives anything.
+ *
+ * ── AND WHY IT IS NOT AN AXIS-ALIGNED BOX ────────────────────────────────
+ * Both of them used to work off `min`/`max` of x and y, which is a rectangle
+ * aligned to the PROJECTION's axes and has nothing to do with the building.
+ * San Francisco's street grid is not aligned to anything: the Sunset runs
+ * about 25 degrees off, the Mission about 30, and only downtown's northern
+ * blocks come close.
+ *
+ * MEASURED, on the 25 ft x 65 ft lot the west side is built out of:
+ *
+ *     bearing      axis-aligned box        area
+ *      0 deg        7.6 x 20.0 m           1.00x
+ *     10 deg       11.0 x 21.0 m           1.52x
+ *     20 deg       14.0 x 21.4 m           1.97x
+ *     25 deg       15.3 x 21.3 m           2.15x
+ *     45 deg       19.5 x 19.5 m           2.51x
+ *
+ * At the Sunset's own bearing the roof was built on a plan TWICE the area of
+ * the house and twice as wide, so every roof oversailed both its neighbours
+ * by metres and the row interpenetrated. That is the grey shape that appeared
+ * to show THROUGH a roof in every close capture — two roofs at nearly the
+ * same height fighting for the depth buffer — and it is why the roofs looked
+ * bloated against their own walls.
+ *
+ * The frame comes off the ring's LONGEST EDGE rather than from an inertia
+ * tensor or a rotating-calipers minimum box. A published building footprint
+ * is a rectangle or close to one, its longest edge is a real wall, and a wall
+ * is the thing a roof is actually square to. The two agree on a true
+ * rectangle exactly; on an L-plan the longest edge is still a wall and the
+ * inertia axis is not.
+ */
 export function gablePlan(
   ring: FormRing, hM: number, gid = 0, pitchDeg?: number,
 ): GablePlan | null {
   const { x, y, off, n } = ring;
   if (n < 3 || n > FORM_MAX_VERTS) return null;
-  let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+
+  /* the longest edge, which is the wall the roof squares up to */
+  let ex = 1, ey = 0, best = -1;
+  for (let i = 0; i < n; i++) {
+    const j = (i + 1) % n;
+    const dx = x[off + j] - x[off + i], dy = y[off + j] - y[off + i];
+    const L2 = dx * dx + dy * dy;
+    if (L2 > best) { best = L2; ex = dx; ey = dy; }
+  }
+  if (!(best > 1e-6)) return null;
+  const eL = Math.sqrt(best);
+  let ux = ex / eL, uy = ey / eL;
+  let nx = -uy, ny = ux;
+
+  /* the extents in that frame */
+  let u0 = Infinity, u1 = -Infinity, v0 = Infinity, v1 = -Infinity;
   for (let i = 0; i < n; i++) {
     const px = x[off + i], py = y[off + i];
-    if (px < x0) x0 = px; if (px > x1) x1 = px;
-    if (py < y0) y0 = py; if (py > y1) y1 = py;
+    const a = px * ux + py * uy, b = px * nx + py * ny;
+    if (a < u0) u0 = a; if (a > u1) u1 = a;
+    if (b < v0) v0 = b; if (b > v1) v1 = b;
   }
-  const w = x1 - x0, d = y1 - y0;
-  if (!(w > 2 && d > 2)) return null;
+  let du = u1 - u0, dv = v1 - v0;
+  if (!(du > 2 && dv > 2)) return null;
+  /* the longest EDGE need not lie along the longest EXTENT — a short ring
+     with one long diagonal wall — so the frame is turned a quarter if it
+     does not, and `u` is the long axis by construction from here on */
+  if (dv > du) {
+    const tx = ux, ty = uy;
+    ux = nx; uy = ny; nx = -ty; ny = tx;
+    const ta = u0, tb = u1;
+    u0 = v0; u1 = v1; v0 = -tb; v1 = -ta;
+    const t = du; du = dv; dv = t;
+  }
+  const cu = (u0 + u1) / 2, cv = (v0 + v1) / 2;
   const vary = houseVary(gid);
-  const alongX = (w >= d) !== vary.cross;
-  const span = alongX ? d : w;                 // across the ridge
+  const alongU = !vary.cross;
+  const span = alongU ? dv : du;               // across the ridge
   /* ── AND THE PITCH DRAWN IS THE PITCH DECLARED ──────────────────────
      `houseVary` states the range and the reason — *"24-34 degrees, because
-     under 22 a roof reads flat from this camera"* — and this line used to
+     under 22 a roof reads flat from this camera"* — and this used to
      multiply the resulting rise by 0.5, which drew every one of them at
      12-17 and put the whole stock under its own stated floor. The rise over
      half a span at an angle is `tan` of that angle, with nothing else in it.
@@ -1082,7 +1161,10 @@ export function gablePlan(
     (span / 2) * Math.tan(((pitchDeg ?? vary.pitch) * Math.PI) / 180),
   );
   if (!(half > 0.3) || !(hM - half > 0)) return null;
-  return { x0, y0, x1, y1, alongX, half };
+  return {
+    ox: cu * ux + cv * nx, oy: cu * uy + cv * ny,
+    ux, uy, nx, ny, hu: du / 2, hv: dv / 2, alongU, half,
+  };
 }
 
 export function gableHalf(ring: FormRing, hM: number, gid = 0, pitchDeg?: number): number {
@@ -1121,6 +1203,9 @@ function houseVary(gid: number) {
     /* and one in four turns its gable across the plan instead of along it,
        so a blockface is not one ridge repeated down the street */
     cross: ((h >>> 13) & 3) === 0,
+    /* the draw that decides gable or hip — compared against the family's own
+       share, so the DECISION belongs to the family and the DRAW to the id */
+    hipRoll: (((h >>> 22) & 1023) / 1023),
   };
 }
 
@@ -1189,49 +1274,91 @@ export function gableForm(
   hM: number,
   roof: RGB,
   wall: RGB,
-  opts: { pitchDeg?: number; bay?: boolean; gid?: number; eave?: number } = {},
+  opts: {
+    pitchDeg?: number; bay?: boolean; gid?: number; eave?: number;
+    /** the family's share of hipped roofs — see `familyHipShare` */
+    hip?: number;
+  } = {},
 ): boolean {
   const vary = houseVary(opts.gid ?? 0);
   /* ONE PLAN, and the caller sized the wall off the same call — see
-     `gablePlan`. Nothing here re-derives the span or the rise. */
+     `gablePlan`. Nothing here re-derives the span, the rise or the frame. */
   const P = gablePlan(ring, hM, opts.gid ?? 0, opts.pitchDeg);
   if (!P) return false;
-  const { x0, y0, x1, y1, alongX, half } = P;
-  const w = x1 - x0, d = y1 - y0;
+  const { ox, oy, ux, uy, nx, ny, hu, hv, alongU, half } = P;
 
   const eaveH = hM - half, ridge = hM + half;
-  const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
-  /* the roof is drawn BIGGER than the wall it sits on */
+
+  /* ── THE OVERHANG IS NOT THE SAME ON ALL FOUR SIDES ──────────────────
+     A row house has neighbours on its two long walls and touches them: it
+     is built to a party line, and a roof cannot oversail a wall it shares.
+     The two SHORT ends — the street and the yard — are free, and that is
+     where the eave actually projects. Drawing it on all four was what put
+     each roof a metre into both neighbours even after the frame was fixed.
+
+     `ovU` is the free end, `ovV` the party side, and the party side keeps a
+     hair so the fascia below still has a face to stand on. */
   const ov = vary.eave * (opts.eave ?? 1);
-  const rx0 = x0 - ov, rx1 = x1 + ov, ry0 = y0 - ov, ry1 = y1 + ov;
-  const V = (px: number, py: number, h: number, c: RGB): number =>
-    sink.vertex(px, py, elevM, h, c[0], c[1], c[2]);
+  const ovU = ov, ovV = Math.min(ov, PARTY_EAVE_M);
+
+  /* plan point in the house's own frame -> world */
+  const V = (a: number, b: number, h: number, c: RGB): number =>
+    sink.vertex(ox + ux * a + nx * b, oy + uy * a + ny * b,
+                elevM, h, c[0], c[1], c[2]);
+
   const rl = shadeRGB(roof, 1.04), rd = shadeRGB(roof, 0.86);
 
-  if (alongX) {
-    const a = V(rx0, ry0, eaveH, rd), b = V(rx1, ry0, eaveH, rd);
-    const c = V(rx1, ry1, eaveH, rl), e = V(rx0, ry1, eaveH, rl);
-    const r0 = V(rx0, cy, ridge, rl), r1 = V(rx1, cy, ridge, rl);
-    sink.tri(a, b, r1); sink.tri(a, r1, r0);   // the slope toward the street
-    sink.tri(e, r0, r1); sink.tri(e, r1, c);   // and the one away from it
-    const g0 = V(x0, y0, eaveH, wall), g1 = V(x0, y1, eaveH, wall);
-    const g2 = V(x0, cy, ridge, wall);
-    sink.tri(g0, g1, g2);                      // the gable end, both of them
-    const h0 = V(x1, y0, eaveH, wall), h1 = V(x1, y1, eaveH, wall);
-    const h2 = V(x1, cy, ridge, wall);
-    sink.tri(h1, h0, h2);
+  /* ── GABLE OR HIP, AND IT IS THE SAME ROOF EITHER WAY ─────────────────
+     Same pitch, same eave, same ridge height. What changes is whether the
+     ridge runs wall to wall — a gable, with a triangle of WALL closing each
+     end — or stops short of both, with a fourth and fifth slope of ROOF
+     coming down to the eave instead. From overhead that is the most legible
+     difference one house can have from the next, and until now every house
+     in the city had the first one.
+
+     The hip's ridge stops `span / 2` in from each end, which is what makes
+     the end slope fall at the same angle as the sides, clamped so a nearly
+     square plan gets a short ridge rather than a crossed one. */
+  const hipped = vary.hipRoll < (opts.hip ?? 0);
+  /* half-extents of the ROOF, which oversails the plan */
+  const ru = hu + ovU, rv = hv + ovV;
+  /* along the ridge, and across it */
+  const rAlong = alongU ? ru : rv, rAcross = alongU ? rv : ru;
+  const hipRun = Math.min(rAcross, rAlong * 0.42);
+  const rEnd = hipped ? rAlong - hipRun : rAlong;
+  /* the wall's own half-extent along the ridge — the gable ends close on the
+     WALL, not on the overhang */
+  const wAlong = alongU ? hu : hv, wAcross = alongU ? hv : hu;
+
+  /** (along-ridge, across-ridge) -> the frame's (a, b) */
+  const A = (t: number, c: number): [number, number] =>
+    alongU ? [t, c] : [c, t];
+  const P4 = (t: number, c: number, h: number, col: RGB): number => {
+    const p = A(t, c); return V(p[0], p[1], h, col);
+  };
+
+  /* the two long slopes */
+  const a0 = P4(-rAlong, -rAcross, eaveH, rd);
+  const a1 = P4(rAlong, -rAcross, eaveH, rd);
+  const b1 = P4(rAlong, rAcross, eaveH, rl);
+  const b0 = P4(-rAlong, rAcross, eaveH, rl);
+  const r0 = P4(-rEnd, 0, ridge, rl), r1 = P4(rEnd, 0, ridge, rl);
+  sink.tri(a0, a1, r1); sink.tri(a0, r1, r0);
+  sink.tri(b0, r0, r1); sink.tri(b0, r1, b1);
+
+  if (hipped) {
+    /* the two end slopes, which is what makes it a hip */
+    const he = shadeRGB(roof, 0.94);
+    const p0 = P4(-rAlong, -rAcross, eaveH, he), p1 = P4(-rAlong, rAcross, eaveH, he);
+    sink.tri(p0, P4(-rEnd, 0, ridge, he), p1);
+    const q0 = P4(rAlong, -rAcross, eaveH, he), q1 = P4(rAlong, rAcross, eaveH, he);
+    sink.tri(q1, P4(rEnd, 0, ridge, he), q0);
   } else {
-    const a = V(rx0, ry0, eaveH, rd), b = V(rx0, ry1, eaveH, rd);
-    const c = V(rx1, ry1, eaveH, rl), e = V(rx1, ry0, eaveH, rl);
-    const r0 = V(cx, ry0, ridge, rl), r1 = V(cx, ry1, ridge, rl);
-    sink.tri(a, b, r1); sink.tri(a, r1, r0);
-    sink.tri(e, r0, r1); sink.tri(e, r1, c);
-    const g0 = V(x0, y0, eaveH, wall), g1 = V(x1, y0, eaveH, wall);
-    const g2 = V(cx, y0, ridge, wall);
-    sink.tri(g1, g0, g2);
-    const h0 = V(x0, y1, eaveH, wall), h1 = V(x1, y1, eaveH, wall);
-    const h2 = V(cx, y1, ridge, wall);
-    sink.tri(h0, h1, h2);
+    /* the gable end, both of them, closed on the wall in wall colour */
+    const g0 = P4(-wAlong, -wAcross, eaveH, wall), g1 = P4(-wAlong, wAcross, eaveH, wall);
+    sink.tri(g0, g1, P4(-wAlong, 0, ridge, wall));
+    const h0 = P4(wAlong, -wAcross, eaveH, wall), h1 = P4(wAlong, wAcross, eaveH, wall);
+    sink.tri(h1, h0, P4(wAlong, 0, ridge, wall));
   }
 
   /* ── THE ROOF HAS A THICKNESS, AND THAT IS MOST OF WHY IT READS AS ONE ──
@@ -1242,25 +1369,24 @@ export function gableForm(
 
      A real roof ends in a board — a fascia along the eave, a barge board up
      the rake — and under that board is the shadow of the overhang. Both are
-     the same 0.22 m of dark, so both are drawn as one skirt hung off the
-     roof's whole boundary. It costs six quads and it is the difference
-     between a lid and a roof.
-
-     The boundary is walked as a loop so the eave and the rake get the same
-     treatment without either being special-cased. */
+     the same dark, so both are drawn as one skirt hung off the roof's whole
+     boundary, walked as a loop so neither is special-cased. It costs six
+     quads and it is the difference between a lid and a roof. */
   {
     const fc = shadeRGB(roof, 0.46);
-    const loop: [number, number, number][] = alongX
-      ? [[rx0, ry0, eaveH], [rx1, ry0, eaveH], [rx1, cy, ridge],
-         [rx1, ry1, eaveH], [rx0, ry1, eaveH], [rx0, cy, ridge]]
-      : [[rx0, ry0, eaveH], [cx, ry0, ridge], [rx1, ry0, eaveH],
-         [rx1, ry1, eaveH], [cx, ry1, ridge], [rx0, ry1, eaveH]];
-    for (let k = 0; k < 6; k++) {
-      const A = loop[k], B = loop[(k + 1) % 6];
-      const t0 = V(A[0], A[1], A[2], fc), t1 = V(B[0], B[1], B[2], fc);
-      const b0 = V(A[0], A[1], A[2] - EAVE_FASCIA_M, fc);
-      const b1 = V(B[0], B[1], B[2] - EAVE_FASCIA_M, fc);
-      sink.tri(t0, t1, b1); sink.tri(t0, b1, b0);
+    /* a hipped roof's boundary is the four eaves and nothing else — its ends
+       come DOWN to the eave, so there is no rake to board */
+    const loop: [number, number, number][] = hipped
+      ? [[-rAlong, -rAcross, eaveH], [rAlong, -rAcross, eaveH],
+         [rAlong, rAcross, eaveH], [-rAlong, rAcross, eaveH]]
+      : [[-rAlong, -rAcross, eaveH], [rAlong, -rAcross, eaveH], [rAlong, 0, ridge],
+         [rAlong, rAcross, eaveH], [-rAlong, rAcross, eaveH], [-rAlong, 0, ridge]];
+    for (let k = 0; k < loop.length; k++) {
+      const S = loop[k], E = loop[(k + 1) % loop.length];
+      const t0 = P4(S[0], S[1], S[2], fc), t1 = P4(E[0], E[1], E[2], fc);
+      const c0 = P4(S[0], S[1], S[2] - EAVE_FASCIA_M, fc);
+      const c1 = P4(E[0], E[1], E[2] - EAVE_FASCIA_M, fc);
+      sink.tri(t0, t1, c1); sink.tri(t0, c1, c0);
     }
   }
 
@@ -1272,72 +1398,69 @@ export function gableForm(
   {
     const rcp = shadeRGB(roof, 0.74);
     const z = ridge + RIDGE_LIFT_M;
-    const q = alongX
-      ? [[rx0, cy - RIDGE_HALF_M], [rx1, cy - RIDGE_HALF_M],
-         [rx1, cy + RIDGE_HALF_M], [rx0, cy + RIDGE_HALF_M]]
-      : [[cx - RIDGE_HALF_M, ry0], [cx - RIDGE_HALF_M, ry1],
-         [cx + RIDGE_HALF_M, ry1], [cx + RIDGE_HALF_M, ry0]];
-    const v = q.map((c) => V(c[0], c[1], z, rcp));
-    sink.tri(v[0], v[1], v[2]); sink.tri(v[0], v[2], v[3]);
+    const c0 = P4(-rEnd, -RIDGE_HALF_M, z, rcp), c1 = P4(rEnd, -RIDGE_HALF_M, z, rcp);
+    const c2 = P4(rEnd, RIDGE_HALF_M, z, rcp), c3 = P4(-rEnd, RIDGE_HALF_M, z, rcp);
+    sink.tri(c0, c1, c2); sink.tri(c0, c2, c3);
   }
 
   if (vary.chimney) {
     /* a stack standing off the ridge, which is the one vertical a house has
-       and the thing that most says "not a warehouse" from directly above */
+       and the thing that most says "not a warehouse" from directly above.
+       On a hip it has to stand between the two ends or it comes out of an
+       end slope in mid-air — 0.34/0.66 of the run is inside `hipRun`'s 0.42.
+       A chimney is masonry, not rendered wall: it wants to be darker than
+       everything around it or it reads as a white box stuck on the ridge. */
     const cs = 0.34, ch = ridge + 0.75;
-    const px = alongX ? (vary.chimEnd ? x0 + (x1 - x0) * 0.22 : x0 + (x1 - x0) * 0.74) : cx;
-    const py = alongX ? cy : (vary.chimEnd ? y0 + (y1 - y0) * 0.22 : y0 + (y1 - y0) * 0.74);
-    /* a chimney is masonry, not rendered wall: it wants to be darker than
-       everything around it or it reads as a white box stuck on the ridge */
+    const f = vary.chimEnd ? (hipped ? -0.32 : -0.56) : (hipped ? 0.32 : 0.56);
+    const t = f * rAlong;
     const cw = shadeRGB(wall, 0.52), ct = shadeRGB(wall, 0.40);
-    const q: number[] = [], t: number[] = [], cap: number[] = [];
-    const xs = [px - cs, px + cs, px + cs, px - cs];
-    const ys = [py - cs, py - cs, py + cs, py + cs];
-    for (let k = 0; k < 4; k++) {
-      q.push(V(xs[k], ys[k], ridge - 0.6, cw));
-      t.push(V(xs[k], ys[k], ch, cw));
-      cap.push(V(xs[k], ys[k], ch, ct));
+    const q: number[] = [], tp: number[] = [], cap: number[] = [];
+    const ds: [number, number][] = [[-cs, -cs], [cs, -cs], [cs, cs], [-cs, cs]];
+    for (const [da, db] of ds) {
+      q.push(P4(t + da, db, ridge - 0.6, cw));
+      tp.push(P4(t + da, db, ch, cw));
+      cap.push(P4(t + da, db, ch, ct));
     }
     for (let k = 0; k < 4; k++) {
       const m2 = (k + 1) & 3;
-      sink.tri(q[k], q[m2], t[m2]); sink.tri(q[k], t[m2], t[k]);
+      sink.tri(q[k], q[m2], tp[m2]); sink.tri(q[k], tp[m2], tp[k]);
     }
     sink.tri(cap[0], cap[1], cap[2]); sink.tri(cap[0], cap[2], cap[3]);
   }
 
+  /* ── THE FRONT, WHICH IS A SHORT END AND NOT A LONG WALL ─────────────
+     A row house presents its narrow end to the street; the long walls are
+     party walls with a neighbour against them. So the bay stands proud of
+     the end at `-hu` and the door goes in the same face. */
+  const fu = -hu, fv = hv;
   if (opts.bay !== false && vary.bay) {
     /* the front stands proud over the middle of the frontage, and carries its
        own flat top so it reads from above as well as from the street */
     const p = vary.proud;
-    const bw = (alongX ? w : d) * vary.share;
+    const bw = hv * vary.share;                // half-width of the projection
     const bl = shadeRGB(wall, 1.06), bt = shadeRGB(roof, 1.02);
     const top = eaveH + 0.15;
-    if (alongX) {
-      const a0 = cx - bw / 2, a1 = cx + bw / 2, yf = y0 - p;
-      const q = [V(a0, y0, 0, bl), V(a1, y0, 0, bl), V(a1, yf, 0, bl), V(a0, yf, 0, bl)];
-      const t = [V(a0, y0, top, bl), V(a1, y0, top, bl), V(a1, yf, top, bl), V(a0, yf, top, bl)];
-      const cap = [V(a0, y0, top, bt), V(a1, y0, top, bt), V(a1, yf, top, bt), V(a0, yf, top, bt)];
-      for (let k = 0; k < 4; k++) {
-        const m = (k + 1) & 3;
-        sink.tri(q[k], q[m], t[m]); sink.tri(q[k], t[m], t[k]);
-      }
-      sink.tri(cap[0], cap[1], cap[2]); sink.tri(cap[0], cap[2], cap[3]);
-    } else {
-      const a0 = cy - bw / 2, a1 = cy + bw / 2, xf = x0 - p;
-      const q = [V(x0, a0, 0, bl), V(x0, a1, 0, bl), V(xf, a1, 0, bl), V(xf, a0, 0, bl)];
-      const t = [V(x0, a0, top, bl), V(x0, a1, top, bl), V(xf, a1, top, bl), V(xf, a0, top, bl)];
-      const cap = [V(x0, a0, top, bt), V(x0, a1, top, bt), V(xf, a1, top, bt), V(xf, a0, top, bt)];
-      for (let k = 0; k < 4; k++) {
-        const m = (k + 1) & 3;
-        sink.tri(q[k], q[m], t[m]); sink.tri(q[k], t[m], t[k]);
-      }
-      sink.tri(cap[0], cap[1], cap[2]); sink.tri(cap[0], cap[2], cap[3]);
+    const ds: [number, number][] = [
+      [fu, -bw], [fu, bw], [fu - p, bw], [fu - p, -bw],
+    ];
+    const q: number[] = [], tp: number[] = [], cap: number[] = [];
+    for (const [da, db] of ds) {
+      q.push(V(da, db, 0, bl));
+      tp.push(V(da, db, top, bl));
+      cap.push(V(da, db, top, bt));
     }
+    for (let k = 0; k < 4; k++) {
+      const m = (k + 1) & 3;
+      sink.tri(q[k], q[m], tp[m]); sink.tri(q[k], tp[m], tp[k]);
+    }
+    sink.tri(cap[0], cap[1], cap[2]); sink.tri(cap[0], cap[2], cap[3]);
   }
 
   /* the door goes on the same face the bay stands proud of */
-  if (alongX) doorOn(sink, elevM, x0, y0, x1, y0, hM - half, wall, opts.gid ?? 0);
-  else doorOn(sink, elevM, x0, y1, x0, y0, hM - half, wall, opts.gid ?? 0);
+  doorOn(sink, elevM,
+    ox + ux * fu + nx * -fv, oy + uy * fu + ny * -fv,
+    ox + ux * fu + nx * fv, oy + uy * fu + ny * fv,
+    eaveH, wall, opts.gid ?? 0);
   return true;
 }
 

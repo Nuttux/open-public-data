@@ -8,6 +8,7 @@ import {
   gablePlan,
   EAVE_FASCIA_M,
   HOUSE_MAX_HALFRISE_M,
+  PARTY_EAVE_M,
   corniceProjM,
   FORM_MAX_VERTS,
   HIP_MAX_VERTS,
@@ -82,6 +83,18 @@ function rect(w: number, d: number): FormRing {
   return ring([
     [-w / 2, -d / 2], [w / 2, -d / 2], [w / 2, d / 2], [-w / 2, d / 2],
   ]);
+}
+
+/** the same ring, rotated — San Francisco's grid is not axis-aligned and a
+ *  test plan that is proves nothing about a roof built on a real footprint */
+function turned(r: FormRing, deg: number): FormRing {
+  const t = (deg * Math.PI) / 180, c = Math.cos(t), s = Math.sin(t);
+  const x = new Float32Array(r.n), y = new Float32Array(r.n);
+  for (let k = 0; k < r.n; k++) {
+    const px = r.x[r.off + k], py = r.y[r.off + k];
+    x[k] = px * c - py * s; y[k] = px * s + py * c;
+  }
+  return { x, y, off: 0, n: r.n };
 }
 
 /** a regular n-gon, which is the cheapest way to a long ring */
@@ -733,7 +746,9 @@ describe("shadeRGB", () => {
  */
 describe("gablePlan is the only plan", () => {
   it("gableHalf equals the rise gableForm actually draws, for every id", () => {
-    const R = rect(9, 22);
+    /* turned off the projection's axes on purpose — an axis-aligned test
+       plan would never have caught the frame bug this file now guards */
+    const R = turned(rect(9, 22), 25);
     const H = 9;
     let crossed = 0;
     for (let gid = 1; gid <= 400; gid++) {
@@ -743,7 +758,7 @@ describe("gablePlan is the only plan", () => {
       expect(half).toBeCloseTo(P!.half, 10);
       /* the ridge really does turn on some of them, which is the branch the
          old code disagreed on — a test that never crossed would prove nothing */
-      if (!P!.alongX) crossed++;
+      if (!P!.alongU) crossed++;
       const r = recorder();
       expect(gableForm(r.sink, R, 0, H, [0.5, 0.5, 0.5], [0.8, 0.8, 0.8], { gid })).toBe(true);
       /* the eave is the wall top the caller sized, and nothing the builder
@@ -756,6 +771,44 @@ describe("gablePlan is the only plan", () => {
     }
     expect(crossed, "no id turned its ridge — the branch is untested")
       .toBeGreaterThan(20);
+  });
+
+  it("keeps the roof over its own footprint, at every street bearing", () => {
+    /* THE BUG THIS IS FOR. Both halves used to work off min/max of x and y,
+       which is a rectangle aligned to the PROJECTION and has nothing to do
+       with the building. On the Sunset's own 25-degree bearing that box is
+       2.15x the area of a 25 x 65 ft lot and twice as wide, so every roof
+       oversailed both neighbours by metres and the row interpenetrated.
+
+       What is asserted is the plan area of everything drawn against the
+       footprint's own. An axis-aligned roof over a turned lot fails this by
+       roughly the ratio in `gablePlan`'s table; a framed one clears it at
+       every bearing by the eave alone. */
+    for (const deg of [0, 10, 20, 25, 30, 45, 70]) {
+      const R = turned(rect(7.6, 20), deg);
+      const r = recorder();
+      expect(gableForm(r.sink, R, 0, 9, [0.5, 0.5, 0.5], [0.8, 0.8, 0.8],
+                       { gid: 31, eave: 1.7, hip: 0 })).toBe(true);
+      let u0 = Infinity, u1 = -Infinity, v0 = Infinity, v1 = -Infinity;
+      const t = (deg * Math.PI) / 180, c = Math.cos(t), sn = Math.sin(t);
+      for (let k = 0; k < r.x.length; k++) {
+        /* back into the lot's own frame */
+        const a = r.x[k] * c + r.y[k] * sn, b = -r.x[k] * sn + r.y[k] * c;
+        if (a < u0) u0 = a; if (a > u1) u1 = a;
+        if (b < v0) v0 = b; if (b > v1) v1 = b;
+      }
+      /* ACROSS the lot is the party side and the tight one — a roof may not
+         oversail a wall it shares, and this is the assertion the frame bug
+         failed by a factor of two */
+      expect(u1 - u0, `bearing ${deg} across the lot`)
+        .toBeLessThan(7.6 + 2 * PARTY_EAVE_M + 0.01);
+      /* ALONG it the two ends are free: the eave at both, and the bay
+         standing proud at the front. `houseVary` bounds the eave at 0.70 of
+         the family's own multiplier and the projection at 1.15 m. */
+      const maxEave = 0.70 * 1.7;
+      expect(v1 - v0, `bearing ${deg} along the lot`)
+        .toBeLessThan(20 + maxEave + Math.max(maxEave, 1.15) + 0.01);
+    }
   });
 
   it("refuses a plan it cannot roof, and leaves the sink untouched", () => {
