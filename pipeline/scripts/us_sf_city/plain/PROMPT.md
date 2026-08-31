@@ -57,3 +57,25 @@ RULES
 
 Your only deliverable is {OUTFILE}. Do not explain your choices. When finished reply
 with just the number of lines written.
+
+A TRANSLATION HAS TO FIT THE SENTENCE. The glossary gives the plain MEANING of a
+term, not a phrase to paste in whole. Dropping the definition in where the term
+stood produces lines like these, all real:
+
+    BAD : How far back buildings must sit set on Twenty-fifth Avenue
+    BAD : How far back buildings sit to be fixed on Shrader Street
+    GOOD: Buildings on Twenty-fifth Avenue must be set back from the street
+    GOOD: Buildings on Shrader Street will have to sit further back
+
+Read the line back to yourself. If it does not sound like something a person
+would say out loud, rewrite it around the plain meaning instead of pasting the
+definition into the slot the jargon came out of.
+
+DO NOT NAME THE BOARD AS THE ACTOR. Every record here is the Board of
+Supervisors' own business, so "Board approves the licence at 620 Treat Avenue"
+spends two of your eleven words saying what the reader already knows. Write the
+plain passive — "Brew-pub licence approved at 620 Treat Avenue" — and spend those
+words on what actually happened, and where.
+Name a board only when it is a DIFFERENT one ("Board of Education asked for a
+site for a courthouse"), or when the Board itself is the event ("Board adjourns
+to meet in August").
