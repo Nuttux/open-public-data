@@ -2015,7 +2015,12 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
                   <li key={`${d.u}-${d.y}-${d.t.slice(0, 20)}`}>
                     <p className="fx-mark-card-top">
                       <span className="fx-mark-card-y tnum">{d.y}</span>
-                      {d.a > 0 ? (
+                      {/* one sum to a row: where the written line already
+                          prints a figure it carries the money, because `d.a`
+                          is read off this row's fragment and a record can be
+                          one appropriation with numbered clauses stating
+                          several different amounts. */}
+                      {d.a > 0 && !(d.pl && /[$£€]/.test(d.pl)) ? (
                         <span className="fx-mark-card-sum tnum">
                           {usdShort(d.a)}
                         </span>

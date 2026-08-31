@@ -112,7 +112,7 @@ def main() -> None:
                 "a": int(d.get("a") or 0), "u": key[1], "t": key[2],
                 "cs": int(d["cs"]) if d.get("cs") is not None else -1,
                 "ca": int(d["ca"]) if d.get("ca") is not None else -1,
-                "g": d.get("g") or "", "p": [],
+                "g": d.get("g") or "", "pl": d.get("pl") or "", "p": [],
             }
         row["m"] |= int(marks["m"][i])
         row["p"].append([round(float(marks["x"][i]), 1),
@@ -152,7 +152,11 @@ def main() -> None:
 
     total = 0
     for dec, rs in sorted(by_decade.items()):
-        cols = {k: [r[k] for r in rs] for k in ("y", "m", "k", "a", "u", "t", "cs", "ca", "g", "p")}
+        # `pl` rides beside `t`: the rail is the surface a reader actually reads
+        # on this page, and it was printing the Clerk's sentence raw. The written
+        # line is ours, so `t` stays on the row and the rail can show both.
+        cols = {k: [r[k] for r in rs]
+                for k in ("y", "m", "k", "a", "u", "t", "cs", "ca", "g", "pl", "p")}
         p = OUT / f"{dec}.json"
         p.write_text(json.dumps({"decade": dec, "n": len(rs), **cols}) + "\n")
         total += p.stat().st_size

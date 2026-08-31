@@ -108,13 +108,22 @@ export default function CityRecordPanel({
   /* The rows are built once per year rather than per render: `recordLine` runs
      a dozen regular expressions a record, and the year moves on a drag. */
   const { told, mute } = useMemo(() => {
-    const made = decisions.map((d, i) => ({
-      d, i, line: recordLine(d.text, says(d, classify), null),
-    }));
+    const made = decisions.map((d, i) => {
+      const line = recordLine(d.text, says(d, classify), null);
+      /* ── A WRITTEN LINE OUTRANKS AN EXTRACTED ONE ────────────────────────
+         `recordLine` finds the most readable sentence INSIDE the record, which
+         is the best that can be done for a record nobody has written yet. `pl`
+         is a sentence written from the item's whole text and checked twice, so
+         where one exists it is the headline and the row always TELLS — it can
+         never fall into the mute cohort, because the reason that cohort exists
+         (the Clerk's line does not read) does not apply to a line we wrote.
+         `d.text` stays on the row underneath; see the row markup. */
+      return { d, i, line: d.pl ? { ...line, headline: d.pl, tag: line.tag ?? says(d, classify) } : line };
+    });
     /* a row TELLS you something when its headline is the record's own words.
        Where the line did not read, `recordLine` puts the classification in the
        headline and leaves `tag` null — that is the mute cohort. */
-    const told = made.filter((r) => r.line.tag !== null || !says(r.d, classify));
+    const told = made.filter((r) => r.d.pl || r.line.tag !== null || !says(r.d, classify));
     const rest = made.filter((r) => !told.includes(r));
     const by = new Map<string, { label: string; n: number; first: number }>();
     for (const r of rest) {
@@ -172,7 +181,14 @@ export default function CityRecordPanel({
               <span className="fx-city-record-text">
                 {line.tag ? <span className="fx-city-record-tag">{line.tag}</span> : null}
                 {line.headline}
-                {line.sum ? <span className="fx-city-record-sum">{line.sum}</span> : null}
+                {/* A record can be ONE appropriation with numbered clauses —
+                    (1) Dudley Stone equipment $11,000 … (5) Wilde avenue
+                    $3,039.48. `pl` reads the whole item and reports the first;
+                    `line.sum` comes off the fragment on this row. Side by side
+                    they read as a contradiction, so where our line already
+                    prints a figure it carries the money alone. */}
+                {line.sum && !(d.pl && /[$£€]/.test(d.pl))
+                  ? <span className="fx-city-record-sum">{line.sum}</span> : null}
               </span>
               {/* WHERE IT LANDED, when it landed in more than one place. A
                   decision naming twenty-four addresses is one act of the Board

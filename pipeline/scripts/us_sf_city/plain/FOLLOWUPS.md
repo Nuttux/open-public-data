@@ -21,3 +21,9 @@ being destroyed rather than the line being wrong ("Vallejo" scanned as \'all'\j(
 The corroboration rule recovers those with a cleaner reprint; the rest stay held.
 Open question for a human: show them with the damaged scan visible, or keep them
 hidden.
+
+## Glossary substitution can read awkwardly
+"set-back lines" -> "how far back buildings must sit" is right as a definition
+but wrong as a clause: "How far back buildings must sit set on Bright Street".
+The translation needs to fit the sentence, not just replace the term. Seen on
+the 1925 rail; worth a pass over the glossary's longer phrases.

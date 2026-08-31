@@ -33,6 +33,14 @@ export interface YearDecision {
   readonly year: number;
   /** the record's own words, verbatim and untrimmed */
   readonly text: string;
+  /**
+   * OUR one-sentence reading of the record, 6-11 words, or "" where none has
+   * been written yet. Written from the item's FULL text and checked twice —
+   * nothing named that the record does not name, and no proposal written as a
+   * fact. It is not the Board's sentence: `text` stays on the row, and any
+   * surface showing `pl` must keep the Clerk's words distinguishable from it.
+   */
+  readonly pl: string;
   /** theme bitmask, matching `blocks/themes.json` `bit` */
   readonly bits: number;
   /** the Board's own kind letter — R resolution, M motion, O ordinance … */
@@ -63,7 +71,7 @@ interface YearIndex {
 
 interface Shard {
   y: number[]; m: number[]; k: string[]; a: number[]; u: string[];
-  t: string[]; cs: number[]; ca: number[]; g: string[];
+  t: string[]; cs: number[]; ca: number[]; g: string[]; pl?: string[];
   p: [number, number, string][][];
 }
 
@@ -166,7 +174,7 @@ export class YearRecord {
       out.push({
         year: s.y[i], text: s.t[i], bits: s.m[i], kind: s.k[i],
         usd: s.a[i], url: s.u[i], cs: s.cs[i], ca: s.ca[i],
-        grade: s.g[i], at: s.p[i],
+        grade: s.g[i], pl: s.pl?.[i] ?? "", at: s.p[i],
       });
     }
     return out;
