@@ -945,6 +945,42 @@ export function boxForm(
  * own shape, shrunk: right for the setback towers this is mostly drawn on, and
  * honestly wrong for the rare building that steps by losing a wing.
  */
+/**
+ * A STEP'S SIDE IS A WALL, AND IT WAS COMING OUT BLANK.
+ *
+ * Everything this file builds goes through `FormSink`, and the caller puts
+ * everything that comes through `FormSink` in its ROOF mesh — which carries
+ * the gravel stipple and no facade at all. That is right for a tray, a hip
+ * and a gable, all of which are roof. It is wrong for the side of a massing
+ * step, which is a hundred feet of the same office wall that carries windows
+ * forty feet below it.
+ *
+ * MEASURED by painting all eleven facade vocabularies a distinct hue and
+ * shooting downtown: the pale unmarked slabs left standing among them were
+ * every stepped tower's upper levels. `Citicorp Center`, `Chevron Tower` and
+ * a dozen others were drawing their setbacks as blank prisms while their own
+ * podiums, two metres below, drew a full window grid.
+ *
+ * So the caller may hand `stepForm` a second channel for the SIDES. It
+ * carries the facade coordinate the walls use — `u` in bays around the ring,
+ * `v` in storeys up from the ground — so a step's rhythm continues the wall's
+ * own rather than restarting. The cap stays on the roof sink, because a cap
+ * is a roof.
+ */
+export interface StepFace {
+  /** append one wall vertex with an explicit facade coordinate */
+  vertexUV(
+    x: number, y: number, elevM: number, hM: number,
+    r: number, g: number, b: number, u: number, v: number,
+  ): number;
+  /** append one wall triangle */
+  tri(a: number, b: number, c: number): void;
+  /** the building's own bay, world metres — `facadeModuleM` */
+  bayM: number;
+  /** storeys per world metre of height, so `v` continues the wall below */
+  vPerM: number;
+}
+
 export function stepForm(
   sink: FormSink,
   ring: FormRing,
@@ -952,23 +988,40 @@ export function stepForm(
   share: number,
   elevM: number, fromH: number, toH: number,
   wall: RGB, roof: RGB,
+  face?: StepFace | null,
 ): boolean {
   const { x, y, off, n } = ring;
   if (n < 3 || n > FORM_MAX_VERTS) return false;
   if (!(toH > fromH) || !(share > 0.02) || share > 0.995) return false;
   const k = Math.sqrt(share);
   const lo: number[] = [], hi: number[] = [], cap: number[] = [];
+  /* the inset ring's own run, so the bays are the size they are on the wall
+     below rather than stretched to whatever this level's perimeter is */
+  let run = 0;
   for (let i = 0; i < n; i++) {
     const px = cx + (x[off + i] - cx) * k;
     const py = cy + (y[off + i] - cy) * k;
-    lo.push(sink.vertex(px, py, elevM, fromH, wall[0], wall[1], wall[2]));
-    hi.push(sink.vertex(px, py, elevM, toH, wall[0], wall[1], wall[2]));
+    if (face) {
+      const u = run / face.bayM;
+      lo.push(face.vertexUV(px, py, elevM, fromH, wall[0], wall[1], wall[2],
+                            u, fromH * face.vPerM));
+      hi.push(face.vertexUV(px, py, elevM, toH, wall[0], wall[1], wall[2],
+                            u, toH * face.vPerM));
+      const j = (i + 1) % n;
+      run += Math.hypot(
+        (x[off + j] - x[off + i]) * k, (y[off + j] - y[off + i]) * k,
+      );
+    } else {
+      lo.push(sink.vertex(px, py, elevM, fromH, wall[0], wall[1], wall[2]));
+      hi.push(sink.vertex(px, py, elevM, toH, wall[0], wall[1], wall[2]));
+    }
     cap.push(sink.vertex(px, py, elevM, toH, roof[0], roof[1], roof[2]));
   }
+  const wtri = face ? face.tri.bind(face) : sink.tri.bind(sink);
   for (let i = 0; i < n; i++) {
     const j = (i + 1) % n;
-    sink.tri(lo[i], lo[j], hi[j]);
-    sink.tri(lo[i], hi[j], hi[i]);
+    wtri(lo[i], lo[j], hi[j]);
+    wtri(lo[i], hi[j], hi[i]);
   }
   /* the lid: a fan is safe here for the same reason the flat roof's is — the
      triangles are coplanar and the depth buffer resolves them into the cap */

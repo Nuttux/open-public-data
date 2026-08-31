@@ -4,6 +4,7 @@ import { DE, PITCH_MAX_HALFRISE_M, PITCH_RUN } from "@/lib/city/roofs";
 import {
   capForm,
   gableForm,
+  stepForm,
   gableHalf,
   gablePlan,
   EAVE_FASCIA_M,
@@ -832,5 +833,68 @@ describe("gablePlan is the only plan", () => {
     expect(half).toBeCloseTo(5 * Math.tan(Math.PI / 6), 4);
     /* the cap binds on a wide plan and nowhere else */
     expect(gableHalf(rect(60, 80), 30, 0, 30)).toBe(HOUSE_MAX_HALFRISE_M);
+  });
+});
+
+
+describe("stepForm's wall channel", () => {
+  it("puts the sides on the wall and the cap on the roof", () => {
+    /* THE FAULT. Everything this file builds goes through `FormSink`, and the
+       caller puts everything that comes through it in the ROOF mesh, which
+       carries a gravel stipple and no facade. Right for a tray, a hip and a
+       gable. Wrong for the side of a massing step, which is the same office
+       wall that carries windows forty feet below it — and every stepped tower
+       downtown was drawing its setbacks as blank prisms because of it. */
+    const roof = recorder();
+    const wall = recorder();
+    const uv: [number, number][] = [];
+    const wtri: [number, number, number][] = [];
+    const ok = stepForm(
+      roof.sink, rect(30, 40), 0, 0, 0.6, 0, 20, 60,
+      [0.8, 0.8, 0.8], [0.4, 0.4, 0.4],
+      {
+        vertexUV: (x, y, e, h, r, g, b, u, v) => {
+          uv.push([u, v]);
+          return wall.sink.vertex(x, y, e, h, r, g, b);
+        },
+        tri: (a, b, c) => { wtri.push([a, b, c]); },
+        bayM: 5,
+        vPerM: 0.3,
+      },
+    );
+    expect(ok).toBe(true);
+    expect(uv.length).toBeGreaterThan(0);
+    /* four sides, two triangles each, all on the wall */
+    expect(wtri.length).toBe(8);
+    /* and the cap — a fan over four corners is two triangles — on the roof */
+    expect(roof.tris.length).toBe(2);
+  });
+
+  it("continues the wall's own rhythm rather than restarting it", () => {
+    const roof = recorder();
+    const uv: [number, number][] = [];
+    stepForm(
+      roof.sink, rect(30, 40), 0, 0, 0.25, 0, 20, 60,
+      [0.8, 0.8, 0.8], [0.4, 0.4, 0.4],
+      {
+        vertexUV: (_x, _y, _e, _h, _r, _g, _b, u, v) => { uv.push([u, v]); return uv.length - 1; },
+        tri: () => {},
+        bayM: 5,
+        vPerM: 0.3,
+      },
+    );
+    /* `v` is storeys off the GROUND, so a level 20-60 m up lands where the
+       wall below it would have — not at zero */
+    const vs = uv.map((p) => p[1]);
+    expect(Math.min(...vs)).toBeCloseTo(20 * 0.3, 6);
+    expect(Math.max(...vs)).toBeCloseTo(60 * 0.3, 6);
+    /* and `u` counts BAYS around the INSET ring at the building's own
+       module. A 0.25 share is a half-scale inset of the 30 x 40 plan, so its
+       edges are 15, 20, 15 and 20 m and at a 5 m bay they advance u by
+       3, 4, 3, 4. The last vertex therefore reads 10 and the closing edge
+       wraps back to 0 — the same seam the base wall's own uv carries, and
+       the same convention: `u` is the run REACHED, not the run remaining. */
+    const us = [...new Set(uv.map((p) => p[0]))].sort((a, b) => a - b);
+    expect(us).toEqual([0, 3, 7, 10]);
   });
 });

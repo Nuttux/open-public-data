@@ -743,6 +743,10 @@ export function buildingsMesh(
   const quad = (a: number, b: number, c2: number, d: number): void => {
     quadInto.push(a, b, c2, a, c2, d);
   };
+  /** the same buffer, one triangle at a time — `stepForm`'s wall channel */
+  const wallTri = (a: number, b: number, c2: number): void => {
+    quadInto.push(a, b, c2);
+  };
 
   /* ── THE YEAR IS A DRAW RANGE, AND THAT IS THE WHOLE TRICK ──────────────
      A century scrub has to answer, sixty times a second, *which buildings
@@ -1099,6 +1103,26 @@ export function buildingsMesh(
       tileFor.push(facadeTile(keyOf(r)));
       gndFor.push(facadeGroundTile(keyOf(r)));
     }
+    /* DEV-ONLY: which vocabulary each building's FRONT lands in, weighted by
+       the wall area it will paint. A count alone cannot answer *why does the
+       frame look blank* — 28,000 sheds and one convention centre are the same
+       number and nothing like the same picture. */
+    if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
+      const g = globalThis as { __cityGLTile?: Record<string, { n: number; m2: number }> };
+      g.__cityGLTile ??= {};
+      const key = FACADE_TILES[tileFor[ROLE_FRONT]] ?? "?";
+      const e = (g.__cityGLTile[key] ??= { n: 0, m2: 0 });
+      e.n++;
+      let per = 0;
+      for (let k = 0; k < ring.n; k++) {
+        const j = (k + 1) % ring.n;
+        per += Math.hypot(
+          ring.x[ring.off + j] - ring.x[ring.off + k],
+          ring.y[ring.off + j] - ring.y[ring.off + k],
+        );
+      }
+      e.m2 += per * hMFull;
+    }
     /* ── THE BAY IS THE BUILDING'S, NOT A NOMINAL 4.6 m ──────────────────
        `facadeModuleM` is `faVocab().mod` — 3.1 m for a 1900s apartment
        house, 8.0 m for a modern shed. One divisor, and a row house gets
@@ -1337,8 +1361,20 @@ export function buildingsMesh(
         const from = rows[k + 1].h;
         const to = Math.min(hMFull, rows[k].h);
         if (!(to > from)) continue;
+        /* ── AND ITS SIDES GO ON THE WALL, NOT ON THE ROOF ────────────
+           `roof-form.ts` §A STEP'S SIDE IS A WALL has the measurement: every
+           stepped tower downtown was drawing its setbacks as blank prisms
+           while its own podium, two metres below, drew a full window grid.
+           The vocabulary is the FRONT's, because a setback is above the
+           street and every face of it is seen. */
+        quadInto = idxWall[tileFor[ROLE_FRONT]];
         const okStep = stepForm(sink, ring, tb.cx[i], tb.cy[i], rows[k].share,
-                                elev, from, to, wc, rc);
+                                elev, from, to, wc, rc, {
+                                  vertexUV: pushVert,
+                                  tri: wallTri,
+                                  bayM,
+                                  vPerM: storeys / Math.max(1e-3, wallH),
+                                });
         if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
           const g = globalThis as { __cityGLStep?: { tried: number; drew: number } };
           g.__cityGLStep ??= { tried: 0, drew: 0 };
@@ -1853,6 +1889,11 @@ export function buildingsLayer(
   /* ONE ATLAS FOR THE CITY. Eight tiles, built once here and shared by every
      chunk — a per-chunk atlas would be 124 copies of the same eight images. */
   const atlas = o.atlas ?? facadeAtlas();
+  /* DEV-ONLY, the `__cityWA` idiom: the sheet itself, so a harness can look
+     at what the vocabulary actually drew rather than at what it meant to. */
+  if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
+    (globalThis as { __cityGLAtlas?: unknown }).__cityGLAtlas = atlas;
+  }
   /* ── AND THE CITY'S OWN LEGEND FOR THE ROWS NO ROLL ROW REACHES ────────
      `materials.legend` is the modular path and a caller may pass one. Where
      it does not, the numbers are read off the city's OWN manifest, which is

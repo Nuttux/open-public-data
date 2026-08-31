@@ -992,6 +992,67 @@ function drawTile(g: CanvasRenderingContext2D, px: number, tile: number): void {
     rect(a0, a1, b0 + (b1 - b0) * 0.54 - rh, b0 + (b1 - b0) * 0.54 + rh);
   };
 
+  if (tile === TILE_CURTAIN) {
+    /* ── A CURTAIN WALL IS A FRAME, NOT A WINDOW IN A WALL ────────────
+       It used to fall through to the post-war branch below and come out as
+       one wide light across 90 % of the bay, which over a whole tower is a
+       near-uniform multiply — and that is why the glass towers downtown read
+       as flat coloured slabs standing next to punched-window blocks that read
+       fine.
+
+       Drawing the glass DARKER did not fix it, and the reason is `levelTile`
+       three hundred lines up. It lands every tile on one mean darkness so the
+       vocabularies are not eight different exposures of the same material
+       table, and it does that by pulling every texel toward white by a single
+       factor. On a sparse tile that factor is clamped at 1 and nothing moves.
+       On a tile that is dark over its WHOLE area it comes out near 0.27, and
+       since the same factor scales the tile's contrast as well as its mean,
+       the mullions and the spandrel are crushed along with the glass. A full
+       coverage tile cannot win an argument with a mean.
+
+       It does not need to. The wall's palette entry for a post-war tower is
+       already a pale blue-grey, and on a reflective curtain wall THAT IS THE
+       GLASS — the wall does not sit behind the window, the wall IS the
+       window. So the field is left exactly alone, which is what white means
+       in this file, and the only marks are the frame hung on it:
+
+         a SPANDREL over each floor slab, opaque and darker than the glass —
+         the horizontal banding every glass tower in this city is read by;
+
+         MULLIONS, dark anodised aluminium, which is what a curtain grid
+         actually looks like against reflective glass from across a street;
+
+         and the slab's own shadow line under the spandrel.
+
+       DECLARED like every other mark in this file: the roll publishes that a
+       building is a post-war office and nothing at all about its grid. */
+    const dk = (a2: number): string => `rgba(0, 0, 0, ${a2})`;
+
+    /* THE SPANDREL. A floor band is about 3.6 m and the panel over the slab
+       about 0.95 of it, which is the proportion that reads as banding rather
+       than as a window strip. */
+    const sp = Math.min(0.42, Math.max(0.16, 0.95 / w.bandM));
+    g.fillStyle = dk(0.30);
+    rect(0, 1, 0, sp);
+    /* the slab edge under it, where the floor plate throws its own shadow */
+    g.fillStyle = dk(0.46);
+    rect(0, 1, 0, Math.max(1 / px, 0.07 / w.bandM));
+
+    /* THE MULLIONS. A curtain module is about 1.5 m and this class's bay is
+       several times that, so the bay is divided rather than mullioned only on
+       its own line — one line every 5 m is not a curtain wall. `lites` is the
+       count that lands the module nearest 1.5 m, bounded so a tile never
+       carries more lines than it has texels to draw them with. */
+    const lites = Math.max(1, Math.min(6, Math.round(mod / 1.5)));
+    const mw = Math.max(1 / px, 0.075 / mod);
+    g.fillStyle = dk(0.26);
+    for (let k = 0; k <= lites; k++) {
+      const c = k / lites;
+      rect(Math.max(0, c - mw), Math.min(1, c + mw), sp, 1);
+    }
+    return;
+  }
+
   if (p.fam === "victorian") {
     /* ── PAIRED AND UPRIGHT, UNDER A HEAVY HEAD ──────────────────────
        Two narrow lights with a pier between, taller than they are wide, and
@@ -1402,8 +1463,8 @@ export function wallJitter(gid: number): number {
  * pale aerial mean.
  */
 const SHINGLE_HEX: readonly string[] = [
-  "#4b4a46", "#585049", "#4e5450", "#4c545e",
-  "#635a4e", "#414346", "#6a635a", "#55504b",
+  "#4b4a46", "#585049", "#485049", "#4a5460",
+  "#635a4e", "#3d4043", "#6d665c", "#54504c",
 ];
 
 /**
@@ -1447,9 +1508,27 @@ export function roofFamilyRGB(
   const set = fam === "revival" ? FAM_TILE : FAM_SHINGLE;
   const h = mix32(gid ^ 0x7f4a7c15);
   const t = set[h % set.length];
-  /* the amount travels too, so a family is a spread and not eight stripes —
-     `wallFamilyRGB` §the amount travels too */
-  const k = ROOF_FAMILY_MIX * (0.55 + 0.45 * (((h >>> 9) & 1023) / 1023));
+  /* ── AND THE AMOUNT BARELY TRAVELS, WHICH IS THE OPPOSITE OF THE WALL ──
+     `wallFamilyRGB` lets its mix run from 0.4 to 1.0 of the family strength,
+     and on a wall that is right: the eight tints are all pale, so a short
+     travel reads as a paler version of the same tint and the spread is still
+     a spread.
+
+     A roof's materials are DARK and some of them are saturated, and a short
+     travel toward one does not read as a paler shingle — it reads as the
+     base, which is the pale aerial grey this exists to get away from.
+     MEASURED against a typical entry after `roofTone` (#b4b0a6):
+
+       terracotta #8a4e33   at 0.52 -> #a0887c   a dusty pink
+                            at 0.94 -> #8d5842   clay
+       charcoal   #4b4a46   at 0.52 -> #8a8780   pale grey
+                            at 0.94 -> #565550   shingle
+
+     So the travel is nearly fixed and the SPREAD comes from the palette,
+     which is where a material difference belongs. 0.80 to 0.94 of the
+     family strength; the measured entry still contributes between a
+     twentieth and a fifth. */
+  const k = ROOF_FAMILY_MIX * (0.85 + 0.15 * (((h >>> 9) & 1023) / 1023));
   return [
     base[0] + (t[0] - base[0]) * k,
     base[1] + (t[1] - base[1]) * k,
