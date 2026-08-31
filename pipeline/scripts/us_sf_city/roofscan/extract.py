@@ -20,6 +20,9 @@ from scipy.ndimage import (median_filter, binary_erosion, label,
                            find_objects, uniform_filter)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+#  the working rasters are GIGABYTES and disposable — `city.py` rebuilds them
+#  from AWS — so they live outside the repo and their location is a setting.
+RASTER = os.environ.get("ROOFSCAN_RASTER", HERE)
 LON0, LAT0, MPD, COSL = -122.438, 37.76, 111320.0, 0.790582709628753
 _TO = Transformer.from_crs("EPSG:4326", "EPSG:3857", always_xy=True)
 _FROM = Transformer.from_crs("EPSG:3857", "EPSG:4326", always_xy=True)
@@ -92,16 +95,25 @@ class AreaSource:
 class CitySource:
     """the memory-mapped citywide raster from city.py"""
     def __init__(self):
-        m = json.load(open(os.path.join(HERE, "city_raster.json")))
+        m = json.load(open(os.path.join(RASTER, "city_raster.json")))
         self.nx, self.ny, self.cell = m["nx"], m["ny"], m["cell"]
         self.x0, self.y0, self.q, self.datum = m["x0"], m["y0"], m["quant"], m["datum"]
-        self.D = np.memmap(os.path.join(HERE, "city_dsm.u16"), np.uint16, "r", shape=(self.ny, self.nx))
-        self.G = np.memmap(os.path.join(HERE, "city_dtm.u16"), np.uint16, "r", shape=(self.ny, self.nx))
+        self.D = np.memmap(os.path.join(RASTER, "city_dsm.u16"), np.uint16, "r", shape=(self.ny, self.nx))
+        self.G = np.memmap(os.path.join(RASTER, "city_dtm.u16"), np.uint16, "r", shape=(self.ny, self.nx))
 
     def covers(self, mx0, my0, mx1, my1):
-        return (mx0 >= self.x0 and my0 >= self.y0
+        if not (mx0 >= self.x0 and my0 >= self.y0
                 and mx1 <= self.x0 + self.nx*self.cell
-                and my1 <= self.y0 + self.ny*self.cell)
+                and my1 <= self.y0 + self.ny*self.cell):
+            return False
+        #  ...and the raster is built tile by tile over hours, so "inside the
+        #  extent" is not "scanned yet". One probe at the centre costs nothing
+        #  and skips every footprint in a tile the pull has not reached, which
+        #  is what makes a PARTIAL raster usable instead of a whole-city gate.
+        i = int(((mx0+mx1)/2 - self.x0)/self.cell)
+        j = int(((my0+my1)/2 - self.y0)/self.cell)
+        if not (0 <= i < self.nx and 0 <= j < self.ny): return False
+        return bool(self.D[j, i] > 0)
 
     def patch(self, mx0, my0, mx1, my1):
         i0 = int((mx0-self.x0)/self.cell); j0 = int((my0-self.y0)/self.cell)

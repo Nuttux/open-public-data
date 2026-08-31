@@ -19,6 +19,23 @@ per click. Nothing else changes.
 Everything is under `blocks/out/`. Build with `python3 build_index.py` (offline apart
 from the one-off `fetch_leafmap.py` scandata fetch).
 
+> **THE PUBLISHED BUILD NEEDS BOTH CACHES, AND THE DEFAULT IS ONLY ONE.**
+> `ITEMS` defaults to `blocks/cache/items.jsonl`, which is the Internet
+> Archive's volumes and **stops at 2016**. The Clerk's own minutes, 2017–2026,
+> are a second cache at `cache_sfbos/items.jsonl`. A build with the default
+> completes, passes every gate, and silently publishes a map that ends in 2016 —
+> 14,500 marks instead of 16,468. Concatenate them first:
+>
+> ```sh
+> cat ../cache_sfbos/items.jsonl >> /tmp/items_merged.jsonl   # after the historic
+> BLOCKS_ITEMS=/tmp/items_merged.jsonl python3 build_index.py
+> ```
+>
+> Then publish `out/` into `website/public/data/us/sf/city/blocks/` and re-run
+> `build_theme_marks.py` — the marks index into the shard rows by position, so
+> shards published without rebuilding the marks leaves every `r` pointing at the
+> wrong row. `verify_all.py` catches exactly that and did.
+
 | tier | file | raw | gzip | when it loads |
 |---|---|---|---|---|
 | T0 | `block-index.json` | 123 KB | **36 KB** | **first paint, once** |

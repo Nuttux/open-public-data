@@ -36,6 +36,8 @@ LON0, LAT0, MPD, COSL = -122.438, 37.76, 111320.0, 0.790582709628753
 DM = 10.0          # decimetres per metre
 BOX_MAX_DM = 255   # one byte, 25.5 m
 CLUTTER_CAP = 8    # boxes kept per building, largest first
+ROOF_MIN_Z = 4.0   # the zoom a rooftop object first covers a pixel — the same
+                   # floor `base/solo-face` takes for the facade detail
 
 
 def merc_to_world(mx, my):
@@ -175,17 +177,30 @@ def merge_manifest(entries, city_dir: str = CITY):
     """
     mp = os.path.join(city_dir, "manifest.json")
     m = json.load(open(mp))
-    #  a roof chunk is only ever asked for when its own footprints are, so it
-    #  inherits the zoom floor and the extent of the bldg chunk it mirrors —
-    #  without that it reads as a chunk the whole-city frame needs.
+    #  ── A DETAIL COMPANION TAKES ITS OWN FLOOR, NOT ITS HOST'S ────────────
+    #  The first cut inherited tier and minZ from the bldg chunk each roof
+    #  mirrors. For `base/solo` that is tier `base`, minZ 0 — so the WHOLE-CITY
+    #  frame fetched roof clutter, and data.test.ts caught it against the base
+    #  tier's byte ceiling. It is right to: a 2 m plant box is far under a pixel
+    #  at that zoom and can never be shown there.
+    #
+    #  `base/solo-face` is the precedent. The facade companion for the same
+    #  solo buildings sits in tier `face` at minZ 4.0 rather than in `base`
+    #  with its host. Roof plant is at least as fine as a window, so it takes
+    #  the same floor and its own tier.
     host = {c["k"]: c for c in m["chunks"] if c.get("kind") == "bldg"}
     for e in entries:
         cell = e["k"].split("/", 1)[1]
         h = host.get("base/solo" if cell == "solo" else f"bldg/{cell}")
-        if h:
-            e["minZ"] = h.get("minZ", 0.0)
-            e["tier"] = h.get("tier", "bldg")
-            if h.get("e") is not None: e["e"] = h["e"]
+        e["tier"] = "roof"
+        e["minZ"] = ROOF_MIN_Z
+        if h and h.get("e") is not None: e["e"] = h["e"]
+    m.setdefault("tiers", {})["roof"] = {
+        "chunks": len(entries),
+        "bytes": sum(e["b"] for e in entries),
+        "gzipBytes": sum(e["gz"] for e in entries),
+        "minZ": ROOF_MIN_Z,
+    }
     keep = [c for c in m["chunks"] if c.get("kind") != "roof"]
     m["chunks"] = keep + entries
     m.setdefault("kinds", {})["roof"] = {

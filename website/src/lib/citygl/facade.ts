@@ -1014,6 +1014,92 @@ export function wallTint(key: FacadeKey, hash: number): WallTint {
  * Pure integer arithmetic on the id: the same building is the same value in
  * every session, at every zoom, in every year.
  */
+/**
+ * THE BLOCKFACE IS ONE COLOUR, AND THE JITTER WAS NEVER GOING TO FIX IT.
+ *
+ * MEASURED over 11,026 sixty-metre cells holding eight or more buildings: the
+ * material table has 24 entries, a cell gets a median of **3**, and on
+ * **20.2 %** of them a SINGLE key covers every building. The key is use class,
+ * year band and storey band — and every house on a Sunset blockface shares all
+ * three, so the table hands them one colour and `wallTint` moves each of them
+ * a few per cent around it. A spread around one entry cannot make a blockface
+ * that reads as separate buildings; only a different entry per building can.
+ *
+ * ── WHAT IS BEING ASSERTED, AND WHAT IS NOT ─────────────────────────────
+ * NOT that a given house is pink. The record does not say what colour a wall
+ * is and no aerial photograph can see one — the imagery `paintIdx` comes from
+ * looks straight down and measures ROOFS. This is a declared treatment on a
+ * table that is itself a lookup rather than a measurement.
+ *
+ * What it does assert is that neighbouring houses of the same class are
+ * DIFFERENT colours, which is true of this city in a way the single-entry
+ * blockface is not. San Francisco's painted stock is the most photographed
+ * thing about it; drawing a street of it in one grey is the less faithful of
+ * the two errors available.
+ *
+ * The table entry stays the anchor: each building blends toward one of eight
+ * tints by a hash-chosen fraction, the fractions are small at the low end so
+ * the family still reads as one material, and the draw is on `gid` so the same
+ * house is the same colour in every session and every year.
+ */
+const WALL_FAMILY_HEX: readonly string[] = [
+  "#f2ece0", // off-white stucco
+  "#efdfae", // cream
+  "#e9c88c", // ochre
+  "#e0a99a", // dusty rose
+  "#cf8f7a", // terracotta
+  "#9fb3b8", // pale blue-grey
+  "#aebba0", // sage
+  "#8f8378", // taupe
+];
+
+/**
+ * The family in the RENDERER'S WORKING SPACE, which is linear and not sRGB.
+ *
+ * The first cut wrote these as plain fractions — `[0.98, 0.95, 0.88]` and the
+ * rest — and blended them straight into `wallRGB`, which `layers/buildings.ts`
+ * builds through `toRGB` and is therefore LINEAR. An sRGB fraction read as a
+ * linear one lands far brighter and far less saturated than it looks, so a
+ * blend toward "dusty rose" arrived as a blend toward white: measured on the
+ * page, frame saturation went DOWN 29.4 % to 28.2 % when the whole point was
+ * to raise it. `terrain.ts` §sRGB IN, LINEAR OUT is the same trap from the
+ * other end.
+ */
+function srgbToLinear(c: number): number {
+  return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+}
+const WALL_FAMILY: readonly (readonly [number, number, number])[] =
+  WALL_FAMILY_HEX.map((h) => {
+    const n = parseInt(h.slice(1), 16);
+    return [
+      srgbToLinear(((n >> 16) & 255) / 255),
+      srgbToLinear(((n >> 8) & 255) / 255),
+      srgbToLinear((n & 255) / 255),
+    ] as const;
+  });
+
+/** how far a building may travel from its table entry toward its tint */
+export const WALL_FAMILY_MIX = 0.72;
+
+/**
+ * One building's wall colour: its material, moved toward one of the family.
+ * `base` is the palette entry in the renderer's working (linear) space.
+ */
+export function wallFamilyRGB(
+  base: readonly [number, number, number],
+  gid: number,
+): [number, number, number] {
+  const h = mix32(gid ^ 0x2545f491);
+  const t = WALL_FAMILY[h % WALL_FAMILY.length];
+  /* the amount travels too, so a family is a spread and not eight stripes */
+  const k = WALL_FAMILY_MIX * (0.4 + 0.6 * (((h >>> 8) & 1023) / 1023));
+  return [
+    base[0] + (t[0] - base[0]) * k,
+    base[1] + (t[1] - base[1]) * k,
+    base[2] + (t[2] - base[2]) * k,
+  ];
+}
+
 export function wallJitter(gid: number): number {
   return 1 + tri(gid) * FACADE_TINT_V;
 }

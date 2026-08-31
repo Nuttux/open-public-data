@@ -96,6 +96,7 @@ import {
   facadeGroundTile,
   facadeModuleM,
   facadeTile,
+  wallFamilyRGB,
   wallTint,
   type FacadeAtlas,
   type FacadeKey,
@@ -868,7 +869,12 @@ export function buildingsMesh(
        renderer's own table entry, which is what the Canvas path also does at
        `ri` / `wi`. */
     const rc = roofRGB[mat.roof[i] * 4 + mat.shade[i]] ?? [0.6, 0.58, 0.54];
-    const wc = wallRGB[mat.wall[i]] ?? [0.78, 0.72, 0.62];
+    /* THE TABLE ENTRY IS THE ANCHOR, NOT THE ANSWER. One key covers every
+       building on a fifth of this city's blocks — `facade.ts` §the blockface
+       is one colour has the measurement — so each footprint moves from its
+       material toward one of eight tints, on a draw keyed to its own gid. */
+    const wc0 = wallRGB[mat.wall[i]] ?? [0.78, 0.72, 0.62];
+    const wc = wallFamilyRGB(wc0 as [number, number, number], tb.gid[i]);
     if (probe) {
       probe.v0.push(s * 3 + c * 2);
       probe.vn.push(c);

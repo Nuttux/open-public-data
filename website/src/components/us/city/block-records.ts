@@ -97,6 +97,39 @@ export interface BlockDecision {
    * bitwise operators coerce to int32 and would drop bits 32-40 in silence.
    */
   readonly sm?: number;
+  /**
+   * WHAT THIS RECORD IS, and WHAT THE BOARD DID — indices into
+   * `blocks/classify.json`'s `sub` and `act`.
+   *
+   * Read in the pipeline from `sf_bos_classification.csv`, against the item's
+   * FULL text, and joined on here. `t` above is a fragment of that item — a
+   * median of 154 characters — so it frequently cannot say what the record is
+   * even when shown whole; these two can.
+   *
+   * NOT the same idea as `sm`, and the difference is the point. `sm` is a set
+   * of PATTERNS that matched somewhere in the item, so printing one above a
+   * fragment shows a reader a label with no basis in the words underneath —
+   * measured at 61% of the labels that were shown that way. These are a
+   * STATEMENT about the record, which is what a heading has to be.
+   *
+   * `ca` is absent where the action is `other`; it renders as "Something
+   * else", which is a non-answer, and a row with no clear verb is better
+   * publishing its subject alone.
+   */
+  readonly cs?: number;
+  readonly ca?: number;
+}
+
+/** `blocks/classify.json` — the two vocabularies `cs` and `ca` index. */
+export interface ClassifyFile {
+  readonly sub: readonly string[];
+  readonly act: readonly string[];
+}
+
+let classifyPromise: Promise<ClassifyFile | null> | null = null;
+export function loadClassify(): Promise<ClassifyFile | null> {
+  if (!classifyPromise) classifyPromise = loadSoft<ClassifyFile>(`${BASE}/classify.json`);
+  return classifyPromise;
 }
 
 export interface BlockShardEntry {

@@ -111,6 +111,7 @@ import type { SearchHit } from "@/lib/us/city-search";
 import {
   blockPlaceName,
   ficheParams,
+  loadClassify,
   sourceHref,
   stripFileNumber,
   usdShort,
@@ -120,6 +121,7 @@ import {
   type BlockDecision,
   type BlockIndex,
   type BlockRecord,
+  type ClassifyFile,
   type FicheLink,
 } from "@/components/us/city/block-records";
 import { roofPalette, wallPalette } from "@/components/us/city/palette";
@@ -253,6 +255,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
   /* the listener is made once, so what it reads has to be a ref and not a
      value captured on the render that made it */
   const themesRef = useRef<ThemeEntry[] | null>(null);
+  const classifyRef = useRef<ClassifyFile | null>(null);
   const yearRef = useRef<number | null>(null);
   const [markCard, setMarkCard] = useState<{
     hit: MarkHit;
@@ -763,7 +766,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          identical extrusions into a city with fronts and backs, and it is
          fetched in parallel with the footprints because neither blocks the
          other. */
-      await Promise.all([data.loadTier("bldg"), data.loadTier("face")]);
+      await Promise.all([data.loadTier("bldg"), data.loadTier("face"), data.loadTier("roof")]);
       if (disposed || !engine) return;
       /* ── §THE BORROWED YEAR MAY NOT OUTRUN THE REGISTER ────────────────
          `layers/buildings.ts` carries the reasoning. A city that ships no
@@ -1507,39 +1510,51 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         d.y >= y - half && d.y <= y + half,
     );
     if (!rows.length) return;
-    /* ── THE SUBJECT LABEL IS PULLED, AND THE MEASUREMENT IS WHY ────────
-       The card printed the rarest fiche subject from `sm` above each line.
-       `sm` is matched in the pipeline against the item's FULL text; the shard
-       carries a FRAGMENT of that item — median 154 characters, often mid
-       sentence. The two describe different things, so they routinely
-       disagree, and the disagreement is visible to the reader.
+    /* ── WHAT EACH LINE IS, FROM THE RECORD'S OWN CLASSIFICATION ────────
+       `cs` and `ca` are on the row now, joined in the pipeline from
+       `sf_bos_classification.csv` and read against the item's FULL text. They
+       are a STATEMENT about the record — "Parking · Ordered" — which is what a
+       heading has to be.
 
-       MEASURED over all 16,468 themed decisions: a label was printed on
-       11,671 of them, and on 7,127 — 61% — no part of the line beneath it
-       supports the label. "Street Lights — Van Dyke avenue and Keith street"
-       came up under the heading "Libraries". That is not a rough summary, it
-       is the card asserting something the reader can see is wrong, and it is
-       worse than saying nothing.
+       This replaced a label taken from `sm`, the fiche subjects. Those are
+       PATTERNS that matched somewhere in the item, and the shard publishes a
+       fragment of that item, so a reader was shown a heading with no basis in
+       the words underneath: 61% of them, measured, "Street Lights — Van Dyke
+       avenue and Keith street." under "Libraries". The classification says
+       `the-street / street-works` for that line, which is what it is.
 
-       Guarding it — printing the label only where the line does support it —
-       was tried on paper and is backwards: it would keep the label on the 39%
-       where the line already says it and drop it on the 61% where a reader
-       actually needs one.
-
-       The label comes back when the shard carries the CLASSIFICATION, which
-       is one statement about the record rather than a pattern to be hunted
-       for in a fragment: `sf_bos_classification.csv` has a topic, subtopic
-       and action for all 124,284 records, 99.3% of decisions, computed
-       against the full text. Checked on the two lines above: the street-work
-       line classifies as `the-street / street-works / appropriated`, which is
-       exactly what it is. That is a `build_index.py` join and a shard
-       rebuild. */
+       The action is absent where it was `other`, so a row with no clear verb
+       shows its subject alone rather than the subject plus a shrug. */
+    const cf = classifyRef.current
+      ?? (classifyRef.current = await loadClassify().catch(() => null));
+    /* NOT WHEN THE SUBJECT ONLY REPEATS THE CARD'S OWN TITLE. A landmark
+       press classifies as "Landmarks and old buildings", under a card headed
+       "Landmarks & old buildings" — a whole line spent saying nothing. The
+       card already names the subject; what it has not said is what the Board
+       DID, so the verb carries the line on its own there. */
+    const same = (a: string, b: string): boolean => {
+      /* connectors out before comparing: the taxonomy writes "Landmarks AND
+         old buildings" and the map's seed writes "Landmarks & old buildings",
+         so a bare letters-only compare misses the very case this exists for */
+      const n = (x: string) =>
+        x.toLowerCase().replace(/\b(and|the|of|a)\b/g, "").replace(/[^a-z]+/g, "");
+      const [x, y] = [n(a), n(b)];
+      return x.length > 3 && y.length > 3 && (x.includes(y) || y.includes(x));
+    };
+    const says = (d: BlockDecision): string | null => {
+      if (!cf || d.cs === undefined) return null;
+      const sub = cf.sub[d.cs];
+      if (!sub) return null;
+      const act = d.ca === undefined ? null : cf.act[d.ca];
+      if (same(sub, th?.label ?? "")) return act;
+      return act ? `${sub} · ${act}` : sub;
+    };
     setMarkCard({
       hit,
       label: th?.label ?? "",
       ink: THEME_INK[hit.bit % THEME_INK.length],
       place: blockPlaceName(rec.streets) ?? index.b[hit.block] ?? "",
-      rows: rows.map((d) => ({ d, says: null })),
+      rows: rows.map((d) => ({ d, says: says(d) })),
       year: y,
     });
   }, []);

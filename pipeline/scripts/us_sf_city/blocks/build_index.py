@@ -23,7 +23,7 @@ on this street":
 NEVER INVENTED: an item that resolves to no block is written to out/unplaced.json
 with its reason, not guessed onto a block.
 """
-import collections, json, math, os, re, sys, unicodedata
+import collections, csv, json, math, os, re, sys, unicodedata
 
 import importlib.util
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -32,7 +32,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 # BLOCKS_ITEMS / BLOCKS_OUT / BLOCKS_JOINED keep exactly the meaning they had:
 # they let a build run SIDE BY SIDE with the published one and be diffed, rather
 # than the published output being overwritten to find out what a change did.
-from _paths import ANIM, GEO, MIN, CACHE, OUT, ITEMS, JOINED  # noqa: F401
+from _paths import ANIM, GEO, MIN, CACHE, OUT, ITEMS, JOINED, REPO  # noqa: F401
 # The city-free half of the build. See pipeline/scripts/citymap/__init__.py.
 sys.path.insert(0, os.path.abspath(os.path.join(
     os.path.dirname(os.path.abspath(__file__)), "..", "..")))
@@ -936,6 +936,55 @@ def main():
         for bn in hits:
             by_block[bn].append((sc, did, tier))
 
+    # ------------------------------------------------- what each record IS
+    # THE LINE THE SHARD PUBLISHES IS A FRAGMENT, AND THAT IS THE WHOLE REASON
+    # THIS JOIN EXISTS. `t` below is a heading or the sentence an address sits
+    # in — a median of 154 characters cut out of an item with a median of 520 —
+    # so a reader looking at one often cannot tell what the Board did. Measured
+    # on the published shards: 68% of those lines are too long to show whole,
+    # and a good number say nothing even in full ("As defined herein; and
+    # ratifying and approving any action heretofore taken...").
+    #
+    # `sf_bos_classification.csv` answers exactly that question for all 124,284
+    # records, read against the FULL text: a subtopic (what it is about) and an
+    # action (what the Board did). Joining it here puts one honest sentence on
+    # every row instead of leaving the browser to guess from a fragment.
+    #
+    # NOT `sm`, WHICH WAS TRIED AND PULLED. The fiche subjects are patterns
+    # matched against the full item, so a reader shown one above a fragment
+    # sees a label with no basis in the words underneath: 61% of them, measured
+    # — "Street Lights - Van Dyke avenue and Keith street." under the heading
+    # "Libraries". A classification is a statement ABOUT the record; a pattern
+    # is something the reader will look for and fail to find.
+    CLS_PATH = os.path.join(REPO, "pipeline/seeds/sf_bos_classification.csv")
+    CLS = {}
+    CSUB, CACT = [], []
+    if os.path.exists(CLS_PATH):
+        _tax = json.load(open(os.path.join(REPO, "pipeline/seeds/sf_bos_taxonomy.json")))
+        _sub = {s["slug"]: s["label"] for t in _tax["topics"] for s in t["subtopics"]}
+        _act = {a["slug"]: a["label"] for a in _tax["actions"]}
+        _si, _ai = {}, {}
+        with open(CLS_PATH) as _f:
+            for _r in csv.DictReader(_f):
+                if _r["record_type"] != "decision":
+                    continue
+                _s = _r["subtopic"]
+                _a = _r["action"]
+                # ACTION `other` IS NOT AN ANSWER. It renders as "Something
+                # else", which is a non-answer wearing the shape of one; 9.6%
+                # of lit rows carry it. Dropped here so the row publishes the
+                # subject alone rather than the subject plus a shrug.
+                if _a == "other":
+                    _a = ""
+                if _s and _s not in _si:
+                    _si[_s] = len(CSUB); CSUB.append(_sub.get(_s, _s))
+                if _a and _a not in _ai:
+                    _ai[_a] = len(CACT); CACT.append(_act.get(_a, _a))
+                if _s or _a:
+                    CLS[_r["id"]] = (_si.get(_s, -1), _ai.get(_a, -1))
+    print(f"  classification: {len(CLS):,} decisions, "
+          f"{len(CSUB)} subtopics, {len(CACT)} actions")
+
     # ------------------------------------------------------------ the theme
     # WHAT THE DECISION IS ABOUT, read from the ITEM and not from the line that
     # will be published for it. themes.py says why at length; the short version
@@ -1294,6 +1343,16 @@ def main():
         out = {"y": r["y"], "d": (r["dt"] or "")[5:], "k": r["k"], "p": tier,
                "f": PHASE_ORDER[ph], "a": int(shown) if shown >= 100 else 0, "u": u,
                "t": line, "g": src}
+        # WHAT THIS RECORD IS, in two indices into `classify.json`. Absent
+        # where the classification has neither, which is 0.2% of lit rows —
+        # written as indices and omitted at -1 for the same reason `m` is
+        # omitted at zero: a field that says nothing should not cost bytes.
+        _cs = CLS.get(f'{r["v"]}|{r["i"]}')
+        if _cs:
+            if _cs[0] >= 0:
+                out["cs"] = _cs[0]
+            if _cs[1] >= 0:
+                out["ca"] = _cs[1]
         # THE THEME MASK, and it is absent when it is zero. Two thirds of rows
         # match nothing, so writing `"m":0` on all of them would cost bytes to
         # say nothing — and every byte published before this existed stays
@@ -1485,6 +1544,17 @@ def main():
         "b": [b["b"] for b in blocks],
         "x": [round(b["cx"], 1) for b in blocks],
         "y": [round(b["cy"], 1) for b in blocks]})
+    W("classify.json", {
+        "meta": {"generated_by": "pipeline/scripts/us_sf_city/blocks/build_index.py",
+                 "seed": "pipeline/seeds/sf_bos_classification.csv",
+                 "what": "what each decision IS, joined onto every shard row as "
+                         "`cs` (subject) and `ca` (what the Board did)",
+                 "read_against": "the item's full source text, not the published line",
+                 "n_decisions": len(CLS),
+                 # THE ACTION `other` IS NOT PUBLISHED. It renders as "Something
+                 # else"; a row with no clear verb publishes its subject alone.
+                 "action_other_is_dropped": True},
+        "sub": CSUB, "act": CACT})
     W("themes.json", {
         "meta": {"generated_by": "pipeline/scripts/us_sf_city/blocks/build_index.py",
                  "seed": "pipeline/seeds/sf_decision_themes.json",
