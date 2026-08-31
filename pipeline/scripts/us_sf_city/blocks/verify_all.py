@@ -272,6 +272,47 @@ def main() -> int:
         return True, (f"{sum(want.values()):,} of {n_dec:,} decisions, "
                       "topic and decade both over decisions")
 
+    # ── THE WRITTEN LINES ────────────────────────────────────────────────
+    @gate("plain lines: register, and no private name after 1975",
+          "these sentences are OURS, not the Board's, and they sit on a public "
+          "map: a line outside the register is unreadable, and a named private "
+          "person beside their own address is the one mistake with a cost to "
+          "somebody who never asked to be on it")
+    def _plain():
+        import re
+        path = os.path.join(REPO, "pipeline/data/sf_bos/plain_lines.jsonl")
+        if not os.path.exists(path):
+            return True, "no lines written yet"
+        rows = [json.loads(l) for l in open(path) if l.strip()]
+        if not rows:
+            return True, "no lines written yet"
+        blank = [r for r in rows if not r.get("line", "").strip()]
+        wc = [len(r["line"].split()) for r in rows]
+        # the register is 6-11 words; a couple either side is drift, a mass of
+        # them is the register quietly changing under us
+        out_of_band = [n for n in wc if n < 5 or n > 14]
+        # A private person is NAMED, not merely mentioned: an explicit title, or
+        # a possessive that only a person takes. Officials and honorees are
+        # named on purpose and carry a role word, so they are not matched here.
+        PERSON = re.compile(r"\b(Mr|Mrs|Ms|Miss)\.")
+        ROLE = re.compile(r"\b(Supervisor|Mayor|Clerk|Director|Commissioner|"
+                          r"Board|Department|Committee|Company|Association)\b")
+        named = [r for r in rows
+                 if str(r.get("y", "")).isdigit() and int(r["y"]) >= 1975
+                 and PERSON.search(r["line"]) and not ROLE.search(r["line"])]
+        bad = []
+        if blank:
+            bad.append(f"{len(blank)} blank")
+        if len(out_of_band) > len(rows) // 50:
+            bad.append(f"{len(out_of_band)} outside 5-14 words")
+        if named:
+            bad.append(f"{len(named)} name a private person after 1975: "
+                       f"{named[0]['line'][:60]!r}")
+        wc.sort()
+        return (not bad), ("; ".join(bad) or
+                           f"{len(rows):,} lines, median {wc[len(wc)//2]} words, "
+                           "no private name after 1975")
+
     print()
     fails = [n for n, ok, _ in RESULTS if not ok]
     if fails:
