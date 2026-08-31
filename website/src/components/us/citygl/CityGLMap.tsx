@@ -21,6 +21,7 @@ import { projection } from "@/lib/city/projection";
 import { CityEngine } from "@/lib/citygl/engine";
 import { CITY_SYSTEMS } from "@/lib/citygl/systems";
 import CityRecordPanel from "./CityRecordPanel";
+import { markHotLayer, type MarkHotLayer } from "@/lib/citygl/layers/mark-hot";
 import { YearRecord, type YearDecision } from "@/lib/citygl/year-record";
 import type { CityDescriptor } from "@/lib/citygl/descriptor";
 import { loadFineDem, meshElevAt, terrainLayer } from "@/lib/citygl/layers/terrain";
@@ -276,6 +277,8 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
      the rail, and the record's own latest when they have not. §THE PRESENT IS
      NOT AN EMPTY YEAR in `year-record.ts`. */
   const [recordYear, setRecordYear] = useState<number | null>(null);
+  /* the ring that answers "which dot is this row" — `layers/mark-hot.ts` */
+  const hotRef = useRef<MarkHotLayer | null>(null);
   const [classify, setClassify] = useState<ClassifyFile | null>(null);
   const yearRef = useRef<number | null>(null);
   const [markCard, setMarkCard] = useState<{
@@ -1095,6 +1098,18 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
           for (const m of layer.meshes) engine.scene.add(m);
           engine.add(layer);
           marksRef.current = layer;
+          /* ── §THE LIST AND THE DOTS ARE ONE SET, AND NOW IT SHOWS ───────
+             The panel lists the decisions of a year and this layer draws the
+             same ones. Without a wire between them they were two lists that
+             happened to agree. Hovering a row rings every place its decision
+             names — 2.11 of them on average, twenty-four at the extreme. */
+          const hot = markHotLayer({
+            scene: engine.scene,
+            elevAt: groundAt,
+            zex: descriptor.look.zexByStep[0],
+          });
+          engine.add(hot);
+          hotRef.current = hot;
           setThemes(
             vocab.t.map((t: ThemeEntry) => ({
               ...t,
@@ -2007,7 +2022,19 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
               classify={classify}
               loading={yearRowsBusy}
               hover={recordHover}
-              onHover={setRecordHover}
+              onHover={(i) => {
+                setRecordHover(i);
+                const d = i === null ? null : yearRows[i];
+                hotRef.current?.setAt(
+                  d ? d.at.map(([x, z]) => [x, z] as const) : null,
+                  subject === null
+                    ? undefined
+                    : Number(
+                        THEME_INK[subject % THEME_INK.length].replace("#", "0x"),
+                      ),
+                );
+                engineRef.current?.invalidate();
+              }}
               onOpen={(i) => {
                 const d = yearRows[i];
                 const eng = engineRef.current;
