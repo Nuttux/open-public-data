@@ -290,6 +290,17 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
      the rail, and the record's own latest when they have not. §THE PRESENT IS
      NOT AN EMPTY YEAR in `year-record.ts`. */
   const [recordYear, setRecordYear] = useState<number | null>(null);
+  /* ── §THE SHEET, ON A PHONE ────────────────────────────────────────────
+     The record sits under the map in a panel of its own height. Collapsed,
+     it is the handle alone and the city has the screen; open, it is the
+     list. Two states rather than a free drag: a drag needs physics,
+     detents and a velocity model to feel right, and a tap that lands
+     exactly where it is aimed is worth more than a drag that nearly does.
+
+     It means nothing on a wide screen, where the record is a column beside
+     the map and has always been open. `fusion.css` only reads this inside
+     the phone query. */
+  const [sheetOpen, setSheetOpen] = useState(true);
   /* the ring that answers "which dot is this row" — `layers/mark-hot.ts` */
   const hotRef = useRef<MarkHotLayer | null>(null);
   const [classify, setClassify] = useState<ClassifyFile | null>(null);
@@ -1936,7 +1947,32 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         {/* the subjects moved into the century strip — §THE STRIP IS THE
             PAGE'S ONE ROW OF STATE, below */}
         </div>
-        <div className="fx-city-ledger">
+        <div className={`fx-city-ledger${sheetOpen ? "" : " is-shut"}`}>
+          {/* ── THE HANDLE IS THE YEAR ───────────────────────────────────
+              On a phone this is the top edge of the sheet, which is where
+              the thumb already is — so the year is under the thumb while
+              the city is above it and the list is below, and one gesture
+              moves all three. It is a button rather than a bar so it can be
+              tapped to fold the sheet away, and so a keyboard reaches it.
+              Hidden on a wide screen, where the record is a column and the
+              year is on the century strip. */}
+          <button
+            type="button"
+            className="fx-city-sheet-grab"
+            aria-expanded={sheetOpen}
+            onClick={() => setSheetOpen((v) => !v)}
+          >
+            <span className="fx-city-sheet-bar" aria-hidden="true" />
+            <span className="fx-city-sheet-yr">
+              {recordYear ?? year ?? YEAR_MAX}
+            </span>
+            <span className="fx-city-sheet-n">
+              {yearRows.length} {yearRows.length === 1 ? "decision" : "decisions"}
+            </span>
+            <span className="fx-city-sheet-x" aria-hidden="true">
+              {sheetOpen ? "▾" : "▴"}
+            </span>
+          </button>
           {/* the search moved onto the map — §THE FRONT DOOR IS ON THE MAP */}
           {/* ── THE DOT'S OWN ANSWER, AND IT IS NOT A FICHE ────────────────
               Ahead of the fiche because a press on a dot is a narrower

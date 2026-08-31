@@ -18915,6 +18915,85 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   }
   .theme-fusion .fx-city-record { max-height: none; min-height: 0; flex: 1; }
   .theme-fusion .fx-city-record-body { overscroll-behavior: contain; }
+
+  /* ── THE HANDLE, AND WHAT FOLDING IT GIVES BACK ──────────────────────
+     `CityGLMap.tsx` §THE SHEET, ON A PHONE. Open, the sheet is 45vh of
+     record; shut, it is this bar and the city has the screen — which is
+     what the time-lapse wants and what a fixed-height panel could not
+     give. The year rides the bar because that is where the thumb is: the
+     city changes above it and the list below, on one gesture. */
+  .theme-fusion .fx-city-sheet-grab {
+    display: flex; align-items: center; gap: 10px; width: 100%;
+    padding: 9px 15px 10px; border: 0; background: transparent;
+    cursor: pointer; text-align: left; font: inherit; flex: none;
+  }
+  .theme-fusion .fx-city-sheet-bar {
+    width: 30px; height: 4px; border-radius: 3px; flex: none;
+    background: color-mix(in srgb, var(--ink) 22%, transparent);
+  }
+  .theme-fusion .fx-city-sheet-yr {
+    font-family: var(--f-mono); font-size: 19px; font-weight: 600;
+    font-variant-numeric: tabular-nums; letter-spacing: -.02em; color: var(--ink);
+  }
+  .theme-fusion .fx-city-sheet-n {
+    font-size: 12px; color: color-mix(in srgb, var(--ink) 58%, transparent);
+  }
+  .theme-fusion .fx-city-sheet-x {
+    margin-left: auto; font-size: 12px;
+    color: color-mix(in srgb, var(--ink) 45%, transparent);
+  }
+  /* THE HANDLE ALREADY SAID IT. With the year and the count on the bar, the
+     panel's own header printed "2026 — 62 decisions" again three lines
+     below it. The handle keeps them, because it is the part that stays
+     visible when the sheet is folded; the header keeps the sentence that
+     says where the year came from. */
+  .theme-fusion .fx-city-record-count { display: none; }
+  .theme-fusion .fx-city-record-head { padding-top: 2px; }
+  .theme-fusion .fx-city-ledger.is-shut { max-height: none; }
+  .theme-fusion .fx-city-ledger.is-shut > *:not(.fx-city-sheet-grab) { display: none; }
+
+  /* ── AND SHOW IS THE FIRST THING TO GO AT THIS WIDTH ─────────────────
+     Zoom and SHOW were eating two rows off the bottom of the map. Rail,
+     bike and streets change how the city is DRAWN, which is a setting; on
+     390 px of screen a setting does not get a row of its own while the
+     subject of the page is fighting for one. */
+  .theme-fusion .fx-city-drawnas,
+  .theme-fusion .fx-city-shell:has(.fx-city-strip) .fx-city-drawnas { display: none; }
+
+  /* ── AND THE WHOLE THING FITS ON THE SCREEN ──────────────────────────
+     `--fx-city-h` is `min(74vh, 720px)`, which is right for a page you
+     scroll and wrong for one you operate. MEASURED at 390 x 844: map 557 +
+     clock 65 + chips 39 + sheet 380 = 1,041, so the record sat 200 px below
+     the fold and a reader dragging the year could not see the list it was
+     changing. That is the one thing this page is FOR.
+
+     The map takes what is left instead, so the city, the year, the subjects
+     and the record are all on screen at once and the page does not scroll
+     to use them. `dvh` rather than `vh` because a phone's toolbars come and
+     go and `vh` measures the tallest case, which puts the sheet under the
+     browser chrome. */
+  .theme-fusion .fx-city-shell,
+  .theme-fusion .fx-city-wrap {
+    /* Every term MEASURED at 390 x 844 rather than guessed: the site header
+       above the map is 90, the century strip's two rows are 65 + 39, and the
+       sheet is 45vh = 380. 90 + 65 + 39 + 380 = 574, so the map takes what
+       is left and the record's last row lands exactly on the fold.
+
+       The floor keeps a city on screen on a short window, where the honest
+       answer is that something has to scroll. */
+    /* svh, not dvh: the SMALL viewport is the one with the phone's toolbars
+       showing, so sizing to it means the sheet is reachable in the worst
+       case rather than only when the chrome has scrolled away. */
+    --fx-city-h: max(240px, calc(100svh - 574px));
+  }
+  /* AND THE STAGE'S OWN FLOOR HAD TO COME WITH IT. `.fx-city-stage` carries
+     `min-height: 380px`, which silently won over every value of
+     `--fx-city-h` below it — the variable computed 270 and the stage
+     measured 380 anyway. A floor written for the wide layout is not a floor
+     for a phone, where 380 px of map is most of the screen. */
+  .theme-fusion .fx-city-stage {
+    min-height: 240px;
+  }
 }
 .theme-fusion .fx-city-record-more {
   margin: 10px 8px 0; font-size: 12px; line-height: 1.45;
