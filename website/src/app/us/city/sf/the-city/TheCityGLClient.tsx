@@ -19,7 +19,7 @@ import dynamic from "next/dynamic";
 import { useCallback, useRef, useState } from "react";
 
 import SfSourceFooter from "@/components/us/SfSourceFooter";
-import CityEntry from "@/components/us/city/CityEntry";
+import CityEntryStrip from "@/components/us/city/CityEntryStrip";
 import type { TheCityPageData } from "./data";
 import type { CityDescriptor } from "@/lib/citygl/descriptor";
 import type { FilmScript } from "@/lib/citygl/film";
@@ -637,7 +637,11 @@ export default function TheCityGLClient({ data }: { data: TheCityPageData }) {
      because two things on this page are rendered off it: the front door's
      label, and the chrome. */
   const [film, setFilm] = useState<FilmPlayer | null>(null);
-  const door = useFilmDoor(film);
+  /* the film's own door. The entry no longer offers it — the century strip
+     does, where a reader who is already inside can choose it — so nothing
+     here reads this any more. Kept because `useFilmDoor` is what tracks
+     whether the film can play at all. */
+  void useFilmDoor(film);
 
   const openNote = useCallback(() => {
     const el = noteRef.current;
@@ -668,8 +672,26 @@ export default function TheCityGLClient({ data }: { data: TheCityPageData }) {
             until the film plays. */}
         <CityGLFilmChrome script={SF.film} film={film} />
 
+        {/* ── THE NUMBERS ARE PROOF, NOT INVITATION ────────────────────
+            They were on the entry plate, where nobody enters because of
+            them. Under the map they sit beside the method, which is the
+            same question asked twice: is this thing what it says it is. */}
+        <p className="fx-city-proof">
+          {t("us.sf.thecity.entry.meta")
+            .replace("{buildings}", nfInt.format(data.buildings))
+            .replace("{decisions}", nfInt.format(data.decisions))
+            .replace("{span}", data.span)}
+          <button type="button" className="fx-city-proof-x" onClick={openNote}>
+            {t("us.sf.thecity.entry.method")}
+          </button>
+        </p>
+
+        {/* ── THE ENTRY IS A STRIP, NOT A PLATE ────────────────────────
+            `CityEntryStrip.tsx` carries the reasoning. The short version:
+            the entry has one job, which is to say that none of this was
+            drawn by hand, and the plate was doing five. */}
         {intro ? (
-          <CityEntry
+          <CityEntryStrip
             kicker={t("us.sf.thecity.entry.kicker")}
             title={
               <>
@@ -677,68 +699,9 @@ export default function TheCityGLClient({ data }: { data: TheCityPageData }) {
                 <em>{t("us.sf.thecity.title.em")}</em>
               </>
             }
-            lede={t("us.sf.thecity.lede")}
-            ledeShort={t("us.sf.thecity.entry.lede_short")}
-            meta={
-              /* ── THREE FACTS OF ONE KIND ────────────────────────────────
-                 This line used to end "· drawn by the GPU (work in progress)".
-                 The other two items are facts about the RECORD — how much
-                 city, how many decisions — and that one was a fact about the
-                 renderer, which no reader has a use for. "Work in progress"
-                 also undercut trust at the exact moment the line was
-                 establishing it, and the caveat already lives beside
-                 Methodology where a reader who wants it will look.
-
-                 The third fact is the record's own SPAN, which the page
-                 already computes from the corpus rather than typing 1906. */
-              t("us.sf.thecity.entry.meta")
-                .replace("{buildings}", nfInt.format(data.buildings))
-                .replace("{decisions}", nfInt.format(data.decisions))
-                .replace("{span}", data.span)
-            }
-            /* ── TWO DOORS, AND THE MAP IS THE FIRST ─────────────────────
-               The film held the primary button, so the filled, black, obvious
-               action was *Watch · 1 min 37 s* and the map was the outlined
-               afterthought beside it. That asks a stranger for ninety-seven
-               seconds before they have seen anything work — the
-               highest-friction possible first move on a page whose whole
-               appeal is that it can be grabbed and dragged.
-
-               (An earlier note here recorded the opposite instruction, and it
-               was right at the time: the page had been built around the film
-               and never offered it. Both doors are on the plate now, so the
-               question is only which one is filled, and the answer is the one
-               that costs the reader nothing to try.)
-
-               The film keeps its runtime on its label, because that is the
-               one thing worth knowing before pressing something that takes
-               the page over for a minute and a half. */
-            primary={{
-              label: t("us.sf.thecity.entry.start"),
-              onClick: () => setIntro(false),
-            }}
-            secondary={
-              door.ready
-                ? {
-                    label:
-                      door.resumeLabel === "resume"
-                        ? t("us.sf.thecity.film.resume_film")
-                        : `${t("us.sf.thecity.film.watch")} · ${door.runtimeLabel}`,
-                    plays: true,
-                    onClick: () => {
-                      setIntro(false);
-                      door.play();
-                    },
-                  }
-                : undefined
-            }
-            alt={{
-              label: t("us.sf.thecity.entry.method"),
-              onClick: () => {
-                setIntro(false);
-                openNote();
-              },
-            }}
+            claim={t("us.sf.thecity.lede")}
+            closeLabel={t("us.sf.thecity.entry.dismiss")}
+            onClose={() => setIntro(false)}
           />
         ) : null}
       </div>

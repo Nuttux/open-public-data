@@ -181,6 +181,19 @@ export interface CityGLMapProps {
   onReady?: (engine: CityEngine, film: FilmPlayer | null) => void;
 }
 
+/**
+ * `1 min 37 s` from the film's own length, so the button cannot claim a
+ * runtime the script does not have. `CityGLFilmChrome` computes the same
+ * thing for its own chrome; this is the map's copy of one division rather
+ * than a prop threaded through for two numbers.
+ */
+function filmRuntime(f: FilmPlayer | null): string {
+  const total = f?.total ?? 0;
+  const m = Math.floor(total / 60000);
+  const sec = Math.round((total % 60000) / 1000);
+  return `${m} min ${String(sec).padStart(2, "0")} s`;
+}
+
 export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProps) {
   const hostRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -2260,7 +2273,18 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
                   }
                 }}
               >
-                {filmOn ? "Stop the tour" : "Take the tour"}
+                {/* ── THE FILM IS NOT A GENRE, IT IS A RUNTIME ──────────
+                    This said "Take the tour", and a tour is a walk through a
+                    place — this moves through TIME as much as space: eleven
+                    shots, each a different place and a different year out of
+                    the record. "Highlights" is nearer and sounds like a
+                    sports reel. So it does not name the genre at all. It says
+                    what happens and how long it takes, which is the one thing
+                    worth knowing before pressing something that takes the
+                    page over, and it matches what the entry used to say. */}
+                {filmOn
+                  ? "Stop"
+                  : `Watch · ${filmRuntime(filmRef.current)}`}
               </button>
             ) : null}
             {/* THE WAY BACK, AND ONLY WHEN THERE IS ONE. It used to read

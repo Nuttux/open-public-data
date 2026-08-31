@@ -4729,7 +4729,8 @@ const fr: Record<string, string> = {
   'us.sf.places.footer.coverage': 'The money figure is contract payments to vendors for work at the place; bond and permit amounts are not summed in (they double-count).',
   'us.sf.thecity.title.before': 'The city, ',
   'us.sf.thecity.title.em': 'drawn from its own records',
-  'us.sf.thecity.lede': 'Drag the year and the city rebuilds to it, with what the Board decided that year beside it. Press any dot to read the original page.',
+  'us.sf.thecity.lede': 'Nothing here was drawn by hand. Every building, street and decision comes from the city’s own public files, back to 1906.',
+  'us.sf.thecity.entry.dismiss': 'Close',
   'us.sf.thecity.entry.kicker': 'San Francisco',
   'us.sf.thecity.entry.start': 'Explore the map',
   /* the narrow plate, where `us.sf.thecity.lede` is hidden — see fusion.css */

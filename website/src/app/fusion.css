@@ -18766,6 +18766,23 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   .theme-fusion .fx-city-chips > * { flex: none; }
   .theme-fusion .fx-city-find { width: calc(100% - 28px); }
 }
+/* ── AND THE MAP'S OWN CONTROLS STEP DOWN WHILE THE STRIP IS UP ─────────
+   The entry strip is `position: absolute; top: 0` across the stage, and so
+   are the search box, the zoom row and the SHOW row — so on arrival the
+   search sat on top of the headline and both were unreadable. The strip is
+   transient and the controls are not, so the controls move rather than the
+   claim. `:has` keeps it in the stylesheet: nothing has to be told the strip
+   is there, and when it is dismissed they come back on their own. */
+.theme-fusion .fx-city-shell:has(.fx-city-strip) .fx-city-find,
+.theme-fusion .fx-city-shell:has(.fx-city-strip) .fx-city-controls {
+  top: calc(16px + var(--fx-city-strip-h, 92px));
+}
+.theme-fusion .fx-city-shell:has(.fx-city-strip) .fx-city-drawnas {
+  top: calc(56px + var(--fx-city-strip-h, 92px));
+}
+.theme-fusion .fx-city-shell:has(.fx-city-strip) .fx-city-system-note {
+  top: calc(100px + var(--fx-city-strip-h, 92px));
+}
 .theme-fusion .fx-city-find {
   position: absolute; top: 16px; left: 16px; z-index: 7;
   width: min(320px, calc(100% - var(--fx-city-ledger) - 420px));
@@ -18785,6 +18802,21 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   box-shadow: 0 1px 6px rgba(0,0,0,.13);
   padding: 9px 11px;
 }
+/* the numbers, under the map, beside the method — `CityEntryStrip.tsx`
+   §AND EVERYTHING ELSE BELONGS SOMEWHERE ELSE */
+.theme-fusion .fx-city-proof {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 18px;
+  margin: 0; padding: 10px clamp(16px, 2.4vw, 26px) 12px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--f-mono); font-size: 10px; letter-spacing: .12em;
+  text-transform: uppercase; color: color-mix(in srgb, var(--ink) 55%, transparent);
+}
+.theme-fusion .fx-city-proof-x {
+  margin-left: auto; border: 0; background: transparent; cursor: pointer;
+  font: inherit; color: var(--ink); border-bottom: 1px solid var(--rule);
+  padding: 0 0 2px;
+}
+.theme-fusion .fx-city-proof-x:hover { border-bottom-color: var(--ink); }
 .theme-fusion .fx-city-record { display: flex; flex-direction: column; height: 100%; min-height: 0; }
 .theme-fusion .fx-city-record-head {
   padding: 13px 15px 10px; border-bottom: 1px solid var(--rule);
