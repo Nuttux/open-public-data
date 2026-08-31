@@ -18709,6 +18709,64 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 /* ── THE RECORD PANEL ────────────────────────────────────────────────────
    The right column of the city page, which used to hold mouse instructions
    and six hundred pixels of nothing. `CityRecordPanel.tsx` carries why. */
+/* how the city is drawn — beside the zoom, because both only change what
+   you are looking at. `CityGLMap.tsx` §HOW THE CITY IS DRAWN IS A VIEW SETTING */
+.theme-fusion .fx-city-drawnas {
+  position: absolute; top: 58px; z-index: 7;
+  /* the stage spans the ledger as well as the map, so `right: 14px` lands
+     BEHIND the record column. `.fx-city-controls` above already knows the
+     answer and this uses the same measure. */
+  right: calc(var(--fx-city-ledger) + 16px);
+  background: var(--bg); border: 1px solid var(--ink); border-radius: 2px;
+  box-shadow: 0 1px 6px rgba(0,0,0,.13);
+}
+.theme-fusion .fx-city-system-note {
+  position: absolute; top: 100px; z-index: 7;
+  right: calc(var(--fx-city-ledger) + 16px);
+  max-width: 264px; margin: 0; padding: 9px 11px;
+  background: var(--surface, #fff); border: 1px solid var(--rule);
+  border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,.10);
+  font-family: var(--f-sans, system-ui, sans-serif); font-size: 11.5px;
+  line-height: 1.45; color: color-mix(in srgb, var(--ink) 70%, transparent);
+}
+@media (max-width: 780px) {
+  .theme-fusion .fx-city-drawnas { top: auto; bottom: 14px; right: 14px; }
+  .theme-fusion .fx-city-find { left: 14px; width: calc(100% - 28px); }
+  .theme-fusion .fx-city-system-note { display: none; }
+}
+/* ── THE CENTURY STRIP: two rows, when and what is lit ─────────────────
+   `CityGLMap.tsx` §THE STRIP IS THE PAGE'S ONE ROW OF STATE. */
+.theme-fusion .fx-city-clockrow {
+  display: flex; align-items: center; gap: 14px;
+  padding: 11px 18px 9px; border-top: 1px solid var(--rule);
+}
+.theme-fusion .fx-city-clockrow-end { margin-left: auto; }
+.theme-fusion .fx-city-year {
+  font-family: var(--f-mono); font-size: 26px; font-weight: 600;
+  letter-spacing: -.025em; font-variant-numeric: tabular-nums;
+  line-height: 1; min-width: 92px;
+}
+.theme-fusion .fx-city-subjrow {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  padding: 0 18px 11px;
+}
+.theme-fusion .fx-city-subjrow-cap {
+  font-family: var(--f-mono); font-size: 10px; letter-spacing: .15em;
+  text-transform: uppercase; color: color-mix(in srgb, var(--ink) 52%, transparent);
+  flex: none;
+}
+.theme-fusion .fx-city-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+@media (max-width: 780px) {
+  .theme-fusion .fx-city-chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .theme-fusion .fx-city-chips::-webkit-scrollbar { display: none; }
+  .theme-fusion .fx-city-chips > * { flex: none; }
+  .theme-fusion .fx-city-find { width: calc(100% - 28px); }
+}
+.theme-fusion .fx-city-find {
+  position: absolute; top: 16px; left: 16px; z-index: 7;
+  width: min(320px, calc(100% - var(--fx-city-ledger) - 420px));
+}
+.theme-fusion .fx-city-find > * { width: 100%; }
 .theme-fusion .fx-city-record { display: flex; flex-direction: column; height: 100%; min-height: 0; }
 .theme-fusion .fx-city-record-head {
   padding: 13px 15px 10px; border-bottom: 1px solid var(--rule);

@@ -27,8 +27,18 @@
    ═══════════════════════════════════════════════════════════════════════ */
 
 export interface CityHelpRowProps {
-  /** what the pointer does */
-  move: string;
+  /**
+   * What the pointer does — OPTIONAL, and a page is right to leave it out.
+   *
+   * The city page printed this, a second line about the year rail, and a
+   * fourth sentence in its right-hand column saying the same things again:
+   * seven lines of instruction on a map whose whole appeal is that it can be
+   * grabbed. A control that is on screen and says what it is does not need a
+   * paragraph underneath repeating it. The KEYBOARD line is different and
+   * stays required — it is the only one describing something a reader cannot
+   * find by trying, and it is the accessible path.
+   */
+  move?: string;
   /**
    * what the year rail does. Optional for the same reason `CityMap` guards it
    * on `transport`: a city drawn with no rail under it must not be told to
@@ -50,7 +60,7 @@ export function CityHelpRow({ move, years, keys }: CityHelpRowProps) {
   return (
     <div className="fx-wrap">
       <div className="fx-city-help">
-        <span>{move}</span>
+        {move ? <span>{move}</span> : null}
         {years ? <span>{years}</span> : null}
         <span className="fx-city-help-keys">{keys}</span>
       </div>

@@ -245,7 +245,11 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
   const marksRef = useRef<ThemeMarksLayer | null>(null);
   const [themes, setThemes] = useState<ThemeEntry[] | null>(null);
   const [subject, setSubject] = useState<number | null>(null);
-  const [subjectLit, setSubjectLit] = useState(0);
+  /* how many marks the chosen subject lights. The floating panel used to
+     print it beside a coverage sentence; the strip does not, and the record
+     column says the count that matters. Kept as a ref rather than state so
+     the marks effect has somewhere to put its answer without a render. */
+  const subjectLitRef = useRef(0);
   /* ── WHAT A PRESSED DOT PUTS ON SCREEN ──────────────────────────────────
      Its own small card, and NOT the fiche: the reader asked what one mark is,
      and a fiche answers what a whole block is. Held apart from `picked` for
@@ -286,7 +290,6 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
     }[];
     year: number;
   } | null>(null);
-  const [filterOpen, setFilterOpen] = useState(false);
   /* THE YEAR THE MARKS ARE STANDING ON, kept apart from the scrub's own
      imperative path. The rail drives the city's geometry every frame of a
      drag and must not wait on React; the marks are rebuilt from a Map and a
@@ -309,7 +312,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       bits: subject === null ? 0 : 2 ** subject,
       year: year ?? YEAR_MAX,
     });
-    setSubjectLit(lit);
+    subjectLitRef.current = lit;
     engineRef.current?.invalidate();
   }, [subject, year]);
   /* ── AND IT FOLLOWS THE SETTLED YEAR, NOT EVERY FRAME OF A DRAG ────────
@@ -1775,6 +1778,71 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       <div className="fx-city-frame">
         <div className="fx-city-stage" ref={hostRef}>
           <canvas ref={canvasRef} className="fx-city-canvas" />
+          {/* ── §HOW THE CITY IS DRAWN IS A VIEW SETTING ──────────────────
+              Rail, the bike network, the streets: these change how the city is
+              DRAWN, not what the page is about. The page is about the record,
+              so its filter is in the open on the strip and these step back
+              onto the map, beside the zoom — which is the other control that
+              only changes what you are looking at. */}
+          {!loading ? (
+            <div className="fx-city-drawnas">
+              {/* ── WHICH SYSTEM IS BEING WATCHED ──────────────────────────
+                The century plays the whole city at once, which is the right
+                default and also why no single thing can be FOLLOWED. Picking
+                one quietens the rest — and for transport it also draws the
+                network as a diagram over the city, because at the whole-city
+                camera the real track is half a pixel wide. `systems.ts` has
+                the measurements.
+
+                One lit at a time, and clicking the lit one clears it: two
+                systems lit at once is a picture of neither. */}
+            <div
+              style={{
+                display: "flex",
+                border: "1px solid var(--rule, #e4e6ea)",
+                borderRadius: 6,
+                overflow: "hidden",
+              }}
+            >
+              {CITY_SYSTEMS.map((sys) => (
+                <button
+                  key={sys.key}
+                  type="button"
+                  className="fx-city-system"
+                  aria-pressed={system === sys.key}
+                  title={sys.note}
+                  onClick={() => {
+                    const next = system === sys.key ? null : sys.key;
+                    setSystem(next);
+                    engineRef.current?.setSystem(next);
+                  }}
+                >
+                  {sys.label}
+                </button>
+              ))}
+            </div>
+
+            </div>
+          ) : null}
+          {/* what the chosen layer holds — under the map, not a tooltip */}
+          {system !== null ? (
+            <p className="fx-city-system-note">
+              {descriptor.systemNotes?.[system]
+                ?? CITY_SYSTEMS.find((x) => x.key === system)?.note}
+            </p>
+          ) : null}
+          {/* ── §THE FRONT DOOR IS ON THE MAP ─────────────────────────────
+              Search sat at the top of the right-hand column, above whatever
+              the margin was showing. That is the wrong place for it twice
+              over: it is the first thing most readers want — type your street
+              — and the column it lived in is now the RECORD, which is a thing
+              to read rather than a place to keep controls. A map's search
+              belongs on the map. */}
+          {!loading ? (
+            <div className="fx-city-find">
+              <CitySearch onPick={({ hit }) => void goToHit(hit)} />
+            </div>
+          ) : null}
           {!loading && stopsRef.current.length ? (
             <div
               role="group"
@@ -1828,131 +1896,11 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
             a fifth of the record is a true thing that eight buttons imply the
             opposite of, so the coverage line is not a footnote to be trimmed —
             it is the difference between a filter and a claim about the city. */}
-        {!loading && themes ? (
-          <div
-            className="fx-city-subjects"
-            /* OVER THE MAP, NOT ABOVE IT. Written first as a block between the
-               map and the century rail, opening it pushed the rail off the
-               bottom of the window and clipped its own coverage line. A filter
-               is a control on the view, so it floats on the view. */
-            style={{
-              position: "absolute",
-              left: 14,
-              bottom: 72,
-              zIndex: 6,
-              maxWidth: "min(720px, calc(100% - 380px))",
-            }}
-          >
-            <button
-              type="button"
-              onClick={() => setFilterOpen((v) => !v)}
-              aria-expanded={filterOpen}
-              style={{
-                font: "600 11px/1 var(--f-mono, ui-monospace, monospace)",
-                letterSpacing: ".08em",
-                textTransform: "uppercase",
-                padding: "8px 12px",
-                border: "1px solid var(--rule, #e4e6ea)",
-                borderRadius: 6,
-                background: "var(--surface, #fff)",
-                cursor: "pointer",
-              }}
-            >
-              {subject === null
-                ? "Subjects"
-                : (themes.find((x) => x.bit === subject)?.label ?? "Subjects")}
-            </button>
-            {filterOpen ? (
-              <div
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: 6,
-                  alignItems: "center",
-                  /* A SURFACE, because this floats over the drawn city and
-                     12 px type on a painted map is not type. */
-                  marginTop: 8,
-                  padding: 10,
-                  borderRadius: 8,
-                  border: "1px solid var(--rule, #e4e6ea)",
-                  background: "var(--surface, #fff)",
-                  boxShadow: "0 6px 20px rgba(0,0,0,.10)",
-                }}
-              >
-                <button
-                  type="button"
-                  onClick={() => setSubject(null)}
-                  aria-pressed={subject === null}
-                  style={chipStyle(subject === null, null)}
-                >
-                  All decisions
-                </button>
-                {themes.map((th) => (
-                  <button
-                    key={th.slug}
-                    type="button"
-                    onClick={() =>
-                      setSubject((cur) => (cur === th.bit ? null : th.bit))
-                    }
-                    aria-pressed={subject === th.bit}
-                    title={`${th.n.toLocaleString()} marks over ${th.n_blocks.toLocaleString()} blocks, ${th.y0}–${th.y1}`}
-                    style={chipStyle(
-                      subject === th.bit,
-                      THEME_INK[th.bit % THEME_INK.length],
-                    )}
-                  >
-                    <span
-                      aria-hidden
-                      style={{
-                        display: "inline-block",
-                        width: 8,
-                        height: 8,
-                        borderRadius: 8,
-                        marginRight: 6,
-                        background: THEME_INK[th.bit % THEME_INK.length],
-                      }}
-                    />
-                    {th.label}
-                    <span style={{ opacity: 0.55, marginLeft: 6 }}>
-                      {th.n.toLocaleString()}
-                    </span>
-                  </button>
-                ))}
-                <p
-                  style={{
-                    font: "12px/1.5 var(--f-sans, system-ui)",
-                    color: "var(--muted, #6b6355)",
-                    margin: "8px 0 0",
-                    flexBasis: "100%",
-                  }}
-                >
-                  {subject === null
-                    ? "The map is showing every decision. These eight are what the record keeps coming back to — together they carry about a fifth of it, and they overlap each other, so they filter the map rather than dividing it up."
-                    : /* THE SAME WINDOW THE LAYER USED, INCLUDING AT THE
-                         PRESENT. This read "across the whole century" whenever
-                         the rail was cleared, which was true only because
-                         clearing it lit every year — the bug above. Now the
-                         present is a year like any other and the caption has to
-                         say so, or it claims a century of marks over ten years
-                         of them. */
-                      `${subjectLit.toLocaleString()} on the map within ${
-                        WINDOW_YEARS
-                      } years of ${year ?? YEAR_MAX}. ${
-                        themes.find((x) => x.bit === subject)?.kind === "era"
-                          ? "This one changes most over time — drag the year bar."
-                          : "This one is concentrated in place — click a mark to read it."
-                      }`}
-                </p>
-              </div>
-            ) : null}
-          </div>
-        ) : null}
+        {/* the subjects moved into the century strip — §THE STRIP IS THE
+            PAGE'S ONE ROW OF STATE, below */}
         </div>
         <div className="fx-city-ledger">
-          {/* ABOVE WHATEVER THE MARGIN IS SHOWING, idle copy or an open fiche.
-              A search you can only reach by closing what you are reading is a
-              search nobody uses. */}
-          <CitySearch onPick={({ hit }) => void goToHit(hit)} />
+          {/* the search moved onto the map — §THE FRONT DOOR IS ON THE MAP */}
           {/* ── THE DOT'S OWN ANSWER, AND IT IS NOT A FICHE ────────────────
               Ahead of the fiche because a press on a dot is a narrower
               question than a press on the city, and the reader who asked it
@@ -2088,51 +2036,19 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
           scrub can be a slider rather than a stepper. */}
       {!loading ? (
         <div className="fx-city-transport">
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 14,
-              padding: "10px 18px",
-              borderTop: "1px solid var(--rule, #e4e6ea)",
-            }}
-          >
-            {/* ── WHICH SYSTEM IS BEING WATCHED ──────────────────────────
-                The century plays the whole city at once, which is the right
-                default and also why no single thing can be FOLLOWED. Picking
-                one quietens the rest — and for transport it also draws the
-                network as a diagram over the city, because at the whole-city
-                camera the real track is half a pixel wide. `systems.ts` has
-                the measurements.
+          {/* ── §THE STRIP IS THE PAGE'S ONE ROW OF STATE ─────────────────
+              Twelve controls used to be spread over three places: the zoom on
+              the map, the systems and the clock in this strip, and the
+              subjects floating in a white box over the Sunset. They are not
+              twelve of the same kind, so they are grouped by what they are
+              FOR — where you are looking stays on the map, what you get back
+              is the column on the right, and WHEN and WHAT IS LIT are these
+              two rows.
 
-                One lit at a time, and clicking the lit one clears it: two
-                systems lit at once is a picture of neither. */}
-            <div
-              style={{
-                display: "flex",
-                border: "1px solid var(--rule, #e4e6ea)",
-                borderRadius: 6,
-                overflow: "hidden",
-              }}
-            >
-              {CITY_SYSTEMS.map((sys) => (
-                <button
-                  key={sys.key}
-                  type="button"
-                  className="fx-city-system"
-                  aria-pressed={system === sys.key}
-                  title={sys.note}
-                  onClick={() => {
-                    const next = system === sys.key ? null : sys.key;
-                    setSystem(next);
-                    engineRef.current?.setSystem(next);
-                  }}
-                >
-                  {sys.label}
-                </button>
-              ))}
-            </div>
-
+              The year gets a row to itself because it is the only control
+              that moves the buildings, the dots and the record together.
+              Among the filters it read as one more toggle. */}
+          <div className="fx-city-clockrow">
             {/* ── PLAY, WHICH IS WHAT MAKES IT A CITY BEING BUILT ────────
                 Dragging the rail hands out WHOLE years, and every layer that
                 raises something reads the year's FRACTION — so a scrub lands
@@ -2195,15 +2111,10 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
             >
               {speed}×
             </button>
-            <span
-              className="tnum"
-              style={{
-                font: "600 15px/1 var(--f-mono, ui-monospace, monospace)",
-                minWidth: 74,
-                letterSpacing: ".02em",
-              }}
-              ref={readoutEl}
-            >
+            {/* THE YEAR IS THE BIGGEST THING ON THE STRIP. It was 15 px
+                between two buttons; the one thing this map has that no other
+                map has should not be set at caption size. */}
+            <span className="tnum fx-city-year" ref={readoutEl}>
               {year ?? YEAR_MAX}
             </span>
             <input
@@ -2267,6 +2178,12 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
                 setYear(v >= YEAR_MAX ? null : v);
               }}
             />
+            {/* ── AND THE TAKE-AWAYS SIT AT THE END OF THE CLOCK ROW ─────
+                Save and the film are things a reader uses twice a year. They
+                keep their place but stop competing with the year for the eye:
+                the row's own `margin-left:auto` pushes them to the far end.
+                §THE STRIP IS THE PAGE'S ONE ROW OF STATE. */}
+            <span className="fx-city-clockrow-end" />
             {/* ── THE VIEW, AT PRINT SIZE ────────────────────────────────
                 A city drawn from a public record is worth showing to people
                 who will never open the page, and the way a picture travels is
@@ -2307,7 +2224,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
                   }
                 }}
               >
-                {filmOn ? "Stop" : "Play the film"}
+                {filmOn ? "Stop the tour" : "Take the tour"}
               </button>
             ) : null}
             {/* THE WAY BACK, AND ONLY WHEN THERE IS ONE. It used to read
@@ -2350,6 +2267,56 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
               {YEAR_MAX}
             </button>
           </div>
+
+          {/* ── WHAT IS LIT, WHICH IS THE SUBJECT OF THE MAP ──────────────
+              These were in a white box floating over the Sunset, behind a
+              button reading "Subjects" that a reader had to find and open.
+              The record is the point of this page, so its own filter belongs
+              in the open, on the strip, under the year that scopes it.
+              §THE STRIP IS THE PAGE'S ONE ROW OF STATE. */}
+          {!loading && themes ? (
+            <div className="fx-city-subjrow">
+              <span className="fx-city-subjrow-cap" aria-hidden="true">Subject</span>
+              <div className="fx-city-chips" role="group" aria-label="Subject">
+                <button
+                  type="button"
+                  onClick={() => setSubject(null)}
+                  aria-pressed={subject === null}
+                  style={chipStyle(subject === null, null)}
+                >
+                  All decisions
+                </button>
+                {themes.map((th) => (
+                  <button
+                    key={th.slug}
+                    type="button"
+                    onClick={() =>
+                      setSubject((cur) => (cur === th.bit ? null : th.bit))
+                    }
+                    aria-pressed={subject === th.bit}
+                    title={`${th.n.toLocaleString()} marks over ${th.n_blocks.toLocaleString()} blocks, ${th.y0}–${th.y1}`}
+                    style={chipStyle(
+                      subject === th.bit,
+                      THEME_INK[th.bit % THEME_INK.length],
+                    )}
+                  >
+                    <span
+                      aria-hidden
+                      style={{
+                        display: "inline-block",
+                        width: 8, height: 8, borderRadius: 8, marginRight: 6,
+                        background: THEME_INK[th.bit % THEME_INK.length],
+                      }}
+                    />
+                    {th.label}
+                    <span style={{ opacity: 0.55, marginLeft: 6 }}>
+                      {th.n.toLocaleString()}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          ) : null}
           {/* ── AND THE CONTROL SAYS WHAT IS IN THE LAYER ────────────────
                 Every system already carries a `note` giving what the layer
                 holds and how much of it, and the note reached the reader ONLY
@@ -2363,26 +2330,20 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
                 It is written under the row, only while a system is chosen,
                 because it is the answer to a question the reader has just
                 asked and noise before that. */}
-          {system !== null ? (
-            <p className="fx-city-system-note">
-              {descriptor.systemNotes?.[system]
-                ?? CITY_SYSTEMS.find((x) => x.key === system)?.note}
-            </p>
-          ) : null}
         </div>
       ) : null}
 
-      {/* ── THE ROW THAT SAYS HOW TO MOVE ────────────────────────────────
-          Prose, in the DOM, under the frame — not painted on the overlay
-          canvas. It is the one piece of the page a reader may want to select
-          or hear read aloud, and it sits outside the stage the two canvases
-          fill, so there is no pixel of it reachable from there anyway. Same
-          markup and the same three i18n keys as the published page. */}
-      <CityHelpRow
-        move={t("us.sf.thecity.map.help")}
-        years={t("us.sf.thecity.map.help_years")}
-        keys={t("us.sf.thecity.map.help_keys")}
-      />
+      {/* ── §ONE LINE, NOT SEVEN ──────────────────────────────────────────
+          This was three lines of prose, and the right-hand column carried a
+          fourth saying the same thing in different words: drag to pan, scroll
+          to zoom, drag the year. Seven lines of instruction on a map whose
+          whole appeal is that you can grab it.
+
+          The keyboard line stays, because it is the only one saying something
+          a reader cannot discover by trying — and it is the accessible path.
+          The mouse lines go: the search box, the zoom row and the year are on
+          screen and say what they are. */}
+      <CityHelpRow keys={t("us.sf.thecity.map.help_keys")} />
     </div>
   );
 }
