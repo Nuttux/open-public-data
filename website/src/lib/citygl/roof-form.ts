@@ -1210,6 +1210,19 @@ export interface GablePlan {
  */
 export function gablePlan(
   ring: FormRing, hM: number, gid = 0, pitchDeg?: number,
+  /**
+   * The ceiling on the rise, world metres. Defaults to the house's, which is
+   * what `HOUSE_MAX_HALFRISE_M` is named for and sized for: 3.2 m of rise is
+   * a two-storey house with a full attic and it binds only on a plan over
+   * about 11 m wide.
+   *
+   * A NAVE IS NOT A HOUSE. `civic-form.ts` draws a church at 44 degrees over
+   * a plan that is routinely 25 m across, which wants 12 m of rise, and the
+   * house's cap flattened every cathedral in the city to the same 3.2 m lid
+   * its neighbours have. A caller drawing something other than a house passes
+   * its own ceiling.
+   */
+  maxHalf: number = HOUSE_MAX_HALFRISE_M,
 ): GablePlan | null {
   const { x, y, off, n } = ring;
   if (n < 3 || n > FORM_MAX_VERTS) return null;
@@ -1265,7 +1278,7 @@ export function gablePlan(
      two-storey house with a full attic actually has, and it only ever binds
      on a plan wider than about 11 m. */
   const half = Math.min(
-    HOUSE_MAX_HALFRISE_M,
+    maxHalf,
     (span / 2) * Math.tan(((pitchDeg ?? vary.pitch) * Math.PI) / 180),
   );
   if (!(half > 0.3) || !(hM - half > 0)) return null;
@@ -1275,8 +1288,10 @@ export function gablePlan(
   };
 }
 
-export function gableHalf(ring: FormRing, hM: number, gid = 0, pitchDeg?: number): number {
-  return gablePlan(ring, hM, gid, pitchDeg)?.half ?? 0;
+export function gableHalf(
+  ring: FormRing, hM: number, gid = 0, pitchDeg?: number, maxHalf?: number,
+): number {
+  return gablePlan(ring, hM, gid, pitchDeg, maxHalf)?.half ?? 0;
 }
 
 /**

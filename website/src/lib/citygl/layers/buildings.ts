@@ -111,6 +111,8 @@ import {
   type FacadeKey,
 } from "../facade";
 import { boxForm, gableForm, gableHalf, hipForm, hipPlan, stepForm, trayForm, type FormSink } from "../roof-form";
+import { civicEaveDrop, civicForm, civicRoofs } from "../civic-form";
+import type { CivicForm } from "../civic";
 import {
   bldgMaterials,
   legendDraw,
@@ -156,6 +158,12 @@ export interface BuildingsLayerOptions {
   /** what the 2023 survey measured standing on each roof, when this chunk has
    *  a `roof/<cell>` companion. Absent, every building draws as it did. */
   roof?: RoofTable | null;
+  /** ── THE NAMED BUILDINGS, AND WHAT EACH IS DRAWN AS ──────────────────
+     `civic.ts` has the register and the rule; `civic-form.ts` has the five
+     drawings. Keyed by the building index the register resolves to, which is
+     the same `gid` this table carries. Absent, every building draws as it
+     did — 457 of 166,166 footprints are in it. */
+  civicOf?: ReadonlyMap<number, CivicForm> | null;
   /** dev: draw every footprint in one appearance family */
   forceFamily?: FaFamily | null;
   /** footprints a hand-modelled landmark already stands on — never drawn twice */
@@ -1016,8 +1024,11 @@ export function buildingsMesh(
        KIND of roof it gets, and `familyPitchedRoof` is that question. Gating
        the house form on `familyHasBay` sent the whole of 1925-50 — the Sunset
        and the Richmond, most of the houses in this city — back to flat lids. */
+    /* the named form for this footprint, if the register gives it one */
+    const civicHere = o.civicOf ? (o.civicOf.get(tb.gid[i]) ?? null) : null;
+    const civicTakesRoof = civicHere !== null && civicRoofs(civicHere);
     const residential = (tb.u[i] & USE_MASK) === 0 || (tb.u[i] & USE_MASK) === 1;
-    const houseHalf =
+    const houseHalf = civicTakesRoof ? 0 :
       residential && familyPitchedRoof(fam) && hM < HOUSE_MAX_H
         ? gableHalf(ring, hM, tb.gid[i]) : 0;
     const pitched = isPitched(
@@ -1026,9 +1037,16 @@ export function buildingsMesh(
       (tb.u[i] & FLAG_NOYEAR) !== 0,
     );
     const plan = houseHalf > 0 ? null : (pitched ? hipPlan(ring) : null);
-    const wallH = houseHalf > 0
-      ? Math.max(0, hM - houseHalf)
-      : plan ? Math.max(0, hM - plan.halfRiseM) : hM;
+    /* a form that carries its own roof stops the wall at ITS eave, and the
+       drop comes from one call to the same plan the form draws with —
+       `civic-form.ts` §HOW FAR THE WALL STOPS SHORT */
+    const civicDrop = civicTakesRoof && civicHere
+      ? civicEaveDrop(civicHere, ring, hM, tb.gid[i]) : 0;
+    const wallH = civicDrop > 0
+      ? Math.max(0, hM - civicDrop)
+      : houseHalf > 0
+        ? Math.max(0, hM - houseHalf)
+        : plan ? Math.max(0, hM - plan.halfRiseM) : hM;
 
     /* THE MEASURED ROOF COLOUR, and the wall a step under it. Block 3 makes
        both of these a material under a real sun; for now the roof is what the
@@ -1300,7 +1318,32 @@ export function buildingsMesh(
 
        So the record chooses WHO — the survey's family, or the era's — and the
        FORM is authored. See `roof-form.ts` §a house, drawn as a house. */
-    if (houseHalf > 0) {
+    /* ── AND A NAMED BUILDING MAY HAVE A FORM OF ITS OWN ────────────────
+       457 of the 166,166 footprints are named in a register that also says
+       what KIND of thing they are — a church, a fire station, a pier shed, a
+       library, a school. `civic.ts` has the register and the rule and
+       `civic-form.ts` has the five drawings. It is decided before the house
+       gate and it wins: a parish church that happens to be low enough and
+       classed residential enough to pass for a house is a church. */
+    if (civicHere) {
+      sink.grain = HOUSE_GRAIN;
+      const r = civicForm(civicHere, sink, ring, elev, hM, rc, wc, tb.gid[i]);
+      sink.grain = 1;
+      if (r.drew && r.roofed) roofed = true;
+      /* DEV-ONLY, the `__cityWA` idiom: how many of each named form were
+         asked for and how many actually built. A form refused for a plan too
+         small to take it is invisible in the frame and must not be. */
+      if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
+        const g = globalThis as { __cityGLCivic?: Record<string, { asked: number; drew: number }> };
+        g.__cityGLCivic ??= {};
+        const e = (g.__cityGLCivic[civicHere] ??= { asked: 0, drew: 0 });
+        e.asked++; if (r.drew) e.drew++;
+        const gp = globalThis as { __cityGLCivicAt?: [string, number, number, number, number][] };
+        gp.__cityGLCivicAt ??= [];
+        if (r.drew) gp.__cityGLCivicAt.push([civicHere, tb.gid[i], tb.cx[i], tb.cy[i], hM]);
+      }
+    }
+    if (!roofed && houseHalf > 0) {
       /* a house's roof is shingle or tile, not gravel — a finer tile, and
          the sink's own note has the measurement */
       sink.grain = HOUSE_GRAIN;

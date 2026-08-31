@@ -34,6 +34,7 @@ import { loadBathy, waterLayer } from "@/lib/citygl/layers/water";
 import { loadSurroundLandcover, surroundLayer } from "@/lib/citygl/layers/surround";
 import { buildingsLayer } from "@/lib/citygl/layers/buildings";
 import { heroesLayer } from "@/lib/citygl/layers/heroes";
+import { civicIndex, type CivicForm } from "@/lib/citygl/civic";
 import { capsLayer } from "@/lib/citygl/layers/caps";
 import { railLayer } from "@/lib/citygl/layers/rail";
 import { bikewayLayer } from "@/lib/citygl/layers/bikeways";
@@ -827,6 +828,22 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       if (disposed || !engine) return;
       const heroSkip = new Set<number>((lmTable?.heroes ?? []).map((h) => h.bi));
 
+      /* ── THE NAMED BUILDINGS, READ BEFORE THE FABRIC BAKES ──────────────
+         Same reason the hero skip set is read here and not later: the fabric
+         has to know a footprint is a church before it builds that footprint's
+         roof, and its buffers are baked once. `base/marks.json` is the file
+         the overlay already fetches for the labels — this is a second read of
+         it and not a second file, and a city that ships none simply has no
+         named forms, which is a fact about that city. */
+      let civicOf: ReadonlyMap<number, CivicForm> | null = null;
+      try {
+        const r = await fetch(`${data.assetBase}/base/marks.json`);
+        if (r.ok) civicOf = civicIndex(await r.json());
+      } catch {
+        civicOf = null;
+      }
+      if (disposed || !engine) return;
+
       const heroes = heroesLayer(data, {
         elevAt: groundAt,
         zex: descriptor.look.zexByStep[0],
@@ -875,6 +892,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         ),
         wallPalette: wallPalette(),
         skipGids: heroSkip,
+        civicOf,
         materials: {
           hq: (data.manifest.buildings as { hq?: number[][] }).hq ?? [],
           noSampleBit:
