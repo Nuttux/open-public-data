@@ -20,6 +20,8 @@ import { CityData } from "@/lib/city/data";
 import { projection } from "@/lib/city/projection";
 import { CityEngine } from "@/lib/citygl/engine";
 import { CITY_SYSTEMS } from "@/lib/citygl/systems";
+import CityRecordPanel from "./CityRecordPanel";
+import { YearRecord, type YearDecision } from "@/lib/citygl/year-record";
 import type { CityDescriptor } from "@/lib/citygl/descriptor";
 import { loadFineDem, meshElevAt, terrainLayer } from "@/lib/citygl/layers/terrain";
 import { decodeParks } from "@/lib/city/trees";
@@ -257,6 +259,16 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
      value captured on the render that made it */
   const themesRef = useRef<ThemeEntry[] | null>(null);
   const classifyRef = useRef<ClassifyFile | null>(null);
+  /* ── §THE RECORD PANEL ────────────────────────────────────────────────
+     What the Board decided in the year on the rail. `year-record.ts` fetches
+     a decade at a time; `CityRecordPanel` renders it. The panel holds the
+     same set of decisions the marks layer is lighting, which is why it needs
+     no legend — see that file's header. */
+  const yearRecRef = useRef<YearRecord | null>(null);
+  const [yearRows, setYearRows] = useState<YearDecision[]>([]);
+  const [yearRowsBusy, setYearRowsBusy] = useState(false);
+  const [recordHover, setRecordHover] = useState<number | null>(null);
+  const [classify, setClassify] = useState<ClassifyFile | null>(null);
   const yearRef = useRef<number | null>(null);
   const [markCard, setMarkCard] = useState<{
     hit: MarkHit;
@@ -296,6 +308,40 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
     setSubjectLit(lit);
     engineRef.current?.invalidate();
   }, [subject, year]);
+  /* ── AND IT FOLLOWS THE SETTLED YEAR, NOT EVERY FRAME OF A DRAG ────────
+     `year` is committed on release, which is the state the marks layer
+     already follows — §THE MARKS FOLLOW THE SETTLED YEAR above. A decade
+     arrives once and is kept, so scrubbing 1925 to 1929 fetches nothing. */
+  useEffect(() => {
+    if (year === null) { setYearRows([]); return; }
+    let dead = false;
+    const rec = yearRecRef.current
+      ?? (yearRecRef.current = new YearRecord(descriptor.dataBaseUrl.replace(/\/$/, "")));
+    const bits = subject === null ? 0 : 2 ** subject;
+    if (rec.has(year)) { setYearRows(rec.forYear(year, bits)); return; }
+    setYearRowsBusy(true);
+    void rec.load(year).then(() => {
+      if (dead) return;
+      setYearRows(rec.forYear(year, bits));
+      setYearRowsBusy(false);
+    });
+    return () => { dead = true; };
+  }, [year, subject, descriptor.dataBaseUrl]);
+
+  /* the card's own vocabulary, which the panel needs to build the same row */
+  useEffect(() => {
+    let dead = false;
+    void (classifyRef.current
+      ? Promise.resolve(classifyRef.current)
+      : loadClassify().catch(() => null)
+    ).then((cf) => {
+      if (dead || !cf) return;
+      classifyRef.current = cf;
+      setClassify(cf);
+    });
+    return () => { dead = true; };
+  }, []);
+
   const filmRef = useRef<FilmPlayer | null>(null);
   const remeasureFilmRef = useRef<(() => void) | null>(null);
   const [filmOn, setFilmOn] = useState(false);
@@ -1981,25 +2027,46 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
               }}
             />
           ) : (
+            /* A city may still hand in its own panel; this is the default
+               when it does not. ── §THE RECORD PANEL ─────────────────────
+               This was four lines of mouse instructions over six hundred
+               pixels of nothing, in the column captioned "The record".
+               `CityRecordPanel.tsx` carries the reasoning; the short version
+               is that the panel and the lit dots are the same set. */
             ledger ?? (
-              <div style={{ padding: "16px 18px" }}>
-                <p
-                  style={{
-                    font: "600 11px/1.4 var(--f-mono, ui-monospace, monospace)",
-                    letterSpacing: ".08em",
-                    textTransform: "uppercase",
-                    color: "var(--muted, #6b6355)",
-                    margin: "0 0 8px",
-                  }}
-                >
-                  The record
-                </p>
-                <p style={{ font: "13px/1.5 var(--f-sans, system-ui)", margin: 0 }}>
-                  Click anywhere on the map to read what the city decided
-                  there. Drag to pan, scroll to zoom, and drag the year bar
-                  below to move through the century.
-                </p>
-              </div>
+            <CityRecordPanel
+              year={year}
+              decisions={yearRows}
+              subject={
+                subject === null
+                  ? null
+                  : (themes?.find((x) => x.bit === subject)?.label ?? null)
+              }
+              ink={
+                subject === null
+                  ? "var(--ink, #1b1a17)"
+                  : THEME_INK[subject % THEME_INK.length]
+              }
+              classify={classify}
+              loading={yearRowsBusy}
+              hover={recordHover}
+              onHover={setRecordHover}
+              onOpen={(i) => {
+                const d = yearRows[i];
+                const eng = engineRef.current;
+                if (!d || !eng || !d.at.length) return;
+                const [wx, wz] = d.at[0];
+                /* `projection` is the module's own singleton, configured from
+                   this city's manifest when the map mounted */
+                const c = projection.proj(wx, wz, 0);
+                eng.setCamera({
+                  cx: c[0], cy: c[1],
+                  scale: stopScalesRef.current[2] ?? eng.getCamera().scale,
+                });
+                eng.invalidate();
+                setNonce((n) => n + 1);
+              }}
+            />
             )
           )}
         </div>
