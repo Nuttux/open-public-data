@@ -2193,7 +2193,8 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
                 asked and noise before that. */}
           {system !== null ? (
             <p className="fx-city-system-note">
-              {CITY_SYSTEMS.find((x) => x.key === system)?.note}
+              {descriptor.systemNotes?.[system]
+                ?? CITY_SYSTEMS.find((x) => x.key === system)?.note}
             </p>
           ) : null}
         </div>

@@ -40,7 +40,18 @@ export interface CitySystem {
   readonly label: string;
   /** the layers this system is made of */
   readonly layers: readonly string[];
-  /** one line under the button — what it is, and what it leaves out */
+  /**
+   * One line under the button: what this KIND of system is, in general.
+   *
+   * ── AND THE NUMBERS ARE THE CITY'S, NOT THIS FILE'S ─────────────────────
+   * This carried San Francisco's own kilometres for a while, and
+   * `engine-is-city-free.test.ts` caught it on the next run — correctly. A
+   * figure like "382 km of painted lane" is a fact about one city, and this
+   * module is the one place that may not hold one. The measured note ships on
+   * the CITY DESCRIPTOR, keyed by this system's `key`, exactly as the zoom
+   * stops and the film script already do; this sentence is the fallback for a
+   * city that has not written one.
+   */
   readonly note: string;
   /** does the map hold a record of this system SHRINKING as well as growing */
   readonly retracts: boolean;
@@ -56,10 +67,9 @@ export const CITY_SYSTEMS: readonly CitySystem[] = [
     label: "Public transport",
     layers: ["rail", "rail-overlay", "rail-history"],
     note:
-      "69 km of cable, streetcar and light rail — 3 % of San Francisco's " +
-      "2,154 km of street. Each piece is drawn from the year the city is " +
-      "recorded paying to lay it, and the routes the Board wrote down that no " +
-      "longer exist appear and are then taken up again.",
+      "cable, streetcar and light rail, each drawn from the year the city is " +
+      "recorded paying to lay it — and the routes its own record says were " +
+      "torn up, which appear and are then taken up again.",
     retracts: true,
     overlay: true,
   },
@@ -68,11 +78,10 @@ export const CITY_SYSTEMS: readonly CitySystem[] = [
     label: "Bike network",
     layers: ["bikeways", "bikeway-overlay"],
     note:
-      "382 km of path, painted lane and separated way — 18 % of the city's " +
-      "streets — plus 338 km of SHARED LANE, which is a road with a bicycle " +
-      "painted on it and no lane at all, drawn thin and dashed because that " +
-      "is what it is. Each piece carries the year the city installed it, " +
-      "which almost nothing else on this map does.",
+      "path, painted lane and physically separated way — and SHARED LANE, " +
+      "which is a road with a bicycle painted on it and no lane at all, drawn " +
+      "thin and dashed because that is what it is. Each piece carries the " +
+      "year it was installed, which few registers on a map like this do.",
     retracts: false,
     overlay: true,
   },
@@ -81,9 +90,9 @@ export const CITY_SYSTEMS: readonly CitySystem[] = [
     label: "Streets",
     layers: ["streets", "street-detail", "street-markings", "street-uncovered"],
     note:
-      "2,154 km of street, arriving as the record dates it: the Board's " +
-      "Journal and the earliest building on each frontage. A street exists " +
-      "before its first house, so these dates run late.",
+      "the roadway, arriving as the record dates it: the city's own minutes " +
+      "and the earliest building on each frontage. A street exists before " +
+      "its first house, so these dates run late.",
     retracts: false,
   },
 ] as const;

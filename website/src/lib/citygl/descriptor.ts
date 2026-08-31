@@ -35,6 +35,13 @@ export interface CityStop {
 }
 
 export interface CityDescriptor {
+  /**
+   * What each system layer actually holds IN THIS CITY, keyed by the system's
+   * own `key` — `systems.ts` §AND THE NUMBERS ARE THE CITY'S. A city that
+   * writes one replaces the generic sentence under the button with its own
+   * measured figures; a city that does not keeps the generic one.
+   */
+  systemNotes?: Readonly<Record<string, string>>;
   /** a stable id for caches and query strings — not shown to a reader */
   id: string;
   /** where `manifest.json` and the chunk tree live, no trailing slash */

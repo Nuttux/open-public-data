@@ -574,6 +574,40 @@ const SF: CityDescriptor = {
   id: "us-sf",
   dataBaseUrl: "/data/us/sf/city",
   look: DEFAULT_LOOK,
+  /* ── WHAT EACH SYSTEM LAYER HOLDS, IN KILOMETRES ────────────────────────
+     `systems.ts` describes what a KIND of system is; these are San Francisco's
+     own figures, and they live here because the engine may not hold a fact
+     about one city — `engine-is-city-free.test.ts` enforces that, and caught
+     these sitting in it.
+
+     Measured against the same DataSF centreline file the bikeways are resolved
+     onto (`3psu-pn9h`, 17,170 pieces, 2,154 km), and against the shipped
+     `base/bikeways.json` and `base/rail.json`:
+
+         the bikeway register       720 km   33.4 % of every street
+           path / lane / separated  382 km   17.7 %
+           shared lane              338 km   15.7 %
+         the rail register           69 km    3.2 %
+
+     The middle rows are why the bike view looked like the street view: a third
+     of San Francisco's streets are in that register, and nearly half of what
+     is in it is a picture of a bicycle painted on a road. */
+  systemNotes: {
+    transport:
+      "69 km of cable, streetcar and light rail — 3 % of the city's 2,154 km " +
+      "of street. Each piece is drawn from the year the Board is recorded " +
+      "paying to lay it, and the routes it later ordered torn up appear and " +
+      "are then taken up again.",
+    bike:
+      "382 km of path, painted lane and separated way — 18 % of the city's " +
+      "streets — plus 338 km of SHARED LANE, which is a road with a bicycle " +
+      "painted on it and no lane at all, drawn thin and dashed because that " +
+      "is what it is. DataSF dates 81 % of the pieces itself.",
+    streets:
+      "2,154 km of street, arriving as the record dates it: the Board's " +
+      "Journal and the earliest building on each frontage. A street exists " +
+      "before its first house, so these dates run late.",
+  },
   stops: [
     { label: "Whole city", spanM: 14000 },
     { label: "District", spanM: 4200 },
