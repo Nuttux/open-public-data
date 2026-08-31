@@ -300,6 +300,8 @@ export function roofKeyFor(key: string): string | null {
 /** the decoded roof companion: a gid to its features, and the box run it owns */
 export interface RoofTable {
   readonly at: Map<number, { o: number; n: number }>;
+  /** the measured roof form, where the survey reached this footprint */
+  readonly form: Map<number, { pitched: boolean; slopeDeg: number; ridgeDeg: number }>;
   readonly bx: Int16Array;
   readonly by: Int16Array;
   readonly bw: Uint8Array;
@@ -314,14 +316,24 @@ export function decodeRoof(chunk: Chunk): RoofTable {
   const f = chunk.fields as unknown as Record<string, ArrayLike<number>>;
   const gid = f.gid as Uint32Array;
   const cn = f.cn as Uint8Array;
+  const flags = f.flags as Uint8Array;
+  const slope = f.slope as Uint8Array;
+  const ridge = f.ridge as Uint8Array;
   const at = new Map<number, { o: number; n: number }>();
+  const form = new Map<number, { pitched: boolean; slopeDeg: number; ridgeDeg: number }>();
   let o = 0;
   for (let i = 0; i < gid.length; i++) {
     at.set(gid[i], { o, n: cn[i] });
+    form.set(gid[i], {
+      pitched: (flags[i] & 1) !== 0,
+      slopeDeg: slope[i],
+      ridgeDeg: ridge[i],
+    });
     o += cn[i];
   }
   return {
     at,
+    form,
     bx: f.bx as Int16Array, by: f.by as Int16Array,
     bw: f.bw as Uint8Array, bd: f.bd as Uint8Array, bh: f.bh as Uint8Array,
   };
@@ -826,12 +838,28 @@ export function buildingsMesh(
        In 2D the hip is painted over the flat roof and the wall never has to
        know; on a mesh a full-height wall would push through the slopes. */
     const ring = { x: tb.vx, y: tb.vy, off: s, n: c };
-    const pitched = isPitched(
-      tb.u[i] & USE_MASK,
-      1849 + tb.yr[i],
-      (tb.u[i] & FLAG_NOYEAR) !== 0,
-    );
-    const plan = pitched ? hipPlan(ring) : null;
+    /* ── WHO IS PITCHED: THE SCAN WHERE IT LOOKED, THE RULE WHERE IT DID NOT ──
+       `isPitched` is a POPULATION rule — the pre-1907 wood-frame dwelling —
+       and `roofs.ts` §THE PRE-FIRE CITY IS PITCHED is careful that it is never
+       a per-building claim, because the published zonal statistics carry no
+       location and cannot support one.
+
+       The 2023 survey does. It measured this roof, so where `roofscan` has a
+       row for this footprint its answer is taken over the rule's, in both
+       directions: a 1930s house with a real pitch gets one, and a pre-1907
+       dwelling whose roof was replaced with a flat deck stops getting one it
+       no longer has. The rule still owns every footprint the scan has not
+       reached, which today is most of them. */
+    const rfm = o.roof?.at.get(tb.gid[i]);
+    const measured = rfm ? o.roof!.form.get(tb.gid[i]) : undefined;
+    const pitched = measured
+      ? measured.pitched
+      : isPitched(
+          tb.u[i] & USE_MASK,
+          1849 + tb.yr[i],
+          (tb.u[i] & FLAG_NOYEAR) !== 0,
+        );
+    const plan = pitched ? hipPlan(ring, measured?.slopeDeg) : null;
     const wallH = plan ? Math.max(0, hM - plan.halfRiseM) : hM;
 
     /* THE MEASURED ROOF COLOUR, and the wall a step under it. Block 3 makes
@@ -1059,7 +1087,7 @@ export function buildingsMesh(
        that inverts, a parapet taller than the building. A refusal leaves the
        flat fan standing, which is what the page drew before either existed. */
     let roofed = false;
-    if (plan) roofed = hipForm(sink, ring, elev, hM, rc);
+    if (plan) roofed = hipForm(sink, ring, elev, hM, rc, { slopeDeg: measured?.slopeDeg });
     /* ── AND THE TRAY BUILDS ITS FASCIA ─────────────────────────────────
        The parapet's outer face, `DE.outerv` of this roof's own colour, over
        the top 0.85 m of the wall. `roof-form.ts` §THE PARAPET'S OUTER FACE

@@ -734,7 +734,7 @@ export interface HipPlan {
  * footprint asks for the plan FIRST, builds that footprint's wall to
  * `hM - halfRiseM`, skips its roof fan, and then calls `hipForm`.
  */
-export function hipPlan(ring: FormRing): HipPlan | null {
+export function hipPlan(ring: FormRing, slopeDeg?: number): HipPlan | null {
   const { x, y, off, n } = ring;
   if (n < 3 || n > HIP_MAX_VERTS) return null;
   let a2 = 0;
@@ -759,7 +759,21 @@ export function hipPlan(ring: FormRing): HipPlan | null {
     }
   }
   if (!(run > 0)) return null;
-  let half = (run / PITCH_RUN) * 0.5;
+  /* ── THE PLAN GIVES THE RUN; THE SCAN, WHERE IT HAS ONE, GIVES THE ANGLE ──
+     `PITCH_RUN` is one declared run-over-rise for the whole population, which
+     is the right shape for a rule derived from a matched-era measurement and
+     the wrong one for a building that was actually measured. Handed a slope
+     off `roofscan`, the rise is this plan's own run against that angle —
+     `rise = run * tan(theta)` — and the plan still decides the horizontal
+     geometry, the ridge and whether there is a ridge at all.
+
+     F2.4 is untouched either way: the eave drops `half` below the published
+     plane and the apex rises `half` above it, so the drawn surface's median
+     is still the published median. A measured angle moves both ends of that
+     symmetry together. */
+  let half = slopeDeg !== undefined && slopeDeg > 0
+    ? run * Math.tan(Math.min(60, slopeDeg) * Math.PI / 180) * 0.5
+    : (run / PITCH_RUN) * 0.5;
   if (half > PITCH_MAX_HALFRISE_M) half = PITCH_MAX_HALFRISE_M;
   return { runM: run, halfRiseM: half };
 }
@@ -778,6 +792,15 @@ export interface HipOpts {
    * on `hipPlan().halfRiseM` before calling.
    */
   minRiseM?: number;
+  /**
+   * the roof's MEASURED slope in degrees, where the survey has one.
+   *
+   * It has to be handed in as well as to `hipPlan`, because this function
+   * rebuilds the plan for itself rather than trusting scratch left by an
+   * earlier call — see the note on the miter below. Pass the same value to
+   * both or the wall is built to one pitch and the roof drawn at another.
+   */
+  slopeDeg?: number;
 }
 
 /**
@@ -804,7 +827,7 @@ export interface HipOpts {
 export function hipForm(
   sink: FormSink, ring: FormRing, elevM: number, hM: number, roof: RGB, opts: HipOpts = {},
 ): boolean {
-  const plan = hipPlan(ring);
+  const plan = hipPlan(ring, opts.slopeDeg);
   if (!plan) return false;
   const half = plan.halfRiseM;
   if (!(2 * half >= (opts.minRiseM ?? 0))) return false;

@@ -344,6 +344,44 @@ describe("hipForm", () => {
     expect(plan!.halfRiseM).toBeLessThanOrEqual(PITCH_MAX_HALFRISE_M);
   });
 
+  it("takes the rise off a MEASURED slope when the scan has one", () => {
+    /* the plan still owns the horizontal geometry; only the angle changes.
+       rise = run * tan(theta), so half = run * tan(theta) / 2. */
+    const run = (200 / 60) * 1.3;
+    for (const deg of [12, 22, 35]) {
+      const plan = hipPlan(rect(10, 20), deg);
+      expect(plan).not.toBeNull();
+      expect(plan!.runM).toBeCloseTo(run, 5);
+      /* ...and the ceiling still applies over it: 35 degrees on this plan
+         wants 1.517 m of half-rise and the cap allows 1.3. */
+      expect(plan!.halfRiseM).toBeCloseTo(
+        Math.min((run * Math.tan((deg * Math.PI) / 180)) / 2,
+                 PITCH_MAX_HALFRISE_M), 5,
+      );
+    }
+  });
+
+  it("a measured slope still moves both ends of F2.4 together", () => {
+    /* the whole reason a pitched cap is allowed: the drawn surface's median
+       must remain the published median, whoever chose the angle. */
+    const plan = hipPlan(rect(10, 20), 28)!;
+    const r = recorder();
+    expect(hipForm(r.sink, rect(10, 20), 30, H, [0.4, 0.4, 0.4],
+                   { slopeDeg: 28 })).toBe(true);
+    expect(Math.min(...r.h)).toBeCloseTo(H - plan.halfRiseM, 6);
+    expect(Math.max(...r.h)).toBeCloseTo(H + plan.halfRiseM, 6);
+  });
+
+  it("clamps a measured slope at 60 degrees and at the half-rise ceiling", () => {
+    /* `roofscan` already refuses over 60 — the cell at a footprint's edge
+       straddles roof and pavement and differentiates to near-vertical — and
+       this is the second net under it. */
+    const steep = hipPlan(rect(10, 20), 89)!;
+    const sixty = hipPlan(rect(10, 20), 60)!;
+    expect(steep.halfRiseM).toBeCloseTo(sixty.halfRiseM, 6);
+    expect(hipPlan(rect(60, 60), 45)!.halfRiseM).toBe(PITCH_MAX_HALFRISE_M);
+  });
+
   it("caps the half-rise on a large plan, so a corner store is not a barn", () => {
     const plan = hipPlan(rect(60, 60));
     expect(plan).not.toBeNull();
