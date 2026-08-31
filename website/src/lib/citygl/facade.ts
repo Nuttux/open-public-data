@@ -1111,34 +1111,40 @@ export function wallTint(key: FacadeKey, hash: number): WallTint {
  * the family still reads as one material, and the draw is on `gid` so the same
  * house is the same colour in every session and every year.
  */
-const WALL_FAMILY_HEX: readonly string[] = [
-  "#f2ece0", // off-white stucco
-  "#efdfae", // cream
-  "#e9c88c", // ochre
-  "#e0a99a", // dusty rose
-  "#cf8f7a", // terracotta
-  "#9fb3b8", // pale blue-grey
-  "#aebba0", // sage
-  "#8f8378", // taupe
+/**
+ * ── PAINT BELONGS TO THE PAINTED STOCK, AND NOT TO A TOWER ───────────────
+ *
+ * The first cut of this handed one palette to all 166,166 footprints, so
+ * downtown came out in sage and terracotta. San Francisco's towers are grey,
+ * blue-grey and glass; its HOUSES are the painted ones. Applying a house
+ * palette to an office block is not a widening, it is a wrong claim about a
+ * building anyone can walk past and check.
+ *
+ * So the family is chosen by what the record already says the building is:
+ * its use class, its era and its height. A footprint the roll does not class
+ * gets the neutral set, because the record knows less about it and the drawing
+ * should say so.
+ */
+const PAINTED_HEX: readonly string[] = [
+  "#f2ece0", "#efdfae", "#e9c88c", "#e0a99a",
+  "#cf8f7a", "#9fb3b8", "#aebba0", "#8f8378",
+];
+/** offices, hotels, institutions, and anything tall: stone, concrete, glass */
+const CIVIC_HEX: readonly string[] = [
+  "#e6e4de", "#d2cec4", "#b9bcc0", "#a7a49c",
+  "#c8c4b6", "#96a1a8", "#8e8c86", "#dcd6c8",
+];
+/** sheds, garages, works: brick, block, corrugated metal */
+const WORKS_HEX: readonly string[] = [
+  "#c2b3a2", "#a8968a", "#9aa0a0", "#b4a898",
+  "#8d857c", "#a89a86", "#9c9490", "#b8ada0",
 ];
 
-/**
- * The family in the RENDERER'S WORKING SPACE, which is linear and not sRGB.
- *
- * The first cut wrote these as plain fractions — `[0.98, 0.95, 0.88]` and the
- * rest — and blended them straight into `wallRGB`, which `layers/buildings.ts`
- * builds through `toRGB` and is therefore LINEAR. An sRGB fraction read as a
- * linear one lands far brighter and far less saturated than it looks, so a
- * blend toward "dusty rose" arrived as a blend toward white: measured on the
- * page, frame saturation went DOWN 29.4 % to 28.2 % when the whole point was
- * to raise it. `terrain.ts` §sRGB IN, LINEAR OUT is the same trap from the
- * other end.
- */
 function srgbToLinear(c: number): number {
   return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
 }
-const WALL_FAMILY: readonly (readonly [number, number, number])[] =
-  WALL_FAMILY_HEX.map((h) => {
+function toLin(hex: readonly string[]): (readonly [number, number, number])[] {
+  return hex.map((h) => {
     const n = parseInt(h.slice(1), 16);
     return [
       srgbToLinear(((n >> 16) & 255) / 255),
@@ -1146,22 +1152,57 @@ const WALL_FAMILY: readonly (readonly [number, number, number])[] =
       srgbToLinear((n & 255) / 255),
     ] as const;
   });
+}
+const FAM_PAINTED = toLin(PAINTED_HEX);
+const FAM_CIVIC = toLin(CIVIC_HEX);
+const FAM_WORKS = toLin(WORKS_HEX);
 
 /** how far a building may travel from its table entry toward its tint */
 export const WALL_FAMILY_MIX = 0.97;
+/** ...and how far a building the record does not class may travel */
+export const WALL_FAMILY_MIX_UNCLASSED = 0.45;
 
 /**
- * One building's wall colour: its material, moved toward one of the family.
- * `base` is the palette entry in the renderer's working (linear) space.
+ * ANYTHING THIS TALL IS NOT PAINTED STOCK.
+ *
+ * A 25 m wall is eight storeys. Nothing in San Francisco that size is a
+ * painted timber house, whatever its use class says, and a mis-classed tower
+ * in a pastel is the most visible error this function can make.
+ */
+const PAINTED_MAX_H = 25;
+
+/**
+ * One building's wall colour: its material, moved toward a tint from the
+ * family its own class belongs to. `base` is the palette entry in the
+ * renderer's working (linear) space.
  */
 export function wallFamilyRGB(
   base: readonly [number, number, number],
   gid: number,
+  type?: number,
+  era?: number,
+  heightM?: number,
 ): [number, number, number] {
+  const name = type === undefined ? "" : (FA_TYPES[type] ?? "");
+  const tall = (heightM ?? 0) > PAINTED_MAX_H;
+  const glassy = type !== undefined && era !== undefined && faGlassy(type, era);
+  let fam = FAM_PAINTED;
+  let mix = WALL_FAMILY_MIX;
+  if (name === "INDUSTRIAL" || name === "GARAGE") {
+    fam = FAM_WORKS;
+  } else if (
+    tall || glassy ||
+    name === "OFFICE" || name === "HOTEL" || name === "INSTITUTION"
+  ) {
+    fam = FAM_CIVIC;
+  } else if (name === "" || name === "UNCLASSED") {
+    fam = FAM_CIVIC;
+    mix = WALL_FAMILY_MIX_UNCLASSED;
+  }
   const h = mix32(gid ^ 0x2545f491);
-  const t = WALL_FAMILY[h % WALL_FAMILY.length];
+  const t = fam[h % fam.length];
   /* the amount travels too, so a family is a spread and not eight stripes */
-  const k = WALL_FAMILY_MIX * (0.75 + 0.25 * (((h >>> 8) & 1023) / 1023));
+  const k = mix * (0.4 + 0.6 * (((h >>> 8) & 1023) / 1023));
   return [
     base[0] + (t[0] - base[0]) * k,
     base[1] + (t[1] - base[1]) * k,

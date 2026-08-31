@@ -913,7 +913,13 @@ export function buildingsMesh(
        is one colour has the measurement — so each footprint moves from its
        material toward one of eight tints, on a draw keyed to its own gid. */
     const wc0 = wallRGB[mat.wall[i]] ?? [0.78, 0.72, 0.62];
-    const wc = wallFamilyRGB(wc0 as [number, number, number], tb.gid[i]);
+    /* the family is chosen by what the building IS — a house palette on an
+       office tower is a wrong claim about something anyone can walk past */
+    const wcTy = o.face ? (o.face.ty[i] ?? 0) : 0;
+    const wcEra = (tb.u[i] & FLAG_NOYEAR) !== 0 ? -1 : faEra(1849 + tb.yr[i]);
+    const wc = wallFamilyRGB(
+      wc0 as [number, number, number], tb.gid[i], wcTy, wcEra, hMFull,
+    );
     if (probe) {
       probe.v0.push(s * 3 + c * 2);
       probe.vn.push(c);
