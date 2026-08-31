@@ -17701,6 +17701,15 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   font: 600 14px/1.35 var(--f-sans, system-ui);
   color: var(--ink);
 }
+/* OUR sentence for the record — six to eleven words, written from the item's
+   full text. It occupies the headline slot when there is one, which is why it
+   carries the same weight `says` had: the card has room for exactly one strong
+   line and this is the one that says what happened. */
+.theme-fusion .fx-mark-card-pl {
+  margin: 5px 0 3px;
+  font: 600 14px/1.35 var(--f-sans, system-ui);
+  color: var(--ink);
+}
 /* the Clerk's own sentence, kept verbatim and kept SMALL: it is the evidence,
    not the headline, and at full length it is what made nobody read the card */
 .theme-fusion .fx-mark-card-t {

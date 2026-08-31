@@ -2021,8 +2021,27 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
                         </span>
                       ) : null}
                     </p>
-                    {says ? <p className="fx-mark-card-says">{says}</p> : null}
-                    <p className="fx-mark-card-t">{stripFileNumber(d.t)}</p>
+                    {/* ── THE WRITTEN LINE IS THE BETTER HEADLINE ─────────
+                        `says` is a classification OF the record — "Parking ·
+                        Ordered". `pl` is what the record actually did, written
+                        out of the item's own full text. Where there is one it
+                        takes the headline slot and `says` stands down rather
+                        than stacking two headings on a 252 px card: the reader
+                        gets one strong line, which is the whole point of the
+                        card.
+
+                        The Clerk's sentence below then wears quotation marks,
+                        because once OUR sentence leads, the reader has to be
+                        able to tell which words are the Board's. Same rule the
+                        fiche keeps. */}
+                    {d.pl ? (
+                      <p className="fx-mark-card-pl">{d.pl}</p>
+                    ) : says ? (
+                      <p className="fx-mark-card-says">{says}</p>
+                    ) : null}
+                    <p className="fx-mark-card-t">
+                      {d.pl ? `“${stripFileNumber(d.t)}”` : stripFileNumber(d.t)}
+                    </p>
                     <a
                       className="fx-block-jump"
                       href={sourceHref(d)}
