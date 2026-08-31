@@ -1960,24 +1960,6 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
                 </button>
               ))}
             </div>
-            {/* ── AND THE CONTROL SAYS WHAT IS IN THE LAYER ────────────────
-                Every system already carries a `note` giving what the layer
-                holds and how much of it, and the note reached the reader ONLY
-                as a `title` — a browser tooltip, which on a map nobody hovers
-                and on a touch screen does not exist. So a reader could turn a
-                network on and had no way at all to find out what was in it.
-                Daniel: *"whare are you including in those maps? whats the
-                data? is it supposed to be so large?"* — three questions the
-                page had the answers to and never showed.
-
-                It is written under the row, only while a system is chosen,
-                because it is the answer to a question the reader has just
-                asked and noise before that. */}
-            {system !== null ? (
-              <p className="fx-city-system-note">
-                {CITY_SYSTEMS.find((x) => x.key === system)?.note}
-              </p>
-            ) : null}
 
             {/* ── PLAY, WHICH IS WHAT MAKES IT A CITY BEING BUILT ────────
                 Dragging the rail hands out WHOLE years, and every layer that
@@ -2196,6 +2178,24 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
               {YEAR_MAX}
             </button>
           </div>
+          {/* ── AND THE CONTROL SAYS WHAT IS IN THE LAYER ────────────────
+                Every system already carries a `note` giving what the layer
+                holds and how much of it, and the note reached the reader ONLY
+                as a `title` — a browser tooltip, which on a map nobody hovers
+                and on a touch screen does not exist. So a reader could turn a
+                network on and had no way at all to find out what was in it.
+                Daniel: *"whare are you including in those maps? whats the
+                data? is it supposed to be so large?"* — three questions the
+                page had the answers to and never showed.
+
+                It is written under the row, only while a system is chosen,
+                because it is the answer to a question the reader has just
+                asked and noise before that. */}
+          {system !== null ? (
+            <p className="fx-city-system-note">
+              {CITY_SYSTEMS.find((x) => x.key === system)?.note}
+            </p>
+          ) : null}
         </div>
       ) : null}
 
