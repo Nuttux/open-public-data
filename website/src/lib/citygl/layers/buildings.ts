@@ -84,6 +84,7 @@ import {
   derivedBands,
   faBayOK,
   faEra,
+  faVocab,
   faGlassy,
   storeysOf,
   storeysRead,
@@ -1142,8 +1143,19 @@ export function buildingsMesh(
       /* `corniceRGB` is this footprint's WALL colour: the band that oversails
          is the top of the facade, not the roof. `roof-form.ts`
          §THE COLOUR THE CORNICE WEARS has the measurement that found it. */
+      /* ── AND A CORNICE IS NOT SOMETHING EVERY BUILDING HAS ──────────
+         `fascia` was `true` unconditionally, so a 1970s slab oversailed like
+         an 1890s Victorian. `FA_VOCAB` already says otherwise and has all
+         along: its `cn` column is `[1, 1, 1, 0, 0]` — the cornice belongs to
+         the pre-1950 conventions and not to the two after them.
+
+         This is the one structural difference between a classic house and a
+         modern block that this camera can actually show. It is at the
+         ROOFLINE, and everything measured on this branch says wall detail is
+         spent where the picture is not: six separate attempts at windows,
+         bays and facade patterns all came back under 1 % of a building. */
       roofed = trayForm(sink, ring, elev, wallH, rc, {
-        fascia: true,
+        fascia: faVocab(ty, era, shop).cornice,
         corniceRGB: wc,
       });
     }

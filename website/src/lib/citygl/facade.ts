@@ -1079,7 +1079,7 @@ const WALL_FAMILY: readonly (readonly [number, number, number])[] =
   });
 
 /** how far a building may travel from its table entry toward its tint */
-export const WALL_FAMILY_MIX = 0.72;
+export const WALL_FAMILY_MIX = 0.97;
 
 /**
  * One building's wall colour: its material, moved toward one of the family.
@@ -1092,7 +1092,7 @@ export function wallFamilyRGB(
   const h = mix32(gid ^ 0x2545f491);
   const t = WALL_FAMILY[h % WALL_FAMILY.length];
   /* the amount travels too, so a family is a spread and not eight stripes */
-  const k = WALL_FAMILY_MIX * (0.4 + 0.6 * (((h >>> 8) & 1023) / 1023));
+  const k = WALL_FAMILY_MIX * (0.75 + 0.25 * (((h >>> 8) & 1023) / 1023));
   return [
     base[0] + (t[0] - base[0]) * k,
     base[1] + (t[1] - base[1]) * k,
