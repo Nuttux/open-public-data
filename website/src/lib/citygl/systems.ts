@@ -64,12 +64,24 @@ export interface CitySystem {
 export const CITY_SYSTEMS: readonly CitySystem[] = [
   {
     key: "transport",
-    label: "Public transport",
+    /* ── AND IT IS NOT "PUBLIC TRANSPORT", IT IS THE RAIL ──────────────────
+       It was labelled Public transport and it draws track: cable car, historic
+       streetcar and light rail. Daniel: *"isnt public transport sometign else?
+       ... like do we put just muni/bart/bus which oens?"*
+
+       He is right and the register says so. The file this comes from publishes
+       135 route patterns over 68 lines; ten of them are rail and the other 58
+       are bus and trolleybus. A control promising public transport while
+       drawing an eighth of one operator's network — and none of the region's
+       other operators — is making a claim the layer cannot pay. So the button
+       says what is under it, and the city's own note says what is not. */
+    label: "Rail",
     layers: ["rail", "rail-overlay", "rail-history"],
     note:
-      "cable, streetcar and light rail, each drawn from the year the city is " +
-      "recorded paying to lay it — and the routes its own record says were " +
-      "torn up, which appear and are then taken up again.",
+      "cable, streetcar and light rail — TRACK, and not the whole of public " +
+      "transport. Each piece is drawn from the year the city is recorded " +
+      "paying to lay it, and the routes its own record says were torn up " +
+      "appear and are then taken up again.",
     retracts: true,
     overlay: true,
   },

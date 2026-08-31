@@ -589,15 +589,24 @@ const SF: CityDescriptor = {
            shared lane              338 km   15.7 %
          the rail register           69 km    3.2 %
 
+     And the transit register is bigger than the rail in it. `9exe-acju` holds
+     135 route patterns over 68 lines: ten are rail, 188 km of pattern, and the
+     other 58 are bus and trolleybus, 1,354 km. The layer draws the ten. That
+     is why the button says Rail and the note says what is missing rather than
+     letting "public transport" stand for an eighth of one operator.
+
      The middle rows are why the bike view looked like the street view: a third
      of San Francisco's streets are in that register, and nearly half of what
      is in it is a picture of a bicycle painted on a road. */
   systemNotes: {
     transport:
-      "69 km of cable, streetcar and light rail — 3 % of the city's 2,154 km " +
-      "of street. Each piece is drawn from the year the Board is recorded " +
-      "paying to lay it, and the routes it later ordered torn up appear and " +
-      "are then taken up again.",
+      "69 km of track — the three cable car lines, the F, and J K L M N T. " +
+      "Each piece is drawn from the year the Board is recorded paying to lay " +
+      "it, and the routes it later ordered torn up appear and are then taken " +
+      "up again. NOT the whole of public transport: Muni's 58 bus and " +
+      "trolleybus lines are in the same register and are not drawn, and BART, " +
+      "Caltrain and the ferries are other operators the City does not publish " +
+      "here.",
     bike:
       "382 km of path, painted lane and separated way — 18 % of the city's " +
       "streets — plus 338 km of SHARED LANE, which is a road with a bicycle " +
