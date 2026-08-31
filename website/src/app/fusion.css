@@ -18811,12 +18811,6 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   font-family: var(--f-mono); font-size: 10px; letter-spacing: .12em;
   text-transform: uppercase; color: color-mix(in srgb, var(--ink) 55%, transparent);
 }
-.theme-fusion .fx-city-proof-x {
-  margin-left: auto; border: 0; background: transparent; cursor: pointer;
-  font: inherit; color: var(--ink); border-bottom: 1px solid var(--rule);
-  padding: 0 0 2px;
-}
-.theme-fusion .fx-city-proof-x:hover { border-bottom-color: var(--ink); }
 .theme-fusion .fx-city-record { display: flex; flex-direction: column; height: 100%; min-height: 0; }
 .theme-fusion .fx-city-record-head {
   padding: 13px 15px 10px; border-bottom: 1px solid var(--rule);

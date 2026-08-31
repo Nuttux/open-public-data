@@ -39,7 +39,7 @@
  * a city that had already drawn. That was the last argument for it.
  */
 
-import type { ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
 const CSS = `
 .fx-city-strip{position:absolute;left:0;top:0;right:var(--fx-city-ledger,0px);z-index:6;
@@ -70,6 +70,19 @@ const CSS = `
 }
 `;
 
+/**
+ * ── AND THE STRIP MEASURES ITSELF ─────────────────────────────────────────
+ * The map's own controls sit at the top of the stage too, so they have to
+ * step below this while it is up — `fusion.css` §AND THE MAP'S OWN CONTROLS
+ * STEP DOWN. The first version guessed the height at 92 px. MEASURED on the
+ * running page it is **113**, so the search box landed four pixels ABOVE the
+ * strip's own bottom edge and sat on the border.
+ *
+ * A number typed in one file about the size of something rendered in another
+ * is the same defect as the rest of this session's: an absolute where a
+ * relative answer exists. The strip publishes its own height instead, and the
+ * stylesheet reads it.
+ */
 export default function CityEntryStrip({
   kicker,
   title,
@@ -85,8 +98,24 @@ export default function CityEntryStrip({
   closeLabel: string;
   onClose: () => void;
 }) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const shell = el.closest(".fx-city-shell") as HTMLElement | null;
+    if (!shell) return;
+    const put = (): void =>
+      shell.style.setProperty("--fx-city-strip-h", `${Math.round(el.offsetHeight)}px`);
+    put();
+    const ro = new ResizeObserver(put);
+    ro.observe(el);
+    return () => {
+      ro.disconnect();
+      shell.style.removeProperty("--fx-city-strip-h");
+    };
+  }, []);
   return (
-    <div className="fx-city-strip">
+    <div className="fx-city-strip" ref={ref}>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
       <div>
         <span className="fx-city-strip-kick">{kicker}</span>

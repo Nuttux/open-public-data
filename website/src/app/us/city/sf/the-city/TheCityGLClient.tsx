@@ -16,7 +16,7 @@
  */
 
 import dynamic from "next/dynamic";
-import { useCallback, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import SfSourceFooter from "@/components/us/SfSourceFooter";
 import CityEntryStrip from "@/components/us/city/CityEntryStrip";
@@ -642,17 +642,48 @@ export default function TheCityGLClient({ data }: { data: TheCityPageData }) {
      here reads this any more. Kept because `useFilmDoor` is what tracks
      whether the film can play at all. */
   void useFilmDoor(film);
+  const shellRef = useRef<HTMLDivElement | null>(null);
 
-  const openNote = useCallback(() => {
-    const el = noteRef.current;
+  /* ── §THE STRIP GOES WHEN THE READER STARTS ───────────────────────────
+     Daniel: *"i also like having more map size when the strip is Xed but
+     nobody would click that is weird with it"*. He is right — an × is a
+     control almost nobody uses, so the strip would sit there costing 113 px
+     of city for the whole session.
+
+     It does not need to be clicked. The strip exists to make one claim to
+     somebody who has not started yet, and the moment they grab the map,
+     turn the wheel or press a key they HAVE started: the claim has either
+     landed or it has not, and either way it is now in the way. So the first
+     interaction closes it, and the × stays for a reader who wants it gone
+     before touching anything.
+
+     Capture phase, so it fires whatever the pointer lands on — the canvas,
+     a chip, the year rail — and `once` per listener, since one is enough. */
+  useEffect(() => {
+    if (!intro) return;
+    const el = shellRef.current;
     if (!el) return;
-    el.open = true;
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, []);
+    const go = () => setIntro(false);
+    const opts = { capture: true, once: true } as const;
+    el.addEventListener("pointerdown", go, opts);
+    el.addEventListener("wheel", go, opts);
+    el.addEventListener("keydown", go, opts);
+    return () => {
+      el.removeEventListener("pointerdown", go, opts);
+      el.removeEventListener("wheel", go, opts);
+      el.removeEventListener("keydown", go, opts);
+    };
+  }, [intro]);
+
+  /* The entry plate and the proof line both used to open the method from
+     here. Neither does now — the plate is a strip that makes one claim and
+     offers nothing, and the numbers sit directly above the `<details>` that
+     opens it on its own. The `<summary>` is the only way in, which is one
+     way rather than three. */
 
   return (
     <main className="theme-fusion">
-      <div className="fx-city-shell">
+      <div className="fx-city-shell" ref={shellRef}>
         <CityGLMap
           descriptor={SF}
           /* TWO ARGUMENTS. `CityGLMap` hands back the engine and the film it
@@ -674,16 +705,21 @@ export default function TheCityGLClient({ data }: { data: TheCityPageData }) {
 
         {/* ── THE NUMBERS ARE PROOF, NOT INVITATION ────────────────────
             They were on the entry plate, where nobody enters because of
-            them. Under the map they sit beside the method, which is the
-            same question asked twice: is this thing what it says it is. */}
+            them. They sit here instead, directly above the note that says
+            what the map leaves out and opens the method — because the
+            numbers and that caveat are two halves of one question: is this
+            thing what it says it is.
+
+            AND WITHOUT A LINK OF THEIR OWN. The first version put a
+            "Methodology" button on this line, three centimetres above the
+            summary that already says HOW THIS MAP IS MADE and already opens
+            it. Two links to one page, adjacent, is a reader wondering
+            whether they go to different places. */}
         <p className="fx-city-proof">
           {t("us.sf.thecity.entry.meta")
             .replace("{buildings}", nfInt.format(data.buildings))
             .replace("{decisions}", nfInt.format(data.decisions))
             .replace("{span}", data.span)}
-          <button type="button" className="fx-city-proof-x" onClick={openNote}>
-            {t("us.sf.thecity.entry.method")}
-          </button>
         </p>
 
         {/* ── THE ENTRY IS A STRIP, NOT A PLATE ────────────────────────

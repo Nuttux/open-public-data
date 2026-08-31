@@ -4775,7 +4775,7 @@ const fr: Record<string, string> = {
   'us.sf.thecity.map.drawing': 'Drawing the city…',
   'us.sf.thecity.map.failed': 'The map could not be loaded.',
   'us.sf.thecity.map.help': 'Drag to move · scroll or pinch to zoom · press one of the buttons above to jump between the whole city and one street',
-  'us.sf.thecity.map.help_keys': 'Or use the keyboard: arrows move, + and − zoom, Home goes back to the whole city, Enter opens whatever is in the middle of the frame.',
+  'us.sf.thecity.map.help_keys': 'Keyboard: arrows move, + and − zoom, Home returns to the whole city, Enter opens whatever is in the middle of the frame.',
   'us.sf.thecity.margin.head': 'The record',
   'us.sf.thecity.margin.lede': 'Click anywhere on the map to see what the city decided there. Every line links to the page of the scan it was read from.',
   'us.sf.thecity.margin.decisions': 'Decisions on the map',
