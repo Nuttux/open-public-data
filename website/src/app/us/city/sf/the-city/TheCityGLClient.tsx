@@ -680,50 +680,55 @@ export default function TheCityGLClient({ data }: { data: TheCityPageData }) {
             lede={t("us.sf.thecity.lede")}
             ledeShort={t("us.sf.thecity.entry.lede_short")}
             meta={
-              /* THE PORT SAYS WHAT IT IS, ON THE PLATE. A work surface that
-                 looks exactly like the published page and does not say so is
-                 a way to mislead yourself as much as anybody else. */
-              <>
-                {t("us.sf.thecity.entry.meta")
-                  .replace("{buildings}", nfInt.format(data.buildings))
-                  .replace("{decisions}", nfInt.format(data.decisions))}
-                {" · drawn by the GPU (work in progress)"}
-              </>
+              /* ── THREE FACTS OF ONE KIND ────────────────────────────────
+                 This line used to end "· drawn by the GPU (work in progress)".
+                 The other two items are facts about the RECORD — how much
+                 city, how many decisions — and that one was a fact about the
+                 renderer, which no reader has a use for. "Work in progress"
+                 also undercut trust at the exact moment the line was
+                 establishing it, and the caveat already lives beside
+                 Methodology where a reader who wants it will look.
+
+                 The third fact is the record's own SPAN, which the page
+                 already computes from the corpus rather than typing 1906. */
+              t("us.sf.thecity.entry.meta")
+                .replace("{buildings}", nfInt.format(data.buildings))
+                .replace("{decisions}", nfInt.format(data.decisions))
+                .replace("{span}", data.span)
             }
-            /* ── TWO DOORS, AND THE FILM IS THE FIRST ────────────────
-               Daniel: *"no play the film on arrival."* The page was built
-               around a ninety-seven-second piece and offered the reader the
-               map and the method and never the film.
+            /* ── TWO DOORS, AND THE MAP IS THE FIRST ─────────────────────
+               The film held the primary button, so the filled, black, obvious
+               action was *Watch · 1 min 37 s* and the map was the outlined
+               afterthought beside it. That asks a stranger for ninety-seven
+               seconds before they have seen anything work — the
+               highest-friction possible first move on a page whose whole
+               appeal is that it can be grabbed and dragged.
 
-               AND IT DOES NOT TAKE THE MAP'S DOOR AWAY. The published
-               plate's own note is the part worth keeping: *"The film used to
-               TAKE OVER this button the moment it could play, so a reader who
-               came for the map was offered the film and nothing else. They
-               are two different things to want."* So the map moves to a
-               second button beside it — and only once the film can actually
-               play, because before that the primary IS the map's door and
-               two of it would be a bug rather than a choice.
+               (An earlier note here recorded the opposite instruction, and it
+               was right at the time: the page had been built around the film
+               and never offered it. Both doors are on the plate now, so the
+               question is only which one is filled, and the answer is the one
+               that costs the reader nothing to try.)
 
-               No new copy: every label here is a key that already exists. */
+               The film keeps its runtime on its label, because that is the
+               one thing worth knowing before pressing something that takes
+               the page over for a minute and a half. */
             primary={{
-              /* THE RUNTIME RIDES THE BUTTON. `Watch · 1 min 37 s` answers the
-                 one thing a reader wants to know before pressing something
-                 that will take the page over for a minute and a half. */
-              label: door.ready
-                ? door.resumeLabel === "resume"
-                  ? t("us.sf.thecity.film.resume_film")
-                  : `${t("us.sf.thecity.film.watch")} · ${door.runtimeLabel}`
-                : t("us.sf.thecity.entry.start"),
-              onClick: () => {
-                setIntro(false);
-                if (door.ready) door.play();
-              },
+              label: t("us.sf.thecity.entry.start"),
+              onClick: () => setIntro(false),
             }}
             secondary={
               door.ready
                 ? {
-                    label: t("us.sf.thecity.entry.start"),
-                    onClick: () => setIntro(false),
+                    label:
+                      door.resumeLabel === "resume"
+                        ? t("us.sf.thecity.film.resume_film")
+                        : `${t("us.sf.thecity.film.watch")} · ${door.runtimeLabel}`,
+                    plays: true,
+                    onClick: () => {
+                      setIntro(false);
+                      door.play();
+                    },
                   }
                 : undefined
             }
