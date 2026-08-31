@@ -115,7 +115,8 @@ function sameColour(a: readonly number[], b: readonly number[]): boolean {
 }
 
 /**
- * ONE SURFACE MAY BE MORE THAN ONE COLOUR.
+ * ONE SURFACE MAY BE MORE THAN ONE COLOUR — AND ONE COLOUR MAY BE MORE THAN
+ * ONE SURFACE.
  *
  * The deck used to be a single flat fill and `planAreaOf(deckC)` was the
  * whole of it. It is now two bands — the parapet's shadow at its foot and the
@@ -125,6 +126,14 @@ function sameColour(a: readonly number[], b: readonly number[]): boolean {
  * small. These take a set, and a triangle counts when every one of its three
  * vertices carries some colour in it — which is what "this triangle is part
  * of that surface" means once the surface has a gradient across it.
+ *
+ * And colour alone stops being enough to say WHICH surface. The deck's shadow
+ * is `deckv * (innerv / deckv)` of the roof, which is `innerv` exactly — the
+ * parapet's own inner face, and that identity is the point rather than a
+ * coincidence: at a concave crease two surfaces converge to the same light.
+ * So the deck is identified by its PLANE as well, which is what it actually
+ * is. Without that the parapet's inner face joins the deck and its boundary
+ * comes back as 12 edges instead of 4.
  */
 /** the deck's two bands: the parapet's shadow at its foot, and the field */
 function deckColours(roof: readonly [number, number, number]): [number, number, number][] {
@@ -137,11 +146,15 @@ function inSet(c: readonly number[], cols: readonly (readonly number[])[]): bool
 }
 
 /** the total plan area of the triangles whose three vertices all carry `col` */
-function planAreaOf(r: Rec, col: readonly number[] | readonly (readonly number[])[]): number {
+function planAreaOf(
+  r: Rec, col: readonly number[] | readonly (readonly number[])[], atH?: number,
+): number {
   const cols = (Array.isArray(col[0]) ? col : [col]) as readonly (readonly number[])[];
+  const on = (i: number): boolean =>
+    inSet(r.col[i], cols) && (atH === undefined || Math.abs(r.h[i] - atH) < 1e-6);
   let a = 0;
   for (const [i, j, k] of r.tris) {
-    if (!inSet(r.col[i], cols) || !inSet(r.col[j], cols) || !inSet(r.col[k], cols)) continue;
+    if (!on(i) || !on(j) || !on(k)) continue;
     a += Math.abs(
       (r.x[j] - r.x[i]) * (r.y[k] - r.y[i]) - (r.y[j] - r.y[i]) * (r.x[k] - r.x[i]),
     ) / 2;
@@ -155,11 +168,15 @@ function planAreaOf(r: Rec, col: readonly number[] | readonly (readonly number[]
  * exactly two boundary edges? That is what "the deck is closed" means, and it
  * is what a fan over a concave ring fails.
  */
-function boundaryLoop(r: Rec, col: readonly number[] | readonly (readonly number[])[]): number[] {
+function boundaryLoop(
+  r: Rec, col: readonly number[] | readonly (readonly number[])[], atH?: number,
+): number[] {
   const cols = (Array.isArray(col[0]) ? col : [col]) as readonly (readonly number[])[];
+  const on = (i: number): boolean =>
+    inSet(r.col[i], cols) && (atH === undefined || Math.abs(r.h[i] - atH) < 1e-6);
   const seen = new Map<string, number>();
   for (const [i, j, k] of r.tris) {
-    if (!inSet(r.col[i], cols) || !inSet(r.col[j], cols) || !inSet(r.col[k], cols)) continue;
+    if (!on(i) || !on(j) || !on(k)) continue;
     for (const [a, b] of [[i, j], [j, k], [k, i]] as const) {
       const key = a < b ? `${a}:${b}` : `${b}:${a}`;
       seen.set(key, (seen.get(key) ?? 0) + 1);
@@ -212,8 +229,9 @@ describe("trayForm", () => {
     expect(trayForm(r.sink, rect(20, 20), 0, H, roof)).toBe(true);
     const deck = deckColours(roof);
     const side = 2 * (10 - DE.thick);
-    expect(planAreaOf(r, deck)).toBeCloseTo(side * side, 4);
-    const [edges, verts] = boundaryLoop(r, deck);
+    const deckH = H - DE.parapet;
+    expect(planAreaOf(r, deck, deckH)).toBeCloseTo(side * side, 4);
+    const [edges, verts] = boundaryLoop(r, deck, deckH);
     expect(edges).toBe(4);
     expect(verts).toBe(4);
   });
@@ -230,8 +248,9 @@ describe("trayForm", () => {
     const t = DE.thick;
     // the L, offset inward by `t` on every edge: 20x8 + 8x12 shrinks by t all round
     const want = (20 - 2 * t) * (8 - 2 * t) + (8 - 2 * t) * (20 - 8);
-    expect(planAreaOf(r, deck)).toBeCloseTo(want, 3);
-    const [edges, verts] = boundaryLoop(r, deck);
+    const deckH = H - DE.parapet;
+    expect(planAreaOf(r, deck, deckH)).toBeCloseTo(want, 3);
+    const [edges, verts] = boundaryLoop(r, deck, deckH);
     expect(edges).toBe(6);
     expect(verts).toBe(6);
   });
