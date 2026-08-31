@@ -1461,10 +1461,30 @@ export function wallJitter(gid: number): number {
  * Composition shingle and slate — what a pre-war San Francisco house is
  * actually topped with, and dark, which is the whole difference from the
  * pale aerial mean.
+ *
+ * ── AND THE HUES ARE SPREAD, WHICH IS THE SECOND CUT ────────────────────
+ * The first eight were all a low-saturation grey a step apart in value, and
+ * over a district of pre-fire stock — Hayes Valley, the Haight, the Mission
+ * — they merged back into one dark roof, which is the complaint this whole
+ * exercise started from wearing a darker coat. Value alone does not separate
+ * a hundred roofs at district zoom; hue does.
+ *
+ * So the set keeps the same value range and opens the hue: three greys,
+ * because most of them really are grey; two browns, for wood shingle gone
+ * grey and the same weathered warmer; and slate blue, the green and the
+ * oxide red of rolled asphalt — the only two hues a shingle roof in this
+ * city ever actually takes, and both of them common on stock that has been
+ * patched and re-covered for a century.
  */
 const SHINGLE_HEX: readonly string[] = [
-  "#4b4a46", "#585049", "#485049", "#4a5460",
-  "#635a4e", "#3d4043", "#6d665c", "#54504c",
+  /* charcoal composition, which is what most of them are */
+  "#4b4a46", "#3d4043", "#54504c",
+  /* wood shingle gone grey-brown, and the same weathered warmer */
+  "#5c4f42", "#6b5a45",
+  /* slate, and the green and oxide-red rolled asphalt the pre-fire stock
+     was patched and re-covered with — the only two hues a shingle roof in
+     this city ever actually takes */
+  "#44566d", "#41513f", "#6b4638",
 ];
 
 /**
@@ -1475,7 +1495,10 @@ const SHINGLE_HEX: readonly string[] = [
  */
 const TILE_HEX: readonly string[] = [
   "#8a4e33", "#a0603c", "#78452f",
-  "#5b524a", "#4e5450", "#635a4e", "#4c545e", "#55504b",
+  /* and the other five are shingle, drawn from the same spread as
+     `SHINGLE_HEX` — a Revival house that is not tiled is roofed like its
+     neighbours, not out of a private list */
+  "#54504c", "#41513f", "#5c4f42", "#44566d", "#4b4a46",
 ];
 
 const FAM_SHINGLE = toLin(SHINGLE_HEX);
