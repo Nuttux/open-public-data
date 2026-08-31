@@ -111,6 +111,7 @@ import type { SearchHit } from "@/lib/us/city-search";
 import {
   blockPlaceName,
   ficheParams,
+  isPrintableLine,
   loadClassify,
   sourceHref,
   stripFileNumber,
@@ -1504,11 +1505,56 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
     if (!rec) return;
     const y = yearRef.current ?? YEAR_MAX;
     const half = WINDOW_YEARS / 2;
-    const rows = rec.decisions.filter(
+    const inWindow = rec.decisions.filter(
       (d) =>
         Math.floor((d.m ?? 0) / 2 ** hit.bit) % 2 === 1 &&
         d.y >= y - half && d.y <= y + half,
     );
+
+    /* ── A FRAGMENT IS NOT A RECORD, AND THE FICHE ALREADY KNEW THAT ─────
+       The card was listing every row the filter admitted, and a good number of
+       them are continuation fragments of the item above: "Fiscal Impact)
+       09/05/23; RECEIVED AND ASSIGNED to…", "As defined herein; and
+       authorizing the Director of MOHCD…", "With two five-year options to
+       extend and an annual base rent of…". Measured over the lit rows: 10%
+       are shorter than a readable line and 7% carry no classification at all.
+
+       `isPrintableLine` is the fiche's own test for exactly this and is
+       already measured and tested; the card simply was not using it. A row is
+       dropped only when it fails that AND has no headline either — a poor line
+       under a real subject still says something, an unreadable line under
+       nothing says nothing.
+
+       AND ONE ITEM IS ONE ROW. Four rows of the 440 Geary loan — the
+       agreement, its title line, a continuation, a procedural stamp — is the
+       same record four times wearing different offcuts. They share a page, so
+       the page is the key, and the row kept is the one with the most readable
+       line. */
+    /* A LINE THAT CANNOT OPEN A RECORD, with nothing above it to say what the
+       record is, is the tail of the one before it. "And ratifying and
+       approving any action heretofore taken…", "As defined herein, including
+       assuming certain leases.", "With an option to extend for up to an
+       additional five years…". 72 rows, 0.4%.
+
+       The list is short on purpose. `The`, `To`, `For`, `Of` and `In` were in
+       it and came out: "The sum of $2000 be and the same is hereby set aside"
+       opens a real appropriation. The first cut of this rule also used a
+       case-insensitive `[a-z]`, which matches every capital too and flagged
+       every heading in the corpus — it was measured before it shipped, which
+       is the only reason that is a sentence here and not a defect. */
+    const CONTINUES =
+      /^[^A-Za-z0-9]*(?:[a-z]|(?:And|As|Or|But|With|Said|Which|Thence|Including|Provided|Together)\b)/;
+    const best = new Map<string, BlockDecision>();
+    for (const d of inWindow) {
+      if (d.cs === undefined && (!isPrintableLine(d.t) || CONTINUES.test(d.t.trim())))
+        continue;
+      const had = best.get(d.u);
+      if (!had) { best.set(d.u, d); continue; }
+      const score = (x: BlockDecision) =>
+        (isPrintableLine(x.t) ? 1e6 : 0) + x.t.length;
+      if (score(d) > score(had)) best.set(d.u, d);
+    }
+    const rows = [...best.values()].sort((a, b) => b.y - a.y);
     if (!rows.length) return;
     /* ── WHAT EACH LINE IS, FROM THE RECORD'S OWN CLASSIFICATION ────────
        `cs` and `ca` are on the row now, joined in the pipeline from
@@ -1542,6 +1588,22 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       return x.length > 3 && y.length > 3 && (x.includes(y) || y.includes(x));
     };
     const says = (d: BlockDecision): string | null => {
+      /* NOT WHEN THE LINE IS A BARE HEADING. `g` says where the published line
+         came from. `s` is the sentence the matched address sits in and `p` is a
+         heading composed with it — both are the item's OWN words, so the
+         classification and the line describe the same record. `h` is the
+         Board's printed heading, and a heading is printed once for a PAGE: the
+         gloss can hand a row the heading of a different item on that page.
+
+         Caught in the wild: "Execute Standard Agreement - Not to Exceed
+         $17,291,506 - ... Homekey+ Grant" came up headed "Naming and renaming
+         Ordered". The Homekey item classifies as housing-shelter, exactly
+         right; the headline belonged to a street-naming item sharing page 15.
+
+         8.3% of lit rows are `h`. They keep their line and lose the heading,
+         which is the honest trade: the line is still the record's own, and a
+         wrong heading is worse than none. */
+      if (d.g === "h") return null;
       if (!cf || d.cs === undefined) return null;
       const sub = cf.sub[d.cs];
       if (!sub) return null;
