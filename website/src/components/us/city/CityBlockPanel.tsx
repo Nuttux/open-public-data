@@ -598,12 +598,28 @@ function HoodHighlights({ hood, t }: { hood: HoodRecord; t: (k: string) => strin
  * heads each decade with, run over the whole block. Nothing is summarised,
  * nothing is written: **every word inside the quotation marks is the Board's.**
  */
+const LEAD_PLAIN: React.CSSProperties = {
+  margin: "0 0 .45rem",
+  fontSize: ".98rem",
+  lineHeight: 1.35,
+  fontWeight: 600,
+  color: "var(--fx-ink, #17171b)",
+};
+
 function BlockLead({ d, t }: { d: BlockDecision; t: (k: string) => string }) {
   return (
     <section style={LEAD_WRAP}>
       <div className="fx-city-ledger-head">
         {tOr(t, "us.sf.thecity.panel.lead_head", "What the Board decided here")}
       </div>
+      {/* ── THE PLAIN LINE SITS ABOVE THE QUOTE, NEVER INSIDE IT ────────────
+          `pl` is written — ours, not the Board's — and this component's whole
+          promise, stated above, is that every word between the quotation marks
+          is theirs. So the written line heads the quote and the quote is left
+          exactly as it was. A reader gets the sense first and the record itself
+          underneath, and can always tell which is which, which is the only
+          arrangement that keeps both. */}
+      {d.pl ? <p style={LEAD_PLAIN}>{d.pl}</p> : null}
       <blockquote style={LEAD_QUOTE}>{`“${stripFileNumber(d.t)}”`}</blockquote>
       <p className="fx-block-hint" style={LEAD_META}>
         {[

@@ -972,6 +972,35 @@ def main():
     # — "Street Lights - Van Dyke avenue and Keith street." under the heading
     # "Libraries". A classification is a statement ABOUT the record; a pattern
     # is something the reader will look for and fail to find.
+    # ── THE RECORD IN ENGLISH, WHERE ONE HAS BEEN WRITTEN ──────────────────
+    # The published `t` is the sentence an address was found in, and on a great
+    # many rows that sentence is unreadable: "Accepted the said land being
+    # described as follows, to wit: Commencing at a point formed by the i".
+    # `plain_lines.jsonl` holds a written line for that record — "Delia Williams
+    # offers her land to the city" — keyed the same way the classification is,
+    # by volume and item index, because the shard's own `u` is volume/leaf and a
+    # leaf holds several items.
+    #
+    # A line carrying an `invented` or `overstates` flag is NOT published. Those
+    # are the two checks that stand between a written sentence and the map, and
+    # a flagged line is one the checks could not clear. `damaged` rows DO
+    # publish: the scan is mangled, the reading is sound, and saying so is the
+    # honest position.
+    PLAIN_PATH = os.path.join(REPO, "pipeline/data/sf_bos/plain_lines.jsonl")
+    PLAIN = {}
+    _pl_held = 0
+    if os.path.exists(PLAIN_PATH):
+        with open(PLAIN_PATH) as _f:
+            for _l in _f:
+                if not _l.strip(): continue
+                _d = json.loads(_l)
+                _fl = _d.get("flags") or {}
+                if _fl.get("invented") or _fl.get("overstates"):
+                    _pl_held += 1
+                    continue
+                PLAIN[_d["id"]] = _d["line"]
+        print(f"  plain lines: {len(PLAIN):,} publishable, {_pl_held:,} held back by the checks")
+
     CLS_PATH = os.path.join(REPO, "pipeline/seeds/sf_bos_classification.csv")
     CLS = {}
     CSUB, CACT = [], []
@@ -1363,6 +1392,9 @@ def main():
         # where the classification has neither, which is 0.2% of lit rows —
         # written as indices and omitted at -1 for the same reason `m` is
         # omitted at zero: a field that says nothing should not cost bytes.
+        _pl = PLAIN.get(f'{r["v"]}|{r["i"]}')
+        if _pl:
+            out["pl"] = _pl
         _cs = CLS.get(f'{r["v"]}|{r["i"]}')
         if _cs:
             if _cs[0] >= 0:

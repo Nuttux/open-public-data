@@ -118,6 +118,26 @@ export interface BlockDecision {
    */
   readonly cs?: number;
   readonly ca?: number;
+
+  /**
+   * THE RECORD IN ENGLISH — the one field on this row a stranger can read.
+   *
+   * `t` is the sentence an address was found in, and the Board did not write
+   * for readers: *"Accepted the said land being described as follows, to wit:
+   * Commencing at a point formed by the i"*. The record behind that says an
+   * offer was received from Delia Williams to convey her land to the City.
+   * `pl` is that, written out: **"Delia Williams offers her land to the city."**
+   *
+   * IT IS OURS, NOT THE BOARD'S, and the interface has to say so. `t` remains
+   * on the row and the scan is one click away, because a civic record whose
+   * words have been replaced by ours without a reader being able to tell is not
+   * a civic record any more.
+   *
+   * Only lines that passed both checks are published: nothing invented, and no
+   * proposal written as a fact. A line resting on a damaged scan DOES publish —
+   * the reading is sound and the scanner is what is broken.
+   */
+  readonly pl?: string;
 }
 
 /** `blocks/classify.json` — the two vocabularies `cs` and `ca` index. */
