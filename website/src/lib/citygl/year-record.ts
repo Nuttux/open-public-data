@@ -55,6 +55,12 @@ export interface YearDecision {
   readonly at: readonly (readonly [number, number, string])[];
 }
 
+/** `blocks/year/index.json` — 3 kB, and it says how many decisions a year has */
+interface YearIndex {
+  n: number;
+  perYear: Record<string, number>;
+}
+
 interface Shard {
   y: number[]; m: number[]; k: string[]; a: number[]; u: string[];
   t: string[]; cs: number[]; ca: number[]; g: string[];
@@ -75,9 +81,44 @@ export class YearRecord {
   private readonly base: string;
   private readonly shards = new Map<number, Shard | null>();
   private readonly waiting = new Map<number, Promise<Shard | null>>();
+  private index: YearIndex | null = null;
+  private indexing: Promise<YearIndex | null> | null = null;
 
   constructor(assetBase: string) {
     this.base = assetBase;
+  }
+
+  /**
+   * ── §THE PRESENT IS NOT AN EMPTY YEAR ─────────────────────────────────
+   * The rail lands untouched, which the map reads as "the city as it stands"
+   * and which has no year at all. The panel asked for that year's decisions,
+   * got none, and opened on *"Nothing in this year's minutes has been placed
+   * on the map"* — a dead end as the very first thing a reader sees, and one
+   * that reads as a broken page rather than as an invitation.
+   *
+   * So an untouched rail shows the LATEST year the record actually reaches.
+   * That is a real year with real decisions in it, it is what "now" means for
+   * a record that ends where the scans end, and it teaches the rail by showing
+   * something that will change when the reader moves it.
+   *
+   * The answer is the index's, not a constant: `perYear` is 3 kB and it moves
+   * when the corpus does.
+   */
+  async latestYear(): Promise<number | null> {
+    if (!this.index) {
+      this.indexing ??= fetch(`${this.base}/blocks/year/index.json`)
+        .then((r) => (r.ok ? (r.json() as Promise<YearIndex>) : null))
+        .catch(() => null);
+      this.index = await this.indexing;
+    }
+    const per = this.index?.perYear;
+    if (!per) return null;
+    let best: number | null = null;
+    for (const k of Object.keys(per)) {
+      const y = Number(k);
+      if (per[k] > 0 && (best === null || y > best)) best = y;
+    }
+    return best;
   }
 
   /** is the decade holding this year already in hand? */

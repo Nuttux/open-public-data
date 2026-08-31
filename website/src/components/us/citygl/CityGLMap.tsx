@@ -268,6 +268,10 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
   const [yearRows, setYearRows] = useState<YearDecision[]>([]);
   const [yearRowsBusy, setYearRowsBusy] = useState(false);
   const [recordHover, setRecordHover] = useState<number | null>(null);
+  /* the year the panel is actually showing — `year` when the reader has moved
+     the rail, and the record's own latest when they have not. §THE PRESENT IS
+     NOT AN EMPTY YEAR in `year-record.ts`. */
+  const [recordYear, setRecordYear] = useState<number | null>(null);
   const [classify, setClassify] = useState<ClassifyFile | null>(null);
   const yearRef = useRef<number | null>(null);
   const [markCard, setMarkCard] = useState<{
@@ -313,18 +317,22 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
      already follows — §THE MARKS FOLLOW THE SETTLED YEAR above. A decade
      arrives once and is kept, so scrubbing 1925 to 1929 fetches nothing. */
   useEffect(() => {
-    if (year === null) { setYearRows([]); return; }
     let dead = false;
     const rec = yearRecRef.current
       ?? (yearRecRef.current = new YearRecord(descriptor.dataBaseUrl.replace(/\/$/, "")));
     const bits = subject === null ? 0 : 2 ** subject;
-    if (rec.has(year)) { setYearRows(rec.forYear(year, bits)); return; }
     setYearRowsBusy(true);
-    void rec.load(year).then(() => {
+    void (async () => {
+      /* an untouched rail is not a year. Show the record's own latest rather
+         than opening on an empty list — §THE PRESENT IS NOT AN EMPTY YEAR. */
+      const y = year ?? (await rec.latestYear());
+      if (dead || y === null) { setYearRowsBusy(false); return; }
+      await rec.load(y);
       if (dead) return;
-      setYearRows(rec.forYear(year, bits));
+      setRecordYear(y);
+      setYearRows(rec.forYear(y, bits));
       setYearRowsBusy(false);
-    });
+    })();
     return () => { dead = true; };
   }, [year, subject, descriptor.dataBaseUrl]);
 
@@ -2035,7 +2043,8 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
                is that the panel and the lit dots are the same set. */
             ledger ?? (
             <CityRecordPanel
-              year={year}
+              year={recordYear}
+              latest={year === null}
               decisions={yearRows}
               subject={
                 subject === null

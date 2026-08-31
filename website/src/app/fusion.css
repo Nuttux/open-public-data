@@ -18757,6 +18757,8 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   font-family: var(--f-mono); font-size: 10px; flex: none; margin-top: 3px;
   color: color-mix(in srgb, var(--ink) 45%, transparent);
 }
+.theme-fusion .fx-city-record-mute { margin-top: 4px; border-top: 1px solid var(--rule); padding-top: 4px; }
+.theme-fusion .fx-city-record-row.is-mute { color: color-mix(in srgb, var(--ink) 72%, transparent); }
 .theme-fusion .fx-city-record-more {
   margin: 10px 8px 0; font-size: 12px; line-height: 1.45;
   color: color-mix(in srgb, var(--ink) 55%, transparent);

@@ -32,6 +32,17 @@
  * 307 rows is not a list a person reads. The panel shows the first `CAP` and
  * says how many it is not showing, because a silent truncation reads as
  * "that is all of it" when it is not.
+ *
+ * ── §THE ONES THE RECORD DOES NOT DESCRIBE GO LAST, AND COUNTED ───────────
+ * `record-line.ts` scores 56 % of lines as readable. The rest keep only their
+ * classification, and on a card showing one record that is fine. On a panel
+ * showing sixty-two it is not: 2026 opened with **six consecutive rows all
+ * reading "Landmarks and old buildings · Ordered"** and nothing else, which
+ * looks like a broken list rather than like a record that does not say more.
+ *
+ * So the readable ones lead, and the rest are grouped by what they are and
+ * counted — *"Landmarks and old buildings · Ordered — 6"*. Nothing is dropped
+ * and nothing is invented: it is the same set, said once instead of six times.
  * ═══════════════════════════════════════════════════════════════════════ */
 
 "use client";
@@ -48,8 +59,14 @@ export interface ClassifyLists {
 }
 
 export interface CityRecordPanelProps {
-  /** the year on the rail, or null for the present */
+  /** the year being shown — the rail's, or the record's own latest */
   readonly year: number | null;
+  /**
+   * true when the reader has not moved the rail and this is the record's
+   * LATEST year rather than one they chose. The panel says so, because a
+   * number nobody picked has to explain where it came from.
+   */
+  readonly latest: boolean;
   /** what the map is showing for that year — already narrowed by subject */
   readonly decisions: readonly YearDecision[];
   /** the chosen subject's label, or null when every subject is showing */
@@ -86,38 +103,54 @@ function says(d: YearDecision, cf: ClassifyLists | null): string | null {
 }
 
 export default function CityRecordPanel({
-  year, decisions, subject, ink, classify, loading, hover, onHover, onOpen,
+  year, latest, decisions, subject, ink, classify, loading, hover, onHover, onOpen,
 }: CityRecordPanelProps) {
   /* The rows are built once per year rather than per render: `recordLine` runs
      a dozen regular expressions a record, and the year moves on a drag. */
-  const rows = useMemo(
-    () => decisions.map((d) => ({ d, line: recordLine(d.text, says(d, classify), null) })),
-    [decisions, classify],
-  );
-  const shown = rows.slice(0, CAP);
-  const hidden = rows.length - shown.length;
+  const { told, mute } = useMemo(() => {
+    const made = decisions.map((d, i) => ({
+      d, i, line: recordLine(d.text, says(d, classify), null),
+    }));
+    /* a row TELLS you something when its headline is the record's own words.
+       Where the line did not read, `recordLine` puts the classification in the
+       headline and leaves `tag` null — that is the mute cohort. */
+    const told = made.filter((r) => r.line.tag !== null || !says(r.d, classify));
+    const rest = made.filter((r) => !told.includes(r));
+    const by = new Map<string, { label: string; n: number; first: number }>();
+    for (const r of rest) {
+      const label = r.line.headline ?? "";
+      const e = by.get(label);
+      if (e) e.n += 1;
+      else by.set(label, { label, n: 1, first: r.i });
+    }
+    return { told, mute: [...by.values()].sort((a, b) => b.n - a.n) };
+  }, [decisions, classify]);
+  const shown = told.slice(0, CAP);
+  const hidden = told.length - shown.length;
+  const total = decisions.length;
 
   return (
     <div className="fx-city-record">
       <div className="fx-city-record-head">
         <span className="fx-city-record-cap">The record</span>
         <div className="fx-city-record-count">
-          {year === null ? "Today" : `${year} — ${rows.length}`}
+          {year === null ? "The record" : `${year} — ${total}`}
           {year !== null ? (
             <span className="fx-city-record-unit">
-              {rows.length === 1 ? " decision" : " decisions"}
+              {total === 1 ? " decision" : " decisions"}
             </span>
           ) : null}
         </div>
         <div className="fx-city-record-scope">
           {subject ? `in ${subject.toLowerCase()}` : "in the Board's minutes"}
+          {latest && year !== null ? " — the latest year on file. Drag the rail to go back." : ""}
         </div>
       </div>
 
       <div className="fx-city-record-body">
         {loading ? (
           <p className="fx-city-record-quiet">Fetching the decade&hellip;</p>
-        ) : rows.length === 0 ? (
+        ) : total === 0 ? (
           <p className="fx-city-record-quiet">
             {subject
               ? `The Board decided nothing about ${subject.toLowerCase()} in ${year}. Drag the year, or clear the subject.`
@@ -153,9 +186,34 @@ export default function CityRecordPanel({
         )}
         {hidden > 0 ? (
           <p className="fx-city-record-more">
-            {hidden} more this year, not listed. Narrow it with a subject, or
-            press a dot on the map.
+            {hidden} more the record describes, not listed. Narrow it with a
+            subject, or press a dot on the map.
           </p>
+        ) : null}
+        {/* §THE ONES THE RECORD DOES NOT DESCRIBE — said once each, with how
+            many, rather than printed one identical row at a time. */}
+        {mute.length ? (
+          <div className="fx-city-record-mute">
+            <p className="fx-city-record-more">
+              And these, which the minutes name but do not describe:
+            </p>
+            {mute.map((m) => (
+              <button
+                key={m.label}
+                type="button"
+                className="fx-city-record-row is-mute"
+                onMouseEnter={() => onHover(m.first)}
+                onMouseLeave={() => onHover(null)}
+                onFocus={() => onHover(m.first)}
+                onBlur={() => onHover(null)}
+                onClick={() => onOpen(m.first)}
+              >
+                <span className="fx-city-record-dot" style={{ background: ink }} />
+                <span className="fx-city-record-text">{m.label}</span>
+                <span className="fx-city-record-n">{m.n}</span>
+              </button>
+            ))}
+          </div>
         ) : null}
       </div>
     </div>
