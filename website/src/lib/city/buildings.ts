@@ -468,8 +468,44 @@ export function roofTone(hex: string): string {
   const l = 0.2126 * r + 0.7152 * g + 0.0722 * b;
   const mix = (v: number): number => Math.round(v + (l - v) * 0.26);
   const grey = `#${[mix(r), mix(g), mix(b)].map((v) => v.toString(16).padStart(2, "0")).join("")}`;
-  return shade(lerpHex(grey, ROOF_PAPER, 0.18), 1.16);
+  /* ── AND THE LIFT HAS A SHOULDER ──────────────────────────────────────
+     The lift exists for a stated reason — a roof is the top face, the one
+     the sun lands on, and it should sit ABOVE the walls in value. That
+     reason applies to a dark roof and does not apply to a roof already at
+     the top of the range: it has nowhere to go, and pushing it there is
+     what put a car-park deck at 247 of 255 in the Mission, the brightest
+     thing in a frame full of buildings, reading as a hole in the render.
+
+     MEASURED: after `PAINT_TO_PICTURE` the palette's brightest entry is
+     179 — `palette.ts` §39 states it — so the lift tapers from its full
+     1.16 at black to nothing at 179, linearly. Every dark roof is lifted
+     exactly as much as it was; only the top of the ramp changes, which is
+     the only part that was clipping.
+
+     `ROOF_LIFT_TOP` is the palette's own ceiling and not a chosen number.
+     If the palette's scale ever moves, this moves with it.
+
+     AND THE ROLL-OFF IS CUBIC, NOT LINEAR, WHICH IS THE SECOND TRY. A
+     straight taper spends the lift evenly across the ramp and takes 7 % off
+     the MIDDLE of it, where there is plenty of headroom and the lift is
+     doing exactly the job it was written for. MEASURED over three frames it
+     cost 4 to 10 points of mean luminance to fix a clip at the top:
+
+       linear   Mission  >240  5.96 % -> 0.92 %   mean 117.1 -> 107.1
+                district >240  1.34 % -> 1.32 %   mean 103.8 ->  99.8
+
+     — the district gained nothing and paid 4 points, because what is over
+     240 there is not roofs. A cube holds the lift flat through the range and
+     spends it only where the headroom actually runs out: 1.14 at the
+     midpoint against 1.16, and still 1.00 at the ceiling. */
+  const k = 1 + (ROOF_LIFT - 1) * (1 - Math.min(1, l / ROOF_LIFT_TOP) ** 3);
+  return shade(lerpHex(grey, ROOF_PAPER, 0.18), k);
 }
+
+/** the lift at the dark end of the roof ramp, and where it runs out — see
+ *  `roofTone`. The ceiling is `PAINT_TO_PICTURE`'s own: 253 * 0.7071. */
+const ROOF_LIFT = 1.16;
+const ROOF_LIFT_TOP = 179;
 /** the wall's sun/sky split — `LOOK.facek` widens it */
 const wallK = (q: number): number => (LOOK.facek ? 0.50 + 0.18 * q : 0.66 + 0.1 * q);
 
