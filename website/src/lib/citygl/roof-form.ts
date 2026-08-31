@@ -926,6 +926,53 @@ export function boxForm(
   return true;
 }
 
+/**
+ * ONE STEP OF A STEPPED BUILDING.
+ *
+ * A tower is not a slab. It steps back as it rises — wide at the pavement,
+ * narrower higher up — and every footprint in this renderer was drawn as one
+ * prism at one height because the published record has one height and nothing
+ * else. The 2023 survey has the rest: `roofscan` reports the levels a building
+ * steps through and the SHARE OF ITS FOOTPRINT still standing at each.
+ *
+ * The share is measured; the outline at each level is NOT. So the ring is
+ * inset about its own centroid until its area matches — `k = sqrt(share)`,
+ * because area goes as the square of a linear scale — rather than a plan being
+ * invented that the scan never saw. A step is therefore always the building's
+ * own shape, shrunk: right for the setback towers this is mostly drawn on, and
+ * honestly wrong for the rare building that steps by losing a wing.
+ */
+export function stepForm(
+  sink: FormSink,
+  ring: FormRing,
+  cx: number, cy: number,
+  share: number,
+  elevM: number, fromH: number, toH: number,
+  wall: RGB, roof: RGB,
+): boolean {
+  const { x, y, off, n } = ring;
+  if (n < 3 || n > FORM_MAX_VERTS) return false;
+  if (!(toH > fromH) || !(share > 0.02) || share > 0.995) return false;
+  const k = Math.sqrt(share);
+  const lo: number[] = [], hi: number[] = [], cap: number[] = [];
+  for (let i = 0; i < n; i++) {
+    const px = cx + (x[off + i] - cx) * k;
+    const py = cy + (y[off + i] - cy) * k;
+    lo.push(sink.vertex(px, py, elevM, fromH, wall[0], wall[1], wall[2]));
+    hi.push(sink.vertex(px, py, elevM, toH, wall[0], wall[1], wall[2]));
+    cap.push(sink.vertex(px, py, elevM, toH, roof[0], roof[1], roof[2]));
+  }
+  for (let i = 0; i < n; i++) {
+    const j = (i + 1) % n;
+    sink.tri(lo[i], lo[j], hi[j]);
+    sink.tri(lo[i], hi[j], hi[i]);
+  }
+  /* the lid: a fan is safe here for the same reason the flat roof's is — the
+     triangles are coplanar and the depth buffer resolves them into the cap */
+  for (let i = 1; i + 1 < n; i++) sink.tri(cap[0], cap[i], cap[i + 1]);
+  return true;
+}
+
 export interface CapPlan {
   /**
    * the AREA centroid, world metres: `BldgTable.cx + FormTable.dx`. The offset

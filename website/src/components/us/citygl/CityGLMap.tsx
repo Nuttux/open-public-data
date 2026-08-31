@@ -1573,19 +1573,38 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
        shows its subject alone rather than the subject plus a shrug. */
     const cf = classifyRef.current
       ?? (classifyRef.current = await loadClassify().catch(() => null));
-    /* NOT WHEN THE SUBJECT ONLY REPEATS THE CARD'S OWN TITLE. A landmark
-       press classifies as "Landmarks and old buildings", under a card headed
-       "Landmarks & old buildings" — a whole line spent saying nothing. The
-       card already names the subject; what it has not said is what the Board
-       DID, so the verb carries the line on its own there. */
-    const same = (a: string, b: string): boolean => {
-      /* connectors out before comparing: the taxonomy writes "Landmarks AND
-         old buildings" and the map's seed writes "Landmarks & old buildings",
-         so a bare letters-only compare misses the very case this exists for */
-      const n = (x: string) =>
-        x.toLowerCase().replace(/\b(and|the|of|a)\b/g, "").replace(/[^a-z]+/g, "");
-      const [x, y] = [n(a), n(b)];
-      return x.length > 3 && y.length > 3 && (x.includes(y) || y.includes(x));
+    /* ── NOT WHEN THE SUBJECT ONLY REPEATS THE CARD'S OWN TITLE ─────────
+       The card already names the subject. A row that repeats it spends its one
+       strong line saying nothing, and what the reader does NOT yet know is
+       what the Board did — so the verb carries the line alone there.
+
+       SHARING A WORD IS THE TEST, and the first version was a substring
+       compare, which is too literal: it caught "Schools" under "Schools" and
+       missed "Housing and shelter" under "Homelessness & shelter", which is
+       the one anybody would point at. Every pair this collapses, over the
+       published shards — there are only seven, and none of them loses
+       anything:
+
+         499  Landmarks & old buildings -> Landmarks and old buildings
+         454  Housing                   -> Housing and shelter
+         439  Schools                   -> Schools
+          84  Homelessness & shelter    -> Housing and shelter
+          76  Fire                      -> Fire
+          66  Redevelopment             -> Redevelopment
+          17  Libraries                 -> Libraries
+
+       10% of rows. `city` and `own` are stopwords because "The city buys land"
+       and "Changing the city's own rules" are real answers that must survive
+       under any card. */
+    const STOP = new Set(["and", "the", "of", "a", "on", "in", "to", "for",
+                          "its", "city", "own"]);
+    const keyWords = (x: string): Set<string> =>
+      new Set((x.toLowerCase().match(/[a-z]+/g) ?? [])
+        .filter((w) => w.length > 2 && !STOP.has(w)));
+    const same = (a2: string, b2: string): boolean => {
+      const y = keyWords(b2);
+      for (const w of keyWords(a2)) if (y.has(w)) return true;
+      return false;
     };
     const says = (d: BlockDecision): string | null => {
       /* NOT WHEN THE LINE IS A BARE HEADING. `g` says where the published line

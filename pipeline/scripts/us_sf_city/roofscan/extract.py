@@ -232,20 +232,29 @@ def roof_of(src, ring, min_cells=12):
             })
         boxes.sort(key=lambda b: -b["area"])
 
-    # ── does the building step? distinct big levels, not clutter ──────────
+    # ── does the building step, and how wide is each step? ────────────────
+    #  A height on its own cannot be drawn. What a stacked prism needs is the
+    #  PLAN at each level, and the scan gives that as the area still standing
+    #  at or above it — stored as a fraction of the footprint, so the renderer
+    #  insets the published ring to match rather than inventing an outline.
     levels = []
     if m.sum() >= 40:
         vv = h[m & np.isfinite(h)]
         vv = vv[vv > ROOF_MIN_M]          # ground inside the ring is not a level
         if vv.size >= 20:
          cnt, edges = np.histogram(vv, bins=np.arange(vv.min(), vv.max()+0.5, 0.5))
+         picked = []
          for i in np.argsort(cnt)[::-1]:
             lv = float(edges[i] + 0.25)
             if cnt[i]*cell_a < STEP_MIN_M2: continue
-            if any(abs(lv-p) < STEP_MIN_M for p in levels): continue
-            levels.append(round(lv, 2))
-            if len(levels) >= 4: break
-         levels.sort(reverse=True)
+            if any(abs(lv-p) < STEP_MIN_M for p in picked): continue
+            picked.append(lv)
+            if len(picked) >= 4: break
+         picked.sort(reverse=True)
+         total = float(m.sum())
+         for lv in picked:
+            at = float((m & np.isfinite(h) & (h >= lv - 0.75)).sum())
+            levels.append({"h": round(lv, 2), "frac": round(at/max(1.0, total), 3)})
 
     return {
         "gid": int(ring["gid"]),

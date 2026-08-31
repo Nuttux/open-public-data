@@ -101,7 +101,7 @@ import {
   type FacadeAtlas,
   type FacadeKey,
 } from "../facade";
-import { boxForm, hipForm, hipPlan, trayForm, type FormSink } from "../roof-form";
+import { boxForm, hipForm, hipPlan, stepForm, trayForm, type FormSink } from "../roof-form";
 import {
   bldgMaterials,
   legendDraw,
@@ -303,6 +303,8 @@ export interface RoofTable {
   readonly at: Map<number, { o: number; n: number }>;
   /** the measured roof form, where the survey reached this footprint */
   readonly form: Map<number, { pitched: boolean; slopeDeg: number; ridgeDeg: number }>;
+  /** the levels a stepped building rises through, tallest first */
+  readonly steps: Map<number, { h: number; share: number }[]>;
   readonly bx: Int16Array;
   readonly by: Int16Array;
   readonly bw: Uint8Array;
@@ -320,10 +322,24 @@ export function decodeRoof(chunk: Chunk): RoofTable {
   const flags = f.flags as Uint8Array;
   const slope = f.slope as Uint8Array;
   const ridge = f.ridge as Uint8Array;
+  const ln = (f.ln ?? []) as Uint8Array;
+  const lh = (f.lh ?? []) as Uint16Array;
+  const lf = (f.lf ?? []) as Uint8Array;
   const at = new Map<number, { o: number; n: number }>();
   const form = new Map<number, { pitched: boolean; slopeDeg: number; ridgeDeg: number }>();
+  const steps = new Map<number, { h: number; share: number }[]>();
+  let lo2 = 0;
   let o = 0;
   for (let i = 0; i < gid.length; i++) {
+    const k = ln.length > i ? ln[i] : 0;
+    if (k > 1) {
+      const rows: { h: number; share: number }[] = [];
+      for (let j = 0; j < k; j++) {
+        rows.push({ h: lh[lo2 + j] * ROOF_DM, share: lf[lo2 + j] / 255 });
+      }
+      steps.set(gid[i], rows);
+    }
+    lo2 += k;
     at.set(gid[i], { o, n: cn[i] });
     form.set(gid[i], {
       pitched: (flags[i] & 1) !== 0,
@@ -335,6 +351,7 @@ export function decodeRoof(chunk: Chunk): RoofTable {
   return {
     at,
     form,
+    steps,
     bx: f.bx as Int16Array, by: f.by as Int16Array,
     bw: f.bw as Uint8Array, bd: f.bd as Uint8Array, bh: f.bh as Uint8Array,
   };
@@ -800,7 +817,22 @@ export function buildingsMesh(
        shapes is worse than either. See `heroesLayer`'s `skipGids`. */
     if (o.skipGids?.has(tb.gid[i])) continue;
 
-    const hM = roofHeight(tb.h[i], tb.hf[i]);
+    /* ── A STEPPED BUILDING IS DRAWN TO ITS PODIUM, NOT ITS TOP ──────────
+       Every footprint here was one prism at one height because the record
+       publishes one height. Where the survey found a building that steps, the
+       BASE prism stops at the lowest measured level and `stepForm` stacks the
+       rest above it; otherwise nothing above the podium would be visible,
+       because a full-height prism contains all of it.
+
+       The storey count follows the drawn height rather than the published one,
+       so the podium's facade bands are the podium's. The upper steps carry no
+       facade — the survey gives their extent and nothing about their walls. */
+    const hMFull = roofHeight(tb.h[i], tb.hf[i]);
+    const stepRows = o.roof?.steps.get(tb.gid[i]);
+    const stepped =
+      stepRows && stepRows.length > 1 &&
+      stepRows[stepRows.length - 1].h < hMFull - 2.0;
+    const hM = stepped ? stepRows![stepRows!.length - 1].h : hMFull;
     const elev = o.elevAt(tb.cx[i], tb.cy[i]);
 
     /* ── WHEN THIS FOOTPRINT ARRIVES, AND ITS PLACE IN THE SHUFFLE ───────
@@ -1120,6 +1152,27 @@ export function buildingsMesh(
        found it at: the two agree to a median 0.19 m, and a box floating a
        hand's breadth over its own roof is the one error a reader would
        actually see. */
+    /* ── THE STEPS, PODIUM UPWARD ───────────────────────────────────────
+       Each level is the published ring inset about its own centroid until its
+       area matches the share the scan measured still standing there. */
+    let topH = hM;
+    if (stepped) {
+      const rows = stepRows!;
+      for (let k = rows.length - 2; k >= 0; k--) {
+        const from = rows[k + 1].h;
+        const to = Math.min(hMFull, rows[k].h);
+        if (!(to > from)) continue;
+        if (stepForm(sink, ring, tb.cx[i], tb.cy[i], rows[k].share,
+                     elev, from, to, wc, rc)) {
+          topH = Math.max(topH, to);
+        }
+      }
+    }
+    /* ── AND WHAT IS STANDING ON THE TOP SURFACE ────────────────────────
+       Measured, per footprint. The base sits at the height this renderer DREW
+       the top at rather than the height the scan found it at: the two agree to
+       a median 0.19 m, and a box floating a hand's breadth over its own roof
+       is the one error a reader would actually see. */
     const rf = o.roof?.at.get(tb.gid[i]);
     if (rf) {
       for (let k = 0; k < rf.n; k++) {
@@ -1128,7 +1181,7 @@ export function buildingsMesh(
           sink,
           tb.cx[i] + o.roof!.bx[q] * ROOF_DM, tb.cy[i] + o.roof!.by[q] * ROOF_DM,
           o.roof!.bw[q] * ROOF_DM, o.roof!.bd[q] * ROOF_DM,
-          elev, hM, hM + o.roof!.bh[q] * ROOF_DM,
+          elev, topH, topH + o.roof!.bh[q] * ROOF_DM,
           rc,
         );
       }

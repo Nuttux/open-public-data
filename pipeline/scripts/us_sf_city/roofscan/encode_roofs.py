@@ -78,6 +78,7 @@ def build(rows, out_dir: str, quiet: bool = False):
     for key, items in sorted(by_key.items()):
         gid, flags, slope, ridge, rh, cn = [], [], [], [], [], []
         bx, by, bw, bd, bh = [], [], [], [], []
+        ln, lh, lf = [], [], []          # the stepped levels: count, height, plan share
         for r, cx, cy in items:
             boxes = r.get("clutter", [])[:CLUTTER_CAP]
             keep = []
@@ -95,6 +96,17 @@ def build(rows, out_dir: str, quiet: bool = False):
             ridge.append(0 if r["ridge_deg"] is None else int(round(r["ridge_deg"])) % 180)
             rh.append(min(65535, max(0, int(round(r["scan_h"] * DM)))))
             cn.append(len(keep))
+            #  a level is only worth shipping when the step is real: two levels
+            #  the same width are one level, and a 3 % ledge is a parapet.
+            lv = [l for l in r.get("levels", []) if isinstance(l, dict)]
+            lv = [l for l in lv if l["frac"] < 0.94] + [l for l in lv if l["frac"] >= 0.94][:1]
+            lv.sort(key=lambda l: -l["h"])
+            lv = lv[:4]
+            ln.append(len(lv) if len(lv) > 1 else 0)
+            if len(lv) > 1:
+                for l in lv:
+                    lh.append(min(65535, max(0, int(round(l["h"] * DM)))))
+                    lf.append(min(255, max(1, int(round(l["frac"] * 255)))))
             for t in keep:
                 bx.append(t[0]); by.append(t[1]); bw.append(t[2]); bd.append(t[3]); bh.append(t[4])
         w = ChunkWriter(f"roof/{key}", "roof")
@@ -102,6 +114,7 @@ def build(rows, out_dir: str, quiet: bool = False):
         w.add("ridge", "u8", ridge).add("rh", "u16", rh).add("cn", "u8", cn)
         w.add("bx", "i16", bx).add("by", "i16", by)
         w.add("bw", "u8", bw).add("bd", "u8", bd).add("bh", "u8", bh)
+        w.add("ln", "u8", ln).add("lh", "u16", lh).add("lf", "u8", lf)
         blob = w.serialise()
         sub = os.path.join(out_dir, "roof")
         os.makedirs(sub, exist_ok=True)
@@ -119,12 +132,14 @@ def build(rows, out_dir: str, quiet: bool = False):
 
 FIELDS = [("gid", "u32"), ("flags", "u8"), ("slope", "u8"), ("ridge", "u8"),
           ("rh", "u16"), ("cn", "u8"), ("bx", "i16"), ("by", "i16"),
-          ("bw", "u8"), ("bd", "u8"), ("bh", "u8")]
+          ("bw", "u8"), ("bd", "u8"), ("bh", "u8"),
+          ("ln", "u8"), ("lh", "u16"), ("lf", "u8")]
 
 PROV = {"gid": "roof_index", "flags": "roof_form", "slope": "roof_form",
         "ridge": "roof_form", "rh": "roof_plane", "cn": "roof_box",
         "bx": "roof_box", "by": "roof_box", "bw": "roof_box",
-        "bd": "roof_box", "bh": "roof_box"}
+        "bd": "roof_box", "bh": "roof_box",
+        "ln": "roof_step", "lh": "roof_step", "lf": "roof_step"}
 
 SCAN = ("USGS 3DEP CA_SanFrancisco_1_B23, airborne LiDAR flown 2023-04-20; "
         "132-164 points/m2 measured over two 200 m squares")
@@ -153,6 +168,18 @@ SOURCES = {
         "not_measured": "a roof with two pitches is reported as one; the cap at 60 "
                         "degrees refuses the footprint edge, which straddles roof "
                         "and pavement and differentiates to near-vertical",
+    },
+    "roof_step": {
+        "publisher": "USGS", "dataset": "CA_SanFrancisco_1_B23",
+        "what": "the distinct levels a building steps through — the modes of a "
+                "0.5 m height histogram at least 2 m apart and each covering at "
+                "least 25 m2 — with the share of the footprint still standing at "
+                "or above each one",
+        "quantised": "decimetres; the share to 1/255; at most four levels",
+        "not_measured": "the OUTLINE at each level. The share is measured and "
+                        "the shape is not: the renderer insets the published "
+                        "ring about its own centroid until its area matches, "
+                        "rather than inventing a plan the scan did not give",
     },
     "roof_box": {
         "publisher": "USGS", "dataset": "CA_SanFrancisco_1_B23",
