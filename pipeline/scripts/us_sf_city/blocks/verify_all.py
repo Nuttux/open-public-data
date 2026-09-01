@@ -294,7 +294,14 @@ def main() -> int:
         # A private person is NAMED, not merely mentioned: an explicit title, or
         # a possessive that only a person takes. Officials and honorees are
         # named on purpose and carry a role word, so they are not matched here.
-        PERSON = re.compile(r"\b(Mr|Mrs|Ms|Miss)\.")
+        # ── AN HONORIFIC INSIDE A PLACE NAME IS NOT A PRIVATE PERSON ─────────
+        # "Mrs. Jackson Way" is a STREET; "Mr. Cudworth's House" is a landmark
+        # building. The rule exists to keep a private applicant's name off the
+        # map beside their address — it must not fire on a place the city itself
+        # named after somebody. Five good lines were withheld before this.
+        PERSON = re.compile(r"\\b(Mr|Mrs|Ms|Miss)\\.(?!\\s*[A-Z][a-z]+(?:'s)?\\s+"
+                            r"(Way|Street|Avenue|Boulevard|Place|Court|Lane|Drive|"
+                            r"House|Building|Park|Square|Plaza|Terrace|Alley))")
         ROLE = re.compile(r"\b(Supervisor|Mayor|Clerk|Director|Commissioner|"
                           r"Board|Department|Committee|Company|Association)\b")
         named = [r for r in rows
