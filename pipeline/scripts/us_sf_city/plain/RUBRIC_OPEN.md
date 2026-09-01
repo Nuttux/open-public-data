@@ -613,3 +613,36 @@ Fremont streets" is the line being BUILT on a stretch — neither the 80 for a l
 ordered nor the 45 component rung. Used 70. "$51,000 added for more Municipal
 Railway service" sits between a recurring bill (36) and money into daily-use
 transit (80); read as a service increase at 60-62. Unanchored, ~a dozen lines.
+
+## v7 entry 5 now covers three reported defects, from three directions
+
+Written for a small material inheriting a citywide system's score. It has since
+absorbed two more, unchanged:
+
+    "$36 more toward a Heisler locomotive"          takes 53 via the system
+    "$693.01 for Silver Terrace Playground"         takes 65 via the facility
+    "$28.4M emergency repairs at Laguna Honda"      pinned to 36 via upkeep
+
+The first two are a small sum inheriting a large score; the third is a large sum
+pinned to a small one. All three are the same defect — a rule deciding the score
+while ignoring the size of the sum — and "where the sum is what the line is
+mostly about, score the sum" cuts both ways as drafted. The upkeep rule was
+written against "a $325 roof on Section J"; it has no ceiling, and $28.4M of
+emergency work on a hospital at risk of closing is not that.
+
+## The lease fork: two readers resolved it the same way v7 does
+
+Batch 036 scored "Health Department lease at <address>" at 26 throughout, on "do
+not invent reach", and said plainly that this almost certainly under-scores real
+clinics. Batch 038 independently did the same, reserving 68 for lines that name
+the use ("3911 Mission Street leased for a geriatric outpatient clinic").
+
+That is what v7's rule 10a says: score what the line establishes, never what it
+merely permits. Two readers reached it before it was written, and one of them
+disliked its own answer and gave it anyway — which is the right instinct. The
+under-scoring is real and it is the honest cost of not inventing what the record
+does not say. Worth stating in the rubric so the next reader does not re-litigate
+it: the answer is known to under-score, and that is the accepted trade.
+
+This is the fifth report of the fork and the second and third readers to resolve
+it identically. Closing it as answered by 10a.
