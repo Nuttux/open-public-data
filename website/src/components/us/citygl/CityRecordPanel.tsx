@@ -143,12 +143,29 @@ export default function CityRecordPanel({
     });
     /* a row TELLS you something when its headline is the record's own words.
        Where the line did not read, `recordLine` puts the classification in the
-       headline and leaves `tag` null — that is the mute cohort. */
-    const told = made.filter((r) => r.d.pl || r.line.tag !== null || !says(r.d, classify));
-    const rest = made.filter((r) => !told.includes(r));
+       headline and leaves `tag` null — that is the mute cohort.
+
+       ── AND THE EXTRACTED SENTENCE IS NO LONGER TRUSTED AT ALL ───────────
+       `recordLine` used to be the best available for a record nobody had
+       written, so a row it judged readable was allowed to tell. It judged
+       this readable:
+
+           Be APPROVED, and further directed the Clerk of the Board to
+           prepare findings that include a three-unit project…
+
+       That is the Clerk mid-sentence, and it was the top of a year panel.
+       96.8% of rows now carry a line written from the whole record and
+       checked twice, so the extraction is only ever reached on the 3.2%
+       where the Clerk's own words do not read — which is precisely where it
+       produces that. A row tells if we wrote it. Nothing else tells. */
+    const told = made.filter((r) => Boolean(r.d.pl));
+    const rest = made.filter((r) => !r.d.pl);
     const by = new Map<string, { label: string; n: number; first: number }>();
     for (const r of rest) {
-      const label = r.line.headline ?? "";
+      // the classification, not the mangled sentence: "Landmarks and old
+      // buildings · Ordered" says what the record is about, and the row's
+      // own link opens the scan for anyone who wants the Board's wording.
+      const label = says(r.d, classify) ?? "Not yet summarised";
       const e = by.get(label);
       if (e) e.n += 1;
       else by.set(label, { label, n: 1, first: r.i });
