@@ -1422,3 +1422,32 @@ description where a rung was needed.
 A hire, a post created, a salary set, a leave of absence. One reader used 24 by
 analogy with the appointment rung and 14 for leaves, and flagged the second as
 its own invention. Recurring across the whole corpus, never anchored.
+
+## The repair does not shrink the 18 pile — the floor itself makes it
+
+Batch 077 applied repair (a) throughout and still put 308 of 1,200 rows (25.7%)
+on exactly 18. The repair stops the floor RAISING small acts; it does nothing
+about the floor COLLECTING everything discounted below it.
+
+That separates two things I had been treating as one:
+
+    the inversion   a referred renaming outranking an adopted one
+                    fixed by min(base, ...), eight readers agree, settled
+
+    the pile        a quarter of a batch on one number, unorderable
+                    NOT fixed by that repair, and structural to having a
+                    floor at 18 at all
+
+The pile is the one that matters for what the score is for. A reader asking what
+mattered most in 1912 gets several thousand records in arbitrary order, and the
+repair does not touch it.
+
+    The option stands: floor at 10 instead of 18, letting discounted values
+    keep their spread (33 -> 17, 30 -> 15, 22 -> 11 rather than all -> 18).
+    The named-subject rule already keeps procedure out of 0-9, so the 18
+    floor is doing work that a lower floor plus uniform discounting would do
+    without flattening.
+
+Not taken unilaterally: it changes the shape of every discounted score in the
+corpus, which is a bigger change than any single anchor, and it is the kind of
+call that should be made deliberately rather than mid-wave.
