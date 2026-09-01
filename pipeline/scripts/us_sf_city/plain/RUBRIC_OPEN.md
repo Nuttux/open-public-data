@@ -1683,3 +1683,34 @@ reader.
 
 Note the mirror-image trap already logged: Third Street versus Third Avenue was
 one road wrongly split; this is two names for one road wrongly separated.
+
+## The thoroughfare split is STILL stated twice — my draft said to delete one, and I did not
+
+The v7 draft for entry 4 said, in as many words: "ADD as a general rule, and
+DELETE the 34/40 split from the street-levels anchor so the rule is stated in
+only one place." I added the general rule and did not do the deletion.
+
+So the rubric now says both:
+
+    line 266   "The street-level anchor splits 34 from 40 on whether the
+                street is a major thoroughfare"
+    the new    "...the act takes its anchor plus 6"
+    rule
+
+The anchor table gives 34, so 34 + 6 = 40 and the two AGREE — for a reader who
+treats 34 as the base. A reader who takes "the anchor is 40 for a major street"
+from the prose and then applies the general +6 gets 46. Batch 086 spotted exactly
+this and used 40, noting it as "the same stacking trap, one rung over".
+
+This is the v6 fault reappearing in a milder form: a rung stated in two places,
+agreeing today, waiting to disagree. It is milder only because the numbers happen
+to match — which is luck, not design, and it will not survive the next change to
+either statement.
+
+    FIX for v8: execute the deletion the draft already specified. The general
+     rule is the one place the split should live.
+
+Worth recording how it was caught: not by re-reading my own edit, but by a reader
+applying both statements and noticing they could be stacked. That is the fourth
+time this pass a defect in my writing was found by someone using it rather than
+by me checking it.
