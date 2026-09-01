@@ -91,10 +91,25 @@ reader nothing they came for:
     GOOD: Geary Street paving contract adopted
 
 Never write "unanimously", "N supervisors", "N ayes", "N absent", or a named
-supervisor's excusal as the substance of a line. If after reading the whole
-record you genuinely cannot tell what was voted on — some pages print only the
-tally, with the subject on the page before — then say so plainly ("A vote with
-no subject on this page") rather than dressing the tally up as an event.
+supervisor's excusal as the substance of a line.
+
+LOOK FOR THE BRACKETED FILE TITLE BEFORE GIVING UP. From the 1990s the Journal
+prints the subject in square brackets beside the file number, and it is easy to
+mistake the surrounding roll call for the whole record:
+
+    Ordinance No. 7-99 FINALLY PASSED 981976 [Underground District 342,
+    Octavia Street]
+    BAD : A final vote with no subject on this page
+    GOOD: Wires go underground on Octavia Street
+
+    Resolution No. 31-99 ADOPTED 982117 [Emergency Repair, Brannan Street Sewer]
+    BAD : An adoption vote with no subject on this page
+    GOOD: Emergency repair ordered on the Brannan Street sewer
+
+Only when there is NO title, in brackets or otherwise, and the whole record is
+roll call, say so plainly ("A vote with no subject on this page"). That is a
+last resort for a page that truly carries nothing, not a way past a record whose
+subject takes a moment to find.
 
 Supervisors DO belong in a line when they are the event rather than the
 arithmetic: "Four supervisors sent to the League of California Municipalities

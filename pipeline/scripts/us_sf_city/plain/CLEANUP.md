@@ -43,15 +43,6 @@ The glossary gives a term's plain MEANING, not a phrase to drop into the slot.
     How far back buildings sit to be fixed on Shrader Street
     -> Buildings on Shrader Street will have to sit further back
 
-## The rules that still hold
-* 6-11 words, who did what, where.
-* Nothing named that the record does not name — no street, sum, or party that
-  is not in `text`. This is checked mechanically afterwards.
-* A proposal stays a proposal. If the record says referred, continued, tabled
-  or proposed, the line may not say it happened.
-* Read the line back to yourself. If nobody would say it out loud, it is not
-  finished.
-
 ### 3. The tally written as the event (~135 lines, 0.34%)
     Tabled by nine supervisors, two away
     -> <what was tabled> tabled
@@ -65,3 +56,22 @@ reach into a neighbouring record for one.
 KEEP lines where supervisors are the event, not the arithmetic:
   · "Four supervisors sent to the League of California Municipalities convention"
   · "Three supervisors named to press officials for speedy action"
+
+## The rules that still hold
+* 6-11 words, who did what, where.
+* Nothing named that the record does not name — no street, sum, or party that
+  is not in `text`. This is checked mechanically afterwards.
+* A proposal stays a proposal. If the record says referred, continued, tabled
+  or proposed, the line may not say it happened.
+* Read the line back to yourself. If nobody would say it out loud, it is not
+  finished.
+
+### 4. "No subject on this page" written over a bracketed title
+From the 1990s the subject sits in square brackets beside the file number. The
+no-subject escape hatch was used over it:
+
+    Ordinance No. 7-99 FINALLY PASSED 981976 [Underground District 342, Octavia Street]
+    was : A final vote with no subject on this page
+    -> Wires go underground on Octavia Street
+
+Only a record that is roll call and nothing else keeps the honest no-subject line.
