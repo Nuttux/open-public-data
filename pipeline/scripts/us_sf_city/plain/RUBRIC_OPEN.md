@@ -1025,3 +1025,32 @@ defect that will need its affected records returned once fixed.
   a lease whose use is named by the BUILDING, not a department — "Crystal Palace
     Baths rented for $1,250 a month"; the settled 26 rule is about lines naming
     only a department, and here the building's own name states a public use
+
+## Veto vs refusal — two readers, and the veto row is left doing nothing
+
+The anchor table says "a veto — score the act it stops". The prose says "a
+refusal of anything above the permit tier takes the act at x0.5". "Mayor rejects
+shops on Judah Street" is 55 by the first and 28 by the second. Batch 055 read it
+as a veto; batch 056 applied the halving and pointed out what that costs: if the
+refusal rule scales every veto, the veto row does nothing at all outside the
+permit tier.
+
+Predates v7. Two readers, a band apart.
+
+    FIX: the veto row names WHICH act to score; the refusal rule scales it.
+     Say that, and the two stop competing.
+
+## Four more unanchored, batch 056
+
+  operating money for a human service — "money set aside for maternity service"
+    is pulled to 80-100 by money-into-a-clinic and to 30 by the upkeep rule;
+    nothing distinguishes paying for CARE from paying a facility's coal bill
+  bond ordinance terms attached to a citywide measure — the machinery rule is
+    written for machinery attached to an ADDRESS, so reach and machinery point
+    at different bands; used 50
+  TIME-LIMITED zoning — "shops allowed at Bush and Steiner for ninety days only"
+    functions as a permit, not the permanent rule the ladder assumes; used 33
+    rather than the 45 one-corner rung. The rezoning ladder should say it prices
+    permanent rules, as the designation section already does
+  a bus route CHANGED rather than ordered — the transit anchor names "ordered,
+    planned or extended" at 80 and not modified; used 62
