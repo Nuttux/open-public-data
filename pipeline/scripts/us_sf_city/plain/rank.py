@@ -161,7 +161,12 @@ def main() -> None:
                     continue
                 for r in rows:
                     out.write(json.dumps(r, ensure_ascii=False) + "\n")
-                    have[r["id"]] = r
+                    # only a row read under the CURRENT rubric counts as done.
+                    # Adding every ingested row here reported 3,600 records as
+                    # read at v4 when the file held none: they were v3 work,
+                    # correctly stamped, and correctly still outstanding.
+                    if r["rv"] == RUBRIC_VERSION:
+                        have[r["id"]] = r
                 got += len(rows)
                 print(f"  {p.name}: took {len(rows):,}" + (f", skipped {bad}" if bad else ""))
                 p.rename(WORK / ("taken-" + p.name[len("done-"):]))
