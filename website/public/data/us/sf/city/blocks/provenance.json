@@ -1,0 +1,14 @@
+{
+ "archive": {
+  "sources": 314,
+  "from": 1906,
+  "to": 2016,
+  "rows": 145671
+ },
+ "clerk": {
+  "sources": 363,
+  "from": 2016,
+  "to": 2026,
+  "rows": 5221
+ }
+}

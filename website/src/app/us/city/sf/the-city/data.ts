@@ -133,13 +133,46 @@ let PROVENANCE: RecordProvenance | null = null;
  *     Internet Archive   313 volumes   1906–2016   145,652 rows
  *     Clerk of the Board 363 files     2016–2026     5,221 rows
  *
- * COST, STATED: 43 MB across 2,204 files, 150 ms measured. Memoised at module
- * scope because `generateMetadata` reads `searchParams` and so opts this page
- * out of static rendering — without the cache this would run per request.
+ * COST, AND WHERE IT IS NOW PAID: 52 MB across 2,204 files. That is a BUILD
+ * cost — `scripts/gen-sf-record-provenance.mjs` writes `blocks/provenance.json`
+ * and the render reads that one file. See §THE WALK IS A BUILD STEP below for
+ * what happened when the render did the walk itself. Still memoised at module
+ * scope, because `generateMetadata` reads `searchParams` and so opts this page
+ * out of static rendering.
  */
 function recordProvenance(): RecordProvenance {
   if (PROVENANCE) return PROVENANCE;
   const root = path.join(process.cwd(), "public", "data/us/sf/city/blocks");
+
+  /* ── §THE WALK IS A BUILD STEP, NOT A RENDER ONE ───────────────────────
+     This counted the rows by opening 2,204 files across 52 MB. That is fine
+     on a laptop and fatal on a deployed function: `next.config.ts` excludes
+     `public/data/us/sf/city/**` from every `/us/**` route on purpose — the
+     map is fetched by the BROWSER, tier by tier — and names the three files
+     the server genuinely opens. The shards are not among them, so
+     `readdirSync` found a directory that had not been traced and the page
+     returned a Server Components render error on the live site.
+
+     Two ways out and only one of them is right. Adding 52 MB of shards to
+     the trace pays it into every cold start of a route whose whole point is
+     that it reads almost nothing, and walks back toward the 250 MB ceiling
+     that put those excludes there in the first place. So the walk moves to
+     where it belongs: `scripts/gen-sf-record-provenance.mjs` writes the
+     answer next to the shards it counted, and this reads one small file.
+
+     The walk stays as the fallback, so a tree without the generated file
+     still renders — a laptop, a fresh checkout, a city that has not run the
+     script — and cannot quietly print a different set of numbers than the
+     one the shards say. */
+  try {
+    PROVENANCE = readJson<RecordProvenance>(
+      "data/us/sf/city/blocks/provenance.json",
+    );
+    return PROVENANCE;
+  } catch {
+    /* fall through to the walk */
+  }
+
   const A = { sources: new Set<string>(), from: Infinity, to: 0, rows: 0 };
   const C = { sources: new Set<string>(), from: Infinity, to: 0, rows: 0 };
   const eat = (rows: readonly ShardRow[]): void => {
