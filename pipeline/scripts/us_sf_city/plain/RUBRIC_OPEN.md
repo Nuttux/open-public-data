@@ -1329,3 +1329,45 @@ the corpus is full of "Buildings on X Avenue and four others". One reader used
 Same shape as the scattered-intersections gap another reader hit on traffic. Both
 want the same sentence: an act repeated over N named streets takes the one-street
 rung plus 2 per additional street, capped below the citywide rung.
+
+# MEASURED: a third of the corpus shares three scores
+
+The point of this score is to ORDER records. Measured across 28,700 records read
+at v7:
+
+    score 18    3,821   13.3%
+    score 33    2,550    8.9%
+    score 38    2,508    8.7%
+    ------------------------------
+    top three   8,879   30.9%
+
+    under 30   10,696   37.3%, spread over just 23 distinct values
+    distinct scores in use: 76 of a possible 101
+
+One batch of 1906-1915 material put 417 of 1,200 rows (35%) on 18 alone. Inside
+those groups nothing is ordered — a reader asking "what mattered most in 1912"
+gets 3,821 records in arbitrary sequence.
+
+Some of that is real. Contractor time extensions ARE interchangeable, and the
+anchor table exists precisely to make like things score alike; 33 and 38 are big
+groups because permits and paving genuinely dominate the corpus.
+
+The 18 pile is different, and part of it is mine. The floor collects everything
+whose discounted value falls below it, from several different starting points, so
+acts that were NOT alike before the discount become identical after it. One
+reader put it exactly: "$10,000 proposed for emergency supplies at the Relief
+Home" and "a contractor's fifteen extra days" both land on 18 and tie.
+
+    OPTION, not yet taken: lower the floor to 10 and let discounted values
+    keep their spread. 33 -> 17, 30 -> 15, 22 -> 11 instead of all three -> 18.
+    Order is then preserved by construction rather than by a floor, and the
+    named-subject rule (nothing below 10) still keeps procedure out.
+
+The reason to hesitate: the 18 floor was introduced to fix a real inversion, and
+a floor at 10 reintroduces ties at the bottom instead of the middle. The better
+answer may be no floor at all plus uniform discounting, since the original
+inversion came from protecting SOME anchors and not others.
+
+This also interacts with duplicate collapsing, which is still on the list: a
+measure written across several rows currently contributes several identical
+scores to the same tie group.
