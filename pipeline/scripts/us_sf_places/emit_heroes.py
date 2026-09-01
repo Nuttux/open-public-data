@@ -562,12 +562,119 @@ def build_pyramid(ring: list[tuple[float, float]], sec: dict) -> tuple[list[dict
 
     parts = [solid(0.0, shaft, 1.0, s_join, sec["matShaft"], 0.0),
              solid(shaft, top_m, s_join, 0.0, sec["matCap"], 0.0)]
+
+    # ── THE WINGS, WHICH ARE HALF OF WHAT THIS BUILDING LOOKS LIKE ────────
+    # Two vertical shafts break out of the tapering faces and rise to the top
+    # of the shaft, flanking the spire. They are not ornament and they are not
+    # authored shape: they are the LIFTS on one side and the stair and smoke
+    # tower on the other, and the reason they are outside the envelope is that
+    # a pyramid runs out of floor plate before it runs out of building. Drawn
+    # without them the tower is a plain cone, which is what shipped and what
+    # the page showed as a pale spike.
+    #
+    # WHAT IS READ. The register gives the two storey counts this file already
+    # splits the shaft and cap on, and `stories_above_grade` 50. The wings
+    # begin at the 29th of those 50 — the floor at which the plan has narrowed
+    # past what the cores can sit inside — so their foot is `29/50` of the
+    # shaft, DERIVED from the same two published numbers as the join above and
+    # not a height typed in metres.
+    #
+    # WHAT IS AUTHORED. Their width and their depth, as fractions of the base
+    # the tower stands on, and the fact that there are two of them on opposite
+    # faces. Stated here rather than in a constant: `WING_W` of the face they
+    # sit on, `WING_D` into the plan.
+    #
+    # NOTHING STANDS OUTSIDE THE FOOTPRINT. A wing's plan is a rectangle cut
+    # from the BASE ring's own bounding box in the ring's own frame, so it is
+    # inside the base by construction and the caller's §11 gate sees it anyway.
+    # It stands outside the tapering SURFACE above its foot, which is the whole
+    # point of it and is what the building does.
+    wing_from = round(shaft * float(sec.get("wingFromStorey", 29))
+                      / float(sec.get("storiesAboveGrade", ns)), 2)
+    if 0 < wing_from < shaft:
+        parts += wing_parts(ring, wing_from, shaft, s_join, shaft, top_m,
+                            sec["matShaft"])
     return parts, {"kind": "pyramid", "topM": top_m, "shaftTopM": shaft,
                    "joinScale": s_join, "ftPerStorey": round(top_ft / (ns + nc), 2),
                    "hull": 0, "drawnM2": round(drawn_m2, 1),
                    "planM2": round(plan_m2, 1), "hullM2": round(a_hull, 1),
                    "ringM2": round(abs(ring_area(ring_pub)), 1),
                    "baseNv": len(base), "ringNv": len(ring_pub)}
+
+
+#: a wing's width, as a share of the face it sits on. MEASURED off the
+#: published plan: the tower is 165 ft across and each wing about 36 ft, which
+#: is 0.22. Authored in the sense that the register does not publish it; taken
+#: from the building's own proportions rather than chosen.
+WING_W = 0.22
+#: and how far it reaches into the plan, as a share of the perpendicular span.
+#: A lift core is deep enough to hold a bank of cars and no deeper.
+WING_D = 0.16
+
+
+def wing_parts(ring, z0, z1, s_at_z0, shaft, top_m, mat):
+    """Two vertical shafts on opposite faces of the base — see `build_pyramid`.
+
+    Placed in the RING'S OWN FRAME, off its longest edge, for the reason
+    `roof-form.ts` §gablePlan records at length: San Francisco's grid runs 25
+    to 30 degrees off the projection's axes, and a rectangle laid out on x and
+    y comes out turned relative to the building it belongs to.
+    """
+    n = len(ring)
+    # the longest edge is a real wall and is what the plan is square to
+    bi, bl = 0, -1.0
+    for i in range(n):
+        j = (i + 1) % n
+        dx, dy = ring[j][0] - ring[i][0], ring[j][1] - ring[i][1]
+        L = dx * dx + dy * dy
+        if L > bl:
+            bl, bi = L, i
+    j = (bi + 1) % n
+    ex, ey = ring[j][0] - ring[bi][0], ring[j][1] - ring[bi][1]
+    eL = math.hypot(ex, ey) or 1.0
+    ux, uy = ex / eL, ey / eL
+    nx, ny = -uy, ux
+    us = [p[0] * ux + p[1] * uy for p in ring]
+    vs = [p[0] * nx + p[1] * ny for p in ring]
+    u0, u1, v0, v1 = min(us), max(us), min(vs), max(vs)
+    cu, cv = (u0 + u1) / 2, (v0 + v1) / 2
+    hu, hv = (u1 - u0) / 2, (v1 - v0) / 2
+
+    def world(a, b):
+        return (a * ux + b * nx, a * uy + b * ny)
+
+    out = []
+    for sgn in (-1, 1):
+        # the wing sits at one end of the long axis, centred across it. The
+        # base is convex but it is not a rectangle, so a rectangle taken off
+        # its BOUNDING BOX can put a corner outside it — the emitter's §11
+        # gate refused exactly that on the first cut, at (3098.16, 3887.53).
+        # So the wing is walked inward from the face until it is contained,
+        # in steps of a hundredth of the plan, and the step it stops on is
+        # reported. It is not nudged and it is not waived.
+        b = hv * WING_W
+        placed = None
+        for k in range(40):
+            pull = hu * 0.01 * k
+            a1 = cu + sgn * (hu - pull)
+            a0 = a1 - sgn * (2 * hu * WING_D)
+            pts = [(a0, cv - b), (a1, cv - b), (a1, cv + b), (a0, cv + b)]
+            if all(contained(ring, *world(a, bb)) for (a, bb) in pts):
+                placed = (pts, k)
+                break
+        if placed is None:
+            raise ValueError("no wing of this size fits inside the base ring")
+        pts, k = placed
+        if sgn < 0:
+            pts.reverse()
+        r = []
+        for (a, bb) in pts:
+            wx, wy = world(a, bb)
+            r += [round(wx, 3), round(wy, 3)]
+        out.append({"k": 0, "r": r, "z0": round(z0, 2), "z1": round(z1, 2),
+                    "m": mat, "c": mat, "px": 0.0, "ink": 1,
+                    "p": [0.0, 1.0, 1.0, 1.0]})
+    return out
 
 
 def build_temple(ring: list[tuple[float, float]], top_m: float,

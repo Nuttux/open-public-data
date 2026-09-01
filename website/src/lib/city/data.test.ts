@@ -496,9 +496,10 @@ d("the authored landmarks", () => {
        statement about the MERGED register and the manifest's own
        `landmarks.authoredHere` says which rows are whose. DRAW.md §21.9. */
     expect(t!.heroes.length).toBe(14);
-    expect(t!.heroes.reduce((a, h) => a + h.parts.length, 0)).toBe(145);
+    /* 145 -> 147 when the Transamerica grew its two wing shafts */
+    expect(t!.heroes.reduce((a, h) => a + h.parts.length, 0)).toBe(147);
     expect(t!.heroes.reduce(
-      (a, h) => a + h.parts.reduce((b, p) => b + p.rx.length, 0), 0)).toBe(3541);
+      (a, h) => a + h.parts.reduce((b, p) => b + p.rx.length, 0), 0)).toBe(3549);
   });
 
   it("nothing stands above the MEASURED top — the gate's own ceiling", async () => {

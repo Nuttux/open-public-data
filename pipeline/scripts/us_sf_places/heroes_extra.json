@@ -1,225 +1,227 @@
 {
-  "note": "Heroes authored on top of the eleven that encode_city_chunks.py moves out of the mock's wonder/hero-data.js. Read by emit_heroes.py, which MERGES them into base/heroes.qc + base/heroes.json. NO GEOMETRY IS TYPED IN THIS FILE: every ring, area, height, anchor and roll year is read out of the shipped footprint the record names. What is here is the choice of which published building gets drawn and how its SECTION is drawn, which is the same category as the 68 shaped caps -- 'the data fixes the top height and the plan area and says nothing about taper' (manifest kinds.cap). WHICH BUILDING each hero is on is NOT the `b` literal: `b` is advisory and is asserted, and the thing that selects the footprint is the published identity under `attachments` -- see emit_heroes.py, WHICH BUILDING A HERO IS ON.",
-  "heroes": [
-    {
-      "k": "pofahall",
-      "n": "Palace of Fine Arts Exhibition Hall",
-      "b": 159037,
-      "y": 1915,
-      "an": "the footprint that DataSF 97yj-54sx Article 10 landmark no. 88 (`Palace Of Fine Arts`) resolves to in this map's own register: base/places.qc carries `bi` 159037 on that row, with the designation bit set. The rotunda beside it is a different footprint (159057) and is the hero `pofa`.",
-      "ys": "the same register and the same reasoning the `pofa` record already carries: rzic-39gi gives landmark no. 88 a `yearbuilt` of 0, so the register has no year for it; 1915 is the year of the Panama-Pacific International Exposition the corpus's own `ppie` entry carries, and the roll dates this footprint 1906, which is FLAG_NOYEAR and not a year.",
-      "dr": "The crescent is the published footprint and 14.0 m is the published height; both are read out of the shipped record and neither is authored. What is DRAWN is the section, on the shaped-cap rule: a wall set back 0.70 m, a cornice band at the full published ring, and a roof drawn as a segmental arc over the ring's own equivalent half-width (its area / perimeter), truncated flat where the published 14.0 m top stops it. Every roof band stands on a per-vertex bisector inset of the published ring -- the Conservatory of Flowers' own containment rule -- and the deepest inset drawn is the deepest one at which every vertex of the inset ring is still inside the published ring, searched rather than typed. Nothing stands outside the published footprint and nothing above the published top. The colonnade that curves round the lagoon is a separate set of published footprints and is drawn by the fabric, which is what the `pofa` record already says.",
-      "section": {
-        "eavesFrac": 0.62,
-        "corniceM": 1.0,
-        "wallSetbackM": 0.7,
-        "roofBands": 3,
-        "matWall": 4,
-        "matRoof": 4,
-        "why": "eavesFrac, corniceM and wallSetbackM are the drawing; matWall and matRoof are `stucco`, which is the material the `pofa` record already authors for the rotunda's own walls -- the same building, the same register, the same authored material. eavesFrac 0.62 was 0.75 on the first cut and the roof came out 2.5 m of rise over 9.8 m of horizontal inset, a 14-degree slope that reads as a terrace rather than a roof; screenshot .parity/g3/out/hall-str.prod.after.png at the first value.",
-        "roofKind": "segmental"
-      }
-    },
-    {
-      "k": "transamerica",
-      "n": "Transamerica Pyramid",
-      "b": 137821,
-      "y": 1972,
-      "an": "the footprint this map's own register resolves the name to: base/places.qc row `Transamerica Pyramid [Transamerica Center]` carries bi 137821, from DataSF 5kya-mfst, the Tall Building Inventory, whose scope is every building over 240 ft.",
-      "ys": "5kya-mfst `date`, the publisher's own \"Building's year of construction\", which reads 1972 on this row and agrees with its `completion_date`. The assessor's roll dates the parcel 1971 and that year is shipped alongside on `ms.yr`, so a reader can see both.",
-      "dr": "NOTHING ABOUT THIS FORM IS AUTHORED and the reason it is drawn at all is a measurement error, not a taste one. The fabric's height is `ynuv-fyni hgt_mediancm`, the MEDIAN LIDAR return over each footprint -- exactly right for a flat-roofed box and exactly wrong for a spire, because most of a tapering tower's footprint lies under its wide base. This 853 ft tower was drawn 68 m tall and its own shaped cap was then carved inside that 68 m solid, so the most recognisable tower in San Francisco was a stub its neighbours hid (.parity/g3/out/pyr-blk.prod.before.png). The published top, 853 ft from 5kya-mfst `height_ft`, replaces it.\nThe BASE is the largest convex figure the published footprint contains, on the footprint's own vertices: 2,945.0 m2 of 2,982.0, six of its eight vertices, 98.8 %. What it drops is a 9 x 7 m tab on one corner -- the lift and stair projection -- which is not the tower's plan. Two simpler repairs were tried and both are recorded in the emitter because both fail on this outline: the convex HULL covers 4.9 % MORE ground than the published footprint and slips a vertex-only gate, because a hull's vertices are always ring vertices; and shrinking that hull about its centroid until the whole polygon is inside the ring costs a 0.806 scale, which sits on landmarks.ts section 11's own 0.80 authoring-error floor. The convex-hull REFERENCE is not taken either: Sutro Tower alone is granted it and that invariant is asserted in data.test.ts.\nThe register's own `base_plan_size` 165x165 ft is NOT used and the disagreement is worth stating: that is a 50.3 m square, 2,529 m2, and the measured footprint's main quadrilateral is about 45.7 x 53.6 m, so a 50.3 m square does not fit inside it. The published plan is a design figure; the footprint is a measurement of the thing standing there, and every other hero on this map stands on its own footprint.\nThe TAPER has no free parameter: a pyramid is the surface between its base and a point at its top, so the plan scale at height z is 1 - z/top. The join between the shaft and the architectural cap is where the register's own description puts it -- \"50 story WSMF with 11 story architectural cap\", so 50/61 of the height, 213.11 m, where the plan is 11/61 of the base. A check on that split rather than an assumption: 853 ft over 61 storey-equivalents is 13.98 ft a storey, and the register's `typ_story_height` on comparable rows reads 14'9\". The two halves differ in MATERIAL and not in shape, and `facade_material` names both: \"concrete panel and sheet metal\". The two wings that carry the lifts and the stairs are NOT drawn: the register publishes no dimension for them.",
-      "section": {
-        "form": "pyramid",
-        "heightFt": 853,
-        "storiesShaft": 50,
-        "storiesCap": 11,
-        "matShaft": 3,
-        "matCap": 15,
-        "why": "heightFt, storiesShaft and storiesCap are read straight off 5kya-mfst -- `height_ft`, and the two numbers in `description`. basePlanFt is carried for the record and is NOT used to size the base: it does not fit the measured footprint, and `dr` says so. matShaft is `concrete` and matCap is `silver`, which is that row's own `facade_material`, \"concrete panel and sheet metal\", split at the join the description gives.",
-        "basePlanFt": [
-          165,
-          165
-        ]
-      }
-    },
-    {
-      "k": "internetarchive",
-      "n": "Internet Archive HQ",
-      "b": 160550,
-      "y": 1922,
-      "an": "THE FOOTPRINT IS PUBLISHED AND THE IDENTIFICATION IS MEASURED. The ring is DataSF ynuv-fyni as this map already ships it: 1,344.0 m2 on 20 vertices, 15 m tall, which is the 98th percentile of the 166,166 footprints drawn here, while every other ring within 40 m of it is a 140-306 m2 house. It is the only structure of that scale on the corner and it sits 27.7 m from the Internet Archive's own published position for 300 Funston Avenue. No register this pipeline reads NAMES it -- the eleven checked one by one are listed in places_extra.json, which carries the two names this building has held in turn; this record carries its FORM.",
-      "ys": "DataSF wv5m-vpq2, the assessor's secured roll, as the `yr` byte this map already ships on the footprint: 1922, with build_bldg.py's FLAG_NOYEAR sentinel CLEAR, so it is a published year of construction and not the 1906 fallback. Corroborated one year later by the Board's own minutes, which grant `Board of Trustees, Christian Science Church, at southeast corner of Clement street and Funston avenue` an oil storage tank permit of 1,500 gallons on 19 November 1923 (Resolution No. 21068 (New Series), journalofproceed1923sanfrich, leaf 1295).",
-      "dr": "The published footprint and the measured 15.0 m top. The podium, the wall, the cornice, the roof band, the portico and its six columns are DRAWN — the same sentence the Old Mint's own record carries, for the same section. Every band is a per-vertex bisector inset of the published ring and the deepest is 1.7 m against the 1.80 m this ring admits before a band self-intersects, so nothing stands outside the footprint; the portico reaches 15.0 m and nothing stands above it. The portico and the colonnade are laid on the inward normal of ONE published face — ring vertices 4 to 5, the 22.09 m western edge the building presents to Funston Avenue — and there are six columns because the building's front has six. What is authored is the section's proportions; its position, its extent and its top are read off the record.",
-      "section": {
-        "form": "temple",
-        "faceI": 4,
-        "faceJ": 5,
-        "baseFrac": 0.12,
-        "wallFrac": 0.77,
-        "corniceFrac": 0.88,
-        "insetBaseM": 0.6,
-        "insetWallM": 1.2,
-        "insetCorniceM": 0.3,
-        "insetRoofM": 1.7,
-        "porticoSpanFrac": 0.8,
-        "porticoDepthM": 4.6,
-        "porticoOffsetM": 0.18,
-        "columns": 6,
-        "columnRM": 1.05,
-        "columnInsetM": 1.3,
-        "columnSpanFrac": 0.7,
-        "matBase": 5,
-        "matWall": 5,
-        "matRoof": 15,
-        "matCol": 5,
-        "why": "The fractions are the Old Mint's section read as proportions of its own 16.0 m top and laid on this building's 15.0 m: a low podium, a tall order, a heavy entablature, and above the flanks a portico that reaches the measured top. THE PORTICO STANDING PROUD IS THE LOAD-BEARING CHOICE. The map's camera bearing is FIXED and no control rotates it, so the western face this building presents to Funston Avenue — the face the colonnade is on — is permanently the far side, seen almost edge-on. A portico drawn flush with the roof is therefore invisible, which is what the first attempt shipped. A temple front genuinely carries its entablature above the parapet of its flanks, and this one does, so drawing that is both true and the one part of the section the camera can actually see. MATERIALS: `quartz` (index 5) on podium, wall, cornice, portico and columns — the palette's whitest stone, and this building is white where the Old Mint is cream. The roof band is `silver` (15), a light grey: the flat roof is the surface a reader looking down mostly sees, it is not white, and `slate` (7) — the Old Mint's choice — made the whole building read as one more grey-roofed neighbour. NO ARCADE. The first attempt repeated openings over every wall of the ring, which put six coarse grey bars across the flanks of a building whose sides are close to blank. The openings this building has are between its columns, and the colonnade already draws those.",
-        "porticoTopFrac": 1.0,
-        "columnTopFrac": 0.77
-      }
-    }
-  ],
-  "rejected": [
-    {
-      "k": "grace",
-      "n": "Grace Cathedral",
-      "b": 139401,
-      "why": "AUTHORED, SCREENSHOTTED AND TAKEN OUT AGAIN, recorded so it is not re-attempted the same way. The section this file draws is a roof, and a roof only reads on a building you look DOWN on. The Exhibition Hall is 14 m tall on a 272 m plan, so its roof is most of what a reader sees. Grace Cathedral is 30 m tall on a 102 x 72 m plan, and its published 37-vertex ring has narrow arms, so the deepest inset the containment gate allows is 3.6 m on an 8.42 m half-width: at the street camera that is a chamfer a few pixels deep along the top edge of a 30 m wall, and what the frame shows is a pale flat-topped slab that reads no better than the prism it replaced -- arguably worse, because `stone` is lighter than the fabric around it. Screenshot .parity/g3/out/grace-crop.png.\\nWhat Grace Cathedral actually needs is its SILHOUETTE -- two west towers and a central tower over a nave -- and per-element heights for those are in no field this pipeline reads. 30.0 m is the LIDAR top of the whole building, so splitting it into a nave and towers would be inventing where the height went. It does not get drawn specially until there is a published plan or elevation behind it."
-    },
-    {
-      "k": "cliffhouse",
-      "n": "Cliff House",
-      "b": null,
-      "why": "NO FOOTPRINT AT THE PLACE. Re-measured 2026-08-24 against _bldgsrc.read_bldg() over all 166,166 shipped footprints, because the earlier version of this entry said `ZERO shipped building footprints within 420 m` and that is not what the stream says: there are 34 within 420 m and THE NEAREST IS 391 m AWAY. Those 34 are the houses on the Richmond side of the Great Highway, not the Cliff House. The rejection is unchanged and is now stated as what it is -- there is no ring under the Cliff House, so no ground anchor and no measured top, and a hero needs all three. Both it and Sutro Baths stand on GGNRA land at Point Lobos, outside the drawn city; same family as DRAW.md section 21.19, the pipeline's inputs are City property registers and this is federal ground."
-    },
-    {
-      "k": "sutrobaths",
-      "n": "Sutro Baths",
-      "b": null,
-      "why": "NO FOOTPRINT AT THE PLACE, for the same reason as the Cliff House above and measured in the same run; see that entry, whose number was corrected 2026-08-24."
-    },
-    {
-      "k": "bareprisms",
-      "n": "the 297 designated places drawn as bare prisms",
-      "b": null,
-      "why": "CHECKED AS A CLASS AND REJECTED AS A CLASS. 297 designated places resolve to a footprint that is neither a hero nor one of the 68 shaped caps, so they draw as bare prisms. Ranked by span the top of that list is the Alcoa Building (116 m, 4 vertices), the Italian American Bank, Mission High School, the High School of Commerce, the Chronicle Building, the Palace Hotel garden courtyard, the Mills Building, the Fairmont Hotel, the Phelan Building, the Cable Car Barn. Almost every one of them IS a prism -- a downtown block with a flat roof -- and the ones that are not (Grace Cathedral's towers, Mission High's tower, the Fairmont's mansard) need per-element heights that no field this pipeline reads carries, which is the same test Grace Cathedral failed. A shaped cap would be a guess about taper on every one of them. Not done, and the reason is that the record does not support a form, not that the list is long."
-    },
-    {
-      "k": "alcatraz",
-      "n": "Alcatraz",
-      "b": null,
-      "why": "NO FOOTPRINT WITHIN 1.7 KM. Measured 2026-08-24 against _bldgsrc.read_bldg(): the island's centre projects to (1320.1, 7425.0) in the map's own plane and there are ZERO shipped footprints within 420 m of it -- the nearest building in the whole stream is 1,785 m away, on the waterfront. The cellhouse, the lighthouse and the warden's house are all federal (NPS/GGNRA) and are in none of the eleven registers this pipeline reads. DRAW.md section 21.14 listed Alcatraz as `no row under any of those names`; this adds the reason, which is that there is no ring either. Same family as the Cliff House and section 21.19."
-    },
-    {
-      "k": "salesforce",
-      "n": "Salesforce Tower",
-      "b": null,
-      "why": "BLOCKED UPSTREAM, NOT REJECTED ON ITS MERITS, and re-measured 2026-08-24 so the number is current. San Francisco's tallest building has no drawable footprint in this stream: the nearest ring to its published position is 41.9 m away and 3.0 m tall, and the 2010 LIDAR median over its own parcel returns 0.24 m against a shed filter that cuts anything under 2 m (DATA-TRUTH 13.5a). A hero is attached BY PUBLISHED FOOTPRINT IDENTITY and refuses to write when its key matches no building, so there is nothing for a key to name until the rescue lands -- which inserts two records at 135,905 and 137,646 and is somebody else's block. The index-independence assertion in emit_heroes.py is modelled on exactly that insertion and passes, so the hero register is ready for it. When the ring exists, `5kya-mfst height_ft` publishes the top, and the taper does NOT have a published description -- the register's `description` for 415 Mission St says nothing about a top (DRAW.md section 21.28's list of six), so it would be a hero with a published height and a prism form, not a shaped one."
-    },
-    {
-      "k": "churchspires",
-      "n": "Grace Cathedral, Sts Peter and Paul, St Mary's, Mission Dolores -- a per-element height from the FAA",
-      "b": null,
-      "why": "THE ONE ROUTE LEFT FOR SECTION 21.15's PROBLEM, TESTED AND EMPTY. Section 21.15 rejected Grace Cathedral because its silhouette needs per-element tower heights and `no field this pipeline reads carries them` -- 30.0 m is the LIDAR top of the whole building. The FAA Digital Obstacle File is the one federal source that publishes a height for a STRUCTURE rather than for a parcel, and it is already in this directory's cache and already cited by two heroes and two bridges. Read out over the whole city 2026-08-24: 159 obstacles inside San Francisco, and the type census is 97 BLDG, 14 UTILITY POLE, 13 TOWER, 12 CRANE, 11 BRIDGE, 4 STACK, 4 BLDG-TWR, 2 TANK, 1 VERTICAL STRUCTURE, 1 MONUMENT. THERE IS NO SPIRE, NO CHURCH AND NO CATHEDRAL IN IT, and nothing stands within 300 m of Grace Cathedral, Sts Peter and Paul, St Mary's or Mission Dolores. The single MONUMENT is Coit Tower (161 ft AGL, 25 m from the hero, already drawn) and the four BLDG-TWR are downtown telecom rooftops. So section 21.15's rejection stands with its last escape closed, and it is closed by measurement rather than by assumption."
-    }
-  ],
-  "attachments": {
-    "keys": {
-      "cityhall": {
-        "cx": 1656.385,
-        "cy": 2154.231,
-        "nv": 26,
-        "areaM2": 11251.5
-      },
-      "coit": {
-        "cx": 2828.933,
-        "cy": 4726.533,
-        "nv": 15,
-        "areaM2": 544.5
-      },
-      "conservatory": {
-        "cx": -1959.419,
-        "cy": 1403.871,
-        "nv": 31,
-        "areaM2": 1714.5
-      },
-      "dutchmill": {
-        "cx": -6285.0,
-        "cy": 1163.125,
-        "nv": 8,
-        "areaM2": 229.5
-      },
-      "ferry": {
-        "cx": 3915.333,
-        "cy": 3951.667,
-        "nv": 9,
-        "areaM2": 10235.5
-      },
-      "internetarchive": {
-        "cx": -2952.95,
-        "cy": 2481.0,
-        "nv": 20,
-        "areaM2": 1344.0
-      },
-      "murphymill": {
-        "cx": -6221.875,
-        "cy": 556.875,
-        "nv": 8,
-        "areaM2": 453.0
-      },
-      "oldmint": {
-        "cx": 2710.292,
-        "cy": 2532.708,
-        "nv": 24,
-        "areaM2": 3451.0
-      },
-      "opera": {
-        "cx": 1506.294,
-        "cy": 2065.765,
-        "nv": 17,
-        "areaM2": 5668.0
-      },
-      "pagoda": {
-        "cx": 716.0,
-        "cy": 2791.0,
-        "nv": 8,
-        "areaM2": 136.5
-      },
-      "pofa": {
-        "cx": -913.213,
-        "cy": 4779.0,
-        "nv": 61,
-        "areaM2": 2324.0
-      },
-      "pofahall": {
-        "cx": -957.933,
-        "cy": 4780.167,
-        "nv": 30,
-        "areaM2": 12297.0
-      },
-      "sutro": {
-        "cx": -1306.762,
-        "cy": -529.524,
-        "nv": 21,
-        "areaM2": 662.0
-      },
-      "transamerica": {
-        "cx": 3108.125,
-        "cy": 3932.625,
-        "nv": 8,
-        "areaM2": 2982.0
-      }
-    },
-    "note": "WHICH PUBLISHED FOOTPRINT EACH HERO IS DRAWN ON, as an identity rather than as a position in a file. `b` in the records above and in the mock's own wonder/hero-data.js is a raw index into gen/bldg-data.js's Hilbert-ordered delta chain, and it moves whenever the record count changes -- rescuing Salesforce Tower and 1190 Mission inserts two records at 135,905 and 137,646, and NINE of the thirteen heroes would then attach to a different building with nothing failing. These keys are the published ring's own centroid (metres, the map's own plane), its vertex count and its area; emit_heroes.py resolves each one against the stream at build time and REFUSES TO WRITE if it matches no building or more than one. They are a lookup key and are never read into the drawing: every ring, area, height, anchor and roll year is still read out of the record the key resolves to. Harvested from the register with `emit_heroes.py --harvest-identity`, never typed."
+ "note": "Heroes authored on top of the eleven that encode_city_chunks.py moves out of the mock's wonder/hero-data.js. Read by emit_heroes.py, which MERGES them into base/heroes.qc + base/heroes.json. NO GEOMETRY IS TYPED IN THIS FILE: every ring, area, height, anchor and roll year is read out of the shipped footprint the record names. What is here is the choice of which published building gets drawn and how its SECTION is drawn, which is the same category as the 68 shaped caps -- 'the data fixes the top height and the plan area and says nothing about taper' (manifest kinds.cap). WHICH BUILDING each hero is on is NOT the `b` literal: `b` is advisory and is asserted, and the thing that selects the footprint is the published identity under `attachments` -- see emit_heroes.py, WHICH BUILDING A HERO IS ON.",
+ "heroes": [
+  {
+   "k": "pofahall",
+   "n": "Palace of Fine Arts Exhibition Hall",
+   "b": 159037,
+   "y": 1915,
+   "an": "the footprint that DataSF 97yj-54sx Article 10 landmark no. 88 (`Palace Of Fine Arts`) resolves to in this map's own register: base/places.qc carries `bi` 159037 on that row, with the designation bit set. The rotunda beside it is a different footprint (159057) and is the hero `pofa`.",
+   "ys": "the same register and the same reasoning the `pofa` record already carries: rzic-39gi gives landmark no. 88 a `yearbuilt` of 0, so the register has no year for it; 1915 is the year of the Panama-Pacific International Exposition the corpus's own `ppie` entry carries, and the roll dates this footprint 1906, which is FLAG_NOYEAR and not a year.",
+   "dr": "The crescent is the published footprint and 14.0 m is the published height; both are read out of the shipped record and neither is authored. What is DRAWN is the section, on the shaped-cap rule: a wall set back 0.70 m, a cornice band at the full published ring, and a roof drawn as a segmental arc over the ring's own equivalent half-width (its area / perimeter), truncated flat where the published 14.0 m top stops it. Every roof band stands on a per-vertex bisector inset of the published ring -- the Conservatory of Flowers' own containment rule -- and the deepest inset drawn is the deepest one at which every vertex of the inset ring is still inside the published ring, searched rather than typed. Nothing stands outside the published footprint and nothing above the published top. The colonnade that curves round the lagoon is a separate set of published footprints and is drawn by the fabric, which is what the `pofa` record already says.",
+   "section": {
+    "eavesFrac": 0.62,
+    "corniceM": 1.0,
+    "wallSetbackM": 0.7,
+    "roofBands": 3,
+    "matWall": 4,
+    "matRoof": 4,
+    "why": "eavesFrac, corniceM and wallSetbackM are the drawing; matWall and matRoof are `stucco`, which is the material the `pofa` record already authors for the rotunda's own walls -- the same building, the same register, the same authored material. eavesFrac 0.62 was 0.75 on the first cut and the roof came out 2.5 m of rise over 9.8 m of horizontal inset, a 14-degree slope that reads as a terrace rather than a roof; screenshot .parity/g3/out/hall-str.prod.after.png at the first value.",
+    "roofKind": "segmental"
+   }
   },
-  "publishedTops": {
-    "sutro": {
-      "ft": 977,
-      "oas": "06-000120",
-      "src": "US FAA Digital Obstacle File, obstacle 06-000120, TOWER, 00977 ft AGL / 01811 ft AMSL at 37 45 19.32N 122 27 09.83W. The same federal file, the same AGL field and the same parse this pipeline already uses for the Golden Gate's two towers and the Bay Bridge's four (DRAW.md 21.33). Re-read from cache/faa_dof.zip at build time and asserted against this number; the build stops if they disagree.",
-      "why": "THE RECORD ALREADY CITED THE NUMBER IT WAS NOT USING. base/heroes.json's `an` for this hero has always read \"the published footprint that the FAA Digital Obstacle File's obstacle 06-000120 (TOWER, 977 ft above ground, 1,811 ft above sea level) falls inside\", and `dr` said the FAA publishes 977 ft \"in the same place\" -- and the tower was still drawn to the 210.0 m LIDAR median. That is the Transamerica Pyramid's defect exactly (DRAW.md 21.22): `hgt_mediancm` is the MEDIAN return over a footprint, which is right for a flat-roofed box and wrong for a tripod, because most of a lattice tower's footprint has sky over it. 88 m, 30 %, on the most visible object in San Francisco.",
-      "crosscheck": "Two federal files that were never reconciled agree. The DOF's own AMSL minus AGL is 1811 - 977 = 834 ft = 254.2 m of ground under the tower; USGS 3DEP, queried at the DOF's own coordinates (epqs.nationalmap.gov, 1 m raster, acquired 2023-03-04), returns 254.88 m. 0.7 m apart, 0.3 %. Nobody fitted that: one is an aviation obstruction survey and the other is a lidar elevation model.",
-      "formNotPublished": "THE FORM IS NOT CHANGED AND NO FORM IS INVENTED. The FAA publishes a position, a type (TOWER) and two heights; it publishes no geometry. The three legs, the two platform flares and the mast are the mock's own authored model and they are kept exactly as they are -- what moves is only the height they are evaluated at.",
-      "dr": "The three-armed footprint's 64 m extent is measured, and the FAA publishes the obstacle at 977 ft above ground in the same place -- 297.79 m, which is the top this hero is drawn to. The 210.0 m this map drew it at until 2026-08-24 was `ynuv-fyni hgt_mediancm`, the MEDIAN LIDAR return over the footprint: right for a flat-roofed box and wrong for a tripod, because most of a lattice tower's footprint has sky over it. The correction is a factor on every authored height and NOTHING ELSE: the mock's six parts sit at 0.300 / 0.325 / 0.545 / 0.560 / 0.860 / 1.000 of the top and each carries its own three-vertex plan, so the taper lives in the rings and one factor evaluates the same authored model against the published number. No ring moves and no vertex is invented. The DOF's own AMSL minus AGL puts 834 ft of ground under the tower and USGS 3DEP returns 254.88 m at the same coordinates, 0.3 % apart -- two federal files agreeing without being made to. The tapering triangular mass, the two platform flares and the mast are drawn. THE LEGS ARE NOT DRAWN SEPARATELY: this is an open lattice drawn as solid members, which is what every other building on this map is drawn as, and the three legs the published ring traces are 2 m wide -- at the widest camera in the film one of them is under a pixel."
-    }
+  {
+   "k": "transamerica",
+   "n": "Transamerica Pyramid",
+   "b": 137821,
+   "y": 1972,
+   "an": "the footprint this map's own register resolves the name to: base/places.qc row `Transamerica Pyramid [Transamerica Center]` carries bi 137821, from DataSF 5kya-mfst, the Tall Building Inventory, whose scope is every building over 240 ft.",
+   "ys": "5kya-mfst `date`, the publisher's own \"Building's year of construction\", which reads 1972 on this row and agrees with its `completion_date`. The assessor's roll dates the parcel 1971 and that year is shipped alongside on `ms.yr`, so a reader can see both.",
+   "dr": "NOTHING ABOUT THIS FORM IS AUTHORED and the reason it is drawn at all is a measurement error, not a taste one. The fabric's height is `ynuv-fyni hgt_mediancm`, the MEDIAN LIDAR return over each footprint -- exactly right for a flat-roofed box and exactly wrong for a spire, because most of a tapering tower's footprint lies under its wide base. This 853 ft tower was drawn 68 m tall and its own shaped cap was then carved inside that 68 m solid, so the most recognisable tower in San Francisco was a stub its neighbours hid (.parity/g3/out/pyr-blk.prod.before.png). The published top, 853 ft from 5kya-mfst `height_ft`, replaces it.\nThe BASE is the largest convex figure the published footprint contains, on the footprint's own vertices: 2,945.0 m2 of 2,982.0, six of its eight vertices, 98.8 %. What it drops is a 9 x 7 m tab on one corner -- the lift and stair projection -- which is not the tower's plan. Two simpler repairs were tried and both are recorded in the emitter because both fail on this outline: the convex HULL covers 4.9 % MORE ground than the published footprint and slips a vertex-only gate, because a hull's vertices are always ring vertices; and shrinking that hull about its centroid until the whole polygon is inside the ring costs a 0.806 scale, which sits on landmarks.ts section 11's own 0.80 authoring-error floor. The convex-hull REFERENCE is not taken either: Sutro Tower alone is granted it and that invariant is asserted in data.test.ts.\nThe register's own `base_plan_size` 165x165 ft is NOT used and the disagreement is worth stating: that is a 50.3 m square, 2,529 m2, and the measured footprint's main quadrilateral is about 45.7 x 53.6 m, so a 50.3 m square does not fit inside it. The published plan is a design figure; the footprint is a measurement of the thing standing there, and every other hero on this map stands on its own footprint.\nThe TAPER has no free parameter: a pyramid is the surface between its base and a point at its top, so the plan scale at height z is 1 - z/top. The join between the shaft and the architectural cap is where the register's own description puts it -- \"50 story WSMF with 11 story architectural cap\", so 50/61 of the height, 213.11 m, where the plan is 11/61 of the base. A check on that split rather than an assumption: 853 ft over 61 storey-equivalents is 13.98 ft a storey, and the register's `typ_story_height` on comparable rows reads 14'9\". The two halves differ in MATERIAL and not in shape, and `facade_material` names both: \"concrete panel and sheet metal\". The two wings that carry the lifts and the stairs are NOT drawn: the register publishes no dimension for them.",
+   "section": {
+    "form": "pyramid",
+    "heightFt": 853,
+    "storiesShaft": 50,
+    "storiesCap": 11,
+    "matShaft": 3,
+    "matCap": 15,
+    "why": "heightFt, storiesShaft and storiesCap are read straight off 5kya-mfst -- `height_ft`, and the two numbers in `description`. basePlanFt is carried for the record and is NOT used to size the base: it does not fit the measured footprint, and `dr` says so. matShaft is `concrete` and matCap is `silver`, which is that row's own `facade_material`, \"concrete panel and sheet metal\", split at the join the description gives. wingFromStorey and storiesAboveGrade are 5kya-mfst's own `stories_above_grade` and the floor at which the two vertical cores break out of the tapering envelope; the wings' foot is derived from those two numbers the same way the shaft/cap join is derived from storiesShaft and storiesCap.",
+    "basePlanFt": [
+     165,
+     165
+    ],
+    "wingFromStorey": 29,
+    "storiesAboveGrade": 50
+   }
+  },
+  {
+   "k": "internetarchive",
+   "n": "Internet Archive HQ",
+   "b": 160550,
+   "y": 1922,
+   "an": "THE FOOTPRINT IS PUBLISHED AND THE IDENTIFICATION IS MEASURED. The ring is DataSF ynuv-fyni as this map already ships it: 1,344.0 m2 on 20 vertices, 15 m tall, which is the 98th percentile of the 166,166 footprints drawn here, while every other ring within 40 m of it is a 140-306 m2 house. It is the only structure of that scale on the corner and it sits 27.7 m from the Internet Archive's own published position for 300 Funston Avenue. No register this pipeline reads NAMES it -- the eleven checked one by one are listed in places_extra.json, which carries the two names this building has held in turn; this record carries its FORM.",
+   "ys": "DataSF wv5m-vpq2, the assessor's secured roll, as the `yr` byte this map already ships on the footprint: 1922, with build_bldg.py's FLAG_NOYEAR sentinel CLEAR, so it is a published year of construction and not the 1906 fallback. Corroborated one year later by the Board's own minutes, which grant `Board of Trustees, Christian Science Church, at southeast corner of Clement street and Funston avenue` an oil storage tank permit of 1,500 gallons on 19 November 1923 (Resolution No. 21068 (New Series), journalofproceed1923sanfrich, leaf 1295).",
+   "dr": "The published footprint and the measured 15.0 m top. The podium, the wall, the cornice, the roof band, the portico and its six columns are DRAWN \u2014 the same sentence the Old Mint's own record carries, for the same section. Every band is a per-vertex bisector inset of the published ring and the deepest is 1.7 m against the 1.80 m this ring admits before a band self-intersects, so nothing stands outside the footprint; the portico reaches 15.0 m and nothing stands above it. The portico and the colonnade are laid on the inward normal of ONE published face \u2014 ring vertices 4 to 5, the 22.09 m western edge the building presents to Funston Avenue \u2014 and there are six columns because the building's front has six. What is authored is the section's proportions; its position, its extent and its top are read off the record.",
+   "section": {
+    "form": "temple",
+    "faceI": 4,
+    "faceJ": 5,
+    "baseFrac": 0.12,
+    "wallFrac": 0.77,
+    "corniceFrac": 0.88,
+    "insetBaseM": 0.6,
+    "insetWallM": 1.2,
+    "insetCorniceM": 0.3,
+    "insetRoofM": 1.7,
+    "porticoSpanFrac": 0.8,
+    "porticoDepthM": 4.6,
+    "porticoOffsetM": 0.18,
+    "columns": 6,
+    "columnRM": 1.05,
+    "columnInsetM": 1.3,
+    "columnSpanFrac": 0.7,
+    "matBase": 5,
+    "matWall": 5,
+    "matRoof": 15,
+    "matCol": 5,
+    "why": "The fractions are the Old Mint's section read as proportions of its own 16.0 m top and laid on this building's 15.0 m: a low podium, a tall order, a heavy entablature, and above the flanks a portico that reaches the measured top. THE PORTICO STANDING PROUD IS THE LOAD-BEARING CHOICE. The map's camera bearing is FIXED and no control rotates it, so the western face this building presents to Funston Avenue \u2014 the face the colonnade is on \u2014 is permanently the far side, seen almost edge-on. A portico drawn flush with the roof is therefore invisible, which is what the first attempt shipped. A temple front genuinely carries its entablature above the parapet of its flanks, and this one does, so drawing that is both true and the one part of the section the camera can actually see. MATERIALS: `quartz` (index 5) on podium, wall, cornice, portico and columns \u2014 the palette's whitest stone, and this building is white where the Old Mint is cream. The roof band is `silver` (15), a light grey: the flat roof is the surface a reader looking down mostly sees, it is not white, and `slate` (7) \u2014 the Old Mint's choice \u2014 made the whole building read as one more grey-roofed neighbour. NO ARCADE. The first attempt repeated openings over every wall of the ring, which put six coarse grey bars across the flanks of a building whose sides are close to blank. The openings this building has are between its columns, and the colonnade already draws those.",
+    "porticoTopFrac": 1.0,
+    "columnTopFrac": 0.77
+   }
   }
+ ],
+ "rejected": [
+  {
+   "k": "grace",
+   "n": "Grace Cathedral",
+   "b": 139401,
+   "why": "AUTHORED, SCREENSHOTTED AND TAKEN OUT AGAIN, recorded so it is not re-attempted the same way. The section this file draws is a roof, and a roof only reads on a building you look DOWN on. The Exhibition Hall is 14 m tall on a 272 m plan, so its roof is most of what a reader sees. Grace Cathedral is 30 m tall on a 102 x 72 m plan, and its published 37-vertex ring has narrow arms, so the deepest inset the containment gate allows is 3.6 m on an 8.42 m half-width: at the street camera that is a chamfer a few pixels deep along the top edge of a 30 m wall, and what the frame shows is a pale flat-topped slab that reads no better than the prism it replaced -- arguably worse, because `stone` is lighter than the fabric around it. Screenshot .parity/g3/out/grace-crop.png.\\nWhat Grace Cathedral actually needs is its SILHOUETTE -- two west towers and a central tower over a nave -- and per-element heights for those are in no field this pipeline reads. 30.0 m is the LIDAR top of the whole building, so splitting it into a nave and towers would be inventing where the height went. It does not get drawn specially until there is a published plan or elevation behind it."
+  },
+  {
+   "k": "cliffhouse",
+   "n": "Cliff House",
+   "b": null,
+   "why": "NO FOOTPRINT AT THE PLACE. Re-measured 2026-08-24 against _bldgsrc.read_bldg() over all 166,166 shipped footprints, because the earlier version of this entry said `ZERO shipped building footprints within 420 m` and that is not what the stream says: there are 34 within 420 m and THE NEAREST IS 391 m AWAY. Those 34 are the houses on the Richmond side of the Great Highway, not the Cliff House. The rejection is unchanged and is now stated as what it is -- there is no ring under the Cliff House, so no ground anchor and no measured top, and a hero needs all three. Both it and Sutro Baths stand on GGNRA land at Point Lobos, outside the drawn city; same family as DRAW.md section 21.19, the pipeline's inputs are City property registers and this is federal ground."
+  },
+  {
+   "k": "sutrobaths",
+   "n": "Sutro Baths",
+   "b": null,
+   "why": "NO FOOTPRINT AT THE PLACE, for the same reason as the Cliff House above and measured in the same run; see that entry, whose number was corrected 2026-08-24."
+  },
+  {
+   "k": "bareprisms",
+   "n": "the 297 designated places drawn as bare prisms",
+   "b": null,
+   "why": "CHECKED AS A CLASS AND REJECTED AS A CLASS. 297 designated places resolve to a footprint that is neither a hero nor one of the 68 shaped caps, so they draw as bare prisms. Ranked by span the top of that list is the Alcoa Building (116 m, 4 vertices), the Italian American Bank, Mission High School, the High School of Commerce, the Chronicle Building, the Palace Hotel garden courtyard, the Mills Building, the Fairmont Hotel, the Phelan Building, the Cable Car Barn. Almost every one of them IS a prism -- a downtown block with a flat roof -- and the ones that are not (Grace Cathedral's towers, Mission High's tower, the Fairmont's mansard) need per-element heights that no field this pipeline reads carries, which is the same test Grace Cathedral failed. A shaped cap would be a guess about taper on every one of them. Not done, and the reason is that the record does not support a form, not that the list is long."
+  },
+  {
+   "k": "alcatraz",
+   "n": "Alcatraz",
+   "b": null,
+   "why": "NO FOOTPRINT WITHIN 1.7 KM. Measured 2026-08-24 against _bldgsrc.read_bldg(): the island's centre projects to (1320.1, 7425.0) in the map's own plane and there are ZERO shipped footprints within 420 m of it -- the nearest building in the whole stream is 1,785 m away, on the waterfront. The cellhouse, the lighthouse and the warden's house are all federal (NPS/GGNRA) and are in none of the eleven registers this pipeline reads. DRAW.md section 21.14 listed Alcatraz as `no row under any of those names`; this adds the reason, which is that there is no ring either. Same family as the Cliff House and section 21.19."
+  },
+  {
+   "k": "salesforce",
+   "n": "Salesforce Tower",
+   "b": null,
+   "why": "BLOCKED UPSTREAM, NOT REJECTED ON ITS MERITS, and re-measured 2026-08-24 so the number is current. San Francisco's tallest building has no drawable footprint in this stream: the nearest ring to its published position is 41.9 m away and 3.0 m tall, and the 2010 LIDAR median over its own parcel returns 0.24 m against a shed filter that cuts anything under 2 m (DATA-TRUTH 13.5a). A hero is attached BY PUBLISHED FOOTPRINT IDENTITY and refuses to write when its key matches no building, so there is nothing for a key to name until the rescue lands -- which inserts two records at 135,905 and 137,646 and is somebody else's block. The index-independence assertion in emit_heroes.py is modelled on exactly that insertion and passes, so the hero register is ready for it. When the ring exists, `5kya-mfst height_ft` publishes the top, and the taper does NOT have a published description -- the register's `description` for 415 Mission St says nothing about a top (DRAW.md section 21.28's list of six), so it would be a hero with a published height and a prism form, not a shaped one."
+  },
+  {
+   "k": "churchspires",
+   "n": "Grace Cathedral, Sts Peter and Paul, St Mary's, Mission Dolores -- a per-element height from the FAA",
+   "b": null,
+   "why": "THE ONE ROUTE LEFT FOR SECTION 21.15's PROBLEM, TESTED AND EMPTY. Section 21.15 rejected Grace Cathedral because its silhouette needs per-element tower heights and `no field this pipeline reads carries them` -- 30.0 m is the LIDAR top of the whole building. The FAA Digital Obstacle File is the one federal source that publishes a height for a STRUCTURE rather than for a parcel, and it is already in this directory's cache and already cited by two heroes and two bridges. Read out over the whole city 2026-08-24: 159 obstacles inside San Francisco, and the type census is 97 BLDG, 14 UTILITY POLE, 13 TOWER, 12 CRANE, 11 BRIDGE, 4 STACK, 4 BLDG-TWR, 2 TANK, 1 VERTICAL STRUCTURE, 1 MONUMENT. THERE IS NO SPIRE, NO CHURCH AND NO CATHEDRAL IN IT, and nothing stands within 300 m of Grace Cathedral, Sts Peter and Paul, St Mary's or Mission Dolores. The single MONUMENT is Coit Tower (161 ft AGL, 25 m from the hero, already drawn) and the four BLDG-TWR are downtown telecom rooftops. So section 21.15's rejection stands with its last escape closed, and it is closed by measurement rather than by assumption."
+  }
+ ],
+ "attachments": {
+  "keys": {
+   "cityhall": {
+    "cx": 1656.385,
+    "cy": 2154.231,
+    "nv": 26,
+    "areaM2": 11251.5
+   },
+   "coit": {
+    "cx": 2828.933,
+    "cy": 4726.533,
+    "nv": 15,
+    "areaM2": 544.5
+   },
+   "conservatory": {
+    "cx": -1959.419,
+    "cy": 1403.871,
+    "nv": 31,
+    "areaM2": 1714.5
+   },
+   "dutchmill": {
+    "cx": -6285.0,
+    "cy": 1163.125,
+    "nv": 8,
+    "areaM2": 229.5
+   },
+   "ferry": {
+    "cx": 3915.333,
+    "cy": 3951.667,
+    "nv": 9,
+    "areaM2": 10235.5
+   },
+   "internetarchive": {
+    "cx": -2952.95,
+    "cy": 2481.0,
+    "nv": 20,
+    "areaM2": 1344.0
+   },
+   "murphymill": {
+    "cx": -6221.875,
+    "cy": 556.875,
+    "nv": 8,
+    "areaM2": 453.0
+   },
+   "oldmint": {
+    "cx": 2710.292,
+    "cy": 2532.708,
+    "nv": 24,
+    "areaM2": 3451.0
+   },
+   "opera": {
+    "cx": 1506.294,
+    "cy": 2065.765,
+    "nv": 17,
+    "areaM2": 5668.0
+   },
+   "pagoda": {
+    "cx": 716.0,
+    "cy": 2791.0,
+    "nv": 8,
+    "areaM2": 136.5
+   },
+   "pofa": {
+    "cx": -913.213,
+    "cy": 4779.0,
+    "nv": 61,
+    "areaM2": 2324.0
+   },
+   "pofahall": {
+    "cx": -957.933,
+    "cy": 4780.167,
+    "nv": 30,
+    "areaM2": 12297.0
+   },
+   "sutro": {
+    "cx": -1306.762,
+    "cy": -529.524,
+    "nv": 21,
+    "areaM2": 662.0
+   },
+   "transamerica": {
+    "cx": 3108.125,
+    "cy": 3932.625,
+    "nv": 8,
+    "areaM2": 2982.0
+   }
+  },
+  "note": "WHICH PUBLISHED FOOTPRINT EACH HERO IS DRAWN ON, as an identity rather than as a position in a file. `b` in the records above and in the mock's own wonder/hero-data.js is a raw index into gen/bldg-data.js's Hilbert-ordered delta chain, and it moves whenever the record count changes -- rescuing Salesforce Tower and 1190 Mission inserts two records at 135,905 and 137,646, and NINE of the thirteen heroes would then attach to a different building with nothing failing. These keys are the published ring's own centroid (metres, the map's own plane), its vertex count and its area; emit_heroes.py resolves each one against the stream at build time and REFUSES TO WRITE if it matches no building or more than one. They are a lookup key and are never read into the drawing: every ring, area, height, anchor and roll year is still read out of the record the key resolves to. Harvested from the register with `emit_heroes.py --harvest-identity`, never typed."
+ },
+ "publishedTops": {
+  "sutro": {
+   "ft": 977,
+   "oas": "06-000120",
+   "src": "US FAA Digital Obstacle File, obstacle 06-000120, TOWER, 00977 ft AGL / 01811 ft AMSL at 37 45 19.32N 122 27 09.83W. The same federal file, the same AGL field and the same parse this pipeline already uses for the Golden Gate's two towers and the Bay Bridge's four (DRAW.md 21.33). Re-read from cache/faa_dof.zip at build time and asserted against this number; the build stops if they disagree.",
+   "why": "THE RECORD ALREADY CITED THE NUMBER IT WAS NOT USING. base/heroes.json's `an` for this hero has always read \"the published footprint that the FAA Digital Obstacle File's obstacle 06-000120 (TOWER, 977 ft above ground, 1,811 ft above sea level) falls inside\", and `dr` said the FAA publishes 977 ft \"in the same place\" -- and the tower was still drawn to the 210.0 m LIDAR median. That is the Transamerica Pyramid's defect exactly (DRAW.md 21.22): `hgt_mediancm` is the MEDIAN return over a footprint, which is right for a flat-roofed box and wrong for a tripod, because most of a lattice tower's footprint has sky over it. 88 m, 30 %, on the most visible object in San Francisco.",
+   "crosscheck": "Two federal files that were never reconciled agree. The DOF's own AMSL minus AGL is 1811 - 977 = 834 ft = 254.2 m of ground under the tower; USGS 3DEP, queried at the DOF's own coordinates (epqs.nationalmap.gov, 1 m raster, acquired 2023-03-04), returns 254.88 m. 0.7 m apart, 0.3 %. Nobody fitted that: one is an aviation obstruction survey and the other is a lidar elevation model.",
+   "formNotPublished": "THE FORM IS NOT CHANGED AND NO FORM IS INVENTED. The FAA publishes a position, a type (TOWER) and two heights; it publishes no geometry. The three legs, the two platform flares and the mast are the mock's own authored model and they are kept exactly as they are -- what moves is only the height they are evaluated at.",
+   "dr": "The three-armed footprint's 64 m extent is measured, and the FAA publishes the obstacle at 977 ft above ground in the same place -- 297.79 m, which is the top this hero is drawn to. The 210.0 m this map drew it at until 2026-08-24 was `ynuv-fyni hgt_mediancm`, the MEDIAN LIDAR return over the footprint: right for a flat-roofed box and wrong for a tripod, because most of a lattice tower's footprint has sky over it. The correction is a factor on every authored height and NOTHING ELSE: the mock's six parts sit at 0.300 / 0.325 / 0.545 / 0.560 / 0.860 / 1.000 of the top and each carries its own three-vertex plan, so the taper lives in the rings and one factor evaluates the same authored model against the published number. No ring moves and no vertex is invented. The DOF's own AMSL minus AGL puts 834 ft of ground under the tower and USGS 3DEP returns 254.88 m at the same coordinates, 0.3 % apart -- two federal files agreeing without being made to. The tapering triangular mass, the two platform flares and the mast are drawn. THE LEGS ARE NOT DRAWN SEPARATELY: this is an open lattice drawn as solid members, which is what every other building on this map is drawn as, and the three legs the published ring traces are 2 m wide -- at the widest camera in the film one of them is under a pixel."
+  }
+ }
 }
