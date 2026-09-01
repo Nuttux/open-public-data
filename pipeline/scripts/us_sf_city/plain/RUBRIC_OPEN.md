@@ -890,3 +890,46 @@ sum raises a score INSIDE its band and never moves it; the rubric is silent on
 whether a unit count behaves the same way. Related to v7 entry 10, which says a
 missing unit count must not lower a housing bond — the mirror question is whether
 a present one lifts a map.
+
+# v7 IS ALREADY SELF-CONTRADICTORY IN TWO PLACES — both mine
+
+The first batch read under v7 found two collisions between rules I added in the
+same version. This is precisely the fault I spent the v6 pass removing, and I
+reintroduced it by writing new sections without checking them against the ones
+already there.
+
+**1. The +6 thoroughfare bonus collides with the new traffic ladder.** The bonus
+says it governs "every street anchor". The traffic ladder already prices a
+corridor on a listed thoroughfare at 44. So a traffic rule on Market Street is
+44 by the ladder and 36+6=42 by the bonus, and a reader cannot tell which
+governs. The reader applied the bonus to point installations and the ladder to
+corridor rules, which is a sensible split — and it invented it.
+
+    FIX: the ladder's rungs already account for the thoroughfare. State that the
+    +6 bonus applies to acts on the FABRIC of a street (level, width, paving,
+    sidewalks) and never to a traffic or parking rule, which the ladder prices
+    whole.
+
+**2. "An assessment appeal" is in the 10-29 band AND under the new appeal rule.**
+The band list names it outright at 20; the new rule says score the subject and
+discount one rung, giving 27. Both are live. The reader followed the band list.
+
+    FIX: delete "an assessment appeal" from the 10-29 list. The appeal rule
+    covers it, and an assessment appeal over a large public work is not the same
+    size as one over a driveway — which is the whole reason the appeal rule was
+    written.
+
+Neither crosses a band (42 vs 44, 20 vs 27), so neither forces a re-read. Both go
+into the next bump, and NOT before the current wave lands.
+
+## Three more unanchored, from the first v7 batch
+
+  consumables for a citywide SERVICE — 16,000 feet of fire hose is 30 as a
+    consumable and ~45 under the citywide raise; the bound on small purchases
+    argues down, the system argues up, and the rubric does not say
+  utility undergrounding — ~15 lines, treated as work on one stretch by analogy
+    to paving, named nowhere
+  a citywide service decision sitting above the facility that delivers it —
+    "City to burn its garbage at a municipally owned incinerator" against the
+    single De Haro Street incinerator; the reader used 65 over 55, reading the
+    rung out of "a public asset gained" rather than any stated rule
