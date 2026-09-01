@@ -35,6 +35,7 @@ import collections
 import hashlib
 import json
 import pathlib
+import re
 import sys
 
 HERE = pathlib.Path(__file__).resolve().parent
@@ -49,6 +50,44 @@ RUBRIC_VERSION = 3
 
 def rubric_hash() -> str:
     return hashlib.sha1(RUBRIC.read_bytes()).hexdigest()[:10]
+
+
+# ── THE GATE: DID THIS READER PENALISE GRAMMAR? ────────────────────────────
+# Readers keep deciding that "street levels to be changed" is a proposal and
+# "street levels changed" is adopted. It is the same fact written twice, and
+# the demotion is worth 12 to 18 points where it happens.
+#
+# The obvious check — compare all infinitive lines against all others — DOES
+# NOT WORK, and rejected a batch on it before the flaw showed. Infinitive
+# phrasing correlates with renamings, hearings and one-party payments, which
+# the rubric scores low ON PURPOSE. "Garden Lane to be renamed" scoring 12 is
+# the renaming rule working, not tense bias.
+#
+# What works is matched pairs: the same act appearing in the corpus both ways.
+# Strip the infinitive marker, collide the two spellings, and compare the twins
+# directly. Where a batch has fewer than eight such pairs the test cannot
+# decide, and the batch is taken — a check that cannot see is not evidence of
+# a fault.
+TOBE = re.compile(r"\b(to be|to get|to have)\s+", re.I)
+
+
+def _skeleton(line: str) -> str:
+    s = TOBE.sub(" ", line)
+    s = re.sub(r"\b(will|shall|would)\s+", " ", s, flags=re.I)
+    return re.sub(r"[^a-z0-9 ]", "", re.sub(r"\s+", " ", s.lower())).strip()
+
+
+def tense_gap(scores: dict, lines: dict):
+    """(mean points the infinitive twin loses, how many pairs) or (None, n)."""
+    g = collections.defaultdict(lambda: ([], []))
+    for i, sc in scores.items():
+        ln = lines.get(i)
+        if ln:
+            g[_skeleton(ln)][0 if TOBE.search(ln) else 1].append(sc)
+    d = [sum(a)/len(a) - sum(b)/len(b) for a, b in g.values() if a and b]
+    if len(d) < 8:
+        return None, len(d)
+    return sum(d)/len(d), len(d)
 
 
 def done() -> dict:
@@ -92,6 +131,7 @@ def main() -> None:
         return
 
     if args.take:
+        lines = {r["id"]: r["line"] for r in store}
         got = 0
         with RANKS.open("a") as out:
             for p in sorted(WORK.glob("done-*.jsonl")):
@@ -113,6 +153,12 @@ def main() -> None:
                     rows.append({"id": r["id"], "score": s,
                                  "band": r.get("band", ""), "why": r.get("why", ""),
                                  "rv": stamp["rv"], "rh": stamp["rh"]})
+                gap, npairs = tense_gap({r["id"]: r["score"] for r in rows}, lines)
+                if gap is not None and gap < -4:
+                    print(f"  {p.name}: REJECTED — the infinitive twin loses "
+                          f"{-gap:.1f} points over {npairs} matched pairs")
+                    p.rename(WORK / "rejected" / p.name)
+                    continue
                 for r in rows:
                     out.write(json.dumps(r, ensure_ascii=False) + "\n")
                     have[r["id"]] = r
