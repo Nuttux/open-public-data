@@ -65,6 +65,10 @@ def main() -> None:
     ap.add_argument("--release", type=str, default=None,
                     help="a slice file whose ids go back in the queue")
     ap.add_argument("--status", action="store_true")
+    ap.add_argument("--decades", type=str, default=None,
+                    help="comma-separated decade starts, e.g. 2010,2020 — hand "
+                         "out only these. Without it every decade is drawn "
+                         "from, busiest first.")
     args = ap.parse_args()
 
     WORK.mkdir(parents=True, exist_ok=True)
@@ -79,9 +83,13 @@ def main() -> None:
 
     recs = H.load_records()
     todo = [r for r in recs if r["id"] not in done and r["id"] not in flying]
+    want = ({int(d) for d in args.decades.split(",")} if args.decades else None)
     by_dec = collections.defaultdict(list)
     for r in todo:
-        by_dec[r["y"] // 10 * 10].append(r)
+        d = r["y"] // 10 * 10
+        if want is not None and d not in want:
+            continue
+        by_dec[d].append(r)
 
     if args.status:
         print(f"written {len(done):,} · in flight {len(flying):,} · "
