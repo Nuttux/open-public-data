@@ -211,3 +211,11 @@ third" without a lower bound, so "$36 more toward a Heisler locomotive" takes 53
 while "$29,311.05 for San Francisco Hospital brickwork" takes the flat component
 45. Any trivial material for a citywide system outranks a large trade on a civic
 building. ~46 records a batch in the Hetch Hetchy and Municipal Railway years.
+
+## The suffix rule inverts Third — a rule error, not a judgement
+
+v6 says "read the list as avenues where the city has one". That makes Third
+AVENUE — a Richmond side street — the thoroughfare, and demotes Third STREET,
+which is the actual arterial and the subject of lines like "Third Street rezoned
+from factories to neighbourhood shops". Ocean and Nineteenth come out right
+under the rule; Third comes out backwards and must be listed as a street.

@@ -178,7 +178,13 @@ def main() -> None:
                 # A done file is finished when it holds as many rows as the
                 # hand-out it answers. Short of that it is left alone and taken
                 # on the next pass.
+                # The hand-out may already have been retired by an earlier
+                # --take, which left this guard blind exactly when a batch was
+                # RE-delivered — the case it most needed to catch. Fall back to
+                # the retired copy, which holds the same rows.
                 src_batch = WORK / p.name.replace("done-", "batch-")
+                if not src_batch.exists():
+                    src_batch = WORK / p.name.replace("done-", "issued-")
                 if src_batch.exists():
                     want = sum(1 for _ in src_batch.open())
                     got_n = sum(1 for _ in p.open())
