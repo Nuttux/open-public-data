@@ -180,3 +180,15 @@ lines; under the other reading it fires zero.
 NOT fixed while a wave is out, and it fails the bump test anyway — 34 against
 40 is 6 points inside one band. Delete the second sentence whenever the rubric
 is next opened.
+
+## The permit anchor has no discount floor — crosses a band
+
+"Below 30, an anchor is not discounted" was written to protect the 18 extension
+anchor and stops there. So "Chas. Roof asks to set off blasts" halves the 33
+permit anchor to 17 while "Chas. Roof allowed to set off blasts" stays 33 — the
+same permit, both spellings a few lines apart in one batch, 16 points and a band
+apart. ~14 records a batch.
+
+The floor should be the anchor itself for any anchored permit-tier act, which is
+what the extension case already says in different words. Fix in the same pass as
+the thoroughfare contradiction (two readers have now reported that one).
