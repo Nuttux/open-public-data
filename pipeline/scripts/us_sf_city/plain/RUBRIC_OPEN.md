@@ -817,3 +817,42 @@ it "precisely the eight private right lists the anchors section warns about".
   an added part that IS the institution's function ("two new wards at Laguna Honda")
   referral (x0.5) meeting a system-changing proposal (x0.75) — 18 points on which
     section is read first; the reader adopted "significance wins" and corrected a row
+
+## The lease fork, six readers — and I withdraw my own proposed answer
+
+Batch 042 adopted a mechanical line and applied it to ~20 rows: the line names a
+DEPARTMENT -> 26; the line names a SERVICE THE PUBLIC RECEIVES (clinic, treatment
+programme, employment and training) -> score what it houses. It went back and
+corrected a row from 55 to 26 to hold that line.
+
+Tally now:
+
+    26 for a department-named lease     036, 038, 047, 045, 042    five readers
+    62-70 for the same shape            049                        one reader
+
+An entry above proposed I side with 049 — that "where the line names a department
+whose public function is to be visited, the visiting is stated, because it is in
+the department's name". I withdraw it. That reasoning starts from what is true in
+the world (people do queue at Social Services) rather than from what the line
+establishes, which is the exact inference the rubric forbids everywhere else. I
+would have been overruling five readers and my own rule to do it.
+
+    v7 rule 10a stands as drafted, plus one sentence:
+      "A line that names only the department scores 26, even where that
+       department's work is public-facing. This under-scores real clinics
+       and intake offices, and it is accepted: the alternative is to
+       supply a use the record does not state."
+
+Recording the cost in the rubric is the point. Two readers reached 26 while
+saying they disliked it; a rule that admits what it gives up will not be
+re-litigated by the third.
+
+## The new floor rule covers a fourth case
+
+Batch 042: an environmental finding is anchored at 22, which is under the old
+floor, so a REFERRED finding scores identically to an ADOPTED one. The reader
+noted it follows the rule and still reads wrong.
+
+Under the replacement ("a discount never takes an act below 18; anchors discount
+like anything else") a referred finding is 18 and an adopted one is 22. Fourth
+incoherence closed by the same single clause.
