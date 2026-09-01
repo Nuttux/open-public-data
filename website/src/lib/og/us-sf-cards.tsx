@@ -197,14 +197,39 @@ export async function renderSfBlockOg(id: string, origin: string) {
      tracing rule to keep in step with, and nothing to exclude. */
   const idx = await getJson<BlockIndex>(`${origin}/data/us/sf/city/blocks/block-index.json`);
   const i = idx ? idx.b.indexOf(id) : -1;
-  const rows =
+  const entry =
     idx && i >= 0
       ? (
-          await getJson<Record<string, { d?: BlockDecision[] }>>(
+          await getJson<Record<string, { d?: BlockDecision[]; s?: string[] }>>(
             `${origin}/data/us/sf/city/blocks/block-${String(i % idx.meta.shards).padStart(2, "0")}.json`,
           )
-        )?.[id]?.d ?? []
-      : [];
+        )?.[id]
+      : undefined;
+  const rows = entry?.d ?? [];
+
+  /* ── A SHARE CARD NAMES A PLACE, NOT OUR FILING SYSTEM ─────────────────
+     The kicker read "Block 1595 · San Francisco". An assessor block number is
+     how the CITY files its parcels and how this pipeline joins them; it is not
+     how anybody says where they are. Pasted into a chat it tells the reader
+     nothing and reads as a database key escaping into public.
+
+     The block already carries the streets it fronts, so the card can say
+     "California Street · San Francisco" — the level a person would use out
+     loud. The block number stays in the URL, where it belongs. */
+  const fronts = (entry?.s ?? [])
+    .map((s) => s.split("|"))
+    .map(([name, kind]) =>
+      [name, kind]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase()
+        .replace(/\b[a-z]/g, (c) => c.toUpperCase())
+        .replace(/\bSt\b/, "Street")
+        .replace(/\bAve\b/, "Avenue")
+        .replace(/\bBlvd\b/, "Boulevard"),
+    )
+    .filter(Boolean);
+  const placeName = fronts.length ? fronts.slice(0, 2).join(" at ") : "";
   const lead = rows.length ? blockLead(rows) : null;
 
   /* THE SPAN IS CLAMPED THE WAY THE PAGE CLAMPS IT. `y1` is 2025 on block
@@ -253,7 +278,7 @@ export async function renderSfBlockOg(id: string, origin: string) {
 
   return shareCard({
     route: "/the-city",
-    kicker: `Block ${id} · San Francisco`,
+    kicker: [placeName || null, "San Francisco"].filter(Boolean).join(" · "),
     // No line means a block the record says nothing about — 308 of 5,404. The
     // card says so plainly rather than printing an empty quotation.
     // ── OUR SENTENCE GOES UNQUOTED; THE CLERK'S KEEPS ITS MARKS ────────

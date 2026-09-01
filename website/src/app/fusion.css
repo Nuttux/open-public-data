@@ -18832,13 +18832,43 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   margin: 10px 8px; font-size: 13px; line-height: 1.5;
   color: color-mix(in srgb, var(--ink) 58%, transparent);
 }
+/* one row = the line (flies to the place) + one character (opens the scan).
+   The pair hovers as a unit so the row still feels like one thing. */
+.theme-fusion .fx-city-record-line {
+  display: flex; align-items: flex-start; gap: 2px; border-radius: 5px;
+}
+.theme-fusion .fx-city-record-line:hover,
+.theme-fusion .fx-city-record-line.is-hot {
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
+}
+/* AT REST THE LIST IS SENTENCES AND NOTHING ELSE. Eight arrows down a 280 px
+   column is the clutter the tag was removed for. The source appears on the row
+   the reader is actually on — and on keyboard focus, so it is never reachable
+   only by mouse. */
+.theme-fusion .fx-city-record-src {
+  flex: none; padding: 8px 7px 0 2px; line-height: 1;
+  font-size: 12px; text-decoration: none;
+  color: color-mix(in srgb, var(--ink) 45%, transparent);
+  opacity: 0; transition: opacity .12s ease;
+}
+.theme-fusion .fx-city-record-line:hover .fx-city-record-src,
+.theme-fusion .fx-city-record-line.is-hot .fx-city-record-src,
+.theme-fusion .fx-city-record-line:focus-within .fx-city-record-src { opacity: 1; }
+.theme-fusion .fx-city-record-src:hover { color: var(--ink); }
+@media (prefers-reduced-motion: reduce) {
+  .theme-fusion .fx-city-record-src { transition: none; }
+}
+/* a touch screen has no hover, so there it is simply always there */
+@media (hover: none) {
+  .theme-fusion .fx-city-record-src { opacity: 1; }
+}
+.theme-fusion .fx-city-record-src:focus-visible { outline: 2px solid var(--ink); outline-offset: -2px; }
 .theme-fusion .fx-city-record-row {
   display: flex; gap: 8px; align-items: flex-start; width: 100%; text-align: left;
   padding: 8px 8px; border: 0; background: transparent; color: var(--ink);
   font: inherit; font-size: 12.5px; line-height: 1.42; border-radius: 5px; cursor: pointer;
 }
-.theme-fusion .fx-city-record-row:hover,
-.theme-fusion .fx-city-record-row.is-hot { background: color-mix(in srgb, var(--ink) 6%, transparent); }
+.theme-fusion .fx-city-record-row:focus-visible { outline: 2px solid var(--ink); outline-offset: -2px; }
 .theme-fusion .fx-city-record-row:focus-visible { outline: 2px solid var(--ink); outline-offset: -2px; }
 .theme-fusion .fx-city-record-dot {
   width: 7px; height: 7px; border-radius: 50%; flex: none; margin-top: 5px;

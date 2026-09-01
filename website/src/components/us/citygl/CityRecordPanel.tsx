@@ -175,15 +175,33 @@ export default function CityRecordPanel({
           </p>
         ) : (
           shown.map(({ d, line }, i) => (
-            <button
+            /* ── TWO THINGS A READER WANTS FROM A ROW, AND ONE OF THEM WAS
+                   UNREACHABLE ──────────────────────────────────────────────
+               The row flew the camera to the place, which is the thing only
+               this map can do, and there was no way at all to reach the
+               scanned page — the record itself. Writing "Open the minutes" on
+               every row of a list hundreds long is absurd, so the source gets
+               ONE character at the end of the row.
+
+               A citywide decision has nowhere to fly. Its row used to return
+               early and do nothing at all — a dead click, which is worse than
+               no click. There the row itself opens the scan, because that is
+               the only thing left to do with it. */
+            <span
               key={`${d.url}-${i}`}
-              type="button"
-              className={`fx-city-record-row${hover === i ? " is-hot" : ""}`}
+              className={`fx-city-record-line${hover === i ? " is-hot" : ""}`}
               onMouseEnter={() => onHover(i)}
               onMouseLeave={() => onHover(null)}
+            >
+            <button
+              type="button"
+              className="fx-city-record-row"
               onFocus={() => onHover(i)}
               onBlur={() => onHover(null)}
-              onClick={() => onOpen(i)}
+              onClick={() => {
+                if (d.at.length) onOpen(i);
+                else window.open(d.url, "_blank", "noopener,noreferrer");
+              }}
             >
               <span className="fx-city-record-dot" style={{ background: ink }} />
               <span className="fx-city-record-text">
@@ -206,6 +224,15 @@ export default function CityRecordPanel({
                 <span className="fx-city-record-n">{d.at.length}</span>
               ) : null}
             </button>
+            <a
+              className="fx-city-record-src"
+              href={d.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open the scanned page"
+              title="Open the scanned page"
+            >↗</a>
+            </span>
           ))
         )}
         {hidden > 0 ? (
