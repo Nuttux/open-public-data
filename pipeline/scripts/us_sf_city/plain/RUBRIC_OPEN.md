@@ -307,3 +307,24 @@ anchor.
 The fix is probably that a hearing or finding inherits a fraction of the act it
 gates, rather than a flat number — which is what the discount ladder already
 does everywhere else.
+
+## The housing-bond fork — 33 points on the clerk's wording
+
+    $71M in housing bonds proposed for Mason and Eddy Streets        18
+    $75M in bonds proposed for 137 flats at 4840 Mission Street      51
+
+The machinery discount fires only when no unit count is written, so the same act
+scores 33 points apart on whether the clerk mentioned how many flats. This is the
+land-purchase shape (26 points, already logged) with a bigger gap and a bigger
+population — ~20 records a batch in the bond years.
+
+## The no-discount floor covers anchors only
+
+"Below 30, an anchor is not discounted" is written for anchored acts. Every
+non-anchored small act — a settlement, an advisory body, a proclamation, a
+motion inside an appeal — has no floor at all, so the discount ladder drives it
+toward the 0-9 band reserved for procedure with no subject. One reader refused
+to let a proposed settlement fall below 10 and said so.
+
+Same fault as the permit-floor item. One clause should fix both: no act with a
+named subject falls into 0-9.
