@@ -1558,3 +1558,44 @@ through the rubric.
 
 This is the largest single absence found in the pass, and it went unseen for so
 long because each instance looked like an isolated missing rung.
+
+## A FIFTH v7 defect: "subject but no act" fires on lines that merely MENTION a subject
+
+    "Board recesses and returns to the Market Street Railway bond amendment"   56
+
+A recess line, scoring above an adopted rezoning, because the clause says score
+the subject one rung below the smallest plausible act on it. I wrote it for
+"Board adopts Resolution No. 571-10 for the Transbay Transit Center" — a line
+where an act certainly happened and the clerk did not say which. A recess is not
+that: the act IS stated, and it is a recess.
+
+    FIX: "...where a line names a subject and states no act upon it. A line
+     that states its own act — a recess, a roll call, an adjournment — is
+     that act, however large the subject it mentions."
+
+Same failure as the other four: the rule was written from one example and never
+tested against the neighbouring shapes.
+
+## General public comment inherits its subjects — 40, above most adopted acts
+
+"A hearing or a question with no proposal pending" is x0.5 of the subject, and
+the standing public-comment item names whatever the public raised — homelessness,
+shelters, Muni, disability access, all 80-band subjects. The mechanical answer is
+40, which puts a comment period above most real acts in the batch.
+
+The rule was written for a hearing on ONE proposal. Public comment has no
+proposal at all, and its subjects belong to the speakers, not the Board.
+
+## Advocacy on matters the city cannot deliver — no rung, and the reason matters
+
+    a federal judicial nomination opposed
+    a call for peace in the Israeli-Palestinian conflict
+    support for the UFW grape boycott
+
+"Non-binding is not the same as symbolic" was written with the welfare-mothers
+example, which works because the city's own police can act on it. These are
+different: the Board can say the words and nothing in San Francisco changes. One
+reader based them at 30 and let the referral discount take them to 18.
+
+Not a gesture, not an act. It is the one shape in the corpus where reach and
+consequence point opposite ways, and the rubric has nothing for it.
