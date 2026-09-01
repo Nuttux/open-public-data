@@ -394,10 +394,21 @@ def is_convex(r: list[tuple[float, float]]) -> bool:
     return True
 
 
+#: the longest ring this brute force will take. It was 12 while the only
+#: caller was the Transamerica's 8-vertex outline; Salesforce Tower's is 15.
+#: The search is over cyclic subsets, so the cost is 2^n and 2^16 is 65,536
+#: candidates — each a convexity test and a containment test on at most 16
+#: points. That is a bound on TIME and it is stated here rather than left as a
+#: bare literal, because raising it is a cost decision and swapping the rule
+#: for a hull is not: see `build_tapered`, where the hull was tried and came
+#: back covering 4.6 % more ground than the footprint.
+CONVEX_MAX_NV = 16
+
+
 def largest_inscribed_convex(ring: list[tuple[float, float]]):
     """The largest-area CONVEX polygon on the ring's own vertices that the ring
-    contains. Brute force over cyclic subsets; the ring is 8 vertices here and
-    the build asserts the count before it runs.
+    contains. Brute force over cyclic subsets; `CONVEX_MAX_NV` bounds the cost
+    and the build asserts the count before it runs.
 
     WHY THIS AND NOT THE HULL. A pyramid is swept by a profile and a profile
     scales about the area centroid, which is inside-preserving only on a convex
@@ -416,7 +427,7 @@ def largest_inscribed_convex(ring: list[tuple[float, float]]):
     drops is the tab, which is not the tower's plan.
     """
     n = len(ring)
-    if n > 12:
+    if n > CONVEX_MAX_NV:
         raise ValueError(f"{n} vertices is too many for this search")
 
     def area(p):
@@ -675,6 +686,88 @@ def wing_parts(ring, z0, z1, s_at_z0, shaft, top_m, mat):
                     "m": mat, "c": mat, "px": 0.0, "ink": 1,
                     "p": [0.0, 1.0, 1.0, 1.0]})
     return out
+
+
+#: how far the shaft's plan has drawn in by the time it reaches the crown.
+#: AUTHORED. The register publishes `base_plan_size` and `tower_plan_size` and
+#: for this building they are the SAME — 177x177 ft — so the taper is not in
+#: the record and is not pretended to be. It is in the drawing because a
+#: straight prism at this height is the thing that was already there and is
+#: what nobody could pick out of its own skyline.
+SF_TAPER = 0.72
+#: and how much further the crown draws in above the last occupied floor
+SF_CROWN_TAPER = 0.58
+
+
+def build_tapered(ring: list[tuple[float, float]], sec: dict) -> tuple[list[dict], dict]:
+    """A tapering tower with a crown over its last occupied floor.
+
+    WHY THIS IS A HERO. Same measurement error as the pyramid and a larger one:
+    the fabric's height is the MEDIAN LIDAR return, and for Salesforce Tower
+    that reads **108.1 m against a surveyed 326.1 m** -- the footprint shipped
+    with this map is older than the tower, or the 2023 flight caught the site.
+    `base/tall-tops.json` already puts the height right; this puts the SHAPE
+    right, because 326 m of straight prism is not a building anyone recognises.
+
+    WHERE THE CROWN COMES FROM, AND IT IS ARITHMETIC ON TWO PUBLISHED NUMBERS.
+    5kya-mfst gives this row `stories_above_grade` 61 and `typ_story_height`
+    14'9". Sixty-one floors at 14.75 ft is **899.75 ft**, against a published
+    `height_ft` of **1070** -- so **170.25 ft, 51.9 m, stands above the last
+    occupied floor**. That is the crown, and its height is derived here the
+    same way the Transamerica's shaft/cap join is derived from its own two
+    storey counts, rather than typed.
+
+    WHAT IS AUTHORED: that the shaft draws in as it rises, and by how much.
+    The register publishes `base_plan_size` and `tower_plan_size` and they are
+    the same 177x177 ft, so the taper is NOT in the record. `SF_TAPER` and
+    `SF_CROWN_TAPER` are named at the top of this file rather than buried, and
+    this docstring is the statement that they are a drawing decision.
+
+    Nothing stands outside the published footprint: the plan only ever shrinks
+    about the base, and the base is the largest convex figure the footprint
+    contains -- `largest_inscribed_convex`, the pyramid's own rule and for the
+    same reason, that a profile scaling about a centroid is inside-preserving
+    only on a convex ring.
+    """
+    top_ft = float(sec["heightFt"])
+    top_m = round(top_ft * FT_M, 2)
+    st = int(sec["storiesAboveGrade"])
+    sh_ft = float(sec["storyHeightFt"])
+    occupied_ft = st * sh_ft
+    if not (0 < occupied_ft < top_ft):
+        raise ValueError(f"{st} storeys at {sh_ft} ft is {occupied_ft} ft, "
+                         f"which does not sit under a {top_ft} ft top")
+    shaft = round(occupied_ft * FT_M, 2)
+    # ── THE BASE IS THE PYRAMID'S OWN RULE AND NOT A NEW ONE ──────────────
+    # The first cut here took the convex HULL, shrunk about its centroid until
+    # its vertices sat inside the published ring. That is unsound and this file
+    # already says why: *"it slips a vertex-only gate because a hull's vertices
+    # are always ring vertices."* It duly passed at a shrink of 1.000 and
+    # produced a base of 2,084.5 m2 on a 1,993.0 m2 footprint — 4.6 % of ground
+    # the building does not stand on. Removed.
+    #
+    # `largest_inscribed_convex` is the right rule and its refusal of this ring
+    # was a COST bound, not a judgement about the shape: it is a brute force
+    # over cyclic subsets and asserted 12 vertices. This footprint has 15, and
+    # 2^15 is 32,768 subsets, which is nothing. The bound is raised to 16 with
+    # that arithmetic written next to it rather than the rule being swapped.
+    base, a_base = largest_inscribed_convex(ring)
+    ring_pub, ring = ring, base
+
+    def solid(z0, z1, s0, s1, mat):
+        return {"k": 0, "r": [c for xy in ring for c in xy], "z0": round(z0, 2),
+                "z1": round(z1, 2), "m": mat, "c": mat, "px": 0.0, "ink": 1,
+                "p": [0.0, s0, 1.0, s1]}
+
+    parts = [solid(0.0, shaft, 1.0, SF_TAPER, sec["matShaft"]),
+             solid(shaft, top_m, SF_TAPER, SF_CROWN_TAPER, sec["matCrown"])]
+    return parts, {"kind": "tapered", "topM": top_m, "shaftTopM": shaft,
+                   "crownM": round(top_m - shaft, 2),
+                   "occupiedFt": round(occupied_ft, 1),
+                   "taper": SF_TAPER, "crownTaper": SF_CROWN_TAPER,
+                   "hull": 0, "drawnM2": round(a_base, 1),
+                   "ringM2": round(abs(ring_area(ring_pub)), 1),
+                   "baseNv": len(base), "ringNv": len(ring_pub)}
 
 
 def build_temple(ring: list[tuple[float, float]], top_m: float,
@@ -1275,6 +1368,10 @@ def main() -> int:
             top_m = float(B["h"][b])
             parts, geo = build_temple(ring, top_m, sec)
             roof_m = top_m
+        elif sec.get("form") == "tapered":
+            parts, geo = build_tapered(ring, sec)
+            top_m = geo["topM"]
+            roof_m = geo["shaftTopM"]
         elif sec.get("form") == "pyramid":
             # THE PUBLISHED TOP REPLACES THE FABRIC'S, and that is the point of
             # the record: base/heroes carries its own `top` and the hero
@@ -1425,6 +1522,15 @@ def main() -> int:
                   f"{geo['baseNv']} of its {geo['ringNv']} vertices, no shrink; "
                   f"the hull would be {geo['hullM2']} m2 and the register's own "
                   f"base_plan_size {geo['planM2']} m2, and neither fits")
+            print(f"      em: {rec['em']}")
+            continue
+        if geo["kind"] == "tapered":
+            print(f"      tapered: {geo['occupiedFt']} ft of occupied floors "
+                  f"under a {geo['topM']} m top -> a {geo['crownM']} m crown; "
+                  f"plan {geo['taper']} at the shaft top, {geo['crownTaper']} at "
+                  f"the tip; base is the largest convex figure the footprint "
+                  f"contains -- {geo['drawnM2']} m2 of {geo['ringM2']} m2, "
+                  f"{geo['baseNv']} of its {geo['ringNv']} vertices")
             print(f"      em: {rec['em']}")
             continue
         if geo["kind"] == "temple":
