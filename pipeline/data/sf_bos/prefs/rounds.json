@@ -49,5 +49,32 @@
   "regex_spearman_r2": 0.538,
   "regex_agreement_with_hand": "8/16",
   "conclusion": "reach must be read, not pattern-matched; hand-coded figures were partly my own judgement fitted to the answers"
- }
+ },
+ "round3": {
+  "order": [
+   11,
+   7,
+   2,
+   3,
+   5,
+   4,
+   9,
+   6,
+   10,
+   8,
+   1,
+   15,
+   13,
+   16,
+   12,
+   14
+  ],
+  "era": "2010-2026 only, to remove the recency confound",
+  "user_note": "felt like it was mostly money sums",
+  "sample_fault": "10 of 16 named a sum \u2014 a fair criticism of the sample",
+  "money_alone_spearman": 0.379,
+  "money_plus_stage_spearman": 0.229,
+  "finding": "NOT money-led. $152.6M, $144.8M and $50M all placed in the bottom half; a $0 community garden placed 2nd. $210M for General Hospital ranked 1st while $144.8M for one address ranked 13th \u2014 same order of money, opposite ends of the list. Reach again."
+ },
+ "conclusion": "Three rounds, three angles, one dimension: how much of the city a decision touches. Money and completion matter but are secondary. Reach must be read per record and stored; it cannot be pattern-matched."
 }
