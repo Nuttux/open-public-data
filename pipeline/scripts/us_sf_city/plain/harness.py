@@ -4,6 +4,8 @@ import json, os, re, sys
 sys.path.insert(0, '/tmp')
 import pred as P
 from gate import check
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import pass2 as PASS2
 
 STORE = "/Users/daniel/code/open-public-data/pipeline/data/sf_bos/plain_lines.jsonl"
 ITEMS = "/tmp/items_merged.jsonl"
@@ -31,17 +33,45 @@ def sentence_at(t, off):
     b = min([x for x in (t.find('.', off), t.find(';', off)) if x >= 0] or [len(t)])
     return t[a:b + 1].strip()
 
-def load_records():
+def load_records(pass2=True):
+    """Every record a line can be written for.
+
+    ── WHAT THIS USED TO DO, AND WHY IT WAS WRONG ─────────────────────────
+    It opened `if not o.get('r'): continue` and then required
+    `P.predicate` to match. Both were inherited from the map: a record
+    needed a street to get a dot, and the predicate found the event span so
+    the writer had something to read. Used as a FILTER they excluded 33,841
+    records — 27% of the corpus — without either one having asked whether
+    the record said anything.
+
+    Neither test was about the reader. The year panel lists decisions that
+    place no dot at all, so the street was the map's requirement; and
+    `predicate` returning None means its patterns did not match, which is
+    not the same as the page being empty. MEASURED on the excluded set:
+    33,565 of 33,841 state something a line can be written from.
+
+    So the filter is now `pass2.held_reason` — the one claim that can be
+    made without reading the record, which is whether there is any text on
+    the page once the roll call is taken off it. `pass2.py` documents it and
+    writes every held record out with its reason.
+
+    `pass2=False` restores the original selection, for reproducing the first
+    run's numbers.
+    """
     out = []
     with open(ITEMS) as fh:
         for ln in fh:
             o = json.loads(ln)
-            if not o.get('r'): continue
-            off = o['r'][0].get('o') or 0
-            if not (P.predicate(ns['clean'](sentence_at(o['t'], off)))
-                    or P.predicate(ns['clean'](o['t']))): continue
+            if pass2:
+                if PASS2.held_reason(o.get('t') or ''): continue
+            else:
+                if not o.get('r'): continue
+                off = o['r'][0].get('o') or 0
+                if not (P.predicate(ns['clean'](sentence_at(o['t'], off)))
+                        or P.predicate(ns['clean'](o['t']))): continue
             out.append({"id": f"{o['v']}|{o['i']}", "y": o['y'], "t": o['t'],
-                        "p": [(r.get('d') or r.get('s') or '') for r in o['r']][:3]})
+                        "p": [(r.get('d') or r.get('s') or '')
+                              for r in (o.get('r') or [])][:3]})
     return out
 
 def done_ids():
