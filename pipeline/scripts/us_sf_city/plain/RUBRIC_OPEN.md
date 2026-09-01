@@ -250,3 +250,19 @@ one in different bands.
 subject is named and large; the act is not stated. Scoring it as the neighbouring
 act gives 48, scoring it as procedure gives 8 — five bands apart, and the shape
 appears in every modern batch.
+
+## MEASURED: how much two readers agree
+
+An accidental double-dispatch scored three batches twice — same input, same
+rubric, independent readers:
+
+    batch 018   87% identical   97% same band   mean |diff| 0.6 points
+    batch 019   70% identical   93% same band   mean |diff| 1.5 points
+    batch 020   65% identical   94% same band   mean |diff| 1.6 points
+
+Two readers put a record in the same band 93-97% of the time and differ by
+about 1.5 points out of 100. That is the reliability the six rubric versions and
+four re-reads bought, and it is smaller than the width of any band.
+
+One reader reported the same pair as "differs on 865 of 1,200 rows", which is
+true and useless: it counts a one-point difference the same as a two-band one.
