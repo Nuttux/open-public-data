@@ -192,3 +192,22 @@ apart. ~14 records a batch.
 The floor should be the anchor itself for any anchored permit-tier act, which is
 what the extension case already says in different words. Fix in the same pass as
 the thoroughfare contradiction (two readers have now reported that one).
+
+## The thoroughfare split exists for levels and not for street WORK
+
+A reader measured it: 151 street-level lines in its batch, against 292
+paving/grading/sewering/sidewalk lines — four times as many, and 218 of them
+landed on the flat 38. Fifty-two name a listed thoroughfare. "Mission Street to
+be repaved from Fourth to the Embarcadero" scores the same as a fifty-foot patch
+on an alley.
+
+The street-level anchor got a 34/40 split; the street-work anchor, which is the
+larger population, got none.
+
+## The citywide-component multiplier has no floor
+
+v6 added "a component of a CITYWIDE system takes the system's score less a
+third" without a lower bound, so "$36 more toward a Heisler locomotive" takes 53
+while "$29,311.05 for San Francisco Hospital brickwork" takes the flat component
+45. Any trivial material for a citywide system outranks a large trade on a civic
+building. ~46 records a batch in the Hetch Hetchy and Municipal Railway years.
