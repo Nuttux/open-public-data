@@ -142,7 +142,7 @@ import {
   Vector2,
 } from "three";
 
-import { FACADE_TILES, facadeAtlas, type FacadeAtlas } from "../facade";
+import { FACADE_TILES, sharedFacadeAtlas, type FacadeAtlas } from "../facade";
 
 import type {
   BridgeSpan,
@@ -853,10 +853,8 @@ function scaleNeeded(part: HeroPartData, rwPlane: number): number {
 /** the facade sheet, built once for the process and shared by every hero that
  *  asks for it — `facade.ts` builds a whole atlas and this needs two of its
  *  textures, so it is not rebuilt per building */
-let _atlas: FacadeAtlas | null | undefined;
 function atlasOnce(): FacadeAtlas | null {
-  if (_atlas === undefined) _atlas = facadeAtlas();
-  return _atlas;
+  return sharedFacadeAtlas();
 }
 
 function heroPieces(

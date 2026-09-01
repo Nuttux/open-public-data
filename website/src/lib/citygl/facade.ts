@@ -1653,3 +1653,24 @@ export function cladWallRGB(
     base[2] + (t[2] - base[2]) * k,
   ];
 }
+
+/**
+ * ONE ATLAS FOR THE PROCESS, AND THE REASON IS A MEASUREMENT.
+ *
+ * `facadeAtlas()` builds eleven tiles and eleven normal maps from scratch —
+ * eleven canvases drawn, levelled, read back pixel by pixel for the relief,
+ * and uploaded. That was fine while `layers/buildings.ts` was the only caller.
+ * It is not fine now that `layers/heroes.ts` and `layers/caps.ts` each want
+ * two of those textures: three builds of the same sheet, and the third one
+ * pushed the first frame late enough that a capture came back on the loading
+ * screen.
+ *
+ * The sheet is identical between them — same tiles, same order, same
+ * levelling — so it is built once and shared. A caller that needs a different
+ * device scale still calls `facadeAtlas(dpr)` directly and gets its own.
+ */
+let _shared: FacadeAtlas | null | undefined;
+export function sharedFacadeAtlas(): FacadeAtlas | null {
+  if (_shared === undefined) _shared = facadeAtlas();
+  return _shared;
+}

@@ -118,6 +118,7 @@ import {
   MeshLambertMaterial,
   SRGBColorSpace,
 } from "three";
+import { sharedFacadeAtlas, TILE_PUNCHED } from "../facade";
 
 import type { CityData } from "@/lib/city/data";
 import { FLAG_NOYEAR } from "@/components/us/city/palette";
@@ -395,17 +396,57 @@ export function capsLayer(
       bucketOf(a.need) - bucketOf(b.need) || a.year - b.year || a.gid - b.gid,
   );
 
+  /* the bay and the storey a cap's wall is read in — the fabric's own, so a
+     crown and the shaft under it are drawn off one tile at one size */
+  const CAP_BAY_M = 4.6;
+  const CAP_STOREY_M = 3.6;
   const xz: number[] = [];
   const elev: number[] = [];
   const hgt: number[] = [];
   const col: number[] = [];
   const idx: number[] = [];
+  /** the facade coordinate — see the sink below */
+  const uvs: number[] = [];
+  /* ── AND A CAP THAT IS A WALL CARRIES WINDOWS ────────────────────────
+     The fourth surface in this renderer to be found drawn blank, after the
+     massing steps, the gable end and the heroes, and the same reason every
+     time: it is emitted through a path that is not the fabric's, so nothing
+     hands it a facade. Reported from the page as a tall featureless cream
+     column standing among gridded neighbours.
+
+     Of the 512 slots this layer draws, 447 are PRISMS — a tower's shaft
+     continuing above the median the fabric drew it at — and a prism is a
+     wall. The other 65 are domes, crowns, spires and campaniles, which are
+     roof, and giving those a window grid would be worse than giving them
+     none. So the coordinate is written for every vertex and the DRAW decides
+     which bucket it lands in: `capUV` is set by the caller around a slot and
+     is null for anything that is not a prism.
+
+     `u` is the run around the ring in bays and `v` the height in storeys —
+     the fabric's own convention and its own numbers, so a crown and the
+     shaft under it are read off one tile at one size. */
+  let capUV: { bay: number; storey: number } | null = null;
+  let uvRun = 0;
+  let uvPrev: [number, number] | null = null;
   const sink: FormSink = {
     vertex(x, y, elevM, hM, r, g, b) {
       xz.push(x, y);
       elev.push(elevM);
       hgt.push(hM);
       col.push(r, g, b);
+      if (capUV) {
+        /* the run resets at every level of the sweep, which `capForm` emits
+           ring by ring, so a vertex that jumps back to the ring's start is a
+           new level rather than a long edge */
+        if (uvPrev) {
+          const d = Math.hypot(x - uvPrev[0], y - uvPrev[1]);
+          uvRun = d > capUV.bay * 8 ? 0 : uvRun + d;
+        }
+        uvPrev = [x, y];
+        uvs.push(uvRun / capUV.bay, hM / capUV.storey);
+      } else {
+        uvs.push(0, 0);
+      }
       return elev.length - 1;
     },
     tri(a, b, c) {
@@ -427,6 +468,14 @@ export function capsLayer(
     /* the index length BEFORE this cap — a bucket's run starts where its
        first surviving cap's triangles start, not where they end */
     const before = idx.length;
+    /* A PRISM IS A WALL AND EVERYTHING ELSE HERE IS A ROOF. 447 of the 512
+       slots take no profile at all — the identity sweep, a shaft continuing
+       straight up — and those are the ones that get a facade. A dome, a
+       crown, a spire and a campanile do not: `st.profile` is non-null on
+       exactly those 65 and null on the prisms. */
+    capUV = st.profile === null ? { bay: CAP_BAY_M, storey: CAP_STOREY_M } : null;
+    uvRun = 0;
+    uvPrev = null;
     /* `capForm` settles its whole plan before it appends anything, so a
        refusal here leaves the buffers exactly as they were and the roof the
        page already drew still stands. That is asserted in `roof-form.test.ts`
@@ -528,6 +577,7 @@ export function capsLayer(
   g.setAttribute("aElev", new BufferAttribute(fElev, 1));
   g.setAttribute("aH", new BufferAttribute(fH, 1));
   g.setAttribute("color", new BufferAttribute(fCol, 3));
+  g.setAttribute("uv", new BufferAttribute(new Float32Array(uvs), 2));
   g.setIndex(new BufferAttribute(new Uint32Array(idx), 1));
 
   const setStep = (zex: number, zexb: number): void => {
@@ -564,9 +614,25 @@ export function capsLayer(
      So two-sided bought nothing and cost two things: every side fragment
      shaded twice, and a shadow pass with no back face to bias against.
      Front-facing is three's own default, so this asks for nothing at all. */
+  /* ── AND THE TILE, WHICH ONE MATERIAL CAN CARRY BECAUSE OF THE UV ─────
+     The mesh is one material repeated per camera bucket, so a prism and a
+     dome cannot be given different maps. They do not need to be: a non-prism
+     vertex is written at uv (0, 0), which is the corner of the tile and is
+     the wall FIELD — white, the "leave the material alone" value this whole
+     vocabulary turns on. `layers/buildings.ts` uses the same idiom for every
+     vertex its roof builders make.
+
+     `punched` and not the building's own: this layer has the footprint table
+     but not the facade columns, and a tower shaft continuing above its own
+     median is a post-war office wall in the overwhelming majority. Stated
+     rather than inferred. */
+  const capAtlas = sharedFacadeAtlas();
+  const capTile = capAtlas?.tiles[TILE_PUNCHED] ?? null;
+  const capNrm = capAtlas?.normals[TILE_PUNCHED] ?? null;
   const mat = new MeshLambertMaterial({
     vertexColors: true,
     flatShading: true,
+    ...(capTile ? { map: capTile, normalMap: capNrm ?? undefined } : {}),
   });
   /* ONE MATERIAL, `NB` TIMES OVER. `geometry.groups` index into a material
      ARRAY, and repeating the same instance is what says "these are the same
