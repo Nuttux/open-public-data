@@ -1215,3 +1215,30 @@ what the bound is FOR:
 
 Every one of these was found by a reader applying the rule literally and saying
 the result looked wrong. None was found by me re-reading what I wrote.
+
+## ANSWERED: housing bonds landing at 49-51 is the fix working, not failing
+
+Batch 062 asks whether v7's housing-bond rule is undone by the stage discount,
+since "$X in housing bonds proposed for <address>" now lands at 49-51 rather than
+in the 55-79 band.
+
+It is not undone. The defect v7 fixed was a SPLIT, not a level:
+
+    "$71M in housing bonds proposed for Mason and Eddy Streets"        was 18
+    "$75M in bonds proposed for 137 flats at 4840 Mission Street"      was 51
+
+Two spellings of one act, 33 points apart on whether the clerk wrote a unit
+count. v7 aimed to make them agree, and 49-51 for both is exactly that. A
+proposed bond issue sitting below an adopted one is the stage discount doing its
+job, not a rule being cancelled.
+
+Recorded because the reader was right to check — the same batch found three
+genuine cancellations of that shape, so the question was well aimed.
+
+## Two seams, both within band, not worth a bump on their own
+
+  Hetch Hetchy components sit where "system less a third" (53) and "score the
+    sum" (45) collide; one reader landed most at 48 and left an earlier line at
+    53 — a visible 5-point seam inside one batch
+  a rooftop antenna or colocation lease is neither the city's own office (26)
+    nor a large asset leased out (48); one reader invented 36 and said so
