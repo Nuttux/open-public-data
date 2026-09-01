@@ -167,3 +167,15 @@ whether the half-discount double-counts a fact the Journal simply prints twice.
 It does — and the fix is not in the scoring. The duplicate-collapsing pass keeps
 ONE row per act carrying its final outcome, so the proposal row does not reach
 a reader at all. 17% of a batch is this duplication.
+
+## v6 contradicts itself on the thoroughfare rung — mine, within-band
+
+"Four fixes to anchors that were wrong" says: drop the length requirement, a
+listed street as the subject is 40. "Which streets are major" still says: 40
+fires only when a listed street is the SUBJECT and a length is named. I wrote
+both. A reader followed the fix, and it still fired 4 times in 113 street-level
+lines; under the other reading it fires zero.
+
+NOT fixed while a wave is out, and it fails the bump test anyway — 34 against
+40 is 6 points inside one band. Delete the second sentence whenever the rubric
+is next opened.

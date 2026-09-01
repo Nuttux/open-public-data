@@ -166,6 +166,26 @@ def main() -> None:
                           f"read cannot be established")
                     continue
                 stamp = json.loads(sp.read_text())
+
+                # ── A FILE STILL BEING WRITTEN IS NOT A FINISHED BATCH ──────
+                # Workers were told to append as they go, because a wave that
+                # held 19,200 finished lines in memory lost every one of them
+                # when the process exited. The cost of that fix: --take began
+                # ingesting files mid-write. Fifteen batches came in at 720 to
+                # 1,050 rows of 1,200 — every row real, none duplicated, but
+                # the batch counted as read when a third of it did not exist.
+                #
+                # A done file is finished when it holds as many rows as the
+                # hand-out it answers. Short of that it is left alone and taken
+                # on the next pass.
+                src_batch = WORK / p.name.replace("done-", "batch-")
+                if src_batch.exists():
+                    want = sum(1 for _ in src_batch.open())
+                    got_n = sum(1 for _ in p.open())
+                    if got_n < want:
+                        print(f"  {p.name}: still being written "
+                              f"({got_n:,} of {want:,}) — left for the next pass")
+                        continue
                 bad = 0
                 rows = []
                 for l in p.open():
