@@ -1,0 +1,53 @@
+{
+ "round1": {
+  "order": [
+   18,
+   4,
+   11,
+   16,
+   1,
+   2,
+   15,
+   6,
+   12,
+   17,
+   3,
+   8,
+   13,
+   10,
+   9,
+   14,
+   7,
+   5
+  ],
+  "finding": "money ~= consequence in weight; unusual wording counts for little"
+ },
+ "round2": {
+  "order": [
+   5,
+   8,
+   3,
+   2,
+   1,
+   4,
+   7,
+   10,
+   6,
+   11,
+   9,
+   12,
+   13,
+   14,
+   16,
+   15
+  ],
+  "finding": "topic label is NOT the signal \u2014 health ranked last here yet 2nd in round 1. Reach is."
+ },
+ "reach": {
+  "hand_coded_spearman_r1": 0.99,
+  "hand_coded_spearman_r2": 0.888,
+  "regex_spearman_r2": 0.538,
+  "regex_agreement_with_hand": "8/16",
+  "conclusion": "reach must be read, not pattern-matched; hand-coded figures were partly my own judgement fitted to the answers"
+ }
+}
