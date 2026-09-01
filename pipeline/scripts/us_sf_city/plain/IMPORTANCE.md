@@ -14,6 +14,21 @@ where money was held out. The reason is always the same shape:
 Every one of those says *hospital*. What separates them is how much of the city
 they touch, and that has to be read.
 
+## Reach picks the band. The lists only say what fits inside it.
+
+Read this before the bands. Every band below names KINDS of decision, and a
+reader applying those lists literally puts all four of these at 80:
+
+    Height limits lowered across two areas around Powell and Bush Streets
+    Homewood Terrace rezoned for shops and two-family housing
+    Shops proposed on Judah Street between Tenth and Twenty-fifth avenues
+    Buildings on Bay Shore Boulevard must sit ten feet back
+
+All four are "a rule about what may be built where people live". They are not
+the same size, and the band headline — *a lot of people at once* — is what
+decides. Choose the band by how far the decision reaches, THEN check the band's
+list to see whether this kind of thing belongs at that reach.
+
 ## The scale
 
 **80–100 — the city changes for a lot of people at once.**
@@ -37,6 +52,17 @@ people.
 A settlement, a tax refund, an assessment appeal, a claim: the city pays or
 forgoes, and one party benefits. A renaming, unless the name is one the city
 knows. A commendation or a proclaimed week.
+
+BUYING IS NOT SETTLING. "Robert Trost paid $13,696.50 for building Galileo
+High School" is a payment to one party, and it is also a school existing. The
+city discharging a liability belongs here; the city buying something that gets
+built belongs with the thing bought. Score the school, not the cheque.
+
+NON-BINDING IS NOT THE SAME AS SYMBOLIC. "Police asked why welfare mothers were
+arrested, charges urged dropped" binds nobody, but it names a class of people
+and seeks relief for them. That is the 55–79 band with the proposal discount
+applied — not a gesture. A gesture is a commendation, a proclaimed week, a
+renaming: something whose whole content is the saying of it.
 
 **0–9 — procedure with no subject.**
 A file severed, rules suspended, a matter tabled with the matter unnamed.
@@ -63,6 +89,21 @@ A sum raises the score inside its band; it does not move a record between
 bands. $67.3M to buy one warehouse is still one address. $3.7M to house
 homeless young people reaches people. The reader ranked the second above the
 first, and this is the rule that says why.
+
+AND IT DOES NOT LIFT MAINTENANCE. The rule exists so a small human-facing sum
+is not buried, not so that any spending on a civic building is top-band. "$325
+for a new roof on the Relief Home's Section J" is upkeep on one wing: the
+facility's importance does not transfer to its roof. Repair, replacement and
+routine upkeep are scored on what is being repaired — one wing, one boiler, one
+roof — not on the institution around it.
+
+## Stage is applied last, and the band follows the number
+
+Choose the band on the decision as if it had happened. Then apply the stage
+discount. The record reports whichever band the final number falls in — so a
+routine proposal in the 55–79 band lands in 30–54 and is reported there. This
+is the one thing allowed to move a record between bands, because a proposal
+genuinely is a smaller fact than the act it proposes.
 
 ## Do not
 
