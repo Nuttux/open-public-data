@@ -539,3 +539,52 @@ Batch 037's ingest ran while its worker was doing a final cosmetic pass. All
 words to 8. Harmless here, but the completeness gate cannot see the difference
 between "finished" and "finished and still being tidied". Not worth a lock: the
 cost is a cosmetic edit, and the alternative is a worker holding a batch open.
+
+## MEASURED: the permit anchor was calibrated on grants, not applications
+
+Batch 039's reader argued that halving a permit application double-counts,
+because "the 33 anchor was itself measured on Journal lines that are
+overwhelmingly applications". Measured across all 6,818 permit-kind lines in the
+corpus (garage, boiler, oil tank, filling station, laundry, blasting, spur):
+
+    phrased as a GRANT          4,953    72.6%
+    neither                     1,363    20.0%
+    phrased as an APPLICATION     263     3.9%
+    phrased as a REFUSAL          239     3.5%
+
+The claim is false. The anchor was calibrated on grant-phrased lines, so
+discounting an application below it is the ladder working, not double-counting.
+That is evidence for reading (a).
+
+Two consequences, and the second is the bigger one:
+
+**The permit-application question is small.** The reader called it "a large share
+of the pre-1930 lines"; it is 263 records corpus-wide, plus 239 refusals. That is
+below the bar that the appeal cycle (164 a BATCH) and the unanchored ladders
+(41-258 a batch) clear comfortably. It is not a v7 blocker; it is a footnote.
+
+**And it never blocked v7 in the first place — my error.** I wrote that entries 9
+and 10 lean on reading (b) and so v7 could not ship until the reading was picked.
+That conflated two different things. Reading (a) says a stage DISCOUNTS an act;
+entry 9 says a stage must not REPLACE the act's subject. "Appeal heard over 203
+low-income flats" scoring a flat 16 is not a discount — it is the subject being
+thrown away. Discount the stage, keep the subject: both hold at once, under
+either reading.
+
+So v7 ships without settling the permit reading, and keeps the current behaviour
+(a), which is now the measured one.
+
+The subdivision-map refusal cliff is a separate thing and stays open — it comes
+from "a refusal above the permit tier takes the act at x0.5" meeting an anchor 3
+points above the tier, not from the ambiguous floor sentence.
+
+## Resuming preserves ids; it does not preserve interpretation
+
+Batch 039's resumer followed the floor rule literally for numeric anchors (a
+referral of a 26 transfer = 26); its predecessor had not (findings put off = 10
+against a 22 anchor). Both halves are internally consistent and the ids are
+sound, so the file is valid — but one batch now holds two readings of one rule.
+
+The resume brief tells a worker to continue the ids. It should also tell it to
+read what its predecessor DID on the shapes it is about to meet. Cheap to add,
+and the alternative is a seam in the middle of a batch that no gate can see.

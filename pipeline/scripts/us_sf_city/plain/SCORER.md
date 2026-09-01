@@ -43,7 +43,14 @@ it away.
 So before you score anything, check whether `done-NNN.jsonl` already exists. If
 it does, read the ids already in it and score only the input lines whose ids are
 missing, appending in input order. Say in your report how many you inherited and
-how many you added. The ingest deduplicates by id, so a repeated id is not
+how many you added. Read a sample of what your predecessor actually DID, not just which ids it
+covered. One resumed batch now holds two readings of the same floor rule — the
+first half discounted a referral, the second did not — because the second worker
+reasoned from the rubric alone. Both halves are defensible and the ids are sound,
+so no gate can see the seam. Where the rubric genuinely allows two readings,
+follow the one already in the file and say so in your report.
+
+The ingest deduplicates by id, so a repeated id is not
 corruption — but re-reading 800 records nobody needed re-read is a waste of the
 run, and the batch may be killed again before it reaches the end.
 
