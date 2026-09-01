@@ -43,6 +43,38 @@ for the middle rung would remove more spread than any single new anchor.
 — a city office block, a coroner's morgue, a municipal asphalt plant, a
 corporation yard — has nothing, and one reader interpolated 48 to 60.
 
+**A transit line itself has no anchor.** Land for one is pinned at 62; the line
+is not. A reader met the Geary Street Municipal Railway being planned, declared
+necessary, ordered and extended — 25 lines — and invented 82 and 78. Those
+scores were the only reason anything in its batch reached the top band.
+
+**"Finish the whole thing" against the part-and-whole rule.** "$90,000 set aside
+to finish the Polytechnic High School academic building" names a whole facility
+and is plainly an instalment: 78 by one reading, 45 by the other, a 33-point
+swing. And is "the academic building" a facility or a named part of a school?
+
+**A bond election is not machinery.** "Voters to decide five borrowing
+questions", "$3.5M for municipal streetcars", "$34.5M for Spring Valley Water".
+The 30-54 band calls a financing instrument machinery, but a citywide vote on
+acquiring the water supply is not an instrument. A reader used 65-78 with no
+anchor to lean on.
+
+**The component anchor has no scale.** The same 45 went to "$25,000 for
+engineering on the Hetch Hetchy project" — a plan for the city's whole water
+supply — and "$305 for pipes and doors at Polytechnic High School". 73 records
+took it in one batch.
+
+## Confirmed dead by three readers
+
+The major-thoroughfare rung fires on 0.3% of street-level lines, or not at all.
+Two readers reported it never firing; a third saw it fire four times in 1,200.
+Whatever it was meant to lift, it does not. Fix with the inversion above, or
+drop the rung and let every street-level record take 34.
+
+Also mine, and sloppy: the street list carries no suffixes. Nineteenth Avenue is
+a thoroughfare; Nineteenth Street is a Potrero side street. Third and Ocean have
+the same trap.
+
 ## Closed by v5, confirmed by a reader
 
 "A street closed for an afternoon" and "land bought to widen a street" both
