@@ -344,3 +344,30 @@ raises agreement directly rather than asymptotically — which is the argument f
 v7 being worth one more re-read, and for stopping after it.
 
 Five double-reads now: r 0.930 to 0.969, same band 92% to 97%.
+
+## Three ladders a reader proposed before it was cut off
+
+Batch 035's reader stated its ladders for the unanchored populations up front and
+applied them mechanically, which is what the rubric should have supplied. They are
+recorded here as a starting proposal for v7 — not adopted, since that batch never
+finished and the numbers were never tested against a second reader:
+
+    traffic / parking regulation
+        one street or block                                  38
+        a corridor on a listed thoroughfare, or a
+          one-way / turn-ban conversion                      44
+        a district-wide or citywide rule                     58
+
+    lease of public-use space
+        neighbourhood service (clinic, childcare,
+          branch library, shelter)                           55
+        court / hearing quarters                             40
+        department office                                    26  (already anchored)
+
+    landmark / historic designation
+        one building                                         42
+        a district                                           62
+
+The lease rung is the one to check first: it is the same gap that produced the
+42-point disagreement in the batch-017 double-read, and this reader's spread
+(26 to 55) is that gap written as a ladder rather than left open.

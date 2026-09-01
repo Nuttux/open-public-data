@@ -33,6 +33,20 @@ means it is not a proposal. Mood, tense and the infinitive say nothing.
 the same. The historic decades are the bulk of this corpus and a thumb on the
 scale would empty them.
 
+## If your output file already exists, continue it — do not start over
+
+A whole wave of workers was once killed mid-batch by a rate limit. Their partial
+`done-NNN.jsonl` files survived on disk because they appended as they went: 8,268
+scored lines across 13 batches. Restarting from line 0 would have thrown all of
+it away.
+
+So before you score anything, check whether `done-NNN.jsonl` already exists. If
+it does, read the ids already in it and score only the input lines whose ids are
+missing, appending in input order. Say in your report how many you inherited and
+how many you added. The ingest deduplicates by id, so a repeated id is not
+corruption — but re-reading 800 records nobody needed re-read is a waste of the
+run, and the batch may be killed again before it reaches the end.
+
 ## Output
 
 `pipeline/data/sf_bos/rankwork/done-NNN.jsonl`, one object per input line, same
