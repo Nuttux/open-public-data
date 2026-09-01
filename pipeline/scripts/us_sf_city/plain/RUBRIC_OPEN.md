@@ -1526,3 +1526,35 @@ the selector already returns (score <= 18 plus the discounted families).
     literally "a group" (58) but reaches like one building (42)
   amending or extending a lease-out has no rung, so a modification prices the
     same as the original deal
+
+# THE RUBRIC PRICES THINGS BEGINNING AND NOT THINGS ENDING
+
+Collected across the whole pass, these were logged one at a time as separate
+gaps. They are one gap:
+
+    a transit line ordered, planned or extended    80      a line CUT          no rung
+    a lease of public-use space                    58      a lease ENDED       no rung
+    a landmark designated                          42      a designation LIFTED no rung
+    a street opened or extended                    44      a street CLOSED     36 (unrelated)
+    a public asset gained                        55-79     an asset LOST       no rung
+    a benefit created for a class                80-100    a benefit WITHDRAWN no rung
+    a permit granted                               33      a permit REVOKED    26 (as "spent")
+
+Readers have improvised each one: 68 for a transit route cut "by analogy with an
+asset lost", the repeal rule for a lease terminated (58), 55 for a civic building
+transferred away. Three separate rules claim the terminated lease and stand ~30
+points apart.
+
+The repeal rule ("score the act undone") is the only general tool, and it is
+wrong here in a specific way: undoing a decision is not the same as ending a
+thing that exists. Repealing an unbuilt ordinance costs nothing; closing a
+transit line people ride is a real loss, and both currently take the same route
+through the rubric.
+
+    PROPOSED, one rule replacing seven absences:
+      "Ending a thing that exists takes the score of creating it, less one
+       rung. Undoing a decision that was never carried out takes the repeal
+       rule. The test is whether anyone would notice it stopping."
+
+This is the largest single absence found in the pass, and it went unseen for so
+long because each instance looked like an isolated missing rung.
