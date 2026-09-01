@@ -17062,6 +17062,21 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   box-shadow: inset 0 -3px 0 var(--bleu);
 }
 
+/* ── THE PHONE'S SHEET HANDLE IS NOT PART OF THE DESKTOP MARGIN ───────
+   The handle is a button holding a drag bar, the year, the count and a
+   caret, and every rule that shapes it lives in the 820 px block below.
+   It was rendered at every width, so on a desktop it arrived with no
+   styling at all and its three spans ran together: the top of the margin
+   read `202679 decisions▾` — the year and the count with the space
+   between them lost — directly above the header that says
+   "2026 — 79 decisions" properly. Two counts, one of them nonsense.
+
+   The handle exists to fold the sheet, and there is no sheet to fold at
+   this width, so it is not hidden decoration — it is a control with
+   nothing to control. `display:none` is the base state and the phone
+   block turns it back on. */
+.theme-fusion .fx-city-sheet-grab { display: none; }
+
 /* ── the record margin ────────────────────────────────────────────────
    288 px of the frame, reserved. Idle it says what the map is and what a
    click gets you; when a block is picked the record takes it over. */
