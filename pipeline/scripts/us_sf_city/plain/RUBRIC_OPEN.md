@@ -328,3 +328,19 @@ to let a proposed settlement fall below 10 and said so.
 
 Same fault as the permit-floor item. One clause should fix both: no act with a
 named subject falls into 0-9.
+
+## WHERE the readers disagree — it is not random
+
+A fifth double-read (batch 017): r 0.930, 92% same band, 83% within 5 points.
+The useful part is the tail. Only 21 of 1,200 rows differ by 20 or more, and
+they fall into three shapes, all already on this list:
+
+    public-facing leases with the use unstated    4 records, 42 points apart
+    housing bonds with no unit count              8 records, 33 points apart
+    citywide capital-repair programmes            4 records, 26-34 points apart
+
+So the residual disagreement is structural, not noise. Closing those entries
+raises agreement directly rather than asymptotically — which is the argument for
+v7 being worth one more re-read, and for stopping after it.
+
+Five double-reads now: r 0.930 to 0.969, same band 92% to 97%.
