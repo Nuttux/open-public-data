@@ -1,0 +1,144 @@
+# -*- coding: utf-8 -*-
+"""READ EVERY WRITTEN LINE AND SAY HOW MUCH IT MATTERS.
+
+    python3 pipeline/scripts/us_sf_city/plain/rank.py --prep 20 --n 1200
+    python3 pipeline/scripts/us_sf_city/plain/rank.py --take
+    python3 pipeline/scripts/us_sf_city/plain/rank.py --status
+
+── WHY THIS IS READ AND NOT COMPUTED ───────────────────────────────────────
+Four rounds of stated preference established the dimension, and one attempt to
+encode it as keyword lists scored WORSE than the arithmetic it replaced —
+-0.112 against +0.229 on the round where money was held out. The words
+`hospital`, `library` and `park` appear with equal weight in a citywide
+staffing emergency and in a dog hospital at one address, and telling those
+apart is the entire judgement. So `IMPORTANCE.md` is a rubric a reader applies,
+and this file is the machinery around it.
+
+Read blind against that rubric, on records it had never seen, it agreed with
+the stated preference at +0.374 mean against the formula's +0.237, and got
+four of the five rules right on direct pairwise tests.
+
+── THE PART THAT MAKES UPDATES CHEAP ───────────────────────────────────────
+A score is a pure function of one line and the rubric. Nothing about it depends
+on the rest of the corpus — deliberately, because the routineness term that
+DOES depend on the corpus lives in `score.py` and is frozen to a seed there.
+
+So a new record is read once, on arrival, and never again. `RUBRIC_VERSION` is
+stored on every row: change the rubric, bump it, and only rows at an older
+version are re-read. A corpus that is 99% scored costs 1% of a pass to update,
+which is the difference between a thing that gets run and a thing that does not.
+"""
+from __future__ import annotations
+
+import argparse
+import collections
+import hashlib
+import json
+import pathlib
+import sys
+
+HERE = pathlib.Path(__file__).resolve().parent
+DATA = pathlib.Path("/Users/daniel/code/open-public-data/pipeline/data/sf_bos")
+STORE = DATA / "plain_lines.jsonl"
+RANKS = DATA / "importance.jsonl"
+WORK = DATA / "rankwork"
+RUBRIC = HERE / "IMPORTANCE.md"
+
+RUBRIC_VERSION = 2
+
+
+def rubric_hash() -> str:
+    return hashlib.sha1(RUBRIC.read_bytes()).hexdigest()[:10]
+
+
+def done() -> dict:
+    if not RANKS.exists():
+        return {}
+    out = {}
+    for l in RANKS.open():
+        r = json.loads(l)
+        if r.get("rv") == RUBRIC_VERSION:
+            out[r["id"]] = r
+    return out
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--prep", type=int, default=0, help="how many batches to lay out")
+    ap.add_argument("--n", type=int, default=1200, help="lines per batch")
+    ap.add_argument("--take", action="store_true", help="ingest returned batches")
+    ap.add_argument("--status", action="store_true")
+    args = ap.parse_args()
+
+    WORK.mkdir(parents=True, exist_ok=True)
+    store = [json.loads(l) for l in STORE.open()]
+    have = done()
+
+    if args.status:
+        n = len(store)
+        print(f"written lines   {n:,}")
+        print(f"scored          {len(have):,}  ({100*len(have)/max(1,n):.1f}%)")
+        print(f"to read         {n-len(have):,}")
+        print(f"rubric          v{RUBRIC_VERSION}, sha {rubric_hash()}")
+        if have:
+            vals = sorted(r["score"] for r in have.values())
+            b = collections.Counter()
+            for v in vals:
+                b["80-100" if v >= 80 else "55-79" if v >= 55 else
+                  "30-54" if v >= 30 else "10-29" if v >= 10 else "0-9"] += 1
+            print("\nband spread so far:")
+            for k in ("80-100", "55-79", "30-54", "10-29", "0-9"):
+                print(f"  {k:7} {b[k]:7,}  ({100*b[k]/len(vals):4.1f}%)")
+        return
+
+    if args.take:
+        got = 0
+        with RANKS.open("a") as out:
+            for p in sorted(WORK.glob("done-*.jsonl")):
+                bad = 0
+                rows = []
+                for l in p.open():
+                    try:
+                        r = json.loads(l)
+                        s = int(r["score"])
+                    except Exception:
+                        bad += 1
+                        continue
+                    if not (0 <= s <= 100) or r["id"] in have:
+                        bad += 1
+                        continue
+                    rows.append({"id": r["id"], "score": s,
+                                 "band": r.get("band", ""), "why": r.get("why", ""),
+                                 "rv": RUBRIC_VERSION, "rh": rubric_hash()})
+                for r in rows:
+                    out.write(json.dumps(r, ensure_ascii=False) + "\n")
+                    have[r["id"]] = r
+                got += len(rows)
+                print(f"  {p.name}: took {len(rows):,}" + (f", skipped {bad}" if bad else ""))
+                p.rename(WORK / ("taken-" + p.name[len("done-"):]))
+        print(f"\n{got:,} scores in; {len(have):,} of {len(store):,} read")
+        return
+
+    todo = [r for r in store if r["id"] not in have]
+    inflight = set()
+    for p in WORK.glob("batch-*.jsonl"):
+        inflight |= {json.loads(l)["id"] for l in p.open()}
+    todo = [r for r in todo if r["id"] not in inflight]
+    start = 1 + max((int(p.stem.split("-")[1]) for p in WORK.glob("batch-*.jsonl")),
+                    default=0)
+    made = 0
+    for i in range(0, min(len(todo), args.prep * args.n), args.n):
+        chunk = todo[i:i + args.n]
+        p = WORK / f"batch-{start+made:03d}.jsonl"
+        with p.open("w") as fh:
+            for r in chunk:
+                fh.write(json.dumps({"id": r["id"], "line": r["line"],
+                                     "year": r["y"]}, ensure_ascii=False) + "\n")
+        print(f"  {p.name}  {len(chunk):,} lines")
+        made += 1
+    print(f"\n{made} batches, {min(len(todo), args.prep*args.n):,} lines out; "
+          f"{len(todo)-min(len(todo), args.prep*args.n):,} still queued")
+
+
+if __name__ == "__main__":
+    main()

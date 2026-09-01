@@ -97,3 +97,6 @@ pipeline/data/sf_bos/work/
 # derived from plain_lines.jsonl + score.py; the frozen template counts are
 # the part worth versioning, and those are in score_templates.json
 pipeline/data/sf_bos/plain_lines_scored.jsonl
+
+# importance batches in flight — the scores themselves live in importance.jsonl
+pipeline/data/sf_bos/rankwork/
