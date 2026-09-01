@@ -1269,3 +1269,41 @@ subject is one address (intention) or a class (a rule). Worth stating.
 Three readings, and the split moves rows between 10-29 and 30-54. This is the
 one v7 ambiguity where readers have NOT converged, which puts it above the
 settled repairs in priority for the next bump.
+
+## The lease rule splits ONE MEASURE in half — 26 and 58 at the same address
+
+Batch 054, three neighbouring lines of a single measure:
+
+    idx 733   "...the Portola Branch Library..."   at 2450 San Bruno Avenue   58
+    idx 742   "Lease at 2450 San Bruno Avenue adopted"                        26
+    idx 743   "...the Portola Branch Library..."   at 2450 San Bruno Avenue   58
+
+Same address, same lease, 32 points apart, because one line of the three does not
+repeat the word "library".
+
+This does not reopen the settled rule — five readers and the rule agree that a
+line naming only a department scores 26, and the reasoning holds. It challenges
+something narrower and more interesting: **what counts as "the record".** The
+rule says do not supply a use the record does not state. Here the record DOES
+state it, one line above. Only the LINE is silent.
+
+I wrote the rule thinking a line was the unit. The corpus is written in measures,
+and a measure's lines are one act split across several rows — which is also why
+duplicate collapsing is on the list.
+
+    PROPOSED, and it is a change of unit rather than of judgement:
+      "Where another line of the SAME measure names the use, the use is
+       stated and every line of that measure takes it. Do not reach beyond
+       the measure."
+
+This wants care: it is exactly the kind of qualifier that has cancelled four
+other rules this session. It must not become "look around until you find a use".
+
+## Two more, batch 054
+
+  "put up for sale" / "offered for lease" — the disposal itself, or bids
+    advertised at x0.75? ~10 lines, ~9 points, both readings supported
+  a subdivision map that CREATES dwellings — the anchor is a flat 36 for any
+    map, but "six lots split into thirteen for homes on Clipper Street"
+    establishes housing, which the band text puts at 55-79. The reader split
+    conversions (36) from splits that create homes (55)
