@@ -77,6 +77,52 @@ AREA_LO, AREA_HI = 0.5, 2.0
 NEAR_M = 40.0
 
 
+#: THE REGISTER SAYS WHAT EACH TOWER IS CLAD IN, AND THE MAP IGNORED IT.
+#:
+#: `facade_material` is filled on all 180 rows and it is free text: 41 distinct
+#: strings for 180 buildings, because a person typed each one. They collapse
+#: into four families by keyword, and the keywords are ordered so the more
+#: specific claim wins:
+#:
+#:   terracotta 'terra cotta' -- four rows, and they are the pre-war towers
+#:              this city is read by; asked first because it is the most
+#:              specific claim in the field
+#:   stone      'stone', 'granite' (and the register's own 'garnite panel') --
+#:              a solid wall with tall single openings
+#:   glass      'glass' or 'aluminium/aluminum' or 'glazing' with no solid
+#:              named beside it -- a curtain wall, where the wall IS the window
+#:   mixed      glass named TOGETHER with concrete or stone -- a solid frame
+#:              with wide lights in it, which is a punched wall and not a
+#:              curtain
+#:   concrete   everything else, which is 'concrete' and its panel variants
+#:
+#: What is read is the string. What is authored is the map from five families
+#: onto this renderer's own facade vocabulary, which is the same kind of
+#: judgement as deciding a 1925 house is `revival`.
+CLAD_TERRA = re.compile(r"terra\s*cotta", re.I)
+CLAD_STONE = re.compile(r"stone|granite|garnite|marble", re.I)
+CLAD_GLASS = re.compile(r"glass|glazing|alumini?um", re.I)
+CLAD_SOLID = re.compile(r"concrete|precast|gfrc|brick|panel", re.I)
+
+
+def clad_of(raw):
+    """One of `stone` / `glass` / `mixed` / `concrete`, or None where the
+    register left the field empty."""
+    t = (raw or "").strip()
+    if not t:
+        return None
+    if CLAD_TERRA.search(t):
+        return "terracotta"
+    if CLAD_STONE.search(t):
+        return "stone"
+    g, sd = bool(CLAD_GLASS.search(t)), bool(CLAD_SOLID.search(t))
+    if g and sd:
+        return "mixed"
+    if g:
+        return "glass"
+    return "concrete"
+
+
 def plan_m2(s):
     """`165x165` in feet -> square metres, or None."""
     m = re.match(r"\s*(\d+)\s*[xX]\s*(\d+)", s or "")
@@ -198,7 +244,7 @@ def main() -> None:
                 out.extend(bucket.get((gx, gy), ()))
         return out
 
-    taken, refused, agreed = [], [], 0
+    taken, refused, clads, agreed = [], [], [], 0
     for f in feats:
         P = f["properties"]
         try:
@@ -225,6 +271,11 @@ def main() -> None:
             })
             continue
 
+        clad = clad_of(P.get("facade_material"))
+        if clad:
+            clads.append({"gid": int(b), "clad": clad,
+                          "raw": (P.get("facade_material") or "").strip(),
+                          "name": name})
         gap = pub - float(h[b])
         if gap <= GAP_MIN_M:
             agreed += 1
@@ -281,12 +332,28 @@ def main() -> None:
             "agree_within_gap_min": agreed,
             "taken": len(taken),
             "refused": len(refused),
+            "clad_rows": len(clads),
+        },
+        "clad": {
+            "note": ("what each tower is clad in, for every row of the register "
+                     "that resolves to a footprint. `facade_material` is filled "
+                     "on all 180 rows and is free text — 41 distinct strings — "
+                     "so it is collapsed into five families by keyword. The "
+                     "string is read; the five families and what this renderer "
+                     "draws for each are the drawing's own."),
+            "counts": None,
+            "rows": [{"gid": r["gid"], "clad": r["clad"]} for r in clads],
+            "audit": clads,
         },
         "tops": [{"gid": r["gid"], "topM": r["topM"]} for r in taken],
         "taken": taken,
         "refused": refused,
     }
-    print(f"register rows {len(feats)}   agree {agreed}   taken {len(taken)}   refused {len(refused)}")
+    from collections import Counter
+    cc = Counter(r["clad"] for r in clads)
+    doc["clad"]["counts"] = dict(cc)
+    print(f"register rows {len(feats)}   agree {agreed}   taken {len(taken)}   "
+          f"refused {len(refused)}   clad {len(clads)} ({dict(cc)})")
     for r in taken:
         print(f"  TAKE  {r['name'][:30]:32s} {r['drawnM']:7.1f} -> {r['topM']:7.1f} m   frac {r['frac']}")
     for r in refused:

@@ -16,6 +16,8 @@ interface Row {
 }
 interface Doc {
   rule: { gap_min_m: number; area_band: [number, number] };
+  clad: { counts: Record<string, number>; rows: { gid: number; clad: string }[];
+          audit: { gid: number; clad: string; raw: string; name: string }[] };
   measured: { register_rows: number; agree_within_gap_min: number; taken: number; refused: number };
   tops: { gid: number; topM: number }[];
   taken: Row[];
@@ -101,5 +103,49 @@ describe("the towers the 2023 scan did not see", () => {
     const tall = doc.taken.find((r) => r.name === "181 Fremont")!;
     expect(tall.drawnM).toBe(5);
     expect(tall.topM).toBeCloseTo(227.4, 1);
+  });
+});
+
+describe("what the register says these towers are clad in", () => {
+  it("collapses 41 free-text spellings into five families, over 171 towers", () => {
+    /* `facade_material` is filled on all 180 rows and a person typed each one,
+       so the raw field has 41 distinct spellings — 'concrete panel',
+       'concrete panels', 'precast concrete panels', 'garnite panel'. The
+       families are what the drawing acts on and the raw string is kept beside
+       every row so a reader can check the collapse rather than trust it. */
+    expect(doc.clad.counts).toEqual({
+      concrete: 82, glass: 42, mixed: 24, stone: 18, terracotta: 5,
+    });
+    expect(doc.clad.rows.length).toBe(171);
+    expect(doc.clad.audit.length).toBe(171);
+  });
+
+  it("puts glass named BESIDE a solid in `mixed`, not in `glass`", () => {
+    /* the distinction the register took the trouble to make: a wall it calls
+       concrete AND glass is a frame with lights in it, and drawing that as a
+       curtain would say the whole face is glazed. */
+    const by = new Map(doc.clad.audit.map((r) => [r.name, r]));
+    const mixed = doc.clad.audit.filter((r) => r.clad === "mixed");
+    for (const r of mixed) {
+      expect(r.raw.toLowerCase(), r.name).toMatch(/glass|glazing|alumini?um/);
+      expect(r.raw.toLowerCase(), r.name).toMatch(/concrete|precast|gfrc|panel|brick/);
+    }
+    /* and every `glass` row names no solid at all */
+    for (const r of doc.clad.audit.filter((x) => x.clad === "glass")) {
+      expect(r.raw.toLowerCase(), r.name).not.toMatch(/concrete|precast|gfrc|brick/);
+    }
+    expect(by.get("Salesforce Tower")).toBeUndefined();
+  });
+
+  it("names the five terra cotta towers, because they are the ones a reader knows", () => {
+    const terra = doc.clad.audit
+      .filter((r) => r.clad === "terracotta").map((r) => r.name).sort();
+    expect(terra).toEqual([
+      "555 Market [Market Center]",
+      "Hobart Building",
+      "Humboldt Bank Building",
+      "PG&E Headquarters",
+      "Ritz-Carlton Club and Residences",
+    ]);
   });
 });

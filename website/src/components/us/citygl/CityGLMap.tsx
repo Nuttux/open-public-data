@@ -35,6 +35,7 @@ import { loadSurroundLandcover, surroundLayer } from "@/lib/citygl/layers/surrou
 import { buildingsLayer } from "@/lib/citygl/layers/buildings";
 import { heroesLayer } from "@/lib/citygl/layers/heroes";
 import { civicIndex, type CivicForm } from "@/lib/citygl/civic";
+import type { CladFamily } from "@/lib/citygl/facade";
 import { capsLayer } from "@/lib/citygl/layers/caps";
 import { railLayer } from "@/lib/citygl/layers/rail";
 import { bikewayLayer } from "@/lib/citygl/layers/bikeways";
@@ -890,14 +891,22 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          file simply draws every building at its measured height, which is
          what every city did before this existed. */
       let tallTops: Map<number, number> | null = null;
+      let tallClad: Map<number, CladFamily> | null = null;
       try {
         const tt = await fetch(`${data.assetBase}/base/tall-tops.json`);
         if (tt.ok) {
-          const doc = (await tt.json()) as { tops?: { gid: number; topM: number }[] };
+          const doc = (await tt.json()) as {
+            tops?: { gid: number; topM: number }[];
+            clad?: { rows?: { gid: number; clad: string }[] };
+          };
           tallTops = new Map((doc.tops ?? []).map((r) => [r.gid, r.topM]));
+          tallClad = new Map(
+            (doc.clad?.rows ?? []).map((r) => [r.gid, r.clad as CladFamily]),
+          );
         }
       } catch {
         tallTops = null;
+        tallClad = null;
       }
       if (disposed || !engine) return;
 
@@ -912,6 +921,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         skipGids: heroSkip,
         civicOf,
         tallTops,
+        tallClad,
         /* the SAME field the ground is cut at, so a building and the ground
            under it cannot disagree about whether there is any — see
            `roof-form.ts` §A BUILDING OVER WATER IS STANDING ON SOMETHING */

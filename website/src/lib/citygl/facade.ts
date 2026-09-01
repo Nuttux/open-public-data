@@ -1558,3 +1558,98 @@ export function roofFamilyRGB(
     base[2] + (t[2] - base[2]) * k,
   ];
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   AND FOR 171 TOWERS THE CITY PUBLISHES WHAT THEY ARE CLAD IN.
+
+   Everything above chooses a wall's material from what a building IS — its
+   use class, its era, its height — because that is all the assessor roll
+   carries. For one register it is not: DataSF's Tall Building Inventory has a
+   `facade_material` on all 180 of its rows, and 171 of them resolve to a
+   footprint this map draws.
+
+   That is a per-building measurement of the thing this file otherwise infers,
+   and downtown is exactly where the inference is weakest: `wallFamilyRGB`
+   sends everything tall to `FAM_CIVIC`, so 82 concrete towers, 42 glass ones,
+   18 of stone and 5 of terra cotta all came out of one eight-entry pale set
+   on a hash of the id. The Hobart Building and a 1980s concrete slab were the
+   same grey.
+
+   `build_tall_tops.py` reads the string and collapses 41 free-text spellings
+   into five families. This is what the drawing does with each, and it is the
+   authored half: which vocabulary and which colours a family is drawn in is
+   the same kind of judgement as deciding a 1925 house is `revival`.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+export type CladFamily = "glass" | "mixed" | "concrete" | "stone" | "terracotta";
+
+/** reflective curtain wall — the wall IS the window, so the field is the glass */
+const CLAD_GLASS_HEX: readonly string[] = [
+  "#cfe0e4", "#b7ccd6", "#c6d8d4", "#a8c0cc", "#d6e4e2", "#b0c6d0",
+];
+/** glass named beside a solid: a frame with wide lights in it */
+const CLAD_MIXED_HEX: readonly string[] = [
+  "#c9ccc8", "#b4bcbe", "#c2c8c0", "#a8b2b6", "#d0d2ca",
+];
+/** concrete and its panel variants — the largest family by far */
+const CLAD_CONCRETE_HEX: readonly string[] = [
+  "#d8d4ca", "#c4c0b6", "#cec9bd", "#b6b2a8", "#dcd8ce", "#c8c2b4", "#bfbcb4",
+];
+/** stone and granite: paler, warmer, and quieter than concrete */
+const CLAD_STONE_HEX: readonly string[] = [
+  "#e6ddc9", "#d8ceb6", "#e2dac6", "#cfc6ae", "#ded4bd",
+];
+/** terra cotta — five towers, and they are the ones this city is read by */
+const CLAD_TERRA_HEX: readonly string[] = [
+  "#e0c9a6", "#d6b990", "#e6d2b0", "#cdb188", "#dcc49c",
+];
+
+const CLAD_SETS: Readonly<Record<CladFamily, (readonly [number, number, number])[]>> = {
+  glass: toLin(CLAD_GLASS_HEX),
+  mixed: toLin(CLAD_MIXED_HEX),
+  concrete: toLin(CLAD_CONCRETE_HEX),
+  stone: toLin(CLAD_STONE_HEX),
+  terracotta: toLin(CLAD_TERRA_HEX),
+};
+
+/**
+ * The wall vocabulary a published cladding is drawn with.
+ *
+ * `glass` is the only one that gets the curtain grid, and `mixed` deliberately
+ * does not: a wall the register describes as concrete AND glass is a solid
+ * frame with wide lights in it, which is a punched wall. Drawing it as a
+ * curtain would say the whole face is glazed, which is the thing the register
+ * took the trouble to say it is not.
+ */
+export function cladTile(c: CladFamily): number {
+  switch (c) {
+    case "glass":      return TILE_CURTAIN;
+    case "stone":      return TILE_CLASSICAL;
+    case "terracotta": return TILE_CLASSICAL;
+    default:           return TILE_PUNCHED;
+  }
+}
+
+/**
+ * One tower's wall colour from its published cladding — the same shape as
+ * `wallFamilyRGB`, and it REPLACES that call rather than following it: where
+ * the register says what a building is made of, a family inferred from its
+ * height has nothing to add.
+ *
+ * The travel is fixed high, for `roofFamilyRGB`'s reason: these sets are
+ * distinct materials rather than eight shades of pale, and a short travel
+ * toward one reads as the table entry it started from.
+ */
+export function cladWallRGB(
+  base: readonly [number, number, number], gid: number, c: CladFamily,
+): [number, number, number] {
+  const set = CLAD_SETS[c];
+  const h = mix32(gid ^ 0x27d4eb2f);
+  const t = set[h % set.length];
+  const k = 0.90 + 0.08 * (((h >>> 11) & 1023) / 1023);
+  return [
+    base[0] + (t[0] - base[0]) * k,
+    base[1] + (t[1] - base[1]) * k,
+    base[2] + (t[2] - base[2]) * k,
+  ];
+}

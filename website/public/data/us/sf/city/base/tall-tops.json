@@ -19,7 +19,1732 @@
   "register_rows": 180,
   "agree_within_gap_min": 156,
   "taken": 7,
-  "refused": 17
+  "refused": 17,
+  "clad_rows": 171
+ },
+ "clad": {
+  "note": "what each tower is clad in, for every row of the register that resolves to a footprint. `facade_material` is filled on all 180 rows and is free text \u2014 41 distinct strings \u2014 so it is collapsed into five families by keyword. The string is read; the five families and what this renderer draws for each are the drawing's own.",
+  "counts": {
+   "glass": 42,
+   "mixed": 24,
+   "concrete": 82,
+   "stone": 18,
+   "terracotta": 5
+  },
+  "rows": [
+   {
+    "gid": 142974,
+    "clad": "glass"
+   },
+   {
+    "gid": 60459,
+    "clad": "glass"
+   },
+   {
+    "gid": 137648,
+    "clad": "glass"
+   },
+   {
+    "gid": 143003,
+    "clad": "glass"
+   },
+   {
+    "gid": 137672,
+    "clad": "glass"
+   },
+   {
+    "gid": 143057,
+    "clad": "glass"
+   },
+   {
+    "gid": 137650,
+    "clad": "glass"
+   },
+   {
+    "gid": 60462,
+    "clad": "glass"
+   },
+   {
+    "gid": 137270,
+    "clad": "glass"
+   },
+   {
+    "gid": 143053,
+    "clad": "glass"
+   },
+   {
+    "gid": 135692,
+    "clad": "glass"
+   },
+   {
+    "gid": 137621,
+    "clad": "glass"
+   },
+   {
+    "gid": 135883,
+    "clad": "glass"
+   },
+   {
+    "gid": 143081,
+    "clad": "glass"
+   },
+   {
+    "gid": 135871,
+    "clad": "mixed"
+   },
+   {
+    "gid": 143010,
+    "clad": "glass"
+   },
+   {
+    "gid": 143013,
+    "clad": "glass"
+   },
+   {
+    "gid": 149282,
+    "clad": "glass"
+   },
+   {
+    "gid": 143087,
+    "clad": "glass"
+   },
+   {
+    "gid": 135905,
+    "clad": "mixed"
+   },
+   {
+    "gid": 137283,
+    "clad": "mixed"
+   },
+   {
+    "gid": 137649,
+    "clad": "glass"
+   },
+   {
+    "gid": 137620,
+    "clad": "glass"
+   },
+   {
+    "gid": 136893,
+    "clad": "glass"
+   },
+   {
+    "gid": 137320,
+    "clad": "mixed"
+   },
+   {
+    "gid": 143050,
+    "clad": "glass"
+   },
+   {
+    "gid": 143015,
+    "clad": "glass"
+   },
+   {
+    "gid": 143016,
+    "clad": "glass"
+   },
+   {
+    "gid": 137310,
+    "clad": "concrete"
+   },
+   {
+    "gid": 143058,
+    "clad": "mixed"
+   },
+   {
+    "gid": 143045,
+    "clad": "concrete"
+   },
+   {
+    "gid": 143052,
+    "clad": "concrete"
+   },
+   {
+    "gid": 143011,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137613,
+    "clad": "stone"
+   },
+   {
+    "gid": 137619,
+    "clad": "glass"
+   },
+   {
+    "gid": 142963,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137591,
+    "clad": "mixed"
+   },
+   {
+    "gid": 137712,
+    "clad": "stone"
+   },
+   {
+    "gid": 137626,
+    "clad": "glass"
+   },
+   {
+    "gid": 137651,
+    "clad": "stone"
+   },
+   {
+    "gid": 137322,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137358,
+    "clad": "glass"
+   },
+   {
+    "gid": 137686,
+    "clad": "concrete"
+   },
+   {
+    "gid": 142972,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137878,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137917,
+    "clad": "stone"
+   },
+   {
+    "gid": 142955,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137767,
+    "clad": "concrete"
+   },
+   {
+    "gid": 142971,
+    "clad": "mixed"
+   },
+   {
+    "gid": 142965,
+    "clad": "glass"
+   },
+   {
+    "gid": 142959,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137350,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137835,
+    "clad": "mixed"
+   },
+   {
+    "gid": 142970,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137644,
+    "clad": "concrete"
+   },
+   {
+    "gid": 136440,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137274,
+    "clad": "mixed"
+   },
+   {
+    "gid": 143002,
+    "clad": "stone"
+   },
+   {
+    "gid": 137580,
+    "clad": "mixed"
+   },
+   {
+    "gid": 137541,
+    "clad": "stone"
+   },
+   {
+    "gid": 137610,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137698,
+    "clad": "stone"
+   },
+   {
+    "gid": 137664,
+    "clad": "mixed"
+   },
+   {
+    "gid": 137668,
+    "clad": "concrete"
+   },
+   {
+    "gid": 138018,
+    "clad": "glass"
+   },
+   {
+    "gid": 137316,
+    "clad": "concrete"
+   },
+   {
+    "gid": 142968,
+    "clad": "mixed"
+   },
+   {
+    "gid": 137556,
+    "clad": "concrete"
+   },
+   {
+    "gid": 136504,
+    "clad": "concrete"
+   },
+   {
+    "gid": 142947,
+    "clad": "stone"
+   },
+   {
+    "gid": 137647,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137702,
+    "clad": "mixed"
+   },
+   {
+    "gid": 137868,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137721,
+    "clad": "glass"
+   },
+   {
+    "gid": 137914,
+    "clad": "stone"
+   },
+   {
+    "gid": 138022,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137622,
+    "clad": "concrete"
+   },
+   {
+    "gid": 135881,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137656,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137537,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137822,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137578,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137829,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137741,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137665,
+    "clad": "mixed"
+   },
+   {
+    "gid": 137661,
+    "clad": "glass"
+   },
+   {
+    "gid": 137558,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137845,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137663,
+    "clad": "glass"
+   },
+   {
+    "gid": 137569,
+    "clad": "concrete"
+   },
+   {
+    "gid": 60435,
+    "clad": "concrete"
+   },
+   {
+    "gid": 142945,
+    "clad": "concrete"
+   },
+   {
+    "gid": 142944,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137732,
+    "clad": "glass"
+   },
+   {
+    "gid": 148901,
+    "clad": "concrete"
+   },
+   {
+    "gid": 138697,
+    "clad": "concrete"
+   },
+   {
+    "gid": 60431,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137667,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137821,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137694,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137676,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137615,
+    "clad": "stone"
+   },
+   {
+    "gid": 137719,
+    "clad": "glass"
+   },
+   {
+    "gid": 138024,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137236,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137657,
+    "clad": "concrete"
+   },
+   {
+    "gid": 136399,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137763,
+    "clad": "mixed"
+   },
+   {
+    "gid": 137760,
+    "clad": "mixed"
+   },
+   {
+    "gid": 138668,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137828,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137582,
+    "clad": "stone"
+   },
+   {
+    "gid": 138727,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137764,
+    "clad": "glass"
+   },
+   {
+    "gid": 137844,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137915,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137848,
+    "clad": "glass"
+   },
+   {
+    "gid": 140028,
+    "clad": "mixed"
+   },
+   {
+    "gid": 137690,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137660,
+    "clad": "glass"
+   },
+   {
+    "gid": 149562,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137834,
+    "clad": "glass"
+   },
+   {
+    "gid": 137486,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137723,
+    "clad": "mixed"
+   },
+   {
+    "gid": 137771,
+    "clad": "glass"
+   },
+   {
+    "gid": 146526,
+    "clad": "concrete"
+   },
+   {
+    "gid": 146525,
+    "clad": "concrete"
+   },
+   {
+    "gid": 151305,
+    "clad": "mixed"
+   },
+   {
+    "gid": 139415,
+    "clad": "concrete"
+   },
+   {
+    "gid": 138499,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137678,
+    "clad": "terracotta"
+   },
+   {
+    "gid": 140047,
+    "clad": "mixed"
+   },
+   {
+    "gid": 135891,
+    "clad": "mixed"
+   },
+   {
+    "gid": 137918,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137576,
+    "clad": "stone"
+   },
+   {
+    "gid": 140450,
+    "clad": "mixed"
+   },
+   {
+    "gid": 149501,
+    "clad": "concrete"
+   },
+   {
+    "gid": 138478,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137683,
+    "clad": "mixed"
+   },
+   {
+    "gid": 137196,
+    "clad": "glass"
+   },
+   {
+    "gid": 137754,
+    "clad": "concrete"
+   },
+   {
+    "gid": 138857,
+    "clad": "concrete"
+   },
+   {
+    "gid": 142873,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137916,
+    "clad": "mixed"
+   },
+   {
+    "gid": 136443,
+    "clad": "concrete"
+   },
+   {
+    "gid": 135990,
+    "clad": "glass"
+   },
+   {
+    "gid": 137677,
+    "clad": "glass"
+   },
+   {
+    "gid": 49446,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137680,
+    "clad": "concrete"
+   },
+   {
+    "gid": 138696,
+    "clad": "stone"
+   },
+   {
+    "gid": 137538,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137849,
+    "clad": "stone"
+   },
+   {
+    "gid": 137552,
+    "clad": "concrete"
+   },
+   {
+    "gid": 138634,
+    "clad": "concrete"
+   },
+   {
+    "gid": 135927,
+    "clad": "stone"
+   },
+   {
+    "gid": 140058,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137543,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137536,
+    "clad": "concrete"
+   },
+   {
+    "gid": 138862,
+    "clad": "concrete"
+   },
+   {
+    "gid": 138828,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137294,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137726,
+    "clad": "terracotta"
+   },
+   {
+    "gid": 137557,
+    "clad": "stone"
+   },
+   {
+    "gid": 137861,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137730,
+    "clad": "concrete"
+   },
+   {
+    "gid": 149288,
+    "clad": "stone"
+   },
+   {
+    "gid": 137572,
+    "clad": "terracotta"
+   },
+   {
+    "gid": 137348,
+    "clad": "terracotta"
+   },
+   {
+    "gid": 137361,
+    "clad": "stone"
+   },
+   {
+    "gid": 142936,
+    "clad": "concrete"
+   },
+   {
+    "gid": 137588,
+    "clad": "terracotta"
+   }
+  ],
+  "audit": [
+   {
+    "gid": 142974,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "Park Tower [Transbay Block 5]"
+   },
+   {
+    "gid": 60459,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "1500 Mission - Office"
+   },
+   {
+    "gid": 137648,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "350 Mission Street"
+   },
+   {
+    "gid": 143003,
+    "clad": "glass",
+    "raw": "glass and aluminium",
+    "name": "Solaire (Transbay Block 6)"
+   },
+   {
+    "gid": 137672,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "Oceanwide Center I"
+   },
+   {
+    "gid": 143057,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "340 Fremont Street"
+   },
+   {
+    "gid": 137650,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "181 Fremont"
+   },
+   {
+    "gid": 60462,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "1500 Mission - Residential"
+   },
+   {
+    "gid": 137270,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "222 2nd Street"
+   },
+   {
+    "gid": 143053,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "399 Fremont Street"
+   },
+   {
+    "gid": 135692,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "NEMA North Tower"
+   },
+   {
+    "gid": 137621,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "535 Mission Street"
+   },
+   {
+    "gid": 135883,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "Ava 55 Ninth"
+   },
+   {
+    "gid": 143081,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "Jasper"
+   },
+   {
+    "gid": 135871,
+    "clad": "mixed",
+    "raw": "concrete and glass",
+    "name": "1190 Mission at Trinity Place Apartments"
+   },
+   {
+    "gid": 143010,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "LUMINA I"
+   },
+   {
+    "gid": 143013,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "LUMINA II"
+   },
+   {
+    "gid": 149282,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "SF PUC Headquarters"
+   },
+   {
+    "gid": 143087,
+    "clad": "glass",
+    "raw": "aluminum and glass",
+    "name": "One Rincon Hill South"
+   },
+   {
+    "gid": 135905,
+    "clad": "mixed",
+    "raw": "concrete and glass",
+    "name": "1188 Mission at Trinity Place Apartments"
+   },
+   {
+    "gid": 137283,
+    "clad": "mixed",
+    "raw": "concrete and glass",
+    "name": "One Hawthorne Street"
+   },
+   {
+    "gid": 137649,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "Millenium Tower"
+   },
+   {
+    "gid": 137620,
+    "clad": "glass",
+    "raw": "glass and aluminium",
+    "name": "555 Mission St"
+   },
+   {
+    "gid": 136893,
+    "clad": "glass",
+    "raw": "Glass",
+    "name": "InterContinental San Francisco"
+   },
+   {
+    "gid": 137320,
+    "clad": "mixed",
+    "raw": "concrete and glass",
+    "name": "St. Regis San Francisc.. [St. Regis San Francisc.*"
+   },
+   {
+    "gid": 143050,
+    "clad": "glass",
+    "raw": "aluminum and glass",
+    "name": "One Rincon Hill North"
+   },
+   {
+    "gid": 143015,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "Infinity (B) North"
+   },
+   {
+    "gid": 143016,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "Infinity (D) South"
+   },
+   {
+    "gid": 137310,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "The Paramount"
+   },
+   {
+    "gid": 143058,
+    "clad": "mixed",
+    "raw": "concrete and glass",
+    "name": "The Metropolitan I [The Metropolitan]"
+   },
+   {
+    "gid": 143045,
+    "clad": "concrete",
+    "raw": "concrete panels",
+    "name": "The Watermark"
+   },
+   {
+    "gid": 143052,
+    "clad": "concrete",
+    "raw": "concrete panel",
+    "name": "BridgeView"
+   },
+   {
+    "gid": 143011,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Avalon Towers"
+   },
+   {
+    "gid": 137613,
+    "clad": "stone",
+    "raw": "glass, metal, and stone panels",
+    "name": "55 2nd Street"
+   },
+   {
+    "gid": 137619,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "JPMorgan Chase"
+   },
+   {
+    "gid": 142963,
+    "clad": "concrete",
+    "raw": "concrete panels",
+    "name": "GAP Building"
+   },
+   {
+    "gid": 137591,
+    "clad": "mixed",
+    "raw": "concrete and glass",
+    "name": "33 New Montgomery Street"
+   },
+   {
+    "gid": 137712,
+    "clad": "stone",
+    "raw": "glass, metal, granite panels",
+    "name": "150 California Street"
+   },
+   {
+    "gid": 137626,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "101 2nd Street"
+   },
+   {
+    "gid": 137651,
+    "clad": "stone",
+    "raw": "stone, glass",
+    "name": "199 Fremont Street"
+   },
+   {
+    "gid": 137322,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "W Hotel"
+   },
+   {
+    "gid": 137358,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "Four Seasons Hotel"
+   },
+   {
+    "gid": 137686,
+    "clad": "concrete",
+    "raw": "concrete panel",
+    "name": "235 Pine Street"
+   },
+   {
+    "gid": 142972,
+    "clad": "concrete",
+    "raw": "concrete panels",
+    "name": "160 Spear Street"
+   },
+   {
+    "gid": 137878,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "505 Montgomery"
+   },
+   {
+    "gid": 137917,
+    "clad": "stone",
+    "raw": "Garnite panel",
+    "name": "600 California Street"
+   },
+   {
+    "gid": 142955,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "121 Spear Street"
+   },
+   {
+    "gid": 137767,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Park Hyatt"
+   },
+   {
+    "gid": 142971,
+    "clad": "mixed",
+    "raw": "GFRC panels and glazing",
+    "name": "135 Main Street"
+   },
+   {
+    "gid": 142965,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "Spear Street Terrace"
+   },
+   {
+    "gid": 142959,
+    "clad": "concrete",
+    "raw": "concrete precast panels",
+    "name": "Hills Plaza"
+   },
+   {
+    "gid": 137350,
+    "clad": "concrete",
+    "raw": "concrete panels",
+    "name": "Marriott Hotel and Convention Center"
+   },
+   {
+    "gid": 137835,
+    "clad": "mixed",
+    "raw": "glass and precast concrete",
+    "name": "Embarcadero West"
+   },
+   {
+    "gid": 142970,
+    "clad": "concrete",
+    "raw": "concrete panel",
+    "name": "123 Mission Street"
+   },
+   {
+    "gid": 137644,
+    "clad": "concrete",
+    "raw": "precast concrete panels",
+    "name": "100 First Street"
+   },
+   {
+    "gid": 136440,
+    "clad": "concrete",
+    "raw": "concrete panel",
+    "name": "Hotel Nikko"
+   },
+   {
+    "gid": 137274,
+    "clad": "mixed",
+    "raw": "concrete, glass",
+    "name": "Hawthorne Plaza"
+   },
+   {
+    "gid": 143002,
+    "clad": "stone",
+    "raw": "stone panels and glass",
+    "name": "301 Howard Street"
+   },
+   {
+    "gid": 137580,
+    "clad": "mixed",
+    "raw": "concrete panels and glass",
+    "name": "88 Kearny Street"
+   },
+   {
+    "gid": 137541,
+    "clad": "stone",
+    "raw": "granite and glass panels",
+    "name": "333 Bush Street"
+   },
+   {
+    "gid": 137610,
+    "clad": "concrete",
+    "raw": "concrete panel",
+    "name": "Stevenson Place"
+   },
+   {
+    "gid": 137698,
+    "clad": "stone",
+    "raw": "granite over concrete panels",
+    "name": "345 California Street"
+   },
+   {
+    "gid": 137664,
+    "clad": "mixed",
+    "raw": "concrete, glass",
+    "name": "388 Market Street"
+   },
+   {
+    "gid": 137668,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "455 Market Street"
+   },
+   {
+    "gid": 138018,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "United Commercial Bank"
+   },
+   {
+    "gid": 137316,
+    "clad": "concrete",
+    "raw": "concrete panel",
+    "name": "Westin San Francisco"
+   },
+   {
+    "gid": 142968,
+    "clad": "mixed",
+    "raw": "concrete, aluminium",
+    "name": "150 Spear Street"
+   },
+   {
+    "gid": 137556,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Citicorp Center"
+   },
+   {
+    "gid": 136504,
+    "clad": "concrete",
+    "raw": "concrete panel",
+    "name": "Parc 55 San Francisco"
+   },
+   {
+    "gid": 142947,
+    "clad": "stone",
+    "raw": "precast concrete with granite veneer",
+    "name": "100 Spear Street"
+   },
+   {
+    "gid": 137647,
+    "clad": "concrete",
+    "raw": "concrete panels",
+    "name": "50 Fremont Street"
+   },
+   {
+    "gid": 137702,
+    "clad": "mixed",
+    "raw": "concrete, glass",
+    "name": "353 Sacramento"
+   },
+   {
+    "gid": 137868,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "456 Montgomery Plaza"
+   },
+   {
+    "gid": 137721,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "101 California Street"
+   },
+   {
+    "gid": 137914,
+    "clad": "stone",
+    "raw": "garnite panel",
+    "name": "580 California Street"
+   },
+   {
+    "gid": 138022,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Montgomery Washington Tower"
+   },
+   {
+    "gid": 137622,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "1 Ecker Square"
+   },
+   {
+    "gid": 135881,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "1275 Market Street"
+   },
+   {
+    "gid": 137656,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Providian Financial Building"
+   },
+   {
+    "gid": 137537,
+    "clad": "concrete",
+    "raw": "concrete panels",
+    "name": "101 Montgomery Street"
+   },
+   {
+    "gid": 137822,
+    "clad": "concrete",
+    "raw": "concrete panel",
+    "name": "601 Montgomery Street"
+   },
+   {
+    "gid": 137578,
+    "clad": "concrete",
+    "raw": "concrete panels",
+    "name": "Telesis Tower"
+   },
+   {
+    "gid": 137829,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Two Transamerica Center"
+   },
+   {
+    "gid": 137741,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Four Embarcadero Cente.. [Embarcadero Center]"
+   },
+   {
+    "gid": 137665,
+    "clad": "mixed",
+    "raw": "aluminum and glass panels",
+    "name": "Shaklee Terraces"
+   },
+   {
+    "gid": 137661,
+    "clad": "glass",
+    "raw": "glass and aluminum",
+    "name": "Bechtel Building"
+   },
+   {
+    "gid": 137558,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Bank of the West"
+   },
+   {
+    "gid": 137845,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "California Building"
+   },
+   {
+    "gid": 137663,
+    "clad": "glass",
+    "raw": "glazed aluminum curtain wall",
+    "name": "333 Market Street"
+   },
+   {
+    "gid": 137569,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "595 Market Street"
+   },
+   {
+    "gid": 60435,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Bank of America Computer Center"
+   },
+   {
+    "gid": 142945,
+    "clad": "concrete",
+    "raw": "precast concrete panels",
+    "name": "Steuart Tower"
+   },
+   {
+    "gid": 142944,
+    "clad": "concrete",
+    "raw": "precast concrete panels",
+    "name": "Spear Tower"
+   },
+   {
+    "gid": 137732,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "Hyatt Regency"
+   },
+   {
+    "gid": 148901,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Holiday Inn"
+   },
+   {
+    "gid": 138697,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "San Francisco Marriott Union Square or Crowne Plaza"
+   },
+   {
+    "gid": 60431,
+    "clad": "concrete",
+    "raw": "concrete panels",
+    "name": "California Automobile Association Building"
+   },
+   {
+    "gid": 137667,
+    "clad": "concrete",
+    "raw": "light gauge steel framed stud walls",
+    "name": "425 Market Street"
+   },
+   {
+    "gid": 137821,
+    "clad": "concrete",
+    "raw": "concrete panel and sheet metal",
+    "name": "Transamerica Pyramid [Transamerica Center]"
+   },
+   {
+    "gid": 137694,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "100 Pine Center"
+   },
+   {
+    "gid": 137676,
+    "clad": "concrete",
+    "raw": "precast concrete panel",
+    "name": "First Market Tower"
+   },
+   {
+    "gid": 137615,
+    "clad": "stone",
+    "raw": "ceramic and granite",
+    "name": "Chevron Tower [Market Center]"
+   },
+   {
+    "gid": 137719,
+    "clad": "glass",
+    "raw": "aluminum",
+    "name": "50 California Street"
+   },
+   {
+    "gid": 138024,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Hilton Financial District"
+   },
+   {
+    "gid": 137236,
+    "clad": "concrete",
+    "raw": "concrete panels",
+    "name": "PacBell Center"
+   },
+   {
+    "gid": 137657,
+    "clad": "concrete",
+    "raw": "concrete panel",
+    "name": "Pacific Gas & Electric Building"
+   },
+   {
+    "gid": 136399,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Hilton San Francisco &.. [Hilton San Francisco &..]"
+   },
+   {
+    "gid": 137763,
+    "clad": "mixed",
+    "raw": "concrete and glass",
+    "name": "Two Embarcadero Center [Embarcadero Center]"
+   },
+   {
+    "gid": 137760,
+    "clad": "mixed",
+    "raw": "concrete and glass",
+    "name": "Three Embarcadero Cent.. [Embarcadero Center]"
+   },
+   {
+    "gid": 138668,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Grand Hyatt San Francisco"
+   },
+   {
+    "gid": 137828,
+    "clad": "concrete",
+    "raw": "concrete panel",
+    "name": "475 Sansome Street"
+   },
+   {
+    "gid": 137582,
+    "clad": "stone",
+    "raw": "light weight concrete and granite veneer",
+    "name": "McKesson Plaza"
+   },
+   {
+    "gid": 138727,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "The Westin St. Francis.. [The Westin St. Francis]"
+   },
+   {
+    "gid": 137764,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "One Embarcadero Center [Embarcadero Center]"
+   },
+   {
+    "gid": 137844,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Bank of California Building"
+   },
+   {
+    "gid": 137915,
+    "clad": "concrete",
+    "raw": "concrete panel",
+    "name": "555 California Street"
+   },
+   {
+    "gid": 137848,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "425 California Street"
+   },
+   {
+    "gid": 140028,
+    "clad": "mixed",
+    "raw": "glass and concrete",
+    "name": "The Summit"
+   },
+   {
+    "gid": 137690,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Beal Bank Building"
+   },
+   {
+    "gid": 137660,
+    "clad": "glass",
+    "raw": "aluminum",
+    "name": "Bechtel Building"
+   },
+   {
+    "gid": 149562,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "The Sequoias"
+   },
+   {
+    "gid": 137834,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "Insurance Center Building"
+   },
+   {
+    "gid": 137486,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "PacBell - Pine Street Building"
+   },
+   {
+    "gid": 137723,
+    "clad": "mixed",
+    "raw": "concrete and glass",
+    "name": "One California"
+   },
+   {
+    "gid": 137771,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "One Maritime Plaza (Golden Gateway Office Building)"
+   },
+   {
+    "gid": 146526,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Fontana East"
+   },
+   {
+    "gid": 146525,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Fontana West"
+   },
+   {
+    "gid": 151305,
+    "clad": "mixed",
+    "raw": "concrete and glass",
+    "name": "Pacific Heights Towers"
+   },
+   {
+    "gid": 139415,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Nob Hill Community Apartments"
+   },
+   {
+    "gid": 138499,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "10 Miller"
+   },
+   {
+    "gid": 137678,
+    "clad": "terracotta",
+    "raw": "terra cotta",
+    "name": "555 Market [Market Center]"
+   },
+   {
+    "gid": 140047,
+    "clad": "mixed",
+    "raw": "concrete and glass",
+    "name": "Green Hill Tower"
+   },
+   {
+    "gid": 135891,
+    "clad": "mixed",
+    "raw": "concrete, glass",
+    "name": "Archstone Fox Plaza"
+   },
+   {
+    "gid": 137918,
+    "clad": "concrete",
+    "raw": "concrete panels",
+    "name": "Hartford Building"
+   },
+   {
+    "gid": 137576,
+    "clad": "stone",
+    "raw": "glass metal and stone",
+    "name": "44 Montgomery"
+   },
+   {
+    "gid": 140450,
+    "clad": "mixed",
+    "raw": "glass and concrete",
+    "name": "Royal Towers"
+   },
+   {
+    "gid": 149501,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Cathedral Hill Tower"
+   },
+   {
+    "gid": 138478,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Fairmont Hotel Tower [The Fairmont San Franc..]"
+   },
+   {
+    "gid": 137683,
+    "clad": "mixed",
+    "raw": "concrete and glass",
+    "name": "111 Pine Street"
+   },
+   {
+    "gid": 137196,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "Pacific Telephone Building"
+   },
+   {
+    "gid": 137754,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Macondray House [Golden Gateway Center]"
+   },
+   {
+    "gid": 138857,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Twelve Hundred California"
+   },
+   {
+    "gid": 142873,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Buckelew House [Golden Gateway Center]"
+   },
+   {
+    "gid": 137916,
+    "clad": "mixed",
+    "raw": "concrete and glass",
+    "name": "International Building"
+   },
+   {
+    "gid": 136443,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Hilton San Francisco &.. [Hilton San Francisco &..]"
+   },
+   {
+    "gid": 135990,
+    "clad": "glass",
+    "raw": "glass and aluminium",
+    "name": "Philip Burton Federal Building"
+   },
+   {
+    "gid": 137677,
+    "clad": "glass",
+    "raw": "glass",
+    "name": "One Bush Plaza"
+   },
+   {
+    "gid": 49446,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "UCSF Medical Center Parnassus"
+   },
+   {
+    "gid": 137680,
+    "clad": "concrete",
+    "raw": "terra-cotta",
+    "name": "Shell Building"
+   },
+   {
+    "gid": 138696,
+    "clad": "stone",
+    "raw": "stone",
+    "name": "Sir Francis Drake Hotel"
+   },
+   {
+    "gid": 137538,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Equitable Life"
+   },
+   {
+    "gid": 137849,
+    "clad": "stone",
+    "raw": "stone",
+    "name": "JH Dollar Building"
+   },
+   {
+    "gid": 137552,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Mills Tower [The Mills Building]"
+   },
+   {
+    "gid": 138634,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "450 Sutter"
+   },
+   {
+    "gid": 135927,
+    "clad": "stone",
+    "raw": "stone",
+    "name": "McAllister Tower Apartments"
+   },
+   {
+    "gid": 140058,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Bellaire Tower"
+   },
+   {
+    "gid": 137543,
+    "clad": "concrete",
+    "raw": "terra-cotta tile and brick",
+    "name": "Russ Building"
+   },
+   {
+    "gid": 137536,
+    "clad": "concrete",
+    "raw": "terra-cotta; brick and masonry",
+    "name": "Hunter-Dulin Building"
+   },
+   {
+    "gid": 138862,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Cathedral Apartments"
+   },
+   {
+    "gid": 138828,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "The Mark Hopkins Hotel"
+   },
+   {
+    "gid": 137294,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Pac Bell Building"
+   },
+   {
+    "gid": 137726,
+    "clad": "terracotta",
+    "raw": "terra cotta",
+    "name": "PG&E Headquarters"
+   },
+   {
+    "gid": 137557,
+    "clad": "stone",
+    "raw": "stone",
+    "name": "225 Bush Street"
+   },
+   {
+    "gid": 137861,
+    "clad": "concrete",
+    "raw": "brick",
+    "name": "Commercial Union Assurance Building"
+   },
+   {
+    "gid": 137730,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Southern Pacific Building"
+   },
+   {
+    "gid": 149288,
+    "clad": "stone",
+    "raw": "stone",
+    "name": "San Francisco City Hall"
+   },
+   {
+    "gid": 137572,
+    "clad": "terracotta",
+    "raw": "terra cotta",
+    "name": "Hobart Building"
+   },
+   {
+    "gid": 137348,
+    "clad": "terracotta",
+    "raw": "terra cotta",
+    "name": "Humboldt Bank Building"
+   },
+   {
+    "gid": 137361,
+    "clad": "stone",
+    "raw": "marble",
+    "name": "Central Tower"
+   },
+   {
+    "gid": 142936,
+    "clad": "concrete",
+    "raw": "concrete",
+    "name": "Ferry Building"
+   },
+   {
+    "gid": 137588,
+    "clad": "terracotta",
+    "raw": "terra cotta and masonry",
+    "name": "Ritz-Carlton Club and Residences"
+   }
+  ]
  },
  "tops": [
   {

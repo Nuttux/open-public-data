@@ -97,9 +97,13 @@ import {
   familyHipShare,
   familyPitchedRoof,
   familyOfEra,
+  cladTile,
+  cladWallRGB,
+  type CladFamily,
   roofFamilyRGB,
   type FaFamily,
   FACADE_TILES,
+  TILE_BLANK,
   TILE_CURTAIN,
   facadeAtlas,
   facadeGroundTile,
@@ -173,6 +177,12 @@ export interface BuildingsLayerOptions {
   landAt?: ((x: number, y: number) => boolean) | null;
   /** the surveyed top, for the towers the scan drew short — see `hMFull` */
   tallTops?: ReadonlyMap<number, number> | null;
+  /** ── AND WHAT 171 OF THOSE TOWERS ARE CLAD IN ────────────────────────
+     The Tall Building Inventory publishes `facade_material` on every row.
+     That is a per-building measurement of the thing this layer otherwise
+     infers from height and era, and downtown is where the inference is
+     weakest. `facade.ts` §AND FOR 171 TOWERS has the families. */
+  tallClad?: ReadonlyMap<number, CladFamily> | null;
   /** dev: draw every footprint in one appearance family */
   forceFamily?: FaFamily | null;
   /** footprints a hand-modelled landmark already stands on — never drawn twice */
@@ -1094,9 +1104,14 @@ export function buildingsMesh(
        office tower is a wrong claim about something anyone can walk past */
     const wcTy = o.face ? (o.face.ty[i] ?? 0) : 0;
     const wcEra = (tb.u[i] & FLAG_NOYEAR) !== 0 ? -1 : faEra(1849 + tb.yr[i]);
-    const wc = wallFamilyRGB(
-      wc0 as [number, number, number], tb.gid[i], wcTy, wcEra, hMFull,
-    );
+    /* where the register says what this building is made of, that replaces
+       the family inferred from its height — see `cladWallRGB` */
+    const cladHere = o.tallClad ? (o.tallClad.get(tb.gid[i]) ?? null) : null;
+    const wc = cladHere
+      ? cladWallRGB(wc0 as [number, number, number], tb.gid[i], cladHere)
+      : wallFamilyRGB(
+        wc0 as [number, number, number], tb.gid[i], wcTy, wcEra, hMFull,
+      );
     if (probe) {
       probe.v0.push(s * 3 + c * 2);
       probe.vn.push(c);
@@ -1141,7 +1156,10 @@ export function buildingsMesh(
     const tileFor: number[] = [];
     const gndFor: number[] = [];
     for (let r = 0; r < 3; r++) {
-      tileFor.push(facadeTile(keyOf(r)));
+      const t0 = facadeTile(keyOf(r));
+      /* the published cladding overrides the vocabulary too, but only on a
+         wall that takes openings at all — a party wall is still blank */
+      tileFor.push(cladHere && t0 !== TILE_BLANK ? cladTile(cladHere) : t0);
       gndFor.push(facadeGroundTile(keyOf(r)));
     }
     /* DEV-ONLY: which vocabulary each building's FRONT lands in, weighted by
