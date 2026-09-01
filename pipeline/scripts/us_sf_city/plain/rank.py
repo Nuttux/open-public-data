@@ -107,6 +107,9 @@ def main() -> None:
     ap.add_argument("--n", type=int, default=1200, help="lines per batch")
     ap.add_argument("--take", action="store_true", help="ingest returned batches")
     ap.add_argument("--status", action="store_true")
+    ap.add_argument("--restamp", action="store_true",
+                    help="set every outstanding hand-out to the current rubric; "
+                         "run this immediately before launching workers")
     args = ap.parse_args()
 
     WORK.mkdir(parents=True, exist_ok=True)
@@ -128,6 +131,14 @@ def main() -> None:
             print("\nband spread so far:")
             for k in ("80-100", "55-79", "30-54", "10-29", "0-9"):
                 print(f"  {k:7} {b[k]:7,}  ({100*b[k]/len(vals):4.1f}%)")
+        return
+
+    if args.restamp:
+        n = 0
+        for q in sorted(WORK.glob("batch-*.rubric")):
+            q.write_text(json.dumps({"rv": RUBRIC_VERSION, "rh": rubric_hash()}) + "\n")
+            n += 1
+        print(f"{n} hand-outs stamped v{RUBRIC_VERSION} sha {rubric_hash()}")
         return
 
     if args.take:
@@ -214,7 +225,14 @@ def main() -> None:
             for r in chunk:
                 fh.write(json.dumps({"id": r["id"], "line": r["line"],
                                      "year": r["y"]}, ensure_ascii=False) + "\n")
-        # ── STAMP THE RUBRIC AT HAND-OUT, NOT AT INGEST ────────────────────
+        # ── STAMP AT HAND-OUT, AND RE-STAMP AT LAUNCH ──────────────────────
+        # Stamping here fixes the ingest-time bug but opens the mirror of it:
+        # prep, then edit the rubric, then launch, and the stamp is OLDER than
+        # the read. That happened — eight batches were labelled with a hash
+        # from two minutes before the anchor table was added, while the workers
+        # read the table. A reader caught it. `--restamp` sets every
+        # outstanding hand-out to the rubric as it stands NOW, and belongs
+        # immediately before workers are launched.
         # `--take` used the rubric version current when it RAN, which is not
         # the one the worker read. Fixing the rubric mid-wave would then have
         # relabelled every batch already in flight as though it had been
