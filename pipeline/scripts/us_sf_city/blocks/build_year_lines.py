@@ -117,8 +117,67 @@ def main() -> None:
         row["m"] |= int(marks["m"][i])
         row["p"].append([round(float(marks["x"][i]), 1),
                          round(float(marks["y"][i]), 1), bid])
-    rows = sorted(by_key.values(), key=lambda r: (r["y"], -len(r["p"]), r["t"]))
     marks_in = n - missed
+
+    # ── THE DECISIONS WITH NOWHERE TO PUT A DOT ─────────────────────────────
+    # This file was built from the MARKS, so it held only decisions the join
+    # could place. But 55% of the corpus names no place at all, and that half
+    # is not the boring half — it is where the citywide acts live: a
+    # surveillance policy, a grant accepted, a code amendment. Measured: 142
+    # written decisions in 2025 and 140 in 2019 existed in the published table
+    # and appeared in NO surface of the app.
+    #
+    # The panel is captioned "The record — 2026, 62 decisions in the Board's
+    # minutes". That was only ever true of the placed ones, so the caption was
+    # a quiet lie. An unplaced decision now rides in the same shard with an
+    # EMPTY position list: the panel lists it, the map draws nothing for it,
+    # and `p.length === 0` is the whole test a surface needs.
+    #
+    # Only decisions we have actually WRITTEN come in. An unplaced record with
+    # no line would be a row of raw Clerk text with no dot to explain it —
+    # worse than its absence.
+    placed_keys = set(by_key)
+    unplaced = 0
+    core = ROOT / "website/public/data/us/sf/city/records/sf_bos_records.csv.gz"
+    if core.exists():
+        import csv as _csv, gzip as _gzip
+        with _gzip.open(core, "rt") as fh:
+            for rec in _csv.DictReader(fh):
+                if rec.get("block"):            # it has a dot; already here
+                    continue
+                if rec.get("record_type") != "decision":
+                    continue
+                line = (rec.get("plain_line") or "").strip()
+                if not line:
+                    continue
+                y = rec.get("year")
+                if not (y or "").isdigit():
+                    continue
+                key = (int(y), rec.get("source_url") or "", rec.get("text") or "")
+                if key in placed_keys:
+                    continue
+                by_key[key] = {
+                    "y": int(y), "m": 0, "k": rec.get("kind") or "",
+                    "a": 0, "u": key[1], "t": key[2],
+                    "cs": -1, "ca": -1, "g": "", "pl": line, "p": [],
+                }
+                unplaced += 1
+
+    rows = sorted(by_key.values(), key=lambda r: (r["y"], -len(r["p"]), r["t"]))
+
+    # ── THE RAW TEXT ONLY RIDES WHERE IT IS STILL NEEDED ────────────────────
+    # `t` is here for ONE consumer: `record-line.ts`, which extracts a readable
+    # sentence from the Clerk's words for rows we never wrote. A row that HAS a
+    # written line never calls it — the panel prints `pl` and the scan is one
+    # click away on the row's own link.
+    #
+    # Carrying it regardless took the shards from 190 kB to 2.9 MB each, which
+    # would have made dragging the year slider a multi-megabyte download. This
+    # is the whole reason the file is sharded by decade in the first place, so
+    # the fix belongs here rather than in a loader.
+    for r in rows:
+        if r["pl"]:
+            r["t"] = ""
 
     OUT.mkdir(parents=True, exist_ok=True)
     for old in OUT.glob("*.json"):

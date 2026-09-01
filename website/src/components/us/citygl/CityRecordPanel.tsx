@@ -118,7 +118,15 @@ export default function CityRecordPanel({
          never fall into the mute cohort, because the reason that cohort exists
          (the Clerk's line does not read) does not apply to a line we wrote.
          `d.text` stays on the row underneath; see the row markup. */
-      return { d, i, line: d.pl ? { ...line, headline: d.pl, tag: line.tag ?? says(d, classify) } : line };
+      // ── THE TAG STANDS DOWN WHERE THE LINE SPEAKS ──────────────────────
+      // The classification is a LABEL for a record whose own words do not
+      // read. Our line reads, so the label becomes noise — and worse than
+      // noise when the two disagree: five rows of "LANDMARKS AND OLD BUILDINGS
+      // · ORDERED" sat above five lines each saying "Landmark status PROPOSED",
+      // which is the classification's verb against ours on the same row.
+      // The map card already drops it for exactly this reason; this is the
+      // same rule, so the two surfaces now read the same way.
+      return { d, i, line: d.pl ? { ...line, headline: d.pl, tag: null } : line };
     });
     /* a row TELLS you something when its headline is the record's own words.
        Where the line did not read, `recordLine` puts the classification in the

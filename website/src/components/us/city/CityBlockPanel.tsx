@@ -284,7 +284,16 @@ function toDoc(d: BlockDecision, i: number): FicheArchiveDoc {
   const tier = TIER_WORDING[d.p] ?? "";
   return {
     id: `${d.u}#${i}`,
-    gloss: d.t.trim() || null,
+    // ── THE SHELF ASKED FOR THIS FIELD AND WAS BEING GIVEN THE OPPOSITE ──
+    // `gloss` is specified as "one line on what this document SAYS … never a
+    // raw OCR fragment", and it was receiving exactly that: the Clerk's whole
+    // sentence, which is what made a decade open into a wall of
+    // "Grant Agreement - Retroactive - Operating Subsidy for Permanent
+    // Supportive Housing Units - RSU Associates, L.P. - …".
+    // `pl` is the line the field was designed for. Where none exists the
+    // Clerk's text is still better than nothing, so it stays as the fallback —
+    // and the row's link opens the scan either way.
+    gloss: (d.pl && d.pl.trim()) || d.t.trim() || null,
     title: `${kind} · ${whenOf(d)}`,
     year: null,
     href: sourceHref(d),
