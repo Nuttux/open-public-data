@@ -135,9 +135,10 @@ them differently, and "judge only what the line states" is what makes it so.
 site, a business permit, a subdivision map. The number is pinned; the reasoning
 under it is not.
 
-**Land bought to widen a street.** The line states a purpose, just not a civic
-facility, so neither land anchor fits. ~60 records in one batch — the largest
-population any open question touches. Read as the no-purpose anchor (44) for now.
+**Land bought to widen a street. CLOSED by v6** — anchored at 48 as "land
+bought for a public work". This entry said 44 and a reader followed v6 instead
+and then had to correct its own earlier lines. Two files pointing different
+ways is worse than either number.
 
 **How wide is "civic"?** The land anchor names a school, a hospital, a
 playground. A reservoir, a pumping station, a fire drill tower and a municipal
