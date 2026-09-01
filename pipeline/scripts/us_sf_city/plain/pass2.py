@@ -112,14 +112,33 @@ BARE_ROLL = re.compile(
 # runs from the first marker to the close of the record. A real decision with
 # the footer stapled underneath keeps its own text and loses only the footer;
 # a chunk that is nothing but footer is left empty and held.
+#
+# EVERY MARKER HERE MUST BE FOOTER-ONLY. A first version included the names of
+# things the notice CITES — "San Francisco Campaign and Governmental Conduct
+# Code", "Chapter 67 of the San Francisco Administrative Code", "Sunshine
+# Ordinance Task Force", "Disability Access". Those are real subjects the Board
+# legislates about, and the cut ran from the first one to the end of the
+# record, so
+#
+#     Ordinance amending the San Francisco Campaign and Governmental Conduct
+#     Code by adding Section 3.301 to require the Ethics Commission to
+#     televise its meetings on SFGovTV
+#
+# was cut at character 23, left as "Ordinance amending the", and held as empty.
+# A genuine ordinance, deleted by a rule meant for a page footer. A writer
+# found it and said so.
+#
+# What is left is text that appears ONLY in the Clerk's contact block: an
+# address, a phone number, an email, and the notice's own opening words.
 NOTICE = re.compile(
-    r"(?:IMPORTANT INFORMATION NOTE|Chapter 67 of the San Francisco Administrative Code|"
-    r"Sunshine Ordinance Task Force|Dr\.? Carlton B\.? Goodlett Place,? Room 244|"
-    r"\(415\)\s*554-|@ci\.sf\.ca\.us|@sfgov\.org|Ethics Commission,?\s*25 Van Ness|"
-    r"influence or attempt to influence local legislative|Disability Access|"
+    r"(?:IMPORTANT INFORMATION NOTE|"
+    r"Dr\.? Carlton B\.? Goodlett Place,? Room 244|"
+    r"\(415\)\s*554-\d|@ci\.sf\.ca\.us|@sfgov\.org|"
+    r"Ethics Commission,?\s*25 Van Ness|"
+    r"individuals and entities that influence or attempt to influence|"
     r"Know Your Rights [Uu]nder the Sunshine|"
-    r"Citizens (?:may )?(?:interested in obtaining|speak during)|"
-    r"Lobbyist Ordinance|San Francisco Campaign and Governmental Conduct Code)",
+    r"Citizens interested in obtaining a free copy|"
+    r"or to report a violation of the ordinance, contact)",
     re.I)
 
 # ── THE SUBJECT IN SQUARE BRACKETS IS A SUBJECT ─────────────────────────────
