@@ -1171,3 +1171,47 @@ distinction is the right one and the rubric should say it.
 closed for the war and given to Matson Navigation" — the closing anchor says 36,
 the band list says a public asset given away is 55-79. Used 44. Third report of
 "a public asset given away" colliding with a smaller anchor.
+
+# THE PATTERN IN EVERY v7 DEFECT: a qualifier that swallows the rule it qualifies
+
+Four of v7's clauses are functionally broken, and all four fail the same way. I
+wrote each as a bound on a rule, and each bound is stated so broadly that it
+consumes the rule entirely.
+
+    the floor        "a discount never takes an act below 18"
+                     also RAISES anything whose base is under 18, so a referred
+                     renaming outranks an adopted one. SEVEN readers.
+
+    the discount     "take the largest single discount"
+                     x0.5 is always larger than x0.75, so the significance rung
+                     can never fire. It is deleted, not qualified.
+
+    the component    "never carries a small purchase above what the same sum
+     bound            would earn on a single building"
+                     what $25,000 earns on a single building IS 45, so the
+                     citywide raise never fires either — including on the
+                     rubric's own worked example of it.
+
+    the +6 bonus     "governs every street anchor"
+                     the traffic ladder's 44 rung already prices a
+                     listed-thoroughfare corridor, so the bonus double-counts.
+
+The component bound is the one I was proudest of — I recorded it as "one rule
+absorbing three defects from three directions". It absorbed them by cancelling
+the rule underneath.
+
+The common error is writing the qualifier from the failing example rather than
+from the rule's purpose. "$36 toward a locomotive" is trivial, so I wrote a bound
+about sums; the bound then caught every sum. The repair in each case is to say
+what the bound is FOR:
+
+    floor        ...and never above its own undiscounted score
+    discounts    where a stage discount and the significance rung both apply,
+                 significance governs — it is about the act, not the paperwork
+    component    the bound applies where the sum is trivial beside the system;
+                 it does not cap a component that is itself a large work
+    +6           applies to the fabric of a street, never to a traffic rule,
+                 which the ladder prices whole
+
+Every one of these was found by a reader applying the rule literally and saying
+the result looked wrong. None was found by me re-reading what I wrote.
