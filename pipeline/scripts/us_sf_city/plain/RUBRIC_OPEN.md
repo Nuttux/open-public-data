@@ -968,3 +968,60 @@ would not have to guess, and two of them guessed differently on the first day.
     against does not
   traffic signals as capital works — the v7 ladder prices traffic RULES, not
     building the hardware citywide; used 50
+
+# TWO v7 CLAUSES ARE FUNCTIONALLY BROKEN — not ambiguous, broken
+
+Both are mine, both from the same edit, and both do the OPPOSITE of what they
+were written to do. The first is the floor I described as elegantly closing four
+incoherences at once.
+
+## 1. The single floor of 18 now RAISES things, inverting the scale again
+
+"A discount never takes an act below 18" was written to stop a discounted big
+thing falling below an undiscounted small one. Applied literally it also lifts
+anything whose own base is under 18:
+
+    "Renaming Grant Avenue Mei-Ling Way"                base ~15
+    "...sent to committee"                              discounted, floored to 18
+
+So the REFERRED version outranks the ADOPTED one. I replaced one inversion with
+another of exactly the same shape. The reader capped at the base instead and said
+so.
+
+    FIX: "A discount never takes an act below 18, and never above its own
+     undiscounted score."
+
+## 2. "Take the largest single discount" makes the significance rung unreachable
+
+v7 says discounts do not compound: take the largest single one. But every
+significant proposal is ALSO a plain proposal, and x0.5 is a larger discount than
+x0.75 — so the literal reading picks x0.5 every time and the x0.75 significance
+rung can never fire. I deleted a rule by writing a rule about rules.
+
+    "$7,950,000 bonds to buy the Market Street Railway sent to committee"
+        64 under the reading the reader used
+        43 under the literal one                        21 points, crosses a band
+
+    FIX: "Discounts do not compound. Where a stage discount and the significance
+     rung both apply, the significance rung governs — it is written about the
+     act, and the stage discount is written about the paperwork."
+
+Six lines in this batch alone. This one DOES cross a band, so it is the first v7
+defect that will need its affected records returned once fixed.
+
+## Five more from 053
+
+  the repeal rule gives clerical abandonments top-of-band numbers — "condemnation
+    of James Irvine's Civic Center land dropped" takes 70, rubric-directed
+  "X appeal set for hearing" is claimed by the 16 hearing anchor AND the v7
+    appeal rule; the reader used 16 for assessment appeals and subject x0.5 for
+    rezoning ones, a seam inside one batch
+  no rung for the city leasing out a SMALL asset — the ladder's 48 names large
+    ones; "Old Harbor Police Station leased for $10 monthly" fell to the 36
+    disposal anchor
+  highway-scale roads — "a street opened or extended = 44" is the ceiling, but
+    Bay Shore Highway and Alemany Boulevard are arterial-scale; the reader
+    interpolated 62-68 and flagged it as the one place it supplied numbers
+  a lease whose use is named by the BUILDING, not a department — "Crystal Palace
+    Baths rented for $1,250 a month"; the settled 26 rule is about lines naming
+    only a department, and here the building's own name states a public use
