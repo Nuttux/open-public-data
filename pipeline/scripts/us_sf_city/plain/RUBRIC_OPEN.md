@@ -1371,3 +1371,28 @@ inversion came from protecting SOME anchors and not others.
 This also interacts with duplicate collapsing, which is still on the list: a
 measure written across several rows currently contributes several identical
 scores to the same tie group.
+
+## OPERATIONAL: the v8 recheck must return score <= 18, not < 18
+
+recheck_v7.py returns everything scored BELOW 18, on the reasoning that the new
+floor moved those rows. For v8 that test is wrong in a way that would silently
+miss the largest affected group.
+
+Batches 068-072 were dispatched with instructions to apply the broken floor AS
+WRITTEN and report what happened — my choice, so that the defect could be
+measured rather than papered over. They did, and the result is that every act
+whose base was under 18 sits at exactly 18 in those files:
+
+    "Bronze plaques asked for the men who died building the bridges"   base 14 -> 18
+    "Renaming the Julius Kahn playground sent to committee"            base 14 -> 18
+    "$199,353 flood settlement over 1 Justin Drive sent to committee"  base 16 -> 18
+
+Those rows are wrong in a known direction, and they are AT 18, not below it. A
+`score < 18` selector returns none of them.
+
+    For v8: return score <= 18. The pile at 18 is 3,821 records and it is
+    exactly the population the floor repair is for.
+
+Batches from 073 on were given the repair and do not have this; their small acts
+sit at their own bases (14, 15, 16), which is the intended behaviour and is also
+why the two sets are distinguishable.
