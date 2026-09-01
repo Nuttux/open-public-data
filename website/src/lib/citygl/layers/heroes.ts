@@ -138,8 +138,11 @@ import {
   MeshLambertMaterial,
   ShapeUtils,
   SRGBColorSpace,
+  type Texture,
   Vector2,
 } from "three";
+
+import { FACADE_TILES, facadeAtlas, type FacadeAtlas } from "../facade";
 
 import type {
   BridgeSpan,
@@ -304,6 +307,29 @@ const PIER_GROUND_M = 3;
 
 type RGB = readonly [number, number, number];
 
+/**
+ * WHICH HEROES HAVE A WALL WITH WINDOWS IN IT, AND WHAT KIND.
+ *
+ * Everything else this file draws is a surface with no window rhythm to have:
+ * a dome, a drum, a spire, a colonnade, a windmill's cap, a bridge cable.
+ * Giving those a facade would be worse than giving them none. So this is a
+ * short, named list and not a default.
+ *
+ * It is keyed by the hero's own published key, so adding one is a line here
+ * and nothing in the pipeline: which tile a wall carries is a DRAWING
+ * decision and the register has no field for it.
+ */
+const GLAZED: Readonly<Record<string, string>> = {
+  /* 61 storeys of curtain wall. `facade.ts` §A CURTAIN WALL IS A FRAME draws
+     the spandrel banding and the mullion grid this reads by. */
+  salesforce: "curtain",
+};
+
+/** the bay and the storey a hero's wall is read in — the fabric's own, so a
+ *  tower and the block around it are drawn at one size */
+const HERO_BAY_M = 4.6;
+const HERO_STOREY_M = 3.6;
+
 const _c = new Color();
 /** the palette entries are sRGB; three.js wants the working space */
 function toRGB(style: string): RGB {
@@ -320,14 +346,21 @@ interface Buf {
   /** the built term, in metres — multiplied by `zexb` */
   built: number[];
   idx: number[];
+  /** ── AND A FACADE COORDINATE, WHERE THE WALL CARRIES ONE ──────────────
+     Non-null only on the GLAZED buffer. Everything else in this file draws a
+     surface that has no window rhythm to have — a dome, a spire, a colonnade,
+     a windmill's cap — and giving those a uv would be inviting a mistake. */
+  uv: number[] | null;
 }
 
-function newBuf(): Buf {
-  return { pos: [], col: [], elev: [], built: [], idx: [] };
+function newBuf(withUV = false): Buf {
+  return { pos: [], col: [], elev: [], built: [], idx: [],
+           uv: withUV ? [] : null };
 }
 
 function vert(
   b: Buf, x: number, y: number, elev: number, built: number, rgb: RGB,
+  u = 0, v = 0,
 ): void {
   /* the scene's axes are (world x, up, world y) — `buildings.ts`'s own
      convention. Y is written by `setY` and left at zero here. */
@@ -335,6 +368,7 @@ function vert(
   b.elev.push(elev);
   b.built.push(built);
   b.col.push(rgb[0], rgb[1], rgb[2]);
+  if (b.uv) b.uv.push(u, v);
 }
 
 /** one mesh, plus what a camera step needs to rewrite its Y */
@@ -356,6 +390,7 @@ interface Piece {
 
 function finish(
   b: Buf, year: number, needs: number[] = [], marks: number[] = [],
+  map: Texture | null = null, normalMap: Texture | null = null,
 ): Piece | null {
   if (!b.idx.length) return null;
   const pos = new Float32Array(b.pos);
@@ -363,6 +398,7 @@ function finish(
   const g = new BufferGeometry();
   g.setAttribute("position", attr);
   g.setAttribute("color", new BufferAttribute(new Float32Array(b.col), 3));
+  if (b.uv) g.setAttribute("uv", new BufferAttribute(new Float32Array(b.uv), 2));
   g.setIndex(new BufferAttribute(new Uint32Array(b.idx), 1));
   /* FLAT SHADING AND DOUBLE-SIDED, for the reasons `buildings.ts` states:
      the face normal is recovered per fragment, so a corner shared by two
@@ -374,6 +410,15 @@ function finish(
     vertexColors: true,
     flatShading: true,
     side: DoubleSide,
+    /* ── AND A WALL THAT HAS WINDOWS GETS THEM ─────────────────────────
+       The same fault as `stepForm`'s sides and the gable end, on the last
+       surface that still had it: everything this file draws goes into a
+       material with no map, so every hero wall in the city is one flat
+       colour. That is right for a dome, a spire and a windmill's cap. It is
+       wrong for 326 m of curtain wall, and it is why Salesforce Tower came
+       out — reported from the page — as *"no window facade texture or
+       nothing"*. Only the GLAZED buffer is given a map; see `GLAZED`. */
+    ...(map ? { map, normalMap: normalMap ?? undefined } : {}),
   });
   const mesh = new Mesh(g, material);
   mesh.castShadow = true;
@@ -499,15 +544,23 @@ function emitSolid(
     const s = part.profile[r].s;
     const u = part.profile[r].u;
     const h = part.z0 + (part.z1 - part.z0) * u;
+    /* ── THE FACADE COORDINATE, WHERE THE BUFFER ASKED FOR ONE ──────────
+       The fabric's own convention and deliberately the same one, so a hero's
+       wall and the block it stands in are read off the same tile at the same
+       size: `u` is the run around the ring in BAYS and `v` is the height in
+       STOREYS. The run is measured on this ring level, so a plan that draws
+       in as it rises gets fewer bays across it, which is what a tapering
+       tower actually has. */
+    let run = 0;
     for (let t = 0; t < n; t++) {
-      vert(
-        b,
-        cx + (part.rx[t] - cx) * s + part.tiltX * u,
-        cy + (part.ry[t] - cy) * s + part.tiltY * u,
-        elev,
-        h,
-        wall,
-      );
+      const px = cx + (part.rx[t] - cx) * s + part.tiltX * u;
+      const py = cy + (part.ry[t] - cy) * s + part.tiltY * u;
+      if (b.uv && t > 0) {
+        const qx = cx + (part.rx[t - 1] - cx) * s + part.tiltX * u;
+        const qy = cy + (part.ry[t - 1] - cy) * s + part.tiltY * u;
+        run += Math.hypot(px - qx, py - qy);
+      }
+      vert(b, px, py, elev, h, wall, run / HERO_BAY_M, h / HERO_STOREY_M);
     }
   }
   for (let r = 0; r + 1 < NR; r++) {
@@ -536,7 +589,9 @@ function emitSolid(
     const y = cy + (part.ry[t] - cy) * sTop + part.tiltY * uTop;
     // a class instance, never an {x, y} literal: three.js reads Vector2 here
     ring.push(new Vector2(x, y));
-    vert(b, x, y, elev, hTop, top);
+    /* the cap is a ROOF and takes no window: (0, 0) is the corner of the tile
+       and the fabric's own idiom for "leave this surface alone" */
+    vert(b, x, y, elev, hTop, top, 0, 0);
   }
   for (const f of triangulate(ring)) {
     b.idx.push(capBase + f[0], capBase + f[1], capBase + f[2]);
@@ -795,6 +850,15 @@ function scaleNeeded(part: HeroPartData, rwPlane: number): number {
  * hero's parts are already in the register's own published order and a
  * stable sort keeps it.
  */
+/** the facade sheet, built once for the process and shared by every hero that
+ *  asks for it — `facade.ts` builds a whole atlas and this needs two of its
+ *  textures, so it is not rebuilt per building */
+let _atlas: FacadeAtlas | null | undefined;
+function atlasOnce(): FacadeAtlas | null {
+  if (_atlas === undefined) _atlas = facadeAtlas();
+  return _atlas;
+}
+
 function heroPieces(
   h: HeroData,
   mat: readonly (readonly string[])[],
@@ -839,14 +903,32 @@ function heroPieces(
     return { needs, marks };
   };
 
-  const b = newBuf();
+  /* ── AND A GLAZED HERO'S SOLIDS GO IN THEIR OWN MESH ──────────────────
+     One mesh carries one material, and a facade map is a claim about a WALL.
+     City Hall's dome and Coit Tower's shaft are in the same buffer as their
+     walls and must not take one, so a hero the `GLAZED` table names puts its
+     solids in a second buffer with a uv and the tile, and everything else is
+     unchanged. A hero not in that table produces no glazed buffer at all. */
+  const tile = GLAZED[h.key];
+  const glazed = tile !== undefined;
+  const b = newBuf(glazed);
   const solidGate = emit(b, (k) => k === "solid");
   const pb = newBuf();
   const { needs, marks } = emit(pb, (k) => k !== "solid");
 
   /* A HERO WHOSE PARTS CANNOT PRODUCE A SOLID IS NOT DRAWN, and the fabric
      keeps its prism. Nothing is stood in for it. */
-  const solid = finish(b, h.year, solidGate.needs, solidGate.marks);
+  let map: Texture | null = null;
+  let nrm: Texture | null = null;
+  if (glazed) {
+    const at = atlasOnce();
+    const ti = at ? FACADE_TILES.indexOf(tile) : -1;
+    if (at && ti >= 0) {
+      map = at.tiles[ti] ?? null;
+      nrm = at.normals[ti] ?? null;
+    }
+  }
+  const solid = finish(b, h.year, solidGate.needs, solidGate.marks, map, nrm);
   const paint = marks.length ? finish(pb, h.year, needs, marks) : null;
   if (paint) {
     /* PAINT TAKES NO PART IN THE SHADOW MAP, IN EITHER DIRECTION, and the
