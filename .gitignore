@@ -90,3 +90,6 @@ website/.parity/
 
 # generated working files: tile caches, shot sequences, block dumps
 /scratchpad/
+
+# second-pass writing slices and worker output — transient build artifacts
+pipeline/data/sf_bos/work/
