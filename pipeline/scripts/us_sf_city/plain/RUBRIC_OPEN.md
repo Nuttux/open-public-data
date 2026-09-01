@@ -1054,3 +1054,30 @@ Predates v7. Two readers, a band apart.
     permanent rules, as the designation section already does
   a bus route CHANGED rather than ordered — the transit anchor names "ordered,
     planned or extended" at 80 and not modified; used 62
+
+## Both broken v7 clauses confirmed independently, and a new collision
+
+Batch 059 hit the same two without having seen 053's report, and made the same
+calls: it left sub-18 acts at their base rather than letting the floor raise them,
+and it declined to stack the +6 thoroughfare bonus onto the traffic ladder's 44.
+Two readers reaching the same repair independently is good evidence the repairs
+in the entries above are the right ones.
+
+**New: a hearing is 16 by the anchor and half its subject by the discount rule.**
+They agree on small subjects and diverge badly on large ones —
+
+    "Hearing set on the Care Not Cash homeless plan"    16 by the anchor
+                                                        40 by half-the-subject
+
+~40 rows in that batch. The reader used half-the-subject as the general rule and
+kept 16 for bare "public comment heard" lines, which is the sensible split and is
+its own invention. Same shape as the appeal problem v7 was written to fix, in the
+neighbouring rule — I fixed appeals and left hearings alone.
+
+**And the environmental-finding anchor (22) collides with appeal-keeps-its-
+subject** when the gated act is enormous: the Housing Element EIR appeal is 22 by
+the anchor and 55-60 by the new rule. The reader took 22.
+
+Both of these are the v7 appeal rule meeting anchors that already priced the same
+shapes. The lesson is the one from the +6 bonus: a new general rule has to be
+checked against every anchor that already covers part of its ground.
