@@ -999,6 +999,16 @@ export class CityEngine {
    * it. Nothing is rebuilt and nothing is faded, because nothing was baked.
    */
   setStep(step: number): void {
+    /* ── THE READER BEATS THE WARM-UP ───────────────────────────────────
+       `warmBands` walks the ladder in the background and puts the step back
+       where it found it. If a reader turns the wheel while it is doing that,
+       the step it puts back is the wrong one — the map would step to the band
+       under the reader's hand and then step away from it again. So any call
+       for a band the warm-up did not ask for ends the warm-up: this call wins,
+       nothing is restored, and the remaining bands are simply not pre-warmed.
+       They then cost what they always cost, which is the thing being traded
+       away and it is the right way round. */
+    if (this.warming && step !== this.warmStep) this.warming = false;
     if (step === this.step) return;
     this.temporal?.reset();
     this.step = step;
@@ -1016,6 +1026,67 @@ export class CityEngine {
 
   getStep(): number {
     return this.step;
+  }
+
+  /** true while `warmBands` is walking the ladder — see §THE BANDS ARE WARMED */
+  private warming = false;
+  /** the band `warmBands` last asked for, so `setStep` can tell its own calls
+   *  from a reader's — see §THE READER BEATS THE WARM-UP */
+  private warmStep = -1;
+
+  /**
+   * ── §THE BANDS ARE WARMED, ONCE, BEFORE ANYONE ASKS FOR THEM ────────────
+   *
+   * A band change is cheap — `setStep` above says so and it is true. The FIRST
+   * one is not, and the cost is not in this file: it is every pipeline the GPU
+   * has to create the first time a material is drawn, plus every per-band
+   * table a layer builds lazily (`layers/terrain.ts` bakes its own hillshade,
+   * its own normals and its own ground texture per band and caches them).
+   *
+   * MEASURED on a production build, the same 30-notch zoom four times over:
+   *
+   *     pass          main thread blocked      worst task
+   *     in  (first)          1432 ms              570 ms
+   *     out                   414 ms              164 ms
+   *     in  (again)           382 ms              138 ms
+   *     out (again)           390 ms              144 ms
+   *
+   * The first pass costs a full second more than the three identical ones
+   * after it, and it is the pass a reader makes on arriving. So it is paid
+   * here instead, while they are still reading the entry strip: every band is
+   * stepped into, its layers told, and `compileAsync` asked to create the
+   * pipelines for whatever that band made visible.
+   *
+   * Nothing is painted while this runs — `tick` returns early on `warming` —
+   * so the reader does not see the city flick through two cameras. The step is
+   * put back where it was found, and a warm-up that throws costs a warm-up.
+   */
+  async warmBands(bands: readonly number[]): Promise<void> {
+    if (this.warming || this.disposed) return;
+    const from = this.step;
+    this.warming = true;
+    try {
+      for (const s of bands) {
+        if (this.disposed || !this.warming) return;
+        if (s === this.step) continue;
+        this.warmStep = s;
+        this.setStep(s);
+        await this.renderer.compileAsync(this.scene, this.camera);
+      }
+    } catch {
+      /* a band that will not pre-compile still compiles when it is reached */
+    } finally {
+      /* `warming` is already false if a reader took the wheel — see §THE
+         READER BEATS THE WARM-UP. Their band is then the one that stands, and
+         their own `setStep` has already asked for the frame. */
+      const ours = this.warming;
+      this.warming = false;
+      this.warmStep = -1;
+      if (!this.disposed && ours) {
+        this.setStep(from);
+        this.invalidate();
+      }
+    }
   }
 
   /**
@@ -1277,6 +1348,10 @@ export class CityEngine {
   private tick(): void {
     this.raf = 0;
     if (this.disposed) return;
+    /* NOTHING IS PAINTED MID-WARM-UP — see §THE BANDS ARE WARMED. The dirty
+       flag is left standing, so the frame the reader is owed is drawn by the
+       `invalidate()` that ends the warm-up. */
+    if (this.warming) return;
     /* ── THE CLOCK RUNS BEFORE THE DIRTY TEST, AND THAT IS WHY IT RUNS ────
        This engine is on demand: it renders when something says it must and
        then goes back to sleep. A transport is the one thing that has to keep

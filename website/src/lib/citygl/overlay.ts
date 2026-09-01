@@ -51,6 +51,23 @@ export interface OverlayOptions {
   field: TerrainField;
   /** where this city's sidecar files live */
   dataBaseUrl: string;
+  /**
+   * ASK FOR ONE MORE FRAME.
+   *
+   * §AND THE SHEET SURVIVES A ZOOM TOO holds the type's sheet while the scale
+   * is moving and re-places it on the first frame that repeats a scale. On a
+   * wheel gesture there is always another frame, so that works on its own. On
+   * a SINGLE-SHOT camera change there is not: the engine renders on demand,
+   * so a ZOOM STOP button or a film cut draws exactly one frame and then
+   * sleeps — and the held sheet would sit there scaled and stale until the
+   * reader touched something. Measured as a 21.6 % pixel difference at the
+   * district camera, which is the whole of the type at the wrong size.
+   *
+   * So the overlay asks for the frame it needs. It terminates after one: the
+   * next frame repeats the scale, which is exactly the condition for
+   * re-placing.
+   */
+  requestFrame?: () => void;
 }
 
 interface MarksFile {
@@ -269,6 +286,12 @@ export class CityOverlay {
      FRAME. Null until the first frame that needs it, and dropped on resize. */
   private lblCv: HTMLCanvasElement | null = null;
   private lblKey = "";
+  /** the camera the sheet on hand was PLACED at — see §AND THE SHEET SURVIVES
+   *  A ZOOM TOO. Null while there is no sheet. */
+  private lblCam: { cx: number; cy: number; scale: number } | null = null;
+  /** the scale the previous frame drew at, which is how this file knows a
+   *  zoom is still moving rather than settled */
+  private lastScale = 0;
   /** resolved CSS custom properties — see `cssVar` */
   private readonly tokens = new Map<string, string>();
 
@@ -358,6 +381,7 @@ export class CityOverlay {
     /* the sheet is cut to the frame, so a new frame needs a new sheet */
     this.lblCv = null;
     this.lblKey = "";
+    this.lblCam = null;
   }
 
   /**
@@ -552,9 +576,51 @@ export class CityOverlay {
     const PWd = Math.round(this.W * this.dpr) + pad * 2;
     const PHd = Math.round(this.H * this.dpr) + pad * 2;
 
+    /* ── §AND THE SHEET SURVIVES A ZOOM TOO ────────────────────────────────
+       Everything above buys back the label pass on a PAN, by snapping the
+       camera to a cell and moving the sheet instead of re-placing it. A ZOOM
+       went through the hole: `cam.scale` was in the key raw, so the type was
+       re-placed on every frame of a wheel gesture — every name re-measured,
+       every collision re-resolved, sixty times a second.
+
+       MEASURED with the frame's own hook, one 30-notch zoom: 127 frames, 5.4
+       ms of label work in the median one, against an 8.3 ms frame. Under a
+       CPU profile the same gesture spent 632 ms in `drawImage` and 106 ms in
+       `measureText`. That is the second half of what a reader feels as the
+       map going heavy on the way in — the first half was the band change, and
+       `layers/buildings.ts` §ONE SPHERE FOR TEN GEOMETRIES has that one.
+
+       So the scale is treated the way the pan already treats position: the
+       type is placed at the scale you SETTLE at, and while the scale is still
+       moving the sheet on hand is scaled with the city instead of rebuilt.
+       Two frames of the same scale means the zoom has stopped, and that is
+       when it is re-placed.
+
+       WHAT IT COSTS, and it is worth saying plainly: mid-gesture the type is
+       a raster being resampled, so it is a little soft while the map is
+       moving, and it is exactly right the moment it stops. That is the trade
+       the published Canvas renderer already makes on a drag — it blits a
+       rasterised city and re-decides its type when you stop — and it is the
+       same argument here. Everything else in the key still re-places at once:
+       a band, a year or a resize changes WHICH names are drawn and how big,
+       and deferring that would be showing the wrong set. */
+    const zooming = cam.scale !== this.lastScale;
+    this.lastScale = cam.scale;
+    /* THE CAMERA THE SHEET IS PLACED AGAINST. While a zoom is moving it is the
+       one the sheet on hand was already placed at — position included, because
+       a wheel zoom is anchored on the POINTER and moves the centre as well as
+       the scale, and re-placing for that pan would give back everything the
+       held scale just saved. */
+    const hold = zooming && this.lblCv !== null && this.lblCam !== null;
+    const pc = hold
+      ? (this.lblCam as { cx: number; cy: number; scale: number })
+      : { cx: lcx, cy: lcy, scale: cam.scale };
+    /* the frame that re-places it — see `requestFrame` on the options */
+    if (hold) this.o.requestFrame?.();
+
     const key = [
-      PWd, PHd, this.dpr, cam.scale, band, base,
-      this.year ?? "", lcx, lcy, this.places.length, this.hoods ? 1 : 0,
+      PWd, PHd, this.dpr, pc.scale, band, base,
+      this.year ?? "", pc.cx, pc.cy, this.places.length, this.hoods ? 1 : 0,
     ].join("|");
 
     if (!this.lblCv || this.lblKey !== key) {
@@ -574,7 +640,7 @@ export class CityOverlay {
           ctx: pv,
           W: PWd / this.dpr,
           H: PHd / this.dpr,
-          cam: { ...cam, cx: lcx, cy: lcy, step: band, base },
+          cam: { ...cam, cx: pc.cx, cy: pc.cy, scale: pc.scale, step: band, base },
         } as unknown as Frame;
 
         /* ── THE ORDER IS THE PRIORITY, AND IT IS `scene.ts`'S ────────────
@@ -620,16 +686,43 @@ export class CityOverlay {
 
         this.lblCv = cv;
         this.lblKey = key;
+        this.lblCam = { cx: pc.cx, cy: pc.cy, scale: pc.scale };
       }
     }
 
-    if (this.lblCv) {
-      const dx = Math.round((lcx - cam.cx) * q) - pad;
-      const dy = Math.round((cam.cy - lcy) * q) - pad;
+    if (this.lblCv && this.lblCam) {
+      /* ── THE BLIT IS A SIMILARITY, AND AT REST IT IS STILL A COPY ────────
+         The sheet was placed against `lblCam`; the frame is drawn from `cam`.
+         A plane point `p` sits on the sheet at `(p - lblCam.c) * qs + P/2` and
+         on the glass at `(p - cam.c) * q + S/2`, so eliminating `p` gives a
+         scale of `r = q / qs` and the two offsets below.
+
+         WHERE THE ZOOM HAS SETTLED, `r` IS EXACTLY 1 and this reduces, term
+         for term, to the whole-device-pixel copy it replaced — the type is
+         never resampled on a frame that is not moving, which is the property
+         §THE TYPE IS PLACED ON A SHEET was written to protect. */
+      const qs = this.lblCam.scale * this.dpr;
+      const r = q / qs;
+      const Wd = Math.round(this.W * this.dpr);
+      const Hd = Math.round(this.H * this.dpr);
       ctx.save();
-      /* device pixels, so the blit is a copy and not a resample */
+      /* device pixels, so a settled blit is a copy and not a resample */
       ctx.setTransform(1, 0, 0, 1, 0, 0);
-      ctx.drawImage(this.lblCv, dx, dy);
+      if (r === 1) {
+        ctx.drawImage(
+          this.lblCv,
+          Math.round((this.lblCam.cx - cam.cx) * q) - pad,
+          Math.round((cam.cy - this.lblCam.cy) * q) - pad,
+        );
+      } else {
+        ctx.drawImage(
+          this.lblCv,
+          (this.lblCam.cx - cam.cx) * q + Wd / 2 - (r * PWd) / 2,
+          (cam.cy - this.lblCam.cy) * q + Hd / 2 - (r * PHd) / 2,
+          PWd * r,
+          PHd * r,
+        );
+      }
       ctx.restore();
       ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
     }

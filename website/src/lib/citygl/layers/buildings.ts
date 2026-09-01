@@ -54,7 +54,9 @@ import {
   MeshLambertMaterial,
   MeshPhongMaterial,
   MeshStandardMaterial,
+  Sphere,
   SRGBColorSpace,
+  Uint16BufferAttribute,
   type Material,
   type Object3D,
 } from "three";
@@ -137,6 +139,9 @@ import {
   riseNodes,
   risePhase,
   type RiseNodes,
+  COL_Q,
+  HB_BORN_Q,
+  HB_H_Q,
 } from "../rise";
 import { ROOF_GRAIN_M, roofGrainNormal, roofGrainTexture } from "../roof-grain";
 import { upFaceTransferRGB } from "../up-face";
@@ -189,6 +194,22 @@ export interface BuildingsLayerOptions {
   skipGids?: ReadonlySet<number>;
   /** what decides which entry of each a footprint gets */
   materials: MaterialConfig;
+  /**
+   * ── §ONE MATERIAL PER KIND, NOT ONE PER CHUNK ─────────────────────────
+   * Every chunk used to make its own roof material, its own outline material
+   * and its own material per facade tile — 1,177 materials for a city that
+   * has ten distinct ones, because nothing in any of them is a fact about the
+   * chunk: the roof grain and the atlas are singletons, the rise nodes are
+   * shared, and `applyGain` writes the same scalar to all of them. On the
+   * renderer that is 1,177 pipelines and bind groups to switch between on a
+   * frame that draws ~2,000 pieces, and it is the material count that makes a
+   * draw expensive, not the draw.
+   *
+   * The layer hands every chunk this one cache and the chunk takes its
+   * materials out of it, making each kind the first time it is asked for.
+   * Omitted (a test, a lone chunk), the chunk makes its own as before.
+   */
+  shared?: SharedFabricMaterials;
   /** THE ARRIVAL WAVE, and it is ONE OBJECT FOR THE WHOLE CITY — see
    *  `rise.ts` §ONE SET OF NODES. `buildingsLayer` builds one and hands it to
    *  every chunk; a caller may pass its own to share the wave with another
@@ -460,6 +481,17 @@ function colourOf(m: Material): Color | null {
 /** a stock material with the two node slots the renderer reads off it */
 type NodeSlots = Material & { positionNode?: unknown; colorNode?: unknown };
 
+/** the fabric's materials, one per KIND — see `BuildingsMeshOptions.shared` */
+export interface SharedFabricMaterials {
+  roof: Material | null;
+  edge: Material | null;
+  /** by facade tile */
+  walls: Map<number, Material>;
+}
+export function sharedFabricMaterials(): SharedFabricMaterials {
+  return { roof: null, edge: null, walls: new Map() };
+}
+
 /**
  * THE ARRIVAL WAVE, ONTO A STOCK MATERIAL — AND IT IS STILL A STOCK MATERIAL.
  *
@@ -486,10 +518,22 @@ type NodeSlots = Material & { positionNode?: unknown; colorNode?: unknown };
  * shadow pass. It is `colorNode` that the override does not take — which is
  * correct, since a depth pass has no colour.
  *
- * The position is still BAKED and the node only ever SUBTRACTS from it: at
- * rest the term is multiplied by a uniform zero, so a settled frame is the
- * baked buffer to the last bit and everything the bake bought — real lights, a
- * real shadow map, the occlusion pass — is untouched.
+ * ── WHAT THE NODE DOES TO Y, AND WHAT IT USED TO ────────────────────────
+ * It used to only ever SUBTRACT: the buffer held the drawn height and the
+ * wave took a little off it, so at rest the term was multiplied by a uniform
+ * zero and a settled frame was the baked buffer to the last bit.
+ *
+ * It now BUILDS the height as well — `elevation * uZex + aH * uZexb` — because
+ * the alternative was rewriting and re-uploading 8.6 M vertices every time the
+ * camera crossed a band. §THE GROUND IS A UNIFORM, NOT A REWRITE has that
+ * measurement. The arithmetic is the same multiply-add the CPU was doing, in
+ * the same single precision, so a settled frame is the same frame; it is no
+ * longer the same BYTES, since a GPU may fuse the multiply and the add and
+ * round once where the CPU rounded twice. Sub-ULP, and it was checked the way
+ * anything like this has to be — a pixel diff at three cameras.
+ *
+ * Everything the bake bought — real lights, a real shadow map, the occlusion
+ * pass — is untouched, because none of it reads the buffer directly.
  */
 function applyRise(m: Material, rise: RiseNodes, colour: unknown): void {
   const slots = m as NodeSlots;
@@ -1661,11 +1705,65 @@ export function buildingsMesh(
     fOff[(V + k) * 2 + 1] = exOff[k * 2 + 1];
   }
 
+  /* ══ §THE MOULD IS NOT THE CASTING, AND IT WAS 1.1 GB ═══════════════════
+     Everything the form geometry emitted was accumulated in the seven `ex*`
+     arrays above, and the loop that just ran copied all of it into the typed
+     arrays the GPU reads. From here they are a mould with the casting already
+     out of it — nothing below this line reads one.
+
+     They were never released, and because `pushVert` closes over them V8 kept
+     every one alive for the life of the layer. MEASURED from a heap snapshot
+     of the loaded page, 137 chunks' worth:
+
+         exCol    278.6 MB      exElev    94.4 MB
+         exXZ     185.7 MB      exH       94.4 MB
+         exUV     185.7 MB      exBorn    94.4 MB
+         exOff    185.7 MB      ─────────────────
+                                total  1,119 MB
+
+     For scale, everything the page actually DRAWS — every vertex of every
+     building, street, tree and surface in San Francisco — is 897 MB. The
+     scaffolding was bigger than the city.
+
+     It is also why they are so much larger than the buffers they filled: a
+     `number[]` grown by `push` stores each value in a pointer-width slot and
+     keeps whatever slack the last doubling left, where a `Float32Array` stores
+     four bytes and not one more.
+
+     `length = 0` rather than reassignment, because these are `const` and what
+     has to go is the backing store, which this drops. */
+  exXZ.length = 0;
+  exElev.length = 0;
+  exH.length = 0;
+  exCol.length = 0;
+  exUV.length = 0;
+  exBorn.length = 0;
+  exOff.length = 0;
+
+  /* ── §THE COMPACT ATTRIBUTES ──────────────────────────────────────────
+     `rise.ts` §TWO SHORTS A VERTEX, NOT TWO FLOATS says why and gives the
+     measurements. The float arrays above are the bake's own working copies;
+     these are what is uploaded, and the floats are dropped once they are
+     written — 47.5 MB of height, 47.5 MB of year and 47.6 MB of colour that
+     used to sit in memory as 32-bit numbers for values that never needed it. */
+  const fHB = new Int16Array(VT * 2);
+  const fCol16 = new Uint16Array(VT * 4);
+  for (let v = 0; v < VT; v++) {
+    const h = Math.round(fH[v] * HB_H_Q);
+    fHB[v * 2] = h > 32767 ? 32767 : h < -32767 ? -32767 : h;
+    const yb = Math.round(fBorn[v] * HB_BORN_Q);
+    fHB[v * 2 + 1] = yb > 32767 ? 32767 : yb < 0 ? 0 : yb;
+    for (let c = 0; c < 3; c++) {
+      const q = Math.round((fCol[v * 3 + c] / COL_Q) * 65535);
+      fCol16[v * 4 + c] = q > 65535 ? 65535 : q < 0 ? 0 : q;
+    }
+    fCol16[v * 4 + 3] = 65535;
+  }
+
   const attrs = {
-    aH: new BufferAttribute(fH, 1),
-    color: new BufferAttribute(fCol, 3),
+    aHB: new Int16BufferAttribute(fHB, 2, true),
+    color: new Uint16BufferAttribute(fCol16, 4, true),
     uv: new BufferAttribute(fUV, 2),
-    aBorn: new BufferAttribute(fBorn, 1),
     /* NORMALIZED, which is what turns the short back into the -1..1 the
        shader multiplies by `OFF_RANGE` */
     aOff: new Int16BufferAttribute(fOff, 2, true),
@@ -1677,11 +1775,16 @@ export function buildingsMesh(
      multiplies with. */
   const inkAttr = new BufferAttribute(aInk, 4, true);
 
-  /* THE POSITION, BAKED — see the header. `setStep` rewrites Y in place when
-     the camera's band moves, which is the only thing that can change it. */
+  /* ── THE POSITION, BAKED ONCE AND NEVER AGAIN ─────────────────────────
+     §THE GROUND IS A UNIFORM, NOT A REWRITE below carries the reasoning. The
+     Y written here is the vertex's own GROUND ELEVATION in metres, and the
+     drawn height — the band's exaggeration on the ground, plus the building's
+     own built height — is assembled in the vertex shader out of `uZex`, `aH`
+     and `uZexb`. This buffer is uploaded once and is never touched again. */
   const pos = new Float32Array(VT * 3);
   for (let v = 0; v < VT; v++) {
     pos[v * 3] = fXZ[v * 2];
+    pos[v * 3 + 1] = fElev[v];
     pos[v * 3 + 2] = fXZ[v * 2 + 1];
   }
   const posAttr = new BufferAttribute(pos, 3);
@@ -1717,10 +1820,9 @@ export function buildingsMesh(
 
        `layers/caps.ts` keeps its own `aElev` and its test asserts it; this is
        only the fabric's. */
-    g.setAttribute("aH", attrs.aH);
+    g.setAttribute(RISE_ATTR.HB, attrs.aHB);
     g.setAttribute("color", attrs.color);
     g.setAttribute("uv", attrs.uv);
-    g.setAttribute(RISE_ATTR.BORN, attrs.aBorn);
     g.setAttribute(RISE_ATTR.OFFSET, attrs.aOff);
     g.setIndex(new BufferAttribute(new Uint32Array(indices), 1));
     return g;
@@ -1742,8 +1844,7 @@ export function buildingsMesh(
      Nothing new is allocated: the line's vertices ARE roof-ring vertices, so
      `attrs.color` bound a second time under `ROOF_COLOUR` is the same buffer
      already on the GPU, and the ink keeps its own eight-bit `color`. */
-  gEdge.setAttribute(RISE_ATTR.HEIGHT, attrs.aH);
-  gEdge.setAttribute(RISE_ATTR.BORN, attrs.aBorn);
+  gEdge.setAttribute(RISE_ATTR.HB, attrs.aHB);
   gEdge.setAttribute(RISE_ATTR.OFFSET, attrs.aOff);
   gEdge.setAttribute(RISE_ATTR.ROOF_COLOUR, attrs.color);
   gEdge.setIndex(edgeIdxAttr[edgeIdxAttr.length - 1]);
@@ -1752,6 +1853,26 @@ export function buildingsMesh(
   for (let t = 0; t < idxWall.length; t++) {
     if (idxWall[t].length) wallOf.push({ tile: t, g: make(idxWall[t]) });
   }
+
+  /* ── §THE SCAFFOLDING COMES DOWN ────────────────────────────────────────
+     Every index above was accumulated in a plain `number[]` and has now been
+     copied into the `Uint32Array` the GPU reads. The JavaScript arrays are
+     scaffolding: nothing below this line reads one, and the year gate works
+     off the `*Mark` offsets rather than off the indices themselves.
+
+     They are not free to leave standing. V8 keeps a growable array's backing
+     store — with whatever slack the last doubling left in it — for as long as
+     anything can reach it, and a closure in this function could. MEASURED by
+     building the city with the fabric switched off and comparing the heap, the
+     buildings layer was holding 2,100 MB of which only 622 MB was anything the
+     GPU draws. Clearing them here is what turns that difference into memory a
+     phone might actually have.
+
+     `length = 0` rather than reassignment, because the arrays are `const` and
+     the point is to drop the backing store, which this does. */
+  idxRoof.length = 0;
+  for (const ix of idxWall) ix.length = 0;
+  for (const ix of idxEdge) ix.length = 0;
 
   /**
    * How much of each index buffer exists in a given year — a binary search
@@ -1790,12 +1911,89 @@ export function buildingsMesh(
     setYear(yearNow);
   };
 
+  /* ══ §THE GROUND IS A UNIFORM, NOT A REWRITE ═══════════════════════════
+     A band change moves the ground's exaggeration, so every vertex in the
+     city moves with it. This file used to do that on the CPU, per chunk:
+
+         for (v) pos[v*3+1] = fElev[v] * zex + fH[v] * zexb
+         posAttr.needsUpdate = true
+         gRoof / gEdge / every wall geometry .computeBoundingSphere()
+
+     Three costs in one, and all three were large. MEASURED on the published
+     page, six band changes walked in a row, 139 chunks, 8,626,306 vertices:
+
+       the ten spheres   `computeBoundingSphere` reads the WHOLE position
+                         attribute and ignores the index, and `gRoof`, `gEdge`
+                         and every wall geometry share one `posAttr` — so this
+                         asked one identical question of one identical buffer
+                         up to ten times a chunk, through `getX`/`getY`/`getZ`
+                         rather than off the array. A CPU profile of one zoom
+                         put 861 ms in `Box3.setFromBufferAttribute` and 430 ms
+                         in the accessors under it.
+       the Y pass        8.6 M multiply-adds and 8.6 M stores.
+       the re-upload     `needsUpdate` on a 103 MB position buffer, twice in
+                         an ordinary zoom.
+
+     Together: 841 ms of blocked main thread PER BAND CHANGE, and a reader
+     going from the whole city to a street crosses two of them. That is the
+     map freezing under the hand — measured at 1,218 ms in the worst frame of
+     a production build.
+
+     None of it is necessary. `position.y` now holds the vertex's own ground
+     ELEVATION, baked once above and never written again, and `rise.ts` builds
+     the drawn height in the vertex shader out of `uZex`, the `aH` attribute
+     that was already on the GPU, and `uZexb`. A band change is two floats.
+     The shadow pass is safe with it: three copies a material's `positionNode`
+     onto the shadow override material, so the depth pass builds the same
+     height the colour pass does.
+
+     ── AND THE SPHERE IS DERIVED, NOT MEASURED ─────────────────────────────
+     Frustum culling still needs the DRAWN extent, which is no longer what is
+     in the buffer. It does not need a pass to get it: the drawn Y of every
+     vertex is `fElev*zex + fH*zexb` with both exaggerations positive, so the
+     extremes of the two arrays — taken once, here — bound it. That bound is
+     conservative rather than exact, which is the safe direction: a sphere
+     slightly too big culls slightly less and can never drop something the
+     reader can see. The radius is the box's half-diagonal for the same
+     reason. Per band change this is now arithmetic on six numbers.
+
+     One thing this moved that is worth knowing about: `__cityGLRoofProbe`
+     hands a harness the `pos` array, and its Y is now ground elevation in
+     metres rather than the drawn height. */
+  let bx0 = Infinity, bx1 = -Infinity, bz0 = Infinity, bz1 = -Infinity;
+  let e0 = Infinity, e1 = -Infinity, h0 = Infinity, h1 = -Infinity;
+  for (let v = 0; v < VT; v++) {
+    const x = pos[v * 3];
+    const z = pos[v * 3 + 2];
+    if (x < bx0) bx0 = x;
+    if (x > bx1) bx1 = x;
+    if (z < bz0) bz0 = z;
+    if (z > bz1) bz1 = z;
+    const e = fElev[v];
+    if (e < e0) e0 = e;
+    if (e > e1) e1 = e;
+    const h = fH[v];
+    if (h < h0) h0 = h;
+    if (h > h1) h1 = h;
+  }
+  const sphere = new Sphere();
+
   const setStep = (zex: number, zexb: number): void => {
-    for (let v = 0; v < VT; v++) pos[v * 3 + 1] = fElev[v] * zex + fH[v] * zexb;
-    posAttr.needsUpdate = true;
-    gRoof.computeBoundingSphere();
-    gEdge.computeBoundingSphere();
-    for (const w of wallOf) w.g.computeBoundingSphere();
+    if (VT === 0) {
+      sphere.center.set(0, 0, 0);
+      sphere.radius = 0;
+    } else {
+      const by0 = e0 * zex + h0 * zexb;
+      const by1 = e1 * zex + h1 * zexb;
+      const hx = (bx1 - bx0) / 2;
+      const hy = (by1 - by0) / 2;
+      const hz = (bz1 - bz0) / 2;
+      sphere.center.set((bx0 + bx1) / 2, (by0 + by1) / 2, (bz0 + bz1) / 2);
+      sphere.radius = Math.sqrt(hx * hx + hy * hy + hz * hz);
+    }
+    gRoof.boundingSphere = sphere;
+    gEdge.boundingSphere = sphere;
+    for (const w of wallOf) w.g.boundingSphere = sphere;
   };
   setStep(3.3, o.zexb);
 
@@ -1810,7 +2008,7 @@ export function buildingsMesh(
      published, and would spend its budget on specular highlights that do not
      belong in the register. Lambert is a diffuse surface under a sun and a
      sky, which is what a gouache city is. */
-  const mRoof = new MeshStandardMaterial({
+  const mRoof = o.shared?.roof ?? new MeshStandardMaterial({
     /* EXPERIMENT — see `engine.ts` §the sky, as something a surface can see.
        Standard rather than Lambert on the roof ALONE, because the roof is the
        one face turned straight at the sky and Lambert cannot read an
@@ -1856,7 +2054,10 @@ export function buildingsMesh(
        reflect it with. See `roof-grain.ts` §THE SAME STIPPLE AS RELIEF. */
     normalMap: roofGrainNormal(),
   });
-  applyRise(mRoof, rise, rise.colour(FRESH_ROOF));
+  /* the node slots are set once per MATERIAL, and a material that came out
+     of the shared cache already has them — see `shared` on the options */
+  if (!o.shared?.roof) applyRise(mRoof, rise, rise.colour(FRESH_ROOF));
+  if (o.shared) o.shared.roof = mRoof;
 
   const materials: Material[] = [];
   const roofMaterials: Material[] = [mRoof];
@@ -1877,7 +2078,7 @@ export function buildingsMesh(
      drawn to bound. Reading depth is kept: an outline behind a tower is
      hidden by the tower, which is the whole reason this port has a depth
      buffer. */
-  const mEdge = new LineBasicMaterial({
+  const mEdge = o.shared?.edge ?? new LineBasicMaterial({
     /* the ink is consumed by the node, which needs the ROOF over it as well
        as the ink under it — see `rise.ts` §THE INK IS A STEP UNDER ITS OWN
        ROOF, where leaving it alone measured 66 of 255 out */
@@ -1886,7 +2087,8 @@ export function buildingsMesh(
     opacity: INK_W0,
     depthWrite: false,
   });
-  applyRise(mEdge, rise, rise.inkColour);
+  if (!o.shared?.edge) applyRise(mEdge, rise, rise.inkColour);
+  if (o.shared) o.shared.edge = mEdge;
   materials.push(mEdge);
   /* ── AND THE INK HAS ITS OWN ORDER, WHICH IS THE SCINTILLATION FIX ─────
      three sorts TRANSPARENT objects by `renderOrder` first and by distance
@@ -1961,15 +2163,17 @@ export function buildingsMesh(
        from a mile up. `shininess` is high and `specular` is dark because a
        window is a mirror at grazing angles and nearly black head-on; a value
        nearer white gives the Financial District a set of chrome bars. */
-    const m = w.tile === TILE_CURTAIN
+    const had = o.shared?.walls.get(w.tile);
+    const m = had ?? (w.tile === TILE_CURTAIN
       ? new MeshPhongMaterial({ ...base, shininess: 90, specular: 0x2b3038 })
-      : new MeshLambertMaterial(base);
+      : new MeshLambertMaterial(base));
     /* A WALL AGES LIKE A WALL: 0.42 toward the ochre and a paler arrival than
        the roof takes, which is `freshLUT`'s own split and not a second guess
        at it. A curtain wall is on the same rule — the record puts a 1985
        tower in its own six fresh years exactly as it puts a 1907 flat there,
        and the material it wears is not a reason to date it differently. */
-    applyRise(m, rise, rise.colour(FRESH_WALL));
+    if (!had) applyRise(m, rise, rise.colour(FRESH_WALL));
+    if (o.shared && !had) o.shared.walls.set(w.tile, m);
     materials.push(m);
     addMesh(w.g, m);
   }
@@ -1994,6 +2198,12 @@ export function buildingsLayer(
   const yearSetters: ((year: number | undefined) => void)[] = [];
   const materials: Material[] = [];
   const roofMaterials: Material[] = [];
+  /* ONE SET OF MATERIALS FOR THE CITY — §ONE MATERIAL PER KIND, NOT ONE PER
+     CHUNK on `BuildingsMeshOptions.shared`. Each chunk's own lists are folded
+     into these two through `seenMat`, so `applyGain` and `dispose` touch a
+     material once however many chunks wear it. */
+  const shared = sharedFabricMaterials();
+  const seenMat = new Set<Material>();
   /* ONE ATLAS FOR THE CITY. Eight tiles, built once here and shared by every
      chunk — a per-chunk atlas would be 124 copies of the same eight images. */
   const atlas = o.atlas ?? facadeAtlas();
@@ -2048,14 +2258,14 @@ export function buildingsLayer(
         }
       : null;
     const built = buildingsMesh(tb, { ...o, atlas, face, roof: roofTable,
-      forceFamily: o.forceFamily ?? forcedFamily(), materials: mcfg, rise });
+      forceFamily: o.forceFamily ?? forcedFamily(), materials: mcfg, rise, shared });
     if (!built) continue;
     meshes.push(...built.meshes);
     setters.push(built.setStep);
     bandSetters.push(built.setBand);
     yearSetters.push(built.setYear);
-    materials.push(...built.materials);
-    roofMaterials.push(...built.roofMaterials);
+    for (const m of built.materials) if (!seenMat.has(m)) { seenMat.add(m); materials.push(m); }
+    for (const m of built.roofMaterials) if (!seenMat.has(m)) { seenMat.add(m); roofMaterials.push(m); }
     count += tb.n;
   }
 
@@ -2132,11 +2342,21 @@ export function buildingsLayer(
     rise,
     onStep(step: number, zex: number, zexb: number) {
       applyGain(step);
-      /* the shader finds a building's GROUND by subtracting what the bake
-         added for its height, so the two have to be the same number — read
-         off the same argument rather than off the descriptor a second time */
+      /* ── THE WHOLE BAND CHANGE, FOR THE WHOLE CITY, IS THESE TWO FLOATS ──
+         `buildingsMesh` §THE GROUND IS A UNIFORM, NOT A REWRITE has the
+         measurement. The shader builds every vertex's height out of the
+         ground's exaggeration and the building's own, so both are written
+         here, once, for 139 chunks — where this used to hand each chunk a
+         pass over its vertices and a re-upload of its position buffer.
+
+         They are read off these arguments and not off the descriptor a second
+         time, because the shader finds a building's GROUND by taking the
+         built height back off, and the two have to be the same number. */
+      rise.setZex(zex);
       rise.setZexb(zexb);
       for (const f of bandSetters) f(step);
+      /* what is left in a chunk's own setter is its bounding sphere, which is
+         now six numbers of arithmetic rather than a pass over the buffer */
       for (const f of setters) f(zex, zexb);
     },
     onFrame() {

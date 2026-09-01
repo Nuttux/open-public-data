@@ -869,7 +869,40 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          identical extrusions into a city with fronts and backs, and it is
          fetched in parallel with the footprints because neither blocks the
          other. */
-      await Promise.all([data.loadTier("bldg"), data.loadTier("face"), data.loadTier("roof")]);
+      /* ── AND THE THREE LATER TIERS ARE ASKED FOR NOW, NOT LATER ─────────
+         The ground detail, the streets and the canopy are awaited further
+         down, each immediately before the layer that reads it. Written that
+         way the REQUEST did not go out until the layer above it had finished
+         BUILDING — so the network sat idle through every bake, and the bake
+         sat idle through every download, in turn, all the way down.
+
+         MEASURED on a production build over localhost, where the download
+         costs nothing and every gap is the main thread: the whole boot took
+         7.3 s, of which under 0.7 s was transfer. `strt` was not asked for
+         until 6.1 s and `tree` until 6.6 s, though both could have been on
+         the wire at 1.6 s with the footprints.
+
+         So the fetches are started here, together, and each is awaited where
+         it always was. Nothing about the ORDER the layers are built in
+         changes — that order is a rendering decision and this is not about
+         rendering. `loadTier` swallows a per-chunk failure, so an unawaited
+         promise cannot reject. */
+      /* ── §THE FOOTPRINTS FIRST, AND EVERYTHING ELSE BEHIND THEM ─────────
+         The first picture needs the ground and the footprints. The roof
+         shapes and the facades are for the district band and closer (the
+         manifest's own `minZ` says so), the streets and the trees likewise,
+         so none of them should share the connection with `bldg` during the
+         second the reader is waiting. MEASURED on a production build, the
+         data the first picture actually needs is ~5.5 MB compressed against
+         the 11.7 MB that used to go out at once. */
+      const bldgTier = data.loadTier("bldg");
+      const faceRoof = Promise.all([data.loadTier("face"), data.loadTier("roof")]);
+      /* and the three the reader cannot see yet BEHIND them, so they are not
+         sharing the connection with the files the first picture waits on */
+      const canopyTier = faceRoof.then(() => data.loadTier("canopy"));
+      const strtTier = faceRoof.then(() => data.loadTier("strt"));
+      const treeTier = faceRoof.then(() => data.loadTier("tree"));
+      await Promise.all([bldgTier, faceRoof]);
       if (disposed || !engine) return;
       /* ── §THE BORROWED YEAR MAY NOT OUTRUN THE REGISTER ────────────────
          `layers/buildings.ts` carries the reasoning. A city that ships no
@@ -986,7 +1019,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          especially: without it the shore is the DEM mask's own staircase, and
          at the whole-city camera that blocky edge is the first thing a reader
          sees. The canopy chunk is its own tier. */
-      await data.loadTier("canopy");
+      await canopyTier;
       if (disposed || !engine) return;
       const ground = groundDetailLayer(data, {
         elevAt: groundAt,
@@ -1057,7 +1090,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          The published right of way and the carriageway inside it, as two
          filled surfaces on the ground. What shows between them is the
          footway. */
-      await data.loadTier("strt");
+      await strtTier;
       if (disposed || !engine) return;
       const streets = streetsLayer(data, {
         elevAt: groundAt,
@@ -1104,7 +1137,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       /* ── THE CANOPY ─────────────────────────────────────────────────
          125,234 published street trees, instanced. Fetched whole like the
          footprints: the cost is the upload, not the draw. */
-      await data.loadTier("tree");
+      await treeTier;
       if (disposed || !engine) return;
       const trees = treesLayer(data, {
         elevAt: groundAt,
@@ -1130,7 +1163,9 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
 
          Two files, both small, both fetched after the city is standing —
          nothing here is on the first-paint path. */
-      void (async () => {
+      /* HELD, so the band warm-up can wait for it — see §AND IT WAITS FOR THE
+         BOOT'S OWN TAIL at the bottom of this effect. */
+      const themeMarksDone = (async () => {
         try {
           const base = descriptor.dataBaseUrl.replace(/\/$/, "");
           const [mk, vocab] = await Promise.all([
@@ -1216,6 +1251,12 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         data,
         field: terrain.fieldFor(0),
         dataBaseUrl: descriptor.dataBaseUrl,
+        /* The type holds its sheet while a zoom is moving and re-places it on
+           the first frame that repeats a scale. On an on-demand renderer it
+           has to be able to ASK for that frame, or a single-shot camera change
+           — a ZOOM STOP button, a film cut — leaves the type scaled and stale.
+           See `overlay.ts` §AND THE SHEET SURVIVES A ZOOM TOO. */
+        requestFrame: () => (engineRef.current ?? engine)?.invalidate(),
       });
       host.appendChild(overlay.canvas);
       overlayRef.current = overlay;
@@ -1225,7 +1266,9 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         Math.min(engine.quality.maxDpr, window.devicePixelRatio || 1),
       );
       engine.onAfterFrame = (c, s) => overlay.draw(c, s);
-      void overlay.load().then(() => engine?.invalidate());
+      /* HELD for the same reason `themeMarksDone` is — the type is the last
+         thing the boot fetches and the warm-up must not get in front of it */
+      const overlayDone = overlay.load().then(() => engine?.invalidate());
 
       /* ── CLICKING A BLOCK ───────────────────────────────────────────
          A click is a pointerup that did not travel: a drag ends on a
@@ -1481,6 +1524,47 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       engineRef.current = engine;
       setLoading(false);
       readyRef.current?.(engine, filmRef.current);
+
+      /* ── AND THE OTHER TWO BANDS ARE WARMED WHILE NOBODY IS LOOKING ─────
+         `engine.ts` §THE BANDS ARE WARMED carries the measurement: the first
+         zoom of a session costs a second more than every zoom after it,
+         because that is when the GPU creates the pipelines for everything a
+         closer camera draws, and when `layers/terrain.ts` bakes its per-band
+         hillshade, its normals and its ground texture.
+
+         ── §AND IT WAITS FOR THE BOOT'S OWN TAIL, NOT FOR A TIMER ──────────
+         Being scheduled after the page is told it is ready is not enough. The
+         boot is not FINISHED at that point: the named places, the subject
+         marks and the division rings are still being fetched and parsed behind
+         it. An idle callback with a 1,500 ms timeout force-fired the warm-up
+         into the middle of that, and MEASURED over three production runs the
+         data stream settled at 6.4 s against 5.4 s without it — the warm-up
+         was not costing the first frame, it was costing the LABELS a second.
+         Raising the timeout only made it racy: 5.4, 6.3, 6.4 over three runs
+         of the same build, because whether it landed in the tail was down to
+         when the browser happened to call itself idle.
+
+         So it waits on the two things it must not get in front of, and asks
+         for idle after that. `allSettled`, because a tail that fails to load
+         is a reason to warm the bands anyway rather than never.
+
+         `warmBands` paints nothing and puts the step back where it found it;
+         a reader who turns the wheel first wins outright — `engine.ts` §THE
+         READER BEATS THE WARM-UP. */
+      const warm = () => {
+        if (disposed || !engine) return;
+        void engine.warmBands([1, 2]);
+      };
+      void Promise.allSettled([themeMarksDone, overlayDone]).then(() => {
+        if (disposed) return;
+        const ric = (
+          window as unknown as {
+            requestIdleCallback?: (f: () => void, o?: { timeout: number }) => number;
+          }
+        ).requestIdleCallback;
+        if (ric) ric(warm, { timeout: 2000 });
+        else window.setTimeout(warm, 200);
+      });
     })();
 
     return () => {

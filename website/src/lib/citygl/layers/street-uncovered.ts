@@ -74,6 +74,9 @@ export function streetUncoveredLayer(
   data: CityData,
   o: StreetUncoveredOptions,
 ): (CityLayer & { mesh: Mesh; drawn: number; classWidths: number[] }) | null {
+  /** the exaggeration the vertices were BAKED at — see `layers/streets.ts`
+   *  §THE EXAGGERATION IS A TRANSFORM, NOT A REWRITE */
+  const bakedZex = o.zex;
   const cells = data.streetLines();
   if (!cells.length) return null;
 
@@ -271,6 +274,9 @@ export function streetUncoveredLayer(
   /* FLAT UP, like the ground: the road's own slope is already in its
      vertices, and a Lambert term off a ribbon would shade each quad
      differently — a road that flickers panel to panel down a hill. */
+  /* FLAT UP, like the ground: the road's own slope is already in its
+     vertices, and a Lambert term off a ribbon would shade each quad
+     differently — a road that flickers panel to panel down a hill. */
   const nrm = new Float32Array(posArr.length);
   for (let v = 0; v < posArr.length / 3; v++) nrm[v * 3 + 1] = 1;
   g.setAttribute("normal", new BufferAttribute(nrm, 3));
@@ -336,13 +342,12 @@ export function streetUncoveredLayer(
       const k = upTo(year);
       g.setDrawRange(0, k ? marks[k - 1] : 0);
     },
+    /* a scale on the model matrix, not a pass over the buffer — see
+       `layers/streets.ts` §THE EXAGGERATION IS A TRANSFORM, NOT A REWRITE.
+       Every normal here is (0, 1, 0) by §FLAT UP, LIKE THE GROUND above, so
+       the Lambert term is untouched. */
     onStep(_step: number, zex: number) {
-      if (zex === o.zex) return;
-      const k = zex / o.zex;
-      for (let v = 0; v < posArr.length; v += 3) posArr[v + 1] *= k;
-      (g.getAttribute("position") as BufferAttribute).needsUpdate = true;
-      g.computeBoundingSphere();
-      o.zex = zex;
+      mesh.scale.y = zex / bakedZex;
     },
     dispose() {
       g.dispose();

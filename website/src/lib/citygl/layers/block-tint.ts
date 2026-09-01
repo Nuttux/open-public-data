@@ -217,6 +217,9 @@ export function blockTintLayer(
   data: CityData,
   o: BlockTintOptions,
 ): (CityLayer & { mesh: Mesh; blocks: number; dropped: number }) | null {
+  /** the exaggeration the vertices were BAKED at — see `layers/streets.ts`
+   *  §THE EXAGGERATION IS A TRANSFORM, NOT A REWRITE */
+  const bakedZex = o.zex;
   const chunk = data.get("base/blocks");
   if (!chunk) return null;
   const bl = decodeRings(chunk as unknown as { fields: Record<string, unknown> });
@@ -324,13 +327,13 @@ export function blockTintLayer(
     mesh,
     blocks,
     dropped,
+    /* a scale on the model matrix, not a pass over 866,342 vertices and a
+       re-upload — see `layers/streets.ts` §THE EXAGGERATION IS A TRANSFORM,
+       NOT A REWRITE. This is the easiest of the four to be sure of: the
+       material is `MeshBasicMaterial`, so the layer is unlit and carries no
+       normals for a non-uniform scale to tilt. */
     onStep(_step: number, zex: number) {
-      if (zex === o.zex) return;
-      const k = zex / o.zex;
-      for (let v = 0; v < posArr.length; v += 3) posArr[v + 1] *= k;
-      (g.getAttribute("position") as BufferAttribute).needsUpdate = true;
-      g.computeBoundingSphere();
-      o.zex = zex;
+      mesh.scale.y = zex / bakedZex;
     },
     dispose() {
       g.dispose();

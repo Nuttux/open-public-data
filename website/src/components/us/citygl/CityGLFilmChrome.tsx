@@ -65,6 +65,9 @@ import type {
 } from "@/lib/citygl/film";
 import { useT } from "@/lib/localeContext";
 
+/** how long after mount the film's page crops are fetched — after the city, not beside it */
+const SCAN_PRELOAD_DELAY_MS = 8000;
+
 /* ── the stylesheet ─────────────────────────────────────────────────────────
    Inline and scoped to this component, the idiom `CityFilm` and `CityEntry`
    already use on this page, and for their stated reason: `fusion.css` is
@@ -505,29 +508,42 @@ export default function CityGLFilmChrome({ script, film }: CityGLFilmChromeProps
      A failure stays silent, for the reason the fetch above gives: the reader
      loses a picture of a page and keeps the citation that opens the same
      leaf. What they must never get is the empty frame. */
+  /* ── AND NOT IN THE FIRST SECOND ──────────────────────────────────────
+     MEASURED on a production build: the four crops, 1.26 MB, were on the wire
+     at 481 ms — the same instant as the terrain, the coast and the footprints,
+     the files the first picture is waiting for. A film nobody has pressed
+     play on was competing with the city for the connection at the one moment
+     the connection is the bottleneck. They are still requested "long before
+     the first one is due on screen"; they wait for the city to be standing
+     first. A film started inside the window fetches its plate on demand, as
+     the note above says it always could. */
   useEffect(() => {
     if (!scans?.length) return;
     let dead = false;
-    for (const s of scans) {
-      const im = new Image();
-      im.src = s.src;
-      void im
-        .decode()
-        .then(() => {
-          if (dead) return;
-          setHeld((prev) => {
-            if (prev.has(s.src)) return prev;
-            const next = new Map(prev);
-            next.set(s.src, im);
-            return next;
+    const t = window.setTimeout(() => {
+      if (dead) return;
+      for (const s of scans) {
+        const im = new Image();
+        im.src = s.src;
+        void im
+          .decode()
+          .then(() => {
+            if (dead) return;
+            setHeld((prev) => {
+              if (prev.has(s.src)) return prev;
+              const next = new Map(prev);
+              next.set(s.src, im);
+              return next;
+            });
+          })
+          .catch(() => {
+            /* see above: the film plays without this one */
           });
-        })
-        .catch(() => {
-          /* see above: the film plays without this one */
-        });
-    }
+      }
+    }, SCAN_PRELOAD_DELAY_MS);
     return () => {
       dead = true;
+      window.clearTimeout(t);
     };
   }, [scans]);
 

@@ -58,6 +58,7 @@ import {
   MeshLambertMaterial,
   Quaternion,
   ShapeUtils,
+  Sphere,
   SRGBColorSpace,
   Vector2,
   Vector3,
@@ -168,8 +169,9 @@ const OFF_LAKE_RIM = -0.5;
 const LAKE_RIM_M = 7;
 const LAKE_RIM_A = 0.42;
 
-/** scratch for the band change — one matrix reused, not 50,897 allocated */
-const m4Step = new Matrix4();
+/* The band change used to keep a scratch `Matrix4` here — one reused rather
+   than 50,897 allocated. It reads and writes the six numbers it needs directly
+   in the instance buffer now, so there is no matrix to keep. */
 
 /**
  * SEA LEVEL, AND IT IS THE REFERENCE'S OWN NUMBER.
@@ -746,8 +748,17 @@ export function groundDetailLayer(
   const blobs: InstancedMesh[] = [];
   /* the same canopy, told as separate trees — see §A CELL IS NOT ONE TREE */
   const shards: InstancedMesh[] = [];
-  /** per blob mesh: the ground metres under each instance */
-  const blobY: { mesh: InstancedMesh; ground: Float32Array }[] = [];
+  /** per blob mesh: the ground metres under each instance, and the bounding
+   *  sphere each rung of the ladder works out to — see §THE SPHERE IS PER BAND
+   *  in `layers/trees.ts` */
+  const blobY: {
+    mesh: InstancedMesh;
+    ground: Float32Array;
+    spheres: Map<number, Sphere>;
+  }[] = [];
+  /** the exaggeration these surfaces were BAKED at — `onStep` scales against
+   *  this one and never against the last value it saw */
+  const bakedZex = o.zex;
   let zexNow = o.zex;
   /** set once the coast is built; see §AND ITS WEIGHT IS CONSERVED */
   let shoreWeight: ((scalePxPerM: number) => void) | null = null;
@@ -1292,7 +1303,7 @@ export function groundDetailLayer(
         mesh.computeBoundingSphere();
         meshes.push(mesh);
         blobs.push(mesh);
-        blobY.push({ mesh, ground: gY });
+        blobY.push({ mesh, ground: gY, spheres: new Map() });
       }
 
       /* ══ A CELL IS NOT ONE TREE ═══════════════════════════════════════
@@ -1393,7 +1404,7 @@ export function groundDetailLayer(
         mesh.computeBoundingSphere();
         meshes.push(mesh);
         shards.push(mesh);
-        blobY.push({ mesh, ground: gY });
+        blobY.push({ mesh, ground: gY, spheres: new Map() });
       }
     }
   }
@@ -1446,31 +1457,46 @@ export function groundDetailLayer(
       for (const m of shards) m.visible = show && close;
 
       if (zex === zexNow) return;
-      const k = zex / zexNow;
-      /* the ground moved under everything, so everything moves with it — one
-         pass over Y, the same trick the streets use. The ribbon's sea-level
-         floor scales too: `SHORE_Z_M` is a height in ground metres and the
+      /* The ground moved under everything, so everything moves with it — as a
+         scale on the model matrix, not as a pass over every buffer. All of
+         these come out of the one `mesh()` helper above, which bakes every
+         normal as exactly (0, 1, 0), so the Lambert term is untouched;
+         `layers/streets.ts` §THE EXAGGERATION IS A TRANSFORM, NOT A REWRITE
+         carries the whole argument. The ribbon's sea-level floor scales with
+         it, which is right: `SHORE_Z_M` is a height in ground metres and the
          exaggeration is what turns ground metres into scene units. */
-      for (const m of flat) {
-        const p = m.geometry.getAttribute("position") as BufferAttribute;
-        const arr = p.array as Float32Array;
-        for (let v = 0; v < arr.length; v += 3) arr[v + 1] *= k;
-        p.needsUpdate = true;
-        m.geometry.computeBoundingSphere();
-      }
+      for (const m of flat) m.scale.y = zex / bakedZex;
       /* A BLOB IS NOT SCALED, IT IS RE-SEATED. Multiplying an instance's Y by
          the same factor would exaggerate the MASS as well as the ground it
          stands on, and a canopy mass has no published height to exaggerate —
          its height is a borrowed ratio. So only the foot moves, and since
-         `canopyMass` puts y = 0 on the ground the foot IS the translation. */
+         `canopyMass` puts y = 0 on the ground the foot IS the translation.
+
+         Written straight into the instance buffer instead of read back through
+         `getMatrixAt` and pushed back through `setMatrixAt`: element 13 of a
+         column-major 4x4 IS the Y translation, and on a re-seated blob it is
+         the only thing a band can change. The sphere is kept per rung for the
+         reason `layers/trees.ts` §THE SPHERE IS PER BAND gives — unioning a
+         transformed sphere over every instance is what a band change actually
+         cost here — and it is taken over the FULL instance set rather than
+         over `mesh.count`, which is the year gate. */
       for (const b of blobY) {
-        for (let i = 0; i < b.mesh.count; i++) {
-          b.mesh.getMatrixAt(i, m4Step);
-          m4Step.elements[13] = b.ground[i] * zex;
-          b.mesh.setMatrixAt(i, m4Step);
-        }
+        const im = b.mesh.instanceMatrix.array as Float32Array;
+        const full = b.ground.length;
+        for (let i = 0; i < full; i++) im[i * 16 + 13] = b.ground[i] * zex;
         b.mesh.instanceMatrix.needsUpdate = true;
-        b.mesh.computeBoundingSphere();
+        const hit = b.spheres.get(zex);
+        if (hit) {
+          b.mesh.boundingSphere = hit;
+        } else {
+          const keep = b.mesh.count;
+          b.mesh.count = full;
+          b.mesh.computeBoundingSphere();
+          b.mesh.count = keep;
+          const s = (b.mesh.boundingSphere as Sphere).clone();
+          b.spheres.set(zex, s);
+          b.mesh.boundingSphere = s;
+        }
       }
       zexNow = zex;
     },

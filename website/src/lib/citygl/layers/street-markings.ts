@@ -591,6 +591,9 @@ export function streetMarkingsLayer(
   data: CityData,
   o: StreetMarkingsLayerOptions,
 ): (CityLayer & { meshes: Mesh[] }) | null {
+  /** the exaggeration the vertices were BAKED at — see `layers/streets.ts`
+   *  §THE EXAGGERATION IS A TRANSFORM, NOT A REWRITE */
+  const bakedZex = o.zex;
   /* THE WIDTHS COME OUT OF THE CITY'S OWN MANIFEST, which is what lets this
      file sit in a city-free engine and still lay a believable bar: a city of
      12 m streets gets a narrower one without a line of code moving. */
@@ -904,19 +907,13 @@ export function streetMarkingsLayer(
       const on = step >= 1;
       for (const m of meshes) m.visible = on;
 
-      /* the ground's exaggeration moved, so every vertex moves with it — one
-         pass over Y, the same the surfaces and the footprints take */
-      const k = zex / o.zex;
-      if (k !== 1) {
-        for (const m of meshes) {
-          const p = m.geometry.getAttribute("position") as BufferAttribute;
-          const arr = p.array as Float32Array;
-          for (let i = 0; i < arr.length; i += 3) arr[i + 1] *= k;
-          p.needsUpdate = true;
-          m.geometry.computeBoundingSphere();
-        }
-        o.zex = zex;
-      }
+      /* the ground's exaggeration moved, so every vertex moves with it — as a
+         scale on the model matrix, not as a pass over 829,029 vertices and
+         five re-uploads. `layers/streets.ts` §THE EXAGGERATION IS A TRANSFORM
+         carries the reasoning, including why the Lambert term is unchanged:
+         every normal on this layer is exactly (0, 1, 0). */
+      const k = zex / bakedZex;
+      for (const m of meshes) m.scale.y = k;
     },
     onFrame(cam: PlaneCamera, step: number) {
       /* THE MARK'S OWN WIDTH AGAINST THE CAMERA, never the camera alone: a

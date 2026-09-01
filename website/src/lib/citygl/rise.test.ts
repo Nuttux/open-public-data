@@ -229,14 +229,23 @@ describe("the ochre is freshLUT's ochre", () => {
 describe("the nodes", () => {
   it("build, and the uniforms move", () => {
     const r = riseNodes();
-    expect(r.state()).toEqual({ year: -1000, phase: 1, wave: 0, zexb: 1 });
+    expect(r.state()).toEqual({ year: -1000, phase: 1, wave: 0, zexb: 1, zex: 1 });
     r.setYear(59);
     r.setPhase(0.4);
     r.setZexb(1.6);
-    expect(r.state()).toEqual({ year: 59, phase: 0.4, wave: 1, zexb: 1.6 });
+    /* THE GROUND'S EXAGGERATION IS A UNIFORM NOW, and it belongs in this
+       assertion for the same reason the others do: it is the whole of what a
+       band change hands the fabric — see `layers/buildings.ts` §THE GROUND IS
+       A UNIFORM, NOT A REWRITE — so a setter that silently stopped reaching
+       the shader would draw the entire city at the wrong exaggeration with
+       nothing else to notice. */
+    r.setZex(3.3);
+    expect(r.state()).toEqual({
+      year: 59, phase: 0.4, wave: 1, zexb: 1.6, zex: 3.3,
+    });
     /* THE SETTLED PRESENT IS AN EXACT ZERO, not a small number. The position
        node subtracts its deficit multiplied by `wave`, so this is what makes
-       a frame outside a cohort's window the baked buffer to the last bit. */
+       a frame outside a cohort's window one the wave has not touched at all. */
     r.setPhase(1);
     expect(r.state().wave).toBe(0);
     r.setYear(undefined);

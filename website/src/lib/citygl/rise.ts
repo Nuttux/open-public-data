@@ -389,12 +389,35 @@ const inkOf = Fn(([srgbRoof]: [AnyNode]): AnyNode => {
  * bound a second time onto the OUTLINE geometry, which costs no memory at all
  * — the line's vertices ARE roof-ring vertices.
  */
+/* ── §TWO SHORTS A VERTEX, NOT TWO FLOATS ─────────────────────────────────
+   The built height and the birth year used to ride as two `Float32` attributes,
+   47.5 MB each across the fabric. Neither needs a float: a height is under
+   328 m and the record dates it to a year plus a jittered fraction. So they
+   are ONE `Int16x2` attribute, normalised, and the shader multiplies the two
+   scales back — `HB_H_Q` hundredths of a metre (±327.67 m), `HB_BORN_Q`
+   1/128ths of a year (0..255.99). MEASURED before the change: `aH` ranged
+   -0.35..259.13 and `aBorn` 0..250 (`BORN_UNDATED`), so both fit with room.
+   The draw jitter under `JIT_SPAN` is quantised to 1/128 of a year, which is
+   finer than any frame the wave is ever shown at.
+
+   The colour is the same story in four channels: `COL_Q` is the factor the
+   linear colour is DIVIDED by before it is stored as `Uint16x4` normalised,
+   because MEASURED 6.7 % of vertices carry a component above 1 (the up-face
+   compensated roofs, up to 1.66). Sixteen bits at half scale is a step of
+   3e-5 in linear light, below anything a display resolves; eight bits was
+   tried on paper and rejected, because 17.5 % of the fabric's vertices sit
+   below 0.05 linear where an 8-bit linear step is a visible band. Four
+   channels rather than three because WebGPU has no three-wide 16-bit vertex
+   format and three pads the stride to it anyway. */
+export const HB_H_Q = 100;
+export const HB_BORN_Q = 128;
+export const COL_Q = 2;
 export const RISE_ATTR = {
-  BORN: "aBorn",
+  /** built height (x) and birth year (y), packed — see §TWO SHORTS A VERTEX */
+  HB: "aHB",
   /** the vector from this vertex to its building's own centroid, world
    *  metres, over `OFF_RANGE` — see `THE WAVE IS PER BUILDING` */
   OFFSET: "aOff",
-  HEIGHT: "aH",
   COLOUR: "color",
   ROOF_COLOUR: "aRoofCol",
 } as const;
@@ -439,8 +462,21 @@ export interface RiseNodes {
   setPhase(phase: number): void;
   /** the built-height exaggeration, so the shader can find the ground */
   setZexb(zexb: number): void;
+  /**
+   * The GROUND's exaggeration — the band's own, and the reason the fabric no
+   * longer rewrites its vertices when the camera crosses one.
+   *
+   * `layers/buildings.ts` §THE GROUND IS A UNIFOLD, NOT A REWRITE has the
+   * measurement. The short of it: `position.y` in the buffer is now the
+   * building's own GROUND ELEVATION and nothing else, and the shader below
+   * builds the drawn height out of it and `aH` — so a band change is this one
+   * float instead of 8.6 M vertices rewritten and 103 MB re-uploaded.
+   */
+  setZex(zex: number): void;
   /** dev only: what the uniforms currently say */
-  readonly state: () => { year: number; phase: number; wave: number; zexb: number };
+  readonly state: () => {
+    year: number; phase: number; wave: number; zexb: number; zex: number;
+  };
 }
 
 /**
@@ -465,10 +501,15 @@ export function riseNodes(): RiseNodes {
    */
   const uWave = uniform(0);
   const uZexb = uniform(1);
+  /** the GROUND's exaggeration — see `setZex` on the interface above */
+  const uZex = uniform(1);
 
-  const born = attribute(RISE_ATTR.BORN, "float") as unknown as AnyNode;
+  /* the packed pair, decoded — `snorm16` arrives as v/32767, so one multiply
+     each puts the quantiser back; see §TWO SHORTS A VERTEX, NOT TWO FLOATS */
+  const hb = attribute(RISE_ATTR.HB, "vec2") as unknown as AnyNode;
+  const born = hb.y.mul(32767 / HB_BORN_Q) as unknown as AnyNode;
   const aOff = attribute(RISE_ATTR.OFFSET, "vec2") as unknown as AnyNode;
-  const aH = attribute(RISE_ATTR.HEIGHT, "float") as unknown as AnyNode;
+  const aH = hb.x.mul(32767 / HB_H_Q) as unknown as AnyNode;
 
   const bornYear = floor(born);
   /** the building's own draw, back out of the fraction — see `JIT_SPAN` */
@@ -484,9 +525,22 @@ export function riseNodes(): RiseNodes {
      a building half up would report itself nearer than it is and finish
      early, and the far-to-near order would come apart in the towers. */
   const lift = aH.mul(uZexb);
+  /* ── THE TWO HEIGHTS, BUILT HERE RATHER THAN BAKED ────────────────────
+     `position.y` in the buffer is the vertex's own GROUND ELEVATION in
+     metres, exaggerated by nothing. `groundY` applies the band's own
+     exaggeration to it and `bakedY` puts the building's built height back on
+     top — which is exactly the number the CPU used to write into the buffer
+     and re-upload on every band change. See `layers/buildings.ts` §THE GROUND
+     IS A UNIFORM, NOT A REWRITE.
+
+     The order matters and it is the same order as before: the wave reads its
+     depth at the GROUND the building rises from, never at the risen vertex,
+     for the reason the next paragraph gives. */
+  const groundY = positionLocal.y.mul(uZex);
+  const bakedY = groundY.add(lift);
   const ground = vec4(
     positionLocal.x.add(aOff.x.mul(OFF_RANGE)),
-    positionLocal.y.sub(lift),
+    groundY,
     positionLocal.z.add(aOff.y.mul(OFF_RANGE)),
     1,
   );
@@ -524,7 +578,7 @@ export function riseNodes(): RiseNodes {
   const gone = float(1).sub(started).mul(inCohort).mul(uWave).mul(HIDE_M);
   const position = vec3(
     positionLocal.x,
-    positionLocal.y.sub(deficit).sub(gone),
+    bakedY.sub(deficit).sub(gone),
     positionLocal.z,
   ) as unknown as AnyNode;
 
@@ -583,13 +637,17 @@ export function riseNodes(): RiseNodes {
       sRGBTransferEOTF(
         tintS(
           rule,
-          sRGBTransferOETF(attribute(RISE_ATTR.COLOUR, "vec3")) as unknown as AnyNode,
+          sRGBTransferOETF(
+            attribute(RISE_ATTR.COLOUR, "vec4").xyz.mul(COL_Q),
+          ) as unknown as AnyNode,
         ),
       ),
     ) as unknown as AnyNode;
 
   const baked = attribute(RISE_ATTR.COLOUR, "vec3") as unknown as AnyNode;
-  const roofColour = attribute(RISE_ATTR.ROOF_COLOUR, "vec3") as unknown as AnyNode;
+  /* the outline binds the fabric's own colour buffer under this name, so it
+     carries the same half-scale encoding and takes the same multiply back */
+  const roofColour = attribute(RISE_ATTR.ROOF_COLOUR, "vec4").xyz.mul(COL_Q) as unknown as AnyNode;
   /* the roof over this segment of outline, in sRGB — read ONCE, because
      `inkFor` and the tint both want it there and a transfer is three `pow`s */
   const srgbRoof = sRGBTransferOETF(roofColour) as unknown as AnyNode;
@@ -618,11 +676,15 @@ export function riseNodes(): RiseNodes {
     setZexb(zexb: number): void {
       (uZexb as Uni).value = zexb;
     },
+    setZex(zex: number): void {
+      (uZex as Uni).value = zex;
+    },
     state: () => ({
       year: (uYear as Uni).value as number,
       phase: (uPhase as Uni).value as number,
       wave: (uWave as Uni).value as number,
       zexb: (uZexb as Uni).value as number,
+      zex: (uZex as Uni).value as number,
     }),
   };
 }

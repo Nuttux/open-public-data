@@ -247,6 +247,10 @@ function mesh(
   const n = new Float32Array(pos.length);
   for (let v = 0; v < pos.length / 3; v++) n[v * 3 + 1] = 1;
   g.setAttribute("normal", new BufferAttribute(n, 3));
+  /* FLAT UP, like the ground: a street's own slope is already in its
+     vertices, and a Lambert term computed from a triangulated road surface
+     would shade each ear-clipped triangle differently — a road that flickers
+     facet to facet down a hill. */
   g.computeBoundingSphere();
 
   /* ── AND THE PAVING WAS ONE TONE FROM THE PRESIDIO TO HUNTERS POINT ───
@@ -340,6 +344,10 @@ export function streetsLayer(
   o: StreetsLayerOptions,
 ): CityLayer & { meshes: Mesh[]; features: number } {
   const meshes: Mesh[] = [];
+  /** the exaggeration the vertices were BAKED at — `onStep` scales against
+   *  this and never against the last value it was handed, so a band change
+   *  cannot accumulate rounding. See §THE EXAGGERATION IS A TRANSFORM. */
+  const bakedZex = o.zex;
   /** each chunk's own median right-of-way width, metres */
   const medians: number[] = [];
   const gates: {
@@ -504,18 +512,30 @@ export function streetsLayer(
         mm.opacity = ST_ALPHA * w;
       }
     },
+    /* ── §THE EXAGGERATION IS A TRANSFORM, NOT A REWRITE ──────────────────
+       The ground's exaggeration moved, so every street vertex moves with it.
+       This used to do that by hand: one pass over Y across 1.4 M vertices in
+       248 meshes, a full re-upload of every position buffer, and a
+       `computeBoundingSphere` on each — 11 ms of blocked main thread on every
+       band change, for an operation that is a scale about the origin.
+
+       A scale about the origin is what the model matrix is for. `mesh.scale.y`
+       hands it to the GPU, costs one float per mesh, and the buffers never
+       move — which is what `layers/rail.ts` §onStep has always done.
+
+       AND THE LIGHT DOES NOT CARE, which is the half to check before doing
+       this anywhere else. A non-uniform scale reaches the shading as the
+       inverse transpose of the model matrix, so it WOULD tilt a normal with
+       any x or z in it. Every normal on this layer is exactly (0, 1, 0) — see
+       §FLAT UP, LIKE THE GROUND, where they are baked — and the inverse
+       transpose of `diag(1, k, 1)` sends (0, 1, 0) to (0, 1/k, 0), which
+       normalises back to itself. Same argument, same result, on
+       `street-markings` and `street-uncovered`; `block-tint` is unlit and has
+       no normals at all. `street-detail` bakes REAL normals for its kerbs and
+       its stairs, so it keeps the hand-written pass. */
     onStep(_step: number, zex: number) {
-      /* the ground's exaggeration moved, so every street vertex moves with it
-         — one pass over Y, the same trick the footprints use */
-      for (const m of meshes) {
-        const p = m.geometry.getAttribute("position") as BufferAttribute;
-        const arr = p.array as Float32Array;
-        const k = zex / o.zex;
-        for (let v = 0; v < arr.length; v += 3) arr[v + 1] *= k;
-        p.needsUpdate = true;
-        m.geometry.computeBoundingSphere();
-      }
-      o.zex = zex;
+      const k = zex / bakedZex;
+      for (const m of meshes) m.scale.y = k;
     },
     dispose() {
       for (const m of meshes) {

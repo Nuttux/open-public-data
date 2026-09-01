@@ -42,6 +42,7 @@ import {
   Matrix4,
   MeshLambertMaterial,
   Quaternion,
+  Sphere,
   SRGBColorSpace,
   Vector3,
 } from "three";
@@ -191,6 +192,46 @@ export function treesLayer(
   const counters: { mesh: InstancedMesh; countFor: (y: number | undefined) => number; full: number }[] = [];
   const placers: ((zex: number, zexb: number) => void)[] = [];
   let count = 0;
+
+  /* ── §THE SPHERE IS PER BAND, AND THERE ARE THREE BANDS ─────────────────
+     `InstancedMesh.computeBoundingSphere` walks every instance — it reads each
+     matrix back and unions a transformed copy of the geometry's own sphere —
+     so on this layer it is 125,234 of those per band change, and MEASURED it
+     is where nearly all of the layer's 33.9 ms went. Writing the matrices
+     faster barely moved it: 33.9 to 30.6.
+
+     It does not have to be walked at all after the first time. The ladder has
+     three rungs, `zexb` is a constant of the descriptor, and the answer is a
+     pure function of the rung — so it is computed once per rung and kept. With
+     `engine.ts` §THE BANDS ARE WARMED walking the ladder at boot, all three
+     are in hand before the reader's first zoom and every crossing after that
+     is a map lookup.
+
+     AND IT IS COMPUTED OVER EVERY INSTANCE, not over `mesh.count`. That count
+     is the YEAR gate — three's own loop stops at it — so the sphere this used
+     to leave behind was the one the last band change happened to catch, and
+     scrubbing forward to a year with more trees in it left them bounded by a
+     sphere that did not contain them. Taking the full set is both stable and
+     conservative, which is the safe direction for a cull. */
+  const seatSphere = (
+    mesh: InstancedMesh,
+    full: number,
+    cache: Map<number, Sphere>,
+    zex: number,
+  ): void => {
+    const hit = cache.get(zex);
+    if (hit) {
+      mesh.boundingSphere = hit;
+      return;
+    }
+    const keep = mesh.count;
+    mesh.count = full;
+    mesh.computeBoundingSphere();
+    mesh.count = keep;
+    const s = (mesh.boundingSphere as Sphere).clone();
+    cache.set(zex, s);
+    mesh.boundingSphere = s;
+  };
 
   const m4 = new Matrix4();
   const pos = new Vector3();
@@ -376,16 +417,16 @@ export function treesLayer(
         return lo;
       };
       counters.push({ mesh, countFor, full: dn });
+      /* ONE number, on this one — see §ONLY TWO NUMBERS IN THE MATRIX CAN MOVE
+         on the crowns. A contact disc has no rotation and its Y scale is a
+         fixed 1 (a flat thing takes no exaggeration in the direction it has no
+         extent in), so the band moves its foot and nothing else. */
+      const discSpheres = new Map<number, Sphere>();
       placers.push((zex: number) => {
-        for (let k = 0; k < dn; k++) {
-          pos.set(dw[k * 2], de[k] * zex, dw[k * 2 + 1]);
-          scl.set(dr[k], 1, dr[k]);
-          rot.set(0, 0, 0, 1);
-          m4.compose(pos, rot, scl);
-          mesh.setMatrixAt(k, m4);
-        }
+        const m = mesh.instanceMatrix.array as Float32Array;
+        for (let k = 0; k < dn; k++) m[k * 16 + 13] = de[k] * zex;
         mesh.instanceMatrix.needsUpdate = true;
-        mesh.computeBoundingSphere();
+        seatSphere(mesh, dn, discSpheres, zex);
       });
       meshes.push(mesh);
       treeMeshes.push(mesh);
@@ -481,16 +522,39 @@ export function treesLayer(
         return lo;
       };
       counters.push({ mesh, countFor, full: n });
+      /* ── §ONLY TWO NUMBERS IN THE MATRIX CAN MOVE ────────────────────────
+         A band change moves the ground under 125,234 crowns, and this used to
+         answer it by recomposing every one of their matrices from scratch:
+         a quaternion built, a 4x4 multiplied out, and sixteen floats copied
+         in and out through `setMatrixAt`. MEASURED, the whole tree layer cost
+         33.9 ms of blocked main thread per band change — the largest single
+         item left in one after `layers/buildings.ts` §THE GROUND IS A UNIFORM
+         went in.
+
+         Almost none of that matrix can change. `setCrownYaw` is a YAW — the
+         quaternion is `(0, sin, 0, cos)`, a rotation about Y — so the
+         rotation's own Y axis is exactly (0, 1, 0), and composing it with
+         `(ir, ir*itl*zexb, ir)` leaves column 1 as `(0, ir*itl*zexb, 0)` with
+         two structural zeros in it. The x and z columns carry no `zex` and no
+         `zexb` at all.
+
+         So exactly two of the sixteen floats are a function of the band: the
+         Y scale at `[5]` and the Y translation at `[13]`, and both are written
+         straight into the instance buffer from the four numbers each crown
+         already keeps. It is the same idiom `canopy-shadow.ts` uses to
+         re-seat a disc, taken one step further by not reading the matrix back
+         to write it. Recomputed from `ir`/`itl`/`ie` rather than scaled by a
+         ratio, so walking the ladder cannot accumulate drift. */
+      const crownSpheres = new Map<number, Sphere>();
       placers.push((zex: number, zexb: number) => {
+        const m = mesh.instanceMatrix.array as Float32Array;
         for (let k = 0; k < n; k++) {
-          pos.set(iw[k * 2], ie[k] * zex, iw[k * 2 + 1]);
-          scl.set(ir[k], ir[k] * itl[k] * zexb, ir[k]);
-          setCrownYaw(k, rot);
-          m4.compose(pos, rot, scl);
-          mesh.setMatrixAt(k, m4);
+          const b = k * 16;
+          m[b + 5] = ir[k] * itl[k] * zexb;
+          m[b + 13] = ie[k] * zex;
         }
         mesh.instanceMatrix.needsUpdate = true;
-        mesh.computeBoundingSphere();
+        seatSphere(mesh, n, crownSpheres, zex);
       });
       meshes.push(mesh);
       treeMeshes.push(mesh);
