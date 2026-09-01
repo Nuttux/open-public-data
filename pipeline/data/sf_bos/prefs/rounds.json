@@ -76,5 +76,39 @@
   "money_plus_stage_spearman": 0.229,
   "finding": "NOT money-led. $152.6M, $144.8M and $50M all placed in the bottom half; a $0 community garden placed 2nd. $210M for General Hospital ranked 1st while $144.8M for one address ranked 13th \u2014 same order of money, opposite ends of the list. Reach again."
  },
- "conclusion": "Three rounds, three angles, one dimension: how much of the city a decision touches. Money and completion matter but are secondary. Reach must be read per record and stored; it cannot be pattern-matched."
+ "conclusion": "Three rounds, three angles, one dimension: how much of the city a decision touches. Money and completion matter but are secondary. Reach must be read per record and stored; it cannot be pattern-matched.",
+ "round4_edges": {
+  "order": [
+   2,
+   3,
+   6,
+   1,
+   4,
+   5,
+   7,
+   11,
+   12,
+   9,
+   10,
+   8
+  ],
+  "confirmed": "a public asset GAINED (Mint Plaza, 1st) beats one GIVEN AWAY (Hayward Playground to the 911 centre, 9th)",
+  "refuted_scope": "citywide crossing signals ranked 8th, BELOW a one-block one-way plan at 4th \u2014 scope alone does not lift a street rule",
+  "refuted_honour": "Avery Street renamed for Reverend Boswell 11th, James Alley to Rose Paks Way 5th \u2014 it is whether the city knows the name, not that a person is honoured",
+  "refuted_floor": "procedure landed mid-list, not at the floor"
+ },
+ "stated_rules": [
+  "adopted weighs much more than proposed, but a huge or significant proposal still ranks high",
+  "money into daily-life infrastructure (hospital, library) beats a similar or larger sum on a housing bond",
+  "housing and shelter are near the top, but housing PEOPLE differs from a housing BOND at an address"
+ ],
+ "keyword_attempt": {
+  "result": "WORSE than the previous score on 2 of 3 testable rounds",
+  "round2": -0.112,
+  "round2_previous": 0.229,
+  "round3": 0.285,
+  "round3_previous": 0.412,
+  "why": "the words hospital, library and park appear equally in a citywide staffing emergency and a dog hospital at one address; the distinction being asked for is not lexical"
+ },
+ "outcome": "the stated rules become a rubric applied by reading each record (IMPORTANCE.md), not a pattern"
 }
