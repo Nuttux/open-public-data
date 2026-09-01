@@ -68,8 +68,20 @@ def main() -> None:
         # record the selector has since stopped offering, and those are dropped
         # below rather than blocking a slice whose other 197 lines are sound.
         # A duplicate, a blank, a count mismatch or a RUN still blocks.
-        structural = (r["n_in"] != r["n_out"] or r["ids_aligned"] is False
+        #
+        # THE COUNT ONLY COUNTS IF THERE IS SOMETHING TO COUNT AGAINST. When a
+        # slice file is gone — released after its writer was thought dead, and
+        # the writer then finished anyway — `n_in` reads 0 and the comparison
+        # fails every time. It is the wrong test to gate on, because it is the
+        # only check here that needs the slice: the duplicate, blank, unknown-id
+        # and RUN tests all resolve each row against the corpus by id, and they
+        # are the ones that decide whether a file is sound.
+        counted = r["n_in"] > 0
+        structural = ((counted and r["n_in"] != r["n_out"])
+                      or r["ids_aligned"] is False
                       or r["dupes"] or r["blank"] or r["runs"])
+        if not counted:
+            print(f"     (slice file gone — checked against the corpus by id)")
         if structural and not args.force:
             print(f"SKIP {p.name}: {r['n_out']}/{r['n_in']} dupes {r['dupes']} "
                   f"blank {r['blank']} unknown {r['unknown_ids']} runs {len(r['runs'])}")
@@ -84,11 +96,31 @@ def main() -> None:
         # page footer. The fault was upstream, so the fix is upstream, and the
         # slices already written are not binned whole for it: the lines about
         # real records are kept and the rest go back to being unoffered.
+        # ── AND A RECORD ALREADY IN THE STORE IS NOT WRITTEN TWICE ─────────
+        # A worker killed by the session limit had in fact finished its file;
+        # its ids had already been released and handed to a second writer
+        # under a new slice number. Both outputs are legitimate and both would
+        # have been appended, putting 300 records in the store twice — and the
+        # store is what the map reads, so the panel would have listed each of
+        # them twice.
+        #
+        # The store is the authority on what is written. Whichever output
+        # arrives first wins; the second is dropped on ingest rather than
+        # being reconciled afterwards.
+        done_now = H.done_ids()
         raw = [json.loads(l) for l in p.open()]
-        rows = [(x["id"], x["line"]) for x in raw if x["id"] in recs]
-        dropped = len(raw) - len(rows)
-        if dropped:
-            print(f"     {dropped} rows dropped — their records are no longer offered")
+        rows, gone, dupe = [], 0, 0
+        for x in raw:
+            if x["id"] not in recs:
+                gone += 1
+            elif x["id"] in done_now:
+                dupe += 1
+            else:
+                rows.append((x["id"], x["line"]))
+        if gone:
+            print(f"     {gone} rows dropped — their records are no longer offered")
+        if dupe:
+            print(f"     {dupe} rows dropped — already written by another slice")
         n_ok, n_inv, n_ovr, n_dmg = H.save(rows)
         inflight -= {i for i, _ in rows}
         shutil.move(str(p), str(DONE / p.name))
