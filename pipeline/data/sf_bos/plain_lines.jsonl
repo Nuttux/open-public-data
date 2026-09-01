@@ -90441,3 +90441,903 @@
 {"id": "sfbos:bag041922|46", "y": 2022, "line": "Hahn Street renaming to Mrs. Jackson Way proposed with added directives", "flags": {}}
 {"id": "sfbos:bag031026|90", "y": 2026, "line": "Landmark status proposed for Mr. Cudworth's House on Union Street", "flags": {}}
 {"id": "sfbos:bag032426|33", "y": 2026, "line": "Landmark designation started for Mr. Cudworth's House on Union Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|3", "y": 1920, "line": "Bessie Thompson allowed $700 for land for the Market Street extension", "flags": {}}
+{"id": "journalofproceed1920sanfrich|11", "y": 1920, "line": "California State Automobile Association's retaining wall campaign endorsed", "flags": {}}
+{"id": "journalofproceed1920sanfrich|13", "y": 1920, "line": "$11,288.35 appropriated for wage increases to Municipal Railway platform men", "flags": {}}
+{"id": "journalofproceed1920sanfrich|18", "y": 1920, "line": "Bessie Thompson allowed $700 for land for the Market Street extension", "flags": {}}
+{"id": "journalofproceed1920sanfrich|25", "y": 1920, "line": "Spreckels thanked for offering the city an art museum memorial", "flags": {}}
+{"id": "journalofproceed1920sanfrich|26", "y": 1920, "line": "Estimate sought for repaving Brannan Street between First and Second", "flags": {}}
+{"id": "journalofproceed1920sanfrich|42", "y": 1920, "line": "Board of Public Works asked to repave Brannan and Broderick streets", "flags": {}}
+{"id": "journalofproceed1920sanfrich|51", "y": 1920, "line": "Parts of Galvez, Hudson, Innes and Kirkwood avenues proposed for closing", "flags": {}}
+{"id": "journalofproceed1920sanfrich|83", "y": 1920, "line": "Board of Public Works recommends new street levels on Wilde Avenue", "flags": {}}
+{"id": "journalofproceed1920sanfrich|85", "y": 1920, "line": "Part of Geneva Avenue proposed for closing", "flags": {}}
+{"id": "journalofproceed1920sanfrich|101", "y": 1920, "line": "Board of Health asked to remove barns on Delmar Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|105", "y": 1920, "line": "District around Holloway Avenue and Ramsell Street to pay for improvement", "flags": {}}
+{"id": "journalofproceed1920sanfrich|106", "y": 1920, "line": "Proposal to scrap the old street levels on Tulare Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|124", "y": 1920, "line": "District around Holloway Avenue and Ramsell Street approved to pay costs", "flags": {}}
+{"id": "journalofproceed1920sanfrich|125", "y": 1920, "line": "Old street levels abolished on Tulare Street and nearby streets", "flags": {}}
+{"id": "journalofproceed1920sanfrich|128", "y": 1920, "line": "Land near Garfield and Ramsell streets to pay for proposed work", "flags": {}}
+{"id": "journalofproceed1920sanfrich|194", "y": 1920, "line": "Board of Public Works recommends new street levels on Peralta Avenue", "flags": {}}
+{"id": "journalofproceed1920sanfrich|212", "y": 1920, "line": "Supervisor Power says the Board of Health should decide for itself", "flags": {}}
+{"id": "journalofproceed1920sanfrich|222", "y": 1920, "line": "District near Anza Street and Thirty-eighth Avenue to pay for improvement", "flags": {}}
+{"id": "journalofproceed1920sanfrich|237", "y": 1920, "line": "Closing of part of Geneva Avenue taken up after public notice", "flags": {}}
+{"id": "journalofproceed1920sanfrich|240", "y": 1920, "line": "Widening of Tara Street taken up after public notice", "flags": {}}
+{"id": "journalofproceed1920sanfrich|247", "y": 1920, "line": "District near Anza Street and Thirty-eighth Avenue approved to pay costs", "flags": {}}
+{"id": "journalofproceed1920sanfrich|254", "y": 1920, "line": "Street levels on Joost Avenue and Baden Street to be changed", "flags": {}}
+{"id": "journalofproceed1920sanfrich|256", "y": 1920, "line": "Street levels changed on Lippard Avenue between Chenery and Surrey streets", "flags": {}}
+{"id": "journalofproceed1920sanfrich|261", "y": 1920, "line": "Bills paid for Hetch Hetchy, the Argonne School and influenza relief", "flags": {}}
+{"id": "journalofproceed1920sanfrich|267", "y": 1920, "line": "John and Pauline Tonningsen offer Amazon Reservoir land for $97,000", "flags": {}}
+{"id": "journalofproceed1920sanfrich|272", "y": 1920, "line": "Cost estimate sought for rebuilding Post Street and Minna Street roadways", "flags": {}}
+{"id": "journalofproceed1920sanfrich|274", "y": 1920, "line": "Ordinance to close barber shops on Sundays referred to committee", "flags": {}}
+{"id": "journalofproceed1920sanfrich|275", "y": 1920, "line": "Plan to make Howard Street a boulevard referred to committee", "flags": {}}
+{"id": "journalofproceed1920sanfrich|302", "y": 1920, "line": "A vote with no subject on this page", "flags": {}}
+{"id": "journalofproceed1920sanfrich|329", "y": 1920, "line": "Bills paid for fuel oil, trucks and San Bruno Avenue damages", "flags": {}}
+{"id": "journalofproceed1920sanfrich|335", "y": 1920, "line": "Mrs. Leo J. Clayburg allowed an oil tank on Pacific Avenue", "flags": {}}
+{"id": "journalofproceed1920sanfrich|343", "y": 1920, "line": "Land swap proposed for a new street replacing a closed one", "flags": {}}
+{"id": "journalofproceed1920sanfrich|350", "y": 1920, "line": "$36,500 sought to repave O'Farrell Street between Jones and Van Ness", "flags": {}}
+{"id": "journalofproceed1920sanfrich|354", "y": 1920, "line": "Bills paid for fuel oil, trucks and San Bruno Avenue damages", "flags": {}}
+{"id": "journalofproceed1920sanfrich|357", "y": 1920, "line": "Oil tanks allowed on Pacific Avenue, Geary Street and Gough Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|375", "y": 1920, "line": "$75,000 sought for playground land on Railroad Avenue in Bay View", "flags": {}}
+{"id": "journalofproceed1920sanfrich|381", "y": 1920, "line": "Estimate sought for repaving Filbert Street and Leavenworth Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|394", "y": 1920, "line": "Bills of $112,498.43 allowed and ordered paid", "flags": {}}
+{"id": "journalofproceed1920sanfrich|402", "y": 1920, "line": "Grading on Evans Avenue between Army and Napoleon streets taken up", "flags": {}}
+{"id": "journalofproceed1920sanfrich|408", "y": 1920, "line": "City Treasurer John E. McDougald granted thirty days' leave", "flags": {}}
+{"id": "journalofproceed1920sanfrich|417", "y": 1920, "line": "William A. Prichard paid $6,234.80 for land on Park Hill Avenue", "flags": {}}
+{"id": "journalofproceed1920sanfrich|418", "y": 1920, "line": "John F. Lukes paid $889 for land on Park Hill Avenue", "flags": {}}
+{"id": "journalofproceed1920sanfrich|420", "y": 1920, "line": "Ellen Neary paid $776 for her land on San Jose Avenue", "flags": {}}
+{"id": "journalofproceed1920sanfrich|431", "y": 1920, "line": "Hugh McGill's blasting limited to daylight hours under the permit", "flags": {}}
+{"id": "journalofproceed1920sanfrich|438", "y": 1920, "line": "David Lager paid for his land on Pluto Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|439", "y": 1920, "line": "William A. Prichard paid $6,234.80 for land on Park Hill Avenue", "flags": {}}
+{"id": "journalofproceed1920sanfrich|440", "y": 1920, "line": "John F. Lukes paid $889 for land on Park Hill Avenue", "flags": {}}
+{"id": "journalofproceed1920sanfrich|442", "y": 1920, "line": "Ellen Neary paid $776 for her land on San Jose Avenue", "flags": {}}
+{"id": "journalofproceed1920sanfrich|451", "y": 1920, "line": "Rudolph Herman Company's land at Baker and Tonquin streets accepted", "flags": {}}
+{"id": "journalofproceed1920sanfrich|462", "y": 1920, "line": "Estimate ordered for repaving Filbert Street and Leavenworth Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|463", "y": 1920, "line": "Cost sought for brick paving down the center of Ashbury Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|471", "y": 1920, "line": "Estimate ordered for rebuilding Howard Street between Twenty-fourth and Twenty-fifth", "flags": {"damaged": ["Twenty-fifth"]}}
+{"id": "journalofproceed1920sanfrich|495", "y": 1920, "line": "Dances would need a permit before a licence is issued", "flags": {}}
+{"id": "journalofproceed1920sanfrich|497", "y": 1920, "line": "Flinn & Treacy given sixty more days on Wolfe Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|507", "y": 1920, "line": "Sunnyside Avenue and part of Circular Avenue proposed as Monterey Boulevard", "flags": {}}
+{"id": "journalofproceed1920sanfrich|531", "y": 1920, "line": "Sunnyside Avenue and part of Circular Avenue renamed Monterey Boulevard", "flags": {}}
+{"id": "journalofproceed1920sanfrich|539", "y": 1920, "line": "Street work ordered and contracts authorised for the work", "flags": {}}
+{"id": "journalofproceed1920sanfrich|542", "y": 1920, "line": "Raisch Improvement Co. allowed a second payment out of road funds", "flags": {}}
+{"id": "journalofproceed1920sanfrich|556", "y": 1920, "line": "Cost sought for a horse trough at Sansome and the Embarcadero", "flags": {}}
+{"id": "journalofproceed1920sanfrich|557", "y": 1920, "line": "Collingwood Street owners ask the city to split paving costs", "flags": {}}
+{"id": "journalofproceed1920sanfrich|582", "y": 1920, "line": "Street levels on Peralta Avenue and Tomasa Street proposed for change", "flags": {}}
+{"id": "journalofproceed1920sanfrich|597", "y": 1920, "line": "Holloway Avenue curbs and paving to be paid over ten years", "flags": {}}
+{"id": "journalofproceed1920sanfrich|615", "y": 1920, "line": "Five supervisors named to meet Dr. Mannix on his arrival", "flags": {}}
+{"id": "journalofproceed1920sanfrich|632", "y": 1920, "line": "Pacific Gas and Electric told to install lights on Ulloa Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|642", "y": 1920, "line": "\"House in Order Week\" set before the Democratic National Convention", "flags": {}}
+{"id": "journalofproceed1920sanfrich|650", "y": 1920, "line": "W. E. Crane granted a laundry at 385 Moscow Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|669", "y": 1920, "line": "Land at Baker Street and Pacific Avenue needed for a school", "flags": {}}
+{"id": "journalofproceed1920sanfrich|677", "y": 1920, "line": "Schwabacher-Frey allowed an oil tank at Third and Bryant streets", "flags": {}}
+{"id": "journalofproceed1920sanfrich|688", "y": 1920, "line": "Schwabacher-Frey allowed an oil tank at Third and Bryant streets", "flags": {}}
+{"id": "journalofproceed1920sanfrich|691", "y": 1920, "line": "Louis Sockolov granted a public garage at 2318 Fillmore Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|694", "y": 1920, "line": "John Proctor's garage permit on Sacramento Street revoked", "flags": {}}
+{"id": "journalofproceed1920sanfrich|702", "y": 1920, "line": "Street levels on Hamburg Street and Joost Avenue to be changed", "flags": {}}
+{"id": "journalofproceed1920sanfrich|707", "y": 1920, "line": "Louis Sockolov granted a public garage at 2318 Fillmore Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|714", "y": 1920, "line": "Street levels on Hamburg Street and Joost Avenue to be changed", "flags": {}}
+{"id": "journalofproceed1920sanfrich|715", "y": 1920, "line": "Bills paid for Hetch Hetchy repairs and the Comstock death award", "flags": {}}
+{"id": "journalofproceed1920sanfrich|717", "y": 1920, "line": "Southern Freight Handling rents the Sixteenth Street fire lot for $20", "flags": {}}
+{"id": "journalofproceed1920sanfrich|726", "y": 1920, "line": "Flinn & Treacy given ninety more days on Wolfe Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|734", "y": 1920, "line": "Extension of the Canal Street sewer proposed", "flags": {}}
+{"id": "journalofproceed1920sanfrich|739", "y": 1920, "line": "City to take over new roadways on Caledonia and Fifteenth streets", "flags": {}}
+{"id": "journalofproceed1920sanfrich|743", "y": 1920, "line": "War History Committee's work and funding referred to the Finance Committee", "flags": {}}
+{"id": "journalofproceed1920sanfrich|744", "y": 1920, "line": "Bills paid for Hetch Hetchy repairs and the Comstock death award", "flags": {}}
+{"id": "journalofproceed1920sanfrich|752", "y": 1920, "line": "Extension of the Canal Street sewer ordered built", "flags": {}}
+{"id": "journalofproceed1920sanfrich|761", "y": 1920, "line": "$5,000 sought for rat catchers and special sanitation work", "flags": {}}
+{"id": "journalofproceed1920sanfrich|766", "y": 1920, "line": "Mrs. Crosman asks to cut the electrical licence to $50", "flags": {}}
+{"id": "journalofproceed1920sanfrich|786", "y": 1920, "line": "Exit passages must be walled off in brick and made fireproof", "flags": {}}
+{"id": "journalofproceed1920sanfrich|788", "y": 1920, "line": "Street railway safety rules to gain a new section", "flags": {}}
+{"id": "journalofproceed1920sanfrich|792", "y": 1920, "line": "New fire limits mapped from Greenwich Street down to Stockton Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|803", "y": 1920, "line": "Trolley pole at 774 Forty-fifth Avenue to be moved free", "flags": {}}
+{"id": "journalofproceed1920sanfrich|804", "y": 1920, "line": "Montague Pipe and Steel given ninety days more for Hetch Hetchy", "flags": {}}
+{"id": "journalofproceed1920sanfrich|805", "y": 1920, "line": "Street railway safety rules to gain a new section", "flags": {}}
+{"id": "journalofproceed1920sanfrich|808", "y": 1920, "line": "Street railway safety rules to gain a new section", "flags": {}}
+{"id": "journalofproceed1920sanfrich|809", "y": 1920, "line": "Street railway safety rules to gain a new section", "flags": {}}
+{"id": "journalofproceed1920sanfrich|821", "y": 1920, "line": "District set to pay for street work on McAllister and Stanyan", "flags": {}}
+{"id": "journalofproceed1920sanfrich|830", "y": 1920, "line": "Street railway safety rules to gain a new section", "flags": {}}
+{"id": "journalofproceed1920sanfrich|833", "y": 1920, "line": "Street levels on Folsom Street between Tompkins and Crescent to change", "flags": {}}
+{"id": "journalofproceed1920sanfrich|835", "y": 1920, "line": "Street levels on Twenty-fifth Street between Homestead and Hoffman to change", "flags": {}}
+{"id": "journalofproceed1920sanfrich|838", "y": 1920, "line": "Street levels on Prentiss Street near Cortland Avenue to be changed", "flags": {}}
+{"id": "journalofproceed1920sanfrich|875", "y": 1920, "line": "Fire limits would spread west of Van Ness to Franklin Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|883", "y": 1920, "line": "Map of Balboa Terrace approved with its new streets", "flags": {}}
+{"id": "journalofproceed1920sanfrich|885", "y": 1920, "line": "New auction rules referred to the finance and judiciary committee", "flags": {}}
+{"id": "journalofproceed1920sanfrich|889", "y": 1920, "line": "$500 paid the Panama-Pacific Exposition Company for the Auditorium canopy", "flags": {}}
+{"id": "journalofproceed1920sanfrich|900", "y": 1920, "line": "Pacific States Construction allowed blasting only in daylight hours", "flags": {}}
+{"id": "journalofproceed1920sanfrich|908", "y": 1920, "line": "Stable for forty horses at 3112 Octavia Street transferred to Cheli", "flags": {}}
+{"id": "journalofproceed1920sanfrich|916", "y": 1920, "line": "Amendment on electing judges lost; Supervisor Hayden gives notice of reconsideration", "flags": {}}
+{"id": "journalofproceed1920sanfrich|930", "y": 1920, "line": "Second-hand auto parts dealers to pay a $40 yearly licence", "flags": {}}
+{"id": "journalofproceed1920sanfrich|931", "y": 1920, "line": "Amusement parks would pay $1,000 a year for a licence", "flags": {}}
+{"id": "journalofproceed1920sanfrich|939", "y": 1920, "line": "Second-hand auto parts dealers must pay a $40 yearly licence", "flags": {}}
+{"id": "journalofproceed1920sanfrich|940", "y": 1920, "line": "Amusement parks must pay $1,000 a year for a licence", "flags": {}}
+{"id": "journalofproceed1920sanfrich|950", "y": 1920, "line": "Flinn & Treacy given thirty more days on Wolfe Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|951", "y": 1920, "line": "Charges for improving Ramsell Street between Garfield and Shields confirmed", "flags": {}}
+{"id": "journalofproceed1920sanfrich|954", "y": 1920, "line": "Move to revoke Ruben Hoyle's garage permit sent to committee", "flags": {}}
+{"id": "journalofproceed1920sanfrich|960", "y": 1920, "line": "District near Esmeralda Avenue and Elsie Street to pay for improvement", "flags": {}}
+{"id": "journalofproceed1920sanfrich|979", "y": 1920, "line": "Six supervisors named to a committee", "flags": {}}
+{"id": "journalofproceed1920sanfrich|985", "y": 1920, "line": "Ramsell Street work to be paid off over twenty years", "flags": {}}
+{"id": "journalofproceed1920sanfrich|987", "y": 1920, "line": "Work ordered to start on the Aquatic Park at North Beach", "flags": {}}
+{"id": "journalofproceed1920sanfrich|991", "y": 1920, "line": "$11,079.20 sought for higher Municipal Railway wages in August", "flags": {}}
+{"id": "journalofproceed1920sanfrich|999", "y": 1920, "line": "Gus Janson granted a public garage at 2080 Market Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1013", "y": 1920, "line": "Permit for Joseph Pasqualetti's premises on Washington Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1014", "y": 1920, "line": "Permit for Edward Cerutti's premises at Taylor and Chestnut streets transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1015", "y": 1920, "line": "Permit for Dunton & Huff's premises on Filbert Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1016", "y": 1920, "line": "Permit for O. F. Taber's premises on Valencia Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1017", "y": 1920, "line": "Permit for Howard & Connelly's premises on Ellis Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1018", "y": 1920, "line": "Permit for Joseph J. Smith's premises at 639 Turk Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1033", "y": 1920, "line": "Bills paid for school building work and water for fire hydrants", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1036", "y": 1920, "line": "Gus Janson granted a public garage at 2080 Market Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1039", "y": 1920, "line": "Permit for Joseph Pasqualetti's premises on Washington Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1040", "y": 1920, "line": "Permit for Edward Cerutti's premises at Taylor and Chestnut streets transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1041", "y": 1920, "line": "Permit for Dunton & Huff's premises on Filbert Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1042", "y": 1920, "line": "Permit for O. F. Taber's premises on Valencia Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1043", "y": 1920, "line": "Permit for Howard & Connelly's premises on Ellis Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1044", "y": 1920, "line": "Permit for Joseph J. Smith's premises at 639 Turk Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1047", "y": 1920, "line": "New dyeing and cleaning shops must be built to stricter classes", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1061", "y": 1920, "line": "Golden Gate Kennel Club and Verdi Club granted Auditorium halls", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1065", "y": 1920, "line": "Permit for Milton and Maurice Righetti's premises on California Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1066", "y": 1920, "line": "Permit for Thomas Lundy's premises on Frederick Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1067", "y": 1920, "line": "Permit for J. B. Ritter's premises at 819-835 Ellis Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1068", "y": 1920, "line": "Permit for F. A. Brinkman's premises at 249 Hyde Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1069", "y": 1920, "line": "Permit for Charles H. Blake's premises at 1461 Pine Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1070", "y": 1920, "line": "Permit for E. H. Paul's premises at 1213 Fell Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1071", "y": 1920, "line": "Permit for Daniel and Thomas O'Day's premises on Belcher Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1072", "y": 1920, "line": "Jesuit Fathers allowed an oil tank on Fulton Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1076", "y": 1920, "line": "Amusement park allowed on the Great Highway between Balboa and Fulton", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1077", "y": 1920, "line": "South San Francisco Parlor allowed a masquerade ball at Masonic Hall", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1083", "y": 1920, "line": "Permit for Milton and Maurice Righetti's premises on California Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1084", "y": 1920, "line": "Permit for Thomas Lundy's premises on Frederick Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1085", "y": 1920, "line": "Permit for J. B. Ritter's premises at 819-835 Ellis Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1086", "y": 1920, "line": "Permit for F. A. Brinkman's premises at 249 Hyde Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1087", "y": 1920, "line": "Permit for Charles H. Blake's premises at 1461 Pine Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1088", "y": 1920, "line": "Permit for E. H. Paul's premises at 1213 Fell Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1089", "y": 1920, "line": "Permit for Daniel and Thomas O'Day's premises on Belcher Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1090", "y": 1920, "line": "Jesuit Fathers allowed an oil tank on Fulton Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1092", "y": 1920, "line": "Amusement park allowed on the Great Highway between Balboa and Fulton", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1094", "y": 1920, "line": "Permit for Bosc's premises on Clay Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1095", "y": 1920, "line": "Permit for H. A. Schroeder's premises on Green Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1096", "y": 1920, "line": "Permit for Charles Eichbaum's premises at 150 Valencia Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1097", "y": 1920, "line": "Permit for F. E. Pearson's premises on Clay Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1098", "y": 1920, "line": "Vittario Garibaldi allowed a 45 horsepower boiler on Silver Avenue", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1107", "y": 1920, "line": "Permit for Knight & Twohig's premises at 1220 Valencia Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1108", "y": 1920, "line": "Permit for P. A. McDonald's premises on Valencia Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1109", "y": 1920, "line": "Langendorf Baking granted a garage at 1160 McAllister Street", "flags": {"overstates": ["laid over", "granted"]}}
+{"id": "journalofproceed1920sanfrich|1113", "y": 1920, "line": "Owners agree to convey land at Lower Terrace and Saturn Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1119", "y": 1920, "line": "Permit for Bosc's premises on Clay Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1120", "y": 1920, "line": "Permit for H. A. Schroeder's premises on Green Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1121", "y": 1920, "line": "Permit for Charles Eichbaum's premises at 150 Valencia Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1122", "y": 1920, "line": "Permit for F. E. Pearson's premises on Clay Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1123", "y": 1920, "line": "Vittario Garibaldi allowed a 45 horsepower boiler on Silver Avenue", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1125", "y": 1920, "line": "One drayman added at $1,620 a year", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1126", "y": 1920, "line": "$15,000 proposed for San Francisco's share of Joint Highway District", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1129", "y": 1920, "line": "Permit for California Dyeing & Cleaning Works on Clementina Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1130", "y": 1920, "line": "Permit for Duarte & Quittman's premises on Mission Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1131", "y": 1920, "line": "Permit for E. L. Heuter's premises at 1361 Bush Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1132", "y": 1920, "line": "Permit for B. C. Leighton's premises on Larkin Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1133", "y": 1920, "line": "Ten public garages granted permits, each storing 300 gallons of gasoline", "flags": {"overstates": ["laid over", "granted"]}}
+{"id": "journalofproceed1920sanfrich|1137", "y": 1920, "line": "Chinese Flood and Famine Relief Committee granted an amusement park permit", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1142", "y": 1920, "line": "Auditorium's Main Hall granted for the film \"Shadows of the West\"", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1150", "y": 1920, "line": "Permit for Knight & Twohig's premises at 1220 Valencia Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1151", "y": 1920, "line": "Permit for P. A. McDonald's premises on Valencia Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1152", "y": 1920, "line": "Langendorf Baking granted a garage at 1160 McAllister Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1159", "y": 1920, "line": "Permit for California Dyeing & Cleaning Works on Clementina Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1160", "y": 1920, "line": "Permit for Duarte & Quittman's premises on Mission Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1161", "y": 1920, "line": "Permit for E. L. Heuter's premises at 1361 Bush Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1162", "y": 1920, "line": "Permit for B. C. Leighton's premises on Larkin Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1163", "y": 1920, "line": "Ten public garages granted permits, each storing 300 gallons of gasoline", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1164", "y": 1920, "line": "Permit for Knight & Twohig's premises at 1220 Valencia Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1165", "y": 1920, "line": "Permit for P. A. McDonald's premises on Valencia Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1166", "y": 1920, "line": "Langendorf Baking granted a garage at 1160 McAllister Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1175", "y": 1920, "line": "Permit for Edward Cox's premises at Ninth and Judah transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1176", "y": 1920, "line": "Permit for Dock Motor Co. at 1350 California Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1177", "y": 1920, "line": "Permit for St. Francis Automobile Co. on Powell Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1178", "y": 1920, "line": "Permit for H. J. Rogers at 645 Haight Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1179", "y": 1920, "line": "Permit for John Lee's premises on Sutter Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1180", "y": 1920, "line": "Permit for A. C. Kuhn's premises on Geary Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1181", "y": 1920, "line": "Permit for Johnson & Richman's premises on California Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1182", "y": 1920, "line": "Permit for F. E. Pearson's premises on Clay Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1194", "y": 1920, "line": "Paul Steindorff granted the Auditorium's Main Hall for the \"Messiah\"", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1196", "y": 1920, "line": "Amusement park permit granted, ending December 20", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1210", "y": 1920, "line": "City land near Yosemite proposed for a tourist camp and lodge", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1213", "y": 1920, "line": "City Attorney asked to draft a law transferring the state's waterfront", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1214", "y": 1920, "line": "Hugh J. Doyle granted a permit for an amusement park", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1221", "y": 1920, "line": "Permit for Edward Cox's premises at Ninth and Judah transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1222", "y": 1920, "line": "Permit for Dock Motor Co. at 1350 California Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1223", "y": 1920, "line": "Permit for St. Francis Automobile Co. on Powell Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1224", "y": 1920, "line": "Permit for John Lee's premises on Sutter Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1225", "y": 1920, "line": "Permit for Dow & Green's premises on Taylor Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1226", "y": 1920, "line": "Permit for A. C. Kuhn's premises on Geary Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1227", "y": 1920, "line": "Permit for Johnson & Richman's premises on California Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1235", "y": 1920, "line": "$7,500 paid as San Francisco's share of Joint Highway District", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1241", "y": 1920, "line": "City land near Yosemite to be leased for a tourist camp", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1248", "y": 1920, "line": "Permit for Schirner & Williams at 639 Turk Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1249", "y": 1920, "line": "Alice E. Duncan granted a public garage at 1600 Buchanan Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1253", "y": 1920, "line": "Board of Public Works recommends new street levels on Bocana Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1254", "y": 1920, "line": "Frederick A. Teasland swaps land with the city on Market Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1259", "y": 1920, "line": "Permit for Schirner & Williams at 639 Turk Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1260", "y": 1920, "line": "Alice E. Duncan granted a public garage at 1600 Buchanan Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1270", "y": 1920, "line": "Speeding street cars on Market Street referred to a committee", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1272", "y": 1920, "line": "Golden Gate Ferry Company allowed a terminal at Laguna Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1275", "y": 1920, "line": "$729.16 paid to city organist Edwin H. Lemare for December", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1281", "y": 1920, "line": "Permit for F. H. Robinson's premises at 3512 Sixteenth Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1282", "y": 1920, "line": "Permit for P. J. Mehegan's premises on Pine Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1283", "y": 1920, "line": "Permit for James Hutton's premises on Sacramento Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1304", "y": 1920, "line": "City Attorney asked to drop condemnation of Parkside School parcels", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1310", "y": 1920, "line": "$729.16 paid to city organist Edwin H. Lemare for December", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1312", "y": 1920, "line": "Permit for F. H. Robinson's premises at 3512 Sixteenth Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1313", "y": 1920, "line": "Permit for P. J. Mehegan's premises on Pine Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1314", "y": 1920, "line": "Permit for James Hutton's premises on Sacramento Street transferred", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1318", "y": 1920, "line": "Golden Gate Ferry Company allowed a terminal at Laguna Street", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1323", "y": 1920, "line": "Street levels on Twenty-first Street between Church and Sanchez to change", "flags": {}}
+{"id": "journalofproceed1920sanfrich|1327", "y": 1920, "line": "Fire Department blacksmiths set at $8.00 a day", "flags": {}}
+{"id": "journalofproceed1922sanfrich|2", "y": 1922, "line": "Rules of proceedings adopted for 1922, with standing committees listed", "flags": {}}
+{"id": "journalofproceed1922sanfrich|6", "y": 1922, "line": "Plan to change street levels on Santiago Street dropped", "flags": {}}
+{"id": "journalofproceed1922sanfrich|8", "y": 1922, "line": "Shops proposed for Twentieth Street between Mission and San Carlos", "flags": {}}
+{"id": "journalofproceed1922sanfrich|11", "y": 1922, "line": "Standard Plating Works allowed a boiler at 288 First Street", "flags": {}}
+{"id": "journalofproceed1922sanfrich|32", "y": 1922, "line": "A woodworking shop with a planer allowed on Golden Gate Avenue", "flags": {}}
+{"id": "journalofproceed1922sanfrich|35", "y": 1922, "line": "Augusta Street work to be paid off over ten years", "flags": {}}
+{"id": "journalofproceed1922sanfrich|46", "y": 1922, "line": "William Davis allowed a brass melting furnace on Fourteenth Street", "flags": {}}
+{"id": "journalofproceed1922sanfrich|62", "y": 1922, "line": "Board of Public Works recommends street levels for Vicente Street", "flags": {}}
+{"id": "journalofproceed1922sanfrich|65", "y": 1922, "line": "Resolution referred to the Judiciary Committee with no subject given", "flags": {}}
+{"id": "journalofproceed1922sanfrich|66", "y": 1922, "line": "Transfer of Aquatic Park to the Park Commission referred to committee", "flags": {}}
+{"id": "journalofproceed1922sanfrich|67", "y": 1922, "line": "Sympathy voted for three firemen killed at Sutter and Broderick", "flags": {}}
+{"id": "journalofproceed1922sanfrich|74", "y": 1922, "line": "William Davis allowed a brass melting furnace on Fourteenth Street", "flags": {}}
+{"id": "journalofproceed1922sanfrich|91", "y": 1922, "line": "A claim approved with no subject given on this page", "flags": {}}
+{"id": "journalofproceed1922sanfrich|92", "y": 1922, "line": "$2,156.34 set aside to move Belt Line tracks for Aquatic Park", "flags": {}}
+{"id": "journalofproceed1922sanfrich|95", "y": 1922, "line": "Supervisor Hynes objects to paying for signs in Wyoming and Dakota", "flags": {}}
+{"id": "journalofproceed1922sanfrich|96", "y": 1922, "line": "Aquatic Park would pass to the Park Commission with $79,098.71", "flags": {}}
+{"id": "journalofproceed1922sanfrich|99", "y": 1922, "line": "Fire hydrants sought for Mission Terrace, where mains are too small", "flags": {}}
+{"id": "journalofproceed1922sanfrich|104", "y": 1922, "line": "Elizabeth W. Coit offers Valencia Street land for a school", "flags": {}}
+{"id": "journalofproceed1922sanfrich|106", "y": 1922, "line": "C. Siverson's land on Grove Street bought for $12,000 for schools", "flags": {}}
+{"id": "journalofproceed1922sanfrich|111", "y": 1922, "line": "Margaret Wallace offers Twenty-third Street land for a school", "flags": {}}
+{"id": "journalofproceed1922sanfrich|113", "y": 1922, "line": "Marshall F. Jones's land on Webster Street bought for $7,500", "flags": {}}
+{"id": "journalofproceed1922sanfrich|117", "y": 1922, "line": "Street levels changed on Vicente Street near Forest Side Avenue", "flags": {}}
+{"id": "journalofproceed1922sanfrich|123", "y": 1922, "line": "A claim approved with no subject given on this page", "flags": {}}
+{"id": "journalofproceed1922sanfrich|150", "y": 1922, "line": "Golden Gate Kennel Club granted an Auditorium hall for a show", "flags": {}}
+{"id": "journalofproceed1922sanfrich|151", "y": 1922, "line": "City planning change for Fulton Street passed for printing", "flags": {}}
+{"id": "journalofproceed1922sanfrich|154", "y": 1922, "line": "Bills paid for Belt Line track and a Municipal Railway truck", "flags": {}}
+{"id": "journalofproceed1922sanfrich|166", "y": 1922, "line": "City Engineer asked about a tunnel under Buena Vista Park", "flags": {}}
+{"id": "journalofproceed1922sanfrich|186", "y": 1922, "line": "Rock quarries would be banned across much of the city", "flags": {}}
+{"id": "journalofproceed1922sanfrich|187", "y": 1922, "line": "Rock-crushing machines would be banned across much of the city", "flags": {}}
+{"id": "journalofproceed1922sanfrich|188", "y": 1922, "line": "Playground land between Second and Third avenues referred to committee", "flags": {}}
+{"id": "journalofproceed1922sanfrich|191", "y": 1922, "line": "Bills paid for Hetch Hetchy tunnels and Galileo High School plumbing", "flags": {}}
+{"id": "journalofproceed1922sanfrich|226", "y": 1922, "line": "Mary L. Allyne's land on Union Street bought for $4,000", "flags": {}}
+{"id": "journalofproceed1922sanfrich|228", "y": 1922, "line": "Transbay bridge matters sent to two committees to consider jointly", "flags": {}}
+{"id": "journalofproceed1922sanfrich|229", "y": 1922, "line": "Public garage allowed on O'Farrell Street west of Octavia Street", "flags": {}}
+{"id": "journalofproceed1922sanfrich|246", "y": 1922, "line": "National Slovak Society allowed a masquerade ball at 739 Page Street", "flags": {}}
+{"id": "journalofproceed1922sanfrich|247", "y": 1922, "line": "Mayor Rolph commended for winning $5 a day for ex-service men", "flags": {}}
+{"id": "journalofproceed1922sanfrich|251", "y": 1922, "line": "Charles Harlowe granted blasting rights at Main and Market streets", "flags": {}}
+{"id": "journalofproceed1922sanfrich|263", "y": 1922, "line": "Oil tanks allowed for Louise Thomas and Paul Marty", "flags": {}}
+{"id": "journalofproceed1922sanfrich|277", "y": 1922, "line": "A motion carried with no subject on this page", "flags": {}}
+{"id": "journalofproceed1922sanfrich|280", "y": 1922, "line": "Ordinance against pictures stirring class or race hatred referred to committees", "flags": {}}
+{"id": "journalofproceed1922sanfrich|289", "y": 1922, "line": "Oil tanks allowed for Louise Thomas and Paul Marty", "flags": {}}
+{"id": "journalofproceed1922sanfrich|295", "y": 1922, "line": "Nellie Ahearn paid $9,084 for land for the Dudley Stone School", "flags": {}}
+{"id": "journalofproceed1922sanfrich|296", "y": 1922, "line": "Rose Kincaid paid $9,250 for land for the Dudley Stone School", "flags": {}}
+{"id": "journalofproceed1922sanfrich|297", "y": 1922, "line": "Henry Curran paid $8,750 for land for the Dudley Stone School", "flags": {}}
+{"id": "journalofproceed1922sanfrich|298", "y": 1922, "line": "Josephine Murray paid $7,500 for land for the Pacific Heights School", "flags": {}}
+{"id": "journalofproceed1922sanfrich|299", "y": 1922, "line": "Henry Myers paid for land west of Webster Street", "flags": {}}
+{"id": "journalofproceed1922sanfrich|300", "y": 1922, "line": "Daniel O'Day paid $7,750 for land for the Edison School", "flags": {}}
+{"id": "journalofproceed1922sanfrich|316", "y": 1922, "line": "Street levels on Market Street and Grand View Avenue to change", "flags": {}}
+{"id": "journalofproceed1922sanfrich|320", "y": 1922, "line": "Nellie Ahearn paid $9,084 for land on Waller Street", "flags": {}}
+{"id": "journalofproceed1922sanfrich|321", "y": 1922, "line": "Rose Kincaid paid $9,250 for land on Waller Street", "flags": {}}
+{"id": "journalofproceed1922sanfrich|322", "y": 1922, "line": "Henry Curran paid $8,750 for land for the Dudley Stone School", "flags": {}}
+{"id": "journalofproceed1922sanfrich|323", "y": 1922, "line": "Josephine Murray paid $7,500 for land on Webster Street", "flags": {}}
+{"id": "journalofproceed1922sanfrich|324", "y": 1922, "line": "Henry Myers paid for land for the Pacific Heights School", "flags": {}}
+{"id": "journalofproceed1922sanfrich|325", "y": 1922, "line": "Daniel O'Day paid $7,750 for land for the Edison School", "flags": {}}
+{"id": "journalofproceed1922sanfrich|327", "y": 1922, "line": "$2,225.75 set aside for Emergency Hospital equipment and printing", "flags": {}}
+{"id": "journalofproceed1922sanfrich|345", "y": 1922, "line": "Jacka & Pelsinger allowed an auto supply station on Valencia Street", "flags": {}}
+{"id": "journalofproceed1922sanfrich|351", "y": 1922, "line": "Board of Public Works recommends street levels on Fifteenth and Florida", "flags": {}}
+{"id": "journalofproceed1922sanfrich|352", "y": 1922, "line": "Supervisor James B. McSheehy granted sixty days' leave of absence", "flags": {}}
+{"id": "journalofproceed1922sanfrich|353", "y": 1922, "line": "City Engineer asked about sending Geary Street cars along Taylor Street", "flags": {}}
+{"id": "journalofproceed1922sanfrich|384", "y": 1922, "line": "Mercantile Trust paid $7,800 for Dudley Stone School land on Waller", "flags": {}}
+{"id": "journalofproceed1922sanfrich|388", "y": 1922, "line": "Part of Waller Street between Laguna and Buchanan to be closed", "flags": {}}
+{"id": "journalofproceed1922sanfrich|396", "y": 1922, "line": "Land on Kearny and Greenwich streets needed by the city", "flags": {}}
+{"id": "journalofproceed1922sanfrich|397", "y": 1922, "line": "A San Bruno Avenue ordinance introduced", "flags": {}}
+{"id": "journalofproceed1922sanfrich|399", "y": 1922, "line": "Four requests to change land use refused, including National Ice Cream", "flags": {}}
+{"id": "journalofproceed1922sanfrich|400", "y": 1922, "line": "City Planning Commission asked about easing housing rules on Lake Street", "flags": {"invented": ["Commission"]}}
+{"id": "journalofproceed1922sanfrich|405", "y": 1922, "line": "United States Steel Products given thirty more days on rail delivery", "flags": {}}
+{"id": "journalofproceed1922sanfrich|406", "y": 1922, "line": "Land accepted for the Villamar Avenue extension, now an open street", "flags": {}}
+{"id": "journalofproceed1922sanfrich|407", "y": 1922, "line": "Map of the Villamar Avenue extension approved and the street opened", "flags": {}}
+{"id": "journalofproceed1922sanfrich|414", "y": 1922, "line": "Board of Education urged to rebuild the Everett School", "flags": {}}
+{"id": "journalofproceed1922sanfrich|415", "y": 1922, "line": "Playground land sought east of Seventh and south of Mission streets", "flags": {}}
+{"id": "journalofproceed1922sanfrich|417", "y": 1922, "line": "Rock-crushing machines would be banned across much of the city", "flags": {}}
+{"id": "sfbos:bag010720|2", "y": 2020, "line": "A final vote with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag010720|4", "y": 2020, "line": "Development agreement amendments accepted and the ordinance finally passed.", "flags": {}}
+{"id": "sfbos:bag010720|11", "y": 2020, "line": "Sidewalk narrowing proposed on Pierce Street between O'Farrell and Ellis.", "flags": {}}
+{"id": "sfbos:bag011420|5", "y": 2020, "line": "Sidewalk narrowing proposed on Pierce Street between O'Farrell and Ellis.", "flags": {}}
+{"id": "sfbos:bag011420|7", "y": 2020, "line": "A final vote with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag011420|15", "y": 2020, "line": "Earlier steps on an unnamed project would be ratified.", "flags": {}}
+{"id": "sfbos:bag011420|16", "y": 2020, "line": "A vote with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag011420|21", "y": 2020, "line": "A vote with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag011420|41", "y": 2020, "line": "A vote with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag011420|43", "y": 2020, "line": "A vote with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag011420|91", "y": 2020, "line": "Vallejo and Davis Streets to be closed for Teatro ZinZanni.", "flags": {}}
+{"id": "sfbos:bag011420|93", "y": 2020, "line": "Speakers raise hospital staffing, homelessness and housing at public comment.", "flags": {}}
+{"id": "sfbos:bag011420|116", "y": 2020, "line": "Ratifying earlier steps on an unnamed project sent to committee.", "flags": {}}
+{"id": "sfbos:bag011420|118", "y": 2020, "line": "Mayor's housing office lease deal sent to Budget and Finance.", "flags": {}}
+{"id": "sfbos:bag011420|120", "y": 2020, "line": "Homelessness department deal with bigger city share sent to committee.", "flags": {}}
+{"id": "sfbos:bag011420|122", "y": 2020, "line": "Homelessness department agreement, to start after approval, sent to committee.", "flags": {}}
+{"id": "sfbos:bag011420|124", "y": 2020, "line": "An unnamed resolution sent to the Budget and Finance Committee.", "flags": {}}
+{"id": "sfbos:bag011420|128", "y": 2020, "line": "An ordinance found to fit the city's General Plan.", "flags": {}}
+{"id": "sfbos:bag011420|129", "y": 2020, "line": "A resolution adopted January 14 and assigned to the Board.", "flags": {}}
+{"id": "sfbos:bag012820|67", "y": 2020, "line": "All references to the planning commission struck from an ordinance.", "flags": {}}
+{"id": "sfbos:bag012820|68", "y": 2020, "line": "Findings added, and the measure passes a first reading only.", "flags": {}}
+{"id": "sfbos:bag012820|72", "y": 2020, "line": "A group of items approved with no subject named.", "flags": {}}
+{"id": "sfbos:bag012820|81", "y": 2020, "line": "Appeal over the Page Street bikeway put off to February 4.", "flags": {}}
+{"id": "sfbos:bag020420|35", "y": 2020, "line": "Earlier steps on an unnamed project and application ratified.", "flags": {}}
+{"id": "sfbos:bag020420|37", "y": 2020, "line": "A resolution adopted, its subject not named on this page.", "flags": {}}
+{"id": "sfbos:bag020420|60", "y": 2020, "line": "Street closing proposed at 301 Mission Street for Millennium Tower.", "flags": {}}
+{"id": "sfbos:bag020420|72", "y": 2020, "line": "A matter approved with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag020420|85", "y": 2020, "line": "Coalition for Adequate Review's Page Street bikeway appeal heard and filed.", "flags": {}}
+{"id": "sfbos:bag021120|9", "y": 2020, "line": "Mayor's housing office lease and leaseback deal adopted.", "flags": {}}
+{"id": "sfbos:bag021120|20", "y": 2020, "line": "Appeal over a four-lot subdivision put off to March 10.", "flags": {}}
+{"id": "sfbos:bag021120|21", "y": 2020, "line": "Approval of the Planning Commission's decision proposed.", "flags": {}}
+{"id": "sfbos:bag021120|23", "y": 2020, "line": "A matter put off to the meeting of March 10.", "flags": {}}
+{"id": "sfbos:bag021120|24", "y": 2020, "line": "Reversal of the Planning Commission's decision proposed, with conditions.", "flags": {}}
+{"id": "sfbos:bag021120|26", "y": 2020, "line": "A matter put off to the meeting of March 10.", "flags": {}}
+{"id": "sfbos:bag021120|28", "y": 2020, "line": "A matter put off to the meeting of March 10.", "flags": {}}
+{"id": "sfbos:bag021120|30", "y": 2020, "line": "An ordinance found to fit the city's General Plan.", "flags": {}}
+{"id": "sfbos:bag021120|31", "y": 2020, "line": "Hearing held on the proposed Vallejo and Davis street closing.", "flags": {}}
+{"id": "sfbos:bag021120|33", "y": 2020, "line": "An ordinance found to fit the city's General Plan.", "flags": {}}
+{"id": "sfbos:bag021120|41", "y": 2020, "line": "A group of items approved with no subject named.", "flags": {}}
+{"id": "sfbos:bag022520|8", "y": 2020, "line": "An ordinance found to fit the city's General Plan.", "flags": {}}
+{"id": "sfbos:bag022520|9", "y": 2020, "line": "An ordinance finally passed, its subject not named here.", "flags": {}}
+{"id": "sfbos:bag022520|16", "y": 2020, "line": "Homelessness department deal adopted, with the city contributing more.", "flags": {}}
+{"id": "sfbos:bag022520|36", "y": 2020, "line": "A matter set aside with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag022520|38", "y": 2020, "line": "A matter set aside with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag022520|40", "y": 2020, "line": "A matter set aside with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag022520|58", "y": 2020, "line": "Appeal over 2300 Harrison Street tabled after Planning rescinds finding.", "flags": {}}
+{"id": "sfbos:bag030320|22", "y": 2020, "line": "Homelessness department agreement adopted, to start after approval.", "flags": {}}
+{"id": "sfbos:bag030320|29", "y": 2020, "line": "Real Estate Department deal adopted with the required findings.", "flags": {}}
+{"id": "sfbos:bag030320|40", "y": 2020, "line": "Hearing held on the Millennium Tower street closing at 301 Mission.", "flags": {}}
+{"id": "sfbos:bag030320|44", "y": 2020, "line": "A matter put off to the meeting of April 14.", "flags": {}}
+{"id": "sfbos:bag030320|46", "y": 2020, "line": "A matter put off to the meeting of April 14.", "flags": {}}
+{"id": "sfbos:bag030320|48", "y": 2020, "line": "A matter put off to the meeting of April 14.", "flags": {}}
+{"id": "sfbos:bag030320|104", "y": 2020, "line": "Howard and Kissling Street appeal put off to April 14.", "flags": {}}
+{"id": "sfbos:bag031020|34", "y": 2020, "line": "Appeal over a four-lot subdivision put off to March 24.", "flags": {}}
+{"id": "sfbos:bag031020|35", "y": 2020, "line": "Approval of the Planning Commission's decision proposed.", "flags": {}}
+{"id": "sfbos:bag031020|37", "y": 2020, "line": "A matter put off to the meeting of March 24.", "flags": {}}
+{"id": "sfbos:bag031020|38", "y": 2020, "line": "Reversal of the Planning Commission's decision proposed, with conditions.", "flags": {}}
+{"id": "sfbos:bag031020|40", "y": 2020, "line": "A matter put off to the meeting of March 24.", "flags": {}}
+{"id": "sfbos:bag031020|42", "y": 2020, "line": "A matter put off to the meeting of March 24.", "flags": {}}
+{"id": "sfbos:bag031720|8", "y": 2020, "line": "A resolution adopted, its subject not named on this page.", "flags": {}}
+{"id": "sfbos:bag031720|12", "y": 2020, "line": "A resolution adopted, its subject not named on this page.", "flags": {}}
+{"id": "sfbos:bag031720|13", "y": 2020, "line": "$28.3M loan adopted for 108 affordable homes on South Park Street.", "flags": {}}
+{"id": "sfbos:bag032420|11", "y": 2020, "line": "$23M loan approved for Lycée Français campuses on Ashbury and Ortega.", "flags": {}}
+{"id": "sfbos:bag032420|14", "y": 2020, "line": "Appeal over a four-lot subdivision put off past the health emergency.", "flags": {}}
+{"id": "sfbos:bag032420|15", "y": 2020, "line": "Approval of the Planning Commission's decision proposed.", "flags": {}}
+{"id": "sfbos:bag032420|17", "y": 2020, "line": "A matter put off until the health emergency has ended.", "flags": {}}
+{"id": "sfbos:bag032420|18", "y": 2020, "line": "Reversal of the Planning Commission's decision proposed, with conditions.", "flags": {}}
+{"id": "sfbos:bag032420|20", "y": 2020, "line": "A matter put off until the health emergency has ended.", "flags": {}}
+{"id": "sfbos:bag032420|22", "y": 2020, "line": "A matter put off until the health emergency has ended.", "flags": {}}
+{"id": "sfbos:bag032420|24", "y": 2020, "line": "A matter put off until the health emergency has ended.", "flags": {}}
+{"id": "sfbos:bag032420|26", "y": 2020, "line": "A matter put off until the health emergency has ended.", "flags": {}}
+{"id": "sfbos:bag032420|28", "y": 2020, "line": "A matter put off until the health emergency has ended.", "flags": {}}
+{"id": "sfbos:bag032420|29", "y": 2020, "line": "Sunset-Parkside group's Taraval Street appeal put off past the emergency.", "flags": {}}
+{"id": "sfbos:bag032420|30", "y": 2020, "line": "Approval of the Planning Commission's decision proposed.", "flags": {}}
+{"id": "sfbos:bag032420|32", "y": 2020, "line": "A matter put off until the health emergency has ended.", "flags": {}}
+{"id": "sfbos:bag032420|33", "y": 2020, "line": "Reversal of the Planning Commission's decision proposed, with conditions.", "flags": {}}
+{"id": "sfbos:bag032420|35", "y": 2020, "line": "A matter put off until the health emergency has ended.", "flags": {}}
+{"id": "sfbos:bag032420|37", "y": 2020, "line": "A matter put off until the health emergency has ended.", "flags": {}}
+{"id": "sfbos:bag032420|52", "y": 2020, "line": "Appeal over 743 Vermont Street put off past the emergency.", "flags": {}}
+{"id": "sfbos:bag041420|15", "y": 2020, "line": "A matter put off until the health emergency has ended.", "flags": {}}
+{"id": "sfbos:bag041420|17", "y": 2020, "line": "A matter put off until the health emergency has ended.", "flags": {}}
+{"id": "sfbos:bag041420|19", "y": 2020, "line": "A matter put off until the health emergency has ended.", "flags": {}}
+{"id": "sfbos:bag041420|50", "y": 2020, "line": "A matter approved with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag041420|63", "y": 2020, "line": "Howard and Kissling Street appeal put off past the emergency.", "flags": {}}
+{"id": "sfbos:bag042820|13", "y": 2020, "line": "Willow Street to be renamed Earl Gage Jr. Street.", "flags": {}}
+{"id": "sfbos:bag060220|16", "y": 2020, "line": "A resolution adopted, its subject not named on this page.", "flags": {}}
+{"id": "sfbos:bag060920|7", "y": 2020, "line": "Earlier steps on an unnamed project and application ratified.", "flags": {}}
+{"id": "sfbos:bag060920|9", "y": 2020, "line": "Earlier steps on an unnamed project and application ratified.", "flags": {}}
+{"id": "sfbos:bag060920|11", "y": 2020, "line": "Earlier steps on an unnamed project and application ratified.", "flags": {}}
+{"id": "sfbos:bag060920|22", "y": 2020, "line": "A matter set aside with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag060920|24", "y": 2020, "line": "A matter set aside with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag060920|26", "y": 2020, "line": "A matter set aside with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag060920|66", "y": 2020, "line": "Appeal over Larkin and North Point Streets withdrawn and tabled.", "flags": {}}
+{"id": "sfbos:bag061620|22", "y": 2020, "line": "A vote with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag061620|27", "y": 2020, "line": "Appeal over a four-lot subdivision put off to June 23.", "flags": {}}
+{"id": "sfbos:bag061620|28", "y": 2020, "line": "Approval of the Planning Commission's decision proposed.", "flags": {}}
+{"id": "sfbos:bag061620|30", "y": 2020, "line": "A matter put off to the meeting of June 23.", "flags": {}}
+{"id": "sfbos:bag061620|31", "y": 2020, "line": "Reversal of the Planning Commission's decision proposed, with conditions.", "flags": {}}
+{"id": "sfbos:bag061620|33", "y": 2020, "line": "A matter put off to the meeting of June 23.", "flags": {}}
+{"id": "sfbos:bag061620|35", "y": 2020, "line": "A matter put off to the meeting of June 23.", "flags": {}}
+{"id": "sfbos:bag061620|36", "y": 2020, "line": "Tattoo parlors would be allowed to reopen under a local variance.", "flags": {}}
+{"id": "sfbos:bag061620|37", "y": 2020, "line": "Tattoo parlors would be allowed to reopen under a local variance.", "flags": {}}
+{"id": "sfbos:bag061620|38", "y": 2020, "line": "Longer loan relief urged for taxi medallion holders.", "flags": {}}
+{"id": "sfbos:bag061620|39", "y": 2020, "line": "Tattoo parlors would be allowed to reopen under a local variance.", "flags": {}}
+{"id": "sfbos:bag061620|40", "y": 2020, "line": "Tattoo parlors would be allowed to reopen under a local variance.", "flags": {}}
+{"id": "sfbos:bag061620|41", "y": 2020, "line": "Longer loan relief urged for taxi medallion holders.", "flags": {}}
+{"id": "sfbos:bag061620|42", "y": 2020, "line": "Tattoo parlors would be allowed to reopen under a local variance.", "flags": {}}
+{"id": "sfbos:bag061620|43", "y": 2020, "line": "Tattoo parlors would be allowed to reopen under a local variance.", "flags": {}}
+{"id": "sfbos:bag061620|44", "y": 2020, "line": "Tattoo parlors would be allowed to reopen under a local variance.", "flags": {}}
+{"id": "sfbos:bag061620|45", "y": 2020, "line": "Tattoo parlors would be allowed to reopen under a local variance.", "flags": {}}
+{"id": "sfbos:bag061620|46", "y": 2020, "line": "Tattoo parlors would be allowed to reopen under a local variance.", "flags": {}}
+{"id": "sfbos:bag061620|47", "y": 2020, "line": "Tattoo parlors would be allowed to reopen under a local variance.", "flags": {}}
+{"id": "sfbos:bag061620|132", "y": 2020, "line": "Names for unnamed streets at Seawall Lot 337 sent to committee.", "flags": {}}
+{"id": "sfbos:bag061620|174", "y": 2020, "line": "A Public Health Department deal sent to Budget and Finance.", "flags": {}}
+{"id": "sfbos:bag062320|21", "y": 2020, "line": "A resolution adopted after Public Health answered the Board's questions.", "flags": {}}
+{"id": "sfbos:bag062320|50", "y": 2020, "line": "A vote with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag062320|61", "y": 2020, "line": "Subdivision appeal heard and filed after a settlement was reached.", "flags": {}}
+{"id": "sfbos:bag062320|62", "y": 2020, "line": "Approval of the Planning Commission's decision proposed.", "flags": {}}
+{"id": "sfbos:bag062320|64", "y": 2020, "line": "A matter set aside with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag062320|65", "y": 2020, "line": "Reversal of the Planning Commission's decision proposed, with conditions.", "flags": {}}
+{"id": "sfbos:bag062320|67", "y": 2020, "line": "Conditions attached to the special permission being approved.", "flags": {}}
+{"id": "sfbos:bag062320|73", "y": 2020, "line": "Supervisor Peskin moves an unnamed motion, seconded by Supervisor Mandelman.", "flags": {}}
+{"id": "sfbos:bag062320|74", "y": 2020, "line": "A matter approved with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag062320|76", "y": 2020, "line": "Approval of the Planning Commission's decision proposed.", "flags": {}}
+{"id": "sfbos:bag062320|78", "y": 2020, "line": "A matter put off to the meeting of June 30.", "flags": {}}
+{"id": "sfbos:bag062320|79", "y": 2020, "line": "Reversal of the Planning Commission's decision proposed, with conditions.", "flags": {}}
+{"id": "sfbos:bag062320|81", "y": 2020, "line": "A matter put off to the meeting of June 30.", "flags": {}}
+{"id": "sfbos:bag062320|83", "y": 2020, "line": "A matter put off to the meeting of June 30.", "flags": {}}
+{"id": "sfbos:bag062320|110", "y": 2020, "line": "A group of items approved with no subject named.", "flags": {}}
+{"id": "sfbos:bag062320|123", "y": 2020, "line": "Ratifying earlier steps on an unnamed project sent to committee.", "flags": {}}
+{"id": "sfbos:bag062320|125", "y": 2020, "line": "Ratifying earlier steps on an unnamed project sent to committee.", "flags": {}}
+{"id": "sfbos:bag062320|135", "y": 2020, "line": "Street names for Treasure Island and Yerba Buena sent to committee.", "flags": {}}
+{"id": "sfbos:bag063020|33", "y": 2020, "line": "Approval of the Planning Commission's decision proposed.", "flags": {}}
+{"id": "sfbos:bag063020|35", "y": 2020, "line": "Supervisor Mar moves an unnamed motion, seconded by Supervisor Safai.", "flags": {}}
+{"id": "sfbos:bag063020|36", "y": 2020, "line": "A matter approved with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag063020|37", "y": 2020, "line": "Reversal of the Planning Commission's decision proposed, with conditions.", "flags": {}}
+{"id": "sfbos:bag063020|39", "y": 2020, "line": "A matter set aside with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag063020|41", "y": 2020, "line": "A matter set aside with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag070720|26", "y": 2020, "line": "Findings drawn up to support overturning the Planning Commission's decision.", "flags": {}}
+{"id": "sfbos:bag070720|28", "y": 2020, "line": "A group of items approved with no subject named.", "flags": {}}
+{"id": "sfbos:bag071420|45", "y": 2020, "line": "A vote with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag072120|29", "y": 2020, "line": "A Public Health Department deal is moved by Supervisor Fewer.", "flags": {}}
+{"id": "sfbos:bag072120|30", "y": 2020, "line": "The sum raised from $6.2M to $6.5M by amendment.", "flags": {}}
+{"id": "sfbos:bag072120|31", "y": 2020, "line": "A resolution adopted as amended, with no subject named.", "flags": {}}
+{"id": "sfbos:bag072120|35", "y": 2020, "line": "Earlier steps on an unnamed project would be ratified.", "flags": {}}
+{"id": "sfbos:bag072120|36", "y": 2020, "line": "A vote with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag072120|38", "y": 2020, "line": "Earlier steps on an unnamed project would be ratified.", "flags": {}}
+{"id": "sfbos:bag072120|39", "y": 2020, "line": "A vote with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag072120|56", "y": 2020, "line": "Commendations suspended while the local health emergency lasts.", "flags": {}}
+{"id": "sfbos:bag072120|61", "y": 2020, "line": "Supervisor Walton moves an unnamed motion, seconded by Supervisor Safai.", "flags": {}}
+{"id": "sfbos:bag072120|62", "y": 2020, "line": "A matter approved with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag072120|64", "y": 2020, "line": "A matter set aside with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag072120|66", "y": 2020, "line": "A matter set aside with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag072120|145", "y": 2020, "line": "Appeal over 743 Vermont Street heard and filed.", "flags": {}}
+{"id": "sfbos:bag072820|56", "y": 2020, "line": "A matter set aside with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag072820|58", "y": 2020, "line": "Supervisor Stefani moves an unnamed motion, seconded by Supervisor Peskin.", "flags": {}}
+{"id": "sfbos:bag072820|59", "y": 2020, "line": "A matter approved with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag072820|61", "y": 2020, "line": "Supervisor Stefani moves an unnamed motion, seconded by Supervisor Peskin.", "flags": {}}
+{"id": "sfbos:bag072820|62", "y": 2020, "line": "A matter approved with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag072820|64", "y": 2020, "line": "A matter put off to the meeting of August 25.", "flags": {}}
+{"id": "sfbos:bag072820|66", "y": 2020, "line": "A matter put off to the meeting of August 25.", "flags": {}}
+{"id": "sfbos:bag072820|68", "y": 2020, "line": "A matter put off to the meeting of August 25.", "flags": {}}
+{"id": "sfbos:bag072820|69", "y": 2020, "line": "Four-home vacant lot appeal put off to August 25.", "flags": {}}
+{"id": "sfbos:bag072820|70", "y": 2020, "line": "Approval of the Planning Commission's decision proposed.", "flags": {}}
+{"id": "sfbos:bag072820|72", "y": 2020, "line": "A matter put off to the meeting of August 25.", "flags": {}}
+{"id": "sfbos:bag072820|73", "y": 2020, "line": "Reversal of the Planning Commission's decision proposed, with conditions.", "flags": {}}
+{"id": "sfbos:bag072820|75", "y": 2020, "line": "A matter put off to the meeting of August 25.", "flags": {}}
+{"id": "sfbos:bag072820|77", "y": 2020, "line": "A matter put off to the meeting of August 25.", "flags": {}}
+{"id": "sfbos:bag072820|124", "y": 2020, "line": "Hearing proposed on Mission Bay South changes at Third and Channel.", "flags": {}}
+{"id": "sfbos:bag072820|128", "y": 2020, "line": "Appeal over 2651-2653 Octavia Street heard and filed.", "flags": {}}
+{"id": "sfbos:bag072820|129", "y": 2020, "line": "Appeal over 1846 Grove Street put off to August 25.", "flags": {}}
+{"id": "sfbos:bag081120|33", "y": 2020, "line": "Supervisor Haney moves an unnamed motion, seconded by Supervisor Fewer.", "flags": {}}
+{"id": "sfbos:bag081120|34", "y": 2020, "line": "A matter approved with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag081120|36", "y": 2020, "line": "A matter set aside with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag081120|38", "y": 2020, "line": "A matter set aside with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag081120|39", "y": 2020, "line": "A hearing put off to September 1 after public comment.", "flags": {}}
+{"id": "sfbos:bag081120|41", "y": 2020, "line": "A matter put off to the meeting of September 1.", "flags": {}}
+{"id": "sfbos:bag081120|43", "y": 2020, "line": "A matter put off to the meeting of September 1.", "flags": {}}
+{"id": "sfbos:bag081120|45", "y": 2020, "line": "A matter put off to the meeting of September 1.", "flags": {}}
+{"id": "sfbos:bag081120|63", "y": 2020, "line": "Hearing proposed on Mission Bay South changes at Third and Channel.", "flags": {}}
+{"id": "sfbos:bag081120|68", "y": 2020, "line": "A group of items approved with no subject named.", "flags": {}}
+{"id": "sfbos:bag081120|95", "y": 2020, "line": "Howard and Kissling Street appeal withdrawn, heard and filed.", "flags": {}}
+{"id": "sfbos:bag081820|60", "y": 2020, "line": "A matter set aside with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag081820|62", "y": 2020, "line": "Supervisor Ronen moves an unnamed motion, seconded by Supervisor Walton.", "flags": {}}
+{"id": "sfbos:bag081820|63", "y": 2020, "line": "A matter approved with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag081820|65", "y": 2020, "line": "Supervisor Ronen moves an unnamed motion, seconded by Supervisor Walton.", "flags": {}}
+{"id": "sfbos:bag081820|66", "y": 2020, "line": "A matter approved with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag081820|68", "y": 2020, "line": "A matter put off to the meeting of September 29.", "flags": {}}
+{"id": "sfbos:bag081820|70", "y": 2020, "line": "A matter put off to the meeting of September 29.", "flags": {}}
+{"id": "sfbos:bag081820|72", "y": 2020, "line": "A matter put off to the meeting of September 29.", "flags": {}}
+{"id": "sfbos:bag081820|151", "y": 2020, "line": "Appeal over 2300 Harrison Street heard and filed.", "flags": {}}
+{"id": "sfbos:bag081820|152", "y": 2020, "line": "Appeal over 617 Sanchez Street put off to September 29.", "flags": {}}
+{"id": "sfbos:bag082520|16", "y": 2020, "line": "A matter put off to the meeting of September 15.", "flags": {}}
+{"id": "sfbos:bag082520|18", "y": 2020, "line": "A matter put off to the meeting of September 15.", "flags": {}}
+{"id": "sfbos:bag082520|20", "y": 2020, "line": "A matter put off to the meeting of September 15.", "flags": {}}
+{"id": "sfbos:bag082520|22", "y": 2020, "line": "A matter put off to the meeting of September 29.", "flags": {}}
+{"id": "sfbos:bag082520|24", "y": 2020, "line": "A matter put off to the meeting of September 29.", "flags": {}}
+{"id": "sfbos:bag082520|26", "y": 2020, "line": "A matter put off to the meeting of September 29.", "flags": {}}
+{"id": "sfbos:bag082520|27", "y": 2020, "line": "Four-home vacant lot appeal put off to September 29.", "flags": {}}
+{"id": "sfbos:bag082520|28", "y": 2020, "line": "Approval of the Planning Commission's decision proposed.", "flags": {}}
+{"id": "sfbos:bag082520|30", "y": 2020, "line": "A matter put off to the meeting of September 29.", "flags": {}}
+{"id": "sfbos:bag082520|31", "y": 2020, "line": "Reversal of the Planning Commission's decision proposed, with conditions.", "flags": {}}
+{"id": "sfbos:bag082520|33", "y": 2020, "line": "A matter put off to the meeting of September 29.", "flags": {}}
+{"id": "sfbos:bag082520|35", "y": 2020, "line": "A matter put off to the meeting of September 29.", "flags": {}}
+{"id": "sfbos:bag082520|44", "y": 2020, "line": "A vote with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag082520|87", "y": 2020, "line": "A group of items approved with no subject named.", "flags": {}}
+{"id": "sfbos:bag082520|97", "y": 2020, "line": "An unnamed resolution sent to the Budget and Finance Committee.", "flags": {}}
+{"id": "sfbos:bag082520|99", "y": 2020, "line": "An unnamed resolution sent to the Budget and Finance Committee.", "flags": {}}
+{"id": "sfbos:bag082520|117", "y": 2020, "line": "Appeal over 66 Mountain Spring Avenue put off to September 15.", "flags": {}}
+{"id": "sfbos:bag082520|118", "y": 2020, "line": "Appeal over 1846 Grove Street put off to September 29.", "flags": {}}
+{"id": "sfbos:bag090120|9", "y": 2020, "line": "A matter put off to the meeting of September 15.", "flags": {}}
+{"id": "sfbos:bag090120|11", "y": 2020, "line": "A matter put off to the meeting of September 15.", "flags": {}}
+{"id": "sfbos:bag090120|13", "y": 2020, "line": "A matter put off to the meeting of September 15.", "flags": {}}
+{"id": "sfbos:bag090120|97", "y": 2020, "line": "Bernal Heights group's Folsom Street appeal put off to September 15.", "flags": {}}
+{"id": "sfbos:bag091520|78", "y": 2020, "line": "A vote with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag091520|82", "y": 2020, "line": "A Real Estate Department deal proposed with General Plan findings.", "flags": {}}
+{"id": "sfbos:bag091520|83", "y": 2020, "line": "A vote with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag091520|112", "y": 2020, "line": "Supervisor Yee moves an unnamed motion, seconded by Supervisor Peskin.", "flags": {}}
+{"id": "sfbos:bag091520|113", "y": 2020, "line": "A matter approved with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag091520|115", "y": 2020, "line": "A matter set aside with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag091520|117", "y": 2020, "line": "A matter set aside with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag091520|119", "y": 2020, "line": "Supervisor Ronen moves an unnamed motion, seconded by Supervisor Peskin.", "flags": {}}
+{"id": "sfbos:bag091520|120", "y": 2020, "line": "A matter approved with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag091520|122", "y": 2020, "line": "A matter set aside with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag091520|124", "y": 2020, "line": "A matter set aside with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag091520|126", "y": 2020, "line": "A matter put off to the meeting of September 22.", "flags": {}}
+{"id": "sfbos:bag091520|128", "y": 2020, "line": "A matter put off to the meeting of September 22.", "flags": {}}
+{"id": "sfbos:bag091520|130", "y": 2020, "line": "A matter put off to the meeting of September 22.", "flags": {}}
+{"id": "sfbos:bag091520|171", "y": 2020, "line": "An unnamed resolution sent to the Budget and Finance Committee.", "flags": {}}
+{"id": "sfbos:bag091520|196", "y": 2020, "line": "Appeal over 66 Mountain Spring Avenue heard and filed.", "flags": {}}
+{"id": "sfbos:bag091520|197", "y": 2020, "line": "Bernal Heights group's Folsom Street appeal heard and filed.", "flags": {}}
+{"id": "sfbos:bag091520|198", "y": 2020, "line": "Mountain Lake Properties' 178 Seacliff Avenue appeal heard and filed.", "flags": {}}
+{"id": "sfbos:bag092220|52", "y": 2020, "line": "Supervisor Stefani moves an unnamed motion, seconded by Supervisor Peskin.", "flags": {}}
+{"id": "sfbos:bag092220|53", "y": 2020, "line": "A matter approved with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag092220|55", "y": 2020, "line": "A matter set aside with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag092220|57", "y": 2020, "line": "A matter set aside with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag092220|102", "y": 2020, "line": "A resolution with no subject named on this page.", "flags": {}}
+{"id": "sfbos:bag092220|103", "y": 2020, "line": "A vote with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag092220|105", "y": 2020, "line": "A vote with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag092220|138", "y": 2020, "line": "Hearing opened on an appeal over merging two flats.", "flags": {}}
+{"id": "sfbos:bag092220|139", "y": 2020, "line": "A hearing put off to the meeting of October 6.", "flags": {}}
+{"id": "sfbos:bag092220|140", "y": 2020, "line": "Approval of the Planning Commission's decision proposed.", "flags": {}}
+{"id": "sfbos:bag092220|142", "y": 2020, "line": "A matter put off to the meeting of October 6.", "flags": {}}
+{"id": "sfbos:bag092220|143", "y": 2020, "line": "Reversal of the Planning Commission's decision proposed, with conditions.", "flags": {}}
+{"id": "sfbos:bag092220|145", "y": 2020, "line": "A matter put off to the meeting of October 6.", "flags": {}}
+{"id": "sfbos:bag092220|147", "y": 2020, "line": "A matter put off to the meeting of October 6.", "flags": {}}
+{"id": "sfbos:bag092220|164", "y": 2020, "line": "A hearing put off to the meeting of October 20.", "flags": {}}
+{"id": "sfbos:bag092220|166", "y": 2020, "line": "A matter put off to the meeting of October 20.", "flags": {}}
+{"id": "sfbos:bag092220|168", "y": 2020, "line": "A matter put off to the meeting of October 20.", "flags": {}}
+{"id": "sfbos:bag092220|170", "y": 2020, "line": "A matter put off to the meeting of October 20.", "flags": {}}
+{"id": "sfbos:bag092220|171", "y": 2020, "line": "A hearing put off to the meeting of October 20.", "flags": {}}
+{"id": "sfbos:bag092220|173", "y": 2020, "line": "A matter put off to the meeting of October 20.", "flags": {}}
+{"id": "sfbos:bag092220|175", "y": 2020, "line": "A matter put off to the meeting of October 20.", "flags": {}}
+{"id": "sfbos:bag092220|177", "y": 2020, "line": "A matter put off to the meeting of October 20.", "flags": {}}
+{"id": "sfbos:bag092220|270", "y": 2020, "line": "A land transfer from the Real Estate Department sent to committee.", "flags": {}}
+{"id": "sfbos:bag092220|272", "y": 2020, "line": "A lease running to August 31, 2023, with a renewal option.", "flags": {}}
+{"id": "sfbos:bag092220|273", "y": 2020, "line": "Supervisor Walton asks for laws on discrimination in city employment.", "flags": {}}
+{"id": "sfbos:bag092920|78", "y": 2020, "line": "A vote with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag092920|105", "y": 2020, "line": "Supervisor Preston moves an unnamed motion, seconded by Supervisor Peskin.", "flags": {}}
+{"id": "sfbos:bag092920|106", "y": 2020, "line": "A matter approved with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag092920|108", "y": 2020, "line": "A matter set aside with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag092920|110", "y": 2020, "line": "A matter set aside with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag092920|111", "y": 2020, "line": "Four-home vacant lot appeal heard and filed.", "flags": {}}
+{"id": "sfbos:bag092920|112", "y": 2020, "line": "Approval of the Planning Commission's decision proposed.", "flags": {}}
+{"id": "sfbos:bag092920|114", "y": 2020, "line": "A matter set aside with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag092920|115", "y": 2020, "line": "Reversal of the Planning Commission's decision proposed, with conditions.", "flags": {}}
+{"id": "sfbos:bag092920|117", "y": 2020, "line": "Supervisor Preston moves an unnamed motion, seconded by Supervisor Peskin.", "flags": {}}
+{"id": "sfbos:bag092920|118", "y": 2020, "line": "Planning Commission overruled; two units allowed with occupancy capped at 16.", "flags": {}}
+{"id": "sfbos:bag092920|120", "y": 2020, "line": "Supervisor Preston moves an unnamed motion, seconded by Supervisor Peskin.", "flags": {}}
+{"id": "sfbos:bag092920|121", "y": 2020, "line": "A matter approved with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag092920|123", "y": 2020, "line": "A matter put off to the meeting of October 27.", "flags": {}}
+{"id": "sfbos:bag092920|125", "y": 2020, "line": "A matter put off to the meeting of October 27.", "flags": {}}
+{"id": "sfbos:bag092920|127", "y": 2020, "line": "A matter put off to the meeting of October 27.", "flags": {}}
+{"id": "sfbos:bag092920|129", "y": 2020, "line": "A matter put off to the meeting of October 6.", "flags": {}}
+{"id": "sfbos:bag092920|131", "y": 2020, "line": "A matter put off to the meeting of October 6.", "flags": {}}
+{"id": "sfbos:bag092920|133", "y": 2020, "line": "A matter put off to the meeting of October 6.", "flags": {}}
+{"id": "sfbos:bag092920|165", "y": 2020, "line": "A resolution adopted, its subject not named on this page.", "flags": {}}
+{"id": "sfbos:bag092920|166", "y": 2020, "line": "A resolution would condemn antisemitic attacks on Senator Scott Wiener.", "flags": {}}
+{"id": "sfbos:bag092920|167", "y": 2020, "line": "Condemning attacks on Senator Scott Wiener goes straight to adoption.", "flags": {}}
+{"id": "sfbos:bag092920|204", "y": 2020, "line": "$3.7M Pacific Primary School loan on Grove Street sent to committee.", "flags": {}}
+{"id": "sfbos:bag092920|210", "y": 2020, "line": "A lease running to September 30, 2023, with two renewal options.", "flags": {}}
+{"id": "sfbos:bag092920|211", "y": 2020, "line": "The whole Board remembers Robert Passmore in memoriam.", "flags": {}}
+{"id": "sfbos:bag092920|212", "y": 2020, "line": "Appeal over 1846 Grove Street heard and filed.", "flags": {}}
+{"id": "sfbos:bag092920|213", "y": 2020, "line": "Appeal over 617 Sanchez Street put off to October 27.", "flags": {}}
+{"id": "sfbos:bag092920|214", "y": 2020, "line": "Appeal over 1088 Howard Street put off to October 6.", "flags": {}}
+{"id": "sfbos:bag100620|76", "y": 2020, "line": "A resolution with no subject named on this page.", "flags": {}}
+{"id": "sfbos:bag100620|77", "y": 2020, "line": "A vote with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag100620|81", "y": 2020, "line": "Supervisor Yee withdraws his own motion before a second came.", "flags": {}}
+{"id": "sfbos:bag100620|82", "y": 2020, "line": "A resolution sent back to the Budget and Finance Committee.", "flags": {}}
+{"id": "sfbos:bag100620|84", "y": 2020, "line": "Commendations suspended while the local health emergency lasts.", "flags": {}}
+{"id": "sfbos:bag100620|85", "y": 2020, "line": "Appeal over merging two flats put off to November 10.", "flags": {}}
+{"id": "sfbos:bag100620|86", "y": 2020, "line": "Approval of the Planning Commission's decision proposed.", "flags": {}}
+{"id": "sfbos:bag100620|88", "y": 2020, "line": "A matter put off to the meeting of November 10.", "flags": {}}
+{"id": "sfbos:bag100620|89", "y": 2020, "line": "Reversal of the Planning Commission's decision proposed, with conditions.", "flags": {}}
+{"id": "sfbos:bag100620|91", "y": 2020, "line": "A matter put off to the meeting of November 10.", "flags": {}}
+{"id": "sfbos:bag100620|93", "y": 2020, "line": "A matter put off to the meeting of November 10.", "flags": {}}
+{"id": "sfbos:bag100620|109", "y": 2020, "line": "Supervisor Haney moves an unnamed motion, seconded by Supervisor Safai.", "flags": {}}
+{"id": "sfbos:bag100620|110", "y": 2020, "line": "A matter approved with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag100620|112", "y": 2020, "line": "A matter set aside with no subject on this page.", "flags": {}}
+{"id": "sfbos:bag100620|155", "y": 2020, "line": "Appeal over 1088 Howard Street heard and filed.", "flags": {}}
+{"id": "journalofproceed01sanfrich|1", "y": 1906, "line": "Mowry's Hall at Laguna and Grove made the official chambers", "flags": {}}
+{"id": "journalofproceed01sanfrich|2", "y": 1906, "line": "Election Commissioners asked for 250 booths to house homeless earthquake victims", "flags": {}}
+{"id": "journalofproceed01sanfrich|3", "y": 1906, "line": "City officials take offices at 2511 and 2513 Sacramento Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|4", "y": 1906, "line": "Home Telephone Company's $25,000 certified check ordered returned", "flags": {}}
+{"id": "journalofproceed01sanfrich|5", "y": 1906, "line": "Henry Brunkhorst's $4,427 mob damage claim for 3286 Mission Street referred", "flags": {}}
+{"id": "journalofproceed01sanfrich|7", "y": 1906, "line": "Anyone holding another's horse must deliver it to Woodlawn Stables", "flags": {}}
+{"id": "journalofproceed01sanfrich|8", "y": 1906, "line": "Mayor Schmitz asked to keep cooked meals at Camp Forrest", "flags": {}}
+{"id": "journalofproceed01sanfrich|10", "y": 1906, "line": "Walter Robinson's offer of rooms at 2178 Pine Street referred", "flags": {}}
+{"id": "journalofproceed01sanfrich|27", "y": 1906, "line": "James Whitney offers park land at Fourteenth Avenue for $9,000", "flags": {}}
+{"id": "journalofproceed01sanfrich|39", "y": 1906, "line": "$3,075 proposed for Gray Bros.' street sweeping and sprinkling machines", "flags": {}}
+{"id": "journalofproceed01sanfrich|48", "y": 1906, "line": "Popular Soda Water allowed a 50 horsepower boiler on Sharon Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|52", "y": 1906, "line": "Mowry's Hall at Laguna and Grove made the official chambers", "flags": {}}
+{"id": "journalofproceed01sanfrich|53", "y": 1906, "line": "Anyone holding another's horse must deliver it to Woodlawn Stables", "flags": {}}
+{"id": "journalofproceed01sanfrich|58", "y": 1906, "line": "James Whitney offers park land at Fourteenth Avenue for $9,000", "flags": {}}
+{"id": "journalofproceed01sanfrich|64", "y": 1906, "line": "Sanitary Reduction Works' failure to burn garbage referred to committee", "flags": {}}
+{"id": "journalofproceed01sanfrich|69", "y": 1906, "line": "Payment approved to Gray Bros. for street sweeping and sprinkling machines", "flags": {}}
+{"id": "journalofproceed01sanfrich|81", "y": 1906, "line": "Presidio and Ferries Railroad's trolley plan put off pending engineer's report", "flags": {}}
+{"id": "journalofproceed01sanfrich|82", "y": 1906, "line": "Dean Reversible Window Co. asks for boilers at 553 Brannan Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|84", "y": 1906, "line": "Ordinance for buying park lands finally passed", "flags": {}}
+{"id": "journalofproceed01sanfrich|89", "y": 1906, "line": "Jno. Proll allowed an eight horsepower laundry boiler on Eighth Avenue", "flags": {}}
+{"id": "journalofproceed01sanfrich|90", "y": 1906, "line": "E. G. Lyons and Raas allowed a boiler on Bryant Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|106", "y": 1906, "line": "Complaint against San Francisco Gas over unlit Shotwell Street referred", "flags": {}}
+{"id": "journalofproceed01sanfrich|109", "y": 1906, "line": "Golden Gate Park's hay, hauling and plant bills approved", "flags": {}}
+{"id": "journalofproceed01sanfrich|110", "y": 1906, "line": "Jno. Proll allowed an eight horsepower laundry boiler on Eighth Avenue", "flags": {"damaged": ["Eighth"]}}
+{"id": "journalofproceed01sanfrich|127", "y": 1906, "line": "$4,750 set aside for the Tanner land near Clement Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|128", "y": 1906, "line": "San Francisco Gas asked to power Mission High School's gymnasium", "flags": {}}
+{"id": "journalofproceed01sanfrich|130", "y": 1906, "line": "Spanish-American Food asks for an 80 horsepower boiler on Erie Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|144", "y": 1906, "line": "Tax of one dollar thirty-two cents per hundred dollars proposed", "flags": {}}
+{"id": "journalofproceed01sanfrich|145", "y": 1906, "line": "Budget for the year ending June 1907 approved by the Mayor", "flags": {}}
+{"id": "journalofproceed01sanfrich|147", "y": 1906, "line": "Clerk to advertise for bids to light streets and public buildings", "flags": {}}
+{"id": "journalofproceed01sanfrich|149", "y": 1906, "line": "Bond money proposed for repaving and resewering certain streets", "flags": {}}
+{"id": "journalofproceed01sanfrich|151", "y": 1906, "line": "Van Ness Avenue struck out of the resolution before adoption", "flags": {}}
+{"id": "journalofproceed01sanfrich|158", "y": 1906, "line": "P. Cassou allowed a laundry boiler at 2507 Clay Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|160", "y": 1906, "line": "Arc light ordered at Golden Gate Avenue and Polk Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|161", "y": 1906, "line": "Telephone ordered for the Commissary Department at Mowry's Hall", "flags": {}}
+{"id": "journalofproceed01sanfrich|174", "y": 1906, "line": "E. J. Burns allowed a bathhouse boiler at 815 Eddy Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|189", "y": 1906, "line": "Eureka Construction's $22,986.97 California Street sewer bill passed for printing", "flags": {}}
+{"id": "journalofproceed01sanfrich|193", "y": 1906, "line": "Davis Bros. allowed a tire-rubber boiler at 1003 Golden Gate Avenue", "flags": {}}
+{"id": "journalofproceed01sanfrich|194", "y": 1906, "line": "Ostrander & Company allowed a millwright boiler at 113-115 Mission Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|195", "y": 1906, "line": "M. Pickthall allowed a heating boiler at 220 Fremont Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|197", "y": 1906, "line": "Somers & Co. allowed a feed mill engine on Hubbell Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|201", "y": 1906, "line": "Question of unsafe earthquake-damaged tall buildings referred to committee", "flags": {}}
+{"id": "journalofproceed01sanfrich|202", "y": 1906, "line": "Cost estimate sought for repaving Twenty-fourth Street between Howard and Potrero", "flags": {"damaged": ["Twenty-fourth"]}}
+{"id": "journalofproceed01sanfrich|203", "y": 1906, "line": "Eureka Construction's $22,986.97 California Street sewer bill passed for printing", "flags": {}}
+{"id": "journalofproceed01sanfrich|207", "y": 1906, "line": "Orphan asylums paid for keeping children sent by the Juvenile Court", "flags": {}}
+{"id": "journalofproceed01sanfrich|211", "y": 1906, "line": "Passenger vehicle licences to be collected by the calendar year", "flags": {}}
+{"id": "journalofproceed01sanfrich|213", "y": 1906, "line": "Mayor authorized to sell unused city property at Lowell High School", "flags": {}}
+{"id": "journalofproceed01sanfrich|214", "y": 1906, "line": "Plans for a municipal building at Eighth and Mission laid over", "flags": {}}
+{"id": "journalofproceed01sanfrich|226", "y": 1906, "line": "H. A. Sartori allowed a dairy boiler at 484 Haight Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|231", "y": 1906, "line": "Dehmlow's Dyeing and Cleaning allowed a boiler at 551 First Avenue", "flags": {}}
+{"id": "journalofproceed01sanfrich|233", "y": 1906, "line": "W. C. Premus allowed a planing mill engine on North Point Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|234", "y": 1906, "line": "Starlight Laundry allowed an engine and boiler at 750 Stanyan Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|236", "y": 1906, "line": "Lowering Golden Gate Avenue between Jones and Leavenworth put off", "flags": {}}
+{"id": "journalofproceed01sanfrich|245", "y": 1906, "line": "W. W. Montague allowed an oil tank at Kentucky and Seventeenth", "flags": {}}
+{"id": "journalofproceed01sanfrich|248", "y": 1906, "line": "Frank Gilbreth allowed to blast at California and Drumm streets", "flags": {}}
+{"id": "journalofproceed01sanfrich|252", "y": 1906, "line": "Committee named to consider a temporary City Hall on Union Square", "flags": {}}
+{"id": "journalofproceed01sanfrich|255", "y": 1906, "line": "Committees ordered to inspect the sanitary condition of Duboce Park", "flags": {}}
+{"id": "journalofproceed01sanfrich|261", "y": 1906, "line": "$40,918.67 sought for paving Valencia Street from Eighteenth to Mission", "flags": {}}
+{"id": "journalofproceed01sanfrich|269", "y": 1906, "line": "Payment of $10,351.31 sought for Golden Gate Park supplies", "flags": {}}
+{"id": "journalofproceed01sanfrich|270", "y": 1906, "line": "Dr. G. Cornet allowed a bathhouse boiler at 2354 Pine Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|271", "y": 1906, "line": "C. M. Mann allowed a cleaning boiler at 280 Seventh Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|272", "y": 1906, "line": "D. C. Talbot allowed a planing mill engine at 115 Main Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|293", "y": 1906, "line": "D. C. Talbot's 115 Main Street mill engine sent back to committee", "flags": {}}
+{"id": "journalofproceed01sanfrich|294", "y": 1906, "line": "Adolph Hromada Co. allowed a candy factory engine on Folsom Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|295", "y": 1906, "line": "S. Lehman allowed a beer bottling engine on Lyon Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|296", "y": 1906, "line": "St. Francis Technical School allowed a laundry boiler on Webster Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|299", "y": 1906, "line": "Herbert Law allowed a 10,000-gallon oil tank at the Monadnock Building", "flags": {"invented": ["10,000-gallon"]}}
+{"id": "journalofproceed01sanfrich|311", "y": 1906, "line": "L. & E. Emanuel allowed planing mill engines on Twelfth Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|313", "y": 1906, "line": "Fisk Rubber allowed a tire-repair boiler at 1030 Golden Gate Avenue", "flags": {}}
+{"id": "journalofproceed01sanfrich|314", "y": 1906, "line": "H. R. Newbauer allowed a planing mill engine on Seventh Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|315", "y": 1906, "line": "A. B. Stacy allowed a carpenter shop engine on Clementina Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|317", "y": 1906, "line": "Atlas Brass Works allowed an oil tank at 827 Folsom Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|320", "y": 1906, "line": "Estimate sought for rebuilding the sewer on Haight Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|321", "y": 1906, "line": "Telephone ordered for the autopsy surgeon at 1178 McAllister Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|322", "y": 1906, "line": "Presidio and Ferries franchise question sent to the Judiciary Committee", "flags": {}}
+{"id": "journalofproceed01sanfrich|334", "y": 1906, "line": "Telephone connected for Election Commissioner Thomas McGuire at 55 Dame Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|335", "y": 1906, "line": "Action on the bill put off for one week", "flags": {}}
+{"id": "journalofproceed01sanfrich|338", "y": 1906, "line": "Presidio and Ferries Railroad given another chance to show its franchise", "flags": {}}
+{"id": "journalofproceed01sanfrich|341", "y": 1906, "line": "Board of Public Works asked to recommend new Golden Gate Avenue levels", "flags": {}}
+{"id": "journalofproceed01sanfrich|343", "y": 1906, "line": "Mme. Gros objects to the planing mill permit on Main Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|344", "y": 1906, "line": "John Finn Metal Works seeks a galvanizing engine on Second Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|361", "y": 1906, "line": "Telephone ordered for the street cleaning superintendent at 405 Buchanan Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|363", "y": 1906, "line": "Coroner Walsh asks for land for a new morgue", "flags": {}}
+{"id": "journalofproceed01sanfrich|394", "y": 1906, "line": "Presidio and Ferries found entitled to overhead trolleys on Union Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|396", "y": 1906, "line": "John Finn Metal Works allowed a galvanizing engine on Second Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|397", "y": 1906, "line": "Shermund & Krauss allowed a plating works boiler on Mission Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|398", "y": 1906, "line": "H. Plath allowed an oil tank at 510 Wyoming Avenue", "flags": {}}
+{"id": "journalofproceed01sanfrich|404", "y": 1906, "line": "Narrower sidewalks recommended on Sutter Street between Market and Van Ness", "flags": {}}
+{"id": "journalofproceed01sanfrich|408", "y": 1906, "line": "H. Plath allowed an oil tank at 510 Wyoming Avenue", "flags": {}}
+{"id": "journalofproceed01sanfrich|419", "y": 1906, "line": "City takes over the new roadway on Second Avenue", "flags": {}}
+{"id": "journalofproceed01sanfrich|430", "y": 1906, "line": "Dieckmann & Co. allowed a lumber drying engine on Beach Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|431", "y": 1906, "line": "W. P. Johnson allowed a planing mill engine on Sixteenth Avenue", "flags": {}}
+{"id": "journalofproceed01sanfrich|433", "y": 1906, "line": "Joshey Lame allowed an oil tank at 26 Hoff Avenue", "flags": {}}
+{"id": "journalofproceed01sanfrich|461", "y": 1906, "line": "Oscar Fincke allowed a furniture factory boiler on Bryant Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|471", "y": 1906, "line": "Payment of $2,357 proposed for the Van Ness and Vallejo sewer", "flags": {}}
+{"id": "journalofproceed01sanfrich|475", "y": 1906, "line": "Oscar Fincke allowed a furniture factory boiler on Bryant Street", "flags": {"damaged": ["Bryant"]}}
+{"id": "journalofproceed01sanfrich|482", "y": 1906, "line": "C. L. Davis allowed a manufacturing engine at 147 Beach Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|484", "y": 1906, "line": "California Doughnut and Cruller allowed a bakery engine on Guerrero Street", "flags": {"damaged": ["Guerrero"]}}
+{"id": "journalofproceed01sanfrich|485", "y": 1906, "line": "California Doughnut and Cruller allowed an oil tank at Eighteenth and Guerrero", "flags": {}}
+{"id": "journalofproceed01sanfrich|486", "y": 1906, "line": "Kohs & Co. allowed an oil tank at Twenty-fifth and Mission", "flags": {}}
+{"id": "journalofproceed01sanfrich|492", "y": 1906, "line": "Mrs. John Barrett asks back $3 paid for an impounded cow", "flags": {}}
+{"id": "journalofproceed01sanfrich|499", "y": 1906, "line": "C. L. Davis allowed a manufacturing engine at 147 Beach Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|501", "y": 1906, "line": "California Doughnut and Cruller allowed a bakery engine on Guerrero Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|502", "y": 1906, "line": "California Doughnut and Cruller allowed an oil tank at Eighteenth and Guerrero", "flags": {}}
+{"id": "journalofproceed01sanfrich|507", "y": 1906, "line": "Globe Bakery allowed a storage tank at 2027 Fillmore Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|508", "y": 1906, "line": "Callnon, Dingley & Burkhardt allowed a plating engine on Fifteenth Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|515", "y": 1906, "line": "Streets to be closed for Parkside Realty near Twenty-fifth Avenue", "flags": {}}
+{"id": "journalofproceed01sanfrich|521", "y": 1906, "line": "Eureka California Soda Water allowed an engine on Beidernum Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|526", "y": 1906, "line": "$1,615.61 for forage and lumber supplied to the Park Commissioners", "flags": {}}
+{"id": "journalofproceed01sanfrich|529", "y": 1906, "line": "Nineteenth Avenue to be declared a boulevard", "flags": {}}
+{"id": "journalofproceed01sanfrich|532", "y": 1906, "line": "J. J. Dowling given ninety more days at Sanchez and Twenty-third", "flags": {}}
+{"id": "journalofproceed01sanfrich|537", "y": 1906, "line": "$1,615.61 for forage and lumber supplied to the Park Commissioners", "flags": {}}
+{"id": "journalofproceed01sanfrich|541", "y": 1906, "line": "R. Schimplermoin allowed an engine at Fifteenth Street and Caledonia Alley", "flags": {"damaged": ["Schimplermoin"]}}
+{"id": "journalofproceed01sanfrich|547", "y": 1906, "line": "Jean Pats allowed a laundry engine on Mission Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|550", "y": 1906, "line": "Auto Tire Repair allowed a vulcanizing engine at 33 Sanchez Street", "flags": {"damaged": ["Sanchez"]}}
+{"id": "journalofproceed01sanfrich|558", "y": 1906, "line": "$582.44 paid to Del Monte Milling for almshouse supplies", "flags": {}}
+{"id": "journalofproceed01sanfrich|567", "y": 1906, "line": "Payment of $9,419.52 sought for park forage, lumber and stone", "flags": {}}
+{"id": "journalofproceed01sanfrich|572", "y": 1906, "line": "The Louvre allowed a cooking boiler at Eddy and Fillmore", "flags": {}}
+{"id": "journalofproceed01sanfrich|581", "y": 1906, "line": "Applen Hicks Wrecking allowed to blast the Arizona Warehouse on Berry Street", "flags": {"invented": ["Hicks"], "damaged": ["Warehouse"]}}
+{"id": "journalofproceed01sanfrich|582", "y": 1906, "line": "Steam heating pipe line for F. A. Healy passed for printing", "flags": {}}
+{"id": "journalofproceed01sanfrich|584", "y": 1906, "line": "Diamond Street sidewalks set at fifteen feet between Seventeenth and Eighteenth", "flags": {}}
+{"id": "journalofproceed01sanfrich|589", "y": 1906, "line": "P. J. Curtis allowed a stable on Eighteenth Street near Valencia", "flags": {"overstates": ["referred", "allowed"]}}
+{"id": "journalofproceed01sanfrich|591", "y": 1906, "line": "J. A. Gay's O'Farrell Street laundry boiler sent back to committee", "flags": {}}
+{"id": "journalofproceed01sanfrich|594", "y": 1906, "line": "F. A. Healy allowed steam heating pipes along certain streets", "flags": {}}
+{"id": "journalofproceed01sanfrich|597", "y": 1906, "line": "Parkside Realty allowed work tracks for filling in certain streets", "flags": {}}
+{"id": "journalofproceed01sanfrich|599", "y": 1906, "line": "Julius Godejiu allowed a planing mill engine on Lombard Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|600", "y": 1906, "line": "Hulse, Bradford & Co. allowed an engine at 708 Harrison Street", "flags": {"invented": ["Co."]}}
+{"id": "journalofproceed01sanfrich|603", "y": 1906, "line": "Domestic Laundry allowed an oil tank on Cumberland Street near Nineteenth", "flags": {}}
+{"id": "journalofproceed01sanfrich|605", "y": 1906, "line": "Pacific Coast Wool Depot allowed an oil tank on Sixth Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|606", "y": 1906, "line": "Wm. Eicher allowed an oil tank at 421 Lyon Street", "flags": {"damaged": ["Lyon"]}}
+{"id": "journalofproceed01sanfrich|615", "y": 1906, "line": "John Spargo given ninety more days on Tenth Avenue", "flags": {"damaged": ["Spargo"]}}
+{"id": "journalofproceed01sanfrich|617", "y": 1906, "line": "Relief and Red Cross officers ordered to appear at the meeting", "flags": {}}
+{"id": "journalofproceed01sanfrich|618", "y": 1906, "line": "United Railroads given a temporary line on Stanyan Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|619", "y": 1906, "line": "Temporary United Railroads tracks on Stanyan Street passed for printing", "flags": {"invented": ["United"]}}
+{"id": "journalofproceed01sanfrich|621", "y": 1906, "line": "Street car traffic rules to take effect", "flags": {}}
+{"id": "journalofproceed01sanfrich|622", "y": 1906, "line": "O. B. Huyett allowed a Turkish bath boiler on Geary Street", "flags": {"damaged": ["Huyett"]}}
+{"id": "journalofproceed01sanfrich|623", "y": 1906, "line": "S. Kurata allowed a laundry engine at 1770 Eddy Street", "flags": {"invented": ["Eddy"]}}
+{"id": "journalofproceed01sanfrich|624", "y": 1906, "line": "Landau Economic Syphon allowed a water-distilling engine on Howard Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|628", "y": 1906, "line": "Del Monte Milling's Lombard Street spur track passed for printing", "flags": {}}
+{"id": "journalofproceed01sanfrich|630", "y": 1906, "line": "Silva & Rose allowed a stable at Seventeenth and Potrero", "flags": {}}
+{"id": "journalofproceed01sanfrich|631", "y": 1906, "line": "Board of Education asks for the South End School on Girard", "flags": {}}
+{"id": "journalofproceed01sanfrich|635", "y": 1906, "line": "Pacific Coast Wool Depot allowed a wool-scouring engine on Sixth Street", "flags": {"invented": ["Depot"]}}
+{"id": "journalofproceed01sanfrich|636", "y": 1906, "line": "Hulse, Bradford allowed an oil tank on Harrison Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|637", "y": 1906, "line": "Pacific Coast Wool Depot allowed an oil tank on Sixth Street", "flags": {"damaged": ["Depot"]}}
+{"id": "journalofproceed01sanfrich|638", "y": 1906, "line": "Wm. Eicher allowed an oil tank at 421 Lyon Street", "flags": {"damaged": ["Eicher"]}}
+{"id": "journalofproceed01sanfrich|639", "y": 1906, "line": "Joseph Rogers allowed an oil tank at Twenty-sixth and Shotwell", "flags": {"invented": ["Rogers"], "damaged": ["Twenty-sixth"]}}
+{"id": "journalofproceed01sanfrich|655", "y": 1906, "line": "Del Monte Milling allowed a spur track at Lombard and Montgomery", "flags": {"damaged": ["Monte"]}}
+{"id": "journalofproceed01sanfrich|656", "y": 1906, "line": "Twenty-five year railway franchise sought by Parkside Transit from Ocean Avenue", "flags": {"damaged": ["Parkside"]}}
+{"id": "journalofproceed01sanfrich|663", "y": 1906, "line": "San Francisco Gas and Electric to be paid for October lighting", "flags": {}}
+{"id": "journalofproceed01sanfrich|667", "y": 1906, "line": "Hammond allowed two sausage factory boilers at Post and Polk", "flags": {}}
+{"id": "journalofproceed01sanfrich|669", "y": 1906, "line": "California Casket Company allowed an oil tank on Mission Street", "flags": {"invented": ["Company"]}}
+{"id": "journalofproceed01sanfrich|674", "y": 1906, "line": "Cross-town railway franchise from Page and Scott to be considered", "flags": {}}
+{"id": "journalofproceed01sanfrich|684", "y": 1906, "line": "California Casket Company allowed an oil tank on Mission Street", "flags": {"damaged": ["Casket"]}}
+{"id": "journalofproceed01sanfrich|686", "y": 1906, "line": "Domestic Laundry allowed a 75 horsepower engine on Cumberland Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|688", "y": 1906, "line": "J. P. Lorden allowed a planing mill engine on Fifth Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|689", "y": 1906, "line": "Emma Coombs allowed a heating boiler at 1213 Post Street", "flags": {"damaged": ["Post"]}}
+{"id": "journalofproceed01sanfrich|690", "y": 1906, "line": "Ferro Bros. allowed a fuel oil tank at 2813 Twenty-third Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|691", "y": 1906, "line": "Independent Baking allowed a fuel oil tank at 4147 Nineteenth Street", "flags": {"damaged": ["Nineteenth"]}}
+{"id": "journalofproceed01sanfrich|699", "y": 1906, "line": "Cleaning of the Channel Street sewer provided for", "flags": {"damaged": ["Channel"]}}
+{"id": "journalofproceed01sanfrich|703", "y": 1906, "line": "Schools to be built on city land, with architects and costs", "flags": {}}
+{"id": "journalofproceed01sanfrich|716", "y": 1906, "line": "J. P. Lorden allowed a planing mill engine on Fifth Street", "flags": {"damaged": ["Fifth"]}}
+{"id": "journalofproceed01sanfrich|717", "y": 1906, "line": "Ferro Bros. allowed a fuel oil tank at 2813 Twenty-third Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|718", "y": 1906, "line": "Independent Baking allowed a fuel oil tank on Nineteenth Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|719", "y": 1906, "line": "T. J. Moynihan allowed a fuel oil tank on Folsom Street", "flags": {"invented": ["J."]}}
+{"id": "journalofproceed01sanfrich|726", "y": 1906, "line": "Timothy Hopkins allowed sixty days of blasting between Townsend and Bluxome", "flags": {}}
+{"id": "journalofproceed01sanfrich|729", "y": 1906, "line": "A cafe allowed an engine for heating on O'Farrell Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|731", "y": 1906, "line": "H. E. Law allowed an oil tank at the Viavi Building", "flags": {}}
+{"id": "journalofproceed01sanfrich|735", "y": 1906, "line": "Antonio Esporance allowed a laundry boiler on Railroad Avenue", "flags": {}}
+{"id": "journalofproceed01sanfrich|759", "y": 1906, "line": "James McGuin and Barry & Scully allowed undertaking parlors", "flags": {"invented": ["McGuin"]}}
+{"id": "journalofproceed01sanfrich|769", "y": 1906, "line": "Board's chambers fixed at Laguna and Grove streets", "flags": {}}
+{"id": "journalofproceed01sanfrich|770", "y": 1906, "line": "Closing Ocean Avenue to the Great Highway passed for printing", "flags": {}}
+{"id": "journalofproceed01sanfrich|772", "y": 1906, "line": "Thomson & Son allowed a glue-heating engine on Duboce Avenue", "flags": {}}
+{"id": "journalofproceed01sanfrich|773", "y": 1906, "line": "The Popular Restaurant allowed a potato-steaming engine on O'Farrell Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|776", "y": 1906, "line": "Ideal Restaurant allowed a fuel oil tank on Market Street", "flags": {}}
+{"id": "journalofproceed01sanfrich|786", "y": 1906, "line": "Antonio Esporance allowed a laundry boiler on Railroad Avenue", "flags": {}}
+{"id": "journalofproceed01sanfrich|793", "y": 1906, "line": "Charles White allowed a planing mill engine at Bay and Stockton", "flags": {}}
+{"id": "journalofproceed01sanfrich|794", "y": 1906, "line": "Leon Bouneau allowed an oil tank at Burrows and San Bruno", "flags": {}}
+{"id": "journalofproceed01sanfrich|796", "y": 1906, "line": "Hammond & Brod allowed an oil tank at Polk and Post", "flags": {}}
+{"id": "journalofproceed01sanfrich|818", "y": 1906, "line": "Fredericksburg Bottling allowed an oil tank at Eighteenth and Alabama", "flags": {"damaged": ["Alabama"]}}
+{"id": "journalofproceed01sanfrich|822", "y": 1906, "line": "L. Abrams to be paid for hauling voting machines", "flags": {"damaged": ["Abrams"]}}
+{"id": "journalofproceed1909sanfrich|2", "y": 1909, "line": "Hahnemann and Lane Hospitals paid for City and County Hospital patients", "flags": {}}
+{"id": "journalofproceed1909sanfrich|5", "y": 1909, "line": "Frank Burke and Margaret Tobelman allowed a boiler at Mary Lane", "flags": {"invented": ["Margaret"], "damaged": ["Tobelman"]}}
+{"id": "journalofproceed1909sanfrich|7", "y": 1909, "line": "Burke and Tobelman allowed a fuel oil tank at Mary Lane", "flags": {}}
+{"id": "journalofproceed1909sanfrich|8", "y": 1909, "line": "Keating Estate Co. allowed an oil tank on Ellis Street", "flags": {}}
+{"id": "journalofproceed1909sanfrich|12", "y": 1909, "line": "One- and two-horse stables allowed on Sanchez, Prague and Raymond", "flags": {"damaged": ["Raymond"]}}
+{"id": "journalofproceed1909sanfrich|13", "y": 1909, "line": "An ordinance regulating street traffic was finally passed", "flags": {}}
+{"id": "journalofproceed1909sanfrich|24", "y": 1909, "line": "Thomas Ryan's stable permit on Mississippi Street revoked", "flags": {}}
+{"id": "journalofproceed1909sanfrich|30", "y": 1909, "line": "Governor's appointment of William H. Smith as justice commended", "flags": {}}
+{"id": "journalofproceed1909sanfrich|31", "y": 1909, "line": "William H. Smith appointed Justice of the Peace", "flags": {"invented": ["Peace"]}}
+{"id": "journalofproceed1909sanfrich|33", "y": 1909, "line": "Congress urged to confirm the Hetch Hetchy reservoir grant", "flags": {"damaged": ["Hetch", "Hetchy"]}}
+{"id": "journalofproceed1909sanfrich|59", "y": 1909, "line": "Bankers' Investment Co. allowed a boiler at Geary and Grant", "flags": {}}
+{"id": "journalofproceed1909sanfrich|60", "y": 1909, "line": "Weinstock-Nichols allowed a vulcanizing engine at Golden Gate and Van Ness", "flags": {}}
+{"id": "journalofproceed1909sanfrich|61", "y": 1909, "line": "Valencia Theater allowed a steam heating boiler on Valencia Street", "flags": {}}
+{"id": "journalofproceed1909sanfrich|62", "y": 1909, "line": "Callaghan & Bevins allowed a hand-powered laundry on Lyon Street", "flags": {}}
+{"id": "journalofproceed1909sanfrich|63", "y": 1909, "line": "Bankers' Investment Co. allowed an oil tank at Geary and Grant", "flags": {}}
+{"id": "journalofproceed1909sanfrich|65", "y": 1909, "line": "Old Piedmont Bakery allowed a small oil tank on Union Street", "flags": {}}
+{"id": "journalofproceed1909sanfrich|66", "y": 1909, "line": "Artigues and Rieser allowed to blast a well on Fifth Avenue", "flags": {}}
+{"id": "journalofproceed1909sanfrich|74", "y": 1909, "line": "Building Committee asked to weigh a city-owned auditorium", "flags": {}}
+{"id": "journalofproceed1909sanfrich|75", "y": 1909, "line": "Board of Public Works to report on a Union Place building", "flags": {}}
+{"id": "journalofproceed1909sanfrich|76", "y": 1909, "line": "Land exchange with the government in Yosemite National Park approved", "flags": {}}
+{"id": "journalofproceed1909sanfrich|81", "y": 1909, "line": "Bankers' Investment Co. allowed a boiler at Geary and Grant", "flags": {}}
+{"id": "journalofproceed1909sanfrich|95", "y": 1909, "line": "McBride-Rothschild Candy allowed a steam cooking engine on Second Street", "flags": {}}
+{"id": "journalofproceed1909sanfrich|100", "y": 1909, "line": "$7,100 to buy more land for the Sutro Grammar School", "flags": {}}
+{"id": "journalofproceed1909sanfrich|106", "y": 1909, "line": "City Attorney told to eject trespassers from the Great Highway", "flags": {}}
+{"id": "journalofproceed1909sanfrich|107", "y": 1909, "line": "Eugene Smith Co. allowed a water heater at 57 Clementina Street", "flags": {}}
+{"id": "journalofproceed1909sanfrich|108", "y": 1909, "line": "United Railroads' ornamental poles for Sutter and Market Streets delayed", "flags": {}}
+{"id": "journalofproceed1909sanfrich|123", "y": 1909, "line": "Wm. Bruce to be paid $8,000 on the Yerba Buena School", "flags": {}}
+{"id": "journalofproceed1909sanfrich|126", "y": 1909, "line": "$500 set aside to sue for city land near Forty-ninth Avenue", "flags": {}}
+{"id": "journalofproceed1909sanfrich|127", "y": 1909, "line": "Mutual Engineering allowed an oil tank on Spencer Street", "flags": {"invented": ["Engineering"]}}
+{"id": "journalofproceed1909sanfrich|133", "y": 1909, "line": "$5,500 buys D. W. Hart's Vermont Street lot for the hospital", "flags": {}}
+{"id": "journalofproceed1909sanfrich|153", "y": 1909, "line": "$2,275 buys Potter land for a fire-fighting reservoir", "flags": {}}
+{"id": "journalofproceed1909sanfrich|155", "y": 1909, "line": "Renaming Frederick and H streets Lincoln Way sent to committee", "flags": {}}
+{"id": "journalofproceed1909sanfrich|184", "y": 1909, "line": "Barber Asphalt to be paid for repairs on Duboce Avenue", "flags": {"damaged": ["Asphalt"]}}
+{"id": "journalofproceed1909sanfrich|188", "y": 1909, "line": "Standard Milk allowed a heating engine on Sixteenth Street", "flags": {}}
+{"id": "journalofproceed1909sanfrich|189", "y": 1909, "line": "David Woerner's estate allowed two oil tanks at Fourteenth and Harrison", "flags": {}}
+{"id": "journalofproceed1909sanfrich|190", "y": 1909, "line": "Healy-Tibbitts allowed sixty days of blasting at California and Powell", "flags": {}}
+{"id": "journalofproceed1909sanfrich|220", "y": 1909, "line": "Joost Bros. allowed a four-horse stable at Harrison and Dore", "flags": {"invented": ["Harrison"]}}
+{"id": "journalofproceed1909sanfrich|221", "y": 1909, "line": "Astrologers and fortune tellers to be licensed under a new ordinance", "flags": {}}
+{"id": "journalofproceed1909sanfrich|236", "y": 1909, "line": "Blanchard-Brown allowed to blast in front of the Cliff House", "flags": {}}
+{"id": "journalofproceed1909sanfrich|253", "y": 1909, "line": "American Steel and Wire allowed a boiler at Folsom and Sixteenth", "flags": {}}
+{"id": "journalofproceed1909sanfrich|257", "y": 1909, "line": "Bertha Bloomingdale allowed an oil tank at 1701 Bush Street", "flags": {}}
+{"id": "journalofproceed1909sanfrich|258", "y": 1909, "line": "Dorn and Dorn allowed an oil tank at 242 Powell Street", "flags": {}}
+{"id": "journalofproceed1909sanfrich|260", "y": 1909, "line": "Standard Laundry Association allowed a steam laundry at 328 Clementina Street", "flags": {}}
+{"id": "journalofproceed1909sanfrich|261", "y": 1909, "line": "K. Kozato allowed a hand laundry on California Street", "flags": {}}
+{"id": "journalofproceed1909sanfrich|263", "y": 1909, "line": "Charity masquerade balls allowed without the usual licence fee", "flags": {}}
+{"id": "journalofproceed1909sanfrich|264", "y": 1909, "line": "Cleveland Primary School land at Persia and Athens bought", "flags": {"invented": ["Primary"]}}
+{"id": "journalofproceed1909sanfrich|266", "y": 1909, "line": "John Upphoff's San Bruno Avenue lot bought for the hospital site", "flags": {"damaged": ["Upphoff's"], "overstates": ["is proposed", "bought"]}}
+{"id": "journalofproceed1909sanfrich|268", "y": 1909, "line": "Telephones ordered for three city officials and two others removed", "flags": {}}
+{"id": "journalofproceed1909sanfrich|270", "y": 1909, "line": "Girls' High School buildings on O'Farrell Street given to the schools", "flags": {}}
+{"id": "journalofproceed1909sanfrich|281", "y": 1909, "line": "Basalt blocks, Eddy Street rent and police expenses to be paid", "flags": {"damaged": ["Eddy"]}}
+{"id": "journalofproceed1909sanfrich|283", "y": 1909, "line": "American Steel and Wire allowed a boiler at Folsom and Sixteenth", "flags": {}}
+{"id": "journalofproceed1909sanfrich|284", "y": 1909, "line": "Jean Augas allowed a laundry boiler on Linden Avenue", "flags": {}}
+{"id": "journalofproceed1909sanfrich|290", "y": 1909, "line": "K. Kozato allowed a hand laundry on California Street", "flags": {}}
+{"id": "journalofproceed1909sanfrich|293", "y": 1909, "line": "$9,800 buys Grove Street land for the Commercial High School", "flags": {"invented": ["Commercial"]}}
+{"id": "journalofproceed1909sanfrich|300", "y": 1909, "line": "New street levels set on Girard, Berlin and Bacon streets", "flags": {"damaged": ["Girard,"]}}
+{"id": "journalofproceed1909sanfrich|307", "y": 1909, "line": "Blanchard-Brown allowed to blast in front of the Cliff House", "flags": {}}
+{"id": "journalofproceed1909sanfrich|313", "y": 1909, "line": "Geary Street railroad ordered to pay the city $823.19", "flags": {}}
+{"id": "journalofproceed1909sanfrich|314", "y": 1909, "line": "Royal Soap allowed a factory engine on Fourth Avenue", "flags": {}}
+{"id": "journalofproceed1909sanfrich|315", "y": 1909, "line": "Keenan Bros. allowed an oil tank at 1456 Stevenson Street", "flags": {}}
+{"id": "journalofproceed1909sanfrich|316", "y": 1909, "line": "Pacific Telephone allowed an oil tank at 74 West Mission Street", "flags": {}}
+{"id": "journalofproceed1909sanfrich|326", "y": 1909, "line": "E. J. Gallagher given sixty more days on the Twelfth Avenue sewer", "flags": {"invented": ["Twelfth"]}}
+{"id": "journalofproceed1909sanfrich|335", "y": 1909, "line": "$1,500 set aside to fight the gas and water rate suits", "flags": {}}
+{"id": "journalofproceed1909sanfrich|340", "y": 1909, "line": "Emma Rose allowed an oil tank at Sutter and Clara Lane", "flags": {"damaged": ["Lane"]}}
+{"id": "journalofproceed1909sanfrich|349", "y": 1909, "line": "American Construction given thirty more days on the Mission Street cistern", "flags": {}}
+{"id": "journalofproceed1909sanfrich|359", "y": 1909, "line": "Senate amendment putting county offices under civil service endorsed", "flags": {}}
+{"id": "journalofproceed1909sanfrich|360", "y": 1909, "line": "Copy of the letter sent to the Sutter Street Improvement Club", "flags": {"damaged": ["Improvement"]}}
+{"id": "journalofproceed1909sanfrich|363", "y": 1909, "line": "$10,000 proposed for an engine house on Seventeenth Street", "flags": {"damaged": ["Seventeenth"]}}
+{"id": "journalofproceed1909sanfrich|364", "y": 1909, "line": "Money set aside for sewer plans and the city's court defence", "flags": {}}
+{"id": "journalofproceed1909sanfrich|370", "y": 1909, "line": "Pacific Telephone allowed an oil tank at 74 West Mission Street", "flags": {"invented": ["Telephone"]}}
+{"id": "journalofproceed1909sanfrich|371", "y": 1909, "line": "Royal Soap allowed an oil tank on Fourth Avenue", "flags": {}}
+{"id": "journalofproceed1909sanfrich|378", "y": 1909, "line": "Title to the Sanitary Reduction Works land found clouded by liens", "flags": {}}
+{"id": "journalofproceed1909sanfrich|385", "y": 1909, "line": "American Construction given thirty more days on the Mission Street cistern", "flags": {}}
+{"id": "journalofproceed1909sanfrich|396", "y": 1909, "line": "A shortfall in the Commercial Street sewer account to be covered", "flags": {}}
+{"id": "journalofproceed1909sanfrich|398", "y": 1909, "line": "Techau Tavern allowed a cafe engine at Eddy and Powell", "flags": {}}
+{"id": "journalofproceed1909sanfrich|400", "y": 1909, "line": "Techau Tavern allowed an oil tank at Eddy and Powell", "flags": {}}
+{"id": "journalofproceed1909sanfrich|401", "y": 1909, "line": "A. B. Nogue allowed a hand laundry at 2182 Market Street", "flags": {}}
+{"id": "journalofproceed1909sanfrich|405", "y": 1909, "line": "Duplicate 1908 tax assessments cancelled for three property owners", "flags": {}}
+{"id": "journalofproceed1909sanfrich|420", "y": 1909, "line": "Committee to investigate high gas and electric charges in San Francisco", "flags": {}}
+{"id": "journalofproceed1909sanfrich|423", "y": 1909, "line": "Cortland Avenue association asks $25,000 for a Bernal School playground", "flags": {}}
+{"id": "journalofproceed1909sanfrich|445", "y": 1909, "line": "Rents, desks, playground work and travel expenses to be paid", "flags": {}}
+{"id": "journalofproceed1909sanfrich|459", "y": 1909, "line": "Rushing and Wan Ling refused laundries on Point Lobos and Post", "flags": {"damaged": ["Lobos"]}}
+{"id": "journalofproceed1909sanfrich|461", "y": 1909, "line": "John Kitchen Jr. Company wins the court fee book contract", "flags": {}}
+{"id": "journalofproceed1909sanfrich|462", "y": 1909, "line": "Offers sought for the Frank McCoppin and Sheridan school sites", "flags": {}}
+{"id": "journalofproceed1909sanfrich|472", "y": 1909, "line": "National Packing allowed an oil tank at Bay and Kearny", "flags": {}}
+{"id": "journalofproceed1909sanfrich|480", "y": 1909, "line": "$4,100 provided for the Bush Street engine house and a steam roller", "flags": {"invented": ["Bush"]}}
+{"id": "journalofproceed1909sanfrich|491", "y": 1909, "line": "Chas. Hagemann allowed an oil tank at 1057 Howard Street", "flags": {"damaged": ["Howard"]}}
+{"id": "journalofproceed1909sanfrich|492", "y": 1909, "line": "Bay City Steam Laundry allowed an oil tank on Folsom Street", "flags": {}}
+{"id": "journalofproceed1909sanfrich|514", "y": 1909, "line": "Telephone ordered for the Lafayette School on Thirty-sixth Avenue", "flags": {}}
+{"id": "journalofproceed1909sanfrich|521", "y": 1909, "line": "Ordinance against animals and vehicles left loose passed for printing", "flags": {}}
+{"id": "journalofproceed1909sanfrich|538", "y": 1909, "line": "Ordinance against animals and vehicles left loose finally passed", "flags": {}}
+{"id": "journalofproceed1909sanfrich|548", "y": 1909, "line": "$4,244.71 sought for the fire cistern at Mission and West Mission", "flags": {}}
+{"id": "journalofproceed1909sanfrich|553", "y": 1909, "line": "Rules on obstructions on streets and sidewalks passed for printing", "flags": {}}
+{"id": "journalofproceed1909sanfrich|559", "y": 1909, "line": "$12,000 buys more land for the City and County Hospital", "flags": {}}
+{"id": "journalofproceed1909sanfrich|575", "y": 1909, "line": "Poles and concrete on Van Ness Avenue asked to be removed", "flags": {}}
+{"id": "journalofproceed1909sanfrich|576", "y": 1909, "line": "Removing poles from Van Ness Avenue referred to committee", "flags": {}}
+{"id": "journalofproceed1909sanfrich|577", "y": 1909, "line": "Governor asked to veto the street railroad franchise bill", "flags": {}}
+{"id": "journalofproceed1909sanfrich|580", "y": 1909, "line": "$4,244.71 paid to American Construction for the Mission Street cistern", "flags": {}}
+{"id": "journalofproceed1909sanfrich|584", "y": 1909, "line": "Bicycle and motorcycle racks allowed on the sidewalks", "flags": {}}
+{"id": "journalofproceed1909sanfrich|592", "y": 1909, "line": "Lotta Street renamed Woodland Avenue from Parnassus Avenue", "flags": {}}
+{"id": "journalofproceed1909sanfrich|600", "y": 1909, "line": "Associated Oil allowed three pumps and boilers at Sixteenth and Illinois", "flags": {}}
+{"id": "journalofproceed1909sanfrich|604", "y": 1909, "line": "Royal Insurance allowed two heating boilers at Pine and Sansome", "flags": {}}
+{"id": "journalofproceed1909sanfrich|616", "y": 1909, "line": "Land at Holloway and Faxon chosen for the Lakeview School", "flags": {"damaged": ["Holloway", "Faxon"]}}
+{"id": "journalofproceed1909sanfrich|629", "y": 1909, "line": "City Attorney asked for his opinion on the federal court case", "flags": {}}
+{"id": "journalofproceed1909sanfrich|630", "y": 1909, "line": "William Tegeler's stable permit at Church and Hancock repealed", "flags": {"damaged": ["Church", "Hancock"]}}
+{"id": "journalofproceed1909sanfrich|633", "y": 1909, "line": "City Attorney says the courts would not fix a gas rate", "flags": {}}
+{"id": "journalofproceed1909sanfrich|642", "y": 1909, "line": "Work ordered on the Fire Department's Corporation Yard building", "flags": {}}
+{"id": "journalofproceed1909sanfrich|659", "y": 1909, "line": "Stanford's trustees allowed a boiler at California and Powell", "flags": {}}
+{"id": "journalofproceed1909sanfrich|660", "y": 1909, "line": "Spreckels Estate allowed an oil tank on Eddy Street", "flags": {}}
+{"id": "journalofproceed1909sanfrich|661", "y": 1909, "line": "Lee Lit allowed a hand laundry at 906 Stockton Street", "flags": {}}
+{"id": "journalofproceed1909sanfrich|662", "y": 1909, "line": "Yuen Wo allowed a hand laundry at 651 Pacific Street", "flags": {}}
+{"id": "journalofproceed1909sanfrich|664", "y": 1909, "line": "John Lauer allowed a five-horse stable on Seventeenth Street", "flags": {"invented": ["Seventeenth"]}}
+{"id": "journalofproceed1909sanfrich|667", "y": 1909, "line": "Dreamland Athletic Club allowed to hold amateur boxing", "flags": {}}
+{"id": "journalofproceed1909sanfrich|678", "y": 1909, "line": "Telephone ordered for a health official at 76 Cortland Avenue", "flags": {}}
+{"id": "journalofproceed1909sanfrich|687", "y": 1909, "line": "Blasting limited to daylight hours under Public Works supervision", "flags": {}}
+{"id": "journalofproceed1909sanfrich|697", "y": 1909, "line": "John Lauer allowed a five-horse stable on Seventeenth Street", "flags": {}}
+{"id": "journalofproceed1909sanfrich|711", "y": 1909, "line": "Geary Street railroad's $1,725.91 share of fares accepted", "flags": {}}
+{"id": "journalofproceed1909sanfrich|713", "y": 1909, "line": "$200 paid for a strip of York Street land for widening", "flags": {}}
+{"id": "journalofproceed1909sanfrich|716", "y": 1909, "line": "Pierre Lacoume allowed a laundry boiler at 1507 California Street", "flags": {}}
+{"id": "journalofproceed1909sanfrich|717", "y": 1909, "line": "Mary Butler allowed an oil tank at Powell and Ellis", "flags": {}}
+{"id": "journalofproceed1909sanfrich|718", "y": 1909, "line": "Smith and Esler allowed a steam laundry at 340 Eleventh Street", "flags": {}}
