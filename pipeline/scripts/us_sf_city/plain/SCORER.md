@@ -54,6 +54,23 @@ The ingest deduplicates by id, so a repeated id is not
 corruption — but re-reading 800 records nobody needed re-read is a waste of the
 run, and the batch may be killed again before it reaches the end.
 
+## Inherited rows carry the version they were READ at, not the one you are on
+
+If you resume a batch whose partial output was written under an older rubric,
+those rows did not read your rubric — but the ingest stamps the whole file with
+YOUR version, so they will silently claim it.
+
+This has happened once. A batch inherited 100 rows scored under v6 into a v7 run;
+several contradicted v7 outright (a public-use lease at 78 where the v7 ladder
+fixes it at 58, a tow-away zone at 34 where the corridor rung says 44). The
+reader spotted it, said so, and named the exact rows. No id gate can see this —
+every id is present, valid and in order.
+
+So: do not rescore inherited rows, but DO compare a sample of them against the
+rubric you were given, and if they were read at an older version, say so and give
+the id range. The orchestrator returns those rows to the queue; a batch is not
+allowed to be half one rubric and half another.
+
 ## The orchestrator may retire your input while you are still working
 
 When your `done-NNN.jsonl` reaches full length, the ingest can sweep it at any
