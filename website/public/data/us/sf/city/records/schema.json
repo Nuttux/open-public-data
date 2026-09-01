@@ -203,6 +203,22 @@
    "what": "how many. Take amounts[0] only when this is 1 \u2014 6.2% of rows carry several and none of them is THE amount."
   },
   {
+   "name": "plain_line",
+   "what": "OUR one-sentence reading of the record in plain English, 6-11 words, written from the item's full text \u2014 NOT the Board's wording. `text` is the Board's. Empty where the record states no event (page furniture, an index row)."
+  },
+  {
+   "name": "plain_line_caution",
+   "values": [
+    "",
+    "invented",
+    "overstates",
+    "damaged",
+    "invented|damaged",
+    "overstates|damaged"
+   ],
+   "what": "why a written line is doubtful, | separated, blank when it is not. `invented` = a name or figure in the line could not be found in the record; `overstates` = the line states as done what the record only proposed; `damaged` = the words match only approximately because the SCAN is broken, not the line. Filter on this rather than trusting every row."
+  },
+  {
    "name": "classified_by",
    "values": [
     "form",

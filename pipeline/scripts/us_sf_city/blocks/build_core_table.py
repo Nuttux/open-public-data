@@ -115,6 +115,7 @@ COLUMNS = [
     "how_we_know_where", "why_no_place", "block", "longitude", "latitude",
     "streets", "amounts", "amount_count",
     "refers_to_decision_number", "classified_by",
+    "plain_line", "plain_line_caution",
 ]
 
 
@@ -141,6 +142,39 @@ def stg_rows():
                 "_amounts": [a for a in (r.get("m") or []) if a],
                 "_has_street": bool(r.get("r")),
             }
+
+
+def plain_lines():
+    """The written line for each record — a seed, exactly like the classifier.
+
+    WHY THIS IS A SEED AND NOT A STEP. The same reasoning the classification
+    carries: a model's sentence is not reproducible the way SQL is, so it is
+    frozen into a versioned file this reads. Re-running the writers changes that
+    file, the diff is reviewable, and a build never silently rewrites a line.
+
+    WHY IT ENTERS AT CORE. It was joined straight into the block shards, which
+    is the mart — the map was reading a column the published table did not have.
+    Every layer below now sees it, and `sf_bos_records.csv` carries the sentence
+    beside the Clerk's own text.
+
+    `plain_line_caution` is not decoration: a line whose named words could not
+    all be found in the record ("invented"), or which states as done something
+    the record only proposed ("overstates"), ships with the reason attached
+    rather than being dropped without trace. A reader of the table can filter
+    them; a surface that wants only clean lines has one column to test.
+    """
+    path = os.path.join(REPO, "pipeline", "data", "sf_bos", "plain_lines.jsonl")
+    if not os.path.exists(path):
+        return {}
+    out = {}
+    for line in open(path):
+        if not line.strip():
+            continue
+        d = json.loads(line)
+        flags = d.get("flags") or {}
+        why = [k for k in ("invented", "overstates", "damaged") if flags.get(k)]
+        out[d["id"]] = (d["line"], "|".join(why))
+    return out
 
 
 def rec_key(v, n, text) -> str:
@@ -247,6 +281,7 @@ def main() -> int:
 
     by_key = placed
 
+    plain = plain_lines()
     out = []
     for r in rows:
         p = by_key.get(rec_key(r["_v"], r["_n"], r["text"])) or {}
@@ -282,6 +317,8 @@ def main() -> int:
             "amounts": "|".join(amounts), "amount_count": len(amounts),
             "refers_to_decision_number": ref_no(r["text"]),
             "classified_by": c.get("classified_by", ""),
+            "plain_line": plain.get(r["id"], ("", ""))[0],
+            "plain_line_caution": plain.get(r["id"], ("", ""))[1],
         })
 
     # ── gates ────────────────────────────────────────────────────────────
@@ -399,6 +436,24 @@ def main() -> int:
             {"name": "amount_count",
              "what": "how many. Take amounts[0] only when this is 1 — 6.2% of "
                      "rows carry several and none of them is THE amount."},
+            # ── OURS, AND SAID SO ────────────────────────────────────────
+            # Every other column here is the Board's or a measurement of it.
+            # This one is a sentence WE wrote, and the schema has to say so
+            # plainly or a reader will take it for the record's own words.
+            {"name": "plain_line",
+             "what": "OUR one-sentence reading of the record in plain English, "
+                     "6-11 words, written from the item's full text — NOT the "
+                     "Board's wording. `text` is the Board's. Empty where the "
+                     "record states no event (page furniture, an index row)."},
+            {"name": "plain_line_caution",
+             "values": ["", "invented", "overstates", "damaged",
+                        "invented|damaged", "overstates|damaged"],
+             "what": "why a written line is doubtful, | separated, blank when it "
+                     "is not. `invented` = a name or figure in the line could "
+                     "not be found in the record; `overstates` = the line states "
+                     "as done what the record only proposed; `damaged` = the "
+                     "words match only approximately because the SCAN is broken, "
+                     "not the line. Filter on this rather than trusting every row."},
             {"name": "classified_by",
              "values": ["form", "near-duplicate", "purpose-clause", "record",
                         "rule"],

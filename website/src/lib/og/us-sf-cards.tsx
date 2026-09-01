@@ -256,7 +256,16 @@ export async function renderSfBlockOg(id: string, origin: string) {
     kicker: `Block ${id} · San Francisco`,
     // No line means a block the record says nothing about — 308 of 5,404. The
     // card says so plainly rather than printing an empty quotation.
-    title: lead ? `“${quoteForCard(lead.t)}”` : `Block ${id}`,
+    // ── OUR SENTENCE GOES UNQUOTED; THE CLERK'S KEEPS ITS MARKS ────────
+    // This card is what a link to a block looks like when it is pasted
+    // somewhere, so it is the version most people will ever read — and the
+    // Clerk's line cut to 132 characters is the worst case for legibility.
+    // Where a written line exists it leads, WITHOUT quotation marks, because
+    // the words are ours; where none does, the Board's own line is quoted
+    // exactly as before. The same rule the fiche and the map card keep.
+    title: lead
+      ? (lead.pl ? lead.pl : `“${quoteForCard(lead.t)}”`)
+      : `Block ${id}`,
     figure: n
       ? {
           label: "Decisions on this block",
