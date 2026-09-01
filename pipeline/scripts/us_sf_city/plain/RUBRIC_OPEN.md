@@ -371,3 +371,46 @@ finished and the numbers were never tested against a second reader:
 The lease rung is the one to check first: it is the same gap that produced the
 42-point disagreement in the batch-017 double-read, and this reader's spread
 (26 to 55) is that gap written as a ladder rather than left open.
+
+## Two readers invented ladders independently and landed in the SAME BANDS
+
+Batch 035 and batch 043 each stated a full ladder for the three unanchored
+families before scoring, with no rubric guidance and no knowledge of each other.
+The numbers differ. The bands do not:
+
+    traffic / parking            035    043    same band?
+      one street or block         38     34      yes  (30-54)
+      a corridor / use changed    44     48      yes  (30-54)
+      district-wide or citywide   58     62      yes  (55-79)
+
+    public-use lease
+      neighbourhood service       55     60      yes  (55-79)
+      department office           26     26      yes  (10-29)
+
+    landmark
+      one building                42     44      yes  (30-54)
+      a district or group         62     58      yes  (55-79)
+
+Every comparable rung agrees on band; the largest gap on any of them is 5 points.
+
+This changes what the missing anchors cost. The absence is losing PRECISION, not
+correctness — readers left to themselves reach the same judgement and write a
+different number for it. It also says the v7 ladders are close to right before
+anyone has tested them, since two readers converged on them from scratch.
+
+It does NOT explain the 42-point lease disagreement in the 017 double-read. That
+gap is between a reader who scored the space by what it houses and one who scored
+it as an office because the clerk wrote "office" — the two readers here both
+scored by what it houses, so they never met the fork. The v7 lease rule has to
+say which reading wins, and the ladder alone will not do it.
+
+## Two families still unanchored, found in 043
+
+**Mills Act historic property contracts — 23 records.** Not a designation: a tax
+reduction for one owner (10-29) bundled with a preservation rule on one building
+(30-54). The reader used 30 and said so.
+
+**Concessions and fees on public facilities — 22 records.** Golf and court
+booking fees, park parking rates, restaurant and cargo leases on city land. The
+lease anchors split department-office from public-use and cover neither a private
+tenant paying the city rent nor a fee the public pays to use a facility it owns.

@@ -92,11 +92,17 @@ citywide system should not outrank a large trade on a civic building.
 CROSSES A BAND, all three. Together 41 to 258 records a batch. These are the
 largest holes in the rubric and the reason every reader invents a private ladder.
 
-The numbers below are batch 035's reader's, which is the only ladder any reader
-stated in full before scoring against it. They are a STARTING POINT, not a
-measurement — no second reader has been tested against them, and the lease rung
-is the one that produced a 42-point disagreement in the 017 double-read, so it is
-the one to check first after v7 lands.
+The numbers below are batch 035's. Batch 043's reader independently stated its
+own ladder for the same three families, and every comparable rung landed in the
+SAME BAND — largest gap 5 points (see RUBRIC_OPEN.md). So these numbers are
+corroborated at band level before anyone has tested them, which is the level the
+rubric actually decides at.
+
+The lease FORK is a different matter and the ladder does not close it. Both those
+readers scored a space by what it houses; the 42-point disagreement in the 017
+double-read was between that reading and one that scored it as an office because
+the clerk wrote "office". Rule 7 below has to settle which reading wins — check
+it first after v7 lands.
 
     ADD three anchors:
 
