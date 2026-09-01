@@ -1307,3 +1307,25 @@ other rules this session. It must not become "look around until you find a use".
     map, but "six lots split into thirteen for homes on Clipper Street"
     establishes housing, which the band text puts at 55-79. The reader split
     conversions (36) from splits that create homes (55)
+
+## Does the +6 thoroughfare bonus reach the LAND-USE ladders? Two readers, opposite
+
+    batch 063   did NOT apply it to rezoning — a frontage rule regulates the
+                parcels, not the roadway
+    batch 066   DID apply it — "Chain stores on Market Street" scored 61
+
+Both are defensible from "governs every street anchor", because I never said
+whether a rezoning IS a street anchor. The +6 was written for the fabric of a
+street; a rule about what may be built on the lots beside it is a different
+thing. My reading is 063's, and it needs saying, since the bonus already had to
+be fenced off from the traffic ladder for the same reason.
+
+## An act on N streets at once — no rung between one and citywide
+
+Setback lines are 40 for one street and 62 citywide, with nothing between, and
+the corpus is full of "Buildings on X Avenue and four others". One reader used
+40 / 42 / 44 for one / two / three-or-more and flagged the invention itself.
+
+Same shape as the scattered-intersections gap another reader hit on traffic. Both
+want the same sentence: an act repeated over N named streets takes the one-street
+rung plus 2 per additional street, capped below the citywide rung.
