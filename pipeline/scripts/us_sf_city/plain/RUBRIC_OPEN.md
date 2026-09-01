@@ -1451,3 +1451,28 @@ repair does not touch it.
 Not taken unilaterally: it changes the shape of every discounted score in the
 corpus, which is a bigger change than any single anchor, and it is the kind of
 call that should be made deliberately rather than mid-wave.
+
+## The component anchor outranks the street it is a component of — two readers
+
+The part/whole rule was written for buildings and fixed there. On streets it
+inverts, because the component anchor (45) is simply higher than the street
+anchors:
+
+    "$1,215 for engineering on the Sutter and Fourth street paving"    45
+    paving that same listed thoroughfare                              44
+    paving an ordinary street                                         38
+
+    "Eckbokay Associates hired to design the Maiden Lane improvements" 45
+    the improvement itself                                            38
+
+A survey outranks the pavement. Batch 038 capped the part at 34 by analogy; batch
+078 used 36 and flagged it rather than let the inversion stand. Two readers, two
+repairs, same diagnosis.
+
+    FIX: state the part/whole rule generally rather than for buildings —
+     "a component never scores above the act it is part of, whatever the
+     component anchor says". That is one sentence and it closes the street
+     case, the citywide-system case and any future one.
+
+This is the same lesson as the thoroughfare split: I fixed a rule for the family
+where I first met it, and left it broken everywhere else the same shape occurs.
