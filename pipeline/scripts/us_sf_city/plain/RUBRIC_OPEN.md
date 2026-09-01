@@ -1242,3 +1242,30 @@ genuine cancellations of that shape, so the question was well aimed.
     53 — a visible 5-point seam inside one batch
   a rooftop antenna or colocation lease is neither the city's own office (26)
     nor a large asset leased out (48); one reader invented 36 and said so
+
+## "may be" — is it a stage word or just modal wording? ~14 lines a batch
+
+The corpus writes "Part of X Street may be closed" for what is plainly the
+declaring-the-intention resolution, which IS a named stage. Batch 051 read "may"
+as that stage throughout — which then forced "Special permission may be required
+for branch banks and fast-food shops", a CITYWIDE land-use rule, down from 80 to
+60.
+
+So the same word is a stage in one line and ordinary modal phrasing in the next.
+Read as a stage, ~14 lines a batch are half what they should be; read as modal,
+the intention resolutions lose their discount.
+
+This is the "grammar is not stage" rule meeting a word that sometimes IS the
+stage. The closed stage list is the right tool: "may be closed" is only a stage
+where the line is the intention resolution, and the way to tell is whether the
+subject is one address (intention) or a class (a rule). Worth stating.
+
+## "Discount one rung" — third reader, and they do not agree
+
+    batch 057   unheard appeal x0.5, decided appeal x0.75
+    batch 051   x0.5 throughout, and says x0.75 would move ~20 rows a band
+    batch 063   x0.75
+
+Three readings, and the split moves rows between 10-29 and 30-54. This is the
+one v7 ambiguity where readers have NOT converged, which puts it above the
+settled repairs in priority for the next bump.
