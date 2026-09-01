@@ -484,3 +484,58 @@ Scored 60.
 **A department named on a lease.** Now answered by v7's "score what the line
 establishes" rule — kept here because it is the fourth report of the lease hole
 and the one that produced the answer.
+
+## RESOLVED as a diagnosis: one ambiguous sentence, not three defects
+
+I logged the permit tier as "three readers point at three places, a fix from any
+one alone would be a guess". Batch 037's reader found why. The sentence
+
+    "Below 30, an anchor is not discounted"
+
+has two readings, and it never says which:
+
+  (a) an anchor whose VALUE is below 30 is not discounted — written for the
+      18-day extension, and the reading that halves the 33 permit to 17
+  (b) a discount may not LAND below 30 — which floors the permit request at 30
+      and the refused subdivision map at 30
+
+Every symptom is downstream of that. Reading (a) produces the 33/17 split on
+"allowed to" vs "asks to"; reading (a) produces the subdivision-map cliff (36
+refused -> 18); reading (b) is what the reader who defended 17 was arguing
+against. Three readers, three symptoms, one sentence.
+
+So it is one edit, not a guess — but WHICH reading is a judgement about the
+preference model, not something the corpus can settle:
+
+    reading (a) says asking is genuinely a lesser act than being allowed,
+      and a request for a permit belongs in the band below
+    reading (b) says a decision about one address stays a decision about one
+      address whichever way it goes, and only the precision changes
+
+(a) is closer to what one reader defended out loud ("seeks a spur track" = 17).
+(b) is closer to the housing-bond and appeal fixes in v7, which both say the
+stage must not swallow the subject. v7 cannot ship until this is picked, because
+entries 9 and 10 lean on (b) and the permit anchor currently behaves as (a).
+
+## Batch 033, 035, 037 — undecided, all under the bar individually
+
+  paving bill confirmed and sent to the contractor       ~10 lines, used 30 (18-38 defensible)
+  "declared necessary" IS the act for sidewalks          two bands, used 19
+  zoning-appeal machinery: filing vs continuing          ~40 lines, no rung distinguishes them
+  hydrant water: citywide recurring 36 or one facility 30  named in the rubric, side not stated
+  a gift of a public asset at one site                   two rules ~25 points apart, used 55
+  freeway agreements with the State                      not on the anchor list, used 78/75/58
+  a jitney route = transit line (80) AND business permit (33)  used 62
+  grant applications (money SOUGHT for a decided act)    x0.5 vs x0.75 swings one line 31->47
+  the Board endorsing someone else's ballot measure      no rung, used 40
+  a city fee schedule that gates access to care          used 62, reader flagged low confidence
+  parcel-level rezoning vs a use permit at one corner    45 vs 33, the gap is the reader's invention
+  land bought for a facility with no anchor (yacht harbour)  between 70 and 48, used 62
+
+## A note on the ingest racing a worker
+
+Batch 037's ingest ran while its worker was doing a final cosmetic pass. All
+1200 rows landed with no id drift; the only loss was one `why` trimmed from 9
+words to 8. Harmless here, but the completeness gate cannot see the difference
+between "finished" and "finished and still being tidied". Not worth a lock: the
+cost is a cosmetic edit, and the alternative is a worker holding a batch open.
