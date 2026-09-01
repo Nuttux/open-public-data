@@ -17,6 +17,29 @@ has three rungs, because readers needed a middle one and invented it.
 The recurring utility bill was a CONTRADICTION, not a gap — named in two
 sections at once, worth 55-62 in one and about 36 in the other. It is upkeep.
 
+## For v6 — held back deliberately
+
+**The major-thoroughfare rung is inverted and never fires.** 40 requires a
+listed street AND a named length, so "Street levels to be changed along the
+Great Highway" scores 34 while a named stretch of that highway would score 40.
+The whole ranks below its own part. A reader found all 148 street-level lines in
+its batch landing on 34, the 40 rung dead. The fix is to drop the length
+requirement.
+
+NOT fixed now, on a rule worth stating: **bump when a case moves records across
+a band; do not bump when it moves them within one.** This is 6 points inside
+30-54. The logic is wrong, the result is coherent — every street-level record
+lands on the same number — and a fourth re-read of 99,278 lines does not buy
+enough to be worth it.
+
+Also waiting for v6, same test applied:
+* a condition attached to a permit — a blasting curfew, a required flagman
+* a system installed in a building already standing, where the line does not
+  say whether the building is going up
+* a repeal that names an ordinance number and no act
+* a grant of public space longer than a night and shorter than a permit
+* boulevard designation
+
 ## Still open
 
 **Building a civic thing in instalments.** Four readers, four resolutions: a sum
