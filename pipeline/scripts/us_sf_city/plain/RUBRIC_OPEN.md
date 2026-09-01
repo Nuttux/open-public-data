@@ -696,3 +696,52 @@ apart. Used 30.
 Smith's Parker Avenue rebuilding" — the "contractor given more days = 18, the
 street is not decided again" anchor points one way; extra money buys extra work,
 which points at the 38 work anchor. ~8 lines. Used 38.
+
+## Batch 044 — one new collision, three repeats
+
+**Two rules point opposite ways at a refused rezoning.** The refusal rule (x0.5
+above the permit tier) says 21; the repeal rule (score the act it undoes) says
+42. "Shops refused at Oxford and Silver", ~12 lines. A rezoning denial is
+arguably an act about the block rather than a halved one. Neither rule yields to
+the other and both plainly apply.
+
+Repeats, no longer worth separate entries: the thoroughfare contradiction
+(EIGHTH reader), transit operating money (second — "$33,000 for more conductors"
+is more service, not upkeep, and the recurring-bill rule says 30-36 while the
+daily-life rule says high), and a permit AMENDED ("blasting limited to daytime
+hours") which the anchors do not price alongside granting, refusing,
+transferring and revoking.
+
+**Individual benefit grants in bulk.** "More names added to old age, blind and
+widow pensions" — the bands cover creating a benefit for a class (80+) and one
+party's claim (10-29), with nothing for a batch of individual grants under an
+existing programme. Scored 45.
+
+## A resumed batch is not always a clean prefix
+
+Batch 041's inherited rows had an unscored HOLE at positions 311-330 — the killed
+worker had scored distinct lines 0-239, which expanded unevenly across the 1200
+input rows. Every other resume this session inherited a contiguous prefix, and
+the brief is written as though that is guaranteed. It is not.
+
+The reader caught it because it verified alignment rather than counting rows, and
+reproduced the inherited 318 byte-identically before adding anything. A resumer
+that trusted the count would have appended from row 318 and left the hole in the
+file forever, with the ingest none the wiser — every id present, every id valid,
+twenty records silently unscored.
+
+SCORER.md already says to score the ids that are MISSING rather than to continue
+from a position, which is the rule that saves this. Worth keeping that wording
+exactly as it is.
+
+## The permit floor is internally incoherent — by one point
+
+Batch 041 states it more sharply than the earlier reports: "Below 30, an anchor
+is not discounted" was written to protect the 18-day extension, but a 33 permit
+sits just above the floor, so an application halves to 17 — ONE POINT BELOW the
+anchor the floor exists to defend.
+
+That is a real incoherence and it is worth one sentence in v7. It is also worth
+noting that fixing it moves the score by a single point (17 to 18). The band
+question — 17 or 33 — is the one that matters, and the measurement above (3.9% of
+permit lines are applications, 263 records corpus-wide) says it is small.
