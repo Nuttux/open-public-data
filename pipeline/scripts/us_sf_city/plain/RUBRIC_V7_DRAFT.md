@@ -60,17 +60,27 @@ One rule closes both:
        named subject stays at 10 or above — 0-9 is for procedure with no
        subject in it, and a proposal, an appeal or a referral is not that."
 
-## 4. Give street WORK the split street LEVELS already has
+## 4. The thoroughfare split belongs to EVERY street act, not to one anchor
 
-CROSSES A BAND (38 -> 44). 52 of 292 street-work lines in one measured batch.
+CROSSES A BAND. 52 of 292 street-work lines in one batch, 62+ sidewalk-width
+lines in another, and the same shape wherever a street is the subject.
 
-Street levels got a 34/40 thoroughfare split. Paving, grading, sewering and
-sidewalk work — four times the population — got none, so "Mission Street repaved
-from Fourth to the Embarcadero" ties a fifty-foot patch on an alley at 38.
+I patched this once, on street levels (the 34/40 split), and it has now been
+reported twice more as missing somewhere else: street work (paving, grading,
+sewering) is flat at 38, so "Mission Street repaved from Fourth to the
+Embarcadero" ties a fifty-foot patch on an alley; sidewalk width is flat at 40,
+so "Van Ness Avenue sidewalks set at sixteen feet" ties "San Carlos Street
+sidewalks set at six feet".
 
-    ADD to the street-work anchor:
-      "38 where the subject is an ordinary street; 44 where a listed
-       thoroughfare is the subject. Length is not required."
+Three reports of one defect is not three defects. Patching the two new anchors
+would leave the fourth to be found later. Write it once, above the anchors:
+
+    ADD as a general rule, and DELETE the 34/40 split from the street-levels
+    anchor so the rule is stated in only one place:
+      "Where a listed thoroughfare is the SUBJECT of an act on the street
+       itself — its level, its width, its paving, its sidewalks, its use —
+       the act takes its anchor plus 6. Length is never required. This
+       raises the act; it does not change what the act is."
 
 ## 5. Floor the citywide-component multiplier
 

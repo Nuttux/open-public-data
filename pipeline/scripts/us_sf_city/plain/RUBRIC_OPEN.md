@@ -414,3 +414,37 @@ reduction for one owner (10-29) bundled with a preservation rule on one building
 booking fees, park parking rates, restaurant and cargo leases on city land. The
 lease anchors split department-office from public-use and cover neither a private
 tenant paying the city rent nor a fee the public pays to use a facility it owns.
+
+## Five more from batch 034, and one that generalises a v7 entry
+
+The generalising one first: **the sidewalk-width anchor (40) is flat, no
+thoroughfare split** — "Van Ness Avenue sidewalks set at sixteen feet" ties "San
+Carlos Street sidewalks set at six feet". 62+ lines in that batch alone. This is
+the third report of one defect (street levels got the split; street work and now
+sidewalk width did not), so v7 states it once as a general rule over every act on
+a street rather than patching a third anchor.
+
+Genuinely undecided, from the same reader:
+
+**A bridge as a public work has no anchor.** "$89,600 for a bridge carrying
+Harrison Street over Beale Street" is more than a street opened or extended (44)
+and less than a civic building (78). The reader used 62, and said the gap between
+that and its 55 for a smaller supplemental bridge was its own judgement.
+
+**A large commercial lease of a public asset.** "Pan American Airways leases
+thirty-six acres at the San Francisco Airport". This is the THIRD independent
+report of the same hole — 043 found concessions and fees, 017's double-read found
+the office-vs-use fork. The lease anchors cover a department's own office and
+space the public uses; neither covers the city renting a large asset OUT.
+
+**A repeal whose act is unnamed.** "An earlier ordinance, numbered 18.011, is
+repealed" — the repeal rule says score the act undone, but no act is named, so it
+collapses to 6. "Part of an old Public Utilities ordinance repealed" has a domain
+and no act; the reader gave it 14 and called the pair the least defensible in its
+300. Related to the subject-with-no-act entry, and the mirror of it.
+
+**A dissent that carries a request.** "Supervisor McSheehy alone votes no, asking
+for a financial investigation" is a roll call (0-9) and a proposal at once. 12.
+
+**A leave of absence for an official.** Smaller than an appointment (24), not pay,
+no rung. 14.
