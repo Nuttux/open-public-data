@@ -250,21 +250,25 @@ export async function renderSfBlockOg(id: string, origin: string) {
      MEASURED off the shipped index, because the two silences are different
      and a reader is owed the difference: 335 of those 633 carry a record on
      the streets they front and 298 carry nothing at all. */
+  /* ── AND THE REST OF THE CARD STOPS SAYING "BLOCK" TOO ─────────────────
+     The kicker was fixed to name a street and every other line still read
+     "Decisions on this block" — the same jargon, one line down. An assessor
+     block is our filing unit, not a place a person stands in. The card names
+     the street above; here it just says "here". */
   const emptyFigure =
     ns > 0
       ? {
-          label: "Nothing on this block",
+          label: "Nothing recorded here",
           value: ogFmtEn(ns),
-          qualifier: "decisions on the streets it fronts — 335 blocks are in this state",
+          qualifier: "decisions on the streets around it, none on the ground itself",
         }
       : {
-          label: "Decisions on this block",
+          label: "Decisions here",
           /* NOT an em dash. At the figure's 96 px the display face draws it as
              a long black rule, and a redaction bar is the last thing this
              card may look like. */
           value: "None",
-          qualifier:
-            "the record places no decision on this block or its streets — 298 of the city's 5,404",
+          qualifier: "the record places nothing here, nor on the streets around it",
         };
 
   const bars = Object.entries(
@@ -290,10 +294,10 @@ export async function renderSfBlockOg(id: string, origin: string) {
     // exactly as before. The same rule the fiche and the map card keep.
     title: lead
       ? (lead.pl ? lead.pl : `“${quoteForCard(lead.t)}”`)
-      : `Block ${id}`,
+      : placeName || "San Francisco",
     figure: n
       ? {
-          label: "Decisions on this block",
+          label: "Decisions here",
           value: ogFmtEn(n),
           qualifier: span ? `${span}, each linked to the page of the scan` : undefined,
         }

@@ -1062,7 +1062,7 @@ function DecadeGap({
       aria-label={tOr(
         t,
         "us.sf.thecity.panel.rail_gap_aria",
-        "{range} — nothing on this block",
+        "{range} — nothing recorded here",
       ).replace("{range}", run.label)}
     >
       <div className="fx-block-head">
@@ -1741,7 +1741,7 @@ function DecadeRow({
             ? tOr(
                 t,
                 "us.sf.thecity.panel.rail_aria_partial",
-                "{decade}s — {n} decisions on this block, {from} to {to}",
+                "{decade}s — {n} decisions here, {from} to {to}",
               )
                 .replace("{decade}", String(group.decade))
                 .replace("{n}", String(n))
