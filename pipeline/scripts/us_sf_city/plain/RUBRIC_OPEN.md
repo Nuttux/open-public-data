@@ -36,6 +36,31 @@ them differently, and "judge only what the line states" is what makes it so.
 site, a business permit, a subdivision map. The number is pinned; the reasoning
 under it is not.
 
+**Land bought to widen a street.** The line states a purpose, just not a civic
+facility, so neither land anchor fits. ~60 records in one batch — the largest
+population any open question touches. Read as the no-purpose anchor (44) for now.
+
+**How wide is "civic"?** The land anchor names a school, a hospital, a
+playground. A reservoir, a pumping station, a fire drill tower and a municipal
+parking garage are none of those. One reader put the first three at 70 and
+parking land at 50, a line it invented.
+
+**A repeal whose underlying act is not in the line.** "Sand removal order
+dropped on Balboa Street" — v4 says score the act undone, which requires knowing
+what a sand-removal order is worth.
+
+**A street closed for an afternoon.** A soap-box derby, an Easter egg hunt, a
+summer play street. A real grant of public space, time-boxed, and no band covers
+it.
+
+## A process fault, not a rubric one
+
+A reader noticed IMPORTANCE.md changing under it — sha 63ebd0b93a to e82ed24d0e
+between two of its own commands. Stamping the rubric at hand-out keeps the
+ACCOUNTING correct, but a worker still read a moving file. Do not edit the
+rubric while batches are out; bump the version, let the wave land, then change
+it.
+
 ## Answered outside the rubric
 
 **A proposal and its adoption, both in the same volume.** One reader asked
