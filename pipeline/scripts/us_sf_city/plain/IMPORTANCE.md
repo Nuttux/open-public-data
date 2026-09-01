@@ -193,6 +193,9 @@ these numbers, and reserve judgement for what is not on the list.
 | a hearing on a named proposal, or protests recorded | **16** |
 | an index page, or a line naming no act | **5** |
 | the honest no-subject line | **6** |
+| a repeal — an act being undone | **score the act it undoes** |
+| the Board taking a matter up, or considering it | **the act, discounted as a proposal** |
+| a fact the Board records but does not act on | **the fact's own reach, less a third** |
 
 Two of those need saying out loud.
 
@@ -205,6 +208,18 @@ in the corpus, 0.19% of lines.
 
 **A contractor's extra days is 18, not the street work it attaches to.** It is
 one party's business. The street is not being decided again.
+
+**A repeal is not a proposal.** Three readers hit "Order to pave Grant Avenue is
+repealed" and had nowhere to put it. Undoing an act is an act, and it reaches
+exactly as far as the thing undone — so it takes that score. The Board deciding
+NOT to pave a street changed the street as surely as deciding to.
+
+**A fact recorded is not nothing.** "Engineer Joseph B. Strauss outlines his
+Golden Gate bridge plans" and "Sanitary Reduction Works can no longer handle the
+city's garbage" are the largest subjects in their batches and neither is an act.
+Score the reach of what is reported and take off a third: the Board is telling
+the city something true, which is less than doing something, and much more than
+adjourning.
 
 ## Do not
 
