@@ -856,3 +856,37 @@ noted it follows the rule and still reads wrong.
 Under the replacement ("a discount never takes an act below 18; anchors discount
 like anything else") a referred finding is 18 and an adopted one is 22. Fourth
 incoherence closed by the same single clause.
+
+## Do two discounts stack? The rubric has never said
+
+Batch 029: 13 Community Benefit District reports sent to committee are hit by "a
+fact recorded = reach less a third" AND "referred = x0.5". Compounding gives 10,
+one step gives 14. The reader used 14 and noted the rubric is silent.
+
+This is cheap to settle and it recurs wherever a stage word meets a kind word.
+One sentence for v7:
+
+    "Discounts do not compound. Where more than one applies, take the
+     largest single one."
+
+Both readers who met this chose the non-compounding reading unprompted.
+
+## Three more unanchored, batch 029
+
+**Citywide movable equipment.** "$7,900 for four chemical fire engines" — the
+anchors offer fixed plant at a facility (45) or consumables and movables (30),
+and this is capital equipment for a citywide service attached to no facility.
+Used 40 with nothing behind it.
+
+**A transit anchor of 80 firing on a neighbourhood shuttle.** A 1926 bus between
+Edna Street and Forest Hill Station takes the same 80 as a citywide line;
+reach-picks-the-band says far lower, the anchor says use the number. Used 80.
+This is the transit equivalent of the traffic ladder and wants the same treatment
+— the anchor needs a rung for a local service.
+
+**Does a dwelling count move a band?** A condominium map for 127 flats: the map
+anchor is 36, "housing built, with people housed" is 55-79. The money rule says a
+sum raises a score INSIDE its band and never moves it; the rubric is silent on
+whether a unit count behaves the same way. Related to v7 entry 10, which says a
+missing unit count must not lower a housing bond — the mirror question is whether
+a present one lifts a map.

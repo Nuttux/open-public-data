@@ -54,6 +54,19 @@ The ingest deduplicates by id, so a repeated id is not
 corruption — but re-reading 800 records nobody needed re-read is a waste of the
 run, and the batch may be killed again before it reaches the end.
 
+## The orchestrator may retire your input while you are still working
+
+When your `done-NNN.jsonl` reaches full length, the ingest can sweep it at any
+moment — even while you are doing a final verification pass. It renames
+`batch-NNN.jsonl` to `issued-NNN.jsonl` and your output to `taken-NNN-rvN.jsonl`.
+This is normal and nothing is lost.
+
+Two workers have met it. Both handled it correctly: they had hashed their own
+copy of the input at the start, confirmed the hash still matched the renamed
+file, and restored `done-NNN.jsonl` from the taken file. Do the same — keep your
+own `in-NNN.jsonl` and its hash, and never assume the input path you started
+with still exists.
+
 ## Output
 
 `pipeline/data/sf_bos/rankwork/done-NNN.jsonl`, one object per input line, same
