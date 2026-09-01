@@ -132,8 +132,7 @@ genuinely is a smaller fact than the act it proposes.
 
 Reach picks the band, and some decisions reach everybody while barely mattering:
 bathers must wear a bathing dress; companies must mark the curb where they lay
-pipes; the recurring bill for hydrant water. A whole class is bound, and nothing
-much changes.
+pipes. A whole class is bound, and nothing much changes.
 
 Those sit at the FOOT of the band their reach earns, not the top — 55-62 rather
 than 80. Reach still picks the band, because a universal obligation is genuinely
@@ -149,6 +148,19 @@ wing, one cistern, the year's gas bill, the water for the hydrants.
 
 The first is scored on what gets built. The second is scored on what is
 repaired, however large the institution around it.
+
+THE RECURRING BILL IS UPKEEP. Two readers found this section and the one above
+both claiming the same object and answering about thirty points apart — the
+hydrant water bill was named as a wide-reach obligation there and as upkeep
+here. It is upkeep. The month's street lighting, the year's gas, the water in
+the hydrants: the city is keeping a thing running that it already decided to
+have, and the deciding is not happening again.
+
+    the month's street-lighting bill                            36
+    a bill for one facility — coal for the hospital, its meat   30
+
+The wide-reach section is for a rule BINDING a whole class, not for the invoice
+that keeps a service the class already has.
 
 ## Anchors: the recurring acts, pinned
 
