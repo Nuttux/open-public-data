@@ -1476,3 +1476,53 @@ repairs, same diagnosis.
 
 This is the same lesson as the thoroughfare split: I fixed a rule for the family
 where I first met it, and left it broken everywhere else the same shape occurs.
+
+# THE REPAIR HAS A COST NOBODY SAW: stage stops meaning anything below 18
+
+Batch 076 worked it out. Under `min(base, max(18, base x discount))`, any act
+whose base is at or below 18 is now COMPLETELY undiscountable — for base <= 18,
+max(18, base x d) is 18, and min(base, 18) is base. The discount cannot bite.
+
+    a hearing referred, continued, and adopted   all 16    155 rows
+    a proclamation requested = one granted       all 15     42 rows
+
+Nearly 200 rows in one batch where the stage carries no information at all. That
+is the same defect as the appeal cycle flattening its subject, arriving from the
+opposite end: there a procedural step swallowed a large subject, here the floor
+erases the step entirely.
+
+Eight readers reached this repair and none of us saw that consequence, because
+each was checking that it stopped the inversion.
+
+## Which makes the floor-at-10 option the answer to three things, not one
+
+    the pile      25-35% of a batch on exactly 18, unorderable
+    lost stage    nothing below 18 can be discounted at all
+    the inversion a referred renaming outranking an adopted one
+
+A floor at 10 fixes all three at once, and does it by construction rather than
+by patching:
+
+    hearing referred    16 x 0.5 = 8   -> floored to 10
+    hearing adopted     16                          16     distinct again
+    permit asked        33 x 0.5 = 17               17
+    permit allowed      33                          33     spread preserved
+
+The named-subject rule already keeps procedure out of 0-9, so a floor at 10 is
+exactly the rule that says "this has a subject" and nothing more. The 18 floor
+was trying to do a second job — prevent the inversion — that uniform discounting
+does on its own.
+
+RECOMMENDED for v8. It changes every discounted score in the corpus, so it is a
+deliberate call rather than a patch, and the affected rows are precisely the ones
+the selector already returns (score <= 18 plus the discounted families).
+
+## Three smaller things from 076
+
+  the street list needs suffixes on MONTGOMERY, COLUMBUS and BROADWAY too —
+    Montgomery Avenue in 1907 is the diagonal that is now Columbus, and the
+    suffix fix only adjudicated Third, Ocean and Nineteenth
+  a landmarked COMPLEX (the Jackson Brewery, several buildings on one site) is
+    literally "a group" (58) but reaches like one building (42)
+  amending or extending a lease-out has no rung, so a modification prices the
+    same as the original deal
