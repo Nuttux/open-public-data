@@ -1,45 +1,45 @@
 # Open questions for the next rubric version
 
-Collected from readers scoring real batches. Each was reported by a worker as a
-place the rubric did not decide, and each recurs often enough to matter. They
-are NOT fixed yet: changing the rubric re-reads the corpus, so they are batched
-and applied once.
+## Settled in v4 — kept here so they are not re-opened
 
-## Reported by two or more readers
+Anchored to numbers after eight readers were measured disagreeing by up to 23
+points: street levels, roadway acceptances, contractor time extensions,
+one-address permits, subdivision maps, set-backs, sidewalks, land bought with
+and without a stated purpose, hearings, index pages, no-subject lines.
 
-**Building a civic thing, in instalments.** Steel for a hospital, plumbing for a
-school, a progress voucher on a tunnel. "Score the thing bought" points at the
-hospital; "money at a site with no stated beneficiary" points at 30-54. Three
-readers invented three different resolutions — a sum ladder, building-wide
-system counts as the building, and a facility ladder. They disagree with each
-other, which is the definition of a gap.
+Also settled: repeals take the score of the act they undo; a matter taken up is
+the act at a proposal's discount; a fact the Board records but does not act on
+takes its own reach less a third; a department's office lease is 26 while a
+lease of space the public uses is scored on what it houses; an appointment is
+24; an environmental finding that gates an act is 22; and the discount ladder
+has three rungs, because readers needed a middle one and invented it.
 
-**The same act, written twice, once with its purpose.** "David Dorward's land
-accepted for the Mission High School site" scored 78; "David Dorward paid $9,100
-for a lot on Church Street" scored 40 — the same transaction fourteen lines
-apart. "Judge only what the line states" forces the split and is right to, but
-one decision then sits in two bands. This is common in the land-assembly runs.
+The recurring utility bill was a CONTRADICTION, not a gap — named in two
+sections at once, worth 55-62 in one and about 36 in the other. It is upkeep.
 
-**A public asset gained, at small reach.** "City to take over new roadways on X
-and Y" is literally a top-band kind at two-streets reach. Reach picks the band,
-so it scored 40 — but if any asset gained should clear 55, about forty records a
-batch move.
+## Still open
 
-## Reported once, but clear
+**Building a civic thing in instalments.** Four readers, four resolutions: a sum
+ladder, building-wide-system-counts-as-the-building, a facility ladder, and
+whole-facility-versus-component. The last is the most defensible — "E. W.
+Elliott paid for Engine House No. 41" is the engine house, "Ralston Iron Works
+paid $5,150 for steel at Hancock Grammar School" is money at a site — but it is
+one reader's invention, not a measured answer.
 
-**Index pages.** They record no act but name real subjects. Scored 4-6 as the
-closest fit; the 0-9 band says "procedure with no subject", which is not
-literally what an index is.
+**The same purchase written twice, once with its purpose.** MEASURED: 193
+groups, 0.19% of lines, and the v4 anchors narrow the gap from 38 points to 26.
+Not closed: a reader seeing both spellings on adjacent lines still has to score
+them differently, and "judge only what the line states" is what makes it so.
 
-**Hearings on a named proposal.** "Protests taken up against widening Park Hill
-Avenue" has a subject and is not a decision. No band covers it.
+**A land-use rule at one-street reach.** A set-back is anchored at 40, but the
+30-54 band's list holds nothing shaped like a rule — one address, money at a
+site, a business permit, a subdivision map. The number is pinned; the reasoning
+under it is not.
 
-**A fact the Board merely records.** "Sanitary Reduction Works can no longer
-handle the city's garbage" — citywide, consequential, and not an act.
+## Answered outside the rubric
 
-**A whole district renamed.** The renaming rule turns on whether the city knows
-the new name; here what is unusual is the reach.
-
-**Citywide financing with no address.** The machinery discount is written for a
-bond AT AN ADDRESS. Citywide transit bonds have no address, so the anchor that
-justifies the discount is missing.
+**A proposal and its adoption, both in the same volume.** One reader asked
+whether the half-discount double-counts a fact the Journal simply prints twice.
+It does — and the fix is not in the scoring. The duplicate-collapsing pass keeps
+ONE row per act carrying its final outcome, so the proposal row does not reach
+a reader at all. 17% of a batch is this duplication.
