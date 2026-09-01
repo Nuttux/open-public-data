@@ -251,10 +251,19 @@ function whenOf(d: BlockDecision): string {
  * posted would credit the wrong institution — in front of the one audience
  * that would notice.
  */
+/**
+ * ── THE SERIES, WITHOUT THE HALF THAT NEVER CHANGES ─────────────────────────
+ * This is the third line of every row, and it was reading "Board of
+ * Supervisors, Clerk's meeting minutes · at a corner of this block" — 44
+ * characters of which are the same on every row of every block, wrapping the
+ * line in two on a 280 px panel. The page is headed "The record … in the
+ * Board's minutes", so the body is already established; what a reader gains
+ * from the row is WHICH series and WHERE on the block, and both survive here.
+ */
 function seriesOf(d: Pick<BlockDecision, "u" | "c">): string {
-  if (d.c === "b") return "Board of Supervisors, Clerk's meeting minutes";
+  if (d.c === "b") return "Clerk's meeting minutes";
   const vol = d.u.split("/")[0] ?? "";
-  if (vol.startsWith("journal")) return "Board of Supervisors, Journal of Proceedings";
+  if (vol.startsWith("journal")) return "Journal of Proceedings";
   if (vol.startsWith("annualreport") || vol.startsWith("annrep"))
     return "Department annual report";
   if (vol.startsWith("reportof")) return "Bureau of Engineering / Board of Public Works report";
