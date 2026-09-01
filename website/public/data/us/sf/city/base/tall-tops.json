@@ -1,0 +1,243 @@
+{
+ "note": "the surveyed top for the towers the 2023 scan drew short. The fabric's height is the MEDIAN LIDAR return over a footprint, which is right for a flat-roofed tower and agrees with the surveyed height on seven eighths of them. These are the rest.",
+ "source": {
+  "publisher": "San Francisco Department of Building Inspection / DataSF",
+  "dataset": "Tall Building Inventory 5kya-mfst, every building over 240 ft",
+  "fields": "height_ft for the top; tower_plan_size or base_plan_size for the gate",
+  "joined_to": "the shipped footprints, by containment of the footprint's vertex mean in the register's own polygon",
+  "script": "pipeline/scripts/us_sf_places/build_tall_tops.py"
+ },
+ "rule": {
+  "gap_min_m": 10.0,
+  "area_band": [
+   0.5,
+   2.0
+  ],
+  "why": "a published top is applied only to a footprint that could BE that tower's plan. Raising a fragment to the tower's height draws a needle, and raising the block's podium draws a slab."
+ },
+ "measured": {
+  "register_rows": 180,
+  "agree_within_gap_min": 164,
+  "taken": 7,
+  "refused": 9
+ },
+ "tops": [
+  {
+   "gid": 137644,
+   "topM": 326.1
+  },
+  {
+   "gid": 143010,
+   "topM": 130.8
+  },
+  {
+   "gid": 137240,
+   "topM": 122.5
+  },
+  {
+   "gid": 137637,
+   "topM": 111.6
+  },
+  {
+   "gid": 143003,
+   "topM": 100.6
+  },
+  {
+   "gid": 143013,
+   "topM": 116.1
+  },
+  {
+   "gid": 143050,
+   "topM": 167.6
+  }
+ ],
+ "taken": [
+  {
+   "gid": 137644,
+   "name": "Salesforce Tower",
+   "topM": 326.1,
+   "drawnM": 108.0,
+   "gapM": 218.1,
+   "areaM2": 1993,
+   "planM2": 2911,
+   "frac": 0.68,
+   "date": "2017"
+  },
+  {
+   "gid": 143010,
+   "name": "LUMINA I",
+   "topM": 130.8,
+   "drawnM": 27.0,
+   "gapM": 103.8,
+   "areaM2": 1400,
+   "planM2": 929,
+   "frac": 1.51,
+   "date": "2012"
+  },
+  {
+   "gid": 137240,
+   "name": "500 Folsom",
+   "topM": 122.5,
+   "drawnM": 21.0,
+   "gapM": 101.5,
+   "areaM2": 971,
+   "planM2": 1037,
+   "frac": 0.94,
+   "date": "2017"
+  },
+  {
+   "gid": 137637,
+   "name": "33 Tehama Street",
+   "topM": 111.6,
+   "drawnM": 24.0,
+   "gapM": 87.6,
+   "areaM2": 1248,
+   "planM2": 1073,
+   "frac": 1.16,
+   "date": "2018"
+  },
+  {
+   "gid": 143003,
+   "name": "Solaire (Transbay Block 6)",
+   "topM": 100.6,
+   "drawnM": 56.0,
+   "gapM": 44.6,
+   "areaM2": 1474,
+   "planM2": 1301,
+   "frac": 1.13,
+   "date": "2017"
+  },
+  {
+   "gid": 143013,
+   "name": "LUMINA II",
+   "topM": 116.1,
+   "drawnM": 83.0,
+   "gapM": 33.1,
+   "areaM2": 1134,
+   "planM2": 929,
+   "frac": 1.22,
+   "date": "2012"
+  },
+  {
+   "gid": 143050,
+   "name": "One Rincon Hill South",
+   "topM": 167.6,
+   "drawnM": 137.0,
+   "gapM": 30.6,
+   "areaM2": 1096,
+   "planM2": 1124,
+   "frac": 0.98,
+   "date": "2010"
+  }
+ ],
+ "refused": [
+  {
+   "gid": 137640,
+   "name": "181 Fremont",
+   "topM": 227.4,
+   "drawnM": 5.0,
+   "gapM": 222.4,
+   "areaM2": 468,
+   "planM2": 1545,
+   "frac": 0.3,
+   "date": "2017",
+   "why": "the footprint is a fragment of the tower's plan"
+  },
+  {
+   "gid": 143061,
+   "name": "450 Folsom [Transbay Block 8]",
+   "topM": 167.6,
+   "drawnM": 8.0,
+   "gapM": 159.6,
+   "areaM2": 94,
+   "planM2": null,
+   "frac": null,
+   "date": "2019",
+   "why": "the register publishes no plan size, so the gate cannot run"
+  },
+  {
+   "gid": 143057,
+   "name": "340 Fremont Street",
+   "topM": 121.9,
+   "drawnM": 3.0,
+   "gapM": 118.9,
+   "areaM2": 2138,
+   "planM2": 887,
+   "frac": 2.41,
+   "date": "2017",
+   "why": "the footprint is the block's podium, not the tower"
+  },
+  {
+   "gid": 60459,
+   "name": "1500 Mission - Residential",
+   "topM": 121.0,
+   "drawnM": 8.0,
+   "gapM": 113.0,
+   "areaM2": 5510,
+   "planM2": 1115,
+   "frac": 4.94,
+   "date": "2017",
+   "why": "the footprint is the block's podium, not the tower"
+  },
+  {
+   "gid": 137644,
+   "name": "Oceanwide Center II",
+   "topM": 184.4,
+   "drawnM": 108.0,
+   "gapM": 76.4,
+   "areaM2": 1993,
+   "planM2": null,
+   "frac": null,
+   "date": "2017",
+   "why": "the register publishes no plan size, so the gate cannot run"
+  },
+  {
+   "gid": 137722,
+   "name": "PG&E Headquarters",
+   "topM": 97.5,
+   "drawnM": 58.0,
+   "gapM": 39.5,
+   "areaM2": 2618,
+   "planM2": 7077,
+   "frac": 0.37,
+   "date": "1923",
+   "why": "the footprint is a fragment of the tower's plan"
+  },
+  {
+   "gid": 60436,
+   "name": "1500 Mission - Office",
+   "topM": 77.7,
+   "drawnM": 39.0,
+   "gapM": 38.7,
+   "areaM2": 5930,
+   "planM2": 2299,
+   "frac": 2.58,
+   "date": "2017",
+   "why": "the footprint is the block's podium, not the tower"
+  },
+  {
+   "gid": 143011,
+   "name": "Avalon Towers",
+   "topM": 75.6,
+   "drawnM": 48.0,
+   "gapM": 27.6,
+   "areaM2": 2792,
+   "planM2": 1124,
+   "frac": 2.48,
+   "date": "2003",
+   "why": "the footprint is the block's podium, not the tower"
+  },
+  {
+   "gid": 137678,
+   "name": "555 Market [Market Center]",
+   "topM": 94.8,
+   "drawnM": 81.0,
+   "gapM": 13.8,
+   "areaM2": 2046,
+   "planM2": null,
+   "frac": null,
+   "date": "1964",
+   "why": "the register publishes no plan size, so the gate cannot run"
+  }
+ ]
+}

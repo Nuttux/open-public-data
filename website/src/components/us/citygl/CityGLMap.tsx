@@ -883,6 +883,24 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       } catch {
         heightFloor = null;
       }
+      /* ── AND THE SURVEYED TOPS ──────────────────────────────────────
+         Same shape as the height floor beside it and read for the same
+         reason: the fabric bakes its buffers once, so a height it is going
+         to use has to be in hand before it starts. A city that ships no
+         file simply draws every building at its measured height, which is
+         what every city did before this existed. */
+      let tallTops: Map<number, number> | null = null;
+      try {
+        const tt = await fetch(`${data.assetBase}/base/tall-tops.json`);
+        if (tt.ok) {
+          const doc = (await tt.json()) as { tops?: { gid: number; topM: number }[] };
+          tallTops = new Map((doc.tops ?? []).map((r) => [r.gid, r.topM]));
+        }
+      } catch {
+        tallTops = null;
+      }
+      if (disposed || !engine) return;
+
       const buildings = buildingsLayer(data, {
         zexb: descriptor.look.zexb,
         heightFloor,
@@ -893,6 +911,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         wallPalette: wallPalette(),
         skipGids: heroSkip,
         civicOf,
+        tallTops,
         /* the SAME field the ground is cut at, so a building and the ground
            under it cannot disagree about whether there is any — see
            `roof-form.ts` §A BUILDING OVER WATER IS STANDING ON SOMETHING */

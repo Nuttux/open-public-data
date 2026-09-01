@@ -171,6 +171,8 @@ export interface BuildingsLayerOptions {
      The same land field the ground is cut at, so the two cannot disagree.
      108 of this city's published footprints stand where it says water. */
   landAt?: ((x: number, y: number) => boolean) | null;
+  /** the surveyed top, for the towers the scan drew short — see `hMFull` */
+  tallTops?: ReadonlyMap<number, number> | null;
   /** dev: draw every footprint in one appearance family */
   forceFamily?: FaFamily | null;
   /** footprints a hand-modelled landmark already stands on — never drawn twice */
@@ -916,7 +918,21 @@ export function buildingsMesh(
        The storey count follows the drawn height rather than the published one,
        so the podium's facade bands are the podium's. The upper steps carry no
        facade — the survey gives their extent and nothing about their walls. */
-    const hMFull = roofHeight(tb.h[i], tb.hf[i]);
+    /* ── AND THE TOWERS THE 2023 SCAN DID NOT SEE ───────────────────────
+       The fabric's height is the MEDIAN LIDAR return, which for a flat-roofed
+       tower is right and is very nearly exact: MEASURED against the Tall
+       Building Inventory over its 180 rows, 164 agree to within 10 m and NONE
+       is drawn too tall. Sixteen are drawn short, nearly all of them Transbay
+       and Rincon Hill towers finished between 2010 and 2018 — the footprint is
+       older than the tower, or the flight caught a site. The tallest building
+       in San Francisco was drawn as a 108 m block.
+
+       `base/tall-tops.json` carries the surveyed top for the seven of those
+       whose footprint could plausibly BE that tower's plan; its own `refused`
+       list carries the nine it will not touch and says why for each, because
+       raising a fragment to a tower's height draws a needle and raising the
+       block's podium draws a slab. See `build_tall_tops.py`. */
+    const hMFull = o.tallTops?.get(tb.gid[i]) ?? roofHeight(tb.h[i], tb.hf[i]);
     const stepRows = o.roof?.steps.get(tb.gid[i]);
     /* ── AND A HOUSE DOES NOT STEP ──────────────────────────────────────
        The scan's levels are a real measurement of a real thing on a tower:
