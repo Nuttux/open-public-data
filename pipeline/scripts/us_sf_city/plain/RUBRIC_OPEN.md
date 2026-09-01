@@ -745,3 +745,75 @@ That is a real incoherence and it is worth one sentence in v7. It is also worth
 noting that fixing it moves the score by a single point (17 to 18). The band
 question — 17 or 33 — is the one that matters, and the measurement above (3.9% of
 permit lines are applications, 263 records corpus-wide) says it is small.
+
+## CORRECTION: the lease fork is NOT closed
+
+I closed it two entries ago on three readers resolving it identically at 26.
+Batch 049 resolved it the other way, deliberately and with a reason: "a lease for
+the AIDS Program / for Social Services" scored 62-70, "on the grounds that the
+public visits them". Batch 045 hit the same case, scored 26, and said the gap
+"turns on a word the clerk happened not to write" — discomfort with its own
+answer, which is what a live fork looks like.
+
+So four readers, three at 26 and one at 62-70, on a 44-point spread. The fork is
+open and it has a precise boundary: **an office the public visits**. A clinic is
+public-use, a payroll office is department housekeeping, and a Social Services
+intake counter is both — people queue there, and the clerk calls it an office.
+
+v7 rule 10a as drafted picks 26 by implication ("do not supply what is not
+stated"), which is defensible but does not ADDRESS this case, so readers will
+keep splitting. It needs a sentence naming it either way. My reading: 10a should
+say that where the line names a department whose public function is to be
+visited, the visiting is stated — it is in the department's name. That gives the
+AIDS Program and Social Services the higher score and keeps a payroll office at
+26. But that is a judgement and it should be recorded as one.
+
+## The discount floor is wrong at a third value, which settles its shape
+
+Three concrete incoherences now, all from the same clause:
+
+    a 33 permit asked for      -> 17, BELOW the 18 anchor the floor protects
+    a 30 sidewalk-tables permit -> 15, below a 22 event permit left at 22
+    a 36 subdivision map refused -> 18
+
+The pattern is monotonicity: after discounting, a bigger act scores below a
+smaller one. Patching the floor's threshold cannot fix that, because the
+"anchors below 30 are never discounted" rule is what creates the inversion — it
+protects the small anchors and exposes the large ones.
+
+    REPLACE both clauses with one:
+      "A discount never takes an act below 18. Anchors are discounted like
+       anything else; the floor catches them."
+
+Then a requested event permit, a requested sidewalk-tables permit and a requested
+blasting permit all land at 18. That is honest — each is a request for a small
+thing at one address — and no act can be discounted beneath a smaller one.
+
+## Rezoning does NOT converge the way traffic did
+
+Same test, four readers' invented ladders:
+
+    one lot or corner          45  40  47  44    spread  7   all 30-54
+    a stretch or some blocks   55  44  62        spread 18   SPLIT 30-54 / 55-79
+    a district or area         68  62  68        spread  6   all 55-79
+    a citywide use rule        75  80             spread  5   SPLIT 55-79 / 80-100
+
+The ends hold; the middle and the top do not. The middle splits partly because
+readers carved the rung differently — "block face", "a stretch of one street" and
+"several blocks" are not the same thing — and the top splits on whether a
+citywide use rule is a city change for many (80+) or a rule about one class.
+
+So the traffic result does not generalise, and it should not have been assumed to.
+Traffic converged because its rungs are natural (one street / a corridor /
+citywide); rezoning's middle rung has no natural boundary, so v7 must DEFINE the
+rung, not just number it. Three readers called rezoning unanchored and one called
+it "precisely the eight private right lists the anchors section warns about".
+
+## Four more from 049, unanchored
+
+  a public works STRUCTURE — tunnel, bridge, drawbridge, storm drain, stairway
+    (between paving at 38 and a civic building at 78, nothing in between; used 40-55)
+  a street closed FOR a stated civic purpose (closure 36 vs land for a school 70)
+  an added part that IS the institution's function ("two new wards at Laguna Honda")
+  referral (x0.5) meeting a system-changing proposal (x0.75) — 18 points on which
+    section is read first; the reader adopted "significance wins" and corrected a row
