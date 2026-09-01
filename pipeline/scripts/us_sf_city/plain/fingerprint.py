@@ -6,7 +6,7 @@
 
 ── THE PROBLEM THIS EXISTS FOR ─────────────────────────────────────────────
 A row in `plain_lines.jsonl` is `{"id": "<volume>|<index>", "line": …}` and
-that index is a POSITION in `/tmp/items_merged.jsonl` — 134 MB, built once,
+that index is a POSITION in `pipeline/data/sf_bos/items_merged.jsonl` — 134 MB,
 by hand, from a script that was never committed.
 
 So the corpus has two failure modes and they are not the same:
@@ -47,7 +47,6 @@ import re
 import sys
 
 HERE = pathlib.Path(__file__).resolve().parent
-sys.path.insert(0, "/tmp")
 sys.path.insert(0, str(HERE))
 
 import harness as H  # noqa: E402

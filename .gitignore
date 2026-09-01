@@ -101,3 +101,4 @@ pipeline/data/sf_bos/plain_lines_scored.jsonl
 # importance batches in flight — the scores themselves live in importance.jsonl
 pipeline/data/sf_bos/rankwork/
 .vercel
+pipeline/data/sf_bos/items_merged.jsonl

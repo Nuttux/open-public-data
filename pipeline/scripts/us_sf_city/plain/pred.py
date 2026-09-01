@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """What HAPPENED: the record's own verb and the thing it acts on."""
 import re, sys
-sys.path.insert(0,'/tmp')
 
 # the Board opens a decision with a gerund, and what follows it is the event
 VERB = (r"Authorizing|Approving|Granting|Ordering|Adopting|Designating|Providing|"

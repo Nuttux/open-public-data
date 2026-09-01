@@ -31,7 +31,6 @@ import shutil
 import sys
 
 HERE = pathlib.Path(__file__).resolve().parent
-sys.path.insert(0, "/tmp")
 sys.path.insert(0, str(HERE))
 
 import harness as H  # noqa: E402

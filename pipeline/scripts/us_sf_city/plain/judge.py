@@ -1,5 +1,4 @@
 import sys, os, json, re, statistics
-sys.path.insert(0,'/tmp')
 from gate import check
 from harness import load_records
 RECS={r['id']:r for r in load_records()}

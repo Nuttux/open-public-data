@@ -1,15 +1,59 @@
 # -*- coding: utf-8 -*-
 """Feed records out for writing, take lines back, check them, keep the store."""
-import json, os, re, sys
-sys.path.insert(0, '/tmp')
+import hashlib, json, os, pathlib, re, sys
+
+# ── THE CORPUS AND HALF THE CODE USED TO LIVE IN /tmp ───────────────────────
+# `pred`, `gate` and `render2` were imported from /tmp, and the corpus itself
+# was /tmp/items_merged.jsonl. All three modules turned out to be byte-identical
+# to the copies in this directory, so the dependency was accidental — but the
+# corpus was not: a single /tmp clear would have left 88,000 scored rows with
+# ids that resolve to nothing, because an id is {volume}|{index} INTO that file.
+#
+# So the file has a durable home beside the store, and its sha256 and line count
+# are committed next to it. The check below is the point: rebuilding the corpus
+# with a DIFFERENT ORDER would not fail loudly, it would silently repoint every
+# written line at the wrong record. The checksum is what makes that impossible
+# to do by accident.
+HERE = pathlib.Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
 import pred as P
 from gate import check
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import pass2 as PASS2
 
-STORE = "/Users/daniel/code/open-public-data/pipeline/data/sf_bos/plain_lines.jsonl"
-ITEMS = "/tmp/items_merged.jsonl"
-src = open('/tmp/render2.py').read().split("def run(seed")[0]
+DATA = pathlib.Path("/Users/daniel/code/open-public-data/pipeline/data/sf_bos")
+STORE = str(DATA / "plain_lines.jsonl")
+ITEMS = str(DATA / "items_merged.jsonl")
+_STAMP = DATA / "items_merged.sha256"
+
+
+def _verify_items() -> None:
+    """Refuse to run against a corpus that is not the one the ids were cut from."""
+    if not os.path.exists(ITEMS):
+        legacy = "/tmp/items_merged.jsonl"
+        raise SystemExit(
+            f"corpus missing: {ITEMS}\n"
+            + (f"a copy still exists at {legacy} — copy it into place and re-run\n"
+               if os.path.exists(legacy) else
+               "and no copy remains in /tmp. Every id in plain_lines.jsonl is an\n"
+               "index into this file; without it the store cannot be resolved.\n"))
+    if not _STAMP.exists():
+        return
+    want_sha, want_n = (_STAMP.read_text().split() + [""])[:2]
+    h, n = hashlib.sha256(), 0
+    with open(ITEMS, "rb") as fh:
+        for chunk in iter(lambda: fh.read(1 << 20), b""):
+            h.update(chunk); n += chunk.count(b"\n")
+    if h.hexdigest() != want_sha:
+        raise SystemExit(
+            f"corpus checksum mismatch\n  expected {want_sha}\n  found    {h.hexdigest()}\n"
+            f"  lines expected {want_n}, found {n}\n"
+            "Ids are indexes into this file. If records were APPENDED, update\n"
+            "items_merged.sha256; if the order changed, the store is now wrong.")
+
+
+_verify_items()
+
+src = (HERE / "render2.py").read_text().split("def run(seed")[0]
 ns = {}; exec(src, ns)
 
 # The roll call is not the minute. "Ayes — Supervisors Bancroft, Deasy,

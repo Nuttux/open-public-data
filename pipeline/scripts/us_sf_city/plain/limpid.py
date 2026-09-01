@@ -8,7 +8,6 @@ to hold a masquerade ball". So the fix is not to quote less legalese — it is t
 stop emitting a half-sentence and name the thing instead.
 """
 import re, sys
-sys.path.insert(0, '/tmp')
 from detail import org_name
 
 # the granting ceremony, in every form the Board writes it. What follows is the

@@ -57,7 +57,8 @@ import sys
 
 ROOT = pathlib.Path("/Users/daniel/code/open-public-data")
 STORE = ROOT / "pipeline/data/sf_bos/plain_lines.jsonl"
-ITEMS = pathlib.Path("/tmp/items_merged.jsonl")
+ITEMS = pathlib.Path("/Users/daniel/code/open-public-data/pipeline/data/sf_bos"
+                     "/items_merged.jsonl")
 HELD = ROOT / "pipeline/data/sf_bos/pass2_held.jsonl"
 
 # ── THE PAGE FURNITURE ──────────────────────────────────────────────────────

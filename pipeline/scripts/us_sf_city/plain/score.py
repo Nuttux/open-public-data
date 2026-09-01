@@ -63,7 +63,6 @@ import re
 import sys
 
 HERE = pathlib.Path(__file__).resolve().parent
-sys.path.insert(0, "/tmp")
 sys.path.insert(0, str(HERE))
 
 DATA = pathlib.Path("/Users/daniel/code/open-public-data/pipeline/data/sf_bos")

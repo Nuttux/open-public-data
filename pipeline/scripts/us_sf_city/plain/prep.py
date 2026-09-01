@@ -34,13 +34,16 @@ import pathlib
 import sys
 
 HERE = pathlib.Path(__file__).resolve().parent
-# ── ORDER MATTERS: THERE IS A STALE COPY OF THE HARNESS IN /tmp ────────────
-# These scripts started life in the scratch directory and `/tmp/harness.py`
-# is still there, holding the FIRST run's selection. With /tmp ahead of the
-# repo on the path this file imported it and reported "queued 0 of 90,443" —
-# the second pass looked complete before it had begun. The repo comes first;
-# /tmp is on the path only for `pred`/`render2`, which have no repo copy yet.
-sys.path.insert(0, "/tmp")
+# ── /tmp IS NO LONGER ON THE PATH, AND THAT IS THE FIX ──────────────────────
+# These scripts started life in a scratch directory. `/tmp/harness.py` still
+# exists there, holding the FIRST run's selection, and when /tmp led the path
+# this file imported it and reported "queued 0 of 90,443" — the second pass
+# looked complete before it had begun. The assert below caught it.
+#
+# The reason /tmp stayed on the path at all was that `pred` and `render2` were
+# thought to have no repo copy. They do, and both are byte-identical to the
+# /tmp versions, as is `gate`. So the path entry bought nothing and carried a
+# live hazard; it is gone. The assert stays, because it is what found this.
 sys.path.insert(0, str(HERE))
 
 import harness as H  # noqa: E402
