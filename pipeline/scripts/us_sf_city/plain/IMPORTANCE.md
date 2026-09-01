@@ -193,6 +193,21 @@ these numbers, and reserve judgement for what is not on the list.
 | a hearing on a named proposal, or protests recorded | **16** |
 | an index page, or a line naming no act | **5** |
 | the honest no-subject line | **6** |
+| paving, grading, sewering or improving one stretch | **38** |
+| a street opened or extended | **44** |
+| a street or part of one closed, or land deeded back | **36** |
+| sidewalk WIDTHS set — a dimension rule, not construction | **40** |
+| land bought for a public work — a street, a sewer, a right of way | **48** |
+| land bought for a transit line | **62** |
+| a civic building ordered built — school, hospital, library | **78** |
+| a fire station, police station, engine house ordered built | **68** |
+| a trade, component, material or equipment for a building under construction | **45** |
+| a recurring citywide works bill — the month's cleaning, the year's repairs | **36** |
+| a one-night event permit — a ball, a carnival, a show | **22** |
+| a permit refused | **33, the same as granting it** |
+| a permit transferred, surrendered or revoked as spent | **26** |
+| a veto | **score the act it stops** |
+| bids or offers advertised for a decided act | **the act, x0.75** |
 | a repeal — an act being undone | **score the act it undoes** |
 | the Board taking a matter up, or considering it | **the act, discounted as a proposal** |
 | a fact the Board records but does not act on | **the fact's own reach, less a third** |
@@ -200,6 +215,35 @@ these numbers, and reserve judgement for what is not on the list.
 | a lease of space the public uses — clinic, branch library, childcare, shelter | **score what it houses** |
 | an appointment to a public office | **24** |
 | an environmental finding paired with the act it gates | **22** |
+
+### Which streets are major
+
+The street-level anchor splits 34 from 40 on whether the street is a major
+thoroughfare, and a reader pointed out the rubric named the distinction without
+naming the streets — so it wrote its own list and applied it mechanically. That
+list is now the rule, because a shared wrong list beats eight private right ones:
+
+    Market, Mission, Geary, Van Ness, Army, Fulton, California, Bush, Sutter,
+    Polk, Howard, Folsom, Harrison, Bryant, Dolores, Divisadero, Masonic,
+    Columbus, Broadway, Kearny, Montgomery, Sansome, Battery, Third, San Bruno,
+    Ocean, Great Highway, Sloat, Portola, Nineteenth, Point Lobos
+
+40 fires only when a street on that list is the SUBJECT of the change and a
+length is named. A grade change that merely crosses one of them is 34.
+
+### The part and the whole
+
+Four readers met the same wall — a civic building going up, paid for in
+instalments — and invented four different ladders. A fifth put it exactly:
+the gap is not a matter of sums, it is **named part against named whole**.
+
+    Elmer Carlson paid $23,423 for building the Oriental School      the school
+    Contra Costa Construction paid $6,913.87 for the Library foundation   a part
+
+So: the whole named facility takes the facility's score. A trade, a component,
+a material, a piece of equipment, a plan or a boring takes 45 — it is money at a
+site, and the building is not being decided again. Upkeep of a facility already
+standing stays where the maintenance rule puts it.
 
 Two of those need saying out loud.
 
