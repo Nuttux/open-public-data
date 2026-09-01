@@ -1637,3 +1637,26 @@ The last two are wording tests for what everyone agrees is a size question. The
 appeal rule already says a procedural step must not swallow its subject; the
 hearing anchor says the opposite in the same rubric. It needs the appeal rule's
 treatment, and it is the clearest single thing v8 should carry.
+
+## Naming a thing that is being CREATED is not a renaming — ~30 points
+
+    "New public street named Terry A. Francois Boulevard"
+    "New waterfront park named Mission Creek Park"
+
+The renaming band is 10-29. But these lines establish a street and a park; the
+name is incidental to that. One reader read them as establishment-plus-name
+(40 / 58); a reader scoring only the naming lands 30 points lower.
+
+Mirror of the beginnings-and-endings gap: the rubric has a rung for changing a
+name and none for the act of bringing the thing into existence when the clerk
+writes it as a naming.
+
+## A protest UPHELD stops the act; a protest overruled does not
+
+The anchor gives 16 for "protests recorded", outcome unstated and unpriced. But
+an upheld protest is the act failing — the same information an appeal outcome
+carries, which v7 does price. One reader scored upheld slightly above overruled
+and said the rubric says nothing.
+
+Third instance of the same absence: the rubric prices the procedural step and
+not what the step DID.
