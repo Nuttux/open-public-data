@@ -196,6 +196,10 @@ these numbers, and reserve judgement for what is not on the list.
 | a repeal — an act being undone | **score the act it undoes** |
 | the Board taking a matter up, or considering it | **the act, discounted as a proposal** |
 | a fact the Board records but does not act on | **the fact's own reach, less a third** |
+| a department's lease of office space | **26** |
+| a lease of space the public uses — clinic, branch library, childcare, shelter | **score what it houses** |
+| an appointment to a public office | **24** |
+| an environmental finding paired with the act it gates | **22** |
 
 Two of those need saying out loud.
 
@@ -213,6 +217,21 @@ one party's business. The street is not being decided again.
 repealed" and had nowhere to put it. Undoing an act is an act, and it reaches
 exactly as far as the thing undone — so it takes that score. The Board deciding
 NOT to pave a street changed the street as surely as deciding to.
+
+**How far a stage discounts.** Readers were given two levels — half for a
+routine proposal, "most" for a significant one — and invented a third for the
+middle. There are three:
+
+    passed a committee, passed one reading, recommended     x0.75
+    a significant proposal: it would change the city        x0.75
+    a routine proposal, a referral, a continuance           x0.5
+    a hearing or a question with no proposal pending        x0.5 of the subject
+
+**A department's lease is not money into a facility.** Ninety records a batch
+are "the Controller's office extends its lease at 1212 Market Street". The city
+housing its own staff is the city's own housekeeping — 26. A lease of space the
+PUBLIC uses is the opposite: a clinic, a branch library, a childcare centre, a
+shelter. Score that on what it houses.
 
 **A fact recorded is not nothing.** "Engineer Joseph B. Strauss outlines his
 Golden Gate bridge plans" and "Sanitary Reduction Works can no longer handle the
