@@ -258,8 +258,20 @@ def main() -> None:
     for p in WORK.glob("batch-*.jsonl"):
         inflight |= {json.loads(l)["id"] for l in p.open()}
     todo = [r for r in todo if r["id"] not in inflight]
-    start = 1 + max((int(p.stem.split("-")[1]) for p in WORK.glob("batch-*.jsonl")),
-                    default=0)
+    # ── BATCH NUMBERS ARE NEVER REUSED ──────────────────────────────────
+    # This used to number from the highest batch-*.jsonl on disk. --take
+    # retires those, so once a wave was fully ingested the next --prep
+    # restarted at 001 and minted a SECOND batch-003 holding entirely
+    # different records. Workers still finishing the first one watched a new
+    # file appear at their own path, and two of them correctly refused to
+    # write there — their ids would have landed in the next worker's slot.
+    #
+    # The counter is now persistent and monotonic.
+    ctr = WORK / "next-batch.txt"
+    seen = [int(q.stem.split("-")[1]) for q in WORK.glob("*-[0-9][0-9][0-9].jsonl")
+            if q.stem.split("-")[1].isdigit()]
+    start = max([int(ctr.read_text().strip())] if ctr.exists() else [0]
+                + [max(seen) + 1 if seen else 0] + [1])
     made = 0
     for i in range(0, min(len(todo), args.prep * args.n), args.n):
         chunk = todo[i:i + args.n]
@@ -285,6 +297,7 @@ def main() -> None:
             json.dumps({"rv": RUBRIC_VERSION, "rh": rubric_hash()}) + "\n")
         print(f"  {p.name}  {len(chunk):,} lines")
         made += 1
+    (WORK / "next-batch.txt").write_text(str(start + made) + "\n")
     print(f"\n{made} batches, {min(len(todo), args.prep*args.n):,} lines out; "
           f"{len(todo)-min(len(todo), args.prep*args.n):,} still queued")
 
