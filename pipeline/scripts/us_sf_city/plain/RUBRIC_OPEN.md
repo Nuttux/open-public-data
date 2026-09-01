@@ -1396,3 +1396,29 @@ Those rows are wrong in a known direction, and they are AT 18, not below it. A
 Batches from 073 on were given the repair and do not have this; their small acts
 sit at their own bases (14, 15, 16), which is the intended behaviour and is also
 why the two sets are distinguishable.
+
+## The "leasing a large asset OUT" rung has no small sibling — three readers, three answers
+
+The v7 rung says 48 for "a large asset — an airport parcel, a concession, a
+restaurant or cargo lease on city land". The corpus is full of small ones:
+
+    "H. & W. Pierce lease Sacramento Street land for $17.50 monthly"
+    "Stanislaus County leases a lot at $20 monthly"
+
+    batch 070   48, uniformly, noting the rung says "large" and these are not
+    batch 062   36, invented, and said so
+    batch 075   26
+
+A 22-point spread on a recurring shape, entirely because the rung named a size in
+prose and then gave one number. Same failure as the un-anchored families: a
+description where a rung was needed.
+
+    FIX: 48 where the asset is a parcel, building or concession of the kind a
+     business operates from; 30 where the city rents out a lot, a room or a
+     rooftop. Money does not move it between the two.
+
+## Personnel has no anchor at all
+
+A hire, a post created, a salary set, a leave of absence. One reader used 24 by
+analogy with the appointment rung and 14 for leaves, and flagged the second as
+its own invention. Recurring across the whole corpus, never anchored.
