@@ -1714,3 +1714,41 @@ Worth recording how it was caught: not by re-reading my own edit, but by a reade
 applying both statements and noticing they could be stacked. That is the fourth
 time this pass a defect in my writing was found by someone using it rather than
 by me checking it.
+
+# EVERY FIX I MADE WAS SCOPED TO THE EXAMPLE THAT PRODUCED IT
+
+Three times now, a defect was found, fixed for the case in front of me, and left
+standing everywhere else the same shape occurs:
+
+    the part outranks the whole
+        fixed for BUILDINGS ("named part against named whole")
+        left broken on streets — a survey at 45 outranks paving at 38-44
+        left broken on citywide systems — a locomotive part at 53 outranks
+          hospital brickwork at 45
+
+    the thoroughfare split
+        fixed for STREET LEVELS (34/40)
+        left absent on street work (flat 38) and sidewalk width (flat 40)
+        eight readers reported it before v7 made it general
+
+    the land outranks the thing the land is for
+        fixed for FIRE STATIONS ("land is now 62 under a fire or police
+          station, below the 68 building it sits under")
+        left broken for housing — land taken for Wisconsin Street housing
+          takes the 70 land anchor, above the 58 the housing itself gets
+
+Each fix is correct. Each is a special case of a rule I never wrote:
+
+    A thing that serves another thing does not outrank it. A part does not
+    outrank its whole; the land does not outrank what is built on it; a plan,
+    a survey or a component does not outrank the work it serves.
+
+One sentence replaces three fixes and closes the cases nobody has hit yet. That
+is the difference between patching and stating the rule, and this pass has cost
+enough to make the difference concrete.
+
+THE PROCESS LESSON FOR v8, which is worth more than any single rung: when a
+reader reports a defect, the report names ONE example because that is what the
+reader met. The fix must be written against the shape, not the example, and then
+walked past every anchor that shares the shape. Six v7 defects and three
+scoped-too-narrow fixes all come from skipping that step.
