@@ -287,3 +287,23 @@ and the only one that is also a contradiction rather than an absence.
 
 Every reader invented a ladder. The invented values ranged 26 to 62 for the same
 shapes.
+
+## The appeal cycle erases its own subject — 164 records, 14% of a modern batch
+
+One contested permit generates six to ten near-identical clerk lines: appeal
+heard, vote sought to uphold, vote sought to overturn, certification put off,
+findings sought, motion tabled. Two anchors absorb the whole population flat —
+hearing 16, environmental finding 22 — so 161 of 164 land in 10-29 and the size
+of the underlying subject never reaches the score:
+
+    Appeal heard over 203 low-income flats at Pierce and Scott Streets   16
+    Appeal heard over gym locker rooms at 1318-1320 7th Avenue           16
+
+This is most of why modern batches run 54% in 10-29 against the corpus's 22%. It
+is the modern-era twin of the traffic hole: the historic decades lose street-use
+rules to a contradiction, the modern decades lose land-use decisions to a flat
+anchor.
+
+The fix is probably that a hearing or finding inherits a fraction of the act it
+gates, rather than a flat number — which is what the discount ladder already
+does everywhere else.
