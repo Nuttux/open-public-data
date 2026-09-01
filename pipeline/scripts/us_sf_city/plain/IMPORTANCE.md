@@ -208,6 +208,19 @@ these numbers, and reserve judgement for what is not on the list.
 | a permit transferred, surrendered or revoked as spent | **26** |
 | a veto | **score the act it stops** |
 | bids or offers advertised for a decided act | **the act, x0.75** |
+| a transit line ordered, planned or extended | **80** |
+| a citywide vote called on bonds or the charter | **75** |
+| a purchase for a civic facility already open — fixed plant | **45** |
+| the same, consumables and movables | **30** |
+| the city furnishing its own offices | **24** |
+| land for a fire station, police station or engine house | **62** |
+| land for a reservoir, pumping station or water line | **48** |
+| a fire cistern or high-pressure main at a named site | **38** |
+| the same, citywide | **48** |
+| street lamps added or changed on a named street | **34** |
+| an administrative or operational city building — an office block, a corporation yard, an asphalt plant, a morgue | **55** |
+| a named building of a civic institution that is not the institution — a school's shop building, a department's yard building | **55** |
+| the city disposing of property at one address | **36** |
 | a repeal — an act being undone | **score the act it undoes** |
 | the Board taking a matter up, or considering it | **the act, discounted as a proposal** |
 | a fact the Board records but does not act on | **the fact's own reach, less a third** |
@@ -215,6 +228,28 @@ these numbers, and reserve judgement for what is not on the list.
 | a lease of space the public uses — clinic, branch library, childcare, shelter | **score what it houses** |
 | an appointment to a public office | **24** |
 | an environmental finding paired with the act it gates | **22** |
+
+### Four fixes to anchors that were wrong
+
+**The thoroughfare rung was inverted.** It required a listed street AND a named
+length, so "Street levels changed along the Great Highway" scored 34 while a
+named stretch of that highway scored 40 — the whole below its own part. Three
+readers found it firing on 0.3% of lines or never. **Drop the length
+requirement: a listed street as the subject is 40.**
+
+**And the street list needs its suffixes.** Nineteenth Avenue is a thoroughfare;
+Nineteenth Street is a Potrero side street. Third, Ocean and Nineteenth all
+carry the trap. Read the list as avenues where the city has one.
+
+**The component anchor had no scale.** The same 45 went to "$25,000 for
+engineering on the Hetch Hetchy project" — a plan for the city's whole water
+supply — and "$305 for pipes and doors at Polytechnic High School". A component
+still takes 45, but a component of a CITYWIDE system takes the system's score
+less a third.
+
+**Land for a firehouse outranked the firehouse.** The building anchors split 78
+from 68; the land anchor named only 70 and no split. Land is now 62 under a
+fire or police station, below the 68 building it sits under.
 
 ### Which streets are major
 
@@ -244,6 +279,29 @@ So: the whole named facility takes the facility's score. A trade, a component,
 a material, a piece of equipment, a plan or a boring takes 45 — it is money at a
 site, and the building is not being decided again. Upkeep of a facility already
 standing stays where the maintenance rule puts it.
+
+### The middle rung of the discount
+
+x0.75 against x0.5 is worth twenty points on a large subject, and readers were
+choosing between them with nothing to go on. The test is whether the proposal,
+if adopted, would reach past the people directly in front of it:
+
+    Congress urged to ratify the city's reservoir rights of way    x0.75
+    a bond election called on acquiring the water supply           x0.75
+    W. J. Cuthbertson suggests a city hall at Market and Hermann   x0.5
+    departments urged to plan a safer Market Street                x0.5
+
+A proposal by a named private person, or a request to a department to look at
+something, is routine. A proposal that would bind a class or change a system is
+not.
+
+### A lease is a lease, not a bill
+
+Two readers hit this and one said plainly it was not confident. A lease of space
+the public uses is scored on what it houses — that is the rule, and the
+recurring-bill rule does NOT reach it. The bill rule is for buying a service
+already decided on: the month's gas, the water in the hydrants. Renting the room
+a clinic sits in is deciding where the clinic is.
 
 Two of those need saying out loud.
 
