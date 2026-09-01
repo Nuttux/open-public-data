@@ -588,3 +588,28 @@ sound, so the file is valid — but one batch now holds two readings of one rule
 The resume brief tells a worker to continue the ids. It should also tell it to
 read what its predecessor DID on the shapes it is about to meet. Cheap to add,
 and the alternative is a seam in the middle of a batch that no gate can see.
+
+## Batch 040 — and a v7 entry that turns out to cover more than it was written for
+
+The thoroughfare contradiction is now reported by a SEVENTH reader. It is v7
+entry 1 and it is one deleted sentence. Nothing more to learn from further
+reports of it.
+
+**A trivial sum inheriting the whole's score.** "$693.01 paid to Antone Petersen
+& Sons for Silver Terrace Playground" takes 65, because the part/whole rule says
+the line names the whole. The reader noted the rule is clear and the result still
+looks wrong. This is the same shape as the citywide-component defect ("$36 more
+toward a Heisler locomotive" taking 53), coming from the opposite direction — one
+inherits from a system, one from a facility. v7 entry 5 was written for the first
+and covers both as drafted: where the sum is what the line is mostly about, score
+the sum. No new entry needed.
+
+**Traffic control, ~40 lines, again.** The reader spread them 34 to 55 and said a
+named rung would close a ~20-point gap. That is v7 entries 6-8, and this is a
+third reader landing inside the same bands.
+
+**Transit track and service money.** "$75,000 for streetcar tracks on First and
+Fremont streets" is the line being BUILT on a stretch — neither the 80 for a line
+ordered nor the 45 component rung. Used 70. "$51,000 added for more Municipal
+Railway service" sits between a recurring bill (36) and money into daily-use
+transit (80); read as a service increase at 60-62. Unanchored, ~a dozen lines.
