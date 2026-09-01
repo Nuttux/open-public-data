@@ -45,7 +45,7 @@ RANKS = DATA / "importance.jsonl"
 WORK = DATA / "rankwork"
 RUBRIC = HERE / "IMPORTANCE.md"
 
-RUBRIC_VERSION = 3
+RUBRIC_VERSION = 4
 
 
 def rubric_hash() -> str:

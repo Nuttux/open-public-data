@@ -150,6 +150,50 @@ wing, one cistern, the year's gas bill, the water for the hydrants.
 The first is scored on what gets built. The second is scored on what is
 repaired, however large the institution around it.
 
+## Anchors: the recurring acts, pinned
+
+MEASURED across eight readers on the same rubric. Where a kind of record is
+named with a NUMBER, they agree exactly — a garage permit came back 33 from
+every one of four readers, an oil tank 31-33 from eight. Where it is described
+in words and left to judgement, they disagree by a whole band:
+
+    street levels changed        31.5 to 54.5    ~1,660 lines
+    roadway acceptance           33.0 to 56.0    ~1,229 lines
+    contractor time extension    13.9 to 35.2    ~1,548 lines
+
+That is not a difference of opinion worth preserving. These are about 8% of the
+corpus and the reader cannot tell which reading a neighbouring record got. Use
+these numbers, and reserve judgement for what is not on the list.
+
+| the act | score |
+|---|---|
+| a permit at one address — garage, boiler, oil tank, filling station, laundry, blasting, spur track | **33** |
+| street levels or grades changed, one street or a few | **34** |
+| the same, along a named length of a major thoroughfare | **40** |
+| the city takes over a new roadway, one or several streets | **40** |
+| a contractor given more days | **18** |
+| a subdivision or condominium map approved | **36** |
+| set-back or building line fixed on one street | **40** |
+| the same, citywide | **62** |
+| sidewalks or curbs ordered on one stretch | **38** |
+| land bought for a stated civic purpose — a school, a hospital, a playground | **70** |
+| land bought with no purpose stated in the line | **44** |
+| a hearing on a named proposal, or protests recorded | **16** |
+| an index page, or a line naming no act | **5** |
+| the honest no-subject line | **6** |
+
+Two of those need saying out loud.
+
+**The land-purchase pair is deliberate, and its gap is now 26 rather than 38.**
+The Journal records the same purchase twice, once naming the school it is for
+and once naming only a lot and a price. Judging only what the line states is
+still right — the reader of the second line genuinely cannot see a school — but
+a 38-point gap on one clerk's phrasing was too much. MEASURED: 193 such groups
+in the corpus, 0.19% of lines.
+
+**A contractor's extra days is 18, not the street work it attaches to.** It is
+one party's business. The street is not being decided again.
+
 ## Do not
 
 * Do not score the topic label. Health ranked last of eight topics in one round
