@@ -71,7 +71,23 @@ STORE = DATA / "plain_lines.jsonl"
 OUT = DATA / "plain_lines_scored.jsonl"
 TEMPLATES = DATA / "score_templates.json"
 
-SCORER_VERSION = 1
+SCORER_VERSION = 2
+
+# ── THE DIALS ──────────────────────────────────────────────────────────────
+# Chosen by the user from three weightings shown side by side as ranked lists,
+# not in the abstract. Money-led: what the city actually spent, largest first.
+#
+# The trade was stated and accepted — the head of the ranking is dominated by
+# bonds, borrowings and settlements, and reads much the same in every decade.
+# The city's texture (a street closed for a school celebration, lambs sold
+# from Golden Gate Park) sits far below a $40M borrowing. That is the
+# accountability ordering rather than the readable one.
+#
+# These are the only numbers to change if that judgement changes; bump
+# SCORER_VERSION with them and the next run recomputes the stale rows.
+W_MONEY = 2.0
+W_PLACE = 0.15
+W_NOVELTY = 0.2
 
 # ── WHAT THE BOARD'S VERBS MEAN ────────────────────────────────────────────
 # Taken from the written lines, not the records: the spec required every line
@@ -203,10 +219,10 @@ def score_one(line: str, tpl_count: int, corpus_n: int) -> dict:
 
     # WHETHER IT LANDS SOMEWHERE. This map is made of ground, and an act tied
     # to a named street or building is one a reader can stand in front of.
-    place = 0.15 if PLACED.search(line) else 0.0
+    place = W_PLACE if PLACED.search(line) else 0.0
     nov = novelty(line)
 
-    s = consequence * (1.0 + 0.5 * money + place + 0.6 * nov) * rarity
+    s = consequence * (1.0 + W_MONEY * money + place + W_NOVELTY * nov) * rarity
     why = ("completed" if consequence == 1.0
            else "proposal" if consequence == 0.45 else "stage unclear")
     if v:

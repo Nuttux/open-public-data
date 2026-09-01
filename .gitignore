@@ -93,3 +93,7 @@ website/.parity/
 
 # second-pass writing slices and worker output — transient build artifacts
 pipeline/data/sf_bos/work/
+
+# derived from plain_lines.jsonl + score.py; the frozen template counts are
+# the part worth versioning, and those are in score_templates.json
+pipeline/data/sf_bos/plain_lines_scored.jsonl
