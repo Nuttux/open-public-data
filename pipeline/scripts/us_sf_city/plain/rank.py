@@ -139,6 +139,10 @@ def main() -> None:
             q.write_text(json.dumps({"rv": RUBRIC_VERSION, "rh": rubric_hash()}) + "\n")
             n += 1
         print(f"{n} hand-outs stamped v{RUBRIC_VERSION} sha {rubric_hash()}")
+        print("  ONLY safe before workers launch. A reader put it plainly: had "
+              "the rewrite gone the other way, 1,200 rows would have claimed a "
+              "rubric they were not read against, with rv unchanged, so nothing "
+              "would ever re-read them.")
         return
 
     if args.take:
