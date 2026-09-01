@@ -64,6 +64,18 @@ engineering on the Hetch Hetchy project" — a plan for the city's whole water
 supply — and "$305 for pipes and doors at Polytechnic High School". 73 records
 took it in one batch.
 
+**A purchase for a facility already open.** The component anchor says "for a
+building under construction", so sterilizers for the hospital, cot covers for
+the jails and linoleum in City Hall fall between it and the maintenance rule.
+One reader invented three numbers — 45 for fixed plant, 30 for consumables, 24
+for the city furnishing its own offices. ~25 lines a batch.
+
+**The lease contradiction, unfixed for leases.** Two readers now. "Whitcomb
+Estate paid $1,050 rent for hospitals on Stevenson Street" is a public-use lease
+scored on what it houses (high) and a recurring rent on a standing building
+(upkeep, ~30). This is exactly the hydrant-water contradiction, which was fixed
+for utilities and not for this.
+
 ## Confirmed dead by three readers
 
 The major-thoroughfare rung fires on 0.3% of street-level lines, or not at all.
