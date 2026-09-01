@@ -75,3 +75,16 @@ no-subject escape hatch was used over it:
     -> Wires go underground on Octavia Street
 
 Only a record that is roll call and nothing else keeps the honest no-subject line.
+
+### 5. No status at all — 34,272 lines (42.4%)
+The largest defect in the corpus, and the one neither check catches: `invented`
+only looks at names and numbers, `overstates` only fires when a proposal is
+asserted as a fact. A line stating NEITHER passes both cleanly.
+
+    Bar licence for the Red Eye at 1337 Mission Street
+    Bike lanes on Harrison Street from Eleventh to Twenty-Second
+    Southern Pacific spur track along Carroll Avenue
+
+Each needs its record re-read to learn the outcome, so this is a re-writing pass,
+not a re-wording one — unlike rules 1-4, the answer is not recoverable from the
+line itself. Scope it before starting: 42% of the corpus.

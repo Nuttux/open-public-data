@@ -131,3 +131,30 @@ arithmetic, and nothing a reader wanted. Read past it:
     GOOD: Bowdoin Street improvement between Gaven and Sweeny finally passed
 
 The names in a roll call are never the content of a line. Neither is the count.
+
+EVERY LINE MUST SAY WHETHER IT HAPPENED. This is the single most important fact
+in a Board record, and it is the one most easily left out. Measured over 80,762
+written lines, 42% stated neither — the reader cannot tell a granted permit from
+a refused one:
+
+    BAD : Bar licence for the Red Eye at 1337 Mission Street
+    GOOD: Bar licence granted for the Red Eye at 1337 Mission Street
+    GOOD: Bar licence refused for the Red Eye at 1337 Mission Street
+    GOOD: Bar licence sought for the Red Eye at 1337 Mission Street
+
+    BAD : Bike lanes on Harrison Street from Eleventh to Twenty-Second
+    GOOD: Bike lanes approved on Harrison Street from Eleventh to Twenty-Second
+    GOOD: Bike lanes proposed on Harrison Street from Eleventh to Twenty-Second
+
+    BAD : Southern Pacific spur track along Carroll Avenue
+    GOOD: Southern Pacific allowed a spur track along Carroll Avenue
+
+A bare noun phrase — "Bar licence for X", "Sidewalk widths on Y" — names the
+SUBJECT and stops. Finish the sentence: the record always says what became of
+it. Read to the end and use the Board's own outcome word: granted, refused,
+adopted, finally passed, ordered, set aside, referred, continued, tabled,
+withdrawn, filed.
+
+Where the record genuinely does not say — an item introduced with no action
+recorded on that page — write it as what it is ("asks for", "seeks", "proposed"),
+never as a bare noun phrase and never as a decision.
