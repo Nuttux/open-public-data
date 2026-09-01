@@ -259,6 +259,7 @@ rubric, independent readers:
     batch 018   87% identical   97% same band   mean |diff| 0.6 points
     batch 019   70% identical   93% same band   mean |diff| 1.5 points
     batch 020   65% identical   94% same band   mean |diff| 1.6 points
+    batch 025   61% identical   96% same band   Pearson r 0.969, 88% within 5
 
 Two readers put a record in the same band 93-97% of the time and differ by
 about 1.5 points out of 100. That is the reliability the six rubric versions and
