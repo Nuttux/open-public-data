@@ -97,6 +97,29 @@ facility's importance does not transfer to its roof. Repair, replacement and
 routine upkeep are scored on what is being repaired — one wing, one boiler, one
 roof — not on the institution around it.
 
+## The line's grammar is not its stage
+
+MEASURED, because two readers got this wrong on the same day and it would have
+demoted 8,120 records. A line saying "to be" is NOT a proposal:
+
+    lines containing "to be"     23.3% sit over a record that says adopted,
+                                 11.8% over one that says referred
+    lines that do not            29.4% adopted, 13.1% referred
+
+The distributions are the same, and both lean two to one towards ADOPTED.
+"Houses on the Bernal Cut route sold at auction to be removed" sits over
+"the Mayor be and he is hereby authorized" — the infinitive describes what
+happens to the houses, not what happened to the motion.
+
+So do not read stage out of tense, mood or an infinitive. "Street levels to be
+changed" and "street levels changed" are the same fact written twice, and
+pairing them as propose/adopt halves one of them on nothing.
+
+Stage comes only from words that NAME a stage: proposed, sought, urged,
+requested, referred, sent to committee, continued, put off, tabled, laid over,
+passed for second reading, declaring the intention. If none of those is
+present, the record is not a proposal — leave the score alone.
+
 ## Stage is applied last, and the band follows the number
 
 Choose the band on the decision as if it had happened. Then apply the stage
@@ -104,6 +127,28 @@ discount. The record reports whichever band the final number falls in — so a
 routine proposal in the 55–79 band lands in 30–54 and is reported there. This
 is the one thing allowed to move a record between bands, because a proposal
 genuinely is a smaller fact than the act it proposes.
+
+## Wide reach, small stakes
+
+Reach picks the band, and some decisions reach everybody while barely mattering:
+bathers must wear a bathing dress; companies must mark the curb where they lay
+pipes; the recurring bill for hydrant water. A whole class is bound, and nothing
+much changes.
+
+Those sit at the FOOT of the band their reach earns, not the top — 55-62 rather
+than 80. Reach still picks the band, because a universal obligation is genuinely
+not a one-address permit; but a band is a range and this is what its bottom is
+for.
+
+## Building a thing, and keeping it running
+
+The maintenance note draws a line and this says where it falls. Building or
+buying the facility is the facility: an engine house, a branch library, a school
+building, the site under it. Keeping it running is upkeep: a roof, a boiler, one
+wing, one cistern, the year's gas bill, the water for the hydrants.
+
+The first is scored on what gets built. The second is scored on what is
+repaired, however large the institution around it.
 
 ## Do not
 

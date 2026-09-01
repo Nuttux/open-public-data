@@ -44,7 +44,7 @@ RANKS = DATA / "importance.jsonl"
 WORK = DATA / "rankwork"
 RUBRIC = HERE / "IMPORTANCE.md"
 
-RUBRIC_VERSION = 2
+RUBRIC_VERSION = 3
 
 
 def rubric_hash() -> str:
@@ -95,6 +95,9 @@ def main() -> None:
         got = 0
         with RANKS.open("a") as out:
             for p in sorted(WORK.glob("done-*.jsonl")):
+                sp = WORK / (p.name.replace("done-", "batch-").replace(".jsonl", ".rubric"))
+                stamp = (json.loads(sp.read_text()) if sp.exists()
+                         else {"rv": RUBRIC_VERSION, "rh": rubric_hash()})
                 bad = 0
                 rows = []
                 for l in p.open():
@@ -109,7 +112,7 @@ def main() -> None:
                         continue
                     rows.append({"id": r["id"], "score": s,
                                  "band": r.get("band", ""), "why": r.get("why", ""),
-                                 "rv": RUBRIC_VERSION, "rh": rubric_hash()})
+                                 "rv": stamp["rv"], "rh": stamp["rh"]})
                 for r in rows:
                     out.write(json.dumps(r, ensure_ascii=False) + "\n")
                     have[r["id"]] = r
@@ -134,6 +137,14 @@ def main() -> None:
             for r in chunk:
                 fh.write(json.dumps({"id": r["id"], "line": r["line"],
                                      "year": r["y"]}, ensure_ascii=False) + "\n")
+        # ── STAMP THE RUBRIC AT HAND-OUT, NOT AT INGEST ────────────────────
+        # `--take` used the rubric version current when it RAN, which is not
+        # the one the worker read. Fixing the rubric mid-wave would then have
+        # relabelled every batch already in flight as though it had been
+        # scored under the new one — the corpus would say v3 and mean v2, and
+        # nothing would ever re-read it.
+        p.with_suffix(".rubric").write_text(
+            json.dumps({"rv": RUBRIC_VERSION, "rh": rubric_hash()}) + "\n")
         print(f"  {p.name}  {len(chunk):,} lines")
         made += 1
     print(f"\n{made} batches, {min(len(todo), args.prep*args.n):,} lines out; "
