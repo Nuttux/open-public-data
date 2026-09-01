@@ -280,6 +280,24 @@ a material, a piece of equipment, a plan or a boring takes 45 — it is money at
 site, and the building is not being decided again. Upkeep of a facility already
 standing stays where the maintenance rule puts it.
 
+### Three things the discount does badly
+
+**It must not push an anchor through the floor.** "Caldwell & Co. asks for
+sixteen more days at Fort Mason" halves the 18 anchor to 9 — which says the
+asking is procedure with no subject. It is not. **Below 30, an anchor is not
+discounted:** a request for a small anchored thing takes the anchor.
+
+**A refusal is symmetric only for permits.** The permit row makes refusing and
+granting both 33, because a permit refused is a decision about the same small
+thing. Stretched further it says "Board turns down a request for the Le Conte
+School" is worth 78 — the score of building it — when nothing was built.
+**A refusal of anything above the permit tier takes the act at x0.5.**
+
+**"Offers" names a stage.** It was missing from the list, so "City offers Spring
+Valley Water Company $87M for all its property" took no discount at all and
+topped its batch at 92. An offer is a proposal with a price on it. Add it, with
+"declared necessary" and "moves to accept".
+
 ### The middle rung of the discount
 
 x0.75 against x0.5 is worth twenty points on a large subject, and readers were
