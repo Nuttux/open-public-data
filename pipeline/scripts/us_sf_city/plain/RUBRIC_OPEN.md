@@ -1599,3 +1599,41 @@ reader based them at 30 and let the referral discount take them to 18.
 
 Not a gesture, not an act. It is the one shape in the corpus where reach and
 consequence point opposite ways, and the rubric has nothing for it.
+
+## A SIXTH v7 defect: two clauses I added in one version contradict each other
+
+    the appeal clause   "where the line does not say what is under appeal, it
+                         is a line with no subject and scores as procedure"  -> 0-9
+    the floor clause    "any act with a named subject stays at 10 or above.
+                         ...a proposal, an appeal, a refusal or a referral
+                         is not [procedure with no subject]"                 -> >= 10
+
+"Bartlett Street appeal tabled" satisfies both. It names a street and does not
+say what is under appeal. One clause sends it to the procedure band, the other
+forbids exactly that, and both were written by me in the same edit.
+
+The reader took 10 and flagged the contradiction. It recurs on recusals and on
+any tabled appeal.
+
+    FIX: the floor clause wins — an appeal names a subject by naming the
+     place. Delete the "scores as procedure" sentence from the appeal clause
+     and let an unstated appeal take the smallest rung its place supports.
+
+That is six v7 defects, all mine, all from writing rules against one example
+without walking them past the clauses already there. The count is worth keeping
+visible: v6 had one contradiction that eight readers reported, and I replaced it
+with six.
+
+## The hearing collision is now the most-reported open item in the pass
+
+Every modern batch hits it, and no two readers have resolved it the same way:
+
+    flat 16 always                                       several
+    16 if a proposal is pending, else x0.5 of subject    several
+    16 for "set for", x0.5 for "held/heard/opened"       081
+    16 for local subjects, x0.5 for large ones           078
+
+The last two are wording tests for what everyone agrees is a size question. The
+appeal rule already says a procedural step must not swallow its subject; the
+hearing anchor says the opposite in the same rubric. It needs the appeal rule's
+treatment, and it is the clearest single thing v8 should carry.
