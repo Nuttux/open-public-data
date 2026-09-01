@@ -1660,3 +1660,26 @@ and said the rubric says nothing.
 
 Third instance of the same absence: the rubric prices the procedural step and
 not what the step DID.
+
+## The thoroughfare list is stale: Army Street is now Cesar Chavez Street
+
+The list carries ARMY, which is correct for the historic corpus. The modern lines
+say CESAR CHAVEZ, which is the same road. A reader applied the list mechanically
+by name — exactly as instructed, because "a shared wrong list beats eight private
+right ones" — and flagged it rather than quietly adding the name.
+
+    a $5.1M Cesar Chavez Street widening        scored as an ordinary street
+    Army Street in 1954                         scored as a thoroughfare
+
+Same road, 6 points apart, on which decade the clerk was writing in.
+
+This is the cost of the shared-list rule working as intended: the reader followed
+it and reported, instead of improvising. The fix belongs in the list, not in the
+reader.
+
+    FIX: the list needs both names wherever a listed street was renamed.
+     Army / Cesar Chavez is the one found; the corpus certainly holds others,
+     and finding them is a corpus query rather than a judgement.
+
+Note the mirror-image trap already logged: Third Street versus Third Avenue was
+one road wrongly split; this is two names for one road wrongly separated.
