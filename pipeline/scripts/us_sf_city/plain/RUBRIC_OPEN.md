@@ -1131,3 +1131,43 @@ Batch 024 read the floor as `min(base, max(discounted, 18))` — the same repair
     renaming (10-29), two bands on one line; used 29
   a recorded OPINION is not a recorded fact — the fact-recorded rule pays 53 for
     "Supervisor Lewis says only mass transit can unclog downtown"; used 45
+
+## The two broken clauses: four readers, one repair each
+
+Batches 053, 059, 024 and 050 all hit the floor inversion and all reached the
+same repair without seeing each other. Two of them wrote the formula:
+
+    min(base, max(18, base x discount))
+
+Four also declined to stack the +6 thoroughfare bonus on the traffic ladder's 44,
+because the 44 rung already says "a corridor on a listed thoroughfare" — the
+bonus double-counts what the rung already prices.
+
+Nothing more is to be learned by collecting further reports of either. Both
+repairs are settled; they wait only for a moment when no wave is out.
+
+## A real scope hole in the v7 rezoning ladder — it never says what it governs
+
+Batch 050: late-hours permit bans, interim permit freezes, alcohol and cannabis
+caps, shop-size limits, "special use districts". These are rules on what may
+OPERATE, not what may be BUILT. The reader applied the ladder to them (cannabis
+across four Sunset corridors = 68); a reader who confines the ladder to
+construction scores them a band lower.
+
+I wrote the ladder thinking about construction and never said so. Combined with
+the time-limited zoning gap batch 056 found, the ladder needs one sentence on its
+own scope: what may be built, permanently, and use controls ride the same rungs.
+
+## Two more shapes worth a rung, both recurring
+
+**The monthly relief roll.** "February 1942 aid to the aged, blind and needy
+children approved" — a benefit applying to a whole class (80-100) against the
+recurring-bill rule (~36). A 44-point fork, and it recurs across the corpus. The
+reader read the bill rule as covering the PURCHASE OF A SERVICE (gas, hydrant
+water) and not money transferred to a class of people, and scored 80. That
+distinction is the right one and the rubric should say it.
+
+**A city street handed to a private company or the military.** "Fremont Street
+closed for the war and given to Matson Navigation" — the closing anchor says 36,
+the band list says a public asset given away is 55-79. Used 44. Third report of
+"a public asset given away" colliding with a smaller anchor.
