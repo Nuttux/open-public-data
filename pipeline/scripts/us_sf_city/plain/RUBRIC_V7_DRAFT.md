@@ -55,10 +55,23 @@ into 0-9, the band reserved for procedure with NO subject.
 One rule closes both:
 
     REPLACE "Below 30, an anchor is not discounted" with:
-      "The ladder never carries an act below the band its subject earns.
-       An anchored act does not fall below its own anchor. Any act with a
-       named subject stays at 10 or above — 0-9 is for procedure with no
-       subject in it, and a proposal, an appeal or a referral is not that."
+      "Any act with a named subject stays at 10 or above. 0-9 is for
+       procedure with no subject in it, and a proposal, an appeal, a
+       refusal or a referral is not that."
+
+CORRECTION to my own first draft of this entry. I had written "an anchored act
+does not fall below its own anchor", which would have nullified the discount
+ladder for every anchored act — a refusal and a grant of the same permit would
+score the same. Only the 0-9 half of the rule is right, and that half stands on
+what the band MEANS rather than on a floor.
+
+The permit half is now UNRESOLVED and out of v7. A reader reported the 33-permit
+halving to 17 as a defect; a different reader defended 17 for "seeks a spur
+track" as a real difference between asking and being allowed, and I withdrew the
+claim then. A third has now found the neighbouring cliff — the subdivision-map
+anchor (36) refused takes 18, so a 3-point anchor gap becomes a 15-point outcome
+gap. Something is wrong around the permit tier, but three readers have pointed
+at three different parts of it and I cannot yet say which.
 
 ## 4. The thoroughfare split belongs to EVERY street act, not to one anchor
 
@@ -166,6 +179,30 @@ on whether the clerk mentioned the flats.
       "Housing bonds, site acquisition and financing for a named residential
        site are housing, whether or not a unit count is written. The
        machinery discount is for money moved with no stated destination."
+
+## 10a. The rule that decides BOTH forks — score what the line establishes
+
+Entry 10 says the clerk's wording must not decide the band. The lease fork looks
+like it says the opposite: a reader on batch 038 settled "Health Department
+extends its lease at 1548 Stockton Street" at 26 and reserved 68 for "3911
+Mission Street leased for a geriatric outpatient clinic" — the wording deciding
+the band, which is what entry 10 forbids. Shipping both would put a contradiction
+in v7 of exactly the kind entry 1 exists to delete.
+
+They are not in conflict, and the distinction is worth stating as its own rule
+because it settles a whole class:
+
+    ADD, above both:
+      "Score what the line establishes, never what it merely permits.
+       'Housing bonds for Mason and Eddy Streets' establishes housing —
+       the missing unit count changes the precision, not the kind. 'The
+       Health Department extends its lease at 1548 Stockton Street' does
+       not establish what is in the building; a clinic is possible there,
+       not stated. Where the kind is stated, wording cannot lower it.
+       Where the kind is not stated, do not supply it."
+
+This is the fork's answer, and it is the fourth independent report of the lease
+hole that produced it.
 
 ## 11. A subject with no act
 

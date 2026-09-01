@@ -448,3 +448,39 @@ for a financial investigation" is a roll call (0-9) and a proposal at once. 12.
 
 **A leave of absence for an official.** Smaller than an appointment (24), not pay,
 no rung. 14.
+
+## The permit tier is wrong somewhere, but three readers point at three places
+
+Not going into v7. Recorded so the next attempt starts from the whole picture:
+
+  - one reader: the 33 permit anchor halves to 17 on "asks to" vs "allowed to",
+    same permit, two spellings, a band apart
+  - another reader: 17 for "seeks a spur track" is CORRECT — asking and being
+    allowed are genuinely different acts. I withdrew the defect claim then
+  - a third (batch 038): the subdivision-map anchor (36) refused takes 18, so a
+    3-point gap between two anchors becomes a 15-point gap between two outcomes
+
+All three are about the same few points of the scale and they do not agree on
+which part is broken. A fix written from any one of them alone would be a guess.
+
+## Four more undecided, batch 038
+
+**A part must not outrank its whole, on streets as on buildings.** The
+component/plan anchor is flat 45, so "Eckbokay Associates hired to design the
+Maiden Lane improvements" would outrank the improvement itself (38). The reader
+capped the part below the whole at 34; the rubric states that principle only for
+buildings.
+
+**A privately built school approved by permit.** "Hebrew Academy allowed to build
+a school at Fourteenth Avenue" — between the permit anchor (33) and a civic
+building ordered built (78). The city grants permission; it does not build.
+Scored 62.
+
+**A temporary or seasonal service.** "Holiday shopper shuttle approved between
+the Ferry Building and Union Square" — the transit anchor is a flat 80 for a line
+ordered, planned or extended, with nothing for a service that ends in January.
+Scored 60.
+
+**A department named on a lease.** Now answered by v7's "score what the line
+establishes" rule — kept here because it is the fourth report of the lease hole
+and the one that produced the answer.
