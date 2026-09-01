@@ -311,6 +311,49 @@ function toDoc(d: BlockDecision, i: number): FicheArchiveDoc {
   };
 }
 
+
+/**
+ * ── THE SAME SILHOUETTE AS THE YEAR PANEL ───────────────────────────────────
+ * Both are lists of decisions, and they were drawn differently: the year panel
+ * one sentence a row, this one a three-line archive shelf whose middle line was
+ * the paperwork type and whose third repeated the same archive name on every
+ * row. Two lists of the same thing should look like the same thing.
+ *
+ * They cannot be identical, and the difference is real rather than cosmetic:
+ * the year panel is ONE YEAR, so every row shares a date and the line alone is
+ * enough. This is one block across a hundred and twenty years, so a row without
+ * a date is ambiguous. Same shape, then — one line, one small grey annotation
+ * on the right — and the annotation differs because the question differs. The
+ * year panel's is how many dots the decision draws; here it is the year.
+ *
+ * It deliberately reuses the year panel's own classes. Sharing the stylesheet
+ * is what keeps the two from drifting apart again the next time either is
+ * touched.
+ */
+function DecisionRows({ rows, cap }: { rows: readonly BlockDecision[]; cap?: number }) {
+  const shown = cap ? rows.slice(0, cap) : rows;
+  return (
+    <div className="fx-city-record-list">
+      {shown.map((d, i) => (
+        <span className="fx-city-record-line" key={`${d.u}#${i}`}>
+          <a
+            className="fx-city-record-row"
+            href={sourceHref(d)}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="fx-city-record-dot" style={{ background: "currentColor" }} />
+            <span className="fx-city-record-text">
+              {(d.pl && d.pl.trim()) || stripFileNumber(d.t)}
+            </span>
+            <span className="fx-city-record-n">{whenOf(d)}</span>
+          </a>
+        </span>
+      ))}
+    </div>
+  );
+}
+
 export interface BlockContext {
   /**
    * HOW CLOSE THE READER WAS WHEN THEY CLICKED — the index of the map's own
@@ -2163,7 +2206,7 @@ function HoodLevel({
               </summary>
               {d.rows.length ? (
                 <>
-                  <FicheArchiveShelf docs={byNewest(d.rows).map(toDoc)} />
+                  <DecisionRows rows={byNewest(d.rows)} />
                   {d.n > d.rows.length ? (
                     <p className="fx-block-hint" style={NOTE}>
                       {tOr(
@@ -3022,7 +3065,7 @@ const onHood = unit.kind === "hood";
                 <div className="fx-city-ledger-head fx-block-sec">
                   {t("us.sf.thecity.panel.lead_head")}
                 </div>
-                <FicheArchiveShelf docs={byNewest(here).map(toDoc)} cap={6} />
+                <DecisionRows rows={byNewest(here)} cap={6} />
               </>
             ) : (
               <>

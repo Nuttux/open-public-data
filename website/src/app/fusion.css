@@ -18834,6 +18834,11 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 }
 /* one row = the line (flies to the place) + one character (opens the scan).
    The pair hovers as a unit so the row still feels like one thing. */
+/* the block panel uses the same rows; as an anchor rather than a button, since
+   here the reader is already at the place and the only action left is the scan */
+.theme-fusion .fx-city-record-list { display: flex; flex-direction: column; }
+.theme-fusion a.fx-city-record-row { text-decoration: none; color: var(--ink); }
+.theme-fusion a.fx-city-record-row:hover .fx-city-record-text { text-decoration: underline; text-underline-offset: 2px; }
 .theme-fusion .fx-city-record-line {
   display: flex; align-items: flex-start; gap: 2px; border-radius: 5px;
 }
