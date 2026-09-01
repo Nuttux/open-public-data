@@ -197,7 +197,20 @@ def main() -> None:
                         have[r["id"]] = r
                 got += len(rows)
                 print(f"  {p.name}: took {len(rows):,}" + (f", skipped {bad}" if bad else ""))
-                p.rename(WORK / ("taken-" + p.name[len("done-"):]))
+                # ── THE HAND-BACK FILES ARE THE AUDIT TRAIL ────────────────
+                # This used to rename over an existing taken-NNN.jsonl, so a
+                # second wave silently destroyed the first wave's returned
+                # file. Those files are what proved which batches carried the
+                # tense penalty and which did not; losing them loses the
+                # ability to re-check a decision after the fact. Each keeps the
+                # rubric it was read under in its name.
+                dest = WORK / f"taken-{p.name[len('done-'):-len('.jsonl')]}-rv{stamp['rv']}.jsonl"
+                n_dup = 1
+                while dest.exists():
+                    n_dup += 1
+                    dest = WORK / (f"taken-{p.name[len('done-'):-len('.jsonl')]}"
+                                   f"-rv{stamp['rv']}-{n_dup}.jsonl")
+                p.rename(dest)
                 # ── AND RETIRE THE HAND-OUT, OR ITS IDS STAY "IN FLIGHT" ────
                 # `--prep` treats every batch-*.jsonl as work outstanding. A
                 # taken batch left on disk therefore hides its own records from
