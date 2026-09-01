@@ -165,6 +165,18 @@ def main() -> None:
                 got += len(rows)
                 print(f"  {p.name}: took {len(rows):,}" + (f", skipped {bad}" if bad else ""))
                 p.rename(WORK / ("taken-" + p.name[len("done-"):]))
+                # ── AND RETIRE THE HAND-OUT, OR ITS IDS STAY "IN FLIGHT" ────
+                # `--prep` treats every batch-*.jsonl as work outstanding. A
+                # taken batch left on disk therefore hides its own records from
+                # the next wave — which is invisible until a rubric bump makes
+                # them due for re-reading and 19,200 of them silently do not
+                # come back.
+                src = WORK / p.name.replace("done-", "batch-")
+                if src.exists():
+                    src.rename(WORK / ("issued-" + src.name[len("batch-"):]))
+                stamp_p = src.with_suffix(".rubric")
+                if stamp_p.exists():
+                    stamp_p.unlink()
         print(f"\n{got:,} scores in; {len(have):,} of {len(store):,} read")
         return
 
