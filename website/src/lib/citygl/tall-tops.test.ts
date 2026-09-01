@@ -12,7 +12,7 @@ import { describe, expect, it } from "vitest";
 interface Row {
   gid: number; name: string; topM: number; drawnM: number;
   gapM: number; areaM2: number; planM2: number | null; frac: number | null;
-  why?: string;
+  coverage?: number; polyM2?: number; why?: string;
 }
 interface Doc {
   rule: { gap_min_m: number; area_band: [number, number] };
@@ -25,16 +25,16 @@ const doc = JSON.parse(readFileSync(
   "public/data/us/sf/city/base/tall-tops.json", "utf8")) as Doc;
 
 describe("the towers the 2023 scan did not see", () => {
-  it("touches 7 of the register's 180 rows, and leaves 164 alone", () => {
+  it("touches 7 of the register's 180 rows, and leaves 156 alone", () => {
     /* THE POINT OF THE FILE IS HOW LITTLE IT DOES. The scan is right about
        seven eighths of the towers in this city; if this ever starts rewriting
        a large share of them, the disagreement is with the scan and not with
        sixteen footprints, and that is a different finding needing a different
        file. */
     expect(doc.measured.register_rows).toBe(180);
-    expect(doc.measured.agree_within_gap_min).toBe(164);
+    expect(doc.measured.agree_within_gap_min).toBe(156);
     expect(doc.measured.taken).toBe(7);
-    expect(doc.measured.refused).toBe(9);
+    expect(doc.measured.refused).toBe(17);
     expect(doc.tops.length).toBe(doc.taken.length);
   });
 
@@ -54,32 +54,52 @@ describe("the towers the 2023 scan did not see", () => {
     }
   });
 
-  it("every refusal says why, and the reasons are the three the gate has", () => {
+  it("every refusal says why, and names the towers that are simply not there", () => {
     for (const r of doc.refused) {
       expect(r.why, r.name).toBeTruthy();
-      expect(r.why, r.name).toMatch(/fragment|podium|no plan size|no footprint/);
+      expect(r.why, r.name).toMatch(/fragment|podium|no plan size|no shipped footprint|too little/);
     }
-    /* the two everyone would ask about are refused, and refused for a reason
-       that is about the FOOTPRINT rather than about the tower: 181 Fremont's
-       is 30 % of its own tower plan and 340 Fremont's is 241 % of it */
-    const by = new Map(doc.refused.map((r) => [r.name, r]));
-    expect(by.get("181 Fremont")?.why).toMatch(/fragment/);
-    expect(by.get("340 Fremont Street")?.why).toMatch(/podium/);
+    /* SEVEN TOWERS IN THIS REGISTER HAVE NO FOOTPRINT IN THE SHIPPED DATA.
+       Not a bad join and not a near miss: their register polygons are sampled
+       at 2 m and every sample is over open ground. Salesforce Tower's polygon
+       is 3,268 m2 and 100 % of it is uncovered. Seven of them. This is asserted by NAME
+       because it is the map's own honest limit and a reader who asks "where
+       is Salesforce Tower" deserves an answer that is not silence. */
+    const gone = doc.refused
+      .filter((r) => r.coverage === 0)
+      .map((r) => r.name).sort();
+    expect(gone).toEqual([
+      "33 8th at Trinity Place Apartments",
+      "33 Tehama Street",
+      "450 Folsom [Transbay Block 8]",
+      "500 Folsom",
+      "706 Mission Street",
+      "Oceanwide Center II",
+      "Salesforce Tower",
+    ]);
   });
 
-  it("names the seven it does raise", () => {
+  it("names the seven it does raise, and every one of them really is there", () => {
     expect(doc.taken.map((r) => r.name).sort()).toEqual([
-      "33 Tehama Street",
-      "500 Folsom",
+      "1500 Mission - Residential",
+      "181 Fremont",
+      "Infinity (B) North",
       "LUMINA I",
       "LUMINA II",
-      "One Rincon Hill South",
-      "Salesforce Tower",
       "Solaire (Transbay Block 6)",
+      "Steuart Tower",
     ]);
-    /* and the tallest building in San Francisco is one of them */
-    const sf = doc.taken.find((r) => r.name === "Salesforce Tower")!;
-    expect(sf.drawnM).toBe(108);
-    expect(sf.topM).toBeCloseTo(326.1, 1);
+    /* THE JOIN THAT PRODUCED THIS HAS NO FALLBACK, and that is what the
+       coverage column is for. The version before it took the nearest
+       footprint within 80 m when nothing contained the register's centroid,
+       and four of its seven rows came out on a different building — Salesforce
+       Tower's 326 m landed on a 103 m tower 70 m away. A join that cannot fail
+       is not a join. */
+    for (const r of doc.taken) {
+      expect(r.coverage, r.name).toBeGreaterThanOrEqual(0.30);
+    }
+    const tall = doc.taken.find((r) => r.name === "181 Fremont")!;
+    expect(tall.drawnM).toBe(5);
+    expect(tall.topM).toBeCloseTo(227.4, 1);
   });
 });

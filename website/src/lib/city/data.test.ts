@@ -495,12 +495,11 @@ d("the authored landmarks", () => {
        round trip byte for byte before it adds anything. So this assertion is a
        statement about the MERGED register and the manifest's own
        `landmarks.authoredHere` says which rows are whose. DRAW.md §21.9. */
-    expect(t!.heroes.length).toBe(15);
-    /* 145 -> 147 when the Transamerica grew its two wing shafts, and
-       147 -> 149 when Salesforce Tower was authored */
-    expect(t!.heroes.reduce((a, h) => a + h.parts.length, 0)).toBe(149);
+    expect(t!.heroes.length).toBe(14);
+    /* 145 -> 147 when the Transamerica grew its two wing shafts */
+    expect(t!.heroes.reduce((a, h) => a + h.parts.length, 0)).toBe(147);
     expect(t!.heroes.reduce(
-      (a, h) => a + h.parts.reduce((b, p) => b + p.rx.length, 0), 0)).toBe(3561);
+      (a, h) => a + h.parts.reduce((b, p) => b + p.rx.length, 0), 0)).toBe(3549);
   });
 
   it("nothing stands above the MEASURED top — the gate's own ceiling", async () => {

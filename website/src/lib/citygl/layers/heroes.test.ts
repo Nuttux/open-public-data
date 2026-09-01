@@ -83,14 +83,14 @@ d("heroesLayer, against the published register", () => {
     for (const h of lm.heroes) {
       for (const p of h.parts) per[p.kind] = (per[p.kind] ?? 0) + 1;
     }
-    /* the shipped register, as it stands: 15 heroes, 149 parts. The split is
+    /* the shipped register, as it stands: 14 heroes, 147 parts. The split is
        asserted so that a chunk that grows a kind cannot pass unnoticed — and
        it did its job: it went 145 -> 147 when the Transamerica Pyramid grew
-       its two wing shafts, and 14 -> 15 heroes with 147 -> 149 parts when
-       Salesforce Tower was authored. */
-    expect(lm.heroes.length).toBe(15);
-    expect(per.solid + (per.arcade ?? 0) + (per.rib ?? 0)).toBe(149);
-    expect(per.solid).toBe(137);
+       its two wing shafts. It went 14 -> 15 and back when Salesforce Tower
+       was authored and then withdrawn — see heroes_extra.json §rejected. */
+    expect(lm.heroes.length).toBe(14);
+    expect(per.solid + (per.arcade ?? 0) + (per.rib ?? 0)).toBe(147);
+    expect(per.solid).toBe(135);
     expect(per.arcade).toBe(9);
     expect(per.rib).toBe(3);
 

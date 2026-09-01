@@ -105,6 +105,70 @@ def inside(px, py, rx, ry):
     return c
 
 
+#: the sample pitch of the overlap test, metres. The smallest thing this
+#: register carries is a 1,000 m2 tower plan, so 2 m samples it at ~250 points.
+OVERLAP_STEP = 2.0
+#: how much of the register's own polygon a footprint must cover to BE that
+#: building. See `best_overlap`.
+OVERLAP_MIN = 0.30
+
+
+def best_overlap(pts, cx, cy, off, cnt, IX, IY, cell_of):
+    """WHICH FOOTPRINT IS THIS REGISTER ROW, BY AREA AND NOT BY DISTANCE.
+
+    THE FIRST VERSION OF THIS WAS WRONG AND SHIPPED. It took the footprint
+    whose vertex mean fell inside the register's polygon and, WHERE NOTHING
+    FELL INSIDE, the nearest footprint within 80 m. That fallback is what a
+    join must never have: it cannot fail, so it silently attaches a published
+    height to whichever tower happens to be next door.
+
+    MEASURED after the fact, by asking each of the seven rows it produced how
+    much of its register polygon the footprint it chose actually covers:
+
+        Solaire                100.0 %      Salesforce Tower    0.0 %
+        LUMINA II               98.5 %      33 Tehama Street    0.0 %
+        LUMINA I                97.2 %      500 Folsom          0.0 %
+                                            One Rincon Hill S.  0.0 %
+
+    Four of seven were on a different building. Salesforce Tower's 326 m was
+    put on a 103 m tower 70 m away, because the shipped footprint set has NO
+    footprint for Salesforce Tower at all: its register polygon is 3,268 m2
+    and every square metre of it is over open ground.
+
+    So the join is now an overlap, sampled on a grid, and it does not fall
+    back. A row whose best footprint covers less than `OVERLAP_MIN` of its
+    register polygon is refused and says so. A join that can fail is the only
+    kind worth having.
+    """
+    RX = [p[0] for p in pts]
+    RY = [p[1] for p in pts]
+    lo_x, hi_x, lo_y, hi_y = min(RX), max(RX), min(RY), max(RY)
+    cand = set()
+    for i in cell_of(lo_x, lo_y, hi_x, hi_y):
+        cand.add(i)
+    hit = {}
+    tot = 0
+    x = lo_x
+    while x < hi_x:
+        y = lo_y
+        while y < hi_y:
+            if inside(x, y, RX, RY):
+                tot += 1
+                for i in cand:
+                    o, c = int(off[i]), int(cnt[i])
+                    rx = IX[o:o + c]
+                    ry = IY[o:o + c]
+                    if inside(x, y, rx, ry):
+                        hit[i] = hit.get(i, 0) + 1
+                        break
+            y += OVERLAP_STEP
+        x += OVERLAP_STEP
+    if not tot or not hit:
+        return None, 0.0, tot * OVERLAP_STEP * OVERLAP_STEP
+    b = max(hit, key=lambda k: hit[k])
+    return b, hit[b] / tot, tot * OVERLAP_STEP * OVERLAP_STEP
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true")
@@ -114,6 +178,25 @@ def main() -> None:
     cx, cy, h = B["cx"], B["cy"], B["h"].astype(np.float64)
     off, cnt, IX, IY = B["off"], B["cnt"], B["IX"], B["IY"]
     feats = json.loads(REG.read_text())["features"]
+
+    # a coarse bucket, so one overlap test walks a handful of rings and not
+    # 166,166 of them. 120 m is the footprint index's own cell.
+    GRID = 120.0
+    bucket: dict[tuple[int, int], list[int]] = {}
+    for i in range(B["n"]):
+        o, c = int(off[i]), int(cnt[i])
+        gx0 = int(IX[o:o + c].min() // GRID); gx1 = int(IX[o:o + c].max() // GRID)
+        gy0 = int(IY[o:o + c].min() // GRID); gy1 = int(IY[o:o + c].max() // GRID)
+        for gx in range(gx0, gx1 + 1):
+            for gy in range(gy0, gy1 + 1):
+                bucket.setdefault((gx, gy), []).append(i)
+
+    def cell_of(x0, y0, x1, y1):
+        out = []
+        for gx in range(int(x0 // GRID), int(x1 // GRID) + 1):
+            for gy in range(int(y0 // GRID), int(y1 // GRID) + 1):
+                out.extend(bucket.get((gx, gy), ()))
+        return out
 
     taken, refused, agreed = [], [], 0
     for f in feats:
@@ -127,23 +210,20 @@ def main() -> None:
         rx = np.array([(p[0] - LON0) * MPD * COSL for p in ring])
         ry = np.array([(p[1] - LAT0) * MPD for p in ring])
 
-        box = ((cx >= rx.min() - NEAR_M) & (cx <= rx.max() + NEAR_M)
-               & (cy >= ry.min() - NEAR_M) & (cy <= ry.max() + NEAR_M))
-        idx = np.where(box)[0]
-        if not idx.size:
-            refused.append({"name": name, "why": "no footprint near the register outline"})
+        b, frac_cov, poly_m2 = best_overlap(
+            list(zip(rx, ry)), cx, cy, off, cnt, IX, IY, cell_of)
+        if b is None or frac_cov < OVERLAP_MIN:
+            refused.append({
+                "name": name, "topM": round(pub, 1),
+                "polyM2": round(poly_m2),
+                "coverage": round(frac_cov, 3),
+                "why": ("no shipped footprint covers this register polygon — "
+                        "the building is not in the footprint set"
+                        if b is None or frac_cov == 0 else
+                        "the best footprint covers too little of the register "
+                        "polygon to be that building"),
+            })
             continue
-        inn = [int(k) for k in idx if inside(cx[k], cy[k], rx, ry)]
-        if inn:
-            b = max(inn, key=lambda k: h[k])
-        else:
-            # the outline is concave and its own tower's centroid fell outside
-            d2 = (cx[idx] - rx.mean()) ** 2 + (cy[idx] - ry.mean()) ** 2
-            near = idx[d2 < NEAR_M * NEAR_M * 4]
-            if not near.size:
-                refused.append({"name": name, "why": "no footprint inside or near"})
-                continue
-            b = int(near[np.argmax(h[near])])
 
         gap = pub - float(h[b])
         if gap <= GAP_MIN_M:
@@ -161,6 +241,7 @@ def main() -> None:
             "planM2": round(want) if want else None,
             "frac": round(frac, 2) if frac else None,
             "date": str(P.get("date") or "")[:4],
+            "coverage": round(frac_cov, 3),
         }
         if frac is None:
             row["why"] = "the register publishes no plan size, so the gate cannot run"
