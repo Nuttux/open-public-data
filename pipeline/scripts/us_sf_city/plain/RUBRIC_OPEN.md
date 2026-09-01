@@ -266,3 +266,23 @@ four re-reads bought, and it is smaller than the width of any band.
 
 One reader reported the same pair as "differs on 865 of 1,200 rows", which is
 true and useless: it counts a one-point difference the same as a two-band one.
+
+## THE traffic hole, stated precisely — a cross-band contradiction in v6
+
+The anchor table pins "a street or part of one closed" at 36. The 55-79 band
+lists "a street's use changed in a way residents would feel". A permanent
+closure is the most drastic use change there is, and it sits a full band below
+where the band text puts it.
+
+That contradiction decides every traffic record: truck bans, bike lanes,
+transit-only lanes, one-way conversions, midday car bans, permit-parking
+districts, stop signs, meters. One reader measured ~150 records in a single
+batch turning on it, and following the band text instead of the anchor would
+roughly DOUBLE that batch's 55-79 share.
+
+Populations reported across readers: 21, 24, 28, 30, 39, 54, 72, 76, 79, 90, 97,
+104, 109 records a batch. It is the largest hole in the rubric by a wide margin
+and the only one that is also a contradiction rather than an absence.
+
+Every reader invented a ladder. The invented values ranged 26 to 62 for the same
+shapes.
