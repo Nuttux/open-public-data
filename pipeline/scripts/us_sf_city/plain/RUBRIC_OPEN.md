@@ -933,3 +933,38 @@ into the next bump, and NOT before the current wave lands.
     "City to burn its garbage at a municipally owned incinerator" against the
     single De Haro Street incinerator; the reader used 65 over 55, reading the
     rung out of "a public asset gained" rather than any stated rule
+
+## A third thing v7 left ambiguous — "discount one rung" never says which rung
+
+The appeal rule says "score what is being appealed, then discount one rung". The
+rubric has a three-rung ladder, so "one rung" is not a number. Batch 057 read a
+hearing set on an appeal as x0.5 and a decided appeal as x0.75, which is a
+sensible reading and is its own.
+
+    FIX: say it. "Discount one rung" = x0.75. An appeal not yet heard takes a
+    second rung, x0.5.
+
+Also mine, also from writing a rule without checking it resolves.
+
+## "One block" in the rezoning ladder — two readers, two rungs
+
+v7 defines 45 (one lot or corner) and 68 (an area bounded by streets on more than
+one side). A single city block is literally bounded on four sides but reads like
+a corner. Batch 055 used 68; batch 057 used 55. Both stay inside 55-79, so it
+does not force anything — but the rung was DEFINED in v7 precisely so readers
+would not have to guess, and two of them guessed differently on the first day.
+
+    FIX: add "one block — 55" between the lot rung and the area rung.
+
+## Three more unanchored, batch 057
+
+  a bridge, again — nothing between "street opened 44" and a civic building;
+    this reader used 44-48 to build one and 36-45 to work on an existing one,
+    the second report of the same hole
+  a named-place land purchase with no stated purpose — "one-fifth of Mt.
+    Davidson bought from the Langs" is 44 under the no-purpose rule while the
+    adjacent "land to be bought for Mt. Davidson Park" is 70; the line names a
+    landmark rather than a lot, which the school/lot pair the rule was written
+    against does not
+  traffic signals as capital works — the v7 ladder prices traffic RULES, not
+    building the hardware citywide; used 50
