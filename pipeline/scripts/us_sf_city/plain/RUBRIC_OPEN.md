@@ -1081,3 +1081,53 @@ the anchor and 55-60 by the new rule. The reader took 22.
 Both of these are the v7 appeal rule meeting anchors that already priced the same
 shapes. The lesson is the one from the +6 bonus: a new general rule has to be
 checked against every anchor that already covers part of its ground.
+
+# MEASURED: what v7 actually changed, on the same 1,200 records
+
+Batch 024 had an orphaned v6 scoring of its own input that was never promoted.
+The reader scored fresh under v7, then diffed:
+
+    mean delta      +0.5
+    median delta     0
+    large deltas fell exactly on v7's new rules —
+        public-facing department leases      55 -> 26
+        appeals                              16 -> 34
+        district traffic rung                38 -> 58
+        block rezoning                       46 -> 68
+
+This is the empirical case for not having re-read the corpus. v7 moves the
+typical record by nothing at all and moves exactly the families it was written
+for. A full re-read would have re-scored 57,000 records to change a few thousand,
+and the median row would have come back identical.
+
+It is also a check on the recheck selector: every family that moved is one the
+selector returns. Nothing large moved outside them.
+
+## The hearing collision, third reader
+
+Batch 024 hit it too and resolved it the OTHER way — flat 16 for non-appeal
+hearings, correcting a line from 40 down to 16 mid-batch to hold that reading.
+Batch 059 used half-the-subject as the general rule. So two readers, opposite
+resolutions, 24 points apart on the largest subjects in their years.
+
+That makes it the same class of defect as the appeal cycle: a procedural step
+flattening a subject, with readers splitting on whether to let it. It needs the
+same fix, and it is the one v7 defect so far that two readers have resolved
+incompatibly rather than identically.
+
+## The floor inversion, third reader
+
+Batch 024 read the floor as `min(base, max(discounted, 18))` — the same repair
+053 and 059 reached. Three readers, one repair, none having seen the others.
+
+## Four more from 024
+
+  a named PROGRAMME is not on the lease list — "Police senior escort program to
+    lease 948 Pacific Avenue" is neither a department nor one of the five named
+    public uses; used 26, 58 equally readable
+  a rezoning "near two streets" fits none of the four v7 rungs; used 55
+  an asset created vs a commemorative naming — "Park at Beach and Hyde proposed
+    to honor Andrew Hallidie" is a new open space (55-79 discounted) or a
+    renaming (10-29), two bands on one line; used 29
+  a recorded OPINION is not a recorded fact — the fact-recorded rule pays 53 for
+    "Supervisor Lewis says only mass transit can unclog downtown"; used 45
