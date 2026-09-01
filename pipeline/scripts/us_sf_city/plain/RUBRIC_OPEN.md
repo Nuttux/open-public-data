@@ -17,6 +17,38 @@ has three rungs, because readers needed a middle one and invented it.
 The recurring utility bill was a CONTRADICTION, not a gap — named in two
 sections at once, worth 55-62 in one and about 36 in the other. It is upkeep.
 
+## Cross-band — these DO meet the bar for v6
+
+**Disposing of city property at one address lands in three bands.** One reader
+scored access rights sold to a neighbour 24, a city lot leased at auction 48,
+and land and building sold 55. Three sections each claim it: "a public asset
+given away" is 55-79, "reach picks the band" makes one lot 30-54, and 10-29
+explicitly owns "the city forgoes and one party benefits". One shape, three
+answers.
+
+**A lease that keeps a public-safety facility running.** The lease anchor says
+score public-use space on what it houses — a fire station, 68. The recurring-bill
+rule says a monthly rent on a building already standing is upkeep, about 30. The
+same reader reached three different rules for three neighbouring records: a fire
+station lease 30, court quarters 60, land for the public morgue 50.
+
+**The proposal-discount fork decides more than any anchor.** x0.75 against x0.5
+is worth 20+ points on a large subject and nothing in the line picks it.
+"Congress urged to ratify the city's reservoir rights of way" took 68; "W. J.
+Cuthbertson suggests a city hall at Market and Hermann" took 41. A stated test
+for the middle rung would remove more spread than any single new anchor.
+
+**Civic buildings the table does not name.** School, hospital and library are
+78; fire, police and engine house 68. An administrative or operational building
+— a city office block, a coroner's morgue, a municipal asphalt plant, a
+corporation yard — has nothing, and one reader interpolated 48 to 60.
+
+## Closed by v5, confirmed by a reader
+
+"A street closed for an afternoon" and "land bought to widen a street" both
+landed on their new anchors without argument — 22 and 48 — in the batch that
+had reported them.
+
 ## For v6 — held back deliberately
 
 **The major-thoroughfare rung is inverted and never fires.** 40 requires a
