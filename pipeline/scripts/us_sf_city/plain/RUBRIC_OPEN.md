@@ -646,3 +646,53 @@ it: the answer is known to under-score, and that is the accepted trade.
 
 This is the fifth report of the fork and the second and third readers to resolve
 it identically. Closing it as answered by 10a.
+
+## The traffic ladder, four readers deep — the convergence holds
+
+Updating the two-reader finding above. Batches 040 and 047 each invented their
+own traffic ladder as well, with no rubric guidance and no sight of each other:
+
+    rung                    035   043   040   047   spread   band
+    one street or block      38    34    34    32      6     all 30-54
+    corridor or one-way      44    48    40    40      8     all 30-54
+    district or citywide     58    62    55    58      7     all 55-79
+
+Twelve independent numbers, three rungs, and not one crosses a band boundary.
+The widest disagreement anywhere is 8 points.
+
+This is now a firm result rather than a suggestive one: on the largest unanchored
+family in the corpus (~90 lines in batch 047 alone), readers left entirely to
+their own judgement agree on the answer and disagree only on the digits. The
+missing anchor is costing precision, not correctness — and any ladder in that
+range is defensible, so v7 should pick one and stop.
+
+## The lease fork, sixth report — now with a size
+
+Batch 047: ~40 lines in one batch turn on whether the clerk wrote a public-use
+word. "2145 Nineteenth Avenue leased for the Department of Public Health" takes
+26; a line naming a clinic takes 75. A 49-point swing on phrasing.
+
+Third reader to resolve it at 26 on "do not invent reach", which is v7's rule
+10a. The fork stays closed — but 40 lines a batch is larger than the earlier
+reports suggested, so the rubric should carry the reasoning, not just the number.
+
+## Endorsing another government's act — second report, still no rung
+
+Batch 037: "Ballot measure to ban oil drilling in tidelands endorsed" (used 40).
+Batch 047: "State smog bill SB 66 endorsed" (used 55 and 18 on the subject's
+reach). The nearest rule is "Congress urged to ratify the city's reservoir rights
+of way" at x0.75 — but that is the city's OWN subject. An endorsement supports
+someone else's act, over which the city controls nothing. Two readers, two
+different treatments, no rung.
+
+## Two more from batch 047
+
+**Fixed plant or upkeep.** "$200 voted for a water heater at Log Cabin Ranch
+School" — the anchor table calls a fixed-plant purchase for an open facility 45;
+the maintenance section names "one boiler" as upkeep. Same object, ~15 points
+apart. Used 30.
+
+**Supplemental money on an existing contract.** "$2,965 more for Eaton and
+Smith's Parker Avenue rebuilding" — the "contractor given more days = 18, the
+street is not decided again" anchor points one way; extra money buys extra work,
+which points at the 38 work anchor. ~8 lines. Used 38.
