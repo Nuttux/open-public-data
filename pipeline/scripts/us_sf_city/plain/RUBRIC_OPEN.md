@@ -219,3 +219,34 @@ AVENUE — a Richmond side street — the thoroughfare, and demotes Third STREET
 which is the actual arterial and the subject of lines like "Third Street rezoned
 from factories to neighbourhood shops". Ocean and Nineteenth come out right
 under the rule; Third comes out backwards and must be listed as a street.
+
+## The three populations with no anchor at all — measured per batch
+
+These are now the largest holes. Every reader invents a private ladder, and the
+ladders do not match.
+
+**Traffic and parking regulation — 28 to 97 records a batch, in every modern
+year.** Stop signs, meters, tow-away zones, turn bans, one-way conversions,
+speed limits, bike lanes, transit-only lanes, permit-parking districts. Two
+sections claim them at different bands: "a street's use changed in a way
+residents would feel" (55-79) and one-street reach (30-54). Ladders invented so
+far ranged 30 to 58 for the same shapes.
+
+**A lease of space the public uses — up to 117 records a batch in the modern
+years.** The department-office anchor (26) is clean; "score it on what it
+houses" gives no number, so readers invented clinic 65, branch library 70,
+courtrooms 55, and 26 for anything the clerk called an office. A 44-point spread
+decided by one word.
+
+**Landmark and historic designation — 13 to 44 records a batch.** A permanent
+rule on what may be done to one building. Not a permit, not a set-back, not a
+subdivision map; the 30-54 band's list holds nothing rule-shaped. Readers used
+40 to 55, and the proposal discount puts a granted designation and a proposed
+one in different bands.
+
+## A line naming a subject but no act — 17 records a batch
+
+"Board adopts Resolution No. 571-10 for the Transbay Transit Center." The
+subject is named and large; the act is not stated. Scoring it as the neighbouring
+act gives 48, scoring it as procedure gives 8 — five bands apart, and the shape
+appears in every modern batch.
