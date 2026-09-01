@@ -136,8 +136,21 @@ def main() -> None:
         with RANKS.open("a") as out:
             for p in sorted(WORK.glob("done-*.jsonl")):
                 sp = WORK / (p.name.replace("done-", "batch-").replace(".jsonl", ".rubric"))
-                stamp = (json.loads(sp.read_text()) if sp.exists()
-                         else {"rv": RUBRIC_VERSION, "rh": rubric_hash()})
+                # ── AN UNSTAMPED FILE IS NOT CURRENT WORK ──────────────────
+                # It used to default to the rubric in force NOW, which credited
+                # a re-delivered batch with a rubric it never saw: a worker
+                # rewrote its file against a version that was still being
+                # edited, its stamp had been retired by an earlier ingest, and
+                # 1,200 rows were recorded as read under the final rubric.
+                # Refusing is the safe direction — the batch is re-read.
+                if not sp.exists():
+                    sp2 = WORK / ("issued-" + p.name[len("done-"):-len(".jsonl")] + ".rubric")
+                    sp = sp2 if sp2.exists() else sp
+                if not sp.exists():
+                    print(f"  {p.name}: SKIPPED — no rubric stamp, so what it "
+                          f"read cannot be established")
+                    continue
+                stamp = json.loads(sp.read_text())
                 bad = 0
                 rows = []
                 for l in p.open():
@@ -181,7 +194,8 @@ def main() -> None:
                     src.rename(WORK / ("issued-" + src.name[len("batch-"):]))
                 stamp_p = src.with_suffix(".rubric")
                 if stamp_p.exists():
-                    stamp_p.unlink()
+                    stamp_p.rename(WORK / ("issued-" + src.name[len("batch-"):-len(".jsonl")]
+                                           + ".rubric"))
         print(f"\n{got:,} scores in; {len(have):,} of {len(store):,} read")
         return
 
