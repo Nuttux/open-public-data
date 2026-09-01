@@ -96,6 +96,32 @@ BARE_ROLL = re.compile(
     r"\b(?:[A-Z][A-Za-z'’.-]{2,}\s*[,.]\s*){3,}[A-Z][A-Za-z'’.-]{2,}\s*"
     r"(?:[—–-]\s*\d+\s*\.?)?")
 
+# ── THE CLERK'S STANDING NOTICE, PRINTED UNDER EVERY AGENDA ────────────────
+# Where to get a copy of the Sunshine Ordinance, whom to call to report a
+# violation, the lobbyist registration notice, the disability-access line, the
+# Clerk's phone and fax. It is the same text every time and it is not a
+# decision — but the chunker cuts it into pieces, so a piece of it arrives
+# looking like a record with plenty of words in it.
+#
+# MEASURED: one 2000s slice was 103 records of it out of 300, another 160 of
+# 300, and the writers dutifully wrote "Free copies of the Sunshine Ordinance
+# from the Ethics Commission" fifty-one times. They were reading it correctly.
+# The fault was offering it at all.
+#
+# The notice always sits at the END of whatever it is appended to, so the cut
+# runs from the first marker to the close of the record. A real decision with
+# the footer stapled underneath keeps its own text and loses only the footer;
+# a chunk that is nothing but footer is left empty and held.
+NOTICE = re.compile(
+    r"(?:IMPORTANT INFORMATION NOTE|Chapter 67 of the San Francisco Administrative Code|"
+    r"Sunshine Ordinance Task Force|Dr\.? Carlton B\.? Goodlett Place,? Room 244|"
+    r"\(415\)\s*554-|@ci\.sf\.ca\.us|@sfgov\.org|Ethics Commission,?\s*25 Van Ness|"
+    r"influence or attempt to influence local legislative|Disability Access|"
+    r"Know Your Rights [Uu]nder the Sunshine|"
+    r"Citizens (?:may )?(?:interested in obtaining|speak during)|"
+    r"Lobbyist Ordinance|San Francisco Campaign and Governmental Conduct Code)",
+    re.I)
+
 # ── THE SUBJECT IN SQUARE BRACKETS IS A SUBJECT ─────────────────────────────
 # From the 1990s the Clerk puts the subject beside the file number, and the
 # whole record can be "Ordinance No. [Amended Road Easement]" — four words,
@@ -107,6 +133,9 @@ BRACKET_SUBJ = re.compile(r"[\[({]\s*([A-Za-z][^\]})]{5,})\s*[\]})]")
 
 def substance(t: str) -> str:
     """The record with the roll call and the page furniture taken out."""
+    n = NOTICE.search(t)
+    if n:
+        t = t[:n.start()]
     t = TALLY.sub(" ", t)
     t = VOTED.sub(" ", t)
     t = ROLL.sub(" ", t)

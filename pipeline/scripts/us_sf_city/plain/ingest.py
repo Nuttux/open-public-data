@@ -64,13 +64,31 @@ def main() -> None:
         if not p.exists():
             continue
         r = V.verify(p, recs, gloss)
+        # `unknown_ids` is NOT a structural failure here. It counts rows whose
+        # record the selector has since stopped offering, and those are dropped
+        # below rather than blocking a slice whose other 197 lines are sound.
+        # A duplicate, a blank, a count mismatch or a RUN still blocks.
         structural = (r["n_in"] != r["n_out"] or r["ids_aligned"] is False
-                      or r["dupes"] or r["blank"] or r["unknown_ids"] or r["runs"])
+                      or r["dupes"] or r["blank"] or r["runs"])
         if structural and not args.force:
             print(f"SKIP {p.name}: {r['n_out']}/{r['n_in']} dupes {r['dupes']} "
                   f"blank {r['blank']} unknown {r['unknown_ids']} runs {len(r['runs'])}")
             continue
-        rows = [(x["id"], x["line"]) for x in (json.loads(l) for l in p.open())]
+        # ── A ROW WHOSE RECORD IS NO LONGER OFFERED IS DROPPED, NOT SAVED ──
+        # `pass2.held_reason` tightened mid-run: the Clerk's standing notice —
+        # where to get the Sunshine Ordinance, whom to call, the lobbyist and
+        # disability-access lines — was being handed out as though it were
+        # Board business, and one slice was 103 records of it out of 300.
+        #
+        # The writers read it correctly and wrote an accurate line about a
+        # page footer. The fault was upstream, so the fix is upstream, and the
+        # slices already written are not binned whole for it: the lines about
+        # real records are kept and the rest go back to being unoffered.
+        raw = [json.loads(l) for l in p.open()]
+        rows = [(x["id"], x["line"]) for x in raw if x["id"] in recs]
+        dropped = len(raw) - len(rows)
+        if dropped:
+            print(f"     {dropped} rows dropped — their records are no longer offered")
         n_ok, n_inv, n_ovr, n_dmg = H.save(rows)
         inflight -= {i for i, _ in rows}
         shutil.move(str(p), str(DONE / p.name))

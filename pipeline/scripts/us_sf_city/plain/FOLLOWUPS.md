@@ -47,3 +47,39 @@ The rewrite is NOT purely mechanical — "Board takes up buying Potrero land"
 does not passivise cleanly, and some of those lines want rethinking rather than
 reordering ("takes up" is vague either way). Do it as one batch with the gate
 re-run over it, not as a regex during a writing pass.
+
+## The `invented` check does not know the scans are broken
+Found again on the second pass, and worth fixing at the source rather than
+re-diagnosing every time. On the 1906–1925 volumes the check fires on words the
+writer restored CORRECTLY, because it compares against the OCR's spelling:
+
+    line says   record prints
+    Hicks       Applen Ilicks Wrecking Company
+    Co.         Hulse, Bradford & V o.
+    United      the Ignited Railroads of San Francisco
+    Eddy        premises situate No. 1770 I'kldy street
+    Depot       Pacific Coast Wool Dei)i)t
+    Commission  the City Planning Conunission
+
+Measured on one 1900s slice: 20 of 300 lines flagged, and every one I read was
+the writer being right. `verify_slice.py` already solves the same problem for
+the pairing test with `_near1` — one edit, or a subsequence match, counts as a
+hit. Giving `gate.check` the same tolerance would make the flag mean something
+again.
+
+It was NOT changed mid-run on purpose: the flags on the first 90,443 rows were
+recorded under the current rule, and changing it halfway would leave the store
+holding two incompatible verdicts. Do it once, over the whole store, and
+re-record.
+
+## The corpus's own input file lives in /tmp
+`harness.ITEMS` is `/tmp/items_merged.jsonl` — 134 MB, and the store's ids are
+`{volume}|{index}` INTO that file. If it is cleared, the ids in
+`plain_lines.jsonl` cannot be resolved back to records, and rebuilding it with
+different indexing would silently repoint 90,000+ written lines at the wrong
+records.
+
+Two things are needed: the script that builds it, committed, and a checksum
+recorded beside the store so a rebuilt file can be proven identical before it
+is trusted. Until then the store is one `/tmp` sweep away from being
+unattributable.

@@ -45,9 +45,55 @@ under the damage.
 
 **Some pages carry no subject.** A file number and a verdict word, or a motion
 tabled with the matter named nowhere on the page. `PROMPT.md` says what to
-write. Never invent a subject, and never borrow one from a neighbouring record
-— the vote tally is a wall, and what is printed after it usually belongs to the
-next item.
+write. Never invent a subject, and never borrow one from a neighbouring record.
+
+## The vote tally: a wall in one layout, not in the other
+
+This was stated too simply in an earlier version of this file, and a writer was
+right to push back on it. The Journal has **two** layouts and they disagree
+about what follows a tally:
+
+**A — `[title] [text] [tally]`.** The tally is a wall. What is printed after it
+is the NEXT item's title. Measured: a post-tally title names one of this
+record's own streets 5.2% of the time, which is chance. Do not read past it.
+
+**B — `[Resolution No. X] [tally] [title]`.** The post-war house style, roughly
+the 1940s to the 1970s. Here the title comes after the vote and belongs to THIS
+record: the address sits inside the first post-tally title on 3,133 of 3,311
+records — 94.6%.
+
+Tell them apart by what sits **before** the tally. In B there is nothing there
+but the record's own number. If the record already had a title before the
+tally, you are in A and the wall holds.
+
+## The square brackets: where they sit decides whose they are
+
+From the 1990s the Clerk prints a subject in square brackets beside a file
+number. **It is the subject of the file number it follows, and that is not
+always this record.**
+
+    Ordinance No. 219-10 FINALLY PASSED 100467 [Zoning Map Amendment for One
+    Capitol Avenue]
+
+`219-10` is this record. `100467` is a NEW file number, and the bracket after
+it heads the next item — the One Capitol Avenue body is the record that
+follows. Writing "Zoning map amended for One Capitol Avenue" here attaches the
+next item's subject to this one's verdict.
+
+MEASURED over 3,185 modern chunks that end `<file number> [Title]`: the title's
+words appear in the NEXT record 72.3% of the time and in this record's own body
+3.2%. So:
+
+* **A bracket at the START of the chunk, beside this record's own number** —
+  that is this record's subject. Write from it.
+* **A bracket at the END, after a different file number** — that belongs to the
+  next item. Do not use it. If nothing else on the page states a subject, the
+  page has no subject and the spec's honest line is the right answer.
+
+This corrects an earlier instruction that said a bracketed phrase is always the
+subject. It is not, and a writer who reads a trailing bracket as this record's
+subject produces a fluent, checkable, wrong line — every word of it real, and
+attached to the wrong act of the Board.
 
 ## Return
 
