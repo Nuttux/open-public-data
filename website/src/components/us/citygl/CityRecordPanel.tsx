@@ -102,6 +102,19 @@ function says(d: YearDecision, cf: ClassifyLists | null): string | null {
   return act ? `${sub} · ${act}` : sub;
 }
 
+/**
+ * WHETHER THE ROW PRINTS THE MONEY SEPARATELY.
+ *
+ * A record can be ONE appropriation with numbered clauses — (1) Dudley Stone
+ * equipment $11,000 … (5) Wilde avenue $3,039.48. `pl` reads the whole item and
+ * reports the first figure; `line.sum` comes off the fragment on this row. Side
+ * by side they read as a contradiction, so where our written line already
+ * carries a figure it carries the money alone.
+ */
+function hasSum(d: { readonly pl?: string }, line: { readonly sum?: string | null }) {
+  return Boolean(line.sum && !(d.pl && /[$£€]/.test(d.pl)));
+}
+
 export default function CityRecordPanel({
   year, latest, decisions, subject, ink, classify, loading, hover, onHover, onOpen,
 }: CityRecordPanelProps) {
@@ -213,16 +226,37 @@ export default function CityRecordPanel({
                     `line.sum` comes off the fragment on this row. Side by side
                     they read as a contradiction, so where our line already
                     prints a figure it carries the money alone. */}
-                {line.sum && !(d.pl && /[$£€]/.test(d.pl))
-                  ? <span className="fx-city-record-sum">{line.sum}</span> : null}
+                {/* A record can be ONE appropriation with numbered clauses —
+                    (1) Dudley Stone equipment $11,000 … (5) Wilde avenue
+                    $3,039.48. `pl` reads the whole item and reports the first;
+                    `line.sum` comes off the fragment on this row. Side by side
+                    they read as a contradiction, so where our line already
+                    prints a figure it carries the money alone. */}
+                {/* ── ONE META LINE UNDER THE SENTENCE, NOT A COLUMN BESIDE IT ──
+                    The count of places used to sit against the right edge as a
+                    bare "5". Two things were wrong with it. It did not say what
+                    it counted — and the same slot said three different things
+                    across the panels: here the places, below the number of
+                    identical records, and in the block panel a DATE. And
+                    naming it ("5 places") took enough width from a 288 px
+                    margin to push a four-line sentence to five.
+
+                    The money already sat under the sentence. The facts about a
+                    decision belong together there, and the sentence gets the
+                    full width it was written for. */}
+                {(hasSum(d, line) || d.at.length > 1) ? (
+                  <span className="fx-city-record-meta">
+                    {hasSum(d, line) ? (
+                      <span className="fx-city-record-sum">{line.sum}</span>
+                    ) : null}
+                    {d.at.length > 1 ? (
+                      <span className="fx-city-record-n">
+                        {d.at.length} places on the map
+                      </span>
+                    ) : null}
+                  </span>
+                ) : null}
               </span>
-              {/* WHERE IT LANDED, when it landed in more than one place. A
-                  decision naming twenty-four addresses is one act of the Board
-                  and twenty-four dots, and a reader looking at the map needs to
-                  know which of those is this row. */}
-              {d.at.length > 1 ? (
-                <span className="fx-city-record-n">{d.at.length}</span>
-              ) : null}
             </button>
             <a
               className="fx-city-record-src"
@@ -261,7 +295,9 @@ export default function CityRecordPanel({
               >
                 <span className="fx-city-record-dot" style={{ background: ink }} />
                 <span className="fx-city-record-text">{m.label}</span>
-                <span className="fx-city-record-n">{m.n}</span>
+                {/* how many rows this one stands for — a multiplier, so it
+                    cannot be read as the count of places above */}
+                <span className="fx-city-record-n">&times;{m.n}</span>
               </button>
             ))}
           </div>

@@ -18903,9 +18903,23 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   font-family: var(--f-mono); font-size: 11px; font-variant-numeric: tabular-nums;
   color: color-mix(in srgb, var(--ink) 62%, transparent); margin-left: 6px;
 }
+/* inside the meta row the gap does the spacing; the inline margin it was
+   given when it followed the sentence would double it */
+.theme-fusion .fx-city-record-meta .fx-city-record-sum { margin-left: 0; }
+/* ── THE FACTS ABOUT A DECISION, ON ONE LINE UNDER ITS SENTENCE ────────
+   The money and the number of places used to sit in two different slots —
+   the money below the sentence, the count against the right edge as a bare
+   number with no unit. Naming that number cost enough width from a 288 px
+   margin to push a four-line sentence to five, so both now sit together
+   beneath the sentence and it gets the full width it was written for. */
+.theme-fusion .fx-city-record-meta {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px;
+  margin-top: 3px;
+}
 .theme-fusion .fx-city-record-n {
-  font-family: var(--f-mono); font-size: 10px; flex: none; margin-top: 3px;
+  font-family: var(--f-mono); font-size: 10px; flex: none;
   color: color-mix(in srgb, var(--ink) 45%, transparent);
+  white-space: nowrap;
 }
 .theme-fusion .fx-city-record-mute { margin-top: 4px; border-top: 1px solid var(--rule); padding-top: 4px; }
 .theme-fusion .fx-city-record-row.is-mute { color: color-mix(in srgb, var(--ink) 72%, transparent); }
