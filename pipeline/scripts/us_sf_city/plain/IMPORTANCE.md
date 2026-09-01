@@ -239,13 +239,23 @@ requirement: a listed street as the subject is 40.**
 
 **And the street list needs its suffixes.** Nineteenth Avenue is a thoroughfare;
 Nineteenth Street is a Potrero side street. Third, Ocean and Nineteenth all
-carry the trap. Read the list as avenues where the city has one.
+carry the trap. Third, Mission, Market, Van Ness, Geary and Folsom are STREETS —
+Third Street carries the rail line; Third Avenue is a Richmond side street.
+Ocean and Nineteenth are the AVENUES. Where the name carries both and the line
+does not say which, take the street.
 
 **The component anchor had no scale.** The same 45 went to "$25,000 for
 engineering on the Hetch Hetchy project" — a plan for the city's whole water
 supply — and "$305 for pipes and doors at Polytechnic High School". A component
 still takes 45, but a component of a CITYWIDE system takes the system's score
-less a third.
+less a third — **except that this rule raises a score and never carries a small
+purchase above what the same sum would earn on a single building. Where the sum
+is what the line is mostly about, score the sum.** Without that bound "$36 more
+toward a Heisler locomotive" took 53 and outranked "$29,311.05 for San Francisco
+Hospital brickwork" at 45. The same bound cuts the other way: "$693.01 for Silver
+Terrace Playground" must not inherit the playground's 65, and $28.4M of emergency
+repairs at Laguna Honda must not be pinned to 36 by an upkeep rule written
+against a $325 roof.
 
 **Land for a firehouse outranked the firehouse.** The building anchors split 78
 from 68; the land anchor named only 70 and no split. Land is now 62 under a
@@ -263,8 +273,17 @@ list is now the rule, because a shared wrong list beats eight private right ones
     Columbus, Broadway, Kearny, Montgomery, Sansome, Battery, Third, San Bruno,
     Ocean, Great Highway, Sloat, Portola, Nineteenth, Point Lobos
 
-40 fires only when a street on that list is the SUBJECT of the change and a
-length is named. A grade change that merely crosses one of them is 34.
+Where a listed thoroughfare is the SUBJECT of an act on the street itself — its
+level, its width, its paving, its sidewalks, its use — the act takes its anchor
+plus 6. A length is never required. This raises the act; it does not change what
+the act is. An act that merely CROSSES a listed street takes its plain anchor.
+
+This is stated here once and governs every street anchor. It was previously
+written into the street-levels anchor alone, which left paving flat at 38 and
+sidewalk width flat at 40 — so "Mission Street repaved from Fourth to the
+Embarcadero" tied a fifty-foot patch on an alley, and "Van Ness Avenue sidewalks
+set at sixteen feet" tied "San Carlos Street sidewalks set at six feet". Eight
+readers reported the older wording as self-contradictory.
 
 ### The part and the whole
 
@@ -284,8 +303,21 @@ standing stays where the maintenance rule puts it.
 
 **It must not push an anchor through the floor.** "Caldwell & Co. asks for
 sixteen more days at Fort Mason" halves the 18 anchor to 9 — which says the
-asking is procedure with no subject. It is not. **Below 30, an anchor is not
-discounted:** a request for a small anchored thing takes the anchor.
+asking is procedure with no subject. It is not. **A discount never takes an act below 18.** Anchors discount like anything else;
+the floor catches them. The older rule protected anchors valued below 30 and
+exposed everything above, which inverted the scale: a requested 33 permit fell to
+17, below the 18 anchor the rule existed to defend; a requested 30 permit fell to
+15, below a 22 event permit left untouched; a referred 22 finding scored the same
+as an adopted one. Under the single floor a request for any small thing at one
+address lands at 18, and no act is ever discounted beneath a smaller one.
+
+**And no act with a named subject falls below 10.** The 0-9 band is for procedure
+with no subject in it. A proposal, an appeal, a refusal or a referral is not
+that — a settlement, an advisory body, a proclamation and a motion inside an
+appeal all have subjects and all stay at 10 or above.
+
+**Discounts do not compound.** Where more than one applies, take the largest
+single one.
 
 **A refusal is symmetric only for permits.** The permit row makes refusing and
 granting both 33, because a permit refused is a decision about the same small
@@ -371,3 +403,87 @@ adjourning.
   the historic decades of anything worth reading.
 * Do not invent reach the record does not state. If the line says a permit at
   an address, it is an address, however important the building sounds.
+
+## Added in v7
+
+Each rung below was invented independently by three to six readers working
+without it. Where they were compared, every reader's numbers landed in the same
+band and differed by at most 8 points — so these numbers are not the only right
+ones, they are one defensible set, and the point is that everyone uses the same
+set. Do not invent your own.
+
+### Traffic and parking regulation
+
+Stop signs, meters, tow-away zones, turn bans, one-way conversions, speed limits,
+bike lanes, transit-only lanes, permit-parking districts.
+
+    one street, block or intersection                              36
+    a corridor on a listed thoroughfare, or a street made
+      one-way, or a turn ban across a stretch                      44
+    a district-wide or citywide rule                               58
+
+A street CLOSED keeps its own 36 anchor. These are 30-54 unless the rule is
+district-wide, which settles the two sections that claimed them at different
+bands.
+
+### A lease of space
+
+    a lease of space the public uses — clinic, branch library,
+      childcare, shelter, treatment programme                      58
+    court or hearing quarters                                      40
+    a department's own office                                      26
+    the city leasing a large asset OUT — an airport parcel,
+      a concession, a restaurant or cargo lease on city land       48
+
+Score what the space HOUSES. **A line that names only the department scores 26,
+even where that department's work is public-facing.** This under-scores real
+clinics and intake counters, and it is accepted: the alternative is supplying a
+use the record does not state. Six readers met this; five landed on 26, two of
+them while saying they disliked the answer. It is settled — do not re-open it.
+
+### Landmark and historic designation
+
+    one building                                                   42
+    a district or a group                                          58
+    one tree                                                       36
+
+A designation is a permanent rule on what may be done to a thing, not a permit.
+
+### Rezoning
+
+Unlike the ladders above, readers did NOT converge here — the middle rung and the
+top both split across bands, because "a stretch", "a block face" and "several
+blocks" are not the same thing to different readers. So the rung is DEFINED here,
+not merely numbered:
+
+    one lot, one corner, or the parcels of one address             45
+    a run of frontage on ONE street, however long                  55
+    an area bounded by streets on more than one side, or a
+      named neighbourhood                                          68
+    a rule on what may be built that binds the whole city          80
+
+### An appeal keeps its subject
+
+An appeal, a rehearing or a continuance is a rung on the ladder, not a subject.
+Score what is being appealed, then discount one rung. "Appeal heard over 203
+low-income flats" must not tie "Appeal heard over gym locker rooms". Where the
+line does not say what is under appeal, it is a line with no subject and scores
+as procedure.
+
+### Score what the line establishes, never what it merely permits
+
+"$71M in housing bonds for Mason and Eddy Streets" establishes housing; the
+missing unit count changes the precision, not the kind, so the machinery discount
+does not fire. "The Health Department extends its lease at 1548 Stockton Street"
+does not establish what is in the building — a clinic is possible there, not
+stated.
+
+Where the kind is stated, wording cannot lower it. Where the kind is not stated,
+do not supply it.
+
+### A line naming a subject but no act
+
+"Board adopts Resolution No. 571-10 for the Transbay Transit Center" names a
+large subject and no act. Score the subject one rung below what the smallest
+plausible act on it would earn. Do not score it as procedure — the subject is
+stated — and do not borrow the act from the line above it.

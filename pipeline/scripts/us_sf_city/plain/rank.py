@@ -27,6 +27,17 @@ So a new record is read once, on arrival, and never again. `RUBRIC_VERSION` is
 stored on every row: change the rubric, bump it, and only rows at an older
 version are re-read. A corpus that is 99% scored costs 1% of a pass to update,
 which is the difference between a thing that gets run and a thing that does not.
+
+`ACCEPT_FROM` is the other half of that. A bump used to re-read EVERYTHING, which
+at v7 would have meant 56,999 records to recover 14,567 that could actually move.
+Five double-reads had by then put reader agreement at 92-97% on band, with the
+residual concentrated in a few named families rather than spread thin — so v7
+returned just those families to the queue (`recheck_v7.py`) and accepts v6 rows
+otherwise. Every row still carries the version and hash it was read against, so
+what any given score was judged by is always recoverable.
+
+Raise ACCEPT_FROM to force a full re-read; leave it below RUBRIC_VERSION when a
+bump has been applied selectively.
 """
 from __future__ import annotations
 
@@ -45,7 +56,9 @@ RANKS = DATA / "importance.jsonl"
 WORK = DATA / "rankwork"
 RUBRIC = HERE / "IMPORTANCE.md"
 
-RUBRIC_VERSION = 6
+RUBRIC_VERSION = 7
+# v7 was applied selectively — see recheck_v7.py and the note above.
+ACCEPT_FROM = 6
 
 
 def rubric_hash() -> str:
@@ -96,7 +109,7 @@ def done() -> dict:
     out = {}
     for l in RANKS.open():
         r = json.loads(l)
-        if r.get("rv") == RUBRIC_VERSION:
+        if r.get("rv", 0) >= ACCEPT_FROM:
             out[r["id"]] = r
     return out
 
@@ -219,7 +232,7 @@ def main() -> None:
                     # Adding every ingested row here reported 3,600 records as
                     # read at v4 when the file held none: they were v3 work,
                     # correctly stamped, and correctly still outstanding.
-                    if r["rv"] == RUBRIC_VERSION:
+                    if r["rv"] >= ACCEPT_FROM:
                         have[r["id"]] = r
                 got += len(rows)
                 print(f"  {p.name}: took {len(rows):,}" + (f", skipped {bad}" if bad else ""))
