@@ -72,7 +72,26 @@ recorded under the current rule, and changing it halfway would leave the store
 holding two incompatible verdicts. Do it once, over the whole store, and
 re-record.
 
-## The corpus's own input file lives in /tmp
+## RESOLVED, and the stated risk was wrong about the mechanism
+
+The corpus now lives at `pipeline/data/sf_bos/items_merged.jsonl` with its sha256
+and line count committed beside it and verified on load. /tmp is off sys.path
+everywhere; all four modules imported from there were byte-identical to the repo
+copies, and the stale `/tmp/harness.py` that once made prep report "queued 0 of
+90,443" can no longer be reached.
+
+The risk below said ids are positions INTO that file, so a rebuild in a different
+order would silently repoint 90,000 lines. That is not the mechanism. An id is
+built as `f"{o['v']}|{o['i']}"` from fields the record CARRIES. Measured:
+shuffling the whole file and re-deriving the id set returns the identical 124,284
+ids, and all 99,278 store ids resolve. Order is not load-bearing.
+
+What IS load-bearing is that `v` and `i` keep meaning the same thing. A rebuild
+that renumbered `i` within an existing volume would repoint that volume's lines
+while every id still looked valid — silent in exactly the way the original note
+feared, but by a different route. The committed checksum is the guard.
+
+## (superseded) The corpus's own input file lives in /tmp
 `harness.ITEMS` is `/tmp/items_merged.jsonl` — 134 MB, and the store's ids are
 `{volume}|{index}` INTO that file. If it is cleared, the ids in
 `plain_lines.jsonl` cannot be resolved back to records, and rebuilding it with
