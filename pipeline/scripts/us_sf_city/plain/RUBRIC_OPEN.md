@@ -1893,3 +1893,37 @@ those four rungs in v8 would close most of the remaining 2%.
 Cheap and worth doing at the same time: identical line text should resolve to one
 score. 394 texts currently do not. Deciding WHICH score is the v8 rung question
 above; the collapse itself is mechanical once the rungs are settled.
+
+## The hearing collision — RESOLVED, and it was never a collision
+
+I was wrong to call this open, and wrong to tell readers to pick a side. The two
+rules are scoped to disjoint cases and cannot both fire:
+
+    | a hearing on a named proposal, or protests recorded |  16 |     (anchors)
+    a hearing or a question WITH NO PROPOSAL PENDING   x0.5 of the subject  (ladder)
+
+A hearing ON a named proposal takes the flat 16. A hearing or question with NO
+proposal pending — an open policy hearing, a department asked a question in the
+abstract — takes half its subject. Read with their scoping clauses intact they
+partition the space; there is no overlap to arbitrate.
+
+Several readers arrived at exactly this split by instinct and described it as a
+judgement call: "16 where a proposal was named/pending, x0.5-of-subject for open
+policy hearings" (batch 115), the same in 119 and 113. Batch 120 came closest to
+naming the reason — the anchor's own wording fits a named proposal directly while
+the ladder's rung is scoped to "no proposal pending". It is not a judgement call.
+It is the text.
+
+What this costs, honestly:
+
+- Batches that applied a FLAT 16 to every hearing scored open policy hearings too
+  low — a hearing on the annual budget with nothing pending should be half the
+  budget's subject, not 16. Batches 097, 106, 111, 110, 121, 122, 124, 125, 126
+  said they used flat 16 throughout.
+- Batches that applied x0.5-of-subject to hearings ON a pending proposal scored
+  those too high. Batch 123 said it used x0.5 broadly.
+
+Neither is a large population, and no rescoring is required to make the corpus
+usable — but v8 should state the partition in one sentence where both rules can
+see each other, and the flat-16 batches are where to look first for open policy
+hearings sitting at 16.
