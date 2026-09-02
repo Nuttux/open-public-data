@@ -1814,3 +1814,40 @@ Unresolved, and new:
 Every written line carries a score, stamped with the rubric version and hash it
 was read against. 42,432 rows stand at v6 outside the families v7 touched;
 the rest at v7.
+
+## The 18 floor — twelve readers, one answer, so stop making each rediscover it
+
+Every scorer in the v7 waves reported this independently and every one resolved
+it the same way. "A discount never takes an act below 18" was written to stop a
+discount pushing a real act down. Applied literally to a base already under 18 it
+does the opposite — it *raises* a discounted act above its own undiscounted twin.
+A referred commendation (12) scores 18 while the adopted commendation scores 12.
+
+Settled reading, used by all of them:
+
+    score = min(base, max(18, base × discount))
+
+i.e. the floor may never lift a score above its own undiscounted base. Not
+written in IMPORTANCE.md; it should be, in v8.
+
+Cost, measured and consistent across batches: the floor also erases the money
+gradient for a whole class. Between 15% and 28% of a modern-era batch lands on
+exactly 18 — a $27,500 settlement referred and a $3.7M settlement referred score
+identically, because every discount off a 20-26 base floors out. "A sum raises
+the score inside its band" is inert for pre-adoption settlements. v8 should lower
+the floor (10 was the earlier recommendation) rather than keep patching it.
+
+## The hearing collision — still open, and now the most-reported
+
+The anchor table pins "a hearing on a named proposal, or protests recorded" at
+16. The discount ladder says "a hearing or a question with no proposal pending,
+×0.5 of the subject". On a large subject these give 16 and ~40, and readers split
+roughly half and half:
+
+    flat 16 throughout                 batches 097, 106, 111, 110
+    ×0.5-of-subject on named subjects  batches 100, 108, 113, 101
+
+The consequence is visible in the output: a hearing on the annual city budget
+scores the same as a hearing on a garage permit. Several readers named that as
+the single result they trust least in their batch. This needs one rule in v8, not
+two, and until then batches are not comparable to each other on hearings.
