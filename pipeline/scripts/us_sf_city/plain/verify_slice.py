@@ -211,9 +211,22 @@ def main() -> None:
             print(f"{p.name}: missing")
             continue
         r = verify(p, recs, gloss)
+        # ── A FLAG IS A NOTE, NOT A REJECTION — AND THIS DISAGREED ─────────
+        # ingest.py says it plainly: "The gate's flags are recorded, not
+        # enforced", because on the 1906-1912 scans `invented` fires on words
+        # a writer restored CORRECTLY from damage. This function failed a file
+        # for them anyway, and writers paid the difference: one slice dropped
+        # Mississippi, Heights, Surrey, Noe and Hayden — every one legible in
+        # the record — to keep its file green. The check was making the corpus
+        # worse.
+        #
+        # What fails is structural: a count that does not match, ids out of
+        # order, a duplicate, a blank, an unknown id, or a RUN of misses, which
+        # is the signature of a writer that lost its place. Those cannot be
+        # judgement calls. `invented` and `overstates` are still counted and
+        # printed, and still worth reading — they are just not a verdict.
         fail = (r["n_in"] != r["n_out"] or r["ids_aligned"] is False or r["dupes"]
-                or r["blank"] or r["unknown_ids"] or r["invented"] or r["overstates"]
-                or r["runs"])
+                or r["blank"] or r["unknown_ids"] or r["runs"])
         flag = "FAIL" if fail else "ok  "
         print(f"{flag} {r['file']}  {r['n_out']:4}/{r['n_in']:<4} "
               f"inv {r['invented']:3} ovr {r['overstates']:3} dmg {r['damaged']:3} "
