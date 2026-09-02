@@ -1851,3 +1851,45 @@ The consequence is visible in the output: a hearing on the annual city budget
 scores the same as a hearing on a garage permit. Several readers named that as
 the single result they trust least in their batch. This needs one rule in v8, not
 two, and until then batches are not comparable to each other on hearings.
+
+## The corpus agrees with itself 98% of the time, and the 2% is exactly what readers reported
+
+Measured across every line text that appears on more than one record, taking each
+record's winning rubric version:
+
+    distinct line texts scored             95,973
+    appearing on more than one record      19,427
+    every copy given the SAME score        19,033  (98.0%)
+      spread  1-4                             212  ( 1.1%)
+      spread  5-9                              93  ( 0.5%)
+      spread 10-19                             68  ( 0.4%)
+      spread 20-39                             20  ( 0.1%)
+      spread 40+                                1  ( 0.0%)
+
+So the ladder is being applied consistently. Only 89 line texts in the whole
+corpus disagree by 10 points or more.
+
+The useful part is WHICH ones. The widest disagreements are not scattered — they
+land precisely on the families readers had already reported as undecided, without
+any of them knowing the measurement existed:
+
+    41  [23, 64]  Caltrans urged to help build the voter-approved Octavia Boulevard
+    33  [22, 55]  $45.7M for housing at 11 Frida Kahlo Way sent to committee
+    32  [26, 58]  Police senior escort program to lease 948 Pacific Avenue
+    32  [26, 58]  HealthRIGHT 360 to sublease space at 1563 Mission Street
+    29  [24, 53]  City job positions listed in the interim salary ordinance
+
+Line 1 is the advocacy-resolution family — no rung exists for urging another
+government to act, and one reader measured siblings spread across 10 to 60.
+Lines 2 is "score what the line establishes" versus "a bond is machinery".
+Lines 3 and 4 are the lease fork: a line naming only the lessee scores 26 as a
+department office or 58 as public-use space, and three readers reported it
+independently.
+
+That correspondence is the finding. The readers' self-reported open questions are
+not noise or hedging — they ARE the corpus's measured inconsistency, and fixing
+those four rungs in v8 would close most of the remaining 2%.
+
+Cheap and worth doing at the same time: identical line text should resolve to one
+score. 394 texts currently do not. Deciding WHICH score is the v8 rung question
+above; the collapse itself is mechanical once the rungs are settled.
