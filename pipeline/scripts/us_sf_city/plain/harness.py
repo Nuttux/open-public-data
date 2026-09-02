@@ -150,7 +150,11 @@ def save(rows):
     with open(STORE, "a") as fh:
         for rid, line in rows:
             rec = recs[rid]
-            c = check(line, rec["t"])
+            # judge against the title too — see verify_slice.py. The flags
+            # ride on the row and are read later, so a flag that is wrong is
+            # not harmless: it marks correct work as invented forever.
+            src = ((rec.get("ht") or "") + ". " + rec["t"]).strip(". ") or rec["t"]
+            c = check(line, src)
             flags = {k: v for k, v in c.items() if v}
             if c["invented"]: n_inv += 1
             if c["overstates"]: n_ovr += 1
