@@ -136,21 +136,35 @@ def verify(path: pathlib.Path, recs: dict, gloss: list) -> dict:
         wc[len(line.split())] += 1
         if not rec:
             continue
-        c = check(line, rec["t"])
+        # ── THE SUBJECT IS OFTEN IN THE TITLE, AND THIS USED TO MISS IT ─────
+        # `load_records` splits a modern record into `ht` (the Clerk's own
+        # title) and `t` (the body). WORKER.md tells the writer the title is
+        # usually the whole subject and to write from it. This check compared
+        # the line against the BODY alone, so on a modern slice every name
+        # correctly taken from the title came back "invented": one 2024 slice
+        # reported 255 inventions and 103 unpaired, and was clean — 0 and 0 —
+        # the moment the title was included. Two writers found it independently
+        # and proved it before reporting.
+        #
+        # A checker that fails correct work is worse than no checker: it would
+        # have quarantined good files and passed the borrowed-neighbour lines
+        # it exists to catch.
+        src = ((rec.get("ht") or "") + ". " + rec["t"]).strip(". ") or rec["t"]
+        c = check(line, src)
         if c["invented"]:
             inv += 1
             if len(examples) < 4:
-                examples.append(("invented", c["invented"], line, rec["t"][:110]))
+                examples.append(("invented", c["invented"], line, src[:110]))
         if c["overstates"]:
             ovr += 1
             if len(examples) < 4:
-                examples.append(("overstates", c["overstates"], line, rec["t"][:110]))
+                examples.append(("overstates", c["overstates"], line, src[:110]))
         if c["damaged"]:
             dmg += 1
         # ── the pairing test ────────────────────────────────────────────
         if NO_SUBJECT.search(line):
             continue
-        lw, rw = words(line), words(rec["t"])
+        lw, rw = words(line), words(src)
         hit = sum(1 for w in lw if _near1(w, rw))
         if not hit and lw:
             for jw, pw in gloss:                      # a glossed line counts
