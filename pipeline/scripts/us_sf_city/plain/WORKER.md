@@ -66,24 +66,45 @@ under the damage.
 tabled with the matter named nowhere on the page. `PROMPT.md` says what to
 write. Never invent a subject, and never borrow one from a neighbouring record.
 
-## The vote tally: a wall in one layout, not in the other
+## The vote tally is ALWAYS a wall. There is no second layout.
 
-This was stated too simply in an earlier version of this file, and a writer was
-right to push back on it. The Journal has **two** layouts and they disagree
-about what follows a tally:
+This file used to describe two layouts and say that from the 1940s to the 1970s
+a post-tally title belonged to THIS record — "94.6%". That was wrong, and it was
+wrong in the direction that puts a neighbour's act on a record.
 
-**A — `[title] [text] [tally]`.** The tally is a wall. What is printed after it
-is the NEXT item's title. Measured: a post-tally title names one of this
-record's own streets 5.2% of the time, which is chance. Do not read past it.
+Measured directionally across the whole corpus: take every post-tally street
+name and ask whether it appears in THIS record's pre-tally text or in the NEXT
+record's.
 
-**B — `[Resolution No. X] [tally] [title]`.** The post-war house style, roughly
-the 1940s to the 1970s. Here the title comes after the vote and belongs to THIS
-record: the address sits inside the first post-tally title on 3,133 of 3,311
-records — 94.6%.
+    decade    next record    this record
+    1900s          25              0
+    1910s         105              1
+    1920s         138              5
+    1930s         225              9
+    1940s         748             12
+    1950s         242             16
+    1960s         366             21
+    1970s         117              5
+    1980s         270              0
+    1990s         409              2
+    2000s       1,014              3
+    2010s          66              0
+    -----------------------------------
+    total       3,725             74      98.1% next
 
-Tell them apart by what sits **before** the tally. In B there is nothing there
-but the record's own number. If the record already had a title before the
-tally, you are in A and the wall holds.
+Every decade, including the ones the old rule named. Three writers had already
+found it independently by reading consecutive records — a record's trailing
+title turning up as the next record's own parenthetical — and one measured its
+volumes and got 60-to-2 and 42-to-1 before deciding to follow the spec anyway.
+It should not have had to.
+
+The old 94.6% asked a different question: whether a record's address appears
+somewhere in the post-tally title. That can be true while the title still
+belongs to the next item, so the figure never tested what it was used for.
+
+**So: what is printed after the tally is the next item's. Do not read past it,
+in any decade.** If the record carries nothing before the tally but its own
+number, it has no subject of its own — write the honest line.
 
 ## The square brackets: where they sit decides whose they are
 
