@@ -1039,6 +1039,7 @@ def main():
     IMP: dict = {}
     _iv_rv: dict = {}
     _iv_orphan = 0
+    _iv_conflict = 0
     if os.path.exists(IMP_PATH):
         for _l in open(IMP_PATH):
             if not _l.strip():
@@ -1047,6 +1048,16 @@ def main():
             _id, _rv = _d["id"], int(_d.get("rv") or 0)
             if _rv < _iv_rv.get(_id, -1):
                 continue
+            # SAME id, SAME version, DIFFERENT score. It happens: a batch was
+            # swept while its reader was still revising it, so the store took
+            # the pre-revision rows and the corrected ones arrived after. The
+            # later row is the correction, so last-wins is right — but it must
+            # never be SILENT, because a disagreement at the winning version is
+            # the one case that would make this loader order-dependent again.
+            # 180 such pairs exist today, all at rv3 and none of them the
+            # winning version for their id, so nothing published turns on it.
+            if _rv == _iv_rv.get(_id) and int(_d["score"]) != IMP.get(_id):
+                _iv_conflict += 1
             _iv_rv[_id] = _rv
             IMP[_id] = int(_d["score"])
         for _id in list(IMP):
@@ -1056,7 +1067,9 @@ def main():
         _vs = sorted(_iv_rv.values())
         print(f"  importance: {len(IMP):,} scored and publishable, "
               f"{_iv_orphan:,} scored but their line is held back"
-              + (f"; rubric versions in store {sorted(set(_vs))}" if _vs else ""))
+              + (f"; rubric versions in store {sorted(set(_vs))}" if _vs else "")
+              + (f"; {_iv_conflict:,} same-version disagreements resolved to the "
+                 f"later row" if _iv_conflict else ""))
 
     CLS_PATH = os.path.join(REPO, "pipeline/seeds/sf_bos_classification.csv")
     CLS = {}
