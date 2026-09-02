@@ -34,8 +34,17 @@
    away when the new has loaded, so the city never shows paper between two
    years.
 
-   WHAT IS NOT HERE YET, deliberately: the subject dots, the film and the
-   URL state. This is the third block; those are the next.
+   THE LINK IS THE GPU PAGE'S LINK. `?block=…&street=…` opens the same fiche
+   here that it opens there, and a pick writes the same parameters back with
+   `replaceState`, never `pushState` — a reader moving around a map is not
+   navigating (`CityGLMap.tsx` §WHAT THE READER CAN SEND SOMEBODY).
+
+   PLAY, ON TILES, IS A SEQUENCE OF PICTURES: three years a second, the
+   century in forty seconds as on the GPU page, each year a pyramid swap.
+   It plays the whole city, because that is the only stop every year has a
+   picture for, and the GPU page plays the whole city too.
+
+   WHAT IS NOT HERE YET, deliberately: the subject dots and the film.
 
    ── LEAFLET, AND WHY NOT A HAND-ROLLED VIEWER ──────────────────────────
    The page already ships Leaflet for the places map; it gives pinch, inertia
@@ -89,10 +98,13 @@ import CitySearch from "@/components/us/city/CitySearch";
 import type { SearchHit } from "@/lib/us/city-search";
 import {
   blockPlaceName,
+  ficheParams,
   loadBlockIndex,
   loadBlockRecord,
+  readFicheParams,
   type BlockIndex,
   type BlockRecord,
+  type FicheLink,
 } from "@/components/us/city/block-records";
 
 export interface CityTileMapProps {
@@ -167,6 +179,11 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
   const [sheetOpen, setSheetOpen] = useState(true);
   const [year, setYear] = useState<number | null>(null);
   const [yearsFile, setYearsFile] = useState<YearsFile | null>(null);
+  const [playing, setPlaying] = useState(false);
+  const playTimer = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [at, setAt] = useState<{ street?: string; address?: string; hood?: boolean }>({});
+  const opened = useRef(false);
+  const arrivedWith = useRef(typeof window === "undefined" ? "" : window.location.search);
   const scrubEl = useRef<HTMLInputElement | null>(null);
   const swapTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const idxRef = useRef<BlockIndex | null>(null);
@@ -683,6 +700,68 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
     apiRef.current?.clear();
   };
 
+  /* ── THE LINK ────────────────────────────────────────────────────────── */
+  const writeUrl = useCallback((link: FicheLink | null) => {
+    if (typeof window === "undefined") return;
+    const url = new URL(window.location.href);
+    for (const k of ["block", "street", "address", "hood"]) url.searchParams.delete(k);
+    if (link) for (const [k, v] of ficheParams(link)) url.searchParams.set(k, v);
+    window.history.replaceState(window.history.state, "", url);
+  }, []);
+  useEffect(() => {
+    if (!opened.current) return;
+    if (picked === null) {
+      writeUrl(null);
+      return;
+    }
+    const id = idxRef.current?.b[picked];
+    if (id) writeUrl({ block: id, ...at });
+  }, [picked, at, writeUrl]);
+  useEffect(() => {
+    if (opened.current || loading || !apiRef.current) return;
+    opened.current = true;
+    const link = readFicheParams(arrivedWith.current);
+    if (!link) return;
+    void openAt(
+      link.block,
+      link.hood
+        ? { kind: "hood" }
+        : link.street
+          ? { kind: "streetFile", file: link.street }
+          : link.address
+            ? { kind: "door", label: link.address }
+            : { kind: "ground" },
+      link.hood ? 1 : link.street ? 2 : 3,
+    );
+  }, [loading, openAt]);
+
+  /* ── PLAY ────────────────────────────────────────────────────────────── */
+  const YEARS_PER_SECOND = 3;
+  const stopPlay = useCallback(() => {
+    if (playTimer.current) clearInterval(playTimer.current);
+    playTimer.current = null;
+    setPlaying(false);
+  }, []);
+  const startPlay = () => {
+    if (playTimer.current) return;
+    stops[0]?.go();
+    let y = year === null || year >= YEAR_MAX ? YEAR_MIN : year;
+    const step = () => {
+      syncScrub(y);
+      apiRef.current?.setYear(y >= YEAR_MAX ? null : y);
+      if (y >= YEAR_MAX) {
+        setYear(null);
+        stopPlay();
+        return;
+      }
+      y += 1;
+    };
+    step();
+    playTimer.current = setInterval(step, 1000 / YEARS_PER_SECOND);
+    setPlaying(true);
+  };
+  useEffect(() => () => { if (playTimer.current) clearInterval(playTimer.current); }, []);
+
   /* ── THE RAIL, THE GPU PAGE'S WAY: the cheap half on every input event —
      the readout, the filled run, the type — and the expensive half, a
      pyramid swap that fetches tiles, once the thumb has rested 150 ms or is
@@ -699,6 +778,7 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
     if (out) out.textContent = String(v);
   }, []);
   const scrubTo = (v: number, commit: boolean) => {
+    if (playTimer.current) stopPlay();
     const y = v >= YEAR_MAX ? null : v;
     syncScrub(y);
     if (swapTimer.current) clearTimeout(swapTimer.current);
@@ -767,6 +847,24 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
         {!loading && yearsFile && Object.keys(yearsFile.years).length ? (
           <div className="fx-city-transport">
           <div className="fx-city-clockrow">
+            <button
+              type="button"
+              onClick={() => (playing ? stopPlay() : startPlay())}
+              aria-label={playing ? "Pause" : "Play from 1906"}
+              style={{
+                font: "600 13px/1 var(--f-mono, ui-monospace, monospace)",
+                padding: "7px 11px",
+                width: 40,
+                minWidth: 40,
+                boxSizing: "border-box",
+                border: "1px solid var(--rule, #e4e6ea)",
+                borderRadius: 6,
+                background: "transparent",
+                cursor: "pointer",
+              }}
+            >
+              {playing ? "❚❚" : "▶"}
+            </button>
             <span className="tnum fx-city-year">{year ?? YEAR_MAX}</span>
             <input
               ref={scrubEl}
@@ -812,6 +910,7 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
               record={record}
               context={ctx}
               request={request}
+              onFiche={setAt}
               loading={recLoading}
               onClose={close}
             />

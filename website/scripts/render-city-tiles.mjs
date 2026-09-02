@@ -97,49 +97,58 @@ await p.addInitScript(() => { try { performance.setResourceTimingBufferSize(5000
    the vignette darkens its corners, and a tile pyramid is many captures side
    by side — either one prints the capture grid onto the map. The grade is
    uniform over the frame and stays. */
-await p.goto(`${BASE}/us/city/sf/the-city?labels=0&tilt=0&vig=0`, { waitUntil: 'domcontentloaded', timeout: 300000 });
-await p.waitForFunction(() => !!window.__cityGL, null, { timeout: 300000 });
-await p.waitForFunction(() => {
-  const n = performance.getEntriesByType('resource').filter((r) => r.name.includes('/data/') && !r.name.includes('/film/')).length;
-  const now = performance.now();
-  if (window.__lastN !== n) { window.__lastN = n; window.__lastT = now; return false; }
-  return window.__lastT !== undefined && now - window.__lastT > 4000;
-}, null, { timeout: 600000, polling: 300 });
-await p.waitForTimeout(6000); // the band warm-up
+/* THE PAGE, AND IT CAN BE ASKED FOR AGAIN. The dev server reloads the page
+   now and then on its own (a year died mid-render with "execution context
+   was destroyed", nothing edited), so the boot is a function and a year that
+   loses its page boots another and renders again. */
+let box;
+async function boot() {
+  await p.goto(`${BASE}/us/city/sf/the-city?labels=0&tilt=0&vig=0`, { waitUntil: 'domcontentloaded', timeout: 300000 });
+  await p.waitForFunction(() => !!window.__cityGL, null, { timeout: 300000 });
+  await p.waitForFunction(() => {
+    const n = performance.getEntriesByType('resource').filter((r) => r.name.includes('/data/') && !r.name.includes('/film/')).length;
+    const now = performance.now();
+    if (window.__lastN !== n) { window.__lastN = n; window.__lastT = now; return false; }
+    return window.__lastT !== undefined && now - window.__lastT > 4000;
+  }, null, { timeout: 600000, polling: 300 });
+  await p.waitForTimeout(6000); // the band warm-up
 
-/* the stage exactly CSS.h tall, and nothing over it but the two canvases */
-/* the stage carries a 1 px border top and bottom inside its box, so ask for
-   the height, measure what the canvas actually got, and correct once */
-/* The stage exactly CSS.h tall, borders off so the engine's own resize
-   observer sees the same box the canvas has — its viewport must be exactly
-   the capture window, or a capture covers 770 CSS px of plane while the
-   camera steps by 768 and every row of tiles lands two pixels off. The page
-   resizes the engine itself; a manual resize here fed it a different box and
-   put the whole pyramid off-centre. */
-/* A RULE, NOT A PASS: the film chrome and its cards mount against the shell
-   seconds after boot (`CityGLFilmChrome` §SCAN_PRELOAD_DELAY_MS), long after
-   a one-shot walk of the DOM has hidden what was there. `visibility` inherits
-   but a child may override it, so the canvases stay while everything else in
-   the shell — early or late — goes. The chrome's own scan canvas is a canvas
-   too, hence the `display:none` on its root. */
-await p.addStyleTag({ content: `.theme-fusion .fx-city-stage{height:${CSS.h + 2 * PAD}px !important;min-height:0 !important;border:0 !important}
-.fx-city-shell *{visibility:hidden !important}
-.fx-city-shell canvas{visibility:visible !important}
-.fx-city-shell [data-citygl-film-chrome]{display:none !important}` });
-await p.evaluate(() => {
-  const gl = document.querySelector('canvas'); const stage = gl.parentElement;
-  const keep = new Set(); let n = gl; while (n) { keep.add(n); n = n.parentElement; }
-  for (const c of stage.querySelectorAll('canvas')) keep.add(c);
-  for (const el of document.querySelectorAll('.fx-city-shell *')) if (!keep.has(el) && !(el instanceof HTMLCanvasElement)) el.style.visibility = 'hidden';
-});
-await p.waitForTimeout(1000);
-const stageBox = await p.locator('canvas').first().boundingBox();
-const vp = await p.evaluate(() => window.__cityGL.viewport);
-if (Math.round(stageBox.width) !== CSS.w || Math.round(stageBox.height) !== CSS.h + 2 * PAD || vp.W !== CSS.w || vp.H !== CSS.h + 2 * PAD) {
-  console.error('stage is', stageBox, 'engine viewport is', vp, 'wanted', { w: CSS.w, h: CSS.h + 2 * PAD }); process.exit(1);
+  /* the stage exactly CSS.h tall, and nothing over it but the two canvases */
+  /* the stage carries a 1 px border top and bottom inside its box, so ask for
+     the height, measure what the canvas actually got, and correct once */
+  /* The stage exactly CSS.h tall, borders off so the engine's own resize
+     observer sees the same box the canvas has — its viewport must be exactly
+     the capture window, or a capture covers 770 CSS px of plane while the
+     camera steps by 768 and every row of tiles lands two pixels off. The page
+     resizes the engine itself; a manual resize here fed it a different box and
+     put the whole pyramid off-centre. */
+  /* A RULE, NOT A PASS: the film chrome and its cards mount against the shell
+     seconds after boot (`CityGLFilmChrome` §SCAN_PRELOAD_DELAY_MS), long after
+     a one-shot walk of the DOM has hidden what was there. `visibility` inherits
+     but a child may override it, so the canvases stay while everything else in
+     the shell — early or late — goes. The chrome's own scan canvas is a canvas
+     too, hence the `display:none` on its root. */
+  await p.addStyleTag({ content: `.theme-fusion .fx-city-stage{height:${CSS.h + 2 * PAD}px !important;min-height:0 !important;border:0 !important}
+  .fx-city-shell *{visibility:hidden !important}
+  .fx-city-shell canvas{visibility:visible !important}
+  .fx-city-shell [data-citygl-film-chrome]{display:none !important}` });
+  await p.evaluate(() => {
+    const gl = document.querySelector('canvas'); const stage = gl.parentElement;
+    const keep = new Set(); let n = gl; while (n) { keep.add(n); n = n.parentElement; }
+    for (const c of stage.querySelectorAll('canvas')) keep.add(c);
+    for (const el of document.querySelectorAll('.fx-city-shell *')) if (!keep.has(el) && !(el instanceof HTMLCanvasElement)) el.style.visibility = 'hidden';
+  });
+  await p.waitForTimeout(1000);
+  const stageBox = await p.locator('canvas').first().boundingBox();
+  const vp = await p.evaluate(() => window.__cityGL.viewport);
+  if (Math.round(stageBox.width) !== CSS.w || Math.round(stageBox.height) !== CSS.h + 2 * PAD || vp.W !== CSS.w || vp.H !== CSS.h + 2 * PAD) {
+    console.error('stage is', stageBox, 'engine viewport is', vp, 'wanted', { w: CSS.w, h: CSS.h + 2 * PAD }); process.exit(1);
+  }
+  /* the capture: the stage minus PAD rows top and bottom, still centred on the camera */
+  box = { x: stageBox.x, y: stageBox.y + PAD, width: CSS.w, height: CSS.h };
 }
-/* the capture: the stage minus PAD rows top and bottom, still centred on the camera */
-const box = { x: stageBox.x, y: stageBox.y + PAD, width: CSS.w, height: CSS.h };
+await boot();
+
 
 const pose = async (cx, cy, scale, band) => {
   await p.evaluate(([cx, cy, scale, band]) => { const e = window.__cityGL; e.setStep(band); e.setCamera({ cx, cy, scale }); e.invalidate(); }, [cx, cy, scale, band]);
@@ -153,6 +162,8 @@ const pose = async (cx, cy, scale, band) => {
 };
 
 for (const YEAR of YEARS) {
+for (let attempt = 0; ; attempt++) {
+try {
 const OUT = path.join(OUT_ROOT, YEAR);
 await p.evaluate((y) => window.__cityGL.setYear(y === 'now' ? undefined : Number(y)), YEAR);
 await p.waitForTimeout(400);
@@ -202,5 +213,12 @@ for (let z = 0; z <= ZMAX; z++) {
 }
 fs.writeFileSync(path.join(OUT, 'index.json'), JSON.stringify(index, null, 1));
 console.log(`${YEAR}: ${total} tiles, ${(bytes / 1048576).toFixed(1)} MB -> ${OUT}`);
+break;
+} catch (e) {
+  if (attempt >= 2) throw e;
+  console.error(`${YEAR}: ${String(e.message).slice(0, 80)} — rebooting the page and rendering again`);
+  await boot();
+}
+}
 }
 await b.close();
