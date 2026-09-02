@@ -44,6 +44,10 @@ RULES
    without it. Mangled WORDS are fine to read through: `Conmiis- Hloners` is
    Commissioners, `Pood Co.` is Food Co. Words yes, numbers no.
 5. MONEY: exact with commas under $1,000,000 ($808, $54,290); $3.4M above.
+   The gate UNDERSTANDS $3.4M — it resolves it against $3,400,000 in the record
+   and does not flag it. Writers keep assuming otherwise and reverting to the
+   comma form; measured, that assumption is false. (The one real gap: a record
+   that prints the amount with no dollar sign at all.)
 6. NO JARGON. "conditional use" -> "a change of use"; "full/conditional acceptance of
    the roadway" -> "the city takes over the new roadway"; "official grades" -> "street
    levels"; "set-back lines" -> "how far back buildings must sit"; "revocable at will

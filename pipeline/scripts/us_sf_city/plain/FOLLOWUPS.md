@@ -314,3 +314,38 @@ because it had no such test. The rule is not "take the previous tail"; it is
 
 Worth building into the harness on those terms, with the street match as a hard
 precondition and the record left title-less when it fails.
+
+## Rule 5 (money format) is being abandoned on a false premise — 1,937 lines
+
+Two writers on different slices independently stopped applying PROMPT.md rule 5
+("exact with commas under $1,000,000; $3.4M above") and wrote the full comma form
+for large amounts. One stated the reason:
+
+> the mechanical gate treats a number not literally in the record as invented —
+> `$636M` against a record saying `$636,000,000` would likely flag
+
+"Would likely" — it was never tested. It is false. `gate._rounds_to` exists for
+exactly this case, and measured directly:
+
+    $636M  vs "approving $636,000,000 in bonds"      -> CLEAN
+    $3.4M  vs "not to exceed $3,400,000"             -> CLEAN
+    $60M   vs "a grant of $60,000,000 accepted"      -> CLEAN
+
+So nothing was protecting anything; the deviation bought no safety and cost
+consistency. Across the store today:
+
+    full comma form ($1,000,000 and up)   1,937 lines
+    $X.XM form                            2,969 lines
+
+40% of large-money lines are off-spec. This is the rare defect that IS safe to
+repair mechanically — unlike the title-recovery trial, the number is already in
+the line and already verified against the record, so the transform is pure
+formatting and cannot introduce a fact. It should still be a deliberate pass with
+a before/after diff read, not a drive-by sed.
+
+Two things to fix at the source, so it stops recurring:
+- PROMPT.md rule 5 should say outright that the gate understands $X.XM, because
+  writers keep inferring that it does not.
+- `_rounds_to` requires a literal `$` in the record (`\$\s?([\d][\d,]*)`), so an
+  appropriation table printed without dollar signs still fails. That one is real,
+  and is the case the note above should NOT claim is covered.
