@@ -1963,3 +1963,32 @@ there. Two things follow for the work still outstanding:
 Worth stating plainly so nobody optimises the wrong end: the ranking is already
 usable for finding the important records, and the remaining work improves
 BROWSING WITHIN a band rather than the quality of the top.
+
+## v8 landed, and it opened three things — reported by the readers who applied it
+
+**The ballot rung is now below the ordinance it duplicates.** A citywide ban
+adopted as an ordinance takes 82 under the new rung; the same ban sent to the
+voters takes 75 from the untouched ballot anchor. Going to the electorate is if
+anything the bigger act. v8 raised one side of a pair and not the other, and it
+should be re-based rather than left as a seam. Reported from batch 152, and it
+touches at least five rows there.
+
+**The 82 ban rung has no foot.** "Wide reach, small stakes" is explicitly ruled
+out for prohibitions, so a citywide ban of a trivial thing takes the same 82 as
+a serious one: *"Would ban soliciting hotel business on trains and boats"* went
+56 → 82 and now outranks a new transit line. Either the rung needs a size test
+or this is intended; it is not currently decided. Reported from batch 150.
+
+**The 88 rung's scope inside government is unstated.** Two readers drew the line
+in the same place independently — policing, surveillance, data retention and
+cooperation with other governments at 88, and ethics, campaign finance,
+lobbying and city contracting at 82 or lower — on the rung's own reasoning that
+what the government may do TO PEOPLE is the sharper story. That reading matches
+the intent, but the rung does not say it, and roughly twenty rows a batch turn
+on it. Worth writing down rather than re-deriving.
+
+Also found while applying v8, and fixed in place rather than left: 63 rows in
+batch 151 and 795 in batch 150 arrived stamped rv6 — read before the traffic
+ladder existed — carrying values that are not on any current ladder. Three
+identical copies of one line sat at 36, 46 and 46. Those were put onto the
+current ladder rather than shipping a file half one rubric and half another.

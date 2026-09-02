@@ -56,8 +56,9 @@ RANKS = DATA / "importance.jsonl"
 WORK = DATA / "rankwork"
 RUBRIC = HERE / "IMPORTANCE.md"
 
-RUBRIC_VERSION = 7
-# v7 was applied selectively — see recheck_v7.py and the note above.
+RUBRIC_VERSION = 8
+# v7 and v8 were both applied selectively — see recheck_v7.py,
+# recheck_v8.py and the note above.
 ACCEPT_FROM = 6
 
 

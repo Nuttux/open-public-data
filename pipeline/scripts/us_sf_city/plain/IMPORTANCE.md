@@ -208,7 +208,8 @@ these numbers, and reserve judgement for what is not on the list.
 | a permit transferred, surrendered or revoked as spent | **26** |
 | a veto | **score the act it stops** |
 | bids or offers advertised for a decided act | **the act, x0.75** |
-| a transit line ordered, planned or extended | **80** |
+| a transit line ORDERED, PLANNED, BUILT or EXTENDED — a new line, or an existing one carried somewhere it did not go | **80** |
+| a transit line's ROUTE CHANGED, rerouted, or a stop moved, on a line that already runs | **55** |
 | a citywide vote called on bonds or the charter | **75** |
 | a purchase for a civic facility already open — fixed plant | **45** |
 | the same, consumables and movables | **30** |
@@ -461,6 +462,76 @@ not merely numbered:
     an area bounded by streets on more than one side, or a
       named neighbourhood                                          68
     a rule on what may be built that binds the whole city          80
+
+### One transit anchor was doing two jobs
+
+The flat 80 covered "ordered, planned or extended", and readers reasonably read
+a rerouting as an extension. Measured on the published neighbourhood pages: it
+made **46% of every neighbourhood highlight a streetcar or bus record, and 20 of
+41 neighbourhoods led with one** — a bus route moved two blocks standing as the
+most important thing that ever happened there.
+
+Building the system and adjusting it are not the same act. Opening the Twin
+Peaks tunnel changed where the city could live; moving a bus route two blocks
+did not. So the anchor splits: a line ordered, planned, built or extended keeps
+**80**; a route changed, rerouted, or a stop moved on a line that already runs
+takes **55** — a real change a neighbourhood would feel, which is what 55-79 is
+for.
+
+This is not a thumb against transit. A new line still outranks almost
+everything on the map, and every one of the historic extensions keeps its 80.
+
+### The rule that binds the CITY ITSELF, and the story a paper would run
+
+**This rung was missing, and its absence is measured.** The ladder above and the
+80-100 band are both written about LAND and about private conduct — "a rule on
+what may be **built**", "an obligation applying to a whole class of people". A
+rule about what the CITY may do had no rung at all, so readers fell back to the
+neighbourhood rung (68), the ballot rung (75), or wide-reach-small-stakes (55).
+
+Measured over 1,116 records about the city governing itself or about civil
+rights: **1 scored 80 or above. 1,046 scored under 55** — while a routine
+streetcar route change took a flat 80 from the transit anchor. San Francisco's
+surveillance-technology rules, the first of their kind in the United States,
+scored 75, 68 and 58 in three different places.
+
+The three rungs, **in this order**, and the order is the point:
+
+    a rule binding what the CITY may do TO PEOPLE — what its police
+      may buy or use, what it may collect or keep, who it must or
+      must not cooperate with                                       88
+    a right or a protection created or removed for a class of
+      people                                                        85
+    a ban, or a first, that applies across the whole city           82
+
+They sit ABOVE the transit anchor and just under the annual budget, which stays
+the largest single act the Board takes. The reasoning, and it is Daniel's: what
+the government may do to people is the sharpest kind of story; a right is the
+next; a prohibition is concrete but often narrower than either. The budget
+recurs every year and these do not, but the budget moves everything at once.
+
+**The test behind all three is whether a newspaper would have run it**, and that
+is not a vibe — it is answerable from the record's own words. A record is that
+kind of record when it does any of these, all of which the line itself states:
+
+  * binds what the CITY's own officers may do;
+  * creates, removes or limits a RIGHT or a PROTECTION for a class;
+  * BANS or first-permits something across the city;
+  * declares an emergency, or ends one.
+
+**A CONTESTED VOTE IS NOT ONE OF THEM, and that was a mistake I made.** I had
+scored a veto, an override or a recorded dissent as evidence a record mattered.
+It is not: a unanimous ban matters as much as a six-to-five one, and scoring
+conflict would rank a bitter fight over a parking permit above a quiet landmark
+decision. Drama is not weight. The stage discounts still apply as they always
+did — a veto sustained kills the act, and that is scored by the repeal rule.
+
+Two boundaries, so this does not swallow the corpus. **It is not enough to be
+about a serious subject** — a $54,290 shelter grant is money into a service and
+scores as that, not as a civil-rights act. And **"wide reach, small stakes" still
+applies to rules that bind everybody while changing almost nothing** — the
+bathing-dress rule stays at the foot of its band. A citywide PROHIBITION is not
+that: it stops something that was happening.
 
 ### An appeal keeps its subject
 

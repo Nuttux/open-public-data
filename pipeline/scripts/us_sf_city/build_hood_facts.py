@@ -596,6 +596,7 @@ def curate(
     n_hoods: int,
     streets: set[str] | None = None,
     hood_words: set[str] | None = None,
+    hoods_touched: dict[tuple, int] | None = None,
 ) -> tuple[list[dict], dict[str, int]]:
     """Dedupe -> classify -> rank -> cap. Deterministic; no model call.
 
@@ -662,6 +663,22 @@ def curate(
             # is); it just no longer decides the order.
             **({"pl": pl} if pl else {}),
             "iv": iv,
+            # WHAT IT IS ABOUT, two ways, so three highlights can be three
+            # different THINGS. `sm` is the subject mask — "Streetcars and
+            # transit", "Schools", "Paving and grading" — and it is the one
+            # that means subject matter. `cs` is the act ("The budget",
+            # "Franchises", "Investigations and oversight"), which is why it
+            # could not do this job: three Church Street railway records sat
+            # in three different `cs` buckets and read as three subjects.
+            "sm": int(row.get("sm") or 0),
+            # HOW MANY OF THE CITY'S NEIGHBOURHOODS THIS SAME PRINTED ITEM
+            # LANDS IN. A record on the Stockton Street line touches Chinatown,
+            # Nob Hill and North Beach, and led all three — the same sentence
+            # as "what mattered most" in three places, which is what makes
+            # fiches read as interchangeable. 1 means it belongs to this
+            # neighbourhood alone. A count, like `nb`.
+            "nh": int((hoods_touched or {}).get((row.get("u") or "", (row.get("t") or "").strip()[:120]), 1)),
+            "cs": int(row.get("cs", -1) if row.get("cs") is not None else -1),
             # about THIS neighbourhood — its own streets, its name, or 3+ of
             # its blocks. Shipped so a reader of the file can see why a line
             # with a bigger score sits lower.
@@ -692,7 +709,54 @@ def curate(
     # so that job is done elsewhere, and keeping tier first shut Glen Park's
     # 1987 "Five branch library sites approved" (85, addressed) out of a list
     # led by a $1 land sale (48, heading). Tier stays as the tie-break.
-    out.sort(key=lambda o: (not o["local"], -o["iv"], o["tier"], -o["score"], o["_rank"], o["t"]))
+    # THE 80 IS A CEILING, NOT A RANKING. 26 of 41 neighbourhoods led with a
+    # record scoring exactly 80, because the rubric gives a flat 80 to a
+    # transit line ordered or extended and the city laid track for forty
+    # years. Inside that tie the order was arbitrary, so a bus route won.
+    # Among records that mattered equally, the one that is most THIS
+    # neighbourhood's own goes first: `nh` ascending, a citywide act after a
+    # local one. Importance still leads; this only breaks its ties.
+    out.sort(key=lambda o: (not o["local"], -o["iv"], o["nh"], o["tier"],
+                            -o["score"], o["_rank"], o["t"]))
+
+    # ── THREE HIGHLIGHTS MUST BE THREE DIFFERENT THINGS ────────────────────
+    # Ranking by importance alone produced a monoculture, measured across the
+    # whole map: 46% of highlights were streetcar and bus records, 20 of 41
+    # neighbourhoods LED with one, and 9 had nothing else. The cause is not a
+    # bad reading — 46 of those 56 sit at exactly 80, which is the rubric's
+    # flat anchor for a transit line ordered or extended, and a 1918 bus line
+    # to Thirty-third Avenue really was the biggest thing that happened to the
+    # Sunset that year. The city laid track for forty years; at neighbourhood
+    # scale that one subject swamps every other.
+    #
+    # So the top line of a subject stands and the rest of that subject stands
+    # down, using the classification the rows already carry. A reader still
+    # learns the record here is mostly streetcars — the first line says so, and
+    # `WHAT KEEPS COMING UP` counts them all. What they gain is the second and
+    # third thing, which is the whole reason three are shown.
+    #
+    # A record carries several subject bits — a bus line along a paved street
+    # is both — so it stands down when ANY of its subjects is already shown:
+    # it is still partly the thing the reader has just read. Rows with no
+    # subject mask at all (44% of the corpus) fall back to the act, capped at
+    # one, or a neighbourhood with a thin classification fills up with them.
+    picked, used_bits, used_acts = [], 0, set()
+    for o in out:
+        if o["sm"]:
+            if o["sm"] & used_bits:
+                continue
+            used_bits |= o["sm"]
+        else:
+            key = o["cs"] if o["cs"] >= 0 else "unclassified"
+            if key in used_acts:
+                continue
+            used_acts.add(key)
+        picked.append(o)
+    # anything left keeps its order behind the diverse set, so the count the
+    # cap reports is still the true remainder
+    rest = [o for o in out if o not in picked]
+    out = picked + rest
+
     for o in out:
         del o["_rank"]
     return out, dict(counts)
@@ -812,6 +876,13 @@ def build(out_dir: pathlib.Path | None = None,
           f"{sum(a['n'] for a in rec.values())} decisions, "
           f"{sum(1 for a in rec.values() if a['n'])} of {n_hoods} hoods carry one")
 
+    # how many neighbourhoods each printed item lands in, over the whole map
+    _seen_in: dict[tuple, set[int]] = collections.defaultdict(set)
+    for hi_, rows_ in per_rows.items():
+        for _b, _r, row_ in rows_:
+            _seen_in[(row_.get("u") or "", (row_.get("t") or "").strip()[:120])].add(hi_)
+    hoods_touched = {k: len(v) for k, v in _seen_in.items()}
+
     index_fp = reconcile_against_index(rec, of_hood, ids)
 
     # ── the money, deduped by place inside the hood ────────────────────────
@@ -862,7 +933,8 @@ def build(out_dir: pathlib.Path | None = None,
         highlights, counts = curate(
             per_rows.get(hi, []), token_df, n_with_record,
             hood_streets.get(hi, set()),
-            {w for w in _LWORD.findall(names[hi].lower()) if len(w) >= 4})
+            {w for w in _LWORD.findall(names[hi].lower()) if len(w) >= 4},
+            hoods_touched)
         type_counts.update(counts)
         shown = highlights[:HIGHLIGHT_CAP]
 
