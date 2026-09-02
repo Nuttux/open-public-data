@@ -397,3 +397,29 @@ Consequence to accept honestly: lines already written under the strict reading a
 thinner than they need to be. That is a quality ceiling, not an error, and it is
 not worth a re-read on its own — but a v8 pass touching those slices should
 restore the detail rather than preserve the thinness.
+
+## Two gaps the same-item rule opened, found by the writer of the last slice
+
+**1. The rule covers detail, not the verdict.** Rule 9 now lets a vote-only chunk
+borrow detail from a same-`ht` sibling. It says nothing about the other
+direction: a body chunk whose own text carries no outcome word, whose sibling
+carries the ADOPTED. "Every line must say whether it happened" forces one anyway,
+so the writer carried the verdict backwards — ~15 lines in a 155-record slice,
+which extrapolates to a lot of the corpus.
+
+That is almost certainly right (it is the same item, and the precondition already
+holds), but it is currently an unstated reading rather than a rule, which is how
+the detail question went wrong in the first place. State it explicitly in v8:
+the verdict travels within an item exactly as detail does, under identical `ht`.
+
+**2. Identical text gets two different treatments by accident.** The standing
+boilerplate "Resolution may be introduced before the Board…" appears with an
+inherited `ht` at some indices and with `ht: null` at others. WORKER.md forbids a
+no-subject line wherever an `ht` exists, so the same sentence becomes the item's
+line in one place and an honest no-subject line in another — decided purely by
+whether the Clerk's title happened to spill onto that page.
+
+Neither treatment is wrong on its own; having both is. The boilerplate is
+identifiable by its own text and should get one deterministic treatment
+regardless of `ht`. Worth a rule, not a judgement call, because at least four
+writers have now hit it and each resolved it differently.
