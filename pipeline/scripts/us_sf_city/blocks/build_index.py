@@ -1015,6 +1015,49 @@ def main():
             PLAIN[_d["id"]] = _d["line"]
         print(f"  plain lines: {len(PLAIN):,} publishable, {_pl_held:,} held back by the checks")
 
+    # ── HOW MUCH THE RECORD MATTERS, WHERE IT HAS BEEN READ ────────────────
+    # `importance.jsonl` holds a 0-100 score per record, given by a reader
+    # applying IMPORTANCE.md to the WRITTEN LINE — not to the raw scan.
+    #
+    # Two things follow from that, and both are load-bearing.
+    #
+    # First, the store is APPEND-ONLY and one id carries a row per rubric
+    # version: the same record sits at rv2, rv3 and rv7 with different numbers.
+    # Taking the last line in the file would make the published score depend on
+    # the order rows happened to be appended in. The row with the highest `rv`
+    # is the most recent reading, so that is the one that publishes.
+    #
+    # Second, a score is only meaningful where its line publishes. A record
+    # whose line the checks held back has a score derived from a sentence no
+    # reader can see, and ranking on it would lift an invisible record above a
+    # visible one. Those take no `iv`.
+    #
+    # The score is written even when it is low. Absent has to mean "not read",
+    # never "read and found small" — those are different facts and a sort that
+    # cannot tell them apart is wrong in a way nobody would notice.
+    IMP_PATH = os.path.join(REPO, "pipeline/data/sf_bos/importance.jsonl")
+    IMP: dict = {}
+    _iv_rv: dict = {}
+    _iv_orphan = 0
+    if os.path.exists(IMP_PATH):
+        for _l in open(IMP_PATH):
+            if not _l.strip():
+                continue
+            _d = json.loads(_l)
+            _id, _rv = _d["id"], int(_d.get("rv") or 0)
+            if _rv < _iv_rv.get(_id, -1):
+                continue
+            _iv_rv[_id] = _rv
+            IMP[_id] = int(_d["score"])
+        for _id in list(IMP):
+            if _id not in PLAIN:
+                del IMP[_id]
+                _iv_orphan += 1
+        _vs = sorted(_iv_rv.values())
+        print(f"  importance: {len(IMP):,} scored and publishable, "
+              f"{_iv_orphan:,} scored but their line is held back"
+              + (f"; rubric versions in store {sorted(set(_vs))}" if _vs else ""))
+
     CLS_PATH = os.path.join(REPO, "pipeline/seeds/sf_bos_classification.csv")
     CLS = {}
     CSUB, CACT = [], []
@@ -1409,6 +1452,9 @@ def main():
         _pl = PLAIN.get(f'{r["v"]}|{r["i"]}')
         if _pl:
             out["pl"] = _pl
+        _iv = IMP.get(f'{r["v"]}|{r["i"]}')
+        if _iv is not None:
+            out["iv"] = _iv
         _cs = CLS.get(f'{r["v"]}|{r["i"]}')
         if _cs:
             if _cs[0] >= 0:
