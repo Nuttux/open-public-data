@@ -21,6 +21,25 @@ that renumbered `i` within an existing volume would repoint that volume's lines
 while every id still looked valid — which is why the checksum in harness exists
 and why this script refuses to touch an existing volume.
 
+── WHAT THE SOURCE ACTUALLY LOOKS LIKE, PROBED 2026-09-02 ──────────────────
+The Clerk posts minutes about TWELVE WEEKS after the meeting. Measured, not
+assumed: `bag041426_minutes.pdf` covers the 14 April meeting and its
+last-modified header reads 8 July 2026. So a corpus that ends in mid-April is
+not behind — it is as current as the Board has published.
+
+After that the trail goes cold and I could not explain it from outside:
+
+    sfbos.org           lists nothing newer than the 14 April minutes and a
+                        21 April agenda
+    Legistar events     returns a server-side configuration error
+                        ("'Agenda Draft Status' ... is not setup in settings")
+    Legistar matters    returns nothing newer than 2020, mostly 2018
+
+Three readings fit — a publication pause, a change of URL shape, or their site
+being partly broken — and no remote probe separates them. That is why the check
+below reports "nothing answered" instead of "you are up to date". Do not let a
+silent probe be read as a current corpus.
+
 ── WHY THIS ONLY GOES AS FAR AS FETCHING ───────────────────────────────────
 Turning a PDF into records is `sweep_sfbos_all.py`, which walks 390 cached PDFs
 through the extractor and has a byte-for-byte parity gate against the published
