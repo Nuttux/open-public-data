@@ -18,9 +18,15 @@
    turned back into the `ViewCamera` it stands for (`tile-plane.ts`) and the
    overlay does not know it is over tiles.
 
-   WHAT IS NOT HERE YET, deliberately: the record panel, tap-to-block, the
-   year rail and the film. This is the first block — the city, readable and
-   panning smoothly on a phone — and those are the next.
+   AND THE RECORD IS THE SAME RECORD. A tap asks the same `blockPicker` the
+   GPU page asks, with the same camera, and the answer opens the same
+   `CityBlockPanel` on the same shards (`block-records`); the search box is
+   the same `CitySearch` and lands the same way. None of that is copied from
+   the GPU map — it is imported from where that map imports it.
+
+   WHAT IS NOT HERE YET, deliberately: the year rail, the subject dots and
+   the film. This is the second block — the city, readable, and its record
+   under a thumb — and those are the next.
 
    ── LEAFLET, AND WHY NOT A HAND-ROLLED VIEWER ──────────────────────────
    The page already ships Leaflet for the places map; it gives pinch, inertia
@@ -52,7 +58,8 @@
    A phone never reaches this code; it pinches.
    ═══════════════════════════════════════════════════════════════════════ */
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import type { LatLng, Map as LMap } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -61,8 +68,23 @@ import { projection } from "@/lib/city/projection";
 import { TerrainField, type TerrainProj } from "@/lib/city/terrain";
 import type { CityDescriptor } from "@/lib/citygl/descriptor";
 import { CityOverlay } from "@/lib/citygl/overlay";
+import { blockPicker } from "@/lib/citygl/pick";
+import { loadFineDem, meshElevAt } from "@/lib/citygl/layers/terrain";
 import { TILE_CSS, tilePlane, type TileIndex } from "@/lib/citygl/tile-plane";
 import { useT } from "@/lib/localeContext";
+import CityBlockPanel, {
+  type BlockContext,
+  type UnitRequest,
+} from "@/components/us/city/CityBlockPanel";
+import CitySearch from "@/components/us/city/CitySearch";
+import type { SearchHit } from "@/lib/us/city-search";
+import {
+  blockPlaceName,
+  loadBlockIndex,
+  loadBlockRecord,
+  type BlockIndex,
+  type BlockRecord,
+} from "@/components/us/city/block-records";
 
 export interface CityTileMapProps {
   descriptor: CityDescriptor;
@@ -82,15 +104,51 @@ interface MapPrivate {
   _moveEnd(zoomChanged: boolean): unknown;
 }
 
+/**
+ * What the mounted map can do for the React side — built inside the boot
+ * effect, where the map, the picker and the overlay live, and reached from
+ * the handlers through a ref so none of them has to be rebuilt when it does.
+ */
+interface MapApi {
+  /** frame a block at a stop and light its ring; the index position */
+  showBlock(pos: number, stop: number): void;
+  /** clear the ring and the pin */
+  clear(): void;
+  /** which stop the view is nearest, or -1 between two */
+  nearestStop(): number;
+  /** the name under the pin, once the record says what it is */
+  label(s: string | null): void;
+}
+
 export default function CityTileMap({ descriptor, year = "now" }: CityTileMapProps) {
   const t = useT();
+  const router = useRouter();
   const hostRef = useRef<HTMLDivElement | null>(null);
   const mapDivRef = useRef<HTMLDivElement | null>(null);
   const labelsRef = useRef<HTMLDivElement | null>(null);
+  const apiRef = useRef<MapApi | null>(null);
   const [failed, setFailed] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [stops, setStops] = useState<readonly Stop[]>([]);
   const [zoomStop, setZoomStop] = useState(0);
+
+  /* ── THE RECORD'S STATE, THE GPU PAGE'S NAMES ─────────────────────────
+     `picked` is a POSITION in the block index, as it is there; `posRef`
+     turns a block id (what the search hands over) into one. */
+  const [picked, setPicked] = useState<number | null>(null);
+  const [record, setRecord] = useState<BlockRecord | null>(null);
+  const [ctx, setCtx] = useState<BlockContext | null>(null);
+  const [recLoading, setRecLoading] = useState(false);
+  const [request, setRequest] = useState<
+    { req: UnitRequest; nonce: number; block: string } | undefined
+  >(undefined);
+  const [sheetOpen, setSheetOpen] = useState(true);
+  const idxRef = useRef<BlockIndex | null>(null);
+  const posRef = useRef<Map<string, number> | null>(null);
+  const nonceRef = useRef(0);
+  const blockCols = useRef<{
+    hood: Uint8Array; hoodNames: readonly string[]; area: Float32Array;
+  } | null>(null);
 
   useEffect(() => {
     const host = hostRef.current;
@@ -119,6 +177,13 @@ export default function CityTileMap({ descriptor, year = "now" }: CityTileMapPro
           CityData.load({ baseUrl: descriptor.dataBaseUrl }),
         ]);
         if (dead) return;
+        /* THE GROUND THE PICKER MARCHES AGAINST IS THE GPU PAGE'S: the fine
+           DEM (2.1 MB), sampled the way the mesh is. MEASURED on the coarse
+           field alone the pick answered at 69–86 % of a grid of points over
+           the four stops; the miss is the ray meeting the ground a cell early
+           and landing in the roadway. Fetched alongside the base, and a city
+           without one falls back to the coarse field. */
+        const fineDemP = loadFineDem(data.assetBase).catch(() => null);
 
         /* THE SAME PROJECTION THE RENDERER DREW WITH. The pyramid's camera is
            in plane units, and plane units are `projection`'s at band 0 — the
@@ -130,6 +195,26 @@ export default function CityTileMap({ descriptor, year = "now" }: CityTileMapPro
         if (!chunk) throw new Error("terrain: base/terrain has not landed");
         const proj = data.manifest.proj as unknown as TerrainProj;
         const field = new TerrainField(chunk, proj);
+
+        /* the block columns the fiche's context is read from — the hood is
+           joined on the INDEX, never the name, as on the GPU page */
+        {
+          const bc = data.get("base/blocks");
+          const be = data.manifest.chunks.find((c) => c.k === "base/blocks") as
+            | { hoodNames?: string[] }
+            | undefined;
+          if (bc && be?.hoodNames) {
+            blockCols.current = {
+              hood: bc.fields.hood as Uint8Array,
+              hoodNames: be.hoodNames,
+              area: bc.fields.a as Float32Array,
+            };
+          }
+        }
+        /* THE PICKER IS THE GPU PAGE'S, on the GPU page's ground. */
+        const fineDem = await fineDemP;
+        if (dead) return;
+        const picker = blockPicker(data, { elevAt: meshElevAt(field, proj, fineDem) });
 
         const tp = tilePlane(index);
         const ll = (X: number, Y: number) => L.latLng(-Y, X);
@@ -290,8 +375,8 @@ export default function CityTileMap({ descriptor, year = "now" }: CityTileMapPro
         }));
         setStops(built);
         /* nearest stop, so the row says where the reader is after a pinch */
-        map.on("zoomend", () => {
-          if (!map) return;
+        const nearestStop = (): number => {
+          if (!map) return -1;
           const z = map.getZoom();
           let best = 0;
           let d = Infinity;
@@ -299,8 +384,9 @@ export default function CityTileMap({ descriptor, year = "now" }: CityTileMapPro
             const dz = Math.abs(zoomOf(s).zoom - z);
             if (dz < d) { d = dz; best = i; }
           });
-          setZoomStop(d < 0.5 ? best : -1);
-        });
+          return d < 0.5 ? best : -1;
+        };
+        map.on("zoomend", () => setZoomStop(nearestStop()));
 
         /* THE WHOLE CITY IS THE WIDEST STOP, as on the GPU page: past it the
            pyramid is a rectangle on the paper with the far shore cut off at
@@ -323,6 +409,81 @@ export default function CityTileMap({ descriptor, year = "now" }: CityTileMapPro
           size();
         });
         ro.observe(host);
+
+        /* ── A TAP IS A PICK ─────────────────────────────────────────────
+           Leaflet's `click` is the tap that was not a drag and not a pinch,
+           which is the one distinction a touch map has to get right. The
+           picker is asked with the SAME camera the overlay is drawn with, so
+           the ring lands under the thumb. */
+        map.on("click", (e) => {
+          if (!map || !picker || dead) return;
+          const pt = (e as unknown as { containerPoint: { x: number; y: number } }).containerPoint;
+          const r = host.getBoundingClientRect();
+          const b = picker.at(pt.x, pt.y, camOf(), r.width, r.height);
+          if (overlay) {
+            overlay.highlight = b === null ? null : picker.ringOf(b);
+            overlay.pick = b;
+            /* never a frame of the previous block's name on a new ring */
+            overlay.pickLabel = null;
+            schedule();
+          }
+          setZoomStop(nearestStop());
+          setSheetOpen(true);
+          setPicked(b);
+        });
+
+        apiRef.current = {
+          showBlock(pos, stop) {
+            if (!map || !picker) return;
+            const ring = picker.ringOf(pos);
+            if (ring?.length) {
+              let sx = 0;
+              let sy = 0;
+              for (const [wx, wy] of ring) { sx += wx; sy += wy; }
+              const c = projection.proj(sx / ring.length, sy / ring.length, 0);
+              const [X, Y] = tp.toFrame(c[0], c[1]);
+              const z = zoomOf(descriptor.stops[stop] ?? descriptor.stops[descriptor.stops.length - 1]);
+              map.setView(ll(X, Y), z.zoom, { animate: false });
+            }
+            if (overlay) {
+              overlay.highlight = picker.ringOf(pos);
+              overlay.pick = pos;
+              overlay.pickLabel = null;
+              schedule();
+            }
+            setZoomStop(stop);
+            setSheetOpen(true);
+            setPicked(pos);
+          },
+          clear() {
+            if (overlay) {
+              overlay.highlight = null;
+              overlay.pick = null;
+              overlay.pickLabel = null;
+              schedule();
+            }
+          },
+          nearestStop,
+          label(s) {
+            if (overlay) {
+              overlay.pickLabel = s;
+              schedule();
+            }
+          },
+        };
+
+        /* DEV-ONLY, the `__cityGL*` idiom: the harness that measures this
+           page needs the map and the pick it would make at a point */
+        if (process.env.NODE_ENV !== "production") {
+          (globalThis as { __cityTiles?: unknown }).__cityTiles = {
+            map,
+            pickAt: (x: number, y: number) => {
+              const r = host.getBoundingClientRect();
+              return picker ? picker.at(x, y, camOf(), r.width, r.height) : null;
+            },
+          };
+        }
+
         void overlay.load().then(schedule);
         setLoading(false);
       } catch (e) {
@@ -332,6 +493,7 @@ export default function CityTileMap({ descriptor, year = "now" }: CityTileMapPro
 
     return () => {
       dead = true;
+      apiRef.current = null;
       ro?.disconnect();
       if (raf) cancelAnimationFrame(raf);
       overlay?.dispose();
@@ -341,6 +503,99 @@ export default function CityTileMap({ descriptor, year = "now" }: CityTileMapPro
     };
   }, [descriptor, year]);
 
+  /* ── THE RECORD, BEHIND A PICK — the GPU page's effect, unchanged in what
+     it does: the context first (a column already in memory), then the shard,
+     and the pin's name as soon as each half is known. `block-records`
+     memoises the index and every shard for the session. */
+  useEffect(() => {
+    if (picked === null) {
+      setRecord(null);
+      setCtx(null);
+      return;
+    }
+    let dead = false;
+    setRecLoading(true);
+    void (async () => {
+      try {
+        const index = idxRef.current ?? (await loadBlockIndex());
+        idxRef.current = index;
+        if (dead) return;
+        const cols = blockCols.current;
+        const id = index.b[picked] ?? "—";
+        const hoodName = cols ? (cols.hoodNames[cols.hood[picked]] ?? "") : "";
+        setCtx({
+          id,
+          hood: hoodName,
+          hoodIndex: cols ? (cols.hood[picked] ?? -1) : -1,
+          areaM2: cols ? (cols.area[picked] ?? 0) : 0,
+          streetDecisions: index.ns[picked] ?? 0,
+          zoomStop,
+        });
+        apiRef.current?.label(hoodName || null);
+        const r = await loadBlockRecord(index, picked);
+        if (!dead) {
+          setRecord(r);
+          apiRef.current?.label((r ? blockPlaceName(r.streets) : null) || hoodName || null);
+        }
+      } catch {
+        if (!dead) setRecord(null);
+      } finally {
+        if (!dead) setRecLoading(false);
+      }
+    })();
+    return () => {
+      dead = true;
+    };
+    // the stop is read when the pick is made, not re-fetched when it moves
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [picked]);
+
+  /* ── OPEN A BLOCK BY ID — what the search hands over. The index is fetched
+     here when nobody has tapped yet, because the first thing many readers do
+     is type a street. */
+  const openAt = useCallback(async (blockId: string, req: UnitRequest, stop: number) => {
+    const index = idxRef.current ?? (await loadBlockIndex().catch(() => null));
+    if (!index) return;
+    idxRef.current = index;
+    if (!posRef.current) {
+      posRef.current = new Map(index.b.map((b, i) => [b, i]));
+    }
+    const pos = blockId ? posRef.current.get(blockId) : undefined;
+    if (pos !== undefined) apiRef.current?.showBlock(pos, stop);
+    nonceRef.current += 1;
+    setRequest({ nonce: nonceRef.current, block: blockId, req });
+  }, []);
+
+  /* the GPU page's own routing of a hit, kind for kind */
+  const goToHit = useCallback(async (hit: SearchHit) => {
+    if (hit.kind === "place") {
+      router.push(`/us/city/sf/places/place/${hit.to}`);
+      return;
+    }
+    await openAt(
+      hit.block,
+      hit.viaParcel
+        ? { kind: "ground" }
+        : hit.kind === "hood"
+          ? { kind: "hood" }
+          : hit.kind === "street"
+            ? { kind: "street", key: hit.to }
+            : hit.kind === "addr"
+              ? { kind: "door", label: hit.label }
+              : { kind: "ground" },
+      hit.kind === "hood" ? 1 : hit.kind === "street" ? 2 : 3,
+    );
+  }, [openAt, router]);
+
+  const close = () => {
+    setPicked(null);
+    apiRef.current?.clear();
+  };
+
+  const sheetLabel =
+    (record ? blockPlaceName(record.streets) : null) || ctx?.hood || "";
+  const n = record?.decisions.length ?? 0;
+
   return (
     <div className="fx-city-wrap">
       <div className="fx-city-frame">
@@ -349,6 +604,11 @@ export default function CityTileMap({ descriptor, year = "now" }: CityTileMapPro
           {/* the overlay's canvas goes in here, so React never reorders it
               under the chrome it renders after */}
           <div className="fx-city-tiles-labels" ref={labelsRef} />
+          {!loading ? (
+            <div className="fx-city-find">
+              <CitySearch onPick={({ hit }) => void goToHit(hit)} />
+            </div>
+          ) : null}
           {!loading && stops.length ? (
             <div
               role="group"
@@ -382,6 +642,39 @@ export default function CityTileMap({ descriptor, year = "now" }: CityTileMapPro
             </div>
           ) : null}
         </div>
+        {/* ── THE SHEET, ONLY WHEN THERE IS A RECORD TO SHOW ──────────────
+            The GPU page's ledger always stands, because it carries the year
+            and the subject dots too. Here, until the rail comes over, the
+            record exists when a block does; with nothing picked the city has
+            the whole screen, which is what a phone wants of a map. The bar
+            is the same bar — a place name under the thumb, folding the sheet
+            away — so the two pages fold the same way. */}
+        {picked !== null ? (
+          <div className={`fx-city-ledger${sheetOpen ? "" : " is-shut"}`}>
+            <button
+              type="button"
+              className="fx-city-sheet-grab"
+              aria-expanded={sheetOpen}
+              onClick={() => setSheetOpen((v) => !v)}
+            >
+              <span className="fx-city-sheet-bar" aria-hidden="true" />
+              <span className="fx-city-sheet-yr">{sheetLabel}</span>
+              <span className="fx-city-sheet-n">
+                {recLoading ? "…" : `${n} ${n === 1 ? "decision" : "decisions"}`}
+              </span>
+              <span className="fx-city-sheet-x" aria-hidden="true">
+                {sheetOpen ? "▾" : "▴"}
+              </span>
+            </button>
+            <CityBlockPanel
+              record={record}
+              context={ctx}
+              request={request}
+              loading={recLoading}
+              onClose={close}
+            />
+          </div>
+        ) : null}
       </div>
     </div>
   );

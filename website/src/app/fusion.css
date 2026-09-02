@@ -19085,13 +19085,13 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   .theme-fusion .fx-city-stage {
     min-height: 240px;
   }
-  /* THE TILE MAP HAS NO STRIP AND NO SHEET YET (`CityTileMap.tsx`, block 1),
-     so the 574 px the rule above subtracts are not on its screen. Until the
-     record comes to the tile page it takes the phone's earlier share of the
-     screen. Remove with block 2. */
+  /* THE TILE MAP HAS NO CENTURY STRIP YET (`CityTileMap.tsx`), so of the
+     574 px the rule above subtracts, the strip's 104 are not on its screen:
+     header 90 + sheet 380 = 470, and the map takes the rest. Fold into the
+     rule above when the rail comes over. */
   .theme-fusion .fx-city-shell:has(.fx-city-tiles),
   .theme-fusion .fx-city-wrap:has(.fx-city-tiles) {
-    --fx-city-h: min(66svh, 560px);
+    --fx-city-h: max(240px, calc(100svh - 470px));
   }
 }
 .theme-fusion .fx-city-record-more {
