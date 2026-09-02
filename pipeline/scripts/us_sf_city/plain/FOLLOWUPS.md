@@ -149,3 +149,32 @@ sanctuary policy, eviction moratoria) was never offered to a reader, and the
 NEXT: append the 34,896 from cache_sfbos/items_all.jsonl, re-stamp the corpus
 checksum, write plain lines for them, and score them at v7. They are additive,
 so nothing already done needs redoing.
+
+## Lines written under the retracted "layout B" rule — a targeted correction pass
+
+WORKER.md told writers, until this session, that a title printed after the vote
+tally belonged to THAT record for roughly 1940-1970. Measured directionally it
+belongs to the NEXT record in every decade, 3,725 to 74. The rule is now deleted
+(see the table in WORKER.md), but slices written before the deletion applied it.
+
+Writers who said in their own reports that they followed it, and roughly how far:
+
+    slice 010   1964-65   ~60 lines took the trailing title
+    slice 016   1925-26   ~12 records "turn on that call"
+    slice 020   1947-49   used it wherever a tally was present
+    slice 028   1959/1950 followed the inherited writer's B reading
+    slice 030   1960/65/69 followed the spec over its own weaker measurement
+    slice 009   1957-59   split policy; used the trailing act where richer
+
+Two of those writers measured their own volumes first and got 60-to-2 and
+42-to-1 AGAINST the rule, and followed the spec anyway because it was the spec.
+That is the right instinct and the wrong outcome, and it is on the spec.
+
+These are not wrong at random: a line that takes the trailing title describes a
+real act that really appears on that page — it just belongs to the record below.
+So they read as plausible and will not be caught by the invented-name gate,
+which only checks that the words are somewhere in the page's text.
+
+    TO DO: pull those slices' ids back with retract.py and rewrite them under
+    the corrected rule. They are identifiable by slice, which is why this list
+    exists — do not re-read decades wholesale.
