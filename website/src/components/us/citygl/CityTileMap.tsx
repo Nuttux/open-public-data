@@ -161,6 +161,14 @@ function chipStyle(on: boolean, ink: string | null): React.CSSProperties {
   };
 }
 
+/* THE MANIFESTS ARE FETCHED, NOT LOADED AS IMAGES, so they are cross-origin
+   requests the bucket must answer with a CORS header — and Google's front
+   cache had kept copies from before the bucket had one, for the year the
+   Cache-Control on them promised. The tiles themselves are `<img>` loads and
+   never needed the header. A version on the manifest URLs is the cache key
+   changing: bump it if a manifest ever has to be re-fetched past its cache. */
+const MANIFEST_V = "2";
+
 /** what `render-city-years.mjs` writes beside the pyramids */
 interface YearsFile {
   now: { zmax: number } | null;
@@ -262,13 +270,13 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
       try {
         const [L, index, data, years] = await Promise.all([
           import("leaflet").then((m) => m.default),
-          fetch(`${base}/${pyramid}/index.json`).then((r) => {
+          fetch(`${base}/${pyramid}/index.json?v=${MANIFEST_V}`).then((r) => {
             if (!r.ok) throw new Error(`tiles: index ${r.status}`);
             return r.json() as Promise<TileIndex>;
           }),
           CityData.load({ baseUrl: descriptor.dataBaseUrl }),
           /* a city with no rendered years has a map with no rail */
-          fetch(`${base}/years.json`)
+          fetch(`${base}/years.json?v=${MANIFEST_V}`)
             .then((r) => (r.ok ? (r.json() as Promise<YearsFile>) : null))
             .catch(() => null),
         ]);
