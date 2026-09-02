@@ -49,8 +49,9 @@
    in ink on a canvas under the type with the GPU layer's own filter, window
    and two modes, and a press on a mark opens that block's record.
 
-   WHAT IS NOT HERE YET, deliberately: the film, and the mark's own card (a
-   press on a dot opens the block for now).
+   A press on a mark opens the mark's own card — `MarkCard.tsx`, the same
+   card and the same rules as the GPU page — and closes back to whatever the
+   sheet was showing. WHAT IS NOT HERE YET, deliberately: the film.
 
    ── LEAFLET, AND WHY NOT A HAND-ROLLED VIEWER ──────────────────────────
    The page already ships Leaflet for the places map; it gives pinch, inertia
@@ -103,15 +104,18 @@ import CityBlockPanel, {
   type UnitRequest,
 } from "@/components/us/city/CityBlockPanel";
 import CitySearch from "@/components/us/city/CitySearch";
+import MarkCard, { buildMarkCard, type MarkCardData } from "@/components/us/city/MarkCard";
 import type { SearchHit } from "@/lib/us/city-search";
 import {
   blockPlaceName,
   ficheParams,
   loadBlockIndex,
   loadBlockRecord,
+  loadClassify,
   readFicheParams,
   type BlockIndex,
   type BlockRecord,
+  type ClassifyFile,
   type FicheLink,
 } from "@/components/us/city/block-records";
 
@@ -218,6 +222,13 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
   const [playing, setPlaying] = useState(false);
   const [themes, setThemes] = useState<ThemeEntry[] | null>(null);
   const [subject, setSubject] = useState<number | null>(null);
+  const [markCard, setMarkCard] = useState<MarkCardData | null>(null);
+  const themesRef = useRef<ThemeEntry[] | null>(null);
+  const yearRef = useRef<number | null>(null);
+  const classifyRef = useRef<ClassifyFile | null>(null);
+  const openMarkRef = useRef<(hit: { bit: number; block: number }) => void>(() => {});
+  useEffect(() => { themesRef.current = themes; }, [themes]);
+  useEffect(() => { yearRef.current = year; }, [year]);
   const playTimer = useRef<ReturnType<typeof setInterval> | null>(null);
   const [at, setAt] = useState<{ street?: string; address?: string; hood?: boolean }>({});
   const opened = useRef(false);
@@ -583,10 +594,16 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
           if (!map || !picker || dead) return;
           const pt = (e as unknown as { containerPoint: { x: number; y: number } }).containerPoint;
           const r = host.getBoundingClientRect();
-          /* a press on a mark is a press on its block — the mark's own card
-             is not here yet, and the record it names is in the fiche */
+          /* a press on a DOT asks "what is this mark" and gets the card; a
+             press on the CITY asks "what happened here" and gets the fiche —
+             the GPU page's split, kept: a mark press returns before the pick */
           const hit = marks?.markAt(pt.x, pt.y, camOf(), r.width, r.height) ?? null;
-          const b = hit && hit.block >= 0 ? hit.block : picker.at(pt.x, pt.y, camOf(), r.width, r.height);
+          if (hit && hit.block >= 0) {
+            openMarkRef.current(hit);
+            return;
+          }
+          setMarkCard(null);
+          const b = picker.at(pt.x, pt.y, camOf(), r.width, r.height);
           if (overlay) {
             overlay.highlight = b === null ? null : picker.ringOf(b);
             overlay.pick = b;
@@ -797,6 +814,24 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
     apiRef.current?.clear();
   };
 
+  /* ── THE DOT'S OWN ANSWER — the GPU page's `openMark`, on the shared card */
+  const openMark = useCallback(async (hit: { bit: number; block: number }) => {
+    const index = idxRef.current ?? (await loadBlockIndex().catch(() => null));
+    const ths = themesRef.current;
+    if (!index || !ths) return;
+    idxRef.current = index;
+    const cf = classifyRef.current
+      ?? (classifyRef.current = await loadClassify().catch(() => null));
+    const card = await buildMarkCard(hit, {
+      index, themes: ths, year: yearRef.current ?? YEAR_MAX, classify: cf,
+    });
+    if (card) {
+      setMarkCard(card);
+      setSheetOpen(true);
+    }
+  }, []);
+  useEffect(() => { openMarkRef.current = (hit) => void openMark(hit); }, [openMark]);
+
   /* ── THE LINK ────────────────────────────────────────────────────────── */
   const writeUrl = useCallback((link: FicheLink | null) => {
     if (typeof window === "undefined") return;
@@ -894,9 +929,10 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
     }
   };
 
-  const sheetLabel =
-    (record ? blockPlaceName(record.streets) : null) || ctx?.hood || "";
-  const n = record?.decisions.length ?? 0;
+  const sheetLabel = markCard
+    ? markCard.place
+    : (record ? blockPlaceName(record.streets) : null) || ctx?.hood || "";
+  const n = markCard ? markCard.rows.length : (record?.decisions.length ?? 0);
 
   return (
     <div className="fx-city-wrap">
@@ -1032,7 +1068,7 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
             the whole screen, which is what a phone wants of a map. The bar
             is the same bar — a place name under the thumb, folding the sheet
             away — so the two pages fold the same way. */}
-        {picked !== null ? (
+        {picked !== null || markCard ? (
           <div className={`fx-city-ledger${sheetOpen ? "" : " is-shut"}`}>
             <button
               type="button"
@@ -1043,20 +1079,24 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
               <span className="fx-city-sheet-bar" aria-hidden="true" />
               <span className="fx-city-sheet-yr">{sheetLabel}</span>
               <span className="fx-city-sheet-n">
-                {recLoading ? "…" : `${n} ${n === 1 ? "decision" : "decisions"}`}
+                {recLoading && !markCard ? "…" : `${n} ${n === 1 ? "decision" : "decisions"}`}
               </span>
               <span className="fx-city-sheet-x" aria-hidden="true">
                 {sheetOpen ? "▾" : "▴"}
               </span>
             </button>
-            <CityBlockPanel
-              record={record}
-              context={ctx}
-              request={request}
-              onFiche={setAt}
-              loading={recLoading}
-              onClose={close}
-            />
+            {markCard ? (
+              <MarkCard card={markCard} onClose={() => setMarkCard(null)} />
+            ) : (
+              <CityBlockPanel
+                record={record}
+                context={ctx}
+                request={request}
+                onFiche={setAt}
+                loading={recLoading}
+                onClose={close}
+              />
+            )}
           </div>
         ) : null}
       </div>

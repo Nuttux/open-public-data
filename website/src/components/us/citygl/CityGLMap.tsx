@@ -53,7 +53,6 @@ import {
   themeMarksLayer,
   MARK_SHAPES,
   THEME_INK,
-  WINDOW_YEARS,
   type MarkHit,
   type MarkShape,
   type ThemeMarksLayer,
@@ -112,19 +111,15 @@ import CityBlockPanel, {
   type UnitRequest,
 } from "@/components/us/city/CityBlockPanel";
 import CitySearch from "@/components/us/city/CitySearch";
+import MarkCard, { buildMarkCard, type MarkCardData } from "@/components/us/city/MarkCard";
 import type { SearchHit } from "@/lib/us/city-search";
 import {
   blockPlaceName,
   ficheParams,
-  isPrintableLine,
   loadClassify,
-  sourceHref,
-  stripFileNumber,
-  usdShort,
   loadBlockIndex,
   loadBlockRecord,
   readFicheParams,
-  type BlockDecision,
   type BlockIndex,
   type BlockRecord,
   type ClassifyFile,
@@ -156,10 +151,6 @@ const YEAR_MIN = 1906;
 const YEAR_MAX = 2026;
 
 /** the key's own English when the catalogue has not been filled in yet */
-function tOr(t: (k: string) => string, k: string, en: string): string {
-  const v = t(k);
-  return v === k ? en : v;
-}
 /** years a second at 1x: the century in forty seconds */
 const SPEED_1X_YPS = (YEAR_MAX - YEAR_MIN) / 40;
 /** what the speed button steps through */
@@ -307,18 +298,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
   const hotRef = useRef<MarkHotLayer | null>(null);
   const [classify, setClassify] = useState<ClassifyFile | null>(null);
   const yearRef = useRef<number | null>(null);
-  const [markCard, setMarkCard] = useState<{
-    hit: MarkHit;
-    label: string;
-    ink: string;
-    place: string;
-    rows: readonly {
-      readonly d: BlockDecision;
-      /** the plain-English subject this line matched, if any */
-      readonly says: string | null;
-    }[];
-    year: number;
-  } | null>(null);
+  const [markCard, setMarkCard] = useState<MarkCardData | null>(null);
   /* THE YEAR THE MARKS ARE STANDING ON, kept apart from the scrub's own
      imperative path. The rail drives the city's geometry every frame of a
      drag and must not wait on React; the marks are rebuilt from a Map and a
@@ -1734,153 +1714,21 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
    * each other and no reader can be said to have pressed a particular one.
    */
   const openMark = useCallback(async (hit: MarkHit) => {
-    /* THE INDEX MAY NOT BE HERE YET, AND THAT IS THE COMMON CASE. It is
-       fetched when a fiche opens, and a reader who presses a dot first has
-       never opened one — the card came up blank on exactly that press and
-       worked on every one after it, which is how it hid. `loadBlockIndex`
-       memoises for the session, so this costs one request once. */
+    /* `idxRef` is filled by the effect behind a PICK; a reader who presses a
+       dot first has never opened one, so it is fetched here when missing —
+       `loadBlockIndex` memoises for the session. */
     const index = idxRef.current ?? (await loadBlockIndex().catch(() => null));
     const ths = themesRef.current;
     if (!index || !ths) return;
     idxRef.current = index;
-    const th = ths.find((x) => x.bit === hit.bit);
-    const rec = await loadBlockRecord(index, hit.block);
-    if (!rec) return;
-    const y = yearRef.current ?? YEAR_MAX;
-    const half = WINDOW_YEARS / 2;
-    const inWindow = rec.decisions.filter(
-      (d) =>
-        Math.floor((d.m ?? 0) / 2 ** hit.bit) % 2 === 1 &&
-        d.y >= y - half && d.y <= y + half,
-    );
-
-    /* ── A FRAGMENT IS NOT A RECORD, AND THE FICHE ALREADY KNEW THAT ─────
-       The card was listing every row the filter admitted, and a good number of
-       them are continuation fragments of the item above: "Fiscal Impact)
-       09/05/23; RECEIVED AND ASSIGNED to…", "As defined herein; and
-       authorizing the Director of MOHCD…", "With two five-year options to
-       extend and an annual base rent of…". Measured over the lit rows: 10%
-       are shorter than a readable line and 7% carry no classification at all.
-
-       `isPrintableLine` is the fiche's own test for exactly this and is
-       already measured and tested; the card simply was not using it. A row is
-       dropped only when it fails that AND has no headline either — a poor line
-       under a real subject still says something, an unreadable line under
-       nothing says nothing.
-
-       AND ONE ITEM IS ONE ROW. Four rows of the 440 Geary loan — the
-       agreement, its title line, a continuation, a procedural stamp — is the
-       same record four times wearing different offcuts. They share a page, so
-       the page is the key, and the row kept is the one with the most readable
-       line. */
-    /* A LINE THAT CANNOT OPEN A RECORD, with nothing above it to say what the
-       record is, is the tail of the one before it. "And ratifying and
-       approving any action heretofore taken…", "As defined herein, including
-       assuming certain leases.", "With an option to extend for up to an
-       additional five years…". 72 rows, 0.4%.
-
-       The list is short on purpose. `The`, `To`, `For`, `Of` and `In` were in
-       it and came out: "The sum of $2000 be and the same is hereby set aside"
-       opens a real appropriation. The first cut of this rule also used a
-       case-insensitive `[a-z]`, which matches every capital too and flagged
-       every heading in the corpus — it was measured before it shipped, which
-       is the only reason that is a sentence here and not a defect. */
-    const CONTINUES =
-      /^[^A-Za-z0-9]*(?:[a-z]|(?:And|As|Or|But|With|Said|Which|Thence|Including|Provided|Together)\b)/;
-    const best = new Map<string, BlockDecision>();
-    for (const d of inWindow) {
-      if (d.cs === undefined && (!isPrintableLine(d.t) || CONTINUES.test(d.t.trim())))
-        continue;
-      const had = best.get(d.u);
-      if (!had) { best.set(d.u, d); continue; }
-      const score = (x: BlockDecision) =>
-        (isPrintableLine(x.t) ? 1e6 : 0) + x.t.length;
-      if (score(d) > score(had)) best.set(d.u, d);
-    }
-    const rows = [...best.values()].sort((a, b) => b.y - a.y);
-    if (!rows.length) return;
-    /* ── WHAT EACH LINE IS, FROM THE RECORD'S OWN CLASSIFICATION ────────
-       `cs` and `ca` are on the row now, joined in the pipeline from
-       `sf_bos_classification.csv` and read against the item's FULL text. They
-       are a STATEMENT about the record — "Parking · Ordered" — which is what a
-       heading has to be.
-
-       This replaced a label taken from `sm`, the fiche subjects. Those are
-       PATTERNS that matched somewhere in the item, and the shard publishes a
-       fragment of that item, so a reader was shown a heading with no basis in
-       the words underneath: 61% of them, measured, "Street Lights — Van Dyke
-       avenue and Keith street." under "Libraries". The classification says
-       `the-street / street-works` for that line, which is what it is.
-
-       The action is absent where it was `other`, so a row with no clear verb
-       shows its subject alone rather than the subject plus a shrug. */
     const cf = classifyRef.current
       ?? (classifyRef.current = await loadClassify().catch(() => null));
-    /* ── NOT WHEN THE SUBJECT ONLY REPEATS THE CARD'S OWN TITLE ─────────
-       The card already names the subject. A row that repeats it spends its one
-       strong line saying nothing, and what the reader does NOT yet know is
-       what the Board did — so the verb carries the line alone there.
-
-       SHARING A WORD IS THE TEST, and the first version was a substring
-       compare, which is too literal: it caught "Schools" under "Schools" and
-       missed "Housing and shelter" under "Homelessness & shelter", which is
-       the one anybody would point at. Every pair this collapses, over the
-       published shards — there are only seven, and none of them loses
-       anything:
-
-         499  Landmarks & old buildings -> Landmarks and old buildings
-         454  Housing                   -> Housing and shelter
-         439  Schools                   -> Schools
-          84  Homelessness & shelter    -> Housing and shelter
-          76  Fire                      -> Fire
-          66  Redevelopment             -> Redevelopment
-          17  Libraries                 -> Libraries
-
-       10% of rows. `city` and `own` are stopwords because "The city buys land"
-       and "Changing the city's own rules" are real answers that must survive
-       under any card. */
-    const STOP = new Set(["and", "the", "of", "a", "on", "in", "to", "for",
-                          "its", "city", "own"]);
-    const keyWords = (x: string): Set<string> =>
-      new Set((x.toLowerCase().match(/[a-z]+/g) ?? [])
-        .filter((w) => w.length > 2 && !STOP.has(w)));
-    const same = (a2: string, b2: string): boolean => {
-      const y = keyWords(b2);
-      for (const w of keyWords(a2)) if (y.has(w)) return true;
-      return false;
-    };
-    const says = (d: BlockDecision): string | null => {
-      /* NOT WHEN THE LINE IS A BARE HEADING. `g` says where the published line
-         came from. `s` is the sentence the matched address sits in and `p` is a
-         heading composed with it — both are the item's OWN words, so the
-         classification and the line describe the same record. `h` is the
-         Board's printed heading, and a heading is printed once for a PAGE: the
-         gloss can hand a row the heading of a different item on that page.
-
-         Caught in the wild: "Execute Standard Agreement - Not to Exceed
-         $17,291,506 - ... Homekey+ Grant" came up headed "Naming and renaming
-         Ordered". The Homekey item classifies as housing-shelter, exactly
-         right; the headline belonged to a street-naming item sharing page 15.
-
-         8.3% of lit rows are `h`. They keep their line and lose the heading,
-         which is the honest trade: the line is still the record's own, and a
-         wrong heading is worse than none. */
-      if (d.g === "h") return null;
-      if (!cf || d.cs === undefined) return null;
-      const sub = cf.sub[d.cs];
-      if (!sub) return null;
-      const act = d.ca === undefined ? null : cf.act[d.ca];
-      if (same(sub, th?.label ?? "")) return act;
-      return act ? `${sub} · ${act}` : sub;
-    };
-    setMarkCard({
-      hit,
-      label: th?.label ?? "",
-      ink: THEME_INK[hit.bit % THEME_INK.length],
-      place: blockPlaceName(rec.streets) ?? index.b[hit.block] ?? "",
-      rows: rows.map((d) => ({ d, says: says(d) })),
-      year: y,
+    /* the rules — one row per item, what a row says — live in `MarkCard.tsx`
+       now, because the tile map asks the same question of the same shards */
+    const card = await buildMarkCard(hit, {
+      index, themes: ths, year: yearRef.current ?? YEAR_MAX, classify: cf,
     });
+    if (card) setMarkCard(card);
   }, []);
   const openMarkRef = useRef(openMark);
   useEffect(() => { openMarkRef.current = openMark; }, [openMark]);
@@ -2127,59 +1975,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
               should not have to find the answer inside a page about something
               else. It closes back to whatever the margin was showing. */}
           {markCard ? (
-            <section className="fx-mark-card">
-              <header className="fx-mark-card-h">
-                <span className="fx-mark-card-dot"
-                      style={{ background: markCard.ink }} aria-hidden />
-                <h3>{markCard.label}</h3>
-                <button
-                  type="button"
-                  className="fx-mark-card-x"
-                  onClick={() => setMarkCard(null)}
-                  aria-label={tOr(t, "us.sf.thecity.mark.close", "Close")}
-                >
-                  ×
-                </button>
-              </header>
-              {/* ── THE CARD READS LIKE THE YEAR LIST ───────────────────────
-                  It was carrying six type styles in 252 px: a bold header, a
-                  muted street list, a mono year, a bold headline, a clamped
-                  quote and a link, and every row repeated four of them. The
-                  year list to its right uses two — a 10 px mono cap and a
-                  12.5 px line — and the reader liked that one. So this is that:
-                  the years as the cap, then rows in the list's own idiom, our
-                  sentence as the line, the Clerk's words on the link. The
-                  streets are not repeated; they are under the dot. */}
-              <p className="fx-city-record-cap" style={{ margin: "0 0 6px" }}>
-                {tOr(t, "us.sf.thecity.mark.window", "{a}–{b}")
-                  .replace("{a}", String(markCard.year - WINDOW_YEARS / 2))
-                  .replace("{b}", String(markCard.year + WINDOW_YEARS / 2))}
-              </p>
-              <div className="fx-city-record-list fx-mark-card-rows">
-                {markCard.rows.map(({ d, says }) => (
-                  <span className="fx-city-record-line" key={`${d.u}-${d.y}-${d.t.slice(0, 20)}`}>
-                    <a
-                      className="fx-city-record-row"
-                      href={sourceHref(d)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title={stripFileNumber(d.t)}
-                    >
-                      <span className="fx-city-record-dot" style={{ background: markCard.ink }} />
-                      <span className="fx-city-record-text">
-                        <span className="fx-city-record-tag">
-                          {d.y}
-                          {d.a > 0 && !(d.pl && /[$£€]/.test(d.pl)) ? ` · ${usdShort(d.a)}` : ""}
-                          {!d.pl && says ? ` · ${says}` : ""}
-                        </span>
-                        {d.pl || stripFileNumber(d.t)}
-                      </span>
-                      <span className="fx-city-record-n">↗</span>
-                    </a>
-                  </span>
-                ))}
-              </div>
-            </section>
+            <MarkCard card={markCard} onClose={() => setMarkCard(null)} />
           ) : picked !== null ? (
             <CityBlockPanel
               record={record}
