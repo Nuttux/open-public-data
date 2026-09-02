@@ -337,8 +337,44 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
           maxBounds: extent.pad(0.25),
           maxBoundsViscosity: 0.8,
         });
+        /* ── THE SHARPER LEVEL, ALWAYS ───────────────────────────────────
+           Leaflet takes the tile level NEAREST the zoom, so between two
+           levels it shows the coarser one scaled UP as often as the finer
+           one scaled down. On a phone the whole-city fit is zoom 1.3: level
+           1 — 640 device px for the whole city — blown up on a 780 px screen,
+           and the first pinch jumps to level 2 and then 3 in a few hundred
+           pixels of gesture. Daniel: *"the super zoom out image and then
+           whenever you do the first couple of zoom you get way more detail,
+           it's a very weird jump"*. This layer rounds UP: the level shown is
+           always at or above the screen's resolution and only ever scaled
+           down, so detail arrives with the zoom rather than in steps. The
+           slack keeps a stop that lands a hair over a level (the district
+           stop is 3.06) on that level. `_setView` is GridLayer's own, with
+           `Math.round` replaced — Leaflet 1.9.4 §GridLayer._setView. */
+        const SharpTiles = (L.TileLayer as unknown as { extend(p: object): new (u: string, o: object) => L.TileLayer }).extend({
+          _setView(this: Record<string, (...a: unknown[]) => unknown> & { options: { maxZoom?: number; minZoom?: number }; _tileZoom?: number; _noPrune?: boolean; _abortLoading?: () => void }, center: unknown, zoom: number, noPrune?: boolean, noUpdate?: boolean) {
+            let tileZoom: number | undefined = Math.ceil(zoom - 0.15);
+            if ((this.options.maxZoom !== undefined && tileZoom > this.options.maxZoom) ||
+                (this.options.minZoom !== undefined && tileZoom < this.options.minZoom)) {
+              tileZoom = undefined;
+            } else {
+              tileZoom = this._clampZoom(tileZoom) as number;
+            }
+            const changed = tileZoom !== this._tileZoom;
+            if (!noUpdate || changed) {
+              this._tileZoom = tileZoom;
+              if (this._abortLoading) this._abortLoading();
+              this._updateLevels();
+              this._resetGrid();
+              if (tileZoom !== undefined) this._update(center);
+              if (!noPrune) this._pruneTiles();
+              this._noPrune = !!noPrune;
+            }
+            this._setZoomTransforms(center, zoom);
+          },
+        });
         const layerFor = (key: string, zmax: number, zIndex = 2) =>
-          L.tileLayer(`${base}/${key}/{z}/{x}/{y}.webp`, {
+          new SharpTiles(`${base}/${key}/{z}/{x}/{y}.webp`, {
             tileSize: TILE_CSS,
             minNativeZoom: 0,
             maxNativeZoom: zmax,
