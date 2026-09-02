@@ -682,6 +682,10 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
               const r = host.getBoundingClientRect();
               return picker ? picker.at(x, y, camOf(), r.width, r.height) : null;
             },
+            markAt: (x: number, y: number) => {
+              const r = host.getBoundingClientRect();
+              return marks ? marks.markAt(x, y, camOf(), r.width, r.height) : null;
+            },
           };
         }
 
