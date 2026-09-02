@@ -4911,7 +4911,7 @@ const fr: Record<string, string> = {
   'us.sf.thecity.panel.hood_money_none': '{n} city places stand here and no city ledger names any of them, so no figure is shown for them.',
   'us.sf.thecity.panel.hood_money_none_one': '{place} stands here and no city ledger names it, so no figure is shown for it.',
   'us.sf.thecity.panel.hood_money_cover': "A published city place resolves to {n} of the city's {all} neighbourhoods, and {m} of those carry a figure.",
-  'us.sf.thecity.panel.hood_hl_head': 'What the Board kept deciding here',
+  'us.sf.thecity.panel.hood_hl_head': 'Ce qui a le plus compté ici',
   'us.sf.thecity.panel.hood_hl_note': 'Classées par ce qui a le plus compté, selon notre propre lecture de chaque acte. Chaque ligne ouvre la page où elle est imprimée.',
   'us.sf.thecity.panel.hood_hl_blocks': 'on {n} of its blocks',
   'us.sf.thecity.panel.hood_hl_blocks_one': 'on one block',

@@ -453,12 +453,10 @@ function HoodProvenance({
  */
 function HoodMoney({
   hood,
-  file,
   money,
   t,
 }: {
   hood: HoodRecord;
-  file: HoodFactsFile;
   money: BlockMoneyFile | null;
   t: (k: string) => string;
 }) {
@@ -584,23 +582,17 @@ function HoodHighlights({ hood, t }: { hood: HoodRecord; t: (k: string) => strin
     title: `${KIND_WORDING[h.k] ?? "Item"} · ${h.y || h.y0}`,
     year: null,
     href: sourceHref(h),
-    sourceLabel: seriesOf(h),
-    variantNote:
-      (h.nb > 1
-        ? t("us.sf.thecity.panel.hood_hl_blocks").replace("{n}", String(h.nb))
-        : t("us.sf.thecity.panel.hood_hl_blocks_one")) +
-      (h.y1 > h.y0 ? ` · ${h.y0}–${h.y1}` : ""),
+    /* no source line under each: "Journal of Proceedings · on 4 of its
+       blocks" was a third line in a third face under a one-line sentence.
+       The link says the kind and the year; the fold at the foot says where
+       every line comes from. */
+    sourceLabel: "",
   }));
   return (
     <>
       <div className="fx-city-ledger-head fx-block-sec">
         {t("us.sf.thecity.panel.hood_hl_head")}
       </div>
-      {/* one clause, not forty words: the ranking is now the record's own
-          importance score, and a reader needs to know that and nothing else */}
-      <p className="fx-block-hint" style={NOTE}>
-        {t("us.sf.thecity.panel.hood_hl_note")}
-      </p>
       {/* CAP 6 AND NO FOLD, deliberately. Two folds over one shelf would have
           been two different claims wearing the same sentence: the shelf's own
           expander hides rows it HAS, and the cap in `build_hood_facts.py` hid
@@ -1273,12 +1265,6 @@ function SubjectOpen({
   t: (k: string) => string;
 }) {
   const th = h.thread;
-  const peak = th.dec.reduce((m, [, n]) => Math.max(m, n), 0);
-  /* EVERY decade the file carries, empty ones included. Dropping the zeroes
-     drew `Blasting permits` as four fat bars with no gaps, which reads
-     as a subject that ran evenly for a century. It ran 1906–1931 and then
-     stopped, and the stopping is the interesting half — so an empty decade
-     keeps its slot and draws nothing. */
   const span = h.y0 === h.y1 ? String(h.y0) : `${h.y0}–${h.y1}`;
   return (
     <div className="fx-block-subject-open">
@@ -1299,39 +1285,12 @@ function SubjectOpen({
               .replace("{shown}", String(h.rows.length))}
       </p>
 
-      <div className="fx-block-subject-dec" aria-hidden>
-        {th.dec.map(([d, n]) => (
-          <span key={d} className="fx-block-subject-tick" title={`${d}s`}>
-            <span
-              className="fx-block-subject-tickbar"
-              style={{
-                height: n === 0 ? 0 : `${Math.max(2, Math.round((n / peak) * 26))}px`,
-              }}
-            />
-          </span>
-        ))}
-      </div>
-      {/* The two ends, because the bars run the whole century whatever the
-          subject does. Without them a shape that stops in the 1930s reads as
-          a shape that covers 1906–1931, which is the span in the sentence
-          below and is not what the bars are measuring. */}
-      {th.dec.length > 1 ? (
-        <div className="fx-block-subject-decends" aria-hidden>
-          <span>{th.dec[0][0]}s</span>
-          <span>{th.dec[th.dec.length - 1][0]}s</span>
-        </div>
-      ) : null}
-      <p className="fx-block-hint" style={NOTE}>
-        {tOr(
-          t,
-          "us.sf.thecity.panel.subject_city",
-          "Across San Francisco: {n} decisions on {b} blocks, {y0} to {y1}. The bars are the city, not this place.",
-        )
-          .replace("{n}", nfInt.format(th.n))
-          .replace("{b}", nfInt.format(th.b.length))
-          .replace("{y0}", String(th.y0))
-          .replace("{y1}", String(th.y1))}
-      </p>
+      {/* THE CITY'S CHART IS NOT HERE ANY MORE. A pressed chip opened onto a
+          second bar chart and a three-line note explaining that the bars
+          were the whole map and not this place — which is to say, a chart
+          about somewhere else, with its own apology. The subject's meaning,
+          its count here and its records are the answer; the city-wide shape
+          is the map's own subject layer, one press away. */}
 
       <FicheArchiveShelf
         docs={h.rows.slice(0, 40).map(toDoc)}
@@ -1585,10 +1544,15 @@ function FicheOpen({
   open,
   onDecade,
   t,
+  spark = true,
 }: {
   open: FicheOpener;
   onDecade: (d: number) => void;
   t: (k: string) => string;
+  /* the neighbourhood draws its decades ONCE, as the rail: the same thirteen
+     numbers twice on one screen, 300 px apart, read as chaos and said nothing
+     the rail did not. The block keeps the spark because its rail is a list. */
+  spark?: boolean;
 }) {
   return (
     <div className="fx-fiche-open">
@@ -1597,7 +1561,7 @@ function FicheOpen({
         {open.busiest ? ` ${open.busiest}` : ""}
         {open.about ? ` ${open.about}` : ""}
       </p>
-      <Spark dec={open.dec} onDecade={onDecade} t={t} />
+      {spark ? <Spark dec={open.dec} onDecade={onDecade} t={t} /> : null}
     </div>
   );
 }
@@ -2159,9 +2123,12 @@ function HoodLevel({
   return (
     <>
 
-      <Subjects here={EMPTY_THREADS} flat={flat} total={recs.n} t={t} />
-
       <HoodSummaryLine recs={recs} t={t} />
+      {/* WHAT MATTERED MOST, straight after the paragraph — the two things a
+          reader came for, before any control. The order of this page is now:
+          the sentence, our paragraph, the three that mattered, the decades,
+          the subjects, the money, and how it is made. */}
+      {hood ? <HoodHighlights hood={hood} t={t} /> : null}
       <div className="fx-city-ledger-head fx-block-sec">
         {t("us.sf.thecity.panel.rail_head")}
       </div>
@@ -2233,6 +2200,8 @@ function HoodLevel({
         })}
       </div>
 
+      <Subjects here={EMPTY_THREADS} flat={flat} total={recs.n} t={t} />
+
       {/* ── THE FOUR SECTIONS THAT USED TO BE A FOLD ON THE BLOCK ────────
           They were at the bottom of every block fiche, closed, under the
           heading "The neighbourhood" — four sections about somewhere else,
@@ -2244,8 +2213,7 @@ function HoodLevel({
           `HoodMoney`. */}
       {hood && hoods ? (
         <>
-          <HoodHighlights hood={hood} t={t} />
-          <HoodMoney hood={hood} file={hoods} money={money} t={t} />
+          <HoodMoney hood={hood} money={money} t={t} />
           {/* THE METHOD NOTES ARE ONE FOLD, CLOSED. The census join and the
               money coverage were two body-size paragraphs on the page; both
               are about how the figures are made, not what they say, and the
@@ -2253,6 +2221,7 @@ function HoodLevel({
               IS DRAWN FROM. Nothing is deleted; it is behind one line. */}
           <details className="fx-shelf-more" style={{ marginTop: 10 }}>
             <summary>{tOr(t, "us.sf.thecity.panel.hood_method", "How these figures are made")}</summary>
+            <p className="fx-block-hint" style={NOTE}>{t("us.sf.thecity.panel.hood_hl_note")}</p>
             <HoodProvenance hood={hood} file={hoods} t={t} />
             <p className="fx-block-hint" style={NOTE}>
               {t("us.sf.thecity.panel.hood_money_cover")
@@ -2802,7 +2771,8 @@ const onHood = unit.kind === "hood";
         partialTo: null,
       })) as unknown as DecadeGroup[],
       [],
-      words,
+      /* no "most of it in the 1910s": the rail directly under shows it */
+      { ...words, busiest: "" },
     );
   }, [hoodRecs, hood, words]);
 
@@ -3010,9 +2980,11 @@ const onHood = unit.kind === "hood";
               </button>
             ) : null}
             {opener ? (
-              <FicheOpen open={opener} onDecade={setOpenDecade} t={t} />
+              <FicheOpen open={opener} onDecade={setOpenDecade} t={t} spark={!onHood} />
             ) : null}
-            {opener ? <WhoDecides t={t} /> : null}
+            {/* the neighbourhood answers this at its foot, beside SOURCES,
+                where a reader who has read the page asks it */}
+            {opener && !onHood ? <WhoDecides t={t} /> : null}
           </>
         ) : null}
 
@@ -3279,6 +3251,7 @@ const onHood = unit.kind === "hood";
           </>
         ) : null}
 
+        {onHood ? <WhoDecides t={t} /> : null}
         <div className="fx-block-foot">
           <CopyLink t={t} />
         </div>

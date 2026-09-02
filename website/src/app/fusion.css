@@ -17428,13 +17428,19 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
    Both are quiet by design: the tip is a question nobody who knows the answer
    should have to read past, and the copy button is a utility, not a call to
    action. Same mono-link idiom as every other disclosure on this panel. */
-.theme-fusion .fx-who { margin: 2px 0 4px; }
+/* the same line as the folds it now sits between (HOW THESE FIGURES ARE MADE,
+   SOURCES): mono caps, blue, a rule above. It was a lone label with no rule and
+   no padding and the four lines at the foot read as four different things */
+.theme-fusion .fx-who { margin: 0; }
 .theme-fusion .fx-who-sum {
   cursor: pointer;
   font-family: var(--f-mono);
   font-size: 10px;
   letter-spacing: .07em;
   text-transform: uppercase;
+  color: var(--bleu);
+  padding: 11px 0 2px;
+  border-top: 1px solid var(--rule);
   color: var(--bleu);
   list-style: none;
   padding: 2px 0;
@@ -17450,18 +17456,21 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   color: var(--ink-2);
 }
 .theme-fusion .fx-block-foot { margin-top: 16px; }
+/* a text link in the fold's own idiom, not a boxed button: it was the one
+   bordered control on a panel whose every other control is a line of mono
+   caps, and it read as a form */
 .theme-fusion .fx-block-copy {
-  border: 1px solid var(--rule);
+  border: 0;
   background: transparent;
-  color: var(--ink);
+  color: var(--bleu);
   font-family: var(--f-mono);
   font-size: 10px;
   letter-spacing: .07em;
   text-transform: uppercase;
-  padding: 6px 10px;
+  padding: 11px 0 2px;
   cursor: pointer;
 }
-.theme-fusion .fx-block-copy:hover { border-color: var(--ink); }
+.theme-fusion .fx-block-copy:hover { text-decoration: underline; }
 .theme-fusion .fx-block-copy:focus-visible {
   outline: 2px solid var(--bleu-vif);
   outline-offset: 1px;

@@ -3566,3 +3566,30 @@ the same viewport; the section order is record, highlights, money, method.
 the window as the mono cap, rows as the list's rows, our sentence as the line, the Clerk's
 words on the link. The street list is gone from its header — those streets are under the dot.
 Not screenshotted: it opens only on a dot press, which the headless run cannot make reliably.
+
+### g. Second pass, same day — "i still find it very chaotic"
+
+He was right, and the reason was not type: the page was doing the same things twice and
+explaining itself in between. Cut, on the neighbourhood only unless said otherwise:
+
+* **The sparkline.** Two decade charts 300 px apart — the spark under the sentence and the
+  rail under `DECADE BY DECADE`. The rail is the control; the spark is gone here (`spark`
+  prop on `FicheOpen`, the block keeps its own). With it went "Most of it in the 1910s":
+  the rail says so.
+* **The city's chart inside a pressed subject** (every level). A chip opened onto a second
+  bar chart and a three-line note explaining the bars were the whole map and not this place —
+  a chart about somewhere else, with its own apology. A pressed subject is now its meaning,
+  its count here, its records.
+* **The source line under each highlight** — "Journal of Proceedings · on 4 of its blocks",
+  a third line in a third face under a one-line sentence. The link is the kind and the year;
+  the fold at the foot says where every line comes from. The ranking note moved into that
+  fold too.
+* **`WHO DECIDED ALL THIS?`** moves from the top, where it was the fourth mono-caps line
+  before any record, to the foot beside `SOURCES`, styled as the folds are.
+* **`COPY LINK`** is a text link in the folds' idiom, not the one bordered button on the panel.
+
+And the order, so the two things a reader came for come first: the sentence, our paragraph,
+**what mattered most here**, the decades, the subjects, the money, then the folds.
+
+Measured on Glen Park, same viewport: **2,167 → 1,672 px**; mono-caps labels above the first
+record, four → one.
