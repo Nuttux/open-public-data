@@ -102,3 +102,6 @@ pipeline/data/sf_bos/plain_lines_scored.jsonl
 pipeline/data/sf_bos/rankwork/
 .vercel
 pipeline/data/sf_bos/items_merged.jsonl
+
+# rendered tile pyramids (website/scripts/render-city-tiles.mjs) — hundreds of MB, served from storage, never committed
+website/public/tiles/

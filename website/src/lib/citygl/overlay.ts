@@ -45,6 +45,11 @@ import { paintGrain, type Frame, type TerrainField } from "@/lib/city/terrain";
 import { drawGeoNames, type GeoName } from "./geo-names";
 import { decodeCoast, drawShoreline, type Ring } from "@/lib/city/water";
 
+/** `?labels=0` — the tile renderer's knob; see §THE TILE RENDERER WANTS THE
+ *  PICTURE WITHOUT THE WORDS in `draw` */
+const NO_LABELS =
+  typeof location !== "undefined" && /(?:\?|&)labels=0(?:&|$)/.test(location.search);
+
 export interface OverlayOptions {
   data: CityData;
   /** the ground, for the elevation every label is lifted onto */
@@ -652,6 +657,16 @@ export class CityOverlay {
            know the other exists. */
         const grid = new LabelGrid(fl.W, fl.H);
 
+        /* ── §THE TILE RENDERER WANTS THE PICTURE WITHOUT THE WORDS ─────────
+           `scripts/render-city-tiles.mjs` captures the city as map tiles for
+           the phone, where the type is drawn LIVE over the tiles rather than
+           baked into them — baked type is cut at every capture edge, and two
+           neighbouring captures do not even agree on which names win the
+           collision grid. `?labels=0` skips the type passes and nothing else:
+           the coast ink, the shoreline and the grain above are still drawn,
+           because they are the picture. A harness knob, read once, like
+           `?sm=0` and the rest. */
+        if (!NO_LABELS) {
         const des = this.places.filter((qq) => qq.cls === "designated");
         if (des.length) placeNames(fl, des, grid, elev);
 
@@ -683,6 +698,7 @@ export class CityOverlay {
         if (rest.length) placeNames(fl, rest, grid, elev);
 
         sn?.draw("local");
+        }
 
         this.lblCv = cv;
         this.lblKey = key;
