@@ -131,20 +131,35 @@ Supervisors DO belong in a line when they are the event rather than the
 arithmetic: "Four supervisors sent to the League of California Municipalities
 convention" is a real thing that happened.
 
-THE TALLY IS A WALL IN THE MIDDLE OF THE RECORD — READ PAST IT. In 10.2% of
-records (9,213 of 90,443, measured) the Board's paperwork runs
-[number] [VOTE] [what it was about], and the substance is on the FAR SIDE of the
-roll call:
+THE TALLY IS A WALL. DO NOT READ PAST IT. This section used to say the
+opposite — that in 10.2% of records the substance sits on the far side of the
+roll call, with this example:
 
-    Ordinance No. 118-58. Finally Passed by the following vote: Ayes:
-    Supervisors Blake, Casey, Dobbs, Ertola, Ferdon, Halley, McMahon, Rolph,
-    Sullivan, Zirpoli — 10. Absent: Supervisor McCarty — 1. ORDERING THE
-    IMPROVEMENT OF BOWDOIN STREET, BETWEEN GAVEN AND SWEENY STREETS …
+    Ordinance No. 118-58. Finally Passed by the following vote: Ayes: … — 10.
+    Absent: Supervisor McCarty — 1. ORDERING THE IMPROVEMENT OF BOWDOIN STREET,
+    BETWEEN GAVEN AND SWEENY STREETS …
 
-Stop at the tally and you write "Passed by ten supervisors, one absent" — the
-arithmetic, and nothing a reader wanted. Read past it:
+    it said:  GOOD: Bowdoin Street improvement between Gaven and Sweeny finally passed
 
-    GOOD: Bowdoin Street improvement between Gaven and Sweeny finally passed
+That is the NEXT item's title, and the line attributes its act to this record.
+Measured directionally over the whole corpus — does a post-tally street name
+appear in this record's own pre-tally text, or in the next record's — the answer
+is the next record 3,725 times against 74, in every decade. WORKER.md carries
+the table.
+
+The 10.2% figure was real and its conclusion was backwards: those records DO
+carry nothing of their own, and the honest line is that the page states no
+subject. Writing the neighbour's act instead produces a line that reads
+perfectly and is about the wrong thing, which no mechanical check here catches,
+because the words really are on the page.
+
+    GOOD: A final passage vote with no subject on this page
+
+ONE EXCEPTION, and it is narrow. Where the post-tally text CONTINUES THIS
+MOTION rather than introducing a new titled item — "Motion to amend adopted by
+the following vote: [tally] Supervisor Daly moved to amend page 16 …" — it is
+this record's own business and you may use it. The test is whether the text
+after the tally has its own file number or title. If it does, it belongs below.
 
 The names in a roll call are never the content of a line. Neither is the count.
 
