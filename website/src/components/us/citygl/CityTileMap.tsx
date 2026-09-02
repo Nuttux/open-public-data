@@ -349,17 +349,20 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
            scaled, so a gap is the blurred city and not the sheet. It is what
            every tile map a reader has used does. */
         const UNDER_ZMAX = 2;
-        const under = layerFor(pyramid, Math.min(UNDER_ZMAX, tp.zmax), 1).addTo(map);
+        let under = layerFor(pyramid, Math.min(UNDER_ZMAX, tp.zmax), 1).addTo(map);
         let tiles = layerFor(pyramid, tp.zmax).addTo(map);
         let tilesKey = pyramid;
         /* ── THE SWAP: THE NEW YEAR OVER THE OLD, THEN THE OLD GOES ────── */
         const showKey = (key: string, zmax: number) => {
           if (!map || key === tilesKey) return;
           tilesKey = key;
-          /* the underlay follows the year; a redraw of a layer nobody sees
-             through the one above costs nothing visible */
-          under.options.maxNativeZoom = Math.min(UNDER_ZMAX, zmax);
-          under.setUrl(`${base}/${key}/{z}/{x}/{y}.webp`);
+          /* the underlay follows the year — REPLACED, not re-pointed:
+             `setUrl` redraws, and Leaflet's `redraw` takes the map's
+             unrounded zoom as the tile zoom under `zoomSnap: 0`, so it asked
+             for level "1.327" and got 404s (GridLayer.js §redraw). Nobody
+             sees the layer through the one above, so the swap is free. */
+          map.removeLayer(under);
+          under = layerFor(key, Math.min(UNDER_ZMAX, zmax), 1).addTo(map);
           const old = tiles;
           const next = layerFor(key, zmax).addTo(map);
           tiles = next;
