@@ -124,7 +124,14 @@ def verify(path: pathlib.Path, recs: dict, gloss: list) -> dict:
     r["ids_aligned"] = [x["id"] for x in inp] == [x["id"] for x in out] if inp else None
     r["unknown_ids"] = sum(1 for x in out if x["id"] not in recs)
     r["dupes"] = len(out) - len({x["id"] for x in out})
-    r["blank"] = sum(1 for x in out if not x["line"].strip())
+    # ── A MALFORMED LINE IS A FINDING, NOT A CRASH ─────────────────────────
+    # One worker's appender wrote `"line": [250, "the text"]` — the index and
+    # the text as a pair. This function did `x["line"].strip()` and the
+    # AttributeError took down the whole ingest, so nineteen sound files went
+    # unread because one was wrong. Count it and let the run continue.
+    r["malformed"] = sum(1 for x in out if not isinstance(x.get("line"), str))
+    r["blank"] = sum(1 for x in out
+                     if not isinstance(x.get("line"), str) or not x["line"].strip())
 
     inv = ovr = dmg = 0
     wc = collections.Counter()

@@ -172,3 +172,31 @@ wrong.
 
 `verify_slice.py out-NNN.jsonl` runs the same check mechanically and takes a
 second. Run it before you report.
+
+## The scratchpad is shared, and a collision can write into ANOTHER slice's file
+
+Not hypothetical — it has now happened to four workers in one wave. A writer's
+helper script was overwritten mid-run by a sibling using the same generic name
+(`app.py`, `dump.py`, `b1.json`), and in two cases the consequence was worse than
+a lost script: one worker's first 60 lines were appended to **out-030.jsonl** — a
+different slice's output — and another's stale `dump.py` was silently repointed
+at `slice-022` while it was working on `slice-029`.
+
+Every one of them caught it, and how they caught it is the lesson:
+
+- the 60-line case, because its own file was still 250 lines when it expected 310;
+- the repointed-dump case, because it printed an id and checked it against its
+  own input before writing anything.
+
+Separately, those 60 foreign rows crashed the ingest: they carried the appender's
+`[index, text]` pair instead of a plain string, and one `AttributeError` took down
+a run over nineteen sound files. A malformed line is now counted as a finding
+rather than raised.
+
+So:
+
+- Work in your OWN subdirectory and put your slice number in every filename —
+  `s029_dump.py`, not `dump.py`.
+- Check an id from your input before every batch you write, not just at the start.
+- After each append, check your output's length is what you expect. If it is
+  short, look for your lines in a sibling's file before rewriting them.
