@@ -1172,6 +1172,11 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
           const carpetQ = Number(q.get("carpet"));
           const winQ = Number(q.get("win"));
           const layer = themeMarksLayer(mk, {
+            /* what the clock means by "now". The engine spells the present
+               `undefined` and broadcasts it to every layer; this layer reads
+               `year: undefined` as EVERY year. Telling it the present is what
+               keeps the end of the rail from lighting the whole century. */
+            presentYear: YEAR_MAX,
             elevAt: groundAt,
             zex: descriptor.look.zexByStep[0],
             bits: vocab.t.length,

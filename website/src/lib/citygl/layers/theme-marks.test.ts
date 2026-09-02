@@ -25,6 +25,13 @@ import {
      4. nothing is lit until something is selected — the default view is all
         decisions, and a filter that opens lit would be claiming the eight
         cover the city
+     5. the END OF THE RAIL is the present, not all time. The engine spells
+        the present `undefined` and broadcasts it straight to `onYear`; this
+        layer reads `year: undefined` as EVERY year. That lit the whole
+        century over a present-day city. It was fixed once in the React
+        effect that calls `setFilter` and NOT on this path, so it survived
+        on the path a reader actually uses — a scrub to the last year, and
+        the film reaching its end. Hence a test on `onYear` itself.
    ═══════════════════════════════════════════════════════════════════════ */
 
 const OPTS = {
@@ -54,6 +61,40 @@ describe("theme marks", () => {
     expect(l).not.toBeNull();
     expect(l!.setFilter({ bits: 0 })).toBe(0);
     expect(l!.meshes.every((m) => !m.visible)).toBe(true);
+  });
+
+  it("treats the engine's `undefined` year as the present, not all time", () => {
+    /* two decades far apart, one subject. Standing at the present, only the
+       present decade may light — the far one is a century away. */
+    const now = { ...spread(4, 0, 2026) };
+    const old = spread(4, 0, 1912);
+    const f: ThemeMarksFile = {
+      sources: now.sources,
+      s: [...now.s, ...old.s],
+      b: [...now.b, ...old.b.map((v) => v + 100)],
+      r: [...now.r, ...old.r],
+      x: [...now.x, ...old.x.map((v) => v + 100)],
+      y: [...now.y, ...old.y],
+      yr: [...now.yr, ...old.yr],
+      m: [...now.m, ...old.m],
+    };
+    const l = themeMarksLayer(f, { ...OPTS, presentYear: 2026 })!;
+    /* how many marks are actually DRAWN. The lit count comes back from
+       `setFilter`, and calling it again after `onYear` would overwrite the
+       state under test — the first version of this test did exactly that and
+       passed with the bug in place. So the assertion reads the meshes. */
+    const drawn = () => l.meshes.reduce((n, m) => n + (m.visible ? m.count : 0), 0);
+
+    expect(l.setFilter({ bits: 1, year: 2026 })).toBe(4);
+    expect(drawn()).toBe(4);
+
+    // the engine broadcasting the present must not widen the window
+    l.onYear?.(undefined);
+    expect(drawn()).toBe(4);
+
+    // and all-time is still reachable when a caller asks for it outright
+    expect(l.setFilter({ bits: 1, year: undefined })).toBe(8);
+    expect(drawn()).toBe(8);
   });
 
   it("lights only the selected subject", () => {

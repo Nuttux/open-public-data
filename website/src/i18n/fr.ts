@@ -4920,7 +4920,7 @@ const fr: Record<string, string> = {
   'us.sf.thecity.panel.lead_head': 'What the Board decided here',
   'us.sf.thecity.panel.units_head': 'Also here',
   'us.sf.thecity.panel.summary_by': "Written by us, out of this neighbourhood's own records.",
-  'us.sf.thecity.panel.summary_src': 'What this is drawn from',
+  'us.sf.thecity.panel.summary_src': 'Les actes qui la fondent',
   'us.sf.thecity.search.placeholder': 'Find a place, a neighbourhood, a street',
   'us.sf.thecity.search.seeds': 'The record has most to say about these:',
   'us.sf.thecity.search.loading': 'Loading what can be searched…',

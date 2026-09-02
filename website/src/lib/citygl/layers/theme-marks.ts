@@ -112,6 +112,25 @@ export interface ThemeMarksOptions {
   carpetBlocks?: number;
   /** override the window width — `?win=N` */
   windowYears?: number;
+  /**
+   * WHAT THE CLOCK MEANS BY "NOW".
+   *
+   * The engine spells the present `undefined` — the city as it stands, every
+   * layer's geometry ungated — and broadcasts that to every layer's `onYear`.
+   * This layer's own contract reads `year: undefined` as EVERY year, so the
+   * same value carries two meanings and the wrong one reached the window: at
+   * the end of the rail all 16,468 marks lit at once over a present-day city.
+   *
+   * It was fixed once, in the React effect that calls `setFilter` — and only
+   * there. `engine.setYear()` calls `onYear` DIRECTLY, which is the path a
+   * scrub to the last year and the film reaching its end both take, so the
+   * bug survived on the path a reader actually uses.
+   *
+   * So the layer is told what the present is and resolves it itself, at the
+   * one place both paths meet. `undefined` stays available as all-time for a
+   * caller that sets it explicitly through `setFilter`.
+   */
+  presentYear?: number;
   /** override the dot shape — `?mark=dot|glow|ring|tack|bead|disc|bar|cone` */
   shape?: MarkShape;
   /**
@@ -857,7 +876,9 @@ export function themeMarksLayer(
       resize();
     },
     onYear(year: number | undefined) {
-      if (cur.bits) apply({ ...cur, year });
+      /* the engine's `undefined` is the PRESENT, not all time — see
+         `presentYear`. Without this the end of the rail lights the century. */
+      if (cur.bits) apply({ ...cur, year: year ?? o.presentYear });
     },
     onFrame(cam: { scale: number }) {
       /* RE-SIZED ON A CAMERA MOVE, BUT NOT EVERY FRAME. A pan is thousands of

@@ -17905,21 +17905,31 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   border-bottom: 1px solid var(--rule);
 }
 .theme-fusion .fx-hood-src li:last-child { border-bottom: 0; }
+/* ── OUR CLAUSE LEADS, THE CLERK'S LINE IS THE EVIDENCE ──────────────────
+   These two rules were the right way round when this list was provenance
+   behind a fold. It is the record now, and it read backwards: the readable
+   clause — "parts of Grand View Avenue closed, 1930" — was 10 px mono caps,
+   while "Of Intention No. 31853 (New Series) be and the same is hereby
+   ordered" was 13 px blue. Same rule the year list and the mark card keep:
+   the sentence a reader can read is the line, the volume's words are under
+   it, and the link is what opens the scan. */
 .theme-fusion .fx-hood-src-for {
+  display: block;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+.theme-fusion .fx-hood-src-a {
   display: block;
   font-family: var(--f-mono);
   font-size: 10px;
-  letter-spacing: .05em;
-  text-transform: uppercase;
+  letter-spacing: .03em;
+  line-height: 1.5;
   color: var(--muted);
-  margin-bottom: 3px;
-}
-.theme-fusion .fx-hood-src-a {
-  font-size: 13px;
-  line-height: 1.4;
-  color: var(--bleu);
   text-decoration: none;
 }
+.theme-fusion .fx-hood-src-a:hover { color: var(--bleu); }
 .theme-fusion .fx-hood-src-a:hover { text-decoration: underline; }
 
 /* the neighbourhood's name at the top of a fiche is a way into it */

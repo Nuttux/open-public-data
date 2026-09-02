@@ -2059,23 +2059,44 @@ function HoodSummaryLine({
           "Written by us, out of this neighbourhood's own records.",
         )}
       </p>
+      {/* ── THE RECORDS THE PARAGRAPH STANDS ON, IN THE OPEN ──────────────
+          These were behind a closed fold labelled "what this is drawn from",
+          read as provenance, while a ranked top-three sat above them under
+          "what mattered most here". Measured, the ranking was the weaker of
+          the two: a flat rubric anchor of 80 for a transit line ordered or
+          extended, against forty years of track-laying, made 46% of all
+          highlights streetcars and buses and gave 20 of 41 neighbourhoods a
+          bus route as the most important thing that ever happened there.
+          Twin Peaks' paragraph cites fifteen records from 1909 to 2025 —
+          street closures, blasting permits, a pump station that outlived
+          itself — every one of them chosen because a written clause rests on
+          it, and every one specific to that hill.
+
+          So this IS the record now, and each row says which clause it backs.
+          The ranked list survives only where no paragraph has been written. */}
       {src.length > 0 ? (
-        <details className="fx-shelf-more">
-          <summary>
-            {tOr(t, "us.sf.thecity.panel.summary_src", "What this is drawn from")}
-            {` \u00b7 ${src.length}`}
-          </summary>
+        <>
+          <div className="fx-city-ledger-head fx-block-sec">
+            {tOr(t, "us.sf.thecity.panel.summary_src", "The records behind it")}
+          </div>
           <ul className="fx-hood-src">
             {src.map((r) => (
               <li key={`${r.u}:${r.for}`}>
-                <span className="fx-hood-src-for">{r.for}</span>
+                <span className="fx-hood-src-for">
+                  {r.for.charAt(0).toUpperCase() + r.for.slice(1)}
+                </span>
                 <a
                   className="fx-hood-src-a"
                   href={sourceHref({ u: r.u })}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  {r.y} \u2014 {r.t} \u2197
+                  {/* JSX TEXT IS NOT A STRING LITERAL. These were written as
+                      \u2014 and \u2197 directly in the markup, where the escape
+                      is not interpreted and the reader sees the six characters.
+                      It shipped because the row lived inside a closed fold;
+                      opening that fold is what made it visible. */}
+                  {`${r.y} — ${r.t} ↗`}
                 </a>
               </li>
             ))}
@@ -2091,7 +2112,7 @@ function HoodSummaryLine({
                 .replace("{sampled}", read.sampled ?? "\u2014")}
             </p>
           ) : null}
-        </details>
+        </>
       ) : null}
     </div>
   );
@@ -2124,11 +2145,11 @@ function HoodLevel({
     <>
 
       <HoodSummaryLine recs={recs} t={t} />
-      {/* WHAT MATTERED MOST, straight after the paragraph — the two things a
-          reader came for, before any control. The order of this page is now:
-          the sentence, our paragraph, the three that mattered, the decades,
-          the subjects, the money, and how it is made. */}
-      {hood ? <HoodHighlights hood={hood} t={t} /> : null}
+      {/* THE FALLBACK, AND ONLY THE FALLBACK. Where a paragraph exists its own
+          cited records are the record — written for, and chosen by, a reader
+          who read the place. Six of forty-one neighbourhoods have no
+          paragraph; there the ranked list is all there is, and it runs. */}
+      {hood && !recs.summary ? <HoodHighlights hood={hood} t={t} /> : null}
       <div className="fx-city-ledger-head fx-block-sec">
         {t("us.sf.thecity.panel.rail_head")}
       </div>
