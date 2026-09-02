@@ -290,3 +290,27 @@ entry, not just between items:
 Every one of those writers dropped the figure rather than staple it to the wrong
 party, which is the right call and costs the number. It is the same defect as the
 trailing title: the chunker cuts where the Clerk did not.
+
+### The backward reach, done safely — a writer found the guard my regex lacked
+
+I trialled synthesising a title from the previous chunk's tail and abandoned it:
+the titles did not match the bodies they would attach to. A writer on a 1967-68
+slice did the same reach and got it right, because it added the condition I had
+not:
+
+    use the previous chunk's trailing heading ONLY where the streets it names
+    match the streets in THIS record's own parenthetical.
+
+It then verified the chain on sixteen consecutive pairs in its own slice before
+using it once — 4->5, 27->28, 28->29, 36->37, 73->74, 113->114, 115->116,
+144->145, 174->175, 176->177, 190->191, 191->192, 205->206, 225->226, 245->246,
+247->248 — each time the trailing title's streets reappearing as the next
+record's parenthetical.
+
+That is the difference between the reach being sound and being a guess. My
+version attached "Authorizing Payment, Water Service" to a bottling permit
+because it had no such test. The rule is not "take the previous tail"; it is
+"take it when the record itself corroborates it".
+
+Worth building into the harness on those terms, with the street match as a hard
+precondition and the record left title-less when it fails.
