@@ -178,3 +178,27 @@ which only checks that the words are somewhere in the page's text.
     TO DO: pull those slices' ids back with retract.py and rewrite them under
     the corrected rule. They are identifiable by slice, which is why this list
     exists — do not re-read decades wholesale.
+
+## The corpus is not all minutes — 1,105 records are annual reports
+
+A writer found two thirds of its slice was Board of Public Works annual reports
+(`reportofboardof1908sanf`, `annualreportofb1912sanf`, `annualreportbu19151920san`)
+rather than Journal minutes: sliding OCR windows over paragraphs, bare table rows
+that are a street range and a dash, and the same paragraph repeated across two
+volumes as overlapping windows rather than as duplicates.
+
+Measured corpus-wide it is 1,105 records, 0.7% — that slice drew a concentrated
+pocket, not a representative sample. Composition:
+
+    Journal of Proceedings          88,876   55.8%
+    modern minutes                  56,435   35.5%
+    other Journal series             4,960    3.1%
+    annual reports                   1,105    0.7%
+
+Small, but they are not decisions and the site presents them beside decisions.
+PROMPT.md's honest last-resort line is written for a roll call and does not fit
+a table row; the writer wrote what the page states ("Sewer on Seventeenth Avenue
+built by Owen McHugh, $2,333") and said the spec has no form for these.
+
+Worth deciding whether they belong in a decisions corpus at all before the next
+export.
