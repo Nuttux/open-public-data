@@ -330,7 +330,11 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
           zoomDelta: 1,
           /* the wheel is handled below, see §AND THE WHEEL IS NOT LEAFLET'S */
           scrollWheelZoom: false,
-          fadeAnimation: false,
+          /* a tile fades IN over the coarse underlay rather than snapping in
+             over it — with the underlay there, what shows through the fade is
+             the blurred city, never the paper, and a level's tiles arriving
+             one by one read as the picture sharpening rather than flickering */
+          fadeAnimation: true,
           markerZoomAnimation: false,
           inertia: true,
           bounceAtZoomLimits: false,
@@ -380,7 +384,9 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
             maxNativeZoom: zmax,
             noWrap: true,
             bounds: extent,
-            keepBuffer: 2,
+            /* two tiles of margin around the view, fetched ahead, so a pan
+               or a small pinch lands on tiles that are already there */
+            keepBuffer: 4,
             updateWhenZooming: true,
             updateInterval: 100,
             className: "fx-city-tile",
@@ -414,7 +420,14 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
           const next = layerFor(key, zmax).addTo(map);
           tiles = next;
           const done = () => { if (map && tiles === next) map.removeLayer(old); };
-          next.once("load", done);
+          /* AFTER THE FADE, NOT AFTER THE LOAD. `load` fires when the tiles are
+             in, while they are still fading up from transparent (Leaflet's
+             fade is 200 ms); taking the old year away then showed the blurred
+             underlay through the half-faded new one for a frame — MEASURED as
+             a jump of 24 on the frame-difference scale where a clean swap is
+             under 2. The old year stays under the new one until the fade is
+             over. */
+          next.once("load", () => setTimeout(done, 300));
           /* a year whose tiles are all cached fires no load at all */
           setTimeout(() => { if (map && tiles === next && map.hasLayer(old)) done(); }, 1500);
         };
