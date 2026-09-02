@@ -202,3 +202,44 @@ built by Owen McHugh, $2,333") and said the spec has no form for these.
 
 Worth deciding whether they belong in a decisions corpus at all before the next
 export.
+
+## THE CHUNK BOUNDARY IS IN THE WRONG PLACE — the largest structural defect left
+
+Four writers reached this independently, from different decades, each verifying
+it on consecutive records before saying so:
+
+    the Journal prints   [Title] [File No.] [Resolution No.] [detail] [vote]
+    the chunker cuts     ...........................|..............
+                                            at the vote
+
+So a chunk holds the TAIL of one item (its verdict) and the HEAD of the next
+(its title), and no chunk holds one item whole. That is why the tally-wall rule
+is correct and expensive at the same time: a record's own title reliably sits at
+the end of the PREVIOUS chunk, where it cannot be used without borrowing.
+
+What it costs, from the writers' own counts:
+
+    slice 008  1960-67   177 of 500 lines (35%) say no subject
+    slice 005  1942-49   127 of 500 (25%)
+    slice 019  1953-56   159 of 451 (35%)
+    slice 011  1990s      90 of 500 (18%)
+
+Measured corpus-wide: 5,028 records have nothing before the tally, and 1,627 of
+those have a predecessor whose tail is a usable title. That is smaller than the
+per-slice rates above because those also count page footers, index pages and
+mid-sentence fragments, which no chunker fix would rescue.
+
+TWO WAYS TO FIX IT, and they are not equal:
+
+  1. Re-chunk at the item boundary. Correct, and it renumbers `i` within every
+     volume — which repoints every written line, since an id is `{v}|{i}`. That
+     is the one operation the checksum in harness.py exists to prevent doing by
+     accident. It would mean rewriting the store from scratch.
+
+  2. Synthesise `ht` at load time from the previous chunk's post-tally tail,
+     exactly as the modern records carry a real one. Ids never move, the store
+     stays valid, and writers get the subject the Clerk actually printed.
+     Recovers ~1,627 records on the measurement above.
+
+(2) is the one to do. It is the same shape as the fix that recovered the modern
+era, and it is reversible.
