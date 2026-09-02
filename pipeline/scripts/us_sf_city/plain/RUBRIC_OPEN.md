@@ -1752,3 +1752,37 @@ reader reports a defect, the report names ONE example because that is what the
 reader met. The fix must be written against the shape, not the example, and then
 walked past every anchor that shares the shape. Six v7 defects and three
 scoped-too-narrow fixes all come from skipping that step.
+
+## MEASURED: the seam my own mid-wave repairs created is 40 records
+
+I issued repairs to the broken v7 clauses partway through the wave, so batches
+were read under three different instructions:
+
+    024, 050-067   no repairs — the literal v7 text
+    068-072        told to apply the broken clauses AS WRITTEN and report
+    073 onward     told to apply the repairs
+
+Batch 094 found the consequence by cross-checking its anchors against 46,836
+already-scored sibling lines — the only reader to check its work against the
+corpus rather than only against the rubric. Sibling batches stacked +6 on the
+traffic ladder ("tow-away on the Kearny Street cul-de-sac" = 42); under repair
+(b) the same line is 36.
+
+Sized across all 1,896 v7 traffic-shaped lines:
+
+    at 36 (repair applied)          822
+    at 42 (pre-repair stacking)      40      2.1%
+
+So the seam is 40 records and it does not cross a band — both readings sit in
+30-54. It is worth recording rather than fixing: those rows are inside the
+families the v8 selector already returns, so they will be re-read anyway when
+the floor change lands.
+
+The general point is larger than the number. Changing instructions mid-wave
+makes cohorts, and cohorts are invisible to every gate in the harness — the ids
+are right, the counts are right, the stamps are right. Only a reader comparing
+itself against its siblings could see it, and only because one thought to.
+
+    FOR NEXT TIME: if a repair has to be issued mid-wave, record which batch
+    numbers received it. I did not, and had to reconstruct the cohorts from
+    the dispatch history to size this.
