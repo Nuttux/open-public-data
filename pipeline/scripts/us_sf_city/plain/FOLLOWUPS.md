@@ -243,3 +243,29 @@ TWO WAYS TO FIX IT, and they are not equal:
 
 (2) is the one to do. It is the same shape as the fix that recovered the modern
 era, and it is reversible.
+
+### Tried the load-time title synthesis. It does not work mechanically.
+
+Trial run before writing anything: take each title-less record, look at the
+previous chunk's post-tally tail, keep it if it looks like a Title Case heading
+with no vote vocabulary. Result: 99 records, and the samples are wrong.
+
+    synthesised title                      the record's actual body
+    Authorizing Payment, Water Sepvice.    Granting the Bay Bottling Company...
+    Authorizing Payment, Street Repairs.   Amending Ordinance No. 1061...
+
+Two things follow. The 99 is far below the 1,627 the earlier count suggested,
+so the tail extraction is picking the wrong span. And where it does fire, the
+title belongs to neither this record nor the obvious neighbour — the offset is
+not a clean one-record shift everywhere, whatever it is in the volumes the
+writers read by hand.
+
+So the writers' finding stands (they verified it by reading consecutive records,
+repeatedly, in several decades) and my mechanisation of it does not. Shipping it
+would attach a plausible wrong subject to 99 records, which is the failure this
+whole pass exists to remove.
+
+What a real fix would need: the chunker's own boundary logic, not a regex over
+its output. `_sfbos_sweep.py` already parses the Clerk's typography correctly for
+the modern files — it is the historic Journal volumes that lack an equivalent.
+That is the piece of work, and it is bigger than a load-time patch.
