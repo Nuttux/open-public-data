@@ -102,3 +102,50 @@ Two things are needed: the script that builds it, committed, and a checksum
 recorded beside the store so a rebuilt file can be proven identical before it
 is trusted. Until then the store is one `/tmp` sweep away from being
 unattributable.
+
+## THE MODERN CORPUS IS MISSING 80% OF ITSELF — 34,896 records
+
+Found because the top-scoring modern records looked too small for what a Board
+actually does. They were not mis-scored; most of the big ones are not in the
+corpus at all.
+
+    modern (sfbos:) records in items_merged.jsonl      8,611
+    modern records the full sweep captured            43,507
+    in the sweep and NOT in our corpus                34,896
+    in our corpus and not the sweep                        0
+
+A clean subset, so the fix is purely additive and no id collides.
+
+WHY. `sweep_sfbos_all.py` exists precisely to undo this, and its own docstring
+names the defect: `fetch_sfbos_minutes.py --extract` writes a row only when an
+item resolves to a street, so "everything the Board did to the WHOLE CITY was
+discarded at the door... the budget, the emergency proclamations and the
+eviction moratoria are not in the file." The modern slice of items_merged.jsonl
+was built from the FILTERED set. The re-sweep that keeps every item was written,
+ran, and was never merged in.
+
+MEASURED CONSEQUENCES, all of which we saw and misread as something else:
+
+    "Concurring in Actions" items (the COVID emergency motions)
+        in our corpus        0
+        in the full sweep  112
+    covid / coronavirus mentions
+        in our corpus       14
+        in the full sweep  848
+    bracketed titles — the line that NAMES an item's subject
+        present on 49 of 1,659 records dated 2020-21
+
+That last one explains the "no subject on this page" epidemic readers reported
+in every modern batch, and it explains why v7 needed a rule for "a line naming
+a subject but no act". The subject was in the title, and the title was not
+captured. We wrote rubric clauses to cope with a data defect.
+
+WHAT IT MEANS FOR THE SCORING PASS. Nothing already scored is wrong — those
+8,611 records are real and were read correctly. But the modern era's most
+consequential business (emergency powers, the annual budget, minimum wage,
+sanctuary policy, eviction moratoria) was never offered to a reader, and the
+"what mattered most" ranking for 2015-2026 cannot be trusted until it is.
+
+NEXT: append the 34,896 from cache_sfbos/items_all.jsonl, re-stamp the corpus
+checksum, write plain lines for them, and score them at v7. They are additive,
+so nothing already done needs redoing.
