@@ -48,6 +48,7 @@ RULES
    and does not flag it. Writers keep assuming otherwise and reverting to the
    comma form; measured, that assumption is false. (The one real gap: a record
    that prints the amount with no dollar sign at all.)
+   Above a billion use $2.5B — the gate reads that too.
 6. NO JARGON. "conditional use" -> "a change of use"; "full/conditional acceptance of
    the roadway" -> "the city takes over the new roadway"; "official grades" -> "street
    levels"; "set-back lines" -> "how far back buildings must sit"; "revocable at will

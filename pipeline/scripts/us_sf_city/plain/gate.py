@@ -74,24 +74,33 @@ def _near(word, stems, src):
     return False
 
 
+# $3.4M and $2.5B both stand for a figure the record prints in full. Two
+# writers reported the B case as a false "invented" flag, on the largest
+# items in the corpus — airport bonds, the city's yearly spending limit.
+_SCALE = {"m": 1_000_000, "b": 1_000_000_000}
+
+
 def _rounds_to(w, record):
-    m = re.fullmatch(r"\$?([\d.]+)m", w.lower())
+    m = re.fullmatch(r"\$?([\d.]+)([mb])", w.lower())
     if not m: return False
+    unit = _SCALE[m.group(2)]
     try: want = round(float(m.group(1)), 1)
     except ValueError: return False
     for n in re.findall(r"\$\s?([\d][\d,]*)", record):
         v = int(n.replace(",", ""))
-        if v >= 100_000 and round(v / 1_000_000, 1) == want: return True
+        if v >= unit // 10 and round(v / unit, 1) == want: return True
     return False
 
 
 def _money_forms(w):
     """$40.0M in a line stands for $40,000,000 in the record."""
-    m = re.fullmatch(r"\$?([\d.]+)m", w.lower())
+    m = re.fullmatch(r"\$?([\d.]+)([mb])", w.lower())
     if not m: return []
-    try: v = int(float(m.group(1)) * 1_000_000)
+    unit = _SCALE[m.group(2)]
+    word = "million" if unit == 1_000_000 else "billion"
+    try: v = int(float(m.group(1)) * unit)
     except ValueError: return []
-    return [str(v), f"{v:,}", f"{v/1_000_000:g} million", f"{v//1_000_000} million"]
+    return [str(v), f"{v:,}", f"{v/unit:g} {word}", f"{v//unit} {word}"]
 
 
 def invented(line, record):
