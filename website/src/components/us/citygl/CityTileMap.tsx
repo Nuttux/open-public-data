@@ -270,7 +270,7 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
           maxBounds: extent.pad(0.25),
           maxBoundsViscosity: 0.8,
         });
-        const layerFor = (key: string, zmax: number) =>
+        const layerFor = (key: string, zmax: number, zIndex = 2) =>
           L.tileLayer(`${base}/${key}/{z}/{x}/{y}.webp`, {
             tileSize: TILE_CSS,
             minNativeZoom: 0,
@@ -281,13 +281,29 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
             updateWhenZooming: true,
             updateInterval: 100,
             className: "fx-city-tile",
+            zIndex,
           });
+        /* ── THE UNDERLAY: THE COARSE CITY, ALWAYS THERE ─────────────────
+           Leaflet keeps a dropped level's tiles only two levels down and five
+           up while the next level loads, so a flight from the street to the
+           whole city — five levels out — showed 52 % paper for a frame
+           (MEASURED), and a slow connection shows paper in every gap. The
+           first three levels are nine tiles and 0.3 MB; a second layer that
+           never goes past level 2 keeps them under everything at every zoom,
+           scaled, so a gap is the blurred city and not the sheet. It is what
+           every tile map a reader has used does. */
+        const UNDER_ZMAX = 2;
+        const under = layerFor(pyramid, Math.min(UNDER_ZMAX, tp.zmax), 1).addTo(map);
         let tiles = layerFor(pyramid, tp.zmax).addTo(map);
         let tilesKey = pyramid;
         /* ── THE SWAP: THE NEW YEAR OVER THE OLD, THEN THE OLD GOES ────── */
         const showKey = (key: string, zmax: number) => {
           if (!map || key === tilesKey) return;
           tilesKey = key;
+          /* the underlay follows the year; a redraw of a layer nobody sees
+             through the one above costs nothing visible */
+          under.options.maxNativeZoom = Math.min(UNDER_ZMAX, zmax);
+          under.setUrl(`${base}/${key}/{z}/{x}/{y}.webp`);
           const old = tiles;
           const next = layerFor(key, zmax).addTo(map);
           tiles = next;
@@ -422,11 +438,21 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
           const [X, Y] = tp.toFrame(c[0], c[1]);
           return { at: ll(X, Y), zoom: Math.min(tp.zmax + 1, Math.max(0, tp.zoomFor(scale))) };
         };
+        /* ── EVERY JUMP IS A FLIGHT, NEVER A CUT ─────────────────────────
+           `setView` without animation — and with it, past four levels, where
+           Leaflet declines to animate — goes through `_resetView`, and the
+           tile layer answers that by dropping every tile: MEASURED, the "a
+           few streets" chip showed 72 % paper for a frame. `flyTo` moves the
+           view frame by frame the way a pinch does, keeping every tile it
+           has, and never resets. Short, so it reads as a cut with continuity
+           rather than as a tour. */
+        const fly = (at: LatLng, zoom: number) =>
+          map?.flyTo(at, zoom, { duration: 0.55, easeLinearity: 0.3 });
         const built = descriptor.stops.map((s, i) => ({
           label: s.label,
           go: () => {
             const z = zoomOf(s);
-            map?.setView(z.at, z.zoom, { animate: false });
+            fly(z.at, z.zoom);
             setZoomStop(i);
           },
         }));
@@ -500,7 +526,7 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
               const c = projection.proj(sx / ring.length, sy / ring.length, 0);
               const [X, Y] = tp.toFrame(c[0], c[1]);
               const z = zoomOf(descriptor.stops[stop] ?? descriptor.stops[descriptor.stops.length - 1]);
-              map.setView(ll(X, Y), z.zoom, { animate: false });
+              fly(ll(X, Y), z.zoom);
             }
             if (overlay) {
               overlay.highlight = picker.ringOf(pos);

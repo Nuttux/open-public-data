@@ -15,6 +15,9 @@
 
    usage:  node scripts/render-city-years.mjs --years 1906-2026 --zmax 3
            node scripts/render-city-years.mjs --years 1906,1915,1937 --zmax 5
+   One browser for all of them (`render-city-tiles.mjs --years`): a wide year
+   is 7 s of rendering against a 15 s boot, so a process per year was three
+   parts boot to one part work.
    (`--out` and `--base` pass through; the dev server must be on :3000, and
    NOTHING under website/ may be edited while it runs — a reload kills it)
    ═══════════════════════════════════════════════════════════════════════ */
@@ -34,11 +37,10 @@ for (const part of spec.split(',')) {
   else if (/^\d{4}$/.test(part.trim())) years.push(Number(part));
 }
 const t0 = Date.now();
-for (const y of years) {
-  const r = spawnSync(process.execPath, ['scripts/render-city-tiles.mjs', '--year', String(y), '--zmax', ZMAX, '--out', OUT, '--base', arg('--base', 'http://localhost:3000')], { stdio: ['ignore', 'pipe', 'inherit'] });
-  const last = String(r.stdout).trim().split('\n').pop();
-  console.log(`${y}  ${last}  (${((Date.now() - t0) / 1000).toFixed(0)}s)`);
-  if (r.status !== 0) { console.error(`year ${y} failed`); process.exit(1); }
+{
+  const r = spawnSync(process.execPath, ['scripts/render-city-tiles.mjs', '--years', years.join(','), '--zmax', ZMAX, '--out', OUT, '--base', arg('--base', 'http://localhost:3000')], { stdio: 'inherit' });
+  if (r.status !== 0) { console.error('render failed'); process.exit(1); }
+  console.log(`${years.length} years in ${((Date.now() - t0) / 1000).toFixed(0)}s`);
 }
 /* the list is whatever is on disk, not whatever this run did */
 const list = { now: null, years: {} };

@@ -42,9 +42,23 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const arg = (k, d) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : d; };
-const YEAR = arg('--year', 'now');
+/* ONE BROWSER FOR MANY YEARS. Booting the page is ~15 s and a wide year is
+   7 s of rendering, so a year per process was three parts boot to one part
+   work. `--years 1906-1925,1950` renders each in turn on the one page; the
+   engine's `setYear` is a draw-range gate, so switching costs nothing. */
+const YEARS = (() => {
+  const spec = arg('--years', '');
+  if (!spec) return [arg('--year', 'now')];
+  const out = [];
+  for (const part of spec.split(',')) {
+    const m = /^(\d{4})-(\d{4})$/.exec(part.trim());
+    if (m) for (let y = Number(m[1]); y <= Number(m[2]); y++) out.push(String(y));
+    else if (part.trim()) out.push(part.trim());
+  }
+  return out;
+})();
 const ZMAX = Number(arg('--zmax', 7));
-const OUT = path.resolve(arg('--out', 'public/tiles/us/sf/city'), YEAR);
+const OUT_ROOT = path.resolve(arg('--out', 'public/tiles/us/sf/city'));
 const BASE = arg('--base', 'http://localhost:3000');
 const T = 512;                       // tile edge, device pixels
 const CSS = { w: 1280, h: 768 };     // one capture window, CSS pixels — 5 x 3 tiles at dpr 2
@@ -126,7 +140,6 @@ if (Math.round(stageBox.width) !== CSS.w || Math.round(stageBox.height) !== CSS.
 }
 /* the capture: the stage minus PAD rows top and bottom, still centred on the camera */
 const box = { x: stageBox.x, y: stageBox.y + PAD, width: CSS.w, height: CSS.h };
-if (YEAR !== 'now') await p.evaluate((y) => window.__cityGL.setYear(y), Number(YEAR));
 
 const pose = async (cx, cy, scale, band) => {
   await p.evaluate(([cx, cy, scale, band]) => { const e = window.__cityGL; e.setStep(band); e.setCamera({ cx, cy, scale }); e.invalidate(); }, [cx, cy, scale, band]);
@@ -139,6 +152,10 @@ const pose = async (cx, cy, scale, band) => {
   if (process.env.TRACE) console.log('pose', JSON.stringify({ cx: +cx.toFixed(1), cy: +cy.toFixed(1), scale: +scale.toFixed(6), band, got: { cx: +got.cx.toFixed(1), cy: +got.cy.toFixed(1), scale: +got.scale.toFixed(6), step: got.step, vp: got.vp } }));
 };
 
+for (const YEAR of YEARS) {
+const OUT = path.join(OUT_ROOT, YEAR);
+await p.evaluate((y) => window.__cityGL.setYear(y === 'now' ? undefined : Number(y)), YEAR);
+await p.waitForTimeout(400);
 const index = { tile: T, dpr: DPR, ref: REF, levels: {} };
 let total = 0, bytes = 0;
 const t0 = Date.now();
@@ -184,5 +201,6 @@ for (let z = 0; z <= ZMAX; z++) {
   console.log(`z${z}  band ${band}  ${nx}x${ny} tiles  ${grid * grid} captures  ${(bytes / 1048576).toFixed(1)} MB so far  ${((Date.now() - t0) / 1000).toFixed(0)}s`);
 }
 fs.writeFileSync(path.join(OUT, 'index.json'), JSON.stringify(index, null, 1));
-console.log(`\n${total} tiles, ${(bytes / 1048576).toFixed(1)} MB -> ${OUT}`);
+console.log(`${YEAR}: ${total} tiles, ${(bytes / 1048576).toFixed(1)} MB -> ${OUT}`);
+}
 await b.close();
