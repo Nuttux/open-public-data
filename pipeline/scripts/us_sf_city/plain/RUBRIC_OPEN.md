@@ -1927,3 +1927,39 @@ Neither is a large population, and no rescoring is required to make the corpus
 usable — but v8 should state the partition in one sentence where both rules can
 see each other, and the flat-16 batches are where to look first for open policy
 hearings sitting at 16.
+
+## What the score distribution means for sorting — measured at 143,678 records
+
+Eighty distinct scores exist, but twelve of them hold two thirds of the corpus:
+
+    18  18,847 (13.1%)   33  12,093 (8.4%)   36  9,698 (6.7%)
+    38   8,666 ( 6.0%)   40   8,523 (5.9%)   34  6,519 (4.5%)
+    22   6,198 ( 4.3%)   44   6,036 (4.2%)   48  4,841 (3.4%)
+    16   4,770 ( 3.3%)    6   4,576 (3.2%)   26  3,636 (2.5%)
+
+Read carelessly that looks fatal for ranking. It is not, because the pile-up is in
+the middle and bottom, not the top:
+
+    80 and above       775 records
+    70 and above     4,745
+    60 and above     8,513
+
+So "show me what matters" works: the top of the ranking is a browsable 775, and
+the top two bands together are under 5,000. Nobody has to break a tie to find the
+interesting material.
+
+Where ties DO bite is inside a band. 18,847 records share the score 18, so any
+list showing that band is in arbitrary order, and the sort carries no information
+there. Two things follow for the work still outstanding:
+
+- Lowering the 18 floor (already recommended, and the settlement examples in the
+  batch reports make the case) would break up the single largest pile by letting
+  the money gradient act again.
+- Duplicate collapsing matters most inside these piles, not at the top. One batch
+  found nineteen identical vendor lines at $20M each from a single procurement,
+  and another found 86 public-comment rows sharing one score. Collapsing those is
+  what makes a band readable, and it needs no rubric change.
+
+Worth stating plainly so nobody optimises the wrong end: the ranking is already
+usable for finding the important records, and the remaining work improves
+BROWSING WITHIN a band rather than the quality of the top.
