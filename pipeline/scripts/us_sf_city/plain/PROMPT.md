@@ -103,8 +103,24 @@ mistake the surrounding roll call for the whole record:
     GOOD: Wires go underground on Octavia Street
 
     Resolution No. 31-99 ADOPTED 982117 [Emergency Repair, Brannan Street Sewer]
-    BAD : An adoption vote with no subject on this page
-    GOOD: Emergency repair ordered on the Brannan Street sewer
+    BAD : Emergency repair ordered on the Brannan Street sewer
+    GOOD: An adoption vote with no subject on this page
+
+    ── THIS EXAMPLE USED TO SAY THE OPPOSITE, AND IT WAS WRONG ──────────────
+    A bracketed title at the END of a chunk, after a file number that is not
+    this record's, introduces the item BELOW it. `_sfbos_sweep.py` measured
+    the Clerk's typography directly: "The header sits ABOVE the item it
+    introduces, and never anywhere else" — `NNNNNN [` occurs 24,624 times
+    across the 390 PDFs and behaves that way in every one.
+
+    Three writers reported this file contradicting WORKER.md and ERA-1940 D,
+    and each checked it against the corpus before following the correction:
+    consecutive records showed the trailing bracket to be the NEXT record's
+    subject (a claim, a lease at One Jones Street, Lech Walesa parking). It
+    is worth ~51 lines in a single slice, so the disagreement was expensive.
+
+    A bracket that opens a chunk, or one that follows this record's own file
+    number with nothing in between, IS this record's subject. Use it.
 
 Only when there is NO title, in brackets or otherwise, and the whole record is
 roll call, say so plainly ("A vote with no subject on this page"). That is a
