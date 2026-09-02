@@ -125788,3 +125788,989 @@
 {"id": "sfbos:bag120120|27", "y": 2020, "line": "$150,000 paid to settle an employment claim", "flags": {}}
 {"id": "sfbos:bag120120|28", "y": 2020, "line": "Commercial tenants could end leases they cannot pay", "flags": {}}
 {"id": "sfbos:bag120120|29", "y": 2020, "line": "Commercial tenants shielded from eviction and allowed to end leases", "flags": {}}
+{"id": "journalofproceed23sanfrich|2912", "y": 1928, "line": "Money set aside for Eighth Street between Market and Mission", "flags": {}}
+{"id": "journalofproceed23sanfrich|2913", "y": 1928, "line": "Money set aside for Potrero Avenue between Sixteenth and Army", "flags": {}}
+{"id": "journalofproceed23sanfrich|2914", "y": 1928, "line": "Money set aside for Duboce Avenue and for Geary Street", "flags": {}}
+{"id": "journalofproceed23sanfrich|2915", "y": 1928, "line": "Money set aside for Montgomery Street between Post and Columbus", "flags": {}}
+{"id": "journalofproceed23sanfrich|2916", "y": 1928, "line": "Money set aside for Pine Street between Leavenworth and Taylor", "flags": {}}
+{"id": "journalofproceed23sanfrich|2917", "y": 1928, "line": "A vote with no subject on this page", "flags": {}}
+{"id": "journalofproceed23sanfrich|2918", "y": 1928, "line": "Money set aside for Guerrero Street between Eighteenth and San Jose", "flags": {}}
+{"id": "journalofproceed23sanfrich|2919", "y": 1928, "line": "Money set aside for Haight Street between Scott and Baker", "flags": {}}
+{"id": "journalofproceed23sanfrich|2920", "y": 1928, "line": "Money set aside for Jackson Street between Hyde and Larkin", "flags": {}}
+{"id": "journalofproceed23sanfrich|2921", "y": 1928, "line": "Money set aside for Laguna Street north of Bay Street", "flags": {}}
+{"id": "journalofproceed23sanfrich|2922", "y": 1928, "line": "Money set aside for Mission Street between Fourteenth and Army", "flags": {}}
+{"id": "journalofproceed23sanfrich|2923", "y": 1928, "line": "Money set aside for Montgomery Street between Post and Columbus", "flags": {}}
+{"id": "journalofproceed23sanfrich|2924", "y": 1928, "line": "Money set aside for Pine Street between Leavenworth and Taylor", "flags": {}}
+{"id": "journalofproceed23sanfrich|2925", "y": 1928, "line": "Money set aside for Washington Street between Leavenworth and Hyde", "flags": {}}
+{"id": "journalofproceed23sanfrich|2926", "y": 1928, "line": "Curb costs on Eighth Street repaid from Market to Mission", "flags": {}}
+{"id": "journalofproceed23sanfrich|2927", "y": 1928, "line": "Retirement system paid from boulevard bond, road and school funds", "flags": {}}
+{"id": "journalofproceed23sanfrich|2933", "y": 1928, "line": "Permit granted at the southeast corner of Post and Broderick", "flags": {}}
+{"id": "journalofproceed23sanfrich|2934", "y": 1928, "line": "Auto parking station transferred to O. B. Olsen, 57 Mission Street", "flags": {"invented": ["Olsen,"]}}
+{"id": "journalofproceed23sanfrich|2948", "y": 1928, "line": "Permit granted for premises at Mission and Maynard streets", "flags": {}}
+{"id": "journalofproceed23sanfrich|2955", "y": 1928, "line": "Street levels set on Circular Avenue at Marston Avenue", "flags": {}}
+{"id": "journalofproceed23sanfrich|2968", "y": 1928, "line": "Traffic code amended to define what counts as a street", "flags": {}}
+{"id": "journalofproceed23sanfrich|2969", "y": 1928, "line": "Loading zones set at the Powell-Pine Apartments and Marina Theatre", "flags": {}}
+{"id": "journalofproceed23sanfrich|2970", "y": 1928, "line": "Loading zones cut at the Russ Building and Bank of California", "flags": {}}
+{"id": "journalofproceed23sanfrich|2974", "y": 1928, "line": "Market Street Railway letter to employees challenged as a misstatement", "flags": {}}
+{"id": "journalofproceed23sanfrich|2976", "y": 1928, "line": "Hearing set on how far back buildings must sit, Eighteenth Avenue", "flags": {}}
+{"id": "journalofproceed23sanfrich|2988", "y": 1928, "line": "$11,000 paid to Joseph J. Powers for Bernal Cut land", "flags": {}}
+{"id": "journalofproceed23sanfrich|2989", "y": 1928, "line": "Money set aside for Guerrero Street between Eighteenth and San Jose", "flags": {}}
+{"id": "journalofproceed23sanfrich|2990", "y": 1928, "line": "Money set aside for Haight Street between Scott and Baker", "flags": {}}
+{"id": "journalofproceed23sanfrich|2991", "y": 1928, "line": "Money set aside for Jackson Street between Hyde and Larkin", "flags": {}}
+{"id": "journalofproceed23sanfrich|2992", "y": 1928, "line": "Money set aside for Laguna Street north of Bay Street", "flags": {}}
+{"id": "journalofproceed23sanfrich|2993", "y": 1928, "line": "Money set aside for Montgomery Street between Post and Columbus", "flags": {}}
+{"id": "journalofproceed23sanfrich|2994", "y": 1928, "line": "Money set aside for Pine Street between Leavenworth and Taylor", "flags": {}}
+{"id": "journalofproceed23sanfrich|2995", "y": 1928, "line": "Money set aside for Presidio Avenue between Geary and California", "flags": {}}
+{"id": "journalofproceed23sanfrich|2996", "y": 1928, "line": "Money set aside for Washington Street between Leavenworth and Hyde", "flags": {}}
+{"id": "journalofproceed23sanfrich|2997", "y": 1928, "line": "Curb costs on Eighth Street repaid from Market to Mission", "flags": {}}
+{"id": "journalofproceed23sanfrich|2998", "y": 1928, "line": "Retirement system paid from boulevard bond, road and school funds", "flags": {}}
+{"id": "journalofproceed23sanfrich|3004", "y": 1928, "line": "Permit granted at the southeast corner of Post and Broderick", "flags": {}}
+{"id": "journalofproceed23sanfrich|3005", "y": 1928, "line": "Auto parking station transferred to O. B. Olsen, 57 Mission Street", "flags": {"invented": ["Olsen,"]}}
+{"id": "journalofproceed23sanfrich|3009", "y": 1928, "line": "Permit granted for premises at Mission and Maynard streets", "flags": {"damaged": ["Maynard"]}}
+{"id": "journalofproceed23sanfrich|3022", "y": 1928, "line": "Claim paid to Joint Highway District No. 10", "flags": {}}
+{"id": "journalofproceed23sanfrich|3024", "y": 1928, "line": "Land claim paid for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3030", "y": 1928, "line": "Permit granted for premises at 2343 Fillmore Street", "flags": {}}
+{"id": "journalofproceed23sanfrich|3039", "y": 1928, "line": "Loading zones set for L. Saroni Sugar and Euclid Candy", "flags": {}}
+{"id": "journalofproceed23sanfrich|3043", "y": 1928, "line": "Incinerator at Kansas and Army streets cost $392,704 with land", "flags": {}}
+{"id": "journalofproceed23sanfrich|3044", "y": 1928, "line": "Railroad Commission asked for Market Street Railway's operating expenses", "flags": {}}
+{"id": "journalofproceed23sanfrich|3045", "y": 1928, "line": "An ordinance passed to print and then held over twice", "flags": {}}
+{"id": "journalofproceed23sanfrich|3054", "y": 1928, "line": "Land bought from H. Falck and others for Sunset Parkway", "flags": {}}
+{"id": "journalofproceed23sanfrich|3077", "y": 1928, "line": "Street levels changed on Minerva Street and Orizaba Avenue", "flags": {}}
+{"id": "journalofproceed23sanfrich|3078", "y": 1928, "line": "Street levels changed on Alameda, Treat and Alabama streets", "flags": {}}
+{"id": "journalofproceed23sanfrich|3079", "y": 1928, "line": "Street levels changed on Mendell Street between Innes and Jerrold", "flags": {}}
+{"id": "journalofproceed23sanfrich|3084", "y": 1928, "line": "Street level changes proposed on Nevada, Ogden and Crescent avenues", "flags": {}}
+{"id": "journalofproceed23sanfrich|3098", "y": 1928, "line": "Masquerade ball allowed at Finnish Brotherhood Hall on Hoffman Avenue", "flags": {}}
+{"id": "journalofproceed23sanfrich|3099", "y": 1928, "line": "City and owners to split cost of Crocker-Amazon street repairs", "flags": {}}
+{"id": "journalofproceed23sanfrich|3104", "y": 1928, "line": "Land claim paid for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3107", "y": 1928, "line": "Hearing set on how far back buildings must sit, Eighteenth Avenue", "flags": {}}
+{"id": "journalofproceed23sanfrich|3112", "y": 1928, "line": "Permit granted for premises at 2343 Fillmore Street", "flags": {}}
+{"id": "journalofproceed23sanfrich|3121", "y": 1928, "line": "Ordinance introduced for the Spring Valley Subdivision near Sloat Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3124", "y": 1928, "line": "Land bought from Oscar and Amanda Hansberg for Bay Shore Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3125", "y": 1928, "line": "Land bought from Jerome and Edith Weinstein for Bay Shore Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3126", "y": 1928, "line": "Land bought from Louis Riviere for Bay Shore Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3128", "y": 1928, "line": "Land bought from Agostino Cerruti for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3129", "y": 1928, "line": "Land bought from Amanda Hansberg for Bay Shore Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3140", "y": 1928, "line": "Closing sections of a traffic ordinance amendment, effective immediately", "flags": {}}
+{"id": "journalofproceed23sanfrich|3142", "y": 1928, "line": "Loading zones set for the Pickwick Hotel and Sir Francis Drake", "flags": {}}
+{"id": "journalofproceed23sanfrich|3146", "y": 1928, "line": "City Planning Commission asked to rezone Judah Street in the Sunset", "flags": {}}
+{"id": "journalofproceed23sanfrich|3151", "y": 1928, "line": "Land bought from Oscar and Amanda Hansberg for Bay Shore Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3152", "y": 1928, "line": "Land bought from Jerome and Edith Weinstein for Bay Shore Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3153", "y": 1928, "line": "Land bought from Louis Riviere for Bay Shore Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3155", "y": 1928, "line": "Land bought from Agostino Cerruti for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3156", "y": 1928, "line": "Land bought from Amanda Hansberg for Bay Shore Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3181", "y": 1928, "line": "Street levels changed on Minerva Street and Orizaba Avenue", "flags": {}}
+{"id": "journalofproceed23sanfrich|3182", "y": 1928, "line": "Street levels changed on Alameda, Treat and Alabama streets", "flags": {}}
+{"id": "journalofproceed23sanfrich|3183", "y": 1928, "line": "Street levels changed on Mendell Street between Innes and Jerrold", "flags": {}}
+{"id": "journalofproceed23sanfrich|3192", "y": 1928, "line": "Land bought from Anthony Kot and Nikola Gyluch, Bay Shore Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3193", "y": 1928, "line": "Land bought from Margaret Kennedy for Bay Shore Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3194", "y": 1928, "line": "Land bought from Annie E. Elliott for Bay Shore Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3195", "y": 1928, "line": "Land bought from Herbert James Seal for Bay Shore Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3196", "y": 1928, "line": "Land bought from Stephen and Mary Hughes for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3197", "y": 1928, "line": "Land bought from Edward and Adele Spichtig for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3198", "y": 1928, "line": "Land bought from Arthur and Bernard Quinn for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3206", "y": 1928, "line": "$3,500 to Edward J. Tobin for the Visitacion Valley sewer", "flags": {}}
+{"id": "journalofproceed23sanfrich|3221", "y": 1928, "line": "Loading zones set for Hotel Burbank and Fox Film Corporation", "flags": {}}
+{"id": "journalofproceed23sanfrich|3222", "y": 1928, "line": "Loading zones resized at the Hotel Shaw and Press Club building", "flags": {}}
+{"id": "journalofproceed23sanfrich|3225", "y": 1928, "line": "Geneva Avenue ordinance introduced on the planning committee's recommendation", "flags": {}}
+{"id": "journalofproceed23sanfrich|3227", "y": 1928, "line": "Buildings on Twenty-second Avenue would no longer have to sit back", "flags": {}}
+{"id": "journalofproceed23sanfrich|3231", "y": 1928, "line": "Land bought from the Schlage Company for Bay Shore Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3232", "y": 1928, "line": "Damages paid to Albert and Pauline Panther for Bay Shore Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3245", "y": 1928, "line": "Permit granted for premises at 547-555 Washington Street", "flags": {}}
+{"id": "journalofproceed23sanfrich|3246", "y": 1928, "line": "Pacific Gas and Electric told to replace gas lamps with electric", "flags": {}}
+{"id": "journalofproceed23sanfrich|3251", "y": 1928, "line": "Street levels to change on three avenues between Quintara and Rivera", "flags": {}}
+{"id": "journalofproceed23sanfrich|3274", "y": 1928, "line": "Loading zones set at the New Fillmore Theatre and University Club", "flags": {}}
+{"id": "journalofproceed23sanfrich|3275", "y": 1928, "line": "Loading zone abolished outside the First Congregational Church, Post Street", "flags": {}}
+{"id": "journalofproceed23sanfrich|3277", "y": 1928, "line": "Geneva Avenue ordinance introduced on the planning committee's recommendation", "flags": {}}
+{"id": "journalofproceed23sanfrich|3279", "y": 1928, "line": "Buildings on Twenty-second Avenue would no longer have to sit back", "flags": {}}
+{"id": "journalofproceed23sanfrich|3280", "y": 1928, "line": "Buildings on Twenty-second Avenue no longer have to sit back", "flags": {"damaged": ["Twenty-second"]}}
+{"id": "journalofproceed23sanfrich|3290", "y": 1928, "line": "Land bought from Anthony Kot and Nikola Gyluch, Bay Shore Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3291", "y": 1928, "line": "Land bought from Margaret Kennedy for Bay Shore Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3292", "y": 1928, "line": "Land bought from Annie E. Elliott for Bay Shore Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3293", "y": 1928, "line": "Land bought from Herbert James Seal for Bay Shore Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3294", "y": 1928, "line": "Land bought from Stephen and Mary Hughes for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3295", "y": 1928, "line": "Land bought from Edward and Adele Spichtig for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3296", "y": 1928, "line": "Land bought from Arthur and Bernard Quinn for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3297", "y": 1928, "line": "$3,500 to Edward J. Tobin for the Visitacion Valley sewer", "flags": {}}
+{"id": "journalofproceed23sanfrich|3298", "y": 1928, "line": "Land bought from the Schlage Company for Bay Shore Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3299", "y": 1928, "line": "Damages paid to Albert and Pauline Panther for Bay Shore Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3306", "y": 1928, "line": "Permit granted for premises at 924 Sansome Street", "flags": {}}
+{"id": "journalofproceed23sanfrich|3308", "y": 1928, "line": "Permit granted for premises at 547-555 Washington Street", "flags": {}}
+{"id": "journalofproceed23sanfrich|3315", "y": 1928, "line": "Ordinance introduced for Eighteenth Avenue north of Geary Street", "flags": {}}
+{"id": "journalofproceed23sanfrich|3317", "y": 1928, "line": "Ordinance introduced for Silver Avenue between Colby and Bowdoin streets", "flags": {}}
+{"id": "journalofproceed23sanfrich|3319", "y": 1928, "line": "Ordinance introduced for the northeast corner of Pine and Steiner", "flags": {}}
+{"id": "journalofproceed23sanfrich|3322", "y": 1928, "line": "City declares it needs land on Grove and Ivy streets", "flags": {}}
+{"id": "journalofproceed23sanfrich|3337", "y": 1928, "line": "Taxi stands cancelled for Luxor Cab Company and William Gormley", "flags": {}}
+{"id": "journalofproceed23sanfrich|3338", "y": 1928, "line": "Loading zones set for Krogh Pump and Vulcan Macaroni Factory", "flags": {}}
+{"id": "journalofproceed23sanfrich|3339", "y": 1928, "line": "Loading zone abolished at Langley & Michaels on First Street", "flags": {}}
+{"id": "journalofproceed23sanfrich|3344", "y": 1928, "line": "Recital of how Fort Mason land was granted and taken", "flags": {}}
+{"id": "journalofproceed23sanfrich|3345", "y": 1928, "line": "Congress asked to return the dispossessed Fort Mason land to owners", "flags": {"damaged": ["Mason"]}}
+{"id": "journalofproceed23sanfrich|3347", "y": 1928, "line": "Ordinance introduced for Eighteenth Avenue north of Geary Street", "flags": {}}
+{"id": "journalofproceed23sanfrich|3349", "y": 1928, "line": "Ordinance introduced for Silver Avenue between Colby and Bowdoin streets", "flags": {}}
+{"id": "journalofproceed23sanfrich|3351", "y": 1928, "line": "Ordinance introduced for the northeast corner of Pine and Steiner", "flags": {}}
+{"id": "journalofproceed23sanfrich|3353", "y": 1928, "line": "City declares it needs land on Grove and Ivy streets", "flags": {}}
+{"id": "journalofproceed23sanfrich|3354", "y": 1928, "line": "$1,100 paid to William and Elizabeth Eckhardt for Bernal Cut land", "flags": {}}
+{"id": "journalofproceed23sanfrich|3362", "y": 1928, "line": "Land bought from H. Lorentzen for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3364", "y": 1928, "line": "Land bought from J. W. Wright & Sons for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3365", "y": 1928, "line": "Land bought from the Goldsteins and Ida Wallfisch for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3366", "y": 1928, "line": "Land bought from the Salarac Land Company for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3367", "y": 1928, "line": "A land claim settled for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3368", "y": 1928, "line": "A land claim paid, the property not named on this page", "flags": {}}
+{"id": "journalofproceed23sanfrich|3384", "y": 1928, "line": "Oil tank permits granted to A. Castagnini and four others", "flags": {}}
+{"id": "journalofproceed23sanfrich|3387", "y": 1928, "line": "Permit granted on Haight Street east of Stanyan Street", "flags": {"overstates": ["laid over", "granted"]}}
+{"id": "journalofproceed23sanfrich|3445", "y": 1928, "line": "Loading zones set at the Herald Hotel and Stanford Lane Hospital", "flags": {}}
+{"id": "journalofproceed23sanfrich|3446", "y": 1928, "line": "Pacific Gas and Electric told to replace gas lamps with electric", "flags": {}}
+{"id": "journalofproceed23sanfrich|3447", "y": 1928, "line": "Land bought from H. Lorentzen for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3449", "y": 1928, "line": "Land bought from J. W. Wright & Sons for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3450", "y": 1928, "line": "Land bought from the Goldsteins and Ida Wallfisch for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3451", "y": 1928, "line": "Land bought from the Salarac Land Company for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3452", "y": 1928, "line": "A claim paid for property required for the Sunset Parkway", "flags": {"invented": ["Sunset", "Parkway"]}}
+{"id": "journalofproceed23sanfrich|3464", "y": 1928, "line": "Permit granted at the southeast corner of Ninth and Mission", "flags": {}}
+{"id": "journalofproceed23sanfrich|3512", "y": 1928, "line": "Land and damages paid to John and Marie Wickstrom, Bay Shore", "flags": {}}
+{"id": "journalofproceed23sanfrich|3513", "y": 1928, "line": "Land bought from James and Mary Lane in Block 7146", "flags": {}}
+{"id": "journalofproceed23sanfrich|3514", "y": 1928, "line": "Land claim paid for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed23sanfrich|3518", "y": 1928, "line": "$221,935.82 in franchise fees accepted from Pacific Telephone and Telegraph", "flags": {}}
+{"id": "journalofproceed23sanfrich|3520", "y": 1928, "line": "Public Works bureaus repay the stores and yards for equipment repairs", "flags": {}}
+{"id": "journalofproceed23sanfrich|3530", "y": 1928, "line": "Loading zones set for Field-Ernst Envelope and Sierra Club Products", "flags": {}}
+{"id": "journalofproceed23sanfrich|3532", "y": 1928, "line": "Loading zones set for W. & J. Sloane and Hotel Californian", "flags": {}}
+{"id": "journalofproceed23sanfrich|3533", "y": 1928, "line": "Shell Oil thanked for its Christmas display at Fell and Baker", "flags": {}}
+{"id": "journalofproceed23sanfrich|3534", "y": 1928, "line": "Renaming Sunset and Richmond avenues north and south referred to committee", "flags": {}}
+{"id": "journalofproceed23sanfrich|3540", "y": 1928, "line": "Alameda County land bought for the Hetch Hetchy aqueduct", "flags": {}}
+{"id": "journalofproceed23sanfrich|3546", "y": 1928, "line": "Loading zones set for the Colonial Hotel and Royal Ice Cream", "flags": {}}
+{"id": "journalofproceed23sanfrich|3547", "y": 1928, "line": "Loading zones abolished outside I. Magnin and The White House", "flags": {}}
+{"id": "journalofproceed24sanfrich|1", "y": 1929, "line": "Land and damages paid to John and Marie Wickstrom, Bay Shore", "flags": {}}
+{"id": "journalofproceed24sanfrich|2", "y": 1929, "line": "Land bought from James and Mary Lane in Block 7146", "flags": {}}
+{"id": "journalofproceed24sanfrich|3", "y": 1929, "line": "Land claim paid for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed24sanfrich|8", "y": 1929, "line": "Union Oil allowed a filling station at Nineteenth Avenue and Santiago", "flags": {}}
+{"id": "journalofproceed24sanfrich|14", "y": 1929, "line": "Loading zones set for Buzzell Electric and the Y. M. C. A.", "flags": {}}
+{"id": "journalofproceed24sanfrich|15", "y": 1929, "line": "Loading zones abolished outside the City of Paris and Bohemian Club", "flags": {}}
+{"id": "journalofproceed24sanfrich|16", "y": 1929, "line": "Passenger loading zones proposed at the City of Paris and Gump's", "flags": {}}
+{"id": "journalofproceed24sanfrich|21", "y": 1929, "line": "Sheriff's female deputy's raise to $2,580 sent back to committee", "flags": {}}
+{"id": "journalofproceed24sanfrich|40", "y": 1929, "line": "Land bought from William and Elinor Williamson for Bay Shore Boulevard", "flags": {}}
+{"id": "journalofproceed24sanfrich|60", "y": 1929, "line": "Permit granted for premises at 834 Divisadero Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|90", "y": 1929, "line": "Loading zones set for Mount Zion Hospital and the Romeo Market", "flags": {}}
+{"id": "journalofproceed24sanfrich|91", "y": 1929, "line": "Loading zone lengthened for Coast Radio Supply on Howard Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|93", "y": 1929, "line": "City Attorney to advise on dedicating streets near Cayuga Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|106", "y": 1929, "line": "Land bought from William and Elinor Williamson for Bay Shore Boulevard", "flags": {}}
+{"id": "journalofproceed24sanfrich|115", "y": 1929, "line": "Permit granted at the northeast corner of Hyde and McAllister", "flags": {}}
+{"id": "journalofproceed24sanfrich|132", "y": 1929, "line": "A land claim settled for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed24sanfrich|156", "y": 1929, "line": "Loading zones set for Gilt Edge Packing and National Dollar Stores", "flags": {}}
+{"id": "journalofproceed24sanfrich|158", "y": 1929, "line": "Valencia Street sidewalks narrowed from fifteen feet to twelve", "flags": {}}
+{"id": "journalofproceed24sanfrich|159", "y": 1929, "line": "Street proceedings abandoned and begun again after an injunction suit", "flags": {}}
+{"id": "journalofproceed24sanfrich|163", "y": 1929, "line": "Land bought from Wm. J. M. Simmons for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed24sanfrich|166", "y": 1929, "line": "City declares it needs land at Mission and Twelfth streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|192", "y": 1929, "line": "Permit granted at the northwest corner of Ellis and Pierce", "flags": {}}
+{"id": "journalofproceed24sanfrich|193", "y": 1929, "line": "Sidewalk widths to be set on Fulton Street near Masonic Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|196", "y": 1929, "line": "Sidewalk widths to be set on Scott Street near Duboce Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|202", "y": 1929, "line": "Street levels changed on Ripley Street between Alabama and Folsom", "flags": {}}
+{"id": "journalofproceed24sanfrich|204", "y": 1929, "line": "Street levels changed on Circular Avenue and Havelock Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|206", "y": 1929, "line": "Street levels changed on Twenty-eighth Avenue between Quintara and Rivera", "flags": {}}
+{"id": "journalofproceed24sanfrich|208", "y": 1929, "line": "Street levels changed on Nevada, Ogden and Crescent avenues", "flags": {}}
+{"id": "journalofproceed24sanfrich|210", "y": 1929, "line": "Street levels changed on Twenty-sixth Avenue between Quintara and Rivera", "flags": {}}
+{"id": "journalofproceed24sanfrich|212", "y": 1929, "line": "Street levels changed on Twenty-seventh Avenue between Quintara and Santiago", "flags": {}}
+{"id": "journalofproceed24sanfrich|214", "y": 1929, "line": "Street levels changed on Faith Street and Brewster Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|215", "y": 1929, "line": "Notice given of street level changes on Faith and Brewster", "flags": {}}
+{"id": "journalofproceed24sanfrich|216", "y": 1929, "line": "Street levels changed on Hawes Street between Palou and Quesada", "flags": {}}
+{"id": "journalofproceed24sanfrich|217", "y": 1929, "line": "Notice given of street level changes on Hawes Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|226", "y": 1929, "line": "Public Works asked to raze a dilapidated building at 427 Clementina", "flags": {}}
+{"id": "journalofproceed24sanfrich|232", "y": 1929, "line": "Taxi stand cancelled for Yellow Checker Cab at 500 Ellis", "flags": {}}
+{"id": "journalofproceed24sanfrich|244", "y": 1929, "line": "Georgia and Michigan streets to be closed near Twenty-third Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|248", "y": 1929, "line": "Loading zones set for Zellerbach Paper and the Parkside Theater", "flags": {}}
+{"id": "journalofproceed24sanfrich|252", "y": 1929, "line": "Havenner's question sent to the City Attorney for an opinion", "flags": {}}
+{"id": "journalofproceed24sanfrich|254", "y": 1929, "line": "Sharp's Park in San Mateo to be developed to provide work", "flags": {}}
+{"id": "journalofproceed24sanfrich|265", "y": 1929, "line": "Permit granted for premises at 469 Eddy Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|268", "y": 1929, "line": "City declares it needs land near Ware and Wheat streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|269", "y": 1929, "line": "Sidewalk widths to be set on Fulton Street near Masonic Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|272", "y": 1929, "line": "Sidewalk widths to be set on Scott Street near Duboce Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|279", "y": 1929, "line": "Street levels changed on Ripley Street between Alabama and Folsom", "flags": {}}
+{"id": "journalofproceed24sanfrich|281", "y": 1929, "line": "Street levels changed on Circular Avenue and Havelock Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|282", "y": 1929, "line": "Notice given of street level changes on Circular Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|283", "y": 1929, "line": "Street levels changed on Twenty-eighth Avenue between Quintara and Rivera", "flags": {}}
+{"id": "journalofproceed24sanfrich|284", "y": 1929, "line": "Notice given of street level changes on Twenty-eighth Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|285", "y": 1929, "line": "Street levels changed on Nevada, Ogden and Crescent avenues", "flags": {}}
+{"id": "journalofproceed24sanfrich|287", "y": 1929, "line": "Street levels changed on Twenty-sixth Avenue between Quintara and Rivera", "flags": {}}
+{"id": "journalofproceed24sanfrich|288", "y": 1929, "line": "Notice given of street level changes on Twenty-sixth Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|289", "y": 1929, "line": "Street levels changed on Twenty-seventh Avenue between Quintara and Santiago", "flags": {}}
+{"id": "journalofproceed24sanfrich|291", "y": 1929, "line": "Street levels changed on Faith Street and Brewster Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|293", "y": 1929, "line": "Street levels changed on Hawes Street between Palou and Quesada", "flags": {}}
+{"id": "journalofproceed24sanfrich|305", "y": 1929, "line": "Passenger loading zones set at the Bohemian Club and Pantages Theatre", "flags": {}}
+{"id": "journalofproceed24sanfrich|306", "y": 1929, "line": "Passenger loading zones set at St. Cecelia's Church and Sutter Hospital", "flags": {}}
+{"id": "journalofproceed24sanfrich|307", "y": 1929, "line": "Loading zones cut or abolished at the Grant Building and Treasury", "flags": {}}
+{"id": "journalofproceed24sanfrich|308", "y": 1929, "line": "Land bought from Alexander Bromberg for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed24sanfrich|309", "y": 1929, "line": "Land bought from Maria Podesta in Block 5396", "flags": {}}
+{"id": "journalofproceed24sanfrich|313", "y": 1929, "line": "Permit granted for premises at 1250 McAllister Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|322", "y": 1929, "line": "Land bought from Alexander Bromberg for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed24sanfrich|323", "y": 1929, "line": "Land bought from Maria Podesta in Block 5396", "flags": {}}
+{"id": "journalofproceed24sanfrich|327", "y": 1929, "line": "Permit granted for premises at 1250 McAllister Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|331", "y": 1929, "line": "Land bought from Mark and Elizabeth Stokes for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed24sanfrich|368", "y": 1929, "line": "Part of Whipple Avenue to be closed near Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed24sanfrich|376", "y": 1929, "line": "Loading zones set at the Southern Pacific Depot and Girls' Club", "flags": {}}
+{"id": "journalofproceed24sanfrich|377", "y": 1929, "line": "Street department lay-offs sent to the Finance Committee for relief", "flags": {}}
+{"id": "journalofproceed24sanfrich|381", "y": 1929, "line": "William and Susan Stendebach to get closed parts of Wawona Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|384", "y": 1929, "line": "$5,760 for Clement Street between First and Fifth avenues", "flags": {}}
+{"id": "journalofproceed24sanfrich|385", "y": 1929, "line": "$3,000 for Fillmore Street between Sutter and Fulton", "flags": {}}
+{"id": "journalofproceed24sanfrich|386", "y": 1929, "line": "$5,500 for Grant Avenue between Columbus Avenue and Filbert Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|387", "y": 1929, "line": "$5,125 for Ritch Street between Brannan and Townsend", "flags": {}}
+{"id": "journalofproceed24sanfrich|389", "y": 1929, "line": "Claims paid for Hetch Hetchy lumber, cement and Municipal Railway gasoline", "flags": {}}
+{"id": "journalofproceed24sanfrich|399", "y": 1929, "line": "Permit transferred for premises at Sixteenth Street and Potrero Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|400", "y": 1929, "line": "Permit transferred for premises at Mission and Avalon streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|401", "y": 1929, "line": "Permit at 3184 Mission Street transferred to Wm. G. Menary", "flags": {}}
+{"id": "journalofproceed24sanfrich|402", "y": 1929, "line": "Permit transferred for premises at Eleventh and Howard streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|403", "y": 1929, "line": "Permit transferred for premises at Sixteenth and Howard streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|404", "y": 1929, "line": "Permit transferred for premises at Plymouth Avenue and Sagamore Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|405", "y": 1929, "line": "Permit transferred for premises at 4060 Mission Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|410", "y": 1929, "line": "Loading zones at the Southern Pacific Depot held over a week", "flags": {}}
+{"id": "journalofproceed24sanfrich|411", "y": 1929, "line": "Loading zones set for the Bank of Montreal and O'Connor-Moffatt", "flags": {}}
+{"id": "journalofproceed24sanfrich|412", "y": 1929, "line": "Mayor to name a citizens' committee for the bay bridge", "flags": {}}
+{"id": "journalofproceed24sanfrich|415", "y": 1929, "line": "Board mourns Dr. Frederick W. Clampett and attends Grace Cathedral rites", "flags": {}}
+{"id": "journalofproceed24sanfrich|416", "y": 1929, "line": "Mayor invited to join the Victory Highway cavalcade to Denver", "flags": {}}
+{"id": "journalofproceed24sanfrich|419", "y": 1929, "line": "Land bought from Mark and Elizabeth Stokes for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed24sanfrich|460", "y": 1929, "line": "Permit transferred for premises at Fifteenth and Market streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|461", "y": 1929, "line": "Permit transferred for premises at Twenty-first Avenue and Clement Street", "flags": {"damaged": ["Twenty-first"]}}
+{"id": "journalofproceed24sanfrich|462", "y": 1929, "line": "Permit at Main and Mission streets transferred to Hancock and Allen", "flags": {}}
+{"id": "journalofproceed24sanfrich|463", "y": 1929, "line": "Permit transferred for premises at Ocean Avenue and Harold Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|464", "y": 1929, "line": "Permit transferred for premises at Pine and Franklin streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|465", "y": 1929, "line": "Permit transferred for premises at Nineteenth and Valencia streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|481", "y": 1929, "line": "Loading zones set at the Southern Pacific Depot and Girls' Club", "flags": {}}
+{"id": "journalofproceed24sanfrich|482", "y": 1929, "line": "Loading zones set for the Bank of Montreal and O'Connor-Moffatt", "flags": {}}
+{"id": "journalofproceed24sanfrich|483", "y": 1929, "line": "Butler Building loading zone put off to a special hearing Monday", "flags": {}}
+{"id": "journalofproceed24sanfrich|484", "y": 1929, "line": "Market Street Railway valuation to be ready about April 1", "flags": {}}
+{"id": "journalofproceed24sanfrich|486", "y": 1929, "line": "Permit transferred for premises at Sixteenth Street and Potrero Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|487", "y": 1929, "line": "Permit transferred for premises at Mission and Avalon streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|488", "y": 1929, "line": "Permit at 3184 Mission Street transferred to Wm. G. Menary", "flags": {}}
+{"id": "journalofproceed24sanfrich|489", "y": 1929, "line": "Permit transferred for premises at Eleventh and Howard streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|490", "y": 1929, "line": "Permit transferred for premises at Sixteenth and Howard streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|491", "y": 1929, "line": "Permit transferred for premises at Sacramento and Laurel streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|492", "y": 1929, "line": "Permit transferred for premises at Plymouth Avenue and Sagamore Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|493", "y": 1929, "line": "Permit transferred for premises at 4060 Mission Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|494", "y": 1929, "line": "Permit transferred for premises at Columbus Avenue and Filbert Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|495", "y": 1929, "line": "Permit transferred for premises at Sixteenth Street and Potrero Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|496", "y": 1929, "line": "Permit transferred for premises at Mission and Avalon streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|497", "y": 1929, "line": "Permit at 3184 Mission Street transferred to Wm. G. Menary", "flags": {}}
+{"id": "journalofproceed24sanfrich|498", "y": 1929, "line": "Permit transferred for premises at Eleventh and Howard streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|499", "y": 1929, "line": "Permit transferred for premises at Sixteenth and Howard streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|500", "y": 1929, "line": "Permit transferred for premises at Sacramento and Laurel streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|501", "y": 1929, "line": "Permit transferred for premises at Plymouth Avenue and Sagamore Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|502", "y": 1929, "line": "Permit transferred for premises at 4060 Mission Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|503", "y": 1929, "line": "Permit transferred for premises at Columbus Avenue and Filbert Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|508", "y": 1929, "line": "Boy scouts praised for saving a child on Angel Island", "flags": {}}
+{"id": "journalofproceed24sanfrich|520", "y": 1929, "line": "Permit transferred for premises at Fifteenth and Market streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|521", "y": 1929, "line": "Permit transferred for premises at Twenty-first Avenue and Clement Street", "flags": {"damaged": ["Twenty-first"]}}
+{"id": "journalofproceed24sanfrich|522", "y": 1929, "line": "Permit at Main and Mission streets transferred to Hancock and Allen", "flags": {}}
+{"id": "journalofproceed24sanfrich|523", "y": 1929, "line": "Permit transferred for premises at Pine and Franklin streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|524", "y": 1929, "line": "Permit transferred for premises at Mission and Cotter streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|525", "y": 1929, "line": "Permit transferred for premises at Nineteenth and Valencia streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|527", "y": 1929, "line": "Permit transferred for premises at Sixteenth Street and Potrero Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|528", "y": 1929, "line": "Permit transferred for premises at Mission and Avalon streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|529", "y": 1929, "line": "Permit at 3184 Mission Street transferred to Wm. G. Menary", "flags": {}}
+{"id": "journalofproceed24sanfrich|530", "y": 1929, "line": "Permit transferred for premises at Eleventh and Howard streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|531", "y": 1929, "line": "Permit transferred for premises at Sixteenth and Howard streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|532", "y": 1929, "line": "Permit transferred for premises at Plymouth Avenue and Sagamore Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|533", "y": 1929, "line": "Permit transferred for premises at 4060 Mission Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|534", "y": 1929, "line": "Permit transferred for premises at Columbus Avenue and Filbert Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|536", "y": 1929, "line": "Permit granted for premises at Third Street and Evans Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|546", "y": 1929, "line": "Land bought from Peter Baudo and Joseph Massara, Sears Subdivision", "flags": {}}
+{"id": "journalofproceed24sanfrich|547", "y": 1929, "line": "Land bought from Ramsay Moran in Block 7045", "flags": {}}
+{"id": "journalofproceed24sanfrich|548", "y": 1929, "line": "Land claim paid for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed24sanfrich|549", "y": 1929, "line": "Reconstruction costs on Kearny Street repaid to the sewer repair fund", "flags": {}}
+{"id": "journalofproceed24sanfrich|550", "y": 1929, "line": "Reconstruction costs on Jones Street repaid between California and Pine", "flags": {}}
+{"id": "journalofproceed24sanfrich|551", "y": 1929, "line": "Reconstruction costs on Taylor Street repaid between California and Pine", "flags": {}}
+{"id": "journalofproceed24sanfrich|552", "y": 1929, "line": "Reconstruction costs on Elizabeth Street repaid between Hoffman and Douglass", "flags": {}}
+{"id": "journalofproceed24sanfrich|553", "y": 1929, "line": "Reconstruction costs on Eureka Street repaid between Eighteenth and Twenty-first", "flags": {}}
+{"id": "journalofproceed24sanfrich|554", "y": 1929, "line": "Reconstruction costs on Green Street repaid between Polk and Larkin", "flags": {}}
+{"id": "journalofproceed24sanfrich|555", "y": 1929, "line": "Reconstruction costs on Lincoln Way repaid west of First Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|556", "y": 1929, "line": "Reconstruction costs on Seventh Avenue repaid between Cabrillo and Fulton", "flags": {}}
+{"id": "journalofproceed24sanfrich|557", "y": 1929, "line": "Reconstruction costs on Tehama Street repaid between Eighth and Ninth", "flags": {}}
+{"id": "journalofproceed24sanfrich|589", "y": 1929, "line": "Loading zones set at the Hotel Ritz and Bank of America", "flags": {}}
+{"id": "journalofproceed24sanfrich|590", "y": 1929, "line": "Loading zone abolished outside the Women's City Club on Post Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|593", "y": 1929, "line": "Loading zones set at the Southern Pacific Depot and Girls' Club", "flags": {}}
+{"id": "journalofproceed24sanfrich|594", "y": 1929, "line": "Loading zones set for the Bank of Montreal and O'Connor-Moffatt", "flags": {}}
+{"id": "journalofproceed24sanfrich|595", "y": 1929, "line": "Loading zone abolished at the Butler Building on Stockton Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|602", "y": 1929, "line": "Marina park land bill backed; growers' peddling bill disapproved", "flags": {}}
+{"id": "journalofproceed24sanfrich|607", "y": 1929, "line": "Permit transferred for premises at Lombard and Steiner streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|608", "y": 1929, "line": "Permit transferred for premises at Taraval Street and Nineteenth Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|609", "y": 1929, "line": "Permit transferred for premises at Lincoln Way and Nineteenth Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|610", "y": 1929, "line": "Permit transferred for premises at Fourteenth and Valencia streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|611", "y": 1929, "line": "Permit transferred for premises at Geary Street and Thirty-first Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|612", "y": 1929, "line": "Permit transferred for premises at Howard and Seventh streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|613", "y": 1929, "line": "Permit transferred for premises at Silver and San Bruno avenues", "flags": {}}
+{"id": "journalofproceed24sanfrich|614", "y": 1929, "line": "Permit transferred for premises at Market Street and Duboce Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|615", "y": 1929, "line": "Permit transferred for premises at Army and Third streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|616", "y": 1929, "line": "Permit transferred for premises at Geary and Collins streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|617", "y": 1929, "line": "Permit transferred for premises at Folsom and Fifth streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|618", "y": 1929, "line": "Permit transferred for premises at Columbus Avenue and Bay Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|619", "y": 1929, "line": "Permit transferred for premises at Van Ness Avenue and Filbert Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|620", "y": 1929, "line": "Permit transferred for premises at Fell and Baker streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|621", "y": 1929, "line": "Permit transferred for premises at Portola Drive and Fowler Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|622", "y": 1929, "line": "Permit transferred for premises at Jackson and Battery streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|623", "y": 1929, "line": "Permit transferred for premises at Mission and Spear streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|624", "y": 1929, "line": "Permit transferred for premises at Lincoln Way and Seventh Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|625", "y": 1929, "line": "Permit transferred for premises at Stockton and Sacramento streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|626", "y": 1929, "line": "Permit transferred for premises at Eleventh and Mission streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|627", "y": 1929, "line": "Permit transferred for premises at Steiner and Bush streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|628", "y": 1929, "line": "Permit transferred for premises at Van Ness and Washington streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|629", "y": 1929, "line": "Permit transferred for premises at Third Street and South Park", "flags": {}}
+{"id": "journalofproceed24sanfrich|630", "y": 1929, "line": "Permit transferred for premises at Ellis Street and Van Ness", "flags": {}}
+{"id": "journalofproceed24sanfrich|631", "y": 1929, "line": "Permit transferred for premises at Golden Gate Avenue and Buchanan", "flags": {}}
+{"id": "journalofproceed24sanfrich|632", "y": 1929, "line": "Permit transferred for premises on Fell Street east of Stanyan", "flags": {}}
+{"id": "journalofproceed24sanfrich|638", "y": 1929, "line": "Land bought from Peter Baudo and Joseph Massara, Sears Subdivision", "flags": {}}
+{"id": "journalofproceed24sanfrich|639", "y": 1929, "line": "Land bought from Ramsay Moran in Block 7045", "flags": {}}
+{"id": "journalofproceed24sanfrich|640", "y": 1929, "line": "Land claim paid for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed24sanfrich|643", "y": 1929, "line": "Oil tanks allowed for the Pacific Cocoanut Company and nine others", "flags": {}}
+{"id": "journalofproceed24sanfrich|651", "y": 1929, "line": "Land bought from Bertha Jeschke for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed24sanfrich|652", "y": 1929, "line": "Land bought from James and Jessie Rodney for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed24sanfrich|653", "y": 1929, "line": "Land bought from the Moneta Investment Company for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed24sanfrich|654", "y": 1929, "line": "Land bought from Lea Gutradt and Sarah Haas in Block 5560", "flags": {}}
+{"id": "journalofproceed24sanfrich|677", "y": 1929, "line": "Street levels changed on Andover Street south of Benton Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|678", "y": 1929, "line": "Street levels changed on Maggie Alley east of Jones Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|682", "y": 1929, "line": "Land swapped so a new alley replaces a closed one", "flags": {}}
+{"id": "journalofproceed24sanfrich|683", "y": 1929, "line": "Street levels to change on Chestnut Street between Kearny and Grant", "flags": {}}
+{"id": "journalofproceed24sanfrich|690", "y": 1929, "line": "Passenger zones set at the Whitcomb Hotel and Joseph Magnin", "flags": {}}
+{"id": "journalofproceed24sanfrich|691", "y": 1929, "line": "Loading zones set at the Federal Hotel and Hotel Monroe", "flags": {}}
+{"id": "journalofproceed24sanfrich|692", "y": 1929, "line": "Loading zones abolished at the Whitcomb Hotel and Union Square Theatre", "flags": {}}
+{"id": "journalofproceed24sanfrich|698", "y": 1929, "line": "Transbay bridge bills laid over for a special hearing", "flags": {}}
+{"id": "journalofproceed24sanfrich|701", "y": 1929, "line": "Market Street Railway refuses to repave between its Sutter Street tracks", "flags": {}}
+{"id": "journalofproceed24sanfrich|702", "y": 1929, "line": "Land bought from Bertha Jeschke for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed24sanfrich|703", "y": 1929, "line": "Land bought from James and Jessie Rodney for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed24sanfrich|704", "y": 1929, "line": "Land bought from the Moneta Investment Company for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed24sanfrich|705", "y": 1929, "line": "Land bought from Lea Gutradt and Sarah Haas in Block 5560", "flags": {}}
+{"id": "journalofproceed24sanfrich|718", "y": 1929, "line": "Permit transferred for premises at Lombard and Steiner streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|719", "y": 1929, "line": "Permit transferred for premises at Taraval Street and Nineteenth Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|720", "y": 1929, "line": "Permit transferred for premises at Lincoln Way and Nineteenth Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|721", "y": 1929, "line": "Permit transferred for premises at Fourteenth and Valencia streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|722", "y": 1929, "line": "Permit transferred for premises at Geary Street and Thirty-first Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|723", "y": 1929, "line": "Permit transferred for premises at Howard and Seventh streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|724", "y": 1929, "line": "Permit transferred for premises at Silver and San Bruno avenues", "flags": {}}
+{"id": "journalofproceed24sanfrich|725", "y": 1929, "line": "Permit transferred for premises at Market Street and Duboce Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|726", "y": 1929, "line": "Permit transferred for premises at Army and Third streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|727", "y": 1929, "line": "Permit transferred for premises at Geary and Collins streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|728", "y": 1929, "line": "Permit transferred for premises at Folsom and Fifth streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|729", "y": 1929, "line": "Permit transferred for premises at Columbus Avenue and Bay Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|730", "y": 1929, "line": "Permit transferred for premises at Van Ness Avenue and Filbert Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|731", "y": 1929, "line": "Permit transferred for premises at Fell and Baker streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|732", "y": 1929, "line": "Permit transferred for premises at Portola Drive and Fowler Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|733", "y": 1929, "line": "Permit transferred for premises at Jackson and Battery streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|734", "y": 1929, "line": "Permit transferred for premises at Market and Tenth streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|735", "y": 1929, "line": "Permit transferred for premises at Mission and Spear streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|736", "y": 1929, "line": "Permit transferred for premises at Stockton and Sacramento streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|737", "y": 1929, "line": "Permit transferred for premises at Eleventh and Mission streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|738", "y": 1929, "line": "Permit transferred for premises at Steiner and Bush streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|739", "y": 1929, "line": "Permit transferred for premises at Van Ness and Washington streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|740", "y": 1929, "line": "Permit transferred for premises at Third Street and South Park", "flags": {}}
+{"id": "journalofproceed24sanfrich|741", "y": 1929, "line": "Permit transferred for premises at Ellis Street and Van Ness", "flags": {}}
+{"id": "journalofproceed24sanfrich|742", "y": 1929, "line": "Permit transferred for premises at Golden Gate Avenue and Buchanan", "flags": {}}
+{"id": "journalofproceed24sanfrich|743", "y": 1929, "line": "Permit transferred for premises on Fell Street east of Stanyan", "flags": {}}
+{"id": "journalofproceed24sanfrich|744", "y": 1929, "line": "Permit transferred for premises at Geary Street and Ninth Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|749", "y": 1929, "line": "Street levels changed on Andover Street south of Benton Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|750", "y": 1929, "line": "Street levels changed on Maggie Alley east of Jones Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|752", "y": 1929, "line": "Street levels changed on three avenues between Quintara and Rivera", "flags": {}}
+{"id": "journalofproceed24sanfrich|763", "y": 1929, "line": "Permit at Divisadero and Post streets, no action stated here", "flags": {}}
+{"id": "journalofproceed24sanfrich|764", "y": 1929, "line": "Permit at Eleventh Avenue and Geary Street, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|765", "y": 1929, "line": "Permit at Twenty-fourth Avenue and Geary Street, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|766", "y": 1929, "line": "Permit at Ellis and Taylor streets, no action stated here", "flags": {}}
+{"id": "journalofproceed24sanfrich|767", "y": 1929, "line": "Permit at Claremont Boulevard and Ulloa Street, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|768", "y": 1929, "line": "Permit at Twelfth Street and Van Ness Avenue, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|769", "y": 1929, "line": "Permit at Stanyan and Beulah streets, no action stated here", "flags": {}}
+{"id": "journalofproceed24sanfrich|770", "y": 1929, "line": "Permit at Fourth and Tehama streets, no action stated here", "flags": {}}
+{"id": "journalofproceed24sanfrich|771", "y": 1929, "line": "Permit at Fourth Avenue and California Street, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|772", "y": 1929, "line": "Permit at Golden Gate Avenue and Hyde Street, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|773", "y": 1929, "line": "Permit at Ocean and Plymouth avenues, no action stated here", "flags": {}}
+{"id": "journalofproceed24sanfrich|774", "y": 1929, "line": "Permit at Forty-ninth Avenue and Lincoln Way, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|775", "y": 1929, "line": "Permit at First Avenue and Geary Street, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|776", "y": 1929, "line": "Permit at Jackson Street and Columbus Avenue, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|777", "y": 1929, "line": "Permit at Van Ness Avenue and Union Street, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|778", "y": 1929, "line": "Permit at Twenty-fourth and Church streets, no action stated here", "flags": {}}
+{"id": "journalofproceed24sanfrich|779", "y": 1929, "line": "Permit at Sacramento and Front streets, no action stated here", "flags": {}}
+{"id": "journalofproceed24sanfrich|780", "y": 1929, "line": "Permit at Main and Mission streets, no action stated here", "flags": {}}
+{"id": "journalofproceed24sanfrich|781", "y": 1929, "line": "Permit at Market, Seventeenth and Castro streets, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|782", "y": 1929, "line": "Permit at Seventh Avenue and Lincoln Way, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|783", "y": 1929, "line": "Permit at Eighteenth Avenue and Clement Street, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|784", "y": 1929, "line": "Permit at Nineteenth Avenue and Noriega Street, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|785", "y": 1929, "line": "Permit at Columbus Avenue, Bay and Jones streets, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|786", "y": 1929, "line": "Permit at Chestnut Street and Van Ness Avenue, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|787", "y": 1929, "line": "Permit at Forty-eighth Avenue and Fulton Street, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|788", "y": 1929, "line": "Permit at Presidio Avenue and California Street, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|789", "y": 1929, "line": "Permit at Seventh Avenue and Fulton Street, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|790", "y": 1929, "line": "Permit at Baker and Fulton streets, no action stated here", "flags": {}}
+{"id": "journalofproceed24sanfrich|791", "y": 1929, "line": "Permit at Duboce Avenue and Sanchez Street, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|792", "y": 1929, "line": "Permit at Forty-second Avenue and Geary Street, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|793", "y": 1929, "line": "Permit at Second and Howard streets, no action stated here", "flags": {}}
+{"id": "journalofproceed24sanfrich|794", "y": 1929, "line": "Permit at Army Street and Holladay Avenue, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|795", "y": 1929, "line": "Permit transferred for premises at Thirty-first Avenue and Geary Street", "flags": {"damaged": ["Thirty-first"]}}
+{"id": "journalofproceed24sanfrich|796", "y": 1929, "line": "Permit transferred for premises at Fourth and Folsom streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|797", "y": 1929, "line": "Permit transferred for premises at Van Ness Avenue and Fell Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|798", "y": 1929, "line": "Permit transferred for premises at Columbus Avenue and North Point", "flags": {}}
+{"id": "journalofproceed24sanfrich|799", "y": 1929, "line": "Permit transferred for premises at Eleventh and Howard streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|800", "y": 1929, "line": "Permit transferred for premises at Seventeenth, Market and Castro streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|801", "y": 1929, "line": "Permit transferred for premises at Funston Avenue and Geary Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|802", "y": 1929, "line": "Permit transferred for premises at Golden Gate Avenue and Webster", "flags": {}}
+{"id": "journalofproceed24sanfrich|803", "y": 1929, "line": "Permit transferred for premises at Pine and Divisadero streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|804", "y": 1929, "line": "Permit transferred for premises at Seventeenth Street and Potrero Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|805", "y": 1929, "line": "Permit transferred for premises at Mission, Otis and Twelfth streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|806", "y": 1929, "line": "Permit transferred for premises at Fourth and Brannan streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|807", "y": 1929, "line": "Permit transferred for premises at Adams Street and San Bruno Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|808", "y": 1929, "line": "Permit transferred for premises at Twenty-fourth and Folsom streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|809", "y": 1929, "line": "Permit transferred for premises at Army and Mission streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|813", "y": 1929, "line": "Permit granted for premises at Bush and Larkin streets", "flags": {"overstates": ["laid over", "granted"]}}
+{"id": "journalofproceed24sanfrich|818", "y": 1929, "line": "Loading zones set at the Arlington Hotel and Eagles Building", "flags": {}}
+{"id": "journalofproceed24sanfrich|819", "y": 1929, "line": "Loading zones abolished at the Clift Hotel and El Patio Ballroom", "flags": {"invented": ["Ballroom"]}}
+{"id": "journalofproceed24sanfrich|820", "y": 1929, "line": "Loading zones set at the Donohoe-Kelly Bank and Clift Hotel", "flags": {"damaged": ["Clift"]}}
+{"id": "journalofproceed24sanfrich|821", "y": 1929, "line": "Clay Street strip swapped with Title Insurance for Lafayette Square land", "flags": {}}
+{"id": "journalofproceed24sanfrich|823", "y": 1929, "line": "Mayor asked what was done about the play The Front Page", "flags": {}}
+{"id": "journalofproceed24sanfrich|826", "y": 1929, "line": "Land claim paid for Alemany Boulevard", "flags": {}}
+{"id": "journalofproceed24sanfrich|829", "y": 1929, "line": "Clay Street strip swapped with Title Insurance for Lafayette Square land", "flags": {}}
+{"id": "journalofproceed24sanfrich|832", "y": 1929, "line": "Permit at Divisadero and Post streets, no action stated here", "flags": {}}
+{"id": "journalofproceed24sanfrich|833", "y": 1929, "line": "Permit at Eleventh Avenue and Geary Street, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|834", "y": 1929, "line": "Permit at Twenty-fourth Avenue and Geary Street, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|835", "y": 1929, "line": "Permit at Ellis and Taylor streets, no action stated here", "flags": {}}
+{"id": "journalofproceed24sanfrich|836", "y": 1929, "line": "Permit at Claremont Boulevard and Ulloa Street, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|837", "y": 1929, "line": "Permit at Twelfth Street and Van Ness Avenue, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|838", "y": 1929, "line": "Permit at Stanyan and Beulah streets, no action stated here", "flags": {}}
+{"id": "journalofproceed24sanfrich|839", "y": 1929, "line": "Permit at Fourth and Tehama streets, no action stated here", "flags": {}}
+{"id": "journalofproceed24sanfrich|840", "y": 1929, "line": "Permit at Fourth Avenue and California Street, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|841", "y": 1929, "line": "Permit at Golden Gate Avenue and Hyde Street, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|842", "y": 1929, "line": "Permit at Ocean and Plymouth avenues, no action stated here", "flags": {}}
+{"id": "journalofproceed24sanfrich|843", "y": 1929, "line": "Permit at Forty-ninth Avenue and Lincoln Way, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|844", "y": 1929, "line": "Permit at First Avenue and Geary Street, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|845", "y": 1929, "line": "Permit at Jackson Street and Columbus Avenue, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|846", "y": 1929, "line": "Permit at Van Ness Avenue and Union Street, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|847", "y": 1929, "line": "Permit at Twenty-fourth and Church streets, no action stated here", "flags": {}}
+{"id": "journalofproceed24sanfrich|848", "y": 1929, "line": "Permit at Sacramento and Front streets, no action stated here", "flags": {}}
+{"id": "journalofproceed24sanfrich|849", "y": 1929, "line": "Permit at Main and Mission streets, no action stated here", "flags": {}}
+{"id": "journalofproceed24sanfrich|850", "y": 1929, "line": "Permit at Market, Seventeenth and Castro streets, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|851", "y": 1929, "line": "Permit at Seventh Avenue and Lincoln Way, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|852", "y": 1929, "line": "Permit at Eighteenth Avenue and Clement Street, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|853", "y": 1929, "line": "Permit at Nineteenth Avenue and Noriega Street, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|854", "y": 1929, "line": "Permit at Columbus Avenue, Bay and Jones streets, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|855", "y": 1929, "line": "Permit at Chestnut Street and Van Ness Avenue, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|856", "y": 1929, "line": "Permit at Forty-eighth Avenue and Fulton Street, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|857", "y": 1929, "line": "Permit at Presidio Avenue and California Street, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|858", "y": 1929, "line": "Permit at Baker and Fulton streets, no action stated here", "flags": {}}
+{"id": "journalofproceed24sanfrich|859", "y": 1929, "line": "Permit at Duboce Avenue and Sanchez Street, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|860", "y": 1929, "line": "Permit at Seventeenth and Valencia streets, no action stated here", "flags": {}}
+{"id": "journalofproceed24sanfrich|861", "y": 1929, "line": "Permit at Forty-second Avenue and Geary Street, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|862", "y": 1929, "line": "Permit at Second and Howard streets, no action stated here", "flags": {}}
+{"id": "journalofproceed24sanfrich|863", "y": 1929, "line": "Permit at Army Street and Holladay Avenue, no action stated", "flags": {}}
+{"id": "journalofproceed24sanfrich|864", "y": 1929, "line": "Permit transferred for premises at Thirty-first Avenue and Geary Street", "flags": {"damaged": ["Thirty-first"]}}
+{"id": "journalofproceed24sanfrich|865", "y": 1929, "line": "Permit transferred for premises at Fourth and Folsom streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|866", "y": 1929, "line": "Permit transferred for premises at Van Ness Avenue and Fell Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|867", "y": 1929, "line": "Permit transferred for premises at Columbus Avenue and North Point", "flags": {}}
+{"id": "journalofproceed24sanfrich|868", "y": 1929, "line": "Permit transferred for premises at Eleventh and Howard streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|869", "y": 1929, "line": "Permit transferred for premises at Seventeenth, Market and Castro streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|870", "y": 1929, "line": "Permit transferred for premises at Funston Avenue and Geary Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|871", "y": 1929, "line": "Permit transferred for premises at Golden Gate Avenue and Webster", "flags": {}}
+{"id": "journalofproceed24sanfrich|872", "y": 1929, "line": "Permit transferred for premises at Pine and Divisadero streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|873", "y": 1929, "line": "Permit transferred for premises at Seventeenth Street and Potrero Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|874", "y": 1929, "line": "Permit transferred for premises at Mission, Otis and Twelfth streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|875", "y": 1929, "line": "Permit transferred for premises at Fourth and Brannan streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|876", "y": 1929, "line": "Permit transferred for premises at Twenty-fourth and Folsom streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|877", "y": 1929, "line": "Permit transferred for premises at Army and Mission streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|881", "y": 1929, "line": "Permit granted for premises at 527-529 Gough Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|885", "y": 1929, "line": "Claims paid for park gas, school painting and school plumbing", "flags": {}}
+{"id": "journalofproceed24sanfrich|889", "y": 1929, "line": "Land bought from the Commercial Centre Realty Company, Block 2042", "flags": {}}
+{"id": "journalofproceed24sanfrich|890", "y": 1929, "line": "Land claim paid for Laguna Honda Boulevard", "flags": {}}
+{"id": "journalofproceed24sanfrich|899", "y": 1929, "line": "Sibley Grading allowed to blast at Pine and Monroe streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|900", "y": 1929, "line": "Blasting limited to daytime hours, with a protest filed", "flags": {}}
+{"id": "journalofproceed24sanfrich|902", "y": 1929, "line": "Blasting limited to daytime hours, with a protest filed", "flags": {}}
+{"id": "journalofproceed24sanfrich|920", "y": 1929, "line": "Street levels set on Carolina Street south of Twenty-second Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|923", "y": 1929, "line": "Street levels set on Southard Place north of Greenwich Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|936", "y": 1929, "line": "Loading zones set at University Hospital and the Hotel Geary", "flags": {}}
+{"id": "journalofproceed24sanfrich|942", "y": 1929, "line": "Land claim paid for Bay Shore Boulevard", "flags": {}}
+{"id": "journalofproceed24sanfrich|943", "y": 1929, "line": "Land claim paid for Laguna Honda Boulevard", "flags": {}}
+{"id": "journalofproceed24sanfrich|944", "y": 1929, "line": "Sibley Grading allowed to blast at Pine and Monroe streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|945", "y": 1929, "line": "Blasting allowed only between 7 a.m. and 6 p.m.", "flags": {}}
+{"id": "journalofproceed24sanfrich|947", "y": 1929, "line": "Blasting allowed only between 7 a.m. and 6 p.m., protest filed", "flags": {}}
+{"id": "journalofproceed24sanfrich|964", "y": 1929, "line": "$1,365.68 repaid to the county road fund for covering sidesewers", "flags": {}}
+{"id": "journalofproceed24sanfrich|979", "y": 1929, "line": "Loading zones set at Hariton Hardware and the Fetter Carpenter Shop", "flags": {}}
+{"id": "journalofproceed24sanfrich|980", "y": 1929, "line": "Loading zones abolished or cut at Hotel Burbank and Olympic Club", "flags": {}}
+{"id": "journalofproceed24sanfrich|989", "y": 1929, "line": "Joint Highway District No. 10 certifies a copy of its resolution", "flags": {}}
+{"id": "journalofproceed24sanfrich|991", "y": 1929, "line": "$1,365.68 repaid to the county road fund for covering sidesewers", "flags": {}}
+{"id": "journalofproceed24sanfrich|998", "y": 1929, "line": "Clay Street strip swapped with Title Insurance for Lafayette Square land", "flags": {}}
+{"id": "journalofproceed24sanfrich|1015", "y": 1929, "line": "Land bought from Elliott and Alice McAllister for Castro Street work", "flags": {}}
+{"id": "journalofproceed24sanfrich|1016", "y": 1929, "line": "Castro Street owners give up damage claims from the regrading", "flags": {}}
+{"id": "journalofproceed24sanfrich|1017", "y": 1929, "line": "Castro Street owners paid small sums to release damage claims", "flags": {}}
+{"id": "journalofproceed24sanfrich|1024", "y": 1929, "line": "Permit granted on Divisadero Street south of Sacramento Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|1051", "y": 1929, "line": "Part of Whipple Avenue to be closed and abandoned", "flags": {}}
+{"id": "journalofproceed24sanfrich|1053", "y": 1929, "line": "Bernal Avenue to be renamed Mirabel Avenue from Coso to Shotwell", "flags": {}}
+{"id": "journalofproceed24sanfrich|1061", "y": 1929, "line": "Taxi stand granted Red Line Motor Tours at 401 Mason Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|1074", "y": 1929, "line": "Land claim paid for Bay Shore Boulevard", "flags": {}}
+{"id": "journalofproceed24sanfrich|1075", "y": 1929, "line": "Oil tanks allowed at sixteen addresses including the Hotel Dunloe", "flags": {}}
+{"id": "journalofproceed24sanfrich|1077", "y": 1929, "line": "Permit granted on Cabrillo Street west of Forty-seventh Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|1081", "y": 1929, "line": "Permit granted on Divisadero Street south of Sacramento Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|1124", "y": 1929, "line": "Loading zones set at the Golden Gate Theatre and Women's Athletic Club", "flags": {}}
+{"id": "journalofproceed24sanfrich|1126", "y": 1929, "line": "Loading zones set at the Hotel Ramona and Women's Athletic Club", "flags": {}}
+{"id": "journalofproceed24sanfrich|1127", "y": 1929, "line": "Loading zone set outside the State Prison Directors' Union Street office", "flags": {}}
+{"id": "journalofproceed24sanfrich|1128", "y": 1929, "line": "Mayor to arrange Mothers' Day services in Memorial Grove", "flags": {}}
+{"id": "journalofproceed24sanfrich|1130", "y": 1929, "line": "Killpatrick Estate's objection to the Oakwood Street valuation put off", "flags": {}}
+{"id": "journalofproceed24sanfrich|1142", "y": 1929, "line": "Land bought from C. D. Lieb on Thirty-ninth Avenue for schools", "flags": {}}
+{"id": "journalofproceed24sanfrich|1143", "y": 1929, "line": "Land bought from Benjamin Weilerstein on Thirty-eighth Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|1144", "y": 1929, "line": "A land claim paid, the property not named on this page", "flags": {}}
+{"id": "journalofproceed24sanfrich|1147", "y": 1929, "line": "Land bought from Chester R. Macphee on Thirty-ninth Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|1148", "y": 1929, "line": "Land bought from the Salarac Land Company on Thirty-ninth Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|1151", "y": 1929, "line": "Land bought from Henrietta and Anton Werner in Block 5474", "flags": {}}
+{"id": "journalofproceed24sanfrich|1152", "y": 1929, "line": "Land bought from Carl and Hermine Hoppe in Block 5474", "flags": {}}
+{"id": "journalofproceed24sanfrich|1153", "y": 1929, "line": "Land bought from Emily and John Schmelter in Block 5474", "flags": {}}
+{"id": "journalofproceed24sanfrich|1154", "y": 1929, "line": "Land bought from H. and Charlotte Hinrichs in Block 5471", "flags": {}}
+{"id": "journalofproceed24sanfrich|1155", "y": 1929, "line": "Land bought from Ida and D. E. Davis in Block 2389", "flags": {}}
+{"id": "journalofproceed24sanfrich|1167", "y": 1929, "line": "$6,500 paid to Henrietta and Anton Werner for Bay Shore Boulevard", "flags": {}}
+{"id": "journalofproceed24sanfrich|1172", "y": 1929, "line": "Permit granted at Potrero Avenue and Alameda Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|1175", "y": 1929, "line": "Permit granted for premises at 1520 Taylor Street", "flags": {"overstates": ["laid over", "granted"]}}
+{"id": "journalofproceed24sanfrich|1180", "y": 1929, "line": "Granfield, Farrar & Carlin may blast only in daytime hours", "flags": {}}
+{"id": "journalofproceed24sanfrich|1187", "y": 1929, "line": "Parts of Michigan and Georgia streets and Lena Place to close", "flags": {}}
+{"id": "journalofproceed24sanfrich|1213", "y": 1929, "line": "An earlier ordinance repealed, the new one effective immediately", "flags": {}}
+{"id": "journalofproceed24sanfrich|1219", "y": 1929, "line": "Land bought from Benjamin Weilerstein on Thirty-eighth Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|1220", "y": 1929, "line": "A land claim paid, the property not named on this page", "flags": {}}
+{"id": "journalofproceed24sanfrich|1223", "y": 1929, "line": "Land bought from Chester R. Macphee on Thirty-ninth Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|1224", "y": 1929, "line": "Land bought from the Salarac Land Company on Thirty-ninth Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|1227", "y": 1929, "line": "Land bought from Henrietta and Anton Werner in Block 5474", "flags": {}}
+{"id": "journalofproceed24sanfrich|1228", "y": 1929, "line": "Land bought from Carl and Hermine Hoppe in Block 5474", "flags": {}}
+{"id": "journalofproceed24sanfrich|1229", "y": 1929, "line": "Land bought from Emily and John Schmelter in Block 5474", "flags": {}}
+{"id": "journalofproceed24sanfrich|1230", "y": 1929, "line": "Land bought from H. and Charlotte Hinrichs in Block 5471", "flags": {}}
+{"id": "journalofproceed24sanfrich|1231", "y": 1929, "line": "Land bought from Ida and D. E. Davis in Block 2389", "flags": {}}
+{"id": "journalofproceed24sanfrich|1237", "y": 1929, "line": "Permit granted for premises at 726-736 Pacific Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|1238", "y": 1929, "line": "Permit granted for premises at 1520 Taylor Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|1240", "y": 1929, "line": "Municipal Construction Company may blast only in daytime hours", "flags": {}}
+{"id": "journalofproceed24sanfrich|1243", "y": 1929, "line": "R. J. O'Connell may blast only in daytime hours", "flags": {}}
+{"id": "journalofproceed24sanfrich|1262", "y": 1929, "line": "An earlier ordinance repealed, the new one effective immediately", "flags": {}}
+{"id": "journalofproceed24sanfrich|1281", "y": 1929, "line": "Permit granted at Mission and Avalon streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|1283", "y": 1929, "line": "Loading zones set at Levi Strauss and Price's Bakery", "flags": {}}
+{"id": "journalofproceed24sanfrich|1285", "y": 1929, "line": "Loading zones abolished at the Monadnock Building and La Salle Hotel", "flags": {}}
+{"id": "journalofproceed24sanfrich|1295", "y": 1929, "line": "Daniel J. Leary thanked after forty-eight years with the city", "flags": {}}
+{"id": "journalofproceed24sanfrich|1308", "y": 1929, "line": "Permit granted at Mission and Avalon streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|1330", "y": 1929, "line": "Land offered by Arthur Elvin on Thirty-ninth Avenue for schools", "flags": {}}
+{"id": "journalofproceed24sanfrich|1343", "y": 1929, "line": "Parts of Georgia and Michigan streets to be closed after notice", "flags": {}}
+{"id": "journalofproceed24sanfrich|1345", "y": 1929, "line": "City men sent to Sacramento over Market Street car track bill", "flags": {}}
+{"id": "journalofproceed24sanfrich|1352", "y": 1929, "line": "Public garage refused Stuart T. Hynes on O'Farrell Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|1359", "y": 1929, "line": "A claim paid, the property not named on this page", "flags": {}}
+{"id": "journalofproceed24sanfrich|1367", "y": 1929, "line": "California Construction Company may blast only in daytime hours", "flags": {}}
+{"id": "journalofproceed24sanfrich|1377", "y": 1929, "line": "Permit granted for premises at 850 Ellis Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|1396", "y": 1929, "line": "Taxi stands cancelled for Yellow Cab and four other operators", "flags": {}}
+{"id": "journalofproceed24sanfrich|1406", "y": 1929, "line": "Board backs the $125,000 drive by the Association for the Blind", "flags": {}}
+{"id": "journalofproceed24sanfrich|1415", "y": 1929, "line": "Permit granted for premises at 850 Ellis Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|1431", "y": 1929, "line": "$31,500 paid to Northwestern Pacific Railroad for Aquatic Park land", "flags": {}}
+{"id": "journalofproceed24sanfrich|1432", "y": 1929, "line": "A claim paid for land required for the Aquatic Park", "flags": {}}
+{"id": "journalofproceed24sanfrich|1434", "y": 1929, "line": "Taxi stands cancelled for Tanner Motor Tours and Yellow Cab", "flags": {}}
+{"id": "journalofproceed24sanfrich|1460", "y": 1929, "line": "Loading zones set at the Japanese American News and Graybar Electric", "flags": {}}
+{"id": "journalofproceed24sanfrich|1461", "y": 1929, "line": "Loading zones set at the Hotel Canterbury and State Hotel", "flags": {}}
+{"id": "journalofproceed24sanfrich|1462", "y": 1929, "line": "Loading zones cut at the Hotel Canterbury and Leighton Dairy Lunch", "flags": {"invented": ["Leighton"]}}
+{"id": "journalofproceed24sanfrich|1464", "y": 1929, "line": "City budget for 1929-1930 set at $26,012,787, revenue growth slowing", "flags": {}}
+{"id": "journalofproceed24sanfrich|1469", "y": 1929, "line": "$31,500 paid to Northwestern Pacific Railroad for Aquatic Park land", "flags": {}}
+{"id": "journalofproceed24sanfrich|1470", "y": 1929, "line": "A claim paid for land required for the Aquatic Park", "flags": {}}
+{"id": "journalofproceed24sanfrich|1488", "y": 1929, "line": "Claims paid for Hetch Hetchy cement, lumber and machinery", "flags": {}}
+{"id": "journalofproceed24sanfrich|1492", "y": 1929, "line": "Lang family's deed accepted for land at Mount Davidson Park", "flags": {"invented": ["Mount"]}}
+{"id": "journalofproceed24sanfrich|1496", "y": 1929, "line": "Treasurer allowed to hire a general clerk at $2,100", "flags": {}}
+{"id": "journalofproceed24sanfrich|1497", "y": 1929, "line": "$31,500 offer from Northwestern Pacific accepted for Aquatic Park", "flags": {}}
+{"id": "journalofproceed24sanfrich|1499", "y": 1929, "line": "Permit granted at Eleventh and Howard streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|1508", "y": 1929, "line": "Street levels changed on Tompkins Avenue between Andover and Moultrie", "flags": {}}
+{"id": "journalofproceed24sanfrich|1510", "y": 1929, "line": "Street levels changed on Wawona Street between Fifteenth and Sixteenth", "flags": {}}
+{"id": "journalofproceed24sanfrich|1512", "y": 1929, "line": "Granfield, Farrar & Carlin may blast only in daytime hours", "flags": {}}
+{"id": "journalofproceed24sanfrich|1516", "y": 1929, "line": "Street levels set on Brunswick Street near Allison Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|1517", "y": 1929, "line": "Loading zones set at Bernstein's Grotto and Wakelee's Drug Company", "flags": {}}
+{"id": "journalofproceed24sanfrich|1518", "y": 1929, "line": "Loading zones abolished at Bernstein's Grotto on Powell Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|1519", "y": 1929, "line": "Passenger loading zone set at the Hotel Lafayette on Hyde Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|1527", "y": 1929, "line": "City declares it needs Fairmount Tract land near Chenery Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|1528", "y": 1929, "line": "Claims paid for Hetch Hetchy cement, lumber and machinery", "flags": {}}
+{"id": "journalofproceed24sanfrich|1543", "y": 1929, "line": "Street levels changed on Tompkins Avenue between Andover and Moultrie", "flags": {}}
+{"id": "journalofproceed24sanfrich|1545", "y": 1929, "line": "Street levels changed on Wawona Street between Fifteenth and Sixteenth", "flags": {}}
+{"id": "journalofproceed24sanfrich|1548", "y": 1929, "line": "Granfield, Farrar & Carlin may blast only in daytime hours", "flags": {}}
+{"id": "journalofproceed24sanfrich|1550", "y": 1929, "line": "Claims paid for park fencing, Civic Center planting and legal services", "flags": {}}
+{"id": "journalofproceed24sanfrich|1576", "y": 1929, "line": "Permit transferred for premises at Ellis Street and Van Ness", "flags": {}}
+{"id": "journalofproceed24sanfrich|1577", "y": 1929, "line": "Permit transferred for premises at Folsom and Fifth streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|1578", "y": 1929, "line": "Permit transferred for premises at Golden Gate Avenue and Buchanan", "flags": {}}
+{"id": "journalofproceed24sanfrich|1579", "y": 1929, "line": "Permit transferred for premises on Fell Street east of Stanyan", "flags": {}}
+{"id": "journalofproceed24sanfrich|1580", "y": 1929, "line": "Permit transferred for premises at Stockton and Sacramento streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|1581", "y": 1929, "line": "Permit transferred for premises at Columbus Avenue and Bay Street", "flags": {}}
+{"id": "journalofproceed24sanfrich|1582", "y": 1929, "line": "Permit transferred for premises at Lombard and Steiner streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|1583", "y": 1929, "line": "Permit transferred for premises at Jackson and Battery streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|1584", "y": 1929, "line": "Permit transferred for premises at Fourteenth and Valencia streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|1585", "y": 1929, "line": "Permit transferred for premises at Steiner and Bush streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|1586", "y": 1929, "line": "Permit transferred for premises at Third Street and South Park", "flags": {}}
+{"id": "journalofproceed24sanfrich|1587", "y": 1929, "line": "Permit transferred for premises at Market and Tenth streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|1588", "y": 1929, "line": "Permit transferred for premises at Mission and Spear streets", "flags": {}}
+{"id": "journalofproceed24sanfrich|1589", "y": 1929, "line": "Permit transferred for premises at Market Street and Duboce Avenue", "flags": {}}
+{"id": "journalofproceed24sanfrich|1590", "y": 1929, "line": "Permit transferred for premises at Howard and Seventh streets", "flags": {}}
+{"id": "journalofproceed62sanfrich|49", "y": 1967, "line": "A final passage vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|51", "y": 1967, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|55", "y": 1967, "line": "Turn rules adopted for Masonic Avenue traffic into Turk and Hayes.", "flags": {}}
+{"id": "journalofproceed62sanfrich|56", "y": 1967, "line": "Corners on Clement and Bay Streets designated; Powell and Washington dropped.", "flags": {}}
+{"id": "journalofproceed62sanfrich|57", "y": 1967, "line": "Rush-hour rules adopted on Masonic Avenue between Fell Street and Geary.", "flags": {}}
+{"id": "journalofproceed62sanfrich|58", "y": 1967, "line": "Portola Drive and Natick Street proposal sent back to committee.", "flags": {}}
+{"id": "journalofproceed62sanfrich|64", "y": 1967, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|66", "y": 1967, "line": "Rules adopted for stretches of Portola Drive and Natick Street.", "flags": {}}
+{"id": "journalofproceed62sanfrich|69", "y": 1967, "line": "Final passage on a matter in United States District Court.", "flags": {}}
+{"id": "journalofproceed62sanfrich|72", "y": 1967, "line": "Street lines listed near Drumm Street inside a redevelopment project.", "flags": {}}
+{"id": "journalofproceed62sanfrich|75", "y": 1967, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|76", "y": 1967, "line": "Store at 4033-A Judah Street leased for $480 a month.", "flags": {}}
+{"id": "journalofproceed62sanfrich|77", "y": 1967, "line": "Position taken on state bills for open meetings and reapportionment.", "flags": {}}
+{"id": "journalofproceed62sanfrich|82", "y": 1967, "line": "Rules adopted for Lloyd Street and Bronte Street stretches.", "flags": {}}
+{"id": "journalofproceed62sanfrich|83", "y": 1967, "line": "Corners designated at Fourteenth and Sanchez and Fourteenth and Noe.", "flags": {}}
+{"id": "journalofproceed62sanfrich|85", "y": 1967, "line": "Turn rules set for Lyon and Baker Streets into Marina Boulevard.", "flags": {}}
+{"id": "journalofproceed62sanfrich|90", "y": 1967, "line": "Liens released on Woodland Avenue, Haight Street and Broderick Street properties.", "flags": {}}
+{"id": "journalofproceed62sanfrich|104", "y": 1967, "line": "A final passage vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|105", "y": 1967, "line": "A final passage vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|106", "y": 1967, "line": "A motion carried with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|107", "y": 1967, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|108", "y": 1967, "line": "Butchertown Industrial Park urged for jobs and a wider tax base.", "flags": {}}
+{"id": "journalofproceed62sanfrich|109", "y": 1967, "line": "Legislation called out of Finance Committee onto the Board's calendar.", "flags": {}}
+{"id": "journalofproceed62sanfrich|114", "y": 1967, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|115", "y": 1967, "line": "Position taken on state bills for appraisal costs and highway commission.", "flags": {}}
+{"id": "journalofproceed62sanfrich|123", "y": 1967, "line": "Temporary closings set for Twenty-ninth, Sherman and Lombard Streets.", "flags": {}}
+{"id": "journalofproceed62sanfrich|124", "y": 1967, "line": "Corner signs changed at a dozen crossings, yield signs removed.", "flags": {}}
+{"id": "journalofproceed62sanfrich|127", "y": 1967, "line": "Turn rule adopted for Howard Street traffic into Third Street.", "flags": {}}
+{"id": "journalofproceed62sanfrich|128", "y": 1967, "line": "Stopping banned at all times on parts of Montgomery and Howard.", "flags": {}}
+{"id": "journalofproceed62sanfrich|129", "y": 1967, "line": "Parking meters extended to Steiner, Union and Octavia Streets.", "flags": {}}
+{"id": "journalofproceed62sanfrich|136", "y": 1967, "line": "Appropriation includes $452,800 for land on the Fifth Street extension.", "flags": {}}
+{"id": "journalofproceed62sanfrich|145", "y": 1967, "line": "Budget changes proposed for the Adult Probation Department and Art Commission.", "flags": {}}
+{"id": "journalofproceed62sanfrich|147", "y": 1967, "line": "A final passage vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|148", "y": 1967, "line": "Deadlines extended for City Hall Annex elevators and a sewage plant.", "flags": {}}
+{"id": "journalofproceed62sanfrich|150", "y": 1967, "line": "Second reading passed for the Monterey Boulevard and Ridgewood Avenue area.", "flags": {}}
+{"id": "journalofproceed62sanfrich|152", "y": 1967, "line": "Rules adopted for stretches from Lake Merced Boulevard to Sloat Boulevard.", "flags": {}}
+{"id": "journalofproceed62sanfrich|153", "y": 1967, "line": "Grove Street and Grant Avenue closed for events on set dates.", "flags": {}}
+{"id": "journalofproceed62sanfrich|154", "y": 1967, "line": "Stopping banned at set hours on Sacramento and O'Farrell Streets.", "flags": {}}
+{"id": "journalofproceed62sanfrich|158", "y": 1967, "line": "A second reading passed with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|159", "y": 1967, "line": "Held to May 22 for a Market Street progress report.", "flags": {}}
+{"id": "journalofproceed62sanfrich|160", "y": 1967, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|162", "y": 1967, "line": "The Monterey Boulevard and Ridgewood Avenue area ordinance finally passed.", "flags": {}}
+{"id": "journalofproceed62sanfrich|163", "y": 1967, "line": "A final passage vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|164", "y": 1967, "line": "Four parcel owners to be paid, passed for second reading.", "flags": {}}
+{"id": "journalofproceed62sanfrich|165", "y": 1967, "line": "Extra money listed for fire and police overtime and Mullen Avenue.", "flags": {}}
+{"id": "journalofproceed62sanfrich|168", "y": 1967, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|169", "y": 1967, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|170", "y": 1967, "line": "Payments to four parcel owners finally passed.", "flags": {}}
+{"id": "journalofproceed62sanfrich|171", "y": 1967, "line": "Extra money finally passed for overtime, health centres and Mullen Avenue.", "flags": {}}
+{"id": "journalofproceed62sanfrich|174", "y": 1967, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|180", "y": 1967, "line": "Positions taken on state bills on taxes, housing and vehicle fees.", "flags": {}}
+{"id": "journalofproceed62sanfrich|184", "y": 1967, "line": "Corners designated at seven crossings, from Irving Street to Pacheco.", "flags": {}}
+{"id": "journalofproceed62sanfrich|187", "y": 1967, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|191", "y": 1967, "line": "Districts proposed on Pierce and Pine Streets pass second reading.", "flags": {}}
+{"id": "journalofproceed62sanfrich|201", "y": 1967, "line": "A second reading passed on a single lot in Block 206.", "flags": {}}
+{"id": "journalofproceed62sanfrich|204", "y": 1967, "line": "A second reading passed with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|209", "y": 1967, "line": "A motion carried with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|210", "y": 1967, "line": "A property assessment cut, with no taxpayer named here.", "flags": {}}
+{"id": "journalofproceed62sanfrich|211", "y": 1967, "line": "A motion carried with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|212", "y": 1967, "line": "A motion carried with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|213", "y": 1967, "line": "A motion carried with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|214", "y": 1967, "line": "A motion carried with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|216", "y": 1967, "line": "Tax appeals with agreed settlements taken up for hearing.", "flags": {}}
+{"id": "journalofproceed62sanfrich|217", "y": 1967, "line": "Tax appeals outside the Knoff case ruling taken up next.", "flags": {}}
+{"id": "journalofproceed62sanfrich|219", "y": 1967, "line": "A motion carried with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|220", "y": 1967, "line": "Board sits as an equalization board for late assessments.", "flags": {}}
+{"id": "journalofproceed62sanfrich|222", "y": 1967, "line": "Final passage on a single lot in Block 206.", "flags": {}}
+{"id": "journalofproceed62sanfrich|224", "y": 1967, "line": "A final passage vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|226", "y": 1967, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|230", "y": 1967, "line": "A second reading passed with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|234", "y": 1967, "line": "Rules adopted for stretches of Mariposa, Goettingen and Eddy Streets.", "flags": {}}
+{"id": "journalofproceed62sanfrich|235", "y": 1967, "line": "Streets abutting Union and Fillmore Streets, with nothing further stated.", "flags": {}}
+{"id": "journalofproceed62sanfrich|238", "y": 1967, "line": "Corners designated at eleven crossings, from Frederick Street to Holloway.", "flags": {"damaged": ["Holloway."]}}
+{"id": "journalofproceed62sanfrich|239", "y": 1967, "line": "Rules adopted for stretches of Goettingen Street and Eddy Street.", "flags": {}}
+{"id": "journalofproceed62sanfrich|240", "y": 1967, "line": "Stopping banned at rush hours near Illinois and Indiana Streets.", "flags": {}}
+{"id": "journalofproceed62sanfrich|241", "y": 1967, "line": "Turn rules adopted at McAllister and Van Ness and at Tingley.", "flags": {}}
+{"id": "journalofproceed62sanfrich|242", "y": 1967, "line": "Rules adopted on Peabody and Alpha Streets near Leland Avenue.", "flags": {}}
+{"id": "journalofproceed62sanfrich|245", "y": 1967, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|250", "y": 1967, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|253", "y": 1967, "line": "A second reading passed with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|257", "y": 1967, "line": "A final passage vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|261", "y": 1967, "line": "Rules adopted for Julian, Carmelita and Hallam Streets.", "flags": {}}
+{"id": "journalofproceed62sanfrich|265", "y": 1967, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|272", "y": 1967, "line": "Rules adopted for stretches of Gough Street and Franklin Street.", "flags": {}}
+{"id": "journalofproceed62sanfrich|273", "y": 1967, "line": "Rules adopted for stretches of Geary, Post, Sutter and Kearny.", "flags": {}}
+{"id": "journalofproceed62sanfrich|276", "y": 1967, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|293", "y": 1967, "line": "Courtroom, police and City Prison works pass a second reading.", "flags": {}}
+{"id": "journalofproceed62sanfrich|299", "y": 1967, "line": "Meat-selling hours ordinance put off to September 25 for talks.", "flags": {}}
+{"id": "journalofproceed62sanfrich|302", "y": 1967, "line": "Streets closed for a Columbus Day parade, art shows and fairs.", "flags": {}}
+{"id": "journalofproceed62sanfrich|303", "y": 1967, "line": "Corners designated at six crossings, from Rhode Island to Mission Street.", "flags": {}}
+{"id": "journalofproceed62sanfrich|308", "y": 1967, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|310", "y": 1967, "line": "Rules adopted for stretches of Webster Street and Sacramento Street.", "flags": {}}
+{"id": "journalofproceed62sanfrich|311", "y": 1967, "line": "Hearings ordered on a commuter tax, with many bodies invited.", "flags": {}}
+{"id": "journalofproceed62sanfrich|319", "y": 1967, "line": "One-way running set on Haight, Waller and Central Avenue.", "flags": {}}
+{"id": "journalofproceed62sanfrich|320", "y": 1967, "line": "Trolley wires costed at $8,600 before the one-way plan was adopted.", "flags": {}}
+{"id": "journalofproceed62sanfrich|321", "y": 1967, "line": "Consideration put off to October 2 so people could be told.", "flags": {}}
+{"id": "journalofproceed62sanfrich|326", "y": 1967, "line": "A final passage vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|327", "y": 1967, "line": "Stadium expansion financing adopted after the Controller backed revenue bonds.", "flags": {}}
+{"id": "journalofproceed62sanfrich|329", "y": 1967, "line": "A second reading passed with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|330", "y": 1967, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|331", "y": 1967, "line": "$101,800 for land on the Fifth Street extension, plus firehouse money.", "flags": {}}
+{"id": "journalofproceed62sanfrich|333", "y": 1967, "line": "A motion carried with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|335", "y": 1967, "line": "$101,800 for Fifth Street extension land and Engine Company firehouses.", "flags": {}}
+{"id": "journalofproceed62sanfrich|337", "y": 1967, "line": "An adoption vote on one lot in Block 351.", "flags": {}}
+{"id": "journalofproceed62sanfrich|338", "y": 1967, "line": "Streets closed for a fair, a festival and motorcycle jumping.", "flags": {}}
+{"id": "journalofproceed62sanfrich|339", "y": 1967, "line": "An ordinance sent to the Finance Committee, its subject not stated.", "flags": {}}
+{"id": "journalofproceed62sanfrich|345", "y": 1967, "line": "Corners designated at a dozen crossings, from Anza Street to Drumm.", "flags": {}}
+{"id": "journalofproceed62sanfrich|348", "y": 1967, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|350", "y": 1967, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|355", "y": 1967, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|361", "y": 1967, "line": "An attempt to override the Mayor's veto was refused.", "flags": {}}
+{"id": "journalofproceed62sanfrich|363", "y": 1967, "line": "Final passage covering Malta Drive, Mercato Court and Army Street.", "flags": {}}
+{"id": "journalofproceed62sanfrich|366", "y": 1967, "line": "Turn rules adopted for Howard into Fifth and Sutter into Stockton.", "flags": {}}
+{"id": "journalofproceed62sanfrich|368", "y": 1967, "line": "Rules adopted for stretches of O'Farrell, Howard, Fifth and Sutter.", "flags": {}}
+{"id": "journalofproceed62sanfrich|369", "y": 1967, "line": "Double turning lanes allowed where Mission Street meets Third Street.", "flags": {}}
+{"id": "journalofproceed62sanfrich|372", "y": 1967, "line": "Rules adopted for stretches of Mission Street and Annie Street.", "flags": {}}
+{"id": "journalofproceed62sanfrich|373", "y": 1967, "line": "Parking meter zone widened along Valencia Street and nearby avenues.", "flags": {}}
+{"id": "journalofproceed62sanfrich|374", "y": 1967, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|375", "y": 1967, "line": "A second reading passed with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|378", "y": 1967, "line": "A final passage vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|384", "y": 1967, "line": "Adopted on blocks west of Franklin Street between McAllister and Grove.", "flags": {}}
+{"id": "journalofproceed62sanfrich|395", "y": 1967, "line": "An ordinance listing scores of street blocks across the city.", "flags": {}}
+{"id": "journalofproceed62sanfrich|397", "y": 1967, "line": "A second reading passed with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|398", "y": 1967, "line": "Wording changed to hinge on the State Supreme Court decision.", "flags": {}}
+{"id": "journalofproceed62sanfrich|399", "y": 1967, "line": "Dance hall rules sent to committee for charities to hold dances.", "flags": {}}
+{"id": "journalofproceed62sanfrich|401", "y": 1967, "line": "A final passage vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|403", "y": 1967, "line": "Final passage covering Quint Street, Elsie Street and Newcomb Avenue.", "flags": {}}
+{"id": "journalofproceed62sanfrich|404", "y": 1967, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|408", "y": 1967, "line": "Sent to the Fire, Safety and Police Committee, subject not stated.", "flags": {}}
+{"id": "journalofproceed62sanfrich|410", "y": 1967, "line": "Claims listed from city workers for shoes, trousers and eyeglasses.", "flags": {}}
+{"id": "journalofproceed62sanfrich|412", "y": 1967, "line": "A second reading passed with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|413", "y": 1967, "line": "A second reading passed on a Superior Court case.", "flags": {}}
+{"id": "journalofproceed62sanfrich|420", "y": 1967, "line": "Traffic to stop at Shrader, Filbert, Flood and Mangels corners.", "flags": {}}
+{"id": "journalofproceed62sanfrich|421", "y": 1967, "line": "A second reading passed with no subject on this page.", "flags": {}}
+{"id": "journalofproceed62sanfrich|425", "y": 1967, "line": "Final passage on a Superior Court case.", "flags": {}}
+{"id": "journalofproceed62sanfrich|428", "y": 1967, "line": "Money listed for Ord Court, city staff and psychiatric clinics.", "flags": {}}
+{"id": "journalofproceed63sanfrich|2", "y": 1968, "line": "A motion carried with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|3", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|4", "y": 1968, "line": "Money finally passed for Ord Court, clinics and temporary staff.", "flags": {}}
+{"id": "journalofproceed63sanfrich|6", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|14", "y": 1968, "line": "Seven districts finally passed, from Forest Knolls to St. Mary's Park.", "flags": {}}
+{"id": "journalofproceed63sanfrich|17", "y": 1968, "line": "Parking side switched on the Junipero Serra East Service Road.", "flags": {}}
+{"id": "journalofproceed63sanfrich|18", "y": 1968, "line": "Two-hour parking moved to the west side of the Service Road.", "flags": {}}
+{"id": "journalofproceed63sanfrich|19", "y": 1968, "line": "Rules set at listed hours on Harrison Street and Larkin Street.", "flags": {}}
+{"id": "journalofproceed63sanfrich|20", "y": 1968, "line": "Corners designated at thirteen crossings, from Ingalls Street to Chenery.", "flags": {}}
+{"id": "journalofproceed63sanfrich|21", "y": 1968, "line": "Sequoia Way made one-way; Jessie Street loses its one-way rule.", "flags": {}}
+{"id": "journalofproceed63sanfrich|23", "y": 1968, "line": "Rules adopted for stretches of Fulton, Hyde and Leavenworth Streets.", "flags": {}}
+{"id": "journalofproceed63sanfrich|25", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|28", "y": 1968, "line": "A second reading passed with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|32", "y": 1968, "line": "A 1962 permit let Charles Kiger fence Keith Street at Burke.", "flags": {}}
+{"id": "journalofproceed63sanfrich|34", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|48", "y": 1968, "line": "Market Street plan amended and adopted after questions on BART stations.", "flags": {}}
+{"id": "journalofproceed63sanfrich|50", "y": 1968, "line": "Two warrants paid to Alberta Telfor and Dorothy Jean Davis.", "flags": {}}
+{"id": "journalofproceed63sanfrich|52", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|60", "y": 1968, "line": "A motion died for want of a second.", "flags": {}}
+{"id": "journalofproceed63sanfrich|61", "y": 1968, "line": "Money listed for parks, City Hall data rooms and airport baggage.", "flags": {}}
+{"id": "journalofproceed63sanfrich|65", "y": 1968, "line": "Staff money for probation officers and firemen finally passed.", "flags": {}}
+{"id": "journalofproceed63sanfrich|68", "y": 1968, "line": "Taxiways F and G to be rebuilt with federal airport aid.", "flags": {}}
+{"id": "journalofproceed63sanfrich|69", "y": 1968, "line": "A second reading passed as amended, subject not stated.", "flags": {}}
+{"id": "journalofproceed63sanfrich|70", "y": 1968, "line": "A second reading refused, with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|79", "y": 1968, "line": "Money for City Hall data rooms, library wages and airport baggage.", "flags": {}}
+{"id": "journalofproceed63sanfrich|80", "y": 1968, "line": "Final passage on Burnett Avenue north of Dixie Alley.", "flags": {}}
+{"id": "journalofproceed63sanfrich|86", "y": 1968, "line": "A resolution with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|96", "y": 1968, "line": "District 240 proposed on Dwight Street between Goettingen and Hamilton.", "flags": {}}
+{"id": "journalofproceed63sanfrich|98", "y": 1968, "line": "Corners designated at five crossings, from Clay Street to Washington.", "flags": {}}
+{"id": "journalofproceed63sanfrich|104", "y": 1968, "line": "Block at Bay and Laguna Streets put off to April 8.", "flags": {}}
+{"id": "journalofproceed63sanfrich|107", "y": 1968, "line": "Rezoning proposed west of Burnett Avenue by Twin Peaks School.", "flags": {}}
+{"id": "journalofproceed63sanfrich|110", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|111", "y": 1968, "line": "Commendations adopted for Jack Morse, Harvey Wing and Monsignor Connolly.", "flags": {}}
+{"id": "journalofproceed63sanfrich|118", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|120", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|121", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|126", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|127", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|130", "y": 1968, "line": "Streets closed for a charity fair and a housing groundbreaking.", "flags": {}}
+{"id": "journalofproceed63sanfrich|131", "y": 1968, "line": "Morning stopping banned on Howard Street and South Van Ness Avenue.", "flags": {}}
+{"id": "journalofproceed63sanfrich|132", "y": 1968, "line": "Rules adopted for Mission Street and Main Street near Beale.", "flags": {}}
+{"id": "journalofproceed63sanfrich|133", "y": 1968, "line": "Francisco and Alhambra Streets added to the restricted traffic list.", "flags": {}}
+{"id": "journalofproceed63sanfrich|135", "y": 1968, "line": "A westbound lane rule adopted just east of Beale Street.", "flags": {}}
+{"id": "journalofproceed63sanfrich|136", "y": 1968, "line": "Corners added at eleven crossings and one dropped at Clement Street.", "flags": {}}
+{"id": "journalofproceed63sanfrich|151", "y": 1968, "line": "Five acres of Market Street proposed for a redevelopment area.", "flags": {}}
+{"id": "journalofproceed63sanfrich|156", "y": 1968, "line": "Consideration put off to May 27, subject not stated.", "flags": {}}
+{"id": "journalofproceed63sanfrich|160", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|163", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|171", "y": 1968, "line": "A $63 warrant paid to Odell Brown.", "flags": {}}
+{"id": "journalofproceed63sanfrich|172", "y": 1968, "line": "A second reading passed with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|173", "y": 1968, "line": "A second reading passed with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|174", "y": 1968, "line": "Question divided before a spending ordinance passed its second reading.", "flags": {}}
+{"id": "journalofproceed63sanfrich|177", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|180", "y": 1968, "line": "More time given for City College building and Clayton Street work.", "flags": {}}
+{"id": "journalofproceed63sanfrich|186", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|187", "y": 1968, "line": "Hour-long parking limit set on Bush Street and Octavia Street.", "flags": {}}
+{"id": "journalofproceed63sanfrich|188", "y": 1968, "line": "Montgomery, Green and Castle Streets added to the restricted traffic list.", "flags": {}}
+{"id": "journalofproceed63sanfrich|190", "y": 1968, "line": "Bid to shift a downtown district line to Howard Street failed.", "flags": {}}
+{"id": "journalofproceed63sanfrich|193", "y": 1968, "line": "Districts proposed on Grand View Avenue and Castro Street, second reading.", "flags": {}}
+{"id": "journalofproceed63sanfrich|194", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|195", "y": 1968, "line": "Sent to the Finance Committee, subject not stated.", "flags": {}}
+{"id": "journalofproceed63sanfrich|197", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|198", "y": 1968, "line": "Districts on Grand View Avenue and Castro Street finally passed.", "flags": {}}
+{"id": "journalofproceed63sanfrich|216", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|218", "y": 1968, "line": "Closing parts of Lombard and Montgomery Streets proposed for North Waterfront.", "flags": {}}
+{"id": "journalofproceed63sanfrich|222", "y": 1968, "line": "Street closings for the International Market Center debated before a hearing.", "flags": {}}
+{"id": "journalofproceed63sanfrich|224", "y": 1968, "line": "Two parcels named on Drumm Street and Washington Street.", "flags": {}}
+{"id": "journalofproceed63sanfrich|228", "y": 1968, "line": "Streets closed for the Obon festival and neighbourhood street fairs.", "flags": {}}
+{"id": "journalofproceed63sanfrich|229", "y": 1968, "line": "Corners designated at ten crossings, from Central Avenue to Castro.", "flags": {}}
+{"id": "journalofproceed63sanfrich|232", "y": 1968, "line": "Right turn rule adopted for Guerrero Street traffic at Market.", "flags": {}}
+{"id": "journalofproceed63sanfrich|233", "y": 1968, "line": "Ellsworth and Anderson Streets made one-way in opposite directions.", "flags": {}}
+{"id": "journalofproceed63sanfrich|238", "y": 1968, "line": "Three districts set on Arguello Boulevard, Roosevelt Way and Pierce Street.", "flags": {}}
+{"id": "journalofproceed63sanfrich|239", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|241", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|251", "y": 1968, "line": "Second reading passed covering Santa Barbara Avenue and Head Street.", "flags": {}}
+{"id": "journalofproceed63sanfrich|253", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|263", "y": 1968, "line": "A second reading passed with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|265", "y": 1968, "line": "A second reading passed with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|268", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|273", "y": 1968, "line": "Bartlett Street and Osage Alley set one-way in opposite directions.", "flags": {}}
+{"id": "journalofproceed63sanfrich|282", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|291", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|293", "y": 1968, "line": "A final passage vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|295", "y": 1968, "line": "$186,500 sought to buy Mount Olympus land for a park.", "flags": {}}
+{"id": "journalofproceed63sanfrich|296", "y": 1968, "line": "A motion to table carried, subject not stated.", "flags": {}}
+{"id": "journalofproceed63sanfrich|297", "y": 1968, "line": "Amendment would give urban renewal families first claim on flats.", "flags": {}}
+{"id": "journalofproceed63sanfrich|298", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|302", "y": 1968, "line": "Southbound Taylor Street traffic must turn at Bay Street.", "flags": {}}
+{"id": "journalofproceed63sanfrich|303", "y": 1968, "line": "Streets closed for Bernal Heights and Waverly Place street fairs.", "flags": {}}
+{"id": "journalofproceed63sanfrich|304", "y": 1968, "line": "Corners designated at six crossings, from Carl Street to Castro.", "flags": {}}
+{"id": "journalofproceed63sanfrich|305", "y": 1968, "line": "Evening stopping banned on Larkin Street and South Van Ness Avenue.", "flags": {}}
+{"id": "journalofproceed63sanfrich|306", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|310", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|311", "y": 1968, "line": "Adopted on delinquent tax rolls covering 1905-06 through 1954-55.", "flags": {}}
+{"id": "journalofproceed63sanfrich|312", "y": 1968, "line": "Muni fare schedule put off to September 3.", "flags": {}}
+{"id": "journalofproceed63sanfrich|315", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|320", "y": 1968, "line": "Muni fare schedule postponed again on September 3.", "flags": {}}
+{"id": "journalofproceed63sanfrich|325", "y": 1968, "line": "More welfare staff sought after a court struck residence rules.", "flags": {}}
+{"id": "journalofproceed63sanfrich|326", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|329", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|332", "y": 1968, "line": "Corners designated at Shrader and Hayes and at Alhambra Street.", "flags": {}}
+{"id": "journalofproceed63sanfrich|333", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|336", "y": 1968, "line": "Rules adopted for stretches of Polk Street and Leavenworth Street.", "flags": {}}
+{"id": "journalofproceed63sanfrich|337", "y": 1968, "line": "Rules adopted for Justin Drive, Genebern Way and College Avenue.", "flags": {}}
+{"id": "journalofproceed63sanfrich|341", "y": 1968, "line": "Commendations adopted for Jock Brydon, Vesta Gray and Howard Hayden.", "flags": {}}
+{"id": "journalofproceed63sanfrich|346", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|349", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|351", "y": 1968, "line": "Warrants paid to William Ryan and James Pohley.", "flags": {}}
+{"id": "journalofproceed63sanfrich|356", "y": 1968, "line": "Streets closed for Hallowe'en fairs, block parties and a parade.", "flags": {}}
+{"id": "journalofproceed63sanfrich|357", "y": 1968, "line": "Corners designated at ten crossings and one rescinded on Ulloa Street.", "flags": {}}
+{"id": "journalofproceed63sanfrich|358", "y": 1968, "line": "Daytime stopping banned for a month on O'Farrell and Howard.", "flags": {}}
+{"id": "journalofproceed63sanfrich|359", "y": 1968, "line": "Right turn rules adopted at McAllister and at Van Ness Avenue.", "flags": {}}
+{"id": "journalofproceed63sanfrich|360", "y": 1968, "line": "Seventh Street Extension and the Service Road made one-way northbound.", "flags": {}}
+{"id": "journalofproceed63sanfrich|364", "y": 1968, "line": "Lawsuits settled for $17,500 and $8,500, finally passed.", "flags": {}}
+{"id": "journalofproceed63sanfrich|368", "y": 1968, "line": "Buying Mount Olympus land for a park called unaffordable.", "flags": {}}
+{"id": "journalofproceed63sanfrich|387", "y": 1968, "line": "A motion carried with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|388", "y": 1968, "line": "$275,000 for the Stanford Heights Reservoir passed second reading.", "flags": {}}
+{"id": "journalofproceed63sanfrich|391", "y": 1968, "line": "A final passage vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|394", "y": 1968, "line": "Turn rule adopted for Seventh Street traffic into Market Street.", "flags": {}}
+{"id": "journalofproceed63sanfrich|395", "y": 1968, "line": "Corners designated at three crossings on Clement and Cabrillo Streets.", "flags": {}}
+{"id": "journalofproceed63sanfrich|396", "y": 1968, "line": "Angle parking approved on Barneveld Avenue between Silver and Gaven.", "flags": {}}
+{"id": "journalofproceed63sanfrich|402", "y": 1968, "line": "Rules adopted for downtown stretches from Folsom Street to Eleventh.", "flags": {}}
+{"id": "journalofproceed63sanfrich|404", "y": 1968, "line": "Bay View and Excelsior parking plazas named, nothing further stated.", "flags": {}}
+{"id": "journalofproceed63sanfrich|408", "y": 1968, "line": "Sent to the Planning and Development Committee, subject not stated.", "flags": {}}
+{"id": "journalofproceed63sanfrich|409", "y": 1968, "line": "A report asked on plans to expand Candlestick Park Stadium.", "flags": {}}
+{"id": "journalofproceed63sanfrich|417", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|418", "y": 1968, "line": "A motion carried with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|419", "y": 1968, "line": "A move to undo the North Waterfront street deal was refused.", "flags": {}}
+{"id": "journalofproceed63sanfrich|421", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|424", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|425", "y": 1968, "line": "Commendations adopted for Sister Thomasine McKinnon and Abe Appleton.", "flags": {}}
+{"id": "journalofproceed63sanfrich|426", "y": 1968, "line": "Money for city staff and Key Avenue land passed second reading.", "flags": {}}
+{"id": "journalofproceed63sanfrich|427", "y": 1968, "line": "Four districts proposed from Laguna Honda Boulevard to Park Hill Avenue.", "flags": {}}
+{"id": "journalofproceed63sanfrich|429", "y": 1968, "line": "Turn rule adopted for Haight Street traffic at Broderick Street.", "flags": {}}
+{"id": "journalofproceed63sanfrich|431", "y": 1968, "line": "Corners designated at four crossings, from Broderick Street to Santiago.", "flags": {}}
+{"id": "journalofproceed63sanfrich|433", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|434", "y": 1968, "line": "Sent to the Finance Committee, subject not stated.", "flags": {}}
+{"id": "journalofproceed63sanfrich|435", "y": 1968, "line": "Commendations moved for James Lang, Margaret Downing and Reno Barsocchini.", "flags": {}}
+{"id": "journalofproceed63sanfrich|436", "y": 1968, "line": "Money for city staff and Key Avenue land finally passed.", "flags": {}}
+{"id": "journalofproceed63sanfrich|439", "y": 1968, "line": "Use changed at 1030 Crescent Avenue and 1064 Oak Street.", "flags": {}}
+{"id": "journalofproceed63sanfrich|447", "y": 1968, "line": "A second reading passed with no subject on this page.", "flags": {}}
+{"id": "journalofproceed63sanfrich|448", "y": 1968, "line": "An adoption vote with no subject on this page.", "flags": {}}
+{"id": "annualreportofd1959sanf_0|50", "y": 1960, "line": "Seven-storey concrete building with marble facing, bounded by Seventh and Bryant.", "flags": {}}
+{"id": "annualreportofd1959sanf_0|51", "y": 1960, "line": "$284,760 paid to pull cable car tracks from Jackson Street.", "flags": {}}
+{"id": "annualreportofd1959sanf_0|52", "y": 1960, "line": "$19,750 sewer built under Vicente Street to stop flooding.", "flags": {}}
+{"id": "annualreportofd1959sanf_0|53", "y": 1960, "line": "Sewer being built under Franklin Street and Bay Street against flooding.", "flags": {}}
+{"id": "annualreportofd1959sanf_0|54", "y": 1960, "line": "Sewer being built under Franklin Street and Bay Street against flooding.", "flags": {}}
+{"id": "annualreportofd1959sanf_0|55", "y": 1960, "line": "A second sewer stretch on Franklin Street awaits future building.", "flags": {}}
+{"id": "annualreportofd1959sanf_0|56", "y": 1960, "line": "Sewer under O'Farrell Street widened between Pierce and Scott Streets.", "flags": {}}
+{"id": "annualreportofd1959sanf_0|57", "y": 1960, "line": "Sewer under Eddy Street found too poor and too small.", "flags": {}}
+{"id": "annualreportofd1959sanf_0|58", "y": 1960, "line": "A sewer planned from the county line to Niagara Street.", "flags": {}}
+{"id": "annualreportofd1959sanf_0|59", "y": 1960, "line": "An egg-shaped sewer on piles runs under Berry Street.", "flags": {}}
+{"id": "annualreportofd1959sanf_0|61", "y": 1961, "line": "New street lighting on Divisadero Street shown as a model.", "flags": {}}
+{"id": "annualreportofd1959sanf_0|62", "y": 1961, "line": "Centre islands landscaped on Van Ness Avenue between McAllister and Grove.", "flags": {}}
+{"id": "annualreportofd1959sanf_0|67", "y": 1961, "line": "Arch Street north of Sargent Street appears in a street list.", "flags": {}}
+{"id": "annualreportofd1959sanf_0|68", "y": 1961, "line": "Sutter Street west of Stockton Street appears in a street list.", "flags": {}}
+{"id": "annualreportofd1959sanf_0|69", "y": 1961, "line": "Evelyn Way from Portola Drive to Juanita Way appears listed.", "flags": {}}
+{"id": "annualreportofd1959sanf_0|70", "y": 1961, "line": "Mangels Avenue east of Detroit Street appears in a street list.", "flags": {}}
+{"id": "annualreportofd1959sanf_0|71", "y": 1961, "line": "Boutwell Street north of Helena Street appears in a street list.", "flags": {}}
+{"id": "annualreportofd1959sanf_0|72", "y": 1960, "line": "Seven-storey concrete building with marble facing, bounded by Seventh and Bryant.", "flags": {}}
+{"id": "annualreportofd1959sanf_0|73", "y": 1960, "line": "A welfare building costed for the block at Octavia and Page.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|1", "y": 1961, "line": "The Southeast plant stands at Jerrold Avenue and Phelps Street.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|2", "y": 1961, "line": "Three city plants: Southeast, Richmond-Sunset and North Point at Bay Street.", "flags": {"damaged": ["Richmond-Sunset"]}}
+{"id": "annualreportofd1962sanf_0|3", "y": 1961, "line": "An installation made on Parnassus Avenue between Hillpoint and Fourth Avenues.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|8", "y": 1961, "line": "Moultrie Street north of Esmeralda Avenue appears in a street list.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|9", "y": 1961, "line": "Esmeralda Avenue west of Shotwell Street appears in a street list.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|10", "y": 1961, "line": "Visitacion Avenue east of Tunnel Avenue appears in a street list.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|11", "y": 1961, "line": "Channel Street east of Florida Street appears in a street list.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|12", "y": 1961, "line": "Buchanan Street from O'Farrell Street to Post Street appears listed.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|13", "y": 1961, "line": "O'Farrell Street from Laguna Street to Hollis Street appears listed.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|14", "y": 1961, "line": "Kearny Street from Clay Street to Washington Street appears listed.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|15", "y": 1961, "line": "Ingalls Street from Thomas Avenue to Yosemite Avenue appears listed.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|16", "y": 1961, "line": "Sixth Avenue from Locksley Avenue to Kirkham Street appears listed.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|17", "y": 1961, "line": "Emery Lane north of Vallejo Street appears in a street list.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|18", "y": 1961, "line": "Peralta Avenue from Holladay Avenue to Tompkins Avenue appears listed.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|19", "y": 1961, "line": "Barneveld Avenue from Oakdale Avenue to McKinnon Avenue appears listed.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|20", "y": 1961, "line": "Loomis Street from Oakdale Avenue to McKinnon Avenue appears listed.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|21", "y": 1961, "line": "Sixteenth Street from Third Street to Seventh Street appears listed.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|22", "y": 1961, "line": "Jackson Street from Battery Street to Front Street appears listed.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|23", "y": 1961, "line": "Washington Street from Battery Street to Front Street appears listed.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|24", "y": 1961, "line": "Thirtieth Street from Chenery Street to Church Street appears listed.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|25", "y": 1961, "line": "Lawton Street between Seventh Avenue and Locksley renamed Warren Drive.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|26", "y": 1961, "line": "Seven-storey concrete building with marble facing, bounded by Seventh and Bryant.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|30", "y": 1962, "line": "Left-turn bay at Middlebrook Drive and lanes at Sunset and Winston.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|31", "y": 1962, "line": "Trees planted along Sacramento Street between Van Ness and Presidio.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|33", "y": 1961, "line": "Two hundred new trees on Sacramento Street taken into maintenance.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|37", "y": 1963, "line": "Miller Place north of Sacramento Street appears in a street list.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|38", "y": 1963, "line": "Green Street east of Jones Street appears in a street list.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|39", "y": 1963, "line": "Twenty-fifth Street from Noe to Sanchez appears in a street list.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|40", "y": 1962, "line": "More centre islands being planted on Van Ness Avenue near McAllister.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|41", "y": 1962, "line": "Traffic islands landscaped at City Hall, Geary Boulevard and Gilman Avenue.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|42", "y": 1964, "line": "$5,300 rebuilt the corner of Portola Drive and Corbett Avenue.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|43", "y": 1964, "line": "A stairway built on Tompkins Avenue between Nevada and Putnam Streets.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|44", "y": 1964, "line": "Waller Street still carried its old basalt block pavement.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|45", "y": 1964, "line": "Bush Street widened ten feet for another traffic lane.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|46", "y": 1964, "line": "Roadway realigned where Lake Merced Boulevard meets John Muir Drive.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|50", "y": 1964, "line": "Spring Street from California Street to Summer Street appears listed.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|51", "y": 1964, "line": "Summer Street from Kearny Street to Spring Street appears listed.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|52", "y": 1962, "line": "Fourteen traffic islands built on Webster Street between Eddy and Geary.", "flags": {}}
+{"id": "annualreportofd1962sanf_0|53", "y": 1962, "line": "Traffic islands to be improved at Ord Street and Masonic Avenue.", "flags": {}}
+{"id": "annualreportofd1966sanf_0|1", "y": 1965, "line": "Sidewalks on Fourteenth Street narrowed from fifteen feet to nine.", "flags": {}}
+{"id": "annualreportofd1966sanf_0|2", "y": 1965, "line": "Sidewalks narrowed on Market Street near Castro and on Castro Street.", "flags": {}}
+{"id": "annualreportofd1966sanf_0|5", "y": 1965, "line": "Detroit Street from Joost Avenue to Monterey Boulevard appears listed.", "flags": {}}
+{"id": "annualreportofd1966sanf_0|6", "y": 1965, "line": "Castro Street from 28th Street to Duncan Street appears listed.", "flags": {}}
+{"id": "annualreportofd1966sanf_0|7", "y": 1965, "line": "Moraga Street from 19th Avenue to 20th Avenue appears listed.", "flags": {}}
+{"id": "annualreportofd1966sanf_0|8", "y": 1965, "line": "Minnesota Street from 22nd Street to 23rd Street appears listed.", "flags": {}}
+{"id": "annualreportofd1966sanf_0|9", "y": 1965, "line": "A list of street blocks from Holyoke Street to Minnesota Street.", "flags": {}}
+{"id": "annualreportofd1966sanf_0|10", "y": 1965, "line": "A list of street blocks from Holyoke Street to Minnesota Street.", "flags": {}}
+{"id": "annualreportofd1966sanf_0|11", "y": 1965, "line": "A list of street blocks from Judson Avenue to Minnesota Street.", "flags": {}}
+{"id": "annualreportofd1966sanf_0|12", "y": 1965, "line": "A list of street blocks from Noe Street to Minnesota Street.", "flags": {}}
+{"id": "annualreportofd1966sanf_0|13", "y": 1965, "line": "Temporary line laid in Mariposa Street until a bridge is rebuilt.", "flags": {}}
+{"id": "annualreportofd1966sanf_0|14", "y": 1965, "line": "Sunset Boulevard irrigation money refused, then put in next year's budget.", "flags": {}}
+{"id": "annualreportofd1967sanf_0|1", "y": 1966, "line": "Lanes reshaped at Sloat Boulevard and Great Highway to cut crashes.", "flags": {}}
+{"id": "annualreportofd1967sanf_0|3", "y": 1966, "line": "Arguello Boulevard from Carl Street to Parnassus Avenue appears listed.", "flags": {}}
+{"id": "annualreportofd1967sanf_0|4", "y": 1966, "line": "Quint Street from Oakdale Avenue to Jerrold Avenue appears listed.", "flags": {}}
+{"id": "annualreportofd1967sanf_0|5", "y": 1966, "line": "Centre island landscaped on Mansell Street between University and Yale.", "flags": {}}
+{"id": "annualreportofd1967sanf_0|6", "y": 1966, "line": "Centre islands landscaped on Van Ness Avenue between Market and Grove.", "flags": {}}
+{"id": "annualreportofd1968sanf_0|1", "y": 1967, "line": "Nineteenth Avenue and Sloat Boulevard long a crash and jam spot.", "flags": {}}
+{"id": "annualreportofd1968sanf_0|2", "y": 1967, "line": "Trees and landscaping along Brotherhood Way, Potrero Avenue and Hyde Street.", "flags": {}}
+{"id": "annualreportofd1968sanf_0|3", "y": 1967, "line": "Lowrie Paving rebuilt Clementina Street east of 3rd Street.", "flags": {}}
+{"id": "annualreportofd1969sanf_0|1", "y": 1968, "line": "Washington Street and Drumm Street widened near the Embarcadero.", "flags": {}}
+{"id": "annualreportofd1969sanf_0|2", "y": 1968, "line": "A study of flooding on 43rd Avenue between Lincoln and Judah.", "flags": {}}
+{"id": "annualreportofd1969sanf_0|3", "y": 1968, "line": "New lanes laid out where Seventh Avenue meets Lincoln Way.", "flags": {}}
+{"id": "annualreportofd1969sanf_0|5", "y": 1968, "line": "San Jose Avenue between Sadowa and Broad Streets appears listed.", "flags": {}}
+{"id": "annualreportofd1969sanf_0|6", "y": 1968, "line": "A list naming Chenery, Grant, Beale and Mission Street blocks.", "flags": {}}
+{"id": "annualreportofd1969sanf_0|7", "y": 1968, "line": "The newest health centre stands at 24th Avenue and Irving Street.", "flags": {}}
+{"id": "annualreportofd1969sanf_0|8", "y": 1968, "line": "Brotherhood Way from Lake Merced Boulevard to Thomas More Way listed.", "flags": {}}
+{"id": "annualreportofd1970sanf_0|1", "y": 1969, "line": "Sewer under Front Street replaced with a concrete one.", "flags": {}}
+{"id": "annualreportofd1970sanf_0|2", "y": 1969, "line": "$250,895 rebuilt Illinois Street between El Dorado and 23rd Street.", "flags": {}}
+{"id": "annualreportofd1970sanf_0|3", "y": 1969, "line": "Folsom Street above Ripley Street and the Ocean-Geneva crossing listed.", "flags": {}}
+{"id": "annualreportofd1970sanf_0|4", "y": 1969, "line": "Parts of Alameda and El Dorado Streets between Third and Illinois.", "flags": {}}
+{"id": "annualreportofd1970sanf_0|5", "y": 1969, "line": "Prentiss Street between Alemany Boulevard and Crescent Avenue appears listed.", "flags": {}}
+{"id": "annualreportofd1970sanf_0|6", "y": 1969, "line": "Acadia Street between Monterey Boulevard and Circular Avenue appears listed.", "flags": {}}
+{"id": "annualreportofd1970sanf_0|7", "y": 1969, "line": "Pine Street between Hyde and Larkin Streets appears in a list.", "flags": {}}
+{"id": "annualreportofd1970sanf_0|8", "y": 1969, "line": "Beaver Street between Castro and 15th Streets appears in a list.", "flags": {}}
+{"id": "annualreportofd1970sanf_0|9", "y": 1969, "line": "Parts of Pierce Street between Oak and Fell Streets appear listed.", "flags": {}}
+{"id": "annualreportofd1970sanf_0|10", "y": 1969, "line": "The building sits at San Bruno Avenue and Twenty-second Street.", "flags": {}}
+{"id": "annualreportofd1970sanf_0|11", "y": 1969, "line": "Bush Street sewer failed in a storm, wrecking the pavement.", "flags": {}}
+{"id": "annualreportofd1970sanf_0|12", "y": 1969, "line": "Seventy feet of pipe washed out on 23rd Street in storms.", "flags": {}}
+{"id": "annualreportofd1970sanf_0|13", "y": 1969, "line": "Fifty-two feet of sewer washed out in Douglass Street in February.", "flags": {}}
+{"id": "annualreportofd1970sanf_0|14", "y": 1969, "line": "The second spot lay by the public stairs on Detroit Street.", "flags": {}}
+{"id": "annualreport196567sanf|1", "y": 1965, "line": "Barbecue pits sit at 37th Avenue and Fulton Street and elsewhere.", "flags": {}}
+{"id": "annualreport196567sanf|2", "y": 1965, "line": "Campfire circles for day camps at 37th Avenue and Fulton Street.", "flags": {}}
+{"id": "annualreport196567sanf|3", "y": 1965, "line": "Overnight camping allowed for groups at 29th Avenue and Fulton Street.", "flags": {}}
+{"id": "annualreport196567sanf|4", "y": 1966, "line": "Dog training allowed at 37th Avenue and Fulton Street.", "flags": {}}
+{"id": "annualreport196567sanf|5", "y": 1966, "line": "Rhododendrons replanted at 30th Avenue and Kennedy Drive.", "flags": {}}
+{"id": "annualreport196770sanf|1", "y": 1967, "line": "Tennis courts resurfaced at 26th Avenue and Vicente Street.", "flags": {}}
+{"id": "annualreport196770sanf|3", "y": 1967, "line": "A bronze horse fountain runs again at Wawona Avenue.", "flags": {}}
+{"id": "annualreport196770sanf|4", "y": 1968, "line": "The leRoy Vane bequest funds a building at 6th and Fulton.", "flags": {}}
+{"id": "annualreport196770sanf|5", "y": 1969, "line": "Twenty-sixth Street closed between Harrison and Treat for basketball.", "flags": {}}

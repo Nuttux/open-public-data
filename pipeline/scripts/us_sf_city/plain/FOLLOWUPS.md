@@ -269,3 +269,24 @@ What a real fix would need: the chunker's own boundary logic, not a regex over
 its output. `_sfbos_sweep.py` already parses the Clerk's typography correctly for
 the modern files — it is the historic Journal volumes that lack an equivalent.
 That is the piece of work, and it is bigger than a load-time patch.
+
+### The same boundary defect, one layer down: money and names split mid-entry
+
+Three writers, in three decades, found the chunk boundary falling INSIDE a list
+entry, not just between items:
+
+  1928-29 appropriation and permit lists (~180 records) — the dollar amount at
+  the START of a chunk belongs to the street or owner named at the END of the
+  previous one; in the permit-transfer lists the trailing NAME belongs to the
+  NEXT chunk's address. Verified three ways by the writer, including a
+  name/address pair traced across both the "To ..." and "From ..." lists.
+
+  1927 school and boulevard land purchases — "Resolution No. X, $2,000. (2) To
+  John J. McDonnell, for land" — the sum closes the PREVIOUS numbered payee.
+
+  1944-49 DPW sidewalk-width tables — a width note leading a chunk belongs to
+  the street above it.
+
+Every one of those writers dropped the figure rather than staple it to the wrong
+party, which is the right call and costs the number. It is the same defect as the
+trailing title: the chunker cuts where the Clerk did not.
