@@ -131,3 +131,23 @@ honest line rather than omitting it.
 ## Report
 
 Only this: the count you wrote, and three example lines with their years.
+
+## If you are RESUMING, check what you inherited — the ids are not the test
+
+A resumed file's earlier half was written by someone who was killed mid-run, and
+being killed is not the only thing that can have gone wrong with it. One resumed
+slice came back with its inherited 225 lines carrying 191 invented names: a
+record whose entire text was "Resolution No. 287-16 ADOPTED" plus a roll call had
+been written as "Grant application approved for the 480 Eddy Street housing
+project", borrowed from a neighbouring record. Not one of those 225 lines said
+"no subject on this page", which is not plausible for that material.
+
+Verifying that the inherited ids align is necessary and not sufficient. Read a
+sample of the inherited LINES against their own records. If they name things the
+record does not, say so in your report and give the range — do not quietly
+continue in the same style, and do not rewrite them either. The file gets
+quarantined and recut; that is cheaper than a corpus that reads well and is
+wrong.
+
+`verify_slice.py out-NNN.jsonl` runs the same check mechanically and takes a
+second. Run it before you report.

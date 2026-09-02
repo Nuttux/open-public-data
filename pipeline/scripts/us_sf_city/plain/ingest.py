@@ -82,8 +82,20 @@ def main() -> None:
         if not counted:
             print(f"     (slice file gone — checked against the corpus by id)")
         if structural and not args.force:
-            print(f"SKIP {p.name}: {r['n_out']}/{r['n_in']} dupes {r['dupes']} "
-                  f"blank {r['blank']} unknown {r['unknown_ids']} runs {len(r['runs'])}")
+            # name the test that actually failed. This line used to omit
+            # `ids_aligned`, so a file whose ids had drifted printed as
+            # "300/300 dupes 0 blank 0 unknown 0 runs 0" — every number zero
+            # and no reason given. It was skipped three times before anyone
+            # asked why.
+            why = [n for n, bad in (("count", counted and r["n_in"] != r["n_out"]),
+                                    ("ids not aligned to the slice",
+                                     r["ids_aligned"] is False),
+                                    ("duplicate ids", bool(r["dupes"])),
+                                    ("blank lines", bool(r["blank"])),
+                                    ("runs of misses", bool(r["runs"]))) if bad]
+            print(f"SKIP {p.name}: {r['n_out']}/{r['n_in']} — {', '.join(why)}"
+                  f"  (dupes {r['dupes']} blank {r['blank']} "
+                  f"unknown {r['unknown_ids']} runs {len(r['runs'])})")
             continue
         # ── A ROW WHOSE RECORD IS NO LONGER OFFERED IS DROPPED, NOT SAVED ──
         # `pass2.held_reason` tightened mid-run: the Clerk's standing notice —
