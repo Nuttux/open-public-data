@@ -2141,73 +2141,44 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
                   ×
                 </button>
               </header>
-              <p className="fx-mark-card-where">
-                {markCard.place}
-                <span className="fx-mark-card-when">
-                  {" · "}
-                  {tOr(t, "us.sf.thecity.mark.window", "{a}–{b}")
-                    .replace("{a}", String(markCard.year - WINDOW_YEARS / 2))
-                    .replace("{b}", String(markCard.year + WINDOW_YEARS / 2))}
-                </span>
+              {/* ── THE CARD READS LIKE THE YEAR LIST ───────────────────────
+                  It was carrying six type styles in 252 px: a bold header, a
+                  muted street list, a mono year, a bold headline, a clamped
+                  quote and a link, and every row repeated four of them. The
+                  year list to its right uses two — a 10 px mono cap and a
+                  12.5 px line — and the reader liked that one. So this is that:
+                  the years as the cap, then rows in the list's own idiom, our
+                  sentence as the line, the Clerk's words on the link. The
+                  streets are not repeated; they are under the dot. */}
+              <p className="fx-city-record-cap" style={{ margin: "0 0 6px" }}>
+                {tOr(t, "us.sf.thecity.mark.window", "{a}–{b}")
+                  .replace("{a}", String(markCard.year - WINDOW_YEARS / 2))
+                  .replace("{b}", String(markCard.year + WINDOW_YEARS / 2))}
               </p>
-              <ul className="fx-mark-card-rows">
-                {/* ── THE GLANCE, THEN THE RECORD ────────────────────────
-                    A reader who presses a dot wants to know what it is
-                    before deciding whether to open a scan of a minute book.
-                    So the line the Clerk printed is DEMOTED — still here,
-                    still verbatim, clamped to two lines — and what leads is
-                    the year, the money where there is one, and the subject
-                    the pipeline matched against the item's full text. */}
+              <div className="fx-city-record-list fx-mark-card-rows">
                 {markCard.rows.map(({ d, says }) => (
-                  <li key={`${d.u}-${d.y}-${d.t.slice(0, 20)}`}>
-                    <p className="fx-mark-card-top">
-                      <span className="fx-mark-card-y tnum">{d.y}</span>
-                      {/* one sum to a row: where the written line already
-                          prints a figure it carries the money, because `d.a`
-                          is read off this row's fragment and a record can be
-                          one appropriation with numbered clauses stating
-                          several different amounts. */}
-                      {d.a > 0 && !(d.pl && /[$£€]/.test(d.pl)) ? (
-                        <span className="fx-mark-card-sum tnum">
-                          {usdShort(d.a)}
-                        </span>
-                      ) : null}
-                    </p>
-                    {/* ── THE WRITTEN LINE IS THE BETTER HEADLINE ─────────
-                        `says` is a classification OF the record — "Parking ·
-                        Ordered". `pl` is what the record actually did, written
-                        out of the item's own full text. Where there is one it
-                        takes the headline slot and `says` stands down rather
-                        than stacking two headings on a 252 px card: the reader
-                        gets one strong line, which is the whole point of the
-                        card.
-
-                        The Clerk's sentence below then wears quotation marks,
-                        because once OUR sentence leads, the reader has to be
-                        able to tell which words are the Board's. Same rule the
-                        fiche keeps. */}
-                    {d.pl ? (
-                      <p className="fx-mark-card-pl">{d.pl}</p>
-                    ) : says ? (
-                      <p className="fx-mark-card-says">{says}</p>
-                    ) : null}
-                    <p className="fx-mark-card-t">
-                      {d.pl ? `“${stripFileNumber(d.t)}”` : stripFileNumber(d.t)}
-                    </p>
+                  <span className="fx-city-record-line" key={`${d.u}-${d.y}-${d.t.slice(0, 20)}`}>
                     <a
-                      className="fx-block-jump"
+                      className="fx-city-record-row"
                       href={sourceHref(d)}
                       target="_blank"
                       rel="noopener noreferrer"
+                      title={stripFileNumber(d.t)}
                     >
-                      {d.c === "b"
-                        ? tOr(t, "us.sf.thecity.panel.lead_open_pdf", "Open the minutes")
-                        : tOr(t, "us.sf.thecity.panel.lead_open", "Open the scanned page")}
-                      {" ↗"}
+                      <span className="fx-city-record-dot" style={{ background: markCard.ink }} />
+                      <span className="fx-city-record-text">
+                        <span className="fx-city-record-tag">
+                          {d.y}
+                          {d.a > 0 && !(d.pl && /[$£€]/.test(d.pl)) ? ` · ${usdShort(d.a)}` : ""}
+                          {!d.pl && says ? ` · ${says}` : ""}
+                        </span>
+                        {d.pl || stripFileNumber(d.t)}
+                      </span>
+                      <span className="fx-city-record-n">↗</span>
                     </a>
-                  </li>
+                  </span>
                 ))}
-              </ul>
+              </div>
             </section>
           ) : picked !== null ? (
             <CityBlockPanel

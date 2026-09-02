@@ -17756,6 +17756,12 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   overflow: hidden;
 }
 .theme-fusion .fx-mark-card-rows .fx-block-jump { font-size: 12px; }
+/* the card's rows are the year list's rows now (see CityGLMap's mark card);
+   the list's own padding is for a 288 px margin, the card has 16 px less */
+.theme-fusion .fx-mark-card .fx-city-record-row { padding: 6px 4px; }
+.theme-fusion .fx-mark-card .fx-city-record-line { border-top: 1px solid var(--rule); }
+.theme-fusion .fx-mark-card .fx-city-record-line:first-child { border-top: 0; }
+.theme-fusion .fx-mark-card .fx-city-record-n { align-self: flex-start; margin-top: 2px; }
 
 /* the opened subject, tied to its chip by a rule down the left rather than by
    a box: a box inside a 252 px column eats measure on both sides and the

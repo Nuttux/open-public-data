@@ -565,10 +565,37 @@ def distinctiveness(line: str, df: collections.Counter, n_hoods: int) -> float:
     return sum(best) / len(best)
 
 
+
+# ── "ABOUT HERE" IS A TEST, NOT A FEELING ────────────────────────────────────
+# Same rule as build_hood_records.about_here, for the same reason: ranked by
+# importance alone, Glen Park's three highlights were a Mission junior high,
+# Mission High School land and a Hetch Hetchy veto — items the join placed on
+# its blocks because one sentence on an appropriation page named a street
+# here. A highlight is about this neighbourhood when OUR line names one of the
+# streets fronting its own blocks, or the neighbourhood, or when the same
+# printed item lands on three or more of its blocks. Locality sorts ahead of
+# importance; importance then decides the order among the local ones.
+_LWORD = re.compile(r"[a-z]+")
+
+
+def street_words(keys) -> set[str]:
+    out: set[str] = set()
+    for k in keys or ():
+        name = str(k).split("|")[0].lower()
+        out |= {w for w in _LWORD.findall(name) if len(w) >= 4}
+    return out
+
+
+def about_here(line: str, streets: set[str], hood_words: set[str]) -> bool:
+    words = set(_LWORD.findall((line or "").lower()))
+    return bool(words & streets) or bool(hood_words and hood_words <= words)
+
 def curate(
     rows: list[tuple[str, int, dict]],
     df: collections.Counter,
     n_hoods: int,
+    streets: set[str] | None = None,
+    hood_words: set[str] | None = None,
 ) -> tuple[list[dict], dict[str, int]]:
     """Dedupe -> classify -> rank -> cap. Deterministic; no model call.
 
@@ -592,6 +619,19 @@ def curate(
             return (0 if g == "h" else 1 if g == "p" else 2, item[1])
 
         block_id, rank, row = min(group, key=face)
+        # the group's score is its best reading; the written line comes from
+        # the same printing so the two cannot describe different items
+        # BOTH FROM THE SAME PRINTING. Taking the line from the best-scored
+        # printing and the Clerk's words from the best-provenanced one put
+        # "R. W. Moller paid $29,807.17 for the Mission Junior High School"
+        # over "Publicity and Advertising (Appropriation 55)" — two different
+        # items wearing one row. The face row supplies the line and the words;
+        # only the score may fall back to the group's best reading, because a
+        # score is about the item and the face is a printing of that item.
+        pl = (row.get("pl") or "").strip()
+        iv = int(row.get("iv", -1) or -1)
+        if iv < 0:
+            iv = max(int(it[2].get("iv", -1) or -1) for it in group)
         key, tier = classify(row)
         counts[key] += 1
         if tier >= PROCEDURAL_TIER:
@@ -617,6 +657,16 @@ def curate(
             # WHY a line is at the top and not only that it is
             "d": round(dist, 3),
             "score": round(dist * n_blocks, 2),
+            # OUR reading of the record, and OUR 0-100 for how much it matters.
+            # The rarity score above stays in the file (it is what it says it
+            # is); it just no longer decides the order.
+            **({"pl": pl} if pl else {}),
+            "iv": iv,
+            # about THIS neighbourhood — its own streets, its name, or 3+ of
+            # its blocks. Shipped so a reader of the file can see why a line
+            # with a bigger score sits lower.
+            "local": bool(about_here(pl or line, streets or set(), hood_words or set())
+                          or n_blocks >= 3),
             "y0": min(years) if years else 0,
             "y1": max(years) if years else 0,
             "a": max(int(r.get("a") or 0) for _b, _k, r in group),
@@ -629,7 +679,20 @@ def curate(
     # reached alone, which ranks the most administratively spread item first.
     # See the measurement above `_TOKEN` for the two scores that were tried and
     # rejected before this one. `t` last so the order is stable across runs.
-    out.sort(key=lambda o: (o["tier"], -o["score"], o["_rank"], o["t"]))
+    # WHAT MATTERED, FIRST. §18d recorded where rarity x blocks fails — a
+    # citywide programme landing densely in one neighbourhood reads as
+    # boilerplate — and left it "for a decision". The decision is the record's
+    # own importance score, read off the written line against a rubric. Tier
+    # still wins outright; rarity x blocks is now the tie-break, then the
+    # pipeline's rank, then the line, so the order stays stable across runs.
+    # THE TIER NO LONGER OUTRANKS IMPORTANCE. §15d made the tier win outright
+    # because the face of a highlight was the Clerk's own words, and a whole
+    # printed heading reads where a body sentence does not — the tier was a
+    # READABILITY proxy. The face is now our written line wherever one exists,
+    # so that job is done elsewhere, and keeping tier first shut Glen Park's
+    # 1987 "Five branch library sites approved" (85, addressed) out of a list
+    # led by a $1 land sale (48, heading). Tier stays as the tie-break.
+    out.sort(key=lambda o: (not o["local"], -o["iv"], o["tier"], -o["score"], o["_rank"], o["t"]))
     for o in out:
         del o["_rank"]
     return out, dict(counts)
@@ -719,6 +782,7 @@ def build(out_dir: pathlib.Path | None = None,
 
     # ── the record, out of the 256 shards already on disk ──────────────────
     per_rows: dict[int, list[tuple[str, int, dict]]] = collections.defaultdict(list)
+    hood_streets: dict[int, set[str]] = collections.defaultdict(set)
     rec = collections.defaultdict(lambda: {
         "n": 0, "blocks": set(), "y0": 0, "y1": 0,
         "dec": collections.Counter(),
@@ -730,6 +794,7 @@ def build(out_dir: pathlib.Path | None = None,
             hi = of_hood.get(block_id)
             if hi is None:
                 continue
+            hood_streets[hi] |= street_words(entry.get("s"))
             rows = entry.get("d") or []
             if not rows:
                 continue
@@ -794,7 +859,10 @@ def build(out_dir: pathlib.Path | None = None,
                 use[facts["useNames"][u]] += 1
 
         r = rec.get(hi)
-        highlights, counts = curate(per_rows.get(hi, []), token_df, n_with_record)
+        highlights, counts = curate(
+            per_rows.get(hi, []), token_df, n_with_record,
+            hood_streets.get(hi, set()),
+            {w for w in _LWORD.findall(names[hi].lower()) if len(w) >= 4})
         type_counts.update(counts)
         shown = highlights[:HIGHLIGHT_CAP]
 

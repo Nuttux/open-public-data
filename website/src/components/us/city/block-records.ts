@@ -1537,6 +1537,10 @@ export interface BlockMoneyFile {
 export interface HoodHighlight {
   /** the sentence, as the volume prints it */
   readonly t: string;
+  /** OUR one-sentence reading of it, where one has been written — see `BlockDecision.pl` */
+  readonly pl?: string;
+  /** OUR 0-100 for how much it matters; -1 where unread. Decides the order. */
+  readonly iv?: number;
   readonly y: number;
   /** "<volume>/<leaf>" — the scan leaf, so every highlight is clickable */
   readonly u: string;
@@ -2335,7 +2339,7 @@ export interface HoodDecade {
   readonly decade: number;
   /** what the decade really holds */
   readonly n: number;
-  /** what this file ships — the most recent readable ones */
+  /** what this file ships — the readable ones that matter most, by `iv` */
   readonly rows: readonly BlockDecision[];
 }
 

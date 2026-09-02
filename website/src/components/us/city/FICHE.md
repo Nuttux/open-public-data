@@ -3510,3 +3510,59 @@ The valid key is the item index, which only the builder has.
 **949 tests**, typecheck clean. One unrelated failure on the branch —
 `engine-is-city-free.test.ts`, `systems.ts` naming San Francisco — belongs to the uncommitted
 graphics work, not to this.
+
+## 27. 2026-09-02 — the neighbourhood reads our sentences, ranked by what mattered here
+
+> "im not happy with the neighborhood/street fiche btw its contrary to the minimal and clear,
+> engaging font we made" · "citywide is fine for top of years etc or top year by subject"
+
+Measured on Glen Park before anything changed: a 2,167 px ledger in a 666 px viewport, eight
+headed sections, "518" printed three times, and every record on the page in the Clerk's own
+wording while the year list one panel over read ours.
+
+### a. The data was the problem, not the styles
+
+`hood/<i>.json` rows carried `t` only. The block shards under them had carried `pl` and, since
+this week, `iv` — the neighbourhood was the one level that never picked them up. Both ride now,
+in `build_hood_records.py` (decade rows) and `build_hood_facts.py` (highlights).
+
+### b. "The twelve most recent" became "the twelve that matter most", shown newest first
+
+The selection a decade ships is by `iv`; the panel's `byNewest()` still orders what it shows.
+That is display order versus what gets shipped, and only the second changed.
+
+### c. Ranked by importance alone, the neighbourhood promoted other places — measured
+
+Glen Park's top three became a Mission junior high, Mission High School land and a Hetch Hetchy
+veto: items the join placed on its blocks because one sentence on an appropriation page named
+a street here, while our line summarised the item that mattered on that page. §18d had recorded
+the mirror failure for rarity and left it "for a decision".
+
+The decision is a test, not a weight. A row is **about here** when our line names a street
+fronting one of the neighbourhood's own blocks (`s` on every shard entry), or the
+neighbourhood by name, or when the same printed item lands on three or more of its blocks.
+Locality sorts first, importance second. After it: Glen Park leads with its 1987 branch
+library (85), the Sunset keeps its 1927 streetcar bond on 24 blocks, the Mission leads with
+Potrero Yard. **2 of 123 highlights city-wide fall back to a non-local line**, and the file
+says which (`local`).
+
+### d. The tier is a tie-break now
+
+§15d made provenance tier win outright because the face of a highlight was the Clerk's words,
+and a printed heading reads where a body sentence does not. The face is our line wherever one
+exists, so that job is done; keeping tier first shut the library decision (85, addressed) out
+of a list led by a $1 land sale (48, heading).
+
+### e. The cuts
+
+The census join and the money coverage — two body-size method notes — are one closed fold,
+`HOW THESE FIGURES ARE MADE`, in the idiom `WHAT THIS IS DRAWN FROM` already uses. The
+forty-word ranking note is one clause. The third "518" is gone. Ledger: 2,167 → 2,028 px on
+the same viewport; the section order is record, highlights, money, method.
+
+### f. The subject card wears the year list's clothes
+
+`CityGLMap`'s mark card carried six type styles in 252 px. It now reuses `fx-city-record-*`:
+the window as the mono cap, rows as the list's rows, our sentence as the line, the Clerk's
+words on the link. The street list is gone from its header — those streets are under the dot.
+Not screenshotted: it opens only on a dot press, which the headless run cannot make reliably.

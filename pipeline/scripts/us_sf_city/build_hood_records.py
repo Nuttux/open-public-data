@@ -68,6 +68,36 @@ BROKEN = re.compile(r"[A-Za-z][0-9]|[0-9][A-Za-z]|[^\sA-Za-z0-9'\-/&.,;:()$%\"]"
 EDGE = re.compile(r"^[.,;:()\[\]\"']+|[.,;:()\[\]\"']+$")
 
 
+
+# ── "ABOUT HERE" IS A TEST, NOT A FEELING ────────────────────────────────────
+# The join places a record on a block because ONE sentence in it names a street
+# there. A page of appropriations names forty streets; its written line
+# summarises the item that mattered, which may be a school two neighbourhoods
+# away. Measured on Glen Park: ranked by importance alone, its top three were
+# a Mission junior high, Mission High School land and a Hetch Hetchy veto.
+#
+# So a row counts as about this neighbourhood when OUR line names one of the
+# streets fronting its own blocks (every block lists them as `s`), or the
+# neighbourhood by name, or when the same printed item lands on three or more
+# of its blocks — a count, and the one signal a block cannot carry. Rows that
+# fail sink; they are still in the record, just not its face.
+_WORD = re.compile(r"[a-z]+")
+
+
+def street_words(keys) -> set[str]:
+    """`CHENERY|ST` -> {"chenery"}; `DR CARLTON B GOODLETT|PL` -> {"goodlett"}.
+    Only the name half, only words of 4+ letters, so `st` and `b` never match."""
+    out = set()
+    for k in keys or ():
+        name = str(k).split("|")[0].lower()
+        out |= {w for w in _WORD.findall(name) if len(w) >= 4}
+    return out
+
+
+def about_here(line: str, streets: set[str], hood_words: set[str]) -> bool:
+    words = set(_WORD.findall((line or "").lower()))
+    return bool(words & streets) or bool(hood_words and hood_words <= words)
+
 def unreadable(t: str) -> str | None:
     s = t.strip()
     if len(s) < 45:
@@ -184,6 +214,8 @@ def main() -> int:
     dropped = collections.Counter()
     total = 0
 
+    hood_streets: dict[int, set[str]] = collections.defaultdict(set)
+    nb_of: dict[tuple, set[str]] = collections.defaultdict(set)
     for fn in sorted(glob.glob(os.path.join(BLOCKS, "block-*.json"))):
         for bid, rec in json.load(open(fn)).items():
             if not isinstance(rec, dict):
@@ -191,6 +223,10 @@ def main() -> int:
             h = block_hood.get(bid)
             if h is None:
                 continue
+            hood_streets[h] |= street_words(rec.get("s"))
+            for r in rec.get("d", []):
+                if isinstance(r, dict) and (r.get("t") or "").strip():
+                    nb_of[(h, r.get("u") or "", (r.get("t") or "").strip()[:120])].add(bid)
             for r in rec.get("d", []):
                 if not isinstance(r, dict):
                     continue
@@ -232,6 +268,11 @@ def main() -> int:
                 keep[h][dec].append({
                     "y": r["y"], "d": r.get("d", ""), "k": r.get("k"),
                     "p": r.get("p"), "u": r.get("u"), "t": t, "b": bid,
+                    # OUR sentence and OUR score ride with the Clerk's line.
+                    # The neighbourhood was the one level printing the Board's
+                    # wording raw while the year list beside it read ours.
+                    **({"pl": r["pl"]} if r.get("pl") else {}),
+                    **({"iv": int(r["iv"])} if r.get("iv") is not None else {}),
                     **({"c": r["c"]} if r.get("c") else {}),
                 })
 
@@ -243,7 +284,20 @@ def main() -> int:
         decs = sorted(set(true_count[h]) | set(keep[h]))
         rows = []
         for dec in decs:
-            group = sorted(keep[h].get(dec, []), key=lambda r: (-r["y"], r["d"]))
+            # THE TWELVE THAT MATTER MOST HERE, not the twelve most recent. A
+            # decade ships a selection either way; choosing it by the record's
+            # own score means a reader opening the 1920s meets the Bernal Cut
+            # and not the last twelve arc lamps of 1929 — and "here" comes
+            # first (see about_here), so a Mission school on an appropriation
+            # page does not lead Glen Park. The panel shows them newest first;
+            # that is display order, this is what gets shipped.
+            hw = {w for w in _WORD.findall(name.lower()) if len(w) >= 4}
+            def _local(r):
+                key = (h, r.get("u") or "", (r.get("t") or "").strip()[:120])
+                return (about_here(r.get("pl") or r.get("t") or "", hood_streets[h], hw)
+                        or len(nb_of.get(key, ())) >= 3)
+            group = sorted(keep[h].get(dec, []),
+                           key=lambda r: (not _local(r), -r.get("iv", -1), -r["y"], r["d"]))
             rows.append({
                 "decade": dec,
                 "n": true_count[h].get(dec, 0),      # what the decade really holds
@@ -273,7 +327,8 @@ def main() -> int:
             "subjects": _by_lift(subjects[h], hood_total[h], city_n, city_total),
             "per_decade": PER_DECADE,
             "THIS_IS_A_SELECTION":
-                "Each decade ships its most recent readable records and states "
+                "Each decade ships its most important readable records, by our "
+                "own 0-100 reading, and states "
                 "what the decade really holds. Unreadable scans, roll calls, "
                 "index rows, payment schedules and repeats of the clerk's own "
                 "formula are removed. The whole record is reachable street by "

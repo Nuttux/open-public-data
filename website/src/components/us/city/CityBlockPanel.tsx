@@ -542,15 +542,9 @@ function HoodMoney({
           </Link>
         ) : null}
       </p>
-      {/* The coverage, printed where the section appears — a reader who meets
-          this on one neighbourhood and not the next has to be able to tell
-          "the city holds nothing here" from "this join does not reach here". */}
-      <p className="fx-block-hint" style={NOTE}>
-        {t("us.sf.thecity.panel.hood_money_cover")
-          .replace("{n}", nfInt.format(file.coverage.hoods_with_a_place))
-          .replace("{all}", nfInt.format(file.coverage.hoods))
-          .replace("{m}", nfInt.format(file.coverage.hoods_with_a_money_figure))}
-      </p>
+      {/* the coverage sentence lives in the "How these figures are made" fold
+          under this section now — same words, one closed line instead of a
+          paragraph a reader cannot act on */}
     </>
   );
 }
@@ -578,7 +572,15 @@ function HoodHighlights({ hood, t }: { hood: HoodRecord; t: (k: string) => strin
   if (hood.highlights.length === 0) return null;
   const docs: FicheArchiveDoc[] = hood.highlights.map((h, i) => ({
     id: `${h.u}#h${i}`,
-    gloss: h.t,
+    /* OUR sentence leads where one exists, exactly as the year list beside
+       this panel does; the Clerk's own words are on the link and one click
+       away. Where none was written the Clerk's line stands, unquoted. */
+    gloss: (h.pl && h.pl.trim()) || h.t,
+    /* the link is the kind and the year, nothing more. A first cut put the
+       Clerk's quote on the link and it ran to three underlined lines under a
+       one-line sentence — heavier than the thing it was evidence for. The
+       Clerk's words are the page the link opens, which is how the year list
+       keeps them distinguishable too. */
     title: `${KIND_WORDING[h.k] ?? "Item"} · ${h.y || h.y0}`,
     year: null,
     href: sourceHref(h),
@@ -594,10 +596,8 @@ function HoodHighlights({ hood, t }: { hood: HoodRecord; t: (k: string) => strin
       <div className="fx-city-ledger-head fx-block-sec">
         {t("us.sf.thecity.panel.hood_hl_head")}
       </div>
-      {/* THE RANKING NOTE IS A METHOD NOTE, so it is a footnote: forty words
-          of how the sort works, over three lines it explains. It stays on the
-          page because a ranked list that will not say what it ranked on is the
-          one thing this panel may not ship. */}
+      {/* one clause, not forty words: the ranking is now the record's own
+          importance score, and a reader needs to know that and nothing else */}
       <p className="fx-block-hint" style={NOTE}>
         {t("us.sf.thecity.panel.hood_hl_note")}
       </p>
@@ -2244,9 +2244,23 @@ function HoodLevel({
           `HoodMoney`. */}
       {hood && hoods ? (
         <>
-          <HoodProvenance hood={hood} file={hoods} t={t} />
-          <HoodMoney hood={hood} file={hoods} money={money} t={t} />
           <HoodHighlights hood={hood} t={t} />
+          <HoodMoney hood={hood} file={hoods} money={money} t={t} />
+          {/* THE METHOD NOTES ARE ONE FOLD, CLOSED. The census join and the
+              money coverage were two body-size paragraphs on the page; both
+              are about how the figures are made, not what they say, and the
+              panel already has an idiom for that — the same fold as WHAT THIS
+              IS DRAWN FROM. Nothing is deleted; it is behind one line. */}
+          <details className="fx-shelf-more" style={{ marginTop: 10 }}>
+            <summary>{tOr(t, "us.sf.thecity.panel.hood_method", "How these figures are made")}</summary>
+            <HoodProvenance hood={hood} file={hoods} t={t} />
+            <p className="fx-block-hint" style={NOTE}>
+              {t("us.sf.thecity.panel.hood_money_cover")
+                .replace("{n}", nfInt.format(hoods.coverage.hoods_with_a_place))
+                .replace("{all}", nfInt.format(hoods.coverage.hoods))
+                .replace("{m}", nfInt.format(hoods.coverage.hoods_with_a_money_figure))}
+            </p>
+          </details>
         </>
       ) : null}
     </>
@@ -3224,12 +3238,10 @@ const onHood = unit.kind === "hood";
             who lives on this ground and what the roll calls it — and
             `shape={null}` drops the count it was repeating. */}
         {onHood ? (
-          hoodRecs ? (
-            <p className="fx-block-figs">
-              <b>{nfInt.format(hoodRecs.n)}</b>{" "}
-              {tOr(t, "us.sf.thecity.panel.now_decisions", "Board decisions")}
-            </p>
-          ) : null
+          /* the count was here a third time — the ladder rung and the lead
+             sentence both already say it, and the same number three times on
+             one screen is the class of thing this panel has cut before */
+          null
         ) : (
         <GroundLine
           now={now}
