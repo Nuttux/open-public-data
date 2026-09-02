@@ -59,6 +59,22 @@ RULES
 9. Duplicates are common — the Journal prints an item at introduction, at printing and
    at final passage. Same event, same line; do not invent a difference.
 
+   THE SAME ITEM CONTINUED IS NOT A NEIGHBOUR. The vote-only twin of an item —
+   whose whole text is "Resolution No. 170-18 ADOPTED" plus a roll call — may use
+   the detail from that item's own introduction chunk. Nine writers reported this
+   as the corpus's most confusing rule, and several stripped true, useful detail
+   to be safe ("on 24th Street", "Main Library", "Laguna Honda" were all deleted
+   off correct lines). Don't. The test is machine-checkable and you must apply it:
+
+       SAME `ht` as the chunk you are borrowing from  ->  allowed
+       DIFFERENT `ht`                                 ->  forbidden, always
+
+   Measured on the corpus: 4,729 vote-only chunks (95.4%) share their `ht` with
+   the previous chunk, and 228 (4.6%) do not. The 4.6% is exactly the case the
+   rule refuses — and it is the case that produced the worst damage in this
+   corpus, 37 lines written under the wrong nominee's name. Check the `ht`; do
+   not check your intuition.
+
 Your only deliverable is {OUTFILE}. Do not explain your choices. When finished reply
 with just the number of lines written.
 

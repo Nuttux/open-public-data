@@ -349,3 +349,51 @@ Two things to fix at the source, so it stops recurring:
 - `_rounds_to` requires a literal `$` in the record (`\$\s?([\d][\d,]*)`), so an
   appropriation table printed without dollar signs still fails. That one is real,
   and is the case the note above should NOT claim is covered.
+
+## The most-reported defect in the corpus is two rules colliding — RESOLVED
+
+Nine workers on unrelated slices reported the same thing independently, and
+several caught themselves doing it mid-run (006 fixed 6 of its own lines, 026
+fixed 9, 032 rewrote 33, 005 rewrote 15, 015 rewrote 13). The collision:
+
+- PROMPT rule 9 says an item's proposal chunk and its vote chunk are one event
+  and get the same line.
+- The invented-name gate says name nothing this record does not name.
+
+They meet on the vote-only twin, whose entire text is "Resolution No. 170-18
+ADOPTED" plus a roll call. Slice 005 named the gap exactly: *"the tally-wall rule
+is about the NEXT item; it says nothing about the SAME item continued."*
+
+Both readings were being applied, so the corpus is inconsistent. Worse, each
+reading has a real cost and they are NOT symmetric:
+
+**Cost of the strict reading** (measured, slice 015): 13 lines rewritten to stay
+inside the terse chunk, losing true and useful detail — "on 24th Street",
+"Main Library", "Juvenile Probation", "Laguna Honda". The verdict line now reads
+thinner than its own sibling, for no gain in truth.
+
+**Cost of the permissive reading** (measured, slice 006 idx 300–329): lines gain
+a detail that is true of the item but absent from that chunk — "Terminal 1" on an
+airport concession lease, "until 2022" on a sunset extension.
+
+The second is a page-fidelity slip. The first destroys legibility, which is the
+whole point of the corpus. And the genuinely harmful case — the 37 lines retracted
+from an earlier out-015, where a mayoral reappointment was written under the wrong
+nominee's name — was never this. It was CROSS-ITEM bleed, a different failure.
+
+**Ruling: a line may use other chunks OF THE SAME ITEM, never another item's.**
+
+This is not a judgement call left to the reader, because the precondition is
+machine-checkable — same `ht`. Measured across the corpus:
+
+    vote-only chunks whose ht MATCHES the previous chunk   4,729  (95.4%)
+    vote-only chunks whose ht DIFFERS                        228   (4.6%)
+
+So the test fires on 95% of cases and correctly refuses the other 5%. Same shape
+as the street-match precondition above: the reach is sound when the record itself
+corroborates it, and the record does corroborate it here.
+
+Consequence to accept honestly: lines already written under the strict reading are
+thinner than they need to be. That is a quality ceiling, not an error, and it is
+not worth a re-read on its own — but a v8 pass touching those slices should
+restore the detail rather than preserve the thinness.
