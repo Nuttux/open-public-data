@@ -26,9 +26,20 @@
    The page already ships Leaflet for the places map; it gives pinch, inertia
    and tile scheduling for nothing, and `CRS.Simple` is exactly "a pixel
    pyramid with no geography", which is what this is. Zoom is continuous
-   (`zoomSnap: 0`) so a pinch does not step, and the zoom ANIMATION is off so
-   `getZoom()` is always the zoom on screen and the type never runs ahead of
-   the tiles.
+   (`zoomSnap: 0`) so a pinch does not step.
+
+   THE ZOOM ANIMATION STAYS ON, AND THIS WAS MEASURED THE HARD WAY. The first
+   draft turned it off so `getZoom()` was always the zoom on screen. But with
+   the animation off every wheel tick and every pinch end goes through
+   Leaflet's `_resetView`, which fires `viewprereset`, and the tile layer
+   answers that by throwing away EVERY tile before the new level has loaded
+   one: measured with a wheel-zoom sequence, 18–77 % of the frame was paper
+   for a frame at every level change — Daniel: *"flashing lights when i zoom
+   in and out"*. Animated, a level change scales the tiles it has and keeps
+   them until the new ones land, which is the ordinary Leaflet experience.
+   The type follows the animation's TARGET camera (`zoomanim` carries it), so
+   for the 250 ms of a zoom the names are where they are about to be, and the
+   tiles catch up.
    ═══════════════════════════════════════════════════════════════════════ */
 
 import { useEffect, useRef, useState } from "react";
@@ -118,7 +129,6 @@ export default function CityTileMap({ descriptor, year = "now" }: CityTileMapPro
           zoomSnap: 0,
           zoomDelta: 1,
           wheelPxPerZoomLevel: 120,
-          zoomAnimation: false,
           fadeAnimation: false,
           markerZoomAnimation: false,
           inertia: true,
@@ -170,6 +180,11 @@ export default function CityTileMap({ descriptor, year = "now" }: CityTileMapPro
         ro.observe(host);
         size();
         map.on("move zoom viewreset resize", schedule);
+        map.on("zoomanim", (e) => {
+          if (!overlay || dead) return;
+          const a = e as unknown as { center: { lat: number; lng: number }; zoom: number };
+          overlay.draw(tp.cameraOf(a.center.lng, -a.center.lat, a.zoom), 0);
+        });
 
         /* ── THE STOPS ARE THE DESCRIPTOR'S, AS ON THE GPU PAGE ──────────
            The same four spans, fitted to 94 % of this stage's width the way

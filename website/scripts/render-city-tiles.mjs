@@ -49,6 +49,12 @@ const BASE = arg('--base', 'http://localhost:3000');
 const T = 512;                       // tile edge, device pixels
 const CSS = { w: 1280, h: 768 };     // one capture window, CSS pixels — 5 x 3 tiles at dpr 2
 const DPR = 2;
+/* ONE ROW OF THE FRAME IS NOT THE PICTURE. MEASURED on the level-7 tiles:
+   the first pixel row of every capture reads 62–80 where the rows under it
+   read 93–102, and no other edge does it — the live page hides that row under
+   the stage's 1 px top border. So the stage is rendered PAD px taller at each
+   end, the camera stays centred, and the capture is the middle CSS.h rows. */
+const PAD = 1;
 /* the whole-city camera. `scale` is the page's own settled fit for a 1440-wide
    stage, narrowed to 1280 so the peninsula still fits the window. */
 /* ON THE ENGINE'S OWN LADDER. `camera.ts` §snapCameraScale rounds every scale
@@ -94,7 +100,7 @@ await p.waitForTimeout(6000); // the band warm-up
    but a child may override it, so the canvases stay while everything else in
    the shell — early or late — goes. The chrome's own scan canvas is a canvas
    too, hence the `display:none` on its root. */
-await p.addStyleTag({ content: `.theme-fusion .fx-city-stage{height:${CSS.h}px !important;min-height:0 !important;border:0 !important}
+await p.addStyleTag({ content: `.theme-fusion .fx-city-stage{height:${CSS.h + 2 * PAD}px !important;min-height:0 !important;border:0 !important}
 .fx-city-shell *{visibility:hidden !important}
 .fx-city-shell canvas{visibility:visible !important}
 .fx-city-shell [data-citygl-film-chrome]{display:none !important}` });
@@ -105,11 +111,13 @@ await p.evaluate(() => {
   for (const el of document.querySelectorAll('.fx-city-shell *')) if (!keep.has(el) && !(el instanceof HTMLCanvasElement)) el.style.visibility = 'hidden';
 });
 await p.waitForTimeout(1000);
-const box = await p.locator('canvas').first().boundingBox();
+const stageBox = await p.locator('canvas').first().boundingBox();
 const vp = await p.evaluate(() => window.__cityGL.viewport);
-if (Math.round(box.width) !== CSS.w || Math.round(box.height) !== CSS.h || vp.W !== CSS.w || vp.H !== CSS.h) {
-  console.error('stage is', box, 'engine viewport is', vp, 'wanted', CSS); process.exit(1);
+if (Math.round(stageBox.width) !== CSS.w || Math.round(stageBox.height) !== CSS.h + 2 * PAD || vp.W !== CSS.w || vp.H !== CSS.h + 2 * PAD) {
+  console.error('stage is', stageBox, 'engine viewport is', vp, 'wanted', { w: CSS.w, h: CSS.h + 2 * PAD }); process.exit(1);
 }
+/* the capture: the stage minus PAD rows top and bottom, still centred on the camera */
+const box = { x: stageBox.x, y: stageBox.y + PAD, width: CSS.w, height: CSS.h };
 if (YEAR !== 'now') await p.evaluate((y) => window.__cityGL.setYear(y), Number(YEAR));
 
 const pose = async (cx, cy, scale, band) => {
