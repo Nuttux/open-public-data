@@ -138,6 +138,17 @@ export interface BlockDecision {
    * the reading is sound and the scanner is what is broken.
    */
   readonly pl?: string;
+  /**
+   * OURS, not the Board's: 0-100 for how much the record matters, read off
+   * `pl` by a reader applying a written rubric. Reach picks the band and stage
+   * discounts it, so an adopted citywide rule outranks the same rule referred.
+   *
+   * Absent means UNREAD, never "read and found small" — those are different
+   * facts and a sort that cannot tell them apart is wrong in a way nobody
+   * would notice. It is published only where `pl` is published: a score read
+   * off a sentence the checks held back would rank a record no reader can see.
+   */
+  readonly iv?: number;
 }
 
 /** `blocks/classify.json` — the two vocabularies `cs` and `ca` index. */

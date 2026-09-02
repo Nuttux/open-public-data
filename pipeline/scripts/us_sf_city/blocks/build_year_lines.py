@@ -113,6 +113,11 @@ def main() -> None:
                 "cs": int(d["cs"]) if d.get("cs") is not None else -1,
                 "ca": int(d["ca"]) if d.get("ca") is not None else -1,
                 "g": d.get("g") or "", "pl": d.get("pl") or "", "p": [],
+                # HOW MUCH IT MATTERS, so a year can be read in an order worth
+                # scanning. The shard row already carries it; -1 means unread
+                # rather than unimportant, and a surface must not sort the two
+                # together.
+                "iv": int(d["iv"]) if d.get("iv") is not None else -1,
             }
         row["m"] |= int(marks["m"][i])
         row["p"].append([round(float(marks["x"][i]), 1),
@@ -160,10 +165,48 @@ def main() -> None:
                     "y": int(y), "m": 0, "k": rec.get("kind") or "",
                     "a": 0, "u": key[1], "t": key[2],
                     "cs": -1, "ca": -1, "g": "", "pl": line, "p": [],
+                    "iv": int(rec["importance"]) if (rec.get("importance") or "").strip().isdigit() else -1,
                 }
                 unplaced += 1
 
-    rows = sorted(by_key.values(), key=lambda r: (r["y"], -len(r["p"]), r["t"]))
+    # ── ONE ACT PRINTED TWICE ON ONE PAGE IS ONE ROW ───────────────────────
+    # The dedupe above keys on (year, page, the Clerk's own text), so an item
+    # the sweep split into two chunks stays two rows even though we wrote the
+    # SAME sentence for both. On the panel that reads as the Board doing a
+    # thing twice: 2025 printed "$20.0M federal grant accepted for the Harney
+    # Way busway" twice and "Citywide plan changes proposed to allow more
+    # family housing" three times.
+    #
+    # Measured over the whole corpus: 7,854 groups share a year and a written
+    # line, and 6,930 of them (88%) sit on ONE source page. Same page, same
+    # year, same sentence is one act, and those collapse here.
+    #
+    # The other 924 span different pages and are LEFT ALONE, because that is
+    # what an item printed at introduction and again at final passage looks
+    # like — two real events for which rule 9 asks for the same sentence.
+    # Merging those would delete a stage from the record.
+    merged: dict[tuple, dict] = {}
+    for r in by_key.values():
+        if not r["pl"]:
+            merged[id(r)] = r
+            continue
+        k = (r["y"], r["u"], r["pl"])
+        first = merged.get(k)
+        if first is None:
+            merged[k] = r
+            continue
+        first["p"].extend(r["p"])
+        first["m"] |= r["m"]
+        first["iv"] = max(first.get("iv", -1), r.get("iv", -1))
+        first["a"] = max(first.get("a", 0), r.get("a", 0))
+    collapsed = len(by_key) - len(merged)
+    by_key = merged
+
+    # Ordered by year, then by what matters most inside it. The panel caps a
+    # year, so the cap now falls on the least important rather than the
+    # alphabetically last — which is the whole point of having read them.
+    rows = sorted(by_key.values(),
+                  key=lambda r: (r["y"], -r.get("iv", -1), -len(r["p"]), r["t"]))
 
     # ── THE RAW TEXT ONLY RIDES WHERE IT IS STILL NEEDED ────────────────────
     # `t` is here for ONE consumer: `record-line.ts`, which extracts a readable
@@ -215,12 +258,14 @@ def main() -> None:
         # on this page, and it was printing the Clerk's sentence raw. The written
         # line is ours, so `t` stays on the row and the rail can show both.
         cols = {k: [r[k] for r in rs]
-                for k in ("y", "m", "k", "a", "u", "t", "cs", "ca", "g", "pl", "p")}
+                for k in ("y", "m", "k", "a", "u", "t", "cs", "ca", "g", "pl",
+                          "iv", "p")}
         p = OUT / f"{dec}.json"
         p.write_text(json.dumps({"decade": dec, "n": len(rs), **cols}) + "\n")
         total += p.stat().st_size
         print(f"   {dec}s  {len(rs):5,} decisions   {p.stat().st_size/1024:6.0f} kB")
 
+    print(f"   collapsed {collapsed:,} rows that repeat one act on one page")
     print(f"\n{marks_in:,} marks -> {len(rows):,} distinct decisions "
           f"({marks_in/max(1,len(rows)):.2f} dots each); {missed} resolved to nothing")
     print(f"{total/1024/1024:.2f} MB over {len(by_decade)} decade files")

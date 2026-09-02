@@ -33,6 +33,18 @@
  * says how many it is not showing, because a silent truncation reads as
  * "that is all of it" when it is not.
  *
+ * "The first `CAP`" now means THE MOST IMPORTANT `CAP`. `build_year_lines.py`
+ * orders a year by the record's own score before it shards, and `forYear`
+ * preserves that order, so the cap falls on the least important rather than
+ * the alphabetically last. Nothing here re-sorts: one place decides the order
+ * and every surface reading the shard agrees with it by construction.
+ *
+ * A year also holds decisions with NO place — a citywide code amendment, a
+ * grant accepted, a surveillance policy. They ride in the same shard with an
+ * empty position list, so this panel lists them and the map simply draws
+ * nothing. They are not the boring half; measured, they are where the highest
+ * scores in the modern era live.
+ *
  * ── §THE ONES THE RECORD DOES NOT DESCRIBE GO LAST, AND COUNTED ───────────
  * `record-line.ts` scores 56 % of lines as readable. The rest keep only their
  * classification, and on a card showing one record that is fine. On a panel

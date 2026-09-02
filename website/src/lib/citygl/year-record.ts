@@ -59,6 +59,17 @@ export interface YearDecision {
    * and so must anything else.
    */
   readonly grade: string;
+  /**
+   * OURS, not the Board's: 0-100 for how much the record matters, read off
+   * `pl` by a reader applying a written rubric. Reach picks the band and stage
+   * discounts it, so an adopted citywide rule outranks the same rule referred.
+   *
+   * **-1 means UNREAD, not unimportant.** A surface sorting by this must keep
+   * the two apart — dropping unread records to the bottom silently hides
+   * whatever has not been scored yet, which is the opposite of what a record
+   * of a city should do.
+   */
+  readonly iv: number;
   /** every place it names: world x, world z, and the assessor block id */
   readonly at: readonly (readonly [number, number, string])[];
 }
@@ -72,6 +83,7 @@ interface YearIndex {
 interface Shard {
   y: number[]; m: number[]; k: string[]; a: number[]; u: string[];
   t: string[]; cs: number[]; ca: number[]; g: string[]; pl?: string[];
+  iv?: number[];
   p: [number, number, string][][];
 }
 
@@ -157,8 +169,16 @@ export class YearRecord {
   }
 
   /**
-   * Every decision of `year`, in the shard's own order — most-placed first,
-   * then alphabetical, which `build_year_lines.py` sorts on the way out.
+   * Every decision of `year`, in the shard's own order — **what matters most
+   * first**, then most-placed, then alphabetical, which `build_year_lines.py`
+   * sorts on the way out. A surface that caps a year therefore drops the least
+   * important rather than the alphabetically last, which is the point of
+   * having read them.
+   *
+   * Unread records (`iv === -1`) sort to the END, so a cap hides them first.
+   * That is the right default for a ranked list and the wrong one for a
+   * complete record: a surface claiming to show a whole year must say how many
+   * it left out.
    *
    * `bits` narrows to one theme. Returns an empty array for a year the record
    * is silent on, and the caller must say so rather than showing nothing: some
@@ -174,7 +194,7 @@ export class YearRecord {
       out.push({
         year: s.y[i], text: s.t[i], bits: s.m[i], kind: s.k[i],
         usd: s.a[i], url: s.u[i], cs: s.cs[i], ca: s.ca[i],
-        grade: s.g[i], pl: s.pl?.[i] ?? "", at: s.p[i],
+        grade: s.g[i], pl: s.pl?.[i] ?? "", iv: s.iv?.[i] ?? -1, at: s.p[i],
       });
     }
     return out;

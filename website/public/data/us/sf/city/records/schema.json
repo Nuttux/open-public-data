@@ -1,6 +1,6 @@
 {
  "name": "San Francisco Board of Supervisors records, 1906-2026",
- "rows": 124284,
+ "rows": 159180,
  "generated_by": "pipeline/scripts/us_sf_city/blocks/build_core_table.py",
  "read_this_first": "pipeline/scripts/us_sf_city/blocks/RECORD-COLUMNS.md",
  "counting_rules": [
@@ -205,6 +205,10 @@
   {
    "name": "plain_line",
    "what": "OUR one-sentence reading of the record in plain English, 6-11 words, written from the item's full text \u2014 NOT the Board's wording. `text` is the Board's. Empty where the record states no event (page furniture, an index row)."
+  },
+  {
+   "name": "importance",
+   "what": "OURS, not the Board's: 0-100 for how much the record matters, read off the plain_line by a reader applying a written rubric. Reach picks the band and stage discounts it, so an adopted citywide rule outranks the same rule referred. It is a reading, not a measurement, and it is for sorting a year into an order worth scanning \u2014 not a claim that one act mattered more than another. Empty where the record has no written line to read."
   },
   {
    "name": "plain_line_caution",

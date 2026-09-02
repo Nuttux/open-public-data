@@ -1,5 +1,5 @@
 {
- "rows": 124284,
+ "rows": 159180,
  "generated_at": "",
  "years": [
   1906,
@@ -9,7 +9,7 @@
  "decisions": 107566,
  "decisions_with_topic": 106858,
  "decisions_without_topic": 708,
- "download_bytes": 24071595,
+ "download_bytes": 29029816,
  "record_type": [
   [
    "decision",
@@ -126,20 +126,20 @@
  ],
  "how_we_know_where": [
   [
-   "street only",
-   39586
+   "no place given",
+   64065
   ],
   [
-   "no place given",
-   29359
+   "street only",
+   39696
   ],
   [
    "street corner",
-   24524
+   24525
   ],
   [
    "street address",
-   18398
+   18451
   ],
   [
    "between two streets",
@@ -147,7 +147,7 @@
   ],
   [
    "names its own block",
-   4555
+   4581
   ]
  ],
  "classified_by": [

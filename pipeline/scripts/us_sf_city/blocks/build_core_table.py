@@ -52,7 +52,12 @@ CLASSIFIED = os.path.join(SEEDS, "sf_bos_classification.csv")
 OUTDIR = os.path.join(REPO, "website", "public", "data", "us", "sf", "city", "records")
 
 HISTORIC = os.path.join(CACHE, "items.jsonl")
-MODERN = os.path.join(REPO, "pipeline/scripts/us_sf_city/cache_sfbos/items.jsonl")
+# The FULL modern sweep, not `items.jsonl`. That file is the 8,611 rows the
+# block join could place; this is all 43,507 the Clerk printed. The table is
+# the row-level record of what the Board did, and a record without a street
+# is not a lesser record — it is where the citywide acts live. Verified a
+# strict superset, every row carrying url and page == n+1.
+MODERN = os.path.join(REPO, "pipeline/scripts/us_sf_city/cache_sfbos/items_all.jsonl")
 
 KIND = {"R": "resolution", "O": "ordinance", "M": "motion",
         "W": "departmental work", "H": "hearing"}
@@ -115,7 +120,7 @@ COLUMNS = [
     "how_we_know_where", "why_no_place", "block", "longitude", "latitude",
     "streets", "amounts", "amount_count",
     "refers_to_decision_number", "classified_by",
-    "plain_line", "plain_line_caution",
+    "plain_line", "plain_line_caution", "importance",
 ]
 
 
@@ -142,6 +147,35 @@ def stg_rows():
                 "_amounts": [a for a in (r.get("m") or []) if a],
                 "_has_street": bool(r.get("r")),
             }
+
+
+def importance():
+    """id -> 0-100, how much the record matters, at its newest rubric version.
+
+    The store is append-only and one id carries a row per rubric version, so
+    the row with the highest `rv` is the current reading. Taking the last line
+    in the file would make the published number depend on append order.
+
+    Unlike the map index, this publishes the score wherever one exists, INCLUDING
+    where the written line carries a caution — because this table publishes those
+    lines too, beside `plain_line_caution`. A reader who can see the caution can
+    weigh the number; on the map there is no room to say it, so the map holds
+    both back together.
+    """
+    path = os.path.join(REPO, "pipeline", "data", "sf_bos", "importance.jsonl")
+    if not os.path.exists(path):
+        return {}
+    best, ver = {}, {}
+    for line in open(path):
+        if not line.strip():
+            continue
+        d = json.loads(line)
+        i, rv = d["id"], int(d.get("rv") or 0)
+        if rv < ver.get(i, -1):
+            continue
+        ver[i] = rv
+        best[i] = int(d["score"])
+    return best
 
 
 def plain_lines():
@@ -282,6 +316,7 @@ def main() -> int:
     by_key = placed
 
     plain = plain_lines()
+    imp = importance()
     out = []
     for r in rows:
         p = by_key.get(rec_key(r["_v"], r["_n"], r["text"])) or {}
@@ -319,6 +354,7 @@ def main() -> int:
             "classified_by": c.get("classified_by", ""),
             "plain_line": plain.get(r["id"], ("", ""))[0],
             "plain_line_caution": plain.get(r["id"], ("", ""))[1],
+            "importance": imp.get(r["id"], ""),
         })
 
     # ── gates ────────────────────────────────────────────────────────────
@@ -445,6 +481,15 @@ def main() -> int:
                      "6-11 words, written from the item's full text — NOT the "
                      "Board's wording. `text` is the Board's. Empty where the "
                      "record states no event (page furniture, an index row)."},
+            {"name": "importance",
+             "what": "OURS, not the Board's: 0-100 for how much the record "
+                     "matters, read off the plain_line by a reader applying a "
+                     "written rubric. Reach picks the band and stage discounts "
+                     "it, so an adopted citywide rule outranks the same rule "
+                     "referred. It is a reading, not a measurement, and it is "
+                     "for sorting a year into an order worth scanning — not a "
+                     "claim that one act mattered more than another. Empty "
+                     "where the record has no written line to read."},
             {"name": "plain_line_caution",
              "values": ["", "invented", "overstates", "damaged",
                         "invented|damaged", "overstates|damaged"],
