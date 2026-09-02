@@ -463,7 +463,10 @@ export function skyOptionsFromSearch(search = ""): Partial<SkyOptions> & { on: b
     const v = m ? Number(m[1]) : NaN;
     return Number.isFinite(v) ? v : undefined;
   };
-  const on = /(?:\?|&)sky=0/.test(search) ? false : true;
+  /* OFF BY DEFAULT since 2026-09-02: the wash over the far city is the haze
+     Daniel asked to have removed everywhere (`terrain.ts` §WA.hazecap). `?sky=1`
+     brings it back for an A/B; `?sky=0` is the default spelled out. */
+  const on = /(?:\?|&)sky=1/.test(search);
   return {
     on,
     strength: num("skyk"),

@@ -169,7 +169,17 @@ export const WA = {
    * 177.4,193.3,207.2. The distance was being under-painted by a fifth of the
    * whole fade over everything more than 3.4 km from downtown.
    */
-  hazecap: 0.45, // 0.62 until 2026-08-26; the far city kept a fifth more of its contrast on the A/B and the argument for 0.62 was a match to the mock, not to the eye
+  /* ── OFF, 2026-09-02, AT DANIEL'S REQUEST: NO HAZE ANYWHERE ───────────
+     0.62 until 2026-08-26, then 0.45. The whole aerial perspective goes with
+     this one number: `hazeAt` is 0 at every point, `drawDepthHaze` returns
+     false, `layers/water.ts` lays no fade over the bay, and `citygl/sky.ts`
+     — which paid the ramp PAST the cap as a wash over the far city — is off
+     by default on its own switch (`?sky=1`). Seen on the tile render first:
+     the south of the city, 7–10 km from downtown, came out under a uniform
+     veil while the north did not, and it did the same thing live on a pan.
+     The bay keeps its own open-water colour gradient; that is a colour of
+     water, not a wash over the picture. */
+  hazecap: 0,
 };
 
 /**

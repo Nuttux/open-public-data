@@ -19,7 +19,12 @@ import {
  */
 const R0 = 3400;
 const SPAN = 15000;
-const CAP = WA.hazecap;
+/* THE CAP THE RAMP WAS DESIGNED AGAINST, not the live one. Since 2026-09-02
+   `WA.hazecap` is 0 — no haze anywhere — and this layer is off by default;
+   the arithmetic below is still the arithmetic, and it is checked at the cap
+   it was derived for so the derivation stays honest for the day a city wants
+   it back. The live value has its own test. */
+const CAP = 0.45;
 
 function rgb(hex: string): [number, number, number] {
   return [
@@ -132,12 +137,19 @@ describe("the bake", () => {
   });
 });
 
+describe("the haze is off", () => {
+  it("the published cap is zero, so the ramp never starts", () => {
+    expect(WA.hazecap).toBe(0);
+  });
+});
+
 describe("the query dials", () => {
-  it("is on unless it is turned off", () => {
-    expect(skyOptionsFromSearch("").on).toBe(true);
-    expect(skyOptionsFromSearch("?q=low&aa=1").on).toBe(true);
+  it("is off unless it is turned on", () => {
+    expect(skyOptionsFromSearch("").on).toBe(false);
+    expect(skyOptionsFromSearch("?q=low&aa=1").on).toBe(false);
     expect(skyOptionsFromSearch("?sky=0").on).toBe(false);
-    expect(skyOptionsFromSearch("?a=1&sky=0&b=2").on).toBe(false);
+    expect(skyOptionsFromSearch("?sky=1").on).toBe(true);
+    expect(skyOptionsFromSearch("?a=1&sky=1&b=2").on).toBe(true);
   });
 
   it("moves one number at a time, and leaves the rest alone", () => {
@@ -175,7 +187,8 @@ describe("the layer", () => {
   it("reports the wash it would paint at a world point", () => {
     const layer = skyLayer({ anchor: [1000, 2000], size: 32 });
     expect(layer.alphaAt(1000, 2000)).toBe(0);
-    expect(layer.alphaAt(1000 + veilInnerR(CAP), 2000)).toBeCloseTo(0, 9);
+    /* the LIVE cap here, not the design one: `skyLayer` reads `WA.hazecap` */
+    expect(layer.alphaAt(1000 + veilInnerR(WA.hazecap), 2000)).toBeCloseTo(0, 9);
     expect(layer.alphaAt(1000 + R0 + SPAN, 2000)).toBeCloseTo(1, 9);
     layer.setParams({ strength: 0.25 });
     expect(layer.alphaAt(1000 + R0 + SPAN, 2000)).toBeCloseTo(0.25, 9);

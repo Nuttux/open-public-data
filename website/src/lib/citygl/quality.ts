@@ -170,7 +170,7 @@ const HIGH: QualitySettings = {
   aoSamples: 12,
   aoRadiusM: 12,
   treeShadow: true,
-  haze: true,
+  haze: false, // off since 2026-09-02 — no haze anywhere; `?haze=1` for the A/B
   tiltShift: true,
   vignette: true,
   grade: true,
@@ -187,7 +187,7 @@ const LOW: QualitySettings = {
   aoSamples: 8,
   aoRadiusM: 12,
   treeShadow: false,
-  haze: true,
+  haze: false, // off since 2026-09-02 — no haze anywhere; `?haze=1` for the A/B
   tiltShift: true,
   vignette: true,
   grade: true,

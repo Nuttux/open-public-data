@@ -101,6 +101,9 @@ import type { CityLayer } from "../engine";
 /** the two radii `drawDepthHaze` and `bayPlate` are written in, in metres */
 const FADE_R0_M = 3400;
 const FADE_SPAN_M = 15000;
+/* how far out the crest field reaches, as the fraction of the ramp it used to
+   share with `WA.hazecap` before the haze went (0.45 → 10,150 m) */
+const RIPPLE_REACH = 0.45;
 
 /**
  * How finely the baked plate is sampled.
@@ -1076,7 +1079,13 @@ export function waterLayer(
   const far = rgb255(lerpHex(BAY_OPEN, HAZE, 0.62));
   const haze = rgb255(HAZE);
   const cap = WA.hazecap;
+  /* The distance fade's outer radius. With the cap at 0 (no haze, since
+     2026-09-02) the fade has no span, and the two things that used to share
+     this radius part ways: the fade itself is guarded to zero below, and the
+     crest field keeps the reach it had when the cap was 0.45 — the ripple
+     geometry is unchanged by the haze going. */
   const fadeR1 = FADE_R0_M + FADE_SPAN_M * cap;
+  const rippleR1 = FADE_R0_M + FADE_SPAN_M * RIPPLE_REACH;
 
   /* ── THE GLINT'S TWO DIRECTIONS, RESOLVED ONCE ────────────────────────
      `h` is the half-vector between the light and the eye; a facet turned
@@ -1218,7 +1227,7 @@ export function waterLayer(
       }
 
       // and the distance fade over both
-      const a = Math.max(0, Math.min(1, (d - FADE_R0_M) / (fadeR1 - FADE_R0_M))) * cap;
+      const a = cap > 0 ? Math.max(0, Math.min(1, (d - FADE_R0_M) / (fadeR1 - FADE_R0_M))) * cap : 0;
       r += (haze[0] - r) * a;
       gg += (haze[1] - gg) * a;
       bb += (haze[2] - bb) * a;
@@ -1360,7 +1369,7 @@ export function waterLayer(
      the far shore's surf as much as the city's. */
   mesh.renderOrder = -4;
 
-  let ripple = rippleMesh(gRects, rippleTex, opts.anchor, fadeR1);
+  let ripple = rippleMesh(gRects, rippleTex, opts.anchor, rippleR1);
   mesh.add(ripple);
 
   /* ── THE PLATE IS CUT, ONCE THE SECOND REGISTER LANDS ───────────────────
@@ -1387,7 +1396,7 @@ export function waterLayer(
       plate = next.stats;
       ripple.geometry.dispose();
       ripple.removeFromParent();
-      ripple = rippleMesh(gRects, rippleTex, opts.anchor, fadeR1);
+      ripple = rippleMesh(gRects, rippleTex, opts.anchor, rippleR1);
       /* built in a microtask, long after `engine.add` — see `engine.ts`
          §AND A MESH MADE LATER MUST CLAIM ITSELF. Unstamped it is claimed by
          whichever layer registers next, which is how the bay once reported

@@ -760,7 +760,8 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          11,783 / 14,176 m). One world-baked quad pays the rest of the ramp out
          to the paper, converging on `HAZE` exactly, which is the renderer's own
          clear colour: the picture ends IN the sheet rather than at an edge.
-         `?sky=0` for the A/B. See `lib/citygl/sky.ts`. */
+         OFF BY DEFAULT since 2026-09-02 — no haze anywhere, see
+         `terrain.ts` §WA.hazecap; `?sky=1` for the A/B. See `lib/citygl/sky.ts`. */
       attachSky(engine, { anchor: downtown });
 
       /* the whole city, centred on the DEM's own middle */
