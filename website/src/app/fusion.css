@@ -19085,13 +19085,14 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   .theme-fusion .fx-city-stage {
     min-height: 240px;
   }
-  /* THE TILE MAP HAS NO CENTURY STRIP YET (`CityTileMap.tsx`), so of the
-     574 px the rule above subtracts, the strip's 104 are not on its screen:
-     header 90 + sheet 380 = 470, and the map takes the rest. Fold into the
-     rule above when the rail comes over. */
+  /* THE TILE MAP'S STRIP IS ONE ROW, NOT TWO (`CityTileMap.tsx`): the rail
+     alone, 47 px measured, no subject row yet. So of the 574 px the rule
+     above subtracts, header 90 + rail 47 + sheet 380 = 517 are on its screen
+     and the map takes the rest. Fold into the rule above when the subjects
+     come over. */
   .theme-fusion .fx-city-shell:has(.fx-city-tiles),
   .theme-fusion .fx-city-wrap:has(.fx-city-tiles) {
-    --fx-city-h: max(240px, calc(100svh - 470px));
+    --fx-city-h: max(240px, calc(100svh - 517px));
   }
 }
 .theme-fusion .fx-city-record-more {

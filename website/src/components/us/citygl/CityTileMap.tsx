@@ -24,9 +24,18 @@
    the same `CitySearch` and lands the same way. None of that is copied from
    the GPU map — it is imported from where that map imports it.
 
-   WHAT IS NOT HERE YET, deliberately: the year rail, the subject dots and
-   the film. This is the second block — the city, readable, and its record
-   under a thumb — and those are the next.
+   AND THE YEAR IS A PYRAMID. On the GPU page the rail gates geometry by
+   year, which is free; here a year is a picture that was rendered, so
+   `render-city-years.mjs` renders one pyramid per year and `years.json`
+   says which exist and how deep each goes. The rail shows the nearest year
+   there is a picture for, at the deepest level it has, and the tiles scale
+   past that; the type is gated by the exact year the reader asked for. A
+   swap adds the new year's layer OVER the old one and takes the old one
+   away when the new has loaded, so the city never shows paper between two
+   years.
+
+   WHAT IS NOT HERE YET, deliberately: the subject dots, the film and the
+   URL state. This is the third block; those are the next.
 
    ── LEAFLET, AND WHY NOT A HAND-ROLLED VIEWER ──────────────────────────
    The page already ships Leaflet for the places map; it gives pinch, inertia
@@ -88,13 +97,24 @@ import {
 
 export interface CityTileMapProps {
   descriptor: CityDescriptor;
-  /** which pyramid — a year the renderer wrote, or `now` */
-  year?: string;
+  /** which pyramid to open on — a year the renderer wrote, or `now` */
+  pyramid?: string;
 }
 
 interface Stop {
   label: string;
   go: () => void;
+}
+
+/* the rail's span — `CityGLMap.tsx` §THE RAIL'S OWN SPAN, the same numbers:
+   the map's first year is 1906 and the settled present is `YEAR_MAX` */
+const YEAR_MIN = 1906;
+const YEAR_MAX = 2026;
+
+/** what `render-city-years.mjs` writes beside the pyramids */
+interface YearsFile {
+  now: { zmax: number } | null;
+  years: Record<string, { zmax: number }>;
 }
 
 /** the three private moves a pinch is made of — `PlacesMap.tsx` uses the same */
@@ -118,9 +138,11 @@ interface MapApi {
   nearestStop(): number;
   /** the name under the pin, once the record says what it is */
   label(s: string | null): void;
+  /** show a year — the nearest rendered pyramid, the exact year for the type */
+  setYear(y: number | null): void;
 }
 
-export default function CityTileMap({ descriptor, year = "now" }: CityTileMapProps) {
+export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMapProps) {
   const t = useT();
   const router = useRouter();
   const hostRef = useRef<HTMLDivElement | null>(null);
@@ -143,6 +165,10 @@ export default function CityTileMap({ descriptor, year = "now" }: CityTileMapPro
     { req: UnitRequest; nonce: number; block: string } | undefined
   >(undefined);
   const [sheetOpen, setSheetOpen] = useState(true);
+  const [year, setYear] = useState<number | null>(null);
+  const [yearsFile, setYearsFile] = useState<YearsFile | null>(null);
+  const scrubEl = useRef<HTMLInputElement | null>(null);
+  const swapTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const idxRef = useRef<BlockIndex | null>(null);
   const posRef = useRef<Map<string, number> | null>(null);
   const nonceRef = useRef(0);
@@ -168,15 +194,20 @@ export default function CityTileMap({ descriptor, year = "now" }: CityTileMapPro
 
     void (async () => {
       try {
-        const [L, index, data] = await Promise.all([
+        const [L, index, data, years] = await Promise.all([
           import("leaflet").then((m) => m.default),
-          fetch(`${base}/${year}/index.json`).then((r) => {
+          fetch(`${base}/${pyramid}/index.json`).then((r) => {
             if (!r.ok) throw new Error(`tiles: index ${r.status}`);
             return r.json() as Promise<TileIndex>;
           }),
           CityData.load({ baseUrl: descriptor.dataBaseUrl }),
+          /* a city with no rendered years has a map with no rail */
+          fetch(`${base}/years.json`)
+            .then((r) => (r.ok ? (r.json() as Promise<YearsFile>) : null))
+            .catch(() => null),
         ]);
         if (dead) return;
+        setYearsFile(years);
         /* THE GROUND THE PICKER MARCHES AGAINST IS THE GPU PAGE'S: the fine
            DEM (2.1 MB), sampled the way the mesh is. MEASURED on the coarse
            field alone the pick answered at 69–86 % of a grid of points over
@@ -239,17 +270,43 @@ export default function CityTileMap({ descriptor, year = "now" }: CityTileMapPro
           maxBounds: extent.pad(0.25),
           maxBoundsViscosity: 0.8,
         });
-        L.tileLayer(`${base}/${year}/{z}/{x}/{y}.webp`, {
-          tileSize: TILE_CSS,
-          minNativeZoom: 0,
-          maxNativeZoom: tp.zmax,
-          noWrap: true,
-          bounds: extent,
-          keepBuffer: 2,
-          updateWhenZooming: true,
-          updateInterval: 100,
-          className: "fx-city-tile",
-        }).addTo(map);
+        const layerFor = (key: string, zmax: number) =>
+          L.tileLayer(`${base}/${key}/{z}/{x}/{y}.webp`, {
+            tileSize: TILE_CSS,
+            minNativeZoom: 0,
+            maxNativeZoom: zmax,
+            noWrap: true,
+            bounds: extent,
+            keepBuffer: 2,
+            updateWhenZooming: true,
+            updateInterval: 100,
+            className: "fx-city-tile",
+          });
+        let tiles = layerFor(pyramid, tp.zmax).addTo(map);
+        let tilesKey = pyramid;
+        /* ── THE SWAP: THE NEW YEAR OVER THE OLD, THEN THE OLD GOES ────── */
+        const showKey = (key: string, zmax: number) => {
+          if (!map || key === tilesKey) return;
+          tilesKey = key;
+          const old = tiles;
+          const next = layerFor(key, zmax).addTo(map);
+          tiles = next;
+          const done = () => { if (map && tiles === next) map.removeLayer(old); };
+          next.once("load", done);
+          /* a year whose tiles are all cached fires no load at all */
+          setTimeout(() => { if (map && tiles === next && map.hasLayer(old)) done(); }, 1500);
+        };
+        /* the nearest year there is a picture for, the present when none */
+        const keyFor = (y: number | null): { key: string; zmax: number } => {
+          if (y === null || y >= YEAR_MAX || !years) return { key: "now", zmax: tp.zmax };
+          let best: string | null = null;
+          let d = Infinity;
+          for (const k of Object.keys(years.years)) {
+            const dk = Math.abs(Number(k) - y);
+            if (dk < d || (dk === d && Number(k) < y)) { d = dk; best = k; }
+          }
+          return best === null ? { key: "now", zmax: tp.zmax } : { key: best, zmax: years.years[best].zmax };
+        };
 
         /* ── THE WHEEL: FOLLOW THE GESTURE, COMMIT ONCE ──────────────── */
         {
@@ -470,6 +527,14 @@ export default function CityTileMap({ descriptor, year = "now" }: CityTileMapPro
               schedule();
             }
           },
+          setYear(y) {
+            const k = keyFor(y);
+            showKey(k.key, k.zmax);
+            if (overlay) {
+              overlay.year = y ?? undefined;
+              schedule();
+            }
+          },
         };
 
         /* DEV-ONLY, the `__cityGL*` idiom: the harness that measures this
@@ -501,7 +566,7 @@ export default function CityTileMap({ descriptor, year = "now" }: CityTileMapPro
       map?.remove();
       map = null;
     };
-  }, [descriptor, year]);
+  }, [descriptor, pyramid]);
 
   /* ── THE RECORD, BEHIND A PICK — the GPU page's effect, unchanged in what
      it does: the context first (a column already in memory), then the shard,
@@ -592,6 +657,33 @@ export default function CityTileMap({ descriptor, year = "now" }: CityTileMapPro
     apiRef.current?.clear();
   };
 
+  /* ── THE RAIL, THE GPU PAGE'S WAY: the cheap half on every input event —
+     the readout, the filled run, the type — and the expensive half, a
+     pyramid swap that fetches tiles, once the thumb has rested 150 ms or is
+     released. React state is committed on release only, so the thumb is
+     never contradicted mid-gesture (`CityGLMap.tsx` §syncScrub). */
+  const syncScrub = useCallback((y: number | null) => {
+    const el = scrubEl.current;
+    if (!el) return;
+    const v = y ?? YEAR_MAX;
+    if (Number(el.value) !== v) el.value = String(v);
+    const frac = (v - YEAR_MIN) / (YEAR_MAX - YEAR_MIN);
+    el.style.setProperty("--scrub", `${(frac * 100).toFixed(2)}%`);
+    const out = el.previousElementSibling;
+    if (out) out.textContent = String(v);
+  }, []);
+  const scrubTo = (v: number, commit: boolean) => {
+    const y = v >= YEAR_MAX ? null : v;
+    syncScrub(y);
+    if (swapTimer.current) clearTimeout(swapTimer.current);
+    if (commit) {
+      apiRef.current?.setYear(y);
+      setYear(y);
+    } else {
+      swapTimer.current = setTimeout(() => apiRef.current?.setYear(y), 150);
+    }
+  };
+
   const sheetLabel =
     (record ? blockPlaceName(record.streets) : null) || ctx?.hood || "";
   const n = record?.decisions.length ?? 0;
@@ -642,6 +734,30 @@ export default function CityTileMap({ descriptor, year = "now" }: CityTileMapPro
             </div>
           ) : null}
         </div>
+        {/* ── THE RAIL, when this city has rendered years ───────────────────
+            Inside `.fx-city-transport`, as on the GPU page: on a phone the
+            frame is a column ordered stage, transport, ledger, and a row
+            outside that box lands ABOVE the map, under the entry card. */}
+        {!loading && yearsFile && Object.keys(yearsFile.years).length ? (
+          <div className="fx-city-transport">
+          <div className="fx-city-clockrow">
+            <span className="tnum fx-city-year">{year ?? YEAR_MAX}</span>
+            <input
+              ref={scrubEl}
+              type="range"
+              className="fx-city-scrub"
+              min={YEAR_MIN}
+              max={YEAR_MAX}
+              step={1}
+              defaultValue={YEAR_MAX}
+              aria-label="Year"
+              style={{ flex: 1 }}
+              onInput={(e) => scrubTo(Number(e.currentTarget.value), false)}
+              onChange={(e) => scrubTo(Number(e.currentTarget.value), true)}
+            />
+          </div>
+          </div>
+        ) : null}
         {/* ── THE SHEET, ONLY WHEN THERE IS A RECORD TO SHOW ──────────────
             The GPU page's ledger always stands, because it carries the year
             and the subject dots too. Here, until the rail comes over, the
