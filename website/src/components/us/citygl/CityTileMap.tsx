@@ -40,10 +40,20 @@
    The type follows the animation's TARGET camera (`zoomanim` carries it), so
    for the 250 ms of a zoom the names are where they are about to be, and the
    tiles catch up.
+
+   AND THE WHEEL IS NOT LEAFLET'S. With the animation on, a trackpad — which
+   sends dozens of tiny deltas a second — became dozens of tiny 250 ms
+   animations queued behind each other: Daniel, on the desktop, *"i can now
+   only zoom in tiny increment"*. `PlacesMap.tsx` already solved this for the
+   places map with the Leaflet.SmoothWheelZoom technique, and it is the same
+   here: follow the gesture frame by frame through `map._move` at fractional
+   zoom, which is exactly what a pinch does and keeps every tile it has, and
+   commit — reload tiles — once, when the wheel has been quiet for 180 ms.
+   A phone never reaches this code; it pinches.
    ═══════════════════════════════════════════════════════════════════════ */
 
 import { useEffect, useRef, useState } from "react";
-import type { Map as LMap } from "leaflet";
+import type { LatLng, Map as LMap } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
 import { CityData } from "@/lib/city/data";
@@ -63,6 +73,13 @@ export interface CityTileMapProps {
 interface Stop {
   label: string;
   go: () => void;
+}
+
+/** the three private moves a pinch is made of — `PlacesMap.tsx` uses the same */
+interface MapPrivate {
+  _moveStart(zoomChanged: boolean, noMoveStart: boolean): unknown;
+  _move(center: unknown, zoom: number): unknown;
+  _moveEnd(zoomChanged: boolean): unknown;
 }
 
 export default function CityTileMap({ descriptor, year = "now" }: CityTileMapProps) {
@@ -128,7 +145,8 @@ export default function CityTileMap({ descriptor, year = "now" }: CityTileMapPro
           maxZoom: tp.zmax + 1,
           zoomSnap: 0,
           zoomDelta: 1,
-          wheelPxPerZoomLevel: 120,
+          /* the wheel is handled below, see §AND THE WHEEL IS NOT LEAFLET'S */
+          scrollWheelZoom: false,
           fadeAnimation: false,
           markerZoomAnimation: false,
           inertia: true,
@@ -147,6 +165,68 @@ export default function CityTileMap({ descriptor, year = "now" }: CityTileMapPro
           updateInterval: 100,
           className: "fx-city-tile",
         }).addTo(map);
+
+        /* ── THE WHEEL: FOLLOW THE GESTURE, COMMIT ONCE ──────────────── */
+        {
+          const mp = map as unknown as MapPrivate;
+          const SENS = 0.0022; // zoom levels per wheel pixel
+          const EASE = 0.3; // fraction of the gap closed per frame
+          let wheeling = false;
+          let goalZoom = 0;
+          let wheelRaf = 0;
+          let endTimer: ReturnType<typeof setTimeout> | null = null;
+          /* all four are set when a gesture starts — the map has no centre
+             yet here, and Leaflet throws on `getCenter()` before `setView` */
+          let centerPt = map.getSize().divideBy(2);
+          let wheelPt = centerPt;
+          let startLatLng: LatLng | null = null;
+          let wheelStartLatLng: LatLng | null = null;
+          let moved = false;
+          const stepWheel = () => {
+            if (!map || dead || !startLatLng || !wheelStartLatLng) return;
+            const z = Math.round((map.getZoom() + (goalZoom - map.getZoom()) * EASE) * 1000) / 1000;
+            const d = wheelPt.subtract(centerPt);
+            const center =
+              d.x === 0 && d.y === 0
+                ? startLatLng
+                : map.unproject(map.project(wheelStartLatLng, z).subtract(d), z);
+            if (!moved) { mp._moveStart(true, false); moved = true; }
+            mp._move(center, z);
+            wheelRaf = requestAnimationFrame(stepWheel);
+          };
+          const endWheel = () => {
+            wheeling = false;
+            cancelAnimationFrame(wheelRaf);
+            if (moved && map && !dead) mp._moveEnd(true);
+            moved = false;
+          };
+          div.addEventListener(
+            "wheel",
+            (e: WheelEvent) => {
+              if (!map || dead) return;
+              e.preventDefault();
+              if (!wheeling) {
+                wheeling = true;
+                moved = false;
+                centerPt = map.getSize().divideBy(2);
+                startLatLng = map.containerPointToLatLng(centerPt);
+                wheelPt = map.mouseEventToContainerPoint(e);
+                wheelStartLatLng = map.containerPointToLatLng(wheelPt);
+                goalZoom = map.getZoom();
+                map.stop();
+                wheelRaf = requestAnimationFrame(stepWheel);
+              }
+              goalZoom = Math.max(
+                map.getMinZoom(),
+                Math.min(map.getMaxZoom(), goalZoom + L.DomEvent.getWheelDelta(e) * SENS),
+              );
+              wheelPt = map.mouseEventToContainerPoint(e);
+              if (endTimer) clearTimeout(endTimer);
+              endTimer = setTimeout(endWheel, 180);
+            },
+            { passive: false },
+          );
+        }
 
         /* ── THE WRITING, OVER THE PICTURES ────────────────────────────── */
         const schedule = () => {
@@ -222,8 +302,27 @@ export default function CityTileMap({ descriptor, year = "now" }: CityTileMapPro
           setZoomStop(d < 0.5 ? best : -1);
         });
 
-        const home = zoomOf(descriptor.stops[0]);
+        /* THE WHOLE CITY IS THE WIDEST STOP, as on the GPU page: past it the
+           pyramid is a rectangle on the paper with the far shore cut off at
+           its edge — Daniel: *"small strips ... of whats not on the map
+           proper"*. Exactly the fit and no slack: a tenth of a level of slack
+           showed a strip of paper down each side of the desktop frame, which
+           is the same complaint in a smaller size. Refitted when the stage
+           changes width. */
+        const clampOut = () => {
+          const h = zoomOf(descriptor.stops[0]);
+          map?.setMinZoom(Math.max(0, h.zoom));
+          return h;
+        };
+        const home = clampOut();
         map.setView(home.at, home.zoom, { animate: false });
+        ro.disconnect();
+        ro = new ResizeObserver(() => {
+          map?.invalidateSize({ animate: false });
+          clampOut();
+          size();
+        });
+        ro.observe(host);
         void overlay.load().then(schedule);
         setLoading(false);
       } catch (e) {

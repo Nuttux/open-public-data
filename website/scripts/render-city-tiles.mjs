@@ -65,7 +65,15 @@ const PAD = 1;
 const rung = (s) => 2 ** (Math.round(Math.log2(s) * 24) / 24);
 const REF = { cx: 241.427019126574, cy: 707.0567508859249, scale: rung(0.06898352692062097) };
 const bandFor = (z) => { const k = 2 ** (z - 3); return k < 1.826 ? 0 : k < 5.77 ? 1 : 2; };
-const HAZE = '#cfd6db';
+/* OUTSIDE THE LEVEL IS NOT A PICTURE. A level's canvas is `px` device pixels
+   and its last column and row of tiles run past that edge (levels 0–2 are
+   not multiples of 512). What the capture holds out there is the engine's
+   far field and, further out, its clear colour after the grade — a grey the
+   page's paper is not, and it showed as strips beyond the map: Daniel,
+   *"small strips grey looks buggy of whats not on the map proper"*. So a
+   tile is cut to the level's own extent and the rest is TRANSPARENT, and the
+   stage's paper shows through, the same paper on both sides of the edge. */
+const CLEAR = { r: 0, g: 0, b: 0, alpha: 0 };
 
 const b = await chromium.launch({ args: ['--enable-unsafe-webgpu', '--use-gl=angle', '--ignore-gpu-blocklist'] });
 const p = await b.newPage({ viewport: { width: CSS.w, height: 1200 }, deviceScaleFactor: DPR });
@@ -162,9 +170,11 @@ for (let z = 0; z <= ZMAX; z++) {
     for (let ty = 0; ty < th; ty++) for (let tx = 0; tx < tw; tx++) {
       const X = tx0 + tx, Y = ty0 + ty;
       const left = z >= 3 ? tx * T : -ox + tx * T, top = z >= 3 ? ty * T : -oy + ty * T;
-      const cw = Math.min(T, CSS.w * DPR - left), ch = Math.min(T, CSS.h * DPR - top);
+      /* what this tile may show: the capture, AND the level's own extent */
+      const cw = Math.min(T, CSS.w * DPR - left, canvasW - X * T);
+      const ch = Math.min(T, CSS.h * DPR - top, canvasH - Y * T);
       let img = sharp(shot).extract({ left, top, width: cw, height: ch });
-      if (cw < T || ch < T) img = img.extend({ right: T - cw, bottom: T - ch, background: HAZE });
+      if (cw < T || ch < T) img = img.ensureAlpha().extend({ right: T - cw, bottom: T - ch, background: CLEAR });
       const buf = await img.webp({ quality: 82 }).toBuffer();
       const d = path.join(dir, String(X)); fs.mkdirSync(d, { recursive: true });
       fs.writeFileSync(path.join(d, `${Y}.webp`), buf);
