@@ -1786,3 +1786,31 @@ itself against its siblings could see it, and only because one thought to.
     FOR NEXT TIME: if a repair has to be issued mid-wave, record which batch
     numbers received it. I did not, and had to reconstruct the cohorts from
     the dispatch history to size this.
+
+## Batch 093 — the last of the pass, and the sixth defect shows up again
+
+The contradiction between "a line naming no act = 5" and "no act with a named
+subject falls below 10" fires on 19 boilerplate mastheads ("Ethics Commission
+contact printed at 30 Van Ness Avenue"). Same pair of clauses that collide on a
+tabled appeal, in a different population. Already logged as the sixth v7 defect;
+this is the second place it bites.
+
+Unresolved, and new:
+
+  a development agreement has no rung — Treasure Island, 8,000 homes, priced on
+    the rezoning ladder's area rung at 51, the same as a neighbourhood rezoning
+  a construction contract for a WHOLE public facility — nothing sits between "a
+    civic building ordered built" (78) and "a trade or component" (45)
+  one line carrying two civic facts — "Columbia Square to be dropped as a park
+    for a school" is a park lost and a school gained, and no rung covers a
+    change of civic USE
+  operating-hours rules over a rail corridor — 18 lines, read as corridor
+    traffic for want of anything nearer
+  a repeal whose subject is off the page — "score the act it undoes" is
+    unusable when the act is unnamed
+
+## THE PASS IS COMPLETE — 99,278 of 99,278
+
+Every written line carries a score, stamped with the rubric version and hash it
+was read against. 42,432 rows stand at v6 outside the families v7 touched;
+the rest at v7.
