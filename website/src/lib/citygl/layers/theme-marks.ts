@@ -181,24 +181,14 @@ export interface ThemeMarksOptions {
    old set could not pass all-pairs at all; this one holds ΔE 13.8 across every
    pair, so the legend is honestly readable even though the map never asks a
    reader to compare two subjects at once. */
-export const THEME_INK = [
-  "#a80391", // magenta
-  "#e15f0a", // orange
-  "#6029c6", // violet
-  "#04a322", // green
-  "#058dfa", // blue
-  "#d60b49", // crimson
-  "#006b9a", // deep cyan
-  "#00a19d", // teal
-] as const;
+export { THEME_INK, CARPET_BLOCKS, WINDOW_YEARS } from "../theme-ink";
+import { CARPET_BLOCKS, MARK_PX, WINDOW_YEARS } from "../theme-ink";
 
 /* ── the two constants a reader can see the effect of ──────────────────── */
 
 /** above this many lit blocks a subject is drawn as density, not as dots */
-export const CARPET_BLOCKS = 600;
 
 /** the scrub names a year; the layer lights this many years around it */
-export const WINDOW_YEARS = 10;
 
 /**
  * How big a mark is ON SCREEN, in pixels, at every camera.
@@ -207,7 +197,6 @@ export const WINDOW_YEARS = 10;
  * honest size for it is the one that keeps it legible. 14 px is a mark you
  * can see across the whole city and aim at from a street.
  */
-const MARK_PX = 14;
 
 /**
  * How far above the ground the mark's base sits, in the same screen pixels.

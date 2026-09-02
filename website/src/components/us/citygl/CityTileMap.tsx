@@ -44,7 +44,13 @@
    It plays the whole city, because that is the only stop every year has a
    picture for, and the GPU page plays the whole city too.
 
-   WHAT IS NOT HERE YET, deliberately: the subject dots and the film.
+   THE SUBJECTS ARE THE SAME SUBJECTS. `blocks/theme-marks.json` and
+   `blocks/themes.json` are the GPU page's files; `tile-marks.ts` draws them
+   in ink on a canvas under the type with the GPU layer's own filter, window
+   and two modes, and a press on a mark opens that block's record.
+
+   WHAT IS NOT HERE YET, deliberately: the film, and the mark's own card (a
+   press on a dot opens the block for now).
 
    ── LEAFLET, AND WHY NOT A HAND-ROLLED VIEWER ──────────────────────────
    The page already ships Leaflet for the places map; it gives pinch, inertia
@@ -89,6 +95,8 @@ import { CityOverlay } from "@/lib/citygl/overlay";
 import { blockPicker } from "@/lib/citygl/pick";
 import { loadFineDem, meshElevAt } from "@/lib/citygl/layers/terrain";
 import { TILE_CSS, tilePlane, type TileIndex } from "@/lib/citygl/tile-plane";
+import { THEME_INK } from "@/lib/citygl/theme-ink";
+import { tileMarks, type TileMarks, type TileMarksFile } from "@/lib/citygl/tile-marks";
 import { useT } from "@/lib/localeContext";
 import CityBlockPanel, {
   type BlockContext,
@@ -123,6 +131,32 @@ interface Stop {
 const YEAR_MIN = 1906;
 const YEAR_MAX = 2026;
 
+/** one row of `themes.json` — what the subject filter offers */
+interface ThemeEntry {
+  readonly bit: number;
+  readonly slug: string;
+  readonly label: string;
+  readonly kind: string;
+  readonly n: number;
+  readonly n_blocks: number;
+  readonly y0: number;
+  readonly y1: number;
+}
+
+/* the GPU page's chip, `CityGLMap.tsx` §chipStyle */
+function chipStyle(on: boolean, ink: string | null): React.CSSProperties {
+  return {
+    font: `${on ? 600 : 400} 12px/1 var(--f-sans, system-ui)`,
+    padding: "7px 10px",
+    borderRadius: 6,
+    cursor: "pointer",
+    border: `1px solid ${on ? (ink ?? "var(--ink, #1a1a19)") : "var(--rule, #e4e6ea)"}`,
+    boxShadow: on ? `inset 0 0 0 1px ${ink ?? "var(--ink, #1a1a19)"}` : "none",
+    background: "var(--surface, #fff)",
+    color: "var(--ink, #1a1a19)",
+  };
+}
+
 /** what `render-city-years.mjs` writes beside the pyramids */
 interface YearsFile {
   now: { zmax: number } | null;
@@ -152,6 +186,8 @@ interface MapApi {
   label(s: string | null): void;
   /** show a year — the nearest rendered pyramid, the exact year for the type */
   setYear(y: number | null): void;
+  /** light a subject's marks around a year; how many lit */
+  filterMarks(bits: number, year: number): number;
 }
 
 export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMapProps) {
@@ -180,6 +216,8 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
   const [year, setYear] = useState<number | null>(null);
   const [yearsFile, setYearsFile] = useState<YearsFile | null>(null);
   const [playing, setPlaying] = useState(false);
+  const [themes, setThemes] = useState<ThemeEntry[] | null>(null);
+  const [subject, setSubject] = useState<number | null>(null);
   const playTimer = useRef<ReturnType<typeof setInterval> | null>(null);
   const [at, setAt] = useState<{ street?: string; address?: string; hood?: boolean }>({});
   const opened = useRef(false);
@@ -262,7 +300,8 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
         /* THE PICKER IS THE GPU PAGE'S, on the GPU page's ground. */
         const fineDem = await fineDemP;
         if (dead) return;
-        const picker = blockPicker(data, { elevAt: meshElevAt(field, proj, fineDem) });
+        const ground = meshElevAt(field, proj, fineDem);
+        const picker = blockPicker(data, { elevAt: ground });
 
         const tp = tilePlane(index);
         const ll = (X: number, Y: number) => L.latLng(-Y, X);
@@ -414,7 +453,13 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
         const draw = () => {
           raf = 0;
           if (!overlay || !map || dead) return;
-          overlay.draw(camOf(), 0);
+          const cam = camOf();
+          if (mctx) {
+            mctx.setTransform(mdpr, 0, 0, mdpr, 0, 0);
+            mctx.clearRect(0, 0, mW, mH);
+            marks?.draw(mctx, cam, mW, mH);
+          }
+          overlay.draw(cam, 0);
         };
         overlay = new CityOverlay({
           data,
@@ -422,10 +467,26 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
           dataBaseUrl: descriptor.dataBaseUrl,
           requestFrame: schedule,
         });
+        /* the marks' own canvas, UNDER the type: a mark is the last thing said
+           about a block and a name is the last thing said about a place */
+        const marksCv = document.createElement("canvas");
+        marksCv.className = "fx-city-marks-2d";
+        marksCv.style.cssText = "position:absolute;inset:0;width:100%;height:100%;pointer-events:none";
+        const mctx = marksCv.getContext("2d");
+        labels.appendChild(marksCv);
         labels.appendChild(overlay.canvas);
+        let marks: TileMarks | null = null;
+        let mdpr = 1;
+        let mW = 0;
+        let mH = 0;
         const size = () => {
           const r = host.getBoundingClientRect();
-          overlay?.resize(r.width, r.height, Math.min(2, window.devicePixelRatio || 1));
+          mdpr = Math.min(2, window.devicePixelRatio || 1);
+          mW = r.width;
+          mH = r.height;
+          marksCv.width = Math.max(1, Math.round(mW * mdpr));
+          marksCv.height = Math.max(1, Math.round(mH * mdpr));
+          overlay?.resize(r.width, r.height, mdpr);
           schedule();
         };
         ro = new ResizeObserver(() => {
@@ -519,7 +580,10 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
           if (!map || !picker || dead) return;
           const pt = (e as unknown as { containerPoint: { x: number; y: number } }).containerPoint;
           const r = host.getBoundingClientRect();
-          const b = picker.at(pt.x, pt.y, camOf(), r.width, r.height);
+          /* a press on a mark is a press on its block — the mark's own card
+             is not here yet, and the record it names is in the fiche */
+          const hit = marks?.markAt(pt.x, pt.y, camOf(), r.width, r.height) ?? null;
+          const b = hit && hit.block >= 0 ? hit.block : picker.at(pt.x, pt.y, camOf(), r.width, r.height);
           if (overlay) {
             overlay.highlight = b === null ? null : picker.ringOf(b);
             overlay.pick = b;
@@ -578,7 +642,33 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
               schedule();
             }
           },
+          filterMarks(bits, y) {
+            const lit = marks?.setFilter({ bits, year: y }) ?? 0;
+            schedule();
+            return lit;
+          },
         };
+
+        /* ── THE SUBJECTS, AFTER THE CITY — a filter that fails to load must
+           cost the filter and not the city */
+        void (async () => {
+          try {
+            const dbase = descriptor.dataBaseUrl;
+            const [mk, vocab] = await Promise.all([
+              fetch(`${dbase}/blocks/theme-marks.json`).then((r) => (r.ok ? (r.json() as Promise<TileMarksFile>) : null)),
+              fetch(`${dbase}/blocks/themes.json`).then((r) => (r.ok ? (r.json() as Promise<{ t: ThemeEntry[] }>) : null)),
+            ]);
+            if (dead || !mk || !vocab?.t?.length) return;
+            marks = tileMarks(mk, {
+              elevAt: ground,
+              colours: vocab.t.map((t) => THEME_INK[t.bit % THEME_INK.length]),
+              bits: vocab.t.length,
+            });
+            setThemes(vocab.t);
+          } catch {
+            /* no marks, still a city */
+          }
+        })();
 
         /* DEV-ONLY, the `__cityGL*` idiom: the harness that measures this
            page needs the map and the pick it would make at a point */
@@ -735,6 +825,13 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
     );
   }, [loading, openAt]);
 
+  /* ── WHAT IS LIT: the subject around the rail's year, the present being
+     YEAR_MAX and never `undefined` — `CityGLMap.tsx` says why */
+  useEffect(() => {
+    if (!themes) return;
+    apiRef.current?.filterMarks(subject === null ? 0 : 2 ** subject, year ?? YEAR_MAX);
+  }, [subject, year, themes]);
+
   /* ── PLAY ────────────────────────────────────────────────────────────── */
   const YEARS_PER_SECOND = 3;
   const stopPlay = useCallback(() => {
@@ -880,6 +977,45 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
               onChange={(e) => scrubTo(Number(e.currentTarget.value), true)}
             />
           </div>
+          {themes ? (
+            <div className="fx-city-subjrow">
+              <span className="fx-city-subjrow-cap" aria-hidden="true">Subject</span>
+              <div className="fx-city-chips" role="group" aria-label="Subject">
+                <button
+                  type="button"
+                  onClick={() => setSubject(null)}
+                  aria-pressed={subject === null}
+                  style={chipStyle(subject === null, null)}
+                >
+                  All decisions
+                </button>
+                {themes.map((th) => (
+                  <button
+                    key={th.slug}
+                    type="button"
+                    onClick={() => setSubject((cur) => (cur === th.bit ? null : th.bit))}
+                    aria-pressed={subject === th.bit}
+                    title={`${th.n.toLocaleString()} marks over ${th.n_blocks.toLocaleString()} blocks, ${th.y0}–${th.y1}`}
+                    style={chipStyle(subject === th.bit, THEME_INK[th.bit % THEME_INK.length])}
+                  >
+                    <span
+                      aria-hidden="true"
+                      style={{
+                        display: "inline-block",
+                        width: 8,
+                        height: 8,
+                        borderRadius: 4,
+                        marginRight: 6,
+                        background: THEME_INK[th.bit % THEME_INK.length],
+                      }}
+                    />
+                    {th.label}
+                    <span style={{ opacity: 0.55, marginLeft: 6 }}>{th.n.toLocaleString()}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          ) : null}
           </div>
         ) : null}
         {/* ── THE SHEET, ONLY WHEN THERE IS A RECORD TO SHOW ──────────────
