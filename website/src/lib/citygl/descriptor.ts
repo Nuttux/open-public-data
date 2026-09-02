@@ -46,6 +46,13 @@ export interface CityDescriptor {
   id: string;
   /** where `manifest.json` and the chunk tree live, no trailing slash */
   dataBaseUrl: string;
+  /**
+   * Where the rendered tile pyramids live, no trailing slash — `<year>/
+   * index.json` and `<year>/{z}/{x}/{y}.webp` under it, as
+   * `scripts/render-city-tiles.mjs` writes them. A city without one has no
+   * tile map and a phone gets the live model. `CityTileMap.tsx`.
+   */
+  tilesBaseUrl?: string;
   look: CityLook;
   /** the zoom stops, wide first */
   stops: readonly CityStop[];

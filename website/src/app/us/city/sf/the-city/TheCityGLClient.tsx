@@ -28,17 +28,26 @@ import type { CityEngine } from "@/lib/citygl/engine";
 import type { FilmPlayer } from "@/lib/citygl/film";
 import CityGLFilmChrome, { useFilmDoor } from "@/components/us/citygl/CityGLFilmChrome";
 import { useT } from "@/lib/localeContext";
+import { wantsTiles } from "@/lib/citygl/tile-plane";
 
+const MapSkeleton = () => (
+  <div className="fx-city-wrap">
+    <div className="fx-city-frame">
+      <div className="fx-city-stage" />
+      <div className="fx-city-ledger" />
+    </div>
+  </div>
+);
 const CityGLMap = dynamic(() => import("@/components/us/citygl/CityGLMap"), {
   ssr: false,
-  loading: () => (
-    <div className="fx-city-wrap">
-      <div className="fx-city-frame">
-        <div className="fx-city-stage" />
-        <div className="fx-city-ledger" />
-      </div>
-    </div>
-  ),
+  loading: MapSkeleton,
+});
+/* THE PHONE'S RENDERER. Same page, same chrome, a different map under it —
+   `CityTileMap.tsx` says why. Chosen on the client (`wantsTiles`), after
+   mount, so a phone never starts building the GPU city it cannot hold. */
+const CityTileMap = dynamic(() => import("@/components/us/citygl/CityTileMap"), {
+  ssr: false,
+  loading: MapSkeleton,
 });
 
 const nfInt = new Intl.NumberFormat("en-US");
@@ -573,6 +582,9 @@ const SF_FILM: FilmScript = {
 const SF: CityDescriptor = {
   id: "us-sf",
   dataBaseUrl: "/data/us/sf/city",
+  /* the pyramids `scripts/render-city-tiles.mjs` writes; storage in prod,
+     the dev server's `public/` locally (gitignored) */
+  tilesBaseUrl: process.env.NEXT_PUBLIC_CITY_TILES_BASE ?? "/tiles/us/sf/city",
   look: DEFAULT_LOOK,
   /* ── WHAT EACH SYSTEM LAYER HOLDS, IN KILOMETRES ────────────────────────
      `systems.ts` describes what a KIND of system is; these are San Francisco's
@@ -630,6 +642,18 @@ export default function TheCityGLClient({ data }: { data: TheCityPageData }) {
   const t = useT();
   const [intro, setIntro] = useState(true);
   const engineRef = useRef<CityEngine | null>(null);
+  /* null until mounted: the choice needs the window, and rendering EITHER map
+     on the server would start the wrong one on a phone */
+  const [tiles, setTiles] = useState<boolean | null>(null);
+  useEffect(() => {
+    setTiles(
+      wantsTiles(
+        window.location.search,
+        { coarse: window.matchMedia("(pointer: coarse)").matches, width: window.innerWidth },
+        !!SF.tilesBaseUrl,
+      ),
+    );
+  }, []);
   const noteRef = useRef<HTMLDetailsElement | null>(null);
   /* THE FILM, ONCE THE MAP HAS BUILT ONE. It is created inside `CityGLMap`'s
      own async effect — the engine, the framings and the interrupt binding all
@@ -684,16 +708,22 @@ export default function TheCityGLClient({ data }: { data: TheCityPageData }) {
   return (
     <main className="theme-fusion">
       <div className="fx-city-shell" ref={shellRef}>
-        <CityGLMap
-          descriptor={SF}
-          /* TWO ARGUMENTS. `CityGLMap` hands back the engine and the film it
-             built from the descriptor above — the map owns the film's clock
-             and camera, this page owns the chrome that reads it. */
-          onReady={(engine, f) => {
-            engineRef.current = engine;
-            setFilm(f ?? null);
-          }}
-        />
+        {tiles === null ? (
+          <MapSkeleton />
+        ) : tiles ? (
+          <CityTileMap descriptor={SF} />
+        ) : (
+          <CityGLMap
+            descriptor={SF}
+            /* TWO ARGUMENTS. `CityGLMap` hands back the engine and the film it
+               built from the descriptor above — the map owns the film's clock
+               and camera, this page owns the chrome that reads it. */
+            onReady={(engine, f) => {
+              engineRef.current = engine;
+              setFilm(f ?? null);
+            }}
+          />
+        )}
 
         {/* ── THE FILM'S CHROME ──────────────────────────────────────────
             Rendered HERE and not inside the map, for the same reason the

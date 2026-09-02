@@ -16878,6 +16878,24 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   outline: none;
 }
 .theme-fusion .fx-city-canvas:active { cursor: grabbing; }
+/* ── the tile map — `CityTileMap.tsx`, the phone's renderer ──────────────
+   `isolation` keeps Leaflet's pane z-indexes (200–700) inside this box, so
+   the labels canvas after it and the chrome after that stack by tree order,
+   exactly as they do over the GPU canvas. */
+.theme-fusion .fx-city-tiles {
+  position: absolute; inset: 0; z-index: 0; isolation: isolate;
+  background: #ece7dc;
+}
+/* Leaflet puts `leaflet-container` on the div it is given — the SAME element,
+   not a child — so this is a compound selector and not a descendant one */
+.theme-fusion .fx-city-tiles.leaflet-container {
+  width: 100%; height: 100%; background: #ece7dc; font: inherit;
+  cursor: grab;
+}
+.theme-fusion .fx-city-tiles.leaflet-container:active { cursor: grabbing; }
+.theme-fusion .fx-city-tiles-labels {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+}
 .theme-fusion .fx-city-canvas:focus-visible {
   outline: 2px solid var(--bleu);
   outline-offset: -3px;
@@ -19066,6 +19084,14 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
      for a phone, where 380 px of map is most of the screen. */
   .theme-fusion .fx-city-stage {
     min-height: 240px;
+  }
+  /* THE TILE MAP HAS NO STRIP AND NO SHEET YET (`CityTileMap.tsx`, block 1),
+     so the 574 px the rule above subtracts are not on its screen. Until the
+     record comes to the tile page it takes the phone's earlier share of the
+     screen. Remove with block 2. */
+  .theme-fusion .fx-city-shell:has(.fx-city-tiles),
+  .theme-fusion .fx-city-wrap:has(.fx-city-tiles) {
+    --fx-city-h: min(66svh, 560px);
   }
 }
 .theme-fusion .fx-city-record-more {
