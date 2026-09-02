@@ -192,13 +192,64 @@ def verify(path: pathlib.Path, recs: dict, gloss: list) -> dict:
     if len(cur) >= 3:
         runs.append((cur[0], len(cur)))
 
+    # ── DOES THE LINE DESCRIBE ITS OWN RECORD, OR THE NEXT ONE? ─────────────
+    # The runs test above cannot see a one-record shift on modern material.
+    # Proposal and vote chunks of one item share an identical `ht`, so a line
+    # slid by one still shares vocabulary with the record it now sits on and
+    # never scores a miss. A whole slice was found shifted across 39 records
+    # with runs at 0.
+    #
+    # This asks a directional question instead: for each line, do its
+    # distinctive words belong to THIS record or to the NEXT one? Validated on
+    # that known-bad slice — the shifted span scored own 6 / next 27, while its
+    # three clean spans scored 20/1, 208/8 and 250/10.
+    shift = []
+    if r.get("ids_aligned") and len(inp) > 1:
+        sig = []
+        for i in range(len(out) - 1):
+            ln = out[i].get("line")
+            if not isinstance(ln, str):
+                continue
+            a, b = recs.get(out[i]["id"]), recs.get(out[i + 1]["id"])
+            if not a or not b or a.get("v") != b.get("v"):
+                continue
+            t = _dtok(ln)
+            ta, tb = _dtok(_dsrc(a)), _dtok(_dsrc(b))
+            own_, nxt_ = t & (ta - tb), t & (tb - ta)
+            if   len(own_) > len(nxt_): sig.append((i, 1))
+            elif len(nxt_) > len(own_): sig.append((i, -1))
+        W, i = 25, 0
+        while i + W <= len(sig):
+            win = sig[i:i + W]
+            nxt = sum(1 for _, d in win if d == -1)
+            if nxt >= 8 and nxt > (W - nxt) * 2:
+                shift.append((win[0][0], win[-1][0], W - nxt, nxt))
+                i += W
+            else:
+                i += 1
+
     r.update(invented=inv, overstates=ovr, damaged=dmg,
              off_band=sum(v for k, v in wc.items() if k < 6 or k > 11),
              wc_range=(min(wc), max(wc)) if wc else (0, 0),
              board_openers=sum(1 for x in out
                                if x["line"].strip().lower().startswith("board ")),
-             n_miss=len(miss), runs=runs, examples=examples)
+             n_miss=len(miss), runs=runs, shift=shift, examples=examples)
     return r
+
+
+_DSTOP = set("""the a an of to in for and or on at by with from as is are be been was
+were that this these those it its his her their our your my no not all any each
+resolution ordinance motion approved adopted passed committee board city county
+san francisco supervisor supervisors file no number hearing public order""".split())
+
+
+def _dtok(s):
+    return {w for w in re.findall(r"[A-Za-z][A-Za-z\'&-]{3,}|\d[\d,.]*", (s or "").lower())
+            if w not in _DSTOP}
+
+
+def _dsrc(rec):
+    return (rec.get("ht") or "") + " " + (rec.get("t") or "")
 
 
 def main() -> None:
@@ -233,12 +284,18 @@ def main() -> None:
         # judgement calls. `invented` and `overstates` are still counted and
         # printed, and still worth reading — they are just not a verdict.
         fail = (r["n_in"] != r["n_out"] or r["ids_aligned"] is False or r["dupes"]
-                or r["blank"] or r["unknown_ids"] or r["runs"])
+                or r["blank"] or r["unknown_ids"] or r["runs"]
+                or r["shift"])
         flag = "FAIL" if fail else "ok  "
         print(f"{flag} {r['file']}  {r['n_out']:4}/{r['n_in']:<4} "
               f"inv {r['invented']:3} ovr {r['overstates']:3} dmg {r['damaged']:3} "
               f"words {r['wc_range'][0]}-{r['wc_range'][1]} (off {r['off_band']}) "
               f"unpaired {r['n_miss']:3} runs {len(r['runs'])}")
+        if r.get("shift"):
+            for lo, hi, own, nxt in r["shift"][:4]:
+                print(f"      SHIFTED at {lo}..{hi} — the NEXT record explains "
+                      f"these lines better ({nxt} to {own}). The writer lost its "
+                      f"place; runs cannot see this.")
         if r["runs"]:
             print(f"      RUNS at {r['runs'][:6]} — a writer that lost its place "
                   f"misses consecutively")
