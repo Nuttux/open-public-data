@@ -19,6 +19,13 @@ const readChunk = (key: string): ArrayBuffer => {
   return b.buffer.slice(b.byteOffset, b.byteOffset + b.byteLength) as ArrayBuffer;
 };
 
+/** a tier bundle off disk, for the stubs that serve their chunks by hand */
+const readBundle = (url: string): ArrayBuffer => {
+  const rel = url.replace(/^.*\/data\/us\/sf\/city\/?/, "");
+  const b = readFileSync(path.join(DATA_DIR, rel));
+  return b.buffer.slice(b.byteOffset, b.byteOffset + b.byteLength) as ArrayBuffer;
+};
+
 const manifest = (): CityManifest =>
   JSON.parse(readFileSync(path.join(DATA_DIR, "manifest.json"), "utf8")) as CityManifest;
 
@@ -252,6 +259,10 @@ d("the request policy cancels what the camera has left behind", () => {
           headers: { "content-type": "application/json" },
         });
       }
+      /* the base tier arrives as one bundle now — `data.ts` §ONE FILE A TIER —
+         so serve it off disk and let this test go on watching what happens to
+         the PER-CHUNK requests behind it, which is what it is about */
+      if (u.endsWith(".qcb")) return new Response(readBundle(u));
       const key = u.slice(u.indexOf("/city/") + 6, -3);
       started.push(key);
       return await new Promise<Response>((resolve, reject) => {
@@ -297,6 +308,10 @@ d("the request policy cancels what the camera has left behind", () => {
           headers: { "content-type": "application/json" },
         });
       }
+      if (u.endsWith(".qcb")) {
+        asked.set(u.slice(u.indexOf("/city/") + 6), (asked.get(u.slice(u.indexOf("/city/") + 6)) ?? 0) + 1);
+        return new Response(readBundle(u));
+      }
       const key = u.slice(u.indexOf("/city/") + 6, -3);
       asked.set(key, (asked.get(key) ?? 0) + 1);
       return new Response(readChunk(key));
@@ -309,8 +324,70 @@ d("the request policy cancels what the camera has left behind", () => {
     }
     cd.setView({ z: 7.2, quad: diamond(-4000, -2000, 1200) });
     cd.setView({ z: 7.2, quad: diamond(4000, 2000, 1200) });
-    for (const e of m.chunks) {
-      if (e.tier === "base") expect(asked.get(e.k), e.k).toBe(1);
+    /* ── AND IT IS ONE REQUEST, NOT SIXTEEN ────────────────────────────────
+       The claim has not changed — the base tier is fetched once and survives
+       every pan — but what "once" looks like on the wire has: `data.ts`
+       §ONE FILE A TIER, NOT SEVEN HUNDRED fetches the tier as a single
+       bundle. So the count is asserted against whichever the city ships, and
+       the point of the test is the same either way: nothing is asked for
+       twice, and no base chunk is asked for again after a pan. */
+    const bundle = m.bundles?.base;
+    if (bundle) {
+      expect(asked.get(bundle.file), bundle.file).toBe(1);
+      for (const e of m.chunks) {
+        if (e.tier === "base") expect(asked.has(e.k), e.k).toBe(false);
+      }
+    } else {
+      for (const e of m.chunks) {
+        if (e.tier === "base") expect(asked.get(e.k), e.k).toBe(1);
+      }
+    }
+  });
+
+  it("the bundle and the per-chunk path decode to the same bytes", async () => {
+    /* THE ONE THING THE BUNDLE COULD GET WRONG is an offset, and an offset
+       that is wrong by any amount at all fails `decodeChunk`'s magic, its
+       length check or its CRC. This loads the base tier both ways off the
+       same disk and compares every field of every chunk. */
+    const m = manifest();
+    if (!m.bundles?.base) return;
+    const noBundles = { ...m, bundles: undefined } as unknown as CityManifest;
+    const serve = (mf: CityManifest) =>
+      (async (url: string | URL) => {
+        const u = String(url);
+        if (u.endsWith("manifest.json")) {
+          return new Response(JSON.stringify(mf), {
+            headers: { "content-type": "application/json" },
+          });
+        }
+        if (u.endsWith(".qcb")) return new Response(readBundle(u));
+        return new Response(readChunk(u.slice(u.indexOf("/city/") + 6, -3)));
+      }) as unknown as typeof fetch;
+
+    const viaBundle = await CityData.load({ fetchImpl: serve(m) });
+    await viaBundle.loadBase();
+    const viaChunks = await CityData.load({ fetchImpl: serve(noBundles) });
+    await viaChunks.loadBase();
+
+    const baseKeys = m.chunks.filter((c) => c.tier === "base").map((c) => c.k);
+    expect(baseKeys.length).toBeGreaterThan(0);
+    for (const k of baseKeys) {
+      const a = viaBundle.get(k);
+      const b = viaChunks.get(k);
+      expect(a, k).toBeTruthy();
+      expect(b, k).toBeTruthy();
+      expect(a!.bytes, k).toBe(b!.bytes);
+      expect(Object.keys(a!.fields).sort(), k).toEqual(Object.keys(b!.fields).sort());
+      for (const f of Object.keys(a!.fields)) {
+        const av = a!.fields[f] as ArrayLike<number>;
+        const bv = b!.fields[f] as ArrayLike<number>;
+        expect(av.length, `${k}.${f}`).toBe(bv.length);
+        for (let i = 0; i < av.length; i++) {
+          if (av[i] !== bv[i]) {
+            throw new Error(`${k}.${f}[${i}]: bundle ${av[i]} vs chunk ${bv[i]}`);
+          }
+        }
+      }
     }
   });
 });

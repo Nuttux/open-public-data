@@ -194,6 +194,9 @@ export interface ChunkEntry {
   readonly b: number;
   /** bytes gzipped, as measured by the encoder */
   readonly gz: number;
+  /** byte offset in this chunk's TIER BUNDLE — see `loadTier` §ONE FILE A TIER.
+   *  Absent on a city whose chunks have not been bundled. */
+  readonly off?: number;
   /** world extent, or null where the chunk is not spatial */
   readonly e: Extent | null;
   readonly n?: number;
@@ -265,6 +268,11 @@ export interface CityManifest {
   readonly kinds: Readonly<Record<string, KindSchema>>;
   readonly sources: Readonly<Record<string, SourceNote>>;
   readonly chunks: readonly ChunkEntry[];
+  /** one entry a tier where the chunks have been bundled — see `loadTier`
+   *  §ONE FILE A TIER, NOT SEVEN HUNDRED. Absent on an unbundled city. */
+  readonly bundles?: Readonly<Record<string, {
+    readonly file: string; readonly bytes: number; readonly n: number;
+  }>>;
   readonly [k: string]: unknown;
 }
 
@@ -776,6 +784,13 @@ interface Held {
 
 const DEFAULT_BASE = "/data/us/sf/city";
 
+/** how long a bundle may decode before it hands the thread back — see
+ *  `fetchBundle` §AND THE DECODE YIELDS. Half a 60 Hz frame. */
+const SLICE_MS = 8;
+/** `performance.now` where there is one, and a clock that always answers */
+const now = (): number =>
+  typeof performance !== "undefined" ? performance.now() : Date.now();
+
 export class CityData {
   readonly manifest: CityManifest;
   private readonly baseUrl: string;
@@ -858,7 +873,93 @@ export class CityData {
 
   /** Fetch and hold every base-tier chunk. Resolve when the first paint can draw. */
   async loadBase(): Promise<void> {
+    /* the guard is SYNCHRONOUS on purpose: an `await` here, even one that
+       resolves immediately, would push the per-chunk fetches into the next
+       microtask and they would no longer start in the caller's own tick.
+       `data.test.ts` §aborts an in-flight chunk caught exactly that. */
+    if (this.manifest.bundles?.base && (await this.fetchBundle("base"))) return;
     await Promise.all(this.baseKeys.map((k) => this.fetchChunk(k)));
+  }
+
+  /**
+   * ── §ONE FILE A TIER, NOT SEVEN HUNDRED ─────────────────────────────────
+   *
+   * A tier is always wanted whole — `loadTier` below fetches every chunk in
+   * it, and nothing in the app calls `setView`, the only caller that ever
+   * wanted a single cell. So the 713 requests the city used to make bought
+   * nothing and cost a great deal.
+   *
+   * MEASURED on a production build over a shaped 50 Mbps link with 40 ms of
+   * latency: the boot took 13.4 s, of which only 4.5 s was bytes. The other
+   * 8.4 s was request overhead — 719 requests, 231 of them under 8 KB, up to
+   * 671 in flight at once. On a phone's frame and a throttled processor the
+   * same boot took over 30 s.
+   *
+   * `pipeline/scripts/us_sf_city/bundle_city_chunks.py` concatenates each
+   * tier into `bundle/<tier>.qcb` and records every chunk's `off` in the
+   * manifest. A `.qc` is self-describing and carries its own key, so the
+   * bundle needs no container and this needs no parser: one fetch, then
+   * `slice` per chunk into exactly the buffer `decodeChunk` already expects,
+   * key check and CRC included.
+   *
+   * Returns false where the city has no bundle for the tier, or the fetch
+   * fails, and the caller then takes the per-chunk path it always took. The
+   * `.qc` files are still shipped for exactly that reason.
+   */
+  private async fetchBundle(tier: string): Promise<boolean> {
+    const b = this.manifest.bundles?.[tier];
+    if (!b) return false;
+    const wanted = this.manifest.chunks.filter(
+      (c) => c.tier === tier && c.off !== undefined && !this.held.has(c.k),
+    );
+    if (!wanted.length) return true;
+    let buf: ArrayBuffer;
+    try {
+      const res = await this.doFetch(`${this.baseUrl}/${b.file}`);
+      if (!res.ok) throw new Error(`${b.file}: HTTP ${res.status}`);
+      buf = await res.arrayBuffer();
+      if (buf.byteLength !== b.bytes) {
+        throw new Error(`${b.file}: ${buf.byteLength} bytes, manifest says ${b.bytes}`);
+      }
+    } catch {
+      /* a bundle that will not load costs the bundle, not the city */
+      return false;
+    }
+    /* ── §AND THE DECODE YIELDS, OR THE BUNDLE IS ONE LONG FREEZE ─────────
+       The first cut decoded all 138 chunks of a tier in one synchronous loop,
+       which is exactly the shape the per-chunk path never had: 713 fetches
+       arrived one at a time and decoded between frames.
+
+       MEASURED under a phone's frame and a 4x throttled processor, the same
+       boot: the longest single task went from 723 ms to 3,941 ms and the
+       blocked total from 9.4 s to 11.7 s. Fewer requests, a worse page —
+       the reader stares at a stalled tab instead of a loading one.
+
+       So the loop hands the thread back every `SLICE_MS`. It costs a little
+       wall clock and it buys back the frames, which is the trade the whole
+       band warm-up is built on. A `setTimeout` and not a microtask, because a
+       microtask would run before paint and yield nothing to the reader. */
+    let since = now();
+    for (const c of wanted) {
+      /* the LAST chunk of a tier runs to the end of the bundle; every other
+         one stops where the next begins, and `b` is the encoder's own count */
+      const off = c.off as number;
+      try {
+        const chunk = decodeChunk(buf.slice(off, off + c.b), c.k);
+        this.held.set(c.k, { chunk, used: ++this.clock });
+        this.heldBytes += chunk.bytes;
+        this.counts.fetched++;
+      } catch {
+        this.counts.failed++;
+      }
+      if (now() - since >= SLICE_MS) {
+        await new Promise<void>((r) => setTimeout(r, 0));
+        since = now();
+      }
+    }
+    this.evict();
+    for (const c of wanted) for (const fn of this.listeners) fn(c.k);
+    return true;
   }
 
   /**
@@ -872,6 +973,11 @@ export class CityData {
    */
   async loadTier(tier: string): Promise<number> {
     const keys = this.manifest.chunks.filter((c) => c.tier === tier).map((c) => c.k);
+    /* one request instead of one a chunk — §ONE FILE A TIER, NOT SEVEN HUNDRED.
+       Guarded synchronously for the reason `loadBase` gives. */
+    if (this.manifest.bundles?.[tier] && (await this.fetchBundle(tier))) {
+      return keys.length;
+    }
     await Promise.all(keys.map((k) => this.fetchChunk(k).catch(() => undefined)));
     return keys.length;
   }
