@@ -209,7 +209,8 @@ these numbers, and reserve judgement for what is not on the list.
 | a veto | **score the act it stops** |
 | bids or offers advertised for a decided act | **the act, x0.75** |
 | a transit line ORDERED, PLANNED, BUILT or EXTENDED — a new line, or an existing one carried somewhere it did not go | **80** |
-| a transit line's ROUTE CHANGED, rerouted, or a stop moved, on a line that already runs | **55** |
+| a transit line's ROUTE CHANGED, rerouted, realigned, MOVED, or a stop moved, on a line that already runs | **55** |
+| a PAYMENT, an appropriation or plan money TOWARD a line — where the sum is what the line is mostly about | **score the sum, not the line** |
 | a citywide vote called on bonds or the charter | **75** |
 | a purchase for a civic facility already open — fixed plant | **45** |
 | the same, consumables and movables | **30** |
@@ -481,6 +482,30 @@ for.
 This is not a thumb against transit. A new line still outranks almost
 everything on the map, and every one of the historic extensions keeps its 80.
 
+### And the sum is not the line
+
+The split above fixed one half. The other half is `planned`: readers applied it
+to any money with a line's name attached, so **"$115.50 set aside for plans for
+the Greenwich Street railway" scored 80** — the same as building the line. So
+did "$2,000 for plans for the Church Street railway", and "$23,274 to move the
+Union Street Municipal Railway line", which is not even a new line.
+
+Measured: 36 of the 228 transit records at 80 name a sum, and the sums run from
+$115.50 upward.
+
+This is not a new principle, it is one the rubric already states — *"where the
+sum is what the line is mostly about, score the sum"* — going unapplied because
+the transit anchor is flat and a flat anchor beats a principle. So it is written
+into the anchor itself: **ordering, building or extending a line is 80; paying
+for a piece of one is the payment.** A contractor paid $3,958.13 for track work
+is a contractor being paid; the city resolving to run a line to the ocean is the
+city changing where people can live.
+
+The test is the line's own grammar. If the act is the LINE — ordered, planned as
+a route, granted, built, extended — it is 80 whatever it cost, because a
+resolution to build costs nothing on the page. If the act is the MONEY — paid,
+set aside, appropriated, allowed for plans — the sum carries it.
+
 ### The rule that binds the CITY ITSELF, and the story a paper would run
 
 **This rung was missing, and its absence is measured.** The ladder above and the
@@ -509,6 +534,19 @@ the largest single act the Board takes. The reasoning, and it is Daniel's: what
 the government may do to people is the sharpest kind of story; a right is the
 next; a prohibition is concrete but often narrower than either. The budget
 recurs every year and these do not, but the budget moves everything at once.
+
+**ONE DEPARTMENT'S POLICY IS NOT THE CITYWIDE RULE.** San Francisco's
+Chapter 19B makes every department publish a policy for each surveillance
+device it uses, so the ordinance arrives as one citywide instrument and then a
+long tail of "Surveillance Technology Policy — <department> — <device>". The
+citywide instrument, and the police, sheriff, probation and immigration ones,
+are the 88 rung. **A single department's policy for a single device takes 68**:
+reach picks the band, and a rule binding one department's operations does not
+bind the city. Two readers reached that split independently before it was
+written down. It costs something real and the cost is named: a police
+location-tracker policy and a museum's camera policy now sit in different
+bands, which is the intent, but the boundary is the department and not the
+device.
 
 **The test behind all three is whether a newspaper would have run it**, and that
 is not a vibe — it is answerable from the record's own words. A record is that

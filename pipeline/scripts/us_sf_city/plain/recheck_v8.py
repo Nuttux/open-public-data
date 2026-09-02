@@ -65,7 +65,20 @@ FAMILIES = {
         re.compile(r"(bus|streetcar|railway|rail|trolley|coach|line)\b[^.]{0,60}"
                    r"\b(route|rerout|re-rout|realign)\w*"
                    r"|\broute\b[^.]{0,40}\b(chang|shift|mov|alter)\w*"
-                   r"|\b(stop|terminal)s?\b[^.]{0,30}\bmov\w*", re.I),
+                   r"|\b(stop|terminal)s?\b[^.]{0,30}\bmov\w*"
+                   r"|\b(mov|reloc)\w*\b[^.]{0,40}\b(line|track|railway|streetcar)s?\b"
+                   r"|\b(line|track|railway|streetcar)s?\b[^.]{0,30}\bto be (mov|reloc)\w*", re.I),
+    # The sum is not the line. Narrow on purpose: the line must name a SUM,
+    # name TRANSIT, and its act must be a MONEY verb. "Resolution to extend the
+    # L line to Sloat" is the line and keeps 80; "$7,500 to extend the L line to
+    # Sloat" is the payment. A first draft matched any transit word anywhere and
+    # pulled 6,242 records, which is the whole transit corpus, not the defect.
+    "money TOWARD a transit line, not the line itself":
+        re.compile(r"(?=.*\$[\d])"
+                   r"(?=.*\b(bus(es)?|streetcar|street car|railway|trolley|car line|"
+                   r"guideway|municipal railway|muni)\b)"
+                   r"(?=.*\b(paid|pay|payment|set aside|appropriat\w*|allowed for|"
+                   r"for plans|plans for|toward|contract awarded|awarded)\b)", re.I),
 }
 
 

@@ -1992,3 +1992,64 @@ batch 151 and 795 in batch 150 arrived stamped rv6 — read before the traffic
 ladder existed — carrying values that are not on any current ladder. Three
 identical copies of one line sat at 36, 46 and 46. Those were put onto the
 current ladder rather than shipping a file half one rubric and half another.
+
+## The payment/whole boundary has no number, and one reader had to invent it
+
+v8 says ordering a line is 80 and paying for a piece of one is the payment. It
+does not say where a payment stops being a piece. The rubric's own worked
+examples straddle it — `$13,696.50 for building Galileo High School` is scored
+as the SCHOOL, while `$693.01` and `$115.50` are scored as the cheque — so a
+reader applying both has nothing to interpolate with.
+
+Batch 154 set the boundary at **$12,000**, chosen so the two Eaton & Smith
+Taraval payments ($8,062.50 and $11,400) fall on the same side rather than
+splitting one job. Six rows turn on it directly, and everything between $12,000
+and about $50,000 turns on it in principle.
+
+The same batch found the case that argues the number is too low, and it is a
+better argument than the number: the Church Street extension's own appropriation
+is $123,500, so the $26,125 paid "for the Church Street railway" is a fifth of
+that job — an instalment by any reading — and it keeps 80. It also sits 35
+points above the SAME payment written as "City bills paid, including $26,125 for
+the Church Street streetcar line", which scores 45. Same dollars, two clerk
+lines, two bands.
+
+A threshold in dollars is also the wrong shape for a corpus spanning 1906 to
+2026, where $12,000 buys a street in one decade and a lamp post in another. The
+fix is probably a RATIO — a payment against the appropriation for the same work,
+which the record often prints — not a constant. Not attempted; recorded with the
+evidence so the next pass starts from the case rather than the number.
+
+## A ballot measure heard is claimed by two rungs
+
+`sfbos:bag061918|82` is a HEARING on an initiative ordinance already submitted
+to the November 2018 voters. The hearing partition makes a hearing on a named
+pending proposal a flat 16. The anchor "a citywide vote called on bonds or the
+charter — 75" makes it 56 after a stage discount. Both rungs fit the record
+exactly and the rubric does not say which wins; two readers took 16 and 44.
+
+It is the same shape as the ballot/ordinance seam already logged — v8 raised the
+ordinance rung to 82 and left the ballot anchor at 75 — and both want settling
+together, because a measure that reaches the electorate should not score below
+the same measure passed by eleven people.
+
+## Where a bundle stops being a tail and becomes an instrument
+
+The 68 rung is for "one department's policy for one device". Chapter 19B also
+produces bundles. Two shapes, and the rubric names neither:
+
+  * three single-department policies stapled into one item (Rec & Park body
+    cameras + Elections security cameras + Airport third-party cameras) — read
+    as three tails, 68;
+  * ONE social-media-monitoring policy governing twenty-odd departments — read
+    as an instrument for the city at large, 88.
+
+The reader drew the line at "one policy for the whole government" against
+"several policies for named departments" and said plainly a different reader
+could put both at 68.
+
+Related, and sharper: automated speed enforcement sits at 68 because SFMTA is
+one department, while ShotSpotter sits at 88 though Emergency Management is also
+one department. The difference being made is really "does the device act on the
+public city-wide", not "which department owns it" — the department boundary is
+doing work the rung's own words do not ask of it.

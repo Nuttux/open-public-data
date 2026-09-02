@@ -1,0 +1,21 @@
+import { chromium, devices } from 'playwright';
+const b = await chromium.launch();
+const ctx = await b.newContext({ ...devices['iPhone 13'], locale: 'en-US' });
+const p = await ctx.newPage();
+await p.goto('http://localhost:3000/us/city/sf/the-city', { waitUntil: 'domcontentloaded' });
+await p.waitForSelector('.fx-city-controls', { timeout: 90000 });
+await p.waitForTimeout(2000);
+await p.locator('.fx-city-find input').first().fill('castro');
+await p.waitForTimeout(1500);
+await p.locator('.fx-city-find [role="option"], .fx-city-find li, .fx-city-find button').first().tap();
+await p.waitForTimeout(3000);
+const r = await p.evaluate(() => {
+  const t = window.__cityTiles; const ov = window.__cityGLOverlay;
+  const pick = ov ? ov.pick : null; const ring = ov ? ov.highlight : null;
+  const W = document.querySelector('.fx-city-stage').getBoundingClientRect().width, H = document.querySelector('.fx-city-stage').getBoundingClientRect().height;
+  const grid = [];
+  for (let fy = 0.2; fy <= 0.8; fy += 0.15) for (let fx = 0.2; fx <= 0.8; fx += 0.15) grid.push([fx.toFixed(2), fy.toFixed(2), t.pickAt(W * fx, H * fy)]);
+  return { pick, ringPts: ring ? ring.length : null, zoom: t.map.getZoom(), W, H, hits: grid.filter((g) => g[2] !== null).length, of: grid.length, sample: grid.slice(0, 6) };
+});
+console.log(JSON.stringify(r));
+await b.close();

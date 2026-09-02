@@ -1,0 +1,10 @@
+import { chromium } from 'playwright';
+const OUT='/private/tmp/claude-501/-Users-daniel-Desktop-dani-code-open-data-paris-open-public-data/f483229c-dea2-4de9-ade7-0745c0da1a5e/scratchpad';
+const b = await chromium.launch();
+const p = await b.newPage({ viewport:{width:1440,height:900}, deviceScaleFactor:2 });
+await p.goto('http://localhost:3000/us/city/sf/the-city', {waitUntil:'networkidle', timeout:150000});
+await p.waitForTimeout(11000);
+const el = await p.$('.fx-city-ledger');
+if (el) await el.screenshot({path:`${OUT}/panel_fixed.png`});
+console.log(await p.evaluate(()=>[...document.querySelectorAll('.fx-city-record-text')].slice(0,7).map(e=>e.textContent.slice(0,72))));
+await b.close();
