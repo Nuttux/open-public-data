@@ -12,8 +12,27 @@ website, read by people who will never see the record behind it.
 3. Your slice: `pipeline/data/sf_bos/work/slice-NNN.jsonl`
 
 Each input line is `{"id", "y" (year), "t" (the record's full text), "p" (places
-it names)}`. Slices are drawn from a single decade, so the register is
-consistent across your whole file — learn it once from the first few records.
+it names)}`, and modern records also carry:
+
+* `ht` — **the Clerk's own title for the item, and usually the whole subject.**
+* `disp` — what became of it: adopted, tabled, continued, and so on.
+
+**Where `ht` is present, it is the best thing on the page.** The Clerk writes the
+substance into the title and the body is often only the vote:
+
+    ht: "Settlement of Lawsuit - Ken Meisle - $40,000"
+     t: "Ordinance No. 131-16 FINALLY PASSED"
+
+Read `ht` first, then `t` for anything the title leaves out. Never write "no
+subject on this page" for a record that has an `ht` — it has a subject, and the
+subject is right there. (Writers could not see `ht` until this was fixed, which
+is why so many modern lines say exactly that.)
+
+`disp` tells you the stage without guessing at it — but the rule that a proposal
+stays a proposal still comes from the words, and `disp` only confirms them.
+
+Slices are drawn from a single decade, so the register is consistent across your
+whole file — learn it once from the first few records.
 
 ## Write
 

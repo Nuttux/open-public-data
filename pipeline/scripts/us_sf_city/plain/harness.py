@@ -106,16 +106,37 @@ def load_records(pass2=True):
     with open(ITEMS) as fh:
         for ln in fh:
             o = json.loads(ln)
+            # ── THE SUBJECT IS IN THE TITLE, NOT THE BODY ──────────────────
+            # A modern file is printed as its number, a bracketed title, then
+            # the body. The Clerk puts the whole substance in the title and
+            # the body is often only the vote:
+            #
+            #     ht: "Settlement of Lawsuit - Ken Meisle - $40,000"
+            #      t: "Ordinance No. 131-16 FINALLY PASSED"
+            #
+            # This function used to pass `t` alone. Two things followed, and
+            # both were read as rubric problems for months. Writers saw a bare
+            # roll call and wrote "no subject on this page" — the epidemic
+            # every modern batch reported, and the reason v7 grew a clause for
+            # "a line naming a subject but no act". And the held-filter tested
+            # `t` alone, so 2,187 records with a perfectly good title were
+            # dropped as empty pages.
+            ht = (o.get('ht') or '').strip()
+            body = o.get('t') or ''
             if pass2:
-                if PASS2.held_reason(o.get('t') or ''): continue
+                # judge on what the record actually states, title included
+                if PASS2.held_reason((ht + '. ' + body) if ht else body): continue
             else:
                 if not o.get('r'): continue
                 off = o['r'][0].get('o') or 0
-                if not (P.predicate(ns['clean'](sentence_at(o['t'], off)))
-                        or P.predicate(ns['clean'](o['t']))): continue
-            out.append({"id": f"{o['v']}|{o['i']}", "y": o['y'], "t": o['t'],
-                        "p": [(r.get('d') or r.get('s') or '')
-                              for r in (o.get('r') or [])][:3]})
+                if not (P.predicate(ns['clean'](sentence_at(body, off)))
+                        or P.predicate(ns['clean'](body))): continue
+            rec = {"id": f"{o['v']}|{o['i']}", "y": o['y'], "t": body,
+                   "p": [(r.get('d') or r.get('s') or '')
+                         for r in (o.get('r') or [])][:3]}
+            if ht: rec["ht"] = ht
+            if o.get('disp'): rec["disp"] = o['disp']
+            out.append(rec)
     return out
 
 def done_ids():
