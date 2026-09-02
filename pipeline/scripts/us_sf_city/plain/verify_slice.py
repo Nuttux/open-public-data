@@ -116,7 +116,21 @@ def gloss_terms() -> list[tuple[set[str], set[str]]]:
     return out
 
 
+_ORDER_CACHE: dict = {}
+
+
+def _order(recs):
+    """`recs` is built from the ordered record list, so its insertion order IS
+    corpus order. Cached — rebuilding it per slice would walk 158k records."""
+    if not _ORDER_CACHE:
+        order = list(recs.values())
+        _ORDER_CACHE["order"] = order
+        _ORDER_CACHE["idx"] = {r["id"]: i for i, r in enumerate(order)}
+    return _ORDER_CACHE["order"], _ORDER_CACHE["idx"]
+
+
 def verify(path: pathlib.Path, recs: dict, gloss: list) -> dict:
+    recs_in_order, idx_of = _order(recs)
     slice_path = WORK / path.name.replace("out-", "slice-")
     inp = [json.loads(l) for l in slice_path.open()] if slice_path.exists() else []
     out = [json.loads(l) for l in path.open()]
@@ -156,7 +170,24 @@ def verify(path: pathlib.Path, recs: dict, gloss: list) -> dict:
         # A checker that fails correct work is worse than no checker: it would
         # have quarantined good files and passed the borrowed-neighbour lines
         # it exists to catch.
+        # ...and the SAME ITEM's other chunks count as this record's own words.
+        # The Clerk splits one item across an introduction chunk and a vote-only
+        # chunk whose whole text is "Resolution No. 170-18 ADOPTED". Judging the
+        # vote chunk against its own title alone made the checker demand a
+        # vaguer line than the record supports: writers reported losing "555
+        # North Point", "Marina Small Craft Harbor", "on 24th Street", "Main
+        # Library" and "Laguna Honda" off correct lines purely to satisfy this.
+        # That is the check narrowing the line, not the record.
+        #
+        # The widening is bounded by the same precondition PROMPT.md rule 9
+        # states: identical `ht`, which 95.4% of vote-only chunks share with
+        # their neighbour and 4.6% do not. A different `ht` is still refused —
+        # that 4.6% is exactly the cross-item bleed this checker exists to stop.
         src = ((rec.get("ht") or "") + ". " + rec["t"]).strip(". ") or rec["t"]
+        ht_own = (rec.get("ht") or "").strip()
+        if ht_own:
+            for sib in _siblings(rec, recs_in_order, idx_of):
+                src += ". " + (sib.get("t") or "")
         c = check(line, src)
         if c["invented"]:
             inv += 1
@@ -241,6 +272,27 @@ _DSTOP = set("""the a an of to in for and or on at by with from as is are be bee
 were that this these those it its his her their our your my no not all any each
 resolution ordinance motion approved adopted passed committee board city county
 san francisco supervisor supervisors file no number hearing public order""".split())
+
+
+def _siblings(rec, order, idx_of):
+    """Other chunks of the SAME item: same meeting, identical `ht`, adjacent.
+
+    Walks outward from the record and stops at the first chunk whose `ht`
+    differs, so a spillover title cannot drag in an unrelated item.
+    """
+    i = idx_of.get(rec["id"])
+    if i is None:
+        return []
+    ht, v, out = (rec.get("ht") or "").strip(), rec.get("v"), []
+    for step in (-1, 1):
+        j = i + step
+        while 0 <= j < len(order):
+            o = order[j]
+            if o.get("v") != v or (o.get("ht") or "").strip() != ht:
+                break
+            out.append(o)
+            j += step
+    return out
 
 
 def _dtok(s):
