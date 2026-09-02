@@ -121,6 +121,22 @@ def invented(line, record):
     for tens, unit in re.findall(r"\b(twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety)"
                                 r"[- ]?(one|two|three|four|five|six|seven|eight|nine)\b", src):
         src += " " + str(int(WORDNUM[tens]) + int(WORDNUM[unit]))
+    # Maximal digit runs, so "9" is not found inside "9016051176".
+    #
+    # Built from the RECORD, not from `src`. _norm glues digits across
+    # punctuation — "April 12, 2025" becomes "april 122025" — so taking runs
+    # off src made every date read as invented. Two writers caught it within
+    # the hour and one rewrote twelve correct lines before reporting; the
+    # thousands separator is stripped only where it actually separates
+    # thousands, which leaves "12, 2025" as two numbers and "$1,502,000" as
+    # one.
+    _thou = re.sub(r"(?<=\d),(?=\d\d\d\b)", "", record)
+    # The union of both: the record's own numbers, plus the digits WORDNUM
+    # and ABBREV appended to src ("ninety days" backing a line that writes 90).
+    # A glued artefact like "122025" surviving in the set is harmless — no
+    # line writes it — whereas missing "12" is the bug this fixes.
+    nums = set(re.findall(r"\d+", _thou)) | set(re.findall(r"\d+", src))
+
     out = []
     # the FIRST word is capitalised because it opens a sentence, not because it
     # is a name — checking it flagged "Big", "Bar", "Part", "Change", "Land"
@@ -133,9 +149,26 @@ def invented(line, record):
         is_name = w[:1].isupper() and w.lower() not in STOCK
         if not (is_num or is_name): continue
         n = _norm(w)
-        if n in src or _stem(w) in stems: continue
-        # "Two-hour" against "Two Hours"; "T-Mobile" against "T-Mobile"
-        if all(p in src or _stem(p) in stems or _near(p, stems, src)
+        # A NUMBER MUST MATCH A WHOLE NUMBER, NOT SIT INSIDE ONE.
+        # `n in src` is a substring test. It is right for names and badly
+        # wrong for digits: against a record whose only figure was
+        # $9,017,051,176 the gate passed "7 new fire stations", and against
+        # $1,502,000 it passed "50 units of housing" — every invented
+        # quantity whose digits happen to appear somewhere in a longer
+        # number. Found by a writer who noticed its own correct line was
+        # being accepted for the wrong reason.
+        if is_num:
+            ds = re.findall(r"\d+", n)
+            if ds and all(d in nums for d in ds): continue
+            if _stem(w) in stems: continue
+        elif n in src or _stem(w) in stems:
+            continue
+        # "Two-hour" against "Two Hours"; "T-Mobile" against "T-Mobile".
+        # A part made of digits gets the whole-number test here too — this
+        # fallback is a substring test as well, and it was silently undoing
+        # the check above for single-token numbers like "7".
+        if all((p in nums if p.isdigit() else p in src)
+               or _stem(p) in stems or _near(p, stems, src)
                for p in n.split("-") if p): continue
         if any(_norm(f) in src for f in _money_forms(w)): continue
         if _rounds_to(w, record): continue
