@@ -444,6 +444,8 @@ export class CityEngine {
   private readonly sphereOf = new WeakMap<BufferAttribute, Sphere>();
   private releasedBytes = 0;
   private releaseScanAt = 0;
+  private releaseTimer: ReturnType<typeof setTimeout> | null = null;
+  private releaseScans = 0;
 
   constructor(opts: EngineOptions) {
     this.descriptor = opts.descriptor;
@@ -1014,10 +1016,14 @@ export class CityEngine {
     return this.releasedBytes;
   }
 
-  private releaseCpuArrays(): void {
-    if (RELEASE_OFF || this.stats.frames < this.releaseScanAt) return;
-    /* the page paints on demand, so this is every tenth PAINTED frame — a
-       boot that settles after fifty frames still gets its scans */
+  private releaseCpuArrays(force = false): void {
+    if (RELEASE_OFF || this.disposed) return;
+    if (!force && this.stats.frames < this.releaseScanAt) return;
+    /* the page paints on demand, so this is every tenth PAINTED frame, and
+       — because a reader who boots the page and reads may not paint another
+       ten for a while — again half a second later while anything is left.
+       MEASURED on prod with the frame cadence alone: an undriven page kept
+       its 1,221 MB, the last uploads having landed after the last scan. */
     this.releaseScanAt = this.stats.frames + 10;
     const backend = (this.renderer as unknown as {
       backend?: { get(o: object): { buffer?: unknown; bufferGPU?: unknown } };
@@ -1069,6 +1075,18 @@ export class CityEngine {
         a.array = new Ctor(0);
       }
       this.releasedGeoms.add(g);
+    }
+    /* done when a scan finds nothing left AND something was ever released —
+       before the layers are in, "nothing left" is "nothing yet". MEASURED
+       on an undriven local page: nine frames painted in all, the first scan
+       ran before the buildings existed, and no later scan came. Capped, so
+       a city with no listed layer does not poll forever. */
+    const done = todo.length === 0 && this.releasedBytes > 0;
+    if (!done && this.releaseTimer === null && this.releaseScans++ < 600) {
+      this.releaseTimer = setTimeout(() => {
+        this.releaseTimer = null;
+        this.releaseCpuArrays(true);
+      }, 500);
     }
   }
 
