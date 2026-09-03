@@ -63,6 +63,14 @@ const KIND_ARTICLE: Record<string, { fr: string; en: string }> = {
   "Mairie": { fr: "la mairie", en: "the town hall" },
 };
 
+/** Première phrase d'un fait : une phrase entière, jamais une coupe au milieu
+ *  d'un mot. Le point doit suivre un mot ordinaire (pas « M. » ni un sigle)
+ *  et précéder une majuscule. */
+function firstSentence(s: string): string {
+  const m = s.match(/^[\s\S]*?[a-zà-ÿ0-9)»%][.!?](?=\s+[A-ZÀ-Ý«])/);
+  return m ? m[0] : s;
+}
+
 const spanTxt = (a: number, b: number) => (a === b ? String(a) : `${a}–${b}`);
 const minMax = (ys: number[]): [number, number] | null => {
   const v = ys.filter((y) => !Number.isNaN(y));
@@ -152,7 +160,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
       <span className="d tnum">{seanceEn(m.seance, locale)}</span>
       <span className="t">{cap((en && m.pourquoi_en) || m.pourquoi || m.fait)}</span>
       <span className="c" aria-hidden="true">→</span>
-      {m.pourquoi && <span className="s">{(en && m.fait_en) || m.fait}</span>}
+      {m.pourquoi && <span className="s">{firstSentence((en && m.fait_en) || m.fait)}</span>}
     </a>
   );
 
