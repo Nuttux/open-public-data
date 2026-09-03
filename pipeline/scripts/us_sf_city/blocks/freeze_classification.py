@@ -55,6 +55,18 @@ TAXONOMY = os.path.join(REPO, "pipeline", "seeds", "sf_bos_taxonomy.json")
 
 HISTORIC = os.path.join(CACHE, "items.jsonl")
 MODERN = os.path.join(REPO, "pipeline/scripts/us_sf_city/cache_sfbos/items.jsonl")
+# THE CORPUS GREW AND THIS FILE DID NOT NOTICE. `cache_sfbos/items.jsonl` is the
+# Clerk-PDF sweep as it stood when the labels were read: 8,611 rows. The swept
+# corpus is now 34,896 rows larger, all of it 2010s-2020s, and every one of those
+# records came out of here with no row at all — no record_type, no topic. That is
+# not "not a decision", it is "never looked at", and read as the former it dropped
+# 34,106 records off the year pages until 0ef105107.
+# ALL_ITEMS is the whole of it. Set BLOCKS_ITEMS to override, as the index does.
+ALL_ITEMS = (os.environ.get("BLOCKS_ITEMS")
+             or os.path.join(REPO, "pipeline/data/sf_bos/items_merged.jsonl"))
+# The rank->form mapping pass A's 300 labels were made against. See the note in
+# the file itself, and `main()` below.
+FORM_RANKS = os.path.join(REPO, "pipeline", "seeds", "sf_bos_form_ranks.tsv")
 
 # THE SAME NORMALISATION THE FORMS WERE DRAWN WITH. If this drifts from the
 # code that produced forms300.txt, labels attach to the wrong records — so it
@@ -169,31 +181,193 @@ def main() -> int:
     # ── the corpus, grouped by form ──────────────────────────────────────
     rows = []
     kind_of = {}
-    for path in (HISTORIC, MODERN):
+    seen_row = set()
+    srcs = [ALL_ITEMS] if os.path.exists(ALL_ITEMS) else [HISTORIC, MODERN]
+    for path in srcs:
         for line in open(path):
             r = json.loads(line)
             t = " ".join((r.get("t") or "").split())
             if len(t) <= 25:
                 continue
-            rows.append((f'{r.get("v")}|{r.get("i")}', t))
-            kind_of[f'{r.get("v")}|{r.get("i")}'] = r.get("k") or ""
+            rid = f'{r.get("v")}|{r.get("i")}'
+            if rid in seen_row:
+                continue
+            seen_row.add(rid)
+            rows.append((rid, t))
+            kind_of[rid] = r.get("k") or ""
+    print(f"{len(rows):,} rows from {', '.join(os.path.basename(p) for p in srcs)}")
     groups = collections.defaultdict(list)
     for rid, t in rows:
         groups[form_of(t)].append(rid)
 
-    # the label file is keyed by RANK, so the ranking is recomputed the same way
-    ranked = sorted(groups.items(), key=lambda kv: -len(kv[1]))
+    # ── PASS A, KEYED ON THE FORM AND NOT ON ITS RANK ────────────────────
+    # The label file is keyed by RANK — label 1 belongs to whatever form was
+    # commonest. Rank is a property of the CORPUS, not of the form, so the
+    # moment the corpus grows the same rank names a different sentence and 300
+    # hand labels attach to records nobody read. Growing it by 34,896 rows was
+    # exactly that move.
+    #
+    # So the mapping is pinned. `sf_bos_form_ranks.tsv` holds rank -> form as it
+    # stood on the 124,284-row corpus the labels were read against, and the
+    # label now finds its form through that file. The ranking below is still
+    # computed, but only to REPORT drift — a form whose rank moved is fine; a
+    # form that has vanished from the corpus is not, and says so.
+    rank_form = {}
+    if os.path.exists(FORM_RANKS):
+        for line in open(FORM_RANKS):
+            if line.startswith("#") or not line.strip():
+                continue
+            i, _n, form = line.rstrip("\n").split("\t", 2)
+            rank_form[int(i)] = form
+        missing = [i for i in labels if rank_form.get(i) not in groups]
+        if missing:
+            print(f"WARNING: {len(missing)} labelled form(s) no longer occur in "
+                  f"the corpus: ranks {missing[:8]}")
+    else:
+        raise SystemExit(
+            f"REFUSED: {FORM_RANKS} is missing. Pass A's labels are keyed by "
+            f"rank, and rank depends on the corpus — without the pinned mapping "
+            f"this would attach 300 hand labels to whatever is commonest today.")
 
     out = []
     per_topic = collections.Counter()
-    for i, (f, ids) in enumerate(ranked[:len(labels)], 1):
-        lab = labels.get(i)
-        if not lab:
+
+    # ── WHAT THE ROW IS, BEFORE WHAT IT IS ABOUT ─────────────────────────
+    # These three read the row's own STRUCTURE — the record's `kind`, a calendar
+    # line ending on a bill number, a roll call and nothing else — and they run
+    # FIRST, ahead of every form. They used to run after, and while the corpus
+    # stopped in 2016 that was invisible.
+    #
+    # Widening it to the whole sweep made it very visible. MEASURED on the wider
+    # corpus with the old order: 16,275 rows are a roll call and nothing else,
+    # and 4,772 of them had been given a subject by a form — "Resolution No.
+    # 320-23 ADOPTED by the following vote: Ayes: 8 …" filed under LIQUOR,
+    # "Ordinance No. 139-19 FINALLY PASSED … Printed at 1:17 pm" under HOUSING.
+    # `form_of()` strips the numbers but keeps the supervisors' names, so each
+    # roll of names is its own form, and whoever read one read whatever act
+    # happened to be its sample.
+    #
+    # A row that IS a roll call is a roll call whatever else it looks like. So
+    # the structure answers first and the forms fill in behind it.
+    # ── what the record's own `kind` already says ────────────────────────
+    # `W` is a departmental annual report — Bureau of Engineering, DPW, the
+    # Park Commission — not a Board act at all. The sweep has always carried
+    # this and nothing was reading it. Every one of the 51 report-prose records
+    # found by hand in the tail was `kind = W`, with no exceptions, so this is
+    # the record answering for itself rather than a guess about its prose.
+    seen_k = {o["id"] for o in out}
+    n_kind = 0
+    for rid, _t in rows:
+        if rid in seen_k or kind_of.get(rid) != "W":
+            continue
+        out.append({"id": rid, "record_type": "departmental-work", "topic": "",
+                    "subtopic": "", "action": "other", "classified_by": "rule"})
+        n_kind += 1
+    if n_kind:
+        print(f"\n{n_kind:,} departmental report rows, from the record's own kind")
+    # ── the volume's own calendar rows ───────────────────────────────────
+    # "Ordinance, Beach Street. Supervisor McGregor presented: Bill No. 6767," —
+    # a line from the Board's calendar, not a decision. Short, and it ends on a
+    # bill number with no act in it. Length is part of the test on purpose: the
+    # same words inside a real ordinance must not trip it.
+    IDXROW = re.compile(r"\bBill No\.?\s*[\d,]*\s*,?\s*$", re.I)
+    seen_i = {o["id"] for o in out}
+    n_idx = 0
+    for rid, t in rows:
+        if rid in seen_i or len(t) >= 120 or not IDXROW.search(t):
+            continue
+        out.append({"id": rid, "record_type": "index-row", "topic": "",
+                    "subtopic": "", "action": "other", "classified_by": "rule"})
+        n_idx += 1
+    if n_idx:
+        print(f"{n_idx:,} calendar rows ending on a bill number")
+    # ── the roll call and nothing else ───────────────────────────────────
+    # "Resolution No. 506-87 Adopted by the following vote: Ayes: Supervisors
+    # Britt, Gonzalez, …" — the record IS the roll call. The act it belongs to
+    # was printed elsewhere in the volume; this row carries a tally and a list
+    # of names, so there is nothing to give a topic to.
+    #
+    # The 60-character limit is the whole guard: a real ordinance that ends
+    # "…Finally passed by the following vote:" has its subject in front of the
+    # vote clause and must NOT be swept in here. MEASURED: 30 records drawn at
+    # random from what this matches were read one at a time; 30 of 30 carried
+    # no act.
+    ROLLCALL = re.compile(r"\bby the following vote\b|\bAyes\s*[—:-]\s*Supervisor",
+                          re.I)
+    seen_v = {o["id"] for o in out}
+    n_roll = 0
+    for rid, t in rows:
+        if rid in seen_v:
+            continue
+        m = ROLLCALL.search(t)
+        if not m or m.start() > 60:
+            continue
+        out.append({"id": rid, "record_type": "vote-outcome-only",
+                    "topic": "running-the-city", "subtopic": "vote-or-scheduling",
+                    "action": "voted-or-scheduled", "classified_by": "rule"})
+        per_topic["running-the-city"] += 1
+        n_roll += 1
+    if n_roll:
+        print(f"{n_roll:,} rows that are a roll call and nothing else")
+
+    # ── the disposition stamp, and nothing else ──────────────────────────
+    # "Ordinance No. 155-24 FINALLY PASSED City and County of San Francisco
+    # Page 549 Printed at 9:38 pm on 10/3/24". The Clerk stamps the outcome of
+    # an act whose text was printed elsewhere; this row carries a file number, a
+    # verb and the page footer. It is the roll-call case without the roll call,
+    # so `\bby the following vote\b` never sees it.
+    #
+    # MEASURED: 2,291 rows are exactly this, and 1,441 of them had been given a
+    # subject by a form — 710 under LANDMARKS, 410 under HOUSING, 321 under
+    # SUBDIVISIONS. Every one of those numbers is a form's sample record
+    # answering for a row that says nothing.
+    #
+    # The footer is stripped BEFORE the test and the test is anchored at both
+    # ends, so a real ordinance that happens to end on a disposition keeps its
+    # subject: the pattern only fires when the stamp is the WHOLE row.
+    # The footer, and the tally clause that can follow a stamp. Stripping the
+    # tally here rather than raising the roll-call rule's 60-character guard is
+    # deliberate: that guard is what stops a real ordinance ending "…finally
+    # passed by the following vote:" being swept in, and "Motion No. M22-074
+    # APPROVED The foregoing items were acted upon by the following vote:" puts
+    # the clause at character 62 — two past it. The stamp test below is anchored
+    # at both ends, so stripping the tally cannot swallow an act: anything with a
+    # subject in front of the stamp still fails to match.
+    FURNITURE = re.compile(
+        r"City and County of San Francisco\s+Page\s+\d+\s+Printed at.*$"
+        r"|(?:The foregoing items? (?:were|was) acted upon\s+)?"
+        r"by the following vote\s*:.*$", re.I)
+    STAMP = re.compile(
+        r"^(?:Resolution|Ordinance|Motion)\s+No\.?\s*[A-Za-z0-9\-]*\s*"
+        r"(?:ADOPTED|FINALLY PASSED|PASSED ON FIRST READING|APPROVED|AMENDED"
+        r"|RE-?REFERRED|CONTINUED|TABLED|WITHDRAWN)\b[\s.,;:-]*$")
+    seen_s = {o["id"] for o in out}
+    n_stamp = 0
+    for rid, t in rows:
+        if rid in seen_s or not STAMP.match(FURNITURE.sub("", t).strip()):
+            continue
+        out.append({"id": rid, "record_type": "vote-outcome-only",
+                    "topic": "running-the-city", "subtopic": "vote-or-scheduling",
+                    "action": "voted-or-scheduled", "classified_by": "rule"})
+        per_topic["running-the-city"] += 1
+        n_stamp += 1
+    if n_stamp:
+        print(f"{n_stamp:,} rows that are a disposition stamp and nothing else")
+
+    # PASS A now fills in BEHIND the four above, so it has to skip what they
+    # already answered.
+    seen_a = {o["id"] for o in out}
+    for i, lab in sorted(labels.items()):
+        f = rank_form.get(i)
+        ids = groups.get(f) if f else None
+        if not ids:
             continue
         for rid in ids:
+            if rid in seen_a:
+                continue
             out.append({"id": rid, **lab, "classified_by": "form"})
-        if lab["topic"]:
-            per_topic[lab["topic"]] += len(ids)
+            if lab["topic"]:
+                per_topic[lab["topic"]] += 1
 
     # ── PASS B, keyed on the form STRING rather than on its rank ─────────
     # The rank of a form depends on how much is already classified, so a
@@ -244,69 +418,6 @@ def main() -> int:
                     per_topic[l["topic"]] += 1
                 n_b += 1
         print(f"\n{n_b:,} more from {len(lab_b)} subject-clause forms")
-
-    # ── what the record's own `kind` already says ────────────────────────
-    # `W` is a departmental annual report — Bureau of Engineering, DPW, the
-    # Park Commission — not a Board act at all. The sweep has always carried
-    # this and nothing was reading it. Every one of the 51 report-prose records
-    # found by hand in the tail was `kind = W`, with no exceptions, so this is
-    # the record answering for itself rather than a guess about its prose.
-    seen_k = {o["id"] for o in out}
-    n_kind = 0
-    for rid, _t in rows:
-        if rid in seen_k or kind_of.get(rid) != "W":
-            continue
-        out.append({"id": rid, "record_type": "departmental-work", "topic": "",
-                    "subtopic": "", "action": "other", "classified_by": "rule"})
-        n_kind += 1
-    if n_kind:
-        print(f"\n{n_kind:,} departmental report rows, from the record's own kind")
-
-    # ── the volume's own calendar rows ───────────────────────────────────
-    # "Ordinance, Beach Street. Supervisor McGregor presented: Bill No. 6767," —
-    # a line from the Board's calendar, not a decision. Short, and it ends on a
-    # bill number with no act in it. Length is part of the test on purpose: the
-    # same words inside a real ordinance must not trip it.
-    IDXROW = re.compile(r"\bBill No\.?\s*[\d,]*\s*,?\s*$", re.I)
-    seen_i = {o["id"] for o in out}
-    n_idx = 0
-    for rid, t in rows:
-        if rid in seen_i or len(t) >= 120 or not IDXROW.search(t):
-            continue
-        out.append({"id": rid, "record_type": "index-row", "topic": "",
-                    "subtopic": "", "action": "other", "classified_by": "rule"})
-        n_idx += 1
-    if n_idx:
-        print(f"{n_idx:,} calendar rows ending on a bill number")
-
-    # ── the roll call and nothing else ───────────────────────────────────
-    # "Resolution No. 506-87 Adopted by the following vote: Ayes: Supervisors
-    # Britt, Gonzalez, …" — the record IS the roll call. The act it belongs to
-    # was printed elsewhere in the volume; this row carries a tally and a list
-    # of names, so there is nothing to give a topic to.
-    #
-    # The 60-character limit is the whole guard: a real ordinance that ends
-    # "…Finally passed by the following vote:" has its subject in front of the
-    # vote clause and must NOT be swept in here. MEASURED: 30 records drawn at
-    # random from what this matches were read one at a time; 30 of 30 carried
-    # no act.
-    ROLLCALL = re.compile(r"\bby the following vote\b|\bAyes\s*[—:-]\s*Supervisor",
-                          re.I)
-    seen_v = {o["id"] for o in out}
-    n_roll = 0
-    for rid, t in rows:
-        if rid in seen_v:
-            continue
-        m = ROLLCALL.search(t)
-        if not m or m.start() > 60:
-            continue
-        out.append({"id": rid, "record_type": "vote-outcome-only",
-                    "topic": "running-the-city", "subtopic": "vote-or-scheduling",
-                    "action": "voted-or-scheduled", "classified_by": "rule"})
-        per_topic["running-the-city"] += 1
-        n_roll += 1
-    if n_roll:
-        print(f"{n_roll:,} rows that are a roll call and nothing else")
 
     # ── records read one at a time ───────────────────────────────────────
     rl = os.path.join(SCRATCH, "record_labels.tsv")

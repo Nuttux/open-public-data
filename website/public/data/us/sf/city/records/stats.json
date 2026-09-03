@@ -5,27 +5,27 @@
   1906,
   2026
  ],
- "read": 124284,
- "decisions": 107566,
- "decisions_with_topic": 106858,
- "decisions_without_topic": 708,
- "download_bytes": 29030049,
+ "read": 140687,
+ "decisions": 114345,
+ "decisions_with_topic": 113283,
+ "decisions_without_topic": 1062,
+ "download_bytes": 29098646,
  "record_type": [
   [
    "decision",
-   107566
+   114345
   ],
   [
    "vote-outcome-only",
-   12566
-  ],
-  [
-   "cut-in-half",
-   1219
+   22089
   ],
   [
    "departmental-work",
-   1176
+   1264
+  ],
+  [
+   "cut-in-half",
+   1184
   ],
   [
    "page-furniture",
@@ -33,7 +33,7 @@
   ],
   [
    "index-row",
-   639
+   687
   ],
   [
    "too-damaged",
@@ -43,69 +43,69 @@
  "topic_decisions": [
   [
    "The street",
-   27633
+   27593
   ],
   [
    "Land and building",
-   24134
+   24461
   ],
   [
    "Public money",
-   14956
+   18514
   ],
   [
    "Doing business",
-   14712
+   14448
   ],
   [
    "Running the city",
-   10573
+   12708
   ],
   [
    "Getting around",
-   7404
+   7410
   ],
   [
    "What the city runs",
-   5571
+   6255
   ],
   [
    "Civic life",
-   1875
+   1894
   ]
  ],
  "action": [
   [
    "ordered",
-   32369
-  ],
-  [
-   "granted",
-   23434
+   32889
   ],
   [
    "voted-or-scheduled",
-   15749
+   26202
+  ],
+  [
+   "granted",
+   23261
   ],
   [
    "accepted",
-   12863
+   14217
   ],
   [
    "other",
-   11001
+   11974
   ],
   [
    "amended",
-   10271
+   11411
   ],
   [
    "appropriated",
-   7660
+   7754
   ],
   [
    "settled",
-   3950
+   6009
   ],
   [
    "paid",
@@ -113,15 +113,15 @@
   ],
   [
    "refused",
-   2362
+   2431
   ],
   [
    "commended",
-   1047
+   902
   ],
   [
    "appointed",
-   293
+   352
   ]
  ],
  "how_we_know_where": [
@@ -153,15 +153,15 @@
  "classified_by": [
   [
    "form",
-   99007
+   96635
   ],
   [
    "rule",
-   16382
+   34682
   ],
   [
    "purpose-clause",
-   5420
+   5419
   ],
   [
    "record",
@@ -169,7 +169,7 @@
   ],
   [
    "near-duplicate",
-   1169
+   1645
   ]
  ],
  "decisions_by_decade": [
@@ -179,11 +179,11 @@
   ],
   [
    1910,
-   15952
+   15926
   ],
   [
    1920,
-   23226
+   23199
   ],
   [
    1930,
@@ -195,15 +195,15 @@
   ],
   [
    1950,
-   3364
+   3274
   ],
   [
    1960,
-   2342
+   2304
   ],
   [
    1970,
-   4273
+   4269
   ],
   [
    1980,
@@ -219,11 +219,11 @@
   ],
   [
    2010,
-   8603
+   11002
   ],
   [
    2020,
-   4367
+   8932
   ]
  ],
  "decisions_with_topic_by_decade": [
@@ -233,11 +233,11 @@
   ],
   [
    1910,
-   15695
+   15669
   ],
   [
    1920,
-   23107
+   23080
   ],
   [
    1930,
@@ -249,15 +249,15 @@
   ],
   [
    1950,
-   3344
+   3254
   ],
   [
    1960,
-   2332
+   2294
   ],
   [
    1970,
-   4265
+   4261
   ],
   [
    1980,
@@ -273,11 +273,11 @@
   ],
   [
    2010,
-   8534
+   10804
   ],
   [
    2020,
-   4353
+   8693
   ]
  ]
 }
