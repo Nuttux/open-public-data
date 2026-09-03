@@ -21,6 +21,8 @@
 
 import {
   ACESFilmicToneMapping,
+  type BufferAttribute,
+  type BufferGeometry,
   DataTexture,
   EquirectangularReflectionMapping,
   FloatType,
@@ -36,6 +38,7 @@ import {
   VSMShadowMap,
   ReinhardToneMapping,
   Scene,
+  Sphere,
   type Texture,
   type ToneMapping,
 } from "three";
@@ -126,6 +129,10 @@ export interface EngineOptions {
  * kilometres across at most; this is that, with room.
  */
 const DEPTH_SPAN_M = 200_000;
+
+/** `?release=0` keeps every vertex array in JS — the A/B for §THE COPY THE GPU ALREADY HAS */
+const RELEASE_OFF =
+  typeof location !== "undefined" && /[?&]release=0\b/.test(location.search);
 
 /* ══ THE DEPTH LADDER HAD TO BECOME GEOMETRY, BECAUSE polygonOffset IS
    INERT ON THIS BACKEND ═══════════════════════════════════════════════════
@@ -405,6 +412,39 @@ export class CityEngine {
   /** run after every painted frame — the 2D overlay redraws from here */
   onAfterFrame: ((cam: PlaneCamera, step: number) => void) | null = null;
 
+  /* ══ §THE COPY THE GPU ALREADY HAS ═══════════════════════════════════════
+     three keeps every vertex array in JS after the backend has uploaded it,
+     so the city sat in memory twice. MEASURED on the dev page after boot:
+     1,297 MB of JS heap, of which 747 MB was geometry arrays — the buildings
+     527 MB, the streets 63 MB. Nothing reads those arrays again: the fabric's
+     position is "baked once and never again" (`layers/buildings.ts`), a band
+     change moves a uniform, a year moves a draw range. The WebGPU backend
+     never calls `onUploadCallback` (only the WebGL fallback mentions it, in
+     a comment), so the release is the engine's: every 60th frame the scene
+     is walked and a geometry of a listed layer whose every attribute has a
+     GPU buffer gets its arrays swapped for empty ones of the same type.
+     `count` is a plain field on `BufferAttribute`, so draw ranges and index
+     counts are untouched.
+
+     Two things hold before an array goes:
+       - the bounding sphere exists. three computes it lazily from the
+         position array at the first frustum test, and a geometry its band
+         hides has not had one — so every geometry sharing the position
+         attribute (a chunk's roof, walls and outline share one) is given
+         the sphere first, computed once and kept by attribute in
+         `sphereOf` for a geometry that arrives later.
+       - the attribute was uploaded: `backend.get(attr)` holds `.buffer`
+         (WebGPU) or `.bufferGPU` (WebGL 2) once it was.
+     A layer whose attributes change after upload (`needsUpdate` anywhere —
+     caps, heroes, street markings, street detail, surround, terrain, the
+     instanced ones) is not on the list. `?release=0` keeps every array, for
+     an A/B. */
+  private static readonly RELEASE_LAYERS: ReadonlySet<string> = new Set(["buildings", "streets"]);
+  private readonly releasedGeoms = new WeakSet<BufferGeometry>();
+  private readonly sphereOf = new WeakMap<BufferAttribute, Sphere>();
+  private releasedBytes = 0;
+  private releaseScanAt = 0;
+
   constructor(opts: EngineOptions) {
     this.descriptor = opts.descriptor;
     this.quality = opts.quality ?? detectQuality();
@@ -496,7 +536,14 @@ export class CityEngine {
     this.sun.aimKey(this.basis.R, this.basis.F);
     this.tick = this.tick.bind(this);
 
-    if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
+    /* the dev handle, and on a published page too when the URL asks
+       (`?probe=1`) — the boot and frame-cost probes run against production
+       that way. A global that nothing else reads. */
+    if (
+      typeof globalThis !== "undefined" &&
+      (process.env.NODE_ENV !== "production" ||
+        (typeof location !== "undefined" && /[?&]probe=1\b/.test(location.search)))
+    ) {
       (globalThis as { __cityGL?: CityEngine }).__cityGL = this;
     }
   }
@@ -960,6 +1007,69 @@ export class CityEngine {
     });
     for (const e of Object.values(out)) e.orders.sort((a, b) => a - b);
     return out;
+  }
+
+  /** bytes of vertex data handed back to the collector so far — see §THE COPY THE GPU ALREADY HAS */
+  get releasedCpuBytes(): number {
+    return this.releasedBytes;
+  }
+
+  private releaseCpuArrays(): void {
+    if (RELEASE_OFF || this.stats.frames < this.releaseScanAt) return;
+    /* the page paints on demand, so this is every tenth PAINTED frame — a
+       boot that settles after fifty frames still gets its scans */
+    this.releaseScanAt = this.stats.frames + 10;
+    const backend = (this.renderer as unknown as {
+      backend?: { get(o: object): { buffer?: unknown; bufferGPU?: unknown } };
+    }).backend;
+    if (!backend) return;
+    const uploaded = (a: BufferAttribute): boolean => {
+      if (a.array.length === 0) return true;
+      const d = backend.get(a);
+      return !!(d.buffer || d.bufferGPU);
+    };
+    /* every listed geometry still holding arrays, and every geometry per
+       position attribute — the sphere has to reach all of them */
+    const todo: BufferGeometry[] = [];
+    const byPos = new Map<BufferAttribute, BufferGeometry[]>();
+    this.scene.traverse((o) => {
+      const m = o as unknown as { isMesh?: boolean; geometry?: BufferGeometry };
+      if (!m.isMesh || !m.geometry) return;
+      if (!CityEngine.RELEASE_LAYERS.has(o.userData.layer as string)) return;
+      const g = m.geometry;
+      const pos = g.attributes.position as BufferAttribute | undefined;
+      if (pos) {
+        const l = byPos.get(pos);
+        if (l) { if (!l.includes(g)) l.push(g); } else byPos.set(pos, [g]);
+      }
+      if (!this.releasedGeoms.has(g) && !todo.includes(g)) todo.push(g);
+    });
+    for (const g of todo) {
+      const attrs = Object.values(g.attributes) as BufferAttribute[];
+      const all = g.index ? [...attrs, g.index] : attrs;
+      if (!all.every(uploaded)) continue;
+      const pos = g.attributes.position as BufferAttribute | undefined;
+      if (pos) {
+        let s = this.sphereOf.get(pos) ?? null;
+        if (!s) {
+          if (pos.array.length === 0) continue; // gone, and no sphere kept: leave it
+          g.computeBoundingSphere();
+          s = g.boundingSphere;
+          if (!s) continue;
+          this.sphereOf.set(pos, s);
+        }
+        for (const g2 of byPos.get(pos) ?? []) {
+          if (g2.boundingSphere === null) g2.boundingSphere = s.clone();
+        }
+      }
+      for (const a of all) {
+        if (a.array.length === 0) continue;
+        this.releasedBytes += a.array.byteLength;
+        const Ctor = a.array.constructor as unknown as new (n: number) => typeof a.array;
+        a.array = new Ctor(0);
+      }
+      this.releasedGeoms.add(g);
+    }
   }
 
   zex(): number {
@@ -1431,6 +1541,7 @@ export class CityEngine {
       calls: info.drawCalls ?? info.calls ?? 0,
       triangles: info.triangles ?? 0,
     };
+    this.releaseCpuArrays();
   }
 
   /**
