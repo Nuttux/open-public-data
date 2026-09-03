@@ -623,6 +623,10 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
           size();
         });
         ro.observe(host);
+        /* the "Drawing the city…" sheet comes off HERE, with the tiles under
+           it — not after the ground: MEASURED on prod, the tiles were in at
+           2.8 s and the sheet stayed until 4.6 s waiting for the DEM */
+        setLoading(false);
 
         /* ── THE GROUND, THE PICKER, THE WRITING — after the first tiles ── */
         await baseP;
@@ -783,7 +787,6 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
         }
 
         void overlay.load().then(schedule);
-        setLoading(false);
       } catch (e) {
         if (!dead) setFailed(e instanceof Error ? e.message : String(e));
       }
