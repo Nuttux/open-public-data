@@ -253,7 +253,9 @@ d("the request policy cancels what the camera has left behind", () => {
     const pending = new Map<string, () => void>();
 
     const fetchImpl = (async (url: string | URL, init?: RequestInit) => {
-      const u = String(url);
+      /* a bundle URL carries `?v=<hash>` (`data.ts` §fetchBundle) — the
+         stubs here match on the path */
+      const u = String(url).replace(/\?.*$/, "");
       if (u.endsWith("manifest.json")) {
         return new Response(JSON.stringify(m), {
           headers: { "content-type": "application/json" },
@@ -302,7 +304,7 @@ d("the request policy cancels what the camera has left behind", () => {
     const m = manifest();
     const asked = new Map<string, number>();
     const fetchImpl = (async (url: string | URL) => {
-      const u = String(url);
+      const u = String(url).replace(/\?.*$/, "");
       if (u.endsWith("manifest.json")) {
         return new Response(JSON.stringify(m), {
           headers: { "content-type": "application/json" },
@@ -354,7 +356,7 @@ d("the request policy cancels what the camera has left behind", () => {
     const noBundles = { ...m, bundles: undefined } as unknown as CityManifest;
     const serve = (mf: CityManifest) =>
       (async (url: string | URL) => {
-        const u = String(url);
+        const u = String(url).replace(/\?.*$/, "");
         if (u.endsWith("manifest.json")) {
           return new Response(JSON.stringify(mf), {
             headers: { "content-type": "application/json" },

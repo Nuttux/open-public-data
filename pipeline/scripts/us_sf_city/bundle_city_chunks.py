@@ -50,6 +50,7 @@ twice gives the same answer. Run it after `encode_city_chunks.py`.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import sys
 from pathlib import Path
@@ -99,7 +100,11 @@ def main() -> int:
             blob += data
         path = out / f"{tier}.qcb"
         path.write_bytes(blob)
-        bundles[tier] = {"file": f"bundle/{tier}.qcb", "bytes": len(blob), "n": len(cs)}
+        # `v` is the bundle's own content, so a reader can put it on the URL
+        # and the CDN can hold the file for a year: a rebuild that changes a
+        # byte changes the URL, one that changes nothing keeps the cache.
+        bundles[tier] = {"file": f"bundle/{tier}.qcb", "bytes": len(blob), "n": len(cs),
+                         "v": hashlib.sha1(blob).hexdigest()[:10]}
         total_files += len(cs)
         total_bytes += len(blob)
         print(f"  {tier:<8} {len(cs):>4} chunks  {len(blob)/1048576:>7.2f} MB  -> {path.name}")

@@ -272,6 +272,11 @@ export interface CityManifest {
    *  §ONE FILE A TIER, NOT SEVEN HUNDRED. Absent on an unbundled city. */
   readonly bundles?: Readonly<Record<string, {
     readonly file: string; readonly bytes: number; readonly n: number;
+    /** the bundle's content hash, written by `bundle_city_chunks.py`; goes
+     *  on the URL so the CDN may hold the file for a year (`vercel.json`
+     *  gives `/data/*?v=` an immutable cache). Absent on an older manifest,
+     *  and then the file is fetched under the hour-long default. */
+    readonly v?: string;
   }>>;
   readonly [k: string]: unknown;
 }
@@ -915,7 +920,7 @@ export class CityData {
     if (!wanted.length) return true;
     let buf: ArrayBuffer;
     try {
-      const res = await this.doFetch(`${this.baseUrl}/${b.file}`);
+      const res = await this.doFetch(`${this.baseUrl}/${b.file}${b.v ? `?v=${b.v}` : ""}`);
       if (!res.ok) throw new Error(`${b.file}: HTTP ${res.status}`);
       buf = await res.arrayBuffer();
       if (buf.byteLength !== b.bytes) {
