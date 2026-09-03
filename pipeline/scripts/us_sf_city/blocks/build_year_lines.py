@@ -65,6 +65,14 @@ BLK = ROOT / "website/public/data/us/sf/city/blocks"
 OUT = BLK / "year"
 
 
+
+# The record_type values that mean the row is not a record of a decision. A
+# blank is deliberately NOT here — see the note at the filter below.
+NOT_A_RECORD = {
+    "vote-outcome-only", "cut-in-half", "departmental-work",
+    "page-furniture", "index-row", "too-damaged",
+}
+
 def main() -> None:
     idx = json.loads((BLK / "block-index.json").read_text())
     ids = idx["b"]
@@ -150,7 +158,24 @@ def main() -> None:
             for rec in _csv.DictReader(fh):
                 if rec.get("block"):            # it has a dot; already here
                     continue
-                if rec.get("record_type") != "decision":
+                # ── BLANK IS "NOT CLASSIFIED", NOT "NOT A DECISION" ─────
+                # This read `!= "decision"`, which is right for the six
+                # values that mean the row is NOT a record — page furniture,
+                # an index row, a vote with no subject, a damaged scan. It is
+                # wrong for the empty string, which means the classifier has
+                # never seen the row: the frozen seed covers the original
+                # corpus and not the 34,896 records backfilled after it.
+                #
+                # Measured: that dropped 34,106 rows from the year pages,
+                # 32,400 of them from 2017 on — very nearly the whole modern
+                # era, including San Francisco's surveillance-technology
+                # ordinances. A sample of 14 was 14 real decisions, and only
+                # 269 of the 34,106 carry a subject-less line.
+                #
+                # So the test names what to REFUSE. When the classification is
+                # re-run over the backfill these rows gain a type and nothing
+                # here changes.
+                if (rec.get("record_type") or "") in NOT_A_RECORD:
                     continue
                 line = (rec.get("plain_line") or "").strip()
                 if not line:
