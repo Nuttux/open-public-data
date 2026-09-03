@@ -10,10 +10,16 @@
  * year, being exactly the dots lit on the map beside it — the same set, twice,
  * which is why there is no legend and nothing to explain.
  *
- * ── ONE YEAR, NOT A WINDOW ────────────────────────────────────────────────
- * The marks layer lights `WINDOW_YEARS` either side of the chosen year, so a
- * caption honest about it had to read *"within six years of 1939"* and a
- * reader had to do sums. This says **1939** and means it. Some years are
+ * ── ONE YEAR, AND THE MAP SAYS SO ─────────────────────────────────────────
+ * The marks layer lights `WINDOW_YEARS` around the chosen year, so a caption
+ * honest about it had to read *"within six years of 1939"* and a reader had to
+ * do sums. This says **1939** and means it — the LIST is one year.
+ *
+ * That was shipped without saying so anywhere, and a reader hit it at once:
+ * the panel read "2026 — 2 decisions" beside a map holding well over a
+ * hundred dots, and the only available conclusion was that one of the two was
+ * broken. Neither was. The scope line now says what the map is showing, which
+ * costs one clause and removes the contradiction. Some years are
  * quiet — 1954 holds two decisions and 1925 holds 307 — and that
  * three-hundredfold spread is a fact about the record, not a defect: the
  * Journal was printed in full through the twenties and the corpus thins where
@@ -203,6 +209,9 @@ export default function CityRecordPanel({
         <div className="fx-city-record-scope">
           {subject ? `in ${subject.toLowerCase()}` : "in the Board's minutes"}
           {latest && year !== null ? " — the latest year on file. Drag the rail to go back." : ""}
+          {year !== null
+            ? ` This list is ${year} alone; the map lights the ten years around it, so it holds more dots than this holds rows.`
+            : ""}
         </div>
       </div>
 

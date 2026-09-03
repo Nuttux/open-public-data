@@ -1073,6 +1073,9 @@ def main():
 
     CLS_PATH = os.path.join(REPO, "pipeline/seeds/sf_bos_classification.csv")
     CLS = {}
+    # EVERY row the classification calls a decision, not only those with a
+    # subject. The theme pass needs the whole set — see the note there.
+    IS_DECISION = set()
     CSUB, CACT = [], []
     if os.path.exists(CLS_PATH):
         _tax = json.load(open(os.path.join(REPO, "pipeline/seeds/sf_bos_taxonomy.json")))
@@ -1081,6 +1084,8 @@ def main():
         _si, _ai = {}, {}
         with open(CLS_PATH) as _f:
             for _r in csv.DictReader(_f):
+                if _r["record_type"] == "decision":
+                    IS_DECISION.add(_r["id"])
                 if _r["record_type"] != "decision":
                     continue
                 _s = _r["subtopic"]
@@ -1133,22 +1138,42 @@ def main():
     # Street (School)". On 40 fresh items labelled after the rule was frozen,
     # the span is 90.9%. Historic items carry no Clerk title and take the same
     # fallback they always had.
-    SPAN = {did: TH.subject_span(LT(dec[did][0]),
-                                 (dec[did][0].get("ht") or "").strip() or None)
+    # A ROW THAT IS NOT A DECISION CARRIES NO THEME, and the classification is
+    # the only thing that knows which those are. The Clerk prints a file's
+    # TITLE on every row belonging to it — the resolution, the vote stamp that
+    # adopts it, the referral stub — so a bare "Resolution No. 011-26 ADOPTED by
+    # the following vote: Ayes: 11" inherits "Ground Lease … 967 Mission, LP"
+    # and comes out tagged HOUSING. It then draws its own dots, beside the dots
+    # of the decision it is voting on.
+    #
+    # MEASURED: 3,515 of 28,029 themed rows (12.5%) are not decisions — 2,976
+    # vote stamps, 229 cut in half, 123 public comment, and page furniture. That
+    # is what put far more dots on the map than the panel's count of decisions,
+    # and it is why a reader counting dots and reading the number disagreed.
+    # `did` is an index into `items`; the classification is keyed by the
+    # record's own id, the same join `rec()` uses for `cs`/`ca`.
+    def _rid(_d):
+        _r = dec[_d][0]
+        return f'{_r["v"]}|{_r["i"]}'
+    SPAN = {did: (TH.subject_span(LT(dec[did][0]),
+                                  (dec[did][0].get("ht") or "").strip() or None)
+                  if (not IS_DECISION or _rid(did) in IS_DECISION) else "")
             for did in dec}
     TMASK = {did: TH.mask_of(SPAN[did], THEMES) for did in dec}
     SMASK = {did: TH.mask_of(SPAN[did], SUBJECTS) for did in dec}
     BODY_ONLY = {did: TH.mask_of(dec[did][0]["t"], THEMES) for did in dec}
     _nospan = sum(1 for v in SPAN.values() if not v)
+    _notdec = sum(1 for did in dec if IS_DECISION and _rid(did) not in IS_DECISION)
     _tn = sum(1 for m in TMASK.values() if m)
     _bn = sum(1 for m in BODY_ONLY.values() if m)
     _sn = sum(1 for m in SMASK.values() if m)
     print(f"themes: {len(THEMES)} patterns, {_tn:,} of {len(dec):,} placed "
           f"decisions carry at least one ({100*_tn/max(1,len(dec)):.1f}%); "
           f"the WHOLE ITEM would tag {_bn:,}", flush=True)
-    print(f"  span rule: {_nospan:,} rows state no subject of their own "
-          f"(an appointment, a public-comment roll) and are tagged with "
-          f"nothing", flush=True)
+    print(f"  span rule: {_nospan:,} rows carry no theme — {_notdec:,} because "
+          f"the classification says they are not a decision (a vote stamp "
+          f"inherits its file's title), the rest because they state no subject "
+          f"of their own", flush=True)
     print(f"subjects: {len(SUBJECTS)} patterns, {_sn:,} of {len(dec):,} "
           f"({100*_sn/max(1,len(dec)):.1f}%)", flush=True)
 

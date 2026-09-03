@@ -59,6 +59,10 @@ from __future__ import annotations
 import collections
 import json
 import pathlib
+import sys
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import themes as TH  # noqa: E402
 
 ROOT = pathlib.Path("/Users/daniel/code/open-public-data")
 BLK = ROOT / "website/public/data/us/sf/city/blocks"
@@ -78,6 +82,7 @@ NOT_A_RECORD = {
 }
 
 def main() -> None:
+    THEMES = TH.load()["themes"]
     idx = json.loads((BLK / "block-index.json").read_text())
     ids = idx["b"]
     marks = json.loads((BLK / "theme-marks.board.json").read_text())
@@ -190,8 +195,26 @@ def main() -> None:
                 key = (int(y), rec.get("source_url") or "", rec.get("text") or "")
                 if key in placed_keys:
                     continue
+                # ── AND IT KEEPS ITS SUBJECT ───────────────────────────
+                # This wrote `m: 0`, so an unplaced decision was on the year
+                # page and invisible to every subject filter: 2026 has five
+                # decisions about homelessness and shelter and the panel could
+                # show one, because the other four have no block and so no
+                # mask. The panel then read "2026 — 1 decision" beside a map
+                # holding dozens, and the number was wrong in the reader's
+                # favour of disbelieving it.
+                #
+                # The mask is computed here with the SAME call build_index
+                # makes — `themes.subject_span` over the Clerk's heading and
+                # the record's own text, then `mask_of`. Both inputs are
+                # columns of this table. It is a second caller of one function,
+                # not a second copy of the rule.
+                _mask = TH.mask_of(
+                    TH.subject_span(rec.get("text") or "",
+                                    (rec.get("heading") or "").strip() or None),
+                    THEMES)
                 by_key[key] = {
-                    "y": int(y), "m": 0, "k": rec.get("kind") or "",
+                    "y": int(y), "m": _mask, "k": rec.get("kind") or "",
                     "a": 0, "u": key[1], "t": key[2],
                     "cs": -1, "ca": -1, "g": "", "pl": line, "p": [],
                     "iv": int(rec["importance"]) if (rec.get("importance") or "").strip().isdigit() else -1,
@@ -230,6 +253,40 @@ def main() -> None:
         first["a"] = max(first.get("a", 0), r.get("a", 0))
     collapsed = len(by_key) - len(merged)
     by_key = merged
+
+    # ── AND THE SAME SENTENCE TWICE IN ONE YEAR IS ONE ROW ON THIS PANEL ────
+    # The block above deliberately leaves the cross-page pairs alone, and the
+    # reason it gives is right about the RECORD: an ordinance printed at
+    # introduction and again at final passage is two real events, and the
+    # dataset and the block shards still carry both.
+    #
+    # It is wrong about this SURFACE. The panel is a list of what the Board did
+    # in a year, and a reader looking at "Chain store rules would be loosened
+    # across the city" printed twice, identically, cannot tell it is two stages
+    # — there is nothing on the row that says so. It reads as the list being
+    # broken. 2026 alone printed 49 sentences more than once, one of them three
+    # times.
+    #
+    # So the panel keeps one row per sentence per year: the one with the most
+    # places on the map, then the highest score. Nothing is deleted from the
+    # record — this is the reading surface deduplicating itself, and the count
+    # is printed separately from the same-page one so the two stay tellable
+    # apart.
+    seen_line: dict[tuple, dict] = {}
+    for r in sorted(by_key.values(),
+                    key=lambda r: (-len(r["p"]), -r.get("iv", -1))):
+        if not r["pl"]:
+            seen_line[id(r)] = r
+            continue
+        k = (r["y"], r["pl"])
+        first = seen_line.get(k)
+        if first is None:
+            seen_line[k] = r
+            continue
+        first["m"] |= r["m"]
+        first["a"] = max(first.get("a", 0), r.get("a", 0))
+    restaged = len(by_key) - len(seen_line)
+    by_key = seen_line
 
     # Ordered by year, then by what matters most inside it. The panel caps a
     # year, so the cap now falls on the least important rather than the
@@ -295,6 +352,8 @@ def main() -> None:
         print(f"   {dec}s  {len(rs):5,} decisions   {p.stat().st_size/1024:6.0f} kB")
 
     print(f"   collapsed {collapsed:,} rows that repeat one act on one page")
+    print(f"   collapsed {restaged:,} more that repeat one sentence in one year "
+          f"— the same act at two stages; both stay in the record")
     print(f"\n{marks_in:,} marks -> {len(rows):,} distinct decisions "
           f"({marks_in/max(1,len(rows)):.2f} dots each); {missed} resolved to nothing")
     print(f"{total/1024/1024:.2f} MB over {len(by_decade)} decade files")
