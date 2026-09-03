@@ -167,7 +167,7 @@ function chipStyle(on: boolean, ink: string | null): React.CSSProperties {
    Cache-Control on them promised. The tiles themselves are `<img>` loads and
    never needed the header. A version on the manifest URLs is the cache key
    changing: bump it if a manifest ever has to be re-fetched past its cache. */
-const MANIFEST_V = "2";
+const MANIFEST_V = "3";
 
 /** what `render-city-years.mjs` writes beside the pyramids */
 interface YearsFile {
@@ -294,33 +294,20 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
            in plane units, and plane units are `projection`'s at band 0 — the
            band every capture was posed on. */
         projection.setBand(0);
-        await data.loadBase();
-        if (dead) return;
-        const chunk = data.get("base/terrain");
-        if (!chunk) throw new Error("terrain: base/terrain has not landed");
+        /* ── THE PICTURE FIRST, THE GROUND BEHIND IT ─────────────────────
+           The base tier (1.4 MB) and the fine DEM (2.1 MB) serve the tap,
+           the labels and the dots — not the tiles. MEASURED on prod over a
+           4G link with a 4x slower CPU: the map waited for both before it
+           was even created, and the first tile showed at 4.1 s while the
+           tiles themselves are 200 kB. So the map mounts on the index alone
+           and the ground lands under it, below §THE GROUND, THE PICKER, THE
+           WRITING; a tap before then is a tap on nothing (`picker` is null),
+           which is a shorter wait than a blank stage. */
+        const baseP = data.loadBase();
         const proj = data.manifest.proj as unknown as TerrainProj;
-        const field = new TerrainField(chunk, proj);
-
-        /* the block columns the fiche's context is read from — the hood is
-           joined on the INDEX, never the name, as on the GPU page */
-        {
-          const bc = data.get("base/blocks");
-          const be = data.manifest.chunks.find((c) => c.k === "base/blocks") as
-            | { hoodNames?: string[] }
-            | undefined;
-          if (bc && be?.hoodNames) {
-            blockCols.current = {
-              hood: bc.fields.hood as Uint8Array,
-              hoodNames: be.hoodNames,
-              area: bc.fields.a as Float32Array,
-            };
-          }
-        }
-        /* THE PICKER IS THE GPU PAGE'S, on the GPU page's ground. */
-        const fineDem = await fineDemP;
-        if (dead) return;
-        const ground = meshElevAt(field, proj, fineDem);
-        const picker = blockPicker(data, { elevAt: ground });
+        let field: TerrainField | null = null;
+        let ground: ReturnType<typeof meshElevAt> | null = null;
+        let picker: ReturnType<typeof blockPicker> | null = null;
 
         const tp = tilePlane(index);
         const ll = (X: number, Y: number) => L.latLng(-Y, X);
@@ -532,12 +519,8 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
           }
           overlay.draw(cam, 0);
         };
-        overlay = new CityOverlay({
-          data,
-          field,
-          dataBaseUrl: descriptor.dataBaseUrl,
-          requestFrame: schedule,
-        });
+        /* the overlay itself is built once the ground has landed, below —
+           its canvas goes over the marks' canvas then */
         /* the marks' own canvas, UNDER the type: a mark is the last thing said
            about a block and a name is the last thing said about a place */
         const marksCv = document.createElement("canvas");
@@ -545,7 +528,6 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
         marksCv.style.cssText = "position:absolute;inset:0;width:100%;height:100%;pointer-events:none";
         const mctx = marksCv.getContext("2d");
         labels.appendChild(marksCv);
-        labels.appendChild(overlay.canvas);
         let marks: TileMarks | null = null;
         let mdpr = 1;
         let mW = 0;
@@ -642,6 +624,41 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
         });
         ro.observe(host);
 
+        /* ── THE GROUND, THE PICKER, THE WRITING — after the first tiles ── */
+        await baseP;
+        if (dead) return;
+        const chunk = data.get("base/terrain");
+        if (!chunk) throw new Error("terrain: base/terrain has not landed");
+        field = new TerrainField(chunk, proj);
+        /* the block columns the fiche's context is read from — the hood is
+           joined on the INDEX, never the name, as on the GPU page */
+        {
+          const bc = data.get("base/blocks");
+          const be = data.manifest.chunks.find((c) => c.k === "base/blocks") as
+            | { hoodNames?: string[] }
+            | undefined;
+          if (bc && be?.hoodNames) {
+            blockCols.current = {
+              hood: bc.fields.hood as Uint8Array,
+              hoodNames: be.hoodNames,
+              area: bc.fields.a as Float32Array,
+            };
+          }
+        }
+        /* THE PICKER IS THE GPU PAGE'S, on the GPU page's ground. */
+        const fineDem = await fineDemP;
+        if (dead) return;
+        ground = meshElevAt(field, proj, fineDem);
+        picker = blockPicker(data, { elevAt: ground });
+        overlay = new CityOverlay({
+          data,
+          field,
+          dataBaseUrl: descriptor.dataBaseUrl,
+          requestFrame: schedule,
+        });
+        labels.appendChild(overlay.canvas);
+        size();
+
         /* ── A TAP IS A PICK ─────────────────────────────────────────────
            Leaflet's `click` is the tap that was not a drag and not a pinch,
            which is the one distinction a touch map has to get right. The
@@ -736,8 +753,10 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
               fetch(`${dbase}/blocks/themes.json`).then((r) => (r.ok ? (r.json() as Promise<{ t: ThemeEntry[] }>) : null)),
             ]);
             if (dead || !mk || !vocab?.t?.length) return;
+            const g = ground;
+            if (!g) return;
             marks = tileMarks(mk, {
-              elevAt: ground,
+              elevAt: g,
               colours: vocab.t.map((t) => THEME_INK[t.bit % THEME_INK.length]),
               bits: vocab.t.length,
             });
