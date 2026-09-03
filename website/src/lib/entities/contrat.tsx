@@ -99,7 +99,7 @@ export function makeContratConfig(city: string): EntityPageConfig<D> {
       return (
         <>
           <MarchesBackKicker />
-          <h1 className="fx-page-title" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>
+          <h1 className="fx-page-title" style={{ fontSize: "clamp(24px, 3vw, 36px)", lineHeight: 1.05 }}>
             {titleText || <ContratTitleFallback />}
           </h1>
           <ContratLede numero={contrat.numero} year={contrat.year} />

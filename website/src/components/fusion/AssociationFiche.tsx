@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import type { AssociationFiche as AssociationFicheType, BeneficiaireGrounded, SubventionVulgarization } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
 import { citySlugFromPathname } from "@/lib/methodology";
-import { cap, fill } from "@/lib/fmt";
+import { cap, fill, sufOrdinal } from "@/lib/fmt";
 import { useFmtEur } from "@/lib/use-fmt";
 import { slugifyLabel } from "@/lib/projet-utils";
 import { trLabel } from "@/lib/label-translate";
@@ -171,7 +171,7 @@ export default function AssociationFiche({
               <>
                 {" · "}
                 <Link href={themeHref(asso.themeRank.theme)} scroll={false}>
-                  {fill(t("fx.fiche.asso.meta_rank"), { rank: asso.themeRank.rank, total: asso.themeRank.total, theme: trLabel(asso.themeRank.theme, locale) })} →
+                  {fill(t("fx.fiche.asso.meta_rank"), { rank: `${asso.themeRank.rank}${sufOrdinal(asso.themeRank.rank, locale)}`, total: asso.themeRank.total, theme: trLabel(asso.themeRank.theme, locale) })} →
                 </Link>
               </>
             )}

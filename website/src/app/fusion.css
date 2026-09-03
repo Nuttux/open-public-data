@@ -19146,7 +19146,7 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   font-family: var(--f-mono); font-size: 9px; padding: 3px 7px; text-decoration: none;
 }
 .theme-fusion .fx-v3-lead { margin: 0; font-size: 16px; line-height: 1.5; color: var(--ink-2); max-width: 640px; }
-.theme-fusion .fx-v3-lead-src { font-size: 13px; color: var(--muted); white-space: nowrap; }
+.theme-fusion .fx-v3-lead-link { font-size: 13px; color: var(--muted); white-space: nowrap; }
 .theme-fusion .fx-v3-hero { margin: 44px 0 48px; }
 .theme-fusion .fx-v3-hero-num {
   font-family: var(--f-disp); font-weight: 700; font-size: clamp(48px, 7vw, 72px);
@@ -19219,7 +19219,7 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   .theme-fusion .fx-v3-section { margin-bottom: 40px; }
 }
 /* v3 — additions pour le kit partagé (components/fiche/v3.tsx) */
-.theme-fusion .fx-v3-lead-src { margin: 8px 0 0; font-size: 12.5px; color: var(--muted); line-height: 1.55; max-width: 640px; }
+.theme-fusion .fx-v3-lead-src { margin: 8px 0 0; font-size: 12.5px; color: var(--muted); line-height: 1.55; max-width: 640px; white-space: normal; overflow-wrap: anywhere; }
 .theme-fusion .fx-v3-lead-src a { color: var(--bleu); }
 .theme-fusion .fx-v3-hero-meta { font-size: 13.5px; color: var(--muted); margin-top: 8px; }
 .theme-fusion .fx-v3-hero-meta a { color: var(--bleu); }

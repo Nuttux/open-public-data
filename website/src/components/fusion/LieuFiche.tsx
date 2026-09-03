@@ -193,7 +193,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
         <p className="fx-v3-lead">
           {leadMain}{" "}
           {lieu.wiki.url && (
-            <a href={lieu.wiki.url} target="_blank" rel="noopener noreferrer" className="fx-v3-lead-src">
+            <a href={lieu.wiki.url} target="_blank" rel="noopener noreferrer" className="fx-v3-lead-link">
               {en ? "Wikipedia ↗" : "Wikipédia ↗"}
             </a>
           )}
