@@ -5690,7 +5690,7 @@ const en: Record<string, string> = {
   'fx.lieu.sources_h': 'Sources',
   'fx.lieu.split.travaux': 'Works & capital',
   'fx.lieu.split.subv': 'Subsidies paid',
-  'fx.lieu.kpi.reel': 'Actually paid',
+  'fx.lieu.kpi.reel': 'Paid by the City',
   'fx.lieu.kpi.engage': 'Ordered (contract ceilings)',
   'fx.lieu.mandate_ops': 'See the {n} works programmes in detail ({a})',
   'fx.lieu.mandate_op1': 'See the works programme in detail ({a})',

@@ -5696,7 +5696,7 @@ const fr: Record<string, string> = {
   'fx.lieu.sources_h': 'Sources',
   'fx.lieu.split.travaux': 'Travaux & équipement',
   'fx.lieu.split.subv': 'Subventions versées',
-  'fx.lieu.kpi.reel': 'Réellement payé',
+  'fx.lieu.kpi.reel': 'Versé par la Ville',
   'fx.lieu.kpi.engage': 'Commandé (plafond des contrats)',
   'fx.lieu.mandate_ops': 'Voir le détail des {n} chantiers ({a})',
   'fx.lieu.mandate_op1': 'Voir le détail du chantier ({a})',

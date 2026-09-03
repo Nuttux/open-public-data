@@ -92,18 +92,26 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
     const f = fmtEur(reelTotal);
     kpiItems.push({ label: t("fx.lieu.kpi.reel"), value: <>{f.v}<span className="u">{f.u}</span></> });
   }
-  if (engageTotal > 0) {
+  // Les plafonds de marchés ne partagent PAS le bandeau avec le payé : côte à
+  // côte, « payé 117 M€ / commandé 26 M€ » se lit comme un reste à payer,
+  // alors que ce sont deux grandeurs (versé vs plafond contractuel). Le total
+  // des marchés garde sa place en tête de sa propre section, avec sa réserve.
+  // Il ne monte ici que si le lieu n'a aucun versement à montrer.
+  if (engageTotal > 0 && reelTotal === 0) {
     const f = fmtEur(engageTotal);
     kpiItems.push({ label: t("fx.lieu.kpi.engage"), value: <>{f.v}<span className="u">{f.u}</span></> });
   }
-  if (bmo.length > 0) {
-    kpiItems.push({ label: t("fx.lieu.kpi.bmo_since"), value: bmo[0].date.slice(0, 4) });
-  }
+  // Après l'argent, les décisions du Conseil qui nomment le lieu — le
+  // deuxième signal qu'un visiteur lit en 5 s — puis seulement la profondeur
+  // d'archive BMO, qui dit d'où vient le récit, pas ce qui a été décidé.
   if (s.n_lieu != null) {
     kpiItems.push({
       label: `${t("fx.lieu.kpi.delibs")}${s.delibs_span ? ` ${s.delibs_span[0]}–${s.delibs_span[1]}` : ""}`,
       value: s.n_lieu,
     });
+  }
+  if (bmo.length > 0) {
+    kpiItems.push({ label: t("fx.lieu.kpi.bmo_since"), value: bmo[0].date.slice(0, 4) });
   }
   const kpis = kpiItems.slice(0, 2);
 
