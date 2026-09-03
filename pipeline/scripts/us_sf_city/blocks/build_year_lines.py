@@ -71,6 +71,10 @@ OUT = BLK / "year"
 NOT_A_RECORD = {
     "vote-outcome-only", "cut-in-half", "departmental-work",
     "page-furniture", "index-row", "too-damaged",
+    # What a member of the public said about a file. It is a record of the
+    # meeting, not an act of the Board, and the file being spoken to has its own
+    # row on the same page.
+    "public-comment",
 }
 
 def main() -> None:

@@ -1,0 +1,250 @@
+2751	1	Hearing - City Audit for FY
+2752	1	Hearing - City Budget Reserves
+2753	1	Hearing - City College of San Francisco - Program Reductions and Impacts to Students and Communities
+2754	1	Hearing - City College of San Francisco Proposed Course Changes and Reductions
+2755	1	Hearing - City Contractors' Safety Records
+2756	1	Hearing - City Departments Treating District # as a Containment Zone
+2757	1	Hearing - City Incentives and Penalties for Vacant and Blighted Commercial Properties
+2758	1	Hearing - City Policies to Reduce Homelessness in Residential Neighborhoods
+2759	1	Hearing - City Response and Proactive Plan to Flooding
+2760	1	Hearing - City Services Auditor Report - The City Must Determine Whether United Council of Human Services Should Continue Providing Services to San Francisco Residents Despite Continuing Noncompliance With City Agreements
+2761	1	Hearing - City Spending Related to Incarceration
+2762	1	Hearing - City Support for Surveillance Testing at SFUSD Schools
+2763	1	Hearing - City Whistleblower Program and Most Recent Whistleblower Report
+2764	1	Hearing - City and County's Healthy and Sustainable Food Policy
+2765	1	Hearing - City and School District Planning Efforts to Support Distance Learning for the # Academic Year
+2766	1	Hearing - City's Coordinated Response to September # Heatwave
+2767	1	Hearing - City's Current Employment Opportunities for Older Adults and Adults with Disabilities
+2768	1	Hearing - City's Downpayment Assistance Loan Programs
+2769	1	Hearing - City's Efforts to Address Car Break-Ins
+2770	1	Hearing - City's External Audit for FY and City's External Audit Plans for FY
+2771	1	Hearing - City's Plan to Fulfill Housing Element's Extremely-Low Income Unit Obligation
+2772	1	Hearing - City's Plan to Implement Proposition B from the November # Ballot
+2773	1	Hearing - City's Preparation for the # Census
+2774	1	Hearing - City's Shelter in Place Hotel Rehousing Plan
+2775	1	Hearing - City's Vacant/Abandoned Property
+2776	1	Hearing - Citywide Fiber Broadband Network
+2777	1	Hearing - Citywide Nonprofit Performance Audit Report
+2778	1	Hearing - Citywide Project Labor Agreement and Annual Reports
+2779	1	Hearing - Citywide Survey of Historic Resources
+2780	1	Hearing - Citywide Youth Violence Response and Prevention
+2781	1	Hearing - City’s Housing Affordability and Housing Stability Needs, and Relevant Planning Department Reports
+2782	1	Hearing - City’s Inadequate Progress in Meeting Mandated Affordable Housing Goals, Findings by the Budget and Legislative Analyst, and Actions to Accelerate Public Investments
+2783	1	Hearing - City’s Rent Relief Program
+2784	1	Hearing - Civil Grand Jury - San Francisco County Jails: Our Largest Mental Health Facility
+2785	1	Hearing - Civil Grand Jury - San Francisco Homeless Health and Housing: A Crisis Unfolding on Our Streets
+2786	1	Hearing - Civil Grand Jury Report - "Uncontrolled Burn Dimming the Spark of Illegal Fireworks in San Francisco."
+2787	1	Hearing - Civil Grand Jury Report - A Progress Report about the San Francisco Department of Homelessness and Supportive Housing
+2788	1	Hearing - Civil Grand Jury Report - Building San Francisco: Designing, Constructing, and Maintaining City Infrastructure
+2789	1	Hearing - Civil Grand Jury Report - Buried Problems and a Buried Process - The Hunters Point Naval Shipyard in a Time of Climate Change
+2790	1	Hearing - Civil Grand Jury Report - Capacity To Serve: Setting Social Services Nonprofits Up for Success
+2791	1	Hearing - Civil Grand Jury Report - Come Hell or Highwater: Flood Management in a Changing Climate
+2792	1	Hearing - Civil Grand Jury Report - Commission Impossible? Getting the Most from San Francisco’s Commissions
+2793	1	Hearing - Civil Grand Jury Report - Drinking Water Safety in San Francisco: A Reservoir of Good Practice
+2794	1	Hearing - Civil Grand Jury Report - Failed Vision - Revamping the Roadmap to Safer Streets
+2795	1	Hearing - Civil Grand Jury Report - Lifting the Fog: On Budgets, Innovation, Silos, and More
+2796	1	Hearing - Civil Grand Jury Report - San Francisco Building and Fire Safety Inspection: A Tale of Two Departments: Department of Building Inspection and San Francisco Fire Department
+2797	1	Hearing - Civil Grand Jury Report - Techs in the City - Government’s Opportunity to Seize the AI Moment
+2798	1	Hearing - Civil Grand Jury Report - Time to Get to Work: San Francisco's Hiring Crisis
+2799	1	Hearing - Climate Action Plan Funding
+2800	1	Hearing - Climate Emergency
+2801	1	Hearing - Closing of the Skilled Nursing and Sub-Acute Units in St. Luke's Hospital
+2802	1	Hearing - Co-Enrollment and Dual-Enrollment Initiatives from San Francisco Unified School District and City College of San Francisco
+2803	1	Hearing - Committee of the Whole - Amendment to the Redevelopment Plan for the Mission Bay South Blocks # Redevelopment Project - July # , # , at # : # p.m.
+2804	1	Hearing - Committee of the Whole - Amendments to the Hunters Point Shipyard Redevelopment Plan and the Bayview Hunters Point Redevelopment Plan - June # , # , # : # p.m.
+2805	1	Hearing - Committee of the Whole - City Preparations in Response to the COVID- # Health Emergency - March # , #
+2806	1	Hearing - Committee of the Whole - CleanPowerSF Community Aggregation Program Electric Generation Rates and Charges - San Francisco Public Utilities Commission - January # , #
+2807	1	Hearing - Committee of the Whole - Controller’s Report on Cannabis Following Adult-Use Legalization - March # , # , at # : # p.m.
+2808	1	Hearing - Committee of the Whole - Disclosure Responsibilities of Board of Supervisors Under Federal Securities Laws - April # , # , at # : # p.m.
+2809	1	Hearing - Committee of the Whole - Dogpatch and Northwest Potrero Hill Green Benefit District - Renewal and Expansion - July # , # , at # : # p.m.
+2810	1	Hearing - Committee of the Whole - Financial Impacts - COVID- # Health Emergency - March # , # , at # : # p.m.
+2811	1	Hearing - Committee of the Whole - Findings and Recommendations Regarding Law Enforcement Practices - November # , #
+2812	1	Hearing - Committee of the Whole - Findings and Recommendations Regarding Law Enforcement Practices - Update - September # , #
+2813	1	Hearing - Committee of the Whole - Findings and Recommendations of Law Enforcement Staffing Numbers - April # , # , at # : # p.m.
+2814	1	Hearing - Committee of the Whole - Findings and Recommendations of Law Enforcement Staffing Numbers - February # , #
+2815	1	Hearing - Committee of the Whole - Findings and Recommendations of Law Enforcement Staffing Numbers - February # , # , at # : # p.m.
+2816	1	Hearing - Committee of the Whole - Findings and Recommendations of Law Enforcement Staffing Numbers - March # , # , at # : # p.m.
+2817	1	Hearing - Committee of the Whole - Food and Beverage Worker Wages and Benefits at SFO and Operational Impact of an Imminent Strike - September # , # , at # : # p.m.
+2818	1	Hearing - Committee of the Whole - Grant Agreements for Financial Solvency - Baker Places, Inc. - $ - Positive Resource Center - $ - June # , # , at # : # p.m.
+2819	1	Hearing - Committee of the Whole - Ground Lease Agreements - Transbay Block # East - April # , # , at # : # p.m.
+2820	1	Hearing - Committee of the Whole - Impacts of Adopting the New Regional Stay at Home Order on Small Business
+2821	1	Hearing - Committee of the Whole - Impacts of County Jail Lockdowns - May # , # , at # : # p.m.
+2822	1	Hearing - Committee of the Whole - Joint Meeting with the Police Commission - Department of Justice Initial Assessment Report, President’s Task Force on 21st Century Policing, Civil Grand Jury, and Blue Ribbon Panel Report - November # , #
+2823	1	Hearing - Committee of the Whole - Kaiser Permanente Mental Health Care Workers' Strike and its Effects on City Workers, the Majority of Whom Are Kaiser Patients, and Other San Franciscans - September # , # , at # : # p.m.
+2824	1	Hearing - Committee of the Whole - Removal of Max Carter-Oberstone from the Police Commission - February # , # , at # : # p.m.
+2825	1	Hearing - Committee of the Whole - Renewal and Expansion - North of Market/Tenderloin Community Benefit District - June # , #
+2826	1	Hearing - Committee of the Whole - Renewal and Expansion - Tourism Improvement District - September # , # , at # : # p.m.
+2827	1	Hearing - Committee of the Whole - Report of Assessment Costs - Blighted Properties
+2828	1	Hearing - Committee of the Whole - Report of Delinquent Real Property Transfer Taxes - January # , # , at # : # p.m.
+2829	1	Hearing - Committee of the Whole - Report of Delinquent Real Property Transfer Taxes - June # , # , at # : # p.m.
+2830	1	Hearing - Committee of the Whole - Reporting on SFUSD’s Whole School Lesson Study Math Pilot - Impact on Student Math Scores - Student Success Fund Dollars - October # , # , at # : # p.m.
+2831	1	Hearing - Committee of the Whole - Shelter-in-Place Rehousing and Site Demobilization Plan - December # , # , at # : # p.m.
+2832	1	Hearing - Committee of the Whole - Street and Public Service Easement Vacation Order - Mission Rock Project - September # , #
+2833	1	Hearing - Committee of the Whole - Street and Public Service Easement Vacation Order - Parkmerced Development Project - September # , # , at # : # p.m.
+2834	1	Hearing - Committee of the Whole - Update on Findings and Recommendations Regarding Law Enforcement Practices - October # , # , at # : # p.m.
+2835	1	Hearing - Committee of the Whole - Update on the City's Response to Address the Omicron Surge - January # , # , at # : # p.m.
+2836	1	Hearing - Committee of the Whole - Urging Congress to Provide Relief to Restaurants and the State of California to Allow Outdoor Dining As Soon As Possible - December # , #
+2837	1	Hearing - Committee of the Whole - Western SoMa Community Benefit District - February # , # , at # : # p.m.
+2838	1	Hearing - Community Ambassadors
+2839	1	Hearing - Community Needs Assessment # Report - Department of Children, Youth and Their Families
+2840	1	Hearing - Community Safety and Well Being
+2841	1	Hearing - Community Supportive and Public Municipal Banking
+2842	1	Hearing - Compliance with the San Francisco Streetlight Policy
+2843	1	Hearing - Comprehensive Annual Financial Report - FY
+2844	1	Hearing - Comprehensive Annual Financial Report, Single Audit, and Management Letters - FY External Audit Plans - FY
+2845	1	Hearing - Comprehensive Annual Financial Report, Single Audit, and Management Letters - FY External Audit Plans for FY
+2846	1	Hearing - Comprehensive Parnassus Heights Plan and Memorandum of Understanding
+2847	1	Hearing - Conditions at the Psychiatric Emergency Services Unit at San Francisco General Hospital
+2848	1	Hearing - Conditions for Women in Custody at Local Jails - Sheriff’s Department Oversight, Policies and Procedures
+2849	1	Hearing - Consultant Access and Involvement in Building Permit Process
+2850	1	Hearing - Controller's Comment on Revenue Estimates
+2851	1	Hearing - Controller's Comment on Revenue Estimates and Nine-Month Financial Report
+2852	1	Hearing - Controller's FY and # Revenue Letter
+2853	1	Hearing - Controller's Nine-Month Budget Status Report
+2854	1	Hearing - Controller's Revenue Letter and Mayor's Proposed Budget - FY
+2855	1	Hearing - Controller's Revenue Letter and Mayor's Proposed Budget - FY and #
+2856	1	Hearing - Controller's Sixth-Month Budget Status Report for FY
+2857	1	Hearing - Controller's Year-End Performance and Benchmarking Reports
+2858	1	Hearing - Coordination Between the San Francisco Municipal Transportation Agency's Technical and Implementation Teams
+2859	1	Hearing - Coordination of City Departments on Nightlife and Exploring the Night Mayor Model
+2860	1	Hearing - Coordination of Homeless Services Across City Departments
+2861	1	Hearing - Crime and Violence Targeting Asian-American Seniors
+2862	1	Hearing - Criminalizing and Arresting Individuals Suffering From Substance Use Disorder
+2863	1	Hearing - Current Economic Snapshot of the City and County of San Francisco
+2864	1	Hearing - Current Hiring and Recruitment Processes for First Responders
+2865	1	Hearing - Current State of Commercial Office Space and Economic Recovery
+2866	1	Hearing - DCYF’s Budget - FY and #
+2867	1	Hearing - DPH Secondary Policies and Baker Places, Inc.
+2868	1	Hearing - Data Sharing Between Public Safety Departments
+2869	1	Hearing - Data on City Investments in the Lakeview, Oceanview, Merced Heights, and Ingleside Communities from #
+2870	1	Hearing - Daylighting Policy
+2871	1	Hearing - De Facto Route Abandonment and Service Restoration for Muni Buses, Trains, and Cable Cars
+2872	1	Hearing - Declaration of Policy - Eighth Grade Algebra and SFUSD Math Curriculum Development
+2873	1	Hearing - Delays in Disbursement of Funds to Fix Elevators in Single Room Occupancy Housing
+2874	1	Hearing - Department Subversion of Board of Supervisors Authority to Approve Contracts Pursuant to Charter, Section #
+2875	1	Hearing - Department of Building Inspection Corruption Allegations
+2876	1	Hearing - Department of Homelessness and Supportive Housing Budget - FY and #
+2877	1	Hearing - Department of Public Health’s Budget - FY and #
+2878	1	Hearing - Digital Divide Review
+2879	1	Hearing - Dignity Fund Community Needs Assessment - FY
+2880	1	Hearing - Direct Small Business Relief Update and OEWD Equity Plan for Recovery
+2881	1	Hearing - Discretionary Budget Spending Plans
+2882	1	Hearing - District Attorney's Staffing Levels
+2883	1	Hearing - EV Curbside Charging Program
+2884	1	Hearing - Economic Impact Review of Vacancies and Reduced Daytime Population in the Economic Core
+2885	1	Hearing - Economic Impacts of Super Bowl # and Other Large Events
+2886	1	Hearing - Economic Mitigation Working Group Findings and Recommendations Report
+2887	1	Hearing - Economic and Administrative Costs Related to Alcohol Abuse
+2888	1	Hearing - Economic and Financial Updates for FY
+2889	1	Hearing - Economic and Tax Revenue Trends in Downtown San Francisco
+2890	1	Hearing - Effects of On-Demand Delivery and Delivery Companies on Small Businesses
+2891	1	Hearing - Efficacy of Homeless Navigation Centers
+2892	1	Hearing - Election of San Francisco's New County Health Officer
+2893	1	Hearing - Electronic Monitoring
+2894	1	Hearing - Emergency Call Boxes
+2895	1	Hearing - Emergency Firefighting Water System # Planning Study
+2896	1	Hearing - Emergency Firefighting Water System Funding and Design
+2897	1	Hearing - Emergency Medical Service Response Times
+2898	1	Hearing - Emergency Ordinance - Grocery Store, Drug Store, Restaurant, and On-Demand Delivery Service Employee Protections
+2899	1	Hearing - Emergency Preparedness
+2900	1	Hearing - Emergency Response Strategies on High-Rise Window Breaks
+2901	1	Hearing - Emergency Response Times and Quality of Engagement with School Sites
+2902	1	Hearing - Employment Vacancies, Recruitment, and Retention Efforts
+2903	1	Hearing - Enforcement Activities Undertaken by the City and County of San Francisco Regarding Residential Evictions
+2904	1	Hearing - Enforcement of Scooters on Sidewalks
+2905	1	Hearing - Enforcing Recent San Francisco Labor Laws
+2906	1	Hearing - Essential Workers and Their Conditions and Treatment During the COVID Crisis
+2907	1	Hearing - Ethics Department Audit Processes
+2908	1	Hearing - Evaluation of SFUSD's Safety Procedures
+2909	1	Hearing - Evictions in Permanent Supportive Housing Project-Based Sites
+2910	1	Hearing - Expanding Eligibility for Subsidized Child Care under Proposition C (June # )
+2911	1	Hearing - Expansion of the Safe Parking Program
+2912	1	Hearing - Exploration of Good Food Purchasing Policy
+2913	1	Hearing - FY & # Mid-Cycle Budget Update - Airport
+2914	1	Hearing - FY & # Mid-Cycle Budget Update - Municipal Transportation Agency
+2915	1	Hearing - FY & # Mid-Cycle Budget Update - PUC
+2916	1	Hearing - FY & # Mid-Cycle Budget Update - Port
+2917	1	Hearing - FY Nine-Month Budget Status Report
+2918	1	Hearing - Family Friendly Workplaces
+2919	1	Hearing - Family Violence Council
+2920	1	Hearing - Federal Budget Cuts to Health Care, Immigration Services, Homeless Services, and Services for the LGBTQ Community
+2921	1	Hearing - Federal Budget Impact Update
+2922	1	Hearing - Federal HIV/AIDS Funding and Investments by the Department of Public Health in HIV/AIDS Programs, Prevention and Treatment
+2923	1	Hearing - Felton Institute - Employee Wages and Benefits
+2924	1	Hearing - Filling Vacancies for Urgent Public Safety Positions
+2925	1	Hearing - Findings and Recommendations - Family Violence Council Report - #
+2926	1	Hearing - Findings and Recommendations - Nonprofit Wage and Equity Survey: Results and Analysis of Key Findings
+2927	1	Hearing - Findings of the San Francisco Recovery Summit Working Group
+2928	1	Hearing - Fiscal and Technical Feasibility of Open Source Voting
+2929	1	Hearing - Five Year Finance Plan Update - FY through #
+2930	1	Hearing - Five Year Financial Plan - March Update
+2931	1	Hearing - Five Year Financial Plan Update - FY Through FY
+2932	1	Hearing - Five Year Information and Communication Technology Plan - FY
+2933	1	Hearing - Five-Year Monitoring Report for the Eastern Neighborhoods Plans
+2934	1	Hearing - Food Insecurity Among Low-Income Pregnant Women and Families
+2935	1	Hearing - Food Insecurity Programs in San Francisco
+2936	1	Hearing - Food Insecurity and Hunger in San Francisco
+2937	1	Hearing - Foreclosures in the Below Market Rate Limited Equity Homeownership Program and the Resulting Loss of Affordability Requirements
+2938	1	Hearing - Free City and City College of San Francisco Implementation
+2939	1	Hearing - Funding San Francisco Climate Action Report
+2940	1	Hearing - Funding Shortfall for San Francisco to Reach Citywide Affordable Housing Goals
+2941	1	Hearing - Funding for Community Collaboration and Convening, Community Building, Domestic Violence and Gender-Based Violence Services, Financial Capability, and General Legal Services Programs
+2942	1	Hearing - Future of Commercial Real Estate and the Impact on the Local Economy and Tax Revenue
+2943	1	Hearing - Geary/Parker Gas Line Explosion
+2944	1	Hearing - Good Food Purchasing Baseline Assessments - City Hospitals and Jails
+2945	1	Hearing - Governance of Structure, Oversight of Assets, and City Funding Processes - Fine Arts Museums of San Francisco
+2946	1	Hearing - Government Use of Artificial Intelligence Tools and Technology
+2947	1	Hearing - Grant Funds Placed on Mayoral Reserve
+2948	1	Hearing - HUD Tenant Outreach Funding
+2949	1	Hearing - Hall of Justice Accelerated Relocation Plan
+2950	1	Hearing - Hiring Report on the Implementation of Mental Health SF
+2951	1	Hearing - Home Invasions
+2952	1	Hearing - Homeless and Supportive Housing's Strategic Plan
+2953	1	Hearing - Housing Access for Black, Indigenous, People of Color (BIPOC) Pregnant Women and Persons, and Families with Young Children
+2954	1	Hearing - Housing Authority, Mayor's Office of Housing and Development - Coordination of Section # Program
+2955	1	Hearing - Housing Costs and Housing Cost Information Tracking by City Departments
+2956	1	Hearing - Housing Mobility
+2957	1	Hearing - Housing Our Workers
+2958	1	Hearing - Housing Stabilization Programs in Development Agreement Projects
+2959	1	Hearing - Human Services Agency and Department of Public Health - FY Budget
+2960	1	Hearing - Human Trafficking in San Francisco # Report
+2961	1	Hearing - Hunters Point Shipyard Clean-Up
+2962	1	Hearing - Hydrogen Sulfide Flaring from Chevron's Richmond Refinery
+2963	1	Hearing - Identifying Barriers and Gaps in Services and Programs for Residents on the Road to Recovery
+2964	1	Hearing - Illegal Dumping - District #
+2965	1	Hearing - Impact of Downtown Business Closures
+2966	1	Hearing - Impact of Plastic Recycling Management and Plastic Pollution in San Francisco
+2967	1	Hearing - Impact of Proposed Budget on Older Adult Programs
+2968	1	Hearing - Impact of Tax Cuts and Jobs Act (Trump Tax Plan)
+2969	1	Hearing - Impact of the Housing Market on Below Market Rate Units
+2970	1	Hearing - Impact of the Money Bail System
+2971	1	Hearing - Impact on the Health and Welfare of Tenants Residing in Large and Speculative Rental Units
+2972	1	Hearing - Impacts of Automation in San Francisco
+2973	1	Hearing - Impacts of Class Cuts at City College of San Francisco to Low-Income and Communities of Color, and High School Students
+2974	1	Hearing - Impacts of Expected Initial Public Offerings of San Francisco Based Companies
+2975	1	Hearing - Impacts of Permanent Supportive Housing Facilities
+2976	1	Hearing - Impacts of Proposed Cuts to Courses and Staff Layoffs at City College of San Francisco
+2977	1	Hearing - Impacts of Secondhand Smoke - Seniors and Children
+2978	1	Hearing - Implementation Efforts to Make Biodiversity a City-Wide Priority
+2979	1	Hearing - Implementation of Compassionate Alternative Response Team (CART)
+2980	1	Hearing - Implementation of DBI Expanded Compliance Control and Consumer Protection Per Building Code Amendments Enacted March # , #
+2981	1	Hearing - Implementation of Proposition F - Tenant Right to Counsel
+2982	1	Hearing - Implementation of SB #
+2983	1	Hearing - Implementation of State Maddy Act and Process Improvements for Appointments to Local Policy Bodies
+2984	1	Hearing - Implementation of the Recovery Summit Working Group Recommendations - Final Report of the Housing Needs of Justice Involved Adults Research Project
+2985	1	Hearing - Implementing the Affordable Homes for Educators and Families Now Initiative
+2986	1	Hearing - Infant Toddler Early Learning Scholarship Fund
+2987	1	Hearing - Infrastructure Projects Affecting Street and Sidewalk Access
+2988	1	Hearing - Initiative Ordinance - Administrative Code - Community Policing and Foot and Bike Patrols
+2989	1	Hearing - Initiative Ordinance - Business and Tax Regulations Code - Real Property Transfer Tax Rate Increase on Transfers of Properties for at Least $
+2990	1	Hearing - Initiative Ordinance - Business and Tax Regulations Code - Tax on Businesses With Disproportionate Executive Pay
+2991	1	Hearing - Initiative Ordinance - Business and Tax Regulations, Planning Codes - Transfer Tax Exemption for Conversion to Residential Use; Office Development Allocations
+2992	1	Hearing - Initiative Ordinance - Park Code - Parkway at Upper Great Highway
+2993	1	Hearing - Innovation and Human-Centered Design in City Services
+2994	1	Hearing - Institutional Housing for Seniors
+2995	1	Hearing - Integrity of Contract Procurement Practices at the Department of the Environment
+2996	1	Hearing - Interim Zoning Controls - Conditional Use for Restaurants and Storefront Mergers
+2997	1	Hearing - Interim Zoning Controls - Indoor Agriculture
+2998	1	Hearing - Interim Zoning Controls - Legacy Businesses in Neighborhood Commercial Districts
+2999	1	Hearing - Interim Zoning Controls - Removal of Residential Care Facilities
+3000	1	Hearing - Intermediate Length Occupancy Program Updates

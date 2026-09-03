@@ -1,0 +1,250 @@
+5501	1	Final Map # - Seawall Lot # and Pier # Mixed-Use Project
+5502	1	Final Map # - Sunnydale HOPE SF Project, Phase # and #
+5503	1	Final Map No. # - # 3rd Street
+5504	1	Final Map No. # - # 6th Street
+5505	1	Final Map No. # - 5M Project
+5506	1	Final Map No. # - Sunnydale HOPE SF Project, Final Map Phase One
+5507	1	Final Map No. # - Sunnydale HOPE SF Project, Phase #
+5508	1	Final Map No. # - Treasure Island
+5509	1	Final Transfer Map # - Portion of Candlestick Point
+5510	1	Final Transfer Map # - Portions of Pier #
+5511	1	Findings of Fiscal Feasibility - Proposed Portsmouth Square Improvements
+5512	1	Fire Code - Fire Apparatus Access Roads
+5513	1	Follow-Up Board Response - Civil Grand Jury Report - A Recycling Reality Check: What Actually Happens to Things We Put in Our Blue Recycling Bins
+5514	1	Follow-Up Board Response - Civil Grand Jury Report - Accelerating SF Government Performance - Taking Accountability and Transparency to the Next Level
+5515	1	Follow-Up Board Response - Civil Grand Jury Report - Act Now Before it is Too Late: Aggressively Expand and Enhance Our High-Pressure Emergency Firefighting Water System
+5516	1	Follow-Up Board Response - Civil Grand Jury Report - Mitigating the Housing Crisis: Accessory Dwelling Units and Modular Housing
+5517	1	Follow-Up Board Response - Civil Grand Jury Report - San Francisco’s Crime Lab - Promoting Confidence and Building Credibility
+5518	1	Follow-Up Board Response - Civil Grand Jury Report - Strategic Alignment: Breaking Through to a Living Wage
+5519	1	Follow-Up Board Response - Civil Grand Jury Report - The San Francisco Retirement System - Increasing Understanding and Adding Voter Oversight
+5520	1	Formal Policy Discussions - February # , #
+5521	1	Formal Policy Discussions - January # , #
+5522	1	Formal Policy Discussions - July # , #
+5523	1	Formal Policy Discussions - May # , #
+5524	1	General Obligation Bond Election - Earthquake Safety and Emergency Response - Not to Exceed $
+5525	1	General Obligation Bond Election - Muni Reliability and Street Safety
+5526	1	General Obligation Bonds - San Francisco Unified School District, Election of # , Series A - Not to Exceed $
+5527	1	General Obligation Refunding Bonds - Not to Exceed $
+5528	1	General Plan Amendments - Central South of Market Area Plan
+5529	1	Grant Agreement - California Department of Social Services - Community Care Expansion Preservation Projects - Anticipated Revenue of $
+5530	1	Grant Agreement - Conard House, Inc. - Support Services, Property Management, and Master Lease Stewardship - Allen, Aranda and McAllister Hotels - Not to Exceed $
+5531	1	Grant Agreement - Homebridge, Inc. - Contract Mode In-Home Supportive Services - Not to Exceed $
+5532	1	Grant Agreement - Homebridge, Inc. - Contract Mode In-Home Supportive Services - Not-to-Exceed $
+5533	1	Grant Agreement - Retroactive - Tenderloin Housing Clinic - Permanent Supportive Housing - Not to Exceed $
+5534	1	Grant Agreement Amendment - Low Income Investment Fund - Child Care Facilities & Technical Assistance - $ Total Grant Amount
+5535	1	Grant Agreement Amendment - Low Income Investment Fund - Child Care Facilities and Technical Assistance - $ Total Grant Amount
+5536	1	Grant Agreement Amendment - Retroactive - San Francisco Unified School District - Preschool for All - $
+5537	1	Grant Agreement Amendment - Retroactive - Self-Help for the Elderly - Nutrition Services Program - Not to Exceed $
+5538	1	Grant Agreement Amendment - San Francisco Unified School District - Preschool for All - $
+5539	1	Grant Agreement Amendment - Tenderloin Housing Clinic - Master Lease Hotels - Not to Exceed $
+5540	1	Grant Agreements - Emergency Rental Assistance Program - Grant Agreements Not to Exceed $ - Funding Not to Exceed $
+5541	1	Grant Amendment - Retroactive - Children’s Council of San Francisco - Early Care and Education Integrated Services - Not to Exceed $
+5542	1	Grant Amendment - Retroactive - Wu Yee Children’s Services - Early Care and Education Integrated Services - Not to Exceed $
+5543	1	Health Code - Banning Sale of Animal Fur Products
+5544	1	Health Code - Banning the Sale of Flavored Tobacco Products
+5545	1	Health Code - City Attorney Instituting Mental Health Conservatorship Proceedings
+5546	1	Health Code - City-Operated Adult Residential Facility
+5547	1	Health Code - Food Preparation and Service Establishment Disclosures
+5548	1	Health Code - Monthly Medical Examiner Reports of Drug Overdose Deaths
+5549	1	Health Code - Private Right of Action for Tourist Hotel Violations of Healthy Buildings Ordinance
+5550	1	Health Code - Spaying, Neutering, and Sterilizing of Dogs
+5551	1	Health Code - Subacute Care Reporting Requirements
+5552	1	Hearing - # Aging and Disability Affordable Housing Needs Assessment Report
+5553	1	Hearing - # Call Center Response Times, Training Requirements, and Staffing Levels
+5554	1	Hearing - # Hour Public Bathroom Access
+5555	1	Hearing - # Housing Element Rezoning
+5556	1	Hearing - # Language Access Report
+5557	1	Hearing - # Mission PSA - Community Benefits Update
+5558	1	Hearing - # Performance Data and Plans for Improving Responsiveness and Coordination
+5559	1	Hearing - # Point-in-Time Homeless Count
+5560	1	Hearing - # San Francisco City Survey Report
+5561	1	Hearing - # Surplus Property Report
+5562	1	Hearing - A Place For All Implementation Update
+5563	1	Hearing - APEC Summit Financial Impacts
+5564	1	Hearing - Ability of Department of Building Inspection and Planning Department to Meet Permit Approval Goals
+5565	1	Hearing - Access to Treatment and Services for Jail Population
+5566	1	Hearing - Accessory Dwelling Units Permitting Process - Duplex and Quadplex Applications Under California State Senate Bill No. #
+5567	1	Hearing - Accidental Overdose Death Report - Departmental Responses
+5568	1	Hearing - Achieving the City's Zero Waste Goals
+5569	1	Hearing - Addressing Commercial Shoplifting in Neighborhood Small Businesses and Anchor Stores
+5570	1	Hearing - Addressing Concerns of Zuckerberg San Francisco General Hospital Registered Nurses
+5571	1	Hearing - Affordable Senior Housing
+5572	1	Hearing - Affordable and Supportive Housing Spending and Recommendations of the Housing Stability Fund Oversight Board
+5573	1	Hearing - Airborne Plutonium at Hunters Point Shipyard and Delayed Reporting from the U.S. Navy
+5574	1	Hearing - Airport Noise - Disproportionately Impacting the Southern Neighborhoods in the City and County of San Francisco
+5575	1	Hearing - Allegations of Fiscal Mismanagement by the San Francisco Parks Alliance
+5576	1	Hearing - Allegations of Sexual Harassment and Sex Discrimination in the Fire Department
+5577	1	Hearing - Analysis of City-Wide Street Teams Creations and Service Calls the Police Department Receive Per Year
+5578	1	Hearing - Analyzing Crime Rates, Possible Loopholes, and System Failures for People on Parole, County Probation, Federal Probation and Pre-Trail Diversion
+5579	1	Hearing - Annual Comprehensive Financial Reports, Single Audit, and Management Letters - FY External Audit Plans for FY
+5580	1	Hearing - Anti-LGBTQ Hate Crimes
+5581	1	Hearing - Anticipated Litigation - Central SoMa Special Tax District
+5582	1	Hearing - Anticipated Litigation - Central South of Market Area Plan
+5583	1	Hearing - Appeal of Conditional Use Authorization - Proposed Project at # 27th Avenue
+5584	1	Hearing - Appeal of Determination of Statutory Exemption From Environmental Review - Proposed MTA’s Panhandle Social Distancing and Safety Project
+5585	1	Hearing - Appeal of Final Environmental Impact Report Certification - Alameda Creek Recapture Project
+5586	1	Hearing - Appeal of Final Environmental Impact Report Certification - Pier # Mixed-Use District
+5587	1	Hearing - Appeal of Final Environmental Impact Report Certification - Proposed Balboa Reservoir Project
+5588	1	Hearing - Appeal of Final Environmental Impact Report Certification - SFO Recommended Airport Development Plan
+5589	1	Hearing - Appeal of Final Mitigated Negative Declaration - Proposed Alcatraz Ferry Embarkment Project
+5590	1	Hearing - Appeal of Statutory Exemption From Environmental Review - MTA - Slow Streets, Phase #
+5591	1	Hearing - Appeal of Statutory Exemption From Environmental Review - MTA Department Operations Center (DOC) COVID- # Emergency Temporary Street Changes Program
+5592	1	Hearing - Appeal of Statutory and Categorical Exemption From Environmental Review - MTA Slow Streets, Phase #
+5593	1	Hearing - Appointment, Recreation and Park Commission - Jason Chan
+5594	1	Hearing - Appropriate Amortization Period to Implement Hotel Conversion Ordinance
+5595	1	Hearing - Artificial Intelligence in Local Elections
+5596	1	Hearing - Assessment of Invoices for San Francisco SAFE (SF SAFE)
+5597	1	Hearing - Audit of the San Francisco Police Department's Overtime
+5598	1	Hearing - Autonomous Vehicle Operation During the December # Power Outages
+5599	1	Hearing - BLA Performance Audit - Affordable Housing Funds Administered by the Mayor’s Office of Housing and Community Development
+5600	1	Hearing - BLA Report - Special Education Finances and Trends at SFUSD
+5601	1	Hearing - BLA Report - Update on Residential Vacancies in San Francisco
+5602	1	Hearing - BLA’s Performance Audit of San Francisco Street Teams
+5603	1	Hearing - Barriers to Home Ownership Access for Underserved Communities
+5604	1	Hearing - Behavioral Health Court
+5605	1	Hearing - Behavioral Health Justice Center - Justice That Heals: Promoting Behavioral Health, Safeguarding the Public, and Ending Our Overreliance on Jails
+5606	1	Hearing - Behavioral Health Services Systems of Care
+5607	1	Hearing - Behavioral Health and Substance Use Case Management
+5608	1	Hearing - Black Maternal Health Outcomes and Disparities
+5609	1	Hearing - Blue Cross Blue Shield of California Insurance Denial of Care
+5610	1	Hearing - Board Response - Civil Grand Jury Report - "Safe and Accessible Parks for All"
+5611	1	Hearing - Board of Appeals Actions Investigation
+5612	1	Hearing - Board of Supervisors' Budget Priorities - FY and #
+5613	1	Hearing - Board of Supervisors/Clerk of the Board - Annual Budget Guidelines - FY and #
+5614	1	Hearing - Budget Impact of City-Owned Vehicle Personal Assignment
+5615	1	Hearing - Budget Impact of Overtime Spending
+5616	1	Hearing - Budget Impact of Vacant Positions and Salary Savings
+5617	1	Hearing - Budget Overview, Projections, and Instructions
+5618	1	Hearing - Budget Priorities - Clean Streets, Support for Non-Profits and Small Businesses
+5619	1	Hearing - Budget Priority - Affordable Housing and Homelessness
+5620	1	Hearing - Budget Priority - Clean Streets
+5621	1	Hearing - Budget Priority - Homelessness and Housing
+5622	1	Hearing - Budget Priority - Mental Health and Substance Use
+5623	1	Hearing - Budget Priority - Public Safety Funding Strategies
+5624	1	Hearing - Budget Process Overview
+5625	1	Hearing - Budget Process Overview - FY and #
+5626	1	Hearing - Budget Process and Department Hearing Calendar
+5627	1	Hearing - Budget Update - Airport - FY and #
+5628	1	Hearing - Budget Update - Children and Families Commission - FY and #
+5629	1	Hearing - Budget Update - Department of Aging and Adult Services - FY and #
+5630	1	Hearing - Budget Update - Department of Children, Youth, and Their Families - FY and #
+5631	1	Hearing - Budget Update - Department of Emergency Management - FY and #
+5632	1	Hearing - Budget Update - Department of Homelessness and Supportive Housing - FY and #
+5633	1	Hearing - Budget Update - Department of Police Accountability - FY and #
+5634	1	Hearing - Budget Update - Department of Public Health - FY and #
+5635	1	Hearing - Budget Update - District Attorney's Office - FY and #
+5636	1	Hearing - Budget Update - Fire Department - FY and #
+5637	1	Hearing - Budget Update - Human Services Agency - FY and #
+5638	1	Hearing - Budget Update - Mayor's Office of Economic and Workforce Development - FY and #
+5639	1	Hearing - Budget Update - Mayor's Office of Housing and Community Development - FY and #
+5640	1	Hearing - Budget Update - Office of Early Childhood Education - FY and #
+5641	1	Hearing - Budget Update - Planning Department - FY and #
+5642	1	Hearing - Budget Update - Police Department - FY and #
+5643	1	Hearing - Budget Update - Police Department, Fire Department, and the Sheriff's Department - FY
+5644	1	Hearing - Budget Update - Port - FY and #
+5645	1	Hearing - Budget Update - Public Defender's Office - FY and #
+5646	1	Hearing - Budget Update - Public Library - FY and #
+5647	1	Hearing - Budget Update - Public Works - FY and #
+5648	1	Hearing - Budget Update - Recreation and Park Department - FY and #
+5649	1	Hearing - Budget Update - Sheriff's Department - FY and #
+5650	1	Hearing - Budget Update - Youth Commission - FY and #
+5651	1	Hearing - Budget and Appropriations Committee's # Spending Plan
+5652	1	Hearing - Budget and Legislative Analyst Recommendations - Restructuring the Office of the Chief Medical Examiner
+5653	1	Hearing - Budget and Legislative Analyst Report - Harms and Impact on the Sales and Consumption of Alcohol in San Francisco
+5654	1	Hearing - Budget and Legislative Analyst Report - Jobs-Housing Fit
+5655	1	Hearing - Budget and Legislative Analyst Report - Law Enforcement
+5656	1	Hearing - Budget and Legislative Analyst Report - Miscellaneous Funds
+5657	1	Hearing - Budget and Legislative Analyst Report - Pay Equity for Non-Profit Service Providers
+5658	1	Hearing - Budget and Legislative Analyst Report - San Francisco Unified School District Central Office Audit
+5659	1	Hearing - Budget and Legislative Analyst's Performance Audit - Affordable Housing Development and Preservation
+5660	1	Hearing - Budget and Legislative Analyst's Performance Audit - City's Assumption of the Housing Authority's Essential Functions
+5661	1	Hearing - Budget and Legislative Analyst's Performance Audit - Department of Public Health Behavioral Health Services
+5662	1	Hearing - Budget and Legislative Analyst's Performance Audit - Ethics Commission
+5663	1	Hearing - Budget and Legislative Analyst's Performance Audit - OEWD's Planning for Large-Scale Projects
+5664	1	Hearing - Budget and Legislative Analyst's Performance Audit - Office of Economic and Workforce Development's Planning for Large-Scale Projects to Address Economic Impacts on Surrounding Businesses
+5665	1	Hearing - Budget and Legislative Analyst's Performance Audit - Senior Services
+5666	1	Hearing - Budget and Legislative Analyst's Performance Audit of the Department of Technology
+5667	1	Hearing - Buena Vista Horace Mann Facilities Conditions
+5668	1	Hearing - Building Operations Component of the # Climate Action Plan
+5669	1	Hearing - Building Standards in Seismic Safety Zones
+5670	1	Hearing - Business Interruption Funds for San Francisco Businesses Impacted by Housing Construction
+5671	1	Hearing - Business Tax Reform Transition and Progress
+5672	1	Hearing - COVID- # Exposure Data and Reporting
+5673	1	Hearing - COVID- # Testing Protocols
+5674	1	Hearing - Cannabis Equity Applicant Review and Possible # Year Moratorium
+5675	1	Hearing - Cannabis State Legalization Task Force - Year II Report
+5676	1	Hearing - Censorship Concerns at Yerba Buena Center For The Arts
+5677	1	Hearing - Central Subway Performance and Extension Plans
+5678	1	Hearing - Central Subway Project
+5679	1	Hearing - Chariot Shutdown's Impact on Transportation
+5680	1	Hearing - Charter Amendment - Public Advocate; Department of Police Accountability
+5681	1	Hearing - Chief Medical Examiner's Annual Report
+5682	1	Hearing - Childcare in District #
+5683	1	Hearing - Childhood Obesity in the City and County of San Francisco
+5684	1	Hearing - Cigarette-Butt Ashcan Pilot Evaluation
+5685	1	Hearing - City Audit for FY
+5686	1	Hearing - City Budget Reserves
+5687	1	Hearing - City College of San Francisco - Program Reductions and Impacts to Students and Communities
+5688	1	Hearing - City College of San Francisco Proposed Course Changes and Reductions
+5689	1	Hearing - City Contractors' Safety Records
+5690	1	Hearing - City Departments Treating District # as a Containment Zone
+5691	1	Hearing - City Incentives and Penalties for Vacant and Blighted Commercial Properties
+5692	1	Hearing - City Policies to Reduce Homelessness in Residential Neighborhoods
+5693	1	Hearing - City Response and Proactive Plan to Flooding
+5694	1	Hearing - City Services Auditor Report - The City Must Determine Whether United Council of Human Services Should Continue Providing Services to San Francisco Residents Despite Continuing Noncompliance With City Agreements
+5695	1	Hearing - City Spending Related to Incarceration
+5696	1	Hearing - City Support for Surveillance Testing at SFUSD Schools
+5697	1	Hearing - City Whistleblower Program and Most Recent Whistleblower Report
+5698	1	Hearing - City and County's Healthy and Sustainable Food Policy
+5699	1	Hearing - City and School District Planning Efforts to Support Distance Learning for the # Academic Year
+5700	1	Hearing - City's Coordinated Response to September # Heatwave
+5701	1	Hearing - City's Current Employment Opportunities for Older Adults and Adults with Disabilities
+5702	1	Hearing - City's Downpayment Assistance Loan Programs
+5703	1	Hearing - City's Efforts to Address Car Break-Ins
+5704	1	Hearing - City's External Audit for FY and City's External Audit Plans for FY
+5705	1	Hearing - City's Plan to Fulfill Housing Element's Extremely-Low Income Unit Obligation
+5706	1	Hearing - City's Plan to Implement Proposition B from the November # Ballot
+5707	1	Hearing - City's Preparation for the # Census
+5708	1	Hearing - City's Shelter in Place Hotel Rehousing Plan
+5709	1	Hearing - City's Vacant/Abandoned Property
+5710	1	Hearing - Citywide Fiber Broadband Network
+5711	1	Hearing - Citywide Nonprofit Performance Audit Report
+5712	1	Hearing - Citywide Project Labor Agreement and Annual Reports
+5713	1	Hearing - Citywide Survey of Historic Resources
+5714	1	Hearing - Citywide Youth Violence Response and Prevention
+5715	1	Hearing - City’s Housing Affordability and Housing Stability Needs, and Relevant Planning Department Reports
+5716	1	Hearing - City’s Inadequate Progress in Meeting Mandated Affordable Housing Goals, Findings by the Budget and Legislative Analyst, and Actions to Accelerate Public Investments
+5717	1	Hearing - City’s Rent Relief Program
+5718	1	Hearing - Civil Grand Jury - San Francisco County Jails: Our Largest Mental Health Facility
+5719	1	Hearing - Civil Grand Jury - San Francisco Homeless Health and Housing: A Crisis Unfolding on Our Streets
+5720	1	Hearing - Civil Grand Jury Report - "Uncontrolled Burn Dimming the Spark of Illegal Fireworks in San Francisco."
+5721	1	Hearing - Civil Grand Jury Report - A Progress Report about the San Francisco Department of Homelessness and Supportive Housing
+5722	1	Hearing - Civil Grand Jury Report - Building San Francisco: Designing, Constructing, and Maintaining City Infrastructure
+5723	1	Hearing - Civil Grand Jury Report - Buried Problems and a Buried Process - The Hunters Point Naval Shipyard in a Time of Climate Change
+5724	1	Hearing - Civil Grand Jury Report - Capacity To Serve: Setting Social Services Nonprofits Up for Success
+5725	1	Hearing - Civil Grand Jury Report - Come Hell or Highwater: Flood Management in a Changing Climate
+5726	1	Hearing - Civil Grand Jury Report - Commission Impossible? Getting the Most from San Francisco’s Commissions
+5727	1	Hearing - Civil Grand Jury Report - Drinking Water Safety in San Francisco: A Reservoir of Good Practice
+5728	1	Hearing - Civil Grand Jury Report - Failed Vision - Revamping the Roadmap to Safer Streets
+5729	1	Hearing - Civil Grand Jury Report - Lifting the Fog: On Budgets, Innovation, Silos, and More
+5730	1	Hearing - Civil Grand Jury Report - San Francisco Building and Fire Safety Inspection: A Tale of Two Departments: Department of Building Inspection and San Francisco Fire Department
+5731	1	Hearing - Civil Grand Jury Report - Techs in the City - Government’s Opportunity to Seize the AI Moment
+5732	1	Hearing - Civil Grand Jury Report - Time to Get to Work: San Francisco's Hiring Crisis
+5733	1	Hearing - Climate Action Plan Funding
+5734	1	Hearing - Climate Emergency
+5735	1	Hearing - Closing of the Skilled Nursing and Sub-Acute Units in St. Luke's Hospital
+5736	1	Hearing - Co-Enrollment and Dual-Enrollment Initiatives from San Francisco Unified School District and City College of San Francisco
+5737	1	Hearing - Committee of the Whole - Amendment to the Redevelopment Plan for the Mission Bay South Blocks # Redevelopment Project - July # , # , at # : # p.m.
+5738	1	Hearing - Committee of the Whole - Amendments to the Hunters Point Shipyard Redevelopment Plan and the Bayview Hunters Point Redevelopment Plan - June # , # , # : # p.m.
+5739	1	Hearing - Committee of the Whole - City Preparations in Response to the COVID- # Health Emergency - March # , #
+5740	1	Hearing - Committee of the Whole - CleanPowerSF Community Aggregation Program Electric Generation Rates and Charges - San Francisco Public Utilities Commission - January # , #
+5741	1	Hearing - Committee of the Whole - Controller’s Report on Cannabis Following Adult-Use Legalization - March # , # , at # : # p.m.
+5742	1	Hearing - Committee of the Whole - Disclosure Responsibilities of Board of Supervisors Under Federal Securities Laws - April # , # , at # : # p.m.
+5743	1	Hearing - Committee of the Whole - Dogpatch and Northwest Potrero Hill Green Benefit District - Renewal and Expansion - July # , # , at # : # p.m.
+5744	1	Hearing - Committee of the Whole - Financial Impacts - COVID- # Health Emergency - March # , # , at # : # p.m.
+5745	1	Hearing - Committee of the Whole - Findings and Recommendations Regarding Law Enforcement Practices - November # , #
+5746	1	Hearing - Committee of the Whole - Findings and Recommendations Regarding Law Enforcement Practices - Update - September # , #
+5747	1	Hearing - Committee of the Whole - Findings and Recommendations of Law Enforcement Staffing Numbers - April # , # , at # : # p.m.
+5748	1	Hearing - Committee of the Whole - Findings and Recommendations of Law Enforcement Staffing Numbers - February # , #
+5749	1	Hearing - Committee of the Whole - Findings and Recommendations of Law Enforcement Staffing Numbers - February # , # , at # : # p.m.
+5750	1	Hearing - Committee of the Whole - Findings and Recommendations of Law Enforcement Staffing Numbers - March # , # , at # : # p.m.

@@ -1,0 +1,250 @@
+5251	1	Appointments, SOMA Community Stabilization Fund Community Advisory Committee - Henry Karnilowicz, Misha Olivas, Raquel Redondiez, Norman Lynde, Tanya Reyes, Christian Martin, and Janetta Johnson
+5252	1	Appointments, SOMA Community Stabilization Fund Community Advisory Committee - John Elberling, Misha Olivas, Raquel Redondiez, Allan Manalo, and Adam Mesnick
+5253	1	Appointments, SOMA Community Stabilization Fund Community Advisory Committee - Marke Bieschke and Lorenzo Listana
+5254	1	Appointments, San Francisco Health Authority - Abigail Laurence Alderson, Jian Zhang, Roland Pickens, Joseph Woo, Steven Fugaro, Norlissa Cooper, and Juthaport Chaloeicheep
+5255	1	Appointments, San Francisco Health Authority - Jian Qing Zhang, Emily Webb, Sabra Matovsky, Lawrence Cheung, Steven Fugaro, Steve Fields, and Joseph David Woods
+5256	1	Appointments, San Francisco Health Authority - Jian Qing Zhang, Roland Pickens, Emily Webb, Joseph Woo, Steven Fugaro, Steve Fields, and Eddie Chan
+5257	1	Appointments, San Francisco Reinvestment Working Group - Rafael Morales, Jennifer Finger, Elizabeth Dwyer, Fernando Marti, Christin Evans, Michelle Pierce, and Sylvia Chi
+5258	1	Appointments, Sanitation and Streets Commission - Thomas Richard Harrison and Kimberlee Ann Hartwig-Schulman
+5259	1	Appointments, Shelter Monitoring Committee - Diana Almanza, Traci Watson, Gabriela Avalos and Vixen Yvonne
+5260	1	Appointments, Shelter Monitoring Committee - Joaquin Remora, Cris Plunkett, Diana Almanza, and Traci Watson
+5261	1	Appointments, Shelter Monitoring Committee - Patrina Hall, Loretta Gaines, Nicholas Kimura, Lauren Kahn, Leslie Bilbro, and Traci Watson
+5262	1	Appointments, Sheriff’s Department Oversight Board
+5263	1	Appointments, Sheriff’s Department Oversight Board - Gale Renee Rosboro and Carla Cuevas
+5264	1	Appointments, Sheriff’s Department Oversight Board - Ovava Eterei Afuhaamango, William Monroe Palmer II, Jayson Wechter, and Michael Nguyen
+5265	1	Appointments, Single Room Occupancy Task Force - Dan Jordan, Sam Patel, Bruce Burge, Angela Chu, Raul Fernandez-Berriozabal, Chirag Bhakta, Diana Martinez, Clifford Gilmore, and Jordan Davis
+5266	1	Appointments, Single Room Occupancy Task Force - Randall Sloan, Suresh Patel, Shanita Gardner, Dion Roberts, Juan Alejandro Garcia, Clifford Gilmore, Angela Chu, Raul Fernandez-Berriozabal, and Jordan Davis
+5267	1	Appointments, Small Business Commission - Dimitri Thierry Cornet, Miriam Zouzounis, and William Ortiz-Cartagena
+5268	1	Appointments, South of Market Community Planning Advisory Committee - John Elberling, C. Heather Phillips, and Jane Weil
+5269	1	Appointments, South of Market Community Stabilization Fund Community Advisory Committee - Daniel Hlad, Connie Ford, John Elberling, Thomas Temprano, Jane Weil, Kristian Romasanta, and Allan Manalo
+5270	1	Appointments, Street-Level Drug Dealing Task Force - Lindsay LaSalle, Janet Ector, Teresa Lynn Friend, Pedro Vidal Flores, Curtis Bradford, Porsha Dixson, Louie Hammonds, Max Young, and Thomas Wolf
+5271	1	Appointments, Student and Families RISE Working Group - Leslie Hu, Rafael Picazo, Efrain Barrera, Carol Hill, Joyce Dorado, Jacob Leos-Urbel, Emily Garvie, and Marcus Wong
+5272	1	Appointments, Sugary Drinks Distributor Tax Advisory Committee - Chester Williams, Gabriela Castellanos Rumbo, Frances Abigail Cabrera, Jamey Schmidt, Shoon Mon, and Laura Urban
+5273	1	Appointments, Sugary Drinks Distributor Tax Advisory Committee - Chester Williams, John Iesha Ena, Marna Armstead, Francis Abigail Cabrera, Jamey Schmidt, Linda Ye, Eva Holman, and Laura Urban
+5274	1	Appointments, Sugary Drinks Distributor Tax Advisory Committee - Melinda Burrus and Prasanthi Patel
+5275	1	Appointments, Sugary Drinks Distributor Tax Advisory Committee - Vanessa Bohm, John Maa, Joi Jackson-Morgan, Roberto Ariel Vargas, Johnathan Butler, Janna Cordeiro and Derik Aoki
+5276	1	Appointments, Sugary Drinks Distributor Tax Advisory Committee - Vanessa Bohm, Kent Woo, Joi Jackson-Morgan, Roberto Ariel Vargas, Jonathan Butler, Areeya Chananudech, Janna Cordeiro, and Lyra Ng
+5277	1	Appointments, Sunshine Ordinance Task Force - Amerika Nachele Sanchez
+5278	1	Appointments, Sunshine Ordinance Task Force - Jaya Padmanabhan and Bruce Wolfe
+5279	1	Appointments, Sunshine Ordinance Task Force - Matthew Cate and Lila LaHood
+5280	1	Appointments, Sunshine Ordinance Task Force - Saul Sugarman and David Pilpel
+5281	1	Appointments, Sweatfree Procurement Advisory Group - Dave Marin, Jason Oringer, Yuval Miller, and Julienne Fisher
+5282	1	Appointments, Transbay Joint Powers Authority - Nadia Sesay and Tilly Chang
+5283	1	Appointments, Treasury Oversight Committee - Ben Rosenfield, Reeta Madhavan, Eric Sandler, and Kevin Kone
+5284	1	Appointments, Urban Forestry Council - John Malcolm Hillan, Andrew Sullivan, Dan Flanagan, Meg Lowman, Michael Sullivan, and Phillip Pierce
+5285	1	Appointments, Urban Forestry Council - Morgan Vaisset-Fauvel, Andrew Sullivan, Pamela Nagle, Dan Flanagan, Ildiko Polony, Michael Sullivan, and Edgar Flores
+5286	1	Appointments, Urban Forestry Council - Morgan Vaisset-Fauvel, Karla Nagy, Pamela Nagle, Edgar Xochitl Flores, Caroline Scanlan, Joshua Klipp, and Antonio Moreno
+5287	1	Appointments, Urban Forestry Council - Morgan Vasisset-Fauvel, Pamela Nagle, Ildiko Polony, Mike Sullivan, and Edgar "Xochitl" Flores
+5288	1	Appointments, Veterans Affairs Commission - Douglas Boullard, William Barnickel, Courtney Miller, and Hanley Chan
+5289	1	Appointments, Veterans Affairs Commission - George Ishikata, Margo Ellis, Deborah Dacumos, and Matthew Brauer
+5290	1	Appointments, Veterans Affairs Commission - Hanley Chan, Victor Olivieri, David Chasteen, Stephen Martin-Pinto, George Chewning, and Christopher Todd McDonald
+5291	1	Appointments, Veterans Affairs Commission - Jason Chittavong, George Ishikata, and Nicholas Rusanoff
+5292	1	Appointments, Veterans Affairs Commission - Jenny Perez, Deborah Dacumos, John Reissenweber, Jason Chittavong, Hanley Chan, Prince Kelly Jordan, James Boatman, and Darya Kutovaya
+5293	1	Appointments, Veterans Affairs Commission - Victor Olivieri, Kelsey Campbell, David Chasteen, and Dorothy "Dottie" Guy
+5294	1	Appointments, Workforce Community Advisory Committee - Elizabeth Jackson-Simpson, Debra Gore-Mann, and Villy Wang
+5295	1	Appropriation - Children's Fund - Department of Children, Youth, and Their Families - $
+5296	1	Appropriation - Department of Building Inspection Fund to Department of Emergency Management for Tall Building Seismic Safety Project - $
+5297	1	Appropriation - Earthquake Safety and Emergency Response General Obligation Proceeds - Series 2021A - Department of Public Works, San Francisco Public Utilities Commission, and Recreation and Parks Department - FY $
+5298	1	Appropriation - Educational Revenue Augmentation Fund Property Tax - Department of Homelessness and Supportive Housing - Department of Public Health - Mayor’s Office of Housing and Community Development - $ - FY
+5299	1	Appropriation - Educational Revenue Augmentation Fund Property Tax - Homeless and Behavioral Health Services, Affordable Housing, and Mandatory Baseline Contributions - $ - FY
+5300	1	Appropriation - Educational Revenue Augmentation Fund Property Tax - Mayor’s Office of Housing and Community Development - Department of Public Health - Human Services Agency - $ - FY
+5301	1	Appropriation - Fiscal Cliff Reserve - General Services Agency - City Administrator - Affordable Housing Development - $ - FY
+5302	1	Appropriation - General Fund - Public Works for Street & Sidewalk Cleaning Pilot Enhancement Project - $ - FY
+5303	1	Appropriation - General Reserve - Department of Public Health - Wellness Hubs - $ - FY
+5304	1	Appropriation - General Reserve - Establishing a Legal Unit to Defend Immigrants from Deportation in FY and # - $
+5305	1	Appropriation - General Reserve - Human Rights Commission - $ - FY
+5306	1	Appropriation - General Reserve - Support Immigration Related Legal Services - FY $
+5307	1	Appropriation - General Reserve - Tenderloin Emergency Safety - Office of Economic and Workforce Development and Department of Public Health - $ - FY
+5308	1	Appropriation - Grants to Businesses in Chinatown Affected by Delay of the Central Subway Project - $ - FY
+5309	1	Appropriation - Property Tax - Department of Children, Youth and Their Families - $ - Summer Programming - FY
+5310	1	Appropriation - Property Tax - Overdose Prevention - District Attorney - $ ; Department of Public Health - $ - FY
+5311	1	Appropriation - Real Property Transfer Tax for Maintaining Street Trees and Surrounding Sidewalks - FY $
+5312	1	Appropriation - Water Enterprise Fund Balance - Land Mobile Radio System - FY $
+5313	1	Approval of a # Day Extension for Planning Commission Review of Arts Activities and Social Service or Philanthropic Facilities as Temporary Uses (File No. # )
+5314	1	Approval of a # Day Extension for Planning Commission Review of Condominium Conversion of Accessory Dwelling Units (File No. # )
+5315	1	Approving Issuance of Bonds - California Statewide Communities Development Authority - San Francisco Museum of Modern Art - Not to Exceed $
+5316	1	Asian Pacific American Heritage Month - May
+5317	1	Authority to Award Grant - Edgewood Center for Children and Families - Maintenance of Financial Solvency - $
+5318	1	Authorization to Expend Funds for Yosemite Slough Sediment Site Studies
+5319	1	Authorizing Parole Entry Agreement for Murder Prosecution - Department of Homeland Security/District Attorney and Sheriff
+5320	1	Authorizing Parole Entry Agreement for Sex Offense Prosecution - Department of Homeland Security/District Attorney and Sheriff
+5321	1	Authorizing Preparation of Proponent Ballot Arguments and Rebuttal Ballot Arguments - March # , # , Consolidated Presidential Primary Election
+5322	1	Avigation Easements - San Mateo County - San Francisco International Airport's Noise Insulation Program
+5323	1	Board of Supervisors/Clerk of the Board Annual Budget Guidelines - FY and FY
+5324	1	Brixton at Large Day - April # , #
+5325	1	Budget and Legislative Analyst Audit - Economic Provisions of Police Department and Police Officers Association MOU
+5326	1	Building Code - Construction That Causes Temporary Suspension of Water or Utility Service or Excessive Noise
+5327	1	Building Code - Dedicated Telecommunications Space; Fiber-Ready Cabling
+5328	1	Building Code - Mandatory Disability Access Improvements for Places of Public Accommodation - Extension of Time Deadlines for an Additional Six Months
+5329	1	Business and Tax Regulations Code - Cannabis Business Tax Repeal
+5330	1	Business and Tax Regulations Code - Early Care and Education Commercial Rents Tax Sublessor Deduction
+5331	1	Business and Tax Regulations Code - Real Property Transfer Tax Rates and Penalties
+5332	1	Business and Tax Regulations Code - Revenue Control Equipment, Software Applications, and Valet Parking Operators Certificates of Authority
+5333	1	Business and Tax Regulations Code - Streamlined Permitting Review in C- # Districts
+5334	1	Business and Tax Regulations, Planning Codes - Central South of Market Housing Sustainability District
+5335	1	Bylaws Amendment - Treasure Island Development Authority - Contract Authorization of Up to $
+5336	1	Bylaws Amendment - Treasure Island/Yerba Buena Island Citizen’s Advisory Board - Decrease Number of Board Members
+5337	1	Caffé Trieste Day - April # , #
+5338	1	California Constitution Appropriations Limit - FY
+5339	1	Calling Joint Special Meeting with the Public Utilities Commission - Closed Session - Existing Litigation - Pacific Gas and Electric Company - March # , # , at # : # p.m.
+5340	1	Calling Special Election Related to Infrastructure and Revitalization Financing District No. # (Treasure Island)
+5341	1	Calling from Committee - Committee of the Whole - Planning Code Amendment (File No. # ) - Construction of Accessory Dwelling Units
+5342	1	Calling from Committee - Modifying Time for Submission of Charter Amendment (File No. # ) under Rule #
+5343	1	Caltrain Feeder Service Agreement - Peninsula Corridor Joint Powers Board - $ Base Annual Payment
+5344	1	Campaign and Governmental Conduct Code - Behested Payments Exceptions
+5345	1	Campaign and Governmental Conduct Code - Campaign Consultants, Recusal Notifications, Major Developer Disclosures
+5346	1	Campaign and Governmental Conduct Code - Campaign Contributions from Business Entities
+5347	1	Campaign and Governmental Conduct Code - Campaign Public Financing Expenditure Ceilings and Reporting Requirements, and Campaign Contribution Limits
+5348	1	Campaign and Governmental Conduct Code - Disclosure Requirements for Campaign Fundraising and Prohibiting Campaign Contributions from Persons with Land Use Matters
+5349	1	Campaign and Governmental Conduct Code - Expanding Scope of Whistleblower Protection Ordinance
+5350	1	Campaign and Governmental Conduct Code - Major Donor Disclosures of Business Interests
+5351	1	Carl Nolte Day - October # , #
+5352	1	Charter Amendment - Adjustment of Baseline Funding
+5353	1	Charter Amendment - Appointments to Fill Vacancies in Elective Office
+5354	1	Charter Amendment - Budget Set-Asides and Baselines
+5355	1	Charter Amendment - Dignity Fund
+5356	1	Charter Amendment - Housing and Community Development Commission and Department
+5357	1	Charter Amendment - Independent Redistricting Task Force
+5358	1	Charter Amendment - Jurisdiction Within City Government Over Parking and Traffic Matters
+5359	1	Charter Amendment - Noncitizen Voting in School Board Elections
+5360	1	Charter Amendment - Revenue Bonds for Public Utilities Commission Power Facilities
+5361	1	Charter Amendment - Split Appointment Authority for Boards and Commissions; Powers and Duties of the City Administrator
+5362	1	Charter Amendment and Initiative Ordinance - Commission Reform
+5363	1	Child Abuse Prevention Month - April #
+5364	1	City Position Regarding Liability for Utility Wildfire Costs
+5365	1	Clean Air Day - October # , #
+5366	1	Closed Session - Existing Litigation - American Beverage Association, California Retailers Association, and California State Outdoor Advertising Association - February # , #
+5367	1	Closed Session - Settlement of Lawsuit and Tolling Agreement - Airbnb, Inc. and HomeAway.com, Inc. - May # , #
+5368	1	Commending Captain Brett Elliott Crozier
+5369	1	Commending Monica Walters
+5370	1	Commending Roberta Boomer for # Years of Service to the City and County of San Francisco
+5371	1	Commending Supervisor Catherine Stefani
+5372	1	Commending Supervisor Jeff Sheehy
+5373	1	Commending Supervisor London Breed
+5374	1	Commending Supervisor Mark Farrell
+5375	1	Commending Supervisor Scott Wiener
+5376	1	Commending Supervisor Vallie Brown
+5377	1	Commitment to Monitor and Defend the Confidentiality of the # Census Data Collection Efforts
+5378	1	Committee of the Whole - Controller’s Report on Cannabis Following Adult-Use Legalization - March # , # , at # : # p.m.
+5379	1	Committee of the Whole - Disclosure Responsibilities of Board of Supervisors Under Federal Securities Laws - April # , # , at # : # p.m.
+5380	1	Committee of the Whole - Disclosure Responsibilities of Board of Supervisors Under Federal Securities Laws - October # , #
+5381	1	Committee of the Whole - Findings and Recommendations Regarding Law Enforcement Practices - November # , #
+5382	1	Committee of the Whole - Food and Beverage Worker Wages and Benefits at SFO and Operational Impact of an Imminent Strike - September # , # , at # : # p.m.
+5383	1	Committee of the Whole - Grant Agreements for Financial Solvency - Baker Places, Inc. - $ - Positive Resource Center - $ - June # , # , at # : # p.m.
+5384	1	Committee of the Whole - Labor Disputes at the Felton Institute and the Operational Impact on Employment and Public Services - April # , # , at # : # p.m.
+5385	1	Committee of the Whole - Proclamation of Local Emergency - Drug Overdoses in the Tenderloin - January # , # , at # : # p.m
+5386	1	Committee of the Whole - Update on Findings and Recommendations Regarding Law Enforcement Practices - September # , # , at # : # p.m.
+5387	1	Committee of the Whole - Update on the City's Response to Address the Omicron Surge - January # , # , at # : # pm
+5388	1	Committees of the Whole - Findings and Recommendations Regarding Law Enforcement Practices - Update
+5389	1	Concession Lease Amendment - Canonica New York, LLC dba The Chocolate Market - Extending Base Operating Term - Minimum Annual Guarantee $
+5390	1	Concession Lease Amendment - Joe & the Juice New York, LLC dba Joe & the Juice - Extension of Base Operating Term - $ Minimum Annual Guarantee
+5391	1	Concession Lease Amendment - Joe & the Juice New York, LLC dba Joe & the Juice Extension of Base Operating Term - $ Minimum Annual Guarantee
+5392	1	Concession Lease Amendment - Paradies Lagardere @ SFO, LLC dba Limon Rotisserie - Extension of Base Operating Term - $ Minimum Annual Guarantee
+5393	1	Concession Lease Amendment - Paradies Lagardere @ SFO, LLC dba Limon Rotisserie Extension of Base Operating Term - $ Minimum Annual Guarantee
+5394	1	Concession Lease Amendment - Tastes on the Fly SFO International, LLC dba Napa Farms Market; Mustards Grill; and Samovar Tea - Extension of Base Operating Term - $ Minimum Annual Guarantee
+5395	1	Concession Lease Amendment Tastes on the Fly SFO International, LLC dba Napa Farms Market; Mustards Grill; and Samovar Tea - Extension of Base Operating Term - $ Minimum Annual Guarantee
+5396	1	Concurring in Actions to Meet Local Emergency - Coronavirus Response - Forty-First Supplement
+5397	1	Concurring in Actions to Meet Local Emergency - Coronavirus Response - Sixteenth Supplement
+5398	1	Concurring in Actions to Meet Local Emergency - Coronavirus Response - Twenty-First Supplement
+5399	1	Concurring in Actions to Meet Local Emergency - Coronavirus Response - Twenty-Ninth Supplement
+5400	1	Concurring in Actions to Meet Local Emergency - Coronavirus Response - Twenty-Third, Twenty-Fourth, and Twenty-Fifth Supplements
+5401	1	Concurring in Actions to Meet Local Emergency - Drug Overdoses in the Tenderloin - First Supplement
+5402	1	Concurring in Declaration of Local Emergency - Flooding Affecting SFPUC’s Moccasin Reservoir (Tuolumne County)
+5403	1	Concurring in Proclamation of Local Emergency - Coronavirus Response
+5404	1	Concurring in the Continuation of the Declaration of a Local Health Emergency - MPX Virus Outbreak
+5405	1	Concurring in the Continuation of the Declaration of a Local Health Emergency - Monkeypox Virus Outbreak
+5406	1	Concurring in the Second Declaration of Local Emergency - Flooding Affecting SFPUC’s Moccasin Reservoir (Tuolumne County)
+5407	1	Condemning President Trump's Executive Order Criminalizing Homelessness and Poverty
+5408	1	Condemning President Trump’s Use of the “Alien Enemies Act”
+5409	1	Condemning the Hateful Usage of the Term “Chinese Virus” and “Wuhan Virus” and Condemning Hate and Xenophobic Attacks
+5410	1	Conditionally Reversing Municipal Transportation Agency Decision - Overnight Recreational Large Vehicle Parking Restrictions
+5411	1	Confirming Appointment, Board of Appeals - Frank Fung
+5412	1	Confirming Appointment, Planning Commission - Joel Koppel
+5413	1	Confirming Appointment, Planning Commission - Myrna Melgar
+5414	1	Confirming Appointment, Treasure Island Development Authority Board of Directors - Sam Moss
+5415	1	Confirming Reappointment, Board of Appeals - Darryl Honda
+5416	1	Confirming Reappointment, Planning Commission - Richard Hillis
+5417	1	Confirming Reappointment, Public Utilities Commission - Ann Moller Caen
+5418	1	Confirming Reappointment, Public Utilities Commission - Francesca Vietor
+5419	1	Confirming Reappointment, Public Utilities Commission - Vince Courtney, Jr.
+5420	1	Construction Management and Oversight Services Intergovernmental Agreement - Transbay Joint Powers Authority - $
+5421	1	Contract - Brookfield Properties - Electric Facilities Installation at Pier # - Not to Exceed $
+5422	1	Contract Agreement - Gillig, LLC - Purchase of # Electric Transit Buses - Not to Exceed $
+5423	1	Contract Agreement - Newcomb Anderson McCormick - Professional Services Related to Energy and Climate Programs - Not to Exceed $
+5424	1	Contract Agreement - Progress Foundation - Behavioral Health Services - Not to Exceed $
+5425	1	Contract Agreement - Rebuilding Together San Francisco - Fix Lead SF - Not to Exceed $
+5426	1	Contract Agreement - Retroactive - HealthRIGHT # - Fiscal Intermediary Check-Writing Services - Not to Exceed $
+5427	1	Contract Agreement - Retroactive - Rebuilding Together San Francisco - Fix Lead SF - Not to Exceed $
+5428	1	Contract Agreement - Universal Protection Service, LP, dba Allied Universal Security Services - Armed and Unarmed Security Guard Services - Not to Exceed $
+5429	1	Contract Agreement Amendment - Retroactive - HealthRIGHT # - Fiscal Intermediary Check-Writing Services - Not to Exceed $
+5430	1	Contract Amendment - Collections Solutions Software, Inc. - Service and Support Agreement - Not to Exceed $
+5431	1	Contract Amendment - Health Advocates, LLC - Uncompensated Care Reimbursement Recovery Services - Not to Exceed $
+5432	1	Contract Amendment - Helios Healthcare, LLC - Not to Exceed $
+5433	1	Contract Amendment - New Flyer of America, Inc. - Purchase of Low Floor Electric Trolley Buses - Not to Exceed $
+5434	1	Contract Amendment - Positive Resource Center - Behavioral Health Services - Not to Exceed #
+5435	1	Contract Amendment - Positive Resource Center - Behavioral Health Services - Not to Exceed $
+5436	1	Contract Amendment - Power Transmission Project - URS Corporation - Total Not to Exceed $
+5437	1	Contract Amendment - Retroactive - Health Advocates, LLC - Uncompensated Care Reimbursement Recovery Services - Not to Exceed $
+5438	1	Contract Amendment - Retroactive - Heluna Health - Comprehensive Outreach and Case Management Programming - Not to Exceed $
+5439	1	Contract Amendment - San Francisco Public Health Foundation - Sugary Drinks Distributor Project - Not To Exceed $
+5440	1	Contract Amendment - San Francisco Public Health Foundation - Sugary Drinks Distributor Project - Not to Exceed $
+5441	1	Contract Amendment - Tides Center - Supportive Housing Property Management Services - Delivering Innovation in Supportive Housing Program - Not to Exceed $
+5442	1	Contract Amendment - URS Corporation - Power Transmission Project - URS Corporation - Total Not to Exceed $
+5443	1	Contract Amendment Cornerstone Technology Partners II JV - Technology Marketplace - Not to Exceed $
+5444	1	Contract Amendment No. # - Central Subway Deign Group - Increase Contract Amount - Not to Exceed $
+5445	1	Contract Amendment No. # - Central Subway Design Group - Increase Contract Amount - Not to Exceed $
+5446	1	Contracting Process - Treasure Island Wastewater Treatment Plant - Waiver of Certain Administrative Code Provisions
+5447	1	Controller’s Reappointment, Public Works Commission - Lauren Post
+5448	1	Cost Reimbursement Agreement - ExxonMobil Corporation - Management of Residual Petroleum Hydrocarbons - Wharf J10 - $
+5449	1	De-Appropriation - General Fund Expenditure Budget - Various Departments for Funding Services at the Department of Homelessness and Supportive Housing and General City Responsibilities - FY and # - $
+5450	1	De-Appropriation and Appropriation - $ in Various Departments to Various Departments - FY
+5451	1	De-Appropriation and Appropriation - General City Responsibility - APEC # Project - Municipal Transportation Agency and Office of Economic and Workforce Development - $ - Fiscal Year #
+5452	1	De-Appropriation and Re-Appropriation - Expenditures of $ Supporting Increased Workers’ Compensation Expenditures - Police Department - FY
+5453	1	Debt Policy - Controller's Office of Public Finance
+5454	1	Declaration of Election Results - February # , # - Consolidated Special Municipal Election
+5455	1	Declaration of Election Results - March # , # - Consolidated Presidential Primary Election
+5456	1	Declaration of Election Results - November # , # - Consolidated Municipal Election
+5457	1	Declaration of Election Results of the June # , # , Consolidated Municipal Election
+5458	1	Declaring Anti-Black Racism as a Human Rights and Public Health Crisis
+5459	1	Declaring Results of Special Election Related to Infrastructure and Revitalization Financing District No. # (Treasure Island)
+5460	1	Declaring Support for the Restoration of the Aquatic Park Pier - Urging Prioritization of National Park Service Project for Funding Through the Great Outdoors Act of #
+5461	1	Declaring a Commitment to Hiring a Transformative Leader for the County’s Veterans Service Office
+5462	1	Deputy Controller Todd Rydstrom Day - July # , #
+5463	1	Determining Annexation of Property to City and County of San Francisco Community Facilities District No. # (Transbay Transit Center) and Determining and Confirming Annexation Process
+5464	1	Early Lease Termination and Reimbursement of Unamortized Construction Costs - Legends Bar of San Francisco, LLC - $
+5465	1	Electrical Code - Installation Requirements
+5466	1	Emergency Contract - Retroactive - Health Management Associates, Inc. - Specialized Consulting Services - Not to Exceed $
+5467	1	Emergency Ordinance - Delegation of Authority to Amend Certain Leases and Agreements for Affordable Housing
+5468	1	Emergency Ordinance - Emergency Response In Parks
+5469	1	Emergency Ordinance - Eviction Protection For Tenants Unable To Pay Rent
+5470	1	Emergency Ordinance - Limiting COVID- # Impacts through Safe Shelter Options
+5471	1	Emergency Ordinance - Temporary Waiver of Business Registration and License Fees for Certain Small Businesses Due to COVID- # Pandemic
+5472	1	Encouraging Commercial, Residential Lenders, and Public Utilities to Have a # Day Moratorium on Default Payments for Customers Including Small Businesses
+5473	1	Encouraging San Francisco to Take Action to Prevent Child Abuse and Neglect During the COVID- # Shelter in Place Order
+5474	1	Encouraging the Municipal Transportation Agency to Develop Additional Policies and Protections for Muni Operators During the COVID- # Crisis
+5475	1	Ending Business with Wells Fargo
+5476	1	Endometriosis Awareness Month - March #
+5477	1	Environment Code - Food Service Waste Reduction
+5478	1	Environment Code - Green Building Requirements for City Buildings
+5479	1	Environment Code - Promotion of Reusable Food Service Ware
+5480	1	Environment, Public Works Codes - Construction and Demolition Debris Recovery
+5481	1	Establishing Appropriations Limit (Gann Limit) - FY Special Tax Districts and Infrastructure and Revitalization Financing Districts
+5482	1	Establishing the Compton’s Cultural District
+5483	1	Establishment of Small Business Emergency Relief Program - Not to Exceed $ Funding/Loan Agreements - California Rebuilding Fund, LLC - Expected Amount $ - Funding/Grant Agreements - Kiva Microfunds - Expected Amount $
+5484	1	Establishment of the Castro LGBTQ Cultural District
+5485	1	Establishment of the LGBTQ Leather Cultural District
+5486	1	Ezra Rapport Day - October # , #
+5487	1	Final Map # - # 18th Avenue
+5488	1	Final Map # - # 19th Street
+5489	1	Final Map # - # 1st Street
+5490	1	Final Map # - # 24th Street
+5491	1	Final Map # - # 25th Street
+5492	1	Final Map # - # 3rd Street
+5493	1	Final Map # - # 7th Street
+5494	1	Final Map # - 5M Project Phase One
+5495	1	Final Map # - Balboa Reservoir Mixed-Use Project
+5496	1	Final Map # - Hunters Point Shipyard Block #
+5497	1	Final Map # - Hunters Point Shipyard Phase #
+5498	1	Final Map # - Mission Bay Blocks #
+5499	1	Final Map # - Pier # , Phase #
+5500	1	Final Map # - Potrero Power Station Mixed-Use Project

@@ -1,0 +1,250 @@
+2501	2	Appointment, Association of Bay Area Governments, Executive Board Regional Planning Committee - Supervisor Myrna Melgar
+2502	2	Appointment, Bay Area Air Quality Management District Board of Directors - Supervisor Hillary Ronen
+2503	2	Appointment, Bay Area Air Quality Management District Board of Directors - Supervisor Jeff Sheehy
+2504	2	Appointment, Bay Area Air Quality Management District Board of Directors - Supervisor Shamann Walton
+2505	2	Appointment, Bay Area Air Quality Management District, Board of Directors - Supervisor Bilal Mahmood
+2506	2	Appointment, Bay Area Air Quality Management District, Board of Directors - Supervisor Gordon Mar
+2507	2	Appointment, Bay Area Air Quality Management District, Board of Directors - Supervisor Myrna Melgar
+2508	2	Appointment, Bay Area Air Quality Management District, Board of Directors - Supervisor Rafael Mandelman
+2509	2	Appointment, Bay Conservation and Development Commission - Supervisor Connie Chan
+2510	2	Appointment, Bay Conservation and Development Commission - Supervisor Jane Kim
+2511	2	Appointment, Behavioral Health Commission - Supervisor Ahsha Safai
+2512	2	Appointment, Bicycle Advisory Committee - Ariel Earnhardt
+2513	2	Appointment, Bicycle Advisory Committee - Brandon Powell
+2514	2	Appointment, Bicycle Advisory Committee - Jay Hansen
+2515	2	Appointment, Bicycle Advisory Committee - Jina Bartholomew Lux
+2516	2	Appointment, Bicycle Advisory Committee - Joshua Kelly
+2517	2	Appointment, Bicycle Advisory Committee - Maelig Morvan
+2518	2	Appointment, Bicycle Advisory Committee - Timothy Marcus
+2519	2	Appointment, Bicycle Advisory Committee - Vanessa Gregson
+2520	2	Appointment, Board of Appeals - Rachael Tanner
+2521	2	Appointment, California State Association of Counties - Supervisor Chyanne Chen
+2522	2	Appointment, California State Association of Counties - Supervisor Joel Engardio
+2523	2	Appointment, Cannabis Oversight Committee - Jessica Cry
+2524	2	Appointment, Child Care Planning and Advisory Council - Benson Wong
+2525	2	Appointment, Child Care Planning and Advisory Council - Claudia Quinonez
+2526	2	Appointment, Child Care Planning and Advisory Council - Crystal Hawkins
+2527	2	Appointment, Child Care Planning and Advisory Council - Heather Cassandra Morado
+2528	2	Appointment, Child Care Planning and Advisory Council - Ivy Ng
+2529	2	Appointment, Child Care Planning and Advisory Council - Jonathan Skolnick
+2530	2	Appointment, Child Care Planning and Advisory Council - Mona Malan
+2531	2	Appointment, Child Care Planning and Advisory Council - Monique Guidry
+2532	2	Appointment, Child Care Planning and Advisory Council - Savitha Moorthy
+2533	2	Appointment, Child Care Planning and Advisory Council - Yensing Sihapanya
+2534	2	Appointment, Children and Families First Commission - Amanda Pyle
+2535	2	Appointment, Children and Families First Commission - Supervisor Chyanne Chen
+2536	2	Appointment, Children and Families First Commission - Supervisor Myrna Melgar
+2537	2	Appointment, Children and Families First Commission - Supervisor Sandra Lee Fewer
+2538	2	Appointment, Children, Youth and Their Families Oversight and Advisory Committee - Aaron Yen
+2539	2	Appointment, Children, Youth and Their Families Oversight and Advisory Committee - Joanna Powell
+2540	2	Appointment, City College Financial Assistance Fund Oversight Committee - Supervisor Jane Kim
+2541	2	Appointment, Commission on the Aging Advisory Council - Chris Dillon
+2542	2	Appointment, Commission on the Aging Advisory Council - Eva Aber
+2543	2	Appointment, Commission on the Aging Advisory Council - Ivy Fang Chang
+2544	2	Appointment, Commission on the Aging Advisory Council - Lisa Cook
+2545	2	Appointment, Commission on the Aging Advisory Council - Term Revision - Lisa Cook
+2546	2	Appointment, Committee on City Workforce Alignment - Supervisor Shamann Walton
+2547	2	Appointment, Director of the San Francisco Bay Area Regional Water System Financing Authority - Dennis J. Herrera
+2548	2	Appointment, Eastern Neighborhoods Citizens Advisory Committee - Anne Cervantes
+2549	2	Appointment, Eastern Neighborhoods Citizens Advisory Committee - Uzuri Pease-Greene
+2550	2	Appointment, Eastern Neighborhoods Community Advisory Committee - Nathan Mee
+2551	2	Appointment, Entertainment Commission - Ben Bleiman
+2552	2	Appointment, Food Security Task Force - Emma Steinberg
+2553	2	Appointment, Free City College Oversight Committee - Supervisor Connie Chan
+2554	2	Appointment, Free City College Oversight Committee - Supervisor Gordon Mar
+2555	2	Appointment, Golden Gate Bridge, Highway and Transportation District - Supervisor Matt Dorsey
+2556	2	Appointment, Golden Gate Bridge, Highway and Transportation District - Supervisor Sandra Lee Fewer
+2557	2	Appointment, Golden Gate Bridge, Highway and Transportation District - Supervisor Vallie Brown
+2558	2	Appointment, Golden Gate Bridge, Highway and Transportation District Board of Directors - Supervisor Danny Sauter
+2559	2	Appointment, Golden Gate Bridge, Highway and Transportation District Board of Directors - Supervisor Norman Yee
+2560	2	Appointment, Golden Gate Bridge, Highway and Transportation District, Board of Directors - Supervisor Joel Engardio
+2561	2	Appointment, Golden Gate Bridge, Highway and Transportation District, Board of Directors - Supervisor Myrna Melgar
+2562	2	Appointment, Health Officer - Grant Nash Colfax, MD
+2563	2	Appointment, Health Officer - Susan Philip, MD
+2564	2	Appointment, Local Agency Formation Commission - Supervisor Connie Chan
+2565	2	Appointment, Local Agency Formation Commission - Supervisor Jackie Fielder
+2566	2	Appointment, Local Agency Formation Commission - Supervisor Sandra Lee Fewer
+2567	2	Appointment, Mental Health Board - Supervisor Catherine Stefani
+2568	2	Appointment, Metropolitan Transportation Commission - Supervisor Jane Kim
+2569	2	Appointment, Metropolitan Transportation Commission - Supervisor Myrna Melgar
+2570	2	Appointment, Park, Recreation and Open Space Advisory Committee - Allyson Bravmann
+2571	2	Appointment, Park, Recreation and Open Space Advisory Committee - Cyntia Salazar
+2572	2	Appointment, Park, Recreation and Open Space Advisory Committee - John Raul Somoza
+2573	2	Appointment, Park, Recreation, and Open Space Advisory Committee - Brian Pepin
+2574	2	Appointment, Park, Recreation, and Open Space Advisory Committee - Cyntia Salazar
+2575	2	Appointment, Park, Recreation, and Open Space Advisory Committee - Deval Patel
+2576	2	Appointment, Park, Recreation, and Open Space Advisory Committee - Elijah Ball
+2577	2	Appointment, Park, Recreation, and Open Space Advisory Committee - Elisa Laird
+2578	2	Appointment, Park, Recreation, and Open Space Advisory Committee - Helen Doyle
+2579	2	Appointment, Park, Recreation, and Open Space Advisory Committee - Hillary Brown
+2580	2	Appointment, Park, Recreation, and Open Space Advisory Committee - Jorge Romero-Lozano
+2581	2	Appointment, Park, Recreation, and Open Space Advisory Committee - Kurt Grimes
+2582	2	Appointment, Park, Recreation, and Open Space Advisory Committee - Laura Mancuso
+2583	2	Appointment, Park, Recreation, and Open Space Advisory Committee - Lindsay Kaufman
+2584	2	Appointment, Park, Recreation, and Open Space Advisory Committee - Matthew Tolnay
+2585	2	Appointment, Park, Recreation, and Open Space Advisory Committee - Sarah Lartigue
+2586	2	Appointment, Park, Recreation, and Open Space Advisory Committee - Sophie Constantinou
+2587	2	Appointment, Park, Recreation, and Open Space Advisory Committee - Therese Oxford
+2588	2	Appointment, Park, Recreation, and Open Space Advisory Committee - Valery Lapidus
+2589	2	Appointment, Peninsula Corridor Joint Powers Board - Supervisor Shamann Walton
+2590	2	Appointment, Police Commission - Bill Ong Hing
+2591	2	Appointment, Reentry Council - Supervisor Catherine Stefani
+2592	2	Appointment, Reentry Council - Supervisor Matt Dorsey
+2593	2	Appointment, Reentry Council - Supervisor Sandra Lee Fewer
+2594	2	Appointment, San Francisco International Airport Community Roundtable - Supervisor Chyanne Chen
+2595	2	Appointment, San Francisco Local Agency Formation Commission - Supervisor Connie Chan
+2596	2	Appointment, Sheriff’s Department Oversight Board - Estela Ortiz
+2597	2	Appointment, South of Market Community Planning Advisory Committee - Leah Edwards
+2598	2	Appointment, Sunshine Ordinance Task Force - Dean Schmidt, Lila LaHood, Laura Stein, Matthew Yankee, Chris Hyland, Laurie Jones Neighbors, and Thuan Thao Hill
+2599	2	Appointment, Sunshine Ordinance Task Force - Joseph Sangirardi
+2600	2	Appointment, Transbay Joint Powers Authority - Alicia John-Baptiste
+2601	2	Appointment, Transbay Joint Powers Authority - Supervisor Rafael Mandelman
+2602	2	Appointment, Treasury Oversight Committee - Brenda Kwee McNulty
+2603	2	Appointment, Treasury Oversight Committee - David Martin
+2604	2	Appointment, Treasury Oversight Committee - Greg Wagner
+2605	2	Appointment, Treasury Oversight Committee - Jackie Chen
+2606	2	Appointment, Treasury Oversight Committee - Jan Mazyck
+2607	2	Appointment, Treasury Oversight Committee - Kevin Kone
+2608	2	Appointment, Treasury Oversight Committee - Nancy Hom
+2609	2	Appointment, Yerba Buena Conservancy Board of Directors - Raquel Redondiez
+2610	2	Appointments, Assessment Appeals Board No. # - Adena Gilbert, Hilary Winslow, Quirina Mitchell, and Paul Bellar
+2611	2	Appointments, Assessment Appeals Board No. # - Kristine Nelson, John Kaeuper, Elizabeth Zareh, and Paul Bellar
+2612	2	Appointments, Assessment Appeals Board No. # - Louisa Mendoza, Nicholas Goldman, Michelle Domingo, Joyce Lewis, and Claire Ervin Lee
+2613	2	Appointments, Cannabis State Legalization Task Force - Jesse Stout, Erich Pearson, Kevin Reed, Sara Payan, Duncan Talento Ley, Thea Selby, Jon Ballesteros, Barbara Fugate, Tom McElroy, Laura Thomas, Terrance Alan, Sarah Shrader, and Daisy Ozim
+2614	2	Appointments, Eastern Neighborhoods Community Advisory Committee - Irma Lewis and Jolene Yee
+2615	2	Appointments, Graffiti Advisory Board - Devin Jones, Darcy Brown, and Daniel Kling
+2616	2	Appointments, Homelessness Oversight Commission - Christin Evans, Joaquin Whit Guerrero, and Bevan Dufty
+2617	2	Appointments, Market and Octavia Community Advisory Committee - Madeline Howie, Autumn Adamme, Jason Henderson, and Tracy Jacks
+2618	2	Appointments, Our City, Our Home Oversight Committee - Shanell Williams, Julia D'Antonio and William Lemon
+2619	2	Appointments, Our City, Our Home Oversight Committee - Shanell Williams, Julie Leadbetter, Julia D’Antonio, and Jennifer Friedenbach
+2620	2	Appointments, Our City, Our Home Oversight Committee - Shanell Williams, Kezia Villias-Martinis, Julia D’Antonio, and Jennifer Friedenbach
+2621	2	Appointments, Shelter Monitoring Committee - Cris Plunkett, Diana Almanza, Traci Watson, and Gabriela Avalos
+2622	2	Appointments, Sugary Drinks Distributor Tax Advisory Committee - Vanessa Bohm, Maysha Bell, Marna Armstead, Frances Abigail Cabrera, Diana Lau, and Maureen Guerrero
+2623	2	Appointments, Sunshine Ordinance Task Force - Bruce Wolfe, Dean Schmidt, Lila LaHood, Saul Sugarman, Maxine Anderson, Laura Stein, Matthew Yankee, Chris Hyland, and David Pilpel
+2624	2	Appointments, Sunshine Ordinance Task Force - Bruce Wolfe, Kevin Frazier, Laura Stein, Matthew Yankee, Chris Hyland, Laurie Jones Neighbors, and Kai Forsley
+2625	2	Appointments, Sunshine Ordinance Task Force - Dean Schmidt, Lila LaHood, and Jennifer Wong
+2626	2	Appointments, Sunshine Ordinance Task Force - Josh Wolf, Leuwam Tesfai, Bruce Wolfe, Rodman Martin, Frank Cannata, Chris Hyland, and Matthew Yankee
+2627	2	Appropriation - $ of Certificate of Participation Proceeds - Land Acquisition, Public Housing Repairs, Educator Housing, Elevators - $ of Certificate of Participation Proceeds for Various Financing Costs - FY
+2628	2	Appropriation - Earthquake Safety and Emergency Response General Obligation Proceeds - Series 2021A - Public Works, Public Utilities Commission, and Recreation and Park Department - FY $
+2629	2	Appropriation - Educational Revenue Augmentation Fund Property Tax $ - Rainy Day One-Time Reserve Funds $ - SFPUC Revenue Bonds $ - Various Services - FY
+2630	2	Appropriation - Fiscal Cliff Reserve $ - Mayor’s Office of Housing and Community Development - $ for Social Housing - FY
+2631	2	Appropriation - General Reserve - District Attorney - Open-Air Drug Dealing - $ - FY
+2632	2	Appropriation - General Reserve - Mayor’s Office of Housing and Community Development - $ for Rent Relief - $ for Social Housing - FY
+2633	2	Appropriation - General Reserve and State and Federal Contingency Reserve - Support Immigration Related Legal Services - FY $
+2634	2	Appropriation - Proceeds from General Obligation Bonds Transportation and Road Improvements, # - Series 2020B - Municipal Transportation Agency - Street and Transit Projects - $ - FY
+2635	2	Appropriation - Property Tax - Hotel Tax for Arts General Fund Backfill - Various Departments - ADM - $ Grants for the Arts; ART - $ Arts Impact Endowment; $ Cultural Centers; $ Cultural Equity Endowment - FY
+2636	2	Appropriation and De-Appropriation - Children, Youth and Their Families - Public Works - $ - FY
+2637	2	Appropriation and De-Appropriation - Expenditures of $ Supporting Wage Increase Requirements - Minimum Compensation Ordinance - FY
+2638	2	Appropriation and De-Appropriation - Water Enterprise Fund Balance and Operating Budget - Land Mobile Radio System - FY $
+2639	2	Approval of Potrero Bus Yard Predevelopment Agreement with a $ Continuation Payment and a Potential Termination Payment of up to $ - Potrero Neighborhood Collective LLC - # Mariposa
+2640	2	Approval of Retroactive # Day Extension for Planning Commission Review of Family Housing Opportunity Special Use District; Design Controls and Review Procedures (File No. # )
+2641	2	Approval of Retroactive # Day Extension for Planning Commission Review of Planning, Administrative Codes - HOME-SF (File No. # )
+2642	2	Approval of a # Day Extension for Planning Code, Zoning Map - Density Calculation in RC, RTO, NC, and Certain Named NCDs (File No. # )
+2643	2	Approval of a # Day Extension for Planning Commission Review of # % Affordable Housing and Educator Housing Streamlining Program (File No. # )
+2644	2	Approval of a # Day Extension for Planning Commission Review of Conditional Use Authorization for All Residential Mergers (File No. # )
+2645	2	Approval of a # Day Extension for Planning Commission Review of Definitions, Family, Dwelling Unit (File No. # )
+2646	2	Approval of a # Day Extension for Planning Commission Review of Exemptions and General Advertising Sign Penalties (File No. # )
+2647	2	Approval of a # Day Extension for Planning Commission Review of Medical Cannabis Dispensaries (File No. # )
+2648	2	Approval of a # Day Extension for Planning Commission Review of Planning Code - # % Affordable Housing (File No. # )
+2649	2	Approval of a # Day Extension for Planning Commission Review of Planning Code - Car-Share and Shared Limited Range Vehicle Parking Requirements (File No. # )
+2650	2	Approval of a # Day Extension for Planning Commission Review of State-Mandated Accessory Dwelling Unit Controls (File No. # )
+2651	2	Approval of a # Day Extension for Planning Commission Review of Window Replacement Standards (File No. # )
+2652	2	Approval of a # Day Extension for Planning Commission Review of the Geary-Masonic Special Use District (File No. # )
+2653	2	Approval of a # Day Extension for Planning Commission Review of the Jobs Housing Linkage Fee (File No. # )
+2654	2	Approval of a # Day Retroactive Extension for Planning Commission Review of Accessory Dwelling Units in New Construction (File No. # )
+2655	2	Approval of a Retroactive # Day Extension for Planning Commission Review of Cannabis Retail Uses (File No. # )
+2656	2	Approval of a Retroactive # Day Extension for Planning Commission Review of Planning Code - Eliminating Public Art Requirement for # % Affordable Housing Projects (File No. # )
+2657	2	Approve Project List - California Senate Bill # Local Streets and Road Program - Road Maintenance and Rehabilitation Account Funds - FY
+2658	2	Approve Project List - California Senate Bill # Road Repair and Accountability Act of # - Local Streets and Road Program - Road Maintenance and Rehabilitation Account Funds - FY
+2659	2	Approve Project List - California State Senate Bill # - Local Streets and Road Program Road Maintenance and Rehabilitation Account Funds
+2660	2	Approve Project List - California State Senate Bill # Local Streets and Road Program - Road Maintenance and Rehabilitation Account Funds
+2661	2	Approving California Enterprise Development Authority Revenue Obligations and TEFRA Hearing for Presidio Knolls School, Inc. - Not to Exceed $
+2662	2	Approving County Refugee Services Plan
+2663	2	Approving Early Care and Education for All Initiative’s “Babies and Families First Fund” Five-Year Spending Plan
+2664	2	Approving Process for Nominating and Selecting a Successor Mayor
+2665	2	Approving Public Works Rules and Regulations for Vendor Permit Program
+2666	2	Arab American Heritage Month - April #
+2667	2	Armenian Independence Day - September # , #
+2668	2	Arnald “Arnie” Barros Day - July # , #
+2669	2	Asexual Awareness Week - October # through October # , #
+2670	2	Asia-Pacific Economic Cooperation - Behested Payment Waiver
+2671	2	Asian American and Pacific Islander Against Bullying and Hate Day - May # , #
+2672	2	Asian American and Pacific Islander Day Against Bullying and Hate - May # , #
+2673	2	Asian American and Pacific Islander Heritage Month - May #
+2674	2	Asking Saves Kids Day - June # , #
+2675	2	Assessment Ballots for City Parcels - Discover Polk Community Benefit District
+2676	2	Assessment Ballots for City Parcels - Dogpatch and Northwest Potrero Hill Green Benefit District
+2677	2	Assessment Ballots for City-Owned Parcels - Central Market Community Benefit District - Modify the Management Plan and Engineer’s Report
+2678	2	Assignment and Assumption Agreement - California Barrel Company LLC - Potrero Power Station Mixed-Use Project - Waiver of Indemnification Obligations
+2679	2	Authorization to Apply for State Grant Funding - California Cannabis Equity Act of # - Office of Cannabis
+2680	2	Authorization to Gift Debenham Comedy Recording Collection to Emerson College
+2681	2	Authorization to Join the Federal Excess Personal Property Program - Acceptance of Loans of Equipment to the Fire Department
+2682	2	Authorized Representative in Sales and Use Tax Records Examination - MuniServices, LLC
+2683	2	Authorizing Access to State and Federal Background Checks for Massage Permits
+2684	2	Authorizing Agreement for Collection of Special Taxes and Contractual Assessments - San Francisco Property-Assessed Clean Energy Program
+2685	2	Authorizing Expenditures - SoMa Community Stabilization Fund - Up to $
+2686	2	Authorizing Inclusion of City Properties in California Municipal Finance Authority Open Property-Assessed Clean Energy Programs
+2687	2	Authorizing Inclusion of City Properties in Golden State Finance Authority Community Facilities District No. # (Clean Energy) Property-Assessed Clean Energy Programs
+2688	2	Authorizing Inclusion of City Properties in Golden State Finance Authority Property-Assessed Clean Energy Program
+2689	2	Authorizing Inclusion of Figtree Property-Assessed Clean Energy (“PACE”) Program in California Enterprise Development Renewable PACE Programs
+2690	2	Authorizing Interim Financing - Peninsula Corridor Joint Powers Board - Peninsula Corridor Electrification Project - up to $
+2691	2	Authorizing Issuance and Sale of Special Tax Bonds - Community Facilities District No. # # (Treasure Island) - Not to Exceed $
+2692	2	Authorizing Issuance of Bonds - Infrastructure and Revitalization Financing District No. # (Treasure Island) - Not to Exceed $
+2693	2	Authorizing Issuance of Port Infrastructure Financing District Bonds (Port of San Francisco, Pier # ) - Not to Exceed $ $ and $ for Sub-Project Area G- # , Sub-Project Area G- # , and Sub-Project Area G- # , Respectively
+2694	2	Authorizing Issuance of Special Tax Bonds - Community Facilities District No. # (Transbay Transit Center) - Not to Exceed Aggregate Principal Amount of $
+2695	2	Authorizing Issuance of Special Tax Bonds - Community Facilities District No. # (Transbay Transit Center) - Not to Exceed Aggregate Principal Amount of $ ; Confirming Annexation of Properties into Community Facilities District No. #
+2696	2	Authorizing Issuance of Special Tax Bonds - Improvement Area No. # of the City and County of San Francisco Community Facilities District No. # (Treasure Island) - Not to Exceed $
+2697	2	Authorizing Preparation of Proponent Ballot Arguments and Rebuttal Ballot Arguments - November # , # , Consolidated Statewide General Election
+2698	2	Authorizing Request for Parole Entry to the United States Department of Homeland Security - District Attorney and Sheriff
+2699	2	Authorizing Stage # Contribution - City and County of San Francisco Community Facilities District No. # and Annexation of Property as Improvement Area No. #
+2700	2	Authorizing Stage # Contribution - City and County of San Francisco Infrastructure and Revitalization Financing District No. # (Treasure Island)
+2701	2	Authorizing the Department of Public Health to Enter into Hazardous Waste Remedial Action Agreements
+2702	2	Authorizing the Issuance of Special Tax Bonds - Community Facilities District No. # (Transbay Transit Center) - Not to Exceed $
+2703	2	Authorizing the Issuance of Tax Allocation Bonds - Transbay Joint Powers Authority - Not to Exceed $
+2704	2	Authorizing the Local Homelessness Coordinating Board to Hold Public Meetings
+2705	2	Authorizing the Mayor’s Office of Housing and Community Development to Apply for The Prohousing Designation Program
+2706	2	Authorizing the Shelter Monitoring Committee to Hold Public Meetings
+2707	2	Autism Awareness Month - April #
+2708	2	Award of Professional Services Agreement - Jacobs Engineering Group, Inc - Waterfront Resilience Program - Not to Exceed $
+2709	2	Bayview Hunters Point and Hunters Point Shipyard Redevelopment Plans
+2710	2	Behavioral Health Services Act Annual Update - FY
+2711	2	Behested Payment Waiver - Embarcadero Plaza and Sue Bierman Park
+2712	2	Behested Payment Waiver - Fire Apparatus
+2713	2	Behested Payment Waiver Extension - Core Initiatives
+2714	2	Bi-Annual Housing Balance Report - May #
+2715	2	Bi-Annual Housing Balance Report Nos. # and #
+2716	2	Biannual Surveillance Report - Juvenile Probation Department - Web Filtering Software
+2717	2	Bike to Wherever Day - May # , #
+2718	2	Black History Month - February
+2719	2	Bladder Cancer Awareness Month - May #
+2720	2	Board Response - Civil Grand Jury - Into the Open: Opportunities for More Timely and Transparent Investigations of Fatal San Francisco Police Department Officer-Involved Shootings
+2721	2	Broke-Ass Stuart Day - October # , #
+2722	2	Budget and Legislative Analyst Performance Audit - Operational Overlap on Sewer Repair Between Public Works and the Public Utilities Commission
+2723	2	Budget and Legislative Analyst Performance Audit - San Francisco Housing Authority and Mayor’s Office of Housing and Community Development
+2724	2	Budget and Legislative Analyst Performance Audit - San Francisco Zoo - FY and #
+2725	2	Budget and Legislative Analyst Performance Audits - Street Response Teams and Permanent Supportive Housing Funds - FY
+2726	2	Budget and Legislative Analyst Services Audit Plan - Office of Economic and Workforce Development and Mayor’s Office of Housing and Community Development - FY
+2727	2	Building Code - Process for Building Inspection Commission Review of Legislation Proposed by the Board of Supervisors
+2728	2	Building Code - Vacant or Abandoned Commercial Storefronts Registration and Fee Suspension
+2729	2	Burma Human Rights (Ko Phone Maw) Day - March 13th
+2730	2	Business and Tax Regulations Code - Disclosure of Vacancy Tax Information; Penalties For Failure to Timely File Vacancy Tax Returns
+2731	2	Business and Tax Regulations Code - Extending Suspension of Cannabis Business Tax
+2732	2	Business and Tax Regulations Code - Real Property Transfer Tax Refunds
+2733	2	Business and Tax Regulations, Administrative Codes - Temporary Suspension of Vacancy Tax
+2734	2	COVID- # Lease Extension Program - International Terminal Food and Beverage Concession - Joe & the Juice New York, LLC, DBA Joe & the Juice
+2735	2	COVID- # Lease Extension Program for Certain Airport Food and Beverage, Retail, and Service Concessions Tenants
+2736	2	COVID- # Lease Extension Program for Terminal # Boarding Area F Café Lease
+2737	2	CalSAWS Consortium - Creation of a # County Joint Powers Authority - Memorandum of Understanding
+2738	2	California Clean Air Day - October # , #
+2739	2	California Clerk of the Board of Supervisors Association Week - December # to December # , #
+2740	2	California Constitution Appropriations Limit (Gann Limit) - Special Tax Districts and Infrastructure and Revitalization Financing Districts - FY
+2741	2	California Environmental Quality Act Findings - Mission Rock Project - Seawall Lot # and Pier #
+2742	2	California Environmental Quality Act Findings - San Francisco Public Utilities Commission Water System Improvement Program, Alameda Creek Recapture Project
+2743	2	California Environmental Quality Act Findings - San Francisco Public Utilities Commission Water System Improvement Program, San Andreas Pipeline No. # Replacement Project
+2744	2	Calling Special Election - Community Facilities District No. # (Treasure Island)
+2745	2	Calling Special Election - Improvement Area No. # of City and County of San Francisco Special Tax District No. # (Power Station)
+2746	2	Calling Special Election - Special Tax District No. # (Mission Rock Facilities and Services)
+2747	2	Calling Special Election - Special Tax District No. # (Pier # Condominiums)
+2748	2	Calling Special Election - Special Tax District No. # (Pier # Leased Properties)
+2749	2	Calling and Consolidation of Elections Scheduled for June # , #
+2750	2	Calling for Full-Service Grocery Store in the Tenderloin

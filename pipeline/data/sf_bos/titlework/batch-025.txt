@@ -1,0 +1,250 @@
+6001	1	Hearing - Performance Audit of the Real Estate Division
+6002	1	Hearing - Performance Measures - Controller’s Annual Performance Report
+6003	1	Hearing - Permitted and Illicit Cannabis Cultivation, Public Safety, and Fire Hazard Impacts - Promotion of Permitted Cultivation in Appropriate Locations
+6004	1	Hearing - Plan for Comprehensive Overdose Prevention
+6005	1	Hearing - Planning Department Reorganization
+6006	1	Hearing - Planning Department's Housing Balance Report No. #
+6007	1	Hearing - Planning for the November # , # , Election
+6008	1	Hearing - Plans and Implications of the Tenderloin Stipulated Injunction
+6009	1	Hearing - Plans to Create More Affordable Teacher Housing
+6010	1	Hearing - Plans to Implement CARE Court
+6011	1	Hearing - Plans to Protect Immigrant Families from Deportation
+6012	1	Hearing - Plans to Vaccinate Essential Education Workers
+6013	1	Hearing - Police Department - Comprehensive Plan and Citywide Strategy on Neighborhood Automobile Break-Ins, Bicycle Theft, and Property Crime
+6014	1	Hearing - Police Department General Orders - Public Release of Private Information
+6015	1	Hearing - Police Department Neighborhood Property Crime Unit
+6016	1	Hearing - Police Department Staffing Levels, Demand for Service, Recruitment and Retention
+6017	1	Hearing - Police Department's Special Victims Unit Staffing and Policies
+6018	1	Hearing - Police Department's and San Francisco Unified School District's Protocols When Minors Are Questioned and Apprehended by Law Enforcement
+6019	1	Hearing - Police Staffing, Recruitment, Attrition, Retention, Civilianization, and Demographics
+6020	1	Hearing - Police and Fire Department Investigations and Oversight to Address On-Duty Drinking
+6021	1	Hearing - Policies on Trashcans, Dumpster, and Trash Pickup
+6022	1	Hearing - Policy Decisions Balancing Housing and Transportation Coverage, Service Frequency, Long Term Impacts, and Geographic Equity
+6023	1	Hearing - Portsmouth Square Parking Garage Renovation Project Audit Report
+6024	1	Hearing - Potentially Expanding Community School Model in SFUSD
+6025	1	Hearing - Preliminary Recommendations of the SF RISE Working Group
+6026	1	Hearing - Preparation for a Large Earthquake
+6027	1	Hearing - Preservation of Cultural and Historic Assets
+6028	1	Hearing - Preservation of LGBT Nightlife Spaces and Status of LGBT Cultural District
+6029	1	Hearing - Pricing Policies of San Francisco General Hospital
+6030	1	Hearing - Prioritizing Criminal Trials and Safely Open Courtrooms to Ensure Speedy Trial Rights of Both Defendants and Victims and to Address the Backlog of Felony Cases
+6031	1	Hearing - Proactive Citywide Trauma Response to Gun Violence
+6032	1	Hearing - Production, Funding, and Preservation of Workforce and Middle-Class Housing
+6033	1	Hearing - Progress on Increasing the Number of Beds in the Mental Health System of Care
+6034	1	Hearing - Progress, Successes, and Provisions Left to Implement of Mental Health SF
+6035	1	Hearing - Promoting Public Safety and Ensuring Timely Communication and Response in Event of a City-Wide Power Failure
+6036	1	Hearing - Prop G "Student Success Fund" Implementation Plan
+6037	1	Hearing - Proposed Bay Delta Water Quality Control Plan
+6038	1	Hearing - Proposed Central SoMa Plan
+6039	1	Hearing - Proposed Federal Tax Plans - Local Impact
+6040	1	Hearing - Proposed Five-Year Financial Plan
+6041	1	Hearing - Proposed Street Crisis Response Teams and Their Relation to the Implementation of Mental Health SF
+6042	1	Hearing - Public Health Response to COVID- # - Latinx Community
+6043	1	Hearing - Public Safety Statistics and Policies on Parole, Rearrest, and Interagency Responsibilities
+6044	1	Hearing - Public Safety Strategies in Commercial Corridors
+6045	1	Hearing - Public Safety at Fast Food Restaurants
+6046	1	Hearing - Public Safety at San Francisco's Parks and Playgrounds
+6047	1	Hearing - Public Safety in City Owned and/or Operated Parking Lots and Garages
+6048	1	Hearing - Public Transportation Security Policies and Procedures
+6049	1	Hearing - Public Trash Cans
+6050	1	Hearing - RWG’s Final Governance Plan, Business Plan and Viability Study for a San Francisco Municipal Financial Corporation and a San Francisco Public Bank
+6051	1	Hearing - Racial Equity in City Employment
+6052	1	Hearing - Recommendations of the Housing Stability Fund Oversight Board for Use of Proposition I Revenue in FY
+6053	1	Hearing - Recommendations of the Municipal Fines and Fees Task Force
+6054	1	Hearing - Recruitment, Hiring, and Retention of Sworn and Civilian Personnel
+6055	1	Hearing - Reimbursement Practices and Maximizing Funding - Youth and Family Mental Health Services
+6056	1	Hearing - Release of Reserved Funds - Department of Human Services - CalAIM JI PATH Round # Funding - $
+6057	1	Hearing - Release of Reserved Funds - Department of Human Services - Refugee Support Services Funding - $
+6058	1	Hearing - Release of Reserved Funds - Department of Public Health - Comprehensive Opioid, Stimulant, and Substance Use Site-Based Program - $
+6059	1	Hearing - Release of Reserved Funds - Department of Public Health - NIDA Clinical Trials Network: Big South/West Node - $
+6060	1	Hearing - Release of Reserved Funds - Department of Public Health - State Vocational Rehabilitation Services Program - $
+6061	1	Hearing - Release of Reserved Funds - Department of Public Health - Strengthening STD Prevention and Control for Health Departments (STD PCHD) - $
+6062	1	Hearing - Release of Reserved Funds - Port of San Francisco - Engineering with Nature Working Group - $
+6063	1	Hearing - Release of Reserved Funds - Port of San Francisco - Pier # Seismic Improvement Project - $
+6064	1	Hearing - Release of Reserved Funds - Port of San Francisco - San Francisco Waterfront Emissions-Free Ferry System - $
+6065	1	Hearing - Release of Reserved Funds - Recreation and Park Department - Twin Peak Promenade Project - $
+6066	1	Hearing - Removal of # Long-Term Beds from the Adult Residential Facility
+6067	1	Hearing - Report of Assessment Costs - Building Code Enforcement Violations
+6068	1	Hearing - Report on Historical Budgets vs. Actual Expenditures
+6069	1	Hearing - Report on Year One of StreetTreeSF
+6070	1	Hearing - Repurposing Commercial Real Estate for Residential Use
+6071	1	Hearing - Residential Building Decarbonization
+6072	1	Hearing - Residential Care and Treatment Workgroup’s Final Report and Findings
+6073	1	Hearing - Residential Vacancies in San Francisco
+6074	1	Hearing - Response and Resources Available to Students Experiencing and Reporting Sexual Assault and/or Sexual Harassment at SFUSD Schools
+6075	1	Hearing - Response to Homelessness in Extreme Weather
+6076	1	Hearing - Review and Adoption of the Proposed Draft FY and FY Budget for the Board of Supervisors
+6077	1	Hearing - Review of City Contracts with TODCO and Health and Safety Complaints against TODCO Buildings
+6078	1	Hearing - Review of City Investment Services in the Lakeview, Oceanview, Merced Heights, and Ingleside Community
+6079	1	Hearing - Review of Municipal Transportation Agency Decisions - Proposed Overnight Recreational Large Vehicle Parking Restrictions
+6080	1	Hearing - Review of San Francisco’s Drug Court Program
+6081	1	Hearing - Review of the Hiring Practices of Public Works
+6082	1	Hearing - Richmond Senior Center Renovation Progress
+6083	1	Hearing - Rincon Towers Below-Market-Rate Program
+6084	1	Hearing - SFHA’s Housing Choice Voucher Program
+6085	1	Hearing - SFHA’s Report of Quality of Services Provided by Eugene Burger Management Corp
+6086	1	Hearing - SFMTA's Report to Promote Unobstructed Pedestrian Access for Riders Boarding Public Transit
+6087	1	Hearing - SFPD - Recruitment, Hiring, and Retention of Sworn and Civilian Personnel
+6088	1	Hearing - SFPD Recruiting Progress
+6089	1	Hearing - SFPUC Contracting and Community Benefits and SSIP Joint Venture Board Management Agreements
+6090	1	Hearing - SFUSD Student Academic Performance Data and the Students and Families RISE Workgroup
+6091	1	Hearing - SFUSD and Public Education Enrichment Fund Spending
+6092	1	Hearing - Safe Injection Facilities Task Force Recommendations
+6093	1	Hearing - Safer Schools Sexual Assault Task Force
+6094	1	Hearing - Safety Improvement Plans - Street Cleaning Truck Operations
+6095	1	Hearing - Safety and Condition of the City’s Approximately # Trees after Weather in Late # and Early #
+6096	1	Hearing - San Francisco Citywide Design Standards
+6097	1	Hearing - San Francisco Environment Department's Budget for FY
+6098	1	Hearing - San Francisco Gang Injunctions
+6099	1	Hearing - San Francisco Groundwater Supply Project
+6100	1	Hearing - San Francisco Health Plan Rate Trends
+6101	1	Hearing - San Francisco Housing Authority’s Faircloth to RAD Plan
+6102	1	Hearing - San Francisco Municipal Transportation Agency - Red Transit-Only Lanes
+6103	1	Hearing - San Francisco Municipal Transportation Agency - Review of Training Procedures, Policies, Hiring Practices, and Retention of Current Operators
+6104	1	Hearing - San Francisco Municipal Transportation Agency Commuter Shuttle Hub Study
+6105	1	Hearing - San Francisco Municipal Transportation Agency On-Street Car Sharing Program
+6106	1	Hearing - San Francisco Municipal Transportation Agency's Extended Delay in Using the # Proposition A Transportation Bond Funds
+6107	1	Hearing - San Francisco Municipal Transportation Agency's Use of On-board Diagnostics for Muni Emissions Control
+6108	1	Hearing - San Francisco Police Department Traffic Company Enforcement
+6109	1	Hearing - San Francisco Police Department and District Attorney Comprehensive Drug Dealing Strategy
+6110	1	Hearing - San Francisco Public Utilities Commission Preliminary Report - Safe, Reliable, Clean, Affordable Electric Service
+6111	1	Hearing - San Francisco Public Utilities Commission Public Service Easement Vacation Order - Parkmerced Development Project
+6112	1	Hearing - San Francisco Public Utilities Commission Sewer System Improvement Program
+6113	1	Hearing - San Francisco Unified School District’s Plan for New Locations and Facilities
+6114	1	Hearing - San Francisco Urban Canopy and Street Tree Maintenance Plan Updates
+6115	1	Hearing - San Francisco's Civic Center Leased/Owned Portfolio Status
+6116	1	Hearing - San Francisco's Continuum of Homeless Services, Supportive Housing, and Tenant Protection Services that Contribute to Community Safety
+6117	1	Hearing - San Francisco's Five-Year Strategic Framework Plan to Reduce Homelessness
+6118	1	Hearing - San Francisco’s Plan to Address SF Bay Nitrogen and Phosphorus Loading
+6119	1	Hearing - Security Guards Working Conditions at San Francisco Fine Arts Museums
+6120	1	Hearing - Senior Housing
+6121	1	Hearing - Senior Pedestrian Injuries and Fatalities, and Targeted Implementation of Vision Zero Improvements
+6122	1	Hearing - Services to Support Housing Conservatorship Program
+6123	1	Hearing - Sexual Orientation and Gender Identity Data
+6124	1	Hearing - Sexual Orientation and Gender Identity Data - FY
+6125	1	Hearing - Shared Mobility Devices Compliance with Public Health and Safety Regulations
+6126	1	Hearing - Shared School Yard Program Updates
+6127	1	Hearing - Shared Traffic Collision Data Between City Departments
+6128	1	Hearing - Shelter Monitoring Committee Quarterly Reports
+6129	1	Hearing - Shelter in Place Hotels and Housing First
+6130	1	Hearing - Sheriff's Department Oversight Board # Annual Report
+6131	1	Hearing - Sheriff's Department Staffing Levels
+6132	1	Hearing - Short Term Rental and Intermediate Length Occupancy Rental Registration and Enforcement
+6133	1	Hearing - Sidewalk Conditions and Maintenance Strategy to Address Safety and Accessibility
+6134	1	Hearing - Small Business Mitigation Fund Implementation
+6135	1	Hearing - Small Business Rent Relief During COVID- #
+6136	1	Hearing - Small Business and Commercial Tenant COVID- # Relief and Rental Assistance
+6137	1	Hearing - SoMa Pilipinas Gateway
+6138	1	Hearing - Social and Emotional Support Under School Distance Learning
+6139	1	Hearing - Southern Bayfront Strategy
+6140	1	Hearing - Staffing Shortages at San Francisco General Hospital
+6141	1	Hearing - Staffing, Equipment and Training for Traffic Enforcement
+6142	1	Hearing - Starting a Small Business
+6143	1	Hearing - State and Federal Budget Updates and Any Related Impacts to the City
+6144	1	Hearing - State of Jail Health Services
+6145	1	Hearing - State of San Francisco's Cooperatively Owned Housing
+6146	1	Hearing - State of San Francisco's Foster Youth, Resource Families Current Status, and Future Outreach for Placements
+6147	1	Hearing - State of the Restaurant Industry
+6148	1	Hearing - State of the Retail Sector, Challenges and Opportunities for San Francisco's Neighborhood Commercial Districts
+6149	1	Hearing - Status Update - Police Code - Tenderloin Retail Hours Restriction Pilot Program
+6150	1	Hearing - Status of City Departments Handling Criminal Sexual Assault and Sexual Harassment Cases
+6151	1	Hearing - Status of City Departments Handling Criminal Sexual Assaults and Sexual Harassment Allegations
+6152	1	Hearing - Status of District # Affordable Housing Pipeline Schedule
+6153	1	Hearing - Status of Establishing a Child Care Center at San Francisco General Hospital
+6154	1	Hearing - Status of First # in San Francisco
+6155	1	Hearing - Status of First Year Free Program
+6156	1	Hearing - Status of LGBTQ+ Cultural Heritage Strategy
+6157	1	Hearing - Status of Parking Attendants on City-Owned Garages, Existing Employees, Planned Layoffs, and System Automation
+6158	1	Hearing - Status of Programming and Funding for Transitional Housing Services
+6159	1	Hearing - Status of Proposition C Implementation
+6160	1	Hearing - Status of Radiology and Ultrasound Technician Staffing - Zuckerberg San Francisco General Hospital and Laguna Honda Hospital
+6161	1	Hearing - Status of San Francisco's Progress Implementing Treatment on Demand
+6162	1	Hearing - Status of San Francisco's Residential Treatment Bed Expansion Plan
+6163	1	Hearing - Status of San Francisco's Use of Lanterman-Petris Short Conservatorships
+6164	1	Hearing - Status of SoMa Pilipinas Strategic Plan
+6165	1	Hearing - Status of UCSF's Proposed Acquisition of Dignity Health's Clinical Presence in San Francisco
+6166	1	Hearing - Status of Vacancies of Large Commercial Spaces
+6167	1	Hearing - Status of Wellness Hubs with the Gubbio Project and the SF AIDS Foundation
+6168	1	Hearing - Status of Worker Rights in California's Gig Economy
+6169	1	Hearing - Status of the City's Electric Vehicle Fleet and Current Infrastructure Plans to Charge Future Fleet
+6170	1	Hearing - Status of the Old Potrero Police Station - # 3rd Street
+6171	1	Hearing - Status on Planning Enforcement and Compliance Procedures
+6172	1	Hearing - Status on the City's Small Sites Acquisition Program
+6173	1	Hearing - Status on the Six New Navigation Centers
+6174	1	Hearing - Strategies for Fire Prevention in Residential Apartment Buildings
+6175	1	Hearing - Streamlining Permit Review Processes for ADA Requirement Compliance
+6176	1	Hearing - Streamlining of Restaurant Permitting Process
+6177	1	Hearing - Street Safety and Economic Recovery
+6178	1	Hearing - Student Success Fund Status and Implementation
+6179	1	Hearing - Sub-Acute Care in San Francisco
+6180	1	Hearing - Summer Together Initiative
+6181	1	Hearing - Supportive Housing Vacancies
+6182	1	Hearing - Switchbacks on San Francisco Municipal Transportation Light Rail Lines
+6183	1	Hearing - Taxi Medallion and Regulation Program
+6184	1	Hearing - Taxpayer-Funded Communications Regarding Police and Public Safety
+6185	1	Hearing - Technology and Biotechnology Start-Ups
+6186	1	Hearing - Ten Year Capital Expenditure Plan - FY
+6187	1	Hearing - Tenant Right to Counsel Program
+6188	1	Hearing - The City's Electric Vehicle Fleet
+6189	1	Hearing - The City's Financial Position
+6190	1	Hearing - The Division of Public Works and the Formation of the Sanitation and Streets Department
+6191	1	Hearing - Traffic Calming and Safety Measures on High-Injury Corridors - Vision Zero Priorities
+6192	1	Hearing - Traffic Congestion Downtown and in Our Neighborhoods
+6193	1	Hearing - Traffic Enforcement and Street Safety
+6194	1	Hearing - Transit Center District Plan Area - Interim Sign Controls - Six Month Report
+6195	1	Hearing - Transportation Demand Management Program
+6196	1	Hearing - Treatment on Demand
+6197	1	Hearing - Treatment on Demand Fiscal Year # Annual Report
+6198	1	Hearing - U.S. Army Corps of Engineers SF Waterfront Draft Plan
+6199	1	Hearing - UN Plaza Activation Project and Heart of the City Farmers' Market
+6200	1	Hearing - Unpermitted Alcohol Sales by Sidewalk Vendors
+6201	1	Hearing - Update from State Lobbyist on the Status of State Housing Bills
+6202	1	Hearing - Update on City-Funded Immigrant Legal Defense Services
+6203	1	Hearing - Update on FY Annual Proposition T (Treatment on Demand Report)
+6204	1	Hearing - Update on FY Annual Proposition T (Treatment on Demand) Report
+6205	1	Hearing - Update on First Student School Bus Transportation’s School Bus Fleet
+6206	1	Hearing - Update on Motor Vehicle Stunt Driving Response
+6207	1	Hearing - Update on Post-Pandemic Homeless Housing and Behavioral Health Plan
+6208	1	Hearing - Update on Recreation and Parks Department's Strategic, Operational, and Capital Plans
+6209	1	Hearing - Update on Street Resurfacing Program and Analysis of the # TRIP Report
+6210	1	Hearing - Update on the Board of Supervisor's Budget Priorities for FY
+6211	1	Hearing - Update on the City's Budget
+6212	1	Hearing - Update on the City's Homeless Population and Services
+6213	1	Hearing - Update on the Existing Scooter Permit Program
+6214	1	Hearing - Update on the Street Level Drug Dealing Task Force
+6215	1	Hearing - Update on the Subway Master Plan
+6216	1	Hearing - Updates on the Right to Recover Program
+6217	1	Hearing - Urban Canopy Management
+6218	1	Hearing - Utility Undergrounding
+6219	1	Hearing - Vibrant Public Services and Economic Security
+6220	1	Hearing - Voter Mandated Funding Requirements
+6221	1	Hearing - Voter-Required Spending Baselines
+6222	1	Hearing - Wages and Recruitment for Non-Profit Service Providers, Workers, and Staff
+6223	1	Hearing - WeDriveU and Hallcon Transportation, f.d.b.a. Loop's Correspondence With Service Disruption Plan Provisions
+6224	1	Hearing - Widespread Power Outages Affecting San Francisco Neighborhoods
+6225	1	Hearing - Wildfire Preparedness
+6226	1	Hearing - Wildfire and Prevention and Management
+6227	1	Hearing - Women, Sexual Violence, and Homelessness
+6228	1	Hearing - Work Group to Re-Envision the Jail Project - Annual Report
+6229	1	Hearing - Work Group to Re-Envision the Jail Project Report Outcomes
+6230	1	Hearing - Work Group to Re-Envision the Jail Replacement Project
+6231	1	Hearing - Workforce Development Programs
+6232	1	Hearing - Workforce Programs and African American Unemployment and Economic Mobility
+6233	1	Hearing - Working Conditions for Women in the SFPD
+6234	1	Hearing - Youth Commission - Updated Priorities to Mayor’s Proposed Budget - FY and #
+6235	1	Hearing - Youth Commission Budget Priorities - FY and #
+6236	1	Hearing - Youth Commission's Policy and Budget Priorities - FY and #
+6237	1	Hearing - Youth Homelessness in San Francisco
+6238	1	Home Detention Electronic Monitoring Program Rules and Regulations and Program Administrator’s Evidence of Financial Responsibility - FY
+6239	1	Home Detention and Electronic Monitoring Program for Home Detention - Program Administrator’s Evidence of Financial Responsibility - FY
+6240	1	Honoring the Life and Legacy of Basalle Wong
+6241	1	Housing Code - Tenant Enforcement of Habitability Requirements
+6242	1	Housing Preferences - Annual Reporting - July # , # , through June # , #
+6243	1	Intent to Prioritize Funding Free City College of San Francisco
+6244	1	Intent to Prioritize Funding to Support Safe, Healthy Thriving Communities
+6245	1	Intent to Reappoint, Police Commission - Cindy Elias
+6246	1	Intergovernmental Agreement - San Mateo County - Reimburse Dispatched Calls - Not to Exceed $ - Share Transient Occupancy Tax
+6247	1	Interim Zoning Controls - Conditional Use Requirement and Replacement of Production, Distribution, Repair, Institutional Community, and Arts Activities Uses
+6248	1	Interim Zoning Controls - Off-Street Parking in Portions of the “Hub” Area
+6249	1	Interim Zoning Controls - Retail Establishments in the Tenderloin and South of Market Public Safety Zone
+6250	1	Issuance of Bonds - California Statewide Communities Development Authority - California School of Mechanical Arts (Lick Wilmerding High School) - Not to Exceed $

@@ -1,0 +1,232 @@
+3501	1	Reappointment, Child Care Planning and Advisory Council - Nur Jehan Khalique
+3502	1	Reappointment, Child Care Planning and Advisory Council - Patricia Sullivan
+3503	1	Reappointment, Child Care Planning and Advisory Council - Yensing Sihapanya
+3504	1	Reappointment, Children, Youth and Their Families Oversight and Advisory Committee - Eddy Xaio Fei Zheng
+3505	1	Reappointment, Citizen's Committee on Community Development, Clinton Loftman
+3506	1	Reappointment, Commission on Disability and Aging Advisory Council - Juliet Rothman
+3507	1	Reappointment, Commission on Disability and Aging Advisory Council - Margaret Graf
+3508	1	Reappointment, Commission on the Aging Advisory Council - Juliet Rothman
+3509	1	Reappointment, Commission on the Aging Advisory Council - Patricia Spaniak
+3510	1	Reappointment, Early Childhood Community Oversight and Advisory Committee - Cindy F. Lopez-Chastain
+3511	1	Reappointment, Eastern Neighborhoods Citizens Advisory Committee - Fernando Marti
+3512	1	Reappointment, Elections Commission - Christopher Jerdonek
+3513	1	Reappointment, Entertainment Commission - Dori Caminong
+3514	1	Reappointment, Entertainment Commission - Steven Lee
+3515	1	Reappointment, Entertainment Commission - Theodora Marie Caminong
+3516	1	Reappointment, Golden Gate Bridge, Highway and Transportation District Board of Directors - Supervisor Norman Yee
+3517	1	Reappointment, Golden Gate Bridge, Highway and Transportation District Board of Directors - Supervisor Sandra Lee Fewer
+3518	1	Reappointment, Golden Gate Bridge, Highway and Transportation District Board of Directors - Supervisor Vallie Brown
+3519	1	Reappointment, Golden Gate Bridge, Highway and Transportation District, Board of Directors - Supervisor Matt Dorsey
+3520	1	Reappointment, Graffiti Advisory Board - Amy Landgraf
+3521	1	Reappointment, In-Home Supportive Services Public Authority - Kenzi Robi
+3522	1	Reappointment, Local Agency Formation Commission - Supervisor Dean Preston
+3523	1	Reappointment, Local Agency Formation Commission - Supervisor Gordon Mar
+3524	1	Reappointment, Park, Recreation, and Open Space Advisory Committee - Deval Patel
+3525	1	Reappointment, Park, Recreation, and Open Space Advisory Committee - Steven Currier
+3526	1	Reappointment, Pedestrian Safety Advisory Committee - Rebecca Hogue
+3527	1	Reappointment, Police Commission - Petra DeJesus
+3528	1	Reappointment, Public Works Commission - Gerald Demarcus Turner and Fady Zoubi
+3529	1	Reappointment, Reentry Council - Supervisor Catherine Stefani
+3530	1	Reappointment, Sanitation and Streets Commission - Thomas Richard Harrison
+3531	1	Reappointment, Small Business Commission - Dimitri Thierry Cornet
+3532	1	Reappointment, Small Business Commission - Kathleen Dooley
+3533	1	Reappointment, Small Business Commission - Miriam Zouzounis
+3534	1	Reappointment, Small Business Commission - William Ortiz-Cartagena
+3535	1	Reappointment, Sunshine Ordinance Task Force - Fiona Hinze
+3536	1	Reappointments, Assessment Appeals Board No # - Louisa Mendoza, Daniel Hershkowitz, Joyce Lewis, and Angela Cheung
+3537	1	Reappointments, Assessment Appeals Board No. # - Jeffrey Morris and Eugene Valla
+3538	1	Reappointments, Assessment Appeals Board No. # - John Lee, Mervin Conlan, and Susan Elizabeth Miller
+3539	1	Reappointments, Assessment Appeals Board No. # - John Lee, Mervin Conlan, and Yosef Tahbazof
+3540	1	Reappointments, Assessment Appeals Board No. # - Shawn Ridgell and James Reynolds
+3541	1	Reappointments, Ballot Simplification Committee - Scott Patterson, Betty Packard, and Ashley Raveche
+3542	1	Reappointments, Bicycle Advisory Committee - Marc Brandt and Kisai Henriquez
+3543	1	Reappointments, Child Care Planning and Advisory Council - Matt Pemberton, Gretchen Ames, and Mario Paz
+3544	1	Reappointments, Children and Families First Commission - E'leva Hughes Gibson and Zea Malawa
+3545	1	Reappointments, Commission on the Aging Advisory Council - Juliet Rothman and Margaret Graf
+3546	1	Reappointments, Golden Gate Bridge, Highway and Transportation District - Sabrina Hernandez, Bert Hill, Richard Grosboll, and Michael Theriault
+3547	1	Reappointments, Health Authority - Eddie Chan and Maria Luz Torre
+3548	1	Reappointments, Immigrant Rights Commission - Mario Paz, Celine Kennelly, and Nima Rahimi
+3549	1	Reappointments, In-Home Supportive Services Public Authority - Jesse Nichols, Sascha Bittner, Daisy McArthur, and Robin Wilson-Beattle
+3550	1	Reappointments, South of Market Community Stabilization Fund Community Advisory Committee - Daniel Hlad and John Elberling
+3551	1	Removal of Peter Cohen - Inclusionary Housing Technical Advisory Committee
+3552	1	Reopening the Treasurer & Tax Collector’s In-Person Property Tax Payment Location on May # , #
+3553	1	Report of Assessment Costs - Blighted Properties
+3554	1	Report of Assessment Costs for Blighted Properties - Accelerated Sidewalk Abatement Program
+3555	1	Request for Procurement - Special Investigation Services
+3556	1	Requesting the Office of the Controller and the Chief Economist to Conduct an Economic Impact Analysis on SFMTA’s Meter Hour Extension
+3557	1	Requesting the Office of the Controller to Conduct Audit of the Children and Youth Fund Baseline and to Conduct Evaluation of the Our Children, Our Families Council
+3558	1	Resolution of Intent - Street Vacation - India Basin Park Project
+3559	1	Resolution of Intention - Renewal and Expansion - Castro Community Benefit District
+3560	1	Resolution of Intention to Establish Infrastructure and Revitalization Financing District No. # (Hoedown Yard)
+3561	1	Resolution of Intention to Establish Special Tax District No. # (Power Station)
+3562	1	Resolution to Establish (Renew and Expand) - Castro Community Benefit District
+3563	1	Resolution to Establish (Renew and Expand) - Fisherman’s Wharf Landside Community Benefit District
+3564	1	Response to the Partial Federal Government Shutdown
+3565	1	Revenue Agreement - JC Decaux San Francisco, LLC. - Public Toilets and Public Service Kiosk Agreement - $
+3566	1	Revenue Agreement - Retroactive - JC Decaux San Francisco, LLC. - Public Toilets and Public Service Kiosk Agreement - $
+3567	1	Revenue Agreement Amendment - JC Decaux San Francisco, Inc. - Extending Term to December # , #
+3568	1	Revenue Agreement Amendment - JC Decaux San Francisco, Inc. - Extending Term to February # , #
+3569	1	Reverend Roland Gordon Day - February # , #
+3570	1	Revision to Board of Supervisors Regular Meeting Schedule - #
+3571	1	San Francisco Finance Corporation - Refunding Lease Revenue Bonds - Open Space Fund
+3572	1	San Francisco Finance Corporation Refunding Lease Revenue Bonds (Library Projects)
+3573	1	Sanitation and Streets Commission - Statement of Purpose
+3574	1	Second Extension Agreement - Long Term Energy Sales - Modesto Irrigation District
+3575	1	Second Extension Agreement - Long Term Power Sales - Turlock Irrigation District
+3576	1	Setting Transition Date - Sanitation and Streets Commission and Sanitation and Streets Department
+3577	1	Settlement of Lawsuit - Dacari Spiers - $
+3578	1	Settlement of Lawsuit - Dennis Richards, Rachel Swann, Six Dogs, LLC - $
+3579	1	Settlement of Lawsuit - Recology San Francisco, Sunset Scavenger Company, and Golden Gate Disposal and Recycling Company - San Francisco Refuse Ratepayers to Receive $ in Restitution; City to Receive $
+3580	1	Settlement of Lawsuit - Riana Buffin and Crystal Patterson - City to Comply with New Pretrial Detention Policies and Provide Funding for Pretrial Diversion Project
+3581	1	Settlement of Unlitigated Claim - # Golden Gate Associates, L.P. - $ Plus Interest
+3582	1	Settlement of Unlitigated Claim - BRIDGE Housing Corporation - $
+3583	1	Settlement of Unlitigated Claim - Estate Research Associates - $
+3584	1	Settlement of Unlitigated Claim - Farmers Insurance Exchange - $
+3585	1	Shannon Rowbury Day - October # , #
+3586	1	Site Use Agreement - VB Nimbus, LLC - Radio Equipment - # S Corral Hollow Road, Tracy - Initial Annual Rent of $
+3587	1	Small Business Emergency Relief Program - Retroactive - Not to Exceed $ Funding/Loan Agreements - California Rebuilding Fund, LLC - Expected Amount $ - Funding/Grant Agreements - Kiva Microfunds - Expected Amount $
+3588	1	Street Vacation Order - Parkmerced Development Project
+3589	1	Summary Street Vacation - 25th Street - Temporary Navigation Center for Homeless Residents
+3590	1	Supporting Activists Facing Prosecution in Sonoma County - Conditions of Animals in Factory Farms
+3591	1	Supporting Assembly Constitution Amendment No. # (Weber, Gipson) to Repeal Proposition #
+3592	1	Supporting COVID- # Orders for Business Interruption As Necessary Due to Physical Property Loss or Damage
+3593	1	Supporting California Assembly Bill No. # (Bonta) - Discriminatory Emergency Calls
+3594	1	Supporting California Senate Bill No. # (Portantino) - Education Finance: Supplemental Education Funding
+3595	1	Supporting California Senate Bill No. # (Wiener) - Agricultural District 1a: Firearm and Ammunition Sales at the Cow Palace
+3596	1	Supporting California Senate Bill Nos. # (Skinner), # (Skinner), and # (Menjivar), and California State Assembly Bill Nos. # (Petrie-Norris) and # (Weber) - Reproductive and Gender-Affirming Health Care
+3597	1	Supporting California State Assembly Bill # (Ting) - Supporting Efforts to Apply Inclusionary Housing Requirements
+3598	1	Supporting California State Assembly Bill No. # (Eggman, Wiener, Friedman) - Three-Year Pilot Program for Supervised Drug Consumption
+3599	1	Supporting California State Assembly Bill No. # (Haney) - Establishing Public Animal Abuse Registry
+3600	1	Supporting California State Assembly Bill No. # (Haney) - State Holidays: Eid
+3601	1	Supporting California State Assembly Bill No. # (Soria) - Stop Super Speeders Act
+3602	1	Supporting California State Assembly Bill No. # (Stefani) - License Plates: Obstruction or Alteration
+3603	1	Supporting California State Assembly Bill No. # (Stefani) - Public Contracts: Firearms, Ammunition, and Firearm Accessories
+3604	1	Supporting California State Proposition # - Homelessness, Drug Addiction, and Theft Reduction Act
+3605	1	Supporting California State Senate Bill No. # (Caballero) - Community Anti-Displacement and Preservation Program
+3606	1	Supporting California State Senate Bill No. # (Portantino) - Dyslexia-Universal Screening
+3607	1	Supporting California State Senate Bill No. # (Richardson) - Enhanced Curb Management System
+3608	1	Supporting California State Senate Bill No. # (Umberg and Eggman) - Community Assistance, Recovery, and Empowerment (CARE) Court Program
+3609	1	Supporting California State Senate Bill No. # (Wiener) - Recovery Incentives Act
+3610	1	Supporting California State Senate Bill SB # (Wiener) - Recovery Incentives Act
+3611	1	Supporting Expanded Access to Safe Drinking Water through Hydration Stations
+3612	1	Supporting H.R. # (Deutch) - The Energy Innovation and Carbon Dividend Act of #
+3613	1	Supporting National Mental Health Awareness Month During COVID- #
+3614	1	Supporting Organizing Efforts by Workers Employed by Commuter Shuttle Services
+3615	1	Supporting Republic Services Workers at the San Francisco Bay Railway to Unionize
+3616	1	Supporting United States Congressmen Khanna and Ryan’s Earned Income Tax Credit for Americans Affected by the Coronavirus (COVID- # )
+3617	1	Supporting University of San Francisco Workers United During COVID- #
+3618	1	Supporting a Reparations Plan and Advisory Committee
+3619	1	Supporting a “New Border Vision” To Expand Public Safety and Protect Human Rights at U.S. Borders
+3620	1	Supporting the Rent and Mortgage Cancellation Act of #
+3621	1	Supporting the Right to Peacefully Assemble and Protest and Denouncing Militarized Suppression of Protests
+3622	1	Supporting/Opposing the Recreation and Park Commission’s Proposed Equity Metrics
+3623	1	The Week of the Young Child - April # , # , through April # , # - First Week of April
+3624	1	Transportation Code - Fare Evasion and Passenger Conduct Regulations
+3625	1	Transportation Code - Fee Waiver for Sunday Streets
+3626	1	Transportation Code - Large Commercial Vehicle Parking Restrictions
+3627	1	Transportation, Public Works Codes - Unauthorized Motorized Scooter Violations, Motorized Scooter Share Program
+3628	1	Urging Accreditation Council of Graduate Medical Education to Take Action and Support Resident Physicians During COVID- #
+3629	1	Urging Additional COVID- # Data Reporting for Congregate Residential Facilities and Sexual Orientation and Gender Identity Demographic Information
+3630	1	Urging Adoption of State Water Board Proposed Updates to the # Bay-Delta Plan and Subsequent Voluntary Agreements
+3631	1	Urging Adoption of a Photograph Identification Policy for Patients Whose Physical Characteristics Have Been Changed Due to Medical Treatment
+3632	1	Urging California State University To Strengthen Student Learning and Protect Faculty Working Conditions by Giving the California Faculty Association a Fair Contract
+3633	1	Urging City Departments to Sanction Wells Fargo
+3634	1	Urging Completion of the # Department Of Justice Recommendations and Compliance Measures
+3635	1	Urging Congress and Federal Executive Branch to Expeditiously Expand Economic Stimulus Bill - Ensure Equitable Solutions for Small Businesses and Nonprofits
+3636	1	Urging Congress to Enact the Automatic Boost to Communities Act
+3637	1	Urging Congress to Stand Firm on Local Stimulus Funding
+3638	1	Urging Congress to Support $ Billion Relief Funding for Child Care in the Next COVID- # Relief Package
+3639	1	Urging Congress to Support Increased Relief Funding for Small Businesses and Local Governments, and Development of Public Banks
+3640	1	Urging Continued State Funding for the Market Match Program Supporting CalFresh Incentives at Farmers’ Markets Across California
+3641	1	Urging County Health Officials to Assess Public Health Impacts from Panic Buying Weapons
+3642	1	Urging Developers Within the Central SoMa Plan to Include a “Community Good Jobs Employment Plan” With Planning Application
+3643	1	Urging Enforcement Action and Injunctive Relief for the Misclassification of San Francisco Workers
+3644	1	Urging Essential Businesses to Establish Vulnerable Population-Only Shopping Hours or Other Reasonable Accommodations
+3645	1	Urging Flexible Incentive Pay and Testing for Frontline Non-Profit Workers During Public Health Emergency
+3646	1	Urging Geographic Equity and Appropriateness of Homeless Services and Facilities
+3647	1	Urging Immigration and Customs Enforcement to Grant Parole to Kelly Gonzalez Aguilar
+3648	1	Urging Implementation of Additional Health Provisions to Address Social and Health Inequities Exacerbated by the COVID- # Pandemic
+3649	1	Urging Implementation of Drug Market Intervention (DMI) Strategy in San Francisco
+3650	1	Urging Implementation of Proposition # - The Drug Addiction and Theft Reduction Act - Prioritize Ending Open-Air Drug Scenes in Equity Priority Communities
+3651	1	Urging Implementation of Statewide Election Reforms for the November Presidential Election - Protect Voter Access, Ensure Mass Public Education on Voting, and Focus on Equity
+3652	1	Urging Invalidation of # Revenue Agreement - JC Decaux
+3653	1	Urging Mayor and City Departments to Prioritize Public Access and Transparency During COVID- # Emergency
+3654	1	Urging Municipal Transportation Agency to Report Back with Findings of the New Rules for Taxi Pick-Ups at San Francisco International Airport (SFO) and Urging SFO to Restrict Transportation Network Companies
+3655	1	Urging Naming the Central Subway’s Chinatown Station the “Chinatown Rose Pak Station”
+3656	1	Urging Naming the Central Subway’s Chinatown Station the “Rose Pak Chinatown Station”
+3657	1	Urging Public Health Orders to Prioritize the Needs of People Experiencing Homelessness During the COVID- # Crisis
+3658	1	Urging Public Works and the Department of Public Health to Increase Access to Public Restrooms
+3659	1	Urging Ratification of the Convention on the Elimination of All Forms of Discrimination Against Women
+3660	1	Urging Removal of Third Party Dispatch from the Taxi Upfront Fare Pilot
+3661	1	Urging Residents, Elected Officials, and Community Based Organizations to Join Forces and Protect Our Communities During the COVID- # State of Emergency
+3662	1	Urging Responses from City Departments to Inform a Coordinated, Comprehensive and Sustained Plan to Address Drug-Related Harms and Incentivize Recovery - San Francisco Recovers
+3663	1	Urging SFMTA and SFPD to Stop Ticketing Stolen Vehicles and to Share Data Toward Solving Auto Thefts
+3664	1	Urging SFMTA to Prioritize and Expedite Vision Zero Improvements Around Playgrounds, School Zones, and Senior Zones
+3665	1	Urging San Francisco and California Law Enforcement Agencies to Ensure Proper Compliance Between Data Sharing Laws and Local and Statewide Sanctuary Laws
+3666	1	Urging State Action to Protect Laguna Honda Hospital and Rehabilitation Center Patients
+3667	1	Urging State Legislators to Allow Local Communities the Right to Vote on Autonomous Vehicle Operation in Their Counties
+3668	1	Urging State and Federal Funding for Caltrain
+3669	1	Urging State and Federal Governments to Enact a Moratorium on Rent and Mortgage Payments
+3670	1	Urging Statewide Action to Suspend ICE Detention Facilities
+3671	1	Urging United States Congress to Enact an Economic Stimulus Coronavirus Package
+3672	1	Urging a Full Pardon of Sakhone Lasaphangthong and Somdeng “Danny” Thongsy
+3673	1	Urging a Safe Return of Oumar Yaide to San Francisco
+3674	1	Urging the Adoption of Sections in the October # Economic Recovery Task Force Report - Bridge the Digital Divide
+3675	1	Urging the Bay Area Air Quality Management District to Adopt a Refinery Emission Reduction Rule that Includes Enforceable Numeric Limits on Refinery-Wide Emissions of Greenhouse Gas and Particulate Matter Air Pollution
+3676	1	Urging the California Public Utilities Commission to Prioritize Environmental Justice Communities in its Net Energy Metering Programs
+3677	1	Urging the California State Governor to Provide Relief for Small Businesses Affected by the COVID- # Pandemic
+3678	1	Urging the California State Legislature to Support Assembly Bill #
+3679	1	Urging the Chief of Police to Create a Comprehensive Plan and to Implement a Citywide Strategy on Neighborhood Automobile Break-Ins, Bicycle Theft, and Property Crime with Focused Staffing at District Stations
+3680	1	Urging the City Develop Streetscape and Landscape Maintenance Standards
+3681	1	Urging the City Develop Streetscape, Stairway, and Landscape Maintenance Standards
+3682	1	Urging the City of Vallejo to Require Vallejo Police to Release Body Camera Footage Related to the Killing of Sean Monterrosa
+3683	1	Urging the Civil Service Commission to Establish Disqualifying Standards for Applicants for Position of Police Officer and Sheriff Deputy Applicants Based on Misconduct
+3684	1	Urging the Creation of an Emergency Housing and Safety Working Group
+3685	1	Urging the Department of Homelessness and Supportive Housing to Adopt a Five Year Plan to Reduce Homelessness
+3686	1	Urging the Department of Public Health and Zuckerberg San Francisco General Hospital to Implement New Guidelines to Protect Frontline Healthcare Workers From COVID- #
+3687	1	Urging the Department of Public Health and the Health Service System to Provide Treatment for HIV-Related Lipodystrophy Syndrome - Supporting California State Senate Bill # (Wiener)
+3688	1	Urging the Department of Public Health and the Medical Examiner to Conduct Epidemiological Post-Mortem COVID- # Testing and Contact Tracing
+3689	1	Urging the Department of Public Health to Provide Treatment for HIV-Related Lipodystrophy Syndrome - Supporting California State Senate Bill # (Wiener)
+3690	1	Urging the Department of Public Health to Rescind Their Relocation Notice for Adult Residential Facility Residents
+3691	1	Urging the Department of Public Health, Municipal Transportation Agency, and Police Department to Amend the City’s Vision Zero Traffic Fatality Protocol
+3692	1	Urging the End of the Blood Donation Ban by Gay and Bisexual Men
+3693	1	Urging the Equal Employment Opportunity Office to Collaborate with the Office of Racial Equity on Investigating Equal Employment Opportunity Complaints
+3694	1	Urging the Federal Government to Increase Funding and Oversight for the Paycheck Protection Program
+3695	1	Urging the Governor to Expedite the Procurement, Production, and Disbursement of Personal Protective Equipment and Ventilators
+3696	1	Urging the Governor to Waive California Redemption Value Fines for Small Businesses
+3697	1	Urging the Implementation of Recommendations in the October # Economic Recovery Task Force Report - Bridge the Digital Divide
+3698	1	Urging the MTA, SFCTA and PW to Identify High Risk Transit Stops and Crosswalk; and Urging DPH to Coordinate and Guide Efforts to Reduce Traffic Violence
+3699	1	Urging the Mayor and City Departments to Develop a Plan to Address High Levels of COVID- # Cases in the Latinx Community
+3700	1	Urging the Mayor and DHR to Initiate Emergency Hiring Plan to Fill Behavioral Health Workforce Vacancies
+3701	1	Urging the Mayor and HSH to Explore and Implement a Fair Distribution of Homeless Shelters Across All Districts
+3702	1	Urging the Mayor to Expand Emergency Childcare During COVID- # - Require Large Essential Businesses to Offer Expanded Workers’ Rights Package
+3703	1	Urging the Mayor to Rescind or Drastically Reform Family Shelter Length of Stay Limits and work with HSH to Develop Policies that Minimize Harm to Families
+3704	1	Urging the Municipal Transportation Agency to Refrain from Any Muni Fare Increases
+3705	1	Urging the Pardon of Aylaliya “Liyah” Birru
+3706	1	Urging the Planning Commission to Recommend Amendments to the General Plan Concerning Adoption of the Central South of Market Area Plan
+3707	1	Urging the Planning Department to Institutionalize a Sensitive Communities Map in the General Plan Housing Element
+3708	1	Urging the Planning Department to Prioritize Final Adoption of the North Beach Historic Context Statement
+3709	1	Urging the Police Commission to Convene a Task Force on Strategic Police Staffing and Deployment
+3710	1	Urging the President of the United States to Exercise the Full Powers of the Defense Production Act During the COVID- # Emergency
+3711	1	Urging the Recreation and Park Department and other City Departments to Develop a Long-Term Plan to Re-Imagine Twin Peaks
+3712	1	Urging the Recreation and Park Department to Develop a Transparent Process for the Marina Improvement and Remediation Project
+3713	1	Urging the Recreation and Parks Department to Develop and Install Signage Acknowledging Sharp Park Dark History as a Concentration Camp
+3714	1	Urging the Recreation and Parks Department, Municipal Transportation Agency, Real Estate Division, and Public Works to Work Collaboratively to Design a Long-Term Plan to Re-Imagine Twin Peaks
+3715	1	Urging the San Francisco Board of Education and SFUSD Administration to Accept City Support to Prioritize Safely Re-Opening Schools
+3716	1	Urging the San Francisco Federal Credit Union to Extend the Taxi Medallion Loan Forbearance Plan
+3717	1	Urging the San Francisco Legislative Delegation to Work to Amend the Proposed “By Right Housing Approvals” Budget Trailer Bill
+3718	1	Urging the San Francisco Planning Director to Amend Director Bulletin No. #
+3719	1	Urging the San Francisco Police Commission to Convene a Task Force on Strategic Police Staffing
+3720	1	Urging the Sheriff’s Department to Implement Virtual Visits for Children with Incarcerated Parents
+3721	1	Urging the State and Federal Government to Include Large Nonprofits in Upcoming COVID- # Relief Packages
+3722	1	Urging the United States Congress to Ensure the Inclusion of Immigrants in the Next COVID- # Federal Relief Bill
+3723	1	Urging the United States Environmental Protection Agency to Continue Implementing the United States’ Clean Power Plan
+3724	1	Urging to Reduce Prison Population to Protect People Incarcerated and Staff at San Quentin State Prison From COVID- #
+3725	1	Use Agreement - Big Fish Entertainment LLC - Development of Documentary Series “Live Rescue” with San Francisco Animal Care and Control
+3726	1	Use Agreement - Topspin Content - Documentary Series “Real Streets of San Francisco”
+3727	1	Various Codes - Boards, Commissions, and Advisory Bodies
+3728	1	Various Codes - Renaming Office of Cannabis to Office of Cannabis Regulation - Cannabis Regulation
+3729	1	World Prematurity Awareness Day - November # , #
+3730	1	Zoning - Interim Moratorium on Medical Cannabis Dispensaries
+3731	1	Zoning - Report on Interim Moratorium Extension on Production, Distribution, and Repair Conversion in the Proposed Central South of Market Plan Area
+3732	1	[Mock

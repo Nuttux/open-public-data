@@ -1,0 +1,250 @@
+3001	2	Contract Agreement - Retroactive - Corporation for Network Initiatives in California - Fiber Optic Network Installation, Occupancy, and Maintenance - Anticipated Revenue to the City $
+3002	2	Contract Agreement - Retroactive - Department of State Hospitals - Early Access and Stabilization Services - $
+3003	2	Contract Agreement - Retroactive - Health Advocates LLC - Uncompensated Care Reimbursement Recovery Services - Not to Exceed $
+3004	2	Contract Agreement - Retroactive - San Francisco AIDS Foundation - Health Access Point Services - Not to Exceed $
+3005	2	Contract Agreement - Retroactive - State Department of Health Care Services - Substance Use Disorder Services - $ - FY
+3006	2	Contract Agreement - Rexel USA, Inc. - Electrical Supplies - Not to Exceed $
+3007	2	Contract Agreement - Seneca Family of Agencies - dba Seneca Center - Behavioral Health Services - Not to Exceed $
+3008	2	Contract Agreement - Southern California Edison Company - Purchase of Renewable Energy - CleanPowerSF - Not to Exceed $
+3009	2	Contract Agreement - State Department of Health Care Services - Substance Use Disorder Services - FY $
+3010	2	Contract Agreement - Thales Transport & Security, Inc. - ATCS Specific Technical Services, Equipment, and Software Upgrades - Not to Exceed $
+3011	2	Contract Agreement - Toyon Associates, Inc. - Regulatory Report and Reimbursement and Revenue Optimization Services - Not to Exceed $
+3012	2	Contract Agreement - Western States Oil and SC Fuels - Gasoline - Not to Exceed $
+3013	2	Contract Agreement - Xtech JV - Technology Marketplace - Not to Exceed $
+3014	2	Contract Agreement Amendment - NextBus, Inc. - Automatic Vehicle Location System - Not to Exceed $
+3015	2	Contract Agreement Amendment - Retroactive - Central Subway Design Group - Architectural and Engineering Services - Not to Exceed $
+3016	2	Contract Agreement Amendment - Retroactive - HNTB-TSE JV - Surface Segment, Trackways, Systems, Quality Control and Design Integration - Not to Exceed $
+3017	2	Contract Agreements - Sapient Corporation and Carahsoft Technology Corporation - Office of the Assessor-Recorder’s Property Assessment System Replacement Project - Not to Exceed $ and $ Respectively
+3018	2	Contract Amendment - # Tech, LLC - Service and Support Agreement - Not to Exceed $
+3019	2	Contract Amendment - A Better Way - Mental Health Outpatient Treatment Services and Optional Specialized Mental Health Treatment Services - Not to Exceed $
+3020	2	Contract Amendment - Addiction, Research & Treatment, Inc. dba BAART - Opioid Dependent Substance Abuse Treatment and Education Services - Not to Exceed $
+3021	2	Contract Amendment - Allied Universal Security - Security Services - Total Contract Amount $
+3022	2	Contract Amendment - Allied Universal Security Services - Human Services Agency Security Services - Not to Exceed $
+3023	2	Contract Amendment - Alstom Transportation, Inc. - Vendor Managed Inventory Services - Not to Exceed $
+3024	2	Contract Amendment - Alternative Family Services, Inc. - Supporting Permanency and Stability for Children and Youth Involved with the Foster Care System - Not to Exceed $
+3025	2	Contract Amendment - Aon Risk Insurance Services West, Inc. - Excess Liability Insurance - Central Subway Project - Not to Exceed $
+3026	2	Contract Amendment - Aon Risk Insurance Services West, Inc. - Insurance Broker and Risk Management Consulting Services - $
+3027	2	Contract Amendment - Baker Places - Behavioral Health Respite Services - Not to Exceed $
+3028	2	Contract Amendment - Baker Places, Incorporated - Mental Health Residential and Substance Use Disorder Services - Not to Exceed $
+3029	2	Contract Amendment - Bar None Auction - Auction Services - $ Anticipated Revenue
+3030	2	Contract Amendment - Bay Cities Produce Co, Inc. - Purchase of Fresh and Frozen Produce for ZSFGH and LHH - Not to Exceed $
+3031	2	Contract Amendment - Bayview Hunters Point Foundation - Mental Health and Substance Abuse Services - Not to Exceed $
+3032	2	Contract Amendment - Black and Veatch Corporation - Water Enterprise Water System - Calaveras Dam Replacement Project - Not to Exceed $
+3033	2	Contract Amendment - CCT Technologies, Inc. dba Computerland of Silicon Valley - Technology Marketplace - Not to Exceed $
+3034	2	Contract Amendment - Central City Hospitality House - Behavioral Health Services - Not to Exceed $
+3035	2	Contract Amendment - CentralSquare Technologies, LLC. - Computer Aided Dispatch System Software Maintenance - Not to Exceed $
+3036	2	Contract Amendment - CityBase, Inc. - Software as a Service Agreement - Not to Exceed $
+3037	2	Contract Amendment - Color Genomics, Inc. - COVID- # Testing Services - Not to Exceed $
+3038	2	Contract Amendment - Community Forward SF - A Woman’s Place - Not to Exceed $
+3039	2	Contract Amendment - Community Forward SF Inc. - Fiscal Intermediary and Support Services for Medical Respite and Sobering Center Program - Not to Exceed $
+3040	2	Contract Amendment - Crestwood Behavioral Health - Long-Term Mental Health Services - Not to Exceed $
+3041	2	Contract Amendment - Denali Water Solutions LLC - Biosolids and Grit Hauling Services Oceanside and Southeast Wastewater Treatment Plants - Not to Exceed $
+3042	2	Contract Amendment - Department of Energy Western Area Power Administration - Delivery of Low-Cost Power - Not to Exceed $
+3043	2	Contract Amendment - Edgewood Center for Children and Families - Behavioral Health Services - Not to Exceed $
+3044	2	Contract Amendment - Edgewood Center for Children and Families - Hospital Diversion and Crisis Stabilization Unit - Not to Exceed $
+3045	2	Contract Amendment - Ferrara Fire Apparatus, Inc. - Equipment Purchase - Not to Exceed $
+3046	2	Contract Amendment - Five Keys Schools and Programs - # Ellis Semi-Congregate Shelter - Not to Exceed $
+3047	2	Contract Amendment - Global Tel*Link - Inmate Telephone Services
+3048	2	Contract Amendment - Golden Gate Petroleum - Renewable Diesel Fuel - Not to Exceed $
+3049	2	Contract Amendment - Granite Rock Company - Purchase of Petroleum, Emulsions, Sealants, and Concrete Base - Not to Exceed $
+3050	2	Contract Amendment - Harvey M. Rose Associates, LLC - Budget and Legislative Analyst Services - Exercise Option to Extend Term
+3051	2	Contract Amendment - Health Advocates, LLC - Uncompensated Reimbursement Recovery Services - Not to Exceed $
+3052	2	Contract Amendment - Health Right # - Residential Substance Use Disorder and Mental Health Outpatient Services - Not to Exceed $
+3053	2	Contract Amendment - HealthRIGHT # - COVID- # Isolation and Quarantine Services - Not to Exceed $
+3054	2	Contract Amendment - HealthRIGHT # - Fiscal Intermediary Check-Writing Services - Not to Exceed $
+3055	2	Contract Amendment - HealthRight # - Substance Abuse and Mental Health Services - Not to Exceed $
+3056	2	Contract Amendment - HealthRight # - Withdrawal Management and Residential Treatment Services - Not to Exceed $
+3057	2	Contract Amendment - Heluna Health - Comprehensive Outreach and Case Management Programming - Not to Exceed $
+3058	2	Contract Amendment - Heluna Health - San Francisco Homeless Outreach Team - Not to Exceed $
+3059	2	Contract Amendment - Heluna Health - San Francisco Homeless Outreach Team - Outreach and Case Management Programming - Not to Exceed $
+3060	2	Contract Amendment - Homeless Children’s Network - Behavioral Health Services for Black/African American Individuals, Children and Families - Not to Exceed $
+3061	2	Contract Amendment - Hyatt Corporation - Hotel Management for On-Airport Hotel - Not to Exceed $
+3062	2	Contract Amendment - ISSQUARED, Inc. dba ComputerLand of Silicon Valley - Technology Marketplace - Not to Exceed $
+3063	2	Contract Amendment - Insight Public Sector, Inc - Technology Marketplace - Not to Exceed $
+3064	2	Contract Amendment - Instituto Familiar de la Raza - Behavioral Health Services - Not to Exceed $
+3065	2	Contract Amendment - InterVision Systems, LLC - Technology Marketplace - Not to Exceed $
+3066	2	Contract Amendment - Kennedy/Jenks Consultants - Engineering Design and Services - Not to Exceed $
+3067	2	Contract Amendment - Latino Commission - Substance Use Disorder Treatment Services - Not to Exceed $
+3068	2	Contract Amendment - Lystek International Limited - Class A Biosolids Management Services - Not to Exceed $
+3069	2	Contract Amendment - Manatron, Inc. - Maintenance of Government Revenue Management Software - Not to Exceed $
+3070	2	Contract Amendment - Motorola Solutions, Inc. - Computer Aided Dispatch System and Mobile Computing System - Not to Exceed $
+3071	2	Contract Amendment - Mount St. Joseph-St. Elizabeth - Behavioral Health Services - Not to Exceed $
+3072	2	Contract Amendment - New Flyer of America Inc. - Purchase of Low Floor Diesel-Hybrid Buses - Not to Exceed $
+3073	2	Contract Amendment - New Flyer of America Inc. - Purchase of Low Floor Electric Trolley Buses - Not to Exceed $
+3074	2	Contract Amendment - Off the Grid Services LLC - Great Plates Delivered - Not to Exceed $
+3075	2	Contract Amendment - Positive Resource Center - Emergency Financial Services - Not to Exceed $
+3076	2	Contract Amendment - Project Open Hand - Food and Nutrition Services Low-Income People Living with HIV/AIDS - Not to Exceed $
+3077	2	Contract Amendment - Recology San Francisco - Refuse Collection Services - Not to Exceed $
+3078	2	Contract Amendment - Regents of the University of California - Behavioral Health Services - Not to Exceed $
+3079	2	Contract Amendment - Regents of the University of California - Behavioral Health Services for Adults and Older Adults - Not to Exceed $
+3080	2	Contract Amendment - Regents of the University of California - Behavioral Health Services for Children, Youth and Families - Not to Exceed $
+3081	2	Contract Amendment - Retroactive - Bar None Auction - Auction Services - $ Anticipated Revenue
+3082	2	Contract Amendment - Retroactive - Chinese Hospital Association - Skilled Nursing Services - Not to Exceed $
+3083	2	Contract Amendment - Retroactive - Collections Solutions Software, Inc. - Service and Support Agreement - Not to Exceed $ #
+3084	2	Contract Amendment - Retroactive - Health Services Advisory Group, Inc. - Specialized Consulting Services - Not to Exceed $
+3085	2	Contract Amendment - Retroactive - Helios Healthcare, LLC - Behavioral Health Services - Not to Exceed $
+3086	2	Contract Amendment - Retroactive - Moonstar Buffet Restaurant - Great Plates Delivered - Not to Exceed $
+3087	2	Contract Amendment - Retroactive - Northpointe Software, Inc. - Correctional Offender Management Profiling for Alternative Sanctions - Term Extension - Not to Exceed $
+3088	2	Contract Amendment - Retroactive - Off the Grid Services LLC - Great Plates Delivered - Not to Exceed $
+3089	2	Contract Amendment - Retroactive - Progress Foundation - Behavioral Health Services - Not to Exceed $
+3090	2	Contract Amendment - Retroactive - Regents of the University of California - Behavioral Health Services - Not to Exceed $
+3091	2	Contract Amendment - Retroactive - TEGSCO, LLC, dba San Francisco AutoReturn - Vehicle Towing, Storage and Disposal Services for Abandoned and Illegally-Parked Vehicles - Not to Exceed $
+3092	2	Contract Amendment - Retroactive - The Regents of the University of California - Mental Health Services for Infant Parent Program - Not to Exceed $
+3093	2	Contract Amendment - Retroactive - Western States Oil - Gasoline Fuel - Not to Exceed $
+3094	2	Contract Amendment - Richmond Area Multi Services, Inc. - Behavioral Health Peer Services - Not to Exceed $
+3095	2	Contract Amendment - Richmond Area Multi-Services, Inc. - Behavioral Health Services - Adults, Older Adults, and Transitional Age Youth - Not to Exceed $
+3096	2	Contract Amendment - Richmond Area Multi-Services, Inc. - Behavioral Health Services - Children, Adolescents, and Their Families - Not to Exceed $
+3097	2	Contract Amendment - Richmond Area Multi-Services, Inc. - Behavioral Health Services for Adults, Older Adults, and Transitional Age Youth - Not to Exceed $
+3098	2	Contract Amendment - San Francisco AIDS Foundation - Stonewall Project - Not to Exceed $
+3099	2	Contract Amendment - San Francisco Pretrial Diversion Project - Pretrial Services - $
+3100	2	Contract Amendment - San Francisco Pretrial Diversion Project - Pretrial Services - Not to Exceed $
+3101	2	Contract Amendment - San Francisco Public Health Foundation - Food Security Services - Not to Exceed $
+3102	2	Contract Amendment - Sapient Corporation (Sapient) - Office of the Assessor-Recorder Property Assessment System Replacement Project - Not to Exceed $
+3103	2	Contract Amendment - Special Service for Groups, Inc. - Therapeutic and Specialty Mental Health Services for Children and Youth - Not to Exceed $
+3104	2	Contract Amendment - TEGSCO, LLC - Vehicle Towing, Storage, and Disposal Services for Abandoned and Illegally-Parked Vehicles - Not to Exceed $
+3105	2	Contract Amendment - TIDES Center - Supportive Housing Property Management Services - Not to Exceed $
+3106	2	Contract Amendment - The Regents of the University of California - Outpatient/Ambulatory HIV Health Services - Not to Exceed $
+3107	2	Contract Amendment - Tiburon, Inc. - Computer Aided Dispatch System Software Maintenance - Not to Exceed $
+3108	2	Contract Amendment - Tides Center - Supportive Housing Property Management Services - Department of Homelessness and Supportive Housing - Not to Exceed $
+3109	2	Contract Amendment - Toyon Associates, Inc. - Not to Exceed $
+3110	2	Contract Amendment - Tryfacta, Inc. - Temporary Traveling Nurse Registry Personnel - Not to Exceed $
+3111	2	Contract Amendment - Universal Protection Service, LP, dba Allied Universal Security Services - Armed and Unarmed Security Guard Services - Not to Exceed $
+3112	2	Contract Amendment - W.W. Grainger, Inc. - As-Needed Citywide Contract for Industrial Supplies - Not to Exceed $
+3113	2	Contract Amendment - Wausau Financial Systems, Inc. - Software License and Support Agreement - Not to Exceed $
+3114	2	Contract Amendment - WestEd - Early Care and Education Quality Rating and Improvement System - Not to Exceed $
+3115	2	Contract Amendment - XTech JV - Technology Marketplace - Not to Exceed $
+3116	2	Contract Amendment - Xtech JV AIXTEK dba Eaton Associates | 21Tech LLC - Technology Marketplace - Not to Exceed $
+3117	2	Contract Amendment - Zones, LLC - Technology Marketplace - Not to Exceed $
+3118	2	Contract Amendment Approval - Retroactive - Allied Universal Security - Security Services - Not to Exceed $
+3119	2	Contract Amendment No. # - HNTB-B&C JV - Central Subway Project - Not to Exceed $
+3120	2	Contract Amendment No. # - New Flyer of America, Inc. - Purchase of Low Floor Diesel-Hybrid Buses - Not to Exceed $
+3121	2	Contract Amendment No. # - Richmond Area Multi-Services, Inc. - Department of Public Health - Behavioral Health Services - Not to Exceed $
+3122	2	Contract Amendment No. # - Richmond Area Multi-Services, Inc. - Department of Public Health - Vocational Rehabilitation Program - Not to Exceed $
+3123	2	Contract Amendments - Aon Risk Insurance Services West, Inc. - Excess Liability Insurance for the Central Subway Project - Not to Exceed $
+3124	2	Contract Amendments - Central Subway Design Group - Central Subway Project - Not to Exceed $
+3125	2	Contract Approval - Allied Universal Security - Human Services Agency - Security Services - $
+3126	2	Contract Approval - Alstom Transportation, Inc. - Vendor Managed Inventory Services - Not to Exceed $
+3127	2	Contract Approval - Retroactive - Dominion Voting Systems, Inc. - Voting System - Not to Exceed $
+3128	2	Contract Extension - Intersection Media, LLC - Advertising - $ Minimum Guarantee
+3129	2	Contract Modification - Alameda Electrical Distributors Inc. - Purchase of Electrical Supplies and Fixtures - Not to Exceed $
+3130	2	Contract Modification - Allied Universal Security - Security Services - Total Contract Amount of $
+3131	2	Contract Modification - Buckles-Smith Electric Co. - Purchase of Electrical Supplies and Fixtures - Not to Exceed $
+3132	2	Contract Modification - Buckles-Smith Electric Company - Purchase of Electrical Supplies and Fixtures - Not to Exceed $
+3133	2	Contract Modification - Hitachi Rail GTS USA Inc. - Advanced Train Control System for Central Subway - Not to Exceed $
+3134	2	Contract Modification - MSC Industrial Supply Company Inc. - Purchase of Industrial Supplies - Not to Exceed $
+3135	2	Contract Modification - Retroactive - Catherine Wagner LLC - Central Subway Artwork - Term Extension - Not to Exceed $
+3136	2	Contract Modification - Retroactive - Paramedia, LLC - Central Subway Artwork - Term Extension
+3137	2	Contract Modification - Retroactive - Tomie Arai - Central Subway Artwork - Term Extension
+3138	2	Contract Modification - Retroactive - White Light Inc. - Werner Klotz Public Art Inc. - Central Subway Artwork - Term Extension
+3139	2	Contract Modification - Retroactive - Yumei Hou - Central Subway Artwork - Term Extension
+3140	2	Contract Modification - Thales Transport & Security Inc. - Advanced Train Control System for Central Subway - Increase Contract Amount - Not to Exceed $
+3141	2	Contract Renewal - Community Behavioral Health Services - Mental Health Services
+3142	2	Contract and Amendment - Retroactive - San Francisco-Marin Food Bank - CalFresh Stopgap Emergency Gift Card Initiative - Not to Exceed $
+3143	2	Contribution Agreement - United Airlines, Inc. - Airport Infrastructure Project - $
+3144	2	Controller's Appointment - Inspector General - Alexandra Shepard
+3145	2	Cooperative Agreement - California State Department of Forestry and Fire Protection (CAL Fire) - Firefighter Property Program - Acceptance of Loans of Equipment - Fire Department
+3146	2	Cooperative Agreement - California State Department of Forestry and Fire Protection - Federal Excess Personal Property Program - Acceptance of Loans of Equipment - Fire Department
+3147	2	Corinne Kan Day - February # , #
+3148	2	Corrective Actions in Connection with Proposed Federal Tax Reform - Multifamily Housing Revenue Bonds - Various Multifamily Rental Housing Projects
+3149	2	Cost Reimbursement Agreement - Pacific Gas and Electric Company - Management of Residual Petroleum Hydrocarbons - Pier #
+3150	2	Cost of Living Adjustment - Budget and Legislative Analyst Services - $ - FY
+3151	2	Cost of Living Adjustment to the Contract for Budget and Legislative Analyst Services - FY $
+3152	2	Cost-Sharing Agreement - Retroactive - BART - Paratransit Services - Reimbursement by BART
+3153	2	Cultural District Street Name Designations - "LEATHER & LGBTQ Cultural District" - Various Locations in the South of Market
+3154	2	Daniel Ellsberg Week - April # through April # , #
+3155	2	David Parr Day - July # , #
+3156	2	Day of Inclusion - May # , #
+3157	2	De-Appropriation - Salaries/Benefits/Vehicles, Various Projects - Police and Sheriff’s Department - $ - Appropriation - General Fund - $ - Overtime/Building and Structure Improvement Projects/Repair - POL/SHF - $ - FY
+3158	2	De-Appropriation and Appropriation - Expenditures of $ Supporting Increased Workers’ Compensation Expenditures - Police Department - FY
+3159	2	Declaration of Election Results - June # , # - Consolidated Statewide Direct Primary Election
+3160	2	Declaration of Election Results - March # , # , Consolidated Presidential Primary Election
+3161	2	Declaration of Election Results - November # , # - Consolidated General Election
+3162	2	Declaration of Election Results - September # , # - Special Recall Election
+3163	2	Declaration of Policy - Eighth Grade Algebra and SFUSD Math Curriculum Development
+3164	2	Declaration of Restrictions - Creeks to Peaks Trail Project - Twin Peaks Open Space
+3165	2	Declaration of Shelter Crisis and Authorizing the Application for the Homeless Emergency Aid Program
+3166	2	Declaration of Support - XXIII Winter Olympics - PyeongChang, the Republic of Korea
+3167	2	Declaring Gender-Based Shelter, Affordable Housing, and Support Services as Proven Safety and Prevention Tools During National Human Trafficking Prevention Month - January #
+3168	2	Declaring Results of Special Election - Community Facilities District No. # (Treasure Island)
+3169	2	Declaring San Francisco an “Open to All” City
+3170	2	Declaring Support - "March for Our Lives"
+3171	2	Declaring Support for United States House of Representatives Bill # - Restricting First Use of Nuclear Weapons Act of #
+3172	2	Declaring Support for Urgent Funding for the United States Postal Service - Urging the United States Postal Service to Maintain Longstanding Delivery Standards and Services
+3173	2	Declaring Support for the Tree of Life Synagogue and the Global Jewish Community
+3174	2	Declaring War on Racism
+3175	2	Declaring a Climate Emergency in San Francisco
+3176	2	Declaring a State of Emergency on Pedestrian and Cyclist Fatalities in San Francisco
+3177	2	Declaring a State of Urgency - Expanding the City’s Emergency Firefighting Water System
+3178	2	Declaring the City and County of San Francisco as a Sanctuary for Women Seeking Housing
+3179	2	Declaring the Intent to Waive Fee for Major Encroachment Permit - Seal Rock Inn Restaurant
+3180	2	Declaring the Intent to Waive Fees for Major Encroachment Permit - Vicha Ratanapakdee Mosaic Stairway Project
+3181	2	Declaring the National Rifle Association as a Domestic Terrorist Organization
+3182	2	Defend DACA and All Immigrants
+3183	2	Denouncing Anti-Asian American and Pacific Islander Rhetoric
+3184	2	Denouncing the Rise in Violence Against the Asian American and Pacific Islander Community
+3185	2	Department of Children, Youth and Their Families # Community Needs Assessment and # Services Allocation Plan
+3186	2	Designating San Francisco Arts Commission as the State-Local Partner with California Arts Council
+3187	2	Designating San Francisco a Bee City USA and Affirming San Francisco’s Commitment to Supporting Pollinator Health
+3188	2	Designating Various Departments as Health Care Components of the City and County of San Francisco - Hybrid Entity Under HIPAA
+3189	2	Designating Various Departments as Health Care Components of the City and County of San Francisco - Hybrid Entity Under Health Insurance Portability and Accountability Act
+3190	2	Designation Agreement - McAuley Adolescent Behavioral Health Unit - Dignity Health-St. Mary’s Medical Center-San Francisco-Psychiatric Facility
+3191	2	Determining Necessity to Incur Bonded Indebtedness - Community Facilities District No. # (Treasure Island) - $
+3192	2	Determining Necessity to Incur Bonded Indebtedness and Other Debt - Special Tax District No. # (Mission Rock Facilities and Services) - Not to Exceed $
+3193	2	Determining Necessity to Incur Bonded Indebtedness and Other Debt - Special Tax District No. # (Pier # Condominiums) - Not to Exceed $
+3194	2	Determining Necessity to Incur Bonded Indebtedness and Other Debt - Special Tax District No. # (Pier # Leased Properties) - Not to Exceed $
+3195	2	Determining Necessity to Incur Bonded Indebtedness and Other Debt - Special Tax District No. # (Power Station)
+3196	2	Development of Public Defender Documentary Media Project - Authorization to Enter Agreement - Even/Odd Films and Compound
+3197	2	Dia de Portugal, de Camões, e das Comunidades Portuguesas - June # , #
+3198	2	Directing the Clerk of the Board of Supervisors to Purchase the Book “Poverty, by America” for Staff Responsible for the City Budget
+3199	2	Disability Pride Month - July #
+3200	2	Domestic Violence Awareness Month - October
+3201	2	Donation of Retired Ambulance to City College of San Francisco
+3202	2	Donation of Retired Ambulance to the San Francisco Unified School District
+3203	2	Donation of Retired Pick-Up Truck to San Francisco Firefighters Local #
+3204	2	Dr. Jian Zhang Day - December # , #
+3205	2	Dr. Raymond Li Day - September # , #
+3206	2	Dr. Rolland and Kathryn Lowe Day - September # , #
+3207	2	Drag Story Hour Day - December # , #
+3208	2	Dyslexia Awareness Month - October
+3209	2	Earth Month - April #
+3210	2	Earthquake Preparedness Month - April
+3211	2	Education and Sharing Day - April # , #
+3212	2	El Farolito FC Day - May # , #
+3213	2	Emergency Contract - Retroactive - Tryfacta, Inc. - Temporary Staffing Services - Not to Exceed $
+3214	2	Emergency Declaration - Airport Runways 19L and 19R Seawall Erosion - Estimated Cost of Repairs Exceeds $
+3215	2	Emergency Declaration - Camp Mather Tree Removals - Estimated Cost of Repairs Exceeds $
+3216	2	Emergency Declaration - Declaration of Homeless Shelter Emergency and Authorizing Certain Emergency Contracting Provisions
+3217	2	Emergency Declaration - Kezar Pavilion Boilers - Estimated Cost of Repairs Exceeds $
+3218	2	Emergency Declaration - Stabilize Dry Dock No. # at Pier # - Not to Exceed $
+3219	2	Emergency Declaration - Trocadero Clubhouse Repairs - Estimated Cost of Repairs Not to Exceed $
+3220	2	Emergency Declaration - Winter Storm Debris Removal - Estimated Cost of Repairs Not to Exceed $
+3221	2	Emergency Ordinance - Cleaning and Disease Prevention Standards in Tourist Hotels and Large Commercial Office Buildings
+3222	2	Emergency Ordinance - Delegation of Authority to Amend Certain Agreements
+3223	2	Emergency Ordinance - Limiting COVID- # Impacts by Continuing to Make Shelter-in-Place Hotel Rooms Available to People Experiencing Homelessness
+3224	2	Emergency Ordinance - Limiting COVID- # Impacts by Not Moving People Experiencing Homelessness Currently Placed in Shelter-in-Place Hotel Rooms
+3225	2	Emergency Ordinance - San Francisco COVID- # Vaccination Plan
+3226	2	Endometriosis Awareness Month - March
+3227	2	Endorsing the Aspirational Statement for Treasure Island and Yerba Buena Island
+3228	2	Endorsing the Bay Area Air Quality Management District’s Diesel Free By ’ # Statement of Purpose
+3229	2	Endorsing the Tenderloin Community Action Plan Investment Blueprint
+3230	2	Endorsing the Water Supply and Water Quality Act of # Bond Initiative
+3231	2	Enoch Yee-Ching Fung Day - February # , #
+3232	2	Environment Code - Food Service and Packaging Waste Reduction
+3233	2	Ernest “Ernie” Beyl Day - April # , #
+3234	2	Establishing Vision Zero on Homicides and Violent Crimes Plan
+3235	2	Establishing the San Francisco Downtown Revitalization and Economic Recovery Financing District - Approving the Downtown Revitalization Financing Plan and Related Documents and Actions
+3236	2	Establishment of Compton’s Transgender Cultural District
+3237	2	Establishment of the LGBTQ and Leather Cultural District
+3238	2	Ethel Davies Day - September # , #
+3239	2	Ethics Commission Audits Backlog
+3240	2	Ethics Commission Regulation Amendments - Campaign Finance Regulations
+3241	2	Execute Standard Agreement and Accept and Expend - Retroactive - California Department of Housing and Community Development - Bayview Vehicle Triage Center Program - $
+3242	2	Execution of Member Acknowledgement Addendums - Regional Collaborative Services Agreement - Association of Bay Area Governments
+3243	2	Executive Architectural and Engineering Design Services Agreement - RossDrulisCusenbery Architecture, Inc. - Earthquake Safety and Emergency Response Program - SFFD Fire Training Facility - Not to Exceed $
+3244	2	Existing Building Code - Adoption of Chapters # through #
+3245	2	Expend Grants - Qualified Legacy Businesses - Legacy Business Program - Amounts Up to $
+3246	2	Expenditure Schedule Amendment - Retroactive - U.S. Department of Housing and Urban Development Emergency Solutions Grants Program - ESG-CV Round # Entitlement Grant - $
+3247	2	Expressing Intent to Establish the Sunset Irish Cultural District
+3248	2	Expressing Interest in the Formation of an Enhanced Infrastructure Financing District to Support Affordable Housing in Well-Resourced Neighborhoods
+3249	2	Expressing Support for the San Francisco-Oakland Bid to Host the # International AIDS Conference
+3250	2	Extending Interim Zoning Controls - Indoor Agriculture

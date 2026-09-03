@@ -1,0 +1,250 @@
+1	4	# 22Campaign and Governmental Conduct Code - Behested Payments Exceptions
+2	3	Report of Assessment Costs for Blighted Properties
+3	2	# Airport Lease and Use Agreement - Air India Limited
+4	2	# Airport Lease and Use Agreement - Air Pacific Limited dba Fiji Airways
+5	2	# Airport Lease and Use Agreement - El Al Israel Airlines Limited - Estimated Rent $
+6	2	# Airport Lease and Use Agreement - Iberia, Líneas Aéreas de España, S.A. Operadora, Sociedad Unipersonal
+7	2	# Airport Lease and Use Agreement - Icelandair ehf
+8	2	# Day - February # , #
+9	2	# General Obligation Affordable Housing Bond Report
+10	2	# Lease and Use Agreement - Aer Lingus, Limited
+11	2	# Lease and Use Agreement - Redding Aero Enterprises, Inc.
+12	2	# Lease and Use Agreement - Thomas Cook Airlines Limited
+13	2	# Lease and Use Agreement - Turk Hava Yollari Anonim Ortakligi
+14	2	Authorizing Preparation of Proponent Ballot Arguments and Rebuttal Ballot Arguments - March # , # , Consolidated Presidential Primary Election
+15	2	Calling for Sustained Ceasefire in Gaza, Humanitarian Aid, Release of Hostages, and Condemning Antisemitic, Anti-Palestinian, and Islamophobic Rhetoric and Attacks
+16	2	Calling for the Housing Authority to Initiate Requests to HUD to Fully Leverage “Faircloth-to-RAD” Program
+17	2	Calling from Committee - Committee of the Whole - Hearing on the Blue Ribbon Panel Report (File No. # )
+18	2	Calling on the Mayor to Fund # New Shelter or Temporary Housing Placements
+19	2	Campaign and Governmental Conduct Code - Incompatible Activities
+20	2	Campaign and Governmental Conduct Code - Prohibiting Candidate-Controlled General Purpose Committees
+21	2	Campaign and Governmental Conduct Code - Reporting on Substantiated Misconduct by Senior City Officers in Whistleblower Investigations
+22	2	Cancelling Committee of the Whole - Report of Delinquent Real Property Transfer Taxes - January # , # , at # : # p.m.
+23	2	Cancer Screen Week - December # , # , through December # , #
+24	2	Captain Jason Sawyer Day - February # , #
+25	2	Castro Lesbian, Gay, Bisexual, Transgender, Queer (LGBTQ) Cultural District’s Cultural, History, Housing, and Economic Sustainability Strategy Report (CHHESS)
+26	2	Celebrating Diwali - October # , #
+27	2	Celebrating Juneteenth in San Francisco
+28	2	Celebrating Waldorf Education’s 100th Anniversary - May # , #
+29	2	Celebrating and Recognizing the Cultural and Historical Significance of Nowruz, the Persian New Year
+30	2	Celebrating the 150th Anniversary of Lotta’s Fountain
+31	2	Celebrating the 30th Anniversary of the American with Disabilities Act - Disability Pride Month - July
+32	2	Celebrating the 35th Anniversary of the Americans with Disabilities Act and Recognizing the Work of Disability Rights Leaders
+33	2	Celebrating the Giants’ 60th Season in San Francisco
+34	2	Census # - Participation in the United States Census - State of California Outreach Agreement
+35	2	Certificates of Participation - # South Van Ness Project - Official Statement
+36	2	Certificates of Participation - Animal Care & Control Project - Official Statement
+37	2	Certificates of Participation - George R. Moscone Convention Center Expansion Project - Preliminary Official Statement - Not to Exceed $
+38	2	Certification of Election Results - September # , # - Gubernatorial Recall Election
+39	2	Charter Amendment - 16and # Year-Olds Voting in Municipal Elections
+40	2	Charter Amendment - Accountability for Funding Children and Youth Services for City Departments and the School District; Clarifying Uses of the Student Success Fund
+41	2	Charter Amendment - Affordable Housing and Community Development Hearings and Reports
+42	2	Charter Amendment - Building Inspection Commission
+43	2	Charter Amendment - Cannabis Commission
+44	2	Charter Amendment - Department of Sanitation and Streets, Sanitation and Streets Commission, and Public Works Commission
+45	2	Charter Amendment - Electing the Director of the Department of Police Accountability
+46	2	Charter Amendment - Filling Vacancies in Local Elective Office
+47	2	Charter Amendment - Forfeiture of Pension Benefits
+48	2	Charter Amendment - Homeless Housing and Services Fund; Transportation Improvement Fund - Budget Set-Asides
+49	2	Charter Amendment - Housing and Development Commission
+50	2	Charter Amendment - Municipal Transportation Agency - Appointments to Board of Directors and Budget Process
+51	2	Charter Amendment - Non-Citizen Voting in School Board Elections
+52	2	Charter Amendment - Police Department Staffing Levels
+53	2	Charter Amendment - Requirements for Commission Membership
+54	2	Charter Amendment - Revenue Bonds for Public Utilities Commission Clean Power, Water, and Clean Water Facilities
+55	2	Charter Amendment - Sheriff Department Oversight Board and Inspector General
+56	2	Charter Amendment -Timelines for Recall Process; Filling Vacancies in Elected Offices
+57	2	Charter Amendment and Initiative Ordinance - Non-Discretionary Review of # % Affordable Housing and Teacher Housing Projects
+58	2	Charter Amendment, Initiative Ordinance, and Policy Declaration - Affordable Housing Production Act
+59	2	Chief Joanne Hayes-White Day - May # , #
+60	2	Childhood Cancer Awareness Month - September
+61	2	Children’s Dental Health Month - February #
+62	2	Chuseok Festival Day - September # , # - Korean Chuseok Day - October # , #
+63	2	City Controller Appointment, Public Works Commission - Lauren Post
+64	2	City Controller Appointment, Sanitation and Streets Commission - Christopher Simi
+65	2	City Corporate Seal - Use for the Sheriff’s Department
+66	2	City Policy - Autonomous Vehicles Declaration of Policy
+67	2	City and County of San Francisco Finance Corporation Lease Revenue Refunding Bonds, Series # (Moscone Center Expansion Project) and Series # (Moscone Center Expansion Project) - Alternate Credit Agreements
+68	2	Claude the Alligator Hatch Day - September # , #
+69	2	Closed Session - Existing Litigation - AmerisourceBergen Corp., Cardinal Health, Inc., and McKesson Corp. - City to Receive up to $ Million (File # ) - Johnson & Johnson - City to Receive up to $ Million (File # )
+70	2	Closed Session - Existing Litigation - Pacific Gas and Electric Company - September # , #
+71	2	Closed Session - Existing Litigation - United States Environmental Protection Agency - September # , # , at # : # p.m.
+72	2	Closed Session - Potential Threats to Public Service and Facilities - March # , #
+73	2	Closed Session - Settlement of Lawsuit - Endo Health Solutions Inc., Endo Pharmaceuticals Inc., Par Pharmaceutical, Inc. and Par Pharmaceutical Companies, Inc. - City to Receive $ - July # , #
+74	2	Closed Session - Settlement of Unlitigated Claims - Wing Lok (“Walter”) Wong; W. Wong Construction, et al. - City to Receive Settlement Payments and Credits Totaling $ - September # , #
+75	2	Comfort Women Day - September # , #
+76	2	Commemorating - 75th Anniversary of the Repeal of the Chinese Exclusion Act of # - Magnuson Act - December # , #
+77	2	Commemorating Roe v. Wade and Reaffirming the City’s Commitment to Reproductive Freedom
+78	2	Commemorating World Expo # in Osaka, Kansai, Japan
+79	2	Commemorating the 100th Anniversary of the Ratification of the 19th Amendment
+80	2	Commemorating the 125th Anniversary of United States v. Wong Kim Ark - March # , #
+81	2	Commemorating the 125th Anniversary of the San Francisco Building and Construction Trades Council
+82	2	Commemorating the 30th Anniversary of the Sister-State Relationship Between California and Osaka
+83	2	Commemorating the 50th Anniversary of Bruce Lee’s Passing
+84	2	Commemorating the 50th Anniversary of the Chinese Progressive Association
+85	2	Commemorating the 80th Anniversary of the Signing of Executive Order # - Day of Remembrance - February # , #
+86	2	Commemorative Plaques - San Francisco Little Italy Honor Walk Expansion
+87	2	Commemorative Street Plaques - Historical Markers - Top of Broadway Community Benefit District
+88	2	Commendation for Ramon Oropeza Sr. and Inocencia Oropeza
+89	2	Commending Alvin C. Moses
+90	2	Commending Board of Supervisors President Aaron Peskin
+91	2	Commending Cobre, Native Sons Building, and One Atmosphere
+92	2	Commending Congresswoman Jackie Speier
+93	2	Commending Kim Shuck - San Francisco’s Seventh Poet Laureate
+94	2	Commending LaborFest on its 25th Anniversary
+95	2	Commending Lorenzo Ortona, Consul General of Italy
+96	2	Commending Maribel Jaldon
+97	2	Commending Matthew Goudeau
+98	2	Commending Nancy Wuerfel for Her Exemplary Advocacy
+99	2	Commending OCEIA’s Community Ambassadors Program
+100	2	Commending San Francisco Hep B Free - Bay Area for # Years of Community Advocacy and Awareness
+101	2	Commending Supervisor Ahsha Safaí
+102	2	Commending Supervisor David Campos
+103	2	Commending Supervisor Dean Preston
+104	2	Commending Supervisor Eric Mar
+105	2	Commending Supervisor Gordon Mar
+106	2	Commending Supervisor Hillary Ronen
+107	2	Commending Supervisor Jane Kim
+108	2	Commending Supervisor John Avalos
+109	2	Commending Supervisor Katy Tang
+110	2	Commending Supervisor Malia Cohen
+111	2	Commending Supervisor Matt Haney
+112	2	Commending The FruitGuys on Their 25th Year in Business
+113	2	Commending and Honoring Harvey M. Rose
+114	2	Commercial Paper Notes - Municipal Transportation Agency - Not to Exceed $
+115	2	Committee of the Whole - Accept and Expend Resolutions for Federal Grants - January # , # , at # : # p.m.
+116	2	Committee of the Whole - Approving Submission of Sales Tax to Support Caltrain Service - November # , # , Election - July # , # , at # : # p.m.
+117	2	Committee of the Whole - Closing of Skilled Nursing and Sub-Acute Unit at St. Luke’s Hospital - September # , #
+118	2	Committee of the Whole - Draft Housing Element # Update - November # , # , at # : # p.m.
+119	2	Committee of the Whole - Economic Recovery Task Force Report - October # , # , # : # p.m.
+120	2	Committee of the Whole - Financial Impacts - COVID- # Health Emergency - March # , # , at # : # p.m.
+121	2	Committee of the Whole - Findings and Recommendations Regarding Law Enforcement Practices - October # , #
+122	2	Committee of the Whole - Hearing - Public Comment on Possible Nominations and Election of Board President - June # , #
+123	2	Committee of the Whole - Housing for Families with Children - March # , #
+124	2	Committee of the Whole - Independent Equal Employment Opportunity Report - October # , # , at # : # p.m.
+125	2	Committee of the Whole - Kaiser Permanente Mental Health Care Workers’ Strike and its Effects on City Workers, the Majority of Whom are Kaiser Patients, and Other San Franciscans - September # , # , at # : # p.m.
+126	2	Committee of the Whole - Public Health Officer - April # , # , at # : # p.m.
+127	2	Committee of the Whole - Report of Delinquent Charges - Administrative Civil Penalties and Recovery of Costs for Violations - Unauthorized Releases of Hazardous Material(s) - May # , # , at # : # p.m.
+128	2	Committee of the Whole - Reporting on SFUSD’s Whole School Lesson Study Math Pilot - Impact on Student Math Scores - Student Success Fund Dollars - October # , # , at # : # p.m.
+129	2	Committee of the Whole - Shelter-in-Place Rehousing and Site Demobilization Plan - November # , # , at # : # p.m.
+130	2	Committee of the Whole - Update on Findings and Recommendations Regarding Law Enforcement Practices - October # , # , at # : # p.m.
+131	2	Committees of the Whole - Blue Ribbon Panel on Transparency, Accountability, and Fairness in Law Enforcement - Update
+132	2	Committing to Enhancing Coastal Habitats in the Face of Climate Change and Sea Level Rise
+133	2	Communications Agreement - Bay Area Rapid Transit - Extend Commercial Fiber and Cellular Infrastructure to San Francisco Municipal Transportation Agency Underground System
+134	2	Comparative Fault Indemnification Provision - General Electric Renewable US LLC - Design-Build Construction Contract
+135	2	Concession Lease Amendment - Amoura International, Inc. dba Amoura Café - Extension of Base Operating Term - $ Minimum Annual Guarantee
+136	2	Concession Lease Amendment - Amy’s Kitchen Restaurant Operating Company, LLC dba Amy’s Drive Through - Extension of Base Operating Term - $ Minimum Annual Guarantee
+137	2	Concession Lease Amendment - Andre-Boudin Bakeries, Inc. dba Boudin Bakery & Café - Extending Base Operating Term - $ Minimum Annual Guarantee
+138	2	Concession Lease Amendment - Bayport Concessions, LLC dba Koi Palace Express - Extension of Base Operating Term - $ Minimum Annual Guarantee
+139	2	Concession Lease Amendment - Black Point Coffee SFO, LLC dba Black Point Café - Extending Base Operating Term - $ Minimum Annual Guarantee
+140	2	Concession Lease Amendment - Bun Mee, LLC dba Bun Mee - Extension of Base Operating Term - $ Minimum Annual Guarantee
+141	2	Concession Lease Amendment - DFS Group, L.P. - International Terminal Duty Free and Luxury Lease - Suspending Minimum Annual Guarantee
+142	2	Concession Lease Amendment - DFS Group, LP dba DFS Watches - Extending Base Operating Term - $ Minimum Annual Guarantee
+143	2	Concession Lease Amendment - Elevated Tastes SFO Inc. dba Tomokazu - Extension of Base Operating Term - $ Minimum Annual Guarantee
+144	2	Concession Lease Amendment - HFF-BRH SFO, LLC dba Farmerbrown - Extending Base Operating Term - $ Minimum Annual Guarantee
+145	2	Concession Lease Amendment - Host International, Inc. dba Super Duper Burger - Extension of Base Operating Term - $ Minimum Annual Guarantee
+146	2	Concession Lease Amendment - InMotion Entertainment Group, LLC dba iStore - Extension of Base Operating Term - $ Minimum Annual Guarantee
+147	2	Concession Lease Amendment - Midfield Concession Enterprises, Inc. dba Roasting Plant - Extension of Base Operating Term - $ Minimum Annual Guarantee
+148	2	Concession Lease Amendment - Paradies Lagardere @ SFO # (F&B), LLC - Extension of Base Operating Term - $ Minimum Annual Guarantee
+149	2	Concession Lease Amendment - Paradies Lagardere @ SFO # , LLC dba Mills Cargo - Extension of Base Operating Term - $ Minimum Annual Guarantee
+150	2	Concession Lease Amendment - SSP America, Inc. dba # on Fillmore - Extension of Base Operating Term - $ Minimum Annual Guarantee
+151	2	Concession Lease Amendment - SSP America, Inc. dba Sweet Maple - Extension of Base Operating Term - $ Minimum Annual Guarantee
+152	2	Concession Lease Amendment - SSP America, Inc. dba The Little Chihuahua - Extension of Base Operating Term - $ Minimum Annual Guarantee
+153	2	Concession Lease Amendment - SSP America, Inc. dba The Manufactory Food Hall and Marina’s Café - Extending Base Operating Term - $ Minimum Annual Guarantee
+154	2	Concession Lease Amendment - San Francisco Soup Company dba Ladle & Leaf - Extension of Base Operating Term - $ Minimum Annual Guarantee
+155	2	Concession Lease Amendment - Skyline Concessions, Inc. dba Skyline News - Extension of Base Operating Term - $ Minimum Annual Guarantee
+156	2	Concession Lease Amendment - Soaring Food Group, LLC dba Illy’s Cafe - Extension of Base Operating Term - $ Minimum Annual Guarantee
+157	2	Concession Lease Amendment - Tastes on the Fly San Francisco, LLC dba San Francisco Giants Clubhouse - Extending Base Operating Term - $ Minimum Annual Guarantee
+158	2	Concession Lease Amendment - Tastes on the Fly San Francisco, LLC dba Starbird - Extension of Base Operating Term - $ Minimum Annual Guarantee
+159	2	Concurring in Actions to Meet Local Emergency - Coronavirus Response - Nineteenth Supplement
+160	2	Concurring in Actions to Meet Local Emergency - Coronavirus Response - Seventeenth and Eighteenth Supplements
+161	2	Concurring in Actions to Meet Local Emergency - Coronavirus Response - Twentieth Supplement
+162	2	Concurring in Actions to Meet Local Emergency - Coronavirus Response - Twenty-Second Supplement
+163	2	Concurring in Actions to Meet Local Emergency - Coronavirus Response - Twenty-Seventh and Twenty-Eighth Supplements
+164	2	Concurring in Actions to Meet Local Emergency - Drug Overdoses in the Tenderloin - Second Supplement
+165	2	Concurring in Actions to Meet Local Emergency - Drug Overdoses in the Tenderloin - Third Supplement
+166	2	Concurring in Proclamation of Local Emergency - Kincade Fire Evacuees
+167	2	Concurring in Proclamation of Local Emergency - Severe Winter Storms
+168	2	Condemning Anti-Abortion Harassment in San Francisco
+169	2	Condemning Antisemitism and All Forms of Race and Religion Based Violence in San Francisco
+170	2	Condemning Azerbaijan’s Blockade Of Artsakh
+171	2	Condemning Hate Speech Targeting Muslims
+172	2	Condemning ICE for Loss of Life, Urging Accountability Measures and Corrective Action to Prevent Further Loss of Life and Reaffirming Commitment to Sanctuary City
+173	2	Condemning Increase of Anti-Semitic Harassment
+174	2	Condemning Racist Threats and Intimidation of the Williams Family
+175	2	Condemning Recent Attacks on Board of Education Members
+176	2	Condemning Recent Vandalism of Cherry Blossom Trees in Japantown and Urging Prompt Rehabilitation and Replacement
+177	2	Condemning Texas State Senate Bill No. # (Kolkhorst) - Banning the Purchase of Real Property by Immigrants
+178	2	Condemning the Arrests of Peaceful Protesters in Belarus and Declaring Solidarity With the Bay Area’s Belarusian Community
+179	2	Condemning the Closure of the San Francisco Immigration Court and Urging the Department of Justice to Keep it Open
+180	2	Condemning the Immigration and Customs Enforcement Agency (ICE) and Urging Strict Adherence to Due Process, Family Unity, and Humane Treatment of Migrants
+181	2	Condemning the Increase of Racial Profiling and Discrimination Harassment
+182	2	Condemning the Inhumane Treatment of Detainees Held at San Francisco International Airport - Urging an Independent Investigation into the Detainment of Jerome Succor Aba
+183	2	Condemning the Military Coup in Burma and Supporting a Peaceful Transition for Democracy
+184	2	Condemning the Naming of the Priscilla Chan and Mark Zuckerberg San Francisco General Hospital and Trauma Center
+185	2	Condemning the Shooting of and Urging Repatriation for Brandon Lee - Urging a Congressional Investigation, Hearing, and the Suspension of United States Aid to the Philippine Military and Police
+186	2	Condemning the Suspension of U.S. Track Athlete Sha’Carri Richardson
+187	2	Condemning the Trump Administration’s “Zero-Tolerance” Immigration Policy - Separating Children From Their Families
+188	2	Condemning the United States Department of Agriculture’s Proposed Rule Change that Threatens Food Security
+189	2	Conditionally Approving Decision of Public Works and Disapproving Tentative Map - # , # , # , # , # , and # Francisco Street and Preparation of Findings
+190	2	Confirming City Policy that the San Francisco Public Utilities Commission (SFPUC) Provide Electricity to City Projects - Urging Pacific Gas & Electric to Cooperate with the SFPUC to Provide City Power to Projects
+191	2	Confirming Reappointment - City Administrator - Naomi Kelly
+192	2	Congratulating the University of San Francisco Dons for Making the Men’s NCAA Tournament for the First Time in # Years
+193	2	Consolidation of Elections Scheduled for March # , #
+194	2	Contract - ARAMARK Correctional Services, Inc. - Jail Food Services - $
+195	2	Contract - ARAMARK Correctional Services, Inc. - Jail Food Services - Not to Exceed $
+196	2	Contract - Allied Waste Services of North America, LLC - Refuse Collection and Disposal Services - Not to Exceed $
+197	2	Contract - Heluna Health - San Francisco Homeless Outreach Team - Not to Exceed $
+198	2	Contract - Intercare Holdings Insurance Services, Inc. - Workers’ Compensation Third Party Administrator Services - $
+199	2	Contract - Next Generation Customer Information System - New Real-Time Vehicle Arrival and Service Update System - Not to Exceed $
+200	2	Contract - Recology San Francisco - Refuse Collection and Disposal Services - Not to Exceed $
+201	2	Contract - Retroactive - Sentinel Offenders Services, LLC - Home Detention and Electronic Monitoring Services - $
+202	2	Contract - San Francisco Pretrial Diversion Project - Pretrial Services - Not to Exceed $
+203	2	Contract - Seneca Family of Agencies - FCS Wraparound Services - Not to Exceed $
+204	2	Contract - The Dutra Group - Custom Crane Barge - Not to Exceed $
+205	2	Contract Agreement - Accenture LLP - Technology Marketplace - Not to Exceed $
+206	2	Contract Agreement - Addiction, Research and Treatment, Inc., dba Bay Area Addiction, Research and Treatment, Inc. (BAART) - Methadone Services - Not to Exceed $
+207	2	Contract Agreement - Alliant Insurance Services, Inc. - Insurance Brokerage Services - Not to Exceed $
+208	2	Contract Agreement - Alliant Insurance Services, Inc. - Insurance and Brokerage Services - Not to Exceed $
+209	2	Contract Agreement - Arthur J. Gallagher & Co. Insurance Brokers of California, Inc. - Insurance Brokerage Services - Not to Exceed $
+210	2	Contract Agreement - Arthur J. Gallagher & Co. Risk Management Services, LLC. - Insurance Brokerage Services - Not to Exceed $
+211	2	Contract Agreement - Baker Places, Inc. - Behavioral Health Services - Not to Exceed $
+212	2	Contract Agreement - CCT Technologies, Inc. dba ComputerLand of Silicon Valley - Technology Marketplace - Not to Exceed $
+213	2	Contract Agreement - CDW Government LLC - Technology Marketplace - Not to Exceed $
+214	2	Contract Agreement - California Creative Solutions, Inc. dba CCS Global Tech - Technology Marketplace - Not to Exceed $
+215	2	Contract Agreement - California Health and Human Services Agency - Data Sharing Agreement - $
+216	2	Contract Agreement - Central Computers Inc. - Technology Marketplace - Not to Exceed $
+217	2	Contract Agreement - Color Health, Inc. - End-to-End Community COVID- # Testing Services - Not to Exceed $
+218	2	Contract Agreement - Conduent, Inc. - Citation and Permit Processing Services - Not to Exceed $
+219	2	Contract Agreement - ConvergeOne, Inc. - Cisco Products and Services - Not to Exceed $
+220	2	Contract Agreement - Cornerstone Technology Partners II JV - Technology Marketplace - Not to Exceed $
+221	2	Contract Agreement - Crestwood Behavioral Health - Long-Term Mental Health Services - Not to Exceed $
+222	2	Contract Agreement - FSP PPM Management, LLC - Curbside Management Program - Not to Exceed $
+223	2	Contract Agreement - Family Service Agency of San Francisco dba Felton Institute - Behavioral Health Services for Children and Families - Not to Exceed $
+224	2	Contract Agreement - Global Tel*Link - Inmate Telephone Services - Anticipated Revenue of More Than $
+225	2	Contract Agreement - Good Guard Security, Inc. - Security Guard Services - Not to Exceed $
+226	2	Contract Agreement - Health RIGHT # - Behavioral Health Services for Adults and Older Adults - Not to Exceed $
+227	2	Contract Agreement - Hitachi Rail GTS USA Inc. - Design, Procurement, System Implementation - $ - Support of a Train Control System - $ - Extension Option of Support - $ - Total Contract $
+228	2	Contract Agreement - Insight Public Sector, Inc. - Technology Marketplace - Not to Exceed $
+229	2	Contract Agreement - InterVision Systems, LLC - Technology Marketplace - Not to Exceed $
+230	2	Contract Agreement - Intercare Holdings Insurance Services, Inc. - Workers' Compensation Claims Management Services - Not to Exceed $
+231	2	Contract Agreement - Mythics, Inc. - Oracle Products - Not to Exceed $
+232	2	Contract Agreement - Mythics, LLC. - Oracle Products - Not to Exceed $
+233	2	Contract Agreement - Presidio Networked Solutions Group, LLC - Technology Marketplace - Not to Exceed $
+234	2	Contract Agreement - Regents of the University of California - Behavioral Health Services for Adults and Older Adults - Not to Exceed $
+235	2	Contract Agreement - Retroactive - Bay Area Rapid Transit District - Administration of Capital Funding - BART/Muni Market Street Entrance Modernization Project - Up to $
+236	2	Contract Agreement - Retroactive - Corporation for Network Initiatives in California - Fiber Optic Network Installation, Occupancy, and Maintenance - Anticipated Revenue to the City $
+237	2	Contract Agreement - Retroactive - Department of State Hospitals - Early Access and Stabilization Services - $
+238	2	Contract Agreement - Retroactive - Health Advocates LLC - Uncompensated Care Reimbursement Recovery Services - Not to Exceed $
+239	2	Contract Agreement - Retroactive - San Francisco AIDS Foundation - Health Access Point Services - Not to Exceed $
+240	2	Contract Agreement - Retroactive - State Department of Health Care Services - Substance Use Disorder Services - $ - FY
+241	2	Contract Agreement - Rexel USA, Inc. - Electrical Supplies - Not to Exceed $
+242	2	Contract Agreement - Seneca Family of Agencies - dba Seneca Center - Behavioral Health Services - Not to Exceed $
+243	2	Contract Agreement - Southern California Edison Company - Purchase of Renewable Energy - CleanPowerSF - Not to Exceed $
+244	2	Contract Agreement - State Department of Health Care Services - Substance Use Disorder Services - FY $
+245	2	Contract Agreement - Thales Transport & Security, Inc. - ATCS Specific Technical Services, Equipment, and Software Upgrades - Not to Exceed $
+246	2	Contract Agreement - Toyon Associates, Inc. - Regulatory Report and Reimbursement and Revenue Optimization Services - Not to Exceed $
+247	2	Contract Agreement - Western States Oil and SC Fuels - Gasoline - Not to Exceed $
+248	2	Contract Agreement - Xtech JV - Technology Marketplace - Not to Exceed $
+249	2	Contract Agreement Amendment - NextBus, Inc. - Automatic Vehicle Location System - Not to Exceed $
+250	2	Contract Agreement Amendment - Retroactive - Central Subway Design Group - Architectural and Engineering Services - Not to Exceed $

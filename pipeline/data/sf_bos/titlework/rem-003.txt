@@ -1,0 +1,250 @@
+501	2	Grant Acknowledgement - California Energy Commission - Charging Infrastructure for Government Fleets GFO- # - Not to Exceed $
+502	2	Grant Agreement - # Geary Associates, L.P. - Senior Operating Subsidy - Not to Exceed $
+503	2	Grant Agreement - # Jones Associates, L.P. - Affordable Housing Operating Subsidy - Not to Exceed $
+504	2	Grant Agreement - # Shotwell Housing L.P. - Senior Operating Subsidy - Not to Exceed $
+505	2	Grant Agreement - Boys & Girls Clubs of San Francisco - George Washington Carver Beacon Community School; Malcolm X Academy Beacon Community School; and Comprehensive Year-Round Learning - Not to Exceed $
+506	2	Grant Agreement - California Department of Public Health - Naloxone Distribution Grant Program - $
+507	2	Grant Agreement - Centers for Equity and Success, Inc. - Early Morning Study Academy; Credible Messengers; Inside/Out Pathways; and TAY/A Workforce Development - Not to Exceed $
+508	2	Grant Agreement - Chinatown SRO's, LLC - Senior Operating Subsidy - Not to Exceed $
+509	2	Grant Agreement - Department of Public Health - Law Enforcement Assisted Diversion Pilot Program - FY and # - Total Amount of $
+510	2	Grant Agreement - Department of Public Health - Proposition # Grant Program
+511	2	Grant Agreement - Episcopal Community Services - Permanent Supportive Housing - $
+512	2	Grant Agreement - Glide Foundation - Free Meals Program - Not to Exceed $
+513	2	Grant Agreement - HomeBridge, Inc. - Contract Mode In-Home Supportive Services - Not to Exceed $
+514	2	Grant Agreement - Japanese Community Youth Council - Japantown Youth Leaders; Mayor’s Youth Employment and Education Program; SF STEM Academy - Not to Exceed $
+515	2	Grant Agreement - Meals on Wheels of San Francisco - Meals for Navigation Centers and Shelters - Not to Exceed $
+516	2	Grant Agreement - Retroactive - Children’s Council of San Francisco - Early Care and Education Access and Enrollment Services - Not to Exceed $
+517	2	Grant Agreement - Retroactive - Children’s Council of San Francisco - Early Care and Education Integrated Services - Not to Exceed $
+518	2	Grant Agreement - Retroactive - Children’s Council of San Francisco - Workforce Compensation and Administrative Services - Not to Exceed $
+519	2	Grant Agreement - Retroactive - Japanese Community Youth Council - Opportunities for All - Not to Exceed $
+520	2	Grant Agreement - Retroactive - Low Income Investment Fund - San Francisco Child Care Facilities Fund and Technical Assistance - Not to Exceed $
+521	2	Grant Agreement - Retroactive - San Francisco Health Plan - Housing and Homelessness Incentive Program - Not to Exceed $
+522	2	Grant Agreement - Retroactive - Wu Yee Children’s Services - ECE Integrated Services - Not to Exceed $
+523	2	Grant Agreement - San Francisco In-Home Supportive Service Public Authority - Provider Benefits and Administration Contract Approval - Not to Exceed $
+524	2	Grant Agreement - San Francisco In-Home Supportive Services Public Authority (SF IHSS PA) - Independent Provider (IP) Mode In-Home Supportive Services - Not to Exceed $
+525	2	Grant Agreement - San Francisco-Marin Food Bank - Food Assistance Program - Not to Exceed $
+526	2	Grant Agreement - Tenderloin Housing Clinic - Supportive Housing Services - $
+527	2	Grant Agreement - Transbay # Senior, L.P. - Senior Operating Subsidy - Not to Exceed $
+528	2	Grant Agreement Amendment - Children’s Council of San Francisco - Early Care and Education Integrated Services - $
+529	2	Grant Agreement Amendment - Children’s Council of San Francisco - Early Care and Education Integrated Services - Not to Exceed $
+530	2	Grant Agreement Amendment - Community Housing Partnership - Civic Center Hotel Navigation Center - Not to Exceed $
+531	2	Grant Agreement Amendment - HomeBridge, Inc. - Department of Disability and Aging Services - Contract Mode In-Home Supportive Services - Not to Exceed $
+532	2	Grant Agreement Amendment - HomeRise - Transitional Housing - Not to Exceed $
+533	2	Grant Agreement Amendment - Homebridge - Contract Mode In-Home Supportive Services and Provider Skill Development Training and Supports - Not to Exceed $
+534	2	Grant Agreement Amendment - Retroactive - Meals on Wheels of San Francisco - Nutrition Programs Services - Not to Exceed $
+535	2	Grant Agreement Amendment - Retroactive - San Francisco Health Plan - Housing and Homelessness Incentive Program - Not to Exceed $
+536	2	Grant Agreement Amendment - Retroactive - Self-Help for the Elderly - Nutrition Programs Services - Not to Exceed $
+537	2	Grant Agreement Amendment - San Francisco Marin Food Bank - Food Assistance Program - Not to Exceed $
+538	2	Grant Agreement Amendment - San Francisco Pretrial Diversion Project, Inc. - Pretrial Incarceration Alternatives - Not to Exceed $
+539	2	Grant Agreement Amendment - The Regents of the University of California - Community Assessment and Services Center - Not to Exceed $
+540	2	Grant Agreement Amendment - The Regents of the University of California - Community Assessment and Services Center Case Management Services - Not to Exceed $
+541	2	Grant Agreement Amendment - Wu Yee Children’s Services - Early Care and Education Integrated Services - $
+542	2	Grant Agreement Amendment - Wu Yee Children’s Services - Early Care and Education Integrated Services - $ Total Grant Amount
+543	2	Grant Agreement Amendment - Wu Yee Children’s Services - Early Head Start/Head Start Support Services - $
+544	2	Grant Agreement Amendments - Episcopal Community Services - Lease, Supportive Housing Property Management Services and Support Services - Not to Exceed $
+545	2	Grant Agreement and Amendments - Retroactive - Japanese Community Youth Council - Mayor's Youth Employment and Education Program - Not to Exceed $
+546	2	Grant Agreement and Subsequent Amendments - Retroactive - Meals on Wheels of San Francisco - Nutrition Programs Services - Not to Exceed $
+547	2	Grant Amendment - Catholic Charities - Family Rapid Rehousing - Not to Exceed $
+548	2	Grant Amendment - Japanese Community Youth Council - Opportunities for All Intermediary - Not to Exceed $
+549	2	Grant Amendment - Japanese Community Youth Council - Opportunities for All Intermediary Program - Not to Exceed $
+550	2	Grant Amendment - Retroactive - California Department of Parks and Recreation - Division of Boating and Waterways Non-Motorized Boat Launching Facility Grant - Lake Merced Boat Dock - Term Extension
+551	2	Grant Amendment - Retroactive - Lavender Youth Recreation and Information Center - Youth Services and Research on TGNC Community - Not to Exceed $
+552	2	Grant Amendment - Retroactive - YMCA Urban Services - Truancy Assessment and Resource Center (TARC) Program - Not to Exceed $
+553	2	Grant Amendment - Tenderloin Housing Clinic, Inc. - Justice-Involved Transitional Housing and Supportive Services Program - Not to Exceed $
+554	2	Grant Amendment - Westside Community Mental Health Center - Minna Program - Not to Exceed $
+555	2	Grant Amendment - Westside Community Mental Health Center - Treatment, Recovery, and Prevention Program - Not to Exceed $
+556	2	Grant Amendments - Retroactive - Instituto Familiar de la Raza, Inc.- Roadmap to Peace - Not to Exceed $
+557	2	Grant Amendments - Retroactive - Young Community Developers - Black to the Future - Not to Exceed $
+558	2	Grant Application - California Department of Housing and Community Development - Prohousing Incentive Program - Not to Exceed $
+559	2	Grant Application - Retroactive - Centers for Disease Control and Prevention - High-Impact HIV Prevention and Surveillance Programs for Health Departments - $
+560	2	Grant Approval - Low Income Investment Fund - Child Care Facilities Fund and Technical Assistance - $
+561	2	Grant of Easement and Acceptance of Quitclaim - Pacific Gas & Electric Company - Airport West-of-Bayshore Property - Replacement of Natural Gas Pipeline - $
+562	2	Grant of Easements - Pacific Gas and Electric Company - # Total Square Feet for Electrical and Gas Utilities to Serve # % Affordable Housing at # Mission - At No Cost
+563	2	Grant of Non-Exclusive Easement - Midtown Lands LLC - Assessor’s Parcel Block No. # , Lot No. #
+564	2	Greenhouse Gas Energy Sale - Pacific Gas and Electric Company - CleanPowerSF Greenhouse Gas-Free Energy Supplies - Not to Exceed $
+565	2	Ground Lease - United States Postal Service - Plot 10F - $ Initial Annual Rent
+566	2	Ground Lease Modification - United Airlines, Inc. - Exchange of Certain Land - Plot # Reconfiguration Project - Decrease Annual Rent to $
+567	2	Health Code - Adult Sex Venue Health and Safety Standards
+568	2	Health Code - Banning Sale and Manufacture of Animal Fur Products
+569	2	Health Code - Medical Examiner Reports of Drug Overdose Deaths
+570	2	Health Code - Skilled Nursing Care Transfer Reporting Requirements
+571	2	Health, Business and Tax Regulations Codes - Overdose Prevention Programs
+572	2	Health, Police Codes - Cannabis Sunset Dates
+573	2	Hearing - African-American Workforce Hiring, Retention, and Promotional Opportunities - Workplace Discrimination and Complaints
+574	2	Hearing - Appeal of Statutory Exemption From Environmental Review - Proposed MTA’s COVID- # Muni Rail Service Adjustments and Associated Street and Parking Changes - August # , # , and Fall # Project
+575	2	Hearing - Appeal of Statutory Exemption From Environmental Review - Proposed SFMTA’s COVID- # Muni Bus Service Adjustments and Associated Stop, Street and Parking Changes - August # , # Project
+576	2	Hearing - Appeal of Tentative Map Disapproval - # , # , # , # , # , and # Francisco Street
+577	2	Hearing - Blue Ribbon Panel on Transparency, Accountability, and Fairness in Law Enforcement - Final Report
+578	2	Hearing - Board of Supervisors/Clerk of the Board Annual Budget Guidelines - FY and FY
+579	2	Hearing - Budget Priority - Public Safety Investments
+580	2	Hearing - Budgetary Aspects of Shelter for All Ordinance
+581	2	Hearing - Cannabis State Legalization Task Force Update
+582	2	Hearing - City Project Access to City-Owned Clean, Affordable Power
+583	2	Hearing - Committee of the Whole - Amendment to the Redevelopment Plan for the Mission Bay South Redevelopment Project, Block # - September # , # , at # : # p.m.
+584	2	Hearing - Committee of the Whole - Amendment to the Redevelopment Plan for the Transbay Redevelopment Project Area - Zone One, Block # - January # , # , at # : # p.m
+585	2	Hearing - Committee of the Whole - Amendments to the Hunters Point Shipyard Redevelopment Plan and the Bayview Hunters Point Redevelopment Plan - June # , #
+586	2	Hearing - Committee of the Whole - Charter Amendement (File No. # ) - Free City College Fund - December # , #
+587	2	Hearing - Committee of the Whole - Charter Amendment - Mayoral Authority to Disapprove Certain SFMTA Budget Proposals - November # , # , at # : # p.m.
+588	2	Hearing - Committee of the Whole - Disestablishment - Top of Broadway Community Benefit District - November # , # , at # : # p.m.
+589	2	Hearing - Committee of the Whole - Draft Housing Element # Update - November # , # , at # : # p.m.
+590	2	Hearing - Committee of the Whole - Establish and Incur Bonded Indebtedness - Special Tax District No. # (Power Station) - March # , # , at # : # p.m.
+591	2	Hearing - Committee of the Whole - Existing Litigation - AmerisourceBergen Corp., Cardinal Health, Inc., and McKesson Corp. - City to Receive up to $ Million (File # ) - Johnson & Johnson - City to Receive up to $ Million (File # )
+592	2	Hearing - Committee of the Whole - General Obligation Bond Election - Affordable Housing - Not to Exceed $ - July # , #
+593	2	Hearing - Committee of the Whole - General Obligation Bond Election - Healthy, Safe, and Vibrant San Francisco - Not to Exceed $ - July # , # , at # : # p.m.
+594	2	Hearing - Committee of the Whole - Ground Lease Agreements - Transbay Block # West - February # , # , at # : # p.m.
+595	2	Hearing - Committee of the Whole - Housing for Families with Children - March # , #
+596	2	Hearing - Committee of the Whole - Labor Disputes at the Felton Institute and the Operational Impact on Employment and Public Services - April # , # , at # : # p.m.
+597	2	Hearing - Committee of the Whole - Marriott Hotel Worker Strike
+598	2	Hearing - Committee of the Whole - Place for All Report - March # , # , at # : # p.m.
+599	2	Hearing - Committee of the Whole - Proclamation of Local Emergency - Drug Overdoses in the Tenderloin - January # , # , at # : # p.m
+600	2	Hearing - Committee of the Whole - Proclamation of Local Emergency - Drug Overdoses in the Tenderloin - March # , # , at # : # p.m
+601	2	Hearing - Committee of the Whole - Public Health Officer - April # , # , at # : # p.m.
+602	2	Hearing - Committee of the Whole - Public Hearing to Take Nominations and Appoint a Successor Mayor Due to a Vacancy in the Office of the Mayor
+603	2	Hearing - Committee of the Whole - Reduction of Medical Services - FY and # - June # , # , at # : # p.m.
+604	2	Hearing - Committee of the Whole - Renewal and Expansion - Fisherman’s Wharf Portside Community Benefit District - November # , # , at # : # p.m.
+605	2	Hearing - Committee of the Whole - Report of Assessment Costs - Building Code Enforcement Violations - May # , #
+606	2	Hearing - Committee of the Whole - Reports of Delinquent Real Property Transfer Taxes - February # , # , at # : # p.m.
+607	2	Hearing - Committee of the Whole - Retail Water and Wastewater Rates and Capacity Changes for FYE # - San Francisco Public Utilities Commission - June # , # , at # : # p.m.
+608	2	Hearing - Committee of the Whole - SFUSD's Resource Alignment Initiative - Impact on Educators, Para-educators, Administrators, and Staff - October # , # , at # : # p.m.
+609	2	Hearing - Committee of the Whole - State of the Hotel Industry in San Francisco and Conditions for Guests and Workers within the Industry - October # , # , at # : # p.m.
+610	2	Hearing - Committee of the Whole - Unaccounted $ Special Education Funding - Unfilled Positions of Support Work at SFUSD - Review of $ Student Success Fund for Newly Created School Stabilization Team - October # , # , at # : # p.m.
+611	2	Hearing - Controller's Nine-Month Budget Status Report - FY
+612	2	Hearing - Controller's Six-Month Budget Status Report
+613	2	Hearing - DPH Activities Related to the Health Care Security Ordinance and the San Francisco City Option Escheatment Policy
+614	2	Hearing - Department of Police Accountability Operations
+615	2	Hearing - Departmental Compliance - Language Access
+616	2	Hearing - Examining Resources and Safety Plans to Address Youth Safety and School Site Violence
+617	2	Hearing - Federal Budget Update
+618	2	Hearing - Five Year Financial Plan Update and Mayor's Budget Instructions
+619	2	Hearing - Implementation and Compliance of Language Access Ordinance
+620	2	Hearing - Implementation of Ordinance No. # - Personal Wireless Service Facility Site Permits
+621	2	Hearing - Implementation of San Francisco's Housing Conservatorship Program
+622	2	Hearing - Initiative Ordinance - Administrative Code - Police Department Policies and Procedures and Use of Technology
+623	2	Hearing - Initiative Ordinance - Administrative Code - Promoting the Identification and Conservation of City Resources Used to Assist in the Enforcement or Implementation of Discriminatory Federal Laws or Policies
+624	2	Hearing - Initiative Ordinance - Administrative Code - Substance Abuse Screening, Evaluation, and Treatment Requirements for CAAP Assistance
+625	2	Hearing - Initiative Ordinance - Administrative Code - Surveillance Technology
+626	2	Hearing - Initiative Ordinance - Administrative Code - Urgent Care SF
+627	2	Hearing - Initiative Ordinance - Administrative Code - Victims and Witness Rights
+628	2	Hearing - Initiative Ordinance - Administrative, Planning Codes - Reproductive Rights
+629	2	Hearing - Initiative Ordinance - Business and Tax Regulations Code - Gross Receipts Tax Increase for Certain Ride Services; Overpaid Executive Gross Receipts Tax Rate Increase
+630	2	Hearing - Initiative Ordinance - Business and Tax Regulations Code - Stock-Based Compensation Tax
+631	2	Hearing - Initiative Ordinance - Business and Tax Regulations, Administrative Codes - Parcel Tax Repeal and Replacement
+632	2	Hearing - Initiative Ordinance - Campaign and Governmental Conduct Code - Prohibiting Certain Campaign Contributions; Disclaimer and Disclosure Requirements
+633	2	Hearing - Initiative Ordinance - Planning Code - Accelerating Affordable Housing and Affordable Teacher Housing Program
+634	2	Hearing - Initiative Ordinance - Planning Code - Affordable Homes for Educators and Families Now
+635	2	Hearing - Initiative Ordinance - Planning Code - Affordable Housing and Small Business Priority Reserve
+636	2	Hearing - Initiative Ordinance - Planning Code and Business and Tax Regulations Code - Save Our Small Businesses Initiative, Simplifying Restrictions in Neighborhood Commercial Districts and Permitting Processes for Certain Businesses
+637	2	Hearing - Lanterman-Petris-Short Conservatorships - Budget and Legislative Analyst Report
+638	2	Hearing - Mayor's Budget Instructions - FY and #
+639	2	Hearing - Mayor's Proposed Budget for Selected Departments - FY and #
+640	2	Hearing - Mental Health Resources for Children and Youth
+641	2	Hearing - Mistreatment of Residents at the Alice Griffith Apartments by McCormack Baron Salazar
+642	2	Hearing - Municipal Banking Task Force - Report and Recommendations
+643	2	Hearing - Our Children, Our Families Council
+644	2	Hearing - Potential Updates - City's Overdose Prevention Policies
+645	2	Hearing - Release of Reserved Funds - Department of the Environment - Building Performance Standard: Adoption, Enforcement and Equitable Support and Preparation for Regional Adoption - $
+646	2	Hearing - Restructuring and Reforming the Equal Employment Opportunity Office
+647	2	Hearing - Sexual Orientation and Gender Identity Data Reports - FY and # and COVID-Related Data
+648	2	Hearing - Shelter Monitoring Committee Annual Report
+649	2	Hearing - Shelter-in-Place Rehousing and Site Demobilization Plan
+650	2	Hearing - Six-Month Budget Status Report - FY
+651	2	Hearing - SkyChef Noncompliance with the Healthy Airport Ordinance
+652	2	Hearing - Status of City Employee Positions Exempt from Civil Service
+653	2	Hearing - Street Teams Response Update and Information
+654	2	Hearing - Street Vacation Order - Parkmerced Development Project
+655	2	Hearing - Updates on the City's Economy, Financial Condition, and Other Issues
+656	2	Hemophilia Day - April # , #
+657	2	Heritage on the Marina Day - March # , #
+658	2	Hetch Hetchy Power System Centennial Day - May # , #
+659	2	Home Detention Electronic Monitoring Program Rules and Regulations and Program Administrator’s Evidence of Financial Responsibility - #
+660	2	Honoring Chinese American Women
+661	2	Honoring Joe Vazquez
+662	2	Honoring Joey Alexander and Urban Alchemy’s Impact
+663	2	Honoring Michael Krasny - February # , #
+664	2	Honoring Missing and Murdered Indigenous Women - May #
+665	2	Honoring Susan Solomon
+666	2	Honoring Yuan Yuan Tan
+667	2	Honoring and Recognizing Assemblymember Phil Ting - October # , #
+668	2	Honoring the Chinese Consolidated Benevolent Association - 175th Anniversary
+669	2	Honoring the Victims of the VTA Rail Yard Shooting
+670	2	Housing Development Incentive Program for Homeowners
+671	2	Housing Preferences - Annual Report - July # , # , through June # , #
+672	2	Housing Preferences - Three Year Report - July # , # , through June # , #
+673	2	Hunger Action Month - September #
+674	2	I Love Tenderloin Week - April # through May # , #
+675	2	Improvement Area No. # (Pier # ) of Special Tax District No. # Delinquent Special Tax Payment; Settlement Agreement and Release of Claims
+676	2	Increasing Administrative Code, Section # , Power Sales Revenue Limit - Anticipated Revenue in Excess of $ or More - Annual Revenue Limit of $
+677	2	Indemnification Agreement - Renovation of the Powerhouse Building
+678	2	Initiative Ordinance - Business and Tax Regulations Code - Half-Cent Sales Tax Increase for Transportation
+679	2	Initiative Ordinance - Business and Tax Regulations, Administrative Codes - Gross Receipts Tax For Environmental Programs
+680	2	Intent to Call Special Municipal Election, to be Consolidated with Prospective Statewide Recall Election
+681	2	Intent to Establish Pacific Islander Cultural District
+682	2	Intent to Expand Local Rent Control Protections
+683	2	Intention to Appropriate Cost Savings - $
+684	2	Interagency Cooperation Agreement - Transbay Joint Powers Authority - Phase # of the Transbay Program - Anticipated Revenue of Over $
+685	2	Intergovernmental Agreement Amendment - San Mateo County - Methodology of Calculating Reimbursement
+686	2	Interim Zoning Controls - Conditional Use Authorization for Conversion of Child Care Facilities to Other Uses
+687	2	Interim Zoning Controls - Conditional Use Authorization for Conversion of Residential Care Facilities to Other Uses
+688	2	Interim Zoning Controls - Conditional Use Authorization for Outdoor Laboratory Uses in PDR- # G
+689	2	Interim Zoning Controls - Conditional Use Authorization for Parcel Delivery Service Uses
+690	2	Interim Zoning Controls - Legacy Businesses in Neighborhood Commercial Districts
+691	2	International Day of the Victims of Enforced Disappearances - August # , #
+692	2	Internet Archive Day - October # , #
+693	2	Iranian American Heritage Month - March #
+694	2	Issuance and Sale of Revenue Obligations - Association of Bay Area Governments - Presidio Knolls School Project - Not to Exceed $
+695	2	Issuance and Sale of Revenue Obligations - California Enterprise Development Authority - Alta Vista School - Not to Exceed $
+696	2	Issuance and Sale of Revenue Obligations - California Enterprise Development Authority - California Institute of Integral Studies - Not to Exceed $
+697	2	Issuance and Sale of Revenue Obligations - California Enterprise Development Authority - Mission Economic Development Agency - Not to Exceed $
+698	2	Issuance and Sale of Revenue Obligations - California Enterprise Development Authority Revenue Obligations - Progress Foundation - Not to Exceed $
+699	2	Issuance and Sale of Revenue Obligations - California Enterprise Development Authority Revenue Obligations - The Brandeis School of San Francisco - Not to Exceed $
+700	2	Issuance and Sale of Revenue Obligations - California Statewide Communities Development Authority - The Sequoias San Francisco - Not to Exceed $
+701	2	Issuance by California Enterprise Development Authority Revenue Obligations - TEFRA Hearing - La Scuola International School - Not to Exceed $
+702	2	Issuance by California Enterprise Development Authority Revenue Obligations - TEFRA Hearing - National Center for International Schools, and/or The International School of San Francisco - Not to Exceed $
+703	2	Issuance by California Statewide Communities Development Authority Revenue Obligations - Hebrew Home for Aged Disabled - Not to Exceed $
+704	2	Issuance of Bonds - California Statewide Communities Development Authority - Front Porch Communities and Services, a California Not for Profit - Not to Exceed $
+705	2	Issuance of Bonds - Infrastructure and Revitalization Financing District No. # (Treasure Island) - Not to Exceed $
+706	2	Issuance of Bonds - San Francisco Art Institute, a California Nonprofit Public Benefit Corporation - Not to Exceed $
+707	2	Issuance of General Obligation Bonds (Healthy, Safe and Vibrant San Francisco, # ) - Not to Exceed $
+708	2	Issuance of General Obligation Bonds (Proposition A, # ) - Not to Exceed $
+709	2	Issuance of Judgment Obligation Bonds - Not to Exceed $
+710	2	Issuance of Revenue Bonds - Public Utilities Commission - Purchase of Electricity Distribution and Transmission System - Not to Exceed $
+711	2	Issuance of Special Tax Bonds - Community Facilities District No. # (Transbay Transit Center) - Not to Exceed Aggregate Principal Amount of $
+712	2	Issuance of Special Tax Bonds - Special Tax District No. # (Mission Rock Facilities and Services) - Development Special Tax Bonds, Office Special Tax Bonds, Shoreline (Tax Zone # ) Special Tax Bonds - Not to Exceed $
+713	2	Issuance of Subpoena Duces Tecum - Daniel Lawson, Former President of the Board of SF SAFE, and Tom Yeh, Former Chief Financial Officer of SF SAFE
+714	2	Italian American Heritage Month - October
+715	2	James W. Chow Day - May # , #
+716	2	Japantown Cultural Heritage District’s Cultural, History, Housing, and Economic Sustainability Strategy Report
+717	2	Jean Alexander Day - September # , #
+718	2	Jerald Shapiro Social Work Day - March # , #
+719	2	John and Ina Dearman Day - March # , #
+720	2	Joseph Leung Day - October # , #
+721	2	Josè Sarria Day - December # , #
+722	2	Kate Herrmann Stacy Day - October # , #
+723	2	Keep Pier # Backlands Temporary Shelter Site Open
+724	2	Kenny Lau Day - August # , #
+725	2	Kim Marie Thompson Cromb Day - June # , #
+726	2	LGBTQIA+ Equal Pay Awareness Day - June # , #
+727	2	Lady Gaga Day - July # , #
+728	2	Landfill Disposal Agreement - Recology San Francisco - Term Extension
+729	2	Latin@ Heritage Month - September # through October # , #
+730	2	Latinx Heritage Month - September # through October # , #
+731	2	Latinx Heritage Month - September 15th through October 15th Annually
+732	2	Laurence Kornfield Day - August # , #
+733	2	Law Enforcement Equipment Use Policy - # Annual Report
+734	2	Lawrence Ferlinghetti Day - March # , #
+735	2	Lease Agreement - ALD Development Corporation dba Airport Dimensions - Harvey Milk Terminal # Airport Lounge Lease No. # - $ Minimum Annual Guarantee
+736	2	Lease Agreement - Airport Concession - Spa BR SFO, LLC - $ Minimum Annual Guarantee
+737	2	Lease Agreement - Alclear, LLC - $ Minimum Annual Guarantee
+738	2	Lease Agreement - Alliance Ground International, LLC - Airport Building # - Estimated Rent of $
+739	2	Lease Agreement - Amoura International, Inc. - Post-Security Concession - $ Minimum Annual Guarantee
+740	2	Lease Agreement - Amy’s Kitchen Restaurant Operation Company, LLC - Terminal # Food and Beverage Concession - $ Minimum Annual Guarantee
+741	2	Lease Agreement - Andre-Boudin Bakeries, Inc. - International Terminal "A" Historic Restaurant Concession - $ Minimum Annual Guarantee
+742	2	Lease Agreement - Bank of America, N.A. - Automated Teller Machines - $ Minimum Annual Guarantee
+743	2	Lease Agreement - Black Point Coffee SFO, LLC - International Terminal "A" Coffee Kiosk Concession - $ Minimum Annual Guarantee
+744	2	Lease Agreement - Books Inc. - Terminal # Bookstore - $ Minimum Annual Guarantee
+745	2	Lease Agreement - Brookstone SFO T- # , LLC - Terminal # Specialty Retail Concession Lease No. # - Lease No. # - $ Minimum Annual Guarantee
+746	2	Lease Agreement - Bun Mee LLC - Post-Security Concession - $ Minimum Annual Guarantee
+747	2	Lease Agreement - Bun Mee, LLC - Terminal # Food and Beverage Concession - $ Minimum Annual Guarantee
+748	2	Lease Agreement - Canonica New York, LLC - Airport Concession - $ Minimum Annual Guarantee
+749	2	Lease Agreement - Canonica New York, LLC - Terminal # Specialty Retail Concession - $ Initial Minimum Annual Guarantee
+750	2	Lease Agreement - China Airlines Limited - Cargo Facility Lease No. # - $ Initial Annual Base Rent

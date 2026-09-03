@@ -1,0 +1,250 @@
+1	122	Annual Salary Ordinance - FY and #
+2	88	Budget and Appropriation Ordinance for Departments - FY and #
+3	76	Proposed Interim Annual Salary Ordinance - FY and #
+4	51	Proposed Interim Budget and Appropriation Ordinance for Departments - FY and #
+5	37	Findings to Allow Teleconferenced Meetings During Declared Emergency
+6	35	Health Service System Plans and Contribution Rates - Calendar Year #
+7	28	Board of Supervisors Regular Meeting Schedule - #
+8	23	Administrative Code - COVID- # Tenant Protections
+9	23	Neighborhood Beautification and Graffiti Clean-up Fund Tax Designation Ceiling
+10	22	Administrative Code - Acquisition of Surveillance Technology
+11	19	Grant Agreement Amendment - Mid-Market Foundation - Mid-Market/Tenderloin Community-Based Safety Program - Not to Exceed $
+12	18	Emergency Ordinance - Public Health Emergency Leave
+13	18	Reappointment, Association of Bay Area Governments, Executive Board - Supervisor Rafael Mandelman
+14	17	Closed Session - Labor Negotiations - February # , #
+15	17	Funding Reallocation - Our City, Our Home Homelessness Gross Receipts Tax - Services to Address Homelessness - $ Plus Up to $ of Future Revenue - Through FY
+16	16	Administrative Code - COVID- # Rent Resolution and Relief Fund
+17	16	Approval of an Additional # Day Extension for Planning Commission Review of Inclusionary Affordable Housing Program (File No. # )
+18	16	Campaign and Governmental Conduct Code - Form # (Statement of Economic Interests) Filing Requirements
+19	16	Homelessness and Supportive Housing Fund - FY and # Expenditure Plan
+20	15	Accept and Expend Grant - Retroactive - Blue Shield of California Foundation - Leveraging Collaboration to End Domestic Violence - Amendment to the Annual Salary Ordinance - FY and # - $
+21	15	Administrative Code - Displaced Tenant Preference in City Affordable Housing
+22	15	Administrative Code - Hotel Conversion Ordinance
+23	15	Building, Green Building, Mechanical, and Plumbing Codes - Amending Findings Supporting Enactment of # Codes
+24	15	Memorandum of Understanding - Fire Fighters Union Local # , Unit #
+25	15	Office of Community Investment and Infrastructure, Operating as Successor Agency to the San Francisco Redevelopment Agency - FY Budget - Bond Issuance Not to Exceed $
+26	14	Administrative Code - Definition of Tourist or Transient Use under Hotel Conversion Ordinance; Amortization Period
+27	14	Administrative Code - Repealing Employee Sexual Privacy Ordinance; Requiring Data Collection Requests
+28	14	Administrative Code - Update Hotel Conversion Ordinance
+29	14	Administrative, Campaign and Governmental Conduct Codes - Language Access Ordinance
+30	14	Armenian Genocide Commemoration Day - April # , #
+31	14	Authorizing Grant Agreements - Terms of # Years after Project Completion - Public Utilities Commission Green Infrastructure Grant Program
+32	14	Emergency Ordinance - Temporary Right to Reemployment Following Layoff Due to COVID- # Pandemic
+33	14	Hearing - Committee of the Whole - Infrastructure and Revitalization Financing District No. # (Hoedown Yard, Pier # ) - October # , #
+34	14	Hearing - Committee of the Whole - Special Tax District No. # (Mission Rock Facilities and Services) - April # , # , at # : # p.m.
+35	14	Hearing - Committee of the Whole - Special Tax District No. # (Pier # Condominiums) - January # , #
+36	14	Hearing - Committee of the Whole - Special Tax District No. # (Pier # Leased Properties) - January # , #
+37	14	Planning Code - # % Affordable Housing and Educator Housing Streamlining Program
+38	14	Planning, Business and Tax Regulations Codes - Family Zoning Plan
+39	14	Resolution to Establish - SoMa West Community Benefit District
+40	13	Access Line Tax Adjustment - Consumer Price Index of #
+41	13	Administrative Code - Short-Term Residential Rentals
+42	13	Appropriation - Department of Elections - $ - FY
+43	13	Calling from Committee - Committee of the Whole - Joint Meeting with the San Francisco Ethics Commission - Proposed Ordinance (File No. # ) - Anti-Corruption and Accountability Ordinance - April # , #
+44	13	Calling from Committee - Committee of the Whole - Proposed Ordinance (File No. # ) - Administrative Code - Landlord Operating and Maintenance Expenses - May # , #
+45	13	Campaign and Governmental Conduct Code - Failure to File Form 700s, Sunshine Ordinance Declarations, and Certificates of Ethics Training
+46	13	Emergency Ordinance - Grocery Store, Drug Store, Restaurant, and On-Demand Delivery Service Employee Protections
+47	13	Emergency Ordinance - Protections for Occupants of Residential Hotels During COVID- # Pandemic
+48	13	Green Building and Environment Codes - Requirements for Installation of Electric Vehicle Chargers
+49	13	Mental Health Services Act Annual Update - FY
+50	12	Adding Territory to and Adopting Amendments to the Infrastructure Financing Plan for Infrastructure and Revitalization Financing District No. # (Treasure Island)
+51	12	Adjusting the Access Line Tax with the Consumer Price Index of #
+52	12	Amending Ordinance No. # - San Francisco Public Utilities Commission Power Revenue Bond Issuance - Not to Exceed $
+53	12	Business and Tax Regulations Code - Extending Temporary Suspension of Business Registration and Fee for Transportation Network Company Drivers and Taxi Drivers
+54	12	Charter Amendment and Initiative Ordinance - Business and Tax Regulations Code - Adjustment of Baseline Funding and Business Tax Changes
+55	12	Collective Bargaining Agreement - Union of American Physicians and Dentists, Unit #
+56	12	Contract Amendment - Universal Protection Service, LP - Unarmed Security Guard Services - San Francisco General Hospital - Not to Exceed $
+57	12	Declaring Results of Special Election - Infrastructure and Revitalization Financing District No. # (Treasure Island)
+58	12	Electrical Code - Repeal of Existing # Code and Enactment of # Code
+59	12	Existing Building Code - Repeal of Existing # Code and Enactment of # Code
+60	12	Green Building Code - Repeal of Existing # Code and Enactment of # Code
+61	12	Health Code - Cleaning and Disease Prevention Standards in Tourist Hotels and Large Commercial Office Buildings
+62	12	Health Code - Patient Rates for Fiscal Years # and #
+63	12	Hearing - Administrative Provisions - Contained in the Proposed Annual Salary Ordinance - FY and #
+64	12	Lunar New Year #
+65	12	Mechanical Code - Repeal of Existing # Code and Enactment of # Code
+66	12	Planning Code - Inclusionary Affordable Housing Fee and Requirements
+67	12	Planning, Administrative Codes - Residential Occupancy
+68	12	Plumbing Code - Repeal of Existing # Code and Enactment of # Code
+69	12	Proposed Annual Salary Ordinance for Selected Departments, as of May # , # , for FY and #
+70	11	Administrative Code - Funding, Acquisition, and Use of Certain Police Department Equipment
+71	11	Administrative Code - Government Regulated Rents
+72	11	Health Code - Sugar-Sweetened Beverage Warning for Advertisements
+73	11	Homelessness and Supportive Housing Fund - FY and # Expenditure Plans
+74	11	Neighborhood Beautification and Graffiti Clean-up Fund Tax Designation Ceiling - Tax Year #
+75	11	Planning Code - Cannabis Regulation
+76	11	Planning, Subdivision, and Administrative Codes and Zoning Map - Family Housing Opportunity Special Use District
+77	11	Police Code - Third-Party Food Delivery Services
+78	11	San Francisco Public Utilities Commission Water Revenue Bond and Other Forms of Indebtedness Issuance - Not to Exceed $
+79	11	Various Codes - Authority to Require New or Upgraded Fire Safety Systems in Multi-Unit Residential Buildings with Recurring or Continuing Fire Hazards
+80	10	Administrative Code - Film Commission Programs
+81	10	Administrative Code - Food Security Task Force Reauthorization and Sunset Date Extension
+82	10	Administrative Code - Reproduction and Notary Fees - Department of Administrative Services
+83	10	Administrative Code - Request for Sheriff’s Services
+84	10	Authorizing Preparation of Proponent Ballot Arguments and Rebuttal Ballot Arguments - November # , # , Consolidated General Election
+85	10	Board of Supervisors Budget Process - FY and #
+86	10	California Constitution Appropriations Limit - FY $
+87	10	Concurring in Actions to Meet Local Emergency - Coronavirus Response
+88	10	Mayoral Reappointment, Redevelopment Successor Agency Oversight Board - Anna Van Degna
+89	10	Park Code - Non-Resident Fees at Certain Specialty Attractions
+90	10	Planning Code - Affordable Housing Projects on Undeveloped Lots in Service/Arts/Light Industrial Districts
+91	10	Planning Code - Massage Establishment Zoning Controls
+92	10	Planning, Administrative Codes - Development Impact Fee Reductions
+93	10	Planning, Administrative, Subdivision Codes; Zoning Map - Density Exception in Residential Districts
+94	10	Temporary Shelter and Homeless Services - Behested Payment Waiver
+95	10	Urging the California Public Utilities Commission to Adopt Conviction History Regulations In Furtherance of a Level Regulatory Playing Field And In Compliance With San Francisco’s # Fair Chance Ordinance
+96	10	Zoning Map - Family Zoning Plan
+97	9	Accept and Expend Grant - Retroactive - Bloomberg Philanthropies - Digital Innovation Grant - Amendment to the Annual Salary Ordinance for FY and # - $
+98	9	Accept and Expend Grant - Retroactive - Bloomberg Philanthropies - Innovation Team Grant and Amendment to the Annual Salary Ordinance for FY and # - $
+99	9	Accept and Expend Grant - Retroactive - Local Immigrant Integration and Inclusion Grant - Governor’s Office of Business and Economic Development - Amendment to Annual Salary Ordinance - FY and FY $
+100	9	Accept and Expend Grant - Retroactive - The Andrew W. Mellon Foundation - Expanding Information Access for Incarcerated People Project - Amendment to the Annual Salary Ordinance for FY and # - $
+101	9	Accept and Expend Grant - Retroactive - The Board of State and Community Corrections - Proposition # Public Health and Safety Grant Program - Amendment to the Annual Salary Ordinance for FY and # - $
+102	9	Accept and Expend Grant and Amend Annual Salary Ordinance - Retroactive - United States Department of Agriculture’s Forest Service - $
+103	9	Accept and Expend Grant and Amend the Annual Salary Ordinance - Retroactive - Office of Financial Empowerment Kindergarten to College Program - Mott Foundation - $
+104	9	Administrative Code - African American Arts and Cultural District
+105	9	Administrative Code - Application of Health Care Security Ordinance to Employees Teleworking While Health Orders Place Restrictions on Onsite Work
+106	9	Administrative Code - Extension Of Temporary Tenant Protections Due To COVID- #
+107	9	Administrative Code - Increasing the Minimum Compensation Hourly Rate for Employees Under Contracts with Nonprofit Corporations and Public Entities
+108	9	Administrative Code - Purchase and Sale of Electricity and Related Products - Public Utilities Commission
+109	9	Administrative, Police Codes - Waiving Employer Requirements to Report on # Compliance with Health Care Security Ordinance and Fair Chance Ordinance
+110	9	Appropriation - General Reserve - $ - Other Revenue - $ - Fund Balance - $ - Police Department - Overtime - De-Appropriation and Re-Appropriation - $ - Releasing $ from Reserve - FY
+111	9	Appropriation - General Reserve - Municipal Transportation Agency - Portsmouth Square Garage Parking and Transit Fares - $ - FY
+112	9	Building Code - Repeal of Existing # Code and Enactment of # Edition
+113	9	Building, Planning Codes - Existing Awning Amnesty Program
+114	9	Calling from Committee - Calling Special Meetings - July # , # and July # , # - Committee of the Whole - Modifying Time for Submission of Charter Amendment under Rule #
+115	9	Campaign and Governmental Conduct Code - Campaign Finance and Conflict of Interest
+116	9	De-Appropriation and Re-Appropriation - From Salaries, Fringe Benefits, Non-Personnel Services - Overtime and Salary Expenditures - Various Departments - $ - FY
+117	9	Fire Code - Lithium-Ion Batteries in Powered Mobility Devices
+118	9	Health Code - No Smoking in Multi-Unit Housing Complexes
+119	9	Health Code - Regulating Medical Specimen Test Collection Sites
+120	9	Hearing - Committee of the Whole - Emergency Ordinance - Protections for Occupants of Residential Hotels During COVID- # Pandemic - December # , # , at # : # p.m.
+121	9	Hearing - Committee of the Whole - Update on Findings and Recommendations Regarding Law Enforcement Practices - May # , # , at # : # p.m.
+122	9	Initiative Ordinance - Business and Tax Regulations Code - Sales Tax for Transportation Authority
+123	9	Initiative Ordinance - Business and Tax Regulations, Administrative Codes - Excise Tax on Keeping Commercial Property Vacant
+124	9	Memorandum of Understanding - Service Employees International Union, Local # - Amendment No. #
+125	9	Official Advertising - Clinton Reilly Communications, dba The San Francisco Examiner - FY
+126	9	Planning Code - Conversion of Medical Cannabis Dispensary Uses to Cannabis Retail Uses
+127	9	Planning Code - Inclusionary Affordable Housing Fee and Dwelling Unit Mix Requirements
+128	9	Planning Code - Review for Downtown and Affordable Housing Projects; Notification Requirements; Review of Alterations to Historical Landmarks and in Conservation Districts
+129	9	Police, Administrative Codes - Considering Criminal History in Employment and Housing Decisions
+130	9	Recognizing Problem Gambling Awareness Month - March #
+131	9	Settlement of Lawsuit - San Francisco SRO Hotel Coalition, et al. - $
+132	8	Accept and Expend Grant - Retroactive - Immigration Defense Unit - Crankstart Foundation - Amendment to the Annual Salary Ordinance for FY and # - $
+133	8	Accept and Expend Grant - Retroactive - Overdose Prevention Initiative - California Department of Public Health - Substance and Addiction Prevention Branch - Amendment to Annual Salary Ordinance - Fiscal Years # and # - $
+134	8	Accept and Expend In-Kind Gift - Consulting Services - Various Providers - Valued at $
+135	8	Administrative Code - Approval of Surveillance Technology Policies for Multiple City Departments
+136	8	Administrative Code - Local Business Enterprise Program
+137	8	Administrative, Environment Codes - Zero Emission Vehicle Requirements for City Fleet
+138	8	Apply for, Accept, and Expend Grant - U.S. Department of Housing and Urban Development - Housing Opportunities for Persons with AIDS Program - $ - FY
+139	8	Appropriating $ in Fire Service Fees - De-Appropriation and Re-Appropriation - Expenditures of $ - Supporting Increased Overtime and Professional Services Expenditures - FY
+140	8	Appropriation - General Fund General Reserves - Fire Department Overtime - $ - FY
+141	8	Building Code - Electric Vehicle Charging Stations - Expedited Permit Process
+142	8	Building Code - Slope and Seismic Hazard Zone Protection Act
+143	8	Building Code, Environment Code - Mandating New Construction Be All-Electric
+144	8	Building, Fire Codes - Fire Alarm System Upgrade Requirements
+145	8	Business and Tax Regulations Code - Credits For Waiver of Homelessness Gross Receipts Tax Refund and Certain Gifts
+146	8	Business and Tax Regulations Code - Early Care and Education Commercial Rents Tax Baseline - FY and #
+147	8	Business and Tax Regulations Code - Emergency Medical Services Fees
+148	8	Business and Tax Regulations, Health Codes - Emergency Medical Services Fees
+149	8	California Constitution Appropriations Limit for FY
+150	8	Calling from Committee - Committee of the Whole - Proposed Ordinance (File No. # ) - Anti-Corruption and Accountability Ordinance - April # , #
+151	8	Campaign and Governmental Conduct Code - Behested Payments
+152	8	Closed Session - Labor Negotiations - January # , #
+153	8	Closed Session - Labor Negotiations - March # , #
+154	8	Concurring in the Continuation of the Declaration of Local Emergency - Flooding Affecting SFPUC’s Moccasin Reservoir (Tuolumne County)
+155	8	Consolidation of Elections Scheduled for November # , #
+156	8	De-appropriation - San Francisco Public Utilities Commission Capital Projects Budget - $ - FY
+157	8	Environment Code - Climate Action Plan
+158	8	Filipino American History Month - October #
+159	8	Fire Code - Repealing # Code, Adopting # Code
+160	8	Five-Year Information and Communication Technology Plan - FY
+161	8	Grant Agreement - Planned Parenthood Northern California - Security Services - Not to Exceed $ - Waiver of Competitive Solicitation Requirement
+162	8	Hearing - Administrative Provisions - Contained in the Proposed Appropriation Ordinance for Departments - FY and #
+163	8	Hearing - Committee of the Whole - Special Tax District No. # (Central SoMa) - January # , #
+164	8	Hearing - Initiative Ordinance - Business and Tax Regulations Code - Business Tax Changes
+165	8	Hearing - Initiative Ordinance - Health Code - Refuse Collection and Disposal Ordinance
+166	8	Initiative Ordinance - Health Code - Refuse Collection and Disposal Ordinance
+167	8	Jewish American Heritage Month - May #
+168	8	Mayoral Appointment, Juvenile Probation Commission - Johanna Ruth Locoe
+169	8	Municipal Elections Code - Supporters and Opponents in Ballot Questions for Local Measures
+170	8	Park Code - PROSAC Membership
+171	8	Park Code - Recreation Program Fees
+172	8	Planning Code - Parcel Delivery Service
+173	8	Plumbing Code - Placement and Minimum Size of Building Traps
+174	8	Police Code - Cannabis Regulation
+175	8	Police Code - Vehicle Sideshows
+176	8	Proposed Budget and Appropriation Ordinance for Selected Departments, as of May # , # , for FY and #
+177	8	Public Employment - Amendment to the Salary Ordinance for the Office of the Public Defender - Immigration Legal Defense Support - FY
+178	8	Public Employment - Amendment to the Salary Ordinance for the Port Commission and the Airport Commission - FY
+179	8	Public Works Code - Vending Requirements and Restrictions
+180	8	Reappointment, California State Association of Counties - Supervisor Rafael Mandelman
+181	8	Resolution Authorizing Executive Director of the Port of San Francisco to Prepare an Infrastructure Financing Plan - Infrastructure and Revitalization Financing District No. # (Hoedown Yard, Pier # )
+182	8	Resolution Calling a Special Election Related to Infrastructure and Revitalization Financing District No. # (Hoedown Yard, Pier # )
+183	8	Resolution Declaring Results of Special Election Related to Infrastructure and Revitalization Financing District No. # (Hoedown Yard, Pier # )
+184	8	Resolution of Intent to Designate the Wild Parrots of San Francisco as the Official Animal of San Francisco
+185	8	Resolution of Intention to Form Sub-Project Area G- # , Sub-Project Area G- # , and Sub-Project Area G- # - Infrastructure Financing District No. # (Port of San Francisco, Pier # )
+186	8	Resolution of Intention to Incur Bonded Indebtedness - Communities Facilities District No. # (Treasure Island) - Not to Exceed $
+187	8	Resolution of Intention to Issue Bonds Related to Infrastructure and Revitalization Financing District No. # (Treasure Island)
+188	8	Supporting California State Proposition # - The Affordable Housing Act - November # , # Ballot
+189	8	Transit Month - September #
+190	8	Trial Courts Courthouse Construction Fund - Rescission of Superior Court Surcharges for Court Construction
+191	7	Accept and Expend Grant - State Transportation Development Act, Article # - Pedestrian and Bicycle Projects - $
+192	7	Accept and Expend Grant - United States Department of Justice's Office of Violence Against Women - Domestic Violence High Lethality Risk Team - Amendment to the Annual Salary Ordinance - FY and # - $
+193	7	Accept and Expend Grants - Recurring State Grant Funds - Department of Public Health - FY
+194	7	Administrative Code - Amending the Family Friendly Workplace Ordinance
+195	7	Administrative Code - Cannabis Oversight Committee Sunset Date
+196	7	Administrative Code - Cash Revolving Funds
+197	7	Administrative Code - Department of Public Health Managed Care Contracts
+198	7	Administrative Code - Indigenous Peoples Day
+199	7	Administrative Code - Office of Sexual Harassment and Assault Response and Prevention
+200	7	Administrative Code - Owner Move-In Reporting Requirements
+201	7	Apply for, Accept, and Expend Grant - United States Department of Housing and Urban Development - HOME Investment Partnership Program - $ - FY
+202	7	Apply for, Accept, and Expend Grant - United States Department of Housing and Urban Development - Housing Opportunities for Persons with AIDS Program - $ - FY
+203	7	Authorizing Grant Agreements - Public Utilities Commission Green Infrastructure Grant Program - Terms of # Years
+204	7	Behested Payment Waiver - India Basin Waterfront Park
+205	7	Black History Month - February #
+206	7	Building Code - All-Electric Major Renovations
+207	7	Building Code - Gas Infrastructure for EPCA Appliances in New Construction
+208	7	Building, Business and Tax Regulations Codes - Temporary Homeless Shelter Provisions During Shelter Crisis
+209	7	Business and Tax Regulations Code - Extending Waiver of Permit, License, and Business Registration Fees for Certain Small Businesses
+210	7	Business and Tax Regulations Code - Temporary Suspension of Cannabis Business Tax
+211	7	Cost of Living Adjustment to the Contract for Budget and Legislative Analyst Services - $ - FY
+212	7	Emergency Ordinance - Administrative Code - Rent Increases During COVID- # Pandemic
+213	7	Formal Policy Discussions - December # , #
+214	7	Funding Reallocation - Homelessness Gross Receipts Tax - Our City, Our Home Fund - Services to Address Homelessness - Approximately $
+215	7	General Obligation Bond Election - Healthy, Safe, and Vibrant San Francisco - Not to Exceed $
+216	7	Health Code - Patient Rates - FY and #
+217	7	Health Code - Patient Rates for FY and #
+218	7	Hearing - Budget Priorities - Youth Commission - FY and #
+219	7	Hearing - Committee of the Whole - Amendment to the Redevelopment Plan for the Mission Bay South Redevelopment Project, Block # East - January # , # , at # : # p.m.
+220	7	Hearing - Committee of the Whole - Emergency Ordinance - Eviction of Commercial Tenants During COVID- # Pandemic - September # , # , at # : # p.m.
+221	7	Hearing - Review and Approval of the Board of Supervisors/Clerk of the Board Annual Budget Guidelines - FY and #
+222	7	Initiative Ordinance - Business and Tax Regulations Code - Additional Gross Receipts Tax on Cannabis
+223	7	Planning Code - Cannabis Retail and Medical Cannabis Dispensaries in Chinatown
+224	7	Planning Code - Child Care Facilities
+225	7	Planning Code - Inclusionary Housing Fee
+226	7	Planning Code - Waiving Certain Development Impact Fees in the Market and Octavia Area Plan
+227	7	Planning and Subdivision Codes, Zoning Map - Housing Production
+228	7	Proclamation of Local Emergency - Drug Overdoses in the Tenderloin
+229	7	Public Works Code - Graffiti Abatement - Lifting Suspension of Issuance of Certain Violations; Reinstating Collection of Certain Fees and Fines
+230	7	Public Works, Administrative Codes - Requirements for Surface-Mounted Facility Site Permits
+231	7	Redevelopment Plan Amendment - Bayview Hunters Point
+232	7	Redevelopment Plan Amendment - Hunters Point Shipyard
+233	7	Redevelopment Plan Amendment - Mission Bay South Block # East
+234	7	Report of Assessment Costs - Sidewalk Inspection and Repair Program
+235	7	Resolution of Intent to Not Appropriate Funding in FY for Executive Recruitment Services and Urging Reappointment of Incumbent Director of Elections
+236	7	San Francisco Public Utilities Commission Wastewater Revenue Bond Issuance - Various Capital Wastewater Projects Benefitting the Wastewater Enterprise - Not to Exceed $
+237	7	Street Vacation for Various Streets - Sunnydale HOPE SF Project
+238	7	Taxable Certificates of Participation (HOPE SF) - Amending Ordinance No. # - Not to Exceed $
+239	7	Urging Mayor to Restore $ Million Reduction in the Department of Children, Youth and Their Families’ Program Funding for FY Through a Public-Private Campaign Drive
+240	7	Urging a Comprehensive Return to School Plan
+241	7	Urging the San Francisco Public Utilities Commission to Reach a Voluntary Agreement Regarding the Bay-Delta Plan
+242	6	Accept and Expend Grant - Amend the Annual Salary Ordinance - Retroactive - Crankstart Foundation - Kelson Foundation - Clean Slate Program Grant - $ and $ Respectively
+243	6	Accept and Expend Grant - Retroactive - Amend the Annual Salary Ordinance - United States Homeland Security - Targeted Violence and Terrorism Prevention Grant - $
+244	6	Accept and Expend Grant - Retroactive - John D. and Catherine T. MacArthur Foundation - Safety and Justice Challenge - Amendment to the Annual Salary Ordinance for FY and # - $
+245	6	Accept and Expend Grant - Retroactive - Safety and Justice Challenge - Amendment to the Annual Salary Ordinance - FY and # - $
+246	6	Accept and Expend Grant - Retroactive - State of California - Board of State and Community Corrections - Organized Retail Theft Vertical Prosecution Program - Amendment to the Annual Salary Ordinance - FY and FY $
+247	6	Accept and Expend Grant - Retroactive - The Andrew W. Mellon Foundation - Jail and Reentry Services Program - Amendment to the Annual Salary Ordinance - FY and # - $
+248	6	Accept and Expend Grant - Retroactive - The Governor’s Office of Business and Economic Development - Cannabis Equity Grants Program for Local Jurisdictions - $
+249	6	Accept and Expend Grant - Retroactive - U.S. Department of Justice - Justice Reinvestment Initiative - Amendment to Annual Salary Ordinance - FY and # - $
+250	6	Accept and Expend Grant and Amend the Annual Salary Ordinance - Laura and John Arnold Foundation - Financial Justice Project - FY $

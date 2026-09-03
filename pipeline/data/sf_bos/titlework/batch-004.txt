@@ -1,0 +1,250 @@
+751	4	Contract Amendment - CCT Technologies, Inc. dba Computerland of Silicon Valley Technology Marketplace - Not to Exceed $
+752	4	Contract Amendment - Cross Country Staffing, Inc. - Registry Services - Not to Exceed $
+753	4	Contract Amendment - Mansfield Oil Company of Gainesville, Inc. - Gasoline - Not to Exceed $
+754	4	Contract Amendment - Motorola, Inc. - Emergency Communications Equipment - Not to Exceed $
+755	4	Contract Amendment - Regents of the University of California, Division of Substance Abuse and Addiction Medicine - Behavioral Health Services - Not to Exceed $
+756	4	Contract Amendment - Richmond Area Multi Services, Inc. - Vocational Rehabilitation Employment and Training Programs - Not to Exceed $
+757	4	Contract Amendment - San Francisco Public Health Foundation - Community Health Engagement - Not to Exceed $
+758	4	Contract Amendment - Transdev Services, Inc. - Paratransit Services - Not to Exceed $
+759	4	Contract Amendment - Treeline Security, Inc. - Security Guard Services - Not to Exceed $
+760	4	Contract Amendment - W.W. Grainger, Inc. - Industrial Supplies - Not to Exceed $
+761	4	Contract Amendment - Zones, LLC Technology Marketplace - Not to Exceed $
+762	4	Contracting Process - Communications Based Train Control System - Waiver of Administrative Code Contract Prohibition and Authorization to Use Negotiated Procurement Procedures
+763	4	De-appropriation - San Francisco Public Utilities Commission - $ - FY
+764	4	Debt Management Policy and Procedures - Controller’s Office of Public Finance
+765	4	Declaring Results of Special Election - Improvement Area No. # of City and County of San Francisco Special Tax District No. # (Power Station)
+766	4	Declaring Results of Special Election - Special Tax District No. # (Mission Rock Facilities and Services)
+767	4	Dignity Fund Community Needs Assessment - #
+768	4	Emergency Ordinance - Building Code - Construction During COVID- # Pandemic That Results in Temporary Suspension of Water or Electricity Service or Excessive Noise
+769	4	Emergency Ordinance - Building Code - Construction During COVID- # Pandemic That Results in Temporary Suspension of Water or Utility Service or Excessive Noise
+770	4	Emergency Ordinance - Eviction of Commercial Tenants During COVID- # Pandemic
+771	4	Emergency Ordinance - Extension of Temporary Tenant Protections Due to COVID- #
+772	4	Environment Code - Bottled Water and Packaged Free Ordinance
+773	4	Environment Code - Flame Retardant Chemicals in Upholstered Furniture and Juvenile Products
+774	4	Environment Code - Refuse Separation Compliance
+775	4	Environment Code - Safe Drug Disposal
+776	4	Environment, Police Codes - Electric Vehicle Charging in Commercial Parking
+777	4	Equal Pay Day - March # , #
+778	4	Establishing Project Area I (Mission Rock), and Sub-Project Areas I- # Through I- # Therein - Adopting Appendix I to Infrastructure Financing Plan (Port of San Francisco)
+779	4	Existing Building Code - Concrete Building Inventory Assessment
+780	4	Final Map # - Treasure Island
+781	4	Fire Code - Disclosure of Fire Safety Information
+782	4	Fire Code - Fire Department Fees
+783	4	Fire Code - Fire Safety Disclosure, Posting, and Training Requirements
+784	4	Fire Code - Repealing # Code; Adopting # Code
+785	4	Formal Policy Discussions - March # , #
+786	4	Fundraising for Services Related to Immigration, LGBTQ+ Rights, Environmental Protection, Reproductive Rights, and Racial Equity - Behested Payment Waiver
+787	4	General Plan - Pier # Mixed-Use District Project
+788	4	Grant Agreement - Meals on Wheels San Francisco - Home-Delivered Meal Nutrition Services to Older Adults - Not to Exceed $
+789	4	Grant Agreement - Retroactive - Mission Graduates - All Children And Youth Are Ready to Learn And Succeed In School Result Area - Not to Exceed $
+790	4	Grant Agreement - Retroactive - Wu Yee Children’s Services - Early Care and Education Access and Enrollment Services - Not to Exceed $
+791	4	Grant Agreement - Retroactive - Young Community Developers - Black to the Future and School Site Mentoring Program - Not to Exceed $
+792	4	Grant Agreement Amendment - Bay Area Community Resources - Various Programs - Not to Exceed $
+793	4	Grant Agreement Amendment - Glide Foundation - Free Meals Program - Not to Exceed $
+794	4	Grant Agreement Amendment - Homebridge, Inc. - Contract Mode In-Home Supportive Services - Not to Exceed $
+795	4	Grant Agreement Amendment - Project Open Hand - Congregate Nutrition Services for Older Adults - Not to Exceed $
+796	4	Grant Agreement Amendment - Retroactive - Bay Area Community Resources, Inc. - COVID-Response Resource Hub Coordinator - Not to Exceed $
+797	4	Grant Agreement Amendment - SF New Deal - Small Business Grant Payment Support - Not to Exceed $
+798	4	Grant Agreement Amendment - San Francisco-Marin Food Bank - COVID- # Food Assistance Program - Not to Exceed $
+799	4	Grant Agreement Amendment - Self-Help for the Elderly - Home-Delivered Meal Nutrition Services for Older Adults - Not to Exceed $
+800	4	Grant Agreement Amendment - St. Vincent de Paul Society of San Francisco - Multi-Service Center South - Not to Exceed $
+801	4	Grant Agreement for Financial Solvency - Baker Places, Inc. - Not to Exceed $ - Waiver of Competitive Solicitation Requirement
+802	4	Grant Application - Retroactive - Health Resources Services Administration - Ryan White Act HIV/AIDS Emergency Relief Grant Program - $
+803	4	Ground Lease Modification - United Airlines, Inc. - Three-Year Term Extension
+804	4	Health Code - Definition of Projects and Responsibilities for Alternate Water Sources
+805	4	Health Code - Patient Rates - FY , # , and #
+806	4	Health Service System Dental Plans and Contribution Rates - Calendar Year #
+807	4	Health, Business and Tax Regulations Codes - Alternate Water Sources for Non-Potable Applications
+808	4	Hearing - Committee of the Whole - Consent to Provisions of a Variation Decision - March # , # , at # : # p.m.
+809	4	Hearing - Committee of the Whole - Draft San Francisco Reparations Plan and Dream Keeper Initiative Updates - September # , # , at # : # p.m.
+810	4	Hearing - Committee of the Whole - General Obligation Bond Election - Muni Reliability and Street Safety - February # , # , at # : # p.m.
+811	4	Hearing - Committee of the Whole - Grant Agreement - Planned Parenthood Northern California - Security Services - Not to Exceed $ - October # , # , at # : # p.m.
+812	4	Hearing - Committee of the Whole - Infrastructure and Revitalization Financing District No. # (Treasure Island) - January # , #
+813	4	Hearing - Committee of the Whole - Redevelopment Plan Amendments - Bayview Hunters Point Redevelopment Project - Hunters Point Shipyard Project - October # , # , at # : # p.m.
+814	4	Hearing - Committee of the Whole - Report of Assessment Costs for Blighted Properties - Accelerated Sidewalk Abatement Program - May # , # , at # : # p.m.
+815	4	Hearing - Committee of the Whole - Report of Assessment Costs for Sidewalk Inspection and Repair Program - May # , # , at # : # p.m.
+816	4	Hearing - Committee of the Whole - Sales Tax to Support Caltrain Service - Special Board of Supervisors Meeting on August # , # , at # : # p.m
+817	4	Hearing - Committee of the Whole - Street Vacation - Potrero HOPE SF Project - Phase # - September # , #
+818	4	Hearing - Committee of the Whole - Transbay Block # Redevelopment Project - September # , # , at # : # p.m.
+819	4	Hearing - Initiative Ordinance (File No. # ) - Business and Tax Regulations Code - Increase Real Property Transfer Tax on Properties of At Least $
+820	4	Hearing - Initiative Ordinance - Administrative Code - Mental Health SF
+821	4	Hearing - Initiative Ordinance - Business and Tax Regulations and Administrative Codes - Additional Gross Receipts Tax on Commercial Rents
+822	4	Hearing - Initiative Ordinance - Campaign and Governmental Conduct Code - Behested Payments
+823	4	Hearing - Initiative Ordinance - Campaign and Governmental Conduct Code - Sunlight on Dark Money Initiative
+824	4	Hearing - Initiative Ordinance - Planning Code - Requiring Conditional Use Authorization for Replacement of Production, Distribution, Repair, Institutional Community, and Arts Activities Uses
+825	4	Hearing - Mayor's Proposed Budget for Departments - FY and #
+826	4	Hearing - Six Month Budget Status Report - FY
+827	4	Hearing - Update on the Healthy Airport Ordinance Implementation
+828	4	Housing Code - Operational Elevators
+829	4	Human Services Agency - Agreements with Hotels Providing Non-Congregate Shelter to Persons Experiencing Homelessness
+830	4	Impact of Federal Government Shutdown on State and Local Governments
+831	4	Initiative Ordinance - Authorizing the Development of Up to # Affordable Rental Units in the City Under Article # of the California Constitution
+832	4	Initiative Ordinance - Business and Tax Regulations Code - Additional Utility Users Tax on Gas and Non-Renewable Electricity
+833	4	Initiative Ordinance - Business and Tax Regulations Code - Business Tax Changes
+834	4	Initiative Ordinance - Business and Tax Regulations Code - Three-Quarter Cent Sales Tax Increase
+835	4	Initiative Ordinance - Campaign and Governmental Conduct Code - Prohibiting Candidate-Controlled General Purpose Committees
+836	4	Interim Zoning Controls - Conditional Use Authorization for Conversion of Unpermitted Residential Care Facilities
+837	4	Interim Zoning Controls - Extending and Modifying Conditional Use Authorization Requirement for Parcel Delivery Service Uses
+838	4	Interim Zoning Controls - Extending and Modifying Requirements for Conditional Use Authorization for Conversion of Residential Care Facilities to Other Uses
+839	4	Interim Zoning Controls - Extending and Modifying Requirements for Large Residential Projects in RC, RM, and RTO Districts
+840	4	Issuance and Sale of General Obligation Refunding Bonds, Series # R1 - Not to Exceed $
+841	4	Jesse Capin Smith Day - February # , #
+842	4	LAFCo Study - Future Management Options for the Midtown Park Apartments
+843	4	Labor-Management Agreement - San Francisco Firefighters’ Association, Local # - Workers’ Compensation Alternative Dispute Resolution Program
+844	4	Labor-Management Agreement - San Francisco Police Officers Association - Workers’ Compensation Alternative Dispute Resolution Program
+845	4	Lease Agreement - DFS Group, LP - Airport Concession - $ Minimum Annual Guarantee
+846	4	Lease Agreement - Pacific Gateway Concessions, LLC - Airport Concession - $ Minimum Annual Guarantee
+847	4	Lease Amendment - DFS Group, L.P. - The International Terminal Duty Free and Luxury Lease - Modify Reduced Rent Structure
+848	4	Lease Extension Option Exercise - Michael C. Mitchell - # Malcolm Road, Burlingame - Annual Base Rent $
+849	4	Lease Modification - United States Government - United States Federal Bureau of Investigation - Annual Rent $
+850	4	Levying Special Taxes - Special Tax District No. # (Pier # Leased Properties)
+851	4	Levying Special Taxes - Special Tax District No. # (Power Station)
+852	4	Levying Taxes - Special Tax District No. # (Pier # Condominiums)
+853	4	Master License Agreements - Crown Castle Fiber LLC - Install Wireless Telecommunications Equipment on SFMTA and SFPUC Poles - Revenue to Exceed $
+854	4	Master License Agreements - ExteNet Systems, LLC - Install Wireless Telecommunications Equipment on SFMTA and SFPUC Poles - Revenues to Exceed $
+855	4	Master License Agreements - GTE Mobilnet of California Limited Partnership, d/b/a Verizon Wireless - Install Wireless Telecommunications Equipment on SFMTA and SFPUC Poles - Revenue to Exceed $
+856	4	Master License Agreements - Mobilitie, LLC - Install Wireless Telecommunications Equipment on SFMTA and SFPUC Poles - Revenues to Exceed $
+857	4	Master License Agreements - New Cingular Wireless PCS, LLC (dba AT&T) - Install Wireless Telecommunications Equipment on SFMTA and SFPUC Poles - Revenue to Exceed $
+858	4	Mayoral Appointment, Historic Preservation Commission - Kate Black
+859	4	Mayoral Appointment, Police Commission - James Byrne
+860	4	Mayoral Appointment, Public Utilities Commission - Newsha Ajami
+861	4	Mayoral Appointment, Public Utilities Commission - Tim Paulson
+862	4	Mayoral Appointment, Retirement Board - Shruti Gandhi
+863	4	Mayoral Appointment, Successor Agency Commission (Commonly Known as Commission on Community Investment and Infrastructure) - Alex Ludlum
+864	4	Mayoral Appointment, Successor Agency Commission (Commonly Known as Commission on Community Investment and Infrastructure) - Bivett Brackett
+865	4	Mayoral Appointment, Successor Agency Commission (Commonly Known as Commission on Community Investment and Infrastructure) - Desi Danganan
+866	4	Mayoral Appointment, Successor Agency Commission (Commonly Known as Commission on Community Investment and Infrastructure) - Efrem Bycer
+867	4	Mayoral Appointment, Successor Agency Commission (Commonly Known as Commission on Community Investment and Infrastructure) - Kent Lim
+868	4	Mayoral Appointment, Successor Agency Commission (Commonly Known as Commission on Community Investment and Infrastructure) - Tamsen Drew
+869	4	Mayoral Appointment, Successor Agency Commission (Commonly Known as Commission on Community Investment and Infrastructure) - Vanessa Aquino
+870	4	Mayoral Appointment, Successor Agency Commission (commonly known as the Commission on Community Investment and Infrastructure) - Mahsa Hakimi
+871	4	Mayoral Reappointment - City Administrator - Carmen Chu
+872	4	Mayoral Reappointment, City Hall Preservation Advisory Commission - Ellen Schumer
+873	4	Mayoral Reappointment, City Hall Preservation Advisory Commission - Mae Woo
+874	4	Mayoral Reappointment, Entertainment Commission - Ben Bleiman
+875	4	Mayoral Reappointment, Historic Preservation Commission - Chris Foley
+876	4	Mayoral Reappointment, Historic Preservation Commission - Diane Matsuda
+877	4	Mayoral Reappointment, Juvenile Probation Commission - Andrea Shorter
+878	4	Mayoral Reappointment, Municipal Transportation Agency Board of Directors - Gwyneth Borden
+879	4	Mayoral Reappointment, Municipal Transportation Agency Board of Directors - Stephanie Cajina
+880	4	Mayoral Reappointment, Port Commission - Kimberly Brandon
+881	4	Mayoral Reappointment, Port Commission - William Adams
+882	4	Mayoral Reappointment, Successor Agency Commission (Commonly Known as Commission on Community Investment and Infrastructure) - Alex Ludlum
+883	4	Mayoral Reappointment, Successor Agency Commission (Commonly Known as Commission on Community Investment and Infrastructure) - Bivett Brackett
+884	4	Mayoral Reappointment, Successor Agency Commission (Commonly Known as Commission on Community Investment and Infrastructure) - Carolyn Ransom-Scott
+885	4	Mayoral Reappointment, Successor Agency Commission (Commonly Known as Commission on Community Investment and Infrastructure) - Mara Rosales
+886	4	Mayoral Reappointment, Successor Agency Commission (Commonly Known as Commission on Community Investment and Infrastructure) - Miguel Bustos
+887	4	Mayoral Reappointment, Treasure Island Development Authority Board of Directors - Linda Richardson
+888	4	Mayoral Reappointment, Treasure Island Development Authority Board of Directors - V. Fei Tsen
+889	4	Memorandum of Understanding - Citywide Amendment
+890	4	Memorandum of Understanding - Crafts Coalition
+891	4	Memorandum of Understanding - Retroactive - Urban Areas Security Initiative
+892	4	Military Equipment Use Policy and Additional Equipment Approval - # Annual Report
+893	4	Mission Bay South - Acceptance of Public Infrastructure Improvements - Official Sidewalk Width Change
+894	4	Modification to License and Services Agreement - Airport Research and Development Foundation - Application-Based Commercial Ground Transportation Trip Fee Collection Services - Aggregate Amount Not to Exceed $
+895	4	National Donate Life Month - April #
+896	4	National Gun Violence Awareness Day - June # , #
+897	4	National Health Center Week - August # through August # , #
+898	4	National Hepatitis Awareness Month - May #
+899	4	New Money Revenue Bonds - Municipal Transportation Agency - Not to Exceed $
+900	4	Notice of Potential Retroactive Approvals of Contracts for Energy-Related Products in # - Public Utilities Commission
+901	4	Office of Community Investment and Infrastructure, Operating as Successor Agency to the San Francisco Redevelopment Agency, Interim Budget - FY
+902	4	Official Advertising - San Francisco Print Media Co., dba San Francisco Examiner and San Francisco Chronicle - FY
+903	4	Opposing California Assembly Bill No. # (Ting) - Accessory Dwelling Units - Unless Amended
+904	4	Opposing California State Senate Bill No. # (Wiener) - Housing Development: Incentives - Unless Amended
+905	4	Park Code - Marina West Harbor Fees
+906	4	Park Code - Yerba Buena Gardens
+907	4	Permit Issuance - FIL Partners, LLC - Kezar Stadium - Golden City Football Club - Permit Fee Equal to $ Per Game Plus $ Per Hour
+908	4	Planning Code - Abandonment of Conditional Uses in North Beach Neighborhood Commercial District
+909	4	Planning Code - Accessory Dwelling Units; In-Lieu Fee for Street Trees
+910	4	Planning Code - Affordable Housing Bonus Programs
+911	4	Planning Code - Amendments to the Van Ness and Market Downtown Residential Special Use District
+912	4	Planning Code - Article # Reorganization; Technical and Other Amendments
+913	4	Planning Code - Authorize Increases to the Affordable Price and Income Limits for Certain Below Market Rate Owned Units and Require Amenities to be Resold with Unit
+914	4	Planning Code - Authorizing Interim Activities at Development Sites
+915	4	Planning Code - Building Standards
+916	4	Planning Code - Conditional Use Review and Approval Process - Priority Processing and Reduced Application Fee for Certain Uses of Commercial Space
+917	4	Planning Code - Deletion of Duplicate Definitions and Outdated Article # Zoning Control Tables
+918	4	Planning Code - Exceptions from Limits on Conversion of Production, Distribution and Repair, Institutional Community, and Arts Activities Uses in Eastern Neighborhood Plans Areas
+919	4	Planning Code - Exemption from Neighborhood Notification and Review Requirements for Grandfathered Medical Cannabis Dispensaries Converting to Cannabis Retail
+920	4	Planning Code - Housing Production
+921	4	Planning Code - Inclusionary Housing Program Updates
+922	4	Planning Code - Increasing the Transportation Sustainability Fee for Large Non-Residential Projects
+923	4	Planning Code - Jobs Housing Linkage Fee and Inclusionary Housing
+924	4	Planning Code - Permitting Parking in Driveways
+925	4	Planning Code - Potrero HOPE SF Special Use District
+926	4	Planning Code - Repealing Article # Regarding Oil and Gas Facilities
+927	4	Planning Code - Small Family Child Care in an Affordable Dwelling Unit on the Ground Floor
+928	4	Planning Code - Sunnydale HOPE SF Special Use District
+929	4	Planning Code - Temporary Use Authorizations
+930	4	Planning Code, Zoning Map - Treasure Island/Yerba Buena Island
+931	4	Planning, Administrative Codes - Accessory Dwelling Units
+932	4	Planning, Administrative Codes - North of Market Affordable Housing Fees and Citywide Affordable Housing Fund
+933	4	Planning, Administrative Codes - Tenant Protections Related to Residential Demolitions and Renovations
+934	4	Planning, Administrative, Subdivision Codes - Density Exception in Residential Districts
+935	4	Planning, Building Codes - Development Impact Fee Indexing, Deferral, and Waivers; Adoption of Nexus Study
+936	4	Planning, Building Codes - Penalties for Code Enforcement
+937	4	Planning, Building, Fire Codes - Small Business Month Fee Waivers Including for Awning Installation
+938	4	Police Code - Bicycle Chop Shops
+939	4	Police Code - Ceasing Acceptance of New Applications - Cannabis Retail Permits
+940	4	Police Code - Displaced Worker Protections Under Certain Service Contracts
+941	4	Police Code - Entertainment License Fee Updates
+942	4	Police Code - Fixed Place Outdoor Amplified Sound Permit and License Fees
+943	4	Police Code - Notice of Supermarket Closure
+944	4	Police Code - Refunds of Police Emergency Alarm Fees
+945	4	Police Code - Right to Reemployment Following Layoff Due to COVID- # Pandemic
+946	4	Police Code - Tenderloin and South of Market Retail Hours Restriction Pilot Program
+947	4	Police and Public Works Codes - Administrative Penalties and Fines for Illegal Dumping
+948	4	Police, Building Codes - Wage Theft Bonds
+949	4	Police, Housing Codes - Required Disclosure of Storm Flood Risks
+950	4	Preparation of Proponent Ballot Arguments and Rebuttal Ballot Arguments - June # , # , Statewide Direct Primary Election
+951	4	Professional Services Agreement - AECOM Technical Services, Inc. - Program Management Consultant Services - Not to Exceed $
+952	4	Proposed Interim Budget - Office of Community Investment and Infrastructure - Operating as Successor Agency to the San Francisco Redevelopment Agency - FY
+953	4	Proposed Interim Budget - Office of Community Investment and Infrastructure, Operating as Successor Agency to the San Francisco Redevelopment Agency - FY
+954	4	Proposing Adoption of Infrastructure Financing Plan - Infrastructure and Revitalization Financing District No. # (Hoedown Yard, Pier # )
+955	4	Public Works Code - Fee Modification
+956	4	Public Works Code - Fees for Autonomous Delivery Device Testing and Nighttime Work Permits
+957	4	Public Works Code - Personal Wireless Service Facility Site Permits
+958	4	Public Works Code - Repeal of Reclaimed Water Use Ordinance
+959	4	Public Works Code - Waiver of Temporary Street Space Occupancy Fee for Small Business Week Sidewalk Sales
+960	4	Public Works Code - Waiver of Temporary Street Space Occupancy Permit Fee - Small Business Week Sidewalk Sales
+961	4	Public Works Week - May # through May # , #
+962	4	Public Works, Subdivision Codes - Fee Modification and Waiver
+963	4	Radio Usage Agreement - University of California San Francisco - Trunked Radio System - Anticipated Revenue of $
+964	4	Real Property Lease - Anderson Enterprises, Inc. - Portion of Pier # Shipyard - Initial Monthly Rent of $
+965	4	Real Property Lease - NPU, Inc., a California Corporation - Old United States Mint - Participation Rent of # % of Gross Monthly Revenue
+966	4	Real Property Lease - Retroactive - Autodesk, Inc. - Pier # , Suite # , and Bays # - Monthly Rent $
+967	4	Real Property Lease - TEC of California, Inc. - Pier # - Not to Exceed $
+968	4	Real Property Lease - Various Owners - # 9th Street - $ in Initial Year
+969	4	Real Property Lease Amendment - Communication and Control, Inc. - Communication Services Facilities in Alameda County - Monthly Base Rent $
+970	4	Real Property Lease Amendment - Golden Gate National Parks Conservancy - Portion of Pier # and # - Establish the Amount of Unpaid Base Rent to be Paid to the Port - $ - Increase Original Construction Rent Credit to $
+971	4	Reappointment, Bay Area Air Quality Management District, Board of Directors - Supervisor Shamann Walton
+972	4	Reappointment, Bicycle Advisory Committee - Diane Serafini
+973	4	Reappointment, Bicycle Advisory Committee - Kristin Tieche
+974	4	Reappointment, Child Care Planning and Advisory Council - Elizabeth Winograd
+975	4	Reappointment, Commission of Animal Control and Welfare - Brian VanHorn
+976	4	Reappointment, Commission on the Aging Advisory Council - Margaret Graf
+977	4	Reappointment, Commission on the Aging Advisory Council - Morningstar Vancil
+978	4	Reappointment, Golden Gate Bridge, Highway and Transportation District, Board of Directors - Supervisor Catherine Stefani
+979	4	Reappointment, Redevelopment Successor Agency Oversight Board - Lydia Ely
+980	4	Reappointment, Successor Agency Commission (Commonly Known as Commission on Community Investment and Infrastructure) - Darshan Singh
+981	4	Reappointment, Successor Agency Commission (Commonly Known as Commission on Community Investment and Infrastructure) - Leah Pimentel
+982	4	Reappointment, Successor Agency Commission (Commonly Known as Commission on Community Investment and Infrastructure) - Miguel Bustos
+983	4	Recognizing Korean Chuseok Day - September # , #
+984	4	Recreation and Parks Month - July #
+985	4	Referendum Hearing - Health Code - Banning the Sale of Flavored Tobacco Products
+986	4	Release of Reserved Funds - Public Works - Trash Can Design and Deployment - $
+987	4	Renewal Agreement - Data Center Space and Services - # Gold Center Drive, Rancho Cordova, California - $ Annual Base Rent - Not to Exceed $
+988	4	Report of Assessment Costs - Building Code Enforcement Violations
+989	4	Resolution Urging the Mayor to Fund Specific City-Wide Homelessness Priorities in the FY and # Budgets
+990	4	Resolution Urging the Mayor to Fund Specific City-Wide Street Cleaning Priorities in the FY Budget
+991	4	Resolution of Formation - City and County of San Francisco Special Tax District No. # (Power Station)
+992	4	Resolution of Formation - Community Facilities District No. # (Treasure Island)
+993	4	Resolution of Formation - Establishing the Central SoMa Special Tax District No. #
+994	4	Resolution of Formation - Special Tax District No. # (Mission Rock Facilities and Services)
+995	4	Resolution of Formation - Special Tax District No. # (Pier # Condominiums)
+996	4	Resolution of Formation - Special Tax District No. # (Pier # Leased Properties)
+997	4	Resolution of Intention - Central Market Community Benefit District - Modify the Management Plan and Engineer’s Report
+998	4	Resolution of Intention - Discover Polk Community Benefit District
+999	4	Resolution of Intention - Disestablishment - Top of Broadway Community Benefit District - Annual Report FY
+1000	4	Resolution of Intention - Downtown Community Benefit District

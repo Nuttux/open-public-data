@@ -1,0 +1,250 @@
+1001	4	Resolution of Intention - Establishing the Central SoMa Special Tax District
+1002	4	Resolution of Intention - Establishing the Pier # Condominiums Special Tax District #
+1003	4	Resolution of Intention - Establishing the Pier # Leased Properties Special Tax District No. #
+1004	4	Resolution of Intention - Excelsior Community Benefit District
+1005	4	Resolution of Intention - Incurring Bonded Indebtedness and Other Debt for Pier # Condominiums Special Tax District # - Not to Exceed $
+1006	4	Resolution of Intention - Incurring Bonded Indebtedness and Other Debt for Pier # Leased Properties Tax District No. # - Not to Exceed $
+1007	4	Resolution of Intention - Incurring Bonded Indebtedness and Other Debt for the Central SoMa Special Tax District
+1008	4	Resolution of Intention - Japantown Community Benefit District
+1009	4	Resolution of Intention - Renew and Expand - Dogpatch & Northwest Potrero Hill Green Benefit District
+1010	4	Resolution of Intention - Renewal - Noe Valley Community Benefit District
+1011	4	Resolution of Intention - Renewal and Expansion - Fisherman’s Wharf Portside Community Benefit District
+1012	4	Resolution of Intention - Renewal and Expansion - North of Market/Tenderloin Community Benefit District
+1013	4	Resolution of Intention - Renewal and Expansion - Tourism Improvement District
+1014	4	Resolution of Intention - SoMa West Community Benefit District
+1015	4	Resolution of Intention to Add Territory to and Amend City and County of San Francisco Infrastructure and Revitalization Financing District No. # (Treasure Island)
+1016	4	Resolution of Intention to Amend Management Plan - Dogpatch & Northwest Potrero Hill Green Benefit District - COW on June # , # at # : # p.m.
+1017	4	Resolution of Intention to Establish Community Facilities District No. # (Treasure Island)
+1018	4	Resolution of Intention to Establish Infrastructure and Revitalization Financing District No. # (Treasure Island)
+1019	4	Resolution of Intention to Establish San Francisco Downtown Revitalization and Economic Recovery Financing District
+1020	4	Resolution of Intention to Form Project Area I (Mission Rock), and Sub-Project Areas I- # Through I- # Therein, of Infrastructure Financing District No. # (Port of San Francisco)
+1021	4	Resolution of Intention to Issue Bonds - Not To Exceed $ for Sub-Project Area G- # , $ for Sub-Project Area G- # , and $ for Sub-Project Area G- # - Infrastructure Financing District No. # (Port of San Francisco, Pier # )
+1022	4	Resolution of Intention to Issue Bonds Related to Project Area I of Port Infrastructure Financing District No. # (Port of San Francisco)
+1023	4	Resolution to Disestablish - Top of Broadway Community Benefit District
+1024	4	Resolution to Establish (Renew and Expand) - Fisherman’s Wharf Portside Community Benefit District
+1025	4	Resolution to Establish (Renew and Expand) - Tourism Improvement District
+1026	4	Resolution to Establish (Renew) - Noe Valley Community Benefit District
+1027	4	Resolution to Establish - Japantown Community Benefit District
+1028	4	Sale of General Obligation Bonds (Earthquake Safety and Emergency Response, # ) - Not to Exceed $
+1029	4	San Francisco Public Utilities Commission Power Revenue Bond and Other Forms of Indebtedness Issuance - Various Capital Projects Benefitting the Power Enterprise - Not to Exceed $
+1030	4	San Francisco Public Utilities Commission Public Service Easement Vacation Order - Parkmerced Development Project
+1031	4	San Francisco SPCA Day - April # , #
+1032	4	Setting the # Budget and Legislative Analyst Services Work Plan
+1033	4	Settlement of Grievance - Service Employees International Union, Local # - $
+1034	4	Settlement of Unlitigated Claims - A2Z Development USA, Inc. - $
+1035	4	Settlement of Unlitigated Claims - U.S. Department of Health and Human Services - City to Receive $
+1036	4	Settlement of Unlitigated Claims - Wing Lok (“Walter”) Wong; W. Wong Construction; Alternate Choice, LLC; Jaidin Consulting Group, LLC; and Jaidin International Ventures, LLC - City to Receive Settlement Payments and Credits Totaling $
+1037	4	Sole Source Agreement - Retroactive - Low Income Investment Fund - Child Care Facilities Fund and Technical Assistance - Not to Exceed $
+1038	4	Street Vacation and Conveyance - India Basin Project
+1039	4	Sublease Agreement - Retroactive - California State Lands Commission - Candlestick Point State Recreation Area - Vehicle Triage Center - Base Rent of $
+1040	4	Supplementing Resolution No. # to Authorize Issuance of Bonds by City and County of San Francisco Infrastructure and Revitalization Financing District No. # (Treasure Island) - Not to Exceed $
+1041	4	Support for the SOMA Pilipinas Gateway Cultural Marker
+1042	4	Supporting California State Assembly Bill No. # (Garcia) - The Repeal of the Spousal Rape Exception Act
+1043	4	Supporting California State Assembly Bill No. # (Lee) - Ellis Act Reform
+1044	4	Supporting California State Assembly Resolution No. # (Rivas) - Stuttering Awareness Week
+1045	4	Supporting California State Proposition # - Referendum to Support Ban on Single-Use Plastic Bags
+1046	4	Supporting California State Senate Bill # (Wiener, Stern) - Conservatorship: Chronic Homelessness and Substance Abuse Disorders
+1047	4	Supporting California State Senate Bill No. # (Wiener) - Residential Solar Energy Systems: Permitting
+1048	4	Supporting California State Senate Bill No. # (Wiener) - To Allow Supervised Therapeutic Use of Psychedelics
+1049	4	Supporting California State Senate Bill Nos. # , # , # , # , # , # , # , and # (Eggman) - Legislation Modernizing California's Behavioral Health Continuum
+1050	4	Supporting California State Senate Joint Resolution No. # (Caballero) - Disabled Adult Child Benefit
+1051	4	Supporting House Resolution No. # (Panetta) - Marriage Equality for Disabled Adults Act
+1052	4	Supporting House Resolution No. # - Condemning Duterte’s Drug War - Urging Congressional Hearing
+1053	4	Supporting United States House Resolution No. # (Deutch) - The Energy and Carbon Dividend Act of #
+1054	4	Supporting United States House Resolution No. # (Jayapal) - The Medicare For All Act
+1055	4	Supporting United States House Resolution No. # (Roybal-Allard) - American Dream and Promise Act of #
+1056	4	Supporting the California # Reparations Priority Bill Package
+1057	4	Supporting the Removal of the Pioneer Monument’s “Early Days” Sculpture - Urging the Board of Appeals to Rehear the Appeal Regarding the Pioneer Monument
+1058	4	Tax Exempt and Taxable Lease Revenue Commercial Paper Certificates of Participation (Series # and Series # ) - Capital Improvements and Equipment - Not to Exceed $
+1059	4	Transportation Code - Board of Supervisors Review of Certain Municipal Transportation Agency Decisions
+1060	4	Treasure Island/Yerba Buena Island - Delegation Related to Acceptance of Public Parks
+1061	4	Treasure Island/Yerba Buena Island - Ferry Terminal and Other TIDA Improvements
+1062	4	Urging California State Legislators to Allow for the Creation of a Public Banking Charter
+1063	4	Urging City Attorney and District Attorney to Investigate the Burning Man Party at Ocean Beach
+1064	4	Urging Congress to Enact H.R. # (Davis) - National Infrastructure Bank Act
+1065	4	Urging Contributions to Ameliorate the Effects of Slavery
+1066	4	Urging Funding of Specific City-Wide Priorities - FY and # Budget
+1067	4	Urging Governor Gavin Newsom and the California State Budget Committee to Restore Optional Adult Acupuncture Benefit in Medi-Cal to the California State Budget
+1068	4	Urging Recology Inc. to Immediately Appoint Employee Representatives to its Governing Board in Compliance with # ’s Proposition F
+1069	4	Urging the Association of Bay Area Governments in the Regional Housing Needs Allocation Process to Focus on Unmet Needs for Affordable Housing
+1070	4	Urging the California State Legislature to Amend the Revenue and Taxation Code to Enable San Francisco to Levy a Personal Income Tax and a Corporate Income Tax
+1071	4	Urging the Establishment of the LGBTQ Nightlife and Culture Working Group
+1072	4	Urging the Rent Board to Adopt Fair Guidelines for the Use of “Reasonable Reliance” in the Evaluation of Operating and Maintenance Pass-Throughs
+1073	4	Various Codes - Environmental Health Permit, Fee, and Penalties Revisions
+1074	4	Various Codes - Mobile Vendor Regulation
+1075	4	Various Codes - Regulation of Cannabis Businesses
+1076	4	Waiver of Municipal Code Provisions - City of Phoenix - Phoenix Sky Harbor International Airport - Used Compressed Natural Gas Transit Buses - Not to Exceed $
+1077	4	Waiver of Municipal Code Requirements for Public Utilities Commission Agreements with Caltrans
+1078	4	Water Purchase Agreement - Mission Rock Utilities - Water Purchase for Port-Owned Parks and Open Space at Mission Rock - Maximum Cost $
+1079	3	Accept and Expand Grant - Retroactive - California Department of Health Care Services - Capacity and Infrastructure, Transition, Expansion and Development (CITED) Round # Program - Intergovernmental Transfer (IGT) - $
+1080	3	Accept and Expand Grant - Retroactive - California Department of Health Care Services - Capacity and Infrastructure, Transition, Expansion and Development Program - Intergovernmental Transfer - $
+1081	3	Accept and Expend Grant - Blue Shield of California Foundation - Leveraging Collaboration to End Domestic Violence - Amendment to the Annual Salary Ordinance - FY and # - $
+1082	3	Accept and Expend Grant - Environmental Protection Agency - Clean Ports Program - $
+1083	3	Accept and Expend Grant - Federal Emergency Management Agency - Adequate Fire and Emergency Response Grant Program - Amend the Annual Salary Ordinance - $
+1084	3	Accept and Expend Grant - Fiscal Year # Housing Opportunities for Persons with AIDS Permanent Supportive Housing Renewal - $
+1085	3	Accept and Expend Grant - Retroactive - California Department of Insurance - Organized Automobile Fraud Activity Interdiction Program - FY and FY $
+1086	3	Accept and Expend Grant - Retroactive - California Department of Public Health Substance and Addiction Prevention Branch - Overdose Prevention Initiative - $
+1087	3	Accept and Expend Grant - Retroactive - California Department of Social Services - Complex Care Capacity Building Allocation - Not to Exceed $
+1088	3	Accept and Expend Grant - Retroactive - California Jobs First Catalyst Program - $
+1089	3	Accept and Expend Grant - Retroactive - State of California - Board of State and Community Corrections - County Resentencing Pilot Program - Amendment to the Annual Salary Ordinance - FY and # - $
+1090	3	Accept and Expend Grant - Retroactive - State of California - Opportunities for All Initiative - #CaliforniansForAll Youth Jobs Corps Program Grant - Up to $
+1091	3	Accept and Expend Grant - Retroactive - The California Department of Health Care Services - CalAIM JI PATH Round # Funding - San Francisco - $
+1092	3	Accept and Expend Grant - Retroactive - United States Department of Housing and Urban Development - Round # Application: Pathways to Removing Obstacles to Housing (PRO Housing) - $
+1093	3	Accept and Expend Grant - San Francisco Foundation - India Basin Waterfront Park - $
+1094	3	Accept and Expend Grant - San Francisco Special Events Committee - APEC-Related Overtime Costs - Total Amount of Up to $
+1095	3	Accept and Expend Grant and Amend the Annual Salary Ordinance - Retroactive - California Department of Public Health - California Home Visiting State General Fund Expansion - $
+1096	3	Accept and Expend Grant and Amend the Annual Salary Ordinance - Retroactive - Centers for Disease Control and Prevention - Coronavirus Disease # Public Health Crisis Response and the Public Health Workforce Development Supplemental Funding - $
+1097	3	Accept and Expend Grant and Amend the Annual Salary Ordinance - Retroactive - Crankstart Foundation - Healing Justice Initiative - $
+1098	3	Accepting the Draft San Francisco Reparations Plan of the African American Reparations Advisory Committee
+1099	3	Administrative Code - Acceptance of Gifts - SFO Museum
+1100	3	Administrative Code - Acquisition, Retention, and Use of Surveillance Technology
+1101	3	Administrative Code - Administration of Loans and Grants for Affordable Housing
+1102	3	Administrative Code - Affordable Housing Production and Preservation Fund
+1103	3	Administrative Code - Agreements with Government Entities
+1104	3	Administrative Code - Airport Revenue Bonds
+1105	3	Administrative Code - Amending Capital Expenditure Plan Reporting Requirement
+1106	3	Administrative Code - Amending Local Hiring Policy to Set Percentages
+1107	3	Administrative Code - Amending Regional Disaster Employee Support Program
+1108	3	Administrative Code - Animal Shelter Fund
+1109	3	Administrative Code - Annual Report on Job Growth and Housing Production
+1110	3	Administrative Code - Appointments of Deputy Fire Chief and Fire Department Physician
+1111	3	Administrative Code - Appraisals for Jurisdictional Transfers of Real Property for Affordable Housing
+1112	3	Administrative Code - Approval of Airport Surveillance Technology Policies
+1113	3	Administrative Code - Approval of Surveillance Technology Policy for Multiple City Departments
+1114	3	Administrative Code - Artist Housing Certification Program
+1115	3	Administrative Code - Arts Commission Traveling Exhibitions
+1116	3	Administrative Code - Assessment Appeals Board Fees
+1117	3	Administrative Code - Assessment Appeals Board Remote and Hybrid Remote Hearings and Conferences
+1118	3	Administrative Code - Authorizing Property Tax Refunds Without a Claim
+1119	3	Administrative Code - Biennial Food Security and Equity Report
+1120	3	Administrative Code - Board of Appeals Surcharges on Fees
+1121	3	Administrative Code - Board of Appeals Surcharges on Permit Fees
+1122	3	Administrative Code - Budget Savings Incentive Fund Expenditures
+1123	3	Administrative Code - COVID # Commercial Rent Relief Fund
+1124	3	Administrative Code - Cancellation of Delinquent Property Tax Penalties
+1125	3	Administrative Code - Cannabis Oversight Committee
+1126	3	Administrative Code - Cash Revolving Fund - City Administrator: Real Estate Division
+1127	3	Administrative Code - Castro Lesbian, Gay, Bisexual, Transgender, and Queer (LGBTQ) Cultural District
+1128	3	Administrative Code - Castro Lesbian, Gay, Bisexual, Transgender, and Queer Cultural District
+1129	3	Administrative Code - City Membership in Certain Organizations
+1130	3	Administrative Code - Citywide Project Labor Agreement - Public Work or Improvement Projects
+1131	3	Administrative Code - Civic Design Review Fee
+1132	3	Administrative Code - Cleaning Standards and Health Information Protocols for Single Room Occupancy Hotels
+1133	3	Administrative Code - Collection of Rent Board Fee
+1134	3	Administrative Code - Commissioners - Health Service System Eligibility
+1135	3	Administrative Code - Community Policing and Foot and Bike Patrols
+1136	3	Administrative Code - Compensation for Assessment Appeals Board Members
+1137	3	Administrative Code - Composition and Sunset Date - Family Violence Council
+1138	3	Administrative Code - Composition and Sunset Date - Single Room Occupancy Task Force
+1139	3	Administrative Code - Composition and Sunset Date of Family Violence Council
+1140	3	Administrative Code - Composition of Behavioral Health Commission
+1141	3	Administrative Code - Composition of Committee on Information Technology (COIT)
+1142	3	Administrative Code - Contracting Minimum Competitive Amount and Threshold Amount
+1143	3	Administrative Code - County Clerk Fee Amounts; Digital Signature Fee
+1144	3	Administrative Code - County Veterans Service Officer Role and Duties
+1145	3	Administrative Code - Criminal Justice System Fees and Penalties
+1146	3	Administrative Code - Debarment and Suspension of City Contractors
+1147	3	Administrative Code - Definition of Tourist or Transient Use Under Hotel Conversion Ordinance
+1148	3	Administrative Code - Delegating Authority for Applications for Discharge from Accountability for Taxes on Unsecured Property
+1149	3	Administrative Code - Delegating Tax Collector Authority to Administer Excess Proceeds Claims
+1150	3	Administrative Code - Department of Public Health - Providing Staff for the Behavioral Health Commission
+1151	3	Administrative Code - Departmental Overdose Prevention Policies
+1152	3	Administrative Code - Designation Under Health Insurance Portability and Accountability Act (HIPAA)
+1153	3	Administrative Code - Dignity Fund Oversight and Advisory Committee
+1154	3	Administrative Code - Disclosure of Spending in Retirement Board, Health Service Board and Retiree Health Care Trust Fund Board Elections
+1155	3	Administrative Code - Dissolving Inactive Advisory Bodies - Reauthorizing and Extending Sunset Date of Workforce Community Advisory Committee and Committee on City Workforce Alignment
+1156	3	Administrative Code - Dissolving Workforce Community Advisory Committee and Committee on City Workforce Alignment
+1157	3	Administrative Code - Due Date for Weights and Measurements Fees and Temporarily Waiving Fees for Taximeter Devices
+1158	3	Administrative Code - E-Bike Incentive Fund
+1159	3	Administrative Code - Early Care and Education for All
+1160	3	Administrative Code - Effect Of COVID- # On Commercial Leases
+1161	3	Administrative Code - Electric Facilities at Development Projects
+1162	3	Administrative Code - Ellis Act Evictions
+1163	3	Administrative Code - Emergency Contracts for Repairs
+1164	3	Administrative Code - Employee Donations to Bay Area Law Enforcement Assistance Fund
+1165	3	Administrative Code - Employee Donations to Protecting San Francisco
+1166	3	Administrative Code - Employee Donations to San Francisco Firefighter and EMS Behavioral Health Foundation
+1167	3	Administrative Code - Employee Regional Disaster Support Program
+1168	3	Administrative Code - Enhanced Infrastructure Financing District Public Financing Authority No. #
+1169	3	Administrative Code - Establish Low Carbon Fuel Standard Credits Sales Fund - Authorizing Agreements to Sell Low Carbon Fuel Standard Credits - Public Utilities Commission
+1170	3	Administrative Code - Establish a Trial Local Business Enterprise Joint Venture and Core Discipline Incentive Program
+1171	3	Administrative Code - Establishing African American Reparations Advisory Committee
+1172	3	Administrative Code - Establishing Graffiti Advisory Board
+1173	3	Administrative Code - Establishing the Board of Directors - San Francisco Downtown Revitalization and Economic Recovery Financing District
+1174	3	Administrative Code - Establishing the Students and Families RISE (Recovery with Inclusive and Successful Enrichment) Working Group
+1175	3	Administrative Code - Establishing the Sunset Chinese Cultural District
+1176	3	Administrative Code - Eviction of Commercial Tenants for Unpaid Rent Due to COVID- # Financial Impacts
+1177	3	Administrative Code - Exempt Guaranteed Income From County Adult Assistance Program Determinations
+1178	3	Administrative Code - Exempting Legacy Business Assistance Program from City Grant Requirements
+1179	3	Administrative Code - Extending Sunset Date of Contracting Waivers for Homeless Services
+1180	3	Administrative Code - Extending Sunset Date of Sentencing Commission
+1181	3	Administrative Code - Extension of Pedestrian Safety Advisory Committee
+1182	3	Administrative Code - Extension of Shelter Monitoring Committee
+1183	3	Administrative Code - Extension of Sunset Date and Deadline for Required Reports of Reinvestment Working Group
+1184	3	Administrative Code - Extension of Termination Date - Department of Public Health Managed Care Contracts
+1185	3	Administrative Code - Extension of the Public Utilities Revenue Bond Oversight Committee
+1186	3	Administrative Code - Family Violence Council
+1187	3	Administrative Code - Farmers’ Markets and Flea Markets
+1188	3	Administrative Code - Fee for Credit and Debit Card Transactions
+1189	3	Administrative Code - Fees for Farmers’ Markets and the Alemany Flea Market
+1190	3	Administrative Code - Fire Victims Assistance Fund
+1191	3	Administrative Code - Firearm and Ammunition Procurement
+1192	3	Administrative Code - Firearms and Ammunition Procurement Policy
+1193	3	Administrative Code - Firefighter Personal Protective Equipment Containing PFAS
+1194	3	Administrative Code - Firefighters Cancer Prevention Foundation
+1195	3	Administrative Code - Floodplain Management and Flood Insurance Requirements
+1196	3	Administrative Code - Food Empowerment Market Fund
+1197	3	Administrative Code - Free Muni Pilot Program Fund
+1198	3	Administrative Code - Graffiti Advisory Board - Extend Sunset Date and Annual Report
+1199	3	Administrative Code - Guaranteed Income Advisory Group
+1200	3	Administrative Code - Health Service System Eligibility for Members of New Commission
+1201	3	Administrative Code - Homeward Bound Program for Individuals Experiencing or Formerly Experienced Homelessness
+1202	3	Administrative Code - Housing Innovation Program
+1203	3	Administrative Code - Housing Inventory
+1204	3	Administrative Code - Housing Needs Assessment and Production Pipeline Reports - Seniors and People with Disabilities
+1205	3	Administrative Code - Implicit Bias Training - Department Heads and Commissioners
+1206	3	Administrative Code - Including Military Service in Definition of “Public Service” for Retirement Service Credit Purchases
+1207	3	Administrative Code - Increasing Compensation - Assessment Appeals Board Members
+1208	3	Administrative Code - Infant and Toddler Early Learning Scholarship Fund
+1209	3	Administrative Code - Italian American Heritage Day
+1210	3	Administrative Code - Kindergarten to College Fund
+1211	3	Administrative Code - Legacy Business Assistance Program
+1212	3	Administrative Code - Legislative Management System Software Licenses and Fund
+1213	3	Administrative Code - Library Fines and Fees
+1214	3	Administrative Code - Library Laureate Programs
+1215	3	Administrative Code - Library Read to Recovery Program
+1216	3	Administrative Code - Low-Value Property Tax Exemptions
+1217	3	Administrative Code - Mayoral Question-and-Answer Session at the Board of Supervisors
+1218	3	Administrative Code - Mayor’s Selection of Designees in Matters Regarding Contracting and Other Matters
+1219	3	Administrative Code - Medical Examiner Fees
+1220	3	Administrative Code - Mental Health Board/Behavioral Health Commission
+1221	3	Administrative Code - Mental Health SF
+1222	3	Administrative Code - Mental Health SF Implementation Working Group
+1223	3	Administrative Code - Mid-Year Reports on Department Overtime Expenditures
+1224	3	Administrative Code - Naming Second Floor Rotunda in City Hall for Buck Delventhal
+1225	3	Administrative Code - Naming Terminal # at the San Francisco International Airport After Harvey Milk
+1226	3	Administrative Code - Naming the City Hall Press Room for Barbara A. Taylor
+1227	3	Administrative Code - Neighborhood Anchor Business Registry
+1228	3	Administrative Code - Non-Cooperation with Identity-Based Registry
+1229	3	Administrative Code - Office of Cannabis, Criminal History Information Access and Inquiries
+1230	3	Administrative Code - Office of Racial Equity
+1231	3	Administrative Code - Official Animal - Wild Parrot
+1232	3	Administrative Code - Official Band - San Francisco Lesbian/Gay Freedom Band
+1233	3	Administrative Code - Our City, Our Home Oversight Committee
+1234	3	Administrative Code - Outreach for Tax-Defaulted Properties
+1235	3	Administrative Code - Pedestrian Safety Advisory Committee
+1236	3	Administrative Code - Policies Authorizing Parental Leave and Teleconferencing During Leave by Members of the Board of Supervisors and City Boards and Commissions
+1237	3	Administrative Code - Power to Sell for Nonresidential Commercial Properties
+1238	3	Administrative Code - Preparation of the City Budget and City Policy Regarding Multi-Year Grants
+1239	3	Administrative Code - Prioritizing # % Affordable Housing Projects
+1240	3	Administrative Code - Priority for Veterans in City Affordable Housing Programs
+1241	3	Administrative Code - Process for Establishment of Cultural Districts
+1242	3	Administrative Code - Procurement of Goods and Services
+1243	3	Administrative Code - Procuring Behavioral Health and Public Health Residential Care and Treatment Services
+1244	3	Administrative Code - Protections for Occupants of Residential Hotels During COVID- # Pandemic
+1245	3	Administrative Code - Public Health Group Purchasing Organizations
+1246	3	Administrative Code - Purchase of Fire Apparatus
+1247	3	Administrative Code - Rapid Rehousing Policy
+1248	3	Administrative Code - Real Time Investigation Center - Waiving Solicitation Requirements For Procurements Using Gift Funds From San Francisco Police Community Foundation
+1249	3	Administrative Code - Reauthorizing Sentencing Commission
+1250	3	Administrative Code - Reentry Council - Eligibility Age Change

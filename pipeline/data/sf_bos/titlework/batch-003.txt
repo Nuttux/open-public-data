@@ -1,0 +1,250 @@
+501	5	Environment Code - Antibiotic Use in Food Animals
+502	5	Fee and Tax Relief for Certain Businesses
+503	5	Filicide Awareness Week - April # through April # , #
+504	5	General Plan - India Basin Mixed-Use Project
+505	5	General Plan Amendments - Implementing the City’s Vision Zero Policy Regarding Pedestrian Safety
+506	5	Grant Agreement Amendment - Institute on Aging - Community Living Fund Program - Not to Exceed $
+507	5	Grant Agreement Amendment - Retroactive - San Francisco-Marin Food Bank - Citywide Grocery Access - Not to Exceed $
+508	5	Health Code - Massage Practitioner and Business Permits
+509	5	Hearing - Appeal of Conditional Use Authorization Approval - # 18th Street
+510	5	Hearing - Committee of the Whole - Appropriation - State and Federal Revenue Risk Reserve - Human Services Agency - CalFresh (SNAP) Benefits Backfill - $ - FY November # , # , at # : # p.m.
+511	5	Hearing - Committee of the Whole - Approving Submission of Sales Tax to Support Caltrain Service - July # , # , at # : # p.m.
+512	5	Hearing - Committee of the Whole - Report of Assessment Costs - Blighted Properties - May # , # , at # : # p.m.
+513	5	Hearing - Committee of the Whole - Update on Findings and Recommendations Regarding Law Enforcement Practices - January # , # , at # : # p.m.
+514	5	Hearing - Initiative Ordinance - Administrative Code - Acquisition and Use of Surveillance Technology
+515	5	Hearing - Mayor's Proposed Interim Budget for Departments - FY and #
+516	5	Initiative Ordinance - Administrative Code - Mental Health SF
+517	5	Interim Zoning Controls - Indoor Agriculture
+518	5	Lease Agreement - BAFC Team Operator, LLC - Training Facilities - Monthly Rent $
+519	5	Lease Amendment No. # - World Duty Free Group North America, LLP - Terminal # Newsstands, Coffee and Specialty Store Lease No. # - Reduction of Premises - Reduction in the Minimum Annual Guarantee of $
+520	5	Levying Special Taxes - Special Tax District No. # (Mission Rock Facilities and Services)
+521	5	Master Lease Amendment - United States Navy - Treasure Island Childcare
+522	5	Mayoral Appointment, Successor Redevelopment Agency Oversight Board - Moses Corrette
+523	5	Mayoral Reappointment, Municipal Transportation Agency Board of Directors - Amanda Eaken
+524	5	Mayoral Reappointment, Municipal Transportation Agency Board of Directors - Cristina Rubke
+525	5	Mayoral Reappointment, Police Commission - Joseph Marshall
+526	5	Memorandum of Understanding - Friends and Foundation of the San Francisco Public Library
+527	5	Memorandum of Understanding - Retroactive - California Department of State Hospitals and California Mental Health Services Authority - State Hospital Beds - Not to Exceed $
+528	5	Memorandum of Understanding - The San Francisco General Hospital Foundation
+529	5	Memorandum of Understanding - The San Francisco Public Health Foundation
+530	5	National Sexual Assault Awareness and Prevention Month - April #
+531	5	Park Code - Marina Fees
+532	5	Planning Code - Adaptive Reuse of Historic Buildings
+533	5	Planning Code - Development Impact Fees and Requirements for Non-Residential to Residential Conversion Projects
+534	5	Planning Code - Establish Fee for Monitoring of Student Housing - Mayor’s Office of Housing and Community Development
+535	5	Planning Code - HOME-SF and # % Affordable Housing Bonus Program
+536	5	Planning Code - Inclusionary Housing Ordinance
+537	5	Planning, Administrative Codes - HOME-SF
+538	5	Planning, Administrative Codes - Zoning Controls and Fees in the C- # R (Downtown Retail) District
+539	5	Planning, Building Codes - Interim Housing in Hotels and Motels
+540	5	Planning, Business and Tax Regulations, Police Codes - Small Business Recovery Act
+541	5	Planning, Various Codes - Technical Corrections
+542	5	Police Code - Acceptance of Cash by Brick-and-Mortar Businesses
+543	5	Police Code - Rental Car Disclosure Requirements
+544	5	Police Code - Tenderloin Retail Hours Restriction Pilot Program
+545	5	Police and Health Codes - Regulation of Cannabis Businesses
+546	5	Police, Business and Tax Regulations, Transportation Codes - Event-Related Cannabis Permits - Application Fee
+547	5	Reappointment, Commission on the Aging Advisory Council - Allen Cooper
+548	5	Resolution Urging Transportation Operators Demonstrate Labor Harmony Conditions as Part of the Transportation Management Plan
+549	5	Resolution to Establish (Renew and Expand) - Civic Center Community Benefit District
+550	5	Revenue Agreement Amendment - JC Decaux San Francisco, LLC - Extending Term to October # , #
+551	5	Sale Agreement - City of San Bruno - # Square Feet of Portion of APNs # and # in San Bruno, San Mateo County - $
+552	5	Sale Agreement - Santa Clara Valley Water District - # Square Feet of Portion of APN # in Sunnyvale, Santa Clara County - $
+553	5	Sale of Real Property - Sale of Parcel # to the City of South San Francisco - Exempt Surplus Land - Not to Exceed $
+554	5	Software Service Agreement Amendment - Yardi Systems, Inc. - Real Property/Asset Management Program, Data Hosting Services - Not to Exceed $
+555	5	Supporting The Justice for Renters Act - California State Proposition - November # , # Ballot
+556	5	Temporary Waivers of Permit Fees for Café Tables and Chairs and Display Merchandise in the Public Right-of-Way, and Use Fees for Parklets
+557	5	Various Codes - Baby Diaper-Changing Accommodations
+558	5	Various Codes - Greater Downtown Community Benefit District Master Permitting for Entertainment Activation Program
+559	5	Waiving Competitive Process Requirement - Lease Agreement - Amoura International, Inc. - Interim Employee Café
+560	4	# 22Campaign and Governmental Conduct Code - Behested Payments Exceptions
+561	4	Accept and Expend Grant - California Department of Housing and Community Development Infill Infrastructure Grant Program - Treasure Island - $
+562	4	Accept and Expend Grant - California Public Utilities Commission - US Department of Treasury - Last Mile Federal Funding Account - $
+563	4	Accept and Expend Grant - Retroactive - Blue Shield California Foundation - Leveraging Collaboratives to End Domestic Violence Program - $
+564	4	Accept and Expend Grant - Retroactive - California Department of Industrial Relations, Labor Commissioner’s Office - Workers’ Rights Enforcement Grant Program - $
+565	4	Accept and Expend Grant - Retroactive - TECH Clean California Quick Start Scaling Grant - Clean Air and Repair for Family Child Care - $
+566	4	Accept and Expend Grant - Retroactive - United States Department of Energy - Buildings Upgrade Challenge, Phase # - $
+567	4	Accept and Expend Grant and Amend the Annual Salary Ordinance - Retroactive - Board of State and Community Corrections - Resentencing Pilot Program - $
+568	4	Accept and Expend Grant and Amend the Annual Salary Ordinance - Retroactive - California Department of Public Health - Future of Public Health Funding - $
+569	4	Accept and Expend In-Kind Gift - Retroactive - CORO Northern California - Consulting Services - Valued at $
+570	4	Accept and Expend In-Kind Gift - Retroactive - Consulting Services - Various Providers - Valued at $
+571	4	Administrative Code - Artificial Intelligence Inventory
+572	4	Administrative Code - Arts Commission Contracting Authority
+573	4	Administrative Code - Assessor-Recorder Fees
+574	4	Administrative Code - Balboa Reservoir Community Advisory Committee
+575	4	Administrative Code - Board of Appeals Surcharges - Permit Fees
+576	4	Administrative Code - Budget Approval Process
+577	4	Administrative Code - Cash Revolving Fund - District Attorney’s Office - $
+578	4	Administrative Code - Catastrophic Illness Programs
+579	4	Administrative Code - City College Financial Assistance Fund - Free City College Oversight Committee
+580	4	Administrative Code - City Hall Short Term License Fees
+581	4	Administrative Code - Clarifying Duties of Office of Victim and Witness Rights (OVWR); Moving Office of Sexual Harassment and Assault Response and Prevention to OVWR
+582	4	Administrative Code - Compliance with Right to Return for Temporarily Displaced Tenants
+583	4	Administrative Code - Cooperative Living Opportunities for Mental Health Loan Fund and Program
+584	4	Administrative Code - Cooperative Purchasing, Ancillary Installation Services
+585	4	Administrative Code - County Clerk’s Fees
+586	4	Administrative Code - Definitions of Prohibited Discrimination in Contracting Ordinances and Human Rights Commission Ordinance
+587	4	Administrative Code - Early Education Economic Recovery Program
+588	4	Administrative Code - Eliminating Annual Joint Fundraising Drive
+589	4	Administrative Code - Eliminating Budget Savings Incentive Fund
+590	4	Administrative Code - Eliminating Fines for Overdue Library Materials
+591	4	Administrative Code - Equitable Citywide Access to Shelters, Transitional Housing, and Behavioral Health Services
+592	4	Administrative Code - Establishing an Office of Cannabis and Extending the Term of the Cannabis State Legalization Task Force
+593	4	Administrative Code - Establishing the Enhanced Infrastructure Financing District Public Financing Authority No. #
+594	4	Administrative Code - Extending Eviction Control to Units Constructed After #
+595	4	Administrative Code - Funding, Acquisition, and Use of Certain Sheriff’s Department Equipment
+596	4	Administrative Code - General Obligation Bond Pass-Throughs to Tenants
+597	4	Administrative Code - Harassment of Tenants in Single-Family Units Through Rent Increases
+598	4	Administrative Code - Heart Trouble and Pneumonia Presumptions for Fire and Police Retirement Benefits
+599	4	Administrative Code - Labor Peace Agreements for Excursion Vessel Operations Under Lease with the Port
+600	4	Administrative Code - Landlord Operating and Maintenance Expenses
+601	4	Administrative Code - Mayoral Appearance at the Board of Supervisors
+602	4	Administrative Code - Mayor’s Fund for the Homeless and Navigation Partnerships Fund
+603	4	Administrative Code - Minimum Compensation Ordinance
+604	4	Administrative Code - Monitoring of Nonprofits that Contract with the City
+605	4	Administrative Code - Owner Move-In Evictions and Other Landlord-Tenant Matters
+606	4	Administrative Code - Planning Code Enforcement Fund
+607	4	Administrative Code - Police Officers Questioning Youth
+608	4	Administrative Code - Police Surveillance Technology Policy for Electronic Location Tracking Devices
+609	4	Administrative Code - Police Vehicle Theft Crime Fund Surcharge
+610	4	Administrative Code - Prohibition on Leasing for the Extraction of Fossil Fuels
+611	4	Administrative Code - Reentry Council; Pretrial Services Seat
+612	4	Administrative Code - Removing Construction Agreements from the Prohibition on Contracting in States with Certain Types of Discriminatory Laws
+613	4	Administrative Code - Repealing Maddy Emergency Medical Services Fund
+614	4	Administrative Code - San Francisco City College Enrollment Fee Assistance Fund
+615	4	Administrative Code - San Francisco Special Tax Financing Law - Central SoMa
+616	4	Administrative Code - Selection of Contractors From a Pre-Qualified List and Under As-Needed Public Works Professional Services Contract Reform
+617	4	Administrative Code - Surveillance Technology Policy for Police Department Use of Non-City Entity Surveillance Cameras
+618	4	Administrative Code - Technology Commodities and Services Procurements
+619	4	Administrative Code - Tenant Assistance Fund for Hazardous Housing
+620	4	Administrative Code - Tenant Opportunity To Cure; Eviction Protections
+621	4	Administrative Code - Transferring Data Collection Oversight Duties from the City Administrator to the Human Rights Commission
+622	4	Administrative Code - Treasure Island Development Authority
+623	4	Administrative Code - Use of Unassisted Aerial Vehicles
+624	4	Administrative Code - Vehicle Registration Fees and Police Fingerprint Identification Fund
+625	4	Administrative Code and Amending Ordinance No. # - Deferring Payments to and Use of the # Jones Affordable Housing Fund
+626	4	Administrative and Environment Codes - Reducing Reporting Burdens
+627	4	Administrative, Campaign and Governmental Conduct Codes - Administrative Support for Sanitation and Streets Department; Form # Filing Requirements for Public Works Commission, Sanitation and Streets Commission, and Director of Sanitation and Streets
+628	4	Administrative, Health Codes - Mechanical Street Sweeping Performance; Refuse Receptacles
+629	4	Administrative, Labor and Employment Codes - City Contract Processes and Requirements
+630	4	Administrative, Planning Codes - South of Market Community Advisory Committee
+631	4	Administrative, Public Works Codes - Recording of Jurisdictional Transfers and Street Vacations
+632	4	Administrative, Public Works, Police Codes - Places for People Program; Permit Fee
+633	4	Adopt the Hazards and Climate Resilience Plan as the # Local Hazard Mitigation Plan
+634	4	Adoption of Findings to Reverse the Municipal Transportation Agency Decision - Overnight Recreational Large Vehicle Parking Restrictions
+635	4	Afghan American Heritage Month - August #
+636	4	Agreement - Retroactive - Bay Area Community Resources - A Home Away From Homelessness; A.P. Giannini Beacon; Bret Harte Beacon; Hoover Beacon; Paul Revere Beacon; Summer Learning; and Latino Task Force After School - Not to Exceed $
+637	4	Agreement - Retroactive - Community Youth Center of San Francisco - Academic Support; Beacon at Aptos; Year-Round & Summer Programs; and Teen Arts - Not to Exceed $
+638	4	Agreement - Retroactive - Community Youth Center of San Francisco - High School Partnerships; Job Readiness for English Language Learners; Leadership; and Young Adult Worklink - Not to Exceed $
+639	4	Agreement - Retroactive - Instituto Familiar de la Raza Inc - Roadmap to Peace Collaborative and Roadmap to Peace School Crisis Supports - Not to Exceed $
+640	4	Agreement - Retroactive - Richmond District Neighborhood Ctr Inc - Defining Success: Academic Support Continuum, 6th-12th Grade; Beacon Pathways - Presidio MS; Beacon Pathways - Roosevelt MS; Multi-Cultural Arts Program: K- # Art Pathway - NTE $
+641	4	Agreement - Solaris Bus US, Inc. - Purchase of Battery-Electric Buses - Anticipated Expenditure of $
+642	4	Agreement Amendment - AT&T dba AT&T Mobility - Public Safety-Grade Wireless Communications Services - Not to Exceed $
+643	4	Agreement Amendment - Retroactive - California Independent System Operator - Scheduling Electrical Transmissions - Not to Exceed $
+644	4	Agreement Amendment - San Francisco AIDS Foundation - HIV Prevention - City-Wide Syringe Access and Disposal Services - Not to Exceed $
+645	4	Agreement Amendment - Transbay Joint Powers Authority - Municipal Transportation Agency - Transbay Transit Center Program Services - No Additional Cost
+646	4	Airport Contract Modification - Hallmark Aviation Services, L.P. - Airport Information and Guest Assistance Services - Not to Exceed $
+647	4	Airport Professional Services Agreement Modification - Vanderlande Industries Inc. - Operate, Maintain and Repair Airport-Owned Passenger Boarding Bridges and Baggage Handling Systems - Not to Exceed $
+648	4	Amending the Budget and Legislative Analyst Services Contract - Harvey M. Rose Associates, LLC
+649	4	Amendment to Disposition and Development Agreement - FC Pier # , LLC - Pier #
+650	4	Annual Salary Ordinance Amendment - COVID- # Military Service Qualifying for Supplementation of Military Pay
+651	4	Apply for Grant Application - Retroactive - Health Resources Services Administration - Ryan White Act HIV/AIDS Emergency Relief Grant Program - $
+652	4	Apply for Grants - California Department of Resources Recycling and Recovery Funds
+653	4	Apply for and Accept Funds Allocation - California Department of Housing and Community Development - Child Welfare Agency Allocation - Housing Navigator Program - Up to $
+654	4	Apply for and Accept Funds Allocation - California Department of Housing and Community Development - Child Welfare Agency Allocation - Transitional Housing Program - Up to $
+655	4	Apply for, Accept, and Expend Grant - U.S. Department of Housing and Urban Development - Community Development Block Grant Program - $ - FY
+656	4	Apply for, Accept, and Expend Grant - United States Department of Housing and Urban Development - Community Development Block Grant Program - $ - FY
+657	4	Appointment, Bay Conservation and Development Commission - Supervisor Matt Dorsey
+658	4	Appointment, California State Association of Counties - Supervisor Malia Cohen
+659	4	Appointment, California State Association of Counties - Supervisor Rafael Mandelman
+660	4	Appointment, Cannabis Oversight Committee - Ryan McGilley
+661	4	Appointment, Local Agency Formation Commission - Supervisor Dean Preston
+662	4	Appointment, South of Market Community Planning Advisory Committee - Rob Jaques
+663	4	Appointment, Treasury Oversight Committee - Meghan Wallace
+664	4	Appointments, Police Commission - Cindy Elias and John Hamasaki
+665	4	Appropriation - $ State Settlement Award to the Office of Public Defender - FY
+666	4	Appropriation - $ in Proceeds from Revenue Bonds, Hetch Hetchy Revenue, Cap and Trade Allowance for Hetch Hetchy Water and Power Capital Improvements - FY
+667	4	Appropriation - Assessment Appeals Fee Revenue - $ - Board of Supervisors - FY
+668	4	Appropriation - California Public Utilities Commission Revenue - San Francisco Public Utilities Commission - Community Food Service Energy Efficiency Program - $ - FY
+669	4	Appropriation - Cigarette Litter Abatement Fees - Public Works Street Cleaning Program - $ - FY
+670	4	Appropriation - Fiscal Cliff Reserve $ - Mayor’s Office of Housing and Community Development - $ for Rent Relief and $ for Social Housing - FY
+671	4	Appropriation - GO Bond Proceeds - Transportation & Road Improvement 2021C - MTA - $ - Health & Recovery 2021D - RPD, HSH, DPH, DPW - $ - Earthquake Safety & Emergency Response 2021E - DPW and PUC - $ - FY
+672	4	Appropriation - General Reserve - Department of Building Inspection - Accessory Dwelling Unit Permit Services - $ - FY
+673	4	Appropriation - General Reserve - Fund Immigration-Related Legal Services - FY $
+674	4	Appropriation - Proceeds from CleanPowerSF Revenue and California Public Utilities Commission Grant Funds for CleanPowerSF Capital Improvements - $ - FY
+675	4	Appropriation - Property Tax Revenue $ - Mayor’s Office of Housing and Community Development - $ for Rent Relief - $ for Social Housing - FY
+676	4	Appropriation - Property Tax Revenue - $ to the Department of Children, Youth and Their Families - Youth Learning Initiatives - FY
+677	4	Appropriation - Refunding Certificates of Participation - $ - Deappropriation - Series 2009A and 2009B - $ - Re-Appropriation - Series # R1 - $ - FY
+678	4	Appropriation and De-Appropriation - Department of Public Works and City Planning Department - Department of Public Works - Buena Vista Horace Mann K- # Community School - $ - FY
+679	4	Appropriation and De-Appropriation - Expenditures of $ Supporting District # Participatory Budgeting and Disaster Planning Projects - Expenditure of $ Supporting District # Vision Zero Projects - FY
+680	4	Appropriation and De-Appropriation - Expenditures of $ Supporting Districts # , # , and # Participatory Budgeting Projects - FY
+681	4	Appropriations - Port Commission - $ - Public Utilities Commission - $ - FY
+682	4	Approval of Retroactive # Day Extension for Planning Commission Review of Planning Code - Electric Vehicle Charging Locations (File No. # )
+683	4	Approval of Retroactive # Day Extension for Planning Commission Review of Planning Code - HOME-SF (File No. # )
+684	4	Approval of a # Day Extension for Planning Commission Review of Exemption from Density Limits for Affordable and Unauthorized Units; Residential Care Facilities (File No. # )
+685	4	Approval of a # Day Extension for Planning Commission Review of Planning Code - Formula Retail (File No. # )
+686	4	Approval of a # Day Extension for Planning Commission Review of Planning, Building Codes - Controls on Residential Demolition, Merger, Conversion, and Alteration (File No. # )
+687	4	Approval of a # Day Extension for Planning Commission Review of an Ordinance (File No. # ) Allowing Scooter Parking In Certain Designated Parking Spaces
+688	4	Approval of a # Day Extension for Planning Commission Review of an Ordinance Exempting Certain Historic Landmarks From November # Proposition X (File No. # )
+689	4	Approval of a # Day Extension for Planning Commission Review of an Ordinance amending the Planning Code - Dwelling Unit Density Exception for Corner Lots in Residential Districts (File No. # )
+690	4	Approval of a # Day Retroactive Extension for Building Inspection Commission Review of Accessory Dwelling Unit Fee Deferral (File No. # )
+691	4	Approval of a # Month Extension for Planning Commission Review of an Ordinance Amending the Planning Code to Provide a Density Limit Exception to Permit Up to Four Dwelling Units Per Lot in RH (Residential, House) Zoning Districts (File No. # )
+692	4	Approval of a Retroactive # Day Extension for Planning Commission Review of Family Housing Opportunity Special Use District (File No. # )
+693	4	Approving Infrastructure and Revitalization Financing Plan - Infrastructure and Revitalization Financing District No. # (Hoedown Yard, Pier # )
+694	4	Arbor Week - March # , # , through March # , #
+695	4	Armenian Genocide Commemoration Day - April # , # - Urging Passage of United States House Resolution No. # and Senate Resolution No. #
+696	4	Authorizing Issuance of Bonds Related to Infrastructure and Revitalization Financing District No. # (Hoedown Yard, Pier # ) - Not to Exceed $
+697	4	Authorizing Preparation of Proponent/Opponent Ballot Arguments and Rebuttal Ballot Arguments for Submittal to the Voters at the June # , # , Consolidated Primary Election
+698	4	Authorizing Tax-Exempt and/or Taxable Certificates of Participation - Multiple Capital Improvement Projects - Not to Exceed $
+699	4	Authorizing and Ratifying Issuance of Bonded Indebtedness and Other Debt - Special Tax District No. # (Mission Rock Facilities and Services) - Not to Exceed $
+700	4	Authorizing the Director of the Office of Public Finance to Prepare an Infrastructure Financing Plan - Infrastructure and Revitalization Financing District No. # (Treasure Island)
+701	4	Authorizing the Issuance of Special Tax Bonds - Improvement Area No. # of the City and County of San Francisco Community Facilities District No. # (Treasure Island) - Not to Exceed Aggregate Principal Amount of $
+702	4	Authorizing the Sunshine Ordinance Task Force to Meet in June #
+703	4	Behested Payment Waiver - Core Initiatives
+704	4	Behested Payment Waiver - Temporary Shelter and Homeless Services
+705	4	Board Policy Prioritizing Municipal Affairs
+706	4	Building Code - Fee Waiver for # % Affordable Housing and Accessory Dwelling Units
+707	4	Building Code - Increase Fees
+708	4	Building Code - Slope Protection Act
+709	4	Building Code - Streamlining Site Permit Review
+710	4	Building, Planning Codes - Existing Awning, Sign, and Gate Amnesty Program; Design Standards for Gates, Railings, and Grillwork
+711	4	Business Registration Fee - Weights and Measures and Point of Sale Station Fees
+712	4	Business and Tax Regulations Code - DPH Cannabis Business Inspection Fees
+713	4	Business and Tax Regulations Code - Early Care and Education Commercial Rents Tax Baseline
+714	4	Business and Tax Regulations Code - Empty Homes Tax Suspension Pending Litigation
+715	4	Business and Tax Regulations Code - Gross Receipts Tax Rate Increase Postponement and Credits for Opening City Location
+716	4	Business and Tax Regulations Code - Tax Rate Changes for Telecommunications Business Activities
+717	4	Business and Tax Regulations Code - Waiver of Permit, License, and Business Registration Fees for Certain Small Businesses
+718	4	Calling from Committee - Committee of the Whole - Hearing - Release of Reserved Funds - Office of Early Care and Education - Economic Recovery - $ (File No. # ) - December # , #
+719	4	Calling from Committee - Committee of the Whole and Closed Session - Settlement of Lawsuit - AmerisourceBergen Corp., Cardinal Health, Inc., and McKesson Corp. - City to Receive $ Million to $ Million - November # , # , at # : # p.m.
+720	4	Calling from Committee - Committee of the Whole and Closed Session - Settlement of Lawsuit - Johnson & Johnson - City to Receive $ Million to $ Million - November # , # , at # : # p.m.
+721	4	Calling from Committee - Committee of the Whole and Closed Session - Settlement of Lawsuit and Tolling Agreement with Airbnb, Inc. and HomeAway.com, Inc. - May # , #
+722	4	Campaign and Governmental Conduct Code - Form # (Statement of Economic Interests) Filers
+723	4	Charter Amendment - Fire Department Service Retirement Pension
+724	4	Charter Amendment - Free City College Fund
+725	4	Charter Amendment - Mayoral Authority to Disapprove Certain SFMTA Budget Proposals
+726	4	Charter Amendment - Minimum Police Department Staffing and Five-Year Annual Funding Requirement
+727	4	Charter Amendment - Student Success Fund
+728	4	Childhood Cancer Awareness Month - September #
+729	4	Civic Bridge Program - Behested Payments Waiver
+730	4	Closed Session - Anticipated Litigation - Claims for Real and Personal Property Damage to Shelter-in-Place Hotels - June # , #
+731	4	Closed Session - Anticipated Litigation - Tax Measures Adopted by the Voters at the June # , # Municipal Election - July # , #
+732	4	Closed Session - Existing Litigation - David Zeller - July # , #
+733	4	Closed Session - Existing Litigation - Pacific Gas and Electric Company - December # , #
+734	4	Closed Session - Existing Litigation - Pacific Gas and Electric Company - July # , #
+735	4	Closed Session - Existing Litigation - Tax Measures Adopted by the Voters at the June # , # , and November # , # Municipal Elections - April # , #
+736	4	Closed Session - Labor Negotiations - April # , #
+737	4	Commending Nancy Pelosi, Speaker of the United States House of Representatives
+738	4	Committee of the Whole - Ordinance (File No. # ) - General Obligation Bond Election - Seawall and Other Critical Infrastructure - $ - June # , #
+739	4	Committee of the Whole - Public Hearing to Take Nominations and Appoint a Successor Mayor Due to a Vacancy in the Office of the Mayor - January # , #
+740	4	Concession Lease Amendment - Stellar Partners, Inc. dba The New Stand - Extending Base Operating Term - $ Minimum Annual Guarantee
+741	4	Concurring in Actions to Meet Local Emergency - Coronavirus Response - Thirty-Fifth Supplement
+742	4	Condemning Antisemitic and Homophobic Attacks on Senator Scott Wiener
+743	4	Condemning Ongoing Attacks in the Artsakh Republic and Urging the United States to Broker Cessation of Hostilities
+744	4	Confirming Appointment, Redevelopment Successor Agency Oversight Board - Kenneth Bukowski
+745	4	Confirming Appointment, Redevelopment Successor Agency Oversight Board - Lisa Motoyama
+746	4	Confirming the Appointment of the Successor Mayor - Mark Farrell
+747	4	Contract Agreement - Chinese Hospital Association - Subacute Skilled Nursing and Skilled Nursing Facility Beds - Not to Exceed $
+748	4	Contract Amendment - A1 Protective Services, Inc. - Security Guard Services - Not to Exceed $
+749	4	Contract Amendment - Asian and Pacific Island Wellness Center dba San Francisco Community Health Center - Intensive Case Management and Mobile Delivered Care and Services - Not to Exceed $
+750	4	Contract Amendment - Budget and Legislative Analyst Services - Not to Exceed $

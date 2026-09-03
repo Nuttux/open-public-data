@@ -5,19 +5,23 @@
   1906,
   2026
  ],
- "read": 140687,
- "decisions": 114345,
- "decisions_with_topic": 113283,
- "decisions_without_topic": 1062,
- "download_bytes": 29098646,
+ "read": 159180,
+ "decisions": 131356,
+ "decisions_with_topic": 130342,
+ "decisions_without_topic": 1014,
+ "download_bytes": 29186037,
  "record_type": [
   [
    "decision",
-   114345
+   131356
   ],
   [
    "vote-outcome-only",
-   22089
+   21853
+  ],
+  [
+   "public-comment",
+   1728
   ],
   [
    "departmental-work",
@@ -25,11 +29,11 @@
   ],
   [
    "cut-in-half",
-   1184
+   1169
   ],
   [
    "page-furniture",
-   940
+   945
   ],
   [
    "index-row",
@@ -43,85 +47,85 @@
  "topic_decisions": [
   [
    "The street",
-   27593
+   27815
   ],
   [
    "Land and building",
-   24461
+   26691
   ],
   [
    "Public money",
-   18514
-  ],
-  [
-   "Doing business",
-   14448
+   21472
   ],
   [
    "Running the city",
-   12708
+   17498
   ],
   [
-   "Getting around",
-   7410
+   "Doing business",
+   14925
   ],
   [
    "What the city runs",
-   6255
+   10245
+  ],
+  [
+   "Getting around",
+   7795
   ],
   [
    "Civic life",
-   1894
+   3901
   ]
  ],
  "action": [
   [
    "ordered",
-   32889
+   34943
   ],
   [
    "voted-or-scheduled",
-   26202
+   26872
   ],
   [
    "granted",
-   23261
-  ],
-  [
-   "accepted",
-   14217
-  ],
-  [
-   "other",
-   11974
+   23891
   ],
   [
    "amended",
-   11411
+   18323
+  ],
+  [
+   "other",
+   15578
+  ],
+  [
+   "accepted",
+   15540
   ],
   [
    "appropriated",
-   7754
+   8618
   ],
   [
    "settled",
-   6009
+   6205
   ],
   [
    "paid",
-   3285
+   3295
   ],
   [
    "refused",
-   2431
-  ],
-  [
-   "commended",
-   902
+   2436
   ],
   [
    "appointed",
-   352
+   1774
+  ],
+  [
+   "commended",
+   1705
   ]
  ],
  "how_we_know_where": [
@@ -153,11 +157,15 @@
  "classified_by": [
   [
    "form",
-   96635
+   94796
   ],
   [
    "rule",
-   34682
+   36129
+  ],
+  [
+   "title",
+   18306
   ],
   [
    "purpose-clause",
@@ -165,11 +173,11 @@
   ],
   [
    "record",
-   2306
+   2779
   ],
   [
    "near-duplicate",
-   1645
+   1751
   ]
  ],
  "decisions_by_decade": [
@@ -215,15 +223,15 @@
   ],
   [
    2000,
-   9610
+   9604
   ],
   [
    2010,
-   11002
+   16855
   ],
   [
    2020,
-   8932
+   20096
   ]
  ],
  "decisions_with_topic_by_decade": [
@@ -269,15 +277,15 @@
   ],
   [
    2000,
-   9605
+   9599
   ],
   [
    2010,
-   10804
+   16661
   ],
   [
    2020,
-   8693
+   19901
   ]
  ]
 }

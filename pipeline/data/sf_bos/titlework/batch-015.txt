@@ -1,0 +1,250 @@
+3501	2	Issuance by California Statewide Communities Development Authority Revenue Obligations - Hebrew Home for Aged Disabled - Not to Exceed $
+3502	2	Issuance of Bonds - California Statewide Communities Development Authority - Front Porch Communities and Services, a California Not for Profit - Not to Exceed $
+3503	2	Issuance of Bonds - Infrastructure and Revitalization Financing District No. # (Treasure Island) - Not to Exceed $
+3504	2	Issuance of Bonds - San Francisco Art Institute, a California Nonprofit Public Benefit Corporation - Not to Exceed $
+3505	2	Issuance of General Obligation Bonds (Healthy, Safe and Vibrant San Francisco, # ) - Not to Exceed $
+3506	2	Issuance of General Obligation Bonds (Proposition A, # ) - Not to Exceed $
+3507	2	Issuance of Judgment Obligation Bonds - Not to Exceed $
+3508	2	Issuance of Revenue Bonds - Public Utilities Commission - Purchase of Electricity Distribution and Transmission System - Not to Exceed $
+3509	2	Issuance of Special Tax Bonds - Community Facilities District No. # (Transbay Transit Center) - Not to Exceed $
+3510	2	Issuance of Special Tax Bonds - Community Facilities District No. # (Transbay Transit Center) - Not to Exceed Aggregate Principal Amount of $
+3511	2	Issuance of Special Tax Bonds - Improvement Area No. # of the City and County of San Francisco Community Facilities District No. # (Treasure Island) - Not to Exceed Aggregate Principal Amount of $
+3512	2	Issuance of Special Tax Bonds - Special Tax District No. # (Mission Rock Facilities and Services) - Development Special Tax Bonds, Office Special Tax Bonds, Shoreline (Tax Zone # ) Special Tax Bonds - Not to Exceed $
+3513	2	Issuance of Subpoena Duces Tecum - Daniel Lawson, Former President of the Board of SF SAFE, and Tom Yeh, Former Chief Financial Officer of SF SAFE
+3514	2	Italian American Heritage Month - October
+3515	2	James W. Chow Day - May # , #
+3516	2	Japantown Cultural Heritage District’s Cultural, History, Housing, and Economic Sustainability Strategy Report
+3517	2	Jean Alexander Day - September # , #
+3518	2	Jerald Shapiro Social Work Day - March # , #
+3519	2	John and Ina Dearman Day - March # , #
+3520	2	Joseph Leung Day - October # , #
+3521	2	Josè Sarria Day - December # , #
+3522	2	Kate Herrmann Stacy Day - October # , #
+3523	2	Keep Pier # Backlands Temporary Shelter Site Open
+3524	2	Kenny Lau Day - August # , #
+3525	2	Kim Marie Thompson Cromb Day - June # , #
+3526	2	Korean Chuseok Day - October # , #
+3527	2	LGBTQIA+ Equal Pay Awareness Day - June # , #
+3528	2	Lady Gaga Day - July # , #
+3529	2	Landfill Disposal Agreement - Recology San Francisco - Term Extension
+3530	2	Latin@ Heritage Month - September # through October # , #
+3531	2	Latinx Heritage Month - September # through October # , #
+3532	2	Latinx Heritage Month - September 15th through October 15th Annually
+3533	2	Laurence Kornfield Day - August # , #
+3534	2	Law Enforcement Equipment Use Policy - # Annual Report
+3535	2	Lawrence Ferlinghetti Day - March # , #
+3536	2	Lease Agreement - ALD Development Corporation dba Airport Dimensions - Harvey Milk Terminal # Airport Lounge Lease No. # - $ Minimum Annual Guarantee
+3537	2	Lease Agreement - Airport Concession - Spa BR SFO, LLC - $ Minimum Annual Guarantee
+3538	2	Lease Agreement - Alclear, LLC - $ Minimum Annual Guarantee
+3539	2	Lease Agreement - Alliance Ground International, LLC - Airport Building # - Estimated Rent of $
+3540	2	Lease Agreement - Amoura International, Inc. - Post-Security Concession - $ Minimum Annual Guarantee
+3541	2	Lease Agreement - Amy’s Kitchen Restaurant Operation Company, LLC - Terminal # Food and Beverage Concession - $ Minimum Annual Guarantee
+3542	2	Lease Agreement - Andre-Boudin Bakeries, Inc. - International Terminal "A" Historic Restaurant Concession - $ Minimum Annual Guarantee
+3543	2	Lease Agreement - Bank of America, N.A. - Automated Teller Machines - $ Minimum Annual Guarantee
+3544	2	Lease Agreement - Black Point Coffee SFO, LLC - International Terminal "A" Coffee Kiosk Concession - $ Minimum Annual Guarantee
+3545	2	Lease Agreement - Books Inc. - Terminal # Bookstore - $ Minimum Annual Guarantee
+3546	2	Lease Agreement - Brookstone SFO T- # , LLC - Terminal # Specialty Retail Concession Lease No. # - Lease No. # - $ Minimum Annual Guarantee
+3547	2	Lease Agreement - Bun Mee LLC - Post-Security Concession - $ Minimum Annual Guarantee
+3548	2	Lease Agreement - Bun Mee, LLC - Terminal # Food and Beverage Concession - $ Minimum Annual Guarantee
+3549	2	Lease Agreement - Canonica New York, LLC - Airport Concession - $ Minimum Annual Guarantee
+3550	2	Lease Agreement - Canonica New York, LLC - Terminal # Specialty Retail Concession - $ Initial Minimum Annual Guarantee
+3551	2	Lease Agreement - China Airlines Limited - Cargo Facility Lease No. # - $ Initial Annual Base Rent
+3552	2	Lease Agreement - Culinary Heights Hospitality - Harvey Milk Terminal # Food and Beverage Concession Leases in Phases # and # - Lease # , Lease No. # - $ Minimum Annual Guarantee
+3553	2	Lease Agreement - Elevate Gourmet Brands, Inc., and Aimhigh ESG, LLC, a Joint Venture dba Elevate Gourmet Brands - SFO Group - Terminal # Coffee and Quick Serve Concession - $ Minimum Annual Guarantee
+3554	2	Lease Agreement - Elevate Gourmet Brands-SC Group - Terminal # Boarding Area F Gourmet Grab and Go Market Lease - $ Minimum Annual Guarantee
+3555	2	Lease Agreement - Emporio Rulli, Inc. dba G.R. Chocolate Boutique - $ Minimum Annual Guarantee
+3556	2	Lease Agreement - Gate # , Inc. - Post-Security Concession - $ Minimum Annual Guarantee
+3557	2	Lease Agreement - HFF SFO TWO, LLC - Harvey Milk Terminal # Food and Beverage Concession Leases in Phases # and # - Lease # , Lease No. # - $ Minimum Annual Guarantee
+3558	2	Lease Agreement - HG SFO Retailers # JV - Airport Concession - $ Minimum Annual Guarantee
+3559	2	Lease Agreement - Heigh Connects, LLC - Harvey Milk Terminal # Food and Beverage Concession Leases in Phases # and # - $ Minimum Annual Guarantee
+3560	2	Lease Agreement - Host International, Inc. - Post-Security Concession - $ Minimum Annual Guarantee
+3561	2	Lease Agreement - Host International, Inc. - Terminal # Food and Beverage Concession - $ Minimum Annual Guarantee
+3562	2	Lease Agreement - Hudson Group (HG) Retail, LLC, RDJ Enterprises, LLC, and Stewart Manhattan Investments, Inc., a JV dba HG SFO Retailers # JV - Boarding Area C Retail Concession Lease No. # - Lease No. # - $ Minimum Annual Guarantee
+3563	2	Lease Agreement - IDEO, LP - Pier # - Initial Total Monthly Base Rent of $
+3564	2	Lease Agreement - InMotion Entertainment Group, LLC - International Terminal Boarding Area A Electronics Store - $ Minimum Annual Guarantee
+3565	2	Lease Agreement - InMotion Entertainment Group, LLC - Terminal # Boarding Areas E and F Electronics Stores - $ Minimum Annual Guarantee
+3566	2	Lease Agreement - InMotion Entertainment Group, LLC - Terminal # Retail Concession - $ Minimum Annual Guarantee
+3567	2	Lease Agreement - Lady Luck Gourmet, LLC - Terminal # Food and Beverage Concession - $ Minimum Annual Guarantee
+3568	2	Lease Agreement - Love from USA Group, Inc - Harvey Milk Terminal # Museum Store Lease - $ Minimum Annual Guarantee
+3569	2	Lease Agreement - L’Occitane Airport Venture, LLC - Airport Concession - $ Minimum Annual Guarantee
+3570	2	Lease Agreement - MRG San Francisco Terminal # , LLC - Terminal # Boarding Area F News and Multi-Concept Retail Store Lease - $ Minimum Annual Guarantee
+3571	2	Lease Agreement - MRG San Francisco Terminal # , LLC. - Terminal # Retail Market and Harvey Milk Terminal # Specialty Retail Stores Concession Lease - $ Minimum Annual Guarantee
+3572	2	Lease Agreement - MRG San Francisco, LLC - Terminal # Retail Marketplace - $ Minimum Annual Guarantee
+3573	2	Lease Agreement - MRG San Francisco, LLC - Terminal # Specialty Retail Lease No. # - $ Minimum Annual Guarantee
+3574	2	Lease Agreement - Marshall Retail Group, LLC - Airport Concession - $ Minimum Annual Guarantee
+3575	2	Lease Agreement - Minute Suites Travelers Retreat SFO, LLC - $ Minimum Annual Guarantee
+3576	2	Lease Agreement - New Cingular Wireless PCS, LLC (d.b.a. AT&T) - Cellular Service Partner Lease - Base Rent of $ for Year # - One-Time Reimbursement Payment to City of $
+3577	2	Lease Agreement - NewZoom, LLC - $ Minimum Annual Guarantee
+3578	2	Lease Agreement - Paradies Lagardere @ SFO # (F&B), LLC - Terminal # Food and Beverage Concession - $ Minimum Annual Guarantee
+3579	2	Lease Agreement - Paradies Lagardere @ SFO # , LLC - Airport Concession - $ Minimum Annual Guarantee
+3580	2	Lease Agreement - Paradies Lagardere @ SFO, LLC - Post-Security Concession - $ Minimum Annual Guarantee
+3581	2	Lease Agreement - Park Café Group, Inc. - Harvey Milk Terminal # Boarding Area C Food and Beverage Kiosk Lease, A Small Business Enterprise Set-Aside - $ Minimum Annual Guarantee
+3582	2	Lease Agreement - Pilara Family Foundation - Pier # Annex - Minimum Base Rent of $ Per Month
+3583	2	Lease Agreement - ProperFood SFO Airport, LLC - Harvey Milk Terminal # Food and Beverage Concession Lease in Phases # and # - Lease # , Lease No. # - $ Minimum Annual Guarantee
+3584	2	Lease Agreement - RAKH, Inc. - Airport Concession - $ Minimum Annual Guarantee
+3585	2	Lease Agreement - Rylo Management, LLC - Terminal # Boarding Area F Café Lease - a Small Business Enterprise Set-Aside - Lease No. # - $ Minimum Annual Guarantee
+3586	2	Lease Agreement - SF Foodways, LLC - Terminal # Food and Beverage Concession - $ Minimum Annual Guarantee
+3587	2	Lease Agreement - SP Plus–Hyde Parking Joint Venture - Northern Waterfront Surface Parking Lots - $ Estimated Total Rent in First Year
+3588	2	Lease Agreement - SSP America, Inc. - $ Minimum Annual Guarantee
+3589	2	Lease Agreement - SSP America, Inc. - International Terminal "A" Food Hall and Café Concession - $ Minimum Annual Guarantee
+3590	2	Lease Agreement - SSP America, Inc. - Terminal # Food and Beverage Concession - $ Minimum Annual Guarantee
+3591	2	Lease Agreement - San Francisco Soup Company, dba Ladle & Leaf - Post-Security Concession - $ Minimum Annual Guarantee
+3592	2	Lease Agreement - Sidewalk Juice, SFO, LLC - Terminal # Boarding Area F Food and Beverage Kiosk Lease, A Small Business Enterprise Set-Aside - $ Minimum Annual Guarantee
+3593	2	Lease Agreement - Skyline Concessions, Inc. - Airport Concession - $ Minimum Annual Guarantee
+3594	2	Lease Agreement - Soaring Food Group, LLC - Terminal # Food and Beverage Concession - $ Minimum Annual Guarantee
+3595	2	Lease Agreement - TZK Broadway, LLC - Seawall Lots # and # - Teatro ZinZanni - $ Annual Minimum Base Rent
+3596	2	Lease Agreement - Tastes On The Fly San Francisco, LLC - Terminal # Food and Beverage Concession - $ Minimum Annual Guarantee
+3597	2	Lease Agreement - Tastes on the Fly San Francisco, LLC - Post-Security Concession - $ Minimum Annual Guarantee
+3598	2	Lease Agreement - The Marshall Retail Group, LLC - Boarding Area C Retail Concession Lease # - Lease No. # - $ Minimum Annual Guarantee
+3599	2	Lease Agreement - Treasure Island Enterprises - Treasure Island Marina - $ Initial Annual Base Rent
+3600	2	Lease Agreement - Treasure Island Sailing Center Foundation - Treasure Island Sailing Center - $ Minimum Annual Base Rent
+3601	2	Lease Agreement - Wells Fargo Bank, N.A. - Automated Teller Machines - $ Minimum Annual Guarantee
+3602	2	Lease Agreement - XpresSpa S.F. International, LLC - $ Minimum Annual Guarantee
+3603	2	Lease Amendment - Airport Concession Lease - Bay Area Restaurant Group Joint Venture - Minimum Annual Guarantee of $
+3604	2	Lease Amendment - Airport Concession Lease - Bay Area Restaurant Group, JV - Minimum Annual Guarantee $
+3605	2	Lease Amendment - Airport Concession Lease - D-Lew Enterprises, LLC - Minimum Annual Guarantee $
+3606	2	Lease Amendment - Airport Concession Lease - InMotion Entertainment Group, LLC - Minimum Annual Guarantee $
+3607	2	Lease Amendment - Airport Concession Lease - Lady Luck, LLC - Minimum Annual Guarantee of $
+3608	2	Lease Amendment - Airport Concession Lease - WDFG North America, LLC
+3609	2	Lease Amendment - Clear Channel Outdoor, LLC d/b/a Clear Channel Airports - Airport Advertising Lease - Adding Premises Solely for Promotion of Large Sporting Events
+3610	2	Lease Amendment - D-Lew Enterprises, LLC - Domestic Terminal Food and Beverage Program - Term Extension
+3611	2	Lease Amendment - DFS Group, L.P. - The International Terminal Duty Free and Luxury Lease - Temporarily Reducing Percentage Rent and Minimum Annual Guarantee Rent for # through #
+3612	2	Lease Amendment - DFS Group, L.P. - The International Terminal Duty Free and Luxury Lease - Temporary Modified Percentage Rent Structure or Reinstatement of Minimum Annual Guarantee - $
+3613	2	Lease Amendment - Domestic Terminal # Common Use Club - American Express Travel Related Services Company, Inc.
+3614	2	Lease Amendment - Domestic Terminal # Common Use Club Lease No. # - American Express Travel Related Services Company, Inc. - Minimum Annual Guarantee $ - Annual Promotional Charge $
+3615	2	Lease Amendment - Gotham Enterprises, LLC - Specialty Coffee Facilities - Term Extension
+3616	2	Lease Amendment - InMotion Entertainment Group, LLC - Electronics and Technology Stores - Term Extension
+3617	2	Lease Amendment - MRG San Francisco Terminal # , LLC. - Terminal # Retail Market and Harvey Milk Terminal # Specialty Retail Stores Concession Lease - Location Additions
+3618	2	Lease Amendment - Marilla Chocolate Company, Inc. - Terminal # Boarding Area F Gourmet Food and Gift Store Lease No. # - Term Extension
+3619	2	Lease Amendment - SSP America, Inc. - Domestic Terminal Food and Beverage Lease - $ Annual Guaranteed Rent, and $ Annual Promotional Charge
+3620	2	Lease Amendment - SSP America, Inc. - International Terminal Food and Beverage Concession Lease - $ Minimum Annual Guarantee, and $ Annual Promotional Charge
+3621	2	Lease Amendment - Skyline Concessions, Inc. - Boarding Area E Newsstand Lease, a Small Business Enterprise Set-Aside Lease No. # - Term Extension
+3622	2	Lease Amendment - Smarte Carte, Inc - Airport Luggage Cart Lease and Operating Agreement - Provision of Free Luggage in the Federal Inspection Service Area of the Airport
+3623	2	Lease Amendment - Smarte Carte, Inc - Airport Luggage Cart and Operating - Charge for Luggage Carts in the Federal Inspection Service Area
+3624	2	Lease Amendment No. # - Green Beans Coffee Osteria - SFO Group - Boarding Area C Coffee Shop Lease No. # - Reimbursement of $ - Term Extension
+3625	2	Lease Amendment No. # - Retroactive - Airport Travel Agency, Inc - Airport Amenities and Business Services - Term Extension
+3626	2	Lease Amendment No. # - Stellar Partners, Inc. - Boarding Area F Specialty Store Lease No. # - Term Extension
+3627	2	Lease Amendment No. # - World Duty Free Group North America, LLP - Terminal # Newsstands, Coffee and Specialty Stores - Term Extension
+3628	2	Lease Extension Modification - # Lease and Use Agreement - TACA International Airlines, S.A. - Estimated Rent $
+3629	2	Lease Modification - American Airlines, Inc. - SuperBay Hangar Lease No. L13- # - Extension of Term, Rent Increase, and Premises Reduction - $ Initial Annual Base Rent
+3630	2	Lease Modification - American Airlines, Inc. - Superbay Hangar Lease No. L13- # - Extension of Term and Rent Increase - $ Initial Annual Base Rent
+3631	2	Lease Modification - United Airlines, Inc. - Extension of Term and Rent Increase - $ Initial Annual Base Rent
+3632	2	Lease Modification - United States Government - International Terminal, Terminal # , and Land at Plot # DJ - Annual Rent $
+3633	2	Lease Modification - United States Government - Offices Occupied by the U.S. Drug Enforcement Administration - Annual Rent $
+3634	2	Lease Modification - United States Government - Offices in Terminal # - Annual Rent $
+3635	2	Lease Modification - United States Government - United States Federal Bureau of Investigation - Increase Annual Rent to $
+3636	2	Lease Modification - United States of America - United States Transportation Security Administration Administrative Offices - International Terminal and Terminal # - Not to Exceed $
+3637	2	Lease Termination Agreement - Airport Concession Lease - XpresSpa S.F. International, LLC
+3638	2	Lease Termination of Real Property - Uptown Parking Corporation - Sutter Stockton Garage
+3639	2	Lease and Operating Agreement - Smarte Carte Inc. - $
+3640	2	Lease and Use Agreement - Hong Kong Airlines Limited - Estimated Rent of $
+3641	2	Leather and Lesbian, Gay, Bisexual, Transgender, Queer Cultural District’s Cultural, History, Housing, and Economic Sustainability Strategy Report
+3642	2	Legion of Honor Centennial Celebration - November # , # , and November # , #
+3643	2	Levy Ad Valorem and Special Taxes - Possessory Interests on Secured Roll - Pier # and Mission Rock IFD and Special Tax Districts
+3644	2	Liana Szeto Day - May # , #
+3645	2	Library Card Sign-Up Month - September #
+3646	2	Library Fee Amnesty Program - January # through February # , #
+3647	2	License Support, and Hosting Agreement - Epic City Government, LLC - Electronic Health Records System - $
+3648	2	License and Services Agreement Modification - Airport Research and Development Foundation - Application-Based Commercial Ground Transportation Trip Fee Collection Services
+3649	2	License to Enter and Use - Honeybee Foods Corp. - Hallidie Plaza - $ Initial Annual Base Fee
+3650	2	Linda Maria Ronstadt Day - July # , #
+3651	2	Lindy in the Park Day - August # , #
+3652	2	Loan Agreements - MidPen Housing Corporation - # % Affordable Rental Housing for SFUSD Educators and Employees - Total Loans Not to Exceed $
+3653	2	Loan Amendment - Sunnydale Infrastructure 1A3 LLC - Sunnydale HOPE SF Development - Not to Exceed $
+3654	2	Local Agency Formation Commission - Interim Administrative Officer - Clerk of the Board
+3655	2	Louis Kwok Day - June # , #
+3656	2	Lucille Cuttler Day - March # , #
+3657	2	Lung Cancer Awareness Month - November #
+3658	2	MOU Amendment - California Electronic Recording Transaction Network Authority - Recordation of Digitized Electronic Records - Term Extension
+3659	2	Mahsa Amini Day - September # , #
+3660	2	Maintenance Agreement - State of California, Department of Transportation, Caltrans - Southern Skyline Boulevard Ridge Trail Extension Project
+3661	2	Management Agreement - IMCO Parking, LLC - Garage Management Services - Not to Exceed $
+3662	2	Management Agreement - LAZ Parking California, LLC - Garage Management Services - Not to Exceed $
+3663	2	Management Agreement Amendment - IMCO Parking, LLC - Management of Parking Garages and Lots - Not to Exceed $
+3664	2	Management Agreement Amendment - IMCO Parking, LLC - SFMTA Parking Garages and Lots - Not to Exceed $
+3665	2	Management Agreement Amendment - LAZ Parking California, LLC - Management of Parking Garages and Lots - Not to Exceed $
+3666	2	Management Agreement Amendment - Moscone Center Joint Venture - Moscone Convention Center
+3667	2	Management District Plan and Engineer’s Report Modification - Central Market Community Benefit District
+3668	2	Management Plan Modification - Dogpatch and Northwest Potrero Hill Green Benefit District
+3669	2	Management and Operation Agreement Amendment - Retroactive - Friends of the Cable Car Museum - Cable Car Museum - Term Extension
+3670	2	Management and Operation Agreement Amendment - San Francisco Municipal Transportation Agency - Friends of the Cable Car Museum - Term Extension
+3671	2	Margo St. James Day - February # , #
+3672	2	Mark E. Rennie Day - November # , #
+3673	2	Marking the 100th Anniversary of the Great Star Theater
+3674	2	Marking the 83rd Anniversary of the Bataan Death March - April # , #
+3675	2	Master Encroachment Permit - Pier #
+3676	2	Master Encroachment Permit - Potrero HOPE SF
+3677	2	Master Lease Amendment - United States Navy - Treasure Island South Waterfront
+3678	2	Master License Agreement - New Cingular Wireless PCS, LLC, dba AT&T Mobility - Wireless Telecommunication Equipment on Transit Support Poles - Revenue to Exceed $
+3679	2	Master Major Encroachment Permit - Sunnydale HOPE SF
+3680	2	Mayoral Appointment, Aging and Adult Services Commission - Jeremy Wallenberg
+3681	2	Mayoral Appointment, Aging and Adult Services Commission - Perry Lang
+3682	2	Mayoral Appointment, Arts Commission - Mary Y. Jung
+3683	2	Mayoral Appointment, Board of Appeals - Eduardo Santacana
+3684	2	Mayoral Appointment, Board of Appeals - Joanna Gubman
+3685	2	Mayoral Appointment, Board of Appeals - Jose Lopez
+3686	2	Mayoral Appointment, Board of Appeals - Rebecca Saroyan
+3687	2	Mayoral Appointment, Building Inspection Commission - Angie Sommer
+3688	2	Mayoral Appointment, Building Inspection Commission - Bianca Neumann
+3689	2	Mayoral Appointment, Building Inspection Commission - Catherine Meng
+3690	2	Mayoral Appointment, Building Inspection Commission - Dan Calamuci
+3691	2	Mayoral Appointment, Building Inspection Commission - Earl Shaddix
+3692	2	Mayoral Appointment, Building Inspection Commission - Lindsey Maclise
+3693	2	Mayoral Appointment, Building Inspection Commission - Raquel Bito
+3694	2	Mayoral Appointment, Children and Families First Commission - Michael Lambert
+3695	2	Mayoral Appointment, City Hall Preservation Advisory Commission - Clarence Blanchard
+3696	2	Mayoral Appointment, City Hall Preservation Advisory Commission - Robert Vergara
+3697	2	Mayoral Appointment, Commission on the Environment - Austin Hunter
+3698	2	Mayoral Appointment, Commission on the Environment - Sarah Ching-Ting Wan
+3699	2	Mayoral Appointment, Commission on the Status of Women - Marjan Ghafourpour Philhour
+3700	2	Mayoral Appointment, Controller - Greg Wagner
+3701	2	Mayoral Appointment, Director of the Department of Police Accountability - Paul Henderson
+3702	2	Mayoral Appointment, Entertainment Commission - Jordan Wilson
+3703	2	Mayoral Appointment, Entertainment Commission - Lieutenant David Falzon
+3704	2	Mayoral Appointment, Entertainment Commission - Lieutenant Leonard Poggio
+3705	2	Mayoral Appointment, Historic Preservation Commission - Amy Campbell
+3706	2	Mayoral Appointment, Historic Preservation Commission - Christina Dikas
+3707	2	Mayoral Appointment, Historic Preservation Commission - Eleanor Cox
+3708	2	Mayoral Appointment, Historic Preservation Commission - Gayle Tsern Strang
+3709	2	Mayoral Appointment, Historic Preservation Commission - Hans Baldauf
+3710	2	Mayoral Appointment, Historic Preservation Commission - Jason Wright
+3711	2	Mayoral Appointment, Historic Preservation Commission - Robert Vergara
+3712	2	Mayoral Appointment, Historic Preservation Commission - Ruchira Nageswaran
+3713	2	Mayoral Appointment, Historic Preservation Commission - Victoria Gray
+3714	2	Mayoral Appointment, Homelessness Oversight Commission - Dontaye Ball
+3715	2	Mayoral Appointment, Homelessness Oversight Commission - Jonathan Butler
+3716	2	Mayoral Appointment, Homelessness Oversight Commission - Katie Albright
+3717	2	Mayoral Appointment, Homelessness Oversight Commission - Obai Rambo
+3718	2	Mayoral Appointment, Homelessness Oversight Commission - Sharky Laguana
+3719	2	Mayoral Appointment, Municipal Transportation Agency Board of Directors - Amanda Eaken
+3720	2	Mayoral Appointment, Municipal Transportation Agency Board of Directors - Dominica Henderson
+3721	2	Mayoral Appointment, Municipal Transportation Agency Board of Directors - Emanuel Yekutiel
+3722	2	Mayoral Appointment, Municipal Transportation Agency Board of Directors - Janet Tarlov
+3723	2	Mayoral Appointment, Municipal Transportation Agency Board of Directors - Lydia So
+3724	2	Mayoral Appointment, Municipal Transportation Agency Board of Directors - Mike Chen
+3725	2	Mayoral Appointment, Municipal Transportation Agency Board of Directors - Sara Barz
+3726	2	Mayoral Appointment, Municipal Transportation Agency Board of Directors - Steve Heminger
+3727	2	Mayoral Appointment, Planning Commission - Amy Campbell
+3728	2	Mayoral Appointment, Planning Commission - Derek Braun
+3729	2	Mayoral Appointment, Planning Commission - Frank Fung
+3730	2	Mayoral Appointment, Planning Commission - Lydia So
+3731	2	Mayoral Appointment, Planning Commission - Rachael Tanner
+3732	2	Mayoral Appointment, Planning Commission - Sean McGarry
+3733	2	Mayoral Appointment, Police Commission - C. Don Clay
+3734	2	Mayoral Appointment, Police Commission - Debra Walker
+3735	2	Mayoral Appointment, Police Commission - Max Carter-Oberstone
+3736	2	Mayoral Appointment, Police Commission - W. E. Wilson Leung
+3737	2	Mayoral Appointment, Port Commission - Ed Harrington
+3738	2	Mayoral Appointment, Port Commission - John L. Burton
+3739	2	Mayoral Appointment, Port Commission - Ken McNeely
+3740	2	Mayoral Appointment, Port Commission - Stephen Engblom
+3741	2	Mayoral Appointment, Port Commission - Steven Lee
+3742	2	Mayoral Appointment, Port Commission - Victor Makras
+3743	2	Mayoral Appointment, Public Utilities Commission - Avni Jamdar
+3744	2	Mayoral Appointment, Public Utilities Commission - Ed Harrington
+3745	2	Mayoral Appointment, Public Utilities Commission - Joshua Arce
+3746	2	Mayoral Appointment, Public Utilities Commission - Julia Prochnik
+3747	2	Mayoral Appointment, Public Utilities Commission - Kate Stacy
+3748	2	Mayoral Appointment, Public Utilities Commission - Meghan Thurlow
+3749	2	Mayoral Appointment, Public Utilities Commission - Sophie Maxwell
+3750	2	Mayoral Appointment, Public Utilities Commission - Stephen Leveroni

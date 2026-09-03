@@ -67,6 +67,8 @@ ALL_ITEMS = (os.environ.get("BLOCKS_ITEMS")
 # The rank->form mapping pass A's 300 labels were made against. See the note in
 # the file itself, and `main()` below.
 FORM_RANKS = os.path.join(REPO, "pipeline", "seeds", "sf_bos_form_ranks.tsv")
+TITLE_LABELS = os.path.join(REPO, "pipeline", "seeds", "sf_bos_title_labels.tsv")
+SHAPE_LABELS = os.path.join(REPO, "pipeline", "seeds", "sf_bos_shape_labels.tsv")
 
 # THE SAME NORMALISATION THE FORMS WERE DRAWN WITH. If this drifts from the
 # code that produced forms300.txt, labels attach to the wrong records — so it
@@ -132,6 +134,31 @@ def subject_form(t: str, words: int = 12) -> str:
     return " ".join(" ".join(s.split()).split()[:words])
 
 
+# ── PASS E's KEY: the Clerk's own file title ──────────────────────────────
+# The modern record carries something the Journal never did: `ht`, a subject
+# heading a person at the Clerk's office wrote on purpose. 93.8% of the rows
+# this pass exists for have one, and it is a far better statement of what the
+# item is about than its opening formula, which is shared with everything else
+# filed that week.
+#
+# The KEY IS THE WHOLE TITLE, not its leading phrase, and that is the entire
+# design. `Administrative Code` alone heads 1,477 unlabelled records about rent
+# control, surveillance policy, police equipment and the film commission —
+# labelling by leading phrase would repeat exactly the failure the structural
+# rules above were written to undo, one sample answering for a group with
+# nothing in common.
+#
+# Numbers, money and fiscal years are normalised out so that "Patient Rates -
+# FYs 2016-2017" and "Patient Rates - FYs 2018-2019" are one row to read rather
+# than two. Nothing else is touched: the words carry the subject.
+def title_form(h: str) -> str:
+    """The Clerk's file title, with the numbers taken out of it."""
+    h = re.sub(r"\$[\d,\.]+", " $ ", h)
+    h = re.sub(r"\bFYs?\s*[\d\-/ ]+", " FY ", h)
+    h = re.sub(r"\b\d[\d,\.\-/]*\b", " # ", h)
+    return re.sub(r"\s+", " ", h).strip()
+
+
 def form_of(t: str, words: int = 16) -> str:
     s = t.lower()
     s = re.sub(r"\$[\d,.]+", " $ ", s)
@@ -180,21 +207,33 @@ def main() -> int:
 
     # ── the corpus, grouped by form ──────────────────────────────────────
     rows = []
+    stub = []
     kind_of = {}
+    title_of = {}
     seen_row = set()
     srcs = [ALL_ITEMS] if os.path.exists(ALL_ITEMS) else [HISTORIC, MODERN]
     for path in srcs:
         for line in open(path):
             r = json.loads(line)
             t = " ".join((r.get("t") or "").split())
-            if len(t) <= 25:
-                continue
             rid = f'{r.get("v")}|{r.get("i")}'
+            # A ROW TOO SHORT TO SAY ANYTHING IS STILL A ROW. `MIN_TEXT` keeps
+            # fragments out of the form grouping — one word cannot carry a
+            # sentence shape — but leaving them with no row at all is what made
+            # "not classified" indistinguishable from "not a decision". Twelve
+            # rows in the corpus are the bare word "Motion" or "Ordinance.";
+            # they are cut in half, and they are typed as that here.
+            if len(t) <= 25:
+                stub.append(rid)
+                continue
             if rid in seen_row:
                 continue
             seen_row.add(rid)
             rows.append((rid, t))
             kind_of[rid] = r.get("k") or ""
+            _ht = (r.get("ht") or "").strip()
+            if _ht:
+                title_of[rid] = title_form(_ht)
     print(f"{len(rows):,} rows from {', '.join(os.path.basename(p) for p in srcs)}")
     groups = collections.defaultdict(list)
     for rid, t in rows:
@@ -309,6 +348,52 @@ def main() -> int:
         n_roll += 1
     if n_roll:
         print(f"{n_roll:,} rows that are a roll call and nothing else")
+
+    # ── what a member of the public said ─────────────────────────────────
+    # "Resolution urging state legislation to enable the creation of a public
+    # banking charter (File No. 190118). Anuba S; expressed support."
+    #
+    # The Clerk prints public comment UNDER the item it was spoken to, so the
+    # row opens with a decision and ends with a speaker. It is a record of the
+    # meeting, not an act of the Board: 1,223 of the last 1,523 unclassified
+    # rows are this, and the topic of the file being spoken to already has its
+    # own row elsewhere in the corpus.
+    #
+    # SO IT IS TYPED AND LEFT WITHOUT A TOPIC, on purpose, exactly like page
+    # furniture and an index row. Giving it the subject of the file it quotes
+    # would double-count that subject and would say the Board did something it
+    # did not do. `themes.subject_span()` refuses the same shape for the same
+    # reason.
+    # THE PATTERN IS THE CLERK'S FORMAT, NOT A VERB. A first draft matched any
+    # of `expressed|spoke|presented|requested|…` anywhere in the row and typed
+    # 3,390 rows public comment — including the annual Budget and Appropriation
+    # Ordinance, because a long ordinance says "presented" somewhere in it. That
+    # is the `p-reparation of plans` failure again: the word is really there and
+    # it is not about this row.
+    #
+    # So the shape is anchored: the file being spoken to, then a NAME, then a
+    # semicolon, then the speaking verb — "(File No. 190118). Anuba S; expressed
+    # support." A speaker with no name is printed literally as "Speaker;".
+    SPEAKER = re.compile(
+        r"\(File No\.\s*\d+\)[^;]{0,60};\s*"
+        r"(?:expressed|spoke|shared|stated|urged|read|presented|thanked"
+        r"|provided|asked|commented|voiced|raised)\b", re.I)
+    SPEAKER_NAMED = re.compile(
+        r"\b(?:Speakers?|(?:Fe)?male Speaker)\s*;\s*"
+        r"(?:expressed|spoke|shared|stated|urged|read|presented|thanked"
+        r"|provided|asked|commented|voiced|raised)\b", re.I)
+    seen_p = {o["id"] for o in out}
+    n_pc = 0
+    for rid, t in rows:
+        if rid in seen_p:
+            continue
+        if not (SPEAKER.search(t) or SPEAKER_NAMED.search(t)):
+            continue
+        out.append({"id": rid, "record_type": "public-comment", "topic": "",
+                    "subtopic": "", "action": "other", "classified_by": "rule"})
+        n_pc += 1
+    if n_pc:
+        print(f"{n_pc:,} rows that are public comment on a file, not an act")
 
     # ── the disposition stamp, and nothing else ──────────────────────────
     # "Ordinance No. 155-24 FINALLY PASSED City and County of San Francisco
@@ -443,6 +528,101 @@ def main() -> int:
                 per_topic[lab["topic"]] += 1
             n_rec += 1
         print(f"{n_rec:,} records read one at a time")
+
+    # ── PASS E: the Clerk's own file title, read one title at a time ─────
+    # Runs LAST of the labelling passes, so it only ever fills a gap: a row any
+    # earlier pass answered keeps that answer. Every title in the seed was read
+    # by hand; see the note on `title_form` for why the key is the whole title.
+    n_title = 0
+    if os.path.exists(TITLE_LABELS):
+        lab_t, bad_t = {}, []
+        for line in open(TITLE_LABELS):
+            if line.startswith("#") or not line.strip():
+                continue
+            parts = line.rstrip("\n").split("\t")
+            if len(parts) < 4:
+                continue
+            title, top, sub, act = parts[0], parts[1], parts[2], parts[3]
+            if top and top not in topics:
+                bad_t.append(f"{title[:50]!r}: topic {top!r}")
+            if sub and subs.get(sub) != top:
+                bad_t.append(f"{title[:50]!r}: subtopic {sub!r} not under {top!r}")
+            if act and act not in actions:
+                bad_t.append(f"{title[:50]!r}: action {act!r}")
+            lab_t[title] = {"record_type": "decision", "topic": top,
+                            "subtopic": sub, "action": act}
+        if bad_t:
+            print("REFUSED — title labels disagree with the taxonomy:")
+            for b in bad_t[:12]:
+                print("  ", b)
+            return 1
+        seen_t = {o["id"] for o in out}
+        for rid, _t in rows:
+            if rid in seen_t:
+                continue
+            l = lab_t.get(title_of.get(rid, ""))
+            if l:
+                out.append({"id": rid, **l, "classified_by": "title"})
+                if l["topic"]:
+                    per_topic[l["topic"]] += 1
+                n_title += 1
+        print(f"\n{n_title:,} from {len(lab_t):,} Clerk file titles read by hand")
+
+    # ── the rows too short to group ──────────────────────────────────────
+    seen_stub = {o["id"] for o in out}
+    n_stub = 0
+    for rid in stub:
+        if rid in seen_stub:
+            continue
+        out.append({"id": rid, "record_type": "cut-in-half", "topic": "",
+                    "subtopic": "", "action": "other", "classified_by": "rule"})
+        n_stub += 1
+    if n_stub:
+        print(f"{n_stub:,} rows too short to be a sentence, typed cut-in-half")
+
+    # ── PASS F: the tail, read one sentence-shape at a time ──────────────
+    # What is left after every other pass. It is small (434 rows) and it is not
+    # one thing: public comment the Clerk printed without a file number, so the
+    # anchored rule above cannot see it; procedural amendments ("Ordinance be
+    # AMENDED in Section 3.203…"); page footers; and a tail of real acts. Every
+    # shape in the seed was read.
+    n_shape = 0
+    if os.path.exists(SHAPE_LABELS):
+        lab_s, bad_s = {}, []
+        for line in open(SHAPE_LABELS):
+            if line.startswith("#") or not line.strip():
+                continue
+            parts = line.rstrip("\n").split("\t")
+            if len(parts) < 5:
+                continue
+            shape, rt, top, sub, act = parts[0], parts[1], parts[2], parts[3], parts[4]
+            if rt and rt not in rtypes:
+                bad_s.append(f"record_type {rt!r}")
+            if top and top not in topics:
+                bad_s.append(f"topic {top!r}")
+            if sub and subs.get(sub) != top:
+                bad_s.append(f"subtopic {sub!r} not under {top!r}")
+            if act and act not in actions:
+                bad_s.append(f"action {act!r}")
+            lab_s[shape] = {"record_type": rt, "topic": top,
+                            "subtopic": sub, "action": act}
+        if bad_s:
+            print("REFUSED — shape labels disagree with the taxonomy:")
+            for b in bad_s[:12]:
+                print("  ", b)
+            return 1
+        seen_sh = {o["id"] for o in out}
+        for rid, t in rows:
+            if rid in seen_sh:
+                continue
+            l = lab_s.get(form_b(t))
+            if l:
+                out.append({"id": rid, **l, "classified_by": "record"})
+                if l["topic"]:
+                    per_topic[l["topic"]] += 1
+                n_shape += 1
+        if n_shape:
+            print(f"{n_shape:,} from {len(lab_s)} sentence shapes read one at a time")
 
     # ── the three families that earned it ────────────────────────────────
     # Measured against a hand-read blind sample of 156 records: these agreed
@@ -648,7 +828,11 @@ def main() -> int:
     print(f"\n{n_near:,} more from records that are the same sentence with "
           f"different scan errors")
 
-    n_corpus = len(rows)
+    # THE WHOLE CORPUS, not just the rows long enough to group. `rows` excludes
+    # the 12 one-word fragments, and dividing by it printed 100.0% of a number
+    # smaller than the corpus — the coverage claim has to be against every
+    # record the file holds, or it is not a coverage claim.
+    n_corpus = len(rows) + len(stub)
     print(f"\n{len(out):,} records labelled = {100*len(out)/n_corpus:.1f}% "
           f"of {n_corpus:,}")
     with_topic = sum(1 for o in out if o["topic"])

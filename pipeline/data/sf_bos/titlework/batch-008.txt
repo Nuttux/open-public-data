@@ -1,0 +1,250 @@
+1751	3	Levying Special Taxes - Community Facilities District No. # (Treasure Island)
+1752	3	Levying Special Taxes - Special Tax District No. # (Central SoMa)
+1753	3	Master Encroachment Permit and Major Encroachment Permit - Mission Rock
+1754	3	Master Lease Amendment - United States Navy - Treasure Island Land and Structures - Term Extension
+1755	3	Mayoral Appointment - City Administrator - Carmen Chu
+1756	3	Mayoral Appointment, Board of Appeals - John Trasvina
+1757	3	Mayoral Appointment, Historic Preservation Commission - Chris Foley
+1758	3	Mayoral Appointment, Historic Preservation Commission - Lydia So
+1759	3	Mayoral Appointment, Homelessness Oversight Commission - Dena Aslanian-Williams
+1760	3	Mayoral Appointment, Planning Commission - Susan Diamond
+1761	3	Mayoral Appointment, Police Commission - Larry Yee
+1762	3	Mayoral Appointment, Port Commission - Gail Gilman
+1763	3	Mayoral Appointment, Public Works Commission - Lynne Newhouse Segal
+1764	3	Mayoral Appointment, Sanitation and Streets Commission - Vincent Yuen
+1765	3	Mayoral Appointment, Treasure Island Development Authority Board of Directors - Timothy Reyff
+1766	3	Mayoral Reappointment, Entertainment Commission - Al Perez
+1767	3	Mayoral Reappointment, Municipal Transportation Agency Board of Directors - Steve Heminger
+1768	3	Mayoral Reappointment, Police Commission - Debra Walker
+1769	3	Mayoral Reappointment, Police Commission - Sonia Melara
+1770	3	Memorandum of Agreement - Issuance of Revocable Licenses and Easements Agreements - City of Mountain View - Waiver of Administrative Code Appraisal Requirements
+1771	3	Memorandum of Understanding - International Brotherhood of Electrical Workers, Local #
+1772	3	Memorandum of Understanding - International Federation of Professional and Technical Engineers, Local #
+1773	3	Memorandum of Understanding - International Union of Operating Engineers Stationary Engineers, Local #
+1774	3	Memorandum of Understanding - Municipal Attorneys’ Association
+1775	3	Memorandum of Understanding - Municipal Executives Association
+1776	3	Memorandum of Understanding - Municipal Executives Association - Fire
+1777	3	Memorandum of Understanding - Municipal Executives Association - Police
+1778	3	Memorandum of Understanding - Municipal Executives’ Association
+1779	3	Memorandum of Understanding - Municipal Executives’ Association Fire
+1780	3	Memorandum of Understanding - Municipal Executives’ Association Police
+1781	3	Memorandum of Understanding - Port Commission - Mission Rock Special Use District Financing Districts - Mission Rock Project
+1782	3	Memorandum of Understanding - Retroactive - San Francisco Deputy Sheriffs’ Association
+1783	3	Memorandum of Understanding - San Francisco City Workers United (Painters)
+1784	3	Memorandum of Understanding - San Francisco Deputy Probation Officers’ Association
+1785	3	Memorandum of Understanding - San Francisco Deputy Sheriffs’ Association
+1786	3	Memorandum of Understanding - San Francisco Police Officers Association
+1787	3	Memorandum of Understanding - San Francisco Police Officers’ Association
+1788	3	Memorandum of Understanding - San Francisco Sheriffs’ Managers and Supervisors Association
+1789	3	Memorandum of Understanding - Service Employees International Union, Local # - Staff and Per Diem Nurses - Amendment No. #
+1790	3	Memorandum of Understanding Amendment - San Francisco Police Officers Association
+1791	3	Memorandum of Understanding and Settlement of Grievances - Police Officers Association
+1792	3	Memorandums of Understanding - Citywide Amendment - Hospital and Skilled Nursing Facility COVID- # Worker Retention Pay
+1793	3	Mental Health Services Act - Three-Year Program and Expenditure Plan - FY
+1794	3	Mission Bay South - Parks P22 and P19 Acceptance
+1795	3	Modification to the Airport Professional Services Agreement - Hallmark Aviation Services, L.P. - Airport Information and Guest Assistance Services - Two-Year Contract Extension - Not to Exceed $
+1796	3	Modification to the Airport Professional Services Agreement - South San Francisco Scavenger Co., Inc. - Solid Waste Management Collection, Sorting, and Related Services - Not to Exceed $
+1797	3	Municipal Elections Code - Candidates’ Chinese Character-Based Names on Ballots
+1798	3	Municipal Elections Code - Deadline for Filing Declaration of Candidacy
+1799	3	Municipal Elections Code - Disclosure Regarding Ballot Measures Involving Port Public Trust Property
+1800	3	Municipal Elections Code - Expanded Vote-by-Mail for Exclusively Municipal Elections
+1801	3	Municipal Elections Code - Non-United States Citizen Voting in School Board Elections
+1802	3	Municipal Elections Code - Noncitizen Voting in School Board Elections
+1803	3	Mutual Termination Agreement of Real Property - Smokehouse - Scoma’s Restaurant
+1804	3	Neighborhood Beautification and Graffiti Clean-up Fund Tax Designation Ceiling - #
+1805	3	Office of Community Investment and Infrastructure, Operating as Successor Agency to the San Francisco Redevelopment Agency - FY Budget
+1806	3	Office of Community Investment and Infrastructure, Operating as Successor Agency to the San Francisco Redevelopment Agency, FY Budget
+1807	3	Office of Community Investment and Infrastructure, Operating as Successor Agency to the San Francisco Redevelopment Agency, FY Budget - Issuance of Bonds - Not to Exceed $
+1808	3	Official Advertising - San Francisco Print Media Co., dba San Francisco Examiner - FY
+1809	3	Opposing California State Senate Bill # (Wiener) - Transit-Rich Housing Bonus
+1810	3	Opposing California State Senate Bill No. # (Wiener) Unless Amended - Housing Development: Transit-Oriented Development
+1811	3	Opposing State Ballot Initiative Limiting Voters’ and Local Governments’ Ability to Raise Revenues for Public Services
+1812	3	Ordinance Authorizing Certificates of Participation - # Mission Project - Not to Exceed $
+1813	3	Outreach Community Advertising and Neighborhood Outreach Advertising - Jasmine Blue Media LLC (dba Marina Times) - FY
+1814	3	Outreach Community Advertising and Neighborhood Outreach Advertising - Various Newspapers - FY
+1815	3	Park Code - Discounts For Veterans
+1816	3	Park Code - Treasure Island, Yerba Buena Island, and Certain Additional Properties
+1817	3	Park Code - Using Glass Beverage Containers in Parks
+1818	3	Park, Health Codes - Transbay Rooftop Park
+1819	3	Participation Agreement - California Mental Health Services Authority - Presumptive Transfer
+1820	3	Permit Amendment - Outside Lands Music Festival - Ten Year Extension - Permit Fee
+1821	3	Planning Code - Adult Sex Venues
+1822	3	Planning Code - Alcohol Sales in Movie Theaters
+1823	3	Planning Code - Amending Kearny-Market-Mason-Sutter Conservation District and Article # Designation of # 5th Street
+1824	3	Planning Code - Amending Landmark Designation - # Broadway (Iglesia de Nuestra Señora de Guadalupe/Our Lady of Guadalupe Church)
+1825	3	Planning Code - Article # Corrections
+1826	3	Planning Code - Business Signs on Awnings and Marquees
+1827	3	Planning Code - Cannabis Uses
+1828	3	Planning Code - Catering as an Accessory Use
+1829	3	Planning Code - Chinatown Mixed Use Districts
+1830	3	Planning Code - Code Corrections Ordinance
+1831	3	Planning Code - Conversion of Certain Limited Restaurants to Restaurants - North Beach Neighborhood Special Use District
+1832	3	Planning Code - Corrections and Clarifications
+1833	3	Planning Code - Definition of Gross Floor Area
+1834	3	Planning Code - Definitions, Family, Dwelling Unit, Residential Care Facility
+1835	3	Planning Code - Downtown Rail Extension Fee Waiver
+1836	3	Planning Code - Downtown Support Special Use District; Fees in Lieu of On-Site Open Space
+1837	3	Planning Code - Electric Vehicle Charging Locations
+1838	3	Planning Code - Exceptions and Extensions for Existing Uses
+1839	3	Planning Code - Exempting Certain Historic Landmarks from Requirement to Obtain Conditional Use and Replace Production, Distribution, and Repair, Institutional Community, and Arts Activities Uses
+1840	3	Planning Code - Fenestration, Transparency, and Sign Requirements Generally; Sales and Service Uses in the C- # and RC Districts
+1841	3	Planning Code - Fleet Charging Locations and Parcel Delivery Service
+1842	3	Planning Code - Gates, Railings, and Grillwork Exceptions for Cannabis Retail Uses and Existing Non-Residential Uses and Change in # % Gate Transparency Requirement to # %
+1843	3	Planning Code - HOME-SF
+1844	3	Planning Code - HOME-SF Project Authorization
+1845	3	Planning Code - Health Service Uses in West Portal Neighborhood Commercial District
+1846	3	Planning Code - Hours of Operation for Limited Nonconforming Uses
+1847	3	Planning Code - Inclusionary Housing Small Sites Program
+1848	3	Planning Code - Laboratory Uses in the Urban Mixed Use Zoning District
+1849	3	Planning Code - Landmark Designation - # 12th Street (San Francisco Eagle Bar)
+1850	3	Planning Code - Landmark Designation - # 24th Street
+1851	3	Planning Code - Landmark Designation - # 4th Street (aka Hotel Utah)
+1852	3	Planning Code - Landmark Designation - Chata Gutierrez Mural
+1853	3	Planning Code - Light Manufacturing and Wholesale Storage Uses in the 24th Street-Mission Street Neighborhood Commercial Transit District
+1854	3	Planning Code - Medical Cannabis Dispensaries in Supervisorial District #
+1855	3	Planning Code - North Beach Special Use District - Consolidation of Groundfloor Storefronts
+1856	3	Planning Code - North Beach, Telegraph Hill, Broadway and Chinatown Area Controls
+1857	3	Planning Code - Notice for Housing Element Rezoning
+1858	3	Planning Code - Obstructions in Required Setbacks, Yards, and Usable Open Space
+1859	3	Planning Code - Off-Street Parking and Loading Requirements
+1860	3	Planning Code - Permit Review Procedures and Zoning Controls - Neighborhood Commercial Districts in Supervisorial Districts # and #
+1861	3	Planning Code - Permitting Polk/Pacific Special Area Design Guidelines
+1862	3	Planning Code - Planning Fees
+1863	3	Planning Code - Port of San Francisco Waterfront Plan Update
+1864	3	Planning Code - Priority Processing for Certain Commercial Uses
+1865	3	Planning Code - Reauthorizing Section # 3C Concerning New Production, Distribution, and Repair Space
+1866	3	Planning Code - Reorganization of Chinatown Mixed Use Districts
+1867	3	Planning Code - Reproductive Health Clinics
+1868	3	Planning Code - Requirements for Laundromats and On-site Laundry Services
+1869	3	Planning Code - Residential Care Facilities
+1870	3	Planning Code - Revising Public Art Relocation and Removal Requirements for Existing # % Affordable Housing Projects
+1871	3	Planning Code - Technical Amendments
+1872	3	Planning Code - Temporary Homeless Shelters in Certain Industrial and Mixed-Use Districts
+1873	3	Planning Code - Temporary Pop-Up Retail, Flexible Retail, and Arts Activities Uses
+1874	3	Planning Code - Temporary Safe Overnight Parking and Cannabis Retail Uses
+1875	3	Planning Code - Tenderloin Neon Special Sign District
+1876	3	Planning Code - Terrace Infill for Noncomplying Structure Designated as a Significant Building in C- # Zoning District
+1877	3	Planning Code - Tobacco Paraphernalia Establishments in North of Market SUD and Lower Polk Street NCD
+1878	3	Planning Code - Transportation Demand Management Program Requirement
+1879	3	Planning Code - Uses in the Upper Market NCT and NCT- # Zoning Districts
+1880	3	Planning Code - Window Replacement Standards
+1881	3	Planning Code and Zoning Map - Delete Life Science and Medical Special Use District
+1882	3	Planning Code, Zoning Map - # 18th Street Affordable Housing Special Use District
+1883	3	Planning Code, Zoning Map - Central Neighborhoods Large Residence SUD, Corona Heights Large Residence SUD
+1884	3	Planning Code, Zoning Map - Group Housing Special Use District
+1885	3	Planning, Administrative Codes - Affordable Housing Code Enforcement
+1886	3	Planning, Administrative Codes - Code Corrections Ordinance
+1887	3	Planning, Administrative Codes - Conditional Use Authorization for Removal of Unauthorized Unit
+1888	3	Planning, Administrative Codes - Planning Department Fees - Future Fee Adjustments
+1889	3	Planning, Building Codes - Noncomplying, Unpermitted, and Accessory Structures
+1890	3	Planning, Business and Tax Regulations Codes - Accessory Dwelling Units in New Construction
+1891	3	Planning, Business and Tax Regulations Codes - State-Mandated Accessory Dwelling Unit Program
+1892	3	Planning, Green Building Codes - Better Roof Requirements, Including Living Roofs
+1893	3	Planning, Subdivision Codes - Condominium Conversion of Accessory Dwelling Units
+1894	3	Police Code - Access to Reproductive Health Care Facilities
+1895	3	Police Code - Apprentice Hiring Requirements for Cannabis Businesses
+1896	3	Police Code - COVID-Related Employment Protections
+1897	3	Police Code - Cannabis Events
+1898	3	Police Code - Cannabis Retailers at Permitted Cannabis Events
+1899	3	Police Code - Choice of Communications Services Providers in Multiple Occupancy Buildings
+1900	3	Police Code - Domestic Workers’ Access to Paid Sick Leave Through a Portable System
+1901	3	Police Code - Drawing of Firearms by Armed Guards
+1902	3	Police Code - Entertainment Permits
+1903	3	Police Code - Neighborhood-Restricted Liquor Licenses
+1904	3	Police Code - Non-Legal Immigration Services
+1905	3	Police Code - Outdoor Amplified Sound Permits
+1906	3	Police Code - Police Department Relationship to National Rifle Association
+1907	3	Police Code - Private Protection and Security Services
+1908	3	Police Code - Private Sector Military Leave Pay
+1909	3	Police Code - Prohibiting Criminal History Inquiries in Private College Admissions
+1910	3	Police Code - Prohibition of Firearms at Public Gatherings
+1911	3	Police Code - Public Bath Houses
+1912	3	Police Code - Rental Car Restrictions to Reduce Burglaries
+1913	3	Police Code - Required Agreements Between Cannabis Businesses and Labor Organizations
+1914	3	Police Code - Street Artist Certificate Fee
+1915	3	Police Code - “Ghost Guns”
+1916	3	Police, Administrative Codes - Protecting Access to Reproductive Health Facilities
+1917	3	Police, Building Codes - Lactation in the Workplace
+1918	3	Police, Health Codes - Regulation of Cannabis Businesses
+1919	3	Police, Transportation Codes - Motor Vehicle Stunt Driving
+1920	3	Portola as San Francisco’s Garden District - Supporting the Portola Green Plan
+1921	3	Potrero HOPE SF - Street Vacation for Various Streets
+1922	3	Power Revenue Bond Issuance and Sale - San Francisco Public Utilities Commission - Not to Exceed $
+1923	3	Presidential Appointment, Board of Appeals - Alex Lemberg
+1924	3	Presidential Reappointment, Planning Commission - Maria Theresa Imperial
+1925	3	Priority for Veterans with an Affordable Housing Preference under Administrative Code, Chapter # - Disparate Impact Analysis
+1926	3	Project Partnership Agreement - United States Army Corps of Engineers - Dredging of Central Basin by Pier # - Waiving Certain Requirements of Environment and Administrative Codes - Not to Exceed $
+1927	3	Public Auction - Tax-Defaulted Real Property
+1928	3	Public Trust Exchange Agreement - California State Lands Commission - Pier # Project
+1929	3	Public Utilities Commission Capital Projects Budget and Supplemental Appropriation as of May # , # for FY and #
+1930	3	Public Works Code - Construction Site Runoff on Port Property - Enforcement
+1931	3	Public Works Code - Elimination of Contractor Parking Plan Requirements and Fees
+1932	3	Public Works Code - Excavation by Microtrenching for Fiber
+1933	3	Public Works Code - Exemption of Banner Fees and Inspection Fees - Leather and LGBTQ Cultural District and SoMa Pilipinas-Filipino Cultural Heritage District
+1934	3	Public Works Code - Major Encroachment Permit Revocation Hearings
+1935	3	Public Works Code - Minor Sidewalk Encroachments at the Mission Rock, Pier # , and Potrero Power Station Projects
+1936	3	Public Works Code - Neighborhood Commercial Districts Banner Fee Waiver
+1937	3	Public Works Code - Pollution Liability Insurance Requirements for Excavators
+1938	3	Public Works Code - Public Works Graffiti Abatement Pilot Program
+1939	3	Public Works Code - Public Works Graffiti Abatement Program
+1940	3	Public Works Code - Retroactive - Waiver of Temporary Street Space Occupancy Permit Fee - Sidewalk Sales During Lunar New Year Holiday Season
+1941	3	Public Works Code - Streamlining Approvals of Commemorative Public Right-of-Way and Public Place Designations and Installation of Commemorative Street Plaques
+1942	3	Public Works Code - Street Tree Planting and Removal
+1943	3	Public Works Code - Temporary Mobile Caterer Permit
+1944	3	Public Works Code - Waiver of Temporary Street Space Occupancy Permit Fee for Small Business Week Sidewalk Sales
+1945	3	Public Works Week - May # , # , through May # , #
+1946	3	Public Works and Subdivision Codes - City Maintenance of Street Trees
+1947	3	Public Works, Administrative Codes - Café Tables and Chairs, Display Merchandise, Appurtenant Building Features, and Sidewalk Shared Spaces
+1948	3	Public Works, Administrative Codes - Curbside Shared Spaces Permit and License Fees
+1949	3	Public Works, Police Codes - Permit for Testing of Autonomous Delivery Devices on Sidewalks
+1950	3	Public Works, Police Codes - Sidewalk Flower Stand Permits
+1951	3	Public Works, Port Codes - Enhanced Enforcement for Vending Targeted Merchandise Without a Permit
+1952	3	Re-Appropriation - # Transportation and Road Improvements General Obligation Bonds Series 2015B Projects - $ - FY
+1953	3	Reaffirming San Francisco's Commitment to TGNCl2S Rights and Gender-Affirming Care
+1954	3	Reaffirming Support For An Independent, Impartial and Qualified Judiciary
+1955	3	Real Property Lease Amendment - Mission Valley Rock, Co. - Sunol, California - $
+1956	3	Real Property Sale Agreement - Sale of Portions of SFPUC Parcel No. # - State Route # Alameda Creek Bridge Replacement Project in Alameda County - $
+1957	3	Reappointment, Bicycle Advisory Committee - Bert Hill
+1958	3	Reappointment, Bicycle Advisory Committee - Paul Wells
+1959	3	Reappointment, Bicycle Advisory Committee - Whitney Ericson
+1960	3	Reappointment, Entertainment Commission - Laura Thomas
+1961	3	Reappointment, Metropolitan Transportation Commission - Supervisor Hillary Ronen
+1962	3	Recognizing November as National Native American Heritage Month
+1963	3	Recognizing the Commencement of Ramadan, the Muslim Holy and Blessed Month
+1964	3	Redevelopment Plan Amendment - Mission Bay South Block # Hotel
+1965	3	Refund of Homelessness Gross Receipts Tax Overpayments for # Tax Year
+1966	3	Removal of Max Carter-Oberstone from the Police Commission
+1967	3	Request for Proposal - Budget and Legislative Analyst Services
+1968	3	Resolution of Intention to Establish Infrastructure and Revitalization Financing District No. # (Hoedown Yard, Pier # )
+1969	3	Revolving Fund Agreement - Retroactive - California Victim Compensation Board - Emergency Expense of Crime Victims - $
+1970	3	Reward - Property Tax Underpayment Information - Natasha Khoruzhenko - $
+1971	3	SFPUC Wastewater Revenue Bond Issuance - Various Capital Wastewater Projects Benefitting the Wastewater Enterprise - Not to Exceed $
+1972	3	SFPUC Water Revenue Bond and Other Forms of Indebtedness Issuance - Various Capital Water Projects Benefitting the Water Enterprise - Not to Exceed $
+1973	3	San Francisco Public Utilities Commission Power Revenue Bond Issuance - Various Capital Projects Benefitting the Power Enterprise - Not to Exceed $
+1974	3	San Francisco Public Utilities Commission Wastewater Revenue Bond Issuance and Other Forms of Indebtedness Issuance - Not to Exceed $
+1975	3	San Francisco Public Utilities Commission Water Revenue Bond and Other Forms of Indebtedness Issuance - Various Capital Water Projects Benefitting the Water Enterprise - Not to Exceed $
+1976	3	Second Amendment to Memorandum of Understanding - Service Employees International Union, Local # - Staff and Per Diem Nurses
+1977	3	Settlement of Federal Energy Regulatory Commission Matters with PG&E
+1978	3	Settlement of Lawsuit - AT&T Corporation and Pacific Bell Telephone Company - City to Receive $
+1979	3	Settlement of Lawsuit - California State Lands Commission - Non-Monetary Terms
+1980	3	Settlement of Lawsuit - San Francisco Apartment Association, And Small Property Owners Of San Francisco Institute - $
+1981	3	Settlement of Lawsuit - San Francisco Apartment Association, San Francisco Association of Realtors, Coalition for Better Housing, and Small Property Owners of San Francisco Institute - $
+1982	3	Settlement of Lawsuit - San Francisco Apartment Association, et al. - $
+1983	3	Settlement of Lawsuit - Small Property Owners of San Francisco Institute - $
+1984	3	Settlement of Lawsuit - U.S. Telepacific Corp., dba TPx Communications - City to Receive $
+1985	3	Settlement of Lawsuit and Tolling Agreement - Airbnb, Inc. and HomeAway.com, Inc. - City to Receive $ plus $ Annually
+1986	3	Settlement of Unlitigated Claim - CM Bivens - $
+1987	3	Settlement of Unlitigated Claims - Constellation New Energy - Gas Division, LLC - $ ; Energy Center San Francisco, LLC - $
+1988	3	Settlement of Unlitigated Claims - PFP Holdings, Inc. - $
+1989	3	Settlement of Unlitigated Claims - Sherry Jackson - $ ; Related Appropriation Wastewater Enterprise Fund Balance
+1990	3	Settlement of Unlitigated Claims - Webcor Construction, L.P. - City to Receive $
+1991	3	Settlement of Unlitigated Grievances - Service Employees International Union, Local # - $
+1992	3	Seven-Party Supplement to the # Memorandum of Understanding - Peninsula Corridor Electrification Project
+1993	3	Street Vacation - Potrero HOPE SF Project - Phase #
+1994	3	Subdivision Code - Regulating Certain Below Market Rate Condominium Conversion Units
+1995	3	Subdivision Code - Requirements for Communications Services Facilities
+1996	3	Subdivision Code - Transfer Subdivision Maps
+1997	3	Sunnydale HOPE SF - Accepting the Phase 1A- # and 1A- # Required Infrastructure
+1998	3	Support for Kome Seafood Buffet Workers’ Demands to Settle Wage Claims
+1999	3	Supporting BAHFA November # General Obligation Bond for Affordable Housing
+2000	3	Supporting California State Assembly Bill No. # (Wicks) - California Journalism Preservation Act

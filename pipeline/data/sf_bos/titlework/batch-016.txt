@@ -1,0 +1,250 @@
+3751	2	Mayoral Appointment, Public Utilities Commission - Tony Rivera
+3752	2	Mayoral Appointment, Public Works Commission - Eleanor Blume
+3753	2	Mayoral Appointment, Public Works Commission - Paul Woolford
+3754	2	Mayoral Appointment, Redevelopment Successor Agency Oversight Board - Anna Van Degna
+3755	2	Mayoral Appointment, Redevelopment Successor Agency Oversight Board - Lisa Chen
+3756	2	Mayoral Appointment, Redevelopment Successor Agency Oversight Board - Lydia Ely
+3757	2	Mayoral Appointment, Redevelopment Successor Agency Oversight Board - Timothy Kojo Minta
+3758	2	Mayoral Appointment, Residential Rent Stabilization and Arbitration Board - Dave Wasserman
+3759	2	Mayoral Appointment, Residential Rent Stabilization and Arbitration Board - Jeffrey Joshua Panzer
+3760	2	Mayoral Appointment, Residential Rent Stabilization and Arbitration Board - Reese Isbell
+3761	2	Mayoral Appointment, Sanitation and Streets Commission - Azalina Eusope
+3762	2	Mayoral Appointment, Sanitation and Streets Commission - Ike Kwon
+3763	2	Mayoral Appointment, Sanitation and Streets Commission - Jayshawn Anderson
+3764	2	Mayoral Appointment, Sanitation and Streets Commission - Maryo Mogannam
+3765	2	Mayoral Appointment, Sanitation and Streets Commission - Stuart Parmenter
+3766	2	Mayoral Appointment, Sheriff’s Department Oversight Board - Dion-Jay Brookter
+3767	2	Mayoral Appointment, Sheriff’s Department Oversight Board - Julie Soo
+3768	2	Mayoral Appointment, Sheriff’s Department Oversight Board - Mark Gonzales
+3769	2	Mayoral Appointment, Successor Agency Commission (Commonly Known as Commission on Community Investment and Infrastructure) - Carolyn Ransom-Scott
+3770	2	Mayoral Appointment, Successor Agency Commission (Commonly known as the Commission on Community Investment and Infrastructure) - Earl Shaddix
+3771	2	Mayoral Appointment, Successor Agency Commission (Commonly known as the Commission on Community Investment and Infrastructure) - Mark Miller
+3772	2	Mayoral Appointment, Treasure Island Development Authority Board of Directors - Eric Dasmalchi
+3773	2	Mayoral Appointment, Treasure Island Development Authority Board of Directors - Ike Kwon
+3774	2	Mayoral Appointment, Treasure Island Development Authority Board of Directors - Jeanette Howard
+3775	2	Mayoral Appointment, Treasure Island Development Authority Board of Directors - Julia Prochnik
+3776	2	Mayoral Appointment, Treasure Island Development Authority Board of Directors - LaShawndra Price-Breston
+3777	2	Mayoral Appointment, Treasure Island Development Authority Board of Directors - Nabihah Azim
+3778	2	Mayoral Appointment, Treasure Island Development Authority Board of Directors - Paul Giusti
+3779	2	Mayoral Appointment, Treasure Island Development Authority Board of Directors - Ruby Bolaria-Shifrin
+3780	2	Mayoral Appointment, Treasure Island Development Authority Board of Directors - Sharon Lai
+3781	2	Mayoral Appointment, Treasure Island Development Authority Board of Directors - Timothy Kojo Minta
+3782	2	Mayoral Nomination of Appointment, Human Resources Director - Carol Isen
+3783	2	Mayoral Reappointment, Aging and Adult Services Commission - Gustavo Seriñá
+3784	2	Mayoral Reappointment, Airport Commission - Richard Guggenhime
+3785	2	Mayoral Reappointment, Board of Appeals - Ann Lazarus
+3786	2	Mayoral Reappointment, Board of Appeals - Jose Lopez
+3787	2	Mayoral Reappointment, Building Inspection Commission - Bianca Neumann
+3788	2	Mayoral Reappointment, City Hall Preservation Advisory Commission - James Haas
+3789	2	Mayoral Reappointment, City Hall Preservation Advisory Commission - Patrick Carney
+3790	2	Mayoral Reappointment, Civil Service Commission - Jacqueline Minor
+3791	2	Mayoral Reappointment, Civil Service Commission - Kate Favetti
+3792	2	Mayoral Reappointment, Controller - Ben Rosenfield
+3793	2	Mayoral Reappointment, Entertainment Commission - Cynthia Wang
+3794	2	Mayoral Reappointment, Entertainment Commission - Lieutenant David Falzon
+3795	2	Mayoral Reappointment, Historic Preservation Commission - Kate Black
+3796	2	Mayoral Reappointment, Historic Preservation Commission - Lydia So
+3797	2	Mayoral Reappointment, Historic Preservation Commission - Richard Johns
+3798	2	Mayoral Reappointment, Juvenile Probation Commission - James Spingola
+3799	2	Mayoral Reappointment, Juvenile Probation Commission - Joseph Arellano
+3800	2	Mayoral Reappointment, Juvenile Probation Commission - Toye Moses
+3801	2	Mayoral Reappointment, Municipal Transportation Agency Board of Directors - Cheryl Brinkman
+3802	2	Mayoral Reappointment, Municipal Transportation Agency Board of Directors - Dominica Henderson
+3803	2	Mayoral Reappointment, Municipal Transportation Agency Board of Directors - Fiona Hinze
+3804	2	Mayoral Reappointment, Municipal Transportation Agency Board of Directors - Janet Tarlov
+3805	2	Mayoral Reappointment, Municipal Transportation Agency Board of Directors - Mike Chen
+3806	2	Mayoral Reappointment, Municipal Transportation Agency Board of Directors - Sharon Lai
+3807	2	Mayoral Reappointment, Planning Commission - Milicent Johnson
+3808	2	Mayoral Reappointment, Planning Commission - Rachael Tanner
+3809	2	Mayoral Reappointment, Planning Commission - Rodney Fong
+3810	2	Mayoral Reappointment, Police Commission - Larry Yee
+3811	2	Mayoral Reappointment, Police Commission - Max Carter-Oberstone
+3812	2	Mayoral Reappointment, Port Commission - Doreen Woo Ho
+3813	2	Mayoral Reappointment, Port Commission - Gail Gilman
+3814	2	Mayoral Reappointment, Public Utilities Commission - Ike Kwon
+3815	2	Mayoral Reappointment, Public Utilities Commission - Sophie Maxwell
+3816	2	Mayoral Reappointment, Successor Agency Commission (Commonly known as the Commission on Community Investment and Infrastructure) - Carolyn Ransom-Scott
+3817	2	Mayoral Reappointment, Treasure Island Development Authority Board of Directors - Julia Prochnik
+3818	2	Mayoral Reappointment, Treasure Island Development Authority Board of Directors - LaShawndra Price-Breston
+3819	2	Mayoral Reappointment, Treasure Island Development Authority Board of Directors - Paul Giusti
+3820	2	Mayoral Reppointment, Historic Preservation Commission - Andrew Wolfram
+3821	2	Mayoral Reppointment, Public Utilities Commission - Anson Moran
+3822	2	Memorandum of Understanding - Accept and Expend Grants - San Francisco Parks Alliance - Crane Cove Park - Up to $
+3823	2	Memorandum of Understanding - California Automated Consortium Eligibility System - Welfare Client Data System Consortium - Shared Services Approval
+3824	2	Memorandum of Understanding - JPB Caltrain Governance
+3825	2	Memorandum of Understanding - Metropolitan Transportation Commission and Bay Area Transit Operators - Next Generation Clipper® System
+3826	2	Memorandum of Understanding - Reorganization of the Housing Authority of the City and County of San Francisco - Loan Not to Exceed $
+3827	2	Memorandum of Understanding - Retroactive - The Regents of the University of California, San Francisco Campus - No Cost
+3828	2	Memorandum of Understanding - San Francisco Community College District - Use of San Francisco City College Enrollment Fee Assistance Fund - Not to Exceed $
+3829	2	Memorandum of Understanding - Service Employees International Union, Local # (Miscellaneous)
+3830	2	Memorandum of Understanding - Supervising Probation Officers
+3831	2	Memorandum of Understanding - Teamsters, Local # (Multi-Unit)
+3832	2	Memorandum of Understanding - Treasure Island Development Authority - Wastewater Treatment and Recycling Facilities - Treasure Island and Yerba Buena Island
+3833	2	Memorandum of Understanding - Urban Areas Security Initiative
+3834	2	Memorandum of Understanding Agreement - United States Capitol Police - Supplemental Law Enforcement Services
+3835	2	Memorandum of Understanding Regarding Interagency Cooperation - Mission Rock Project
+3836	2	Memorandum of Understanding Regarding Interagency Cooperation - Pier # Project
+3837	2	Mental Health Services Act - Program and Expenditure Plan (Integrated Plan)
+3838	2	Michael P. Kelly - March # , #
+3839	2	Michael Rios - San Francisco Artist Emeritus
+3840	2	Military Equipment Use Policy and Additional Equipment Approval - Annual Report
+3841	2	Mission and Excelsior Science Workshops Day - October # , #
+3842	2	Modification to the Airport Professional Services Agreement - Hallmark Aviation Services, L.P. - Airport Information and Guest Assistance Services - Two-Year Contract Extension Not to Exceed $
+3843	2	Modification to the Airport Professional Services Agreement - SP Plus Corporation - Curbside Management Program - Two-Year Contract Extension - Not to Exceed $
+3844	2	Modifying Time for Submission of Charter Amendment - Rules # and #
+3845	2	Modifying Time for Submission of Charter Amendment under Rules # and #
+3846	2	Moving Vision Zero Forward
+3847	2	Multifamily Housing Revenue Bonds and Notes - Amendments - Volume Cap Recycling
+3848	2	Municipal Elections Code - Expanded Vote-by-Mail for the November # , # Election - Voter’s Choice Act
+3849	2	Municipal Elections Code - Open Source Voting
+3850	2	National Adopt a Cat Month - June
+3851	2	National Crime Victims’ Rights Week - April # through April # , #
+3852	2	National Donate Life Month - April
+3853	2	National Gun Violence Survivors Week - February # , # , through February # , #
+3854	2	National Gun Violence Survivors Week - February # through February # , #
+3855	2	National Gun Violence Survivors Week - January # through January # , #
+3856	2	National Human Trafficking Prevention Month - January #
+3857	2	National Kidney Month - March #
+3858	2	National Mental Health Awareness Month - May #
+3859	2	National Recovery Month - September #
+3860	2	National Service Dog Awareness Month - September #
+3861	2	National Service Dog Month - September #
+3862	2	National Stuttering Awareness Week - May # through # , #
+3863	2	National Week of Remembrance for Those We’ve Lost to COVID- # - October # through October # , #
+3864	2	Negotiate Purchase and Sale or Lease Agreements - California Department of Transportation (Caltrans) - Homeless Services on Caltrans Property
+3865	2	Niners Day - February # , #
+3866	2	Nominating Supervisor Peskin for Reappointment to California Coastal Commission
+3867	2	Nominating Supervisor Peskin or Supervisor Mandelman - Appointment to California Coastal Commission
+3868	2	Nomination Process and Appointment of a Successor Mayor
+3869	2	Nomination of County Veterans Service Officer - Sergeant Dorian J. Carr, United States Air Force, Retired
+3870	2	Noreen Ambrose Day - June # , #
+3871	2	Novation Agreement - MWH Americas, Inc. to Stantec Consulting Services, Inc. - Planning and Engineering Services Contract - Central Bayside System Improvement Project
+3872	2	Office of Community Investment and Infrastructure, Operating as Successor Agency to the San Francisco Redevelopment Agency, FY Budget - Bond Issuance Not to Exceed $
+3873	2	Office of the Treasurer & Tax Collector to Examine Confidential California Department of Tax and Fee Administration Records
+3874	2	Official Advertising - San Francisco Print Media Co. (dba The SF Examiner) - FY
+3875	2	Official Advertising - San Francisco Print Media Co. (dba The San Francisco Examiner) - FY
+3876	2	Official Seal of the City and County of San Francisco - Use for an Artist Publication
+3877	2	Opposing California Department of Finance Proposal - Local Property Taxes and ERAF Provisions in the Education Omnibus Trailer Bill
+3878	2	Opposing California State Assembly Bill # (Flora) - Standup Electric Scooters
+3879	2	Opposing California State Assembly Bill No. # (Berman) - Expanded State Density Bonus Law - Unless Amended
+3880	2	Opposing California State Assembly Bill No. # (Chau) - Facial Recognition Technology
+3881	2	Opposing California State Proposition # - App-Based Drivers as Contractors and Labor Policies Initiative - November # , # , Ballot
+3882	2	Opposing California State Proposition # - Criminal Sentencing, Parole, and DNA Collection Initiative - November # , # , Ballot
+3883	2	Opposing California State Proposition # on the November # , # , Ballot
+3884	2	Opposing California State Senate Bill # (Hueso) - Wireless and Small Cell Telecommunication Facilities
+3885	2	Opposing California State Senate Bill No. # (Archuleta) - Local Requirements for Electric Appliances
+3886	2	Opposing California State Senate Bill No. # (Stern) - Targeted Advertising Loophole to the California Consumer Protection Act
+3887	2	Opposing California State Senate Bill No. # (Wiener) Unless Amended and Expressing Support for the California Coastal Act and Recognizing the Authority of the California Coastal Commission
+3888	2	Opposing Human Rights Violations in Colombia
+3889	2	Opposing India’s Exclusionary National Register of Citizens and Citizenship Amendment Act
+3890	2	Opposing Proposed California Ballot Measure - Expanding Requirement for Supermajority Approval to Enact New Revenue Measures
+3891	2	Opposing State Cuts to Medi-Cal for Undocumented Adults and Reaffirming San Francisco’s Commitment to Immigrant Health Equity
+3892	2	Opposing United States Housing & Urban Development Rule Prohibiting Mixed Status Families from Receiving Federal Housing Assistance
+3893	2	Opposing the Budget Change Proposal of the California Department of Fish and Wildlife on Commercial Fishing Landing Taxes
+3894	2	Opposing the Dismantling of the Coordinated Care Initiative and the In-Home Supportive Services Maintenance of Effort (MOE) Cost Sharing Agreement - Supporting Ongoing Negotiations to Fund and Reinstate the # MOE
+3895	2	Opposing the U.S. Environmental Protection Agency’s Proposal to Rescind the # Greenhouse Gas Endangerment Finding
+3896	2	Organized Retail Theft Prevention Grant Program - Waiving Competitive Procurement Requirements Under Administrative Code
+3897	2	Original Agreement - Edgewood Center for Children and Families - Behavioral Health Services for Children and Families - Not to Exceed $
+3898	2	Outreach Community Advertising and Neighborhood Outreach Advertising - Small Business Exchange; SF Bayview; El Reportero; Sing Tao Daily; World Journal SF; Bay Area Reporter; Jasmine Blue Media LLC, dba Marina Times; The Potrero View - FY
+3899	2	Outreach Community Advertising and Neighborhood Outreach Advertising - Small Business Exchange; Sing Tao Daily; World Journal SF LLC; El Reportero; Bay Area Reporter; The Potrero View; Jasmine Blue Media, dba Marina Times - FY
+3900	2	Outreach Community Advertising and Outreach Neighborhood Advertising - Bay Area Reporter; World Journal SF; El Reportero; San Francisco Bay View; San Francisco Bay Times; Noe Valley Voice; Marina Times; El Tecolote Newspaper; Wind Newspaper - FY
+3901	2	Outreach Community Advertising and Outreach Neighborhood Advertising - El Reportero; Bar Media; SF Bay View; San Francisco Bay Times; The Noe Valley Voice; Street Media; Accion Latina; Wind Newspaper; Sing Tao Daily - FY
+3902	2	Outreach Community Advertising and Outreach Neighborhood Advertising - El Tecolote Newspaper, El Reportero, Bay Area Reporter, San Francisco Bay Times, Wind Newspaper, Sing Tao Daily, San Francisco Chronicle - FY
+3903	2	Outreach Community and Neighborhood Advertising; Wind Newspaper, Potrero View, World Journal - FY
+3904	2	Outreach Community-Based Weekly Advertising and Outreach Neighborhood-Based Monthly Advertising - Various Newspapers - FY
+3905	2	Outreach Community-Based Weekly Advertising and Outreach Neighborhood-Based Monthly Advertising - Various Periodicals - FY
+3906	2	Parking and Transit Violation Citation Overpayments - Transfer to the General Fund - Up to $
+3907	2	Parking and Transit Violation Citation Overpayments Transfer to the General Fund - Up to $
+3908	2	Parkinson’s Awareness Month - April #
+3909	2	Participant Acknowledgement of Technical Assistance Marketplace Terms and Conditions - California State Department of Healthcare Services - State Technical Assistance Marketplace Program
+3910	2	Participation Agreement - California Mental Health Services Authority - Tech Suite Mental Health Services Act Innovation Program - Not to Exceed $
+3911	2	Participation Agreement Modification - California Mental Health Services Authority - Tech Suite Mental Health Services Act Innovation Program - Not to Exceed $
+3912	2	Participation Agreement and Administrative Services Agreement - Retroactive - California Department of Health Care Services - Medi-Cal County Inmate Program - Not to Exceed $
+3913	2	Participation Costs for CleanPowerSF Membership - California Community Power Authority - Not to Exceed $
+3914	2	Peninsula Corridor Joint Powers Board - Issuance and Sale - Measure RR Sales Tax Revenue Bonds - NTE $ - Refund - PCJPB Revenue Bonds, # Series A - NTE $ - Replacement of Existing Revolving Credit Facilities
+3915	2	Performance Contract Agreement - Retroactive - California Department of Health Care Services - Community Behavioral Health Services - Mental Health Services Act and Various Programs
+3916	2	Performance Contract Agreement No. # - California Department of Health Care Services - Community Behavioral Health Services - Mental Health Services Act and Various Programs
+3917	2	Permit To Enter City Property - San Mateo Resource Conservation District - # Log Cabin Ranch Road - Mindego Creek Fish Passage Project - # Year Term
+3918	2	Pete Escovedo Day - August # , #
+3919	2	Peter Keane Day - February # , #
+3920	2	Petra DeJesus Day - April # , #
+3921	2	Philip P. Choy Day - April # , #
+3922	2	Pier # Fire - Declaration of Emergency and Authorization for Emergency Contracts
+3923	2	Planning Code - # % Affordable Housing Bonus Program
+3924	2	Planning Code - Amusement Arcades in the South of Market Service/Light Industrial District
+3925	2	Planning Code - Arts Activities, Social Service or Philanthropic Facilities, and COVID- # Recovery Activities as Temporary Uses; Fee Waiver for COVID- # Recovery Activities
+3926	2	Planning Code - Automotive Uses
+3927	2	Planning Code - Automotive Uses; Housing Density
+3928	2	Planning Code - Catering as an Accessory Use in Neighborhood Commercial Districts
+3929	2	Planning Code - Conditional Use Authorization Required for Employee Cafeterias within Office Space
+3930	2	Planning Code - Continuation of Nonconforming Public Parking Lots in CMUO and MUR
+3931	2	Planning Code - Density Exception on Specified Lots with Numerical Density Limits
+3932	2	Planning Code - Development Impact Fees for Commercial to Residential Adaptive Reuse Projects
+3933	2	Planning Code - Downtown Support Special Use District; Fees in Lieu of On-Site Open Space; Gift Acceptance
+3934	2	Planning Code - Dwelling Unit Mix Requirements
+3935	2	Planning Code - Eliminating Public Art Requirement for # % Affordable Housing Projects
+3936	2	Planning Code - Formula Retail
+3937	2	Planning Code - Group Housing Definition
+3938	2	Planning Code - Health Service Uses and Reproductive Health Clinics in the Mixed Use-Office District
+3939	2	Planning Code - Housing Balance Report
+3940	2	Planning Code - Inclusionary Affordable Housing Fee Requirements
+3941	2	Planning Code - Legitimization Program for Non-Residential Uses at # 18th Street
+3942	2	Planning Code - Minimum Densities for Residential Projects in RM, RC, and RTO Districts
+3943	2	Planning Code - Noriega, Irving, Taraval, and Judah NCDs; Conditional Use Authorization for Bars, Liquor Stores, Personal Services, and Medical Cannabis Dispensaries
+3944	2	Planning Code - North Beach, Telegraph Hill, Broadway and Chinatown Area Controls; Formula Retail
+3945	2	Planning Code - Permit Review Procedures for Uses in Neighborhood Commercial Districts
+3946	2	Planning Code - Permits to Install Business Signs to Historic Buildings or Buildings in Conservation Districts in the C- # (Downtown) Area
+3947	2	Planning Code - Production, Distribution, and Repair Districts
+3948	2	Planning Code - Signs - Exemptions and General Advertising Sign Penalties
+3949	2	Planning Code - Unauthorized and Rent-Controlled Dwelling Units
+3950	2	Planning Code - Union Square Park, Recreation, and Open Space Fee
+3951	2	Planning Code - Wireless Telecommunications Services Facilities
+3952	2	Planning Code, Zoning Map - Central SoMa and Transit Center District Commercial Development Requirements
+3953	2	Planning Code, Zoning Map - Production, Distribution, and Repair Uses
+3954	2	Planning Code; Administrative Code - Legacy Businesses in Neighborhood Commercial Districts
+3955	2	Planning Code; Zoning Map - Consolidating the North Beach Special Use and Neighborhood Commercial Districts and Expanding Allowable Uses and Use Size Limits in Certain Zoning Districts
+3956	2	Planning and Building Codes - Amnesty for Properties in the Department of Building Inspection’s Internal Quality Control Audit
+3957	2	Planning, Administrative Codes - Dwelling Unit Density Exception in Residential Districts and Rent Control of Bonus Dwelling Units
+3958	2	Planning, Administrative Codes - Legitimization Program for Non-Residential Uses at # 18th Street
+3959	2	Planning, Building Codes - Controls on Residential Demolition, Merger, Conversion, and Alteration
+3960	2	Planning, Building Codes - Controls on Residential Demolition, Merger, Conversion, and Alteration; Review of Additional Non-Residential Changes of Use and Alterations
+3961	2	Planning, Building Codes - Reauthorization and Extension of Fee Waiver - Legalization of Unauthorized Dwelling Units
+3962	2	Planning, Building, Fire Codes - Small Business Month Fee Waivers Including for Awning Installation and Business Signs
+3963	2	Pledge Agreement - City and County of San Francisco Infrastructure Financing District No. # (Port of San Francisco) Sub-Project Areas I- # through I- # - Special Tax Bonds - CCSF Special Tax District No. # (Mission Rock Facilities and Services)
+3964	2	Pledge Agreement Related Documents - CCSF Infrastructure Financing District No. # (Port of San Francisco) Sub-Project Areas I- # through I- # - Special Tax Bonds - CCSF Special Tax District No. # (Mission Rock Facilities and Services)
+3965	2	Pledge Agreement Related Documents - CCSF Infrastructure Financing District No. # (Port of San Francisco), Sub-Project Areas I- # through I- # - Special Tax Bonds - CCSF Special Tax District No. # (Mission Rock Facilities and Services)
+3966	2	Pokémon Day - February # , #
+3967	2	Pokémon Spring Celebration Day - April # , #
+3968	2	Police Code - Discriminatory Reports to Law Enforcement
+3969	2	Police Code - Grocery Store, Drug Store, Restaurant, and On-Demand Delivery Service Worker Protections
+3970	2	Police Commission - Statement of Purpose
+3971	2	Police, Administrative Codes - Employer Consideration of Applicant’s Salary History
+3972	2	Police, Building Codes - Bond for Labor Standards Compliance in Certain Residential Construction Projects
+3973	2	Port Commission Revenue Bonds - Not to Exceed $
+3974	2	Portal Project Implementation Memorandum of Understanding - Transbay Joint Powers Authority - Phase # of the Transbay Program
+3975	2	Predevelopment Agreement Amendment - Retroactive - Potrero Neighborhood Collective LLC - # Mariposa - Potential Termination Payment Not to Exceed $
+3976	2	Pregnancy and Infant Loss Remembrance Day - October # , #
+3977	2	Preparation of Proponent/Opponent Ballot Arguments and Rebuttal Ballot Arguments - November # , #
+3978	2	Presidential Appointment, Board of Appeals - Jefferson Robert Eppler
+3979	2	Presidential Appointment, Board of Appeals - Robin Abad Ocubillo
+3980	2	Presidential Appointment, Board of Appeals - Tina Chang
+3981	2	Presidential Appointment, Building Inspection Commission - Judy Lee
+3982	2	Presidential Appointment, Enhanced Infrastructure Financing District Public Financing Authority No. # - Gayle Starr
+3983	2	Presidential Appointment, Enhanced Infrastructure Financing District Public Financing Authority No. # - Kath Tsakalakis
+3984	2	Presidential Appointment, Enhanced Infrastructure Financing District Public Financing Authority No. # - Katherine Doumani
+3985	2	Presidential Appointment, Enhanced Infrastructure Financing District Public Financing Authority No. # - Keith Goldstein
+3986	2	Presidential Appointment, Enhanced Infrastructure Financing District Public Financing Authority No. # - Supervisor Aaron Peskin
+3987	2	Presidential Appointment, Enhanced Infrastructure Financing District Public Financing Authority No. # - Supervisor Stephen Sherrill
+3988	2	Presidential Appointment, Planning Commission - Gabriella Ruiz
+3989	2	Presidential Appointment, Planning Commission - Gilbert Williams
+3990	2	Presidential Appointment, Planning Commission - Maria Theresa Imperial
+3991	2	Presidential Appointment, San Francisco Downtown Revitalization and Economic Recovery Financing District Board of Directors - Antonio Tolentino
+3992	2	Presidential Appointment, San Francisco Downtown Revitalization and Economic Recovery Financing District Board of Directors - Kristen Wang
+3993	2	Presidential Reappointment, Building Inspection Commission - Alysabeth Alexander-Tut
+3994	2	Presidential Reappointment, Building Inspection Commission - Kavin Williams
+3995	2	Presidential Reappointment, Child Care Planning and Advisory Council - Jessica Campos
+3996	2	Presidential Reappointment, Planning Commission - Kathrin Moore
+3997	2	Prevailing Wage Rates - Loading, Unloading, and Driving Commercial Vehicles on City Property
+3998	2	Prevailing Wage Rates - Security Guard Services
+3999	2	Prevailing Wage Requirements - Parking Meter Coin Collections and Counting
+4000	2	Prioritize Public Safety Response to Drug Activity Near Parks, Playgrounds, and Schools

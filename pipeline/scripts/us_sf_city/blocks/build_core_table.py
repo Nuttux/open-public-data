@@ -501,9 +501,14 @@ def main() -> int:
                      "not the line. Filter on this rather than trusting every row."},
             {"name": "classified_by",
              "values": ["form", "near-duplicate", "purpose-clause", "record",
-                        "rule"],
+                        "rule", "title"],
              "what": "`record` means a human read this row. `form` means a human "
                      "read the sentence-shape it shares with others. "
+                     "`title` means a human read the Clerk's own file title for "
+                     "it — the modern record carries one, and the WHOLE title is "
+                     "the key, because `Administrative Code` alone heads 1,477 "
+                     "records about rent control, surveillance policy, police "
+                     "equipment and the film commission. "
                      "`near-duplicate` means it is the same sentence as a labelled "
                      "row with different scan errors. `rule` means a pattern that "
                      "agreed 90-100% with a human read. `purpose-clause` means two "

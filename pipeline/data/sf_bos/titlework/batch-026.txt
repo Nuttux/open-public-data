@@ -1,0 +1,250 @@
+6251	1	Issuance of Subpoena - AECOM/Parsons Joint Venture - SFPUC Agreement No. CS- #
+6252	1	Jack and Jane Morrison Day - April # , #
+6253	1	Jodi Schwartz LYRIC Day - December # , #
+6254	1	Joint Closed Session - Joint Special Meeting with the Public Utilities Commission - Existing Litigation - Pacific Gas and Electric Company - March # , # , at # : # p.m.
+6255	1	La Casa de las Madres Day - April # , #
+6256	1	Labor and Employment Code - Prevailing Wages for Street Cleaning Services
+6257	1	Lease Agreement - Adam Light - Pre-Security Concessions - $ Minimum Annual Guarantee
+6258	1	Lease Agreement - Andale Management Group, Inc. - Preand Post-Security Concessions - $ Minimum Annual Guarantee
+6259	1	Lease Agreement - Avila Retail Development & Management, LLC - Terminal # Specialty Retail Concession - $ Initial Minimum Annual Guarantee
+6260	1	Lease Agreement - Bayport Concessions, LLC - Pre-Security Concession - $ Minimum Annual Guarantee
+6261	1	Lease Agreement - Brookstone SFO T- # , LLC - Terminal # Specialty Retail Concession - $ Initial Minimum Annual Guarantee
+6262	1	Lease Agreement - Host International, Inc. - Pre-Security Concessions - $ Minimum Annual Guarantee
+6263	1	Lease Agreement - Joe & The Juice SFO, LLC - Post-Security Concession - $ Minimum Annual Guarantee
+6264	1	Lease Agreement - Midfield Concession Enterprises, Inc. - Pre-Security Concession - $ Minimum Annual Guarantee
+6265	1	Lease Agreement - Mum Fresh SF, Inc. - Post-Security Concession - $ Minimum Annual Guarantee
+6266	1	Lease Agreement - SSP America, Inc. - Post-Security Concession - $ Minimum Annual Guarantee
+6267	1	Lease Agreement - SSP America, Inc. - Pre-Security Concession - $ Minimum Annual Guarantee
+6268	1	Lease Agreement - Stix Holdings, LLC - Pre-Security Concession - $ Minimum Annual Guarantee
+6269	1	Lease Agreement - Tastes On The Fly, San Francisco, LLC - Preand Post-Security Concessions - $ Minimum Annual Guarantee
+6270	1	Lease Agreement - Tomokazu Japanese Cuisine (SFO), Inc. - Post-Security Concession - $ Minimum Annual Guarantee
+6271	1	Lease Amendment - Air Sun J.V. - Terminal # Concourse Specialty Store - Term Extension
+6272	1	Lease Amendment - Airport Concession Lease - Gotham Enterprises, LLC - Minimum Annual Guarantee #
+6273	1	Lease Amendment - Airport Concession Lease - Gotham Enterprises, LLC - Minimum Annual Guarantee $
+6274	1	Lease Amendment - Hudson News Company - Terminal # Boarding Area C Retail Lease - $ Minimum Annual Guarantee, $ Annual Promotional Charge, and Reimbursing $ for Unamortized Construction Costs
+6275	1	Lease Amendment - Retroactive - United States Customs and Border Protection - Customs Cargo Office Space at Building # - Annual Rent of $
+6276	1	Lease Amendment - United States Customs and Border Protection - Customs Cargo Office Space at Building # - Annual Rent of $
+6277	1	Lease of City Property - Our Planet Recycling SF, LLC - Assessor’s Parcel Block No. # , Lot No. # at Alemany Blvd. - Annual Base Rent of $
+6278	1	Limited Payment Guaranty - Maceo May Apts, L.P. - # % Affordable Housing at # Avenue of the Palms - Silicon Valley Bank - Not to Exceed $ - Raymond James Tax Credit Investment, Inc. - Not to Exceed $
+6279	1	Liquor License - # The Embarcadero
+6280	1	Liquor License Transfer - # Embarcadero Center, Suite R- # - SFGIFTBASKETS.COM
+6281	1	Liquor License Transfer - # Street - Bottle Bacchanal
+6282	1	Lucy Mirigian Day - August # , #
+6283	1	MAppointment, Entertainment Commission - Stephen Jon Torres
+6284	1	MMAppointment, Citizens' General Obligation Bond Oversight Committee - Benjamin Tingle
+6285	1	Maria Branyas Day - November # , #
+6286	1	Master Agreement - California Department of Transportation - State-Funded Transportation Projects
+6287	1	Master Lease Amendment - Retroactive - United States Navy - Treasure Island Land and Structures - Term Extension
+6288	1	Master Lease Amendment - United States Navy - Treasure Island Land and Structures
+6289	1	Mayoral Appointment, Aging and Adult Services Commission - Michael Pappas
+6290	1	Mayoral Appointment, Board of Appeals - Eleanor Blume
+6291	1	Mayoral Appointment, Board of Appeals - Richard Swig
+6292	1	Mayoral Appointment, Entertainment Commission - Cynthia Wang
+6293	1	Mayoral Appointment, Historic Preservation Commission - Dan Baroni
+6294	1	Mayoral Appointment, Historic Preservation Commission - Tara Sullivan
+6295	1	Mayoral Appointment, Homelessness Oversight Commission - Vikrum Aiyer
+6296	1	Mayoral Appointment, Municipal Transportation Agency - Fiona Hinze
+6297	1	Mayoral Appointment, Municipal Transportation Agency Board of Directors - Alfonso G. Felder
+6298	1	Mayoral Appointment, Municipal Transportation Agency Board of Directors - Fiona Hinze
+6299	1	Mayoral Appointment, Municipal Transportation Agency Board of Directors - Jane Natoli
+6300	1	Mayoral Appointment, Municipal Transportation Agency Board of Directors - Sharon Lai
+6301	1	Mayoral Appointment, Municipal Transportation Agency Board of Directors - Stephanie Cajina
+6302	1	Mayoral Appointment, Planning Commission - Milicent Johnson
+6303	1	Mayoral Appointment, Police Commission - Damali Taylor
+6304	1	Mayoral Appointment, Police Commission - Dion Jay Brookter
+6305	1	Mayoral Appointment, Police Commission - Geoffrey Gordon-Creed
+6306	1	Mayoral Appointment, Police Commission - Malia Cohen
+6307	1	Mayoral Appointment, Police Commission - Mattie Scott
+6308	1	Mayoral Appointment, Police Commission - Nancy Tung
+6309	1	Mayoral Appointment, Police Commission - Robert Hirsch
+6310	1	Mayoral Appointment, Public Works Commission - Irene Yee Riley
+6311	1	Mayoral Appointment, Recreation and Park Commission - Larry Mazzola Jr.
+6312	1	Mayoral Appointment, Recreation and Park Commission - Laurence Griffin
+6313	1	Mayoral Appointment, Recreation and Park Commission - Vanita Louie
+6314	1	Mayoral Appointment, Retirement Board - Scott Heldfond
+6315	1	Mayoral Appointment, Sanitation and Streets Commission - Stephen Adams
+6316	1	Mayoral Appointment, Treasure Island Development Authority Board of Directors - Jamal Anderson
+6317	1	Mayoral Appointment, Treasure Island Development Authority Board of Directors - Rohit Agarwal
+6318	1	Mayoral Reappointment, Board of Appeals - Eduardo Santacana
+6319	1	Mayoral Reappointment, Homelessness Oversight Commission - Sharky Laguana
+6320	1	Mayoral Reappointment, Oversight Board of the Successor Agency to the San Francisco Redevelopment Agency - John Rahaim
+6321	1	Mayoral Reappointment, Planning Commission - Joel Koppel
+6322	1	Mayoral Reappointment, Planning Commission - Susan Diamond
+6323	1	Memorandum of Understanding - Accept and Expend Grants - San Francisco Parks Alliance - Crane Cove Park - $
+6324	1	Mental Health Services Act - Three-Year Program and Expenditure Plan - FYS #
+6325	1	Military Equipment Use Policy # Annual Report
+6326	1	Mission Bay South - Delegation to Accept Public Infrastructure Improvements
+6327	1	Mission Bay South - Park P3 Acceptance
+6328	1	Mission Bay South - Parks P2 Parking Lot, P11-11A, P23, and P24 Acceptance
+6329	1	Modification of Time for Introduction of Charter Amendment - Student Success Fund
+6330	1	Modification to the Airport Professional Services Agreement - Faith Group, LLC - Program Management Support Services for the Airport Security Infrastructure Program - Not to Exceed $
+6331	1	Modification to the Airport Professional Services Agreement - Faith Group, LLC - Program Management Support Services for the Airport Security Infrastructure Program - Not to Exceed $ and Further Modifications Not to Exceed $
+6332	1	Modification to the Airport Professional Services Agreement - Retroactive - Hallmark Aviation Services, L.P. - Airport Information and Guest Assistance Services - Two-Year Contract Extension - Not to Exceed $
+6333	1	Modifying Time for Submission of Charter Amendment under Rule # - City Responsibility for Street Trees (File No. # )
+6334	1	Modifying Time for Submission of Charter Amendment under Rule # - Department of Police Accountability (File No. # )
+6335	1	Muni Heritage Month - September #
+6336	1	Municipal Elections Code - Ballot Argument Fees
+6337	1	National Crime Victims’ Rights Week - April # through # , #
+6338	1	Nomination of County Veterans Service Officer - Alfred Sims
+6339	1	Nomination of County Veterans Service Officer - Elena Kim
+6340	1	Nomination, California Coastal Commission - Supervisor Aaron Peskin
+6341	1	Office of Community Investment and Infrastructure, operating as Successor Agency to the San Francisco Redevelopment Agency - FY Budget - Bond Issuance Not to Exceed $
+6342	1	Opposing California Assembly Bill No. # (Mayes) - Electrical Corporations: Recovery of Catastrophic Wildfire Costs and Expenses
+6343	1	Opposing California State Senate Bill No. # (Skinner) - Expanded State Density Bonus Law - Unless Amended
+6344	1	Opposing Changes to Title IX that Diminish the Rights of Sexual Assault Victims at Institutions of Higher Education
+6345	1	Opposing Governor Newsom’s May Revision Proposal to Eliminate Adult Day Health Care and Community-Based Adult Services
+6346	1	Opposing President Trump’s “Commencing the Reduction of the Federal Bureaucracy” Executive Order
+6347	1	Opposing Proposed Renaming of the Metropolitan Oakland International Airport
+6348	1	Opposing the United States Department of Housing and Urban Development’s Proposed Affirmatively Further Fair Housing Rule
+6349	1	Outreach Community Advertising and Neighborhood Outreach Advertising - El Reportero; Bay Area Reporter; Jasmine Blue Media LLC, dba Marina Times; The Potrero View; World Journal SF LLC; San Francisco Bay Times - FY
+6350	1	Outreach Community Advertising and Neighborhood Outreach Advertising - Small Business Exchange; El Reportero; Bay Area Reporter; Jasmine Blue Media LLC, dba Marina Times; The Potrero View - FY
+6351	1	Outreach Community Advertising and Neighborhood Outreach Advertising - Small Business Exchange; El Reportero; Bay Area Reporter; Jasmine Blue Media LLC, dba Marina Times; The Potrero View; Sing Tao Daily; World Journal SF LLC; SF Bayview - FY
+6352	1	Parcel Map No. # - Potrero HOPE SF Project, Phase #
+6353	1	Parcel Map No. # - Treasure Island
+6354	1	Park Code - John F. Shelley Drive - Road Closure
+6355	1	Park Code - Parking Fees
+6356	1	Paul Guisto Day - January # , #
+6357	1	Performance Contract Amendment - California Department of Health Care Services - County of San Francisco - Mental Health Services Act and Various Programs
+6358	1	Planning Code - # % Affordable Housing
+6359	1	Planning Code - Arts Activities and Nighttime Entertainment Uses in Historic Buildings
+6360	1	Planning Code - Cannabis Retail Uses
+6361	1	Planning Code - Car-Share and Shared Limited Range Vehicle Parking Requirements
+6362	1	Planning Code - Car-Share and Shared Short Range Vehicle Parking Requirements
+6363	1	Planning Code - Child Care Requirements for Office and Residential Projects and Associated Fees
+6364	1	Planning Code - Commercial Uses in North Beach; Technical and Other Amendments
+6365	1	Planning Code - Conditional Use Authorization Requirements Regarding Residential Care Facilities
+6366	1	Planning Code - Continuation of Nonconforming Parking Lots in CMUO and MUR
+6367	1	Planning Code - Definitions, Family, Dwelling Unit
+6368	1	Planning Code - Density Controls in Three Historic Districts
+6369	1	Planning Code - Dwelling Unit Density Exception for Corner Lots in Residential Districts
+6370	1	Planning Code - Exempting Certain Historic Landmarks From November # Ballot Measure Requiring Conditional Use Authorization to Replace Production, Distribution, and Repair, Institutional Community, and Arts Activities Uses
+6371	1	Planning Code - Exemption from Density Limits for Affordable and Unauthorized Units; Residential Care Facilities
+6372	1	Planning Code - Expansion of Limited Commercial Uses
+6373	1	Planning Code - Flexible Retail Use
+6374	1	Planning Code - Formula Retail Controls
+6375	1	Planning Code - Four-Unit Density Exception for Residential Districts
+6376	1	Planning Code - Health Service Uses in the Mixed Use-Office District
+6377	1	Planning Code - Hotel Uses in North Beach
+6378	1	Planning Code - Illegal and Unauthorized Dwelling Units; Demolition of Single-Family Homes
+6379	1	Planning Code - Impact Fees for Changes of Use From Production, Distribution, and Repair to Other Non-Residential Uses
+6380	1	Planning Code - Jobs Housing Linkage Fee
+6381	1	Planning Code - Landmark Designation - # 14th Street (aka former Welsh Presbyterian Church)
+6382	1	Planning Code - Landmark Designation - # 24th Street (The Galería de la Raza/Studio # Building)
+6383	1	Planning Code - Landmark Designation - # 32nd Avenue (aka George Washington High School)
+6384	1	Planning Code - Lower Polk Street Alcohol Restricted Use District
+6385	1	Planning Code - Modifying Conditional Use Authorizations and Nonconforming Uses
+6386	1	Planning Code - Notice for Housing Element Required Rezoning
+6387	1	Planning Code - Office Development Conversions
+6388	1	Planning Code - Prohibiting Employee Cafeterias within Office Space
+6389	1	Planning Code - Scooter Parking
+6390	1	Planning Code - Single, Two and Three-Family Home Bonus Program
+6391	1	Planning Code - Transit-Oriented Residential Development
+6392	1	Planning Code - Updating Requirements for Institutional Master Plans
+6393	1	Planning Code, Zoning Map - Central South of Market Special Use District
+6394	1	Planning Code, Zoning Map - Family and Senior Housing Opportunity Special Use District
+6395	1	Planning Code, Zoning Map - Sunnydale HOPE SF Zoning Map Amendments
+6396	1	Planning, Administrative Codes - Construction of Accessory Dwelling Units
+6397	1	Planning, Administrative Codes - Temporary Use of Hotels and Motels for Permanent Supportive Housing
+6398	1	Planning, Building Codes - Accessory Dwelling Unit Fee Deferral
+6399	1	Planning, Building Codes - Accessory Dwelling Units
+6400	1	Planning, Building Codes - Noncomplying and Accessory Structures
+6401	1	Planning, Environment Codes - Parking Requirements
+6402	1	Police Code - Agreements Between Cannabis Businesses and Labor Organizations - Hiring Graduates of Apprenticeship and Pre-Apprenticeship Programs
+6403	1	Police Code - Employer Consideration of Applicant’s Salary History
+6404	1	Police Code - Grocery Store, Drug Store, Restaurant, and On-Demand Delivery Service Employee Protections
+6405	1	Police Code - Penalties for Violations of Peddling License Requirement
+6406	1	Police Code - Process for Removal of Encampments and Transition to Housing
+6407	1	Police Code - Prohibiting Pregnancy Discrimination in Housing
+6408	1	Police Code - Video Cameras Monitoring Shoppers’ Movements in Retail Stores
+6409	1	Police, Business and Tax Regulations Codes - Event-Related Cannabis Permits - Application Fee
+6410	1	Preparation of Findings to Reverse Municipal Transportation Agency Decision - Overnight Recreational Large Vehicle Parking Restrictions
+6411	1	Preparation of Findings to Reverse the Final Environmental Impact Report Certification - Alameda Creek Recapture Project
+6412	1	Presidential Appointment, Board of Appeals - Darryl Honda
+6413	1	Presidential Appointment, Board of Appeals - Lily Wong
+6414	1	Presidential Appointment, Board of Appeals - Richard Swig
+6415	1	Presidential Appointment, Building Inspection Commission - Alysabeth Alexander-Tut
+6416	1	Presidential Appointment, Building Inspection Commission - Evita Chavez
+6417	1	Presidential Appointment, Building Inspection Commission - Kavin Williams
+6418	1	Presidential Appointment, Child Care Planning and Advisory Council - Jessica Campos
+6419	1	Presidential Appointment, Park, Recreation, and Open Space Advisory Committee - Eric Randall
+6420	1	Presidential Appointment, Planning Commission - Deland Chan
+6421	1	Prioritize Emergency Response to Drug Activity Near Parks, Playgrounds, and Schools
+6422	1	Problem Gambling Awareness Month - March #
+6423	1	Project Partnership Agreement - Army Corps of Engineers - Dredging of Central Basin by Pier # - Not to Exceed $
+6424	1	Promoting Safety and Minimizing Displacement of Unauthorized Live/Work Spaces and Entertainment Venues
+6425	1	Proposing Addition of Territory to and Adoption of Amended Infrastructure Financing Plan - Infrastructure and Revitalization Financing District No. # (Treasure Island)
+6426	1	Public Defender’s “MAGIC” (Mobilization for Adolescent Growth in our Communities) Programs in the Bayview and Fillmore/Western Addition Neighborhoods
+6427	1	Public Trust Exchange Agreement - California State Lands Commission - Exchange of Certain Streets in the Vicinity of the Millennium Tower and Transbay Terminal for Certain Fisherman’s Wharf Streets
+6428	1	Public Trust Exchange Agreement - California State Lands Commission - Exchange of Certain Streets in the Vicinity of the Transbay Terminal for Certain Fisherman’s Wharf Streets
+6429	1	Public Works Code - Excavation by Microtrenching
+6430	1	Public Works Code - Minor Encroachment Permits for Legacy Pushcart Peddlers
+6431	1	Public Works Code - Requirements for Surface-Mounted Facility Site Permits
+6432	1	Public Works Code - Street Tree Replacement
+6433	1	Public Works, Administrative, Planning Codes - Street Trees
+6434	1	Public Works, Police Codes - Prohibiting Autonomous Delivery Devices on Sidewalks and Right-of-Ways
+6435	1	Ratifying the County Health Officer’s Declaration of a Local Health Emergency Regarding Novel Coronavirus Disease # (COVID- # )
+6436	1	Reaffirming San Francisco’s Commitment to the 14B Local Business Enterprise Program
+6437	1	Reaffirming Support for Survivors of Domestic Violence and the City’s Service Providers
+6438	1	Real Property Acquisition - City of Daly City - License Agreements, Purchase and Sale Agreement - Sale of Easements for Stormwater Facilities at Lake Merced - $
+6439	1	Real Property Lease - Townsend Associates, LLC - # 5th Street, Suites # and Four Parking Stalls - $ Annual Base Rent
+6440	1	Real Property Lease Amendment - Orchard Supply Company, LLC - San Francisco Utilities Commission Parcel No. # in Millbrae, CA - $
+6441	1	Real Property Purchase and Sale Agreement - Sale of # and # Old Bernal Avenue, Pleasanton, California - City of Pleasanton - $
+6442	1	Real Property Purchase and Sale Agreement - Sale of Three Parcels in Millbrae, California - Pradeep Gandhi and Gabriel Gonzalez - $
+6443	1	Reappointment, Assessment Appeals Board No. # - Estrella Bryant
+6444	1	Reappointment, Bicycle Advisory Committee - Kristen Tieche
+6445	1	Reappointment, Bicycle Advisory Committee - Marc Brandt
+6446	1	Reappointment, Board of Appeals - Richard Swig
+6447	1	Reappointment, Cannabis State Legalization Task Force - Jennifer Garcia
+6448	1	Reappointment, Child Care Planning and Advisory Council - Heather Cassandra Morado
+6449	1	Reappointment, Child Care Planning and Advisory Council - Nur Jehan Khalique
+6450	1	Reappointment, Child Care Planning and Advisory Council - Yensing Sihapanya
+6451	1	Reappointment, Children, Youth and Their Families Oversight and Advisory Committee - Eddy Xaio Fei Zheng
+6452	1	Reappointment, Citizen's Committee on Community Development, Clinton Loftman
+6453	1	Reappointment, Commission on Disability and Aging Advisory Council - Juliet Rothman
+6454	1	Reappointment, Commission on Disability and Aging Advisory Council - Margaret Graf
+6455	1	Reappointment, Commission on the Aging Advisory Council - Patricia Spaniak
+6456	1	Reappointment, Early Childhood Community Oversight and Advisory Committee - Cindy F. Lopez-Chastain
+6457	1	Reappointment, Eastern Neighborhoods Citizens Advisory Committee - Fernando Marti
+6458	1	Reappointment, Elections Commission - Christopher Jerdonek
+6459	1	Reappointment, Entertainment Commission - Dori Caminong
+6460	1	Reappointment, Entertainment Commission - Steven Lee
+6461	1	Reappointment, Entertainment Commission - Theodora Marie Caminong
+6462	1	Reappointment, Golden Gate Bridge, Highway and Transportation District Board of Directors - Supervisor Sandra Lee Fewer
+6463	1	Reappointment, Graffiti Advisory Board - Amy Landgraf
+6464	1	Reappointment, In-Home Supportive Services Public Authority - Kenzi Robi
+6465	1	Reappointment, Local Agency Formation Commission - Supervisor Dean Preston
+6466	1	Reappointment, Local Agency Formation Commission - Supervisor Gordon Mar
+6467	1	Reappointment, Park, Recreation, and Open Space Advisory Committee - Steven Currier
+6468	1	Reappointment, Pedestrian Safety Advisory Committee - Rebecca Hogue
+6469	1	Reappointment, Police Commission - Petra DeJesus
+6470	1	Reappointment, Public Works Commission - Gerald Demarcus Turner and Fady Zoubi
+6471	1	Reappointment, Sanitation and Streets Commission - Thomas Richard Harrison
+6472	1	Reappointment, Small Business Commission - Dimitri Thierry Cornet
+6473	1	Reappointment, Small Business Commission - Kathleen Dooley
+6474	1	Reappointment, Small Business Commission - Miriam Zouzounis
+6475	1	Reappointment, Small Business Commission - William Ortiz-Cartagena
+6476	1	Reappointment, Sunshine Ordinance Task Force - Fiona Hinze
+6477	1	Reappointments, Assessment Appeals Board No # - Louisa Mendoza, Daniel Hershkowitz, Joyce Lewis, and Angela Cheung
+6478	1	Reappointments, Assessment Appeals Board No. # - Jeffrey Morris and Eugene Valla
+6479	1	Reappointments, Assessment Appeals Board No. # - John Lee, Mervin Conlan, and Susan Elizabeth Miller
+6480	1	Reappointments, Assessment Appeals Board No. # - John Lee, Mervin Conlan, and Yosef Tahbazof
+6481	1	Reappointments, Assessment Appeals Board No. # - Shawn Ridgell and James Reynolds
+6482	1	Reappointments, Ballot Simplification Committee - Scott Patterson, Betty Packard, and Ashley Raveche
+6483	1	Reappointments, Bicycle Advisory Committee - Marc Brandt and Kisai Henriquez
+6484	1	Reappointments, Child Care Planning and Advisory Council - Matt Pemberton, Gretchen Ames, and Mario Paz
+6485	1	Reappointments, Children and Families First Commission - E'leva Hughes Gibson and Zea Malawa
+6486	1	Reappointments, Commission on the Aging Advisory Council - Juliet Rothman and Margaret Graf
+6487	1	Reappointments, Golden Gate Bridge, Highway and Transportation District - Sabrina Hernandez, Bert Hill, Richard Grosboll, and Michael Theriault
+6488	1	Reappointments, Health Authority - Eddie Chan and Maria Luz Torre
+6489	1	Reappointments, Immigrant Rights Commission - Mario Paz, Celine Kennelly, and Nima Rahimi
+6490	1	Reappointments, In-Home Supportive Services Public Authority - Jesse Nichols, Sascha Bittner, Daisy McArthur, and Robin Wilson-Beattle
+6491	1	Reappointments, South of Market Community Stabilization Fund Community Advisory Committee - Daniel Hlad and John Elberling
+6492	1	Removal of Peter Cohen - Inclusionary Housing Technical Advisory Committee
+6493	1	Reopening the Treasurer & Tax Collector’s In-Person Property Tax Payment Location on May # , #
+6494	1	Report of Assessment Costs - Accelerated Sidewalk Abatement Program
+6495	1	Request for Procurement - Special Investigation Services
+6496	1	Requesting the Office of the Controller and the Chief Economist to Conduct an Economic Impact Analysis on SFMTA’s Meter Hour Extension
+6497	1	Requesting the Office of the Controller to Conduct Audit of the Children and Youth Fund Baseline and to Conduct Evaluation of the Our Children, Our Families Council
+6498	1	Resolution of Intent - Street Vacation - India Basin Park Project
+6499	1	Resolution of Intention - Renewal and Expansion - Castro Community Benefit District
+6500	1	Resolution of Intention to Establish Infrastructure and Revitalization Financing District No. # (Hoedown Yard)

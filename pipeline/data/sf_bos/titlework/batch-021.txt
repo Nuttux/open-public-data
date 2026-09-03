@@ -1,0 +1,250 @@
+5001	1	Appointment, Bay Area Air Quality Management District - Supervisor Myrna Melgar
+5002	1	Appointment, Bay Conservation and Development Commission - Supervisor Aaron Peskin
+5003	1	Appointment, Bay Conservation and Development Commission - Supervisor Catherine Stefani
+5004	1	Appointment, Bicycle Advisory Committee - Charles Deffarges
+5005	1	Appointment, Bicycle Advisory Committee - Kisai Henriquez
+5006	1	Appointment, Bicycle Advisory Committee - Sarah Boudreau
+5007	1	Appointment, Cannabis Oversight Committee - Shawn Richard
+5008	1	Appointment, Cannabis State Legalization Task Force - Robert Keli'iho'omalu
+5009	1	Appointment, Child Care Planning and Advisory Council - Delia Fitzpatrick
+5010	1	Appointment, Child Care Planning and Advisory Council - Elizabeth Winograd
+5011	1	Appointment, Child Care Planning and Advisory Council - Fonda Davidson
+5012	1	Appointment, Child Care Planning and Advisory Council - Jerry Yang
+5013	1	Appointment, Child Care Planning and Advisory Council - Mario Paz
+5014	1	Appointment, Child Care Planning and Advisory Council - Patricia Sullivan
+5015	1	Appointment, Child Care Planning and Advisory Council - Sherrice Dorsey-Smith
+5016	1	Appointment, Children and Families First Commission - Aline Armstrong
+5017	1	Appointment, Children and Families First Commission - Cesnae Crawford
+5018	1	Appointment, Children and Families First Commission - Elizabeth Winograd
+5019	1	Appointment, Children and Families First Commission - Supervisor Katy Tang
+5020	1	Appointment, Children, Youth and Their Families Oversight and Advisory Committee - Andrea Torrey
+5021	1	Appointment, Children, Youth and Their Families Oversight and Advisory Committee - Jada Curry
+5022	1	Appointment, Children, Youth and Their Families Oversight and Advisory Committee - Jennifer Hand
+5023	1	Appointment, Citizen's Committee on Community Development - Kelly Yun
+5024	1	Appointment, City College Financial Assistance Fund Oversight Committee - Conny Ford
+5025	1	Appointment, City College Financial Assistance Fund Oversight Committee - Supervisor Gordon Mar
+5026	1	Appointment, Close Juvenile Hall Working Group - Charles Peacock
+5027	1	Appointment, Close Juvenile Hall Working Group - Kandy Kalani Ifopo
+5028	1	Appointment, Commission on Aging Advisory Council - Diane Wesley Smith
+5029	1	Appointment, Commission on Disability and Aging Advisory Council - Beverly Karnatz
+5030	1	Appointment, Commission on Disability and Aging Advisory Council - Harry Breaux
+5031	1	Appointment, Commission on the Aging Advisory Council - Allen Cooper
+5032	1	Appointment, Commission on the Aging Advisory Council - Anne Kathleen Gallagher
+5033	1	Appointment, Commission on the Aging Advisory Council - Janice Pettey
+5034	1	Appointment, Commission on the Aging Advisory Council - Morningstar Vancil
+5035	1	Appointment, Eastern Neighborhoods Citizens Advisory Committee - Jane Weil
+5036	1	Appointment, Eastern Neighborhoods Citizens Advisory Committee - Kelly Kozak
+5037	1	Appointment, Eastern Neighborhoods Citizens Advisory Committee - Sara Fenske Bahat
+5038	1	Appointment, Eastern Neighborhoods Citizens Advisory Committee - Sarah Souza
+5039	1	Appointment, Eastern Neighborhoods Citizens Advisory Committee - Theresa Imperial
+5040	1	Appointment, Eastern Neighborhoods Community Advisory Committee - Kim-Shree Maufas
+5041	1	Appointment, Elections Commission - Wing Kwan (Kelly) Wong
+5042	1	Appointment, Ethics Commission - Larry Bush
+5043	1	Appointment, Ethics Commission - Lateef Hasani Gray
+5044	1	Appointment, Ethics Commission - Quentin Kopp
+5045	1	Appointment, Ethics Commission - Quentin L. Kopp
+5046	1	Appointment, Ethics Commission - Yaman Salahi
+5047	1	Appointment, Food Security Task Force - Cissie Bonini
+5048	1	Appointment, Food Security Task Force - Michelle Kim
+5049	1	Appointment, Golden Gate Bridge, Highway and Transportation District - Supervisor Catherine Stefani
+5050	1	Appointment, Golden Gate Bridge, Highway and Transportation District Board of Directors - Supervisor Aaron Peskin
+5051	1	Appointment, Golden Gate Bridge, Highway and Transportation District Board of Directors - Supervisor Jeff Sheehy
+5052	1	Appointment, Golden Gate Bridge, Highway and Transportation District Board of Directors - Supervisor London Breed
+5053	1	Appointment, Golden Gate Bridge, Highway and Transportation District Board of Directors - Supervisor Shamann Walton
+5054	1	Appointment, Graffiti Advisory Board - Mike Petricca
+5055	1	Appointment, Homelessness Oversight Commission - Thomas James Rocca
+5056	1	Appointment, Housing Stability Fund Oversight Board - Edward Parillon
+5057	1	Appointment, Immigrant Rights Commission - Angeles Roy
+5058	1	Appointment, Immigrant Rights Commission - Jessy Ruiz Navarro
+5059	1	Appointment, Immigrant Rights Commission - Ruslan Gurvits
+5060	1	Appointment, In-Home Supportive Services Public Authority - Edda Mai Johnson
+5061	1	Appointment, In-Home Supportive Services Public Authority - Jessie Sandoval
+5062	1	Appointment, In-Home Supportive Services Public Authority - Keontae Clark
+5063	1	Appointment, In-Home Supportive Services Public Authority - Michael Pappas
+5064	1	Appointment, In-Home Supportive Services Public Authority - William Pitts
+5065	1	Appointment, Juvenile Justice Coordinating Council - Supervisor Shamann Walton
+5066	1	Appointment, Local Homeless Coordinating Board - Kelley Cutler
+5067	1	Appointment, Market and Octavia Community Advisory Committee - Chase Chambers
+5068	1	Appointment, Municipal Transportation Agency Board of Directors - Art Torres
+5069	1	Appointment, Our City, Our Home Oversight Committee - LaShonti Woods
+5070	1	Appointment, Park, Recreation and Open Space Advisory Committee - Gisele Rainer
+5071	1	Appointment, Park, Recreation and Open Space Advisory Committee - Jordyn Aquino
+5072	1	Appointment, Park, Recreation and Open Space Advisory Committee - Katherine Mindel Jones
+5073	1	Appointment, Park, Recreation and Open Space Advisory Committee - Trevor McNeil
+5074	1	Appointment, Park, Recreation, and Open Space Advisory Committee - Angela Leung
+5075	1	Appointment, Park, Recreation, and Open Space Advisory Committee - Ieeshea Romero
+5076	1	Appointment, Park, Recreation, and Open Space Advisory Committee - James Falino
+5077	1	Appointment, Park, Recreation, and Open Space Advisory Committee - Karen Rhodes
+5078	1	Appointment, Park, Recreation, and Open Space Advisory Committee - Patrick Roddy
+5079	1	Appointment, Park, Recreation, and Open Space Advisory Committee - Roisin Isner and Richard Rothman
+5080	1	Appointment, Park, Recreation, and Open Space Advisory Committee - Rosa Chen
+5081	1	Appointment, Park, Recreation, and Open Space Advisory Committee - Susan Ryan
+5082	1	Appointment, Parks, Recreation and Open Space Advisory Committee - Natalie Dillon
+5083	1	Appointment, Pedestrian Safety Advisory Committee - Cyndi Bakir
+5084	1	Appointment, Pedestrian Safety Advisory Committee - Marta Lindsey
+5085	1	Appointment, Peninsula Corridor Joint Powers Board - Gillian Gillett
+5086	1	Appointment, Police Commission
+5087	1	Appointment, Police Commission - Jesus Gabriel Yanez
+5088	1	Appointment, Police Commission - Kevin Michael Benedicto
+5089	1	Appointment, Police Commission - Pratibha Tekkey
+5090	1	Appointment, Public Utilities Revenue Bond Oversight Committee - Ettore Leale
+5091	1	Appointment, Public Utilities Revenue Bond Oversight Committee - Lars Kamp
+5092	1	Appointment, Public Utilities Revenue Bond Oversight Committee - Tim Cronin
+5093	1	Appointment, Public Works Commission - Fady Zoubi
+5094	1	Appointment, Public Works Commission - Gerald Demarcus Turner
+5095	1	Appointment, Recreation and Park Commission - Jason Chan
+5096	1	Appointment, Reentry Council - David Mauroff
+5097	1	Appointment, Reentry Council - Supervisor John Avalos
+5098	1	Appointment, SOMA Community Stabilization Fund Community Advisory Committee - Norman Lynde
+5099	1	Appointment, San Francisco Health Authority - Johanna Liu
+5100	1	Appointment, San Francisco Health Authority - Norlissa Cooper
+5101	1	Appointment, San Francisco International Airport Community Roundtable - Supervisor Ahsha Safaí
+5102	1	Appointment, San Francisco Local Agency Formation Commission - Supervisor Gordon Mar
+5103	1	Appointment, San Francisco Local Agency Formation Commission - Supervisor Matt Haney
+5104	1	Appointment, Shelter Monitoring Committee - Jeb (Britt) Creech
+5105	1	Appointment, Sheriff’s Department Oversight Board - Ovava Eterei Afuhaamango
+5106	1	Appointment, Sheriff’s Department Oversight Board - William Monroe Palmer II
+5107	1	Appointment, Small Business Commission - Tiffany Walker-Carter
+5108	1	Appointment, South of Market Community Planning Advisory Committee - Mary Claire Amable
+5109	1	Appointment, Street-Level Drug Dealing Task Force - Kenneth Kim
+5110	1	Appointment, Sugary Drinks Distributor Tax Advisory Committee - Aaron Kunz
+5111	1	Appointment, Sugary Drinks Distributor Tax Advisory Committee - Dianna Cavagnaro
+5112	1	Appointment, Sugary Drinks Distributor Tax Advisory Committee - Kiana Sezawar Keshavarz
+5113	1	Appointment, Sugary Drinks Distributor Tax Advisory Committee - Melinda Burrus
+5114	1	Appointment, Sunshine Ordinance Task Force - Ankita Mukhopadhyay
+5115	1	Appointment, Sunshine Ordinance Task Force - Ankita Mukhopadhyay Kumar
+5116	1	Appointment, Sunshine Ordinance Task Force - Bruce Wolfe
+5117	1	Appointment, Sunshine Ordinance Task Force - Jaya Padmanabhan
+5118	1	Appointment, Sunshine Ordinance Task Force - Jennifer Wong
+5119	1	Appointment, Sunshine Ordinance Task Force - Maxine Anderson
+5120	1	Appointment, Transbay Joint Powers Authority - Charles Lavery
+5121	1	Appointment, Transbay Joint Powers Authority - Supervisor Matt Haney
+5122	1	Appointment, Treasure Island Development Authority Citizens Advisory Board - Jesse Tepper
+5123	1	Appointment, Treasury Oversight Committee - Ben Rosenfield
+5124	1	Appointment, Treasury Oversight Committee - Brenda McNulty
+5125	1	Appointment, Veterans Affairs Commission - Nicholas Rusanoff
+5126	1	Appointments - Assessment Appeals Board No. # - Jeffrey Morris and Eugene Valla
+5127	1	Appointments - Assessment Appeals Board No. # - John Lee, Mervin Conlan, and Yosef Tahbazof
+5128	1	Appointments - Assessment Appeals Board No. # - Shawn Ridgell and James Reynolds
+5129	1	Appointments - Safer Schools Sexual Assault Task Force - Janelle White, Denise Sicat Wong, J. Ocean Mottley, Amelia Gilbert, Denise Caramagno, and Leslie Simon
+5130	1	Appointments - Treasure Island Development Authority Citizens Advisory Board - Barklee Unitas-Ali Sanders, Hope Williams and James Hancock
+5131	1	Appointments, African American Reparations Advisory Committee - J. L. Taylor, T. Hollins, E. McDonnell, A. Brown, O. Hamilton, N. Cunningham, G. Berry, D. Landry, T. Walker-Carter, G. Brown, A. Ekanem, S. Williams, S. O’Cain, L. Erving, and Y. Harris
+5132	1	Appointments, Assessment Appeals Board No. #
+5133	1	Appointments, Assessment Appeals Board No. # - Adena Gilbert, Jeffrey Morris, and Kristine Nelson
+5134	1	Appointments, Assessment Appeals Board No. # - Elizabeth Zareh, Diane Robinson and Richard Lee
+5135	1	Appointments, Assessment Appeals Board No. # - Jeffrey Jonathan Morris and Nicholas Goldman
+5136	1	Appointments, Assessment Appeals Board No. # - John Lee, Mervin Conlan, and Yosef Tahbazof
+5137	1	Appointments, Assessment Appeals Board No. # - Louisa Mendoza and Marc Wilson
+5138	1	Appointments, Assessment Appeals Board No. # - Marc Dickow and John Su
+5139	1	Appointments, Assessment Appeals Board No. # - Scott Spertzel, Edward Campana, Diane Robinson and Richard Lee
+5140	1	Appointments, Assessment Appeals Board No. # - Scott Spertzel, Edward Campana, Kristine Nelson and Paul Bellar
+5141	1	Appointments, Assessment Appeals Board No. # - Shawn Ridgell and James Reynolds
+5142	1	Appointments, Assessment Appeals Board No. # - Stephen Wasserman and Richard Lee
+5143	1	Appointments, Ballot Simplification Committee - Christine Unruh, Betty Packard, and Ruth Grace Wong
+5144	1	Appointments, Ballot Simplification Committee - Scott Patterson and Betty Packard
+5145	1	Appointments, Ballot Simplification Committee - Scott Patterson, Betty Packard, and Ann Merrill
+5146	1	Appointments, Bay Area Regional Interoperable Communications System Authority (BayRICS) - Chief William Scott and Lieutenant Michael Deely
+5147	1	Appointments, Behavioral Health Commission
+5148	1	Appointments, Behavioral Health Commission - Lisa Wynn and Liza Murawski
+5149	1	Appointments, Bicycle Advisory Committee
+5150	1	Appointments, Bicycle Advisory Committee - Devon Warner, Marc Brandt, Ann Brask, Melyssa Mendoza, Mary Kay Chin, Bert Hill, Diane Serafini, Catherine Orland, Paul Wells and Jeffrey Taliaferro
+5151	1	Appointments, Bicycle Advisory Committee - Kristin Tieche and Elbert Hill
+5152	1	Appointments, Cannabis Oversight Committee - Ali Jamalian, Aaron Flynn, Doug Bloch, Leah “Nina Parks" Weitz, Jesse Stout, Theresa Foglio, and Sara Payan
+5153	1	Appointments, Cannabis Oversight Committee - Ali Jamalian, Aaron Flynn, and Jessica Cry
+5154	1	Appointments, Cannabis Oversight Committee - Ali Jamalian, Adam Hayes, Apollo Wallace, Drakari Donaldson, David Nogales Talley, Shay Aaron Gilmore, and Antoinette Mobley
+5155	1	Appointments, Cannabis Oversight Committee - Doug Bloch, Shawn Richard, Leah ‘Nina Parks’ Weitz, Brendan Hallinan, Theresa Foglio-Ramirez, and Sara Payan
+5156	1	Appointments, Central Market Street and Tenderloin Area Citizen's Advisory Committee - Bryant Duong, Stephen Tennis, Sam Dennison and Jonathan Bonato
+5157	1	Appointments, Child Care Planning and Advisory Council - Beverly Melugin and Graham Dobson
+5158	1	Appointments, Child Care Planning and Advisory Council - Easter Calvit and Graham Dobson
+5159	1	Appointments, Child Care Planning and Advisory Council - Karin Little, Nur Jehan Khalique, and Laura Moye
+5160	1	Appointments, Child Care Planning and Advisory Council - Kelly Dotson, Mona Malan and Claudia Quiñonez
+5161	1	Appointments, Children and Families First Commission - Joan Miller, Linda Asato, Suzanne Giraudo, and Lynn Merz
+5162	1	Appointments, Children, Youth and Their Families Oversight and Advisory Committee - Jada Curry, Jennifer Salerno, and Julie Roberts-Phung
+5163	1	Appointments, Children, Youth and Their Families Oversight and Advisory Committee - Julie Roberts-Phung, Winnie Chen, and Yamini Bhatnagar
+5164	1	Appointments, Children, Youth and Their Families Oversight and Advisory Committee - Winnie Chen and Sarah Thompson-Peer
+5165	1	Appointments, Citizen's Committee on Community Development - Azalea Renfield and Clinton Loftman
+5166	1	Appointments, Citizen's Committee on Community Development - Clinton Loftman and Lenelle Suliguin
+5167	1	Appointments, Citizen's Committee on Community Development - Graciela “Aileen” Hernandez and Azalea Renfield
+5168	1	Appointments, Citizens Committee on Community Development - Emma Kelsey and Clint Loftman
+5169	1	Appointments, Citizens General Obligation Bond Oversight Committee - Brenda Kwee McNulty, Alexander Tonisson, and Kristin Chu
+5170	1	Appointments, Citizens General Obligation Bond Oversight Committee - Timothy Mathews and Kristin Chu
+5171	1	Appointments, Citizens' General Obligation Bond Oversight Committee - Andrea Marmo Crawford and Timothy Mathews
+5172	1	Appointments, Close Juvenile Hall Working Group - Christina Gomez, Valentina Sedeno, Joanna Hernandez, Lonnie Holmes, Denise Coleman, Daniel Macallair, Constance Walker, Deborah Bill, and Samuel Carr
+5173	1	Appointments, Commission of Animal Control and Welfare - AnneMarie Fortier, Bunny Elizabeth Rosenberg, Brian VanHorn, and Nina Irani
+5174	1	Appointments, Commission of Animal Control and Welfare - Annemarie Fortier, Irina Ozernoy, Nina Irani, Iris Chan, Jane Tobin, and Michael Angelo Torres
+5175	1	Appointments, Commission of Animal Control and Welfare - Annemarie Fortier, Irina Ozernoy, and Brian VanHorn
+5176	1	Appointments, Commission of Animal Control and Welfare - Michael Reed, Irina Ozernoy, Mikaila Garfinkel, Nicholas Chapman, Dayna Sherwood, and Michael Angelo Torres
+5177	1	Appointments, Commission of Animal Control and Welfare - Michael Reed, Mikaila Garfinkel, Lisa Irene Fagundes, Jane Tobin, and Michael Angelo Torres
+5178	1	Appointments, Commission of Animal Control and Welfare - Rachel Frederick, Rachel Reis, Russell Tenofsky, and Jane Tobin
+5179	1	Appointments, Commission of Animal Control and Welfare - Russell Tenofsky, Jane Tobin, and Michael Angelo Torres
+5180	1	Appointments, Commission on the Aging Advisory Council - Elinore Lurie and Margaret Graf
+5181	1	Appointments, Commission on the Aging Advisory Council - Juliet Rothman and Rick Johnson
+5182	1	Appointments, Commission on the Aging Advisory Council - Juliet Rothman, Catherine Russo, Patricia Spaniak, and Allegra Fortunati
+5183	1	Appointments, Committee on City Workforce Alignment - Ruth Barajas, Tiffany Jackson, and Bartolomy Pantoja
+5184	1	Appointments, Early Childhood Community Oversight and Advisory Committee - Barbara Ellen Walden and Monique Guidry
+5185	1	Appointments, Early Childhood Community Oversight and Advisory Committee - Cindy Lopez-Chastain and Monique Guidry
+5186	1	Appointments, Eastern Neighborhoods Citizens Advisory Committee - Irma Lewis and Jolene Yee
+5187	1	Appointments, Eastern Neighborhoods Citizens Advisory Committee - Keith Goldstein, Irma Lewis, and Roshann Pressman
+5188	1	Appointments, Eastern Neighborhoods Citizens Advisory Committee - Kevin Ortiz and C. Heather Phillips
+5189	1	Appointments, Eastern Neighborhoods Community Advisory Committee - J. R. Eppler, Irma Lewis, Jolene Yee, and Keith Goldstein
+5190	1	Appointments, Entertainment Commission - Anthony Schlander and Maria Davis
+5191	1	Appointments, Food Security Task Force - Austin Dalmasso, Earl Campbell Barbee, and Jade Quizon
+5192	1	Appointments, Food Security Task Force - Ave Lambert, Jennifer Siswandi, Kimberly Madsen, Meg Davidson, Raegan Sales, and Rita Mouton-Patterson
+5193	1	Appointments, Food Security Task Force - Chester Williams and Geoffrey Grier
+5194	1	Appointments, Food Security Task Force - Hannah Grant and Lura Jones
+5195	1	Appointments, Food Security Task Force - Katherine Jackson and Noriko Lim-Tepper
+5196	1	Appointments, Food Security Task Force - Meredith Terrell and Guillermo Reece
+5197	1	Appointments, Free City College Oversight Committee - Win-Mon Kyi and Conny Ford
+5198	1	Appointments, Golden Gate Bridge, Highway and Transportation District - Sabrina Hernandez, Bert Hill, Richard Grosboll, and Michael Theriault
+5199	1	Appointments, Golden Gate Bridge, Highway and Transportation District, Board of Directors - Sabrina Hernandez, Bert Hill, Liam Devlin, and Gregory Michael Hardeman
+5200	1	Appointments, Graffiti Advisory Board - Alex Mitra, Darcy Brown, Daniel Kling, and Rebecca Delgado Rottman
+5201	1	Appointments, Graffiti Advisory Board - Mike Petricca, Margeaux Casillas and Gregory Dillon
+5202	1	Appointments, Guaranteed Income Advisory Group - Shirley Yee, Jacob Denney, James Pugh, Gloria Berry, Norel Knowles, Roberto Ariel Vargas, Bina Shrimali and Elena Chavez Quezada
+5203	1	Appointments, Housing Conservatorship Working Group - Jessica Lehman, Jennifer Esteen, and Sara Short
+5204	1	Appointments, Housing Stability Fund Oversight Board - Bernita Burge, Jon Jacobo, John Baranski, Han Ming How, Remhai Menelik, Gen Fujioka, Fernando Marti, Shanti Singh, Davida Sotelo Escobedo, Alex Lantsberg
+5205	1	Appointments, Housing Stability Fund Oversight Board - Saki Bailey and Anabell Ibanez
+5206	1	Appointments, Immigrant Rights Commission
+5207	1	Appointments, Immigrant Rights Commission - Amro Radwan, Nima Rahimi, Mario Paz, Celine Kennelly, and Michelle Wong
+5208	1	Appointments, Immigrant Rights Commission - Aseel Fara, Mario Paz, Celine Kennelly, Yu Pok Ng, Sarah Souza, and Lucia Obregon
+5209	1	Appointments, Immigrant Rights Commission - Hans How, Kudrat Kontilis, Laura Padilla, Adoubou Traore, Aseel Fara, Mario Paz, Celine Kennelly, Yu Pok Ng (Jose Ng), Sarah Souza and Lucia Obregon
+5210	1	Appointments, Immigrant Rights Commission - Haregu Gaime, Ryan Khojasteh, Elahe Ensanni, and Michelle Wong
+5211	1	Appointments, Immigrant Rights Commission - Jessy Ruiz Navarro, Haregu Gaime, Kudrat Dutta Chaudhary, Marco Senghor, and Elahe Enssani
+5212	1	Appointments, Immigrant Rights Commission - Jessy Ruiz Navarro, Haregu Gaime, Ryan Khojasteh, Amro Radwan, Elahe Enssani, and Paul Monge
+5213	1	Appointments, Immigrant Rights Commission - Sarah Souza, Lucia Obregon Matzer, Jessy Ruiz Navarro, Haregu Gaime, Ryan Khojasteh, Luis Zamora, and Elahe Enssani
+5214	1	Appointments, Immigrant Rights Commission - Zay David Latt, Mario Paz, Celine Kennelly, Nima Rahimi, Sarah Souza, and Lucia Obregon Matzer
+5215	1	Appointments, In-Home Supportive Services Public Authority - Jane Redmond, Edda Mai Johnson, and Mara Math
+5216	1	Appointments, In-Home Supportive Services Public Authority - Luana McAlpine
+5217	1	Appointments, In-Home Supportive Services Public Authority - Mike Boyd and Daisy McArthur
+5218	1	Appointments, In-Home Supportive Services Public Authority - Patricia Webb, Rita Semel, Jim Blacksten, and Melvin Beetle
+5219	1	Appointments, In-Home Supportive Services Public Authority - Robin Wilson-Beattie, Jesse Nichols, Sascha Bittner, Haydee Hernandez, Rita Semel, and Alexander Madrid
+5220	1	Appointments, In-Home Supportive Services Public Authority - Sascha Bittner and Nicole Bohn
+5221	1	Appointments, In-Home Supportive Services Public Authority - Sascha Bittner, Alexander Madrid, Daisy McArthur and Robin Wilson-Beattle
+5222	1	Appointments, In-Home Supportive Services Public Authority - Ted Jackson and Jane Redmond
+5223	1	Appointments, Inclusionary Housing Technical Advisory Committee - Saki Baily and Tiffany Bohee
+5224	1	Appointments, Local Homeless Coordinating Board - Kelley Cutler, Del Seymour, and Nikon Jeanell Guffey
+5225	1	Appointments, Local Homeless Coordinating Board - Laura Guzman and Sophia Isom
+5226	1	Appointments, Local Homeless Coordinating Board - Mary Kate Bacalao and James Loyce Jr.
+5227	1	Appointments, Market and Octavia Community Advisory Committee - Jesus Guillen, Natalie Burdick, Madeline Howie, Nicholas Parker, Sacha Ortega, and Andrew Seigner
+5228	1	Appointments, Market and Octavia Community Advisory Committee - Krute Singa, Joshua Marker, Mohammed Soriano-Bilal, Paul Olsen, and Jason Henderson
+5229	1	Appointments, Mental Health Board - Toni Parks and Marcus Dancer
+5230	1	Appointments, Mental Health SF Implementation Working Group - Amy Wong, Andrea Salinas, and Sara Shortt
+5231	1	Appointments, Mental Health SF Implementation Working Group - Amy Wong, Philip Jones, Andrea Salinas, Sara Shortt, Steve Fields, and Monique LeSarre
+5232	1	Appointments, Mental Health SF Implementation Working Group - Steven Fields and Monique LeSarre
+5233	1	Appointments, Metropolitan Transportation Commission - Jane Kim and Supervisor Hillary Ronen
+5234	1	Appointments, Municipal Fines and Fees Task Force - Dion Libutti, Scott Nelson, Elisa Della-Piana, and Kendra Amick
+5235	1	Appointments, Office of Early Care and Education Citizens' Advisory Committee - Monica Walters, Sara Hicks-Kilday, Patricia Sullivan, and June Lin-Arlow
+5236	1	Appointments, Office of Early Care and Education Citizens' Advisory Committee - Patricia Sullivan and Candace Wong
+5237	1	Appointments, Office of Early Care and Education Citizens' Advisory Committee - Yohana Quiroz and Sandee Blechman
+5238	1	Appointments, Park, Recreation and Open Space Advisory Committee - Cally Wong and Ken McGary
+5239	1	Appointments, Park, Recreation and Open Space Advisory Committee - Erin Bank and Rafael Bortnick
+5240	1	Appointments, Park, Recreation, and Open Space Advisory Committee - Kenneth Maley and Julia Pfeiffenberger
+5241	1	Appointments, Park, Recreation, and Open Space Advisory Committee - Mark Scheuer and Steven Currier
+5242	1	Appointments, Park, Recreation, and Open Space Advisory Committee - Various District Appointees
+5243	1	Appointments, Public Utilities Revenue Bond Oversight Committee - Robert Leshner and Tim Cronin
+5244	1	Appointments, Redistricting Task Force - Jeremy Lee, Jose Maria (Chema) Hernandez Gil, and J. Michelle Pierce
+5245	1	Appointments, Reentry Council - Billey Hoang Le, Anthony Partee, Joanna Pulido, Lorenzo Juan Castaneda, and David Mauroff
+5246	1	Appointments, Reentry Council - Jose Bernal, Angela Coleman, James Lowden, and Kimberli Courtney
+5247	1	Appointments, Reentry Council - Jose Bernal, Angela Coleman, Victoria Westbrook, and Theodore Tolliver
+5248	1	Appointments, Reentry Council - Jusef Nathan, Joanna Hernandez, Linda Hurshman, and Jabari Jackson
+5249	1	Appointments, Reentry Council - Yolanda Morrissette, Michael Brown, Oscar Salinas, and Jabari Jackson
+5250	1	Appointments, SOMA Community Stabilization Fund Community Advisory Committee - Christian Martin, Janetta Johnson, Carolyn Caldwell, Gina Rosales, Conny Ford, and Kris Romasanta
