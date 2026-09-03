@@ -59,7 +59,7 @@ Without the **(name, amount) pair**, none of these readings is possible. The por
 
 Annex **B8.1.1** of the Administrative Account, titled "List of grants in kind or in subsidies attributed to third parties", is mandated by the M57 accounting standard. It is published every year in **Tome 3** of the CA, in PDF, on [paris.fr](https://www.paris.fr/pages/comptes-administratifs-de-la-ville-retrouvez-toutes-les-infos-27793). It contains, sub-section by sub-section (Associations, Companies, Foundations, Municipalities, Public bodies, State, Régies), **the exhaustive named list** of beneficiaries, with cash and in-kind amounts.
 
-For 2020 and 2021, those two PDFs weigh respectively **4.2 MB and 4.1 MB** and contain the names that do not appear in the portal API. The total announced on page one is:
+For 2020, the administrative account runs to a financial report and five tomes, 1,671 pages of figures and annexes; Tome 3 is the list itself, **404 pages** of names and amounts. For 2021, five tomes and 1,667 pages, the list being Tome 3, **417 pages**. Those two tomes contain the names that do not appear in the portal API. The total announced on page one is:
 
 - **CA 2020: €1,335,350,692** (Section Grand Total)
 - **CA 2021: €1,258,079,952**
@@ -93,7 +93,7 @@ ACADEMIE D ARMES DE FRANCE                                                      
 
 ### 2. Python regex parser (~250 lines)
 
-The parser ([`parse_subv_pdf_text.py`](https://github.com/AbstractsMachine/france-open-data-pipeline) in the pipeline):
+The parser (`parse_subv_pdf_text.py` in the pipeline):
 
 - detects the **real start of the section** (string "LISTE DES CONCOURS ATTRIBUES A DES TIERS EN NATURE OU EN SUBVENTIONS") and the **stop** before the next section (B8.1.2 or B8.3);
 - tracks **sub-sections** (Associations / Companies / Foundations / Municipalities / Public bodies / State / Régies / Other) to assign the correct legal nature to each beneficiary;
@@ -163,4 +163,4 @@ What it does say, in a sentence: **the data existed, in an official annex, but n
 
 ---
 
-**Sources**: [Comptes Administratifs Ville de Paris, Tome 3 — annex B8.1.1](https://www.paris.fr/pages/comptes-administratifs-de-la-ville-retrouvez-toutes-les-infos-27793) (CA 2020 and CA 2021) · Open Data Paris portal ([opendata.paris.fr](https://opendata.paris.fr)) — dataset `subventions-versees-annexe-compte-administratif-a-partir-de-2018`, queries via the [public ODSQL API](https://opendata.paris.fr/api/explore/v2.1/) · open-public-data pipeline: extraction `pipeline/scripts/tools/parse_subv_pdf_text.py`, BigQuery load `pipeline/scripts/sync/sync_pdf_subventions_b811.py`, merge with OpenData in `pipeline/models/staging/stg_subventions_all.sql`. Scope: Ville de Paris, fiscal years 2020 and 2021. Pipeline open under AGPL-3.0, derived data under Etalab Open License 2.0.
+**Sources**: [Comptes Administratifs Ville de Paris, Tome 3 — annex B8.1.1](https://www.paris.fr/pages/comptes-administratifs-de-la-ville-retrouvez-toutes-les-infos-27793) (CA 2020 and CA 2021) · Open Data Paris portal ([opendata.paris.fr](https://opendata.paris.fr)) — dataset `subventions-versees-annexe-compte-administratif-a-partir-de-2018`, queries via the [public ODSQL API](https://opendata.paris.fr/api/explore/v2.1/) · open-public-data pipeline: extraction `pipeline/scripts/tools/parse_subv_pdf_text.py`, BigQuery load `pipeline/scripts/sync/sync_pdf_subventions_b811.py`, merge with OpenData in `pipeline/models/staging/stg_subventions_all.sql`. Scope: Ville de Paris, fiscal years 2020 and 2021. Derived data under ODbL 1.0, the licence of the Paris Open Data source; see [/licence](/licence).

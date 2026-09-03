@@ -65,7 +65,7 @@ Sans la **paire (nom, montant)**, aucune de ces lectures n'est possible. Le port
 
 L'**annexe B8.1.1** du Compte Administratif, intitulée « Liste des concours attribués à des tiers en nature ou en subventions », est imposée par la nomenclature comptable M57. Elle est publiée chaque année dans le **Tome 3** du CA, en PDF, sur [paris.fr](https://www.paris.fr/pages/comptes-administratifs-de-la-ville-retrouvez-toutes-les-infos-27793). Elle contient, sous-section par sous-section (Associations, Entreprises, Fondations, Communes, Établissements publics, État, Régies), **la liste exhaustive et nommée** des bénéficiaires, avec montant numéraire et prestations en nature.
 
-Pour 2020 et 2021, ces deux PDFs font respectivement **4,2 Mo et 4,1 Mo** et contiennent les noms qui n'apparaissent pas dans l'API du portail. Le total annoncé en première page est :
+Pour 2020, le compte administratif tient en un rapport financier et cinq tomes, 1 671 pages de chiffres et d'annexes ; le tome 3 est la liste elle-même, **404 pages** de noms et de montants. Pour 2021, cinq tomes et 1 667 pages, la liste étant le tome 3, **417 pages**. Ces deux tomes contiennent les noms qui n'apparaissent pas dans l'API du portail. Le total annoncé en première page est :
 
 - **CA 2020 : 1 335 350 692 €** (Total Général de la section)
 - **CA 2021 : 1 258 079 952 €**
@@ -99,7 +99,7 @@ ACADEMIE D ARMES DE FRANCE                                                      
 
 ### 2. Parser regex Python (~250 lignes)
 
-Le parser ([`parse_subv_pdf_text.py`](https://github.com/AbstractsMachine/france-open-data-pipeline) dans le pipeline) :
+Le parser (`parse_subv_pdf_text.py` dans le pipeline) :
 
 - détecte le **vrai début de section** (chaîne « LISTE DES CONCOURS ATTRIBUES A DES TIERS EN NATURE OU EN SUBVENTIONS ») et son **arrêt** avant la section suivante (B8.1.2 ou B8.3) ;
 - suit les **sous-sections** (Associations / Entreprises / Fondations / Communes / Établissements publics / État / Régies / Autres) pour assigner la bonne nature juridique à chaque bénéficiaire ;
@@ -169,4 +169,4 @@ Ce qu'il dit, en une phrase : **la donnée existait, dans une annexe officielle,
 
 ---
 
-**Sources** : [Comptes Administratifs Ville de Paris, Tome 3 — annexe B8.1.1](https://www.paris.fr/pages/comptes-administratifs-de-la-ville-retrouvez-toutes-les-infos-27793) (CA 2020 et CA 2021) · Portail Open Data Paris ([opendata.paris.fr](https://opendata.paris.fr)) — dataset `subventions-versees-annexe-compte-administratif-a-partir-de-2018`, requêtes via l'[API publique ODSQL](https://opendata.paris.fr/api/explore/v2.1/) · Pipeline open-public-data : extraction `pipeline/scripts/tools/parse_subv_pdf_text.py`, chargement BigQuery `pipeline/scripts/sync/sync_pdf_subventions_b811.py`, fusion avec l'OpenData dans `pipeline/models/staging/stg_subventions_all.sql`. Périmètre : Ville de Paris, exercices 2020 et 2021. Pipeline ouvert sous AGPL-3.0, données dérivées sous Licence Ouverte Etalab 2.0.
+**Sources** : [Comptes Administratifs Ville de Paris, Tome 3 — annexe B8.1.1](https://www.paris.fr/pages/comptes-administratifs-de-la-ville-retrouvez-toutes-les-infos-27793) (CA 2020 et CA 2021) · Portail Open Data Paris ([opendata.paris.fr](https://opendata.paris.fr)) — dataset `subventions-versees-annexe-compte-administratif-a-partir-de-2018`, requêtes via l'[API publique ODSQL](https://opendata.paris.fr/api/explore/v2.1/) · Pipeline open-public-data : extraction `pipeline/scripts/tools/parse_subv_pdf_text.py`, chargement BigQuery `pipeline/scripts/sync/sync_pdf_subventions_b811.py`, fusion avec l'OpenData dans `pipeline/models/staging/stg_subventions_all.sql`. Périmètre : Ville de Paris, exercices 2020 et 2021. Données dérivées sous ODbL 1.0, licence de la source Paris Open Data ; voir [/licence](/licence).
