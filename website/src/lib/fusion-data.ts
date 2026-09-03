@@ -1,6 +1,8 @@
 import { loadLieuxIndex, loadLieu } from "./lieux-data";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { readDataJson, readDataJsonOrNull, cityJsonPath } from "./data/read";
+import { POSTE_LINKS } from "./budget-poste-links";
+import { cityPopulation } from "@/lib/methodology";
 
 export { PARIS_POPULATION } from "@/lib/methodology";
 import {
@@ -4576,7 +4578,75 @@ export type BudgetPosteFiche = {
   deltaPct: number | null;
   /** Sous-postes — natures comptables avec leur fonction + categorie de flux pour l'affichage groupé. */
   subPostes: BudgetPosteSubPoste[];
+  /** Le poste année par année (toutes les années publiées), voté ou exécuté. */
+  series: { year: number; value: number; type: "vote" | "execute" }[];
+  /** Voté (budget primitif) ou exécuté (compte administratif) pour `year`. */
+  typeBudget: "vote" | "execute";
+  /** Rang du poste parmi ceux de son sens (1 = le plus gros). */
+  rank: number;
+  nbPostes: number;
+  /** Montant par habitant (population de la ville). */
+  perHabitant: number;
+  /** Pages du site vers lesquelles ce poste mène — vérifiées, jamais déduites. */
+  links: PosteLink[];
 };
+
+export type PosteLink = {
+  kind: "theme" | "categorie" | "chapitre" | "lieux" | "page";
+  href: string;
+  label: string;
+  /** Montant de la page cible (son propre héros), ou null quand la page n'en a pas. */
+  amount: number | null;
+  /** Compte associé (bénéficiaires, contrats, projets, lieux). */
+  count: number | null;
+  year: number;
+};
+
+/**
+ * Les pages du site où le poste « arrive » — une rangée par cible du tableau
+ * POSTE_LINKS qui EXISTE pour l'année (page chargeable, montant > 0). Le
+ * montant affiché est celui du héros de la page cible, jamais une part du
+ * poste : le budget compte par ligne, ces pages par bénéficiaire ou contrat.
+ */
+export function loadPosteLinks(slug: string, year: number, city: string = "paris"): PosteLink[] {
+  if (city !== "paris") return [];
+  const spec = POSTE_LINKS[slug];
+  if (!spec) return [];
+  const out: PosteLink[] = [];
+  const base = `/fr/city/${city}`;
+  for (const theme of spec.themes ?? []) {
+    try {
+      const th = loadThemeSubventions(slugifyLabel(theme), year, city);
+      if (th && th.total > 0 && th.theme === theme) {
+        out.push({ kind: "theme", href: `${base}/subventions/theme/${slugifyLabel(theme)}`, label: theme, amount: th.total, count: th.nbBeneficiaires, year: th.year });
+      }
+    } catch { /* cible absente : pas de rangée */ }
+  }
+  const cats: PosteLink[] = [];
+  for (const cat of spec.categories ?? []) {
+    try {
+      const c = loadMarcheCategorie(slugifyLabel(cat), year);
+      if (c && c.total > 0) cats.push({ kind: "categorie", href: `${base}/marches/categorie/${c.slug}`, label: c.category, amount: c.total, count: c.nbContrats, year: c.year });
+    } catch { /* idem */ }
+  }
+  out.push(...cats.sort((a, b) => (b.amount ?? 0) - (a.amount ?? 0)).slice(0, 3));
+  if (spec.chapitre) {
+    try {
+      const ch = loadChapitre(spec.chapitre, year);
+      if (ch && ch.total > 0) out.push({ kind: "chapitre", href: `${base}/investissements/chapitre/${ch.slug}`, label: ch.label, amount: ch.total, count: ch.nbProjets > 0 ? ch.nbProjets : null, year: ch.year });
+    } catch { /* idem */ }
+  }
+  if (spec.lieux?.length) {
+    const idx = loadLieuxIndex();
+    for (const fam of spec.lieux) {
+      const n = idx.filter((l) => l.famille === fam).length;
+      if (n > 0) out.push({ kind: "lieux", href: `${base}/lieux`, label: fam, amount: null, count: n, year });
+    }
+  }
+  if (spec.page === "logement") out.push({ kind: "page", href: `${base}/logement`, label: "logement", amount: null, count: null, year });
+  if (spec.page === "dette") out.push({ kind: "page", href: `${base}/dette`, label: "dette", amount: null, count: null, year });
+  return out;
+}
 
 export function loadBudgetPoste(slug: string, requestedYear?: number, city: string = "paris"): BudgetPosteFiche | null {
   const index = readJson<BudgetIndex>(cityJsonPath(city, "budget_index.json"));
@@ -4633,6 +4703,25 @@ export function loadBudgetPoste(slug: string, requestedYear?: number, city: stri
     /* previous year unavailable */
   }
 
+  // Le poste sur toutes les années publiées — pour la tendance à côté du chiffre.
+  const series: BudgetPosteFiche["series"] = [];
+  for (const y of [...index.availableYears].sort((a, b) => a - b)) {
+    try {
+      const sk = y === year ? sankey : readJson<BudgetSankeyFull>(cityJsonPath(city, `budget_sankey_${y}.json`));
+      const lk = kind === "depense"
+        ? sk.links.find((l) => l.source === centralNode && l.target === label)
+        : sk.links.find((l) => l.target === centralNode && l.source === label);
+      const sum = index.summary.find((s) => s.year === y);
+      if (lk && lk.value > 0) series.push({ year: y, value: lk.value, type: sum?.type_budget ?? "execute" });
+    } catch { /* année absente */ }
+  }
+  const typeBudget = index.summary.find((s) => s.year === year)?.type_budget ?? "execute";
+  const siblings = (kind === "depense"
+    ? sankey.links.filter((l) => l.source === centralNode)
+    : sankey.links.filter((l) => l.target === centralNode)).sort((a, b) => b.value - a.value);
+  const rank = Math.max(1, siblings.findIndex((l) => (kind === "depense" ? l.target : l.source) === label) + 1);
+  const population = cityPopulation(city);
+
   return {
     slug,
     label,
@@ -4643,6 +4732,12 @@ export function loadBudgetPoste(slug: string, requestedYear?: number, city: stri
     shareOfKindPct,
     deltaPct,
     subPostes,
+    series,
+    typeBudget,
+    rank,
+    nbPostes: siblings.length,
+    perHabitant: population > 0 ? total / population : 0,
+    links: kind === "depense" ? loadPosteLinks(slug, year, city) : [],
   };
 }
 

@@ -19238,3 +19238,38 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   .theme-fusion .fx-v3 .fx-fiche-bd-value { grid-area: value; }
   .theme-fusion .fx-v3 .fx-fiche-bd-track { grid-area: track; }
 }
+/* v3 — fiche de poste budgétaire : chiffre + tendance, missions dépliables, destinations */
+.theme-fusion .fx-v3-herogrid { display: grid; grid-template-columns: minmax(0, 1fr) 270px; gap: 32px; align-items: end; margin: 40px 0 48px; }
+.theme-fusion .fx-v3-trend .t { font-size: 13.5px; color: var(--muted); } .theme-fusion .fx-v3-trend .t b { color: var(--ink); font-weight: 600; }
+.theme-fusion .fx-v3-trend .bars { display: flex; align-items: flex-end; gap: 8px; height: 66px; margin-top: 14px; }
+.theme-fusion .fx-v3-trend .bars > div { flex: 0 0 32px; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.theme-fusion .fx-v3-trend .bars b { width: 100%; background: #c8ccd3; display: block; }
+.theme-fusion .fx-v3-trend .bars .vote b { background: repeating-linear-gradient(135deg, #c8ccd3 0 3px, #fafaf7 3px 5px); }
+.theme-fusion .fx-v3-trend .bars .now b { background: var(--ink); }
+.theme-fusion .fx-v3-trend .bars span { font-family: var(--f-mono); font-size: 9.5px; color: var(--muted); }
+.theme-fusion .fx-v3-mission {
+  display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(46px, 0.9fr) auto; gap: 12px; align-items: center;
+  width: 100%; padding: 12px 0; border: 0; border-bottom: 1px solid var(--rule); background: transparent; text-align: left; cursor: pointer; font: inherit; color: var(--ink);
+}
+.theme-fusion .fx-v3-mission:hover { background: rgba(10,10,10,.03); }
+.theme-fusion .fx-v3-mission.open { border-bottom: 0; }
+.theme-fusion .fx-v3-mission .l { font-size: 15px; line-height: 1.3; } .theme-fusion .fx-v3-mission.open .l { font-weight: 600; }
+.theme-fusion .fx-v3-mission .l .chev { color: var(--muted); font-weight: 400; margin-left: 6px; font-size: 12px; }
+.theme-fusion .fx-v3-mission .l .m { display: block; font-size: 12.5px; color: var(--muted); margin-top: 3px; font-weight: 400; }
+.theme-fusion .fx-v3-mission .t { height: 8px; background: #ecedf0; } .theme-fusion .fx-v3-mission .t span { display: block; height: 8px; background: var(--bleu); }
+.theme-fusion .fx-v3-mission .v { font-family: var(--f-disp); font-weight: 700; font-size: 15px; letter-spacing: -0.01em; white-space: nowrap; text-align: right; min-width: 84px; }
+.theme-fusion .fx-v3-mission .v .u { font-size: 11px; color: var(--muted); font-weight: 500; margin-left: 2px; }
+.theme-fusion .fx-v3-proj { font-family: var(--f-mono); font-size: 9.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--ocre); margin-left: 8px; }
+.theme-fusion .fx-v3-mline { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 24px; padding: 9px 0 9px 18px; border-bottom: 1px solid var(--rule); background: #f5f5f2; align-items: baseline; }
+.theme-fusion .fx-v3-mline .l { font-size: 13.5px; color: var(--ink-2); } .theme-fusion .fx-v3-mline .s { font-size: 12.5px; color: var(--muted); grid-column: 1; }
+.theme-fusion .fx-v3-mline .a { font-family: var(--f-disp); font-weight: 700; font-size: 14px; letter-spacing: -0.01em; white-space: nowrap; } .theme-fusion .fx-v3-mline .a .u { font-size: 10px; color: var(--muted); font-weight: 500; margin-left: 2px; }
+.theme-fusion .fx-v3-dest { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 24px; padding: 14px 0; border-bottom: 1px solid var(--rule); align-items: baseline; text-decoration: none; color: inherit; }
+.theme-fusion .fx-v3-dest .k { font-size: 12.5px; color: var(--muted); grid-column: 1 / -1; }
+.theme-fusion .fx-v3-dest .l { font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1.35; } .theme-fusion .fx-v3-dest .l .ar { color: var(--muted); font-weight: 400; }
+.theme-fusion .fx-v3-dest .s { grid-column: 1; font-size: 13.5px; color: var(--muted); }
+.theme-fusion .fx-v3-dest .a { font-family: var(--f-disp); font-weight: 700; font-size: 18px; letter-spacing: -0.02em; white-space: nowrap; } .theme-fusion .fx-v3-dest .a .u { font-size: 11px; color: var(--muted); font-weight: 500; margin-left: 2px; }
+@media (max-width: 600px) {
+  .theme-fusion .fx-v3-herogrid { grid-template-columns: 1fr; gap: 20px; margin: 32px 0 36px; }
+  .theme-fusion .fx-v3-trend .bars > div { flex: 1 1 0; }
+  .theme-fusion .fx-v3-mission { grid-template-columns: minmax(0, 1fr) auto; } .theme-fusion .fx-v3-mission .t { grid-column: 1 / -1; }
+}

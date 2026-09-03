@@ -1,0 +1,384 @@
+{
+ "Autre intervention social": {
+  "fr": "Autres interventions sociales",
+  "en": "Other social interventions"
+ },
+ "Aide sociale à l'enfance": {
+  "fr": "Aide sociale à l'enfance",
+  "en": "Child welfare",
+  "sub_fr": "enfants placés, foyers, familles d'accueil",
+  "sub_en": "children in care, homes, foster families"
+ },
+ "Crèches et garderies": {
+  "fr": "Crèches et garderies",
+  "en": "Nurseries and daycare",
+  "sub_fr": "crèches municipales et associatives",
+  "sub_en": "municipal and non-profit nurseries"
+ },
+ "RSA allocations": {
+  "fr": "RSA",
+  "en": "RSA income support",
+  "sub_fr": "revenu de solidarité active, versé aux personnes sans ressources ou à faibles revenus",
+  "sub_en": "paid to people with no or very low income"
+ },
+ "Personnes handicapées": {
+  "fr": "Personnes handicapées",
+  "en": "People with disabilities",
+  "sub_fr": "prestation de compensation, établissements",
+  "sub_en": "compensation allowance, care facilities"
+ },
+ "APA à domicile": {
+  "fr": "Aide à domicile des personnes âgées (APA)",
+  "en": "Home care allowance for the elderly (APA)"
+ },
+ "Autre action en faveur": {
+  "fr": "Autres actions d'aide",
+  "en": "Other support actions"
+ },
+ "Personnes en difficulté": {
+  "fr": "Personnes en difficulté",
+  "en": "People in hardship"
+ },
+ "Services communs": {
+  "fr": "Services communs",
+  "en": "Shared services",
+  "sub_fr": "personnel et moyens partagés du poste",
+  "sub_en": "staff and resources shared across the item"
+ },
+ "APA versé établissemnt": {
+  "fr": "APA versée aux établissements",
+  "en": "Care allowance paid to facilities (APA)"
+ },
+ "PMI et planif familiale": {
+  "fr": "Protection maternelle et infantile, planning familial",
+  "en": "Maternal and child health, family planning"
+ },
+ "Insertion sociale": {
+  "fr": "Insertion sociale",
+  "en": "Social inclusion"
+ },
+ "APA versé bénéf établisem": {
+  "fr": "APA versée aux résidents d'établissements",
+  "en": "Care allowance paid to facility residents (APA)"
+ },
+ "Insertion professionnelle": {
+  "fr": "Insertion professionnelle",
+  "en": "Employment inclusion"
+ },
+ "Autr action petite enfanc": {
+  "fr": "Autres actions petite enfance",
+  "en": "Other early-childhood actions"
+ },
+ "Disp autre étab sanitaire": {
+  "fr": "Autres établissements de santé",
+  "en": "Other health facilities"
+ },
+ "Prév et éducation santé": {
+  "fr": "Prévention et éducation à la santé",
+  "en": "Health prevention and education"
+ },
+ "Réserves Foncières": {
+  "fr": "Réserves foncières",
+  "en": "Land reserves",
+  "sub_fr": "terrains et immeubles achetés par la Ville",
+  "sub_en": "land and buildings bought by the City"
+ },
+ "Logement social": {
+  "fr": "Logement social",
+  "en": "Social housing"
+ },
+ "Opérations d’aménagement": {
+  "fr": "Opérations d'aménagement",
+  "en": "Development operations"
+ },
+ "Espaces verts urbains": {
+  "fr": "Espaces verts urbains",
+  "en": "Urban green spaces"
+ },
+ "Adm générale collectivité": {
+  "fr": "Administration générale",
+  "en": "General administration",
+  "sub_fr": "services centraux, bâtiments administratifs, informatique",
+  "sub_en": "central services, administrative buildings, IT"
+ },
+ "Éclairage public": {
+  "fr": "Éclairage public",
+  "en": "Street lighting"
+ },
+ "Autres instances": {
+  "fr": "Autres instances",
+  "en": "Other bodies"
+ },
+ "Aide au secteur locatif": {
+  "fr": "Aide au secteur locatif",
+  "en": "Rental-sector support"
+ },
+ "Parc privé collectivité": {
+  "fr": "Immeubles privés de la Ville",
+  "en": "City-owned private housing stock"
+ },
+ "Autres actions d’aménagem": {
+  "fr": "Autres actions d'aménagement",
+  "en": "Other development actions"
+ },
+ "Politique de la ville": {
+  "fr": "Politique de la ville",
+  "en": "Urban policy for priority neighbourhoods"
+ },
+ "Manifestations sportives": {
+  "fr": "Événements et compétitions sportives",
+  "en": "Sporting events"
+ },
+ "Activité art action manif": {
+  "fr": "Arts et action culturelle",
+  "en": "Arts and cultural action",
+  "sub_fr": "festivals, arts visuels, éducation artistique",
+  "sub_en": "festivals, visual arts, arts education"
+ },
+ "Théâtre spectable vivant": {
+  "fr": "Théâtres et spectacle vivant",
+  "en": "Theatre and performing arts"
+ },
+ "Piscines": {
+  "fr": "Piscines",
+  "en": "Swimming pools"
+ },
+ "Bibliothèque, médiathèque": {
+  "fr": "Bibliothèques et médiathèques",
+  "en": "Libraries and media centres"
+ },
+ "Bibliothèques médiathèque": {
+  "fr": "Bibliothèques et médiathèques",
+  "en": "Libraries and media centres"
+ },
+ "Salles de sport, gymnases": {
+  "fr": "Salles de sport et gymnases",
+  "en": "Sports halls and gyms"
+ },
+ "Musées": {
+  "fr": "Musées",
+  "en": "Museums",
+  "sub_fr": "les musées de la Ville, gérés par Paris Musées",
+  "sub_en": "the City's museums, run by Paris Musées"
+ },
+ "Autres actions vie social": {
+  "fr": "Autres actions de vie sociale",
+  "en": "Other community-life actions"
+ },
+ "Patrimoine": {
+  "fr": "Patrimoine",
+  "en": "Heritage"
+ },
+ "Colonies de vacances": {
+  "fr": "Colonies de vacances",
+  "en": "Holiday camps"
+ },
+ "Activités artistiques,act": {
+  "fr": "Arts et action culturelle",
+  "en": "Arts and cultural action"
+ },
+ "Écoles primaires": {
+  "fr": "Écoles primaires",
+  "en": "Primary schools"
+ },
+ "Écoles maternelles": {
+  "fr": "Écoles maternelles",
+  "en": "Nursery schools"
+ },
+ "Hébergt resto scolaire": {
+  "fr": "Cantines et restauration scolaire",
+  "en": "School catering",
+  "sub_fr": "dont les caisses des écoles",
+  "sub_en": "including the school funds (caisses des écoles)"
+ },
+ "Collèges": {
+  "fr": "Collèges",
+  "en": "Middle schools"
+ },
+ "Classes regroupées": {
+  "fr": "Classes regroupées",
+  "en": "Combined classes"
+ },
+ "Enseignement supérieur": {
+  "fr": "Enseignement supérieur",
+  "en": "Higher education"
+ },
+ "Apprentissage": {
+  "fr": "Apprentissage",
+  "en": "Apprenticeships"
+ },
+ "Cités scolaires": {
+  "fr": "Cités scolaires",
+  "en": "School complexes"
+ },
+ "Classes de découverte": {
+  "fr": "Classes de découverte",
+  "en": "School trips"
+ },
+ "Autre serv annexe enseign": {
+  "fr": "Autres services annexes de l'enseignement",
+  "en": "Other school support services"
+ },
+ "Lycées publics": {
+  "fr": "Lycées publics",
+  "en": "Public high schools"
+ },
+ "Autres": {
+  "fr": "Autres",
+  "en": "Other"
+ },
+ "Opérations non ventilable": {
+  "fr": "Opérations non réparties par mission",
+  "en": "Operations not allocated to a mission"
+ },
+ "Personnel non ventilé": {
+  "fr": "Personnel non réparti",
+  "en": "Unallocated staff"
+ },
+ "Assemblée délibérante": {
+  "fr": "Conseil de Paris",
+  "en": "City Council",
+  "sub_fr": "élus, séances, groupes politiques",
+  "sub_en": "councillors, sessions, political groups"
+ },
+ "Cimetière pompe funèbre": {
+  "fr": "Cimetières et pompes funèbres",
+  "en": "Cemeteries and funeral services"
+ },
+ "Autres moyens généraux": {
+  "fr": "Autres moyens généraux",
+  "en": "Other general resources"
+ },
+ "Admin général Etat": {
+  "fr": "Administration générale de l'État",
+  "en": "General State administration"
+ },
+ "Info, communication, pub": {
+  "fr": "Information, communication, publicité",
+  "en": "Information, communication, advertising"
+ },
+ "Non spécifié": {
+  "fr": "Non précisé",
+  "en": "Unspecified"
+ },
+ "Développement touristique": {
+  "fr": "Développement touristique",
+  "en": "Tourism development"
+ },
+ "Insertion éco sociale": {
+  "fr": "Insertion économique et sociale",
+  "en": "Social and economic inclusion"
+ },
+ "Industrie,commerce artisa": {
+  "fr": "Industrie, commerce, artisanat",
+  "en": "Industry, trade and crafts"
+ },
+ "Recherche et innovation": {
+  "fr": "Recherche et innovation",
+  "en": "Research and innovation"
+ },
+ "Autres actions": {
+  "fr": "Autres actions",
+  "en": "Other actions"
+ },
+ "Struct d'anim et dev éco": {
+  "fr": "Structures d'animation et de développement économique",
+  "en": "Economic development bodies"
+ },
+ "Rayonnement et attractivi": {
+  "fr": "Rayonnement et attractivité",
+  "en": "International standing and attractiveness"
+ },
+ "Ser com collecte propreté": {
+  "fr": "Services communs de la propreté et de la collecte",
+  "en": "Shared cleaning and waste-collection services"
+ },
+ "Tri, valo et trait déchet": {
+  "fr": "Tri, valorisation et traitement des déchets",
+  "en": "Waste sorting, recovery and treatment"
+ },
+ "Collecte des déchets": {
+  "fr": "Collecte des déchets",
+  "en": "Waste collection"
+ },
+ "Propreté urbaine": {
+  "fr": "Propreté urbaine",
+  "en": "Street cleaning"
+ },
+ "Actions transversales": {
+  "fr": "Actions transversales",
+  "en": "Cross-cutting actions"
+ },
+ "Eaux pluviales": {
+  "fr": "Eaux pluviales",
+  "en": "Stormwater"
+ },
+ "Politique de l'eau": {
+  "fr": "Politique de l'eau",
+  "en": "Water policy"
+ },
+ "Politique de l'air": {
+  "fr": "Politique de l'air",
+  "en": "Air-quality policy"
+ },
+ "Prés patri nat gest risk": {
+  "fr": "Préservation du patrimoine naturel, gestion des risques",
+  "en": "Natural heritage and risk management"
+ },
+ "Lutte contre inondation": {
+  "fr": "Lutte contre les inondations",
+  "en": "Flood prevention"
+ },
+ "Assainissement": {
+  "fr": "Assainissement",
+  "en": "Sewerage"
+ },
+ "Autres transports": {
+  "fr": "Autres transports",
+  "en": "Other transport"
+ },
+ "Voirie communale": {
+  "fr": "Voirie",
+  "en": "Roads"
+ },
+ "Transport ferroviaire": {
+  "fr": "Transport ferroviaire",
+  "en": "Rail transport"
+ },
+ "Circulations douces": {
+  "fr": "Vélo et marche",
+  "en": "Walking and cycling"
+ },
+ "Transport sur route": {
+  "fr": "Transport routier",
+  "en": "Road transport"
+ },
+ "Halte fluv autre infra fl": {
+  "fr": "Haltes et infrastructures fluviales",
+  "en": "River docks and waterway infrastructure"
+ },
+ "Équipements de voirie": {
+  "fr": "Équipements de voirie",
+  "en": "Road equipment"
+ },
+ "Sécurité routière": {
+  "fr": "Sécurité routière",
+  "en": "Road safety"
+ },
+ "Police, sécurité, justice": {
+  "fr": "Police, sécurité, justice",
+  "en": "Police, security and justice"
+ },
+ "Autre int prot bien pers": {
+  "fr": "Autres interventions de protection des personnes et des biens",
+  "en": "Other protection of people and property"
+ },
+ "Incendie et secours": {
+  "fr": "Incendie et secours",
+  "en": "Fire and rescue"
+ },
+ "Hygiène salubrité publiqu": {
+  "fr": "Hygiène et salubrité publiques",
+  "en": "Public hygiene and sanitation"
+ }
+}
