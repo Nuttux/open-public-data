@@ -157,6 +157,14 @@ const pose = async (cx, cy, scale, band) => {
   await p.evaluate(([cx, cy, scale, band]) => { const e = window.__cityGL; e.setStep(band); e.setCamera({ cx, cy, scale }); e.invalidate(); }, [cx, cy, scale, band]);
   await p.waitForTimeout(350);
   for (let i = 0; i < 3; i++) { await p.evaluate(() => window.__cityGL.invalidate()); await p.waitForTimeout(120); }
+  /* THE DEV OVERLAY IS NOT THE CITY. Next's error dialog sits in a
+     `<nextjs-portal>` shadow root over the whole viewport, greyed. It was
+     baked into 45 years of level-6 tiles (2026-09-03: a package removed from
+     the shared node_modules while the render page still imported it), and
+     nothing here noticed — the engine kept answering. A capture with the
+     dialog up is an error, not a tile. */
+  const dialog = await p.evaluate(() => document.querySelector('nextjs-portal')?.shadowRoot?.textContent?.match(/Build Error|Runtime Error|Unhandled Runtime|Failed to compile/)?.[0] ?? null);
+  if (dialog) throw new Error(`the dev overlay is on the page: ${dialog}`);
   const got = await p.evaluate(() => ({ ...window.__cityGL.getCamera(), step: window.__cityGL.getStep(), vp: window.__cityGL.viewport }));
   if (Math.abs(got.cx - cx) > 1e-6 || Math.abs(got.cy - cy) > 1e-6 || Math.abs(got.scale / scale - 1) > 1e-9 || got.step !== band) {
     console.error('POSE MISMATCH wanted', { cx, cy, scale, band }, 'got', got);
