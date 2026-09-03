@@ -199,7 +199,10 @@ for (let z = ZMIN; z <= ZMAX; z++) {
     const cx = REF.cx + (wcx - (CSS.w * f) / 2) / scale;
     const cy = REF.cy - (wcy - (CSS.h * f) / 2) / scale;
     await pose(cx, cy, scale, band);
-    const shot = await p.screenshot({ clip: box, type: 'png' });
+    /* two minutes, not Playwright's thirty seconds: on a loaded machine
+       (load average 10 with other apps drawing) a capture took longer and
+       the whole run died on it, twice, 2026-09-03 */
+    const shot = await p.screenshot({ clip: box, type: 'png', timeout: 120000 });
     if (process.env.TRACE) fs.writeFileSync(path.join(OUT, `capture-z${z}-${i}-${j}.png`), shot);
     /* where this capture sits in the level's device-pixel canvas */
     const ox = z >= 3 ? i * CSS.w * DPR : Math.round((CSS.w * DPR - canvasW) / 2) * -1;
