@@ -357,7 +357,15 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
           <h2 className="fx-lieu-h2">{t("fx.lieu.h.conseil")}</h2>
           {lieu.moments.length > 0 && (
             <p className="fx-lieu-h2sub">
-              {fill(t(hasRanking ? "fx.lieu.conseil_sub" : "fx.lieu.conseil_sub_all"), { n: shown.length, lus: lieu.stats.n_lus ?? lieu.moments.length })}
+              {(() => {
+                const lus = lieu.stats.n_lus ?? lieu.moments.length;
+                const n = shown.length;
+                const key = n === 1 && lus === 1 ? "fx.lieu.conseil_sub_11"
+                  : n === 1 ? (hasRanking ? "fx.lieu.conseil_sub_1" : "fx.lieu.conseil_sub_all_1")
+                  : lus === 1 ? "fx.lieu.conseil_sub_lus1"
+                  : hasRanking ? "fx.lieu.conseil_sub" : "fx.lieu.conseil_sub_all";
+                return fill(t(key), { n, lus });
+              })()}
             </p>
           )}
           <div className="fx-lieu-rule" />
