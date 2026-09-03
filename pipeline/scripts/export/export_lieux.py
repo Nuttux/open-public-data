@@ -686,13 +686,14 @@ def main() -> int:
         (OUT / f"lieu_{slug}.json").write_text(json.dumps(fiche, ensure_ascii=False, indent=1))
         # Métrique citoyenne pour les cartes : l'argent si connu, sinon la
         # profondeur d'archive — pas « N délibérations » (jargon de process).
-        # Métrique de carte tranchée (option B) : « identifié » = Dépensé (réel) +
-        # Engagé (plafonds) — l'ordre de grandeur du lieu, réconciliable à l'euro
-        # près avec les deux KPI de la fiche. Un euro engagé peut se retrouver
-        # mandaté plus tard : « identifié » n'est PAS un cumul de dépense, et la
-        # fiche l'explicite en le décomposant.
-        argent_total = ((subv["total_eur"] if subv else 0) + argent["invest_total_eur"]
-                        + argent["mandate_total_eur"] + argent["marches_total_eur"])
+        # Métrique de carte = LE chiffre héros de la fiche (v3, 2026-09-03) : le
+        # versé (subventions + chantiers réglés) s'il existe, sinon le plafond des
+        # contrats. L'ancienne option B (versé + plafonds, « identifié ») faisait
+        # dire 143 M€ à la carte et 117,2 M€ à la fiche du Châtelet. Les deux
+        # composantes restent exportées à part (depense_reelle_eur, engage_eur).
+        depense_reelle = ((subv["total_eur"] if subv else 0) + argent["invest_total_eur"]
+                          + argent["mandate_total_eur"])
+        argent_total = depense_reelle if depense_reelle > 0 else argent["marches_total_eur"]
         depuis = int(bmo_extraits[0]["date"][:4]) if bmo_extraits else (years[0] if years else None)
         index.append({"slug": slug, "name": seed_row["name"], "kind_fr": seed_row["kind_fr"],
                       "famille": seed_row["famille"], "arrondissement": int(seed_row["arr"]),

@@ -145,6 +145,9 @@ export type LieuIndexEntry = {
   n_lieu: number | null;
   n_moments: number;
   argent_total_eur?: number;
+  /** Composantes du chiffre : versé (subventions + chantiers réglés) et plafonds de contrats. */
+  depense_reelle_eur?: number;
+  engage_eur?: number;
   depuis?: number | null;
   photo: string | null;
 };
@@ -155,9 +158,21 @@ function readJson<T>(file: string): T | null {
   return readDataJsonOrNull<T>(`lieux/${file}`);
 }
 
+/**
+ * Le chiffre d'un lieu sur la carte, les cartes et les rebonds est LE MÊME que
+ * le chiffre héros de sa fiche : le versé (subventions + chantiers réglés)
+ * quand il existe, sinon le plafond des contrats. Avant (option B, 2026-07-20)
+ * l'index sommait versé + plafonds (« identifié ») : la carte disait 143 M€
+ * pour le Châtelet et la fiche 117,2 M€ — une contradiction visible au clic.
+ * La règle est alignée ici ET dans export_lieux.py ; le repli sur les deux
+ * champs couvre un index exporté avant l'alignement.
+ */
 export function loadLieuxIndex(): LieuIndexEntry[] {
   const raw = readJson<{ lieux?: LieuIndexEntry[] }>("index.json");
-  return raw?.lieux ?? [];
+  return (raw?.lieux ?? []).map((l) => ({
+    ...l,
+    argent_total_eur: (l.depense_reelle_eur ?? 0) > 0 ? l.depense_reelle_eur : (l.engage_eur ?? l.argent_total_eur ?? 0),
+  }));
 }
 
 export function loadLieu(slug: string): LieuFicheData | null {
