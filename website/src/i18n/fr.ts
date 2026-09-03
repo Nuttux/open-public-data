@@ -3465,7 +3465,7 @@ const fr: Record<string, string> = {
   'fx.poste.v3.projete': 'projeté',
   'fx.poste.v3.projete_title': 'Ventilation projetée depuis la moyenne des exercices exécutés — voir la note en bas de fiche',
   'fx.poste.v3.orig': 'Libellé d’origine (M57) :',
-  'fx.poste.v3.h.links': 'Chez qui il arrive',
+  'fx.poste.v3.h.links': 'Les destinataires',
   'fx.poste.v3.h.links_sub': 'Où voir qui a reçu quoi : associations, entreprises, chantiers, lieux. Ces pages comptent par bénéficiaire ou par contrat, pas par ligne budgétaire.',
   'fx.poste.v3.link.theme': 'Associations et organismes',
   'fx.poste.v3.link.categorie': 'Entreprises',

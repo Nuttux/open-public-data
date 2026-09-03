@@ -3468,7 +3468,7 @@ const en: Record<string, string> = {
   'fx.poste.v3.projete': 'projected',
   'fx.poste.v3.projete_title': 'Breakdown projected from the average of executed years — see the note at the bottom',
   'fx.poste.v3.orig': 'Original label (M57):',
-  'fx.poste.v3.h.links': 'Where it ends up',
+  'fx.poste.v3.h.links': 'The recipients',
   'fx.poste.v3.h.links_sub': 'Where to see who received what: associations, companies, projects, places. These pages count by recipient or contract, not by budget line.',
   'fx.poste.v3.link.theme': 'Associations and public bodies',
   'fx.poste.v3.link.categorie': 'Companies',
