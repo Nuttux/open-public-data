@@ -188,5 +188,13 @@
     }
   ],
   "notes_fr": "Dépenses publiques consolidées (toutes administrations : État, Sécu, collectivités, opérateurs), exprimées en % du PIB, classées selon la nomenclature COFOG (Classification of the Functions of Government). Source unique Eurostat pour la comparabilité européenne.",
-  "notes_en": "Consolidated general government expenditure (central + state + local + social security funds), as % of GDP, classified by COFOG (Classification of the Functions of Government). Single Eurostat source for EU comparability."
+  "notes_en": "Consolidated general government expenditure (central + state + local + social security funds), as % of GDP, classified by COFOG (Classification of the Functions of Government). Single Eurostat source for EU comparability.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
+  }
 }

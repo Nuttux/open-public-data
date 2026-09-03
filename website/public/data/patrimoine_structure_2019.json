@@ -522,5 +522,13 @@
       "Bloomberg · ISIN FR0014xxxx"
     ],
     "limites": "MESURÉ (bilan M57 opendata.paris.fr) : encours total, ventilation par instrument (obligataire / bancaire / divers), masses actif-passif. INDICATIF (reconstitution ROB / Euronext / communiqués Paris IR, constant sur la période 2019-2024) : split taux fixe/variable (82/18), maturité moyenne (14,2 ans), taux moyens par instrument, liste des émissions obligataires, prochaine échéance lourde. Ces champs sont listés dans `indicative_fields` et ne doivent pas être présentés comme des mesures directes issues de l'open data."
+  },
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
 }

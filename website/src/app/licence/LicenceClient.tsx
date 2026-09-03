@@ -75,12 +75,18 @@ export default async function LicenceClient() {
                 </td>
                 <td>
                   <a
-                    href="https://www.data.gouv.fr/pages/legal/licences/etalab-2.0"
+                    href="https://opendatacommons.org/licenses/odbl/1-0/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Licence Ouverte Etalab 2.0 ↗
+                    ODbL 1.0 ↗
                   </a>
+                  <br />
+                  <span style={{ fontSize: 12, color: "var(--ink-2)" }}>
+                    {isFr
+                      ? "(ou la licence de la source quand elle n'impose pas le partage à l'identique — voir §04)"
+                      : "(or the source licence where it imposes no share-alike — see §04)"}
+                  </span>
                 </td>
               </tr>
               <tr>
@@ -215,15 +221,15 @@ export default async function LicenceClient() {
             kind={isFr ? "Données" : "Data"}
             title={
               isFr ? (
-                <>Données dérivées : <em>Licence Ouverte 2.0</em></>
+                <>Données dérivées : <em>ODbL 1.0</em></>
               ) : (
-                <>Derived data: <em>Etalab Open License 2.0</em></>
+                <>Derived data: <em>ODbL 1.0</em></>
               )
             }
             subtitle={
               isFr
-                ? "Tous les fichiers JSON et CSV publiés sont sous Licence Ouverte 2.0 par compatibilité avec les sources d'origine (Paris Open Data, État, INSEE)."
-                : "All published JSON and CSV files are under the Etalab Open License 2.0 for compatibility with the original sources (Paris Open Data, French State, INSEE)."
+                ? "La licence d'une base dérivée est celle de sa source la plus contraignante. Paris Open Data et Recife publient sous ODbL, qui impose le partage à l'identique : nos exports JSON/CSV qui en dérivent sont donc eux aussi sous ODbL. Les exports issus uniquement de données d'État (DGFiP, DECP, INSEE, DRIHL) restent sous Licence Ouverte 2.0, et ceux issus de DataSF sont dans le domaine public (PDDL)."
+                : "A derived database carries the licence of its most restrictive source. Paris Open Data and Recife publish under ODbL, which requires share-alike, so our JSON/CSV exports derived from them are ODbL too. Exports built solely from French State data (DGFiP, DECP, INSEE, DRIHL) remain under Etalab Open Licence 2.0, and those built from DataSF are public domain (PDDL)."
             }
           />
           <h3>{isFr ? "Vous pouvez" : "You may"}</h3>
@@ -236,8 +242,30 @@ export default async function LicenceClient() {
           <ul style={{ paddingLeft: 20, lineHeight: 1.7, marginBottom: 24 }}>
             <li>
               {isFr
-                ? "Mentionner la source : « Qipu · données dérivées de Paris Open Data, Etalab et INSEE »."
-                : "Cite the source: \"Qipu · data derived from Paris Open Data, Etalab and INSEE\"."}
+                ? "Attribuer chaque jeu de données d'origine dans la forme exigée par son producteur. Pour la Ville de Paris : « Nom du jeu de données, Ville de Paris, sous licence ODbL »."
+                : "Attribute each source dataset in the form its producer requires. For the City of Paris: \"Dataset name, Ville de Paris, sous licence ODbL\"."}
+            </li>
+            <li>
+              {isFr ? (
+                <>
+                  <b>Partage à l&apos;identique (ODbL)</b> — si vous redistribuez une base dérivée
+                  de nos exports Paris ou Recife, publiquement ou en tant que service, elle doit
+                  elle aussi être sous ODbL. Cette obligation ne s&apos;applique pas aux exports
+                  issus uniquement de données d&apos;État (Licence Ouverte 2.0) ni de DataSF (PDDL).
+                </>
+              ) : (
+                <>
+                  <b>Share-alike (ODbL)</b> — if you redistribute a database derived from our Paris
+                  or Recife exports, publicly or as a service, it must itself be under ODbL. This
+                  does not apply to exports built solely from French State data (Etalab Open
+                  Licence 2.0) or from DataSF (PDDL).
+                </>
+              )}
+            </li>
+            <li>
+              {isFr
+                ? "Citer Qipu comme producteur de la base dérivée : « Qipu · base dérivée, sous licence ODbL »."
+                : "Credit Qipu as the producer of the derived database: \"Qipu · derived database, licensed ODbL\"."}
             </li>
             <li>
               {isFr
@@ -250,10 +278,47 @@ export default async function LicenceClient() {
                 : "Not imply that Qipu endorses your reuse."}
             </li>
           </ul>
+          <h3 style={{ marginTop: 8 }}>{isFr ? "Licence par source" : "Licence by source"}</h3>
+          <table className="fx-sources-table" style={{ marginTop: 12, marginBottom: 24 }}>
+            <thead>
+              <tr>
+                <th>{isFr ? "Source" : "Source"}</th>
+                <th>{isFr ? "Licence d'origine" : "Source licence"}</th>
+                <th>{isFr ? "Obligations" : "Obligations"}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Paris Open Data</td>
+                <td>ODbL 1.0</td>
+                <td>{isFr ? "Attribution + partage à l'identique" : "Attribution + share-alike"}</td>
+              </tr>
+              <tr>
+                <td>{isFr ? "Recife (Dados Abertos)" : "Recife (Dados Abertos)"}</td>
+                <td>ODbL 1.0</td>
+                <td>{isFr ? "Attribution + partage à l'identique" : "Attribution + share-alike"}</td>
+              </tr>
+              <tr>
+                <td>{isFr ? "État français (DGFiP, DECP, INSEE, DRIHL)" : "French State (DGFiP, DECP, INSEE, DRIHL)"}</td>
+                <td>{isFr ? "Licence Ouverte 2.0" : "Etalab Open Licence 2.0"}</td>
+                <td>{isFr ? "Attribution seule" : "Attribution only"}</td>
+              </tr>
+              <tr>
+                <td>San Francisco (DataSF)</td>
+                <td>PDDL</td>
+                <td>{isFr ? "Domaine public — aucune obligation" : "Public domain — no obligation"}</td>
+              </tr>
+              <tr>
+                <td>Vancouver</td>
+                <td>{isFr ? "Open Government Licence – Vancouver" : "Open Government Licence – Vancouver"}</td>
+                <td>{isFr ? "Attribution seule" : "Attribution only"}</td>
+              </tr>
+            </tbody>
+          </table>
           <div className="fx-note">
             {isFr
-              ? "Les données brutes émises par les administrations restent toujours accessibles à leur source d'origine. Notre rôle est d'enrichir et d'organiser, pas de re-encadrer juridiquement."
-              : "The raw data published by administrations always remains accessible at its original source. Our role is to enrich and organise, not to re-restrict it legally."}
+              ? "Les données brutes émises par les administrations restent toujours accessibles à leur source d'origine. Notre rôle est d'enrichir et d'organiser, pas de re-encadrer juridiquement — et lorsque la source impose le partage à l'identique, nos dérivés le conservent."
+              : "The raw data published by administrations always remains accessible at its original source. Our role is to enrich and organise, not to re-restrict it legally — and where the source requires share-alike, our derivatives keep it."}
           </div>
         </div>
       </section>
@@ -360,14 +425,16 @@ export default async function LicenceClient() {
           >
             {isFr ? (
               <>
-                D&apos;après <b>qipu.org</b>, données dérivées de Paris Open Data,
-                Etalab et INSEE (Licence Ouverte 2.0). Méthodologie complète :
+                D&apos;après <b>qipu.org</b>, base dérivée sous licence ODbL, à partir de
+                Paris Open Data (Ville de Paris, sous licence ODbL), Etalab et INSEE
+                (Licence Ouverte 2.0). Méthodologie complète :
                 <code> qipu.org/methode</code>. Consulté le [date].
               </>
             ) : (
               <>
-                Based on <b>qipu.org</b>, data derived from Paris Open Data,
-                Etalab and INSEE (Etalab Open License 2.0). Full methodology:
+                Based on <b>qipu.org</b>, a derived database licensed ODbL, built from
+                Paris Open Data (Ville de Paris, sous licence ODbL), Etalab and INSEE
+                (Etalab Open Licence 2.0). Full methodology:
                 <code> qipu.org/methode</code>. Accessed [date].
               </>
             )}

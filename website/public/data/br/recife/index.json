@@ -1,21 +1,29 @@
 {
- "generated_at": "2026-08-26T18:08:46.719990+00:00",
- "source_pipeline": "configs/countries/br.yaml → sync_ckan_dataset.py → raw.br_recife_* → dbt_br_staging → dbt_br_analytics → dbt_br_marts → export_br_recife.py",
- "country": "br",
- "scale": "city",
- "place": "recife",
- "locale": "pt",
- "portal": "Dados Abertos da Prefeitura do Recife (CKAN)",
- "files": {
-  "budget": "budget.json",
-  "quem_recebe": "quem_recebe.json",
-  "recipients": "recipients.json",
-  "quem_recebe_search": "quem_recebe_search.json",
-  "temas": "temas.json",
-  "contratos": "contratos.json",
-  "modalidades": "modalidades.json",
-  "orgaos": "orgaos.json",
-  "licitacoes": "licitacoes.json",
-  "places": "places.json"
- }
+  "generated_at": "2026-08-26T18:08:46.719990+00:00",
+  "source_pipeline": "configs/countries/br.yaml → sync_ckan_dataset.py → raw.br_recife_* → dbt_br_staging → dbt_br_analytics → dbt_br_marts → export_br_recife.py",
+  "country": "br",
+  "scale": "city",
+  "place": "recife",
+  "locale": "pt",
+  "portal": "Dados Abertos da Prefeitura do Recife (CKAN)",
+  "files": {
+    "budget": "budget.json",
+    "quem_recebe": "quem_recebe.json",
+    "recipients": "recipients.json",
+    "quem_recebe_search": "quem_recebe_search.json",
+    "temas": "temas.json",
+    "contratos": "contratos.json",
+    "modalidades": "modalidades.json",
+    "orgaos": "orgaos.json",
+    "licitacoes": "licitacoes.json",
+    "places": "places.json"
+  },
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Prefeitura do Recife (Dados Abertos), sob licença ODbL",
+    "producer": "Qipu (qipu.org) — derived database"
+  }
 }

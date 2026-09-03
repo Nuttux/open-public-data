@@ -1,197 +1,205 @@
 {
- "generated_at": "2026-07-21T17:04:41.999226+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "bibliotheque-forney",
- "name": "Bibliothèque Forney",
- "kind_fr": "Bibliothèque",
- "kind_en": "Library",
- "famille": "culture",
- "arrondissement": 4,
- "lat": 48.853389,
- "lon": 2.359078,
- "photo": "/img/lieux/bibliotheque-forney.jpg",
- "photo_credit": {
-  "licence": null,
-  "auteur": null,
-  "url": "https://fr.wikipedia.org/wiki/Biblioth%C3%A8que_Forney",
-  "source": "Wikipédia"
- },
- "wiki": {
-  "extract": "La bibliothèque Forney fait partie du réseau des bibliothèques patrimoniales et spécialisées de la Ville de Paris, ses collections s’étant développées autour des arts décoratifs, des métiers d’art et de leurs techniques, des beaux-arts et des arts graphiques. Elle organise régulièrement des expositions.",
-  "url": "https://fr.wikipedia.org/wiki/Biblioth%C3%A8que_Forney",
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  },
-  "extract_en": "The Bibliothèque Forney is part of the City of Paris's network of heritage and specialized libraries, its collections having developed around the decorative arts, crafts and their techniques, fine arts and graphic arts. It regularly organizes exhibitions."
- },
- "stats": {
-  "n_delibs": 1432,
-  "delibs_span": [
-   2000,
-   2025
-  ],
-  "n_bmo_brut": 1272,
-  "n_bmo_verifies": 18,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "titre nommant le lieu (7 trouvés)",
-  "lecture_mode_en": "title naming the place (7 found)",
-  "n_lus": 7,
-  "n_lieu": 7
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": "Installée dans l'Hôtel de Sens (4e), la bibliothèque Forney apparaît au Conseil de Paris d'abord par ses équipements : en avril 2000, le Conseil approuve le principe du remplacement d'un ascenseur et autorise le Maire à signer le marché correspondant. En septembre 2001, le Maire est autorisé à accepter deux legs particuliers de Mme Roberte JOUVE au profit du Musée Carnavalet et de la bibliothèque, dont la valeur d'immobilisation des œuvres est estimée à 17.500 F au total. À partir de 2006, plusieurs délibérations approuvent des principes de travaux sur le bâtiment — mise aux normes des monte-dossiers (avril 2006), restauration des chêneaux, des corniches et des façades (novembre 2006), puis restructuration des salles d'exposition (mai 2007) — le Maire ayant été autorisé dès février 2006 à solliciter de l'État une subvention d'investissement au titre des monuments historiques pour la réfection des chéneaux. En décembre 2025, la Ville accepte un legs particulier consenti par M. B, à charge pour elle de mettre des livres à la disposition de la bibliothèque.",
- "moments": [
-  {
-   "id": "51052",
-   "seance": "AVRIL 2000",
-   "fait": "Le Conseil approuve le principe du remplacement de l'ascenseur et autorise le Maire à signer le marché de travaux.",
-   "pourquoi": "Premier chantier : remplacer l'ascenseur",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51052",
-   "fait_en": "The Council approved the principle of replacing the elevator and authorized the Mayor to sign the works contract.",
-   "pourquoi_en": "First project: replacing the elevator"
-  },
-  {
-   "id": "84874",
-   "seance": "SEPTEMBRE 2001",
-   "fait": "Le Maire est autorisé à accepter deux legs de Mme Roberte JOUVE, partagés entre le Musée Carnavalet et la bibliothèque.",
-   "pourquoi": "Un legs d'œuvres partagé avec Carnavalet",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84874",
-   "fait_en": "The Mayor was authorized to accept two bequests from Ms Roberte JOUVE, shared between the Musée Carnavalet and the library.",
-   "pourquoi_en": "A bequest of works shared with Carnavalet"
-  },
-  {
-   "id": "27794",
-   "seance": "FEVRIER 2006",
-   "fait": "Le Maire est autorisé à solliciter de l'État une subvention d'investissement au titre des monuments historiques pour les chéneaux.",
-   "pourquoi": "Solliciter l'État au titre des monuments historiques",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27794",
-   "fait_en": "The Mayor was authorized to seek an investment grant from the State for historic monuments toward the gutters.",
-   "pourquoi_en": "Seeking State support under the historic monuments programme"
-  },
-  {
-   "id": "38783",
-   "seance": "AVRIL 2006",
-   "fait": "Le Conseil approuve le principe des travaux de mise aux normes des monte-dossiers.",
-   "pourquoi": "Mettre les monte-dossiers aux normes",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38783",
-   "fait_en": "The Council approved the principle of works to bring the document lifts up to standard.",
-   "pourquoi_en": "Bringing the document lifts up to standard"
-  },
-  {
-   "id": "52553",
-   "seance": "NOVEMBRE 2006",
-   "fait": "Le Conseil approuve le principe des travaux de restauration des chêneaux, des corniches et des façades.",
-   "pourquoi": "Restaurer chêneaux, corniches et façades",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52553",
-   "fait_en": "The Council approved the principle of works to restore the gutters, cornices and façades.",
-   "pourquoi_en": "Restoring the gutters, cornices and façades"
-  },
-  {
-   "id": "80301",
-   "seance": "MAI 2007",
-   "fait": "Le Conseil approuve le principe de restructuration des salles d'exposition.",
-   "pourquoi": "Repenser les salles d'exposition de la bibliothèque",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80301",
-   "fait_en": "The Council approved the principle of restructuring the exhibition rooms.",
-   "pourquoi_en": "Rethinking the library's exhibition rooms"
-  },
-  {
-   "id": "183732",
-   "seance": "DECEMBRE 2025",
-   "fait": "La Ville accepte un legs particulier de M. B, à charge pour elle de mettre des livres à disposition de la bibliothèque.",
-   "pourquoi": "Un legs de livres, un quart de siècle plus tard",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183732",
-   "fait_en": "The City accepted an individual bequest from Mr B, on condition that it make books available to the library.",
-   "pourquoi_en": "A bequest of books, a quarter century later"
-  }
- ],
- "montants": [
-  {
-   "seance": "SEPTEMBRE 2001",
-   "montant": "17.500 F",
-   "objet": "Valeur d'immobilisation totale des œuvres léguées par les deux legs (Musée Carnavalet et Bibliothèque Forney réunis), inscrite au budget d'investissement.",
-   "citation": "La valeur d'immobilisation des ?uvres léguées, estimée à 17.500 F au total sera inscrite au chapitre 10, compte 1025, sous-fonction 01, du budget d'investissement de la Ville de Paris.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84874"
-  }
- ],
- "bmo_extraits": [
-  {
-   "date": "1900-01-16",
-   "extrait": "prix de 10 francs l'un, quatre exemplaires de l'ouvrage de M. -Maurice Guillemet intitulé : « Entr'actes de pierres », qui seront répartis entre la bibliothèque du Conseil, la bibliothèque Le Peletier de Saint-Fargeau, la bibliothèque Forney et l'école Estienne",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6520356c/f13.item",
-   "extrait_en": "at a price of 10 francs each, four copies of the work by Mr Maurice Guillemet entitled \"Entr'actes de pierres\", which will be distributed among the Council's library, the Le Peletier de Saint-Fargeau library, the Forney library and the École Estienne"
-  },
-  {
-   "date": "1928-09-06",
-   "extrait": "Les bibliothèques installées dans les mairies des arrondissements suivants : 4e, 6e, 10e, 12e, 13e, 14*, 15e, 18e 19 et 20e sont ouvertes en outre le samedi de 13 à 21 heures … 5° La bibliothèque centrale d'art appliqué et de technique industrielle, dite bibliothèque Forney , 1",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64975402/f3.item",
-   "extrait_en": "The libraries housed in the town halls of the following arrondissements: 4th, 6th, 10th, 12th, 13th, 14th, 15th, 18th, 19th and 20th are additionally open on Saturdays from 1 to 9 p.m. … 5° The central library of applied art and industrial technique, known as the Forney library, 1"
-  },
-  {
-   "date": "1966-07-04",
-   "extrait": "et M. Joseph Marquez, « Délibère : « M. le Préfet de la Seine est invité à hâter le transfert de ce qui reste de la bibliothèque Forney à l'Hôtel de Sens et à prévoir dans les locaux libérés l'aménagement de deux restaurants scolaires pour les besoins du groupe scolaire 12-14, ru",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9707832d/f25.item",
-   "extrait_en": "and Mr Joseph Marquez, \"Resolves: The Prefect of the Seine is invited to hasten the transfer of what remains of the Forney library to the Hôtel de Sens and to plan, in the vacated premises, the fitting-out of two school cafeterias for the needs of the school group at 12-14, ru"
-  },
-  {
-   "date": "1969-02-19",
-   "extrait": "N° 1115. — En mars 1967, le Conseil municipal de Paris votait les crédits nécessaires à l'exécution de travaux à l'hôtel de Sens pour y transférer les revues de la Bibliothèque Forney , les locaux de cette bibliothèque devant servir à l'agrandissement du groupe scolaire Titon, en",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97105401/f3.item",
-   "extrait_en": "No. 1115. — In March 1967, the Conseil municipal de Paris voted the credits necessary to carry out works at the Hôtel de Sens in order to transfer there the periodicals of the Bibliothèque Forney, the premises of that library being intended for the extension of the Titon school group, i"
-  }
- ],
- "bmo_recit": "La bibliothèque Forney apparaît dans le Bulletin municipal dès 1900, lorsque la Ville lui attribue l'un des quatre exemplaires, achetés 10 francs l'un, d'un ouvrage de Maurice Guillemet répartis entre plusieurs bibliothèques et écoles. En 1928, elle figure dans la liste des bibliothèques municipales sous le nom de « bibliothèque centrale d'art appliqué et de technique industrielle », installée 12, rue Titon. Les années 1960 sont celles du déménagement : en 1966, le Conseil invite le Préfet de la Seine à hâter le transfert de ce qui reste de la bibliothèque vers l'Hôtel de Sens, les locaux libérés devant accueillir deux restaurants scolaires pour le groupe scolaire de la rue Titon. En 1969, le Bulletin rappelle que le Conseil municipal a voté en mars 1967 les crédits de travaux à l'hôtel de Sens pour y transférer les revues de Forney, les anciens locaux devant servir à l'agrandissement du groupe scolaire Titon.",
- "invest": [],
- "marches": [
-  {
-   "numero_marche": "20232023T03371",
-   "objet": "CVC BIBLIOTHEQUE FORNEY CENTRE ESPACE CANCER FIGUIER 4EME",
-   "objet_clair": null,
-   "fournisseur": "PROCHALOR",
-   "montant_max": 635437.96,
-   "date_notification": "2023-05-04",
-   "preuve": "L'objet nomme le lieu en premier : « CVC BIBLIOTHEQUE FORNEY CENTRE ESPACE CANCER FIGUIER 4EME » — prestation de chauffage / ventilation / climatisation portant sur le bâtiment. Réserve explicite : le même marché couvre un second équipement, le « CENTRE ESPACE CANCER FIGUIER » (4e) ; le montant maximum de 635 437,96 € ne revient donc pas en totalité à la bibliothèque Forney."
-  },
-  {
-   "numero_marche": "20161210000018",
-   "objet": "TRAVAUX SSI BIBLIOTHÈQUE FORNEY - HÔTEL DE SENS 75004",
-   "objet_clair": null,
-   "fournisseur": "ATOUTRENOV",
-   "montant_max": 199988.0,
-   "date_notification": "2016-02-10",
-   "preuve": "L'objet du marché nomme le lieu et son bâtiment verbatim : « TRAVAUX SSI BIBLIOTHÈQUE FORNEY - HÔTEL DE SENS 75004 ». Travaux de système de sécurité incendie sur le bâtiment lui-même, aucun autre site cité. L'identité Forney = Hôtel de Sens, 4e, est confirmée par la délibération 2007 DPA 96 : « travaux de restructuration des salles d'exposition à la Bibliothèque Forney (Hôtel de Sens) sise 3, rue du Figuier (4e) »."
-  }
- ],
- "mandate": null,
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Biblioth%C3%A8que+Forney"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Biblioth%C3%A8que+Forney%22%29"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
+  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "bibliotheque-forney",
+  "name": "Bibliothèque Forney",
+  "kind_fr": "Bibliothèque",
+  "kind_en": "Library",
+  "famille": "culture",
+  "arrondissement": 4,
+  "lat": 48.853389,
+  "lon": 2.359078,
+  "photo": "/img/lieux/bibliotheque-forney.jpg",
+  "photo_credit": {
+    "licence": null,
+    "auteur": null,
+    "url": "https://fr.wikipedia.org/wiki/Biblioth%C3%A8que_Forney",
+    "source": "Wikipédia"
   },
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "La bibliothèque Forney fait partie du réseau des bibliothèques patrimoniales et spécialisées de la Ville de Paris, ses collections s’étant développées autour des arts décoratifs, des métiers d’art et de leurs techniques, des beaux-arts et des arts graphiques. Elle organise régulièrement des expositions.",
+    "url": "https://fr.wikipedia.org/wiki/Biblioth%C3%A8que_Forney",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    },
+    "extract_en": "The Bibliothèque Forney is part of the City of Paris's network of heritage and specialized libraries, its collections having developed around the decorative arts, crafts and their techniques, fine arts and graphic arts. It regularly organizes exhibitions."
+  },
+  "stats": {
+    "n_delibs": 1432,
+    "delibs_span": [
+      2000,
+      2025
+    ],
+    "n_bmo_brut": 1272,
+    "n_bmo_verifies": 18,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "titre nommant le lieu (7 trouvés)",
+    "lecture_mode_en": "title naming the place (7 found)",
+    "n_lus": 7,
+    "n_lieu": 7
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "Installée dans l'Hôtel de Sens (4e), la bibliothèque Forney apparaît au Conseil de Paris d'abord par ses équipements : en avril 2000, le Conseil approuve le principe du remplacement d'un ascenseur et autorise le Maire à signer le marché correspondant. En septembre 2001, le Maire est autorisé à accepter deux legs particuliers de Mme Roberte JOUVE au profit du Musée Carnavalet et de la bibliothèque, dont la valeur d'immobilisation des œuvres est estimée à 17.500 F au total. À partir de 2006, plusieurs délibérations approuvent des principes de travaux sur le bâtiment — mise aux normes des monte-dossiers (avril 2006), restauration des chêneaux, des corniches et des façades (novembre 2006), puis restructuration des salles d'exposition (mai 2007) — le Maire ayant été autorisé dès février 2006 à solliciter de l'État une subvention d'investissement au titre des monuments historiques pour la réfection des chéneaux. En décembre 2025, la Ville accepte un legs particulier consenti par M. B, à charge pour elle de mettre des livres à la disposition de la bibliothèque.",
+  "moments": [
+    {
+      "id": "51052",
+      "seance": "AVRIL 2000",
+      "fait": "Le Conseil approuve le principe du remplacement de l'ascenseur et autorise le Maire à signer le marché de travaux.",
+      "pourquoi": "Premier chantier : remplacer l'ascenseur",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51052",
+      "fait_en": "The Council approved the principle of replacing the elevator and authorized the Mayor to sign the works contract.",
+      "pourquoi_en": "First project: replacing the elevator"
+    },
+    {
+      "id": "84874",
+      "seance": "SEPTEMBRE 2001",
+      "fait": "Le Maire est autorisé à accepter deux legs de Mme Roberte JOUVE, partagés entre le Musée Carnavalet et la bibliothèque.",
+      "pourquoi": "Un legs d'œuvres partagé avec Carnavalet",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84874",
+      "fait_en": "The Mayor was authorized to accept two bequests from Ms Roberte JOUVE, shared between the Musée Carnavalet and the library.",
+      "pourquoi_en": "A bequest of works shared with Carnavalet"
+    },
+    {
+      "id": "27794",
+      "seance": "FEVRIER 2006",
+      "fait": "Le Maire est autorisé à solliciter de l'État une subvention d'investissement au titre des monuments historiques pour les chéneaux.",
+      "pourquoi": "Solliciter l'État au titre des monuments historiques",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27794",
+      "fait_en": "The Mayor was authorized to seek an investment grant from the State for historic monuments toward the gutters.",
+      "pourquoi_en": "Seeking State support under the historic monuments programme"
+    },
+    {
+      "id": "38783",
+      "seance": "AVRIL 2006",
+      "fait": "Le Conseil approuve le principe des travaux de mise aux normes des monte-dossiers.",
+      "pourquoi": "Mettre les monte-dossiers aux normes",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38783",
+      "fait_en": "The Council approved the principle of works to bring the document lifts up to standard.",
+      "pourquoi_en": "Bringing the document lifts up to standard"
+    },
+    {
+      "id": "52553",
+      "seance": "NOVEMBRE 2006",
+      "fait": "Le Conseil approuve le principe des travaux de restauration des chêneaux, des corniches et des façades.",
+      "pourquoi": "Restaurer chêneaux, corniches et façades",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52553",
+      "fait_en": "The Council approved the principle of works to restore the gutters, cornices and façades.",
+      "pourquoi_en": "Restoring the gutters, cornices and façades"
+    },
+    {
+      "id": "80301",
+      "seance": "MAI 2007",
+      "fait": "Le Conseil approuve le principe de restructuration des salles d'exposition.",
+      "pourquoi": "Repenser les salles d'exposition de la bibliothèque",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80301",
+      "fait_en": "The Council approved the principle of restructuring the exhibition rooms.",
+      "pourquoi_en": "Rethinking the library's exhibition rooms"
+    },
+    {
+      "id": "183732",
+      "seance": "DECEMBRE 2025",
+      "fait": "La Ville accepte un legs particulier de M. B, à charge pour elle de mettre des livres à disposition de la bibliothèque.",
+      "pourquoi": "Un legs de livres, un quart de siècle plus tard",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183732",
+      "fait_en": "The City accepted an individual bequest from Mr B, on condition that it make books available to the library.",
+      "pourquoi_en": "A bequest of books, a quarter century later"
+    }
+  ],
+  "montants": [
+    {
+      "seance": "SEPTEMBRE 2001",
+      "montant": "17.500 F",
+      "objet": "Valeur d'immobilisation totale des œuvres léguées par les deux legs (Musée Carnavalet et Bibliothèque Forney réunis), inscrite au budget d'investissement.",
+      "citation": "La valeur d'immobilisation des ?uvres léguées, estimée à 17.500 F au total sera inscrite au chapitre 10, compte 1025, sous-fonction 01, du budget d'investissement de la Ville de Paris.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84874"
+    }
+  ],
+  "bmo_extraits": [
+    {
+      "date": "1900-01-16",
+      "extrait": "prix de 10 francs l'un, quatre exemplaires de l'ouvrage de M. -Maurice Guillemet intitulé : « Entr'actes de pierres », qui seront répartis entre la bibliothèque du Conseil, la bibliothèque Le Peletier de Saint-Fargeau, la bibliothèque Forney et l'école Estienne",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6520356c/f13.item",
+      "extrait_en": "at a price of 10 francs each, four copies of the work by Mr Maurice Guillemet entitled \"Entr'actes de pierres\", which will be distributed among the Council's library, the Le Peletier de Saint-Fargeau library, the Forney library and the École Estienne"
+    },
+    {
+      "date": "1928-09-06",
+      "extrait": "Les bibliothèques installées dans les mairies des arrondissements suivants : 4e, 6e, 10e, 12e, 13e, 14*, 15e, 18e 19 et 20e sont ouvertes en outre le samedi de 13 à 21 heures … 5° La bibliothèque centrale d'art appliqué et de technique industrielle, dite bibliothèque Forney , 1",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64975402/f3.item",
+      "extrait_en": "The libraries housed in the town halls of the following arrondissements: 4th, 6th, 10th, 12th, 13th, 14th, 15th, 18th, 19th and 20th are additionally open on Saturdays from 1 to 9 p.m. … 5° The central library of applied art and industrial technique, known as the Forney library, 1"
+    },
+    {
+      "date": "1966-07-04",
+      "extrait": "et M. Joseph Marquez, « Délibère : « M. le Préfet de la Seine est invité à hâter le transfert de ce qui reste de la bibliothèque Forney à l'Hôtel de Sens et à prévoir dans les locaux libérés l'aménagement de deux restaurants scolaires pour les besoins du groupe scolaire 12-14, ru",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9707832d/f25.item",
+      "extrait_en": "and Mr Joseph Marquez, \"Resolves: The Prefect of the Seine is invited to hasten the transfer of what remains of the Forney library to the Hôtel de Sens and to plan, in the vacated premises, the fitting-out of two school cafeterias for the needs of the school group at 12-14, ru"
+    },
+    {
+      "date": "1969-02-19",
+      "extrait": "N° 1115. — En mars 1967, le Conseil municipal de Paris votait les crédits nécessaires à l'exécution de travaux à l'hôtel de Sens pour y transférer les revues de la Bibliothèque Forney , les locaux de cette bibliothèque devant servir à l'agrandissement du groupe scolaire Titon, en",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97105401/f3.item",
+      "extrait_en": "No. 1115. — In March 1967, the Conseil municipal de Paris voted the credits necessary to carry out works at the Hôtel de Sens in order to transfer there the periodicals of the Bibliothèque Forney, the premises of that library being intended for the extension of the Titon school group, i"
+    }
+  ],
+  "bmo_recit": "La bibliothèque Forney apparaît dans le Bulletin municipal dès 1900, lorsque la Ville lui attribue l'un des quatre exemplaires, achetés 10 francs l'un, d'un ouvrage de Maurice Guillemet répartis entre plusieurs bibliothèques et écoles. En 1928, elle figure dans la liste des bibliothèques municipales sous le nom de « bibliothèque centrale d'art appliqué et de technique industrielle », installée 12, rue Titon. Les années 1960 sont celles du déménagement : en 1966, le Conseil invite le Préfet de la Seine à hâter le transfert de ce qui reste de la bibliothèque vers l'Hôtel de Sens, les locaux libérés devant accueillir deux restaurants scolaires pour le groupe scolaire de la rue Titon. En 1969, le Bulletin rappelle que le Conseil municipal a voté en mars 1967 les crédits de travaux à l'hôtel de Sens pour y transférer les revues de Forney, les anciens locaux devant servir à l'agrandissement du groupe scolaire Titon.",
+  "invest": [],
+  "marches": [
+    {
+      "numero_marche": "20232023T03371",
+      "objet": "CVC BIBLIOTHEQUE FORNEY CENTRE ESPACE CANCER FIGUIER 4EME",
+      "objet_clair": null,
+      "fournisseur": "PROCHALOR",
+      "montant_max": 635437.96,
+      "date_notification": "2023-05-04",
+      "preuve": "L'objet nomme le lieu en premier : « CVC BIBLIOTHEQUE FORNEY CENTRE ESPACE CANCER FIGUIER 4EME » — prestation de chauffage / ventilation / climatisation portant sur le bâtiment. Réserve explicite : le même marché couvre un second équipement, le « CENTRE ESPACE CANCER FIGUIER » (4e) ; le montant maximum de 635 437,96 € ne revient donc pas en totalité à la bibliothèque Forney."
+    },
+    {
+      "numero_marche": "20161210000018",
+      "objet": "TRAVAUX SSI BIBLIOTHÈQUE FORNEY - HÔTEL DE SENS 75004",
+      "objet_clair": null,
+      "fournisseur": "ATOUTRENOV",
+      "montant_max": 199988.0,
+      "date_notification": "2016-02-10",
+      "preuve": "L'objet du marché nomme le lieu et son bâtiment verbatim : « TRAVAUX SSI BIBLIOTHÈQUE FORNEY - HÔTEL DE SENS 75004 ». Travaux de système de sécurité incendie sur le bâtiment lui-même, aucun autre site cité. L'identité Forney = Hôtel de Sens, 4e, est confirmée par la délibération 2007 DPA 96 : « travaux de restructuration des salles d'exposition à la Bibliothèque Forney (Hôtel de Sens) sise 3, rue du Figuier (4e) »."
+    }
+  ],
+  "mandate": null,
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Biblioth%C3%A8que+Forney"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Biblioth%C3%A8que+Forney%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "Housed in the Hôtel de Sens (4th arrondissement), the Bibliothèque Forney first appears before Conseil de Paris through its facilities: in April 2000, the Council approved the principle of replacing an elevator and authorized the Mayor to sign the corresponding contract. In September 2001, the Mayor was authorized to accept two individual bequests from Ms Roberte JOUVE for the benefit of the Musée Carnavalet and the library, the capitalized value of the works being estimated at 17,500 francs in total. Starting in 2006, several deliberations approved the principle of works on the building — bringing the document lifts up to standard (April 2006), restoring the gutters, cornices and façades (November 2006), then restructuring the exhibition rooms (May 2007) — the Mayor having already been authorized in February 2006 to seek an investment grant from the State for historic monuments toward repairing the gutters. In December 2025, the City accepted an individual bequest from Mr B, on condition that it make books available to the library.",
+  "bmo_recit_en": "The Forney library appears in the municipal bulletin as early as 1900, when the City allocates it one of four copies, bought at 10 francs each, of a work by Maurice Guillemet distributed among several libraries and schools. In 1928, it appears on the list of municipal libraries under the name \"central library of applied art and industrial technique\", located at 12 rue Titon. The 1960s were the years of the move: in 1966, the Council invited the Prefect of the Seine to hasten the transfer of what remained of the library to the Hôtel de Sens, the vacated premises being intended to house two school cafeterias for the school group on rue Titon. In 1969, the bulletin recalled that the Conseil municipal had voted in March 1967 the works credits for the Hôtel de Sens in order to transfer the Forney periodicals there, the former premises being intended for the extension of the Titon school group.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- },
- "synthese_en": "Housed in the Hôtel de Sens (4th arrondissement), the Bibliothèque Forney first appears before Conseil de Paris through its facilities: in April 2000, the Council approved the principle of replacing an elevator and authorized the Mayor to sign the corresponding contract. In September 2001, the Mayor was authorized to accept two individual bequests from Ms Roberte JOUVE for the benefit of the Musée Carnavalet and the library, the capitalized value of the works being estimated at 17,500 francs in total. Starting in 2006, several deliberations approved the principle of works on the building — bringing the document lifts up to standard (April 2006), restoring the gutters, cornices and façades (November 2006), then restructuring the exhibition rooms (May 2007) — the Mayor having already been authorized in February 2006 to seek an investment grant from the State for historic monuments toward repairing the gutters. In December 2025, the City accepted an individual bequest from Mr B, on condition that it make books available to the library.",
- "bmo_recit_en": "The Forney library appears in the municipal bulletin as early as 1900, when the City allocates it one of four copies, bought at 10 francs each, of a work by Maurice Guillemet distributed among several libraries and schools. In 1928, it appears on the list of municipal libraries under the name \"central library of applied art and industrial technique\", located at 12 rue Titon. The 1960s were the years of the move: in 1966, the Council invited the Prefect of the Seine to hasten the transfer of what remained of the library to the Hôtel de Sens, the vacated premises being intended to house two school cafeterias for the school group on rue Titon. In 1969, the bulletin recalled that the Conseil municipal had voted in March 1967 the works credits for the Hôtel de Sens in order to transfer the Forney periodicals there, the former premises being intended for the extension of the Titon school group."
 }

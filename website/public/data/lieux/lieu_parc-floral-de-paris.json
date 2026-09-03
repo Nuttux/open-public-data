@@ -1,311 +1,319 @@
 {
- "generated_at": "2026-07-21T17:04:41.999226+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "parc-floral-de-paris",
- "name": "Parc floral de Paris",
- "kind_fr": "Parc",
- "kind_en": "Park",
- "famille": "vert",
- "arrondissement": 12,
- "lat": 48.8355,
- "lon": 2.447,
- "photo": "/img/lieux/parc-floral-de-paris.jpg",
- "photo_credit": {
-  "licence": "Public domain",
-  "auteur": "Jebulon.",
-  "url": "https://commons.wikimedia.org/wiki/File:Lilium_regale_%27Album%27,_Parc_Floral_de_Paris,_France_-_20100704.jpg",
-  "source": "Wikimedia Commons"
- },
- "wiki": {
-  "extract": "Le parc floral de Paris est un parc urbain et un jardin botanique situé dans le bois de Vincennes, dans le 12e arrondissement de Paris (France). Il est l'un des quatre pôles du Jardin botanique de la ville de Paris avec l'arboretum de l'école Du Breuil, lui aussi dans le bois de Vincennes, ainsi que le parc de Bagatelle et le jardin des serres d'Auteuil, tous deux dans le bois de Boulogne.",
-  "url": "https://fr.wikipedia.org/wiki/Parc_floral_de_Paris",
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 536,
-  "delibs_span": [
-   1998,
-   2011
-  ],
-  "n_bmo_brut": 462,
-  "n_bmo_verifies": 7,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "titre nommant le lieu (22 trouvés)",
-  "lecture_mode_en": "title naming the place (22 found)",
-  "n_lus": 22,
-  "n_lieu": 22
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": "À la fin des années 1990, la Ville de Paris confie à une association l'animation du Parc floral et l'occupation de certains de ses bâtiments, par une convention d'occupation du domaine public ; le groupe socialiste conteste ce choix de gestion au regard de la loi Sapin et interroge les recettes que la Ville tire du parc. De la fin des années 1990 aux années 2000, le Conseil approuve le principe d'une longue série de travaux : arrosage automatique, aménagement des entrées, création d'un espace paysager dans l'aire de jeux en cinq tranches, mises en conformité électriques, puis rénovation du Hall de la Pinède. En parallèle, il autorise régulièrement des marchés pour les festivals de musique et les spectacles pour enfants (Paris Jazz Festival, Classique au Vert), dont le coût global avoisine le million d'euros en 2003. La même année, un conseiller met en cause l'usage du parc comme centre d'expositions et de congrès, jusqu'aux salons de voitures d'occasion, au nom de la Charte d'aménagement durable du bois de Vincennes. Jusqu'à la fin des années 2000, la gestion des activités commerciales du parc, des points de vente de glaces aux jeux, revient régulièrement devant le Conseil.",
- "moments": [
-  {
-   "id": "48411",
-   "seance": "JANVIER 1998",
-   "fait": "Le Conseil autorise le Maire à signer une convention concédant à l'Association pour l'animation et la promotion du Parc floral le droit d'occuper certains bâtiments du parc.",
-   "pourquoi": "La Ville confie l'animation du parc à une association",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48411",
-   "fait_en": "The Council authorized the Mayor to sign an agreement granting the Association pour l'animation et la promotion du Parc floral the right to occupy certain buildings in the park.",
-   "pourquoi_en": "The City entrusts running the park's events to an association"
-  },
-  {
-   "id": "18168",
-   "seance": "JANVIER 1998",
-   "fait": "Le débat sur cette convention voit le groupe socialiste invoquer la loi Sapin ; le projet est adopté à la majorité, ce groupe votant contre.",
-   "pourquoi": "La gestion sans appel d'offres contestée en séance",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18168",
-   "fait_en": "The debate on this agreement saw the Socialist group invoke the Sapin law; the measure was adopted by a majority vote, with that group voting against.",
-   "pourquoi_en": "Management without a tender contested in session"
-  },
-  {
-   "id": "5523",
-   "seance": "MARS 1999",
-   "fait": "Interrogée par le groupe socialiste, Mme de PANAFIEU chiffre les recettes que la Ville tire du parc à près de 3,3 millions de francs dès 1999.",
-   "pourquoi": "Ce que le parc rapporte à la Ville, questionné",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5523",
-   "fait_en": "Questioned by the Socialist group, Ms de PANAFIEU put the revenue the City draws from the park at close to 3.3 million francs as early as 1999.",
-   "pourquoi_en": "What the park brings in for the City, questioned"
-  },
-  {
-   "id": "28331",
-   "seance": "SEPTEMBRE 2000",
-   "fait": "Le Conseil approuve le principe d'un espace paysager dans l'aire de jeux du Parc Floral, chantier qui se déroulera en cinq tranches jusqu'en 2004.",
-   "pourquoi": "Une aire de jeux repensée en cinq tranches",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28331",
-   "fait_en": "The Council approved the principle of a landscaped area within the Parc Floral's play area, a project to be carried out in five phases through 2004.",
-   "pourquoi_en": "A play area redesigned in five phases"
-  },
-  {
-   "id": "94201",
-   "seance": "NOVEMBRE 2003",
-   "fait": "Le Conseil autorise trois marchés pour les festivals de jazz, de musique classique et de spectacles pour enfants, pour une dépense globale d'un million d'euros.",
-   "pourquoi": "Un million d'euros pour les festivals du parc",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94201",
-   "fait_en": "The Council authorized three contracts for the jazz festival, the classical music festival and children's shows, for an overall expenditure of one million euros.",
-   "pourquoi_en": "One million euros for the park's festivals"
-  },
-  {
-   "id": "21407",
-   "seance": "NOVEMBRE 2003",
-   "fait": "Un conseiller met en cause l'usage du parc comme centre d'expositions et de congrès, jusqu'aux salons de voitures d'occasion, au regard de la Charte du bois de Vincennes.",
-   "pourquoi": "Des salons de voitures en plein bois, dénoncés",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21407",
-   "fait_en": "A councillor questioned the park's use as an exhibition and conference centre, down to used-car shows, with respect to the Charte du bois de Vincennes.",
-   "pourquoi_en": "Car shows in the middle of the woods, denounced"
-  },
-  {
-   "id": "54262",
-   "seance": "DECEMBRE 2007",
-   "fait": "Le Conseil approuve le principe des travaux de confortation des structures et de modernisation de la couverture du Hall de la Pinède.",
-   "pourquoi": "Moderniser la couverture du Hall de la Pinède",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54262",
-   "fait_en": "The Council approved the principle of works to reinforce the structure and modernize the roofing of the Hall de la Pinède.",
-   "pourquoi_en": "Modernizing the roofing of the Hall de la Pinède"
-  },
-  {
-   "id": "93302",
-   "seance": "OCTOBRE 2009",
-   "fait": "Le Conseil autorise un appel à candidatures pour deux points de vente de glaces et de boissons dans le parc, avec une redevance de 8 % du chiffre d'affaires.",
-   "pourquoi": "Deux points de vente de glaces mis en concurrence",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93302",
-   "fait_en": "The Council authorized a call for candidates for two ice-cream and drink stands in the park, with a fee of 8% of turnover.",
-   "pourquoi_en": "Two ice-cream stands put out to competition"
-  }
- ],
- "montants": [
-  {
-   "seance": "OCTOBRE 2009",
-   "montant": "8 % du chiffre d'affaires",
-   "objet": "Redevance annuelle des points de vente",
-   "citation": "à laquelle sera appliquée une redevance forfaitaire annuelle de 8 % du chiffre d?affaires hors taxes fiscalement déclaré à l?administration",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93302"
-  },
-  {
-   "seance": "NOVEMBRE 2003",
-   "montant": "650.000 euros TTC",
-   "objet": "Lot 1 jazz (SARL Némo)",
-   "citation": "lot n° 1 jazz, avec la SARL \"Némo\" pour 650.000 euros TTC",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94201"
-  },
-  {
-   "seance": "NOVEMBRE 2003",
-   "montant": "190.000 euros",
-   "objet": "Lot 2 musique classique (SARL Satirino)",
-   "citation": "lot n° 2, musique classique avec la SARL \"Satirino\" pour 190.000 euros",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94201"
-  },
-  {
-   "seance": "NOVEMBRE 2003",
-   "montant": "109.300 euros TTC",
-   "objet": "Lot 3 spectacles pour enfants (association UNJMF)",
-   "citation": "lot n° 3 spectacles pour enfants avec l'association l'UNJMF pour 109.300 euros TTC",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94201"
-  },
-  {
-   "seance": "NOVEMBRE 2003",
-   "montant": "1 million d'euros",
-   "objet": "Dépense globale des trois marchés",
-   "citation": "La dépense globale chiffrée à 1 million d'euros",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94201"
-  },
-  {
-   "seance": "JANVIER 2003",
-   "montant": "689.999,91 euros",
-   "objet": "Lot 1 jazz (SARL Némo)",
-   "citation": "lot n° 1 jazz, avec la S.A.R.L. \"Némo\" pour 689.999,91 euros",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41641"
-  },
-  {
-   "seance": "JANVIER 2003",
-   "montant": "218.122 euros",
-   "objet": "Lot 2 musique classique (SARL Satirino)",
-   "citation": "lot n° 2, musique classique avec la S.A.R.L. \"Satirino\" pour 218.122 euros",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41641"
-  },
-  {
-   "seance": "JANVIER 2003",
-   "montant": "91.878 euros",
-   "objet": "Lot 3 spectacles pour enfants (SARL Satirino)",
-   "citation": "le lot n° 3 spectacles pour enfants avec la S.A.R.L. \"Satirino\" pour 91.878 euros",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41641"
-  },
-  {
-   "seance": "JANVIER 2003",
-   "montant": "999.999,91 euros",
-   "objet": "Dépense globale des trois marchés",
-   "citation": "La dépense globale chiffrée à 999.999,91 euros",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41641"
-  },
-  {
-   "seance": "DECEMBRE 2002",
-   "montant": "7.500 euros",
-   "objet": "Subvention de fonctionnement 2002 à l'association Théâtre Astral",
-   "citation": "La dépense correspondante, soit 7.500 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2002, nature 6574, rubrique 33",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71052"
-  },
-  {
-   "seance": "MARS 1999",
-   "montant": "1.350.000 F",
-   "objet": "Redevance annuelle, part fixe (selon Mme de PANAFIEU)",
-   "citation": "une part fixe de 1.350.000 F, qui doit être payée en 4 versements trimestriels",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5523"
-  },
-  {
-   "seance": "MARS 1999",
-   "montant": "1,314 million de francs (estimé)",
-   "objet": "Redevance, part variable de 8 % des recettes (selon Mme de PANAFIEU)",
-   "citation": "Sur la base des résultats 1997, le montant de cette partie variable peut être estimé à 1,314 million de francs.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5523"
-  },
-  {
-   "seance": "MARS 1999",
-   "montant": "430.000 F",
-   "objet": "Somme annuelle, droits d'entrée des visiteurs de salon (selon Mme de PANAFIEU)",
-   "citation": "le versement à la Ville de Paris d'une somme annuelle de 430.000 F correspondant aux droits d'entrée au Parc des visiteurs de salon",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5523"
-  },
-  {
-   "seance": "MARS 1999",
-   "montant": "3,3 millions de francs (estimé, 1999)",
-   "objet": "Recettes totales de la Ville tirées du parc (selon Mme de PANAFIEU)",
-   "citation": "l'ensemble des recettes retiré par la Ville de Paris de l'exploitation de cette activité devrait s'approcher de 3,3 millions de francs dès 1999",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5523"
-  },
-  {
-   "seance": "SEPTEMBRE 2004",
-   "montant": "44.086,95 euros TTC",
-   "objet": "Extension d'un jeu pour handicapés (CITEC-ENVIRONNEMENT)",
-   "citation": "le marché relatif à l'extension du jeu pour handicapés dans l'aire de jeux du Parc Floral avec la société CITEC-ENVIRONNEMENT, pour un montant de 44.086,95 euros TTC",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46844"
-  },
-  {
-   "seance": "SEPTEMBRE 2004",
-   "montant": "64.169,94 euros TTC",
-   "objet": "Pose de cordages sur le jeu Pyracorde (PRO URBA)",
-   "citation": "le marché relatif à la pose de cordages sur le jeu Pyracorde dans l'aire de jeux du Parc Floral avec la société PRO URBA pour un montant de 64.169,94 euros TTC",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46844"
-  }
- ],
- "bmo_extraits": [
-  {
-   "date": "1970-06-07",
-   "extrait": "de l’ouverture permanente au public du parc floral de Vincennes … Aussi MM. Planchet, Salvinien, Joffre, Garnier et Maillet, conseillers de Paris , suggèrent-ils à M. le Préfet de Paris que la R.A.T.P. repousse le point terminal de la ligne n° 46 de la Demi-Lune jusqu’au parc f",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32103649/f4.item",
-   "extrait_en": "on the permanent opening to the public of the Parc floral de Vincennes … Also, Messrs Planchet, Salvinien, Joffre, Garnier and Maillet, Paris councillors, suggest to the Prefect of Paris that the R.A.T.P. push back the terminus of line no. 46 from the Demi-Lune to the f"
-  },
-  {
-   "date": "1975-01-15",
-   "extrait": "Tarif, 1 F. D. — Parc floral de, Paris (pendant les heures .normales d’ouverture … 4. — L’entrée du Parc floral de Paris est gratuite pendant les heures normales d’ouverture : 1° Pour les enfants de moins de 6 ans … réduction de 50 % sur la part du droit d’entrée au Parc flor",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32107564/f6.item",
-   "extrait_en": "Rate, 1 franc. D. — Parc floral de Paris (during normal opening hours … 4. — Admission to the Parc floral de Paris is free during normal opening hours: 1° For children under 6 … 50% reduction on the entry fee to the Parc flor"
-  },
-  {
-   "date": "1975-11-02",
-   "extrait": "Interdiction provisoire de la circulation rue Watt, à Paris (13 e … Interdiction partielle de la circulation rue de l’Ingénieur-Robert-Keller, à Paris (15 e … travaux de couverture, chevronnage et chéneaux tôle à exécuter pour la réfection de la couverture du hall de la Pinèd",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32116956/f6.item",
-   "extrait_en": "Temporary ban on traffic on rue Watt, in Paris (13th) … Partial ban on traffic on rue de l'Ingénieur-Robert-Keller, in Paris (15th) … roofing works, rafters and sheet-metal gutters to be carried out for repairing the roofing of the Pinède hall"
-  },
-  {
-   "date": "1978-06-22",
-   "extrait": "à Paris , du 25 au 29 septembre 1978, pour les deux concours … Ville, à Paris (4 e ) (tél. 277-15-40, poste 46-64 … juin au 16 juillet 1978, au Parc floral de Paris (Pavillon des Arts), route de la Pyramide, bois de Vincennes, à Paris (12 e … ",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3213370z/f3.item",
-   "extrait_en": "in Paris, from 25 to 29 September 1978, for the two competitions … Ville, Paris (4th) (tel. 277-15-40, ext. 46-64 … from June to 16 July 1978, at the Parc floral de Paris (Pavillon des Arts), route de la Pyramide, bois de Vincennes, Paris (12th) …"
-  }
- ],
- "bmo_recit": "Le Parc floral apparaît dans le Bulletin municipal au tournant des années 1970, au moment de son ouverture permanente au public : en juin 1970, des conseillers de Paris suggèrent au Préfet que la R.A.T.P. repousse le terminus de la ligne d'autobus n° 46 de la Demi-Lune jusqu'au parc. Au milieu de la décennie, le Bulletin publie la règle du droit d'entrée — un tarif de 1 F, avec gratuité pour les enfants de moins de six ans pendant les heures normales d'ouverture — puis, fin 1975, annonce des travaux à exécuter pour la réfection de la couverture du hall de la Pinède, chevronnage et chéneaux en tôle compris. En 1978, le parc figure comme lieu d'exposition : le Pavillon des Arts, route de la Pyramide, doit accueillir une exposition de juin au 16 juillet. L'archive s'arrête là ; elle ne montre que cette première décennie, où le parc s'installe dans la vie municipale entre desserte, tarification, entretien et programmation.",
- "invest": [],
- "marches": [
-  {
-   "numero_marche": "decp-2025S01135",
-   "objet": "Réalisation de prestations annexes dans le cadre de l’occupation du Pavillon de la Chesnaie du Roy au parc Floral de Paris",
-   "objet_clair": null,
-   "fournisseur": "SOC D EXPLOITATION DE PARCS D EXPOSITION",
-   "montant_max": 8214.0,
-   "date_notification": "2025-03-10",
-   "preuve": "L'objet nomme le lieu verbatim : « Réalisation de prestations annexes dans le cadre de l’occupation du Pavillon de la Chesnaie du Roy au parc Floral de Paris ». L'objet situe lui-meme le Pavillon de la Chesnaie du Roy « au parc Floral de Paris » : la prestation porte sur l'occupation d'un batiment de ce parc, pas sur un marche-cadre de toute la Ville ni sur un simple repere d'adresse."
-  },
-  {
-   "numero_marche": "decp-2025S02976",
-   "objet": "Expertise et suivi de la collection des Bonsaïs au Parc Floral de Paris- Jardin Botanique de Paris",
-   "objet_clair": null,
-   "fournisseur": "JEAN-PHILIPPE HOAREAU",
-   "montant_max": 200.0,
-   "date_notification": "2025-05-27",
-   "preuve": "L'objet nomme le lieu verbatim : « Expertise et suivi de la collection des Bonsais au Parc Floral de Paris- Jardin Botanique de Paris ». La prestation porte sur une collection vegetale physiquement situee dans ce parc, pas sur un marche-cadre de toute la Ville."
-  }
- ],
- "mandate": null,
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Parc+floral+de+Paris"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Parc+floral+de+Paris%22%29"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
+  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "parc-floral-de-paris",
+  "name": "Parc floral de Paris",
+  "kind_fr": "Parc",
+  "kind_en": "Park",
+  "famille": "vert",
+  "arrondissement": 12,
+  "lat": 48.8355,
+  "lon": 2.447,
+  "photo": "/img/lieux/parc-floral-de-paris.jpg",
+  "photo_credit": {
+    "licence": "Public domain",
+    "auteur": "Jebulon.",
+    "url": "https://commons.wikimedia.org/wiki/File:Lilium_regale_%27Album%27,_Parc_Floral_de_Paris,_France_-_20100704.jpg",
+    "source": "Wikimedia Commons"
   },
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "Le parc floral de Paris est un parc urbain et un jardin botanique situé dans le bois de Vincennes, dans le 12e arrondissement de Paris (France). Il est l'un des quatre pôles du Jardin botanique de la ville de Paris avec l'arboretum de l'école Du Breuil, lui aussi dans le bois de Vincennes, ainsi que le parc de Bagatelle et le jardin des serres d'Auteuil, tous deux dans le bois de Boulogne.",
+    "url": "https://fr.wikipedia.org/wiki/Parc_floral_de_Paris",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "stats": {
+    "n_delibs": 536,
+    "delibs_span": [
+      1998,
+      2011
+    ],
+    "n_bmo_brut": 462,
+    "n_bmo_verifies": 7,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "titre nommant le lieu (22 trouvés)",
+    "lecture_mode_en": "title naming the place (22 found)",
+    "n_lus": 22,
+    "n_lieu": 22
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "À la fin des années 1990, la Ville de Paris confie à une association l'animation du Parc floral et l'occupation de certains de ses bâtiments, par une convention d'occupation du domaine public ; le groupe socialiste conteste ce choix de gestion au regard de la loi Sapin et interroge les recettes que la Ville tire du parc. De la fin des années 1990 aux années 2000, le Conseil approuve le principe d'une longue série de travaux : arrosage automatique, aménagement des entrées, création d'un espace paysager dans l'aire de jeux en cinq tranches, mises en conformité électriques, puis rénovation du Hall de la Pinède. En parallèle, il autorise régulièrement des marchés pour les festivals de musique et les spectacles pour enfants (Paris Jazz Festival, Classique au Vert), dont le coût global avoisine le million d'euros en 2003. La même année, un conseiller met en cause l'usage du parc comme centre d'expositions et de congrès, jusqu'aux salons de voitures d'occasion, au nom de la Charte d'aménagement durable du bois de Vincennes. Jusqu'à la fin des années 2000, la gestion des activités commerciales du parc, des points de vente de glaces aux jeux, revient régulièrement devant le Conseil.",
+  "moments": [
+    {
+      "id": "48411",
+      "seance": "JANVIER 1998",
+      "fait": "Le Conseil autorise le Maire à signer une convention concédant à l'Association pour l'animation et la promotion du Parc floral le droit d'occuper certains bâtiments du parc.",
+      "pourquoi": "La Ville confie l'animation du parc à une association",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48411",
+      "fait_en": "The Council authorized the Mayor to sign an agreement granting the Association pour l'animation et la promotion du Parc floral the right to occupy certain buildings in the park.",
+      "pourquoi_en": "The City entrusts running the park's events to an association"
+    },
+    {
+      "id": "18168",
+      "seance": "JANVIER 1998",
+      "fait": "Le débat sur cette convention voit le groupe socialiste invoquer la loi Sapin ; le projet est adopté à la majorité, ce groupe votant contre.",
+      "pourquoi": "La gestion sans appel d'offres contestée en séance",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18168",
+      "fait_en": "The debate on this agreement saw the Socialist group invoke the Sapin law; the measure was adopted by a majority vote, with that group voting against.",
+      "pourquoi_en": "Management without a tender contested in session"
+    },
+    {
+      "id": "5523",
+      "seance": "MARS 1999",
+      "fait": "Interrogée par le groupe socialiste, Mme de PANAFIEU chiffre les recettes que la Ville tire du parc à près de 3,3 millions de francs dès 1999.",
+      "pourquoi": "Ce que le parc rapporte à la Ville, questionné",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5523",
+      "fait_en": "Questioned by the Socialist group, Ms de PANAFIEU put the revenue the City draws from the park at close to 3.3 million francs as early as 1999.",
+      "pourquoi_en": "What the park brings in for the City, questioned"
+    },
+    {
+      "id": "28331",
+      "seance": "SEPTEMBRE 2000",
+      "fait": "Le Conseil approuve le principe d'un espace paysager dans l'aire de jeux du Parc Floral, chantier qui se déroulera en cinq tranches jusqu'en 2004.",
+      "pourquoi": "Une aire de jeux repensée en cinq tranches",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28331",
+      "fait_en": "The Council approved the principle of a landscaped area within the Parc Floral's play area, a project to be carried out in five phases through 2004.",
+      "pourquoi_en": "A play area redesigned in five phases"
+    },
+    {
+      "id": "94201",
+      "seance": "NOVEMBRE 2003",
+      "fait": "Le Conseil autorise trois marchés pour les festivals de jazz, de musique classique et de spectacles pour enfants, pour une dépense globale d'un million d'euros.",
+      "pourquoi": "Un million d'euros pour les festivals du parc",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94201",
+      "fait_en": "The Council authorized three contracts for the jazz festival, the classical music festival and children's shows, for an overall expenditure of one million euros.",
+      "pourquoi_en": "One million euros for the park's festivals"
+    },
+    {
+      "id": "21407",
+      "seance": "NOVEMBRE 2003",
+      "fait": "Un conseiller met en cause l'usage du parc comme centre d'expositions et de congrès, jusqu'aux salons de voitures d'occasion, au regard de la Charte du bois de Vincennes.",
+      "pourquoi": "Des salons de voitures en plein bois, dénoncés",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21407",
+      "fait_en": "A councillor questioned the park's use as an exhibition and conference centre, down to used-car shows, with respect to the Charte du bois de Vincennes.",
+      "pourquoi_en": "Car shows in the middle of the woods, denounced"
+    },
+    {
+      "id": "54262",
+      "seance": "DECEMBRE 2007",
+      "fait": "Le Conseil approuve le principe des travaux de confortation des structures et de modernisation de la couverture du Hall de la Pinède.",
+      "pourquoi": "Moderniser la couverture du Hall de la Pinède",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54262",
+      "fait_en": "The Council approved the principle of works to reinforce the structure and modernize the roofing of the Hall de la Pinède.",
+      "pourquoi_en": "Modernizing the roofing of the Hall de la Pinède"
+    },
+    {
+      "id": "93302",
+      "seance": "OCTOBRE 2009",
+      "fait": "Le Conseil autorise un appel à candidatures pour deux points de vente de glaces et de boissons dans le parc, avec une redevance de 8 % du chiffre d'affaires.",
+      "pourquoi": "Deux points de vente de glaces mis en concurrence",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93302",
+      "fait_en": "The Council authorized a call for candidates for two ice-cream and drink stands in the park, with a fee of 8% of turnover.",
+      "pourquoi_en": "Two ice-cream stands put out to competition"
+    }
+  ],
+  "montants": [
+    {
+      "seance": "OCTOBRE 2009",
+      "montant": "8 % du chiffre d'affaires",
+      "objet": "Redevance annuelle des points de vente",
+      "citation": "à laquelle sera appliquée une redevance forfaitaire annuelle de 8 % du chiffre d?affaires hors taxes fiscalement déclaré à l?administration",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93302"
+    },
+    {
+      "seance": "NOVEMBRE 2003",
+      "montant": "650.000 euros TTC",
+      "objet": "Lot 1 jazz (SARL Némo)",
+      "citation": "lot n° 1 jazz, avec la SARL \"Némo\" pour 650.000 euros TTC",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94201"
+    },
+    {
+      "seance": "NOVEMBRE 2003",
+      "montant": "190.000 euros",
+      "objet": "Lot 2 musique classique (SARL Satirino)",
+      "citation": "lot n° 2, musique classique avec la SARL \"Satirino\" pour 190.000 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94201"
+    },
+    {
+      "seance": "NOVEMBRE 2003",
+      "montant": "109.300 euros TTC",
+      "objet": "Lot 3 spectacles pour enfants (association UNJMF)",
+      "citation": "lot n° 3 spectacles pour enfants avec l'association l'UNJMF pour 109.300 euros TTC",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94201"
+    },
+    {
+      "seance": "NOVEMBRE 2003",
+      "montant": "1 million d'euros",
+      "objet": "Dépense globale des trois marchés",
+      "citation": "La dépense globale chiffrée à 1 million d'euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94201"
+    },
+    {
+      "seance": "JANVIER 2003",
+      "montant": "689.999,91 euros",
+      "objet": "Lot 1 jazz (SARL Némo)",
+      "citation": "lot n° 1 jazz, avec la S.A.R.L. \"Némo\" pour 689.999,91 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41641"
+    },
+    {
+      "seance": "JANVIER 2003",
+      "montant": "218.122 euros",
+      "objet": "Lot 2 musique classique (SARL Satirino)",
+      "citation": "lot n° 2, musique classique avec la S.A.R.L. \"Satirino\" pour 218.122 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41641"
+    },
+    {
+      "seance": "JANVIER 2003",
+      "montant": "91.878 euros",
+      "objet": "Lot 3 spectacles pour enfants (SARL Satirino)",
+      "citation": "le lot n° 3 spectacles pour enfants avec la S.A.R.L. \"Satirino\" pour 91.878 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41641"
+    },
+    {
+      "seance": "JANVIER 2003",
+      "montant": "999.999,91 euros",
+      "objet": "Dépense globale des trois marchés",
+      "citation": "La dépense globale chiffrée à 999.999,91 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41641"
+    },
+    {
+      "seance": "DECEMBRE 2002",
+      "montant": "7.500 euros",
+      "objet": "Subvention de fonctionnement 2002 à l'association Théâtre Astral",
+      "citation": "La dépense correspondante, soit 7.500 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2002, nature 6574, rubrique 33",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71052"
+    },
+    {
+      "seance": "MARS 1999",
+      "montant": "1.350.000 F",
+      "objet": "Redevance annuelle, part fixe (selon Mme de PANAFIEU)",
+      "citation": "une part fixe de 1.350.000 F, qui doit être payée en 4 versements trimestriels",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5523"
+    },
+    {
+      "seance": "MARS 1999",
+      "montant": "1,314 million de francs (estimé)",
+      "objet": "Redevance, part variable de 8 % des recettes (selon Mme de PANAFIEU)",
+      "citation": "Sur la base des résultats 1997, le montant de cette partie variable peut être estimé à 1,314 million de francs.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5523"
+    },
+    {
+      "seance": "MARS 1999",
+      "montant": "430.000 F",
+      "objet": "Somme annuelle, droits d'entrée des visiteurs de salon (selon Mme de PANAFIEU)",
+      "citation": "le versement à la Ville de Paris d'une somme annuelle de 430.000 F correspondant aux droits d'entrée au Parc des visiteurs de salon",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5523"
+    },
+    {
+      "seance": "MARS 1999",
+      "montant": "3,3 millions de francs (estimé, 1999)",
+      "objet": "Recettes totales de la Ville tirées du parc (selon Mme de PANAFIEU)",
+      "citation": "l'ensemble des recettes retiré par la Ville de Paris de l'exploitation de cette activité devrait s'approcher de 3,3 millions de francs dès 1999",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5523"
+    },
+    {
+      "seance": "SEPTEMBRE 2004",
+      "montant": "44.086,95 euros TTC",
+      "objet": "Extension d'un jeu pour handicapés (CITEC-ENVIRONNEMENT)",
+      "citation": "le marché relatif à l'extension du jeu pour handicapés dans l'aire de jeux du Parc Floral avec la société CITEC-ENVIRONNEMENT, pour un montant de 44.086,95 euros TTC",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46844"
+    },
+    {
+      "seance": "SEPTEMBRE 2004",
+      "montant": "64.169,94 euros TTC",
+      "objet": "Pose de cordages sur le jeu Pyracorde (PRO URBA)",
+      "citation": "le marché relatif à la pose de cordages sur le jeu Pyracorde dans l'aire de jeux du Parc Floral avec la société PRO URBA pour un montant de 64.169,94 euros TTC",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46844"
+    }
+  ],
+  "bmo_extraits": [
+    {
+      "date": "1970-06-07",
+      "extrait": "de l’ouverture permanente au public du parc floral de Vincennes … Aussi MM. Planchet, Salvinien, Joffre, Garnier et Maillet, conseillers de Paris , suggèrent-ils à M. le Préfet de Paris que la R.A.T.P. repousse le point terminal de la ligne n° 46 de la Demi-Lune jusqu’au parc f",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32103649/f4.item",
+      "extrait_en": "on the permanent opening to the public of the Parc floral de Vincennes … Also, Messrs Planchet, Salvinien, Joffre, Garnier and Maillet, Paris councillors, suggest to the Prefect of Paris that the R.A.T.P. push back the terminus of line no. 46 from the Demi-Lune to the f"
+    },
+    {
+      "date": "1975-01-15",
+      "extrait": "Tarif, 1 F. D. — Parc floral de, Paris (pendant les heures .normales d’ouverture … 4. — L’entrée du Parc floral de Paris est gratuite pendant les heures normales d’ouverture : 1° Pour les enfants de moins de 6 ans … réduction de 50 % sur la part du droit d’entrée au Parc flor",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32107564/f6.item",
+      "extrait_en": "Rate, 1 franc. D. — Parc floral de Paris (during normal opening hours … 4. — Admission to the Parc floral de Paris is free during normal opening hours: 1° For children under 6 … 50% reduction on the entry fee to the Parc flor"
+    },
+    {
+      "date": "1975-11-02",
+      "extrait": "Interdiction provisoire de la circulation rue Watt, à Paris (13 e … Interdiction partielle de la circulation rue de l’Ingénieur-Robert-Keller, à Paris (15 e … travaux de couverture, chevronnage et chéneaux tôle à exécuter pour la réfection de la couverture du hall de la Pinèd",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32116956/f6.item",
+      "extrait_en": "Temporary ban on traffic on rue Watt, in Paris (13th) … Partial ban on traffic on rue de l'Ingénieur-Robert-Keller, in Paris (15th) … roofing works, rafters and sheet-metal gutters to be carried out for repairing the roofing of the Pinède hall"
+    },
+    {
+      "date": "1978-06-22",
+      "extrait": "à Paris , du 25 au 29 septembre 1978, pour les deux concours … Ville, à Paris (4 e ) (tél. 277-15-40, poste 46-64 … juin au 16 juillet 1978, au Parc floral de Paris (Pavillon des Arts), route de la Pyramide, bois de Vincennes, à Paris (12 e … ",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3213370z/f3.item",
+      "extrait_en": "in Paris, from 25 to 29 September 1978, for the two competitions … Ville, Paris (4th) (tel. 277-15-40, ext. 46-64 … from June to 16 July 1978, at the Parc floral de Paris (Pavillon des Arts), route de la Pyramide, bois de Vincennes, Paris (12th) …"
+    }
+  ],
+  "bmo_recit": "Le Parc floral apparaît dans le Bulletin municipal au tournant des années 1970, au moment de son ouverture permanente au public : en juin 1970, des conseillers de Paris suggèrent au Préfet que la R.A.T.P. repousse le terminus de la ligne d'autobus n° 46 de la Demi-Lune jusqu'au parc. Au milieu de la décennie, le Bulletin publie la règle du droit d'entrée — un tarif de 1 F, avec gratuité pour les enfants de moins de six ans pendant les heures normales d'ouverture — puis, fin 1975, annonce des travaux à exécuter pour la réfection de la couverture du hall de la Pinède, chevronnage et chéneaux en tôle compris. En 1978, le parc figure comme lieu d'exposition : le Pavillon des Arts, route de la Pyramide, doit accueillir une exposition de juin au 16 juillet. L'archive s'arrête là ; elle ne montre que cette première décennie, où le parc s'installe dans la vie municipale entre desserte, tarification, entretien et programmation.",
+  "invest": [],
+  "marches": [
+    {
+      "numero_marche": "decp-2025S01135",
+      "objet": "Réalisation de prestations annexes dans le cadre de l’occupation du Pavillon de la Chesnaie du Roy au parc Floral de Paris",
+      "objet_clair": null,
+      "fournisseur": "SOC D EXPLOITATION DE PARCS D EXPOSITION",
+      "montant_max": 8214.0,
+      "date_notification": "2025-03-10",
+      "preuve": "L'objet nomme le lieu verbatim : « Réalisation de prestations annexes dans le cadre de l’occupation du Pavillon de la Chesnaie du Roy au parc Floral de Paris ». L'objet situe lui-meme le Pavillon de la Chesnaie du Roy « au parc Floral de Paris » : la prestation porte sur l'occupation d'un batiment de ce parc, pas sur un marche-cadre de toute la Ville ni sur un simple repere d'adresse."
+    },
+    {
+      "numero_marche": "decp-2025S02976",
+      "objet": "Expertise et suivi de la collection des Bonsaïs au Parc Floral de Paris- Jardin Botanique de Paris",
+      "objet_clair": null,
+      "fournisseur": "JEAN-PHILIPPE HOAREAU",
+      "montant_max": 200.0,
+      "date_notification": "2025-05-27",
+      "preuve": "L'objet nomme le lieu verbatim : « Expertise et suivi de la collection des Bonsais au Parc Floral de Paris- Jardin Botanique de Paris ». La prestation porte sur une collection vegetale physiquement situee dans ce parc, pas sur un marche-cadre de toute la Ville."
+    }
+  ],
+  "mandate": null,
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Parc+floral+de+Paris"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Parc+floral+de+Paris%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "In the late 1990s, the City of Paris entrusted an association with running events at the Parc Floral and occupying some of its buildings, through a public-domain occupancy agreement; the Socialist group challenged this management choice with respect to the Sapin law and questioned the revenue the City drew from the park. From the late 1990s through the 2000s, the Council approved the principle of a long series of works: automatic watering, redevelopment of the entrances, creation of a landscaped area within the play area carried out in five phases, electrical code compliance work, then renovation of the Hall de la Pinède. In parallel, it regularly authorized contracts for music festivals and children's shows (Paris Jazz Festival, Classique au Vert), whose overall cost approached one million euros in 2003. That same year, a councillor questioned the park's use as an exhibition and conference centre, down to used-car shows, in the name of the Charte d'aménagement durable du bois de Vincennes. Until the late 2000s, the management of the park's commercial activities, from ice-cream stands to rides, regularly came back before the Council.",
+  "bmo_recit_en": "The Parc Floral appears in the Bulletin municipal at the turn of the 1970s, at the time of its permanent opening to the public: in June 1970, Paris councillors suggested to the Prefect that the RATP extend the terminus of bus line no. 46 from the Demi-Lune to the park. In the middle of the decade, the Bulletin published the entry-fee rule — a rate of 1 franc, with free admission for children under six during normal opening hours — then, at the end of 1975, announced works to be carried out for repairing the roofing of the Hall de la Pinède, including rafters and sheet-metal gutters. In 1978, the park appears as an exhibition venue: the Pavillon des Arts, on the route de la Pyramide, was to host an exhibition from June through 16 July. The archive stops there; it shows only this first decade, in which the park found its place in municipal life between transport links, pricing, maintenance and programming.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- },
- "synthese_en": "In the late 1990s, the City of Paris entrusted an association with running events at the Parc Floral and occupying some of its buildings, through a public-domain occupancy agreement; the Socialist group challenged this management choice with respect to the Sapin law and questioned the revenue the City drew from the park. From the late 1990s through the 2000s, the Council approved the principle of a long series of works: automatic watering, redevelopment of the entrances, creation of a landscaped area within the play area carried out in five phases, electrical code compliance work, then renovation of the Hall de la Pinède. In parallel, it regularly authorized contracts for music festivals and children's shows (Paris Jazz Festival, Classique au Vert), whose overall cost approached one million euros in 2003. That same year, a councillor questioned the park's use as an exhibition and conference centre, down to used-car shows, in the name of the Charte d'aménagement durable du bois de Vincennes. Until the late 2000s, the management of the park's commercial activities, from ice-cream stands to rides, regularly came back before the Council.",
- "bmo_recit_en": "The Parc Floral appears in the Bulletin municipal at the turn of the 1970s, at the time of its permanent opening to the public: in June 1970, Paris councillors suggested to the Prefect that the RATP extend the terminus of bus line no. 46 from the Demi-Lune to the park. In the middle of the decade, the Bulletin published the entry-fee rule — a rate of 1 franc, with free admission for children under six during normal opening hours — then, at the end of 1975, announced works to be carried out for repairing the roofing of the Hall de la Pinède, including rafters and sheet-metal gutters. In 1978, the park appears as an exhibition venue: the Pavillon des Arts, on the route de la Pyramide, was to host an exhibition from June through 16 July. The archive stops there; it shows only this first decade, in which the park found its place in municipal life between transport links, pricing, maintenance and programming."
 }

@@ -1391,5 +1391,13 @@
   "2024_20_57_026": "Oasis schoolyard, Champagne School",
   "2024_20_57_027": "Citizen food-policy hub",
   "2024_20_57_028": "Continuing the opening of the Petite Ceinture",
-  "2024_20_57_029": "Rue de Belleville renovation"
+  "2024_20_57_029": "Rue de Belleville renovation",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
+  }
 }

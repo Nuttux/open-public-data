@@ -1,114 +1,122 @@
 {
- "generated_at": "2026-07-21T17:04:41.999226+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "coulee-verte-rene-dumont",
- "name": "Coulée verte René-Dumont",
- "kind_fr": "Promenade",
- "kind_en": "Promenade",
- "famille": "vert",
- "arrondissement": 12,
- "lat": 48.8478,
- "lon": 2.376,
- "photo": "/img/lieux/coulee-verte-rene-dumont.jpg",
- "photo_credit": {
-  "licence": null,
-  "auteur": null,
-  "url": "https://fr.wikipedia.org/wiki/Coul%C3%A9e_verte_Ren%C3%A9-Dumont",
-  "source": "Wikipédia"
- },
- "wiki": {
-  "extract": "La coulée verte René-Dumont, anciennement Promenade plantée, est une voie verte et un parc linéaire du 12e arrondissement de Paris en France.",
-  "url": "https://fr.wikipedia.org/wiki/Coul%C3%A9e_verte_Ren%C3%A9-Dumont",
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  },
-  "extract_en": "The coulée verte René-Dumont, formerly the Promenade plantée, is a greenway and linear park in the 12th arrondissement of Paris, France."
- },
- "stats": {
-  "n_delibs": 1377,
-  "delibs_span": [
-   2000,
-   2020
-  ],
-  "n_bmo_brut": 51,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "tête du classement Solr (1377 documents au total)",
-  "lecture_mode_en": "top of the Solr ranking (1377 documents total)",
-  "n_lus": 43,
-  "n_lieu": 3
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": "Peu de délibérations du Conseil de Paris concernent directement cette promenade du 12e arrondissement : beaucoup portent en réalité sur d'autres « coulées vertes » parisiennes (Petite Ceinture, 16e) ou sur d'autres personnalités prénommées René. Dès février 2000, une question orale du groupe socialiste interroge le Maire de Paris « à propos de la Coulée verte (12e) ». En juillet 2018, un vœu porte sur l'autorisation d'accès des chiens à la « promenade plantée René-Dumont », autre appellation du lieu. En octobre 2020, le Conseil examine un avenant à la convention avec l'association Pixo pour le « Coulée Verte Art Project », que la maire du 12e rattache aux fresques de street art apparues « le long de la Coulée verte ». Aucun montant propre à ce lieu ni aucun chantier d'aménagement n'apparaît dans ces délibérations.",
- "moments": [
-  {
-   "id": "2802",
-   "seance": "FEVRIER 2000",
-   "fait": "Le groupe socialiste (Mme Michèle Blumenthal) interroge par question orale le Maire de Paris à propos de la Coulée verte du 12e.",
-   "pourquoi": "La première mention retrouvée au Conseil",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2802",
-   "fait_en": "The Socialist group (Ms Michèle Blumenthal) questioned the Mayor of Paris by oral question about the Coulée verte in the 12th arrondissement.",
-   "pourquoi_en": "The first mention found at the Council"
-  },
-  {
-   "id": "20632",
-   "seance": "JUILLET 2009",
-   "fait": "Le groupe « Les Verts » (Yves Contassot) dépose un vœu pour dénommer un lieu parisien en hommage à René Dumont.",
-   "pourquoi": "L'homme dont ce lieu porte le nom",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20632",
-   "fait_en": "The \"Les Verts\" group (Yves Contassot) filed a motion to name a Parisian site in tribute to René Dumont.",
-   "pourquoi_en": "The man whose name this place bears"
-  },
-  {
-   "id": "143943",
-   "seance": "JUILLET 2018",
-   "fait": "Un vœu porte sur l'autorisation d'accès des chiens à la promenade plantée René-Dumont.",
-   "pourquoi": "Quand les usages ordinaires font débat",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=143943",
-   "fait_en": "A motion concerned authorizing dogs to access the promenade plantée René-Dumont.",
-   "pourquoi_en": "When everyday uses become a matter of debate"
-  },
-  {
-   "id": "156357",
-   "seance": "OCTOBRE 2020",
-   "fait": "Le Conseil examine un avenant à la convention avec l'association Pixo pour le « Coulée Verte Art Project », des fresques évoquées le long de la coulée.",
-   "pourquoi": "L'art public s'invite le long de la coulée",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156357",
-   "fait_en": "The Council examined an amendment to the agreement with the association Pixo for the \"Coulée Verte Art Project\", frescoes mentioned along the coulée.",
-   "pourquoi_en": "Public art makes its way along the coulée"
-  }
- ],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "invest": [],
- "marches": [],
- "mandate": null,
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Coul%C3%A9e+verte+Ren%C3%A9-Dumont"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Coul%C3%A9e+verte+Ren%C3%A9-Dumont%22%29"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
+  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "coulee-verte-rene-dumont",
+  "name": "Coulée verte René-Dumont",
+  "kind_fr": "Promenade",
+  "kind_en": "Promenade",
+  "famille": "vert",
+  "arrondissement": 12,
+  "lat": 48.8478,
+  "lon": 2.376,
+  "photo": "/img/lieux/coulee-verte-rene-dumont.jpg",
+  "photo_credit": {
+    "licence": null,
+    "auteur": null,
+    "url": "https://fr.wikipedia.org/wiki/Coul%C3%A9e_verte_Ren%C3%A9-Dumont",
+    "source": "Wikipédia"
   },
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "La coulée verte René-Dumont, anciennement Promenade plantée, est une voie verte et un parc linéaire du 12e arrondissement de Paris en France.",
+    "url": "https://fr.wikipedia.org/wiki/Coul%C3%A9e_verte_Ren%C3%A9-Dumont",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    },
+    "extract_en": "The coulée verte René-Dumont, formerly the Promenade plantée, is a greenway and linear park in the 12th arrondissement of Paris, France."
+  },
+  "stats": {
+    "n_delibs": 1377,
+    "delibs_span": [
+      2000,
+      2020
+    ],
+    "n_bmo_brut": 51,
+    "n_bmo_verifies": null,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "tête du classement Solr (1377 documents au total)",
+    "lecture_mode_en": "top of the Solr ranking (1377 documents total)",
+    "n_lus": 43,
+    "n_lieu": 3
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "Peu de délibérations du Conseil de Paris concernent directement cette promenade du 12e arrondissement : beaucoup portent en réalité sur d'autres « coulées vertes » parisiennes (Petite Ceinture, 16e) ou sur d'autres personnalités prénommées René. Dès février 2000, une question orale du groupe socialiste interroge le Maire de Paris « à propos de la Coulée verte (12e) ». En juillet 2018, un vœu porte sur l'autorisation d'accès des chiens à la « promenade plantée René-Dumont », autre appellation du lieu. En octobre 2020, le Conseil examine un avenant à la convention avec l'association Pixo pour le « Coulée Verte Art Project », que la maire du 12e rattache aux fresques de street art apparues « le long de la Coulée verte ». Aucun montant propre à ce lieu ni aucun chantier d'aménagement n'apparaît dans ces délibérations.",
+  "moments": [
+    {
+      "id": "2802",
+      "seance": "FEVRIER 2000",
+      "fait": "Le groupe socialiste (Mme Michèle Blumenthal) interroge par question orale le Maire de Paris à propos de la Coulée verte du 12e.",
+      "pourquoi": "La première mention retrouvée au Conseil",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2802",
+      "fait_en": "The Socialist group (Ms Michèle Blumenthal) questioned the Mayor of Paris by oral question about the Coulée verte in the 12th arrondissement.",
+      "pourquoi_en": "The first mention found at the Council"
+    },
+    {
+      "id": "20632",
+      "seance": "JUILLET 2009",
+      "fait": "Le groupe « Les Verts » (Yves Contassot) dépose un vœu pour dénommer un lieu parisien en hommage à René Dumont.",
+      "pourquoi": "L'homme dont ce lieu porte le nom",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20632",
+      "fait_en": "The \"Les Verts\" group (Yves Contassot) filed a motion to name a Parisian site in tribute to René Dumont.",
+      "pourquoi_en": "The man whose name this place bears"
+    },
+    {
+      "id": "143943",
+      "seance": "JUILLET 2018",
+      "fait": "Un vœu porte sur l'autorisation d'accès des chiens à la promenade plantée René-Dumont.",
+      "pourquoi": "Quand les usages ordinaires font débat",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=143943",
+      "fait_en": "A motion concerned authorizing dogs to access the promenade plantée René-Dumont.",
+      "pourquoi_en": "When everyday uses become a matter of debate"
+    },
+    {
+      "id": "156357",
+      "seance": "OCTOBRE 2020",
+      "fait": "Le Conseil examine un avenant à la convention avec l'association Pixo pour le « Coulée Verte Art Project », des fresques évoquées le long de la coulée.",
+      "pourquoi": "L'art public s'invite le long de la coulée",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156357",
+      "fait_en": "The Council examined an amendment to the agreement with the association Pixo for the \"Coulée Verte Art Project\", frescoes mentioned along the coulée.",
+      "pourquoi_en": "Public art makes its way along the coulée"
+    }
+  ],
+  "montants": [],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "invest": [],
+  "marches": [],
+  "mandate": null,
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Coul%C3%A9e+verte+Ren%C3%A9-Dumont"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Coul%C3%A9e+verte+Ren%C3%A9-Dumont%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "Few deliberations of the Conseil de Paris directly concern this promenade in the 12th arrondissement: many actually concern other Parisian \"coulées vertes\" (Petite Ceinture, 16th arrondissement) or other public figures named René. As early as February 2000, an oral question from the Socialist group asked the Mayor of Paris \"about the Coulée verte (12th arrondissement).\" In July 2018, a motion concerned authorizing dogs to access the \"promenade plantée René-Dumont,\" another name for the venue. In October 2020, the Council examined an amendment to the agreement with the association Pixo for the \"Coulée Verte Art Project,\" which the mayor of the 12th arrondissement linked to the street-art frescoes that had appeared \"along the Coulée verte.\" No amount specific to this venue and no redevelopment project appears in these deliberations.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- },
- "synthese_en": "Few deliberations of the Conseil de Paris directly concern this promenade in the 12th arrondissement: many actually concern other Parisian \"coulées vertes\" (Petite Ceinture, 16th arrondissement) or other public figures named René. As early as February 2000, an oral question from the Socialist group asked the Mayor of Paris \"about the Coulée verte (12th arrondissement).\" In July 2018, a motion concerned authorizing dogs to access the \"promenade plantée René-Dumont,\" another name for the venue. In October 2020, the Council examined an amendment to the agreement with the association Pixo for the \"Coulée Verte Art Project,\" which the mayor of the 12th arrondissement linked to the street-art frescoes that had appeared \"along the Coulée verte.\" No amount specific to this venue and no redevelopment project appears in these deliberations."
 }

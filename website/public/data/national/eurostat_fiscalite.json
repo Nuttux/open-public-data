@@ -394,5 +394,13 @@
     ]
   },
   "notes_fr": "Total des prélèvements obligatoires : taxes (D2 production + D5 revenus + D91 capital) et cotisations sociales nettes (D61). Ratio rapporté au PIB nominal (pas au revenu disponible). Périmètre APU consolidé — État + Sécurité sociale + collectivités + opérateurs.",
-  "notes_en": "Total compulsory levies: taxes (D2 production + D5 income + D91 capital) and net social contributions (D61). Ratio relative to nominal GDP (not disposable income). Consolidated general government scope — central + social security + local + operators."
+  "notes_en": "Total compulsory levies: taxes (D2 production + D5 income + D91 capital) and net social contributions (D61). Ratio relative to nominal GDP (not disposable income). Consolidated general government scope — central + social security + local + operators.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
+  }
 }

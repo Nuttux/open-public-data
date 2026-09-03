@@ -1,190 +1,198 @@
 {
- "generated_at": "2026-07-21T17:04:41.999226+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "jardin-du-ranelagh",
- "name": "Jardin du Ranelagh",
- "kind_fr": "Jardin",
- "kind_en": "Garden",
- "famille": "vert",
- "arrondissement": 16,
- "lat": 48.858701,
- "lon": 2.269321,
- "photo": "/img/lieux/jardin-du-ranelagh.jpg",
- "photo_credit": {
-  "licence": null,
-  "auteur": null,
-  "url": "https://fr.wikipedia.org/wiki/Jardin_du_Ranelagh",
-  "source": "Wikipédia"
- },
- "wiki": {
-  "extract": "Le jardin du Ranelagh est un espace vert du 16e arrondissement de Paris, en France.",
-  "url": "https://fr.wikipedia.org/wiki/Jardin_du_Ranelagh",
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  },
-  "extract_en": "The Jardin du Ranelagh is a green space in the 16th arrondissement of Paris, France."
- },
- "stats": {
-  "n_delibs": 958,
-  "delibs_span": [
-   1999,
-   2026
-  ],
-  "n_bmo_brut": 930,
-  "n_bmo_verifies": 8,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "titre nommant le lieu (14 trouvés)",
-  "lecture_mode_en": "title naming the place (14 found)",
-  "n_lus": 14,
-  "n_lieu": 10
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": "Le jardin du Ranelagh accueille une halte-garderie gérée par des associations familiales, que le Conseil de Paris soutient sur une décennie : subvention d'équipement de 107 000 F pour poser un auvent sur le chalet utilisé dans le jardin (1999), convention et subvention de fonctionnement de 12 746 € (2002), puis conventions d'occupation d'un terrain de 400 m² — Association générale des familles en 2007, UDAF de Paris en 2008 à titre gratuit — et subventions de 15 177 € (2008) et 31 160 € (2009). En parallèle, des élus du 16e portent en 2008 puis 2009 des vœux pour réserver au piéton les allées et voies bordant le jardin et pour l'étendre vers l'ancienne voie ferrée ; le Conseil adopte à l'unanimité, en novembre 2009, un vœu demandant de reconduire la piétonisation dominicale estivale des avenues Ingres et Raphaël, tandis que l'extension reste, selon l'adjointe Fabienne Giboudeaux, suspendue à un accord avec R.F.F. En juillet 2009, il autorise aussi le dépôt d'une demande de permis de démolir un kiosque de gardes désaffecté (2 500 €). En février 2026, un vœu propose de donner le nom de Brigitte Bardot à une voie du jardin, contesté en séance par les groupes écologiste et Paris en commun.",
- "moments": [
-  {
-   "id": "55338",
-   "seance": "JUIN 1999",
-   "fait": "Subvention d'équipement de 107 000 F à l'Association générale des familles du 16e pour poser un auvent sur le chalet qu'elle utilise dans le jardin.",
-   "pourquoi": "premier financement tracé dans le jardin",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55338",
-   "fait_en": "An equipment grant of 107,000 francs to the Association générale des familles du 16e to install a canopy on the chalet it uses in the garden.",
-   "pourquoi_en": "The first funding on record in the garden"
-  },
-  {
-   "id": "66955",
-   "seance": "SEPTEMBRE 2008",
-   "fait": "Autorisation de mettre à disposition de l'UDAF, à titre gratuit, un terrain de 400 m² du jardin pour une halte-garderie.",
-   "pourquoi": "la Ville héberge gratuitement une halte-garderie",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66955",
-   "fait_en": "Authorization to make available to the UDAF, free of charge, a 400 m² plot of the garden for a childcare drop-in center.",
-   "pourquoi_en": "The City hosts a childcare drop-in center free of charge"
-  },
-  {
-   "id": "13686",
-   "seance": "JUILLET 2008",
-   "fait": "Vœu du groupe U.M.P.P.A. pour réserver au piéton, le dimanche, les allées traversées en semaine par des automobilistes.",
-   "pourquoi": "protéger les enfants des voitures de transit",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13686",
-   "fait_en": "A motion from the U.M.P.P.A. group to reserve for pedestrians, on Sundays, the paths used by motorists during the week.",
-   "pourquoi_en": "Protecting children from through traffic"
-  },
-  {
-   "id": "13798",
-   "seance": "JUILLET 2008",
-   "fait": "Vœu demandant le rattachement de l'ancienne voie ferrée au jardin ; l'adjointe le conditionne à un accord avec R.F.F.",
-   "pourquoi": "agrandir le jardin, mais R.F.F. bloque",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13798",
-   "fait_en": "A motion calling for the former railway line to be attached to the garden; the deputy mayor made it conditional on an agreement with R.F.F.",
-   "pourquoi_en": "Expanding the garden, but R.F.F. stands in the way"
-  },
-  {
-   "id": "74930",
-   "seance": "JUILLET 2009",
-   "fait": "Autorisation au Maire de déposer une demande de permis de démolir le kiosque de gardes désaffecté du jardin (2 500 € TTC).",
-   "pourquoi": "effacer un kiosque de gardes désaffecté",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74930",
-   "fait_en": "Authorization for the Mayor to file an application for a permit to demolish the garden's disused guards' kiosk (2,500 euros including tax).",
-   "pourquoi_en": "Removing a disused guards' kiosk"
-  },
-  {
-   "id": "75109",
-   "seance": "JUILLET 2009",
-   "fait": "Avenant portant à 31 160 € la subvention de fonctionnement de la halte-garderie « Jardin du Ranelagh ».",
-   "pourquoi": "le financement de la halte-garderie grimpe",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75109",
-   "fait_en": "An amendment raising the operating grant for the \"Jardin du Ranelagh\" childcare drop-in center to 31,160 euros.",
-   "pourquoi_en": "Funding for the drop-in center rises"
-  },
-  {
-   "id": "15346",
-   "seance": "NOVEMBRE 2009",
-   "fait": "Le Conseil adopte à l'unanimité le vœu de reconduire la piétonisation dominicale estivale des avenues Ingres et Raphaël.",
-   "pourquoi": "unanimité pour rendre le jardin aux piétons le dimanche",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15346",
-   "fait_en": "The Council unanimously adopted the motion to renew the summer Sunday pedestrianization of avenues Ingres and Raphaël.",
-   "pourquoi_en": "Unanimous support for giving the garden back to pedestrians on Sundays"
-  },
-  {
-   "id": "184436",
-   "seance": "FEVRIER 2026",
-   "fait": "Vœu proposant de nommer « Brigitte Bardot » une voie du jardin, contesté en séance par les écologistes et Paris en commun.",
-   "pourquoi": "une dénomination qui divise le Conseil",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184436",
-   "fait_en": "A motion proposing to name a path in the garden \"Brigitte Bardot,\" contested during the session by the Green group and Paris en commun.",
-   "pourquoi_en": "A naming that divides the Council"
-  }
- ],
- "montants": [
-  {
-   "seance": "JUILLET 2009",
-   "montant": "2.500 euros TTC",
-   "objet": "dépense pour la demande de permis de démolir / déconstruction du kiosque de gardes désaffecté du jardin",
-   "citation": "d?un montant global de 2.500 euros TTC sera imputée sur les crédits inscrits à l?article 61522 du budget de fonctionnement de la DEVE.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74930"
-  },
-  {
-   "seance": "SEPTEMBRE 2008",
-   "montant": "15.177 euros",
-   "objet": "subvention pour le fonctionnement de la halte-garderie « Jardin du Ranelagh »",
-   "citation": "Une subvention de 15.177 euros est allouée à l?association ?Union Départementale des Associations Familiales de Paris - U.D.A.F. de Paris? pour le fonctionnement de la halte-garderie ?Jardin du Ranelagh? située 56, rue de Passy (16e).",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66903"
-  },
-  {
-   "seance": "JUILLET 2009",
-   "montant": "31.160 euros",
-   "objet": "subvention (avenant n°1) pour le fonctionnement de la halte-garderie « Jardin du Ranelagh »",
-   "citation": "Une subvention de 31.160 euros est allouée à l?association ?Union Départementale des Associations Familiales de Paris - U.D.A.F. de Paris? pour le fonctionnement de la halte-garderie ?Jardin du Ranelagh? située 56, rue de Passy (16e).",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75109"
-  },
-  {
-   "seance": "JUIN 1999",
-   "montant": "107.000 F",
-   "objet": "subvention d'équipement pour la pose d'un auvent sur le chalet utilisé dans le jardin",
-   "citation": "Une subvention d'équipement de 107.000 F est attribuée à l'Association générale des familles du 16e, 56, rue Passy (16e) (D. 00670), pour la pose d'un auvent sur le chalet qu'elle utilise dans le jardin du Ranelagh (16e).",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55338"
-  },
-  {
-   "seance": "DECEMBRE 2002",
-   "montant": "12.746 euros",
-   "objet": "subvention de fonctionnement de la halte-garderie du jardin",
-   "citation": "l'attribution à ce titre d'une subvention de fonctionnement de 12.746 euros",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71625"
-  }
- ],
- "bmo_extraits": [],
- "bmo_recit": null,
- "invest": [],
- "marches": [],
- "mandate": null,
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Jardin+du+Ranelagh"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Jardin+du+Ranelagh%22%29"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
+  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "jardin-du-ranelagh",
+  "name": "Jardin du Ranelagh",
+  "kind_fr": "Jardin",
+  "kind_en": "Garden",
+  "famille": "vert",
+  "arrondissement": 16,
+  "lat": 48.858701,
+  "lon": 2.269321,
+  "photo": "/img/lieux/jardin-du-ranelagh.jpg",
+  "photo_credit": {
+    "licence": null,
+    "auteur": null,
+    "url": "https://fr.wikipedia.org/wiki/Jardin_du_Ranelagh",
+    "source": "Wikipédia"
   },
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "Le jardin du Ranelagh est un espace vert du 16e arrondissement de Paris, en France.",
+    "url": "https://fr.wikipedia.org/wiki/Jardin_du_Ranelagh",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    },
+    "extract_en": "The Jardin du Ranelagh is a green space in the 16th arrondissement of Paris, France."
+  },
+  "stats": {
+    "n_delibs": 958,
+    "delibs_span": [
+      1999,
+      2026
+    ],
+    "n_bmo_brut": 930,
+    "n_bmo_verifies": 8,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "titre nommant le lieu (14 trouvés)",
+    "lecture_mode_en": "title naming the place (14 found)",
+    "n_lus": 14,
+    "n_lieu": 10
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "Le jardin du Ranelagh accueille une halte-garderie gérée par des associations familiales, que le Conseil de Paris soutient sur une décennie : subvention d'équipement de 107 000 F pour poser un auvent sur le chalet utilisé dans le jardin (1999), convention et subvention de fonctionnement de 12 746 € (2002), puis conventions d'occupation d'un terrain de 400 m² — Association générale des familles en 2007, UDAF de Paris en 2008 à titre gratuit — et subventions de 15 177 € (2008) et 31 160 € (2009). En parallèle, des élus du 16e portent en 2008 puis 2009 des vœux pour réserver au piéton les allées et voies bordant le jardin et pour l'étendre vers l'ancienne voie ferrée ; le Conseil adopte à l'unanimité, en novembre 2009, un vœu demandant de reconduire la piétonisation dominicale estivale des avenues Ingres et Raphaël, tandis que l'extension reste, selon l'adjointe Fabienne Giboudeaux, suspendue à un accord avec R.F.F. En juillet 2009, il autorise aussi le dépôt d'une demande de permis de démolir un kiosque de gardes désaffecté (2 500 €). En février 2026, un vœu propose de donner le nom de Brigitte Bardot à une voie du jardin, contesté en séance par les groupes écologiste et Paris en commun.",
+  "moments": [
+    {
+      "id": "55338",
+      "seance": "JUIN 1999",
+      "fait": "Subvention d'équipement de 107 000 F à l'Association générale des familles du 16e pour poser un auvent sur le chalet qu'elle utilise dans le jardin.",
+      "pourquoi": "premier financement tracé dans le jardin",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55338",
+      "fait_en": "An equipment grant of 107,000 francs to the Association générale des familles du 16e to install a canopy on the chalet it uses in the garden.",
+      "pourquoi_en": "The first funding on record in the garden"
+    },
+    {
+      "id": "66955",
+      "seance": "SEPTEMBRE 2008",
+      "fait": "Autorisation de mettre à disposition de l'UDAF, à titre gratuit, un terrain de 400 m² du jardin pour une halte-garderie.",
+      "pourquoi": "la Ville héberge gratuitement une halte-garderie",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66955",
+      "fait_en": "Authorization to make available to the UDAF, free of charge, a 400 m² plot of the garden for a childcare drop-in center.",
+      "pourquoi_en": "The City hosts a childcare drop-in center free of charge"
+    },
+    {
+      "id": "13686",
+      "seance": "JUILLET 2008",
+      "fait": "Vœu du groupe U.M.P.P.A. pour réserver au piéton, le dimanche, les allées traversées en semaine par des automobilistes.",
+      "pourquoi": "protéger les enfants des voitures de transit",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13686",
+      "fait_en": "A motion from the U.M.P.P.A. group to reserve for pedestrians, on Sundays, the paths used by motorists during the week.",
+      "pourquoi_en": "Protecting children from through traffic"
+    },
+    {
+      "id": "13798",
+      "seance": "JUILLET 2008",
+      "fait": "Vœu demandant le rattachement de l'ancienne voie ferrée au jardin ; l'adjointe le conditionne à un accord avec R.F.F.",
+      "pourquoi": "agrandir le jardin, mais R.F.F. bloque",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13798",
+      "fait_en": "A motion calling for the former railway line to be attached to the garden; the deputy mayor made it conditional on an agreement with R.F.F.",
+      "pourquoi_en": "Expanding the garden, but R.F.F. stands in the way"
+    },
+    {
+      "id": "74930",
+      "seance": "JUILLET 2009",
+      "fait": "Autorisation au Maire de déposer une demande de permis de démolir le kiosque de gardes désaffecté du jardin (2 500 € TTC).",
+      "pourquoi": "effacer un kiosque de gardes désaffecté",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74930",
+      "fait_en": "Authorization for the Mayor to file an application for a permit to demolish the garden's disused guards' kiosk (2,500 euros including tax).",
+      "pourquoi_en": "Removing a disused guards' kiosk"
+    },
+    {
+      "id": "75109",
+      "seance": "JUILLET 2009",
+      "fait": "Avenant portant à 31 160 € la subvention de fonctionnement de la halte-garderie « Jardin du Ranelagh ».",
+      "pourquoi": "le financement de la halte-garderie grimpe",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75109",
+      "fait_en": "An amendment raising the operating grant for the \"Jardin du Ranelagh\" childcare drop-in center to 31,160 euros.",
+      "pourquoi_en": "Funding for the drop-in center rises"
+    },
+    {
+      "id": "15346",
+      "seance": "NOVEMBRE 2009",
+      "fait": "Le Conseil adopte à l'unanimité le vœu de reconduire la piétonisation dominicale estivale des avenues Ingres et Raphaël.",
+      "pourquoi": "unanimité pour rendre le jardin aux piétons le dimanche",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15346",
+      "fait_en": "The Council unanimously adopted the motion to renew the summer Sunday pedestrianization of avenues Ingres and Raphaël.",
+      "pourquoi_en": "Unanimous support for giving the garden back to pedestrians on Sundays"
+    },
+    {
+      "id": "184436",
+      "seance": "FEVRIER 2026",
+      "fait": "Vœu proposant de nommer « Brigitte Bardot » une voie du jardin, contesté en séance par les écologistes et Paris en commun.",
+      "pourquoi": "une dénomination qui divise le Conseil",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184436",
+      "fait_en": "A motion proposing to name a path in the garden \"Brigitte Bardot,\" contested during the session by the Green group and Paris en commun.",
+      "pourquoi_en": "A naming that divides the Council"
+    }
+  ],
+  "montants": [
+    {
+      "seance": "JUILLET 2009",
+      "montant": "2.500 euros TTC",
+      "objet": "dépense pour la demande de permis de démolir / déconstruction du kiosque de gardes désaffecté du jardin",
+      "citation": "d?un montant global de 2.500 euros TTC sera imputée sur les crédits inscrits à l?article 61522 du budget de fonctionnement de la DEVE.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74930"
+    },
+    {
+      "seance": "SEPTEMBRE 2008",
+      "montant": "15.177 euros",
+      "objet": "subvention pour le fonctionnement de la halte-garderie « Jardin du Ranelagh »",
+      "citation": "Une subvention de 15.177 euros est allouée à l?association ?Union Départementale des Associations Familiales de Paris - U.D.A.F. de Paris? pour le fonctionnement de la halte-garderie ?Jardin du Ranelagh? située 56, rue de Passy (16e).",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66903"
+    },
+    {
+      "seance": "JUILLET 2009",
+      "montant": "31.160 euros",
+      "objet": "subvention (avenant n°1) pour le fonctionnement de la halte-garderie « Jardin du Ranelagh »",
+      "citation": "Une subvention de 31.160 euros est allouée à l?association ?Union Départementale des Associations Familiales de Paris - U.D.A.F. de Paris? pour le fonctionnement de la halte-garderie ?Jardin du Ranelagh? située 56, rue de Passy (16e).",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75109"
+    },
+    {
+      "seance": "JUIN 1999",
+      "montant": "107.000 F",
+      "objet": "subvention d'équipement pour la pose d'un auvent sur le chalet utilisé dans le jardin",
+      "citation": "Une subvention d'équipement de 107.000 F est attribuée à l'Association générale des familles du 16e, 56, rue Passy (16e) (D. 00670), pour la pose d'un auvent sur le chalet qu'elle utilise dans le jardin du Ranelagh (16e).",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55338"
+    },
+    {
+      "seance": "DECEMBRE 2002",
+      "montant": "12.746 euros",
+      "objet": "subvention de fonctionnement de la halte-garderie du jardin",
+      "citation": "l'attribution à ce titre d'une subvention de fonctionnement de 12.746 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71625"
+    }
+  ],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "invest": [],
+  "marches": [],
+  "mandate": null,
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Jardin+du+Ranelagh"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Jardin+du+Ranelagh%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "The Jardin du Ranelagh is home to a childcare drop-in center run by family associations, which Conseil de Paris supported over a decade: an equipment grant of 107,000 francs to install a canopy on the chalet used in the garden (1999), an agreement and operating grant of 12,746 euros (2002), then agreements for the occupation of a 400 m² plot — the Association générale des familles in 2007, the UDAF de Paris free of charge in 2008 — and grants of 15,177 euros (2008) and 31,160 euros (2009). At the same time, councillors from the 16th arrondissement filed motions in 2008 and then 2009 to reserve the paths and roads bordering the garden for pedestrians and to extend it toward the former railway line; the Council unanimously adopted, in November 2009, a motion calling for the renewal of summer Sunday pedestrianization of avenues Ingres and Raphaël, while the extension remained, according to deputy mayor Fabienne Giboudeaux, contingent on an agreement with R.F.F. In July 2009, it also authorized filing an application for a permit to demolish a disused guards' kiosk (2,500 euros). In February 2026, a motion proposed naming a path in the garden after Brigitte Bardot, which was contested during the session by the Green group and Paris en commun.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- },
- "synthese_en": "The Jardin du Ranelagh is home to a childcare drop-in center run by family associations, which Conseil de Paris supported over a decade: an equipment grant of 107,000 francs to install a canopy on the chalet used in the garden (1999), an agreement and operating grant of 12,746 euros (2002), then agreements for the occupation of a 400 m² plot — the Association générale des familles in 2007, the UDAF de Paris free of charge in 2008 — and grants of 15,177 euros (2008) and 31,160 euros (2009). At the same time, councillors from the 16th arrondissement filed motions in 2008 and then 2009 to reserve the paths and roads bordering the garden for pedestrians and to extend it toward the former railway line; the Council unanimously adopted, in November 2009, a motion calling for the renewal of summer Sunday pedestrianization of avenues Ingres and Raphaël, while the extension remained, according to deputy mayor Fabienne Giboudeaux, contingent on an agreement with R.F.F. In July 2009, it also authorized filing an application for a permit to demolish a disused guards' kiosk (2,500 euros). In February 2026, a motion proposed naming a path in the garden after Brigitte Bardot, which was contested during the session by the Green group and Paris en commun."
 }

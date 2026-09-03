@@ -1,13 +1,21 @@
 {
- "generated_at": "2026-07-16",
- "source": "curation in-session (Claude Code) — photos réelles pour des contrats précis, clé = numero_marche",
- "note": "Consommé par loadMarchesPageData (scène signature) en repli après la photo du chantier lié ; avant la banque générique.",
- "items": {
-  "decp-2025S01581": {
-   "photo_url": "https://cdn.paris.fr/paris/2019/09/26/original-1dc59db5ea135cc51c71e810b9908855.jpg",
-   "credit": "Ville de Paris",
-   "source_page": "https://www.paris.fr/pages/trilib-une-nouvelle-approche-du-tri-selectif-3963",
-   "source_label": "paris.fr — Trilib', le tri en bas de chez vous"
+  "generated_at": "2026-07-16",
+  "source": "curation in-session (Claude Code) — photos réelles pour des contrats précis, clé = numero_marche",
+  "note": "Consommé par loadMarchesPageData (scène signature) en repli après la photo du chantier lié ; avant la banque générique.",
+  "items": {
+    "decp-2025S01581": {
+      "photo_url": "https://cdn.paris.fr/paris/2019/09/26/original-1dc59db5ea135cc51c71e810b9908855.jpg",
+      "credit": "Ville de Paris",
+      "source_page": "https://www.paris.fr/pages/trilib-une-nouvelle-approche-du-tri-selectif-3963",
+      "source_label": "paris.fr — Trilib', le tri en bas de chez vous"
+    }
+  },
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- }
 }

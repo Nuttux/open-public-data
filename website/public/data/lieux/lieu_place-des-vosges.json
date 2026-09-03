@@ -1,303 +1,311 @@
 {
- "generated_at": "2026-07-21T17:04:41.999226+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "place-des-vosges",
- "name": "Place des Vosges",
- "kind_fr": "Place",
- "kind_en": "Square",
- "famille": "urbain",
- "arrondissement": 4,
- "lat": 48.85565,
- "lon": 2.36555,
- "photo": "/img/lieux/place-des-vosges.jpg",
- "photo_credit": {
-  "licence": "CC BY-SA 4.0",
-  "auteur": "Mbzt",
-  "url": "https://commons.wikimedia.org/wiki/File:F0723_Paris_IV_place_Vosges_statue_Louis_XIII_rwk.jpg",
-  "source": "Wikimedia Commons"
- },
- "wiki": {
-  "extract": "La place des Vosges, anciennement place Royale, car initialement dédiée au roi Henri IV et finalement, après l'assassinat du roi par François Ravaillac, dédiée à son fils Louis XIII, est une place de Paris dans le quartier du Marais, faisant partie des 3e et 4e arrondissements.",
-  "url": "https://fr.wikipedia.org/wiki/Place_des_Vosges",
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  },
-  "extract_en": "The Place des Vosges, formerly Place Royale — initially dedicated to King Henri IV and, after the King's assassination by François Ravaillac, ultimately dedicated to his son Louis XIII — is a square in Paris in the Marais district, spanning the 3rd and 4th arrondissements."
- },
- "stats": {
-  "n_delibs": 1106,
-  "delibs_span": [
-   1996,
-   2025
-  ],
-  "n_bmo_brut": 2000,
-  "n_bmo_verifies": 18,
-  "invest_total_eur": 894884.96,
-  "invest_annees": [
-   "2022",
-   "2024"
-  ],
-  "lecture_mode": "titre nommant le lieu (24 trouvés)",
-  "lecture_mode_en": "title naming the place (24 found)",
-  "n_lus": 23,
-  "n_lieu": 23
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": "Au Conseil de Paris, la place des Vosges revient d'abord pour l'entretien de son patrimoine, adresse par adresse : des subventions dont le principe est approuve pour restaurer les facades et couvertures des immeubles des 15 et 20 (1998, 2001), l'eclairage des fontaines du square Louis XIII et des travaux au lycee Theophile-Gautier et au Musee Victor-Hugo (2001-2002). A partir de 2009, l'assemblee se saisit d'un hotel particulier du 1 / 1 bis, vacant depuis 1965 et occupe par le collectif \"Jeudi Noir\" : elle adopte des voeux de soutien, demande une mediation, puis, apres l'expulsion de 2010, reclame le relogement des occupants. En 2016, un voeu demande d'appliquer la regle de 30 % de logements sociaux a ce meme hotel Coulanges, que Mme Simonnet dit rachete par Xavier Niel et Delphine Arnault. Le debat se deplace ensuite vers l'hotel de Fourcy (8) : designation d'un laureat \"Reinventer Paris\" en 2019, puis en 2025 deux deliberations portant un bail emphyteotique a CDC Habitat social et un programme de 17 logements sociaux (subvention de 2 300 101 euros), vivement debattues en seance.",
- "moments": [
-  {
-   "id": "84921",
-   "seance": "JANVIER 2001",
-   "fait": "Le Conseil approuve le principe des travaux d'eclairage des fontaines du square Louis XIII et autorise le Maire a signer le marche.",
-   "pourquoi": "Eclairer les fontaines du square Louis XIII",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84921",
-   "fait_en": "The Council approved the principle of lighting works for the fountains of the Square Louis XIII and authorized the Mayor to sign the contract.",
-   "pourquoi_en": "Lighting the fountains of the Square Louis XIII"
-  },
-  {
-   "id": "28786",
-   "seance": "JUIN 2001",
-   "fait": "Le Conseil approuve le principe d'une subvention de 900 000 F et autorise le Maire a signer une convention pour restaurer la facade classee du 20.",
-   "pourquoi": "La Ville subventionne une facade classee",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28786",
-   "fait_en": "The Council approved the principle of a 900,000-franc grant and authorized the Mayor to sign an agreement to restore the listed façade at number 20.",
-   "pourquoi_en": "The City subsidizes a listed façade"
-  },
-  {
-   "id": "44371",
-   "seance": "JUIN 2006",
-   "fait": "Le Conseil attribue la denomination \"synagogue Charles Liche\" a la synagogue du 14, place des Vosges.",
-   "pourquoi": "Une synagogue nommee en hommage a un rabbin",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44371",
-   "fait_en": "The Council gave the name \"synagogue Charles Liché\" to the synagogue at 14, Place des Vosges.",
-   "pourquoi_en": "A synagogue named in tribute to a rabbi"
-  },
-  {
-   "id": "82165",
-   "seance": "NOVEMBRE 2009",
-   "fait": "Le Conseil exprime son soutien a l'occupation, par \"Jeudi Noir\", de l'hotel du 1, place des Vosges, vacant depuis 1965.",
-   "pourquoi": "Le Conseil soutient l'occupation d'un hotel vide",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82165",
-   "fait_en": "The Council expressed its support for the occupation, by \"Jeudi Noir\", of the mansion at 1, Place des Vosges, vacant since 1965.",
-   "pourquoi_en": "The Council supports the occupation of a vacant mansion"
-  },
-  {
-   "id": "79290",
-   "seance": "FEVRIER 2010",
-   "fait": "Le Conseil emet le voeu que la Prefecture ne procede a aucune expulsion sans relogement des occupants du 1 bis.",
-   "pourquoi": "Pas d'expulsion sans relogement des occupants",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79290",
-   "fait_en": "The Council passed a motion asking that the Prefecture carry out no eviction without rehousing the occupants of 1 bis.",
-   "pourquoi_en": "No eviction without rehousing the occupants"
-  },
-  {
-   "id": "132298",
-   "seance": "SEPTEMBRE 2016",
-   "fait": "Mme Simonnet demande par voeu que la regle de 30 % de logements sociaux s'applique au 1 bis (hotel Coulanges) et la levee des poursuites contre les anciens occupants.",
-   "pourquoi": "Du logement social exige dans l'hotel Coulanges",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=132298",
-   "fait_en": "Ms Simonnet, via a motion, asked that the 30% social-housing rule apply to 1 bis (Hôtel de Coulanges) and that proceedings against the former occupants be dropped.",
-   "pourquoi_en": "Social housing demanded at the Hôtel de Coulanges"
-  },
-  {
-   "id": "152764",
-   "seance": "NOVEMBRE 2019",
-   "fait": "Le Conseil designe le laureat \"Reinventer Paris\" pour l'hotel de Fourcy (8) et autorise le declassement par anticipation et la signature du bail a construction.",
-   "pourquoi": "Un laureat pour reinventer l'hotel de Fourcy",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152764",
-   "fait_en": "The Council designated the \"Reinventer Paris\" winner for the Hôtel de Fourcy (8) and authorized the advance declassification and the signing of the building lease.",
-   "pourquoi_en": "A winner to reinvent the Hôtel de Fourcy"
-  },
-  {
-   "id": "184653",
-   "seance": "NOVEMBRE 2025",
-   "fait": "Deux deliberations prevoient la location de l'hotel de Fourcy (8) a CDC Habitat social et un programme de 17 logements sociaux, avec une subvention de 2 300 101 euros ; le debat est vif.",
-   "pourquoi": "17 logements sociaux, debat tres vif",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184653",
-   "fait_en": "Two deliberations provided for leasing the Hôtel de Fourcy (8) to CDC Habitat social and a programme of 17 social housing units, with a grant of 2,300,101 euros; the debate was heated.",
-   "pourquoi_en": "17 social housing units, a very heated debate"
-  }
- ],
- "montants": [
-  {
-   "seance": "NOVEMBRE 2025",
-   "montant": "2.300.101 euros",
-   "objet": "Subvention au programme de 17 logements sociaux du 8 (DLH 361)",
-   "citation": "par CDC Habitat social - Subvention (2.300.101 euros).",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184653"
-  },
-  {
-   "seance": "SEPTEMBRE 2016",
-   "montant": "31,5 millions d'euros",
-   "objet": "Prix de rachat de l'hotel Coulanges selon Mme Simonnet",
-   "citation": "a été récemment racheté par Xavier NIEL, le patron de \"Free\", et Delphine ARNAULT, la D.G.A. de Louis Vuitton et fille de Bernard ARNAULT, pour un montant de 31,5 millions d'euros.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=132298"
-  },
-  {
-   "seance": "SEPTEMBRE 2016",
-   "montant": "3.400 euros par mois",
-   "objet": "Indemnites reclamees aux anciens occupants selon Mme Simonnet",
-   "citation": "condamnés à payer 3.400 euros d'indemnité par mois occupé, soit environ 10.000 euros.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=132298"
-  },
-  {
-   "seance": "FEVRIER 2010",
-   "montant": "69.663 euros par mois",
-   "objet": "Indemnite d'occupation fixee par l'ordonnance de refere du 18 janvier 2010",
-   "citation": "les condamne à verser une indemnité d?occupation de 69.663 euros par mois",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79290"
-  },
-  {
-   "seance": "NOVEMBRE 2010",
-   "montant": "25.000 euros par mois",
-   "objet": "Indemnite mensuelle d'occupation fixee par le tribunal en janvier 2010",
-   "citation": "le collectif devait s?acquitter de 25.000 euros mensuels d?indemnités",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=86043"
-  },
-  {
-   "seance": "OCTOBRE 2010",
-   "montant": "25.000 euros par mois",
-   "objet": "Indemnite mensuelle d'occupation fixee par le tribunal le 18 janvier 2010",
-   "citation": "le collectif devait s?acquitter de 25.000 euros mensuels d?indemnités",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23645"
-  },
-  {
-   "seance": "OCTOBRE 2010",
-   "montant": "25.000 euros par mois",
-   "objet": "Indemnite mensuelle d'occupation fixee par le tribunal le 18 janvier 2010",
-   "citation": "le collectif devait s?acquitter de 25.000 euros mensuels d?indemnités",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=86775"
-  },
-  {
-   "seance": "FEVRIER 2010",
-   "montant": "25.000 euros par mois",
-   "objet": "Indemnite mensuelle d'occupation fixee par le tribunal le 18 janvier 2010",
-   "citation": "le collectif devrait s'acquitter de 25.000 euros mensuels d'indemnités",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4013"
-  },
-  {
-   "seance": "FEVRIER 2010",
-   "montant": "25.000 euros par mois",
-   "objet": "Indemnite mensuelle d'occupation fixee par le tribunal le 18 janvier 2010",
-   "citation": "le collectif devrait s?acquitter de 25.000 euros mensuels d?indemnités",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79302"
-  },
-  {
-   "seance": "JUIN 1996",
-   "montant": "2.000 F",
-   "objet": "Subvention a l'OCCE de la maternelle du 12 pour une classe de decouverte",
-   "citation": "Une subvention de 2.000 F est attribuée à l'O.C.C.E. - coopérative scolaire de l'école maternelle, 12, place des Vosges (4e)",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73094"
-  },
-  {
-   "seance": "JUIN 2001",
-   "montant": "900.000 F",
-   "objet": "Subvention a la restauration de la facade et des couvertures du 20",
-   "citation": "une convention ayant pour but d'octroyer une subvention, pour la réalisation des travaux mentionnés à l'article ci-dessus, pour un montant de 900.000 F.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28786"
-  },
-  {
-   "seance": "DECEMBRE 1998",
-   "montant": "1.350.000 F",
-   "objet": "Subvention a la restauration de la facade et des couvertures du 15 (repartie 1998-1999)",
-   "citation": "ayant pour but d'octroyer une subvention, pour la réalisation des travaux mentionnés à l'article ci-dessus, pour un montant de 1.350.000 F.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57488"
-  }
- ],
- "bmo_extraits": [
-  {
-   "date": "1903-07-04",
-   "extrait": "Le 2 mars 1902, la ville de Paris avait organisé de brillantes fêtes sur notre si intéressante place des Vosges , en face de la maison où nous sommes en ce moment … Cette maison de la place des Vosges , Paris la consacre en effet dès ce jour au culte … Visiter le salon de la ",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6396061z/f2.item",
-   "extrait_en": "On 2 March 1902, the City of Paris had organized brilliant festivities on our so interesting Place des Vosges, facing the house where we now stand … This house on the Place des Vosges, Paris consecrates it indeed from this day to the cult … Visit the drawing room of the"
-  },
-  {
-   "date": "1908-11-14",
-   "extrait": "25. — Renvoi à la 3e Commission et à l'Administration d'une proposition de M. Henri Galli relative au bitumage de la place des Vosges . .26. — Ordre du jour sur une demande de souscription à deux ouvrages. v 27. — Souscription à un ouvrage de M. Wils … 29. — Création d'une stat",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k63485912/f5.item",
-   "extrait_en": "25. — Referral to the 3rd Commission and to the Administration of a proposal by Mr Henri Galli concerning the paving of the Place des Vosges. 26. — Order of business on a request for subscription to two works. 27. — Subscription to a work by Mr Wils … 29. — Creation of a stat"
-  },
-  {
-   "date": "1941-10-19",
-   "extrait": "La Place des Vosges », dessin de Georges Bruyer, gravé par Emile Feltesse",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6449456t/f1.item",
-   "extrait_en": "\"The Place des Vosges\", a drawing by Georges Bruyer, engraved by Émile Feltesse"
-  }
- ],
- "bmo_recit": "Dans le Bulletin municipal officiel, la place des Vosges apparaît d'abord à l'occasion d'une cérémonie : un discours reproduit en 1903 rappelle les fêtes que la Ville de Paris y avait organisées le 2 mars 1902, face à la maison de Victor Hugo, que Paris consacre ce jour-là. En 1908, le Conseil renvoie à sa 3e Commission et à l'Administration une proposition du conseiller Henri Galli relative au bitumage de la place — un renvoi pour examen, sans qu'une décision de travaux soit actée dans ces pages. En 1941, la place revient sous une autre forme : elle figure en couverture du Bulletin, dans un dessin de Georges Bruyer gravé par Émile Feltesse. L'archive ne livre ici que ces trois moments, espacés sur près de quarante ans.",
- "invest": [
-  {
-   "annee": 2022,
-   "montant_eur": 323650.0,
-   "nom_projet": "Square Louis XIII - Aménagement des sanitaires PMR, Rénovation des sols",
-   "preuve": "Le square Louis XIII est le jardin central de la place, pas un lieu voisin : la délibération de JANVIER 2001 (doc 84921) le situe verbatim « travaux d'éclairage des fontaines du square Louis XIII, place des Vosges (4e) ». Le projet 2022 (sanitaires PMR, rénovation des sols) porte donc sur l'enceinte même de la place ; distance_m 58.",
-   "id": "2022_00_9_006"
-  },
-  {
-   "annee": 2024,
-   "montant_eur": 286844.68,
-   "nom_projet": "Place des Vosges",
-   "preuve": "Le nom du projet est exactement le nom du lieu : « Place des Vosges » (2024, 286 844,68 €), distance_m 58. Aucun autre lieu n'est nommé.",
-   "id": "2024_00_9_008"
-  },
-  {
-   "annee": 2024,
-   "montant_eur": 284390.28,
-   "nom_projet": "Lycée Municipal Theophile Gautier - Annexe place des Vosges",
-   "preuve": "Le nom du projet nomme le lieu : « Lycée Municipal Theophile Gautier - Annexe place des Vosges ». Les adresses connues du lycée sont toutes sur la place : délibération MAI 2001 (doc 89820) « au lycée d'enseignement commercial Théophile-Gautier, 6 bis, place des Vosges (4e) » et NOVEMBRE 2025 (doc 184653) « lycée professionnel Théophile Gautier, installé au 6, place des Vosges ». Le numéro du bâtiment de l'annexe visée en 2024 n'est pas établi par les sources disponibles. Distance_m 58.",
-   "id": "2024_00_9_024"
-  }
- ],
- "marches": [
-  {
-   "numero_marche": "20212021T03259",
-   "objet": "MODERNISAT°DES MENUISERIES EXTERIEURS EM 12 PLACE DES VOSGES",
-   "objet_clair": null,
-   "fournisseur": "ART ET TECHNIQUE DE LA MENUISERIE",
-   "montant_max": 218560.0,
-   "date_notification": "2021-05-31",
-   "preuve": "L'objet porte des travaux sur un bâtiment de la place, et non sur un repère d'adresse : « MODERNISAT°DES MENUISERIES EXTERIEURS EM 12 PLACE DES VOSGES ». « EM 12 place des Vosges » = école maternelle du 12, place des Vosges, dont l'existence est confirmée verbatim par les délibérations JUIN 1996 (doc 73094) « école maternelle, 12, place des Vosges (4e) » et MAI 2001 (doc 89755) « mise en conformité de canalisations à l'école maternelle, 12, place des Vosges ». SIRET fournisseur 47777174500023."
-  },
-  {
-   "numero_marche": "20222022T02115",
-   "objet": "MODERNISATION MENUISERIES EXT. EM 12 PLACE DES VOSGES 4E",
-   "objet_clair": null,
-   "fournisseur": "ART ET TECHNIQUE DE LA MENUISERIE",
-   "montant_max": 163500.0,
-   "date_notification": "2022-03-30",
-   "preuve": "L'objet nomme le bâtiment et l'arrondissement : « MODERNISATION MENUISERIES EXT. EM 12 PLACE DES VOSGES 4E ». « EM 12 place des Vosges » = école maternelle du 12, place des Vosges (4e), confirmée par la délibération MAI 2001 (doc 89755) « à l'école maternelle, 12, place des Vosges ». Second marché de menuiseries sur le même bâtiment, même fournisseur (SIRET 47777174500023), un an après le marché 20212021T03259 ; les sources ne permettent pas de dire s'il s'agit du même chantier ou d'une tranche distincte."
-  }
- ],
- "mandate": null,
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Place+des+Vosges"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Place+des+Vosges%22%29"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
+  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "place-des-vosges",
+  "name": "Place des Vosges",
+  "kind_fr": "Place",
+  "kind_en": "Square",
+  "famille": "urbain",
+  "arrondissement": 4,
+  "lat": 48.85565,
+  "lon": 2.36555,
+  "photo": "/img/lieux/place-des-vosges.jpg",
+  "photo_credit": {
+    "licence": "CC BY-SA 4.0",
+    "auteur": "Mbzt",
+    "url": "https://commons.wikimedia.org/wiki/File:F0723_Paris_IV_place_Vosges_statue_Louis_XIII_rwk.jpg",
+    "source": "Wikimedia Commons"
   },
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "La place des Vosges, anciennement place Royale, car initialement dédiée au roi Henri IV et finalement, après l'assassinat du roi par François Ravaillac, dédiée à son fils Louis XIII, est une place de Paris dans le quartier du Marais, faisant partie des 3e et 4e arrondissements.",
+    "url": "https://fr.wikipedia.org/wiki/Place_des_Vosges",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    },
+    "extract_en": "The Place des Vosges, formerly Place Royale — initially dedicated to King Henri IV and, after the King's assassination by François Ravaillac, ultimately dedicated to his son Louis XIII — is a square in Paris in the Marais district, spanning the 3rd and 4th arrondissements."
+  },
+  "stats": {
+    "n_delibs": 1106,
+    "delibs_span": [
+      1996,
+      2025
+    ],
+    "n_bmo_brut": 2000,
+    "n_bmo_verifies": 18,
+    "invest_total_eur": 894884.96,
+    "invest_annees": [
+      "2022",
+      "2024"
+    ],
+    "lecture_mode": "titre nommant le lieu (24 trouvés)",
+    "lecture_mode_en": "title naming the place (24 found)",
+    "n_lus": 23,
+    "n_lieu": 23
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "Au Conseil de Paris, la place des Vosges revient d'abord pour l'entretien de son patrimoine, adresse par adresse : des subventions dont le principe est approuve pour restaurer les facades et couvertures des immeubles des 15 et 20 (1998, 2001), l'eclairage des fontaines du square Louis XIII et des travaux au lycee Theophile-Gautier et au Musee Victor-Hugo (2001-2002). A partir de 2009, l'assemblee se saisit d'un hotel particulier du 1 / 1 bis, vacant depuis 1965 et occupe par le collectif \"Jeudi Noir\" : elle adopte des voeux de soutien, demande une mediation, puis, apres l'expulsion de 2010, reclame le relogement des occupants. En 2016, un voeu demande d'appliquer la regle de 30 % de logements sociaux a ce meme hotel Coulanges, que Mme Simonnet dit rachete par Xavier Niel et Delphine Arnault. Le debat se deplace ensuite vers l'hotel de Fourcy (8) : designation d'un laureat \"Reinventer Paris\" en 2019, puis en 2025 deux deliberations portant un bail emphyteotique a CDC Habitat social et un programme de 17 logements sociaux (subvention de 2 300 101 euros), vivement debattues en seance.",
+  "moments": [
+    {
+      "id": "84921",
+      "seance": "JANVIER 2001",
+      "fait": "Le Conseil approuve le principe des travaux d'eclairage des fontaines du square Louis XIII et autorise le Maire a signer le marche.",
+      "pourquoi": "Eclairer les fontaines du square Louis XIII",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84921",
+      "fait_en": "The Council approved the principle of lighting works for the fountains of the Square Louis XIII and authorized the Mayor to sign the contract.",
+      "pourquoi_en": "Lighting the fountains of the Square Louis XIII"
+    },
+    {
+      "id": "28786",
+      "seance": "JUIN 2001",
+      "fait": "Le Conseil approuve le principe d'une subvention de 900 000 F et autorise le Maire a signer une convention pour restaurer la facade classee du 20.",
+      "pourquoi": "La Ville subventionne une facade classee",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28786",
+      "fait_en": "The Council approved the principle of a 900,000-franc grant and authorized the Mayor to sign an agreement to restore the listed façade at number 20.",
+      "pourquoi_en": "The City subsidizes a listed façade"
+    },
+    {
+      "id": "44371",
+      "seance": "JUIN 2006",
+      "fait": "Le Conseil attribue la denomination \"synagogue Charles Liche\" a la synagogue du 14, place des Vosges.",
+      "pourquoi": "Une synagogue nommee en hommage a un rabbin",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44371",
+      "fait_en": "The Council gave the name \"synagogue Charles Liché\" to the synagogue at 14, Place des Vosges.",
+      "pourquoi_en": "A synagogue named in tribute to a rabbi"
+    },
+    {
+      "id": "82165",
+      "seance": "NOVEMBRE 2009",
+      "fait": "Le Conseil exprime son soutien a l'occupation, par \"Jeudi Noir\", de l'hotel du 1, place des Vosges, vacant depuis 1965.",
+      "pourquoi": "Le Conseil soutient l'occupation d'un hotel vide",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82165",
+      "fait_en": "The Council expressed its support for the occupation, by \"Jeudi Noir\", of the mansion at 1, Place des Vosges, vacant since 1965.",
+      "pourquoi_en": "The Council supports the occupation of a vacant mansion"
+    },
+    {
+      "id": "79290",
+      "seance": "FEVRIER 2010",
+      "fait": "Le Conseil emet le voeu que la Prefecture ne procede a aucune expulsion sans relogement des occupants du 1 bis.",
+      "pourquoi": "Pas d'expulsion sans relogement des occupants",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79290",
+      "fait_en": "The Council passed a motion asking that the Prefecture carry out no eviction without rehousing the occupants of 1 bis.",
+      "pourquoi_en": "No eviction without rehousing the occupants"
+    },
+    {
+      "id": "132298",
+      "seance": "SEPTEMBRE 2016",
+      "fait": "Mme Simonnet demande par voeu que la regle de 30 % de logements sociaux s'applique au 1 bis (hotel Coulanges) et la levee des poursuites contre les anciens occupants.",
+      "pourquoi": "Du logement social exige dans l'hotel Coulanges",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=132298",
+      "fait_en": "Ms Simonnet, via a motion, asked that the 30% social-housing rule apply to 1 bis (Hôtel de Coulanges) and that proceedings against the former occupants be dropped.",
+      "pourquoi_en": "Social housing demanded at the Hôtel de Coulanges"
+    },
+    {
+      "id": "152764",
+      "seance": "NOVEMBRE 2019",
+      "fait": "Le Conseil designe le laureat \"Reinventer Paris\" pour l'hotel de Fourcy (8) et autorise le declassement par anticipation et la signature du bail a construction.",
+      "pourquoi": "Un laureat pour reinventer l'hotel de Fourcy",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152764",
+      "fait_en": "The Council designated the \"Reinventer Paris\" winner for the Hôtel de Fourcy (8) and authorized the advance declassification and the signing of the building lease.",
+      "pourquoi_en": "A winner to reinvent the Hôtel de Fourcy"
+    },
+    {
+      "id": "184653",
+      "seance": "NOVEMBRE 2025",
+      "fait": "Deux deliberations prevoient la location de l'hotel de Fourcy (8) a CDC Habitat social et un programme de 17 logements sociaux, avec une subvention de 2 300 101 euros ; le debat est vif.",
+      "pourquoi": "17 logements sociaux, debat tres vif",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184653",
+      "fait_en": "Two deliberations provided for leasing the Hôtel de Fourcy (8) to CDC Habitat social and a programme of 17 social housing units, with a grant of 2,300,101 euros; the debate was heated.",
+      "pourquoi_en": "17 social housing units, a very heated debate"
+    }
+  ],
+  "montants": [
+    {
+      "seance": "NOVEMBRE 2025",
+      "montant": "2.300.101 euros",
+      "objet": "Subvention au programme de 17 logements sociaux du 8 (DLH 361)",
+      "citation": "par CDC Habitat social - Subvention (2.300.101 euros).",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184653"
+    },
+    {
+      "seance": "SEPTEMBRE 2016",
+      "montant": "31,5 millions d'euros",
+      "objet": "Prix de rachat de l'hotel Coulanges selon Mme Simonnet",
+      "citation": "a été récemment racheté par Xavier NIEL, le patron de \"Free\", et Delphine ARNAULT, la D.G.A. de Louis Vuitton et fille de Bernard ARNAULT, pour un montant de 31,5 millions d'euros.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=132298"
+    },
+    {
+      "seance": "SEPTEMBRE 2016",
+      "montant": "3.400 euros par mois",
+      "objet": "Indemnites reclamees aux anciens occupants selon Mme Simonnet",
+      "citation": "condamnés à payer 3.400 euros d'indemnité par mois occupé, soit environ 10.000 euros.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=132298"
+    },
+    {
+      "seance": "FEVRIER 2010",
+      "montant": "69.663 euros par mois",
+      "objet": "Indemnite d'occupation fixee par l'ordonnance de refere du 18 janvier 2010",
+      "citation": "les condamne à verser une indemnité d?occupation de 69.663 euros par mois",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79290"
+    },
+    {
+      "seance": "NOVEMBRE 2010",
+      "montant": "25.000 euros par mois",
+      "objet": "Indemnite mensuelle d'occupation fixee par le tribunal en janvier 2010",
+      "citation": "le collectif devait s?acquitter de 25.000 euros mensuels d?indemnités",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=86043"
+    },
+    {
+      "seance": "OCTOBRE 2010",
+      "montant": "25.000 euros par mois",
+      "objet": "Indemnite mensuelle d'occupation fixee par le tribunal le 18 janvier 2010",
+      "citation": "le collectif devait s?acquitter de 25.000 euros mensuels d?indemnités",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23645"
+    },
+    {
+      "seance": "OCTOBRE 2010",
+      "montant": "25.000 euros par mois",
+      "objet": "Indemnite mensuelle d'occupation fixee par le tribunal le 18 janvier 2010",
+      "citation": "le collectif devait s?acquitter de 25.000 euros mensuels d?indemnités",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=86775"
+    },
+    {
+      "seance": "FEVRIER 2010",
+      "montant": "25.000 euros par mois",
+      "objet": "Indemnite mensuelle d'occupation fixee par le tribunal le 18 janvier 2010",
+      "citation": "le collectif devrait s'acquitter de 25.000 euros mensuels d'indemnités",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4013"
+    },
+    {
+      "seance": "FEVRIER 2010",
+      "montant": "25.000 euros par mois",
+      "objet": "Indemnite mensuelle d'occupation fixee par le tribunal le 18 janvier 2010",
+      "citation": "le collectif devrait s?acquitter de 25.000 euros mensuels d?indemnités",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79302"
+    },
+    {
+      "seance": "JUIN 1996",
+      "montant": "2.000 F",
+      "objet": "Subvention a l'OCCE de la maternelle du 12 pour une classe de decouverte",
+      "citation": "Une subvention de 2.000 F est attribuée à l'O.C.C.E. - coopérative scolaire de l'école maternelle, 12, place des Vosges (4e)",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73094"
+    },
+    {
+      "seance": "JUIN 2001",
+      "montant": "900.000 F",
+      "objet": "Subvention a la restauration de la facade et des couvertures du 20",
+      "citation": "une convention ayant pour but d'octroyer une subvention, pour la réalisation des travaux mentionnés à l'article ci-dessus, pour un montant de 900.000 F.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28786"
+    },
+    {
+      "seance": "DECEMBRE 1998",
+      "montant": "1.350.000 F",
+      "objet": "Subvention a la restauration de la facade et des couvertures du 15 (repartie 1998-1999)",
+      "citation": "ayant pour but d'octroyer une subvention, pour la réalisation des travaux mentionnés à l'article ci-dessus, pour un montant de 1.350.000 F.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57488"
+    }
+  ],
+  "bmo_extraits": [
+    {
+      "date": "1903-07-04",
+      "extrait": "Le 2 mars 1902, la ville de Paris avait organisé de brillantes fêtes sur notre si intéressante place des Vosges , en face de la maison où nous sommes en ce moment … Cette maison de la place des Vosges , Paris la consacre en effet dès ce jour au culte … Visiter le salon de la ",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6396061z/f2.item",
+      "extrait_en": "On 2 March 1902, the City of Paris had organized brilliant festivities on our so interesting Place des Vosges, facing the house where we now stand … This house on the Place des Vosges, Paris consecrates it indeed from this day to the cult … Visit the drawing room of the"
+    },
+    {
+      "date": "1908-11-14",
+      "extrait": "25. — Renvoi à la 3e Commission et à l'Administration d'une proposition de M. Henri Galli relative au bitumage de la place des Vosges . .26. — Ordre du jour sur une demande de souscription à deux ouvrages. v 27. — Souscription à un ouvrage de M. Wils … 29. — Création d'une stat",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k63485912/f5.item",
+      "extrait_en": "25. — Referral to the 3rd Commission and to the Administration of a proposal by Mr Henri Galli concerning the paving of the Place des Vosges. 26. — Order of business on a request for subscription to two works. 27. — Subscription to a work by Mr Wils … 29. — Creation of a stat"
+    },
+    {
+      "date": "1941-10-19",
+      "extrait": "La Place des Vosges », dessin de Georges Bruyer, gravé par Emile Feltesse",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6449456t/f1.item",
+      "extrait_en": "\"The Place des Vosges\", a drawing by Georges Bruyer, engraved by Émile Feltesse"
+    }
+  ],
+  "bmo_recit": "Dans le Bulletin municipal officiel, la place des Vosges apparaît d'abord à l'occasion d'une cérémonie : un discours reproduit en 1903 rappelle les fêtes que la Ville de Paris y avait organisées le 2 mars 1902, face à la maison de Victor Hugo, que Paris consacre ce jour-là. En 1908, le Conseil renvoie à sa 3e Commission et à l'Administration une proposition du conseiller Henri Galli relative au bitumage de la place — un renvoi pour examen, sans qu'une décision de travaux soit actée dans ces pages. En 1941, la place revient sous une autre forme : elle figure en couverture du Bulletin, dans un dessin de Georges Bruyer gravé par Émile Feltesse. L'archive ne livre ici que ces trois moments, espacés sur près de quarante ans.",
+  "invest": [
+    {
+      "annee": 2022,
+      "montant_eur": 323650.0,
+      "nom_projet": "Square Louis XIII - Aménagement des sanitaires PMR, Rénovation des sols",
+      "preuve": "Le square Louis XIII est le jardin central de la place, pas un lieu voisin : la délibération de JANVIER 2001 (doc 84921) le situe verbatim « travaux d'éclairage des fontaines du square Louis XIII, place des Vosges (4e) ». Le projet 2022 (sanitaires PMR, rénovation des sols) porte donc sur l'enceinte même de la place ; distance_m 58.",
+      "id": "2022_00_9_006"
+    },
+    {
+      "annee": 2024,
+      "montant_eur": 286844.68,
+      "nom_projet": "Place des Vosges",
+      "preuve": "Le nom du projet est exactement le nom du lieu : « Place des Vosges » (2024, 286 844,68 €), distance_m 58. Aucun autre lieu n'est nommé.",
+      "id": "2024_00_9_008"
+    },
+    {
+      "annee": 2024,
+      "montant_eur": 284390.28,
+      "nom_projet": "Lycée Municipal Theophile Gautier - Annexe place des Vosges",
+      "preuve": "Le nom du projet nomme le lieu : « Lycée Municipal Theophile Gautier - Annexe place des Vosges ». Les adresses connues du lycée sont toutes sur la place : délibération MAI 2001 (doc 89820) « au lycée d'enseignement commercial Théophile-Gautier, 6 bis, place des Vosges (4e) » et NOVEMBRE 2025 (doc 184653) « lycée professionnel Théophile Gautier, installé au 6, place des Vosges ». Le numéro du bâtiment de l'annexe visée en 2024 n'est pas établi par les sources disponibles. Distance_m 58.",
+      "id": "2024_00_9_024"
+    }
+  ],
+  "marches": [
+    {
+      "numero_marche": "20212021T03259",
+      "objet": "MODERNISAT°DES MENUISERIES EXTERIEURS EM 12 PLACE DES VOSGES",
+      "objet_clair": null,
+      "fournisseur": "ART ET TECHNIQUE DE LA MENUISERIE",
+      "montant_max": 218560.0,
+      "date_notification": "2021-05-31",
+      "preuve": "L'objet porte des travaux sur un bâtiment de la place, et non sur un repère d'adresse : « MODERNISAT°DES MENUISERIES EXTERIEURS EM 12 PLACE DES VOSGES ». « EM 12 place des Vosges » = école maternelle du 12, place des Vosges, dont l'existence est confirmée verbatim par les délibérations JUIN 1996 (doc 73094) « école maternelle, 12, place des Vosges (4e) » et MAI 2001 (doc 89755) « mise en conformité de canalisations à l'école maternelle, 12, place des Vosges ». SIRET fournisseur 47777174500023."
+    },
+    {
+      "numero_marche": "20222022T02115",
+      "objet": "MODERNISATION MENUISERIES EXT. EM 12 PLACE DES VOSGES 4E",
+      "objet_clair": null,
+      "fournisseur": "ART ET TECHNIQUE DE LA MENUISERIE",
+      "montant_max": 163500.0,
+      "date_notification": "2022-03-30",
+      "preuve": "L'objet nomme le bâtiment et l'arrondissement : « MODERNISATION MENUISERIES EXT. EM 12 PLACE DES VOSGES 4E ». « EM 12 place des Vosges » = école maternelle du 12, place des Vosges (4e), confirmée par la délibération MAI 2001 (doc 89755) « à l'école maternelle, 12, place des Vosges ». Second marché de menuiseries sur le même bâtiment, même fournisseur (SIRET 47777174500023), un an après le marché 20212021T03259 ; les sources ne permettent pas de dire s'il s'agit du même chantier ou d'une tranche distincte."
+    }
+  ],
+  "mandate": null,
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Place+des+Vosges"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Place+des+Vosges%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "At Conseil de Paris, the Place des Vosges first comes up for the upkeep of its heritage, building by building: grants whose principle is approved to restore the façades and roofs of numbers 15 and 20 (1998, 2001), lighting for the fountains of the Square Louis XIII, and works at the Lycée Théophile-Gautier and the Musée Victor-Hugo (2001-2002). From 2009, the Council takes up the case of a private mansion at 1 / 1 bis, vacant since 1965 and occupied by the \"Jeudi Noir\" collective: it adopts motions of support, calls for mediation, then, after the 2010 eviction, demands rehousing for the occupants. In 2016, a motion asks that the 30% social-housing rule be applied to this same Hôtel de Coulanges, which Ms Simonnet says was bought by Xavier Niel and Delphine Arnault. The debate then shifts to the Hôtel de Fourcy (8): a winner of the \"Reinventer Paris\" competition is designated in 2019, then in 2025 two deliberations grant a long lease (bail emphytéotique) to CDC Habitat social and a programme of 17 social housing units (a grant of 2,300,101 euros), hotly debated in session.",
+  "bmo_recit_en": "In the official municipal bulletin, the Place des Vosges first appears on the occasion of a ceremony: a speech reproduced in 1903 recalls the festivities that the City of Paris had organized there on 2 March 1902, facing the house of Victor Hugo, which Paris consecrated that day. In 1908, the Council referred to its 3rd Commission and to the Administration a proposal by councillor Henri Galli concerning the paving of the square — a referral for examination, with no decision on works recorded in these pages. In 1941, the square returns in another form: it appears on the cover of the Bulletin, in a drawing by Georges Bruyer engraved by Émile Feltesse. The archive here offers only these three moments, spread out over nearly forty years.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- },
- "synthese_en": "At Conseil de Paris, the Place des Vosges first comes up for the upkeep of its heritage, building by building: grants whose principle is approved to restore the façades and roofs of numbers 15 and 20 (1998, 2001), lighting for the fountains of the Square Louis XIII, and works at the Lycée Théophile-Gautier and the Musée Victor-Hugo (2001-2002). From 2009, the Council takes up the case of a private mansion at 1 / 1 bis, vacant since 1965 and occupied by the \"Jeudi Noir\" collective: it adopts motions of support, calls for mediation, then, after the 2010 eviction, demands rehousing for the occupants. In 2016, a motion asks that the 30% social-housing rule be applied to this same Hôtel de Coulanges, which Ms Simonnet says was bought by Xavier Niel and Delphine Arnault. The debate then shifts to the Hôtel de Fourcy (8): a winner of the \"Reinventer Paris\" competition is designated in 2019, then in 2025 two deliberations grant a long lease (bail emphytéotique) to CDC Habitat social and a programme of 17 social housing units (a grant of 2,300,101 euros), hotly debated in session.",
- "bmo_recit_en": "In the official municipal bulletin, the Place des Vosges first appears on the occasion of a ceremony: a speech reproduced in 1903 recalls the festivities that the City of Paris had organized there on 2 March 1902, facing the house of Victor Hugo, which Paris consecrated that day. In 1908, the Council referred to its 3rd Commission and to the Administration a proposal by councillor Henri Galli concerning the paving of the square — a referral for examination, with no decision on works recorded in these pages. In 1941, the square returns in another form: it appears on the cover of the Bulletin, in a drawing by Georges Bruyer engraved by Émile Feltesse. The archive here offers only these three moments, spread out over nearly forty years."
 }

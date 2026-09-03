@@ -3417,5 +3417,13 @@
     ]
   },
   "notes_fr": "Dette publique au sens de Maastricht (consolidée brute). S13 ≠ S1311 + S1313 + S1314 : la consolidation élimine les détentions croisées entre administrations publiques.",
-  "notes_en": "Maastricht government debt (consolidated, gross). S13 ≠ S1311 + S1313 + S1314 because consolidation removes cross-holdings between government sub-sectors."
+  "notes_en": "Maastricht government debt (consolidated, gross). S13 ≠ S1311 + S1313 + S1314 because consolidation removes cross-holdings between government sub-sectors.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
+  }
 }

@@ -517,5 +517,13 @@
       "caveats_fr": "Les transports sont financés par l'État (programme 203 « Infrastructures et services de transports » + AFITF, hors écologie strictement environnementale et énergie), les régions (TER + transports interurbains, ~35 % de leurs dépenses), les départements (routes départementales et transport scolaire), et les communes (voirie locale, transport urbain via les syndicats AOM). La fraction 60 % appliquée à la mission « Écologie, développement et mobilité durables » est éditoriale et conservatrice. Les redevances et péages versés directement par les usagers (péages d'autoroute, billets SNCF) ne sont pas comptés.",
       "caveats_en": "Transport is funded by the State (program 203 « Infrastructure and transport services » + AFITF, excluding strictly environmental ecology and energy), regions (regional trains TER and intercity transport, ~35 % of their spending), departments (departmental roads and school transport), and municipalities (local roads, urban transport via mobility authorities). The 60 % fraction applied to the « Ecology, development and sustainable mobility » mission is editorial and conservative. Tolls and fares paid directly by users (motorway tolls, SNCF tickets) are not counted."
     }
+  },
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
 }

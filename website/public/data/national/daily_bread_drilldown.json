@@ -8101,5 +8101,13 @@
       },
       "notes_fr": "Source unifiée : OFGL Rapport 2025 (data 2024) — annexe 2F, nomenclature commune 9 groupes M14/M52/M71. F1 = communes ≥3500 hab, F3 = départements (hors Paris/Mayotte/ML), F4 = régions+CTU. Ratios = part dans le total dépenses fonctionnement (hors charges fi.) + investissement (hors remb.). level3 = sous-agrégats du même tableau."
     }
+  },
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
 }

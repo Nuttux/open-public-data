@@ -154,5 +154,13 @@
     ]
   },
   "notes_fr": "Marchés publics filtrés par SIREN acheteur (210600888). Couverture estimée de la qualité montant : 93.6% des marchés ont un montant non-nul renseigné. La DECP au national est connue pour avoir une qualité variable selon les acheteurs ; les chiffres ci-dessous sont bruts, non corrigés.",
-  "notes_en": "Public procurement filtered by buyer SIREN (210600888). Estimated quality coverage: 93.6% of contracts have a non-zero amount. DECP is known for variable quality across buyers; numbers below are raw, unadjusted."
+  "notes_en": "Public procurement filtered by buyer SIREN (210600888). Estimated quality coverage: 93.6% of contracts have a non-zero amount. DECP is known for variable quality across buyers; numbers below are raw, unadjusted.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
+  }
 }

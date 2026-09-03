@@ -53,5 +53,13 @@
     "gdp_source_url": "https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table"
   },
   "notes_fr": "Décomposition de la dépense publique française par sous-secteur (S1311 État central + ODAC, S1313 collectivités locales APUL, S1314 administrations de sécurité sociale ASSO). Les totaux S1311+S1313+S1314 ne consolident pas les transferts intra-administrations (ex : dotations État → collectivités, transferts État → Sécu) ; ils sont donc supérieurs au total S13 consolidé. Pour répondre à la question « qui dépense quoi ? » dans le calculateur Daily Bread, on utilise les ratios S1311 / S1313 / S1314 sur leur somme non consolidée — c'est la lecture pertinente pour ventiler une contribution personnelle.",
-  "notes_en": "French public spending broken down by sub-sector (S1311 central + ODAC, S1313 local government APUL, S1314 social security ASSO). Sub-sector totals do NOT consolidate intra-government transfers — they sum higher than the consolidated S13 total. For the Daily Bread calculator, we use the unconsolidated denominator: it answers « who spends what share » before transfers."
+  "notes_en": "French public spending broken down by sub-sector (S1311 central + ODAC, S1313 local government APUL, S1314 social security ASSO). Sub-sector totals do NOT consolidate intra-government transfers — they sum higher than the consolidated S13 total. For the Daily Bread calculator, we use the unconsolidated denominator: it answers « who spends what share » before transfers.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
+  }
 }

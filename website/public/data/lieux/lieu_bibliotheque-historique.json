@@ -1,120 +1,128 @@
 {
- "generated_at": "2026-07-21T17:04:41.999226+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "bibliotheque-historique",
- "name": "Bibliothèque historique (BHVP)",
- "kind_fr": "Bibliothèque",
- "kind_en": "Library",
- "famille": "culture",
- "arrondissement": 4,
- "lat": 48.8556,
- "lon": 2.3585,
- "photo": "/img/lieux/bibliotheque-historique.jpg",
- "photo_credit": {
-  "licence": "CC BY 4.0",
-  "auteur": "Siren-Com",
-  "url": "https://commons.wikimedia.org/wiki/File:Jules_Cousin_BHVP_Paris.jpg",
-  "source": "Wikimedia Commons"
- },
- "wiki": {
-  "extract": null,
-  "url": null,
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 5,
-  "delibs_span": [
-   1997,
-   2018
-  ],
-  "n_bmo_brut": 199,
-  "n_bmo_verifies": 18,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "titre nommant le lieu (1 trouvés)",
-  "lecture_mode_en": "title naming the place (1 found)",
-  "n_lus": 1,
-  "n_lieu": 0
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": "La bibliothèque historique de la Ville de Paris occupe l'hôtel Lamoignon, dans le 4e arrondissement. En septembre 2018, le Conseil de Paris examine l'attribution du nom « Jardin de l'hôtel Lamoignon - Mark Ashton » au jardin situé devant ce bâtiment, en hommage à Mark Ashton, militant britannique des droits des personnes LGBT et du soutien aux mineurs grévistes. Dans ce débat, la bibliothèque n'apparaît que comme l'institution logée dans l'hôtel : la délibération qui la mentionne ne touche que ses abords, et non l'établissement lui-même.",
- "moments": [
-  {
-   "id": "145103",
-   "seance": "SEPTEMBRE 2018",
-   "fait": "Le Conseil de Paris examine l'attribution du nom « Jardin de l'hôtel Lamoignon - Mark Ashton » au jardin situé devant l'hôtel qui abrite la bibliothèque, en hommage au militant décédé du Sida en 1987.",
-   "pourquoi": "un hommage LGBT aux portes de la bibliothèque",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=145103",
-   "fait_en": "Conseil de Paris considered giving the name \"Jardin de l'hôtel Lamoignon - Mark Ashton\" to the garden in front of the townhouse that houses the library, in tribute to the activist who died of AIDS in 1987.",
-   "pourquoi_en": "An LGBT tribute at the library's doorstep"
-  }
- ],
- "montants": [],
- "bmo_extraits": [
-  {
-   "date": "1930-05-28",
-   "extrait": "pendant quinze jours consécutifs (les dimanches et jours de fêtes, de 9 heures à 11 heures), à partir du 2 juin jusqu'au 17 juin 1930 inclusivement, sur un projet d'aménagement de l' hôtel Lamoignon en annexe du musée Carnavalet",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6334165p/f6.item",
-   "extrait_en": "for fifteen consecutive days (Sundays and public holidays, from 9 to 11 a.m.), from 2 June until 17 June 1930 inclusive, concerning a project to convert the Hôtel Lamoignon into an annex of the Musée Carnavalet"
-  },
-  {
-   "date": "1955-12-01",
-   "extrait": "de réfection complète de l'escalier Mansart au musée Carnavalet, les travaux de restauration de l' hôtel Lamoignon et ceux de construction du grand hall d'exposition , au musée Bourdelle",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9705465s/f8.item",
-   "extrait_en": "of the complete restoration of the Mansart staircase at the Musée Carnavalet, the restoration works at the Hôtel Lamoignon and those for the construction of the large exhibition hall at the Musée Bourdelle"
-  },
-  {
-   "date": "1960-01-20",
-   "extrait": "Emission d'un emprunt de 913.000 N.F. destiné à permettre l'achèvement des travaux de restauration de l' hôtel Lamoignon (1959, 700 … ",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9710434z/f84.item",
-   "extrait_en": "Issuance of a loan of 913,000 new francs intended to allow completion of the restoration works at the Hôtel Lamoignon (1959, 700 …"
-  },
-  {
-   "date": "1961-01-01",
-   "extrait": "N° 338. — MM. Pozza et Boissonnet, conseillers municipaux, demandent à M. le Préfet de la Seine de bien vouloir leur faire connaître quels sont les projets de l’Administration en ce qui concerne l’utilisation de l’espace libre bordant au sud les bâtiments du très bel hôtel de Lam",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3200811m/f384.item",
-   "extrait_en": "No. 338. — Messrs Pozza and Boissonnet, municipal councillors, ask the Prefect of the Seine to kindly inform them of the Administration's plans regarding the use of the open space bordering to the south the buildings of the very fine Hôtel de Lam"
-  },
-  {
-   "date": "1965-01-23",
-   "extrait": "N° 1605. — M. Salles, conseiller municipal, a été saisi d'une pétition d'habitants du quartier du Marais protestant contre la destruction d'arbres dans la cour de l' hôtel Lamoignon et demandant, par contre, que le mur d'une ancienne prison faisant saillie à l'angle des rues Malh",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97093930/f4.item",
-   "extrait_en": "No. 1605. — Mr Salles, municipal councillor, received a petition from residents of the Marais neighborhood protesting against the destruction of trees in the courtyard of the Hôtel Lamoignon and asking, on the other hand, that the wall of a former prison projecting at the corner of Malh"
-  },
-  {
-   "date": "1968-10-12",
-   "extrait": "La Bibliothèque historique de la Ville de Paris, installée depuis 1898 à l' hôtel Le Peletier-de-Saint-Fargeau, 29, rue de Sévigné, achève le transfert de ses collections dans les nouveaux locaux aménagés à son usage à l' hôtel Lamoignon , 24, rue Pavée, à Paris (4e) (tél. 272-10",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9703902c/f8.item",
-   "extrait_en": "The Bibliothèque historique de la Ville de Paris, housed since 1898 at the Hôtel Le Peletier-de-Saint-Fargeau, 29 rue de Sévigné, completed the transfer of its collections to the new premises fitted out for its use at the Hôtel Lamoignon, 24 rue Pavée, in Paris (4th arrondissement) (tel. 272-10"
-  }
- ],
- "bmo_recit": null,
- "invest": [],
- "marches": [],
- "mandate": null,
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Biblioth%C3%A8que+AND+historique+AND+Lamoignon"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22h%C3%B4tel+de+Lamoignon%22%29"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
+  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "bibliotheque-historique",
+  "name": "Bibliothèque historique (BHVP)",
+  "kind_fr": "Bibliothèque",
+  "kind_en": "Library",
+  "famille": "culture",
+  "arrondissement": 4,
+  "lat": 48.8556,
+  "lon": 2.3585,
+  "photo": "/img/lieux/bibliotheque-historique.jpg",
+  "photo_credit": {
+    "licence": "CC BY 4.0",
+    "auteur": "Siren-Com",
+    "url": "https://commons.wikimedia.org/wiki/File:Jules_Cousin_BHVP_Paris.jpg",
+    "source": "Wikimedia Commons"
   },
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": null,
+    "url": null,
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "stats": {
+    "n_delibs": 5,
+    "delibs_span": [
+      1997,
+      2018
+    ],
+    "n_bmo_brut": 199,
+    "n_bmo_verifies": 18,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "titre nommant le lieu (1 trouvés)",
+    "lecture_mode_en": "title naming the place (1 found)",
+    "n_lus": 1,
+    "n_lieu": 0
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "La bibliothèque historique de la Ville de Paris occupe l'hôtel Lamoignon, dans le 4e arrondissement. En septembre 2018, le Conseil de Paris examine l'attribution du nom « Jardin de l'hôtel Lamoignon - Mark Ashton » au jardin situé devant ce bâtiment, en hommage à Mark Ashton, militant britannique des droits des personnes LGBT et du soutien aux mineurs grévistes. Dans ce débat, la bibliothèque n'apparaît que comme l'institution logée dans l'hôtel : la délibération qui la mentionne ne touche que ses abords, et non l'établissement lui-même.",
+  "moments": [
+    {
+      "id": "145103",
+      "seance": "SEPTEMBRE 2018",
+      "fait": "Le Conseil de Paris examine l'attribution du nom « Jardin de l'hôtel Lamoignon - Mark Ashton » au jardin situé devant l'hôtel qui abrite la bibliothèque, en hommage au militant décédé du Sida en 1987.",
+      "pourquoi": "un hommage LGBT aux portes de la bibliothèque",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=145103",
+      "fait_en": "Conseil de Paris considered giving the name \"Jardin de l'hôtel Lamoignon - Mark Ashton\" to the garden in front of the townhouse that houses the library, in tribute to the activist who died of AIDS in 1987.",
+      "pourquoi_en": "An LGBT tribute at the library's doorstep"
+    }
+  ],
+  "montants": [],
+  "bmo_extraits": [
+    {
+      "date": "1930-05-28",
+      "extrait": "pendant quinze jours consécutifs (les dimanches et jours de fêtes, de 9 heures à 11 heures), à partir du 2 juin jusqu'au 17 juin 1930 inclusivement, sur un projet d'aménagement de l' hôtel Lamoignon en annexe du musée Carnavalet",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6334165p/f6.item",
+      "extrait_en": "for fifteen consecutive days (Sundays and public holidays, from 9 to 11 a.m.), from 2 June until 17 June 1930 inclusive, concerning a project to convert the Hôtel Lamoignon into an annex of the Musée Carnavalet"
+    },
+    {
+      "date": "1955-12-01",
+      "extrait": "de réfection complète de l'escalier Mansart au musée Carnavalet, les travaux de restauration de l' hôtel Lamoignon et ceux de construction du grand hall d'exposition , au musée Bourdelle",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9705465s/f8.item",
+      "extrait_en": "of the complete restoration of the Mansart staircase at the Musée Carnavalet, the restoration works at the Hôtel Lamoignon and those for the construction of the large exhibition hall at the Musée Bourdelle"
+    },
+    {
+      "date": "1960-01-20",
+      "extrait": "Emission d'un emprunt de 913.000 N.F. destiné à permettre l'achèvement des travaux de restauration de l' hôtel Lamoignon (1959, 700 … ",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9710434z/f84.item",
+      "extrait_en": "Issuance of a loan of 913,000 new francs intended to allow completion of the restoration works at the Hôtel Lamoignon (1959, 700 …"
+    },
+    {
+      "date": "1961-01-01",
+      "extrait": "N° 338. — MM. Pozza et Boissonnet, conseillers municipaux, demandent à M. le Préfet de la Seine de bien vouloir leur faire connaître quels sont les projets de l’Administration en ce qui concerne l’utilisation de l’espace libre bordant au sud les bâtiments du très bel hôtel de Lam",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3200811m/f384.item",
+      "extrait_en": "No. 338. — Messrs Pozza and Boissonnet, municipal councillors, ask the Prefect of the Seine to kindly inform them of the Administration's plans regarding the use of the open space bordering to the south the buildings of the very fine Hôtel de Lam"
+    },
+    {
+      "date": "1965-01-23",
+      "extrait": "N° 1605. — M. Salles, conseiller municipal, a été saisi d'une pétition d'habitants du quartier du Marais protestant contre la destruction d'arbres dans la cour de l' hôtel Lamoignon et demandant, par contre, que le mur d'une ancienne prison faisant saillie à l'angle des rues Malh",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97093930/f4.item",
+      "extrait_en": "No. 1605. — Mr Salles, municipal councillor, received a petition from residents of the Marais neighborhood protesting against the destruction of trees in the courtyard of the Hôtel Lamoignon and asking, on the other hand, that the wall of a former prison projecting at the corner of Malh"
+    },
+    {
+      "date": "1968-10-12",
+      "extrait": "La Bibliothèque historique de la Ville de Paris, installée depuis 1898 à l' hôtel Le Peletier-de-Saint-Fargeau, 29, rue de Sévigné, achève le transfert de ses collections dans les nouveaux locaux aménagés à son usage à l' hôtel Lamoignon , 24, rue Pavée, à Paris (4e) (tél. 272-10",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9703902c/f8.item",
+      "extrait_en": "The Bibliothèque historique de la Ville de Paris, housed since 1898 at the Hôtel Le Peletier-de-Saint-Fargeau, 29 rue de Sévigné, completed the transfer of its collections to the new premises fitted out for its use at the Hôtel Lamoignon, 24 rue Pavée, in Paris (4th arrondissement) (tel. 272-10"
+    }
+  ],
+  "bmo_recit": null,
+  "invest": [],
+  "marches": [],
+  "mandate": null,
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Biblioth%C3%A8que+AND+historique+AND+Lamoignon"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22h%C3%B4tel+de+Lamoignon%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "The Bibliothèque historique de la Ville de Paris occupies the Hôtel Lamoignon, in the 4th arrondissement. In September 2018, Conseil de Paris considered giving the name \"Jardin de l'hôtel Lamoignon - Mark Ashton\" to the garden in front of this building, in tribute to Mark Ashton, a British LGBT rights activist and supporter of striking miners. In this debate, the library appears only as the institution housed in the townhouse: the deliberation that mentions it concerns only its surroundings, not the institution itself.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- },
- "synthese_en": "The Bibliothèque historique de la Ville de Paris occupies the Hôtel Lamoignon, in the 4th arrondissement. In September 2018, Conseil de Paris considered giving the name \"Jardin de l'hôtel Lamoignon - Mark Ashton\" to the garden in front of this building, in tribute to Mark Ashton, a British LGBT rights activist and supporter of striking miners. In this debate, the library appears only as the institution housed in the townhouse: the deliberation that mentions it concerns only its surroundings, not the institution itself."
 }

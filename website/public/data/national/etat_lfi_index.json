@@ -5,5 +5,13 @@
   ],
   "latest_year": 2025,
   "loi": "PLF",
-  "fetched_at": "2026-05-03T17:40:03.216447+00:00"
+  "fetched_at": "2026-05-03T17:40:03.216447+00:00",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
+  }
 }

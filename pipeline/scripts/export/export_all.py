@@ -108,6 +108,21 @@ def main():
         log.error("Échec apply_friendly_labels", extra=str(e))
     results.append(("Libellés grand-public (post)", friendly_ok, time.time() - start))
 
+    # Tampon de licence : les exports Paris et Recife sont des bases dérivées de
+    # sources ODbL (partage à l'identique), donc chaque JSON doit porter la
+    # licence. Tourne après apply_friendly_labels, qui réécrit les fichiers.
+    log.section("[post] Licences ODbL")
+    print()
+    stamp_path = Path(__file__).parent / "stamp_licenses.py"
+    start = time.time()
+    stamp_ok = False
+    try:
+        subprocess.run([sys.executable, str(stamp_path)], check=True)
+        stamp_ok = True
+    except Exception as e:
+        log.error("Échec stamp_licenses", extra=str(e))
+    results.append(("Licences ODbL (post)", stamp_ok, time.time() - start))
+
     # Résumé final
     log.header("Résumé Export Complet")
     
