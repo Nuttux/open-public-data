@@ -69,6 +69,7 @@ ALL_ITEMS = (os.environ.get("BLOCKS_ITEMS")
 FORM_RANKS = os.path.join(REPO, "pipeline", "seeds", "sf_bos_form_ranks.tsv")
 TITLE_LABELS = os.path.join(REPO, "pipeline", "seeds", "sf_bos_title_labels.tsv")
 SHAPE_LABELS = os.path.join(REPO, "pipeline", "seeds", "sf_bos_shape_labels.tsv")
+GAP_LABELS = os.path.join(REPO, "pipeline", "seeds", "sf_bos_gap_labels.tsv")
 
 # THE SAME NORMALISATION THE FORMS WERE DRAWN WITH. If this drifts from the
 # code that produced forms300.txt, labels attach to the wrong records — so it
@@ -827,6 +828,123 @@ def main() -> int:
             n_near += 1
     print(f"\n{n_near:,} more from records that are the same sentence with "
           f"different scan errors")
+
+    # ── PASS G: the fund an appropriation comes OUT OF ───────────────────
+    # 343 appropriations reached this point with an action and no topic, and
+    # the reason is documented above: the form fixes the ACTION — "the following
+    # amounts be and the same are hereby set aside" is always an appropriation —
+    # while what the money was FOR sits past the end of the formula, so the form
+    # label deliberately left the topic blank rather than guess it.
+    #
+    # But these records are not silent about their subject. They name the FUND:
+    #
+    #   "…out of the hereinafter mentioned funds…, to-wit: Sewer Fund, Bond
+    #    Issue 1904. (1) For construction of Bakers Beach outlet sewer…"
+    #
+    # The fund is the City's own word for what the money is for, printed in the
+    # record, and it is a closed vocabulary — Municipal Railway Construction,
+    # County Road, Hospital-Jail Completion, Polytechnic High School. So this is
+    # not the model guessing from prose; it is reading a name the record states.
+    #
+    # IT RUNS LAST, AFTER EVERY OTHER PASS, and only on a row that has an
+    # action and no topic. Order is the whole safety of it: placed earlier it
+    # ran before the purpose-clause pass and took 1,498 rows that pass would
+    # have given a more specific subject to — a coarse answer arriving first
+    # and blocking a better one. Where no fund is named the row keeps its
+    # honest blank.
+    FUNDS = [
+        (r"municipal railway|geary street railway|railway construction"
+         r"|railway depreciation", "getting-around", "transit"),
+        (r"sewer", "the-street", "sewers"),
+        (r"pav(?:e|ing|ement)|repaving|repaying|county road|street repair"
+         r"|repairs to streets", "the-street", "street-works"),
+        (r"water construction|municipal water works|water works|hetch hetchy",
+         "city-services", "water-supply"),
+        (r"hospital|emergency hospital|health", "city-services", "health"),
+        (r"high school|school", "city-services", "schools"),
+        (r"county jail|jail", "city-services", "police"),
+        (r"fire (?:department|house|protection)", "city-services", "fire"),
+        (r"librar", "city-services", "libraries"),
+        (r"park|playground|esplanade|ocean beach|golden gate park",
+         "city-services", "parks"),
+        (r"city hall|civic center|auditorium|public buildings"
+         r"|repairs to buildings|furniture", "land-and-building", "construction"),
+    ]
+    FUND_RX = [(re.compile(p, re.I), t, s2) for p, t, s2 in FUNDS]
+    FUND_SEG = re.compile(r"to-?wit\s*:?\s*(.{0,90})", re.I)
+    OUT_OF = re.compile(r"out of (?:the )?(?!the hereinafter)(.{0,80})", re.I)
+    text_of = dict(rows)
+    n_fund = 0
+    for o in out:
+        if o["topic"] or not o["action"] or o["record_type"] != "decision":
+            continue
+        t = text_of.get(o["id"], "")
+        m = FUND_SEG.search(t) or OUT_OF.search(t)
+        if not m:
+            continue
+        seg = m.group(1)
+        for rx, top, sub in FUND_RX:
+            if rx.search(seg):
+                o["topic"], o["subtopic"] = top, sub
+                o["classified_by"] = "fund"
+                per_topic[top] += 1
+                n_fund += 1
+                break
+    if n_fund:
+        print(f"{n_fund:,} appropriations given a subject by the fund they name")
+
+    # ── PASS H: the rows that end with an action and no subject ──────────
+    # After every other pass, 759 rows still had an action and no topic. They
+    # were read one sentence-shape at a time, and the answer is mostly that they
+    # are not decisions with a missing subject — they are the historic Journal's
+    # own debris: a record that begins mid-sentence, a supervisor's remark during
+    # debate, a communication read into the minutes. So this pass may change the
+    # RECORD TYPE as well as fill the topic, which no other late pass does.
+    #
+    # It runs after PASS G for the same reason G runs after the purpose clause:
+    # the most specific answer must arrive first, and a hand read is the most
+    # specific answer there is.
+    n_gap = 0
+    if os.path.exists(GAP_LABELS):
+        lab_g, bad_g = {}, []
+        for line in open(GAP_LABELS):
+            if line.startswith("#") or not line.strip():
+                continue
+            parts = line.rstrip("\n").split("\t")
+            if len(parts) < 5:
+                continue
+            shape, rt, top, sub, act = parts[:5]
+            if rt and rt not in rtypes:
+                bad_g.append(f"record_type {rt!r}")
+            if top and top not in topics:
+                bad_g.append(f"topic {top!r}")
+            if sub and subs.get(sub) != top:
+                bad_g.append(f"subtopic {sub!r} not under {top!r}")
+            if act and act not in actions:
+                bad_g.append(f"action {act!r}")
+            lab_g[shape] = (rt, top, sub, act)
+        if bad_g:
+            print("REFUSED — gap labels disagree with the taxonomy:")
+            for b in bad_g[:12]:
+                print("  ", b)
+            return 1
+        for o in out:
+            if o["topic"] or o["record_type"] != "decision":
+                continue
+            l = lab_g.get(form_b(text_of.get(o["id"], "")))
+            if not l:
+                continue
+            rt, top, sub, act = l
+            o["record_type"] = rt or o["record_type"]
+            o["topic"], o["subtopic"] = top, sub
+            if act:
+                o["action"] = act
+            o["classified_by"] = "record"
+            if top:
+                per_topic[top] += 1
+            n_gap += 1
+        if n_gap:
+            print(f"{n_gap:,} rows with an action and no subject, read by shape")
 
     # THE WHOLE CORPUS, not just the rows long enough to group. `rows` excludes
     # the 12 one-word fragments, and dividing by it printed 100.0% of a number

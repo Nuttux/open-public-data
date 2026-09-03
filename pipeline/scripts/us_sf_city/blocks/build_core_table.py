@@ -500,10 +500,15 @@ def main() -> int:
                      "words match only approximately because the SCAN is broken, "
                      "not the line. Filter on this rather than trusting every row."},
             {"name": "classified_by",
-             "values": ["form", "near-duplicate", "purpose-clause", "record",
-                        "rule", "title"],
+             "values": ["form", "fund", "near-duplicate", "purpose-clause",
+                        "record", "rule", "title"],
              "what": "`record` means a human read this row. `form` means a human "
                      "read the sentence-shape it shares with others. "
+                     "`fund` means the subject came from the fund the money was "
+                     "appropriated OUT OF — \"Sewer Fund, Bond Issue 1904\", "
+                     "\"Municipal Railway Construction Fund\" — which is the "
+                     "City's own word for what the money was for, printed in the "
+                     "record. "
                      "`title` means a human read the Clerk's own file title for "
                      "it — the modern record carries one, and the WHOLE title is "
                      "the key, because `Administrative Code` alone heads 1,477 "

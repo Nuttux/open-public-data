@@ -227,13 +227,14 @@
    "name": "classified_by",
    "values": [
     "form",
+    "fund",
     "near-duplicate",
     "purpose-clause",
     "record",
     "rule",
     "title"
    ],
-   "what": "`record` means a human read this row. `form` means a human read the sentence-shape it shares with others. `title` means a human read the Clerk's own file title for it \u2014 the modern record carries one, and the WHOLE title is the key, because `Administrative Code` alone heads 1,477 records about rent control, surveillance policy, police equipment and the film commission. `near-duplicate` means it is the same sentence as a labelled row with different scan errors. `rule` means a pattern that agreed 90-100% with a human read. `purpose-clause` means two reads: the opening formula gave the action, and the subject came from the clause after it \u2014 \"for the purpose of reconstructing the main sewer in Mission street\". Every row carries one of the five; a row can still have an empty `topic`, which is a read row whose line does not say what it was about."
+   "what": "`record` means a human read this row. `form` means a human read the sentence-shape it shares with others. `fund` means the subject came from the fund the money was appropriated OUT OF \u2014 \"Sewer Fund, Bond Issue 1904\", \"Municipal Railway Construction Fund\" \u2014 which is the City's own word for what the money was for, printed in the record. `title` means a human read the Clerk's own file title for it \u2014 the modern record carries one, and the WHOLE title is the key, because `Administrative Code` alone heads 1,477 records about rent control, surveillance policy, police equipment and the film commission. `near-duplicate` means it is the same sentence as a labelled row with different scan errors. `rule` means a pattern that agreed 90-100% with a human read. `purpose-clause` means two reads: the opening formula gave the action, and the subject came from the clause after it \u2014 \"for the purpose of reconstructing the main sewer in Mission street\". Every row carries one of the five; a row can still have an empty `topic`, which is a read row whose line does not say what it was about."
   }
  ]
 }
