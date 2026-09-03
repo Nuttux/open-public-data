@@ -3,7 +3,9 @@
   "framework": "nextjs",
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
-  "regions": ["cdg1"],
+  "regions": [
+    "cdg1"
+  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -36,20 +38,31 @@
     },
     {
       "source": "/data/(.*)",
+      "has": [
+        {
+          "type": "query",
+          "key": "v"
+        }
+      ],
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=3600, s-maxage=86400"
+          "value": "public, max-age=31536000, immutable"
         }
       ]
     },
     {
       "source": "/data/(.*)",
-      "has": [{ "type": "query", "key": "v" }],
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
+          "value": "public, max-age=3600, s-maxage=86400"
+        }
+      ],
+      "missing": [
+        {
+          "type": "query",
+          "key": "v"
         }
       ]
     }
