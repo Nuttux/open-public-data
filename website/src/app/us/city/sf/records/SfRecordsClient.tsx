@@ -218,17 +218,24 @@ export default function SfRecordsClient({ schema, stats }: {
 
           <p style={{ font: "15px/1.6 var(--f-sans, system-ui)", margin: "0 0 16px" }}>
             Every row has been read and sorted — {n(stats.read)} of{" "}
-            {n(stats.rows)}. That does not mean every row has a subject, and the
-            two reasons a row has none are different enough that adding them
-            together would be misleading.
+            {n(stats.rows)}. That does not mean every row has a subject.{" "}
+            {noSubject > 0
+              ? "The two reasons a row has none are different enough that adding them together would be misleading."
+              : "A row without one is a row that is not a decision — a running footer, an index row, a line cut in half, a bare vote outcome, or what a member of the public said about a file. None of those is an act of the Board, and none of them has a subject to give."}
           </p>
           <Bar
             total={stats.rows}
             parts={[
               { label: "a decision, with a subject", value: withSubject,
                 colour: INK[2] },
-              { label: "a decision, no subject in the line", value: noSubject,
-                colour: INK[3] },
+              /* Dropped at 0 rather than drawn as a zero-width sliver with a
+                 label nobody can read. It reached 0 on 2026-09-03; the segment
+                 stays in the code because the number can come back the moment
+                 the corpus grows. */
+              ...(noSubject > 0
+                ? [{ label: "a decision, no subject in the line",
+                     value: noSubject, colour: INK[3] }]
+                : []),
               { label: "not a decision", value: notADecision,
                 colour: UNCLASSIFIED },
               ...(unread > 0
@@ -241,9 +248,13 @@ export default function SfRecordsClient({ schema, stats }: {
             <span style={{ color: INK[2] }}>■</span> a decision, with a subject{" "}
             {n(withSubject)}
             {"   "}
-            <span style={{ color: INK[3] }}>■</span> a decision, no subject in the
-            line {n(noSubject)}
-            {"   "}
+            {noSubject > 0 ? (
+              <>
+                <span style={{ color: INK[3] }}>■</span> a decision, no subject in
+                the line {n(noSubject)}
+                {"   "}
+              </>
+            ) : null}
             <span style={{ color: UNCLASSIFIED }}>■</span> not a decision{" "}
             {n(notADecision)}
           </p>
@@ -261,8 +272,11 @@ export default function SfRecordsClient({ schema, stats }: {
           <p style={{ font: "15px/1.6 var(--f-sans, system-ui)", margin: "0 0 8px" }}>
             Of the {n(stats.decisions)} rows that are decisions,{" "}
             <strong>{n(withSubject)}</strong> ({pct(withSubject, stats.decisions)})
-            say what they are about. The remaining {n(noSubject)} carry what the
-            Board <em>did</em> and not what about. Most rows were sorted by their
+            say what they are about.{" "}
+            {noSubject > 0
+              ? `The remaining ${n(noSubject)} carry what the Board did and not what about.`
+              : "There is no remainder: every decision in the corpus now carries one."}{" "}
+            Most rows were sorted by their
             opening formula, which is shared by thousands of records at a time and
             settles the verb without settling the subject: <em>“the sum of $1,250
             be and the same is hereby set aside, appropriated and authorized to be
@@ -277,13 +291,10 @@ export default function SfRecordsClient({ schema, stats }: {
               <em>for the construction of</em>. That clause was pulled out and read
               on its own — never keyed to the opening formula, which those rows
               share with thousands that are already sorted — and it recovered{" "}
-              <strong>{n(fromPurpose)}</strong> subjects. The {n(noSubject)} left
-              are the lines where it named nothing single either: an appropriation
-              that pays for four unrelated things at once, a modern agenda line
-              whose project is defined in the file it points at, a fragment of
-              debate that never names the measure being debated. They keep their
-              action and an empty topic rather than the topic of whichever record
-              was read first.
+              <strong>{n(fromPurpose)}</strong> subjects.{" "}
+              {noSubject > 0
+                ? `The ${n(noSubject)} left are the lines where it named nothing single either: an appropriation that pays for four unrelated things at once, a modern agenda line whose project is defined in the file it points at, a fragment of debate that never names the measure being debated. They keep their action and an empty topic rather than the topic of whichever record was read first.`
+                : "What it did not reach was read afterwards, a sentence-shape at a time. Most of that turned out not to be a decision with a missing subject at all — it was a record cut in half by a page break, a supervisor’s remark during debate, or the Board’s own standing rule printed on the agenda — and those are typed as what they are rather than given a subject they never had."}
             </p>
           ) : null}
         </section>
@@ -297,8 +308,11 @@ export default function SfRecordsClient({ schema, stats }: {
           <p style={{ font: "14px/1.6 var(--f-sans, system-ui)",
                       color: "var(--muted, #6b6355)", margin: "0 0 18px",
                       maxWidth: 620 }}>
-            Decisions only — the bar for a decade is the decisions in it, and the
-            grey is the ones that were read and name no subject. Every decade has
+            Decisions only — the bar for a decade is the decisions in it
+            {noSubject > 0
+              ? ", and the grey is the ones that were read and name no subject"
+              : ", and every one of them names a subject, so no decade carries a grey remainder"}.{" "}
+            Every decade has
             been read end to end. Shown by decade rather than as one figure because
             the Board’s language changes completely across the century — a single
             number would be carried by whichever era is biggest and would hide a
@@ -398,12 +412,10 @@ export default function SfRecordsClient({ schema, stats }: {
               <strong>The street being first is the record, not a sampling
               artefact.</strong> Grades, sidewalk widths, acceptances and closures
               are what a nineteenth-century board of supervisors mostly did, and it
-              wrote them in the most repetitive language it had. What this chart
-              cannot show is the {n(noSubject)} decisions ({pct(noSubject, stats.decisions)}{" "}
-              of them) whose line names an act and no subject. They are too few to
-              tilt the eight, and they are not missing evenly from them: an
-              appropriation belongs to whatever it paid for, so where the line
-              never says, the topic is left empty rather than guessed.
+              wrote them in the most repetitive language it had.{" "}
+              {noSubject > 0
+                ? `What this chart cannot show is the ${n(noSubject)} decisions (${pct(noSubject, stats.decisions)} of them) whose line names an act and no subject. They are too few to tilt the eight, and they are not missing evenly from them: an appropriation belongs to whatever it paid for, so where the line never says, the topic is left empty rather than guessed.`
+                : "Every decision is on this chart — there is no set held back for want of a subject. Where an appropriation’s line never said what the money was for, the fund it came out of did: Sewer Fund, Municipal Railway Construction, Hospital-Jail Completion. That is the City’s own word for the purpose, printed in the record, not a guess about it."}
             </p>
             <div style={{ display: "grid", gap: 5 }}>
               {stats.topic_decisions.map(([label, v], i) => (
