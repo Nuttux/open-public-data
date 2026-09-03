@@ -19,7 +19,6 @@ import { LocaleProvider } from "@/lib/localeContext";
 import SearchModal from "@/components/fusion/SearchModal";
 import { SITE_URL, SITE_NAME, organizationJsonLd, websiteJsonLd, readLocale } from "@/lib/seo";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/next";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -138,8 +137,9 @@ export default async function RootLayout({
         </AnalyticsProvider>
         {/* Vercel Speed Insights — Web Vitals (LCP, CLS, INP) en prod. */}
         <SpeedInsights />
-        {/* Vercel Analytics — page views cookieless. */}
-        <Analytics />
+        {/* Page views are PostHog's (AnalyticsProvider). Vercel Web Analytics
+            was mounted here too and its script answered 404 on every page
+            load — the feature was never enabled on the project — so it went. */}
       </body>
     </html>
   );
