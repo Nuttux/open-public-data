@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { AssociationFiche as AssociationFicheType, BeneficiaireGrounded, SubventionVulgarization } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
@@ -8,10 +8,10 @@ import { citySlugFromPathname } from "@/lib/methodology";
 import { cap, fill } from "@/lib/fmt";
 import { useFmtEur } from "@/lib/use-fmt";
 import { slugifyLabel } from "@/lib/projet-utils";
-import { FicheStatHero, FicheBreakdown } from "@/components/fiche";
+import { trLabel } from "@/lib/label-translate";
+import { FicheBreakdown } from "@/components/fiche";
 import type { FicheBreakdownRow } from "@/components/fiche";
-import FicheKpis from "./FicheKpis";
-import ShowMoreButton from "./ShowMoreButton";
+import { V3Amt, V3Fold, V3Foot, V3Hero, V3Lead, V3Row, V3Section, foldRest } from "@/components/fiche/v3";
 import YearBars from "./YearBars";
 
 /** Source réelle des subventions : dataset "versées annexe CA" (les noms de
@@ -34,6 +34,27 @@ function subvSourceUrl(name: string, year?: number): { href: string; isPdf: bool
   return { href: `${SUBV_DATASET}?refine.publication=${encodeURIComponent(pub)}&${nom}`, isPdf: false };
 }
 
+/** `secteurs` arrive parfois sérialisé (`["Culture & Arts"]`) : on le lit. */
+function secteursTxt(s?: string | null): string | null {
+  if (!s) return null;
+  const t = s.trim();
+  if (t.startsWith("[")) {
+    try { const arr = JSON.parse(t); if (Array.isArray(arr)) return arr.filter(Boolean).join(", ") || null; } catch { /* brut */ }
+  }
+  return t || null;
+}
+
+const YEARS_CAP = 5;
+const LIGNES_CAP = 5;
+
+/**
+ * Fiche association v3 (2026-09-03) — sur le kit `fiche/v3` : une phrase
+ * (activité vérifiée, sinon vulgarisation), UN chiffre (cumul versé) avec
+ * son rang dans le thème en lien, puis « Année par année », « Qui verse »,
+ * « Pour quoi » (cliquable vers le thème) et « Le détail, ligne par ligne »
+ * en rangées au lieu d'un tableau. Le bandeau KPI à quatre cellules et les
+ * encadrés disparaissent ; tous les liens de navigation restent.
+ */
 export default function AssociationFiche({
   asso,
   vulgarization,
@@ -45,18 +66,8 @@ export default function AssociationFiche({
 }) {
   const t = useT();
   const { locale } = useLocale();
-  const [openLigne, setOpenLigne] = useState<number | null>(null);
-  const [showAllLignes, setShowAllLignes] = useState(false);
-  const [showAllYears, setShowAllYears] = useState(false);
-  const LIGNES_PREVIEW = 5;
-  const YEARS_PREVIEW = 5;
-
+  const en = locale === "en";
   const fmtEur = useFmtEur();
-
-  // Source of the subventions data is city-specific. Paris uses the exact
-  // "versées annexe CA" dataset (per-year refine) + the B8.1.1 PDF fallback;
-  // other cities (SCDL on data.gouv.fr) can't reuse those Paris URLs — that
-  // would mis-cite the source. Fall back to the city's data.gouv.fr datasets.
   const citySlug = citySlugFromPathname(usePathname());
   const isParis = citySlug === "paris";
   const cityDatagouvUrl = `https://www.data.gouv.fr/fr/datasets/?q=${encodeURIComponent(`${citySlug} subventions`)}`;
@@ -65,387 +76,167 @@ export default function AssociationFiche({
   const firstYear = asso.yearsActive[0];
   const lastYear = asso.yearsActive[asso.yearsActive.length - 1];
   const maxByYear = Math.max(...asso.byYear.map((y) => y.amount), 1);
+  const eurTxt = (n: number) => { const f = fmtEur(n); return `${f.v} ${f.u}`; };
 
-  /* « Qui la finance » — la direction de la Ville qui a versé, agrégée sur
-   * toutes les années. C'était la seule information structurelle de la fiche
-   * à n'exister que comme colonne d'un tableau (souvent « — »), donc jamais
-   * lue ; l'équivalent chez Recife (« Repartição por órgão ») est une des
-   * premières choses qu'on regarde sur une fiche bénéficiaire. */
+  /* ── La phrase de tête : activité vérifiée (grounded) sinon vulgarisation ── */
+  const useGrounded = !!grounded && (grounded.confiance ?? 0) >= 0.6 && !!grounded.activite_verifiee;
+  const leadText = useGrounded
+    ? cap(en && grounded!.activite_verifiee_en ? grounded!.activite_verifiee_en : grounded!.activite_verifiee)
+    : vulgarization
+      ? [cap(en && vulgarization.activite_claire_en ? vulgarization.activite_claire_en : vulgarization.activite_claire),
+         cap(en && vulgarization.pourquoi_subvention_en ? vulgarization.pourquoi_subvention_en : vulgarization.pourquoi_subvention)]
+          .filter(Boolean).join(" ")
+      : null;
+  const srcBits: React.ReactNode[] = [];
+  if (asso.natureJuridique) srcBits.push(<span key="nj">{asso.natureJuridique}</span>);
+  if (useGrounded && grounded!.perimetre_geographique) {
+    srcBits.push(<span key="pg">{t("fx.fiche.asso.scope_label")} : {en && grounded!.perimetre_geographique_en ? grounded!.perimetre_geographique_en : grounded!.perimetre_geographique}</span>);
+  }
+  if (useGrounded && grounded!.sources && grounded!.sources.length > 0) {
+    srcBits.push(
+      <span key="src">
+        {t("fx.fiche.asso.sources_label")} :{" "}
+        {grounded!.sources.map((src, i) => {
+          const s = typeof src === "string" ? { title: src } : src;
+          const label = s.title || s.url || "";
+          const href = s.url || (label.includes(".") ? `https://${label.replace(/^https?:\/\//, "")}` : undefined);
+          return (
+            <span key={i}>
+              {i > 0 ? ", " : ""}
+              {href ? <a href={href} target="_blank" rel="noopener noreferrer">{label}</a> : label}
+            </span>
+          );
+        })}
+      </span>,
+    );
+  }
+
+  /* ── Répartitions ─────────────────────────────────────────────────────── */
   const byDirection: FicheBreakdownRow[] = (() => {
     const m = new Map<string, number>();
-    for (const l of asso.lignes) {
-      if (!l.direction) continue;
-      m.set(l.direction, (m.get(l.direction) ?? 0) + l.amount);
-    }
-    return [...m.entries()]
-      .sort((a, b) => b[1] - a[1])
-      .map(([label, value]) => ({ key: label, label, value }));
+    for (const l of asso.lignes) { if (l.direction) m.set(l.direction, (m.get(l.direction) ?? 0) + l.amount); }
+    return [...m.entries()].sort((a, b) => b[1] - a[1]).map(([label, value]) => ({ key: label, label, value }));
   })();
   const directionKnown = byDirection.reduce((s, r) => s + r.value, 0);
   const directionUnknown = Math.max(0, asso.totalAmount - directionKnown);
+  const themeHref = (theme: string) => `/fr/city/${citySlug}/subventions/theme/${slugifyLabel(theme)}`;
+  const byTheme: FicheBreakdownRow[] = asso.byTheme.slice().sort((a, b) => b.amount - a.amount)
+    .map((th) => ({ key: th.theme, label: trLabel(th.theme, locale), value: th.amount, href: themeHref(th.theme) }));
 
-  /* Par thème — cliquable vers la fiche du thème. Un seul thème ne fait pas
-   * une répartition : dans ce cas le tag d'en-tête le dit déjà. */
-  const byTheme: FicheBreakdownRow[] = asso.byTheme
-    .slice()
-    .sort((a, b) => b.amount - a.amount)
-    .map((th) => ({
-      key: th.theme,
-      label: th.theme,
-      value: th.amount,
-      href: `/fr/city/${citySlug}/subventions/theme/${slugifyLabel(th.theme)}`,
-    }));
-
-  /* Le tableau « détail » n'ajoute que trois colonnes à l'histogramme
-   * au-dessus : direction, motif, nombre de lignes. Quand aucune des trois ne
-   * varie et qu'il y a une ligne par exercice, chaque rangée redit sa barre —
-   * la fiche CASVP affichait cinq fois « Action sociale municipale (CASVP) »
-   * sous cinq barres qui portaient déjà les mêmes montants. On garde alors la
-   * seule information du tableau : le motif, écrit une fois.
-   *
-   * Le motif affiché est `objet` sinon `sous_categorie` — sur beaucoup de
-   * bénéficiaires (Paris Musées) `objet` est nul et toute l'information est
-   * dans la sous-catégorie, ce qui rendait un test sur `objet` seul aveugle. */
+  /* ── Le détail : un tableau qui redit les barres n'apporte rien ─────────
+   * (la fiche CASVP affichait cinq fois le même motif sous cinq barres qui
+   * portaient déjà les montants). Quand rien ne varie, une phrase suffit. */
   const motifOf = (l: AssociationFicheType["lignes"][number]) => l.objet || l.subCategory || null;
-  const anyDirection = asso.lignes.some((l) => l.direction);
-  const anySecteurs = asso.lignes.some((l) => l.secteurs);
-  const anyMultiLigne = asso.lignes.some((l) => l.nb > 1);
   const motifs = new Set(asso.lignes.map(motifOf).filter(Boolean) as string[]);
+  // Une année à deux lignes agrégées (nb > 1) ne change pas le motif : elle
+  // ne justifie pas un tableau. Seuls un motif qui varie ou des secteurs
+  // renseignés apportent quelque chose que les barres n'ont pas.
   const tableIsRepetition =
-    asso.lignes.length > 1 &&
-    asso.lignes.length === asso.byYear.length &&
-    !anyDirection &&
-    !anySecteurs &&
-    !anyMultiLigne &&
-    motifs.size <= 1;
+    asso.lignes.length > 1 && asso.lignes.length === asso.byYear.length &&
+    !asso.lignes.some((l) => secteursTxt(l.secteurs)) && motifs.size <= 1;
   const singleMotif = tableIsRepetition ? ([...motifs][0] ?? null) : null;
+  const singleDirection = byDirection.length === 1 ? byDirection[0].key : null;
+
+  const yearsDesc = asso.byYear.slice().reverse();
+  const years = foldRest(yearsDesc, YEARS_CAP);
+  const lignes = foldRest(asso.lignes, LIGNES_CAP);
+  const LigneRow = (l: AssociationFicheType["lignes"][number], i: number) => {
+    const src = isParis ? subvSourceUrl(asso.name, l.year) : { href: cityDatagouvUrl, isPdf: false };
+    const motif = l.objet || l.subCategory || null;
+    const bits = [String(l.year), l.direction, l.nb > 1 ? fill(t("fx.fiche.asso.lignes_n"), { n: l.nb }) : null, secteursTxt(l.secteurs)].filter(Boolean);
+    return (
+      <V3Row key={i} href={src.href} external label={motif ? (motif.length > 110 ? motif.slice(0, 110) + "…" : motif) : <span className="muted">—</span>}
+        subText={bits.join(" · ")} amount={<V3Amt {...fmtEur(l.amount)} />} />
+    );
+  };
+
+  const yearBars = (rows: typeof yearsDesc) => (
+    <YearBars rows={rows} max={maxByYear} countLabel={(y) => ((y.count ?? 0) > 1 ? <span className="muted">{y.count} {t("fx.fiche.asso.sub")}</span> : null)} />
+  );
 
   return (
-    <div>
-      {/* Tag inline : nature juridique (préserve l'info de l'ancienne section Identité droppée).
-       * Format discret, comme les tags typologie dans ProjetFiche. */}
-      {asso.natureJuridique && (
-        <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 14, fontFamily: "var(--f-mono)", fontSize: 10.5, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted)" }}>
-          <span style={{ color: "var(--ink)", fontWeight: 600 }}>{asso.natureJuridique}</span>
-        </div>
-      )}
+    <div className="fx-v3">
+      {leadText && <V3Lead src={srcBits.length ? srcBits.map((b, i) => <span key={i}>{i > 0 ? " · " : ""}{b}</span>) : undefined}>{leadText}</V3Lead>}
+      {!leadText && srcBits.length > 0 && <p className="fx-v3-lead-src">{srcBits.map((b, i) => <span key={i}>{i > 0 ? " · " : ""}{b}</span>)}</p>}
 
-      {grounded && (grounded.confiance ?? 0) >= 0.6 && grounded.activite_verifiee ? (
-        <div className="fx-fiche-grounded">
-          <div className="fx-fiche-grounded-head">{t("fx.fiche.asso.activity_h")}</div>
-          <p className="fx-fiche-grounded-body">
-            {cap(locale === "en" && grounded.activite_verifiee_en ? grounded.activite_verifiee_en : grounded.activite_verifiee)}
-          </p>
-          <div className="fx-fiche-grounded-meta">
-            {grounded.perimetre_geographique ? (
-              <span>
-                <b>{t("fx.fiche.asso.scope_label")} :</b>{" "}
-                {locale === "en" && grounded.perimetre_geographique_en
-                  ? grounded.perimetre_geographique_en
-                  : grounded.perimetre_geographique}
-              </span>
-            ) : null}
-            {grounded.sources && grounded.sources.length > 0 ? (
-              <span className="fx-fiche-grounded-sources">
-                <b>{t("fx.fiche.asso.sources_label")} :</b>{" "}
-                {grounded.sources.map((src, i) => {
-                  const s = typeof src === "string" ? { title: src } : src;
-                  const label = s.title || s.url || "";
-                  const href = s.url || (label.includes(".") ? `https://${label.replace(/^https?:\/\//, "")}` : undefined);
-                  const node = href ? (
-                    <a href={href} target="_blank" rel="noopener noreferrer">
-                      {label}
-                    </a>
-                  ) : (
-                    <span>{label}</span>
-                  );
-                  return (
-                    <span key={i}>
-                      {i > 0 ? ", " : ""}
-                      {node}
-                    </span>
-                  );
-                })}
-              </span>
-            ) : null}
-          </div>
-        </div>
-      ) : vulgarization ? (() => {
-        // Drop `impact_citoyen` (promo-y, cohérence avec ProjetFiche).
-        const activite = cap(locale === "en" && vulgarization.activite_claire_en ? vulgarization.activite_claire_en : vulgarization.activite_claire);
-        const pourquoi = cap(locale === "en" && vulgarization.pourquoi_subvention_en ? vulgarization.pourquoi_subvention_en : vulgarization.pourquoi_subvention);
-        return (
-          <div className="fx-fiche-lead">
-            {activite && <p className="fx-fiche-lead-main">{activite}</p>}
-            {pourquoi && <p className="fx-fiche-lead-sub">{pourquoi}</p>}
-          </div>
-        );
-      })() : null}
-
-      {/* Un chiffre porte la fiche, la bande le qualifie. Avant, le cumul
-       * était une cellule parmi quatre : rien ne disait de quoi la page
-       * parlait avant d'avoir lu les quatre libellés. */}
-      <FicheStatHero
-        value={
+      <V3Hero
+        v={vTot} u={uTot}
+        caption={firstYear && lastYear && firstYear !== lastYear
+          ? fill(t("fx.fiche.asso.hero_cap"), { from: firstYear, to: lastYear })
+          : fill(t("fx.fiche.asso.hero_cap_one"), { year: lastYear ?? "—" })}
+        meta={
           <>
-            {vTot}
-            <span className="fx-fiche-stat-unit">{uTot}</span>
+            {fill(t(asso.subventionCount === 1 ? "fx.fiche.asso.meta_n1" : "fx.fiche.asso.meta_n"), { n: asso.subventionCount })}
+            {asso.themeRank && (
+              <>
+                {" · "}
+                <Link href={themeHref(asso.themeRank.theme)} scroll={false}>
+                  {fill(t("fx.fiche.asso.meta_rank"), { rank: asso.themeRank.rank, total: asso.themeRank.total, theme: trLabel(asso.themeRank.theme, locale) })} →
+                </Link>
+              </>
+            )}
           </>
         }
-        caption={
-          firstYear && lastYear && firstYear !== lastYear
-            ? fill(t("fx.fiche.asso.hero_cap"), { from: firstYear, to: lastYear })
-            : fill(t("fx.fiche.asso.hero_cap_one"), { year: lastYear ?? "—" })
-        }
       />
 
-      <FicheKpis
-        items={[
-          { label: t("fx.fiche.asso.subventions"), value: asso.subventionCount },
-          { label: t("fx.fiche.asso.actif_depuis"), value: firstYear ?? "—" },
-          { label: t("fx.fiche.asso.derniere_annee"), value: lastYear ?? "—" },
-          ...(asso.themeRank
-            ? [{ label: fill(t("fx.fiche.asso.rang_theme"), { theme: asso.themeRank.theme }), value: `${asso.themeRank.rank}/${asso.themeRank.total}` }]
-            : []),
-        ]}
-      />
-
-      {/* Historique année par année — promu juste après KPIs (différentiateur visuel).
-       * Drop des arrow markers ↑/↓ % et de la footnote "Mouvements notables" : varie
-       * trop pour être éditorialement pertinent. Toujours afficher le count de subventions.
-       *
-       * Affiche les 5 années actives les plus récentes par défaut. Bouton expand pour les
-       * années antérieures. asso.byYear ne contient que les années avec subv > 0 (gaps
-       * éventuels skippés naturellement). */}
-      <section className="fx-fiche-section">
-        <div className="fx-fiche-h">{t("fx.fiche.asso.historique")}</div>
-        {(() => {
-          const reversed = asso.byYear.slice().reverse();
-          const shown = showAllYears ? reversed : reversed.slice(0, YEARS_PREVIEW);
-          return (
-            <YearBars
-              rows={shown}
-              max={maxByYear}
-              countLabel={(y) => (
-                <span className="muted">{y.count} {t("fx.fiche.asso.sub")}</span>
-              )}
-            />
-          );
-        })()}
-        {!showAllYears && asso.byYear.length > YEARS_PREVIEW && (
-          <ShowMoreButton onClick={() => setShowAllYears(true)}>
-            {fill(t("fx.fiche.asso.voir_annees_avant"), { n: asso.byYear.length - YEARS_PREVIEW })}
-          </ShowMoreButton>
-        )}
-      </section>
+      {asso.byYear.length > 1 && (
+        <V3Section title={t("fx.fiche.asso.h.annees")}>
+          {yearBars(years.shown)}
+          {years.rest.length > 0 && (
+            <V3Fold text label={fill(t("fx.fiche.asso.fold_annees"), { n: years.rest.length })}>{yearBars(years.rest)}</V3Fold>
+          )}
+        </V3Section>
+      )}
 
       {byDirection.length > 1 && (
-        <section className="fx-fiche-section">
-          <div className="fx-fiche-h">{t("fx.fiche.asso.par_direction")}</div>
-          <FicheBreakdown
-            rows={byDirection}
-            format={(n) => {
-              const { v, u } = fmtEur(n);
-              return `${v} ${u}`;
-            }}
-            footer={
-              directionUnknown > 0
-                ? (() => {
-                    const { v, u } = fmtEur(directionUnknown);
-                    return fill(t("fx.fiche.asso.direction_unknown"), { amount: `${v} ${u}` });
-                  })()
-                : undefined
-            }
-          />
-        </section>
+        <V3Section title={t("fx.fiche.asso.h.qui")}>
+          <FicheBreakdown rows={byDirection} format={eurTxt}
+            footer={directionUnknown > 0 ? fill(t("fx.fiche.asso.direction_unknown"), { amount: eurTxt(directionUnknown) }) : undefined} />
+        </V3Section>
       )}
 
       {byTheme.length > 1 && (
-        <section className="fx-fiche-section">
-          <div className="fx-fiche-h">{t("fx.fiche.asso.par_theme")}</div>
-          <FicheBreakdown
-            rows={byTheme}
-            format={(n) => {
-              const { v, u } = fmtEur(n);
-              return `${v} ${u}`;
-            }}
-          />
-        </section>
+        <V3Section title={t("fx.fiche.asso.h.pourquoi")} sub={t("fx.fiche.asso.h.pourquoi_sub")}>
+          <FicheBreakdown rows={byTheme} format={eurTxt} />
+        </V3Section>
       )}
 
-      {tableIsRepetition && singleMotif && (
-        <section className="fx-fiche-section">
-          <div className="fx-fiche-h">{t("fx.fiche.asso.col.motif")}</div>
-          <p className="fx-fiche-sub" style={{ margin: 0 }}>
-            {fill(t("fx.fiche.asso.objet_identique"), { n: asso.lignes.length })}{" "}
-            <b style={{ color: "var(--ink)" }}>{singleMotif}</b>
+      {(tableIsRepetition && singleMotif) ? (
+        <V3Section title={t("fx.fiche.asso.h.detail")}>
+          <p className="fx-v3-sentence">
+            {fill(t("fx.fiche.asso.objet_identique"), { n: asso.lignes.length })} <b>{singleMotif}</b>
+            {singleDirection ? <> · {fill(t("fx.fiche.asso.verse_par"), { d: singleDirection })}</> : null}
           </p>
-        </section>
-      )}
-
-      {!tableIsRepetition && asso.lignes.length > 0 && (
-        <section className="fx-fiche-section">
-          <div className="fx-fiche-h">
-            {fill(t("fx.fiche.asso.detail"), { n: asso.lignes.length, s: asso.lignes.length > 1 ? "s" : "" })}
-          </div>
-          {/* Une colonne dont chaque cellule vaut « — » n'informe pas, elle
-           * occupe : direction et nombre de lignes ne s'affichent que si au
-           * moins une rangée a quelque chose à y mettre. */}
-          <table className="fx-fiche-subv-table">
-            <thead>
-              <tr>
-                <th>{t("fx.fiche.shared.annee")}</th>
-                {anyDirection && <th>{t("fx.fiche.asso.col.direction")}</th>}
-                <th>{t("fx.fiche.asso.col.motif")}</th>
-                <th style={{ textAlign: "right" }}>{t("fx.fiche.shared.montant")}</th>
-                {anyMultiLigne && <th style={{ textAlign: "right" }}>{t("fx.fiche.asso.col.lignes")}</th>}
-              </tr>
-            </thead>
-            <tbody>
-              {(showAllLignes ? asso.lignes : asso.lignes.slice(0, LIGNES_PREVIEW)).map((l, i) => {
-                const { v, u } = fmtEur(l.amount);
-                const isOpen = openLigne === i;
-                const hasDetail = Boolean(l.objet || l.subCategory || l.secteurs);
-                return (
-                  <Fragment key={i}>
-                    <tr
-                      onClick={hasDetail ? () => setOpenLigne(isOpen ? null : i) : undefined}
-                      className={hasDetail ? "fx-row-link" : undefined}
-                      style={{
-                        background: isOpen ? "#fafaf7" : undefined,
-                      }}
-                      aria-expanded={hasDetail ? isOpen : undefined}
-                    >
-                      <td style={{ fontFamily: "var(--f-mono)", color: "var(--ocre)" }}>{l.year}</td>
-                      {anyDirection && <td>{l.direction || <span className="muted">—</span>}</td>}
-                      <td style={{ maxWidth: 280 }}>
-                        {l.objet ? (
-                          <span>{l.objet.length > 70 ? l.objet.slice(0, 70) + "…" : l.objet}</span>
-                        ) : l.subCategory ? (
-                          <span className="muted">{l.subCategory}</span>
-                        ) : (
-                          <span className="muted">—</span>
-                        )}
-                        {hasDetail && (
-                          <span
-                            aria-hidden="true"
-                            style={{
-                              marginLeft: 6,
-                              fontFamily: "var(--f-mono)",
-                              fontSize: 10,
-                              color: "var(--bleu)",
-                              transition: "transform .15s",
-                              display: "inline-block",
-                              transform: isOpen ? "rotate(90deg)" : "none",
-                            }}
-                          >
-                            ▸
-                          </span>
-                        )}
-                      </td>
-                      <td style={{ textAlign: "right", fontFamily: "var(--f-disp)", fontWeight: 700, fontSize: 13 }}>
-                        {v} <span style={{ fontSize: ".75em", color: "var(--muted)", fontWeight: 500 }}>{u}</span>
-                      </td>
-                      {anyMultiLigne && (
-                        <td style={{ textAlign: "right", fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)" }}>
-                          {l.nb}
-                        </td>
-                      )}
-                    </tr>
-                    {isOpen && (
-                      <tr key={`${i}-detail`} style={{ background: "#fafaf7" }}>
-                        <td colSpan={3 + (anyDirection ? 1 : 0) + (anyMultiLigne ? 1 : 0)} style={{ padding: "12px 14px 16px", borderTop: 0 }}>
-                          <div style={{ display: "grid", gap: 10, fontFamily: "var(--f-ui)", fontSize: 13.5, lineHeight: 1.55, color: "var(--ink)" }}>
-                            {l.objet && (
-                              <div>
-                                <div style={{ fontFamily: "var(--f-mono)", fontSize: 10.5, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 4 }}>
-                                  {t("fx.fiche.asso.col.motif")}
-                                </div>
-                                <div>{l.objet}</div>
-                              </div>
-                            )}
-                            {l.subCategory && (
-                              <div>
-                                <div style={{ fontFamily: "var(--f-mono)", fontSize: 10.5, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 4 }}>
-                                  {t("fx.fiche.asso.detail.sub_category")}
-                                </div>
-                                <div>{l.subCategory}</div>
-                              </div>
-                            )}
-                            {l.secteurs && (
-                              <div>
-                                <div style={{ fontFamily: "var(--f-mono)", fontSize: 10.5, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 4 }}>
-                                  {t("fx.fiche.asso.detail.secteurs")}
-                                </div>
-                                <div>{l.secteurs}</div>
-                              </div>
-                            )}
-                            <div style={{ marginTop: 4 }}>
-                              {(() => {
-                                const src = isParis
-                                  ? subvSourceUrl(asso.name, l.year)
-                                  : { href: cityDatagouvUrl, isPdf: false };
-                                const label = isParis
-                                  ? t(src.isPdf ? "fx.fiche.asso.detail.pdf" : "fx.fiche.asso.detail.opendata")
-                                  : t("fx.fiche.asso.detail.datagouv");
-                                return (
-                                  <a
-                                    href={src.href}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
-                                  >
-                                    {label}
-                                  </a>
-                                );
-                              })()}
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                    )}
-                  </Fragment>
-                );
-              })}
-            </tbody>
-          </table>
-          {!showAllLignes && asso.lignes.length > LIGNES_PREVIEW && (
-            <ShowMoreButton onClick={() => setShowAllLignes(true)}>
-              {fill(t("fx.fiche.asso.voir_autres"), { n: asso.lignes.length - LIGNES_PREVIEW })}
-            </ShowMoreButton>
+        </V3Section>
+      ) : asso.lignes.length === 1 ? (
+        // Une seule ligne : une rangée redirait le chiffre héros. Une phrase
+        // avec le motif et le lien source suffit.
+        <V3Section title={t("fx.fiche.asso.h.detail")}>
+          <p className="fx-v3-sentence">
+            {fill(t("fx.fiche.asso.ligne_unique"), { y: asso.lignes[0].year })} <b>{motifOf(asso.lignes[0]) ?? "—"}</b>
+            {asso.lignes[0].direction ? <> · {fill(t("fx.fiche.asso.verse_par"), { d: asso.lignes[0].direction })}</> : null}
+            {" · "}
+            <a href={(isParis ? subvSourceUrl(asso.name, asso.lignes[0].year) : { href: cityDatagouvUrl }).href} target="_blank" rel="noopener noreferrer">{t("fx.fiche.asso.source_lien")}</a>
+          </p>
+        </V3Section>
+      ) : asso.lignes.length > 0 && (
+        <V3Section title={t("fx.fiche.asso.h.detail")} sub={t("fx.fiche.asso.h.detail_sub")}>
+          {lignes.shown.map(LigneRow)}
+          {lignes.rest.length > 0 && (
+            <V3Fold text label={fill(t("fx.fiche.asso.fold_lignes"), { n: lignes.rest.length })}>{lignes.rest.map((l, i) => LigneRow(l, i + LIGNES_CAP))}</V3Fold>
           )}
-        </section>
+        </V3Section>
       )}
 
-      {/* La ligne de source vivait dans la section « détail » : elle
-       * disparaissait avec elle quand le tableau se replie. Elle vaut pour
-       * toute la fiche, donc elle est un pied de fiche. */}
-      <footer className="fx-fiche-sources">
-        <p className="fx-footer-sources-meta">
-          {isParis ? t("fx.fiche.asso.note") : t("fx.fiche.asso.note.generic")}{" "}
-          {(() => {
-            /* Paris — asso financée uniquement en 2020-2021 : absente du
-             * dataset opendata (années PDF), le refine par nom renverrait 0
-             * ligne. Autres villes : lien vers les jeux data.gouv.fr. */
-            const pdfOnly = isParis && asso.yearsActive.every((y) => B811_PDF[y]);
-            const href = !isParis
-              ? cityDatagouvUrl
-              : pdfOnly
-                ? B811_PDF[Math.max(...asso.yearsActive)]
-                : subvSourceUrl(asso.name).href;
-            const label = !isParis
-              ? "data.gouv.fr ↗"
-              : pdfOnly
-                ? "cdn.paris.fr (PDF) ↗"
-                : "opendata.paris.fr ↗";
-            return (
-              <a href={href} target="_blank" rel="noopener noreferrer">
-                {label}
-              </a>
-            );
-          })()}.
-        </p>
-      </footer>
+      <V3Foot>
+        {isParis ? t("fx.fiche.asso.note") : t("fx.fiche.asso.note.generic")}{" "}
+        {(() => {
+          const pdfOnly = isParis && asso.yearsActive.every((y) => B811_PDF[y]);
+          const href = !isParis ? cityDatagouvUrl : pdfOnly ? B811_PDF[Math.max(...asso.yearsActive)] : subvSourceUrl(asso.name).href;
+          const label = !isParis ? "data.gouv.fr ↗" : pdfOnly ? "cdn.paris.fr (PDF) ↗" : "opendata.paris.fr ↗";
+          return <a href={href} target="_blank" rel="noopener noreferrer">{label}</a>;
+        })()}.
+      </V3Foot>
     </div>
   );
 }

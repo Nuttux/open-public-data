@@ -79,7 +79,7 @@ const minMax = (ys: number[]): [number, number] | null => {
 
 function Eur({ v, u, size = 22 }: { v: string; u: string; size?: number }) {
   return (
-    <span className="fx-lieu-amt tnum" style={{ fontSize: size }}>
+    <span className="fx-v3-amt tnum" style={{ fontSize: size }}>
       {v}
       <span className="u">{u}</span>
     </span>
@@ -88,7 +88,7 @@ function Eur({ v, u, size = 22 }: { v: string; u: string; size?: number }) {
 
 function Fold({ label, children }: { label: string; children: ReactNode }) {
   return (
-    <details className="fx-lieu-fold">
+    <details className="fx-v3-fold">
       <summary>{label}</summary>
       {children}
     </details>
@@ -156,7 +156,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
   const leadMain = cut > 0 ? extract.slice(0, cut + 1) : extract;
 
   const MomentRow = (m: Moment) => (
-    <a key={m.id} className="fx-lieu-mom fx-row-link" href={m.source_url ?? undefined} target="_blank" rel="noopener noreferrer">
+    <a key={m.id} className="fx-v3-mom fx-row-link" href={m.source_url ?? undefined} target="_blank" rel="noopener noreferrer">
       <span className="d tnum">{seanceEn(m.seance, locale)}</span>
       <span className="t">{cap((en && m.pourquoi_en) || m.pourquoi || m.fait)}</span>
       <span className="c" aria-hidden="true">→</span>
@@ -165,7 +165,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
   );
 
   const MarcheRow = (m: (typeof marches)[number]) => (
-    <Link key={m.numero_marche} href={`${basePath}/marches/contrat/${encodeURIComponent(m.numero_marche)}`} scroll={false} className="fx-lieu-row fx-row-link">
+    <Link key={m.numero_marche} href={`${basePath}/marches/contrat/${encodeURIComponent(m.numero_marche)}`} scroll={false} className="fx-v3-row fx-row-link">
       <span className="lbl">
         {m.objet_clair || normalizeObjet(m.objet)}
         <span aria-hidden="true" className="muted"> →</span>
@@ -176,12 +176,12 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
   );
 
   return (
-    <div className="fx-lieu">
+    <div className="fx-v3">
       {lieu.photo && (
         <div className="fx-fiche-thumb-wrap" style={{ position: "relative" }}>
-          <img src={lieu.photo} alt={lieu.name} className="fx-fiche-thumb fx-lieu-photo" />
+          <img src={lieu.photo} alt={lieu.name} className="fx-fiche-thumb fx-v3-photo" />
           {lieu.photo_credit?.url && (
-            <a href={lieu.photo_credit.url} target="_blank" rel="noopener noreferrer" className="fx-lieu-credit">
+            <a href={lieu.photo_credit.url} target="_blank" rel="noopener noreferrer" className="fx-v3-credit">
               {lieu.photo_credit.licence ? `© ${lieu.photo_credit.licence} · ` : ""}
               {lieu.photo_credit.source}
             </a>
@@ -190,10 +190,10 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
       )}
 
       {leadMain && (
-        <p className="fx-lieu-lead">
+        <p className="fx-v3-lead">
           {leadMain}{" "}
           {lieu.wiki.url && (
-            <a href={lieu.wiki.url} target="_blank" rel="noopener noreferrer" className="fx-lieu-lead-src">
+            <a href={lieu.wiki.url} target="_blank" rel="noopener noreferrer" className="fx-v3-lead-src">
               {en ? "Wikipedia ↗" : "Wikipédia ↗"}
             </a>
           )}
@@ -202,31 +202,31 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
 
       {/* ── Le chiffre — versé si on en a, sinon le plafond, sinon rien ── */}
       {reelTotal > 0 ? (
-        <div className="fx-lieu-hero">
-          <div className="fx-lieu-hero-num tnum">{fmtEur(reelTotal).v}<span className="u">{fmtEur(reelTotal).u}</span></div>
-          <div className="fx-lieu-hero-cap">
+        <div className="fx-v3-hero">
+          <div className="fx-v3-hero-num tnum">{fmtEur(reelTotal).v}<span className="u">{fmtEur(reelTotal).u}</span></div>
+          <div className="fx-v3-hero-cap">
             {verseSpan && verseSpan[0] !== verseSpan[1]
               ? fill(t("fx.lieu.hero.verse"), { y: verseSpan[0] })
               : fill(t("fx.lieu.hero.verse_one"), { y: verseSpan?.[1] ?? "" })}
           </div>
         </div>
       ) : plafond > 0 ? (
-        <div className="fx-lieu-hero">
-          <div className="fx-lieu-hero-num tnum">{fmtEur(plafond).v}<span className="u">{fmtEur(plafond).u}</span></div>
-          <div className="fx-lieu-hero-cap">{t("fx.lieu.hero.engage")}</div>
+        <div className="fx-v3-hero">
+          <div className="fx-v3-hero-num tnum">{fmtEur(plafond).v}<span className="u">{fmtEur(plafond).u}</span></div>
+          <div className="fx-v3-hero-cap">{t("fx.lieu.hero.engage")}</div>
         </div>
       ) : (
-        lieu.residents.length === 0 && <p className="fx-lieu-foot" style={{ margin: "20px 0 32px" }}>{t("fx.lieu.argent_absent")}</p>
+        lieu.residents.length === 0 && <p className="fx-v3-foot" style={{ margin: "20px 0 32px" }}>{t("fx.lieu.argent_absent")}</p>
       )}
 
       {/* ── Où va l'argent ─────────────────────────────────────────────── */}
       {(subv || travauxTotal > 0 || marches.length > 0 || lieu.residents.length > 0) && (
-        <section className="fx-lieu-section">
-          <h2 className="fx-lieu-h2">{t("fx.lieu.h.argent")}</h2>
-          <div className="fx-lieu-rule" />
+        <section className="fx-v3-section">
+          <h2 className="fx-v3-h2">{t("fx.lieu.h.argent")}</h2>
+          <div className="fx-v3-rule" />
 
           {subv && (
-            <div className="fx-lieu-line">
+            <div className="fx-v3-line">
               <div className="t">{cap(fill(t("fx.lieu.line.exploitant"), { k: kindTxt }))}</div>
               <div className="a">
                 <Eur {...fmtEur(subvTotal)} />
@@ -242,7 +242,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
                 <div className="fold-wrap">
                   <Fold label={fill(t("fx.lieu.subv_deplier"), { n: subv.rows.length })}>
                     {subv.rows.map((r) => (
-                      <div key={r.annee} className="fx-lieu-row">
+                      <div key={r.annee} className="fx-v3-row">
                         <span className="lbl mono">{r.annee}</span>
                         <Eur {...fmtEur(r.montant_eur)} size={14} />
                       </div>
@@ -256,7 +256,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
           {(travauxTotal > 0 || marches.length > 0) && (() => {
             const paye = travauxTotal > 0;
             return (
-              <div className="fx-lieu-line">
+              <div className="fx-v3-line">
                 <div className="t">{t("fx.lieu.line.travaux")}</div>
                 <div className="a">
                   <Eur {...fmtEur(paye ? travauxTotal : plafond)} />
@@ -288,7 +288,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
                       {lieu.mandate?.operations.map((o) => {
                         const ys = minMax(Object.keys(o.mandate_par_annee).map(Number));
                         return (
-                          <a key={o.ap_cle ?? o.ap_texte} className="fx-lieu-row fx-row-link" href={o.source_url} target="_blank" rel="noopener noreferrer">
+                          <a key={o.ap_cle ?? o.ap_texte} className="fx-v3-row fx-row-link" href={o.source_url} target="_blank" rel="noopener noreferrer">
                             <span className="lbl">
                               {o.ap_texte}
                               <span aria-hidden="true" className="muted"> ↗</span>
@@ -310,9 +310,9 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
                           </>
                         );
                         return r.id ? (
-                          <Link key={i} href={`${basePath}/investissements/projet/${encodeURIComponent(r.id)}`} scroll={false} className="fx-lieu-row fx-row-link">{body}</Link>
+                          <Link key={i} href={`${basePath}/investissements/projet/${encodeURIComponent(r.id)}`} scroll={false} className="fx-v3-row fx-row-link">{body}</Link>
                         ) : (
-                          <div key={i} className="fx-lieu-row">{body}</div>
+                          <div key={i} className="fx-v3-row">{body}</div>
                         );
                       })}
                     </Fold>
@@ -328,13 +328,13 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
           })()}
 
           {lieu.residents.length > 0 && (
-            <div className="fx-lieu-line">
+            <div className="fx-v3-line">
               <div className="t">{t("fx.lieu.h.residents")}</div>
               <div className="a" />
               <div className="s">{t("fx.lieu.residents_intro")}</div>
               <div className="fold-wrap" style={{ marginTop: 4 }}>
                 {lieu.residents.map((r, i) => (
-                  <Link key={i} href={`${basePath}/subventions/association/${encodeURIComponent(r.beneficiaire)}`} scroll={false} className="fx-lieu-row fx-row-link">
+                  <Link key={i} href={`${basePath}/subventions/association/${encodeURIComponent(r.beneficiaire)}`} scroll={false} className="fx-v3-row fx-row-link">
                     <span className="lbl">{r.beneficiaire} <span aria-hidden="true" className="muted">→</span></span>
                     {r.montant_total > 0 && <Eur {...fmtEur(r.montant_total)} size={14} />}
                   </Link>
@@ -344,7 +344,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
           )}
 
           {marches.length > 0 && (
-            <p className="fx-lieu-foot">
+            <p className="fx-v3-foot">
               {reelTotal > 0 ? fill(t("fx.lieu.note.total"), { t: eurTxt(reelTotal) }) : t("fx.lieu.note.plafond_seul")}
             </p>
           )}
@@ -353,10 +353,10 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
 
       {/* ── Ce que le Conseil de Paris en a dit ────────────────────────── */}
       {(lieu.moments.length > 0 || bmo.length > 0) && (
-        <section className="fx-lieu-section">
-          <h2 className="fx-lieu-h2">{t("fx.lieu.h.conseil")}</h2>
+        <section className="fx-v3-section">
+          <h2 className="fx-v3-h2">{t("fx.lieu.h.conseil")}</h2>
           {lieu.moments.length > 0 && (
-            <p className="fx-lieu-h2sub">
+            <p className="fx-v3-h2sub">
               {(() => {
                 const lus = lieu.stats.n_lus ?? lieu.moments.length;
                 const n = shown.length;
@@ -368,9 +368,9 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
               })()}
             </p>
           )}
-          <div className="fx-lieu-rule" />
+          <div className="fx-v3-rule" />
           {shown.map(MomentRow)}
-          <div className="fx-lieu-more">
+          <div className="fx-v3-more">
             {rest.length > 0 && (
               <Fold label={fill(t(rest.length === 1 ? "fx.lieu.more_moments1" : "fx.lieu.more_moments"), { n: rest.length, a: restSpan ? spanTxt(...restSpan) : "" })}>
                 {rest.map(MomentRow)}
