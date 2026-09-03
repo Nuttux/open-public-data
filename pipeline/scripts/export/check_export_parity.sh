@@ -71,6 +71,19 @@ if ! "$PY" "$EXPORT_DIR/../audit/apply_friendly_labels.py"; then
   exit 3
 fi
 
+# 2c. Stamp the licence notice. Same reason as 2b: export_all.py runs
+# stamp_licenses.py as a mandatory post-step, so the committed JSON carries a
+# `license` block. Without this the gate re-exports without it and every
+# stamped file reports "$.license: only in expected" — 30 files failing a gate
+# that is supposed to catch a changed NUMBER. The licence is not added to
+# verify_export_parity's ignore list on purpose: it is not a volatile key, and
+# ignoring it would mean a licence going missing could never fail the gate.
+echo "→ stamping licences (post)"
+if ! "$PY" "$EXPORT_DIR/stamp_licenses.py"; then
+  echo "✗ COULD NOT CHECK: the licence stamp failed; see above." >&2
+  exit 3
+fi
+
 # 3. Tolerant compare regenerated (live) vs committed baseline.
 rc=0
 "$PY" "$EXPORT_DIR/verify_export_parity.py" "$BASELINE/$DATA_REL" "$REPO/$DATA_REL" || rc=$?
