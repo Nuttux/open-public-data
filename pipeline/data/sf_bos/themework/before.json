@@ -1,0 +1,20 @@
+{
+ "historic|rows": 109413,
+ "historic|homelessness-shelter": 360,
+ "historic|housing": 2804,
+ "historic|fire": 1585,
+ "historic|schools": 6503,
+ "historic|libraries": 816,
+ "historic|whats-being-built": 6717,
+ "historic|landmarks-old-buildings": 778,
+ "historic|redevelopment": 974,
+ "modern|rows": 49755,
+ "modern|whats-being-built": 2768,
+ "modern|homelessness-shelter": 1493,
+ "modern|landmarks-old-buildings": 901,
+ "modern|housing": 4237,
+ "modern|fire": 412,
+ "modern|schools": 589,
+ "modern|redevelopment": 603,
+ "modern|libraries": 304
+}

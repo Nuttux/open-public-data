@@ -24,6 +24,65 @@ from any theme table found there.**
 Target: `/us/city/sf/the-city-gl` (WebGPU renderer, `website/src/lib/citygl/`).
 A theme filter over 123,682 Board decisions, 1906-2026.
 
+# 0. WHAT A THEME IS READ FROM (2026-09-03)
+
+Until this date the pattern was matched against the item's whole text. That is
+right for the historic Journal, where an item is one act, and wrong for the
+modern minutes, which name the counterparty, the address list, the departments
+asked to report, the uses exempted, the roll call and the referral trail — a
+dozen things the item is not about. Not a length problem: the modern median is
+348 characters against the historic 537. A content problem.
+
+**The failure a reader reported.** Filtering 2025 by SCHOOLS returned
+*Initiating Landmark Designation - Most Holy Redeemer Church Complex*, because
+its address list reads `117 Diamond Street (School)`.
+
+**Measured.** 96 modern items, 12 per theme, read by hand: **59 about the theme
+they carried, 31 not — 65.6% precise.**
+
+**The rule.** `themes.subject_span()` decides the span, and the Clerk's own file
+title wins where the item has one (93.8% of the modern record) — it is a subject
+heading a person wrote on purpose. Where there is no title, the item's text is
+used with four cuts, each one a labelled failure family:
+
+| cut | of the 31 | what it was |
+|---|---|---|
+| `shelter-in-place`, `bus shelter` | 4 | a bounded word that is a different word |
+| a speaker roll | 5 | `Hatchner; expressed opposition…` is public comment |
+| past the next item's `NNNNNN [` header | 4 | the item after this one |
+| an appointment motion | 3 | about a person, not a place |
+
+The speaker roll is CUT, not refused — a 2011 wireless-facility motion carries a
+bled-in comment at its tail and is a real decision. It is refused only when the
+cut leaves nothing but the file the speaker was speaking to.
+
+**Held out.** 40 fresh modern items, labelled after the rule was frozen:
+**90.9% precise** (30 about, 3 not, 6 arguable). A 16-item historic control,
+where no title exists and the fallback is all there is: **71.4%** — the same
+families, and the honest ceiling of matching a word against a record.
+
+**Recall was paid for in vocabulary, not in the rule.** The title rule's losses
+were almost all items whose title says FIRE PREVENTION, FIRE APPARATUS,
+FIREFIGHTER or SFUSD while the pattern only knew *fire department* and *unified
+school*. Those went into the seed; `pattern_before_20260903` on each theme holds
+what it replaced. Four theme patterns were also tightened where the word had a
+second sense — `entitlement` was matching a federal grant, `redevelop` a park
+cleanup.
+
+**Still wrong, and named rather than papered over:** a proper noun that contains
+the theme's word. *Five Keys Schools and Programs* is a homelessness grantee;
+*(aka Sunshine School)* is a landmark's former name; the *Business Consumer
+Service and Housing Agency* is a funder. Three of the four surviving errors in
+the held-out set are this one family.
+
+**The same span feeds the 41 fiche subjects.** Modern coverage there falls from
+27.9% to 22.8%, historic 48.0% to 47.2%. That is coverage; the precision of the
+41 was not separately measured.
+
+The rule is checked, not asserted: `themes.SPAN_CASES` replays ten real items —
+each a recorded failure or a first draft's casualty — and `load()` refuses if any
+of them stops holding.
+
 # 1. THE BUILD LIST — these eight
 
 Scored atomically (no merges) on **101,662 mapped decisions

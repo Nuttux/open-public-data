@@ -55,7 +55,24 @@ TRAPS = [
     "Authorizing the preparation of plans and specifications for the business "
     "district improvement.",
     "Amending the Municipal Code relating to businesses preparing food.",
+    # THE THIRD TRAP IS A PHRASE, NOT A BOUNDARY, and it is the one the modern
+    # record actually hits. `\bshelter\b` is correctly bounded and still wrong
+    # 4 times in a 12-row sample of the homelessness theme, because 2020-23 is
+    # full of "shelter-in-place": hotel damage claims, commercial-eviction
+    # resolutions, COVID emergency supplements. A word can be bounded, spelled
+    # right, and still be a different word. `subject_span()` cuts the phrase
+    # before anything is matched; this line is what stops a future pattern
+    # putting it back.
+    "A dispute over a bus shelter and a shelter-in-place order.",
 ]
+
+# A TRAP MUST BE CLEAN AGAINST EVERY VOCABULARY THAT SHARES THIS GATE, and the
+# first draft of the line above was not. It read "…caused by shelter-in-place
+# HOTEL GUESTS", and `check_patterns` is run by BOTH `load()` and
+# `load_subjects()` — so the fiche's `hotels-and-rooming-houses` matched the
+# word `hotel`, correctly, and refused a build seven minutes in. A trap has to
+# name the failure and nothing else; every other subject word is a landmine for
+# a vocabulary this file does not know about.
 
 
 # A mask is a JSON number, and a JSON number is a float64: integers stay exact
@@ -70,6 +87,7 @@ def load(path=SEED):
     """The seed, checked. Returns the parsed object."""
     seed = json.load(open(path))
     seed["themes"] = check_vocab(seed["themes"], os.path.basename(path))
+    check_span(seed["themes"])
     return seed
 
 
@@ -132,8 +150,16 @@ def load_subjects():
 
 
 def check_patterns(themes):
-    """No pattern may fire on a known word-boundary trap."""
-    bad = [(t["slug"], s) for t in themes for s in TRAPS if t["_rx"].search(s)]
+    """No pattern may fire on a known trap, AS THE TAGGER WOULD SEE IT.
+
+    The traps are run through `subject_span()` first, which is the whole point:
+    the third one is defused by the span rule rather than by the pattern, and
+    checking the raw string would refuse `\bshelter\b` — a correct pattern —
+    while checking the cut string proves the cut is actually wired in. Remove
+    the cut and this gate fails, which is what a gate is for.
+    """
+    bad = [(t["slug"], s) for t in themes for s in TRAPS
+           if t["_rx"].search(subject_span(s))]
     if bad:
         raise SystemExit(
             "REFUSED: pattern(s) match a known word-boundary trap — "
@@ -181,6 +207,189 @@ def strip_custody(text):
     for rx in CUSTODY:
         text = rx.sub(" ", text)
     return text
+
+
+# ── THE SPAN A THEME MAY BE READ FROM ──────────────────────────────────────
+# Until 2026-09 a theme was read from the whole of an item's text, and for the
+# historic Journal that is right: an item is one act, so a word in it is a word
+# about the act. The modern minutes break the assumption, and not by being
+# longer — the modern median is 348 characters against the historic 537. They
+# break it by CONTENT. A modern item names its counterparty, its address list,
+# the departments asked to report, the uses it exempts, the roll call, and the
+# referral trail; it names a dozen things it is not about.
+#
+# MEASURED, on 96 modern items drawn 12 per theme and read by hand: 59 were
+# about the theme they carried, 31 were not — 65.6% precision. The one a reader
+# actually reported was a landmark designation of a church complex appearing
+# under SCHOOLS, because the address list reads "117 Diamond Street (School)".
+#
+# Four spans are cut here, and each was a labelled failure family, not a guess:
+#
+#   the SIP phrase   4 of 31. "shelter-in-place" is not a shelter. See TRAPS.
+#   a speaker roll   5 of 31. "Hatchner; expressed opposition to the navigation
+#                    center" is a public-comment list, not a decision about
+#                    homelessness. Two markers or more and the row is a roll.
+#   the next item    4 of 31. The Clerk prints `171298 [Title]` at the head of
+#                    an item, and an item's text can run into the head of the
+#                    one after it. Anything past the SECOND such header — or
+#                    past the first, when the first is not this item's own —
+#                    belongs to a different decision.
+#   an appointment   3 of 31. "Mayoral Reappointment, Historic Preservation
+#                    Commission - Richard Johns" is about a person. A dot on a
+#                    landmark filter should be a landmark, not a nomination.
+#
+# AND THEN THE TITLE WINS. Where the Clerk wrote a file title for the item —
+# 93.8% of the modern record — that title is a subject heading a person wrote
+# on purpose, and it is a far better statement of what the item is about than
+# the recital is. Reading the theme from it, with the four cuts above already
+# applied to the fallback, is what takes precision from 65.6% to the figure the
+# build prints. It costs recall, which is why the patterns were widened in the
+# same pass: the losses were nearly all items whose title says FIRE PREVENTION,
+# FIRE APPARATUS or SFUSD while the pattern only knew "fire department" and
+# "unified school".
+#
+# HISTORIC ITEMS ARE UNTOUCHED BY THE TITLE RULE. They carry no Clerk title, so
+# they take the fallback, and the four cuts are near no-ops on them: the Journal
+# has no six-digit file headers and no shelter-in-place.
+# TWO SHELTERS THAT ARE NOT SHELTER. "shelter-in-place" is the COVID order and
+# fired 4 times in a 12-row sample; "bus shelter" is a Muni stop and turned a
+# Certificate of Honor for a man who saved a baby born in one into a
+# homelessness record. Both are cut before anything is matched.
+NOT_A_SHELTER = re.compile(
+    r"shelter[\s\-]*in[\s\-]*place|\b(?:bus|transit|muni|street)\s+shelter", re.I)
+SPEAKER_ROLL = re.compile(r";\s*(?:expressed|spoke|stated|urged)\b", re.I)
+# The Clerk's public-comment format: the file being spoken to, then the
+# speaker. When THAT is all a row has left, the row is a comment, not an act.
+FILE_REF_TAIL = re.compile(r"\(File No\.\s*\d+\)[^;]{0,60}$", re.I)
+NEXT_ITEM = re.compile(r"\b\d{6}\s*\[")
+APPOINTMENT = re.compile(
+    r"^(?:mayoral\s+)?(?:re)?appointments?[,\s]|\bnomination\s+of\b"
+    r"|\bfor\s+reappointment\b", re.I)
+
+# How far into the text this item's OWN header may start. Past it, a header is
+# the next item's.
+OWN_HEADER = 80
+
+
+def subject_span(text, title=None):
+    """The text a theme may be read from. '' when the row states no subject.
+
+    `title` is the Clerk's own file title for the item (`ht` on the row), where
+    the record has one. Pass it and it wins; pass nothing and the item's text is
+    used with the cuts applied. See the note above for what each cut is worth.
+    """
+    if not text:
+        return ""
+    if title and APPOINTMENT.search(title):
+        return ""
+    if title:
+        return NOT_A_SHELTER.sub(" ", title)
+    body = NOT_A_SHELTER.sub(" ", text)
+    # WHAT A SPEAKER SAID IS NOT WHAT THE BOARD DID. The first speaker marker
+    # ends the item's own words. Cutting there rather than refusing the row is
+    # deliberate: a 2011 wireless-facility motion carries a bled-in comment at
+    # its tail and is a real decision, while a refusal on the marker alone
+    # would have thrown it away with the comment.
+    spk = SPEAKER_ROLL.search(body)
+    if spk:
+        body = body[:spk.start()]
+        # …but where the cut leaves nothing except the file the speaker was
+        # speaking TO, the row was the comment. "Resolution urging ABAG to
+        # focus on unmet needs for affordable housing (File No. 200955). Sara
+        # Oglesby; expressed opposition to the" is not a housing decision; the
+        # housing decision is File No. 200955, which has its own row.
+        if FILE_REF_TAIL.search(body):
+            return ""
+    heads = list(NEXT_ITEM.finditer(body))
+    if heads:
+        nth = 1 if heads[0].start() < OWN_HEADER else 0
+        if len(heads) > nth:
+            body = body[:heads[nth].start()]
+    return body
+
+
+# ── THE SPAN RULE, CHECKED AGAINST THE ROWS THAT MADE IT ───────────────────
+# Every case here is a real item from the corpus that was tagged wrongly, or a
+# real item that a first draft of the rule threw away. They are the measurement
+# in executable form: change the rule and the ones it breaks say so by name,
+# rather than turning up in a sample six weeks later.
+#
+# `t` is the item's text, `ht` the Clerk's file title where it has one, `on` the
+# themes that MUST fire, `off` the themes that must NOT.
+SPAN_CASES = [
+    dict(why="the reader's own report: an address list is not a subject",
+         ht="Initiating Landmark Designation - Most Holy Redeemer Church Complex",
+         t="Resolution initiating a landmark designation under Article 10 of the "
+           "Planning Code for the Most Holy Redeemer Church Complex, consisting "
+           "of 110 Diamond Street (Church), 100 Diamond Street (Rectory), 115 "
+           "Diamond Street (Convent), 117 Diamond Street (School)",
+         on=["landmarks-old-buildings"], off=["schools"]),
+    dict(why="shelter-in-place is not a shelter",
+         ht="Settlement of Unlitigated Claim - AB Taylor Propco LLC - $2,900,000",
+         t="the claim involves allegations of property damage to the Tilden "
+           "Hotel caused by shelter-in-place (SIP) hotel guests",
+         on=[], off=["homelessness-shelter"]),
+    dict(why="a bus shelter is not a shelter",
+         ht="", t="in recognition of his heroic actions while saving a baby born "
+                  "in a San Francisco bus shelter. Supervisor Campos introduced, "
+                  "welcomed, and presented a Certificate of Honor",
+         on=[], off=["homelessness-shelter"]),
+    dict(why="an appointment is about a person, singular and plural alike",
+         ht="Mayoral Reappointment, Historic Preservation Commission - Lydia So",
+         t="Motion approving the Mayor's nomination for reappointment of Lydia "
+           "So to the Historic Preservation Commission",
+         on=[], off=["landmarks-old-buildings"]),
+    dict(why="an appointment is about a person, singular and plural alike",
+         ht="Appointments, Local Homeless Coordinating Board - Laura Guzman",
+         t="Motion approving the appointments of Laura Guzman and Sophia Isom "
+           "to the Local Homeless Coordinating Board",
+         on=[], off=["homelessness-shelter"]),
+    dict(why="the row is the public comment, not the decision spoken to",
+         ht="", t="Resolution urging the Association of Bay Area Governments to "
+                  "focus on unmet needs for affordable housing (File No. "
+                  "200955). Sara Oglesby; expressed opposition to the",
+         on=[], off=["housing"]),
+    dict(why="but a decision with a comment stuck to its tail survives the cut",
+         ht="", t="Motion No. 18458, under Planning Code Section 303, approving "
+                  "the conditional use of an existing three-story building. "
+                  "A speaker; expressed concerns about the library.",
+         on=["whats-being-built"], off=["libraries"]),
+    dict(why="anything past the next item's header belongs to that item",
+         ht="", t="Resolution approving the construction of a building for the "
+                  "Central Pump Station Well. 03/25/14; RECEIVED AND ASSIGNED "
+                  "to Land Use Committee. 140292 [Multifamily Housing Revenue "
+                  "Bonds - Transbay Block 6 - Not to Exceed $15,000,000]",
+         on=[], off=["housing"]),
+    dict(why="recall: the fire service's WORK, not only its stations",
+         ht="Administrative Code - Firefighter Personal Protective Equipment "
+            "Containing PFAS",
+         t="Ordinance amending the Administrative Code to prohibit the "
+           "provision of personal protective equipment containing PFAS",
+         on=["fire"], off=[]),
+    dict(why="recall: the modern Clerk writes SFUSD, not 'unified school'",
+         ht="Committee of the Whole - SFUSD's Resource Alignment Initiative",
+         t="Motion to hold a public hearing on the state of educators impacted "
+           "by the Resource Alignment Initiative",
+         on=["schools"], off=[]),
+]
+
+
+def check_span(themes):
+    """Every recorded failure, replayed. Raises SystemExit on the first miss."""
+    rx = {t["slug"]: t["_rx"] for t in themes}
+    bad = []
+    for c in SPAN_CASES:
+        span = subject_span(c["t"], c["ht"] or None)
+        for slug in c["on"]:
+            if not (span and rx[slug].search(span)):
+                bad.append(f'{slug} should fire but does not — {c["why"]}')
+        for slug in c["off"]:
+            if span and rx[slug].search(span):
+                bad.append(f'{slug} fires and must not — {c["why"]}')
+    if bad:
+        raise SystemExit("REFUSED: the span rule no longer holds:\n  "
+                         + "\n  ".join(bad))
+    return len(SPAN_CASES)
 
 
 def mask_of(text, themes):

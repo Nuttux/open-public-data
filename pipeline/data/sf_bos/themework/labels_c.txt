@@ -1,0 +1,56 @@
+C01 y  purchase of 888 Post for supportive housing
+C02 n  appointments to a coordinating board
+C03 b  lawsuit settlement with an SRO hotel coalition
+C04 y  Our City Our Home homelessness tax reallocation
+C05 y  emergency ordinance on safe shelter options
+C06 y  initiating landmark designation
+C07 y  initiating landmark designation
+C08 y  initiating landmark designation
+C09 y  initiating landmark designation
+C10 b  landmark TREE designation, a coast redwood
+C11 b  Fair Housing Month proclamation
+C12 y  HOPWA housing assistance grant
+C13 y  multifamily housing revenue note
+C14 n  encampment funding; "Housing Agency" is the funder
+C15 b  Housing Code, but about hotel bathrooms
+C16 y  findings on a conditional use appeal
+C17 y  conditional use application approved
+C18 y  Planning Code, Chinatown zoning control table
+C19 y  zoning map, transferable development rights
+C20 y  rezoning properties on Ocean Avenue
+C21 n  landmark designation; "(aka Sunshine School)"
+C22 y  Universal School Meals Program Act
+C23 y  Glen Park Elementary School Day
+C24 n  lawsuit; "Parish and School ... Corporation"
+C25 y  urging SFUSD on equity criteria
+C26 y  fire safety systems in multi-unit buildings
+C27 y  Fire Code, Fire Department overtime fee
+C28 y  Fire Code, fire alarm upgrade deadline
+C29 y  Fire Code, Fire Department fees
+C30 y  agreement with the Firefighters' Association
+C31 y  OCII interim budget
+C32 y  redevelopment plan amendments
+C33 b  DPW order consistent with a redevelopment plan
+C34 y  hearing on redevelopment plan amendments
+C35 b  DPW order consistent with a redevelopment plan
+C36 y  emergency plumbing repair at the Main Library
+C37 y  emergency plumbing repair at the Main Library
+C38 y  Friends of the Public Library grant
+C39 y  lease of space inside the Main Library
+C40 y  State Library infrastructure grant
+H01 y  supportive services for homeless families
+H02 n  a park "pergola or shelter"
+H03 y  Music Concourse as Landmark No. 249
+H04 y  restoration of a historical resource
+H05 n  Dept of Fair Employment and Housing, an agency
+H06 y  affordable housing special use district
+H07 y  conditional use approved
+H08 y  conditional use in the Castro NCD
+H09 b  refund claim for hospital and school taxes
+H10 b  buildings on a former school site
+H11 y  sale of a Fire Department lot
+H12 n  Fire Chief on a routing list
+H13 y  land sale to the Redevelopment Agency
+H14 y  Mid-Market survey area under redevelopment law
+H15 n  State Library is the funder; grant is for a conservatory
+H16 y  lease for the Glen Park Branch Library

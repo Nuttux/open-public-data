@@ -1,0 +1,64 @@
+A01 y  100% permanent supportive housing loan
+A02 n  "bus shelter" — a Certificate of Honor
+A03 y  Next Door Shelter, emergency shelter operations
+A04 y  Shelter Grievance Policy
+A05 y  Bayview SAFE Navigation Center grant
+A06 y  initiating landmark designation
+A07 y  landmark designation, Chata Gutierrez Mural
+A08 n  public comment on a preservation resolution
+A09 y  extension for HPC review of a landmark designation
+A10 y  landmark designation of a wall
+A11 y  multifamily housing revenue note
+A12 y  accessory dwelling units
+A13 y  affordable housing bond election
+A14 y  Housing and Community Development Commission
+A15 y  inclusionary housing small sites
+A16 y  Planning Code, zoning map, North Beach districts
+A17 y  zoning map, Japantown NCD
+A18 y  interim zoning moratorium on PDR conversion
+A19 y  conditional use application approved
+A20 y  findings on a conditional use authorization
+A21 b  a state funding act named for schools
+A22 y  school-site mentoring programme grant
+A23 y  Saint Vincent de Paul School Day
+A24 y  GO bonds for SFUSD
+A25 n  a principal recognised in a commendation roll
+A26 y  fire safety requirements for existing buildings
+A27 y  agreement for a Fire Department documentary
+A28 y  commending firefighters at 659 Union Street
+A29 y  Fire Code, disclosure of fire safety information
+A30 y  design and construction of a new fire station
+A31 b  DPW order consistent with a redevelopment plan
+A32 y  OCII interim budget
+A33 y  Bayview and Shipyard redevelopment plans
+A34 b  DPW order consistent with a redevelopment plan
+A35 b  blighted-property assessment costs
+A36 y  MOU with the Friends of the Public Library
+A37 y  solar project at North Beach Branch Library
+A38 y  lease for the SF Law Library
+A39 n  public comment about library access
+A40 y  grant from the Friends of the Public Library
+B01 b  street teams; HSH asked to report
+B02 n  surveillance policies; HSH in a department list
+B03 n  public-comment speaker roll
+B04 n  Historic Preservation Commission reappointment
+B05 n  Historic Preservation Commission appointment
+B06 b  next item's header, a historic district
+B07 b  appeal hearing; 24 dwelling units in the project
+B08 n  public comment on an ABAG resolution
+B09 n  appeal proceedings; "no speakers from MOH"
+B10 n  a roll of newly introduced ordinances
+B11 y  appeal of a conditional use authorization
+B12 y  charter amendment on density and height
+B13 n  elections appropriation; a recall election
+B14 n  property tax rate; SFUSD is a taxing entity
+B15 n  district appropriation; "response to schools"
+B16 y  firefighter protective equipment and PFAS
+B17 n  surveillance policies; Fire Dept in a list
+B18 n  surveillance report; Fire Dept in a list
+B19 y  BMR housing plan, Shipyard Phase 2 redevelopment
+B20 y  BMR housing plan, Shipyard Phase 2 redevelopment
+B21 n  Form 700; successor agency in a list
+B22 n  appointment; public comment about the library
+B23 y  resolution on the value of libraries
+B24 n  a librarian's retirement commendation, bled in

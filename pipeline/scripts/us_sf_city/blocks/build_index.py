@@ -1124,15 +1124,31 @@ def main():
     # the text". Same rule, same span, both grains, one place.
     THEMES = TH.load()["themes"]
     SUBJECTS = TH.load_subjects()
-    TMASK = {did: TH.mask_of(LT(dec[did][0]), THEMES) for did in dec}
-    SMASK = {did: TH.mask_of(LT(dec[did][0]), SUBJECTS) for did in dec}
+    # THE SPAN, NOT THE WHOLE ITEM — see themes.subject_span(). The modern
+    # minutes name the counterparty, the address list, the departments asked to
+    # report and the uses exempted, so a word in the text is not a word about
+    # the act: measured on 96 hand-read modern items, matching the whole text
+    # was 65.6% precise, and the case a reader reported was a landmark
+    # designation under SCHOOLS because its address list reads "117 Diamond
+    # Street (School)". On 40 fresh items labelled after the rule was frozen,
+    # the span is 90.9%. Historic items carry no Clerk title and take the same
+    # fallback they always had.
+    SPAN = {did: TH.subject_span(LT(dec[did][0]),
+                                 (dec[did][0].get("ht") or "").strip() or None)
+            for did in dec}
+    TMASK = {did: TH.mask_of(SPAN[did], THEMES) for did in dec}
+    SMASK = {did: TH.mask_of(SPAN[did], SUBJECTS) for did in dec}
     BODY_ONLY = {did: TH.mask_of(dec[did][0]["t"], THEMES) for did in dec}
+    _nospan = sum(1 for v in SPAN.values() if not v)
     _tn = sum(1 for m in TMASK.values() if m)
     _bn = sum(1 for m in BODY_ONLY.values() if m)
     _sn = sum(1 for m in SMASK.values() if m)
     print(f"themes: {len(THEMES)} patterns, {_tn:,} of {len(dec):,} placed "
           f"decisions carry at least one ({100*_tn/max(1,len(dec)):.1f}%); "
-          f"the body alone would tag {_bn:,}", flush=True)
+          f"the WHOLE ITEM would tag {_bn:,}", flush=True)
+    print(f"  span rule: {_nospan:,} rows state no subject of their own "
+          f"(an appointment, a public-comment roll) and are tagged with "
+          f"nothing", flush=True)
     print(f"subjects: {len(SUBJECTS)} patterns, {_sn:,} of {len(dec):,} "
           f"({100*_sn/max(1,len(dec)):.1f}%)", flush=True)
 

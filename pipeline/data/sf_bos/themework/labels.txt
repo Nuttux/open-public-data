@@ -1,0 +1,96 @@
+1 y  Continuum of Care HUD grant
+2 n  public-comment speaker list
+3 y  Homekey+ grant, HSH
+4 y  Rapid Rehousing Policy
+5 y  Coordinated Entry for homeless persons
+6 n  claim settlement; "shelter-in-place" hotel
+7 n  commercial evictions; "shelter-in-place"
+8 y  HSH grant application
+9 n  litigation claims; "Shelter-in-Place Hotels"
+10 n  public-comment speaker list
+11 y  Homekey grant 42 Otis
+12 n  claim settlement; "shelter-in-place"
+13 n  Historic Preservation Commission appointment
+14 y  rescinds an Article 10 landmark designation
+15 y  adaptive reuse of historic buildings
+16 b  heights in a historic district
+17 n  Historic Preservation Commission appointment
+18 y  Mills Act contract non-renewal
+19 y  initiating landmark designation
+20 y  creates a historic district
+21 y  landmark designation
+22 y  landmark designation, Carnaval Mural
+23 y  landmark designation, Marina Branch Library
+24 n  Historic Preservation Commission appointment
+25 y  HOME-SF inclusionary housing
+26 y  Transitional Housing Program grant
+27 n  public-comment speaker list
+28 n  public-comment speaker list
+29 b  development agreement incl. student/faculty housing
+30 y  master lease, 51 supportive housing units
+31 y  multifamily housing revenue bonds
+32 n  live/work safety; "housing stock" in passing
+33 y  multifamily housing revenue bonds HOPE SF
+34 y  multifamily housing revenue bonds Hamlin Hotel
+35 n  code cleanup; housing in an 89-item list
+36 n  "a building housing the pump station" — verb
+37 y  Planning Code special use district
+38 y  zoning prohibition, Calle 24 SUD
+39 n  HOPWA grant; "entitlement" is federal, not planning
+40 b  referral trail plus the next item's bracket title
+41 y  alcohol restricted use district, zoning map
+42 y  Corona Heights large residence SUD
+43 y  site acquisition and demolition, Hall of Justice
+44 y  motion adopting interim zoning report
+45 y  Planning Code, conditional uses North Beach
+46 n  vote outcome plus the next item's bracket title
+47 n  referral trail plus the next item's bracket title
+48 y  New Asia Senior Housing SUD
+49 n  election consolidation; school board is one race
+50 b  training delivered at a school
+51 n  "Five Keys Schools and Programs" is the grantee
+52 y  bonds for school facilities
+53 y  AB 1858, school shooter drills
+54 y  SFPUC-SFUSD green infrastructure MOU
+55 y  hearing, lead in the water at SF schools
+56 n  teacher housing; the act is housing
+57 n  property tax rate; SFUSD is a taxing entity
+58 n  commemorative plaque; the school is the address
+59 y  supporting an SFUSD school bond election
+60 n  free Muni for youth; SFUSD is a partner
+61 n  tenant assistance; the Fire Dept issues the order
+62 n  COVID supplement; Fire Dept staff in an MOU list
+63 n  workers comp appropriation across 4 departments
+64 y  behested payment waiver, fire apparatus
+65 y  hearing, fire prevention in apartment buildings
+66 n  conditional use denial; fire inspection a condition
+67 y  fire safety systems in multi-unit buildings
+68 y  hearing, Police and Fire investigations
+69 y  Fire Code, fire alarm upgrade deadline
+70 y  property exchange for a fire station project
+71 y  Fire Dept FEMA grant, fire station upgrades
+72 y  appropriation, Fire Dept ambulance revenue
+73 y  OCII successor agency budget and bonds
+74 b  blighted-property abatement costs
+75 y  OCII successor agency budget and bonds
+76 y  Transbay Redevelopment Project Area controls
+77 y  OCII land disposition, Transbay
+78 y  successor agency land disposition agreement
+79 y  successor agency air rights lease
+80 y  Redevelopment Agency ground lease
+81 n  brownfield cleanup; "park redevelopment" word sense
+82 y  Hunters Point Shipyard Redevelopment Plan
+83 n  SFMOMA lawsuit; successor agency is a party
+84 b  DPW order consistent with a redevelopment plan
+85 y  SFPL grant, jail and reentry services
+86 y  site for a new library branch
+87 y  artwork at the Main Library
+88 n  public-comment speaker list
+89 y  street closure for the North Beach library
+90 n  vote roll plus the next item's bracket title
+91 y  lease renewal, SF Law Library
+92 y  landmark designation, Marina Branch Library
+93 y  rezoning for the new North Beach library
+94 y  refunding bonds, Branch Library Improvement Program
+95 y  refunding bonds, Branch Library Improvement Program
+96 y  SFPL Mellon grant
