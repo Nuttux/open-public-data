@@ -307,8 +307,14 @@ export type FeaturedLieu = {
   name: string;
   kind: string;
   arrondissement: number;
-  /** Total d'argent public relié au lieu (délibs + marchés + subventions). */
+  /** LE chiffre héros de la fiche lieu : le versé (subventions + chantiers
+   *  réglés) s'il existe, sinon le plafond des contrats. */
   argentTotal: number;
+  /** Première année d'argent retracé (pas la première archive : « depuis
+   *  1898 » sous 117 M€ mélangeait le Bulletin de 1898 et des comptes de 2009). */
+  verseDepuis: number | null;
+  /** Vrai quand `argentTotal` est un plafond de contrats, pas du versé. */
+  isPlafond: boolean;
   depuis: number | null;
   photoPath: string;
   credit: string | null;
@@ -319,6 +325,11 @@ export type FeaturedAsso = {
   nom: string;
   year: number;
   montant: number;
+  /** Le chiffre héros de la fiche : le cumul versé sur toutes les années
+   *  publiées, et sa période — la carte dit ce que la fiche dira au clic. */
+  total: number;
+  from: number;
+  to: number;
   theme: string | null;
   photoPath: string;
   photoCredit: string | null;
@@ -366,12 +377,19 @@ function loadFeaturedLieu(): FeaturedLieu | null {
   const l = loadLieuxIndex().find((x) => x.slug === HERO_FEATURED_LIEU_SLUG);
   if (!l?.photo || !l.argent_total_eur) return null;
   const fiche = loadLieu(l.slug);
+  const years: number[] = [];
+  if (fiche?.subventions_exploitant) years.push(parseInt(fiche.subventions_exploitant.annees[0], 10));
+  if (fiche?.mandate) years.push(parseInt(fiche.mandate.periode[0], 10));
+  for (const r of fiche?.invest ?? []) years.push(parseInt(String(r.annee), 10));
+  const ys = years.filter((y) => !Number.isNaN(y));
   return {
     slug: l.slug,
     name: l.name,
     kind: l.kind_fr,
     arrondissement: l.arrondissement,
     argentTotal: l.argent_total_eur,
+    verseDepuis: ys.length ? Math.min(...ys) : null,
+    isPlafond: (l.depense_reelle_eur ?? 0) <= 0,
     depuis: l.depuis ?? null,
     photoPath: l.photo,
     credit: fiche?.photo_credit?.auteur ?? fiche?.photo_credit?.source ?? null,
@@ -398,11 +416,16 @@ function loadFeaturedAsso(): FeaturedAsso | null {
       (b) => b.beneficiaire.trim().toUpperCase() === HERO_FEATURED_ASSO_NAME,
     );
     if (!match) return null;
+    const fiche = loadAssociation(match.beneficiaire.trim());
+    const ya = fiche?.yearsActive ?? [yr];
     return {
       slug: encodeURIComponent(match.beneficiaire.trim()),
       nom: match.beneficiaire.trim(),
       year: yr,
       montant: match.montant_total,
+      total: fiche?.totalAmount ?? match.montant_total,
+      from: Math.min(...ya),
+      to: Math.max(...ya),
       theme: match.thematique ?? null,
       photoPath: HERO_FEATURED_ASSO_PHOTO,
       photoCredit: HERO_FEATURED_ASSO_PHOTO_CREDIT,

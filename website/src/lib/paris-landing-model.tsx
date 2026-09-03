@@ -1,7 +1,7 @@
 import Link from "next/link";
 import PlaceSwitcher from "@/components/PlaceSwitcher";
 import { ARRONDISSEMENT_PATHS } from "@/components/fusion/paris-arrondissements";
-import { fmtInt, fmtBillions, fmtMillions, fill, numLocale } from "@/lib/fmt";
+import { fmtInt, fmtBillions, fmtMillions, fill, numLocale, sufOrdinal } from "@/lib/fmt";
 import type { LandingStats } from "@/lib/fusion-data";
 import type { BlogPostMeta } from "@/lib/blog";
 import type { LandingModel, DeckCard, MarqueeItem } from "@/components/landing/types";
@@ -133,12 +133,14 @@ export function buildParisLandingModel(
       scroll: false,
       kicker: t("fx.land.deck.lieu.kicker"),
       title: fl.name,
-      amount: fmtInt(fl.argentTotal / 1e6),
-      amountUnit: "M €",
-      meta: fill(t(fl.depuis ? "fx.land.deck.lieu.meta" : "fx.land.deck.lieu.meta_nodate"), {
+      amount: fl.argentTotal >= 1e9 ? fmtBillions(fl.argentTotal) : fmtInt(fl.argentTotal / 1e6),
+      amountUnit: fl.argentTotal >= 1e9 ? "Md €" : "M €",
+      // Même légende que le héros de la fiche : versé depuis la première
+      // année d'argent retracé — pas depuis la première archive.
+      meta: fill(t(fl.isPlafond ? "fx.land.deck.lieu.meta_plafond" : fl.verseDepuis ? "fx.land.deck.lieu.meta_verse" : "fx.land.deck.lieu.meta_nodate"), {
         kind: fl.kind,
-        arr: fl.arrondissement,
-        depuis: fl.depuis ?? "",
+        arr: `${fl.arrondissement}${sufOrdinal(fl.arrondissement, locale)}`,
+        y: fl.verseDepuis ?? "",
       }),
       cta: t("fx.land.deck.lieu.cta"),
       photo: fl.photoPath,
@@ -151,9 +153,9 @@ export function buildParisLandingModel(
       scroll: false,
       kicker: t("fx.land.deck.c2.kicker"),
       title: t("fx.land.deck.c2.title"),
-      amount: fmtInt(fa.montant / 1e6),
-      amountUnit: "M €",
-      meta: fill(t("fx.land.deck.c2.meta"), { year: fa.year, theme: fa.theme ?? "Culture" }),
+      amount: fa.total >= 1e9 ? fmtBillions(fa.total) : fmtInt(fa.total / 1e6),
+      amountUnit: fa.total >= 1e9 ? "Md €" : "M €",
+      meta: fill(t(fa.from === fa.to ? "fx.land.deck.c2.meta_one" : "fx.land.deck.c2.meta"), { from: fa.from, to: fa.to, year: fa.to }),
       cta: t("fx.land.deck.c2.cta"),
       photo: fa.photoPath,
       photoCredit: fa.photoCredit,
@@ -167,7 +169,7 @@ export function buildParisLandingModel(
       title: t("fx.land.deck.c3.title"),
       amount: fm.total >= 1e9 ? fmtBillions(fm.total) : fmtMillions(fm.total),
       amountUnit: fm.total >= 1e9 ? "Md €" : "M €",
-      meta: fill(t("fx.land.deck.c3.meta"), { year: fm.year, nb: fm.nbMarches }),
+      meta: fill(t("fx.land.deck.c3.meta"), { year: fm.year, nb: fm.nbMarches.toLocaleString(numLocale(locale)) }),
       cta: t("fx.land.deck.c3.cta"),
       photo: fm.photoPath,
       photoCredit: fm.photoCredit,
@@ -181,7 +183,7 @@ export function buildParisLandingModel(
       title: t("fx.land.deck.c4.title"),
       amount: fb.capitalRestant >= 1e9 ? fmtBillions(fb.capitalRestant) : fmtMillions(fb.capitalRestant),
       amountUnit: fb.capitalRestant >= 1e9 ? "Md €" : "M €",
-      meta: fill(t("fx.land.deck.c4.meta"), { year: fb.year, nb: fb.nbEmprunts }),
+      meta: fill(t("fx.land.deck.c4.meta"), { year: fb.year, nb: fb.nbEmprunts.toLocaleString(numLocale(locale)) }),
       cta: t("fx.land.deck.c4.cta"),
       photo: fb.photoPath,
       photoCredit: fb.photoCredit,
