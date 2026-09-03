@@ -58,6 +58,9 @@ const YEARS = (() => {
   return out;
 })();
 const ZMAX = Number(arg('--zmax', 7));
+/* `--zmin 6` adds a level to a pyramid that already has the ones below: the
+   levels are independent captures, and index.json keeps what it had. */
+const ZMIN = Number(arg('--zmin', 0));
 const OUT_ROOT = path.resolve(arg('--out', 'public/tiles/us/sf/city'));
 const BASE = arg('--base', 'http://localhost:3000');
 const T = 512;                       // tile edge, device pixels
@@ -167,10 +170,12 @@ try {
 const OUT = path.join(OUT_ROOT, YEAR);
 await p.evaluate((y) => window.__cityGL.setYear(y === 'now' ? undefined : Number(y)), YEAR);
 await p.waitForTimeout(400);
-const index = { tile: T, dpr: DPR, ref: REF, levels: {} };
+const prior = ZMIN > 0 && fs.existsSync(path.join(OUT, 'index.json')) ? JSON.parse(fs.readFileSync(path.join(OUT, 'index.json'), 'utf8')) : null;
+if (ZMIN > 0 && !prior) throw new Error(`${YEAR}: --zmin ${ZMIN} but no index.json in ${OUT}`);
+const index = { tile: T, dpr: DPR, ref: REF, levels: prior ? { ...prior.levels } : {} };
 let total = 0, bytes = 0;
 const t0 = Date.now();
-for (let z = 0; z <= ZMAX; z++) {
+for (let z = ZMIN; z <= ZMAX; z++) {
   const band = bandFor(z);
   const scale = REF.scale * 2 ** (z - 3);
   const f = 2 ** (z - 3);
