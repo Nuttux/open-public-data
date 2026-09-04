@@ -173,12 +173,18 @@ export default function PlacesMap({
       );
 
       map.fitBounds(cfg.bounds, { padding: [2, 2] });
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> · © CARTO',
+      // CARTO exige une clé depuis 2026 : ses tuiles arrivaient tamponnées « API KEY
+      // REQUIRED » en prod (vu le 2026-09-04). Fond gris clair Esri, sans clé, qui
+      // laisse les marqueurs lisibles ; zoom natif 16, agrandi au-delà.
+      L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", {
+        attribution: 'Fond de carte © Esri, HERE, Garmin, OpenStreetMap contributors',
+        maxNativeZoom: 16,
         maxZoom: 19,
         keepBuffer: 4,
         updateWhenZooming: false,
       }).addTo(map);
+      // Les noms de lieux (couche de libellés du même fond), au-dessus des marqueurs de tuiles.
+      L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}", { maxNativeZoom: 16, pane: "tilePane" }).addTo(map);
 
       const BOX = 26; // ≥24px hit target (WCAG 2.5.8); the visual dot stays fine
       for (const e of entries) {
