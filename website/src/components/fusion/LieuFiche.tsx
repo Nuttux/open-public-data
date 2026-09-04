@@ -128,14 +128,6 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
     ...(travauxSpan ?? []),
   ]);
   const marcheSpan = minMax(marches.map((m) => parseInt((m.date_notification ?? "").slice(0, 4), 10)));
-  const fournisseurs = [...new Set(marches.map((m) => m.fournisseur).filter(Boolean) as string[])];
-  const fournTxt = (() => {
-    const head = fournisseurs.slice(0, 2);
-    const rest = fournisseurs.length - head.length;
-    if (!head.length) return "";
-    if (rest <= 0) return head.join(en ? " and " : " et ");
-    return `${head.join(", ")} ${fill(t(rest === 1 ? "fx.lieu.contrats_autres1" : "fx.lieu.contrats_autres"), { n: rest })}`;
-  })();
   const kindArt = KIND_ARTICLE[lieu.kind_fr];
   const kindTxt = kindArt ? (en ? kindArt.en : kindArt.fr) : t("fx.lieu.line.lieu_generique");
   const barMax = Math.max(subvTotal, travauxTotal);
@@ -227,7 +219,11 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
 
           {subv && (
             <div className="fx-v3-line">
-              <div className="t">{cap(fill(t("fx.lieu.line.exploitant"), { k: kindTxt }))}</div>
+              <div className="t">
+                <Link href={`${basePath}/subventions/association/${encodeURIComponent(subv.nom_fiche)}`} scroll={false} style={{ color: "inherit" }}>
+                  {cap(fill(t("fx.lieu.line.exploitant"), { k: kindTxt }))}<span aria-hidden="true" className="muted"> →</span>
+                </Link>
+              </div>
               <div className="a">
                 <Eur {...fmtEur(subvTotal)} />
                 <div className="q">{t("fx.lieu.q.verses")} · {subv.rows.length > 1 ? spanTxt(parseInt(subv.annees[0], 10), parseInt(subv.annees[1], 10)) : subv.annees[0]}</div>
@@ -267,18 +263,15 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
                   </div>
                 </div>
                 {paye && (
-                  <div className="s">{fill(t(nChantiers === 1 ? "fx.lieu.line.travaux_sub1" : "fx.lieu.line.travaux_sub"), { n: nChantiers })}{lieu.mandate ? ` ${t("fx.lieu.line.travaux_caveat")}` : ""}</div>
+                  <div className="s">{fill(t(nChantiers === 1 ? "fx.lieu.line.travaux_sub1" : "fx.lieu.line.travaux_sub"), { n: nChantiers })}</div>
                 )}
                 {marches.length > 0 && (
                   <div className="s">
-                    {paye ? t("fx.lieu.line.contrats_et") : ""}
                     {cap(fill(t(marches.length === 1 ? "fx.lieu.line.contrats1" : "fx.lieu.line.contrats"), {
                       n: marches.length,
                       a: marcheSpan ? spanTxt(...marcheSpan) : "",
-                      f: fournTxt,
+                      m: eurTxt(plafond),
                     }))}
-                    {" "}
-                    {paye ? fill(t("fx.lieu.line.contrats_plafond"), { m: eurTxt(plafond) }) : t("fx.lieu.line.contrats_plafond_seul")}
                   </div>
                 )}
                 {showBars && <div className="bar"><span style={{ width: `${(travauxTotal / barMax) * 100}%` }} /></div>}
@@ -343,9 +336,10 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
             </div>
           )}
 
-          {marches.length > 0 && (
+          {(marches.length > 0 || lieu.mandate) && (
             <p className="fx-v3-foot">
-              {reelTotal > 0 ? fill(t("fx.lieu.note.total"), { t: eurTxt(reelTotal) }) : t("fx.lieu.note.plafond_seul")}
+              {marches.length > 0 ? (reelTotal > 0 ? fill(t("fx.lieu.note.total"), { t: eurTxt(reelTotal) }) : t("fx.lieu.note.plafond_seul")) : ""}
+              {lieu.mandate ? ` ${t("fx.lieu.line.travaux_caveat")}` : ""}
             </p>
           )}
         </section>

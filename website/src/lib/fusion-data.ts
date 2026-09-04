@@ -4737,7 +4737,7 @@ export function loadBudgetPoste(slug: string, requestedYear?: number, city: stri
     rank,
     nbPostes: siblings.length,
     perHabitant: population > 0 ? total / population : 0,
-    links: kind === "depense" ? loadPosteLinks(slug, year, city) : [],
+    links: loadPosteLinks(slug, year, city),
   };
 }
 

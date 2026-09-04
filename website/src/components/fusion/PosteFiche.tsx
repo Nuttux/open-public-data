@@ -114,7 +114,13 @@ export default function PosteFiche({ poste }: Props) {
   const shownPct = poste.total > 0 ? Math.round((shown.reduce((s, m) => s + m.total, 0) / poste.total) * 100) : 0;
   const maxMission = Math.max(...missions.map((m) => m.total), 1);
   const hasImputed = missions.some((m) => m.imputed);
-  const isFlat = missions.length === 1 && missions[0].key === "—";
+  // Recettes à deux groupes ou moins (Impôts, Dotations, Emprunts) : les vraies
+  // lignes — taxe foncière, droits de mutation — ne doivent pas être derrière
+  // un clic. On les montre à plat, le groupe en sous-ligne.
+  const isFlat = (missions.length === 1 && missions[0].key === "—") || (!dep && missions.length <= 2);
+  const flatLines = isFlat ? missions.flatMap((m) => m.items.map((it) => ({ ...it, group: m.key === "—" ? null : m.label }))).sort((a, b) => b.value - a.value) : [];
+  const flatShown = flatLines.slice(0, 8);
+  const flatRest = flatLines.slice(8);
 
   const { v, u } = fmtAmt(poste.total);
   const first = poste.series[0];
@@ -208,12 +214,22 @@ export default function PosteFiche({ poste }: Props) {
           title={t(dep ? "fx.poste.v3.h.finance" : "fx.poste.v3.h.compose")}
           sub={isFlat ? undefined : dep ? fill(t(shown.length === 1 ? "fx.poste.v3.h.finance_sub1" : "fx.poste.v3.h.finance_sub"), { n: shown.length, pct: shownPct }) : t("fx.poste.v3.h.compose_sub")}
         >
-          {isFlat ? missions[0].items.map((it, i) => (
-            <div key={i} className="fx-v3-mline" style={{ paddingLeft: 0, background: "transparent" }}>
-              <span className="l">{it.name}</span>
-              <span className="a tnum">{fmtAmt(it.value).v}<span className="u">{fmtAmt(it.value).u}</span></span>
-            </div>
-          )) : (
+          {isFlat ? (() => {
+            const FlatRow = (it: (typeof flatLines)[number], i: number) => (
+              <div key={i} className="fx-v3-mline" style={{ paddingLeft: 0, background: "transparent" }}>
+                <span className="l" title={it.original ? `${t("fx.poste.v3.orig")} ${it.original}` : undefined}>{it.name}</span>
+                <span className="a tnum">{fmtAmt(it.value).v}<span className="u">{fmtAmt(it.value).u}</span></span>
+                {it.group && <span className="s">{inSentence(it.group)}</span>}
+              </div>
+            );
+            return (
+              <>
+                {flatShown.map(FlatRow)}
+                {flatRest.length > 1 && <V3Fold text label={fill(t("fx.poste.v3.more_lines"), { n: flatRest.length })}>{flatRest.map((it, i) => FlatRow(it, i + 8))}</V3Fold>}
+                {flatRest.length === 1 && FlatRow(flatRest[0], 8)}
+              </>
+            );
+          })() : (
             <>
               {shown.map(Row)}
               {rest.length > 0 && (
@@ -227,7 +243,7 @@ export default function PosteFiche({ poste }: Props) {
       )}
 
       {poste.links.length > 0 && (
-        <V3Section title={t("fx.poste.v3.h.links")} sub={t("fx.poste.v3.h.links_sub")}>
+        <V3Section title={t(dep ? "fx.poste.v3.h.links" : "fx.poste.v3.h.links_rec")} sub={t(dep ? "fx.poste.v3.h.links_sub" : "fx.poste.v3.h.links_rec_sub")}>
           {poste.links.map(linkRow)}
         </V3Section>
       )}
