@@ -40,7 +40,7 @@ export default function ThemeFiche({ fiche }: { fiche: ThemeSubventionsFiche }) 
         meta={<>{fill(t("fx.fiche.theme.meta"), { share: fmtDec(fiche.shareOfTotalPct, 1), benef: fmtInt(fiche.nbBeneficiaires) })}{fiche.nbSubventions !== fiche.nbBeneficiaires ? fill(t("fx.fiche.theme.meta_subv"), { n: fmtInt(fiche.nbSubventions) }) : ""}</>}
       />
 
-      <V3Section title={fill(t("fx.fiche.theme.h.top"), { year: fiche.year })} sub={t("fx.fiche.theme.h.top_sub")}>
+      <V3Section title={fill(t("fx.fiche.theme.h.top"), { year: fiche.year })} sub={fiche.nbBeneficiaires > fiche.topBeneficiaires.length ? fill(t("fx.fiche.theme.h.top_sub_n"), { n: fiche.topBeneficiaires.length, t: fmtInt(fiche.nbBeneficiaires) }) : t("fx.fiche.theme.h.top_sub")}>
         <FicheBreakdown
           cap={fiche.topBeneficiaires.length}
           rows={fiche.topBeneficiaires.map((b) => ({ key: b.name, label: b.name, meta: b.direction ?? undefined, value: b.amount, href: `${basePath}/subventions/association/${encodeURIComponent(b.name)}` }))}

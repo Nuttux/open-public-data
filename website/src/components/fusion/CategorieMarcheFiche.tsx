@@ -31,7 +31,7 @@ export default function CategorieMarcheFiche({ fiche }: { fiche: MarcheCategorie
         meta={fill(t("fx.categorie.meta"), { share: fmtDec(fiche.shareOfTotalPct, 1), n: fmtInt(fiche.nbContrats), t: fmtInt(fiche.nbTitulaires) })}
       />
 
-      <V3Section title={fill(t("fx.categorie.h.contrats"), { year: fiche.year })} sub={t("fx.categorie.h.contrats_sub")}>
+      <V3Section title={fill(t("fx.categorie.h.contrats"), { year: fiche.year })} sub={fiche.nbContrats > fiche.topContrats.length ? fill(t("fx.categorie.h.contrats_top_sub"), { n: fiche.topContrats.length, t: fmtInt(fiche.nbContrats) }) : t("fx.categorie.h.contrats_sub")}>
         {fiche.topContrats.map((c) => {
           const preferred = locale === "en" && c.objetClairEn ? c.objetClairEn : c.objetClair;
           const objet = preferred || normalizeObjet(c.objet || "");
@@ -44,7 +44,7 @@ export default function CategorieMarcheFiche({ fiche }: { fiche: MarcheCategorie
         })}
       </V3Section>
 
-      <V3Section title={t("fx.categorie.h.titulaires")} sub={t("fx.categorie.h.titulaires_sub")}>
+      <V3Section title={t(fiche.nbTitulaires > fiche.topTitulaires.length ? "fx.categorie.h.titulaires_top" : "fx.categorie.h.titulaires")} sub={fiche.nbTitulaires > fiche.topTitulaires.length ? fill(t("fx.categorie.h.titulaires_top_sub"), { n: fiche.topTitulaires.length, t: fmtInt(fiche.nbTitulaires) }) : t("fx.categorie.h.titulaires_sub")}>
         <FicheBreakdown
           cap={fiche.topTitulaires.length}
           rows={fiche.topTitulaires.map((tit) => ({
