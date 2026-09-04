@@ -21,7 +21,6 @@ export default function ArrondissementFiche({ arr }: { arr: ArrondissementFicheT
   const { basePath } = useCity();
   const fmtEur = useFmtEur();
   const { v, u } = fmtEur(arr.total);
-  const decimal = locale === "en" ? "." : ",";
   const eurTxt = (n: number) => { const f = fmtEur(n); return `${f.v} ${f.u}`; };
 
   return (
@@ -29,7 +28,7 @@ export default function ArrondissementFiche({ arr }: { arr: ArrondissementFicheT
       <V3Hero
         v={v} u={u}
         caption={fill(t("fx.fiche.arr.hero_cap"), { year: arr.year })}
-        meta={fill(t("fx.fiche.arr.meta"), { share: arr.totalShare.toFixed(1).replace(".", decimal), rank: `${arr.rank}${sufOrdinal(arr.rank, locale)}`, n: arr.nbProjets, geo: arr.nbGeo })}
+        meta={fill(t("fx.fiche.arr.meta"), { share: Math.round(arr.totalShare), rank: `${arr.rank}${sufOrdinal(arr.rank, locale)}`, n: arr.nbProjets, geo: arr.nbGeo })}
       />
 
       {arr.topProjets.length > 0 && (

@@ -78,7 +78,22 @@ function groupMissions(poste: BudgetPosteFiche, locale: "fr" | "en", fmt: (n: nu
     if (it.fonction_imputed) m.imputed = true;
   });
   const missions = [...map.values()].sort((a, b) => b.total - a.total);
+  // « Opérations non ventilables » ne dit rien : quand 80 % des lignes sont
+  // d'un même flux (péréquation, dette…), la mission prend le nom du flux.
+  const FLOW_MISSION: Record<string, { fr: string; en: string }> = {
+    "Reversements péréquation": { fr: "Reversements à l'État et aux autres collectivités", en: "Transfers to the State and other local authorities" },
+    "Remboursement dette": { fr: "Remboursement de la dette", en: "Debt repayment" },
+    "Charges financières": { fr: "Intérêts de la dette", en: "Debt interest" },
+    "Dotations arrondissements": { fr: "Dotations aux arrondissements", en: "Allocations to the arrondissements" },
+  };
   for (const m of missions) {
+    if (m.key === "Opérations non ventilable" && m.total > 0) {
+      const byFlow = new Map<string, number>();
+      for (const it of m.items) byFlow.set(it.flow ?? "", (byFlow.get(it.flow ?? "") ?? 0) + it.value);
+      const [flow, v] = [...byFlow.entries()].sort((a, b) => b[1] - a[1])[0] ?? ["", 0];
+      const fm = FLOW_MISSION[flow];
+      if (fm && v / m.total >= 0.8) m.label = locale === "en" ? fm.en : fm.fr;
+    }
     m.items.sort((a, b) => b.value - a.value);
     if (!m.sub && m.items.length > 1 && m.items[0].value / m.total >= 0.5) {
       const l = autoSub(m.items[0].name, m.label);

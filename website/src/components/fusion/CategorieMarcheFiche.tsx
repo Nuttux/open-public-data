@@ -1,7 +1,7 @@
 "use client";
 
 import type { MarcheCategorieFiche } from "@/lib/fusion-data";
-import { fill, fmtCompactEur, fmtInt, fmtDec } from "@/lib/fmt";
+import { fill, fmtCompactEur, fmtInt } from "@/lib/fmt";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { isNamedTitulaire } from "@/lib/marches-shape";
 import { useT, useLocale } from "@/lib/localeContext";
@@ -28,7 +28,7 @@ export default function CategorieMarcheFiche({ fiche }: { fiche: MarcheCategorie
       <V3Hero
         v={total.value} u={total.unit}
         caption={fill(t("fx.categorie.hero_cap_v3"), { year: fiche.year })}
-        meta={fill(t("fx.categorie.meta"), { share: fmtDec(fiche.shareOfTotalPct, 1), n: fmtInt(fiche.nbContrats), t: fmtInt(fiche.nbTitulaires) })}
+        meta={fill(t("fx.categorie.meta"), { share: Math.round(fiche.shareOfTotalPct), n: fmtInt(fiche.nbContrats), t: fmtInt(fiche.nbTitulaires) })}
       />
 
       <V3Section title={fill(t("fx.categorie.h.contrats"), { year: fiche.year })} sub={fiche.nbContrats > fiche.topContrats.length ? fill(t("fx.categorie.h.contrats_top_sub"), { n: fiche.topContrats.length, t: fmtInt(fiche.nbContrats) }) : t("fx.categorie.h.contrats_sub")}>

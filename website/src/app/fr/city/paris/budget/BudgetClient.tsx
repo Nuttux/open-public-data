@@ -257,11 +257,8 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
               </PageHook>
             );
           })()}
-          <ChartSource
-            source={<>Ville de Paris · Comptes administratifs M57 {d.year}</>}
-            dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
-            methodAnchor="budget"
-          />
+          {/* La source de cette section est celle de la suivante, citée juste
+           *  en dessous du graphe d'évolution : une seule ligne pour les deux. */}
         </div>
       </section>
 

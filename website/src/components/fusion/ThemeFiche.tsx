@@ -1,7 +1,7 @@
 "use client";
 
 import type { ThemeSubventionsFiche } from "@/lib/fusion-data";
-import { fill, fmtCompactEur, fmtInt, fmtDec } from "@/lib/fmt";
+import { fill, fmtCompactEur, fmtInt } from "@/lib/fmt";
 import { useT } from "@/lib/localeContext";
 import { useCity } from "./CityContext";
 import { FicheBreakdown } from "@/components/fiche";
@@ -37,7 +37,7 @@ export default function ThemeFiche({ fiche }: { fiche: ThemeSubventionsFiche }) 
       <V3Hero
         v={total.value} u={total.unit}
         caption={fill(t("fx.fiche.theme.hero_cap"), { theme: fiche.theme, year: fiche.year })}
-        meta={<>{fill(t("fx.fiche.theme.meta"), { share: fmtDec(fiche.shareOfTotalPct, 1), benef: fmtInt(fiche.nbBeneficiaires) })}{fiche.nbSubventions !== fiche.nbBeneficiaires ? fill(t("fx.fiche.theme.meta_subv"), { n: fmtInt(fiche.nbSubventions) }) : ""}</>}
+        meta={<>{fill(t("fx.fiche.theme.meta"), { share: Math.round(fiche.shareOfTotalPct), benef: fmtInt(fiche.nbBeneficiaires) })}{fiche.nbSubventions !== fiche.nbBeneficiaires ? fill(t("fx.fiche.theme.meta_subv"), { n: fmtInt(fiche.nbSubventions) }) : ""}</>}
       />
 
       <V3Section title={fill(t("fx.fiche.theme.h.top"), { year: fiche.year })} sub={fiche.nbBeneficiaires > fiche.topBeneficiaires.length ? fill(t("fx.fiche.theme.h.top_sub_n"), { n: fiche.topBeneficiaires.length, t: fmtInt(fiche.nbBeneficiaires) }) : t("fx.fiche.theme.h.top_sub")}>

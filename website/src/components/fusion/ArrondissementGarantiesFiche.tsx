@@ -40,7 +40,7 @@ export default function ArrondissementGarantiesFiche({ arr, year }: Props) {
       <V3Hero
         v={fmtAmount(arr.capital_restant).v} u={fmtAmount(arr.capital_restant).u}
         caption={fill(t("fx.fiche.bail.hero_cap"), { year })}
-        meta={fill(t("fx.ag.meta"), { n: nInt(arr.count_emprunts), share: fmtDec(arr.share_of_localized * 100, 1) })}
+        meta={fill(t("fx.ag.meta"), { n: nInt(arr.count_emprunts), share: Math.round(arr.share_of_localized * 100) })}
       />
 
       {arr.top_beneficiaires.length > 0 && (

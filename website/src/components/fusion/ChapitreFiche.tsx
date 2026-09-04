@@ -30,7 +30,7 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
       <V3Hero
         v={v} u={u}
         caption={fill(t("fx.fiche.chap.hero_cap"), { year: chap.year })}
-        meta={fill(t("fx.fiche.chap.meta"), { share: chap.share.toFixed(1).replace(".", decimal), rank: `${chap.rank}${sufOrdinal(chap.rank, locale)}`, n: chap.nbChapitres })}
+        meta={fill(t("fx.fiche.chap.meta"), { share: Math.round(chap.share), rank: `${chap.rank}${sufOrdinal(chap.rank, locale)}`, n: chap.nbChapitres })}
       />
 
       {hasProjets && chap.topArrondissements.length > 0 && (

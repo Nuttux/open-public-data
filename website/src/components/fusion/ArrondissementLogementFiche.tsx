@@ -32,7 +32,7 @@ export default function ArrondissementLogementFiche({
       <V3Hero
         v={fmtInt(data.totalLogements)}
         caption={fill(t("fx.arr_log.hero_cap"), { year: data.year })}
-        meta={fill(t(data.nbOperations === 1 ? "fx.arr_log.meta1" : "fx.arr_log.meta"), { n: data.nbOperations, share: fmtDec(data.shareCity, 1), rank: `${data.rank}${sufOrdinal(data.rank, locale)}` })}
+        meta={fill(t(data.nbOperations === 1 ? "fx.arr_log.meta1" : "fx.arr_log.meta"), { n: data.nbOperations, share: Math.round(data.shareCity), rank: `${data.rank}${sufOrdinal(data.rank, locale)}` })}
       />
 
       <V3Section title={fill(t("fx.arr_log.h.ops"), { year: data.year })}>

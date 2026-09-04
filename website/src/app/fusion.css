@@ -19152,7 +19152,8 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   font-family: var(--f-disp); font-weight: 700; font-size: clamp(48px, 7vw, 72px);
   line-height: 1; letter-spacing: -.035em; color: var(--ink);
 }
-.theme-fusion .fx-v3-hero-num .u { font-size: .42em; color: var(--muted); font-weight: 500; letter-spacing: -.01em; margin-left: 6px; }
+.theme-fusion .fx-v3-hero-num { white-space: nowrap; }
+.theme-fusion .fx-v3-hero-num .u { font-size: .42em; color: var(--muted); font-weight: 500; letter-spacing: -.01em; margin-left: 6px; white-space: nowrap; }
 .theme-fusion .fx-v3-hero-cap { font-size: 15px; color: var(--muted); margin-top: 12px; }
 .theme-fusion .fx-v3-section { margin: 0 0 48px; }
 .theme-fusion .fx-v3-h2 {
