@@ -61,9 +61,26 @@ type IndexFull = {
 };
 
 const memo = new Map<string, unknown>();
-/** Read a JSON object from the private bucket by object path (authenticated). */
+/** Read a JSON object from the private bucket by object path (authenticated).
+ *  Dev affordance: with `COMMUNE_DATA_LOCAL_DIR` set, the same object path is
+ *  read from that directory (a `gsutil cp` of a few communes) — the bucket
+ *  client needs Application Default Credentials that a laptop may not have. */
 async function readJson<T>(objectPath: string): Promise<T | null> {
   if (memo.has(objectPath)) return memo.get(objectPath) as T | null;
+  const localDir = process.env.COMMUNE_DATA_LOCAL_DIR;
+  if (localDir) {
+    try {
+      const fs = await import("node:fs/promises");
+      const rel = objectPath.startsWith(`${BUCKET_PREFIX}/`) ? objectPath.slice(BUCKET_PREFIX.length + 1) : objectPath;
+      const val = JSON.parse(await fs.readFile(`${localDir}/${rel}`, "utf8")) as T;
+      memo.set(objectPath, val);
+      return val;
+    } catch (e) {
+      console.error("[commune-budget] local read failed", objectPath, (e as Error).message);
+      memo.set(objectPath, null);
+      return null;
+    }
+  }
   try {
     const [buf] = await communeStorage().bucket(BUCKET_NAME).file(objectPath).download();
     const val = JSON.parse(buf.toString("utf8")) as T;
@@ -139,6 +156,18 @@ export async function loadCommuneBudget(
     .map((s) => ({ year: s.year, type: s.type_budget, depenses: s.depenses, recettes: s.recettes, solde: s.solde }))
     .sort((a, b) => a.year - b.year);
 
+  // Chaque poste année par année : les sankeys publiés pour la commune (deux à
+  // six fichiers de ~10 Ko, mémoïsés par instance) — la courbe de chaque ligne.
+  const series: BudgetPageData["series"] = {};
+  for (const y of [...index.availableYears].sort((a, b) => a - b)) {
+    const sk = y === year ? sankey : y === year - 1 ? prev : await readJson<SankeyFull>(`${BUCKET_PREFIX}/${slug}/budget_sankey_${y}.json`);
+    const type = byYear[y]?.type_budget ?? "execute";
+    for (const l of sk?.links ?? []) {
+      const label = l.source === central ? l.target : l.target === central ? l.source : null;
+      if (label && l.value > 0) (series[label] ??= []).push({ year: y, value: l.value, type });
+    }
+  }
+
   const data: BudgetPageData = {
     year,
     previousYear: previousYear ?? year,
@@ -157,18 +186,7 @@ export async function loadCommuneBudget(
     // Le loader commune ne lit que l'année courante et la précédente (fichiers
     // distants) : la série par poste se limite à ces deux points, et la
     // répartition par type de dépense n'existe pas côté DGFiP (axe nature).
-    series: (() => {
-      const out: BudgetPageData["series"] = {};
-      const add = (sk: typeof sankey | null | undefined, y: number, type: "vote" | "execute") => {
-        for (const l of sk?.links ?? []) {
-          const label = l.source === central ? l.target : l.target === central ? l.source : null;
-          if (label && l.value > 0) (out[label] ??= []).push({ year: y, value: l.value, type });
-        }
-      };
-      if (prev && previousYear) add(prev, previousYear, byYear[previousYear]?.type_budget ?? "execute");
-      add(sankey, year, byYear[year]?.type_budget ?? "execute");
-      return out;
-    })(),
+    series,
     flowSplit: [],
     flowCoveragePct: 0,
   };

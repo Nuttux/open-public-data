@@ -5,9 +5,9 @@ import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import SectionHead from "@/components/fusion/SectionHead";
 import ChartSource from "@/components/fusion/ChartSource";
-import DualFlowBars from "@/components/fusion/DualFlowBars";
 import BudgetSankey from "@/components/fusion/BudgetSankey";
 import { useT, useLocale } from "@/lib/localeContext";
+import { fmtDec } from "@/lib/fmt";
 import type { BudgetPageData } from "@/lib/fusion-data";
 
 export type CommuneMeta = {
@@ -63,6 +63,14 @@ function useEuro() {
   };
 }
 
+/**
+ * Page budget d'une commune nationale (DGFiP, axe nature), v3 (2026-09-08) —
+ * même squelette que la page budget de Paris : le chiffre de l'année avec ses
+ * repères et sa tendance, la santé financière OFGL en une ligne, puis
+ * « Dépenses et recettes » en deux colonnes avec la courbe et la part sur
+ * chaque ligne. Les lignes n'ouvrent rien : il n'y a pas de fiche de poste
+ * par nature. Le sankey reste, comme vue d'ensemble, sous les colonnes.
+ */
 export default function CommuneBudgetClient({
   commune,
   data,
@@ -79,7 +87,11 @@ export default function CommuneBudgetClient({
   const t = useT();
   const { locale } = useLocale();
   const euro = useEuro();
-
+  const fill = (key: string, vars: Record<string, string | number>) => {
+    let s = t(key);
+    for (const [k, v] of Object.entries(vars)) s = s.split(`{${k}}`).join(String(v));
+    return s;
+  };
 
   const central =
     data.sankeyNodes.find((n) => n.category === "central")?.name ?? `Budget ${commune.nom}`;
@@ -88,173 +100,148 @@ export default function CommuneBudgetClient({
   const nfHab = new Intl.NumberFormat(locale === "en" ? "en-GB" : "fr-FR", {
     maximumFractionDigits: 0,
   });
+  const yearType = data.yearsSummary.find((y) => y.year === year)?.type ?? "execute";
+  const isVoted = yearType === "vote";
 
-  const leftRows = data.recettesBreakdown.map((r) => ({
-    label: r.label,
-    value: r.value,
-    display: euro(r.value),
-  }));
-  const rightRows = data.topDepenses.map((d) => ({
-    label: d.label,
-    value: d.value,
-    rouge: true,
-    display: euro(d.value),
-  }));
+  /* ── La tendance : toutes les années publiées ── */
+  const years = data.yearsSummary;
+  const maxDep = Math.max(...years.map((y) => y.depenses), 1);
+  const first = years[0];
+  const sinceFirst = first && first.year !== year && first.depenses > 0 ? ((data.depenses - first.depenses) / first.depenses) * 100 : null;
+  const prevYear = years.filter((y) => y.year < year).sort((a, b) => b.year - a.year)[0];
+  const deltaYear = prevYear && prevYear.depenses > 0 ? ((data.depenses - prevYear.depenses) / prevYear.depenses) * 100 : null;
+  const signed = (x: number) => `${x >= 0 ? "+" : "−"}${fmtDec(Math.abs(x), 1)} %`;
+
+  /* ── Les lignes : libellé, courbe, montant, part (pas de fiche par nature) ── */
+  const Amt = ({ n }: { n: number }) => {
+    const abs = Math.abs(n);
+    const v = abs >= 1e9 ? (n / 1e9).toLocaleString(locale === "en" ? "en-GB" : "fr-FR", { maximumFractionDigits: 2 }) : abs >= 1e6 ? (n / 1e6).toLocaleString(locale === "en" ? "en-GB" : "fr-FR", { maximumFractionDigits: abs >= 1e8 ? 0 : 1 }) : nfHab.format(n / 1e3);
+    const u = abs >= 1e9 ? t("fx.s.md_eur") : abs >= 1e6 ? t("fx.s.m_eur") : "k €";
+    return <span className="fx-v3-amt tnum" style={{ fontSize: 14, textAlign: "right" }}>{v}<span className="u">{u}</span></span>;
+  };
+  const Spark = ({ label }: { label: string }) => {
+    const pts = (data.series[label] ?? []).filter((p) => p.year <= year);
+    if (pts.length < 2) return <span />;
+    const m = Math.max(...pts.map((p) => p.value), 1);
+    return (
+      <span className="fx-bud-spark" aria-hidden="true" title={pts.map((p) => `${p.year} : ${euro(p.value)}`).join(" · ")}>
+        {pts.map((p) => <i key={p.year} className={p.year === year ? "now" : p.type === "vote" ? "vote" : ""} style={{ height: Math.max(2, Math.round((p.value / m) * 18)) }} />)}
+      </span>
+    );
+  };
+  const Row = ({ label, value, total }: { label: string; value: number; total: number }) => (
+    <div className="fx-bud-row fx-bud-row--static">
+      <span className="n">{label.replace(/\s\((D|R)\)$/, "")}</span>
+      <Spark label={label} />
+      <Amt n={value} />
+      <span className="p tnum">{Math.round((value / total) * 100)} %</span>
+    </div>
+  );
+  const dep = data.topDepenses.filter((x) => x.value / data.depenses >= 0.005);
+  const rec = data.recettesBreakdown.filter((x) => x.value / data.recettes >= 0.005);
+  const hasSeries = Object.values(data.series).some((s) => s.length > 1);
+  const sparkSpan = (() => { const ys = years.filter((y) => y.year <= year).map((y) => y.year); return ys.length > 1 ? `${ys[0]}–${ys[ys.length - 1]}` : String(year); })();
 
   return (
     <div className="theme-fusion">
       <Navbar />
       <main id="main-content" tabIndex={-1}>
-        <div className="fx-wrap" style={{ padding: "48px 0" }}>
+        <div className="fx-wrap fx-v3 fx-bud-v3" style={{ padding: "48px 0" }}>
           <SectionHead
             kind="budget"
             title={`${commune.nom} — ${t("fx.natbud.kicker")}`}
-            subtitle={`${commune.dep_name} · ${commune.reg_name} · ${nfHab.format(commune.pop)} ${t("fx.natbud.hab")} · ${year}`}
+            subtitle={`${commune.dep_name} · ${commune.reg_name} · ${nfHab.format(commune.pop)} ${t("fx.natbud.hab")}`}
           />
 
-          <p className="fx-lede">{t("fx.natbud.lede")}</p>
-
-          {/* Year picker */}
           {availableYears.length > 1 && (
             <nav className="fx-yearpicker" aria-label={t("fx.natbud.year_label")}>
               {availableYears.map((y) => (
-                <Link
-                  key={y}
-                  href={`/fr/city/${commune.slug}/budget?year=${y}`}
-                  className={y === year ? "is-active" : ""}
-                  aria-current={y === year ? "page" : undefined}
-                >
-                  {y}
-                </Link>
+                <Link key={y} href={`/fr/city/${commune.slug}/budget?year=${y}`} className={y === year ? "is-active" : ""} aria-current={y === year ? "page" : undefined}>{y}</Link>
               ))}
             </nav>
           )}
 
-          {/* KPI row */}
-          <div className="fx-kpi-grid" style={{ marginTop: 28 }}>
-            <div className="fx-kpi-card is-hero">
-              <p className="fx-kpi-label">{t("fx.natbud.recettes")}</p>
-              <p className="fx-kpi-value tnum">{euro(data.recettes)}</p>
+          <div className="fx-v3-herogrid">
+            <div>
+              <div className="fx-v3-hero-num tnum">{euro(data.depenses).replace(/\s?(Md€|M€|€)$/, "")}<span className="u">{euro(data.depenses).match(/(Md€|M€|€)$/)?.[0]}</span></div>
+              <div className="fx-v3-hero-cap">{fill(isVoted ? "fx.bud.v3.cap_vote" : "fx.natbud.v3.cap_exec", { year })}</div>
+              <div className="fx-v3-hero-meta">
+                {perHab > 0 ? `${fill("fx.bud.v3.par_hab", { n: nfHab.format(perHab) })} · ` : ""}
+                {fill("fx.bud.v3.recettes_exec", { rec: euro(data.recettes) })}
+                {` · ${t("fx.natbud.solde").toLowerCase()} ${euro(data.solde, true)}`}
+              </div>
+              {health && (health.detteEurHab != null || health.capaciteDesend != null || health.epargneBrute != null) && (
+                <div className="fx-v3-hero-meta">
+                  {[
+                    health.detteEurHab != null ? `${t("fx.natbud.health_dette")} ${nfHab.format(Math.round(health.detteEurHab))} €/hab` : null,
+                    health.capaciteDesend != null ? `${t("fx.natbud.health_capacite")} ${health.capaciteDesend.toLocaleString(locale === "en" ? "en-GB" : "fr-FR", { maximumFractionDigits: 1 })} ${t("fx.natbud.years")}` : null,
+                    health.epargneBrute != null ? `${t("fx.natbud.health_epargne")} ${euro(health.epargneBrute)}` : null,
+                  ].filter(Boolean).join(" · ")}
+                  {" · "}
+                  <span className="fx-def" title={t("fx.natbud.ofgl_tip")} tabIndex={0}>{t("fx.natbud.health_source")}</span>
+                </div>
+              )}
             </div>
-            <div className="fx-kpi-card">
-              <p className="fx-kpi-label">{t("fx.natbud.depenses")}</p>
-              <p className="fx-kpi-value tnum">{euro(data.depenses)}</p>
-            </div>
-            <div className="fx-kpi-card">
-              <p className="fx-kpi-label">{t("fx.natbud.solde")}</p>
-              <p className="fx-kpi-value tnum">{euro(data.solde, true)}</p>
-            </div>
-            <div className="fx-kpi-card">
-              <p className="fx-kpi-label">{t("fx.natbud.depenses_hab")}</p>
-              <p className="fx-kpi-value tnum">{nfHab.format(perHab)} €</p>
-            </div>
+            {years.length > 1 && (
+              <div className="fx-v3-trend">
+                <div className="t">
+                  {deltaYear != null && <b>{signed(deltaYear)} {fill("fx.bud.v3.vs", { y: prevYear.year })}</b>}
+                  {sinceFirst != null && first.year !== prevYear?.year && <span> · {signed(sinceFirst)} {fill("fx.bud.v3.depuis", { y: first.year })}</span>}
+                </div>
+                <div className="bars" aria-hidden="true">
+                  {years.map((y) => (
+                    <div key={y.year} className={y.year === year ? "now" : y.type === "vote" ? "vote" : ""} title={`${y.year} · ${euro(y.depenses)}`}>
+                      <b style={{ height: Math.max(3, Math.round((y.depenses / maxDep) * 50)) }} />
+                      <span>{y.year}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
-          {/* Santé financière (OFGL) — dette, capacité de désendettement, épargne */}
-          {health && (
-            <div className="fx-health">
-              <span className="fx-health-title">{t("fx.natbud.health_title")}</span>
-              {health.detteEurHab != null && (
-                <span className="fx-health-item">
-                  <b className="tnum">{nfHab.format(Math.round(health.detteEurHab))} €/hab</b>
-                  {t("fx.natbud.health_dette")}
-                </span>
-              )}
-              {health.capaciteDesend != null && (
-                <span className="fx-health-item">
-                  <b className="tnum">
-                    {health.capaciteDesend.toLocaleString(locale === "en" ? "en-GB" : "fr-FR", { maximumFractionDigits: 1 })} {t("fx.natbud.years")}
-                  </b>
-                  <span
-                    className="fx-def"
-                    title={t("fx.natbud.health_capacite_tip")}
-                    tabIndex={0}
-                  >
-                    {t("fx.natbud.health_capacite")}
-                  </span>
-                </span>
-              )}
-              {health.epargneBrute != null && (
-                <span className="fx-health-item">
-                  <b className="tnum">{euro(health.epargneBrute)}</b>
-                  {t("fx.natbud.health_epargne")}
-                </span>
-              )}
-              <span
-                className="fx-health-src fx-def"
-                title={t("fx.natbud.ofgl_tip")}
-                tabIndex={0}
-              >
-                {t("fx.natbud.health_source")}
-              </span>
-            </div>
-          )}
-
-          {/* Cross-links to the other national pages this commune has */}
           {(marchesHref || investissementsHref || evolutionHref || comparaisonHref) && (
             <nav className="fx-natlinks">
-              {investissementsHref && (
-                <Link href={investissementsHref} className="fx-cta-link">
-                  {t("fx.natinv.link")} →
-                </Link>
-              )}
-              {marchesHref && (
-                <Link href={marchesHref} className="fx-cta-link">
-                  {t("fx.natmar.link")} →
-                </Link>
-              )}
-              {evolutionHref && (
-                <Link href={evolutionHref} className="fx-cta-link">
-                  {t("fx.natev.link")} →
-                </Link>
-              )}
-              {comparaisonHref && (
-                <Link href={comparaisonHref} className="fx-cta-link">
-                  {t("fx.natcmp.link")} →
-                </Link>
-              )}
+              {investissementsHref && <Link href={investissementsHref} className="fx-cta-link">{t("fx.natinv.link")} →</Link>}
+              {marchesHref && <Link href={marchesHref} className="fx-cta-link">{t("fx.natmar.link")} →</Link>}
+              {evolutionHref && <Link href={evolutionHref} className="fx-cta-link">{t("fx.natev.link")} →</Link>}
+              {comparaisonHref && <Link href={comparaisonHref} className="fx-cta-link">{t("fx.natcmp.link")} →</Link>}
             </nav>
           )}
 
-          {/* Honest axis note: this is NATURE, not fonction */}
-          <p className="fx-note">{t("fx.natbud.nature_note")}</p>
+          <h2 className="fx-v3-h2" style={{ marginTop: 40 }}>{t("fx.bud.v3.h2")}</h2>
+          <p className="fx-v3-h2sub">
+            {t("fx.natbud.v3.h2sub")}
+            {hasSeries ? ` ${fill("fx.natbud.v3.span", { span: sparkSpan })}` : ""}
+          </p>
 
-          {/* Dual flow bars — recettes / dépenses par nature */}
-          <DualFlowBars
-            left={{ title: t("fx.natbud.recettes_title"), rows: leftRows }}
-            right={{ title: t("fx.natbud.depenses_title"), rows: rightRows }}
-            center={{ label: t("fx.natbud.solde"), value: euro(data.solde, true) }}
-          />
-
-          {/* Sankey (reused fusion component, city-agnostic via `central`) */}
-          {data.sankeyLinks.length > 0 && (
-            <div className="fx-sankey-wrap">
-              <BudgetSankey
-                nodes={data.sankeyNodes}
-                links={data.sankeyLinks}
-                central={central}
-                height={520}
-              />
+          <div className="fx-bud-cols">
+            <div className="fx-bud-col">
+              <h3><span>{t("fx.bud.v3.col_dep")}</span><span className="tnum">{euro(data.depenses)}</span></h3>
+              {dep.map((x) => <Row key={x.label} label={x.label} value={x.value} total={data.depenses} />)}
             </div>
-          )}
+            <div className="fx-bud-col">
+              <h3><span>{t("fx.bud.v3.col_rec")}</span><span className="tnum">{euro(data.recettes)}</span></h3>
+              {rec.map((x) => <Row key={x.label} label={x.label} value={x.value} total={data.recettes} />)}
+            </div>
+          </div>
 
-          {/* Upgrade layer — budget par FONCTION. Renders IFF data-derived
-              capability present. Absent today for national-only communes; flips
-              on automatically when a fonction export exists (no code edit). */}
           {hasFonction ? (
             <section className="fx-section" aria-label={t("fx.natbud.fonction_title")}>
               <SectionHead kind="budget" title={t("fx.natbud.fonction_title")} />
               <p className="fx-note">{t("fx.natbud.fonction_present")}</p>
             </section>
           ) : (
-            <p className="fx-note fx-note-muted">{t("fx.natbud.fonction_absent")}</p>
+            <p className="fx-v3-foot">{t("fx.natbud.fonction_absent")}</p>
           )}
 
-          <ChartSource
-            source={`${t("fx.natbud.source")} · ${year}`}
-            dataHref={sourceUrl}
-            methodAnchor="c-villes"
-          />
+          {data.sankeyLinks.length > 0 && (
+            <div className="fx-sankey-wrap" style={{ marginTop: 36 }}>
+              <BudgetSankey nodes={data.sankeyNodes} links={data.sankeyLinks} central={central} height={520} />
+            </div>
+          )}
+
+          <ChartSource source={`${t("fx.natbud.source")} · ${year}`} dataHref={sourceUrl} methodAnchor="c-villes" />
         </div>
       </main>
       <Footer />

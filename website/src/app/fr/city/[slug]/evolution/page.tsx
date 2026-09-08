@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import "@/app/fusion.css";
 
 import { findCommuneByAny } from "@/lib/all-communes";
-import { getCityOrNull } from "@/lib/cities";
+import { hasDedicatedRoutes } from "@/lib/cities";
 import { getCommuneCapabilities } from "@/lib/commune-capabilities";
 import { loadCommuneEvolution } from "@/lib/commune-evolution";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
@@ -40,7 +40,9 @@ export default async function CommuneEvolutionPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  if (getCityOrNull(slug)) notFound();
+  // Seules Paris et Marseille ont leurs propres pages ; les autres villes du
+  // registre passent par la route nationale comme toute commune.
+  if (hasDedicatedRoutes(slug)) notFound();
 
   const caps = getCommuneCapabilities(slug);
   if (!caps.evolution) notFound();

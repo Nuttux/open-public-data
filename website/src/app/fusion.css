@@ -19299,3 +19299,4 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   .theme-fusion .fx-bud-cols { grid-template-columns: 1fr; gap: 30px; }
   .theme-fusion .fx-bud-row { grid-template-columns: minmax(0, 1fr) 44px auto 34px; font-size: 13.5px; }
 }
+.theme-fusion .fx-bud-row--static { cursor: default; } .theme-fusion .fx-bud-row--static:hover { background: transparent; }

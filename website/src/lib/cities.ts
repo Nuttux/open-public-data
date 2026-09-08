@@ -40,6 +40,19 @@ export function getCity(slug: string): City | undefined {
   return CITY_BY_SLUG.get(slug);
 }
 
+/**
+ * Villes qui ont LEURS PROPRES routes (app/fr/city/<slug>/…) : pour elles, la
+ * route nationale `[slug]` doit s'effacer. Les huit autres villes du registre
+ * (Lyon, Toulouse, Nice, Nantes, Montpellier, Strasbourg, Bordeaux, Lille)
+ * n'ont pas de page propre : elles vivent sur les pages nationales comme toute
+ * commune — les refuser parce qu'elles sont « au registre » les laissait sans
+ * aucune page budget (404 en prod, vu le 2026-09-08 sur /fr/city/lyon/budget).
+ */
+const DEDICATED_ROUTES = new Set(["paris", "marseille"]);
+export function hasDedicatedRoutes(slug: string): boolean {
+  return DEDICATED_ROUTES.has(slug);
+}
+
 /** Returns the City or null. */
 export function getCityOrNull(slug: string): City | null {
   return CITY_BY_SLUG.get(slug) ?? null;

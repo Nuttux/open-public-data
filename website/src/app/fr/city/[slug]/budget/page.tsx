@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import "@/app/fusion.css";
 
 import { findCommuneByAny } from "@/lib/all-communes";
-import { getCityOrNull } from "@/lib/cities";
+import { hasDedicatedRoutes } from "@/lib/cities";
 import { getCommuneCapabilities } from "@/lib/commune-capabilities";
 import { loadCommuneBudget } from "@/lib/commune-budget";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
@@ -50,7 +50,9 @@ export default async function CommuneBudgetPage({
   const sp = await searchParams;
 
   // Rich cities (Paris/Marseille) own their functional budget pages elsewhere.
-  if (getCityOrNull(slug)) notFound();
+  // Seules Paris et Marseille ont leurs propres pages ; les autres villes du
+  // registre passent par la route nationale comme toute commune.
+  if (hasDedicatedRoutes(slug)) notFound();
 
   // DATA-DERIVED gate â no city list. Renders iff the national budget-by-nature
   // export exists for this commune.
