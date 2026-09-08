@@ -1,5 +1,5 @@
+import { readSiteLocale } from "@/lib/seo";
 import type { Metadata } from "next";
-import { cookies } from "next/headers";
 import { loadEnrichedPlacesFile } from "@/lib/br/recife-places-data";
 import LugaresClient from "./LugaresClient";
 
@@ -10,8 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default async function LugaresPage() {
-  const store = await cookies();
-  const locale: "pt" | "en" = store.get("br_locale")?.value === "en" ? "en" : "pt";
+  const locale: "pt" | "en" = (await readSiteLocale()) === "en" ? "en" : "pt";
   const f = loadEnrichedPlacesFile();
   return (
     <LugaresClient

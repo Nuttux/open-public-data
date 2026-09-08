@@ -9,7 +9,8 @@
  */
 
 import type { Metadata } from 'next';
-import { cookies } from 'next/headers';
+import { headers } from 'next/headers';
+import { alternatesFor, localeFromHost, DEFAULT_SITE_LOCALE, type SiteLocale } from '@/lib/site-locale';
 
 // The apex 308-redirects to www in production, so www is the host that
 // actually serves. Pointing canonicals, OG urls and ~42 000 sitemap entries at
@@ -21,24 +22,31 @@ export const DEFAULT_LOCALE = 'fr_FR';
 export const TWITTER_HANDLE = '@donneeslumieres';
 
 /**
- * Read the user's locale server-side. Cookie `dl_locale` is the only signal —
- * fallback is FR. We deliberately don't sniff Accept-Language: the site is
- * primarily about French public finances, many French users have EN-default
- * browsers (OS/dev tooling), and Accept-Language was sending them to EN
- * involuntarily — including when they shared links to other French speakers.
- * EN is opt-in via the explicit toggle.
- * Exception événementielle : DEFAULT_LOCALE=en bascule le fallback (visiteurs
- * sans cookie) en anglais — pour un salon/une démo où le public scanne un QR.
- * Un choix explicite (cookie) garde toujours la priorité.
+ * The language this request is served in — decided by the HOST, never by a
+ * cookie or Accept-Language (lib/site-locale.ts): www = English, fr. = French,
+ * pt. = Portuguese. proxy.ts stamps `x-qipu-locale`; the host header is the
+ * fallback for routes the proxy does not cover (sitemap, robots).
+ *
+ * Why no cookie: crawlers never carry one, so a cookie-chosen language meant
+ * exactly one language per page in Google's index — and a DEFAULT_LOCALE=en
+ * demo switch left on in production had made that language English for every
+ * French entity page (2026-09-08 audit).
  */
-export async function readLocale(): Promise<'fr' | 'en'> {
+export async function readSiteLocale(): Promise<SiteLocale> {
   try {
-    const c = await cookies();
-    const fromCookie = c.get('dl_locale')?.value;
-    if (fromCookie === 'en') return 'en';
-    if (fromCookie === 'fr') return 'fr';
-  } catch { /* cookies() may throw at module load — ignore */ }
-  return process.env.DEFAULT_LOCALE === 'en' ? 'en' : 'fr';
+    const h = await headers();
+    const forced = h.get('x-qipu-locale');
+    if (forced === 'fr' || forced === 'en' || forced === 'pt') return forced;
+    return localeFromHost(h.get('host'));
+  } catch {
+    /* headers() throws outside a request (module evaluation, static build) */
+    return DEFAULT_SITE_LOCALE;
+  }
+}
+
+/** The FR/EN dictionary to use for French-authored surfaces (pt reads as en). */
+export async function readLocale(): Promise<'fr' | 'en'> {
+  return (await readSiteLocale()) === 'fr' ? 'fr' : 'en';
 }
 
 type BuildMetadataInput = {
@@ -64,17 +72,17 @@ function _assemble(
   locale: 'fr' | 'en',
   input: BuildMetadataInput,
 ): Metadata {
-  const canonical = input.path ?? '/';
+  const path = input.path ?? '/';
   const ogLocale = locale === 'en' ? 'en_US' : DEFAULT_LOCALE;
   const altLocale = locale === 'en' ? ['fr_FR'] : ['en_US'];
-  // hreflang only means something when each language has its own URL. Here the
-  // locale is carried by a cookie, so every language shares one address:
-  // declaring fr-FR and en-US on the same href told search engines nothing and
-  // left Portuguese unmentioned entirely. Alternates are emitted only when a
-  // page genuinely has per-language URLs.
+  // Each language has its own host, so every page declares its twins
+  // (lib/site-locale.ts). An explicit per-language override wins when a page
+  // has genuinely different paths per language.
+  const alt = alternatesFor(path, locale);
+  const canonical = alt.canonical;
   const languages = input.alternates
     ? { 'fr-FR': input.alternates.fr, 'en-US': input.alternates.en }
-    : undefined;
+    : alt.languages;
 
   // Only set images when an explicit override is provided. Otherwise let Next.js
   // resolve `opengraph-image.tsx` from the route segment (closest match wins).
@@ -94,7 +102,7 @@ function _assemble(
     openGraph: {
       title: resolvedTitle,
       description: resolvedDescription,
-      url: `${SITE_URL}${canonical}`,
+      url: canonical,
       siteName: SITE_NAME,
       locale: ogLocale,
       alternateLocale: altLocale,
@@ -218,4 +226,33 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
       item: `${SITE_URL}${item.path}`,
     })),
   };
+}
+
+/**
+ * Last pass over an entity page's Metadata (lib/entity-page.tsx):
+ *   - brand suffix exactly once, as `absolute`, so the root `%s · Qipu`
+ *     template cannot double it ("… · Qipu · Qipu" was live for 11 entity types);
+ *   - canonical + hreflang on the host that speaks `locale`, derived from the
+ *     path the entity config declared.
+ */
+export function finalizeEntityMetadata(md: Metadata, locale: SiteLocale): Metadata {
+  const out: Metadata = { ...md };
+  if (typeof md.title === 'string') {
+    const bare = md.title.replace(/\s+[·—]\s+Qipu$/u, '');
+    out.title = { absolute: `${bare} · ${SITE_NAME}` };
+    if (md.openGraph && typeof md.openGraph.title === 'string') {
+      out.openGraph = { ...md.openGraph, title: bare };
+    }
+    if (md.twitter && typeof md.twitter.title === 'string') {
+      out.twitter = { ...md.twitter, title: bare };
+    }
+  }
+  const declared = md.alternates?.canonical;
+  const path = typeof declared === 'string' ? declared : declared && 'url' in declared ? String(declared.url) : null;
+  if (path && path.startsWith('/')) {
+    const alt = alternatesFor(path, locale);
+    out.alternates = { ...md.alternates, canonical: alt.canonical, languages: alt.languages };
+    out.openGraph = { ...(out.openGraph ?? md.openGraph), url: alt.canonical };
+  }
+  return out;
 }

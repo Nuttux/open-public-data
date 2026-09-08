@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
-import { SITE_URL } from '@/lib/seo';
+import { SITE_URL, readSiteLocale } from '@/lib/seo';
+import { LOCALE_HOSTS, localesForPath } from '@/lib/site-locale';
 import { listCities } from '@/lib/cities';
 import { listAllCommunesMeta, loadAllCommunesGeneratedAt } from '@/lib/all-communes';
 import { listDataDir } from '@/lib/data/read';
@@ -170,10 +171,22 @@ export default async function sitemap({
 }: {
   id: Promise<string> | string | number;
 }): Promise<MetadataRoute.Sitemap> {
-  const now = new Date();
-
   const id = Number(await rawId);
   if (!Number.isFinite(id)) return [];
+
+  // One sitemap per host, in that host's language (lib/site-locale.ts): the
+  // French host lists the French twins of every French-authored page and
+  // nothing from /us; the Portuguese host lists /br only.
+  const locale = await readSiteLocale();
+  const base = LOCALE_HOSTS[locale];
+  const entries = await segment(id);
+  return entries
+    .filter((e) => localesForPath(e.url.slice(SITE_URL.length) || '/').includes(locale))
+    .map((e) => ({ ...e, url: `${base}${e.url.slice(SITE_URL.length)}` }));
+}
+
+async function segment(id: number): Promise<MetadataRoute.Sitemap> {
+  const now = new Date();
 
   // Commune pages change when their export is regenerated, not when a crawler
   // asks. Stamping them with `now` made every page claim it had just changed,

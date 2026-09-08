@@ -3,10 +3,7 @@
 import {
   createContext,
   useContext,
-  useState,
-  useEffect,
   useCallback,
-  startTransition,
   use,
   Suspense,
   type ReactNode,
@@ -14,6 +11,7 @@ import {
 import { usePathname } from 'next/navigation';
 
 import { getCity } from '@/lib/cities';
+import { urlForLocale } from '@/lib/site-locale';
 import frDictionary from '@/i18n/fr';
 
 // City label rewriter — replaces hardcoded "Paris" forms with the current
@@ -159,9 +157,6 @@ function useDictionaries(locale: Locale): { dict: Dict; frDict: Dict } {
   return { dict, frDict };
 }
 
-const STORAGE_KEY = 'dl_locale';
-const COOKIE_KEY = 'dl_locale';
-
 interface LocaleContextValue {
   locale: Locale;
   setLocale: (l: Locale) => void;
@@ -173,13 +168,6 @@ const LocaleContext = createContext<LocaleContextValue>({
   setLocale: () => {},
   t: (key) => key,
 });
-
-function writeCookie(value: Locale) {
-  if (typeof document === 'undefined') return;
-  // 1 year, root path. Lax SameSite is the right default for a same-site preference.
-  const oneYear = 60 * 60 * 24 * 365;
-  document.cookie = `${COOKIE_KEY}=${value}; max-age=${oneYear}; path=/; SameSite=Lax`;
-}
 
 export function LocaleProvider({
   children,
@@ -196,78 +184,35 @@ export function LocaleProvider({
   // "change in the order of Hooks" crash (React error #467-adjacent): when
   // useDictionaries suspended, every hook after it in the function body never
   // ran on that attempt, and the retry's hook count no longer lined up.
-  const [locale, setLocaleState] = useState<Locale>(initialLocale);
   return (
     <Suspense fallback={null}>
-      <LocaleProviderInner locale={locale} setLocaleState={setLocaleState}>
-        {children}
-      </LocaleProviderInner>
+      <LocaleProviderInner locale={initialLocale}>{children}</LocaleProviderInner>
     </Suspense>
   );
 }
 
 function LocaleProviderInner({
   locale,
-  setLocaleState,
   children,
 }: {
   locale: Locale;
-  setLocaleState: (l: Locale) => void;
   children: ReactNode;
 }) {
   // Suspending call goes FIRST, before any other hook in this component, so a
   // suspended attempt never leaves a partial hook list to compare against.
   const { dict, frDict } = useDictionaries(locale);
 
-  // Reconcile with localStorage on mount so a tab opened with a stale cookie still
-  // honours the user's last explicit choice. Mirror back to cookie so SSR + future
-  // tabs stay in sync. startTransition: switching locale may suspend on the other
-  // dict chunk — a transition keeps the current UI on screen instead of blanking.
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored === 'en' && locale !== 'en') {
-        startTransition(() => setLocaleState('en'));
-        writeCookie('en');
-      } else if (stored === 'fr' && locale !== 'fr') {
-        startTransition(() => setLocaleState('fr'));
-        writeCookie('fr');
-      } else if (!stored) {
-        // No localStorage choice yet: persist the SSR-determined locale so future
-        // tabs without a cookie still get a stable preference.
-        try { localStorage.setItem(STORAGE_KEY, locale); } catch {}
-        writeCookie(locale);
-      }
-    } catch { /* SSR / private browsing */ }
-  }, [locale, setLocaleState]);
-
-  // Keep <html lang> in sync with the active locale: SSR only knows the cookie,
-  // so a client-side toggle would otherwise leave a stale lang attribute —
-  // wrong for screen readers and for :lang() CSS (EN hero sizing).
-  useEffect(() => {
-    document.documentElement.lang = locale;
-  }, [locale]);
-
+  // The language is the host's (lib/site-locale.ts): the server already
+  // rendered this page in it, so the client never flips it in place. Switching
+  // language = going to the same path on the other host, a full navigation, so
+  // that Google, the URL bar and the shared link all agree on the language.
+  // Nothing is stored client-side: there is no preference to remember, the
+  // address IS the choice.
   const setLocale = useCallback((l: Locale) => {
-    // Transition: the new locale's dict chunk may not be downloaded yet, so the
-    // re-render suspends. Inside a transition React keeps showing the previous
-    // locale until the chunk arrives — never raw keys, never a blank page.
-    startTransition(() => setLocaleState(l));
-    try { localStorage.setItem(STORAGE_KEY, l); } catch { /* ignore */ }
-    writeCookie(l);
-  }, [setLocaleState]);
-
-  // One-shot on mount: an explicit ?lang= in the URL wins over any stored
-  // preference, so shared links (QR codes, printed material) land directly in
-  // the requested language. Persists through the normal cookie/localStorage
-  // path; the toggle behaves normally afterwards. Keeps EN opt-in explicit —
-  // the link itself is the choice, we still never sniff Accept-Language.
-  useEffect(() => {
-    try {
-      const fromUrl = new URLSearchParams(window.location.search).get('lang');
-      if (fromUrl === 'en' || fromUrl === 'fr') setLocale(fromUrl);
-    } catch { /* non-browser */ }
-  }, [setLocale]);
+    if (l === locale || typeof window === 'undefined') return;
+    const { pathname, search, hash, host } = window.location;
+    window.location.assign(urlForLocale(l, `${pathname}${search}${hash}`, host));
+  }, [locale]);
 
   const pathname = usePathname();
   const citySlug = detectCityFromPath(pathname);

@@ -25,6 +25,6 @@ export function landingClosing(locale: Locale): LandingClosing {
     title: t("fx.closing.title"),
     text: t("fx.closing.text"),
     cta: t("fx.closing.cta"),
-    href: locale === "fr" ? "/pour-les-villes" : `/pour-les-villes?lang=${locale}`,
+    href: "/pour-les-villes",
   };
 }

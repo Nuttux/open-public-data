@@ -1,5 +1,5 @@
+import { readSiteLocale } from "@/lib/seo";
 import type { Metadata } from "next";
-import { cookies } from "next/headers";
 import Landing from "@/components/landing/Landing";
 import { buildRecifeLandingModel } from "@/lib/br/recife-landing-model";
 import type { Locale } from "@/lib/localeContext";
@@ -11,8 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default async function RecifeHubPage() {
-  const store = await cookies();
-  const locale: Locale = store.get("br_locale")?.value === "en" ? "en" : "pt";
+  const locale: Locale = (await readSiteLocale()) === "en" ? "en" : "pt";
   const model = buildRecifeLandingModel(locale);
   return <Landing model={model} />;
 }

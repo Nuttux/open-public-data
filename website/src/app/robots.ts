@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
-import { SITE_URL } from '@/lib/seo';
+import { readSiteLocale } from '@/lib/seo';
+import { LOCALE_HOSTS } from '@/lib/site-locale';
 import { generateSitemaps } from '@/app/sitemap';
 
 /**
@@ -20,15 +21,20 @@ import { generateSitemaps } from '@/app/sitemap';
  */
 export default async function robots(): Promise<MetadataRoute.Robots> {
   const segments = await generateSitemaps();
+  // Per host (lib/site-locale.ts): the French host has no /us or /br, the
+  // Portuguese host serves /br only — proxy.ts redirects the rest, and telling
+  // crawlers up front saves them the hop.
+  const locale = await readSiteLocale();
+  const base = LOCALE_HOSTS[locale];
+  const rule =
+    locale === 'pt'
+      ? { userAgent: '*', allow: ['/br', '/br/'], disallow: ['/'] }
+      : locale === 'fr'
+        ? { userAgent: '*', allow: '/', disallow: ['/api/', '/v2', '/v2/', '/us', '/us/', '/br', '/br/'] }
+        : { userAgent: '*', allow: '/', disallow: ['/api/', '/v2', '/v2/'] };
   return {
-    rules: [
-      {
-        userAgent: '*',
-        allow: '/',
-        disallow: ['/api/', '/v2', '/v2/'],
-      },
-    ],
-    sitemap: segments.map(({ id }) => `${SITE_URL}/sitemap/${id}.xml`),
-    host: SITE_URL,
+    rules: [rule],
+    sitemap: segments.map(({ id }) => `${base}/sitemap/${id}.xml`),
+    host: base,
   };
 }

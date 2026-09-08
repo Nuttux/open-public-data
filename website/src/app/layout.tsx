@@ -17,7 +17,7 @@ import AnalyticsProvider from "@/components/AnalyticsProvider";
 import ChatPanel from "@/components/ChatPanel";
 import { LocaleProvider } from "@/lib/localeContext";
 import SearchModal from "@/components/fusion/SearchModal";
-import { SITE_URL, SITE_NAME, organizationJsonLd, websiteJsonLd, readLocale } from "@/lib/seo";
+import { SITE_URL, SITE_NAME, organizationJsonLd, websiteJsonLd, readLocale, readSiteLocale } from "@/lib/seo";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 const inter = Inter({
   variable: "--font-inter",
@@ -57,9 +57,9 @@ export const metadata: Metadata = {
   authors: [{ name: SITE_NAME }],
   creator: SITE_NAME,
   publisher: SITE_NAME,
-  // No languages map: the locale is a cookie, so the three languages share one
-  // URL and hreflang would be declaring alternates that do not exist.
-  alternates: { canonical: "/" },
+  // No canonical here: the language is carried by the host (lib/site-locale.ts)
+  // and each page declares its own canonical + hreflang. A root canonical of
+  // "/" would be inherited by any page that forgot, pointing it at the home.
   openGraph: {
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
@@ -112,9 +112,10 @@ export default async function RootLayout({
   drawer: React.ReactNode;
 }>) {
   const initialLocale = await readLocale();
+  const siteLocale = await readSiteLocale();
   const skipLabel = initialLocale === 'en' ? 'Skip to main content' : 'Aller au contenu principal';
   return (
-    <html lang={initialLocale === 'en' ? 'en' : 'fr'}>
+    <html lang={siteLocale}>
       <body className={`${inter.variable} font-sans antialiased`}>
         {/* RGAA 12.7 — skip-to-content link, first focusable element */}
         <a href="#main-content" className="skip-to-content">{skipLabel}</a>

@@ -1,21 +1,20 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useT, type Locale } from "@/lib/localeContext";
+import { urlForLocale } from "@/lib/site-locale";
 
 /**
  * PT/EN toggle for /br routes — the same segmented control as the France
- * LangSwitcher (fx-lang), but /br is server-locale, so it writes the
- * `br_locale` cookie and refreshes rather than using the client setLocale.
+ * LangSwitcher (fx-lang). The language is the host's (pt.qipu.org speaks
+ * Portuguese, www English), so switching is a navigation to the twin host.
  */
 export default function RecifeLangToggle({ locale }: { locale: Locale }) {
-  const router = useRouter();
   const t = useT();
 
   const change = (next: "pt" | "en") => {
-    if (next === locale) return;
-    document.cookie = `br_locale=${next}; path=/; max-age=31536000; samesite=lax`;
-    router.refresh();
+    if (next === locale || typeof window === "undefined") return;
+    const { pathname, search, hash, host } = window.location;
+    window.location.assign(urlForLocale(next, `${pathname}${search}${hash}`, host));
   };
 
   return (

@@ -1,3 +1,4 @@
+import { alternatesFor } from "@/lib/site-locale";
 import type { Metadata } from "next";
 import "./fusion.css";
 
@@ -35,16 +36,13 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(SITE_URL),
     title: og.title,
     description: og.description,
-    alternates: {
-      canonical: "/",
-      languages: { "fr-FR": "/", "en-US": "/" },
-    },
+    alternates: alternatesFor("/", locale),
     openGraph: {
       type: "website",
       siteName: "Qipu",
       title: og.title,
       description: og.description,
-      url: SITE_URL,
+      url: alternatesFor("/", locale).canonical,
       locale: locale === "en" ? "en_US" : "fr_FR",
       alternateLocale: locale === "en" ? ["fr_FR"] : ["en_US"],
     },

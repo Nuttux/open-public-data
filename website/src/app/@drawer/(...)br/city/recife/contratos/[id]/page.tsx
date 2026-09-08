@@ -1,4 +1,4 @@
-import { cookies } from "next/headers";
+import { readSiteLocale } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import DetailDrawer from "@/components/fusion/DetailDrawer";
 import { ForcedLocale, type Locale } from "@/lib/localeContext";
@@ -10,8 +10,7 @@ export default async function DrawerContratoPage({ params }: { params: Promise<{
   const { id } = await params;
   const found = loadContrato(id);
   if (!found) return notFound();
-  const store = await cookies();
-  const locale: Locale = store.get("br_locale")?.value === "en" ? "en" : "pt";
+  const locale: Locale = (await readSiteLocale()) === "en" ? "en" : "pt";
   // The portal leaves some contracts unnumbered ("Aguardando Numeração"),
   // which the pipeline nulls out rather than printing as a fake reference.
   const ref = found.contrato.numero ?? (locale === "en" ? "unnumbered" : "sem número");

@@ -10,6 +10,8 @@ import type { NextConfig } from 'next';
  * directly to the final destination (no chains).
  */
 const nextConfig: NextConfig = {
+  // Language by host (lib/site-locale.ts): fr.localhost / pt.localhost in dev.
+  allowedDevOrigins: ['fr.localhost', 'pt.localhost', 'www.localhost'],
   /* A SECOND DEV SERVER WITHOUT KILLING THE FIRST. `next dev` takes a lock on
      .next/dev, so screenshotting a change while a dev server is already up
      meant stopping someone's session. NEXT_DIST_DIR moves the build directory

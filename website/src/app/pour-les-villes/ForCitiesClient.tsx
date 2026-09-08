@@ -1,4 +1,4 @@
-import { cookies } from "next/headers";
+import { readSiteLocale } from "@/lib/seo";
 
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
@@ -14,25 +14,14 @@ import pt from "@/i18n/pt";
 const DICTS = { fr, en, pt } as const;
 
 /**
- * Locale for this page, most explicit signal first:
- *   1. ?lang= — how the Recife and SF surfaces link here, so a visitor is never
- *      handed a French page from an English or Portuguese one.
- *   2. dl_locale — the site-wide FR/EN toggle.
- *   3. br_locale=pt — only set when someone actively chose Portuguese on the
- *      Recife tree, so it is a real preference rather than a default.
+ * Locale for this page: the host's (lib/site-locale.ts). This is one of the
+ * few paths that exists in all three languages, so a Recife visitor on
+ * pt.qipu.org reads it in Portuguese. A legacy `?lang=` still wins for the
+ * one render before proxy.ts redirects it to the right host.
  */
 export async function resolveCitiesLocale(lang?: string): Promise<Locale> {
   if (lang === "fr" || lang === "en" || lang === "pt") return lang;
-  try {
-    const store = await cookies();
-    const dl = store.get("dl_locale")?.value;
-    if (dl === "en") return "en";
-    if (dl === "fr") return "fr";
-    if (store.get("br_locale")?.value === "pt") return "pt";
-  } catch {
-    /* cookies() may throw during static evaluation — fall through to default */
-  }
-  return process.env.DEFAULT_LOCALE === "en" ? "en" : "fr";
+  return readSiteLocale();
 }
 
 /** The cities already online, in registry order. Proper nouns, so not translated. */

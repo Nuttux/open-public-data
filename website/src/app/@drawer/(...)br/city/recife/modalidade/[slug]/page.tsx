@@ -1,4 +1,4 @@
-import { cookies } from "next/headers";
+import { readSiteLocale } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import DetailDrawer from "@/components/fusion/DetailDrawer";
 import { ForcedLocale, type Locale } from "@/lib/localeContext";
@@ -11,8 +11,7 @@ export default async function DrawerModalidadePage({ params }: { params: Promise
   const { slug } = await params;
   const m = loadModalidade(slug);
   if (!m) return notFound();
-  const store = await cookies();
-  const locale: Locale = store.get("br_locale")?.value === "en" ? "en" : "pt";
+  const locale: Locale = (await readSiteLocale()) === "en" ? "en" : "pt";
   const { source, ...modalidade } = m;
   const nome = titleCasePt(m.modalidade);
 

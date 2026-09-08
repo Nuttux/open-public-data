@@ -26,7 +26,7 @@ import { notFound } from "next/navigation";
 
 import "@/app/fusion.css";
 import { DetailDrawer, Navbar, Footer } from "@/components/fusion";
-import { readLocale } from "@/lib/seo";
+import { finalizeEntityMetadata, readLocale } from "@/lib/seo";
 
 export type EntityLocale = "fr" | "en";
 export type EntityParams = Record<string, string>;
@@ -111,8 +111,8 @@ export function makeEntityPage<D>(cfg: EntityPageConfig<D>) {
     const sp = (await props.searchParams) ?? {};
     const locale = await readLocale();
     const d = await loadOnce(params, sp);
-    if (!d) return cfg.notFoundMetadata(locale);
-    return cfg.metadata(d, locale, params);
+    if (!d) return finalizeEntityMetadata(cfg.notFoundMetadata(locale), locale);
+    return finalizeEntityMetadata(cfg.metadata(d, locale, params), locale);
   }
 
   async function Page(props: RouteProps) {
