@@ -346,14 +346,16 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   font-size: 12px;
   gap: 8px;
 }
-.theme-fusion .fx-lang button {
+.theme-fusion .fx-lang button,
+.theme-fusion .fx-lang a {
   background: none;
   border: 0;
   font: inherit;
   letter-spacing: inherit;
 }
-.theme-fusion .fx-lang-on { color: var(--ink); font-weight: 500; padding: 2px 4px; cursor: pointer; }
+.theme-fusion .fx-lang-on { color: var(--ink); font-weight: 500; padding: 2px 4px; cursor: pointer; text-decoration: none; }
 .theme-fusion .fx-lang-off {
+  text-decoration: none;
   color: var(--muted);
   padding: 2px 4px;
   cursor: pointer;
