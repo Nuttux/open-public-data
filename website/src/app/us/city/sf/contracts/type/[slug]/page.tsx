@@ -6,7 +6,8 @@ import "@/app/fusion.css";
 import SfContractTypeFiche from "@/components/us/SfContractTypeFiche";
 import { loadSfContractType, sfContractTypeSlugs } from "../../data";
 import { typeLabel } from "../../us-sf-contracts-types";
-import { fmtUsdCompact } from "@/lib/us/format";
+import { answerMetadata } from "@/lib/seo/page-answer";
+import { contractTypeAnswer } from "@/lib/us/sf-answers";
 
 type Params = { slug: string };
 
@@ -25,11 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const d = loadSfContractType(slug);
   if (!d) return { title: { absolute: "Contract type not found" }, robots: { index: false } };
   const label = typeLabel(d.raw);
-  return {
-    title: `${label} — San Francisco contracts`,
-    description: `${label}: ${d.register.n_contracts.toLocaleString("en-US")} San Francisco contracts worth ${fmtUsdCompact(d.register.agreed_usd)} committed, and the biggest ones active today.`,
-    alternates: { canonical: `/us/city/sf/contracts/type/${slug}` },
-  };
+  return answerMetadata(contractTypeAnswer({ label, register: d.register }), `/us/city/sf/contracts/type/${slug}`, "en");
 }
 
 export default async function SfContractTypePage({ params }: { params: Promise<Params> }) {
@@ -48,6 +45,7 @@ export default async function SfContractTypePage({ params }: { params: Promise<P
           </div>
           <h1 className="fx-page-title">{typeLabel(d.raw)}</h1>
           <p className="fx-page-lede">A contract type in the City&rsquo;s supplier register</p>
+          <p className="fx-page-lede fx-answer">{contractTypeAnswer({ label: typeLabel(d.raw), register: d.register }).answer}</p>
         </div>
       </section>
       <div className="fx-fiche-wrap">

@@ -6,6 +6,7 @@ import SfBudgetTimeline from "@/components/us/SfBudgetTimeline";
 import SfBudgetComposition from "@/components/us/SfBudgetComposition";
 import { loadSfTimeline } from "@/lib/us/sf-budget-data";
 import { fmtUsdCompact } from "@/lib/us/format";
+import { sectionAlternates } from "@/lib/seo/page-answer";
 
 /**
  * /us/city/sf/budget/timeline — the SF 150-year financial time machine. Server
@@ -13,6 +14,7 @@ import { fmtUsdCompact } from "@/lib/us/format";
  * and hands it to the client chart. No France brand template on US routes.
  */
 export const metadata: Metadata = {
+  ...sectionAlternates("/us/city/sf/budget/timeline", "en"),
   title: "San Francisco — 150 years of city money",
   description:
     "A scrubbable timeline of total San Francisco city finances from the 1880s to today — fusing the modern budget with figures transcribed verbatim from Internet-Archive-scanned municipal reports, every point traceable to its source and readable in today's dollars.",

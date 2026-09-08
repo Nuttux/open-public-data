@@ -9,6 +9,7 @@ import {
   loadSfBva,
   loadSfBvaDepartments,
 } from "@/lib/us/sf-budget-data";
+import { sectionAlternates } from "@/lib/seo/page-answer";
 
 /**
  * /us/city/sf/budget — server component (ADR-0010 D3, EN-only). Loads the
@@ -21,6 +22,7 @@ import {
  * precedent — the US side has no public name yet).
  */
 export const metadata: Metadata = {
+  ...sectionAlternates("/us/city/sf/budget", "en"),
   title: "San Francisco — Budget",
   description:
     "The San Francisco adopted budget, year by year: 7 service areas, 55 departments, spending and revenue types, and adopted-vs-executed — from the SF Controller's Annual Appropriation Ordinance database.",

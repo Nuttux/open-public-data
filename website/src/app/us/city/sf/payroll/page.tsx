@@ -11,6 +11,7 @@ import type {
   PayrollFamilyDistribution,
   PayrollFamilyDistRow,
 } from "./payroll-types";
+import { sectionAlternates } from "@/lib/seo/page-answer";
 
 /**
  * /us/city/sf/payroll — server component. Loads the payroll exports from
@@ -26,6 +27,7 @@ import type {
  * brand yet (working title only).
  */
 export const metadata: Metadata = {
+  ...sectionAlternates("/us/city/sf/payroll", "en"),
   title: "San Francisco — Payroll",
   description:
     "San Francisco's $6.9B city payroll: 13 years of compensation, the " +

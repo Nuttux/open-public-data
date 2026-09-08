@@ -5,6 +5,8 @@ import "@/app/fusion.css";
 
 import SfPlaceFiche from "@/components/us/SfPlaceFiche";
 import { loadSfPlace, loadSfPlacesIndex } from "@/lib/us/sf-places-data";
+import { answerMetadata } from "@/lib/seo/page-answer";
+import { placeAnswer } from "@/lib/us/sf-answers";
 
 type Params = { slug: string };
 
@@ -23,14 +25,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const place = loadSfPlace(slug);
   if (!place) return { title: { absolute: "Place not found" }, robots: { index: false } };
-  return {
-    title: `${place.name} — San Francisco`,
-    description:
-      place.summary_en ??
-      `${place.name}: the city money that reaches it and the documents held at the Internet Archive.`,
-    alternates: { canonical: `/us/city/sf/places/place/${slug}` },
-    openGraph: { title: `${place.name} — San Francisco`, type: "article", locale: "en_US" },
-  };
+  return answerMetadata(placeAnswer(place), `/us/city/sf/places/place/${slug}`, "en", { openGraph: { type: "article", locale: "en_US" } });
 }
 
 export default async function SfPlacePage({ params }: { params: Promise<Params> }) {
@@ -52,6 +47,7 @@ export default async function SfPlacePage({ params }: { params: Promise<Params> 
               with the department's budget, staff count and a link to its
               fiche — the richer statement of the same fact. */}
           <p className="fx-page-lede">{place.kind}</p>
+          <p className="fx-page-lede fx-answer">{placeAnswer(place).answer}</p>
         </div>
       </section>
       <div className="fx-fiche-wrap">

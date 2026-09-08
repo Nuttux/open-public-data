@@ -11,6 +11,7 @@ import { loadSfSpendingSection } from "@/lib/us/sf-spending";
 import { loadSfPaymentBreakdowns } from "@/lib/us/sf-payment-breakdowns";
 import WhoGetsPaidClient from "./WhoGetsPaidClient";
 import type { WgpFile, WgpMeta, WgpYearStatus } from "./wgp-types";
+import { sectionAlternates } from "@/lib/seo/page-answer";
 
 /**
  * /us/city/sf/who-gets-paid — server component. Loads the pipeline export
@@ -24,6 +25,7 @@ import type { WgpFile, WgpMeta, WgpYearStatus } from "./wgp-types";
  * preliminary while the Controller's close runs).
  */
 export const metadata: Metadata = {
+  ...sectionAlternates("/us/city/sf/who-gets-paid", "en"),
   title: "San Francisco — Payees",
   description:
     "Every payment through San Francisco's financial system, ranked and classified: service providers, nonprofits, fiscal agents, grant-funded dollars — from the Controller's weekly vendor-payments ledger.",

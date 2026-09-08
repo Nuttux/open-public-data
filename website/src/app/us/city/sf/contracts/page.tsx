@@ -7,6 +7,7 @@ import {
   loadSfContractsActive,
   loadSfContractsOverview,
 } from "./data";
+import { sectionAlternates } from "@/lib/seo/page-answer";
 
 /**
  * /us/city/sf/contracts — server component. Loads the pipeline exports and
@@ -15,6 +16,7 @@ import {
  * `title.absolute` because the US side has no public brand yet.
  */
 export const metadata: Metadata = {
+  ...sectionAlternates("/us/city/sf/contracts", "en"),
   title: "San Francisco — Contracts",
   description:
     "San Francisco's supplier-contract register: what's active today, who the City buys from, what it buys, which departments sign, the sole-source lens and per-contract payment curves — from the SF Controller's open data.",

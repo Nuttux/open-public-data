@@ -5,7 +5,8 @@ import "@/app/fusion.css";
 
 import SfPayrollDeptFiche from "@/components/us/SfPayrollDeptFiche";
 import { loadSfPayrollDept, sfPayrollDeptSlugs } from "@/lib/us/sf-payroll-entities";
-import { fmtUsd, fmtUsdCompact } from "@/lib/us/format";
+import { answerMetadata } from "@/lib/seo/page-answer";
+import { payrollDeptAnswer } from "@/lib/us/sf-answers";
 
 type Params = { slug: string };
 
@@ -23,15 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const { slug } = await params;
   const d = loadSfPayrollDept(slug);
   if (!d) return { title: { absolute: "Department not found" }, robots: { index: false } };
-  return {
-    title: `${d.name} — San Francisco payroll`,
-    description: `${d.name} paid ${d.latest.n_employees.toLocaleString("en-US")} people ${fmtUsdCompact(
-      d.latest.total_compensation_usd,
-    )} in FY${d.fiscalYear} — a median of ${fmtUsd(
-      d.latest.median_total_comp_usd,
-    )} per person, and what kinds of work that buys.`,
-    alternates: { canonical: `/us/city/sf/payroll/dept/${slug}` },
-  };
+  return answerMetadata(payrollDeptAnswer(d), `/us/city/sf/payroll/dept/${slug}`, "en");
 }
 
 export default async function SfPayrollDeptPage({ params }: { params: Promise<Params> }) {
@@ -52,6 +45,7 @@ export default async function SfPayrollDeptPage({ params }: { params: Promise<Pa
           <p className="fx-page-lede">
             A city department, on the payroll — {d.organizationGroup}
           </p>
+          <p className="fx-page-lede fx-answer">{payrollDeptAnswer(d).answer}</p>
         </div>
       </section>
       <div className="fx-fiche-wrap">

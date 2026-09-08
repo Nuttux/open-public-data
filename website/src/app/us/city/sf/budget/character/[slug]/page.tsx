@@ -11,6 +11,8 @@ import {
   type SfSide,
 } from "@/lib/us/sf-budget-data";
 import { fmtUsdCompact } from "@/lib/us/format";
+import { answerMetadata } from "@/lib/seo/page-answer";
+import { budgetCharacterAnswer } from "@/lib/us/sf-answers";
 
 type Params = { slug: string };
 type SP = { year?: string; side?: string };
@@ -35,11 +37,7 @@ export async function generateMetadata({
   if (!c) {
     return { title: { absolute: "Budget category not found" }, robots: { index: false } };
   }
-  return {
-    title: `${c.label} — San Francisco budget FY${year}`,
-    description: `${c.label}: ${c.side} category of the San Francisco adopted budget, fiscal year ${year}, with its department breakdown.`,
-    alternates: { canonical: `/us/city/sf/budget/character/${slug}` },
-  };
+  return answerMetadata(budgetCharacterAnswer(c, year), `/us/city/sf/budget/character/${slug}`, "en");
 }
 
 export default async function SfCharacterPage({
@@ -72,6 +70,7 @@ export default async function SfCharacterPage({
             {c.side === "spending" ? "Spending" : "Revenue"} type ·{" "}
             {fmtUsdCompact(c.total_usd)} adopted (FY{year})
           </p>
+          <p className="fx-page-lede fx-answer">{budgetCharacterAnswer(c, year).answer}</p>
         </div>
       </section>
       <div className="fx-fiche-wrap">

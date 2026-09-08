@@ -5,6 +5,7 @@ import SfRecordsClient, {
   type RecordsSchema,
   type RecordsStats,
 } from "./SfRecordsClient";
+import { sectionAlternates } from "@/lib/seo/page-answer";
 
 /**
  * /us/city/sf/records — the Board of Supervisors record table, as a dataset.
@@ -22,6 +23,7 @@ import SfRecordsClient, {
  * would eventually disagree with the download it is describing.
  */
 export const metadata: Metadata = {
+  ...sectionAlternates("/us/city/sf/records", "en"),
   title: "San Francisco — the Board's records, as data",
   description:
     "Every decision the San Francisco Board of Supervisors recorded between 1906 and 2026, as one downloadable table — what each column means, how much of it has been classified, and what the record cannot tell you.",

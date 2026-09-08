@@ -3,8 +3,10 @@ import Link from "next/link";
 import "@/app/fusion.css";
 
 import PageIntro from "@/components/fusion/PageIntro";
+import { sectionAlternates } from "@/lib/seo/page-answer";
 
 export const metadata: Metadata = {
+  ...sectionAlternates("/us", "en"),
   title: "Public money in the United States",
   description:
     "United States public finance, followed to the source: the federal dollar and, at city scale, San Francisco's budget, payments, contracts, payroll and places.",

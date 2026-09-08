@@ -6,7 +6,8 @@ import "@/app/fusion.css";
 import SfCategoryFiche from "@/components/us/SfCategoryFiche";
 import { loadSfCategory, sfCategorySlugs } from "@/lib/us/sf-spending";
 import { loadSfCategoryLinks } from "@/lib/us/sf-category-links";
-import { fmtUsdCompact } from "@/lib/us/format";
+import { answerMetadata } from "@/lib/seo/page-answer";
+import { categoryAnswer } from "@/lib/us/sf-answers";
 
 type Params = { slug: string };
 
@@ -24,11 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const { slug } = await params;
   const d = loadSfCategory(slug);
   if (!d) return { title: { absolute: "Category not found" }, robots: { index: false } };
-  return {
-    title: `${d.label} — San Francisco payments`,
-    description: `${d.label}: ${fmtUsdCompact(d.paidUsd)} paid in FY${d.fiscalYear} across ${d.nVendors.toLocaleString("en-US")} payees, and who received it.`,
-    alternates: { canonical: `/us/city/sf/who-gets-paid/category/${slug}` },
-  };
+  return answerMetadata(categoryAnswer(d), `/us/city/sf/who-gets-paid/category/${slug}`, "en");
 }
 
 export default async function SfCategoryPage({
@@ -56,6 +53,7 @@ export default async function SfCategoryPage({
           </div>
           <h1 className="fx-page-title">{d.label}</h1>
           <p className="fx-page-lede">A spending category in the City&rsquo;s payment ledger</p>
+          <p className="fx-page-lede fx-answer">{categoryAnswer(d).answer}</p>
         </div>
       </section>
       <div className="fx-fiche-wrap">

@@ -10,6 +10,8 @@ import {
   loadSfDeptFiche,
 } from "@/lib/us/sf-budget-data";
 import { fmtUsdCompact } from "@/lib/us/format";
+import { answerMetadata } from "@/lib/seo/page-answer";
+import { budgetDeptAnswer } from "@/lib/us/sf-answers";
 
 type Params = { slug: string };
 type SP = { year?: string };
@@ -31,12 +33,7 @@ export async function generateMetadata({
   if (!dept) {
     return { title: { absolute: "Department not found" }, robots: { index: false } };
   }
-  const name = dept.display_name ?? dept.label;
-  return {
-    title: `${name} — San Francisco budget FY${year}`,
-    description: `${name}: adopted budget by spending type, offsets and adopted-vs-executed — San Francisco fiscal year ${year}.`,
-    alternates: { canonical: `/us/city/sf/budget/dept/${slug}` },
-  };
+  return answerMetadata(budgetDeptAnswer(dept, year), `/us/city/sf/budget/dept/${slug}`, "en");
 }
 
 export default async function SfDeptPage({
@@ -71,6 +68,7 @@ export default async function SfDeptPage({
             Department {dept.code} · {dept.org_group_label ?? dept.org_group_code}
             {dept.spending ? <> · {fmtUsdCompact(dept.spending.total_usd)} adopted (FY{year})</> : null}
           </p>
+          <p className="fx-page-lede fx-answer">{budgetDeptAnswer(dept, year).answer}</p>
         </div>
       </section>
       <div className="fx-fiche-wrap">

@@ -5,7 +5,8 @@ import "@/app/fusion.css";
 
 import SfPayrollAreaFiche from "@/components/us/SfPayrollAreaFiche";
 import { loadSfPayrollArea, sfPayrollAreaSlugs } from "@/lib/us/sf-payroll-entities";
-import { fmtUsdCompact } from "@/lib/us/format";
+import { answerMetadata } from "@/lib/seo/page-answer";
+import { payrollAreaAnswer } from "@/lib/us/sf-answers";
 
 type Params = { slug: string };
 
@@ -23,15 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const { slug } = await params;
   const d = loadSfPayrollArea(slug);
   if (!d) return { title: { absolute: "Service area not found" }, robots: { index: false } };
-  return {
-    title: `${d.name} — San Francisco payroll`,
-    description: `${d.name}: ${fmtUsdCompact(
-      d.latest.total_compensation_usd,
-    )} of San Francisco payroll in FY${d.fiscalYear}, across ${d.latest.n_departments} departments and ${d.latest.n_employees_listed.toLocaleString(
-      "en-US",
-    )} people.`,
-    alternates: { canonical: `/us/city/sf/payroll/area/${slug}` },
-  };
+  return answerMetadata(payrollAreaAnswer(d), `/us/city/sf/payroll/area/${slug}`, "en");
 }
 
 export default async function SfPayrollAreaPage({ params }: { params: Promise<Params> }) {
@@ -52,6 +45,7 @@ export default async function SfPayrollAreaPage({ params }: { params: Promise<Pa
           <p className="fx-page-lede">
             A service area — how the City groups its departments
           </p>
+          <p className="fx-page-lede fx-answer">{payrollAreaAnswer(d).answer}</p>
         </div>
       </section>
       <div className="fx-fiche-wrap">

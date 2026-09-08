@@ -3,8 +3,10 @@ import "@/app/fusion.css";
 
 import PlacesClient from "./PlacesClient";
 import { loadSfPlacesIndex } from "@/lib/us/sf-places-data";
+import { sectionAlternates } from "@/lib/seo/page-answer";
 
 export const metadata: Metadata = {
+  ...sectionAlternates("/us/city/sf/places", "en"),
   title: "San Francisco — Places",
   description:
     "Parks, libraries, hospitals, piers: for each San Francisco place, the city money that reaches it and the historical documents held at the Internet Archive — every fact linked to its source.",

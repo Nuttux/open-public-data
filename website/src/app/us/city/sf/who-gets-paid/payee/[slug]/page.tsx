@@ -6,7 +6,8 @@ import "@/app/fusion.css";
 import SfPayeeFiche from "@/components/us/SfPayeeFiche";
 import { loadSfPayee, loadSfPayeesIndex } from "@/lib/us/sf-payees-data";
 import { loadSfCategorySlugMap, loadSfDeptHrefs } from "@/lib/us/sf-category-links";
-import { fmtUsdCompact } from "@/lib/us/format";
+import { answerMetadata } from "@/lib/seo/page-answer";
+import { payeeAnswer } from "@/lib/us/sf-answers";
 
 type Params = { slug: string };
 
@@ -21,11 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const { slug } = await params;
   const payee = loadSfPayee(slug);
   if (!payee) return { title: { absolute: "Payee not found" }, robots: { index: false } };
-  return {
-    title: `${payee.name} — San Francisco`,
-    description: `${payee.name}: ${fmtUsdCompact(payee.total_paid_usd)} paid by San Francisco ${payee.first_year}–${payee.last_year}, by department and contract.`,
-    alternates: { canonical: `/us/city/sf/who-gets-paid/payee/${slug}` },
-  };
+  return answerMetadata(payeeAnswer(payee), `/us/city/sf/who-gets-paid/payee/${slug}`, "en");
 }
 
 export default async function SfPayeePage({ params }: { params: Promise<Params> }) {
@@ -47,6 +44,7 @@ export default async function SfPayeePage({ params }: { params: Promise<Params> 
               facts twice within one screen (Paris fiche rule — breadcrumb +
               title, then the KPI band carries the numbers ONCE). */}
           <h1 className="fx-page-title">{payee.name}</h1>
+          <p className="fx-page-lede fx-answer">{payeeAnswer(payee).answer}</p>
         </div>
       </section>
       <div className="fx-fiche-wrap">

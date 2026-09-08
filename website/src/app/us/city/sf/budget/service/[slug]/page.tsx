@@ -11,6 +11,8 @@ import {
   type SfSide,
 } from "@/lib/us/sf-budget-data";
 import { fmtUsdCompact } from "@/lib/us/format";
+import { answerMetadata } from "@/lib/seo/page-answer";
+import { budgetServiceAnswer } from "@/lib/us/sf-answers";
 
 type Params = { slug: string };
 type SP = { year?: string; side?: string };
@@ -36,11 +38,7 @@ export async function generateMetadata({
   if (!s) {
     return { title: { absolute: "Service area not found" }, robots: { index: false } };
   }
-  return {
-    title: `${s.label} — San Francisco budget FY${year}`,
-    description: `${s.label}: ${s.n_departments} departments, ${fmtUsdCompact(s.total_usd)} of the San Francisco adopted budget for fiscal year ${year}.`,
-    alternates: { canonical: `/us/city/sf/budget/service/${slug}` },
-  };
+  return answerMetadata(budgetServiceAnswer(s, year), `/us/city/sf/budget/service/${slug}`, "en");
 }
 
 export default async function SfServicePage({
@@ -73,6 +71,7 @@ export default async function SfServicePage({
             Service area · {s.n_departments} departments · {fmtUsdCompact(s.total_usd)} adopted
             (FY{year})
           </p>
+          <p className="fx-page-lede fx-answer">{budgetServiceAnswer(s, year).answer}</p>
         </div>
       </section>
       <div className="fx-fiche-wrap">

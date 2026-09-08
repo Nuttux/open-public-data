@@ -5,7 +5,8 @@ import "@/app/fusion.css";
 
 import SfPayrollFamilyFiche from "@/components/us/SfPayrollFamilyFiche";
 import { loadSfPayrollFamily, sfPayrollFamilySlugs } from "@/lib/us/sf-payroll-family";
-import { fmtUsdCompact } from "@/lib/us/format";
+import { answerMetadata } from "@/lib/seo/page-answer";
+import { payrollFamilyAnswer } from "@/lib/us/sf-answers";
 
 type Params = { slug: string };
 
@@ -23,11 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const { slug } = await params;
   const d = loadSfPayrollFamily(slug);
   if (!d) return { title: { absolute: "Job family not found" }, robots: { index: false } };
-  return {
-    title: `${d.family} — San Francisco city payroll`,
-    description: `${d.family}: ${d.latest.n_employees.toLocaleString("en-US")} San Francisco city employees paid ${fmtUsdCompact(d.latest.total_compensation_usd)} in FY${d.fiscalYear}, the departments they work in and the job codes behind the family.`,
-    alternates: { canonical: `/us/city/sf/payroll/family/${slug}` },
-  };
+  return answerMetadata(payrollFamilyAnswer(d), `/us/city/sf/payroll/family/${slug}`, "en");
 }
 
 export default async function SfPayrollFamilyPage({ params }: { params: Promise<Params> }) {
@@ -46,6 +43,7 @@ export default async function SfPayrollFamilyPage({ params }: { params: Promise<
           </div>
           <h1 className="fx-page-title">{d.family}</h1>
           <p className="fx-page-lede">A family of city jobs</p>
+          <p className="fx-page-lede fx-answer">{payrollFamilyAnswer(d).answer}</p>
         </div>
       </section>
       <div className="fx-fiche-wrap">

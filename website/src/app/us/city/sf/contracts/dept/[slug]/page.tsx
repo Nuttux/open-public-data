@@ -6,7 +6,8 @@ import "@/app/fusion.css";
 import SfDeptContractsFiche from "@/components/us/SfDeptContractsFiche";
 import { deptDisplayName } from "../../us-sf-contracts-types";
 import { loadSfContractDept, sfContractDeptSlugs } from "../../data";
-import { fmtUsdCompact } from "@/lib/us/format";
+import { answerMetadata } from "@/lib/seo/page-answer";
+import { contractDeptAnswer } from "@/lib/us/sf-answers";
 
 type Params = { slug: string };
 
@@ -28,10 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const d = loadSfContractDept(slug);
   if (!d) return { title: { absolute: "Department not found" }, robots: { index: false } };
   const label = deptDisplayName(d.name);
-  return {
-    title: `${label} — SF contracts`,
-    description: `San Francisco contracts held by ${label}: ${d.n_active} agreements active today for ${fmtUsdCompact(d.activeAgreedUsd)} agreed, its biggest suppliers and its sole-source position, from the SF Controller's open data.`,
-  };
+  return answerMetadata(contractDeptAnswer({ label, n_active: d.n_active, activeAgreedUsd: d.activeAgreedUsd }), `/us/city/sf/contracts/dept/${slug}`, "en");
 }
 
 export default async function SfDeptContractsPage({ params }: { params: Promise<Params> }) {
@@ -55,6 +53,7 @@ export default async function SfDeptContractsPage({ params }: { params: Promise<
           <p className="fx-page-lede">
             What this department buys, and from whom · department code {d.code}
           </p>
+          <p className="fx-page-lede fx-answer">{contractDeptAnswer({ label, n_active: d.n_active, activeAgreedUsd: d.activeAgreedUsd }).answer}</p>
         </div>
       </section>
       <div className="fx-fiche-wrap">

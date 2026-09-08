@@ -3,6 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { loadContrato } from "@/lib/br/recife-data";
 import RecifeContratoFiche from "@/components/br/RecifeContratoFiche";
+import { answerMetadata } from "@/lib/seo/page-answer";
+import { contratoAnswer } from "@/lib/br/recife-answers";
+import { recifeLocale } from "@/lib/br/recife-locale";
 
 export async function generateMetadata({
   params,
@@ -12,11 +15,12 @@ export async function generateMetadata({
   const { id } = await params;
   const found = loadContrato(id);
   if (!found) return { title: { absolute: "Recife" } };
-  const ref = found.contrato.numero ?? "sem número";
-  return { title: `Contrato ${ref} — Recife` };
+  const locale = await recifeLocale();
+  return answerMetadata(contratoAnswer(found.contrato, found.source, locale), `/br/city/recife/contratos/${id}`, locale);
 }
 
 export default async function ContratoPage({ params }: { params: Promise<{ id: string }> }) {
+  const locale = await recifeLocale();
   const { id } = await params;
   const found = loadContrato(id);
   if (!found) notFound();
@@ -27,6 +31,7 @@ export default async function ContratoPage({ params }: { params: Promise<{ id: s
           ← Recife · Contratos
         </Link>
         <h1 className="fx-page-title">Contrato {found.contrato.numero ?? "sem número"}</h1>
+        <p className="fx-page-lede fx-answer">{contratoAnswer(found.contrato, found.source, locale).answer}</p>
       </div>
       <div className="fx-fiche fx-fiche-shell">
         <RecifeContratoFiche c={found.contrato} source={found.source} />

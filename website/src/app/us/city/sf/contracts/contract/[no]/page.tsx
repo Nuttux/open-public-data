@@ -7,6 +7,8 @@ import SfContractFiche from "@/components/us/SfContractFiche";
 import { loadSfContractFiche, sfContractDeptHref } from "../../data";
 import { contractLabel } from "../../us-sf-contracts-types";
 import { contractPrimePayeeSlug } from "@/lib/us/sf-payees-data";
+import { answerMetadata } from "@/lib/seo/page-answer";
+import { contractAnswer } from "@/lib/us/sf-answers";
 
 type Params = { no: string };
 
@@ -26,12 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   if (!fiche) {
     return { title: { absolute: "Contract not found" }, robots: { index: false } };
   }
-  const c = fiche.contract;
-  const title = `${(contractLabel(c) || `Contract ${c.contract_no}`).slice(0, 70)} — SF contract ${c.contract_no}`;
-  return {
-    title,
-    description: `San Francisco supplier contract ${c.contract_no} — ${c.prime_contractor ?? "unnamed prime"}, ${c.department ?? "City and County of San Francisco"}. Agreed and paid amounts, payment curve and project team from the SF Controller's open data.`,
-  };
+  return answerMetadata(contractAnswer(fiche), `/us/city/sf/contracts/contract/${no}`, "en");
 }
 
 export default async function SfContractPage({ params }: { params: Promise<Params> }) {
@@ -78,6 +75,7 @@ export default async function SfContractPage({ params }: { params: Promise<Param
               </>
             ) : null}
           </p>
+          <p className="fx-page-lede fx-answer">{contractAnswer(fiche).answer}</p>
         </div>
       </section>
       <div className="fx-fiche-wrap">

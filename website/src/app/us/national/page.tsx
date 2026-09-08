@@ -3,6 +3,7 @@ import "@/app/fusion.css";
 import { readDataJson } from "@/lib/data/read";
 import UsNationalClient from "./UsNationalClient";
 import type { UsDailyBread, UsDebtSeriesFile, UsDebtSlim } from "./us-types";
+import { sectionAlternates } from "@/lib/seo/page-answer";
 
 /**
  * /us/national — server component. Loads the pipeline exports from
@@ -14,6 +15,7 @@ import type { UsDailyBread, UsDebtSeriesFile, UsDebtSlim } from "./us-types";
  * (working title only).
  */
 export const metadata: Metadata = {
+  ...sectionAlternates("/us/national", "en"),
   title: "United States — Federal budget",
   description:
     "Federal receipts by source, outlays by budget function, the deficit and the national debt since 1790 — from the U.S. Treasury's Monthly Treasury Statement, Debt to the Penny and Census Bureau population estimates.",

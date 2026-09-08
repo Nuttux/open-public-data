@@ -5,7 +5,8 @@ import "@/app/fusion.css";
 
 import SfAuthorityFiche from "@/components/us/SfAuthorityFiche";
 import { loadSfContractAuthority, sfAuthorityFamilies } from "../../data";
-import { fmtUsdCompact } from "@/lib/us/format";
+import { answerMetadata } from "@/lib/seo/page-answer";
+import { contractAuthorityAnswer } from "@/lib/us/sf-answers";
 
 type Params = { family: string };
 
@@ -23,10 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const { family } = await params;
   const d = loadSfContractAuthority(family);
   if (!d) return { title: { absolute: "Authority not found" }, robots: { index: false } };
-  return {
-    title: `${d.label} — SF contracts`,
-    description: `San Francisco contracts awarded under ${d.label.toLowerCase()}: ${d.register.n_contracts} contracts worth ${fmtUsdCompact(d.register.agreed_usd)}, from the SF Controller's open data.`,
-  };
+  return answerMetadata(contractAuthorityAnswer(d), `/us/city/sf/contracts/authority/${family}`, "en");
 }
 
 export default async function SfAuthorityPage({ params }: { params: Promise<Params> }) {
@@ -47,6 +45,7 @@ export default async function SfAuthorityPage({ params }: { params: Promise<Para
             {d.label}
           </h1>
           <p className="fx-page-lede">How these contracts were legally awarded</p>
+          <p className="fx-page-lede fx-answer">{contractAuthorityAnswer(d).answer}</p>
         </div>
       </section>
       <div className="fx-fiche-wrap">

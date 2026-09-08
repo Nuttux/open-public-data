@@ -3,15 +3,20 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { loadTema } from "@/lib/br/recife-data";
 import RecifeTemaFiche from "@/components/br/RecifeTemaFiche";
+import { answerMetadata } from "@/lib/seo/page-answer";
+import { temaAnswer } from "@/lib/br/recife-answers";
+import { recifeLocale } from "@/lib/br/recife-locale";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const tm = loadTema(slug);
   if (!tm) return { title: { absolute: "Recife" } };
-  return { title: `${tm.tema} — Recife` };
+  const locale = await recifeLocale();
+  return answerMetadata(temaAnswer(tm, locale), `/br/city/recife/tema/${slug}`, locale);
 }
 
 export default async function TemaPage({ params }: { params: Promise<{ slug: string }> }) {
+  const locale = await recifeLocale();
   const { slug } = await params;
   const tm = loadTema(slug);
   if (!tm) notFound();
@@ -23,6 +28,7 @@ export default async function TemaPage({ params }: { params: Promise<{ slug: str
           ← Recife · Tema
         </Link>
         <h1 className="fx-page-title">{tm.tema}</h1>
+        <p className="fx-page-lede fx-answer">{temaAnswer(tm, locale).answer}</p>
       </div>
       <div className="fx-fiche fx-fiche-shell">
         <RecifeTemaFiche tm={tema} temaMethod={tema_method} source={source} />

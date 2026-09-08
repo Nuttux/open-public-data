@@ -3,6 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { loadRecipient } from "@/lib/br/recife-data";
 import RecifeRecebedorFiche from "@/components/br/RecifeRecebedorFiche";
+import { answerMetadata } from "@/lib/seo/page-answer";
+import { recipientAnswer } from "@/lib/br/recife-answers";
+import { recifeLocale } from "@/lib/br/recife-locale";
 
 export async function generateMetadata({
   params,
@@ -12,10 +15,12 @@ export async function generateMetadata({
   const { cnpj } = await params;
   const rec = loadRecipient(cnpj);
   if (!rec) return { title: { absolute: "Recife" } };
-  return { title: `${rec.nome} — Recife`, description: `Pagamentos da Prefeitura do Recife a ${rec.nome}.` };
+  const locale = await recifeLocale();
+  return answerMetadata(recipientAnswer(rec, locale), `/br/city/recife/quem-recebe/${cnpj}`, locale);
 }
 
 export default async function RecebedorPage({ params }: { params: Promise<{ cnpj: string }> }) {
+  const locale = await recifeLocale();
   const { cnpj } = await params;
   const rec = loadRecipient(cnpj);
   if (!rec) notFound();
@@ -27,6 +32,7 @@ export default async function RecebedorPage({ params }: { params: Promise<{ cnpj
           ← Recife · Quem recebe
         </Link>
         <h1 className="fx-page-title">{rec.nome}</h1>
+        <p className="fx-page-lede fx-answer">{recipientAnswer(rec, locale).answer}</p>
       </div>
       <div className="fx-fiche fx-fiche-shell">
         <RecifeRecebedorFiche rec={detail} source={source} />

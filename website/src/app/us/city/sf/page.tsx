@@ -3,8 +3,10 @@ import "@/app/fusion.css";
 
 import Landing from "@/components/landing/Landing";
 import { buildSfLandingModel } from "@/lib/us/sf-landing-model";
+import { sectionAlternates } from "@/lib/seo/page-answer";
 
 export const metadata: Metadata = {
+  ...sectionAlternates("/us/city/sf", "en"),
   title: "Where does public money go in San Francisco?",
   description:
     "San Francisco's budget, payments, contracts, payroll and places — the city's money and its historical record, every figure linked to its source.",

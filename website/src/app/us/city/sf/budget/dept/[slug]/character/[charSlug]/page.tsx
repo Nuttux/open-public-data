@@ -12,6 +12,8 @@ import {
   type SfSide,
 } from "@/lib/us/sf-budget-data";
 import { deptSlug } from "@/lib/us/sf-budget-slugs";
+import { answerMetadata } from "@/lib/seo/page-answer";
+import { budgetDeptCharacterAnswer } from "@/lib/us/sf-answers";
 
 type Params = { slug: string; charSlug: string };
 type SP = { year?: string; side?: string };
@@ -37,12 +39,7 @@ export async function generateMetadata({
   if (!d) {
     return { title: { absolute: "Detail not found" }, robots: { index: false } };
   }
-  const deptName = d.dept.display_name ?? d.dept.label;
-  return {
-    title: `${deptName} · ${d.character.label} — San Francisco budget FY${year}`,
-    description: `${deptName}'s ${d.character.label} spending: raw budget line items and the vendor payments that funded them — San Francisco fiscal year ${year}.`,
-    alternates: { canonical: `/us/city/sf/budget/dept/${slug}/character/${charSlug}` },
-  };
+  return answerMetadata(budgetDeptCharacterAnswer(d, year), `/us/city/sf/budget/dept/${slug}/character/${charSlug}`, "en");
 }
 
 export default async function SfDeptCharacterPage({
@@ -78,6 +75,7 @@ export default async function SfDeptCharacterPage({
           {/* Non-numeric context only — the adopted amount and the department
               are the first two tiles of the KPI band right below. */}
           <p className="fx-page-lede">{deptName}</p>
+          <p className="fx-page-lede fx-answer">{budgetDeptCharacterAnswer(d, year).answer}</p>
         </div>
       </section>
       <div className="fx-fiche-wrap">

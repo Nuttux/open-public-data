@@ -3,12 +3,16 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { loadFuncao } from "@/lib/br/recife-data";
 import RecifeFuncaoFiche from "@/components/br/RecifeFuncaoFiche";
+import { answerMetadata } from "@/lib/seo/page-answer";
+import { funcaoAnswer } from "@/lib/br/recife-answers";
+import { recifeLocale } from "@/lib/br/recife-locale";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const f = loadFuncao(slug);
   if (!f) return { title: { absolute: "Recife" } };
-  return { title: `${f.funcao} — Recife` };
+  const locale = await recifeLocale();
+  return answerMetadata(funcaoAnswer(f, locale), `/br/city/recife/budget/funcao/${slug}`, locale);
 }
 
 export default async function FuncaoPage({
@@ -17,6 +21,7 @@ export default async function FuncaoPage({
   params: Promise<{ slug: string }>;
   searchParams: Promise<{ year?: string }>;
 }) {
+  const locale = await recifeLocale();
   const { slug } = await params;
   const sp = await searchParams;
   const f = loadFuncao(slug, sp.year ? parseInt(sp.year, 10) : undefined);
@@ -28,6 +33,7 @@ export default async function FuncaoPage({
           ← Recife · Orçamento
         </Link>
         <h1 className="fx-page-title">{f.funcao}</h1>
+        <p className="fx-page-lede fx-answer">{funcaoAnswer(f, locale).answer}</p>
       </div>
       <div className="fx-fiche fx-fiche-shell">
         <RecifeFuncaoFiche f={f} />
