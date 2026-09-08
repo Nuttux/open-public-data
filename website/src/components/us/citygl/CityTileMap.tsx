@@ -94,10 +94,10 @@ import { TerrainField, type TerrainProj } from "@/lib/city/terrain";
 import type { CityDescriptor } from "@/lib/citygl/descriptor";
 import { CityOverlay } from "@/lib/citygl/overlay";
 import { blockPicker } from "@/lib/citygl/pick";
-import { loadFineDem, meshElevAt } from "@/lib/citygl/layers/terrain";
+import { loadFineDem, meshElevAt, type FineDem } from "@/lib/citygl/layers/terrain";
 import { TILE_CSS, tilePlane, type TileIndex } from "@/lib/citygl/tile-plane";
 import { THEME_INK } from "@/lib/citygl/theme-ink";
-import { tileMarks, type TileMarks, type TileMarksFile } from "@/lib/citygl/tile-marks";
+import { tileMarks, type TileMarkFilter, type TileMarks, type TileMarksFile } from "@/lib/citygl/tile-marks";
 import { useT } from "@/lib/localeContext";
 import CityBlockPanel, {
   type BlockContext,
@@ -213,6 +213,17 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
   const [loading, setLoading] = useState(true);
   const [stops, setStops] = useState<readonly Stop[]>([]);
   const [zoomStop, setZoomStop] = useState(0);
+  /* ── THE SEARCH IS A BUTTON UNTIL IT IS WANTED ───────────────────────
+     A full-width search box sat over the top of the map on every phone,
+     and the four zoom stops over its bottom: on a 390 x 844 screen the
+     city itself had about 200 px left between them. The box is now a
+     44 px button in the corner that opens into the box, and the stops
+     have gone under the map into the transport, where the year rail is. */
+  const [findOpen, setFindOpen] = useState(false);
+  const findRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    if (findOpen) findRef.current?.querySelector("input")?.focus();
+  }, [findOpen]);
 
   /* ── THE RECORD'S STATE, THE GPU PAGE'S NAMES ─────────────────────────
      `picked` is a POSITION in the block index, as it is there; `posRef`
@@ -282,13 +293,23 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
         ]);
         if (dead) return;
         setYearsFile(years);
-        /* THE GROUND THE PICKER MARCHES AGAINST IS THE GPU PAGE'S: the fine
-           DEM (2.1 MB), sampled the way the mesh is. MEASURED on the coarse
-           field alone the pick answered at 69–86 % of a grid of points over
-           the four stops; the miss is the ray meeting the ground a cell early
-           and landing in the roadway. Fetched alongside the base, and a city
-           without one falls back to the coarse field. */
-        const fineDemP = loadFineDem(data.assetBase).catch(() => null);
+        /* ── THE FINE GROUND COMES ON THE FIRST TOUCH, NOT AT BOOT ────────
+           The fine DEM (2.1 MB) serves the tap only: sampled the way the
+           mesh is, the pick lands on the right block where the coarse field
+           alone answered at 69–86 % of a grid of points over the four stops
+           (the ray meets the ground a cell early and lands in the roadway).
+           MEASURED on prod over 4G: it was 2.1 of the 3.1 MB the phone
+           pulled before anyone had touched anything. So it is fetched on
+           the first pointer on the map — a tap is preceded by a touch, which
+           is a head start — and until it lands the coarse field answers.
+           When it lands, the picker and the dots are rebuilt on it (both
+           bake elevations at construction); nothing else stands on it. */
+        let fineDemP: Promise<FineDem | null> | null = null;
+        let demReady = false;
+        const wantFineDem = (): Promise<FineDem | null> => {
+          if (!fineDemP) fineDemP = loadFineDem(data.assetBase).catch(() => null);
+          return fineDemP;
+        };
 
         /* THE SAME PROJECTION THE RENDERER DREW WITH. The pyramid's camera is
            in plane units, and plane units are `projection`'s at band 0 — the
@@ -529,6 +550,9 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
         const mctx = marksCv.getContext("2d");
         labels.appendChild(marksCv);
         let marks: TileMarks | null = null;
+        /* the last filter asked for, so a rebuild on the fine ground keeps it */
+        let lastFilter: TileMarkFilter | null = null;
+        let rebuildMarks: (() => void) | null = null;
         let mdpr = 1;
         let mW = 0;
         let mH = 0;
@@ -649,11 +673,31 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
             };
           }
         }
-        /* THE PICKER IS THE GPU PAGE'S, on the GPU page's ground. */
-        const fineDem = await fineDemP;
-        if (dead) return;
-        ground = meshElevAt(field, proj, fineDem);
+        /* THE PICKER IS THE GPU PAGE'S, on the GPU page's ground — the
+           coarse field now, the fine one when §THE FINE GROUND arrives */
+        ground = meshElevAt(field, proj, null);
         picker = blockPicker(data, { elevAt: ground });
+        const groundField = field;
+        let demArmed = false;
+        const armFineDem = () => {
+          if (demArmed) return;
+          demArmed = true;
+          void wantFineDem().then((fineDem) => {
+            if (dead || !fineDem) return;
+            ground = meshElevAt(groundField, proj, fineDem);
+            const pk = blockPicker(data, { elevAt: ground });
+            if (!pk) return;
+            picker = pk;
+            demReady = true;
+            rebuildMarks?.();
+            if (overlay && overlay.pick !== null) {
+              overlay.highlight = pk.ringOf(overlay.pick);
+              schedule();
+            }
+          });
+        };
+        div.addEventListener("pointerdown", armFineDem, { once: true, passive: true });
+        div.addEventListener("touchstart", armFineDem, { once: true, passive: true });
         overlay = new CityOverlay({
           data,
           field,
@@ -681,17 +725,26 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
             return;
           }
           setMarkCard(null);
-          const b = picker.at(pt.x, pt.y, camOf(), r.width, r.height);
-          if (overlay) {
-            overlay.highlight = b === null ? null : picker.ringOf(b);
-            overlay.pick = b;
-            /* never a frame of the previous block's name on a new ring */
-            overlay.pickLabel = null;
-            schedule();
-          }
-          setZoomStop(nearestStop());
-          setSheetOpen(true);
-          setPicked(b);
+          void (async () => {
+            /* the fine ground may be in flight from the touch that preceded
+               this tap: up to 600 ms for it, then the coarse answer */
+            if (fineDemP && !demReady) {
+              await Promise.race([fineDemP, new Promise((res) => setTimeout(res, 600))]);
+            }
+            const pk = picker;
+            if (dead || !pk) return;
+            const b = pk.at(pt.x, pt.y, camOf(), r.width, r.height);
+            if (overlay) {
+              overlay.highlight = b === null ? null : pk.ringOf(b);
+              overlay.pick = b;
+              /* never a frame of the previous block's name on a new ring */
+              overlay.pickLabel = null;
+              schedule();
+            }
+            setZoomStop(nearestStop());
+            setSheetOpen(true);
+            setPicked(b);
+          })();
         });
 
         apiRef.current = {
@@ -741,7 +794,8 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
             }
           },
           filterMarks(bits, y) {
-            const lit = marks?.setFilter({ bits, year: y }) ?? 0;
+            lastFilter = { bits, year: y };
+            const lit = marks?.setFilter(lastFilter) ?? 0;
             schedule();
             return lit;
           },
@@ -757,13 +811,20 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
               fetch(`${dbase}/blocks/themes.json`).then((r) => (r.ok ? (r.json() as Promise<{ t: ThemeEntry[] }>) : null)),
             ]);
             if (dead || !mk || !vocab?.t?.length) return;
-            const g = ground;
-            if (!g) return;
-            marks = tileMarks(mk, {
-              elevAt: g,
-              colours: vocab.t.map((t) => THEME_INK[t.bit % THEME_INK.length]),
-              bits: vocab.t.length,
-            });
+            const build = () => {
+              const g = ground;
+              if (!g) return;
+              const m = tileMarks(mk, {
+                elevAt: g,
+                colours: vocab.t.map((t) => THEME_INK[t.bit % THEME_INK.length]),
+                bits: vocab.t.length,
+              });
+              marks = m;
+              if (m && lastFilter) m.setFilter(lastFilter);
+              schedule();
+            };
+            build();
+            rebuildMarks = build;
             setThemes(vocab.t);
           } catch {
             /* no marks, still a city */
@@ -1022,32 +1083,36 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
               under the chrome it renders after */}
           <div className="fx-city-tiles-labels" ref={labelsRef} />
           {!loading ? (
-            <div className="fx-city-find">
-              <CitySearch onPick={({ hit }) => void goToHit(hit)} />
-            </div>
-          ) : null}
-          {!loading && stops.length ? (
-            <div
-              role="group"
-              aria-label={t("us.sf.thecity.map.view")}
-              className="fx-city-controls"
-            >
-              <span className="fx-city-controls-cap" aria-hidden="true">
-                {t("us.sf.thecity.map.view_cap")}
-              </span>
-              {stops.map((s, i) => (
+            findOpen ? (
+              <div className="fx-city-find" ref={findRef}>
+                <CitySearch
+                  onPick={({ hit }) => {
+                    setFindOpen(false);
+                    void goToHit(hit);
+                  }}
+                />
                 <button
-                  key={s.label}
                   type="button"
-                  className="fx-city-preset"
-                  aria-pressed={zoomStop === i}
-                  data-near={zoomStop < 0 && i === 0 ? "true" : undefined}
-                  onClick={s.go}
+                  className="fx-city-find-close"
+                  aria-label={t("fx.search.close")}
+                  onClick={() => setFindOpen(false)}
                 >
-                  {s.label}
+                  ×
                 </button>
-              ))}
-            </div>
+              </div>
+            ) : (
+              <button
+                type="button"
+                className="fx-city-find-btn"
+                aria-label={t("us.sf.thecity.search.placeholder")}
+                onClick={() => setFindOpen(true)}
+              >
+                <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+                  <circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" strokeWidth="1.8" />
+                  <path d="M12.8 12.8 L17.5 17.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                </svg>
+              </button>
+            )
           ) : null}
           {failed ? (
             <div className="fx-city-overlay">
@@ -1063,8 +1128,29 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
             Inside `.fx-city-transport`, as on the GPU page: on a phone the
             frame is a column ordered stage, transport, ledger, and a row
             outside that box lands ABOVE the map, under the entry card. */}
-        {!loading && yearsFile && Object.keys(yearsFile.years).length ? (
+        {!loading ? (
           <div className="fx-city-transport">
+          {stops.length ? (
+            <div
+              role="group"
+              aria-label={t("us.sf.thecity.map.view")}
+              className="fx-city-stoprow"
+            >
+              {stops.map((s, i) => (
+                <button
+                  key={s.label}
+                  type="button"
+                  className="fx-city-preset"
+                  aria-pressed={zoomStop === i}
+                  data-near={zoomStop < 0 && i === 0 ? "true" : undefined}
+                  onClick={s.go}
+                >
+                  {s.label}
+                </button>
+              ))}
+            </div>
+          ) : null}
+          {yearsFile && Object.keys(yearsFile.years).length ? (<>
           <div className="fx-city-clockrow">
             <button
               type="button"
@@ -1138,6 +1224,7 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
               </div>
             </div>
           ) : null}
+          </>) : null}
           </div>
         ) : null}
         {/* ── THE SHEET, ONLY WHEN THERE IS A RECORD TO SHOW ──────────────

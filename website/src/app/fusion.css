@@ -19110,15 +19110,59 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   .theme-fusion .fx-city-stage {
     min-height: 240px;
   }
-  /* THE TILE MAP'S STRIP IS ONE ROW, NOT TWO (`CityTileMap.tsx`): the rail
-     alone, 47 px measured, no subject row yet. So of the 574 px the rule
-     above subtracts, header 90 + rail 47 + sheet 380 = 517 are on its screen
-     and the map takes the rest. Fold into the rule above when the subjects
-     come over. */
+  /* ── THE TILE MAP GETS A SHARE OF THE SCREEN, NOT WHAT IS LEFT ────────
+     The rule used to be `100svh − 517px`, 517 being header, rail and
+     sheet. On a real iPhone in Safari the small viewport is about 664 px,
+     so that came to 147 and the 240 px floor won: Daniel's screenshot,
+     2026-09-08, shows the city on a fifth of the screen with the search
+     box over its top and the zoom stops over its bottom. The search is a
+     corner button now and the stops sit under the map, so the stage is
+     sized to the viewport itself: 56 % of it, never under 300, never over
+     600 — 372 px in Safari with its bars, 473 on an 844 px screen. */
   .theme-fusion .fx-city-shell:has(.fx-city-tiles),
   .theme-fusion .fx-city-wrap:has(.fx-city-tiles) {
-    --fx-city-h: max(240px, calc(100svh - 517px));
+    --fx-city-h: clamp(300px, 56svh, 600px);
   }
+}
+/* ── the tile map's corner search and its row of stops ──────────────────
+   `CityTileMap.tsx` §THE SEARCH IS A BUTTON UNTIL IT IS WANTED. The button
+   takes the box's place at the top of the stage; the box, when open, runs
+   the width the phone rule above gives `.fx-city-find`, with a close at its
+   right. The stops are a row of four in the transport, full width, the
+   same 44 px touch height the phone rule gives every `.fx-city-preset`. */
+.theme-fusion .fx-city-find-btn {
+  position: absolute; top: 12px; right: 12px; z-index: 7;
+  width: 44px; height: 44px;
+  display: grid; place-items: center;
+  border: 1px solid var(--ink);
+  background: var(--bg);
+  color: var(--ink);
+  box-shadow: 0 1px 6px rgba(0,0,0,.13);
+  cursor: pointer;
+}
+.theme-fusion .fx-city-shell:has(.fx-city-strip) .fx-city-find-btn {
+  top: calc(12px + var(--fx-city-strip-h, 0px));
+}
+.theme-fusion .fx-city-find { display: flex; gap: 8px; align-items: stretch; }
+.theme-fusion .fx-city-find > .fx-city-find-close {
+  width: 44px; flex: none;
+  border: 1px solid var(--ink);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 22px; line-height: 1;
+  cursor: pointer;
+}
+.theme-fusion .fx-city-stoprow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-bottom: 1px solid var(--rule);
+}
+.theme-fusion .fx-city-stoprow .fx-city-preset {
+  min-height: 44px;
+  padding: 7px 4px;
+  text-align: center;
+  white-space: normal;
+  line-height: 1.2;
 }
 .theme-fusion .fx-city-record-more {
   margin: 10px 8px 0; font-size: 12px; line-height: 1.45;
