@@ -90,6 +90,17 @@ export function franceFooterModel(
   ).map((l) => ({ href: l.href, label: t(l.labelKey) }));
   if (!commune && cityHasAnalyses(citySlug))
     sections.push({ href: "/analyses", label: t("fx.foot.link.analyses") });
+  // Browse indexes (lib/seo/browse.ts): the crawler's route to every fiche —
+  // footer → index → letter or year → page. Only for the cities that have
+  // the underlying sections (Paris and Marseille today).
+  if (!commune && (citySlug === "paris" || citySlug === "marseille")) {
+    sections.push(
+      { href: `/fr/city/${citySlug}/subventions/associations`, label: t("fx.foot.link.idx_assoc") },
+      { href: `/fr/city/${citySlug}/marches/fournisseurs`, label: t("fx.foot.link.idx_fourn") },
+      { href: `/fr/city/${citySlug}/marches/contrats`, label: t("fx.foot.link.idx_contrats") },
+    );
+    if (citySlug === "paris") sections.push({ href: "/fr/city/paris/investissements/projets", label: t("fx.foot.link.idx_projets") });
+  }
 
   const project: FooterLink[] = [
     { href: "/methode", label: t("fx.foot.link.methode") },

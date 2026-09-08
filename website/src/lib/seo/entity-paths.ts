@@ -14,6 +14,7 @@ import { canonicalBailleurSlug, loadLogementSocialData } from "@/lib/fusion-data
 import { loadLieuxIndex } from "@/lib/lieux-data";
 import { loadPlacesIndex as loadMarseillePlaces } from "@/lib/marseille/marseille-places-data";
 import { slugifyChapitre, slugifyLabel } from "@/lib/projet-utils";
+import { associationNames, countByLetter, fournisseurList, marchesYears, projetArrondissements, projetYears, recifeRecipientNames, sfPayeeNames, PAGE_SIZE } from "@/lib/seo/browse";
 
 type SubvIndex = { availableYears: number[] };
 type SubvBen = { data: { beneficiaire: string; nature_juridique?: string | null }[] };
@@ -228,12 +229,49 @@ function frenchCitySectionPaths(): string[] {
   return out;
 }
 
+/** Browse indexes (lib/seo/browse.ts): index, letter/year pages and their pagination. */
+function lettersPaged(base: string, names: string[]): string[] {
+  const out = [base];
+  for (const c of countByLetter(names)) {
+    if (c.count === 0) continue;
+    const pages = Math.ceil(c.count / PAGE_SIZE);
+    for (let p = 1; p <= pages; p++) out.push(p === 1 ? `${base}/${c.letter}` : `${base}/${c.letter}/${p}`);
+  }
+  return out;
+}
+function frBrowsePaths(city: string): string[] {
+  const out: string[] = [];
+  guarded(out, () => out.push(...lettersPaged(`/fr/city/${city}/subventions/associations`, associationNames(city).map((a) => a.name))));
+  guarded(out, () => out.push(...lettersPaged(`/fr/city/${city}/marches/fournisseurs`, fournisseurList(city).map((f) => f.nom))));
+  guarded(out, () => {
+    const base = `/fr/city/${city}/marches/contrats`;
+    out.push(base);
+    for (const y of marchesYears(city)) out.push(`${base}/${y}`);
+  });
+  if (city === "paris") {
+    guarded(out, () => {
+      const base = "/fr/city/paris/investissements/projets";
+      out.push(base);
+      for (const y of projetYears()) {
+        out.push(`${base}/${y}`);
+        for (const a of projetArrondissements(y)) out.push(`${base}/${y}/${a.arr}`);
+      }
+    });
+  }
+  return out;
+}
+export function sfBrowsePaths(): string[] {
+  const out: string[] = [];
+  guarded(out, () => out.push(...lettersPaged("/us/city/sf/who-gets-paid/payees", sfPayeeNames())));
+  return out;
+}
+
 /** Every French (Paris + Marseille) and Brazilian entity page, deduplicated. */
 export function frEntityPaths(): string[] {
   const out: string[] = [];
   for (const city of ["paris", "marseille"]) {
     const base = `/fr/city/${city}`;
-    out.push(...subventionPaths(city, base), ...marchesPaths(city, base), ...budgetPostePaths(city, base));
+    out.push(...frBrowsePaths(city), ...subventionPaths(city, base), ...marchesPaths(city, base), ...budgetPostePaths(city, base));
   }
   out.push(...parisOnlyPaths(), ...marseillePlacesPaths());
   return uniq(out);
@@ -246,6 +284,7 @@ export function brEntityPaths(): string[] {
     "/br/city/recife/contratos",
     "/br/city/recife/quem-recebe",
     "/br/city/recife/lugares",
+    ...lettersPaged("/br/city/recife/quem-recebe/todos", recifeRecipientNames()),
     ...recifePaths(),
   ];
 }

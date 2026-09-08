@@ -2731,6 +2731,14 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 /* The one-sentence answer under a fiche's h1 (lib/entities/seo-text.ts):
    same voice as the lede, a touch more air above and below. */
 .theme-fusion .fx-answer { margin: 10px 0 4px; }
+/* Browse indexes (components/browse/BrowseList.tsx): the letter / year rail
+   and the pager — plain links, sized like the v3 rows. */
+.theme-fusion .fx-browse-rail { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 0; }
+.theme-fusion .fx-browse-chip { font-family: var(--f-mono); font-size: 12.5px; line-height: 1; padding: 7px 9px; border: 1px solid var(--rule, #ddd); border-radius: 6px; color: var(--ink-2); text-decoration: none; }
+.theme-fusion .fx-browse-chip:hover { border-color: var(--ink); color: var(--ink); }
+.theme-fusion .fx-browse-chip.is-on { background: var(--ink); border-color: var(--ink); color: var(--paper, #fff); }
+.theme-fusion .fx-browse-chip.is-empty { color: var(--muted); border-style: dashed; }
+.theme-fusion .fx-browse-pager { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 18px 0 6px; font-family: var(--f-mono); font-size: 13px; }
 .theme-fusion .fx-page-source {
   font-family: var(--f-mono);
   font-size: 12.5px;

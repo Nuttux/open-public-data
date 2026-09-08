@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { SITE_URL, readSiteLocale } from '@/lib/seo';
 import { LOCALE_HOSTS, localesForPath } from '@/lib/site-locale';
-import { brEntityPaths, frEntityPaths, frenchCitySectionPaths } from '@/lib/seo/entity-paths';
+import { brEntityPaths, frEntityPaths, frenchCitySectionPaths, sfBrowsePaths } from '@/lib/seo/entity-paths';
 import { listCities } from '@/lib/cities';
 import { listAllCommunesMeta, loadAllCommunesGeneratedAt } from '@/lib/all-communes';
 import { listDataDir } from '@/lib/data/read';
@@ -102,6 +102,12 @@ function sfEntityPaths(): string[] {
     loadSfPayeesIndex().map((p) => p.slug),
   );
   add('/us/city/sf/places/place', () => loadSfPlacesIndex().map((p) => p.slug));
+  // Browse index of the payees (lib/seo/browse.ts).
+  try {
+    out.push(...sfBrowsePaths());
+  } catch {
+    /* as above */
+  }
 
   // Budget facets come from the breakdown of the default (last closed) year —
   // the same file and the same slug helpers the fiche routes resolve against.
