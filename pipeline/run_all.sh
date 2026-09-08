@@ -134,6 +134,14 @@ if should_run sync; then
     # disparu de `raw` sans que rien ne les recrée. b811 EN PREMIER : sans lui,
     # les subventions 2020 et 2021 (2,6 Md€) sortent SILENCIEUSEMENT de
     # core_subventions — c'est un UNION ALL, pas un JOIN, donc aucune erreur.
+    #
+    # Deux d'entre elles (deliberations, enrichment_caches) lisent pipeline/cache/,
+    # ignoré par git : en CI leur source n'existe pas et elles doivent SKIP en
+    # laissant raw intact. Le 2026-09-08, sync_deliberations a au contraire
+    # WRITE_TRUNCATE trois tables prod avec 0 ligne (coquilles à une colonne,
+    # staging cassé). Règle pour tout sync « depuis fichiers » : source absente
+    # → skip explicite ; source présente mais vide → erreur ; jamais un
+    # truncate à zéro.
     for s in sync_pdf_subventions_b811 sync_sirene_companies sync_enrichment_caches \
              sync_deliberations sync_pdf_investissements_localises sync_dette_garantie; do
         if [[ -f "$PIPELINE_DIR/scripts/sync/$s.py" ]]; then
