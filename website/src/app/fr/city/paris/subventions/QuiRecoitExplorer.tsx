@@ -14,6 +14,7 @@ import { useDebouncedTrack, hashQuery, queryShape } from "@/lib/analytics-helper
 import { normSearch, expandQuery, matchExpanded } from "@/lib/search-synonyms";
 import { fill, numLocale } from "@/lib/fmt";
 import { useFmtEur } from "@/lib/use-fmt";
+import { assocSlug } from "@/lib/assoc-slug";
 
 function themeColor(theme: string | null): string {
   if (!theme) return "#9099a6";
@@ -250,7 +251,7 @@ export default function QuiRecoitExplorer({
     setMaxEur("");
   };
 
-  const ficheHref = (name: string) => `${cityBasePath}/association/${encodeURIComponent(name)}`;
+  const ficheHref = (name: string) => `${cityBasePath}/association/${assocSlug(name)}`;
 
   const refMax = top10[0]?.amount ?? 1;
 

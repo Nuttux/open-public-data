@@ -13,6 +13,7 @@ import { lieuForBeneficiaire } from "@/lib/lieux-data";
 import { trLabel } from "@/lib/label-translate";
 import { eur, int, span, periodLead, cityDataDate, sourceLine, cityPortal } from "@/lib/entities/seo-text";
 import { associationRelated } from "@/lib/entities/related";
+import { assocSlug } from "@/lib/assoc-slug";
 
 type D = {
   asso: NonNullable<ReturnType<typeof loadAssociation>>;
@@ -56,7 +57,7 @@ export function makeAssociationConfig(city: string): EntityPageConfig<D> {
       const description = locale === "en"
         ? `${a.name}: ${a.subventionCount} grants, total €${amountFmt} from the Ville de ${cityNom}.`
         : `${a.name} : ${a.subventionCount} subventions, cumul ${amountFmt} € de la Ville de ${cityNom}.`;
-      const canonical = `${base}/association/${encodeURIComponent(a.name)}`;
+      const canonical = `${base}/association/${assocSlug(a.name)}`;
       return {
         title,
         description,
@@ -69,6 +70,11 @@ export function makeAssociationConfig(city: string): EntityPageConfig<D> {
           alternateLocale: locale === "en" ? ["fr_FR"] : ["en_US"],
         },
       };
+    },
+    // Old URLs carried the encoded name; they 308 to the slug.
+    canonicalRedirect: ({ asso }, { slug }) => {
+      const clean = assocSlug(asso.name);
+      return decodeURIComponent(slug ?? "") === clean ? null : `${base}/association/${clean}`;
     },
     seo: ({ asso: a }, locale) => {
       const amt = eur(a.totalAmount, locale);
@@ -110,7 +116,7 @@ export function makeAssociationConfig(city: string): EntityPageConfig<D> {
     drawer: {
       kicker: ({ asso }) => <AssoKicker theme={asso.theme} />,
       title: ({ asso }) => asso.name,
-      shareUrl: ({ asso }) => `${base}/association/${encodeURIComponent(asso.name)}`,
+      shareUrl: ({ asso }) => `${base}/association/${assocSlug(asso.name)}`,
       shareText: ({ asso }) => {
         const montantStr = asso.totalAmount >= 1e6
           ? `${(asso.totalAmount / 1e6).toFixed(1).replace(".", ",")} M€`

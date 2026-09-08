@@ -14,6 +14,7 @@ import { fmtCompactEur } from "@/lib/fmt";
 import { fmtBrlCompact } from "@/lib/br/format";
 import { fmtUsdCompact } from "@/lib/us/format";
 import { loadSfPayeesIndex } from "@/lib/us/sf-payees-data";
+import { assocHref } from "@/lib/assoc-slug";
 
 export type BrowseItem = { href: string; label: string; sub?: string | null; amount?: { v: string; u: string } | null };
 export type LetterCount = { letter: string; count: number };
@@ -67,11 +68,19 @@ export function associationNames(city: string): { name: string; totalAmount: num
 }
 
 export function associationItems(city: string, letter: string, locale: "fr" | "en"): BrowseItem[] {
+  // Two spellings of one organisation share a slug, hence a page: list it once.
+  const seen = new Set<string>();
   return associationNames(city)
     .filter((r) => letterOf(r.name) === letter)
     .sort((a, b) => a.name.localeCompare(b.name, "fr"))
+    .filter((r) => {
+      const h = assocHref(city, r.name);
+      if (seen.has(h)) return false;
+      seen.add(h);
+      return true;
+    })
     .map((r) => ({
-      href: `/fr/city/${city}/subventions/association/${encodeURIComponent(r.name)}`,
+      href: assocHref(city, r.name),
       label: r.name,
       sub: locale === "en" ? `${r.nb} grant${r.nb > 1 ? "s" : ""}${r.years ? `, ${r.years}` : ""}` : `${r.nb} subvention${r.nb > 1 ? "s" : ""}${r.years ? `, ${r.years}` : ""}`,
       amount: eur(r.totalAmount),

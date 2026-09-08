@@ -6,6 +6,7 @@ import { FicheSection } from "@/components/fiche";
 import FicheKpis from "@/components/fusion/FicheKpis";
 import { fmtInt } from "@/lib/fmt";
 import type { MarseillePlace, PlacesSource } from "@/lib/marseille/marseille-places-data";
+import { assocSlug } from "@/lib/assoc-slug";
 
 const eur = (n: number) =>
   n >= 1e6
@@ -26,7 +27,7 @@ const arrSuffix = (n: number, en: boolean) =>
   en ? `${n}${n === 1 ? "st" : n === 2 ? "nd" : n === 3 ? "rd" : "th"}` : `${n}${n === 1 ? "ᵉʳ" : "ᵉ"}`;
 
 const SUBV_HREF = (beneficiaire: string) =>
-  `/fr/city/marseille/subventions/association/${encodeURIComponent(beneficiaire)}`;
+  `/fr/city/marseille/subventions/association/${assocSlug(beneficiaire)}`;
 
 /**
  * Marseille civic-place fiche — mirrors a Paris lieu (deliberations aside): a

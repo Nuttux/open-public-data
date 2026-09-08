@@ -11,6 +11,7 @@ import { canonicalBailleurSlug, loadFournisseur, loadThemeSubventions } from "@/
 import { trLabel } from "@/lib/label-translate";
 import { slugifyChapitre, slugifyLabel } from "@/lib/projet-utils";
 import type { RelatedBlock, RelatedRow } from "@/components/fiche/RelatedLinks";
+import { assocSlug } from "@/lib/assoc-slug";
 
 type L = "fr" | "en";
 const eur = (n: number) => {
@@ -126,7 +127,7 @@ export function associationRelated(asso: { name: string; theme: string | null },
       });
       for (const b of fiche.topBeneficiaires.filter((b) => b.name !== asso.name).slice(0, 4)) {
         rows.push({
-          href: `${base}/association/${encodeURIComponent(b.name)}`,
+          href: `${base}/association/${assocSlug(b.name)}`,
           label: b.name,
           sub: locale === "en" ? `Same theme, ${fiche.year}` : `Même thème, ${fiche.year}`,
           amount: eur(b.amount),

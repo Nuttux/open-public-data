@@ -22,7 +22,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { cache } from "react";
 
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 
 import "@/app/fusion.css";
 import { DetailDrawer, Navbar, Footer } from "@/components/fusion";
@@ -65,6 +65,11 @@ export type EntityPageConfig<D> = {
    * dernière section de la fiche. null → rien.
    */
   related?: (d: D, locale: EntityLocale, params: EntityParams) => RelatedBlock | null;
+  /**
+   * Chemin canonique quand l'URL demandée n'est pas la forme propre (ancien
+   * nom encodé → slug) : 308 avant tout streaming. null → rien.
+   */
+  canonicalRedirect?: (d: D, params: EntityParams) => string | null;
   page: {
     /**
      * Contenu du header (kicker + h1 + lede éventuel), rendu dans
@@ -136,6 +141,8 @@ export function makeEntityPage<D>(cfg: EntityPageConfig<D>) {
     // Suspense boundary after the 200 shell has gone out — a soft 404 that
     // every unknown entity URL served until 2026-09-08.
     if (!d) notFound();
+    const to = cfg.canonicalRedirect?.(d, params);
+    if (to) permanentRedirect(to);
     const md = cfg.metadata(d, locale, params);
     const seo = cfg.seo?.(d, locale, params) ?? null;
     if (seo) {
@@ -152,6 +159,8 @@ export function makeEntityPage<D>(cfg: EntityPageConfig<D>) {
     const sp = (await props.searchParams) ?? {};
     const d = await loadOnce(params, sp);
     if (!d) return notFound();
+    const to = cfg.canonicalRedirect?.(d, params);
+    if (to) permanentRedirect(to);
     const locale = await readLocale();
     const body = cfg.page.body(d, locale);
     const seo = cfg.seo?.(d, locale, params) ?? null;

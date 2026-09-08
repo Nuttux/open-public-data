@@ -7,6 +7,7 @@ import {
   MARSEILLE_ARRONDISSEMENT_PATHS,
   MARSEILLE_VIEWBOX,
 } from "@/components/fusion/marseille-arrondissements";
+import { assocSlug } from "@/lib/assoc-slug";
 
 const BASE = "/fr/city/marseille";
 const IMG = "/img/fr/marseille/places";
@@ -88,7 +89,7 @@ export function buildMarseilleLandingModel(locale: Locale, data: MarseilleLandin
       `${IMG}/mucem.jpg`, "MuCEM · F. Pécassou / Wikimedia · CC BY-SA 3.0", "MuCEM, Marseille"),
     // A grant recipient — Friche la Belle de Mai (a place you know).
     ...(friche ? [card(
-      `${BASE}/subventions/association/${encodeURIComponent(friche.name)}`,
+      `${BASE}/subventions/association/${assocSlug(friche.name)}`,
       s.grant_k, "Friche la Belle de Mai", eur(friche.montant), s.grant_m, s.grant_c,
       `${IMG}/friche-belle-de-mai.jpg`, "Friche la Belle de Mai · Charlotte Noblet / Wikimedia · CC BY-SA 4.0", "Friche la Belle de Mai")] : []),
     // A theme — Culture.
@@ -97,14 +98,14 @@ export function buildMarseilleLandingModel(locale: Locale, data: MarseilleLandin
       `${IMG}/palais-longchamp.jpg`, "Palais Longchamp · Arnaud 25 / Wikimedia · CC BY-SA 4.0", "Palais Longchamp, Marseille")] : []),
     // A grant recipient — Théâtre La Criée.
     ...(criee ? [card(
-      `${BASE}/subventions/association/${encodeURIComponent(criee.name)}`,
+      `${BASE}/subventions/association/${assocSlug(criee.name)}`,
       s.grant_k, "Théâtre La Criée", eur(criee.montant), s.grant_m, s.grant_c,
       `${IMG}/la-criee.jpg`, "Théâtre La Criée · Arnaud 25 / Wikimedia · CC BY-SA 4.0", "Théâtre La Criée, Marseille")] : []),
   ];
 
   // Marquee — top subvention recipients, hrefs to their (live) fiche route.
   const marquee: MarqueeItem[] = topBenef.map((r) => ({
-    href: `${BASE}/subventions/association/${encodeURIComponent(r.name)}`,
+    href: `${BASE}/subventions/association/${assocSlug(r.name)}`,
     label: r.name,
     amount: eur(r.montant),
     scroll: false,

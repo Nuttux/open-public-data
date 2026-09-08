@@ -3,6 +3,7 @@ import { themeFor, themeImage, localPhotoDataUri } from "@/lib/og/theme-image";
 import { ogFmtEur, ogFmtFr } from "@/lib/og";
 import { loadLieuxIndex } from "@/lib/lieux-data";
 import { loadAssociation, loadContrat, loadFournisseur, loadMarcheVulgarization } from "@/lib/fusion-data";
+import { assocSlug } from "@/lib/assoc-slug";
 
 /**
  * Paris share cards, on the shared template.
@@ -145,6 +146,6 @@ export function renderParisAssociationOg(slug: string) {
     image: borrowed?.src ?? null,
     imageCaption: borrowed?.caption ?? null,
     source: SOURCE,
-    url: `qipu.org/fr/city/paris/subventions/association/${slug}`,
+    url: `qipu.org/fr/city/paris/subventions/association/${assocSlug(decodeURIComponent(slug))}`,
   });
 }

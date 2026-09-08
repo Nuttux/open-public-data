@@ -15,6 +15,7 @@ import { loadLieuxIndex } from "@/lib/lieux-data";
 import { loadPlacesIndex as loadMarseillePlaces } from "@/lib/marseille/marseille-places-data";
 import { slugifyChapitre, slugifyLabel } from "@/lib/projet-utils";
 import { associationNames, countByLetter, fournisseurList, marchesYears, projetArrondissements, projetYears, recifeRecipientNames, sfPayeeNames, PAGE_SIZE } from "@/lib/seo/browse";
+import { assocSlug } from "@/lib/assoc-slug";
 
 type SubvIndex = { availableYears: number[] };
 type SubvBen = { data: { beneficiaire: string; nature_juridique?: string | null }[] };
@@ -68,7 +69,7 @@ function subventionPaths(city: string, base: string): string[] {
         if (label) themes.add(slugifyLabel(label));
       }
     }
-    for (const n of names) out.push(`${base}/subventions/association/${encodeURIComponent(n)}`);
+    for (const n of names) out.push(`${base}/subventions/association/${assocSlug(n)}`);
     for (const s of themes) out.push(`${base}/subventions/theme/${s}`);
   });
   return out;

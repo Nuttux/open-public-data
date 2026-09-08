@@ -7,6 +7,7 @@ import { useT, useLocale } from "@/lib/localeContext";
 import { cap, fill, numLocale, seanceEn } from "@/lib/fmt";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { useCity } from "./CityContext";
+import { assocSlug } from "@/lib/assoc-slug";
 
 /**
  * Fiche « lieu » v3 (2026-09-03) — un chiffre, deux blocs.
@@ -220,7 +221,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
           {subv && (
             <div className="fx-v3-line">
               <div className="t">
-                <Link href={`${basePath}/subventions/association/${encodeURIComponent(subv.nom_fiche)}`} scroll={false} style={{ color: "inherit" }}>
+                <Link href={`${basePath}/subventions/association/${assocSlug(subv.nom_fiche)}`} scroll={false} style={{ color: "inherit" }}>
                   {cap(fill(t("fx.lieu.line.exploitant"), { k: kindTxt }))}<span aria-hidden="true" className="muted"> →</span>
                 </Link>
               </div>
@@ -230,7 +231,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
               </div>
               <div className="s">
                 {t("fx.lieu.line.exploitant_sub")}{" "}
-                <Link href={`${basePath}/subventions/association/${encodeURIComponent(subv.nom_fiche)}`} scroll={false}>{subv.nom_fiche} →</Link>
+                <Link href={`${basePath}/subventions/association/${assocSlug(subv.nom_fiche)}`} scroll={false}>{subv.nom_fiche} →</Link>
                 {subv.note_publique && <> {(en && subv.note_publique_en) || subv.note_publique}</>}
               </div>
               {showBars && <div className="bar"><span style={{ width: `${(subvTotal / barMax) * 100}%` }} /></div>}
@@ -327,7 +328,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
               <div className="s">{t("fx.lieu.residents_intro")}</div>
               <div className="fold-wrap" style={{ marginTop: 4 }}>
                 {lieu.residents.map((r, i) => (
-                  <Link key={i} href={`${basePath}/subventions/association/${encodeURIComponent(r.beneficiaire)}`} scroll={false} className="fx-v3-row fx-row-link">
+                  <Link key={i} href={`${basePath}/subventions/association/${assocSlug(r.beneficiaire)}`} scroll={false} className="fx-v3-row fx-row-link">
                     <span className="lbl">{r.beneficiaire} <span aria-hidden="true" className="muted">→</span></span>
                     {r.montant_total > 0 && <Eur {...fmtEur(r.montant_total)} size={14} />}
                   </Link>

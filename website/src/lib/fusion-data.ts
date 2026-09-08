@@ -895,7 +895,9 @@ export type AssociationFiche = {
  */
 export function loadAssociation(name: string, city: string = "paris"): AssociationFiche | null {
   const idx = readJson<SubvIndex>(cityJsonPath(city, "subventions/index.json"));
-  const target = decodeURIComponent(name).toLowerCase();
+  // Matched by slug (lib/assoc-slug.ts): the clean URL, the legacy encoded
+  // name, and the spelling variants of one organisation all resolve here.
+  const target = assocSlug(decodeURIComponent(name));
   const byYearMap = new Map<number, { amount: number; count: number }>();
   const byThemeMap = new Map<string, { amount: number; count: number }>();
   const lignes: AssociationFiche["lignes"] = [];
@@ -909,7 +911,7 @@ export function loadAssociation(name: string, city: string = "paris"): Associati
     try {
       const f = readJson<SubvBen>(cityJsonPath(city, `subventions/beneficiaires_${y}.json`));
       for (const b of f.data) {
-        if (b.beneficiaire.toLowerCase() !== target) continue;
+        if (assocSlug(b.beneficiaire) !== target) continue;
         canonicalName = canonicalName || b.beneficiaire;
         theme = theme ?? b.thematique ?? null;
         natureJuridique = natureJuridique ?? b.nature_juridique ?? null;
@@ -3271,6 +3273,7 @@ export type ChapitreFiche = {
 
 // `slugifyChapitre` vit dans `@/lib/projet-utils` (client-safe).
 import { slugifyChapitre, serviceToM57, resolveTypoBucket, detectJO } from "./projet-utils";
+import { assocSlug } from "@/lib/assoc-slug";
 export { slugifyChapitre };
 
 export function loadChapitre(slug: string, year?: number): ChapitreFiche | null {

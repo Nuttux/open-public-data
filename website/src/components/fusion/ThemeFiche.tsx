@@ -7,6 +7,7 @@ import { useCity } from "./CityContext";
 import { FicheBreakdown } from "@/components/fiche";
 import { V3Foot, V3Hero, V3Section } from "@/components/fiche/v3";
 import YearBars from "./YearBars";
+import { assocSlug } from "@/lib/assoc-slug";
 
 const THEME_COLORS: Record<string, string> = {
   "Social": "#c12323", "Logement": "#546583", "Éducation": "#2a3680", "Culture": "#a67638", "Sport": "#3a8f4a",
@@ -43,7 +44,7 @@ export default function ThemeFiche({ fiche }: { fiche: ThemeSubventionsFiche }) 
       <V3Section title={fill(t("fx.fiche.theme.h.top"), { year: fiche.year })} sub={fiche.nbBeneficiaires > fiche.topBeneficiaires.length ? fill(t("fx.fiche.theme.h.top_sub_n"), { n: fiche.topBeneficiaires.length, t: fmtInt(fiche.nbBeneficiaires) }) : t("fx.fiche.theme.h.top_sub")}>
         <FicheBreakdown
           cap={fiche.topBeneficiaires.length}
-          rows={fiche.topBeneficiaires.map((b) => ({ key: b.name, label: b.name, meta: b.direction ?? undefined, value: b.amount, href: `${basePath}/subventions/association/${encodeURIComponent(b.name)}` }))}
+          rows={fiche.topBeneficiaires.map((b) => ({ key: b.name, label: b.name, meta: b.direction ?? undefined, value: b.amount, href: `${basePath}/subventions/association/${assocSlug(b.name)}` }))}
           format={eurTxt}
         />
       </V3Section>

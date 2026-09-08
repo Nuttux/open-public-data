@@ -6,6 +6,7 @@ import type { LandingStats } from "@/lib/fusion-data";
 import type { BlogPostMeta } from "@/lib/blog";
 import type { LandingModel, DeckCard, MarqueeItem } from "@/components/landing/types";
 import { landingClosing } from "@/lib/landing-closing";
+import { assocSlug } from "@/lib/assoc-slug";
 
 /**
  * Paris adapter for the shared landing template. Maps LandingStats + i18n → a
@@ -41,17 +42,17 @@ const MARQUEE_SOURCE: MarqueeSource[] = [
   { href: "/fr/city/paris/marches/fournisseur/750043937", type: "fournisseur", label_fr: "Polyreva (propreté)", label_en: "Polyreva (cleaning services)", amount_fr: "235 M€ cumulés", amount_en: "€235M cumulative" },
 
   // === ASSOS / INSTITUTIONS PUBLIQUES-PUBLIQUES ===
-  { href: "/fr/city/paris/subventions/association/CENTRE%20ACTION%20SOCIALE%20VILLE%20PARIS", type: "asso", label_fr: "CASVP", label_en: "CASVP (city social action)", amount_fr: "416 M€/an", amount_en: "€416M/yr" },
-  { href: "/fr/city/paris/subventions/association/PARIS%20MUSEES", type: "asso", label_fr: "Paris Musées", label_en: "Paris Musées (city museums)", amount_fr: "65 M€/an", amount_en: "€65M/yr" },
-  { href: "/fr/city/paris/subventions/association/THEATRE%20MUSICAL%20DE%20PARIS", type: "asso", label_fr: "Théâtre du Châtelet", label_en: "Théâtre du Châtelet", amount_fr: "15,6 M€/an", amount_en: "€15.6M/yr" },
-  { href: "/fr/city/paris/subventions/association/THEATRE%20DE%20LA%20VILLE", type: "asso", label_fr: "Théâtre de la Ville", label_en: "Théâtre de la Ville", amount_fr: "14,4 M€/an", amount_en: "€14.4M/yr" },
-  { href: "/fr/city/paris/subventions/association/FORUM%20DES%20IMAGES", type: "asso", label_fr: "Forum des Images", label_en: "Forum des Images", amount_fr: "5,9 M€/an", amount_en: "€5.9M/yr" },
-  { href: "/fr/city/paris/subventions/association/ATELIER%20PARISIEN%20D%27URBANISME", type: "asso", label_fr: "Atelier Parisien d'Urbanisme", label_en: "Paris Urban Planning Studio", amount_fr: "5,8 M€/an", amount_en: "€5.8M/yr" },
-  { href: "/fr/city/paris/subventions/association/ORCHESTRE%20DE%20CHAMBRE%20DE%20PARIS", type: "asso", label_fr: "Orchestre de Chambre de Paris", label_en: "Paris Chamber Orchestra", amount_fr: "4,8 M€/an", amount_en: "€4.8M/yr" },
-  { href: "/fr/city/paris/subventions/association/AGOSPAP", type: "asso", label_fr: "AGOSPAP (œuvres sociales agents)", label_en: "AGOSPAP (staff welfare)", amount_fr: "7 M€/an", amount_en: "€7M/yr" },
-  { href: "/fr/city/paris/subventions/association/ABC%20PUERICULTURE", type: "asso", label_fr: "ABC Puériculture", label_en: "ABC Childcare", amount_fr: "8,6 M€/an", amount_en: "€8.6M/yr" },
-  { href: "/fr/city/paris/subventions/association/CRESCENDO", type: "asso", label_fr: "Crescendo (petite enfance)", label_en: "Crescendo (early childhood)", amount_fr: "6,5 M€/an", amount_en: "€6.5M/yr" },
-  { href: "/fr/city/paris/subventions/association/ALTERALIA", type: "asso", label_fr: "Alteralia (social)", label_en: "Alteralia (social action)", amount_fr: "7,3 M€/an", amount_en: "€7.3M/yr" },
+  { href: "/fr/city/paris/subventions/association/centre-action-sociale-ville-paris", type: "asso", label_fr: "CASVP", label_en: "CASVP (city social action)", amount_fr: "416 M€/an", amount_en: "€416M/yr" },
+  { href: "/fr/city/paris/subventions/association/paris-musees", type: "asso", label_fr: "Paris Musées", label_en: "Paris Musées (city museums)", amount_fr: "65 M€/an", amount_en: "€65M/yr" },
+  { href: "/fr/city/paris/subventions/association/theatre-musical-de-paris", type: "asso", label_fr: "Théâtre du Châtelet", label_en: "Théâtre du Châtelet", amount_fr: "15,6 M€/an", amount_en: "€15.6M/yr" },
+  { href: "/fr/city/paris/subventions/association/theatre-de-la-ville", type: "asso", label_fr: "Théâtre de la Ville", label_en: "Théâtre de la Ville", amount_fr: "14,4 M€/an", amount_en: "€14.4M/yr" },
+  { href: "/fr/city/paris/subventions/association/forum-des-images", type: "asso", label_fr: "Forum des Images", label_en: "Forum des Images", amount_fr: "5,9 M€/an", amount_en: "€5.9M/yr" },
+  { href: "/fr/city/paris/subventions/association/atelier-parisien-d-urbanisme", type: "asso", label_fr: "Atelier Parisien d'Urbanisme", label_en: "Paris Urban Planning Studio", amount_fr: "5,8 M€/an", amount_en: "€5.8M/yr" },
+  { href: "/fr/city/paris/subventions/association/orchestre-de-chambre-de-paris", type: "asso", label_fr: "Orchestre de Chambre de Paris", label_en: "Paris Chamber Orchestra", amount_fr: "4,8 M€/an", amount_en: "€4.8M/yr" },
+  { href: "/fr/city/paris/subventions/association/agospap", type: "asso", label_fr: "AGOSPAP (œuvres sociales agents)", label_en: "AGOSPAP (staff welfare)", amount_fr: "7 M€/an", amount_en: "€7M/yr" },
+  { href: "/fr/city/paris/subventions/association/abc-puericulture", type: "asso", label_fr: "ABC Puériculture", label_en: "ABC Childcare", amount_fr: "8,6 M€/an", amount_en: "€8.6M/yr" },
+  { href: "/fr/city/paris/subventions/association/crescendo", type: "asso", label_fr: "Crescendo (petite enfance)", label_en: "Crescendo (early childhood)", amount_fr: "6,5 M€/an", amount_en: "€6.5M/yr" },
+  { href: "/fr/city/paris/subventions/association/alteralia", type: "asso", label_fr: "Alteralia (social)", label_en: "Alteralia (social action)", amount_fr: "7,3 M€/an", amount_en: "€7.3M/yr" },
 
   // === BAILLEURS ===
   { href: "/fr/city/paris/dette/bailleur/paris-habitat", type: "bailleur", label_fr: "Paris Habitat", label_en: "Paris Habitat (social housing)", amount_fr: "2,7 Md€ garanties", amount_en: "€2.7Bn guarantees" },
@@ -150,7 +151,7 @@ export function buildParisLandingModel(
   }
   if (fa) {
     deck.push({
-      href: `/fr/city/paris/subventions/association/${fa.slug}`,
+      href: `/fr/city/paris/subventions/association/${assocSlug(decodeURIComponent(fa.slug))}`,
       scroll: false,
       kicker: t("fx.land.deck.c2.kicker"),
       title: t("fx.land.deck.c2.title"),
