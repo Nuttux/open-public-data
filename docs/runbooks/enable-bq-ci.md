@@ -13,11 +13,46 @@ Une fois fait :
 
 Durée totale du setup : ~30 minutes. Une seule fois.
 
+## Migration 2026-09 : Nuttux/open-public-data → AbstractsMachine/qipu
+
+Le pool, le provider et le service account existent déjà (créés le 2026-05-19
+pour l'ancien repo). Après la purge du repo (2026-08-27), deux objets GCP
+pointent encore sur l'ancien nom et les secrets/variable du nouveau repo sont
+vides — c'est pour ça que le cron résolvait en `sync` seul et ne publiait
+rien. Il suffit de repointer, pas de recréer :
+
+```bash
+# 1. Provider : n'accepter que le nouveau repo (plus strict que l'org).
+gcloud iam workload-identity-pools providers update-oidc github-oidc \
+  --project=open-data-france-484717 --location=global \
+  --workload-identity-pool=github-actions \
+  --attribute-condition="assertion.repository == 'AbstractsMachine/qipu'"
+
+# 2. Service account : autoriser le nouveau repo à l'impersonner
+#    (et retirer l'ancien, qui n'existe plus).
+SA="gha-bq-ci@open-data-france-484717.iam.gserviceaccount.com"
+POOL="principalSet://iam.googleapis.com/projects/281685193792/locations/global/workloadIdentityPools/github-actions/attribute.repository"
+gcloud iam service-accounts add-iam-policy-binding "$SA" --project=open-data-france-484717 \
+  --role=roles/iam.workloadIdentityUser --member="$POOL/AbstractsMachine/qipu"
+gcloud iam service-accounts remove-iam-policy-binding "$SA" --project=open-data-france-484717 \
+  --role=roles/iam.workloadIdentityUser --member="$POOL/Nuttux/open-public-data"
+
+# 3. GitHub : secrets + variable sur le nouveau repo.
+gh secret set GCP_WORKLOAD_IDENTITY_PROVIDER -R AbstractsMachine/qipu \
+  --body "projects/281685193792/locations/global/workloadIdentityPools/github-actions/providers/github-oidc"
+gh secret set GCP_SERVICE_ACCOUNT -R AbstractsMachine/qipu --body "$SA"
+gh variable set ENABLE_BQ_CI -R AbstractsMachine/qipu --body true
+```
+
+Vérification : `gh workflow run enrich-pipeline.yml -R AbstractsMachine/qipu -f publish=false`
+→ le job `refresh` doit passer l'auth GCP, puis `gate-site` doit tourner sur la
+branche `data/refresh-*` créée. Rien n'atteint `main` tant que `publish=false`.
+
 ## Pré-requis
 
 - `gcloud` CLI installé et authentifié (`gcloud auth login`)
 - Accès admin au projet GCP `open-data-france-484717`
-- Accès admin au repo GitHub `Nuttux/open-public-data`
+- Accès admin au repo GitHub `AbstractsMachine/qipu`
 
 ## Étapes
 
@@ -30,7 +65,7 @@ export POOL_ID="github-actions"
 export PROVIDER_ID="github-oidc"
 export SA_NAME="gha-bq-ci"
 export SA_EMAIL="${SA_NAME}@${PROJECT_ID}.iam.gserviceaccount.com"
-export GH_REPO="Nuttux/open-public-data"
+export GH_REPO="AbstractsMachine/qipu"
 
 echo "Project number: $PROJECT_NUMBER"
 echo "Service account email (à noter): $SA_EMAIL"
@@ -58,7 +93,7 @@ gcloud projects add-iam-policy-binding "$PROJECT_ID" \
 # 2026-05-19 : on a essayé une condition `resource.name.startsWith("projects/_/datasets/raw")
 # || ... dbt_paris*"` mais l'évaluation IAM ne match pas comme attendu sur
 # l'upload BQ. Simplifié en grant unconditional — le scope est de toute
-# façon limité au projet GCP, et la WIF restreint déjà à org Nuttux.
+# façon limité au projet GCP, et la WIF restreint déjà au repo AbstractsMachine/qipu.
 gcloud projects add-iam-policy-binding "$PROJECT_ID" \
   --member="serviceAccount:${SA_EMAIL}" \
   --role="roles/bigquery.dataEditor" \
@@ -88,11 +123,11 @@ gcloud iam workload-identity-pools providers create-oidc "$PROVIDER_ID" \
   --workload-identity-pool="$POOL_ID" \
   --display-name="GitHub OIDC" \
   --attribute-mapping="google.subject=assertion.sub,attribute.repository=assertion.repository,attribute.repository_owner=assertion.repository_owner" \
-  --attribute-condition="assertion.repository_owner == 'Nuttux'" \
+  --attribute-condition="assertion.repository_owner == 'AbstractsMachine'" \
   --issuer-uri="https://token.actions.githubusercontent.com"
 ```
 
-> **Note** : la condition `assertion.repository_owner == 'Nuttux'` empêche n'importe quel autre repo GitHub d'usurper cette identité. Resserre encore avec `assertion.repository == 'Nuttux/open-public-data'` si tu veux le binding strictement par repo.
+> **Note** : la condition `assertion.repository_owner == 'AbstractsMachine'` empêche n'importe quel autre repo GitHub d'usurper cette identité. Resserre encore avec `assertion.repository == 'AbstractsMachine/qipu'` si tu veux le binding strictement par repo.
 
 ### 5. Autoriser le repo GitHub à impersonner le service account
 
@@ -117,7 +152,7 @@ Garde cette sortie sous la main : tu vas la coller dans les secrets GitHub.
 
 ### 7. Configurer GitHub
 
-Sur https://github.com/Nuttux/open-public-data :
+Sur https://github.com/AbstractsMachine/qipu :
 
 **Settings → Secrets and variables → Actions → New repository secret :**
 
@@ -134,9 +169,9 @@ Sur https://github.com/Nuttux/open-public-data :
 
 ### 8. Vérifier
 
-1. Va sur https://github.com/Nuttux/open-public-data/actions/workflows/data-platform-audit.yml
+1. Va sur https://github.com/AbstractsMachine/qipu/actions/workflows/data-platform-audit.yml
 2. Sur la prochaine PR (ou push sur `main`), le job `dbt-test` doit maintenant apparaître et passer.
-3. Va sur https://github.com/Nuttux/open-public-data/actions/workflows/enrich-pipeline.yml → Run workflow → `phases=auto`. Tu dois voir `→ phases résolues : sync,dbt,export,enrich` dans les logs.
+3. Va sur https://github.com/AbstractsMachine/qipu/actions/workflows/enrich-pipeline.yml → Run workflow → `phases=auto`. Tu dois voir `→ phases résolues : sync,dbt,export,enrich` dans les logs.
 
 ## Coûts
 

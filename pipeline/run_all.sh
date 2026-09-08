@@ -19,6 +19,8 @@
 #   bash pipeline/run_all.sh --tier1            # active enrich tier1 (LLM payant)
 #   bash pipeline/run_all.sh --cron-safe        # skip enrich LLM, garde tier2 Sirene
 #   bash pipeline/run_all.sh --dry-run          # imprime ce qui serait fait
+#   bash pipeline/run_all.sh --strict           # CI auto-refresh : tout échec
+#                                               # arrête tout, dbt test obligatoire
 #
 # Variables d'env reconnues :
 #   ANTHROPIC_API_KEY     (requis pour enrich tier1 / grounded LLM)
@@ -40,6 +42,7 @@ ONLY=""
 TIER1=false
 CRON_SAFE=false
 DRY_RUN=false
+STRICT=false
 
 for arg in "$@"; do
     case "$arg" in
@@ -48,6 +51,7 @@ for arg in "$@"; do
         --tier1)     TIER1=true ;;
         --cron-safe) CRON_SAFE=true ;;
         --dry-run)   DRY_RUN=true ;;
+        --strict)    STRICT=true ;;
         -h|--help)
             grep "^#" "$0" | sed 's/^# \{0,1\}//'
             exit 0 ;;
@@ -83,6 +87,20 @@ run_step() {
     "$@"
 }
 
+# Échec d'une étape. En interactif on prévient et on continue : l'utilisateur
+# lit le ⚠ et décide. En --strict (auto-refresh CI) on s'arrête : un sync raté
+# laisse `raw` périmé, un export raté laisse des JSON à moitié réécrits, et
+# « on continue » finit par publier ça sur le site sans que personne ne lise
+# le ⚠.
+soft_fail() {
+    local msg="$1"
+    if $STRICT; then
+        echo "  ✗ $msg — arrêt (--strict)"
+        exit 1
+    fi
+    echo "  ⚠ $msg — on continue"
+}
+
 cd "$REPO_ROOT"
 
 # --- 1. SYNC ----------------------------------------------------------------
@@ -98,7 +116,7 @@ if should_run sync; then
     if [[ -f "$PIPELINE_DIR/scripts/sync/sync_city.py" ]]; then
         run_step "OpenData Paris core (7 datasets → BQ raw)" \
             $PYTHON "$PIPELINE_DIR/scripts/sync/sync_city.py" paris || \
-            echo "  ⚠ sync_city paris a échoué — on continue"
+            soft_fail "sync_city paris a échoué"
     fi
     # Chemin direct OpenData → JSON (ne dépend pas de BQ). Rapide, gratuit.
     run_step "Subventions JSON (OpenData Paris)" \
@@ -107,7 +125,7 @@ if should_run sync; then
     if [[ -f "$PIPELINE_DIR/scripts/sync/fetch_decp_paris.py" ]]; then
         run_step "Marchés publics DECP" \
             $PYTHON "$PIPELINE_DIR/scripts/sync/fetch_decp_paris.py" || \
-            echo "  ⚠ fetch_decp_paris a échoué — on continue"
+            soft_fail "fetch_decp_paris a échoué"
     fi
 
     # Sources raw qui ne viennent PAS du portail ODS : reconstruites depuis des
@@ -120,7 +138,7 @@ if should_run sync; then
              sync_deliberations sync_pdf_investissements_localises sync_dette_garantie; do
         if [[ -f "$PIPELINE_DIR/scripts/sync/$s.py" ]]; then
             run_step "raw · $s" $PYTHON "$PIPELINE_DIR/scripts/sync/$s.py" || \
-                echo "  ⚠ $s a échoué — on continue"
+                soft_fail "$s a échoué"
         fi
     done
 
@@ -128,7 +146,7 @@ if should_run sync; then
     if [[ -f "$PIPELINE_DIR/scripts/sync/sync_city.py" ]]; then
         run_step "Marseille (data.gouv.fr → BQ raw)" \
             $PYTHON "$PIPELINE_DIR/scripts/sync/sync_city.py" marseille || \
-            echo "  ⚠ sync_city marseille a échoué — on continue"
+            soft_fail "sync_city marseille a échoué"
     fi
 fi
 
@@ -156,7 +174,7 @@ if should_run dbt; then
         # manquant, `dbt run` échouera juste après avec un message précis.
         if [[ "${DBT_SKIP_SEED:-0}" != "1" ]]; then
             run_step "dbt seed" bash -c "cd '$PIPELINE_DIR' && dbt seed $DBT_TARGET_FLAG" || \
-                echo "  ⚠ dbt seed a signalé des erreurs — on continue, dbt run dira si ça bloque"
+                soft_fail "dbt seed a signalé des erreurs (dbt run dira si ça bloque)"
         else
             echo "  ⊘ dbt seed skipped (DBT_SKIP_SEED=1)"
         fi
@@ -167,6 +185,14 @@ if should_run dbt; then
             DBT_EXCLUDE_FLAG="--exclude $DBT_RUN_EXCLUDE"
         fi
         run_step "dbt run" bash -c "cd '$PIPELINE_DIR' && dbt run $DBT_TARGET_FLAG $DBT_EXCLUDE_FLAG"
+        # Les tests dbt (unicité, réconciliation core ↔ staging, freshness,
+        # valeurs acceptées…) ne tournent qu'en --strict : c'est le juge qui
+        # décide si l'export a le droit de partir. `dbt run` PUIS `dbt test`
+        # plutôt que `dbt build` : build saute l'aval d'un modèle dont un test
+        # échoue et laisserait les marts prod mi-rebâtis, mi-anciens.
+        if $STRICT; then
+            run_step "dbt test (--strict)" bash -c "cd '$PIPELINE_DIR' && dbt test $DBT_TARGET_FLAG $DBT_EXCLUDE_FLAG"
+        fi
     else
         echo "  ⚠ dbt non installé, phase skipped. Installer : pip install dbt-bigquery"
     fi
@@ -181,7 +207,7 @@ if should_run export; then
     # export_all.py orchestre déjà l'ensemble des exports domaine.
     run_step "Export complet" \
         $PYTHON "$PIPELINE_DIR/scripts/export/export_all.py" || \
-        echo "  ⚠ export_all a échoué — souvent dû à creds BQ manquantes, on continue"
+        soft_fail "export_all a échoué (souvent : creds BQ manquantes)"
 fi
 
 # --- 4. ENRICH --------------------------------------------------------------
@@ -222,7 +248,7 @@ if should_run enrich; then
     elif [[ -f "$PIPELINE_DIR/scripts/enrich/run_enrichment.py" ]]; then
         run_step "Autres enrichissements (géo + thématique)" \
             $PYTHON "$PIPELINE_DIR/scripts/enrich/run_enrichment.py" || \
-            echo "  ⚠ run_enrichment.py a échoué — on continue"
+            soft_fail "run_enrichment.py a échoué"
     fi
 fi
 

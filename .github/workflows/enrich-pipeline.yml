@@ -1,54 +1,81 @@
 name: Pipeline (sync + dbt + export + enrich)
 
-# Appelle `pipeline/run_all.sh` qui orchestre les 4 phases sync → dbt →
-# export → enrich. Incremental par design : re-run gratuit si rien n'a
-# bougé côté sources.
+# Refresh hebdomadaire des données, publié SEULEMENT s'il passe les gates.
+#
+# `main` est la branche de production Vercel : tout push y est déployé dans
+# les minutes qui suivent. Un refresh n'y arrive donc jamais directement :
+#
+#   refresh    : run_all.sh --strict (sync → dbt run + dbt test → export) puis
+#                audit qualité. Toute étape qui échoue arrête tout. Si des
+#                JSON ont changé, ils sont poussés sur une branche
+#                data/refresh-<date>-<run>. Sinon : « rien à publier », fin.
+#   gate-site  : ci.yml sur cette branche — lint, typecheck, Vitest,
+#                next build ET golden path Playwright avec les nouveaux JSON.
+#                Le site doit construire et servir, pas seulement les données
+#                être justes.
+#   publish    : fast-forward de main sur la branche → Vercel déploie.
+#                Si main a bougé entre-temps (ff impossible) → PR à la place.
+#   on-failure : si un gate échoue après le push de branche → PR ouverte avec
+#                le rapport, pour inspection. main reste intact.
 #
 # Déclenchement :
-#   - Manuel : Actions → "Pipeline (sync + dbt + export + enrich)" → Run workflow
-#   - Cron   : tous les lundis à 6h UTC (refresh hebdomadaire)
+#   - Cron   : tous les lundis 6h UTC (les datasets Ville bougent au mieux
+#              mensuellement ; < 7 j de latence suffit)
+#   - Manuel : Actions → Run workflow (phases, tier1, publish)
 #
-# Phases (input `phases`) :
-#   - "auto" (défaut) : résolu en `sync,dbt,export,enrich` quand BQ-CI est
-#     activé (cf. docs/runbooks/enable-bq-ci.md). Sinon résolu en
-#     `sync,enrich` (uniquement les sources qui ne passent pas par BQ).
-#   - autres : phases explicites séparées par virgule.
+# Prérequis : vars.ENABLE_BQ_CI=true + secrets WIF — voir
+# docs/runbooks/enable-bq-ci.md. Sans BQ, le run échoue explicitement
+# (« ::error:: ») plutôt que de finir vert sans rien publier.
 
 on:
   workflow_dispatch:
     inputs:
       phases:
-        description: "Phases (auto = full si BQ activé sinon sync+enrich)"
+        description: "Phases (auto = sync,dbt,export si BQ activé, sinon sync)"
         type: choice
         options:
           - "auto"
-          - "sync,enrich"
-          - "enrich"
+          - "sync,dbt,export"
           - "sync"
+          - "enrich"
           - "sync,dbt,export,enrich"
         default: "auto"
       tier1:
         description: "Activer l'enrich tier1 (LLM payant ≥80k€)"
         type: boolean
         default: false
-      commit:
-        description: "Commit + push les changements"
+      publish:
+        description: "Publier sur main si les gates passent (sinon : branche + PR seulement)"
         type: boolean
         default: true
 
   schedule:
-    # Tous les lundis 6h UTC. Cadence retenue : signal de fraîcheur < 7j
-    # vu que les datasets Ville sont mis à jour mensuellement au mieux.
     - cron: "0 6 * * 1"
 
 permissions:
   contents: write
+  pull-requests: write
   id-token: write   # Workload Identity Federation (auth GCP)
 
+# Un seul refresh à la fois ; on n'annule pas un run en cours (il tient peut-
+# être une branche à moitié poussée).
+concurrency:
+  group: data-refresh
+  cancel-in-progress: false
+
+env:
+  DATA_PATHS: website/public/data/ pipeline/seeds/
+
 jobs:
-  pipeline:
+  # ===========================================================================
+  refresh:
+    name: Refresh (sync → dbt → export → audit)
     runs-on: ubuntu-latest
     timeout-minutes: 120
+    outputs:
+      changed: ${{ steps.detect.outputs.changed }}
+      branch: ${{ steps.push.outputs.branch }}
+      publish: ${{ steps.phases.outputs.publish }}
 
     steps:
       - name: Checkout
@@ -66,31 +93,47 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt || pip install requests
-          # dbt installé seulement si on va vraiment l'utiliser, c'est lourd.
 
       - name: Resolve phases
         id: phases
         env:
           REQUESTED: ${{ inputs.phases || 'auto' }}
           BQ_CI: ${{ vars.ENABLE_BQ_CI }}
+          # Sur `schedule` il n'y a pas d'inputs : `inputs.publish` est vide,
+          # donc faux. C'est ce qui a rendu l'ancien step « Commit & push »
+          # inerte sur chaque cron. Le cron publie par défaut ; le manuel suit
+          # sa case à cocher.
+          PUBLISH_INPUT: ${{ github.event_name == 'schedule' && 'true' || inputs.publish }}
         run: |
           if [[ "$REQUESTED" == "auto" ]]; then
-            if [[ "$BQ_CI" == "true" ]]; then
-              # PAS d'enrich en CI : la phase enrich lance run_enrichment.py
-              # (LLM Gemini par défaut). L'utilisateur a explicitement demandé
-              # de ne PAS dépenser de crédits LLM en cron (cf
-              # feedback_enrichment_in_session.md). Tier2 SIRENE pourrait
-              # tourner mais on isole : enrich = manuel in-session uniquement.
-              RESOLVED="sync,dbt,export"
-            else
-              RESOLVED="sync"
+            if [[ "$BQ_CI" != "true" ]]; then
+              # Toutes les sources passent par BigQuery : sans lui le refresh
+              # ne peut rien faire. L'ancien cron résolvait en `sync` seul,
+              # avalait l'échec du sync et finissait vert — quatre lundis de
+              # « succès » sans qu'un octet n'atteigne le site (août 2026).
+              # Un run rouge qui dit pourquoi vaut mieux qu'un vert qui ment.
+              echo "::error::ENABLE_BQ_CI n'est pas à 'true' : le refresh auto ne peut ni construire ni publier." \
+                   "Setup : docs/runbooks/enable-bq-ci.md (WIF + secrets + variable)."
+              exit 1
             fi
+            # Pas d'enrich en CI : run_enrichment.py dépense des crédits LLM,
+            # l'enrichissement se fait en session (cf. run_all.sh --cron-safe).
+            RESOLVED="sync,dbt,export"
           else
             RESOLVED="$REQUESTED"
           fi
-          echo "→ phases résolues : $RESOLVED"
+          PUBLISH="$PUBLISH_INPUT"
+          if [[ "$RESOLVED" != *"export"* ]]; then
+            # Sans export, rien de nouveau dans website/public/data : il n'y
+            # a rien à publier, et on le dit plutôt que de laisser croire
+            # que le site s'est mis à jour.
+            PUBLISH="false"
+            echo "::warning::Phases = '$RESOLVED' (pas d'export) : rien ne sera publié sur le site." \
+                 "Pour un refresh complet, ENABLE_BQ_CI=true est requis (docs/runbooks/enable-bq-ci.md)."
+          fi
+          echo "→ phases : $RESOLVED · publish : $PUBLISH"
           echo "resolved=$RESOLVED" >> "$GITHUB_OUTPUT"
-          # Pour les conditions des steps suivants
+          echo "publish=$PUBLISH"   >> "$GITHUB_OUTPUT"
           if [[ "$RESOLVED" == *"dbt"* || "$RESOLVED" == *"export"* ]]; then
             echo "needs_bq=true" >> "$GITHUB_OUTPUT"
           else
@@ -104,7 +147,7 @@ jobs:
           workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
 
-      - name: Install dbt (only if dbt phase requested)
+      - name: Install dbt
         if: contains(steps.phases.outputs.resolved, 'dbt')
         run: pip install dbt-core dbt-bigquery
 
@@ -126,7 +169,7 @@ jobs:
                 timeout_seconds: 600
           EOF
 
-      - name: Run pipeline
+      - name: Run pipeline (--strict)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GOOGLE_API_KEY:    ${{ secrets.GOOGLE_API_KEY }}
@@ -134,42 +177,167 @@ jobs:
           # Force le profil prod (sinon pipeline/profiles.yml template DBT_USER → local)
           DBT_PROFILES_DIR: /home/runner/.dbt
           DBT_TARGET: prod
-          # `dbt seed` tourne de nouveau (run_all.sh le rend non fatal, donc un
-          # CSV national mal typé n'emporte plus le refresh). Le skip mis ici en
-          # juin est ce qui a empêché tout rechargement : les seeds ont expiré
-          # en prod le 22/06 et 21 modèles ont planté chaque lundi jusqu'au 25/08.
-          #
-          # DBT_RUN_EXCLUDE retiré le 2026-08-25 : les sources raw Marseille sont
-          # désormais syncées par la phase sync, et les 3 modèles se construisent.
         run: |
           chmod +x pipeline/run_all.sh
-          PHASES_FLAG="--only=${{ steps.phases.outputs.resolved }}"
           TIER1_FLAG=""
           if [[ "${{ inputs.tier1 }}" == "true" ]]; then TIER1_FLAG="--tier1"; fi
-          bash pipeline/run_all.sh $PHASES_FLAG $TIER1_FLAG
+          # --strict : plus de « ⚠ … on continue ». Un sync raté, un seed
+          # cassé, un test dbt rouge ou un export incomplet arrêtent le run
+          # ici — avant qu'un JSON à moitié réécrit ne soit poussé.
+          bash pipeline/run_all.sh --only="${{ steps.phases.outputs.resolved }}" --strict $TIER1_FLAG
 
-      - name: Run data quality audit
+      # L'audit écrit website/public/data/data_quality_audit.json (ce que
+      # /methode#audit affiche) et sort non-zéro si un check est en `fail`.
+      # Il est donc publié avec le refresh — et un `fail` bloque le refresh.
+      - name: Data quality audit
         if: contains(steps.phases.outputs.resolved, 'dbt')
         run: |
           pip install google-cloud-bigquery db-dtypes
           python pipeline/scripts/audit/run_data_quality_audit.py
 
-      - name: Show diff summary
-        if: always()
+      - name: Detect changes
+        id: detect
         run: |
-          git status --short || true
-          echo "---"
-          git diff --stat || true
+          git add $DATA_PATHS
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Rien n'a changé dans $DATA_PATHS — rien à publier."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            git diff --cached --stat | tail -n 30
+          fi
 
-      - name: Commit & push
-        if: ${{ inputs.commit }}
+      # Ce qui a changé, en clair : années disponibles par index, totaux par
+      # année, état de l'audit. Sert de message de commit, de corps de PR et de
+      # résumé du run — c'est ce qu'on lit le lundi pour savoir ce que le site
+      # a reçu.
+      - name: Summarize data diff
+        if: steps.detect.outputs.changed == 'true'
+        run: |
+          python pipeline/scripts/audit/summarize_data_diff.py --base HEAD > /tmp/refresh-summary.md
+          cat /tmp/refresh-summary.md >> "$GITHUB_STEP_SUMMARY"
+          cat /tmp/refresh-summary.md
+
+      - name: Upload summary
+        if: steps.detect.outputs.changed == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: refresh-summary
+          path: /tmp/refresh-summary.md
+          retention-days: 30
+
+      - name: Push refresh branch
+        id: push
+        if: steps.detect.outputs.changed == 'true'
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet && git diff --cached --quiet; then
-            echo "Rien à committer."
-            exit 0
+          BRANCH="data/refresh-$(date -u +%Y%m%d)-${{ github.run_id }}"
+          git checkout -b "$BRANCH"
+          TITLE="$(python pipeline/scripts/audit/summarize_data_diff.py --base HEAD --title)"
+          { echo "$TITLE"; echo; cat /tmp/refresh-summary.md; } > /tmp/commit-msg.txt
+          git commit -F /tmp/commit-msg.txt
+          git push origin "$BRANCH"
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+          echo "→ branche poussée : $BRANCH"
+
+  # ===========================================================================
+  # Le site doit construire et servir avec les nouveaux JSON. Réutilise ci.yml
+  # (lint + typecheck + Vitest + next build + Playwright) sur la branche data.
+  gate-site:
+    name: Gate — le site construit et sert
+    needs: refresh
+    if: needs.refresh.outputs.changed == 'true'
+    uses: ./.github/workflows/ci.yml
+    with:
+      ref: ${{ needs.refresh.outputs.branch }}
+      run_e2e: true
+
+  # ===========================================================================
+  publish:
+    name: Publish (fast-forward main → Vercel)
+    needs: [refresh, gate-site]
+    if: needs.refresh.outputs.changed == 'true' && needs.refresh.outputs.publish == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Download summary
+        uses: actions/download-artifact@v4
+        with:
+          name: refresh-summary
+          path: /tmp
+
+      - name: Fast-forward main
+        env:
+          BRANCH: ${{ needs.refresh.outputs.branch }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin "$BRANCH"
+          # Fast-forward uniquement : le commit publié est exactement celui
+          # que gate-site a testé. Si main a bougé entre-temps, on ne merge
+          # pas à l'aveugle — on ouvre une PR et on laisse un humain regarder.
+          if git merge --ff-only "origin/$BRANCH"; then
+            git push origin main
+            git push origin --delete "$BRANCH"
+            echo "✓ publié sur main → Vercel déploie ($BRANCH supprimée)"
+          else
+            {
+              echo "✅ Gates verts sur cette branche, mais **main a avancé pendant le refresh** : fast-forward impossible."
+              echo "Merger à la main après relecture (le commit publié doit rester celui que gate-site a testé — préférer un rebase + re-run à un merge commit)."
+              echo
+              echo "---"
+              cat /tmp/refresh-summary.md
+            } > /tmp/pr-body.md
+            gh pr create --base main --head "$BRANCH" \
+              --title "$(git log -1 --format=%s "origin/$BRANCH")" \
+              --body-file /tmp/pr-body.md
+            echo "::warning::main a bougé pendant le refresh — PR ouverte au lieu d'un push direct."
           fi
-          git add website/public/data/ pipeline/seeds/
-          git commit -m "chore(pipeline): auto-refresh ${{ steps.phases.outputs.resolved }} [skip ci]"
-          git push
+
+  # ===========================================================================
+  # Un gate a échoué APRÈS le push de branche : on garde la branche et on ouvre
+  # une PR avec le rapport, pour que l'échec soit lisible (diff + logs) plutôt
+  # que perdu dans un run rouge. Rien n'atteint main.
+  on-failure:
+    name: Gate rouge → PR d'inspection
+    needs: [refresh, gate-site]
+    if: always() && needs.refresh.outputs.branch != '' && needs.gate-site.result == 'failure'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Download summary
+        uses: actions/download-artifact@v4
+        with:
+          name: refresh-summary
+          path: /tmp
+
+      - name: Open inspection PR
+        env:
+          BRANCH: ${{ needs.refresh.outputs.branch }}
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          {
+            echo "🔴 **Le site ne construit pas ou ne sert pas avec ces données** — voir le run : $RUN_URL"
+            echo
+            echo "Rien n'a été publié. Corriger, puis relancer le workflow ; cette branche peut être supprimée."
+            echo
+            echo "---"
+            cat /tmp/refresh-summary.md
+          } > /tmp/pr-body.md
+          gh pr create --draft --base main --head "$BRANCH" \
+            --title "🔴 data refresh bloqué par gate-site — $BRANCH" \
+            --body-file /tmp/pr-body.md
