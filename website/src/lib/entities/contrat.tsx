@@ -18,6 +18,7 @@ import {
 } from "@/lib/fusion-data";
 import { lieuForMarche, lieuForProjet } from "@/lib/lieux-data";
 import { normalizeObjet } from "@/lib/objet-normalizer";
+import { eur, cityDataDate, sourceLine, cityPortal, clip } from "@/lib/entities/seo-text";
 
 type D = {
   contrat: NonNullable<ReturnType<typeof loadContrat>>;
@@ -89,6 +90,24 @@ export function makeContratConfig(city: string): EntityPageConfig<D> {
         locale: locale === "en" ? "en_US" : "fr_FR",
         alternateLocale: locale === "en" ? ["fr_FR"] : ["en_US"],
       },
+    };
+  },
+  seo: ({ contrat: c, vulgarization: v }, locale) => {
+    const amt = eur(c.montantMax, locale);
+    const objetFr = v?.objet_clair || normalizeObjet(c.objet);
+    const objet = locale === "en" ? (v?.objet_clair_en || objetFr) : objetFr;
+    const kind = [c.nature, c.categorie].filter(Boolean).map((x) => x.toLowerCase()).join(", ");
+    const date = cityDataDate(city, "marches-publics/index.json", locale);
+    const src = `DECP via ${cityPortal(city)}`;
+    if (locale === "en") {
+      return {
+        title: `${clip(objet, 50)}: ${amt} contract awarded to ${clip(c.fournisseur, 40)} (City of ${cityNom}, ${c.year})`,
+        answer: `In ${c.year}, the City of ${cityNom} awarded contract ${c.numero}, "${objet}"${kind ? ` (${kind})` : ""}, to ${c.fournisseur} for a maximum of ${amt}. ${sourceLine("en", src, date)}`,
+      };
+    }
+    return {
+      title: `${clip(objet, 50)} : marché de ${amt} attribué à ${clip(c.fournisseur, 40)} (Ville de ${cityNom}, ${c.year})`,
+      answer: `En ${c.year}, la Ville de ${cityNom} a notifié à ${c.fournisseur} le marché ${c.numero}, « ${objet} »${kind ? ` (${kind})` : ""}, pour une enveloppe maximale de ${amt}. ${sourceLine("fr", src, date)}`,
     };
   },
   page: {

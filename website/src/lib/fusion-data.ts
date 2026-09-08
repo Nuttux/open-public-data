@@ -1483,7 +1483,7 @@ const BAILLEUR_SLUG_ALIASES: Record<string, string> = {
   "icf-habitat-la-sabliere": "icf-habitat",
 };
 
-function canonicalBailleurSlug(name: string): string {
+export function canonicalBailleurSlug(name: string): string {
   const base = slugifyBailleur(name);
   return BAILLEUR_SLUG_ALIASES[base] ?? base;
 }

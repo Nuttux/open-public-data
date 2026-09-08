@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { SITE_URL, readSiteLocale } from '@/lib/seo';
 import { LOCALE_HOSTS, localesForPath } from '@/lib/site-locale';
+import { brEntityPaths, frEntityPaths, frenchCitySectionPaths } from '@/lib/seo/entity-paths';
 import { listCities } from '@/lib/cities';
 import { listAllCommunesMeta, loadAllCommunesGeneratedAt } from '@/lib/all-communes';
 import { listDataDir } from '@/lib/data/read';
@@ -140,17 +141,30 @@ function sfChunkCount(): number {
   return Math.max(1, Math.ceil(sfEntityPaths().length / CHUNK_SIZE));
 }
 
+// French (Paris + Marseille) entity fiches, then the Brazilian ones — the
+// ~30 000 pages that were declared nowhere until 2026-09-08.
+function frChunkCount(): number {
+  return Math.max(1, Math.ceil(frEntityPaths().length / CHUNK_SIZE));
+}
+function brChunkCount(): number {
+  return Math.max(1, Math.ceil(brEntityPaths().length / CHUNK_SIZE));
+}
+
 /**
  * Generate one sitemap per chunk of ~5 000 URLs.
  * Returns sitemap segment ids; Next.js then calls `sitemap(id)` for each.
  */
 export async function generateSitemaps() {
-  // Segment 0            = main routes + top-10 cities + SF section pages.
-  // Segments 1..N        = communes-all chunks.
-  // Segments N+1..N+M    = San Francisco entity fiches.
+  // Segment 0                 = main routes + top-10 cities + SF section pages.
+  // Segments 1..N             = communes-all chunks.
+  // Segments N+1..N+M         = San Francisco entity fiches.
+  // Segments N+M+1..N+M+F     = French entity fiches (Paris, Marseille).
+  // Segments N+M+F+1..+B      = Brazilian pages (Recife).
   const n = chunkCount();
   const m = sfChunkCount();
-  return Array.from({ length: n + m + 1 }, (_, i) => ({ id: i }));
+  const f = frChunkCount();
+  const b = brChunkCount();
+  return Array.from({ length: n + m + f + b + 1 }, (_, i) => ({ id: i }));
 }
 
 /**
@@ -216,20 +230,39 @@ async function segment(id: number): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'weekly' as const,
       priority,
     }));
-    return [...main, ...cityRoutes, ...sfRoutes];
+    const frSections = frenchCitySectionPaths().map((path) => ({
+      url: `${SITE_URL}${path}`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    }));
+    return [...main, ...cityRoutes, ...frSections, ...sfRoutes];
   }
 
-  // SF entity chunks sit after the communes chunks.
+  // Entity chunks sit after the communes chunks: SF, then FR, then BR.
   const nCommuneChunks = chunkCount();
   if (id > nCommuneChunks) {
-    const paths = sfEntityPaths();
-    const start = (id - nCommuneChunks - 1) * CHUNK_SIZE;
-    return paths.slice(start, start + CHUNK_SIZE).map((p) => ({
-      url: `${SITE_URL}${p}`,
-      lastModified: now,
-      changeFrequency: 'monthly' as const,
-      priority: 0.4,
-    }));
+    const families: Array<[number, () => string[]]> = [
+      [sfChunkCount(), sfEntityPaths],
+      [frChunkCount(), frEntityPaths],
+      [brChunkCount(), brEntityPaths],
+    ];
+    let offset = nCommuneChunks;
+    for (const [count, list] of families) {
+      if (id <= offset + count) {
+        const start = (id - offset - 1) * CHUNK_SIZE;
+        return list()
+          .slice(start, start + CHUNK_SIZE)
+          .map((p) => ({
+            url: `${SITE_URL}${p}`,
+            lastModified: now,
+            changeFrequency: 'monthly' as const,
+            priority: 0.4,
+          }));
+      }
+      offset += count;
+    }
+    return [];
   }
 
   // Communes chunks: id 1 = first 5k, id 2 = next 5k, etc.

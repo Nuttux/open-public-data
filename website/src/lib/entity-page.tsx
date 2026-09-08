@@ -27,6 +27,7 @@ import { notFound } from "next/navigation";
 import "@/app/fusion.css";
 import { DetailDrawer, Navbar, Footer } from "@/components/fusion";
 import { finalizeEntityMetadata, readLocale } from "@/lib/seo";
+import type { SeoAnswer } from "@/lib/entities/seo-text";
 
 export type EntityLocale = "fr" | "en";
 export type EntityParams = Record<string, string>;
@@ -45,6 +46,14 @@ export type EntityPageConfig<D> = {
   notFoundMetadata: (locale: EntityLocale) => Metadata;
   /** Body de l'ancien generateMetadata, verbatim, une fois l'entité chargée. */
   metadata: (d: D, locale: EntityLocale, params: EntityParams) => Metadata;
+  /**
+   * L'« answer » SEO / AI de la fiche (lib/entities/seo-text.ts) : un titre
+   * qui répond à la question qu'on tape (« X : 12,3 M€ de subventions de la
+   * Ville de Paris, 2019-2024 ») et UNE phrase avec les chiffres, les années,
+   * qui paie, la source et la date des données. Elle devient le <title> et la
+   * meta description, et s'affiche sous le h1. null → metadata inchangée.
+   */
+  seo?: (d: D, locale: EntityLocale, params: EntityParams) => SeoAnswer | null;
   page: {
     /**
      * Contenu du header (kicker + h1 + lede éventuel), rendu dans
@@ -112,7 +121,15 @@ export function makeEntityPage<D>(cfg: EntityPageConfig<D>) {
     const locale = await readLocale();
     const d = await loadOnce(params, sp);
     if (!d) return finalizeEntityMetadata(cfg.notFoundMetadata(locale), locale);
-    return finalizeEntityMetadata(cfg.metadata(d, locale, params), locale);
+    const md = cfg.metadata(d, locale, params);
+    const seo = cfg.seo?.(d, locale, params) ?? null;
+    if (seo) {
+      md.title = seo.title;
+      md.description = seo.answer;
+      md.openGraph = { ...md.openGraph, title: seo.title, description: seo.answer };
+      md.twitter = { ...md.twitter, title: seo.title, description: seo.answer };
+    }
+    return finalizeEntityMetadata(md, locale);
   }
 
   async function Page(props: RouteProps) {
@@ -122,6 +139,7 @@ export function makeEntityPage<D>(cfg: EntityPageConfig<D>) {
     if (!d) return notFound();
     const locale = await readLocale();
     const body = cfg.page.body(d, locale);
+    const seo = cfg.seo?.(d, locale, params) ?? null;
     return (
       <div className="theme-fusion">
         <Navbar />
@@ -132,7 +150,10 @@ export function makeEntityPage<D>(cfg: EntityPageConfig<D>) {
                 cfg.page.headerClassName ?? "fx-page-header fx-page-header--fiche"
               }
             >
-              <div className="fx-wrap">{cfg.page.header(d, locale)}</div>
+              <div className="fx-wrap">
+                {cfg.page.header(d, locale)}
+                {seo ? <p className="fx-page-lede fx-answer">{seo.answer}</p> : null}
+              </div>
             </section>
           ) : null}
           {cfg.page.bodyWrapper === "none" ? (

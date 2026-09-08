@@ -5,6 +5,7 @@ import type { EntityPageConfig } from "@/lib/entity-page";
 import { numLocale, sufOrdinal } from "@/lib/fmt";
 import { loadArrondissement } from "@/lib/fusion-data";
 import { loadLieuxIndex } from "@/lib/lieux-data";
+import { eur, pct, int, ordFr, ordEn, dataDate, sourceLine } from "@/lib/entities/seo-text";
 
 type D = {
   arr: NonNullable<ReturnType<typeof loadArrondissement>>;
@@ -72,6 +73,21 @@ export const arrondissementInvestConfig: EntityPageConfig<D> = {
         alternateLocale: locale === "en" ? ["fr_FR"] : ["en_US"],
       },
     };
+  },
+  seo: ({ arr: a }, locale) => {
+  const amt = eur(a.total, locale);
+  const date = dataDate("investissement_tendances.json", locale);
+  const share = pct(a.totalShare, locale, 0);
+  if (locale === "en") {
+    return {
+      title: `${ordEn(a.arr)} arrondissement of Paris: ${amt} invested by the City in ${a.year}, ${int(a.nbProjets, "en")} projects`,
+      answer: `${ordEn(a.arr)} arrondissement: in ${a.year}, the City of Paris localised ${int(a.nbProjets, "en")} investment projects there for ${amt}, ${ordEn(a.rank)} of the 20 arrondissements (${share} of the localised total). ${sourceLine("en", "City of Paris, localised investments in the administrative account", date)}`,
+    };
+  }
+  return {
+    title: `${ordFr(a.arr)} arrondissement de Paris : ${amt} investis par la Ville en ${a.year}, ${int(a.nbProjets, "fr")} projets`,
+    answer: `${ordFr(a.arr)} arrondissement : en ${a.year}, la Ville de Paris y a localisé ${int(a.nbProjets, "fr")} projets d'investissement pour ${amt}, ${ordFr(a.rank)} arrondissement sur 20 (${share} du total localisé). ${sourceLine("fr", "Ville de Paris, investissements localisés du compte administratif", date)}`,
+  };
   },
   page: {
     header: ({ arr }) => (

@@ -43,11 +43,11 @@ export async function generateMetadata({
   const cityRich = getCityOrNull(slug);
   if (cityRich) {
     return buildLocaleAwareMetadata({
-      title: `${cityRich.nom} — Finances locales`,
-      description: `Budget, dette, fiscalité de la commune de ${cityRich.nom} (${cityRich.code_insee}, ${cityRich.reg_name}). Données OFGL harmonisées 2014-aujourd'hui.`,
+      title: `${cityRich.nom} : budget, dette et fiscalité de la commune`,
+      description: `Combien ${cityRich.nom} (${cityRich.reg_name}) dépense, encaisse et doit, année par année depuis 2014. Source : données OFGL harmonisées.`,
       en: {
-        title: `${cityRich.nom} — Local finances`,
-        description: `Budget, debt, taxation of ${cityRich.nom} (${cityRich.code_insee}, ${cityRich.reg_name}). OFGL harmonised data 2014-present.`,
+        title: `${cityRich.nom}: the town's budget, debt and taxes`,
+        description: `How much ${cityRich.nom} (${cityRich.reg_name}) spends, collects and owes, year by year since 2014. Source: OFGL harmonised data.`,
       },
       path: `/fr/city/${slug}`,
     });
@@ -56,11 +56,11 @@ export async function generateMetadata({
   const slim = findCommuneByAny(slug);
   if (slim) {
     return buildLocaleAwareMetadata({
-      title: `${slim.nom} (${slim.dep_name}) — Finances locales`,
-      description: `Budget, dette, fiscalité de la commune de ${slim.nom} (INSEE ${slim.insee}, ${slim.reg_name}). Données OFGL.`,
+      title: `${slim.nom} (${slim.dep_name}) : budget, dette et fiscalité de la commune`,
+      description: `Combien ${slim.nom} (${slim.dep_name}, ${slim.reg_name}) dépense, encaisse et doit, année par année. Source : données OFGL et balances comptables DGFiP.`,
       en: {
-        title: `${slim.nom} (${slim.dep_name}) — Local finances`,
-        description: `Budget, debt, taxation of ${slim.nom} (INSEE ${slim.insee}, ${slim.reg_name}). OFGL data.`,
+        title: `${slim.nom} (${slim.dep_name}): the town's budget, debt and taxes`,
+        description: `How much ${slim.nom} (${slim.dep_name}, ${slim.reg_name}) spends, collects and owes, year by year. Source: OFGL data and DGFiP municipal accounts.`,
       },
       path: `/fr/city/${slug}`,
     });

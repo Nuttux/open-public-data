@@ -4,11 +4,30 @@ import LieuFiche from "@/components/fusion/LieuFiche";
 import LieuxVoisins from "@/components/fusion/LieuxVoisins";
 import type { EntityPageConfig } from "@/lib/entity-page";
 import { loadLieu, loadLieuxIndex } from "@/lib/lieux-data";
+import { dataDate, int, ordEn, ordFr, sourceLine, type SeoAnswer } from "@/lib/entities/seo-text";
 
 type D = { lieu: NonNullable<ReturnType<typeof loadLieu>> };
 
 export function lieuStaticParams(): { slug: string }[] {
   return loadLieuxIndex().map((l) => ({ slug: l.slug }));
+}
+
+function lieuAnswer(lieu: D["lieu"], locale: "fr" | "en"): SeoAnswer {
+  const n = lieu.stats.n_lieu ?? 0;
+  const kind = (locale === "en" ? lieu.kind_en : lieu.kind_fr) || "";
+  const where = lieu.arrondissement > 0 ? `, ${locale === "en" ? ordEn(lieu.arrondissement) : ordFr(lieu.arrondissement)} arrondissement` : "";
+  const date = dataDate("lieux/index.json", locale);
+  const src = "Conseil de Paris, Bulletin municipal officiel, opendata.paris.fr";
+  if (locale === "en") {
+    return {
+      title: `${lieu.name}: what the City of Paris decided and invested there`,
+      answer: `${lieu.name} (${kind.toLowerCase()}${where}): ${int(n, "en")} Paris Council deliberation${n > 1 ? "s" : ""}, municipal bulletin extracts back to 1882 and the City's investments, every fact linked to its source. ${sourceLine("en", src, date)}`,
+    };
+  }
+  return {
+    title: `${lieu.name} : ce que la Ville de Paris y a décidé et investi`,
+    answer: `${lieu.name} (${kind.toLowerCase()}${where}) : ${int(n, "fr")} délibération${n > 1 ? "s" : ""} du Conseil de Paris, les extraits du Bulletin municipal depuis 1882 et les investissements de la Ville, chaque fait relié à sa source. ${sourceLine("fr", src, date)}`,
+  };
 }
 
 export const lieuConfig: EntityPageConfig<D> = {
@@ -34,6 +53,7 @@ export const lieuConfig: EntityPageConfig<D> = {
       openGraph: { title, description, type: "article", locale: locale === "en" ? "en_US" : "fr_FR" },
     };
   },
+  seo: ({ lieu }, locale) => lieuAnswer(lieu, locale),
   page: {
     // Pas de section fx-page-header : la fiche lieu rend son back-link,
     // kicker et h1 directement dans le fx-fiche-wrap (layout pré-refacto).
@@ -51,6 +71,7 @@ export const lieuConfig: EntityPageConfig<D> = {
           <h1 className="fx-page-title" style={{ fontSize: "clamp(26px, 3.4vw, 40px)", margin: "4px 0 24px" }}>
             {lieu.name}
           </h1>
+          <p className="fx-page-lede fx-answer">{lieuAnswer(lieu, locale).answer}</p>
           <LieuFiche lieu={lieu} />
           <LieuxVoisins slug={lieu.slug} famille={lieu.famille} arrondissement={lieu.arrondissement} />
         </>

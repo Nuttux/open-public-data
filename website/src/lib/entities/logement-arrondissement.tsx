@@ -2,6 +2,7 @@ import { ArrondissementLogementFiche } from "@/components/fusion";
 import { LogementArrKicker, LogementArrBackLink } from "@/components/fusion/EntityPageHeaders";
 import type { EntityPageConfig } from "@/lib/entity-page";
 import { loadArrondissementLogement, PARIS_CENTRE_SLUG } from "@/lib/fusion-data";
+import { pct, int, ordFr, ordEn, sourceLine } from "@/lib/entities/seo-text";
 
 type D = { data: NonNullable<ReturnType<typeof loadArrondissementLogement>> };
 
@@ -44,6 +45,20 @@ export const logementArrondissementConfig: EntityPageConfig<D> = {
         alternateLocale: locale === "en" ? ["fr_FR"] : ["en_US"],
       },
     };
+  },
+  seo: ({ data: d }, locale) => {
+  const n = d.totalLogements;
+  const share = pct(d.shareCity, locale, 0);
+  if (locale === "en") {
+    return {
+      title: `Social housing, ${d.label}: ${int(n, "en")} homes funded by the City of Paris in ${d.year}`,
+      answer: `${d.label}: in ${d.year}, the City of Paris funded ${int(n, "en")} social homes there (${int(d.nbOperations, "en")} operations), ${share} of its output that year (${ordEn(d.rank)} among the arrondissements). ${sourceLine("en", "opendata.paris.fr (funded social housing)", null)}`,
+    };
+  }
+  return {
+    title: `Logement social, ${d.label} : ${int(n, "fr")} logements financés par la Ville de Paris en ${d.year}`,
+    answer: `${d.label} : en ${d.year}, la Ville de Paris y a financé ${int(n, "fr")} logements sociaux (${int(d.nbOperations, "fr")} opérations), soit ${share} de sa production de l'année (${ordFr(d.rank)} arrondissement). ${sourceLine("fr", "opendata.paris.fr (logements sociaux financés)", null)}`,
+  };
   },
   page: {
     header: ({ data }) => (

@@ -3,6 +3,7 @@ import PosteFiche from "@/components/fusion/PosteFiche";
 import type { EntityPageConfig } from "@/lib/entity-page";
 import { loadBudgetPoste } from "@/lib/fusion-data";
 import { trLabel } from "@/lib/label-translate";
+import { eur, pct, int, ordFr, ordEn, sourceLine } from "@/lib/entities/seo-text";
 
 type D = {
   poste: NonNullable<ReturnType<typeof loadBudgetPoste>>;
@@ -53,6 +54,24 @@ export const posteConfig: EntityPageConfig<D> = {
         alternateLocale: locale === "en" ? ["fr_FR"] : ["en_US"],
       },
     };
+  },
+  seo: ({ poste: p }, locale) => {
+  const amt = eur(p.total, locale);
+  const label = trLabel(p.label, locale);
+  const dep = p.kind === "depense";
+  const share = pct(p.shareOfKindPct, locale);
+  const perHab = int(Math.round(p.perHabitant), locale);
+  const voted = p.typeBudget === "vote";
+  if (locale === "en") {
+    return {
+      title: `${label}: ${amt} of ${dep ? "spending" : "revenue"} in the City of Paris ${p.year} budget`,
+      answer: `In ${p.year}, ${label} ${dep ? "costs" : "brings in"} ${amt}, ${share} of the City of Paris's ${voted ? "voted" : "actual"} ${dep ? "spending" : "revenue"} (${ordEn(p.rank)} of ${p.nbPostes} items), €${perHab} per inhabitant. ${sourceLine("en", "opendata.paris.fr (administrative accounts and primary budgets, M57)", null)}`,
+    };
+  }
+  return {
+    title: `${p.label} : ${amt} de ${dep ? "dépenses" : "recettes"} au budget ${p.year} de la Ville de Paris`,
+    answer: `En ${p.year}, ${p.label} ${dep ? "coûte" : "rapporte"} ${amt}, soit ${share} des ${dep ? "dépenses" : "recettes"} ${voted ? "votées" : "exécutées"} de la Ville de Paris (${ordFr(p.rank)} poste sur ${p.nbPostes}), ${perHab} € par habitant. ${sourceLine("fr", "opendata.paris.fr (comptes administratifs et budgets primitifs, M57)", null)}`,
+  };
   },
   page: {
     header: ({ poste, year }) => (

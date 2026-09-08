@@ -2728,6 +2728,9 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   max-width: 720px;
   margin: 0 0 12px;
 }
+/* The one-sentence answer under a fiche's h1 (lib/entities/seo-text.ts):
+   same voice as the lede, a touch more air above and below. */
+.theme-fusion .fx-answer { margin: 10px 0 4px; }
 .theme-fusion .fx-page-source {
   font-family: var(--f-mono);
   font-size: 12.5px;

@@ -2,6 +2,7 @@ import ArrondissementGarantiesFiche from "@/components/fusion/ArrondissementGara
 import type { EntityPageConfig } from "@/lib/entity-page";
 import { fmtBillions, fmtInt, fmtMillions } from "@/lib/fmt";
 import { loadArrondissementGaranties } from "@/lib/fusion-data";
+import { eur, int, dataDate, sourceLine } from "@/lib/entities/seo-text";
 
 type D = NonNullable<ReturnType<typeof loadArrondissementGaranties>> & {
   /** Année explicitement demandée via ?year= — propagée dans les liens. */
@@ -61,6 +62,21 @@ export const arrondissementGarantiesConfig: EntityPageConfig<D> = {
         alternateLocale: locale === "en" ? ["fr_FR"] : ["en_US"],
       },
     };
+  },
+  seo: ({ arr, year }, locale) => {
+  const amt = eur(arr.capital_restant, locale);
+  const n = arr.count_emprunts;
+  const date = dataDate(`hors_bilan_${year}.json`, locale);
+  if (locale === "en") {
+    return {
+      title: `${whereEn(arr.arr)}: ${amt} of loans guaranteed by the City of Paris (${year})`,
+      answer: `${whereEn(arr.arr)}: at the end of ${year}, the City of Paris guarantees ${amt} of outstanding loans there, across ${int(n, "en")} loan${n > 1 ? "s" : ""}, mostly for social housing. ${sourceLine("en", "opendata.paris.fr (guaranteed debt)", date)}`,
+    };
+  }
+  return {
+    title: `${whereFr(arr.arr)} : ${amt} d'emprunts garantis par la Ville de Paris (${year})`,
+    answer: `${whereFr(arr.arr)} : fin ${year}, la Ville de Paris y garantit ${amt} d'emprunts (${int(n, "fr")} emprunt${n > 1 ? "s" : ""}), essentiellement pour le logement social. ${sourceLine("fr", "opendata.paris.fr (dette garantie)", date)}`,
+  };
   },
   page: {
     header: ({ arr, year }) => (

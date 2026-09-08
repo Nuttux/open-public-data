@@ -3,6 +3,7 @@ import type { EntityPageConfig } from "@/lib/entity-page";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import { loadInstrumentDette } from "@/lib/fusion-data";
 import { trLabel } from "@/lib/label-translate";
+import { eur, pct, int, dataDate, sourceLine } from "@/lib/entities/seo-text";
 
 type D = NonNullable<ReturnType<typeof loadInstrumentDette>> & {
   /** Année explicitement demandée via ?year= — propagée dans les liens. */
@@ -50,6 +51,24 @@ export const instrumentDetteConfig: EntityPageConfig<D> = {
         alternateLocale: locale === "en" ? ["fr_FR"] : ["en_US"],
       },
     };
+  },
+  seo: ({ instrument: i, year }, locale) => {
+  const amt = eur(i.encours, locale);
+  const label = trLabel(i.label, locale);
+  const part = pct(i.part * 100, locale);
+  const date = dataDate(`patrimoine_structure_${year}.json`, locale);
+  const rate = i.taux_moyen_pct != null ? pct(i.taux_moyen_pct, locale, 2) : null;
+  const mat = i.maturite_moyenne_ans != null ? int(Math.round(i.maturite_moyenne_ans), locale) : null;
+  if (locale === "en") {
+    return {
+      title: `${label}: ${amt} of City of Paris debt at end ${year}`,
+      answer: `At 31 December ${year}, ${label.toLowerCase()} makes up ${amt} of outstanding debt, ${part} of the City of Paris's financial debt${rate ? `, at an average rate of ${rate}` : ""}${mat ? ` over ${mat} years` : ""}. ${sourceLine("en", "City of Paris, administrative account (debt statement)", date)}`,
+    };
+  }
+  return {
+    title: `${i.label} : ${amt} de dette de la Ville de Paris fin ${year}`,
+    answer: `Au 31 décembre ${year}, ${i.label.toLowerCase()} représente ${amt} d'encours, soit ${part} de la dette financière de la Ville de Paris${rate ? `, à ${rate} de taux moyen` : ""}${mat ? ` sur ${mat} ans` : ""}. ${sourceLine("fr", "Ville de Paris, compte administratif (état de la dette)", date)}`,
+  };
   },
   page: {
     header: ({ instrument, year }) => (

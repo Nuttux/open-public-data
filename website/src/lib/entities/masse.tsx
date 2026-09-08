@@ -3,6 +3,7 @@ import type { EntityPageConfig } from "@/lib/entity-page";
 import { fmtBillions, fmtDec, fmtMillions } from "@/lib/fmt";
 import { loadPatrimoineMasse } from "@/lib/fusion-data";
 import { trLabel } from "@/lib/label-translate";
+import { eur, pct, dataDate, sourceLine } from "@/lib/entities/seo-text";
 
 type D = NonNullable<ReturnType<typeof loadPatrimoineMasse>> & {
   /** Année explicitement demandée via ?year= — propagée dans les liens. */
@@ -53,6 +54,24 @@ export const masseConfig: EntityPageConfig<D> = {
         alternateLocale: locale === "en" ? ["fr_FR"] : ["en_US"],
       },
     };
+  },
+  seo: ({ masse: m, year }, locale) => {
+  const amt = eur(m.value, locale);
+  const label = trLabel(m.label, locale);
+  const share = pct(m.share * 100, locale);
+  const date = dataDate(`patrimoine_structure_${year}.json`, locale);
+  if (locale === "en") {
+    const side = m.side === "actif" ? "assets" : "liabilities";
+    return {
+      title: `${label}: ${amt} on the City of Paris ${year} balance sheet`,
+      answer: `On the City of Paris's ${year} balance sheet, ${label.toLowerCase()} stands at ${amt}, ${share} of ${side}. ${sourceLine("en", "City of Paris, management account (balance sheet)", date)}`,
+    };
+  }
+  const side = m.side === "actif" ? "de l'actif" : "du passif";
+  return {
+    title: `${m.label} : ${amt} au bilan ${year} de la Ville de Paris`,
+    answer: `Au bilan ${year} de la Ville de Paris, ${m.label.toLowerCase()} pèse ${amt}, soit ${share} ${side}. ${sourceLine("fr", "Ville de Paris, compte de gestion (bilan)", date)}`,
+  };
   },
   page: {
     header: ({ masse, year }) => (

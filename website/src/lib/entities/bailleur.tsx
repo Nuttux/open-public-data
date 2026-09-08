@@ -3,6 +3,7 @@ import { BailleurKickerText } from "@/components/fusion/EntityPageHeaders";
 import type { EntityPageConfig } from "@/lib/entity-page";
 import { fmtBillions, fmtMillions } from "@/lib/fmt";
 import { loadBailleur } from "@/lib/fusion-data";
+import { eur, pct, int, dataDate, sourceLine } from "@/lib/entities/seo-text";
 
 type D = { bailleur: NonNullable<ReturnType<typeof loadBailleur>> };
 
@@ -53,6 +54,25 @@ export const bailleurConfig: EntityPageConfig<D> = {
         alternateLocale: locale === "en" ? ["fr_FR"] : ["en_US"],
       },
     };
+  },
+  seo: ({ bailleur: b }, locale) => {
+  const g = b.garanties;
+  if (!g) return null;
+  const amt = eur(g.capital_restant, locale);
+  const n = g.count_emprunts;
+  const date = dataDate(`hors_bilan_${g.year}.json`, locale);
+  const taux = pct(g.taux_moyen_pondere_pct, locale, 2);
+  const dur = int(Math.round(g.duree_residuelle_moyenne_ans), locale);
+  if (locale === "en") {
+    return {
+      title: `${b.name}: ${amt} of loans guaranteed by the City of Paris (${g.year})`,
+      answer: `At the end of ${g.year}, the City of Paris guarantees ${amt} of ${b.name}'s outstanding loans (${int(n, "en")} loan${n > 1 ? "s" : ""}, ${taux} average rate, ${dur} years remaining). ${sourceLine("en", "opendata.paris.fr (guaranteed debt)", date)}`,
+    };
+  }
+  return {
+    title: `${b.name} : ${amt} d'emprunts garantis par la Ville de Paris (${g.year})`,
+    answer: `Fin ${g.year}, la Ville de Paris garantit ${amt} d'emprunts de ${b.name} (${int(n, "fr")} emprunt${n > 1 ? "s" : ""}, ${taux} de taux moyen, ${dur} ans restants). ${sourceLine("fr", "opendata.paris.fr (dette garantie)", date)}`,
+  };
   },
   page: {
     header: ({ bailleur }) => (

@@ -26,12 +26,13 @@ export async function generateMetadata({
   const { slug } = await params;
   const commune = findCommuneByAny(slug);
   const nom = commune?.nom ?? slug;
+  const dep = commune?.dep_name ? ` (${commune.dep_name})` : "";
   return buildLocaleAwareMetadata({
-    title: `Budget de ${nom} (par nature) â finances locales`,
-    description: `Recettes et dÃ©penses de la commune de ${nom} par nature comptable. Source : balances comptables DGFiP (axe nature).`,
+    title: `Budget de ${nom}${dep} : recettes, dépenses et dette de la commune`,
+    description: `Combien ${nom} dépense et encaisse chaque année, poste par poste, et ce que la commune doit. Source : balances comptables des communes, DGFiP (axe nature).`,
     en: {
-      title: `${nom} budget (by nature) â local finances`,
-      description: `Revenue and spending of ${nom} by accounting nature. Source: DGFiP balance-sheet accounts (nature axis).`,
+      title: `${nom}${dep} budget: the town's revenue, spending and debt`,
+      description: `How much ${nom} spends and collects each year, item by item, and what the town owes. Source: DGFiP municipal accounts (nature axis).`,
     },
     path: `/fr/city/${slug}/budget`,
   });
@@ -54,7 +55,7 @@ export default async function CommuneBudgetPage({
   // registre passent par la route nationale comme toute commune.
   if (hasDedicatedRoutes(slug)) notFound();
 
-  // DATA-DERIVED gate â no city list. Renders iff the national budget-by-nature
+  // DATA-DERIVED gate — no city list. Renders iff the national budget-by-nature
   // export exists for this commune.
   const caps = getCommuneCapabilities(slug);
   if (!caps.budget.nature) notFound();
@@ -63,7 +64,7 @@ export default async function CommuneBudgetPage({
   if (!commune) notFound();
 
   // Budget JSON is fetched server-side from the public bucket (transparent to
-  // the visitor â they receive HTML). notFound if the file is missing.
+  // the visitor — they receive HTML). notFound if the file is missing.
   const requestedYear = sp.year ? Number(sp.year) : undefined;
   const loaded = await loadCommuneBudget(slug, requestedYear);
   if (!loaded) notFound();

@@ -5,6 +5,7 @@ import type { EntityPageConfig } from "@/lib/entity-page";
 import { getCity } from "@/lib/cities";
 import { loadThemeSubventions } from "@/lib/fusion-data";
 import { trLabel } from "@/lib/label-translate";
+import { eur, pct, int, cityDataDate, sourceLine, cityPortal } from "@/lib/entities/seo-text";
 
 type D = { fiche: NonNullable<ReturnType<typeof loadThemeSubventions>> };
 
@@ -56,6 +57,24 @@ export function makeThemeConfig(city: string): EntityPageConfig<D> {
           locale: locale === "en" ? "en_US" : "fr_FR",
           alternateLocale: locale === "en" ? ["fr_FR"] : ["en_US"],
         },
+      };
+    },
+    seo: ({ fiche: f }, locale) => {
+      const amt = eur(f.total, locale);
+      const theme = trLabel(f.theme, locale);
+      const date = cityDataDate(city, "subventions/index.json", locale);
+      const src = city === "paris"
+        ? (locale === "en" ? "opendata.paris.fr (grants paid)" : "opendata.paris.fr (subventions versées)")
+        : (locale === "en" ? `${cityPortal(city)} (grants paid by the City of ${cityNom})` : `${cityPortal(city)} (subventions versées par la Ville de ${cityNom})`);
+      if (locale === "en") {
+        return {
+          title: `${theme} grants in ${cityNom}, ${f.year}: ${amt} to ${int(f.nbBeneficiaires, "en")} recipients`,
+          answer: `In ${f.year}, the City of ${cityNom} paid ${amt} in ${theme.toLowerCase()} grants to ${int(f.nbBeneficiaires, "en")} recipients (${int(f.nbSubventions, "en")} grants), ${pct(f.shareOfTotalPct, "en")} of the year's grants. ${sourceLine("en", src, date)}`,
+        };
+      }
+      return {
+        title: `Subventions ${f.theme} à ${cityNom} en ${f.year} : ${amt} pour ${int(f.nbBeneficiaires, "fr")} bénéficiaires`,
+        answer: `En ${f.year}, la Ville de ${cityNom} a versé ${amt} de subventions en ${f.theme.toLowerCase()} à ${int(f.nbBeneficiaires, "fr")} bénéficiaires (${int(f.nbSubventions, "fr")} subventions), soit ${pct(f.shareOfTotalPct, "fr")} des subventions de l'année. ${sourceLine("fr", src, date)}`,
       };
     },
     page: {
