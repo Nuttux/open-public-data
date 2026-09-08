@@ -19,6 +19,7 @@ import {
 import { lieuForMarche, lieuForProjet } from "@/lib/lieux-data";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { eur, cityDataDate, sourceLine, cityPortal, clip } from "@/lib/entities/seo-text";
+import { contratRelated } from "@/lib/entities/related";
 
 type D = {
   contrat: NonNullable<ReturnType<typeof loadContrat>>;
@@ -110,6 +111,7 @@ export function makeContratConfig(city: string): EntityPageConfig<D> {
       answer: `En ${c.year}, la Ville de ${cityNom} a notifié à ${c.fournisseur} le marché ${c.numero}, « ${objet} »${kind ? ` (${kind})` : ""}, pour une enveloppe maximale de ${amt}. ${sourceLine("fr", src, date)}`,
     };
   },
+  related: ({ contrat }, locale) => contratRelated(contrat, city, locale),
   page: {
     header: ({ contrat, vulgarization }) => {
       // h1 keeps proper-noun data (objet_clair / normalizeObjet output) — already

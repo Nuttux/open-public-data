@@ -4,6 +4,7 @@ import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import { loadInstrumentDette } from "@/lib/fusion-data";
 import { trLabel } from "@/lib/label-translate";
 import { eur, pct, int, dataDate, sourceLine } from "@/lib/entities/seo-text";
+import { instrumentRelated } from "@/lib/entities/related";
 
 type D = NonNullable<ReturnType<typeof loadInstrumentDette>> & {
   /** Année explicitement demandée via ?year= — propagée dans les liens. */
@@ -70,6 +71,7 @@ export const instrumentDetteConfig: EntityPageConfig<D> = {
     answer: `Au 31 décembre ${year}, ${i.label.toLowerCase()} représente ${amt} d'encours, soit ${part} de la dette financière de la Ville de Paris${rate ? `, à ${rate} de taux moyen` : ""}${mat ? ` sur ${mat} ans` : ""}. ${sourceLine("fr", "Ville de Paris, compte administratif (état de la dette)", date)}`,
   };
   },
+  related: ({ slug, year }, locale) => instrumentRelated(slug, year, locale),
   page: {
     header: ({ instrument, year }) => (
       <>

@@ -28,6 +28,7 @@ import "@/app/fusion.css";
 import { DetailDrawer, Navbar, Footer } from "@/components/fusion";
 import { finalizeEntityMetadata, readLocale } from "@/lib/seo";
 import type { SeoAnswer } from "@/lib/entities/seo-text";
+import RelatedLinks, { type RelatedBlock } from "@/components/fiche/RelatedLinks";
 
 export type EntityLocale = "fr" | "en";
 export type EntityParams = Record<string, string>;
@@ -56,6 +57,13 @@ export type EntityPageConfig<D> = {
    * meta description, et s'affiche sous le h1. null → metadata inchangée.
    */
   seo?: (d: D, locale: EntityLocale, params: EntityParams) => SeoAnswer | null;
+  /**
+   * « Voir aussi » (components/fiche/RelatedLinks.tsx) : les pages voisines,
+   * calculées depuis les données déjà chargées — jamais déduites par
+   * ressemblance de mots, toujours des URL que la route résout. Rendu en
+   * dernière section de la fiche. null → rien.
+   */
+  related?: (d: D, locale: EntityLocale, params: EntityParams) => RelatedBlock | null;
   page: {
     /**
      * Contenu du header (kicker + h1 + lede éventuel), rendu dans
@@ -146,6 +154,7 @@ export function makeEntityPage<D>(cfg: EntityPageConfig<D>) {
     const locale = await readLocale();
     const body = cfg.page.body(d, locale);
     const seo = cfg.seo?.(d, locale, params) ?? null;
+    const related = cfg.related?.(d, locale, params) ?? null;
     return (
       <div className="theme-fusion">
         <Navbar />
@@ -163,9 +172,15 @@ export function makeEntityPage<D>(cfg: EntityPageConfig<D>) {
             </section>
           ) : null}
           {cfg.page.bodyWrapper === "none" ? (
-            body
+            <>
+              {body}
+              {related ? <div className="fx-fiche-wrap"><RelatedLinks block={related} /></div> : null}
+            </>
           ) : (
-            <div className="fx-fiche-wrap">{body}</div>
+            <div className="fx-fiche-wrap">
+              {body}
+              <RelatedLinks block={related} />
+            </div>
           )}
         </main>
         <Footer />

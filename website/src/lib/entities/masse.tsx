@@ -4,6 +4,7 @@ import { fmtBillions, fmtDec, fmtMillions } from "@/lib/fmt";
 import { loadPatrimoineMasse } from "@/lib/fusion-data";
 import { trLabel } from "@/lib/label-translate";
 import { eur, pct, dataDate, sourceLine } from "@/lib/entities/seo-text";
+import { masseRelated } from "@/lib/entities/related";
 
 type D = NonNullable<ReturnType<typeof loadPatrimoineMasse>> & {
   /** Année explicitement demandée via ?year= — propagée dans les liens. */
@@ -73,6 +74,7 @@ export const masseConfig: EntityPageConfig<D> = {
     answer: `Au bilan ${year} de la Ville de Paris, ${m.label.toLowerCase()} pèse ${amt}, soit ${share} ${side}. ${sourceLine("fr", "Ville de Paris, compte de gestion (bilan)", date)}`,
   };
   },
+  related: ({ slug, year }, locale) => masseRelated(slug, year, locale),
   page: {
     header: ({ masse, year }) => (
       <>

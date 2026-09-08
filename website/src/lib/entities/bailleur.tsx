@@ -4,6 +4,7 @@ import type { EntityPageConfig } from "@/lib/entity-page";
 import { fmtBillions, fmtMillions } from "@/lib/fmt";
 import { loadBailleur } from "@/lib/fusion-data";
 import { eur, pct, int, dataDate, sourceLine } from "@/lib/entities/seo-text";
+import { bailleurRelated } from "@/lib/entities/related";
 
 type D = { bailleur: NonNullable<ReturnType<typeof loadBailleur>> };
 
@@ -74,6 +75,7 @@ export const bailleurConfig: EntityPageConfig<D> = {
     answer: `Fin ${g.year}, la Ville de Paris garantit ${amt} d'emprunts de ${b.name} (${int(n, "fr")} emprunt${n > 1 ? "s" : ""}, ${taux} de taux moyen, ${dur} ans restants). ${sourceLine("fr", "opendata.paris.fr (dette garantie)", date)}`,
   };
   },
+  related: ({ bailleur: b }, locale) => bailleurRelated(b.slug, locale),
   page: {
     header: ({ bailleur }) => (
       <>

@@ -9,6 +9,7 @@ import BudgetSankey from "@/components/fusion/BudgetSankey";
 import { useT, useLocale } from "@/lib/localeContext";
 import { fmtDec } from "@/lib/fmt";
 import type { BudgetPageData } from "@/lib/fusion-data";
+import RelatedLinks, { type RelatedBlock } from "@/components/fiche/RelatedLinks";
 
 export type CommuneMeta = {
   slug: string;
@@ -36,6 +37,8 @@ type Props = {
   /** Upgrade layer present? (data-derived, from getCommuneCapabilities) */
   hasFonction: boolean;
   sourceUrl: string;
+  /** « Voir aussi », calculé côté serveur (page.tsx). */
+  related?: RelatedBlock | null;
   /** OFGL financial-health strip (dette, capacité de désendettement, épargne). */
   health?: CommuneHealth | null;
   /** Set (from getCommuneCapabilities) when the commune has a marchés page. */
@@ -83,6 +86,7 @@ export default function CommuneBudgetClient({
   investissementsHref,
   evolutionHref,
   comparaisonHref,
+  related,
 }: Props) {
   const t = useT();
   const { locale } = useLocale();
@@ -240,6 +244,8 @@ export default function CommuneBudgetClient({
               <BudgetSankey nodes={data.sankeyNodes} links={data.sankeyLinks} central={central} height={520} />
             </div>
           )}
+
+          <RelatedLinks block={related} />
 
           <ChartSource source={`${t("fx.natbud.source")} · ${year}`} dataHref={sourceUrl} methodAnchor="c-villes" />
         </div>

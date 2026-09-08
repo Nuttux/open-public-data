@@ -5,6 +5,7 @@ import { numLocale } from "@/lib/fmt";
 import { loadChapitre } from "@/lib/fusion-data";
 import { trLabel } from "@/lib/label-translate";
 import { eur, int, ordFr, ordEn, dataDate, sourceLine } from "@/lib/entities/seo-text";
+import { chapitreRelated } from "@/lib/entities/related";
 
 type D = { chap: NonNullable<ReturnType<typeof loadChapitre>> };
 
@@ -66,6 +67,7 @@ export const chapitreConfig: EntityPageConfig<D> = {
     answer: `En ${c.year}, la Ville de Paris a inscrit ${amt} d'investissements au chapitre ${c.label.toLowerCase()} (${ordFr(c.rank)} chapitre sur ${c.nbChapitres}), avec ${int(c.nbProjets, "fr")} projets localisés. ${sourceLine("fr", "Ville de Paris, compte administratif (M57) et investissements localisés", date)}`,
   };
   },
+  related: ({ chap: c }, locale) => chapitreRelated(c.slug, c.year, locale),
   page: {
     header: ({ chap }) => (
       <>

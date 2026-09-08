@@ -12,6 +12,7 @@ import {
 import { lieuForBeneficiaire } from "@/lib/lieux-data";
 import { trLabel } from "@/lib/label-translate";
 import { eur, int, span, periodLead, cityDataDate, sourceLine, cityPortal } from "@/lib/entities/seo-text";
+import { associationRelated } from "@/lib/entities/related";
 
 type D = {
   asso: NonNullable<ReturnType<typeof loadAssociation>>;
@@ -89,6 +90,7 @@ export function makeAssociationConfig(city: string): EntityPageConfig<D> {
         answer: `${periodLead(a.yearsActive, "fr")} la Ville de ${cityNom} a versé ${amt} à ${a.name} en ${int(n, "fr")} subvention${n > 1 ? "s" : ""}${theme ? `, principalement en ${theme.toLowerCase()}` : ""}. ${sourceLine("fr", src, date)}`,
       };
     },
+    related: ({ asso }, locale) => associationRelated(asso, city, locale),
     page: {
       header: ({ asso }) => (
         <>
