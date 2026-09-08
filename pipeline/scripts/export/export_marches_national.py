@@ -120,6 +120,9 @@ def _repair_word(m: re.Match) -> str:
 def clean_objet(objet: str | None) -> str:
     """Répare les apostrophes cassées (« d?électricité ») et les accents perdus."""
     t = (objet or "").strip()
+    # « ?uvre » = œ perdu ; « ? » isolé entre deux mots = tiret perdu.
+    t = re.sub(r"(?i)\?uvre", lambda m: "ŒUVRE" if m.group(0)[1:].isupper() else "œuvre", t)
+    t = re.sub(r"(?<=\S) \? (?=\S)", " - ", t)
     if _FFFD in t:
         t = re.sub(r"(?<![^\s])" + _FFFD + r"(?![^\s])", "à", t)   # « � » seul = « à »
         t = _WORD.sub(_repair_word, t)
