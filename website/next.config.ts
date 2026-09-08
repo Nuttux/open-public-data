@@ -196,6 +196,21 @@ const nextConfig: NextConfig = {
     '/api/**': ['./public/data/us/sf/city/**'],
   },
 
+  // Edge cache for every HTML page (lib/site-locale.ts: nothing is personal —
+  // no login, no cookie-driven content — so one response per host + URL).
+  // Set HERE, in the function's own response, not in proxy.ts: headers a
+  // middleware adds are merged after Vercel's cache lookup, so the cache never
+  // saw them and every hit was a MISS (measured in prod 2026-09-09).
+  // `Vercel-CDN-Cache-Control` is read by Vercel's cache only, never sent to
+  // browsers, and a deploy purges it — which is when the data changes.
+  async headers() {
+    return [
+      {
+        source: '/((?!api/|chat|ingest/|_next/).*)',
+        headers: [{ key: 'Vercel-CDN-Cache-Control', value: 'public, s-maxage=86400, stale-while-revalidate=604800' }],
+      },
+    ];
+  },
   async rewrites() {
     return [
       { source: '/ingest/static/:path*', destination: 'https://eu-assets.i.posthog.com/static/:path*' },
