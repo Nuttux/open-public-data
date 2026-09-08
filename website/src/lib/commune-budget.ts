@@ -154,6 +154,23 @@ export async function loadCommuneBudget(
     sankeyNodes: sankey.nodes ?? [],
     sankeyLinks: sankey.links,
     yearsSummary,
+    // Le loader commune ne lit que l'année courante et la précédente (fichiers
+    // distants) : la série par poste se limite à ces deux points, et la
+    // répartition par type de dépense n'existe pas côté DGFiP (axe nature).
+    series: (() => {
+      const out: BudgetPageData["series"] = {};
+      const add = (sk: typeof sankey | null | undefined, y: number, type: "vote" | "execute") => {
+        for (const l of sk?.links ?? []) {
+          const label = l.source === central ? l.target : l.target === central ? l.source : null;
+          if (label && l.value > 0) (out[label] ??= []).push({ year: y, value: l.value, type });
+        }
+      };
+      if (prev && previousYear) add(prev, previousYear, byYear[previousYear]?.type_budget ?? "execute");
+      add(sankey, year, byYear[year]?.type_budget ?? "execute");
+      return out;
+    })(),
+    flowSplit: [],
+    flowCoveragePct: 0,
   };
   return { data, availableYears: index.availableYears, year };
 }

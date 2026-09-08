@@ -7,21 +7,13 @@ import { usePathname } from "next/navigation";
 // fusion-data).
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
-import SectionHead from "@/components/fusion/SectionHead";
 import ChartSource from "@/components/fusion/ChartSource";
 import PageTOC from "@/components/fusion/PageTOC";
-import HeroNumber from "@/components/fusion/HeroNumber";
-import KPIGrid from "@/components/fusion/KPIGrid";
-import AnimatedNumber from "@/components/fusion/AnimatedNumber";
 import YearPicker from "@/components/fusion/YearPicker";
 import ExportRow from "@/components/fusion/ExportRow";
-import DualFlowBars from "@/components/fusion/DualFlowBars";
-import Tip from "@/components/fusion/Tip";
-import BudgetTimeline from "@/components/fusion/BudgetTimeline";
 import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/RelatedArticles";
-import PageHook from "@/components/fusion/PageHook";
-import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
-import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
+import PageIntro from "@/components/fusion/PageIntro";
+import { fmtBillions, fmtDec, fmtInt } from "@/lib/fmt";
 import type { BlogPostMeta } from "@/lib/blog";
 import type { BudgetPageData, VoteExecuteData } from "@/lib/fusion-data";
 import { slugifyLabel } from "@/lib/projet-utils";
@@ -38,6 +30,8 @@ type BudgetIndexLite = {
 type Props = {
   index: BudgetIndexLite;
   d: BudgetPageData;
+  /** Conservé pour la signature des pages appelantes ; la page v3 ne montre plus
+   *  le voté/exécuté (retiré à la demande de Daniel, 2026-09-04). */
   voteExec: VoteExecuteData;
   posts: BlogPostMeta[];
 };
@@ -57,13 +51,34 @@ const BUD_PLACEHOLDERS: ArticlePlaceholder[] = [
   },
 ];
 
-// Mapping exact des sources utilisées par le pipeline (cf. pipeline/scripts/tools/extract_pdf_budget_vote.py).
-export default function BudgetClient({ index, d, voteExec, posts }: Props) {
+/** Les catégories de flux du pipeline, regroupées en mots de tous les jours. */
+const FLOW_GROUPS: { key: string; flows: string[]; color: string }[] = [
+  { key: "salaires", flows: ["Personnel"], color: "#2a3680" },
+  { key: "reverses", flows: ["Reversements péréquation"], color: "#4a3aa7" },
+  { key: "allocations", flows: ["Transferts sociaux"], color: "#6b5fc7" },
+  { key: "chantiers", flows: ["Immobilisations en cours", "Immobilisations corporelles", "Études"], color: "#8c5e2a" },
+  { key: "contributions", flows: ["Contributions obligatoires"], color: "#a67638" },
+  { key: "subventions", flows: ["Subventions (fonctionnement)", "Subventions (investissement)"], color: "#c19a5b" },
+  { key: "achats", flows: ["Achats", "Services extérieurs", "Autres services"], color: "#9099a6" },
+  { key: "dette", flows: ["Remboursement dette", "Charges financières"], color: "#c12323" },
+];
+
+/**
+ * Page budget v3 (2026-09-08) — deux temps, validés en maquette avec Daniel :
+ *   1. Combien : le chiffre de l'année, deux repères (par habitant, encaissé),
+ *      la tendance en barres à côté (années votées hachurées). Le graphe
+ *      « Évolution depuis 2019 » n'est plus une section.
+ *   2. Dépenses et recettes : les deux colonnes, avec sur chaque ligne sa
+ *      tendance et sa part, chaque ligne ouvrant la fiche de poste ; et une
+ *      fois pour tout le budget, « sous quelle forme la Ville dépense ».
+ * Puis les articles et les sources. Disparaissent : la bande de quatre
+ * chiffres, la phrase « sur 100 € », le voté/exécuté, les écarts.
+ * Partagée avec Marseille : population, chemins et libellés viennent de la
+ * ville dans l'URL ; les blocs sans donnée (flux) ne se rendent pas.
+ */
+export default function BudgetClient({ index, d, posts }: Props) {
   const t = useT();
   const { locale } = useLocale();
-  // City-aware : le client est partagé avec Marseille (cf. fr/city/marseille/budget).
-  // Population et basePath dérivés de l'URL — un /hab calculé avec la population
-  // de Paris sur Marseille donnait 871 € au lieu de ~2 100 €.
   const pathname = usePathname();
   const citySlug = citySlugFromPathname(pathname);
   const population = cityPopulation(citySlug);
@@ -71,18 +86,68 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
 
   const fill = (key: string, vars: Record<string, string | number>) => {
     let s = t(key);
-    for (const [k, v] of Object.entries(vars)) s = s.replace(`{${k}}`, String(v));
+    for (const [k, v] of Object.entries(vars)) s = s.split(`{${k}}`).join(String(v));
     return s;
   };
+  const eur = (n: number) => (n >= 1e9 ? `${fmtBillions(n)} ${t("fx.s.md_eur")}` : `${fmtInt(n / 1e6)} ${t("fx.s.m_eur")}`);
+  const Amt = ({ n, size = 15 }: { n: number; size?: number }) => (
+    <span className="fx-v3-amt tnum" style={{ fontSize: size }}>
+      {n >= 1e9 ? fmtBillions(n) : fmtInt(n / 1e6)}<span className="u">{n >= 1e9 ? t("fx.s.md_eur") : t("fx.s.m_eur")}</span>
+    </span>
+  );
 
   const yearType = index.summary.find((s) => s.year === d.year)?.type_budget ?? "execute";
   const isVoted = yearType === "vote";
+  const lastExecuted = index.summary.filter((s) => s.type_budget === "execute" && s.year < d.year).map((s) => s.year).sort((a, b) => b - a)[0];
 
-  const topDep = d.topDepenses.slice(0, 7);
-  const topRec = d.recettesBreakdown.slice(0, 6);
+  /* ── La tendance : toutes les années publiées, la courante en noir ── */
+  const years = d.yearsSummary;
+  const maxDep = Math.max(...years.map((y) => y.depenses), 1);
+  const first = years[0];
+  const sinceFirst = first && first.year !== d.year && first.depenses > 0 ? ((d.depenses - first.depenses) / first.depenses) * 100 : null;
+  // « sur un an » = vs l'année publiée juste avant, quel que soit son statut —
+  // pas vs la dernière année complète (2022), qui faisait dire « vs 2022 » en 2024.
+  const prevYear = years.filter((y) => y.year < d.year).sort((a, b) => b.year - a.year)[0];
+  const deltaYear = prevYear && prevYear.depenses > 0 ? ((d.depenses - prevYear.depenses) / prevYear.depenses) * 100 : null;
+  const signed = (x: number) => `${x >= 0 ? "+" : "−"}${fmtDec(Math.abs(x), 1)} %`;
 
-  const veRow = voteExec.rows.find((r) => r.year === d.year);
-  const hasExecution = veRow?.executed != null;
+  /* ── Les lignes : libellé, courbe, montant, part ── */
+  const Spark = ({ label }: { label: string }) => {
+    const pts = (d.series[label] ?? []).filter((p) => p.year <= d.year);
+    if (pts.length < 2) return <span />;
+    const m = Math.max(...pts.map((p) => p.value), 1);
+    return (
+      <span className="fx-bud-spark" aria-hidden="true" title={pts.map((p) => `${p.year} : ${eur(p.value)}`).join(" · ")}>
+        {pts.map((p) => (
+          <i key={p.year} className={p.year === d.year ? "now" : p.type === "vote" ? "vote" : ""} style={{ height: Math.max(2, Math.round((p.value / m) * 18)) }} />
+        ))}
+      </span>
+    );
+  };
+  // « Autres (D) », « Personnel (R) » : le suffixe de sens est un artefact du
+  // sankey (deux nœuds homonymes), pas un mot pour le lecteur.
+  const label = (raw: string) => (raw.startsWith("Autres (") || raw.startsWith("Autre (") ? t("fx.bud.autres") : trLabel(raw.replace(/\s\((D|R)\)$/, ""), locale));
+  const Row = ({ raw, value, total }: { raw: string; value: number; total: number }) => (
+    <Link href={`${cityBasePath}/poste/${slugifyLabel(raw)}?year=${d.year}`} scroll={false} className="fx-bud-row">
+      <span className="n">{label(raw)}</span>
+      <Spark label={raw} />
+      <Amt n={value} size={14} />
+      <span className="p tnum">{Math.round((value / total) * 100)} %</span>
+    </Link>
+  );
+  // Une ligne sous 0,5 % du total n'apporte qu'un « 0 % » : on la tait.
+  const dep = d.topDepenses.filter((x) => x.value / d.depenses >= 0.005);
+  const rec = d.recettesBreakdown.filter((x) => x.value / d.recettes >= 0.005);
+  const sparkSpan = (() => { const ys = years.filter((y) => y.year <= d.year).map((y) => y.year); return ys.length > 1 ? `${ys[0]}–${ys[ys.length - 1]}` : String(d.year); })();
+
+  /* ── Sous quelle forme : les flux du drilldown regroupés en mots simples ── */
+  const flowTotal = d.flowSplit.reduce((s, f) => s + f.value, 0);
+  const groups = FLOW_GROUPS.map((g) => ({ ...g, value: d.flowSplit.filter((f) => g.flows.includes(f.key)).reduce((s, f) => s + f.value, 0) }));
+  const grouped = groups.reduce((s, g) => s + g.value, 0);
+  const autres = flowTotal - grouped;
+  const flowRows = [...groups.filter((g) => g.value > 0), ...(autres > 0 ? [{ key: "autres", flows: [], color: "#c8ccd3", value: autres }] : [])]
+    .map((g) => ({ ...g, pct: flowTotal > 0 ? Math.round((g.value / flowTotal) * 100) : 0 }))
+    .filter((g) => g.pct >= 1);
 
   return (
     <div className="theme-fusion">
@@ -92,8 +157,6 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
       <PageTOC
         items={[
           { id: "sec-flux", label: t("fx.toc.flux") },
-          { id: "sec-evolution", label: t("fx.toc.evolution") },
-          ...(hasExecution ? [{ id: "execution", label: t("fx.toc.execution") }] : []),
           { id: "sec-analyses", label: t("fx.toc.analyses") },
           { id: "sec-sources", label: t("fx.toc.sources") },
         ]}
@@ -111,324 +174,82 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
             label={t("fx.bud.year_label")}
           />
         }
-        stats={
-          <>
-            <IntroStat
-              value={<AnimatedNumber value={d.depenses} format={(n) => fmtBillions(n)} />}
-              unit="Md €"
-              label={
-                isVoted ? (
-                  <Tip label={t("fx.bud.s01.hero.cap_voted.bp.tip")}>{fill("fx.bud.s01.hero.label", { year: d.year })}</Tip>
-                ) : (
-                  <Tip label={t("fx.bud.s01.hero.cap_exec.exec.tip")}>{fill("fx.bud.s01.hero.label", { year: d.year })}</Tip>
-                )
-              }
-            />
-            <IntroStat
-              value={<AnimatedNumber value={d.depenses / population} format={(n) => fmtInt(n)} />}
-              unit="€"
-              label={<Tip label={t("fx.bud.s01.kpi.per_hab.tip")}>{t("fx.bud.s01.kpi.per_hab")}</Tip>}
-            />
-            <IntroStat
-              value={<AnimatedNumber value={d.recettes} format={(n) => fmtBillions(n)} />}
-              unit="Md €"
-              label={<Tip label={t("fx.bud.s01.kpi.recettes.tip")}>{t("fx.bud.s01.kpi.recettes")}</Tip>}
-            />
-            <IntroStat
-              value={<AnimatedNumber value={d.solde} format={(n) => (n >= 0 ? "+ " : "− ") + fmtMillions(Math.abs(n))} />}
-              unit="M €"
-              label={<Tip label={t("fx.bud.s01.kpi.solde.tip")}>{t("fx.bud.s01.kpi.solde")}</Tip>}
-            />
-          </>
-        }
       >
-        {isVoted && (() => {
-          const lastExecuted = index.summary
-            .filter((s) => s.type_budget === "execute" && s.year < d.year)
-            .map((s) => s.year)
-            .sort((a, b) => b - a)[0];
-          return (
-            <p style={{
-              marginTop: 14,
-              marginBottom: 0,
-              fontFamily: "var(--f-mono)",
-              fontSize: 11.5,
-              color: "var(--ink-2)",
-              letterSpacing: ".04em",
-              display: "flex",
-              gap: 14,
-              flexWrap: "wrap",
-              alignItems: "center",
-            }}>
-              <span>{fill("fx.bud.voted_notice", { year: d.year, next: d.year + 1 })}</span>
-              {lastExecuted && (
-                <Link
-                  href={`${cityBasePath}?year=${lastExecuted}`}
-                  style={{
-                    color: "var(--bleu)",
-                    borderBottom: "1px solid var(--bleu)",
-                    paddingBottom: 1,
-                    textDecoration: "none",
-                  }}
-                >
-                  {fill("fx.bud.voted_notice_cta", { year: lastExecuted })}
-                </Link>
-              )}
-            </p>
-          );
-        })()}
+        {isVoted && (
+          <p className="fx-bud-voted">
+            <span>{fill("fx.bud.voted_notice", { year: d.year, next: d.year + 1 })}</span>
+            {lastExecuted && <Link href={`${cityBasePath}?year=${lastExecuted}`}>{fill("fx.bud.voted_notice_cta", { year: lastExecuted })}</Link>}
+          </p>
+        )}
       </PageIntro>
 
       <section className="fx-section" id="sec-flux">
-        <div className="fx-wrap">
-          <SectionHead
-            title={<><em>{t("fx.bud.s02.title.em1")}</em>{t("fx.bud.s02.title.mid")}<em>{t("fx.bud.s02.title.em2")}</em>{t("fx.bud.s02.title.after")}</>}
-            subtitle={t("fx.bud.s02.sub")}
-          />
+        <div className="fx-wrap fx-v3 fx-bud-v3">
 
-          <DualFlowBars
-            left={{
-              title: <>{fill("fx.bud.s02.left_title", { amount: fmtBillions(d.recettes) })}</>,
-              rows: topRec.map((r) => ({
-                label: r.label === "Autres (R)" ? t("fx.bud.autres") : trLabel(r.label, locale),
-                value: r.value,
-                display: `${fmtBillions(r.value)} Md €`,
-                rouge: false,
-                href: `/fr/city/paris/budget/poste/${slugifyLabel(r.label)}?year=${d.year}`,
-              })),
-            }}
-            right={{
-              title: <>{fill("fx.bud.s02.right_title", { amount: fmtBillions(d.depenses) })}</>,
-              rows: topDep.map((x) => ({
-                label: x.label === "Autres (D)" ? t("fx.bud.autres") : trLabel(x.label, locale),
-                value: x.value,
-                display: `${fmtBillions(x.value)} Md €`,
-                rouge: false,
-                href: `/fr/city/paris/budget/poste/${slugifyLabel(x.label)}?year=${d.year}`,
-              })),
-            }}
-            center={{
-              label: t("fx.bud.s02.center_label"),
-              value: fmtBillions(Math.max(d.recettes, d.depenses)),
-              unit: "Md €",
-            }}
-            callout={
-              <>
-                {t("fx.bud.s02.callout.c1")}
-                <Tip label={t("fx.bud.s02.callout.tip.fonct")}>
-                  <b>{t("fx.bud.s02.callout.word.fonct")}</b>
-                </Tip>
-                {t("fx.bud.s02.callout.c2")}
-                <Tip label={t("fx.bud.s02.callout.tip.invest")}>
-                  <b>{t("fx.bud.s02.callout.word.invest")}</b>
-                </Tip>
-                {t("fx.bud.s02.callout.c3")}
-                <Tip label={t("fx.bud.s02.callout.tip.emprunt")}>
-                  <b>{t("fx.bud.s02.callout.word.emprunt")}</b>
-                </Tip>
-                {t("fx.bud.s02.callout.c4")}
-                <Tip label={t("fx.bud.s02.callout.tip.regle")}>
-                  <b>{t("fx.bud.s02.callout.word.regle")}</b>
-                </Tip>
-                {t("fx.bud.s02.callout.c5")}
-              </>
-            }
-          />
-          {(() => {
-            const parHab = d.depenses / population;
-            const pctFonct = Math.round((d.fonctionnement / d.depenses) * 100);
-            const pctInvest = Math.round((d.investissement / d.depenses) * 100);
-            const vars = {
-              year: d.year,
-              depenses: fmtBillions(d.depenses),
-              perHab: fmtInt(parHab),
-              pctFonct,
-              pctInvest,
-            };
-            return (
-              <PageHook
-                variant="card"
-                cite={fill("fx.bud.hook.cite", { year: d.year })}
-                shareText={fill("fx.bud.hook.share", vars)}
-              >
-                <span dangerouslySetInnerHTML={{ __html: fill("fx.bud.hook.body.l1", vars) }} />
-                {" "}
-                <span dangerouslySetInnerHTML={{ __html: fill("fx.bud.hook.body.l2", vars) }} />
-              </PageHook>
-            );
-          })()}
-          {/* La source de cette section est celle de la suivante, citée juste
-           *  en dessous du graphe d'évolution : une seule ligne pour les deux. */}
-        </div>
-      </section>
+          <div className="fx-v3-herogrid">
+            <div>
+              <div className="fx-v3-hero-num tnum">{fmtBillions(d.depenses)}<span className="u">{t("fx.s.md_eur")}</span></div>
+              <div className="fx-v3-hero-cap">{fill(isVoted ? "fx.bud.v3.cap_vote" : "fx.bud.v3.cap_exec", { year: d.year })}</div>
+              <div className="fx-v3-hero-meta">
+                {population > 0 ? `${fill("fx.bud.v3.par_hab", { n: fmtInt(d.depenses / population) })} · ` : ""}
+                {fill(isVoted ? "fx.bud.v3.recettes_vote" : "fx.bud.v3.recettes_exec", { rec: eur(d.recettes) })}
+              </div>
+            </div>
+            {years.length > 1 && (
+              <div className="fx-v3-trend">
+                <div className="t">
+                  {deltaYear != null && <b>{signed(deltaYear)} {fill("fx.bud.v3.vs", { y: prevYear.year })}</b>}
+                  {sinceFirst != null && <span> · {signed(sinceFirst)} {fill("fx.bud.v3.depuis", { y: first.year })}</span>}
+                </div>
+                <div className="bars" aria-hidden="true">
+                  {years.map((y) => (
+                    <div key={y.year} className={y.year === d.year ? "now" : y.type === "vote" ? "vote" : ""} title={`${y.year} · ${eur(y.depenses)}`}>
+                      <b style={{ height: Math.max(3, Math.round((y.depenses / maxDep) * 50)) }} />
+                      <span>{y.year}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
 
-      <section className="fx-section" id="sec-evolution">
-        <div className="fx-wrap">
-          <SectionHead
-            title={<>{t("fx.bud.s04.title.before")}<em>{t("fx.bud.s04.title.em")}</em>{t("fx.bud.s04.title.after")}</>}
-            subtitle={t("fx.bud.s04.sub")}
-          />
-          <BudgetTimeline
-            points={d.yearsSummary.map((y) => ({
-              year: y.year,
-              value: y.depenses / 1_000_000_000,
-              type: (y.type === "vote" ? "vote" : "execute") as "vote" | "execute",
-            }))}
-            activeYear={d.year}
-            annotations={[
-              { year: 2020, label: t("fx.bud.s04.annot.covid") },
-              { year: 2024, label: t("fx.bud.s04.annot.jo") },
-            ]}
-          />
+          <h2 className="fx-v3-h2">{t("fx.bud.v3.h2")}</h2>
+          <p className="fx-v3-h2sub">{fill("fx.bud.v3.h2sub", { span: sparkSpan })}</p>
+
+          <div className="fx-bud-cols">
+            <div className="fx-bud-col">
+              <h3><span>{t("fx.bud.v3.col_dep")}</span><span className="tnum">{eur(d.depenses)}</span></h3>
+              {dep.map((x) => <Row key={x.label} raw={x.label} value={x.value} total={d.depenses} />)}
+            </div>
+            <div className="fx-bud-col">
+              <h3><span>{t("fx.bud.v3.col_rec")}</span><span className="tnum">{eur(d.recettes)}</span></h3>
+              {rec.map((x) => <Row key={x.label} raw={x.label} value={x.value} total={d.recettes} />)}
+              {flowRows.length > 1 && (
+                <div className="fx-bud-forme">
+                  <div className="h">{t("fx.bud.v3.forme")}</div>
+                  <div className="stack" aria-hidden="true">
+                    {flowRows.map((g) => <span key={g.key} style={{ width: `${g.pct}%`, background: g.color }} title={`${t(`fx.bud.v3.flow.${g.key}`)} · ${g.pct} %`} />)}
+                  </div>
+                  <div className="legend">
+                    {flowRows.map((g) => (
+                      <span key={g.key}><i style={{ background: g.color }} /><b>{g.pct} %</b> {t(`fx.bud.v3.flow.${g.key}`)}</span>
+                    ))}
+                  </div>
+                  <p className="note">{fill("fx.bud.v3.forme_note", { pct: Math.round(d.flowCoveragePct) })}</p>
+                </div>
+              )}
+            </div>
+          </div>
+
           <ChartSource
             source={t("fx.bud.s03.source.cite")}
             dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
             methodAnchor="budget"
           />
-          {d.yearsSummary.length >= 2 && (() => {
-            const first = d.yearsSummary[0];
-            const last = d.yearsSummary[d.yearsSummary.length - 1];
-            const delta = ((last.depenses - first.depenses) / first.depenses) * 100;
-            return (
-              <p className="fx-viz-meta">
-                <span>
-                  {t("fx.bud.s04.meta_between")}{first.year} ({first.type === "vote" ? t("fx.bud.s04.meta_vote_short") : t("fx.bud.s04.meta_exec_short")})
-                  {t("fx.bud.s04.meta_and")}{last.year} ({last.type === "vote" ? t("fx.bud.s04.meta_vote_short") : t("fx.bud.s04.meta_exec_short")})
-                  {t("fx.bud.s04.meta_cont")}<strong>{delta >= 0 ? "+" : "−"} {fmtDec(Math.abs(delta), 1)} %</strong>
-                  {t("fx.bud.s04.meta_cont2")}
-                </span>
-                <Link href="/analyses" style={{ fontFamily: "var(--f-mono)", fontSize: 12.5, color: "var(--bleu)", borderBottom: "1px solid var(--bleu)", paddingBottom: 1 }}>
-                  {t("fx.bud.s04.cta_poste")}
-                </Link>
-              </p>
-            );
-          })()}
-        </div>
-              {!hasExecution && (
-          <div className="fx-wrap">
-            <p className="fx-note" style={{ marginTop: 18 }}>
-              {fill("fx.bud.s05.empty.title", { year: d.year, next: d.year + 1 })}{" "}
-              {voteExec.rows
-                .filter((r) => r.executed != null)
-                .slice(-3)
-                .reverse()
-                .map((r, i) => (
-                  <Link
-                    key={r.year}
-                    href={`${cityBasePath}?year=${r.year}#execution`}
-                    style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)", textDecoration: "none", marginLeft: i === 0 ? 8 : 12 }}
-                  >
-                    {fill("fx.bud.s05.empty.cta", { year: r.year })}
-                  </Link>
-                ))}
-            </p>
-          </div>
-        )}
-</section>
-
-      {hasExecution && (
-      <section className="fx-section" id="execution">
-        <div className="fx-wrap">
-          <SectionHead
-            title={
-              <>
-                {t("fx.bud.s05.title.a")}
-                <Tip label={t("fx.bud.s05.title.vote_tip")}>
-                  <em>{t("fx.bud.s05.title.voted_em")}</em>
-                </Tip>
-                {t("fx.bud.s05.title.b")}
-                <Tip label={t("fx.bud.s05.title.exec_tip")}>
-                  <b>{t("fx.bud.s05.title.depense_b")}</b>
-                </Tip>
-                {t("fx.bud.s05.title.c")}
-              </>
-            }
-            subtitle={<>{t("fx.bud.s05.sub")}</>}
-          />
-
-
-            <>
-              <div className="fx-overview">
-                <HeroNumber
-                  label={<>{fill("fx.bud.s05.hero_label", { year: d.year })}</>}
-                  value={<AnimatedNumber value={veRow?.tauxGlobal ?? 0} format={(n) => fmtDec(n, 1)} />}
-                  unit="%"
-                  caption={
-                    <>
-                      {t("fx.bud.s05.hero_cap.voted")}<b>{fmtBillions(veRow?.voted ?? 0)} Md €</b>
-                      {t("fx.bud.s05.hero_cap.executed")}<b>{fmtBillions(veRow?.executed ?? 0)} Md €</b>
-                      {t("fx.bud.s05.hero_cap.after")}
-                    </>
-                  }
-                />
-                <KPIGrid
-                  cols={2}
-                  items={[
-                    {
-                      label: <Tip label={t("fx.bud.s05.kpi.voted.tip")}>{t("fx.bud.s05.kpi.voted")}</Tip>,
-                      value: <AnimatedNumber value={veRow?.voted ?? 0} format={(n) => fmtBillions(n)} />,
-                      unit: "Md €",
-                    },
-                    {
-                      label: <Tip label={t("fx.bud.s05.kpi.executed.tip")}>{t("fx.bud.s05.kpi.executed")}</Tip>,
-                      value: <AnimatedNumber value={veRow?.executed ?? 0} format={(n) => fmtBillions(n)} />,
-                      unit: "Md €",
-                    },
-                    {
-                      label: <Tip label={t("fx.bud.s05.kpi.gap.tip")}>{t("fx.bud.s05.kpi.gap")}</Tip>,
-                      value:
-                        veRow && veRow.executed != null
-                          ? <AnimatedNumber value={veRow.executed - veRow.voted} format={(n) => (n >= 0 ? "+ " : "− ") + fmtMillions(Math.abs(n))} />
-                          : "—",
-                      unit: "M €",
-                    },
-                    {
-                      label: <Tip label={t("fx.bud.s05.kpi.status.tip")}>{t("fx.bud.s05.kpi.status")}</Tip>,
-                      value: (veRow?.tauxGlobal ?? 0) >= 95 ? t("fx.bud.s05.kpi.status.exec") : t("fx.bud.s05.kpi.status.sous"),
-                      delta: fill("fx.bud.s05.kpi.status.delta", { pct: fmtDec(veRow?.tauxGlobal ?? 0, 1) }),
-                    },
-                  ]}
-                />
-              </div>
-              {veRow?.executed != null && veRow.voted > 0 && (() => {
-                const taux = Math.min(100, (veRow.executed / veRow.voted) * 100);
-                return (
-                  <div style={{ marginTop: 28, paddingTop: 24, borderTop: "1px solid var(--rule)" }}>
-                    <div style={{ fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)", letterSpacing: ".08em", textTransform: "uppercase", marginBottom: 14 }}>
-                      {t("fx.bud.s05.compare_kicker")}
-                    </div>
-                    <div style={{ display: "grid", gap: 14 }}>
-                      <CompareBar
-                        label={t("fx.bud.s05.kpi.voted")}
-                        value={`${fmtBillions(veRow.voted)} Md €`}
-                        widthPct={100}
-                        muted={false}
-                      />
-                      <CompareBar
-                        label={t("fx.bud.s05.kpi.executed")}
-                        value={`${fmtBillions(veRow.executed)} Md €`}
-                        widthPct={taux}
-                        muted
-                      />
-                    </div>
-                    <p style={{ fontFamily: "var(--f-ui)", fontSize: 13.5, color: "var(--ink-2)", marginTop: 16, maxWidth: 720, lineHeight: 1.55 }}>
-                      {fill("fx.bud.s05.compare_caption", {
-                        pct: fmtDec(taux, 1),
-                        gap: fmtMillions(Math.max(0, veRow.voted - veRow.executed)),
-                      })}
-                    </p>
-                  </div>
-                );
-              })()}
-            </>
-
-
         </div>
       </section>
-      )}
 
       <RelatedArticles posts={posts} placeholders={BUD_PLACEHOLDERS} />
-
 
       <section className="fx-footer-sources" id="sec-sources">
         <div className="fx-wrap">
@@ -445,12 +266,12 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
                 label: fill("fx.bud.s06.export.csv", { year: d.year, status: isVoted ? t("fx.bud.s01.kpi.voted").toLowerCase() : t("fx.bud.s01.kpi.executed").toLowerCase() }),
                 primary: true,
                 href: `/api/budget/${d.year}/csv`,
-                download: `budget-paris-${d.year}.csv`,
+                download: `budget-${citySlug}-${d.year}.csv`,
               },
               {
                 label: t("fx.bud.s06.export.json"),
                 href: `/data/budget_sankey_${d.year}.json`,
-                download: `budget-paris-${d.year}.json`,
+                download: `budget-${citySlug}-${d.year}.json`,
               },
               { label: t("fx.bud.s06.export.api"), href: undefined },
               { label: t("fx.bud.s06.export.method"), href: "/methode?tool=budget#outils" },
@@ -461,125 +282,6 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
 
       </main>
       <Footer />
-    </div>
-  );
-}
-
-function CompareBar({
-  label,
-  value,
-  widthPct,
-  muted,
-}: {
-  label: string;
-  value: string;
-  widthPct: number;
-  muted: boolean;
-}) {
-  return (
-    <div style={{ display: "grid", gridTemplateColumns: "minmax(120px, 180px) 1fr minmax(100px, auto)", gap: 16, alignItems: "center" }}>
-      <div style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--ink-2)", letterSpacing: ".04em", textTransform: "uppercase" }}>{label}</div>
-      <div style={{ position: "relative", height: 18, background: "var(--rule)" }}>
-        <div
-          style={{
-            position: "absolute",
-            left: 0,
-            top: 0,
-            bottom: 0,
-            width: `${widthPct}%`,
-            background: muted ? "var(--ink-2)" : "var(--ink)",
-            transition: "width 300ms",
-          }}
-        />
-      </div>
-      <div className="tnum" style={{ fontFamily: "var(--f-num)", fontSize: 15, fontWeight: 600, textAlign: "right" }}>{value}</div>
-    </div>
-  );
-}
-
-function _GroupedSubRows({
-  items,
-  max,
-  numLocale,
-  detailFallback,
-  locale,
-}: {
-  items: { name: string; value: number }[];
-  max: number;
-  numLocale: string;
-  detailFallback: string;
-  locale: "fr" | "en";
-}) {
-  const groupOrder: string[] = [];
-  const groups = new Map<string, { total: number; items: { globalRank: number; n3: string; value: number }[] }>();
-  items.forEach((it, i) => {
-    const idx = it.name.indexOf(":");
-    const n2Raw = idx > 0 ? it.name.slice(0, idx).trim() : detailFallback;
-    const n2 = trLabel(n2Raw, locale);
-    const n3 = idx > 0 ? it.name.slice(idx + 1).trim() : it.name.trim();
-    if (!groups.has(n2)) {
-      groupOrder.push(n2);
-      groups.set(n2, { total: 0, items: [] });
-    }
-    const g = groups.get(n2)!;
-    g.total += it.value;
-    g.items.push({ globalRank: i + 1, n3, value: it.value });
-  });
-
-  return (
-    <div>
-      {groupOrder.map((n2) => {
-        const g = groups.get(n2)!;
-        return (
-          <div key={n2} style={{ marginBottom: 22 }}>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "baseline",
-                padding: "8px 0",
-                borderBottom: "1px solid var(--rule)",
-                marginBottom: 4,
-                fontFamily: "var(--f-mono)",
-                fontSize: 11,
-                letterSpacing: ".06em",
-                textTransform: "uppercase",
-                color: "var(--ink-2)",
-              }}
-            >
-              <span>{n2}</span>
-              <span style={{ color: "var(--muted)", fontWeight: 500 }}>
-                {g.total >= 1e9
-                  ? new Intl.NumberFormat(numLocale, { maximumFractionDigits: 2 }).format(g.total / 1e9) + " Md €"
-                  : new Intl.NumberFormat(numLocale, { maximumFractionDigits: 0 }).format(g.total / 1e6) + " M €"}
-              </span>
-            </div>
-            {g.items.map((it) => (
-              <div key={it.globalRank} className="fx-mini-row" style={{ gridTemplateColumns: "32px 2fr 3fr 110px" }}>
-                <span className="rank">#{String(it.globalRank).padStart(2, "0")}</span>
-                <span style={{ fontWeight: 500 }}>{it.n3}</span>
-                <span className="muted fx-mini-hide-mobile" style={{ position: "relative", height: 8 }}>
-                  <span
-                    style={{
-                      position: "absolute",
-                      left: 0,
-                      top: 2,
-                      height: 6,
-                      width: `${(it.value / max) * 100}%`,
-                      background: "var(--ink)",
-                    }}
-                  />
-                </span>
-                <span className="num">
-                  {it.value >= 1e9
-                    ? new Intl.NumberFormat(numLocale, { maximumFractionDigits: 2 }).format(it.value / 1e9) + " Md €"
-                    : new Intl.NumberFormat(numLocale, { maximumFractionDigits: 0 }).format(it.value / 1e6) + " M €"}
-                </span>
-              </div>
-            ))}
-          </div>
-        );
-      })}
     </div>
   );
 }

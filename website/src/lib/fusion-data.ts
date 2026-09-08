@@ -720,6 +720,15 @@ export type BudgetPageData = {
     recettes: number;
     solde: number;
   }[];
+  /** Chaque poste (dépense ou recette) année par année, toutes années publiées —
+   *  la petite courbe de la page budget v3. Clé = libellé du poste. */
+  series: Record<string, { year: number; value: number; type: "vote" | "execute" }[]>;
+  /** Les dépenses de l'année par type (salaires, allocations, subventions…),
+   *  agrégées sur les lignes de drilldown publiées. Vide quand la ville n'a pas
+   *  de `flow_category` (Marseille v1). */
+  flowSplit: { key: string; value: number }[];
+  /** Part des dépenses couverte par les lignes qui font `flowSplit`, en %. */
+  flowCoveragePct: number;
 };
 
 type BudgetSankeyFull = {
@@ -4517,6 +4526,32 @@ export function loadBudgetPageData(requestedYear?: number, city: string = "paris
     }))
     .sort((a, b) => a.year - b.year);
 
+  // Chaque poste année par année : on relit les sankeys publiés (mémoïsés).
+  const series: BudgetPageData["series"] = {};
+  for (const y of [...index.availableYears].sort((a, b) => a - b)) {
+    let sk: BudgetSankeyFull;
+    try { sk = y === year ? sankey : readJson<BudgetSankeyFull>(cityJsonPath(city, `budget_sankey_${y}.json`)); } catch { continue; }
+    const type = byYear[y]?.type_budget ?? "execute";
+    for (const l of sk.links) {
+      const label = l.source === centralNode ? l.target : l.target === centralNode ? l.source : null;
+      if (!label || !(l.value > 0)) continue;
+      (series[label] ??= []).push({ year: y, value: l.value, type });
+    }
+  }
+
+  // Par type de dépense, sur les lignes de drilldown publiées (top 50 par poste).
+  const flow = new Map<string, number>();
+  let flowCovered = 0;
+  for (const rows of Object.values(sankey.drilldown?.expenses ?? {})) {
+    for (const r of rows) {
+      if (!r.flow_category) continue;
+      flow.set(r.flow_category, (flow.get(r.flow_category) ?? 0) + r.value);
+      flowCovered += r.value;
+    }
+  }
+  const flowSplit = [...flow.entries()].map(([key, value]) => ({ key, value })).sort((a, b) => b.value - a.value);
+  const flowCoveragePct = sankey.totals.depenses > 0 ? (flowCovered / sankey.totals.depenses) * 100 : 0;
+
   return {
     year,
     previousYear,
@@ -4532,6 +4567,9 @@ export function loadBudgetPageData(requestedYear?: number, city: string = "paris
     sankeyNodes: sankey.nodes ?? [],
     sankeyLinks: sankey.links,
     yearsSummary,
+    series,
+    flowSplit,
+    flowCoveragePct,
   };
 }
 

@@ -19274,3 +19274,28 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   .theme-fusion .fx-v3-trend .bars > div { flex: 1 1 0; }
   .theme-fusion .fx-v3-mission { grid-template-columns: minmax(0, 1fr) auto; } .theme-fusion .fx-v3-mission .t { grid-column: 1 / -1; }
 }
+/* v3 — page budget : deux colonnes avec courbe et part, « sous quelle forme » */
+.theme-fusion .fx-bud-v3 .fx-v3-herogrid { margin: 8px 0 44px; }
+.theme-fusion .fx-bud-voted { margin: 14px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 14px; flex-wrap: wrap; }
+.theme-fusion .fx-bud-voted a { color: var(--bleu); }
+.theme-fusion .fx-bud-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 18px; }
+.theme-fusion .fx-bud-col h3 { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; padding-bottom: 8px; border-bottom: 1px solid var(--ink); display: flex; justify-content: space-between; font-weight: 500; }
+.theme-fusion .fx-bud-row { display: grid; grid-template-columns: minmax(0, 1fr) 52px auto 36px; gap: 10px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--rule); text-decoration: none; color: var(--ink); font-size: 14px; }
+.theme-fusion .fx-bud-row:hover { background: rgba(10,10,10,.03); }
+.theme-fusion .fx-bud-row .n { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.theme-fusion .fx-bud-row .p { font-family: var(--f-mono); font-size: 10.5px; color: var(--muted); text-align: right; }
+.theme-fusion .fx-bud-row .fx-v3-amt { text-align: right; }
+.theme-fusion .fx-bud-spark { display: inline-flex; align-items: flex-end; gap: 2px; height: 18px; }
+.theme-fusion .fx-bud-spark i { display: block; width: 5px; background: #c8ccd3; }
+.theme-fusion .fx-bud-spark i.vote { background: repeating-linear-gradient(135deg, #c8ccd3 0 2px, #fafaf7 2px 4px); }
+.theme-fusion .fx-bud-spark i.now { background: var(--bleu); }
+.theme-fusion .fx-bud-forme { margin-top: 26px; }
+.theme-fusion .fx-bud-forme .h { font-size: 14px; font-weight: 600; }
+.theme-fusion .fx-bud-forme .stack { display: flex; height: 14px; gap: 2px; margin: 12px 0 8px; } .theme-fusion .fx-bud-forme .stack span { display: block; height: 14px; }
+.theme-fusion .fx-bud-forme .legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12.5px; color: var(--muted); }
+.theme-fusion .fx-bud-forme .legend b { color: var(--ink); font-weight: 600; } .theme-fusion .fx-bud-forme .legend i { display: inline-block; width: 9px; height: 9px; margin-right: 6px; vertical-align: -1px; }
+.theme-fusion .fx-bud-forme .note { font-size: 12.5px; color: var(--muted); margin: 10px 0 0; line-height: 1.5; }
+@media (max-width: 700px) {
+  .theme-fusion .fx-bud-cols { grid-template-columns: 1fr; gap: 30px; }
+  .theme-fusion .fx-bud-row { grid-template-columns: minmax(0, 1fr) 44px auto 34px; font-size: 13.5px; }
+}
