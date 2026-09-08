@@ -5373,11 +5373,6 @@
       "theme": "Économie"
     },
     {
-      "name": "COSTA",
-      "amount": 50000.0,
-      "theme": "Autre"
-    },
-    {
       "name": "CLUB POPULAIRE SPORTIF DU 10EME",
       "amount": 16000.0,
       "theme": "Sport"
@@ -9143,11 +9138,6 @@
       "theme": "Culture"
     },
     {
-      "name": "SOCRATE",
-      "amount": 5000.0,
-      "theme": "Éducation"
-    },
-    {
       "name": "URBAGRI",
       "amount": 39550.0,
       "theme": "Économie"
@@ -12578,11 +12568,6 @@
       "theme": "Économie"
     },
     {
-      "name": "MOUSSE",
-      "amount": 2000.0,
-      "theme": "Autre"
-    },
-    {
       "name": "L ASSIETTE DU COSAQUE",
       "amount": 12881.0,
       "theme": "Économie"
@@ -13666,11 +13651,6 @@
       "name": "CIMES 19",
       "amount": 1000.0,
       "theme": "Sport"
-    },
-    {
-      "name": "CHICHE",
-      "amount": 2000.0,
-      "theme": "Autre"
     },
     {
       "name": "PARIS ARTISTES",
@@ -14818,11 +14798,6 @@
       "theme": "Économie"
     },
     {
-      "name": "LISA",
-      "amount": 1445.0,
-      "theme": "Autre"
-    },
-    {
       "name": "ASSOCIATION BIENVENUE AU VILLAGE MONTORGUEI",
       "amount": 2700.0,
       "theme": "Social - Solidarité"
@@ -15779,11 +15754,6 @@
     },
     {
       "name": "PARIS SE LIVRE",
-      "amount": 4000.0,
-      "theme": "Culture"
-    },
-    {
-      "name": "ROSA",
       "amount": 4000.0,
       "theme": "Culture"
     },
@@ -17523,11 +17493,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "MARCEL",
-      "amount": 1000.0,
-      "theme": "Autre"
-    },
-    {
       "name": "NICOLAS PINON LAQUEUR",
       "amount": 1000.0,
       "theme": "Économie"
@@ -17566,11 +17531,6 @@
       "name": "SARL GALERIE SULTANA",
       "amount": 880.0,
       "theme": "Économie"
-    },
-    {
-      "name": "CHARDON",
-      "amount": 866.0,
-      "theme": "Autre"
     },
     {
       "name": "PLAIN SIGHT",
@@ -18289,11 +18249,6 @@
     },
     {
       "name": "FASHION DECO",
-      "amount": 400.0,
-      "theme": "Économie"
-    },
-    {
-      "name": "FERRANDI",
       "amount": 400.0,
       "theme": "Économie"
     },

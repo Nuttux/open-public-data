@@ -65,7 +65,8 @@ export async function generateMetadata({
       path: `/fr/city/${slug}`,
     });
   }
-  return { title: "Page non trouvée" };
+  // A real 404 (thrown before streaming), not a page titled "not found".
+  notFound();
 }
 
 export default async function CityPage({

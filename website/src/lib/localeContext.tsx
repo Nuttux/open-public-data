@@ -5,7 +5,6 @@ import {
   useContext,
   useCallback,
   use,
-  Suspense,
   type ReactNode,
 } from 'react';
 import { usePathname } from 'next/navigation';
@@ -176,19 +175,16 @@ export function LocaleProvider({
   children: ReactNode;
   initialLocale?: Locale;
 }) {
-  // `locale` state lives in a component that never suspends itself. Everything
-  // that touches `useDictionaries` (which calls `use()`, conditionally, and can
-  // suspend) lives in LocaleProviderInner below, wrapped in its own Suspense
-  // boundary — isolating the suspending read from the plain hooks that used to
-  // sit after it in this same function. Mixing them caused an intermittent
-  // "change in the order of Hooks" crash (React error #467-adjacent): when
-  // useDictionaries suspended, every hook after it in the function body never
-  // ran on that attempt, and the retry's hook count no longer lined up.
-  return (
-    <Suspense fallback={null}>
-      <LocaleProviderInner locale={initialLocale}>{children}</LocaleProviderInner>
-    </Suspense>
-  );
+  // No Suspense boundary here, on purpose. A boundary above every page turned
+  // each notFound() into a soft 404: Next streams the boundary's fallback with
+  // a 200 and only then renders the not-found UI inside it — every unknown
+  // entity URL on the site answered 200 until 2026-09-08. Without a boundary a
+  // suspended dictionary read (EN/PT chunk, first render) holds the whole
+  // shell instead, which is what we want: the status is decided first.
+  // The suspending `use()` stays the FIRST hook of LocaleProviderInner, so a
+  // suspended attempt never leaves a partial hook list behind (the
+  // "change in the order of Hooks" crash this shape was introduced for).
+  return <LocaleProviderInner locale={initialLocale}>{children}</LocaleProviderInner>;
 }
 
 function LocaleProviderInner({
@@ -256,14 +252,9 @@ export function ForcedLocale({
   locale: Locale;
   children: ReactNode;
 }) {
-  // Same suspending-read isolation as LocaleProviderInner above — useDictionaries
-  // is the only hook here, but wrapping it keeps the same safe shape everywhere
-  // this pattern is used rather than relying on there being nothing after it.
-  return (
-    <Suspense fallback={null}>
-      <ForcedLocaleInner locale={locale}>{children}</ForcedLocaleInner>
-    </Suspense>
-  );
+  // No Suspense boundary, same reason as LocaleProvider: a boundary above
+  // the /us and /br pages made their notFound() answer 200.
+  return <ForcedLocaleInner locale={locale}>{children}</ForcedLocaleInner>;
 }
 
 function ForcedLocaleInner({

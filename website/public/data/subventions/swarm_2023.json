@@ -913,11 +913,6 @@
       "theme": "International"
     },
     {
-      "name": "LE BAL",
-      "amount": 425506.0,
-      "theme": "Culture"
-    },
-    {
       "name": "ECOLE NORMALE SOCIALE",
       "amount": 123200.0,
       "theme": "Éducation"
@@ -4888,11 +4883,6 @@
       "theme": "Économie"
     },
     {
-      "name": "COSTA",
-      "amount": 34000.0,
-      "theme": "Autre"
-    },
-    {
       "name": "LE MARCHE SOLIDAIRE",
       "amount": 33400.0,
       "theme": "Non classifié"
@@ -6358,11 +6348,6 @@
       "theme": "Sport"
     },
     {
-      "name": "LION",
-      "amount": 30000.0,
-      "theme": "Autre"
-    },
-    {
       "name": "CERCLE D'ESCRIME FRANCO CUBAIN",
       "amount": 28800.0,
       "theme": "Non classifié"
@@ -7383,11 +7368,6 @@
       "theme": "Éducation"
     },
     {
-      "name": "YASSINE",
-      "amount": 20400.0,
-      "theme": "Autre"
-    },
-    {
       "name": "KEDELAI",
       "amount": 32300.0,
       "theme": "Autre"
@@ -7688,11 +7668,6 @@
       "theme": "Économie"
     },
     {
-      "name": "WEHBY",
-      "amount": 23100.0,
-      "theme": "Autre"
-    },
-    {
       "name": "RELAIS ACCUEIL",
       "amount": 47800.0,
       "theme": "Social - Solidarité"
@@ -7806,11 +7781,6 @@
       "name": "HIP & HOP",
       "amount": 11000.0,
       "theme": "Non classifié"
-    },
-    {
-      "name": "HOCINI",
-      "amount": 23100.0,
-      "theme": "Autre"
     },
     {
       "name": "LAPS EQUIPE DU MATIN",
@@ -8293,11 +8263,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "SOCRATE",
-      "amount": 8000.0,
-      "theme": "Éducation"
-    },
-    {
       "name": "UNITED BELLEVILLE",
       "amount": 35700.0,
       "theme": "Économie"
@@ -8743,11 +8708,6 @@
       "theme": "Autre"
     },
     {
-      "name": "FAHD",
-      "amount": 17000.0,
-      "theme": "Autre"
-    },
-    {
       "name": "I AM A BIRD NOW",
       "amount": 10000.0,
       "theme": "Culture"
@@ -8791,11 +8751,6 @@
       "name": "BIENNALE DE L'IMAGE TANGIBLE",
       "amount": 17000.0,
       "theme": "Culture"
-    },
-    {
-      "name": "LE MOULIN",
-      "amount": 33500.0,
-      "theme": "Social - Solidarité"
     },
     {
       "name": "JEUNESSES UNIES MENILMONTANT PARMEN",
@@ -8998,11 +8953,6 @@
       "theme": "Sport"
     },
     {
-      "name": "BIZIEN",
-      "amount": 14600.0,
-      "theme": "Autre"
-    },
-    {
       "name": "J'IMAGINERAIS",
       "amount": 14600.0,
       "theme": "Non classifié"
@@ -9101,11 +9051,6 @@
       "name": "LA CORVEE",
       "amount": 1000.0,
       "theme": "Non classifié"
-    },
-    {
-      "name": "BHUIYAN",
-      "amount": 13451.0,
-      "theme": "Autre"
     },
     {
       "name": "HANOUN KIOSQUE",
@@ -9303,16 +9248,6 @@
       "theme": "Éducation"
     },
     {
-      "name": "DAKROUB",
-      "amount": 14600.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "LAOUCHIR",
-      "amount": 14600.0,
-      "theme": "Social - Solidarité"
-    },
-    {
       "name": "MELOCOTON FILMS",
       "amount": 11200.0,
       "theme": "Culture"
@@ -9400,11 +9335,6 @@
     {
       "name": "MATADOR",
       "amount": 4000.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "MULLA",
-      "amount": 14600.0,
       "theme": "Autre"
     },
     {
@@ -9943,11 +9873,6 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "DAGHER",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
       "name": "FORCE MAJEURE COLLEC DE CHAMBRISTES",
       "amount": 8000.0,
       "theme": "Culture"
@@ -9993,11 +9918,6 @@
       "theme": "Sport"
     },
     {
-      "name": "DIB AWADA",
-      "amount": 11300.0,
-      "theme": "Autre"
-    },
-    {
       "name": "ARTMELE",
       "amount": 3500.0,
       "theme": "Culture"
@@ -10036,11 +9956,6 @@
       "name": "TOILES & TOILES",
       "amount": 8000.0,
       "theme": "Culture"
-    },
-    {
-      "name": "ANANI",
-      "amount": 13968.0,
-      "theme": "Autre"
     },
     {
       "name": "SCM CABINET MEDICAL DU TEXEL",
@@ -10128,19 +10043,9 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "BERRICHE",
-      "amount": 8830.0,
-      "theme": "Autre"
-    },
-    {
       "name": "GRAINES DE MOUVEMENT",
       "amount": 8000.0,
       "theme": "Social - Solidarité"
-    },
-    {
-      "name": "PARTOUCHE",
-      "amount": 7300.0,
-      "theme": "Autre"
     },
     {
       "name": "L'ECLABOUSSEE",
@@ -10303,11 +10208,6 @@
       "theme": "Autre"
     },
     {
-      "name": "D HONDT",
-      "amount": 6850.0,
-      "theme": "Autre"
-    },
-    {
       "name": "LE PERISCOPE",
       "amount": 20800.0,
       "theme": "Social - Petite enfance"
@@ -10366,11 +10266,6 @@
       "name": "ATELIER MUSICAL DES TROIS TAMBOURS",
       "amount": 20250.0,
       "theme": "Culture"
-    },
-    {
-      "name": "MEHANNA",
-      "amount": 8500.0,
-      "theme": "Autre"
     },
     {
       "name": "3615",
@@ -10903,11 +10798,6 @@
       "theme": "Sport"
     },
     {
-      "name": "PEREIRA",
-      "amount": 6000.0,
-      "theme": "Autre"
-    },
-    {
       "name": "COLLEGE JEANBAPTISTE POQUELIN",
       "amount": 18200.0,
       "theme": "Éducation"
@@ -11043,11 +10933,6 @@
       "theme": "Culture"
     },
     {
-      "name": "AYANI",
-      "amount": 9300.0,
-      "theme": "Autre"
-    },
-    {
       "name": "AQUA B DEVELOPPEMENT 75",
       "amount": 2000.0,
       "theme": "Sport"
@@ -11098,11 +10983,6 @@
       "theme": "Autre"
     },
     {
-      "name": "ALI",
-      "amount": 8809.0,
-      "theme": "Autre"
-    },
-    {
       "name": "VIVRE DEVENIR VILLEPINTE STMICHEL",
       "amount": 17300.0,
       "theme": "Social - Solidarité"
@@ -11118,32 +10998,7 @@
       "theme": "Santé"
     },
     {
-      "name": "YEFSAH",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
       "name": "VN",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "ABAZED",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "ABDELLI",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "ABI SEMAAN",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "ABIDI",
       "amount": 8500.0,
       "theme": "Autre"
     },
@@ -11153,129 +11008,9 @@
       "theme": "Autre"
     },
     {
-      "name": "ADOSSI",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "AKAOUR",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "AL ANWAR",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "AL GHAZWI",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "AL KADDOUM",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "AL RICABI",
-      "amount": 8500.0,
-      "theme": "International"
-    },
-    {
-      "name": "ALDICK",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "ALKHUBI",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "ALMALLOUHI",
-      "amount": 8500.0,
-      "theme": "Social - Solidarité"
-    },
-    {
-      "name": "ALVAREZ",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "AWADA",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "BECHIR",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "BEN AZOUZ",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "BEN HAMMOUDA",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "BEN YEDDER",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "BENGELOUNE BENCHEKROUN",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "BENIBRAHIM",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "BENOIST",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "BERDOUDI",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "BOSGER",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "BOURA",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "CHAAYA",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
       "name": "CHAMBRE METIERS ET ARTISANAT",
       "amount": 4000.0,
       "theme": "Économie"
-    },
-    {
-      "name": "CHATER",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "CHERRIN",
-      "amount": 8500.0,
-      "theme": "Autre"
     },
     {
       "name": "COALITION INTER. POUR L'ABOLITION",
@@ -11293,164 +11028,9 @@
       "theme": "Non classifié"
     },
     {
-      "name": "DAHMOUNE",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "DESAI",
-      "amount": 8500.0,
-      "theme": "Social - Solidarité"
-    },
-    {
-      "name": "DUPAS",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "EL KHOURY",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "ESSAYEM",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "ESTEPHANE",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "EZZEDDINE",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "FATEMI",
-      "amount": 6375.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "FREMD",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "FRISI",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "GALLEZE",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "GBOLOVI",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "GHAFFARI",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "GHANEM",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
       "name": "LE GRAND MELANGE",
       "amount": 4000.0,
       "theme": "Culture"
-    },
-    {
-      "name": "HACHEM",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "HADJIYAN",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "HAIDARI",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "HAKKAKIAN AZARI",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "HALLOUMI",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "HAMIZA",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "HAMZEH",
-      "amount": 8500.0,
-      "theme": "Social - Solidarité"
-    },
-    {
-      "name": "HANI",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "HANSOTI",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "JAY",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "JDOURI KHALIKANE",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "JOUD",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "KABBAR",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "KAFI",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "KALLAS",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "KAWN",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "KHODR",
-      "amount": 8500.0,
-      "theme": "Autre"
     },
     {
       "name": "L OREILLE EN LIBERTE",
@@ -11458,84 +11038,9 @@
       "theme": "Culture"
     },
     {
-      "name": "LEBON",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "MAHESHWARI",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "MAHMOUD SHAKHSIAN",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "MAJED",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "MAKHZOUM",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "MAKKARI KRIR",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "MANJRA",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "MANSOUR",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "MEKKARI",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "MESSELMANI BACHIR",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "MOGHANI",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "MOHAMMAD",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "MOHAMMED YOUSSEF",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "MOTMAENFAR",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
       "name": "LE MUR MODULABLE URBAIN REACTIF",
       "amount": 17000.0,
       "theme": "Non classifié"
-    },
-    {
-      "name": "NAHID",
-      "amount": 8500.0,
-      "theme": "Autre"
     },
     {
       "name": "ODETTA",
@@ -11543,29 +11048,9 @@
       "theme": "Culture"
     },
     {
-      "name": "OLIVIER",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "OMAR",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
       "name": "ORCHESTRE SYMPHONIQUE LYRIQUE PARIS",
       "amount": 2500.0,
       "theme": "Culture"
-    },
-    {
-      "name": "OUDJABELLAH",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "OUESLATI",
-      "amount": 8500.0,
-      "theme": "Autre"
     },
     {
       "name": "PARLONS DEMOCRATIE",
@@ -11573,74 +11058,9 @@
       "theme": "Éducation"
     },
     {
-      "name": "REHAB",
-      "amount": 8500.0,
-      "theme": "Santé"
-    },
-    {
-      "name": "RIZKALLAH",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "ROGE",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "SABA",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "SADEK",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "SADIK",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "SAFAR",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
       "name": "SAMA FOR ALL",
       "amount": 2000.0,
       "theme": "Social - Solidarité"
-    },
-    {
-      "name": "SI GUESMI",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "SIGUESMI",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "SLIMI NKOUKA",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "SOULAIMAN",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "TABIT",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "TERRIER",
-      "amount": 8500.0,
-      "theme": "Autre"
     },
     {
       "name": "LES TRANSMETTEURS",
@@ -11648,19 +11068,9 @@
       "theme": "Non classifié"
     },
     {
-      "name": "ZACKOUR",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
       "name": "POT@MAI",
       "amount": 9800.0,
       "theme": "International"
-    },
-    {
-      "name": "MASSON",
-      "amount": 8232.0,
-      "theme": "Autre"
     },
     {
       "name": "KIOSQUE A JOURNAUX ALINE",
@@ -11676,11 +11086,6 @@
       "name": "SPORTING CLUB BELLEVILLOIS",
       "amount": 9200.0,
       "theme": "Sport"
-    },
-    {
-      "name": "BENHEGOUGA",
-      "amount": 8500.0,
-      "theme": "Autre"
     },
     {
       "name": "AZIZ ABOU MOUSSA",
@@ -11716,26 +11121,6 @@
       "name": "UNION INSTITUTIONS SOCIALES",
       "amount": 8000.0,
       "theme": "Social - Solidarité"
-    },
-    {
-      "name": "BEDRAN",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "BEN ROMDHANE",
-      "amount": 7900.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "CAILLAUD",
-      "amount": 7900.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "MAKRIDIS",
-      "amount": 7900.0,
-      "theme": "Autre"
     },
     {
       "name": "ECOLE RUSSE MIR",
@@ -11813,26 +11198,6 @@
       "theme": "Sport"
     },
     {
-      "name": "GHOSN",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "AL DYAB",
-      "amount": 7300.0,
-      "theme": "International"
-    },
-    {
-      "name": "ELIAS",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "NEQROUZ",
-      "amount": 8500.0,
-      "theme": "Culture"
-    },
-    {
       "name": "CAIREP",
       "amount": 15757.0,
       "theme": "Autre"
@@ -11893,11 +11258,6 @@
       "theme": "Culture"
     },
     {
-      "name": "COLAS",
-      "amount": 6767.0,
-      "theme": "Autre"
-    },
-    {
       "name": "VOLLEY 6",
       "amount": 1900.0,
       "theme": "Sport"
@@ -11911,16 +11271,6 @@
       "name": "ENTENTE PARIS EST ESCRIME EPEE",
       "amount": 2000.0,
       "theme": "Sport"
-    },
-    {
-      "name": "NAJEM GRECK",
-      "amount": 6700.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "YAMINE",
-      "amount": 7300.0,
-      "theme": "Social - Solidarité"
     },
     {
       "name": "VOYAGE DES MOTS",
@@ -12143,21 +11493,6 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "AMEWOUNOU",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "HUSSAIN",
-      "amount": 6375.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "KECHICHIAN",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
       "name": "COMPAGNIE COROSSOL",
       "amount": 5800.0,
       "theme": "Environnement"
@@ -12186,11 +11521,6 @@
       "name": "INFORMATION QUOTIDIENNE",
       "amount": 4375.0,
       "theme": "Autre"
-    },
-    {
-      "name": "HOBLOS MARTIN",
-      "amount": 6125.0,
-      "theme": "Social - Solidarité"
     },
     {
       "name": "PARIS ROLLER DERBY",
@@ -12398,38 +11728,13 @@
       "theme": "Sport"
     },
     {
-      "name": "ADANE",
-      "amount": 7300.0,
-      "theme": "Social - Solidarité"
-    },
-    {
-      "name": "AMINI TABRIZI",
-      "amount": 6100.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "FAYAD ZAHER",
-      "amount": 6100.0,
-      "theme": "Autre"
-    },
-    {
       "name": "KIOSQUE RK CHELLES",
-      "amount": 4844.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "UDDIN",
       "amount": 4844.0,
       "theme": "Autre"
     },
     {
       "name": "BOURARACH",
       "amount": 4684.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "SLEIMAN",
-      "amount": 6100.0,
       "theme": "Autre"
     },
     {
@@ -12518,11 +11823,6 @@
       "theme": "Culture"
     },
     {
-      "name": "MOUSSE",
-      "amount": 2000.0,
-      "theme": "Autre"
-    },
-    {
       "name": "NATIO DES VILLE ET TERRI ACCUEI",
       "amount": 13000.0,
       "theme": "Administration"
@@ -12561,16 +11861,6 @@
       "name": "GYMNASTIQUE RYTHMIQUE SPORTIVE",
       "amount": 2000.0,
       "theme": "Sport"
-    },
-    {
-      "name": "SADALDIN",
-      "amount": 6100.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "KAMEL",
-      "amount": 8500.0,
-      "theme": "Autre"
     },
     {
       "name": "VILLAGE FAIDHERBE",
@@ -12621,56 +11911,6 @@
       "name": "LE CLUB DU CINQUIEME",
       "amount": 4100.0,
       "theme": "Sport"
-    },
-    {
-      "name": "AOURCHID",
-      "amount": 6125.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "BOURGI",
-      "amount": 6100.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "EL AZZI KAHWAJI EL AZZI",
-      "amount": 6100.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "FAHDA",
-      "amount": 6100.0,
-      "theme": "Social - Solidarité"
-    },
-    {
-      "name": "GENET",
-      "amount": 6100.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "LANAYA",
-      "amount": 6100.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "LEBRAZI",
-      "amount": 6100.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "MARTINIE",
-      "amount": 6100.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "SALAMA",
-      "amount": 6100.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "YAACOUB",
-      "amount": 6100.0,
-      "theme": "Social - Solidarité"
     },
     {
       "name": "LES 12 SOURIRES",
@@ -12873,11 +12113,6 @@
       "theme": "Santé"
     },
     {
-      "name": "ZEMAR",
-      "amount": 6000.0,
-      "theme": "Environnement"
-    },
-    {
       "name": "EL MAKHOUR",
       "amount": 6844.0,
       "theme": "Autre"
@@ -12886,21 +12121,6 @@
       "name": "JARDINOT",
       "amount": 2000.0,
       "theme": "Environnement"
-    },
-    {
-      "name": "HAJJAR",
-      "amount": 6125.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "BEKHRAD TAB",
-      "amount": 6100.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "SINDIAN",
-      "amount": 6100.0,
-      "theme": "Santé"
     },
     {
       "name": "WABE",
@@ -12983,16 +12203,6 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "FIROZI FATTAHI",
-      "amount": 3425.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "KRISSAANE",
-      "amount": 5525.0,
-      "theme": "Autre"
-    },
-    {
       "name": "AGENCE PROMOTION",
       "amount": 11000.0,
       "theme": "Économie"
@@ -13068,11 +12278,6 @@
       "theme": "Autre"
     },
     {
-      "name": "HUSSEIN",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
       "name": "DEFENSE INTERET COMME ARTIS 2E",
       "amount": 10600.0,
       "theme": "Culture"
@@ -13116,11 +12321,6 @@
       "name": "LES PETITES MAINS DE JEANNE ET",
       "amount": 10415.0,
       "theme": "Non classifié"
-    },
-    {
-      "name": "KOUABO",
-      "amount": 8500.0,
-      "theme": "Autre"
     },
     {
       "name": "INSTITUT DE CULTURE MUSICALE",
@@ -13508,11 +12708,6 @@
       "theme": "Autre"
     },
     {
-      "name": "BARAKAT",
-      "amount": 5525.0,
-      "theme": "Autre"
-    },
-    {
       "name": "IFK PARIS",
       "amount": 1500.0,
       "theme": "Sport"
@@ -13526,11 +12721,6 @@
       "name": "SOLIDIMEY",
       "amount": 9918.0,
       "theme": "Social - Solidarité"
-    },
-    {
-      "name": "SAADOUN",
-      "amount": 6100.0,
-      "theme": "Autre"
     },
     {
       "name": "DAUPHIN SUBAQUATIQUE CLUB",
@@ -13613,11 +12803,6 @@
       "theme": "Culture"
     },
     {
-      "name": "GUENDOUZI",
-      "amount": 7325.0,
-      "theme": "Autre"
-    },
-    {
       "name": "SPORT ADAPTE DU SUD EST DE PARIS",
       "amount": 1300.0,
       "theme": "Sport"
@@ -13640,11 +12825,6 @@
     {
       "name": "MAGRIFF",
       "amount": 1000.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "SAFA",
-      "amount": 6100.0,
       "theme": "Autre"
     },
     {
@@ -13783,16 +12963,6 @@
       "theme": "Économie"
     },
     {
-      "name": "BELHOUCHAT",
-      "amount": 2126.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "BERRICH",
-      "amount": 3800.0,
-      "theme": "Autre"
-    },
-    {
       "name": "AIKIDO BUTTE AUX CAILLES",
       "amount": 1200.0,
       "theme": "Sport"
@@ -13818,19 +12988,9 @@
       "theme": "Autre"
     },
     {
-      "name": "AUFFRET",
-      "amount": 8500.0,
-      "theme": "Autre"
-    },
-    {
       "name": "BAZAR ELECTRIQUE",
       "amount": 4500.0,
       "theme": "Culture"
-    },
-    {
-      "name": "BEN LEBSIR",
-      "amount": 8500.0,
-      "theme": "Autre"
     },
     {
       "name": "CENTRE ANIMATION JEUNESSEPROMOSPOR",
@@ -13846,11 +13006,6 @@
       "name": "COMMERCANTS RUE COURCELLES",
       "amount": 8500.0,
       "theme": "Économie"
-    },
-    {
-      "name": "KARMOKER",
-      "amount": 2125.0,
-      "theme": "Autre"
     },
     {
       "name": "LIGUE D ILE DE FRANCE D AVIRON",
@@ -13873,11 +13028,6 @@
       "theme": "Sport"
     },
     {
-      "name": "CHICHE",
-      "amount": 1200.0,
-      "theme": "Autre"
-    },
-    {
       "name": "COMMERCANT VILLAGE ST CHARLES",
       "amount": 8300.0,
       "theme": "Économie"
@@ -13896,11 +13046,6 @@
       "name": "LA BALEINE SE MET A L'O",
       "amount": 5800.0,
       "theme": "Sport"
-    },
-    {
-      "name": "HABIB",
-      "amount": 4950.0,
-      "theme": "Autre"
     },
     {
       "name": "ACCENT AP",
@@ -14073,11 +13218,6 @@
       "theme": "Culture"
     },
     {
-      "name": "MARELLE",
-      "amount": 2000.0,
-      "theme": "Autre"
-    },
-    {
       "name": "MPU AMICAL ANCIENS SERV SPEC DEFENS",
       "amount": 1000.0,
       "theme": "Administration"
@@ -14123,11 +13263,6 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "EL TANNIR",
-      "amount": 7900.0,
-      "theme": "Autre"
-    },
-    {
       "name": "BELLEVILLE SANKALPA",
       "amount": 3978.0,
       "theme": "Éducation"
@@ -14153,44 +13288,14 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "BOUKASRIA",
-      "amount": 3800.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "CLOUET",
-      "amount": 3800.0,
-      "theme": "Autre"
-    },
-    {
       "name": "COLLECTIF CHAMPS MAGNETIQUES",
       "amount": 7600.0,
       "theme": "Culture"
     },
     {
-      "name": "MANGA ABDUL SAMAD",
-      "amount": 3800.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "MORAULT",
-      "amount": 3800.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "RAHME",
-      "amount": 3800.0,
-      "theme": "Autre"
-    },
-    {
       "name": "SOBD",
       "amount": 2000.0,
       "theme": "Culture"
-    },
-    {
-      "name": "STEFFENUT",
-      "amount": 3800.0,
-      "theme": "Autre"
     },
     {
       "name": "ATHLETIC COEUR DE FOND",
@@ -14323,11 +13428,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "SAID",
-      "amount": 3900.0,
-      "theme": "Social"
-    },
-    {
       "name": "LES ARCHERS DES TROIS LYS",
       "amount": 1500.0,
       "theme": "Sport"
@@ -14346,16 +13446,6 @@
       "name": "LE LABORATOIRE DE LA RIDE",
       "amount": 2000.0,
       "theme": "Non classifié"
-    },
-    {
-      "name": "CHEDID",
-      "amount": 3242.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "SAMAD MUHAMMAD",
-      "amount": 3800.0,
-      "theme": "Autre"
     },
     {
       "name": "ATTAQUE SIMPLE RIPOSTE",
@@ -14598,11 +13688,6 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "MOULI",
-      "amount": 6767.0,
-      "theme": "Autre"
-    },
-    {
       "name": "CHEZ NOUS KELLNER LANTIEZ",
       "amount": 2750.0,
       "theme": "Social - Solidarité"
@@ -14626,11 +13711,6 @@
       "name": "COM FELIX FAURE CONVENTION",
       "amount": 6600.0,
       "theme": "Administration"
-    },
-    {
-      "name": "RABHI",
-      "amount": 6580.0,
-      "theme": "Autre"
     },
     {
       "name": "ESCAPAD",
@@ -14683,11 +13763,6 @@
       "theme": "Environnement"
     },
     {
-      "name": "JOSEPH",
-      "amount": 6400.0,
-      "theme": "Autre"
-    },
-    {
       "name": "KANDA",
       "amount": 1200.0,
       "theme": "Autre"
@@ -14710,11 +13785,6 @@
     {
       "name": "VOTRE VILLAGE A TOUS",
       "amount": 6400.0,
-      "theme": "Social - Solidarité"
-    },
-    {
-      "name": "SOUEIDI",
-      "amount": 6375.0,
       "theme": "Social - Solidarité"
     },
     {
@@ -14853,11 +13923,6 @@
       "theme": "Autre"
     },
     {
-      "name": "BOZAN",
-      "amount": 6000.0,
-      "theme": "Autre"
-    },
-    {
       "name": "BRIGHT LIGHTS BIG CITIES",
       "amount": 3000.0,
       "theme": "Culture"
@@ -14948,19 +14013,9 @@
       "theme": "Autre"
     },
     {
-      "name": "COULIBALY",
-      "amount": 6000.0,
-      "theme": "Autre"
-    },
-    {
       "name": "CSBC TAXI",
       "amount": 6000.0,
       "theme": "Économie"
-    },
-    {
-      "name": "DE SOUSA",
-      "amount": 6000.0,
-      "theme": "Autre"
     },
     {
       "name": "DEBOUT SUR LE CHAMEAU",
@@ -14993,11 +14048,6 @@
       "theme": "Éducation"
     },
     {
-      "name": "ETIENNE",
-      "amount": 6000.0,
-      "theme": "Autre"
-    },
-    {
       "name": "EURADIO",
       "amount": 6000.0,
       "theme": "International"
@@ -15018,24 +14068,9 @@
       "theme": "Autre"
     },
     {
-      "name": "FERNANDES",
-      "amount": 6000.0,
-      "theme": "Autre"
-    },
-    {
       "name": "FORMAT COURT",
       "amount": 3000.0,
       "theme": "Culture"
-    },
-    {
-      "name": "FREITAS",
-      "amount": 6000.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "FRIKHA",
-      "amount": 6000.0,
-      "theme": "Autre"
     },
     {
       "name": "GANGE SUR SEINE",
@@ -15043,17 +14078,7 @@
       "theme": "Culture"
     },
     {
-      "name": "GERVY",
-      "amount": 6000.0,
-      "theme": "Autre"
-    },
-    {
       "name": "GOUIRAN",
-      "amount": 6000.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "GUICHARD",
       "amount": 6000.0,
       "theme": "Autre"
     },
@@ -15118,11 +14143,6 @@
       "theme": "Environnement"
     },
     {
-      "name": "MAZOUZ",
-      "amount": 6000.0,
-      "theme": "Autre"
-    },
-    {
       "name": "MECHERI",
       "amount": 6000.0,
       "theme": "Autre"
@@ -15168,11 +14188,6 @@
       "theme": "Culture"
     },
     {
-      "name": "NGUY",
-      "amount": 6000.0,
-      "theme": "Autre"
-    },
-    {
       "name": "NOU",
       "amount": 6000.0,
       "theme": "Autre"
@@ -15189,11 +14204,6 @@
     },
     {
       "name": "PHAK",
-      "amount": 6000.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "PHUNG",
       "amount": 6000.0,
       "theme": "Autre"
     },
@@ -15218,11 +14228,6 @@
       "theme": "Environnement"
     },
     {
-      "name": "RAHMANI",
-      "amount": 6000.0,
-      "theme": "Autre"
-    },
-    {
       "name": "REGIONALE SOS AMITIE ILE DE F",
       "amount": 6000.0,
       "theme": "Social - Solidarité"
@@ -15233,17 +14238,7 @@
       "theme": "Autre"
     },
     {
-      "name": "SACI",
-      "amount": 6000.0,
-      "theme": "Autre"
-    },
-    {
       "name": "SAKIS",
-      "amount": 6000.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "SARRET",
       "amount": 6000.0,
       "theme": "Autre"
     },
@@ -15308,11 +14303,6 @@
       "theme": "Éducation"
     },
     {
-      "name": "UNG",
-      "amount": 6000.0,
-      "theme": "Autre"
-    },
-    {
       "name": "UY",
       "amount": 6000.0,
       "theme": "Autre"
@@ -15361,16 +14351,6 @@
       "name": "AUPRES DE MON ARBRE",
       "amount": 5950.0,
       "theme": "Environnement"
-    },
-    {
-      "name": "IDLI",
-      "amount": 2126.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "MOUSTAFA",
-      "amount": 3800.0,
-      "theme": "Autre"
     },
     {
       "name": "CULTUR FRANCO JAPONAISE TALACHI",
@@ -15463,19 +14443,9 @@
       "theme": "Sport"
     },
     {
-      "name": "LISA",
-      "amount": 1321.0,
-      "theme": "Autre"
-    },
-    {
       "name": "LEO MARE",
       "amount": 800.0,
       "theme": "Sport"
-    },
-    {
-      "name": "YOOSEFI EMAM",
-      "amount": 2126.0,
-      "theme": "Autre"
     },
     {
       "name": "DES COMMERCANTS DU HT MONTMART",
@@ -16188,11 +15158,6 @@
       "theme": "Logement"
     },
     {
-      "name": "NOUINOU",
-      "amount": 4575.0,
-      "theme": "Social - Petite enfance"
-    },
-    {
       "name": "CTE LOC 10 FE NAL ANC COM ALMA TUN",
       "amount": 700.0,
       "theme": "Administration"
@@ -16201,11 +15166,6 @@
       "name": "COMMUNE LIBRE D ALIGRE",
       "amount": 2850.0,
       "theme": "Administration"
-    },
-    {
-      "name": "NEHME",
-      "amount": 1569.0,
-      "theme": "Autre"
     },
     {
       "name": "DES COMMERCA DU GROS CAILLOU",
@@ -16351,11 +15311,6 @@
       "name": "JPT SPECTACLES",
       "amount": 4339.0,
       "theme": "Culture"
-    },
-    {
-      "name": "SOUEID",
-      "amount": 4250.0,
-      "theme": "Autre"
     },
     {
       "name": "FNACA DU 1ER 2EME ARRDT DE PARIS",
@@ -16698,16 +15653,6 @@
       "theme": "Économie"
     },
     {
-      "name": "PORRON",
-      "amount": 1445.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "MILON MAHIEUX",
-      "amount": 3541.0,
-      "theme": "Autre"
-    },
-    {
       "name": "AMICALE DE LA MUSIQUE DES GARDIENS",
       "amount": 3500.0,
       "theme": "Culture"
@@ -16808,11 +15753,6 @@
       "theme": "Culture"
     },
     {
-      "name": "DRIF",
-      "amount": 3425.0,
-      "theme": "Autre"
-    },
-    {
       "name": "SALAME",
       "amount": 1734.0,
       "theme": "Autre"
@@ -16828,11 +15768,6 @@
       "theme": "Économie"
     },
     {
-      "name": "DRIDI",
-      "amount": 1569.0,
-      "theme": "Autre"
-    },
-    {
       "name": "LES BATINETTES",
       "amount": 3300.0,
       "theme": "Non classifié"
@@ -16846,11 +15781,6 @@
       "name": "MIE MIE",
       "amount": 3200.0,
       "theme": "Social - Petite enfance"
-    },
-    {
-      "name": "AYATOLLAHI",
-      "amount": 1569.0,
-      "theme": "Autre"
     },
     {
       "name": "XV DU LION",
@@ -17118,19 +16048,9 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "MIREAU",
-      "amount": 1569.0,
-      "theme": "Autre"
-    },
-    {
       "name": "MCART",
       "amount": 2850.0,
       "theme": "Culture"
-    },
-    {
-      "name": "ASHRAF",
-      "amount": 1321.0,
-      "theme": "Autre"
     },
     {
       "name": "AS SPORT LYCEE ENS COMM MARIA DERA",
@@ -17253,11 +16173,6 @@
       "theme": "Éducation"
     },
     {
-      "name": "PAGES",
-      "amount": 2500.0,
-      "theme": "Autre"
-    },
-    {
       "name": "PARIS BOUQUINE",
       "amount": 2500.0,
       "theme": "Culture"
@@ -17358,21 +16273,6 @@
       "theme": "Autre"
     },
     {
-      "name": "DEVOS",
-      "amount": 1192.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "ROYER",
-      "amount": 2382.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "DELARUE",
-      "amount": 1321.0,
-      "theme": "Autre"
-    },
-    {
       "name": "AMICALE DES PONGISTES DU 17EME AP",
       "amount": 2300.0,
       "theme": "Sport"
@@ -17416,31 +16316,6 @@
       "name": "DES COMMERCANTS DE SORBIER",
       "amount": 2150.0,
       "theme": "Non classifié"
-    },
-    {
-      "name": "ALHALAK",
-      "amount": 2125.0,
-      "theme": "Social - Solidarité"
-    },
-    {
-      "name": "BRUN",
-      "amount": 2125.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "DALHOUMI",
-      "amount": 2125.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "MAAMAR",
-      "amount": 2125.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "MIOZETTE",
-      "amount": 2125.0,
-      "theme": "Autre"
     },
     {
       "name": "LES CRAMPONS PARISIENS 86",
@@ -17598,11 +16473,6 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "DUBREUIL",
-      "amount": 2000.0,
-      "theme": "Autre"
-    },
-    {
       "name": "DUMAS REUNION",
       "amount": 2000.0,
       "theme": "Social - Solidarité"
@@ -17723,11 +16593,6 @@
       "theme": "International"
     },
     {
-      "name": "POALAS",
-      "amount": 2000.0,
-      "theme": "Autre"
-    },
-    {
       "name": "LA REPUBLIQUE DE MONTMARTRE",
       "amount": 2000.0,
       "theme": "Non classifié"
@@ -17838,16 +16703,6 @@
       "theme": "Économie"
     },
     {
-      "name": "PEAN",
-      "amount": 1445.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "DOUCERAIN",
-      "amount": 1569.0,
-      "theme": "Autre"
-    },
-    {
       "name": "LE28 ARCHITECTES",
       "amount": 931.0,
       "theme": "Autre"
@@ -17891,11 +16746,6 @@
       "name": "SPORTIVE VITRUVE",
       "amount": 1800.0,
       "theme": "Sport"
-    },
-    {
-      "name": "WANG",
-      "amount": 1300.0,
-      "theme": "Autre"
     },
     {
       "name": "ELLIPSE FORMATION",
@@ -17988,22 +16838,12 @@
       "theme": "Autre"
     },
     {
-      "name": "MUSSET",
-      "amount": 1600.0,
-      "theme": "Autre"
-    },
-    {
       "name": "PARVANEH SARL",
       "amount": 1600.0,
       "theme": "Autre"
     },
     {
       "name": "REVO",
-      "amount": 400.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "RICARD",
       "amount": 400.0,
       "theme": "Autre"
     },
@@ -18024,11 +16864,6 @@
     },
     {
       "name": "VAYGA SAS",
-      "amount": 1200.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "VIGNERON",
       "amount": 1200.0,
       "theme": "Autre"
     },
@@ -18071,11 +16906,6 @@
       "name": "STRULLU AND CO",
       "amount": 1200.0,
       "theme": "Économie"
-    },
-    {
-      "name": "CHATENET",
-      "amount": 1525.0,
-      "theme": "Autre"
     },
     {
       "name": "4 LINK",
@@ -18333,11 +17163,6 @@
       "theme": "Sport"
     },
     {
-      "name": "HEINTZ",
-      "amount": 822.0,
-      "theme": "Autre"
-    },
-    {
       "name": "JBC IMMOBILIER",
       "amount": 1230.0,
       "theme": "Logement"
@@ -18361,11 +17186,6 @@
       "name": "ADAZTECH",
       "amount": 1200.0,
       "theme": "Économie"
-    },
-    {
-      "name": "ADEL",
-      "amount": 1200.0,
-      "theme": "Autre"
     },
     {
       "name": "AGRINOVA FRANCE",
@@ -18683,22 +17503,7 @@
       "theme": "Économie"
     },
     {
-      "name": "JONCKEAU",
-      "amount": 1200.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "KAGAN",
-      "amount": 1200.0,
-      "theme": "Autre"
-    },
-    {
       "name": "KAKKO",
-      "amount": 1200.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "KAUTZ",
       "amount": 1200.0,
       "theme": "Autre"
     },
@@ -18778,11 +17583,6 @@
       "theme": "Culture"
     },
     {
-      "name": "NAUDAN",
-      "amount": 1200.0,
-      "theme": "Autre"
-    },
-    {
       "name": "NK INVEST",
       "amount": 1200.0,
       "theme": "Économie"
@@ -18803,11 +17603,6 @@
       "theme": "Autre"
     },
     {
-      "name": "PALAIS",
-      "amount": 1200.0,
-      "theme": "Culture"
-    },
-    {
       "name": "PANTEO",
       "amount": 1200.0,
       "theme": "Autre"
@@ -18823,27 +17618,12 @@
       "theme": "Culture"
     },
     {
-      "name": "PERRIN",
-      "amount": 1200.0,
-      "theme": "Autre"
-    },
-    {
       "name": "PERSEIDES CAPITAL",
       "amount": 1200.0,
       "theme": "Économie"
     },
     {
-      "name": "PETIT",
-      "amount": 1200.0,
-      "theme": "Autre"
-    },
-    {
       "name": "PINTAUD",
-      "amount": 1200.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "PORTAL",
       "amount": 1200.0,
       "theme": "Autre"
     },
@@ -18866,11 +17646,6 @@
       "name": "RICOCHET CONSEIL",
       "amount": 400.0,
       "theme": "Économie"
-    },
-    {
-      "name": "RIPERT",
-      "amount": 1200.0,
-      "theme": "Autre"
     },
     {
       "name": "ROUGE BASILIC",
@@ -18933,21 +17708,6 @@
       "theme": "Éducation"
     },
     {
-      "name": "STARCK",
-      "amount": 1200.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "STOECKEL",
-      "amount": 1200.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "STREIFF",
-      "amount": 1200.0,
-      "theme": "Autre"
-    },
-    {
       "name": "SUPER HERAUT",
       "amount": 1200.0,
       "theme": "Culture"
@@ -18991,11 +17751,6 @@
       "name": "THE ESCAPE LAB SAS",
       "amount": 1200.0,
       "theme": "Culture"
-    },
-    {
-      "name": "THOMAS",
-      "amount": 1200.0,
-      "theme": "Autre"
     },
     {
       "name": "TRACKS",
@@ -19058,11 +17813,6 @@
       "theme": "Autre"
     },
     {
-      "name": "CARIOU",
-      "amount": 1190.0,
-      "theme": "Autre"
-    },
-    {
       "name": "DORMIR DEBOUT PRODUCTION",
       "amount": 1182.0,
       "theme": "Culture"
@@ -19113,11 +17863,6 @@
       "theme": "Environnement"
     },
     {
-      "name": "DUBOIS",
-      "amount": 1155.0,
-      "theme": "Autre"
-    },
-    {
       "name": "FRAPPE BLOOM",
       "amount": 1155.0,
       "theme": "Autre"
@@ -19163,11 +17908,6 @@
       "theme": "Autre"
     },
     {
-      "name": "ROLLOT",
-      "amount": 1114.0,
-      "theme": "Autre"
-    },
-    {
       "name": "ABSYS SARL",
       "amount": 227.0,
       "theme": "Autre"
@@ -19176,11 +17916,6 @@
       "name": "DES COMMERCANTS DE LA",
       "amount": 1100.0,
       "theme": "Non classifié"
-    },
-    {
-      "name": "LATARCHE",
-      "amount": 1100.0,
-      "theme": "Autre"
     },
     {
       "name": "LYNX",
@@ -19618,19 +18353,9 @@
       "theme": "Autre"
     },
     {
-      "name": "GUYON",
-      "amount": 951.0,
-      "theme": "Autre"
-    },
-    {
       "name": "L'ARRIERE BOUTIQUE",
       "amount": 400.0,
       "theme": "Économie"
-    },
-    {
-      "name": "BESCOND",
-      "amount": 922.0,
-      "theme": "Autre"
     },
     {
       "name": "DEVIN SAS",
@@ -19673,11 +18398,6 @@
       "theme": "Autre"
     },
     {
-      "name": "BELGHITI",
-      "amount": 879.0,
-      "theme": "Autre"
-    },
-    {
       "name": "FIDOR",
       "amount": 879.0,
       "theme": "Autre"
@@ -19689,11 +18409,6 @@
     },
     {
       "name": "JEAN BOCABEILLE ARCHITECTE",
-      "amount": 879.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "THIERRY",
       "amount": 879.0,
       "theme": "Autre"
     },
@@ -19798,11 +18513,6 @@
       "theme": "Économie"
     },
     {
-      "name": "BOST",
-      "amount": 400.0,
-      "theme": "Autre"
-    },
-    {
       "name": "CABINET IVANCICH",
       "amount": 800.0,
       "theme": "Autre"
@@ -19854,11 +18564,6 @@
     },
     {
       "name": "KHALIL",
-      "amount": 800.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "LEROUX",
       "amount": 800.0,
       "theme": "Autre"
     },
@@ -19953,11 +18658,6 @@
       "theme": "Autre"
     },
     {
-      "name": "NICOLAS",
-      "amount": 794.0,
-      "theme": "Autre"
-    },
-    {
       "name": "MONGIE",
       "amount": 792.0,
       "theme": "Autre"
@@ -19986,11 +18686,6 @@
       "name": "BGA FINANCE",
       "amount": 769.0,
       "theme": "Économie"
-    },
-    {
-      "name": "BRIAND",
-      "amount": 769.0,
-      "theme": "Autre"
     },
     {
       "name": "CITRINE",
@@ -20031,16 +18726,6 @@
       "name": "LEMEDECINFR",
       "amount": 769.0,
       "theme": "Santé"
-    },
-    {
-      "name": "METTOT",
-      "amount": 769.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "PORRES",
-      "amount": 769.0,
-      "theme": "Autre"
     },
     {
       "name": "LE POULBOT",
@@ -20141,11 +18826,6 @@
       "name": "TOUR BLANCHE ECHECS",
       "amount": 700.0,
       "theme": "Sport"
-    },
-    {
-      "name": "VIBERT",
-      "amount": 695.0,
-      "theme": "Autre"
     },
     {
       "name": "ATELIER DE L'ILE",
@@ -20251,16 +18931,6 @@
       "name": "FALCKTORY",
       "amount": 632.0,
       "theme": "Économie"
-    },
-    {
-      "name": "LEPINE",
-      "amount": 632.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "DUSSERRE",
-      "amount": 622.0,
-      "theme": "Autre"
     },
     {
       "name": "AVISO CAPITAL PARTNERS",
@@ -20403,11 +19073,6 @@
       "theme": "Économie"
     },
     {
-      "name": "LE HOANG AN",
-      "amount": 500.0,
-      "theme": "Économie"
-    },
-    {
       "name": "DU JARDIN JEAN GENET",
       "amount": 500.0,
       "theme": "Non classifié"
@@ -20436,11 +19101,6 @@
       "name": "BLISS PROD",
       "amount": 495.0,
       "theme": "Économie"
-    },
-    {
-      "name": "SERRE",
-      "amount": 494.0,
-      "theme": "Environnement"
     },
     {
       "name": "DECISIONBRAIN",
@@ -20603,11 +19263,6 @@
       "theme": "Économie"
     },
     {
-      "name": "BENYAMIN",
-      "amount": 400.0,
-      "theme": "Autre"
-    },
-    {
       "name": "BERRIE MARTYRS",
       "amount": 400.0,
       "theme": "Économie"
@@ -20626,11 +19281,6 @@
       "name": "BIG PRODUCTIONS",
       "amount": 400.0,
       "theme": "Économie"
-    },
-    {
-      "name": "BILLE",
-      "amount": 400.0,
-      "theme": "Autre"
     },
     {
       "name": "BILLIERES ARCHITECTE",
@@ -20718,11 +19368,6 @@
       "theme": "Économie"
     },
     {
-      "name": "COMPAIN",
-      "amount": 400.0,
-      "theme": "Économie"
-    },
-    {
       "name": "COMPETITIVE ENERGY",
       "amount": 400.0,
       "theme": "Économie"
@@ -20731,11 +19376,6 @@
       "name": "CORAMIC RESTAURATION",
       "amount": 400.0,
       "theme": "Économie"
-    },
-    {
-      "name": "COUTURIER",
-      "amount": 400.0,
-      "theme": "Autre"
     },
     {
       "name": "DAB AUDITION",
@@ -20763,19 +19403,9 @@
       "theme": "Économie"
     },
     {
-      "name": "DE ARAUJO",
-      "amount": 400.0,
-      "theme": "Autre"
-    },
-    {
       "name": "DE FIL EN ETAPES",
       "amount": 400.0,
       "theme": "Économie"
-    },
-    {
-      "name": "DELAPORTE",
-      "amount": 400.0,
-      "theme": "Autre"
     },
     {
       "name": "DERRIS",
@@ -21168,11 +19798,6 @@
       "theme": "Économie"
     },
     {
-      "name": "MONTEL",
-      "amount": 400.0,
-      "theme": "Autre"
-    },
-    {
       "name": "LES MOUFETTES",
       "amount": 400.0,
       "theme": "Non classifié"
@@ -21328,11 +19953,6 @@
       "theme": "Économie"
     },
     {
-      "name": "RIO",
-      "amount": 400.0,
-      "theme": "Autre"
-    },
-    {
       "name": "ROYAL AKI",
       "amount": 400.0,
       "theme": "Économie"
@@ -21453,11 +20073,6 @@
       "theme": "Économie"
     },
     {
-      "name": "TRABUC",
-      "amount": 400.0,
-      "theme": "Autre"
-    },
-    {
       "name": "TRANSVERSAL",
       "amount": 400.0,
       "theme": "Économie"
@@ -21466,11 +20081,6 @@
       "name": "ULM",
       "amount": 400.0,
       "theme": "Économie"
-    },
-    {
-      "name": "WEISSER",
-      "amount": 400.0,
-      "theme": "Autre"
     },
     {
       "name": "WENEST",
@@ -21531,11 +20141,6 @@
       "name": "BLEU CAPRICORNE",
       "amount": 357.0,
       "theme": "Économie"
-    },
-    {
-      "name": "LEMOINE",
-      "amount": 357.0,
-      "theme": "Autre"
     },
     {
       "name": "PACHYDERME",
@@ -21653,19 +20258,9 @@
       "theme": "Économie"
     },
     {
-      "name": "BEN SLAMA",
-      "amount": 275.0,
-      "theme": "Économie"
-    },
-    {
       "name": "MAILLIOT",
       "amount": 275.0,
       "theme": "Économie"
-    },
-    {
-      "name": "KACHANER",
-      "amount": 274.0,
-      "theme": "Autre"
     },
     {
       "name": "LEPLATRE",
@@ -21693,19 +20288,9 @@
       "theme": "Économie"
     },
     {
-      "name": "NOBLET",
-      "amount": 233.0,
-      "theme": "Autre"
-    },
-    {
       "name": "SARFATY",
       "amount": 229.0,
       "theme": "Économie"
-    },
-    {
-      "name": "JEANNEAU",
-      "amount": 225.0,
-      "theme": "Autre"
     },
     {
       "name": "BUBBOLITAS FRANCE",

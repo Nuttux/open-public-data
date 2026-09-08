@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-26T20:49:50.908869",
+  "generated_at": "2026-09-08T20:30:56.264285",
   "source": "post-processing beneficiaires_{year}.json",
-  "excludes": "nature_juridique = 'Personnes physiques' (label source)",
+  "excludes": "nature_juridique = 'Personnes physiques' (label source, sur toutes les années dès qu'une l'indique)",
   "years": [
     2018,
     2019,
@@ -11,7 +11,7 @@
     2023,
     2024
   ],
-  "count": 14158,
+  "count": 13718,
   "data": [
     {
       "name": "CENTRE ACTION SOCIALE VILLE PARIS",
@@ -4918,22 +4918,6 @@
       }
     },
     {
-      "name": "LE BAL",
-      "norm": "bal",
-      "siret": "49396355700027",
-      "theme": "Culture",
-      "totalAmount": 1454006.0,
-      "lastActiveYear": 2024,
-      "nb": 6,
-      "byYear": {
-        "2018": 188000.0,
-        "2019": 226000.0,
-        "2022": 246500.0,
-        "2023": 425506.0,
-        "2024": 368000.0
-      }
-    },
-    {
       "name": "INST CERVEAU MOELLE EPINIERE",
       "norm": "inst cerveau moelle epiniere",
       "siret": null,
@@ -9460,20 +9444,6 @@
       "nb": 1,
       "byYear": {
         "2018": 525000.0
-      }
-    },
-    {
-      "name": "REMG Remise gracieuse",
-      "norm": "remg remise gracieuse",
-      "siret": null,
-      "theme": "Administration",
-      "totalAmount": 521861.79000000004,
-      "lastActiveYear": 2020,
-      "nb": 3,
-      "byYear": {
-        "2018": 52049.0,
-        "2019": 265664.0,
-        "2020": 204148.79
       }
     },
     {
@@ -25328,21 +25298,6 @@
       }
     },
     {
-      "name": "COSTA",
-      "norm": "costa",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 136600.0,
-      "lastActiveYear": 2024,
-      "nb": 5,
-      "byYear": {
-        "2021": 50000.0,
-        "2022": 20000.0,
-        "2023": 34000.0,
-        "2024": 32600.0
-      }
-    },
-    {
       "name": "LE MARCHE SOLIDAIRE",
       "norm": "marche solidaire",
       "siret": "52755358000020",
@@ -31698,18 +31653,6 @@
       }
     },
     {
-      "name": "DECK",
-      "norm": "deck",
-      "siret": null,
-      "theme": "Social - Solidarité",
-      "totalAmount": 91453.0,
-      "lastActiveYear": 2022,
-      "nb": 1,
-      "byYear": {
-        "2022": 91453.0
-      }
-    },
-    {
       "name": "LA CORDEE",
       "norm": "cordee",
       "siret": null,
@@ -34083,19 +34026,6 @@
         "2022": 12000.0,
         "2023": 19980.0,
         "2024": 14020.0
-      }
-    },
-    {
-      "name": "LION",
-      "norm": "lion",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 79800.0,
-      "lastActiveYear": 2023,
-      "nb": 2,
-      "byYear": {
-        "2022": 49800.0,
-        "2023": 30000.0
       }
     },
     {
@@ -40675,19 +40605,6 @@
       }
     },
     {
-      "name": "YASSINE",
-      "norm": "yassine",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 52393.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 20400.0,
-        "2024": 31993.0
-      }
-    },
-    {
       "name": "ASSOCIATION ACCORDERIE GRAND BELLEVILLE",
       "norm": "association accorderie grand belleville",
       "siret": null,
@@ -43176,19 +43093,6 @@
       }
     },
     {
-      "name": "WEHBY",
-      "norm": "wehby",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 48000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 23100.0,
-        "2024": 24900.0
-      }
-    },
-    {
       "name": "SOC ETUDE MAITRISE OUVRAGE",
       "norm": "soc etude maitrise ouvrage",
       "siret": null,
@@ -43788,19 +43692,6 @@
         "2022": 7500.0,
         "2023": 11000.0,
         "2024": 24000.0
-      }
-    },
-    {
-      "name": "HOCINI",
-      "norm": "hocini",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 46200.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 23100.0,
-        "2024": 23100.0
       }
     },
     {
@@ -46945,22 +46836,6 @@
       }
     },
     {
-      "name": "SOCRATE",
-      "norm": "socrate",
-      "siret": null,
-      "theme": "Éducation",
-      "totalAmount": 39700.0,
-      "lastActiveYear": 2024,
-      "nb": 5,
-      "byYear": {
-        "2018": 14200.0,
-        "2020": 6500.0,
-        "2021": 5000.0,
-        "2023": 8000.0,
-        "2024": 6000.0
-      }
-    },
-    {
       "name": "UNITED BELLEVILLE",
       "norm": "united belleville",
       "siret": "87842612100017",
@@ -49930,19 +49805,6 @@
       }
     },
     {
-      "name": "FAHD",
-      "norm": "fahd",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 34000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 17000.0,
-        "2024": 17000.0
-      }
-    },
-    {
       "name": "I AM A BIRD NOW",
       "norm": "i am a bird now",
       "siret": "53472254100024",
@@ -50213,18 +50075,6 @@
       "nb": 1,
       "byYear": {
         "2022": 33500.0
-      }
-    },
-    {
-      "name": "LE MOULIN",
-      "norm": "moulin",
-      "siret": "33130135800015",
-      "theme": "Social - Solidarité",
-      "totalAmount": 33500.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 33500.0
       }
     },
     {
@@ -51273,19 +51123,6 @@
       }
     },
     {
-      "name": "BIZIEN",
-      "norm": "bizien",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 31600.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 14600.0,
-        "2024": 17000.0
-      }
-    },
-    {
       "name": "J'IMAGINERAIS",
       "norm": "j imaginerais",
       "siret": "74982579000019",
@@ -51891,19 +51728,6 @@
       "byYear": {
         "2020": 22000.0,
         "2021": 8500.0
-      }
-    },
-    {
-      "name": "BHUIYAN",
-      "norm": "bhuiyan",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 30451.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 13451.0,
-        "2024": 17000.0
       }
     },
     {
@@ -53931,19 +53755,6 @@
       }
     },
     {
-      "name": "DAKROUB",
-      "norm": "dakroub",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 29200.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 14600.0,
-        "2024": 14600.0
-      }
-    },
-    {
       "name": "LE GRAND A/GRAPHISME ET ART NOMADE",
       "norm": "grand a graphisme et art nomade",
       "siret": null,
@@ -53953,19 +53764,6 @@
       "nb": 1,
       "byYear": {
         "2024": 29200.0
-      }
-    },
-    {
-      "name": "LAOUCHIR",
-      "norm": "laouchir",
-      "siret": null,
-      "theme": "Social - Solidarité",
-      "totalAmount": 29200.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 14600.0,
-        "2024": 14600.0
       }
     },
     {
@@ -54510,19 +54308,6 @@
       "nb": 1,
       "byYear": {
         "2021": 28160.0
-      }
-    },
-    {
-      "name": "MULLA",
-      "norm": "mulla",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 28050.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 14600.0,
-        "2024": 13450.0
       }
     },
     {
@@ -58572,19 +58357,6 @@
       }
     },
     {
-      "name": "DAGHER",
-      "norm": "dagher",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 23000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 14500.0
-      }
-    },
-    {
       "name": "ENSEMBLE VOCAL SEQUENZA 9 3",
       "norm": "ensemble vocal sequenza 9 3",
       "siret": "47932434500020",
@@ -58806,19 +58578,6 @@
       "nb": 1,
       "byYear": {
         "2023": 22950.0
-      }
-    },
-    {
-      "name": "DIB AWADA",
-      "norm": "dib awada",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 22784.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 11300.0,
-        "2024": 11484.0
       }
     },
     {
@@ -59095,19 +58854,6 @@
       "nb": 1,
       "byYear": {
         "2020": 22480.0
-      }
-    },
-    {
-      "name": "ANANI",
-      "norm": "anani",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 22468.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 13968.0,
-        "2024": 8500.0
       }
     },
     {
@@ -59647,19 +59393,6 @@
       }
     },
     {
-      "name": "BERRICHE",
-      "norm": "berriche",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 21910.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8830.0,
-        "2024": 13080.0
-      }
-    },
-    {
       "name": "GRAINES DE MOUVEMENT",
       "norm": "graines de mouvement",
       "siret": "80493661500025",
@@ -59686,19 +59419,6 @@
         "2021": 7000.0,
         "2022": 3000.0,
         "2024": 10000.0
-      }
-    },
-    {
-      "name": "PARTOUCHE",
-      "norm": "partouche",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 21800.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 7300.0,
-        "2024": 14500.0
       }
     },
     {
@@ -60584,19 +60304,6 @@
       }
     },
     {
-      "name": "D HONDT",
-      "norm": "d hondt",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 20950.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 6850.0,
-        "2024": 14100.0
-      }
-    },
-    {
       "name": "ASSOCIATION MA'OHI",
       "norm": "association ma ohi",
       "siret": null,
@@ -60974,19 +60681,6 @@
       "nb": 1,
       "byYear": {
         "2023": 20250.0
-      }
-    },
-    {
-      "name": "MEHANNA",
-      "norm": "mehanna",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 20204.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 11704.0
       }
     },
     {
@@ -63403,18 +63097,6 @@
       }
     },
     {
-      "name": "NGUYEN",
-      "norm": "nguyen",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 19516.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2024": 19516.0
-      }
-    },
-    {
       "name": "ASSOCIATION RNB YOURSELF",
       "norm": "association rnb yourself",
       "siret": null,
@@ -64401,19 +64083,6 @@
       "byYear": {
         "2020": 11250.0,
         "2021": 7000.0
-      }
-    },
-    {
-      "name": "PEREIRA",
-      "norm": "pereira",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 18233.0,
-      "lastActiveYear": 2024,
-      "nb": 3,
-      "byYear": {
-        "2023": 6000.0,
-        "2024": 12233.0
       }
     },
     {
@@ -65592,19 +65261,6 @@
       }
     },
     {
-      "name": "AYANI",
-      "norm": "ayani",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17800.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 9300.0,
-        "2024": 8500.0
-      }
-    },
-    {
       "name": "WALL STREET BAR",
       "norm": "wall street bar",
       "siret": null,
@@ -65960,19 +65616,6 @@
       }
     },
     {
-      "name": "ALI",
-      "norm": "ali",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17309.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8809.0,
-        "2024": 8500.0
-      }
-    },
-    {
       "name": "NATUR'NAIL",
       "norm": "natur nail",
       "siret": null,
@@ -66065,19 +65708,6 @@
       }
     },
     {
-      "name": "YEFSAH",
-      "norm": "yefsah",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17100.0,
-      "lastActiveYear": 2024,
-      "nb": 3,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8600.0
-      }
-    },
-    {
       "name": "VN",
       "norm": "vn",
       "siret": null,
@@ -66117,58 +65747,6 @@
       }
     },
     {
-      "name": "ABAZED",
-      "norm": "abazed",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "ABDELLI",
-      "norm": "abdelli",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "ABI SEMAAN",
-      "norm": "abi semaan",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "ABIDI",
-      "norm": "abidi",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
       "name": "ABU FAKHER",
       "norm": "abu fakher",
       "siret": null,
@@ -66195,136 +65773,6 @@
         "2020": 3000.0,
         "2021": 4000.0,
         "2024": 4000.0
-      }
-    },
-    {
-      "name": "ADOSSI",
-      "norm": "adossi",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "AKAOUR",
-      "norm": "akaour",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "AL ANWAR",
-      "norm": "al anwar",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "AL GHAZWI",
-      "norm": "al ghazwi",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "AL KADDOUM",
-      "norm": "al kaddoum",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "AL RICABI",
-      "norm": "al ricabi",
-      "siret": null,
-      "theme": "International",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "ALDICK",
-      "norm": "aldick",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "ALKHUBI",
-      "norm": "alkhubi",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "ALMALLOUHI",
-      "norm": "almallouhi",
-      "siret": null,
-      "theme": "Social - Solidarité",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "ALVAREZ",
-      "norm": "alvarez",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
       }
     },
     {
@@ -66367,123 +65815,6 @@
       }
     },
     {
-      "name": "AWADA",
-      "norm": "awada",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "BECHIR",
-      "norm": "bechir",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "BEN AZOUZ",
-      "norm": "ben azouz",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "BEN HAMMOUDA",
-      "norm": "ben hammouda",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "BEN YEDDER",
-      "norm": "ben yedder",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "BENGELOUNE BENCHEKROUN",
-      "norm": "bengeloune benchekroun",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "BENIBRAHIM",
-      "norm": "benibrahim",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "BENOIST",
-      "norm": "benoist",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "BERDOUDI",
-      "norm": "berdoudi",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
       "name": "BIGGER THAN FICTION",
       "norm": "bigger than fiction",
       "siret": null,
@@ -66494,45 +65825,6 @@
       "byYear": {
         "2018": 8000.0,
         "2019": 9000.0
-      }
-    },
-    {
-      "name": "BOSGER",
-      "norm": "bosger",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "BOURA",
-      "norm": "boura",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "CHAAYA",
-      "norm": "chaaya",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
       }
     },
     {
@@ -66547,32 +65839,6 @@
         "2022": 10000.0,
         "2023": 4000.0,
         "2024": 3000.0
-      }
-    },
-    {
-      "name": "CHATER",
-      "norm": "chater",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "CHERRIN",
-      "norm": "cherrin",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
       }
     },
     {
@@ -66635,45 +65901,6 @@
       }
     },
     {
-      "name": "DAHMOUNE",
-      "norm": "dahmoune",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "DESAI",
-      "norm": "desai",
-      "siret": null,
-      "theme": "Social - Solidarité",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "DUPAS",
-      "norm": "dupas",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
       "name": "EDITIONS EXTENSIBLES",
       "norm": "editions extensibles",
       "siret": null,
@@ -66686,19 +65913,6 @@
         "2019": 4000.0,
         "2020": 5000.0,
         "2024": 4000.0
-      }
-    },
-    {
-      "name": "EL KHOURY",
-      "norm": "el khoury",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
       }
     },
     {
@@ -66715,58 +65929,6 @@
       }
     },
     {
-      "name": "ESSAYEM",
-      "norm": "essayem",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "ESTEPHANE",
-      "norm": "estephane",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "EZZEDDINE",
-      "norm": "ezzeddine",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "FATEMI",
-      "norm": "fatemi",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 6375.0,
-        "2024": 10625.0
-      }
-    },
-    {
       "name": "FEDERATION NATIONALES ASSOCIATION SOLIDAIRE",
       "norm": "federation nationales association solidaire",
       "siret": null,
@@ -66776,84 +65938,6 @@
       "nb": 1,
       "byYear": {
         "2022": 17000.0
-      }
-    },
-    {
-      "name": "FREMD",
-      "norm": "fremd",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "FRISI",
-      "norm": "frisi",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "GALLEZE",
-      "norm": "galleze",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "GBOLOVI",
-      "norm": "gbolovi",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "GHAFFARI",
-      "norm": "ghaffari",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "GHANEM",
-      "norm": "ghanem",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
       }
     },
     {
@@ -66881,227 +65965,6 @@
         "2022": 7000.0,
         "2023": 4000.0,
         "2024": 6000.0
-      }
-    },
-    {
-      "name": "HACHEM",
-      "norm": "hachem",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "HADJIYAN",
-      "norm": "hadjiyan",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "HAIDARI",
-      "norm": "haidari",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "HAKKAKIAN AZARI",
-      "norm": "hakkakian azari",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "HALLOUMI",
-      "norm": "halloumi",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "HAMIZA",
-      "norm": "hamiza",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "HAMZEH",
-      "norm": "hamzeh",
-      "siret": null,
-      "theme": "Social - Solidarité",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "HANI",
-      "norm": "hani",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "HANSOTI",
-      "norm": "hansoti",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "JAY",
-      "norm": "jay",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "JDOURI KHALIKANE",
-      "norm": "jdouri khalikane",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "JOUD",
-      "norm": "joud",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "KABBAR",
-      "norm": "kabbar",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "KAFI",
-      "norm": "kafi",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "KALLAS",
-      "norm": "kallas",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "KAWN",
-      "norm": "kawn",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "KHODR",
-      "norm": "khodr",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
       }
     },
     {
@@ -67158,136 +66021,6 @@
       }
     },
     {
-      "name": "LEBON",
-      "norm": "lebon",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "MAHESHWARI",
-      "norm": "maheshwari",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "MAHMOUD SHAKHSIAN",
-      "norm": "mahmoud shakhsian",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "MAJED",
-      "norm": "majed",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "MAKHZOUM",
-      "norm": "makhzoum",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "MAKKARI KRIR",
-      "norm": "makkari krir",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "MANJRA",
-      "norm": "manjra",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "MANSOUR",
-      "norm": "mansour",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "MEKKARI",
-      "norm": "mekkari",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "MESSELMANI BACHIR",
-      "norm": "messelmani bachir",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
       "name": "MIGRACOOP",
       "norm": "migracoop",
       "siret": "83982908200024",
@@ -67312,58 +66045,6 @@
       }
     },
     {
-      "name": "MOGHANI",
-      "norm": "moghani",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "MOHAMMAD",
-      "norm": "mohammad",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "MOHAMMED YOUSSEF",
-      "norm": "mohammed youssef",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "MOTMAENFAR",
-      "norm": "motmaenfar",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
       "name": "LE MUR MODULABLE URBAIN REACTIF",
       "norm": "mur modulable urbain reactif",
       "siret": null,
@@ -67373,19 +66054,6 @@
       "nb": 1,
       "byYear": {
         "2023": 17000.0
-      }
-    },
-    {
-      "name": "NAHID",
-      "norm": "nahid",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
       }
     },
     {
@@ -67399,32 +66067,6 @@
       "byYear": {
         "2018": 5000.0,
         "2023": 12000.0
-      }
-    },
-    {
-      "name": "OLIVIER",
-      "norm": "olivier",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "OMAR",
-      "norm": "omar",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
       }
     },
     {
@@ -67443,32 +66085,6 @@
         "2022": 2500.0,
         "2023": 2500.0,
         "2024": 2000.0
-      }
-    },
-    {
-      "name": "OUDJABELLAH",
-      "norm": "oudjabellah",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "OUESLATI",
-      "norm": "oueslati",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
       }
     },
     {
@@ -67498,109 +66114,6 @@
       }
     },
     {
-      "name": "REHAB",
-      "norm": "rehab",
-      "siret": null,
-      "theme": "Santé",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "RIZKALLAH",
-      "norm": "rizkallah",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "ROGE",
-      "norm": "roge",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "SABA",
-      "norm": "saba",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "SADEK",
-      "norm": "sadek",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "SADIK",
-      "norm": "sadik",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "SAFAR",
-      "norm": "safar",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "SALEM",
-      "norm": "salem",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 17000.0
-      }
-    },
-    {
       "name": "SAMA FOR ALL",
       "norm": "sama for all",
       "siret": "84235673500014",
@@ -67617,45 +66130,6 @@
       }
     },
     {
-      "name": "SI GUESMI",
-      "norm": "si guesmi",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "SIGUESMI",
-      "norm": "siguesmi",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "SLIMI NKOUKA",
-      "norm": "slimi nkouka",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
       "name": "SOC EDITEURS REUNIS LIVRES",
       "norm": "soc editeurs reunis livres",
       "siret": null,
@@ -67665,45 +66139,6 @@
       "nb": 1,
       "byYear": {
         "2020": 17000.0
-      }
-    },
-    {
-      "name": "SOULAIMAN",
-      "norm": "soulaiman",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "TABIT",
-      "norm": "tabit",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "TERRIER",
-      "norm": "terrier",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
       }
     },
     {
@@ -67729,19 +66164,6 @@
       "nb": 1,
       "byYear": {
         "2023": 17000.0
-      }
-    },
-    {
-      "name": "ZACKOUR",
-      "norm": "zackour",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 17000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8500.0
       }
     },
     {
@@ -67826,19 +66248,6 @@
       }
     },
     {
-      "name": "MASSON",
-      "norm": "masson",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 16746.0,
-      "lastActiveYear": 2024,
-      "nb": 3,
-      "byYear": {
-        "2023": 8232.0,
-        "2024": 8514.0
-      }
-    },
-    {
       "name": "KIOSQUE A JOURNAUX ALINE",
       "norm": "kiosque a journaux aline",
       "siret": null,
@@ -67909,19 +66318,6 @@
         "2021": 1700.0,
         "2022": 2300.0,
         "2024": 7815.0
-      }
-    },
-    {
-      "name": "BENHEGOUGA",
-      "norm": "benhegouga",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 16669.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 8169.0
       }
     },
     {
@@ -68228,45 +66624,6 @@
       }
     },
     {
-      "name": "BEDRAN",
-      "norm": "bedran",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 16400.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 7900.0
-      }
-    },
-    {
-      "name": "BEN ROMDHANE",
-      "norm": "ben romdhane",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 16400.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 7900.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "CAILLAUD",
-      "norm": "caillaud",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 16400.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 7900.0,
-        "2024": 8500.0
-      }
-    },
-    {
       "name": "LA FABRIQUE DE LA GOUTTE D OR",
       "norm": "la fabrique de la goutte d or",
       "siret": null,
@@ -68276,19 +66633,6 @@
       "nb": 1,
       "byYear": {
         "2020": 16400.0
-      }
-    },
-    {
-      "name": "MAKRIDIS",
-      "norm": "makridis",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 16400.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 7900.0,
-        "2024": 8500.0
       }
     },
     {
@@ -68317,18 +66661,6 @@
       }
     },
     {
-      "name": "BOUZIDI",
-      "norm": "bouzidi",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 16291.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 16291.0
-      }
-    },
-    {
       "name": "SAS DAUDET",
       "norm": "sas daudet",
       "siret": null,
@@ -68352,18 +66684,6 @@
         "2018": 6200.0,
         "2020": 4000.0,
         "2024": 6000.0
-      }
-    },
-    {
-      "name": "WAGNER",
-      "norm": "wagner",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 16144.0,
-      "lastActiveYear": 2020,
-      "nb": 1,
-      "byYear": {
-        "2020": 16144.0
       }
     },
     {
@@ -68909,32 +67229,6 @@
       }
     },
     {
-      "name": "GHOSN",
-      "norm": "ghosn",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 15825.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 7325.0
-      }
-    },
-    {
-      "name": "AL DYAB",
-      "norm": "al dyab",
-      "siret": null,
-      "theme": "International",
-      "totalAmount": 15800.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 7300.0,
-        "2024": 8500.0
-      }
-    },
-    {
       "name": "ASS. COMMERCANTS HAUT MONTMARTRE",
       "norm": "ass commercants haut montmartre",
       "siret": null,
@@ -68944,32 +67238,6 @@
       "nb": 1,
       "byYear": {
         "2024": 15800.0
-      }
-    },
-    {
-      "name": "ELIAS",
-      "norm": "elias",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 15800.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 7300.0
-      }
-    },
-    {
-      "name": "NEQROUZ",
-      "norm": "neqrouz",
-      "siret": null,
-      "theme": "Culture",
-      "totalAmount": 15800.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 7300.0
       }
     },
     {
@@ -69375,19 +67643,6 @@
       }
     },
     {
-      "name": "COLAS",
-      "norm": "colas",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 15288.0,
-      "lastActiveYear": 2024,
-      "nb": 3,
-      "byYear": {
-        "2023": 6767.0,
-        "2024": 8521.0
-      }
-    },
-    {
       "name": "VOLLEY 6",
       "norm": "volley 6",
       "siret": "79245958800010",
@@ -69461,32 +67716,6 @@
       "nb": 1,
       "byYear": {
         "2019": 15200.0
-      }
-    },
-    {
-      "name": "NAJEM GRECK",
-      "norm": "najem greck",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 15200.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 6700.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "YAMINE",
-      "norm": "yamine",
-      "siret": null,
-      "theme": "Social - Solidarité",
-      "totalAmount": 15200.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 7300.0,
-        "2024": 7900.0
       }
     },
     {
@@ -70760,18 +68989,6 @@
       }
     },
     {
-      "name": "LA MINE",
-      "norm": "mine",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 15000.0,
-      "lastActiveYear": 2022,
-      "nb": 1,
-      "byYear": {
-        "2022": 15000.0
-      }
-    },
-    {
       "name": "LA MISSION BRETON ILE FRANCE",
       "norm": "mission breton ile france",
       "siret": null,
@@ -71280,45 +69497,6 @@
       }
     },
     {
-      "name": "AMEWOUNOU",
-      "norm": "amewounou",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 14875.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 6375.0
-      }
-    },
-    {
-      "name": "HUSSAIN",
-      "norm": "hussain",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 14875.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 6375.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "KECHICHIAN",
-      "norm": "kechichian",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 14875.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 6375.0
-      }
-    },
-    {
       "name": "SAS LNHK",
       "norm": "sas lnhk",
       "siret": null,
@@ -71482,19 +69660,6 @@
       "byYear": {
         "2021": 5180.0,
         "2022": 9496.0
-      }
-    },
-    {
-      "name": "HOBLOS MARTIN",
-      "norm": "hoblos martin",
-      "siret": null,
-      "theme": "Social - Solidarité",
-      "totalAmount": 14625.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 6125.0,
-        "2024": 8500.0
       }
     },
     {
@@ -72852,32 +71017,6 @@
       }
     },
     {
-      "name": "ADANE",
-      "norm": "adane",
-      "siret": null,
-      "theme": "Social - Solidarité",
-      "totalAmount": 13400.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 7300.0,
-        "2024": 6100.0
-      }
-    },
-    {
-      "name": "AMINI TABRIZI",
-      "norm": "amini tabrizi",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 13400.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 6100.0,
-        "2024": 7300.0
-      }
-    },
-    {
       "name": "ASS SAINT PLACIDE CHERCHE MIDI",
       "norm": "ass saint placide cherche midi",
       "siret": null,
@@ -72891,46 +71030,8 @@
       }
     },
     {
-      "name": "FAYAD ZAHER",
-      "norm": "fayad zaher",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 13400.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 6100.0,
-        "2024": 7300.0
-      }
-    },
-    {
-      "name": "BLONDIN",
-      "norm": "blondin",
-      "siret": null,
-      "theme": "Économie",
-      "totalAmount": 13368.0,
-      "lastActiveYear": 2020,
-      "nb": 1,
-      "byYear": {
-        "2020": 13368.0
-      }
-    },
-    {
       "name": "KIOSQUE RK CHELLES",
       "norm": "kiosque rk chelles",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 13344.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 4844.0,
-        "2024": 8500.0
-      }
-    },
-    {
-      "name": "UDDIN",
-      "norm": "uddin",
       "siret": null,
       "theme": "Autre",
       "totalAmount": 13344.0,
@@ -72992,19 +71093,6 @@
       "byYear": {
         "2023": 4684.0,
         "2024": 8500.0
-      }
-    },
-    {
-      "name": "SLEIMAN",
-      "norm": "sleiman",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 13044.0,
-      "lastActiveYear": 2024,
-      "nb": 3,
-      "byYear": {
-        "2023": 6100.0,
-        "2024": 6944.0
       }
     },
     {
@@ -73613,22 +71701,6 @@
       }
     },
     {
-      "name": "MOUSSE",
-      "norm": "mousse",
-      "siret": "81482633500022",
-      "theme": "Autre",
-      "totalAmount": 13000.0,
-      "lastActiveYear": 2024,
-      "nb": 5,
-      "byYear": {
-        "2020": 5000.0,
-        "2021": 2000.0,
-        "2022": 2000.0,
-        "2023": 2000.0,
-        "2024": 2000.0
-      }
-    },
-    {
       "name": "MOUVEM CONTRE RACISM POUR AMITIE PE",
       "norm": "mouvem contre racism pour amitie pe",
       "siret": null,
@@ -73826,19 +71898,6 @@
       }
     },
     {
-      "name": "SADALDIN",
-      "norm": "sadaldin",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 12800.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 6100.0,
-        "2024": 6700.0
-      }
-    },
-    {
       "name": "ASSOCIATION POUR UNITE ET DEVELOPPE DU MALI",
       "norm": "association pour unite et developpe du mali",
       "siret": null,
@@ -73860,19 +71919,6 @@
       "nb": 1,
       "byYear": {
         "2021": 12760.0
-      }
-    },
-    {
-      "name": "KAMEL",
-      "norm": "kamel",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 12750.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 4250.0
       }
     },
     {
@@ -74313,18 +72359,6 @@
       }
     },
     {
-      "name": "TAN",
-      "norm": "tan",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 12400.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2024": 12400.0
-      }
-    },
-    {
       "name": "MICHEL REIN",
       "norm": "michel rein",
       "siret": null,
@@ -74418,110 +72452,6 @@
       }
     },
     {
-      "name": "AOURCHID",
-      "norm": "aourchid",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 12225.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 6125.0,
-        "2024": 6100.0
-      }
-    },
-    {
-      "name": "BOURGI",
-      "norm": "bourgi",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 12200.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 6100.0,
-        "2024": 6100.0
-      }
-    },
-    {
-      "name": "EL AZZI KAHWAJI EL AZZI",
-      "norm": "el azzi kahwaji el azzi",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 12200.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 6100.0,
-        "2024": 6100.0
-      }
-    },
-    {
-      "name": "FAHDA",
-      "norm": "fahda",
-      "siret": null,
-      "theme": "Social - Solidarité",
-      "totalAmount": 12200.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 6100.0,
-        "2024": 6100.0
-      }
-    },
-    {
-      "name": "GENET",
-      "norm": "genet",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 12200.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 6100.0,
-        "2024": 6100.0
-      }
-    },
-    {
-      "name": "LANAYA",
-      "norm": "lanaya",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 12200.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 6100.0,
-        "2024": 6100.0
-      }
-    },
-    {
-      "name": "LEBRAZI",
-      "norm": "lebrazi",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 12200.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 6100.0,
-        "2024": 6100.0
-      }
-    },
-    {
-      "name": "MARTINIE",
-      "norm": "martinie",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 12200.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 6100.0,
-        "2024": 6100.0
-      }
-    },
-    {
       "name": "MOZAIK RH",
       "norm": "mozaik rh",
       "siret": "50211944900101",
@@ -74531,32 +72461,6 @@
       "nb": 1,
       "byYear": {
         "2020": 12200.0
-      }
-    },
-    {
-      "name": "SALAMA",
-      "norm": "salama",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 12200.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 6100.0,
-        "2024": 6100.0
-      }
-    },
-    {
-      "name": "YAACOUB",
-      "norm": "yaacoub",
-      "siret": null,
-      "theme": "Social - Solidarité",
-      "totalAmount": 12200.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 6100.0,
-        "2024": 6100.0
       }
     },
     {
@@ -75718,18 +73622,6 @@
       }
     },
     {
-      "name": "MERAD",
-      "norm": "merad",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 12000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 12000.0
-      }
-    },
-    {
       "name": "MISS TRANS FRANCE",
       "norm": "miss trans france",
       "siret": null,
@@ -76383,19 +74275,6 @@
       }
     },
     {
-      "name": "ZEMAR",
-      "norm": "zemar",
-      "siret": null,
-      "theme": "Environnement",
-      "totalAmount": 12000.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 6000.0,
-        "2024": 6000.0
-      }
-    },
-    {
       "name": "ASSOCIATION NAT CONSEIL ENFANTS ET JEUNES",
       "norm": "association nat conseil enfants et jeunes",
       "siret": null,
@@ -76593,45 +74472,6 @@
         "2019": 2750.0,
         "2020": 3438.0,
         "2021": 2750.0
-      }
-    },
-    {
-      "name": "HAJJAR",
-      "norm": "hajjar",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 11650.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 6125.0,
-        "2024": 5525.0
-      }
-    },
-    {
-      "name": "BEKHRAD TAB",
-      "norm": "bekhrad tab",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 11625.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 6100.0,
-        "2024": 5525.0
-      }
-    },
-    {
-      "name": "SINDIAN",
-      "norm": "sindian",
-      "siret": null,
-      "theme": "Santé",
-      "totalAmount": 11625.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 6100.0,
-        "2024": 5525.0
       }
     },
     {
@@ -77163,32 +75003,6 @@
       "nb": 1,
       "byYear": {
         "2021": 11060.0
-      }
-    },
-    {
-      "name": "FIROZI FATTAHI",
-      "norm": "firozi fattahi",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 11050.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 3425.0,
-        "2024": 7625.0
-      }
-    },
-    {
-      "name": "KRISSAANE",
-      "norm": "krissaane",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 11050.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 5525.0,
-        "2024": 5525.0
       }
     },
     {
@@ -77948,19 +75762,6 @@
       }
     },
     {
-      "name": "HUSSEIN",
-      "norm": "hussein",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 10625.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 2125.0
-      }
-    },
-    {
       "name": "DEFENSE INTERET COMME ARTIS 2E",
       "norm": "defense interet comme artis 2e",
       "siret": null,
@@ -78358,19 +76159,6 @@
       "nb": 1,
       "byYear": {
         "2020": 10273.0
-      }
-    },
-    {
-      "name": "KOUABO",
-      "norm": "kouabo",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 10259.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 8500.0,
-        "2024": 1759.0
       }
     },
     {
@@ -79523,18 +77311,6 @@
       "nb": 1,
       "byYear": {
         "2020": 10000.0
-      }
-    },
-    {
-      "name": "LA COMETE",
-      "norm": "comete",
-      "siret": null,
-      "theme": "Non classifié",
-      "totalAmount": 10000.0,
-      "lastActiveYear": 2018,
-      "nb": 1,
-      "byYear": {
-        "2018": 10000.0
       }
     },
     {
@@ -82314,19 +80090,6 @@
       }
     },
     {
-      "name": "BARAKAT",
-      "norm": "barakat",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 9991.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 5525.0,
-        "2024": 4466.0
-      }
-    },
-    {
       "name": "IFK PARIS",
       "norm": "ifk paris",
       "siret": "52101334200022",
@@ -82421,19 +80184,6 @@
       "byYear": {
         "2020": 5200.0,
         "2021": 4700.0
-      }
-    },
-    {
-      "name": "SAADOUN",
-      "norm": "saadoun",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 9900.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 6100.0,
-        "2024": 3800.0
       }
     },
     {
@@ -83067,19 +80817,6 @@
       }
     },
     {
-      "name": "GUENDOUZI",
-      "norm": "guendouzi",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 9451.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 7325.0,
-        "2024": 2126.0
-      }
-    },
-    {
       "name": "SPORT ADAPTE DU SUD EST DE PARIS",
       "norm": "sport adapte du sud est de paris",
       "siret": null,
@@ -83296,19 +81033,6 @@
         "2022": 1200.0,
         "2023": 1000.0,
         "2024": 6950.0
-      }
-    },
-    {
-      "name": "SAFA",
-      "norm": "safa",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 9150.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 6100.0,
-        "2024": 3050.0
       }
     },
     {
@@ -85067,19 +82791,6 @@
       }
     },
     {
-      "name": "BELHOUCHAT",
-      "norm": "belhouchat",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 8826.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 2126.0,
-        "2024": 6700.0
-      }
-    },
-    {
       "name": "ASS SPORTIVE JEUNESSE DOUZIEME",
       "norm": "ass sportive jeunesse douzieme",
       "siret": null,
@@ -85120,19 +82831,6 @@
         "2021": 1400.0,
         "2022": 1500.0,
         "2024": 1000.0
-      }
-    },
-    {
-      "name": "BERRICH",
-      "norm": "berrich",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 8750.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 3800.0,
-        "2024": 4950.0
       }
     },
     {
@@ -85263,18 +82961,6 @@
       }
     },
     {
-      "name": "AL-ACHRAF",
-      "norm": "al achraf",
-      "siret": null,
-      "theme": "Économie",
-      "totalAmount": 8500.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 8500.0
-      }
-    },
-    {
       "name": "AL SARAYJY MALAKANI",
       "norm": "al sarayjy malakani",
       "siret": null,
@@ -85350,18 +83036,6 @@
       }
     },
     {
-      "name": "AUFFRET",
-      "norm": "auffret",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 8500.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 8500.0
-      }
-    },
-    {
       "name": "BAZAR ELECTRIQUE",
       "norm": "bazar electrique",
       "siret": "84991343900014",
@@ -85372,18 +83046,6 @@
       "byYear": {
         "2020": 4000.0,
         "2023": 4500.0
-      }
-    },
-    {
-      "name": "BEN LEBSIR",
-      "norm": "ben lebsir",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 8500.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 8500.0
       }
     },
     {
@@ -85527,19 +83189,6 @@
         "2019": 2000.0,
         "2020": 2500.0,
         "2021": 2000.0
-      }
-    },
-    {
-      "name": "KARMOKER",
-      "norm": "karmoker",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 8500.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 2125.0,
-        "2024": 6375.0
       }
     },
     {
@@ -85752,20 +83401,6 @@
       }
     },
     {
-      "name": "CHICHE",
-      "norm": "chiche",
-      "siret": "88980724400013",
-      "theme": "Autre",
-      "totalAmount": 8300.0,
-      "lastActiveYear": 2023,
-      "nb": 3,
-      "byYear": {
-        "2021": 2000.0,
-        "2022": 5100.0,
-        "2023": 1200.0
-      }
-    },
-    {
       "name": "COMMERCANT VILLAGE ST CHARLES",
       "norm": "commercant village st charles",
       "siret": null,
@@ -85858,19 +83493,6 @@
         "2019": 800.0,
         "2022": 800.0,
         "2023": 5800.0
-      }
-    },
-    {
-      "name": "HABIB",
-      "norm": "habib",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 8192.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 4950.0,
-        "2024": 3242.0
       }
     },
     {
@@ -87451,19 +85073,6 @@
       }
     },
     {
-      "name": "MARELLE",
-      "norm": "marelle",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 8000.0,
-      "lastActiveYear": 2023,
-      "nb": 2,
-      "byYear": {
-        "2022": 6000.0,
-        "2023": 2000.0
-      }
-    },
-    {
       "name": "MELOMANIA",
       "norm": "melomania",
       "siret": null,
@@ -88000,18 +85609,6 @@
       }
     },
     {
-      "name": "EL TANNIR",
-      "norm": "el tannir",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 7900.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 7900.0
-      }
-    },
-    {
       "name": "SOMBRERO AND CO",
       "norm": "sombrero and co",
       "siret": null,
@@ -88301,18 +85898,6 @@
       }
     },
     {
-      "name": "DENIS",
-      "norm": "denis",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 7699.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2024": 7699.0
-      }
-    },
-    {
       "name": "POESIE DU VENTRE",
       "norm": "poesie du ventre",
       "siret": "47925403900023",
@@ -88323,32 +85908,6 @@
       "byYear": {
         "2023": 3070.0,
         "2024": 4550.0
-      }
-    },
-    {
-      "name": "BOUKASRIA",
-      "norm": "boukasria",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 7600.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 3800.0,
-        "2024": 3800.0
-      }
-    },
-    {
-      "name": "CLOUET",
-      "norm": "clouet",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 7600.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 3800.0,
-        "2024": 3800.0
       }
     },
     {
@@ -88364,45 +85923,6 @@
       }
     },
     {
-      "name": "MANGA ABDUL SAMAD",
-      "norm": "manga abdul samad",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 7600.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 3800.0,
-        "2024": 3800.0
-      }
-    },
-    {
-      "name": "MORAULT",
-      "norm": "morault",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 7600.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 3800.0,
-        "2024": 3800.0
-      }
-    },
-    {
-      "name": "RAHME",
-      "norm": "rahme",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 7600.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 3800.0,
-        "2024": 3800.0
-      }
-    },
-    {
       "name": "SOBD",
       "norm": "sobd",
       "siret": "80299263600018",
@@ -88414,19 +85934,6 @@
         "2020": 3600.0,
         "2021": 2000.0,
         "2023": 2000.0
-      }
-    },
-    {
-      "name": "STEFFENUT",
-      "norm": "steffenut",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 7600.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 3800.0,
-        "2024": 3800.0
       }
     },
     {
@@ -89527,19 +87034,6 @@
       }
     },
     {
-      "name": "SAID",
-      "norm": "said",
-      "siret": null,
-      "theme": "Social",
-      "totalAmount": 7142.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 3900.0,
-        "2024": 3242.0
-      }
-    },
-    {
       "name": "SOHAN CAFE",
       "norm": "sohan cafe",
       "siret": null,
@@ -89626,32 +87120,6 @@
       "byYear": {
         "2023": 2000.0,
         "2024": 5050.0
-      }
-    },
-    {
-      "name": "CHEDID",
-      "norm": "chedid",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 7042.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 3242.0,
-        "2024": 3800.0
-      }
-    },
-    {
-      "name": "SAMAD MUHAMMAD",
-      "norm": "samad muhammad",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 7042.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 3800.0,
-        "2024": 3242.0
       }
     },
     {
@@ -91757,18 +89225,6 @@
       }
     },
     {
-      "name": "MOULI",
-      "norm": "mouli",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6767.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 6767.0
-      }
-    },
-    {
       "name": "JD2C",
       "norm": "jd2c",
       "siret": null,
@@ -91972,30 +89428,6 @@
       "nb": 1,
       "byYear": {
         "2021": 6600.0
-      }
-    },
-    {
-      "name": "MAURIN",
-      "norm": "maurin",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6592.0,
-      "lastActiveYear": 2019,
-      "nb": 1,
-      "byYear": {
-        "2019": 6592.0
-      }
-    },
-    {
-      "name": "RABHI",
-      "norm": "rabhi",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6580.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 6580.0
       }
     },
     {
@@ -92434,19 +89866,6 @@
       }
     },
     {
-      "name": "PARC",
-      "norm": "parc",
-      "siret": "47787279000027",
-      "theme": "Environnement",
-      "totalAmount": 6500.0,
-      "lastActiveYear": 2020,
-      "nb": 2,
-      "byYear": {
-        "2018": 3500.0,
-        "2020": 3000.0
-      }
-    },
-    {
       "name": "PLATEAU 31 - COMPAGNIE MACK",
       "norm": "plateau 31 compagnie mack",
       "siret": null,
@@ -92573,18 +89992,6 @@
       }
     },
     {
-      "name": "SENBEL",
-      "norm": "senbel",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6419.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2024": 6419.0
-      }
-    },
-    {
       "name": "ARAC 3EME SECTION",
       "norm": "arac 3eme section",
       "siret": null,
@@ -92695,18 +90102,6 @@
       }
     },
     {
-      "name": "JOSEPH",
-      "norm": "joseph",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6400.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 6400.0
-      }
-    },
-    {
       "name": "KANDA",
       "norm": "kanda",
       "siret": null,
@@ -92780,18 +90175,6 @@
       "nb": 1,
       "byYear": {
         "2023": 6400.0
-      }
-    },
-    {
-      "name": "SOUEIDI",
-      "norm": "soueidi",
-      "siret": null,
-      "theme": "Social - Solidarité",
-      "totalAmount": 6375.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 6375.0
       }
     },
     {
@@ -93072,18 +90455,6 @@
       "nb": 1,
       "byYear": {
         "2019": 6130.0
-      }
-    },
-    {
-      "name": "CHEN",
-      "norm": "chen",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6100.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2024": 6100.0
       }
     },
     {
@@ -93412,18 +90783,6 @@
       }
     },
     {
-      "name": "ADL PARSI",
-      "norm": "adl parsi",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
-      }
-    },
-    {
       "name": "ADVAITA L COMPAGNIE",
       "norm": "advaita l compagnie",
       "siret": null,
@@ -93542,18 +90901,6 @@
       "nb": 1,
       "byYear": {
         "2020": 6000.0
-      }
-    },
-    {
-      "name": "ALLA",
-      "norm": "alla",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
       }
     },
     {
@@ -94466,18 +91813,6 @@
       }
     },
     {
-      "name": "BAH",
-      "norm": "bah",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
-      }
-    },
-    {
       "name": "BAHLEL",
       "norm": "bahlel",
       "siret": null,
@@ -94612,18 +91947,6 @@
     {
       "name": "BELARIBI",
       "norm": "belaribi",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
-      }
-    },
-    {
-      "name": "BELHADJ",
-      "norm": "belhadj",
       "siret": null,
       "theme": "Autre",
       "totalAmount": 6000.0,
@@ -94886,18 +92209,6 @@
       }
     },
     {
-      "name": "BOZAN",
-      "norm": "bozan",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 6000.0
-      }
-    },
-    {
       "name": "BRAIK",
       "norm": "braik",
       "siret": null,
@@ -94944,18 +92255,6 @@
       "nb": 1,
       "byYear": {
         "2023": 6000.0
-      }
-    },
-    {
-      "name": "BUI",
-      "norm": "bui",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
       }
     },
     {
@@ -95288,18 +92587,6 @@
       }
     },
     {
-      "name": "CHICHEPORTICHE",
-      "norm": "chicheportiche",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
-      }
-    },
-    {
       "name": "CHIKH",
       "norm": "chikh",
       "siret": null,
@@ -95407,18 +92694,6 @@
       "nb": 1,
       "byYear": {
         "2022": 6000.0
-      }
-    },
-    {
-      "name": "COGNARD",
-      "norm": "cognard",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
       }
     },
     {
@@ -95648,18 +92923,6 @@
       }
     },
     {
-      "name": "COULIBALY",
-      "norm": "coulibaly",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 6000.0
-      }
-    },
-    {
       "name": "CROCE-COSTA-AFV",
       "norm": "croce costa afv",
       "siret": null,
@@ -95780,30 +93043,6 @@
       }
     },
     {
-      "name": "DE JESUS",
-      "norm": "de jesus",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
-      }
-    },
-    {
-      "name": "DE SOUSA",
-      "norm": "de sousa",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 6000.0
-      }
-    },
-    {
       "name": "DEBARDEUSE",
       "norm": "debardeuse",
       "siret": null,
@@ -95837,18 +93076,6 @@
       "nb": 1,
       "byYear": {
         "2020": 6000.0
-      }
-    },
-    {
-      "name": "DIAS",
-      "norm": "dias",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
       }
     },
     {
@@ -95950,18 +93177,6 @@
       }
     },
     {
-      "name": "DUONG",
-      "norm": "duong",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
-      }
-    },
-    {
       "name": "E-MOTION CAB",
       "norm": "e motion cab",
       "siret": null,
@@ -96024,18 +93239,6 @@
     {
       "name": "EDOUICH",
       "norm": "edouich",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
-      }
-    },
-    {
-      "name": "EL ALI",
-      "norm": "el ali",
       "siret": null,
       "theme": "Autre",
       "totalAmount": 6000.0,
@@ -96119,18 +93322,6 @@
       "nb": 1,
       "byYear": {
         "2020": 6000.0
-      }
-    },
-    {
-      "name": "ETIENNE",
-      "norm": "etienne",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 6000.0
       }
     },
     {
@@ -96260,18 +93451,6 @@
       }
     },
     {
-      "name": "FENELON",
-      "norm": "fenelon",
-      "siret": null,
-      "theme": "Éducation",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
-      }
-    },
-    {
       "name": "FENOUH",
       "norm": "fenouh",
       "siret": null,
@@ -96296,18 +93475,6 @@
       }
     },
     {
-      "name": "FERNANDES",
-      "norm": "fernandes",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 6000.0
-      }
-    },
-    {
       "name": "FEZZOUA",
       "norm": "fezzoua",
       "siret": null,
@@ -96329,18 +93496,6 @@
       "nb": 1,
       "byYear": {
         "2020": 6000.0
-      }
-    },
-    {
-      "name": "FOFANA",
-      "norm": "fofana",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
       }
     },
     {
@@ -96402,30 +93557,6 @@
       "nb": 1,
       "byYear": {
         "2022": 6000.0
-      }
-    },
-    {
-      "name": "FREITAS",
-      "norm": "freitas",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 6000.0
-      }
-    },
-    {
-      "name": "FRIKHA",
-      "norm": "frikha",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 6000.0
       }
     },
     {
@@ -96540,18 +93671,6 @@
       }
     },
     {
-      "name": "GERVY",
-      "norm": "gervy",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 6000.0
-      }
-    },
-    {
       "name": "GHEBRIOU",
       "norm": "ghebriou",
       "siret": null,
@@ -96637,30 +93756,6 @@
       }
     },
     {
-      "name": "GOLA",
-      "norm": "gola",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
-      }
-    },
-    {
-      "name": "GOUIN",
-      "norm": "gouin",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
-      }
-    },
-    {
       "name": "GOUIRAN",
       "norm": "gouiran",
       "siret": null,
@@ -96722,18 +93817,6 @@
       }
     },
     {
-      "name": "GUELLEC",
-      "norm": "guellec",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
-      }
-    },
-    {
       "name": "GUENAB",
       "norm": "guenab",
       "siret": null,
@@ -96755,30 +93838,6 @@
       "nb": 1,
       "byYear": {
         "2024": 6000.0
-      }
-    },
-    {
-      "name": "GUERRA",
-      "norm": "guerra",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
-      }
-    },
-    {
-      "name": "GUICHARD",
-      "norm": "guichard",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 6000.0
       }
     },
     {
@@ -96815,30 +93874,6 @@
       "nb": 1,
       "byYear": {
         "2022": 6000.0
-      }
-    },
-    {
-      "name": "HADDADI",
-      "norm": "haddadi",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
-      }
-    },
-    {
-      "name": "HADDOUCHE",
-      "norm": "haddouche",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
       }
     },
     {
@@ -96962,18 +93997,6 @@
       }
     },
     {
-      "name": "HUSS",
-      "norm": "huss",
-      "siret": null,
-      "theme": "Économie",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2020,
-      "nb": 1,
-      "byYear": {
-        "2020": 6000.0
-      }
-    },
-    {
       "name": "HUSTLE PARIS BASKET",
       "norm": "hustle paris basket",
       "siret": null,
@@ -97024,18 +94047,6 @@
     {
       "name": "JAKUPOV",
       "norm": "jakupov",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
-      }
-    },
-    {
-      "name": "JALLOH",
-      "norm": "jalloh",
       "siret": null,
       "theme": "Autre",
       "totalAmount": 6000.0,
@@ -97420,18 +94431,6 @@
       }
     },
     {
-      "name": "LABAT",
-      "norm": "labat",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
-      }
-    },
-    {
       "name": "LAMARE BTP",
       "norm": "lamare btp",
       "siret": null,
@@ -97490,18 +94489,6 @@
       "nb": 1,
       "byYear": {
         "2018": 6000.0
-      }
-    },
-    {
-      "name": "LEBLANC",
-      "norm": "leblanc",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
       }
     },
     {
@@ -97578,18 +94565,6 @@
       }
     },
     {
-      "name": "LHERNAULT",
-      "norm": "lhernault",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
-      }
-    },
-    {
       "name": "LIBRAIRIE COUPE PAPIER-COUP DE THEA",
       "norm": "librairie coupe papier coup de thea",
       "siret": null,
@@ -97648,18 +94623,6 @@
       "nb": 1,
       "byYear": {
         "2019": 6000.0
-      }
-    },
-    {
-      "name": "LUMBROSO",
-      "norm": "lumbroso",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
       }
     },
     {
@@ -97844,18 +94807,6 @@
       }
     },
     {
-      "name": "MAZOUZ",
-      "norm": "mazouz",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 6000.0
-      }
-    },
-    {
       "name": "MCA.FR SAS",
       "norm": "mca fr sas",
       "siret": null,
@@ -97917,18 +94868,6 @@
       }
     },
     {
-      "name": "MEGHNI",
-      "norm": "meghni",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
-      }
-    },
-    {
       "name": "MEMOIRE ET ESPOIRS DE LA RESISTANCE",
       "norm": "memoire et espoirs de la resistance",
       "siret": "40271012300025",
@@ -97952,30 +94891,6 @@
       "nb": 1,
       "byYear": {
         "2019": 6000.0
-      }
-    },
-    {
-      "name": "MERABET",
-      "norm": "merabet",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
-      }
-    },
-    {
-      "name": "MICHAUD",
-      "norm": "michaud",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
       }
     },
     {
@@ -98084,18 +94999,6 @@
       "nb": 1,
       "byYear": {
         "2024": 6000.0
-      }
-    },
-    {
-      "name": "MOREAU",
-      "norm": "moreau",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2022,
-      "nb": 1,
-      "byYear": {
-        "2022": 6000.0
       }
     },
     {
@@ -98290,18 +95193,6 @@
       "nb": 1,
       "byYear": {
         "2021": 6000.0
-      }
-    },
-    {
-      "name": "NGUY",
-      "norm": "nguy",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 6000.0
       }
     },
     {
@@ -98597,18 +95488,6 @@
       }
     },
     {
-      "name": "PHUNG",
-      "norm": "phung",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 6000.0
-      }
-    },
-    {
       "name": "PIC & CHIC",
       "norm": "pic chic",
       "siret": null,
@@ -98776,18 +95655,6 @@
       "nb": 1,
       "byYear": {
         "2024": 6000.0
-      }
-    },
-    {
-      "name": "RAHMANI",
-      "norm": "rahmani",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 6000.0
       }
     },
     {
@@ -99007,18 +95874,6 @@
       }
     },
     {
-      "name": "SACI",
-      "norm": "saci",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 6000.0
-      }
-    },
-    {
       "name": "SAFE TRANSPORT & LOGISTIQUE",
       "norm": "safe transport logistique",
       "siret": null,
@@ -99040,18 +95895,6 @@
       "nb": 1,
       "byYear": {
         "2022": 6000.0
-      }
-    },
-    {
-      "name": "SAIGNAVONGS",
-      "norm": "saignavongs",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
       }
     },
     {
@@ -99139,18 +95982,6 @@
       }
     },
     {
-      "name": "SARRET",
-      "norm": "sarret",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 6000.0
-      }
-    },
-    {
       "name": "SAS ADOMMAL PARIS 19",
       "norm": "sas adommal paris 19",
       "siret": null,
@@ -99184,18 +96015,6 @@
       "nb": 1,
       "byYear": {
         "2020": 6000.0
-      }
-    },
-    {
-      "name": "SASTIM",
-      "norm": "sastim",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
       }
     },
     {
@@ -99526,18 +96345,6 @@
       }
     },
     {
-      "name": "TAING",
-      "norm": "taing",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
-      }
-    },
-    {
       "name": "TALEB",
       "norm": "taleb",
       "siret": null,
@@ -99839,30 +96646,6 @@
       }
     },
     {
-      "name": "TOURE",
-      "norm": "toure",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
-      }
-    },
-    {
-      "name": "TRAN",
-      "norm": "tran",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
-      }
-    },
-    {
       "name": "LA TRANSPLANISPHERE",
       "norm": "transplanisphere",
       "siret": "43906720800033",
@@ -99957,18 +96740,6 @@
       "byYear": {
         "2019": 3000.0,
         "2020": 3000.0
-      }
-    },
-    {
-      "name": "UNG",
-      "norm": "ung",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 6000.0
       }
     },
     {
@@ -100392,18 +97163,6 @@
       }
     },
     {
-      "name": "ZEKRITI",
-      "norm": "zekriti",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 6000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 6000.0
-      }
-    },
-    {
       "name": "ZEMOUCHE",
       "norm": "zemouche",
       "siret": null,
@@ -100516,32 +97275,6 @@
       "nb": 1,
       "byYear": {
         "2018": 5930.0
-      }
-    },
-    {
-      "name": "IDLI",
-      "norm": "idli",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 5926.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 2126.0,
-        "2024": 3800.0
-      }
-    },
-    {
-      "name": "MOUSTAFA",
-      "norm": "moustafa",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 5926.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 3800.0,
-        "2024": 2126.0
       }
     },
     {
@@ -101424,21 +98157,6 @@
       }
     },
     {
-      "name": "LISA",
-      "norm": "lisa",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 5408.0,
-      "lastActiveYear": 2024,
-      "nb": 4,
-      "byYear": {
-        "2021": 1445.0,
-        "2022": 1321.0,
-        "2023": 1321.0,
-        "2024": 1321.0
-      }
-    },
-    {
       "name": "ASS ANTIQUAIRE GALERIE ART CARRE RG",
       "norm": "ass antiquaire galerie art carre rg",
       "siret": null,
@@ -101529,19 +98247,6 @@
       "nb": 1,
       "byYear": {
         "2022": 5380.0
-      }
-    },
-    {
-      "name": "YOOSEFI EMAM",
-      "norm": "yoosefi emam",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 5368.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 2126.0,
-        "2024": 3242.0
       }
     },
     {
@@ -103054,18 +99759,6 @@
       "nb": 1,
       "byYear": {
         "2022": 5000.0
-      }
-    },
-    {
-      "name": "CABANES",
-      "norm": "cabanes",
-      "siret": "83521736500013",
-      "theme": "Culture",
-      "totalAmount": 5000.0,
-      "lastActiveYear": 2020,
-      "nb": 1,
-      "byYear": {
-        "2020": 5000.0
       }
     },
     {
@@ -105241,18 +101934,6 @@
       "nb": 1,
       "byYear": {
         "2023": 5000.0
-      }
-    },
-    {
-      "name": "LAMY",
-      "norm": "lamy",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 5000.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 5000.0
       }
     },
     {
@@ -110498,19 +107179,6 @@
       }
     },
     {
-      "name": "NOUINOU",
-      "norm": "nouinou",
-      "siret": null,
-      "theme": "Social - Petite enfance",
-      "totalAmount": 4905.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 4575.0,
-        "2024": 330.0
-      }
-    },
-    {
       "name": "ASSOCIATION COMMERCANTS",
       "norm": "association commercants",
       "siret": null,
@@ -110676,19 +107344,6 @@
       "nb": 1,
       "byYear": {
         "2019": 4815.0
-      }
-    },
-    {
-      "name": "NEHME",
-      "norm": "nehme",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 4811.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 1569.0,
-        "2024": 3242.0
       }
     },
     {
@@ -111298,18 +107953,6 @@
       "byYear": {
         "2020": 4080.0,
         "2021": 500.0
-      }
-    },
-    {
-      "name": "FAYAD",
-      "norm": "fayad",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 4573.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 4573.0
       }
     },
     {
@@ -112628,18 +109271,6 @@
       "byYear": {
         "2021": 2125.0,
         "2022": 2125.0
-      }
-    },
-    {
-      "name": "SOUEID",
-      "norm": "soueid",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 4250.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 4250.0
       }
     },
     {
@@ -115721,18 +112352,6 @@
       }
     },
     {
-      "name": "ROSA",
-      "norm": "rosa",
-      "siret": "82108702000029",
-      "theme": "Culture",
-      "totalAmount": 4000.0,
-      "lastActiveYear": 2021,
-      "nb": 1,
-      "byYear": {
-        "2021": 4000.0
-      }
-    },
-    {
       "name": "RS TRANSPORT",
       "norm": "rs transport",
       "siret": null,
@@ -116707,18 +113326,6 @@
       }
     },
     {
-      "name": "LA PRAIRIE",
-      "norm": "prairie",
-      "siret": null,
-      "theme": "Non classifié",
-      "totalAmount": 3750.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 3750.0
-      }
-    },
-    {
       "name": "RESISTANCE FILMS",
       "norm": "resistance films",
       "siret": null,
@@ -117162,19 +113769,6 @@
       }
     },
     {
-      "name": "PORRON",
-      "norm": "porron",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 3571.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 1445.0,
-        "2024": 2126.0
-      }
-    },
-    {
       "name": "JESS",
       "norm": "jess",
       "siret": null,
@@ -117209,18 +113803,6 @@
       "nb": 1,
       "byYear": {
         "2024": 3544.0
-      }
-    },
-    {
-      "name": "MILON MAHIEUX",
-      "norm": "milon mahieux",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 3541.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 3541.0
       }
     },
     {
@@ -117954,18 +114536,6 @@
       }
     },
     {
-      "name": "DRIF",
-      "norm": "drif",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 3425.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 3425.0
-      }
-    },
-    {
       "name": "ICI TERRE",
       "norm": "ici terre",
       "siret": null,
@@ -118216,19 +114786,6 @@
       "nb": 1,
       "byYear": {
         "2020": 3329.0
-      }
-    },
-    {
-      "name": "DRIDI",
-      "norm": "dridi",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 3303.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 1569.0,
-        "2024": 1734.0
       }
     },
     {
@@ -118765,19 +115322,6 @@
       "nb": 1,
       "byYear": {
         "2019": 3150.0
-      }
-    },
-    {
-      "name": "AYATOLLAHI",
-      "norm": "ayatollahi",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 3138.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 1569.0,
-        "2024": 1569.0
       }
     },
     {
@@ -122449,31 +118993,6 @@
       }
     },
     {
-      "name": "MIREAU",
-      "norm": "mireau",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 2986.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 1569.0,
-        "2024": 1417.0
-      }
-    },
-    {
-      "name": "MARTIN",
-      "norm": "martin",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 2976.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2024": 2976.0
-      }
-    },
-    {
       "name": "ASSOCIATION SPORTIVE DU LYCEE FENEL",
       "norm": "association sportive du lycee fenel",
       "siret": null,
@@ -122603,18 +119122,6 @@
       "nb": 1,
       "byYear": {
         "2019": 2925.0
-      }
-    },
-    {
-      "name": "LE GALLIC",
-      "norm": "gallic",
-      "siret": null,
-      "theme": "Économie",
-      "totalAmount": 2908.0,
-      "lastActiveYear": 2022,
-      "nb": 1,
-      "byYear": {
-        "2022": 2908.0
       }
     },
     {
@@ -122799,19 +119306,6 @@
       "nb": 1,
       "byYear": {
         "2020": 2830.0
-      }
-    },
-    {
-      "name": "ASHRAF",
-      "norm": "ashraf",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 2828.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 1321.0,
-        "2024": 1507.0
       }
     },
     {
@@ -123111,20 +119605,6 @@
       "nb": 1,
       "byYear": {
         "2021": 2760.0
-      }
-    },
-    {
-      "name": "DELISLE",
-      "norm": "delisle",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 2755.0,
-      "lastActiveYear": 2024,
-      "nb": 3,
-      "byYear": {
-        "2020": 1155.0,
-        "2022": 400.0,
-        "2024": 1200.0
       }
     },
     {
@@ -123651,18 +120131,6 @@
       "nb": 1,
       "byYear": {
         "2019": 2598.0
-      }
-    },
-    {
-      "name": "ROY",
-      "norm": "roy",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 2597.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 2597.0
       }
     },
     {
@@ -124557,18 +121025,6 @@
       "nb": 1,
       "byYear": {
         "2019": 2500.0
-      }
-    },
-    {
-      "name": "PAGES",
-      "norm": "pages",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 2500.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 2500.0
       }
     },
     {
@@ -125607,18 +122063,6 @@
       }
     },
     {
-      "name": "RAYON",
-      "norm": "rayon",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 2400.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 2400.0
-      }
-    },
-    {
       "name": "SA DE CHIRURGIENS DENTISTES",
       "norm": "sa de chirurgiens dentistes",
       "siret": null,
@@ -125693,19 +122137,6 @@
       }
     },
     {
-      "name": "DEVOS",
-      "norm": "devos",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 2392.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 1192.0,
-        "2024": 1200.0
-      }
-    },
-    {
       "name": "SYN COP 7 9 RUE NICOLAS RORET 75013",
       "norm": "syn cop 7 9 rue nicolas roret 75013",
       "siret": null,
@@ -125727,18 +122158,6 @@
       "nb": 1,
       "byYear": {
         "2024": 2389.0
-      }
-    },
-    {
-      "name": "ROYER",
-      "norm": "royer",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 2382.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 2382.0
       }
     },
     {
@@ -125896,19 +122315,6 @@
       "nb": 1,
       "byYear": {
         "2020": 2333.0
-      }
-    },
-    {
-      "name": "DELARUE",
-      "norm": "delarue",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 2311.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 1321.0,
-        "2024": 990.0
       }
     },
     {
@@ -126292,18 +122698,6 @@
       "nb": 1,
       "byYear": {
         "2018": 2245.0
-      }
-    },
-    {
-      "name": "MATHIEU",
-      "norm": "mathieu",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 2227.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 2227.0
       }
     },
     {
@@ -126707,42 +123101,6 @@
       }
     },
     {
-      "name": "ALHALAK",
-      "norm": "alhalak",
-      "siret": null,
-      "theme": "Social - Solidarité",
-      "totalAmount": 2125.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 2125.0
-      }
-    },
-    {
-      "name": "BRUN",
-      "norm": "brun",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 2125.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 2125.0
-      }
-    },
-    {
-      "name": "DALHOUMI",
-      "norm": "dalhoumi",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 2125.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 2125.0
-      }
-    },
-    {
       "name": "LE MUR ESCALADE",
       "norm": "le mur escalade",
       "siret": null,
@@ -126755,18 +123113,6 @@
       }
     },
     {
-      "name": "MAAMAR",
-      "norm": "maamar",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 2125.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 2125.0
-      }
-    },
-    {
       "name": "MATIKE",
       "norm": "matike",
       "siret": null,
@@ -126776,18 +123122,6 @@
       "nb": 1,
       "byYear": {
         "2024": 2125.0
-      }
-    },
-    {
-      "name": "MIOZETTE",
-      "norm": "miozette",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 2125.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 2125.0
       }
     },
     {
@@ -129010,18 +125344,6 @@
       }
     },
     {
-      "name": "DUBREUIL",
-      "norm": "dubreuil",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 2000.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 2000.0
-      }
-    },
-    {
       "name": "DUMAS REUNION",
       "norm": "dumas reunion",
       "siret": "48463084300023",
@@ -130522,18 +126844,6 @@
       }
     },
     {
-      "name": "POALAS",
-      "norm": "poalas",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 2000.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 2000.0
-      }
-    },
-    {
       "name": "POUDRE DE SOURIRE",
       "norm": "poudre de sourire",
       "siret": "38782900500025",
@@ -131567,32 +127877,6 @@
       }
     },
     {
-      "name": "PEAN",
-      "norm": "pean",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1968.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 1445.0,
-        "2024": 523.0
-      }
-    },
-    {
-      "name": "DOUCERAIN",
-      "norm": "doucerain",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1961.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 1569.0,
-        "2024": 392.0
-      }
-    },
-    {
       "name": "ASSOC SPORTIF COLLEGE CLAUDE DEBUSS",
       "norm": "assoc sportif college claude debuss",
       "siret": null,
@@ -131803,18 +128087,6 @@
       "nb": 1,
       "byYear": {
         "2022": 1875.0
-      }
-    },
-    {
-      "name": "VENTURA",
-      "norm": "ventura",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1870.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 1870.0
       }
     },
     {
@@ -132307,19 +128579,6 @@
       "nb": 1,
       "byYear": {
         "2023": 1800.0
-      }
-    },
-    {
-      "name": "WANG",
-      "norm": "wang",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1800.0,
-      "lastActiveYear": 2024,
-      "nb": 3,
-      "byYear": {
-        "2023": 1300.0,
-        "2024": 500.0
       }
     },
     {
@@ -133432,18 +129691,6 @@
       }
     },
     {
-      "name": "MUSSET",
-      "norm": "musset",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1600.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 1600.0
-      }
-    },
-    {
       "name": "NOVUM NOVEM",
       "norm": "novum novem",
       "siret": "88462115200013",
@@ -133515,19 +129762,6 @@
       "nb": 1,
       "byYear": {
         "2022": 1600.0
-      }
-    },
-    {
-      "name": "RICARD",
-      "norm": "ricard",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1600.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 400.0,
-        "2024": 1200.0
       }
     },
     {
@@ -133678,19 +129912,6 @@
       "nb": 2,
       "byYear": {
         "2022": 400.0,
-        "2023": 1200.0
-      }
-    },
-    {
-      "name": "VIGNERON",
-      "norm": "vigneron",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1600.0,
-      "lastActiveYear": 2023,
-      "nb": 2,
-      "byYear": {
-        "2019": 400.0,
         "2023": 1200.0
       }
     },
@@ -133909,18 +130130,6 @@
       }
     },
     {
-      "name": "ROBERT",
-      "norm": "robert",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1557.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2024": 1557.0
-      }
-    },
-    {
       "name": "SYND COPR 21",
       "norm": "synd copr 21",
       "siret": null,
@@ -134018,30 +130227,6 @@
       "byYear": {
         "2020": 327.0,
         "2023": 1200.0
-      }
-    },
-    {
-      "name": "CHATENET",
-      "norm": "chatenet",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1525.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 1525.0
-      }
-    },
-    {
-      "name": "CHEVALIER",
-      "norm": "chevalier",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1518.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2024": 1518.0
       }
     },
     {
@@ -136312,18 +132497,6 @@
       }
     },
     {
-      "name": "COURTOIS",
-      "norm": "courtois",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1292.0,
-      "lastActiveYear": 2019,
-      "nb": 1,
-      "byYear": {
-        "2019": 1292.0
-      }
-    },
-    {
       "name": "ACME",
       "norm": "acme",
       "siret": null,
@@ -136373,18 +132546,6 @@
       }
     },
     {
-      "name": "MAHE",
-      "norm": "mahe",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1268.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2024": 1268.0
-      }
-    },
-    {
       "name": "GOLDENMARKET",
       "norm": "goldenmarket",
       "siret": null,
@@ -136407,18 +132568,6 @@
       "byYear": {
         "2018": 466.0,
         "2022": 800.0
-      }
-    },
-    {
-      "name": "RICA",
-      "norm": "rica",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1265.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 1265.0
       }
     },
     {
@@ -136555,19 +132704,6 @@
       }
     },
     {
-      "name": "HEINTZ",
-      "norm": "heintz",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1234.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 822.0,
-        "2024": 412.0
-      }
-    },
-    {
       "name": "JBC IMMOBILIER",
       "norm": "jbc immobilier",
       "siret": null,
@@ -136700,18 +132836,6 @@
       }
     },
     {
-      "name": "ABBOUD",
-      "norm": "abboud",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 1200.0
-      }
-    },
-    {
       "name": "ABPLUS SANTE",
       "norm": "abplus sante",
       "siret": null,
@@ -136752,18 +132876,6 @@
       "norm": "adaztech",
       "siret": null,
       "theme": "Économie",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 1200.0
-      }
-    },
-    {
-      "name": "ADEL",
-      "norm": "adel",
-      "siret": null,
-      "theme": "Autre",
       "totalAmount": 1200.0,
       "lastActiveYear": 2023,
       "nb": 1,
@@ -137274,18 +133386,6 @@
       "nb": 1,
       "byYear": {
         "2019": 1200.0
-      }
-    },
-    {
-      "name": "ASMAR",
-      "norm": "asmar",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 1200.0
       }
     },
     {
@@ -138095,30 +134195,6 @@
       }
     },
     {
-      "name": "BOURGOIS",
-      "norm": "bourgois",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 1200.0
-      }
-    },
-    {
-      "name": "BRAMI",
-      "norm": "brami",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 1200.0
-      }
-    },
-    {
       "name": "BREF",
       "norm": "bref",
       "siret": null,
@@ -138432,18 +134508,6 @@
       }
     },
     {
-      "name": "CHASSANY",
-      "norm": "chassany",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 1200.0
-      }
-    },
-    {
       "name": "LE CHAT BOTTE & CO.",
       "norm": "chat botte co",
       "siret": null,
@@ -138573,18 +134637,6 @@
       "nb": 1,
       "byYear": {
         "2020": 1200.0
-      }
-    },
-    {
-      "name": "CIAIS",
-      "norm": "ciais",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 1200.0
       }
     },
     {
@@ -138863,18 +134915,6 @@
       "nb": 1,
       "byYear": {
         "2020": 1200.0
-      }
-    },
-    {
-      "name": "DAGUERRE",
-      "norm": "daguerre",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2022,
-      "nb": 1,
-      "byYear": {
-        "2022": 1200.0
       }
     },
     {
@@ -139646,18 +135686,6 @@
       }
     },
     {
-      "name": "FOURCADE",
-      "norm": "fourcade",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 1200.0
-      }
-    },
-    {
       "name": "FP3 CONSEIL",
       "norm": "fp3 conseil",
       "siret": null,
@@ -139787,18 +135815,6 @@
       "nb": 1,
       "byYear": {
         "2022": 1200.0
-      }
-    },
-    {
-      "name": "GAUTHIER",
-      "norm": "gauthier",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 1200.0
       }
     },
     {
@@ -140572,18 +136588,6 @@
       }
     },
     {
-      "name": "JONCKEAU",
-      "norm": "jonckeau",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 1200.0
-      }
-    },
-    {
       "name": "JOOSNABHAN",
       "norm": "joosnabhan",
       "siret": null,
@@ -140644,18 +136648,6 @@
       }
     },
     {
-      "name": "KAGAN",
-      "norm": "kagan",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 1200.0
-      }
-    },
-    {
       "name": "KAKKO",
       "norm": "kakko",
       "siret": null,
@@ -140677,18 +136669,6 @@
       "nb": 1,
       "byYear": {
         "2022": 1200.0
-      }
-    },
-    {
-      "name": "KAUTZ",
-      "norm": "kautz",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 1200.0
       }
     },
     {
@@ -140980,18 +136960,6 @@
       }
     },
     {
-      "name": "LEMAUX",
-      "norm": "lemaux",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 1200.0
-      }
-    },
-    {
       "name": "LEMCAR",
       "norm": "lemcar",
       "siret": null,
@@ -141229,18 +137197,6 @@
       "nb": 1,
       "byYear": {
         "2022": 1200.0
-      }
-    },
-    {
-      "name": "MAGNE",
-      "norm": "magne",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 1200.0
       }
     },
     {
@@ -141929,18 +137885,6 @@
       }
     },
     {
-      "name": "MOULAY",
-      "norm": "moulay",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 1200.0
-      }
-    },
-    {
       "name": "MOX VENTURES",
       "norm": "mox ventures",
       "siret": null,
@@ -141975,18 +137919,6 @@
       "byYear": {
         "2022": 400.0,
         "2023": 800.0
-      }
-    },
-    {
-      "name": "MUDA",
-      "norm": "muda",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 1200.0
       }
     },
     {
@@ -142047,18 +137979,6 @@
       "nb": 1,
       "byYear": {
         "2022": 1200.0
-      }
-    },
-    {
-      "name": "NAUDAN",
-      "norm": "naudan",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 1200.0
       }
     },
     {
@@ -142338,18 +138258,6 @@
       }
     },
     {
-      "name": "PALAIS",
-      "norm": "palais",
-      "siret": null,
-      "theme": "Culture",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 1200.0
-      }
-    },
-    {
       "name": "PANTEO",
       "norm": "panteo",
       "siret": null,
@@ -142555,34 +138463,10 @@
       }
     },
     {
-      "name": "PERRIN",
-      "norm": "perrin",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 1200.0
-      }
-    },
-    {
       "name": "PERSEIDES CAPITAL",
       "norm": "perseides capital",
       "siret": null,
       "theme": "Économie",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 1200.0
-      }
-    },
-    {
-      "name": "PETIT",
-      "norm": "petit",
-      "siret": null,
-      "theme": "Autre",
       "totalAmount": 1200.0,
       "lastActiveYear": 2023,
       "nb": 1,
@@ -142708,18 +138592,6 @@
       "nb": 1,
       "byYear": {
         "2022": 1200.0
-      }
-    },
-    {
-      "name": "PORTAL",
-      "norm": "portal",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 1200.0
       }
     },
     {
@@ -142950,18 +138822,6 @@
       "nb": 1,
       "byYear": {
         "2022": 1200.0
-      }
-    },
-    {
-      "name": "RIPERT",
-      "norm": "ripert",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 1200.0
       }
     },
     {
@@ -143651,18 +139511,6 @@
       }
     },
     {
-      "name": "STARCK",
-      "norm": "starck",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 1200.0
-      }
-    },
-    {
       "name": "STE EXER LIBE ACTIO SIMPL P CUSSAC",
       "norm": "ste exer libe actio simpl p cussac",
       "siret": null,
@@ -143711,18 +139559,6 @@
       }
     },
     {
-      "name": "STOECKEL",
-      "norm": "stoeckel",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 1200.0
-      }
-    },
-    {
       "name": "STORY TAILORS",
       "norm": "story tailors",
       "siret": null,
@@ -143732,18 +139568,6 @@
       "nb": 1,
       "byYear": {
         "2022": 1200.0
-      }
-    },
-    {
-      "name": "STREIFF",
-      "norm": "streiff",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 1200.0
       }
     },
     {
@@ -144129,18 +139953,6 @@
       "nb": 1,
       "byYear": {
         "2019": 1200.0
-      }
-    },
-    {
-      "name": "THOMAS",
-      "norm": "thomas",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 1200.0
       }
     },
     {
@@ -144543,18 +140355,6 @@
       }
     },
     {
-      "name": "XAVIER",
-      "norm": "xavier",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1200.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 1200.0
-      }
-    },
-    {
       "name": "XL-PATES",
       "norm": "xl pates",
       "siret": null,
@@ -144639,18 +140439,6 @@
       }
     },
     {
-      "name": "CHAMBAUD",
-      "norm": "chambaud",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1196.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2024": 1196.0
-      }
-    },
-    {
       "name": "RISTERUCCI",
       "norm": "risterucci",
       "siret": null,
@@ -144684,18 +140472,6 @@
       "nb": 1,
       "byYear": {
         "2020": 1191.0
-      }
-    },
-    {
-      "name": "CARIOU",
-      "norm": "cariou",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1190.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 1190.0
       }
     },
     {
@@ -145134,18 +140910,6 @@
       "nb": 1,
       "byYear": {
         "2024": 1155.0
-      }
-    },
-    {
-      "name": "DUBOIS",
-      "norm": "dubois",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1155.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 1155.0
       }
     },
     {
@@ -145674,18 +141438,6 @@
       }
     },
     {
-      "name": "ROLLOT",
-      "norm": "rollot",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1114.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 1114.0
-      }
-    },
-    {
       "name": "ZAIMI MABIRE",
       "norm": "zaimi mabire",
       "siret": null,
@@ -145793,18 +141545,6 @@
       "byYear": {
         "2020": 300.0,
         "2022": 800.0
-      }
-    },
-    {
-      "name": "LATARCHE",
-      "norm": "latarche",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1100.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 1100.0
       }
     },
     {
@@ -146168,18 +141908,6 @@
       }
     },
     {
-      "name": "LAGARRIGUE",
-      "norm": "lagarrigue",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1075.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 1075.0
-      }
-    },
-    {
       "name": "REAL CONSEIL",
       "norm": "real conseil",
       "siret": null,
@@ -146445,18 +142173,6 @@
       }
     },
     {
-      "name": "DURAND",
-      "norm": "durand",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1046.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 1046.0
-      }
-    },
-    {
       "name": "KS MANAGEMENT",
       "norm": "ks management",
       "siret": null,
@@ -146698,18 +142414,6 @@
       "nb": 1,
       "byYear": {
         "2024": 1027.0
-      }
-    },
-    {
-      "name": "FONTAINE",
-      "norm": "fontaine",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1026.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2024": 1026.0
       }
     },
     {
@@ -148980,18 +144684,6 @@
       }
     },
     {
-      "name": "MARCEL",
-      "norm": "marcel",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 1000.0,
-      "lastActiveYear": 2021,
-      "nb": 1,
-      "byYear": {
-        "2021": 1000.0
-      }
-    },
-    {
       "name": "MELIADES",
       "norm": "meliades",
       "siret": null,
@@ -149966,18 +145658,6 @@
       }
     },
     {
-      "name": "TORDJMAN",
-      "norm": "tordjman",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 990.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 990.0
-      }
-    },
-    {
       "name": "UN VIN D'AVANCE",
       "norm": "un vin d avance",
       "siret": null,
@@ -150207,30 +145887,6 @@
       }
     },
     {
-      "name": "FOUCHER",
-      "norm": "foucher",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 962.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 962.0
-      }
-    },
-    {
-      "name": "GODIN",
-      "norm": "godin",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 962.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 962.0
-      }
-    },
-    {
       "name": "HEAD",
       "norm": "head",
       "siret": null,
@@ -150267,18 +145923,6 @@
       }
     },
     {
-      "name": "LAUFER",
-      "norm": "laufer",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 962.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 962.0
-      }
-    },
-    {
       "name": "LENTZNER",
       "norm": "lentzner",
       "siret": null,
@@ -150293,18 +145937,6 @@
     {
       "name": "LEVEIL",
       "norm": "leveil",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 962.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 962.0
-      }
-    },
-    {
-      "name": "LEVESQUE",
-      "norm": "levesque",
       "siret": null,
       "theme": "Autre",
       "totalAmount": 962.0,
@@ -150459,18 +146091,6 @@
       }
     },
     {
-      "name": "VERDEAU",
-      "norm": "verdeau",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 962.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 962.0
-      }
-    },
-    {
       "name": "VITTORI",
       "norm": "vittori",
       "siret": null,
@@ -150516,18 +146136,6 @@
       "nb": 1,
       "byYear": {
         "2024": 957.0
-      }
-    },
-    {
-      "name": "GUYON",
-      "norm": "guyon",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 951.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 951.0
       }
     },
     {
@@ -150578,18 +146186,6 @@
       "nb": 1,
       "byYear": {
         "2022": 943.0
-      }
-    },
-    {
-      "name": "LUCET",
-      "norm": "lucet",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 943.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 943.0
       }
     },
     {
@@ -150662,18 +146258,6 @@
       "nb": 1,
       "byYear": {
         "2024": 937.0
-      }
-    },
-    {
-      "name": "BAZIN",
-      "norm": "bazin",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 935.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2024": 935.0
       }
     },
     {
@@ -150773,18 +146357,6 @@
       }
     },
     {
-      "name": "FAURE",
-      "norm": "faure",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 927.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2024": 927.0
-      }
-    },
-    {
       "name": "VELVETICA MUSIC",
       "norm": "velvetica music",
       "siret": null,
@@ -150809,18 +146381,6 @@
       }
     },
     {
-      "name": "BESCOND",
-      "norm": "bescond",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 922.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 922.0
-      }
-    },
-    {
       "name": "POLEETIC SAS",
       "norm": "poleetic sas",
       "siret": null,
@@ -150842,18 +146402,6 @@
       "nb": 1,
       "byYear": {
         "2024": 917.0
-      }
-    },
-    {
-      "name": "VU LIEM",
-      "norm": "vu liem",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 908.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 908.0
       }
     },
     {
@@ -151279,18 +146827,6 @@
       }
     },
     {
-      "name": "BELGHITI",
-      "norm": "belghiti",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 879.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 879.0
-      }
-    },
-    {
       "name": "CEGEBAT",
       "norm": "cegebat",
       "siret": null,
@@ -151408,18 +146944,6 @@
       "nb": 1,
       "byYear": {
         "2022": 879.0
-      }
-    },
-    {
-      "name": "THIERRY",
-      "norm": "thierry",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 879.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 879.0
       }
     },
     {
@@ -151552,18 +147076,6 @@
       "nb": 1,
       "byYear": {
         "2024": 867.0
-      }
-    },
-    {
-      "name": "CHARDON",
-      "norm": "chardon",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 866.0,
-      "lastActiveYear": 2021,
-      "nb": 1,
-      "byYear": {
-        "2021": 866.0
       }
     },
     {
@@ -151857,18 +147369,6 @@
       }
     },
     {
-      "name": "MARQUES",
-      "norm": "marques",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 833.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 833.0
-      }
-    },
-    {
       "name": "SAKAJ",
       "norm": "sakaj",
       "siret": null,
@@ -151932,18 +147432,6 @@
     {
       "name": "BAZIR",
       "norm": "bazir",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 825.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 825.0
-      }
-    },
-    {
-      "name": "BESSARD",
-      "norm": "bessard",
       "siret": null,
       "theme": "Autre",
       "totalAmount": 825.0,
@@ -152170,18 +147658,6 @@
       }
     },
     {
-      "name": "MONFORT",
-      "norm": "monfort",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 825.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 825.0
-      }
-    },
-    {
       "name": "MONIQUE ET MYRTILLE",
       "norm": "monique et myrtille",
       "siret": null,
@@ -152208,18 +147684,6 @@
     {
       "name": "R D ARCHITECTES ASSOCIES",
       "norm": "r d architectes associes",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 825.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 825.0
-      }
-    },
-    {
-      "name": "ROUIT",
-      "norm": "rouit",
       "siret": null,
       "theme": "Autre",
       "totalAmount": 825.0,
@@ -152551,19 +148015,6 @@
       "nb": 1,
       "byYear": {
         "2021": 800.0
-      }
-    },
-    {
-      "name": "ADAM",
-      "norm": "adam",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 800.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2022": 400.0,
-        "2024": 400.0
       }
     },
     {
@@ -152982,18 +148433,6 @@
       }
     },
     {
-      "name": "AUBERTIN",
-      "norm": "aubertin",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 800.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 800.0
-      }
-    },
-    {
       "name": "AURA MANAGEMENT",
       "norm": "aura management",
       "siret": null,
@@ -153079,19 +148518,6 @@
       "nb": 1,
       "byYear": {
         "2022": 800.0
-      }
-    },
-    {
-      "name": "BOST",
-      "norm": "bost",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 800.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2023": 400.0,
-        "2024": 400.0
       }
     },
     {
@@ -153962,18 +149388,6 @@
       "nb": 1,
       "byYear": {
         "2020": 800.0
-      }
-    },
-    {
-      "name": "LEROUX",
-      "norm": "leroux",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 800.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 800.0
       }
     },
     {
@@ -155367,18 +150781,6 @@
       }
     },
     {
-      "name": "NICOLAS",
-      "norm": "nicolas",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 794.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 794.0
-      }
-    },
-    {
       "name": "BUREAUPERRET",
       "norm": "bureauperret",
       "siret": null,
@@ -155561,18 +150963,6 @@
       }
     },
     {
-      "name": "CHARPENTIER",
-      "norm": "charpentier",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 774.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2024": 774.0
-      }
-    },
-    {
       "name": "LIKE FIRE",
       "norm": "like fire",
       "siret": null,
@@ -155742,18 +151132,6 @@
       }
     },
     {
-      "name": "BRIAND",
-      "norm": "briand",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 769.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 769.0
-      }
-    },
-    {
       "name": "BUKOWSKI",
       "norm": "bukowski",
       "siret": null,
@@ -155910,18 +151288,6 @@
       }
     },
     {
-      "name": "METTOT",
-      "norm": "mettot",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 769.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 769.0
-      }
-    },
-    {
       "name": "NEOUCE",
       "norm": "neouce",
       "siret": null,
@@ -155943,18 +151309,6 @@
       "nb": 1,
       "byYear": {
         "2022": 769.0
-      }
-    },
-    {
-      "name": "PORRES",
-      "norm": "porres",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 769.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 769.0
       }
     },
     {
@@ -156039,18 +151393,6 @@
       "nb": 1,
       "byYear": {
         "2023": 769.0
-      }
-    },
-    {
-      "name": "FITOUSSI",
-      "norm": "fitoussi",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 767.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 767.0
       }
     },
     {
@@ -156478,18 +151820,6 @@
     {
       "name": "BUDROW",
       "norm": "budrow",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 742.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 742.0
-      }
-    },
-    {
-      "name": "COTTET",
-      "norm": "cottet",
       "siret": null,
       "theme": "Autre",
       "totalAmount": 742.0,
@@ -156936,18 +152266,6 @@
       }
     },
     {
-      "name": "LACOSTE",
-      "norm": "lacoste",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 714.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 714.0
-      }
-    },
-    {
       "name": "OLLIVIER JEANFRANCOIS EURL",
       "norm": "ollivier jeanfrancois eurl",
       "siret": null,
@@ -156993,18 +152311,6 @@
       "nb": 1,
       "byYear": {
         "2022": 709.0
-      }
-    },
-    {
-      "name": "LANDON",
-      "norm": "landon",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 709.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 709.0
       }
     },
     {
@@ -157109,18 +152415,6 @@
       "norm": "ip val conseil",
       "siret": null,
       "theme": "Économie",
-      "totalAmount": 701.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 701.0
-      }
-    },
-    {
-      "name": "MORICE",
-      "norm": "morice",
-      "siret": null,
-      "theme": "Autre",
       "totalAmount": 701.0,
       "lastActiveYear": 2024,
       "nb": 1,
@@ -157478,18 +152772,6 @@
       }
     },
     {
-      "name": "VIBERT",
-      "norm": "vibert",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 695.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 695.0
-      }
-    },
-    {
       "name": "ALMA GROWN IN TOWN",
       "norm": "alma grown in town",
       "siret": null,
@@ -157636,18 +152918,6 @@
       }
     },
     {
-      "name": "JOURDAN",
-      "norm": "jourdan",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 687.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 687.0
-      }
-    },
-    {
       "name": "KERZON",
       "norm": "kerzon",
       "siret": null,
@@ -157710,18 +152980,6 @@
     {
       "name": "PIMLICOM",
       "norm": "pimlicom",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 687.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 687.0
-      }
-    },
-    {
-      "name": "RIANT",
-      "norm": "riant",
       "siret": null,
       "theme": "Autre",
       "totalAmount": 687.0,
@@ -158088,18 +153346,6 @@
       }
     },
     {
-      "name": "SALLES",
-      "norm": "salles",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 666.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 666.0
-      }
-    },
-    {
       "name": "SOC ROBERT ET RENE",
       "norm": "soc robert et rene",
       "siret": null,
@@ -158199,18 +153445,6 @@
     {
       "name": "AROSTEGUY",
       "norm": "arosteguy",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 646.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 646.0
-      }
-    },
-    {
-      "name": "BOISSY",
-      "norm": "boissy",
       "siret": null,
       "theme": "Autre",
       "totalAmount": 646.0,
@@ -158353,18 +153587,6 @@
       }
     },
     {
-      "name": "LEPINE",
-      "norm": "lepine",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 632.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 632.0
-      }
-    },
-    {
       "name": "LUDO & CO",
       "norm": "ludo co",
       "siret": null,
@@ -158451,18 +153673,6 @@
       }
     },
     {
-      "name": "DUSSERRE",
-      "norm": "dusserre",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 622.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 622.0
-      }
-    },
-    {
       "name": "JEAN LOUIS THOUARD IMMOBILIER",
       "norm": "jean louis thouard immobilier",
       "siret": null,
@@ -158485,18 +153695,6 @@
       "nb": 1,
       "byYear": {
         "2021": 618.75
-      }
-    },
-    {
-      "name": "BERTRAND",
-      "norm": "bertrand",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 618.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 618.0
       }
     },
     {
@@ -158792,18 +153990,6 @@
       }
     },
     {
-      "name": "BARLET",
-      "norm": "barlet",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 594.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 594.0
-      }
-    },
-    {
       "name": "JUST A LITTLE BIT NOISY",
       "norm": "just a little bit noisy",
       "siret": null,
@@ -158949,18 +154135,6 @@
       }
     },
     {
-      "name": "GUITTON",
-      "norm": "guitton",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 577.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 577.0
-      }
-    },
-    {
       "name": "SASU PEINTURE FRAICHE ARCHITECTURE",
       "norm": "sasu peinture fraiche architecture",
       "siret": null,
@@ -159094,18 +154268,6 @@
       }
     },
     {
-      "name": "HUBER",
-      "norm": "huber",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 550.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 550.0
-      }
-    },
-    {
       "name": "MARIE DAAGE DIFFUSION",
       "norm": "marie daage diffusion",
       "siret": null,
@@ -159122,18 +154284,6 @@
       "norm": "marine",
       "siret": null,
       "theme": "Non classifié",
-      "totalAmount": 550.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 550.0
-      }
-    },
-    {
-      "name": "MILLOUR",
-      "norm": "millour",
-      "siret": null,
-      "theme": "Autre",
       "totalAmount": 550.0,
       "lastActiveYear": 2024,
       "nb": 1,
@@ -160018,18 +155168,6 @@
       }
     },
     {
-      "name": "LE HOANG AN",
-      "norm": "hoang an",
-      "siret": null,
-      "theme": "Économie",
-      "totalAmount": 500.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 500.0
-      }
-    },
-    {
       "name": "INSTITUT DES ARTS KREYOL",
       "norm": "institut des arts kreyol",
       "siret": null,
@@ -160570,18 +155708,6 @@
       }
     },
     {
-      "name": "SERRE",
-      "norm": "serre",
-      "siret": null,
-      "theme": "Environnement",
-      "totalAmount": 494.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 494.0
-      }
-    },
-    {
       "name": "STERK",
       "norm": "sterk",
       "siret": null,
@@ -160760,18 +155886,6 @@
       "byYear": {
         "2021": 220.0,
         "2024": 217.0
-      }
-    },
-    {
-      "name": "DUMONT",
-      "norm": "dumont",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 432.0,
-      "lastActiveYear": 2024,
-      "nb": 2,
-      "byYear": {
-        "2024": 432.0
       }
     },
     {
@@ -163175,18 +158289,6 @@
       }
     },
     {
-      "name": "BAER",
-      "norm": "baer",
-      "siret": null,
-      "theme": "Économie",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2020,
-      "nb": 1,
-      "byYear": {
-        "2020": 400.0
-      }
-    },
-    {
       "name": "BAGE",
       "norm": "bage",
       "siret": null,
@@ -163307,34 +158409,10 @@
       }
     },
     {
-      "name": "BASTIEN",
-      "norm": "bastien",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 400.0
-      }
-    },
-    {
       "name": "BATIIK STUDIO",
       "norm": "batiik studio",
       "siret": null,
       "theme": "Non classifié",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 400.0
-      }
-    },
-    {
-      "name": "BATTESTI",
-      "norm": "battesti",
-      "siret": null,
-      "theme": "Autre",
       "totalAmount": 400.0,
       "lastActiveYear": 2024,
       "nb": 1,
@@ -163547,34 +158625,10 @@
       }
     },
     {
-      "name": "BENOIT",
-      "norm": "benoit",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 400.0
-      }
-    },
-    {
       "name": "BENOIT COMPAIN ARCHITECTURE",
       "norm": "benoit compain architecture",
       "siret": null,
       "theme": "Économie",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 400.0
-      }
-    },
-    {
-      "name": "BENYAMIN",
-      "norm": "benyamin",
-      "siret": null,
-      "theme": "Autre",
       "totalAmount": 400.0,
       "lastActiveYear": 2023,
       "nb": 1,
@@ -163700,30 +158754,6 @@
       "nb": 1,
       "byYear": {
         "2019": 400.0
-      }
-    },
-    {
-      "name": "BIGO",
-      "norm": "bigo",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 400.0
-      }
-    },
-    {
-      "name": "BILLE",
-      "norm": "bille",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 400.0
       }
     },
     {
@@ -164048,18 +159078,6 @@
       "nb": 1,
       "byYear": {
         "2020": 400.0
-      }
-    },
-    {
-      "name": "BOUTEILLE",
-      "norm": "bouteille",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 400.0
       }
     },
     {
@@ -164675,18 +159693,6 @@
       }
     },
     {
-      "name": "CASTELLANI",
-      "norm": "castellani",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 400.0
-      }
-    },
-    {
       "name": "LE CASTIGLIONE",
       "norm": "castiglione",
       "siret": null,
@@ -164864,18 +159870,6 @@
       "nb": 1,
       "byYear": {
         "2020": 400.0
-      }
-    },
-    {
-      "name": "CHAMBON",
-      "norm": "chambon",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 400.0
       }
     },
     {
@@ -165311,18 +160305,6 @@
       }
     },
     {
-      "name": "COLETTE",
-      "norm": "colette",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2022,
-      "nb": 1,
-      "byYear": {
-        "2022": 400.0
-      }
-    },
-    {
       "name": "COLLECT CALL",
       "norm": "collect call",
       "siret": null,
@@ -165380,18 +160362,6 @@
       "nb": 1,
       "byYear": {
         "2021": 400.0
-      }
-    },
-    {
-      "name": "COMPAIN",
-      "norm": "compain",
-      "siret": null,
-      "theme": "Économie",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 400.0
       }
     },
     {
@@ -165572,18 +160542,6 @@
       "nb": 1,
       "byYear": {
         "2024": 400.0
-      }
-    },
-    {
-      "name": "COUTURIER",
-      "norm": "couturier",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 400.0
       }
     },
     {
@@ -165983,18 +160941,6 @@
       }
     },
     {
-      "name": "DE ARAUJO",
-      "norm": "de araujo",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 400.0
-      }
-    },
-    {
       "name": "DE BELLES MANIERES",
       "norm": "de belles manieres",
       "siret": null,
@@ -166100,18 +161046,6 @@
       "nb": 1,
       "byYear": {
         "2019": 400.0
-      }
-    },
-    {
-      "name": "DELAPORTE",
-      "norm": "delaporte",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 400.0
       }
     },
     {
@@ -167219,18 +162153,6 @@
       }
     },
     {
-      "name": "ESCOT",
-      "norm": "escot",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 400.0
-      }
-    },
-    {
       "name": "L'ESPRIT TCHAI",
       "norm": "esprit tchai",
       "siret": null,
@@ -167696,18 +162618,6 @@
       "nb": 1,
       "byYear": {
         "2022": 400.0
-      }
-    },
-    {
-      "name": "FERRANDI",
-      "norm": "ferrandi",
-      "siret": null,
-      "theme": "Économie",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2021,
-      "nb": 1,
-      "byYear": {
-        "2021": 400.0
       }
     },
     {
@@ -168251,18 +163161,6 @@
       }
     },
     {
-      "name": "GALAS",
-      "norm": "galas",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 400.0
-      }
-    },
-    {
       "name": "LA GALERIE DE CECILE",
       "norm": "galerie de cecile",
       "siret": null,
@@ -168308,18 +163206,6 @@
       "nb": 1,
       "byYear": {
         "2022": 400.0
-      }
-    },
-    {
-      "name": "GALL",
-      "norm": "gall",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 400.0
       }
     },
     {
@@ -170747,18 +165633,6 @@
       }
     },
     {
-      "name": "KERAVEL",
-      "norm": "keravel",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 400.0
-      }
-    },
-    {
       "name": "KETY",
       "norm": "kety",
       "siret": null,
@@ -171224,18 +166098,6 @@
       "nb": 1,
       "byYear": {
         "2024": 400.0
-      }
-    },
-    {
-      "name": "LARAKI",
-      "norm": "laraki",
-      "siret": null,
-      "theme": "Économie",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2020,
-      "nb": 1,
-      "byYear": {
-        "2020": 400.0
       }
     },
     {
@@ -172811,18 +167673,6 @@
       }
     },
     {
-      "name": "MICHEL",
-      "norm": "michel",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 400.0
-      }
-    },
-    {
       "name": "MIDY",
       "norm": "midy",
       "siret": null,
@@ -173015,18 +167865,6 @@
       }
     },
     {
-      "name": "MONTEL",
-      "norm": "montel",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 400.0
-      }
-    },
-    {
       "name": "MONUMENTAL STUDIO",
       "norm": "monumental studio",
       "siret": null,
@@ -173048,18 +167886,6 @@
       "nb": 1,
       "byYear": {
         "2022": 400.0
-      }
-    },
-    {
-      "name": "MORIN",
-      "norm": "morin",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 400.0
       }
     },
     {
@@ -174539,18 +169365,6 @@
       }
     },
     {
-      "name": "PEDRON",
-      "norm": "pedron",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 400.0
-      }
-    },
-    {
       "name": "PEK HOLDING",
       "norm": "pek holding",
       "siret": null,
@@ -175028,18 +169842,6 @@
       "nb": 1,
       "byYear": {
         "2022": 400.0
-      }
-    },
-    {
-      "name": "POTIN",
-      "norm": "potin",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 400.0
       }
     },
     {
@@ -175784,18 +170586,6 @@
       "nb": 1,
       "byYear": {
         "2024": 400.0
-      }
-    },
-    {
-      "name": "RIO",
-      "norm": "rio",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 400.0
       }
     },
     {
@@ -178559,18 +173349,6 @@
       }
     },
     {
-      "name": "TRABUC",
-      "norm": "trabuc",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 400.0
-      }
-    },
-    {
       "name": "TRANCHE  DAMES",
       "norm": "tranche dames",
       "siret": null,
@@ -178955,18 +173733,6 @@
       }
     },
     {
-      "name": "VARASSON",
-      "norm": "varasson",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 400.0
-      }
-    },
-    {
       "name": "VAUGOR",
       "norm": "vaugor",
       "siret": null,
@@ -179255,18 +174021,6 @@
       }
     },
     {
-      "name": "VOGT",
-      "norm": "vogt",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 400.0
-      }
-    },
-    {
       "name": "VOLTA AG",
       "norm": "volta ag",
       "siret": null,
@@ -179327,18 +174081,6 @@
       }
     },
     {
-      "name": "WAY",
-      "norm": "way",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 400.0
-      }
-    },
-    {
       "name": "WE ART PARTNERS",
       "norm": "we art partners",
       "siret": null,
@@ -179348,30 +174090,6 @@
       "nb": 1,
       "byYear": {
         "2022": 400.0
-      }
-    },
-    {
-      "name": "WEIL",
-      "norm": "weil",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 400.0
-      }
-    },
-    {
-      "name": "WEISSER",
-      "norm": "weisser",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 400.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 400.0
       }
     },
     {
@@ -179987,18 +174705,6 @@
       }
     },
     {
-      "name": "DJIAN",
-      "norm": "djian",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 384.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 384.0
-      }
-    },
-    {
       "name": "EVNF INGENIERIE",
       "norm": "evnf ingenierie",
       "siret": null,
@@ -180323,18 +175029,6 @@
       }
     },
     {
-      "name": "POSTEL",
-      "norm": "postel",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 369.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 369.0
-      }
-    },
-    {
       "name": "BENLOLO ARCHITECTES DESIGNERS",
       "norm": "benlolo architectes designers",
       "siret": null,
@@ -180344,18 +175038,6 @@
       "nb": 1,
       "byYear": {
         "2020": 365.0
-      }
-    },
-    {
-      "name": "DESCHAMPS",
-      "norm": "deschamps",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 363.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 363.0
       }
     },
     {
@@ -180551,18 +175233,6 @@
       }
     },
     {
-      "name": "GRENIER",
-      "norm": "grenier",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 357.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 357.0
-      }
-    },
-    {
       "name": "H.C.",
       "norm": "h c",
       "siret": null,
@@ -180596,18 +175266,6 @@
       "nb": 1,
       "byYear": {
         "2022": 357.0
-      }
-    },
-    {
-      "name": "LEMOINE",
-      "norm": "lemoine",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 357.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 357.0
       }
     },
     {
@@ -181511,18 +176169,6 @@
       }
     },
     {
-      "name": "LEVEAU-VALLIER",
-      "norm": "leveau vallier",
-      "siret": null,
-      "theme": "Économie",
-      "totalAmount": 330.0,
-      "lastActiveYear": 2019,
-      "nb": 1,
-      "byYear": {
-        "2019": 330.0
-      }
-    },
-    {
       "name": "LUXBOX",
       "norm": "luxbox",
       "siret": null,
@@ -182039,18 +176685,6 @@
       }
     },
     {
-      "name": "HOUIS",
-      "norm": "houis",
-      "siret": null,
-      "theme": "Économie",
-      "totalAmount": 302.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 302.0
-      }
-    },
-    {
       "name": "MERIDA",
       "norm": "merida",
       "siret": null,
@@ -182060,18 +176694,6 @@
       "nb": 1,
       "byYear": {
         "2024": 302.0
-      }
-    },
-    {
-      "name": "LE MESTRE",
-      "norm": "mestre",
-      "siret": null,
-      "theme": "Économie",
-      "totalAmount": 302.0,
-      "lastActiveYear": 2019,
-      "nb": 1,
-      "byYear": {
-        "2019": 302.0
       }
     },
     {
@@ -182459,18 +177081,6 @@
       }
     },
     {
-      "name": "BEN SLAMA",
-      "norm": "ben slama",
-      "siret": null,
-      "theme": "Économie",
-      "totalAmount": 275.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 275.0
-      }
-    },
-    {
       "name": "BOX PRODUCTION",
       "norm": "box production",
       "siret": null,
@@ -182603,18 +177213,6 @@
       }
     },
     {
-      "name": "KACHANER",
-      "norm": "kachaner",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 274.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 274.0
-      }
-    },
-    {
       "name": "KELEM TRANSPORT",
       "norm": "kelem transport",
       "siret": null,
@@ -182648,18 +177246,6 @@
       "nb": 1,
       "byYear": {
         "2022": 274.0
-      }
-    },
-    {
-      "name": "MARTINEAU",
-      "norm": "martineau",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 274.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 274.0
       }
     },
     {
@@ -183251,30 +177837,6 @@
       }
     },
     {
-      "name": "BEAUCAMPS",
-      "norm": "beaucamps",
-      "siret": null,
-      "theme": "Économie",
-      "totalAmount": 233.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 233.0
-      }
-    },
-    {
-      "name": "BRICE",
-      "norm": "brice",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 233.0,
-      "lastActiveYear": 2022,
-      "nb": 1,
-      "byYear": {
-        "2022": 233.0
-      }
-    },
-    {
       "name": "DARIC",
       "norm": "daric",
       "siret": null,
@@ -183356,18 +177918,6 @@
       "nb": 1,
       "byYear": {
         "2022": 233.0
-      }
-    },
-    {
-      "name": "NOBLET",
-      "norm": "noblet",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 233.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 233.0
       }
     },
     {
@@ -183464,18 +178014,6 @@
       "nb": 1,
       "byYear": {
         "2020": 228.0
-      }
-    },
-    {
-      "name": "JEANNEAU",
-      "norm": "jeanneau",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 225.0,
-      "lastActiveYear": 2023,
-      "nb": 1,
-      "byYear": {
-        "2023": 225.0
       }
     },
     {
@@ -183584,18 +178122,6 @@
       "nb": 1,
       "byYear": {
         "2020": 220.0
-      }
-    },
-    {
-      "name": "ELIE",
-      "norm": "elie",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 220.0,
-      "lastActiveYear": 2019,
-      "nb": 1,
-      "byYear": {
-        "2019": 220.0
       }
     },
     {
@@ -184524,18 +179050,6 @@
       }
     },
     {
-      "name": "LEBOUTEILLER",
-      "norm": "lebouteiller",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 137.0,
-      "lastActiveYear": 2019,
-      "nb": 1,
-      "byYear": {
-        "2019": 137.0
-      }
-    },
-    {
       "name": "MAHREZ COIFFURE",
       "norm": "mahrez coiffure",
       "siret": null,
@@ -184665,18 +179179,6 @@
       "nb": 1,
       "byYear": {
         "2023": 100.0
-      }
-    },
-    {
-      "name": "OSMANI",
-      "norm": "osmani",
-      "siret": null,
-      "theme": "Autre",
-      "totalAmount": 93.0,
-      "lastActiveYear": 2024,
-      "nb": 1,
-      "byYear": {
-        "2024": 93.0
       }
     },
     {

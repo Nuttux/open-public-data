@@ -1033,11 +1033,6 @@
       "theme": "International"
     },
     {
-      "name": "LE BAL",
-      "amount": 246500.0,
-      "theme": "Culture"
-    },
-    {
       "name": "ECOLE NORMALE SOCIALE",
       "amount": 136900.0,
       "theme": "Éducation"
@@ -5433,11 +5428,6 @@
       "theme": "Économie"
     },
     {
-      "name": "COSTA",
-      "amount": 20000.0,
-      "theme": "Autre"
-    },
-    {
       "name": "LE MARCHE SOLIDAIRE",
       "amount": 23000.0,
       "theme": "Non classifié"
@@ -6628,11 +6618,6 @@
       "theme": "Culture"
     },
     {
-      "name": "DECK",
-      "amount": 91453.0,
-      "theme": "Social - Solidarité"
-    },
-    {
       "name": "LA CORDEE",
       "amount": 40000.0,
       "theme": "Non classifié"
@@ -7046,11 +7031,6 @@
       "name": "CLUB SPORTIF POUCHET PARIS XVII",
       "amount": 12000.0,
       "theme": "Sport"
-    },
-    {
-      "name": "LION",
-      "amount": 49800.0,
-      "theme": "Autre"
     },
     {
       "name": "CERCLE D'ESCRIME FRANCO CUBAIN",
@@ -12208,11 +12188,6 @@
       "theme": "Culture"
     },
     {
-      "name": "LA MINE",
-      "amount": 15000.0,
-      "theme": "Autre"
-    },
-    {
       "name": "LA MISSION BRETON ILE FRANCE",
       "amount": 5000.0,
       "theme": "Non classifié"
@@ -12536,11 +12511,6 @@
       "name": "MON OEIL",
       "amount": 2500.0,
       "theme": "Culture"
-    },
-    {
-      "name": "MOUSSE",
-      "amount": 2000.0,
-      "theme": "Autre"
     },
     {
       "name": "WOPELA",
@@ -13693,11 +13663,6 @@
       "theme": "International"
     },
     {
-      "name": "CHICHE",
-      "amount": 5100.0,
-      "theme": "Autre"
-    },
-    {
       "name": "PARIS ARTISTES",
       "amount": 1000.0,
       "theme": "Culture"
@@ -13846,11 +13811,6 @@
       "name": "INTEMPORELLES UN TEMPS POUR ELLES",
       "amount": 2000.0,
       "theme": "Culture"
-    },
-    {
-      "name": "MARELLE",
-      "amount": 6000.0,
-      "theme": "Autre"
     },
     {
       "name": "LA MINUTIEUSE",
@@ -14663,11 +14623,6 @@
       "theme": "Économie"
     },
     {
-      "name": "MOREAU",
-      "amount": 6000.0,
-      "theme": "Autre"
-    },
-    {
       "name": "MULTICOULEURS",
       "amount": 2000.0,
       "theme": "Culture"
@@ -14941,11 +14896,6 @@
       "name": "ESCOS INVESTISSEMENT",
       "amount": 1000.0,
       "theme": "Économie"
-    },
-    {
-      "name": "LISA",
-      "amount": 1321.0,
-      "theme": "Autre"
     },
     {
       "name": "ASSOCIATION DES COMMERCANTS BRETAGNE",
@@ -16403,11 +16353,6 @@
       "theme": "Économie"
     },
     {
-      "name": "LE GALLIC",
-      "amount": 2908.0,
-      "theme": "Économie"
-    },
-    {
       "name": "ASSOCIATION COMMERCANTS DES RUES DU BAC,",
       "amount": 900.0,
       "theme": "Non classifié"
@@ -16456,11 +16401,6 @@
       "name": "XL TOUR",
       "amount": 800.0,
       "theme": "Transport"
-    },
-    {
-      "name": "DELISLE",
-      "amount": 400.0,
-      "theme": "Autre"
     },
     {
       "name": "AMICALE DU 228 RUE DE COURCELLES",
@@ -17739,11 +17679,6 @@
     },
     {
       "name": "CRYPTOLEGAL EXPERTS",
-      "amount": 1200.0,
-      "theme": "Autre"
-    },
-    {
-      "name": "DAGUERRE",
       "amount": 1200.0,
       "theme": "Autre"
     },
@@ -19173,11 +19108,6 @@
       "theme": "Culture"
     },
     {
-      "name": "ADAM",
-      "amount": 400.0,
-      "theme": "Autre"
-    },
-    {
       "name": "ADVENCY",
       "amount": 400.0,
       "theme": "Économie"
@@ -20566,11 +20496,6 @@
       "name": "COLAGENE",
       "amount": 400.0,
       "theme": "Économie"
-    },
-    {
-      "name": "COLETTE",
-      "amount": 400.0,
-      "theme": "Autre"
     },
     {
       "name": "COLLECT CALL",
@@ -22691,11 +22616,6 @@
       "name": "ATELIER DES PETITES ECURIES",
       "amount": 242.0,
       "theme": "Économie"
-    },
-    {
-      "name": "BRICE",
-      "amount": 233.0,
-      "theme": "Autre"
     },
     {
       "name": "DARIC",

@@ -42,8 +42,10 @@ export type EntityPageConfig<D> = {
     params: EntityParams,
     searchParams: EntitySearchParams,
   ) => D | null | Promise<D | null>;
-  /** Metadata quand load() échoue — verbatim de l'ancien early-return. */
-  notFoundMetadata: (locale: EntityLocale) => Metadata;
+  /** Unused since 2026-09-08: an unknown entity is a 404 (notFound() in
+   *  generateMetadata), not a page with "not found" metadata. Kept optional
+   *  so the fifteen configs need no edit. */
+  notFoundMetadata?: (locale: EntityLocale) => Metadata;
   /** Body de l'ancien generateMetadata, verbatim, une fois l'entité chargée. */
   metadata: (d: D, locale: EntityLocale, params: EntityParams) => Metadata;
   /**
@@ -120,7 +122,11 @@ export function makeEntityPage<D>(cfg: EntityPageConfig<D>) {
     const sp = (await props.searchParams) ?? {};
     const locale = await readLocale();
     const d = await loadOnce(params, sp);
-    if (!d) return finalizeEntityMetadata(cfg.notFoundMetadata(locale), locale);
+    // Thrown here, before anything streams, so the response carries a real
+    // 404. Thrown from the page only, it lands inside the root provider's
+    // Suspense boundary after the 200 shell has gone out — a soft 404 that
+    // every unknown entity URL served until 2026-09-08.
+    if (!d) notFound();
     const md = cfg.metadata(d, locale, params);
     const seo = cfg.seo?.(d, locale, params) ?? null;
     if (seo) {

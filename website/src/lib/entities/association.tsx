@@ -13,8 +13,6 @@ import { lieuForBeneficiaire } from "@/lib/lieux-data";
 import { trLabel } from "@/lib/label-translate";
 import { eur, int, span, periodLead, cityDataDate, sourceLine, cityPortal } from "@/lib/entities/seo-text";
 
-const PRIVATE_INDIVIDUAL = "Personnes physiques";
-
 type D = {
   asso: NonNullable<ReturnType<typeof loadAssociation>>;
   vulgarization: ReturnType<typeof loadSubventionVulgarization>;
@@ -35,7 +33,9 @@ export function makeAssociationConfig(city: string): EntityPageConfig<D> {
   return {
     load: ({ slug }) => {
       const asso = loadAssociation(slug, city);
-      if (!asso) return null;
+      // Private individuals receiving aid have no page: 404, like a name that
+      // does not exist. They are also absent from the search index and sitemap.
+      if (!asso || asso.isIndividual) return null;
       return {
         asso,
         vulgarization: loadSubventionVulgarization(asso.name, city),
@@ -48,12 +48,6 @@ export function makeAssociationConfig(city: string): EntityPageConfig<D> {
       robots: { index: false },
     }),
     metadata: ({ asso: a }, locale) => {
-      // A private individual (nature juridique « Personnes physiques ») has a
-      // page because the open data names them, but it is never offered to
-      // search engines: noindex, no answer-style title, not in the sitemap.
-      if (a.natureJuridique === PRIVATE_INDIVIDUAL) {
-        return { title: a.name, robots: { index: false, follow: false } };
-      }
       const amountFmt = a.totalAmount.toLocaleString(numLocale(locale));
       const title = locale === "en"
         ? `${a.name} — Beneficiary · Qipu`
@@ -76,7 +70,6 @@ export function makeAssociationConfig(city: string): EntityPageConfig<D> {
       };
     },
     seo: ({ asso: a }, locale) => {
-      if (a.natureJuridique === PRIVATE_INDIVIDUAL) return null;
       const amt = eur(a.totalAmount, locale);
       const sp = span(a.yearsActive);
       const theme = a.theme ? trLabel(a.theme, locale) : null;

@@ -2078,11 +2078,6 @@
       "theme": "Social - Petite enfance"
     },
     {
-      "name": "REMG Remise gracieuse",
-      "amount": 204148.79,
-      "theme": "Administration"
-    },
-    {
       "name": "ESPOIR 18",
       "amount": 119150.0,
       "theme": "Social - Solidarité"
@@ -8903,11 +8898,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "SOCRATE",
-      "amount": 6500.0,
-      "theme": "Éducation"
-    },
-    {
       "name": "GROUPE EGR",
       "amount": 39592.0,
       "theme": "Économie"
@@ -11873,11 +11863,6 @@
       "theme": "Éducation"
     },
     {
-      "name": "WAGNER",
-      "amount": 16144.0,
-      "theme": "Autre"
-    },
-    {
       "name": "ANKH",
       "amount": 4000.0,
       "theme": "Autre"
@@ -12423,11 +12408,6 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "BLONDIN",
-      "amount": 13368.0,
-      "theme": "Économie"
-    },
-    {
       "name": "ASSOCIATION TAWEF",
       "amount": 4000.0,
       "theme": "Autre"
@@ -12521,11 +12501,6 @@
       "name": "LE CRI DE L' ARMOIRE",
       "amount": 13000.0,
       "theme": "Non classifié"
-    },
-    {
-      "name": "MOUSSE",
-      "amount": 5000.0,
-      "theme": "Autre"
     },
     {
       "name": "NOUVELLE SOCIETE DES APACHES",
@@ -14498,11 +14473,6 @@
       "theme": "Autre"
     },
     {
-      "name": "PARC",
-      "amount": 3000.0,
-      "theme": "Environnement"
-    },
-    {
       "name": "UNION AMIC MEMOIRE MONDE COMBAT VIC",
       "amount": 1300.0,
       "theme": "Social - Solidarité"
@@ -14779,11 +14749,6 @@
     },
     {
       "name": "HORIZON ' TECHNOLOGY",
-      "amount": 6000.0,
-      "theme": "Économie"
-    },
-    {
-      "name": "HUSS",
       "amount": 6000.0,
       "theme": "Économie"
     },
@@ -15270,11 +15235,6 @@
     {
       "name": "BRIGADE DES IMAGES",
       "amount": 1500.0,
-      "theme": "Culture"
-    },
-    {
-      "name": "CABANES",
-      "amount": 5000.0,
       "theme": "Culture"
     },
     {
@@ -16556,11 +16516,6 @@
       "name": "XL TOUR",
       "amount": 2000.0,
       "theme": "Transport"
-    },
-    {
-      "name": "DELISLE",
-      "amount": 1155.0,
-      "theme": "Autre"
     },
     {
       "name": "IMPRIM'TAXI",
@@ -19158,11 +19113,6 @@
       "theme": "Économie"
     },
     {
-      "name": "BAER",
-      "amount": 400.0,
-      "theme": "Économie"
-    },
-    {
       "name": "BASILICO PARIS",
       "amount": 400.0,
       "theme": "Économie"
@@ -19944,11 +19894,6 @@
     },
     {
       "name": "LAGARDELLE CONSULTING",
-      "amount": 400.0,
-      "theme": "Économie"
-    },
-    {
-      "name": "LARAKI",
       "amount": 400.0,
       "theme": "Économie"
     },

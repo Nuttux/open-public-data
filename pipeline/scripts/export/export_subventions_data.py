@@ -333,26 +333,41 @@ def export_beneficiaires_search(years: list):
     merged: dict[str, dict] = {}
     years_seen: set[int] = set()
 
+    payloads: list[tuple[int, dict]] = []
     for year in sorted(years):
         path = OUTPUT_DIR / f"beneficiaires_{year}.json"
         if not path.exists():
             continue
         with path.open(encoding="utf-8") as f:
-            payload = json.load(f)
+            payloads.append((year, json.load(f)))
         years_seen.add(year)
 
+    def _key(row: dict) -> str:
+        name = (row.get("beneficiaire") or "").strip()
+        return (row.get("beneficiaire_normalise") or name).strip().lower() or name
+
+    # Personnes physiques (label source Ville de Paris) : hors index de
+    # recherche — la page cible les associations/organismes ; sinon ~8k noms
+    # de famille par exercice (aides individuelles) polluent la long tail
+    # (ex. « gay » remontait GAYE, GAYET, GAYOUT). Le label manque sur
+    # certains exercices : une personne flaguée UNE année l'est pour toutes,
+    # sinon 433 particuliers repassaient par une année sans nature (2026-09-08).
+    individuals: set[str] = {
+        _key(row)
+        for _, payload in payloads
+        for row in payload.get("data", [])
+        if (row.get("nature_juridique") or "").strip() == "Personnes physiques"
+    }
+
+    for year, payload in payloads:
         for row in payload.get("data", []):
-            # Personnes physiques (label source Ville de Paris) : hors index de
-            # recherche — la page cible les associations/organismes ; sinon
-            # ~8k noms de famille par exercice (aides individuelles) polluent
-            # la long tail (ex. « gay » remontait GAYE, GAYET, GAYOUT).
-            if (row.get("nature_juridique") or "").strip() == "Personnes physiques":
-                continue
             name = (row.get("beneficiaire") or "").strip()
             if not name:
                 continue
             # Dédup par normalise en priorité, sinon par nom brut
-            key = (row.get("beneficiaire_normalise") or name).strip().lower() or name
+            key = _key(row)
+            if key in individuals:
+                continue
             cur = merged.get(key)
             if cur is None:
                 cur = {
@@ -386,7 +401,7 @@ def export_beneficiaires_search(years: list):
     output = {
         "generated_at": datetime.now().isoformat(),
         "source": "post-processing beneficiaires_{year}.json",
-        "excludes": "nature_juridique = 'Personnes physiques' (label source)",
+        "excludes": "nature_juridique = 'Personnes physiques' (label source, sur toutes les années dès qu'une l'indique)",
         "years": sorted(years_seen),
         "count": len(data),
         "data": data,

@@ -25,7 +25,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const commune = findCommuneByAny(slug);
-  const nom = commune?.nom ?? slug;
+  // Same gates as the page, thrown before streaming so the status is a real 404.
+  if (!commune || hasDedicatedRoutes(slug) || !getCommuneCapabilities(slug).budget.nature) notFound();
+  const nom = commune.nom;
   const dep = commune?.dep_name ? ` (${commune.dep_name})` : "";
   return buildLocaleAwareMetadata({
     title: `Budget de ${nom}${dep} : recettes, dépenses et dette de la commune`,

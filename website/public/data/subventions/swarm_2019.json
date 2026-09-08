@@ -1098,11 +1098,6 @@
       "theme": "International"
     },
     {
-      "name": "LE BAL",
-      "amount": 226000.0,
-      "theme": "Culture"
-    },
-    {
       "name": "INST CERVEAU MOELLE EPINIERE",
       "amount": 1050000.0,
       "theme": "Santé"
@@ -2106,11 +2101,6 @@
       "name": "ASSOCIATION LES ENFANCES",
       "amount": 88874.0,
       "theme": "Social - Petite enfance"
-    },
-    {
-      "name": "REMG Remise gracieuse",
-      "amount": 265664.0,
-      "theme": "Administration"
     },
     {
       "name": "ESPOIR 18",
@@ -13938,11 +13928,6 @@
       "theme": "Sport"
     },
     {
-      "name": "MAURIN",
-      "amount": 6592.0,
-      "theme": "Autre"
-    },
-    {
       "name": "ASSOCIATION PILOTARI",
       "amount": 1000.0,
       "theme": "Sport"
@@ -16808,11 +16793,6 @@
       "theme": "Culture"
     },
     {
-      "name": "VIGNERON",
-      "amount": 400.0,
-      "theme": "Autre"
-    },
-    {
       "name": "BRUNEL",
       "amount": 1582.0,
       "theme": "Autre"
@@ -17021,11 +17001,6 @@
       "name": "ATELIER SILHOUETTE URBAINE",
       "amount": 898.0,
       "theme": "Culture"
-    },
-    {
-      "name": "COURTOIS",
-      "amount": 1292.0,
-      "theme": "Autre"
     },
     {
       "name": "LES PETITS LOULOUS DU 9 EME",
@@ -18358,11 +18333,6 @@
       "theme": "Économie"
     },
     {
-      "name": "LEVEAU-VALLIER",
-      "amount": 330.0,
-      "theme": "Économie"
-    },
-    {
       "name": "SARAHTEX",
       "amount": 330.0,
       "theme": "Économie"
@@ -18385,11 +18355,6 @@
     {
       "name": "WIFINDIT",
       "amount": 316.0,
-      "theme": "Économie"
-    },
-    {
-      "name": "LE MESTRE",
-      "amount": 302.0,
       "theme": "Économie"
     },
     {
@@ -18433,11 +18398,6 @@
       "theme": "Économie"
     },
     {
-      "name": "ELIE",
-      "amount": 220.0,
-      "theme": "Autre"
-    },
-    {
       "name": "K-HUT",
       "amount": 220.0,
       "theme": "Économie"
@@ -18476,11 +18436,6 @@
       "name": "PALAST",
       "amount": 175.0,
       "theme": "Économie"
-    },
-    {
-      "name": "LEBOUTEILLER",
-      "amount": 137.0,
-      "theme": "Autre"
     }
   ],
   "license": {

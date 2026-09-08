@@ -861,6 +861,10 @@ export type AssociationFiche = {
   name: string;
   theme: string | null;
   natureJuridique: string | null;
+  /** True when any year labels the beneficiary « Personnes physiques » — a private
+   *  individual receiving aid. Such beneficiaries get no page (notFound), no
+   *  search entry and no sitemap line: the open data names them, we don't. */
+  isIndividual: boolean;
   totalAmount: number;
   subventionCount: number;
   siret: string | null;
@@ -898,6 +902,7 @@ export function loadAssociation(name: string, city: string = "paris"): Associati
   let canonicalName = "";
   let theme: string | null = null;
   let natureJuridique: string | null = null;
+  let isIndividual = false;
   let siret: string | null = null;
 
   for (const y of idx.availableYears) {
@@ -908,6 +913,7 @@ export function loadAssociation(name: string, city: string = "paris"): Associati
         canonicalName = canonicalName || b.beneficiaire;
         theme = theme ?? b.thematique ?? null;
         natureJuridique = natureJuridique ?? b.nature_juridique ?? null;
+        if (b.nature_juridique === "Personnes physiques") isIndividual = true;
         siret = siret ?? b.siret ?? null;
 
         const cur = byYearMap.get(y) ?? { amount: 0, count: 0 };
@@ -982,6 +988,7 @@ export function loadAssociation(name: string, city: string = "paris"): Associati
     name: canonicalName,
     theme,
     natureJuridique,
+    isIndividual,
     siret,
     totalAmount,
     subventionCount,
