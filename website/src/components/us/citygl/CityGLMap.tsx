@@ -30,9 +30,12 @@ import { markTerrainCells } from "@/lib/citygl/mark-cells";
 import { fireLayer, type FireLayer } from "@/lib/citygl/fire";
 import { decodeCoast } from "@/lib/city/water";
 import { loadLandMask } from "@/lib/citygl/coast-mask";
-import { loadBathy, waterLayer } from "@/lib/citygl/layers/water";
+import { loadBathy, waterLayerAsync } from "@/lib/citygl/layers/water";
 import { loadSurroundLandcover, surroundLayer } from "@/lib/citygl/layers/surround";
-import { buildingsLayer } from "@/lib/citygl/layers/buildings";
+import { buildingsLayerAsync } from "@/lib/citygl/layers/buildings";
+import { breathe, paced } from "@/lib/citygl/breathe";
+import type { Object3D } from "three";
+import { riseNodes } from "@/lib/citygl/rise";
 import { heroesLayer } from "@/lib/citygl/layers/heroes";
 import { civicIndex, type CivicForm } from "@/lib/citygl/civic";
 import type { CladFamily } from "@/lib/citygl/facade";
@@ -186,6 +189,13 @@ function filmRuntime(f: FilmPlayer | null): string {
   const sec = Math.round((total % 60000) / 1000);
   return `${m} min ${String(sec).padStart(2, "0")} s`;
 }
+
+/** how many building chunks are revealed per frame at boot — see §AND
+ *  REVEALED A FEW CHUNKS A FRAME in the boot */
+const REVEAL_CHUNKS_PER_FRAME = 12;
+/** a real frame, so a reveal step's upload lands on its own draw */
+const nextFrame = (): Promise<void> =>
+  new Promise((r) => requestAnimationFrame(() => r()));
 
 export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProps) {
   const hostRef = useRef<HTMLDivElement | null>(null);
@@ -605,6 +615,8 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       const landmask = await loadLandMask(data.assetBase);
       if (disposed) return;
 
+      await breathe();
+      if (disposed || !engine) return;
       const terrain = terrainLayer(
         data,
         descriptor.look.zexByStep,
@@ -695,6 +707,8 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
 
       /* the land that is not the subject, at its own coarser grid */
       /* the far shore, cut at the same published rings */
+      await breathe();
+      if (disposed || !engine) return;
       const surround = surroundLayer(
         data,
         terrain.fieldFor(0),
@@ -719,9 +733,16 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
            §AND THE SEA FLOOR. Absence is the published chunk, unchanged. */
         const bathy = await loadBathy(data.assetBase);
         if (disposed) return;
-        const water = waterLayer(data, { anchor: downtown, bathy, landmask });
+        await breathe();
+        if (disposed || !engine) return;
+        const water = await waterLayerAsync(data, { anchor: downtown, bathy, landmask, ripples: false }, paced());
+        if (disposed || !engine) return;
         engine.scene.add(water.mesh);
         engine.add(water);
+        /* the crest field on its own breath — `layers/water.ts` §CUT ONCE */
+        await breathe();
+        if (disposed || !engine) return;
+        water.ripples();
       } catch (e) {
         // a city with no bathymetry is a city with no bay layer, not a failure
         console.warn("citygl: no water layer —", e);
@@ -924,7 +945,23 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       }
       if (disposed || !engine) return;
 
-      const buildings = buildingsLayer(data, {
+      /* ── BUILT BETWEEN BREATHS, AND SHOWN AS IT COMES ─────────────────
+         `breathe.ts` carries the measurement: these 124 chunks in one loop
+         held the main thread for 2.4–2.7 s on production, the longest of the
+         boot's five blocks. Each chunk goes into the scene as it is made and
+         the engine is asked for a frame, so the GPU upload — which three does
+         on a mesh's first draw — is spread over the same breaths instead of
+         landing on the first frame after the loop as a second block.
+
+         The wave's exaggeration is set BEFORE the first chunk exists, because
+         a chunk drawn under the veil before `engine.add` has told the layer
+         its step would otherwise stand at the wrong height for a few frames. */
+      const rise = riseNodes();
+      rise.setZex(engine.zex());
+      rise.setZexb(descriptor.look.zexb);
+      const chunkMeshes: Object3D[][] = [];
+      const buildings = await buildingsLayerAsync(data, {
+        rise,
         zexb: descriptor.look.zexb,
         heightFloor,
         elevAt: groundAt,
@@ -960,9 +997,37 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
           fallbackRoof: 1,
           fallbackWall: 1,
         },
+      }, {
+        pause: paced(),
+        onChunk: (ms) => {
+          if (disposed || !engine) return;
+          /* IN THE SCENE BUT NOT DRAWN until the layer is whole. The first cut
+             drew each chunk as it landed, and that cost more than it saved:
+             a frame over a half-built city stalled 1–2 s inside the WebGPU
+             backend's `finishRender`, tick after tick, for 8 s of the thread
+             where the one-shot draw had cost 0.45 s. One reveal, one upload. */
+          for (const m of ms) { m.visible = false; engine.scene.add(m); }
+          chunkMeshes.push(ms);
+        },
+        stopped: () => disposed || !engine,
       });
-      for (const m of buildings.meshes) engine.scene.add(m);
+      if (disposed || !engine || !buildings) return;
       engine.add(buildings);
+      /* ── AND REVEALED A FEW CHUNKS A FRAME ────────────────────────────
+         Three uploads a mesh's attributes on its first draw, and all 124
+         chunks on one frame is ~0.45 s of the thread (dev 0.49) — the
+         boot's second-longest block once the build itself was sliced. A
+         dozen chunks a frame puts the same upload on a dozen frames, and the
+         pipelines are made on the first of them, once, since every chunk
+         wears the city's shared materials. */
+      for (let i = 0; i < chunkMeshes.length; i += REVEAL_CHUNKS_PER_FRAME) {
+        for (const ms of chunkMeshes.slice(i, i + REVEAL_CHUNKS_PER_FRAME)) {
+          for (const m of ms) m.visible = true;
+        }
+        engine.invalidate();
+        await nextFrame();
+        if (disposed || !engine) return;
+      }
 
       /* ── AND THE SECOND SOLID ON TOP OF THEM ────────────────────────
          512 published slots — a step, a mast, a spire — standing on the roof
@@ -971,6 +1036,8 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          same material config and the same hero skip as the fabric: a cap must
          be the same colour as the roof it stands on, and a hero that models
          its own drum must not get a second one. */
+      await breathe();
+      if (disposed || !engine) return;
       const caps = capsLayer(data, {
         zexb: descriptor.look.zexb,
         elevAt: groundAt,
@@ -1001,6 +1068,8 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          at the whole-city camera that blocky edge is the first thing a reader
          sees. The canopy chunk is its own tier. */
       await canopyTier;
+      if (disposed || !engine) return;
+      await breathe();
       if (disposed || !engine) return;
       const ground = groundDetailLayer(data, {
         elevAt: groundAt,
@@ -1058,6 +1127,8 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          step between a block's interior and the street outside it, the only
          thing saying "block" is the buildings standing on it. See
          `layers/block-tint.ts` for the measurement. */
+      await breathe();
+      if (disposed || !engine) return;
       const blockTint = blockTintLayer(data, {
         elevAt: groundAt,
         zex: descriptor.look.zexByStep[0],
@@ -1073,6 +1144,8 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          footway. */
       await strtTier;
       if (disposed || !engine) return;
+      await breathe();
+      if (disposed || !engine) return;
       const streets = streetsLayer(data, {
         elevAt: groundAt,
         zex: descriptor.look.zexByStep[0],
@@ -1085,6 +1158,8 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          published centreline and no published polygon, so they came out as a
          name and a faint line over bare ground. Drawn here at the median
          width of the city's own surveyed roads of the same class. */
+      await breathe();
+      if (disposed || !engine) return;
       const uncovered = streetUncoveredLayer(data, {
         elevAt: groundAt,
         zex: descriptor.look.zexByStep[0],
@@ -1096,6 +1171,8 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
 
       /* the kerbs, the traffic islands, the stairs and the spine centrelines
          — everything the surface layer leaves out, and all of it published */
+      await breathe();
+      if (disposed || !engine) return;
       const detail = streetDetailLayer(data, {
         elevAt: groundAt,
         zex: descriptor.look.zexByStep[0],
@@ -1106,6 +1183,8 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       /* the crossings, the centre lines, the 1,944 spans the Board had not
          paved yet, and the tonal pass that sinks the whole right of way below
          every land tone so a street reads as a street at every slope */
+      await breathe();
+      if (disposed || !engine) return;
       const marks = streetMarkingsLayer(data, {
         elevAt: groundAt,
         zex: descriptor.look.zexByStep[0],
@@ -1119,6 +1198,8 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          125,234 published street trees, instanced. Fetched whole like the
          footprints: the cost is the upload, not the draw. */
       await treeTier;
+      if (disposed || !engine) return;
+      await breathe();
       if (disposed || !engine) return;
       const trees = treesLayer(data, {
         elevAt: groundAt,

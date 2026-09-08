@@ -381,6 +381,9 @@ export interface WaterLayerOptions {
    * §AND THE CUT THAT MADE THE HOLE WAS THIS ONE.
    */
   landmask?: LandMask | null;
+  /** build the crest field now (default) or leave it to `ripples()` — the
+   *  boot builds it after a breath, `breathe.ts` */
+  ripples?: boolean;
 }
 
 /**
@@ -1004,14 +1007,27 @@ function rippleMesh(
   return mesh;
 }
 
-export function waterLayer(
-  data: CityData,
-  opts: WaterLayerOptions,
-): CityLayer & {
+export type WaterLayer = CityLayer & {
   mesh: Mesh;
+  /** build (or rebuild) the crest field over the current plate */
+  ripples(): void;
   foamStats(): FoamStats | null;
   plateStats(): PlateStats | null;
-} {
+};
+
+/**
+ * ── THE BAKE, BETWEEN BREATHS ────────────────────────────────────────────
+ * The depth bake below is ~2 M texels of per-texel arithmetic and was 45 %
+ * of a 600 ms block on the boot (dev; `scripts/probes/boot_tasks.mjs`,
+ * 2026-09-08). The layer is a generator that yields every 64 rows of it, so
+ * `waterLayerAsync` can breathe there — `breathe.ts` — while `waterLayer`
+ * drains it in one pass for a caller that wants the bay now. Same idiom as
+ * `layers/buildings.ts` §THE CITY, ONE CHUNK AT A TIME.
+ */
+export function* waterLayerSteps(
+  data: CityData,
+  opts: WaterLayerOptions,
+): Generator<void, WaterLayer, void> {
   const meta = data.manifest.water as unknown as WaterMeta & {
     world: [number, number, number, number];
   };
@@ -1305,6 +1321,7 @@ export function waterLayer(
       tex[o + 2] = Math.max(0, Math.min(255, Math.round(bb + dth)));
       tex[o + 3] = 255;
     }
+    if ((py & 63) === 63) yield;
   }
 
   const map = new DataTexture(tex, W, H, RGBAFormat);
@@ -1340,9 +1357,26 @@ export function waterLayer(
      projection — 79 px at the street camera — so the fix is `polygonOffset`:
      the plane stays at zero and is pushed back in the DEPTH BUFFER only. */
   const box: Box = [x0, y0, x1, y1];
-  const plate0 = plateGeometry(box, null);
+  /* ── CUT ONCE, IF THE SHORE IS ALREADY IN HAND ─────────────────────────
+     The boot awaits `data.surroundCoast()` before the ground is built, so by
+     the time the bay is, the rings are cached. Reading them synchronously
+     here means ONE plate and ONE crest field; the first cut built an uncut
+     plate and a crest field over it and replaced both a microtask later —
+     MEASURED (2026-09-08, `scripts/probes/boot_tasks.mjs`) `rippleMesh` was
+     39 % of a 590 ms block, and half of that was the field thrown away. The
+     async path below still stands for a caller that did not wait. */
+  const cityRingsSync: Ring[] = (() => {
+    const c = data.get("base/coast");
+    return c ? decodeCoast(c).coast : [];
+  })();
+  const scNow = data.surroundCoastNow();
+  const cutNow = scNow && scNow.rings.length
+    ? cityCut(data, cityRingsSync, scNow, opts.landmask ?? null)
+    : null;
+  const plate0 = plateGeometry(box, cutNow);
   let g = plate0.geo;
   let gRects: number[] = plate0.rects;
+  let plate: PlateStats | null = cutNow ? plate0.stats : null;
   const rippleTex = bakeRipple(RIPPLE_TEX);
 
   const m = new MeshBasicMaterial({
@@ -1369,55 +1403,60 @@ export function waterLayer(
      the far shore's surf as much as the city's. */
   mesh.renderOrder = -4;
 
-  let ripple = rippleMesh(gRects, rippleTex, opts.anchor, rippleR1);
-  mesh.add(ripple);
-
-  /* ── THE PLATE IS CUT, ONCE THE SECOND REGISTER LANDS ───────────────────
-     `data.surroundCoast()` is a sidecar fetch, so the first frame gets the
-     whole quad — which is what shipped, and is only ever seen for the
-     microtask before the rings resolve. See §THE PLATE IS CUT. */
-  let plate: PlateStats | null = null;
-  const cityRingsSync: Ring[] = (() => {
-    const c = data.get("base/coast");
-    return c ? decodeCoast(c).coast : [];
-  })();
-  void data
-    .surroundCoast()
-    .catch(() => null)
-    .then((sc) => {
-      if (!sc || !sc.rings.length) return;
-      const cut = cityCut(data, cityRingsSync, sc, opts.landmask ?? null);
-      if (!cut) return;
-      const next = plateGeometry(box, cut);
-      mesh.geometry = next.geo;
-      g.dispose();
-      g = next.geo;
-      gRects = next.rects;
-      plate = next.stats;
+  let ripple: Mesh | null = null;
+  const ripples = (): void => {
+    if (ripple) {
       ripple.geometry.dispose();
       ripple.removeFromParent();
-      ripple = rippleMesh(gRects, rippleTex, opts.anchor, rippleR1);
-      /* built in a microtask, long after `engine.add` — see `engine.ts`
-         §AND A MESH MADE LATER MUST CLAIM ITSELF. Unstamped it is claimed by
-         whichever layer registers next, which is how the bay once reported
-         itself as the hero buildings. */
-      ripple.traverse((o) => { o.userData.layer = "water"; });
-      mesh.add(ripple);
-    });
+    }
+    ripple = rippleMesh(gRects, rippleTex, opts.anchor, rippleR1);
+    /* possibly built after `engine.add` — see `engine.ts` §AND A MESH MADE
+       LATER MUST CLAIM ITSELF. Unstamped it is claimed by whichever layer
+       registers next, which is how the bay once reported itself as the hero
+       buildings. */
+    ripple.traverse((o) => { o.userData.layer = "water"; });
+    mesh.add(ripple);
+  };
+  if (opts.ripples !== false) ripples();
+
+  /* ── THE PLATE IS CUT, ONCE THE SECOND REGISTER LANDS ───────────────────
+     For a caller that did not wait for `data.surroundCoast()`: the first
+     frame gets the whole quad, seen for the microtask before the rings
+     resolve. See §THE PLATE IS CUT. */
+  if (!cutNow) {
+    void data
+      .surroundCoast()
+      .catch(() => null)
+      .then((sc) => {
+        if (!sc || !sc.rings.length) return;
+        const cut = cityCut(data, cityRingsSync, sc, opts.landmask ?? null);
+        if (!cut) return;
+        const next = plateGeometry(box, cut);
+        mesh.geometry = next.geo;
+        g.dispose();
+        g = next.geo;
+        gRects = next.rects;
+        plate = next.stats;
+        if (ripple) ripples();
+      });
+  }
 
   const foam = buildFoam(data, mesh);
 
   return {
     name: "water",
     mesh,
+    ripples,
     foamStats: () => foam.stats,
     plateStats: () => plate,
     dispose() {
       g.dispose();
       m.dispose();
       map.dispose();
-      ripple.geometry.dispose();
-      (ripple.material as MeshBasicMaterial).dispose();
+      if (ripple) {
+        ripple.geometry.dispose();
+        (ripple.material as MeshBasicMaterial).dispose();
+      }
       rippleTex.dispose();
       foam.dispose();
     },
@@ -1663,4 +1702,27 @@ function buildFoam(
     });
 
   return out;
+}
+
+/** the bay, now — the generator drained in one synchronous pass */
+export function waterLayer(data: CityData, opts: WaterLayerOptions): WaterLayer {
+  const g = waterLayerSteps(data, opts);
+  for (;;) {
+    const r = g.next();
+    if (r.done) return r.value;
+  }
+}
+
+/** the bay, built between breaths — `pause` is called every 64 baked rows */
+export async function waterLayerAsync(
+  data: CityData,
+  opts: WaterLayerOptions,
+  pause: () => Promise<void>,
+): Promise<WaterLayer> {
+  const g = waterLayerSteps(data, opts);
+  for (;;) {
+    const r = g.next();
+    if (r.done) return r.value;
+    await pause();
+  }
 }

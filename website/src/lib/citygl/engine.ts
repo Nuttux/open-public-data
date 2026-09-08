@@ -19,6 +19,7 @@
    changes, which is what keeps a phone cool on a page that is standing still.
    ═══════════════════════════════════════════════════════════════════════ */
 
+import { breathe } from "./breathe";
 import {
   ACESFilmicToneMapping,
   type BufferAttribute,
@@ -1197,6 +1198,10 @@ export class CityEngine {
       for (const s of bands) {
         if (this.disposed || !this.warming) return;
         if (s === this.step) continue;
+        /* one band's pipelines are ~200 ms of the thread on production; a
+           breath between bands keeps a reader's wheel answerable — `breathe.ts` */
+        await breathe();
+        if (this.disposed || !this.warming) return;
         this.warmStep = s;
         this.setStep(s);
         await this.renderer.compileAsync(this.scene, this.camera);

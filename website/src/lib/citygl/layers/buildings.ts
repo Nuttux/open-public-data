@@ -2188,10 +2188,32 @@ export function buildingsMesh(
  * GPU renderer's cost is in the upload, not the draw, so the city arrives once
  * and every camera after that is free.
  */
-export function buildingsLayer(
+export type BuildingsLayer = CityLayer & {
+  meshes: Object3D[];
+  count: number;
+  rise: RiseNodes;
+};
+
+/**
+ * ── THE CITY, ONE CHUNK AT A TIME ───────────────────────────────────────
+ *
+ * The layer is built by a generator that yields after every chunk's meshes
+ * exist, so the same loop serves two callers. `buildingsLayer` drains it in
+ * one go — the tests and any caller that wants the layer NOW. The boot uses
+ * `buildingsLayerAsync`, which hands each chunk's meshes on as they are made
+ * and breathes between chunks — see `breathe.ts` for the measurement that
+ * made this necessary: 124 chunks in one synchronous loop held the main
+ * thread for 2.4–2.7 s on production.
+ *
+ * What is yielded is each chunk's meshes, so a caller can put them in the
+ * scene before the layer as a whole exists. Nothing about the layer's own
+ * state depends on the order the two happen in: the materials are shared
+ * across chunks and stamped once, the wave uniforms are one set for the city.
+ */
+export function* buildingsLayerSteps(
   data: CityData,
   o: BuildingsLayerOptions,
-): CityLayer & { meshes: Object3D[]; count: number; rise: RiseNodes } {
+): Generator<Object3D[], BuildingsLayer, void> {
   const meshes: Object3D[] = [];
   const setters: ((zex: number, zexb: number) => void)[] = [];
   const bandSetters: ((step: number) => void)[] = [];
@@ -2267,6 +2289,7 @@ export function buildingsLayer(
     for (const m of built.materials) if (!seenMat.has(m)) { seenMat.add(m); materials.push(m); }
     for (const m of built.roofMaterials) if (!seenMat.has(m)) { seenMat.add(m); roofMaterials.push(m); }
     count += tb.n;
+    yield built.meshes;
   }
 
   /* ── SUB-PIXEL COVERAGE, AND WHY THE FABRIC DARKENS AT WIDE ZOOM ───────
@@ -2421,4 +2444,52 @@ export function buildingsLayer(
       roofMaterials.length = 0;
     },
   };
+}
+
+/** the whole layer, now — the generator drained in one synchronous pass */
+export function buildingsLayer(
+  data: CityData,
+  o: BuildingsLayerOptions,
+): BuildingsLayer {
+  const g = buildingsLayerSteps(data, o);
+  for (;;) {
+    const r = g.next();
+    if (r.done) return r.value;
+  }
+}
+
+export interface BuildingsLayerPacing {
+  /** called after each chunk; a real task boundary when the slice is spent */
+  pause: () => Promise<void>;
+  /** each chunk's meshes as they are made, for a caller that shows them early */
+  onChunk?: (meshes: Object3D[]) => void;
+  /** answers true once the caller has gone away; the build stops and
+   *  disposes what it made rather than finishing for nobody */
+  stopped?: () => boolean;
+}
+
+/**
+ * The same layer, built between breaths. Returns null only when `stopped`
+ * said so mid-build, in which case every geometry made so far is disposed.
+ */
+export async function buildingsLayerAsync(
+  data: CityData,
+  o: BuildingsLayerOptions,
+  pacing: BuildingsLayerPacing,
+): Promise<BuildingsLayer | null> {
+  const g = buildingsLayerSteps(data, o);
+  const made: Object3D[] = [];
+  for (;;) {
+    const r = g.next();
+    if (r.done) return r.value;
+    made.push(...r.value);
+    pacing.onChunk?.(r.value);
+    await pacing.pause();
+    if (pacing.stopped?.()) {
+      for (const m of made) {
+        (m as { geometry?: { dispose(): void } }).geometry?.dispose();
+      }
+      return null;
+    }
+  }
 }

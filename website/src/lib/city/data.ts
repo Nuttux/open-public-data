@@ -1129,6 +1129,14 @@ export class CityData {
    * a bit-field read against the wrong stride decodes silently and draws a
    * plausible wrong coast.
    */
+  /** the regional shoreline IF it has already landed, else null — for a
+   *  layer built after the boot has awaited `surroundCoast()`, so it can cut
+   *  its plate once rather than build an uncut one and replace it a
+   *  microtask later (`layers/water.ts` §THE PLATE IS CUT) */
+  surroundCoastNow(): SurroundCoast | null {
+    return this.coastCache ?? null;
+  }
+
   async surroundCoast(): Promise<SurroundCoast | null> {
     if (this.coastCache) return this.coastCache;
     const e = this.byKey.get("base/surround");
