@@ -149,10 +149,31 @@ interface ThemeEntry {
 }
 
 /* the GPU page's chip, `CityGLMap.tsx` §chipStyle */
+/** how far past the city the map may be dragged, as a share of its extent;
+ *  and the looser bound while the drawer is open, so a tapped block can be
+ *  panned up above it even at the whole-city fit */
+const BOUNDS_PAD = 0.25;
+const BOUNDS_PAD_OPEN = 1;
+/** where a tapped point is panned to, as a share of the map's height, so
+ *  it stands clear of the drawer — `fusion.css` §THE DRAWER */
+const TAP_KEEP = 0.3;
+/** the last zoom stop at which a tap opens the NEIGHBOURHOOD rather than
+ *  the block: whole city and district */
+const HOOD_STOP_MAX = 1;
+/** how far a thumb travels on the drawer's handle before it counts as a
+ *  swipe rather than a tap */
+const SWIPE_PX = 40;
+const isPhone = (): boolean =>
+  typeof window !== "undefined" && window.matchMedia("(max-width: 819px)").matches;
+
 function chipStyle(on: boolean, ink: string | null): React.CSSProperties {
   return {
     font: `${on ? 600 : 400} 12px/1 var(--f-sans, system-ui)`,
-    padding: "7px 10px",
+    /* 40 px tall: a thumb's target, WCAG 2.5.8 and both platforms' guides */
+    padding: "0 12px",
+    minHeight: 40,
+    display: "inline-flex",
+    alignItems: "center",
     borderRadius: 6,
     cursor: "pointer",
     border: `1px solid ${on ? (ink ?? "var(--ink, #1a1a19)") : "var(--rule, #e4e6ea)"}`,
@@ -222,6 +243,7 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
      have gone under the map into the transport, where the year rail is. */
   const [findOpen, setFindOpen] = useState(false);
   const findRef = useRef<HTMLDivElement | null>(null);
+  const swipeY = useRef<number | null>(null);
   useEffect(() => {
     if (findOpen) findRef.current?.querySelector("input")?.focus();
   }, [findOpen]);
@@ -253,6 +275,13 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
      `picked` is a POSITION in the block index, as it is there; `posRef`
      turns a block id (what the search hands over) into one. */
   const [picked, setPicked] = useState<number | null>(null);
+  /* ── A TAP IS NOT A SEARCH ─────────────────────────────────────────────
+     A pick that came from a tap on the map, so the record effect can open
+     it at the level the zoom implies: at the two wide stops a fingertip
+     covers a neighbourhood, and the audit of 2026-09-09 saw a tap at whole
+     city open "Duboce Ave · 3 decisions" with a card about Hayes Valley.
+     A pick that came from search or a URL carries its own level already. */
+  const tapPickRef = useRef(false);
   const [record, setRecord] = useState<BlockRecord | null>(null);
   const [ctx, setCtx] = useState<BlockContext | null>(null);
   const [recLoading, setRecLoading] = useState(false);
@@ -267,6 +296,14 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
   const [subject, setSubject] = useState<number | null>(null);
   const [markCard, setMarkCard] = useState<MarkCardData | null>(null);
   const themesRef = useRef<ThemeEntry[] | null>(null);
+  /* the page's chrome reads this: the chat launcher hides under the drawer
+     on a phone rather than sitting on its handle — `fusion.css` §THE DRAWER */
+  useEffect(() => {
+    const on = picked !== null || markCard !== null;
+    if (on) document.body.dataset.cityDrawer = sheetOpen ? "open" : "peek";
+    else delete document.body.dataset.cityDrawer;
+    return () => { delete document.body.dataset.cityDrawer; };
+  }, [picked, markCard, sheetOpen]);
   const yearRef = useRef<number | null>(null);
   const classifyRef = useRef<ClassifyFile | null>(null);
   const openMarkRef = useRef<(hit: { bit: number; block: number }) => void>(() => {});
@@ -378,7 +415,7 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
           markerZoomAnimation: false,
           inertia: true,
           bounceAtZoomLimits: false,
-          maxBounds: extent.pad(0.25),
+          maxBounds: extent.pad(BOUNDS_PAD),
           maxBoundsViscosity: 0.8,
         });
         /* ── THE SHARPER LEVEL, ALWAYS ───────────────────────────────────
@@ -766,6 +803,20 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
               schedule();
             }
             setZoomStop(nearestStop());
+            /* ── THE BLOCK STAYS IN VIEW ABOVE THE DRAWER ──────────────────
+               On a phone the record is a drawer over the lower part of the
+               screen (`fusion.css` §THE DRAWER), so the tapped point is
+               brought up to `TAP_KEEP` of the map's height, where the drawer
+               cannot reach it. Leaflet's own pan, so the labels follow. */
+            if (b !== null && isPhone()) {
+              /* the bounds are loosened first: at the whole-city fit the
+                 view already touches them, and Leaflet slid the pan straight
+                 back (MEASURED: −34 px at 100 ms, 0 at 1.5 s). `clear()`
+                 tightens them again, which snaps the city back into frame. */
+              map.setMaxBounds(extent.pad(BOUNDS_PAD_OPEN));
+              map.panBy([0, pt.y - r.height * TAP_KEEP], { animate: true, duration: 0.3 });
+            }
+            tapPickRef.current = true;
             setSheetOpen(true);
             setPicked(b);
           })();
@@ -795,6 +846,7 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
             setPicked(pos);
           },
           clear() {
+            map?.setMaxBounds(extent.pad(BOUNDS_PAD));
             if (overlay) {
               overlay.highlight = null;
               overlay.pick = null;
@@ -918,10 +970,23 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
           zoomStop,
         });
         apiRef.current?.label(hoodName || null);
+        let hoodLevel = false;
+        if (tapPickRef.current) {
+          tapPickRef.current = false;
+          if (zoomStop <= HOOD_STOP_MAX) {
+            hoodLevel = true;
+            nonceRef.current += 1;
+            setRequest({ nonce: nonceRef.current, block: id, req: { kind: "hood" } });
+          }
+        }
         const r = await loadBlockRecord(index, picked);
         if (!dead) {
           setRecord(r);
-          apiRef.current?.label((r ? blockPlaceName(r.streets) : null) || hoodName || null);
+          /* the ring's label says what the drawer is about — the
+             neighbourhood when that is what the tap opened */
+          apiRef.current?.label(
+            hoodLevel && hoodName ? hoodName : (r ? blockPlaceName(r.streets) : null) || hoodName || null,
+          );
         }
       } catch {
         if (!dead) setRecord(null);
@@ -1093,9 +1158,13 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
     }
   };
 
+  /* the handle names what the drawer is ABOUT: the neighbourhood when the
+     tap opened one (the two wide stops), the block's streets otherwise */
   const sheetLabel = markCard
     ? markCard.place
-    : (record ? blockPlaceName(record.streets) : null) || ctx?.hood || "";
+    : request?.req.kind === "hood" && ctx?.hood
+      ? ctx.hood
+      : (record ? blockPlaceName(record.streets) : null) || ctx?.hood || "";
   const n = markCard ? markCard.rows.length : (record?.decisions.length ?? 0);
 
   return (
@@ -1138,6 +1207,19 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
               </button>
             )
           ) : null}
+          {!loading && filmUrl ? (
+            <button
+              type="button"
+              className="fx-city-film-btn"
+              aria-label={`${t("us.sf.thecity.film.watch_video")} · ${filmLabel}`}
+              title={`${t("us.sf.thecity.film.watch_video")} · ${filmLabel}`}
+              onClick={() => setFilmOpen(true)}
+            >
+              <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+                <path d="M4 2.5v13l11-6.5z" fill="currentColor" />
+              </svg>
+            </button>
+          ) : null}
           {failed ? (
             <div className="fx-city-overlay">
               <p className="fx-city-loading">The map could not be loaded. {failed}</p>
@@ -1174,15 +1256,6 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
               ))}
             </div>
           ) : null}
-          {filmUrl ? (
-            <button
-              type="button"
-              className="fx-city-filmrow"
-              onClick={() => setFilmOpen(true)}
-            >
-              <span aria-hidden="true">▶</span> {t("us.sf.thecity.film.watch_video")} · {filmLabel}
-            </button>
-          ) : null}
           {yearsFile && Object.keys(yearsFile.years).length ? (<>
           <div className="fx-city-clockrow">
             <button
@@ -1191,9 +1264,10 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
               aria-label={playing ? "Pause" : "Play from 1906"}
               style={{
                 font: "600 13px/1 var(--f-mono, ui-monospace, monospace)",
-                padding: "7px 11px",
-                width: 40,
-                minWidth: 40,
+                padding: 0,
+                width: 44,
+                minWidth: 44,
+                height: 44,
                 boxSizing: "border-box",
                 border: "1px solid var(--rule, #e4e6ea)",
                 borderRadius: 6,
@@ -1289,22 +1363,51 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
             is the same bar — a place name under the thumb, folding the sheet
             away — so the two pages fold the same way. */}
         {picked !== null || markCard ? (
-          <div className={`fx-city-ledger${sheetOpen ? "" : " is-shut"}`}>
-            <button
-              type="button"
+          <div
+            className={`fx-city-ledger${sheetOpen ? "" : " is-shut"}`}
+            role="dialog"
+            aria-label={sheetLabel || t("us.sf.thecity.margin.head")}
+          >
+            {/* ── THE HANDLE: FOLD, OR CLOSE ───────────────────────────────
+                One handle, two things a thumb does with a drawer: a tap or a
+                swipe down on the bar folds it to its handle (the city takes
+                the screen; swipe up or tap brings it back), and the × sends
+                it away. The audit found the old bar had a handle that did
+                not drag and a ▾ AND an × that did two different things. */}
+            <div
               className="fx-city-sheet-grab"
-              aria-expanded={sheetOpen}
-              onClick={() => setSheetOpen((v) => !v)}
+              onTouchStart={(e) => { swipeY.current = e.touches[0]?.clientY ?? null; }}
+              onTouchEnd={(e) => {
+                const y0 = swipeY.current;
+                swipeY.current = null;
+                const y1 = e.changedTouches[0]?.clientY;
+                if (y0 === null || y1 === undefined) return;
+                const dy = y1 - y0;
+                if (dy > SWIPE_PX) { if (sheetOpen) setSheetOpen(false); else close(); }
+                else if (dy < -SWIPE_PX) setSheetOpen(true);
+              }}
             >
-              <span className="fx-city-sheet-bar" aria-hidden="true" />
-              <span className="fx-city-sheet-yr">{sheetLabel}</span>
-              <span className="fx-city-sheet-n">
-                {recLoading && !markCard ? "…" : `${n} ${n === 1 ? "decision" : "decisions"}`}
-              </span>
-              <span className="fx-city-sheet-x" aria-hidden="true">
-                {sheetOpen ? "▾" : "▴"}
-              </span>
-            </button>
+              <button
+                type="button"
+                className="fx-city-sheet-fold"
+                aria-expanded={sheetOpen}
+                onClick={() => setSheetOpen((v) => !v)}
+              >
+                <span className="fx-city-sheet-bar" aria-hidden="true" />
+                <span className="fx-city-sheet-yr">{sheetLabel}</span>
+                <span className="fx-city-sheet-n">
+                  {recLoading && !markCard ? "…" : `${n} ${n === 1 ? "decision" : "decisions"}`}
+                </span>
+              </button>
+              <button
+                type="button"
+                className="fx-city-sheet-close"
+                aria-label={t("fx.search.close")}
+                onClick={() => (markCard ? setMarkCard(null) : close())}
+              >
+                ×
+              </button>
+            </div>
             {markCard ? (
               <MarkCard card={markCard} onClose={() => setMarkCard(null)} />
             ) : (

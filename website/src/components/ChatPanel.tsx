@@ -497,7 +497,7 @@ function ChatPanelInner() {
       {!open && (
         <button
           onClick={() => setOpen(true)}
-          className="group fixed bottom-5 right-5 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-[#2a3680]! text-white shadow-lg shadow-[#2a3680]/30 hover:scale-[1.03] hover:bg-[#1e45e4]! transition md:h-auto md:w-auto md:justify-start md:gap-2.5 md:py-3 md:pl-4 md:pr-5"
+          className="fx-chat-launcher group fixed bottom-5 right-5 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-[#2a3680]! text-white shadow-lg shadow-[#2a3680]/30 hover:scale-[1.03] hover:bg-[#1e45e4]! transition md:h-auto md:w-auto md:justify-start md:gap-2.5 md:py-3 md:pl-4 md:pr-5"
           aria-label={t("chat.launcher")}
           title={t("chat.launcher")}
         >

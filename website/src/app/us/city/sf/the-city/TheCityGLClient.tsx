@@ -638,6 +638,13 @@ const SF: CityDescriptor = {
   film: SF_FILM,
 };
 
+/** the data files behind this page, offered as plain links in the method note */
+const CITY_FILES = [
+  { label: "manifest.json", href: "/data/us/sf/city/manifest.json" },
+  { label: "block-index.json", href: "/data/us/sf/city/blocks/block-index.json" },
+  { label: "accuracy.json", href: "/data/us/sf/city/blocks/accuracy.json" },
+];
+
 export default function TheCityGLClient({ data }: { data: TheCityPageData }) {
   const t = useT();
   const [intro, setIntro] = useState(true);
@@ -811,6 +818,15 @@ export default function TheCityGLClient({ data }: { data: TheCityPageData }) {
 
               <h3>{t("us.sf.thecity.note.sources.title")}</h3>
               <p>{t("us.sf.thecity.note.sources")}</p>
+              <p className="fx-city-files">
+                {t("us.sf.thecity.note.files")}{" "}
+                {CITY_FILES.map((f, i) => (
+                  <span key={f.href}>
+                    {i ? " · " : ""}
+                    <a href={f.href} download>{f.label}</a>
+                  </span>
+                ))}
+              </p>
               <ul className="fx-city-sources">
                 {data.publishers.map((p) => (
                   <li key={p.name}>
@@ -852,17 +868,10 @@ export default function TheCityGLClient({ data }: { data: TheCityPageData }) {
           name: "DataSF · Internet Archive · USGS · US Census",
           href: "https://datasf.org/opendata/",
         }}
-        exports={[
-          { label: "manifest.json", href: "/data/us/sf/city/manifest.json" },
-          {
-            label: "block-index.json",
-            href: "/data/us/sf/city/blocks/block-index.json",
-          },
-          {
-            label: "accuracy.json",
-            href: "/data/us/sf/city/blocks/accuracy.json",
-          },
-        ]}
+        /* the three JSON files were the biggest buttons on the page — the
+           audit of 2026-09-09 found a visitor scrolling from the map into
+           "manifest.json". They are links in the method note above now. */
+        exports={[]}
       />
     </main>
   );

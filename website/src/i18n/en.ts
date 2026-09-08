@@ -4917,6 +4917,7 @@ const en: Record<string, string> = {
   'us.sf.thecity.film.runtime': '{min} min {sec} s',
   'us.sf.thecity.film.watch': 'Watch',
   'us.sf.thecity.film.watch_video': 'Watch the film',
+  'us.sf.thecity.note.files': 'The data files:',
   'us.sf.thecity.film.dialog': 'The film',
   'us.sf.thecity.film.resume_film': 'Resume the film',
   'us.sf.thecity.film.scan': 'Scan',

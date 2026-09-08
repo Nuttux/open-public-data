@@ -19175,17 +19175,8 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   white-space: normal;
   line-height: 1.2;
 }
-/* ── the film on a phone: a row under the stops, a video over everything ──
+/* ── the film on a phone: a ▶ on the map, a video over everything ──
    `CityTileMap.tsx` §THE FILM, AS A VIDEO */
-.theme-fusion .fx-city-filmrow {
-  display: flex; align-items: center; justify-content: center; gap: 10px;
-  width: 100%; min-height: 44px; padding: 8px 12px;
-  border: 0; border-bottom: 1px solid var(--rule);
-  background: var(--bg); color: var(--ink);
-  font-family: var(--f-mono); font-size: 11px; font-weight: 600;
-  letter-spacing: .06em; text-transform: uppercase;
-  cursor: pointer;
-}
 .theme-fusion .fx-city-filmwrap {
   position: fixed; inset: 0; z-index: 1000;
   background: #000;
@@ -19381,3 +19372,118 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   .theme-fusion .fx-bud-row { grid-template-columns: minmax(0, 1fr) 44px auto 34px; font-size: 13.5px; }
 }
 .theme-fusion .fx-bud-row--static { cursor: default; } .theme-fusion .fx-bud-row--static:hover { background: transparent; }
+
+/* ══ THE TILE PAGE ON A PHONE, AFTER THE VISITOR'S WALK OF 2026-09-09 ═════
+   Six things a first visitor hit, each measured on production at 390 × 664
+   (`scripts/probes/audit.mjs`): search results clipped by the map's edge;
+   a tap that split the screen into a shrunk map and an inline card with a
+   handle that did not drag and two closes; four rows of controls under the
+   map; the chat launcher on the subject chips; eleven targets under 44 px;
+   three JSON files as the largest buttons on the page. What follows is the
+   phone's own layer for the tile map, after every rule it overrides. */
+
+/* ── THE FILM IS A BUTTON ON THE MAP, UNDER THE SEARCH ─────────────────── */
+.theme-fusion .fx-city-film-btn {
+  position: absolute; top: calc(12px + 44px + 8px); right: 12px; z-index: 7;
+  width: 44px; height: 44px;
+  display: grid; place-items: center;
+  border: 1px solid var(--ink);
+  background: var(--bg); color: var(--ink);
+  box-shadow: 0 1px 6px rgba(0,0,0,.13);
+  cursor: pointer;
+}
+.theme-fusion .fx-city-shell:has(.fx-city-strip) .fx-city-film-btn {
+  top: calc(12px + 44px + 8px + var(--fx-city-strip-h, 0px));
+}
+
+/* ── THE CHIPS END BEFORE THE CHAT LAUNCHER ON A WIDE SCREEN ──────────── */
+@media (min-width: 820px) {
+  .theme-fusion .fx-city-subjrow { flex-wrap: nowrap; padding-right: 200px; }
+  .theme-fusion .fx-city-chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: thin; padding-bottom: 2px; }
+  .theme-fusion .fx-city-chips > * { flex: none; }
+}
+
+@media (max-width: 819px) {
+  /* ── SEARCH TAKES THE SCREEN ──────────────────────────────────────────
+     The box was absolute inside the map, whose overflow is hidden, so the
+     list of results ended where the map did: 15 hits, 8 reachable. On a
+     phone, search is its own screen: the field at the top, the list below
+     it in the flow, scrolling as a page does. */
+  .theme-fusion .fx-city-wrap:has(.fx-city-tiles) .fx-city-find,
+  .theme-fusion .fx-city-shell:has(.fx-city-strip) .fx-city-wrap:has(.fx-city-tiles) .fx-city-find {
+    position: fixed; inset: 0; z-index: 60;
+    width: auto; top: 0; left: 0; right: 0;
+    padding: max(12px, env(safe-area-inset-top)) 12px 12px;
+    background: var(--bg);
+    align-items: flex-start;
+    overflow-y: auto; overscroll-behavior: contain;
+  }
+  .theme-fusion .fx-city-wrap:has(.fx-city-tiles) .fx-city-find .fx-city-search-out {
+    position: static; max-height: none; border: 0; border-top: 1px solid var(--rule);
+    margin-top: 10px; box-shadow: none;
+  }
+  .theme-fusion .fx-city-wrap:has(.fx-city-tiles) .fx-city-find > .fx-city-find-close {
+    height: 44px; position: sticky; top: 0;
+  }
+
+  /* ── THE SUBJECTS SCROLL, AND SAY SO ──────────────────────────────────
+     The row already scrolled sideways; nothing said it did — the third chip
+     was cut at the screen's edge and read as the end. A fade at the right
+     edge is the affordance. */
+  .theme-fusion .fx-city-subjrow { position: relative; padding-right: 0; }
+  .theme-fusion .fx-city-subjrow::after {
+    content: ""; position: absolute; top: 0; bottom: 11px; right: 0; width: 36px;
+    pointer-events: none;
+    background: linear-gradient(to right, transparent, var(--bg));
+  }
+  .theme-fusion .fx-city-chips { padding-right: 36px; }
+
+  /* ── THE DRAWER ───────────────────────────────────────────────────────
+     The record is a drawer over the lower part of the screen, the map full
+     size behind it. Open, it takes at most 62 svh; folded, its handle. The
+     tapped block is panned up above it (`CityTileMap.tsx` §THE BLOCK STAYS
+     IN VIEW). The page under it keeps its flow: nothing shrinks, nothing
+     reserves room. */
+  .theme-fusion .fx-city-wrap:has(.fx-city-tiles) .fx-city-ledger {
+    position: fixed; left: 0; right: 0; bottom: 0; top: auto; z-index: 30;
+    order: initial; width: auto; height: auto;
+    max-height: 62svh;
+    display: flex; flex-direction: column;
+    border: 0; border-top: 1px solid var(--ink);
+    box-shadow: 0 -8px 28px rgba(0,0,0,.18);
+    background: var(--bg);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .theme-fusion .fx-city-wrap:has(.fx-city-tiles) .fx-city-ledger .fx-city-record,
+  .theme-fusion .fx-city-wrap:has(.fx-city-tiles) .fx-city-ledger > :not(.fx-city-sheet-grab) {
+    min-height: 0; flex: 1 1 auto; overflow-y: auto; overscroll-behavior: contain;
+  }
+  .theme-fusion .fx-city-wrap:has(.fx-city-tiles) .fx-city-ledger.is-shut { max-height: none; }
+  .theme-fusion .fx-city-sheet-grab {
+    display: flex; align-items: stretch; gap: 0;
+    padding: 0; border: 0; background: transparent; flex: none;
+    border-bottom: 1px solid var(--rule);
+  }
+  .theme-fusion .fx-city-sheet-fold {
+    flex: 1 1 auto; min-width: 0; min-height: 52px;
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 14px; border: 0; background: transparent;
+    text-align: left; font: inherit; color: inherit; cursor: pointer;
+  }
+  .theme-fusion .fx-city-sheet-yr {
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0;
+    font-size: 17px;
+  }
+  .theme-fusion .fx-city-sheet-n { flex: none; }
+  .theme-fusion .fx-city-sheet-close {
+    flex: none; width: 52px; min-height: 52px;
+    border: 0; border-left: 1px solid var(--rule); background: transparent;
+    color: var(--ink); font-size: 24px; line-height: 1; cursor: pointer;
+  }
+  /* the panel's own close is the handle's job now; its head keeps the name */
+  .theme-fusion .fx-city-wrap:has(.fx-city-tiles) .fx-city-ledger > :not(.fx-city-sheet-grab) button[aria-label="Close"] {
+    display: none;
+  }
+  /* the chat launcher would sit on the handle */
+  body[data-city-drawer] .fx-chat-launcher { display: none; }
+}
