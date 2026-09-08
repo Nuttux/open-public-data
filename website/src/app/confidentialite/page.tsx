@@ -10,6 +10,8 @@ export default async function ConfidentialitePage() {
   // (The context's city-label rewrite is a no-op outside /fr/city/*.)
   const dict = locale === 'en' ? en : fr;
   const t = (key: string): string => dict[key] ?? fr[key] ?? key;
+  // posthog-js names its cookie after the project key.
+  const cookieName = `ph_${process.env.NEXT_PUBLIC_POSTHOG_KEY ?? '…'}_posthog`;
 
   return (
     <main className="min-h-screen">
@@ -53,7 +55,7 @@ export default async function ConfidentialitePage() {
               {t('privacy.cookie.text')
                 .replace('{code}', '')
                 .split('{bold_13}')[0]}
-              <code className="bg-slate-800 px-1.5 py-0.5 rounded text-xs">_dl_vid</code>
+              <code className="bg-slate-800 px-1.5 py-0.5 rounded text-xs break-all">{cookieName}</code>
               {' '}
               {t('privacy.cookie.text').includes('{code}')
                 ? t('privacy.cookie.text')

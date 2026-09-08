@@ -15,20 +15,24 @@ const REPLAY_OPTIN_KEY = '_fod_replay_optin';
 const OPTOUT_KEY = '_fod_analytics_optout';
 
 /**
- * Analytics wiring — PostHog (EU region) in CNIL-exemption mode by default.
+ * Analytics wiring — PostHog (EU region), audience-measurement only.
  *
- * Defaults (no banner required):
- *   - persistence: 'memory' — session-scoped visitor ID, cleared on tab close
+ * Defaults (no banner — CNIL audience-measurement exemption):
+ *   - persistence: 'localStorage+cookie' — a random visitor ID kept 365 days
+ *     in a first-party cookie (ph_<key>_posthog) + localStorage, so returning
+ *     visitors and retention can be measured. No identify(), no person props.
+ *   - capture_pageview: 'history_change' — Next.js client-side navigations
+ *     count as pageviews (plain `true` only fires on the initial hard load).
  *   - disable_session_recording: true — replay only fires if user opts in
  *   - autocapture: false — we have precise custom events, don't double-fire
  *
  * Opt-in upgrades (via ReplayOptIn footer widget):
- *   - localStorage '_fod_replay_optin' = '1' → enables session recording +
- *     persistent visitor ID (localStorage). Revocable at any time.
+ *   - localStorage '_fod_replay_optin' = '1' → enables session recording.
+ *     Revocable at any time.
  *
  * Opt-out:
  *   - localStorage '_fod_analytics_optout' = '1' or `navigator.globalPrivacyControl`
- *     → all tracking disabled, no events sent at all.
+ *     → all tracking disabled, no events sent at all, stored visitor ID reset.
  */
 
 let initialized = false;
@@ -62,9 +66,9 @@ function initPostHog() {
   posthog.init(POSTHOG_KEY, {
     api_host: POSTHOG_HOST,
     ui_host: 'https://eu.posthog.com',
-    persistence: optedInReplay ? 'localStorage+cookie' : 'memory',
+    persistence: 'localStorage+cookie',
     disable_session_recording: !optedInReplay,
-    capture_pageview: true,
+    capture_pageview: 'history_change',
     capture_pageleave: true,
     autocapture: false,
     person_profiles: 'identified_only',
@@ -177,7 +181,6 @@ export function enableReplay() {
     /* storage disabled */
   }
   if (!initialized) initPostHog();
-  posthog.set_config({ persistence: 'localStorage+cookie' });
   posthog.startSessionRecording();
 }
 
@@ -190,7 +193,6 @@ export function disableReplay() {
   }
   if (initialized) {
     posthog.stopSessionRecording();
-    posthog.set_config({ persistence: 'memory' });
   }
 }
 
@@ -203,8 +205,11 @@ export function optOutAnalytics() {
     /* storage disabled */
   }
   if (initialized) {
-    posthog.opt_out_capturing();
     posthog.stopSessionRecording();
+    // Drop the stored visitor ID, then opt out (reset() also clears PostHog's
+    // own consent flag, so the opt-out must come last).
+    posthog.reset();
+    posthog.opt_out_capturing();
   }
 }
 
