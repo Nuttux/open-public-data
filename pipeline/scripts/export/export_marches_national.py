@@ -40,7 +40,7 @@ MANIFEST_FILE = PIPELINE_ROOT.parent / "website" / "src" / "data" / "communes-ma
 SOURCE_LABEL = "Marchés publics (DECP consolidé, data.gouv.fr)"
 SOURCE_URL = "https://www.data.gouv.fr/fr/datasets/donnees-essentielles-de-la-commande-publique-consolidees-format-tabulaire/"
 SOURCE_PIPELINE = "DECP parquet → dbt national (mart_marches_national) → export_marches_national.py"
-COVERAGE_NOTE = "DECP : marchés ≥ 40 000 € HT (obligation de publication). Couverture partielle (~50-70 %) — les petits marchés ne sont pas publiés."
+COVERAGE_NOTE = "Marchés de plus de 40 000 € HT déclarés à la notification (DECP) : montants des contrats, pas les paiements. Les plus petits marchés ne sont pas publiés."
 BUCKET_BASE = "https://storage.googleapis.com/qipu-communes-budget/communes-marches"
 
 
