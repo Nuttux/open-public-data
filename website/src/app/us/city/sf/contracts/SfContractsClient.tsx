@@ -9,12 +9,13 @@ import SfMoneyBar from "@/components/us/SfMoneyBar";
 import Tip from "@/components/fusion/Tip";
 import { useT } from "@/lib/localeContext";
 import { fmtUsdCompact } from "@/lib/us/format";
+import type { SfActiveDigest } from "./page";
 import SfContractsSearch from "./SfContractsSearch";
 import ChartSource from "@/components/fusion/ChartSource";
 import SfSourceFooter from "@/components/us/SfSourceFooter";
 import { deptSlug } from "@/lib/us/sf-budget-slugs";
-import { FAMILY_LABELS, contractLabel, deptDisplayName, typeLabel, typeSlug } from "./us-sf-contracts-types";
-import type { SfContractsActive, SfContractsOverview } from "./us-sf-contracts-types";
+import { FAMILY_LABELS, deptDisplayName, typeLabel, typeSlug } from "./us-sf-contracts-types";
+import type { SfContractsOverview } from "./us-sf-contracts-types";
 import type { SfDeptBar, SfPrimesData } from "./data";
 
 /**
@@ -61,7 +62,7 @@ export default function SfContractsClient({
   deptBars,
 }: {
   overview: SfContractsOverview;
-  active: SfContractsActive;
+  active: SfActiveDigest;
   primes: SfPrimesData;
   deptBars: SfDeptBar[];
 }) {
@@ -81,17 +82,8 @@ export default function SfContractsClient({
   // Slices are sums over the exported active rows — the same arithmetic the
   // BarRow lists did, rendered as one bar instead of three lists.
   const activeAgreed = primes.active_agreed_usd;
-  const typeSlices = (() => {
-    const by = new Map<string, { amount: number; count: number }>();
-    for (const r of active.rows) {
-      if (!r.contract_type) continue;
-      const cur = by.get(r.contract_type) ?? { amount: 0, count: 0 };
-      cur.amount += r.agreed_usd;
-      cur.count += 1;
-      by.set(r.contract_type, cur);
-    }
-    return [...by.entries()].map(([k, v]) => ({ theme: typeLabel(k), raw: k, ...v }));
-  })();
+  // Sums over the active rows, computed once on the server (page.tsx digest).
+  const typeSlices = active.types.map((v) => ({ theme: typeLabel(v.raw), raw: v.raw, amount: v.amount, count: v.count }));
   const deptSlices = deptBars.map((d) => ({
     theme: deptDisplayName(d.name),
     raw: d.code,
@@ -103,25 +95,16 @@ export default function SfContractsClient({
   // answers "which contracts are the big ones", and the sole-source ones are
   // reachable through the search filter rather than their own section.
   const contractSlices = (() => {
-    const top = [...active.rows].sort((a, b) => b.agreed_usd - a.agreed_usd).slice(0, 8);
+    const top = active.top;
     // Two different contracts can share a plain-English title (both McKesson
     // pharmaceutical agreements read "Pharmaceuticals purchasing"), so add the
     // supplier where a title repeats — otherwise the reader sees the same row
     // twice with no way to tell them apart.
     const seen = new Map<string, number>();
-    for (const r of top) {
-      const l = contractLabel(r);
-      seen.set(l, (seen.get(l) ?? 0) + 1);
-    }
+    for (const r of top) seen.set(r.label, (seen.get(r.label) ?? 0) + 1);
     return top.map((r) => {
-      const base = contractLabel(r);
-      const dup = (seen.get(base) ?? 0) > 1 && r.prime;
-      return {
-        theme: dup ? `${base} — ${r.prime}` : base,
-        raw: r.contract_no,
-        amount: r.agreed_usd,
-        count: 1,
-      };
+      const dup = (seen.get(r.label) ?? 0) > 1 && r.prime;
+      return { theme: dup ? `${r.label} — ${r.prime}` : r.label, raw: r.contract_no, amount: r.agreed_usd, count: 1 };
     });
   })();
 
@@ -142,22 +125,7 @@ export default function SfContractsClient({
   // is telling the reader two different things while looking like one.
   // `authority_family` is on every active row, so this is the same arithmetic
   // as typeSlices and deptSlices, over the same denominator.
-  const authoritySlices = (() => {
-    const by = new Map<string, { amount: number; count: number }>();
-    for (const r of active.rows) {
-      const fam = r.authority_family;
-      if (!fam) continue;
-      const cur = by.get(fam) ?? { amount: 0, count: 0 };
-      cur.amount += r.agreed_usd;
-      cur.count += 1;
-      by.set(fam, cur);
-    }
-    return [...by.entries()].map(([fam, v]) => ({
-      theme: FAMILY_LABELS[fam] ?? fam,
-      raw: fam,
-      ...v,
-    }));
-  })();
+  const authoritySlices = active.authorities.map((v) => ({ theme: FAMILY_LABELS[v.raw] ?? v.raw, raw: v.raw, amount: v.amount, count: v.count }));
 
   // StackedBarTheme draws at most 8 segments but legends up to 12, and folds
   // whatever it was not given into "Other" using `total`. Handing it exactly 8
@@ -326,20 +294,16 @@ export default function SfContractsClient({
               }
               subtitle={fill(t("us.sf.contracts.s05.sub"), { n: nfInt.format(active.n_rows) })}
             />
-            <SfContractsSearch rows={active.rows} />
+            <SfContractsSearch rowsUrl={active.rowsUrl} nRows={active.n_rows} />
             <p className="fx-note" style={{ marginTop: 16 }}>
               {fill(t("us.sf.contracts.s05.note"), {
                 // dq.n_paid_exceeds_agreed counts the whole register; the table
                 // above it shows only active contracts. Both numbers, labelled.
                 n: nfInt.format(dq.n_paid_exceeds_agreed),
-                nActive: nfInt.format(active.rows.filter((r) => r.paid_exceeds_agreed).length),
+                nActive: nfInt.format(active.n_paid_exceeds_agreed),
                 // Only these few can be read as a real gap; on the rest the
                 // register fails its own agreed = paid + remaining identity.
-                nRecon: nfInt.format(
-                  active.rows.filter(
-                    (r) => r.paid_exceeds_agreed && r.src_arithmetic_consistent === true,
-                  ).length,
-                ),
+                nRecon: nfInt.format(active.n_paid_exceeds_agreed_reconciled),
               })}
             </p>
             <ChartSource
@@ -356,7 +320,7 @@ export default function SfContractsClient({
             n: nfInt.format(dq.n_paid_exceeds_agreed),
             // Say plainly how far the generated text reaches. It is partial and
             // the reader should know that without having to notice it.
-            nGen: nfInt.format(active.rows.filter((r) => r.title_clear).length),
+            nGen: nfInt.format(active.n_title_clear),
           })}
           source={{ name: overview.source.name, href: overview.source.source_url }}
           sourcesAnchor="sec-contracts"

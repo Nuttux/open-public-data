@@ -95,7 +95,30 @@ function PaidBar({ row, t }: { row: SfActiveRow; t: (k: string) => string }) {
   );
 }
 
-export default function SfContractsSearch({ rows }: { rows: SfActiveRow[] }) {
+/**
+ * The rows (5 000 active contracts, 3.3 MB) are fetched here in the browser
+ * from the JSON export the footer already links, instead of travelling inline
+ * in the page HTML. Until they arrive the box says so; crawlers get the page
+ * without them, which is what they need.
+ */
+export default function SfContractsSearch({ rowsUrl, nRows }: { rowsUrl: string; nRows: number }) {
+  const [rows, setRows] = useState<SfActiveRow[]>([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    let alive = true;
+    fetch(rowsUrl)
+      .then((r) => r.json())
+      .then((d: { rows?: SfActiveRow[] }) => {
+        if (alive) setRows(d.rows ?? []);
+      })
+      .catch(() => {})
+      .finally(() => {
+        if (alive) setLoading(false);
+      });
+    return () => {
+      alive = false;
+    };
+  }, [rowsUrl]);
   const t = useT();
   const track = useTrack();
   const trackDebounced = useDebouncedTrack(700);
@@ -323,6 +346,7 @@ export default function SfContractsSearch({ rows }: { rows: SfActiveRow[] }) {
 
       <div className="fx-search-meta">
         <span>
+          {loading ? <>{`Loading ${nfInt.format(nRows)} contracts… `}</> : null}
           {contextLabel} · <b>{nfInt.format(filtered.length)}{" "}
           {filtered.length === 1
             ? t("us.sf.contracts.search.contract_s")
