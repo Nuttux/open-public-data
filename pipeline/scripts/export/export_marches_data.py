@@ -46,11 +46,18 @@ def fetch_marches(client: bigquery.Client, year: int) -> list:
 
     Émet les champs Paris + l'enrichissement DECP (NULL quand pas matché).
     """
+    # Tri STABLE. `ORDER BY montant_max DESC` seul laissait BigQuery ranger les
+    # ex-æquo (montants ronds, NULL) dans un ordre différent à chaque run :
+    # le 2026-09-08, ~6 900 lignes changeaient de place entre deux exports
+    # identiques en contenu, et le gate de parité — puis chaque refresh auto —
+    # y voyait « un chiffre publié a changé ». Les tie-breakers ci-dessous
+    # identifient une ligne de façon unique quelle que soit son origine
+    # (numero_marche est NULL côté DECP-only).
     query = f"""
     SELECT *
     FROM `{PROJECT_ID}.{DATASET}.mart_marches_fournisseurs`
     WHERE annee = {year}
-    ORDER BY montant_max DESC
+    ORDER BY montant_max DESC, numero_marche, fournisseur_siret, date_notification, objet
     """
     results = []
     for row in client.query(query).result():

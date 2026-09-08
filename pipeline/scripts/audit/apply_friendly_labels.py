@@ -80,14 +80,21 @@ def walk(obj, mapping: dict[str, str], stats: Counter):
 
 
 def process_file(path: Path, mapping: dict[str, str]) -> int:
-    with path.open() as f:
-        data = json.load(f)
+    original = path.read_text(encoding="utf-8")
+    data = json.loads(original)
     stats: Counter = Counter()
     walk(data, mapping, stats)
     total = sum(stats.values())
+    # Byte-idempotent : on n'écrit que si le contenu change vraiment, et avec
+    # la même convention que stamp_licenses.py (newline final). Avant, une
+    # entrée identité du seed (libellé == libellé grand-public) comptait comme
+    # « rewritten », le fichier était re-dumpé à l'identique SANS newline final,
+    # et l'arbre git ressortait sale à chaque run — le refresh auto aurait vu
+    # « quelque chose a changé » tous les lundis sans qu'un chiffre ne bouge.
     if total > 0:
-        with path.open("w") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
+        new_text = json.dumps(data, ensure_ascii=False, indent=2) + "\n"
+        if new_text != original:
+            path.write_text(new_text, encoding="utf-8")
     return total
 
 

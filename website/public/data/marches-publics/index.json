@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-26T20:49:54.215534",
+  "generated_at": "2026-09-08T23:23:47.224250",
   "source": "dbt marts (mart_marches_par_nature, mart_marches_fournisseurs)",
   "note": "Les montants sont des enveloppes pluriannuelles (plafonds contractuels), pas des dépenses annuelles.",
   "availableYears": [
@@ -25,7 +25,7 @@
     },
     "2025": {
       "nb_marches": 1122,
-      "enveloppe_max_totale": 1608151115.9400003
+      "enveloppe_max_totale": 1608151115.9400005
     },
     "2024": {
       "nb_marches": 1762,
@@ -37,7 +37,7 @@
     },
     "2022": {
       "nb_marches": 1286,
-      "enveloppe_max_totale": 3934593902.84
+      "enveloppe_max_totale": 3934593902.8399997
     },
     "2021": {
       "nb_marches": 1570,
@@ -73,7 +73,7 @@
     },
     "2013": {
       "nb_marches": 1713,
-      "enveloppe_max_totale": 1901057959.8699994
+      "enveloppe_max_totale": 1901057959.8699996
     }
   },
   "filters": {
