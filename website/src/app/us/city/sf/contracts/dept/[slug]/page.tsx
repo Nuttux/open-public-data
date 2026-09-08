@@ -8,6 +8,7 @@ import { deptDisplayName } from "../../us-sf-contracts-types";
 import { loadSfContractDept, sfContractDeptSlugs } from "../../data";
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { contractDeptAnswer } from "@/lib/us/sf-answers";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 type Params = { slug: string };
 
@@ -54,6 +55,7 @@ export default async function SfDeptContractsPage({ params }: { params: Promise<
             What this department buys, and from whom · department code {d.code}
           </p>
           <p className="fx-page-lede fx-answer">{contractDeptAnswer({ label, n_active: d.n_active, activeAgreedUsd: d.activeAgreedUsd }).answer}</p>
+          <PageJsonLd title={contractDeptAnswer({ label, n_active: d.n_active, activeAgreedUsd: d.activeAgreedUsd }).title} description={contractDeptAnswer({ label, n_active: d.n_active, activeAgreedUsd: d.activeAgreedUsd }).answer} path={`/us/city/sf/contracts/dept/${slug}`} locale={"en"} creator="City and County of San Francisco" spatialCoverage="San Francisco, California" />
         </div>
       </section>
       <div className="fx-fiche-wrap">

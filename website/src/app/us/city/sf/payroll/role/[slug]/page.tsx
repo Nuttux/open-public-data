@@ -7,6 +7,7 @@ import SfPayrollRoleFiche from "@/components/us/SfPayrollRoleFiche";
 import { loadSfPayrollRole, sfPayrollRoleSlugs } from "@/lib/us/sf-payroll-entities";
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { payrollRoleAnswer } from "@/lib/us/sf-answers";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 type Params = { slug: string };
 
@@ -44,6 +45,7 @@ export default async function SfPayrollRolePage({ params }: { params: Promise<Pa
           <h1 className="fx-page-title">{d.label}</h1>
           <p className="fx-page-lede">A job code, grouped under {d.family}</p>
           <p className="fx-page-lede fx-answer">{payrollRoleAnswer(d).answer}</p>
+          <PageJsonLd title={payrollRoleAnswer(d).title} description={payrollRoleAnswer(d).answer} path={`/us/city/sf/payroll/role/${slug}`} locale={"en"} creator="City and County of San Francisco" spatialCoverage="San Francisco, California" />
         </div>
       </section>
       <div className="fx-fiche-wrap">

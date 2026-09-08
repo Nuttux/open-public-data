@@ -7,6 +7,7 @@ import SfPayrollFamilyFiche from "@/components/us/SfPayrollFamilyFiche";
 import { loadSfPayrollFamily, sfPayrollFamilySlugs } from "@/lib/us/sf-payroll-family";
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { payrollFamilyAnswer } from "@/lib/us/sf-answers";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 type Params = { slug: string };
 
@@ -44,6 +45,7 @@ export default async function SfPayrollFamilyPage({ params }: { params: Promise<
           <h1 className="fx-page-title">{d.family}</h1>
           <p className="fx-page-lede">A family of city jobs</p>
           <p className="fx-page-lede fx-answer">{payrollFamilyAnswer(d).answer}</p>
+          <PageJsonLd title={payrollFamilyAnswer(d).title} description={payrollFamilyAnswer(d).answer} path={`/us/city/sf/payroll/family/${slug}`} locale={"en"} creator="City and County of San Francisco" spatialCoverage="San Francisco, California" />
         </div>
       </section>
       <div className="fx-fiche-wrap">

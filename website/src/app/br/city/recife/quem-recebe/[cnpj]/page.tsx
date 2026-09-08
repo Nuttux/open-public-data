@@ -6,6 +6,7 @@ import RecifeRecebedorFiche from "@/components/br/RecifeRecebedorFiche";
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { recipientAnswer } from "@/lib/br/recife-answers";
 import { recifeLocale } from "@/lib/br/recife-locale";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export async function generateMetadata({
   params,
@@ -33,6 +34,7 @@ export default async function RecebedorPage({ params }: { params: Promise<{ cnpj
         </Link>
         <h1 className="fx-page-title">{rec.nome}</h1>
         <p className="fx-page-lede fx-answer">{recipientAnswer(rec, locale).answer}</p>
+        <PageJsonLd title={recipientAnswer(rec, locale).title} description={recipientAnswer(rec, locale).answer} path={`/br/city/recife/quem-recebe/${cnpj}`} locale={locale} creator="Prefeitura do Recife" spatialCoverage="Recife, Pernambuco" />
       </div>
       <div className="fx-fiche fx-fiche-shell">
         <RecifeRecebedorFiche rec={detail} source={source} />

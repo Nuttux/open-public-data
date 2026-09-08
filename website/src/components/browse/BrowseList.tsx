@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { V3Amt, V3Row } from "@/components/fiche/v3";
 import type { BrowseItem } from "@/lib/seo/browse";
+import PageJsonLd from "@/components/seo/PageJsonLd";
+import type { SiteLocale } from "@/lib/site-locale";
 
 /**
  * A browse index page body: a title that says what the list is, one line of
@@ -21,6 +23,8 @@ export default function BrowseList({
   pager,
   siblings,
   siblingsLabel,
+  seoPath,
+  locale,
 }: {
   kicker: string;
   kickerHref: string;
@@ -32,6 +36,9 @@ export default function BrowseList({
   pager?: { page: number; pages: number; hrefFor: (p: number) => string; prevLabel: string; nextLabel: string; pageLabel: string };
   siblings?: BrowseNav[];
   siblingsLabel?: string;
+  /** Path + language for the BreadcrumbList structured data. */
+  seoPath?: string;
+  locale?: SiteLocale;
 }) {
   return (
     <>
@@ -44,6 +51,7 @@ export default function BrowseList({
             {title}
           </h1>
           <p className="fx-page-lede fx-answer">{intro}</p>
+          {seoPath && locale ? <PageJsonLd title={title} description={intro} path={seoPath} locale={locale} dataset={false} /> : null}
           {rail && rail.length > 0 ? (
             <nav aria-label={railLabel} className="fx-browse-rail">
               {rail.map((r) =>

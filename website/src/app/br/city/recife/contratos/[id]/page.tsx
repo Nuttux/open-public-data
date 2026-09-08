@@ -6,6 +6,7 @@ import RecifeContratoFiche from "@/components/br/RecifeContratoFiche";
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { contratoAnswer } from "@/lib/br/recife-answers";
 import { recifeLocale } from "@/lib/br/recife-locale";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export async function generateMetadata({
   params,
@@ -32,6 +33,7 @@ export default async function ContratoPage({ params }: { params: Promise<{ id: s
         </Link>
         <h1 className="fx-page-title">Contrato {found.contrato.numero ?? "sem número"}</h1>
         <p className="fx-page-lede fx-answer">{contratoAnswer(found.contrato, found.source, locale).answer}</p>
+        <PageJsonLd title={contratoAnswer(found.contrato, found.source, locale).title} description={contratoAnswer(found.contrato, found.source, locale).answer} path={`/br/city/recife/contratos/${id}`} locale={locale} creator="Prefeitura do Recife" spatialCoverage="Recife, Pernambuco" />
       </div>
       <div className="fx-fiche fx-fiche-shell">
         <RecifeContratoFiche c={found.contrato} source={found.source} />

@@ -83,6 +83,7 @@ export function makeAssociationsBrowse(city: string) {
   async function Page({ params }: Props) {
     const q = parse((await params).parts);
     if (!q) notFound();
+    const path = q.letter ? `${base}/${q.letter}${q.p > 1 ? `/${q.p}` : ""}` : base;
     const locale = await readLocale();
     const en = locale === "en";
     const counts = countByLetter(associationNames(city).map((a) => a.name));
@@ -104,6 +105,8 @@ export function makeAssociationsBrowse(city: string) {
       : `${intFr(total, "fr")} associations et organismes, chacun avec sa page. Choisissez une lettre${q.letter ? ` : ${intFr(counts.find((c) => c.letter === q.letter)?.count ?? 0, "fr")} à la lettre ${q.letter}` : ""}.`;
     return frChrome(
       <BrowseList
+        seoPath={path}
+        locale={locale}
         kicker={en ? `Who receives the City's grants` : `Qui reçoit les subventions de la Ville`}
         kickerHref={`/fr/city/${city}/subventions`}
         title={title}
@@ -153,6 +156,7 @@ export function makeFournisseursBrowse(city: string) {
   async function Page({ params }: Props) {
     const q = parse((await params).parts);
     if (!q) notFound();
+    const path = q.letter ? `${base}/${q.letter}${q.p > 1 ? `/${q.p}` : ""}` : base;
     const locale = await readLocale();
     const en = locale === "en";
     const list = fournisseurList(city);
@@ -168,6 +172,8 @@ export function makeFournisseursBrowse(city: string) {
     }
     return frChrome(
       <BrowseList
+        seoPath={path}
+        locale={locale}
         kicker={en ? "Public contracts of the City" : "Les marchés publics de la Ville"}
         kickerHref={`/fr/city/${city}/marches`}
         title={q.letter ? (en ? `Suppliers starting with ${q.letter}` : `Fournisseurs, lettre ${q.letter}`) : en ? `Every supplier of the City of ${cityNom}, A to Z` : `Tous les fournisseurs de la Ville de ${cityNom}, de A à Z`}
@@ -216,6 +222,7 @@ export function makeContratsBrowse(city: string) {
   async function Page({ params }: Props) {
     const q = parse((await params).parts);
     if (!q) notFound();
+    const path = q.year ? `${base}/${q.year}${q.p > 1 ? `/${q.p}` : ""}` : base;
     const locale = await readLocale();
     const en = locale === "en";
     const years = marchesYears(city);
@@ -233,6 +240,8 @@ export function makeContratsBrowse(city: string) {
     }
     return frChrome(
       <BrowseList
+        seoPath={path}
+        locale={locale}
         kicker={en ? "Public contracts of the City" : "Les marchés publics de la Ville"}
         kickerHref={`/fr/city/${city}/marches`}
         title={q.year ? (en ? `Contracts notified in ${q.year}` : `Marchés notifiés en ${q.year}`) : en ? `Every public contract of the City of ${cityNom}, by year` : `Tous les marchés publics de la Ville de ${cityNom}, par année`}
@@ -283,6 +292,7 @@ export function makeProjetsBrowse() {
   async function Page({ params }: Props) {
     const q = parse((await params).parts);
     if (!q) notFound();
+    const path = q.year ? `${base}/${q.year}${q.arr != null ? `/${q.arr}` : ""}` : base;
     const locale = await readLocale();
     const en = locale === "en";
     const years = projetYears();
@@ -299,6 +309,8 @@ export function makeProjetsBrowse() {
     }
     return frChrome(
       <BrowseList
+        seoPath={path}
+        locale={locale}
         kicker={en ? "The City of Paris's investments" : "Les investissements de la Ville de Paris"}
         kickerHref="/fr/city/paris/investissements"
         title={q.year ? (q.arr != null ? (en ? `Projects in ${q.year}, ${arrLabel(q.arr, true)} arrondissement` : `Projets ${q.year}, ${arrLabel(q.arr, false)} arrondissement`) : en ? `Projects in ${q.year}, by arrondissement` : `Projets ${q.year}, par arrondissement`) : en ? "Every investment project, by year" : "Tous les projets d'investissement, par année"}
@@ -343,12 +355,15 @@ export function makeSfPayeesBrowse() {
   async function Page({ params }: Props) {
     const q = parse((await params).parts);
     if (!q) notFound();
+    const path = q.letter ? `${base}/${q.letter}` : base;
     const counts = countByLetter(sfPayeeNames());
     const total = counts.reduce((s, c) => s + c.count, 0);
     const items = q.letter ? sfPayeeItems(q.letter) : [];
     if (q.letter && items.length === 0) notFound();
     return (
       <BrowseList
+        seoPath={path}
+        locale={"en"}
         kicker="Who gets paid in San Francisco"
         kickerHref="/us/city/sf/who-gets-paid"
         title={q.letter ? `Payees starting with ${q.letter}` : "Every payee with a page, A to Z"}
@@ -395,6 +410,7 @@ export function makeRecifeRecipientsBrowse() {
   async function Page({ params }: Props) {
     const q = parse((await params).parts);
     if (!q) notFound();
+    const path = q.letter ? `${base}/${q.letter}${q.p > 1 ? `/${q.p}` : ""}` : base;
     const locale = await recifeLocale();
     const en = locale === "en";
     const counts = countByLetter(recifeRecipientNames());
@@ -410,6 +426,8 @@ export function makeRecifeRecipientsBrowse() {
     return (
       <main className="fx-wrap" style={{ paddingBottom: 64 }}>
         <BrowseList
+        seoPath={path}
+        locale={locale}
           kicker={en ? "Who gets paid in Recife" : "Quem recebe da Prefeitura do Recife"}
           kickerHref="/br/city/recife/quem-recebe"
           title={q.letter ? (en ? `Payees starting with ${q.letter}` : `Letra ${q.letter}`) : en ? "Every organisation paid by the City, A to Z" : "Todas as organizações pagas pela Prefeitura, de A a Z"}

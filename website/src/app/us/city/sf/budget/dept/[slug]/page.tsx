@@ -18,6 +18,7 @@ import { sfPayrollDeptSlugs } from "@/lib/us/sf-payroll-entities";
 import { payrollDeptSlug } from "@/lib/us/sf-payroll-slugs";
 import { sfContractDeptHref } from "@/app/us/city/sf/contracts/data";
 import { characterSlug, deptSlug } from "@/lib/us/sf-budget-slugs";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 type Params = { slug: string };
 type SP = { year?: string };
@@ -113,6 +114,7 @@ export default async function SfDeptPage({
             {dept.spending ? <> · {fmtUsdCompact(dept.spending.total_usd)} adopted (FY{year})</> : null}
           </p>
           <p className="fx-page-lede fx-answer">{budgetDeptAnswer(dept, year).answer}</p>
+          <PageJsonLd title={budgetDeptAnswer(dept, year).title} description={budgetDeptAnswer(dept, year).answer} path={`/us/city/sf/budget/dept/${slug}`} locale={"en"} creator="City and County of San Francisco" spatialCoverage="San Francisco, California" />
         </div>
       </section>
       <div className="fx-fiche-wrap">

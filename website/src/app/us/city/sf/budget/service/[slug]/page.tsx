@@ -13,6 +13,7 @@ import {
 import { fmtUsdCompact } from "@/lib/us/format";
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { budgetServiceAnswer } from "@/lib/us/sf-answers";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 type Params = { slug: string };
 type SP = { year?: string; side?: string };
@@ -72,6 +73,7 @@ export default async function SfServicePage({
             (FY{year})
           </p>
           <p className="fx-page-lede fx-answer">{budgetServiceAnswer(s, year).answer}</p>
+          <PageJsonLd title={budgetServiceAnswer(s, year).title} description={budgetServiceAnswer(s, year).answer} path={`/us/city/sf/budget/service/${slug}`} locale={"en"} creator="City and County of San Francisco" spatialCoverage="San Francisco, California" />
         </div>
       </section>
       <div className="fx-fiche-wrap">

@@ -7,6 +7,7 @@ import SfPlaceFiche from "@/components/us/SfPlaceFiche";
 import { loadSfPlace, loadSfPlacesIndex } from "@/lib/us/sf-places-data";
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { placeAnswer } from "@/lib/us/sf-answers";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 type Params = { slug: string };
 
@@ -48,6 +49,7 @@ export default async function SfPlacePage({ params }: { params: Promise<Params> 
               fiche — the richer statement of the same fact. */}
           <p className="fx-page-lede">{place.kind}</p>
           <p className="fx-page-lede fx-answer">{placeAnswer(place).answer}</p>
+          <PageJsonLd title={placeAnswer(place).title} description={placeAnswer(place).answer} path={`/us/city/sf/places/place/${slug}`} locale={"en"} creator="City and County of San Francisco" spatialCoverage="San Francisco, California" />
         </div>
       </section>
       <div className="fx-fiche-wrap">

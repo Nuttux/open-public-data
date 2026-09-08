@@ -9,6 +9,7 @@ import { contractLabel } from "../../us-sf-contracts-types";
 import { contractPrimePayeeSlug } from "@/lib/us/sf-payees-data";
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { contractAnswer } from "@/lib/us/sf-answers";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 type Params = { no: string };
 
@@ -76,6 +77,7 @@ export default async function SfContractPage({ params }: { params: Promise<Param
             ) : null}
           </p>
           <p className="fx-page-lede fx-answer">{contractAnswer(fiche).answer}</p>
+          <PageJsonLd title={contractAnswer(fiche).title} description={contractAnswer(fiche).answer} path={`/us/city/sf/contracts/contract/${no}`} locale={"en"} creator="City and County of San Francisco" spatialCoverage="San Francisco, California" />
         </div>
       </section>
       <div className="fx-fiche-wrap">

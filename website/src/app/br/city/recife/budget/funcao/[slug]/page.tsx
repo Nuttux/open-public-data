@@ -6,6 +6,7 @@ import RecifeFuncaoFiche from "@/components/br/RecifeFuncaoFiche";
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { funcaoAnswer } from "@/lib/br/recife-answers";
 import { recifeLocale } from "@/lib/br/recife-locale";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -34,6 +35,7 @@ export default async function FuncaoPage({
         </Link>
         <h1 className="fx-page-title">{f.funcao}</h1>
         <p className="fx-page-lede fx-answer">{funcaoAnswer(f, locale).answer}</p>
+        <PageJsonLd title={funcaoAnswer(f, locale).title} description={funcaoAnswer(f, locale).answer} path={`/br/city/recife/budget/funcao/${slug}`} locale={locale} creator="Prefeitura do Recife" spatialCoverage="Recife, Pernambuco" />
       </div>
       <div className="fx-fiche fx-fiche-shell">
         <RecifeFuncaoFiche f={f} />

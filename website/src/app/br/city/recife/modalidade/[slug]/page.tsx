@@ -7,6 +7,7 @@ import { titleCasePt } from "@/lib/br/format";
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { modalidadeAnswer } from "@/lib/br/recife-answers";
 import { recifeLocale } from "@/lib/br/recife-locale";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -30,6 +31,7 @@ export default async function ModalidadePage({ params }: { params: Promise<{ slu
         </Link>
         <h1 className="fx-page-title">{titleCasePt(m.modalidade)}</h1>
         <p className="fx-page-lede fx-answer">{modalidadeAnswer(m, locale).answer}</p>
+        <PageJsonLd title={modalidadeAnswer(m, locale).title} description={modalidadeAnswer(m, locale).answer} path={`/br/city/recife/modalidade/${slug}`} locale={locale} creator="Prefeitura do Recife" spatialCoverage="Recife, Pernambuco" />
       </div>
       <div className="fx-fiche fx-fiche-shell">
         <RecifeModalidadeFiche m={modalidade} source={source} />

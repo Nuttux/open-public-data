@@ -8,6 +8,7 @@ import { loadSfCategory, sfCategorySlugs } from "@/lib/us/sf-spending";
 import { loadSfCategoryLinks } from "@/lib/us/sf-category-links";
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { categoryAnswer } from "@/lib/us/sf-answers";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 type Params = { slug: string };
 
@@ -54,6 +55,7 @@ export default async function SfCategoryPage({
           <h1 className="fx-page-title">{d.label}</h1>
           <p className="fx-page-lede">A spending category in the City&rsquo;s payment ledger</p>
           <p className="fx-page-lede fx-answer">{categoryAnswer(d).answer}</p>
+          <PageJsonLd title={categoryAnswer(d).title} description={categoryAnswer(d).answer} path={`/us/city/sf/who-gets-paid/category/${slug}`} locale={"en"} creator="City and County of San Francisco" spatialCoverage="San Francisco, California" />
         </div>
       </section>
       <div className="fx-fiche-wrap">

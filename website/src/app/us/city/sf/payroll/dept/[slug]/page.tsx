@@ -7,6 +7,7 @@ import SfPayrollDeptFiche from "@/components/us/SfPayrollDeptFiche";
 import { loadSfPayrollDept, sfPayrollDeptSlugs } from "@/lib/us/sf-payroll-entities";
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { payrollDeptAnswer } from "@/lib/us/sf-answers";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 type Params = { slug: string };
 
@@ -46,6 +47,7 @@ export default async function SfPayrollDeptPage({ params }: { params: Promise<Pa
             A city department, on the payroll — {d.organizationGroup}
           </p>
           <p className="fx-page-lede fx-answer">{payrollDeptAnswer(d).answer}</p>
+          <PageJsonLd title={payrollDeptAnswer(d).title} description={payrollDeptAnswer(d).answer} path={`/us/city/sf/payroll/dept/${slug}`} locale={"en"} creator="City and County of San Francisco" spatialCoverage="San Francisco, California" />
         </div>
       </section>
       <div className="fx-fiche-wrap">

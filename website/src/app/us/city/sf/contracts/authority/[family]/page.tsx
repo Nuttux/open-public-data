@@ -7,6 +7,7 @@ import SfAuthorityFiche from "@/components/us/SfAuthorityFiche";
 import { loadSfContractAuthority, sfAuthorityFamilies } from "../../data";
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { contractAuthorityAnswer } from "@/lib/us/sf-answers";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 type Params = { family: string };
 
@@ -46,6 +47,7 @@ export default async function SfAuthorityPage({ params }: { params: Promise<Para
           </h1>
           <p className="fx-page-lede">How these contracts were legally awarded</p>
           <p className="fx-page-lede fx-answer">{contractAuthorityAnswer(d).answer}</p>
+          <PageJsonLd title={contractAuthorityAnswer(d).title} description={contractAuthorityAnswer(d).answer} path={`/us/city/sf/contracts/authority/${family}`} locale={"en"} creator="City and County of San Francisco" spatialCoverage="San Francisco, California" />
         </div>
       </section>
       <div className="fx-fiche-wrap">

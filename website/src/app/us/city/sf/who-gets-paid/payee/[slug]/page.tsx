@@ -8,6 +8,7 @@ import { loadSfPayee, loadSfPayeesIndex } from "@/lib/us/sf-payees-data";
 import { loadSfCategorySlugMap, loadSfDeptHrefs } from "@/lib/us/sf-category-links";
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { payeeAnswer } from "@/lib/us/sf-answers";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 type Params = { slug: string };
 
@@ -45,6 +46,7 @@ export default async function SfPayeePage({ params }: { params: Promise<Params> 
               title, then the KPI band carries the numbers ONCE). */}
           <h1 className="fx-page-title">{payee.name}</h1>
           <p className="fx-page-lede fx-answer">{payeeAnswer(payee).answer}</p>
+          <PageJsonLd title={payeeAnswer(payee).title} description={payeeAnswer(payee).answer} path={`/us/city/sf/who-gets-paid/payee/${slug}`} locale={"en"} creator="City and County of San Francisco" spatialCoverage="San Francisco, California" />
         </div>
       </section>
       <div className="fx-fiche-wrap">

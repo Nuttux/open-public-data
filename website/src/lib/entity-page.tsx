@@ -29,6 +29,7 @@ import { DetailDrawer, Navbar, Footer } from "@/components/fusion";
 import { finalizeEntityMetadata, readLocale } from "@/lib/seo";
 import type { SeoAnswer } from "@/lib/entities/seo-text";
 import RelatedLinks, { type RelatedBlock } from "@/components/fiche/RelatedLinks";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export type EntityLocale = "fr" | "en";
 export type EntityParams = Record<string, string>;
@@ -155,6 +156,12 @@ export function makeEntityPage<D>(cfg: EntityPageConfig<D>) {
     const body = cfg.page.body(d, locale);
     const seo = cfg.seo?.(d, locale, params) ?? null;
     const related = cfg.related?.(d, locale, params) ?? null;
+    // Structured data (BreadcrumbList + Dataset) for the answered page, on
+    // the path the entity config declares as canonical.
+    const declared = seo ? cfg.metadata(d, locale, params).alternates?.canonical : null;
+    const jsonLdPath = typeof declared === "string" && declared.startsWith("/") ? declared : null;
+    const city = jsonLdPath?.match(/^\/fr\/city\/([^/]+)/)?.[1];
+    const cityNom = city === "marseille" ? "Marseille" : "Paris";
     return (
       <div className="theme-fusion">
         <Navbar />
@@ -168,8 +175,14 @@ export function makeEntityPage<D>(cfg: EntityPageConfig<D>) {
               <div className="fx-wrap">
                 {cfg.page.header(d, locale)}
                 {seo ? <p className="fx-page-lede fx-answer">{seo.answer}</p> : null}
+                {seo && jsonLdPath ? (
+                  <PageJsonLd title={seo.title} description={seo.answer} path={jsonLdPath} locale={locale} creator={`Ville de ${cityNom}`} spatialCoverage={`${cityNom}, France`} />
+                ) : null}
               </div>
             </section>
+          ) : null}
+          {seo && jsonLdPath && !cfg.page.header ? (
+            <PageJsonLd title={seo.title} description={seo.answer} path={jsonLdPath} locale={locale} creator={`Ville de ${cityNom}`} spatialCoverage={`${cityNom}, France`} />
           ) : null}
           {cfg.page.bodyWrapper === "none" ? (
             <>

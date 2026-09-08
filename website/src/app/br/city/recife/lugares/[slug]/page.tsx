@@ -8,6 +8,7 @@ import { lugarAnswer } from "@/lib/br/recife-answers";
 import { recifeLocale } from "@/lib/br/recife-locale";
 import RelatedLinks, { type RelatedBlock, type RelatedRow } from "@/components/fiche/RelatedLinks";
 import { fmtBrlCompact } from "@/lib/br/format";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 /** « Veja também »: the works contracts on this place and the other places of its neighbourhood. */
 function lugarRelated(p: PlaceIndexEntry, slug: string, locale: "pt" | "en"): RelatedBlock {
@@ -53,6 +54,7 @@ export default async function LugarPage({ params }: { params: Promise<{ slug: st
         </Link>
         <h1 className="fx-page-title">{p.nome}</h1>
         <p className="fx-page-lede fx-answer">{lugarAnswer(p, locale).answer}</p>
+        <PageJsonLd title={lugarAnswer(p, locale).title} description={lugarAnswer(p, locale).answer} path={`/br/city/recife/lugares/${slug}`} locale={locale} creator="Prefeitura do Recife" spatialCoverage="Recife, Pernambuco" />
       </div>
       <div className="fx-fiche fx-fiche-shell">
         <RecifeLugarFiche place={place} source={source} obras={loadPlaceObras(slug)} />

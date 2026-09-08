@@ -14,6 +14,7 @@ import {
 import { deptSlug } from "@/lib/us/sf-budget-slugs";
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { budgetDeptCharacterAnswer } from "@/lib/us/sf-answers";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 type Params = { slug: string; charSlug: string };
 type SP = { year?: string; side?: string };
@@ -76,6 +77,7 @@ export default async function SfDeptCharacterPage({
               are the first two tiles of the KPI band right below. */}
           <p className="fx-page-lede">{deptName}</p>
           <p className="fx-page-lede fx-answer">{budgetDeptCharacterAnswer(d, year).answer}</p>
+          <PageJsonLd title={budgetDeptCharacterAnswer(d, year).title} description={budgetDeptCharacterAnswer(d, year).answer} path={`/us/city/sf/budget/dept/${slug}/character/${charSlug}`} locale={"en"} creator="City and County of San Francisco" spatialCoverage="San Francisco, California" />
         </div>
       </section>
       <div className="fx-fiche-wrap">
