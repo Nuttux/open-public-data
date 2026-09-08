@@ -44,12 +44,41 @@ cd "$REPO_ROOT"
 if [[ -z "${GITHUB_ACTIONS:-}" ]]; then
   unset GOOGLE_APPLICATION_CREDENTIALS
 fi
+# Fichiers déjà modifiés AVANT nous : on ne les restaurera pas (travail local
+# en cours). Tout ce que NOUS salissons en dehors des OUTPUTS sera remis.
+DATA_REL="website/public/data"
+dirty_before=$(git diff --name-only -- "$DATA_REL" | sort)
+
 echo ">> running $SCRIPT ${SCRIPT_ARGS[*]:-}"
 if [[ ${#SCRIPT_ARGS[@]} -eq 0 ]]; then
   python3 "$SCRIPT" >/dev/null
 else
   python3 "$SCRIPT" "${SCRIPT_ARGS[@]}" >/dev/null
 fi
+
+# Les JSON committés ne sortent JAMAIS d'un export nu : export_all.py enchaîne
+# obligatoirement apply_friendly_labels.py (libellés grand public, name_original)
+# puis stamp_licenses.py (bloc `license` ODbL). Comparer un export nu au fichier
+# committé, c'est comparer deux étapes différentes du pipeline — le job
+# verify-exports de data-platform-audit a échoué sur exactement ça le 2026-09-09
+# (« $.license only in expected »), la première fois qu'il a tourné avec BQ.
+# Même correctif que check_export_parity.sh (étapes 2b/2c).
+echo ">> post: friendly labels + licence stamps"
+python3 pipeline/scripts/audit/apply_friendly_labels.py >/dev/null
+python3 pipeline/scripts/export/stamp_licenses.py >/dev/null
+
+restore_side_effects() {
+  # Remet les fichiers que les post-étapes ont touchés en dehors des OUTPUTS,
+  # sauf ceux qui étaient déjà modifiés avant l'appel.
+  local f
+  while IFS= read -r f; do
+    [[ -z "$f" ]] && continue
+    if ! grep -qxF "$f" <<<"$dirty_before" && ! printf '%s\n' "${OUTPUTS[@]}" | grep -qxF "$f"; then
+      git checkout -- "$f" 2>/dev/null || true
+    fi
+  done < <(git diff --name-only -- "$DATA_REL")
+}
+trap restore_side_effects EXIT
 
 DIFFER=0
 for out in "${OUTPUTS[@]}"; do
