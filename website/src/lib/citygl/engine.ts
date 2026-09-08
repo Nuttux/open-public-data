@@ -441,7 +441,18 @@ export class CityEngine {
      caps, heroes, street markings, street detail, surround, terrain, the
      instanced ones) is not on the list. `?release=0` keeps every array, for
      an A/B. */
-  private static readonly RELEASE_LAYERS: ReadonlySet<string> = new Set(["buildings", "streets"]);
+  /* ── AND SIX MORE LAYERS, AND THE LINES (2026-09-08) ──────────────────
+     MEASURED after the first release (`scripts/probes/heap.mjs`): 156 MB of
+     arrays still held. Of them the block tint (20), the rail (16), the bay
+     (11), the bikeways (6) and the uncovered roads (1) never touch an
+     attribute after upload — checked file by file for `needsUpdate` and
+     `.array` reads. The buildings' outline is a `LineSegments`, which the
+     walk below skipped and `stampLayer` never named: its index and ink,
+     20 MB, stayed. The street detail, the markings, the surround, the
+     terrain and the ground detail rewrite attributes and stay off the list. */
+  private static readonly RELEASE_LAYERS: ReadonlySet<string> = new Set([
+    "buildings", "streets", "block-tint", "rail", "rail-history", "bikeways", "water", "street-uncovered",
+  ]);
   private readonly releasedGeoms = new WeakSet<BufferGeometry>();
   private readonly sphereOf = new WeakMap<BufferAttribute, Sphere>();
   private releasedBytes = 0;
@@ -951,7 +962,10 @@ export class CityEngine {
    */
   private stampLayer(name: string): void {
     this.scene.traverse((o) => {
-      if (!(o as { isMesh?: boolean }).isMesh) return;
+      const k = o as { isMesh?: boolean; isLine?: boolean };
+      /* lines too: the buildings' outline is one, and unnamed it could not
+         be released — §AND SIX MORE LAYERS, AND THE LINES */
+      if (!(k.isMesh || k.isLine)) return;
       if (o.userData.layer !== undefined) return;
       o.userData.layer = name;
       if (!o.name) o.name = name;
@@ -1041,8 +1055,8 @@ export class CityEngine {
     const todo: BufferGeometry[] = [];
     const byPos = new Map<BufferAttribute, BufferGeometry[]>();
     this.scene.traverse((o) => {
-      const m = o as unknown as { isMesh?: boolean; geometry?: BufferGeometry };
-      if (!m.isMesh || !m.geometry) return;
+      const m = o as unknown as { isMesh?: boolean; isLine?: boolean; geometry?: BufferGeometry };
+      if (!(m.isMesh || m.isLine) || !m.geometry) return;
       if (!CityEngine.RELEASE_LAYERS.has(o.userData.layer as string)) return;
       const g = m.geometry;
       const pos = g.attributes.position as BufferAttribute | undefined;
