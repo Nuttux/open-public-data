@@ -20,6 +20,7 @@
    ═══════════════════════════════════════════════════════════════════════ */
 
 import { breathe } from "./breathe";
+import { ADAPT_GAP_CAP_MS, ADAPT_MAX_GAP_MS, ADAPT_RUNGS, ADAPT_SLOW_WINDOWS, ADAPT_WINDOW, SLOW_FRAME_MS, framesAreSlow, windowMedian } from "./quality";
 import {
   ACESFilmicToneMapping,
   type BufferAttribute,
@@ -1363,7 +1364,92 @@ export class CityEngine {
 
   invalidate(): void {
     this.dirty = true;
-    if (!this.raf && !this.disposed) this.raf = requestAnimationFrame(this.tick);
+    if (!this.raf && !this.disposed) {
+      /* whether this frame follows the last one or a pause — `sampleFrame` */
+      this.chained = performance.now() - this.lastFrameEnd < Math.max(ADAPT_MAX_GAP_MS, 2 * this.stats.lastFrameMs);
+      this.raf = requestAnimationFrame(this.tick);
+    }
+  }
+
+  /* ── ADAPTIVE QUALITY — `quality.ts` §ADAPTIVE ────────────────────────── */
+  private adaptiveOn = false;
+  private frameGaps: number[] = [];
+  private lastFrameAt = 0;
+  private lastFrameEnd = 0;
+  /** this frame was asked for within `ADAPT_MAX_GAP_MS` of the last one
+   *  ending — a drive, not a reader coming back from reading */
+  private chained = false;
+  private slowWindows = 0;
+  private lastMedian: number | null = null;
+  private rung = 0;
+  private slowFrameMs = SLOW_FRAME_MS;
+  /** told once per rung taken, with the median that took it */
+  onDegrade: ((rung: number, medianMs: number) => void) | null = null;
+
+  /** start judging frames — after the boot and the warm-up, so neither's
+   *  frames are counted against the GPU. `?slowms=N` moves the threshold
+   *  (0 makes the first window step down, for a probe). */
+  startAdaptive(): void {
+    if (this.adaptiveOn || this.disposed) return;
+    const m = typeof location !== "undefined" ? /[?&]slowms=(\d+)/.exec(location.search) : null;
+    if (m) this.slowFrameMs = Number(m[1]);
+    this.adaptiveOn = true;
+    this.frameGaps = [];
+    this.lastFrameAt = 0;
+  }
+
+  /** where the session stands: the rung taken (0 = nothing given up) and the
+   *  median of the last window, for a probe and for the analytics event */
+  get adaptive(): { on: boolean; rung: number; medianMs: number | null; slowMs: number } {
+    return { on: this.adaptiveOn, rung: this.rung, medianMs: this.lastMedian, slowMs: this.slowFrameMs };
+  }
+
+  private sampleFrame(now: number): void {
+    if (!this.adaptiveOn) return;
+    const last = this.lastFrameAt;
+    this.lastFrameAt = now;
+    if (!last) return;
+    /* ── A SLOW FRAME AND A PAUSE LOOK THE SAME FROM HERE ──────────────
+       Both are a long gap between ticks. The first cut capped the gap and
+       threw the long ones away as pauses — and a 6x-throttled drive, whose
+       every frame was 110 ms, never filled a window. What tells them apart
+       is WHEN the frame was asked for: a drive asks for the next frame as
+       the last one ends; a reader who stopped to read asks seconds later.
+       `invalidate` records which, and only a chained frame is a sample. */
+    if (!this.chained) { this.frameGaps = []; return; }
+    const gap = Math.min(now - last, ADAPT_GAP_CAP_MS);
+    this.frameGaps.push(gap);
+    if (this.frameGaps.length < ADAPT_WINDOW || this.rung >= ADAPT_RUNGS) return;
+    /* a full window: judged, then let go — windows do not overlap */
+    const median = windowMedian(this.frameGaps) ?? 0;
+    this.lastMedian = median;
+    const slow = framesAreSlow(this.frameGaps, this.slowFrameMs);
+    this.frameGaps = [];
+    this.slowWindows = slow ? this.slowWindows + 1 : 0;
+    if (this.slowWindows < ADAPT_SLOW_WINDOWS) return;
+    this.slowWindows = 0;
+    this.degrade();
+    this.onDegrade?.(this.rung, median);
+  }
+
+  /** one rung down. Mesh-level `castShadow` is safe to clear at runtime
+   *  (`scripts/probes/fps.mjs` has done it for months); the LIGHT's is not —
+   *  `light.ts` §setEnabled rides the intensity instead, and the map itself
+   *  is switched off at the renderer. */
+  private degrade(): void {
+    this.rung++;
+    if (this.rung === 1) {
+      this.scene.traverse((o) => {
+        const u = o.userData as { layer?: string };
+        if ((o as { isMesh?: boolean }).isMesh && (u.layer === "buildings" || u.layer === "caps")) {
+          o.castShadow = false;
+        }
+      });
+    } else if (this.rung === 2) {
+      this.renderer.shadowMap.enabled = false;
+      this.sun.setEnabled(false);
+    }
+    this.invalidate();
   }
 
   getStats(): EngineStats {
@@ -1558,6 +1644,8 @@ export class CityEngine {
     const info = this.renderer.info.render as unknown as {
       calls?: number; drawCalls?: number; triangles?: number;
     };
+    this.sampleFrame(t0);
+    this.lastFrameEnd = performance.now();
     this.stats = {
       frames: this.stats.frames + 1,
       lastFrameMs: performance.now() - t0,

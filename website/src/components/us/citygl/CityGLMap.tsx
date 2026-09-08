@@ -1620,7 +1620,10 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          READER BEATS THE WARM-UP. */
       const warm = () => {
         if (disposed || !engine) return;
-        void engine.warmBands([1, 2]);
+        /* and only once the bands are warm are frames judged — `engine.ts`
+           §ADAPTIVE QUALITY. A warm-up that a reader's wheel cut short still
+           resolves, so the judging always starts. */
+        void engine.warmBands([1, 2]).then(() => engine?.startAdaptive());
       };
       void Promise.allSettled([themeMarksDone, overlayDone]).then(() => {
         if (disposed) return;

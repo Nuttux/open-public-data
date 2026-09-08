@@ -271,3 +271,57 @@ function autoTier(): QualitySettings {
   const low = coarse || cores <= 4 || px > 6_000_000;
   return low ? { ...LOW } : { ...HIGH };
 }
+
+/* ── ADAPTIVE: WHAT A SLOW GPU GIVES UP, AND IN WHAT ORDER ───────────────
+   The tier above is decided at construction from what the device SAYS it
+   is. This is decided from what it DOES: the engine samples the interval
+   between consecutive painted frames while the reader is moving the camera
+   or the film is running, and when the median of a window is slow it steps
+   down one rung. Never back up — a session that has proved slow once is not
+   asked to prove it again on every hill.
+
+   MEASURED on this GPU (`scripts/probes/rungs.mjs`, vsync off, dpr 2):
+
+       camera        as is   bldg shadows off   dpr 1   shadow map off
+       whole city    66 fps        86            67           94
+       district      65            76            75          104
+       street        85           112            85          141
+
+   So the rungs are the two that moved the number: the buildings' and caps'
+   shadow casting first (the picture keeps its sun and the ground's own
+   shade), then the shadow map altogether. Dropping the device pixel ratio
+   bought nothing here and is not a rung until a fill-rate-bound GPU shows
+   it should be. */
+
+/** a frame slower than this is one the reader felt: three 60 Hz vsyncs,
+ *  20 fps. MEASURED: at 34 ms this machine's own dpr-2 whole-city drive
+ *  stepped down twice while a render ran in the background — a bar that a
+ *  good GPU under load clears is the wrong bar. */
+export const SLOW_FRAME_MS = 50;
+/** slow windows in a row before a rung is taken — one is a moment */
+export const ADAPT_SLOW_WINDOWS = 2;
+/** consecutive painted frames judged together */
+export const ADAPT_WINDOW = 24;
+/** a frame asked for later than this after the last one ended follows a
+ *  pause, not a drive, and is not a sample — `engine.ts` §A SLOW FRAME AND A
+ *  PAUSE LOOK THE SAME. Or later than two of the last frame's own draw
+ *  times, whichever is longer: a throttled browser hands the next frame
+ *  back late in proportion to how long the last one took. */
+export const ADAPT_MAX_GAP_MS = 100;
+/** a sample is capped here: a tab that lost its frames is not a slow GPU */
+export const ADAPT_GAP_CAP_MS = 1000;
+/** how many rungs there are to step down */
+export const ADAPT_RUNGS = 2;
+
+/** the median of a full window, or null while the window is short */
+export function windowMedian(gaps: readonly number[], window = ADAPT_WINDOW): number | null {
+  if (gaps.length < window) return null;
+  const w = gaps.slice(-window).sort((a, b) => a - b);
+  return w[Math.floor(w.length / 2)];
+}
+
+/** whether a window of frame gaps says the GPU is behind */
+export function framesAreSlow(gaps: readonly number[], slowMs = SLOW_FRAME_MS, window = ADAPT_WINDOW): boolean {
+  const m = windowMedian(gaps, window);
+  return m !== null && m > slowMs;
+}
