@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import type { PlaceEntry, PlacesConfig, PlacesSort } from "./types";
 import PlaceRow from "./PlaceRow";
@@ -28,6 +28,17 @@ export default function PlacesExplorer({
   const s = config.strings;
   const [query, setQuery] = useState("");
   const [famActive, setFamActive] = useState<Set<string>>(() => new Set(config.families.map((f) => f.key)));
+  // `?famille=culture` (ou `culture+sport`) pré-filtre la liste : c'est ce que
+  // promettent les rangées « 40 lieux culturels » des fiches de poste. Lu après
+  // le montage pour ne pas diverger du rendu serveur ; sans paramètre, tout.
+  useEffect(() => {
+    try {
+      const raw = new URLSearchParams(window.location.search).get("famille");
+      if (!raw) return;
+      const keys = raw.split(/[+,\s]+/).filter((k) => config.families.some((f) => f.key === k));
+      if (keys.length) setFamActive(new Set(keys));
+    } catch { /* pas de window (test) */ }
+  }, [config.families]);
   const [areaSel, setAreaSel] = useState("");
   const [sortKey, setSortKey] = useState<PlacesSort>(config.sorts[0]?.key ?? "name-asc");
   const [hovered, setHovered] = useState<string | null>(null);

@@ -4678,7 +4678,7 @@ export function loadPosteLinks(slug: string, year: number, city: string = "paris
     const idx = loadLieuxIndex();
     for (const fam of spec.lieux) {
       const n = idx.filter((l) => l.famille === fam).length;
-      if (n > 0) out.push({ kind: "lieux", href: `${base}/lieux`, label: fam, amount: null, count: n, year });
+      if (n > 0) out.push({ kind: "lieux", href: `${base}/lieux?famille=${fam}`, label: fam, amount: null, count: n, year });
     }
   }
   if (spec.page === "logement") out.push({ kind: "page", href: `${base}/logement`, label: "logement", amount: null, count: null, year });
