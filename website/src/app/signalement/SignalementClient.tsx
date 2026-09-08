@@ -8,7 +8,7 @@ import Button from "@/components/fusion/Button";
 import SectionHead from "@/components/fusion/SectionHead";
 import { useT, useLocale } from "@/lib/localeContext";
 
-type Status = "idle" | "submitting" | "success" | "error";
+type Status = "idle" | "submitting" | "success" | "dev" | "error";
 
 export default function SignalementClient() {
   const t = useT();
@@ -54,9 +54,11 @@ export default function SignalementClient() {
           website, // honeypot
         }),
       });
-      const data = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string };
+      const data = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string; dev_mode?: boolean };
       if (res.ok && data.ok) {
-        setStatus("success");
+        // dev_mode = hors production, rien n'est parti : on le dit, on ne
+        // remercie pas pour un message qui n'a pas été envoyé.
+        setStatus(data.dev_mode ? "dev" : "success");
       } else {
         setStatus("error");
         setErrorKey(data.error ?? "unknown");
@@ -71,6 +73,7 @@ export default function SignalementClient() {
     if (status !== "error") return "";
     if (errorKey === "description_too_short") return t("fx.signalement.err.desc_short");
     if (errorKey === "invalid_email") return t("fx.signalement.err.email");
+    if (errorKey === "mail_not_configured") return t("fx.signalement.err.unavailable");
     if (errorKey === "send_failed") return t("fx.signalement.err.send");
     return t("fx.signalement.err.generic");
   })();
@@ -105,10 +108,10 @@ export default function SignalementClient() {
               subtitle={t("fx.signalement.form.sub")}
             />
 
-            {status === "success" ? (
+            {status === "success" || status === "dev" ? (
               <div className="fx-signalement-success" role="status">
-                <h3>{t("fx.signalement.success.title")}</h3>
-                <p>{t("fx.signalement.success.body")}</p>
+                <h3>{t(status === "dev" ? "fx.signalement.devmode.title" : "fx.signalement.success.title")}</h3>
+                <p>{t(status === "dev" ? "fx.signalement.devmode.body" : "fx.signalement.success.body")}</p>
                 <div style={{ marginTop: 16, display: "flex", gap: 10, flexWrap: "wrap" }}>
                   <Button href="/corrections">{t("fx.signalement.success.btn.history")}</Button>
                   <Button href="/">{t("fx.signalement.success.btn.home")}</Button>
