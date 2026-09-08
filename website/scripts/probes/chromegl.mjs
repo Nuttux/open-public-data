@@ -1,0 +1,14 @@
+import { chromium } from 'playwright';
+import { ARGS, REF } from './x_common.mjs';
+const BASE = process.env.BASE || 'http://localhost:3007';
+const b = await chromium.launch({ args: ARGS });
+const p = await b.newPage({ viewport: { width: 1440, height: 900 } });
+const log = []; p.on('console', (m) => { if (m.type() === 'error') log.push(m.text().slice(0, 160)); });
+await p.goto(`${BASE}/us/city/sf/the-city?tiles=0&probe=1&gl=1`, { waitUntil: 'domcontentloaded', timeout: 120000 });
+await p.waitForFunction(() => window.__cityGL && !document.querySelector('.fx-city-loading'), null, { timeout: 180000 });
+await p.waitForTimeout(5000);
+console.log('backend', await p.evaluate(() => window.__cityGL.backend));
+await p.evaluate(async ([ref]) => { const e = window.__cityGL; e.setStep(1); e.setCamera({ cx: ref.cx, cy: ref.cy, scale: ref.scale * 4 }); e.invalidate(); await new Promise((r) => setTimeout(r, 2500)); e.renderNow(); await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))); }, [REF]);
+await p.screenshot({ path: `${process.env.OUT}/chromium-gl-district.jpg`, type: 'jpeg', quality: 85, clip: { x: 0, y: 200, width: 1144, height: 555 } });
+console.log([...new Set(log)].slice(0, 6).join('\n'));
+await b.close();

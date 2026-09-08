@@ -20,10 +20,14 @@
    ═══════════════════════════════════════════════════════════════════════ */
 
 import { breathe } from "./breathe";
+
+/** three's `InstanceNode` uniform-buffer ceiling — §INSTANCES ON WEBGL 2 */
+const INSTANCE_UBO_MAX = 1000;
 import { ADAPT_GAP_CAP_MS, ADAPT_MAX_GAP_MS, ADAPT_RUNGS, ADAPT_SLOW_WINDOWS, ADAPT_WINDOW, SLOW_FRAME_MS, framesAreSlow, windowMedian } from "./quality";
 import {
   ACESFilmicToneMapping,
   type BufferAttribute,
+  InstancedBufferAttribute,
   type BufferGeometry,
   DataTexture,
   EquirectangularReflectionMapping,
@@ -903,6 +907,7 @@ export class CityEngine {
   add(layer: CityLayer): void {
     this.layers.push(layer);
     this.stampLayer(layer.name);
+    this.padInstancesForWebGL();
     layer.onStep?.(this.step, this.zex(), this.descriptor.look.zexb);
     layer.onYear?.(this.year);
     this.seatWashes();
@@ -996,6 +1001,47 @@ export class CityEngine {
       o.userData.layer = name;
       if (!o.name) o.name = name;
     });
+    this.padInstancesForWebGL();
+  }
+
+  /**
+   * ── INSTANCES ON WEBGL 2: PAST THE UNIFORM BUFFER ──────────────────────
+   *
+   * three's `InstanceNode` keeps the matrices of an instanced mesh of up to
+   * `INSTANCE_UBO_MAX` instances in a UNIFORM buffer — "both backends have
+   * UBO max limited to 64kb", its comment says — and only past that count
+   * falls back to a vertex attribute. On WebGL 2 under macOS the limit is
+   * not 64 KB: `GL_MAX_UNIFORM_BLOCK_SIZE` is 16,384, so any instanced mesh
+   * of 257 to 1,000 instances fails to link — `Size of uniform block
+   * NodeBuffer_24598 in VERTEX shader exceeds GL_MAX_UNIFORM_BLOCK_SIZE`,
+   * `mat4 buffer24598[871]` — and is not drawn. MEASURED 2026-09-08 on the
+   * fallback in Chromium (`?gl=1`) and in WebKit alike: the district frame
+   * differed from WebGPU's by 40 % and 72 %, whole blocks of trees and
+   * ground detail gone. Any browser without WebGPU saw that city.
+   *
+   * The way past it is the count itself: a matrix attribute padded to one
+   * past the threshold takes the attribute path, and `mesh.count` still says
+   * how many to draw. WebGL only — on WebGPU the uniform path stands and the
+   * padding would be 64 KB a mesh for nothing.
+   */
+  private padInstancesForWebGL(): void {
+    if (this.backend !== "webgl2") return;
+    this.scene.traverse((o) => {
+      const m = o as unknown as {
+        isInstancedMesh?: boolean;
+        instanceMatrix: InstancedBufferAttribute;
+        userData: { padded?: boolean };
+      };
+      if (!m.isInstancedMesh || m.userData.padded) return;
+      const im = m.instanceMatrix;
+      if (im.count > INSTANCE_UBO_MAX) return;
+      const arr = new Float32Array((INSTANCE_UBO_MAX + 1) * 16);
+      arr.set(im.array as Float32Array);
+      const next = new InstancedBufferAttribute(arr, 16);
+      next.setUsage(im.usage);
+      m.instanceMatrix = next;
+      m.userData.padded = true;
+    });
   }
 
   /**
@@ -1042,11 +1088,23 @@ export class CityEngine {
        its 1,221 MB, the last uploads having landed after the last scan. */
     this.releaseScanAt = this.stats.frames + 10;
     const backend = (this.renderer as unknown as {
-      backend?: { get(o: object): { buffer?: unknown; bufferGPU?: unknown } };
+      backend?: {
+        has(o: object): boolean;
+        get(o: object): { buffer?: unknown; bufferGPU?: unknown };
+      };
     }).backend;
     if (!backend) return;
+    /* `has` BEFORE `get`: a backend's `get` makes an empty record for an
+       object it has not met, and the WebGL 2 backend then takes that record
+       for an attribute it created — the VAO got a null type, the draw had
+       "no buffer bound to enabled attribute", and every chunk asked before
+       its first draw was never drawn on that backend. MEASURED 2026-09-08
+       (`scripts/probes/glshader.mjs`): 305 such events with the release on,
+       none with `?release=0`. WebGPU's `get` did not mind, which is why it
+       went unseen for a week. */
     const uploaded = (a: BufferAttribute): boolean => {
       if (a.array.length === 0) return true;
+      if (!backend.has(a)) return false;
       const d = backend.get(a);
       return !!(d.buffer || d.bufferGPU);
     };

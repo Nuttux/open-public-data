@@ -1,0 +1,11 @@
+import { webkit } from 'playwright';
+const BASE = process.env.BASE || 'http://localhost:3007';
+const b = await webkit.launch();
+const p = await b.newPage({ viewport: { width: 1440, height: 900 } });
+const log = []; p.on('console', (m) => { if (m.type() === 'error' || m.type() === 'warning') log.push(m.type() + ': ' + m.text().slice(0, 200)); }); p.on('pageerror', (e) => log.push('pageerror: ' + String(e.stack || e).slice(0, 400)));
+await p.goto(`${BASE}/us/city/sf/the-city?tiles=0&probe=1`, { waitUntil: 'domcontentloaded', timeout: 120000 });
+await p.waitForTimeout(40000);
+const st = await p.evaluate(() => { const e = window.__cityGL; const per = {}; e.scene.traverse((o) => { if (o.isMesh || o.isLine) per[o.userData.layer ?? '?'] = (per[o.userData.layer ?? '?'] || 0) + 1; }); return { backend: e.backend, frames: e.getStats().frames, per, veil: !!document.querySelector('.fx-city-loading'), layers: e.layers ? e.layers.map((l) => l.name) : null }; });
+console.log(JSON.stringify(st));
+console.log([...new Set(log)].slice(0, 12).join('\n'));
+await b.close();

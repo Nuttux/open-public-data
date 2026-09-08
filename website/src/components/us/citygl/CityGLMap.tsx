@@ -34,6 +34,7 @@ import { loadBathy, waterLayerAsync } from "@/lib/citygl/layers/water";
 import { loadSurroundLandcover, surroundLayer } from "@/lib/citygl/layers/surround";
 import { buildingsLayerAsync } from "@/lib/citygl/layers/buildings";
 import { breathe, paced } from "@/lib/citygl/breathe";
+import { trackEvent } from "@/components/AnalyticsProvider";
 import type { Object3D } from "three";
 import { riseNodes } from "@/lib/citygl/rise";
 import { heroesLayer } from "@/lib/citygl/layers/heroes";
@@ -482,6 +483,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
     let ro: ResizeObserver | null = null;
     let detachControls: (() => void) | null = null;
 
+    const bootT0 = performance.now();
     void (async () => {
       let data: CityData;
       try {
@@ -854,7 +856,16 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         onBuilt: () => {
           const e = engineRef.current ?? engine;
           if (!e || !heroes) return;
-          for (const m of heroes.meshes) e.scene.add(m);
+          /* built after `engine.add`, so they must claim themselves —
+             `engine.ts` §AND A MESH MADE LATER MUST CLAIM ITSELF. Unclaimed
+             they were stamped "buildings" by the next layer in and RELEASED
+             with it, and this layer rewrites its positions on a band change:
+             every hero then had a NaN bounding sphere and three logged it
+             once a frame (found 2026-09-08, on production). */
+          for (const m of heroes.meshes) {
+            e.scene.add(m);
+            e.claim(m, "heroes");
+          }
           e.invalidate();
         },
       });
@@ -1591,6 +1602,21 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       engineRef.current = engine;
       setLoading(false);
       readyRef.current?.(engine, filmRef.current);
+      /* ── WHAT CAME UP, FOR THE RECORD ──────────────────────────────────
+         Which backend the renderer chose and which tier the device was
+         given, with the time to this line — the two numbers that say
+         whether the WebGL fallback and the low tier are reaching anyone.
+         And later, whether a slow GPU stepped down (`engine.ts` §ADAPTIVE
+         QUALITY). Nothing about the reader in either. */
+      trackEvent("city_gl_boot", {
+        backend: engine.backend,
+        tier: engine.quality.tier,
+        ready_ms: Math.round(performance.now() - bootT0),
+        dpr: Math.min(engine.quality.maxDpr, window.devicePixelRatio || 1),
+      });
+      engine.onDegrade = (rung, medianMs) => {
+        trackEvent("city_gl_degrade", { rung, median_ms: Math.round(medianMs), backend: engine?.backend ?? "" });
+      };
 
       /* ── AND THE OTHER TWO BANDS ARE WARMED WHILE NOBODY IS LOOKING ─────
          `engine.ts` §THE BANDS ARE WARMED carries the measurement: the first

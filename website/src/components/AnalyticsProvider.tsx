@@ -79,6 +79,13 @@ function initPostHog() {
   });
 }
 
+/** one product event, for a component that has something to report —
+ *  nothing personal in the properties, ever (the city page reports which
+ *  GPU backend came up and whether a slow GPU gave up shadows) */
+export function trackEvent(eventName: string, properties: Record<string, unknown> = {}) {
+  track(eventName, properties);
+}
+
 function track(eventName: string, properties: Record<string, unknown> = {}) {
   if (typeof window === 'undefined' || !POSTHOG_KEY || isOptedOut()) return;
   if (!initialized) initPostHog();
