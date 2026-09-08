@@ -51,7 +51,7 @@ await p.waitForFunction(
   null, { timeout: 180000 },
 );
 const tEngine = Date.now() - t0;
-const hasEngine = await p.evaluate(() => !!window.__cityGL);
+const _hasEngine = await p.evaluate(() => !!window.__cityGL);
 
 // settled = no new /data/ resource entry for 3s
 await p.waitForFunction(() => {
@@ -152,6 +152,6 @@ const report = {
 };
 
 fs.writeFileSync(`${OUT}/prof-${LABEL}.json`, JSON.stringify({ report, bootRs: boot.rs, zoomRs: zoom.rs }, null, 1));
-const { layerCensus, ...head } = report;
+const { layerCensus: _layerCensus, ...head } = report;
 console.log(JSON.stringify(head, null, 1));
 await b.close();

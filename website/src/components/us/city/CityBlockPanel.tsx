@@ -100,7 +100,6 @@ import {
   blockAddresses,
   blockPlaceName,
   type BlockAddress,
-  blockLead,
   blockNow,
   blockPlaces,
   blockShape,
@@ -111,7 +110,6 @@ import {
   hasMoney,
   hoodAt,
   indexedLastYear,
-  judgedLead,
   loadBlockFacts,
   loadBlockIndex,
   loadBlockLeadPicks,
@@ -659,7 +657,9 @@ const LEAD_PLAIN: React.CSSProperties = {
   color: "var(--fx-ink, #17171b)",
 };
 
-function BlockLead({ d, t }: { d: BlockDecision; t: (k: string) => string }) {
+// Unused since the lead moved out of the panel; kept for the fiche rework
+// (lint: leading underscore = intentionally unused).
+function _BlockLead({ d, t }: { d: BlockDecision; t: (k: string) => string }) {
   return (
     <section style={LEAD_WRAP}>
       <div className="fx-city-ledger-head">
@@ -2334,7 +2334,7 @@ export default function CityBlockPanel({
   // fails just as soft — a missing file leaves the block fiche §9-§14 shipped.
   const [hoods, setHoods] = useState<HoodFactsFile | null>(null);
   /* The judged leads — a few KB, one fetch, and a miss simply falls back. */
-  const [picks, setPicks] = useState<BlockLeadPicks | null>(null);
+  const [_picks, setPicks] = useState<BlockLeadPicks | null>(null);
   /* 263 KB of subjects, one fetch for the session, and the same soft failure
      as the rest: a missing file renders the panel exactly as it read before
      `Subjects` existed. */

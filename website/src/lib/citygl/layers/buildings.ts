@@ -117,7 +117,7 @@ import {
   type FacadeKey,
 } from "../facade";
 import {
-  boxForm, DECK_TOP_MIN_M, deckForm, gableForm, gableHalf, hipForm, hipPlan,
+  DECK_TOP_MIN_M, deckForm, gableForm, gableHalf, hipForm, hipPlan,
   shadeRGB, stepForm, trayForm, type FormSink,
 } from "../roof-form";
 import { civicEaveDrop, civicForm, civicRoofs } from "../civic-form";
