@@ -4918,6 +4918,8 @@ const fr: Record<string, string> = {
   'us.sf.thecity.entry.meta': '{buildings} buildings · {decisions} decisions you can open · {span}',
   'us.sf.thecity.film.runtime': '{min} min {sec} s',
   'us.sf.thecity.film.watch': 'Watch',
+  'us.sf.thecity.film.watch_video': 'Watch the film',
+  'us.sf.thecity.film.dialog': 'The film',
   'us.sf.thecity.film.resume_film': 'Resume the film',
   'us.sf.thecity.film.scan': 'Scan',
   'us.sf.thecity.film.data': 'Data',

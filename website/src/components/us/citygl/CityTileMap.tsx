@@ -83,7 +83,7 @@
    A phone never reaches this code; it pinches.
    ═══════════════════════════════════════════════════════════════════════ */
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { LatLng, Map as LMap } from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -95,6 +95,7 @@ import type { CityDescriptor } from "@/lib/citygl/descriptor";
 import { CityOverlay } from "@/lib/citygl/overlay";
 import { blockPicker } from "@/lib/citygl/pick";
 import { loadFineDem, meshElevAt, type FineDem } from "@/lib/citygl/layers/terrain";
+import { buildFilm } from "@/lib/citygl/film";
 import { TILE_CSS, tilePlane, type TileIndex } from "@/lib/citygl/tile-plane";
 import { THEME_INK } from "@/lib/citygl/theme-ink";
 import { tileMarks, type TileMarkFilter, type TileMarks, type TileMarksFile } from "@/lib/citygl/tile-marks";
@@ -224,6 +225,29 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
   useEffect(() => {
     if (findOpen) findRef.current?.querySelector("input")?.focus();
   }, [findOpen]);
+  /* ── THE FILM, AS A VIDEO ───────────────────────────────────────────
+     The GPU page plays the film live; a phone cannot run the engine, so it
+     gets the same film rendered frame by frame from that page
+     (`scripts/render-city-film.mjs`) and served beside the tiles. The
+     runtime is the script's own, so the label cannot drift from the film. */
+  const [filmOpen, setFilmOpen] = useState(false);
+  const filmUrl = descriptor.film && descriptor.tilesBaseUrl
+    ? `${descriptor.tilesBaseUrl}/film/film-720.mp4`
+    : null;
+  const filmPoster = descriptor.tilesBaseUrl ? `${descriptor.tilesBaseUrl}/film/film-poster.jpg` : undefined;
+  const filmLabel = useMemo(() => {
+    if (!descriptor.film) return "";
+    const total = buildFilm(descriptor.film).total;
+    return t("us.sf.thecity.film.runtime")
+      .replace("{min}", String(Math.floor(total / 60000)))
+      .replace("{sec}", String(Math.round((total % 60000) / 1000)).padStart(2, "0"));
+  }, [descriptor.film, t]);
+  useEffect(() => {
+    if (!filmOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setFilmOpen(false); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [filmOpen]);
 
   /* ── THE RECORD'S STATE, THE GPU PAGE'S NAMES ─────────────────────────
      `picked` is a POSITION in the block index, as it is there; `posRef`
@@ -1150,6 +1174,15 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
               ))}
             </div>
           ) : null}
+          {filmUrl ? (
+            <button
+              type="button"
+              className="fx-city-filmrow"
+              onClick={() => setFilmOpen(true)}
+            >
+              <span aria-hidden="true">▶</span> {t("us.sf.thecity.film.watch_video")} · {filmLabel}
+            </button>
+          ) : null}
           {yearsFile && Object.keys(yearsFile.years).length ? (<>
           <div className="fx-city-clockrow">
             <button
@@ -1225,6 +1258,27 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
             </div>
           ) : null}
           </>) : null}
+          </div>
+        ) : null}
+        {filmOpen && filmUrl ? (
+          <div className="fx-city-filmwrap" role="dialog" aria-label={t("us.sf.thecity.film.dialog")}>
+            <video
+              className="fx-city-filmvideo"
+              src={filmUrl}
+              poster={filmPoster}
+              controls
+              autoPlay
+              playsInline
+              onEnded={() => setFilmOpen(false)}
+            />
+            <button
+              type="button"
+              className="fx-city-film-x"
+              aria-label={t("fx.search.close")}
+              onClick={() => setFilmOpen(false)}
+            >
+              ×
+            </button>
           </div>
         ) : null}
         {/* ── THE SHEET, ONLY WHEN THERE IS A RECORD TO SHOW ──────────────
