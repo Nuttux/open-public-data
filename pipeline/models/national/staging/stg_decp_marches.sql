@@ -48,7 +48,8 @@ WITH raw AS (
         EXTRACT(YEAR FROM dateNotification)          AS annee,
         SAFE_CAST(dureeMois AS INT64)                AS duree_mois,
         CAST(titulaire_nom AS STRING)                AS titulaire_nom,
-        CAST(titulaire_id AS STRING)                 AS titulaire_siret
+        CAST(titulaire_id AS STRING)                 AS titulaire_siret,
+        CAST(titulaire_typeIdentifiant AS STRING)    AS titulaire_type_id
     FROM {{ source('national_raw', 'decp_marches') }}
     WHERE montant > 0
       AND dateNotification IS NOT NULL
@@ -92,7 +93,8 @@ SELECT
     d.annee,
     d.duree_mois,
     d.titulaire_nom,
-    d.titulaire_siret
+    d.titulaire_siret,
+    IF(d.titulaire_type_id = 'SIRET', SUBSTR(d.titulaire_siret, 1, 9), NULL) AS titulaire_siren
 FROM deduped d
 INNER JOIN commune_dim c
     ON d.acheteur_siren = c.siren

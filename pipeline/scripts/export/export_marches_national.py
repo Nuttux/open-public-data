@@ -20,6 +20,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 from collections import defaultdict
 from datetime import datetime, timezone
@@ -40,7 +41,7 @@ MANIFEST_FILE = PIPELINE_ROOT.parent / "website" / "src" / "data" / "communes-ma
 SOURCE_LABEL = "Marchés publics (DECP consolidé, data.gouv.fr)"
 SOURCE_URL = "https://www.data.gouv.fr/fr/datasets/donnees-essentielles-de-la-commande-publique-consolidees-format-tabulaire/"
 SOURCE_PIPELINE = "DECP parquet → dbt national (mart_marches_national) → export_marches_national.py"
-COVERAGE_NOTE = "Marchés de plus de 40 000 € HT déclarés à la notification (DECP) : montants des contrats, pas les paiements. Les plus petits marchés ne sont pas publiés."
+COVERAGE_NOTE = "Marchés de plus de 40 000 € HT déclarés à la notification (DECP) : montants des contrats, pas les paiements. Les plus petits marchés ne sont pas publiés ; les montants manifestement erronés sont écartés."
 BUCKET_BASE = "https://storage.googleapis.com/qipu-communes-budget/communes-marches"
 
 
@@ -61,7 +62,8 @@ def fetch(client, insees):
     params = [bigquery.ArrayQueryParameter("insees", "STRING", insees)] if insees else []
     sql = f"""
         SELECT code_insee, commune_nom, population, annee, montant, categorie_cpv,
-               type_procedure, objet, titulaire_nom
+               type_procedure, objet, titulaire_nom, titulaire_siren,
+               titulaire_personne_physique, montant_invraisemblable, depenses_totales_commune, marche_id
         FROM `{MART}` {where}
     """
     job = client.query(sql, job_config=bigquery.QueryJobConfig(query_parameters=params))
@@ -71,7 +73,89 @@ def fetch(client, insees):
     return by_insee
 
 
+_APOS = re.compile(r"(?<=[A-Za-zÀ-ÿœŒ])\?(?=[A-Za-zÀ-ÿœŒ])")
+PERSONNES_LABEL = "Entrepreneurs individuels"
+
+# Le DECP consolidé a perdu des accents dans ~4 500 intitulés (caractère U+FFFD).
+# On répare les mots fréquents par dictionnaire ; ailleurs le caractère devient
+# « é » (le cas de loin le plus fréquent), « à » s'il est seul, « ° » après « n ».
+_FFFD = "\ufffd"
+_ACCENT_WORDS = {
+    "pi�ces": "pièces", "pi�ce": "pièce", "syst�me": "système", "syst�mes": "systèmes",
+    "hygi�ne": "hygiène", "acc�s": "accès", "r�glement": "règlement", "�l�ves": "élèves",
+    "contr�le": "contrôle", "contr�les": "contrôles", "p�le": "pôle", "h�tel": "hôtel",
+    "ma�trise": "maîtrise", "ma�onnerie": "maçonnerie", "fa�ades": "façades", "fa�ade": "façade",
+    "�me": "ème", "b�timent": "bâtiment", "b�timents": "bâtiments", "th��tre": "théâtre",
+    "cr�che": "crèche", "cr�ches": "crèches", "biblioth�que": "bibliothèque", "m�diath�que": "médiathèque",
+    "coll�ge": "collège", "probl�me": "problème", "mod�le": "modèle", "�tre": "être",
+    "pr�s": "près", "apr�s": "après", "tr�s": "très", "d�s": "dès", "arr�t": "arrêt",
+    "enqu�te": "enquête", "f�te": "fête", "f�tes": "fêtes", "forêt": "forêt", "for�t": "forêt",
+    "ch�teau": "château", "�tang": "étang", "ma�tre": "maître", "b�ton": "béton",
+    "c�ble": "câble", "c�bles": "câbles", "c�blage": "câblage", "d�p�t": "dépôt",
+    "co�t": "coût", "go�ter": "goûter", "s�r": "sûr", "s�ret�": "sûreté",
+    "cl�ture": "clôture", "cl�tures": "clôtures", "r�le": "rôle", "d�me": "dôme",
+    "gar�ons": "garçons", "le�ons": "leçons", "fran�ais": "français", "fran�aise": "française",
+    "no�l": "noël", "�uvre": "œuvre", "�uvres": "œuvres", "man�uvre": "manœuvre",
+}
+_WORD = re.compile(r"[A-Za-zÀ-ÿ\ufffd]+")
+
+
+def _repair_word(m: re.Match) -> str:
+    w = m.group(0)
+    if _FFFD not in w:
+        return w
+    fixed = _ACCENT_WORDS.get(w.lower())
+    if fixed is None:
+        if w.lower() == "n" + _FFFD:
+            fixed = "n°"
+        else:
+            fixed = w.replace(_FFFD, "é")
+    if w.isupper():
+        return fixed.upper()
+    if w[0].isupper():
+        return fixed[0].upper() + fixed[1:]
+    return fixed
+
+
+def clean_objet(objet: str | None) -> str:
+    """Répare les apostrophes cassées (« d?électricité ») et les accents perdus."""
+    t = (objet or "").strip()
+    if _FFFD in t:
+        t = re.sub(r"(?<![^\s])" + _FFFD + r"(?![^\s])", "à", t)   # « � » seul = « à »
+        t = _WORD.sub(_repair_word, t)
+        t = t.replace(_FFFD, "é")
+    return _APOS.sub("’", t)
+
+
+def _lot_key(r: dict) -> tuple:
+    """Un marché alloti arrive en N lignes (une par lot) : même objet, même
+    titulaire, même année. On les regroupe pour la liste des plus gros marchés."""
+    return (re.sub(r"\s+", " ", clean_objet(r["objet"]).lower()), (r["titulaire_nom"] or "").strip().lower(), r["annee"])
+
+
 def build(insee: str, meta: dict, rows: list[dict], now: str) -> dict | None:
+    if not rows:
+        return None
+    # Plafond de vraisemblance (flag calculé dans core_marches_national) : les
+    # montants aberrants sont comptés à part, jamais additionnés ni listés.
+    exclus = [r for r in rows if r.get("montant_invraisemblable")]
+    rows = [r for r in rows if not r.get("montant_invraisemblable")]
+    # Deuxième garde-fou, par exercice : si les contrats notifiés une année
+    # dépassent deux années entières de dépenses de la commune, c'est la
+    # publication qui est hors d'échelle (Nice, Annecy : plafonds par lot
+    # multipliés), pas l'achat. L'année est écartée et nommée dans le fichier.
+    dep_commune = next((r["depenses_totales_commune"] for r in rows if r.get("depenses_totales_commune")), None)
+    annees_ecartees: list[int] = []
+    if dep_commune:
+        par_annee = defaultdict(float)
+        for r in rows:
+            if r["annee"]:
+                par_annee[int(r["annee"])] += r["montant"] or 0
+        annees_ecartees = sorted(y for y, t in par_annee.items() if t > 2 * dep_commune)
+        if annees_ecartees:
+            ecartes = [r for r in rows if r["annee"] and int(r["annee"]) in annees_ecartees]
+            exclus.extend(ecartes)
+            rows = [r for r in rows if not (r["annee"] and int(r["annee"]) in annees_ecartees)]
     if not rows:
         return None
     total_m = sum(r["montant"] or 0 for r in rows)
@@ -87,11 +171,25 @@ def build(insee: str, meta: dict, rows: list[dict], now: str) -> dict | None:
         cat = r["categorie_cpv"] or "Autres"
         by_cat[cat]["montant"] += m
         by_cat[cat]["nb"] += 1
-        t = (r["titulaire_nom"] or "").strip()
+        # Vie privée : un entrepreneur individuel est une personne physique,
+        # agrégée sous un libellé commun, jamais nommée, jamais de fiche.
+        if r.get("titulaire_personne_physique"):
+            t = PERSONNES_LABEL
+        else:
+            t = (r["titulaire_nom"] or "").strip()
         if t:
             by_titu[t]["montant"] += m
             by_titu[t]["nb"] += 1
-    top_marches = sorted(rows, key=lambda r: -(r["montant"] or 0))[:15]
+            if t != PERSONNES_LABEL and r.get("titulaire_siren"):
+                by_titu[t].setdefault("siren", r["titulaire_siren"])
+    # Lots regroupés : une entrée par (objet, titulaire, année), montants sommés.
+    lots: dict[tuple, dict] = {}
+    for r in rows:
+        k = _lot_key(r)
+        g = lots.setdefault(k, {"row": r, "montant": 0.0, "nb_lots": 0})
+        g["montant"] += r["montant"] or 0
+        g["nb_lots"] += 1
+    top_marches = sorted(lots.values(), key=lambda g: -g["montant"])[:15]
     return {
         "generated_at": now,
         "source": SOURCE_LABEL,
@@ -99,24 +197,37 @@ def build(insee: str, meta: dict, rows: list[dict], now: str) -> dict | None:
         "source_pipeline": SOURCE_PIPELINE,
         "coverage_note": COVERAGE_NOTE,
         "commune": {"insee": insee, "slug": meta["slug"], "nom": meta["nom"]},
-        "total": {"montant": total_m, "nb_marches": len(rows), "nb_titulaires": len(by_titu)},
+        "total": {
+            "montant": total_m,
+            "nb_marches": len(rows),
+            "nb_titulaires": len(by_titu),
+            "nb_exclus_invraisemblables": len(exclus),
+            "annees_ecartees": annees_ecartees,
+        },
         "by_year": [{"year": y, **v} for y, v in sorted(by_year.items())],
         "by_category": sorted(
             ({"categorie": k, **v} for k, v in by_cat.items()), key=lambda x: -x["montant"]
         ),
         "top_titulaires": sorted(
-            ({"nom": k, **v} for k, v in by_titu.items()), key=lambda x: -x["montant"]
+            (
+                {"nom": k, "personne_physique": k == PERSONNES_LABEL, **v}
+                for k, v in by_titu.items()
+            ),
+            key=lambda x: -x["montant"],
         )[:15],
         "top_marches": [
             {
-                "objet": (r["objet"] or "")[:200],
-                "montant": r["montant"],
-                "titulaire": r["titulaire_nom"],
-                "annee": r["annee"],
-                "procedure": r["type_procedure"],
-                "categorie": r["categorie_cpv"],
+                "objet": clean_objet(g["row"]["objet"])[:200],
+                "montant": g["montant"],
+                "nb_lots": g["nb_lots"],
+                "titulaire": (
+                    PERSONNES_LABEL if g["row"].get("titulaire_personne_physique") else g["row"]["titulaire_nom"]
+                ),
+                "annee": g["row"]["annee"],
+                "procedure": g["row"]["type_procedure"],
+                "categorie": g["row"]["categorie_cpv"],
             }
-            for r in top_marches
+            for g in top_marches
         ],
     }
 

@@ -25,6 +25,11 @@ SELECT
     type_procedure,
     objet,
     titulaire_nom,
+    titulaire_siren,
+    titulaire_personne_physique,
+    montant_invraisemblable,
+    depenses_totales_commune,
+    marche_id,
     duree_mois
 FROM {{ ref('core_marches_national') }}
 WHERE montant > 0

@@ -32,3 +32,9 @@ models:
     columns:
       - name: commune_slug
         tests: [not_null]
+
+  - name: stg_sirene_unites_legales
+    description: "SIRENE unités légales (INSEE) - 1 ligne = 1 SIREN ; est_personne_physique = catégorie juridique 1000"
+    columns:
+      - name: siren
+        tests: [not_null, unique]

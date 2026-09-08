@@ -14,3 +14,5 @@ sources:
         description: "DECP consolidés - marchés publics nationaux filtrés par SIREN acheteur"
       - name: subventions_nationales
         description: "Subventions SCDL - subventions > 23k€ filtrées par SIRET attributaire"
+      - name: sirene_unites_legales
+        description: "INSEE Sirene, StockUniteLegale (siren, catégorie juridique, état, dénomination) — sert à repérer les personnes physiques parmi les titulaires"
