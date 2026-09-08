@@ -1,0 +1,37 @@
+/* Phone on prod over a 4G-ish link with a 4x slower CPU, real 844 px viewport. */
+import { chromium, devices } from 'playwright';
+const BASE = process.argv[2] || 'https://www.qipu.org';
+const b = await chromium.launch();
+const ctx = await b.newContext({ ...devices['iPhone 13'], viewport: { width: 390, height: 844 }, locale: 'en-US' });
+const p = await ctx.newPage();
+await p.addInitScript(() => { window.__long = []; try { new PerformanceObserver((l) => { for (const e of l.getEntries()) window.__long.push(Math.round(e.duration)); }).observe({ entryTypes: ['longtask'] }); } catch {} try { performance.setResourceTimingBufferSize(3000); } catch {} });
+const cdp = await ctx.newCDPSession(p);
+await cdp.send('Network.enable');
+await cdp.send('Network.emulateNetworkConditions', { offline: false, latency: 100, downloadThroughput: (10e6) / 8, uploadThroughput: (5e6) / 8 });
+await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
+const t0 = Date.now();
+await p.goto(`${BASE}/us/city/sf/the-city`, { waitUntil: 'domcontentloaded', timeout: 180000 });
+const tDom = Date.now() - t0;
+await p.waitForSelector('.fx-city-tiles.leaflet-container', { timeout: 180000 }); const tMap = Date.now() - t0;
+await p.waitForFunction(() => [...document.querySelectorAll('.leaflet-tile')].filter((i) => i.complete && i.naturalWidth > 0).length >= 6, null, { timeout: 180000, polling: 100 }); const tTiles = Date.now() - t0;
+await p.waitForSelector('.fx-city-stoprow', { timeout: 180000 }); const tCtrl = Date.now() - t0;
+await p.waitForFunction(() => !!document.querySelector('.fx-city-tiles-labels canvas'), null, { timeout: 180000 }); const tLabels = Date.now() - t0;
+await p.waitForTimeout(4000);
+const net = await p.evaluate(() => { const rs = performance.getEntriesByType('resource'); const sum = (a) => Math.round(a.reduce((s, r) => s + (r.transferSize || 0), 0) / 1024); const cls = (re) => rs.filter((r) => re.test(r.name)); return { total_kB: sum(rs), js_kB: sum(cls(/\.js(\?|$)/)), data_kB: sum(cls(/\/data\//)), dataFiles: cls(/\/data\//).length, tiles_kB: sum(cls(/qipu-tiles|\/tiles\//)), tileFiles: cls(/\.webp/).length, longTasks: window.__long.length, longMax: Math.max(0, ...window.__long), longSum: window.__long.reduce((a, b) => a + b, 0), heapMB: performance.memory ? Math.round(performance.memory.usedJSHeapSize / 1048576) : null, stage: (() => { const r = document.querySelector('.fx-city-stage').getBoundingClientRect(); return [Math.round(r.width), Math.round(r.height)]; })(), docH: document.documentElement.scrollHeight }; });
+console.log(`phone 4G+4xCPU: dom ${tDom} · map ${tMap} · 6 tiles ${tTiles} · controls ${tCtrl} · labels ${tLabels} ms`);
+console.log(JSON.stringify(net));
+await p.screenshot({ path: `${process.env.SCR}/p844-landing.png` });
+await p.getByRole('button', { name: 'Street', exact: true }).tap(); await p.waitForTimeout(3500);
+await p.screenshot({ path: `${process.env.SCR}/p844-street.png` });
+const t1 = Date.now();
+await p.evaluate(() => { const el = document.querySelector('.fx-city-scrub'); Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set.call(el, '1950'); el.dispatchEvent(new Event('input', { bubbles: true })); el.dispatchEvent(new Event('change', { bubbles: true })); });
+await p.waitForFunction(() => [...document.querySelectorAll('.leaflet-tile')].some((i) => /\/1950\//.test(i.src) && i.complete && i.naturalWidth > 0), null, { timeout: 60000, polling: 100 });
+console.log('1950 first tile after', Date.now() - t1, 'ms'); await p.waitForTimeout(3000);
+await p.screenshot({ path: `${process.env.SCR}/p844-street-1950.png` });
+/* tap the middle of the map to open the record */
+const st = await p.locator('.fx-city-stage').boundingBox();
+await p.touchscreen.tap(st.x + st.width / 2, st.y + st.height / 2); await p.waitForTimeout(2500);
+await p.screenshot({ path: `${process.env.SCR}/p844-tap.png`, fullPage: true });
+const after = await p.evaluate(() => ({ panel: !!document.querySelector('.fx-city-panel, [class*=panel]'), heapMB: performance.memory ? Math.round(performance.memory.usedJSHeapSize / 1048576) : null, tilesInDom: document.querySelectorAll('.leaflet-tile').length, longTasks: window.__long.length, longSum: window.__long.reduce((a, b) => a + b, 0) }));
+console.log('after interactions:', JSON.stringify(after));
+await b.close();

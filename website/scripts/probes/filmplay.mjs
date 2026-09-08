@@ -1,0 +1,14 @@
+import { chromium, devices } from 'playwright';
+const BASE = process.env.BASE || 'http://localhost:3007';
+const b = await chromium.launch();
+const ctx = await b.newContext({ ...devices['iPhone 13'], viewport: { width: 390, height: 664 } });
+const p = await ctx.newPage();
+await p.goto(`${BASE}/us/city/sf/the-city`, { waitUntil: 'domcontentloaded' });
+await p.waitForSelector('.fx-city-filmrow', { timeout: 90000 });
+await p.click('.fx-city-filmrow');
+await p.waitForSelector('.fx-city-filmvideo');
+await p.waitForFunction(() => { const v = document.querySelector('.fx-city-filmvideo'); return v && v.readyState >= 2; }, null, { timeout: 60000 });
+await p.waitForTimeout(2500);
+console.log(await p.evaluate(() => { const v = document.querySelector('.fx-city-filmvideo'); return { src: v.currentSrc, duration: v.duration, w: v.videoWidth, h: v.videoHeight, t: v.currentTime, paused: v.paused, ready: v.readyState, err: v.error && v.error.code }; }));
+await p.screenshot({ path: process.env.SCR + '/filmplay-664.jpg', type: 'jpeg', quality: 80 });
+await b.close();
