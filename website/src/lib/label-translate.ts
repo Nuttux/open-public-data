@@ -36,6 +36,8 @@ const EN: Record<string, string> = {
   "Services Publics": "Public Services",
   "Investissement": "Investment",
   "Personnel & Admin": "Personnel & Admin",
+  "Administration générale": "General administration",
+  "Reversements à l'État et aux communes": "Transfers to the State and other councils",
   "Action Sociale": "Social Action",
   "Aménagement & Logement": "Urban Planning & Housing",
   "Remboursement dette": "Debt Repayment",

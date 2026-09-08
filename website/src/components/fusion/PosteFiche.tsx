@@ -18,7 +18,7 @@ const LABEL_PREFIX_EN: Record<string, string> = posteLabels.LABEL_PREFIX_EN;
 const LABEL_LEAF_EN: Record<string, string> = posteLabels.LABEL_LEAF_EN;
 
 const MISSIONS_CAP = 6;
-const KEEP_CAPS = new Set(["Paris", "France", "Île-de-France", "État", "Etat", "FNGIR", "RSA", "APA", "PMI", "URSSAF", "U.R.S.S.A.F."]);
+const KEEP_CAPS = new Set(["Paris", "France", "Île-de-France", "État", "Etat", "Conseil", "FNGIR", "RSA", "APA", "PMI", "URSSAF", "U.R.S.S.A.F."]);
 /** Met en minuscule les mots capitalisés d'un libellé (« Fiscalité Directe » →
  *  « fiscalité directe ») en gardant sigles et noms propres, pour l'insérer
  *  dans une phrase. */
@@ -132,7 +132,9 @@ export default function PosteFiche({ poste }: Props) {
   // Recettes à deux groupes ou moins (Impôts, Dotations, Emprunts) : les vraies
   // lignes — taxe foncière, droits de mutation — ne doivent pas être derrière
   // un clic. On les montre à plat, le groupe en sous-ligne.
-  const isFlat = (missions.length === 1 && missions[0].key === "—") || (!dep && missions.length <= 2);
+  // … et un poste de dépense à mission unique (« Reversements à l'État et
+  // aux communes » : tout est péréquation) montre ses lignes directement.
+  const isFlat = (missions.length === 1 && missions[0].key === "—") || (!dep && missions.length <= 2) || (dep && missions.length === 1);
   const flatLines = isFlat ? missions.flatMap((m) => m.items.map((it) => ({ ...it, group: m.key === "—" ? null : m.label }))).sort((a, b) => b.value - a.value) : [];
   const flatShown = flatLines.slice(0, 8);
   const flatRest = flatLines.slice(8);
@@ -191,7 +193,7 @@ export default function PosteFiche({ poste }: Props) {
 
   return (
     <div className="fx-v3 fx-poste-v3">
-      {missions.length > 0 && !isFlat && (
+      {missions.length > 0 && (!isFlat || dep) && (
         <p className="fx-v3-lead">
           {fill(t(dep ? "fx.poste.v3.lead_dep" : "fx.poste.v3.lead_rec"), { l: lead, rank: rankTxt, n: poste.nbPostes, year: poste.year })}
         </p>

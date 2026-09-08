@@ -30,7 +30,8 @@ export const POSTE_LINKS: Record<string, PosteLinkSpec> = {
   "amenagement-logement": { themes: ["Logement"], chapitre: "amenagement-habitat", lieux: ["urbain"], page: "logement" },
   "culture-sport": { themes: ["Culture", "Sport"], categories: ["Services culturels", "Livres"], chapitre: "culture-sport", lieux: ["culture", "sport"] },
   "education": { themes: ["Éducation"], categories: ["Services d'actions éducatives"], chapitre: "enseignement" },
-  "personnel-admin": { categories: ["Fournitures courantes et services", "postes de travail"], chapitre: "services-generaux", lieux: ["services"] },
+  "administration-generale": { categories: ["Fournitures courantes et services", "postes de travail"], chapitre: "services-generaux", lieux: ["services"] },
+  // « Reversements à l'État et aux communes » : de l'argent qui sort de Paris, aucune page du site ne le compte par destinataire.
   "transports": { themes: ["Transport"], categories: ["Travaux d'aménagement de voirie"], chapitre: "transports" },
   "environnement": {
     themes: ["Environnement"],

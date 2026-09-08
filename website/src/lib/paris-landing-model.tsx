@@ -81,7 +81,8 @@ const MARQUEE_SOURCE: MarqueeSource[] = [
   { href: "/fr/city/paris/marches/categorie/maitrise-d-oeuvre-btp", type: "categorie", label_fr: "Maîtrise d'œuvre BTP", label_en: "Construction supervision", amount_fr: "54 marchés/an", amount_en: "54 contracts/yr" },
 
   // === POSTES BUDGÉTAIRES ===
-  { href: "/fr/city/paris/budget/poste/personnel-admin", type: "poste", label_fr: "Personnel & Administration", label_en: "Personnel & Administration", amount_fr: "2,53 Md€/an", amount_en: "€2.53Bn/yr" },
+  { href: "/fr/city/paris/budget/poste/reversements-a-l-etat-et-aux-communes", type: "poste", label_fr: "Reversements à l'État et aux communes", label_en: "Transfers to the State and other councils", amount_fr: "1,58 Md€/an", amount_en: "€1.58Bn/yr" },
+  { href: "/fr/city/paris/budget/poste/administration-generale", type: "poste", label_fr: "Administration générale", label_en: "General administration", amount_fr: "945 M€/an", amount_en: "€945M/yr" },
   { href: "/fr/city/paris/budget/poste/action-sociale", type: "poste", label_fr: "Action sociale", label_en: "Social action", amount_fr: "2,31 Md€/an", amount_en: "€2.31Bn/yr" },
   { href: "/fr/city/paris/budget/poste/amenagement-logement", type: "poste", label_fr: "Aménagement & Logement", label_en: "Housing & Planning", amount_fr: "1,3 Md€/an", amount_en: "€1.3Bn/yr" },
   { href: "/fr/city/paris/budget/poste/education", type: "poste", label_fr: "Éducation", label_en: "Education", amount_fr: "992 M€/an", amount_en: "€992M/yr" },

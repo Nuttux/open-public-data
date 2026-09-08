@@ -224,7 +224,12 @@ REVENUE_GROUPS = {
 }
 
 EXPENSE_GROUPS = {
-    "Personnel & Admin": ["Administration", "Reversements Fiscaux", "Charges Fiscales", "Fonds Européens"],
+    # Scindé le 2026-09-08 : « Personnel & Admin » collait 1,6 Md€ de péréquation
+    # (reversements fiscaux + charges fiscales, 64 % du poste en 2024) à 0,8 Md€
+    # d'administration, sous un nom qui ne décrivait ni l'un ni l'autre — et les
+    # salaires, eux, sont dans chaque poste (crèches → Action sociale…).
+    "Reversements à l'État et aux communes": ["Reversements Fiscaux", "Charges Fiscales"],
+    "Administration générale": ["Administration", "Fonds Européens"],
     "Éducation": ["Éducation", "Invest. Éducation"],
     "Action Sociale": ["Action Sociale", "APA", "RSA", "Invest. Social"],
     "Culture & Sport": ["Culture & Sport", "Invest. Culture"],

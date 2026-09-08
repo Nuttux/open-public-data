@@ -47,6 +47,10 @@
       "category": "expense"
     },
     {
+      "name": "Administration générale",
+      "category": "expense"
+    },
+    {
       "name": "Aménagement & Logement",
       "category": "expense"
     },
@@ -63,11 +67,11 @@
       "category": "expense"
     },
     {
-      "name": "Personnel & Admin",
+      "name": "Remboursement dette",
       "category": "expense"
     },
     {
-      "name": "Remboursement dette",
+      "name": "Reversements à l'État et aux communes",
       "category": "expense"
     },
     {
@@ -140,8 +144,8 @@
     },
     {
       "source": "Budget Paris",
-      "target": "Personnel & Admin",
-      "value": 2509050948.0
+      "target": "Administration générale",
+      "value": 934270014.0
     },
     {
       "source": "Budget Paris",
@@ -172,6 +176,11 @@
       "source": "Budget Paris",
       "target": "Remboursement dette",
       "value": 780657534.0
+    },
+    {
+      "source": "Budget Paris",
+      "target": "Reversements à l'État et aux communes",
+      "value": 1574780934.0
     }
   ],
   "drilldown": {
@@ -2494,26 +2503,7 @@
           "name_original": "RSA: Charges sécurité sociale et prévoyance"
         }
       ],
-      "Personnel & Admin": [
-        {
-          "name": "Reversements Fiscaux: FNGIR",
-          "value": 898218295.0,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Reversements péréquation",
-          "fonction_confidence": "high",
-          "fonction_imputed": true,
-          "fonction_ratio": 1.0
-        },
-        {
-          "name": "Charges Fiscales: Prélèvement national péréquation DMTO",
-          "value": 214185271.0,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Reversements péréquation",
-          "fonction_confidence": "high",
-          "fonction_imputed": true,
-          "fonction_ratio": 1.0,
-          "name_original": "Charges Fiscales: Prélèv. fonds national péréquat° DMTO"
-        },
+      "Administration générale": [
         {
           "name": "Administration: Rémunérations du personnel",
           "value": 209346056.32999995,
@@ -2522,25 +2512,6 @@
           "fonction_confidence": "medium",
           "fonction_imputed": true,
           "fonction_ratio": 0.6986
-        },
-        {
-          "name": "Reversements Fiscaux: Communes",
-          "value": 208124946.0,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Reversements péréquation",
-          "fonction_confidence": "high",
-          "fonction_imputed": true,
-          "fonction_ratio": 1.0
-        },
-        {
-          "name": "Reversements Fiscaux: Fonds de péréquation des ressources communales et intercommunales",
-          "value": 199552422.0,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Reversements péréquation",
-          "fonction_confidence": "high",
-          "fonction_imputed": true,
-          "fonction_ratio": 1.0,
-          "name_original": "Reversements Fiscaux: Fonds péréquation ress. com. et intercom"
         },
         {
           "name": "Administration: Autres attributions et participations",
@@ -2589,15 +2560,6 @@
           "fonction_ratio": 0.9864
         },
         {
-          "name": "Reversements Fiscaux: Départements",
-          "value": 30000000.0,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Reversements péréquation",
-          "fonction_confidence": "high",
-          "fonction_imputed": true,
-          "fonction_ratio": 1.0
-        },
-        {
           "name": "Administration: Contrats de prestations de services",
           "value": 28106542.759999998,
           "fonction": "Adm générale collectivité",
@@ -2624,16 +2586,6 @@
           "fonction_confidence": "medium",
           "fonction_imputed": true,
           "fonction_ratio": 0.0679
-        },
-        {
-          "name": "Charges Fiscales: Reversements, restitutions et prélèvements divers",
-          "value": 19500000.0,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Reversements péréquation",
-          "fonction_confidence": "high",
-          "fonction_imputed": true,
-          "fonction_ratio": 1.0,
-          "name_original": "Charges Fiscales: Revers., restitutions et prél. divers"
         },
         {
           "name": "Administration: Charges diverses de gestion courante",
@@ -2811,16 +2763,6 @@
           "name_original": "Administration: Charges sécurité sociale et prévoyance"
         },
         {
-          "name": "Reversements Fiscaux: Autres restitutions, dégrèvements et contributions directes",
-          "value": 5000000.0,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Reversements péréquation",
-          "fonction_confidence": "high",
-          "fonction_imputed": true,
-          "fonction_ratio": 1.0,
-          "name_original": "Reversements Fiscaux: Autres restit. dégrèv./contrib. directes"
-        },
-        {
           "name": "Administration: Autres charges de personnel",
           "value": 4650795.37,
           "fonction": "Adm générale collectivité",
@@ -2955,6 +2897,69 @@
           "fonction_confidence": "high",
           "fonction_imputed": true,
           "fonction_ratio": 0.9864
+        },
+        {
+          "name": "Administration: Impôts, taxes, versements (autre orga.)",
+          "value": 1843877.9600000004,
+          "fonction": "Assemblée délibérante",
+          "flow_category": "Autre",
+          "fonction_confidence": "medium",
+          "fonction_imputed": true,
+          "fonction_ratio": 0.219
+        },
+        {
+          "name": "Administration: Autres impôts, taxes (Admin Impôts)",
+          "value": 1756893.47,
+          "fonction": "Autres moyens généraux",
+          "flow_category": "Autre",
+          "fonction_confidence": "medium",
+          "fonction_imputed": true,
+          "fonction_ratio": 0.5111
+        },
+        {
+          "name": "Administration: Divers",
+          "value": 1578352.97,
+          "fonction": "Admin général Etat",
+          "flow_category": "Autres services",
+          "fonction_confidence": "high",
+          "fonction_imputed": true,
+          "fonction_ratio": 0.1258
+        },
+        {
+          "name": "Administration: Pub., publications, relations publiques",
+          "value": 1513537.4300000002,
+          "fonction": "Adm générale collectivité",
+          "flow_category": "Autres services",
+          "fonction_confidence": "high",
+          "fonction_imputed": true,
+          "fonction_ratio": 0.8742
+        },
+        {
+          "name": "Administration: Contributions obligatoires",
+          "value": 1443685.0,
+          "fonction": "Non spécifié",
+          "flow_category": "Contributions obligatoires",
+          "fonction_confidence": "unknown"
+        },
+        {
+          "name": "Administration: Personnel intérimaire & vacations",
+          "value": 1326813.22,
+          "fonction": "Admin général Etat",
+          "flow_category": "Autres services",
+          "fonction_confidence": "high",
+          "fonction_imputed": true,
+          "fonction_ratio": 0.1258,
+          "name_original": "Administration: Personnel extérieur au service"
+        },
+        {
+          "name": "Administration: Subventions d'intervention",
+          "value": 1269605.6100000015,
+          "fonction": "Assemblée délibérante",
+          "flow_category": "Subventions (fonctionnement)",
+          "fonction_confidence": "high",
+          "fonction_imputed": true,
+          "fonction_ratio": 0.0469,
+          "name_original": "Administration: Charges intervent° cpt prop. - Subvent°"
         }
       ],
       "Économie": [
@@ -5277,6 +5282,84 @@
           "fonction_imputed": true,
           "fonction_ratio": 1.0
         }
+      ],
+      "Reversements à l'État et aux communes": [
+        {
+          "name": "Reversements Fiscaux: FNGIR",
+          "value": 898218295.0,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Reversements péréquation",
+          "fonction_confidence": "high",
+          "fonction_imputed": true,
+          "fonction_ratio": 1.0
+        },
+        {
+          "name": "Charges Fiscales: Prélèvement national péréquation DMTO",
+          "value": 214185271.0,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Reversements péréquation",
+          "fonction_confidence": "high",
+          "fonction_imputed": true,
+          "fonction_ratio": 1.0,
+          "name_original": "Charges Fiscales: Prélèv. fonds national péréquat° DMTO"
+        },
+        {
+          "name": "Reversements Fiscaux: Communes",
+          "value": 208124946.0,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Reversements péréquation",
+          "fonction_confidence": "high",
+          "fonction_imputed": true,
+          "fonction_ratio": 1.0
+        },
+        {
+          "name": "Reversements Fiscaux: Fonds de péréquation des ressources communales et intercommunales",
+          "value": 199552422.0,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Reversements péréquation",
+          "fonction_confidence": "high",
+          "fonction_imputed": true,
+          "fonction_ratio": 1.0,
+          "name_original": "Reversements Fiscaux: Fonds péréquation ress. com. et intercom"
+        },
+        {
+          "name": "Reversements Fiscaux: Départements",
+          "value": 30000000.0,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Reversements péréquation",
+          "fonction_confidence": "high",
+          "fonction_imputed": true,
+          "fonction_ratio": 1.0
+        },
+        {
+          "name": "Charges Fiscales: Reversements, restitutions et prélèvements divers",
+          "value": 19500000.0,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Reversements péréquation",
+          "fonction_confidence": "high",
+          "fonction_imputed": true,
+          "fonction_ratio": 1.0,
+          "name_original": "Charges Fiscales: Revers., restitutions et prél. divers"
+        },
+        {
+          "name": "Reversements Fiscaux: Autres restitutions, dégrèvements et contributions directes",
+          "value": 5000000.0,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Reversements péréquation",
+          "fonction_confidence": "high",
+          "fonction_imputed": true,
+          "fonction_ratio": 1.0,
+          "name_original": "Reversements Fiscaux: Autres restit. dégrèv./contrib. directes"
+        },
+        {
+          "name": "Reversements Fiscaux: Autres revers. et restit. / fisc. locale",
+          "value": 200000.0,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Reversements péréquation",
+          "fonction_confidence": "high",
+          "fonction_imputed": true,
+          "fonction_ratio": 1.0
+        }
       ]
     }
   },
@@ -6644,7 +6727,7 @@
         ]
       }
     },
-    "Personnel & Admin": {
+    "Administration générale": {
       "Fonctionnement": {
         "total": 934270014.0,
         "items": [

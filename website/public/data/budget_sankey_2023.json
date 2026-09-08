@@ -43,6 +43,10 @@
       "category": "expense"
     },
     {
+      "name": "Administration générale",
+      "category": "expense"
+    },
+    {
       "name": "Aménagement & Logement",
       "category": "expense"
     },
@@ -59,11 +63,11 @@
       "category": "expense"
     },
     {
-      "name": "Personnel & Admin",
+      "name": "Remboursement dette",
       "category": "expense"
     },
     {
-      "name": "Remboursement dette",
+      "name": "Reversements à l'État et aux communes",
       "category": "expense"
     },
     {
@@ -131,8 +135,8 @@
     },
     {
       "source": "Budget Paris",
-      "target": "Personnel & Admin",
-      "value": 2456564802.890001
+      "target": "Administration générale",
+      "value": 848177480.0800011
     },
     {
       "source": "Budget Paris",
@@ -158,6 +162,11 @@
       "source": "Budget Paris",
       "target": "Remboursement dette",
       "value": 516360007.06
+    },
+    {
+      "source": "Budget Paris",
+      "target": "Reversements à l'État et aux communes",
+      "value": 1608387322.81
     },
     {
       "source": "Budget Paris",
@@ -2213,36 +2222,7 @@
           "fonction_confidence": "ca"
         }
       ],
-      "Personnel & Admin": [
-        {
-          "name": "Reversements Fiscaux: FNGIR",
-          "value": 898218295.0,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Reversements péréquation",
-          "fonction_confidence": "ca"
-        },
-        {
-          "name": "Charges Fiscales: Prélèvement national péréquation DMTO",
-          "value": 266251780.0,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Reversements péréquation",
-          "fonction_confidence": "ca",
-          "name_original": "Charges Fiscales: Prélèvement au titre du fonds national de         péréquation des DMTO perçus par les départements"
-        },
-        {
-          "name": "Reversements Fiscaux: Communes (FSRIF)",
-          "value": 207082154.0,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Reversements péréquation",
-          "fonction_confidence": "ca"
-        },
-        {
-          "name": "Reversements Fiscaux: Fonds de péréquation des ressources communales et intercommunales",
-          "value": 185029117.0,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Reversements péréquation",
-          "fonction_confidence": "ca"
-        },
+      "Administration générale": [
         {
           "name": "Administration: Dotation de gestion locale versée",
           "value": 148306712.0,
@@ -2278,13 +2258,6 @@
           "value": 35763067.97,
           "fonction": "Adm générale collectivité",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
-        },
-        {
-          "name": "Reversements Fiscaux: Départements (FSDRIF)",
-          "value": 30000000.0,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Reversements péréquation",
           "fonction_confidence": "ca"
         },
         {
@@ -2397,13 +2370,6 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Charges Fiscales: Reversements, restitutions et prélèvements divers",
-          "value": 10191848.73,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Reversements péréquation",
-          "fonction_confidence": "ca"
-        },
-        {
           "name": "Administration: Versements à des organismes de formation",
           "value": 10041723.07,
           "fonction": "Adm générale collectivité",
@@ -2431,13 +2397,6 @@
           "flow_category": "Personnel",
           "fonction_confidence": "ca",
           "name_original": "Administration: Personnel non titulaire - Primes et autres indemnités"
-        },
-        {
-          "name": "Reversements Fiscaux: Autres prélèvements pour reversements de fiscalité entre collectivités locales",
-          "value": 7405914.67,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Reversements péréquation",
-          "fonction_confidence": "ca"
         },
         {
           "name": "Administration: Rémunération du personnel titulaire",
@@ -2499,13 +2458,6 @@
           "flow_category": "Personnel",
           "fonction_confidence": "ca",
           "name_original": "Administration: Personnel titulaire - Supplément familial de traitement et indemnité de résidence"
-        },
-        {
-          "name": "Reversements Fiscaux: Autres restitutions au titre de dégrèvements sur  contributions directes",
-          "value": 4100156.0,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Reversements péréquation",
-          "fonction_confidence": "ca"
         },
         {
           "name": "Administration: Versement de transport",
@@ -2576,6 +2528,65 @@
           "fonction": "Personnel non ventilé",
           "flow_category": "Personnel",
           "fonction_confidence": "ca"
+        },
+        {
+          "name": "Administration: Rémunération du personnel non titulaire",
+          "value": 2722389.1,
+          "fonction": "Info, communication, pub",
+          "flow_category": "Personnel",
+          "fonction_confidence": "ca",
+          "name_original": "Administration: Personnel non titulaire - Rémunérations"
+        },
+        {
+          "name": "Administration: Autres (Autres charges de personnel)",
+          "value": 2699010.43,
+          "fonction": "Adm générale collectivité",
+          "flow_category": "Personnel",
+          "fonction_confidence": "ca"
+        },
+        {
+          "name": "Administration: Frais d'affranchissement",
+          "value": 2613731.64,
+          "fonction": "Adm générale collectivité",
+          "flow_category": "Autres services",
+          "fonction_confidence": "ca"
+        },
+        {
+          "name": "Administration: Rémunération du personnel titulaire",
+          "value": 2603920.22,
+          "fonction": "Info, communication, pub",
+          "flow_category": "Personnel",
+          "fonction_confidence": "ca",
+          "name_original": "Administration: Personnel titulaire - Rémunération principale"
+        },
+        {
+          "name": "Administration: Fournitures de petit équipement",
+          "value": 2506022.09,
+          "fonction": "Adm générale collectivité",
+          "flow_category": "Achats",
+          "fonction_confidence": "ca"
+        },
+        {
+          "name": "Administration: Bâtiments publics",
+          "value": 2482626.46,
+          "fonction": "Adm générale collectivité",
+          "flow_category": "Services extérieurs",
+          "fonction_confidence": "ca"
+        },
+        {
+          "name": "Administration: Subventions de fonctionnement aux personnes, aux associations et aux autres organismes de droit privé - Autres personnes de droit privé",
+          "value": 2461066.0,
+          "fonction": "Actions relevant sub glob",
+          "flow_category": "Subventions (fonctionnement)",
+          "fonction_confidence": "ca"
+        },
+        {
+          "name": "Administration: Indemnités du personnel titulaire",
+          "value": 2376970.66,
+          "fonction": "Admin général Etat",
+          "flow_category": "Personnel",
+          "fonction_confidence": "ca",
+          "name_original": "Administration: Personnel titulaire - Autres indemnités"
         }
       ],
       "Environnement": [
@@ -4166,6 +4177,72 @@
           "fonction_confidence": "ca"
         }
       ],
+      "Reversements à l'État et aux communes": [
+        {
+          "name": "Reversements Fiscaux: FNGIR",
+          "value": 898218295.0,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Reversements péréquation",
+          "fonction_confidence": "ca"
+        },
+        {
+          "name": "Charges Fiscales: Prélèvement national péréquation DMTO",
+          "value": 266251780.0,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Reversements péréquation",
+          "fonction_confidence": "ca",
+          "name_original": "Charges Fiscales: Prélèvement au titre du fonds national de         péréquation des DMTO perçus par les départements"
+        },
+        {
+          "name": "Reversements Fiscaux: Communes (FSRIF)",
+          "value": 207082154.0,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Reversements péréquation",
+          "fonction_confidence": "ca"
+        },
+        {
+          "name": "Reversements Fiscaux: Fonds de péréquation des ressources communales et intercommunales",
+          "value": 185029117.0,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Reversements péréquation",
+          "fonction_confidence": "ca"
+        },
+        {
+          "name": "Reversements Fiscaux: Départements (FSDRIF)",
+          "value": 30000000.0,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Reversements péréquation",
+          "fonction_confidence": "ca"
+        },
+        {
+          "name": "Charges Fiscales: Reversements, restitutions et prélèvements divers",
+          "value": 10191848.73,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Reversements péréquation",
+          "fonction_confidence": "ca"
+        },
+        {
+          "name": "Reversements Fiscaux: Autres prélèvements pour reversements de fiscalité entre collectivités locales",
+          "value": 7405914.67,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Reversements péréquation",
+          "fonction_confidence": "ca"
+        },
+        {
+          "name": "Reversements Fiscaux: Autres restitutions au titre de dégrèvements sur  contributions directes",
+          "value": 4100156.0,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Reversements péréquation",
+          "fonction_confidence": "ca"
+        },
+        {
+          "name": "Reversements Fiscaux: Autres reversements et restitutions sur fiscalité locale",
+          "value": 108057.41,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Reversements péréquation",
+          "fonction_confidence": "ca"
+        }
+      ],
       "Autres": [
         {
           "name": "Autres: Taxe d’aménagement",
@@ -5389,7 +5466,7 @@
         ]
       }
     },
-    "Personnel & Admin": {
+    "Administration générale": {
       "Fonctionnement": {
         "total": 848177480.0800014,
         "items": [
