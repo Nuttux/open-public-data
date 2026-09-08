@@ -49,16 +49,24 @@ const CSS = `
   border-bottom:1px solid var(--ink,#161310);
   -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
 .fx-city-strip-kick{display:block;font-family:var(--f-mono,ui-monospace,monospace);
-  font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
   color:var(--accent-warm,#8a6a3b);margin:0 0 3px}
 .fx-city-strip h1{margin:0;font-family:var(--f-disp,Georgia,serif);font-weight:700;
-  font-size:clamp(17px,2vw,21px);line-height:1.18;letter-spacing:-.02em;
+  font-size:clamp(20px,2.2vw,25px);line-height:1.15;letter-spacing:-.02em;
   color:var(--ink,#161310)}
 .fx-city-strip h1 em{font-style:italic}
-.fx-city-strip p{margin:4px 0 0;font-size:12.5px;line-height:1.45;max-width:64ch;
-  color:color-mix(in srgb, var(--ink,#161310) 72%, transparent)}
+.fx-city-strip p{margin:5px 0 0;font-size:14px;line-height:1.45;max-width:62ch;
+  color:color-mix(in srgb, var(--ink,#161310) 80%, transparent)}
+.fx-city-strip-act{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:12px}
+.fx-city-strip-cta{display:inline-flex;align-items:center;gap:9px;font:600 12px/1 var(--f-mono,ui-monospace,monospace);
+  letter-spacing:.07em;text-transform:uppercase;padding:12px 16px;border:1px solid var(--ink,#161310);
+  background:var(--ink,#161310);color:var(--bg,#faf8f3);cursor:pointer}
+.fx-city-strip-cta:hover{background:var(--bg,#faf8f3);color:var(--ink,#161310)}
+.fx-city-strip-cta:disabled{opacity:.5;cursor:default}
+.fx-city-strip-cta:focus-visible{outline:2px solid var(--ink,#161310);outline-offset:3px}
+.fx-city-strip-or{font-size:14px;color:color-mix(in srgb, var(--ink,#161310) 70%, transparent)}
 .fx-city-strip-x{margin-left:auto;flex:none;border:0;background:transparent;cursor:pointer;
-  font-size:19px;line-height:1;padding:2px 4px;
+  font-size:24px;line-height:1;padding:4px 8px;min-width:32px;min-height:32px;
   color:color-mix(in srgb, var(--ink,#161310) 55%, transparent)}
 .fx-city-strip-x:hover{color:var(--ink,#161310)}
 .fx-city-strip-x:focus-visible{outline:2px solid var(--ink,#161310);outline-offset:2px}
@@ -88,7 +96,7 @@ export default function CityEntryStrip({
   title,
   claim,
   closeLabel,
-  onClose,
+  onClose, action,
 }: {
   kicker: string;
   /** the page's <h1> — it stays in the server-rendered HTML */
@@ -96,6 +104,8 @@ export default function CityEntryStrip({
   /** the one sentence: what makes the map different from a picture */
   claim: string;
   closeLabel: string;
+  /** the strip's one action, under the claim — the city page puts the film here */
+  action?: React.ReactNode;
   onClose: () => void;
 }) {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -121,6 +131,7 @@ export default function CityEntryStrip({
         <span className="fx-city-strip-kick">{kicker}</span>
         <h1>{title}</h1>
         <p>{claim}</p>
+        {action ? <div className="fx-city-strip-act">{action}</div> : null}
       </div>
       <button
         type="button"

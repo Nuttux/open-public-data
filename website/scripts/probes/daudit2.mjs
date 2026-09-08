@@ -1,0 +1,13 @@
+import { chromium } from 'playwright';
+const BASE = process.env.BASE || 'https://www.qipu.org'; const OUT = process.env.OUT;
+const b = await chromium.launch({ args: ['--enable-unsafe-webgpu', '--use-gl=angle', '--ignore-gpu-blocklist'] });
+const p = await b.newPage({ viewport: { width: 1440, height: 820 } });
+await p.goto(`${BASE}/us/city/sf/the-city`, { waitUntil: 'domcontentloaded' });
+await p.waitForFunction(() => !document.querySelector('.fx-city-loading'), null, { timeout: 240000 }); await p.waitForTimeout(2500);
+console.log(await p.evaluate(() => { const li = document.querySelector('.fx-city-ledger li, .fx-city-record li'); if (!li) return 'no list item'; const a = li.querySelector('a, button'); const cs = getComputedStyle(a || li); return { item: li.textContent.trim().slice(0, 50), interactive: a ? a.tagName : 'none', cursor: cs.cursor, color: cs.color, underline: cs.textDecorationLine, fontPx: cs.fontSize }; }));
+const li = await p.$('.fx-city-ledger li a, .fx-city-ledger li button, .fx-city-record li a, .fx-city-record li button, .fx-city-ledger li');
+if (li) { const url0 = p.url(); await li.click(); await p.waitForTimeout(2500); console.log('after headline click', { url: p.url() !== url0 ? p.url().slice(-60) : 'same url', panelHead: await p.evaluate(() => document.querySelector('.fx-city-record-head, .fx-city-ledger')?.textContent?.trim().slice(0, 90)) }); await p.screenshot({ path: `${OUT}/w9-headline.jpg`, type: 'jpeg', quality: 70 }); }
+const speed = await p.$('button:has-text("1×")'); if (speed) { await speed.click(); await p.waitForTimeout(500); console.log('speed', await p.evaluate(() => [...document.querySelectorAll('.fx-city-scrub-speed button, button')].map((e) => e.textContent.trim()).filter((t) => /×/.test(t)))); }
+console.log('panel type', await p.evaluate(() => { const q = (s) => { const e = document.querySelector(s); if (!e) return null; const cs = getComputedStyle(e); return { px: cs.fontSize, lh: cs.lineHeight, fam: cs.fontFamily.split(',')[0], color: cs.color, w: Math.round(e.getBoundingClientRect().width) }; }; return { lede: q('.fx-city-record-lede, .fx-city-record p'), excerpt: q('.fx-city-record-body .fx-city-rec-quote, .fx-city-record-body p, .fx-city-record li p'), title: q('.fx-city-record-body h3, .fx-city-record li b, .fx-city-record li strong'), panelW: Math.round(document.querySelector('.fx-city-ledger').getBoundingClientRect().width), stripLede: q('.fx-city-strip p') }; }));
+console.log('show toggles', await p.evaluate(() => [...document.querySelectorAll('.fx-city-drawnas button, .fx-city-system')].map((e) => ({ t: e.textContent.trim(), pressed: e.getAttribute('aria-pressed'), role: e.getAttribute('role') })).slice(0, 4)));
+await b.close();

@@ -1432,14 +1432,26 @@ function Ladder({
             >
               <span className="fx-block-rung-l">{r.label}</span>
               {r.n >= 0 ? (
-                <span className="fx-block-rung-n">{nfInt.format(r.n)}</span>
+                <span className="fx-block-rung-n">
+                  {nfInt.format(r.n)}
+                  {i === rungs.length - 1 ? (
+                    <span className="fx-block-rung-u">{r.n === 1 ? " decision" : " decisions"}</span>
+                  ) : null}
+                </span>
               ) : null}
             </button>
           ) : (
             <span className="fx-block-rung is-on" aria-current="true">
               <span className="fx-block-rung-l">{r.label}</span>
               {r.n >= 0 ? (
-                <span className="fx-block-rung-n">{nfInt.format(r.n)}</span>
+                <span className="fx-block-rung-n">
+                  {nfInt.format(r.n)}
+                  {/* the unit once, on the last rung: the numbers along the
+                      crumb had no word saying what they counted */}
+                  {i === rungs.length - 1 ? (
+                    <span className="fx-block-rung-u">{r.n === 1 ? " decision" : " decisions"}</span>
+                  ) : null}
+                </span>
               ) : null}
             </span>
           )}

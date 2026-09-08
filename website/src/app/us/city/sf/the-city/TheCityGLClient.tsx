@@ -638,6 +638,12 @@ const SF: CityDescriptor = {
   film: SF_FILM,
 };
 
+/** the film's length as people read it: 1:37 */
+function runtime(ms: number): string {
+  const sec = Math.round(ms / 1000);
+  return `${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, "0")}`;
+}
+
 /** the data files behind this page, offered as plain links in the method note */
 const CITY_FILES = [
   { label: "manifest.json", href: "/data/us/sf/city/manifest.json" },
@@ -694,8 +700,17 @@ export default function TheCityGLClient({ data }: { data: TheCityPageData }) {
     if (!intro) return;
     const el = shellRef.current;
     if (!el) return;
-    const go = () => setIntro(false);
-    const opts = { capture: true, once: true } as const;
+    /* ── NOT A PRESS ON THE STRIP ITSELF ──────────────────────────────
+       The strip now carries the film button. A capture-phase pointerdown
+       that closed the strip on ANY press removed that button before its
+       click could fire — measured: the strip went, the film never started.
+       A press inside the strip is the strip's own business. */
+    const go = (e: Event) => {
+      const t = e.target as Element | null;
+      if (e.type === "pointerdown" && t?.closest?.(".fx-city-strip")) return;
+      setIntro(false);
+    };
+    const opts = { capture: true } as const;
     el.addEventListener("pointerdown", go, opts);
     el.addEventListener("wheel", go, opts);
     el.addEventListener("keydown", go, opts);
@@ -752,12 +767,8 @@ export default function TheCityGLClient({ data }: { data: TheCityPageData }) {
             summary that already says HOW THIS MAP IS MADE and already opens
             it. Two links to one page, adjacent, is a reader wondering
             whether they go to different places. */}
-        <p className="fx-city-proof">
-          {t("us.sf.thecity.entry.meta")
-            .replace("{buildings}", nfInt.format(data.buildings))
-            .replace("{decisions}", nfInt.format(data.decisions))
-            .replace("{span}", data.span)}
-        </p>
+        {/* the counts moved into the note's own line below — four grey lines
+            under the map said the same thing in turn (audit of 2026-09-09) */}
 
         {/* ── THE ENTRY IS A STRIP, NOT A PLATE ────────────────────────
             `CityEntryStrip.tsx` carries the reasoning. The short version:
@@ -775,6 +786,29 @@ export default function TheCityGLClient({ data }: { data: TheCityPageData }) {
             claim={t("us.sf.thecity.lede")}
             closeLabel={t("us.sf.thecity.entry.dismiss")}
             onClose={() => setIntro(false)}
+            action={
+              <>
+                {/* ── ONE ACTION, AND WHAT TO DO OTHERWISE ─────────────────
+                    The film was the least visible button on the page — 10.5
+                    px capitals at the far end of the transport among 39
+                    buttons with no primary. It is the strip's one action;
+                    the line beside it says the other thing this page does. */}
+                <button
+                  type="button"
+                  className="fx-city-strip-cta"
+                  disabled={!film}
+                  onClick={() => {
+                    setIntro(false);
+                    film?.play(0);
+                  }}
+                >
+                  <span aria-hidden="true">▶</span>
+                  {t("us.sf.thecity.film.watch_video")}
+                  {film ? ` · ${runtime(film.total)}` : ""}
+                </button>
+                <span className="fx-city-strip-or">{t("us.sf.thecity.entry.or")}</span>
+              </>
+            }
           />
         ) : null}
       </div>
@@ -785,6 +819,13 @@ export default function TheCityGLClient({ data }: { data: TheCityPageData }) {
           <details ref={noteRef}>
             <summary>
               <span className="fx-city-note-line">
+                <b className="fx-city-note-counts">
+                  {t("us.sf.thecity.entry.meta")
+                    .replace("{buildings}", nfInt.format(data.buildings))
+                    .replace("{decisions}", nfInt.format(data.decisions))
+                    .replace("{span}", data.span)}
+                  .
+                </b>{" "}
                 {t("us.sf.thecity.note.line")}
               </span>
               <span className="fx-city-note-more">

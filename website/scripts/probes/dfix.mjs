@@ -1,0 +1,22 @@
+import { chromium } from 'playwright';
+import { REF } from './x_common.mjs';
+const BASE = process.env.BASE || 'http://localhost:3008'; const OUT = process.env.OUT;
+const b = await chromium.launch({ args: ['--enable-unsafe-webgpu', '--use-gl=angle', '--ignore-gpu-blocklist'] });
+const p = await b.newPage({ viewport: { width: 1440, height: 820 } }); const errs = []; p.on('pageerror', (e) => errs.push(String(e).slice(0, 120)));
+await p.goto(`${BASE}/us/city/sf/the-city`, { waitUntil: 'domcontentloaded' });
+await p.waitForTimeout(1500); await p.screenshot({ path: `${OUT}/f0-first.jpg`, type: 'jpeg', quality: 70 });
+console.log('preview at 1.5 s', await p.evaluate(() => { const i = document.querySelector('.fx-city-preview'); return i ? { complete: i.complete, w: i.naturalWidth, cls: i.className } : null; }));
+await p.waitForFunction(() => !document.querySelector('.fx-city-loading'), null, { timeout: 240000 }); await p.waitForTimeout(3000);
+await p.screenshot({ path: `${OUT}/f1-ready.jpg`, type: 'jpeg', quality: 70 });
+console.log('ready', await p.evaluate(() => ({ preview: !!document.querySelector('.fx-city-preview'), ledgerW: Math.round(document.querySelector('.fx-city-ledger').getBoundingClientRect().width), cta: document.querySelector('.fx-city-strip-cta')?.textContent, rowPx: getComputedStyle(document.querySelector('.fx-city-record-row')).fontSize, scopePx: getComputedStyle(document.querySelector('.fx-city-record-scope')).fontSize, small: [...document.querySelectorAll('body *')].filter((e) => { const r = e.getBoundingClientRect(); if (!r.width || r.top < 0 || r.top > innerHeight) return false; const cs = getComputedStyle(e); return parseFloat(cs.fontSize) < 11 && e.childNodes.length && [...e.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim()); }).map((e) => e.textContent.trim().slice(0, 20)).slice(0, 12) })));
+const district = await p.$('button:has-text("District")'); if (district) { await district.click(); await p.waitForTimeout(2500); }
+const c = await (await p.$('canvas')).boundingBox(); await p.mouse.click(c.x + c.width * 0.45, c.y + c.height * 0.5); await p.waitForTimeout(3500);
+await p.screenshot({ path: `${OUT}/f2-record.jpg`, type: 'jpeg', quality: 70 });
+console.log('crumb', await p.evaluate(() => document.querySelector('.fx-block-rung.is-on')?.textContent));
+await p.reload({ waitUntil: 'domcontentloaded' }); await p.waitForFunction(() => !document.querySelector('.fx-city-loading') && document.querySelector('.fx-city-strip-cta:not([disabled])'), null, { timeout: 240000 }); await p.waitForTimeout(1500);
+await p.click('.fx-city-strip-cta'); await p.waitForTimeout(5000);
+console.log('film', await p.evaluate(() => ({ body: document.body.dataset.cityFilm, controlsShown: !!document.querySelector('.fx-city-controls') && getComputedStyle(document.querySelector('.fx-city-controls')).display, strip: !!document.querySelector('.fx-city-strip') })));
+await p.screenshot({ path: `${OUT}/f3-film.jpg`, type: 'jpeg', quality: 70 });
+await p.screenshot({ path: `${OUT}/f4-full.jpg`, type: 'jpeg', quality: 60, fullPage: true });
+console.log('errors', errs.slice(0, 3));
+await b.close();

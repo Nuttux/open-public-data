@@ -91,9 +91,13 @@ interface ThemeEntry {
  * and not for type. The dot beside the label carries the colour, the label
  * carries the identity, and neither depends on the other.
  */
+/** how long the preview picture takes to fade once the model is drawn —
+ *  the same number as `.fx-city-preview`'s transition in `fusion.css` */
+const PREVIEW_FADE_MS = 700;
+
 function chipStyle(on: boolean, ink: string | null): React.CSSProperties {
   return {
-    font: `${on ? 600 : 400} 12px/1 var(--f-sans, system-ui)`,
+    font: `${on ? 600 : 400} 13px/1 var(--f-sans, system-ui)`,
     padding: "7px 10px",
     borderRadius: 6,
     cursor: "pointer",
@@ -376,6 +380,21 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
   const filmRef = useRef<FilmPlayer | null>(null);
   const remeasureFilmRef = useRef<(() => void) | null>(null);
   const [filmOn, setFilmOn] = useState(false);
+  /* the preview picture stays for its fade after the model is ready, then
+     leaves the DOM — §THE CITY, BEFORE THE CITY */
+  const [preview, setPreview] = useState(true);
+  useEffect(() => {
+    if (loading) return;
+    const t = setTimeout(() => setPreview(false), PREVIEW_FADE_MS + 50);
+    return () => clearTimeout(t);
+  }, [loading]);
+  /* the page's chrome reads this: the map's own controls step off while the
+     film has the screen — `fusion.css` §THE FILM HAS THE SCREEN */
+  useEffect(() => {
+    if (filmOn) document.body.dataset.cityFilm = "1";
+    else delete document.body.dataset.cityFilm;
+    return () => { delete document.body.dataset.cityFilm; };
+  }, [filmOn]);
   /* ── THE TRANSPORT ─────────────────────────────────────────────────────
      The speed used to BE the rate — 3, 6, 12, 24 years a second — and the
      button printed it with a multiplication sign after it. Daniel: *"the
@@ -1519,6 +1538,9 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
                its own year, and without this the city un-builds to 1906 with
                1970's street names still standing on it. */
             const iy = Math.floor(st.yearOut);
+      /* the strip's own button plays from outside this component — the
+         page's state follows the player, not the button */
+      film.watch({ onPlay: () => setFilmOn(true) });
             const ov = overlayRef.current;
             if (ov && ov.year !== iy) ov.year = iy;
             /* ── AND THE FIRE IS ON THE CLOCK TOO ────────────────────
@@ -2036,6 +2058,22 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
               ))}
             </div>
           ) : null}
+          {/* ── THE CITY, BEFORE THE CITY ─────────────────────────────────
+              The model takes 9–13 s to draw on production; the first second
+              and a half showed an empty stage. The whole-city picture already
+              exists as tiles (`now/preview.jpg`, the level-3 mosaic), so it
+              is on screen the instant the page lands, under a light wash, and
+              fades out once the model is drawn — the wait reads as the picture
+              sharpening. Framed to the visible strip, not under the ledger. */}
+          {preview && descriptor.tilesBaseUrl ? (
+            <img
+              className={`fx-city-preview${loading ? "" : " is-gone"}`}
+              src={`${descriptor.tilesBaseUrl}/now/preview.jpg`}
+              alt=""
+              aria-hidden="true"
+              decoding="async"
+            />
+          ) : null}
           {failed ? (
             <div className="fx-city-overlay">
               <p className="fx-city-loading">The map could not be loaded. {failed}</p>
@@ -2492,7 +2530,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
           a reader cannot discover by trying — and it is the accessible path.
           The mouse lines go: the search box, the zoom row and the year are on
           screen and say what they are. */}
-      <CityHelpRow keys={t("us.sf.thecity.map.help_keys")} />
+      <CityHelpRow keys={t("us.sf.thecity.map.help_keys")} summary={t("us.sf.thecity.help.keys_summary")} />
     </div>
   );
 }

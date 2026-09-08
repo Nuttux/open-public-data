@@ -16867,7 +16867,7 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
    still count as being on screen. */
 .theme-fusion .fx-city-shell,
 .theme-fusion .fx-city-wrap {
-  --fx-city-ledger: 288px;
+  --fx-city-ledger: 360px;
   --fx-city-h: min(74vh, 720px);
 }
 .theme-fusion .fx-city-shell { position: relative; }
@@ -19489,3 +19489,104 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   /* the chat launcher would sit on the handle */
   body[data-city-drawer] .fx-chat-launcher { display: none; }
 }
+
+/* ══ THE DESKTOP PAGE, AFTER THE DESIGNER'S READ OF 2026-09-09 ═══════════
+   `scripts/probes/daudit.mjs` read 21 text elements under 12 px on the first
+   screen — captions at 9.5, the stops at 10.5, the record panel's paragraphs
+   at 12 px and 55 % ink in a 221 px column. This is the page's type scale,
+   stated once, after every rule it overrides: 14 px is the floor for a
+   sentence, 16 px in the record panel, 12 px the smallest caption, and no
+   uppercase label under 11 px. Greys at 70 % ink, not 55. Wide screens
+   only — the phone has its own layer above. */
+@media (min-width: 820px) {
+  .theme-fusion .fx-city-controls-cap { font-size: 11px; letter-spacing: .09em; }
+  .theme-fusion .fx-city-preset { font-size: 11.5px; padding: 8px 12px; }
+  .theme-fusion .fx-city-system { font-size: 11.5px; padding: 8px 12px; }
+  .theme-fusion .fx-city-help { font-size: 12.5px; }
+  .theme-fusion .fx-city-help kbd { font-size: 11px; }
+  .theme-fusion .fx-city-note { font-size: 14px; }
+  .theme-fusion .fx-city-proof { font-size: 11px; color: color-mix(in srgb, var(--ink) 70%, transparent); }
+  .theme-fusion .fx-city-subjrow-cap { font-size: 11px; }
+  /* the record panel */
+  .theme-fusion .fx-city-ledger { padding: 20px 22px 24px; }
+  .theme-fusion .fx-city-record-cap { font-size: 11px; color: color-mix(in srgb, var(--ink) 70%, transparent); }
+  .theme-fusion .fx-city-record-count { font-size: 22px; }
+  .theme-fusion .fx-city-record-unit { font-size: 16px; }
+  .theme-fusion .fx-city-record-scope { font-size: 14px; line-height: 1.45; color: color-mix(in srgb, var(--ink) 72%, transparent); margin-top: 6px; }
+  .theme-fusion .fx-city-record-quiet { font-size: 14.5px; }
+  .theme-fusion .fx-city-record-row { font-size: 15px; line-height: 1.42; padding: 9px 8px; }
+  .theme-fusion .fx-city-record-tag { font-size: 10.5px; }
+  .theme-fusion .fx-city-record-sum { font-size: 12.5px; color: color-mix(in srgb, var(--ink) 70%, transparent); }
+  .theme-fusion .fx-city-record-n { font-size: 11px; color: color-mix(in srgb, var(--ink) 60%, transparent); }
+  .theme-fusion .fx-city-record-src { font-size: 14px; color: color-mix(in srgb, var(--ink) 55%, transparent); }
+  /* the block panel */
+  .theme-fusion .fx-city-ledger-head { font-size: 11px; }
+  .theme-fusion .fx-city-panel-kicker { font-size: 11px; }
+  .theme-fusion .fx-block-lead { font-size: 16px; line-height: 1.5; }
+  .theme-fusion .fx-block-hint { font-size: 12.5px; }
+  .theme-fusion .fx-block-dec, .theme-fusion .fx-block-head { font-size: 11px; }
+  .theme-fusion .fx-block-n { font-size: 11px; }
+  .theme-fusion .fx-city-fact-row { font-size: 14px; }
+  .theme-fusion .fx-fiche-note { font-size: 13px; }
+  .theme-fusion .fx-block-jump, .theme-fusion .fx-block-street { font-size: 14px; }
+  /* ── POINTER TARGETS: 24 PX, WCAG 2.5.8 ─────────────────────────────────
+     The scan icons were 21 × 20, the panel's close 21 × 23, the year rail
+     22 px tall. The glyphs do not grow; the box that takes the pointer does. */
+  .theme-fusion .fx-city-record-src { display: inline-grid; place-items: center; min-width: 28px; min-height: 28px; margin: -4px 0; }
+  .theme-fusion .fx-city-ledger button[aria-label="Close"] { min-width: 28px; min-height: 28px; }
+  .theme-fusion .fx-city-scrub { height: 28px; }
+  /* ── SHOW: A TOGGLE SAYS WHETHER IT IS ON ───────────────────────────────
+     Three identical capitals read as three names; nothing said the layers
+     were off. A square that fills when the layer is drawn. */
+  .theme-fusion .fx-city-system::before { content: "□"; margin-right: 7px; font-size: 12px; line-height: 1; }
+  .theme-fusion .fx-city-system[aria-pressed="true"]::before { content: "■"; }
+  /* ── THE FILM HAS THE SCREEN ─────────────────────────────────────────────
+     While it runs the map's own controls step off: the zoom row, the SHOW
+     row and the search box were sitting over the scanned page. */
+  body[data-city-film] .fx-city-controls,
+  body[data-city-film] .fx-city-drawnas,
+  body[data-city-film] .fx-city-system-note,
+  body[data-city-film] .fx-city-find { display: none; }
+  /* the transport ends before the chat launcher, which had covered its end */
+  .theme-fusion .fx-city-clockrow { padding-right: 170px; }
+}
+
+/* ── THE CITY, BEFORE THE CITY — `CityGLMap.tsx` ────────────────────────── */
+.theme-fusion .fx-city-preview {
+  position: absolute; top: 0; left: 0; bottom: 0; right: var(--fx-city-ledger, 0px);
+  width: auto; height: 100%; max-width: none;
+  object-fit: cover; object-position: center;
+  z-index: 4; pointer-events: none;
+  transition: opacity .7s ease;
+}
+.theme-fusion .fx-city-preview.is-gone { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .theme-fusion .fx-city-preview { transition: none; } }
+/* with a picture under it the veil is a wash, not a curtain */
+.theme-fusion .fx-city-stage:has(.fx-city-preview:not(.is-gone)) .fx-city-overlay {
+  background: rgba(250, 250, 247, .28);
+}
+.theme-fusion .fx-city-stage:has(.fx-city-preview:not(.is-gone)) .fx-city-loading {
+  background: color-mix(in srgb, var(--bg) 85%, transparent); padding: 6px 12px;
+}
+
+/* ── THE KEYBOARD HINT, BEHIND A WORD — `help-row.tsx` ─────────────────── */
+.theme-fusion .fx-city-help-wrap { padding: 6px 0; }
+.theme-fusion .fx-city-help-sum {
+  display: inline-flex; align-items: center; gap: 8px; cursor: pointer; list-style: none;
+  font-family: var(--f-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--ink) 65%, transparent); padding: 6px 0;
+}
+.theme-fusion .fx-city-help-sum::-webkit-details-marker { display: none; }
+.theme-fusion .fx-city-help-sum kbd { font-family: var(--f-mono); font-size: 11px; border: 1px solid var(--rule); padding: 1px 6px; }
+.theme-fusion .fx-city-help-sum:hover { color: var(--ink); }
+.theme-fusion .fx-city-help-wrap > .fx-city-help { padding-top: 2px; }
+
+/* ── A ROW THAT OPENS SAYS SO — `CityRecordPanel.tsx` ──────────────────── */
+.theme-fusion .fx-city-record-row::after {
+  content: "›"; margin-left: auto; padding-left: 8px; align-self: center;
+  color: color-mix(in srgb, var(--ink) 38%, transparent); font-size: 1.15em; line-height: 1;
+}
+.theme-fusion .fx-city-record-line:hover .fx-city-record-row::after,
+.theme-fusion .fx-city-record-line.is-hot .fx-city-record-row::after { color: var(--ink); }
+.theme-fusion .fx-block-rung-u { font-family: var(--f-sans); text-transform: none; letter-spacing: 0; }
+.theme-fusion .fx-city-note-counts { font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }

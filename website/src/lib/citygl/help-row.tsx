@@ -47,6 +47,8 @@ export interface CityHelpRowProps {
   years?: string;
   /** what the keyboard does — hidden under 819 px by `.fx-city-help-keys` */
   keys: string;
+  /** the word the closed disclosure shows */
+  summary: string;
 }
 
 /**
@@ -56,14 +58,22 @@ export interface CityHelpRowProps {
  * already in `fusion.css` and neither is styled here, so the port cannot drift
  * from the page it is a port of by way of a second stylesheet.
  */
-export function CityHelpRow({ move, years, keys }: CityHelpRowProps) {
+export function CityHelpRow({ move, years, keys, summary }: CityHelpRowProps) {
   return (
     <div className="fx-wrap">
-      <div className="fx-city-help">
-        {move ? <span>{move}</span> : null}
-        {years ? <span>{years}</span> : null}
-        <span className="fx-city-help-keys">{keys}</span>
-      </div>
+      {/* ── BEHIND A WORD, NOT ACROSS THE PAGE ───────────────────────────
+          The hint ran as a full line of 11 px mono under the map, the first
+          of four grey lines saying what the page is. It opens on demand. */}
+      <details className="fx-city-help-wrap">
+        <summary className="fx-city-help-sum">
+          <kbd>?</kbd> {summary}
+        </summary>
+        <div className="fx-city-help">
+          {move ? <span>{move}</span> : null}
+          {years ? <span>{years}</span> : null}
+          <span className="fx-city-help-keys">{keys}</span>
+        </div>
+      </details>
     </div>
   );
 }

@@ -238,7 +238,11 @@ export function cityBBoxByBand(p: Projection, ext: CityExtent): BBox[] {
    put a quarter of San Francisco behind the ledger and the rest under the
    title — mock finding #1. The camera fits to the strip the reader can
    actually see, and fills it: the surround takes the corners. */
-export const LEDGER_W = 288;
+/* 360, from 288 (2026-09-09): the record panel's paragraphs were 12 px in a
+   221 px column, which the desktop audit called the hardest thing on the
+   page to read. A quarter of a 1440 screen gives 16 px type a 300 px
+   measure — about 55 characters, which is where a paragraph starts to read. */
+export const LEDGER_W = 360;
 
 /** The width below which the ledger stacks below the map instead of over it,
  *  so the whole canvas is the visible strip. */
