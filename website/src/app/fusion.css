@@ -117,38 +117,6 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   .theme-fusion .fx-nav-hidden { transform: none; transition: none; }
 }
 
-/* Prototype disclaimer strip — sits at the very top on non-flagship places
-   (registry poc:true), above the sticky nav. Fixed height so the hero fold can
-   subtract it (see --poc-h below). Neutral, factual, low-key. */
-.theme-fusion .fx-poc-banner {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  height: 34px;
-  box-sizing: border-box;
-  padding: 0 24px;
-  background: var(--bg-warm, #f4efe3);
-  border-bottom: 1px solid var(--rule);
-  font-size: 12.5px;
-  line-height: 1.2;
-  color: var(--muted-2);
-  overflow: hidden;
-  white-space: nowrap;
-}
-.theme-fusion .fx-poc-badge {
-  flex: none;
-  font-family: var(--f-disp);
-  font-weight: 600;
-  font-size: 10.5px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  padding: 2px 7px;
-  border: 1px solid var(--ink);
-  color: var(--ink);
-  background: var(--bg);
-}
-.theme-fusion .fx-poc-text { min-width: 0; }
-
 .theme-fusion .fx-brand {
   display: flex;
   align-items: center;
@@ -331,9 +299,6 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 /* The "find my city" action button must fill the row like the <Link> items, so
    space-between pushes its tags to the right edge. */
 .theme-fusion .fx-sm-action { width: 100%; text-align: left; }
-/* Group the action's two tags so the PoC tag lands at the far right, vertically
-   aligned with the single tag on every other row. */
-.theme-fusion .fx-sm-tags { display: inline-flex; align-items: center; gap: 12px; }
 .theme-fusion .fx-sm-sep { height: 1px; background: var(--rule); margin: 4px 0; }
 
 /* Language switcher */
@@ -5589,13 +5554,8 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 /* ─── ZONE FOLD : Hero + HeroDeck + HeroMarquee tiennent dans le 1er
  *     viewport, marquee collé au bas, peu importe la hauteur du browser.
  *     S'applique aussi à mobile (cards passent en carousel horizontal). */
-/* --poc-h = height of the top prototype banner (0 when absent). On POC places
-   the banner sits above the nav, so the fold must subtract it too, else the
-   bottom marquee is pushed below the viewport and looks cut. */
-.theme-fusion { --poc-h: 0px; }
-.theme-fusion:has(.fx-poc-banner) { --poc-h: 34px; }
 .theme-fusion .fx-hero-fold {
-  min-height: calc(100dvh - 56px - var(--poc-h)); /* viewport − navbar − banner */
+  min-height: calc(100dvh - 56px); /* viewport − navbar */
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* répartit l'espace : Hero haut, Deck milieu, Marquee bas */

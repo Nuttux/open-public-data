@@ -176,7 +176,7 @@ export default function ScopeDropdown({ variant = "nav" }: Props) {
             {isOnParisRich && <span className="fx-sm-check" aria-hidden="true">✓</span>}
           </Link>
 
-          {/* Other principal cities — Marseille is the live PoC, others are
+          {/* Other principal cities — Marseille is live, others are
               non-clickable placeholders flagged "à venir". */}
           {otherCities.map((c) => {
             const isActive = cityMatch?.slug === c.slug;
@@ -192,11 +192,7 @@ export default function ScopeDropdown({ variant = "nav" }: Props) {
                   onClick={() => handleNav(href)}
                 >
                   <span>{c.nom}</span>
-                  {isActive ? (
-                    <span className="fx-sm-check" aria-hidden="true">✓</span>
-                  ) : (
-                    <span className="fx-sm-tag">{t("fx.scope.tag.poc")}</span>
-                  )}
+                  {isActive && <span className="fx-sm-check" aria-hidden="true">✓</span>}
                 </Link>
               );
             }

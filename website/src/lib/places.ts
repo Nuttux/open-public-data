@@ -80,12 +80,6 @@ export type Place = {
    */
   name?: string;
   /**
-   * Prototype / proof-of-concept: shows the POC disclaimer banner and is
-   * flagged in the switcher. Flagship places (Paris, France-national landing)
-   * leave this false.
-   */
-  poc?: boolean;
-  /**
    * Where the switcher navigates when this is NOT `hub` at `path` — used for
    * places whose live URL differs from the registry path (Paris = root URLs).
    */
@@ -96,12 +90,6 @@ export type Place = {
    * single page).
    */
   hideFromSwitcher?: boolean;
-  /**
-   * This place renders its own status/WIP strip (e.g. Marseille's WipBanner), so
-   * the chrome must NOT also stack the generic POC banner. Still shows the "PoC"
-   * tag in the switcher.
-   */
-  ownWipBanner?: boolean;
 };
 
 /** Country display order + flag for the switcher's grouping. */
@@ -130,7 +118,6 @@ export const PLACES: Place[] = [
     currency: "EUR",
     dataNamespace: "fr/national",
     hub: true,
-    poc: true,
     modules: [],
   },
   {
@@ -160,7 +147,6 @@ export const PLACES: Place[] = [
     currency: "EUR",
     dataNamespace: "fr/marseille",
     hub: true, // its landing renders at /fr/city/marseille → switcher lands there
-    poc: true,
     modules: [
       { slug: "budget", labelKey: "fx.nav.link.budget" },
       { slug: "lieux", labelKey: "fx.nav.link.lieux" },
@@ -178,7 +164,6 @@ export const PLACES: Place[] = [
     currency: "USD",
     dataNamespace: "us/national",
     hub: true,
-    poc: true,
     hideFromSwitcher: true,
     modules: [],
   },
@@ -194,7 +179,6 @@ export const PLACES: Place[] = [
     currency: "USD",
     dataNamespace: "us/sf",
     hub: true,
-    poc: true,
     modules: [
       { slug: "the-city", labelKey: "us.sf.nav.the_city", kind: "city" },
       { slug: "budget", labelKey: "us.sf.nav.budget", kind: "budget" },
@@ -218,7 +202,6 @@ export const PLACES: Place[] = [
     currency: "BRL",
     dataNamespace: "br/recife",
     hub: true,
-    poc: true,
     modules: [
       { slug: "budget", labelKey: "br.recife.nav.budget", kind: "budget" },
       { slug: "quem-recebe", labelKey: "br.recife.nav.quem_recebe", kind: "recipients" },

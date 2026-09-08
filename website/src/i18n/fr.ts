@@ -1116,7 +1116,6 @@ const fr: Record<string, string> = {
   'fx.scope.heading.france': 'Vue France',
   'fx.scope.tag.avenir': 'à venir',
   'fx.scope.tag.v2': 'V2',
-  'fx.scope.tag.poc': 'poc',
   'fx.scope.tag.roadmap': 'roadmap',
   'fx.scope.france': 'France',
   'fx.scope.france.apu': 'Dépenses publiques (APU)',
@@ -2604,7 +2603,7 @@ const fr: Record<string, string> = {
   'fx.sim.ineligible.p1': "Le parc social conventionné (PLAI, PLUS, PLS) est soumis à des plafonds de ressources fixés au niveau national. Au-delà du plafond PLS, la candidature en HLM classique n'est pas recevable — l'attente n'a donc pas de sens ici.",
   'fx.sim.ineligible.p2': "Le logement locatif intermédiaire (LLI), les résidences étudiantes, l'intermédiation locative ou l'accession abordable peuvent rester accessibles selon la situation. Vérifier son éligibilité précise sur demande-logement-social.gouv.fr.",
   'fx.sim.disclaimer_label': 'Limite',
-  'fx.sim.disclaimer': "Calcul POC à partir de multiplicateurs plausibles (taille · zone · ménage · priorité · revenus) appliqués au délai médian Paris 2024 (4,2 ans). Les valeurs ne reflètent pas une modélisation officielle DRIHL — elles donnent un ordre de grandeur. Le délai réel dépend de l'offre disponible, des refus successifs, de la localisation précise et de critères non pris en compte ici (santé, handicap, situation familiale, violences). Voir sources pour la méthode complète.",
+  'fx.sim.disclaimer': "Estimation à partir de multiplicateurs plausibles (taille · zone · ménage · priorité · revenus) appliqués au délai médian Paris 2024 (4,2 ans). Les valeurs ne reflètent pas une modélisation officielle DRIHL — elles donnent un ordre de grandeur. Le délai réel dépend de l'offre disponible, des refus successifs, de la localisation précise et de critères non pris en compte ici (santé, handicap, situation familiale, violences). Voir sources pour la méthode complète.",
 
   // ── QuiRecoitExplorer ────────────────────────────────────────────────────────
   'fx.qr.top.title.before': 'Les ',
@@ -4694,7 +4693,7 @@ const fr: Record<string, string> = {
   // ── US · National (/us/national) — EN-only per ADR-0010 D3 ────────────────
   // FR values mirror the English verbatim so the page stays English on every
   // locale toggle (fr.ts must typecheck; US routes have no FR parity rule).
-  // ── Chrome de registre partagé (marque Qipu constante · sélecteur · bandeau PoC) ──
+  // ── Chrome de registre partagé (marque Qipu constante · sélecteur) ──
   'chrome.wordmark': 'Qipu',
   'chrome.home': 'Accueil',
   'chrome.country.fr': 'France',
@@ -4705,9 +4704,6 @@ const fr: Record<string, string> = {
   'chrome.place.marseille': 'Marseille',
   'chrome.switch.label': 'Explorer',
   'chrome.switch.aria': 'Changer de territoire',
-  'chrome.switch.poc_tag': 'PoC',
-  'chrome.poc.badge': 'Démonstration',
-  'chrome.poc.label': 'Travail en cours.',
   'us.chrome.wordmark': 'US — Public Data Explorer (working title)',
   'us.chrome.nav_aria': 'United States sections',
   'us.chrome.nav.national': 'National',
