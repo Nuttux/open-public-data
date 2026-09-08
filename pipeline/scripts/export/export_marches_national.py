@@ -144,9 +144,11 @@ def build(insee: str, meta: dict, rows: list[dict], now: str) -> dict | None:
     exclus = [r for r in rows if r.get("montant_invraisemblable")]
     rows = [r for r in rows if not r.get("montant_invraisemblable")]
     # Deuxième garde-fou, par exercice : si les contrats notifiés une année
-    # dépassent deux années entières de dépenses de la commune, c'est la
-    # publication qui est hors d'échelle (Nice, Annecy : plafonds par lot
-    # multipliés), pas l'achat. L'année est écartée et nommée dans le fichier.
+    # dépassent deux années entières de dépenses de la commune ET 20 M€, c'est
+    # la publication qui est hors d'échelle (Nice, Annecy : plafonds par lot
+    # multipliés), pas l'achat. Le plancher de 20 M€ protège les villages dont
+    # une année de gros chantier dépasse naturellement deux budgets annuels.
+    # L'année est écartée et nommée dans le fichier.
     dep_commune = next((r["depenses_totales_commune"] for r in rows if r.get("depenses_totales_commune")), None)
     annees_ecartees: list[int] = []
     if dep_commune:
@@ -154,7 +156,7 @@ def build(insee: str, meta: dict, rows: list[dict], now: str) -> dict | None:
         for r in rows:
             if r["annee"]:
                 par_annee[int(r["annee"])] += r["montant"] or 0
-        annees_ecartees = sorted(y for y, t in par_annee.items() if t > 2 * dep_commune)
+        annees_ecartees = sorted(y for y, t in par_annee.items() if t > 2 * dep_commune and t >= 20_000_000)
         if annees_ecartees:
             ecartes = [r for r in rows if r["annee"] and int(r["annee"]) in annees_ecartees]
             exclus.extend(ecartes)

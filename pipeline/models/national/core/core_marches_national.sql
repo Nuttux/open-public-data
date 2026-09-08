@@ -20,12 +20,14 @@ WITH marches AS (
 
 -- Dépenses totales de la commune (OFGL, dernier exercice) : sert au plafond
 -- de vraisemblance. Le DECP contient des montants saisis n'importe comment
--- (100 000 M€ pour une téléphonie, 40 000 M€ chez Nice) : 318 marchés
+-- (100 000 M€ pour une papeterie, 40 000 M€ chez Nice) : 318 marchés
 -- au-dessus de 200 M€ portaient 85 % du total national. Un marché est jugé
--- invraisemblable s'il dépasse 200 M€ ou une année entière de dépenses de la
--- commune : entre 1× et 3×, on ne trouve que des plafonds d'accords-cadres de
--- centrales d'achat (160 M€ de « numérique éducatif » pour une ville de 60 000
--- habitants), jamais un achat réel de la commune.
+-- invraisemblable s'il dépasse 200 M€, ou dix années de dépenses de la
+-- commune, ou trois années de dépenses ET 10 M€. Vérifié sur échantillons
+-- (2026-09-09) : un village qui construit une salle à 2 M€ pour 400 k€ de
+-- budget annuel est réel et reste ; au-delà de dix fois le budget, ou de
+-- trois fois avec plus de 10 M€, on ne trouve que des plafonds d'accords-
+-- cadres de groupements d'achat d'énergie ou de centrales d'achat.
 depenses_commune AS (
     SELECT code_insee, montant AS depenses_totales
     FROM {{ ref('stg_ofgl_communes') }}
@@ -63,7 +65,8 @@ SELECT
     COALESCE(s.est_personne_physique, FALSE)   AS titulaire_personne_physique,
     d.depenses_totales                          AS depenses_totales_commune,
     (m.montant > 200000000
-        OR (d.depenses_totales IS NOT NULL AND m.montant > d.depenses_totales))
+        OR (d.depenses_totales IS NOT NULL AND m.montant > 10 * d.depenses_totales)
+        OR (d.depenses_totales IS NOT NULL AND m.montant > 3 * d.depenses_totales AND m.montant >= 10000000))
                                                 AS montant_invraisemblable,
 
     -- Classification CPV (division → thème). Déterministe, publique.
