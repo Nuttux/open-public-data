@@ -31,7 +31,7 @@ const pt: Record<string, string> = {
   "fx.chart.method": "Método",
 
   // ---- chrome -------------------------------------------------------------
-  // Chrome de registro compartilhado (marca Qipu constante · seletor · faixa PoC)
+  // Chrome de registro compartilhado (marca Qipu constante · seletor)
   "chrome.wordmark": "Qipu",
   "chrome.home": "Início",
   "chrome.country.fr": "França",
@@ -42,9 +42,6 @@ const pt: Record<string, string> = {
   "chrome.place.marseille": "Marseille",
   "chrome.switch.label": "Explorar",
   "chrome.switch.aria": "Trocar de lugar",
-  "chrome.switch.poc_tag": "PoC",
-  "chrome.poc.badge": "Demonstração",
-  "chrome.poc.label": "Em construção.",
 
   // ---- rodapé (footer compartilhado) --------------------------------------
   "fx.foot.mission": "O dinheiro público, tornado legível. Projeto independente, open source.",

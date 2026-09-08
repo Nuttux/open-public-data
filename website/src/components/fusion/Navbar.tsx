@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import BrandMark from "./BrandMark";
 import PlaceSwitcher from "../PlaceSwitcher";
-import PocBanner from "../PocBanner";
 import LangSwitcher from "./LangSwitcher";
 import {
   NATIONAL_NAV_LINKS,
@@ -16,7 +15,6 @@ import {
 import { useCommuneNav, type CommuneNav } from "@/components/CommuneNavContext";
 import { useT } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
-import { getPlace } from "@/lib/places";
 import { useDrawerOpen } from "@/lib/drawerState";
 
 // France scope is on any /fr/national/* page, /comparer, or the Daily Bread tool.
@@ -40,8 +38,8 @@ function navLinksForPath(pathname: string, commune: CommuneNav | null) {
   return villeNavLinks(m ? m[1] : "paris");
 }
 
-// The registry slug of the current France scope, for the unified switcher and
-// the POC banner. France's routing is irregular (Paris = root URLs + homepage),
+// The registry slug of the current France scope, for the unified switcher.
+// France's routing is irregular (Paris = root URLs + homepage),
 // so we resolve it here rather than by registry path matching.
 function currentFrSlug(pathname: string): string {
   if (isFranceScope(pathname)) return "fr-national";
@@ -54,12 +52,6 @@ export default function Navbar() {
   const commune = useCommuneNav();
   const navLinks = navLinksForPath(pathname, commune);
   const frSlug = currentFrSlug(pathname);
-  const frPlace = getPlace(frSlug);
-  // Show the generic POC banner on registry POC places AND on national tail
-  // communes (not in the registry — surfaced via commune context). ownWipBanner
-  // still suppresses it where a place renders its own strip.
-  const showPoc =
-    ((frPlace?.poc ?? false) && !frPlace?.ownWipBanner) || Boolean(commune);
   const [menuOpen, setMenuOpen] = useState(false);
   const t = useT();
   const track = useTrack();
@@ -93,7 +85,6 @@ export default function Navbar() {
 
   return (
     <>
-      {showPoc && <PocBanner />}
       <header className="fx-nav">
         <Link
           href="/"

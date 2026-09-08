@@ -25,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
 const dataset = datasetJsonLd({
   name: "Projets d'investissement de la Ville de Marseille (CA, parsing PDF)",
   description:
-    "Projets d'investissement de la Ville de Marseille extraits des rapports de présentation des comptes administratifs (PDF). Classification par thématique et arrondissement. POC v1 (couverture 2023-2024).",
+    "Projets d'investissement de la Ville de Marseille extraits des rapports de présentation des comptes administratifs (PDF). Classification par thématique et arrondissement. Couverture 2023-2024.",
   path: '/fr/city/marseille/investissements',
   keywords: ['investissement', 'Marseille', 'compte administratif', 'thématiques'],
   temporalCoverage: '2023/2024',

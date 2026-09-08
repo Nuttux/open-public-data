@@ -8,15 +8,13 @@ import { placesForCountry, orderedModules, type Place } from "@/lib/places";
 import { useDrawerOpen } from "@/lib/drawerState";
 import BrandMark from "./fusion/BrandMark";
 import PlaceSwitcher from "./PlaceSwitcher";
-import PocBanner from "./PocBanner";
 
 /**
  * ONE registry-driven chrome for any country (ADR-0010 D2). Renders the shared
  * fx-nav / fx-brand / fx-links / fx-overlay markup:
  *   • constant Qipu wordmark + BrandMark (the brand is invariant across places);
  *   • nav row = the CURRENT place's registry modules (so it changes per city);
- *   • the unified PlaceSwitcher (country → city) on the right;
- *   • a prototype banner under the nav on POC places.
+ *   • the unified PlaceSwitcher (country → city) on the right.
  * The `trailing` slot holds any extra control (e.g. Recife's PT/EN toggle).
  *   <RegistryChrome country="br" trailing={<LangToggle/>} />
  *   <RegistryChrome country="us" />
@@ -61,7 +59,6 @@ export default function RegistryChrome({
 
   return (
     <>
-      {place?.poc && <PocBanner />}
       <header className="fx-nav">
         <Link href={brandHref} className="fx-brand">
           <BrandMark />

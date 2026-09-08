@@ -1116,7 +1116,6 @@ const en: Record<string, string> = {
   'fx.scope.heading.france': 'France view',
   'fx.scope.tag.avenir': 'coming soon',
   'fx.scope.tag.v2': 'V2',
-  'fx.scope.tag.poc': 'poc',
   'fx.scope.tag.roadmap': 'roadmap',
   'fx.scope.france': 'France',
   'fx.scope.france.apu': 'Public spending (APU)',
@@ -2607,7 +2606,7 @@ const en: Record<string, string> = {
   'fx.sim.ineligible.p1': "State-regulated social housing (PLAI, PLUS, PLS) is subject to national income caps. Above the PLS cap, a standard social housing application is not admissible — waiting time is not a meaningful metric here.",
   'fx.sim.ineligible.p2': "Intermediate rental housing (LLI), student residences, managed leasing or affordable home-ownership schemes may remain accessible. Check precise eligibility on demande-logement-social.gouv.fr.",
   'fx.sim.disclaimer_label': 'Limitation',
-  'fx.sim.disclaimer': "POC computation based on plausible multipliers (size · area · household · priority · income) applied to the 2024 Paris median wait (4.2 years). Values do not reflect an official DRIHL model — they give an order of magnitude. Actual waits depend on available supply, successive refusals, precise location and criteria not captured here (health, disability, family situation, domestic violence). See sources for full method.",
+  'fx.sim.disclaimer': "Estimate based on plausible multipliers (size · area · household · priority · income) applied to the 2024 Paris median wait (4.2 years). Values do not reflect an official DRIHL model — they give an order of magnitude. Actual waits depend on available supply, successive refusals, precise location and criteria not captured here (health, disability, family situation, domestic violence). See sources for full method.",
 
   // ── QuiRecoitExplorer ────────────────────────────────────────────────────────
   'fx.qr.top.title.before': 'The ',
@@ -4721,7 +4720,7 @@ const en: Record<string, string> = {
   // ── US · National (/us/national) — EN-only per ADR-0010 D3 ────────────────
   // FR values mirror the English verbatim so the page stays English on every
   // locale toggle (fr.ts must typecheck; US routes have no FR parity rule).
-  // ── Shared registry chrome (constant Qipu brand · place switcher · POC strip) ──
+  // ── Shared registry chrome (constant Qipu brand · place switcher) ──
   'chrome.wordmark': 'Qipu',
   'chrome.home': 'Home',
   'chrome.country.fr': 'France',
@@ -4732,9 +4731,6 @@ const en: Record<string, string> = {
   'chrome.place.marseille': 'Marseille',
   'chrome.switch.label': 'Explore',
   'chrome.switch.aria': 'Switch place',
-  'chrome.switch.poc_tag': 'PoC',
-  'chrome.poc.badge': 'Proof of concept',
-  'chrome.poc.label': 'Work in progress.',
   'us.chrome.wordmark': 'US — Public Data Explorer (working title)',
   'us.chrome.nav_aria': 'United States sections',
   'us.chrome.nav.national': 'National',

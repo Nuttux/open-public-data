@@ -20,7 +20,7 @@ import {
  * cities are dropped automatically. Reuses the shared fx-scope / fx-sm-* markup
  * so it renders identically on any chrome; `variant` matches the ScopeDropdown
  * (nav | overlay). Labels use the place's proper-noun `name` when set, else its
- * i18n `labelKey`; flagship places show no tag, POC places get the "PoC" tag.
+ * i18n `labelKey`.
  *
  * `currentSlug` lets the caller name the active place — France's routing is
  * irregular (Paris lives at root URLs and the homepage), so the France chrome
@@ -122,10 +122,7 @@ export default function PlaceSwitcher({
                   onClick={openCommuneSearch}
                 >
                   <span>{t("fx.scope.search_all_cta")}</span>
-                  <span className="fx-sm-tags">
-                    <span className="fx-sm-tag">35 000+</span>
-                    <span className="fx-sm-tag">{t("chrome.switch.poc_tag")}</span>
-                  </span>
+                  <span className="fx-sm-tag">35 000+</span>
                 </button>
               )}
               {g.places.map((p) => {
@@ -140,11 +137,7 @@ export default function PlaceSwitcher({
                     onClick={() => setOpen(false)}
                   >
                     <span>{label(p)}</span>
-                    {isActive ? (
-                      <span className="fx-sm-check" aria-hidden="true">✓</span>
-                    ) : p.poc ? (
-                      <span className="fx-sm-tag">{t("chrome.switch.poc_tag")}</span>
-                    ) : null}
+                    {isActive && <span className="fx-sm-check" aria-hidden="true">✓</span>}
                   </Link>
                 );
               })}
