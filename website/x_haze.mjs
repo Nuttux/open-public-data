@@ -1,5 +1,4 @@
 import { chromium } from 'playwright';
-import fs from 'node:fs';
 const SCR = process.env.SCR, BASE = 'http://localhost:3000';
 const REF = { cx: 241.427019126574, cy: 707.0567508859249, scale: 0.0681567332915786 };
 const CSS = { w: 1280, h: 768 };
@@ -24,7 +23,7 @@ const pose = async (cx, cy, scale, band) => {
   await p.waitForTimeout(350);
   for (let i = 0; i < 3; i++) { await p.evaluate(() => window.__cityGL.invalidate()); await p.waitForTimeout(120); }
 };
-const z = 4, scale = REF.scale * 2, f = 2;
+const scale = REF.scale * 2, f = 2;
 const cam = (i, j) => [REF.cx + ((i + 0.5) * CSS.w - (CSS.w * f) / 2) / scale, REF.cy - ((j + 0.5) * CSS.h - (CSS.h * f) / 2) / scale];
 const seq = [[0,1],[0,0],[0,1],[1,1],[0,0]];
 let k = 0;
