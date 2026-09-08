@@ -1,0 +1,15 @@
+import { chromium } from 'playwright';
+const BASE = process.env.BASE || 'http://localhost:3008';
+const b = await chromium.launch({ args: ['--enable-unsafe-webgpu', '--use-gl=angle', '--ignore-gpu-blocklist'] });
+const p = await b.newPage({ viewport: { width: 1440, height: 820 } });
+await p.goto(`${BASE}/us/city/sf/the-city?probe=1`, { waitUntil: 'domcontentloaded' });
+await p.waitForSelector('.fx-city-controls', { timeout: 240000 }); await p.waitForTimeout(1500);
+const pressed = () => p.evaluate(() => [...document.querySelectorAll('.fx-city-controls .fx-city-preset')].filter((e) => e.getAttribute('aria-pressed') === 'true').map((e) => e.textContent.trim()).join(',') || 'none');
+await p.click('.fx-city-controls .fx-city-preset:text-is("District")'); await p.waitForTimeout(800);
+console.log('after District: pressed', await pressed(), 'strip', !!(await p.$('.fx-city-strip')));
+const c = await (await p.$('canvas')).boundingBox(); await p.mouse.move(c.x + 500, c.y + 300); await p.mouse.wheel(0, -900); await p.waitForTimeout(1500);
+console.log('after wheel in: pressed', await pressed(), 'scale', await p.evaluate(() => window.__cityGL.getCamera().scale.toFixed(3)));
+await p.reload({ waitUntil: 'domcontentloaded' }); await p.waitForFunction(() => document.querySelector('.fx-city-strip-cta:not([disabled])'), null, { timeout: 240000 }); await p.waitForTimeout(1000);
+await p.click('.fx-city-strip-cta'); await p.waitForTimeout(1500);
+console.log('film from strip: running', await p.evaluate(() => window.__cityGLFilm.running), 'strip', !!(await p.$('.fx-city-strip')), 'controls hidden', await p.evaluate(() => getComputedStyle(document.querySelector('.fx-city-controls')).display));
+await b.close();

@@ -19551,23 +19551,10 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   .theme-fusion .fx-city-clockrow { padding-right: 170px; }
 }
 
-/* ── THE CITY, BEFORE THE CITY — `CityGLMap.tsx` ────────────────────────── */
-.theme-fusion .fx-city-preview {
-  position: absolute; top: 0; left: 0; bottom: 0; right: var(--fx-city-ledger, 0px);
-  width: auto; height: 100%; max-width: none;
-  object-fit: cover; object-position: center;
-  z-index: 4; pointer-events: none;
-  transition: opacity .7s ease;
-}
-.theme-fusion .fx-city-preview.is-gone { opacity: 0; }
-@media (prefers-reduced-motion: reduce) { .theme-fusion .fx-city-preview { transition: none; } }
-/* with a picture under it the veil is a wash, not a curtain */
-.theme-fusion .fx-city-stage:has(.fx-city-preview:not(.is-gone)) .fx-city-overlay {
-  background: rgba(250, 250, 247, .28);
-}
-.theme-fusion .fx-city-stage:has(.fx-city-preview:not(.is-gone)) .fx-city-loading {
-  background: color-mix(in srgb, var(--bg) 85%, transparent); padding: 6px 12px;
-}
+/* the whole-city preview picture under the veil (2026-09-09) was tried and
+   taken out the same day: the tile mosaic is framed for the phone's camera
+   and sat a little off the model. The right version is the tile map itself
+   under the model at the same camera — a later block. */
 
 /* ── THE KEYBOARD HINT, BEHIND A WORD — `help-row.tsx` ─────────────────── */
 .theme-fusion .fx-city-help-wrap { padding: 6px 0; }

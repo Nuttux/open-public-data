@@ -91,10 +91,6 @@ interface ThemeEntry {
  * and not for type. The dot beside the label carries the colour, the label
  * carries the identity, and neither depends on the other.
  */
-/** how long the preview picture takes to fade once the model is drawn —
- *  the same number as `.fx-city-preview`'s transition in `fusion.css` */
-const PREVIEW_FADE_MS = 700;
-
 function chipStyle(on: boolean, ink: string | null): React.CSSProperties {
   return {
     font: `${on ? 600 : 400} 13px/1 var(--f-sans, system-ui)`,
@@ -380,14 +376,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
   const filmRef = useRef<FilmPlayer | null>(null);
   const remeasureFilmRef = useRef<(() => void) | null>(null);
   const [filmOn, setFilmOn] = useState(false);
-  /* the preview picture stays for its fade after the model is ready, then
-     leaves the DOM — §THE CITY, BEFORE THE CITY */
-  const [preview, setPreview] = useState(true);
-  useEffect(() => {
-    if (loading) return;
-    const t = setTimeout(() => setPreview(false), PREVIEW_FADE_MS + 50);
-    return () => clearTimeout(t);
-  }, [loading]);
+
   /* the page's chrome reads this: the map's own controls step off while the
      film has the screen — `fusion.css` §THE FILM HAS THE SCREEN */
   useEffect(() => {
@@ -1503,7 +1492,19 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       detachControls = attachControls(canvas, engine, {
         base,
         zStops,
-        onChange: () => setNonce((n) => n + 1),
+        onChange: () => {
+          /* and after a wheel or a drag, the stop nearest the camera */
+          const sc = engine?.getCamera().scale ?? 0;
+          const scales = stopScalesRef.current;
+          if (sc > 0 && scales.length) {
+            let best = 0;
+            for (let i = 1; i < scales.length; i += 1) {
+              if (Math.abs(Math.log(sc / scales[i])) < Math.abs(Math.log(sc / scales[best]))) best = i;
+            }
+            setZoomStop(best);
+          }
+          setNonce((n) => n + 1);
+        },
       });
       canvas.tabIndex = 0;
 
@@ -1614,6 +1615,10 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
           const scale = (e.viewport.W * 0.94) / Math.max(1e-6, Math.abs(across));
           e.setStep(stepForZ(scale / base, stopCuts));
           e.setCamera({ cx: c[0], cy: c[1], scale });
+          /* the row shows the stop it was just sent to — it only ever
+             learned the stop from a pick, so a click or a wheel left all
+             four unlit (audit of 2026-09-09) */
+          setZoomStop(i);
           setNonce((n) => n + 1);
         },
         i,
@@ -2057,22 +2062,6 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
                 </button>
               ))}
             </div>
-          ) : null}
-          {/* ── THE CITY, BEFORE THE CITY ─────────────────────────────────
-              The model takes 9–13 s to draw on production; the first second
-              and a half showed an empty stage. The whole-city picture already
-              exists as tiles (`now/preview.jpg`, the level-3 mosaic), so it
-              is on screen the instant the page lands, under a light wash, and
-              fades out once the model is drawn — the wait reads as the picture
-              sharpening. Framed to the visible strip, not under the ledger. */}
-          {preview && descriptor.tilesBaseUrl ? (
-            <img
-              className={`fx-city-preview${loading ? "" : " is-gone"}`}
-              src={`${descriptor.tilesBaseUrl}/now/preview.jpg`}
-              alt=""
-              aria-hidden="true"
-              decoding="async"
-            />
           ) : null}
           {failed ? (
             <div className="fx-city-overlay">

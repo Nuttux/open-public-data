@@ -700,22 +700,27 @@ export default function TheCityGLClient({ data }: { data: TheCityPageData }) {
     if (!intro) return;
     const el = shellRef.current;
     if (!el) return;
-    /* ── NOT A PRESS ON THE STRIP ITSELF ──────────────────────────────
-       The strip now carries the film button. A capture-phase pointerdown
-       that closed the strip on ANY press removed that button before its
-       click could fire — measured: the strip went, the film never started.
-       A press inside the strip is the strip's own business. */
+    /* ── ON THE CLICK, NOT ON THE PRESS ────────────────────────────────
+       This closed the strip on pointerdown. The strip's height positions
+       the zoom row under it, so the row jumped 174 px up between the
+       reader's press and their release, and the click landed on the map:
+       the first zoom stop anyone clicked did nothing (MEASURED 2026-09-09,
+       `scripts/probes/zoom5.mjs`: camera unchanged at +0…+2000 ms with the
+       strip up, moved at once without it). A click is dispatched whole
+       before React re-renders, so the stop's own handler runs first and the
+       strip goes after. Wheel and keys stay as they were. A click inside the
+       strip is the strip's own business — its film button closes it itself. */
     const go = (e: Event) => {
       const t = e.target as Element | null;
-      if (e.type === "pointerdown" && t?.closest?.(".fx-city-strip")) return;
+      if (e.type === "click" && t?.closest?.(".fx-city-strip")) return;
       setIntro(false);
     };
     const opts = { capture: true } as const;
-    el.addEventListener("pointerdown", go, opts);
+    el.addEventListener("click", go, opts);
     el.addEventListener("wheel", go, opts);
     el.addEventListener("keydown", go, opts);
     return () => {
-      el.removeEventListener("pointerdown", go, opts);
+      el.removeEventListener("click", go, opts);
       el.removeEventListener("wheel", go, opts);
       el.removeEventListener("keydown", go, opts);
     };
