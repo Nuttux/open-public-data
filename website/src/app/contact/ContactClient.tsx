@@ -3,6 +3,7 @@ import Footer from "@/components/fusion/Footer";
 import Button from "@/components/fusion/Button";
 import SectionHead from "@/components/fusion/SectionHead";
 import LocaleRefresh from "@/components/LocaleRefresh";
+import ContactForm from "./ContactForm";
 import { readLocale } from "@/lib/seo";
 import fr from "@/i18n/fr";
 import en from "@/i18n/en";
@@ -31,10 +32,27 @@ export default async function ContactClient() {
         </div>
       </section>
 
+      <section className="fx-section" id="ecrire">
+        <div className="fx-wrap" style={{ maxWidth: 720 }}>
+          <SectionHead
+            number="01"
+            kind={t("fx.contactform.kind")}
+            title={
+              <>
+                {t("fx.contactform.title.before")}
+                <em>{t("fx.contactform.title.em")}</em>
+              </>
+            }
+            subtitle={t("fx.contactform.sub")}
+          />
+          <ContactForm />
+        </div>
+      </section>
+
       <section className="fx-section">
         <div className="fx-wrap">
           <SectionHead
-            number="01"
+            number="02"
             kind={t("fx.contact.s01.kind")}
             title={
               <>
@@ -85,7 +103,7 @@ export default async function ContactClient() {
       <section className="fx-section" id="signaler">
         <div className="fx-wrap">
           <SectionHead
-            number="02"
+            number="03"
             kind={t("fx.contact.s02.kind")}
             title={
               <>

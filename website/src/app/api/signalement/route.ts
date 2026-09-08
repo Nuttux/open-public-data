@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
+import { clip, getMailConfig, isValidEmail, preformattedHtml, sendMail } from "@/lib/mail/resend";
 
 export const runtime = "nodejs";
 
@@ -23,24 +23,6 @@ type Body = {
   /** Honeypot : si rempli, c'est un bot. Champ caché visuellement, label `website`. */
   website?: string;
 };
-
-function isValidEmail(s: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
-}
-
-function clip(s: string | undefined, max: number): string {
-  if (!s) return "";
-  return s.length > max ? s.slice(0, max) : s;
-}
-
-function escapeHtml(s: string): string {
-  return s
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-}
 
 export async function POST(req: Request) {
   let body: Body;
@@ -71,20 +53,16 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: "invalid_email" }, { status: 400 });
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.SIGNALEMENT_EMAIL_TO;
-  const from = process.env.SIGNALEMENT_EMAIL_FROM ?? "onboarding@resend.dev";
-
-  // Pas de clé en local/preview ? On accepte le payload et on log — évite de
-  // casser le form en dev, et le user peut quand même tester l'UX.
-  if (!apiKey || !to) {
-    console.warn("[signalement] RESEND_API_KEY ou SIGNALEMENT_EMAIL_TO absent — payload non envoyé:", {
-      category,
-      pageUrl,
-      element,
-      sourceContradictoire,
-      description,
-      contactEmail,
+  const cfg = getMailConfig("signalement");
+  if (!cfg.ok) {
+    // En prod : erreur visible. Un « merci » sur un message perdu est pire
+    // qu'un échec franc — le visiteur a un mailto de repli sous le bouton.
+    if (cfg.isProd) {
+      console.error(`[signalement] mail non configuré en production (${cfg.reason}) — signalement REFUSÉ`);
+      return NextResponse.json({ ok: false, error: "mail_not_configured" }, { status: 503 });
+    }
+    console.warn(`[signalement] ${cfg.reason} — mode test, payload non envoyé:`, {
+      category, pageUrl, element, sourceContradictoire, description, contactEmail,
     });
     return NextResponse.json({ ok: true, dev_mode: true });
   }
@@ -101,22 +79,12 @@ export async function POST(req: Request) {
     "",
     contactEmail ? `Contact (optionnel) : ${contactEmail}` : "Contact : non fourni",
   ].filter((l) => l !== null) as string[];
-
   const text = lines.join("\n");
-  const html = `<pre style="font-family: ui-monospace, monospace; white-space: pre-wrap;">${escapeHtml(text)}</pre>`;
 
   try {
-    const resend = new Resend(apiKey);
-    const result = await resend.emails.send({
-      from,
-      to,
-      subject,
-      text,
-      html,
-      replyTo: contactEmail || undefined,
-    });
-    if (result.error) {
-      console.error("[signalement] resend.emails.send error:", result.error);
+    const sent = await sendMail(cfg, { subject, text, html: preformattedHtml(text), replyTo: contactEmail });
+    if (!sent.ok) {
+      console.error("[signalement] resend.emails.send error:", sent.error);
       return NextResponse.json({ ok: false, error: "send_failed" }, { status: 502 });
     }
     return NextResponse.json({ ok: true });
