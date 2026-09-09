@@ -68,6 +68,7 @@ def main():
         ("export_data_availability.py", "Data Availability"),
         ("export_methodology.py", "Methodology (source unique constantes)"),
         ("export_logement_attente.py", "Logement social — tension par arrondissement (DRIHL)"),
+        ("export_data_freshness.py", "Fraîcheur des sources (publié par la Ville le · mis à jour sur Qipu le)"),
     ]
     
     log.info(f"Scripts à exécuter: {len(scripts)}")

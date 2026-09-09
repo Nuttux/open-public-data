@@ -6,6 +6,7 @@ import Button from "@/components/fusion/Button";
 import DataProvenance from "@/components/fusion/DataProvenance";
 import LocaleRefresh from "@/components/LocaleRefresh";
 import AuditPanel from "./AuditPanel";
+import FreshnessPanel from "./FreshnessPanel";
 import { readLocale } from "@/lib/seo";
 import { TIMELINE_AXIS_START, TIMELINE_AXIS_END } from "@/lib/methodology";
 
@@ -275,6 +276,12 @@ export default async function MethodeClient() {
               ? "Toutes les sources ne sont pas maintenues au même rythme. Et un audit automatique rejoue les chiffres à chaque mise à jour."
               : "Not all sources are maintained at the same pace. And an automated audit replays the figures on every update."}
           />
+
+          {/* Fraîcheur par source — lu depuis data_freshness.json (refresh hebdo) ── */}
+          <h3 style={{ marginTop: 36, marginBottom: 14, fontFamily: "var(--f-display)", fontSize: 22 }}>
+            {isFr ? "Fraîcheur par source" : "Freshness by source"}
+          </h3>
+          <FreshnessPanel isFr={isFr} />
 
           {/* Couverture par outil ─────────────────────────────────────── */}
           <h3 style={{ marginTop: 36, marginBottom: 14, fontFamily: "var(--f-display)", fontSize: 22 }}>

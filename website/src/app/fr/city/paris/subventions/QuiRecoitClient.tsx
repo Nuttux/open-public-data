@@ -240,6 +240,7 @@ export default function QuiRecoitClient({
             source={fill(t("fx.qr.s02.source.cite"), { year: d.year })}
             dataHref="https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/"
             methodAnchor="subventions"
+            sourceIds={["subventions"]}
           />
         </div>
       </section>
@@ -303,6 +304,7 @@ export default function QuiRecoitClient({
                   source={t("fx.qr.s05.source.cite")}
                   dataHref="https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/"
                   methodAnchor="subventions"
+                  sourceIds={["subventions"]}
                 />
               </>
             );

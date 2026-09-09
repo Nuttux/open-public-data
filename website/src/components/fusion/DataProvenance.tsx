@@ -32,6 +32,27 @@ type LineagePayload = {
   charts: Record<string, ChartLineage>;
 };
 
+// Fraîcheur (data_freshness.json, produit par le refresh hebdo) : la source
+// d'un chart est retrouvée par l'URL de son étape « source » dans la chaîne.
+type FreshnessSourceLite = {
+  source_id: string;
+  dataset_page_url: string | null;
+  published_by_city_at: string | null;
+  years: { min: number | null; max: number | null; partial: { annee: number }[] } | null;
+};
+type FreshnessLite = { updated_on_qipu_at: string; sources: FreshnessSourceLite[] };
+
+function fmtDate(iso: string | null | undefined, isFr: boolean): string {
+  if (!iso) return "—";
+  const d = new Date(iso.length === 10 ? `${iso}T00:00:00Z` : iso);
+  if (Number.isNaN(d.getTime())) return iso;
+  return d.toLocaleDateString(isFr ? "fr-FR" : "en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+}
+
+function normUrl(u: string | null | undefined): string {
+  return (u ?? "").replace(/^https?:\/\//, "").replace(/\/+$/, "").toLowerCase();
+}
+
 const LAYER_LABEL_FR: Record<ChainStep["layer"], string> = {
   source: "Source officielle",
   raw: "Table raw (BigQuery)",
@@ -78,6 +99,7 @@ export default function DataProvenance({
   const isFr = locale === "fr";
   const [open, setOpen] = useState(false);
   const [payload, setPayload] = useState<LineagePayload | null>(null);
+  const [fresh, setFresh] = useState<FreshnessLite | null>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const titleId = useId();
@@ -89,6 +111,14 @@ export default function DataProvenance({
       .then((data) => { if (data) setPayload(data); })
       .catch(() => {});
   }, [payload]);
+
+  useEffect(() => {
+    if (!open || fresh) return;
+    fetch("/data/data_freshness.json")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => { if (data) setFresh(data); })
+      .catch(() => {});
+  }, [open, fresh]);
 
   useEffect(() => {
     if (!open) return;
@@ -109,6 +139,14 @@ export default function DataProvenance({
   }, [open]);
 
   const chart = payload?.charts[chartId];
+
+  // Source du chart ↔ ligne de fraîcheur : par l'URL de l'étape « source ».
+  const sourceUrls = new Set((chart?.chain ?? []).filter((s) => s.layer === "source" && s.url).map((s) => normUrl(s.url)));
+  const freshRows = fresh && sourceUrls.size > 0
+    ? fresh.sources.filter((s) => s.dataset_page_url && sourceUrls.has(normUrl(s.dataset_page_url)))
+    : [];
+  const publishedByCity = freshRows.map((s) => s.published_by_city_at).filter((d): d is string => !!d).sort().at(-1);
+  const partialYears = freshRows.flatMap((s) => s.years?.partial.map((p) => p.annee) ?? []);
 
   return (
     <>
@@ -172,6 +210,21 @@ export default function DataProvenance({
                 <p className="fx-provenance-what">
                   {isFr ? chart.what_it_shows_fr : chart.what_it_shows_en}
                 </p>
+
+                {fresh && (publishedByCity || fresh.updated_on_qipu_at) && (
+                  <p className="fx-provenance-what" style={{ fontFamily: "var(--f-mono)", fontSize: 12.5 }}>
+                    {publishedByCity
+                      ? (isFr
+                        ? <>Publié par la Ville le <b>{fmtDate(publishedByCity, true)}</b> · mis à jour sur Qipu le <b>{fmtDate(fresh.updated_on_qipu_at, true)}</b></>
+                        : <>Published by the City on <b>{fmtDate(publishedByCity, false)}</b> · updated on Qipu on <b>{fmtDate(fresh.updated_on_qipu_at, false)}</b></>)
+                      : (isFr
+                        ? <>Mis à jour sur Qipu le <b>{fmtDate(fresh.updated_on_qipu_at, true)}</b></>
+                        : <>Updated on Qipu on <b>{fmtDate(fresh.updated_on_qipu_at, false)}</b></>)}
+                    {partialYears.length > 0 && (
+                      <> · {isFr ? `${partialYears.join(", ")} en cours, non publiée` : `${partialYears.join(", ")} in progress, not published`}</>
+                    )}
+                  </p>
+                )}
 
                 <div className="fx-provenance-export">
                   <span className="fx-provenance-label">{isFr ? "Le JSON brut consommé par ce chart" : "Raw JSON consumed by this chart"}</span>

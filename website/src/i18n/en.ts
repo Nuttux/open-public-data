@@ -3480,6 +3480,8 @@ const en: Record<string, string> = {
   'fx.natev.link': 'Over time',
   'fx.chart.data': 'Data',
   'fx.chart.method': 'Method',
+  'fx.chart.published_by_city': 'published by the City on',
+  'fx.chart.updated_on_qipu': 'updated on Qipu on',
 
   // Compact footer sources
   'fx.s.sources_exports': 'Sources & exports',

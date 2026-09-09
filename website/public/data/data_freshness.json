@@ -1,0 +1,257 @@
+{
+  "generated_at": "2026-09-09T00:30:17.006160+00:00",
+  "updated_on_qipu_at": "2026-09-09",
+  "description": "Fraîcheur de chaque source : publié par la Ville le (portail), mis à jour sur Qipu le (ce refresh), années complètes / partielles.",
+  "sources": [
+    {
+      "source_id": "budget_principal",
+      "label_fr": "Budget exécuté (compte administratif)",
+      "label_en": "Executed budget (administrative account)",
+      "dataset_title": "Comptes Administratifs – Budgets Principaux à partir de 2019 (M57 Ville-département)",
+      "dataset_page_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/",
+      "publisher": "Direction des Finances et des Achats - Ville de Paris",
+      "license_title": "Open Database License (ODbL)",
+      "license_url": "http://opendatacommons.org/licenses/odbl/",
+      "records_count": 25629,
+      "published_by_city_at": "2025-08-26",
+      "synced_at": "2026-09-08",
+      "years": {
+        "min": 2019,
+        "max": 2024,
+        "complete": [
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "partial": []
+      },
+      "pages": [
+        "/budget",
+        "/dette-patrimoine"
+      ]
+    },
+    {
+      "source_id": "budget_vote",
+      "label_fr": "Budget voté (budget primitif)",
+      "label_en": "Voted budget",
+      "dataset_title": "Budgets Votés - Budget Principal à partir de 2019 (M57 Ville-département)",
+      "dataset_page_url": "https://opendata.paris.fr/explore/dataset/budgets-votes-principaux-a-partir-de-2019-m57-ville-departement/",
+      "publisher": "Direction des Finances et des Achats - Ville de Paris",
+      "license_title": "Open Database License (ODbL)",
+      "license_url": "http://opendatacommons.org/licenses/odbl/",
+      "records_count": 8598,
+      "published_by_city_at": "2020-11-25",
+      "synced_at": "2026-09-08",
+      "years": null,
+      "pages": [
+        "/budget"
+      ]
+    },
+    {
+      "source_id": "subventions",
+      "label_fr": "Subventions versées (annexe du compte administratif)",
+      "label_en": "Grants paid (administrative-account annex)",
+      "dataset_title": "Subventions versées - Annexe Compte administratif à partir de 2018",
+      "dataset_page_url": "https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/",
+      "publisher": "Direction des Finances et des Achats - Ville de Paris",
+      "license_title": "Open Database License (ODbL)",
+      "license_url": "http://opendatacommons.org/licenses/odbl/",
+      "records_count": 47381,
+      "published_by_city_at": "2025-08-26",
+      "synced_at": "2026-09-08",
+      "years": {
+        "min": 2018,
+        "max": 2024,
+        "complete": [
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "partial": []
+      },
+      "pages": [
+        "/qui-recoit"
+      ]
+    },
+    {
+      "source_id": "associations",
+      "label_fr": "Subventions aux associations votées",
+      "label_en": "Grants to associations, as voted",
+      "dataset_title": "Subventions aux associations votées",
+      "dataset_page_url": "https://opendata.paris.fr/explore/dataset/subventions-associations-votees-/",
+      "publisher": "Direction de la Démocratie, des Citoyen.ne.s et des Territoires - Ville de Paris",
+      "license_title": "Open Database License (ODbL)",
+      "license_url": "http://opendatacommons.org/licenses/odbl/",
+      "records_count": 107693,
+      "published_by_city_at": "2026-07-28",
+      "synced_at": "2026-09-08",
+      "years": {
+        "min": 2013,
+        "max": 2025,
+        "complete": [
+          2013,
+          2014,
+          2015,
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "partial": [
+          {
+            "annee": 2026,
+            "n_rows": 1230,
+            "ratio": 0.178
+          }
+        ]
+      },
+      "pages": [
+        "/qui-recoit"
+      ]
+    },
+    {
+      "source_id": "marches_publics",
+      "label_fr": "Marchés publics de la collectivité",
+      "label_en": "City public contracts",
+      "dataset_title": "Marchés publics - Liste des marchés de la collectivité parisienne",
+      "dataset_page_url": "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/",
+      "publisher": "Direction des Finances et des Achats - Ville de Paris",
+      "license_title": "Open Database License (ODbL)",
+      "license_url": "http://opendatacommons.org/licenses/odbl/",
+      "records_count": 17639,
+      "published_by_city_at": "2024-05-02",
+      "synced_at": "2026-09-08",
+      "years": {
+        "min": 2013,
+        "max": 2024,
+        "complete": [
+          2013,
+          2014,
+          2015,
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "partial": []
+      },
+      "pages": [
+        "/marches-publics"
+      ]
+    },
+    {
+      "source_id": "logements_sociaux",
+      "label_fr": "Logements sociaux financés",
+      "label_en": "Funded social housing",
+      "dataset_title": "Programmes de logements sociaux financés à Paris",
+      "dataset_page_url": "https://opendata.paris.fr/explore/dataset/logements-sociaux-finances-a-paris/",
+      "publisher": "Direction du Logement et de l'Habitat - Ville de Paris",
+      "license_title": "Open Database License (ODbL)",
+      "license_url": "http://opendatacommons.org/licenses/odbl/",
+      "records_count": 4293,
+      "published_by_city_at": "2026-09-08",
+      "synced_at": "2026-09-08",
+      "years": {
+        "min": 2001,
+        "max": 2025,
+        "complete": [
+          2001,
+          2002,
+          2003,
+          2004,
+          2005,
+          2006,
+          2007,
+          2008,
+          2009,
+          2010,
+          2011,
+          2012,
+          2013,
+          2014,
+          2015,
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "partial": []
+      },
+      "pages": [
+        "/logement-social",
+        "/investissements"
+      ]
+    },
+    {
+      "source_id": "dette_garantie",
+      "label_fr": "Dette garantie (emprunts garantis)",
+      "label_en": "Guaranteed debt (guaranteed loans)",
+      "dataset_title": "Dette garantie",
+      "dataset_page_url": "https://opendata.paris.fr/explore/dataset/dette-garantie/",
+      "publisher": "Direction des Finances et des Achats - Ville de Paris",
+      "license_title": "Open Database License (ODbL)",
+      "license_url": "http://opendatacommons.org/licenses/odbl/",
+      "records_count": 147071,
+      "published_by_city_at": "2026-07-01",
+      "synced_at": "2026-09-08",
+      "years": {
+        "min": 2019,
+        "max": 2024,
+        "complete": [
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "partial": []
+      },
+      "pages": [
+        "/dette-patrimoine",
+        "/logement-social"
+      ]
+    },
+    {
+      "source_id": "ap_projets",
+      "label_fr": "Investissements — autorisations de programme",
+      "label_en": "Investments — programme authorisations",
+      "dataset_title": "Comptes Administratifs - Autorisations de Programmes à partir de 2018 (M57 Ville-Département)",
+      "dataset_page_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/",
+      "publisher": "Direction des Finances et des Achats - Ville de Paris",
+      "license_title": "Open Database License (ODbL)",
+      "license_url": "http://opendatacommons.org/licenses/odbl/",
+      "records_count": 7466,
+      "published_by_city_at": "2019-11-28",
+      "synced_at": "2026-09-08",
+      "years": null,
+      "pages": [
+        "/investissements"
+      ]
+    }
+  ]
+}

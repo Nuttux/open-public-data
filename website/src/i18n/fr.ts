@@ -3477,6 +3477,8 @@ const fr: Record<string, string> = {
   'fx.natev.link': 'Évolution',
   'fx.chart.data': 'Données',
   'fx.chart.method': 'Méthode',
+  'fx.chart.published_by_city': 'publié par la Ville le',
+  'fx.chart.updated_on_qipu': 'mis à jour sur Qipu le',
 
   // Compact footer sources
   'fx.s.sources_exports': 'Sources & exports',

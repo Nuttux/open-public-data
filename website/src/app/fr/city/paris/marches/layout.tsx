@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { buildLocaleAwareMetadata, datasetJsonLd } from '@/lib/seo';
+import { freshnessFor } from '@/lib/data-freshness';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
@@ -30,6 +31,7 @@ const dataset = datasetJsonLd({
   keywords: ['marchés publics', 'commande publique', 'Paris', 'DECP'],
   temporalCoverage: '2017/2025',
   spatialCoverage: 'Paris, France',
+  dateModified: freshnessFor(['marches_publics']).dateModified,
 });
 
 export default function MarchesPublicsLayout({
