@@ -35,3 +35,8 @@ models:
     columns:
       - name: compte
         tests: [not_null]
+
+  - name: mart_chantiers_etat_national
+    description: "Projets Fonds vert dont la commune est bénéficiaire (SIREN), une ligne par projet"
+  - name: mart_maires_national
+    description: "Maire (nom, prénom, depuis) et taille du conseil par commune — RNE, colonnes non sensibles"

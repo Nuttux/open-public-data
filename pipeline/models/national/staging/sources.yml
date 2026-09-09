@@ -16,3 +16,8 @@ sources:
         description: "Subventions SCDL - subventions > 23k€ filtrées par SIRET attributaire"
       - name: sirene_unites_legales
         description: "INSEE Sirene, StockUniteLegale (siren, catégorie juridique, état, dénomination) — sert à repérer les personnes physiques parmi les titulaires"
+      - name: fonds_vert
+        description: "Fonds vert (ministère de la Transition écologique) — projets subventionnés 2023-2025, ramenés à un schéma commun par sync_fonds_vert.py"
+      - name: rne_conseillers_municipaux
+        description: "Répertoire national des élus, conseillers municipaux — colonnes non sensibles seulement (commune, nom, prénom, fonction, dates)"
+
