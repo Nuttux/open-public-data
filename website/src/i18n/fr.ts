@@ -1353,7 +1353,7 @@ const fr: Record<string, string> = {
   'fx.bud.v3.vs': 'vs {y}',
   'fx.bud.v3.depuis': 'depuis {y}',
   'fx.bud.v3.h2': 'Dépenses et recettes',
-  'fx.bud.v3.h2sub': 'Cliquez un poste pour ouvrir sa fiche détaillée. Tendance {span} sur chaque ligne.',
+  'fx.bud.v3.h2sub': 'Cliquez un poste pour ouvrir sa fiche détaillée. Sur chaque ligne, sa tendance {span} : en gris les années exécutées, hachurée une année votée, en bleu l’année affichée.',
   'fx.bud.v3.peek': 'Dans ce poste : {list}',
   'fx.bud.v3.col_dep': 'Dépenses',
   'fx.bud.v3.col_rec': 'Recettes',
