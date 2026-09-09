@@ -47,7 +47,7 @@ export async function POST(req: Request) {
     );
   }
 
-  let body: { messages?: ChatMessage[]; locale?: string; scope?: string };
+  let body: { messages?: ChatMessage[]; locale?: string; scope?: string; origin?: string };
   try {
     body = await req.json();
   } catch {
@@ -88,12 +88,15 @@ export async function POST(req: Request) {
   // The privacy-page opt-out covers the chat too: the panel sends it as a header.
   const analyticsOff = req.headers.get("x-qipu-analytics") === "off";
   const lastUser = [...history].reverse().find((m) => m.role === "user");
+  const ORIGINS = ["typed", "suggestion", "followup", "page_chip"];
+  const origin = ORIGINS.includes(body.origin ?? "") ? (body.origin as string) : "unknown";
   const toolsUsed: string[] = [];
   let toolResultChars = 0;
   let answerChars = 0;
   const record = (stopReason: string | null, error: string | null) =>
     analyticsOff ? Promise.resolve() : captureChatQuestion(distinctId, {
       scope: scope.id,
+      origin,
       locale: body.locale ?? scope.promptLang,
       question: lastUser?.content ?? "",
       turn: history.filter((m) => m.role === "user").length,

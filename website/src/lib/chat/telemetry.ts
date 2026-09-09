@@ -14,6 +14,8 @@ const HOST = "https://eu.i.posthog.com";
 
 export type ChatQuestionProps = {
   scope: string;
+  /** typed = organic; suggestion / followup / page_chip = our own prompts clicked. */
+  origin: string;
   locale: string;
   question: string;
   turn: number;

@@ -10,6 +10,10 @@ import { useT, useLocale, ForcedLocale } from "@/lib/localeContext";
 import { toolLabel, toolRaw } from "@/lib/chat/toolLabels";
 import { isOptedOutAnalytics } from "@/components/AnalyticsProvider";
 
+// Where a question came from — the product digest must not read our own
+// suggestion chips as visitor demand. "typed" is the only organic signal.
+type ChatOrigin = "typed" | "suggestion" | "followup" | "page_chip";
+
 // Le partage écrit sur disque (data/conversations) : indisponible sur un
 // hébergement serverless sans stockage. Visible en dev, opt-in en prod
 // (NEXT_PUBLIC_CHAT_SHARE=on une fois un vrai store branché).
@@ -258,13 +262,13 @@ function ChatPanelInner() {
 
   // « Pose cette question » déclenché ailleurs sur le site (chips, page /chat).
   // Ref pour que l'écouteur voie toujours le dernier send (sinon closure périmée).
-  const sendRef = useRef<(text: string) => void>(() => {});
+  const sendRef = useRef<(text: string, origin?: ChatOrigin) => void>(() => {});
   useEffect(() => {
     const onAsk = (e: Event) => {
       const q = (e as CustomEvent<string>).detail;
       if (typeof q !== "string" || !q.trim()) return;
       setOpen(true);
-      setTimeout(() => sendRef.current(q), 250);
+      setTimeout(() => sendRef.current(q, "page_chip"), 250);
     };
     window.addEventListener(CHAT_ASK_EVENT, onAsk);
     return () => window.removeEventListener(CHAT_ASK_EVENT, onAsk);
@@ -344,7 +348,7 @@ function ChatPanelInner() {
     }
   }
 
-  async function send(text: string) {
+  async function send(text: string, origin: ChatOrigin = "typed") {
     if (!text.trim() || loading) return;
     setView("chat");
     setError(null);
@@ -362,7 +366,7 @@ function ChatPanelInner() {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "content-type": "application/json", "x-qipu-analytics": isOptedOutAnalytics() ? "off" : "on" },
-        body: JSON.stringify({ messages: wireHistory, locale, scope }),
+        body: JSON.stringify({ messages: wireHistory, locale, scope, origin }),
         signal: ctrl.signal,
       });
       if (!res.ok || !res.body) {
@@ -636,7 +640,7 @@ function ChatPanelInner() {
                 {suggestions.map((s) => (
                   <button
                     key={s}
-                    onClick={() => send(s)}
+                    onClick={() => send(s, "suggestion")}
                     className="group flex w-full items-center justify-between gap-2 rounded-md border! border-solid! border-neutral-200! bg-white! px-3 py-2.5 text-left text-xs text-neutral-700 hover:bg-neutral-50! hover:border-neutral-900! hover:text-neutral-900 transition"
                   >
                     <span>{s}</span>
@@ -701,7 +705,7 @@ function ChatPanelInner() {
                             {m.followups.map((f, k) => (
                               <button
                                 key={k}
-                                onClick={() => send(f)}
+                                onClick={() => send(f, "followup")}
                                 className="group flex w-full items-center justify-between gap-2 rounded-md border! border-solid! border-neutral-200! bg-white! px-2.5 py-1.5 text-left text-[11px] text-neutral-700 hover:bg-neutral-50! hover:border-[#2a3680]! hover:text-[#2a3680] transition"
                               >
                                 <span>{f}</span>
