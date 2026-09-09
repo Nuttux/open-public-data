@@ -1,42 +1,57 @@
+import '../fusion.css';
+import Navbar from '@/components/fusion/Navbar';
+import Footer from '@/components/fusion/Footer';
 import LocaleRefresh from '@/components/LocaleRefresh';
 import ConfidentialiteToggles from './ConfidentialiteToggles';
-import { readLocale } from '@/lib/seo';
+import { readSiteLocale } from '@/lib/seo';
+import { ForcedLocale } from '@/lib/localeContext';
 import fr from '@/i18n/fr';
 import en from '@/i18n/en';
+import pt from '@/i18n/pt';
+
+/** "before {tag} after" → [before, after]; a missing tag yields [text, '']. */
+function splitOn(text: string, tag: string): [string, string] {
+  const [before, after = ''] = text.split(tag);
+  return [before, after];
+}
 
 export default async function ConfidentialitePage() {
-  const locale = await readLocale();
-  // Same lookup as the context t(): active dictionary, FR fallback, then key.
-  // (The context's city-label rewrite is a no-op outside /fr/city/*.)
-  const dict = locale === 'en' ? en : fr;
-  const t = (key: string): string => dict[key] ?? fr[key] ?? key;
+  const locale = await readSiteLocale();
+  // Same lookup as the context t(): active dictionary, then fallbacks, then
+  // the raw key. Portuguese is a partial dictionary and reads as English for
+  // anything it lacks. (The context's city-label rewrite is a no-op here.)
+  const dict = locale === 'pt' ? pt : locale === 'en' ? en : fr;
+  const t = (key: string): string => dict[key] ?? en[key] ?? fr[key] ?? key;
   // posthog-js names its cookie after the project key.
   const cookieName = `ph_${process.env.NEXT_PUBLIC_POSTHOG_KEY ?? '…'}_posthog`;
 
+  // "Un cookie nommé {code} est déposé … durée maximale de {bold_13}. …"
+  const [cookieBefore, cookieRest] = splitOn(t('privacy.cookie.text'), '{code}');
+  const [cookieMid, cookieAfter] = splitOn(cookieRest, '{bold_13}');
+  // "… situés dans l'{bold_eu} … supprimés après {bold_25}."
+  const [hostBefore, hostRest] = splitOn(t('privacy.hosting.text'), '{bold_eu}');
+  const [hostMid, hostAfter] = splitOn(hostRest, '{bold_25}');
+
   return (
-    <main className="min-h-screen">
+    <div className="theme-fusion">
       <LocaleRefresh />
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 className="text-2xl font-bold text-slate-100 mb-8">
-          {t('privacy.title')}
-        </h1>
+      <Navbar />
+      <main id="main-content" tabIndex={-1}>
+        <section className="fx-page-header">
+          <div className="fx-wrap">
+            <div className="fx-page-kicker">{t('fx.foot.legal.confidentialite')}</div>
+            <h1 className="fx-page-title" style={{ fontSize: 'clamp(32px, 5vw, 64px)' }}>
+              {t('privacy.title')}
+            </h1>
+            <p className="fx-page-lede">{t('privacy.analytics.text')}</p>
+          </div>
+        </section>
 
-        <div className="space-y-8 text-slate-300 text-sm leading-relaxed">
-          {/* Section 1 */}
-          <section>
-            <h2 className="text-lg font-semibold text-slate-100 mb-3">
-              {t('privacy.analytics.title')}
-            </h2>
-            <p>{t('privacy.analytics.text')}</p>
-          </section>
-
-          {/* Section 2 */}
-          <section>
-            <h2 className="text-lg font-semibold text-slate-100 mb-3">
-              {t('privacy.data.title')}
-            </h2>
-            <p className="mb-3">{t('privacy.data.intro')}</p>
-            <ul className="list-disc list-inside space-y-1.5 text-slate-400">
+        <div className="fx-wrap">
+          <article className="fx-article-full">
+            <h2>{t('privacy.data.title')}</h2>
+            <p>{t('privacy.data.intro')}</p>
+            <ul>
               <li>{t('privacy.data.pages')}</li>
               <li>{t('privacy.data.source')}</li>
               <li>{t('privacy.data.device')}</li>
@@ -44,98 +59,68 @@ export default async function ConfidentialitePage() {
               <li>{t('privacy.data.geo')}</li>
               <li>{t('privacy.data.cookie_id')}</li>
             </ul>
-          </section>
 
-          {/* Section 3 */}
-          <section>
-            <h2 className="text-lg font-semibold text-slate-100 mb-3">
-              {t('privacy.cookie.title')}
-            </h2>
+            <h2>{t('privacy.cookie.title')}</h2>
             <p>
-              {t('privacy.cookie.text')
-                .replace('{code}', '')
-                .split('{bold_13}')[0]}
-              <code className="bg-slate-800 px-1.5 py-0.5 rounded text-xs break-all">{cookieName}</code>
-              {' '}
-              {t('privacy.cookie.text').includes('{code}')
-                ? t('privacy.cookie.text')
-                    .split('{code}')[1]
-                    ?.split('{bold_13}')[0]
-                : ''}
+              {cookieBefore}
+              <code style={{ wordBreak: 'break-all' }}>{cookieName}</code>
+              {cookieMid}
               <strong>{t('privacy.13_months')}</strong>
-              {t('privacy.cookie.text').split('{bold_13}')[1] || ''}
+              {cookieAfter}
             </p>
-            <p className="mt-2">
+            <p>
               {t('privacy.cookie.cnil_prefix')}
               <a
                 href="https://www.cnil.fr/fr/cookies-et-autres-traceurs/regles/cookies-solutions-pour-les-outils-de-mesure-daudience"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-400 hover:text-blue-300 underline"
               >
                 CNIL
               </a>
               {t('privacy.cookie.cnil')}
             </p>
-          </section>
 
-          {/* Section 4 */}
-          <section>
-            <h2 className="text-lg font-semibold text-slate-100 mb-3">
-              {t('privacy.hosting.title')}
-            </h2>
+            <h2>{t('privacy.hosting.title')}</h2>
             <p>
-              {t('privacy.hosting.text')
-                .split('{bold_eu}')[0]}
+              {hostBefore}
               <strong>{t('privacy.eu')}</strong>
-              {t('privacy.hosting.text')
-                .split('{bold_eu}')[1]
-                ?.split('{bold_25}')[0]}
+              {hostMid}
               <strong>{t('privacy.25_months')}</strong>
-              {t('privacy.hosting.text').split('{bold_25}')[1] || ''}
+              {hostAfter}
             </p>
-          </section>
 
-          {/* Section 5 */}
-          <section>
-            <h2 className="text-lg font-semibold text-slate-100 mb-3">
-              {t('privacy.rights.title')}
-            </h2>
+            <h2>{t('privacy.rights.title')}</h2>
             <p>{t('privacy.rights.text')}</p>
-            <p className="mt-2">
+            <p>
               {t('privacy.rights.gpc_prefix')}
-              <a
-                href="https://globalprivacycontrol.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-400 hover:text-blue-300 underline"
-              >
+              <a href="https://globalprivacycontrol.org/" target="_blank" rel="noopener noreferrer">
                 Global Privacy Control (GPC)
               </a>
               {t('privacy.rights.gpc_suffix')}
             </p>
-          </section>
 
-          {/* Session replay opt-in + full opt-out toggles (client leaf) */}
-          <ConfidentialiteToggles />
+            {/* Audience-measurement opt-out + session-replay opt-in (client leaf).
+                The root LocaleProvider only knows fr/en, so the Portuguese host
+                forces its dictionary here the way /us and /br layouts do. */}
+            {locale === 'pt' ? (
+              <ForcedLocale locale="pt">
+                <ConfidentialiteToggles />
+              </ForcedLocale>
+            ) : (
+              <ConfidentialiteToggles />
+            )}
 
-          {/* Contact */}
-          <section className="text-xs text-slate-500 border-t border-slate-800 pt-6">
-            <p>
+            <p style={{ fontSize: 14, color: 'var(--muted)' }}>
               {t('privacy.contact')}
-              <a
-                href="https://www.cnil.fr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-400 hover:text-blue-300 underline"
-              >
+              <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer">
                 CNIL
               </a>
               .
             </p>
-          </section>
+          </article>
         </div>
-      </div>
-    </main>
+      </main>
+      <Footer />
+    </div>
   );
 }
