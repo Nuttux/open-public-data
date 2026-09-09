@@ -368,6 +368,7 @@ const pt: Record<string, string> = {
   "privacy.data.lang": "Idioma do navegador",
   "privacy.data.geo": "País e cidade aproximada (deduzidos do endereço IP, que depois é truncado)",
   "privacy.data.cookie_id": "Um identificador aleatório guardado no seu navegador para reconhecer visitantes que voltam",
+  "privacy.data.chat": "As perguntas feitas ao assistente (texto da pergunta, cidade, dados consultados), para saber o que os visitantes procuram e o que falta no site — não escreva dados pessoais nelas",
   "privacy.cookie.title": "Cookie de medição de audiência",
   "privacy.cookie.text": "Um cookie chamado {code} é gravado no seu navegador por no máximo {bold_13}. Ele contém apenas um identificador aleatório que não permite identificar você pessoalmente. Esse cookie serve exclusivamente à medição de audiência.",
   "privacy.cookie.cnil_prefix": "Conforme as recomendações da ",
