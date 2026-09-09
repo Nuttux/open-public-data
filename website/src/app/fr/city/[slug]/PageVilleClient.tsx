@@ -43,6 +43,8 @@ export type CompareEntry = {
   pop: number;
   /** € par habitant par indicateur OFGL (impots_locaux, encours_dette, epargne_brute…). */
   kpis: Record<string, number | null>;
+  /** Taux de taxe foncière sur le bâti voté par la commune (REI), en %. */
+  taux?: { annee: number; tfb: number | null; mediane: number | null } | null;
 };
 
 export type PageVilleProps = {
@@ -545,10 +547,20 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                       </div>
                     );
                   })}
+                  {compare.me.taux?.tfb != null && other.taux?.tfb != null ? (
+                    <div className="row">
+                      <span className="lab">{t("fx.pv.kpi_tfb")}</span>
+                      <div className="track">
+                        <span className="a" style={{ width: `${(compare.me.taux.tfb / Math.max(compare.me.taux.tfb, other.taux.tfb, 0.01)) * 100}%` }} />
+                        <span className="b" style={{ width: `${(other.taux.tfb / Math.max(compare.me.taux.tfb, other.taux.tfb, 0.01)) * 100}%` }} />
+                      </div>
+                      <span className="val tnum"><b>{compare.me.taux.tfb.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 2 })} %</b> · {other.taux.tfb.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 2 })} % {fill("fx.pv.taux_annee", { y: compare.me.taux.annee })}</span>
+                    </div>
+                  ) : null}
                   <p className="fx-v3-sentence"><Link className="fx-pv-link" href={`/fr/compare/${commune.slug}/${other.slug}`}>{t("fx.pv.comparaison_complete")} →</Link></p>
                 </div>
               ) : null}
-              <p className="fx-v3-foot">{fill("fx.pv.comparer_note", { year: compare.year })}</p>
+              <p className="fx-v3-foot">{fill("fx.pv.comparer_note", { year: compare.year })}{compare.me.taux ? ` ${t("fx.pv.taux_note")}` : ""}</p>
             </section>
           )}
 

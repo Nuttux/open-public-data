@@ -8,6 +8,7 @@ import { loadCommuneMarches } from "@/lib/commune-marches";
 import { loadCommunePeers } from "@/lib/commune-peers";
 import { loadCommuneChantiers } from "@/lib/commune-chantiers";
 import { loadMaire } from "@/lib/commune-maires";
+import { loadTaux } from "@/lib/commune-taux";
 import type { RelatedBlock, RelatedRow } from "@/components/fiche/RelatedLinks";
 import type { CompareEntry, PageVilleProps } from "./PageVilleClient";
 
@@ -27,7 +28,8 @@ function entry(slug: string): CompareEntry | null {
   if (!c) return null;
   const kpis: Record<string, number | null> = {};
   for (const k of COMPARE_KEYS) kpis[k] = c.kpis?.[k]?.eur_hab ?? null;
-  return { slug: c.slug, nom: c.nom, pop: c.pop, kpis };
+  const tx = loadTaux(c.insee);
+  return { slug: c.slug, nom: c.nom, pop: c.pop, kpis, taux: tx ? { annee: tx.annee, tfb: tx.tfb, mediane: tx.mediane } : null };
 }
 
 /**

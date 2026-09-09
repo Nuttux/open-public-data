@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import "@/app/fusion.css";
 import { findCommuneByAny, loadAllCommunesIndex } from "@/lib/all-communes";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
+import { loadTaux } from "@/lib/commune-taux";
 import CompareTwoClient, { type CompareTwoEntry } from "./CompareTwoClient";
 
 /**
@@ -19,7 +20,8 @@ function entry(slug: string): CompareTwoEntry | null {
   if (!c) return null;
   const kpis: Record<string, number | null> = {};
   for (const k of KEYS) kpis[k] = c.kpis?.[k]?.eur_hab ?? null;
-  return { slug: c.slug, nom: c.nom, dep_name: c.dep_name, pop: c.pop, kpis };
+  const tx = loadTaux(c.insee);
+  return { slug: c.slug, nom: c.nom, dep_name: c.dep_name, pop: c.pop, kpis, taux: tx ? { annee: tx.annee, tfb: tx.tfb, mediane: tx.mediane } : null };
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ a: string; b: string }> }): Promise<Metadata> {

@@ -7,7 +7,7 @@ import Footer from "@/components/fusion/Footer";
 import ChartSource from "@/components/fusion/ChartSource";
 import { useT, useLocale } from "@/lib/localeContext";
 
-export type CompareTwoEntry = { slug: string; nom: string; dep_name: string; pop: number; kpis: Record<string, number | null> };
+export type CompareTwoEntry = { slug: string; nom: string; dep_name: string; pop: number; kpis: Record<string, number | null>; taux?: { annee: number; tfb: number | null; mediane: number | null } | null };
 
 export default function CompareTwoClient({ a, b, keys, year, sourceUrl }: { a: CompareTwoEntry; b: CompareTwoEntry; keys: string[]; year: number; sourceUrl: string }) {
   const t = useT();
@@ -54,9 +54,19 @@ export default function CompareTwoClient({ a, b, keys, year, sourceUrl }: { a: C
                 </div>
               );
             })}
+            {a.taux?.tfb != null && b.taux?.tfb != null ? (
+              <div className="row">
+                <span className="lab">{t("fx.pv.kpi_tfb")}</span>
+                <div className="track">
+                  <span className="a" style={{ width: `${(a.taux.tfb / Math.max(a.taux.tfb, b.taux.tfb, 0.01)) * 100}%` }} />
+                  <span className="b" style={{ width: `${(b.taux.tfb / Math.max(a.taux.tfb, b.taux.tfb, 0.01)) * 100}%` }} />
+                </div>
+                <span className="val tnum"><b>{a.taux.tfb.toLocaleString(locale === "en" ? "en-GB" : "fr-FR", { maximumFractionDigits: 2 })} %</b> · {b.taux.tfb.toLocaleString(locale === "en" ? "en-GB" : "fr-FR", { maximumFractionDigits: 2 })} % {fill("fx.pv.taux_annee", { y: a.taux.annee })}</span>
+              </div>
+            ) : null}
           </div>
           <button type="button" className="fx-pv-share" onClick={share}><i aria-hidden="true" />{ok ? t("fx.pv.share_done") : t("fx.cmp2.share")}</button>
-          <p className="fx-v3-foot">{t("fx.cmp2.note")}</p>
+          <p className="fx-v3-foot">{t("fx.cmp2.note")}{a.taux ? ` ${t("fx.pv.taux_note")}` : ""}</p>
           <p className="fx-v3-sentence">
             <Link className="fx-pv-link" href={`/fr/city/${a.slug}`}>{fill("fx.cmp2.back", { nom: a.nom })} →</Link>
             {" · "}
