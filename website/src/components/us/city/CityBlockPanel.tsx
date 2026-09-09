@@ -2503,9 +2503,20 @@ export default function CityBlockPanel({
       resolvedFor.current = id;
       return;
     }
-    resolvedFor.current = id;
     const stop = context.zoomStop ?? -1;
     const stops = 4; // whole city · district · a few streets · one street
+    /* ── NOT RESOLVED UNTIL THE STREET INDEX IS IN HAND ────────────────
+       At the two close stops the answer is a street, chosen by how many
+       records it carries — which needs `streetIndex`. On a phone that file
+       often lands AFTER the block's record, and this effect had already
+       marked the block resolved, so when the index arrived it returned
+       early and the block stayed on its whole-block unit: the drawer opened
+       at the street stop on a neighbourhood's essay while the laptop, whose
+       index was already cached, opened 'Scott St' (measured 2026-09-09,
+       scripts/probes/mstop.mjs). The block is resolved only once the
+       inference had what it needed. */
+    if (stop >= 2 && !streetIndex) return;
+    resolvedFor.current = id;
     if (stop >= 0 && stop <= 1) {
       setUnit({ kind: "hood" });
       return;

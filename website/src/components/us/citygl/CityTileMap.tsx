@@ -817,6 +817,9 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
               map.panBy([0, pt.y - r.height * TAP_KEEP], { animate: true, duration: 0.3 });
             }
             tapPickRef.current = true;
+            /* the last tap's request must not outlive it: the handle named
+               the previous block's neighbourhood on the next block */
+            setRequest(undefined);
             setSheetOpen(true);
             setPicked(b);
           })();
@@ -1162,7 +1165,7 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
      tap opened one (the two wide stops), the block's streets otherwise */
   const sheetLabel = markCard
     ? markCard.place
-    : request?.req.kind === "hood" && ctx?.hood
+    : request?.req.kind === "hood" && request.block === ctx?.id && ctx?.hood
       ? ctx.hood
       : (record ? blockPlaceName(record.streets) : null) || ctx?.hood || "";
   const n = markCard ? markCard.rows.length : (record?.decisions.length ?? 0);
@@ -1365,6 +1368,7 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
         {picked !== null || markCard ? (
           <div
             className={`fx-city-ledger${sheetOpen ? "" : " is-shut"}`}
+            data-stop={zoomStop}
             role="dialog"
             aria-label={sheetLabel || t("us.sf.thecity.margin.head")}
           >
