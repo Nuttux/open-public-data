@@ -13,7 +13,11 @@
 
 {{ config(materialized='table', schema='analytics', tags=['core', 'catalog']) }}
 
-SELECT DISTINCT
+-- `synced_at` : dernier passage de notre sync sur ce dataset (stamp
+-- `_synced_at` du snapshot catalogue). Porté ici pour que mart_source_freshness
+-- — et donc l'export data_freshness — n'aient jamais à lire le staging
+-- (règle E4 du layering : un export ne lit que des marts).
+SELECT
     source_id,
     dataset_id,
     dataset_title,
@@ -26,5 +30,10 @@ SELECT DISTINCT
     theme,
     rows_updated_at,
     data_processed_at,
-    records_count
+    records_count,
+    MAX(_synced_at) AS synced_at
 FROM {{ ref('stg_paris_catalog') }}
+GROUP BY
+    source_id, dataset_id, dataset_title, dataset_page_url, domain, portal_name,
+    publisher, license_title, license_url, theme, rows_updated_at,
+    data_processed_at, records_count
