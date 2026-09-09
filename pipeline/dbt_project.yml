@@ -40,6 +40,11 @@ seeds:
     # Nomenclature comptable par nature (M14/M57) — Block 1 budget national.
     # Pin types: "60"/"10" must stay STRING (they are compte prefixes, not ints).
     # -------------------------------------------------------------------------
+    # Libellés en français simple des comptes M57 (détail derrière chaque
+    # ligne du budget par nature des communes) — bloc 1b national.
+    seed_comptes_libelles_simples:
+      +column_types:
+        compte: string
     seed_nomenclature_comptes:
       +column_types:
         nature_prefix: string

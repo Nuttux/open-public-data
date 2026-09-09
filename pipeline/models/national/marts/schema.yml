@@ -29,3 +29,9 @@ models:
 
   - name: mart_bilan_national
     description: "Patrimoine/bilan KPIs par (ville, année)"
+
+  - name: mart_budget_national_comptes
+    description: "Détail des comptes (M57) derrière chaque groupe du budget par nature, libellés en français simple ; ligne « autres » = reste du groupe"
+    columns:
+      - name: compte
+        tests: [not_null]

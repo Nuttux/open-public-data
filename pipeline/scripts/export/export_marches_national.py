@@ -195,6 +195,23 @@ def build(insee: str, meta: dict, rows: list[dict], now: str) -> dict | None:
         g["montant"] += r["montant"] or 0
         g["nb_lots"] += 1
     top_marches = sorted(lots.values(), key=lambda g: -g["montant"])[:15]
+    # Dernière année publiée, à part : la page ville parle de l'année, pas du
+    # cumul depuis 2018 (domaines et fournisseurs de cette année-là).
+    last_year = max(by_year) if by_year else None
+    ly_rows = [r for r in rows if r["annee"] and int(r["annee"]) == last_year]
+    ly_cat: dict[str, dict] = defaultdict(lambda: {"montant": 0.0, "nb": 0})
+    ly_titu: dict[str, dict] = defaultdict(lambda: {"montant": 0.0, "nb": 0})
+    for r in ly_rows:
+        m = r["montant"] or 0
+        ly_cat[r["categorie_cpv"] or "Autres"]["montant"] += m
+        ly_cat[r["categorie_cpv"] or "Autres"]["nb"] += 1
+        t = PERSONNES_LABEL if r.get("titulaire_personne_physique") else (r["titulaire_nom"] or "").strip()
+        if t:
+            ly_titu[t]["montant"] += m
+            ly_titu[t]["nb"] += 1
+            ly_titu[t].setdefault("objet", clean_objet(r["objet"])[:120])
+            if t != PERSONNES_LABEL and r.get("titulaire_siren"):
+                ly_titu[t].setdefault("siren", r["titulaire_siren"])
     return {
         "generated_at": now,
         "source": SOURCE_LABEL,
@@ -210,6 +227,16 @@ def build(insee: str, meta: dict, rows: list[dict], now: str) -> dict | None:
             "annees_ecartees": annees_ecartees,
         },
         "by_year": [{"year": y, **v} for y, v in sorted(by_year.items())],
+        "last_year": {
+            "year": last_year,
+            "montant": sum(r["montant"] or 0 for r in ly_rows),
+            "nb_marches": len(ly_rows),
+            "by_category": sorted(({"categorie": k, **v} for k, v in ly_cat.items()), key=lambda x: -x["montant"]),
+            "top_titulaires": sorted(
+                ({"nom": k, "personne_physique": k == PERSONNES_LABEL, **v} for k, v in ly_titu.items()),
+                key=lambda x: -x["montant"],
+            )[:10],
+        },
         "by_category": sorted(
             ({"categorie": k, **v} for k, v in by_cat.items()), key=lambda x: -x["montant"]
         ),

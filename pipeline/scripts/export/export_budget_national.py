@@ -38,6 +38,7 @@ PIPELINE_ROOT = Path(__file__).resolve().parents[2]
 PROJECT_ID = "open-data-france-484717"
 _MARTS_DATASET = os.environ.get("PARIS_MARTS_DATASET", "dbt_paris_marts")
 MART_TABLE = f"{PROJECT_ID}.{_MARTS_DATASET}.mart_sankey_national"
+COMPTES_TABLE = f"{PROJECT_ID}.{_MARTS_DATASET}.mart_budget_national_comptes"
 
 WEBSITE_DATA = PIPELINE_ROOT.parent / "website" / "public" / "data"
 INDEX_FILE = WEBSITE_DATA / "communes-all" / "index.json"
@@ -88,7 +89,49 @@ def fetch_lines(client: bigquery.Client, insees: list[str] | None) -> dict[str, 
     return by_insee
 
 
-def build_sankey(records: list[dict], year: int, central: str) -> dict:
+def fetch_comptes(client: bigquery.Client, insees: list[str] | None) -> dict[str, list[dict]]:
+    """{insee: [rows]} du détail des comptes (bloc 1b) : une ligne par
+    (année, sens, groupe, compte) avec libellé simple, plus la ligne « autres »."""
+    where = ""
+    params = []
+    if insees:
+        where = "WHERE code_insee IN UNNEST(@insees)"
+        params = [bigquery.ArrayQueryParameter("insees", "STRING", insees)]
+    sql = f"""
+        SELECT code_insee, annee, sens_flux, sankey_group_fr, compte,
+               libelle_fr, libelle_en, montant
+        FROM `{COMPTES_TABLE}`
+        {where}
+    """
+    job = client.query(sql, job_config=bigquery.QueryJobConfig(query_parameters=params))
+    by_insee: dict[str, list[dict]] = defaultdict(list)
+    for row in job.result():
+        by_insee[row["code_insee"]].append(dict(row))
+    return by_insee
+
+
+def build_comptes(comptes: list[dict], year: int, rev_disp, exp_disp) -> dict:
+    """{"revenue": {groupe: [{compte, label, label_en, value}]}, "expenses": {...}}
+    — trié par montant, « autres » toujours en dernier."""
+    out = {"revenue": defaultdict(list), "expenses": defaultdict(list)}
+    for r in comptes:
+        if int(r["annee"]) != year or not r.get("montant") or r["montant"] <= 0:
+            continue
+        side = "revenue" if r["sens_flux"] == "Recette" else "expenses"
+        disp = rev_disp(r["sankey_group_fr"]) if side == "revenue" else exp_disp(r["sankey_group_fr"])
+        out[side][disp].append({
+            "compte": r["compte"],
+            "label": r["libelle_fr"],
+            "label_en": r["libelle_en"],
+            "value": float(r["montant"]),
+        })
+    for side in out:
+        for disp, items in out[side].items():
+            items.sort(key=lambda x: (x["compte"] == "autres", -x["value"]))
+    return {side: dict(groups) for side, groups in out.items()}
+
+
+def build_sankey(records: list[dict], year: int, central: str, comptes: list[dict] | None = None) -> dict:
     """Aggregate by sankey_group on each side; build nodes/links/drilldown/bySection."""
     revenue_by_cat: dict[str, float] = defaultdict(float)
     expense_by_cat: dict[str, float] = defaultdict(float)
@@ -185,10 +228,13 @@ def build_sankey(records: list[dict], year: int, central: str) -> dict:
         "links": links,
         "drilldown": drilldown,
         "bySection": by_section,
+        # Détail des comptes derrière chaque groupe (bloc 1b) : libellés en
+        # français simple, « autres » = reste du groupe. Somme = total du groupe.
+        "comptes": build_comptes(comptes or [], year, rev_disp, exp_disp),
     }
 
 
-def export_commune(insee: str, meta: dict, records: list[dict]) -> dict | None:
+def export_commune(insee: str, meta: dict, records: list[dict], comptes: list[dict] | None = None) -> dict | None:
     slug = meta["slug"]
     nom = meta["nom"]
     central = f"Budget {nom}"
@@ -202,7 +248,7 @@ def export_commune(insee: str, meta: dict, records: list[dict]) -> dict | None:
 
     summaries = []
     for year in years:
-        sankey = build_sankey(records, year, central)
+        sankey = build_sankey(records, year, central, comptes)
         if sankey["totals"]["depenses"] <= 0 and sankey["totals"]["recettes"] <= 0:
             continue
         sankey["generated_at"] = now
@@ -272,6 +318,8 @@ def main() -> int:
     client = get_client()
     by_insee = fetch_lines(client, target_insees)
     print(f"  mart returned lines for {len(by_insee)} commune(s)")
+    comptes_by_insee = fetch_comptes(client, target_insees)
+    print(f"  comptes detail for {len(comptes_by_insee)} commune(s)")
 
     exported = []
     all_insees = list(by_insee.keys())
@@ -283,10 +331,11 @@ def main() -> int:
         if not meta:
             print(f"  ⚠️  insee {insee} not in all-communes index — cannot map to slug, skipping")
             continue
-        res = export_commune(insee, meta, by_insee[insee])
+        res = export_commune(insee, meta, by_insee[insee], comptes_by_insee.get(insee))
         if res:
             exported.append(res)
-            print(f"  ✓ {res['slug']} ({insee}) — years {res['years']}")
+            if not args.all:
+                print(f"  ✓ {res['slug']} ({insee}) — years {res['years']}")
 
     # Manifest (small) — the ONLY artifact committed to the repo. Lets
     # getCommuneCapabilities resolve capability locally/instantly without 34k
@@ -305,6 +354,21 @@ def main() -> int:
         man_path = OUT_ROOT / "_manifest.json"
         with open(man_path, "w", encoding="utf-8") as f:
             json.dump(manifest, f, ensure_ascii=False, separators=(",", ":"))
+        # Le manifeste COMMITÉ (website/src/data), lu par le site pour savoir
+        # instantanément quelles communes ont un budget et quelles années :
+        # slug → années, même format que communes-marches-manifest.json.
+        src_manifest = WEBSITE_DATA.parent.parent / "src" / "data" / "communes-budget-manifest.json"
+        with open(src_manifest, "w", encoding="utf-8") as f:
+            json.dump(
+                {
+                    "source": SOURCE_LABEL,
+                    "n_communes": len(exported),
+                    "bucket": "https://storage.googleapis.com/qipu-communes-budget/communes-budget",
+                    "communes": {e["slug"]: e["years"] for e in exported},
+                },
+                f, ensure_ascii=False, separators=(",", ":"),
+            )
+        print(f"  ✓ manifest (site) → {src_manifest} ({len(exported)} communes)")
         print(f"  ✓ manifest → {man_path} ({man_path.stat().st_size/1024/1024:.1f} MB, {len(exported)} communes)")
 
     print(f"\n✓ Exported {len(exported)} commune(s) → {OUT_ROOT}")

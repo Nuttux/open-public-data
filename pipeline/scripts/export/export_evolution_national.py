@@ -48,6 +48,9 @@ def fetch(client, insees):
     sql = f"""SELECT code_insee, commune_nom, annee, population,
                      depenses_fonctionnement, recettes_fonctionnement, epargne_brute,
                      encours_dette, depenses_equipement,
+                     dgf, concours_etat, subventions_versees, subventions_equipement_versees,
+                     fiscalite_reversee, impots_locaux, frais_personnel, achats_charges_externes,
+                     teom, depenses_totales, recettes_totales,
                      depenses_fonctionnement_hab, recettes_fonctionnement_hab,
                      encours_dette_hab, capacite_desendettement
               FROM `{MART}` {where}"""
@@ -78,6 +81,18 @@ def build(insee, meta, rows, now):
             "recettes_hab": num(r["recettes_fonctionnement_hab"]),
             "dette_hab": num(r["encours_dette_hab"]),
             "capacite_desendettement": num(r["capacite_desendettement"]),
+            # Agrégats OFGL ajoutés (bloc 1b) : lignes « dont … » de la page ville.
+            "dgf": num(r["dgf"]),
+            "concours_etat": num(r["concours_etat"]),
+            "subventions_versees": num(r["subventions_versees"]),
+            "subventions_equipement_versees": num(r["subventions_equipement_versees"]),
+            "fiscalite_reversee": num(r["fiscalite_reversee"]),
+            "impots_locaux": num(r["impots_locaux"]),
+            "frais_personnel": num(r["frais_personnel"]),
+            "achats_charges_externes": num(r["achats_charges_externes"]),
+            "teom": num(r["teom"]),
+            "depenses_totales": num(r["depenses_totales"]),
+            "recettes_totales": num(r["recettes_totales"]),
         }
         for r in rows
     ]

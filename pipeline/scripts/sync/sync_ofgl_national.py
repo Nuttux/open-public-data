@@ -75,7 +75,12 @@ CACHE_DIR = ROOT / "cache" / "wip" / "national" / "ofgl"
 LATEST_YEARS = [2024, 2023]
 
 
+ALL_AGREGATS = False  # --all-agregats : les 53 agrégats OFGL (DGF, subventions versées, fiscalité reversée…)
+
+
 def _agregat_filter() -> str:
+    if ALL_AGREGATS:
+        return "agregat IS NOT NULL"
     quoted = ", ".join(f'"{a}"' for a in AGREGATS)
     return f"agregat IN ({quoted})"
 
@@ -138,9 +143,12 @@ def main() -> int:
     ap = argparse.ArgumentParser(description="OFGL consolidee → raw_national (dim + reconcile)")
     ap.add_argument("--years", type=int, nargs="+", default=LATEST_YEARS)
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--all-agregats", action="store_true", help="tous les agrégats OFGL, pas seulement la liste AGREGATS")
     args = ap.parse_args()
+    global ALL_AGREGATS
+    ALL_AGREGATS = args.all_agregats
 
-    print(f"→ OFGL national sync — years {args.years}, {len(AGREGATS)} aggregates")
+    print(f"→ OFGL national sync — years {args.years}, {'ALL' if ALL_AGREGATS else len(AGREGATS)} aggregates")
     if not args.dry_run:
         ensure_dataset()
 
