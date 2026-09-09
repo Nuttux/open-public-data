@@ -27,7 +27,7 @@
       "category": "revenue"
     },
     {
-      "name": "Investissement",
+      "name": "Recettes d'investissement",
       "category": "revenue"
     },
     {
@@ -63,7 +63,15 @@
       "category": "expense"
     },
     {
-      "name": "Remboursement dette",
+      "name": "Intérêts de la dette",
+      "category": "expense"
+    },
+    {
+      "name": "Prêts et participations",
+      "category": "expense"
+    },
+    {
+      "name": "Remboursement de la dette",
       "category": "expense"
     },
     {
@@ -91,20 +99,20 @@
     {
       "source": "Services Publics",
       "target": "Budget Paris",
-      "value": 2390777004.77
+      "value": 1550661858.6299996
     },
     {
       "source": "Impôts & Taxes",
       "target": "Budget Paris",
-      "value": 6064038907.1
+      "value": 6914553955.240001
     },
     {
       "source": "Dotations & Subventions",
       "target": "Budget Paris",
-      "value": 463727810.99
+      "value": 453327908.99
     },
     {
-      "source": "Investissement",
+      "source": "Recettes d'investissement",
       "target": "Budget Paris",
       "value": 174222405.92000002
     },
@@ -165,8 +173,18 @@
     },
     {
       "source": "Budget Paris",
-      "target": "Remboursement dette",
-      "value": 483172872.34
+      "target": "Intérêts de la dette",
+      "value": 140032116.14999998
+    },
+    {
+      "source": "Budget Paris",
+      "target": "Remboursement de la dette",
+      "value": 289333793.31
+    },
+    {
+      "source": "Budget Paris",
+      "target": "Prêts et participations",
+      "value": 53806962.88
     },
     {
       "source": "Budget Paris",
@@ -177,14 +195,6 @@
   "drilldown": {
     "revenue": {
       "Services Publics": [
-        {
-          "name": "Environnement: Taxe d'enlèvement des ordures ménagères et assimilées",
-          "value": 487256272.0
-        },
-        {
-          "name": "RSA: TICPE - LRL",
-          "value": 246590009.1
-        },
         {
           "name": "Action Sociale: Sécurité sociale et organismes mutualistes",
           "value": 179646666.65
@@ -200,10 +210,6 @@
         {
           "name": "Services Généraux: Redevances versées par les fermiers et concessionnaires",
           "value": 118003400.34
-        },
-        {
-          "name": "Environnement: Taxe de balayage",
-          "value": 103803923.91
         },
         {
           "name": "Aménagement: Autres (produits divers de gestion courante)",
@@ -376,6 +382,18 @@
         {
           "name": "Éducation: Remboursements de frais - par des tiers",
           "value": 3540278.84
+        },
+        {
+          "name": "Transports: Participations - Régions",
+          "value": 3523662.22
+        },
+        {
+          "name": "Culture & Sport: Autres redevances et recettes diverses",
+          "value": 3371723.65
+        },
+        {
+          "name": "Éducation: Participation des familles au titre de la restauration et de l’hébergement scolaires",
+          "value": 3293923.85
         }
       ],
       "Impôts & Taxes": [
@@ -396,6 +414,10 @@
           "value": 503321629.0
         },
         {
+          "name": "Fiscalité Indirecte: Taxe d'enlèvement des ordures ménagères et assimilées",
+          "value": 487256272.0
+        },
+        {
           "name": "Fiscalité Directe: Attribution de compensation CVAE (Département / Région)",
           "value": 475293963.0,
           "name_original": "Fiscalité Directe: Attribution de compensation CVAE – Département – Région"
@@ -403,6 +425,14 @@
         {
           "name": "Fiscalité Indirecte: Taxe communale additionnelle aux droits de mutation ou à lataxe de publicité foncière",
           "value": 348216969.9
+        },
+        {
+          "name": "Fiscalité Indirecte: TICPE - LRL",
+          "value": 262271133.64
+        },
+        {
+          "name": "Fiscalité Indirecte: Taxe de balayage",
+          "value": 103803923.91
         },
         {
           "name": "Fiscalité Indirecte: Taxe de séjour",
@@ -429,12 +459,12 @@
           "value": 15684095.48
         },
         {
-          "name": "Fiscalité Indirecte: TICPE - LRL",
-          "value": 15681124.54
-        },
-        {
           "name": "Fiscalité Indirecte: Taxe d’aménagement",
           "value": 11526077.62
+        },
+        {
+          "name": "Fiscalité Indirecte: Frais de gestion de la taxe foncière sur les propriétés bâties",
+          "value": 10399902.0
         },
         {
           "name": "Fiscalité Indirecte: Taxe locale sur la publicité extérieure",
@@ -447,6 +477,18 @@
         {
           "name": "Fiscalité Directe: Imposition forfaitaire sur les entreprises de réseaux",
           "value": 3037059.0
+        },
+        {
+          "name": "Fiscalité Indirecte: Taxe d’aménagement – part départementale",
+          "value": 1994642.55
+        },
+        {
+          "name": "Fiscalité Indirecte: Taxes funéraires",
+          "value": 283751.92
+        },
+        {
+          "name": "Fiscalité Indirecte: Droits de place",
+          "value": 186546.66
         }
       ],
       "Dotations & Subventions": [
@@ -474,10 +516,6 @@
         {
           "name": "Dotations État: FCTVA",
           "value": 10936736.36
-        },
-        {
-          "name": "Dotations État: Frais de gestion de la taxe foncière sur les propriétés bâties",
-          "value": 10399902.0
         },
         {
           "name": "Dotations État: Attributions sur le versement représentatif d’impôt sur lescercles et maisons de jeux",
@@ -525,7 +563,7 @@
           "value": 66427.88
         }
       ],
-      "Investissement": [
+      "Recettes d'investissement": [
         {
           "name": "Invest. Aménagement: Subventions (actifs amortissables) - État et établissementsnationaux",
           "value": 85108450.0
@@ -4112,7 +4150,7 @@
           "fonction_confidence": "ca"
         }
       ],
-      "Remboursement dette": [
+      "Intérêts de la dette": [
         {
           "name": "Opérations Financières: Intérêts réglés à l’échéance",
           "value": 126479756.89,
@@ -4120,6 +4158,37 @@
           "flow_category": "Charges financières",
           "fonction_confidence": "ca"
         },
+        {
+          "name": "Opérations Financières: Autres charges financières",
+          "value": 10669975.46,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Charges financières",
+          "fonction_confidence": "ca"
+        },
+        {
+          "name": "Opérations Financières: Intérêts — rattachement des ICNE (intérêts courus non échus)",
+          "value": 1780947.42,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Charges financières",
+          "fonction_confidence": "ca",
+          "name_original": "Opérations Financières: Intérêts - rattachement des ICNE"
+        },
+        {
+          "name": "Opérations Financières: Intérêts des autres dettes",
+          "value": 1099904.37,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Charges financières",
+          "fonction_confidence": "ca"
+        },
+        {
+          "name": "Opérations Financières: Pertes de change",
+          "value": 1532.01,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Charges financières",
+          "fonction_confidence": "ca"
+        }
+      ],
+      "Remboursement de la dette": [
         {
           "name": "Remboursement Dette: Emprunts en euros",
           "value": 122988453.27,
@@ -4142,67 +4211,10 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Remboursement Dette: Créances sur des particuliers et autres personnes de droit privé",
-          "value": 33462638.98,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Autre",
-          "fonction_confidence": "ca"
-        },
-        {
-          "name": "Remboursement Dette: Dépôts et cautionnements versés",
-          "value": 10883564.0,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Autre",
-          "fonction_confidence": "ca"
-        },
-        {
-          "name": "Opérations Financières: Autres charges financières",
-          "value": 10669975.46,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Charges financières",
-          "fonction_confidence": "ca"
-        },
-        {
-          "name": "Remboursement Dette: Avances remboursables",
-          "value": 7141471.16,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Autre",
-          "fonction_confidence": "ca"
-        },
-        {
-          "name": "Remboursement Dette: Autres formes de participation",
-          "value": 2235000.0,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Autre",
-          "fonction_confidence": "ca"
-        },
-        {
           "name": "Remboursement Dette: Dettes afférentes aux M.E.T.P et P.P.P.",
           "value": 1918082.51,
           "fonction": "Opérations non ventilable",
           "flow_category": "Remboursement dette",
-          "fonction_confidence": "ca"
-        },
-        {
-          "name": "Opérations Financières: Intérêts — rattachement des ICNE (intérêts courus non échus)",
-          "value": 1780947.42,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Charges financières",
-          "fonction_confidence": "ca",
-          "name_original": "Opérations Financières: Intérêts - rattachement des ICNE"
-        },
-        {
-          "name": "Opérations Financières: Intérêts des autres dettes",
-          "value": 1099904.37,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Charges financières",
-          "fonction_confidence": "ca"
-        },
-        {
-          "name": "Remboursement Dette: Titres de participation",
-          "value": 78750.0,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Autre",
           "fonction_confidence": "ca"
         },
         {
@@ -4213,24 +4225,54 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Remboursement Dette: Titres immobilisés (droits de propriété)",
-          "value": 5538.74,
+          "name": "Remboursement Dette: Dépôts et cautionnements reçus",
+          "value": 200.0,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Remboursement dette",
+          "fonction_confidence": "ca"
+        }
+      ],
+      "Prêts et participations": [
+        {
+          "name": "Prêts et participations: Créances sur des particuliers et autres personnes de droit privé",
+          "value": 33462638.98,
           "fonction": "Opérations non ventilable",
           "flow_category": "Autre",
           "fonction_confidence": "ca"
         },
         {
-          "name": "Opérations Financières: Pertes de change",
-          "value": 1532.01,
+          "name": "Prêts et participations: Dépôts et cautionnements versés",
+          "value": 10883564.0,
           "fonction": "Opérations non ventilable",
-          "flow_category": "Charges financières",
+          "flow_category": "Autre",
           "fonction_confidence": "ca"
         },
         {
-          "name": "Remboursement Dette: Dépôts et cautionnements reçus",
-          "value": 200.0,
+          "name": "Prêts et participations: Avances remboursables",
+          "value": 7141471.16,
           "fonction": "Opérations non ventilable",
-          "flow_category": "Remboursement dette",
+          "flow_category": "Autre",
+          "fonction_confidence": "ca"
+        },
+        {
+          "name": "Prêts et participations: Autres formes de participation",
+          "value": 2235000.0,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Autre",
+          "fonction_confidence": "ca"
+        },
+        {
+          "name": "Prêts et participations: Titres de participation",
+          "value": 78750.0,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Autre",
+          "fonction_confidence": "ca"
+        },
+        {
+          "name": "Prêts et participations: Titres immobilisés (droits de propriété)",
+          "value": 5538.74,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Autre",
           "fonction_confidence": "ca"
         }
       ],

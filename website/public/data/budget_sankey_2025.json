@@ -27,7 +27,7 @@
       "category": "revenue"
     },
     {
-      "name": "Investissement",
+      "name": "Recettes d'investissement",
       "category": "revenue"
     },
     {
@@ -63,7 +63,15 @@
       "category": "expense"
     },
     {
-      "name": "Remboursement dette",
+      "name": "Intérêts de la dette",
+      "category": "expense"
+    },
+    {
+      "name": "Prêts et participations",
+      "category": "expense"
+    },
+    {
+      "name": "Remboursement de la dette",
       "category": "expense"
     },
     {
@@ -91,12 +99,12 @@
     {
       "source": "Impôts & Taxes",
       "target": "Budget Paris",
-      "value": 7126820629.0
+      "value": 8200804385.0
     },
     {
       "source": "Dotations & Subventions",
       "target": "Budget Paris",
-      "value": 175435944.0
+      "value": 164635944.0
     },
     {
       "source": "Emprunts",
@@ -106,10 +114,10 @@
     {
       "source": "Services Publics",
       "target": "Budget Paris",
-      "value": 2633017438.0
+      "value": 1569833682.0
     },
     {
-      "source": "Investissement",
+      "source": "Recettes d'investissement",
       "target": "Budget Paris",
       "value": 167685042.0
     },
@@ -160,13 +168,23 @@
     },
     {
       "source": "Budget Paris",
-      "target": "Remboursement dette",
-      "value": 780657534.0
+      "target": "Intérêts de la dette",
+      "value": 224518673.0
+    },
+    {
+      "source": "Budget Paris",
+      "target": "Prêts et participations",
+      "value": 223842600.0
     },
     {
       "source": "Budget Paris",
       "target": "Reversements à l'État et aux communes",
       "value": 1574780934.0
+    },
+    {
+      "source": "Budget Paris",
+      "target": "Remboursement de la dette",
+      "value": 332296261.0
     },
     {
       "source": "Budget Paris",
@@ -189,6 +207,10 @@
           "name": "Fiscalité Indirecte: Taxe départementale (publicité foncière + droits d'enregistrement)",
           "value": 1162833021.0,
           "name_original": "Fiscalité Indirecte: Taxe dpt. pub foncière, droit dpt. enreg"
+        },
+        {
+          "name": "Fiscalité Indirecte: Fiscalité locale",
+          "value": 1063183756.0
         },
         {
           "name": "Fiscalité Indirecte: Fraction compensatoire TFPB + taxe d'habitation",
@@ -232,6 +254,11 @@
           "value": 11401000.0
         },
         {
+          "name": "Fiscalité Indirecte: Frais de gestion (TFPB — taxe foncière sur les propriétés bâties)",
+          "value": 10800000.0,
+          "name_original": "Fiscalité Indirecte: Frais de gestion de la TFPB"
+        },
+        {
           "name": "Fiscalité Indirecte: Taxe locale sur la publicité extérieure",
           "value": 9710000.0
         },
@@ -266,11 +293,6 @@
         {
           "name": "Dotations État: DGD des communes et EPCI",
           "value": 15804226.0
-        },
-        {
-          "name": "Dotations État: Frais de gestion (TFPB — taxe foncière sur les propriétés bâties)",
-          "value": 10800000.0,
-          "name_original": "Dotations État: Frais de gestion de la TFPB"
         },
         {
           "name": "Dotations État: Attribution / Versement impôt cercles et maisons de jeux",
@@ -341,16 +363,8 @@
       ],
       "Services Publics": [
         {
-          "name": "Environnement: Fiscalité locale",
-          "value": 679324832.0
-        },
-        {
           "name": "Transports: Redevances utilisation du domaine",
           "value": 404531510.0
-        },
-        {
-          "name": "RSA: Fiscalité locale",
-          "value": 246590009.0
         },
         {
           "name": "Action Sociale: Participations",
@@ -359,10 +373,6 @@
         {
           "name": "Services Généraux: Produits divers de gestion courante",
           "value": 209380897.0
-        },
-        {
-          "name": "Action Économique: Fiscalité locale",
-          "value": 135000000.0
         },
         {
           "name": "Environnement: Produits divers de gestion courante",
@@ -486,10 +496,6 @@
           "value": 2440823.0
         },
         {
-          "name": "Aménagement: Fiscalité locale",
-          "value": 2000000.0
-        },
-        {
           "name": "Environnement: Participations",
           "value": 1435000.0
         },
@@ -540,9 +546,25 @@
         {
           "name": "Services Généraux: Mandats annulés (exercices antérieurs)",
           "value": 500000.0
+        },
+        {
+          "name": "Transports: Etudes",
+          "value": 455000.0
+        },
+        {
+          "name": "Action Économique: Autres produits",
+          "value": 360000.0
+        },
+        {
+          "name": "Action Sociale: Dédits et pénalités perçus",
+          "value": 350000.0
+        },
+        {
+          "name": "Aménagement: Autres produits",
+          "value": 312428.53
         }
       ],
-      "Investissement": [
+      "Recettes d'investissement": [
         {
           "name": "Invest. Aménagement: Subv inv rattachées aux actifs amort",
           "value": 60558233.0
@@ -4707,49 +4729,12 @@
           "name_original": "Invest. Transports: Installat°, matériel, outillage techniq."
         }
       ],
-      "Remboursement dette": [
-        {
-          "name": "Remboursement Dette: Emprunt obligataire remboursable in fine",
-          "value": 308080000.0,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Remboursement dette",
-          "fonction_confidence": "high",
-          "fonction_imputed": true,
-          "fonction_ratio": 1.0
-        },
+      "Intérêts de la dette": [
         {
           "name": "Opérations Financières: Intérêts réglés à l'échéance",
           "value": 185500000.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Charges financières",
-          "fonction_confidence": "high",
-          "fonction_imputed": true,
-          "fonction_ratio": 1.0
-        },
-        {
-          "name": "Remboursement Dette: Créances / particuliers et personnes de droit privé",
-          "value": 139811200.0,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Autre",
-          "fonction_confidence": "high",
-          "fonction_imputed": true,
-          "fonction_ratio": 1.0,
-          "name_original": "Remboursement Dette: Créances/particuliers, pers. droit privé"
-        },
-        {
-          "name": "Remboursement Dette: Autres formes de participation",
-          "value": 56250000.0,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Autre",
-          "fonction_confidence": "high",
-          "fonction_imputed": true,
-          "fonction_ratio": 1.0
-        },
-        {
-          "name": "Remboursement Dette: Dépôts et cautionnements versés",
-          "value": 19016400.0,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Autre",
           "fonction_confidence": "high",
           "fonction_imputed": true,
           "fonction_ratio": 1.0
@@ -4765,28 +4750,10 @@
           "name_original": "Opérations Financières: Intérêts - Rattachement des ICNE"
         },
         {
-          "name": "Remboursement Dette: Dettes - Autres organismes, particuliers",
-          "value": 14253086.0,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Remboursement dette",
-          "fonction_confidence": "high",
-          "fonction_imputed": true,
-          "fonction_ratio": 1.0
-        },
-        {
           "name": "Opérations Financières: Intérêts comptes courants et de dépôts",
           "value": 11000000.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Charges financières",
-          "fonction_confidence": "high",
-          "fonction_imputed": true,
-          "fonction_ratio": 1.0
-        },
-        {
-          "name": "Remboursement Dette: Titres de participation",
-          "value": 8765000.0,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Autre",
           "fonction_confidence": "high",
           "fonction_imputed": true,
           "fonction_ratio": 1.0
@@ -4801,24 +4768,6 @@
           "fonction_ratio": 1.0
         },
         {
-          "name": "Remboursement Dette: Dettes - Etat, établissements nationaux",
-          "value": 7700000.0,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Remboursement dette",
-          "fonction_confidence": "high",
-          "fonction_imputed": true,
-          "fonction_ratio": 1.0
-        },
-        {
-          "name": "Remboursement Dette: Dettes marchés de travaux et partenariat",
-          "value": 2223175.0,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Remboursement dette",
-          "fonction_confidence": "high",
-          "fonction_imputed": true,
-          "fonction_ratio": 1.0
-        },
-        {
           "name": "Opérations Financières: Intérêts des autres dettes",
           "value": 818673.0,
           "fonction": "Opérations non ventilable",
@@ -4826,15 +4775,37 @@
           "fonction_confidence": "high",
           "fonction_imputed": true,
           "fonction_ratio": 1.0
+        }
+      ],
+      "Prêts et participations": [
+        {
+          "name": "Prêts et participations: Créances / particuliers et personnes de droit privé",
+          "value": 139811200.0,
+          "fonction": "Non spécifié",
+          "flow_category": "Autre",
+          "fonction_confidence": "unknown",
+          "name_original": "Prêts et participations: Créances/particuliers, pers. droit privé"
         },
         {
-          "name": "Remboursement Dette: Dépôts et cautionnements reçus",
-          "value": 40000.0,
-          "fonction": "Opérations non ventilable",
-          "flow_category": "Remboursement dette",
-          "fonction_confidence": "high",
-          "fonction_imputed": true,
-          "fonction_ratio": 1.0
+          "name": "Prêts et participations: Autres formes de participation",
+          "value": 56250000.0,
+          "fonction": "Non spécifié",
+          "flow_category": "Autre",
+          "fonction_confidence": "unknown"
+        },
+        {
+          "name": "Prêts et participations: Dépôts et cautionnements versés",
+          "value": 19016400.0,
+          "fonction": "Non spécifié",
+          "flow_category": "Autre",
+          "fonction_confidence": "unknown"
+        },
+        {
+          "name": "Prêts et participations: Titres de participation",
+          "value": 8765000.0,
+          "fonction": "Non spécifié",
+          "flow_category": "Autre",
+          "fonction_confidence": "unknown"
         }
       ],
       "Reversements à l'État et aux communes": [
@@ -4910,6 +4881,53 @@
           "value": 200000.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Reversements péréquation",
+          "fonction_confidence": "high",
+          "fonction_imputed": true,
+          "fonction_ratio": 1.0
+        }
+      ],
+      "Remboursement de la dette": [
+        {
+          "name": "Remboursement Dette: Emprunt obligataire remboursable in fine",
+          "value": 308080000.0,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Remboursement dette",
+          "fonction_confidence": "high",
+          "fonction_imputed": true,
+          "fonction_ratio": 1.0
+        },
+        {
+          "name": "Remboursement Dette: Dettes - Autres organismes, particuliers",
+          "value": 14253086.0,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Remboursement dette",
+          "fonction_confidence": "high",
+          "fonction_imputed": true,
+          "fonction_ratio": 1.0
+        },
+        {
+          "name": "Remboursement Dette: Dettes - Etat, établissements nationaux",
+          "value": 7700000.0,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Remboursement dette",
+          "fonction_confidence": "high",
+          "fonction_imputed": true,
+          "fonction_ratio": 1.0
+        },
+        {
+          "name": "Remboursement Dette: Dettes marchés de travaux et partenariat",
+          "value": 2223175.0,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Remboursement dette",
+          "fonction_confidence": "high",
+          "fonction_imputed": true,
+          "fonction_ratio": 1.0
+        },
+        {
+          "name": "Remboursement Dette: Dépôts et cautionnements reçus",
+          "value": 40000.0,
+          "fonction": "Opérations non ventilable",
+          "flow_category": "Remboursement dette",
           "fonction_confidence": "high",
           "fonction_imputed": true,
           "fonction_ratio": 1.0

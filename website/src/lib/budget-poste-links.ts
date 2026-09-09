@@ -41,7 +41,8 @@ export const POSTE_LINKS: Record<string, PosteLinkSpec> = {
   },
   "securite": { themes: ["Sécurité"], categories: ["Equipements de protection individuelle"], chapitre: "securite" },
   "economie": { themes: ["Économie"], chapitre: "action-economique" },
-  "remboursement-dette": { page: "dette" },
+  "remboursement-de-la-dette": { page: "dette" },
+  "interets-de-la-dette": { page: "dette" },
   // Recettes : seule l'origine des emprunts a une page sûre.
   "emprunts": { page: "dette" },
 };

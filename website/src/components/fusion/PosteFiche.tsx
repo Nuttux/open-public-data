@@ -66,6 +66,10 @@ function groupMissions(poste: BudgetPosteFiche, locale: "fr" | "en", fmt: (n: nu
       key = i > 0 ? it.name.slice(0, i).trim() : "—";
       name = i > 0 ? it.name.slice(i + 1).trim() : it.name.trim();
     }
+    // Le préfixe technique d'une ligne (« Invest. Aménagement: … ») n'est pas
+    // toujours celui du poste ; on le retire dans tous les cas, la nature à
+    // droite (« subv. invest. ») dit déjà de quoi il s'agit.
+    if (byFonction) { const j = name.indexOf(": "); if (j > 0) name = name.slice(j + 2); }
     let m = map.get(key);
     if (!m) {
       const fl = FONCTIONS[key];
@@ -98,6 +102,9 @@ function groupMissions(poste: BudgetPosteFiche, locale: "fr" | "en", fmt: (n: nu
     m.items.sort((a, b) => b.value - a.value);
     if (!m.sub && m.items.length > 1 && m.items[0].value / m.total >= 0.5) {
       const l = autoSub(m.items[0].name, m.label);
+      // Redite quand la ligne porte le même mot que sa nature (« subventions
+      // d'investissement » sous « subv. invest. ») : on garde quand même, c'est
+      // le montant qui informe ; mais jamais si la ligne redit la mission.
       if (l) m.sub = fill(t("fx.poste.v3.dont"), { l, m: fmt(m.items[0].value) });
     }
   }

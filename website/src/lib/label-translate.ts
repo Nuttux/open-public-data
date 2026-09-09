@@ -35,12 +35,16 @@ const EN: Record<string, string> = {
   "Emprunts": "Borrowing",
   "Services Publics": "Public Services",
   "Investissement": "Investment",
+  "Recettes d'investissement": "Investment revenue",
   "Personnel & Admin": "Personnel & Admin",
   "Administration générale": "General administration",
   "Reversements à l'État et aux communes": "Transfers to the State and other councils",
   "Action Sociale": "Social Action",
   "Aménagement & Logement": "Urban Planning & Housing",
   "Remboursement dette": "Debt Repayment",
+  "Remboursement de la dette": "Debt repayment",
+  "Intérêts de la dette": "Debt interest",
+  "Prêts et participations": "Loans and equity stakes",
 
   // ── Budget nature labels (niveau_1 / niveau_2) ────────────────────────────
   "Personnel": "Personnel",

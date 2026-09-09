@@ -583,7 +583,7 @@ export function loadLandingStats(): LandingStats {
       .filter((l) => l.source === "Emprunts" && l.target === "Budget Paris")
       .reduce((s, l) => s + l.value, 0);
     const recettesInvest = budget.links
-      .filter((l) => l.source === "Investissement" && l.target === "Budget Paris")
+      .filter((l) => l.source === "Recettes d'investissement" && l.target === "Budget Paris")
       .reduce((s, l) => s + l.value, 0);
     const recettesFonct = budget.totals.recettes - emprunts - recettesInvest;
     const epargneBrute = Math.max(0, recettesFonct - fonctionnement);
@@ -3474,7 +3474,7 @@ export function loadPatrimoineData(requestedYear?: number, city: string = "paris
       // équipement) qui ne sont pas des RRF. Sans ça on surestimait l'épargne
       // brute d'environ 150 M€/an.
       const recettesInvest = budget.links
-        .filter((l) => l.source === "Investissement" && l.target === centralBudget)
+        .filter((l) => l.source === "Recettes d'investissement" && l.target === centralBudget)
         .reduce((s, l) => s + l.value, 0);
       recettesFonctionnement = budget.totals.recettes - emprunts - recettesInvest;
       epargneBrute = Math.max(0, recettesFonctionnement - fonctionnement);
@@ -4503,7 +4503,7 @@ export function loadBudgetPageData(requestedYear?: number, city: string = "paris
     .filter((l) => l.source === "Emprunts" && l.target === centralNode)
     .reduce((s, l) => s + l.value, 0);
   const recettesInvest = sankey.links
-    .filter((l) => l.source === "Investissement" && l.target === centralNode)
+    .filter((l) => l.source === "Recettes d'investissement" && l.target === centralNode)
     .reduce((s, l) => s + l.value, 0);
   const epargneBrute = Math.max(0, sankey.totals.recettes - emprunts - recettesInvest - fonctionnement);
 

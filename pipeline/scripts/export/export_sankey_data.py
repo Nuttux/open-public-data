@@ -229,10 +229,21 @@ REVENUE_GROUPS = {
     "Services Publics": ["Services Généraux", "Sécurité", "Éducation", "Culture & Sport", 
                          "Action Sociale", "APA", "RSA", "Aménagement", "Action Économique",
                          "Environnement", "Transports"],
-    "Investissement": ["Invest. Services", "Invest. Sécurité", "Invest. Éducation",
+    # Renommé le 2026-09-09 : « Investissement » faisait croire à une recette
+    # d'un placement ; ce sont les subventions d'équipement reçues et les
+    # cessions, c'est-à-dire des recettes d'investissement.
+    "Recettes d'investissement": ["Invest. Services", "Invest. Sécurité", "Invest. Éducation",
                        "Invest. Culture", "Invest. Social", "Invest. Aménagement",
                        "Invest. Économie", "Invest. Environnement", "Invest. Transports"],
 }
+
+# Une recette classée « Impôts et taxes » par le pipeline (ode_categorie_flux)
+# est un impôt, quel que soit le chapitre fonctionnel qui la porte : la TEOM
+# (558 M€ en 2024) et la taxe de balayage sont sous « Environnement », la taxe
+# de séjour sous « Action économique », la TICPE sous « RSA ». Elles rejoignent
+# « Impôts & Taxes » au lieu de gonfler « Services publics ». 2026-09-09.
+TAX_FLOW = "Impôts et taxes"
+TAX_GROUP_CATEGORIES = set(REVENUE_GROUPS["Impôts & Taxes"])
 
 EXPENSE_GROUPS = {
     # Scindé le 2026-09-08 : « Personnel & Admin » collait 1,6 Md€ de péréquation
@@ -249,8 +260,21 @@ EXPENSE_GROUPS = {
     "Environnement": ["Environnement", "Invest. Environnement"],
     "Transports": ["Transports", "Invest. Transports"],
     "Économie": ["Action Économique", "Invest. Économie", "Participations", "Subventions Équipement"],
-    "Remboursement dette": ["Remboursement Dette", "Opérations Financières"],
+    # Scindé le 2026-09-09 : « Remboursement dette » (710 M€ en 2026) mélangeait
+    # le capital remboursé (327), les intérêts (237) et des prêts, avances et
+    # prises de participation (145) qui ne sont pas de la dette du tout.
+    "Remboursement de la dette": ["Remboursement Dette"],
+    "Intérêts de la dette": ["Opérations Financières"],
+    "Prêts et participations": ["Prêts et participations"],
 }
+
+# Dans le chapitre 923 (« Remboursement Dette »), seules les lignes dont le flux
+# est « Remboursement dette » remboursent la dette. Le reste — créances sur des
+# particuliers, titres et autres formes de participation, dépôts et
+# cautionnements, avances remboursables — est reclassé « Prêts et participations ».
+DEBT_CATEGORY = "Remboursement Dette"
+DEBT_FLOW = "Remboursement dette"
+LOANS_CATEGORY = "Prêts et participations"
 
 # =============================================================================
 # SECTION CLASSIFICATION (Fonctionnement vs Investissement)
@@ -266,7 +290,8 @@ INVEST_CATEGORIES = [
 # Categories that are considered special operations (not Fonct/Invest)
 SPECIAL_CATEGORIES = [
     "Remboursement Dette", "Opérations Financières", "Reversements Fiscaux", 
-    "Charges Fiscales", "Participations", "Subventions Équipement"
+    "Charges Fiscales", "Participations", "Subventions Équipement",
+    "Prêts et participations",
 ]
 
 
@@ -419,11 +444,15 @@ def build_sankey_data(records: list[dict], year: int) -> dict:
 
         if "Recette" in sens:
             category = classify_by_chapter(chapitre_code, REVENUE_CHAPTER_MAP)
+            if flow_category == TAX_FLOW and category not in TAX_GROUP_CATEGORIES:
+                category = "Fiscalité Indirecte"
             revenue_by_chapter[category] += montant
             revenue_drilldown[category][nature_libelle] += montant
 
         elif "Dépense" in sens:
             category = classify_by_chapter(chapitre_code, EXPENSE_CHAPTER_MAP)
+            if category == DEBT_CATEGORY and flow_category != DEBT_FLOW:
+                category = LOANS_CATEGORY
             # Split fonction proportionnellement quand absente (BP voté).
             # Préserve le total : chaque sub-item reçoit sa part historique.
             splits = split_fonction(category, flow_category, fonction_libelle, montant)

@@ -19321,7 +19321,10 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-bud-voted a { color: var(--bleu); }
 .theme-fusion .fx-bud-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 18px; }
 .theme-fusion .fx-bud-col h3 { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; padding-bottom: 8px; border-bottom: 1px solid var(--ink); display: flex; justify-content: space-between; font-weight: 500; }
-.theme-fusion .fx-bud-row { display: grid; grid-template-columns: minmax(0, 1fr) 52px auto 36px 10px; gap: 10px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--rule); text-decoration: none; color: var(--ink); font-size: 14px; position: relative; }
+/* Colonnes fixes : chaque ligne est sa propre grille, une colonne « auto » pour
+   le montant décalait les barres d'une ligne à l'autre (« 2,31 Md€ » n'a pas la
+   largeur de « 992 M€ »). Les barres sont calées à droite, sur l'année courante. */
+.theme-fusion .fx-bud-row { display: grid; grid-template-columns: minmax(0, 1fr) 52px 86px 36px 10px; gap: 10px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--rule); text-decoration: none; color: var(--ink); font-size: 14px; position: relative; }
 .theme-fusion .fx-bud-row:hover { background: rgba(10,10,10,.03); }
 /* Le chevron dit que la ligne s'ouvre ; il s'assombrit au survol. */
 .theme-fusion .fx-bud-row .c { color: #b4b9c2; font-size: 15px; line-height: 1; text-align: right; transition: color .15s, transform .15s; }
@@ -19335,7 +19338,7 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-bud-row .n { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .theme-fusion .fx-bud-row .p { font-family: var(--f-mono); font-size: 10.5px; color: var(--muted); text-align: right; }
 .theme-fusion .fx-bud-row .fx-v3-amt { text-align: right; }
-.theme-fusion .fx-bud-spark { display: inline-flex; align-items: flex-end; gap: 2px; height: 18px; }
+.theme-fusion .fx-bud-spark { display: inline-flex; align-items: flex-end; justify-content: flex-end; gap: 2px; height: 18px; width: 52px; }
 .theme-fusion .fx-bud-spark i { display: block; width: 5px; background: #c8ccd3; }
 .theme-fusion .fx-bud-spark i.vote { background: repeating-linear-gradient(135deg, #c8ccd3 0 2px, #fafaf7 2px 4px); }
 .theme-fusion .fx-bud-spark i.now { background: var(--bleu); }
@@ -19356,7 +19359,8 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-bud-forme--poste .h { font-family: var(--f-display, inherit); font-size: 15px; }
 @media (max-width: 700px) {
   .theme-fusion .fx-bud-cols { grid-template-columns: 1fr; gap: 30px; }
-  .theme-fusion .fx-bud-row { grid-template-columns: minmax(0, 1fr) 44px auto 34px 10px; font-size: 13.5px; }
+  .theme-fusion .fx-bud-row { grid-template-columns: minmax(0, 1fr) 44px 80px 34px 10px; font-size: 13.5px; }
+  .theme-fusion .fx-bud-spark { width: 44px; }
 }
 .theme-fusion .fx-bud-row--static { cursor: default; } .theme-fusion .fx-bud-row--static:hover { background: transparent; }
 
