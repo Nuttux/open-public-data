@@ -6,13 +6,26 @@ name: data-platform-audit
 #   - ont un fetch UI vers /pipeline/cache/wip/ (ou autre chemin interdit)
 #   - ne parsent pas en dbt (modèle ou test cassé)
 #
-# ⚠️  Jobs BQ-dependent (dbt-test, verify-exports, source freshness) sont
-# désactivés par défaut et ne tournent QUE si la repository variable
-# `ENABLE_BQ_CI` est définie à `true`. Cela nécessite un setup GCP préalable
-# (Workload Identity Federation + service account avec permissions BQ).
+# ⚠️  Jobs BQ-dependent (dbt-test, data-quality-audit) sont désactivés par
+# défaut et ne tournent QUE si la repository variable `ENABLE_BQ_CI` est
+# définie à `true`. Cela nécessite un setup GCP préalable (Workload Identity
+# Federation + service account avec permissions BQ) — voir
+# docs/runbooks/enable-bq-ci.md.
 #
 # Tant que ce setup n'est pas fait, le job `ci-status` annonce VISIBLEMENT
 # que le mode complet n'est pas actif (pas de fausse impression de couverture).
+#
+# Retiré le 2026-09-09 : le job `verify-exports` (égalité octet entre un
+# export régénéré depuis BigQuery et le JSON committé). Depuis que le refresh
+# hebdo publie tout seul (enrich-pipeline.yml), « JSON committé == export
+# frais » n'est vrai qu'entre un refresh et la prochaine publication de la
+# Ville : le job était rouge à chaque fois que la source bougeait, sans que
+# rien ne soit cassé (2026-09-09 : logements 2025 publiés, main pas encore
+# rafraîchi). Ce qu'il protégeait — un changement de CODE qui altère un
+# chiffre publié — est couvert par le gate de parité pre-push local
+# (check_export_parity.sh) et par les gates du refresh (le commit publié est
+# celui que le build + Playwright ont testé). Un vert qui dépend du calendrier
+# de la Ville n'est pas un test.
 
 # Auto-triggers actifs (réactivés le 2026-07-23 après reset du quota Actions).
 # Les jobs non-BQ (layering, dbt parse, schema completeness) tournent sur
@@ -41,14 +54,13 @@ jobs:
       - name: Announce coverage
         run: |
           if [[ "${{ vars.ENABLE_BQ_CI }}" == "true" ]]; then
-            echo "✅ Full CI : layering + dbt parse + dbt test + verify_export + source freshness"
+            echo "✅ Full CI : layering + dbt parse + dbt test + source freshness + data-quality-audit"
           else
             echo "⚠️  Partial CI : layering + dbt parse + schema completeness ONLY"
             echo ""
             echo "  The following data-quality jobs are DISABLED:"
             echo "    - dbt test (the 280+ data tests)"
             echo "    - dbt source freshness"
-            echo "    - verify_export (byte-equality of JSON outputs)"
             echo "    - data-quality-audit (réconciliation/complétude/freshness, /methode#audit)"
             echo ""
             echo "  To enable full CI, an admin must:"
@@ -206,63 +218,6 @@ jobs:
           # Marseille : stg_marseille_budget restreint au budget principal et
           # normalisation accent-safe (2026-08-26) — plus d'exclusion nécessaire.
           dbt test --profiles-dir ~/.dbt --target prod
-
-  verify-exports:
-    name: verify_export (byte-equality of JSON outputs)
-    runs-on: ubuntu-latest
-    # Jobs BQ-dependent (coût $ + minutes Actions) : tournent uniquement sur
-    # push main, pas sur chaque PR. Pour valider une PR data avant merge,
-    # déclencher le workflow manuellement via workflow_dispatch.
-    if: ${{ vars.ENABLE_BQ_CI == 'true' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') }}
-    permissions:
-      id-token: write
-      contents: read
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
-      - name: Install deps
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install google-cloud-bigquery pandas db-dtypes pyyaml
-
-      - name: Authenticate to GCP
-        uses: google-github-actions/auth@v2
-        with:
-          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
-
-      # Pour chaque export, on vérifie qu'il produit un JSON sémantiquement
-      # égal à HEAD (modulo timestamps + ordre + précision flottante 6 sig).
-      - name: Verify all exports
-        run: |
-          for script in pipeline/scripts/export/export_*.py; do
-            name=$(basename "$script" .py)
-            # On scanne git pour trouver les .json que ce script écrit usuellement.
-            # Pour l'instant on liste à la main les exports critiques.
-            case "$name" in
-              export_logement_attente)
-                bash pipeline/scripts/audit/verify_export.sh "$script" \
-                  website/public/data/logement_attente_paris.json
-                ;;
-              export_bilan_data)
-                bash pipeline/scripts/audit/verify_export.sh "$script" \
-                  website/public/data/bilan_index.json \
-                  website/public/data/bilan_sankey_2024.json
-                ;;
-              export_data_availability)
-                bash pipeline/scripts/audit/verify_export.sh "$script" \
-                  website/public/data/data_availability.json
-                ;;
-              *)
-                echo "  (skipped — $name pas dans la liste critique)"
-                ;;
-            esac
-          done
 
   data-quality-audit:
     name: data quality audit (réconciliation, complétude, freshness)

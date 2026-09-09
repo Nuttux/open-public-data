@@ -7,7 +7,7 @@ Aujourd'hui, le workflow `enrich-pipeline.yml` peut tourner en GitHub Actions, m
 La solution standard et propre pour GitHub Actions ↔ GCP est **Workload Identity Federation (WIF)** : GitHub authentifie un job via OIDC, GCP fait confiance à cette identité et la mappe sur un service account. **Pas de clé statique stockée.**
 
 Une fois fait :
-- `vars.ENABLE_BQ_CI=true` débloque les jobs `dbt-test`, `verify-exports` et `data-quality-audit` dans `data-platform-audit.yml`.
+- `vars.ENABLE_BQ_CI=true` débloque les jobs `dbt-test` et `data-quality-audit` dans `data-platform-audit.yml` (le job `verify-exports` a été retiré le 2026-09-09 : structurellement rouge entre un refresh et la prochaine publication de la Ville, il ne testait plus le code mais le calendrier — voir l'en-tête du workflow).
 - Le job `data-quality-audit` rejoue `run_data_quality_audit.py` à chaque PR, upload le JSON en artifact (90j), et fail la PR si un check passe à `fail` ou régresse vs `website/public/data/data_quality_audit.json` committé.
 - Le cron `enrich-pipeline.yml` résoudra `phases=auto` → `sync,dbt,export,enrich` (refresh complet de toutes les sources).
 
