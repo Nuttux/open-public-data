@@ -16,9 +16,11 @@ type Props = {
   totalCommune: number | null;
   others: { siren: string; nom: string; montant: number; nb: number }[];
   sourceUrl: string;
+  /** Dans le drawer : le corps seul, le drawer porte déjà le titre et la fermeture. */
+  embedded?: boolean;
 };
 
-export default function FournisseurLocalClient({ commune, f, nationalComplet, coverageNote, totalCommune, others, sourceUrl }: Props) {
+export default function FournisseurLocalClient({ commune, f, nationalComplet, coverageNote, totalCommune, others, sourceUrl, embedded = false }: Props) {
   const t = useT();
   const { locale } = useLocale();
   const en = locale === "en";
@@ -45,16 +47,8 @@ export default function FournisseurLocalClient({ commune, f, nationalComplet, co
   const ligne = (m: FournisseurLocal["marches"][number]) =>
     [m.annee, m.duree_mois ? fill("fx.fl.mois", { n: m.duree_mois }) : null, m.nb_lots > 1 ? fill("fx.pv.lots", { n: m.nb_lots }) : null, m.procedure].filter(Boolean).join(" · ");
 
-  return (
-    <div className="theme-fusion">
-      <Navbar />
-      <main id="main-content" tabIndex={-1}>
-        <div className="fx-wrap fx-v3 fx-pv" style={{ padding: "48px 0" }}>
-          <p className="fx-pv-kicker">
-            <Link href={`/fr/city/${commune.slug}#achats`} className="fx-pv-link">{fill("fx.fl.kicker", { nom: commune.nom })}</Link>
-            {domaine ? ` · ${domaine.replace(/ & /g, en ? " and " : " et ")}` : ""}
-          </p>
-          <h1 className="fx-pv-title">{f.nom}</h1>
+  const body = (
+    <>
           <V3Lead>
             {fill("fx.fl.lead", { nom: f.nom, commune: commune.nom, nb: int.format(f.nb), y0: f.first_year ?? "", y1: f.last_year ?? "" })}
             {share != null && share >= 1 ? ` ${fill("fx.fl.share", { pct: share })}` : ""}
@@ -95,6 +89,22 @@ export default function FournisseurLocalClient({ commune, f, nationalComplet, co
           )}
 
           <ChartSource source={t("fx.natmar.source")} dataHref={sourceUrl} methodAnchor="c-villes" />
+    </>
+  );
+
+  if (embedded) return <div className="fx-v3 fx-pv fx-pv-embedded">{body}</div>;
+
+  return (
+    <div className="theme-fusion">
+      <Navbar />
+      <main id="main-content" tabIndex={-1}>
+        <div className="fx-wrap fx-v3 fx-pv" style={{ padding: "48px 0" }}>
+          <p className="fx-pv-kicker">
+            <Link href={`/fr/city/${commune.slug}#achats`} className="fx-pv-link">{fill("fx.fl.kicker", { nom: commune.nom })}</Link>
+            {domaine ? ` · ${domaine.replace(/ & /g, en ? " and " : " et ")}` : ""}
+          </p>
+          <h1 className="fx-pv-title">{f.nom}</h1>
+          {body}
         </div>
       </main>
       <Footer />

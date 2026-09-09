@@ -9,6 +9,7 @@ import ChartSource from "@/components/fusion/ChartSource";
 import RelatedLinks, { type RelatedBlock } from "@/components/fiche/RelatedLinks";
 import { V3Fold } from "@/components/fiche/v3";
 import { useT, useLocale } from "@/lib/localeContext";
+import { useTrack } from "@/lib/analyticsContext";
 import { fmtDec } from "@/lib/fmt";
 import type { BudgetPageData } from "@/lib/fusion-data";
 import type { EvolutionData } from "@/lib/commune-evolution";
@@ -128,36 +129,30 @@ function Bars({ points, year, height = 50 }: { points: { year: number; value: nu
   );
 }
 
+/** Le chiffre d'une section : c'est lui le titre, le H2 passe en second. */
+function SecNum({ v, u }: { v: string; u: string }) {
+  return <div className="fx-pv-secnum tnum">{v}<span className="u">{u}</span></div>;
+}
+
 /**
- * La barre empilée d'une section : sa forme avant ses lignes. Chaque section
- * avait exactement la même silhouette (titre, phrase, deux colonnes, note), si
- * bien que rien n'accrochait l'œil et que tout se ressemblait. Monochrome, du
- * plus gros au plus petit, la queue regroupée sous « autres ».
+ * Le repli d'une section, fermé par défaut : la première section reste
+ * ouverte (c'est le sujet de la page), les cinq autres donnent leur chiffre et
+ * deux lignes, et s'ouvrent sur place en un geste. Le contenu plié est dans le
+ * HTML (details), donc lu par les moteurs. Chaque ouverture part à PostHog :
+ * dans trois semaines on saura, section par section, si les gens ouvrent.
  */
-function StackedBar({ items, total, autres, max = 6 }: { items: { label: string; value: number }[]; total: number; autres: string; max?: number }) {
-  const sorted = items.slice().sort((a, b) => b.value - a.value);
-  const head = sorted.slice(0, max);
-  const tail = sorted.slice(max).reduce((n, x) => n + x.value, 0);
-  const rest = Math.max(0, total - head.reduce((n, x) => n + x.value, 0) - tail);
-  const segs = [...head, ...(tail + rest > 0 ? [{ label: autres, value: tail + rest }] : [])];
-  if (segs.length < 2 || total <= 0) return null;
-  const pct = (v: number) => (v / total) * 100;
+function SectionFold({ id, label, slug, pop, children }: { id: string; label: string; slug: string; pop: number; children: React.ReactNode }) {
+  const track = useTrack();
   return (
-    <div className="fx-pv-stackwrap">
-      <div className="fx-pv-stack" aria-hidden="true">
-        {segs.map((x, i) => (
-          <i key={x.label} className={`s${Math.min(i, 6)}`} style={{ width: `${pct(x.value)}%` }} />
-        ))}
-      </div>
-      <div className="fx-pv-stacklegend">
-        {segs.map((x, i) => (
-          <span key={x.label}>
-            <em><i className={`s${Math.min(i, 6)}`} aria-hidden="true" />{x.label}</em>
-            <b>{Math.round(pct(x.value))} %</b>
-          </span>
-        ))}
-      </div>
-    </div>
+    <details
+      className="fx-v3-fold fx-pv-fold"
+      onToggle={(e) => {
+        if ((e.currentTarget as HTMLDetailsElement).open) track("section_open", { section: id, slug, pop });
+      }}
+    >
+      <summary className="text">{label}</summary>
+      {children}
+    </details>
   );
 }
 
@@ -243,7 +238,7 @@ function ShareButton({ label, title, done }: { label: string; title: string; don
 
 export default function PageVilleClient({ commune, budget, evolution, invest, marches, maire, taxeFonciere, marchesHref, peers, compare, sources, related }: PageVilleProps) {
   const t = useT();
-  const { euro, int, signedPct, locale } = useFmt();
+  const { euro, split, int, signedPct, locale } = useFmt();
   const en = locale === "en";
   const fill = (key: string, vars: Record<string, string | number>) => {
     let s = t(key);
@@ -505,7 +500,6 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
 
           {/* 2. Dépenses et recettes */}
           <H2 id="depenses" sub={`${t("fx.natbud.v3.h2sub")} ${data.comptes && Object.keys(data.comptes.expenses).length ? t("fx.pv.h2sub_click") : ""}${hasSeries ? ` ${fill("fx.natbud.v3.span", { span })}` : ""}`}>{t("fx.bud.v3.h2")}</H2>
-          <StackedBar items={dep.map((x) => ({ label: strip(x.label), value: x.value }))} total={data.depenses} autres={t("fx.pv.autres")} />
           <div className="fx-bud-cols">
             <div className="fx-bud-col">
               <h3><span>{t("fx.bud.v3.col_dep")}</span><span className="tnum">{euro(data.depenses)}</span></h3>
@@ -518,49 +512,34 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
           </div>
           <p className="fx-v3-foot">{t("fx.pv.fonction_absent")}</p>
 
+          {/* Sur desktop, les sections repliées se rangent deux par deux au lieu
+              de s'étaler sur une colonne vide à droite. */}
+          <div className="fx-pv-grid">
           {/* 2b. Taxe foncière */}
           {taxeFonciere && taxeFonciere.tfb != null && (
             <section className="fx-pv-section">
               <H2 id="taxe-fonciere">{fill("fx.pv.tf.h2", { nom: commune.nom })}</H2>
-              <p className="fx-v3-lead fx-pv-lead">
-                {fill("fx.pv.tf.lead", { nom: commune.nom, year: taxeFonciere.annee, taux: tfRate(taxeFonciere.tfb) })}
-                {taxeFonciere.mediane != null
-                  ? ` ${fill(
-                      taxeFonciere.tfb > taxeFonciere.mediane + 0.01
-                        ? "fx.pv.tf.vs_above"
-                        : taxeFonciere.tfb < taxeFonciere.mediane - 0.01
-                          ? "fx.pv.tf.vs_below"
-                          : "fx.pv.tf.vs_eq",
-                      { med: tfRate(taxeFonciere.mediane) },
-                    )}`
-                  : ""}
+              <SecNum v={tfRate(taxeFonciere.tfb)} u="%" />
+              <p className="fx-pv-l1">
+                {fill("fx.pv.tf.l1", { year: taxeFonciere.annee })}
                 {tfChanged
-                  ? ` ${fill(tfHist[tfHist.length - 1].value > tfHist[0].value ? "fx.pv.tf.up" : "fx.pv.tf.down", { y: tfHist[0].year })}`
-                  : tfHist.length > 1
-                    ? ` ${fill("fx.pv.tf.stable", { y: tfHist[0].year })}`
-                    : ""}
+                  ? ` · ${fill(tfHist[tfHist.length - 1].value > tfHist[0].value ? "fx.pv.tf.up_short" : "fx.pv.tf.down_short", { y: tfHist[0].year })}`
+                  : tfHist.length > 1 ? ` · ${fill("fx.pv.tf.stable_short", { y: tfHist[0].year })}` : ""}
               </p>
-              {taxeFonciere.mediane != null && taxeFonciere.tfb != null ? (
-                <div className="fx-pv-tfbars">
-                  <div className="row">
-                    <span className="lab">{commune.nom}</span>
-                    <span className="track"><i className="me" style={{ width: `${(taxeFonciere.tfb / Math.max(taxeFonciere.tfb, taxeFonciere.mediane)) * 100}%` }} /></span>
-                    <span className="val tnum">{tfRate(taxeFonciere.tfb)} %</span>
-                  </div>
-                  <div className="row">
-                    <span className="lab">{t("fx.pv.tf.mediane_lab")}</span>
-                    <span className="track"><i style={{ width: `${(taxeFonciere.mediane / Math.max(taxeFonciere.tfb, taxeFonciere.mediane)) * 100}%` }} /></span>
-                    <span className="val tnum">{tfRate(taxeFonciere.mediane)} %</span>
-                  </div>
-                </div>
-              ) : null}
-              {tfProduit != null && (
+              {taxeFonciere.mediane != null ? <p className="fx-pv-l2">{fill("fx.pv.tf.l2", { med: tfRate(taxeFonciere.mediane) })}</p> : null}
+              <SectionFold id="taxe-fonciere" label={tfProduit != null ? fill("fx.pv.tf.fold", { n: euro(tfProduit) }) : t("fx.pv.tf.fold_nop")} slug={commune.slug} pop={commune.pop}>
                 <p className="fx-v3-sentence">
-                  {fill("fx.pv.tf.produit", { nom: commune.nom, year, n: euro(tfProduit), pct: tfShare != null ? Math.round(tfShare) : "—" })}
+                  {fill("fx.pv.tf.lead", { nom: commune.nom, year: taxeFonciere.annee, taux: tfRate(taxeFonciere.tfb) })}
+                  {taxeFonciere.mediane != null
+                    ? ` ${fill(taxeFonciere.tfb > taxeFonciere.mediane + 0.01 ? "fx.pv.tf.vs_above" : taxeFonciere.tfb < taxeFonciere.mediane - 0.01 ? "fx.pv.tf.vs_below" : "fx.pv.tf.vs_eq", { med: tfRate(taxeFonciere.mediane) })}`
+                    : ""}
                 </p>
-              )}
-              <p className="fx-v3-sentence fx-pv-tf-finance">{t("fx.pv.tf.finance")}</p>
-              <p className="fx-v3-foot">{fill("fx.pv.tf.note", { year: taxeFonciere.annee })}</p>
+                {tfProduit != null && (
+                  <p className="fx-v3-sentence">{fill("fx.pv.tf.produit", { nom: commune.nom, year, n: euro(tfProduit), pct: tfShare != null ? Math.round(tfShare) : "—" })}</p>
+                )}
+                <p className="fx-v3-sentence fx-pv-tf-finance">{t("fx.pv.tf.finance")}</p>
+                <p className="fx-v3-foot">{fill("fx.pv.tf.note", { year: taxeFonciere.annee })}</p>
+              </SectionFold>
             </section>
           )}
 
@@ -568,26 +547,31 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
           {invYear && invYear.total.depenses > 0 && (
             <section className="fx-pv-section">
               <H2 id="construit">{t("fx.pv.construit")}</H2>
-              <p className="fx-v3-lead fx-pv-lead">
-                {fill("fx.pv.construit_lead", { nom: commune.nom, year: invYear.year, total: euro(invYear.total.depenses), hab: int.format(invYear.total.depenses_eur_hab ?? (commune.pop > 0 ? invYear.total.depenses / commune.pop : 0)) })}
-                {equipement ? ` ${fill("fx.pv.construit_equip", { n: euro(equipement) })}` : ""}
-                {invDelta != null && invPrev ? ` ${fill("fx.pv.construit_delta", { pct: signedPct(invDelta), y: invPrev.year })}` : ""}
-              </p>
-              <div className="fx-pv-two">
-                <div>
-                  <div className="fx-pv-colhead"><span>{t("fx.pv.financement")}</span><span className="tnum">{euro(invYear.total.recettes)}</span></div>
-                  {invYear.financement_par_groupe.map((g) => (
-                    <div key={g.groupe} className="fx-pv-line"><span>{g.groupe}</span><Amt n={g.montant} /></div>
-                  ))}
+              <SecNum {...split(invYear.total.depenses)} />
+              <p className="fx-pv-l1">{fill("fx.pv.construit_l1", { year: invYear.year, hab: int.format(invYear.total.depenses_eur_hab ?? (commune.pop > 0 ? invYear.total.depenses / commune.pop : 0)) })}</p>
+              {(equipement || (invDelta != null && invPrev)) ? (
+                <p className="fx-pv-l2">
+                  {equipement ? fill("fx.pv.construit_equip", { n: euro(equipement) }) : ""}
+                  {invDelta != null && invPrev ? ` ${fill("fx.pv.construit_delta", { pct: signedPct(invDelta), y: invPrev.year })}` : ""}
+                </p>
+              ) : null}
+              <SectionFold id="construit" label={t("fx.pv.construit_fold")} slug={commune.slug} pop={commune.pop}>
+                <div className="fx-pv-two">
+                  <div>
+                    <div className="fx-pv-colhead"><span>{t("fx.pv.financement")}</span><span className="tnum">{euro(invYear.total.recettes)}</span></div>
+                    {invYear.financement_par_groupe.map((g) => (
+                      <div key={g.groupe} className="fx-pv-line"><span>{g.groupe}</span><Amt n={g.montant} /></div>
+                    ))}
+                  </div>
+                  <div>
+                    <div className="fx-pv-colhead"><span>{t("fx.pv.invest_va")}</span><span className="tnum">{euro(invYear.total.depenses)}</span></div>
+                    {invYear.depenses_par_groupe.map((g) => (
+                      <div key={g.groupe} className="fx-pv-line"><span>{g.groupe}</span><Amt n={g.montant} /></div>
+                    ))}
+                  </div>
                 </div>
-                <div>
-                  <div className="fx-pv-colhead"><span>{t("fx.pv.invest_va")}</span><span className="tnum">{euro(invYear.total.depenses)}</span></div>
-                  {invYear.depenses_par_groupe.map((g) => (
-                    <div key={g.groupe} className="fx-pv-line"><span>{g.groupe}</span><Amt n={g.montant} /></div>
-                  ))}
-                </div>
-              </div>
-              <p className="fx-v3-foot">{t("fx.pv.construit_note")}</p>
+                <p className="fx-v3-foot">{t("fx.pv.construit_note")}</p>
+              </SectionFold>
             </section>
           )}
 
@@ -595,20 +579,23 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
           {evoLast && evoLast.dette != null && (
             <section className="fx-pv-section">
               <H2 id="dette">{t("fx.pv.dette")}</H2>
-              <div className="fx-pv-dettegrid">
-                <p className="fx-v3-lead fx-pv-lead">
-                  {fill("fx.pv.dette_lead", { nom: commune.nom, year: evoLast.year, n: euro(evoLast.dette), hab: int.format(evoLast.dette_hab ?? 0) })}
-                  {capacite != null && capacite > 0 ? ` ${fill("fx.pv.dette_cap", { years: capaciteWords(capacite) })}` : ""}
-                  {detteMedian != null ? ` ${fill("fx.pv.dette_median", { n: int.format(Math.round(detteMedian)) })}` : ""}
+              <SecNum v={int.format(evoLast.dette_hab ?? 0)} u="€" />
+              <p className="fx-pv-l1">{fill("fx.pv.dette_l1", { year: evoLast.year, n: euro(evoLast.dette) })}</p>
+              {(detteMedian != null || (detteDelta != null && evoFirst)) ? (
+                <p className="fx-pv-l2">
+                  {detteMedian != null ? fill("fx.pv.dette_median_short", { n: int.format(Math.round(detteMedian)) }) : ""}
+                  {detteDelta != null && evoFirst ? `${detteMedian != null ? " · " : ""}${signedPct(detteDelta)} ${fill("fx.pv.dette_since", { y: evoFirst.year })}` : ""}
                 </p>
+              ) : null}
+              <SectionFold id="dette" label={t("fx.pv.dette_fold")} slug={commune.slug} pop={commune.pop}>
                 {evolution && evolution.series.length > 1 && (
-                  <div className="fx-v3-trend">
-                    <div className="t">{detteDelta != null && evoFirst ? <b>{signedPct(detteDelta)} {fill("fx.pv.dette_since", { y: evoFirst.year })}</b> : null}</div>
+                  <div className="fx-v3-trend fx-pv-trend-fold">
                     <Bars points={evolution.series.filter((p) => p.dette_hab != null).map((p) => ({ year: p.year, value: p.dette_hab as number }))} year={evoLast.year} />
                   </div>
                 )}
-              </div>
-              <p className="fx-v3-foot">{t("fx.pv.dette_note")}</p>
+                {capacite != null && capacite > 0 ? <p className="fx-v3-sentence">{fill("fx.pv.dette_cap", { years: capaciteWords(capacite) })}</p> : null}
+                <p className="fx-v3-foot">{t("fx.pv.dette_note")}</p>
+              </SectionFold>
             </section>
           )}
 
@@ -616,68 +603,86 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
           {marches && (
             <section className="fx-pv-section">
               <H2 id="achats">{t("fx.pv.achats")}</H2>
-              <p className="fx-v3-lead fx-pv-lead">
+              <SecNum {...split(ly ? ly.montant : marches.total.montant)} />
+              <p className="fx-pv-l1">
                 {ly
-                  ? fill("fx.pv.achats_lead", { nom: commune.nom, year: ly.year as number, nb: int.format(ly.nb_marches), n: euro(ly.montant) })
+                  ? fill("fx.pv.achats_l1", { year: ly.year as number, nb: int.format(ly.nb_marches) })
                   : mYears.length === 1
-                    ? fill("fx.pv.achats_lead", { nom: commune.nom, year: mYears[0], nb: int.format(marches.total.nb_marches), n: euro(marches.total.montant) })
-                    : fill("fx.pv.achats_lead_cumul", { nom: commune.nom, nb: int.format(marches.total.nb_marches), n: euro(marches.total.montant), y0: mYears[0] ?? "", y1: mYears[mYears.length - 1] ?? "" })}
+                    ? fill("fx.pv.achats_l1", { year: mYears[0], nb: int.format(marches.total.nb_marches) })
+                    : fill("fx.pv.achats_l1_cumul", { nb: int.format(marches.total.nb_marches), y0: mYears[0] ?? "", y1: mYears[mYears.length - 1] ?? "" })}
               </p>
-              <StackedBar
-                items={mCats.map((c) => ({ label: c.categorie.replace(/ & /g, en ? " and " : " et "), value: c.montant }))}
-                total={mCats.reduce((n, c) => n + c.montant, 0)}
-                autres={t("fx.pv.autres")}
-                max={5}
-              />
-              <div className="fx-pv-one">
-                <div>
-                  <div className="fx-pv-colhead">
-                    <span>{t("fx.pv.fournisseurs")}</span>
-                    <span className={mTitu.some((f) => !f.personne_physique && f.siren) ? "hint" : "tnum"}>
-                      {mTitu.some((f) => !f.personne_physique && f.siren) ? t("fx.pv.fournisseur_hint") : mTitu.length >= 5 ? fill("fx.pv.top_n", { n: mTitu.length }) : ""}
-                    </span>
+              {mTitu[0] ? (() => {
+                const f0 = mTitu[0];
+                const nom0 = f0.personne_physique ? t("fx.pv.entrepreneurs") : displayFournisseur(f0.nom);
+                const objet0 = "objet" in f0 ? (f0 as { objet?: string }).objet : undefined;
+                const href0 = !f0.personne_physique && f0.siren ? `/fr/city/${commune.slug}/fournisseur/${f0.siren}` : null;
+                return (
+                  <p className="fx-pv-l2">
+                    {t("fx.pv.achats_l2")}
+                    {href0 ? <Link href={href0} className="fx-pv-nm">{nom0}</Link> : nom0}
+                    {`, ${euro(f0.montant)}`}
+                    {objet0 ? `, ${objet0.charAt(0).toLowerCase()}${objet0.slice(1)}` : ""}
+                  </p>
+                );
+              })() : null}
+              <SectionFold id="achats" label={marches.top_marches.length > 1 ? fill("fx.pv.achats_fold", { n: marches.top_marches.length }) : t("fx.pv.achats_fold_short")} slug={commune.slug} pop={commune.pop}>
+                <div className="fx-pv-two">
+                  <div>
+                    <div className="fx-pv-colhead"><span>{t("fx.pv.domaines")}</span><span className="tnum">{ly ? String(ly.year) : ""}</span></div>
+                    {mCats.map((c) => (
+                      <div key={c.categorie} className="fx-pv-line"><span>{c.categorie.replace(/ & /g, en ? " and " : " et ")}</span><Amt n={c.montant} /></div>
+                    ))}
                   </div>
-                  {mTitu.map((f) => {
-                    const nom = f.personne_physique ? t("fx.pv.entrepreneurs") : displayFournisseur(f.nom);
-                    const objet = "objet" in f ? (f as { objet?: string }).objet : undefined;
-                    const href = !f.personne_physique && f.siren ? `/fr/city/${commune.slug}/fournisseur/${f.siren}` : null;
-                    const body = (
-                      <>
-                        <span>
-                          {href ? <span className="fx-pv-nm">{nom}</span> : nom}
-                          {objet ? <span className="fx-pv-sub2">{objet}</span> : null}
-                        </span>
-                        <Amt n={f.montant} />
-                      </>
-                    );
-                    return href
-                      ? <Link key={f.nom} href={href} className="fx-pv-line fx-pv-linerow">{body}</Link>
-                      : <div key={f.nom} className="fx-pv-line">{body}</div>;
-                  })}
-                </div>
-              </div>
-              {marches.top_marches.length > 1 && (
-                <V3Fold label={fill("fx.pv.voir_marches", { n: marches.top_marches.length })} text>
-                  {marches.top_marches.map((m, i) => (
-                    <div key={i} className="fx-pv-line">
-                      <span>
-                        {m.objet || "—"}
-                        <span className="fx-pv-sub2">
-                          {m.siren && m.titulaire ? <Link href={`/fr/city/${commune.slug}/fournisseur/${m.siren}`} className="fx-pv-nm">{displayFournisseur(m.titulaire)}</Link> : m.titulaire}
-                          {[m.annee, m.nb_lots && m.nb_lots > 1 ? fill("fx.pv.lots", { n: m.nb_lots }) : null].filter(Boolean).map((x) => ` · ${x}`).join("")}
-                        </span>
+                  <div>
+                    <div className="fx-pv-colhead">
+                      <span>{t("fx.pv.fournisseurs")}</span>
+                      <span className={mTitu.some((f) => !f.personne_physique && f.siren) ? "hint" : "tnum"}>
+                        {mTitu.some((f) => !f.personne_physique && f.siren) ? t("fx.pv.fournisseur_hint") : mTitu.length >= 5 ? fill("fx.pv.top_n", { n: mTitu.length }) : ""}
                       </span>
-                      <Amt n={m.montant} />
                     </div>
-                  ))}
-                </V3Fold>
-              )}
-              {marchesHref ? <p className="fx-v3-sentence"><Link className="fx-pv-link" href={marchesHref}>{fill("fx.pv.tous_marches", { n: int.format(marches.total.nb_marches) })}<i className="fx-pv-arrow" aria-hidden="true" /></Link></p> : null}
-              <p className="fx-v3-foot">
-                {marches.coverage_note}
-                {mYears.length ? ` ${fill("fx.pv.annees_publiees", { years: mYears.join(", ") })}` : ""}
-                {ecartees.length ? ` ${fill("fx.pv.annees_ecartees", { years: ecartees.join(", ") })}` : ""}
-              </p>
+                    {mTitu.map((f) => {
+                      const nom = f.personne_physique ? t("fx.pv.entrepreneurs") : displayFournisseur(f.nom);
+                      const objet = "objet" in f ? (f as { objet?: string }).objet : undefined;
+                      const href = !f.personne_physique && f.siren ? `/fr/city/${commune.slug}/fournisseur/${f.siren}` : null;
+                      const body = (
+                        <>
+                          <span>
+                            {href ? <span className="fx-pv-nm">{nom}</span> : nom}
+                            {objet ? <span className="fx-pv-sub2">{objet}</span> : null}
+                          </span>
+                          <Amt n={f.montant} />
+                        </>
+                      );
+                      return href
+                        ? <Link key={f.nom} href={href} className="fx-pv-line fx-pv-linerow">{body}</Link>
+                        : <div key={f.nom} className="fx-pv-line">{body}</div>;
+                    })}
+                  </div>
+                </div>
+                {marches.top_marches.length > 1 && (
+                  <>
+                    <div className="fx-pv-colhead" style={{ marginTop: 22 }}><span>{fill("fx.pv.plus_gros", { n: marches.top_marches.length })}</span><span /></div>
+                    {marches.top_marches.map((m, i) => (
+                      <div key={i} className="fx-pv-line">
+                        <span>
+                          {m.objet || "—"}
+                          <span className="fx-pv-sub2">
+                            {m.siren && m.titulaire ? <Link href={`/fr/city/${commune.slug}/fournisseur/${m.siren}`} className="fx-pv-nm">{displayFournisseur(m.titulaire)}</Link> : m.titulaire}
+                            {[m.annee, m.nb_lots && m.nb_lots > 1 ? fill("fx.pv.lots", { n: m.nb_lots }) : null].filter(Boolean).map((x) => ` · ${x}`).join("")}
+                          </span>
+                        </span>
+                        <Amt n={m.montant} />
+                      </div>
+                    ))}
+                  </>
+                )}
+                {marchesHref ? <p className="fx-v3-sentence"><Link className="fx-pv-link" href={marchesHref}>{fill("fx.pv.tous_marches", { n: int.format(marches.total.nb_marches) })}<i className="fx-pv-arrow" aria-hidden="true" /></Link></p> : null}
+                <p className="fx-v3-foot">
+                  {marches.coverage_note}
+                  {mYears.length ? ` ${fill("fx.pv.annees_publiees", { years: mYears.join(", ") })}` : ""}
+                  {ecartees.length ? ` ${fill("fx.pv.annees_ecartees", { years: ecartees.join(", ") })}` : ""}
+                </p>
+              </SectionFold>
             </section>
           )}
 
@@ -702,41 +707,45 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                 </select>
               </div>
               {other ? (
-                <div className="fx-pv-vs">
-                  <div className="legend"><span><i className="a" />{commune.nom}</span><span><i className="b" />{other.nom}</span></div>
-                  {COMPARE_KEYS.map((k) => {
-                    const a = compare.me.kpis[k];
-                    const b = other.kpis[k];
-                    const max = Math.max(Math.abs(a ?? 0), Math.abs(b ?? 0), 1);
-                    return (
-                      <div key={k} className="row">
-                        <span className="lab">{t(`fx.cmp2.kpi.${k}`)}</span>
-                        <div className="track">
-                          <span className="a" style={{ width: `${(Math.abs(a ?? 0) / max) * 100}%` }} />
-                          <span className="b" style={{ width: `${(Math.abs(b ?? 0) / max) * 100}%` }} />
+                <SectionFold id="comparer" label={t("fx.pv.comparer_fold")} slug={commune.slug} pop={commune.pop}>
+                  <div className="fx-pv-vs">
+                    <div className="legend"><span><i className="a" />{commune.nom}</span><span><i className="b" />{other.nom}</span></div>
+                    {COMPARE_KEYS.map((k) => {
+                      const a = compare.me.kpis[k];
+                      const b = other.kpis[k];
+                      const max = Math.max(Math.abs(a ?? 0), Math.abs(b ?? 0), 1);
+                      return (
+                        <div key={k} className="row">
+                          <span className="lab">{t(`fx.cmp2.kpi.${k}`)}</span>
+                          <div className="track">
+                            <span className="a" style={{ width: `${(Math.abs(a ?? 0) / max) * 100}%` }} />
+                            <span className="b" style={{ width: `${(Math.abs(b ?? 0) / max) * 100}%` }} />
+                          </div>
+                          <span className="val tnum">
+                            <b>{a != null ? int.format(Math.round(a)) : "—"} €</b> · {b != null ? int.format(Math.round(b)) : "—"} € {t("fx.pv.par_hab")}
+                          </span>
                         </div>
-                        <span className="val tnum">
-                          <b>{a != null ? int.format(Math.round(a)) : "—"} €</b> · {b != null ? int.format(Math.round(b)) : "—"} € {t("fx.pv.par_hab")}
-                        </span>
+                      );
+                    })}
+                    {compare.me.taux?.tfb != null && other.taux?.tfb != null ? (
+                      <div className="row">
+                        <span className="lab">{t("fx.pv.kpi_tfb")}</span>
+                        <div className="track">
+                          <span className="a" style={{ width: `${(compare.me.taux.tfb / Math.max(compare.me.taux.tfb, other.taux.tfb, 0.01)) * 100}%` }} />
+                          <span className="b" style={{ width: `${(other.taux.tfb / Math.max(compare.me.taux.tfb, other.taux.tfb, 0.01)) * 100}%` }} />
+                        </div>
+                        <span className="val tnum"><b>{compare.me.taux.tfb.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 2 })} %</b> · {other.taux.tfb.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 2 })} % {fill("fx.pv.taux_annee", { y: compare.me.taux.annee })}</span>
                       </div>
-                    );
-                  })}
-                  {compare.me.taux?.tfb != null && other.taux?.tfb != null ? (
-                    <div className="row">
-                      <span className="lab">{t("fx.pv.kpi_tfb")}</span>
-                      <div className="track">
-                        <span className="a" style={{ width: `${(compare.me.taux.tfb / Math.max(compare.me.taux.tfb, other.taux.tfb, 0.01)) * 100}%` }} />
-                        <span className="b" style={{ width: `${(other.taux.tfb / Math.max(compare.me.taux.tfb, other.taux.tfb, 0.01)) * 100}%` }} />
-                      </div>
-                      <span className="val tnum"><b>{compare.me.taux.tfb.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 2 })} %</b> · {other.taux.tfb.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 2 })} % {fill("fx.pv.taux_annee", { y: compare.me.taux.annee })}</span>
-                    </div>
-                  ) : null}
-                  <p className="fx-v3-sentence"><Link className="fx-pv-link" href={`/fr/compare/${commune.slug}/${other.slug}`}>{t("fx.pv.comparaison_complete")}<i className="fx-pv-arrow" aria-hidden="true" /></Link></p>
-                </div>
+                    ) : null}
+                    <p className="fx-v3-sentence"><Link className="fx-pv-link" href={`/fr/compare/${commune.slug}/${other.slug}`}>{t("fx.pv.comparaison_complete")}<i className="fx-pv-arrow" aria-hidden="true" /></Link></p>
+                  </div>
+                  <p className="fx-v3-foot">{fill("fx.pv.comparer_note", { year: compare.year })}{compare.me.taux ? ` ${t("fx.pv.taux_note")}` : ""}</p>
+                </SectionFold>
               ) : null}
-              <p className="fx-v3-foot">{fill("fx.pv.comparer_note", { year: compare.year })}{compare.me.taux ? ` ${t("fx.pv.taux_note")}` : ""}</p>
             </section>
           )}
+
+          </div>
 
           <ChartSource
             source={[t("fx.natbud.source"), evolution ? t("fx.natev.source") : null, marches ? t("fx.natmar.source") : null, maire?.nom ? t("fx.pv.src_rne") : null].filter(Boolean).join(" · ") + ` · ${year}`}
