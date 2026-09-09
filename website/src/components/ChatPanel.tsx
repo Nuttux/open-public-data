@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { getChatSuggestions, CHAT_ASK_EVENT, sectionForPath } from "@/lib/chat/suggestions";
+import { getChatSuggestions, CHAT_ASK_EVENT, sectionForPath, TEASER_OFF } from "@/lib/chat/suggestions";
 import { scopeForPath, isChatEnabledPath, DEFAULT_SCOPE_ID, CHAT_SCOPES } from "@/lib/chat/scopes";
 import { useT, useLocale, ForcedLocale } from "@/lib/localeContext";
 import { toolLabel, toolRaw } from "@/lib/chat/toolLabels";
@@ -138,7 +138,7 @@ function ChatPanelInner() {
   const tCity = (key: string) => t(key).replace(/\{\{city\}\}/g, CHAT_SCOPES[scope].cityLabel);
   // Question mise en avant à côté du launcher — uniquement sur les pages de
   // données (le label parle des graphes ; la landing reste épurée : pilule seule).
-  const teaser = section === "default" ? null : suggestions[0];
+  const teaser = section === "default" || TEASER_OFF.has(section) ? null : suggestions[0];
 
   // Auto-scroll intelligent : on ne suit le flux que si l'utilisateur est
   // déjà en bas — remonter lire pendant le streaming ne doit pas être happé.
