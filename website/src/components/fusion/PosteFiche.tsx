@@ -236,7 +236,7 @@ export default function PosteFiche({ poste }: Props) {
             </div>
             <div className="bars" aria-hidden="true">
               {poste.series.map((s) => (
-                <div key={s.year} className={s.year === poste.year ? "now" : s.type === "vote" ? "vote" : ""} title={`${s.year} · ${fmtM(s.value)}`}>
+                <div key={s.year} className={`${s.year === poste.year ? "now" : ""} ${s.type === "vote" ? "vote" : ""}`.trim()} title={`${s.year} · ${fmtM(s.value)}`}>
                   <b style={{ height: Math.max(3, Math.round((s.value / maxSeries) * 50)) }} />
                   <span>{s.year}</span>
                 </div>

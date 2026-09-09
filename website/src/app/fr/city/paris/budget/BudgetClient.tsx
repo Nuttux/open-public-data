@@ -122,7 +122,7 @@ export default function BudgetClient({ index, d, posts }: Props) {
     return (
       <span className="fx-bud-spark" aria-hidden="true" title={pts.map((p) => `${p.year} : ${eur(p.value)}`).join(" · ")}>
         {pts.map((p) => (
-          <i key={p.year} className={p.year === d.year ? "now" : p.type === "vote" ? "vote" : ""} style={{ height: Math.max(2, Math.round((p.value / m) * 18)) }} />
+          <i key={p.year} className={`${p.year === d.year ? "now" : ""} ${p.type === "vote" ? "vote" : ""}`.trim()} style={{ height: Math.max(2, Math.round((p.value / m) * 18)) }} />
         ))}
       </span>
     );
@@ -212,7 +212,7 @@ export default function BudgetClient({ index, d, posts }: Props) {
                 </div>
                 <div className="bars" aria-hidden="true">
                   {years.map((y) => (
-                    <div key={y.year} className={y.year === d.year ? "now" : y.type === "vote" ? "vote" : ""} title={`${y.year} · ${eur(y.depenses)}`}>
+                    <div key={y.year} className={`${y.year === d.year ? "now" : ""} ${y.type === "vote" ? "vote" : ""}`.trim()} title={`${y.year} · ${eur(y.depenses)}`}>
                       <b style={{ height: Math.max(3, Math.round((y.depenses / maxDep) * 50)) }} />
                       <span>{y.year}</span>
                     </div>

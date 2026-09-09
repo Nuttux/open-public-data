@@ -19288,6 +19288,8 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-v3-trend .bars b { width: 100%; background: #c8ccd3; display: block; }
 .theme-fusion .fx-v3-trend .bars .vote b { background: repeating-linear-gradient(135deg, #c8ccd3 0 3px, #fafaf7 3px 5px); }
 .theme-fusion .fx-v3-trend .bars .now b { background: var(--ink); }
+/* L'année affichée est votée : noire ET hachurée, pour ne pas la lire comme exécutée. */
+.theme-fusion .fx-v3-trend .bars .now.vote b { background: repeating-linear-gradient(135deg, var(--ink) 0 3px, #fafaf7 3px 5px); }
 .theme-fusion .fx-v3-trend .bars span { font-family: var(--f-mono); font-size: 9.5px; color: var(--muted); }
 .theme-fusion .fx-v3-mission {
   display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(46px, 0.9fr) auto; gap: 12px; align-items: center;
@@ -19342,6 +19344,8 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-bud-spark i { display: block; width: 5px; background: #c8ccd3; }
 .theme-fusion .fx-bud-spark i.vote { background: repeating-linear-gradient(135deg, #c8ccd3 0 2px, #fafaf7 2px 4px); }
 .theme-fusion .fx-bud-spark i.now { background: var(--bleu); }
+/* L'année affichée est votée : bleue ET hachurée, comme le grand graphe. */
+.theme-fusion .fx-bud-spark i.now.vote { background: repeating-linear-gradient(135deg, var(--bleu) 0 2px, #fafaf7 2px 4px); }
 .theme-fusion .fx-bud-forme { margin-top: 26px; }
 .theme-fusion .fx-bud-forme .h { font-size: 14px; font-weight: 600; }
 .theme-fusion .fx-bud-forme .stack { display: flex; height: 14px; gap: 2px; margin: 12px 0 8px; } .theme-fusion .fx-bud-forme .stack span { display: block; height: 14px; }
