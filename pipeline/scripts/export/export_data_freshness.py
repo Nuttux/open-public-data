@@ -2,11 +2,11 @@
 """
 Export data_freshness.json — la fraîcheur de chaque source, en clair.
 
-Pour chaque source Paris du catalogue Opendatasoft :
+Lit UN mart, mart_source_freshness (layering E4 : un export ne lit que des
+marts), qui réunit pour chaque source Paris du catalogue Opendatasoft :
   - published_by_city_at : quand la Ville a publié / mis à jour le jeu de
-    données sur opendata.paris.fr (`modified` du portail, via
-    core_paris_source_catalog.rows_updated_at) ;
-  - synced_at            : quand notre pipeline l'a relu (`_synced_at`) ;
+    données sur opendata.paris.fr (`modified` du portail) ;
+  - synced_at            : quand notre pipeline l'a relu ;
   - years                : années complètes publiées, années partielles
     écartées (mart_source_year_status — même règle que les exports) ;
   - records_count, page du dataset, licence.
@@ -16,8 +16,8 @@ dire du refresh qui a produit les JSON du site. Deux dates, deux acteurs :
 « publié par la Ville le … · mis à jour sur Qipu le … » — jamais « repris »,
 qui se lirait comme « corrigé ».
 
-Consommé par : /methode (section Fraîcheur), le dialogue Provenance de chaque
-page, le JSON-LD schema.org Dataset (dateModified, temporalCoverage).
+Consommé par : /methode (section Fraîcheur), le dialogue Provenance, les
+légendes ChartSource, le JSON-LD schema.org Dataset (dateModified).
 
 Usage:
     python pipeline/scripts/export/export_data_freshness.py [--city paris]
@@ -34,9 +34,6 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from _export_common import PROJECT_ID, data_dir, get_bigquery_client, marts_dataset, write_json
-
-# core_paris_source_catalog vit dans le dataset analytics (couche core).
-CORE_DATASET = "dbt_paris_analytics"
 
 # Libellés grand public par source. Éditorial, pas de la donnée : il vit dans
 # l'export (comme DATASET_META de data_availability).
@@ -64,41 +61,19 @@ SOURCE_PAGES = {
     "dette_garantie":   ["/dette-patrimoine", "/logement-social"],
 }
 
+# Ordre éditorial = ordre des sections du site, pas l'alphabet des ids.
+ORDER = ["budget_principal", "budget_vote", "subventions", "associations",
+         "marches_publics", "logements_sociaux", "dette_garantie", "ap_projets"]
 
-def fetch_catalog(client) -> list[dict]:
+
+def fetch(client, dataset: str) -> list[dict]:
     sql = f"""
     SELECT source_id, dataset_id, dataset_title, dataset_page_url, publisher,
-           license_title, license_url, rows_updated_at, data_processed_at, records_count
-    FROM `{PROJECT_ID}.{CORE_DATASET}.core_paris_source_catalog`
-    ORDER BY source_id
+           license_title, license_url, records_count, published_by_city_at, synced_at,
+           year_min, year_max, complete_years, partial_years, has_year_status
+    FROM `{PROJECT_ID}.{dataset}.mart_source_freshness`
     """
     return [dict(r) for r in client.query(sql).result()]
-
-
-def fetch_synced_at(client) -> dict[str, datetime]:
-    sql = f"""
-    SELECT source_id, MAX(_synced_at) AS synced_at
-    FROM `{PROJECT_ID}.dbt_paris_staging.stg_paris_catalog`
-    GROUP BY source_id
-    """
-    return {r.source_id: r.synced_at for r in client.query(sql).result()}
-
-
-def fetch_year_status(client, dataset: str) -> dict[str, list[dict]]:
-    sql = f"""
-    SELECT source_id, annee, n_rows, status, ratio_vs_prev3
-    FROM `{PROJECT_ID}.{dataset}.mart_source_year_status`
-    ORDER BY source_id, annee
-    """
-    out: dict[str, list[dict]] = {}
-    for r in client.query(sql).result():
-        out.setdefault(r.source_id, []).append({
-            "annee": int(r.annee),
-            "n_rows": int(r.n_rows),
-            "status": r.status,
-            "ratio": round(float(r.ratio_vs_prev3), 3) if r.ratio_vs_prev3 is not None else None,
-        })
-    return out
 
 
 def _date(v) -> str | None:
@@ -118,23 +93,19 @@ def main() -> int:
         return 0
 
     client = get_bigquery_client()
-    catalog = fetch_catalog(client)
-    synced = fetch_synced_at(client)
-    years = fetch_year_status(client, marts_dataset(args.city))
+    rows = fetch(client, marts_dataset(args.city))
+    rows.sort(key=lambda r: (ORDER.index(r["source_id"]) if r["source_id"] in ORDER else 99, r["source_id"]))
     now = datetime.now(timezone.utc)
 
-    # Ordre éditorial = ordre des sections du site, pas l'alphabet des ids.
-    order = ["budget_principal", "budget_vote", "subventions", "associations",
-             "marches_publics", "logements_sociaux", "dette_garantie", "ap_projets"]
-    catalog.sort(key=lambda r: (order.index(r["source_id"]) if r["source_id"] in order else 99, r["source_id"]))
-
     sources = []
-    for row in catalog:
+    for row in rows:
         sid = row["source_id"]
-        ys = years.get(sid, [])
-        complete = [y["annee"] for y in ys if y["status"] in ("complete", "no_baseline")]
-        partial = [y for y in ys if y["status"] == "partial"]
         label_fr, label_en = SOURCE_LABELS.get(sid, (row["dataset_title"], row["dataset_title"]))
+        partial = [
+            {"annee": int(p["annee"]), "n_rows": int(p["n_rows"]),
+             "ratio": round(float(p["ratio"]), 3) if p.get("ratio") is not None else None}
+            for p in (row["partial_years"] or [])
+        ]
         sources.append({
             "source_id": sid,
             "label_fr": label_fr,
@@ -145,14 +116,14 @@ def main() -> int:
             "license_title": row["license_title"],
             "license_url": row["license_url"],
             "records_count": int(row["records_count"]) if row["records_count"] is not None else None,
-            "published_by_city_at": _date(row["rows_updated_at"]),
-            "synced_at": _date(synced.get(sid)),
+            "published_by_city_at": _date(row["published_by_city_at"]),
+            "synced_at": _date(row["synced_at"]),
             "years": {
-                "min": min(complete) if complete else None,
-                "max": max(complete) if complete else None,
-                "complete": complete,
-                "partial": [{"annee": p["annee"], "n_rows": p["n_rows"], "ratio": p["ratio"]} for p in partial],
-            } if ys else None,
+                "min": int(row["year_min"]) if row["year_min"] is not None else None,
+                "max": int(row["year_max"]) if row["year_max"] is not None else None,
+                "complete": [int(y) for y in (row["complete_years"] or [])],
+                "partial": partial,
+            } if row["has_year_status"] else None,
             "pages": SOURCE_PAGES.get(sid, []),
         })
 
