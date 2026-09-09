@@ -92,6 +92,11 @@ interface ThemeEntry {
  * and not for type. The dot beside the label carries the colour, the label
  * carries the identity, and neither depends on the other.
  */
+/** the last zoom stop at which the panel opens a click as the NEIGHBOURHOOD
+ *  rather than the block (`CityBlockPanel`'s own rule: whole city and
+ *  district), so the pin can name the same thing — §A CLICK IS NOT A SEARCH */
+const HOOD_STOP_MAX = 1;
+
 /** how long the tile plate takes to fade once the model is drawn — the
  *  same number as `.fx-city-plate`'s transition in `fusion.css` */
 const PLATE_FADE_MS = 700;
@@ -215,6 +220,14 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
   const [, setNonce] = useState(0);
   const [year, setYear] = useState<number | null>(null);
   const [picked, setPicked] = useState<number | null>(null);
+  /* ── A CLICK IS NOT A SEARCH ──────────────────────────────────────────
+     A pick that came from a click on the map. `CityBlockPanel` already opens
+     such a pick at the level the zoom implies — the neighbourhood at the two
+     wide stops, a street or a door closer in, off `context.zoomStop` — but
+     the pin on the map went on naming the block's streets while the panel
+     spoke of the neighbourhood. The pin follows the panel now. A pick from
+     search or a URL carries its own level and its own label. */
+  const clickPickRef = useRef(false);
   const [record, setRecord] = useState<BlockRecord | null>(null);
   const [ctx, setCtx] = useState<BlockContext | null>(null);
   const [recLoading, setRecLoading] = useState(false);
@@ -1510,6 +1523,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
             }
             setZoomStop(best);
           }
+          clickPickRef.current = true;
           setPicked(b);
         });
       }
@@ -1789,13 +1803,18 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
           ov.pickLabel = hoodName || null;
           engineRef.current?.invalidate();
         }
+        const hoodLevel = clickPickRef.current && zoomStop <= HOOD_STOP_MAX && !!hoodName;
+        clickPickRef.current = false;
         const r = await loadBlockRecord(index, picked);
         if (!dead) {
           setRecord(r);
           const ov2 = overlayRef.current;
           if (ov2) {
-            ov2.pickLabel =
-              (r ? blockPlaceName(r.streets) : null) || hoodName || null;
+            /* the pin names what the panel is about — the neighbourhood when
+               that is what the click opened */
+            ov2.pickLabel = hoodLevel
+              ? hoodName
+              : (r ? blockPlaceName(r.streets) : null) || hoodName || null;
             engineRef.current?.invalidate();
           }
         }
