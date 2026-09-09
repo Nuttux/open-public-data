@@ -184,6 +184,8 @@ const en: Record<string, string> = {
   'privacy.toggle.off': 'Analytics is disabled. No data is collected.',
   'privacy.toggle.on': 'Analytics is enabled. You can disable it at any time.',
   'privacy.toggle.aria': 'Enable or disable analytics',
+  'privacy.state.on': 'On',
+  'privacy.state.off': 'Off',
   'privacy.contact': 'For any questions about data protection, you can visit the ',
   'privacy.13_months': '12 months',
   'privacy.25_months': '30 days',

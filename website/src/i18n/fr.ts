@@ -184,6 +184,8 @@ const fr: Record<string, string> = {
   'privacy.toggle.off': "La mesure d'audience est désactivée. Aucune donnée n'est collectée.",
   'privacy.toggle.on': "La mesure d'audience est activée. Vous pouvez la désactiver à tout moment.",
   'privacy.toggle.aria': "Activer ou désactiver la mesure d'audience",
+  'privacy.state.on': 'Activée',
+  'privacy.state.off': 'Désactivée',
   'privacy.contact': 'Pour toute question relative à la protection de vos données, vous pouvez consulter le site de la ',
   'privacy.13_months': '12 mois',
   'privacy.25_months': '30 jours',

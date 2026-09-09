@@ -40,7 +40,7 @@ export function localeFromHost(host: string | null | undefined): SiteLocale {
 }
 
 /** Paths outside the country trees that carry a Portuguese version too. */
-const TRILINGUAL_PATHS = new Set(['/pour-les-villes']);
+const TRILINGUAL_PATHS = new Set(['/pour-les-villes', '/confidentialite']);
 
 /**
  * The languages a path exists in. Everything French-authored (root pages,
