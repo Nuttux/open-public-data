@@ -103,6 +103,10 @@ export default function Navbar() {
           <BrandMark />
           <span>{t("fx.nav.brand")}</span>
         </Link>
+        {/* La page ville n'a pas de liens de section en haut (la barre de puces
+            les porte) : on garde la cellule de la grille, mais pas un repère de
+            navigation annoncé et vide. */}
+        {navLinks.length === 0 ? <div className="fx-links" aria-hidden="true" /> : (
         <nav className="fx-links" aria-label={t("fx.nav.main_aria")}>
           {navLinks.map((l) => (
             <Link
@@ -115,6 +119,7 @@ export default function Navbar() {
             </Link>
           ))}
         </nav>
+        )}
         <PlaceSwitcher variant="nav" currentSlug={frSlug} />
         <LangSwitcher />
         <button

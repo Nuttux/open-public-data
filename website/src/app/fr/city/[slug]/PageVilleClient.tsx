@@ -205,7 +205,7 @@ function SectionChips({ items, label }: { items: { id: string; label: string }[]
   return (
     <nav className="fx-pv-chips" aria-label={label} ref={barRef}>
       {items.map((s) => (
-        <a key={s.id} href={`#${s.id}`} className={s.id === active ? "is-active" : ""} aria-current={s.id === active ? "true" : undefined}>
+        <a key={s.id} href={`#${s.id}`} className={s.id === active ? "is-active" : ""} aria-current={s.id === active ? "location" : undefined}>
           {s.label}
         </a>
       ))}
@@ -427,7 +427,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
   const toc = [
     { id: "depenses", label: t("fx.pv.toc.depenses") },
     ...(taxeFonciere && taxeFonciere.tfb != null ? [{ id: "taxe-fonciere", label: t("fx.pv.toc.taxe") }] : []),
-    ...(invYear ? [{ id: "construit", label: t("fx.pv.toc.construit") }] : []),
+    ...(invYear && invYear.total.depenses > 0 ? [{ id: "construit", label: t("fx.pv.toc.construit") }] : []),
     ...(evoLast?.dette != null ? [{ id: "dette", label: t("fx.pv.toc.dette") }] : []),
     ...(marches ? [{ id: "achats", label: t("fx.pv.toc.achats") }] : []),
     ...(compare ? [{ id: "comparer", label: t("fx.pv.toc.comparer") }] : []),
