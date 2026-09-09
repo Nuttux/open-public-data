@@ -8,6 +8,7 @@ import { fill, numLocale, sufOrdinal } from "@/lib/fmt";
 import { V3Foot, V3Fold, V3Section } from "@/components/fiche/v3";
 import posteLabels from "@/data/poste-labels.json";
 import fonctionLabels from "@/data/budget-fonction-labels.json";
+import { NATURE_GROUPS, natureOfFlow, type NatureKey } from "@/lib/budget-natures";
 
 type Props = { poste: BudgetPosteFiche };
 type FonctionLabel = { fr: string; en: string; sub_fr?: string; sub_en?: string };
@@ -65,6 +66,10 @@ function groupMissions(poste: BudgetPosteFiche, locale: "fr" | "en", fmt: (n: nu
       key = i > 0 ? it.name.slice(0, i).trim() : "—";
       name = i > 0 ? it.name.slice(i + 1).trim() : it.name.trim();
     }
+    // Le préfixe technique d'une ligne (« Invest. Aménagement: … ») n'est pas
+    // toujours celui du poste ; on le retire dans tous les cas, la nature à
+    // droite (« subv. invest. ») dit déjà de quoi il s'agit.
+    if (byFonction) { const j = name.indexOf(": "); if (j > 0) name = name.slice(j + 2); }
     let m = map.get(key);
     if (!m) {
       const fl = FONCTIONS[key];
@@ -97,6 +102,9 @@ function groupMissions(poste: BudgetPosteFiche, locale: "fr" | "en", fmt: (n: nu
     m.items.sort((a, b) => b.value - a.value);
     if (!m.sub && m.items.length > 1 && m.items[0].value / m.total >= 0.5) {
       const l = autoSub(m.items[0].name, m.label);
+      // Redite quand la ligne porte le même mot que sa nature (« subventions
+      // d'investissement » sous « subv. invest. ») : on garde quand même, c'est
+      // le montant qui informe ; mais jamais si la ligne redit la mission.
       if (l) m.sub = fill(t("fx.poste.v3.dont"), { l, m: fmt(m.items[0].value) });
     }
   }
@@ -140,6 +148,18 @@ export default function PosteFiche({ poste }: Props) {
   const flatRest = flatLines.slice(8);
 
   const { v, u } = fmtAmt(poste.total);
+  // Sous quelle forme ce poste sort : les lignes du poste par nature, la même
+  // table que le ruban de la page budget. Chaque nature ouvre sa fiche.
+  const natureRows = (() => {
+    if (!dep || !poste.subPostes.some((s) => s.flow_category)) return [];
+    const acc = new Map<NatureKey, number>();
+    for (const it of poste.subPostes) { const k = natureOfFlow(it.flow_category); acc.set(k, (acc.get(k) ?? 0) + it.value); }
+    const tot = [...acc.values()].reduce((a, b) => a + b, 0);
+    return NATURE_GROUPS.map((g) => ({ key: g.key, color: g.color, value: acc.get(g.key) ?? 0 }))
+      .filter((g) => g.value > 0)
+      .map((g) => ({ ...g, pct: tot > 0 ? Math.round((g.value / tot) * 100) : 0 }))
+      .filter((g) => g.pct >= 1);
+  })();
   const first = poste.series[0];
   const deltaSince = first && first.year !== poste.year && first.value > 0 ? ((poste.total - first.value) / first.value) * 100 : null;
   const signed = (x: number) => `${x >= 0 ? "+" : "−"}${pct1(Math.abs(x))} %`;
@@ -216,7 +236,7 @@ export default function PosteFiche({ poste }: Props) {
             </div>
             <div className="bars" aria-hidden="true">
               {poste.series.map((s) => (
-                <div key={s.year} className={s.year === poste.year ? "now" : s.type === "vote" ? "vote" : ""} title={`${s.year} · ${fmtM(s.value)}`}>
+                <div key={s.year} className={`${s.year === poste.year ? "now" : ""} ${s.type === "vote" ? "vote" : ""}`.trim()} title={`${s.year} · ${fmtM(s.value)}`}>
                   <b style={{ height: Math.max(3, Math.round((s.value / maxSeries) * 50)) }} />
                   <span>{s.year}</span>
                 </div>
@@ -225,6 +245,23 @@ export default function PosteFiche({ poste }: Props) {
           </div>
         )}
       </div>
+
+      {natureRows.length > 1 && (
+        <div className="fx-bud-forme fx-bud-forme--poste">
+          <div className="h">{t("fx.poste.v3.forme")}</div>
+          <div className="stack">
+            {natureRows.map((g) => g.key === "autres"
+              ? <span key={g.key} style={{ width: `${g.pct}%`, background: g.color }} title={`${t(`fx.bud.v3.flow.${g.key}`)} · ${g.pct} %`} />
+              : <Link key={g.key} href={`/fr/city/paris/budget/nature/${g.key}?year=${poste.year}`} scroll={false} style={{ width: `${g.pct}%`, background: g.color }} title={`${t(`fx.bud.v3.flow.${g.key}`)} · ${g.pct} %`} aria-label={t(`fx.bud.v3.flow.${g.key}`)} />)}
+          </div>
+          <div className="legend">
+            {natureRows.map((g) => g.key === "autres"
+              ? <span key={g.key}><i style={{ background: g.color }} /><b>{g.pct} %</b> {t(`fx.bud.v3.flow.${g.key}`)}</span>
+              : <Link key={g.key} href={`/fr/city/paris/budget/nature/${g.key}?year=${poste.year}`} scroll={false}><i style={{ background: g.color }} /><b>{g.pct} %</b> {t(`fx.bud.v3.flow.${g.key}`)}</Link>)}
+          </div>
+          <p className="note">{t("fx.poste.v3.forme_sub")}</p>
+        </div>
+      )}
 
       {missions.length > 0 && (
         <V3Section

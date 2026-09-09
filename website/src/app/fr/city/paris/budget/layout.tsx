@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { buildLocaleAwareMetadata, datasetJsonLd } from '@/lib/seo';
+import { freshnessFor } from '@/lib/data-freshness';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
@@ -29,8 +30,11 @@ const dataset = datasetJsonLd({
     "Recettes et dépenses de la Ville de Paris depuis 2019, ventilées par section (fonctionnement / investissement), par thématique et par entité bénéficiaire. Source : Open Data Paris.",
   path: '/budget',
   keywords: ['budget', 'Paris', 'compte administratif', 'finances publiques'],
+  // Le budget voté couvre jusqu'à N+1 : la borne haute reste celle du voté,
+  // la date de mise à jour vient du refresh (data_freshness.json).
   temporalCoverage: '2019/2026',
   spatialCoverage: 'Paris, France',
+  dateModified: freshnessFor(['budget_principal', 'budget_vote']).dateModified,
 });
 
 export default function BudgetLayout({

@@ -8,6 +8,34 @@ version: 2
 
 models:
   # ===========================================================================
+  # FRAÎCHEUR DES SOURCES (data_freshness.json)
+  # ===========================================================================
+  - name: mart_source_freshness
+    description: |
+      Une ligne par source Paris du catalogue ODS : page, licence,
+      `published_by_city_at` (quand la Ville a publié / mis à jour, portail),
+      `synced_at` (quand notre sync l'a relu), et — quand
+      mart_source_year_status existe — années complètes / partielles.
+
+      Seule table lue par export_data_freshness.py (layering E4). Alimente
+      /methode « Fraîcheur par source », le dialogue Provenance, les légendes
+      ChartSource et le `dateModified` du JSON-LD Dataset. Vocabulaire :
+      « publié par la Ville le · mis à jour sur Qipu le ».
+    config:
+      materialized: table
+    columns:
+      - name: source_id
+        tests:
+          - not_null
+          - unique
+      - name: dataset_page_url
+        tests:
+          - not_null
+      - name: published_by_city_at
+        tests:
+          - not_null
+
+  # ===========================================================================
   # SUBVENTIONS TREEMAP
   # ===========================================================================
   - name: mart_subventions_treemap

@@ -9965,6 +9965,13 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
     border: 0;
   }
   .theme-fusion .fx-sources-table-row .portal::before { content: "Portail · "; color: var(--ocre); font-family: var(--f-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; display: block; margin-bottom: 2px; }
+  /* Table « Fraîcheur par source » (/methode) : même grille, première colonne = la source, pas le portail. */
+  .theme-fusion .fx-fresh-table .fx-sources-table-row .portal::before { content: "Source · "; }
+  .theme-fusion .fx-fresh-table .fx-sources-table-row .url::before { content: "Publiée par la Ville le · "; color: var(--ocre); font-family: var(--f-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; display: block; margin-bottom: 2px; }
+  .theme-fusion .fx-fresh-table .fx-sources-table-row .fresh::before { content: "Ancienneté · "; color: var(--ocre); font-family: var(--f-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; display: block; margin-bottom: 2px; }
+  .theme-fusion .fx-fresh-table[lang="en"] .fx-sources-table-row .portal::before { content: "Source · "; }
+  .theme-fusion .fx-fresh-table[lang="en"] .fx-sources-table-row .url::before { content: "Published by the City on · "; }
+  .theme-fusion .fx-fresh-table[lang="en"] .fx-sources-table-row .fresh::before { content: "Age · "; }
 }
 
 /* ═══ Méthode — Table audit (réplique structure sources, labels audit) ════ */
@@ -19281,6 +19288,8 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-v3-trend .bars b { width: 100%; background: #c8ccd3; display: block; }
 .theme-fusion .fx-v3-trend .bars .vote b { background: repeating-linear-gradient(135deg, #c8ccd3 0 3px, #fafaf7 3px 5px); }
 .theme-fusion .fx-v3-trend .bars .now b { background: var(--ink); }
+/* L'année affichée est votée : noire ET hachurée, pour ne pas la lire comme exécutée. */
+.theme-fusion .fx-v3-trend .bars .now.vote b { background: repeating-linear-gradient(135deg, var(--ink) 0 3px, #fafaf7 3px 5px); }
 .theme-fusion .fx-v3-trend .bars span { font-family: var(--f-mono); font-size: 9.5px; color: var(--muted); }
 .theme-fusion .fx-v3-mission {
   display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(46px, 0.9fr) auto; gap: 12px; align-items: center;
@@ -19314,24 +19323,48 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-bud-voted a { color: var(--bleu); }
 .theme-fusion .fx-bud-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 18px; }
 .theme-fusion .fx-bud-col h3 { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; padding-bottom: 8px; border-bottom: 1px solid var(--ink); display: flex; justify-content: space-between; font-weight: 500; }
-.theme-fusion .fx-bud-row { display: grid; grid-template-columns: minmax(0, 1fr) 52px auto 36px; gap: 10px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--rule); text-decoration: none; color: var(--ink); font-size: 14px; }
+/* Colonnes fixes : chaque ligne est sa propre grille, une colonne « auto » pour
+   le montant décalait les barres d'une ligne à l'autre (« 2,31 Md€ » n'a pas la
+   largeur de « 992 M€ »). Les barres sont calées à droite, sur l'année courante. */
+.theme-fusion .fx-bud-row { display: grid; grid-template-columns: minmax(0, 1fr) 52px 86px 36px 10px; gap: 10px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--rule); text-decoration: none; color: var(--ink); font-size: 14px; position: relative; }
 .theme-fusion .fx-bud-row:hover { background: rgba(10,10,10,.03); }
+/* Le chevron dit que la ligne s'ouvre ; il s'assombrit au survol. */
+.theme-fusion .fx-bud-row .c { color: #b4b9c2; font-size: 15px; line-height: 1; text-align: right; transition: color .15s, transform .15s; }
+.theme-fusion .fx-bud-row:hover .c { color: var(--ink); transform: translateX(2px); }
+/* Ce que la ligne contient, au survol : trois missions, mêmes mots que la fiche.
+   Même bulle que .fx-tip, ancrée sous la ligne. Pas sur écran tactile. */
+@media (hover: hover) and (pointer: fine) {
+  .theme-fusion .fx-bud-row[data-peek]::after { content: attr(data-peek); position: absolute; left: 0; top: calc(100% + 4px); z-index: 40; background: var(--ink); color: var(--bg); padding: 8px 12px; font-family: var(--f-ui); font-size: 12.5px; line-height: 1.45; max-width: 460px; white-space: normal; opacity: 0; pointer-events: none; transition: opacity .15s .1s; box-shadow: 0 2px 0 rgba(0,0,0,.15); }
+  .theme-fusion .fx-bud-row[data-peek]:hover::after { opacity: 1; }
+}
 .theme-fusion .fx-bud-row .n { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .theme-fusion .fx-bud-row .p { font-family: var(--f-mono); font-size: 10.5px; color: var(--muted); text-align: right; }
 .theme-fusion .fx-bud-row .fx-v3-amt { text-align: right; }
-.theme-fusion .fx-bud-spark { display: inline-flex; align-items: flex-end; gap: 2px; height: 18px; }
+.theme-fusion .fx-bud-spark { display: inline-flex; align-items: flex-end; justify-content: flex-end; gap: 2px; height: 18px; width: 52px; }
 .theme-fusion .fx-bud-spark i { display: block; width: 5px; background: #c8ccd3; }
 .theme-fusion .fx-bud-spark i.vote { background: repeating-linear-gradient(135deg, #c8ccd3 0 2px, #fafaf7 2px 4px); }
 .theme-fusion .fx-bud-spark i.now { background: var(--bleu); }
+/* L'année affichée est votée : bleue ET hachurée, comme le grand graphe. */
+.theme-fusion .fx-bud-spark i.now.vote { background: repeating-linear-gradient(135deg, var(--bleu) 0 2px, #fafaf7 2px 4px); }
 .theme-fusion .fx-bud-forme { margin-top: 26px; }
 .theme-fusion .fx-bud-forme .h { font-size: 14px; font-weight: 600; }
 .theme-fusion .fx-bud-forme .stack { display: flex; height: 14px; gap: 2px; margin: 12px 0 8px; } .theme-fusion .fx-bud-forme .stack span { display: block; height: 14px; }
 .theme-fusion .fx-bud-forme .legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12.5px; color: var(--muted); }
 .theme-fusion .fx-bud-forme .legend b { color: var(--ink); font-weight: 600; } .theme-fusion .fx-bud-forme .legend i { display: inline-block; width: 9px; height: 9px; margin-right: 6px; vertical-align: -1px; }
 .theme-fusion .fx-bud-forme .note { font-size: 12.5px; color: var(--muted); margin: 10px 0 0; line-height: 1.5; }
+/* Les segments et les mots de la légende sont des liens vers la fiche de nature ;
+   même dessin qu'avant, un léger relief au survol. */
+.theme-fusion .fx-bud-forme .stack a { display: block; height: 14px; transition: transform .12s, filter .12s; }
+.theme-fusion .fx-bud-forme .stack a:hover { transform: scaleY(1.35); filter: brightness(.92); }
+.theme-fusion .fx-bud-forme .legend a { color: var(--muted); text-decoration: none; border-bottom: 1px solid transparent; }
+.theme-fusion .fx-bud-forme .legend a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+/* Sur la fiche de poste, le ruban vient juste sous le héros, avant les missions. */
+.theme-fusion .fx-bud-forme--poste { margin: -12px 0 36px; }
+.theme-fusion .fx-bud-forme--poste .h { font-family: var(--f-display, inherit); font-size: 15px; }
 @media (max-width: 700px) {
   .theme-fusion .fx-bud-cols { grid-template-columns: 1fr; gap: 30px; }
-  .theme-fusion .fx-bud-row { grid-template-columns: minmax(0, 1fr) 44px auto 34px; font-size: 13.5px; }
+  .theme-fusion .fx-bud-row { grid-template-columns: minmax(0, 1fr) 44px 80px 34px 10px; font-size: 13.5px; }
+  .theme-fusion .fx-bud-spark { width: 44px; }
 }
 .theme-fusion .fx-bud-row--static { cursor: default; } .theme-fusion .fx-bud-row--static:hover { background: transparent; }
 
@@ -19609,3 +19642,34 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 /* Les rangées du « Voir aussi » ont une marge négative héritée des fiches ; sur
    la page ville elles doivent rester dans la largeur de l'écran. */
 .theme-fusion .fx-pv .fx-related .fx-v3-row { margin-left: 0; margin-right: 0; width: auto; }
+
+/* ── /confidentialite — consent switches ─────────────────────────────────────
+   Plain CSS on purpose: the page used Tailwind colour utilities that never
+   compiled under the fusion theme, so the switches rendered as bare knobs. */
+.theme-fusion .fx-consent { display: flex; flex-direction: column; gap: 14px; margin: 8px 0 32px; }
+.theme-fusion .fx-consent-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  padding: 18px 20px; border: 1px solid var(--ink); background: var(--bg-cool);
+}
+.theme-fusion .fx-consent-row h3 {
+  font-family: var(--f-disp); font-size: 17px; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 4px;
+}
+.theme-fusion .fx-consent-row p { font-size: 14px; line-height: 1.5; color: var(--muted); margin: 0; }
+.theme-fusion .fx-consent-ctl { display: flex; flex-direction: column; align-items: center; gap: 6px; flex-shrink: 0; }
+.theme-fusion .fx-switch {
+  position: relative; width: 46px; height: 26px; border-radius: 999px; padding: 0;
+  border: 1px solid var(--ink); background: var(--bg); cursor: pointer;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+.theme-fusion .fx-switch::after {
+  content: ""; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%;
+  background: var(--ink); transition: transform 120ms ease, background 120ms ease;
+}
+.theme-fusion .fx-switch[aria-checked="true"] { background: var(--bleu); border-color: var(--bleu); }
+.theme-fusion .fx-switch[aria-checked="true"]::after { background: #fff; transform: translateX(20px); }
+.theme-fusion .fx-switch:disabled { opacity: .4; cursor: not-allowed; }
+.theme-fusion .fx-switch:focus-visible { outline: 2px solid var(--bleu-vif); outline-offset: 2px; }
+.theme-fusion .fx-consent-state {
+  font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted);
+}
+@media (max-width: 640px) { .theme-fusion .fx-consent-row { align-items: flex-start; padding: 16px; } }

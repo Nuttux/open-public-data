@@ -12,6 +12,12 @@ import type { ChatScopeId } from "./scopes";
 // Le modèle répond dans la langue de la question — les questions EN suffisent
 // à obtenir des réponses EN.
 
+/** Pages sans teaser flottant : la page budget montre déjà ses deux lectures
+ *  (postes et natures, chacune cliquable) ; on n'y pousse pas une question de
+ *  plus tant que l'usage réel du chat n'a pas été lu dans les métriques.
+ *  Décidé le 2026-09-09. Les suggestions restent dans le panneau ouvert. */
+export const TEASER_OFF: ReadonlySet<string> = new Set(["budget"]);
+
 export type SectionKey =
   | "default"
   | "budget"
@@ -41,11 +47,15 @@ const FR: Record<SectionKey, string[]> = {
     "Qui reçoit des garanties d'emprunt de la Ville ?",
     "La dette a-t-elle augmenté depuis 2019 ?",
   ],
+  // « Quelle part du budget part dans les salaires ? » retirée le 2026-09-09 :
+  // le ruban « sous quelle forme » l'affiche et la fiche Salaires y répond.
+  // Le teaser doit rester une question que la page ne montre pas — le voté
+  // contre l'exécuté n'est plus sur la page v3, il l'est.
   budget: [
-    "Quelle part du budget part dans les salaires ?",
     "Paris dépense-t-elle plus que ce qu'elle vote ?",
     "Combien la Ville verse-t-elle au CASVP ?",
     "Combien coûte le ramassage des ordures ?",
+    "Combien Paris dépense-t-elle pour ses piscines ?",
   ],
   subventions: [
     "Combien la Ville soutient-elle Paris Habitat au total ?",
@@ -89,10 +99,10 @@ const EN: Record<SectionKey, string[]> = {
     "Has the debt grown since 2019?",
   ],
   budget: [
-    "What share of the budget goes to salaries?",
     "Does Paris spend more than it votes?",
     "How much does the City pay the CASVP?",
     "How much does garbage collection cost?",
+    "How much does Paris spend on its swimming pools?",
   ],
   subventions: [
     "How much does the City support Paris Habitat in total?",

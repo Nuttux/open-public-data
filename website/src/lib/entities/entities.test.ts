@@ -13,6 +13,7 @@ import { fournisseurConfig } from "./fournisseur";
 import { lieuConfig, lieuStaticParams } from "./lieu";
 import { logementArrondissementConfig } from "./logement-arrondissement";
 import { posteConfig } from "./poste";
+import { natureConfig } from "./nature";
 import { projetConfig } from "./projet";
 import { themeConfig } from "./theme";
 
@@ -35,6 +36,17 @@ describe("entity configs load() against real corpus samples", () => {
     const d = await themeConfig.load({ slug: "social" }, {});
     expect(d).not.toBeNull();
     expect(d!.fiche.theme.length).toBeGreaterThan(0);
+  });
+
+  it("nature — salaires", async () => {
+    const d = await natureConfig.load({ slug: "salaires" }, {});
+    expect(d).not.toBeNull();
+    expect(d!.nature.total).toBeGreaterThan(1e9);
+    expect(d!.nature.byPoste[0].value).toBeGreaterThan(0);
+    // the sum over postes is the total: the fiche and the ribbon agree
+    const sum = d!.nature.byPoste.reduce((s, p) => s + p.value, 0);
+    expect(Math.abs(sum - d!.nature.total) / d!.nature.total).toBeLessThan(1e-6);
+    expect(await natureConfig.load({ slug: "nope" }, {})).toBeNull();
   });
 
   it("poste — impots-taxes", async () => {

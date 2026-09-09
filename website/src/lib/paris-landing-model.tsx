@@ -91,7 +91,7 @@ const MARQUEE_SOURCE: MarqueeSource[] = [
   { href: "/fr/city/paris/budget/poste/transports", type: "poste", label_fr: "Transports", label_en: "Transport", amount_fr: "854 M€/an", amount_en: "€854M/yr" },
   { href: "/fr/city/paris/budget/poste/culture-sport", type: "poste", label_fr: "Culture & Sport", label_en: "Culture & Sports", amount_fr: "795 M€/an", amount_en: "€795M/yr" },
   { href: "/fr/city/paris/budget/poste/securite", type: "poste", label_fr: "Sécurité", label_en: "Security", amount_fr: "514 M€/an", amount_en: "€514M/yr" },
-  { href: "/fr/city/paris/budget/poste/remboursement-dette", type: "poste", label_fr: "Remboursement de la dette", label_en: "Debt repayment", amount_fr: "710 M€/an", amount_en: "€710M/yr" },
+  { href: "/fr/city/paris/budget/poste/remboursement-de-la-dette", type: "poste", label_fr: "Remboursement de la dette", label_en: "Debt repayment", amount_fr: "327 M€/an", amount_en: "€327M/yr" },
   { href: "/fr/city/paris/budget/poste/economie", type: "poste", label_fr: "Économie", label_en: "Economy", amount_fr: "92 M€/an", amount_en: "€92M/yr" },
 ];
 

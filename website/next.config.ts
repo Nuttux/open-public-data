@@ -216,6 +216,9 @@ const nextConfig: NextConfig = {
       // Dead routes (pre-fusion) — point at the new Paris locations
       // Poste scindé le 2026-09-08 : l'ancienne adresse mène à la moitié « administration ».
       { source: '/fr/city/paris/budget/poste/personnel-admin', destination: '/fr/city/paris/budget/poste/administration-generale', permanent: true },
+      // Dette scindée et recette renommée le 2026-09-09.
+      { source: '/fr/city/paris/budget/poste/remboursement-dette', destination: '/fr/city/paris/budget/poste/remboursement-de-la-dette', permanent: true },
+      { source: '/fr/city/paris/budget/poste/investissement', destination: '/fr/city/paris/budget/poste/recettes-d-investissement', permanent: true },
       { source: '/evolution', destination: '/fr/city/paris/budget', permanent: true },
       { source: '/prevision', destination: '/fr/city/paris/budget', permanent: true },
       { source: '/bilan', destination: '/fr/city/paris/dette', permanent: true },

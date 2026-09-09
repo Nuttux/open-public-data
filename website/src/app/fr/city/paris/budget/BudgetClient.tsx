@@ -17,9 +17,20 @@ import { fmtBillions, fmtDec, fmtInt } from "@/lib/fmt";
 import type { BlogPostMeta } from "@/lib/blog";
 import type { BudgetPageData, VoteExecuteData } from "@/lib/fusion-data";
 import { slugifyLabel } from "@/lib/projet-utils";
-import { useT, useLocale } from "@/lib/localeContext";
+import { useT, useLocale, type Locale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 import { cityPopulation, citySlugFromPathname } from "@/lib/methodology";
+import fonctionLabels from "@/data/budget-fonction-labels.json";
+import { NATURE_GROUPS } from "@/lib/budget-natures";
+
+type FonctionLabel = { fr: string; en: string; sub_fr?: string; sub_en?: string };
+const FONCTIONS: Record<string, FonctionLabel> = fonctionLabels as Record<string, FonctionLabel>;
+/** Le libellé clair d'une mission, avec les mots de la fiche de poste
+ *  (`budget-fonction-labels.json`), repli sur la traduction générique. */
+function missionLabel(key: string, locale: Locale): string {
+  const fl = FONCTIONS[key];
+  return fl ? (locale === "en" ? fl.en : fl.fr) : trLabel(key, locale);
+}
 
 type BudgetIndexLite = {
   availableYears: number[];
@@ -51,17 +62,9 @@ const BUD_PLACEHOLDERS: ArticlePlaceholder[] = [
   },
 ];
 
-/** Les catégories de flux du pipeline, regroupées en mots de tous les jours. */
-const FLOW_GROUPS: { key: string; flows: string[]; color: string }[] = [
-  { key: "salaires", flows: ["Personnel"], color: "#2a3680" },
-  { key: "reverses", flows: ["Reversements péréquation"], color: "#4a3aa7" },
-  { key: "allocations", flows: ["Transferts sociaux"], color: "#6b5fc7" },
-  { key: "chantiers", flows: ["Immobilisations en cours", "Immobilisations corporelles", "Études"], color: "#8c5e2a" },
-  { key: "contributions", flows: ["Contributions obligatoires"], color: "#a67638" },
-  { key: "subventions", flows: ["Subventions (fonctionnement)", "Subventions (investissement)"], color: "#c19a5b" },
-  { key: "achats", flows: ["Achats", "Services extérieurs", "Autres services"], color: "#9099a6" },
-  { key: "dette", flows: ["Remboursement dette", "Charges financières"], color: "#c12323" },
-];
+/** Les catégories de flux du pipeline, regroupées en mots de tous les jours —
+ *  la même table que le ruban de chaque fiche de poste et la fiche de nature. */
+const FLOW_GROUPS = NATURE_GROUPS.filter((g) => g.key !== "autres");
 
 /**
  * Page budget v3 (2026-09-08) — deux temps, validés en maquette avec Daniel :
@@ -119,7 +122,7 @@ export default function BudgetClient({ index, d, posts }: Props) {
     return (
       <span className="fx-bud-spark" aria-hidden="true" title={pts.map((p) => `${p.year} : ${eur(p.value)}`).join(" · ")}>
         {pts.map((p) => (
-          <i key={p.year} className={p.year === d.year ? "now" : p.type === "vote" ? "vote" : ""} style={{ height: Math.max(2, Math.round((p.value / m) * 18)) }} />
+          <i key={p.year} className={`${p.year === d.year ? "now" : ""} ${p.type === "vote" ? "vote" : ""}`.trim()} style={{ height: Math.max(2, Math.round((p.value / m) * 18)) }} />
         ))}
       </span>
     );
@@ -127,14 +130,20 @@ export default function BudgetClient({ index, d, posts }: Props) {
   // « Autres (D) », « Personnel (R) » : le suffixe de sens est un artefact du
   // sankey (deux nœuds homonymes), pas un mot pour le lecteur.
   const label = (raw: string) => (raw.startsWith("Autres (") || raw.startsWith("Autre (") ? t("fx.bud.autres") : trLabel(raw.replace(/\s\((D|R)\)$/, ""), locale));
-  const Row = ({ raw, value, total }: { raw: string; value: number; total: number }) => (
-    <Link href={`${cityBasePath}/poste/${slugifyLabel(raw)}?year=${d.year}`} scroll={false} className="fx-bud-row">
-      <span className="n">{label(raw)}</span>
-      <Spark label={raw} />
-      <Amt n={value} size={14} />
-      <span className="p tnum">{Math.round((value / total) * 100)} %</span>
-    </Link>
-  );
+  // Au survol, la ligne dit ce qu'elle contient (trois missions, mêmes mots que
+  // la fiche) ; le chevron dit qu'elle s'ouvre. Sur écran tactile, le chevron seul.
+  const Row = ({ raw, value, total, missions = [] }: { raw: string; value: number; total: number; missions?: { key: string; value: number }[] }) => {
+    const peek = missions.length ? fill("fx.bud.v3.peek", { list: missions.map((m) => `${missionLabel(m.key, locale)} ${eur(m.value)}`).join(" · ") }) : undefined;
+    return (
+      <Link href={`${cityBasePath}/poste/${slugifyLabel(raw)}?year=${d.year}`} scroll={false} className="fx-bud-row" data-peek={peek}>
+        <span className="n">{label(raw)}</span>
+        <Spark label={raw} />
+        <Amt n={value} size={14} />
+        <span className="p tnum">{Math.round((value / total) * 100)} %</span>
+        <span className="c" aria-hidden="true">›</span>
+      </Link>
+    );
+  };
   // Une ligne sous 0,5 % du total n'apporte qu'un « 0 % » : on la tait.
   const dep = d.topDepenses.filter((x) => x.value / d.depenses >= 0.005);
   const rec = d.recettesBreakdown.filter((x) => x.value / d.recettes >= 0.005);
@@ -203,7 +212,7 @@ export default function BudgetClient({ index, d, posts }: Props) {
                 </div>
                 <div className="bars" aria-hidden="true">
                   {years.map((y) => (
-                    <div key={y.year} className={y.year === d.year ? "now" : y.type === "vote" ? "vote" : ""} title={`${y.year} · ${eur(y.depenses)}`}>
+                    <div key={y.year} className={`${y.year === d.year ? "now" : ""} ${y.type === "vote" ? "vote" : ""}`.trim()} title={`${y.year} · ${eur(y.depenses)}`}>
                       <b style={{ height: Math.max(3, Math.round((y.depenses / maxDep) * 50)) }} />
                       <span>{y.year}</span>
                     </div>
@@ -219,21 +228,25 @@ export default function BudgetClient({ index, d, posts }: Props) {
           <div className="fx-bud-cols">
             <div className="fx-bud-col">
               <h3><span>{t("fx.bud.v3.col_dep")}</span><span className="tnum">{eur(d.depenses)}</span></h3>
-              {dep.map((x) => <Row key={x.label} raw={x.label} value={x.value} total={d.depenses} />)}
+              {dep.map((x) => <Row key={x.label} raw={x.label} value={x.value} total={d.depenses} missions={x.topMissions} />)}
             </div>
             <div className="fx-bud-col">
               <h3><span>{t("fx.bud.v3.col_rec")}</span><span className="tnum">{eur(d.recettes)}</span></h3>
-              {rec.map((x) => <Row key={x.label} raw={x.label} value={x.value} total={d.recettes} />)}
+              {rec.map((x) => <Row key={x.label} raw={x.label} value={x.value} total={d.recettes} missions={x.topMissions} />)}
               {flowRows.length > 1 && (
                 <div className="fx-bud-forme">
                   <div className="h">{t("fx.bud.v3.forme")}</div>
-                  <div className="stack" aria-hidden="true">
-                    {flowRows.map((g) => <span key={g.key} style={{ width: `${g.pct}%`, background: g.color }} title={`${t(`fx.bud.v3.flow.${g.key}`)} · ${g.pct} %`} />)}
+                  {/* Chaque segment et chaque mot de la légende ouvrent la fiche de la nature :
+                      « les salaires, combien, et où ils vont poste par poste ». Pas de fiche pour « autres ». */}
+                  <div className="stack">
+                    {flowRows.map((g) => g.key === "autres"
+                      ? <span key={g.key} style={{ width: `${g.pct}%`, background: g.color }} title={`${t(`fx.bud.v3.flow.${g.key}`)} · ${g.pct} %`} />
+                      : <Link key={g.key} href={`${cityBasePath}/nature/${g.key}?year=${d.year}`} scroll={false} style={{ width: `${g.pct}%`, background: g.color }} title={`${t(`fx.bud.v3.flow.${g.key}`)} · ${g.pct} %`} aria-label={t(`fx.bud.v3.flow.${g.key}`)} />)}
                   </div>
                   <div className="legend">
-                    {flowRows.map((g) => (
-                      <span key={g.key}><i style={{ background: g.color }} /><b>{g.pct} %</b> {t(`fx.bud.v3.flow.${g.key}`)}</span>
-                    ))}
+                    {flowRows.map((g) => g.key === "autres"
+                      ? <span key={g.key}><i style={{ background: g.color }} /><b>{g.pct} %</b> {t(`fx.bud.v3.flow.${g.key}`)}</span>
+                      : <Link key={g.key} href={`${cityBasePath}/nature/${g.key}?year=${d.year}`} scroll={false}><i style={{ background: g.color }} /><b>{g.pct} %</b> {t(`fx.bud.v3.flow.${g.key}`)}</Link>)}
                   </div>
                   <p className="note">{fill("fx.bud.v3.forme_note", { pct: Math.round(d.flowCoveragePct) })}</p>
                 </div>

@@ -490,6 +490,7 @@ export default function DettePatrimoineClient({
               <ChartSource
                 source={<>{fill(t("fx.dp.hb.source"), { year: horsBilan.year })}</>}
                 methodAnchor="dette-patrimoine"
+                sourceIds={["dette_garantie"]}
               />
 
               <p className="fx-hb-preteur">
