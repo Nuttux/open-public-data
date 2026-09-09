@@ -275,6 +275,8 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
      `picked` is a POSITION in the block index, as it is there; `posRef`
      turns a block id (what the search hands over) into one. */
   const [picked, setPicked] = useState<number | null>(null);
+  /* the panel's own title, for the handle — `CityBlockPanel` `onTitle` */
+  const [sheetTitle, setSheetTitle] = useState<string | null>(null);
   /* ── A TAP IS NOT A SEARCH ─────────────────────────────────────────────
      A pick that came from a tap on the map, so the record effect can open
      it at the level the zoom implies: at the two wide stops a fingertip
@@ -820,6 +822,7 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
             /* the last tap's request must not outlive it: the handle named
                the previous block's neighbourhood on the next block */
             setRequest(undefined);
+            setSheetTitle(null);
             setSheetOpen(true);
             setPicked(b);
           })();
@@ -1165,9 +1168,10 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
      tap opened one (the two wide stops), the block's streets otherwise */
   const sheetLabel = markCard
     ? markCard.place
-    : request?.req.kind === "hood" && request.block === ctx?.id && ctx?.hood
-      ? ctx.hood
-      : (record ? blockPlaceName(record.streets) : null) || ctx?.hood || "";
+    : sheetTitle
+      ?? (request?.req.kind === "hood" && request.block === ctx?.id && ctx?.hood
+        ? ctx.hood
+        : (record ? blockPlaceName(record.streets) : null) || ctx?.hood || "");
   const n = markCard ? markCard.rows.length : (record?.decisions.length ?? 0);
 
   return (
@@ -1422,6 +1426,7 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
                 onFiche={setAt}
                 loading={recLoading}
                 onClose={close}
+                onTitle={setSheetTitle}
               />
             )}
           </div>

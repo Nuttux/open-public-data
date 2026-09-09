@@ -2277,6 +2277,7 @@ export default function CityBlockPanel({
   city,
   loading,
   onClose,
+  onTitle,
   onLocate,
   onFiche,
   request,
@@ -2287,6 +2288,11 @@ export default function CityBlockPanel({
   city?: CityRecordTotals;
   loading: boolean;
   onClose: () => void;
+  /** told the panel's own title whenever it changes — the drawer's handle
+   *  and the pin on the map say the same thing as the panel (2026-09-09: the
+   *  handle read 'Fillmore St · Oak St · Page St · Steiner St' over a panel
+   *  titled 'Fillmore St') */
+  onTitle?: (title: string) => void;
   /** take the map to this block — passed only when the map knows where it is */
   onLocate?: () => void;
   /**
@@ -2888,6 +2894,11 @@ const onHood = unit.kind === "hood";
   const hasLadder =
     (unit.kind === "door" ? 1 : 0) + 1 + (ladderStreet ? 1 : 0) + (ladderHood ? 1 : 0) >= 2;
 
+  const panelTitle = unitName ?? placeName ?? hood?.name ?? context?.hood ?? null;
+  useEffect(() => {
+    if (panelTitle) onTitle?.(panelTitle);
+  }, [panelTitle, onTitle]);
+
   return (
     <div
       ref={panelRef}
@@ -2938,7 +2949,7 @@ const onHood = unit.kind === "hood";
             </span>
           )}
           <h2 className="fx-city-panel-title">
-            {unitName ?? placeName ?? hood?.name ?? context?.hood ?? "\u2014"}
+            {panelTitle ?? "\u2014"}
           </h2>
           {unit.kind === "ground" && context && context.areaM2 > 0 ? (
             <p className="fx-place-sub" style={{ margin: "2px 0 0" }}>

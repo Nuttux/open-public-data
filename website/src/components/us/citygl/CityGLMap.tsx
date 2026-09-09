@@ -2194,6 +2194,15 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
               request={request}
               onFiche={setAt}
               loading={recLoading}
+              onTitle={(title) => {
+                /* the pin says what the panel is titled — one name for one
+                   thing, whichever stop the click came from */
+                const ov = overlayRef.current;
+                if (ov && ov.pickLabel !== title) {
+                  ov.pickLabel = title;
+                  engineRef.current?.invalidate();
+                }
+              }}
               onClose={() => {
                 setPicked(null);
                 const ov = overlayRef.current;
