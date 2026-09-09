@@ -19704,21 +19704,25 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-pv-stacklegend em { font-style: normal; display: flex; align-items: center; gap: 7px; min-width: 0; }
 .theme-fusion .fx-pv-stacklegend em i { width: 10px; height: 10px; border-radius: 2px; flex: none; }
 .theme-fusion .fx-pv-stacklegend b { font-family: var(--f-mono); font-weight: 500; font-size: 12px; font-variant-numeric: tabular-nums; color: var(--muted); flex: none; }
-.theme-fusion .fx-pv-stack i.s0, .theme-fusion .fx-pv-stacklegend i.s0 { background: #0a0a0a; }
-.theme-fusion .fx-pv-stack i.s1, .theme-fusion .fx-pv-stacklegend i.s1 { background: #3a3f4a; }
-.theme-fusion .fx-pv-stack i.s2, .theme-fusion .fx-pv-stacklegend i.s2 { background: #6b7280; }
-.theme-fusion .fx-pv-stack i.s3, .theme-fusion .fx-pv-stacklegend i.s3 { background: #9ca3af; }
-.theme-fusion .fx-pv-stack i.s4, .theme-fusion .fx-pv-stacklegend i.s4 { background: #c9ccd3; }
-.theme-fusion .fx-pv-stack i.s5, .theme-fusion .fx-pv-stacklegend i.s5 { background: #dcdee3; }
-.theme-fusion .fx-pv-stack i.s6, .theme-fusion .fx-pv-stacklegend i.s6 { background: #e9ebee; }
+/* La rampe des barres empilées est celle du site — l'ocre pâle vers l'encre de
+   `components/fusion/choropleth-palette.ts`, partagée par les cartes Paris,
+   Marseille et France. Un gris inventé aurait été hors charte, et ses trois
+   derniers pas étaient indistinguables. */
+.theme-fusion .fx-pv-stack i.s0, .theme-fusion .fx-pv-stacklegend i.s0 { background: #2b1a08; }
+.theme-fusion .fx-pv-stack i.s1, .theme-fusion .fx-pv-stacklegend i.s1 { background: #6d4a1c; }
+.theme-fusion .fx-pv-stack i.s2, .theme-fusion .fx-pv-stacklegend i.s2 { background: #a67638; }
+.theme-fusion .fx-pv-stack i.s3, .theme-fusion .fx-pv-stacklegend i.s3 { background: #b88856; }
+.theme-fusion .fx-pv-stack i.s4, .theme-fusion .fx-pv-stacklegend i.s4 { background: #d8b88a; }
+.theme-fusion .fx-pv-stack i.s5, .theme-fusion .fx-pv-stacklegend i.s5 { background: #e6cfa8; }
+.theme-fusion .fx-pv-stack i.s6, .theme-fusion .fx-pv-stacklegend i.s6 { background: #f0e3c9; }
 /* Taxe foncière : deux barres face à face, la même grammaire que le
    comparateur, donc déjà apprise par le lecteur. */
 .theme-fusion .fx-pv-tfbars { margin: 6px 0 16px; max-width: 640px; }
 .theme-fusion .fx-pv-tfbars .row { display: grid; grid-template-columns: minmax(0, 1fr) 200px 70px; gap: 14px; align-items: center; padding: 7px 0; }
 .theme-fusion .fx-pv-tfbars .lab { font-size: 14px; color: var(--ink-2); }
 .theme-fusion .fx-pv-tfbars .track { display: block; }
-.theme-fusion .fx-pv-tfbars .track i { display: block; height: 12px; background: #c8ccd3; border-radius: 2px; }
-.theme-fusion .fx-pv-tfbars .track i.me { background: var(--ink); }
+.theme-fusion .fx-pv-tfbars .track i { display: block; height: 12px; background: #d8b88a; border-radius: 2px; }
+.theme-fusion .fx-pv-tfbars .track i.me { background: var(--bleu, #2a3680); }
 .theme-fusion .fx-pv-tfbars .val { text-align: right; font-size: 14px; font-weight: 600; }
 @media (max-width: 820px) {
   .theme-fusion .fx-pv-tfbars .row { grid-template-columns: minmax(0, 1fr) 62px; gap: 4px 10px; }
@@ -19802,7 +19806,7 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-pv-nm::after {
   content: ""; display: inline-block; width: .62em; height: .62em; margin-left: .34em;
   vertical-align: baseline; text-decoration: none;
-  background-color: #2e3a8c;
+  background-color: var(--bleu, #2a3680);
   -webkit-mask: var(--fx-arrow) center/contain no-repeat; mask: var(--fx-arrow) center/contain no-repeat;
 }
 .theme-fusion a.fx-pv-linerow:hover .fx-pv-nm { text-decoration-color: var(--ink); }
