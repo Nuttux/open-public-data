@@ -729,6 +729,28 @@ export function isVoteTally(raw: string): boolean {
  *   the rung goes blank              129     1.30 %
  * ```
  */
+/**
+ * MOST NOTABLE FIRST, WHEREVER A DECADE IS OPENED.
+ *
+ * Every row carries `iv`, the 0–100 interest score a reader gave the item
+ * (`importance.jsonl`, via `build_index.py`). The block files ship rows in
+ * build order and the panel used to open a decade newest-first, which put a
+ * 1929 sidewalk repair above the 1929 bond election because December beats
+ * March. The score is the order now, the year breaks ties (newer first), and
+ * a row with no score sinks below every scored one rather than being guessed
+ * at. The neighbourhood files were already written in this order.
+ */
+export function byInterest(rows: readonly BlockDecision[]): BlockDecision[] {
+  return rows
+    .slice()
+    .sort(
+      (a, b) =>
+        (b.iv ?? -1) - (a.iv ?? -1) ||
+        b.y - a.y ||
+        (b.d ?? "").localeCompare(a.d ?? ""),
+    );
+}
+
 function pickHeadline(rows: readonly BlockDecision[]): BlockDecision | null {
   /* ── A ROW WE WROTE HEADS THE DECADE ─────────────────────────────────
      98.2 % of block decisions carry `pl`, a line written from the whole
@@ -739,7 +761,9 @@ function pickHeadline(rows: readonly BlockDecision[]): BlockDecision | null {
      written lines in it (Daniel, 2026-09-09: "old forms of the decisions").
      The written rows come first; the Board's own heading still wins among
      them, and the printed-line path stands for the 1.8 % without one. */
-  const written = rows.filter((r) => r.pl && r.pl.trim());
+  /* by interest, so the face of a decade is the first row of the list a
+     press opens — the same line in both places, never two different ones */
+  const written = byInterest(rows.filter((r) => r.pl && r.pl.trim()));
   if (written.length) {
     const reach = written.slice(
       0,
@@ -2551,6 +2575,14 @@ export function ficheOpener(
     among: string;
     and: string;
   },
+  /**
+   * Subject counts made ELSEWHERE, for a level whose rows are a selection.
+   * The neighbourhood's file ships twelve rows a decade and its subjects are
+   * counted in the pipeline over all of them; handing those counts in here
+   * lets its opening sentence name what it is mostly about on the same terms
+   * as a block's, instead of on a count of the selection.
+   */
+  counted?: readonly { readonly l: string; readonly n: number }[],
 ): FicheOpener | null {
   if (!shape || shape.n === 0) return null;
   const { n, firstYear, lastYear } = shape;
@@ -2577,17 +2609,18 @@ export function ficheOpener(
   /* `threadsIn` hands them back RAREST first, which is right for a chip — the
      rare one is the interesting one — and wrong for a sentence, where the
      reader wants what the place is mostly about. */
-  const top = (n < ABOUT_FLOOR ? [] : subjects)
-    .filter((h) => h.rows.length >= ABOUT_HITS)
+  const tally: readonly { readonly l: string; readonly n: number }[] =
+    counted ?? subjects.map((h) => ({ l: h.thread.l, n: h.rows.length }));
+  const top = (n < ABOUT_FLOOR ? [] : tally)
+    .filter((h) => h.n >= ABOUT_HITS)
     .slice()
-    .sort((a, b) => b.rows.length - a.rows.length)
+    .sort((a, b) => b.n - a.n)
     .slice(0, 3)
-    .map((h) => h.thread.l.toLowerCase());
+    .map((h) => h.l.toLowerCase());
 
   const dominant =
     top.length > 0 &&
-    (subjects.find((h) => h.thread.l.toLowerCase() === top[0])?.rows.length ?? 0) / n >=
-      MOSTLY_SHARE;
+    (tally.find((h) => h.l.toLowerCase() === top[0])?.n ?? 0) / n >= MOSTLY_SHARE;
   const about =
     top.length === 0
       ? null

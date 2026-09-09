@@ -277,6 +277,8 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
   const [picked, setPicked] = useState<number | null>(null);
   /* the panel's own title, for the handle — `CityBlockPanel` `onTitle` */
   const [sheetTitle, setSheetTitle] = useState<string | null>(null);
+  /** the panel's own count for its title, or -1 — see `CityBlockPanel.onTitle` */
+  const [sheetN, setSheetN] = useState(-1);
   /* ── A TAP IS NOT A SEARCH ─────────────────────────────────────────────
      A pick that came from a tap on the map, so the record effect can open
      it at the level the zoom implies: at the two wide stops a fingertip
@@ -823,6 +825,7 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
                the previous block's neighbourhood on the next block */
             setRequest(undefined);
             setSheetTitle(null);
+            setSheetN(-1);
             setSheetOpen(true);
             setPicked(b);
           })();
@@ -1172,7 +1175,11 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
       ?? (request?.req.kind === "hood" && request.block === ctx?.id && ctx?.hood
         ? ctx.hood
         : (record ? blockPlaceName(record.streets) : null) || ctx?.hood || "");
-  const n = markCard ? markCard.rows.length : (record?.decisions.length ?? 0);
+  const n = markCard
+    ? markCard.rows.length
+    : sheetTitle && sheetN >= 0
+      ? sheetN
+      : (record?.decisions.length ?? 0);
 
   return (
     <div className="fx-city-wrap">
@@ -1426,7 +1433,10 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
                 onFiche={setAt}
                 loading={recLoading}
                 onClose={close}
-                onTitle={setSheetTitle}
+                onTitle={(title, n) => {
+                  setSheetTitle(title);
+                  setSheetN(n);
+                }}
               />
             )}
           </div>

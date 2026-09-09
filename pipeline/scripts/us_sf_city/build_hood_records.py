@@ -273,6 +273,10 @@ def main() -> int:
                     # wording raw while the year list beside it read ours.
                     **({"pl": r["pl"]} if r.get("pl") else {}),
                     **({"iv": int(r["iv"])} if r.get("iv") is not None else {}),
+                    # the subject mask, so the neighbourhood's chips can narrow
+                    # the rows this file ships the way a block's do — without
+                    # it every chip matched nothing here (2026-09-10)
+                    **({"sm": r["sm"]} if r.get("sm") else {}),
                     **({"c": r["c"]} if r.get("c") else {}),
                 })
 

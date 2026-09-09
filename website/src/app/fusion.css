@@ -17532,52 +17532,74 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
    The rung you are on is not a button and does not look like one. Everything
    else is pressable and says so by being underlined on hover, which is the
    panel's own idiom for a link rather than a fifth button style. */
-.theme-fusion .fx-block-ladder {
+/* ── ONE PLACE AT FOUR SIZES ───────────────────────────────────────────────
+   The address, the block, the street, the neighbourhood — as tabs, the open
+   one underlined in ink, the others in link blue, each with its count under
+   the name. Equal columns so the row reads as one control; `min-width: 0` so
+   a long neighbourhood name wraps inside its column instead of pushing the
+   others off the panel. */
+.theme-fusion .fx-block-tabs-wrap { margin: 8px 0 2px; }
+.theme-fusion .fx-block-tabs {
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 2px 0;
-  margin: 8px 0 2px;
+  align-items: stretch;
+  margin-top: 3px;
+  border-bottom: 1px solid var(--rule);
 }
-.theme-fusion .fx-block-rung-wrap {
-  display: inline-flex;
-  align-items: baseline;
-}
-.theme-fusion .fx-block-rung-sep {
-  color: var(--muted);
-  font-size: 11px;
-  padding: 0 5px;
-}
-.theme-fusion .fx-block-rung {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 5px;
+.theme-fusion .fx-block-tab {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
   border: 0;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
   background: transparent;
-  padding: 2px 0;
+  padding: 5px 8px 6px 0;
   font-family: var(--f-ui);
   font-size: 12px;
-  line-height: 1.3;
+  line-height: 1.25;
   color: var(--bleu);
   cursor: pointer;
   text-align: left;
+  overflow-wrap: anywhere;
 }
-.theme-fusion .fx-block-rung:hover .fx-block-rung-l { text-decoration: underline; }
-.theme-fusion .fx-block-rung:focus-visible {
+.theme-fusion .fx-block-tab:hover .fx-block-tab-l { text-decoration: underline; }
+.theme-fusion .fx-block-tab:focus-visible {
   outline: 2px solid var(--bleu-vif);
   outline-offset: 1px;
 }
-.theme-fusion .fx-block-rung.is-on {
+.theme-fusion .fx-block-tab.is-on {
   color: var(--ink);
   font-weight: 600;
+  border-bottom-color: var(--ink);
   cursor: default;
 }
-.theme-fusion .fx-block-rung-n {
+.theme-fusion .fx-block-tab.is-on:hover .fx-block-tab-l { text-decoration: none; }
+.theme-fusion .fx-block-tab-n {
   font-family: var(--f-mono);
   font-size: 10px;
+  font-weight: 400;
   font-variant-numeric: tabular-nums;
   color: var(--muted);
 }
+/* "See 12 more" under an opened decade — the same voice as the row's own
+   "Read all 22" cue, as a button */
+.theme-fusion .fx-block-more {
+  display: block;
+  border: 0;
+  background: transparent;
+  padding: 6px 0 2px;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: .04em;
+  color: var(--bleu);
+  cursor: pointer;
+}
+.theme-fusion .fx-block-more::after { content: " \203A"; }
+.theme-fusion .fx-block-more:hover { text-decoration: underline; }
+.theme-fusion .fx-block-filter-note { margin-top: 6px; }
 
 /* ── WHAT KEEPS COMING UP ──────────────────────────────────────────────────
    Chips, and they wrap: a subject is a phrase in English — `Land and
@@ -19588,7 +19610,6 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 }
 .theme-fusion .fx-city-record-line:hover .fx-city-record-row::after,
 .theme-fusion .fx-city-record-line.is-hot .fx-city-record-row::after { color: var(--ink); }
-.theme-fusion .fx-block-rung-u { font-family: var(--f-sans); text-transform: none; letter-spacing: 0; }
 .theme-fusion .fx-city-note-counts { font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
 
 /* ══ PAGE VILLE (bloc 2, 2026-09-09) — l'entrée unique d'une commune ═════════
