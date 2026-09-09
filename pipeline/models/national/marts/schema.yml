@@ -40,3 +40,6 @@ models:
     description: "Projets Fonds vert dont la commune est bénéficiaire (SIREN), une ligne par projet"
   - name: mart_maires_national
     description: "Maire (nom, prénom, depuis) et taille du conseil par commune — RNE, colonnes non sensibles"
+
+  - name: mart_taux_fonciers_national
+    description: "Taux de taxe foncière (bâti, non-bâti, part intercommunale) par commune et année, REI DGFiP, avec la médiane de strate"

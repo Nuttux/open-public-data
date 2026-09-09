@@ -20,4 +20,6 @@ sources:
         description: "Fonds vert (ministère de la Transition écologique) — projets subventionnés 2023-2025, ramenés à un schéma commun par sync_fonds_vert.py"
       - name: rne_conseillers_municipaux
         description: "Répertoire national des élus, conseillers municipaux — colonnes non sensibles seulement (commune, nom, prénom, fonction, dates)"
+      - name: rei_taux
+        description: "REI (DGFiP) — taux de taxe foncière votés par la commune et l'intercommunalité, 2021-2025, colonnes E12/E12VOTE/E32/B12 seulement"
 
