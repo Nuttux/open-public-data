@@ -1,0 +1,14 @@
+import { chromium } from 'playwright';
+const BASE = process.env.BASE || 'http://localhost:3008'; const OUT = process.env.OUT;
+const b = await chromium.launch({ args: ['--enable-unsafe-webgpu', '--use-gl=angle', '--ignore-gpu-blocklist'] });
+const p = await b.newPage({ viewport: { width: 1440, height: 820 } });
+await p.goto(`${BASE}/us/city/sf/the-city?probe=1&plate=hold&labels=0`, { waitUntil: 'domcontentloaded' });
+await p.waitForFunction(() => !document.querySelector('.fx-city-loading'), null, { timeout: 240000 }); await p.waitForTimeout(2000);
+const x = await p.$('.fx-city-strip-x'); if (x) await x.click(); await p.waitForTimeout(800);
+console.log(await p.evaluate(() => ({ cam: window.__cityGL.getCamera(), vp: window.__cityGL.viewport, plate: document.querySelector('.fx-city-plate')?.style.opacity })));
+await p.screenshot({ path: `${OUT}/plate-hold.jpg`, type: 'jpeg', quality: 80, clip: { x: 0, y: 90, width: 1080, height: 607 } });
+await p.evaluate(() => { document.querySelector('.fx-city-plate').style.opacity = '0'; }); await p.waitForTimeout(300);
+await p.screenshot({ path: `${OUT}/plate-model.jpg`, type: 'jpeg', quality: 80, clip: { x: 0, y: 90, width: 1080, height: 607 } });
+await p.evaluate(() => { document.querySelector('.fx-city-plate').style.opacity = '1'; }); await p.waitForTimeout(300);
+await p.screenshot({ path: `${OUT}/plate-only.jpg`, type: 'jpeg', quality: 80, clip: { x: 0, y: 90, width: 1080, height: 607 } });
+await b.close();

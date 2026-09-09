@@ -34,6 +34,7 @@ import { loadBathy, waterLayerAsync } from "@/lib/citygl/layers/water";
 import { loadSurroundLandcover, surroundLayer } from "@/lib/citygl/layers/surround";
 import { buildingsLayerAsync } from "@/lib/citygl/layers/buildings";
 import { breathe, paced } from "@/lib/citygl/breathe";
+import { createTilePlate, type TilePlate } from "@/lib/citygl/tile-plate";
 import { trackEvent } from "@/components/AnalyticsProvider";
 import type { Object3D } from "three";
 import { riseNodes } from "@/lib/citygl/rise";
@@ -91,6 +92,10 @@ interface ThemeEntry {
  * and not for type. The dot beside the label carries the colour, the label
  * carries the identity, and neither depends on the other.
  */
+/** how long the tile plate takes to fade once the model is drawn — the
+ *  same number as `.fx-city-plate`'s transition in `fusion.css` */
+const PLATE_FADE_MS = 700;
+
 function chipStyle(on: boolean, ink: string | null): React.CSSProperties {
   return {
     font: `${on ? 600 : 400} 13px/1 var(--f-sans, system-ui)`,
@@ -201,6 +206,10 @@ const nextFrame = (): Promise<void> =>
 export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProps) {
   const hostRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  /* ── THE TILES UNDER THE MODEL WHILE IT DRAWS — `tile-plate.ts` ─────────
+     Mounted for the boot and its fade, then gone from the DOM. */
+  const plateRef = useRef<HTMLCanvasElement | null>(null);
+  const [plate, setPlate] = useState(true);
   const [failed, setFailed] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [, setNonce] = useState(0);
@@ -375,6 +384,14 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
 
   const filmRef = useRef<FilmPlayer | null>(null);
   const remeasureFilmRef = useRef<(() => void) | null>(null);
+  /* `?plate=hold` keeps the plate at half opacity over the drawn model, for
+     a harness checking that the two frames agree — a dev knob, like `?sm=0` */
+  const holdPlate = typeof location !== "undefined" && /[?&]plate=hold\b/.test(location.search);
+  useEffect(() => {
+    if (loading || holdPlate) return;
+    const t = setTimeout(() => setPlate(false), PLATE_FADE_MS + 50);
+    return () => clearTimeout(t);
+  }, [loading, holdPlate]);
   const [filmOn, setFilmOn] = useState(false);
 
   /* the page's chrome reads this: the map's own controls step off while the
@@ -488,6 +505,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
     if (!canvas || !host) return;
     let disposed = false;
     let engine: CityEngine | null = null;
+    let tilePlate: TilePlate | null = null;
     let ro: ResizeObserver | null = null;
     let detachControls: (() => void) | null = null;
 
@@ -787,6 +805,21 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         scale: (rect.width * 0.92) / Math.max(1, across),
       });
       engine.resize(rect.width, rect.height, window.devicePixelRatio || 1);
+      /* the tiles at this very camera, until the model is drawn */
+      if (descriptor.tilesBaseUrl && plateRef.current) {
+        const tp = createTilePlate(plateRef.current, descriptor.tilesBaseUrl);
+        tilePlate = tp;
+        /* the `__cityGL*` idiom: a harness checking the plate's frame */
+        if (process.env.NODE_ENV !== "production" || /[?&]probe=1\b/.test(location.search)) {
+          (globalThis as { __cityGLPlate?: unknown }).__cityGLPlate = tp;
+        }
+        const eng = engine;
+        void tp.ready.then((ok) => {
+          if (!ok || disposed) return;
+          const r = host.getBoundingClientRect();
+          tp.draw(eng.getCamera(), r.width, r.height, window.devicePixelRatio || 1);
+        });
+      }
 
       ro = new ResizeObserver(() => {
         const r = host.getBoundingClientRect();
@@ -1691,6 +1724,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
     })();
 
     return () => {
+      tilePlate?.dispose();
       disposed = true;
       ro?.disconnect();
       detachControls?.();
@@ -1954,6 +1988,14 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       <div className="fx-city-frame">
         <div className="fx-city-stage" ref={hostRef}>
           <canvas ref={canvasRef} className="fx-city-canvas" />
+          {plate ? (
+            <canvas
+              ref={plateRef}
+              className={`fx-city-plate${loading || holdPlate ? "" : " is-gone"}`}
+              style={holdPlate && !loading ? { opacity: 0.5 } : undefined}
+              aria-hidden="true"
+            />
+          ) : null}
           {/* ── §HOW THE CITY IS DRAWN IS A VIEW SETTING ──────────────────
               Rail, the bike network, the streets: these change how the city is
               DRAWN, not what the page is about. The page is about the record,

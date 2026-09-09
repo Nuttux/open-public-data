@@ -19394,11 +19394,13 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
      edge is the affordance. */
   .theme-fusion .fx-city-subjrow { position: relative; padding-right: 0; }
   .theme-fusion .fx-city-subjrow::after {
-    content: ""; position: absolute; top: 0; bottom: 11px; right: 0; width: 36px;
+    content: ""; position: absolute; top: 0; bottom: 11px; right: 0; width: 72px;
     pointer-events: none;
-    background: linear-gradient(to right, transparent, var(--bg));
+    background: linear-gradient(to right, transparent, var(--bg) 60%);
   }
-  .theme-fusion .fx-city-chips { padding-right: 36px; }
+  /* the row ends under the chat launcher's own ground, so no chip sits
+     under the bubble at landing — the drawer hides the bubble later */
+  .theme-fusion .fx-city-chips { padding-right: 72px; }
 
   /* ── THE DRAWER ───────────────────────────────────────────────────────
      The record is a drawer over the lower part of the screen, the map full
@@ -19511,10 +19513,23 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   .theme-fusion .fx-city-clockrow { padding-right: 170px; }
 }
 
-/* the whole-city preview picture under the veil (2026-09-09) was tried and
-   taken out the same day: the tile mosaic is framed for the phone's camera
-   and sat a little off the model. The right version is the tile map itself
-   under the model at the same camera — a later block. */
+/* ── THE TILES UNDER THE MODEL WHILE IT DRAWS — `tile-plate.ts` ──────────
+   A still mosaic was tried first (2026-09-09) and sat a little off the model;
+   the tiles drawn at the engine's own camera do not. Above the model's canvas
+   and under the veil, which becomes a wash while the plate stands. */
+.theme-fusion .fx-city-plate {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 4; pointer-events: none;
+  transition: opacity .7s ease;
+}
+.theme-fusion .fx-city-plate.is-gone { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .theme-fusion .fx-city-plate { transition: none; } }
+.theme-fusion .fx-city-stage:has(.fx-city-plate:not(.is-gone)) .fx-city-overlay {
+  background: rgba(250, 250, 247, .22);
+}
+.theme-fusion .fx-city-stage:has(.fx-city-plate:not(.is-gone)) .fx-city-loading {
+  background: color-mix(in srgb, var(--bg) 88%, transparent); padding: 6px 12px;
+}
 
 /* ── THE KEYBOARD HINT, BEHIND A WORD — `help-row.tsx` ─────────────────── */
 .theme-fusion .fx-city-help-wrap { padding: 6px 0; }

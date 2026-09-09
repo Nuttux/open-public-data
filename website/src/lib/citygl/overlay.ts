@@ -45,6 +45,11 @@ import { paintGrain, type Frame, type TerrainField } from "@/lib/city/terrain";
 import { drawGeoNames, type GeoName } from "./geo-names";
 import { decodeCoast, drawShoreline, type Ring } from "@/lib/city/water";
 
+/** the first camera band at which the un-designated places (parks, schools,
+ *  playgrounds…) are written: 1 = district. §THE WHOLE CITY CARRIES ITS
+ *  DISTRICTS AND LANDMARKS */
+const PLACES_FROM_BAND = 1;
+
 /** `?labels=0` — the tile renderer's knob; see §THE TILE RENDERER WANTS THE
  *  PICTURE WITHOUT THE WORDS in `draw` */
 const NO_LABELS =
@@ -694,7 +699,16 @@ export class CityOverlay {
 
         sn?.draw("arterials");
 
-        const rest = this.places.filter((qq) => qq.cls !== "designated");
+        /* ── THE WHOLE CITY CARRIES ITS DISTRICTS AND LANDMARKS, NOT ITS
+           PLAYGROUNDS ─────────────────────────────────────────────────────
+           The desktop audit of 2026-09-09 counted about 60 names on the
+           opening frame: parks, reservoirs, rec centres and schools in the
+           same hand as the division capitals a newcomer needs. The
+           un-designated places start one camera in. `geo-names.ts` holds the
+           same rule for the gazetteer, by the pipeline's own rank. */
+        const rest = band >= PLACES_FROM_BAND
+          ? this.places.filter((qq) => qq.cls !== "designated")
+          : [];
         if (rest.length) placeNames(fl, rest, grid, elev);
 
         sn?.draw("local");

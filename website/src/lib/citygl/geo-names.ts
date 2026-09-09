@@ -62,6 +62,14 @@ const LIFT_M = 6;
    the district is what a reader navigates by -- and larger than a street. */
 const FS = [13, 12, 11];
 const TRACK = [1.6, 1.2, 0.8];
+/* ── HOW DEEP INTO THE GAZETTEER EACH CAMERA GOES ──────────────────────────
+   `r` is the pipeline's own drop order, 0 first: only the Golden Gate and
+   the Bay stand at 0, sixteen names at 1, and the reservoirs, summits and
+   capes fill the ranks below. The whole-city frame was carrying all 109 in
+   the same hand as the division capitals (audit of 2026-09-09); it now
+   carries the two ranks a newcomer orients by, the district camera the
+   next three, and the street cameras everything. */
+const RANK_MAX = [1, 4, Infinity];
 
 const WATER_INK = "#2d5c7a";
 const LAND_INK = "#4a4136";
@@ -100,6 +108,7 @@ export function drawGeoNames(
        and covers ground the summit is only a point in, so the summit yields:
        one name, one place. */
     if (hoodNames && hoodNames.has(g.n.toUpperCase())) continue;
+    if (g.r > RANK_MAX[band]) continue;
     const water = WATER.has(g.k);
     ctx.font = `${water ? "italic 500" : "600"} ${FS[band]}px var(--f-sans, system-ui, sans-serif)`;
     ctx.letterSpacing = `${water ? 0 : TRACK[band]}px`;

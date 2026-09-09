@@ -1,0 +1,17 @@
+import { chromium } from 'playwright';
+const BASE = process.env.BASE || 'http://localhost:3008'; const OUT = process.env.OUT;
+const b = await chromium.launch({ args: ['--enable-unsafe-webgpu', '--use-gl=angle', '--ignore-gpu-blocklist'] });
+const p = await b.newPage({ viewport: { width: 1440, height: 820 } }); const errs = []; p.on('pageerror', (e) => errs.push(String(e).slice(0, 160)));
+const t0 = Date.now();
+await p.goto(`${BASE}/us/city/sf/the-city?probe=1`, { waitUntil: 'domcontentloaded' });
+await p.waitForTimeout(2500); await p.screenshot({ path: `${OUT}/plate-2s.jpg`, type: 'jpeg', quality: 70 });
+console.log('at 2.5 s', await p.evaluate(() => { const c = document.querySelector('.fx-city-plate'); if (!c) return null; const ctx = c.getContext('2d'); const d = ctx.getImageData(0, 0, c.width, c.height).data; let n = 0; for (let i = 3; i < d.length; i += 4 * 97) if (d[i] > 0) n++; return { w: c.width, h: c.height, painted: n > 0, cls: c.className }; }));
+await p.waitForFunction(() => !document.querySelector('.fx-city-loading'), null, { timeout: 240000 }); const ready = Date.now() - t0;
+await p.screenshot({ path: `${OUT}/plate-fade.jpg`, type: 'jpeg', quality: 70 });
+await p.waitForTimeout(2500);
+console.log('ready at', ready, 'ms; plate after fade:', await p.evaluate(() => !!document.querySelector('.fx-city-plate')));
+const x = await p.$('.fx-city-strip-x'); if (x) await x.click(); await p.waitForTimeout(600);
+await p.screenshot({ path: `${OUT}/plate-after.jpg`, type: 'jpeg', quality: 70 });
+await p.click('.fx-city-controls .fx-city-preset:text-is("District")'); await p.waitForTimeout(2500); await p.screenshot({ path: `${OUT}/labels-district.jpg`, type: 'jpeg', quality: 70 });
+console.log('errors', errs.slice(0, 3));
+await b.close();
