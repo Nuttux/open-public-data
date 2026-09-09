@@ -21,6 +21,7 @@ import argparse
 import json
 import os
 import re
+import unicodedata
 import sys
 from collections import defaultdict
 from datetime import datetime, timezone
@@ -117,8 +118,117 @@ def _repair_word(m: re.Match) -> str:
     return fixed
 
 
+# Table d'accents apprise sur le corpus lui-même (scripts/export/
+# build_objet_accents.py) : forme sans accent → graphie accentuée dominante.
+# Elle sert à repasser en casse de phrase les objets tout en capitales sans
+# fabriquer d'orthographe — un mot jamais vu accentué reste tel quel.
+_ACCENTS_PATH = Path(__file__).resolve().parents[2] / "seeds" / "objet_accents.json"
+try:
+    _ACC_FILE = json.loads(_ACCENTS_PATH.read_text(encoding="utf-8"))
+    _OBJET_ACCENTS: dict[str, str] = _ACC_FILE["mots"]
+    _VOCAB: set[str] = set(_ACC_FILE.get("vocab", ()))
+except (OSError, ValueError, KeyError):  # table absente : on n'abaisse pas la casse
+    _OBJET_ACCENTS, _VOCAB = {}, set()
+
+# Sigles et mots à garder en capitales dans une phrase remise en casse basse.
+_SIGLES = {
+    "BTP", "VRD", "HT", "TTC", "TVA", "CCAS", "CIAS", "EHPAD", "ZAC", "ZAE", "PLU",
+    "SDIS", "AEP", "EU", "EP", "PMR", "ERP", "CVC", "GTB", "GTC", "SSI", "PC",
+    "MOE", "MOA", "AMO", "OPC", "SPS", "CSPS", "DSP", "AOT", "RD", "RN", "GO",
+    "PVC", "LED", "TNT", "ADSL", "GSM", "SIG", "GPS", "ALSH", "ALAE", "MJC",
+    "CAF", "CNRACL", "SIVU", "SIVOM", "EPCI", "ONF", "SNCF", "EDF", "GRDF",
+}
+_MOT = re.compile(r"[A-Za-zÀ-ÖØ-öø-ÿ]+")
+
+
+def _strip_accents(w: str) -> str:
+    return "".join(c for c in unicodedata.normalize("NFD", w) if unicodedata.category(c) != "Mn").lower()
+
+
+def _lower_word(m: re.Match) -> str:
+    w = m.group(0)
+    if w in _SIGLES or (len(w) <= 3 and w.isupper() and w.lower() not in _OBJET_ACCENTS and len(w) > 1 and w not in {"DES", "LES", "DES", "SUR", "AUX", "ET", "DE", "LA", "LE", "DU", "EN", "UN"}):
+        return w
+    return _OBJET_ACCENTS.get(_strip_accents(w), w.lower())
+
+
+def _mostly_upper(t: str) -> bool:
+    letters = [c for c in t if c.isalpha()]
+    if len(letters) < 12:
+        return False
+    return sum(1 for c in letters if c.isupper()) / len(letters) > 0.85
+
+
+def _sentence_case(t: str) -> str:
+    """« PRESTATIONS DE DERATISATION » → « Prestations de dératisation ».
+
+    Les objets DECP arrivent pour un tiers tout en capitales, où le français
+    perd ses accents par convention. Les abaisser sans les réaccentuer
+    fabriquerait des fautes ; on s'appuie donc sur la table apprise du corpus.
+    """
+    if not _OBJET_ACCENTS or not _mostly_upper(t):
+        return t
+    out = _MOT.sub(_lower_word, t)
+    # Majuscule initiale sur la première lettre de la phrase.
+    for i, c in enumerate(out):
+        if c.isalpha():
+            return out[:i] + c.upper() + out[i + 1:]
+    return out
+
+
+_PREFIXES = ("ET", "DE", "DES", "DU", "LA", "LE", "LES", "SUR", "POUR", "AUX", "EN")
+_COLLE = re.compile(r"\b(" + "|".join(_PREFIXES) + r")([A-ZÀ-Ö]{4,})\b")
+
+
+def _split_glued(m: re.Match) -> str:
+    """« ETTRAVAUX » → « ET TRAVAUX », mais « DERATISATION » reste entier."""
+    whole, head, tail = m.group(0), m.group(1), m.group(2)
+    if not _VOCAB:
+        return whole
+    if _strip_accents(whole) in _VOCAB:      # mot réel du corpus : on n'y touche pas
+        return whole
+    if _strip_accents(tail) in _VOCAB:       # le morceau restant est un vrai mot
+        return f"{head} {tail}"
+    return whole
+
+
+def restore_nom(t: str, nom: str | None) -> str:
+    """« ville de pantin » → « ville de Pantin ».
+
+    La remise en casse de phrase abaisse aussi les noms propres. Le seul qu'on
+    puisse rétablir sans deviner est celui de la commune elle-même, et c'est de
+    loin le plus fréquent dans les objets.
+    """
+    if not nom or not t:
+        return t
+    # Comparaison sans accent : la source écrit « SAINT-ETIENNE » là où la
+    # commune s'appelle « Saint-Étienne ».
+    parts = {_strip_accents(p): p for p in re.split(r"[\s'’-]+", nom) if len(p) >= 3}
+    if not parts:
+        return t
+    return _MOT.sub(lambda m: parts.get(_strip_accents(m.group(0)), m.group(0)), t)
+
+
+def trim_objet(t: str, limit: int) -> str:
+    """Coupe au mot, avec des points de suspension.
+
+    La coupe brutale à 120 ou 200 caractères produisait « … DANS L » ou
+    « … toutes manifestations publi » : la page avait l'air cassée à l'endroit
+    le plus concret.
+    """
+    if len(t) <= limit:
+        return t
+    cut = t[:limit].rstrip()
+    space = cut.rfind(" ")
+    if space > limit * 0.6:
+        cut = cut[:space]
+    return cut.rstrip(" ,;:.-—–") + "…"
+
+
 def clean_objet(objet: str | None) -> str:
-    """Répare les apostrophes cassées (« d?électricité ») et les accents perdus."""
+    """Répare les apostrophes cassées (« d?électricité ») et les accents perdus,
+    recolle les mots soudés de la source, et remet en casse de phrase les objets
+    écrits tout en capitales."""
     t = (objet or "").strip()
     # « ?uvre » = œ perdu ; « ? » isolé entre deux mots = tiret perdu.
     t = re.sub(r"(?i)\?uvre", lambda m: "ŒUVRE" if m.group(0)[1:].isupper() else "œuvre", t)
@@ -127,7 +237,13 @@ def clean_objet(objet: str | None) -> str:
         t = re.sub(r"(?<![^\s])" + _FFFD + r"(?![^\s])", "à", t)   # « � » seul = « à »
         t = _WORD.sub(_repair_word, t)
         t = t.replace(_FFFD, "é")
-    return _APOS.sub("’", t)
+    t = _APOS.sub("’", t)
+    # Espace mangée par la source : « CORRECTIVE ETTRAVAUX ». On ne coupe QUE si
+    # le mot collé est inconnu du corpus et que les deux morceaux, eux, y sont —
+    # sinon « DERATISATION » deviendrait « DE RATISATION ».
+    t = _COLLE.sub(_split_glued, t)
+    t = re.sub(r"\s{2,}", " ", t).strip()
+    return _sentence_case(t)
 
 
 def _lot_key(r: dict) -> tuple:
@@ -209,7 +325,7 @@ def build(insee: str, meta: dict, rows: list[dict], now: str) -> dict | None:
         if t:
             ly_titu[t]["montant"] += m
             ly_titu[t]["nb"] += 1
-            ly_titu[t].setdefault("objet", clean_objet(r["objet"])[:120])
+            ly_titu[t].setdefault("objet", restore_nom(trim_objet(clean_objet(r["objet"]), 120), meta.get("nom")))
             if t != PERSONNES_LABEL and r.get("titulaire_siren"):
                 ly_titu[t].setdefault("siren", r["titulaire_siren"])
     # Fiche fournisseur locale (bloc 3) : par SIREN, tous les marchés (lots
@@ -232,7 +348,7 @@ def build(insee: str, meta: dict, rows: list[dict], now: str) -> dict | None:
             f["first_year"] = y if f["first_year"] is None else min(f["first_year"], y)
             f["last_year"] = y if f["last_year"] is None else max(f["last_year"], y)
         f["marches"].append({
-            "objet": clean_objet(r["objet"])[:200],
+            "objet": restore_nom(trim_objet(clean_objet(r["objet"]), 200), meta.get("nom")),
             "montant": g["montant"],
             "nb_lots": g["nb_lots"],
             "annee": y,
@@ -280,7 +396,7 @@ def build(insee: str, meta: dict, rows: list[dict], now: str) -> dict | None:
         )[:15],
         "top_marches": [
             {
-                "objet": clean_objet(g["row"]["objet"])[:200],
+                "objet": restore_nom(trim_objet(clean_objet(g["row"]["objet"]), 200), meta.get("nom")),
                 "montant": g["montant"],
                 "nb_lots": g["nb_lots"],
                 "titulaire": (
