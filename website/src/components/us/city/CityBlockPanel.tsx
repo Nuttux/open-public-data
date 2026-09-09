@@ -1756,7 +1756,9 @@ function DecadeRow({
             See `railSilence`. */}
         <span className="fx-block-line">
           {group.headline ? (
-            stripFileNumber(group.headline.t)
+            /* the written line where there is one; the Clerk's text is what
+               the row under it quotes — `block-records.ts` §A ROW WE WROTE */
+            (group.headline.pl && group.headline.pl.trim()) || stripFileNumber(group.headline.t)
           ) : silence === "damaged" ? (
             tOr(
               t,
