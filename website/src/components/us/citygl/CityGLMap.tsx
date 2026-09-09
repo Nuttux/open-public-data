@@ -510,6 +510,18 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
     let detachControls: (() => void) | null = null;
 
     const bootT0 = performance.now();
+    /* ── THE PLATE FIRST, BEFORE ANY DATA ──────────────────────────────
+       `tile-plate.ts` §WARM BEFORE THE CAMERA EXISTS: its index and the
+       whole-city tiles fetch while the manifest and the base tier do. */
+    if (descriptor.tilesBaseUrl && plateRef.current) {
+      const tp = createTilePlate(plateRef.current, descriptor.tilesBaseUrl);
+      tilePlate = tp;
+      tp.warm(host.getBoundingClientRect().width);
+      /* the `__cityGL*` idiom: a harness checking the plate's frame */
+      if (process.env.NODE_ENV !== "production" || /[?&]probe=1\b/.test(location.search)) {
+        (globalThis as { __cityGLPlate?: unknown }).__cityGLPlate = tp;
+      }
+    }
     void (async () => {
       let data: CityData;
       try {
@@ -805,14 +817,10 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         scale: (rect.width * 0.92) / Math.max(1, across),
       });
       engine.resize(rect.width, rect.height, window.devicePixelRatio || 1);
-      /* the tiles at this very camera, until the model is drawn */
-      if (descriptor.tilesBaseUrl && plateRef.current) {
-        const tp = createTilePlate(plateRef.current, descriptor.tilesBaseUrl);
-        tilePlate = tp;
-        /* the `__cityGL*` idiom: a harness checking the plate's frame */
-        if (process.env.NODE_ENV !== "production" || /[?&]probe=1\b/.test(location.search)) {
-          (globalThis as { __cityGLPlate?: unknown }).__cityGLPlate = tp;
-        }
+      /* the tiles at this very camera, until the model is drawn — the plate
+         itself was made, and its tiles asked for, before the data loaded */
+      if (tilePlate) {
+        const tp = tilePlate;
         const eng = engine;
         void tp.ready.then((ok) => {
           if (!ok || disposed) return;

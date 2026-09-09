@@ -59,6 +59,9 @@ export interface TilePlate {
   readonly frame: PlateFrame | null;
   readonly loaded: number;
   readonly requested: number;
+  /** fetch the whole-city level's tiles now, for a stage W CSS px wide —
+   *  before the camera is known, so they are in hand when it is */
+  warm(W: number): void;
   draw(cam: PlateCamera, W: number, H: number, dpr: number): void;
   dispose(): void;
 }
@@ -145,8 +148,27 @@ export function createTilePlate(canvas: HTMLCanvasElement, base: string, year = 
     }
   }
 
+  /* ── WARM BEFORE THE CAMERA EXISTS ─────────────────────────────────────
+     The plate used to be made after the data had loaded, so on production
+     the index and its tiles started fetching 3 s in and the picture landed
+     around the time the model did. The whole-city fit is known well enough
+     from the index alone: the reference level is a 1280-CSS-px frame at
+     `ref.scale`, and the page fits the same city to its own stage width. */
+  const warm = (W: number): void => {
+    void ready.then((ok) => {
+      if (!ok || dead || !index) return;
+      const refLevel = index.levels["3"] ?? index.levels[Object.keys(index.levels)[0]];
+      const refCss = refLevel.px[0] / (index.dpr || 1);
+      const guess = (index.ref.scale * W) / Math.max(1, refCss);
+      const l = pick(guess);
+      const [nx, ny] = index.levels[l].tiles;
+      for (let ty = 0; ty < ny; ty++) for (let tx = 0; tx < nx; tx++) image(l, tx, ty);
+    });
+  };
+
   return {
     ready,
+    warm,
     draw,
     /** what the last draw computed — for a harness */
     get frame() { return lastFrame; },
