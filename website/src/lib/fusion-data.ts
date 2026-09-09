@@ -3,6 +3,7 @@ import { normalizeObjet } from "@/lib/objet-normalizer";
 import { readDataJson, readDataJsonOrNull, cityJsonPath } from "./data/read";
 import { POSTE_LINKS } from "./budget-poste-links";
 import { cityPopulation } from "@/lib/methodology";
+import { NATURE_GROUPS, isNatureKey, natureOfFlow, type NatureKey } from "@/lib/budget-natures";
 
 export { PARIS_POPULATION } from "@/lib/methodology";
 import {
@@ -4811,6 +4812,131 @@ export function loadBudgetPoste(slug: string, requestedYear?: number, city: stri
     nbPostes: siblings.length,
     perHabitant: population > 0 ? total / population : 0,
     links: loadPosteLinks(slug, year, city),
+  };
+}
+
+// =====================================================================
+// Fiche de nature — « sous quelle forme l'argent sort » (salaires,
+// subventions, chantiers…), le transposé de la fiche de poste
+// =====================================================================
+
+export type BudgetNatureFiche = {
+  key: NatureKey;
+  year: number;
+  total: number;
+  /** Part des dépenses de l'année couvertes par les lignes du drilldown. */
+  shareOfDepensesPct: number;
+  /** Variation en % vs l'année précédente (null si indisponible). */
+  deltaPct: number | null;
+  series: { year: number; value: number; type: "vote" | "execute" }[];
+  typeBudget: "vote" | "execute";
+  /** Rang parmi les neuf natures (1 = la plus grosse). */
+  rank: number;
+  nbNatures: number;
+  perHabitant: number;
+  /** Où va cette nature, poste par poste (libellé brut du poste, à traduire côté client). */
+  byPoste: {
+    label: string;
+    slug: string;
+    value: number;
+    /** Part de la nature qui va à ce poste, en %. */
+    sharePct: number;
+    /** Les plus grosses lignes de cette nature dans ce poste. */
+    lines: { name: string; value: number; fonction?: string; fonction_imputed?: boolean }[];
+  }[];
+  /** Part des dépenses de l'année que les lignes de drilldown couvrent, en % (le ruban dit « sur 99 % des dépenses »). */
+  coveragePct: number;
+  hasImputed: boolean;
+};
+
+/**
+ * La fiche d'une nature : toutes les lignes de dépense de l'année dont la
+ * `flow_category` tombe dans ce groupe, sommées, puis réparties par poste.
+ * Même source que la page budget (budget_sankey_{year}.json), donc les mêmes
+ * chiffres que le ruban.
+ */
+export function loadBudgetNature(
+  key: string,
+  requestedYear?: number,
+  city: string = "paris",
+): BudgetNatureFiche | null {
+  if (!isNatureKey(key)) return null;
+  const index = readJson<BudgetIndex>(cityJsonPath(city, "budget_index.json"));
+  const year = requestedYear && index.availableYears.includes(requestedYear)
+    ? requestedYear
+    : index.latestYear;
+  const sankey = readJson<BudgetSankeyFull>(cityJsonPath(city, `budget_sankey_${year}.json`));
+  const centralNode = centralNodeFor(city);
+
+  type Line = { name: string; value: number; fonction?: string; flow_category?: string; fonction_imputed?: boolean };
+  const totalsByKey = (sk: BudgetSankeyFull): Record<NatureKey, number> => {
+    const acc = Object.fromEntries(NATURE_GROUPS.map((g) => [g.key, 0])) as Record<NatureKey, number>;
+    for (const items of Object.values(sk.drilldown?.expenses ?? {})) {
+      for (const it of items as Line[]) acc[natureOfFlow(it.flow_category)] += it.value;
+    }
+    return acc;
+  };
+
+  const totals = totalsByKey(sankey);
+  const total = totals[key];
+  const covered = Object.values(totals).reduce((a, b) => a + b, 0);
+  if (total <= 0) return null;
+
+  const ranked = (Object.entries(totals) as [NatureKey, number][]).sort((a, b) => b[1] - a[1]);
+  const rank = Math.max(1, ranked.findIndex(([k]) => k === key) + 1);
+
+  const byPoste = sankey.links
+    .filter((l) => l.source === centralNode)
+    .map((l) => {
+      const lines = ((sankey.drilldown?.expenses?.[l.target] ?? []) as Line[])
+        .filter((it) => natureOfFlow(it.flow_category) === key)
+        .sort((a, b) => b.value - a.value);
+      const value = lines.reduce((s, it) => s + it.value, 0);
+      const prefix = `${l.target}: `;
+      return {
+        label: l.target,
+        slug: slugifyLabel(l.target),
+        value,
+        sharePct: total > 0 ? (value / total) * 100 : 0,
+        lines: lines.slice(0, 6).map((it) => ({
+          name: it.name.startsWith(prefix) ? it.name.slice(prefix.length) : it.name,
+          value: it.value,
+          fonction: it.fonction,
+          fonction_imputed: it.fonction_imputed,
+        })),
+      };
+    })
+    .filter((p) => p.value > 0)
+    .sort((a, b) => b.value - a.value);
+
+  const series: BudgetNatureFiche["series"] = [];
+  for (const y of [...index.availableYears].sort((a, b) => a - b)) {
+    try {
+      const sk = y === year ? sankey : readJson<BudgetSankeyFull>(cityJsonPath(city, `budget_sankey_${y}.json`));
+      const v = totalsByKey(sk)[key];
+      const sum = index.summary.find((s) => s.year === y);
+      if (v > 0) series.push({ year: y, value: v, type: sum?.type_budget ?? "execute" });
+    } catch { /* année absente */ }
+  }
+  const prev = series.filter((s) => s.year < year).sort((a, b) => b.year - a.year)[0];
+  const deltaPct = prev && prev.value > 0 ? ((total - prev.value) / prev.value) * 100 : null;
+  const typeBudget = index.summary.find((s) => s.year === year)?.type_budget ?? "execute";
+  const population = cityPopulation(city);
+
+  return {
+    key,
+    year,
+    total,
+    shareOfDepensesPct: sankey.totals.depenses > 0 ? (total / sankey.totals.depenses) * 100 : 0,
+    deltaPct,
+    series,
+    typeBudget,
+    rank,
+    nbNatures: ranked.filter(([, v]) => v > 0).length,
+    perHabitant: population > 0 ? total / population : 0,
+    byPoste,
+    coveragePct: sankey.totals.depenses > 0 ? (covered / sankey.totals.depenses) * 100 : 0,
+    hasImputed: byPoste.some((p) => p.lines.some((it) => it.fonction_imputed)),
   };
 }
 

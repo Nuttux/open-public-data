@@ -21,6 +21,7 @@ import { useT, useLocale, type Locale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 import { cityPopulation, citySlugFromPathname } from "@/lib/methodology";
 import fonctionLabels from "@/data/budget-fonction-labels.json";
+import { NATURE_GROUPS } from "@/lib/budget-natures";
 
 type FonctionLabel = { fr: string; en: string; sub_fr?: string; sub_en?: string };
 const FONCTIONS: Record<string, FonctionLabel> = fonctionLabels as Record<string, FonctionLabel>;
@@ -61,17 +62,9 @@ const BUD_PLACEHOLDERS: ArticlePlaceholder[] = [
   },
 ];
 
-/** Les catégories de flux du pipeline, regroupées en mots de tous les jours. */
-const FLOW_GROUPS: { key: string; flows: string[]; color: string }[] = [
-  { key: "salaires", flows: ["Personnel"], color: "#2a3680" },
-  { key: "reverses", flows: ["Reversements péréquation"], color: "#4a3aa7" },
-  { key: "allocations", flows: ["Transferts sociaux"], color: "#6b5fc7" },
-  { key: "chantiers", flows: ["Immobilisations en cours", "Immobilisations corporelles", "Études"], color: "#8c5e2a" },
-  { key: "contributions", flows: ["Contributions obligatoires"], color: "#a67638" },
-  { key: "subventions", flows: ["Subventions (fonctionnement)", "Subventions (investissement)"], color: "#c19a5b" },
-  { key: "achats", flows: ["Achats", "Services extérieurs", "Autres services"], color: "#9099a6" },
-  { key: "dette", flows: ["Remboursement dette", "Charges financières"], color: "#c12323" },
-];
+/** Les catégories de flux du pipeline, regroupées en mots de tous les jours —
+ *  la même table que le ruban de chaque fiche de poste et la fiche de nature. */
+const FLOW_GROUPS = NATURE_GROUPS.filter((g) => g.key !== "autres");
 
 /**
  * Page budget v3 (2026-09-08) — deux temps, validés en maquette avec Daniel :
@@ -243,13 +236,17 @@ export default function BudgetClient({ index, d, posts }: Props) {
               {flowRows.length > 1 && (
                 <div className="fx-bud-forme">
                   <div className="h">{t("fx.bud.v3.forme")}</div>
-                  <div className="stack" aria-hidden="true">
-                    {flowRows.map((g) => <span key={g.key} style={{ width: `${g.pct}%`, background: g.color }} title={`${t(`fx.bud.v3.flow.${g.key}`)} · ${g.pct} %`} />)}
+                  {/* Chaque segment et chaque mot de la légende ouvrent la fiche de la nature :
+                      « les salaires, combien, et où ils vont poste par poste ». Pas de fiche pour « autres ». */}
+                  <div className="stack">
+                    {flowRows.map((g) => g.key === "autres"
+                      ? <span key={g.key} style={{ width: `${g.pct}%`, background: g.color }} title={`${t(`fx.bud.v3.flow.${g.key}`)} · ${g.pct} %`} />
+                      : <Link key={g.key} href={`${cityBasePath}/nature/${g.key}?year=${d.year}`} scroll={false} style={{ width: `${g.pct}%`, background: g.color }} title={`${t(`fx.bud.v3.flow.${g.key}`)} · ${g.pct} %`} aria-label={t(`fx.bud.v3.flow.${g.key}`)} />)}
                   </div>
                   <div className="legend">
-                    {flowRows.map((g) => (
-                      <span key={g.key}><i style={{ background: g.color }} /><b>{g.pct} %</b> {t(`fx.bud.v3.flow.${g.key}`)}</span>
-                    ))}
+                    {flowRows.map((g) => g.key === "autres"
+                      ? <span key={g.key}><i style={{ background: g.color }} /><b>{g.pct} %</b> {t(`fx.bud.v3.flow.${g.key}`)}</span>
+                      : <Link key={g.key} href={`${cityBasePath}/nature/${g.key}?year=${d.year}`} scroll={false}><i style={{ background: g.color }} /><b>{g.pct} %</b> {t(`fx.bud.v3.flow.${g.key}`)}</Link>)}
                   </div>
                   <p className="note">{fill("fx.bud.v3.forme_note", { pct: Math.round(d.flowCoveragePct) })}</p>
                 </div>
