@@ -90,6 +90,8 @@ export async function POST(req: Request) {
   const messages: Anthropic.MessageParam[] = history.map((m) => ({ role: m.role, content: m.content }));
 
   // Telemetry for the product digest (lib/chat/telemetry.ts): one event per answer.
+  // Awaited before the stream closes: Vercel freezes the function right after the
+  // response ends, so a fire-and-forget capture never leaves the box.
   const startedAt = Date.now();
   const distinctId = distinctIdFromCookie(req.headers.get("cookie"));
   // The privacy-page opt-out covers the chat too: the panel sends it as a header.
@@ -139,7 +141,7 @@ export async function POST(req: Request) {
         for (let i = 0; i < MAX_TOOL_LOOPS; i++) {
           if (Date.now() > deadline) {
             send("error", { message: "réponse trop longue, réessaie avec une question plus ciblée" });
-            void record(null, "deadline");
+            await record(null, "deadline");
             controller.close();
             return;
           }
@@ -202,17 +204,17 @@ export async function POST(req: Request) {
           }
 
           send("done", { stop_reason: final.stop_reason });
-          void record(final.stop_reason, null);
+          await record(final.stop_reason, null);
           controller.close();
           return;
         }
         send("error", { message: "tool loop limit reached" });
-        void record(null, "tool loop limit reached");
+        await record(null, "tool loop limit reached");
         controller.close();
       } catch (e) {
         const msg = e instanceof Error ? e.message : String(e);
         send("error", { message: msg });
-        void record(null, msg.slice(0, 200));
+        await record(null, msg.slice(0, 200));
         controller.close();
       }
     },
