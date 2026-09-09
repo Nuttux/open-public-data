@@ -134,6 +134,10 @@ function sfEntityPaths(): string[] {
   return out;
 }
 
+/** Date de la dernière refonte de la page commune : à avancer à chaque
+ *  changement de gabarit qui touche toutes les communes. */
+const COMMUNE_PAGE_TEMPLATE_DATE = "2026-09-09";
+
 const CHUNK_SIZE = 5000;
 
 // Number of chunks needed to fit all communes into ~5k-URL sitemaps.
@@ -211,8 +215,13 @@ async function segment(id: number): Promise<MetadataRoute.Sitemap> {
   // Commune pages change when their export is regenerated, not when a crawler
   // asks. Stamping them with `now` made every page claim it had just changed,
   // on every crawl, which is how a site teaches Google to ignore its lastmod.
+  // Une page change quand sa DONNÉE change… ou quand la page elle-même change.
+  // La refonte du niveau 0 (9 septembre 2026) a refait les 35 000 pages ; sans
+  // cette date, le sitemap disait à Google qu'elles n'avaient pas bougé depuis
+  // l'export de mai, et il n'avait aucune raison de revenir.
   const dataDate = loadAllCommunesGeneratedAt();
-  const communeModified = dataDate ? new Date(dataDate) : now;
+  const templateDate = new Date(COMMUNE_PAGE_TEMPLATE_DATE);
+  const communeModified = dataDate && new Date(dataDate) > templateDate ? new Date(dataDate) : templateDate;
 
   if (id === 0) {
     // Main pages + top-10 friendly slugs
