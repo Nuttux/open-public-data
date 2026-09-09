@@ -129,6 +129,39 @@ function Bars({ points, year, height = 50 }: { points: { year: number; value: nu
 }
 
 /**
+ * La barre empilée d'une section : sa forme avant ses lignes. Chaque section
+ * avait exactement la même silhouette (titre, phrase, deux colonnes, note), si
+ * bien que rien n'accrochait l'œil et que tout se ressemblait. Monochrome, du
+ * plus gros au plus petit, la queue regroupée sous « autres ».
+ */
+function StackedBar({ items, total, autres, max = 6 }: { items: { label: string; value: number }[]; total: number; autres: string; max?: number }) {
+  const sorted = items.slice().sort((a, b) => b.value - a.value);
+  const head = sorted.slice(0, max);
+  const tail = sorted.slice(max).reduce((n, x) => n + x.value, 0);
+  const rest = Math.max(0, total - head.reduce((n, x) => n + x.value, 0) - tail);
+  const segs = [...head, ...(tail + rest > 0 ? [{ label: autres, value: tail + rest }] : [])];
+  if (segs.length < 2 || total <= 0) return null;
+  const pct = (v: number) => (v / total) * 100;
+  return (
+    <div className="fx-pv-stackwrap">
+      <div className="fx-pv-stack" aria-hidden="true">
+        {segs.map((x, i) => (
+          <i key={x.label} className={`s${Math.min(i, 6)}`} style={{ width: `${pct(x.value)}%` }} />
+        ))}
+      </div>
+      <div className="fx-pv-stacklegend">
+        {segs.map((x, i) => (
+          <span key={x.label}>
+            <em><i className={`s${Math.min(i, 6)}`} aria-hidden="true" />{x.label}</em>
+            <b>{Math.round(pct(x.value))} %</b>
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/**
  * La barre de puces des sections — le seul chemin de la page, sur mobile comme
  * sur desktop. L'ancien sommaire était en `display:none` sous 820 px, ce qui
  * laissait une page de sept écrans sans navigation (le burger, personne ne
@@ -472,6 +505,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
 
           {/* 2. Dépenses et recettes */}
           <H2 id="depenses" sub={`${t("fx.natbud.v3.h2sub")} ${data.comptes && Object.keys(data.comptes.expenses).length ? t("fx.pv.h2sub_click") : ""}${hasSeries ? ` ${fill("fx.natbud.v3.span", { span })}` : ""}`}>{t("fx.bud.v3.h2")}</H2>
+          <StackedBar items={dep.map((x) => ({ label: strip(x.label), value: x.value }))} total={data.depenses} autres={t("fx.pv.autres")} />
           <div className="fx-bud-cols">
             <div className="fx-bud-col">
               <h3><span>{t("fx.bud.v3.col_dep")}</span><span className="tnum">{euro(data.depenses)}</span></h3>
@@ -506,6 +540,20 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                     ? ` ${fill("fx.pv.tf.stable", { y: tfHist[0].year })}`
                     : ""}
               </p>
+              {taxeFonciere.mediane != null && taxeFonciere.tfb != null ? (
+                <div className="fx-pv-tfbars">
+                  <div className="row">
+                    <span className="lab">{commune.nom}</span>
+                    <span className="track"><i className="me" style={{ width: `${(taxeFonciere.tfb / Math.max(taxeFonciere.tfb, taxeFonciere.mediane)) * 100}%` }} /></span>
+                    <span className="val tnum">{tfRate(taxeFonciere.tfb)} %</span>
+                  </div>
+                  <div className="row">
+                    <span className="lab">{t("fx.pv.tf.mediane_lab")}</span>
+                    <span className="track"><i style={{ width: `${(taxeFonciere.mediane / Math.max(taxeFonciere.tfb, taxeFonciere.mediane)) * 100}%` }} /></span>
+                    <span className="val tnum">{tfRate(taxeFonciere.mediane)} %</span>
+                  </div>
+                </div>
+              ) : null}
               {tfProduit != null && (
                 <p className="fx-v3-sentence">
                   {fill("fx.pv.tf.produit", { nom: commune.nom, year, n: euro(tfProduit), pct: tfShare != null ? Math.round(tfShare) : "—" })}
@@ -575,13 +623,13 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                     ? fill("fx.pv.achats_lead", { nom: commune.nom, year: mYears[0], nb: int.format(marches.total.nb_marches), n: euro(marches.total.montant) })
                     : fill("fx.pv.achats_lead_cumul", { nom: commune.nom, nb: int.format(marches.total.nb_marches), n: euro(marches.total.montant), y0: mYears[0] ?? "", y1: mYears[mYears.length - 1] ?? "" })}
               </p>
-              <div className="fx-pv-two">
-                <div>
-                  <div className="fx-pv-colhead"><span>{t("fx.pv.domaines")}</span><span className="tnum">{ly ? String(ly.year) : ""}</span></div>
-                  {mCats.map((c) => (
-                    <div key={c.categorie} className="fx-pv-line"><span>{c.categorie.replace(/ & /g, en ? " and " : " et ")}</span><Amt n={c.montant} /></div>
-                  ))}
-                </div>
+              <StackedBar
+                items={mCats.map((c) => ({ label: c.categorie.replace(/ & /g, en ? " and " : " et "), value: c.montant }))}
+                total={mCats.reduce((n, c) => n + c.montant, 0)}
+                autres={t("fx.pv.autres")}
+                max={5}
+              />
+              <div className="fx-pv-one">
                 <div>
                   <div className="fx-pv-colhead">
                     <span>{t("fx.pv.fournisseurs")}</span>
