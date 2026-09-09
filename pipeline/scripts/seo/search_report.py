@@ -16,8 +16,9 @@ monthly read, then a decision.
 
 Setup (once):
   pip install google-api-python-client google-auth
-  Either GOOGLE_ADC_JSON = the JSON of a service account added as a user on the
-  Search Console properties (seo-routine@open-data-france-484717), or locally:
+  Either GOOGLE_ADC_JSON_B64 = base64 of the service-account key file (one line;
+  the account seo-routine@open-data-france-484717 is a user on the Search
+  Console properties) — or GOOGLE_ADC_JSON with the raw JSON — or locally:
   gcloud auth application-default login \
       --scopes=openid,https://www.googleapis.com/auth/cloud-platform,https://www.googleapis.com/auth/webmasters.readonly
   # PostHog (optional): a personal API key with query:read, and the project id
@@ -52,7 +53,13 @@ def search_console(days: int, out: Path) -> dict[str, int]:
     scopes = ["https://www.googleapis.com/auth/webmasters.readonly"]
     # In the cloud routine the service-account key travels as GOOGLE_ADC_JSON
     # (its JSON content); on a laptop, Application Default Credentials.
+    # GOOGLE_ADC_JSON_B64 (one line, base64 of the key file) fits the KEY=value
+    # environment format of the cloud routine; GOOGLE_ADC_JSON (raw JSON) works too.
     adc_json = os.environ.get("GOOGLE_ADC_JSON")
+    if not adc_json and os.environ.get("GOOGLE_ADC_JSON_B64"):
+        import base64
+
+        adc_json = base64.b64decode(os.environ["GOOGLE_ADC_JSON_B64"]).decode("utf-8")
     if adc_json:
         from google.oauth2 import service_account  # type: ignore
 
