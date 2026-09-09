@@ -24,7 +24,7 @@ import type { PageVilleRicheProps, LinkRow } from "./page-ville-riche-data";
 const COMPARE_KEYS = ["impots_locaux", "encours_dette", "epargne_brute"] as const;
 
 export default function VilleRicheClient(p: PageVilleRicheProps) {
-  const { commune, budget, subventions, achats, construit, dette, lieux, chantiers, maire, peers, compare, related } = p;
+  const { commune, budget, subventions, achats, construit, dette, lieux, maire, peers, compare, related } = p;
   const t = useT();
   const { locale } = useLocale();
   const en = locale === "en";
@@ -227,24 +227,6 @@ export default function VilleRicheClient(p: PageVilleRicheProps) {
                   <div className="fx-pv-colhead"><span>{t("fx.pv.riche.projets")}</span><span className="tnum">{construit.year}</span></div>
                   <Rows rows={construit.rows} />
                   <p className="fx-v3-sentence"><Link className="fx-pv-link" href={construit.explorerHref}>{t("fx.pv.riche.projets_link")} →</Link></p>
-                </div>
-                <div>
-                  {chantiers && chantiers.chantiers.length > 0 ? (
-                    <>
-                      <div className="fx-pv-colhead"><span>{t("fx.pv.chantiers_etat")}</span><span className="tnum">{t("fx.pv.fonds_vert")}</span></div>
-                      {chantiers.chantiers.slice(0, 5).map((c, i) => (
-                        c.resume ? (
-                          <details key={i} className="fx-pv-chantier">
-                            <summary className="fx-pv-line"><span>{c.nom}<span className="fx-pv-sub2">{[fill("fx.pv.etat_annee", { y: c.annee ?? "" }), c.demarche].filter(Boolean).join(" · ")}</span></span><V3Amt {...split(c.montant)} /></summary>
-                            <p className="fx-pv-resume">{c.resume}</p>
-                          </details>
-                        ) : (
-                          <div key={i} className="fx-pv-line"><span>{c.nom}<span className="fx-pv-sub2">{[fill("fx.pv.etat_annee", { y: c.annee ?? "" }), c.demarche].filter(Boolean).join(" · ")}</span></span><V3Amt {...split(c.montant)} /></div>
-                        )
-                      ))}
-                      {chantiers.chantiers.length > 5 ? <p className="fx-v3-sentence">{fill("fx.pv.chantiers_plus", { n: chantiers.chantiers.length - 5 })}</p> : null}
-                    </>
-                  ) : null}
                 </div>
               </div>
             </section>

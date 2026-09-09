@@ -142,7 +142,7 @@ function ShareButton({ label, title, done }: { label: string; title: string; don
   );
 }
 
-export default function PageVilleClient({ commune, budget, evolution, invest, marches, chantiers, maire, marchesHref, peers, compare, sources, related }: PageVilleProps) {
+export default function PageVilleClient({ commune, budget, evolution, invest, marches, maire, marchesHref, peers, compare, sources, related }: PageVilleProps) {
   const t = useT();
   const { euro, int, signedPct, locale } = useFmt();
   const en = locale === "en";
@@ -392,32 +392,13 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                   ))}
                 </div>
                 <div>
-                  {chantiers && chantiers.chantiers.length > 0 ? (
-                    <>
-                      <div className="fx-pv-colhead"><span>{t("fx.pv.chantiers_etat")}</span><span className="tnum">{t("fx.pv.fonds_vert")}</span></div>
-                      {chantiers.chantiers.slice(0, 5).map((c, i) => (
-                        c.resume ? (
-                          <details key={i} className="fx-pv-chantier">
-                            <summary className="fx-pv-line"><span>{c.nom}<span className="fx-pv-sub2">{[fill("fx.pv.etat_annee", { y: c.annee ?? "" }), c.demarche].filter(Boolean).join(" · ")}</span></span><Amt n={c.montant} /></summary>
-                            <p className="fx-pv-resume">{c.resume}</p>
-                          </details>
-                        ) : (
-                          <div key={i} className="fx-pv-line"><span>{c.nom}<span className="fx-pv-sub2">{[fill("fx.pv.etat_annee", { y: c.annee ?? "" }), c.demarche].filter(Boolean).join(" · ")}</span></span><Amt n={c.montant} /></div>
-                        )
-                      ))}
-                      {chantiers.chantiers.length > 5 ? <p className="fx-v3-sentence">{fill("fx.pv.chantiers_plus", { n: chantiers.chantiers.length - 5 })}</p> : null}
-                    </>
-                  ) : (
-                    <>
-                      <div className="fx-pv-colhead"><span>{t("fx.pv.invest_va")}</span><span className="tnum">{euro(invYear.total.depenses)}</span></div>
-                      {invYear.depenses_par_groupe.map((g) => (
-                        <div key={g.groupe} className="fx-pv-line"><span>{g.groupe}</span><Amt n={g.montant} /></div>
-                      ))}
-                    </>
-                  )}
+                  <div className="fx-pv-colhead"><span>{t("fx.pv.invest_va")}</span><span className="tnum">{euro(invYear.total.depenses)}</span></div>
+                  {invYear.depenses_par_groupe.map((g) => (
+                    <div key={g.groupe} className="fx-pv-line"><span>{g.groupe}</span><Amt n={g.montant} /></div>
+                  ))}
                 </div>
               </div>
-              <p className="fx-v3-foot">{chantiers && chantiers.chantiers.length > 0 ? t("fx.pv.chantiers_note") : t("fx.pv.construit_note")}</p>
+              <p className="fx-v3-foot">{t("fx.pv.construit_note")}</p>
             </section>
           )}
 
@@ -565,7 +546,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
           )}
 
           <ChartSource
-            source={[t("fx.natbud.source"), evolution ? t("fx.natev.source") : null, marches ? t("fx.natmar.source") : null, chantiers ? t("fx.pv.src_fonds_vert") : null, maire?.nom ? t("fx.pv.src_rne") : null].filter(Boolean).join(" · ") + ` · ${year}`}
+            source={[t("fx.natbud.source"), evolution ? t("fx.natev.source") : null, marches ? t("fx.natmar.source") : null, maire?.nom ? t("fx.pv.src_rne") : null].filter(Boolean).join(" · ") + ` · ${year}`}
             dataHref={sources.dgfip}
             methodAnchor="c-villes"
           />

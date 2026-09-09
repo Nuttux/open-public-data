@@ -251,8 +251,7 @@ const nextConfig: NextConfig = {
       // /fr/city/paris (canonical commune URL) to /. Other cities live at
       // /fr/city/[slug]. Same behavior kept for the legacy /ville/paris.
       { source: '/ville/paris', destination: '/', permanent: true },
-      // Bloc 5 (2026-09-10) : /fr/city/paris est la page ville de Paris, comme
-      // toute commune ; la racine reste la vitrine (landing).
+      { source: '/fr/city/paris', destination: '/', permanent: true },
 
       // /c/[slug] → /fr/city/[slug] (pivot to commune namespace)
       // Specific Paris case kept first for clarity.
