@@ -63,7 +63,7 @@ def fetch(client, insees):
     sql = f"""
         SELECT code_insee, commune_nom, population, annee, montant, categorie_cpv,
                type_procedure, objet, titulaire_nom, titulaire_siren,
-               titulaire_personne_physique, montant_invraisemblable, depenses_totales_commune, marche_id
+               titulaire_personne_physique, montant_invraisemblable, depenses_totales_commune, marche_id, duree_mois
         FROM `{MART}` {where}
     """
     job = client.query(sql, job_config=bigquery.QueryJobConfig(query_parameters=params))
@@ -212,7 +212,38 @@ def build(insee: str, meta: dict, rows: list[dict], now: str) -> dict | None:
             ly_titu[t].setdefault("objet", clean_objet(r["objet"])[:120])
             if t != PERSONNES_LABEL and r.get("titulaire_siren"):
                 ly_titu[t].setdefault("siren", r["titulaire_siren"])
+    # Fiche fournisseur locale (bloc 3) : par SIREN, tous les marchés (lots
+    # regroupés) que la commune lui a notifiés. Jamais pour une personne
+    # physique : les entrepreneurs individuels n'ont pas de fiche.
+    fourn: dict[str, dict] = {}
+    for g in lots.values():
+        r = g["row"]
+        siren = r.get("titulaire_siren")
+        if not siren or r.get("titulaire_personne_physique"):
+            continue
+        f = fourn.setdefault(siren, {
+            "siren": siren, "nom": (r["titulaire_nom"] or "").strip(), "montant": 0.0, "nb": 0,
+            "first_year": None, "last_year": None, "marches": [],
+        })
+        f["montant"] += g["montant"]
+        f["nb"] += g["nb_lots"]
+        y = int(r["annee"]) if r["annee"] else None
+        if y:
+            f["first_year"] = y if f["first_year"] is None else min(f["first_year"], y)
+            f["last_year"] = y if f["last_year"] is None else max(f["last_year"], y)
+        f["marches"].append({
+            "objet": clean_objet(r["objet"])[:200],
+            "montant": g["montant"],
+            "nb_lots": g["nb_lots"],
+            "annee": y,
+            "duree_mois": r.get("duree_mois"),
+            "procedure": r.get("type_procedure"),
+            "categorie": r.get("categorie_cpv"),
+        })
+    for f in fourn.values():
+        f["marches"].sort(key=lambda m: (-(m["annee"] or 0), -m["montant"]))
     return {
+        "_fournisseurs": sorted(fourn.values(), key=lambda f: -f["montant"]),
         "generated_at": now,
         "source": SOURCE_LABEL,
         "source_url": SOURCE_URL,
@@ -255,6 +286,7 @@ def build(insee: str, meta: dict, rows: list[dict], now: str) -> dict | None:
                 "titulaire": (
                     PERSONNES_LABEL if g["row"].get("titulaire_personne_physique") else g["row"]["titulaire_nom"]
                 ),
+                "siren": None if g["row"].get("titulaire_personne_physique") else g["row"].get("titulaire_siren"),
                 "annee": g["row"]["annee"],
                 "procedure": g["row"]["type_procedure"],
                 "categorie": g["row"]["categorie_cpv"],
@@ -284,6 +316,19 @@ def main() -> int:
     now = datetime.now(timezone.utc).isoformat()
 
     keys = list(by_insee.keys())[: args.limit] if args.limit else list(by_insee.keys())
+    # Empreinte nationale d'un fournisseur : dans combien de communes il est
+    # titulaire, pour combien (marchés vraisemblables). Complète en --all,
+    # partielle sinon (dev). Sert au second niveau « ailleurs en France ».
+    national: dict[str, dict] = {}
+    for rows in by_insee.values():
+        for r in rows:
+            siren = r.get("titulaire_siren")
+            if not siren or r.get("titulaire_personne_physique") or r.get("montant_invraisemblable"):
+                continue
+            n = national.setdefault(siren, {"communes": set(), "montant": 0.0, "nb": 0})
+            n["communes"].add(r["code_insee"])
+            n["montant"] += r["montant"] or 0
+            n["nb"] += 1
     manifest = {}
     for insee in keys:
         meta = idx.get(insee)
@@ -294,6 +339,19 @@ def main() -> int:
             continue
         out = OUT_ROOT / meta["slug"]
         out.mkdir(parents=True, exist_ok=True)
+        fournisseurs = payload.pop("_fournisseurs")
+        for f in fournisseurs:
+            n = national.get(f["siren"])
+            f["national"] = {"communes": len(n["communes"]), "montant": n["montant"], "nb": n["nb"]} if n else None
+        json.dump(
+            {
+                "generated_at": now, "source": SOURCE_LABEL, "source_url": SOURCE_URL,
+                "coverage_note": COVERAGE_NOTE, "national_complet": bool(args.all),
+                "commune": payload["commune"], "annees_ecartees": payload["total"]["annees_ecartees"],
+                "fournisseurs": fournisseurs,
+            },
+            open(out / "fournisseurs.json", "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"),
+        )
         json.dump(payload, open(out / "marches.json", "w", encoding="utf-8"), ensure_ascii=False, indent=2)
         manifest[meta["slug"]] = {
             "years": [y["year"] for y in payload["by_year"]],
