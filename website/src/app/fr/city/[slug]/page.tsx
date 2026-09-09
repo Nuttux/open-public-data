@@ -19,6 +19,8 @@ import CityClient from "./CityClient";
 import CitySlimClient from "./CitySlimClient";
 import PageVilleClient from "./PageVilleClient";
 import { loadPageVille } from "./page-ville-data";
+import { loadPageVilleRiche } from "./page-ville-riche-data";
+import VilleRicheClient from "./VilleRicheClient";
 
 // Statically pre-render only the 9 rich top-N cities (Paris excluded — it
 // redirects to /). The thousands of slim "tail" pages are generated on
@@ -40,11 +42,11 @@ export async function generateMetadata({
   const cityRich = getCityOrNull(slug);
   if (cityRich) {
     return buildLocaleAwareMetadata({
-      title: `${cityRich.nom} : budget, dette et fiscalité de la commune`,
-      description: `Combien ${cityRich.nom} (${cityRich.reg_name}) dépense, encaisse et doit, année par année depuis 2014. Source : données OFGL harmonisées.`,
+      title: `Combien dépense ${cityRich.nom} ? Budget, subventions, marchés, dette et lieux de la Ville`,
+      description: `Ce que ${cityRich.nom} dépense par politique publique, ce qu'elle construit, ce qu'elle doit, les associations qu'elle soutient, ce qu'elle achète, ses lieux, et sa position face aux grandes villes. Sources : la Ville, OFGL, DECP.`,
       en: {
-        title: `${cityRich.nom}: the town's budget, debt and taxes`,
-        description: `How much ${cityRich.nom} (${cityRich.reg_name}) spends, collects and owes, year by year since 2014. Source: OFGL harmonised data.`,
+        title: `How much does ${cityRich.nom} spend? The City's budget, grants, contracts, debt and places`,
+        description: `What ${cityRich.nom} spends by public policy, what it builds, what it owes, the associations it supports, what it buys, its places, and where it stands among big cities. Sources: the City, OFGL, DECP.`,
       },
       path: `/fr/city/${slug}`,
     });
@@ -75,10 +77,15 @@ export default async function CityPage({
 }) {
   const { slug } = await params;
 
-  // Branch 1: villes à routes dédiées (Paris, Marseille). Les autres villes du
-  // registre (Lyon…) ont la page ville comme toute commune.
+  // Branch 1 : villes à routes dédiées (Paris, Marseille) — la même page
+  // ville que toute commune (bloc 5), alimentée par leurs données propres.
+  // Les autres villes du registre (Lyon…) passent par la branche 2.
   const cityRich = getCityOrNull(slug);
   if (cityRich && hasDedicatedRoutes(slug)) {
+    const sp = await searchParams;
+    const locale = await readLocale();
+    const pv = await loadPageVilleRiche(slug, sp.year ? Number(sp.year) : undefined, locale === "en");
+    if (pv) return <VilleRicheClient {...pv} />;
     const data = loadCommune(slug);
     const peers = loadPeerCities(slug);
     const marches = loadCommuneMarches(slug);

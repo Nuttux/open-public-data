@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { findCommuneByAny } from "@/lib/all-communes";
-import { getCityOrNull } from "@/lib/cities";
+import { getCityOrNull, hasDedicatedRoutes } from "@/lib/cities";
 import { getCommuneCapabilities } from "@/lib/commune-capabilities";
 import { CommuneNavProvider, type CommuneNav } from "@/components/CommuneNavContext";
 import { datasetJsonLd, breadcrumbJsonLd } from "@/lib/seo";
@@ -40,8 +40,10 @@ export default async function CityLayout({
   const nom = findCommuneByAny(slug)?.nom ?? getCityOrNull(slug)?.nom ?? null;
   // Only scope the chrome when the commune actually has national pages AND a
   // resolvable name; otherwise leave the default chrome untouched (value null).
+  // Paris et Marseille gardent leur propre menu (explorateurs) : pas de
+  // portée commune pour elles, même si des données nationales existent.
   const value: CommuneNav | null =
-    sections.length > 0 && nom ? { slug, nom, sections } : null;
+    sections.length > 0 && nom && !hasDedicatedRoutes(slug) ? { slug, nom, sections } : null;
 
   // Dataset + Breadcrumb schema for every commune page. The site publishes
   // Dataset markup on a handful of Paris and Marseille hubs but on none of the
