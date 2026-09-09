@@ -19657,7 +19657,24 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-pv-share:hover { border-color: var(--ink); color: var(--ink); }
 .theme-fusion .fx-pv-share i { display: inline-block; width: 10px; height: 10px; border: 1.5px solid currentColor; border-radius: 2px; }
 .theme-fusion .fx-pv-h2 { scroll-margin-top: 118px; } /* barre du haut + barre de puces */
-.theme-fusion .fx-pv-section { margin-top: 8px; }
+/* Rythme vertical : les sections se touchaient (8 px d'écart, titres sans
+   marge haute), si bien que la note grise d'une section collait au titre de la
+   suivante et que rien ne disait où l'une finissait. Un seul réglage porte
+   l'espacement, sur le titre, pour ne pas cumuler avec la marge de section. */
+.theme-fusion .fx-pv-section { margin-top: 0; }
+.theme-fusion .fx-pv .fx-v3-h2 { margin-top: 72px; padding-top: 26px; border-top: 1px solid var(--rule); }
+/* Le premier titre suit la barre de puces, qui porte déjà un filet : pas de
+   second trait ni de bande vide entre les deux. */
+.theme-fusion .fx-pv .fx-pv-chips + .fx-v3-h2 { margin-top: 30px; padding-top: 0; border-top: 0; }
+.theme-fusion .fx-pv .fx-v3-h2sub { margin-top: 8px; }
+.theme-fusion .fx-pv .fx-v3-lead { margin-bottom: 18px; }
+.theme-fusion .fx-pv .fx-v3-foot { margin-top: 18px; }
+/* La liste « Voir aussi » ferme la page : elle garde le même écart. */
+.theme-fusion .fx-pv .fx-related { margin-top: 64px; }
+@media (max-width: 820px) {
+  .theme-fusion .fx-pv .fx-v3-h2 { margin-top: 48px; padding-top: 20px; }
+  .theme-fusion .fx-pv .fx-related { margin-top: 44px; }
+}
 /* Une seule mesure de prose : les sous-titres et les notes couraient sur toute
    la largeur (177 et 198 caractères par ligne contre 81 pour les phrases). */
 .theme-fusion .fx-pv .fx-v3-h2sub,
