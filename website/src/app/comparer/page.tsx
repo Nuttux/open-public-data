@@ -6,8 +6,9 @@ import { buildLocaleAwareMetadata } from "@/lib/seo";
 import CompareClient from "./CompareClient";
 
 // Rendered per request: the language and the canonical follow the host (www = en, fr = fr);
-// a build-time prerender served the English page with a www canonical on fr.qipu.org.
-// The edge cache in next.config keeps it cheap.
+// a build-time prerender served the English page with a www canonical on fr.qipu.org
+// (and fails on the client's useSearchParams). The edge cache in next.config keeps it cheap.
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
