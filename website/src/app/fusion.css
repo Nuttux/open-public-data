@@ -19676,3 +19676,10 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion a.fx-pv-linerow { color: var(--ink); text-decoration: none; }
 .theme-fusion a.fx-pv-linerow:hover { background: rgba(10,10,10,.03); }
 .theme-fusion a.fx-pv-linerow .muted { color: var(--muted); }
+.theme-fusion .fx-pv-maire { font-size: 14.5px; color: var(--ink-2); margin: -8px 0 18px; }
+.theme-fusion .fx-pv-chantier > summary { list-style: none; cursor: pointer; }
+.theme-fusion .fx-pv-chantier > summary::-webkit-details-marker { display: none; }
+.theme-fusion .fx-pv-chantier > summary > span:first-child::after { content: " ▸"; color: var(--muted); font-size: 11px; }
+.theme-fusion .fx-pv-chantier[open] > summary > span:first-child::after { content: " ▾"; }
+.theme-fusion .fx-pv-resume { font-size: 13px; color: var(--ink-2); line-height: 1.5; margin: 4px 0 10px; padding-left: 12px; border-left: 2px solid var(--rule-2, #cfcdc4); }
+

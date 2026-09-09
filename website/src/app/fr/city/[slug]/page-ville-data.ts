@@ -6,6 +6,8 @@ import { loadCommuneEvolution } from "@/lib/commune-evolution";
 import { loadCommuneInvestissements } from "@/lib/commune-investissements";
 import { loadCommuneMarches } from "@/lib/commune-marches";
 import { loadCommunePeers } from "@/lib/commune-peers";
+import { loadCommuneChantiers } from "@/lib/commune-chantiers";
+import { loadMaire } from "@/lib/commune-maires";
 import type { RelatedBlock, RelatedRow } from "@/components/fiche/RelatedLinks";
 import type { CompareEntry, PageVilleProps } from "./PageVilleClient";
 
@@ -52,11 +54,13 @@ export async function loadPageVille(slug: string, requestedYear?: number, en = f
   if (!caps.budget.nature) return null;
   const budget = await loadCommuneBudget(slug, requestedYear);
   if (!budget) return null;
-  const [evolution, invest, marches] = await Promise.all([
+  const [evolution, invest, marches, chantiers] = await Promise.all([
     caps.evolution ? loadCommuneEvolution(slug) : Promise.resolve(null),
     caps.investissements ? loadCommuneInvestissements(slug) : Promise.resolve(null),
     caps.marches ? loadCommuneMarches(slug) : Promise.resolve(null),
+    loadCommuneChantiers(slug),
   ]);
+  const maire = loadMaire(commune.insee);
   const peers = caps.comparaison ? loadCommunePeers(slug) : null;
 
   const me = entry(slug);
@@ -91,6 +95,8 @@ export async function loadPageVille(slug: string, requestedYear?: number, en = f
     evolution,
     invest,
     marches,
+    chantiers,
+    maire,
     marchesHref: marches && marches.total.nb_marches > MARCHES_EXPLORER_MIN ? `/fr/city/${slug}/marches` : undefined,
     peers,
     compare,
