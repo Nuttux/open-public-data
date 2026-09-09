@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import ChartSource from "@/components/fusion/ChartSource";
@@ -128,6 +128,58 @@ function Bars({ points, year, height = 50 }: { points: { year: number; value: nu
   );
 }
 
+/**
+ * La barre de puces des sections — le seul chemin de la page, sur mobile comme
+ * sur desktop. L'ancien sommaire était en `display:none` sous 820 px, ce qui
+ * laissait une page de sept écrans sans navigation (le burger, personne ne
+ * l'ouvre). Elle se colle sous la barre du haut, défile au doigt, et noircit
+ * la section en cours ; la puce active se ramène toujours dans le champ.
+ */
+function SectionChips({ items, label }: { items: { id: string; label: string }[]; label: string }) {
+  const [active, setActive] = useState(items[0]?.id ?? "");
+  const barRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const targets = items.map((i) => document.getElementById(i.id)).filter((el): el is HTMLElement => Boolean(el));
+    if (!targets.length) return;
+    // La section active = la dernière dont le titre est passé sous la barre.
+    const pick = () => {
+      let current = targets[0].id;
+      for (const el of targets) {
+        if (el.getBoundingClientRect().top <= 140) current = el.id;
+      }
+      setActive(current);
+    };
+    pick();
+    window.addEventListener("scroll", pick, { passive: true });
+    window.addEventListener("resize", pick);
+    return () => {
+      window.removeEventListener("scroll", pick);
+      window.removeEventListener("resize", pick);
+    };
+  }, [items]);
+
+  useEffect(() => {
+    const bar = barRef.current;
+    const chip = bar?.querySelector<HTMLAnchorElement>(`a[href="#${active}"]`);
+    if (!bar || !chip) return;
+    const cl = chip.offsetLeft;
+    const cr = cl + chip.offsetWidth;
+    if (cl < bar.scrollLeft + 8) bar.scrollTo({ left: Math.max(0, cl - 16), behavior: "smooth" });
+    else if (cr > bar.scrollLeft + bar.clientWidth - 8) bar.scrollTo({ left: cr - bar.clientWidth + 16, behavior: "smooth" });
+  }, [active]);
+
+  return (
+    <nav className="fx-pv-chips" aria-label={label} ref={barRef}>
+      {items.map((s) => (
+        <a key={s.id} href={`#${s.id}`} className={s.id === active ? "is-active" : ""} aria-current={s.id === active ? "true" : undefined}>
+          {s.label}
+        </a>
+      ))}
+    </nav>
+  );
+}
+
 function ShareButton({ label, title, done }: { label: string; title: string; done: string }) {
   const [ok, setOk] = useState(false);
   const share = async () => {
@@ -146,7 +198,11 @@ function ShareButton({ label, title, done }: { label: string; title: string; don
   };
   return (
     <button type="button" className="fx-pv-share" onClick={share} aria-live="polite">
-      <i aria-hidden="true" />
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7" />
+        <path d="M16 6l-4-4-4 4" />
+        <path d="M12 2v13" />
+      </svg>
       {ok ? done : label}
     </button>
   );
@@ -361,10 +417,6 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
             </nav>
           )}
 
-          <nav className="fx-pv-toc" aria-label={t("fx.pv.toc_aria")}>
-            {toc.map((s) => <a key={s.id} href={`#${s.id}`}>{s.label}</a>)}
-          </nav>
-
           {/* 1. Le chiffre */}
           <div className="fx-v3-herogrid">
             <div>
@@ -388,6 +440,8 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
               </div>
             )}
           </div>
+
+          <SectionChips items={toc} label={t("fx.pv.chips_aria")} />
 
           {/* 2. Dépenses et recettes */}
           <H2 id="depenses" sub={`${t("fx.natbud.v3.h2sub")} ${data.comptes && Object.keys(data.comptes.expenses).length ? t("fx.pv.h2sub_click") : ""}${hasSeries ? ` ${fill("fx.natbud.v3.span", { span })}` : ""}`}>{t("fx.bud.v3.h2")}</H2>
@@ -502,7 +556,12 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                   ))}
                 </div>
                 <div>
-                  <div className="fx-pv-colhead"><span>{t("fx.pv.fournisseurs")}</span><span className="tnum">{mTitu.length >= 5 ? fill("fx.pv.top_n", { n: mTitu.length }) : ""}</span></div>
+                  <div className="fx-pv-colhead">
+                    <span>{t("fx.pv.fournisseurs")}</span>
+                    <span className={mTitu.some((f) => !f.personne_physique && f.siren) ? "hint" : "tnum"}>
+                      {mTitu.some((f) => !f.personne_physique && f.siren) ? t("fx.pv.fournisseur_hint") : mTitu.length >= 5 ? fill("fx.pv.top_n", { n: mTitu.length }) : ""}
+                    </span>
+                  </div>
                   {mTitu.map((f) => {
                     const nom = f.personne_physique ? t("fx.pv.entrepreneurs") : displayFournisseur(f.nom);
                     const objet = "objet" in f ? (f as { objet?: string }).objet : undefined;
@@ -510,7 +569,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                     const body = (
                       <>
                         <span>
-                          {nom}{href ? <span className="muted" aria-hidden="true"> →</span> : null}
+                          {href ? <span className="fx-pv-nm">{nom}</span> : nom}
                           {objet ? <span className="fx-pv-sub2">{objet}</span> : null}
                         </span>
                         <Amt n={f.montant} />
@@ -529,7 +588,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                       <span>
                         {m.objet || "—"}
                         <span className="fx-pv-sub2">
-                          {m.siren && m.titulaire ? <Link href={`/fr/city/${commune.slug}/fournisseur/${m.siren}`} className="fx-pv-link">{displayFournisseur(m.titulaire)}</Link> : m.titulaire}
+                          {m.siren && m.titulaire ? <Link href={`/fr/city/${commune.slug}/fournisseur/${m.siren}`} className="fx-pv-nm">{displayFournisseur(m.titulaire)}</Link> : m.titulaire}
                           {[m.annee, m.nb_lots && m.nb_lots > 1 ? fill("fx.pv.lots", { n: m.nb_lots }) : null].filter(Boolean).map((x) => ` · ${x}`).join("")}
                         </span>
                       </span>
@@ -538,9 +597,8 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                   ))}
                 </V3Fold>
               )}
-              {marchesHref ? <p className="fx-v3-sentence"><Link className="fx-pv-link" href={marchesHref}>{fill("fx.pv.tous_marches", { n: int.format(marches.total.nb_marches) })} →</Link></p> : null}
+              {marchesHref ? <p className="fx-v3-sentence"><Link className="fx-pv-link" href={marchesHref}>{fill("fx.pv.tous_marches", { n: int.format(marches.total.nb_marches) })}<i className="fx-pv-arrow" aria-hidden="true" /></Link></p> : null}
               <p className="fx-v3-foot">
-                {mTitu.some((f) => !f.personne_physique && f.siren) ? `${t("fx.pv.fournisseur_fiche")} ` : ""}
                 {marches.coverage_note}
                 {mYears.length ? ` ${fill("fx.pv.annees_publiees", { years: mYears.join(", ") })}` : ""}
                 {ecartees.length ? ` ${fill("fx.pv.annees_ecartees", { years: ecartees.join(", ") })}` : ""}
@@ -598,7 +656,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                       <span className="val tnum"><b>{compare.me.taux.tfb.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 2 })} %</b> · {other.taux.tfb.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 2 })} % {fill("fx.pv.taux_annee", { y: compare.me.taux.annee })}</span>
                     </div>
                   ) : null}
-                  <p className="fx-v3-sentence"><Link className="fx-pv-link" href={`/fr/compare/${commune.slug}/${other.slug}`}>{t("fx.pv.comparaison_complete")} →</Link></p>
+                  <p className="fx-v3-sentence"><Link className="fx-pv-link" href={`/fr/compare/${commune.slug}/${other.slug}`}>{t("fx.pv.comparaison_complete")}<i className="fx-pv-arrow" aria-hidden="true" /></Link></p>
                 </div>
               ) : null}
               <p className="fx-v3-foot">{fill("fx.pv.comparer_note", { year: compare.year })}{compare.me.taux ? ` ${t("fx.pv.taux_note")}` : ""}</p>

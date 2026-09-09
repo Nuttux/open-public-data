@@ -19592,15 +19592,49 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
    desktop ; sur mobile on scrolle. */
 .theme-fusion .fx-pv-kicker { font-family: var(--f-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
 .theme-fusion .fx-pv-title { font-family: var(--f-disp); font-weight: 700; font-size: clamp(34px, 5vw, 52px); letter-spacing: -.025em; line-height: 1.02; margin: 0 0 18px; text-wrap: balance; }
-.theme-fusion .fx-pv-toc { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 18px 0 0; font-size: 13px; }
-.theme-fusion .fx-pv-toc a { color: var(--muted); text-decoration: none; border-bottom: 1px solid transparent; }
-.theme-fusion .fx-pv-toc a:hover { color: var(--ink); border-bottom-color: var(--rule-2, #cfcdc4); }
+/* La barre de puces des sections : le seul chemin de la page, mobile ET desktop
+   (l'ancien sommaire disparaissait sous 820 px). Collante sous la barre du
+   haut, défilable au doigt, sans barre de défilement visible. */
+.theme-fusion { --fx-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='M13 6l6 6-6 6'/%3E%3C/svg%3E"); }
+/* Le même geste pour les liens de fin de section, qui portaient eux aussi un
+   « → » invisible. */
+.theme-fusion .fx-pv-arrow {
+  display: inline-block; width: .62em; height: .62em; margin-left: .34em;
+  background-color: currentColor;
+  -webkit-mask: var(--fx-arrow) center/contain no-repeat; mask: var(--fx-arrow) center/contain no-repeat;
+}
+.theme-fusion .fx-pv-chips {
+  position: sticky; top: 0; z-index: 30;
+  display: flex; gap: 8px; margin: 26px 0 0; padding: 10px 0;
+  overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; -ms-overflow-style: none;
+  background: color-mix(in srgb, var(--paper, #fafaf7) 92%, transparent);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+}
+.theme-fusion .fx-pv-chips::-webkit-scrollbar { display: none; }
+/* La page ville n'a plus de liens de section en haut : la barre de puces les
+   porte. Le burger reste pour les sélecteurs de commune et de langue. */
+.theme-fusion .fx-links-spacer { flex: 1; }
+.theme-fusion .fx-pv-chips a {
+  flex: none; font-size: 13.5px; line-height: 1.3; color: var(--ink-2); text-decoration: none;
+  border: 1px solid var(--rule-2, #cfcdc4); border-radius: 999px; padding: 5px 12px; white-space: nowrap;
+}
+.theme-fusion .fx-pv-chips a:hover { border-color: var(--ink); color: var(--ink); }
+.theme-fusion .fx-pv-chips a.is-active { background: var(--ink); border-color: var(--ink); color: var(--paper, #fafaf7); }
+@media (max-width: 820px) {
+  .theme-fusion .fx-pv-chips { margin-left: -16px; margin-right: -16px; padding-left: 16px; padding-right: 16px; }
+}
 .theme-fusion .fx-pv-position { font-size: 15px; color: var(--ink); margin: 12px 0 0; max-width: 60ch; line-height: 1.5; }
 .theme-fusion .fx-pv-share { display: inline-flex; align-items: center; gap: 7px; font: inherit; font-size: 12.5px; color: var(--ink-2); background: transparent; border: 1px solid var(--rule-2, #cfcdc4); border-radius: 999px; padding: 4px 11px; margin-top: 12px; cursor: pointer; }
 .theme-fusion .fx-pv-share:hover { border-color: var(--ink); color: var(--ink); }
 .theme-fusion .fx-pv-share i { display: inline-block; width: 10px; height: 10px; border: 1.5px solid currentColor; border-radius: 2px; }
 .theme-fusion .fx-pv-h2 { scroll-margin-top: 80px; }
 .theme-fusion .fx-pv-section { margin-top: 8px; }
+/* Une seule mesure de prose : les sous-titres et les notes couraient sur toute
+   la largeur (177 et 198 caractères par ligne contre 81 pour les phrases). */
+.theme-fusion .fx-pv .fx-v3-h2sub,
+.theme-fusion .fx-pv .fx-v3-foot,
+.theme-fusion .fx-pv .fx-v3-sentence { max-width: 64ch; }
 .theme-fusion .fx-pv-lead { font-size: 17px; line-height: 1.5; max-width: 64ch; margin: 0 0 14px; }
 .theme-fusion .fx-pv-tf-finance { color: var(--fx-ink-2, #4a4a44); border-left: 3px solid var(--fx-line, #e6e3da); padding-left: 12px; max-width: 64ch; }
 .theme-fusion .fx-pv-row { width: 100%; background: transparent; border-left: 0; border-right: 0; border-top: 0; text-align: left; font: inherit; cursor: pointer; }
@@ -19632,7 +19666,6 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-pv-vs .val { text-align: right; font-size: 13px; color: var(--ink-2); }
 .theme-fusion .fx-pv-vs .val b { color: var(--ink); font-weight: 600; }
 @media (max-width: 700px) {
-  .theme-fusion .fx-pv-toc { display: none; }
   .theme-fusion .fx-pv-two { grid-template-columns: 1fr; gap: 26px; }
   .theme-fusion .fx-pv-dettegrid { grid-template-columns: 1fr; }
   .theme-fusion .fx-pv-vs .row { grid-template-columns: 1fr; gap: 6px; }
@@ -19674,9 +19707,29 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted);
 }
 @media (max-width: 640px) { .theme-fusion .fx-consent-row { align-items: flex-start; padding: 16px; } }
+/* Une seule grammaire de lien sur la page : filet sous le nom + flèche.
+   Avant, les fournisseurs de la liste n'avaient AUCUN signe de lien alors que
+   ceux du repli étaient soulignés — deux grammaires à dix lignes d'écart. */
 .theme-fusion a.fx-pv-linerow { color: var(--ink); text-decoration: none; }
 .theme-fusion a.fx-pv-linerow:hover { background: rgba(10,10,10,.03); }
 .theme-fusion a.fx-pv-linerow .muted { color: var(--muted); }
+.theme-fusion .fx-pv-nm {
+  color: var(--ink); text-decoration: underline; text-decoration-color: var(--rule-2, #cfcdc4);
+  text-underline-offset: 3px; display: inline;
+}
+/* La flèche est un SVG, pas un caractère : U+2192 est ABSENT de la police du
+   site (comme ↔ et ≈, cf. kit fiche v3), donc « → » ne s'affichait nulle part —
+   les liens paraissaient morts. */
+.theme-fusion .fx-pv-nm::after {
+  content: ""; display: inline-block; width: .62em; height: .62em; margin-left: .34em;
+  vertical-align: baseline; text-decoration: none;
+  background-color: #2e3a8c;
+  -webkit-mask: var(--fx-arrow) center/contain no-repeat; mask: var(--fx-arrow) center/contain no-repeat;
+}
+.theme-fusion a.fx-pv-linerow:hover .fx-pv-nm { text-decoration-color: var(--ink); }
+.theme-fusion .fx-pv-colhead .hint {
+  font-family: var(--f-ui); font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--muted);
+}
 .theme-fusion .fx-pv-maire { font-size: 14.5px; color: var(--ink-2); margin: -8px 0 18px; }
 .theme-fusion .fx-pv-chantier > summary { list-style: none; cursor: pointer; }
 .theme-fusion .fx-pv-chantier > summary::-webkit-details-marker { display: none; }

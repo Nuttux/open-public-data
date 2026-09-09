@@ -34,7 +34,15 @@ function isFranceScope(pathname: string): boolean {
 // national tail commune from context); ville scope → /fr/city/[slug]/*.
 function navLinksForPath(pathname: string, commune: CommuneNav | null) {
   if (isFranceScope(pathname)) return NATIONAL_NAV_LINKS;
-  if (commune) return communeNavLinks(commune.slug, commune.sections);
+  if (commune) {
+    // Sur la page ville elle-même, la barre de puces collante EST la navigation
+    // des sections : la répéter en haut donnait deux menus pour les mêmes
+    // ancres, avec des mots différents ("Investissement" contre "Ce qu'elle
+    // construit"). Sur les sous-pages (explorateur, fiche fournisseur) les
+    // liens de section restent utiles pour revenir.
+    if (pathname === `/fr/city/${commune.slug}`) return [];
+    return communeNavLinks(commune.slug, commune.sections);
+  }
   const m = pathname.match(/^\/fr\/city\/([^/]+)/);
   return villeNavLinks(m ? m[1] : "paris");
 }
@@ -95,6 +103,7 @@ export default function Navbar() {
           <BrandMark />
           <span>{t("fx.nav.brand")}</span>
         </Link>
+        {navLinks.length > 0 ? (
         <nav className="fx-links" aria-label={t("fx.nav.main_aria")}>
           {navLinks.map((l) => (
             <Link
@@ -107,6 +116,7 @@ export default function Navbar() {
             </Link>
           ))}
         </nav>
+        ) : <span className="fx-links-spacer" />}
         <PlaceSwitcher variant="nav" currentSlug={frSlug} />
         <LangSwitcher />
         <button
@@ -147,6 +157,7 @@ export default function Navbar() {
             </svg>
           </button>
         </div>
+        {navLinks.length > 0 ? (
         <nav className="fx-overlay-nav" aria-label={t("fx.nav.main_aria")}>
           {navLinks.map((l) => (
             <Link
@@ -158,6 +169,7 @@ export default function Navbar() {
             </Link>
           ))}
         </nav>
+        ) : null}
         <div className="fx-overlay-foot">
           <div className="fx-overlay-foot-left">
             <PlaceSwitcher variant="overlay" currentSlug={frSlug} />

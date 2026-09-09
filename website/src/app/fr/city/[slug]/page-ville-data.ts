@@ -21,10 +21,7 @@ export const SOURCES = {
 /** Au-dessus de ce nombre de marchés, la section déborde : l'explorateur reste. */
 export const MARCHES_EXPLORER_MIN = 50;
 
-/** En deçà de ce seuil, la section taxe foncière ne s'affiche pas : la
- *  demande de recherche « taxe foncière {ville} » n'existe que pour les
- *  villes moyennes et grandes (Keyword Planner, 2026-09). */
-export const TAXE_FONCIERE_MIN_POP = 20000;
+
 
 const COMPARE_KEYS = ["impots_locaux", "encours_dette", "epargne_brute", "depenses_totales", "recettes_totales", "frais_personnel"];
 
@@ -70,13 +67,14 @@ export async function loadPageVille(slug: string, requestedYear?: number, en = f
   const maire = loadMaire(commune.insee);
   const peers = caps.comparaison ? loadCommunePeers(slug) : null;
 
-  // La taxe foncière : taux communal, médiane de la strate, historique. On la
-  // met en section nommée pour les villes assez grandes pour qu'on la cherche.
+  // La taxe foncière : taux communal, médiane de la strate, historique.
   const tauxFull: TauxCommune | null = loadTaux(commune.insee);
-  const taxeFonciere =
-    tauxFull && tauxFull.tfb != null && commune.pop >= TAXE_FONCIERE_MIN_POP
-      ? { ...tauxFull, source: TAUX_SOURCE.label, source_url: TAUX_SOURCE.url }
-      : null;
+  // Pas de seuil de population : le niveau 0 est la MÊME page pour les 35 000
+  // communes. Le taux et la médiane de strate existent pour toutes, la section
+  // s'allume donc sur la donnée comme toutes les autres.
+  const taxeFonciere = tauxFull && tauxFull.tfb != null
+    ? { ...tauxFull, source: TAUX_SOURCE.label, source_url: TAUX_SOURCE.url }
+    : null;
 
   const me = entry(slug);
   const options = compareOptions(slug);
