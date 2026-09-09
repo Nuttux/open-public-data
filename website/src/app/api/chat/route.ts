@@ -85,12 +85,14 @@ export async function POST(req: Request) {
   // Telemetry for the product digest (lib/chat/telemetry.ts): one event per answer.
   const startedAt = Date.now();
   const distinctId = distinctIdFromCookie(req.headers.get("cookie"));
+  // The privacy-page opt-out covers the chat too: the panel sends it as a header.
+  const analyticsOff = req.headers.get("x-qipu-analytics") === "off";
   const lastUser = [...history].reverse().find((m) => m.role === "user");
   const toolsUsed: string[] = [];
   let toolResultChars = 0;
   let answerChars = 0;
   const record = (stopReason: string | null, error: string | null) =>
-    captureChatQuestion(distinctId, {
+    analyticsOff ? Promise.resolve() : captureChatQuestion(distinctId, {
       scope: scope.id,
       locale: body.locale ?? scope.promptLang,
       question: lastUser?.content ?? "",

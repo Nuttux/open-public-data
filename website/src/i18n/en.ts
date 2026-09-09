@@ -170,6 +170,7 @@ const en: Record<string, string> = {
   'privacy.data.lang': 'Browser language',
   'privacy.data.geo': 'Country and approximate city (derived from IP address, which is then truncated)',
   'privacy.data.cookie_id': 'A random identifier stored in your browser to recognise returning visitors',
+  'privacy.data.chat': 'Questions asked to the assistant (question text, city, data consulted), to learn what visitors look for and what the site lacks — do not write personal data in them',
   'privacy.cookie.title': 'Analytics cookie',
   'privacy.cookie.text': 'A cookie named {code} is placed on your browser for a maximum duration of {bold_13}. It contains only a random identifier that cannot personally identify you. This cookie is used exclusively for audience measurement.',
   'privacy.cookie.cnil': ', this cookie is exempt from consent because it is strictly limited to audience measurement, is not cross-referenced with other processing, and does not enable tracking across other websites.',

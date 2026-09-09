@@ -170,6 +170,7 @@ const fr: Record<string, string> = {
   'privacy.data.lang': 'Langue du navigateur',
   'privacy.data.geo': "Pays et ville approximative (déduits de l'adresse IP, qui est ensuite tronquée)",
   'privacy.data.cookie_id': 'Un identifiant aléatoire stocké dans votre navigateur pour reconnaître les visiteurs qui reviennent',
+  'privacy.data.chat': "Les questions posées à l'assistant (texte de la question, ville, outils consultés), pour savoir ce que les visiteurs cherchent et ce qui manque au site — n'y écrivez pas de données personnelles",
   'privacy.cookie.title': "Cookie de mesure d'audience",
   'privacy.cookie.text': "Un cookie nommé {code} est déposé sur votre navigateur pour une durée maximale de {bold_13}. Il contient uniquement un identifiant aléatoire qui ne permet pas de vous identifier personnellement. Ce cookie sert exclusivement à la mesure d'audience.",
   'privacy.cookie.cnil': ", ce cookie bénéficie de l'exemption de consentement car il est strictement limité à la mesure d'audience, ne fait l'objet d'aucun recoupement avec d'autres traitements, et ne permet pas le suivi de la navigation sur d'autres sites.",

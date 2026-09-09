@@ -58,6 +58,7 @@ export default async function ConfidentialitePage() {
               <li>{t('privacy.data.lang')}</li>
               <li>{t('privacy.data.geo')}</li>
               <li>{t('privacy.data.cookie_id')}</li>
+              <li>{t('privacy.data.chat')}</li>
             </ul>
 
             <h2>{t('privacy.cookie.title')}</h2>

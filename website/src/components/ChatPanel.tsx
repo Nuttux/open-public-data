@@ -8,6 +8,7 @@ import { getChatSuggestions, CHAT_ASK_EVENT, sectionForPath, TEASER_OFF } from "
 import { scopeForPath, isChatEnabledPath, DEFAULT_SCOPE_ID, CHAT_SCOPES } from "@/lib/chat/scopes";
 import { useT, useLocale, ForcedLocale } from "@/lib/localeContext";
 import { toolLabel, toolRaw } from "@/lib/chat/toolLabels";
+import { isOptedOutAnalytics } from "@/components/AnalyticsProvider";
 
 // Le partage écrit sur disque (data/conversations) : indisponible sur un
 // hébergement serverless sans stockage. Visible en dev, opt-in en prod
@@ -360,7 +361,7 @@ function ChatPanelInner() {
     try {
       const res = await fetch("/api/chat", {
         method: "POST",
-        headers: { "content-type": "application/json" },
+        headers: { "content-type": "application/json", "x-qipu-analytics": isOptedOutAnalytics() ? "off" : "on" },
         body: JSON.stringify({ messages: wireHistory, locale, scope }),
         signal: ctrl.signal,
       });
