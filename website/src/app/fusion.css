@@ -19811,3 +19811,28 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-pv-chantier[open] > summary > span:first-child::after { content: " ▾"; }
 .theme-fusion .fx-pv-resume { font-size: 13px; color: var(--ink-2); line-height: 1.5; margin: 4px 0 10px; padding-left: 12px; border-left: 2px solid var(--rule-2, #cfcdc4); }
 
+/* ── THE RECORD SURFACES, AFTER THE READ OF 2026-09-10 ─────────────────── */
+.theme-fusion .fx-block-ladder-cap {
+  display: block; width: 100%;
+  font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--ink) 60%, transparent); margin-bottom: 3px;
+}
+.theme-fusion .fx-hood-quote > summary {
+  list-style: none; cursor: pointer; display: flex; gap: 10px; align-items: baseline;
+}
+.theme-fusion .fx-hood-quote > summary::-webkit-details-marker { display: none; }
+.theme-fusion .fx-hood-quote > summary .fx-hood-src-for { flex: 1 1 auto; }
+.theme-fusion .fx-hood-quote > summary .fx-hood-src-y {
+  flex: none; font-family: var(--f-mono); font-size: 12px;
+  color: color-mix(in srgb, var(--ink) 60%, transparent);
+}
+.theme-fusion .fx-hood-quote > summary:hover .fx-hood-src-for { text-decoration: underline; }
+.theme-fusion .fx-hood-quote[open] > summary .fx-hood-src-for { font-weight: 600; }
+.theme-fusion .fx-hood-src-q {
+  margin: 6px 0 4px; font-family: var(--f-mono); font-size: 12.5px; line-height: 1.5;
+  color: color-mix(in srgb, var(--ink) 72%, transparent);
+}
+.theme-fusion .fx-hood-quote .fx-hood-src-a { font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .04em; text-transform: uppercase; }
+@media (min-width: 820px) {
+  .theme-fusion .fx-block-open { font-size: 11.5px; }
+}

@@ -2559,9 +2559,9 @@ export function ficheOpener(
     n === 1
       ? words.one.replace("{y0}", String(firstYear))
       : firstYear === lastYear
-        ? words.oneYear.replace("{n}", String(n)).replace("{y0}", String(firstYear))
+        ? words.oneYear.replace("{n}", n.toLocaleString("en-US")).replace("{y0}", String(firstYear))
         : words.many
-            .replace("{n}", String(n))
+            .replace("{n}", n.toLocaleString("en-US"))
             .replace("{y0}", String(firstYear))
             .replace("{y1}", String(lastYear));
 

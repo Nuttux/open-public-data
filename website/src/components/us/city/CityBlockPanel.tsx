@@ -95,6 +95,7 @@ import type { CSSProperties } from "react";
 import { useT } from "@/lib/localeContext";
 import FicheArchiveShelf from "@/components/fiche/FicheArchiveShelf";
 import type { FicheArchiveDoc } from "@/components/fiche/types";
+import { compactMoney } from "@/components/us/city/record-line";
 import {
   sourceHref,
   blockAddresses,
@@ -342,7 +343,7 @@ function DecisionRows({ rows, cap }: { rows: readonly BlockDecision[]; cap?: num
           >
             <span className="fx-city-record-dot" style={{ background: "currentColor" }} />
             <span className="fx-city-record-text">
-              {(d.pl && d.pl.trim()) || stripFileNumber(d.t)}
+              {compactMoney((d.pl && d.pl.trim()) || stripFileNumber(d.t))}
             </span>
             <span className="fx-city-record-n">{whenOf(d)}</span>
           </a>
@@ -1180,7 +1181,7 @@ function Subjects({
           {tOr(t, "us.sf.thecity.panel.subjects_head", "What keeps coming up")}
         </div>
         <div className="fx-block-subjects">
-          {flat.map((sj) => (
+          {[...flat].sort((a, b) => b.trueN - a.trueN).map((sj) => (
             <button
               key={sj.here.thread.s}
               type="button"
@@ -1205,7 +1206,8 @@ function Subjects({
   /* Six is the cap and it is not arbitrary: rarest-first means the tail is
      `Paving and grading`, which almost every block in the city is on. A
      seventh chip costs a row and says "this block has streets". */
-  const shown = here.slice(0, 6);
+  /* the six busiest, busiest first — they were the first six in file order */
+  const shown = [...here].sort((a, b) => b.rows.length - a.rows.length).slice(0, 6);
   const cur = shown.find((h) => h.thread.s === open) ?? null;
   return (
     <>
@@ -1421,6 +1423,8 @@ function Ladder({
 
   return (
     <div className="fx-block-ladder">
+      {/* the numbers along the crumb had no word saying what they counted */}
+      <span className="fx-block-ladder-cap">{t("us.sf.thecity.panel.ladder_cap")}</span>
       {rungs.map((r, i) => (
         <span key={r.key} className="fx-block-rung-wrap">
           {i > 0 ? <span className="fx-block-rung-sep" aria-hidden>›</span> : null}
@@ -1758,7 +1762,7 @@ function DecadeRow({
           {group.headline ? (
             /* the written line where there is one; the Clerk's text is what
                the row under it quotes — `block-records.ts` §A ROW WE WROTE */
-            (group.headline.pl && group.headline.pl.trim()) || stripFileNumber(group.headline.t)
+            compactMoney((group.headline.pl && group.headline.pl.trim()) || stripFileNumber(group.headline.t))
           ) : silence === "damaged" ? (
             tOr(
               t,
@@ -2093,37 +2097,46 @@ function HoodSummaryLine({
           <div className="fx-city-ledger-head fx-block-sec">
             {tOr(t, "us.sf.thecity.panel.summary_src", "The records behind it")}
           </div>
+          {/* ── THE QUOTE BEHIND ITS LINE ───────────────────────────────────
+              Twenty-five entries each carrying three to five lines of the
+              Board's wording made a 4,300 px panel of mono quotes, OCR errors
+              included (audit of 2026-09-09). Each entry is its written line
+              and its year now; the wording opens on demand, printed as the
+              scan prints it. */}
+          <p className="fx-block-hint" style={{ marginTop: 2 }}>
+            {tOr(t, "us.sf.thecity.panel.summary_src_note", "Each line opens the Board's own wording, printed as the scan prints it.")}
+          </p>
           <ul className="fx-hood-src">
             {src.map((r) => (
               <li key={`${r.u}:${r.for}`}>
-                <span className="fx-hood-src-for">
-                  {r.for.charAt(0).toUpperCase() + r.for.slice(1)}
-                </span>
-                <a
-                  className="fx-hood-src-a"
-                  href={sourceHref({ u: r.u })}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {/* JSX TEXT IS NOT A STRING LITERAL. These were written as
-                      \u2014 and \u2197 directly in the markup, where the escape
-                      is not interpreted and the reader sees the six characters.
-                      It shipped because the row lived inside a closed fold;
-                      opening that fold is what made it visible. */}
-                  {`${r.y} — ${r.t} ↗`}
-                </a>
+                <details className="fx-hood-quote">
+                  <summary>
+                    <span className="fx-hood-src-for">
+                      {r.for.charAt(0).toUpperCase() + r.for.slice(1)}
+                    </span>
+                    <span className="fx-hood-src-y">{r.y}</span>
+                  </summary>
+                  <p className="fx-hood-src-q">{r.t}</p>
+                  <a
+                    className="fx-hood-src-a"
+                    href={sourceHref({ u: r.u })}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {tOr(t, "us.sf.thecity.panel.open_scan", "Open the scanned page")} ↗
+                  </a>
+                </details>
               </li>
             ))}
           </ul>
           {read?.full ? (
             <p className="fx-block-hint" style={NOTE}>
-              {tOr(
-                t,
-                "us.sf.thecity.panel.summary_read",
-                "Read line by line for {full}; {sampled} was sampled.",
-              )
-                .replace("{full}", read.full)
-                .replace("{sampled}", read.sampled ?? "\u2014")}
+              {read.sampled
+                ? tOr(t, "us.sf.thecity.panel.summary_read", "Read in full for {full}; read in part for {sampled}.")
+                    .replace("{full}", read.full)
+                    .replace("{sampled}", read.sampled)
+                : tOr(t, "us.sf.thecity.panel.summary_read_full", "Read in full for {full}.")
+                    .replace("{full}", read.full)}
             </p>
           ) : null}
         </>
@@ -2205,6 +2218,17 @@ function HoodLevel({
                   </span>
                   <span className="fx-block-n">{nfInt.format(d.n)}</span>
                 </span>
+                {/* nothing on the row said it opened — the street rail's own
+                    affordance, here too */}
+                {d.rows.length ? (
+                  <span className="fx-block-open">
+                    {d.rows.length < d.n
+                      ? tOr(t, "us.sf.thecity.panel.rail_open_some", "Read {m} of {n}")
+                          .replace("{m}", String(d.rows.length))
+                          .replace("{n}", nfInt.format(d.n))
+                      : t(d.rows.length === 1 ? "us.sf.thecity.panel.rail_open_one" : "us.sf.thecity.panel.rail_open").replace("{n}", String(d.rows.length))}
+                  </span>
+                ) : null}
               </summary>
               {d.rows.length ? (
                 <>
