@@ -4,15 +4,17 @@ import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { getChatSuggestions, CHAT_ASK_EVENT, sectionForPath, TEASER_OFF } from "@/lib/chat/suggestions";
+import { CHAT_ASK_EVENT, sectionForPath, TEASER_OFF } from "@/lib/chat/suggestions";
+import { chipsFor, pickChips, type ShownChip } from "@/lib/chat/chips";
 import { scopeForPath, isChatEnabledPath, DEFAULT_SCOPE_ID, CHAT_SCOPES } from "@/lib/chat/scopes";
 import { useT, useLocale, ForcedLocale } from "@/lib/localeContext";
 import { toolLabel, toolRaw } from "@/lib/chat/toolLabels";
-import { isOptedOutAnalytics } from "@/components/AnalyticsProvider";
+import { isOptedOutAnalytics, currentSessionId, trackEvent } from "@/components/AnalyticsProvider";
 
 // Where a question came from — the product digest must not read our own
 // suggestion chips as visitor demand. "typed" is the only organic signal.
 type ChatOrigin = "typed" | "suggestion" | "followup" | "page_chip";
+type ChipRef = { id: string; pos: number | string; family: string };
 
 // Le partage écrit sur disque (data/conversations) : indisponible sur un
 // hébergement serverless sans stockage. Visible en dev, opt-in en prod
@@ -136,14 +138,35 @@ function ChatPanelInner() {
   // seule chose qui décide des données atteignables par le modèle.
   const scope = scopeForPath(pathname) ?? DEFAULT_SCOPE_ID;
   const section = sectionForPath(pathname);
-  const suggestions = getChatSuggestions(section, locale, scope);
+  // Chips shown = 3 best by weight + 1 exploration, shuffled (lib/chat/chips.ts).
+  // First render is deterministic (rng → 0); the real draw happens after mount.
+  const [suggestions, setSuggestions] = useState<ShownChip[]>(() => pickChips(section, locale, scope, () => 0));
+  useEffect(() => {
+    setSuggestions(pickChips(section, locale, scope));
+  }, [section, locale, scope]);
   // Deux libellés du panneau nomment la ville ("Données publiques · Paris").
   // Ils sont désormais paramétrés {{city}} : sans ça, le panneau annonçait
   // Paris sur les pages San Francisco.
   const tCity = (key: string) => t(key).replace(/\{\{city\}\}/g, CHAT_SCOPES[scope].cityLabel);
   // Question mise en avant à côté du launcher — uniquement sur les pages de
   // données (le label parle des graphes ; la landing reste épurée : pilule seule).
-  const teaser = section === "default" || TEASER_OFF.has(section) ? null : suggestions[0];
+  const teaser = section === "default" || TEASER_OFF.has(section) ? null : chipsFor(section, locale, scope)[0];
+
+  // One `chat_chips_shown` per draw actually seen (panel open, empty state),
+  // so the digest can compute click rate per chip and per position.
+  const shownKeyRef = useRef("");
+  useEffect(() => {
+    if (!open || view !== "chat" || messages.length > 0) return;
+    const key = suggestions.map((s) => s.id).join(",");
+    if (shownKeyRef.current === key) return;
+    shownKeyRef.current = key;
+    trackEvent("chat_chips_shown", {
+      scope,
+      section,
+      locale,
+      chips: suggestions.map((s) => ({ id: s.id, pos: s.pos, family: s.family })),
+    });
+  }, [open, view, messages.length, suggestions, scope, section, locale]);
 
   // Auto-scroll intelligent : on ne suit le flux que si l'utilisateur est
   // déjà en bas — remonter lire pendant le streaming ne doit pas être happé.
@@ -262,7 +285,7 @@ function ChatPanelInner() {
 
   // « Pose cette question » déclenché ailleurs sur le site (chips, page /chat).
   // Ref pour que l'écouteur voie toujours le dernier send (sinon closure périmée).
-  const sendRef = useRef<(text: string, origin?: ChatOrigin) => void>(() => {});
+  const sendRef = useRef<(text: string, origin?: ChatOrigin, chip?: ChipRef) => void>(() => {});
   useEffect(() => {
     const onAsk = (e: Event) => {
       const q = (e as CustomEvent<string>).detail;
@@ -348,7 +371,7 @@ function ChatPanelInner() {
     }
   }
 
-  async function send(text: string, origin: ChatOrigin = "typed") {
+  async function send(text: string, origin: ChatOrigin = "typed", chip?: ChipRef) {
     if (!text.trim() || loading) return;
     setView("chat");
     setError(null);
@@ -366,7 +389,7 @@ function ChatPanelInner() {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "content-type": "application/json", "x-qipu-analytics": isOptedOutAnalytics() ? "off" : "on" },
-        body: JSON.stringify({ messages: wireHistory, locale, scope, origin }),
+        body: JSON.stringify({ messages: wireHistory, locale, scope, origin, chip, session_id: currentSessionId() }),
         signal: ctrl.signal,
       });
       if (!res.ok || !res.body) {
@@ -477,14 +500,14 @@ function ChatPanelInner() {
             onClick={() => {
               dismissTeaser();
               setOpen(true);
-              setTimeout(() => sendRef.current(teaser), 250);
+              setTimeout(() => sendRef.current(teaser.text, "suggestion", { id: teaser.id, pos: "teaser", family: teaser.family }), 250);
             }}
             className="rounded-xl rounded-br-sm border! border-solid! border-neutral-200! bg-white! px-3.5 py-2.5 text-left text-[13px] leading-snug text-neutral-800 shadow-lg shadow-neutral-900/8 transition hover:border-[#2a3680]! hover:text-[#2a3680]"
           >
             <span className="mb-0.5 block text-[9.5px] font-semibold uppercase tracking-wider text-neutral-400">
               {t("chat.teaser_label")}
             </span>
-            {teaser}
+            {teaser.text}
           </button>
           <button
             onClick={dismissTeaser}
@@ -639,11 +662,11 @@ function ChatPanelInner() {
                 <div className="text-[10px] uppercase tracking-wider text-neutral-400">{t("chat.examples")}</div>
                 {suggestions.map((s) => (
                   <button
-                    key={s}
-                    onClick={() => send(s, "suggestion")}
+                    key={s.id}
+                    onClick={() => send(s.text, "suggestion", { id: s.id, pos: s.pos, family: s.family })}
                     className="group flex w-full items-center justify-between gap-2 rounded-md border! border-solid! border-neutral-200! bg-white! px-3 py-2.5 text-left text-xs text-neutral-700 hover:bg-neutral-50! hover:border-neutral-900! hover:text-neutral-900 transition"
                   >
-                    <span>{s}</span>
+                    <span>{s.text}</span>
                     <span className="text-neutral-300 group-hover:text-neutral-900 transition">→</span>
                   </button>
                 ))}

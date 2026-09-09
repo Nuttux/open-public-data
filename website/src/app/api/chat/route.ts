@@ -47,7 +47,14 @@ export async function POST(req: Request) {
     );
   }
 
-  let body: { messages?: ChatMessage[]; locale?: string; scope?: string; origin?: string };
+  let body: {
+    messages?: ChatMessage[];
+    locale?: string;
+    scope?: string;
+    origin?: string;
+    chip?: { id?: unknown; pos?: unknown; family?: unknown };
+    session_id?: unknown;
+  };
   try {
     body = await req.json();
   } catch {
@@ -90,6 +97,14 @@ export async function POST(req: Request) {
   const lastUser = [...history].reverse().find((m) => m.role === "user");
   const ORIGINS = ["typed", "suggestion", "followup", "page_chip"];
   const origin = ORIGINS.includes(body.origin ?? "") ? (body.origin as string) : "unknown";
+  const str = (v: unknown, max: number) => (typeof v === "string" && v.length <= max ? v : undefined);
+  const chip = body.chip ?? {};
+  const chipProps = {
+    ...(str(chip.id, 40) ? { chip_id: str(chip.id, 40) } : {}),
+    ...(typeof chip.pos === "number" || str(chip.pos, 10) ? { chip_pos: chip.pos as number | string } : {}),
+    ...(str(chip.family, 30) ? { chip_family: str(chip.family, 30) } : {}),
+    ...(str(body.session_id, 64) ? { $session_id: str(body.session_id, 64) } : {}),
+  };
   const toolsUsed: string[] = [];
   let toolResultChars = 0;
   let answerChars = 0;
@@ -108,6 +123,7 @@ export async function POST(req: Request) {
       error,
       duration_ms: Date.now() - startedAt,
       page: req.headers.get("referer"),
+      ...chipProps,
       ...(ip !== "unknown" ? { $ip: ip } : {}),
     });
 

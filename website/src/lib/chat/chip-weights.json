@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "updated": null,
+  "note": "Score per suggestion chip in [0,1] (default 0.5) and the n behind it. Rewritten weekly by the product digest routine through a pull request; never edited by hand.",
+  "weights": {}
+}

@@ -27,6 +27,12 @@ export type ChatQuestionProps = {
   error: string | null;
   duration_ms: number;
   page: string | null;
+  /** Set when origin = suggestion: which chip, at which position, of which family. */
+  chip_id?: string;
+  chip_pos?: number | string;
+  chip_family?: string;
+  /** The browser SDK's session, so the question joins the pageviews around it. */
+  $session_id?: string;
   $ip?: string;
 };
 

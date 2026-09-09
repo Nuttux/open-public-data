@@ -192,6 +192,9 @@ const SF: Record<SectionKey, string[]> = {
   investissements: [],
 };
 
+/** The editorial tables, for lib/chat/chips.ts (ids, families, exploration pool). */
+export const SUGGESTION_TABLES = { fr: FR, en: EN, sf: SF } as const;
+
 export function getChatSuggestions(section: SectionKey, locale: Locale, scope: ChatScopeId = "paris"): string[] {
   // Une rubrique sans jeu propre retombe sur les questions générales du scope,
   // jamais sur un tableau vide (le panneau afficherait une liste morte).
