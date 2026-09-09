@@ -8,7 +8,7 @@ import { loadCommuneMarches } from "@/lib/commune-marches";
 import { loadCommunePeers } from "@/lib/commune-peers";
 import { loadCommuneChantiers } from "@/lib/commune-chantiers";
 import { loadMaire } from "@/lib/commune-maires";
-import { loadTaux } from "@/lib/commune-taux";
+import { loadTaux, TAUX_SOURCE, type TauxCommune } from "@/lib/commune-taux";
 import type { RelatedBlock, RelatedRow } from "@/components/fiche/RelatedLinks";
 import type { CompareEntry, PageVilleProps } from "./PageVilleClient";
 
@@ -20,6 +20,11 @@ export const SOURCES = {
 
 /** Au-dessus de ce nombre de marchés, la section déborde : l'explorateur reste. */
 export const MARCHES_EXPLORER_MIN = 50;
+
+/** En deçà de ce seuil, la section taxe foncière ne s'affiche pas : la
+ *  demande de recherche « taxe foncière {ville} » n'existe que pour les
+ *  villes moyennes et grandes (Keyword Planner, 2026-09). */
+export const TAXE_FONCIERE_MIN_POP = 20000;
 
 const COMPARE_KEYS = ["impots_locaux", "encours_dette", "epargne_brute", "depenses_totales", "recettes_totales", "frais_personnel"];
 
@@ -65,6 +70,14 @@ export async function loadPageVille(slug: string, requestedYear?: number, en = f
   const maire = loadMaire(commune.insee);
   const peers = caps.comparaison ? loadCommunePeers(slug) : null;
 
+  // La taxe foncière : taux communal, médiane de la strate, historique. On la
+  // met en section nommée pour les villes assez grandes pour qu'on la cherche.
+  const tauxFull: TauxCommune | null = loadTaux(commune.insee);
+  const taxeFonciere =
+    tauxFull && tauxFull.tfb != null && commune.pop >= TAXE_FONCIERE_MIN_POP
+      ? { ...tauxFull, source: TAUX_SOURCE.label, source_url: TAUX_SOURCE.url }
+      : null;
+
   const me = entry(slug);
   const options = compareOptions(slug);
   const idx = loadAllCommunesIndex();
@@ -99,6 +112,7 @@ export async function loadPageVille(slug: string, requestedYear?: number, en = f
     marches,
     chantiers,
     maire,
+    taxeFonciere,
     marchesHref: marches && marches.total.nb_marches > MARCHES_EXPLORER_MIN ? `/fr/city/${slug}/marches` : undefined,
     peers,
     compare,

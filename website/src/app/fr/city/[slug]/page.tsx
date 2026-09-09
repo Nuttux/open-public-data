@@ -42,10 +42,10 @@ export async function generateMetadata({
   const cityRich = getCityOrNull(slug);
   if (cityRich) {
     return buildLocaleAwareMetadata({
-      title: `Combien dépense ${cityRich.nom} ? Budget, subventions, marchés, dette et lieux de la Ville`,
+      title: `Budget de ${cityRich.nom} : combien dépense la Ville ? Dépenses, subventions, marchés, dette, lieux`,
       description: `Ce que ${cityRich.nom} dépense par politique publique, ce qu'elle construit, ce qu'elle doit, les associations qu'elle soutient, ce qu'elle achète, ses lieux, et sa position face aux grandes villes. Sources : la Ville, OFGL, DECP.`,
       en: {
-        title: `How much does ${cityRich.nom} spend? The City's budget, grants, contracts, debt and places`,
+        title: `${cityRich.nom} budget: how much does the City spend? Spending, grants, contracts, debt, places`,
         description: `What ${cityRich.nom} spends by public policy, what it builds, what it owes, the associations it supports, what it buys, its places, and where it stands among big cities. Sources: the City, OFGL, DECP.`,
       },
       path: `/fr/city/${slug}`,
@@ -55,10 +55,10 @@ export async function generateMetadata({
   const slim = findCommuneByAny(slug);
   if (slim) {
     return buildLocaleAwareMetadata({
-      title: `Combien dépense ${slim.nom} ? Budget, dette et marchés de la commune (${slim.dep_name})`,
+      title: `Budget de ${slim.nom} : combien dépense la commune ? Dépenses, dette, marchés (${slim.dep_name})`,
       description: `Ce que ${slim.nom} (${slim.dep_name}, ${slim.reg_name}) dépense et encaisse, ce qu'elle construit, ce qu'elle doit, ce qu'elle achète, et sa position face aux communes de même taille. Sources : DGFiP, OFGL, DECP.`,
       en: {
-        title: `How much does ${slim.nom} spend? The town's budget, debt and contracts (${slim.dep_name})`,
+        title: `${slim.nom} budget: how much does the town spend? Spending, debt, contracts (${slim.dep_name})`,
         description: `What ${slim.nom} (${slim.dep_name}, ${slim.reg_name}) spends and collects, what it builds, what it owes, what it buys, and where it stands among towns of the same size. Sources: DGFiP, OFGL, DECP.`,
       },
       path: `/fr/city/${slug}`,

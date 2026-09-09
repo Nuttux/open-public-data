@@ -57,6 +57,16 @@ export type PageVilleProps = {
   chantiers?: ChantiersData | null;
   /** Le maire et la taille du conseil (RNE), bloc 4. */
   maire?: Maire | null;
+  /** Taxe foncière (REI) — section nommée pour les villes ≥ 20 000 hab. */
+  taxeFonciere?: {
+    annee: number;
+    tfb: number | null;
+    mediane: number | null;
+    epci: string | null;
+    hist: Record<string, number>;
+    source: string;
+    source_url: string;
+  } | null;
   /** Lien vers l'explorateur marchés, seulement quand la section déborde. */
   marchesHref?: string;
   peers: PeerComparison | null;
@@ -142,7 +152,7 @@ function ShareButton({ label, title, done }: { label: string; title: string; don
   );
 }
 
-export default function PageVilleClient({ commune, budget, evolution, invest, marches, maire, marchesHref, peers, compare, sources, related }: PageVilleProps) {
+export default function PageVilleClient({ commune, budget, evolution, invest, marches, maire, taxeFonciere, marchesHref, peers, compare, sources, related }: PageVilleProps) {
   const t = useT();
   const { euro, int, signedPct, locale } = useFmt();
   const en = locale === "en";
@@ -289,6 +299,23 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
   const mYears = (marches?.by_year ?? []).map((y) => y.year);
   const ecartees = marches?.total.annees_ecartees ?? [];
 
+  /* ── 2b. Taxe foncière (villes ≥ 20 000 hab.) ── */
+  const tfProduit = useMemo(() => {
+    if (!taxeFonciere) return null;
+    for (const items of Object.values(data.comptes?.revenue ?? {})) {
+      const c = items.find((x) => x.compte === "73111");
+      if (c) return c.value;
+    }
+    return null;
+  }, [taxeFonciere, data.comptes]);
+  const tfShare = tfProduit && data.recettes > 0 ? (tfProduit / data.recettes) * 100 : null;
+  const tfHist = taxeFonciere
+    ? Object.entries(taxeFonciere.hist).map(([y, v]) => ({ year: Number(y), value: v })).sort((a, b) => a.year - b.year)
+    : [];
+  const tfChanged = tfHist.length > 1 && Math.abs(tfHist[0].value - tfHist[tfHist.length - 1].value) > 0.001;
+  /** Un taux se lit « 44,17 % » ou « 34 % » — jamais « 34,00 % ». */
+  const tfRate = (x: number) => x.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 2 });
+
   /* ── 6. Comparer ── */
   const [otherSlug, setOtherSlug] = useState(compare?.other?.slug ?? "");
   const other = compare?.other ?? null;
@@ -302,6 +329,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
 
   const toc = [
     { id: "depenses", label: t("fx.pv.toc.depenses") },
+    ...(taxeFonciere && taxeFonciere.tfb != null ? [{ id: "taxe-fonciere", label: t("fx.pv.toc.taxe") }] : []),
     ...(invYear ? [{ id: "construit", label: t("fx.pv.toc.construit") }] : []),
     ...(evoLast?.dette != null ? [{ id: "dette", label: t("fx.pv.toc.dette") }] : []),
     ...(marches ? [{ id: "achats", label: t("fx.pv.toc.achats") }] : []),
@@ -374,6 +402,38 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
             </div>
           </div>
           <p className="fx-v3-foot">{t("fx.pv.fonction_absent")}</p>
+
+          {/* 2b. Taxe foncière */}
+          {taxeFonciere && taxeFonciere.tfb != null && (
+            <section className="fx-pv-section">
+              <H2 id="taxe-fonciere">{fill("fx.pv.tf.h2", { nom: commune.nom })}</H2>
+              <p className="fx-v3-lead fx-pv-lead">
+                {fill("fx.pv.tf.lead", { nom: commune.nom, year: taxeFonciere.annee, taux: tfRate(taxeFonciere.tfb) })}
+                {taxeFonciere.mediane != null
+                  ? ` ${fill(
+                      taxeFonciere.tfb > taxeFonciere.mediane + 0.01
+                        ? "fx.pv.tf.vs_above"
+                        : taxeFonciere.tfb < taxeFonciere.mediane - 0.01
+                          ? "fx.pv.tf.vs_below"
+                          : "fx.pv.tf.vs_eq",
+                      { med: tfRate(taxeFonciere.mediane) },
+                    )}`
+                  : ""}
+                {tfChanged
+                  ? ` ${fill(tfHist[tfHist.length - 1].value > tfHist[0].value ? "fx.pv.tf.up" : "fx.pv.tf.down", { y: tfHist[0].year })}`
+                  : tfHist.length > 1
+                    ? ` ${fill("fx.pv.tf.stable", { y: tfHist[0].year })}`
+                    : ""}
+              </p>
+              {tfProduit != null && (
+                <p className="fx-v3-sentence">
+                  {fill("fx.pv.tf.produit", { nom: commune.nom, year, n: euro(tfProduit), pct: tfShare != null ? Math.round(tfShare) : "—" })}
+                </p>
+              )}
+              <p className="fx-v3-sentence fx-pv-tf-finance">{t("fx.pv.tf.finance")}</p>
+              <p className="fx-v3-foot">{fill("fx.pv.tf.note", { year: taxeFonciere.annee })}</p>
+            </section>
+          )}
 
           {/* 3. Ce que la commune construit */}
           {invYear && invYear.total.depenses > 0 && (

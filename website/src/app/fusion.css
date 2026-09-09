@@ -19602,6 +19602,7 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-pv-h2 { scroll-margin-top: 80px; }
 .theme-fusion .fx-pv-section { margin-top: 8px; }
 .theme-fusion .fx-pv-lead { font-size: 17px; line-height: 1.5; max-width: 64ch; margin: 0 0 14px; }
+.theme-fusion .fx-pv-tf-finance { color: var(--fx-ink-2, #4a4a44); border-left: 3px solid var(--fx-line, #e6e3da); padding-left: 12px; max-width: 64ch; }
 .theme-fusion .fx-pv-row { width: 100%; background: transparent; border-left: 0; border-right: 0; border-top: 0; text-align: left; font: inherit; cursor: pointer; }
 .theme-fusion .fx-pv-row:disabled { cursor: default; color: var(--ink); opacity: 1; }
 .theme-fusion .fx-pv-row .n { white-space: normal; }
