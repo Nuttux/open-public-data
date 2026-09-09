@@ -19641,7 +19641,7 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-pv-link:hover { text-decoration-color: var(--ink); }
 /* Les rangées du « Voir aussi » ont une marge négative héritée des fiches ; sur
    la page ville elles doivent rester dans la largeur de l'écran. */
-.theme-fusion .fx-pv .fx-related .fx-v3-row { margin-left: 0; margin-right: 0; width: auto; }
+.theme-fusion .fx-pv .fx-v3-row { margin-left: 0; margin-right: 0; width: auto; }
 
 /* ── /confidentialite — consent switches ─────────────────────────────────────
    Plain CSS on purpose: the page used Tailwind colour utilities that never
@@ -19673,3 +19673,6 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted);
 }
 @media (max-width: 640px) { .theme-fusion .fx-consent-row { align-items: flex-start; padding: 16px; } }
+.theme-fusion a.fx-pv-linerow { color: var(--ink); text-decoration: none; }
+.theme-fusion a.fx-pv-linerow:hover { background: rgba(10,10,10,.03); }
+.theme-fusion a.fx-pv-linerow .muted { color: var(--muted); }

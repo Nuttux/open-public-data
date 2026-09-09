@@ -50,6 +50,7 @@ export type MarchesData = {
   top_titulaires: { nom: string; montant: number; nb: number; siren?: string; personne_physique?: boolean }[];
   top_marches: {
     nb_lots?: number;
+    siren?: string | null;
     objet: string;
     montant: number;
     titulaire: string | null;
@@ -62,4 +63,42 @@ export type MarchesData = {
 export async function loadCommuneMarches(slug: string): Promise<MarchesData | null> {
   if (!communeHasMarches(slug)) return null;
   return readCommuneJson<MarchesData>(`${PREFIX}/${slug}/marches.json`);
+}
+
+/** Fiche fournisseur locale (bloc 3) : par SIREN, tous les marchés que la
+ *  commune lui a notifiés, lots regroupés. Jamais de personne physique. */
+export type FournisseurLocalMarche = {
+  objet: string;
+  montant: number;
+  nb_lots: number;
+  annee: number | null;
+  duree_mois: number | null;
+  procedure: string | null;
+  categorie: string | null;
+};
+export type FournisseurLocal = {
+  siren: string;
+  nom: string;
+  montant: number;
+  nb: number;
+  first_year: number | null;
+  last_year: number | null;
+  marches: FournisseurLocalMarche[];
+  /** Empreinte nationale (communes, montant, marchés) ; complète seulement si
+   *  l'export a tourné sur toute la France (`national_complet`). */
+  national: { communes: number; montant: number; nb: number } | null;
+};
+export type FournisseursData = {
+  source: string;
+  source_url: string;
+  coverage_note: string;
+  national_complet: boolean;
+  commune: { insee: string; slug: string; nom: string };
+  annees_ecartees: number[];
+  fournisseurs: FournisseurLocal[];
+};
+
+export async function loadCommuneFournisseurs(slug: string): Promise<FournisseursData | null> {
+  if (!communeHasMarches(slug)) return null;
+  return readCommuneJson<FournisseursData>(`${PREFIX}/${slug}/fournisseurs.json`);
 }

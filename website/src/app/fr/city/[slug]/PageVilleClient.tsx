@@ -14,6 +14,7 @@ import type { BudgetPageData } from "@/lib/fusion-data";
 import type { EvolutionData } from "@/lib/commune-evolution";
 import type { InvestissementsData } from "@/lib/commune-investissements";
 import type { MarchesData } from "@/lib/commune-marches";
+import { displayFournisseur } from "@/lib/fournisseur-display";
 import type { PeerComparison } from "@/lib/commune-peers";
 
 /**
@@ -427,15 +428,23 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                 </div>
                 <div>
                   <div className="fx-pv-colhead"><span>{t("fx.pv.fournisseurs")}</span><span className="tnum">{mTitu.length >= 5 ? fill("fx.pv.top_n", { n: mTitu.length }) : ""}</span></div>
-                  {mTitu.map((f) => (
-                    <div key={f.nom} className="fx-pv-line">
-                      <span>
-                        {f.personne_physique ? t("fx.pv.entrepreneurs") : f.nom}
-                        {"objet" in f && (f as { objet?: string }).objet ? <span className="fx-pv-sub2">{(f as { objet?: string }).objet}</span> : null}
-                      </span>
-                      <Amt n={f.montant} />
-                    </div>
-                  ))}
+                  {mTitu.map((f) => {
+                    const nom = f.personne_physique ? t("fx.pv.entrepreneurs") : displayFournisseur(f.nom);
+                    const objet = "objet" in f ? (f as { objet?: string }).objet : undefined;
+                    const href = !f.personne_physique && f.siren ? `/fr/city/${commune.slug}/fournisseur/${f.siren}` : null;
+                    const body = (
+                      <>
+                        <span>
+                          {nom}{href ? <span className="muted" aria-hidden="true"> →</span> : null}
+                          {objet ? <span className="fx-pv-sub2">{objet}</span> : null}
+                        </span>
+                        <Amt n={f.montant} />
+                      </>
+                    );
+                    return href
+                      ? <Link key={f.nom} href={href} className="fx-pv-line fx-pv-linerow">{body}</Link>
+                      : <div key={f.nom} className="fx-pv-line">{body}</div>;
+                  })}
                 </div>
               </div>
               {marches.top_marches.length > 1 && (
@@ -445,7 +454,8 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                       <span>
                         {m.objet || "—"}
                         <span className="fx-pv-sub2">
-                          {[m.titulaire, m.annee, m.nb_lots && m.nb_lots > 1 ? fill("fx.pv.lots", { n: m.nb_lots }) : null].filter(Boolean).join(" · ")}
+                          {m.siren && m.titulaire ? <Link href={`/fr/city/${commune.slug}/fournisseur/${m.siren}`} className="fx-pv-link">{displayFournisseur(m.titulaire)}</Link> : m.titulaire}
+                          {[m.annee, m.nb_lots && m.nb_lots > 1 ? fill("fx.pv.lots", { n: m.nb_lots }) : null].filter(Boolean).map((x) => ` · ${x}`).join("")}
                         </span>
                       </span>
                       <Amt n={m.montant} />
@@ -455,6 +465,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
               )}
               {marchesHref ? <p className="fx-v3-sentence"><Link className="fx-pv-link" href={marchesHref}>{fill("fx.pv.tous_marches", { n: int.format(marches.total.nb_marches) })} →</Link></p> : null}
               <p className="fx-v3-foot">
+                {mTitu.some((f) => !f.personne_physique && f.siren) ? `${t("fx.pv.fournisseur_fiche")} ` : ""}
                 {marches.coverage_note}
                 {mYears.length ? ` ${fill("fx.pv.annees_publiees", { years: mYears.join(", ") })}` : ""}
                 {ecartees.length ? ` ${fill("fx.pv.annees_ecartees", { years: ecartees.join(", ") })}` : ""}

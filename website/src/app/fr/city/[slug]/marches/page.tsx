@@ -7,7 +7,7 @@ import "@/app/fusion.css";
 import { findCommuneByAny } from "@/lib/all-communes";
 import { hasDedicatedRoutes } from "@/lib/cities";
 import { getCommuneCapabilities } from "@/lib/commune-capabilities";
-import { loadCommuneMarches } from "@/lib/commune-marches";
+import { loadCommuneFournisseurs, loadCommuneMarches } from "@/lib/commune-marches";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
 import CommuneMarchesClient from "./CommuneMarchesClient";
 
@@ -61,6 +61,7 @@ export default async function CommuneMarchesPage({
 
   const data = await loadCommuneMarches(slug);
   if (!data) notFound();
+  const fournisseurs = await loadCommuneFournisseurs(slug);
 
   return (
     <CommuneMarchesClient
@@ -72,6 +73,7 @@ export default async function CommuneMarchesPage({
         pop: commune.pop,
       }}
       data={data}
+      fournisseurs={fournisseurs}
       sourceUrl={SOURCE_URL}
     />
   );
