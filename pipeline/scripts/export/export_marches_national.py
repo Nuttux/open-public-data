@@ -139,6 +139,10 @@ _SIGLES = {
     "CAF", "CNRACL", "SIVU", "SIVOM", "EPCI", "ONF", "SNCF", "EDF", "GRDF",
 }
 _MOT = re.compile(r"[A-Za-zÀ-ÖØ-öø-ÿ]+")
+# Mots outils qui apparaissent dans des noms de communes (« Les Vans », « Aux
+# Marais », « Sous-Parsat ») mais appartiennent d'abord à la langue.
+_NOM_STOP = {"le", "la", "les", "des", "du", "de", "aux", "au", "sur", "sous",
+             "en", "et", "les", "lez", "sainte", "saint", "ville", "villes"}
 
 
 def _strip_accents(w: str) -> str:
@@ -146,10 +150,26 @@ def _strip_accents(w: str) -> str:
 
 
 def _lower_word(m: re.Match) -> str:
+    """Un mot du corpus s'abaisse ; un sigle garde ses capitales.
+
+    C'est le vocabulaire appris (les mots vus en casse mixte dans les 517 000
+    objets) qui tranche, pas une liste écrite à la main : « LOT » est un mot
+    français courant et devient « lot », « SLT » n'apparaît jamais en minuscules
+    et reste « SLT ».
+    """
     w = m.group(0)
-    if w in _SIGLES or (len(w) <= 3 and w.isupper() and w.lower() not in _OBJET_ACCENTS and len(w) > 1 and w not in {"DES", "LES", "DES", "SUR", "AUX", "ET", "DE", "LA", "LE", "DU", "EN", "UN"}):
+    plain = _strip_accents(w)
+    if plain in _OBJET_ACCENTS:
+        return _OBJET_ACCENTS[plain]
+    if w in _SIGLES:
         return w
-    return _OBJET_ACCENTS.get(_strip_accents(w), w.lower())
+    # Court, tout en capitales, jamais vu comme un mot : c'est un sigle. Les
+    # mots d'une ou deux lettres (« et », « de », « l ») s'abaissent toujours :
+    # le vocabulaire ne les compte pas et il n'y a pas de sigle de deux lettres
+    # hors de la liste ci-dessus.
+    if 3 <= len(w) <= 5 and w.isupper() and plain not in _VOCAB:
+        return w
+    return w.lower()
 
 
 def _mostly_upper(t: str) -> bool:
@@ -201,9 +221,27 @@ def restore_nom(t: str, nom: str | None) -> str:
     """
     if not nom or not t:
         return t
-    # Comparaison sans accent : la source écrit « SAINT-ETIENNE » là où la
-    # commune s'appelle « Saint-Étienne ».
-    parts = {_strip_accents(p): p for p in re.split(r"[\s'’-]+", nom) if len(p) >= 3}
+    # On rétablit le nom ENTIER, pas mot à mot : pour « Les Vans », rendre sa
+    # majuscule à « les » capitalisait tous les « les » de la phrase
+    # (« dans Les écoles »). Idem « Aux Marais », « Sous-Parsat ».
+    # Les séparateurs de la source varient (« Le Grau-du-Roi » / « Le Grau du
+    # Roi ») et les accents manquent (« SAINT-ETIENNE ») : la comparaison les
+    # ignore des deux côtés.
+    words = [w for w in re.split(r"[\s'’-]+", nom) if w]
+    if words:
+        pattern = r"[\s'’-]+".join(re.escape(_strip_accents(w)) for w in words)
+        t = re.sub(rf"(?<![\w’']){pattern}(?![\w’'])",
+                   nom,
+                   t,
+                   flags=re.IGNORECASE)
+        # Deuxième passe sur la forme accentuée telle quelle, si la source
+        # l'écrit déjà avec ses accents.
+        t = re.sub(rf"(?<![\w’']){r'[\s’-]+'.join(re.escape(w) for w in words)}(?![\w’'])",
+                   nom, t, flags=re.IGNORECASE)
+    # Les mots distinctifs isolés (« PANTIN » seul, « ETIENNE » séparé) sont
+    # rétablis un par un — jamais les mots outils, qui appartiennent à la
+    # langue autant qu'au nom.
+    parts = {_strip_accents(w): w for w in words if len(w) >= 4 and _strip_accents(w) not in _NOM_STOP}
     if not parts:
         return t
     return _MOT.sub(lambda m: parts.get(_strip_accents(m.group(0)), m.group(0)), t)
