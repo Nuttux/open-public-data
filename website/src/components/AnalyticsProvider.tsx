@@ -31,15 +31,54 @@ const OPTOUT_KEY = '_fod_analytics_optout';
  *     Revocable at any time.
  *
  * Opt-out:
- *   - localStorage '_fod_analytics_optout' = '1' or `navigator.globalPrivacyControl`
- *     → all tracking disabled, no events sent at all, stored visitor ID reset.
+ *   - cookie or localStorage '_fod_analytics_optout' = '1', or
+ *     `navigator.globalPrivacyControl` → all tracking disabled, no events sent
+ *     at all, stored visitor ID reset.
+ *   - The cookie sits on the apex domain (.qipu.org) because the PostHog
+ *     visitor cookie does too: one visitor ID spans www / fr / pt, so an
+ *     opt-out kept only in per-origin localStorage let the same person keep
+ *     sending from the next subdomain they opened.
  */
 
 let initialized = false;
 
+const OPTOUT_COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // one year, like the visitor cookie
+
+/** `www.qipu.org` → `qipu.org`; null on localhost / an IP (host-only cookie). */
+function apexDomain(): string | null {
+  const h = window.location.hostname;
+  if (h === 'localhost' || h.endsWith('.localhost') || /^[\d.]+$/.test(h)) return null;
+  const parts = h.split('.');
+  return parts.length >= 2 ? parts.slice(-2).join('.') : null;
+}
+
+function readCookie(name: string): string | null {
+  const m = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
+  return m ? decodeURIComponent(m[1]) : null;
+}
+
+/** `maxAge` 0 deletes; the Domain attribute must match the write to delete. */
+function writeCookie(name: string, value: string, maxAge: number) {
+  const domain = apexDomain();
+  const secure = window.location.protocol === 'https:' ? '; Secure' : '';
+  document.cookie =
+    `${name}=${encodeURIComponent(value)}; Max-Age=${maxAge}; Path=/; SameSite=Lax${secure}` +
+    (domain ? `; Domain=.${domain}` : '');
+}
+
 function isOptedOut(): boolean {
   if (typeof window === 'undefined') return true;
   if ((navigator as { globalPrivacyControl?: boolean }).globalPrivacyControl) return true;
+  // The apex cookie is authoritative when present ('1' out, '0' explicitly
+  // back in), so an opt-in made on one subdomain beats a stale localStorage
+  // flag left on another. No cookie at all → the per-origin flag decides.
+  try {
+    const c = readCookie(OPTOUT_KEY);
+    if (c === '1') return true;
+    if (c === '0') return false;
+  } catch {
+    /* cookies disabled */
+  }
   try {
     return localStorage.getItem(OPTOUT_KEY) === '1';
   } catch {
@@ -206,6 +245,11 @@ export function disableReplay() {
 export function optOutAnalytics() {
   if (typeof window === 'undefined') return;
   try {
+    writeCookie(OPTOUT_KEY, '1', OPTOUT_COOKIE_MAX_AGE);
+  } catch {
+    /* cookies disabled */
+  }
+  try {
     localStorage.setItem(OPTOUT_KEY, '1');
     localStorage.removeItem(REPLAY_OPTIN_KEY);
   } catch {
@@ -222,6 +266,11 @@ export function optOutAnalytics() {
 
 export function optInAnalytics() {
   if (typeof window === 'undefined') return;
+  try {
+    writeCookie(OPTOUT_KEY, '0', OPTOUT_COOKIE_MAX_AGE);
+  } catch {
+    /* cookies disabled */
+  }
   try {
     localStorage.removeItem(OPTOUT_KEY);
   } catch {
