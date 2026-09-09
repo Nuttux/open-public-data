@@ -50,9 +50,11 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  // Try rich registry first
+  // Les villes à routes dédiées (Paris, Marseille) gardent leur titre riche.
+  // Les autres villes du registre (Lyon, Nice…) rendent la page ville comme
+  // toute commune : leur titre porte les chiffres, ci-dessous.
   const cityRich = getCityOrNull(slug);
-  if (cityRich) {
+  if (cityRich && hasDedicatedRoutes(slug)) {
     return buildLocaleAwareMetadata({
       title: `Budget ${deNom(cityRich.nom)} : combien dépense la Ville ? Dépenses, subventions, marchés, dette, lieux`,
       description: `Ce que ${cityRich.nom} dépense par politique publique, ce qu'elle construit, ce qu'elle doit, les associations qu'elle soutient, ce qu'elle achète, ses lieux, et sa position face aux grandes villes. Sources : la Ville, OFGL, DECP.`,
