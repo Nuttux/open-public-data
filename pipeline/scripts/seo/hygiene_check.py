@@ -21,8 +21,12 @@ family), fetches them without cookies, and asserts:
 Writes a CSV of every check and prints a scorecard per host and family. Exit 1
 when a hard rule fails (everything except cache and speed, which are reported).
 
+Runs in a few minutes: sitemap segments and page checks are fetched in parallel
+(--workers, default 4 — more trips Vercel's attack mitigation). Never run it in the background from a cloud routine —
+the session ends with its last message.
+
 Usage:
-  python3 pipeline/scripts/seo/hygiene_check.py [--per-family 2] [--hosts www,fr,pt] [--out scratchpad/seo]
+  python3 pipeline/scripts/seo/hygiene_check.py [--per-family 2] [--hosts www,fr,pt] [--out scratchpad/seo] [--workers 8]
 """
 from __future__ import annotations
 
@@ -37,6 +41,7 @@ import time
 import urllib.parse
 import urllib.request
 from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 UA = "Mozilla/5.0 (compatible; QipuHygiene/1.0; +https://www.qipu.org)"
@@ -63,13 +68,18 @@ def get(url: str, timeout: int = 60) -> tuple[int, bytes, dict[str, str], float]
         return 0, b"", {}, time.time() - t
 
 
-def sitemap_urls(base: str) -> list[str]:
+def sitemap_urls(base: str, workers: int = 4) -> list[str]:
     st, body, _, _ = get(f"{base}/robots.txt")
     segs = re.findall(r"^Sitemap:\s*(\S+)", body.decode("utf8", "ignore"), re.M)
+
+    def one(s: str) -> list[str]:
+        _, b, _, _ = get(s, timeout=300)
+        return re.findall(r"<loc>([^<]+)</loc>", b.decode("utf8", "ignore"))
+
     urls: list[str] = []
-    for s in segs:
-        st, b, _, _ = get(s, timeout=300)
-        urls.extend(re.findall(r"<loc>([^<]+)</loc>", b.decode("utf8", "ignore")))
+    with ThreadPoolExecutor(max_workers=workers) as ex:
+        for part in ex.map(one, segs):
+            urls.extend(part)
     return urls
 
 
@@ -144,6 +154,7 @@ def main() -> int:
     ap.add_argument("--hosts", default="www,fr,pt")
     ap.add_argument("--out", default=str(ROOT / "scratchpad" / "seo"))
     ap.add_argument("--seed", type=int, default=None)
+    ap.add_argument("--workers", type=int, default=4)
     a = ap.parse_args()
     random.seed(a.seed)
     out = Path(a.out) / dt.date.today().strftime("%Y-%m-%d")
@@ -154,30 +165,43 @@ def main() -> int:
     failed = 0
     for h in a.hosts.split(","):
         base = HOSTS[h]
-        urls = sitemap_urls(base)
+        urls = sitemap_urls(base, a.workers)
         fam: dict[str, list[str]] = defaultdict(list)
         for u in urls:
             fam[family_of(u)].append(u)
-        print(f"== {h}: {len(urls)} URLs in {len(fam)} families")
+        print(f"== {h}: {len(urls)} URLs in {len(fam)} families", flush=True)
+        # The sample is drawn sequentially (reproducible with --seed), the checks run in parallel.
+        jobs: list[tuple[str, bool, str]] = []
         for f, us in sorted(fam.items()):
             entity = is_entity(f)
-            sample = random.sample(us, min(a.per_family, len(us)))
-            for u in sample:
-                r = check(u, entity)
-                r.update({"host": h, "family": f, "entity": entity})
-                bad = [k for k in hard + (entity_hard if entity else []) if r.get(k) is False]
-                if r["status"] != 200:
-                    bad.insert(0, f"status {r['status']}")
-                failed += bool(bad)
-                rows.append(r)
-                flag = "OK " if not bad else "FAIL"
-                print(f"  {flag} {r['ttfb_s']:>5}s {r['kb']:>4}KB {'HIT' if r['cache'] else 'miss'} {u}{'  ← ' + ', '.join(bad) if bad else ''}")
-            if entity:
-                ok = soft404(f"{base}{f}")
-                rows.append({"host": h, "family": f, "url": f"{base}{f}/<unknown>", "status": 404 if ok else 200, "soft404": ok})
-                failed += not ok
-                if not ok:
-                    print(f"  FAIL soft 404 on {base}{f}/<unknown>")
+            for u in random.sample(us, min(a.per_family, len(us))):
+                jobs.append((f, entity, u))
+
+        def run(job: tuple[str, bool, str]) -> dict[str, object]:
+            f, entity, u = job
+            r = check(u, entity)
+            r.update({"host": h, "family": f, "entity": entity})
+            return r
+
+        with ThreadPoolExecutor(max_workers=a.workers) as ex:
+            results = list(ex.map(run, jobs))
+        for r in results:
+            entity = bool(r["entity"])
+            bad = [k for k in hard + (entity_hard if entity else []) if r.get(k) is False]
+            if r["status"] != 200:
+                bad.insert(0, f"status {r['status']}")
+            failed += bool(bad)
+            rows.append(r)
+            flag = "OK " if not bad else "FAIL"
+            print(f"  {flag} {r['ttfb_s']:>5}s {r['kb']:>4}KB {'HIT' if r['cache'] else 'miss'} {r['url']}{'  ← ' + ', '.join(bad) if bad else ''}")
+        entity_fams = sorted({f for f, entity, _ in jobs if entity})
+        with ThreadPoolExecutor(max_workers=a.workers) as ex:
+            oks = list(ex.map(lambda f: soft404(f"{base}{f}"), entity_fams))
+        for f, ok in zip(entity_fams, oks):
+            rows.append({"host": h, "family": f, "url": f"{base}{f}/<unknown>", "status": 404 if ok else 200, "soft404": ok})
+            failed += not ok
+            if not ok:
+                print(f"  FAIL soft 404 on {base}{f}/<unknown>")
     keys = sorted({k for r in rows for k in r})
     with (out / "hygiene.csv").open("w", newline="", encoding="utf-8") as fp:
         w = csv.DictWriter(fp, fieldnames=keys)
