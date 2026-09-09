@@ -133,6 +133,17 @@ YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020, 2019]
 # These are voted/forecast years — not yet executed
 VOTED_YEARS = {2025, 2026}
 
+# Opérations d'ordre (M57, chapitres 925 « opérations patrimoniales », 926 et 946
+# « transferts entre les sections ») : dotations aux amortissements, provisions,
+# transferts entre sections. Des écritures comptables sans sortie d'argent, qui
+# n'existent que dans les budgets votés (le CA publié en open data ne les porte
+# pas). Les garder gonflait les années votées de ~0,5 à 0,7 Md€ côté dépenses,
+# sans contrepartie côté recettes, et rendait « voté » et « exécuté »
+# incomparables (2026 : 11,72 Md€ affichés pour 11,02 Md€ de dépenses réelles).
+# Exclues des deux côtés, pour toutes les années — périmètre « hors opérations
+# d'ordre », annoncé dans le JSON (`perimeter`). Constat du 2026-09-09.
+ORDER_CHAPTERS = {"925", "926", "946"}
+
 # Data availability by year (based on sync_opendata.py check)
 # Updated when sync runs
 DATA_AVAILABILITY = {
@@ -393,10 +404,14 @@ def build_sankey_data(records: list[dict], year: int) -> dict:
     # Track imputation metadata per (fonction, flow_category, nature) key
     expense_meta: dict[tuple[str, str, str], dict] = {}
 
+    excluded_order = 0.0
     for record in records:
         montant = float(record.get("montant", 0))
         sens = record.get("sens", "")
         chapitre_code = record.get("chapitre_code", "")
+        if chapitre_code in ORDER_CHAPTERS:
+            excluded_order += montant
+            continue
         chapitre_libelle = record.get("chapitre_libelle", "")
         nature_libelle = record.get("nature_libelle", "") or chapitre_libelle or "Non spécifié"
         fonction_libelle = (record.get("fonction_libelle") or "").strip() or "Non spécifié"
@@ -562,7 +577,13 @@ def build_sankey_data(records: list[dict], year: int) -> dict:
         "links": links,
         "drilldown": drilldown,
         "bySection": by_section,
-        "byEntity": []
+        "byEntity": [],
+        "perimeter": {
+            "id": "hors_operations_ordre",
+            "label_fr": "Hors opérations d'ordre (chapitres 925, 926, 946 : amortissements, provisions, transferts entre sections)",
+            "label_en": "Excluding accounting-only entries (chapters 925, 926, 946: depreciation, provisions, transfers between sections)",
+            "excluded_eur": round(excluded_order, 2),
+        },
     }
     
     # Add disclaimer for voted (non-executed) years

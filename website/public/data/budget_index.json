@@ -44,17 +44,17 @@
       "year": 2026,
       "type_budget": "vote",
       "dataStatus": "BUDGET_VOTE",
-      "recettes": 11195934848.0,
-      "depenses": 11722400172.0,
-      "solde": -526465324.0
+      "recettes": 11104540022.0,
+      "depenses": 11015461346.0,
+      "solde": 89078676.0
     },
     {
       "year": 2025,
       "type_budget": "vote",
       "dataStatus": "BUDGET_VOTE",
-      "recettes": 11340959755.41,
-      "depenses": 12161871777.01,
-      "solde": -820912021.6000004
+      "recettes": 11278850001.0,
+      "depenses": 11429326378.0,
+      "solde": -150476377.0
     },
     {
       "year": 2024,

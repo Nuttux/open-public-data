@@ -17,9 +17,19 @@ import { fmtBillions, fmtDec, fmtInt } from "@/lib/fmt";
 import type { BlogPostMeta } from "@/lib/blog";
 import type { BudgetPageData, VoteExecuteData } from "@/lib/fusion-data";
 import { slugifyLabel } from "@/lib/projet-utils";
-import { useT, useLocale } from "@/lib/localeContext";
+import { useT, useLocale, type Locale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 import { cityPopulation, citySlugFromPathname } from "@/lib/methodology";
+import fonctionLabels from "@/data/budget-fonction-labels.json";
+
+type FonctionLabel = { fr: string; en: string; sub_fr?: string; sub_en?: string };
+const FONCTIONS: Record<string, FonctionLabel> = fonctionLabels as Record<string, FonctionLabel>;
+/** Le libellé clair d'une mission, avec les mots de la fiche de poste
+ *  (`budget-fonction-labels.json`), repli sur la traduction générique. */
+function missionLabel(key: string, locale: Locale): string {
+  const fl = FONCTIONS[key];
+  return fl ? (locale === "en" ? fl.en : fl.fr) : trLabel(key, locale);
+}
 
 type BudgetIndexLite = {
   availableYears: number[];
@@ -127,14 +137,20 @@ export default function BudgetClient({ index, d, posts }: Props) {
   // « Autres (D) », « Personnel (R) » : le suffixe de sens est un artefact du
   // sankey (deux nœuds homonymes), pas un mot pour le lecteur.
   const label = (raw: string) => (raw.startsWith("Autres (") || raw.startsWith("Autre (") ? t("fx.bud.autres") : trLabel(raw.replace(/\s\((D|R)\)$/, ""), locale));
-  const Row = ({ raw, value, total }: { raw: string; value: number; total: number }) => (
-    <Link href={`${cityBasePath}/poste/${slugifyLabel(raw)}?year=${d.year}`} scroll={false} className="fx-bud-row">
-      <span className="n">{label(raw)}</span>
-      <Spark label={raw} />
-      <Amt n={value} size={14} />
-      <span className="p tnum">{Math.round((value / total) * 100)} %</span>
-    </Link>
-  );
+  // Au survol, la ligne dit ce qu'elle contient (trois missions, mêmes mots que
+  // la fiche) ; le chevron dit qu'elle s'ouvre. Sur écran tactile, le chevron seul.
+  const Row = ({ raw, value, total, missions = [] }: { raw: string; value: number; total: number; missions?: { key: string; value: number }[] }) => {
+    const peek = missions.length ? fill("fx.bud.v3.peek", { list: missions.map((m) => `${missionLabel(m.key, locale)} ${eur(m.value)}`).join(" · ") }) : undefined;
+    return (
+      <Link href={`${cityBasePath}/poste/${slugifyLabel(raw)}?year=${d.year}`} scroll={false} className="fx-bud-row" data-peek={peek}>
+        <span className="n">{label(raw)}</span>
+        <Spark label={raw} />
+        <Amt n={value} size={14} />
+        <span className="p tnum">{Math.round((value / total) * 100)} %</span>
+        <span className="c" aria-hidden="true">›</span>
+      </Link>
+    );
+  };
   // Une ligne sous 0,5 % du total n'apporte qu'un « 0 % » : on la tait.
   const dep = d.topDepenses.filter((x) => x.value / d.depenses >= 0.005);
   const rec = d.recettesBreakdown.filter((x) => x.value / d.recettes >= 0.005);
@@ -219,11 +235,11 @@ export default function BudgetClient({ index, d, posts }: Props) {
           <div className="fx-bud-cols">
             <div className="fx-bud-col">
               <h3><span>{t("fx.bud.v3.col_dep")}</span><span className="tnum">{eur(d.depenses)}</span></h3>
-              {dep.map((x) => <Row key={x.label} raw={x.label} value={x.value} total={d.depenses} />)}
+              {dep.map((x) => <Row key={x.label} raw={x.label} value={x.value} total={d.depenses} missions={x.topMissions} />)}
             </div>
             <div className="fx-bud-col">
               <h3><span>{t("fx.bud.v3.col_rec")}</span><span className="tnum">{eur(d.recettes)}</span></h3>
-              {rec.map((x) => <Row key={x.label} raw={x.label} value={x.value} total={d.recettes} />)}
+              {rec.map((x) => <Row key={x.label} raw={x.label} value={x.value} total={d.recettes} missions={x.topMissions} />)}
               {flowRows.length > 1 && (
                 <div className="fx-bud-forme">
                   <div className="h">{t("fx.bud.v3.forme")}</div>

@@ -1353,6 +1353,7 @@ const en: Record<string, string> = {
   'fx.bud.v3.depuis': 'since {y}',
   'fx.bud.v3.h2': 'Spending and revenue',
   'fx.bud.v3.h2sub': 'Click an item to open its detailed page. {span} trend on each line.',
+  'fx.bud.v3.peek': 'Inside this item: {list}',
   'fx.bud.v3.col_dep': 'Spending',
   'fx.bud.v3.col_rec': 'Revenue',
   'fx.bud.v3.forme': 'How the City spends',

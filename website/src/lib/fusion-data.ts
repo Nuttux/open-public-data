@@ -687,6 +687,22 @@ export function loadLandingStats(): LandingStats {
 // `@/lib/fmt` directly to avoid pulling the server-only loaders.
 export { fmtInt, fmtDec, fmtBillions, fmtMillions, fmtCompactEur } from "./fmt";
 
+/** Regroupe les lignes d'un poste par mission — fonction M57 quand le pipeline
+ *  l'a, sinon le préfixe « Fiscalité directe : » du libellé — et garde les trois
+ *  plus grosses. Même règle que `groupMissions` dans PosteFiche. */
+function topMissionKeys(items: BudgetDrilldownItem[], posteLabel: string, n = 3): { key: string; value: number }[] {
+  const byFonction = items.some((it) => it.fonction);
+  const prefix = `${posteLabel}: `;
+  const map = new Map<string, number>();
+  for (const it of items) {
+    let key: string;
+    if (byFonction) key = it.fonction === "Non spécifié" && it.flow_category ? it.flow_category : it.fonction || "Autres";
+    else { const i = it.name.indexOf(":"); key = i > 0 ? it.name.slice(0, i).trim() : it.name.startsWith(prefix) ? it.name.slice(prefix.length) : it.name; }
+    map.set(key, (map.get(key) ?? 0) + it.value);
+  }
+  return [...map.entries()].sort((a, b) => b[1] - a[1]).slice(0, n).map(([key, value]) => ({ key, value }));
+}
+
 export type BudgetPageData = {
   year: number;
   previousYear: number;
@@ -702,14 +718,23 @@ export type BudgetPageData = {
     value: number;
     /** Variation en % vs l'année précédente (null si indisponible). */
     deltaPct: number | null;
-    /** Top sous-postes (fonctionnement + investissement fusionnés, triés par montant desc). */
-    subPostes: { name: string; value: number }[];
+    /** Top sous-postes (fonctionnement + investissement fusionnés, triés par montant desc).
+     *  `fonction` / `flow_category` viennent du drilldown quand le pipeline les a
+     *  (Paris) : la page budget v3 s'en sert pour annoncer les missions d'un poste
+     *  au survol, avec les libellés de la fiche. */
+    subPostes: { name: string; value: number; fonction?: string; flow_category?: string }[];
+    /** Les trois premières missions du poste (fonction M57, ou préfixe « Fiscalité
+     *  directe : » côté recettes), sommées sur TOUTES les lignes du drilldown —
+     *  pas sur les 12 gardées ci-dessus — pour que la ligne annonce au survol les
+     *  mêmes montants que sa fiche. Clé brute ; le libellé clair se met côté client. */
+    topMissions?: { key: string; value: number }[];
   }[];
   recettesBreakdown: {
     label: string;
     value: number;
     /** Top sous-sources (depuis drilldown.revenue), triées par montant desc. */
-    subSources: { name: string; value: number }[];
+    subSources: { name: string; value: number; fonction?: string; flow_category?: string }[];
+    topMissions?: { key: string; value: number }[];
   }[];
   sankeyNodes: { name: string; category?: string }[];
   sankeyLinks: { source: string; target: string; value: number }[];
@@ -4509,7 +4534,7 @@ export function loadBudgetPageData(requestedYear?: number, city: string = "paris
       const prevVal = prevDepByLabel.get(l.target);
       const deltaPct =
         prevVal && prevVal > 0 ? ((l.value - prevVal) / prevVal) * 100 : null;
-      return { label: l.target, value: l.value, deltaPct, subPostes };
+      return { label: l.target, value: l.value, deltaPct, subPostes, topMissions: topMissionKeys(items, l.target) };
     })
     .sort((a, b) => b.value - a.value);
 
@@ -4522,7 +4547,7 @@ export function loadBudgetPageData(requestedYear?: number, city: string = "paris
         .slice()
         .sort((a, b) => b.value - a.value)
         .slice(0, 12);
-      return { label: l.source, value: l.value, subSources };
+      return { label: l.source, value: l.value, subSources, topMissions: topMissionKeys(items, l.source) };
     })
     .sort((a, b) => b.value - a.value);
 

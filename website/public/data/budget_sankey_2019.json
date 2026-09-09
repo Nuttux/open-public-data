@@ -121,7 +121,7 @@
     {
       "source": "Budget Paris",
       "target": "Aménagement & Logement",
-      "value": 1035412648.12
+      "value": 1035412648.1200001
     },
     {
       "source": "Budget Paris",
@@ -131,7 +131,7 @@
     {
       "source": "Budget Paris",
       "target": "Éducation",
-      "value": 869023250.5500001
+      "value": 869023250.55
     },
     {
       "source": "Budget Paris",
@@ -146,7 +146,7 @@
     {
       "source": "Budget Paris",
       "target": "Économie",
-      "value": 87009709.67000002
+      "value": 87009709.67
     },
     {
       "source": "Budget Paris",
@@ -207,7 +207,7 @@
         },
         {
           "name": "Aménagement: Autres (produits divers de gestion courante)",
-          "value": 87921372.59000002
+          "value": 87921372.58999999
         },
         {
           "name": "Action Sociale: Redevances et droits des services à caractère social",
@@ -255,7 +255,7 @@
         },
         {
           "name": "Culture & Sport: Redevances et droits des services périscolaires et d’enseignement",
-          "value": 23374693.25
+          "value": 23374693.250000004
         },
         {
           "name": "Transports: Autres prestations de services",
@@ -283,7 +283,7 @@
         },
         {
           "name": "Éducation: Redevances et droits des services périscolaires et d’enseignement",
-          "value": 10375070.72
+          "value": 10375070.720000003
         },
         {
           "name": "Culture & Sport: Redevances et droits des services à caractère sportif",
@@ -4402,7 +4402,7 @@
         ]
       },
       "Investissement": {
-        "total": 82765982.9,
+        "total": 82765982.90000002,
         "items": [
           {
             "name": "Invest. Social: Constructions",
@@ -4701,7 +4701,7 @@
         ]
       },
       "Investissement": {
-        "total": 789078572.1599994,
+        "total": 789078572.1599995,
         "items": [
           {
             "name": "Invest. Aménagement: Subventions aux personnes de droit privé - Bâtiments et installations",
@@ -5147,7 +5147,7 @@
     },
     "Éducation": {
       "Fonctionnement": {
-        "total": 728356799.36,
+        "total": 728356799.3599999,
         "items": [
           {
             "name": "Éducation: Rémunération du personnel titulaire",
@@ -5298,7 +5298,7 @@
         ]
       },
       "Investissement": {
-        "total": 140666451.19000003,
+        "total": 140666451.19,
         "items": [
           {
             "name": "Invest. Éducation: Constructions",
@@ -5867,7 +5867,7 @@
     },
     "Économie": {
       "Fonctionnement": {
-        "total": 46511362.23000001,
+        "total": 46511362.230000004,
         "items": [
           {
             "name": "Action Économique: Subventions de fonctionnement aux personnes, aux associations et aux autres organismes de droit privé - Autres personnes de droit privé",
@@ -6166,7 +6166,7 @@
     },
     "Environnement": {
       "Fonctionnement": {
-        "total": 660091017.7200004,
+        "total": 660091017.7200005,
         "items": [
           {
             "name": "Environnement: Rémunération du personnel titulaire",
@@ -6316,7 +6316,7 @@
         ]
       },
       "Investissement": {
-        "total": 47720074.07999999,
+        "total": 47720074.07999998,
         "items": [
           {
             "name": "Invest. Environnement: Constructions",
@@ -6781,6 +6781,12 @@
     }
   },
   "byEntity": [],
+  "perimeter": {
+    "id": "hors_operations_ordre",
+    "label_fr": "Hors opérations d'ordre (chapitres 925, 926, 946 : amortissements, provisions, transferts entre sections)",
+    "label_en": "Excluding accounting-only entries (chapters 925, 926, 946: depreciation, provisions, transfers between sections)",
+    "excluded_eur": 0.0
+  },
   "drill_down": {},
   "license": {
     "id": "ODbL-1.0",

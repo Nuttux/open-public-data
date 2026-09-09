@@ -156,7 +156,7 @@
     {
       "source": "Budget Paris",
       "target": "Sécurité",
-      "value": 505008945.58000004
+      "value": 505008945.5800001
     },
     {
       "source": "Budget Paris",
@@ -291,7 +291,7 @@
         },
         {
           "name": "Éducation: Participations - Etat - autres",
-          "value": 17204271.51
+          "value": 17204271.509999998
         },
         {
           "name": "Action Sociale: Participations - Etat - autres",
@@ -315,7 +315,7 @@
         },
         {
           "name": "Culture & Sport: Autres produits divers de gestion courante-Autres",
-          "value": 10460438.870000001
+          "value": 10460438.87
         },
         {
           "name": "Culture & Sport: Redevances et droits des services à caractère sportif",
@@ -327,7 +327,7 @@
         },
         {
           "name": "Culture & Sport: Sécurité sociale et organismes mutualistes",
-          "value": 9919191.58
+          "value": 9919191.579999998
         },
         {
           "name": "Services Généraux: Concession dans les cimetières (produit net)",
@@ -339,7 +339,7 @@
         },
         {
           "name": "Action Économique: Revenus des immeubles",
-          "value": 7546731.86
+          "value": 7546731.859999999
         },
         {
           "name": "Aménagement: Autres produits divers de gestion courante-Autres",
@@ -4410,7 +4410,7 @@
         ]
       },
       "Investissement": {
-        "total": 74019378.35999997,
+        "total": 74019378.35999998,
         "items": [
           {
             "name": "Invest. Social: Constructions",
@@ -4559,7 +4559,7 @@
     },
     "Aménagement & Logement": {
       "Fonctionnement": {
-        "total": 301384691.71000004,
+        "total": 301384691.7100001,
         "items": [
           {
             "name": "Aménagement: Rémunération du personnel titulaire",
@@ -5013,7 +5013,7 @@
         ]
       },
       "Investissement": {
-        "total": 202684114.16999996,
+        "total": 202684114.17,
         "items": [
           {
             "name": "Invest. Culture: Restauration des collections et œuvres d'art",
@@ -6515,7 +6515,7 @@
     },
     "Sécurité": {
       "Fonctionnement": {
-        "total": 480387531.34000003,
+        "total": 480387531.3400001,
         "items": [
           {
             "name": "Sécurité: Autres contributions obligatoires",
@@ -6668,7 +6668,7 @@
         ]
       },
       "Investissement": {
-        "total": 24621414.24,
+        "total": 24621414.240000002,
         "items": [
           {
             "name": "Invest. Sécurité: Subventions aux organismes publics - Etat - Bâtiments et installations",
@@ -6829,6 +6829,12 @@
     }
   },
   "byEntity": [],
+  "perimeter": {
+    "id": "hors_operations_ordre",
+    "label_fr": "Hors opérations d'ordre (chapitres 925, 926, 946 : amortissements, provisions, transferts entre sections)",
+    "label_en": "Excluding accounting-only entries (chapters 925, 926, 946: depreciation, provisions, transfers between sections)",
+    "excluded_eur": 0.0
+  },
   "drill_down": {},
   "license": {
     "id": "ODbL-1.0",

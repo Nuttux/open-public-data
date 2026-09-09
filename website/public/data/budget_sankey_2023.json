@@ -91,7 +91,7 @@
     {
       "source": "Services Publics",
       "target": "Budget Paris",
-      "value": 2663812841.66
+      "value": 2663812841.6599994
     },
     {
       "source": "Impôts & Taxes",
@@ -121,7 +121,7 @@
     {
       "source": "Budget Paris",
       "target": "Aménagement & Logement",
-      "value": 1197735868.75
+      "value": 1197735868.7499998
     },
     {
       "source": "Budget Paris",
@@ -141,12 +141,12 @@
     {
       "source": "Budget Paris",
       "target": "Environnement",
-      "value": 836833553.1699994
+      "value": 836833553.1699992
     },
     {
       "source": "Budget Paris",
       "target": "Transports",
-      "value": 951837018.65
+      "value": 951837018.6500001
     },
     {
       "source": "Budget Paris",
@@ -156,7 +156,7 @@
     {
       "source": "Budget Paris",
       "target": "Sécurité",
-      "value": 461519978.22
+      "value": 461519978.21999997
     },
     {
       "source": "Budget Paris",
@@ -195,7 +195,7 @@
         },
         {
           "name": "Action Sociale: Sécurité sociale et organismes mutualistes",
-          "value": 166147975.77999997
+          "value": 166147975.78
         },
         {
           "name": "Transports: Forfait de post-stationnement",
@@ -263,7 +263,7 @@
         },
         {
           "name": "Action Sociale: Recouvrements sur bénéficiaire, tiers-payants et successions",
-          "value": 24366025.87
+          "value": 24366025.869999997
         },
         {
           "name": "Action Sociale: Dotation versée au titre de la PCH",
@@ -307,7 +307,7 @@
         },
         {
           "name": "Éducation: Redevances et droits des services périscolaires et d’enseignement",
-          "value": 11351567.92
+          "value": 11351567.919999998
         },
         {
           "name": "Culture & Sport: Redevances et droits des services à caractère sportif",
@@ -335,7 +335,7 @@
         },
         {
           "name": "Culture & Sport: Sécurité sociale et organismes mutualistes",
-          "value": 7469869.21
+          "value": 7469869.209999999
         },
         {
           "name": "Culture & Sport: Autres redevances et recettes diverses",
@@ -4412,7 +4412,7 @@
         ]
       },
       "Investissement": {
-        "total": 56198695.99000001,
+        "total": 56198695.99000002,
         "items": [
           {
             "name": "Invest. Social: Constructions",
@@ -5014,7 +5014,7 @@
         ]
       },
       "Investissement": {
-        "total": 257843149.0,
+        "total": 257843149.00000003,
         "items": [
           {
             "name": "Invest. Culture: Constructions",
@@ -5318,7 +5318,7 @@
         ]
       },
       "Investissement": {
-        "total": 98267572.47000001,
+        "total": 98267572.47000003,
         "items": [
           {
             "name": "Invest. Éducation: Constructions",
@@ -5621,7 +5621,7 @@
     },
     "Environnement": {
       "Fonctionnement": {
-        "total": 773629084.7199993,
+        "total": 773629084.7199992,
         "items": [
           {
             "name": "Environnement: Rémunération du personnel titulaire",
@@ -5772,7 +5772,7 @@
         ]
       },
       "Investissement": {
-        "total": 63204468.45,
+        "total": 63204468.45000001,
         "items": [
           {
             "name": "Invest. Environnement: Constructions",
@@ -5922,7 +5922,7 @@
     },
     "Transports": {
       "Fonctionnement": {
-        "total": 682690633.25,
+        "total": 682690633.2500001,
         "items": [
           {
             "name": "Transports: Autres contributions obligatoires",
@@ -6526,7 +6526,7 @@
     },
     "Sécurité": {
       "Fonctionnement": {
-        "total": 432023011.28000003,
+        "total": 432023011.28,
         "items": [
           {
             "name": "Sécurité: Autres contributions obligatoires",
@@ -6678,7 +6678,7 @@
         ]
       },
       "Investissement": {
-        "total": 29496966.94,
+        "total": 29496966.939999998,
         "items": [
           {
             "name": "Invest. Sécurité: Subventions aux organismes publics - Etat - Bâtiments et installations",
@@ -6849,6 +6849,12 @@
     }
   },
   "byEntity": [],
+  "perimeter": {
+    "id": "hors_operations_ordre",
+    "label_fr": "Hors opérations d'ordre (chapitres 925, 926, 946 : amortissements, provisions, transferts entre sections)",
+    "label_en": "Excluding accounting-only entries (chapters 925, 926, 946: depreciation, provisions, transfers between sections)",
+    "excluded_eur": 0.0
+  },
   "drill_down": {},
   "license": {
     "id": "ODbL-1.0",

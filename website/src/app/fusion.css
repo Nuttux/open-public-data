@@ -19321,8 +19321,17 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-bud-voted a { color: var(--bleu); }
 .theme-fusion .fx-bud-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 18px; }
 .theme-fusion .fx-bud-col h3 { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; padding-bottom: 8px; border-bottom: 1px solid var(--ink); display: flex; justify-content: space-between; font-weight: 500; }
-.theme-fusion .fx-bud-row { display: grid; grid-template-columns: minmax(0, 1fr) 52px auto 36px; gap: 10px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--rule); text-decoration: none; color: var(--ink); font-size: 14px; }
+.theme-fusion .fx-bud-row { display: grid; grid-template-columns: minmax(0, 1fr) 52px auto 36px 10px; gap: 10px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--rule); text-decoration: none; color: var(--ink); font-size: 14px; position: relative; }
 .theme-fusion .fx-bud-row:hover { background: rgba(10,10,10,.03); }
+/* Le chevron dit que la ligne s'ouvre ; il s'assombrit au survol. */
+.theme-fusion .fx-bud-row .c { color: #b4b9c2; font-size: 15px; line-height: 1; text-align: right; transition: color .15s, transform .15s; }
+.theme-fusion .fx-bud-row:hover .c { color: var(--ink); transform: translateX(2px); }
+/* Ce que la ligne contient, au survol : trois missions, mêmes mots que la fiche.
+   Même bulle que .fx-tip, ancrée sous la ligne. Pas sur écran tactile. */
+@media (hover: hover) and (pointer: fine) {
+  .theme-fusion .fx-bud-row[data-peek]::after { content: attr(data-peek); position: absolute; left: 0; top: calc(100% + 4px); z-index: 40; background: var(--ink); color: var(--bg); padding: 8px 12px; font-family: var(--f-ui); font-size: 12.5px; line-height: 1.45; max-width: 460px; white-space: normal; opacity: 0; pointer-events: none; transition: opacity .15s .1s; box-shadow: 0 2px 0 rgba(0,0,0,.15); }
+  .theme-fusion .fx-bud-row[data-peek]:hover::after { opacity: 1; }
+}
 .theme-fusion .fx-bud-row .n { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .theme-fusion .fx-bud-row .p { font-family: var(--f-mono); font-size: 10.5px; color: var(--muted); text-align: right; }
 .theme-fusion .fx-bud-row .fx-v3-amt { text-align: right; }
@@ -19338,7 +19347,7 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-bud-forme .note { font-size: 12.5px; color: var(--muted); margin: 10px 0 0; line-height: 1.5; }
 @media (max-width: 700px) {
   .theme-fusion .fx-bud-cols { grid-template-columns: 1fr; gap: 30px; }
-  .theme-fusion .fx-bud-row { grid-template-columns: minmax(0, 1fr) 44px auto 34px; font-size: 13.5px; }
+  .theme-fusion .fx-bud-row { grid-template-columns: minmax(0, 1fr) 44px auto 34px 10px; font-size: 13.5px; }
 }
 .theme-fusion .fx-bud-row--static { cursor: default; } .theme-fusion .fx-bud-row--static:hover { background: transparent; }
 
