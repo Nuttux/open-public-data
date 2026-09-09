@@ -1,5 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { resolveScope } from "@/lib/chat/scopes";
+import { captureChatQuestion, distinctIdFromCookie } from "@/lib/chat/telemetry";
 import { systemPromptFor, toolSchemasFor, runScopedTool } from "@/lib/chat/registry";
 
 export const runtime = "nodejs";
@@ -81,6 +82,30 @@ export async function POST(req: Request) {
 
   const messages: Anthropic.MessageParam[] = history.map((m) => ({ role: m.role, content: m.content }));
 
+  // Telemetry for the product digest (lib/chat/telemetry.ts): one event per answer.
+  const startedAt = Date.now();
+  const distinctId = distinctIdFromCookie(req.headers.get("cookie"));
+  const lastUser = [...history].reverse().find((m) => m.role === "user");
+  const toolsUsed: string[] = [];
+  let toolResultChars = 0;
+  let answerChars = 0;
+  const record = (stopReason: string | null, error: string | null) =>
+    captureChatQuestion(distinctId, {
+      scope: scope.id,
+      locale: body.locale ?? scope.promptLang,
+      question: lastUser?.content ?? "",
+      turn: history.filter((m) => m.role === "user").length,
+      tools: toolsUsed,
+      n_tool_calls: toolsUsed.length,
+      tool_result_chars: toolResultChars,
+      answer_chars: answerChars,
+      stop_reason: stopReason,
+      error,
+      duration_ms: Date.now() - startedAt,
+      page: req.headers.get("referer"),
+      ...(ip !== "unknown" ? { $ip: ip } : {}),
+    });
+
   const encoder = new TextEncoder();
   const stream = new ReadableStream({
     async start(controller) {
@@ -93,6 +118,7 @@ export async function POST(req: Request) {
         for (let i = 0; i < MAX_TOOL_LOOPS; i++) {
           if (Date.now() > deadline) {
             send("error", { message: "réponse trop longue, réessaie avec une question plus ciblée" });
+            void record(null, "deadline");
             controller.close();
             return;
           }
@@ -118,7 +144,10 @@ export async function POST(req: Request) {
               send("thinking", { active: true });
             }
           });
-          turn.on("text", (delta: string) => send("text", delta));
+          turn.on("text", (delta: string) => {
+            answerChars += delta.length;
+            send("text", delta);
+          });
 
           const final = await turn.finalMessage();
 
@@ -130,6 +159,7 @@ export async function POST(req: Request) {
             // texte partiel — le tour final le réénonce toujours en entier.
             if (final.content.some((b) => b.type === "text" && b.text.trim())) {
               send("reset", {});
+              answerChars = 0;
             }
             messages.push({ role: "assistant", content: final.content });
             const toolResults: Anthropic.ToolResultBlockParam[] = [];
@@ -137,6 +167,8 @@ export async function POST(req: Request) {
               if (block.type === "tool_use") {
                 send("tool", { name: block.name, input: block.input });
                 const result = runScopedTool(scope, block.name, block.input);
+                toolsUsed.push(block.name);
+                toolResultChars += JSON.stringify(result).length;
                 toolResults.push({
                   type: "tool_result",
                   tool_use_id: block.id,
@@ -149,14 +181,17 @@ export async function POST(req: Request) {
           }
 
           send("done", { stop_reason: final.stop_reason });
+          void record(final.stop_reason, null);
           controller.close();
           return;
         }
         send("error", { message: "tool loop limit reached" });
+        void record(null, "tool loop limit reached");
         controller.close();
       } catch (e) {
         const msg = e instanceof Error ? e.message : String(e);
         send("error", { message: msg });
+        void record(null, msg.slice(0, 200));
         controller.close();
       }
     },
