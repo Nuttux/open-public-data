@@ -16,6 +16,8 @@ monthly read, then a decision.
 
 Setup (once):
   pip install google-api-python-client google-auth
+  Either GOOGLE_ADC_JSON = the JSON of a service account added as a user on the
+  Search Console properties (seo-routine@open-data-france-484717), or locally:
   gcloud auth application-default login \
       --scopes=openid,https://www.googleapis.com/auth/cloud-platform,https://www.googleapis.com/auth/webmasters.readonly
   # PostHog (optional): a personal API key with query:read, and the project id
@@ -35,7 +37,7 @@ import sys
 import urllib.request
 from pathlib import Path
 
-PROPERTIES = ["https://www.qipu.org/", "https://fr.qipu.org/", "https://pt.qipu.org/"]
+PROPERTIES = ["sc-domain:qipu.org", "sc-domain:fr.qipu.org", "sc-domain:pt.qipu.org"]
 ROOT = Path(__file__).resolve().parents[3]
 
 
@@ -47,13 +49,22 @@ def search_console(days: int, out: Path) -> dict[str, int]:
     except ImportError:
         print("  ⚠ google-api-python-client not installed — skipping Search Console (see header).")
         return {}
-    creds, _ = google.auth.default(scopes=["https://www.googleapis.com/auth/webmasters.readonly"])
+    scopes = ["https://www.googleapis.com/auth/webmasters.readonly"]
+    # In the cloud routine the service-account key travels as GOOGLE_ADC_JSON
+    # (its JSON content); on a laptop, Application Default Credentials.
+    adc_json = os.environ.get("GOOGLE_ADC_JSON")
+    if adc_json:
+        from google.oauth2 import service_account  # type: ignore
+
+        creds = service_account.Credentials.from_service_account_info(json.loads(adc_json), scopes=scopes)
+    else:
+        creds, _ = google.auth.default(scopes=scopes)
     svc = build("searchconsole", "v1", credentials=creds, cache_discovery=False)
     end = dt.date.today() - dt.timedelta(days=2)  # GSC lags ~2 days
     start = end - dt.timedelta(days=days)
     totals: dict[str, int] = {}
     for prop in PROPERTIES:
-        host = prop.split("//")[1].rstrip("/")
+        host = prop.replace("sc-domain:", "").split("//")[-1].rstrip("/")
         for dim, fname in (("query", "queries"), ("page", "pages")):
             rows: list[dict] = []
             start_row = 0
