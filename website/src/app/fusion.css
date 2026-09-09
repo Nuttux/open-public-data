@@ -9965,6 +9965,13 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
     border: 0;
   }
   .theme-fusion .fx-sources-table-row .portal::before { content: "Portail · "; color: var(--ocre); font-family: var(--f-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; display: block; margin-bottom: 2px; }
+  /* Table « Fraîcheur par source » (/methode) : même grille, première colonne = la source, pas le portail. */
+  .theme-fusion .fx-fresh-table .fx-sources-table-row .portal::before { content: "Source · "; }
+  .theme-fusion .fx-fresh-table .fx-sources-table-row .url::before { content: "Publiée par la Ville le · "; color: var(--ocre); font-family: var(--f-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; display: block; margin-bottom: 2px; }
+  .theme-fusion .fx-fresh-table .fx-sources-table-row .fresh::before { content: "Ancienneté · "; color: var(--ocre); font-family: var(--f-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; display: block; margin-bottom: 2px; }
+  .theme-fusion .fx-fresh-table[lang="en"] .fx-sources-table-row .portal::before { content: "Source · "; }
+  .theme-fusion .fx-fresh-table[lang="en"] .fx-sources-table-row .url::before { content: "Published by the City on · "; }
+  .theme-fusion .fx-fresh-table[lang="en"] .fx-sources-table-row .fresh::before { content: "Age · "; }
 }
 
 /* ═══ Méthode — Table audit (réplique structure sources, labels audit) ════ */
