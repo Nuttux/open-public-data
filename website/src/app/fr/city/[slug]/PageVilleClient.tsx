@@ -9,6 +9,7 @@ import ChartSource from "@/components/fusion/ChartSource";
 import RelatedLinks, { type RelatedBlock } from "@/components/fiche/RelatedLinks";
 import { V3Fold } from "@/components/fiche/v3";
 import { useT, useLocale } from "@/lib/localeContext";
+import { aNom } from "@/lib/nom-commune";
 import { useTrack } from "@/lib/analyticsContext";
 import { fmtDec } from "@/lib/fmt";
 import type { BudgetPageData } from "@/lib/fusion-data";
@@ -518,7 +519,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
           {/* 2b. Taxe foncière */}
           {taxeFonciere && taxeFonciere.tfb != null && (
             <section className="fx-pv-section">
-              <H2 id="taxe-fonciere">{fill("fx.pv.tf.h2", { nom: commune.nom })}</H2>
+              <H2 id="taxe-fonciere">{fill("fx.pv.tf.h2", { nom: commune.nom, anom: aNom(commune.nom) })}</H2>
               <SecNum v={tfRate(taxeFonciere.tfb)} u="%" />
               <p className="fx-pv-l1">
                 {fill("fx.pv.tf.l1", { year: taxeFonciere.annee })}

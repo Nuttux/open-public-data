@@ -6,6 +6,7 @@ import Footer from "@/components/fusion/Footer";
 import ChartSource from "@/components/fusion/ChartSource";
 import { V3Amt, V3Fold, V3Foot, V3Row, V3Section, foldRest } from "@/components/fiche/v3";
 import { useT, useLocale } from "@/lib/localeContext";
+import { deNom } from "@/lib/nom-commune";
 import type { FournisseursData, MarchesData } from "@/lib/commune-marches";
 import { displayFournisseur } from "@/lib/fournisseur-display";
 
@@ -54,8 +55,8 @@ export default function CommuneMarchesClient({ commune, data, fournisseurs, sour
       <Navbar />
       <main id="main-content" tabIndex={-1}>
         <div className="fx-wrap fx-v3 fx-pv" style={{ padding: "48px 0" }}>
-          <p className="fx-pv-kicker"><Link href={`/fr/city/${commune.slug}#achats`} className="fx-pv-link">{fill("fx.nme.retour", { nom: commune.nom })}</Link> · {commune.dep_name}</p>
-          <h1 className="fx-pv-title">{fill("fx.nme.title", { nom: commune.nom })}</h1>
+          <p className="fx-pv-kicker"><Link href={`/fr/city/${commune.slug}#achats`} className="fx-pv-link">{fill("fx.nme.retour", { nom: commune.nom, denom: deNom(commune.nom) })}</Link> · {commune.dep_name}</p>
+          <h1 className="fx-pv-title">{fill("fx.nme.title", { nom: commune.nom, denom: deNom(commune.nom) })}</h1>
           <p className="fx-v3-lead">{fill("fx.nme.lede", { nb: int.format(data.total.nb_marches), y0, y1, montant: euro(data.total.montant) })}</p>
 
           <div className="fx-pv-two" style={{ marginTop: 24 }}>

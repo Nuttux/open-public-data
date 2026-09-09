@@ -15,6 +15,18 @@ import {
 } from "@/lib/all-communes";
 import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
 import { getCommuneCapabilities } from "@/lib/commune-capabilities";
+import { loadCommuneBudget } from "@/lib/commune-budget";
+import { deNom } from "@/lib/nom-commune";
+
+/** « 213,9 M€ », « 386 k€ » — les mêmes unités que la page, pour le titre. */
+function fmtEur(eur: number, locale: "fr" | "en"): string {
+  const tag = locale === "en" ? "en-GB" : "fr-FR";
+  const a = Math.abs(eur);
+  if (a >= 1e9) return `${(eur / 1e9).toLocaleString(tag, { maximumFractionDigits: 2 })} Md€`;
+  if (a >= 1e6) return `${(eur / 1e6).toLocaleString(tag, { maximumFractionDigits: 1 })} M€`;
+  if (a >= 1e3) return `${Math.round(eur / 1e3).toLocaleString(tag)} k€`;
+  return `${Math.round(eur).toLocaleString(tag)} €`;
+}
 import CityClient from "./CityClient";
 import CitySlimClient from "./CitySlimClient";
 import PageVilleClient from "./PageVilleClient";
@@ -42,7 +54,7 @@ export async function generateMetadata({
   const cityRich = getCityOrNull(slug);
   if (cityRich) {
     return buildLocaleAwareMetadata({
-      title: `Budget de ${cityRich.nom} : combien dépense la Ville ? Dépenses, subventions, marchés, dette, lieux`,
+      title: `Budget ${deNom(cityRich.nom)} : combien dépense la Ville ? Dépenses, subventions, marchés, dette, lieux`,
       description: `Ce que ${cityRich.nom} dépense par politique publique, ce qu'elle construit, ce qu'elle doit, les associations qu'elle soutient, ce qu'elle achète, ses lieux, et sa position face aux grandes villes. Sources : la Ville, OFGL, DECP.`,
       en: {
         title: `${cityRich.nom} budget: how much does the City spend? Spending, grants, contracts, debt, places`,
@@ -54,8 +66,29 @@ export async function generateMetadata({
   // Tail commune (slim page)
   const slim = findCommuneByAny(slug);
   if (slim) {
+    // Le titre répond à la question avec les chiffres de la page elle-même
+    // (SEO / moteurs de réponse) : « Budget de Pantin : 213,9 M€ dépensés en
+    // 2024, 3 509 € par habitant ». Même fichier que la page, mémoïsé.
+    const bud = getCommuneCapabilities(slim.slug).budget.nature ? await loadCommuneBudget(slim.slug).catch(() => null) : null;
+    if (bud) {
+      const y = bud.year;
+      const dep = bud.data.depenses;
+      const rec = bud.data.recettes;
+      const hab = slim.pop > 0 ? Math.round(dep / slim.pop) : null;
+      const fr = (n: number) => fmtEur(n, "fr");
+      const en = (n: number) => fmtEur(n, "en");
+      return buildLocaleAwareMetadata({
+        title: `Budget ${deNom(slim.nom)} : ${fr(dep)} dépensés en ${y}${hab != null ? `, ${hab.toLocaleString("fr-FR")} € par habitant` : ""} (${slim.dep_name})`,
+        description: `${slim.nom} (${slim.dep_name}, ${slim.reg_name}) a dépensé ${fr(dep)} en ${y}${hab != null ? `, soit ${hab.toLocaleString("fr-FR")} € par habitant` : ""}, pour ${fr(rec)} de recettes. Dette, taxe foncière, investissements et marchés publics, face aux communes de sa taille. Sources : DGFiP, OFGL, DECP, comptes ${y}.`,
+        en: {
+          title: `${slim.nom} budget: ${en(dep)} spent in ${y}${hab != null ? `, €${hab.toLocaleString("en-GB")} per inhabitant` : ""} (${slim.dep_name})`,
+          description: `${slim.nom} (${slim.dep_name}, ${slim.reg_name}) spent ${en(dep)} in ${y}${hab != null ? `, or €${hab.toLocaleString("en-GB")} per inhabitant` : ""}, against ${en(rec)} in revenue. Debt, property tax, investment and public contracts, compared with towns of its size. Sources: DGFiP, OFGL, DECP, ${y} accounts.`,
+        },
+        path: `/fr/city/${slug}`,
+      });
+    }
     return buildLocaleAwareMetadata({
-      title: `Budget de ${slim.nom} : combien dépense la commune ? Dépenses, dette, marchés (${slim.dep_name})`,
+      title: `Budget ${deNom(slim.nom)} : combien dépense la commune ? Dépenses, dette, marchés (${slim.dep_name})`,
       description: `Ce que ${slim.nom} (${slim.dep_name}, ${slim.reg_name}) dépense et encaisse, ce qu'elle construit, ce qu'elle doit, ce qu'elle achète, et sa position face aux communes de même taille. Sources : DGFiP, OFGL, DECP.`,
       en: {
         title: `${slim.nom} budget: how much does the town spend? Spending, debt, contracts (${slim.dep_name})`,

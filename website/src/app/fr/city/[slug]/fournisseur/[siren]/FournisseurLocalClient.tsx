@@ -6,6 +6,7 @@ import Footer from "@/components/fusion/Footer";
 import ChartSource from "@/components/fusion/ChartSource";
 import { V3Amt, V3Fold, V3Foot, V3Hero, V3Lead, V3Row, V3Section, foldRest } from "@/components/fiche/v3";
 import { useT, useLocale } from "@/lib/localeContext";
+import { aNom, deNom } from "@/lib/nom-commune";
 import type { FournisseurLocal } from "@/lib/commune-marches";
 
 type Props = {
@@ -55,7 +56,7 @@ export default function FournisseurLocalClient({ commune, f, nationalComplet, co
           </V3Lead>
           <V3Hero v={hero.v} u={hero.u} caption={fill("fx.fl.hero_cap", { commune: commune.nom, y0: f.first_year ?? "" })} meta={t("fx.fl.hero_meta")} />
 
-          <V3Section title={fill("fx.fl.h2", { nom: f.nom, commune: commune.nom })}>
+          <V3Section title={fill("fx.fl.h2", { nom: f.nom, commune: commune.nom, acommune: aNom(commune.nom) })}>
             {shown.map((m, i) => (
               <V3Row key={i} label={m.objet || "—"} sub={ligne(m)} amount={<V3Amt {...split(m.montant)} />} />
             ))}
@@ -80,7 +81,7 @@ export default function FournisseurLocalClient({ commune, f, nationalComplet, co
           )}
 
           {others.length > 0 && (
-            <V3Section title={fill("fx.fl.autres", { commune: commune.nom })}>
+            <V3Section title={fill("fx.fl.autres", { commune: commune.nom, decommune: deNom(commune.nom) })}>
               {others.map((o) => (
                 <V3Row key={o.siren} href={`/fr/city/${commune.slug}/fournisseur/${o.siren}`} label={o.nom} sub={(o.nb === 1 ? t("fx.fl.n_marche1") : fill("fx.fl.n_marches", { n: o.nb }))} amount={<V3Amt {...split(o.montant)} />} />
               ))}
@@ -100,7 +101,7 @@ export default function FournisseurLocalClient({ commune, f, nationalComplet, co
       <main id="main-content" tabIndex={-1}>
         <div className="fx-wrap fx-v3 fx-pv" style={{ padding: "48px 0" }}>
           <p className="fx-pv-kicker">
-            <Link href={`/fr/city/${commune.slug}#achats`} className="fx-pv-link">{fill("fx.fl.kicker", { nom: commune.nom })}</Link>
+            <Link href={`/fr/city/${commune.slug}#achats`} className="fx-pv-link">{fill("fx.fl.kicker", { nom: commune.nom, denom: deNom(commune.nom) })}</Link>
             {domaine ? ` · ${domaine.replace(/ & /g, en ? " and " : " et ")}` : ""}
           </p>
           <h1 className="fx-pv-title">{f.nom}</h1>

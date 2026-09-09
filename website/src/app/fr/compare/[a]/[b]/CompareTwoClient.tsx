@@ -6,6 +6,7 @@ import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import ChartSource from "@/components/fusion/ChartSource";
 import { useT, useLocale } from "@/lib/localeContext";
+import { deNom } from "@/lib/nom-commune";
 
 export type CompareTwoEntry = { slug: string; nom: string; dep_name: string; pop: number; kpis: Record<string, number | null>; taux?: { annee: number; tfb: number | null; mediane: number | null } | null };
 
@@ -68,9 +69,9 @@ export default function CompareTwoClient({ a, b, keys, year, sourceUrl }: { a: C
           <button type="button" className="fx-pv-share" onClick={share}><i aria-hidden="true" />{ok ? t("fx.pv.share_done") : t("fx.cmp2.share")}</button>
           <p className="fx-v3-foot">{t("fx.cmp2.note")}{a.taux ? ` ${t("fx.pv.taux_note")}` : ""}</p>
           <p className="fx-v3-sentence">
-            <Link className="fx-pv-link" href={`/fr/city/${a.slug}`}>{fill("fx.cmp2.back", { nom: a.nom })} →</Link>
+            <Link className="fx-pv-link" href={`/fr/city/${a.slug}`}>{fill("fx.cmp2.back", { nom: a.nom, denom: deNom(a.nom) })}<i className="fx-pv-arrow" aria-hidden="true" /></Link>
             {" · "}
-            <Link className="fx-pv-link" href={`/fr/city/${b.slug}`}>{fill("fx.cmp2.back", { nom: b.nom })} →</Link>
+            <Link className="fx-pv-link" href={`/fr/city/${b.slug}`}>{fill("fx.cmp2.back", { nom: b.nom, denom: deNom(b.nom) })}<i className="fx-pv-arrow" aria-hidden="true" /></Link>
           </p>
           <ChartSource source={`${t("fx.natcmp.source")} · ${year}`} dataHref={sourceUrl} methodAnchor="c-villes" />
         </div>
