@@ -16,6 +16,8 @@ monthly read, then a decision.
 
 Setup (once):
   pip install google-api-python-client google-auth
+  # In the cloud routine image the system `cryptography` is broken (no _cffi_backend):
+  pip install --ignore-installed cryptography cffi
   Either GOOGLE_ADC_JSON_B64 = base64 of the service-account key file (one line;
   the account seo-routine@open-data-france-484717 is a user on the Search
   Console properties) — or GOOGLE_ADC_JSON with the raw JSON — or locally:
@@ -42,6 +44,14 @@ PROPERTIES = ["sc-domain:qipu.org", "sc-domain:fr.qipu.org", "sc-domain:pt.qipu.
 ROOT = Path(__file__).resolve().parents[3]
 
 
+def env(name: str) -> str | None:
+    """An environment value, tolerant of the whole `NAME=value` line pasted into the value field."""
+    v = (os.environ.get(name) or "").strip()
+    if v.startswith(f"{name}="):
+        v = v[len(name) + 1 :]
+    return v.strip().strip('"') or None
+
+
 def search_console(days: int, out: Path) -> dict[str, int]:
     """Top queries + zero-click queries + top pages per property, last `days` days."""
     try:
@@ -55,11 +65,11 @@ def search_console(days: int, out: Path) -> dict[str, int]:
     # (its JSON content); on a laptop, Application Default Credentials.
     # GOOGLE_ADC_JSON_B64 (one line, base64 of the key file) fits the KEY=value
     # environment format of the cloud routine; GOOGLE_ADC_JSON (raw JSON) works too.
-    adc_json = os.environ.get("GOOGLE_ADC_JSON")
-    if not adc_json and os.environ.get("GOOGLE_ADC_JSON_B64"):
+    adc_json = env("GOOGLE_ADC_JSON")
+    if not adc_json and env("GOOGLE_ADC_JSON_B64"):
         import base64
 
-        adc_json = base64.b64decode(os.environ["GOOGLE_ADC_JSON_B64"]).decode("utf-8")
+        adc_json = base64.b64decode(env("GOOGLE_ADC_JSON_B64")).decode("utf-8")
     if adc_json:
         from google.oauth2 import service_account  # type: ignore
 
@@ -114,11 +124,11 @@ def search_console(days: int, out: Path) -> dict[str, int]:
 
 def posthog_zero_results(days: int, out: Path) -> int | None:
     """Site searches that returned nothing, from the `search_submit` event."""
-    key, project = os.environ.get("POSTHOG_API_KEY"), os.environ.get("POSTHOG_PROJECT_ID")
+    key, project = env("POSTHOG_API_KEY"), env("POSTHOG_PROJECT_ID")
     if not key or not project:
         print("  ℹ POSTHOG_API_KEY / POSTHOG_PROJECT_ID not set — skipping site-search zero results.")
         return None
-    host = os.environ.get("POSTHOG_HOST", "https://eu.posthog.com")
+    host = env("POSTHOG_HOST") or "https://eu.posthog.com"
     hogql = (
         "select properties.query as q, properties.page as page, count() as n "
         f"from events where event = 'search_submit' and toInt(properties.results_count) = 0 "

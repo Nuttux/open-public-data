@@ -80,7 +80,9 @@ def family_of(url: str) -> str:
         return "/" + "/".join(seg[:-1])
     if len(seg) >= 3 and seg[-3] in ENTITY_TAILS:  # dept/[slug]/character/[slug]
         return "/" + "/".join(seg[:-1])
-    return "/" + "/".join(seg[:4]) if len(seg) > 4 else path  # sections, browse, communes
+    if len(seg) == 3 and seg[0] == "fr" and seg[1] == "city":  # the 35k commune pages are one family
+        return "/fr/city/<commune>"
+    return "/" + "/".join(seg[:4]) if len(seg) > 4 else path  # sections, browse
 
 
 def is_entity(family: str) -> bool:
@@ -147,7 +149,8 @@ def main() -> int:
     out = Path(a.out) / dt.date.today().strftime("%Y-%m-%d")
     out.mkdir(parents=True, exist_ok=True)
     rows: list[dict[str, object]] = []
-    hard = ["h1", "answer", "title", "canonical", "hreflang", "jsonld", "related", "weight"]
+    hard = ["h1", "title", "canonical", "hreflang", "weight"]
+    entity_hard = ["answer", "jsonld", "related"]  # hubs, landing and legal pages carry no answer sentence
     failed = 0
     for h in a.hosts.split(","):
         base = HOSTS[h]
@@ -162,7 +165,7 @@ def main() -> int:
             for u in sample:
                 r = check(u, entity)
                 r.update({"host": h, "family": f, "entity": entity})
-                bad = [k for k in hard if r.get(k) is False]
+                bad = [k for k in hard + (entity_hard if entity else []) if r.get(k) is False]
                 if r["status"] != 200:
                     bad.insert(0, f"status {r['status']}")
                 failed += bool(bad)
@@ -182,7 +185,7 @@ def main() -> int:
         w.writerows(rows)
     checked = [r for r in rows if "soft404" not in r]
     print(f"\n{len(checked)} pages checked, {failed} failures → {out / 'hygiene.csv'}")
-    for k in hard + ["speed", "cache"]:
+    for k in hard + entity_hard + ["speed", "cache"]:
         n = sum(1 for r in checked if r.get(k) is True)
         print(f"  {k:10s} {n}/{len(checked)}")
     return 1 if failed else 0

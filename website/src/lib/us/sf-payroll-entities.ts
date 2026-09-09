@@ -229,7 +229,9 @@ export function loadSfPayrollDept(slug: string): SfPayrollDeptData | null {
 
 export function sfPayrollAreaSlugs(): string[] {
   const byDept = readByDept();
-  return byDept.organization_groups.map((g) => areaSlug(g.organization_group));
+  const fy = String(latestFy(byDept));
+  // Only areas with a latest-year figure have a page (loadSfPayrollArea returns null otherwise).
+  return byDept.organization_groups.filter((g) => g.years[fy]).map((g) => areaSlug(g.organization_group));
 }
 
 export function loadSfPayrollArea(slug: string): SfPayrollAreaData | null {

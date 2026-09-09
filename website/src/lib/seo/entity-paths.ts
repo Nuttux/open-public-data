@@ -219,13 +219,18 @@ function recifePaths(): string[] {
 }
 
 /** Section pages of the French cities that have dedicated routes (Marseille…). */
+// Marseille has its own routes (app/fr/city/marseille/*); the other big cities
+// only have the generic sections under app/fr/city/[slug]/ — listing a section
+// a city does not have puts a 404 in the sitemap.
+const MARSEILLE_SECTIONS = ["budget", "subventions", "marches", "investissements", "dette", "logement", "lieux"];
+const GENERIC_CITY_SECTIONS = ["budget", "marches", "investissements", "evolution", "comparaison"];
+
 function frenchCitySectionPaths(): string[] {
   const out: string[] = [];
   for (const c of listCities()) {
     if (c.slug === "paris") continue;
-    for (const s of ["budget", "subventions", "marches", "investissements", "dette", "logement", "lieux"]) {
-      out.push(`/fr/city/${c.slug}/${s}`);
-    }
+    const sections = c.slug === "marseille" ? MARSEILLE_SECTIONS : GENERIC_CITY_SECTIONS;
+    for (const s of sections) out.push(`/fr/city/${c.slug}/${s}`);
   }
   return out;
 }
