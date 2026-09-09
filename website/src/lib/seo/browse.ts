@@ -67,6 +67,19 @@ export function associationNames(city: string): { name: string; totalAmount: num
   });
 }
 
+/** One name per fiche — spelling variants share a slug — so letter counts and page counts match the pages. */
+export function associationUniqueNames(city: string): string[] {
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const r of associationNames(city)) {
+    const h = assocHref(city, r.name);
+    if (seen.has(h)) continue;
+    seen.add(h);
+    out.push(r.name);
+  }
+  return out;
+}
+
 export function associationItems(city: string, letter: string, locale: "fr" | "en"): BrowseItem[] {
   // Two spellings of one organisation share a slug, hence a page: list it once.
   const seen = new Set<string>();

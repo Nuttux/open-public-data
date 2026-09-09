@@ -14,7 +14,7 @@ import { canonicalBailleurSlug, loadLogementSocialData } from "@/lib/fusion-data
 import { loadLieuxIndex } from "@/lib/lieux-data";
 import { loadPlacesIndex as loadMarseillePlaces } from "@/lib/marseille/marseille-places-data";
 import { slugifyChapitre, slugifyLabel } from "@/lib/projet-utils";
-import { associationNames, countByLetter, fournisseurList, marchesYears, projetArrondissements, projetYears, recifeRecipientNames, sfPayeeNames, PAGE_SIZE } from "@/lib/seo/browse";
+import { associationUniqueNames, countByLetter, fournisseurList, marchesYears, projetArrondissements, projetYears, recifeRecipientNames, sfPayeeNames, PAGE_SIZE } from "@/lib/seo/browse";
 import { assocSlug } from "@/lib/assoc-slug";
 
 type SubvIndex = { availableYears: number[] };
@@ -247,7 +247,7 @@ function lettersPaged(base: string, names: string[]): string[] {
 }
 function frBrowsePaths(city: string): string[] {
   const out: string[] = [];
-  guarded(out, () => out.push(...lettersPaged(`/fr/city/${city}/subventions/associations`, associationNames(city).map((a) => a.name))));
+  guarded(out, () => out.push(...lettersPaged(`/fr/city/${city}/subventions/associations`, associationUniqueNames(city))));
   guarded(out, () => out.push(...lettersPaged(`/fr/city/${city}/marches/fournisseurs`, fournisseurList(city).map((f) => f.nom))));
   guarded(out, () => {
     const base = `/fr/city/${city}/marches/contrats`;

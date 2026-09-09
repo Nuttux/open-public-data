@@ -9,7 +9,7 @@ import { answerMetadata } from "@/lib/seo/page-answer";
 import {
   LETTERS,
   associationItems,
-  associationNames,
+  associationUniqueNames,
   contratItems,
   countByLetter,
   fournisseurItems,
@@ -69,7 +69,7 @@ export function makeAssociationsBrowse(city: string) {
     const q = parse((await params).parts);
     if (!q) notFound();
     const locale = await readLocale();
-    const total = associationNames(city).length;
+    const total = associationUniqueNames(city).length;
     const path = q.letter ? `${base}/${q.letter}${q.p > 1 ? `/${q.p}` : ""}` : base;
     const en = locale === "en";
     const title = q.letter
@@ -86,7 +86,7 @@ export function makeAssociationsBrowse(city: string) {
     const path = q.letter ? `${base}/${q.letter}${q.p > 1 ? `/${q.p}` : ""}` : base;
     const locale = await readLocale();
     const en = locale === "en";
-    const counts = countByLetter(associationNames(city).map((a) => a.name));
+    const counts = countByLetter(associationUniqueNames(city));
     const total = counts.reduce((s, c) => s + c.count, 0);
     const rail = letterRail(base, counts, q.letter);
     let items: BrowseItem[] = [];
