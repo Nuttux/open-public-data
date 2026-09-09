@@ -730,6 +730,23 @@ export function isVoteTally(raw: string): boolean {
  * ```
  */
 function pickHeadline(rows: readonly BlockDecision[]): BlockDecision | null {
+  /* ── A ROW WE WROTE HEADS THE DECADE ─────────────────────────────────
+     98.2 % of block decisions carry `pl`, a line written from the whole
+     item and checked twice — in every decade, 1900s included. This picked
+     by the page's printed headings and the panel then printed the Clerk's
+     own text, so the rail read "Yours sincerely, ANGELO J. ROSSI, Mayor —
+     Appropriating the sum of $28,000.00…" above a decade with eleven
+     written lines in it (Daniel, 2026-09-09: "old forms of the decisions").
+     The written rows come first; the Board's own heading still wins among
+     them, and the printed-line path stands for the 1.8 % without one. */
+  const written = rows.filter((r) => r.pl && r.pl.trim());
+  if (written.length) {
+    const reach = written.slice(
+      0,
+      Math.min(HEADLINE_REACH_MAX, Math.max(HEADLINE_REACH_MIN, Math.ceil(written.length / 4))),
+    );
+    return reach.find((r) => r.g === "h") ?? reach.find((r) => r.g === "p") ?? written[0];
+  }
   const withLine = rows.filter(
     (r) => isPrintableLine(r.t) && !isSpeakerList(r.t) && !isVoteTally(r.t),
   );
