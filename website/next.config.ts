@@ -219,6 +219,18 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Legacy domain. franceopendata.org still served the whole site with a
+      // 200 (35 of 83 Google-referred human visits in Aug–Sep 2026): duplicate
+      // content and authority split three ways. The old site was French, so
+      // every path goes to fr.qipu.org; the proxy there sends /us and /br on
+      // to www. A next.config redirect runs before the filesystem, so
+      // robots.txt and the sitemaps redirect too.
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: '(www\\.)?franceopendata\\.org' }],
+        destination: 'https://fr.qipu.org/:path*',
+        permanent: true,
+      },
       // The GPU renderer took over /the-city on 2026-08-30 and the Canvas one
       // was deleted with it. `/the-city-gl` was noindex and linked from
       // nowhere, so this is for the hand-pasted links only.

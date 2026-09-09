@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from 'next/server';
-import { hostForLocale, localeFromHost, localesForPath } from '@/lib/site-locale';
+import { LOCALE_HOSTS, hostForLocale, localeFromHost, localesForPath } from '@/lib/site-locale';
 
 /**
  * Language by host (see lib/site-locale.ts).
@@ -17,6 +17,15 @@ export default function proxy(req: NextRequest) {
   const host = req.headers.get('host') ?? '';
   const locale = localeFromHost(host);
   const { pathname, searchParams } = req.nextUrl;
+
+  // Legacy domain (franceopendata.org, still attached to the project): one
+  // 308 to the qipu host that speaks the path's language. The old site was
+  // French, so French-capable paths go to fr.qipu.org, the rest to www.
+  // next.config's redirects() covers what this matcher skips (robots, sitemaps).
+  if (/(^|\.)franceopendata\.org$/i.test(host)) {
+    const target = localesForPath(pathname).includes('fr') ? LOCALE_HOSTS.fr : LOCALE_HOSTS.en;
+    return NextResponse.redirect(new URL(pathname + req.nextUrl.search, target), 308);
+  }
 
 
   const lang = searchParams.get('lang');
