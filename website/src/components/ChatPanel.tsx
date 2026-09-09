@@ -9,7 +9,7 @@ import { chipsFor, pickChips, type ShownChip } from "@/lib/chat/chips";
 import { scopeForPath, isChatEnabledPath, DEFAULT_SCOPE_ID, CHAT_SCOPES } from "@/lib/chat/scopes";
 import { useT, useLocale, ForcedLocale } from "@/lib/localeContext";
 import { toolLabel, toolRaw } from "@/lib/chat/toolLabels";
-import { isOptedOutAnalytics, currentSessionId, trackEvent } from "@/components/AnalyticsProvider";
+import { trackEvent } from "@/components/AnalyticsProvider";
 
 // Where a question came from — the product digest must not read our own
 // suggestion chips as visitor demand. "typed" is the only organic signal.
@@ -382,14 +382,24 @@ function ChatPanelInner() {
     setInput("");
     setLoading(true);
 
+    // One `chat_question` event per answer, sent from the browser when the
+    // stream ends (the server cannot: the project only keeps browser-SDK
+    // events). Same visitor and session as the pageviews; opt-out honoured
+    // by trackEvent. `origin` separates our own chips from typed demand.
+    const t0 = Date.now();
+    let answerChars = 0;
+    const toolsUsed: string[] = [];
+    let errMsg: string | null = null;
+    let aborted = false;
+
     const ctrl = new AbortController();
     abortRef.current = ctrl;
 
     try {
       const res = await fetch("/api/chat", {
         method: "POST",
-        headers: { "content-type": "application/json", "x-qipu-analytics": isOptedOutAnalytics() ? "off" : "on" },
-        body: JSON.stringify({ messages: wireHistory, locale, scope, origin, chip, session_id: currentSessionId() }),
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ messages: wireHistory, locale, scope }),
         signal: ctrl.signal,
       });
       if (!res.ok || !res.body) {
@@ -405,6 +415,7 @@ function ChatPanelInner() {
         let data: unknown = null;
         try { data = JSON.parse(dataRaw); } catch { return; }
         if (event === "text") {
+          answerChars += String(data).length;
           const delta = data as string;
           setMessages((m) => {
             const copy = [...m];
@@ -413,6 +424,7 @@ function ChatPanelInner() {
             return copy;
           });
         } else if (event === "reset") {
+          answerChars = 0;
           // Le serveur a jeté un texte partiel émis avant un appel d'outil :
           // on repart d'une bulle vide pour ne pas coller deux réponses.
           setMessages((m) => {
@@ -430,6 +442,7 @@ function ChatPanelInner() {
           });
         } else if (event === "tool") {
           const tc = data as ToolCall;
+          toolsUsed.push(tc.name);
           setMessages((m) => {
             const copy = [...m];
             const last = copy[copy.length - 1];
@@ -437,7 +450,8 @@ function ChatPanelInner() {
             return copy;
           });
         } else if (event === "error") {
-          setError((data as { message?: string }).message ?? "Erreur");
+          errMsg = (data as { message?: string }).message ?? "Erreur";
+          setError(errMsg);
         }
       };
 
@@ -472,6 +486,7 @@ function ChatPanelInner() {
       }
     } catch (e) {
       if ((e as Error).name === "AbortError") {
+        aborted = true;
         setMessages((m) => {
           const copy = [...m];
           const last = copy[copy.length - 1];
@@ -479,11 +494,27 @@ function ChatPanelInner() {
           return copy;
         });
       } else {
-        setError(e instanceof Error ? e.message : String(e));
+        errMsg = e instanceof Error ? e.message : String(e);
+        setError(errMsg);
       }
     } finally {
       setLoading(false);
       abortRef.current = null;
+      trackEvent("chat_question", {
+        scope,
+        origin,
+        locale,
+        question: text.slice(0, 500),
+        turn: wireHistory.filter((m) => m.role === "user").length,
+        tools: toolsUsed,
+        n_tool_calls: toolsUsed.length,
+        answer_chars: answerChars,
+        error: errMsg,
+        aborted,
+        duration_ms: Date.now() - t0,
+        page: pathname,
+        ...(chip ? { chip_id: chip.id, chip_pos: chip.pos, chip_family: chip.family } : {}),
+      });
     }
   }
 

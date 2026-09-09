@@ -284,13 +284,3 @@ export function optInAnalytics() {
 export function isOptedOutAnalytics(): boolean {
   return isOptedOut();
 }
-
-/** The browser SDK's session id, so a server-side event can join the session (null when off). */
-export function currentSessionId(): string | null {
-  if (typeof window === 'undefined' || !initialized || isOptedOut()) return null;
-  try {
-    return posthog.get_session_id() || null;
-  } catch {
-    return null;
-  }
-}
