@@ -103,7 +103,6 @@ export default function Navbar() {
           <BrandMark />
           <span>{t("fx.nav.brand")}</span>
         </Link>
-        {navLinks.length > 0 ? (
         <nav className="fx-links" aria-label={t("fx.nav.main_aria")}>
           {navLinks.map((l) => (
             <Link
@@ -116,7 +115,6 @@ export default function Navbar() {
             </Link>
           ))}
         </nav>
-        ) : <span className="fx-links-spacer" />}
         <PlaceSwitcher variant="nav" currentSlug={frSlug} />
         <LangSwitcher />
         <button

@@ -220,6 +220,14 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
   const router = useRouter();
 
   const { data, availableYears, year } = budget;
+  // « dépensés en 2024, comptes de la commune » → la légende est coupée autour
+  // de l'année, qui devient un menu. Les six pastilles d'années occupaient le
+  // premier écran avant même le chiffre, alors que presque personne n'en change.
+  const [capBefore, capAfter] = (() => {
+    const full = t("fx.natbud.v3.cap_exec");
+    const i = full.indexOf("{year}");
+    return i < 0 ? [full + " ", ""] : [full.slice(0, i), full.slice(i + 6)];
+  })();
   const perHab = commune.pop > 0 ? data.depenses / commune.pop : 0;
 
   /* ── 1. Le chiffre : tendance, position ── */
@@ -409,29 +417,48 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
             </p>
           ) : null}
 
-          {availableYears.length > 1 && (
-            <nav className="fx-yearpicker" aria-label={t("fx.natbud.year_label")}>
-              {availableYears.map((y) => (
-                <Link key={y} href={`/fr/city/${commune.slug}?year=${y}`} className={y === year ? "is-active" : ""} aria-current={y === year ? "page" : undefined} scroll={false}>{y}</Link>
-              ))}
-            </nav>
-          )}
-
           {/* 1. Le chiffre */}
           <div className="fx-v3-herogrid">
             <div>
               <div className="fx-v3-hero-num tnum">{euro(data.depenses).replace(/\s?(Md€|M€|k€|€)$/, "")}<span className="u">{euro(data.depenses).match(/(Md€|M€|k€|€)$/)?.[0]}</span></div>
-              <div className="fx-v3-hero-cap">{fill("fx.natbud.v3.cap_exec", { year })}</div>
+              <div className="fx-v3-hero-cap">
+                {availableYears.length > 1 ? (
+                  <>
+                    {capBefore}
+                    <select
+                      className="fx-pv-yearsel"
+                      aria-label={t("fx.pv.annee_label")}
+                      value={year}
+                      onChange={(e) => router.push(`/fr/city/${commune.slug}?year=${e.target.value}`, { scroll: false })}
+                    >
+                      {availableYears.map((y) => <option key={y} value={y}>{y}</option>)}
+                    </select>
+                    {capAfter}
+                  </>
+                ) : (
+                  fill("fx.natbud.v3.cap_exec", { year })
+                )}
+              </div>
+              {years.length > 1 && (
+                <div className="fx-v3-trend fx-pv-trend-mob">
+                  <Bars points={years.map((y) => ({ year: y.year, value: y.depenses, type: y.type }))} year={year} />
+                  <div className="t">
+                    {deltaYear != null && <b>{signedPct(deltaYear)} {fill("fx.bud.v3.vs", { y: prevYear.year })}</b>}
+                    {sinceFirst != null && <span> · {signedPct(sinceFirst)} {fill("fx.bud.v3.depuis", { y: first.year })}</span>}
+                  </div>
+                </div>
+              )}
               <div className="fx-v3-hero-meta">
                 {perHab > 0 ? `${fill("fx.bud.v3.par_hab", { n: int.format(perHab) })} · ` : ""}
                 {fill("fx.bud.v3.recettes_exec", { rec: euro(data.recettes) })}
                 {` · ${t("fx.natbud.solde").toLowerCase()} ${euro(data.solde, true)}`}
               </div>
               {position ? <p className="fx-pv-position">{position}</p> : null}
+              {commune.pop < 10000 && years.length > 1 ? <p className="fx-pv-petite">{t("fx.pv.petite_commune")}</p> : null}
               <ShareButton label={t("fx.pv.share_num")} title={fill("fx.pv.share_title", { nom: commune.nom, year, n: euro(data.depenses) })} done={t("fx.pv.share_done")} />
             </div>
             {years.length > 1 && (
-              <div className="fx-v3-trend">
+              <div className="fx-v3-trend fx-pv-trend-desk">
                 <div className="t">
                   {deltaYear != null && <b>{signedPct(deltaYear)} {fill("fx.bud.v3.vs", { y: prevYear.year })}</b>}
                   {sinceFirst != null && <span> · {signedPct(sinceFirst)} {fill("fx.bud.v3.depuis", { y: first.year })}</span>}

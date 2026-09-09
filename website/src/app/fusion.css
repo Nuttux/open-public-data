@@ -19604,7 +19604,9 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   -webkit-mask: var(--fx-arrow) center/contain no-repeat; mask: var(--fx-arrow) center/contain no-repeat;
 }
 .theme-fusion .fx-pv-chips {
-  position: sticky; top: 0; z-index: 30;
+  /* La barre du haut est collante à 56 px : les puces se posent dessous, sinon
+     elles la recouvrent au défilement. */
+  position: sticky; top: 56px; z-index: 20;
   display: flex; gap: 8px; margin: 26px 0 0; padding: 10px 0;
   overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; -ms-overflow-style: none;
   background: color-mix(in srgb, var(--paper, #fafaf7) 92%, transparent);
@@ -19612,9 +19614,6 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
 }
 .theme-fusion .fx-pv-chips::-webkit-scrollbar { display: none; }
-/* La page ville n'a plus de liens de section en haut : la barre de puces les
-   porte. Le burger reste pour les sélecteurs de commune et de langue. */
-.theme-fusion .fx-links-spacer { flex: 1; }
 .theme-fusion .fx-pv-chips a {
   flex: none; font-size: 13.5px; line-height: 1.3; color: var(--ink-2); text-decoration: none;
   border: 1px solid var(--rule-2, #cfcdc4); border-radius: 999px; padding: 5px 12px; white-space: nowrap;
@@ -19625,10 +19624,39 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   .theme-fusion .fx-pv-chips { margin-left: -16px; margin-right: -16px; padding-left: 16px; padding-right: 16px; }
 }
 .theme-fusion .fx-pv-position { font-size: 15px; color: var(--ink); margin: 12px 0 0; max-width: 60ch; line-height: 1.5; }
+/* Bloc 2 — le haut de page. L'année passe en menu DANS la légende du chiffre :
+   les six pastilles occupaient le premier écran avant même le nombre. */
+.theme-fusion .fx-pv-yearsel {
+  font: inherit; font-size: inherit; color: var(--ink); background: transparent;
+  border: 1px solid var(--rule-2, #cfcdc4); border-radius: 999px; padding: 1px 6px 1px 9px;
+  margin: 0 1px 0 3px; cursor: pointer; font-variant-numeric: tabular-nums;
+}
+.theme-fusion .fx-pv-yearsel:hover { border-color: var(--ink); }
+/* Une seule tendance affichée : sous le chiffre en mobile, en colonne à droite
+   sur desktop. Avant, les barres partaient seules à l'autre bout de l'écran. */
+.theme-fusion .fx-pv-trend-mob { display: none; }
+.theme-fusion .fx-pv-trend-mob .bars { margin-top: 14px; }
+.theme-fusion .fx-pv-trend-mob .t { margin-top: 8px; }
+.theme-fusion .fx-pv-petite { font-size: 13.5px; color: var(--muted); margin: 8px 0 0; max-width: 60ch; line-height: 1.45; }
+/* Le héros ne s'étale pas sur toute la largeur : les barres partaient à l'autre
+   bout de l'écran, séparées du chiffre par un vide de 600 px. */
+.theme-fusion .fx-pv .fx-v3-herogrid { max-width: 900px; }
+@media (max-width: 820px) {
+  .theme-fusion .fx-pv-trend-mob { display: block; }
+  .theme-fusion .fx-pv-trend-desk { display: none; }
+}
+/* Les montants touchaient le bord droit sur mobile : la marge du conteneur se
+   perdait dans le débord négatif hérité des fiches. */
+@media (max-width: 820px) {
+  .theme-fusion .fx-pv .fx-bud-col > h3,
+  .theme-fusion .fx-pv .fx-bud-row,
+  .theme-fusion .fx-pv .fx-pv-colhead,
+  .theme-fusion .fx-pv .fx-pv-line { padding-right: 2px; }
+}
 .theme-fusion .fx-pv-share { display: inline-flex; align-items: center; gap: 7px; font: inherit; font-size: 12.5px; color: var(--ink-2); background: transparent; border: 1px solid var(--rule-2, #cfcdc4); border-radius: 999px; padding: 4px 11px; margin-top: 12px; cursor: pointer; }
 .theme-fusion .fx-pv-share:hover { border-color: var(--ink); color: var(--ink); }
 .theme-fusion .fx-pv-share i { display: inline-block; width: 10px; height: 10px; border: 1.5px solid currentColor; border-radius: 2px; }
-.theme-fusion .fx-pv-h2 { scroll-margin-top: 80px; }
+.theme-fusion .fx-pv-h2 { scroll-margin-top: 118px; } /* barre du haut + barre de puces */
 .theme-fusion .fx-pv-section { margin-top: 8px; }
 /* Une seule mesure de prose : les sous-titres et les notes couraient sur toute
    la largeur (177 et 198 caractères par ligne contre 81 pour les phrases). */
