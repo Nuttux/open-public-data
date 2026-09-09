@@ -3485,6 +3485,8 @@ const fr: Record<string, string> = {
   'fx.pv.achats_fold_short': 'Domaines et fournisseurs',
   'fx.pv.plus_gros': 'Les {n} plus gros marchés',
   'fx.pv.comparer_fold': 'Les chiffres face à face',
+  'fx.pv.times_more': '{n} fois plus qu’en {y}',
+  'fx.pv.times_less': '{n} fois moins qu’en {y}',
   'fx.pv.chips_aria': 'Sections de la page',
   'fx.pv.fournisseur_hint': 'chaque nom ouvre sa fiche',
   'fx.pv.petite_commune': 'Dans une commune de cette taille, un seul chantier suffit à faire varier le total d’une année à l’autre.',

@@ -115,13 +115,20 @@ function Amt({ n, size = 14 }: { n: number; size?: number }) {
   );
 }
 
-function Bars({ points, year, height = 50 }: { points: { year: number; value: number; type?: "vote" | "execute" }[]; year: number; height?: number }) {
+/**
+ * Les barres de tendance. Sans axe ni valeur, elles ne disaient qu'une forme :
+ * une barre six fois plus haute qu'une autre ne dit pas si c'est trois cents
+ * euros ou trois mille. `ends` écrit la valeur au-dessus de la première et de
+ * la dernière barre, rien sur celles du milieu.
+ */
+function Bars({ points, year, height = 50, ends }: { points: { year: number; value: number; type?: "vote" | "execute" }[]; year: number; height?: number; ends?: (v: number) => string }) {
   const { euro } = useFmt();
   const max = Math.max(...points.map((p) => p.value), 1);
   return (
-    <div className="bars" aria-hidden="true">
-      {points.map((p) => (
+    <div className={`bars${ends ? " has-ends" : ""}`} aria-hidden="true">
+      {points.map((p, i) => (
         <div key={p.year} className={p.year === year ? "now" : p.type === "vote" ? "vote" : ""} title={`${p.year} · ${euro(p.value)}`}>
+          {ends && (i === 0 || i === points.length - 1) ? <em>{ends(p.value)}</em> : <em className="ghost" />}
           <b style={{ height: Math.max(3, Math.round((p.value / max) * height)) }} />
           <span>{p.year}</span>
         </div>
@@ -247,6 +254,16 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
     return s;
   };
   const router = useRouter();
+
+  // « +305,7 % » ne se convertit pas de tête : au-delà du double on dit
+  // « 4,1 fois plus qu'en 2018 », en dessous de la moitié « 2 fois moins ».
+  const deltaWords = (pct: number, y: number | string): string | null => {
+    const ratio = 1 + pct / 100;
+    const f = (x: number) => x.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 1 });
+    if (pct >= 100) return fill("fx.pv.times_more", { n: f(ratio), y });
+    if (pct <= -50 && ratio > 0) return fill("fx.pv.times_less", { n: f(1 / ratio), y });
+    return null;
+  };
 
   const { data, availableYears, year } = budget;
   // « dépensés en 2024, comptes de la commune » → la légende est coupée autour
@@ -470,10 +487,10 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
               </div>
               {years.length > 1 && (
                 <div className="fx-v3-trend fx-pv-trend-mob">
-                  <Bars points={years.map((y) => ({ year: y.year, value: y.depenses, type: y.type }))} year={year} />
+                  <Bars points={years.map((y) => ({ year: y.year, value: y.depenses, type: y.type }))} year={year} ends={euro} />
                   <div className="t">
-                    {deltaYear != null && <b>{signedPct(deltaYear)} {fill("fx.bud.v3.vs", { y: prevYear.year })}</b>}
-                    {sinceFirst != null && <span> · {signedPct(sinceFirst)} {fill("fx.bud.v3.depuis", { y: first.year })}</span>}
+                    {deltaYear != null && <b>{deltaWords(deltaYear, prevYear.year) ?? `${signedPct(deltaYear)} ${fill("fx.bud.v3.vs", { y: prevYear.year })}`}</b>}
+                    {sinceFirst != null && <span> · {deltaWords(sinceFirst, first.year) ?? `${signedPct(sinceFirst)} ${fill("fx.bud.v3.depuis", { y: first.year })}`}</span>}
                   </div>
                 </div>
               )}
@@ -489,10 +506,10 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
             {years.length > 1 && (
               <div className="fx-v3-trend fx-pv-trend-desk">
                 <div className="t">
-                  {deltaYear != null && <b>{signedPct(deltaYear)} {fill("fx.bud.v3.vs", { y: prevYear.year })}</b>}
-                  {sinceFirst != null && <span> · {signedPct(sinceFirst)} {fill("fx.bud.v3.depuis", { y: first.year })}</span>}
+                  {deltaYear != null && <b>{deltaWords(deltaYear, prevYear.year) ?? `${signedPct(deltaYear)} ${fill("fx.bud.v3.vs", { y: prevYear.year })}`}</b>}
+                  {sinceFirst != null && <span> · {deltaWords(sinceFirst, first.year) ?? `${signedPct(sinceFirst)} ${fill("fx.bud.v3.depuis", { y: first.year })}`}</span>}
                 </div>
-                <Bars points={years.map((y) => ({ year: y.year, value: y.depenses, type: y.type }))} year={year} />
+                <Bars points={years.map((y) => ({ year: y.year, value: y.depenses, type: y.type }))} year={year} ends={euro} />
               </div>
             )}
           </div>
@@ -585,13 +602,13 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
               {(detteMedian != null || (detteDelta != null && evoFirst)) ? (
                 <p className="fx-pv-l2">
                   {detteMedian != null ? fill("fx.pv.dette_median_short", { n: int.format(Math.round(detteMedian)) }) : ""}
-                  {detteDelta != null && evoFirst ? `${detteMedian != null ? " · " : ""}${signedPct(detteDelta)} ${fill("fx.pv.dette_since", { y: evoFirst.year })}` : ""}
+                  {detteDelta != null && evoFirst ? `${detteMedian != null ? " · " : ""}${deltaWords(detteDelta, evoFirst.year) ?? `${signedPct(detteDelta)} ${fill("fx.pv.dette_since", { y: evoFirst.year })}`}` : ""}
                 </p>
               ) : null}
               <SectionFold id="dette" label={t("fx.pv.dette_fold")} slug={commune.slug} pop={commune.pop}>
                 {evolution && evolution.series.length > 1 && (
                   <div className="fx-v3-trend fx-pv-trend-fold">
-                    <Bars points={evolution.series.filter((p) => p.dette_hab != null).map((p) => ({ year: p.year, value: p.dette_hab as number }))} year={evoLast.year} />
+                    <Bars points={evolution.series.filter((p) => p.dette_hab != null).map((p) => ({ year: p.year, value: p.dette_hab as number }))} year={evoLast.year} ends={(v) => `${int.format(Math.round(v))} €`} />
                   </div>
                 )}
                 {capacite != null && capacite > 0 ? <p className="fx-v3-sentence">{fill("fx.pv.dette_cap", { years: capaciteWords(capacite) })}</p> : null}

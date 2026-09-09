@@ -19291,6 +19291,11 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 /* L'année affichée est votée : noire ET hachurée, pour ne pas la lire comme exécutée. */
 .theme-fusion .fx-v3-trend .bars .now.vote b { background: repeating-linear-gradient(135deg, var(--ink) 0 3px, #fafaf7 3px 5px); }
 .theme-fusion .fx-v3-trend .bars span { font-family: var(--f-mono); font-size: 9.5px; color: var(--muted); }
+/* La valeur aux deux bouts de la courbe : première et dernière barre. Les
+   barres du milieu portent un <em> vide de même hauteur pour rester alignées. */
+.theme-fusion .fx-v3-trend .bars.has-ends { height: 84px; }
+.theme-fusion .fx-v3-trend .bars > div em { display: block; font-family: var(--f-mono); font-style: normal; font-size: 10px; line-height: 1; color: var(--ink-2); margin-bottom: 4px; white-space: nowrap; min-height: 10px; }
+.theme-fusion .fx-v3-trend .bars > div em.ghost { visibility: hidden; }
 .theme-fusion .fx-v3-mission {
   display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(46px, 0.9fr) auto; gap: 12px; align-items: center;
   width: 100%; padding: 12px 0; border: 0; border-bottom: 1px solid var(--rule); background: transparent; text-align: left; cursor: pointer; font: inherit; color: var(--ink);

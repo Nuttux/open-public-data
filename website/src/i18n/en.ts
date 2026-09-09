@@ -3488,6 +3488,8 @@ const en: Record<string, string> = {
   'fx.pv.achats_fold_short': 'Sectors and suppliers',
   'fx.pv.plus_gros': 'The {n} largest contracts',
   'fx.pv.comparer_fold': 'The figures side by side',
+  'fx.pv.times_more': '{n} times more than in {y}',
+  'fx.pv.times_less': '{n} times less than in {y}',
   'fx.pv.chips_aria': 'Page sections',
   'fx.pv.fournisseur_hint': 'each name opens its page',
   'fx.pv.petite_commune': 'In a town this size, a single building project is enough to swing the total from one year to the next.',
