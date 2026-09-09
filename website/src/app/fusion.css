@@ -19620,9 +19620,9 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 }
 .theme-fusion .fx-pv-chips a:hover { border-color: var(--ink); color: var(--ink); }
 .theme-fusion .fx-pv-chips a.is-active { background: var(--ink); border-color: var(--ink); color: var(--paper, #fafaf7); }
-@media (max-width: 820px) {
-  .theme-fusion .fx-pv-chips { margin-left: -16px; margin-right: -16px; padding-left: 16px; padding-right: 16px; }
-}
+/* Pas de débord négatif pour aller au bord : il ajoutait 16 px de largeur à la
+   page et faisait défiler tout le document horizontalement sur mobile. La
+   barre reste dans la marge du conteneur et défile à l'intérieur. */
 .theme-fusion .fx-pv-position { font-size: 15px; color: var(--ink); margin: 12px 0 0; max-width: 60ch; line-height: 1.5; }
 /* Bloc 2 — le haut de page. L'année passe en menu DANS la légende du chiffre :
    les six pastilles occupaient le premier écran avant même le nombre. */
