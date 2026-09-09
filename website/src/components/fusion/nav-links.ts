@@ -66,10 +66,14 @@ export function villeNavLinks(citySlug: string): NavLink[] {
 // intentionally omitted — the commune HOME (/fr/city/<slug>) IS the budget-lead
 // page, so a separate "Budget" item would just repeat it (redundant).
 const COMMUNE_SECTION_META: Record<string, { suffix: string; labelKey: string }> = {
-  comparaison:     { suffix: "/comparaison",     labelKey: "fx.natcmp.link" },
-  investissements: { suffix: "/investissements", labelKey: "fx.nav.link.invest" },
-  marches:         { suffix: "/marches",         labelKey: "fx.nav.link.marches" },
-  evolution:       { suffix: "/evolution",       labelKey: "fx.natev.link" },
+  // Bloc 2 (2026-09-09) : les sections vivent dans la page ville, le menu
+  // pointe vers ses ancres. L'explorateur marchés garde sa page au-dessus de
+  // 50 marchés (la page ville y renvoie elle-même).
+  budget:          { suffix: "#depenses", labelKey: "fx.pv.nav.depenses" },
+  investissements: { suffix: "#construit", labelKey: "fx.pv.nav.construit" },
+  evolution:       { suffix: "#dette",     labelKey: "fx.pv.nav.dette" },
+  marches:         { suffix: "#achats",    labelKey: "fx.pv.nav.achats" },
+  comparaison:     { suffix: "#comparer",  labelKey: "fx.pv.nav.comparer" },
 };
 
 // A national commune's section links, built from its DATA-DERIVED sections —

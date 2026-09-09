@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
+import { MARCHES_EXPLORER_MIN } from "../page-ville-data";
+import { marchesManifestCount } from "@/lib/commune-marches";
 import "@/app/fusion.css";
 
 import { findCommuneByAny } from "@/lib/all-communes";
@@ -41,6 +43,12 @@ export default async function CommuneMarchesPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  // Bloc 2 (2026-09-09) : l'explorateur ne reste que quand la section de la
+  // page ville déborde (plus de 50 marchés) ; sinon l'ancre suffit.
+  if (!hasDedicatedRoutes(slug)) {
+    const nb = marchesManifestCount(slug);
+    if (nb <= MARCHES_EXPLORER_MIN) permanentRedirect(`/fr/city/${slug}#achats`);
+  }
   // Seules Paris et Marseille ont leurs propres pages ; les autres villes du
   // registre passent par la route nationale comme toute commune.
   if (hasDedicatedRoutes(slug)) notFound();

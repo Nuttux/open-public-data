@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import "@/app/fusion.css";
-import { getCityOrNull, listCities, listCitySlugs } from "@/lib/cities";
+import { getCityOrNull, hasDedicatedRoutes, listCities, listCitySlugs } from "@/lib/cities";
 import {
   computeCapaciteDesendettement,
   loadCommune,
@@ -13,15 +13,12 @@ import {
   loadAllCommunesKpiLabels,
   loadAllCommunesSource,
 } from "@/lib/all-communes";
-import { buildLocaleAwareMetadata } from "@/lib/seo";
+import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
 import { getCommuneCapabilities } from "@/lib/commune-capabilities";
-import { loadCommuneBudget } from "@/lib/commune-budget";
 import CityClient from "./CityClient";
 import CitySlimClient from "./CitySlimClient";
-import CommuneBudgetClient from "./budget/CommuneBudgetClient";
-
-const COMMUNE_BUDGET_SOURCE_URL =
-  "https://data.economie.gouv.fr/explore/dataset/balances-comptables-des-communes-en-2024/";
+import PageVilleClient from "./PageVilleClient";
+import { loadPageVille } from "./page-ville-data";
 
 // Statically pre-render only the 9 rich top-N cities (Paris excluded — it
 // redirects to /). The thousands of slim "tail" pages are generated on
@@ -56,11 +53,11 @@ export async function generateMetadata({
   const slim = findCommuneByAny(slug);
   if (slim) {
     return buildLocaleAwareMetadata({
-      title: `${slim.nom} (${slim.dep_name}) : budget, dette et fiscalité de la commune`,
-      description: `Combien ${slim.nom} (${slim.dep_name}, ${slim.reg_name}) dépense, encaisse et doit, année par année. Source : données OFGL et balances comptables DGFiP.`,
+      title: `Combien dépense ${slim.nom} ? Budget, dette et marchés de la commune (${slim.dep_name})`,
+      description: `Ce que ${slim.nom} (${slim.dep_name}, ${slim.reg_name}) dépense et encaisse, ce qu'elle construit, ce qu'elle doit, ce qu'elle achète, et sa position face aux communes de même taille. Sources : DGFiP, OFGL, DECP.`,
       en: {
-        title: `${slim.nom} (${slim.dep_name}): the town's budget, debt and taxes`,
-        description: `How much ${slim.nom} (${slim.dep_name}, ${slim.reg_name}) spends, collects and owes, year by year. Source: OFGL data and DGFiP municipal accounts.`,
+        title: `How much does ${slim.nom} spend? The town's budget, debt and contracts (${slim.dep_name})`,
+        description: `What ${slim.nom} (${slim.dep_name}, ${slim.reg_name}) spends and collects, what it builds, what it owes, what it buys, and where it stands among towns of the same size. Sources: DGFiP, OFGL, DECP.`,
       },
       path: `/fr/city/${slug}`,
     });
@@ -71,14 +68,17 @@ export async function generateMetadata({
 
 export default async function CityPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ year?: string }>;
 }) {
   const { slug } = await params;
 
-  // Branch 1: rich top 10 (registered in cities.ts)
+  // Branch 1: villes à routes dédiées (Paris, Marseille). Les autres villes du
+  // registre (Lyon…) ont la page ville comme toute commune.
   const cityRich = getCityOrNull(slug);
-  if (cityRich) {
+  if (cityRich && hasDedicatedRoutes(slug)) {
     const data = loadCommune(slug);
     const peers = loadPeerCities(slug);
     const marches = loadCommuneMarches(slug);
@@ -102,51 +102,15 @@ export default async function CityPage({
     const src = loadAllCommunesSource();
     if (!src) notFound();
     const labels = loadAllCommunesKpiLabels();
-    // Data-derived: if the commune has a budget-by-nature export, the landing
-    // page LEADS with the rich breakdown (+ an OFGL financial-health strip),
-    // instead of the thin summary. (National capability matrix.)
+    // La page ville (bloc 2, 2026-09-09) : dès que la commune a un budget par
+    // nature, l'entrée unique est cette page — six écrans, sections à gates.
+    // Sinon, la page mince (OFGL seul).
     const caps = getCommuneCapabilities(slim.slug);
     if (caps.budget.nature) {
-      const loaded = await loadCommuneBudget(slim.slug);
-      if (loaded) {
-        const dette = slim.kpis?.encours_dette;
-        const epargne = slim.kpis?.epargne_brute;
-        const capaciteDesend =
-          dette?.montant && epargne?.montant && epargne.montant > 0
-            ? dette.montant / epargne.montant
-            : null;
-        return (
-          <CommuneBudgetClient
-            commune={{
-              slug: slim.slug,
-              insee: slim.insee,
-              nom: slim.nom,
-              dep_name: slim.dep_name,
-              reg_name: slim.reg_name,
-              pop: slim.pop,
-            }}
-            data={loaded.data}
-            availableYears={loaded.availableYears}
-            year={loaded.year}
-            hasFonction={caps.budget.fonction}
-            sourceUrl={COMMUNE_BUDGET_SOURCE_URL}
-            health={{
-              detteEurHab: dette?.eur_hab ?? null,
-              epargneBrute: epargne?.montant ?? null,
-              capaciteDesend,
-              year: src.year,
-            }}
-            marchesHref={caps.marches ? `/fr/city/${slim.slug}/marches` : undefined}
-            investissementsHref={
-              caps.investissements ? `/fr/city/${slim.slug}/investissements` : undefined
-            }
-            evolutionHref={caps.evolution ? `/fr/city/${slim.slug}/evolution` : undefined}
-            comparaisonHref={
-              caps.comparaison ? `/fr/city/${slim.slug}/comparaison` : undefined
-            }
-          />
-        );
-      }
+      const sp = await searchParams;
+      const locale = await readLocale();
+      const pv = await loadPageVille(slim.slug, sp.year ? Number(sp.year) : undefined, locale === "en");
+      if (pv) return <PageVilleClient {...pv} />;
     }
     return (
       <CitySlimClient

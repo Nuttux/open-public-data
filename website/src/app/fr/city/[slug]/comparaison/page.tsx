@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import "@/app/fusion.css";
 
 import { findCommuneByAny } from "@/lib/all-communes";
@@ -40,6 +40,8 @@ export default async function CommuneComparaisonPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  // Bloc 2 (2026-09-09) : l'ancien onglet est une section de la page ville.
+  if (!hasDedicatedRoutes(slug)) permanentRedirect(`/fr/city/${slug}#comparer`);
   // Seules Paris et Marseille ont leurs propres pages ; les autres villes du
   // registre passent par la route nationale comme toute commune.
   if (hasDedicatedRoutes(slug)) notFound();

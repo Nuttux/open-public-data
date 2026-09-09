@@ -19,11 +19,12 @@ import { datasetJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 function sectionsForCommune(slug: string): string[] {
   const caps = getCommuneCapabilities(slug);
   const s: string[] = [];
+  // Dans l'ordre des écrans de la page ville (bloc 2).
   if (caps.budget.nature) s.push("budget");
-  if (caps.comparaison) s.push("comparaison");
   if (caps.investissements) s.push("investissements");
-  if (caps.marches) s.push("marches");
   if (caps.evolution) s.push("evolution");
+  if (caps.marches) s.push("marches");
+  if (caps.comparaison) s.push("comparaison");
   return s;
 }
 

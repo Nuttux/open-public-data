@@ -1,5 +1,5 @@
 import "server-only";
-import { communeStorage } from "@/lib/commune-gcs";
+import { readCommuneJson } from "@/lib/commune-store";
 import manifest from "@/data/communes-evolution-manifest.json";
 
 /** National commune évolution (OFGL, 7 ans) — per-commune trajectory JSON in the
@@ -8,7 +8,6 @@ import manifest from "@/data/communes-evolution-manifest.json";
 type Manifest = { source: string; bucket: string; n_communes: number; communes: Record<string, { years: number[] }> };
 const M = manifest as Manifest;
 
-const BUCKET_NAME = process.env.COMMUNE_DATA_BUCKET ?? "qipu-communes-budget";
 const PREFIX = process.env.COMMUNE_EVOL_PREFIX ?? "communes-evolution";
 
 export function communeHasEvolution(slug: string): boolean {
@@ -27,6 +26,18 @@ export type EvolutionPoint = {
   recettes_hab: number | null;
   dette_hab: number | null;
   capacite_desendettement: number | null;
+  /** Agrégats OFGL ajoutés (bloc 1b) — absents des fichiers plus anciens. */
+  dgf?: number | null;
+  concours_etat?: number | null;
+  subventions_versees?: number | null;
+  subventions_equipement_versees?: number | null;
+  fiscalite_reversee?: number | null;
+  impots_locaux?: number | null;
+  frais_personnel?: number | null;
+  achats_charges_externes?: number | null;
+  teom?: number | null;
+  depenses_totales?: number | null;
+  recettes_totales?: number | null;
 };
 export type EvolutionData = {
   source: string;
@@ -36,18 +47,7 @@ export type EvolutionData = {
   series: EvolutionPoint[];
 };
 
-const memo = new Map<string, EvolutionData | null>();
 export async function loadCommuneEvolution(slug: string): Promise<EvolutionData | null> {
   if (!communeHasEvolution(slug)) return null;
-  const key = `${PREFIX}/${slug}/evolution.json`;
-  if (memo.has(key)) return memo.get(key) ?? null;
-  try {
-    const [buf] = await communeStorage().bucket(BUCKET_NAME).file(key).download();
-    const val = JSON.parse(buf.toString("utf8")) as EvolutionData;
-    memo.set(key, val);
-    return val;
-  } catch {
-    memo.set(key, null);
-    return null;
-  }
+  return readCommuneJson<EvolutionData>(`${PREFIX}/${slug}/evolution.json`);
 }

@@ -3,6 +3,7 @@ import { ogMark } from "@/components/og/OgMark";
 
 import { getCityOrNull } from "@/lib/cities";
 import { loadCommune } from "@/lib/commune-data";
+import { findCommuneByAny, loadAllCommunesYear } from "@/lib/all-communes";
 
 export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
@@ -18,12 +19,20 @@ export default async function CityOG({ params }: { params: Promise<{ slug: strin
   const city = getCityOrNull(slug);
   const data = loadCommune(slug);
 
-  const nom = city?.nom ?? "Commune";
-  const region = city?.reg_name ?? "";
-  const pop = city?.population ?? 0;
+  // Commune nationale (bloc 2) : l'index de toutes les communes donne le nom,
+  // la population et les indicateurs OFGL par habitant — l'image de partage
+  // ne dit plus « Commune » avec des tirets pour 35 000 pages.
+  const tail = city ? null : findCommuneByAny(slug);
+  const nom = city?.nom ?? tail?.nom ?? "Commune";
+  const region = city?.reg_name ?? tail?.dep_name ?? "";
+  const pop = city?.population ?? tail?.pop ?? 0;
 
-  const latest = data?.city.latest_year;
+  const latest = data?.city.latest_year ?? (tail ? loadAllCommunesYear() : null);
   const get = (key: string) => {
+    if (tail) {
+      const k = tail.kpis?.[key];
+      return k ? { montant: k.montant, eur_hab: k.eur_hab } : null;
+    }
     if (!data || !latest) return null;
     const pts = data.city.series[key];
     return pts?.find((p) => p.year === latest);

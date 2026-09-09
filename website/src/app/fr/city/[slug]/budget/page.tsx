@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import "@/app/fusion.css";
 
 import { findCommuneByAny } from "@/lib/all-communes";
@@ -53,6 +53,12 @@ export default async function CommuneBudgetPage({
   searchParams: Promise<SP>;
 }) {
   const { slug } = await params;
+  // Bloc 2 (2026-09-09) : la page ville est l'entrée unique d'une commune
+  // nationale. L'ancien onglet redirige vers elle, année comprise.
+  if (!hasDedicatedRoutes(slug)) {
+    const spr = await searchParams;
+    permanentRedirect(`/fr/city/${slug}${spr.year ? `?year=${spr.year}` : ""}`);
+  }
   const sp = await searchParams;
 
   // Rich cities (Paris/Marseille) own their functional budget pages elsewhere.

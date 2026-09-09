@@ -727,6 +727,9 @@ export type BudgetPageData = {
    *  agrégées sur les lignes de drilldown publiées. Vide quand la ville n'a pas
    *  de `flow_category` (Marseille v1). */
   flowSplit: { key: string; value: number }[];
+  /** Détail des comptes (communes nationales, bloc 1b) : par groupe, les comptes
+   *  M57 en français simple et une ligne « autres ». Absent pour Paris/Marseille. */
+  comptes?: { revenue: Record<string, { compte: string; label: string; label_en: string; value: number }[]>; expenses: Record<string, { compte: string; label: string; label_en: string; value: number }[]> };
   /** Part des dépenses couverte par les lignes qui font `flowSplit`, en %. */
   flowCoveragePct: number;
 };

@@ -24,6 +24,7 @@ function isFranceScope(pathname: string): boolean {
     pathname.startsWith("/fr/national/") ||
     pathname === "/comparer" ||
     pathname.startsWith("/comparer/") ||
+    pathname.startsWith("/fr/compare/") ||
     /^\/fr\/city\/[^/]+\/daily-bread(\/|$)/.test(pathname)
   );
 }
@@ -87,9 +88,9 @@ export default function Navbar() {
     <>
       <header className="fx-nav">
         <Link
-          href="/"
+          href={commune ? `/fr/city/${commune.slug}` : "/"}
           className="fx-brand"
-          onClick={() => trackNav("/", "fx.nav.brand", "brand")}
+          onClick={() => trackNav(commune ? `/fr/city/${commune.slug}` : "/", "fx.nav.brand", "brand")}
         >
           <BrandMark />
           <span>{t("fx.nav.brand")}</span>

@@ -1,5 +1,5 @@
 import "server-only";
-import { communeStorage } from "@/lib/commune-gcs";
+import { readCommuneJson } from "@/lib/commune-store";
 import type { BudgetPageData } from "@/lib/fusion-data";
 import manifest from "@/data/communes-budget-manifest.json";
 
@@ -27,7 +27,6 @@ type Manifest = {
 
 const M = manifest as Manifest;
 
-const BUCKET_NAME = process.env.COMMUNE_DATA_BUCKET ?? "qipu-communes-budget";
 const BUCKET_PREFIX = process.env.COMMUNE_DATA_PREFIX ?? "communes-budget";
 
 // ── Manifest-backed capability (local, sync) ───────────────────────────────
@@ -40,6 +39,8 @@ export function communeBudgetYears(slug: string): number[] {
 
 // ── Remote budget JSON (server-side fetch, per-instance memo) ───────────────
 type DrillItem = { name: string; value: number };
+export type CompteItem = { compte: string; label: string; label_en: string; value: number };
+export type CommuneComptes = { revenue: Record<string, CompteItem[]>; expenses: Record<string, CompteItem[]> };
 type SankeyFull = {
   year: number;
   totals: { recettes: number; depenses: number; solde: number };
@@ -53,6 +54,8 @@ type SankeyFull = {
     }
   >;
   drilldown?: { revenue?: Record<string, DrillItem[]>; expenses?: Record<string, DrillItem[]> };
+  /** Détail des comptes derrière chaque groupe (bloc 1b), libellés simples. */
+  comptes?: CommuneComptes;
 };
 type IndexFull = {
   availableYears: number[];
@@ -60,37 +63,7 @@ type IndexFull = {
   summary: { year: number; type_budget: "vote" | "execute"; depenses: number; recettes: number; solde: number }[];
 };
 
-const memo = new Map<string, unknown>();
-/** Read a JSON object from the private bucket by object path (authenticated).
- *  Dev affordance: with `COMMUNE_DATA_LOCAL_DIR` set, the same object path is
- *  read from that directory (a `gsutil cp` of a few communes) — the bucket
- *  client needs Application Default Credentials that a laptop may not have. */
-async function readJson<T>(objectPath: string): Promise<T | null> {
-  if (memo.has(objectPath)) return memo.get(objectPath) as T | null;
-  const localDir = process.env.COMMUNE_DATA_LOCAL_DIR;
-  if (localDir) {
-    try {
-      const fs = await import("node:fs/promises");
-      const rel = objectPath.startsWith(`${BUCKET_PREFIX}/`) ? objectPath.slice(BUCKET_PREFIX.length + 1) : objectPath;
-      const val = JSON.parse(await fs.readFile(`${localDir}/${rel}`, "utf8")) as T;
-      memo.set(objectPath, val);
-      return val;
-    } catch (e) {
-      console.error("[commune-budget] local read failed", objectPath, (e as Error).message);
-      memo.set(objectPath, null);
-      return null;
-    }
-  }
-  try {
-    const [buf] = await communeStorage().bucket(BUCKET_NAME).file(objectPath).download();
-    const val = JSON.parse(buf.toString("utf8")) as T;
-    memo.set(objectPath, val);
-    return val;
-  } catch {
-    memo.set(objectPath, null); // missing object or auth error → treat as absent
-    return null;
-  }
-}
+const readJson = readCommuneJson;
 
 /**
  * Load a commune's budget-by-nature page data from the bucket. Returns null if
@@ -189,6 +162,7 @@ export async function loadCommuneBudget(
     series,
     flowSplit: [],
     flowCoveragePct: 0,
+    comptes: sankey.comptes ?? { revenue: {}, expenses: {} },
   };
   return { data, availableYears: index.availableYears, year };
 }
