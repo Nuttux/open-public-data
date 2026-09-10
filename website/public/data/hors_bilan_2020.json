@@ -1,6 +1,6 @@
 {
   "year": 2020,
-  "generated_at": "2026-07-21T11:53:31.844335+00:00",
+  "generated_at": "2026-09-10T12:16:18.804695+00:00",
   "totals": {
     "capital_restant": 10523021736,
     "montant_initial": 12698852688,
@@ -3693,7 +3693,7 @@
         "capital_portefeuille": 1487954269,
         "capital_non_rattache": 1319878029,
         "part_rattachee": 0.17092173994664656,
-        "n_programmes": 461
+        "n_programmes": 463
       }
     },
     {
@@ -4422,11 +4422,11 @@
       ],
       "financement": {
         "base_logement": 1438776619,
-        "capital_rattache": 541130377,
+        "capital_rattache": 543199078,
         "capital_portefeuille": 138235200,
-        "capital_non_rattache": 759411043,
-        "part_rattachee": 0.37610451113622856,
-        "n_programmes": 681
+        "capital_non_rattache": 757342342,
+        "part_rattachee": 0.37754233040018226,
+        "n_programmes": 683
       }
     },
     {
@@ -4880,50 +4880,14 @@
         },
         {
           "objet": "Financement ZAC - 75000",
-          "preteur": "LBP",
-          "annee_mobilisation": 2019,
+          "preteur": "BAYER LB",
+          "annee_mobilisation": 2018,
           "montant_initial": 24000000,
           "capital_restant": 24000000,
-          "duree_residuelle": 4.37,
+          "duree_residuelle": 6.21,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.53,
-          "programme": null
-        },
-        {
-          "objet": "Financement ZAC - 75000 - AC",
-          "preteur": "CA IdF",
-          "annee_mobilisation": 2020,
-          "montant_initial": 24000000,
-          "capital_restant": 24000000,
-          "duree_residuelle": 5.75,
-          "taux_type": "FIXE",
-          "taux_index": "FIXE",
-          "taux_actuariel": 0.64,
-          "programme": null
-        },
-        {
-          "objet": "Financement ZAC - 75000",
-          "preteur": "HSBC",
-          "annee_mobilisation": 2020,
-          "montant_initial": 24000000,
-          "capital_restant": 24000000,
-          "duree_residuelle": 1.12,
-          "taux_type": "V",
-          "taux_index": "EURIBOR03M",
-          "taux_actuariel": 0.284,
-          "programme": null
-        },
-        {
-          "objet": "Financement ZAC - EMTN - 75000",
-          "preteur": "HSBC",
-          "annee_mobilisation": 2016,
-          "montant_initial": 24000000,
-          "capital_restant": 24000000,
-          "duree_residuelle": 7.15,
-          "taux_type": "FIXE",
-          "taux_index": "FIXE",
-          "taux_actuariel": 1.77,
+          "taux_actuariel": 1.504,
           "programme": null
         },
         {
@@ -4940,26 +4904,50 @@
         },
         {
           "objet": "Financement ZAC - 75000",
-          "preteur": "BAYER LB",
-          "annee_mobilisation": 2018,
+          "preteur": "LBP",
+          "annee_mobilisation": 2019,
           "montant_initial": 24000000,
           "capital_restant": 24000000,
-          "duree_residuelle": 6.21,
+          "duree_residuelle": 4.37,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 1.504,
+          "taux_actuariel": 0.53,
           "programme": null
         },
         {
           "objet": "Financement ZAC - 75000",
-          "preteur": "CE",
+          "preteur": "HSBC",
           "annee_mobilisation": 2020,
-          "montant_initial": 16000000,
-          "capital_restant": 16000000,
-          "duree_residuelle": 4.34,
+          "montant_initial": 24000000,
+          "capital_restant": 24000000,
+          "duree_residuelle": 1.12,
+          "taux_type": "V",
+          "taux_index": "EURIBOR03M",
+          "taux_actuariel": 0.284,
+          "programme": null
+        },
+        {
+          "objet": "Financement ZAC - 75000 - AC",
+          "preteur": "CA IdF",
+          "annee_mobilisation": 2020,
+          "montant_initial": 24000000,
+          "capital_restant": 24000000,
+          "duree_residuelle": 5.75,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.38,
+          "taux_actuariel": 0.64,
+          "programme": null
+        },
+        {
+          "objet": "Financement ZAC - EMTN - 75000",
+          "preteur": "HSBC",
+          "annee_mobilisation": 2016,
+          "montant_initial": 24000000,
+          "capital_restant": 24000000,
+          "duree_residuelle": 7.15,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.77,
           "programme": null
         },
         {
@@ -4972,6 +4960,18 @@
           "taux_type": "V",
           "taux_index": "E06M-MOY",
           "taux_actuariel": 0.385,
+          "programme": null
+        },
+        {
+          "objet": "Financement ZAC - 75000",
+          "preteur": "CE",
+          "annee_mobilisation": 2020,
+          "montant_initial": 16000000,
+          "capital_restant": 16000000,
+          "duree_residuelle": 4.34,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.38,
           "programme": null
         },
         {
@@ -5746,7 +5746,7 @@
         "capital_portefeuille": 53170056,
         "capital_non_rattache": 77724916,
         "part_rattachee": 0.26538058204284176,
-        "n_programmes": 43
+        "n_programmes": 44
       }
     },
     {
@@ -7550,11 +7550,11 @@
       ],
       "financement": {
         "base_logement": 82434250,
-        "capital_rattache": 34940587,
+        "capital_rattache": 34945064,
         "capital_portefeuille": 0,
-        "capital_non_rattache": 47493664,
-        "part_rattachee": 0.42386006406181387,
-        "n_programmes": 16
+        "capital_non_rattache": 47489187,
+        "part_rattachee": 0.4239143742542585,
+        "n_programmes": 17
       }
     },
     {
@@ -8013,7 +8013,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8076,7 +8076,7 @@
             "adresse": "21 RUE BREGUET",
             "nb_logements": 47,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8093,7 +8093,7 @@
             "adresse": "56, RUE RENE BOULANGER",
             "nb_logements": 12,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8110,7 +8110,7 @@
             "adresse": "54, RUE D'ABOUKIR",
             "nb_logements": 43,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8127,7 +8127,7 @@
             "adresse": "21 RUE BREGUET",
             "nb_logements": 47,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8144,7 +8144,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8173,7 +8173,7 @@
             "adresse": "62-64, RUE PLANCHAT",
             "nb_logements": 36,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8190,7 +8190,7 @@
             "adresse": "116 RUE DE JAVEL",
             "nb_logements": 55,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8207,7 +8207,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8224,7 +8224,7 @@
             "adresse": "12-14 PASSAGE RAGUINOT",
             "nb_logements": 32,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8265,7 +8265,7 @@
             "adresse": "33-35, AVENUE JEAN JAURES",
             "nb_logements": 17,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8282,7 +8282,7 @@
             "adresse": "62-64, RUE PLANCHAT",
             "nb_logements": 36,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8299,7 +8299,7 @@
             "adresse": "12-14 PASSAGE RAGUINOT",
             "nb_logements": 32,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8333,7 +8333,7 @@
             "adresse": "90, RUE SAINT DENIS",
             "nb_logements": 14,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8362,7 +8362,7 @@
             "adresse": "38, RUE VIGNON",
             "nb_logements": 14,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8379,7 +8379,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         }
       ],
@@ -9239,7 +9239,7 @@
         "capital_portefeuille": 5376089,
         "capital_non_rattache": 6696610,
         "part_rattachee": 0.7890884707204108,
-        "n_programmes": 54
+        "n_programmes": 55
       }
     },
     {

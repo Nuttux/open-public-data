@@ -1,6 +1,6 @@
 {
   "year": 2023,
-  "generated_at": "2026-07-21T11:53:39.979652+00:00",
+  "generated_at": "2026-09-10T12:16:27.070066+00:00",
   "totals": {
     "capital_restant": 12310371784,
     "montant_initial": 15347765819,
@@ -46,7 +46,7 @@
       "key": "logement_social_aide",
       "label": "Logement social aidé par l'État",
       "capital_restant": 10860141012,
-      "share": 0.8821943969030579,
+      "share": 0.8821943969030577,
       "count_emprunts": 9837
     },
     {
@@ -69,7 +69,7 @@
       "arr": 1,
       "capital_restant": 54856147,
       "count_emprunts": 132,
-      "share_of_localized": 0.006063054022082676,
+      "share_of_localized": 0.006063054022082674,
       "top_beneficiaires": [
         {
           "name": "ELOGIE-SIEMP (SEM)",
@@ -232,7 +232,7 @@
       "arr": 2,
       "capital_restant": 46985035,
       "count_emprunts": 122,
-      "share_of_localized": 0.005193088096209424,
+      "share_of_localized": 0.0051930880962094235,
       "top_beneficiaires": [
         {
           "name": "PARIS Habitat OPH (EPIC)",
@@ -395,7 +395,7 @@
       "arr": 3,
       "capital_restant": 88799287,
       "count_emprunts": 190,
-      "share_of_localized": 0.00981466803472305,
+      "share_of_localized": 0.009814668034723048,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -558,7 +558,7 @@
       "arr": 4,
       "capital_restant": 95521254,
       "count_emprunts": 165,
-      "share_of_localized": 0.01055762295037972,
+      "share_of_localized": 0.010557622950379717,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -721,7 +721,7 @@
       "arr": 5,
       "capital_restant": 182870960,
       "count_emprunts": 167,
-      "share_of_localized": 0.020212073962003096,
+      "share_of_localized": 0.020212073962003092,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -884,7 +884,7 @@
       "arr": 6,
       "capital_restant": 49812582,
       "count_emprunts": 81,
-      "share_of_localized": 0.005505606782329558,
+      "share_of_localized": 0.005505606782329557,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -1047,7 +1047,7 @@
       "arr": 7,
       "capital_restant": 158921579,
       "count_emprunts": 52,
-      "share_of_localized": 0.017565034462456622,
+      "share_of_localized": 0.01756503446245662,
       "top_beneficiaires": [
         {
           "name": "Fondation Nationale SciencesPo",
@@ -1210,7 +1210,7 @@
       "arr": 8,
       "capital_restant": 75303814,
       "count_emprunts": 121,
-      "share_of_localized": 0.008323061527633,
+      "share_of_localized": 0.008323061527632996,
       "top_beneficiaires": [
         {
           "name": "ELOGIE-SIEMP (SEM)",
@@ -1373,7 +1373,7 @@
       "arr": 9,
       "capital_restant": 162226660,
       "count_emprunts": 338,
-      "share_of_localized": 0.017930333206151016,
+      "share_of_localized": 0.017930333206151013,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -1536,7 +1536,7 @@
       "arr": 10,
       "capital_restant": 406949433,
       "count_emprunts": 609,
-      "share_of_localized": 0.04497866711183265,
+      "share_of_localized": 0.04497866711183264,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -1699,7 +1699,7 @@
       "arr": 11,
       "capital_restant": 391879475,
       "count_emprunts": 736,
-      "share_of_localized": 0.04331303854232814,
+      "share_of_localized": 0.04331303854232813,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -1862,7 +1862,7 @@
       "arr": 12,
       "capital_restant": 887872099,
       "count_emprunts": 736,
-      "share_of_localized": 0.09813333149800986,
+      "share_of_localized": 0.09813333149800985,
       "top_beneficiaires": [
         {
           "name": "PARIS Habitat OPH (EPIC)",
@@ -2025,7 +2025,7 @@
       "arr": 13,
       "capital_restant": 966628627,
       "count_emprunts": 630,
-      "share_of_localized": 0.10683800918709448,
+      "share_of_localized": 0.10683800918709445,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -2188,7 +2188,7 @@
       "arr": 14,
       "capital_restant": 619892689,
       "count_emprunts": 524,
-      "share_of_localized": 0.06851452452742399,
+      "share_of_localized": 0.06851452452742397,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -2351,7 +2351,7 @@
       "arr": 15,
       "capital_restant": 788845469,
       "count_emprunts": 924,
-      "share_of_localized": 0.08718827181911833,
+      "share_of_localized": 0.08718827181911831,
       "top_beneficiaires": [
         {
           "name": "PARIS Habitat OPH (EPIC)",
@@ -2514,7 +2514,7 @@
       "arr": 16,
       "capital_restant": 279729838,
       "count_emprunts": 253,
-      "share_of_localized": 0.030917539769092357,
+      "share_of_localized": 0.03091753976909235,
       "top_beneficiaires": [
         {
           "name": "PARIS Habitat OPH (EPIC)",
@@ -2677,7 +2677,7 @@
       "arr": 17,
       "capital_restant": 598677330,
       "count_emprunts": 583,
-      "share_of_localized": 0.06616966668893642,
+      "share_of_localized": 0.06616966668893641,
       "top_beneficiaires": [
         {
           "name": "PARIS Habitat OPH (EPIC)",
@@ -2840,7 +2840,7 @@
       "arr": 18,
       "capital_restant": 1068109375,
       "count_emprunts": 1306,
-      "share_of_localized": 0.11805431383062097,
+      "share_of_localized": 0.11805431383062094,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -3003,7 +3003,7 @@
       "arr": 19,
       "capital_restant": 1094224263,
       "count_emprunts": 647,
-      "share_of_localized": 0.12094069911766554,
+      "share_of_localized": 0.12094069911766551,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -3082,20 +3082,20 @@
         {
           "objet": "Travaux restructuration Hôpital/Rue Manin - 75019",
           "beneficiaire": "Fondation OPTH A. Rothschild",
-          "preteur": "CE",
-          "annee_mobilisation": 2023,
-          "capital_restant": 17500000,
-          "taux_type": "FIXE",
-          "taux_actuariel": 4.4082
-        },
-        {
-          "objet": "Travaux restructuration Hôpital/Rue Manin - 75019",
-          "beneficiaire": "Fondation OPTH A. Rothschild",
           "preteur": "ARKEA",
           "annee_mobilisation": 2023,
           "capital_restant": 17500000,
           "taux_type": "FIXE",
           "taux_actuariel": 4.4002
+        },
+        {
+          "objet": "Travaux restructuration Hôpital/Rue Manin - 75019",
+          "beneficiaire": "Fondation OPTH A. Rothschild",
+          "preteur": "CE",
+          "annee_mobilisation": 2023,
+          "capital_restant": 17500000,
+          "taux_type": "FIXE",
+          "taux_actuariel": 4.4082
         },
         {
           "objet": "Groupe Serrurier / Indochine - 75019 - NSG",
@@ -3166,7 +3166,7 @@
       "arr": 20,
       "capital_restant": 1029503957,
       "count_emprunts": 1160,
-      "share_of_localized": 0.11378739486390922,
+      "share_of_localized": 0.1137873948639092,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -3709,11 +3709,11 @@
       ],
       "financement": {
         "base_logement": 4261348547,
-        "capital_rattache": 1176270069,
+        "capital_rattache": 1181366484,
         "capital_portefeuille": 1516382465,
-        "capital_non_rattache": 1568696013,
-        "part_rattachee": 0.2760323536029666,
-        "n_programmes": 461
+        "capital_non_rattache": 1563599598,
+        "part_rattachee": 0.27722831655776614,
+        "n_programmes": 463
       }
     },
     {
@@ -4432,11 +4432,11 @@
       ],
       "financement": {
         "base_logement": 1659931070,
-        "capital_rattache": 594222778,
+        "capital_rattache": 595737628,
         "capital_portefeuille": 200627197,
-        "capital_non_rattache": 865081095,
-        "part_rattachee": 0.35798039353933647,
-        "n_programmes": 711
+        "capital_non_rattache": 863566244,
+        "part_rattachee": 0.35889299209704295,
+        "n_programmes": 712
       }
     },
     {
@@ -5262,18 +5262,6 @@
           "programme": null
         },
         {
-          "objet": "Financement ZAC - 75000 - AC",
-          "preteur": "CA IdF",
-          "annee_mobilisation": 2020,
-          "montant_initial": 24000000,
-          "capital_restant": 24000000,
-          "duree_residuelle": 2.75,
-          "taux_type": "FIXE",
-          "taux_index": "FIXE",
-          "taux_actuariel": 0.4911,
-          "programme": null
-        },
-        {
           "objet": "Financement ZAC - 75000",
           "preteur": "BAYER LB",
           "annee_mobilisation": 2018,
@@ -5283,6 +5271,18 @@
           "taux_type": "FIXE",
           "taux_index": "FIXE",
           "taux_actuariel": 1.3347,
+          "programme": null
+        },
+        {
+          "objet": "Financement ZAC - 75000 - AC",
+          "preteur": "CA IdF",
+          "annee_mobilisation": 2020,
+          "montant_initial": 24000000,
+          "capital_restant": 24000000,
+          "duree_residuelle": 2.75,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.4911,
           "programme": null
         },
         {
@@ -5298,18 +5298,6 @@
           "programme": null
         },
         {
-          "objet": "Financement ZAC - EMTN - 75000 - GA",
-          "preteur": "HSBC",
-          "annee_mobilisation": 2016,
-          "montant_initial": 24000000,
-          "capital_restant": 24000000,
-          "duree_residuelle": 4.15,
-          "taux_type": "FIXE",
-          "taux_index": "FIXE",
-          "taux_actuariel": 1.6004,
-          "programme": null
-        },
-        {
           "objet": "Financement ZAC - 75000 - GA",
           "preteur": "AUREL BGC SAS",
           "annee_mobilisation": 2021,
@@ -5322,15 +5310,15 @@
           "programme": null
         },
         {
-          "objet": "Financement ZAC - 75000 - GA",
+          "objet": "Financement ZAC - EMTN - 75000 - GA",
           "preteur": "HSBC",
-          "annee_mobilisation": 2021,
-          "montant_initial": 16000000,
-          "capital_restant": 16000000,
-          "duree_residuelle": 4.28,
+          "annee_mobilisation": 2016,
+          "montant_initial": 24000000,
+          "capital_restant": 24000000,
+          "duree_residuelle": 4.15,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.1448,
+          "taux_actuariel": 1.6004,
           "programme": null
         },
         {
@@ -5355,6 +5343,18 @@
           "taux_type": "V",
           "taux_index": "E06M-MOY",
           "taux_actuariel": 0.7217,
+          "programme": null
+        },
+        {
+          "objet": "Financement ZAC - 75000 - GA",
+          "preteur": "HSBC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 16000000,
+          "capital_restant": 16000000,
+          "duree_residuelle": 4.28,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.1448,
           "programme": null
         },
         {
@@ -5796,7 +5796,7 @@
         "capital_portefeuille": 49751471,
         "capital_non_rattache": 73440291,
         "part_rattachee": 0.2919452461529576,
-        "n_programmes": 43
+        "n_programmes": 44
       }
     },
     {
@@ -7881,7 +7881,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7944,7 +7944,7 @@
             "adresse": "56, RUE RENE BOULANGER",
             "nb_logements": 12,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7973,7 +7973,7 @@
             "adresse": "54, RUE D'ABOUKIR",
             "nb_logements": 43,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7990,7 +7990,7 @@
             "adresse": "21 RUE BREGUET",
             "nb_logements": 47,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8007,7 +8007,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8036,7 +8036,7 @@
             "adresse": "62-64, RUE PLANCHAT",
             "nb_logements": 36,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8065,7 +8065,7 @@
             "adresse": "21 RUE BREGUET",
             "nb_logements": 47,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8094,7 +8094,7 @@
             "adresse": "116 RUE DE JAVEL",
             "nb_logements": 55,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8111,7 +8111,7 @@
             "adresse": "23, RUE D'ALLERAY",
             "nb_logements": 1,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8152,7 +8152,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8169,7 +8169,7 @@
             "adresse": "12-14 PASSAGE RAGUINOT",
             "nb_logements": 32,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8222,7 +8222,7 @@
             "adresse": "33-35, AVENUE JEAN JAURES",
             "nb_logements": 17,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         }
       ],
@@ -8638,7 +8638,7 @@
         "capital_portefeuille": 0,
         "capital_non_rattache": 45531160,
         "part_rattachee": 0.4860574310925319,
-        "n_programmes": 16
+        "n_programmes": 17
       }
     },
     {
@@ -9160,18 +9160,6 @@
         },
         {
           "objet": "Travaux restructuration Hôpital/Rue Manin - 75019",
-          "preteur": "CE",
-          "annee_mobilisation": 2023,
-          "montant_initial": 17500000,
-          "capital_restant": 17500000,
-          "duree_residuelle": 33.34,
-          "taux_type": "FIXE",
-          "taux_index": "FIXE",
-          "taux_actuariel": 4.4082,
-          "programme": null
-        },
-        {
-          "objet": "Travaux restructuration Hôpital/Rue Manin - 75019",
           "preteur": "ARKEA",
           "annee_mobilisation": 2023,
           "montant_initial": 17500000,
@@ -9180,6 +9168,18 @@
           "taux_type": "FIXE",
           "taux_index": "FIXE",
           "taux_actuariel": 4.4002,
+          "programme": null
+        },
+        {
+          "objet": "Travaux restructuration Hôpital/Rue Manin - 75019",
+          "preteur": "CE",
+          "annee_mobilisation": 2023,
+          "montant_initial": 17500000,
+          "capital_restant": 17500000,
+          "duree_residuelle": 33.34,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 4.4082,
           "programme": null
         }
       ],

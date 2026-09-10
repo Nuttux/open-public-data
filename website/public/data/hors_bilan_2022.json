@@ -1,6 +1,6 @@
 {
   "year": 2022,
-  "generated_at": "2026-07-21T11:53:37.254426+00:00",
+  "generated_at": "2026-09-10T12:16:24.221011+00:00",
   "totals": {
     "capital_restant": 11409948308,
     "montant_initial": 14229563721,
@@ -46,7 +46,7 @@
       "key": "logement_social_aide",
       "label": "Logement social aidé par l'État",
       "capital_restant": 9990711556,
-      "share": 0.8756140945174339,
+      "share": 0.8756140945174338,
       "count_emprunts": 8993
     },
     {
@@ -3703,7 +3703,7 @@
         "capital_portefeuille": 1498798946,
         "capital_non_rattache": 1472654163,
         "part_rattachee": 0.2325418011281331,
-        "n_programmes": 461
+        "n_programmes": 463
       }
     },
     {
@@ -4417,11 +4417,11 @@
       ],
       "financement": {
         "base_logement": 1543932149,
-        "capital_rattache": 543798130,
+        "capital_rattache": 545480705,
         "capital_portefeuille": 180142650,
-        "capital_non_rattache": 819991369,
-        "part_rattachee": 0.35221633975570893,
-        "n_programmes": 681
+        "capital_non_rattache": 818308794,
+        "part_rattachee": 0.35330613809355516,
+        "n_programmes": 683
       }
     },
     {
@@ -4864,18 +4864,6 @@
           "programme": null
         },
         {
-          "objet": "Financement ZAC - 75000 - GA",
-          "preteur": "AUREL BGC SAS",
-          "annee_mobilisation": 2021,
-          "montant_initial": 24000000,
-          "capital_restant": 24000000,
-          "duree_residuelle": 5.26,
-          "taux_type": "FIXE",
-          "taux_index": "FIXE",
-          "taux_actuariel": 0.14,
-          "programme": null
-        },
-        {
           "objet": "Financement ZAC - 75000",
           "preteur": "BAYER LB",
           "annee_mobilisation": 2018,
@@ -4885,6 +4873,18 @@
           "taux_type": "FIXE",
           "taux_index": "FIXE",
           "taux_actuariel": 1.33,
+          "programme": null
+        },
+        {
+          "objet": "Financement ZAC - 75000 - AC",
+          "preteur": "CA IdF",
+          "annee_mobilisation": 2020,
+          "montant_initial": 24000000,
+          "capital_restant": 24000000,
+          "duree_residuelle": 3.75,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.49,
           "programme": null
         },
         {
@@ -4900,15 +4900,15 @@
           "programme": null
         },
         {
-          "objet": "Financement ZAC - 75000 - AC",
-          "preteur": "CA IdF",
-          "annee_mobilisation": 2020,
+          "objet": "Financement ZAC - 75000 - GA",
+          "preteur": "AUREL BGC SAS",
+          "annee_mobilisation": 2021,
           "montant_initial": 24000000,
           "capital_restant": 24000000,
-          "duree_residuelle": 3.75,
+          "duree_residuelle": 5.26,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.49,
+          "taux_actuariel": 0.14,
           "programme": null
         },
         {
@@ -4949,18 +4949,6 @@
         },
         {
           "objet": "Financement ZAC - 75000 - GA",
-          "preteur": "CA IdF",
-          "annee_mobilisation": 2021,
-          "montant_initial": 16000000,
-          "capital_restant": 16000000,
-          "duree_residuelle": 0.28,
-          "taux_type": "V",
-          "taux_index": "EURIBOR03M",
-          "taux_actuariel": 0.41,
-          "programme": null
-        },
-        {
-          "objet": "Financement ZAC - 75000 - GA",
           "preteur": "GFI",
           "annee_mobilisation": 2017,
           "montant_initial": 16000000,
@@ -4969,6 +4957,18 @@
           "taux_type": "V",
           "taux_index": "E06M-MOY",
           "taux_actuariel": 0.11,
+          "programme": null
+        },
+        {
+          "objet": "Financement ZAC - 75000 - GA",
+          "preteur": "CA IdF",
+          "annee_mobilisation": 2021,
+          "montant_initial": 16000000,
+          "capital_restant": 16000000,
+          "duree_residuelle": 0.28,
+          "taux_type": "V",
+          "taux_index": "EURIBOR03M",
+          "taux_actuariel": 0.41,
           "programme": null
         },
         {
@@ -5800,7 +5800,7 @@
         "capital_portefeuille": 51621627,
         "capital_non_rattache": 74709075,
         "part_rattachee": 0.2899900644971742,
-        "n_programmes": 43
+        "n_programmes": 44
       }
     },
     {
@@ -8010,7 +8010,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8073,7 +8073,7 @@
             "adresse": "56, RUE RENE BOULANGER",
             "nb_logements": 12,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8090,7 +8090,7 @@
             "adresse": "21 RUE BREGUET",
             "nb_logements": 47,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8107,7 +8107,7 @@
             "adresse": "54, RUE D'ABOUKIR",
             "nb_logements": 43,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8136,7 +8136,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8165,7 +8165,7 @@
             "adresse": "62-64, RUE PLANCHAT",
             "nb_logements": 36,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8182,7 +8182,7 @@
             "adresse": "21 RUE BREGUET",
             "nb_logements": 47,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8223,7 +8223,7 @@
             "adresse": "116 RUE DE JAVEL",
             "nb_logements": 55,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8240,7 +8240,7 @@
             "adresse": "23, RUE D'ALLERAY",
             "nb_logements": 1,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8281,7 +8281,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8298,7 +8298,7 @@
             "adresse": "12-14 PASSAGE RAGUINOT",
             "nb_logements": 32,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8339,7 +8339,7 @@
             "adresse": "33-35, AVENUE JEAN JAURES",
             "nb_logements": 17,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8762,7 +8762,7 @@
         "capital_portefeuille": 0,
         "capital_non_rattache": 45636307,
         "part_rattachee": 0.4696751507112795,
-        "n_programmes": 16
+        "n_programmes": 17
       }
     },
     {
@@ -9660,7 +9660,7 @@
         "capital_portefeuille": 5162983,
         "capital_non_rattache": 6541976,
         "part_rattachee": 0.8100812848371519,
-        "n_programmes": 54
+        "n_programmes": 55
       }
     }
   ],
