@@ -17435,7 +17435,15 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   line-height: 1.5;
   color: var(--ink-2);
 }
-.theme-fusion .fx-block-foot { margin-top: 16px; }
+/* two links now, and they ran together as "COPY LINKTHIS NEIGHBOURHOOD'S
+   OWN PAGE" — a row, with room between them */
+.theme-fusion .fx-block-foot {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 18px;
+}
 /* a text link in the fold's own idiom, not a boxed button: it was the one
    bordered control on a panel whose every other control is a line of mono
    caps, and it read as a form */
