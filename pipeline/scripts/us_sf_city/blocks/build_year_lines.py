@@ -64,7 +64,10 @@ import sys
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import themes as TH  # noqa: E402
 
-ROOT = pathlib.Path("/Users/daniel/code/open-public-data")
+# The repo this file sits in, not a path typed once on one laptop: the same
+# build runs from a worktree, and a hardcoded clone silently writes the year
+# shards into the OTHER checkout (found 2026-09-10, mid-ingest).
+ROOT = pathlib.Path(__file__).resolve().parents[4]
 BLK = ROOT / "website/public/data/us/sf/city/blocks"
 OUT = BLK / "year"
 

@@ -267,6 +267,8 @@ function whenOf(d: BlockDecision): string {
  * from the row is WHICH series and WHERE on the block, and both survive here.
  */
 function seriesOf(d: Pick<BlockDecision, "u" | "c">): string {
+  /* the same minutes, at the host the City moved them to in April 2026 */
+  if (d.c === "l") return "Clerk's meeting minutes · Legistar";
   if (d.c === "b") return "Clerk's meeting minutes";
   const vol = d.u.split("/")[0] ?? "";
   if (vol.startsWith("journal")) return "Journal of Proceedings";

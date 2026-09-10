@@ -342,6 +342,15 @@ export function archiveHref(u: string): string {
  */
 export function sourceHref(d: Pick<BlockDecision, "u" | "c">): string {
   const [doc, page] = d.u.split("/");
+  /* ── THREE HOSTS, BECAUSE THE CITY MOVED ─────────────────────────────
+     `l` is a meeting on Legistar, which is where the Clerk's record went in
+     April 2026. Its link needs BOTH halves of the citation — the id alone
+     answers 302 to a "Gone" page — so `u` carries `<id>~<guid>` where the
+     other two carry a document name. */
+  if (d.c === "l") {
+    const [id, guid] = doc.split("~");
+    return `https://sfgov.legistar.com/View.ashx?M=M&ID=${id}&GUID=${guid}`;
+  }
   return d.c === "b"
     ? `https://sfbos.org/sites/default/files/${doc}_minutes.pdf#page=${page}`
     : `https://archive.org/details/${doc}/page/n${page}/mode/1up`;

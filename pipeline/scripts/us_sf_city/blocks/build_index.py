@@ -484,6 +484,26 @@ SFBOS_PREFIX = "https://sfbos.org/sites/default/files/"
 SFBOS_SUFFIX = "_minutes.pdf"
 
 
+LEGISTAR_RX = re.compile(
+    r"^https://sfgov\.legistar\.com/View\.ashx\?M=M&ID=(\d+)&GUID=([0-9A-F-]{36})$")
+
+
+def legistar_of(r):
+    """The (id, guid) of a Legistar-hosted meeting, or None.
+
+    THE CLERK MOVED HOSTS IN APRIL 2026. Everything before it is a PDF at
+    sfbos.org whose URL is the meeting stem; from 21 April 2026 the Board's
+    record is served by Legistar, where the link needs BOTH an id and a guid —
+    the id alone answers 302 to a "Gone" page (measured 2026-09-10). So the row
+    carries its own URL and this reads it back, rather than a second prefix
+    constant that would be right for one era and silently wrong for the other.
+    """
+    if (r.get("src") or "") != "legistar":
+        return None
+    m = LEGISTAR_RX.match(r.get("url") or "")
+    return (m.group(1), m.group(2)) if m else None
+
+
 def sfbos_gate(items):
     """Prove every Board-PDF row can be turned back into a link that opens.
 
@@ -497,15 +517,21 @@ def sfbos_gate(items):
     rather than warns. Verified 2026-08-26: all 372 meetings return HTTP 200
     application/pdf, and no cited page falls beyond its file's page count.
     """
-    n = bad_url = bad_page = 0
+    n = bad_url = bad_page = n_leg = 0
     for r in items:
         v = r.get("v") or ""
         if not v.startswith(SFBOS_NS):
             continue
         n += 1
-        stem = v[len(SFBOS_NS):]
-        if r.get("url") != SFBOS_PREFIX + stem + SFBOS_SUFFIX:
-            bad_url += 1
+        leg = legistar_of(r)
+        if leg:
+            n_leg += 1
+        elif (r.get("src") or "") == "legistar":
+            bad_url += 1          # a Legistar row whose link is not resolvable
+        else:
+            stem = v[len(SFBOS_NS):]
+            if r.get("url") != SFBOS_PREFIX + stem + SFBOS_SUFFIX:
+                bad_url += 1
         if r.get("page") != (r.get("n") or 0) + 1:
             bad_page += 1
     if bad_url or bad_page:
@@ -515,8 +541,8 @@ def sfbos_gate(items):
             f"{bad_page:,} page(s) != n+1. The reconstructed link would not "
             f"open. Fix the sweep or carry the URL per row; do not publish.")
     if n:
-        print(f"sfbos citation gate: {n:,} Board-PDF rows, all reconstructible",
-              flush=True)
+        print(f"sfbos citation gate: {n:,} Board-PDF rows, all reconstructible"
+              + (f" ({n_leg:,} of them on Legistar)" if n_leg else ""), flush=True)
     return n
 
 
@@ -872,6 +898,9 @@ def main():
         and nothing to flag as approximate. `sfbos_gate()` proves both halves of
         that on every row before this is allowed to run.
         """
+        if v in LEG:
+            # "<id>~<guid>/<page>" — both halves are needed to open the file
+            return f"{LEG[v][0]}~{LEG[v][1]}/{leaf + 1}", True, "l"
         if v.startswith(SFBOS_NS):
             return f"{v[len(SFBOS_NS):]}/{leaf + 1}", True, "b"
         m = LEAFMAP.get(v)
@@ -880,6 +909,12 @@ def main():
         return f"{v}/{leaf}", False, None
 
     items, n_pre, n_new = load_items()
+    # which meetings are hosted on Legistar, read off the rows themselves
+    LEG = {}
+    for _r in items:
+        _l = legistar_of(_r)
+        if _l:
+            LEG[_r["v"]] = _l
     sfbos_gate(items)
     print(f"{len(items):,} located items "
           f"({n_pre:,} carry a preface, {n_new:,} of them located ONLY by it)", flush=True)
