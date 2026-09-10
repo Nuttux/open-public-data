@@ -179,10 +179,75 @@ def marche_candidats(needles: list[str]) -> list[dict]:
     return out[:MAX_MARCHE]
 
 
+# Mots qui ne distinguent aucun lieu : « place de la Bastille » et « place de
+# la République » partagent leurs douze premiers caractères. Un rapprochement
+# ne vaut que sur ce qui reste une fois ces mots-là retirés en tête.
+GENERIQUES = {
+    "le", "la", "les", "l", "du", "de", "des", "d", "au", "aux", "et",
+    "place", "parc", "jardin", "square", "theatre", "bibliotheque", "mediatheque",
+    "piscine", "stade", "gymnase", "musee", "mairie", "marche", "conservatoire",
+    "cimetiere", "salle", "espace", "centre", "maison", "halle", "bois", "canal",
+    "hotel", "palais", "pont", "rue", "avenue", "boulevard", "paris", "ville",
+}
+DISTINCTIF_MIN = 8      # caractères de la partie distinctive à retrouver au minimum
+LONGUEUR_COUPE = 38     # au-delà, le libellé a probablement été coupé (max source : 40)
+
+
+def _distinctif(nom_norme: str) -> str:
+    """Le nom débarrassé de ses mots génériques de tête.
+
+    « parc martin luther king » → « martin luther king ».
+    « place de la bastille »    → « bastille ».
+    """
+    mots = [m for m in nom_norme.split() if m]
+    while mots and mots[0] in GENERIQUES:
+        mots.pop(0)
+    return " ".join(mots)
+
+
+def _trouve(keys: list[str], hay: str, tronque: bool = False) -> str | None:
+    """Le nom du lieu apparaît-il dans le libellé, même coupé par la source ?
+
+    Trois niveaux, du plus sûr au plus permissif.
+
+    1. Le nom complet est dans le libellé.
+    2. La partie distinctive du nom y est (« place de la Bastille » vaut
+       « bastille » : sans cela, « place de la » suffisait à la rapprocher de
+       « PLACE DE LA REPUBLIQUE »).
+    3. Un préfixe de cette partie distinctive, et SEULEMENT si le libellé est
+       lui-même coupé. La source plafonne à 40 caractères — 666 libellés y sont
+       exactement, 15 % en font 38 ou plus — et le rapprochement doit alors
+       tomber en FIN de libellé, là où la coupe a eu lieu. Sans cette double
+       condition, « georges » rapprochait la piscine Georges-Vallerey du
+       « COLLEGE GEORGES BRAQUE », et « fontaine » quatre fontaines de « EE LA
+       FONTAINE ». C'est ce niveau qui rattrape le parc Martin Luther King,
+       dont l'opération s'appelle « CLICHY-BATIGNOLLES (17e) - PARC MARTIN L ».
+
+    Un rapprochement n'est jamais une preuve : le juge tranche ensuite, et le
+    signal lui dit sous quelle forme le nom a été reconnu."""
+    for k in keys:
+        if k and k in hay:
+            return "nom"
+    for k in keys:
+        d = _distinctif(k)
+        if len(d) >= DISTINCTIF_MIN and d in hay:
+            return f"partie distinctive ({d})"
+    if not tronque:
+        return None
+    for k in keys:
+        d = _distinctif(k)
+        for taille in range(len(d) - 1, DISTINCTIF_MIN - 1, -1):
+            # en fin de libellé uniquement : c'est là que la source a coupé
+            if hay.endswith(d[:taille]):
+                return f"libellé coupé par la source ({d[:taille]}…)"
+    return None
+
+
 def ap_candidats(needles: list[str]) -> list[dict]:
     """Opérations budgétaires (AP/CP) dont le libellé nomme le lieu.
 
-    C'est la DÉPENSE RÉELLE mandatée (2009-2017, niveau opération) — la seule
+    C'est la DÉPENSE RÉELLE mandatée au niveau opération, de 2009 au dernier
+    exercice publié — la seule
     exécution d'investissement publiée à une maille rapprochable d'un lieu.
     Candidat, pas preuve : « BOIS DE BOULOGNE » peut couvrir l'hippodrome comme
     les allées ; le juge tranche avec le contexte des délibérations."""
@@ -192,14 +257,20 @@ def ap_candidats(needles: list[str]) -> list[dict]:
     keys = [norm(n) for n in needles]
     out = []
     for o in json.load(open(src)).get("operations", []):
-        hay = norm(f"{o.get('ap_texte') or ''} {o.get('mission_texte') or ''}")
-        if not any(k in hay for k in keys):
+        brut = o.get("ap_texte") or ""
+        hay = norm(f"{brut} {o.get('mission_texte') or ''}")
+        # Le libellé seul sert au test de coupe : la mission ajoutée derrière
+        # ferait disparaître la fin de libellé au milieu de la chaîne.
+        touche = (_trouve(keys, hay)
+                  or _trouve(keys, norm(brut), tronque=len(brut) >= LONGUEUR_COUPE))
+        if not touche:
             continue
         out.append({
             "ap_cle": o.get("ap_cle"), "ap_texte": o.get("ap_texte"),
             "mission_texte": o.get("mission_texte"), "direction": o.get("direction"),
             "mandate_par_annee": o.get("mandate_par_annee"),
             "total_mandate": o.get("total_mandate"),
+            "signal": touche,
         })
     out.sort(key=lambda r: -(r["total_mandate"] or 0))
     return out[:MAX_AP]

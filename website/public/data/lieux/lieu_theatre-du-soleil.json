@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T19:26:56.680581+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "theatre-du-soleil",
   "name": "Théâtre du Soleil",
@@ -41,9 +41,9 @@
   },
   "subventions_exploitant": {
     "nom_fiche": "THEATRE DU SOLEIL",
-    "total_eur": 554686.0,
+    "total_eur": 928569.0,
     "annees": [
-      "2018",
+      "2013",
       "2024"
     ],
     "rows": [
@@ -86,6 +86,36 @@
       {
         "annee": "2018",
         "montant_eur": 8000.0,
+        "beneficiaire": "THEATRE DU SOLEIL",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2017",
+        "montant_eur": 79727.0,
+        "beneficiaire": "THEATRE DU SOLEIL",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2016",
+        "montant_eur": 27952.0,
+        "beneficiaire": "THEATRE DU SOLEIL",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2015",
+        "montant_eur": 61251.0,
+        "beneficiaire": "THEATRE DU SOLEIL",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2014",
+        "montant_eur": 71466.0,
+        "beneficiaire": "THEATRE DU SOLEIL",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2013",
+        "montant_eur": 133487.0,
         "beneficiaire": "THEATRE DU SOLEIL",
         "thematique": "Culture"
       }

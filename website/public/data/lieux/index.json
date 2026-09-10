@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T14:24:24.851547+00:00",
+  "generated_at": "2026-09-10T19:26:56.680581+00:00",
   "lieux": [
     {
       "slug": "piscine-des-amiraux",
@@ -27,8 +27,8 @@
       "lon": 2.3939,
       "n_lieu": 34,
       "n_moments": 8,
-      "argent_total_eur": 260806906,
-      "depense_reelle_eur": 260806906,
+      "argent_total_eur": 287110513,
+      "depense_reelle_eur": 287110513,
       "engage_eur": 0,
       "depuis": 2006,
       "photo": "/img/lieux/philharmonie-de-paris.jpg"
@@ -43,8 +43,8 @@
       "lon": 2.3477,
       "n_lieu": 32,
       "n_moments": 8,
-      "argent_total_eur": 113723090,
-      "depense_reelle_eur": 113723090,
+      "argent_total_eur": 172226090,
+      "depense_reelle_eur": 172226090,
       "engage_eur": 28060580,
       "depuis": 1996,
       "photo": "/img/lieux/theatre-de-la-ville.jpg"
@@ -251,8 +251,8 @@
       "lon": 2.3469,
       "n_lieu": 30,
       "n_moments": 8,
-      "argent_total_eur": 145272250,
-      "depense_reelle_eur": 145272250,
+      "argent_total_eur": 224429250,
+      "depense_reelle_eur": 224429250,
       "engage_eur": 25937545,
       "depuis": 1898,
       "photo": "/img/lieux/theatre-du-chatelet.jpg"
@@ -267,8 +267,8 @@
       "lon": 2.3535,
       "n_lieu": 43,
       "n_moments": 9,
-      "argent_total_eur": 61642062,
-      "depense_reelle_eur": 61642062,
+      "argent_total_eur": 61650427,
+      "depense_reelle_eur": 61650427,
       "engage_eur": 831746,
       "depuis": 1889,
       "photo": "/img/lieux/gaite-lyrique.jpg"
@@ -315,8 +315,8 @@
       "lon": 2.3778,
       "n_lieu": 42,
       "n_moments": 8,
-      "argent_total_eur": 14886491,
-      "depense_reelle_eur": 14886491,
+      "argent_total_eur": 19614000,
+      "depense_reelle_eur": 19614000,
       "engage_eur": 0,
       "depuis": 1999,
       "photo": "/img/lieux/maison-des-metallos.jpg"
@@ -555,8 +555,8 @@
       "lon": 2.362,
       "n_lieu": 26,
       "n_moments": 8,
-      "argent_total_eur": 15769449,
-      "depense_reelle_eur": 15769449,
+      "argent_total_eur": 18157449,
+      "depense_reelle_eur": 18157449,
       "engage_eur": 1143920,
       "depuis": 1998,
       "photo": "/img/lieux/pavillon-de-larsenal.jpg"
@@ -987,8 +987,8 @@
       "lon": 2.31055,
       "n_lieu": 26,
       "n_moments": 8,
-      "argent_total_eur": 17480476,
-      "depense_reelle_eur": 17480476,
+      "argent_total_eur": 28139723,
+      "depense_reelle_eur": 28139723,
       "engage_eur": 292000,
       "depuis": 1999,
       "photo": "/img/lieux/theatre-du-rond-point.jpg"
@@ -1019,8 +1019,8 @@
       "lon": 2.39245,
       "n_lieu": 2,
       "n_moments": 2,
-      "argent_total_eur": 7455500,
-      "depense_reelle_eur": 7455500,
+      "argent_total_eur": 10643662,
+      "depense_reelle_eur": 10643662,
       "engage_eur": 170681,
       "depuis": 2016,
       "photo": "/img/lieux/theatre-paris-villette.jpg"
@@ -1195,8 +1195,8 @@
       "lon": 2.351844,
       "n_lieu": 19,
       "n_moments": 8,
-      "argent_total_eur": 7259100,
-      "depense_reelle_eur": 7259100,
+      "argent_total_eur": 12463258,
+      "depense_reelle_eur": 12463258,
       "engage_eur": 265000,
       "depuis": 1999,
       "photo": "/img/lieux/maison-de-la-poesie.jpg"
@@ -2043,8 +2043,8 @@
       "lon": 2.368401,
       "n_lieu": 9,
       "n_moments": 8,
-      "argent_total_eur": 1210000,
-      "depense_reelle_eur": 1210000,
+      "argent_total_eur": 1849229,
+      "depense_reelle_eur": 1849229,
       "engage_eur": 0,
       "depuis": 1996,
       "photo": "/img/lieux/theatre-dunois.jpg"
@@ -2059,8 +2059,8 @@
       "lon": 2.394923,
       "n_lieu": 8,
       "n_moments": 8,
-      "argent_total_eur": 554686,
-      "depense_reelle_eur": 554686,
+      "argent_total_eur": 928569,
+      "depense_reelle_eur": 928569,
       "engage_eur": 109345,
       "depuis": 2002,
       "photo": "/img/lieux/theatre-du-soleil.jpg"
