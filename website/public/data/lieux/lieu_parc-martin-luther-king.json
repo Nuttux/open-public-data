@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:35:00.396774+00:00",
+  "generated_at": "2026-09-10T20:56:10.126711+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "parc-martin-luther-king",
   "name": "Parc Martin Luther King",
@@ -16,6 +16,7 @@
     "url": "https://commons.wikimedia.org/wiki/File:H%C3%A9ron_cendr%C3%A9_@_Parc_Clichy-Batignolles_-_Martin-Luther-King_@_Paris_(29769549362).jpg",
     "source": "Wikimedia Commons"
   },
+  "seuil_commun": 2013,
   "wiki": {
     "extract": "Le parc Martin-Luther-King ou parc Clichy-Batignolles – Martin-Luther-King est un espace vert public de 10 hectares à Paris dans le quartier des Batignolles, non loin du square des Batignolles.",
     "url": "https://fr.wikipedia.org/wiki/Parc_Martin-Luther-King",

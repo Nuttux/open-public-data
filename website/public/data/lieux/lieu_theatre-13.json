@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:56:10.126711+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "theatre-13",
   "name": "Théâtre 13",
@@ -11,6 +11,7 @@
   "lon": 2.3562,
   "photo": null,
   "photo_credit": null,
+  "seuil_commun": 2013,
   "wiki": {
     "extract": "Le Théâtre 13, historiquement situé au 103A boulevard Auguste-Blanqui dans le 13e arrondissement de Paris, est un théâtre d'arrondissement créé en 1981 et subventionné par la Mairie de Paris. Depuis novembre 2011, une deuxième salle lui a été adjointe au 30 rue du Chevaleret, toujours dans le 13e arrondissement, sous le nom de « Théâtre 13 / Bibliothèque », la salle historique étant de ce fait baptisée « Théâtre 13 / Glacière ».",
     "url": "https://fr.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_13",

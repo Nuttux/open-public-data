@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:56:10.126711+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "place-leon-blum",
   "name": "Place Léon-Blum",
@@ -16,6 +16,7 @@
     "url": "https://commons.wikimedia.org/wiki/File:P1020902_Paris_XI_Place_L%C3%A9on_Blum_rwk.JPG",
     "source": "Wikimedia Commons"
   },
+  "seuil_commun": 2013,
   "wiki": {
     "extract": "La place Léon-Blum, anciennement mais encore parfois dénommée dans l'usage place Voltaire, est une voie située dans les quartiers de la Roquette et Saint-Ambroise du 11e arrondissement de Paris, en France.",
     "url": "https://fr.wikipedia.org/wiki/Place_L%C3%A9on-Blum",

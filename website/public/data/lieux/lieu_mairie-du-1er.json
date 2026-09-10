@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:56:10.126711+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "mairie-du-1er",
   "name": "Mairie du 1er",
@@ -16,6 +16,7 @@
     "url": "https://commons.wikimedia.org/wiki/File:Mairie_et_beffroi,_place_du_Louvre,_1er_arrondissement,_Paris._PH20617.jpg",
     "source": "Wikimedia Commons"
   },
+  "seuil_commun": 2013,
   "wiki": {
     "extract": null,
     "url": null,

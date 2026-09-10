@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:56:10.126711+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "grande-halle-de-la-villette",
   "name": "Grande Halle de la Villette",
@@ -16,6 +16,7 @@
     "url": "https://fr.wikipedia.org/wiki/Grande_halle_de_la_Villette",
     "source": "Wikipédia"
   },
+  "seuil_commun": 2013,
   "wiki": {
     "extract": "La grande halle de la Villette, pouvant éventuellement être abrégée en « Grande Halle », est un bâtiment des anciens abattoirs composé de structures en charpente métalliques construit dans le quartier du Pont-de-Flandre à Paris. Elle se trouve actuellement place de la Fontaine-aux-Lions à l'entrée Sud du parc de la Villette.",
     "url": "https://fr.wikipedia.org/wiki/Grande_halle_de_la_Villette",

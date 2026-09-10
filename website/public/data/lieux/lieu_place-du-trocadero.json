@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:56:10.126711+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "place-du-trocadero",
   "name": "Place du Trocadéro",
@@ -16,6 +16,7 @@
     "url": "https://fr.wikipedia.org/wiki/Place_du_Trocad%C3%A9ro-et-du-11-Novembre",
     "source": "Wikipédia"
   },
+  "seuil_commun": 2013,
   "wiki": {
     "extract": "La place du Trocadéro-et-du-11-Novembre est une place du 16e arrondissement de Paris.",
     "url": "https://fr.wikipedia.org/wiki/Place_du_Trocad%C3%A9ro-et-du-11-Novembre",

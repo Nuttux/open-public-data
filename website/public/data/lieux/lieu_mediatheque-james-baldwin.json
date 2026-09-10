@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:35:00.396774+00:00",
+  "generated_at": "2026-09-10T20:56:10.126711+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "mediatheque-james-baldwin",
   "name": "Médiathèque James Baldwin",
@@ -16,6 +16,7 @@
     "url": "https://fr.wikipedia.org/wiki/M%C3%A9diath%C3%A8que_James-Baldwin",
     "source": "Wikipédia"
   },
+  "seuil_commun": 2013,
   "wiki": {
     "extract": "La médiathèque James-Baldwin est une médiathèque faisant partie des bibliothèques municipales de la ville de Paris, créée en 2024 dans le 19e arrondissement de Paris, à proximité de la place des fêtes. Elle a été nommée en référence à l'écrivain américain James Baldwin. Les spécialités documentaires de la médiathèque sont le féminisme, les cultures LGBTQIA+, l'écologie et l'exil et la culture sourde.",
     "url": "https://fr.wikipedia.org/wiki/M%C3%A9diath%C3%A8que_James-Baldwin",

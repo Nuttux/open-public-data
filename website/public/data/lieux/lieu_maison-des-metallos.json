@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T19:26:56.680581+00:00",
+  "generated_at": "2026-09-10T20:56:10.126711+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "maison-des-metallos",
   "name": "Maison des Métallos",
@@ -16,6 +16,7 @@
     "url": "https://fr.wikipedia.org/wiki/Maison_des_m%C3%A9tallos",
     "source": "Wikipédia"
   },
+  "seuil_commun": 2013,
   "wiki": {
     "extract": "La Maison des métallos est un bâtiment situé 94 rue Jean-Pierre-Timbaud dans le 11e arrondissement de Paris, en France.",
     "url": "https://fr.wikipedia.org/wiki/Maison_des_m%C3%A9tallos",

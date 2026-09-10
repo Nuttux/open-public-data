@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:35:00.396774+00:00",
+  "generated_at": "2026-09-10T20:56:10.126711+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "catacombes-de-paris",
   "name": "Catacombes de Paris",
@@ -16,6 +16,7 @@
     "url": "https://fr.wikipedia.org/wiki/Catacombes_de_Paris",
     "source": "Wikipédia"
   },
+  "seuil_commun": 2013,
   "wiki": {
     "extract": "Les catacombes de Paris, terme utilisé pour nommer l'ossuaire municipal, sont à l'origine une partie des anciennes carrières souterraines situées dans le 14e arrondissement de Paris, reliées entre elles par des galeries d'inspection. Elles sont transformées en ossuaire municipal à la fin du XVIIIe siècle avec le transfert des restes d'environ six millions d'individus, évacués des divers cimetières parisiens jusqu'en 1861 pour des raisons de salubrité publique. Elles prennent alors le nom abusif de « catacombes », par analogie avec les nécropoles souterraines de la Rome antique, bien qu'elles n'aient jamais officiellement servi de lieu de sépulture.",
     "url": "https://fr.wikipedia.org/wiki/Catacombes_de_Paris",

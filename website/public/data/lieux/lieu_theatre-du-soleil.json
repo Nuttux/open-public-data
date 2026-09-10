@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T19:26:56.680581+00:00",
+  "generated_at": "2026-09-10T20:56:10.126711+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "theatre-du-soleil",
   "name": "Théâtre du Soleil",
@@ -16,6 +16,7 @@
     "url": "https://commons.wikimedia.org/wiki/File:La_Justice_(dos)_-_Th%C3%A9%C3%A2tre_du_Soleil_-_Manifestation_du_11_f%C3%A9vrier_2023_%C3%A0_Paris.jpg",
     "source": "Wikimedia Commons"
   },
+  "seuil_commun": 2013,
   "wiki": {
     "extract": null,
     "url": null,

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:35:00.396774+00:00",
+  "generated_at": "2026-09-10T20:56:10.126711+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "place-du-pantheon",
   "name": "Place du Panthéon",
@@ -16,6 +16,7 @@
     "url": "https://commons.wikimedia.org/wiki/File:Paris_75005_Place_du_Panth%C3%A9on_20160417_(3).jpg",
     "source": "Wikimedia Commons"
   },
+  "seuil_commun": 2013,
   "wiki": {
     "extract": null,
     "url": null,

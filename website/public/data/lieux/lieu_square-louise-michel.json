@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:35:00.396774+00:00",
+  "generated_at": "2026-09-10T20:56:10.126711+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "square-louise-michel",
   "name": "Square Louise-Michel",
@@ -16,6 +16,7 @@
     "url": "https://fr.wikipedia.org/wiki/Square_Louise-Michel_(Paris)",
     "source": "Wikipédia"
   },
+  "seuil_commun": 2013,
   "wiki": {
     "extract": "Le square Louise-Michel est un square du 18e arrondissement de Paris (France), dans le quartier des Grandes-Carrières.",
     "url": "https://fr.wikipedia.org/wiki/Square_Louise-Michel_(Paris)",

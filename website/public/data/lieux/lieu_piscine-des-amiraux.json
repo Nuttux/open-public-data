@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T14:24:24.851547+00:00",
+  "generated_at": "2026-09-10T20:56:10.126711+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "piscine-des-amiraux",
   "name": "Piscine des Amiraux",
@@ -16,6 +16,7 @@
     "url": "https://fr.wikipedia.org/wiki/Immeuble_et_piscine_des_Amiraux",
     "source": "Wikipédia"
   },
+  "seuil_commun": 2013,
   "wiki": {
     "extract": "L'immeuble et la piscine des Amiraux sont un immeuble d'habitation abritant une piscine publique, construits par Henri Sauvage entre 1922 et 1927 dans le 18e arrondissement de Paris, rues des Amiraux et Hermann-Lachapelle. Ils constituent un élément de la recherche architecturale pour construire des habitations à bon marché mais « hygiéniques ».",
     "url": "https://fr.wikipedia.org/wiki/Immeuble_et_piscine_des_Amiraux",

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:35:00.396774+00:00",
+  "generated_at": "2026-09-10T20:56:10.126711+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "marche-saint-germain",
   "name": "Marché Saint-Germain",
@@ -16,6 +16,7 @@
     "url": "https://commons.wikimedia.org/wiki/File:P1020096_Paris_VI_March%C3%A9_Saint-Germain_reductwk.JPG",
     "source": "Wikimedia Commons"
   },
+  "seuil_commun": 2013,
   "wiki": {
     "extract": "Le marché Saint-Germain est un marché couvert construit entre 1813 et 1817 et situé à Paris dans le quartier de l'Odéon.",
     "url": "https://fr.wikipedia.org/wiki/March%C3%A9_Saint-Germain",

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T19:26:56.680581+00:00",
+  "generated_at": "2026-09-10T20:56:10.126711+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "theatre-du-chatelet",
   "name": "Théâtre du Châtelet",
@@ -16,6 +16,7 @@
     "url": "https://commons.wikimedia.org/wiki/File:Th%C3%A9%C3%A2tre_du_Ch%C3%A2telet_Fa%C3%A7ade_(cropped).jpg",
     "source": "Wikimedia Commons"
   },
+  "seuil_commun": 2013,
   "wiki": {
     "extract": "Le théâtre du Châtelet est un théâtre situé place du Châtelet dans le 1er arrondissement de Paris, inauguré en 1862. Dirigé par Olivier Py depuis 2023, il propose des comédies musicales, des opéras, des concerts classiques, du jazz, des récitals et de la danse. De 2002 à 2016, il a accueilli la cérémonie des César du cinéma. Le théâtre du Châtelet est également membre du Réseau européen pour la sensibilisation à l'opéra et à la danse (RESEO).",
     "url": "https://fr.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_du_Ch%C3%A2telet",

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T14:24:24.851547+00:00",
+  "generated_at": "2026-09-10T20:56:10.126711+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "bourse-du-travail",
   "name": "Bourse du Travail",
@@ -16,6 +16,7 @@
     "url": "https://fr.wikipedia.org/wiki/Bourse_du_travail_de_Paris",
     "source": "Wikipédia"
   },
+  "seuil_commun": 2013,
   "wiki": {
     "extract": "La Bourse du travail de Paris est un établissement public administratif de la ville de Paris. Elle constitue pour les travailleurs un foyer où ils peuvent trouver des lieux de réunions syndicales et des informations professionnelles. Elle est composée d'un bâtiment principal, situé dans le 10e arrondissement au no 3 de la rue du Château-d'Eau, et de deux annexes situées dans le 3e arrondissement.",
     "url": "https://fr.wikipedia.org/wiki/Bourse_du_travail_de_Paris",

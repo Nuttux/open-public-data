@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:56:10.126711+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "musee-d-art-moderne-de-paris",
   "name": "Musée d'Art moderne de Paris",
@@ -16,6 +16,7 @@
     "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_d'Art_moderne_de_Paris",
     "source": "Wikipédia"
   },
+  "seuil_commun": 2013,
   "wiki": {
     "extract": "Le musée d'Art moderne de Paris, ou MAM Paris, situé au 11, avenue du Président-Wilson dans le 16e arrondissement de Paris, est un musée d'art français.",
     "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_d'Art_moderne_de_Paris",

@@ -83,6 +83,10 @@ export type LieuFicheData = {
   /** D'où vient la photo : vignette d'article (Wikipédia) ou repêchage Commons —
    *  licences et auteurs différents. */
   photo_credit: { licence: string | null; auteur: string | null; url: string | null; source: string } | null;
+  /** Premier exercice où tous les flux d'argent existent (la Ville publie
+   *  l'investissement depuis 2009 et les subventions depuis 2013). Le chiffre
+   *  de tête couvre cette fenêtre ; ce qui est avant est montré à part. */
+  seuil_commun?: number;
   wiki: { extract: string | null; extract_en?: string | null; url: string | null; source: { name: string; url: string } };
   famille: string;
   stats: {

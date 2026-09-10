@@ -133,6 +133,14 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
   const kindTxt = kindArt ? (en ? kindArt.en : kindArt.fr) : t("fx.lieu.line.lieu_generique");
   const barMax = Math.max(subvTotal, travauxTotal);
   const showBars = subvTotal > 0 && travauxTotal > 0;
+
+  /* La fenêtre commune. Les deux flux ne commencent pas la même année : la
+   * Ville publie l'investissement depuis 2009 et les subventions depuis 2013.
+   * Additionner les deux « depuis 2009 » donnait un total qu'aucune période ne
+   * produit, et deux lieux n'étaient pas comparables entre eux. Le chiffre de
+   * tête couvre donc la fenêtre où les deux flux existent ; ce qui tombe avant
+   * est montré juste sous les graphes, nommé, jamais retiré. */
+  const seuil = lieu.seuil_commun ?? 0;
   const pctTxt = (n: number) => `${Math.round((n / reelTotal) * 100)}${en ? "%" : "\u00a0%"}`;
 
   /* ── Deux séries annuelles, une par source, jamais empilées : les
@@ -160,6 +168,24 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
    * se lit comme un zéro, et c'est exactement l'erreur qui faisait croire à un
    * théâtre à l'arrêt pendant sa rénovation. Il porte donc une marque propre,
    * un tiret pointillé, et la légende le nomme. */
+  const avantSeuil = (s: { year: number; value: number }[]) =>
+    s.filter((r) => r.year < seuil).reduce((a, r) => a + r.value, 0);
+  const depuisSeuil = (s: { year: number; value: number }[]) =>
+    s.filter((r) => r.year >= seuil).reduce((a, r) => a + r.value, 0);
+  const heroTotal = seuil ? depuisSeuil(exploitSeries) + depuisSeuil(travauxSeries) : reelTotal;
+  const horsFenetre = seuil
+    ? [
+        { montant: avantSeuil(travauxSeries), label: t("fx.lieu.line.travaux").toLowerCase(),
+          serie: travauxSeries },
+        { montant: avantSeuil(exploitSeries), label: fill(t("fx.lieu.line.exploitant"), { k: kindTxt }),
+          serie: exploitSeries },
+      ].filter((h) => h.montant > 0)
+    : [];
+  const heroDepuis = seuil
+    ? Math.max(seuil, Math.min(...[...exploitSeries, ...travauxSeries]
+        .filter((r) => r.year >= seuil).map((r) => r.year), seuil))
+    : (verseSpan?.[0] ?? 0);
+
   const spanGlobal = (() => {
     const ys = [...exploitSeries, ...travauxSeries].map((s) => s.year);
     return ys.length ? ([Math.min(...ys), Math.max(...ys)] as const) : null;
@@ -254,10 +280,10 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
       {/* ── Le chiffre — versé si on en a, sinon le plafond, sinon rien ── */}
       {reelTotal > 0 ? (
         <div className="fx-v3-hero">
-          <div className="fx-v3-hero-num tnum">{fmtEur(reelTotal).v}<span className="u">{fmtEur(reelTotal).u}</span></div>
+          <div className="fx-v3-hero-num tnum">{fmtEur(heroTotal).v}<span className="u">{fmtEur(heroTotal).u}</span></div>
           <div className="fx-v3-hero-cap">
             {verseSpan && verseSpan[0] !== verseSpan[1]
-              ? fill(t("fx.lieu.hero.verse"), { y: verseSpan[0] })
+              ? fill(t("fx.lieu.hero.verse"), { y: heroDepuis })
               : fill(t("fx.lieu.hero.verse_one"), { y: verseSpan?.[1] ?? "" })}
           </div>
         </div>
@@ -397,9 +423,25 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
             </div>
           )}
 
+          {horsFenetre.length > 0 && (
+            <p className="fx-v3-avant">
+              {horsFenetre.map((h, i) => {
+                const ys = h.serie.filter((r) => r.year < seuil).map((r) => r.year);
+                return (
+                  <span key={i}>
+                    {i > 0 ? " " : ""}
+                    {cap(fill(t("fx.lieu.avant_seuil"), {
+                      m: eurTxt(h.montant), l: h.label, a: Math.min(...ys), b: Math.max(...ys), s: seuil,
+                    }))}
+                  </span>
+                );
+              })}
+            </p>
+          )}
+
           {(marches.length > 0 || lieu.mandate) && (
             <p className="fx-v3-foot">
-              {marches.length > 0 ? (reelTotal > 0 ? fill(t("fx.lieu.note.total"), { t: eurTxt(reelTotal) }) : t("fx.lieu.note.plafond_seul")) : ""}
+              {marches.length > 0 ? (heroTotal > 0 ? fill(t("fx.lieu.note.total"), { t: eurTxt(heroTotal) }) : t("fx.lieu.note.plafond_seul")) : ""}
               {lieu.mandate ? ` ${fill(t("fx.lieu.line.travaux_caveat"), { y: lieu.mandate.periode[1] })}` : ""}
               {spanGlobal && (exploitSeries.length > 2 || travauxSeries.length > 2)
                 ? ` ${fill(t("fx.lieu.years.axe"), { a: spanGlobal[0], b: spanGlobal[1] })}`

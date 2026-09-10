@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:35:00.396774+00:00",
+  "generated_at": "2026-09-10T20:56:10.126711+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "maison-de-victor-hugo",
   "name": "Maison de Victor Hugo",
@@ -16,6 +16,7 @@
     "url": "https://fr.wikipedia.org/wiki/Maison_de_Victor_Hugo",
     "source": "Wikipédia"
   },
+  "seuil_commun": 2013,
   "wiki": {
     "extract": "Maisons de Victor Hugo est un musée monographique parisien, situé au 6, place des Vosges, dans le 4e arrondissement, qui préserve l’ancien hôtel de Rohan-Guémené où Victor Hugo loua l'appartement au deuxième étage pendant seize ans, de 1832 à 1848.",
     "url": "https://fr.wikipedia.org/wiki/Maison_de_Victor_Hugo",

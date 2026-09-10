@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:56:10.126711+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "parc-montsouris",
   "name": "Parc Montsouris",
@@ -16,6 +16,7 @@
     "url": "https://commons.wikimedia.org/wiki/File:Paris_14e_Parc_Montsouris_Lac_970.jpg",
     "source": "Wikimedia Commons"
   },
+  "seuil_commun": 2013,
   "wiki": {
     "extract": "Le parc Montsouris est un jardin public situé dans le quartier du même nom, dans le sud de Paris, dans le 14e arrondissement. Aménagé à la fin du XIXe siècle comme le parc des Buttes-Chaumont, ce parc à l'anglaise s'étend sur 15 ha. Le parc abrite un grand nombre d'espèces d'oiseaux et de nombreux arbres.",
     "url": "https://fr.wikipedia.org/wiki/Parc_Montsouris",

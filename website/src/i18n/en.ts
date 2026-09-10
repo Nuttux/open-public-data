@@ -6164,6 +6164,7 @@ const en: Record<string, string> = {
   'fx.lieu.hero.verse': 'paid by the City for this place since {y}',
   'fx.lieu.hero.verse_one': 'paid by the City for this place in {y}',
   'fx.lieu.years.axe': 'Both series are drawn on the same axis, {a} to {b}; dotted years are those the City does not publish for that line.',
+  'fx.lieu.avant_seuil': 'Add {m} of {l} between {a} and {b}, not included in the figure above: the City publishes investment from 2009 but subsidies only from {s}, and a total mixing the two means nothing.',
   'fx.lieu.hero.engage': 'ordered from companies for this place — contract ceilings, not spending',
   'fx.lieu.h.argent': 'What the City funds here',
   'fx.lieu.line.exploitant': 'running {k}',

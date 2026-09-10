@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:56:10.126711+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "theatre-de-la-bastille",
   "name": "Théâtre de la Bastille",
@@ -16,6 +16,7 @@
     "url": "https://fr.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_de_la_Bastille",
     "source": "Wikipédia"
   },
+  "seuil_commun": 2013,
   "wiki": {
     "extract": "Le théâtre de la Bastille est une salle de spectacles située au 76, rue de la Roquette dans le 11e arrondissement de Paris. Sa programmation est principalement consacrée au théâtre contemporain et à la danse contemporaine. Devenu théâtre public en 2023, il est dirigé depuis lors par Claire Dupont.",
     "url": "https://fr.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_de_la_Bastille",

@@ -1,1473 +1,1481 @@
 {
- "schema_version": 1,
- "generated_at": "2026-09-10T20:36:26.382397+00:00",
- "portail": "opendata.paris.fr",
- "tolerance_ecart_pct": 1.0,
- "resume": {
-  "familles": 9,
-  "jeux_de_la_serie_non_ingeres": 4,
-  "constats": 25,
-  "erreurs": 0,
-  "cote_nous": 9,
-  "cote_ville": 16
- },
- "familles": [
-  {
-   "id": "budget_execute",
-   "label": "Budget exécuté — budget principal (compte administratif)",
-   "jeux": [
-    {
-     "dataset": "comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement",
-     "titre": "Comptes Administratifs – Budgets Principaux à partir de 2019 (M57 Ville-département)",
-     "lignes_catalogue": 25629,
-     "derniere_maj": "2025-08-26T07:26:07+00:00",
-     "ingere": true,
-     "champ_annee": "exercice_comptable",
-     "champ_montant": "mandate_titre_apres_regul",
-     "annees": [
-      "2019",
-      "2020",
-      "2021",
-      "2022",
-      "2023",
-      "2024"
-     ],
-     "lignes_par_annee": {
-      "2019": 3618,
-      "2020": 3468,
-      "2021": 3481,
-      "2022": 3796,
-      "2023": 3747,
-      "2024": 3846
-     },
-     "total_par_annee": {
-      "2019": 9806315541.3,
-      "2020": 9940645002.64,
-      "2021": 10025231536.4,
-      "2022": 10699641826.98,
-      "2023": 10845342218.92,
-      "2024": 11494727617.75
-     },
-     "erreur": null,
-     "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
-    },
-    {
-     "dataset": "comptes-administratifs-principaux-2018-m57-ville-departement",
-     "titre": "Comptes Administratifs - Budgets Principaux 2018 (M57 Ville-département)",
-     "lignes_catalogue": 4581,
-     "derniere_maj": "2019-11-28T18:11:51.763000+00:00",
-     "ingere": false,
-     "champ_annee": "exercice_comptable_cle_non_composee",
-     "champ_montant": "mandate_titre_x000d_apres_regul",
-     "annees": [
-      "2018"
-     ],
-     "lignes_par_annee": {
-      "2018": 4581
-     },
-     "total_par_annee": {
-      "2018": 21559693343.51
-     },
-     "erreur": "filtre inapplicable sur ce jeu, total brut",
-     "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-principaux-2018-m57-ville-departement/"
-    },
-    {
-     "dataset": "comptes-administratifs-principaux-ville-departement",
-     "titre": "Comptes Administratifs - Budgets Principaux 2009 - 2017 (M14-M52 Ville-département)",
-     "lignes_catalogue": 30899,
-     "derniere_maj": "2019-11-28T11:52:53.349000+00:00",
-     "ingere": false,
-     "champ_annee": "exercice_comptable",
-     "champ_montant": "mandate_titre_apres_regul",
-     "annees": [
-      "2009",
-      "2010",
-      "2011",
-      "2012",
-      "2013",
-      "2014",
-      "2015",
-      "2016",
-      "2017"
-     ],
-     "lignes_par_annee": {
-      "2009": 2766,
-      "2010": 2727,
-      "2011": 2603,
-      "2012": 2683,
-      "2013": 2727,
-      "2014": 2740,
-      "2015": 2783,
-      "2016": 2898,
-      "2017": 2928
-     },
-     "total_par_annee": {
-      "2009": 8977676872.47,
-      "2010": 9046414984.95,
-      "2011": 10218293832.93,
-      "2012": 9775564064.88,
-      "2013": 10205381290.58,
-      "2014": 10415452277.67,
-      "2015": 10156291051.45,
-      "2016": 10149510906.47,
-      "2017": 9890812306.7
-     },
-     "erreur": null,
-     "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-principaux-ville-departement/"
-    }
-   ],
-   "non_ingeres": [
-    "comptes-administratifs-principaux-2018-m57-ville-departement",
-    "comptes-administratifs-principaux-ville-departement"
-   ],
-   "annees_source": [
-    "2009",
-    "2010",
-    "2011",
-    "2012",
-    "2013",
-    "2014",
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024"
-   ],
-   "annees_site": [
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024"
-   ],
-   "annees_manquantes": [
-    "2009",
-    "2010",
-    "2011",
-    "2012",
-    "2013",
-    "2014",
-    "2015",
-    "2016",
-    "2017",
-    "2018"
-   ],
-   "ecarts": [
-    {
-     "annee": "2019",
-     "source": 9806315541.3,
-     "site": 9806315541.3,
-     "ecart_pct": 0.0,
-     "perimetre": "indicatif"
-    },
-    {
-     "annee": "2020",
-     "source": 9940645002.64,
-     "site": 9940645002.64,
-     "ecart_pct": 0.0,
-     "perimetre": "indicatif"
-    },
-    {
-     "annee": "2021",
-     "source": 10025231536.4,
-     "site": 10025231536.4,
-     "ecart_pct": 0.0,
-     "perimetre": "indicatif"
-    },
-    {
-     "annee": "2022",
-     "source": 10699641826.98,
-     "site": 10699641826.98,
-     "ecart_pct": 0.0,
-     "perimetre": "indicatif"
-    },
-    {
-     "annee": "2023",
-     "source": 10845342218.92,
-     "site": 10845342218.92,
-     "ecart_pct": 0.0,
-     "perimetre": "indicatif"
-    },
-    {
-     "annee": "2024",
-     "source": 11494727617.75,
-     "site": 11494727617.75,
-     "ecart_pct": 0.0,
-     "perimetre": "indicatif"
-    }
-   ],
-   "note_site": null
+  "schema_version": 1,
+  "generated_at": "2026-09-10T20:36:26.382397+00:00",
+  "portail": "opendata.paris.fr",
+  "tolerance_ecart_pct": 1.0,
+  "resume": {
+    "familles": 9,
+    "jeux_de_la_serie_non_ingeres": 4,
+    "constats": 25,
+    "erreurs": 0,
+    "cote_nous": 9,
+    "cote_ville": 16
   },
-  {
-   "id": "budget_vote",
-   "label": "Budget voté — budget principal",
-   "jeux": [
+  "familles": [
     {
-     "dataset": "budgets-votes-principaux-a-partir-de-2019-m57-ville-departement",
-     "titre": "Budgets Votés - Budget Principal à partir de 2019 (M57 Ville-département)",
-     "lignes_catalogue": 8598,
-     "derniere_maj": "2020-11-25T09:07:00+00:00",
-     "ingere": true,
-     "champ_annee": "exercice_comptable",
-     "champ_montant": null,
-     "annees": [
-      "2019",
-      "2020",
-      "2021"
-     ],
-     "lignes_par_annee": {
-      "2019": 4109,
-      "2020": 4029,
-      "2021": 460
-     },
-     "total_par_annee": {},
-     "erreur": null,
-     "url": "https://opendata.paris.fr/explore/dataset/budgets-votes-principaux-a-partir-de-2019-m57-ville-departement/"
+      "id": "budget_execute",
+      "label": "Budget exécuté — budget principal (compte administratif)",
+      "jeux": [
+        {
+          "dataset": "comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement",
+          "titre": "Comptes Administratifs – Budgets Principaux à partir de 2019 (M57 Ville-département)",
+          "lignes_catalogue": 25629,
+          "derniere_maj": "2025-08-26T07:26:07+00:00",
+          "ingere": true,
+          "champ_annee": "exercice_comptable",
+          "champ_montant": "mandate_titre_apres_regul",
+          "annees": [
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "2024"
+          ],
+          "lignes_par_annee": {
+            "2019": 3618,
+            "2020": 3468,
+            "2021": 3481,
+            "2022": 3796,
+            "2023": 3747,
+            "2024": 3846
+          },
+          "total_par_annee": {
+            "2019": 9806315541.3,
+            "2020": 9940645002.64,
+            "2021": 10025231536.4,
+            "2022": 10699641826.98,
+            "2023": 10845342218.92,
+            "2024": 11494727617.75
+          },
+          "erreur": null,
+          "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
+        },
+        {
+          "dataset": "comptes-administratifs-principaux-2018-m57-ville-departement",
+          "titre": "Comptes Administratifs - Budgets Principaux 2018 (M57 Ville-département)",
+          "lignes_catalogue": 4581,
+          "derniere_maj": "2019-11-28T18:11:51.763000+00:00",
+          "ingere": false,
+          "champ_annee": "exercice_comptable_cle_non_composee",
+          "champ_montant": "mandate_titre_x000d_apres_regul",
+          "annees": [
+            "2018"
+          ],
+          "lignes_par_annee": {
+            "2018": 4581
+          },
+          "total_par_annee": {
+            "2018": 21559693343.51
+          },
+          "erreur": "filtre inapplicable sur ce jeu, total brut",
+          "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-principaux-2018-m57-ville-departement/"
+        },
+        {
+          "dataset": "comptes-administratifs-principaux-ville-departement",
+          "titre": "Comptes Administratifs - Budgets Principaux 2009 - 2017 (M14-M52 Ville-département)",
+          "lignes_catalogue": 30899,
+          "derniere_maj": "2019-11-28T11:52:53.349000+00:00",
+          "ingere": false,
+          "champ_annee": "exercice_comptable",
+          "champ_montant": "mandate_titre_apres_regul",
+          "annees": [
+            "2009",
+            "2010",
+            "2011",
+            "2012",
+            "2013",
+            "2014",
+            "2015",
+            "2016",
+            "2017"
+          ],
+          "lignes_par_annee": {
+            "2009": 2766,
+            "2010": 2727,
+            "2011": 2603,
+            "2012": 2683,
+            "2013": 2727,
+            "2014": 2740,
+            "2015": 2783,
+            "2016": 2898,
+            "2017": 2928
+          },
+          "total_par_annee": {
+            "2009": 8977676872.47,
+            "2010": 9046414984.95,
+            "2011": 10218293832.93,
+            "2012": 9775564064.88,
+            "2013": 10205381290.58,
+            "2014": 10415452277.67,
+            "2015": 10156291051.45,
+            "2016": 10149510906.47,
+            "2017": 9890812306.7
+          },
+          "erreur": null,
+          "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-principaux-ville-departement/"
+        }
+      ],
+      "non_ingeres": [
+        "comptes-administratifs-principaux-2018-m57-ville-departement",
+        "comptes-administratifs-principaux-ville-departement"
+      ],
+      "annees_source": [
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "annees_site": [
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "annees_manquantes": [
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018"
+      ],
+      "ecarts": [
+        {
+          "annee": "2019",
+          "source": 9806315541.3,
+          "site": 9806315541.3,
+          "ecart_pct": 0.0,
+          "perimetre": "indicatif"
+        },
+        {
+          "annee": "2020",
+          "source": 9940645002.64,
+          "site": 9940645002.64,
+          "ecart_pct": 0.0,
+          "perimetre": "indicatif"
+        },
+        {
+          "annee": "2021",
+          "source": 10025231536.4,
+          "site": 10025231536.4,
+          "ecart_pct": 0.0,
+          "perimetre": "indicatif"
+        },
+        {
+          "annee": "2022",
+          "source": 10699641826.98,
+          "site": 10699641826.98,
+          "ecart_pct": 0.0,
+          "perimetre": "indicatif"
+        },
+        {
+          "annee": "2023",
+          "source": 10845342218.92,
+          "site": 10845342218.92,
+          "ecart_pct": 0.0,
+          "perimetre": "indicatif"
+        },
+        {
+          "annee": "2024",
+          "source": 11494727617.75,
+          "site": 11494727617.75,
+          "ecart_pct": 0.0,
+          "perimetre": "indicatif"
+        }
+      ],
+      "note_site": null
     },
     {
-     "dataset": "bugdet-votes-principaux",
-     "titre": "Budgets Votés - Budget Principal 2009 - 2017 (M14-M52 Ville-département)",
-     "lignes_catalogue": 28075,
-     "derniere_maj": "2019-11-28T18:05:00.662000+00:00",
-     "ingere": false,
-     "champ_annee": "exercice_comptable",
-     "champ_montant": null,
-     "annees": [
-      "2009",
-      "2010",
-      "2011",
-      "2012",
-      "2013",
-      "2014",
-      "2015",
-      "2016",
-      "2017"
-     ],
-     "lignes_par_annee": {
-      "2009": 3429,
-      "2010": 3210,
-      "2011": 3178,
-      "2012": 3089,
-      "2013": 3024,
-      "2014": 2993,
-      "2015": 3131,
-      "2016": 3044,
-      "2017": 2977
-     },
-     "total_par_annee": {},
-     "erreur": null,
-     "url": "https://opendata.paris.fr/explore/dataset/bugdet-votes-principaux/"
+      "id": "budget_vote",
+      "label": "Budget voté — budget principal",
+      "jeux": [
+        {
+          "dataset": "budgets-votes-principaux-a-partir-de-2019-m57-ville-departement",
+          "titre": "Budgets Votés - Budget Principal à partir de 2019 (M57 Ville-département)",
+          "lignes_catalogue": 8598,
+          "derniere_maj": "2020-11-25T09:07:00+00:00",
+          "ingere": true,
+          "champ_annee": "exercice_comptable",
+          "champ_montant": null,
+          "annees": [
+            "2019",
+            "2020",
+            "2021"
+          ],
+          "lignes_par_annee": {
+            "2019": 4109,
+            "2020": 4029,
+            "2021": 460
+          },
+          "total_par_annee": {},
+          "erreur": null,
+          "url": "https://opendata.paris.fr/explore/dataset/budgets-votes-principaux-a-partir-de-2019-m57-ville-departement/"
+        },
+        {
+          "dataset": "bugdet-votes-principaux",
+          "titre": "Budgets Votés - Budget Principal 2009 - 2017 (M14-M52 Ville-département)",
+          "lignes_catalogue": 28075,
+          "derniere_maj": "2019-11-28T18:05:00.662000+00:00",
+          "ingere": false,
+          "champ_annee": "exercice_comptable",
+          "champ_montant": null,
+          "annees": [
+            "2009",
+            "2010",
+            "2011",
+            "2012",
+            "2013",
+            "2014",
+            "2015",
+            "2016",
+            "2017"
+          ],
+          "lignes_par_annee": {
+            "2009": 3429,
+            "2010": 3210,
+            "2011": 3178,
+            "2012": 3089,
+            "2013": 3024,
+            "2014": 2993,
+            "2015": 3131,
+            "2016": 3044,
+            "2017": 2977
+          },
+          "total_par_annee": {},
+          "erreur": null,
+          "url": "https://opendata.paris.fr/explore/dataset/bugdet-votes-principaux/"
+        },
+        {
+          "dataset": "bugdet-votes-principaux_2018_m57_ville_dpt",
+          "titre": "Budgets Votés - Budget Principal 2018 (M57 Ville-département)",
+          "lignes_catalogue": 3715,
+          "derniere_maj": "2019-11-28T18:05:19.778000+00:00",
+          "ingere": false,
+          "champ_annee": "exercice_comptable",
+          "champ_montant": null,
+          "annees": [
+            "2018"
+          ],
+          "lignes_par_annee": {
+            "2018": 3715
+          },
+          "total_par_annee": {},
+          "erreur": null,
+          "url": "https://opendata.paris.fr/explore/dataset/bugdet-votes-principaux_2018_m57_ville_dpt/"
+        }
+      ],
+      "non_ingeres": [
+        "bugdet-votes-principaux",
+        "bugdet-votes-principaux_2018_m57_ville_dpt"
+      ],
+      "annees_source": [
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021"
+      ],
+      "annees_site": [
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025",
+        "2026"
+      ],
+      "annees_manquantes": [
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018"
+      ],
+      "ecarts": [],
+      "note_site": null
     },
     {
-     "dataset": "bugdet-votes-principaux_2018_m57_ville_dpt",
-     "titre": "Budgets Votés - Budget Principal 2018 (M57 Ville-département)",
-     "lignes_catalogue": 3715,
-     "derniere_maj": "2019-11-28T18:05:19.778000+00:00",
-     "ingere": false,
-     "champ_annee": "exercice_comptable",
-     "champ_montant": null,
-     "annees": [
-      "2018"
-     ],
-     "lignes_par_annee": {
-      "2018": 3715
-     },
-     "total_par_annee": {},
-     "erreur": null,
-     "url": "https://opendata.paris.fr/explore/dataset/bugdet-votes-principaux_2018_m57_ville_dpt/"
+      "id": "ap_execute",
+      "label": "Investissement — autorisations de programme (exécuté)",
+      "jeux": [
+        {
+          "dataset": "comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de",
+          "titre": "Comptes Administratifs - Autorisations de Programmes à partir de 2018 (M57 Ville-Département)",
+          "lignes_catalogue": 7466,
+          "derniere_maj": "2019-11-28T18:12:19.432000+00:00",
+          "ingere": true,
+          "champ_annee": "exercice_comptable",
+          "champ_montant": "mandate_titre_apres_regul",
+          "annees": [
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022"
+          ],
+          "lignes_par_annee": {
+            "2018": 2453,
+            "2019": 1977,
+            "2020": 1355,
+            "2021": 894,
+            "2022": 485
+          },
+          "total_par_annee": {
+            "2018": 688359054.47,
+            "2019": 557056394.73,
+            "2020": 318743069.77,
+            "2021": 247494162.91,
+            "2022": 156916698.85
+          },
+          "erreur": null,
+          "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/"
+        },
+        {
+          "dataset": "comptes-administratifs-autorisations-de-programmes-ap-ville-departement",
+          "titre": "Comptes Administratifs - Autorisations de Programmes 2009 - 2017 (M14-M52 Ville-Département)",
+          "lignes_catalogue": 27927,
+          "derniere_maj": "2019-11-28T15:44:25.100000+00:00",
+          "ingere": true,
+          "champ_annee": "exercice_comptable",
+          "champ_montant": "mandate_titre_apres_regul",
+          "annees": [
+            "2009",
+            "2010",
+            "2011",
+            "2012",
+            "2013",
+            "2014",
+            "2015",
+            "2016",
+            "2017"
+          ],
+          "lignes_par_annee": {
+            "2009": 2760,
+            "2010": 2666,
+            "2011": 2611,
+            "2012": 2698,
+            "2013": 2679,
+            "2014": 2583,
+            "2015": 2720,
+            "2016": 3268,
+            "2017": 3430
+          },
+          "total_par_annee": {
+            "2009": 1692587739.29,
+            "2010": 1536394349.26,
+            "2011": 1707442718.12,
+            "2012": 1666194333.18,
+            "2013": 1835647160.1,
+            "2014": 1767945953.92,
+            "2015": 1369441833.78,
+            "2016": 1650974422.1,
+            "2017": 1208872017.07
+          },
+          "erreur": null,
+          "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+        }
+      ],
+      "non_ingeres": [],
+      "annees_source": [
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022"
+      ],
+      "annees_site": [
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022"
+      ],
+      "annees_manquantes": [],
+      "ecarts": [
+        {
+          "annee": "2009",
+          "source": 1692587739.29,
+          "site": 1692587739.29,
+          "ecart_pct": 0.0,
+          "perimetre": "exact"
+        },
+        {
+          "annee": "2010",
+          "source": 1536394349.26,
+          "site": 1536394349.26,
+          "ecart_pct": 0.0,
+          "perimetre": "exact"
+        },
+        {
+          "annee": "2011",
+          "source": 1707442718.12,
+          "site": 1707442718.12,
+          "ecart_pct": 0.0,
+          "perimetre": "exact"
+        },
+        {
+          "annee": "2012",
+          "source": 1666194333.18,
+          "site": 1666194333.18,
+          "ecart_pct": 0.0,
+          "perimetre": "exact"
+        },
+        {
+          "annee": "2013",
+          "source": 1835647160.1,
+          "site": 1835647160.1,
+          "ecart_pct": 0.0,
+          "perimetre": "exact"
+        },
+        {
+          "annee": "2014",
+          "source": 1767945953.92,
+          "site": 1767945953.92,
+          "ecart_pct": 0.0,
+          "perimetre": "exact"
+        },
+        {
+          "annee": "2015",
+          "source": 1369441833.78,
+          "site": 1369441833.78,
+          "ecart_pct": 0.0,
+          "perimetre": "exact"
+        },
+        {
+          "annee": "2016",
+          "source": 1650974422.1,
+          "site": 1650974422.1,
+          "ecart_pct": 0.0,
+          "perimetre": "exact"
+        },
+        {
+          "annee": "2017",
+          "source": 1208872017.07,
+          "site": 1208872017.07,
+          "ecart_pct": 0.0,
+          "perimetre": "exact"
+        },
+        {
+          "annee": "2018",
+          "source": 688359054.47,
+          "site": 688359054.47,
+          "ecart_pct": 0.0,
+          "perimetre": "exact"
+        },
+        {
+          "annee": "2019",
+          "source": 557056394.73,
+          "site": 557056394.73,
+          "ecart_pct": 0.0,
+          "perimetre": "exact"
+        },
+        {
+          "annee": "2020",
+          "source": 318743069.77,
+          "site": 318743069.77,
+          "ecart_pct": 0.0,
+          "perimetre": "exact"
+        },
+        {
+          "annee": "2021",
+          "source": 247494162.91,
+          "site": 247494162.91,
+          "ecart_pct": 0.0,
+          "perimetre": "exact"
+        },
+        {
+          "annee": "2022",
+          "source": 156916698.85,
+          "site": 156916698.85,
+          "ecart_pct": 0.0,
+          "perimetre": "exact"
+        }
+      ],
+      "note_site": null
+    },
+    {
+      "id": "investissements_carte",
+      "label": "Investissement — carte des projets localisés",
+      "jeux": [
+        {
+          "dataset": "comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de",
+          "titre": "Comptes Administratifs - Autorisations de Programmes à partir de 2018 (M57 Ville-Département)",
+          "lignes_catalogue": 7466,
+          "derniere_maj": "2019-11-28T18:12:19.432000+00:00",
+          "ingere": true,
+          "champ_annee": "exercice_comptable",
+          "champ_montant": "mandate_titre_apres_regul",
+          "annees": [
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022"
+          ],
+          "lignes_par_annee": {
+            "2018": 2567,
+            "2019": 2044,
+            "2020": 1398,
+            "2021": 941,
+            "2022": 516
+          },
+          "total_par_annee": {
+            "2018": 788365575.86,
+            "2019": 673982349.18,
+            "2020": 364557638.3,
+            "2021": 277248047.74,
+            "2022": 173975334.87
+          },
+          "erreur": null,
+          "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/"
+        }
+      ],
+      "non_ingeres": [],
+      "annees_source": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022"
+      ],
+      "annees_site": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "annees_manquantes": [],
+      "ecarts": [],
+      "note_site": null
+    },
+    {
+      "id": "subventions",
+      "label": "Subventions versées (annexe du compte administratif)",
+      "jeux": [
+        {
+          "dataset": "subventions-versees",
+          "titre": "Subventions versées - Annexe Compte administratif 2013-2017",
+          "lignes_catalogue": 39431,
+          "derniere_maj": "2019-12-19T07:49:29.649000+00:00",
+          "ingere": true,
+          "champ_annee": "publication",
+          "champ_montant": "montant_de_la_subvention",
+          "annees": [
+            "2013",
+            "2014",
+            "2015",
+            "2016",
+            "2017"
+          ],
+          "lignes_par_annee": {
+            "2013": 6473,
+            "2014": 6921,
+            "2015": 7389,
+            "2016": 7971,
+            "2017": 10677
+          },
+          "total_par_annee": {
+            "2013": 1265816522.23,
+            "2014": 1362113353.96,
+            "2015": 1149891407.56,
+            "2016": 1260982793.39,
+            "2017": 1150092852.03
+          },
+          "erreur": "filtre inapplicable sur ce jeu, total brut",
+          "url": "https://opendata.paris.fr/explore/dataset/subventions-versees/"
+        },
+        {
+          "dataset": "subventions-versees-annexe-compte-administratif-a-partir-de-2018",
+          "titre": "Subventions versées - Annexe Compte administratif à partir de 2018",
+          "lignes_catalogue": 47381,
+          "derniere_maj": "2025-08-26T07:41:30+00:00",
+          "ingere": true,
+          "champ_annee": "publication",
+          "champ_montant": "montant_de_la_subvention",
+          "annees": [
+            "2018",
+            "2019",
+            "2022",
+            "2023",
+            "2024"
+          ],
+          "lignes_par_annee": {
+            "2022": 5336,
+            "2023": 5167,
+            "2024": 5977,
+            "2018": 10266,
+            "2019": 12093
+          },
+          "total_par_annee": {
+            "2022": 1167565895.0,
+            "2023": 1201008578.0,
+            "2024": 1353488225.0,
+            "2018": 1241346409.0,
+            "2019": 1304037463.0
+          },
+          "erreur": null,
+          "url": "https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/"
+        }
+      ],
+      "non_ingeres": [],
+      "annees_source": [
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "annees_site": [
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "annees_manquantes": [],
+      "ecarts": [
+        {
+          "annee": "2013",
+          "source": 1265816522.23,
+          "site": 1265816522.23,
+          "ecart_pct": 0.0,
+          "perimetre": "exact"
+        },
+        {
+          "annee": "2014",
+          "source": 1362113353.96,
+          "site": 1362113353.96,
+          "ecart_pct": 0.0,
+          "perimetre": "exact"
+        },
+        {
+          "annee": "2015",
+          "source": 1149891407.56,
+          "site": 1149891407.56,
+          "ecart_pct": 0.0,
+          "perimetre": "exact"
+        },
+        {
+          "annee": "2016",
+          "source": 1260982793.39,
+          "site": 1260982793.39,
+          "ecart_pct": 0.0,
+          "perimetre": "exact"
+        },
+        {
+          "annee": "2017",
+          "source": 1150092852.03,
+          "site": 1150092852.03,
+          "ecart_pct": 0.0,
+          "perimetre": "exact"
+        },
+        {
+          "annee": "2018",
+          "source": 1241346409.0,
+          "site": 1241346409.0,
+          "ecart_pct": 0.0,
+          "perimetre": "exact"
+        },
+        {
+          "annee": "2019",
+          "source": 1304037463.0,
+          "site": 1304037463.0,
+          "ecart_pct": 0.0,
+          "perimetre": "exact"
+        },
+        {
+          "annee": "2022",
+          "source": 1167565895.0,
+          "site": 1167565895.0,
+          "ecart_pct": 0.0,
+          "perimetre": "exact"
+        },
+        {
+          "annee": "2023",
+          "source": 1201008578.0,
+          "site": 1201008578.0,
+          "ecart_pct": 0.0,
+          "perimetre": "exact"
+        },
+        {
+          "annee": "2024",
+          "source": 1353488225.0,
+          "site": 1353488225.0,
+          "ecart_pct": 0.0,
+          "perimetre": "exact"
+        }
+      ],
+      "note_site": null
+    },
+    {
+      "id": "marches",
+      "label": "Marchés publics de la collectivité parisienne",
+      "jeux": [
+        {
+          "dataset": "liste-des-marches-de-la-collectivite-parisienne",
+          "titre": "Marchés publics - Liste des marchés de la collectivité parisienne",
+          "lignes_catalogue": 17639,
+          "derniere_maj": "2024-05-02T12:15:26+00:00",
+          "ingere": true,
+          "champ_annee": "annee_de_notification",
+          "champ_montant": "montant_max",
+          "annees": [
+            "2013",
+            "2014",
+            "2015",
+            "2016",
+            "2017",
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "2024"
+          ],
+          "lignes_par_annee": {
+            "2013": 1715,
+            "2014": 1483,
+            "2015": 1556,
+            "2016": 1602,
+            "2017": 1698,
+            "2018": 1458,
+            "2019": 1338,
+            "2020": 1196,
+            "2021": 1570,
+            "2022": 1281,
+            "2023": 1335,
+            "2024": 1407
+          },
+          "total_par_annee": {
+            "2013": 1903162597.68,
+            "2014": 1530498987.85,
+            "2015": 1538504362.7,
+            "2016": 1917172793.52,
+            "2017": 3465550059.51,
+            "2018": 2836151932.31,
+            "2019": 2302969683.3,
+            "2020": 3282280032.53,
+            "2021": 5483477436.49,
+            "2022": 3824590460.84,
+            "2023": 2603719521.33,
+            "2024": 2495665169.67
+          },
+          "erreur": null,
+          "url": "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/"
+        }
+      ],
+      "non_ingeres": [],
+      "annees_source": [
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "annees_site": [
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025",
+        "2026"
+      ],
+      "annees_manquantes": [],
+      "ecarts": [
+        {
+          "annee": "2013",
+          "source": 1903162597.68,
+          "site": 1901057959.87,
+          "ecart_pct": 0.11,
+          "perimetre": "indicatif"
+        },
+        {
+          "annee": "2014",
+          "source": 1530498987.85,
+          "site": 1530498987.85,
+          "ecart_pct": 0.0,
+          "perimetre": "indicatif"
+        },
+        {
+          "annee": "2015",
+          "source": 1538504362.7,
+          "site": 1538504362.7,
+          "ecart_pct": 0.0,
+          "perimetre": "indicatif"
+        },
+        {
+          "annee": "2016",
+          "source": 1917172793.52,
+          "site": 1916840484.3,
+          "ecart_pct": 0.02,
+          "perimetre": "indicatif"
+        },
+        {
+          "annee": "2017",
+          "source": 3465550059.51,
+          "site": 3465550059.51,
+          "ecart_pct": 0.0,
+          "perimetre": "indicatif"
+        },
+        {
+          "annee": "2018",
+          "source": 2836151932.31,
+          "site": 2836151932.31,
+          "ecart_pct": 0.0,
+          "perimetre": "indicatif"
+        },
+        {
+          "annee": "2019",
+          "source": 2302969683.3,
+          "site": 2313239644.3,
+          "ecart_pct": 0.45,
+          "perimetre": "indicatif"
+        },
+        {
+          "annee": "2020",
+          "source": 3282280032.53,
+          "site": 3292522877.92,
+          "ecart_pct": 0.31,
+          "perimetre": "indicatif"
+        },
+        {
+          "annee": "2021",
+          "source": 5483477436.49,
+          "site": 5483477436.49,
+          "ecart_pct": 0.0,
+          "perimetre": "indicatif"
+        },
+        {
+          "annee": "2022",
+          "source": 3824590460.84,
+          "site": 3934593902.84,
+          "ecart_pct": 2.88,
+          "perimetre": "indicatif"
+        },
+        {
+          "annee": "2023",
+          "source": 2603719521.33,
+          "site": 2606711521.33,
+          "ecart_pct": 0.11,
+          "perimetre": "indicatif"
+        },
+        {
+          "annee": "2024",
+          "source": 2495665169.67,
+          "site": 3219823753.23,
+          "ecart_pct": 29.02,
+          "perimetre": "indicatif"
+        }
+      ],
+      "note_site": null
+    },
+    {
+      "id": "logements_sociaux",
+      "label": "Logements sociaux financés",
+      "jeux": [
+        {
+          "dataset": "logements-sociaux-finances-a-paris",
+          "titre": "Programmes de logements sociaux financés à Paris",
+          "lignes_catalogue": 4293,
+          "derniere_maj": "2026-09-08T09:08:11+00:00",
+          "ingere": true,
+          "champ_annee": "annee",
+          "champ_montant": null,
+          "annees": [
+            "2001",
+            "2002",
+            "2003",
+            "2004",
+            "2005",
+            "2006",
+            "2007",
+            "2008",
+            "2009",
+            "2010",
+            "2011",
+            "2012",
+            "2013",
+            "2014",
+            "2015",
+            "2016",
+            "2017",
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025"
+          ],
+          "lignes_par_annee": {
+            "2001": 85,
+            "2002": 107,
+            "2003": 105,
+            "2004": 154,
+            "2005": 152,
+            "2006": 161,
+            "2007": 267,
+            "2008": 268,
+            "2009": 269,
+            "2010": 279,
+            "2011": 206,
+            "2012": 201,
+            "2013": 205,
+            "2014": 177,
+            "2015": 196,
+            "2016": 171,
+            "2017": 199,
+            "2018": 181,
+            "2019": 150,
+            "2020": 123,
+            "2021": 144,
+            "2022": 130,
+            "2023": 143,
+            "2024": 100,
+            "2025": 120
+          },
+          "total_par_annee": {},
+          "erreur": null,
+          "url": "https://opendata.paris.fr/explore/dataset/logements-sociaux-finances-a-paris/"
+        }
+      ],
+      "non_ingeres": [],
+      "annees_source": [
+        "2001",
+        "2002",
+        "2003",
+        "2004",
+        "2005",
+        "2006",
+        "2007",
+        "2008",
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "annees_site": [
+        "2001",
+        "2002",
+        "2003",
+        "2004",
+        "2005",
+        "2006",
+        "2007",
+        "2008",
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "annees_manquantes": [],
+      "ecarts": [],
+      "note_site": null
+    },
+    {
+      "id": "dette_garantie",
+      "label": "Dette garantie par la Ville",
+      "jeux": [
+        {
+          "dataset": "dette-garantie",
+          "titre": "Dette garantie",
+          "lignes_catalogue": 147071,
+          "derniere_maj": "2026-07-01T08:50:43+00:00",
+          "ingere": true,
+          "champ_annee": "annee_de_publication",
+          "champ_montant": "capital_restant_du_au_31_12_de_l_annee_de_publication",
+          "annees": [
+            "2007",
+            "2008",
+            "2009",
+            "2010",
+            "2011",
+            "2012",
+            "2013",
+            "2014",
+            "2015",
+            "2016",
+            "2017",
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025"
+          ],
+          "lignes_par_annee": {
+            "2007": 5596,
+            "2008": 5227,
+            "2009": 5596,
+            "2010": 6093,
+            "2011": 6556,
+            "2012": 6585,
+            "2013": 6921,
+            "2014": 7244,
+            "2015": 7597,
+            "2016": 7945,
+            "2017": 8218,
+            "2018": 8229,
+            "2019": 8110,
+            "2020": 8178,
+            "2021": 8824,
+            "2022": 9362,
+            "2023": 10268,
+            "2024": 10063,
+            "2025": 10459
+          },
+          "total_par_annee": {
+            "2007": 4607457172.07,
+            "2008": 4847137093.36,
+            "2009": 6120724988.53,
+            "2010": 6660839184.82,
+            "2011": 7461443213.0,
+            "2012": 8009114814.36,
+            "2013": 8456541705.34,
+            "2014": 8928072036.84,
+            "2015": 9039736736.89,
+            "2016": 9329659485.33,
+            "2017": 9760667131.47,
+            "2018": 10004050015.8,
+            "2019": 10149225220.85,
+            "2020": 10523021735.57,
+            "2021": 11238727053.87,
+            "2022": 11409948307.76,
+            "2023": 12310371784.41,
+            "2024": 12280381569.72,
+            "2025": 12971193433.7
+          },
+          "erreur": null,
+          "url": "https://opendata.paris.fr/explore/dataset/dette-garantie/"
+        }
+      ],
+      "non_ingeres": [],
+      "annees_source": [
+        "2007",
+        "2008",
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "annees_site": [
+        "2007",
+        "2008",
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "annees_manquantes": [],
+      "ecarts": [],
+      "note_site": null
+    },
+    {
+      "id": "bilan",
+      "label": "Bilan comptable",
+      "jeux": [
+        {
+          "dataset": "bilan-comptable",
+          "titre": "Bilan Comptable - Détaillé",
+          "lignes_catalogue": 506,
+          "derniere_maj": "2024-07-05T08:19:44+00:00",
+          "ingere": true,
+          "champ_annee": "exercice_comptable",
+          "champ_montant": "net",
+          "annees": [
+            "2016",
+            "2017",
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "2024"
+          ],
+          "lignes_par_annee": {
+            "2016": 71,
+            "2017": 71,
+            "2018": 52,
+            "2019": 52,
+            "2020": 52,
+            "2021": 52,
+            "2022": 52,
+            "2023": 52,
+            "2024": 52
+          },
+          "total_par_annee": {
+            "2016": 56099090269.7,
+            "2017": 28775510068.97,
+            "2018": 30255733820.7,
+            "2019": 79134598937.59,
+            "2020": 82826597525.2,
+            "2021": 90756181786.54,
+            "2022": 92209162976.04,
+            "2023": 94102452528.76,
+            "2024": 96140846279.48
+          },
+          "erreur": null,
+          "url": "https://opendata.paris.fr/explore/dataset/bilan-comptable/"
+        }
+      ],
+      "non_ingeres": [],
+      "annees_source": [
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "annees_site": [
+        "2016",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "annees_manquantes": [
+        "2017"
+      ],
+      "ecarts": [],
+      "note_site": null
     }
-   ],
-   "non_ingeres": [
-    "bugdet-votes-principaux",
-    "bugdet-votes-principaux_2018_m57_ville_dpt"
-   ],
-   "annees_source": [
-    "2009",
-    "2010",
-    "2011",
-    "2012",
-    "2013",
-    "2014",
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021"
-   ],
-   "annees_site": [
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "2026"
-   ],
-   "annees_manquantes": [
-    "2009",
-    "2010",
-    "2011",
-    "2012",
-    "2013",
-    "2014",
-    "2015",
-    "2016",
-    "2017",
-    "2018"
-   ],
-   "ecarts": [],
-   "note_site": null
-  },
-  {
-   "id": "ap_execute",
-   "label": "Investissement — autorisations de programme (exécuté)",
-   "jeux": [
+  ],
+  "constats": [
     {
-     "dataset": "comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de",
-     "titre": "Comptes Administratifs - Autorisations de Programmes à partir de 2018 (M57 Ville-Département)",
-     "lignes_catalogue": 7466,
-     "derniere_maj": "2019-11-28T18:12:19.432000+00:00",
-     "ingere": true,
-     "champ_annee": "exercice_comptable",
-     "champ_montant": "mandate_titre_apres_regul",
-     "annees": [
-      "2018",
-      "2019",
-      "2020",
-      "2021",
-      "2022"
-     ],
-     "lignes_par_annee": {
-      "2018": 2453,
-      "2019": 1977,
-      "2020": 1355,
-      "2021": 894,
-      "2022": 485
-     },
-     "total_par_annee": {
-      "2018": 688359054.47,
-      "2019": 557056394.73,
-      "2020": 318743069.77,
-      "2021": 247494162.91,
-      "2022": 156916698.85
-     },
-     "erreur": null,
-     "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/"
+      "gravite": "avertissement",
+      "cote": "ville",
+      "famille": "ap_execute",
+      "code": "JEU_ABANDONNE",
+      "message": "comptes-administratifs-autorisations-de-programmes-ap-ville-departement : dernier exercice 2017, dernière mise à jour déclarée le 2019-11-28 — les deux concordent, le jeu n'est plus alimenté"
     },
     {
-     "dataset": "comptes-administratifs-autorisations-de-programmes-ap-ville-departement",
-     "titre": "Comptes Administratifs - Autorisations de Programmes 2009 - 2017 (M14-M52 Ville-Département)",
-     "lignes_catalogue": 27927,
-     "derniere_maj": "2019-11-28T15:44:25.100000+00:00",
-     "ingere": true,
-     "champ_annee": "exercice_comptable",
-     "champ_montant": "mandate_titre_apres_regul",
-     "annees": [
-      "2009",
-      "2010",
-      "2011",
-      "2012",
-      "2013",
-      "2014",
-      "2015",
-      "2016",
-      "2017"
-     ],
-     "lignes_par_annee": {
-      "2009": 2760,
-      "2010": 2666,
-      "2011": 2611,
-      "2012": 2698,
-      "2013": 2679,
-      "2014": 2583,
-      "2015": 2720,
-      "2016": 3268,
-      "2017": 3430
-     },
-     "total_par_annee": {
-      "2009": 1692587739.29,
-      "2010": 1536394349.26,
-      "2011": 1707442718.12,
-      "2012": 1666194333.18,
-      "2013": 1835647160.1,
-      "2014": 1767945953.92,
-      "2015": 1369441833.78,
-      "2016": 1650974422.1,
-      "2017": 1208872017.07
-     },
-     "erreur": null,
-     "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+      "gravite": "avertissement",
+      "cote": "ville",
+      "famille": "ap_execute",
+      "code": "SOURCE_GELEE",
+      "message": "dernier exercice publié 2022, soit 4 ans de retard sur 2026 : la Ville a cessé d'alimenter la série"
+    },
+    {
+      "gravite": "avertissement",
+      "cote": "ville",
+      "famille": "budget_execute",
+      "code": "JEU_ABANDONNE",
+      "message": "comptes-administratifs-principaux-2018-m57-ville-departement : dernier exercice 2018, dernière mise à jour déclarée le 2019-11-28 — les deux concordent, le jeu n'est plus alimenté"
+    },
+    {
+      "gravite": "avertissement",
+      "cote": "ville",
+      "famille": "budget_execute",
+      "code": "JEU_ABANDONNE",
+      "message": "comptes-administratifs-principaux-ville-departement : dernier exercice 2017, dernière mise à jour déclarée le 2019-11-28 — les deux concordent, le jeu n'est plus alimenté"
+    },
+    {
+      "gravite": "avertissement",
+      "cote": "ville",
+      "famille": "budget_vote",
+      "code": "ANNEE_PARTIELLE_SOURCE",
+      "message": "budgets-votes-principaux-a-partir-de-2019-m57-ville-departement : l'exercice 2021 ne compte que 460 lignes contre 4029 en année pleine (11 %) — dépôt interrompu, l'exercice ne peut pas être présenté comme complet"
+    },
+    {
+      "gravite": "avertissement",
+      "cote": "ville",
+      "famille": "budget_vote",
+      "code": "JEU_ABANDONNE",
+      "message": "bugdet-votes-principaux : dernier exercice 2017, dernière mise à jour déclarée le 2019-11-28 — les deux concordent, le jeu n'est plus alimenté"
+    },
+    {
+      "gravite": "avertissement",
+      "cote": "ville",
+      "famille": "budget_vote",
+      "code": "JEU_ABANDONNE",
+      "message": "bugdet-votes-principaux_2018_m57_ville_dpt : dernier exercice 2018, dernière mise à jour déclarée le 2019-11-28 — les deux concordent, le jeu n'est plus alimenté"
+    },
+    {
+      "gravite": "avertissement",
+      "cote": "ville",
+      "famille": "budget_vote",
+      "code": "SOURCE_GELEE",
+      "message": "dernier exercice publié 2021, soit 5 ans de retard sur 2026 : la Ville a cessé d'alimenter la série"
+    },
+    {
+      "gravite": "avertissement",
+      "cote": "ville",
+      "famille": "investissements_carte",
+      "code": "SOURCE_GELEE",
+      "message": "dernier exercice publié 2022, soit 4 ans de retard sur 2026 : la Ville a cessé d'alimenter la série"
+    },
+    {
+      "gravite": "avertissement",
+      "cote": "ville",
+      "famille": "subventions",
+      "code": "JEU_ABANDONNE",
+      "message": "subventions-versees : dernier exercice 2017, dernière mise à jour déclarée le 2019-12-19 — les deux concordent, le jeu n'est plus alimenté"
+    },
+    {
+      "gravite": "info",
+      "cote": "nous",
+      "famille": "bilan",
+      "code": "ECART_DOCUMENTE",
+      "message": "la Ville publie 2016→2024, le site sert 2016→2024 : 1 exercice(s) absent(s) (2017) — L'exercice 2017 manque parce que la Ville a publié un actif sans aucun passif cette année-là (28 lignes de passif, zéro valeur dans `brut` comme dans `net`). Un bilan sans passif n'est pas un bilan."
+    },
+    {
+      "gravite": "info",
+      "cote": "nous",
+      "famille": "budget_execute",
+      "code": "SERIE_COUPEE_DOCUMENTEE",
+      "message": "« Comptes Administratifs - Budgets Principaux 2018 (M57 Ville-département) » (comptes-administratifs-principaux-2018-m57-ville-departement) est un autre morceau d'une série qu'on ingère déjà, et il n'est pas ingéré : 4581 lignes, 21560 M€, exercices 2018→2018",
+      "dataset": "comptes-administratifs-principaux-2018-m57-ville-departement",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-principaux-2018-m57-ville-departement/"
+    },
+    {
+      "gravite": "info",
+      "cote": "nous",
+      "famille": "budget_execute",
+      "code": "SERIE_COUPEE_DOCUMENTEE",
+      "message": "« Comptes Administratifs - Budgets Principaux 2009 - 2017 (M14-M52 Ville-département) » (comptes-administratifs-principaux-ville-departement) est un autre morceau d'une série qu'on ingère déjà, et il n'est pas ingéré : 30899 lignes, 88835 M€, exercices 2009→2017",
+      "dataset": "comptes-administratifs-principaux-ville-departement",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-principaux-ville-departement/"
+    },
+    {
+      "gravite": "info",
+      "cote": "nous",
+      "famille": "budget_execute",
+      "code": "ECART_DOCUMENTE",
+      "message": "la Ville publie 2009→2024, le site sert 2019→2024 : 10 exercice(s) absent(s) (2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018) — Les exercices 2009-2018 existent (deux jeux, 35 480 lignes, 110 Md€) et NE SONT PAS ingérés, volontairement. Les deux plans comptables ne partagent qu'UNE valeur de chapitre sur 100 côté M14 et 25 côté M57, et les libellés de fonction communs le sont par coïncidence (« APA versée à l'établissement » contre « APA versé bénéf établisem »). Les empiler donnerait un graphique dont les catégories ne veulent pas dire la même chose avant et après 2019 : faux et vraisemblable, ce qui est pire que manquant. Il faut une table de correspondance M14 → catégories du site, écrite et relue. Mesuré le 2026-09-10."
+    },
+    {
+      "gravite": "info",
+      "cote": "nous",
+      "famille": "budget_vote",
+      "code": "SERIE_COUPEE_DOCUMENTEE",
+      "message": "« Budgets Votés - Budget Principal 2009 - 2017 (M14-M52 Ville-département) » (bugdet-votes-principaux) est un autre morceau d'une série qu'on ingère déjà, et il n'est pas ingéré : 28075 lignes, exercices 2009→2017",
+      "dataset": "bugdet-votes-principaux",
+      "url": "https://opendata.paris.fr/explore/dataset/bugdet-votes-principaux/"
+    },
+    {
+      "gravite": "info",
+      "cote": "nous",
+      "famille": "budget_vote",
+      "code": "SERIE_COUPEE_DOCUMENTEE",
+      "message": "« Budgets Votés - Budget Principal 2018 (M57 Ville-département) » (bugdet-votes-principaux_2018_m57_ville_dpt) est un autre morceau d'une série qu'on ingère déjà, et il n'est pas ingéré : 3715 lignes, exercices 2018→2018",
+      "dataset": "bugdet-votes-principaux_2018_m57_ville_dpt",
+      "url": "https://opendata.paris.fr/explore/dataset/bugdet-votes-principaux_2018_m57_ville_dpt/"
+    },
+    {
+      "gravite": "info",
+      "cote": "nous",
+      "famille": "budget_vote",
+      "code": "ECART_DOCUMENTE",
+      "message": "la Ville publie 2009→2021, le site sert 2019→2026 : 10 exercice(s) absent(s) (2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018) — Même obstacle que le budget exécuté : nomenclatures M14 et M57 non compatibles, une table de correspondance est nécessaire."
+    },
+    {
+      "gravite": "info",
+      "cote": "nous",
+      "famille": "marches",
+      "code": "PERIMETRE_NON_ALIGNE",
+      "message": "2022 : source 3824.6 M€ vs site 3934.6 M€ (2.9 % d'écart) — périmètres différents : l'export fusionne l'open data et les DECP nationales : le total dépasse la seule source ODS"
+    },
+    {
+      "gravite": "info",
+      "cote": "nous",
+      "famille": "marches",
+      "code": "PERIMETRE_NON_ALIGNE",
+      "message": "2024 : source 2495.7 M€ vs site 3219.8 M€ (29.0 % d'écart) — périmètres différents : l'export fusionne l'open data et les DECP nationales : le total dépasse la seule source ODS"
+    },
+    {
+      "gravite": "info",
+      "cote": "ville",
+      "famille": "ap_execute",
+      "code": "METADONNEE_INCOHERENTE",
+      "message": "comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de : le jeu contient l'exercice 2022 alors que le portail annonce une dernière mise à jour au 2019-11-28 — la date de fraîcheur affichée aux réutilisateurs est fausse"
+    },
+    {
+      "gravite": "info",
+      "cote": "ville",
+      "famille": "budget_execute",
+      "code": "COLONNE_ABIMEE",
+      "message": "comptes-administratifs-principaux-2018-m57-ville-departement : la colonne « mandate_titre_x000d_apres_regul » contient un retour chariot Excel (_x000d_), le même champ s'appelle autrement dans l'autre moitié de la série"
+    },
+    {
+      "gravite": "info",
+      "cote": "ville",
+      "famille": "budget_vote",
+      "code": "IDENTIFIANT_FAUTIF",
+      "message": "identifiant de jeu mal orthographié à la source : « bugdet-votes-principaux » — il ne peut pas être deviné, seul le catalogue le donne"
+    },
+    {
+      "gravite": "info",
+      "cote": "ville",
+      "famille": "budget_vote",
+      "code": "IDENTIFIANT_FAUTIF",
+      "message": "identifiant de jeu mal orthographié à la source : « bugdet-votes-principaux_2018_m57_ville_dpt » — il ne peut pas être deviné, seul le catalogue le donne"
+    },
+    {
+      "gravite": "info",
+      "cote": "ville",
+      "famille": "budget_vote",
+      "code": "METADONNEE_INCOHERENTE",
+      "message": "budgets-votes-principaux-a-partir-de-2019-m57-ville-departement : le jeu contient l'exercice 2021 alors que le portail annonce une dernière mise à jour au 2020-11-25 — la date de fraîcheur affichée aux réutilisateurs est fausse"
+    },
+    {
+      "gravite": "info",
+      "cote": "ville",
+      "famille": "investissements_carte",
+      "code": "METADONNEE_INCOHERENTE",
+      "message": "comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de : le jeu contient l'exercice 2022 alors que le portail annonce une dernière mise à jour au 2019-11-28 — la date de fraîcheur affichée aux réutilisateurs est fausse"
     }
-   ],
-   "non_ingeres": [],
-   "annees_source": [
-    "2009",
-    "2010",
-    "2011",
-    "2012",
-    "2013",
-    "2014",
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022"
-   ],
-   "annees_site": [
-    "2009",
-    "2010",
-    "2011",
-    "2012",
-    "2013",
-    "2014",
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022"
-   ],
-   "annees_manquantes": [],
-   "ecarts": [
-    {
-     "annee": "2009",
-     "source": 1692587739.29,
-     "site": 1692587739.29,
-     "ecart_pct": 0.0,
-     "perimetre": "exact"
-    },
-    {
-     "annee": "2010",
-     "source": 1536394349.26,
-     "site": 1536394349.26,
-     "ecart_pct": 0.0,
-     "perimetre": "exact"
-    },
-    {
-     "annee": "2011",
-     "source": 1707442718.12,
-     "site": 1707442718.12,
-     "ecart_pct": 0.0,
-     "perimetre": "exact"
-    },
-    {
-     "annee": "2012",
-     "source": 1666194333.18,
-     "site": 1666194333.18,
-     "ecart_pct": 0.0,
-     "perimetre": "exact"
-    },
-    {
-     "annee": "2013",
-     "source": 1835647160.1,
-     "site": 1835647160.1,
-     "ecart_pct": 0.0,
-     "perimetre": "exact"
-    },
-    {
-     "annee": "2014",
-     "source": 1767945953.92,
-     "site": 1767945953.92,
-     "ecart_pct": 0.0,
-     "perimetre": "exact"
-    },
-    {
-     "annee": "2015",
-     "source": 1369441833.78,
-     "site": 1369441833.78,
-     "ecart_pct": 0.0,
-     "perimetre": "exact"
-    },
-    {
-     "annee": "2016",
-     "source": 1650974422.1,
-     "site": 1650974422.1,
-     "ecart_pct": 0.0,
-     "perimetre": "exact"
-    },
-    {
-     "annee": "2017",
-     "source": 1208872017.07,
-     "site": 1208872017.07,
-     "ecart_pct": 0.0,
-     "perimetre": "exact"
-    },
-    {
-     "annee": "2018",
-     "source": 688359054.47,
-     "site": 688359054.47,
-     "ecart_pct": 0.0,
-     "perimetre": "exact"
-    },
-    {
-     "annee": "2019",
-     "source": 557056394.73,
-     "site": 557056394.73,
-     "ecart_pct": 0.0,
-     "perimetre": "exact"
-    },
-    {
-     "annee": "2020",
-     "source": 318743069.77,
-     "site": 318743069.77,
-     "ecart_pct": 0.0,
-     "perimetre": "exact"
-    },
-    {
-     "annee": "2021",
-     "source": 247494162.91,
-     "site": 247494162.91,
-     "ecart_pct": 0.0,
-     "perimetre": "exact"
-    },
-    {
-     "annee": "2022",
-     "source": 156916698.85,
-     "site": 156916698.85,
-     "ecart_pct": 0.0,
-     "perimetre": "exact"
-    }
-   ],
-   "note_site": null
-  },
-  {
-   "id": "investissements_carte",
-   "label": "Investissement — carte des projets localisés",
-   "jeux": [
-    {
-     "dataset": "comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de",
-     "titre": "Comptes Administratifs - Autorisations de Programmes à partir de 2018 (M57 Ville-Département)",
-     "lignes_catalogue": 7466,
-     "derniere_maj": "2019-11-28T18:12:19.432000+00:00",
-     "ingere": true,
-     "champ_annee": "exercice_comptable",
-     "champ_montant": "mandate_titre_apres_regul",
-     "annees": [
-      "2018",
-      "2019",
-      "2020",
-      "2021",
-      "2022"
-     ],
-     "lignes_par_annee": {
-      "2018": 2567,
-      "2019": 2044,
-      "2020": 1398,
-      "2021": 941,
-      "2022": 516
-     },
-     "total_par_annee": {
-      "2018": 788365575.86,
-      "2019": 673982349.18,
-      "2020": 364557638.3,
-      "2021": 277248047.74,
-      "2022": 173975334.87
-     },
-     "erreur": null,
-     "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/"
-    }
-   ],
-   "non_ingeres": [],
-   "annees_source": [
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022"
-   ],
-   "annees_site": [
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024"
-   ],
-   "annees_manquantes": [],
-   "ecarts": [],
-   "note_site": null
-  },
-  {
-   "id": "subventions",
-   "label": "Subventions versées (annexe du compte administratif)",
-   "jeux": [
-    {
-     "dataset": "subventions-versees",
-     "titre": "Subventions versées - Annexe Compte administratif 2013-2017",
-     "lignes_catalogue": 39431,
-     "derniere_maj": "2019-12-19T07:49:29.649000+00:00",
-     "ingere": true,
-     "champ_annee": "publication",
-     "champ_montant": "montant_de_la_subvention",
-     "annees": [
-      "2013",
-      "2014",
-      "2015",
-      "2016",
-      "2017"
-     ],
-     "lignes_par_annee": {
-      "2013": 6473,
-      "2014": 6921,
-      "2015": 7389,
-      "2016": 7971,
-      "2017": 10677
-     },
-     "total_par_annee": {
-      "2013": 1265816522.23,
-      "2014": 1362113353.96,
-      "2015": 1149891407.56,
-      "2016": 1260982793.39,
-      "2017": 1150092852.03
-     },
-     "erreur": "filtre inapplicable sur ce jeu, total brut",
-     "url": "https://opendata.paris.fr/explore/dataset/subventions-versees/"
-    },
-    {
-     "dataset": "subventions-versees-annexe-compte-administratif-a-partir-de-2018",
-     "titre": "Subventions versées - Annexe Compte administratif à partir de 2018",
-     "lignes_catalogue": 47381,
-     "derniere_maj": "2025-08-26T07:41:30+00:00",
-     "ingere": true,
-     "champ_annee": "publication",
-     "champ_montant": "montant_de_la_subvention",
-     "annees": [
-      "2018",
-      "2019",
-      "2022",
-      "2023",
-      "2024"
-     ],
-     "lignes_par_annee": {
-      "2022": 5336,
-      "2023": 5167,
-      "2024": 5977,
-      "2018": 10266,
-      "2019": 12093
-     },
-     "total_par_annee": {
-      "2022": 1167565895.0,
-      "2023": 1201008578.0,
-      "2024": 1353488225.0,
-      "2018": 1241346409.0,
-      "2019": 1304037463.0
-     },
-     "erreur": null,
-     "url": "https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/"
-    }
-   ],
-   "non_ingeres": [],
-   "annees_source": [
-    "2013",
-    "2014",
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2022",
-    "2023",
-    "2024"
-   ],
-   "annees_site": [
-    "2013",
-    "2014",
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024"
-   ],
-   "annees_manquantes": [],
-   "ecarts": [
-    {
-     "annee": "2013",
-     "source": 1265816522.23,
-     "site": 1265816522.23,
-     "ecart_pct": 0.0,
-     "perimetre": "exact"
-    },
-    {
-     "annee": "2014",
-     "source": 1362113353.96,
-     "site": 1362113353.96,
-     "ecart_pct": 0.0,
-     "perimetre": "exact"
-    },
-    {
-     "annee": "2015",
-     "source": 1149891407.56,
-     "site": 1149891407.56,
-     "ecart_pct": 0.0,
-     "perimetre": "exact"
-    },
-    {
-     "annee": "2016",
-     "source": 1260982793.39,
-     "site": 1260982793.39,
-     "ecart_pct": 0.0,
-     "perimetre": "exact"
-    },
-    {
-     "annee": "2017",
-     "source": 1150092852.03,
-     "site": 1150092852.03,
-     "ecart_pct": 0.0,
-     "perimetre": "exact"
-    },
-    {
-     "annee": "2018",
-     "source": 1241346409.0,
-     "site": 1241346409.0,
-     "ecart_pct": 0.0,
-     "perimetre": "exact"
-    },
-    {
-     "annee": "2019",
-     "source": 1304037463.0,
-     "site": 1304037463.0,
-     "ecart_pct": 0.0,
-     "perimetre": "exact"
-    },
-    {
-     "annee": "2022",
-     "source": 1167565895.0,
-     "site": 1167565895.0,
-     "ecart_pct": 0.0,
-     "perimetre": "exact"
-    },
-    {
-     "annee": "2023",
-     "source": 1201008578.0,
-     "site": 1201008578.0,
-     "ecart_pct": 0.0,
-     "perimetre": "exact"
-    },
-    {
-     "annee": "2024",
-     "source": 1353488225.0,
-     "site": 1353488225.0,
-     "ecart_pct": 0.0,
-     "perimetre": "exact"
-    }
-   ],
-   "note_site": null
-  },
-  {
-   "id": "marches",
-   "label": "Marchés publics de la collectivité parisienne",
-   "jeux": [
-    {
-     "dataset": "liste-des-marches-de-la-collectivite-parisienne",
-     "titre": "Marchés publics - Liste des marchés de la collectivité parisienne",
-     "lignes_catalogue": 17639,
-     "derniere_maj": "2024-05-02T12:15:26+00:00",
-     "ingere": true,
-     "champ_annee": "annee_de_notification",
-     "champ_montant": "montant_max",
-     "annees": [
-      "2013",
-      "2014",
-      "2015",
-      "2016",
-      "2017",
-      "2018",
-      "2019",
-      "2020",
-      "2021",
-      "2022",
-      "2023",
-      "2024"
-     ],
-     "lignes_par_annee": {
-      "2013": 1715,
-      "2014": 1483,
-      "2015": 1556,
-      "2016": 1602,
-      "2017": 1698,
-      "2018": 1458,
-      "2019": 1338,
-      "2020": 1196,
-      "2021": 1570,
-      "2022": 1281,
-      "2023": 1335,
-      "2024": 1407
-     },
-     "total_par_annee": {
-      "2013": 1903162597.68,
-      "2014": 1530498987.85,
-      "2015": 1538504362.7,
-      "2016": 1917172793.52,
-      "2017": 3465550059.51,
-      "2018": 2836151932.31,
-      "2019": 2302969683.3,
-      "2020": 3282280032.53,
-      "2021": 5483477436.49,
-      "2022": 3824590460.84,
-      "2023": 2603719521.33,
-      "2024": 2495665169.67
-     },
-     "erreur": null,
-     "url": "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/"
-    }
-   ],
-   "non_ingeres": [],
-   "annees_source": [
-    "2013",
-    "2014",
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024"
-   ],
-   "annees_site": [
-    "2013",
-    "2014",
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "2026"
-   ],
-   "annees_manquantes": [],
-   "ecarts": [
-    {
-     "annee": "2013",
-     "source": 1903162597.68,
-     "site": 1901057959.87,
-     "ecart_pct": 0.11,
-     "perimetre": "indicatif"
-    },
-    {
-     "annee": "2014",
-     "source": 1530498987.85,
-     "site": 1530498987.85,
-     "ecart_pct": 0.0,
-     "perimetre": "indicatif"
-    },
-    {
-     "annee": "2015",
-     "source": 1538504362.7,
-     "site": 1538504362.7,
-     "ecart_pct": 0.0,
-     "perimetre": "indicatif"
-    },
-    {
-     "annee": "2016",
-     "source": 1917172793.52,
-     "site": 1916840484.3,
-     "ecart_pct": 0.02,
-     "perimetre": "indicatif"
-    },
-    {
-     "annee": "2017",
-     "source": 3465550059.51,
-     "site": 3465550059.51,
-     "ecart_pct": 0.0,
-     "perimetre": "indicatif"
-    },
-    {
-     "annee": "2018",
-     "source": 2836151932.31,
-     "site": 2836151932.31,
-     "ecart_pct": 0.0,
-     "perimetre": "indicatif"
-    },
-    {
-     "annee": "2019",
-     "source": 2302969683.3,
-     "site": 2313239644.3,
-     "ecart_pct": 0.45,
-     "perimetre": "indicatif"
-    },
-    {
-     "annee": "2020",
-     "source": 3282280032.53,
-     "site": 3292522877.92,
-     "ecart_pct": 0.31,
-     "perimetre": "indicatif"
-    },
-    {
-     "annee": "2021",
-     "source": 5483477436.49,
-     "site": 5483477436.49,
-     "ecart_pct": 0.0,
-     "perimetre": "indicatif"
-    },
-    {
-     "annee": "2022",
-     "source": 3824590460.84,
-     "site": 3934593902.84,
-     "ecart_pct": 2.88,
-     "perimetre": "indicatif"
-    },
-    {
-     "annee": "2023",
-     "source": 2603719521.33,
-     "site": 2606711521.33,
-     "ecart_pct": 0.11,
-     "perimetre": "indicatif"
-    },
-    {
-     "annee": "2024",
-     "source": 2495665169.67,
-     "site": 3219823753.23,
-     "ecart_pct": 29.02,
-     "perimetre": "indicatif"
-    }
-   ],
-   "note_site": null
-  },
-  {
-   "id": "logements_sociaux",
-   "label": "Logements sociaux financés",
-   "jeux": [
-    {
-     "dataset": "logements-sociaux-finances-a-paris",
-     "titre": "Programmes de logements sociaux financés à Paris",
-     "lignes_catalogue": 4293,
-     "derniere_maj": "2026-09-08T09:08:11+00:00",
-     "ingere": true,
-     "champ_annee": "annee",
-     "champ_montant": null,
-     "annees": [
-      "2001",
-      "2002",
-      "2003",
-      "2004",
-      "2005",
-      "2006",
-      "2007",
-      "2008",
-      "2009",
-      "2010",
-      "2011",
-      "2012",
-      "2013",
-      "2014",
-      "2015",
-      "2016",
-      "2017",
-      "2018",
-      "2019",
-      "2020",
-      "2021",
-      "2022",
-      "2023",
-      "2024",
-      "2025"
-     ],
-     "lignes_par_annee": {
-      "2001": 85,
-      "2002": 107,
-      "2003": 105,
-      "2004": 154,
-      "2005": 152,
-      "2006": 161,
-      "2007": 267,
-      "2008": 268,
-      "2009": 269,
-      "2010": 279,
-      "2011": 206,
-      "2012": 201,
-      "2013": 205,
-      "2014": 177,
-      "2015": 196,
-      "2016": 171,
-      "2017": 199,
-      "2018": 181,
-      "2019": 150,
-      "2020": 123,
-      "2021": 144,
-      "2022": 130,
-      "2023": 143,
-      "2024": 100,
-      "2025": 120
-     },
-     "total_par_annee": {},
-     "erreur": null,
-     "url": "https://opendata.paris.fr/explore/dataset/logements-sociaux-finances-a-paris/"
-    }
-   ],
-   "non_ingeres": [],
-   "annees_source": [
-    "2001",
-    "2002",
-    "2003",
-    "2004",
-    "2005",
-    "2006",
-    "2007",
-    "2008",
-    "2009",
-    "2010",
-    "2011",
-    "2012",
-    "2013",
-    "2014",
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025"
-   ],
-   "annees_site": [
-    "2001",
-    "2002",
-    "2003",
-    "2004",
-    "2005",
-    "2006",
-    "2007",
-    "2008",
-    "2009",
-    "2010",
-    "2011",
-    "2012",
-    "2013",
-    "2014",
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025"
-   ],
-   "annees_manquantes": [],
-   "ecarts": [],
-   "note_site": null
-  },
-  {
-   "id": "dette_garantie",
-   "label": "Dette garantie par la Ville",
-   "jeux": [
-    {
-     "dataset": "dette-garantie",
-     "titre": "Dette garantie",
-     "lignes_catalogue": 147071,
-     "derniere_maj": "2026-07-01T08:50:43+00:00",
-     "ingere": true,
-     "champ_annee": "annee_de_publication",
-     "champ_montant": "capital_restant_du_au_31_12_de_l_annee_de_publication",
-     "annees": [
-      "2007",
-      "2008",
-      "2009",
-      "2010",
-      "2011",
-      "2012",
-      "2013",
-      "2014",
-      "2015",
-      "2016",
-      "2017",
-      "2018",
-      "2019",
-      "2020",
-      "2021",
-      "2022",
-      "2023",
-      "2024",
-      "2025"
-     ],
-     "lignes_par_annee": {
-      "2007": 5596,
-      "2008": 5227,
-      "2009": 5596,
-      "2010": 6093,
-      "2011": 6556,
-      "2012": 6585,
-      "2013": 6921,
-      "2014": 7244,
-      "2015": 7597,
-      "2016": 7945,
-      "2017": 8218,
-      "2018": 8229,
-      "2019": 8110,
-      "2020": 8178,
-      "2021": 8824,
-      "2022": 9362,
-      "2023": 10268,
-      "2024": 10063,
-      "2025": 10459
-     },
-     "total_par_annee": {
-      "2007": 4607457172.07,
-      "2008": 4847137093.36,
-      "2009": 6120724988.53,
-      "2010": 6660839184.82,
-      "2011": 7461443213.0,
-      "2012": 8009114814.36,
-      "2013": 8456541705.34,
-      "2014": 8928072036.84,
-      "2015": 9039736736.89,
-      "2016": 9329659485.33,
-      "2017": 9760667131.47,
-      "2018": 10004050015.8,
-      "2019": 10149225220.85,
-      "2020": 10523021735.57,
-      "2021": 11238727053.87,
-      "2022": 11409948307.76,
-      "2023": 12310371784.41,
-      "2024": 12280381569.72,
-      "2025": 12971193433.7
-     },
-     "erreur": null,
-     "url": "https://opendata.paris.fr/explore/dataset/dette-garantie/"
-    }
-   ],
-   "non_ingeres": [],
-   "annees_source": [
-    "2007",
-    "2008",
-    "2009",
-    "2010",
-    "2011",
-    "2012",
-    "2013",
-    "2014",
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025"
-   ],
-   "annees_site": [
-    "2007",
-    "2008",
-    "2009",
-    "2010",
-    "2011",
-    "2012",
-    "2013",
-    "2014",
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025"
-   ],
-   "annees_manquantes": [],
-   "ecarts": [],
-   "note_site": null
-  },
-  {
-   "id": "bilan",
-   "label": "Bilan comptable",
-   "jeux": [
-    {
-     "dataset": "bilan-comptable",
-     "titre": "Bilan Comptable - Détaillé",
-     "lignes_catalogue": 506,
-     "derniere_maj": "2024-07-05T08:19:44+00:00",
-     "ingere": true,
-     "champ_annee": "exercice_comptable",
-     "champ_montant": "net",
-     "annees": [
-      "2016",
-      "2017",
-      "2018",
-      "2019",
-      "2020",
-      "2021",
-      "2022",
-      "2023",
-      "2024"
-     ],
-     "lignes_par_annee": {
-      "2016": 71,
-      "2017": 71,
-      "2018": 52,
-      "2019": 52,
-      "2020": 52,
-      "2021": 52,
-      "2022": 52,
-      "2023": 52,
-      "2024": 52
-     },
-     "total_par_annee": {
-      "2016": 56099090269.7,
-      "2017": 28775510068.97,
-      "2018": 30255733820.7,
-      "2019": 79134598937.59,
-      "2020": 82826597525.2,
-      "2021": 90756181786.54,
-      "2022": 92209162976.04,
-      "2023": 94102452528.76,
-      "2024": 96140846279.48
-     },
-     "erreur": null,
-     "url": "https://opendata.paris.fr/explore/dataset/bilan-comptable/"
-    }
-   ],
-   "non_ingeres": [],
-   "annees_source": [
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024"
-   ],
-   "annees_site": [
-    "2016",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024"
-   ],
-   "annees_manquantes": [
-    "2017"
-   ],
-   "ecarts": [],
-   "note_site": null
+  ],
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- ],
- "constats": [
-  {
-   "gravite": "avertissement",
-   "cote": "ville",
-   "famille": "ap_execute",
-   "code": "JEU_ABANDONNE",
-   "message": "comptes-administratifs-autorisations-de-programmes-ap-ville-departement : dernier exercice 2017, dernière mise à jour déclarée le 2019-11-28 — les deux concordent, le jeu n'est plus alimenté"
-  },
-  {
-   "gravite": "avertissement",
-   "cote": "ville",
-   "famille": "ap_execute",
-   "code": "SOURCE_GELEE",
-   "message": "dernier exercice publié 2022, soit 4 ans de retard sur 2026 : la Ville a cessé d'alimenter la série"
-  },
-  {
-   "gravite": "avertissement",
-   "cote": "ville",
-   "famille": "budget_execute",
-   "code": "JEU_ABANDONNE",
-   "message": "comptes-administratifs-principaux-2018-m57-ville-departement : dernier exercice 2018, dernière mise à jour déclarée le 2019-11-28 — les deux concordent, le jeu n'est plus alimenté"
-  },
-  {
-   "gravite": "avertissement",
-   "cote": "ville",
-   "famille": "budget_execute",
-   "code": "JEU_ABANDONNE",
-   "message": "comptes-administratifs-principaux-ville-departement : dernier exercice 2017, dernière mise à jour déclarée le 2019-11-28 — les deux concordent, le jeu n'est plus alimenté"
-  },
-  {
-   "gravite": "avertissement",
-   "cote": "ville",
-   "famille": "budget_vote",
-   "code": "ANNEE_PARTIELLE_SOURCE",
-   "message": "budgets-votes-principaux-a-partir-de-2019-m57-ville-departement : l'exercice 2021 ne compte que 460 lignes contre 4029 en année pleine (11 %) — dépôt interrompu, l'exercice ne peut pas être présenté comme complet"
-  },
-  {
-   "gravite": "avertissement",
-   "cote": "ville",
-   "famille": "budget_vote",
-   "code": "JEU_ABANDONNE",
-   "message": "bugdet-votes-principaux : dernier exercice 2017, dernière mise à jour déclarée le 2019-11-28 — les deux concordent, le jeu n'est plus alimenté"
-  },
-  {
-   "gravite": "avertissement",
-   "cote": "ville",
-   "famille": "budget_vote",
-   "code": "JEU_ABANDONNE",
-   "message": "bugdet-votes-principaux_2018_m57_ville_dpt : dernier exercice 2018, dernière mise à jour déclarée le 2019-11-28 — les deux concordent, le jeu n'est plus alimenté"
-  },
-  {
-   "gravite": "avertissement",
-   "cote": "ville",
-   "famille": "budget_vote",
-   "code": "SOURCE_GELEE",
-   "message": "dernier exercice publié 2021, soit 5 ans de retard sur 2026 : la Ville a cessé d'alimenter la série"
-  },
-  {
-   "gravite": "avertissement",
-   "cote": "ville",
-   "famille": "investissements_carte",
-   "code": "SOURCE_GELEE",
-   "message": "dernier exercice publié 2022, soit 4 ans de retard sur 2026 : la Ville a cessé d'alimenter la série"
-  },
-  {
-   "gravite": "avertissement",
-   "cote": "ville",
-   "famille": "subventions",
-   "code": "JEU_ABANDONNE",
-   "message": "subventions-versees : dernier exercice 2017, dernière mise à jour déclarée le 2019-12-19 — les deux concordent, le jeu n'est plus alimenté"
-  },
-  {
-   "gravite": "info",
-   "cote": "nous",
-   "famille": "bilan",
-   "code": "ECART_DOCUMENTE",
-   "message": "la Ville publie 2016→2024, le site sert 2016→2024 : 1 exercice(s) absent(s) (2017) — L'exercice 2017 manque parce que la Ville a publié un actif sans aucun passif cette année-là (28 lignes de passif, zéro valeur dans `brut` comme dans `net`). Un bilan sans passif n'est pas un bilan."
-  },
-  {
-   "gravite": "info",
-   "cote": "nous",
-   "famille": "budget_execute",
-   "code": "SERIE_COUPEE_DOCUMENTEE",
-   "message": "« Comptes Administratifs - Budgets Principaux 2018 (M57 Ville-département) » (comptes-administratifs-principaux-2018-m57-ville-departement) est un autre morceau d'une série qu'on ingère déjà, et il n'est pas ingéré : 4581 lignes, 21560 M€, exercices 2018→2018",
-   "dataset": "comptes-administratifs-principaux-2018-m57-ville-departement",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-principaux-2018-m57-ville-departement/"
-  },
-  {
-   "gravite": "info",
-   "cote": "nous",
-   "famille": "budget_execute",
-   "code": "SERIE_COUPEE_DOCUMENTEE",
-   "message": "« Comptes Administratifs - Budgets Principaux 2009 - 2017 (M14-M52 Ville-département) » (comptes-administratifs-principaux-ville-departement) est un autre morceau d'une série qu'on ingère déjà, et il n'est pas ingéré : 30899 lignes, 88835 M€, exercices 2009→2017",
-   "dataset": "comptes-administratifs-principaux-ville-departement",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-principaux-ville-departement/"
-  },
-  {
-   "gravite": "info",
-   "cote": "nous",
-   "famille": "budget_execute",
-   "code": "ECART_DOCUMENTE",
-   "message": "la Ville publie 2009→2024, le site sert 2019→2024 : 10 exercice(s) absent(s) (2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018) — Les exercices 2009-2018 existent (deux jeux, 35 480 lignes, 110 Md€) et NE SONT PAS ingérés, volontairement. Les deux plans comptables ne partagent qu'UNE valeur de chapitre sur 100 côté M14 et 25 côté M57, et les libellés de fonction communs le sont par coïncidence (« APA versée à l'établissement » contre « APA versé bénéf établisem »). Les empiler donnerait un graphique dont les catégories ne veulent pas dire la même chose avant et après 2019 : faux et vraisemblable, ce qui est pire que manquant. Il faut une table de correspondance M14 → catégories du site, écrite et relue. Mesuré le 2026-09-10."
-  },
-  {
-   "gravite": "info",
-   "cote": "nous",
-   "famille": "budget_vote",
-   "code": "SERIE_COUPEE_DOCUMENTEE",
-   "message": "« Budgets Votés - Budget Principal 2009 - 2017 (M14-M52 Ville-département) » (bugdet-votes-principaux) est un autre morceau d'une série qu'on ingère déjà, et il n'est pas ingéré : 28075 lignes, exercices 2009→2017",
-   "dataset": "bugdet-votes-principaux",
-   "url": "https://opendata.paris.fr/explore/dataset/bugdet-votes-principaux/"
-  },
-  {
-   "gravite": "info",
-   "cote": "nous",
-   "famille": "budget_vote",
-   "code": "SERIE_COUPEE_DOCUMENTEE",
-   "message": "« Budgets Votés - Budget Principal 2018 (M57 Ville-département) » (bugdet-votes-principaux_2018_m57_ville_dpt) est un autre morceau d'une série qu'on ingère déjà, et il n'est pas ingéré : 3715 lignes, exercices 2018→2018",
-   "dataset": "bugdet-votes-principaux_2018_m57_ville_dpt",
-   "url": "https://opendata.paris.fr/explore/dataset/bugdet-votes-principaux_2018_m57_ville_dpt/"
-  },
-  {
-   "gravite": "info",
-   "cote": "nous",
-   "famille": "budget_vote",
-   "code": "ECART_DOCUMENTE",
-   "message": "la Ville publie 2009→2021, le site sert 2019→2026 : 10 exercice(s) absent(s) (2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018) — Même obstacle que le budget exécuté : nomenclatures M14 et M57 non compatibles, une table de correspondance est nécessaire."
-  },
-  {
-   "gravite": "info",
-   "cote": "nous",
-   "famille": "marches",
-   "code": "PERIMETRE_NON_ALIGNE",
-   "message": "2022 : source 3824.6 M€ vs site 3934.6 M€ (2.9 % d'écart) — périmètres différents : l'export fusionne l'open data et les DECP nationales : le total dépasse la seule source ODS"
-  },
-  {
-   "gravite": "info",
-   "cote": "nous",
-   "famille": "marches",
-   "code": "PERIMETRE_NON_ALIGNE",
-   "message": "2024 : source 2495.7 M€ vs site 3219.8 M€ (29.0 % d'écart) — périmètres différents : l'export fusionne l'open data et les DECP nationales : le total dépasse la seule source ODS"
-  },
-  {
-   "gravite": "info",
-   "cote": "ville",
-   "famille": "ap_execute",
-   "code": "METADONNEE_INCOHERENTE",
-   "message": "comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de : le jeu contient l'exercice 2022 alors que le portail annonce une dernière mise à jour au 2019-11-28 — la date de fraîcheur affichée aux réutilisateurs est fausse"
-  },
-  {
-   "gravite": "info",
-   "cote": "ville",
-   "famille": "budget_execute",
-   "code": "COLONNE_ABIMEE",
-   "message": "comptes-administratifs-principaux-2018-m57-ville-departement : la colonne « mandate_titre_x000d_apres_regul » contient un retour chariot Excel (_x000d_), le même champ s'appelle autrement dans l'autre moitié de la série"
-  },
-  {
-   "gravite": "info",
-   "cote": "ville",
-   "famille": "budget_vote",
-   "code": "IDENTIFIANT_FAUTIF",
-   "message": "identifiant de jeu mal orthographié à la source : « bugdet-votes-principaux » — il ne peut pas être deviné, seul le catalogue le donne"
-  },
-  {
-   "gravite": "info",
-   "cote": "ville",
-   "famille": "budget_vote",
-   "code": "IDENTIFIANT_FAUTIF",
-   "message": "identifiant de jeu mal orthographié à la source : « bugdet-votes-principaux_2018_m57_ville_dpt » — il ne peut pas être deviné, seul le catalogue le donne"
-  },
-  {
-   "gravite": "info",
-   "cote": "ville",
-   "famille": "budget_vote",
-   "code": "METADONNEE_INCOHERENTE",
-   "message": "budgets-votes-principaux-a-partir-de-2019-m57-ville-departement : le jeu contient l'exercice 2021 alors que le portail annonce une dernière mise à jour au 2020-11-25 — la date de fraîcheur affichée aux réutilisateurs est fausse"
-  },
-  {
-   "gravite": "info",
-   "cote": "ville",
-   "famille": "investissements_carte",
-   "code": "METADONNEE_INCOHERENTE",
-   "message": "comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de : le jeu contient l'exercice 2022 alors que le portail annonce une dernière mise à jour au 2019-11-28 — la date de fraîcheur affichée aux réutilisateurs est fausse"
-  }
- ]
 }

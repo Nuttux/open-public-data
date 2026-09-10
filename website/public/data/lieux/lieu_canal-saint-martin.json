@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:35:00.396774+00:00",
+  "generated_at": "2026-09-10T20:56:10.126711+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "canal-saint-martin",
   "name": "Canal Saint-Martin",
@@ -16,6 +16,7 @@
     "url": "https://fr.wikipedia.org/wiki/Canal_Saint-Martin",
     "source": "Wikipédia"
   },
+  "seuil_commun": 2013,
   "wiki": {
     "extract": "Le canal Saint-Martin, long de 4,55 km, est situé pour l'essentiel dans les 10e et 11e arrondissements de Paris. Il relie le bassin de la Villette — et au-delà le canal de l'Ourcq — au port de l'Arsenal qui communique avec la Seine. C'est un canal de petit gabarit destiné, à l'origine, à l'adduction d'eau potable dans la capitale. Inauguré en 1825, il comporte neuf écluses et deux ponts tournants pour une dénivellation totale de 25 m.",
     "url": "https://fr.wikipedia.org/wiki/Canal_Saint-Martin",

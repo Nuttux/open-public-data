@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:56:10.126711+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "parc-floral-de-paris",
   "name": "Parc floral de Paris",
@@ -16,6 +16,7 @@
     "url": "https://commons.wikimedia.org/wiki/File:Lilium_regale_%27Album%27,_Parc_Floral_de_Paris,_France_-_20100704.jpg",
     "source": "Wikimedia Commons"
   },
+  "seuil_commun": 2013,
   "wiki": {
     "extract": "Le parc floral de Paris est un parc urbain et un jardin botanique situé dans le bois de Vincennes, dans le 12e arrondissement de Paris (France). Il est l'un des quatre pôles du Jardin botanique de la ville de Paris avec l'arboretum de l'école Du Breuil, lui aussi dans le bois de Vincennes, ainsi que le parc de Bagatelle et le jardin des serres d'Auteuil, tous deux dans le bois de Boulogne.",
     "url": "https://fr.wikipedia.org/wiki/Parc_floral_de_Paris",

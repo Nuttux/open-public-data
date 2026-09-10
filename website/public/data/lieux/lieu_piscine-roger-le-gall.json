@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T14:24:24.851547+00:00",
+  "generated_at": "2026-09-10T20:56:10.126711+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "piscine-roger-le-gall",
   "name": "Piscine Roger-Le-Gall",
@@ -16,6 +16,7 @@
     "url": "https://commons.wikimedia.org/wiki/File:Vue_d%27ensemble_de_la_piscine_Roger-Le_Gall_2.jpg",
     "source": "Wikimedia Commons"
   },
+  "seuil_commun": 2013,
   "wiki": {
     "extract": "La piscine Roger-Le-Gall ou piscine Carnot est un complexe aquatique situé boulevard Carnot, entre la porte de Saint-Mandé et la porte de Montempoivre, dans le 12e arrondissement de Paris. Œuvre de l'architecte Roger Taillibert, elle présente depuis son ouverture en avril 1967, la particularité d'avoir un toit amovible baché.",
     "url": "https://fr.wikipedia.org/wiki/Piscine_Roger-Le-Gall",
