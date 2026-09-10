@@ -17600,6 +17600,47 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-block-more::after { content: " \203A"; }
 .theme-fusion .fx-block-more:hover { text-decoration: underline; }
 .theme-fusion .fx-block-filter-note { margin-top: 6px; }
+/* the tabs stay in reach while the fiche scrolls — on a phone the drawer
+   is 62svh and a street fiche is 2,000 px, so the way to the other three
+   sizes of the place was two screens back up */
+.theme-fusion .fx-block-tabs-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--bg);
+  padding-top: 4px;
+}
+/* the outcome, as one word after the line: what the written line itself
+   says happened — `statusWord` */
+.theme-fusion .fx-city-record-status {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 0 4px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  font-family: var(--f-mono);
+  font-size: 9.5px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  vertical-align: 1px;
+}
+.theme-fusion .fx-city-record-status.is-passed { color: var(--ink); border-color: var(--ink); }
+/* find my street, under the search button */
+.theme-fusion .fx-city-locate-btn { top: calc(12px + 44px + 8px); }
+.theme-fusion .fx-city-shell:has(.fx-city-strip) .fx-city-locate-btn {
+  top: calc(12px + 44px + 8px + var(--fx-city-strip-h, 0px));
+}
+.theme-fusion .fx-city-locate-btn.is-busy { opacity: .55; }
+.theme-fusion .fx-city-locate-note {
+  position: absolute; top: calc(12px + 44px + 8px + 50px); right: 12px; z-index: 7;
+  max-width: 220px;
+  padding: 6px 9px;
+  border: 1px solid var(--ink);
+  background: var(--bg);
+  font-size: 12.5px;
+  line-height: 1.35;
+}
 
 /* ── WHAT KEEPS COMING UP ──────────────────────────────────────────────────
    Chips, and they wrap: a subject is a phrase in English — `Land and

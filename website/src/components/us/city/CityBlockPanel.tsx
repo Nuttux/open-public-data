@@ -95,7 +95,7 @@ import type { CSSProperties } from "react";
 import { useT } from "@/lib/localeContext";
 import FicheArchiveShelf from "@/components/fiche/FicheArchiveShelf";
 import type { FicheArchiveDoc } from "@/components/fiche/types";
-import { compactMoney } from "@/components/us/city/record-line";
+import { compactMoney, statusWord } from "@/components/us/city/record-line";
 import {
   sourceHref,
   blockAddresses,
@@ -110,6 +110,8 @@ import {
   stripFileNumber,
   hasMoney,
   byInterest,
+  loadStreetCap,
+  countLabel,
   hoodAt,
   indexedLastYear,
   loadBlockFacts,
@@ -289,9 +291,12 @@ function seriesOf(d: Pick<BlockDecision, "u" | "c">): string {
  * pipeline's controlled vocabulary, and as a bare word on a row they say
  * nothing a reader can use.
  */
-function toDoc(d: BlockDecision, i: number): FicheArchiveDoc {
+function toDoc(d: BlockDecision, i: number, t?: (k: string) => string): FicheArchiveDoc {
   const kind = KIND_WORDING[d.k] ?? "Item";
   const tier = TIER_WORDING[d.p] ?? "";
+  /* the outcome, where the written line states one — see `statusWord` */
+  const st = d.pl ? statusWord(d.pl) : null;
+  const stWord = st ? (t ? t(`us.sf.thecity.panel.status_${st}`) : st) : null;
   return {
     id: `${d.u}#${i}`,
     // ── THE SHELF ASKED FOR THIS FIELD AND WAS BEING GIVEN THE OPPOSITE ──
@@ -304,7 +309,7 @@ function toDoc(d: BlockDecision, i: number): FicheArchiveDoc {
     // Clerk's text is still better than nothing, so it stays as the fallback —
     // and the row's link opens the scan either way.
     gloss: (d.pl && d.pl.trim()) || d.t.trim() || null,
-    title: `${kind} · ${whenOf(d)}`,
+    title: stWord ? `${kind} · ${stWord} · ${whenOf(d)}` : `${kind} · ${whenOf(d)}`,
     year: null,
     href: sourceHref(d),
     sourceLabel: seriesOf(d),
@@ -357,6 +362,12 @@ function DecisionRows({
             <span className="fx-city-record-dot" style={{ background: "currentColor" }} />
             <span className="fx-city-record-text">
               {compactMoney((d.pl && d.pl.trim()) || stripFileNumber(d.t))}
+              {/* the outcome, where the line states one — `statusWord` */}
+              {d.pl && statusWord(d.pl) ? (
+                <span className={`fx-city-record-status is-${statusWord(d.pl)}`}>
+                  {t ? t(`us.sf.thecity.panel.status_${statusWord(d.pl)}`) : statusWord(d.pl)}
+                </span>
+              ) : null}
             </span>
             <span className="fx-city-record-n">{whenOf(d)}</span>
           </a>
@@ -1085,6 +1096,9 @@ const DECADE_SHOW = 10;
  */
 const HOOD_ESSAY = false;
 
+/** street chips a neighbourhood offers — one wrapping line, like `Also here` */
+const HOOD_STREETS_SHOWN = 8;
+
 /**
  * A SILENCE, DRAWN ONCE.
  *
@@ -1436,6 +1450,7 @@ function Ladder({
   blockN,
   street,
   hood,
+  cap,
   onGo,
   t,
 }: {
@@ -1444,6 +1459,8 @@ function Ladder({
   blockN: number;
   street: { key: string; n: number } | null;
   hood: { name: string; n: number } | null;
+  /** the street file's cap — a street at it prints `120+` */
+  cap: number;
   onGo: (u: Unit) => void;
   t: (k: string) => string;
 }) {
@@ -1512,7 +1529,9 @@ function Ladder({
           >
             <span className="fx-block-tab-l">{r.label}</span>
             {r.n >= 0 ? (
-              <span className="fx-block-tab-n">{nfInt.format(r.n)}</span>
+              <span className="fx-block-tab-n">
+                {r.key === "street" ? countLabel(r.n, cap) : nfInt.format(r.n)}
+              </span>
             ) : null}
           </button>
         ))}
@@ -1709,12 +1728,15 @@ function DecadeRow({
   group,
   max,
   openDecade,
+  onYear,
   t,
 }: {
   group: DecadeGroup;
   max: number;
   /** the decade a press on the sparkline asked for, if any */
   openDecade: number | null;
+  /** opening a decade takes the map to it — see `CityBlockPanel.onYear` */
+  onYear?: (y: number) => void;
   t: (k: string) => string;
 }) {
   const n = group.rows.length;
@@ -1768,6 +1790,9 @@ function DecadeRow({
       className="fx-block-row"
       key={`${group.decade}:${openDecade}`}
       open={openDecade === group.decade}
+      onToggle={(e) => {
+        if (e.currentTarget.open && onYear) onYear(group.headline?.y ?? rows[0]?.y ?? group.decade + 5);
+      }}
     >
       <summary
         className="fx-block-sum"
@@ -1858,7 +1883,7 @@ function DecadeRow({
       </summary>
       <div className="fx-block-body">
         <FicheArchiveShelf
-          docs={rows.map(toDoc)}
+          docs={rows.map((d, i) => toDoc(d, i, t))}
           cap={DECADE_SHOW}
           moreLabel={(k) =>
             t(
@@ -1964,6 +1989,7 @@ function UnitChooser({
   streets,
   unit,
   ladderKey,
+  cap,
   onGo,
   t,
 }: {
@@ -1972,6 +1998,7 @@ function UnitChooser({
   unit: Unit;
   /** the street the ladder is already offering, so it is not offered twice */
   ladderKey: string | null;
+  cap: number;
   onGo: (u: Unit) => void;
   t: (k: string) => string;
 }) {
@@ -2033,7 +2060,7 @@ function UnitChooser({
                 onClick={() => onGo({ kind: "street", key: st.key })}
               >
                 {streetLabel(st.key)}
-                <span className="fx-block-street-n">{nfInt.format(st.n)}</span>
+                <span className="fx-block-street-n">{countLabel(st.n, cap)}</span>
               </button>
             </span>
           ))}
@@ -2213,6 +2240,10 @@ function HoodLevel({
   subjectOn,
   onSubject,
   filter,
+  streetIndex,
+  cap,
+  onGo,
+  onYear,
   t,
 }: {
   recs: HoodRecords;
@@ -2221,8 +2252,14 @@ function HoodLevel({
   openDecade: number | null;
   subjectOn: string | null;
   onSubject: (slug: string | null) => void;
-  /** the shipped rows on the pressed subject, or null for all of them */
-  filter: ReadonlySet<BlockDecision> | null;
+  /** the rows on the pressed subject — the shipped ones plus the subject's
+   *  own examples — or null for all of them */
+  filter: readonly BlockDecision[] | null;
+  /** for the street chips' counts, the same number the tabs print */
+  streetIndex: StreetIndex | null;
+  cap: number;
+  onGo: (u: Unit) => void;
+  onYear?: (y: number) => void;
   /** the hood-facts row, for the four sections that used to sit in a fold */
   hood: HoodRecord | null;
   hoods: HoodFactsFile | null;
@@ -2232,17 +2269,57 @@ function HoodLevel({
   /* newest decade first — see `byNewest`. Reversed here rather than in the
      file, so `hood/<i>.json` stays in the order the build wrote it. */
   const live = recs.decades.filter((d) => d.n > 0).slice().reverse();
-  /* a pressed subject narrows the shipped rows; a decade with none on it
+  /* a pressed subject narrows the list to the rows on it — the shipped ones
+     and the subject's own examples — grouped by decade; a decade with none
      is not drawn, because its true count is not a count of the subject */
-  const decades = filter
-    ? live
-        .map((d) => ({ ...d, rows: d.rows.filter((r) => filter.has(r)) }))
-        .filter((d) => d.rows.length > 0)
+  const decades: HoodDecade[] = filter
+    ? (() => {
+        const by = new Map<number, BlockDecision[]>();
+        for (const r of filter) {
+          const dec = Math.floor(r.y / 10) * 10;
+          const l = by.get(dec);
+          if (l) l.push(r);
+          else by.set(dec, [r]);
+        }
+        return [...by.entries()]
+          .sort((a, b) => b[0] - a[0])
+          .map(([decade, rows]) => ({ decade, n: rows.length, rows }));
+      })()
     : live;
   const countOf = (d: HoodDecade): number => (filter ? d.rows.length : d.n);
   const max = decades.reduce((m, d) => Math.max(m, countOf(d)), 0);
+  /* ── THE WAY DOWN ────────────────────────────────────────────────────
+     Its busiest streets, each with the street's whole count. A street the
+     index has no file for is not offered — a chip that opens nothing is
+     worse than no chip (see `UnitChooser`). */
+  const streets = (recs.streets ?? [])
+    .map((s) => ({ key: s.k, n: streetRecordCount(streetIndex, s.k) }))
+    .filter((s) => s.n > 0)
+    .slice(0, HOOD_STREETS_SHOWN);
   return (
     <>
+      {streets.length > 0 ? (
+        <>
+          <div className="fx-city-ledger-head fx-block-sec">
+            {tOr(t, "us.sf.thecity.panel.hood_streets_head", "Its busiest streets")}
+          </div>
+          <p className="fx-block-streets">
+            {streets.map((st, i) => (
+              <span key={st.key}>
+                {i > 0 ? <span className="fx-block-streets-sep"> · </span> : null}
+                <button
+                  type="button"
+                  className="fx-block-street"
+                  onClick={() => onGo({ kind: "street", key: st.key })}
+                >
+                  {streetLabel(st.key)}
+                  <span className="fx-block-street-n">{countLabel(st.n, cap)}</span>
+                </button>
+              </span>
+            ))}
+          </p>
+        </>
+      ) : null}
       {HOOD_ESSAY ? (
         <>
           <HoodSummaryLine recs={recs} t={t} />
@@ -2278,6 +2355,9 @@ function HoodLevel({
         {decades.map((d) => {
           const n = countOf(d);
           const pct = Math.max(4, Math.round((n / Math.max(max, 1)) * 100));
+          /* the face of the decade: its most notable written line — the
+             first row of the list a press opens, so the two never differ */
+          const face = byInterest(d.rows).find((r) => r.pl && r.pl.trim()) ?? null;
           return (
             /* the same markup the block's decade list uses — `fx-block-dec` is
                a 34 px LABEL, not a container, and using it as one collapsed the
@@ -2286,6 +2366,9 @@ function HoodLevel({
               className="fx-block-row"
               key={`${d.decade}:${openDecade}`}
               open={openDecade === d.decade}
+              onToggle={(e) => {
+                if (e.currentTarget.open && onYear) onYear(face?.y ?? d.rows[0]?.y ?? d.decade + 5);
+              }}
             >
               <summary
                 className="fx-block-sum"
@@ -2300,6 +2383,9 @@ function HoodLevel({
                   </span>
                   <span className="fx-block-n">{nfInt.format(n)}</span>
                 </span>
+                {face ? (
+                  <span className="fx-block-line">{compactMoney(face.pl!.trim())}</span>
+                ) : null}
                 {/* nothing on the row said it opened — the street rail's own
                     affordance, here too */}
                 {d.rows.length ? (
@@ -2320,7 +2406,7 @@ function HoodLevel({
                       {tOr(
                         t,
                         "us.sf.thecity.panel.hood_some",
-                        "{shown} of {n} shown \u2014 the rest are on the streets below.",
+                        "{shown} of {n} shown here \u2014 open a street for the rest.",
                       )
                         .replace("{shown}", String(d.rows.length))
                         .replace("{n}", nfInt.format(d.n))}
@@ -2384,6 +2470,7 @@ export default function CityBlockPanel({
   onTitle,
   onLocate,
   onFiche,
+  onYear,
   request,
 }: {
   record: BlockRecord | null;
@@ -2397,6 +2484,14 @@ export default function CityBlockPanel({
    *  handle read 'Fillmore St · Oak St · Page St · Steiner St' over a panel
    *  titled 'Fillmore St') */
   onTitle?: (title: string, n: number) => void;
+  /**
+   * TAKE THE MAP TO THIS YEAR. Opening a decade in the fiche — by its row or
+   * by the sparkline — moves the map's year to the decade's most notable
+   * decision, so the reader sees the city as it stood when the thing they
+   * are reading about was decided. The fiche was timeless while the year
+   * rail sat under it unused (2026-09-10).
+   */
+  onYear?: (y: number) => void;
   /** take the map to this block — passed only when the map knows where it is */
   onLocate?: () => void;
   /**
@@ -2447,6 +2542,8 @@ export default function CityBlockPanel({
   /* 29 KB, one fetch, and it is what stops a street with no records being
      offered as a link that opens nothing. */
   const [streetIndex, setStreetIndex] = useState<StreetIndex | null>(null);
+  /** the street file's row cap, from `shards.json` — see `loadStreetCap` */
+  const [streetCap, setStreetCap] = useState(0);
   // The two modern-fact files. One fetch each for the whole session — both are
   // memoised inside `block-records`, so a second panel does not re-request —
   // and both fail soft to null, which renders exactly what this panel rendered
@@ -2487,6 +2584,9 @@ export default function CityBlockPanel({
     });
     void loadStreetIndex().then((ix) => {
       if (live) setStreetIndex(ix);
+    });
+    void loadStreetCap().then((c) => {
+      if (live) setStreetCap(c);
     });
     void loadThreads().then((th) => {
       if (live) setThreads(th);
@@ -2802,10 +2902,17 @@ const onHood = unit.kind === "hood";
      most on, which is the same one the click resolver picks. */
   const ladderStreet = useMemo(() => {
     const withRecords = unitStreets.filter((st) => st.n > 0);
-    if (!withRecords.length) return null;
     if (unit.kind === "street") {
-      return withRecords.find((st) => st.key === unit.key) ?? null;
+      /* a street reached from the neighbourhood's own list need not front
+         this block — its tab still has to say where the reader is */
+      return (
+        withRecords.find((st) => st.key === unit.key) ?? {
+          key: unit.key,
+          n: streetRecordCount(streetIndex, unit.key),
+        }
+      );
     }
+    if (!withRecords.length) return null;
     if (unit.kind === "door") {
       const label = (openDoor?.label ?? "").toLowerCase();
       const on = withRecords.find((st) =>
@@ -2824,7 +2931,7 @@ const onHood = unit.kind === "hood";
     const kept = held && withRecords.find((st) => st.key === held);
     if (kept) return kept;
     return withRecords.slice().sort((a, b) => b.n - a.n)[0] ?? null;
-  }, [unitStreets, unit, openDoor?.label, held]);
+  }, [unitStreets, unit, openDoor?.label, held, streetIndex]);
   const unitName =
     unit.kind === "door"
       ? (openDoor?.label ?? null)
@@ -2975,11 +3082,13 @@ const onHood = unit.kind === "hood";
    */
   const hoodSubjects = useMemo(() => {
     if (!threads || !hoodRecs?.subjects?.length) return undefined;
-    const rows = hoodRecs.decades.flatMap((d) => d.rows);
+    const shipped = hoodRecs.decades.flatMap((d) => d.rows);
     const out: { here: ThreadHere; trueN: number }[] = [];
     for (const sj of hoodRecs.subjects) {
       const th = threads.threads.find((x) => x.l === sj.l);
       if (!th) continue;
+      /* the shipped rows plus the subject's own examples — `ex` */
+      const rows = [...shipped, ...(sj.ex ?? [])];
       /* matched on the row's own `sm` now that `hood/<i>.json` carries it —
          the regex fallback over the shortened line found nothing here */
       const hits = threadRows(th, rows, threads);
@@ -3001,9 +3110,9 @@ const onHood = unit.kind === "hood";
   const hoodFilter = useMemo(() => {
     if (!subjectOn || !hoodSubjects) return null;
     const cur = hoodSubjects.find((x) => x.here.thread.s === subjectOn);
-    /* a subject none of the shipped rows carry narrows nothing — the line
-       under the chip says "this page carries 0 of them" and the list stays */
-    return cur && cur.here.rows.length ? new Set(cur.here.rows) : null;
+    /* a subject with no row at all narrows nothing — the line under the
+       chip says "this page carries 0 of them" and the list stays */
+    return cur && cur.here.rows.length ? cur.here.rows : null;
   }, [subjectOn, hoodSubjects]);
 
   /* report the level to whoever owns the address bar. `openDoor` is read
@@ -3159,9 +3268,23 @@ const onHood = unit.kind === "hood";
               blockN={all.length}
               street={ladderStreet}
               hood={ladderHood}
+              cap={streetCap}
               onGo={setUnit}
               t={t}
             />
+            {/* ── A STREET AT THE CAP SAYS SO ────────────────────────────
+                The file holds the 120 most notable rows and the sentence
+                above counts the file. One line, only where the count sits
+                on the cap the build wrote. */}
+            {unit.kind === "street" && streetCap > 0 && here.length >= streetCap ? (
+              <p className="fx-block-hint" style={NOTE}>
+                {tOr(
+                  t,
+                  "us.sf.thecity.panel.street_capped",
+                  "This street holds more than {n} decisions; the {n} most notable are here.",
+                ).replace(/\{n\}/g, nfInt.format(streetCap))}
+              </p>
+            ) : null}
             {!hasLadder && unit.kind !== "ground" ? (
               <button
                 type="button"
@@ -3172,7 +3295,19 @@ const onHood = unit.kind === "hood";
               </button>
             ) : null}
             {opener ? (
-              <FicheOpen open={opener} onDecade={setOpenDecade} t={t} spark={!onHood} />
+              <FicheOpen
+                open={opener}
+                onDecade={(d) => {
+                  setOpenDecade(d);
+                  /* the map goes to the decade's most notable decision */
+                  const y = onHood
+                    ? hoodRecs?.decades.find((x) => x.decade === d)?.rows[0]?.y
+                    : groups.find((g) => g.decade === d)?.headline?.y;
+                  if (onYear) onYear(y ?? d + 5);
+                }}
+                t={t}
+                spark={!onHood}
+              />
             ) : null}
             {/* the neighbourhood answers this at its foot, beside SOURCES,
                 where a reader who has read the page asks it */}
@@ -3199,6 +3334,10 @@ const onHood = unit.kind === "hood";
                 subjectOn={subjectOn}
                 onSubject={setSubjectOn}
                 filter={hoodFilter}
+                streetIndex={streetIndex}
+                cap={streetCap}
+                onGo={setUnit}
+                onYear={onYear}
                 t={t}
               />
             ) : (
@@ -3273,6 +3412,7 @@ const onHood = unit.kind === "hood";
                         group={it.group}
                         max={max}
                         openDecade={openDecade}
+                        onYear={onYear}
                         t={t}
                       />
                     ),
@@ -3289,6 +3429,7 @@ const onHood = unit.kind === "hood";
               streets={unitStreets}
               unit={unit}
               ladderKey={ladderStreet?.key ?? null}
+              cap={streetCap}
               onGo={setUnit}
               t={t}
             />

@@ -2194,6 +2194,16 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
               request={request}
               onFiche={setAt}
               loading={recLoading}
+              onYear={(y) => {
+                /* the fiche's decade takes the clock with it — the same
+                   three writes the rail's own release makes */
+                const yy = y >= YEAR_MAX ? null : y;
+                setYear(yy);
+                syncScrub(yy ?? undefined);
+                engineRef.current?.setYear(yy ?? undefined);
+                if (overlayRef.current) overlayRef.current.year = yy ?? undefined;
+                engineRef.current?.invalidate();
+              }}
               onTitle={(title) => {
                 /* the pin says what the panel is titled — one name for one
                    thing, whichever stop the click came from */

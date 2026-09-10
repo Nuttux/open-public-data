@@ -2417,7 +2417,17 @@ export interface HoodRecords {
     readonly l: string;
     readonly n: number;
     readonly note: string;
+    /** a few readable rows on this subject the decades did not ship, so a
+     *  pressed chip always has something to show — `EX_PER_SUBJECT` */
+    readonly ex?: readonly BlockDecision[];
   }[];
+  /**
+   * The busiest streets of the neighbourhood, as the way down from it.
+   * `n` is the count of the neighbourhood's own records naming the street
+   * and only RANKS; what the panel prints is the street's whole count from
+   * the street index, the same number the tabs and `Also here` print.
+   */
+  readonly streets?: readonly { readonly k: string; readonly n: number }[];
   readonly summary?: string;
   readonly summary_sources?: readonly HoodSource[];
   readonly summary_read?: {
@@ -2457,6 +2467,32 @@ export interface StreetIndex {
 }
 
 let streetIndexPromise: Promise<StreetIndex | null> | null = null;
+
+/**
+ * HOW MANY ROWS A STREET FILE MAY HOLD.
+ *
+ * `build_index.py` keeps the `STREET_CAP` most notable street-tier rows per
+ * street and writes the cap to `shards.json`. 169 of 1,948 streets sit at it
+ * (2026-09-10), and the index counts FILES, so "Market St · 120" was the cap
+ * printed as a total. Read from the file the build writes, never assumed:
+ * a count at the cap prints as `120+`, and the street's own fiche says so.
+ */
+let streetCapPromise: Promise<number> | null = null;
+export function loadStreetCap(): Promise<number> {
+  if (!streetCapPromise) {
+    streetCapPromise = fetch(`${BASE}/shards.json`)
+      .then((r) => (r.ok ? (r.json() as Promise<{ street_cap?: number }>) : null))
+      .then((j) => (j && typeof j.street_cap === "number" ? j.street_cap : 0))
+      .catch(() => 0);
+  }
+  return streetCapPromise;
+}
+
+/** a count, printed with `+` where the street file is known to be capped */
+export function countLabel(n: number, cap: number): string {
+  const s = n.toLocaleString("en-US");
+  return cap > 0 && n >= cap ? `${s}+` : s;
+}
 
 export function loadStreetIndex(): Promise<StreetIndex | null> {
   if (!streetIndexPromise) {

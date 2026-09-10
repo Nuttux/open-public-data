@@ -48,6 +48,15 @@ from _chunk import field_array, read_chunk  # noqa: E402
 # how many records a decade ships. Twelve fills a screen and leaves the true
 # count visible beside it.
 PER_DECADE = 12
+# The neighbourhood's busiest streets, as the way DOWN from it: a reader on
+# the Castro could reach one block and one street (2026-09-10 audit, "no way
+# down to its streets"). A street counts a record once for each distinct
+# record on the neighbourhood's own blocks whose written line names it.
+STREETS_SHIPPED = 12
+# Rows a subject chip can show when none of the decade's top twelve carry it —
+# "keeping horses and cows · 95" opened on nothing, because the permits the
+# subject is made of never rank near a bond election.
+EX_PER_SUBJECT = 3
 
 # ── lines nobody could read ─────────────────────────────────────────────────
 ROLL = re.compile(r"\b(ayes?|noes?|absent|excused)\s*[—\-:]|\bsupervisors?\s+\w+,\s+\w+,\s+\w+", re.I)
@@ -215,6 +224,7 @@ def main() -> int:
     total = 0
 
     hood_streets: dict[int, set[str]] = collections.defaultdict(set)
+    street_n: dict[int, collections.Counter] = collections.defaultdict(collections.Counter)
     nb_of: dict[tuple, set[str]] = collections.defaultdict(set)
     for fn in sorted(glob.glob(os.path.join(BLOCKS, "block-*.json"))):
         for bid, rec in json.load(open(fn)).items():
@@ -240,6 +250,12 @@ def main() -> int:
                     continue
                 seen.add(key)
                 total += 1
+                # which of this block's streets the record names — see
+                # STREETS_SHIPPED; the block's own `s` is the candidate list
+                _wr = set(_WORD.findall((r.get("pl") or t).lower()))
+                for _sk in rec.get("s") or ():
+                    if street_words([_sk]) & _wr:
+                        street_n[h][_sk] += 1
                 dec = (r["y"] // 10) * 10
                 true_count[h][dec] += 1
                 city_total += 1
@@ -309,6 +325,21 @@ def main() -> int:
             })
         kept = sum(len(d["rows"]) for d in rows)
         alln = sum(d["n"] for d in rows)
+        # ── THE SUBJECTS, WITH SOMETHING TO SHOW ──────────────────────────
+        # up to EX_PER_SUBJECT readable rows on each subject that the decades
+        # above did not ship, by our score; the panel adds them to a pressed
+        # chip's list and says how many of the subject's records that is
+        subj = _by_lift(subjects[h], hood_total[h], city_n, city_total)
+        shipped_keys = {(r.get("u"), (r.get("t") or "")[:120]) for d in rows for r in d["rows"]}
+        pool = [r for dec_rows in keep[h].values() for r in dec_rows]
+        for s_ in subj:
+            _bit = bit_of[s_["l"]]
+            cand = [r for r in pool
+                    if (r.get("sm") or 0) >> _bit & 1
+                    and (r.get("u"), (r.get("t") or "")[:120]) not in shipped_keys]
+            cand.sort(key=lambda r: (-r.get("iv", -1), -r["y"], r["d"]))
+            if cand:
+                s_["ex"] = cand[:EX_PER_SUBJECT]
         # the written paragraph, if one has been written for this neighbourhood
         wr = written_summaries.get(str(h))
         if wr and wr.get("name") and wr["name"] != name:
@@ -328,7 +359,10 @@ def main() -> int:
             # neighbourhood in the city is the same handful — the fiche ranks
             # by the share HERE over the share across the map, so the two
             # cannot disagree about the same section. Ties on the local count.
-            "subjects": _by_lift(subjects[h], hood_total[h], city_n, city_total),
+            "subjects": subj,
+            # the way down — see STREETS_SHIPPED; the panel prints each
+            # street's WHOLE count from the street index, this `n` only ranks
+            "streets": [{"k": k, "n": n} for k, n in street_n[h].most_common(STREETS_SHIPPED)],
             "per_decade": PER_DECADE,
             "THIS_IS_A_SELECTION":
                 "Each decade ships its most important readable records, by our "

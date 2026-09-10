@@ -344,6 +344,24 @@ export function fileStem(line: string): string {
   return line.replace(MONEY_PHRASE, " ").replace(STATUS_TAIL, "").replace(/\s+/g, " ").trim().toLowerCase();
 }
 
+/**
+ * THE OUTCOME, AS ONE WORD A READER CAN SCAN.
+ *
+ * "Liquor licence supported for The Epicurean Trader" does not say whether it
+ * happened. The written line carries the status in its own words ("finally
+ * passed", "sought", "sent to committee") and `statusRank` already reads it;
+ * this folds the rank into three words for a tag. Nothing is inferred beyond
+ * what the line says — a line with no status word gets no tag.
+ */
+export type StatusWord = "passed" | "moving" | "proposed";
+export function statusWord(line: string): StatusWord | null {
+  const r = statusRank(line);
+  if (r >= 4) return "passed";
+  if (r >= 2) return "moving";
+  if (r === 1) return "proposed";
+  return null;
+}
+
 /** how far along a line's status is — the row shown for a folded file is
  *  the furthest one, and its steps are counted beside it */
 export function statusRank(line: string): number {

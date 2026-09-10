@@ -16,6 +16,7 @@ import {
   recordLine,
   trimLine,
   undangle,
+  statusWord,
 } from "./record-line";
 
 describe("what never becomes a headline", () => {
@@ -145,6 +146,17 @@ describe("where it happened", () => {
       "Bush St · Pierce St",
     );
     expect(placeOf("Confirming report of assessment costs", null)).toBe(null);
+  });
+});
+
+describe("the outcome word", () => {
+  it("reads the status the line itself carries, and nothing else", () => {
+    expect(statusWord("Bike lanes on Fell Street finally passed")).toBe("passed");
+    expect(statusWord("Loan for the Opera House, adopted")).toBe("passed");
+    expect(statusWord("Zoning change passed on first reading")).toBe("moving");
+    expect(statusWord("Garage permit sent to committee")).toBe("moving");
+    expect(statusWord("$600,000 sought for safety work on Market Street")).toBe("proposed");
+    expect(statusWord("Reflector sign installed on Fourteenth Street")).toBeNull();
   });
 });
 
