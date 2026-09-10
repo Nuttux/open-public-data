@@ -6746,15 +6746,18 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 
 /* Vignette intégrée dans la fiche projet (drawer) — coller aux bords */
 .theme-fusion .fx-fiche-thumb-wrap {
-  /* Horizontal margin must match .fx-drawer-body padding so the image is
-     flush to the drawer edge without spilling past it. Desktop body padding
-     is 28px; mobile is 18px (see the max-width:600px override below). Placed
-     after the base rule so it wins on source order. */
-  margin: -16px -28px 16px;
+  /* Sur la page entière, la photo suit le chapeau dans le flux, à la largeur
+     de la colonne. Les marges négatives d'origine (tiroir) la remontaient de
+     16 px sur la dernière ligne du chapeau et la faisaient déborder de 28 px
+     de chaque côté — vu sur la fiche Châtelet le 2026-09-10. */
+  margin: 8px 0 20px;
   border-bottom: 1px solid var(--rule);
 }
+/* Dans le tiroir, l'image colle aux bords : la marge horizontale négative
+   égale le padding de .fx-drawer-body (28px desktop, 18px mobile). */
+.theme-fusion .fx-drawer-body .fx-fiche-thumb-wrap { margin: -16px -28px 16px; }
 @media (max-width: 600px) {
-  .theme-fusion .fx-fiche-thumb-wrap { margin-left: -18px; margin-right: -18px; }
+  .theme-fusion .fx-drawer-body .fx-fiche-thumb-wrap { margin-left: -18px; margin-right: -18px; }
 }
 
 .theme-fusion .fx-fiche-thumb {

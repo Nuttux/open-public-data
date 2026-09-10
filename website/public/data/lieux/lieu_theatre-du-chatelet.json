@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T13:04:31.918071+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "theatre-du-chatelet",
   "name": "Théâtre du Châtelet",
@@ -102,8 +102,8 @@
     {
       "id": "8506",
       "seance": "MAI 1996",
-      "fait": "Une subvention d'equipement de 1 200 000 F et une operation de travaux de securite de 3 530 000 F sont votees le meme soir. Alain Le Garrec juge qu'il n'est pas possible de voter au coup par coup faute de vue globale des investissements ; le president de seance repond avoir deja donne un etat recapitulatif des depenses des dix dernieres annees.",
-      "pourquoi": "la lisibilite des depenses contestee en seance",
+      "fait": "Une subvention d'équipement de 1 200 000 F et une opération de travaux de sécurité de 3 530 000 F sont votées le même soir. Alain Le Garrec juge qu'il n'est pas possible de voter au coup par coup faute de vue globale des investissements ; le président de séance répond avoir déjà donné un état récapitulatif des dépenses des dix dernières années.",
+      "pourquoi": "la lisibilité des dépenses contestée en séance",
       "vedette": false,
       "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8506",
       "fait_en": "An equipment subsidy of 1,200,000 francs and a safety-works operation of 3,530,000 francs were voted on the same evening. Alain Le Garrec argued that it was not possible to vote item by item for lack of an overall view of investments; the chair of the session replied that he had already provided a summary statement of expenditure for the past ten years.",
@@ -112,8 +112,8 @@
     {
       "id": "17525",
       "seance": "SEPTEMBRE 1999",
-      "fait": "L'avenant au marche de la cage de scene (800 000 F, soit 1,4 % du budget global des travaux selon Alain Le Garrec) est conteste ; un elu annonce son abstention a titre personnel. La rapporteure Helene Mace de Lepinay indique que le chantier s'est acheve le 1er juillet 1999 dans les delais prevus et que la reouverture est prevue le 8 octobre 1999.",
-      "pourquoi": "achevement annonce en seance, avenant conteste",
+      "fait": "L'avenant au marché de la cage de scène (800 000 F, soit 1,4 % du budget global des travaux selon Alain Le Garrec) est contesté ; un élu annonce son abstention à titre personnel. La rapporteure Hélène Macé de Lépinay indique que le chantier s'est achevé le 1er juillet 1999 dans les délais prévus et que la réouverture est prévue le 8 octobre 1999.",
+      "pourquoi": "achèvement annoncé en séance, avenant contesté",
       "vedette": true,
       "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17525",
       "fait_en": "The amendment to the stage-tower contract (800,000 francs, or 1.4% of the overall works budget according to Alain Le Garrec) was contested; one councillor announced his personal abstention. Rapporteur Hélène Macé de Lépinay stated that the works had been completed on 1 July 1999 within the planned schedule and that reopening was planned for 8 October 1999.",
@@ -122,7 +122,7 @@
     {
       "id": "69983",
       "seance": "MAI 2008",
-      "fait": "Le Conseil approuve le principe d'extension du theatre dans l'ancien Hotel du Palais, 2 quai de la Megisserie, les modalites de passation du marche de maitrise d'oeuvre et le depot des demandes de permis de demolir et de construire.",
+      "fait": "Le Conseil approuve le principe d'extension du théâtre dans l'ancien Hôtel du Palais, 2 quai de la Mégisserie, les modalités de passation du marché de maîtrise d'oeuvre et le dépôt des demandes de permis de démolir et de construire.",
       "pourquoi": "le principe de l'extension entre au Conseil",
       "vedette": true,
       "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69983",
@@ -132,8 +132,8 @@
     {
       "id": "5727",
       "seance": "JUIN 2009",
-      "fait": "Le projet de deliberation reunit un avenant de subvention de fonctionnement et une convention d'equipement pour un montant total de 9 273 000 euros. Danielle Fournier indique que le soutien de la Ville a l'institution atteint ainsi 17 746 000 euros pour l'annee ; Christophe Girard fait etat de plus de 300 000 visiteurs par an.",
-      "pourquoi": "presente en seance comme l'aide la plus importante de la Ville",
+      "fait": "Le projet de délibération réunit un avenant de subvention de fonctionnement et une convention d'équipement pour un montant total de 9 273 000 euros. Danielle Fournier indique que le soutien de la Ville à l'institution atteint ainsi 17 746 000 euros pour l'année ; Christophe Girard fait état de plus de 300 000 visiteurs par an.",
+      "pourquoi": "présenté en séance comme l'aide la plus importante de la Ville",
       "vedette": true,
       "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5727",
       "fait_en": "The deliberation draft combined an operating-subsidy amendment and an equipment agreement for a total amount of 9,273,000 euros. Danielle Fournier stated that the City's support for the institution thus reached 17,746,000 euros for the year; Christophe Girard reported more than 300,000 visitors per year.",
@@ -142,8 +142,8 @@
     {
       "id": "123735",
       "seance": "MARS 2015",
-      "fait": "Voeu sur les renovations prevues : Jean-Francois Legaret, maire du 1er arrondissement, expose le calendrier tel qu'il indique en avoir connaissance - de l'ete 2017 a l'ete 2019, soit deux saisons et demie - et pose la question du sort des 143 membres du personnel et de la continuite de la programmation.",
-      "pourquoi": "calendrier des travaux et sort des salaries en question",
+      "fait": "Voeu sur les rénovations prévues : Jean-François Legaret, maire du 1er arrondissement, expose le calendrier tel qu'il indique en avoir connaissance - de l'été 2017 à l'été 2019, soit deux saisons et demie - et pose la question du sort des 143 membres du personnel et de la continuité de la programmation.",
+      "pourquoi": "calendrier des travaux et sort des salariés en question",
       "vedette": true,
       "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=123735",
       "fait_en": "A motion on the planned renovations: Jean-François Legaret, mayor of the 1st arrondissement, laid out the schedule as he said he understood it — from summer 2017 to summer 2019, i.e. two and a half seasons — and raised the question of the fate of the 143 staff members and the continuity of programming.",
@@ -152,8 +152,8 @@
     {
       "id": "135753",
       "seance": "MAI 2017",
-      "fait": "Le Conseil adopte la convention d'occupation du domaine public pour un espace d'affichage sur l'echafaudage, malgre les elus ecologistes qui demandent un vote contre. Bruno Julliard indique que Decaux a fait la meilleure offre et estime qu'elle pourra permettre de financer 2,7 millions de travaux supplementaires.",
-      "pourquoi": "la publicite comme recette de chantier, en debat",
+      "fait": "Le Conseil adopte la convention d'occupation du domaine public pour un espace d'affichage sur l'échafaudage, malgré les élus écologistes qui demandent un vote contre. Bruno Julliard indique que Decaux a fait la meilleure offre et estime qu'elle pourra permettre de financer 2,7 millions de travaux supplémentaires.",
+      "pourquoi": "la publicité comme recette de chantier, en débat",
       "vedette": false,
       "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=135753",
       "fait_en": "The Council adopted the public domain occupancy agreement for an advertising display space on the scaffolding, despite the Green councillors calling for a vote against it. Bruno Julliard stated that Decaux had made the best offer and estimated that it could help finance 2.7 million euros of additional works.",
@@ -162,8 +162,8 @@
     {
       "id": "146544",
       "seance": "NOVEMBRE 2018",
-      "fait": "Convention tripartite de mecenat avec la Fondation du Patrimoine et l'association pour financer les travaux. Danielle Simonnet conteste le projet : selon elle, la Ville va demander a Total un soutien de 250 000 euros et la Fondation Total sera signalee sur une plaque apposee sur l'operation d'un grand foyer.",
-      "pourquoi": "le mecenat prive conteste en seance",
+      "fait": "Convention tripartite de mécénat avec la Fondation du Patrimoine et l'association pour financer les travaux. Danielle Simonnet conteste le projet : selon elle, la Ville va demander à Total un soutien de 250 000 euros et la Fondation Total sera signalée sur une plaque apposée sur l'opération d'un grand foyer.",
+      "pourquoi": "le mécénat privé contesté en séance",
       "vedette": true,
       "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146544",
       "fait_en": "A tripartite sponsorship agreement with the Fondation du Patrimoine and the association to finance the works. Danielle Simonnet contested the project: according to her, the City was going to ask Total for support of 250,000 euros, and the Fondation Total would be acknowledged on a plaque affixed to the grand foyer project.",
@@ -172,7 +172,7 @@
     {
       "id": "156363",
       "seance": "OCTOBRE 2020",
-      "fait": "Le projet de subvention de 15 800 000 euros est examine avec deux voeux du groupe Changer Paris, l'un demandant la publication de l'audit sur la gestion du theatre, l'autre portant sur son avenir. Catherine Dumas declare en seance que le conseil d'administration a revoque la directrice artistique Ruth Mackenzie fin aout 2020 a la suite d'un audit.",
+      "fait": "Le projet de subvention de 15 800 000 euros est examiné avec deux voeux du groupe Changer Paris, l'un demandant la publication de l'audit sur la gestion du théâtre, l'autre portant sur son avenir. Catherine Dumas déclare en séance que le conseil d'administration a révoqué la directrice artistique Ruth Mackenzie fin août 2020 à la suite d'un audit.",
       "pourquoi": "l'opposition demande la publication de l'audit",
       "vedette": true,
       "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156363",
