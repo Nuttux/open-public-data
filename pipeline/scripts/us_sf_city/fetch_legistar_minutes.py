@@ -161,6 +161,34 @@ def do_extract(since: str) -> None:
     print(f"  → {out.relative_to(REPO)}")
 
 
+def do_extract_all(since: str) -> None:
+    """EVERY item, placement as an ATTRIBUTE — the same projection
+    `sweep_sfbos_all.py` writes, because a record without a street is not a
+    lesser record: it is where the citywide acts live, and it is what the
+    year panel and the published row-level table are built from."""
+    sys.path.insert(0, str(HERE))
+    import _sfbos_sweep as S
+
+    gaz = S.gz.build()
+    keys = list(gaz)
+    cal = json.loads(CAL.read_text())
+    out = CACHE / "items_all_legistar.jsonl"
+    n_pdf = n = 0
+    with open(out, "w") as w:
+        for day, v in sorted(cal.items()):
+            if not v["minutes"] or day <= since:
+                continue
+            f = PDFS / f"{v['stem']}_minutes.pdf"
+            if not f.exists():
+                continue
+            n_pdf += 1
+            for r in S.sweep_meeting(v["stem"], day, f, gaz, keys,
+                                     url=v["url"], src="legistar"):
+                w.write(json.dumps(r) + "\n")
+                n += 1
+    print(f"  {n_pdf} meetings · {n:,} items, placed or not → {out.relative_to(REPO)}")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--since", default="2026-04-14",
@@ -168,6 +196,8 @@ def main() -> None:
     ap.add_argument("--list", action="store_true")
     ap.add_argument("--fetch", action="store_true")
     ap.add_argument("--extract", action="store_true")
+    ap.add_argument("--extract-all", action="store_true",
+                    help="every item, not only those naming a street")
     a = ap.parse_args()
     if a.list or not (a.fetch or a.extract):
         do_list(a.since)
@@ -175,6 +205,8 @@ def main() -> None:
         do_fetch(a.since)
     if a.extract:
         do_extract(a.since)
+    if getattr(a, "extract_all", False):
+        do_extract_all(a.since)
 
 
 if __name__ == "__main__":
