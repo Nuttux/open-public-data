@@ -131,6 +131,11 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
   const marcheSpan = minMax(marches.map((m) => parseInt((m.date_notification ?? "").slice(0, 4), 10)));
   const kindArt = KIND_ARTICLE[lieu.kind_fr];
   const kindTxt = kindArt ? (en ? kindArt.en : kindArt.fr) : t("fx.lieu.line.lieu_generique");
+  /* Tout ce qui s'affiche en tête de ligne, en barre de part et en pourcentage
+   * porte sur la MÊME fenêtre que le chiffre de tête. Sinon la ligne annonçait
+   * 39,2 M€ sur 2009-2022 pendant que le chiffre de tête en excluait 4,1 :
+   * deux nombres justes qui ne s'additionnent pas sous les yeux du lecteur.
+   * Ce qui tombe avant le seuil est dit en une ligne, sous les graphes. */
   const barMax = Math.max(subvTotal, travauxTotal);
   const showBars = subvTotal > 0 && travauxTotal > 0;
 
@@ -141,7 +146,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
    * tête couvre donc la fenêtre où les deux flux existent ; ce qui tombe avant
    * est montré juste sous les graphes, nommé, jamais retiré. */
   const seuil = lieu.seuil_commun ?? 0;
-  const pctTxt = (n: number) => `${Math.round((n / reelTotal) * 100)}${en ? "%" : "\u00a0%"}`;
+  const pctTxt = (n: number) => `${Math.round((n / (heroTotal || 1)) * 100)}${en ? "%" : "\u00a0%"}`;
 
   /* ── Deux séries annuelles, une par source, jamais empilées : les
    *    subventions à l'exploitant sont publiées depuis 2018, le détail des
@@ -172,7 +177,10 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
     s.filter((r) => r.year < seuil).reduce((a, r) => a + r.value, 0);
   const depuisSeuil = (s: { year: number; value: number }[]) =>
     s.filter((r) => r.year >= seuil).reduce((a, r) => a + r.value, 0);
-  const heroTotal = seuil ? depuisSeuil(exploitSeries) + depuisSeuil(travauxSeries) : reelTotal;
+  const subvDansFenetre = seuil ? depuisSeuil(exploitSeries) : subvTotal;
+  const travauxDansFenetre = seuil ? depuisSeuil(travauxSeries) : travauxTotal;
+  const heroTotal = seuil ? subvDansFenetre + travauxDansFenetre : reelTotal;
+  const barMaxF = Math.max(subvDansFenetre, travauxDansFenetre);
   const horsFenetre = seuil
     ? [
         { montant: avantSeuil(travauxSeries), label: t("fx.lieu.line.travaux").toLowerCase(),
@@ -187,17 +195,44 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
     : (verseSpan?.[0] ?? 0);
 
 
+  /* L'axe des deux graphes. Un seul, du seuil commun au dernier exercice de la
+   * fiche, pour que les deux lignes se lisent l'une sous l'autre : même
+   * position, même largeur de barre, même année en dessous.
+   *
+   * Le seuil est celui du chiffre de tête (le premier exercice de subvention
+   * publié, 2013). Faire commencer l'axe plus tôt donnait un tiers de graphe
+   * vide avant la première barre de subvention et posait la question « pourquoi
+   * cette année-là » à chaque lecture ; ce qui tombe avant est dit en une ligne
+   * sous les graphes, avec sa période.
+   *
+   * Un exercice sans barre à l'intérieur de l'axe ne peut pas rester blanc : un
+   * blanc se lit comme un zéro, et c'est l'erreur qui faisait croire à un
+   * théâtre à l'arrêt pendant sa rénovation. Il porte un pointillé discret. */
+  const axe = (() => {
+    const ys = [...exploitSeries, ...travauxSeries].map((r) => r.year).filter((y) => y >= seuil);
+    if (!ys.length) return null;
+    return { de: seuil || Math.min(...ys), a: Math.max(...ys) };
+  })();
+
   const Years = ({ series, tone }: { series: { year: number; value: number }[]; tone: "x" | "w" }) => {
-    if (series.length < 3) return null;
-    const max = Math.max(...series.map((s) => s.value), 1);
+    const dans = series.filter((r) => !axe || r.year >= axe.de);
+    if (dans.length < 3 || !axe) return null;
+    const max = Math.max(...dans.map((r) => r.value), 1);
+    const parAn = new Map(dans.map((r) => [r.year, r.value]));
+    const annees: number[] = [];
+    for (let y = axe.de; y <= axe.a; y++) annees.push(y);
     return (
       <div className={`fx-v3-years ${tone}`} aria-hidden="true">
-        {series.map((s, i) => (
-          <div key={s.year} title={`${s.year} · ${eurTxt(s.value)}`}>
-            <i style={{ height: Math.max(2, Math.round((s.value / max) * 40)) }} />
-            {(i === 0 || i === series.length - 1) && <span className={i === 0 ? "yr" : "yr end"}>{s.year}</span>}
-          </div>
-        ))}
+        {annees.map((y, i) => {
+          const v = parAn.get(y);
+          return (
+            <div key={y} className={v === undefined ? "hors" : undefined}
+                 title={v === undefined ? `${y} · non publié par la Ville` : `${y} · ${eurTxt(v)}`}>
+              {v === undefined ? <em /> : <i style={{ height: Math.max(2, Math.round((v / max) * 40)) }} />}
+              {(i === 0 || i === annees.length - 1) && <span className={i === 0 ? "yr" : "yr end"}>{y}</span>}
+            </div>
+          );
+        })}
       </div>
     );
   };
@@ -294,7 +329,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
                 </Link>
               </div>
               <div className="a">
-                <Eur {...fmtEur(subvTotal)} />
+                <Eur {...fmtEur(subvDansFenetre)} />
                 <div className="q">{t("fx.lieu.q.verses")} · {subv.rows.length > 1 ? spanTxt(parseInt(subv.annees[0], 10), parseInt(subv.annees[1], 10)) : subv.annees[0]}</div>
               </div>
               <div className="s">
@@ -303,7 +338,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
                 {subv.note_publique && <> {(en && subv.note_publique_en) || subv.note_publique}</>}
               </div>
               <Years series={exploitSeries} tone="x" />
-              {showBars && <div className="bar x"><div className="track"><span style={{ width: `${(subvTotal / barMax) * 100}%` }} /></div><i className="tnum">{pctTxt(subvTotal)}</i></div>}
+              {showBars && <div className="bar x"><div className="track"><span style={{ width: `${(subvDansFenetre / (barMaxF || 1)) * 100}%` }} /></div><i className="tnum">{pctTxt(subvDansFenetre)}</i></div>}
               {subv.rows.length > 1 && (
                 <div className="fold-wrap">
                   <Fold label={fill(t("fx.lieu.subv_deplier"), { n: subv.rows.length })}>
@@ -325,10 +360,12 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
               <div className="fx-v3-line">
                 <div className="t">{t("fx.lieu.line.travaux")}</div>
                 <div className="a">
-                  <Eur {...fmtEur(paye ? travauxTotal : plafond)} />
+                  <Eur {...fmtEur(paye ? travauxDansFenetre : plafond)} />
                   <div className="q">
                     {paye
-                      ? <>{t("fx.lieu.q.payes")}{travauxSpan ? ` · ${spanTxt(...travauxSpan)}` : ""}</>
+                      ? <>{t("fx.lieu.q.payes")}{axe && travauxDansFenetre > 0
+                            ? ` · ${spanTxt(Math.max(axe.de, travauxSpan ? travauxSpan[0] : axe.de), travauxSpan ? travauxSpan[1] : axe.a)}`
+                            : (travauxSpan ? ` · ${spanTxt(...travauxSpan)}` : "")}</>
                       : <>{t("fx.lieu.q.plafond")}{marcheSpan ? ` · ${spanTxt(...marcheSpan)}` : ""}</>}
                   </div>
                 </div>
@@ -345,7 +382,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
                   </div>
                 )}
                 <Years series={travauxSeries} tone="w" />
-                {showBars && <div className="bar w"><div className="track"><span style={{ width: `${(travauxTotal / barMax) * 100}%` }} /></div><i className="tnum">{pctTxt(travauxTotal)}</i></div>}
+                {showBars && <div className="bar w"><div className="track"><span style={{ width: `${(travauxDansFenetre / (barMaxF || 1)) * 100}%` }} /></div><i className="tnum">{pctTxt(travauxDansFenetre)}</i></div>}
                 <div className="fold-wrap">
                   {paye && nChantiers > 0 && (
                     <Fold label={fill(t(nChantiers === 1 ? "fx.lieu.fold_chantier1" : "fx.lieu.fold_chantiers"), { n: nChantiers })}>
