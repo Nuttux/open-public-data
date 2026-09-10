@@ -17141,6 +17141,20 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   line-height: 1.5;
   color: var(--ocre);
 }
+/* the veil's own card: the piece being drawn, a bar that fills, and the one
+   line that tells a reader they need not wait for it */
+.theme-fusion .fx-city-boot { display: grid; justify-items: center; gap: 8px; max-width: 320px; text-align: center; }
+.theme-fusion .fx-city-boot-track {
+  width: 220px; height: 3px; background: var(--rule); overflow: hidden;
+}
+.theme-fusion .fx-city-boot-bar {
+  display: block; height: 100%; background: var(--bleu);
+  transition: width .45s cubic-bezier(.2, .7, .3, 1);
+}
+.theme-fusion .fx-city-boot-hint {
+  margin: 0; font-size: 12px; line-height: 1.4;
+  color: color-mix(in srgb, var(--ink) 62%, transparent);
+}
 .theme-fusion .fx-city-loading {
   margin: 16px 0 0;
   font-family: var(--f-mono);

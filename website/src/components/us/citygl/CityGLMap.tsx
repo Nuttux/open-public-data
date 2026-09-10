@@ -208,6 +208,15 @@ const REVEAL_CHUNKS_PER_FRAME = 12;
 const nextFrame = (): Promise<void> =>
   new Promise((r) => requestAnimationFrame(() => r()));
 
+/**
+ * The pieces the boot draws, in the order it draws them: the ground, the
+ * landmarks, the buildings, the surfaces on them, the track, done. The veil
+ * fills a bar as each lands — not a spinner, which says only "something is
+ * happening", but the actual step, which is what tells a reader the page is
+ * working rather than broken.
+ */
+const BOOT_STEPS = 6;
+
 export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProps) {
   const hostRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -217,6 +226,20 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
   const [plate, setPlate] = useState(true);
   const [failed, setFailed] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  /* ── THE PAGE IS USABLE LONG BEFORE IT IS FINISHED ─────────────────────
+     > "right now in prod it loads the render map but you cant do shit with
+     > it, people just think the page is broken and will leave"
+
+     MEASURED on production (scripts/probes/x_boot_feel.mjs): the tile plate
+     puts a picture of the city on screen at 1.4 s, and the zoom stops, the
+     year rail and the subjects did not appear until 8.7 s — seven seconds of
+     a map that looks finished and answers nothing. The camera exists from
+     1.5 s and moving it needs no geometry, so the stops and the search are
+     live from the moment the camera is set. `loading` still gates what
+     genuinely needs the city built. */
+  const [camUp, setCamUp] = useState(false);
+  /** which piece is being drawn, 0..BOOT_STEPS — the progress the veil shows */
+  const [bootStep, setBootStep] = useState(0);
   const [, setNonce] = useState(0);
   const [year, setYear] = useState<number | null>(null);
   const [picked, setPicked] = useState<number | null>(null);
@@ -818,6 +841,50 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          `terrain.ts` §WA.hazecap; `?sky=1` for the A/B. See `lib/citygl/sky.ts`. */
       attachSky(engine, { anchor: downtown });
 
+      /* the four stops, as buttons — see `installStops()`'s call site. Kept
+         as a closure over `engine`, `p` and `spanM` so it can run twice: once
+         the moment the camera is set, and again when the boot finishes, which
+         is when the viewport is final. */
+      const installStops = () => {
+        if (!engine) return;
+        const eng = engine;
+        const base0 = eng.getCamera().scale;
+        const cuts0 = bandCuts(
+          descriptor.stops.map((s) => descriptor.stops[0].spanM / Math.max(1e-6, s.spanM)),
+        );
+        const mid: readonly [number, number] = [p.X0 + spanM / 2, p.Y0 + spanM / 2];
+        const scales: number[] = [];
+        stopsRef.current = descriptor.stops.map((s, i) => {
+          const at0 = s.at ?? mid;
+          const across0 =
+            projection.proj(at0[0] + s.spanM, at0[1], 0)[0] - projection.proj(at0[0], at0[1], 0)[0];
+          scales[i] = (eng.viewport.W * 0.94) / Math.max(1e-6, Math.abs(across0));
+          return {
+            label: s.label,
+            go: () => {
+              const at = s.at ?? mid;
+              const c = projection.proj(at[0], at[1], 0);
+              const across =
+                projection.proj(at[0] + s.spanM, at[1], 0)[0] - projection.proj(at[0], at[1], 0)[0];
+              const scale = (eng.viewport.W * 0.94) / Math.max(1e-6, Math.abs(across));
+              eng.setStep(stepForZ(scale / base0, stopCutsRef.current ?? cuts0));
+              eng.setCamera({ cx: c[0], cy: c[1], scale });
+              /* the plate is the only picture there is until the model is
+                 built, so it follows the camera rather than sitting where
+                 the reader left it */
+              if (tilePlate) {
+                const r2 = host.getBoundingClientRect();
+                tilePlate.draw(eng.getCamera(), r2.width, r2.height, window.devicePixelRatio || 1);
+              }
+              setZoomStop(i);
+              setNonce((n) => n + 1);
+            },
+            i,
+          };
+        });
+        stopScalesRef.current = scales;
+      };
+
       /* the whole city, centred on the DEM's own middle */
       const midX = p.X0 + spanM / 2;
       const midY = p.Y0 + spanM / 2;
@@ -830,6 +897,13 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         scale: (rect.width * 0.92) / Math.max(1, across),
       });
       engine.resize(rect.width, rect.height, window.devicePixelRatio || 1);
+      /* ── AND THE CONTROLS, HERE, NOT SEVEN SECONDS LATER ───────────────
+         Every number a stop needs is on screen already: the descriptor's
+         spans, the projection, and this camera. Building them here rather
+         than at the end of the boot is what lets a reader move around a city
+         that is still drawing itself. */
+      installStops();
+      setCamUp(true);
       /* the tiles at this very camera, until the model is drawn — the plate
          itself was made, and its tiles asked for, before the data loaded */
       if (tilePlate) {
@@ -891,6 +965,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          awaited here and the skip set is read straight off it; the layer that
          draws them fills its meshes in `onBuilt`, which is why they are added
          to the scene from inside the callback and not from `.meshes`. */
+      setBootStep(2);
       const lmTable = await data.landmarks().catch(() => null);
       if (disposed || !engine) return;
       const heroSkip = new Set<number>((lmTable?.heroes ?? []).map((h) => h.bi));
@@ -1033,6 +1108,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       rise.setZex(engine.zex());
       rise.setZexb(descriptor.look.zexb);
       const chunkMeshes: Object3D[][] = [];
+      setBootStep(3);
       const buildings = await buildingsLayerAsync(data, {
         rise,
         zexb: descriptor.look.zexb,
@@ -1140,6 +1216,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          especially: without it the shore is the DEM mask's own staircase, and
          at the whole-city camera that blocky edge is the first thing a reader
          sees. The canopy chunk is its own tier. */
+      setBootStep(4);
       await canopyTier;
       if (disposed || !engine) return;
       await breathe();
@@ -1159,6 +1236,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          optional asset — a city without `base/rail.json` simply has none —
          and it draws only from the year its own dataset speaks for. See
          `layers/rail.ts`. */
+      setBootStep(5);
       const rail = await railLayer(data, {
         scene: engine.scene,
         elevAt: groundAt,
@@ -1645,43 +1723,13 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         }
       }
 
-      /* ── HOW CLOSE THE READER IS, IN THE MAP'S OWN WORDS ─────────────────
-         The panel decides what a click means — the neighbourhood, a street,
-         a building — and it needs to know how far in the reader is. The stops
-         already convert metres-across into a camera scale; keeping those
-         scales lets a pick be classified against them without the panel
-         knowing anything about projections. */
-      const stopScales: number[] = [];
-      stopsRef.current = descriptor.stops.map((s, i) => {
-        const at0 = s.at ?? [p.X0 + spanM / 2, p.Y0 + spanM / 2];
-        const across0 =
-          projection.proj(at0[0] + s.spanM, at0[1], 0)[0] -
-          projection.proj(at0[0], at0[1], 0)[0];
-        stopScales[i] = (engine!.viewport.W * 0.94) / Math.max(1e-6, Math.abs(across0));
-        return {
-        label: s.label,
-        go: () => {
-          const e = engine;
-          if (!e) return;
-          const at = s.at ?? [p.X0 + spanM / 2, p.Y0 + spanM / 2];
-          const c = projection.proj(at[0], at[1], 0);
-          const across =
-            projection.proj(at[0] + s.spanM, at[1], 0)[0] - projection.proj(at[0], at[1], 0)[0];
-          const scale = (e.viewport.W * 0.94) / Math.max(1e-6, Math.abs(across));
-          e.setStep(stepForZ(scale / base, stopCuts));
-          e.setCamera({ cx: c[0], cy: c[1], scale });
-          /* the row shows the stop it was just sent to — it only ever
-             learned the stop from a pick, so a click or a wheel left all
-             four unlit (audit of 2026-09-09) */
-          setZoomStop(i);
-          setNonce((n) => n + 1);
-        },
-        i,
-        };
-      });
-      stopScalesRef.current = stopScales;
+      /* HOW CLOSE THE READER IS, IN THE MAP'S OWN WORDS — rebuilt now that
+         the viewport is final; the same function ran when the camera came up
+         so the reader could move while the city drew. */
+      installStops();
 
       engineRef.current = engine;
+      setBootStep(BOOT_STEPS);
       setLoading(false);
       readyRef.current?.(engine, filmRef.current);
       /* ── WHAT CAME UP, FOR THE RECORD ──────────────────────────────────
@@ -2092,12 +2140,12 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
               — and the column it lived in is now the RECORD, which is a thing
               to read rather than a place to keep controls. A map's search
               belongs on the map. */}
-          {!loading ? (
+          {camUp ? (
             <div className="fx-city-find">
               <CitySearch onPick={({ hit }) => void goToHit(hit)} />
             </div>
           ) : null}
-          {!loading && stopsRef.current.length ? (
+          {camUp && stopsRef.current.length ? (
             <div
               role="group"
               aria-label={t("us.sf.thecity.map.view")}
@@ -2137,8 +2185,24 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
               <p className="fx-city-loading">The map could not be loaded. {failed}</p>
             </div>
           ) : loading ? (
+            /* ── A VEIL THAT SAYS WHERE IT IS ─────────────────────────────
+               It read "Drawing the city…" for eight seconds with nothing
+               moving, over a map with no controls, which is the picture of a
+               page that has crashed. It names the piece it is on and fills a
+               bar as each lands. The wash is unchanged. */
             <div className="fx-city-overlay">
-              <p className="fx-city-loading">Drawing the city…</p>
+              <div className="fx-city-boot" role="status" aria-live="polite">
+                <p className="fx-city-loading">
+                  {t(`us.sf.thecity.map.drawing_${bootStep}`)}
+                </p>
+                <span className="fx-city-boot-track" aria-hidden="true">
+                  <span
+                    className="fx-city-boot-bar"
+                    style={{ width: `${Math.round((bootStep / BOOT_STEPS) * 100)}%` }}
+                  />
+                </span>
+                <p className="fx-city-boot-hint">{t("us.sf.thecity.map.drawing_hint")}</p>
+              </div>
             </div>
           ) : null}
         {/* ── WHAT THE RECORD IS ABOUT ────────────────────────────────────
