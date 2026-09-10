@@ -119,3 +119,30 @@ Ajouter une série : une entrée dans `FAMILLES`, avec les identifiants ODS
 ingérés, les indices de colonnes année/montant, où lire notre chiffre, et si
 possible le `filtre_source` qui reproduit le filtre de l'export — sans lui la
 comparaison de totaux reste indicative, et une alerte indicative ne bloque rien.
+
+## `audit_echantillon.py`
+
+Le contrôle par sondage. Le crible de couverture compare des totaux ; deux jeux
+peuvent avoir le même total et des lignes fausses. Celui-ci tire des lignes au
+hasard dans ce que le site publie et va rechercher chacune au portail, une
+requête par ligne. La graine du tirage est affichée pour rejouer exactement le
+même échantillon.
+
+```bash
+python3 pipeline/scripts/audit/audit_echantillon.py --n 100
+python3 pipeline/scripts/audit/audit_echantillon.py --serie subventions --n 200
+python3 pipeline/scripts/audit/audit_echantillon.py --graine 534782389   # rejeu
+```
+
+Ce qu'il ne prouve pas : rien sur les données reconstruites depuis les PDF
+(subventions 2020-2021, investissements localisés). Elles n'ont pas
+d'équivalent interrogeable au portail et sont exclues du tirage plutôt que
+déclarées bonnes.
+
+Trois pièges de méthode ont été trouvés en l'écrivant, tous du même genre :
+comparer notre ligne à un agrégat plus large de la source. Une livraison de
+logements réapparaît sur un autre exercice, une même livraison est publiée en
+plusieurs lignes chez nous quand elle mêle des financements, et `annee` est un
+champ DATE qu'il faut interroger avec `year()`. Chacun faisait crier au faux
+sur une donnée juste. Une alerte fausse fait perdre sa valeur à l'outil : les
+trois sont documentés dans le code à l'endroit exact où ils mordent.
