@@ -536,36 +536,54 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
           </div>
           {!fonctions ? <p className="fx-v3-foot">{t("fx.pv.fonction_absent")}</p> : null}
 
-          {/* Sur desktop, les sections repliées se rangent deux par deux au lieu
-              de s'étaler sur une colonne vide à droite. */}
-          <div className="fx-pv-grid">
-          {/* 2a. À quoi sert l'argent — ventilation par fonction (DGFiP) */}
+          {/* 2a. À quoi sert l'argent — ventilation par fonction (DGFiP).
+              Liste ouverte, même grammaire que « par nature » juste au-dessus :
+              un libellé, une barre, un montant, une part. Les parts se calculent
+              sur le ventilé, pas sur le total : la rubrique 01 (dette, fiscalité,
+              opérations générales) n'appartient à aucune politique et fait sa
+              propre ligne, en bas, sans pourcentage. */}
           {fonctions && fonctions.fonctions.length >= 3 && (() => {
-            const top = fonctions.fonctions[0];
-            const deux = fonctions.fonctions.slice(0, 2);
-            const reste = fonctions.fonctions.slice(0, 6);
+            const parts = fonctions.fonctions;
+            const maxMontant = Math.max(...parts.map((f) => f.montant), fonctions.non_ventile, 1);
+            const admin = parts.find((f) => f.cle === "f0_services_generaux") ?? null;
+            const barWidth = (n: number) => `${Math.max(1.5, (n / maxMontant) * 100)}%`;
             return (
-              <section className="fx-pv-section">
-                <H2 id="a-quoi-sert">{fill("fx.pv.fonc.h2", { denom: deNom(commune.nom) })}</H2>
-                <SecNum v={String(Math.round(top.share * 100))} u="%" />
-                <p className="fx-pv-l1">{fill("fx.pv.fonc.l1", { lib: (isEn ? top.libelle_en : top.libelle).toLowerCase(), n: euro(top.montant) })}</p>
-                <p className="fx-pv-l2">{fill("fx.pv.fonc.l2", { a: (isEn ? deux[1].libelle_en : deux[1].libelle).toLowerCase(), pct: Math.round(deux[1].share * 100) })}</p>
-                <SectionFold id="a-quoi-sert" label={fill("fx.pv.fonc.fold", { n: fonctions.fonctions.length })} slug={commune.slug} pop={commune.pop}>
-                  <ul className="fx-pv-fonc-list">
-                    {reste.map((f: FonctionPart) => (
-                      <li key={f.cle}>
-                        <span>{isEn ? f.libelle_en : f.libelle}</span>
-                        <span className="tnum">{euro(f.montant)}</span>
-                        <span className="tnum fx-pv-fonc-pct">{Math.round(f.share * 100)}&nbsp;%</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="fx-v3-foot">{fill("fx.pv.fonc.note", { year: fonctionsSource.annee })}</p>
-                </SectionFold>
+              <section className="fx-pv-fonc">
+                <H2 id="a-quoi-sert" sub={fill("fx.pv.fonc.h2sub", { year: fonctionsSource.annee })}>{fill("fx.pv.fonc.h2", { denom: isEn ? commune.nom : deNom(commune.nom) })}</H2>
+                <h3 className="fx-pv-fonc-h3">
+                  <span>{t("fx.pv.fonc.col")}</span>
+                  <span className="tnum">{euro(fonctions.total_ventile)}</span>
+                </h3>
+                <ul className="fx-pv-fonc-list">
+                  {parts.map((f: FonctionPart) => (
+                    <li key={f.cle} className="fx-bud-row fx-pv-fonc-row">
+                      <span className="n">{isEn ? f.libelle_en : f.libelle}</span>
+                      <span className="bar" aria-hidden="true"><i style={{ width: barWidth(f.montant) }} /></span>
+                      <Amt n={f.montant} />
+                      <span className="p tnum">{Math.round(f.share * 100)}&nbsp;%</span>
+                    </li>
+                  ))}
+                  {fonctions.non_ventile > 0 ? (
+                    <li className="fx-bud-row fx-pv-fonc-row fx-pv-fonc-nv">
+                      <span className="n">
+                        {t("fx.pv.fonc.nv")}
+                        <span className="dont">{t("fx.pv.fonc.nv_dont")}</span>
+                      </span>
+                      <span className="bar" aria-hidden="true"><i style={{ width: barWidth(fonctions.non_ventile) }} /></span>
+                      <Amt n={fonctions.non_ventile} />
+                      <span className="p tnum" />
+                    </li>
+                  ) : null}
+                </ul>
+                {admin ? <p className="fx-v3-foot">{t("fx.pv.fonc.admin_note")}</p> : null}
+                <p className="fx-v3-foot">{t("fx.pv.fonc.note")}</p>
               </section>
             );
           })()}
 
+          {/* Sur desktop, les sections repliées se rangent deux par deux au lieu
+              de s'étaler sur une colonne vide à droite. */}
+          <div className="fx-pv-grid">
           {/* 2b. Taxe foncière */}
           {taxeFonciere && taxeFonciere.tfb != null && (
             <section className="fx-pv-section">

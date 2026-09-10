@@ -101,28 +101,34 @@ CSV_NAME = "BalanceSPL_Fonction_2024_Dec2025.csv"
 YEAR = 2024
 
 # Mapping fonction principale (0-9) → clé sortie + libellés
+# ⚠ DEUX NOMENCLATURES. Le jeu est à 99 % en M57 (5,36 M de lignes contre 18 000
+# en M14) et les mêmes codes ne désignent PAS la même chose :
+#   M14 : 4 = Sport et jeunesse, 5 = Interventions sociales, 6 = Famille,
+#         7 = Logement, 8 = Aménagement, 9 = Action économique
+#   M57 : 4 = Santé et action sociale, 5 = Aménagement des territoires,
+#         6 = Action économique, 7 = Environnement, 8 = Transports (pas de 9)
+# Appliquer les libellés M14 à des codes M57 faisait apparaître Paris avec
+# « 27 % de sport et jeunesse » là où il s'agit de santé et action sociale.
+# On agrège donc sur des clés NEUTRES et on choisit le libellé d'après la
+# nomenclature dominante de chaque commune.
 FONCTIONS = [
-    ("f0_services_generaux",
-     "Services généraux", "General administration"),
-    ("f1_securite",
-     "Sécurité et salubrité publiques", "Security and public health"),
-    ("f2_enseignement",
-     "Enseignement-formation", "Education and training"),
-    ("f3_culture",
-     "Culture", "Culture"),
-    ("f4_sport_jeunesse",
-     "Sport et jeunesse", "Sports and youth"),
-    ("f5_social_sante",
-     "Interventions sociales et santé", "Social action and health"),
-    ("f6_famille",
-     "Famille", "Family (childcare)"),
-    ("f7_logement",
-     "Logement", "Housing"),
-    ("f8_amenagement_env",
-     "Aménagement, environnement", "Urban planning, environment"),
-    ("f9_action_eco",
-     "Action économique", "Economic action"),
+    ("f0_services_generaux", "Administration générale", "General administration"),
+    ("f1_securite", "Sécurité et salubrité publiques", "Security and public health"),
+    ("f2_enseignement", "Enseignement-formation", "Education and training"),
+    ("f3_culture", "Culture, vie sociale, jeunesse et sports", "Culture, youth and sports"),
+    ("f4", "Santé et action sociale", "Health and social action"),
+    ("f5", "Aménagement des territoires et habitat", "Regional planning and housing"),
+    ("f6", "Action économique", "Economic action"),
+    ("f7", "Environnement", "Environment"),
+    ("f8", "Transports", "Transport"),
+    ("f9_action_eco", "Action économique (M14)", "Economic action (M14)"),
+    ("nv", "Dépenses non ventilées (dette, fiscalité, opérations générales)",
+     "Unallocated spending (debt, taxes, general operations)"),
 ]
+LIB_M14 = {"f3_culture": ("Culture", "Culture"), "f4": ("Sport et jeunesse", "Sports and youth"),
+           "f5": ("Interventions sociales et santé", "Social action and health"),
+           "f6": ("Famille", "Family (childcare)"), "f7": ("Logement", "Housing"),
+           "f8": ("Aménagement, environnement", "Urban planning, environment")}
 
 # Index columns in CSV (semicolon-separated, header verified manually)
 COL_NDEPT = 2
@@ -175,15 +181,27 @@ def parse_obnetdeb(s: str) -> float:
 
 
 def fonction_principale(code: str) -> str | None:
-    """Extract single-digit primary function code (0-9) from FONCTION cell."""
+    """Fonction principale d'un code de la balance, ou "nv" pour la rubrique
+    « 01 — Opérations non ventilables ».
+
+    La rubrique 01 porte la dette, la fiscalité et les opérations générales que
+    la commune ne rattache à AUCUNE politique publique. La replier dans la
+    fonction 0 « Services généraux » gonflait celle-ci d'un tiers et faisait
+    lire « 48 % d'administration générale » à Pantin, alors que 23,3 M€ sur
+    68,5 M€ n'étaient tout simplement pas ventilés. On la sort donc, et les
+    parts se calculent sur ce qui est réellement ventilé.
+    """
     if not code:
         return None
     if code.startswith("9"):
         # Vote par fonction : "9" + section (0-9) + fonction (0-9) + sous-rubrique
         if len(code) >= 3 and code[2].isdigit():
-            return code[2]
+            return "nv" if code[1:3] == "01" else code[2]
         return None
-    # Vote par nature : 1er chiffre = fonction principale
+    # Vote par nature : les codes 01, 010…019 sont la rubrique non ventilable ;
+    # 020, 022… sont bien l'administration générale.
+    if code[:2] == "01" or code == "01":
+        return "nv"
     if code[0].isdigit():
         return code[0]
     return None
@@ -204,6 +222,7 @@ def stream_aggregate(zip_path: Path) -> tuple[
     rows_skipped = 0
 
     fonc_key_by_digit = {str(i): FONCTIONS[i][0] for i in range(10)}
+    fonc_key_by_digit["nv"] = "nv"
 
     with zipfile.ZipFile(zip_path) as zf:
         with zf.open(CSV_NAME, "r") as raw:
@@ -240,7 +259,10 @@ def stream_aggregate(zip_path: Path) -> tuple[
                     continue
                 # Expenditure-side comptes only
                 compte = row[COL_COMPTE]
-                if not compte or compte[0] not in ("6", "2"):
+                # Fonctionnement SEULEMENT (classe 6). Les comptes de classe 2
+                # sont de l'investissement : les additionner gonflait le total
+                # de ~20 % (Nemours 21,4 M€ au lieu des 17,8 M€ de sa maquette).
+                if not compte or compte[0] != "6":
                     rows_skipped += 1
                     continue
                 # Resolve fonction
@@ -271,7 +293,9 @@ def stream_aggregate(zip_path: Path) -> tuple[
                     "libelle": row[COL_LBUDG],
                     "fonctions": defaultdict(float),
                     "total": 0.0,
+                    "nomen": defaultdict(float),
                 })
+                bucket["nomen"][row[COL_NOMEN] or "?"] += amount
                 bucket["fonctions"][fkey] += amount
                 bucket["total"] += amount
                 national[fkey] += amount
@@ -305,9 +329,22 @@ def build_payload(
                 "share": round(amt / total, 4),
                 "montant": round(amt, 0),
             }
+        nomen = max(bucket.get("nomen") or {"M57": 1}, key=lambda k: (bucket.get("nomen") or {}).get(k, 0))
+        for k in fonction_keys:
+            fr, en = (LIB_M14.get(k) if nomen.startswith("M14") else None) or (label_fr[k], label_en[k])
+            fons[k]["libelle"] = fr
+            fons[k]["libelle_en"] = en
+        # Les parts se calculent sur ce qui est réellement VENTILÉ : sinon
+        # l'école paraît minuscule à côté d'un fourre-tout non ventilé.
+        ventile = total - bucket["fonctions"].get("nv", 0.0)
+        for k in fonction_keys:
+            amt = bucket["fonctions"].get(k, 0.0)
+            fons[k]["share"] = round(amt / ventile, 4) if (ventile > 0 and k != "nv") else None
         by_insee_out[insee] = {
             "libelle": bucket["libelle"],
             "total": round(total, 0),
+            "total_ventile": round(ventile, 0),
+            "nomenclature": nomen,
             "fonctions": fons,
         }
 
@@ -377,15 +414,15 @@ def main() -> int:
     _log(f"  ✓ Wrote {OUTPUT_FILE.relative_to(ROOT)} ({size_kb:.1f} KB)")
 
     # Sanity report
-    nat_share_sum = sum(v["share"] for v in payload["moyenne_nationale_ponderee"].values())
+    nat_share_sum = sum((v.get("share") or 0) for v in payload["moyenne_nationale_ponderee"].values())
     _log(f"  • National share sum: {nat_share_sum:.3f} (expected ~1.0)")
     for code, label in [("75056", "Paris"), ("13055", "Marseille"),
                         ("69123", "Lyon"), ("31555", "Toulouse")]:
         if code in payload["by_insee"]:
             b = payload["by_insee"][code]
-            top = max(b["fonctions"].items(), key=lambda kv: kv[1]["share"])
+            top = max(b["fonctions"].items(), key=lambda kv: kv[1].get("share") or 0)
             _log(f"  • {label} ({code}): total {b['total']/1e6:.0f} M€ — "
-                 f"top fonction = {top[0]} ({top[1]['share']*100:.1f}%)")
+                 f"top fonction = {top[1]['libelle'][:26]} ({(top[1].get('share') or 0)*100:.1f}%)")
         else:
             _log(f"  • {label} ({code}): NOT in dataset (no fonction reported)")
 

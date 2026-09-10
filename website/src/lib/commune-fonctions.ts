@@ -17,7 +17,12 @@ export type FonctionPart = {
   share: number;
 };
 export type CommuneFonctions = {
+  /** Total des dépenses de fonctionnement, ventilé ou non. */
   total: number;
+  /** Ce qui est rattaché à une politique publique : le dénominateur des parts. */
+  total_ventile: number;
+  /** Rubrique 01 « opérations non ventilables » : dette, fiscalité, opérations générales. */
+  non_ventile: number;
   nomenclature: string;
   fonctions: FonctionPart[];
 };
