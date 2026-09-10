@@ -15447,6 +15447,16 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   font-family: var(--f-mono); font-size: 10px; letter-spacing: .04em;
   color: var(--muted); margin-top: -2px;
 }
+/* Ce que le lieu a reçu avant le seuil commun, donc hors du montant au-dessus.
+ * Pas de couleur nouvelle : sur le fond crème du site la couleur porte un sens
+ * précis — rouge pour les dates de séance, bleu pour les liens, ocre pour
+ * l'investissement — et cette ligne n'est ni une alerte ni une catégorie, c'est
+ * une précision. La hiérarchie se fait donc à la taille et à l'espacement,
+ * comme partout ailleurs dans la page. */
+.theme-fusion .fx-voisin-avant {
+  font-family: var(--f-mono); font-size: 9px; letter-spacing: .05em;
+  color: var(--muted); opacity: .72; margin-top: -3px; white-space: nowrap;
+}
 .theme-fusion .fx-lieuxlies-intro {
   font-size: 12.5px; color: var(--muted); margin: -4px 0 12px; line-height: 1.5;
 }

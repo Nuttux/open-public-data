@@ -150,6 +150,10 @@ export type LieuIndexEntry = {
   n_lieu: number | null;
   n_moments: number;
   argent_total_eur?: number;
+  /** Ce que le lieu a reçu AVANT le seuil commun, et qui n'est donc pas dans
+   *  `argent_total_eur`. Publié pour que la vignette puisse le dire. */
+  depense_reelle_avant_seuil_eur?: number;
+  seuil_commun?: number;
   /** Composantes du chiffre : versé (subventions + chantiers réglés) et plafonds de contrats. */
   depense_reelle_eur?: number;
   engage_eur?: number;

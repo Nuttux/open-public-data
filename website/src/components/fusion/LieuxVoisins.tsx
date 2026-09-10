@@ -48,6 +48,18 @@ export default async function LieuxVoisins({
             {l.photo ? <img src={l.photo} alt="" loading="lazy" /> : <span className="fx-voisin-noimg" />}
             <span className="fx-voisin-name">{l.name}</span>
             {(l.argent_total_eur ?? 0) > 0 && <span className="fx-voisin-meta">{fmtEur(l.argent_total_eur ?? 0, locale)}</span>}
+            {/* Le montant de la vignette couvre la fenêtre commune à tous les
+                lieux. Sans cette seconde ligne, la Gaîté-Lyrique affichait
+                1,9 M€ à côté de Carnavalet à 41 M€ alors que 97 % de son
+                argent est antérieur : un contresens pour qui parcourt la
+                liste. Seuil d'affichage à 1 M€, en dessous ça n'apprend rien
+                et ça charge la vignette. */}
+            {(l.depense_reelle_avant_seuil_eur ?? 0) >= 1e6 && (
+              <span className="fx-voisin-avant">
+                + {fmtEur(l.depense_reelle_avant_seuil_eur ?? 0, locale)}{" "}
+                {locale === "en" ? `before ${l.seuil_commun ?? ""}` : `avant ${l.seuil_commun ?? ""}`}
+              </span>
+            )}
           </Link>
         ))}
       </div>
