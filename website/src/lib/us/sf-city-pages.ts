@@ -10,8 +10,9 @@
  *
  * Only ever imported by server components and the sitemap.
  */
-import { readFileSync, readdirSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import path from "node:path";
+import { headers } from "next/headers";
 import {
   KIND_WORDING,
   byInterest,
@@ -39,31 +40,66 @@ interface SubjectsFile {
   readonly s: readonly { bit: number; slug: string; l: string; note: string }[];
 }
 interface HoodFacts {
-  readonly hoods: readonly { i: number; name: string; record: { y0: number; y1: number; n: number } }[];
+  readonly hoods: readonly {
+    i: number;
+    name: string;
+    record: { y0: number; y1: number; n: number };
+  }[];
 }
 
-let cache: {
-  streets: StreetIndexFile;
-  subjects: SubjectsFile;
-  cap: number;
-  facts: HoodFacts;
-  hoods: HoodRecords[];
-} | null = null;
+/**
+ * ── ONE FILE PER QUESTION, AND NEVER A FILE THIS ROUTE DOES NOT ASK ─────
+ *
+ * Each of these is read at most once per lambda and cached in module scope.
+ * They are separate rather than one `base()` because a route carries only
+ * the files it opens (`next.config.ts` §outputFileTracingIncludes) and a
+ * street page has no use for the 2.2 MB of neighbourhood records.
+ */
+function once<T>(read: () => T): () => T {
+  let v: T | undefined;
+  return () => (v === undefined ? (v = read()) : v);
+}
 
-function base() {
-  if (cache) return cache;
-  const hoods = readdirSync(path.join(DIR, "hood"))
-    .filter((f) => /^\d+\.json$/.test(f))
-    .map((f) => readJson<HoodRecords>(`hood/${f}`))
-    .sort((a, b) => a.i - b.i);
-  cache = {
-    streets: readJson<StreetIndexFile>("street-index.json"),
-    subjects: readJson<SubjectsFile>("subjects.json"),
-    cap: readJson<{ street_cap?: number }>("shards.json").street_cap ?? 0,
-    facts: readJson<HoodFacts>("hood-facts.json"),
-    hoods,
-  };
-  return cache;
+const streetIndex = once(() => readJson<StreetIndexFile>("street-index.json"));
+const subjectsFile = once(() => readJson<SubjectsFile>("subjects.json"));
+const hoodFacts = once(() => readJson<HoodFacts>("hood-facts.json"));
+const streetCap = once(
+  () => readJson<{ street_cap?: number }>("shards.json").street_cap ?? 0,
+);
+
+/**
+ * ── THE STREET'S OWN ROWS, WHICH THIS FUNCTION MAY NOT CARRY ────────────
+ *
+ * `public/data/us/sf/city/blocks/street/**` is excluded from every `/us/**`
+ * function bundle (`next.config.ts`): 21 MB of per-street records that the
+ * BROWSER fetches as it needs them, and that no server route opened until
+ * this page existed. An `outputFileTracingIncludes` entry cannot bring them
+ * back — excludes are applied after includes and always win.
+ *
+ * So the file is read from disk where it is there (dev, and the build), and
+ * fetched from our own origin where it is not — the same answer the block
+ * share card gives to the same problem (`lib/og/us-sf-cards.tsx`). The page
+ * is edge-cached for a day, so this is one request per street per deploy.
+ */
+async function streetRows(file: string): Promise<BlockDecision[] | null> {
+  try {
+    return readJson<BlockDecision[]>(`street/${file}.json`);
+  } catch {
+    /* not in this bundle — over HTTP, below */
+  }
+  try {
+    const h = await headers();
+    const host = h.get("x-forwarded-host") ?? h.get("host");
+    if (!host) return null;
+    const proto = h.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
+    const r = await fetch(
+      `${proto}://${host}/data/us/sf/city/blocks/street/${file}.json`,
+      { next: { revalidate: 86400 } },
+    );
+    return r.ok ? ((await r.json()) as BlockDecision[]) : null;
+  } catch {
+    return null;
+  }
 }
 
 const MONTHS = [
@@ -141,9 +177,8 @@ function faceOf(rows: readonly BlockDecision[]): PageRow | null {
 
 /** subjects by the row's own mask — the same bits `threadsIn` reads */
 function subjectsOf(rows: readonly BlockDecision[], top = 6): PageSubject[] {
-  const { subjects } = base();
   const out: PageSubject[] = [];
-  for (const s of subjects.s) {
+  for (const s of subjectsFile().s) {
     let n = 0;
     for (const r of rows) {
       const sm = r.sm;
@@ -183,14 +218,28 @@ function busiestOf(decades: readonly PageDecade[], n: number): number | null {
 /* ── NEIGHBOURHOODS ──────────────────────────────────────────────────────── */
 
 export function listHoodPages(): { slug: string; name: string; n: number }[] {
-  return base().hoods.map((h) => ({ slug: hoodSlug(h.name), name: h.name, n: h.n }));
+  /* hood-facts names every neighbourhood and its count — the 41 record files
+     are opened only by the page that renders one */
+  return hoodFacts().hoods.map((h) => ({
+    slug: hoodSlug(h.name),
+    name: h.name,
+    n: h.record.n,
+  }));
 }
 
 export function hoodPage(slug: string): CityPage | null {
-  const { hoods, facts, streets, cap } = base();
-  const h = hoods.find((x) => hoodSlug(x.name) === slug);
-  if (!h) return null;
-  const rec = facts.hoods.find((x) => x.i === h.i)?.record;
+  const facts = hoodFacts();
+  const at = facts.hoods.find((x) => hoodSlug(x.name) === slug);
+  if (!at) return null;
+  let h: HoodRecords;
+  try {
+    h = readJson<HoodRecords>(`hood/${at.i}.json`);
+  } catch {
+    return null;
+  }
+  const streets = streetIndex();
+  const cap = streetCap();
+  const rec = at.record;
   const rows = h.decades.flatMap((d) => d.rows);
   const decades: PageDecade[] = h.decades
     .filter((d) => d.n > 0)
@@ -236,23 +285,18 @@ export function hoodPage(slug: string): CityPage | null {
 /* ── STREETS ─────────────────────────────────────────────────────────────── */
 
 export function listStreetPages(): { slug: string; file: string; n: number }[] {
-  const { streets } = base();
-  return Object.entries(streets.n)
+  return Object.entries(streetIndex().n)
     .filter(([, n]) => n > 0)
     .map(([file, n]) => ({ slug: streetSlug(file), file, n }));
 }
 
-export function streetPage(slug: string): CityPage | null {
-  const { streets, cap } = base();
+export async function streetPage(slug: string): Promise<CityPage | null> {
+  const streets = streetIndex();
+  const cap = streetCap();
   const file = Object.keys(streets.n).find((f) => streetSlug(f) === slug);
   if (!file) return null;
-  let rows: BlockDecision[];
-  try {
-    rows = readJson<BlockDecision[]>(`street/${file}.json`);
-  } catch {
-    return null;
-  }
-  if (!rows.length) return null;
+  const rows = await streetRows(file);
+  if (!rows || !rows.length) return null;
   const by = new Map<number, BlockDecision[]>();
   for (const r of rows) {
     const dec = Math.floor(r.y / 10) * 10;
