@@ -2185,24 +2185,27 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
               <p className="fx-city-loading">The map could not be loaded. {failed}</p>
             </div>
           ) : loading ? (
-            /* ── A VEIL THAT SAYS WHERE IT IS ─────────────────────────────
-               It read "Drawing the city…" for eight seconds with nothing
-               moving, over a map with no controls, which is the picture of a
-               page that has crashed. It names the piece it is on and fills a
-               bar as each lands. The wash is unchanged. */
-            <div className="fx-city-overlay">
-              <div className="fx-city-boot" role="status" aria-live="polite">
-                <p className="fx-city-loading">
-                  {t(`us.sf.thecity.map.drawing_${bootStep}`)}
-                </p>
-                <span className="fx-city-boot-track" aria-hidden="true">
-                  <span
-                    className="fx-city-boot-bar"
-                    style={{ width: `${Math.round((bootStep / BOOT_STEPS) * 100)}%` }}
-                  />
-                </span>
-                <p className="fx-city-boot-hint">{t("us.sf.thecity.map.drawing_hint")}</p>
-              </div>
+            /* ── A LINE, NOT A CURTAIN ────────────────────────────────────
+               > "shouldnt there just be a small text saying map loading"
+
+               It was a wash over the whole stage with "Drawing the city…" in
+               the middle of it, and the wash was there to hide a city that
+               was not drawn yet. The tile plate draws it now, and the zoom
+               and the search work from 1.5 s, so there is nothing left to
+               hide: the map stays open and one small line in the corner says
+               what is still coming. It names the piece and fills a hairline
+               as each lands, because "loading" that never moves is what a
+               broken page looks like. */
+            <div className="fx-city-boot" role="status" aria-live="polite">
+              <span className="fx-city-boot-track" aria-hidden="true">
+                <span
+                  className="fx-city-boot-bar"
+                  style={{ width: `${Math.round((bootStep / BOOT_STEPS) * 100)}%` }}
+                />
+              </span>
+              <span className="fx-city-boot-l">
+                {t(`us.sf.thecity.map.drawing_${bootStep}`)}
+              </span>
             </div>
           ) : null}
         {/* ── WHAT THE RECORD IS ABOUT ────────────────────────────────────
