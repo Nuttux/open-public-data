@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T14:24:24.851547+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "bois-de-boulogne",
   "name": "Bois de Boulogne",
@@ -328,9 +328,11 @@
       "2014": 764312.63,
       "2015": 744027.95,
       "2016": 499869.28,
-      "2017": 624893.84
+      "2017": 624893.84,
+      "2018": 20909.77,
+      "2019": 9360.58
     },
-    "total_eur": 12944677.57,
+    "total_eur": 12974947.92,
     "operations": [
       {
         "ap_cle": "B100/0700658",
@@ -398,11 +400,12 @@
         "mandate_par_annee": {
           "2015": 531628.76,
           "2016": 170833.57,
-          "2017": 20061.6
+          "2017": 20061.6,
+          "2019": 9360.58
         },
-        "total_mandate": 722523.93,
+        "total_mandate": 731884.51,
         "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE, gestionnaire du bois). Opération couvrant l'ensemble du site.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1500658"
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1500658"
       },
       {
         "ap_cle": "1400658",
@@ -420,22 +423,24 @@
         "ap_cle": "1700658",
         "ap_texte": "BOIS DE BOULOGNE",
         "mandate_par_annee": {
-          "2017": 550048.47
+          "2017": 550048.47,
+          "2018": 19828.53
         },
-        "total_mandate": 550048.47,
+        "total_mandate": 569877.0,
         "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE, gestionnaire du bois). Opération couvrant l'ensemble du site.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1700658"
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1700658"
       },
       {
         "ap_cle": "1600658",
         "ap_texte": "BOIS DE BOULOGNE",
         "mandate_par_annee": {
           "2016": 328764.24,
-          "2017": 54783.77
+          "2017": 54783.77,
+          "2018": 1081.24
         },
-        "total_mandate": 383548.01,
+        "total_mandate": 384629.25,
         "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE, gestionnaire du bois). Opération couvrant l'ensemble du site.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1600658"
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1600658"
       },
       {
         "ap_cle": "1300658",
@@ -473,7 +478,7 @@
     ],
     "periode": [
       "2009",
-      "2017"
+      "2019"
     ],
     "source": {
       "name": "Comptes administratifs — autorisations de programme, Ville de Paris",

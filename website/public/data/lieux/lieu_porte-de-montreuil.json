@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T14:24:24.851547+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "porte-de-montreuil",
   "name": "Porte de Montreuil",
@@ -315,25 +315,29 @@
   "mandate": {
     "par_annee": {
       "2016": 26695.1,
-      "2017": 120970.15
+      "2017": 120970.15,
+      "2019": 293305.2,
+      "2020": 286723.81
     },
-    "total_eur": 147665.25,
+    "total_eur": 727694.26,
     "operations": [
       {
         "ap_cle": "1604922",
         "ap_texte": "PORTE DE MONTREUIL (20e)",
         "mandate_par_annee": {
           "2016": 26695.1,
-          "2017": 120970.15
+          "2017": 120970.15,
+          "2019": 293305.2,
+          "2020": 286723.81
         },
-        "total_mandate": 147665.25,
+        "total_mandate": 727694.26,
         "preuve": "Le libellé de l'opération désigne ce lieu même : « PORTE DE MONTREUIL (20e) », mission « VOIRIE ET DEPLACEMEN », direction DVD. Dépenses de voirie mandatées en 2016-2017, contemporaines des marchés d'études de l'aménagement du lieu (études urbaines TVK notifiées 2016-11-14, études d'impact et qualité de l'air notifiées 2017-04-04) et cohérentes avec l'implication historique de la DVD sur ce site (délib. 2007 DVD 177 et 2007 DVD 248, GPRU « Porte de Montreuil » 20e).",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1604922"
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604922"
       }
     ],
     "periode": [
       "2016",
-      "2017"
+      "2020"
     ],
     "source": {
       "name": "Comptes administratifs — autorisations de programme, Ville de Paris",

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T14:24:24.851547+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "theatre-du-rond-point",
   "name": "Théâtre du Rond-Point",
@@ -390,9 +390,10 @@
       "2012": 89192.19,
       "2013": 949.09,
       "2015": 110819.46,
-      "2017": 81560.46
+      "2017": 81560.46,
+      "2018": 46771.27
     },
-    "total_eur": 1891358.65,
+    "total_eur": 1938129.92,
     "operations": [
       {
         "ap_cle": "B100/0902067",
@@ -423,11 +424,12 @@
         "ap_texte": "Théâtre du Rond-Point (8e)",
         "mandate_par_annee": {
           "2015": 110819.46,
-          "2017": 81560.46
+          "2017": 81560.46,
+          "2018": 46771.27
         },
-        "total_mandate": 192379.92,
+        "total_mandate": 239151.19,
         "preuve": "Libellé de l'opération verbatim : « Théâtre du Rond-Point (8e) », mission AFFAIRES CULTURELLES, direction DAC — nomme le lieu avec son arrondissement, identique à l'intitulé des délibérations DAC visant ce théâtre.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1102067"
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1102067"
       },
       {
         "ap_cle": "B100/1102067",
@@ -443,7 +445,7 @@
     ],
     "periode": [
       "2009",
-      "2017"
+      "2018"
     ],
     "source": {
       "name": "Comptes administratifs — autorisations de programme, Ville de Paris",

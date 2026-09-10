@@ -413,15 +413,31 @@ def resolve_argent(slug: str) -> dict:
             "mandate_par_annee": par_annee,
             "total_mandate": round(sum(par_annee.values()), 2),
             "preuve": a.get("preuve"),
-            "source_url": ("https://opendata.paris.fr/explore/dataset/"
-                           "comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/"
-                           "?refine.autorisation_de_programme_cle=" + urllib.parse.quote(str(a.get("ap_cle") or ""))),
+            # Le mart cite le jeu qui porte l'exercice le plus récent de
+            # l'opération (M14 jusqu'en 2017, M57 ensuite) ; repli sur M14 pour
+            # un mart antérieur à la fusion des deux jeux.
+            "source_url": m.get("source_url") or (
+                "https://opendata.paris.fr/explore/dataset/"
+                "comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/"
+                "?refine.autorisation_de_programme_cle=" + urllib.parse.quote(str(a.get("ap_cle") or ""))),
         })
     ap_ops.sort(key=lambda o: -o["total_mandate"])
     mandate_par_annee: dict[str, float] = {}
     for o in ap_ops:
         for an, v in o["mandate_par_annee"].items():
             mandate_par_annee[an] = round(mandate_par_annee.get(an, 0) + v, 2)
+
+    # Le même chantier est publié DEUX fois pour les exercices couverts par les
+    # deux annexes du compte administratif : au niveau opération (AP/CP, série
+    # continue depuis 2009) et au niveau projet localisé (annexe IL). Vérifié
+    # 2026-09-10 sur les exercices 2022 : Théâtre de la Ville 9,56 M€ (AP) et
+    # 9,66 M€ (IL) sous le même libellé, Stade Jean Bouin et parc André Citroën
+    # au centime près. Les additionner double la dépense. Règle : pour un
+    # exercice couvert par la série AP du lieu, c'est elle qui fait foi ; les
+    # lignes IL de cet exercice sont écartées. Les exercices que l'AP ne couvre
+    # pas (au-delà du dernier publié, ou lieu sans opération rattachée) gardent
+    # leurs lignes IL.
+    invest = [p for p in invest if str(p.get("annee")) not in mandate_par_annee]
 
     return {"exploitant": exploitant, "residents": residents[:8],
             "investissements": invest, "invest_total_eur": sum(p["montant_eur"] for p in invest),

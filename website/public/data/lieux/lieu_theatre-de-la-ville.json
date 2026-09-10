@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T14:24:24.851547+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "theatre-de-la-ville",
   "name": "Théâtre de la Ville",
@@ -33,10 +33,8 @@
     ],
     "n_bmo_brut": 2544,
     "n_bmo_verifies": 1,
-    "invest_total_eur": 9655229.389999999,
-    "invest_annees": [
-      "2022"
-    ],
+    "invest_total_eur": 0,
+    "invest_annees": [],
     "lecture_mode": "titre nommant le lieu (32 trouvés)",
     "lecture_mode_en": "title naming the place (32 found)",
     "n_lus": 32,
@@ -414,15 +412,7 @@
   ],
   "bmo_extraits": [],
   "bmo_recit": null,
-  "invest": [
-    {
-      "annee": "2022",
-      "montant_eur": 9655229.389999999,
-      "nom_projet": "THEATRE DE LA VILLE - RENOVATION",
-      "preuve": "Le nom du projet nomme ce lieu : « THEATRE DE LA VILLE - RENOVATION », à 96 m du point du lieu. Confirmé par 2015 DPA 34 « Théâtre de la Ville 2, place du Châtelet (4e) - Rénovation partielle » et par le débat de septembre 2019 : « le chantier de rénovation du théâtre de la Ville ».",
-      "id": "2022_gen_9d45860f"
-    }
-  ],
+  "invest": [],
   "marches": [
     {
       "numero_marche": "20181210001694",
@@ -615,20 +605,30 @@
       "2014": 636451.14,
       "2015": 1003945.93,
       "2016": 1054804.97,
-      "2017": 1806281.38
+      "2017": 1806281.38,
+      "2018": 695872.45,
+      "2019": 2818122.05,
+      "2020": 1916773.11,
+      "2021": 5374354.05,
+      "2022": 9555997.79
     },
-    "total_eur": 5590689.87,
+    "total_eur": 25951809.32,
     "operations": [
       {
         "ap_cle": "1604553",
         "ap_texte": "THEATRE DE LA VILLE - RENOVATION",
         "mandate_par_annee": {
           "2016": 663467.19,
-          "2017": 1763908.17
+          "2017": 1763908.17,
+          "2018": 662285.63,
+          "2019": 2818122.05,
+          "2020": 1900203.24,
+          "2021": 5374354.05,
+          "2022": 9555997.79
         },
-        "total_mandate": 2427375.36,
+        "total_mandate": 22738338.12,
         "preuve": "Libellé nomme ce lieu et l'opération : « THEATRE DE LA VILLE - RENOVATION » (DAC, Affaires culturelles) — chantier de rénovation du bâtiment place du Châtelet acté par 2015 DPA 34.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1604553"
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604553"
       },
       {
         "ap_cle": "1202065",
@@ -659,11 +659,13 @@
         "mandate_par_annee": {
           "2015": 401857.53,
           "2016": 268186.8,
-          "2017": 42373.21
+          "2017": 42373.21,
+          "2018": 33586.82,
+          "2020": 16569.87
         },
-        "total_mandate": 712417.54,
+        "total_mandate": 762574.23,
         "preuve": "Libellé nomme ce lieu et l'opération : « THEATRE DE LA VILLE - RENOVATION » (DAC) — correspond à la rénovation du bâtiment place du Châtelet (2015 DPA 34, mandats 2015-2017).",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1404553"
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1404553"
       },
       {
         "ap_cle": "B100/0702065",
@@ -703,7 +705,7 @@
     ],
     "periode": [
       "2009",
-      "2017"
+      "2022"
     ],
     "source": {
       "name": "Comptes administratifs — autorisations de programme, Ville de Paris",

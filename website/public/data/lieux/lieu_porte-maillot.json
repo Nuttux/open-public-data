@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T14:24:24.851547+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "porte-maillot",
   "name": "Porte Maillot",
@@ -296,24 +296,32 @@
   ],
   "mandate": {
     "par_annee": {
-      "2017": 65197.46
+      "2017": 65197.46,
+      "2018": 145460.65,
+      "2019": 1516140.88,
+      "2020": 173572.64,
+      "2021": 15572.39
     },
-    "total_eur": 65197.46,
+    "total_eur": 1915944.02,
     "operations": [
       {
         "ap_cle": "1705106",
         "ap_texte": "PORTE MAILLOT (17e) - AMENAGEMENT",
         "mandate_par_annee": {
-          "2017": 65197.46
+          "2017": 65197.46,
+          "2018": 145460.65,
+          "2019": 1516140.88,
+          "2020": 173572.64,
+          "2021": 15572.39
         },
-        "total_mandate": 65197.46,
+        "total_mandate": 1915944.02,
         "preuve": "Le libellé de l'opération désigne ce lieu : « PORTE MAILLOT (17e) - AMENAGEMENT », mission « VOIRIE ET DEPLACEMEN », direction DVD — dépense mandatée 2017, concomitante à la délibération « 2017 DVD 100 - Réaménagement de la porte Maillot. - Approbation du bilan de la concertation préalable ».",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1705106"
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1705106"
       }
     ],
     "periode": [
       "2017",
-      "2017"
+      "2021"
     ],
     "source": {
       "name": "Comptes administratifs — autorisations de programme, Ville de Paris",

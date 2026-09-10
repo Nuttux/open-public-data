@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T14:24:24.851547+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "serres-dauteuil",
   "name": "Serres d'Auteuil",
@@ -33,10 +33,8 @@
     ],
     "n_bmo_brut": 1554,
     "n_bmo_verifies": 3,
-    "invest_total_eur": 123614.0,
-    "invest_annees": [
-      "2022"
-    ],
+    "invest_total_eur": 0,
+    "invest_annees": [],
     "lecture_mode": "titre nommant le lieu (13 trouvés)",
     "lecture_mode_en": "title naming the place (13 found)",
     "n_lus": 13,
@@ -164,15 +162,7 @@
   ],
   "bmo_extraits": [],
   "bmo_recit": null,
-  "invest": [
-    {
-      "annee": 2022,
-      "montant_eur": 123614.0,
-      "nom_projet": "Jardin des Serres d'Auteuil - Réfection de la couverture du local du personnel",
-      "preuve": "Le nom du projet nomme explicitement le lieu : « Jardin des Serres d'Auteuil - Réfection de la couverture du local du personnel ». La distance géocodée (1944 m) n'est pas retenue comme critère : le nom prime.",
-      "id": "2022_16_48_025"
-    }
-  ],
+  "invest": [],
   "marches": [
     {
       "numero_marche": "20151230000549",
@@ -218,9 +208,14 @@
       "2014": 2409764.66,
       "2015": 2290019.67,
       "2016": 1443610.95,
-      "2017": 1695735.59
+      "2017": 1695735.59,
+      "2018": 513089.17,
+      "2019": 269927.78,
+      "2020": 71863.21,
+      "2021": 5541.39,
+      "2022": 29769.83
     },
-    "total_eur": 8479333.16,
+    "total_eur": 9369524.54,
     "operations": [
       {
         "ap_cle": "1204298",
@@ -229,11 +224,16 @@
           "2014": 410736.9,
           "2015": 481097.45,
           "2016": 1219957.27,
-          "2017": 1482154.59
+          "2017": 1482154.59,
+          "2018": 330750.25,
+          "2019": 195514.37,
+          "2020": 70689.27,
+          "2021": 5541.39,
+          "2022": 29769.83
         },
-        "total_mandate": 3593946.21,
+        "total_mandate": 4226211.32,
         "preuve": "Libellé : « DEMENAGEMENT DES SERRES D'AUTEUIL » (direction DEVE, mission Espaces verts) — opération nommant explicitement le lieu ; le déménagement des serres et des collections est documenté dans les délibérations du Conseil de Paris (dossier Roland-Garros, ex. 2012 DEVE 75).",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1204298"
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1204298"
       },
       {
         "ap_cle": "1304298",
@@ -242,11 +242,14 @@
           "2014": 906910.2,
           "2015": 1060679.24,
           "2016": 91538.12,
-          "2017": 204192.31
+          "2017": 204192.31,
+          "2018": 122911.78,
+          "2019": 57789.47,
+          "2020": 376.02
         },
-        "total_mandate": 2263319.87,
+        "total_mandate": 2444397.14,
         "preuve": "Libellé : « DEMENAGEMENT DES SERRES D'AUTEUIL » (DEVE, Espaces verts) — même opération nommant explicitement le lieu, confirmée par les délibérations du Conseil de Paris.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1304298"
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1304298"
       },
       {
         "ap_cle": "1104298",
@@ -255,11 +258,14 @@
           "2014": 1092117.56,
           "2015": 748242.98,
           "2016": 132115.56,
-          "2017": 9388.69
+          "2017": 9388.69,
+          "2018": 59427.14,
+          "2019": 16623.94,
+          "2020": 797.92
         },
-        "total_mandate": 1981864.79,
+        "total_mandate": 2058713.79,
         "preuve": "Libellé : « DEMENAGEMENTS DES SERRES D'AUTEUIL » (DEVE, Espaces verts) — opération nommant explicitement le lieu.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1104298"
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1104298"
       },
       {
         "ap_cle": "B100/1104298",
@@ -295,7 +301,7 @@
     ],
     "periode": [
       "2012",
-      "2017"
+      "2022"
     ],
     "source": {
       "name": "Comptes administratifs — autorisations de programme, Ville de Paris",

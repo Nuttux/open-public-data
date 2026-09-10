@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T14:24:24.851547+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "bourse-du-travail",
   "name": "Bourse du Travail",
@@ -158,10 +158,28 @@
       "2014": 139603.95,
       "2015": 251704.35,
       "2016": 651315.7,
-      "2017": 404013.33
+      "2017": 404013.33,
+      "2018": 258881.99,
+      "2019": 78384.24,
+      "2020": 230218.09,
+      "2022": 3570.71
     },
-    "total_eur": 3472052.49,
+    "total_eur": 4043107.52,
     "operations": [
+      {
+        "ap_cle": "1702651",
+        "ap_texte": "BOURSE DU TRAVAIL",
+        "mandate_par_annee": {
+          "2017": 92167.03,
+          "2018": 249918.92,
+          "2019": 78112.68,
+          "2020": 230218.09,
+          "2022": 3570.71
+        },
+        "total_mandate": 653987.43,
+        "preuve": "Libellé verbatim « BOURSE DU TRAVAIL », direction DAE. L'opération couvre l'ensemble du site multi-bâtiments (3e et 10e arr.).",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1702651"
+      },
       {
         "ap_cle": "B100/0702651",
         "ap_texte": "BOURSE DU TRAVAIL",
@@ -194,11 +212,12 @@
           "2014": 71349.88,
           "2015": 240052.23,
           "2016": 110613.28,
-          "2017": 14909.68
+          "2017": 14909.68,
+          "2018": 1037.89
         },
-        "total_mandate": 436925.07,
+        "total_mandate": 437962.96,
         "preuve": "Libellé verbatim « BOURSE DU TRAVAIL », direction DAE. Pas une enveloppe générique ni un homonyme — Paris n'a qu'une Bourse du Travail, portée par les directions économie/emploi. L'opération couvre l'ensemble du site multi-bâtiments (3e et 10e arr.).",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1402651"
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1402651"
       },
       {
         "ap_cle": "B100/1202651",
@@ -235,6 +254,19 @@
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1302651"
       },
       {
+        "ap_cle": "1602651",
+        "ap_texte": "BOURSE DU TRAVAIL",
+        "mandate_par_annee": {
+          "2016": 54138.8,
+          "2017": 112781.27,
+          "2018": 6225.91,
+          "2019": 271.56
+        },
+        "total_mandate": 173417.54,
+        "preuve": "Libellé verbatim « BOURSE DU TRAVAIL », direction DAE. L'opération couvre l'ensemble du site multi-bâtiments (3e et 10e arr.).",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1602651"
+      },
+      {
         "ap_cle": "B100/0602649",
         "ap_texte": "BOURSE DU TRAVAIL-SALLE HENAFF",
         "mandate_par_annee": {
@@ -245,17 +277,6 @@
         "total_mandate": 169465.42,
         "preuve": "Le libellé nomme le lieu et une de ses salles verbatim : « BOURSE DU TRAVAIL-SALLE HENAFF » (direction DDEEES). Travaux/aménagements sur une salle appartenant à l'institution ; celle-ci étant répartie sur trois bâtiments (3e et 10e arr.), la salle peut se trouver dans une annexe — le libellé ne précise pas le bâtiment.",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0602649"
-      },
-      {
-        "ap_cle": "1602651",
-        "ap_texte": "BOURSE DU TRAVAIL",
-        "mandate_par_annee": {
-          "2016": 54138.8,
-          "2017": 112781.27
-        },
-        "total_mandate": 166920.07,
-        "preuve": "Libellé verbatim « BOURSE DU TRAVAIL », direction DAE. L'opération couvre l'ensemble du site multi-bâtiments (3e et 10e arr.).",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1602651"
       },
       {
         "ap_cle": "B100/0702649",
@@ -271,27 +292,18 @@
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0702649"
       },
       {
-        "ap_cle": "1702651",
-        "ap_texte": "BOURSE DU TRAVAIL",
-        "mandate_par_annee": {
-          "2017": 92167.03
-        },
-        "total_mandate": 92167.03,
-        "preuve": "Libellé verbatim « BOURSE DU TRAVAIL », direction DAE. L'opération couvre l'ensemble du site multi-bâtiments (3e et 10e arr.).",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1702651"
-      },
-      {
         "ap_cle": "1202651",
         "ap_texte": "BOURSE DU TRAVAIL",
         "mandate_par_annee": {
           "2014": 14369.04,
           "2015": 1702.62,
           "2016": 2409.36,
-          "2017": 67965.9
+          "2017": 67965.9,
+          "2018": 1699.27
         },
-        "total_mandate": 86446.92,
+        "total_mandate": 88146.19,
         "preuve": "Libellé verbatim « BOURSE DU TRAVAIL », direction DAE. L'opération couvre l'ensemble du site multi-bâtiments (3e et 10e arr.).",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1202651"
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1202651"
       },
       {
         "ap_cle": "1302651",
@@ -308,7 +320,7 @@
     ],
     "periode": [
       "2009",
-      "2017"
+      "2022"
     ],
     "source": {
       "name": "Comptes administratifs — autorisations de programme, Ville de Paris",

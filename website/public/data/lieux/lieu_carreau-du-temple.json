@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T14:24:24.851547+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "carreau-du-temple",
   "name": "Carreau du Temple",
@@ -383,9 +383,12 @@
       "2014": 5002217.46,
       "2015": 2139985.35,
       "2016": 1342231.1,
-      "2017": 480715.96
+      "2017": 480715.96,
+      "2018": 134992.45,
+      "2019": 817861.3,
+      "2020": 10336.19
     },
-    "total_eur": 58124998.71,
+    "total_eur": 59088188.65,
     "operations": [
       {
         "ap_cle": "B100/0903798",
@@ -408,11 +411,14 @@
           "2014": 3329995.32,
           "2015": 1270412.19,
           "2016": 848183.14,
-          "2017": 184286.21
+          "2017": 184286.21,
+          "2018": 48923.68,
+          "2019": 239674.7,
+          "2020": 3727.92
         },
-        "total_mandate": 5632876.86,
+        "total_mandate": 5925203.16,
         "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS) : suite 2014-2017 de la même opération 03798 sur le bâtiment, après la livraison de l'équipement en 2014.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903798"
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=0903798"
       },
       {
         "ap_cle": "B100/0803798",
@@ -449,11 +455,14 @@
           "2014": 926806.66,
           "2015": 547348.61,
           "2016": 397411.35,
-          "2017": 274700.32
+          "2017": 274700.32,
+          "2018": 86068.77,
+          "2019": 578186.6,
+          "2020": 6608.27
         },
-        "total_mandate": 2146266.94,
+        "total_mandate": 2817130.58,
         "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS) : tranche AP 2010 de la même opération sur le bâtiment, mandatée 2014-2017.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1003798"
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1003798"
       },
       {
         "ap_cle": "B100/1203798",
@@ -504,7 +513,7 @@
     ],
     "periode": [
       "2009",
-      "2017"
+      "2020"
     ],
     "source": {
       "name": "Comptes administratifs — autorisations de programme, Ville de Paris",

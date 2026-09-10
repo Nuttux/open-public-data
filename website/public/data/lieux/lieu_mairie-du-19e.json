@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T14:24:24.851547+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "mairie-du-19e",
   "name": "Mairie du 19e",
@@ -71,19 +71,27 @@
   "mandate": {
     "par_annee": {
       "2010": 3123.17,
-      "2017": 73272.23
+      "2017": 73272.23,
+      "2018": 358337.85,
+      "2019": 254992.3,
+      "2020": 288657.49,
+      "2021": 6807.28
     },
-    "total_eur": 76395.4,
+    "total_eur": 985190.32,
     "operations": [
       {
         "ap_cle": "1604876",
         "ap_texte": "MAIRIE DU 19e - ACCESSIBILITE",
         "mandate_par_annee": {
-          "2017": 73272.23
+          "2017": 73272.23,
+          "2018": 358337.85,
+          "2019": 254992.3,
+          "2020": 288657.49,
+          "2021": 6807.28
         },
-        "total_mandate": 73272.23,
+        "total_mandate": 982067.15,
         "preuve": "Libellé de l'opération : \"MAIRIE DU 19e - ACCESSIBILITE\" — nomme explicitement le lieu (direction DDCT).",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1604876"
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604876"
       },
       {
         "ap_cle": "B100/0500013",
@@ -98,7 +106,7 @@
     ],
     "periode": [
       "2010",
-      "2017"
+      "2021"
     ],
     "source": {
       "name": "Comptes administratifs — autorisations de programme, Ville de Paris",

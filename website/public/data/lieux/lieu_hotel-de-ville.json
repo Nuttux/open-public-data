@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T14:24:24.851547+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "hotel-de-ville",
   "name": "Hôtel de Ville",
@@ -302,9 +302,11 @@
       "2012": 1002132.06,
       "2013": 1159545.3,
       "2014": 10746.02,
-      "2015": 965573.09
+      "2015": 965573.09,
+      "2018": 10138.86,
+      "2019": 186190.33
     },
-    "total_eur": 17760260.17,
+    "total_eur": 17956589.36,
     "operations": [
       {
         "ap_cle": "B100/0700001",
@@ -337,11 +339,13 @@
         "ap_texte": "HOTEL DE VILLE",
         "mandate_par_annee": {
           "2014": 10746.02,
-          "2015": 965573.09
+          "2015": 965573.09,
+          "2018": 10138.86,
+          "2019": 186190.33
         },
-        "total_mandate": 976319.11,
+        "total_mandate": 1172648.3,
         "preuve": "Libellé verbatim : « HOTEL DE VILLE », mission « PATRIMOINE ET ARCHIT », direction DPA — opération patrimoniale désignant nommément le bâtiment.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1000001"
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1000001"
       },
       {
         "ap_cle": "B100/0703136",
@@ -437,7 +441,7 @@
     ],
     "periode": [
       "2009",
-      "2015"
+      "2019"
     ],
     "source": {
       "name": "Comptes administratifs — autorisations de programme, Ville de Paris",

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T14:24:24.851547+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "parc-andre-citroen",
   "name": "Parc André-Citroën",
@@ -33,9 +33,8 @@
     ],
     "n_bmo_brut": 548,
     "n_bmo_verifies": 2,
-    "invest_total_eur": 3543959.13,
+    "invest_total_eur": 3177469.13,
     "invest_annees": [
-      "2022",
       "2024"
     ],
     "lecture_mode": "titre nommant le lieu (57 trouvés)",
@@ -184,13 +183,6 @@
   "bmo_recit": null,
   "invest": [
     {
-      "annee": 2022,
-      "montant_eur": 366490.0,
-      "nom_projet": "Parc André Citroën - Travaux de rénovation",
-      "preuve": "Le nom du projet nomme le lieu : « Parc André Citroën - Travaux de rénovation ». Cohérent avec la deuxième phase de rénovation du parc (budget 3,7 M€) évoquée aux Conseils de Paris de mars 2015 et février 2018.",
-      "id": "2022_15_45_017"
-    },
-    {
       "annee": 2024,
       "montant_eur": 2967076.57,
       "nom_projet": "Parc Andre Citroen - Rénovation du Grand Canal",
@@ -253,10 +245,32 @@
       "2014": 2267559.59,
       "2015": 641588.49,
       "2016": 373351.31,
-      "2017": 307201.54
+      "2017": 307201.54,
+      "2018": 15983.35,
+      "2019": 186879.75,
+      "2020": 266288.87,
+      "2021": 447740.22,
+      "2022": 366489.75
     },
-    "total_eur": 5567829.02,
+    "total_eur": 6851210.96,
     "operations": [
+      {
+        "ap_cle": "1504712",
+        "ap_texte": "PARC ANDRE CITROEN RENOVATION  2e PHASE",
+        "mandate_par_annee": {
+          "2015": 559702.76,
+          "2016": 347938.45,
+          "2017": 307201.54,
+          "2018": 15983.35,
+          "2019": 186879.75,
+          "2020": 266288.87,
+          "2021": 447740.22,
+          "2022": 366489.75
+        },
+        "total_mandate": 2498224.69,
+        "preuve": "Le libellé désigne ce lieu et l'opération : « PARC ANDRE CITROEN RENOVATION 2e PHASE » (DEVE). Cette deuxième phase de rénovation (budget 3,7 M€) est explicitement décrite aux Conseils de Paris de mars 2015 et février 2018 (« la programmation de la deuxième phase est prévue pour l'actuelle mandature »).",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1504712"
+      },
       {
         "ap_cle": "B100/0903980",
         "ap_texte": "EXTENSION PARC ANDRE CITROEN (15E)",
@@ -270,18 +284,6 @@
         "total_mandate": 1502277.84,
         "preuve": "Le libellé désigne ce lieu : « EXTENSION PARC ANDRE CITROEN (15E) », direction DEVE, mission « ESPACES VERTS ET ENV » — la DEVE est la direction gestionnaire du parc citée au Conseil de Paris (mars 2015).",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903980"
-      },
-      {
-        "ap_cle": "1504712",
-        "ap_texte": "PARC ANDRE CITROEN RENOVATION  2e PHASE",
-        "mandate_par_annee": {
-          "2015": 559702.76,
-          "2016": 347938.45,
-          "2017": 307201.54
-        },
-        "total_mandate": 1214842.75,
-        "preuve": "Le libellé désigne ce lieu et l'opération : « PARC ANDRE CITROEN RENOVATION 2e PHASE » (DEVE). Cette deuxième phase de rénovation (budget 3,7 M€) est explicitement décrite aux Conseils de Paris de mars 2015 et février 2018 (« la programmation de la deuxième phase est prévue pour l'actuelle mandature »).",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1504712"
       },
       {
         "ap_cle": "0903980",
@@ -364,7 +366,7 @@
     ],
     "periode": [
       "2009",
-      "2017"
+      "2022"
     ],
     "source": {
       "name": "Comptes administratifs — autorisations de programme, Ville de Paris",

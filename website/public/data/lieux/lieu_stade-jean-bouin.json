@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T14:24:24.851547+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "stade-jean-bouin",
   "name": "Stade Jean-Bouin",
@@ -33,10 +33,8 @@
     ],
     "n_bmo_brut": 140,
     "n_bmo_verifies": 17,
-    "invest_total_eur": 667533.71,
-    "invest_annees": [
-      "2022"
-    ],
+    "invest_total_eur": 0,
+    "invest_annees": [],
     "lecture_mode": "titre nommant le lieu (42 trouvés)",
     "lecture_mode_en": "title naming the place (42 found)",
     "n_lus": 41,
@@ -246,15 +244,7 @@
     }
   ],
   "bmo_recit": "Le stade Jean-Bouin apparaît dans le Bulletin municipal dès 1929, avec l'inscription de 100 000 francs pour l'exécution d'un mur de clôture. Au milieu des années 1930, le Conseil autorise le Club athlétique de la Société générale à mettre le stade à la disposition des clubs amateurs utilisant des joueurs professionnels, à raison de quinze réunions par an, et un concours d'éducation physique et d'athlétisme s'y tient en 1935. En 1960, le Conseil est saisi d'une nouvelle concession du stade au Club athlétique des sports généraux — présent sur le site depuis un contrat d'avril 1927 — portant sur une emprise d'environ 55 500 mètres carrés. En 1965, il désigne ses représentants à la commission de contrôle de l'exploitation du stade, dans le cadre d'une convention à conclure avec le Secrétariat d'État à la jeunesse et aux sports en vue d'une transformation en stade national d'athlétisme. L'archive s'achève en 1971 sur une intervention évoquant l'abattage d'une rangée d'arbres plantés entre l'avenue du Général-Sarrail et le stade, près de la tranchée du périphérique.",
-  "invest": [
-    {
-      "annee": "2022",
-      "montant_eur": 667533.71,
-      "nom_projet": "Stade Jean Bouin (CODP)",
-      "preuve": "Le nom du projet nomme explicitement CE lieu (« Stade Jean Bouin (CODP) »), à distance_m=47 de l'emprise. Adresse du lieu confirmée par les délibérations du Conseil de Paris : « dans l'enceinte du stade Jean-Bouin (20 à 40, avenue du Général-Sarrail - 16e) » (2006 DJS 469). Réserve de périmètre : les conventions d'occupation du domaine public (CODP) portant sur ce site couvrent, dans les délibérations disponibles, DEUX emprises — « le site dénommé \"stade Jean-Bouin\", 20 à 40, avenue du Général-Sarrail (16e) et le site des terrains de tennis du bois de Boulogne, allée Fortunée (n° 28A) ». Le montant peut donc ne pas porter en totalité sur ce seul équipement (voir stade-jean-bouin_perimetre.json).",
-      "id": "2022_gen_2dac1f39"
-    }
-  ],
+  "invest": [],
   "marches": [
     {
       "numero_marche": "20161410000952",
@@ -357,9 +347,14 @@
       "2014": 4785039.03,
       "2015": 1666614.92,
       "2016": 1407589.26,
-      "2017": 2711498.73
+      "2017": 2711498.73,
+      "2018": 568874.44,
+      "2019": 9901.05,
+      "2020": 63469.6,
+      "2021": 10377.0,
+      "2022": 667533.71
     },
-    "total_eur": 157084311.29,
+    "total_eur": 158404467.09,
     "operations": [
       {
         "ap_cle": "B100/0903877",
@@ -390,6 +385,24 @@
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0800869"
       },
       {
+        "ap_cle": "0903877",
+        "ap_texte": "STADE JEAN BOUIN",
+        "mandate_par_annee": {
+          "2014": 3560627.95,
+          "2015": 679866.29,
+          "2016": 741065.36,
+          "2017": 113461.74,
+          "2018": 513939.02,
+          "2019": 4266.0,
+          "2020": 58448.83,
+          "2021": 10377.0,
+          "2022": 667533.71
+        },
+        "total_mandate": 6349585.9,
+        "preuve": "Libellé de l'opération : « STADE JEAN BOUIN », mission « JEUNESSE ET SPORTS », direction DJS — même numéro d'opération que B100/0903877 (suite 2014-2017 du chantier du stade).",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=0903877"
+      },
+      {
         "ap_cle": "B100/0700869",
         "ap_texte": "STADE JEAN BOUIN",
         "mandate_par_annee": {
@@ -404,30 +417,20 @@
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0700869"
       },
       {
-        "ap_cle": "0903877",
-        "ap_texte": "STADE JEAN BOUIN",
-        "mandate_par_annee": {
-          "2014": 3560627.95,
-          "2015": 679866.29,
-          "2016": 741065.36,
-          "2017": 113461.74
-        },
-        "total_mandate": 5095021.34,
-        "preuve": "Libellé de l'opération : « STADE JEAN BOUIN », mission « JEUNESSE ET SPORTS », direction DJS — même numéro d'opération que B100/0903877 (suite 2014-2017 du chantier du stade).",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903877"
-      },
-      {
         "ap_cle": "1403877",
         "ap_texte": "STADE JEAN BOUIN",
         "mandate_par_annee": {
           "2014": 159355.54,
           "2015": 842326.89,
           "2016": 534179.05,
-          "2017": 2598036.99
+          "2017": 2598036.99,
+          "2018": 35465.86,
+          "2019": 5635.05,
+          "2020": 4992.0
         },
-        "total_mandate": 4133898.47,
+        "total_mandate": 4179991.38,
         "preuve": "Libellé de l'opération : « STADE JEAN BOUIN », mission « JEUNESSE ET SPORTS », direction DJS — désigne CE lieu.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1403877"
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1403877"
       },
       {
         "ap_cle": "B100/1004077",
@@ -471,16 +474,18 @@
         "mandate_par_annee": {
           "2014": 268685.36,
           "2015": 1649.36,
-          "2016": 119.6
+          "2016": 119.6,
+          "2018": 19469.56,
+          "2020": 28.77
         },
-        "total_mandate": 270454.32,
+        "total_mandate": 289952.65,
         "preuve": "Libellé de l'opération : « STADE JEAN BOUIN », mission « JEUNESSE ET SPORTS », direction DJS — même numéro d'opération que B100/0700869 (suite 2014-2016).",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0700869"
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=0700869"
       }
     ],
     "periode": [
       "2009",
-      "2017"
+      "2022"
     ],
     "source": {
       "name": "Comptes administratifs — autorisations de programme, Ville de Paris",

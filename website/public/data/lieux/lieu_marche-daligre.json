@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T14:24:24.851547+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "marche-daligre",
   "name": "Marché d'Aligre",
@@ -184,35 +184,41 @@
   "mandate": {
     "par_annee": {
       "2016": 29807.31,
-      "2017": 1397401.45
+      "2017": 1397401.45,
+      "2018": 889062.08,
+      "2020": 77663.73
     },
-    "total_eur": 1427208.76,
+    "total_eur": 2393934.57,
     "operations": [
       {
         "ap_cle": "1704842",
         "ap_texte": "MARCHE D'ALIGRE - HALLE BEAUVAU (12e)",
         "mandate_par_annee": {
-          "2017": 1309661.8
+          "2017": 1309661.8,
+          "2018": 69208.82,
+          "2020": 71748.68
         },
-        "total_mandate": 1309661.8,
+        "total_mandate": 1450619.3,
         "preuve": "Libellé de l'opération nomme explicitement CE lieu : « MARCHE D'ALIGRE - HALLE BEAUVAU (12e) » (direction DAE). Mandaté en 2017, année de la seconde phase des travaux de restauration après l'incendie de juillet 2015 évoquée au Conseil de Paris (déc. 2015) : « travaux en deux phases pendant les mois d'été 2016 et 2017 ».",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1704842"
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1704842"
       },
       {
         "ap_cle": "1604842",
         "ap_texte": "MARCHE D'ALIGRE - HALLE BEAUVAU (12e)",
         "mandate_par_annee": {
           "2016": 29807.31,
-          "2017": 87739.65
+          "2017": 87739.65,
+          "2018": 819853.26,
+          "2020": 5915.05
         },
-        "total_mandate": 117546.96,
+        "total_mandate": 943315.27,
         "preuve": "Libellé de l'opération nomme explicitement CE lieu : « MARCHE D'ALIGRE - HALLE BEAUVAU (12e) » (direction DAE). Mandaté en 2016 et 2017, calendrier cohérent avec les travaux post-incendie de la halle Beauvau confirmés au Conseil de Paris (déc. 2015).",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1604842"
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604842"
       }
     ],
     "periode": [
       "2016",
-      "2017"
+      "2020"
     ],
     "source": {
       "name": "Comptes administratifs — autorisations de programme, Ville de Paris",

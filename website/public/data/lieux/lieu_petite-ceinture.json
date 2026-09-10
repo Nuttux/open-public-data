@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T14:24:24.851547+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "petite-ceinture",
   "name": "Petite Ceinture",
@@ -33,9 +33,8 @@
     ],
     "n_bmo_brut": 1525,
     "n_bmo_verifies": 10,
-    "invest_total_eur": 2239783.89,
+    "invest_total_eur": 2125860.89,
     "invest_annees": [
-      "2022",
       "2024"
     ],
     "lecture_mode": "titre nommant le lieu (105 trouvés)",
@@ -230,13 +229,6 @@
   "bmo_recit": "Dans le Bulletin municipal officiel, le chemin de fer de Ceinture apparaît surtout par ses points de contact avec la voirie. En juillet 1894, le Conseil examine une contribution supplémentaire de la Ville dans la suppression des passages à niveau de la ligne, entre le tunnel de Charonne et la Seine ; M. Vauthier y prend la parole. En mars 1923, une délibération porte sur la couverture de la ligne, rues Sorbier et de la Bidassoa, en vue de l'aménagement d'un square, pour une somme en francs. En avril 1932, M. Lajarrige attire l'attention de l'Administration sur les ponts qui font passer la ligne au-dessus des rues de Cambrai et de Flandre. Sur près de quarante ans, la ligne revient ainsi en séance moins pour son trafic que pour ses croisements avec la rue : passages à niveau, couverture, ponts.",
   "invest": [
     {
-      "annee": 2022,
-      "montant_eur": 113923.0,
-      "nom_projet": "Reconquête de la Petite Ceinture",
-      "preuve": "Le nom du projet nomme explicitement le lieu : « Reconquête de la Petite Ceinture ».",
-      "id": "2022_19_59_023"
-    },
-    {
       "annee": 2024,
       "montant_eur": 1563987.69,
       "nom_projet": "Poursuivre l'ouverture de la Petite Ceinture",
@@ -385,10 +377,48 @@
       "2014": 498221.36,
       "2015": 1877165.02,
       "2016": 1086374.89,
-      "2017": 956008.61
+      "2017": 956008.61,
+      "2018": 1699579.88,
+      "2019": 3626175.54,
+      "2020": 826150.45,
+      "2021": 216089.57,
+      "2022": 244552.84
     },
-    "total_eur": 10341418.68,
+    "total_eur": 16953966.96,
     "operations": [
+      {
+        "ap_cle": "1604952",
+        "ap_texte": "LA RECONQUETE DE LA PETITE CEINTURE",
+        "mandate_par_annee": {
+          "2016": 277398.52,
+          "2017": 771290.07,
+          "2018": 1183210.52,
+          "2019": 3013782.68,
+          "2020": 785789.21,
+          "2021": 38276.52,
+          "2022": 224199.35
+        },
+        "total_mandate": 6293946.87,
+        "preuve": "Libellé : « LA RECONQUETE DE LA PETITE CEINTURE » (mission BUDGET PARTICIPATIF, direction DEVE) — opération nommément sur la Petite Ceinture ; cohérente avec les projets budget participatif du même nom.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604952"
+      },
+      {
+        "ap_cle": "1504722",
+        "ap_texte": "PETITE CEINTURE",
+        "mandate_par_annee": {
+          "2015": 1586162.3,
+          "2016": 804730.97,
+          "2017": 179183.85,
+          "2018": 501981.69,
+          "2019": 612392.86,
+          "2020": 40361.24,
+          "2021": 177813.05,
+          "2022": 20353.49
+        },
+        "total_mandate": 3922979.45,
+        "preuve": "Libellé : « PETITE CEINTURE » (mission ESPACES VERTS ET ENV, direction DEVE) — opération nommément sur la Petite Ceinture ; libellé large, l'opération couvre l'ensemble du site.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1504722"
+      },
       {
         "ap_cle": "B100/1002630",
         "ap_texte": "PETITE CEINTURE SECTEUR 15 - 1ERE PHASE",
@@ -400,18 +430,6 @@
         "total_mandate": 3839966.57,
         "preuve": "Libellé : « PETITE CEINTURE SECTEUR 15 - 1ERE PHASE » (mission ESPACES VERTS ET ENV, direction DEVE) — opération d'aménagement nommément sur la Petite Ceinture, secteur du 15e.",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1002630"
-      },
-      {
-        "ap_cle": "1504722",
-        "ap_texte": "PETITE CEINTURE",
-        "mandate_par_annee": {
-          "2015": 1586162.3,
-          "2016": 804730.97,
-          "2017": 179183.85
-        },
-        "total_mandate": 2570077.12,
-        "preuve": "Libellé : « PETITE CEINTURE » (mission ESPACES VERTS ET ENV, direction DEVE) — opération nommément sur la Petite Ceinture ; libellé large, l'opération couvre l'ensemble du site.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1504722"
       },
       {
         "ap_cle": "B100/0702630",
@@ -426,17 +444,6 @@
         "total_mandate": 1549118.91,
         "preuve": "Libellé : « PETITE CEINTURE SECTEUR 15 - 1ERE PHASE » (DEVE, espaces verts) — opération nommément sur la Petite Ceinture, secteur du 15e.",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0702630"
-      },
-      {
-        "ap_cle": "1604952",
-        "ap_texte": "LA RECONQUETE DE LA PETITE CEINTURE",
-        "mandate_par_annee": {
-          "2016": 277398.52,
-          "2017": 771290.07
-        },
-        "total_mandate": 1048688.59,
-        "preuve": "Libellé : « LA RECONQUETE DE LA PETITE CEINTURE » (mission BUDGET PARTICIPATIF, direction DEVE) — opération nommément sur la Petite Ceinture ; cohérente avec les projets budget participatif du même nom.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1604952"
       },
       {
         "ap_cle": "1002630",
@@ -467,11 +474,12 @@
           "2014": 170813.22,
           "2015": 11675.34,
           "2016": 2215.12,
-          "2017": 5530.13
+          "2017": 5530.13,
+          "2018": 14387.67
         },
-        "total_mandate": 190233.81,
+        "total_mandate": 204621.48,
         "preuve": "Libellé : « PETITE CEINTURE SECTEUR 15 - 1ERE PHASE » (DEVE, espaces verts) — opération nommément sur la Petite Ceinture, secteur du 15e.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1302630"
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1302630"
       },
       {
         "ap_cle": "1202630",
@@ -510,7 +518,7 @@
     ],
     "periode": [
       "2009",
-      "2017"
+      "2022"
     ],
     "source": {
       "name": "Comptes administratifs — autorisations de programme, Ville de Paris",

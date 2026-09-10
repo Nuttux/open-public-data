@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T14:24:24.851547+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "piscine-roger-le-gall",
   "name": "Piscine Roger-Le-Gall",
@@ -144,9 +144,14 @@
       "2014": 966987.02,
       "2015": 58578.43,
       "2016": 53930.95,
-      "2017": 74186.01
+      "2017": 74186.01,
+      "2018": 21949.92,
+      "2019": 67910.02,
+      "2020": 42869.31,
+      "2021": 474024.0,
+      "2022": 5292.89
     },
-    "total_eur": 2110411.61,
+    "total_eur": 2722457.75,
     "operations": [
       {
         "ap_cle": "1003913",
@@ -175,14 +180,33 @@
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1003913"
       },
       {
+        "ap_cle": "1705113",
+        "ap_texte": "PISCINE ROGER LE GALL",
+        "mandate_par_annee": {
+          "2017": 781.74,
+          "2018": 439.92,
+          "2019": 48206.49,
+          "2020": 42545.24,
+          "2021": 455993.38,
+          "2022": 5292.89
+        },
+        "total_mandate": 553259.66,
+        "preuve": "Libellé d'opération \"PISCINE ROGER LE GALL\", direction DJS (Jeunesse et Sports) — désigne nommément le lieu.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1705113"
+      },
+      {
         "ap_cle": "1503913",
         "ap_texte": "PISCINE ROGER LE GALL",
         "mandate_par_annee": {
-          "2017": 41883.28
+          "2017": 41883.28,
+          "2018": 21510.0,
+          "2019": 19703.53,
+          "2020": 324.07,
+          "2021": 18030.62
         },
-        "total_mandate": 41883.28,
+        "total_mandate": 101451.5,
         "preuve": "Libellé d'opération \"PISCINE ROGER LE GALL\", direction DJS (Jeunesse et Sports) — désigne nommément le lieu.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1503913"
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1503913"
       },
       {
         "ap_cle": "B100/1203913",
@@ -193,21 +217,11 @@
         "total_mandate": 11897.05,
         "preuve": "Libellé d'opération \"PISCINE ROGER LE GALL\", direction DJS (Jeunesse et Sports) — désigne nommément le lieu.",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1203913"
-      },
-      {
-        "ap_cle": "1705113",
-        "ap_texte": "PISCINE ROGER LE GALL",
-        "mandate_par_annee": {
-          "2017": 781.74
-        },
-        "total_mandate": 781.74,
-        "preuve": "Libellé d'opération \"PISCINE ROGER LE GALL\", direction DJS (Jeunesse et Sports) — désigne nommément le lieu.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1705113"
       }
     ],
     "periode": [
       "2010",
-      "2017"
+      "2022"
     ],
     "source": {
       "name": "Comptes administratifs — autorisations de programme, Ville de Paris",

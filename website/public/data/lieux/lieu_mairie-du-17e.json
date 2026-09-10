@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T14:24:24.851547+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "mairie-du-17e",
   "name": "Mairie du 17e",
@@ -32,9 +32,8 @@
     ],
     "n_bmo_brut": 0,
     "n_bmo_verifies": null,
-    "invest_total_eur": 1060588.36,
+    "invest_total_eur": 960631.3600000001,
     "invest_annees": [
-      "2022",
       "2024"
     ],
     "lecture_mode": "titre nommant le lieu (37 trouvés)",
@@ -51,13 +50,6 @@
   "bmo_extraits": [],
   "bmo_recit": null,
   "invest": [
-    {
-      "annee": 2022,
-      "montant_eur": 99957.0,
-      "nom_projet": "Mairie du 17ème arrondissement - Modernisation et aménagement de différents locaux",
-      "preuve": "Nom du projet nommant explicitement le lieu : \"Mairie du 17ème arrondissement - Modernisation et aménagement de différents locaux\" (signal nom).",
-      "id": "2022_17_52_005"
-    },
     {
       "annee": 2024,
       "montant_eur": 761241.92,
@@ -184,9 +176,12 @@
       "2014": 77718.44,
       "2015": 20817.89,
       "2016": 157380.61,
-      "2017": 233083.24
+      "2017": 233083.24,
+      "2018": 128728.24,
+      "2019": 26444.33,
+      "2022": 13886.31
     },
-    "total_eur": 3471577.98,
+    "total_eur": 3640636.86,
     "operations": [
       {
         "ap_cle": "B100/0903920",
@@ -209,16 +204,19 @@
           "2014": 77718.44,
           "2015": 20817.89,
           "2016": 157380.61,
-          "2017": 233083.24
+          "2017": 233083.24,
+          "2018": 128728.24,
+          "2019": 26444.33,
+          "2022": 13886.31
         },
-        "total_mandate": 489000.18,
+        "total_mandate": 658059.06,
         "preuve": "Libellé d'opération nommant explicitement le lieu (\"MAIRIE DU 17EME\"), mission \"PATRIMOINE ET ARCHIT\", direction DPA — continuité de l'opération B100/0903920 (même code d'opération 0903920) sur 2014-2017.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903920"
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=0903920"
       }
     ],
     "periode": [
       "2009",
-      "2017"
+      "2022"
     ],
     "source": {
       "name": "Comptes administratifs — autorisations de programme, Ville de Paris",

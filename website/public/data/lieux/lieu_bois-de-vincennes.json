@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T14:24:24.851547+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "bois-de-vincennes",
   "name": "Bois de Vincennes",
@@ -284,9 +284,11 @@
       "2014": 1247676.33,
       "2015": 715865.42,
       "2016": 827396.56,
-      "2017": 1176805.59
+      "2017": 1176805.59,
+      "2018": 315469.8,
+      "2019": 333716.53
     },
-    "total_eur": 10639289.83,
+    "total_eur": 11288476.16,
     "operations": [
       {
         "ap_cle": "B100/0800657",
@@ -334,11 +336,13 @@
           "2014": 763852.47,
           "2015": 69705.02,
           "2016": 79977.14,
-          "2017": 24468.45
+          "2017": 24468.45,
+          "2018": 61250.99,
+          "2019": 333716.53
         },
-        "total_mandate": 938003.08,
+        "total_mandate": 1332970.6,
         "preuve": "Libellé « PAGODE DU BOIS DE VINCENNES » (DAC, mission « AFFAIRES CULTURELLES ») — restauration d’un édifice du bois (enclos bouddhique, cf. délibération 2025 DAC 430) ; concorde avec les marchés de restauration de la Pagode notifiés 2013-2014.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1004006"
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1004006"
       },
       {
         "ap_cle": "1400657",
@@ -350,6 +354,29 @@
         "total_mandate": 566576.35,
         "preuve": "Libellé d’opération « BOIS DE VINCENNES », direction DEVE, mission « ESPACES VERTS ET ENV » — opération d’investissement désignant ce lieu ; enveloppe couvrant l’ensemble du site.",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1400657"
+      },
+      {
+        "ap_cle": "1700657",
+        "ap_texte": "BOIS DE VINCENNES",
+        "mandate_par_annee": {
+          "2017": 410716.55,
+          "2018": 135913.42
+        },
+        "total_mandate": 546629.97,
+        "preuve": "Libellé d’opération « BOIS DE VINCENNES », direction DEVE, mission « ESPACES VERTS ET ENV » — opération d’investissement désignant ce lieu ; enveloppe couvrant l’ensemble du site.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1700657"
+      },
+      {
+        "ap_cle": "1604915",
+        "ap_texte": "BAIGNADE DAUMESNIL - BOIS DE VINCENNES (",
+        "mandate_par_annee": {
+          "2016": 54744.0,
+          "2017": 356597.04,
+          "2018": 118305.39
+        },
+        "total_mandate": 529646.43,
+        "preuve": "Libellé « BAIGNADE DAUMESNIL - BOIS DE VINCENNES » (DJS) — aménagement de la baignade du lac Daumesnil, plan d’eau situé dans le bois (cf. vœu Conseil de Paris oct. 2023 sur « la pollution des plans d’eau du bois de Vincennes »).",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604915"
       },
       {
         "ap_cle": "B100/0900657",
@@ -376,27 +403,6 @@
         "total_mandate": 470419.04,
         "preuve": "Libellé d’opération « BOIS DE VINCENNES », direction DEVE, mission « ESPACES VERTS ET ENV » — opération d’investissement désignant ce lieu ; enveloppe couvrant l’ensemble du site.",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1100657"
-      },
-      {
-        "ap_cle": "1604915",
-        "ap_texte": "BAIGNADE DAUMESNIL - BOIS DE VINCENNES (",
-        "mandate_par_annee": {
-          "2016": 54744.0,
-          "2017": 356597.04
-        },
-        "total_mandate": 411341.04,
-        "preuve": "Libellé « BAIGNADE DAUMESNIL - BOIS DE VINCENNES » (DJS) — aménagement de la baignade du lac Daumesnil, plan d’eau situé dans le bois (cf. vœu Conseil de Paris oct. 2023 sur « la pollution des plans d’eau du bois de Vincennes »).",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1604915"
-      },
-      {
-        "ap_cle": "1700657",
-        "ap_texte": "BOIS DE VINCENNES",
-        "mandate_par_annee": {
-          "2017": 410716.55
-        },
-        "total_mandate": 410716.55,
-        "preuve": "Libellé d’opération « BOIS DE VINCENNES », direction DEVE, mission « ESPACES VERTS ET ENV » — opération d’investissement désignant ce lieu ; enveloppe couvrant l’ensemble du site.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1700657"
       },
       {
         "ap_cle": "B100/1000657",
@@ -432,7 +438,7 @@
     ],
     "periode": [
       "2009",
-      "2017"
+      "2019"
     ],
     "source": {
       "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
