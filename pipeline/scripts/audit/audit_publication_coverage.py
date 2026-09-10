@@ -454,6 +454,7 @@ def auditer(familles: list[dict], avec_totaux: bool = True) -> dict:
             ingere = ds in fam["ingere"]
             jeux.append({
                 "dataset": ds, "titre": meta["titre"], "lignes_catalogue": meta["lignes"],
+                "derniere_maj": meta.get("modifie"),
                 "ingere": ingere, "champ_annee": ca, "champ_montant": cm,
                 "annees": sorted(totaux or nlignes), "lignes_par_annee": nlignes,
                 "total_par_annee": {k: round(v, 2) for k, v in totaux.items()},
@@ -472,7 +473,7 @@ def auditer(familles: list[dict], avec_totaux: bool = True) -> dict:
                         "gravite": "info", "cote": "ville", "famille": fam["id"],
                         "code": "COLONNE_ABIMEE",
                         "message": f"{ds} : la colonne « {c} » contient un retour chariot Excel "
-                                   f"(_x000d_), le même champ s'appelle autrement dans le jeu frère",
+                                   f"(_x000d_), le même champ s'appelle autrement dans l'autre moitié de la série",
                     })
                     break
             if re.search(r"\bbugdet\b|autotrisation", ds):
@@ -489,8 +490,8 @@ def auditer(familles: list[dict], avec_totaux: bool = True) -> dict:
                 constats.append({
                     "gravite": "erreur" if lignes > 500 else "avertissement",
                     "cote": "nous", "famille": fam["id"], "code": "SERIE_COUPEE",
-                    "message": f"« {meta['titre']} » ({ds}) partage la souche de série avec un jeu "
-                               f"qu'on ingère, mais n'est pas ingéré : {lignes} lignes"
+                    "message": f"« {meta['titre']} » ({ds}) est un autre morceau d'une série qu'on ingère "
+                               f"déjà, et il n'est pas ingéré : {lignes} lignes"
                                + (f", {montant/1e6:.0f} M€" if montant else "")
                                + (f", exercices {min(totaux or nlignes)}→{max(totaux or nlignes)}"
                                   if (totaux or nlignes) else ""),
@@ -542,6 +543,62 @@ def auditer(familles: list[dict], avec_totaux: bool = True) -> dict:
                                            + (f" : {fam['note_perimetre']}" if fam.get("note_perimetre") else "")),
                     })
 
+        # 6b. Années que la Ville a versées à moitié. Une année dont le nombre de
+        # lignes s'effondre par rapport aux autres n'est pas une année creuse :
+        # c'est un dépôt interrompu. Vu le 2026-09-10 sur le budget voté 2021,
+        # 460 lignes contre ~4 000 les deux années précédentes.
+        for j in jeux:
+            counts = {a: n for a, n in (j.get("lignes_par_annee") or {}).items() if n}
+            if len(counts) < 3:
+                continue
+            valeurs = sorted(counts.values())
+            median = valeurs[len(valeurs) // 2]
+            for an, n in sorted(counts.items()):
+                if median and n < median * 0.35:
+                    constats.append({
+                        "gravite": "avertissement", "cote": "ville", "famille": fam["id"],
+                        "code": "ANNEE_PARTIELLE_SOURCE",
+                        "message": f"{j['dataset']} : l'exercice {an} ne compte que {n} lignes "
+                                   f"contre {median} en année pleine ({n/median*100:.0f} %) — "
+                                   f"dépôt interrompu, l'exercice ne peut pas être présenté comme complet",
+                    })
+
+        # 6c. Ce que dit la date de dernière mise à jour du portail.
+        #
+        # `modified` est la date à laquelle la Ville a poussé de la donnée
+        # (2025-08-26 pour le compte administratif, le jour de la publication
+        # du CA 2024). À ne pas confondre avec `data_processed`, identique à la
+        # minute près sur des jeux sans rapport : c'est un réindexage du
+        # portail, pas un geste de la Ville.
+        #
+        # Deux cas, et un seul est une accusation :
+        #   - la date et le dernier exercice concordent → le jeu est abandonné ;
+        #   - le jeu contient des exercices POSTÉRIEURS à sa date de mise à jour
+        #     → la métadonnée est fausse, et on ne peut rien conclure sur
+        #     l'abandon. C'est le cas des AP M57 le 2026-09-10 : exercices
+        #     jusqu'à 2022, dernière mise à jour déclarée le 2019-11-28.
+        for j in jeux:
+            maj = str(j.get("derniere_maj") or "")[:10]
+            if not maj or not j["annees"]:
+                continue
+            an_maj, dernier = int(maj[:4]), int(max(j["annees"]))
+            if dernier > an_maj:
+                constats.append({
+                    "gravite": "info", "cote": "ville", "famille": fam["id"],
+                    "code": "METADONNEE_INCOHERENTE",
+                    "message": f"{j['dataset']} : le jeu contient l'exercice {dernier} alors que le "
+                               f"portail annonce une dernière mise à jour au {maj} — la date de "
+                               f"fraîcheur affichée aux réutilisateurs est fausse",
+                })
+                continue
+            if (annee_courante - an_maj) >= 2 and (annee_courante - dernier) >= GEL_ANS:
+                constats.append({
+                    "gravite": "avertissement", "cote": "ville", "famille": fam["id"],
+                    "code": "JEU_ABANDONNE",
+                    "message": f"{j['dataset']} : dernier exercice {dernier}, dernière mise à jour "
+                               f"déclarée le {maj} — les deux concordent, le jeu n'est plus alimenté",
+                })
+
         # 6. Source gelée.
         if toutes_src:
             retard = annee_courante - int(max(toutes_src))
@@ -569,7 +626,7 @@ def auditer(familles: list[dict], avec_totaux: bool = True) -> dict:
         "tolerance_ecart_pct": TOLERANCE_PCT,
         "resume": {
             "familles": len(lignes_rapport),
-            "jeux_frères_non_ingérés": sum(len(f["non_ingeres"]) for f in lignes_rapport),
+            "jeux_de_la_serie_non_ingeres": sum(len(f["non_ingeres"]) for f in lignes_rapport),
             "constats": len(constats),
             "erreurs": sum(1 for c in constats if c["gravite"] == "erreur"),
             "cote_nous": sum(1 for c in constats if c["cote"] == "nous"),
@@ -593,7 +650,7 @@ def markdown(rapport: dict) -> str:
              f"{r['cote_ville']} du côté de la Ville.\n")
 
     L.append("\n## Tableau croisé\n")
-    L.append("| Série | La Ville publie | Le site sert | Exercices absents | Jeux frères non ingérés |")
+    L.append("| Série | La Ville publie | Le site sert | Exercices absents | Autres jeux de la série non ingérés |")
     L.append("|---|---|---|---|---|")
     for f in rapport["familles"]:
         src = f"{min(f['annees_source'])}→{max(f['annees_source'])}" if f["annees_source"] else "—"
@@ -603,17 +660,17 @@ def markdown(rapport: dict) -> str:
         L.append(f"| {f['label']} | {src} | {site} | {trous} | {fr} |")
 
     L.append("\n## Jeux de données, un par ligne\n")
-    L.append("| Série | Jeu | Ingéré | Lignes | Exercices | Total |")
-    L.append("|---|---|---|---|---|---|")
+    L.append("| Série | Jeu | Ingéré | Lignes | Exercices | Total | Dernière MAJ Ville |")
+    L.append("|---|---|---|---|---|---|---|")
     for f in rapport["familles"]:
         for j in f["jeux"]:
             tot = sum(j["total_par_annee"].values())
             per = f"{min(j['annees'])}→{max(j['annees'])}" if j["annees"] else (j["erreur"] or "—")
+            maj = str(j.get("derniere_maj") or "—")[:10]
+            montant = f"{tot/1e6:,.0f} M€".replace(",", " ") if tot else "—"
             L.append(f"| {f['id']} | [{j['dataset'][:52]}]({j['url']}) | "
                      f"{'oui' if j['ingere'] else '**non**'} | {j['lignes_catalogue']} | {per} | "
-                     f"{tot/1e6:,.0f} M€ |".replace(",", " ") if tot else
-                     f"| {f['id']} | [{j['dataset'][:52]}]({j['url']}) | "
-                     f"{'oui' if j['ingere'] else '**non**'} | {j['lignes_catalogue']} | {per} | — |")
+                     f"{montant} | {maj} |")
 
     for cote, titre in (("nous", "Ce qu'il faut corriger chez nous"),
                         ("ville", "Ce que la Ville publie mal")):
