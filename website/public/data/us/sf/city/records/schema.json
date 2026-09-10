@@ -1,6 +1,6 @@
 {
  "name": "San Francisco Board of Supervisors records, 1906-2026",
- "rows": 159180,
+ "rows": 160757,
  "generated_by": "pipeline/scripts/us_sf_city/blocks/build_core_table.py",
  "read_this_first": "pipeline/scripts/us_sf_city/blocks/RECORD-COLUMNS.md",
  "counting_rules": [
