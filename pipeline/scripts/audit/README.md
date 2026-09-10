@@ -86,3 +86,36 @@ Pre-commit (optional — `--strict` is harsh for incremental development):
 #!/bin/sh
 python3 pipeline/scripts/audit/check_layering.py || exit 1
 ```
+
+## `audit_publication_coverage.py`
+
+Le crible de couverture. Contrairement à `run_data_quality_audit.py`, qui
+vérifie la cohérence interne de l'entrepôt, celui-ci part du catalogue
+opendata.paris.fr et croise trois colonnes : ce que la Ville publie, ce qu'on
+ingère, ce que le site sert. Il ne demande aucun accès BigQuery.
+
+Son contrôle central est générique : la Ville coupe ses séries au changement de
+plan comptable et republie la suite sous un autre identifiant. Le script retire
+les marqueurs de période des titres du catalogue, regroupe par souche, et
+signale tout jeu frère qu'on n'ingère pas. C'est ce contrôle qui manquait
+quand la série des autorisations de programme est restée coupée à 2017 pendant
+des mois (95 M€ absents des fiches lieu, corrigé le 2026-09-10).
+
+Il distingue nos erreurs (série coupée, exercices absents, écart de total à
+filtre égal) de celles de la Ville (série gelée, changement de format en cours
+de série, colonne abîmée, identifiant fautif).
+
+```bash
+python3 pipeline/scripts/audit/audit_publication_coverage.py
+python3 pipeline/scripts/audit/audit_publication_coverage.py --famille subventions
+python3 pipeline/scripts/audit/audit_publication_coverage.py --no-totaux --dry-run
+```
+
+Sorties : `website/public/data/audit_publication_coverage.json` (publiable) et
+`pipeline/docs/audit_publication_coverage.md` (lisible). Code de sortie 1 s'il
+reste une erreur, pour servir de porte en intégration continue.
+
+Ajouter une série : une entrée dans `FAMILLES`, avec les identifiants ODS
+ingérés, les indices de colonnes année/montant, où lire notre chiffre, et si
+possible le `filtre_source` qui reproduit le filtre de l'export — sans lui la
+comparaison de totaux reste indicative, et une alerte indicative ne bloque rien.
