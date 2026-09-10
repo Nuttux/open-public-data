@@ -7,7 +7,7 @@ for (const [nom, url] of [["subventions", "http://fr.localhost:3021/fr/city/pari
                           ["investissements", "http://fr.localhost:3021/fr/city/paris/investissements"]]) {
   try {
     await p.goto(url, { waitUntil: "networkidle", timeout: 45000 });
-    await p.addStyleTag({ content: "nextjs-portal{display:none!important}" });
+    await p.addStyleTag({ content: "nextjs-portal,.fx-chat-launcher{display:none!important}" });
     await p.waitForTimeout(1200);
     await p.screenshot({ path: `${out}/page-${nom}.png` });
     console.log(nom, "ok");

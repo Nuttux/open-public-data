@@ -186,35 +186,19 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
         .filter((r) => r.year >= seuil).map((r) => r.year), seuil))
     : (verseSpan?.[0] ?? 0);
 
-  const spanGlobal = (() => {
-    const ys = [...exploitSeries, ...travauxSeries].map((s) => s.year);
-    return ys.length ? ([Math.min(...ys), Math.max(...ys)] as const) : null;
-  })();
 
   const Years = ({ series, tone }: { series: { year: number; value: number }[]; tone: "x" | "w" }) => {
-    if (series.length < 3 || !spanGlobal) return null;
+    if (series.length < 3) return null;
     const max = Math.max(...series.map((s) => s.value), 1);
-    const parAn = new Map(series.map((s) => [s.year, s.value]));
-    const annees: number[] = [];
-    for (let y = spanGlobal[0]; y <= spanGlobal[1]; y++) annees.push(y);
-    const debut = series[0].year;
-    const fin = series[series.length - 1].year;
     return (
-      <>
-        <div className={`fx-v3-years ${tone}`} aria-hidden="true">
-          {annees.map((y, i) => {
-            const v = parAn.get(y);
-            const hors = y < debut || y > fin;
-            return (
-              <div key={y} className={hors ? "hors" : undefined}
-                   title={hors ? `${y} · non publié par la Ville` : `${y} · ${eurTxt(v ?? 0)}`}>
-                {hors ? <em /> : <i style={{ height: Math.max(2, Math.round(((v ?? 0) / max) * 40)) }} />}
-                {(i === 0 || i === annees.length - 1) && <span className={i === 0 ? "yr" : "yr end"}>{y}</span>}
-              </div>
-            );
-          })}
-        </div>
-      </>
+      <div className={`fx-v3-years ${tone}`} aria-hidden="true">
+        {series.map((s, i) => (
+          <div key={s.year} title={`${s.year} · ${eurTxt(s.value)}`}>
+            <i style={{ height: Math.max(2, Math.round((s.value / max) * 40)) }} />
+            {(i === 0 || i === series.length - 1) && <span className={i === 0 ? "yr" : "yr end"}>{s.year}</span>}
+          </div>
+        ))}
+      </div>
     );
   };
 
@@ -442,10 +426,8 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
           {(marches.length > 0 || lieu.mandate) && (
             <p className="fx-v3-foot">
               {marches.length > 0 ? (heroTotal > 0 ? fill(t("fx.lieu.note.total"), { t: eurTxt(heroTotal) }) : t("fx.lieu.note.plafond_seul")) : ""}
-              {lieu.mandate ? ` ${fill(t("fx.lieu.line.travaux_caveat"), { y: lieu.mandate.periode[1] })}` : ""}
-              {spanGlobal && (exploitSeries.length > 2 || travauxSeries.length > 2)
-                ? ` ${fill(t("fx.lieu.years.axe"), { a: spanGlobal[0], b: spanGlobal[1] })}`
-                : ""}
+              {lieu.mandate && t("fx.lieu.line.travaux_caveat")
+                ? ` ${fill(t("fx.lieu.line.travaux_caveat"), { y: lieu.mandate.periode[1] })}` : ""}
             </p>
           )}
         </section>

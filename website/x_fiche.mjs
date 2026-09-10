@@ -6,7 +6,7 @@ for (const [name, vp, mobile] of [["desk", { width: 1440, height: 900 }, false],
   const ctx = await b.newContext({ viewport: vp, deviceScaleFactor: 2, isMobile: mobile, hasTouch: mobile });
   const p = await ctx.newPage();
   await p.goto(url, { waitUntil: "networkidle" });
-  await p.addStyleTag({ content: "nextjs-portal{display:none!important}" });
+  await p.addStyleTag({ content: "nextjs-portal,.fx-chat-launcher{display:none!important}" });
   await p.waitForTimeout(800);
   await p.screenshot({ path: `${out}/fiche-${name}.png`, fullPage: true });
   // zoom sur le haut (héros + argent) pour lecture

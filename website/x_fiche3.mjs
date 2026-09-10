@@ -4,7 +4,7 @@ const b = await chromium.launch();
 const ctx = await b.newContext({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 2 });
 const p = await ctx.newPage();
 await p.goto("http://fr.localhost:3021/fr/city/paris/lieux", { waitUntil: "networkidle" });
-await p.addStyleTag({ content: "nextjs-portal{display:none!important}" });
+await p.addStyleTag({ content: "nextjs-portal,.fx-chat-launcher{display:none!important}" });
 const a = await p.$('a[href$="/lieu/theatre-du-chatelet"]');
 if (!a) { console.log("no link"); process.exit(1); }
 await a.click();
