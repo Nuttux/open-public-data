@@ -19416,7 +19416,25 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 }
 /* v3 — fiche de poste budgétaire : chiffre + tendance, missions dépliables, destinations */
 .theme-fusion .fx-v3-herogrid { display: grid; grid-template-columns: minmax(0, 1fr) 270px; gap: 32px; align-items: end; margin: 40px 0 48px; }
-.theme-fusion .fx-v3-trend .t { font-size: 13.5px; color: var(--muted); } .theme-fusion .fx-v3-trend .t b { color: var(--ink); font-weight: 600; }
+/* ══ L'ACCENT DIT LE MOUVEMENT ══════════════════════════════════════════════
+   Une page de finances est monochrome par nature, et le remède n'est pas d'y
+   ajouter de la couleur partout : c'est d'en mettre à UN seul endroit. Ce qui
+   la mérite, c'est la variation d'une année sur l'autre — le seul chiffre de la
+   page qu'un habitant ne peut pas déduire du reste, et qui était jusqu'ici en
+   gris 13,5 px sous un total en 52 px.
+
+   La teinte n'est pas nouvelle : c'est l'ocre du site (--ocre #8C5E2A, déjà
+   119 usages), qui ne portait jusqu'ici que des marqueurs de statut et de
+   structure, jamais une catégorie de dépense — donc aucune collision de sens.
+   Contraste 5,36:1 sur le crème #FAFAF7 du site et 5,60:1 sur blanc, au-dessus
+   du seuil AA dans les deux cas.
+
+   La règle vit ici, sur le composant, et non sur une page : les six surfaces
+   qui affichent une variation (page commune, budget Paris, budget commune,
+   ville riche, fiches nature et poste) la reçoivent d'un coup. Une couleur qui
+   veut dire quelque chose doit le dire partout. */
+.theme-fusion .fx-v3-trend .t { font-size: 13.5px; color: var(--muted); }
+.theme-fusion .fx-v3-trend .t b { color: var(--ocre); font-weight: 600; font-size: 15px; }
 .theme-fusion .fx-v3-trend .bars { display: flex; align-items: flex-end; gap: 8px; height: 66px; margin-top: 14px; }
 .theme-fusion .fx-v3-trend .bars > div { flex: 0 0 32px; display: flex; flex-direction: column; align-items: center; gap: 4px; }
 .theme-fusion .fx-v3-trend .bars b { width: 100%; background: #c8ccd3; display: block; }
