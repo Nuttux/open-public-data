@@ -869,11 +869,20 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
             const at = ll(X, Y);
             if (!extent.contains(at)) return false;
             const z = zoomOf(descriptor.stops[descriptor.stops.length - 1]);
-            map.once("moveend", () => {
+            /* the tap waits for the picker: on a slow network the ground is
+               still loading when the flight lands, and the click handler
+               stands down without one (measured on prod, 2026-09-10) */
+            const LOCATE_TRIES = 60;
+            const tap = (left: number) => {
               if (!map || dead) return;
+              if (!picker && left > 0) {
+                setTimeout(() => tap(left - 1), 250);
+                return;
+              }
               setZoomStop(nearestStop());
               map.fire("click", { containerPoint: map.latLngToContainerPoint(at) });
-            });
+            };
+            map.once("moveend", () => tap(LOCATE_TRIES));
             fly(at, z.zoom);
             return true;
           },

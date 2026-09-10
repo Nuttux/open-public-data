@@ -5382,6 +5382,8 @@ const fr: Record<string, string> = {
   'us.sf.thecity.panel.ladder_cap': 'decisions on record',
   'us.sf.thecity.panel.hood_some': '{shown} sur {n} montrées ici \u2014 ouvrez une rue pour le reste.',
   'us.sf.thecity.panel.hood_streets_head': 'Ses rues les plus actives',
+  'us.sf.thecity.panel.page_hood': 'La page de ce quartier',
+  'us.sf.thecity.panel.page_street': 'La page de cette rue',
   'us.sf.thecity.panel.street_capped': 'Cette rue compte plus de {n} décisions ; les {n} plus marquantes sont ici.',
   'us.sf.thecity.panel.status_passed': 'adoptée',
   'us.sf.thecity.panel.status_moving': 'en cours',

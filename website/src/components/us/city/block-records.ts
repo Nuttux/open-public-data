@@ -2684,6 +2684,51 @@ export function ficheOpener(
   };
 }
 
+/* ── A FICHE IS A PAGE ────────────────────────────────────────────────────── */
+
+/**
+ * WHERE A NEIGHBOURHOOD OR A STREET LIVES ON ITS OWN.
+ *
+ * Fiches were reachable only by clicking a 3D map: nobody arrived from a
+ * search engine or a shared link with a preview, and a reader who wanted to
+ * send "what the city decided about Castro Street" had a map URL to send
+ * (2026-09-10). Each neighbourhood and each street with a file now has a
+ * server-rendered page under `/us/city/sf/the-city/…`, and the map is one
+ * press away from it. These are the slugs, shared by the pages, the sitemap
+ * and the panel's link out, so the three can never disagree.
+ */
+export const CITY_PAGE_BASE = "/us/city/sf/the-city";
+
+export function hoodSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/&/g, " and ")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+/** `MARKET_ST` → `market-st`; the file name is the street's stable id */
+export function streetSlug(file: string): string {
+  return file.toLowerCase().replace(/_+/g, "-").replace(/^-|-$/g, "");
+}
+
+/** `MARKET_ST` → `Market St` — the same words `streetLabel` prints for the key */
+export function streetLabelFromFile(file: string): string {
+  return file
+    .split("_")
+    .filter(Boolean)
+    .map((w) => w.toLowerCase().replace(/^[a-z]/, (c) => c.toUpperCase()))
+    .join(" ");
+}
+
+export function hoodPagePath(name: string): string {
+  return `${CITY_PAGE_BASE}/neighbourhood/${hoodSlug(name)}`;
+}
+
+export function streetPagePath(file: string): string {
+  return `${CITY_PAGE_BASE}/street/${streetSlug(file)}`;
+}
+
 /* ── A FICHE IS A LINK ────────────────────────────────────────────────────── */
 
 /**

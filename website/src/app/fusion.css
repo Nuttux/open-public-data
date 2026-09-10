@@ -17626,6 +17626,39 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   vertical-align: 1px;
 }
 .theme-fusion .fx-city-record-status.is-passed { color: var(--ink); border-color: var(--ink); }
+/* ── THE NEIGHBOURHOOD AND STREET PAGES ─────────────────────────────────
+   The fiche's skeleton on an 820 px page: the same sections in the same
+   order, set at page size rather than at the panel's 360 px. */
+.theme-fusion .fx-cityp-map { margin: 0 0 22px; font-size: 15px; }
+.theme-fusion .fx-cityp-map .fx-block-jump { font-size: 15px; }
+.theme-fusion .fx-cityp-sec { margin-top: 30px; }
+.theme-fusion .fx-cityp-sec .fx-city-ledger-head { margin-bottom: 8px; }
+.theme-fusion .fx-cityp-streets { font-size: 15px; line-height: 1.8; margin: 0; }
+.theme-fusion .fx-cityp-streets a { color: var(--bleu); text-decoration: none; }
+.theme-fusion .fx-cityp-streets a:hover { text-decoration: underline; }
+.theme-fusion .fx-cityp-streets .fx-block-street-n { font-size: 11px; }
+.theme-fusion .fx-cityp-subjects { list-style: none; margin: 0; padding: 0; }
+.theme-fusion .fx-cityp-subjects li {
+  display: grid; grid-template-columns: minmax(160px, 1fr) 48px 2fr; gap: 0 12px;
+  align-items: baseline; padding: 7px 0; border-top: 1px solid var(--rule);
+  font-size: 14px; line-height: 1.45;
+}
+.theme-fusion .fx-cityp-subject-n { font-family: var(--f-mono); font-size: 12px; text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; }
+.theme-fusion .fx-cityp-subject-note { color: var(--ink-2); font-size: 13px; }
+.theme-fusion .fx-cityp-decades { list-style: none; margin: 8px 0 0; padding: 0; }
+.theme-fusion .fx-cityp-dec { padding: 9px 0; border-top: 1px solid var(--rule); }
+.theme-fusion .fx-cityp-dec-head { display: flex; align-items: center; gap: 10px; }
+.theme-fusion .fx-cityp-dec-l { font-family: var(--f-mono); font-size: 12px; letter-spacing: .04em; color: var(--ink-2); flex: 0 0 48px; }
+.theme-fusion .fx-cityp-dec-track { position: relative; flex: 1 1 auto; height: 8px; background: var(--rule); }
+.theme-fusion .fx-cityp-dec-bar { position: absolute; left: 0; top: 0; bottom: 0; background: var(--bleu); }
+.theme-fusion .fx-cityp-dec-n { font-family: var(--f-mono); font-size: 12px; color: var(--muted); flex: 0 0 44px; text-align: right; font-variant-numeric: tabular-nums; }
+.theme-fusion .fx-cityp-face { display: block; margin-top: 5px; font-size: 14.5px; line-height: 1.45; color: var(--ink); text-decoration: none; }
+.theme-fusion .fx-cityp-face:hover { color: var(--bleu); text-decoration: underline; }
+.theme-fusion .fx-cityp-face-y { color: var(--muted); font-family: var(--f-mono); font-size: 12px; }
+@media (max-width: 640px) {
+  .theme-fusion .fx-cityp-subjects li { grid-template-columns: 1fr 40px; }
+  .theme-fusion .fx-cityp-subject-note { grid-column: 1 / -1; }
+}
 /* find my street, under the search button */
 .theme-fusion .fx-city-locate-btn { top: calc(12px + 44px + 8px); }
 .theme-fusion .fx-city-shell:has(.fx-city-strip) .fx-city-locate-btn {

@@ -110,6 +110,9 @@ import {
   stripFileNumber,
   hasMoney,
   byInterest,
+  hoodPagePath,
+  streetPagePath,
+  streetFileName,
   loadStreetCap,
   countLabel,
   hoodAt,
@@ -3619,6 +3622,19 @@ const onHood = unit.kind === "hood";
         {onHood ? <WhoDecides t={t} /> : null}
         <div className="fx-block-foot">
           <CopyLink t={t} />
+          {/* ── THE UNIT'S OWN PAGE ────────────────────────────────────────
+              A neighbourhood and a street each have a page a reader can
+              send and a search engine can read — `sf-city-pages.ts`. The
+              map stays the place to explore; the page is the place to cite. */}
+          {unit.kind === "hood" && (hoodRecs?.name ?? hood?.name) ? (
+            <Link className="fx-block-copy" href={hoodPagePath(hoodRecs?.name ?? hood?.name ?? "")}>
+              {tOr(t, "us.sf.thecity.panel.page_hood", "Its own page")} ↗
+            </Link>
+          ) : unit.kind === "street" ? (
+            <Link className="fx-block-copy" href={streetPagePath(streetFileName(unit.key))}>
+              {tOr(t, "us.sf.thecity.panel.page_street", "Its own page")} ↗
+            </Link>
+          ) : null}
         </div>
 
         <BlockSources now={now} money={money} t={t} />

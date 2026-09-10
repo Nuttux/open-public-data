@@ -9,7 +9,7 @@ p.on('pageerror', (e) => console.log('PAGEERROR', e.message));
 await p.goto(`${BASE}/us/city/sf/the-city`, { waitUntil: 'domcontentloaded' });
 await p.waitForSelector('.fx-city-stoprow', { timeout: 120000 }); await p.waitForTimeout(3000);
 console.log('locate btn:', !!(await p.$('.fx-city-locate-btn')));
-await p.click('.fx-city-locate-btn'); await p.waitForTimeout(5000);
+await p.click(".fx-city-locate-btn"); await p.waitForSelector(".fx-city-sheet-fold", { timeout: 20000 }).catch(() => console.log("no drawer after 20 s")); await p.waitForTimeout(1500);
 const handle = await p.$('.fx-city-sheet-fold'); console.log('handle:', handle ? (await handle.innerText()).replace(/\n/g, ' · ') : 'none', '| stop:', await p.$eval('.fx-city-ledger', (e) => e.dataset.stop).catch(() => '?'));
 await p.screenshot({ path: `${OUT}/m1-located.jpg`, type: 'jpeg', quality: 70 });
 // scroll the drawer 600px → tabs should still be visible (sticky)

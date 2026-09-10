@@ -25,6 +25,7 @@ import {
 import { sfCategorySlugs } from '@/lib/us/sf-spending';
 import { loadSfPayeesIndex } from '@/lib/us/sf-payees-data';
 import { loadSfPlacesIndex } from '@/lib/us/sf-places-data';
+import { listHoodPages, listStreetPages } from '@/lib/us/sf-city-pages';
 
 const MAIN_ROUTES = [
   { path: '', priority: 1.0 },
@@ -102,6 +103,9 @@ function sfEntityPaths(): string[] {
     loadSfPayeesIndex().map((p) => p.slug),
   );
   add('/us/city/sf/places/place', () => loadSfPlacesIndex().map((p) => p.slug));
+  // the map's neighbourhoods and streets, as pages (lib/us/sf-city-pages.ts)
+  add('/us/city/sf/the-city/neighbourhood', () => listHoodPages().map((h) => h.slug));
+  add('/us/city/sf/the-city/street', () => listStreetPages().map((s) => s.slug));
   // Browse index of the payees (lib/seo/browse.ts).
   try {
     out.push(...sfBrowsePaths());
