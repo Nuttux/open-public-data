@@ -19507,6 +19507,33 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 }
 .theme-fusion .fx-bud-row--static { cursor: default; } .theme-fusion .fx-bud-row--static:hover { background: transparent; }
 
+/* ══ HYGIÈNE TACTILE DE LA PAGE COMMUNE (audit du 2026-09-10) ═══════════════
+   Mesuré à 390 px : 61 cibles sous 44 px, dont le sélecteur d'année à 25 px et
+   le bouton de partage à 29 px. Les commandes autonomes montent à 44 px ; les
+   liens EN LIGNE dans une phrase gardent leur taille de texte — les forcer
+   casserait le flux, et le WCAG 2.5.8 les exempte — mais reçoivent une zone
+   tactile de 24 px, le minimum de la règle, par du padding compensé. */
+@media (max-width: 768px) {
+  .theme-fusion .fx-pv-yearsel,
+  .theme-fusion .fx-pv-share { min-height: 44px; }
+  .theme-fusion .fx-pv-share { padding: 4px 16px; }
+  .theme-fusion .fx-pv .fx-v3-fold > summary { min-height: 44px; display: flex; align-items: center; }
+  .theme-fusion .fx-bud-row,
+  .theme-fusion .fx-pv-fonc-row { min-height: 44px; }
+  /* Zone tactile élargie sans déplacement : le padding est repris en marge. */
+  .theme-fusion .fx-pv-nm,
+  .theme-fusion .fx-pv-link { padding-block: 5px; margin-block: -5px; }
+  /* Les puces sont LE chemin de la page sur téléphone : elles ne peuvent pas
+     rester à 30 px de haut. */
+  .theme-fusion .fx-pv-chips a { min-height: 44px; display: inline-flex; align-items: center; }
+  .theme-fusion .fx-chart-source a { padding-block: 6px; margin-block: -6px; }
+  /* La courbe des six années tient dans 44 px de large : cinq pixels par barre,
+     elle ne dit plus rien et vole la place au libellé, qui passe alors sur deux
+     lignes. Sur téléphone, le libellé vaut mieux que la décoration. */
+  .theme-fusion .fx-bud-row { grid-template-columns: minmax(0, 1fr) 80px 34px; }
+  .theme-fusion .fx-bud-spark { display: none; }
+}
+
 /* ══ THE TILE PAGE ON A PHONE, AFTER THE VISITOR'S WALK OF 2026-09-09 ═════
    Six things a first visitor hit, each measured on production at 390 × 664
    (`scripts/probes/audit.mjs`): search results clipped by the map's edge;

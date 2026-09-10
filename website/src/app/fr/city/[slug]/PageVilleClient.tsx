@@ -459,7 +459,10 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
     <div className="theme-fusion">
       <Navbar />
       <main id="main-content" tabIndex={-1}>
-        <div className="fx-wrap fx-v3 fx-bud-v3 fx-pv" style={{ padding: "48px 0" }}>
+        {/* Padding VERTICAL seul : `padding: "48px 0"` écrasait les 40 px
+          horizontaux de .fx-wrap, et comme la page est plus étroite que le
+          conteneur sur mobile, le texte touchait les deux bords de l'écran. */}
+        <div className="fx-wrap fx-v3 fx-bud-v3 fx-pv" style={{ paddingTop: 48, paddingBottom: 48 }}>
           <p className="fx-pv-kicker">
             {commune.dep_name} · {commune.reg_name} · {int.format(commune.pop)} {t("fx.natbud.hab")}
           </p>
