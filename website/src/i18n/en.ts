@@ -5385,6 +5385,7 @@ const en: Record<string, string> = {
   'us.sf.thecity.locate.label': 'Find my street',
   'us.sf.thecity.locate.outside': 'You are outside San Francisco.',
   'us.sf.thecity.locate.denied': 'The phone did not share your location.',
+  'us.sf.thecity.locate.slow': 'The map is still loading. Try again in a moment.',
   'us.sf.thecity.panel.hood_none_readable': 'The scans of this decade are too damaged to quote here.',
   'us.sf.thecity.panel.units_street': 'the whole street',
   'us.sf.thecity.panel.units_street_none': 'no record of its own',

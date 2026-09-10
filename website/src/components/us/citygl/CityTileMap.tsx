@@ -213,8 +213,9 @@ interface MapApi {
   /** frame a block at a stop and light its ring; the index position */
   showBlock(pos: number, stop: number): void;
   /** fly to a GPS fix and open what stands there; false when it is outside
-   *  the city's frame */
-  locate(lon: number, lat: number): boolean;
+   *  the city's frame. `done` says whether the tap that follows the flight
+   *  actually landed — the ground can still be loading when it arrives. */
+  locate(lon: number, lat: number, done?: (ok: boolean) => void): boolean;
   /** clear the ring and the pin */
   clear(): void;
   /** which stop the view is nearest, or -1 between two */
@@ -245,22 +246,31 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
      44 px button in the corner that opens into the box, and the stops
      have gone under the map into the transport, where the year rail is. */
   const [findOpen, setFindOpen] = useState(false);
-  /** "Find my street": idle · asking the phone · the fix was outside the city */
-  const [locating, setLocating] = useState<"idle" | "busy" | "outside" | "denied">("idle");
+  /** "Find my street": idle · working · outside the city · refused · the
+   *  ground never finished loading */
+  const [locating, setLocating] = useState<
+    "idle" | "busy" | "outside" | "denied" | "slow"
+  >("idle");
   const locate = () => {
     if (typeof navigator === "undefined" || !navigator.geolocation) return;
     setLocating("busy");
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        const ok = apiRef.current?.locate(pos.coords.longitude, pos.coords.latitude) ?? false;
-        setLocating(ok ? "idle" : "outside");
+        /* stays busy through the flight and the tap: the button was going
+           back to rest while the map was still on its way */
+        const inside = apiRef.current?.locate(
+          pos.coords.longitude,
+          pos.coords.latitude,
+          (ok) => setLocating(ok ? "idle" : "slow"),
+        ) ?? false;
+        if (!inside) setLocating("outside");
       },
       () => setLocating("denied"),
       { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 },
     );
   };
   useEffect(() => {
-    if (locating !== "outside" && locating !== "denied") return;
+    if (locating === "idle" || locating === "busy") return;
     const id = window.setTimeout(() => setLocating("idle"), 3500);
     return () => window.clearTimeout(id);
   }, [locating]);
@@ -861,7 +871,7 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
              exactly as a stop does. The tap that follows is the map's own
              click, fired at the point the flight lands on, so the drawer
              opens the way it opens for a thumb. */
-          locate(lon, lat) {
+          locate(lon, lat, done) {
             if (!map) return false;
             const P = proj as unknown as { lon0: number; lat0: number; mpd: number; cosl: number };
             const c = projection.proj((lon - P.lon0) * P.mpd * P.cosl, (lat - P.lat0) * P.mpd, 0);
@@ -869,18 +879,27 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
             const at = ll(X, Y);
             if (!extent.contains(at)) return false;
             const z = zoomOf(descriptor.stops[descriptor.stops.length - 1]);
-            /* the tap waits for the picker: on a slow network the ground is
-               still loading when the flight lands, and the click handler
-               stands down without one (measured on prod, 2026-09-10) */
-            const LOCATE_TRIES = 60;
+            /* ── THE TAP WAITS FOR THE GROUND ────────────────────────────
+               The click handler stands down when there is no picker, and on
+               a slow connection the ground is still loading when the flight
+               lands — measured on prod while a 10 GB upload held the link,
+               where 15 s of waiting was not enough and the button simply did
+               nothing. It waits 40 s now, and says so when it gives up
+               rather than leaving the reader pressing a dead button. */
+            const LOCATE_TRIES = 160;
             const tap = (left: number) => {
               if (!map || dead) return;
-              if (!picker && left > 0) {
-                setTimeout(() => tap(left - 1), 250);
+              if (!picker) {
+                if (left > 0) {
+                  setTimeout(() => tap(left - 1), 250);
+                } else {
+                  done?.(false);
+                }
                 return;
               }
               setZoomStop(nearestStop());
               map.fire("click", { containerPoint: map.latLngToContainerPoint(at) });
+              done?.(true);
             };
             map.once("moveend", () => tap(LOCATE_TRIES));
             fly(at, z.zoom);
@@ -1292,9 +1311,9 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
                     <path d="M10 1v3M10 16v3M1 10h3M16 10h3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
                   </svg>
                 </button>
-                {locating === "outside" || locating === "denied" ? (
+                {locating === "outside" || locating === "denied" || locating === "slow" ? (
                   <span className="fx-city-locate-note" role="status">
-                    {t(locating === "outside" ? "us.sf.thecity.locate.outside" : "us.sf.thecity.locate.denied")}
+                    {t(`us.sf.thecity.locate.${locating}`)}
                   </span>
                 ) : null}
               </>
