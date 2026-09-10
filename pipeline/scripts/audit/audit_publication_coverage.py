@@ -137,6 +137,22 @@ FAMILLES = [
         "perimetre": "exact",
     },
     {
+        # La carte des investissements ne lit PAS la même chose que les fiches
+        # lieu : elle sert les fichiers fusionnés PDF + open data, et n'affiche
+        # un projet que s'il porte un nom. Les millésimes 2018-2021 de ces
+        # fichiers viennent d'un export dont la colonne s'appelle `nomLieu` et
+        # non `nom_projet` : ils sont lus comme vides. D'où une famille à part.
+        "id": "investissements_carte",
+        "label": "Investissement — carte des projets localisés",
+        "ingere": ["comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de"],
+        "annee": ["exercice_comptable"],
+        "montant": ["mandate_titre_apres_regul"],
+        "site": {"glob": "map/investissements_complet_*.json", "total": None,
+                 "exige_champ": "nom_projet"},
+        "filtre_source": None, "perimetre": "indicatif",
+        "note_perimetre": "la carte fusionne l'annexe PDF des investissements localisés et l'open data",
+    },
+    {
         "id": "subventions",
         "label": "Subventions versées (annexe du compte administratif)",
         "ingere": ["subventions-versees-annexe-compte-administratif-a-partir-de-2018"],
@@ -405,6 +421,14 @@ def cote_site(spec: dict | None) -> tuple[dict[str, float], list[str], str | Non
         ft = spec.get("filtre_type")
         if ft and str(d.get(ft[0])) != ft[1]:
             continue
+        # Un fichier peut exister et n'être lu par personne : le site n'affiche
+        # un projet que s'il porte un nom. Un millésime dont aucune ligne ne
+        # porte le champ attendu est présent sur le disque et absent de l'écran.
+        exige = spec.get("exige_champ")
+        if exige:
+            lignes = d.get("data") or []
+            if not any(str(r.get(exige) or "").strip() for r in lignes):
+                continue
         annees.append(an)
         if spec.get("total"):
             v = _plonge(d, spec["total"])

@@ -1,6 +1,6 @@
 # Couverture de publication — Ville × entrepôt × site
 
-Généré le 2026-09-10 depuis opendata.paris.fr. 8 séries, 27 constats (11 erreurs), dont 13 de notre côté et 14 du côté de la Ville.
+Généré le 2026-09-10 depuis opendata.paris.fr. 9 séries, 32 constats (13 erreurs), dont 15 de notre côté et 17 du côté de la Ville.
 
 
 ## Tableau croisé
@@ -10,6 +10,7 @@ Généré le 2026-09-10 depuis opendata.paris.fr. 8 séries, 27 constats (11 err
 | Budget exécuté — budget principal (compte administratif) | 2009→2024 | 2019→2024 | 10 | 2 |
 | Budget voté — budget principal | 2009→2021 | 2019→2026 | 10 | 2 |
 | Investissement — autorisations de programme (exécuté) | 2009→2022 | 2009→2022 | — | — |
+| Investissement — carte des projets localisés | 2009→2022 | 2022→2024 | 13 | 1 |
 | Subventions versées (annexe du compte administratif) | 2013→2024 | 2018→2024 | 5 | 1 |
 | Marchés publics de la collectivité parisienne | 2013→2024 | 2013→2026 | — | — |
 | Logements sociaux financés | 2001→2025 | 2010→2024 | 10 | — |
@@ -28,6 +29,8 @@ Généré le 2026-09-10 depuis opendata.paris.fr. 8 séries, 27 constats (11 err
 | budget_vote | [bugdet-votes-principaux_2018_m57_ville_dpt](https://opendata.paris.fr/explore/dataset/bugdet-votes-principaux_2018_m57_ville_dpt/) | **non** | 3715 | 2018→2018 | — | 2019-11-28 |
 | ap_execute | [comptes-administratifs-autorisations-de-programmes-a](https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/) | oui | 7466 | 2018→2022 | 1 969 M€ | 2019-11-28 |
 | ap_execute | [comptes-administratifs-autorisations-de-programmes-a](https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/) | oui | 27927 | 2009→2017 | 14 436 M€ | 2019-11-28 |
+| investissements_carte | [comptes-administratifs-autorisations-de-programmes-a](https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/) | oui | 7466 | 2018→2022 | 2 278 M€ | 2019-11-28 |
+| investissements_carte | [comptes-administratifs-autorisations-de-programmes-a](https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/) | **non** | 27927 | 2009→2017 | 26 722 M€ | 2019-11-28 |
 | subventions | [subventions-versees](https://opendata.paris.fr/explore/dataset/subventions-versees/) | **non** | 39431 | 2013→2017 | 6 189 M€ | 2019-12-19 |
 | subventions | [subventions-versees-annexe-compte-administratif-a-pa](https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/) | oui | 47381 | 2018→2024 | 6 267 M€ | 2025-08-26 |
 | marches | [liste-des-marches-de-la-collectivite-parisienne](https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/) | oui | 17639 | 2013→2024 | 33 184 M€ | 2024-05-02 |
@@ -45,6 +48,8 @@ Généré le 2026-09-10 depuis opendata.paris.fr. 8 séries, 27 constats (11 err
 - **erreur** · `SERIE_COUPEE` · budget_vote — « Budgets Votés - Budget Principal 2018 (M57 Ville-département) » (bugdet-votes-principaux_2018_m57_ville_dpt) est un autre morceau d'une série qu'on ingère déjà, et il n'est pas ingéré : 3715 lignes, exercices 2018→2018
 - **erreur** · `ANNEES_MANQUANTES` · budget_vote — la Ville publie 2009→2021, le site sert 2019→2026 : 10 exercice(s) absent(s) (2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018)
 - **erreur** · `ANNEES_MANQUANTES` · dette_garantie — la Ville publie 2007→2025, le site sert 2019→2024 : 13 exercice(s) absent(s) (2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018…)
+- **erreur** · `SERIE_COUPEE` · investissements_carte — « Comptes Administratifs - Autorisations de Programmes 2009 - 2017 (M14-M52 Ville-Département) » (comptes-administratifs-autorisations-de-programmes-ap-ville-departement) est un autre morceau d'une série qu'on ingère déjà, et il n'est pas ingéré : 27927 lignes, 26722 M€, exercices 2009→2017
+- **erreur** · `ANNEES_MANQUANTES` · investissements_carte — la Ville publie 2009→2022, le site sert 2022→2024 : 13 exercice(s) absent(s) (2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020…)
 - **erreur** · `ANNEES_MANQUANTES` · logements_sociaux — la Ville publie 2001→2025, le site sert 2010→2024 : 10 exercice(s) absent(s) (2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2025)
 - **erreur** · `SERIE_COUPEE` · subventions — « Subventions versées - Annexe Compte administratif 2013-2017 » (subventions-versees) est un autre morceau d'une série qu'on ingère déjà, et il n'est pas ingéré : 39431 lignes, 6189 M€, exercices 2013→2017
 - **erreur** · `ANNEES_MANQUANTES` · subventions — la Ville publie 2013→2024, le site sert 2018→2024 : 5 exercice(s) absent(s) (2013, 2014, 2015, 2016, 2017)
@@ -61,12 +66,15 @@ Généré le 2026-09-10 depuis opendata.paris.fr. 8 séries, 27 constats (11 err
 - avertissement · `JEU_ABANDONNE` · budget_vote — bugdet-votes-principaux : dernier exercice 2017, dernière mise à jour déclarée le 2019-11-28 — les deux concordent, le jeu n'est plus alimenté
 - avertissement · `JEU_ABANDONNE` · budget_vote — bugdet-votes-principaux_2018_m57_ville_dpt : dernier exercice 2018, dernière mise à jour déclarée le 2019-11-28 — les deux concordent, le jeu n'est plus alimenté
 - avertissement · `SOURCE_GELEE` · budget_vote — dernier exercice publié 2021, soit 5 ans de retard sur 2026 : la Ville a cessé d'alimenter la série
+- avertissement · `JEU_ABANDONNE` · investissements_carte — comptes-administratifs-autorisations-de-programmes-ap-ville-departement : dernier exercice 2017, dernière mise à jour déclarée le 2019-11-28 — les deux concordent, le jeu n'est plus alimenté
+- avertissement · `SOURCE_GELEE` · investissements_carte — dernier exercice publié 2022, soit 4 ans de retard sur 2026 : la Ville a cessé d'alimenter la série
 - avertissement · `JEU_ABANDONNE` · subventions — subventions-versees : dernier exercice 2017, dernière mise à jour déclarée le 2019-12-19 — les deux concordent, le jeu n'est plus alimenté
 - info · `METADONNEE_INCOHERENTE` · ap_execute — comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de : le jeu contient l'exercice 2022 alors que le portail annonce une dernière mise à jour au 2019-11-28 — la date de fraîcheur affichée aux réutilisateurs est fausse
 - info · `COLONNE_ABIMEE` · budget_execute — comptes-administratifs-principaux-2018-m57-ville-departement : la colonne « mandate_titre_x000d_apres_regul » contient un retour chariot Excel (_x000d_), le même champ s'appelle autrement dans l'autre moitié de la série
 - info · `IDENTIFIANT_FAUTIF` · budget_vote — identifiant de jeu mal orthographié à la source : « bugdet-votes-principaux » — il ne peut pas être deviné, seul le catalogue le donne
 - info · `IDENTIFIANT_FAUTIF` · budget_vote — identifiant de jeu mal orthographié à la source : « bugdet-votes-principaux_2018_m57_ville_dpt » — il ne peut pas être deviné, seul le catalogue le donne
 - info · `METADONNEE_INCOHERENTE` · budget_vote — budgets-votes-principaux-a-partir-de-2019-m57-ville-departement : le jeu contient l'exercice 2021 alors que le portail annonce une dernière mise à jour au 2020-11-25 — la date de fraîcheur affichée aux réutilisateurs est fausse
+- info · `METADONNEE_INCOHERENTE` · investissements_carte — comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de : le jeu contient l'exercice 2022 alors que le portail annonce une dernière mise à jour au 2019-11-28 — la date de fraîcheur affichée aux réutilisateurs est fausse
 
 ## Écarts de total, année par année
 
