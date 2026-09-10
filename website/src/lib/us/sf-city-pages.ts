@@ -52,6 +52,13 @@ function readJson<T>(rel: string): T {
  * renders of ten streets share one read of the index rather than ten.
  */
 const cache = new Map<string, Promise<unknown>>();
+/**
+ * The per-street records are NOT kept. There are 1,948 of them and 21 MB in
+ * total, and a lambda that served a thousand streets would be holding every
+ * one of them; the index, the subjects and the 41 neighbourhood records are
+ * shared by every render and worth the memory.
+ */
+const SHARED = (rel: string): boolean => !rel.startsWith("street/");
 
 async function readData<T>(rel: string): Promise<T | null> {
   const hit = cache.get(rel);
@@ -76,7 +83,7 @@ async function readData<T>(rel: string): Promise<T | null> {
       return null;
     }
   })();
-  cache.set(rel, p);
+  if (SHARED(rel)) cache.set(rel, p);
   return p;
 }
 
