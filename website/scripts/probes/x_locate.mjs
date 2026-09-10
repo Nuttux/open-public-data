@@ -10,8 +10,8 @@ await p.waitForSelector('.fx-city-stoprow', { timeout: 120000 });
 const t0 = Date.now();
 await p.waitForTimeout(3000);
 await p.click('.fx-city-locate-btn');
-for (let i = 0; i < 12; i++) {
-  await p.waitForTimeout(5000);
+for (let i = 0; i < 24; i++) {
+  await p.waitForTimeout(i < 12 ? 500 : 5000);
   const st = await p.evaluate(() => ({
     drawer: !!document.querySelector('.fx-city-sheet-fold'),
     note: document.querySelector('.fx-city-locate-note')?.textContent ?? null,
