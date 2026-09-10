@@ -85,7 +85,16 @@ def fetch_year(client: bigquery.Client, year: int) -> pd.DataFrame:
         is_taux_fixe
     FROM `{PROJECT_ID}.{MARTS_DATASET}.mart_hors_bilan`
     WHERE annee = {year}
-    ORDER BY capital_restant DESC
+    -- L'ORDRE EST UN ORDRE TOTAL, ET C'EST LA CONDITION DE LA PARITÉ.
+    -- `ORDER BY capital_restant DESC` seul laisse les ex aequo dans l'ordre
+    -- que BigQuery a produit ce jour-là, et cet ordre remonte tel quel dans
+    -- les `head(N)` ci-dessous : mesuré le 2026-09-10, 250 différences entre
+    -- deux exports du MÊME mart, toutes des paires de prêts permutées, et
+    -- `capital_restant` n'apparaissait dans aucune d'elles. Les colonnes
+    -- ajoutées sont la clé naturelle d'un emprunt (cf. `_loan_key`) plus le
+    -- prêteur : deux lignes qui les partagent toutes sont interchangeables.
+    ORDER BY capital_restant DESC,
+             beneficiaire, objet, annee_mobilisation, montant_initial, preteur
     """
     return client.query(query).to_dataframe()
 
@@ -208,7 +217,7 @@ def build_year_payload(year: int, df: pd.DataFrame, fin_per_loan: dict, fin_per_
               count_emprunts=("capital_restant", "size"),
               nature_dominante=("bucket_nature", lambda s: s.mode().iloc[0] if not s.mode().empty else "autres_operations"),
           )
-          .sort_values("capital_restant", ascending=False)
+          .sort_values("capital_restant", ascending=False, kind="mergesort")
           .reset_index()
     )
 
@@ -217,7 +226,7 @@ def build_year_payload(year: int, df: pd.DataFrame, fin_per_loan: dict, fin_per_
         name = str(row["beneficiaire"]) if pd.notna(row["beneficiaire"]) else "—"
         sub = df[df["beneficiaire"] == row["beneficiaire"]].copy()
 
-        sub_sorted = sub.sort_values("capital_restant", ascending=False).head(EMPRUNTS_PAR_BENEFICIAIRE)
+        sub_sorted = sub.sort_values("capital_restant", ascending=False, kind="mergesort").head(EMPRUNTS_PAR_BENEFICIAIRE)
         emprunts = []
         for _, e in sub_sorted.iterrows():
             fin = fin_per_loan.get(e["_loan_key"]) or {}
@@ -265,7 +274,7 @@ def build_year_payload(year: int, df: pd.DataFrame, fin_per_loan: dict, fin_per_
         preteurs_sub = (
             sub.groupby("preteur", dropna=False)
                .agg(capital_restant=("capital_restant", "sum"), count_emprunts=("capital_restant", "size"))
-               .sort_values("capital_restant", ascending=False)
+               .sort_values("capital_restant", ascending=False, kind="mergesort")
                .head(5)
                .reset_index()
         )
@@ -302,7 +311,7 @@ def build_year_payload(year: int, df: pd.DataFrame, fin_per_loan: dict, fin_per_
     preteur_agg = (
         df.groupby("preteur", dropna=False)
           .agg(capital_restant=("capital_restant", "sum"), count_emprunts=("capital_restant", "size"))
-          .sort_values("capital_restant", ascending=False)
+          .sort_values("capital_restant", ascending=False, kind="mergesort")
           .reset_index()
     )
     top_preteurs = []
@@ -335,7 +344,7 @@ def build_year_payload(year: int, df: pd.DataFrame, fin_per_loan: dict, fin_per_
         sub = df[df["arr"] == arr]
         crd_sum = float(sub["capital_restant"].sum())
 
-        top_emp = sub.sort_values("capital_restant", ascending=False).head(EMPRUNTS_PAR_ARRONDISSEMENT)
+        top_emp = sub.sort_values("capital_restant", ascending=False, kind="mergesort").head(EMPRUNTS_PAR_ARRONDISSEMENT)
         emprunts = []
         for _, e in top_emp.iterrows():
             emprunts.append({
@@ -351,7 +360,7 @@ def build_year_payload(year: int, df: pd.DataFrame, fin_per_loan: dict, fin_per_
         top_benef_arr = (
             sub.groupby("beneficiaire", dropna=False)
                .agg(capital_restant=("capital_restant", "sum"), count_emprunts=("capital_restant", "size"))
-               .sort_values("capital_restant", ascending=False)
+               .sort_values("capital_restant", ascending=False, kind="mergesort")
                .head(3)
                .reset_index()
         )

@@ -342,6 +342,15 @@ export function archiveHref(u: string): string {
  */
 export function sourceHref(d: Pick<BlockDecision, "u" | "c">): string {
   const [doc, page] = d.u.split("/");
+  /* ── THREE HOSTS, BECAUSE THE CITY MOVED ─────────────────────────────
+     `l` is a meeting on Legistar, which is where the Clerk's record went in
+     April 2026. Its link needs BOTH halves of the citation — the id alone
+     answers 302 to a "Gone" page — so `u` carries `<id>~<guid>` where the
+     other two carry a document name. */
+  if (d.c === "l") {
+    const [id, guid] = doc.split("~");
+    return `https://sfgov.legistar.com/View.ashx?M=M&ID=${id}&GUID=${guid}`;
+  }
   return d.c === "b"
     ? `https://sfbos.org/sites/default/files/${doc}_minutes.pdf#page=${page}`
     : `https://archive.org/details/${doc}/page/n${page}/mode/1up`;
@@ -729,6 +738,28 @@ export function isVoteTally(raw: string): boolean {
  *   the rung goes blank              129     1.30 %
  * ```
  */
+/**
+ * MOST NOTABLE FIRST, WHEREVER A DECADE IS OPENED.
+ *
+ * Every row carries `iv`, the 0–100 interest score a reader gave the item
+ * (`importance.jsonl`, via `build_index.py`). The block files ship rows in
+ * build order and the panel used to open a decade newest-first, which put a
+ * 1929 sidewalk repair above the 1929 bond election because December beats
+ * March. The score is the order now, the year breaks ties (newer first), and
+ * a row with no score sinks below every scored one rather than being guessed
+ * at. The neighbourhood files were already written in this order.
+ */
+export function byInterest(rows: readonly BlockDecision[]): BlockDecision[] {
+  return rows
+    .slice()
+    .sort(
+      (a, b) =>
+        (b.iv ?? -1) - (a.iv ?? -1) ||
+        b.y - a.y ||
+        (b.d ?? "").localeCompare(a.d ?? ""),
+    );
+}
+
 function pickHeadline(rows: readonly BlockDecision[]): BlockDecision | null {
   /* ── A ROW WE WROTE HEADS THE DECADE ─────────────────────────────────
      98.2 % of block decisions carry `pl`, a line written from the whole
@@ -739,7 +770,9 @@ function pickHeadline(rows: readonly BlockDecision[]): BlockDecision | null {
      written lines in it (Daniel, 2026-09-09: "old forms of the decisions").
      The written rows come first; the Board's own heading still wins among
      them, and the printed-line path stands for the 1.8 % without one. */
-  const written = rows.filter((r) => r.pl && r.pl.trim());
+  /* by interest, so the face of a decade is the first row of the list a
+     press opens — the same line in both places, never two different ones */
+  const written = byInterest(rows.filter((r) => r.pl && r.pl.trim()));
   if (written.length) {
     const reach = written.slice(
       0,
@@ -2393,7 +2426,17 @@ export interface HoodRecords {
     readonly l: string;
     readonly n: number;
     readonly note: string;
+    /** a few readable rows on this subject the decades did not ship, so a
+     *  pressed chip always has something to show — `EX_PER_SUBJECT` */
+    readonly ex?: readonly BlockDecision[];
   }[];
+  /**
+   * The busiest streets of the neighbourhood, as the way down from it.
+   * `n` is the count of the neighbourhood's own records naming the street
+   * and only RANKS; what the panel prints is the street's whole count from
+   * the street index, the same number the tabs and `Also here` print.
+   */
+  readonly streets?: readonly { readonly k: string; readonly n: number }[];
   readonly summary?: string;
   readonly summary_sources?: readonly HoodSource[];
   readonly summary_read?: {
@@ -2433,6 +2476,32 @@ export interface StreetIndex {
 }
 
 let streetIndexPromise: Promise<StreetIndex | null> | null = null;
+
+/**
+ * HOW MANY ROWS A STREET FILE MAY HOLD.
+ *
+ * `build_index.py` keeps the `STREET_CAP` most notable street-tier rows per
+ * street and writes the cap to `shards.json`. 169 of 1,948 streets sit at it
+ * (2026-09-10), and the index counts FILES, so "Market St · 120" was the cap
+ * printed as a total. Read from the file the build writes, never assumed:
+ * a count at the cap prints as `120+`, and the street's own fiche says so.
+ */
+let streetCapPromise: Promise<number> | null = null;
+export function loadStreetCap(): Promise<number> {
+  if (!streetCapPromise) {
+    streetCapPromise = fetch(`${BASE}/shards.json`)
+      .then((r) => (r.ok ? (r.json() as Promise<{ street_cap?: number }>) : null))
+      .then((j) => (j && typeof j.street_cap === "number" ? j.street_cap : 0))
+      .catch(() => 0);
+  }
+  return streetCapPromise;
+}
+
+/** a count, printed with `+` where the street file is known to be capped */
+export function countLabel(n: number, cap: number): string {
+  const s = n.toLocaleString("en-US");
+  return cap > 0 && n >= cap ? `${s}+` : s;
+}
 
 export function loadStreetIndex(): Promise<StreetIndex | null> {
   if (!streetIndexPromise) {
@@ -2551,6 +2620,14 @@ export function ficheOpener(
     among: string;
     and: string;
   },
+  /**
+   * Subject counts made ELSEWHERE, for a level whose rows are a selection.
+   * The neighbourhood's file ships twelve rows a decade and its subjects are
+   * counted in the pipeline over all of them; handing those counts in here
+   * lets its opening sentence name what it is mostly about on the same terms
+   * as a block's, instead of on a count of the selection.
+   */
+  counted?: readonly { readonly l: string; readonly n: number }[],
 ): FicheOpener | null {
   if (!shape || shape.n === 0) return null;
   const { n, firstYear, lastYear } = shape;
@@ -2559,9 +2636,9 @@ export function ficheOpener(
     n === 1
       ? words.one.replace("{y0}", String(firstYear))
       : firstYear === lastYear
-        ? words.oneYear.replace("{n}", String(n)).replace("{y0}", String(firstYear))
+        ? words.oneYear.replace("{n}", n.toLocaleString("en-US")).replace("{y0}", String(firstYear))
         : words.many
-            .replace("{n}", String(n))
+            .replace("{n}", n.toLocaleString("en-US"))
             .replace("{y0}", String(firstYear))
             .replace("{y1}", String(lastYear));
 
@@ -2577,17 +2654,18 @@ export function ficheOpener(
   /* `threadsIn` hands them back RAREST first, which is right for a chip — the
      rare one is the interesting one — and wrong for a sentence, where the
      reader wants what the place is mostly about. */
-  const top = (n < ABOUT_FLOOR ? [] : subjects)
-    .filter((h) => h.rows.length >= ABOUT_HITS)
+  const tally: readonly { readonly l: string; readonly n: number }[] =
+    counted ?? subjects.map((h) => ({ l: h.thread.l, n: h.rows.length }));
+  const top = (n < ABOUT_FLOOR ? [] : tally)
+    .filter((h) => h.n >= ABOUT_HITS)
     .slice()
-    .sort((a, b) => b.rows.length - a.rows.length)
+    .sort((a, b) => b.n - a.n)
     .slice(0, 3)
-    .map((h) => h.thread.l.toLowerCase());
+    .map((h) => h.l.toLowerCase());
 
   const dominant =
     top.length > 0 &&
-    (subjects.find((h) => h.thread.l.toLowerCase() === top[0])?.rows.length ?? 0) / n >=
-      MOSTLY_SHARE;
+    (tally.find((h) => h.l.toLowerCase() === top[0])?.n ?? 0) / n >= MOSTLY_SHARE;
   const about =
     top.length === 0
       ? null
@@ -2613,6 +2691,51 @@ export function ficheOpener(
     about,
     dec: groups.map((g) => [g.decade, g.rows.length] as const),
   };
+}
+
+/* ── A FICHE IS A PAGE ────────────────────────────────────────────────────── */
+
+/**
+ * WHERE A NEIGHBOURHOOD OR A STREET LIVES ON ITS OWN.
+ *
+ * Fiches were reachable only by clicking a 3D map: nobody arrived from a
+ * search engine or a shared link with a preview, and a reader who wanted to
+ * send "what the city decided about Castro Street" had a map URL to send
+ * (2026-09-10). Each neighbourhood and each street with a file now has a
+ * server-rendered page under `/us/city/sf/the-city/…`, and the map is one
+ * press away from it. These are the slugs, shared by the pages, the sitemap
+ * and the panel's link out, so the three can never disagree.
+ */
+export const CITY_PAGE_BASE = "/us/city/sf/the-city";
+
+export function hoodSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/&/g, " and ")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+/** `MARKET_ST` → `market-st`; the file name is the street's stable id */
+export function streetSlug(file: string): string {
+  return file.toLowerCase().replace(/_+/g, "-").replace(/^-|-$/g, "");
+}
+
+/** `MARKET_ST` → `Market St` — the same words `streetLabel` prints for the key */
+export function streetLabelFromFile(file: string): string {
+  return file
+    .split("_")
+    .filter(Boolean)
+    .map((w) => w.toLowerCase().replace(/^[a-z]/, (c) => c.toUpperCase()))
+    .join(" ");
+}
+
+export function hoodPagePath(name: string): string {
+  return `${CITY_PAGE_BASE}/neighbourhood/${hoodSlug(name)}`;
+}
+
+export function streetPagePath(file: string): string {
+  return `${CITY_PAGE_BASE}/street/${streetSlug(file)}`;
 }
 
 /* ── A FICHE IS A LINK ────────────────────────────────────────────────────── */

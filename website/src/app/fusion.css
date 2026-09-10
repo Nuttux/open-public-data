@@ -17141,6 +17141,36 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   line-height: 1.5;
   color: var(--ocre);
 }
+/* ── THE LOADING LINE ─────────────────────────────────────────────────────
+   Bottom left of the map, clear of the zoom row and the search, small enough
+   to read as a status and not as a blocker. The map behind it is live. */
+.theme-fusion .fx-city-boot {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  border: 1px solid var(--rule);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, .08);
+}
+.theme-fusion .fx-city-boot-l {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: .03em;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+.theme-fusion .fx-city-boot-track {
+  width: 54px; height: 2px; background: var(--rule); overflow: hidden; flex: none;
+}
+.theme-fusion .fx-city-boot-bar {
+  display: block; height: 100%; background: var(--bleu);
+  transition: width .45s cubic-bezier(.2, .7, .3, 1);
+}
 .theme-fusion .fx-city-loading {
   margin: 16px 0 0;
   font-family: var(--f-mono);
@@ -17435,7 +17465,15 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   line-height: 1.5;
   color: var(--ink-2);
 }
-.theme-fusion .fx-block-foot { margin-top: 16px; }
+/* two links now, and they ran together as "COPY LINKTHIS NEIGHBOURHOOD'S
+   OWN PAGE" — a row, with room between them */
+.theme-fusion .fx-block-foot {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 18px;
+}
 /* a text link in the fold's own idiom, not a boxed button: it was the one
    bordered control on a panel whose every other control is a line of mono
    caps, and it read as a form */
@@ -17532,51 +17570,147 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
    The rung you are on is not a button and does not look like one. Everything
    else is pressable and says so by being underlined on hover, which is the
    panel's own idiom for a link rather than a fifth button style. */
-.theme-fusion .fx-block-ladder {
+/* ── ONE PLACE AT FOUR SIZES ───────────────────────────────────────────────
+   The address, the block, the street, the neighbourhood — as tabs, the open
+   one underlined in ink, the others in link blue, each with its count under
+   the name. Equal columns so the row reads as one control; `min-width: 0` so
+   a long neighbourhood name wraps inside its column instead of pushing the
+   others off the panel. */
+.theme-fusion .fx-block-tabs-wrap { margin: 8px 0 2px; }
+.theme-fusion .fx-block-tabs {
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 2px 0;
-  margin: 8px 0 2px;
+  align-items: stretch;
+  margin-top: 3px;
+  border-bottom: 1px solid var(--rule);
 }
-.theme-fusion .fx-block-rung-wrap {
-  display: inline-flex;
-  align-items: baseline;
-}
-.theme-fusion .fx-block-rung-sep {
-  color: var(--muted);
-  font-size: 11px;
-  padding: 0 5px;
-}
-.theme-fusion .fx-block-rung {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 5px;
+.theme-fusion .fx-block-tab {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
   border: 0;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
   background: transparent;
-  padding: 2px 0;
+  padding: 5px 8px 6px 0;
   font-family: var(--f-ui);
   font-size: 12px;
-  line-height: 1.3;
+  line-height: 1.25;
   color: var(--bleu);
   cursor: pointer;
   text-align: left;
+  overflow-wrap: anywhere;
 }
-.theme-fusion .fx-block-rung:hover .fx-block-rung-l { text-decoration: underline; }
-.theme-fusion .fx-block-rung:focus-visible {
+.theme-fusion .fx-block-tab:hover .fx-block-tab-l { text-decoration: underline; }
+.theme-fusion .fx-block-tab:focus-visible {
   outline: 2px solid var(--bleu-vif);
   outline-offset: 1px;
 }
-.theme-fusion .fx-block-rung.is-on {
+.theme-fusion .fx-block-tab.is-on {
   color: var(--ink);
   font-weight: 600;
+  border-bottom-color: var(--ink);
   cursor: default;
 }
-.theme-fusion .fx-block-rung-n {
+.theme-fusion .fx-block-tab.is-on:hover .fx-block-tab-l { text-decoration: none; }
+.theme-fusion .fx-block-tab-n {
   font-family: var(--f-mono);
   font-size: 10px;
+  font-weight: 400;
   font-variant-numeric: tabular-nums;
   color: var(--muted);
+}
+/* "See 12 more" under an opened decade — the same voice as the row's own
+   "Read all 22" cue, as a button */
+.theme-fusion .fx-block-more {
+  display: block;
+  border: 0;
+  background: transparent;
+  padding: 6px 0 2px;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: .04em;
+  color: var(--bleu);
+  cursor: pointer;
+}
+.theme-fusion .fx-block-more::after { content: " \203A"; }
+.theme-fusion .fx-block-more:hover { text-decoration: underline; }
+.theme-fusion .fx-block-filter-note { margin-top: 6px; }
+/* the tabs stay in reach while the fiche scrolls — on a phone the drawer
+   is 62svh and a street fiche is 2,000 px, so the way to the other three
+   sizes of the place was two screens back up */
+.theme-fusion .fx-block-tabs-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--bg);
+  padding-top: 4px;
+}
+/* the outcome, as one word after the line: what the written line itself
+   says happened — `statusWord` */
+.theme-fusion .fx-city-record-status {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 0 4px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  font-family: var(--f-mono);
+  font-size: 9.5px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  vertical-align: 1px;
+}
+.theme-fusion .fx-city-record-status.is-passed { color: var(--ink); border-color: var(--ink); }
+/* ── THE NEIGHBOURHOOD AND STREET PAGES ─────────────────────────────────
+   The fiche's skeleton on an 820 px page: the same sections in the same
+   order, set at page size rather than at the panel's 360 px. */
+.theme-fusion .fx-cityp-map { margin: 0 0 22px; font-size: 15px; }
+.theme-fusion .fx-cityp-map .fx-block-jump { font-size: 15px; }
+.theme-fusion .fx-cityp-sec { margin-top: 30px; }
+.theme-fusion .fx-cityp-sec .fx-city-ledger-head { margin-bottom: 8px; }
+.theme-fusion .fx-cityp-streets { font-size: 15px; line-height: 1.8; margin: 0; }
+.theme-fusion .fx-cityp-streets a { color: var(--bleu); text-decoration: none; }
+.theme-fusion .fx-cityp-streets a:hover { text-decoration: underline; }
+.theme-fusion .fx-cityp-streets .fx-block-street-n { font-size: 11px; }
+.theme-fusion .fx-cityp-subjects { list-style: none; margin: 0; padding: 0; }
+.theme-fusion .fx-cityp-subjects li {
+  display: grid; grid-template-columns: minmax(160px, 1fr) 48px 2fr; gap: 0 12px;
+  align-items: baseline; padding: 7px 0; border-top: 1px solid var(--rule);
+  font-size: 14px; line-height: 1.45;
+}
+.theme-fusion .fx-cityp-subject-n { font-family: var(--f-mono); font-size: 12px; text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; }
+.theme-fusion .fx-cityp-subject-note { color: var(--ink-2); font-size: 13px; }
+.theme-fusion .fx-cityp-decades { list-style: none; margin: 8px 0 0; padding: 0; }
+.theme-fusion .fx-cityp-dec { padding: 9px 0; border-top: 1px solid var(--rule); }
+.theme-fusion .fx-cityp-dec-head { display: flex; align-items: center; gap: 10px; }
+.theme-fusion .fx-cityp-dec-l { font-family: var(--f-mono); font-size: 12px; letter-spacing: .04em; color: var(--ink-2); flex: 0 0 48px; }
+.theme-fusion .fx-cityp-dec-track { position: relative; flex: 1 1 auto; height: 8px; background: var(--rule); }
+.theme-fusion .fx-cityp-dec-bar { position: absolute; left: 0; top: 0; bottom: 0; background: var(--bleu); }
+.theme-fusion .fx-cityp-dec-n { font-family: var(--f-mono); font-size: 12px; color: var(--muted); flex: 0 0 44px; text-align: right; font-variant-numeric: tabular-nums; }
+.theme-fusion .fx-cityp-face { display: block; margin-top: 5px; font-size: 14.5px; line-height: 1.45; color: var(--ink); text-decoration: none; }
+.theme-fusion .fx-cityp-face:hover { color: var(--bleu); text-decoration: underline; }
+.theme-fusion .fx-cityp-face-y { color: var(--muted); font-family: var(--f-mono); font-size: 12px; }
+@media (max-width: 640px) {
+  .theme-fusion .fx-cityp-subjects li { grid-template-columns: 1fr 40px; }
+  .theme-fusion .fx-cityp-subject-note { grid-column: 1 / -1; }
+}
+/* find my street, under the search button */
+.theme-fusion .fx-city-locate-btn { top: calc(12px + 44px + 8px); }
+.theme-fusion .fx-city-shell:has(.fx-city-strip) .fx-city-locate-btn {
+  top: calc(12px + 44px + 8px + var(--fx-city-strip-h, 0px));
+}
+.theme-fusion .fx-city-locate-btn.is-busy { opacity: .55; }
+.theme-fusion .fx-city-locate-note {
+  position: absolute; top: calc(12px + 44px + 8px + 50px); right: 12px; z-index: 7;
+  max-width: 220px;
+  padding: 6px 9px;
+  border: 1px solid var(--ink);
+  background: var(--bg);
+  font-size: 12.5px;
+  line-height: 1.35;
 }
 
 /* ── WHAT KEEPS COMING UP ──────────────────────────────────────────────────
@@ -19588,7 +19722,6 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 }
 .theme-fusion .fx-city-record-line:hover .fx-city-record-row::after,
 .theme-fusion .fx-city-record-line.is-hot .fx-city-record-row::after { color: var(--ink); }
-.theme-fusion .fx-block-rung-u { font-family: var(--f-sans); text-transform: none; letter-spacing: 0; }
 .theme-fusion .fx-city-note-counts { font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
 
 /* ══ PAGE VILLE (bloc 2, 2026-09-09) — l'entrée unique d'une commune ═════════
@@ -19812,6 +19945,31 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-pv-resume { font-size: 13px; color: var(--ink-2); line-height: 1.5; margin: 4px 0 10px; padding-left: 12px; border-left: 2px solid var(--rule-2, #cfcdc4); }
 
 
+/* ── THE RECORD SURFACES, AFTER THE READ OF 2026-09-10 ─────────────────── */
+.theme-fusion .fx-block-ladder-cap {
+  display: block; width: 100%;
+  font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--ink) 60%, transparent); margin-bottom: 3px;
+}
+.theme-fusion .fx-hood-quote > summary {
+  list-style: none; cursor: pointer; display: flex; gap: 10px; align-items: baseline;
+}
+.theme-fusion .fx-hood-quote > summary::-webkit-details-marker { display: none; }
+.theme-fusion .fx-hood-quote > summary .fx-hood-src-for { flex: 1 1 auto; }
+.theme-fusion .fx-hood-quote > summary .fx-hood-src-y {
+  flex: none; font-family: var(--f-mono); font-size: 12px;
+  color: color-mix(in srgb, var(--ink) 60%, transparent);
+}
+.theme-fusion .fx-hood-quote > summary:hover .fx-hood-src-for { text-decoration: underline; }
+.theme-fusion .fx-hood-quote[open] > summary .fx-hood-src-for { font-weight: 600; }
+.theme-fusion .fx-hood-src-q {
+  margin: 6px 0 4px; font-family: var(--f-mono); font-size: 12.5px; line-height: 1.5;
+  color: color-mix(in srgb, var(--ink) 72%, transparent);
+}
+.theme-fusion .fx-hood-quote .fx-hood-src-a { font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .04em; text-transform: uppercase; }
+@media (min-width: 820px) {
+  .theme-fusion .fx-block-open { font-size: 11.5px; }
+}
 /* Ventilation par fonction (« à quoi sert l'argent ») : une liste, pas un
    graphe — la grammaire du niveau 0 n'autorise qu'un seul visuel par page. */
 .fx-pv-fonc-list { list-style: none; margin: 0; padding: 0; }
@@ -19822,3 +19980,4 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 }
 .fx-pv-fonc-list li:last-child { border-bottom: 0; }
 .fx-pv-fonc-pct { text-align: right; opacity: .6; }
+

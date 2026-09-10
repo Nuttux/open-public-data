@@ -6,6 +6,9 @@
  */
 import { describe, expect, it } from "vitest";
 import {
+  compactMoney,
+  fileStem,
+  statusRank,
   cleanLine,
   formatSum,
   isReadableLine,
@@ -13,6 +16,7 @@ import {
   recordLine,
   trimLine,
   undangle,
+  statusWord,
 } from "./record-line";
 
 describe("what never becomes a headline", () => {
@@ -145,6 +149,17 @@ describe("where it happened", () => {
   });
 });
 
+describe("the outcome word", () => {
+  it("reads the status the line itself carries, and nothing else", () => {
+    expect(statusWord("Bike lanes on Fell Street finally passed")).toBe("passed");
+    expect(statusWord("Loan for the Opera House, adopted")).toBe("passed");
+    expect(statusWord("Zoning change passed on first reading")).toBe("moving");
+    expect(statusWord("Garage permit sent to committee")).toBe("moving");
+    expect(statusWord("$600,000 sought for safety work on Market Street")).toBe("proposed");
+    expect(statusWord("Reflector sign installed on Fourteenth Street")).toBeNull();
+  });
+});
+
 describe("how much", () => {
   it("reads a sum and ignores a width", () => {
     expect(formatSum("Not to Exceed $22,168,000")).toBe("$22.2M");
@@ -180,5 +195,40 @@ describe("the row", () => {
   it("leaves nothing to print when there is no line and no subject", () => {
     const empty = recordLine("Ayes: 9", null, null);
     expect(empty.headline).toBe(null);
+  });
+});
+
+describe("money, one way", () => {
+  it("compacts a long figure of a million or more", () => {
+    expect(compactMoney("Transdev paratransit contract to rise to $339,102,572 over two more years"))
+      .toBe("Transdev paratransit contract to rise to $339.1M over two more years");
+    expect(compactMoney("$1,500,000 state prohousing grant sought")).toBe("$1.5M state prohousing grant sought");
+  });
+  it("leaves short figures and words alone", () => {
+    expect(compactMoney("$450,000 for a school site")).toBe("$450,000 for a school site");
+    expect(compactMoney("$9 billion of airport bond proceeds")).toBe("$9 billion of airport bond proceeds");
+    expect(compactMoney("$20.1M, adopted")).toBe("$20.1M, adopted");
+  });
+});
+
+describe("one file, several steps", () => {
+  it("folds the procedural steps of one file to one stem", () => {
+    const a = fileStem("Police policy for electronic location trackers finally passed");
+    const b = fileStem("Police policy for electronic location trackers moved for approval");
+    const c = fileStem("Police policy for electronic location trackers passed on first reading");
+    expect(a).toBe(b);
+    expect(b).toBe(c);
+  });
+  it("folds a contract's two money lines", () => {
+    expect(fileStem("Rafiki Coalition health access contract to rise to $20,083,870"))
+      .toBe(fileStem("Rafiki Coalition health access contract raised to $20.1M, adopted"));
+  });
+  it("keeps different files apart", () => {
+    expect(fileStem("Chain store rules would be loosened across the city"))
+      .not.toBe(fileStem("More uses to be allowed in historic buildings citywide"));
+  });
+  it("ranks the final vote above the first reading above committee", () => {
+    expect(statusRank("X finally passed")).toBeGreaterThan(statusRank("X passed on first reading"));
+    expect(statusRank("X passed on first reading")).toBeGreaterThan(statusRank("X sent to committee"));
   });
 });

@@ -1,6 +1,6 @@
 {
   "year": 2024,
-  "generated_at": "2026-08-26T18:50:21.770049+00:00",
+  "generated_at": "2026-09-10T12:17:30.192554+00:00",
   "totals": {
     "capital_restant": 12280381570,
     "montant_initial": 15446260487,
@@ -69,7 +69,7 @@
       "arr": 1,
       "capital_restant": 46995064,
       "count_emprunts": 125,
-      "share_of_localized": 0.0051706413239725685,
+      "share_of_localized": 0.005170641323972569,
       "top_beneficiaires": [
         {
           "name": "ELOGIE-SIEMP (SEM)",
@@ -232,7 +232,7 @@
       "arr": 2,
       "capital_restant": 45879111,
       "count_emprunts": 122,
-      "share_of_localized": 0.005047858299585979,
+      "share_of_localized": 0.005047858299585981,
       "top_beneficiaires": [
         {
           "name": "PARIS Habitat OPH (EPIC)",
@@ -395,7 +395,7 @@
       "arr": 3,
       "capital_restant": 84199875,
       "count_emprunts": 183,
-      "share_of_localized": 0.00926410812222834,
+      "share_of_localized": 0.009264108122228344,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -558,7 +558,7 @@
       "arr": 4,
       "capital_restant": 92708734,
       "count_emprunts": 157,
-      "share_of_localized": 0.010200296949983026,
+      "share_of_localized": 0.010200296949983027,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -721,7 +721,7 @@
       "arr": 5,
       "capital_restant": 194236767,
       "count_emprunts": 164,
-      "share_of_localized": 0.021370939093773158,
+      "share_of_localized": 0.02137093909377316,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -884,7 +884,7 @@
       "arr": 6,
       "capital_restant": 46124120,
       "count_emprunts": 75,
-      "share_of_localized": 0.005074815485763889,
+      "share_of_localized": 0.00507481548576389,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -1047,7 +1047,7 @@
       "arr": 7,
       "capital_restant": 153132799,
       "count_emprunts": 48,
-      "share_of_localized": 0.016848466812729602,
+      "share_of_localized": 0.016848466812729605,
       "top_beneficiaires": [
         {
           "name": "Fondation Nationale SciencesPo",
@@ -1210,7 +1210,7 @@
       "arr": 8,
       "capital_restant": 75118885,
       "count_emprunts": 122,
-      "share_of_localized": 0.00826497037227672,
+      "share_of_localized": 0.008264970372276722,
       "top_beneficiaires": [
         {
           "name": "ELOGIE-SIEMP (SEM)",
@@ -1373,7 +1373,7 @@
       "arr": 9,
       "capital_restant": 177732376,
       "count_emprunts": 355,
-      "share_of_localized": 0.019555040166850626,
+      "share_of_localized": 0.01955504016685063,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -1536,7 +1536,7 @@
       "arr": 10,
       "capital_restant": 424949553,
       "count_emprunts": 614,
-      "share_of_localized": 0.04675515943768976,
+      "share_of_localized": 0.046755159437689764,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -1699,7 +1699,7 @@
       "arr": 11,
       "capital_restant": 405159041,
       "count_emprunts": 754,
-      "share_of_localized": 0.04457770443415118,
+      "share_of_localized": 0.04457770443415119,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -1862,7 +1862,7 @@
       "arr": 12,
       "capital_restant": 951239979,
       "count_emprunts": 769,
-      "share_of_localized": 0.10466036870717983,
+      "share_of_localized": 0.10466036870717986,
       "top_beneficiaires": [
         {
           "name": "PARIS Habitat OPH (EPIC)",
@@ -2025,7 +2025,7 @@
       "arr": 13,
       "capital_restant": 990195825,
       "count_emprunts": 620,
-      "share_of_localized": 0.10894649344592411,
+      "share_of_localized": 0.10894649344592414,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -2093,15 +2093,6 @@
           "taux_actuariel": 3.6
         },
         {
-          "objet": "Financement ZAC Paris Rive Gauche - 75013 - GA",
-          "beneficiaire": "SEMAPA (SPLA)",
-          "preteur": "LBP",
-          "annee_mobilisation": 2024,
-          "capital_restant": 16000000,
-          "taux_type": "V",
-          "taux_actuariel": 4.1187
-        },
-        {
           "objet": "Financement ZAC Paris Rive Gauche - 75013 - AC",
           "beneficiaire": "SEMAPA (SPLA)",
           "preteur": "CA IdF",
@@ -2118,6 +2109,15 @@
           "capital_restant": 16000000,
           "taux_type": "FIXE",
           "taux_actuariel": 3.2079
+        },
+        {
+          "objet": "Financement ZAC Paris Rive Gauche - 75013 - GA",
+          "beneficiaire": "SEMAPA (SPLA)",
+          "preteur": "LBP",
+          "annee_mobilisation": 2024,
+          "capital_restant": 16000000,
+          "taux_type": "V",
+          "taux_actuariel": 4.1187
         },
         {
           "objet": "Arc Innovation - INRIA - Rue Barrault - 75013",
@@ -2188,7 +2188,7 @@
       "arr": 14,
       "capital_restant": 546388936,
       "count_emprunts": 485,
-      "share_of_localized": 0.06011655188712709,
+      "share_of_localized": 0.060116551887127105,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -2351,7 +2351,7 @@
       "arr": 15,
       "capital_restant": 796485166,
       "count_emprunts": 907,
-      "share_of_localized": 0.08763343951966356,
+      "share_of_localized": 0.08763343951966357,
       "top_beneficiaires": [
         {
           "name": "PARIS Habitat OPH (EPIC)",
@@ -2514,7 +2514,7 @@
       "arr": 16,
       "capital_restant": 260816447,
       "count_emprunts": 233,
-      "share_of_localized": 0.028696381672750418,
+      "share_of_localized": 0.028696381672750425,
       "top_beneficiaires": [
         {
           "name": "PARIS Habitat OPH (EPIC)",
@@ -2677,7 +2677,7 @@
       "arr": 17,
       "capital_restant": 576666378,
       "count_emprunts": 568,
-      "share_of_localized": 0.06344783344579025,
+      "share_of_localized": 0.06344783344579026,
       "top_beneficiaires": [
         {
           "name": "PARIS Habitat OPH (EPIC)",
@@ -2840,7 +2840,7 @@
       "arr": 18,
       "capital_restant": 1033749006,
       "count_emprunts": 1276,
-      "share_of_localized": 0.11373844086229289,
+      "share_of_localized": 0.11373844086229291,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -3003,7 +3003,7 @@
       "arr": 19,
       "capital_restant": 1097100771,
       "count_emprunts": 653,
-      "share_of_localized": 0.12070873150573577,
+      "share_of_localized": 0.1207087315057358,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -3082,20 +3082,20 @@
         {
           "objet": "Travaux restructuration Hôpital/Rue Manin - 75019",
           "beneficiaire": "Fondation OPTH A. Rothschild",
-          "preteur": "CE",
-          "annee_mobilisation": 2023,
-          "capital_restant": 17500000,
-          "taux_type": "FIXE",
-          "taux_actuariel": 4.0297
-        },
-        {
-          "objet": "Travaux restructuration Hôpital/Rue Manin - 75019",
-          "beneficiaire": "Fondation OPTH A. Rothschild",
           "preteur": "ARKEA",
           "annee_mobilisation": 2023,
           "capital_restant": 17500000,
           "taux_type": "FIXE",
           "taux_actuariel": 4.05
+        },
+        {
+          "objet": "Travaux restructuration Hôpital/Rue Manin - 75019",
+          "beneficiaire": "Fondation OPTH A. Rothschild",
+          "preteur": "CE",
+          "annee_mobilisation": 2023,
+          "capital_restant": 17500000,
+          "taux_type": "FIXE",
+          "taux_actuariel": 4.0297
         },
         {
           "objet": "Groupe Serrurier / Indochine - 75019 - NSG",
@@ -3166,7 +3166,7 @@
       "arr": 20,
       "capital_restant": 1089948109,
       "count_emprunts": 1163,
-      "share_of_localized": 0.11992175845453107,
+      "share_of_localized": 0.1199217584545311,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -3699,11 +3699,11 @@
       ],
       "financement": {
         "base_logement": 4254392736,
-        "capital_rattache": 1208577634,
+        "capital_rattache": 1213674049,
         "capital_portefeuille": 1423997719,
-        "capital_non_rattache": 1621817383,
-        "part_rattachee": 0.2840775897347327,
-        "n_programmes": 461
+        "capital_non_rattache": 1616720968,
+        "part_rattachee": 0.2852755080551111,
+        "n_programmes": 463
       }
     },
     {
@@ -4422,11 +4422,11 @@
       ],
       "financement": {
         "base_logement": 1676360468,
-        "capital_rattache": 600171533,
+        "capital_rattache": 601597973,
         "capital_portefeuille": 197781589,
-        "capital_non_rattache": 878407346,
-        "part_rattachee": 0.3580205714930581,
-        "n_programmes": 711
+        "capital_non_rattache": 876980906,
+        "part_rattachee": 0.358871486291414,
+        "n_programmes": 712
       }
     },
     {
@@ -5245,30 +5245,6 @@
         {
           "objet": "Financement ZAC - 75000 - AC",
           "preteur": "CA IdF",
-          "annee_mobilisation": 2020,
-          "montant_initial": 24000000,
-          "capital_restant": 24000000,
-          "duree_residuelle": 1.75,
-          "taux_type": "FIXE",
-          "taux_index": "FIXE",
-          "taux_actuariel": 0.4911,
-          "programme": null
-        },
-        {
-          "objet": "Financement ZAC - 75000 - GA",
-          "preteur": "AUREL BGC SAS",
-          "annee_mobilisation": 2021,
-          "montant_initial": 24000000,
-          "capital_restant": 24000000,
-          "duree_residuelle": 3.26,
-          "taux_type": "FIXE",
-          "taux_index": "FIXE",
-          "taux_actuariel": 0.1448,
-          "programme": null
-        },
-        {
-          "objet": "Financement ZAC - 75000 - AC",
-          "preteur": "CA IdF",
           "annee_mobilisation": 2015,
           "montant_initial": 48000000,
           "capital_restant": 24000000,
@@ -5279,15 +5255,15 @@
           "programme": null
         },
         {
-          "objet": "Financement ZAC - EMTN - 75000 - GA",
-          "preteur": "HSBC",
-          "annee_mobilisation": 2016,
+          "objet": "Financement ZAC - 75000 - AC",
+          "preteur": "CA IdF",
+          "annee_mobilisation": 2020,
           "montant_initial": 24000000,
           "capital_restant": 24000000,
-          "duree_residuelle": 3.15,
+          "duree_residuelle": 1.75,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 1.6004,
+          "taux_actuariel": 0.4911,
           "programme": null
         },
         {
@@ -5303,6 +5279,30 @@
           "programme": null
         },
         {
+          "objet": "Financement ZAC - 75000 - GA",
+          "preteur": "AUREL BGC SAS",
+          "annee_mobilisation": 2021,
+          "montant_initial": 24000000,
+          "capital_restant": 24000000,
+          "duree_residuelle": 3.26,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.1448,
+          "programme": null
+        },
+        {
+          "objet": "Financement ZAC - EMTN - 75000 - GA",
+          "preteur": "HSBC",
+          "annee_mobilisation": 2016,
+          "montant_initial": 24000000,
+          "capital_restant": 24000000,
+          "duree_residuelle": 3.15,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.6004,
+          "programme": null
+        },
+        {
           "objet": "Financement ZAC - 75000 - AC",
           "preteur": "CE",
           "annee_mobilisation": 2020,
@@ -5315,15 +5315,15 @@
           "programme": null
         },
         {
-          "objet": "Financement ZAC Paris Rive Gauche - 75013 - AC",
-          "preteur": "CE",
-          "annee_mobilisation": 2024,
+          "objet": "Financement ZAC - 75000 - GA",
+          "preteur": "HSBC",
+          "annee_mobilisation": 2021,
           "montant_initial": 16000000,
           "capital_restant": 16000000,
-          "duree_residuelle": 2.83,
+          "duree_residuelle": 3.28,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 3.2079,
+          "taux_actuariel": 0.1448,
           "programme": null
         },
         {
@@ -5339,6 +5339,18 @@
           "programme": null
         },
         {
+          "objet": "Financement ZAC Paris Rive Gauche - 75013 - AC",
+          "preteur": "CE",
+          "annee_mobilisation": 2024,
+          "montant_initial": 16000000,
+          "capital_restant": 16000000,
+          "duree_residuelle": 2.83,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 3.2079,
+          "programme": null
+        },
+        {
           "objet": "Financement ZAC Paris Rive Gauche - 75013 - GA",
           "preteur": "LBP",
           "annee_mobilisation": 2024,
@@ -5348,18 +5360,6 @@
           "taux_type": "V",
           "taux_index": "EURIBOR03M",
           "taux_actuariel": 4.1187,
-          "programme": null
-        },
-        {
-          "objet": "Financement ZAC - 75000 - GA",
-          "preteur": "HSBC",
-          "annee_mobilisation": 2021,
-          "montant_initial": 16000000,
-          "capital_restant": 16000000,
-          "duree_residuelle": 3.28,
-          "taux_type": "FIXE",
-          "taux_index": "FIXE",
-          "taux_actuariel": 0.1448,
           "programme": null
         },
         {
@@ -5820,7 +5820,7 @@
         "capital_portefeuille": 47782095,
         "capital_non_rattache": 72079685,
         "part_rattachee": 0.2790854015875161,
-        "n_programmes": 37
+        "n_programmes": 38
       }
     },
     {
@@ -6810,10 +6810,10 @@
           "annee_mobilisation": 2024,
           "montant_initial": 2495907,
           "capital_restant": 2495907,
-          "duree_residuelle": 81.58,
+          "duree_residuelle": 41.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 3.62,
+          "taux_actuariel": 4.1101,
           "programme": {
             "adresse": "18, AVENUE DE LA PORTE DE LA VILLETTE",
             "nb_logements": 112,
@@ -6827,10 +6827,10 @@
           "annee_mobilisation": 2024,
           "montant_initial": 2495907,
           "capital_restant": 2495907,
-          "duree_residuelle": 41.58,
+          "duree_residuelle": 81.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 4.1101,
+          "taux_actuariel": 3.62,
           "programme": {
             "adresse": "18, AVENUE DE LA PORTE DE LA VILLETTE",
             "nb_logements": 112,
@@ -9186,7 +9186,7 @@
         "capital_portefeuille": 0,
         "capital_non_rattache": 46821303,
         "part_rattachee": 0.44493507336782506,
-        "n_programmes": 16
+        "n_programmes": 17
       }
     },
     {
@@ -9289,18 +9289,6 @@
         },
         {
           "objet": "Travaux restructuration Hôpital/Rue Manin - 75019",
-          "preteur": "CE",
-          "annee_mobilisation": 2023,
-          "montant_initial": 17500000,
-          "capital_restant": 17500000,
-          "duree_residuelle": 32.34,
-          "taux_type": "FIXE",
-          "taux_index": "FIXE",
-          "taux_actuariel": 4.0297,
-          "programme": null
-        },
-        {
-          "objet": "Travaux restructuration Hôpital/Rue Manin - 75019",
           "preteur": "ARKEA",
           "annee_mobilisation": 2023,
           "montant_initial": 17500000,
@@ -9309,6 +9297,18 @@
           "taux_type": "FIXE",
           "taux_index": "FIXE",
           "taux_actuariel": 4.05,
+          "programme": null
+        },
+        {
+          "objet": "Travaux restructuration Hôpital/Rue Manin - 75019",
+          "preteur": "CE",
+          "annee_mobilisation": 2023,
+          "montant_initial": 17500000,
+          "capital_restant": 17500000,
+          "duree_residuelle": 32.34,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 4.0297,
           "programme": null
         }
       ],

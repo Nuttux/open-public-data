@@ -67,7 +67,7 @@
 
 import { useMemo } from "react";
 
-import { recordLine } from "@/components/us/city/record-line";
+import { compactMoney, fileStem, recordLine, statusRank } from "@/components/us/city/record-line";
 import type { YearDecision } from "@/lib/citygl/year-record";
 
 /** `blocks/classify.json`, the subject and act vocabularies */
@@ -176,7 +176,21 @@ export default function CityRecordPanel({
        checked twice, so the extraction is only ever reached on the 3.2%
        where the Clerk's own words do not read — which is precisely where it
        produces that. A row tells if we wrote it. Nothing else tells. */
-    const told = made.filter((r) => Boolean(r.d.pl));
+    /* ── ONE FILE, ONE ROW ──────────────────────────────────────────────
+       `record-line.ts` §ONE FILE, SEVERAL STEPS. The furthest step stands
+       for the file; the row says how many steps the year recorded. */
+    const byStem = new Map<string, { r: (typeof made)[number]; steps: number }>();
+    for (const r of made) {
+      if (!r.d.pl) continue;
+      const k = fileStem(r.d.pl);
+      const cur = byStem.get(k);
+      if (!cur) byStem.set(k, { r, steps: 1 });
+      else {
+        cur.steps += 1;
+        if (statusRank(r.d.pl) > statusRank(cur.r.d.pl)) cur.r = r;
+      }
+    }
+    const told = [...byStem.values()].map((e) => ({ ...e.r, steps: e.steps }));
     const rest = made.filter((r) => !r.d.pl);
     const by = new Map<string, { label: string; n: number; first: number }>();
     for (const r of rest) {
@@ -207,11 +221,11 @@ export default function CityRecordPanel({
           ) : null}
         </div>
         <div className="fx-city-record-scope">
+          {/* one line, not four: the caveats about the rail and the dots read
+              as instructions before any content (audit of 2026-09-09) */}
           {subject ? `in ${subject.toLowerCase()}` : "in the Board's minutes"}
-          {latest && year !== null ? " — the latest year on file. Drag the rail to go back." : ""}
-          {year !== null
-            ? ` This list is ${year} alone; the map lights the ten years around it, so it holds more dots than this holds rows.`
-            : ""}
+          {latest && year !== null ? ", the latest year on file" : ""}
+          {year !== null ? ` — ${year} alone; the map lights the years around it.` : ""}
         </div>
       </div>
 
@@ -225,7 +239,7 @@ export default function CityRecordPanel({
               : `Nothing in this year's minutes has been placed on the map. Some years are quiet, and the scans thin out in places.`}
           </p>
         ) : (
-          shown.map(({ d, line }, i) => (
+          shown.map(({ d, line, steps, i }) => (
             /* ── TWO THINGS A READER WANTS FROM A ROW, AND ONE OF THEM WAS
                    UNREACHABLE ──────────────────────────────────────────────
                The row flew the camera to the place, which is the thing only
@@ -257,7 +271,7 @@ export default function CityRecordPanel({
               <span className="fx-city-record-dot" style={{ background: ink }} />
               <span className="fx-city-record-text">
                 {line.tag ? <span className="fx-city-record-tag">{line.tag}</span> : null}
-                {line.headline}
+                {line.headline ? compactMoney(line.headline) : line.headline}
                 {/* A record can be ONE appropriation with numbered clauses —
                     (1) Dudley Stone equipment $11,000 … (5) Wilde avenue
                     $3,039.48. `pl` reads the whole item and reports the first;
@@ -282,10 +296,15 @@ export default function CityRecordPanel({
                     The money already sat under the sentence. The facts about a
                     decision belong together there, and the sentence gets the
                     full width it was written for. */}
-                {(hasSum(d, line) || d.at.length > 1) ? (
+                {(hasSum(d, line) || d.at.length > 1 || steps > 1) ? (
                   <span className="fx-city-record-meta">
                     {hasSum(d, line) ? (
                       <span className="fx-city-record-sum">{line.sum}</span>
+                    ) : null}
+                    {steps > 1 ? (
+                      <span className="fx-city-record-n">
+                        {steps} steps this year
+                      </span>
                     ) : null}
                     {d.at.length > 1 ? (
                       <span className="fx-city-record-n">

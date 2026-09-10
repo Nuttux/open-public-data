@@ -1,6 +1,6 @@
 {
   "year": 2019,
-  "generated_at": "2026-07-21T11:53:29.345502+00:00",
+  "generated_at": "2026-09-10T12:16:16.458885+00:00",
   "totals": {
     "capital_restant": 10149225221,
     "montant_initial": 12265002996,
@@ -3693,7 +3693,7 @@
         "capital_portefeuille": 1473800602,
         "capital_non_rattache": 1104741157,
         "part_rattachee": 0.17534354481285633,
-        "n_programmes": 461
+        "n_programmes": 463
       }
     },
     {
@@ -4422,11 +4422,11 @@
       ],
       "financement": {
         "base_logement": 1456289833,
-        "capital_rattache": 535646859,
+        "capital_rattache": 537892749,
         "capital_portefeuille": 142976293,
-        "capital_non_rattache": 777666681,
-        "part_rattachee": 0.3678161085896688,
-        "n_programmes": 681
+        "capital_non_rattache": 775420792,
+        "part_rattachee": 0.36935830794365965,
+        "n_programmes": 683
       }
     },
     {
@@ -4891,15 +4891,15 @@
           "programme": null
         },
         {
-          "objet": "Financement ZAC - EMTN - 75000",
+          "objet": "Financement ZAC - 75000",
           "preteur": "HSBC",
-          "annee_mobilisation": 2016,
+          "annee_mobilisation": 2019,
           "montant_initial": 24000000,
           "capital_restant": 24000000,
-          "duree_residuelle": 8.15,
+          "duree_residuelle": 4.15,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 1.69,
+          "taux_actuariel": 0.46,
           "programme": null
         },
         {
@@ -4915,15 +4915,15 @@
           "programme": null
         },
         {
-          "objet": "Financement ZAC - 75000",
+          "objet": "Financement ZAC - EMTN - 75000",
           "preteur": "HSBC",
-          "annee_mobilisation": 2019,
+          "annee_mobilisation": 2016,
           "montant_initial": 24000000,
           "capital_restant": 24000000,
-          "duree_residuelle": 4.15,
+          "duree_residuelle": 8.15,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.46,
+          "taux_actuariel": 1.69,
           "programme": null
         },
         {
@@ -5710,7 +5710,7 @@
         "capital_portefeuille": 54860091,
         "capital_non_rattache": 81770387,
         "part_rattachee": 0.26241228524576654,
-        "n_programmes": 43
+        "n_programmes": 44
       }
     },
     {
@@ -6926,18 +6926,6 @@
           }
         },
         {
-          "objet": "Résidence étudiante - Rue Tombe Issoire - 75014",
-          "preteur": "CDC",
-          "annee_mobilisation": 2019,
-          "montant_initial": 1446944,
-          "capital_restant": 1446944,
-          "duree_residuelle": 39.5,
-          "taux_type": "V",
-          "taux_index": "LIVRET A",
-          "taux_actuariel": 1.44,
-          "programme": null
-        },
-        {
           "objet": "80, rue de la Tombe d'Issoire - 75014",
           "preteur": "CDC",
           "annee_mobilisation": 2018,
@@ -6953,6 +6941,18 @@
             "n_programmes": 1,
             "match_basis": "adresse_exacte"
           }
+        },
+        {
+          "objet": "Résidence étudiante - Rue Tombe Issoire - 75014",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 1446944,
+          "capital_restant": 1446944,
+          "duree_residuelle": 39.5,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.44,
+          "programme": null
         },
         {
           "objet": "20 rue de Ménilmontant - 75020 - TRST",
@@ -7521,7 +7521,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7567,7 +7567,7 @@
             "adresse": "21 RUE BREGUET",
             "nb_logements": 47,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7601,7 +7601,7 @@
             "adresse": "56, RUE RENE BOULANGER",
             "nb_logements": 12,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7618,7 +7618,7 @@
             "adresse": "54, RUE D'ABOUKIR",
             "nb_logements": 43,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7635,7 +7635,7 @@
             "adresse": "21 RUE BREGUET",
             "nb_logements": 47,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7652,7 +7652,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7681,7 +7681,7 @@
             "adresse": "62-64, RUE PLANCHAT",
             "nb_logements": 36,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7698,7 +7698,7 @@
             "adresse": "116 RUE DE JAVEL",
             "nb_logements": 55,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7715,7 +7715,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7732,7 +7732,7 @@
             "adresse": "12-14 PASSAGE RAGUINOT",
             "nb_logements": 32,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7773,7 +7773,7 @@
             "adresse": "33-35, AVENUE JEAN JAURES",
             "nb_logements": 17,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7790,7 +7790,7 @@
             "adresse": "62-64, RUE PLANCHAT",
             "nb_logements": 36,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7807,7 +7807,7 @@
             "adresse": "12-14 PASSAGE RAGUINOT",
             "nb_logements": 32,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7841,7 +7841,7 @@
             "adresse": "90, RUE SAINT DENIS",
             "nb_logements": 14,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7870,7 +7870,7 @@
             "adresse": "38, RUE VIGNON",
             "nb_logements": 14,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7887,7 +7887,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         }
       ],
@@ -8289,11 +8289,11 @@
       ],
       "financement": {
         "base_logement": 74875270,
-        "capital_rattache": 32582946,
+        "capital_rattache": 32591745,
         "capital_portefeuille": 0,
-        "capital_non_rattache": 42292324,
-        "part_rattachee": 0.4351629897825773,
-        "n_programmes": 16
+        "capital_non_rattache": 42283525,
+        "part_rattachee": 0.43528049667130003,
+        "n_programmes": 17
       }
     },
     {
@@ -9143,7 +9143,7 @@
         "capital_portefeuille": 5470533,
         "capital_non_rattache": 6301065,
         "part_rattachee": 0.7846215365406015,
-        "n_programmes": 54
+        "n_programmes": 55
       }
     },
     {

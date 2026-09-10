@@ -206,7 +206,7 @@ def resolve_streets(body: str, gaz, keys):
     return res, un, bool(locs)
 
 
-def _row(stem, day, pno, seq, body, gaz, keys, kind, hf="", ht=""):
+def _row(stem, day, pno, seq, body, gaz, keys, kind, hf="", ht="", url=None, src="sfbos"):
     res, un, named = resolve_streets(body, gaz, keys)
     pl = "placed" if res else ("unresolved" if named else "none")
     # THE HEADER'S WORDS, GIVEN TO THE ITEM THEY INTRODUCE. `trim_headers` was
@@ -228,8 +228,13 @@ def _row(stem, day, pno, seq, body, gaz, keys, kind, hf="", ht=""):
         "i": seq, "k": kind, "dt": day, "t": body,
         "m": [x.replace(",", "") for x in ex.MONEY.findall(body)[:6]],
         "r": res,
-        "src": "sfbos",
-        "url": f"{BASE}/{stem}_minutes.pdf",
+        # WHERE THIS MEETING IS PUBLISHED, and it is no longer one place.
+        # The Clerk stopped posting to sfbos.org in April 2026 (the last file
+        # of any kind there is the 21 April agenda) and the Board's record
+        # moved to Legistar. A row cites the host it was actually read from,
+        # so a link written today still opens in five years.
+        "src": src,
+        "url": url or f"{BASE}/{stem}_minutes.pdf",
         "page": pno + 1,
         # additive, and never read by the block index
         "pl": pl,
@@ -291,7 +296,7 @@ def read_pdf(path: pathlib.Path) -> list[str] | None:
 
 def sweep_meeting(stem: str, day: str, path: pathlib.Path, gaz, keys, *,
                   trim_headers: bool = True, emit_orphans: bool = True,
-                  counters=None):
+                  counters=None, url: str | None = None, src: str = "sfbos"):
     """Every row one meeting yields, in page order, ordinary items first.
 
     `trim_headers=False, emit_orphans=False` reproduces the walk exactly as it
@@ -360,7 +365,7 @@ def sweep_meeting(stem: str, day: str, path: pathlib.Path, gaz, keys, *,
             mk = ex.ITEM.search(body)
             hf, ht = under(a)
             rows.append(_row(stem, day, pno, seq, body, gaz, keys,
-                             mk.group(1)[0] if mk else "?", hf, ht))
+                             mk.group(1)[0] if mk else "?", hf, ht, url, src))
         if emit_orphans:
             for j, h in enumerate(heads):
                 end = heads[j + 1] if j + 1 < len(heads) else len(text)
@@ -382,7 +387,7 @@ def sweep_meeting(stem: str, day: str, path: pathlib.Path, gaz, keys, *,
         kind = "H" if HEARING_TITLE.match(title.split(" - ")[0]) else "F"
         bump(f"orphan kind {kind}")
         rows.append(_row(stem, day, pno, seq, span, gaz, keys, kind,
-                         HEADER.match(span).group(1), title))
+                         HEADER.match(span).group(1), title, url, src))
     return rows
 
 

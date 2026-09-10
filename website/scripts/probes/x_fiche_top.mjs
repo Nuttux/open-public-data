@@ -1,0 +1,12 @@
+import { chromium } from 'playwright';
+const BASE = process.env.BASE; const OUT = process.env.OUT;
+const b = await chromium.launch({ args: ['--enable-unsafe-webgpu', '--use-gl=angle', '--ignore-gpu-blocklist'] });
+const p = await b.newPage({ viewport: { width: 1440, height: 900 } });
+await p.goto(`${BASE}/us/city/sf/the-city?probe=1`, { waitUntil: 'domcontentloaded' });
+await p.waitForSelector('.fx-city-controls', { timeout: 240000 }); await p.waitForTimeout(2500);
+const x = await p.$('.fx-city-strip-x'); if (x) await x.click(); await p.waitForTimeout(500);
+const c = await (await p.$('canvas')).boundingBox();
+await p.click('.fx-city-controls .fx-city-preset:text-is("Whole city")'); await p.waitForTimeout(1500);
+await p.mouse.click(c.x + c.width * 0.55, c.y + c.height * 0.5); await p.waitForTimeout(4000);
+await p.screenshot({ path: `${OUT}/top-desktop.jpg`, type: 'jpeg', quality: 72 });
+await b.close();

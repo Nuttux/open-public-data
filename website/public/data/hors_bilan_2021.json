@@ -1,6 +1,6 @@
 {
   "year": 2021,
-  "generated_at": "2026-07-21T11:53:34.312628+00:00",
+  "generated_at": "2026-09-10T12:16:21.209731+00:00",
   "totals": {
     "capital_restant": 11238727054,
     "montant_initial": 13643005368,
@@ -14,8 +14,8 @@
   "taux": {
     "capital_taux_fixe": 3443867137,
     "capital_taux_variable": 7794859917,
-    "part_fixe": 0.30642857687553865,
-    "part_variable": 0.6935714231244613,
+    "part_fixe": 0.3064285768755387,
+    "part_variable": 0.6935714231244614,
     "taux_moyen_pondere_pct": 1.506,
     "duree_residuelle_moyenne_ans": 28.3,
     "indices_variables": [
@@ -46,14 +46,14 @@
       "key": "logement_social_aide",
       "label": "Logement social aidé par l'État",
       "capital_restant": 9818981407,
-      "share": 0.8736738030762019,
+      "share": 0.873673803076202,
       "count_emprunts": 8504
     },
     {
       "key": "logement_hors_aide",
       "label": "Logement hors aide d'État",
       "capital_restant": 1419745647,
-      "share": 0.12632619692379818,
+      "share": 0.1263261969237982,
       "count_emprunts": 157
     },
     {
@@ -2883,20 +2883,20 @@
         {
           "objet": "ZAC Gare Mines-Fillettes - 75018",
           "beneficiaire": "Paris et Métropole Aménagement (SPL)",
-          "preteur": "LBP",
-          "annee_mobilisation": 2020,
-          "capital_restant": 17600000,
-          "taux_type": "FIXE",
-          "taux_actuariel": 0.6494
-        },
-        {
-          "objet": "ZAC Gare Mines-Fillettes - 75018",
-          "beneficiaire": "Paris et Métropole Aménagement (SPL)",
           "preteur": "CE",
           "annee_mobilisation": 2020,
           "capital_restant": 17600000,
           "taux_type": "FIXE",
           "taux_actuariel": 0.4907
+        },
+        {
+          "objet": "ZAC Gare Mines-Fillettes - 75018",
+          "beneficiaire": "Paris et Métropole Aménagement (SPL)",
+          "preteur": "LBP",
+          "annee_mobilisation": 2020,
+          "capital_restant": 17600000,
+          "taux_type": "FIXE",
+          "taux_actuariel": 0.6494
         },
         {
           "objet": "Pépinière Entreprises - Entrepôt Macdonald - 75018",
@@ -3329,7 +3329,7 @@
   "non_localised": {
     "capital_restant": 3389599181,
     "count_emprunts": 416,
-    "share": 0.3015999200944032
+    "share": 0.30159992009440323
   },
   "top_beneficiaires": [
     {
@@ -3338,7 +3338,7 @@
       "capital_restant": 3732358444,
       "montant_initial": 4313468689,
       "count_emprunts": 1940,
-      "share": 0.3320979703315048,
+      "share": 0.33209797033150484,
       "nature_dominante": "logement_social_aide",
       "taux_moyen_pondere_pct": 1.68,
       "duree_residuelle_moyenne_ans": 31.07,
@@ -3703,7 +3703,7 @@
         "capital_portefeuille": 1483558579,
         "capital_non_rattache": 1448239334,
         "part_rattachee": 0.21449186719225719,
-        "n_programmes": 461
+        "n_programmes": 463
       }
     },
     {
@@ -3712,7 +3712,7 @@
       "capital_restant": 2686706647,
       "montant_initial": 3405608878,
       "count_emprunts": 1879,
-      "share": 0.2390579141482794,
+      "share": 0.23905791414827945,
       "nature_dominante": "logement_social_aide",
       "taux_moyen_pondere_pct": 1.386,
       "duree_residuelle_moyenne_ans": 27.38,
@@ -4066,7 +4066,7 @@
       "capital_restant": 1525456852,
       "montant_initial": 1789135666,
       "count_emprunts": 2538,
-      "share": 0.13573217364280737,
+      "share": 0.1357321736428074,
       "nature_dominante": "logement_social_aide",
       "taux_moyen_pondere_pct": 1.286,
       "duree_residuelle_moyenne_ans": 32.43,
@@ -4422,11 +4422,11 @@
       ],
       "financement": {
         "base_logement": 1525456852,
-        "capital_rattache": 563367333,
+        "capital_rattache": 565246935,
         "capital_portefeuille": 145425343,
-        "capital_non_rattache": 816664176,
-        "part_rattachee": 0.3693105658618786,
-        "n_programmes": 681
+        "capital_non_rattache": 814784574,
+        "part_rattachee": 0.3705427222532808,
+        "n_programmes": 683
       }
     },
     {
@@ -4435,7 +4435,7 @@
       "capital_restant": 572291594,
       "montant_initial": 710092516,
       "count_emprunts": 175,
-      "share": 0.05092138913213789,
+      "share": 0.0509213891321379,
       "nature_dominante": "logement_social_aide",
       "taux_moyen_pondere_pct": 1.385,
       "duree_residuelle_moyenne_ans": 26.01,
@@ -4794,7 +4794,7 @@
       "capital_restant": 357215497,
       "montant_initial": 371440000,
       "count_emprunts": 17,
-      "share": 0.031784337771331016,
+      "share": 0.03178433777133102,
       "nature_dominante": "logement_hors_aide",
       "taux_moyen_pondere_pct": 0.626,
       "duree_residuelle_moyenne_ans": 4.22,
@@ -4906,18 +4906,6 @@
         },
         {
           "objet": "Financement ZAC - 75000 - GA",
-          "preteur": "AUREL BGC SAS",
-          "annee_mobilisation": 2021,
-          "montant_initial": 24000000,
-          "capital_restant": 24000000,
-          "duree_residuelle": 6.26,
-          "taux_type": "FIXE",
-          "taux_index": "FIXE",
-          "taux_actuariel": 0.1466,
-          "programme": null
-        },
-        {
-          "objet": "Financement ZAC - 75000 - GA",
           "preteur": "HSBC",
           "annee_mobilisation": 2019,
           "montant_initial": 24000000,
@@ -4941,6 +4929,18 @@
           "programme": null
         },
         {
+          "objet": "Financement ZAC - 75000 - GA",
+          "preteur": "AUREL BGC SAS",
+          "annee_mobilisation": 2021,
+          "montant_initial": 24000000,
+          "capital_restant": 24000000,
+          "duree_residuelle": 6.26,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.1466,
+          "programme": null
+        },
+        {
           "objet": "Financement ZAC - EMTN - 75000 - GA",
           "preteur": "HSBC",
           "annee_mobilisation": 2016,
@@ -4950,6 +4950,30 @@
           "taux_type": "FIXE",
           "taux_index": "FIXE",
           "taux_actuariel": 1.6004,
+          "programme": null
+        },
+        {
+          "objet": "Financement ZAC - 75000",
+          "preteur": "CE",
+          "annee_mobilisation": 2020,
+          "montant_initial": 16000000,
+          "capital_restant": 16000000,
+          "duree_residuelle": 3.34,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.225,
+          "programme": null
+        },
+        {
+          "objet": "Financement ZAC - 75000 - GA",
+          "preteur": "GFI",
+          "annee_mobilisation": 2017,
+          "montant_initial": 16000000,
+          "capital_restant": 16000000,
+          "duree_residuelle": 2.1,
+          "taux_type": "V",
+          "taux_index": "E06M-MOY",
+          "taux_actuariel": 0.1128,
           "programme": null
         },
         {
@@ -4974,30 +4998,6 @@
           "taux_type": "FIXE",
           "taux_index": "FIXE",
           "taux_actuariel": 0.1466,
-          "programme": null
-        },
-        {
-          "objet": "Financement ZAC - 75000 - GA",
-          "preteur": "GFI",
-          "annee_mobilisation": 2017,
-          "montant_initial": 16000000,
-          "capital_restant": 16000000,
-          "duree_residuelle": 2.1,
-          "taux_type": "V",
-          "taux_index": "E06M-MOY",
-          "taux_actuariel": 0.1128,
-          "programme": null
-        },
-        {
-          "objet": "Financement ZAC - 75000",
-          "preteur": "CE",
-          "annee_mobilisation": 2020,
-          "montant_initial": 16000000,
-          "capital_restant": 16000000,
-          "duree_residuelle": 3.34,
-          "taux_type": "FIXE",
-          "taux_index": "FIXE",
-          "taux_actuariel": 0.225,
           "programme": null
         },
         {
@@ -5052,7 +5052,7 @@
       "capital_restant": 227169316,
       "montant_initial": 312175965,
       "count_emprunts": 291,
-      "share": 0.02021308241325919,
+      "share": 0.020213082413259194,
       "nature_dominante": "logement_social_aide",
       "taux_moyen_pondere_pct": 1.507,
       "duree_residuelle_moyenne_ans": 28.15,
@@ -5436,7 +5436,7 @@
       "capital_restant": 178987881,
       "montant_initial": 215651329,
       "count_emprunts": 152,
-      "share": 0.015925992350563082,
+      "share": 0.015925992350563085,
       "nature_dominante": "logement_social_aide",
       "taux_moyen_pondere_pct": 1.903,
       "duree_residuelle_moyenne_ans": 33.03,
@@ -5811,7 +5811,7 @@
         "capital_portefeuille": 53480675,
         "capital_non_rattache": 74096481,
         "part_rattachee": 0.2872302014914031,
-        "n_programmes": 43
+        "n_programmes": 44
       }
     },
     {
@@ -5820,7 +5820,7 @@
       "capital_restant": 166879941,
       "montant_initial": 237372040,
       "count_emprunts": 165,
-      "share": 0.014848651499418317,
+      "share": 0.01484865149941832,
       "nature_dominante": "logement_social_aide",
       "taux_moyen_pondere_pct": 1.528,
       "duree_residuelle_moyenne_ans": 29.9,
@@ -6183,7 +6183,7 @@
       "capital_restant": 126880000,
       "montant_initial": 131280000,
       "count_emprunts": 7,
-      "share": 0.011289534783773354,
+      "share": 0.011289534783773356,
       "nature_dominante": "logement_hors_aide",
       "taux_moyen_pondere_pct": 0.536,
       "duree_residuelle_moyenne_ans": 2.75,
@@ -6235,18 +6235,6 @@
         },
         {
           "objet": "ZAC Gare Mines-Fillettes - 75018",
-          "preteur": "LBP",
-          "annee_mobilisation": 2020,
-          "montant_initial": 17600000,
-          "capital_restant": 17600000,
-          "duree_residuelle": 5.29,
-          "taux_type": "FIXE",
-          "taux_index": "FIXE",
-          "taux_actuariel": 0.6494,
-          "programme": null
-        },
-        {
-          "objet": "ZAC Gare Mines-Fillettes - 75018",
           "preteur": "CE",
           "annee_mobilisation": 2020,
           "montant_initial": 17600000,
@@ -6255,6 +6243,18 @@
           "taux_type": "FIXE",
           "taux_index": "FIXE",
           "taux_actuariel": 0.4907,
+          "programme": null
+        },
+        {
+          "objet": "ZAC Gare Mines-Fillettes - 75018",
+          "preteur": "LBP",
+          "annee_mobilisation": 2020,
+          "montant_initial": 17600000,
+          "capital_restant": 17600000,
+          "duree_residuelle": 5.29,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.6494,
           "programme": null
         },
         {
@@ -6309,7 +6309,7 @@
       "capital_restant": 124253482,
       "montant_initial": 157282767,
       "count_emprunts": 179,
-      "share": 0.011055832341547429,
+      "share": 0.01105583234154743,
       "nature_dominante": "logement_social_aide",
       "taux_moyen_pondere_pct": 1.529,
       "duree_residuelle_moyenne_ans": 32.22,
@@ -6679,7 +6679,7 @@
       "capital_restant": 118630253,
       "montant_initial": 159053190,
       "count_emprunts": 106,
-      "share": 0.010555488358367974,
+      "share": 0.010555488358367976,
       "nature_dominante": "logement_social_aide",
       "taux_moyen_pondere_pct": 1.493,
       "duree_residuelle_moyenne_ans": 30.51,
@@ -7098,7 +7098,7 @@
       "capital_restant": 109882472,
       "montant_initial": 118120924,
       "count_emprunts": 2,
-      "share": 0.009777127915226173,
+      "share": 0.009777127915226174,
       "nature_dominante": "logement_hors_aide",
       "taux_moyen_pondere_pct": 1.985,
       "duree_residuelle_moyenne_ans": 25.51,
@@ -7194,7 +7194,7 @@
       "capital_restant": 91329772,
       "montant_initial": 102092823,
       "count_emprunts": 178,
-      "share": 0.008126344886946163,
+      "share": 0.008126344886946165,
       "nature_dominante": "logement_social_aide",
       "taux_moyen_pondere_pct": 1.08,
       "duree_residuelle_moyenne_ans": 38.17,
@@ -7246,7 +7246,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7309,7 +7309,7 @@
             "adresse": "56, RUE RENE BOULANGER",
             "nb_logements": 12,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7326,7 +7326,7 @@
             "adresse": "21 RUE BREGUET",
             "nb_logements": 47,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7343,7 +7343,7 @@
             "adresse": "54, RUE D'ABOUKIR",
             "nb_logements": 43,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7372,7 +7372,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7389,7 +7389,7 @@
             "adresse": "21 RUE BREGUET",
             "nb_logements": 47,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7430,7 +7430,7 @@
             "adresse": "62-64, RUE PLANCHAT",
             "nb_logements": 36,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7459,7 +7459,7 @@
             "adresse": "116 RUE DE JAVEL",
             "nb_logements": 55,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7476,7 +7476,7 @@
             "adresse": "23, RUE D'ALLERAY",
             "nb_logements": 1,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7505,7 +7505,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7522,7 +7522,7 @@
             "adresse": "12-14 PASSAGE RAGUINOT",
             "nb_logements": 32,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7563,7 +7563,7 @@
             "adresse": "33-35, AVENUE JEAN JAURES",
             "nb_logements": 17,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7606,7 +7606,7 @@
       "capital_restant": 89015654,
       "montant_initial": 159688923,
       "count_emprunts": 1,
-      "share": 0.007920439207512198,
+      "share": 0.0079204392075122,
       "nature_dominante": "logement_hors_aide",
       "taux_moyen_pondere_pct": 5.006,
       "duree_residuelle_moyenne_ans": 6.09,
@@ -7648,7 +7648,7 @@
       "capital_restant": 86970107,
       "montant_initial": 122450037,
       "count_emprunts": 120,
-      "share": 0.007738430395464785,
+      "share": 0.007738430395464786,
       "nature_dominante": "logement_social_aide",
       "taux_moyen_pondere_pct": 1.498,
       "duree_residuelle_moyenne_ans": 25.16,
@@ -8066,7 +8066,7 @@
       "capital_restant": 85224133,
       "montant_initial": 93169284,
       "count_emprunts": 49,
-      "share": 0.007583076996309247,
+      "share": 0.007583076996309249,
       "nature_dominante": "logement_social_aide",
       "taux_moyen_pondere_pct": 1.308,
       "duree_residuelle_moyenne_ans": 37.81,
@@ -8443,7 +8443,7 @@
       "capital_restant": 80764850,
       "montant_initial": 96169892,
       "count_emprunts": 65,
-      "share": 0.007186298738538099,
+      "share": 0.0071862987385381,
       "nature_dominante": "logement_social_aide",
       "taux_moyen_pondere_pct": 1.083,
       "duree_residuelle_moyenne_ans": 35.92,
@@ -8830,7 +8830,7 @@
         "capital_portefeuille": 0,
         "capital_non_rattache": 46455717,
         "part_rattachee": 0.42480278139264627,
-        "n_programmes": 16
+        "n_programmes": 17
       }
     },
     {
@@ -8839,7 +8839,7 @@
       "capital_restant": 77565640,
       "montant_initial": 105154093,
       "count_emprunts": 96,
-      "share": 0.006901639263789278,
+      "share": 0.00690163926378928,
       "nature_dominante": "logement_social_aide",
       "taux_moyen_pondere_pct": 1.518,
       "duree_residuelle_moyenne_ans": 29.17,
@@ -9233,7 +9233,7 @@
       "capital_restant": 63566452,
       "montant_initial": 75829545,
       "count_emprunts": 165,
-      "share": 0.005656018826270115,
+      "share": 0.005656018826270116,
       "nature_dominante": "logement_social_aide",
       "taux_moyen_pondere_pct": 1.473,
       "duree_residuelle_moyenne_ans": 31.04,
@@ -9666,7 +9666,7 @@
         "capital_portefeuille": 5269839,
         "capital_non_rattache": 6389583,
         "part_rattachee": 0.816579005279637,
-        "n_programmes": 54
+        "n_programmes": 55
       }
     }
   ],
@@ -9674,68 +9674,68 @@
     "count": 85,
     "capital_restant": 633910224,
     "count_emprunts": 535,
-    "share": 0.056404094583978374
+    "share": 0.05640409458397838
   },
   "top_preteurs": [
     {
       "name": "CDC",
       "capital_restant": 8435311846,
       "count_emprunts": 7787,
-      "share": 0.7505575858526915
+      "share": 0.7505575858526916
     },
     {
       "name": "CE",
       "capital_restant": 536326998,
       "count_emprunts": 168,
-      "share": 0.047721329622051674
+      "share": 0.04772132962205168
     },
     {
       "name": "LBP",
       "capital_restant": 474807436,
       "count_emprunts": 145,
-      "share": 0.042247439012810833
+      "share": 0.04224743901281084
     },
     {
       "name": "CA IdF",
       "capital_restant": 302645891,
       "count_emprunts": 121,
-      "share": 0.026928840726297858
+      "share": 0.02692884072629786
     },
     {
       "name": "SG",
       "capital_restant": 244531020,
       "count_emprunts": 65,
-      "share": 0.021757892979151667
+      "share": 0.021757892979151674
     },
     {
       "name": "CF",
       "capital_restant": 230337165,
       "count_emprunts": 120,
-      "share": 0.020494951432305186
+      "share": 0.02049495143230519
     },
     {
       "name": "BAYER LB",
       "capital_restant": 189659749,
       "count_emprunts": 10,
-      "share": 0.01687555435156614
+      "share": 0.016875554351566145
     },
     {
       "name": "ARKEA",
       "capital_restant": 148351505,
       "count_emprunts": 79,
-      "share": 0.013200027423827851
+      "share": 0.013200027423827853
     },
     {
       "name": "DP AG",
       "capital_restant": 116640740,
       "count_emprunts": 3,
-      "share": 0.010378465391223762
+      "share": 0.010378465391223763
     },
     {
       "name": "CCOOP",
       "capital_restant": 104660215,
       "count_emprunts": 28,
-      "share": 0.009312461651425262
+      "share": 0.009312461651425264
     }
   ],
   "sources": {

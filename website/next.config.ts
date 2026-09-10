@@ -125,6 +125,48 @@ const nextConfig: NextConfig = {
          traced — `the-city/data.ts` §THE WALK IS A BUILD STEP. */
       './public/data/us/sf/city/blocks/provenance.json',
     ],
+    /* ── THE NEIGHBOURHOOD AND STREET PAGES ─────────────────────────────
+       Both render at request time (the layout reads headers()), so they get
+       exactly the files named here and nothing else. Measured on the live
+       site: without this they returned a Server Components render error —
+       the same failure `provenance.json` above was written to end.
+
+       The street page's own rows are NOT here and cannot be: 21 MB of
+       `blocks/street/**` is excluded from every `/us/**` function below, and
+       an exclude beats an include. It fetches them from our own origin
+       instead (`lib/us/sf-city-pages.ts` §THE STREET'S OWN ROWS). */
+    /* NO `[slug]` IN THESE TWO KEYS. Keys are globs, and `[slug]` is a
+       character class — it matches one letter out of {s,l,u,g}, never the
+       literal segment. A prefix matches the route the way `'/us/city/sf/
+       the-city'` above matches this one, because matching is `contains`. */
+    '/us/city/sf/the-city/neighbourhood': [
+      './public/data/us/sf/city/blocks/hood/**',
+      './public/data/us/sf/city/blocks/hood-facts.json',
+      './public/data/us/sf/city/blocks/street-index.json',
+      './public/data/us/sf/city/blocks/subjects.json',
+      './public/data/us/sf/city/blocks/shards.json',
+    ],
+    '/us/city/sf/the-city/street': [
+      './public/data/us/sf/city/blocks/street-index.json',
+      './public/data/us/sf/city/blocks/subjects.json',
+      './public/data/us/sf/city/blocks/shards.json',
+      /* THE TWO COMMENTS IN THIS FILE DISAGREE about whether an include or an
+         exclude wins, and the-city's own entry settles it: the `'/'` exclude
+         below strips `us/sf/city/**` from every route, the three files named
+         above it are restored by being included, and that page serves. So
+         this asks for the 21 MB of per-street records the `'/us/**'` exclude
+         drops — in this one function, which is the only one that opens them.
+         `sf-city-pages.ts` falls back to our own origin if it is ever wrong. */
+      './public/data/us/sf/city/blocks/street/**',
+    ],
+    /* The sitemap is a function too (it reads headers to pick the host), and
+       the `'/'` exclude reaches it: both enumerators threw, their `add()`
+       swallowed it, and 1,989 pages were missing from the sitemap while every
+       other family was listed. */
+    '/sitemap': [
+      './public/data/us/sf/city/blocks/street-index.json',
+      './public/data/us/sf/city/blocks/hood-facts.json',
+    ],
   },
 
   /**

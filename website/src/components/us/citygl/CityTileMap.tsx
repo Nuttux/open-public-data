@@ -212,6 +212,10 @@ interface MapPrivate {
 interface MapApi {
   /** frame a block at a stop and light its ring; the index position */
   showBlock(pos: number, stop: number): void;
+  /** fly to a GPS fix and open what stands there; false when it is outside
+   *  the city's frame. `done` says whether the tap that follows the flight
+   *  actually landed — the ground can still be loading when it arrives. */
+  locate(lon: number, lat: number, done?: (ok: boolean) => void): boolean;
   /** clear the ring and the pin */
   clear(): void;
   /** which stop the view is nearest, or -1 between two */
@@ -242,6 +246,34 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
      44 px button in the corner that opens into the box, and the stops
      have gone under the map into the transport, where the year rail is. */
   const [findOpen, setFindOpen] = useState(false);
+  /** "Find my street": idle · working · outside the city · refused · the
+   *  ground never finished loading */
+  const [locating, setLocating] = useState<
+    "idle" | "busy" | "outside" | "denied" | "slow"
+  >("idle");
+  const locate = () => {
+    if (typeof navigator === "undefined" || !navigator.geolocation) return;
+    setLocating("busy");
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        /* stays busy through the flight and the tap: the button was going
+           back to rest while the map was still on its way */
+        const inside = apiRef.current?.locate(
+          pos.coords.longitude,
+          pos.coords.latitude,
+          (ok) => setLocating(ok ? "idle" : "slow"),
+        ) ?? false;
+        if (!inside) setLocating("outside");
+      },
+      () => setLocating("denied"),
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 },
+    );
+  };
+  useEffect(() => {
+    if (locating === "idle" || locating === "busy") return;
+    const id = window.setTimeout(() => setLocating("idle"), 3500);
+    return () => window.clearTimeout(id);
+  }, [locating]);
   const findRef = useRef<HTMLDivElement | null>(null);
   const swipeY = useRef<number | null>(null);
   useEffect(() => {
@@ -275,6 +307,10 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
      `picked` is a POSITION in the block index, as it is there; `posRef`
      turns a block id (what the search hands over) into one. */
   const [picked, setPicked] = useState<number | null>(null);
+  /* the panel's own title, for the handle — `CityBlockPanel` `onTitle` */
+  const [sheetTitle, setSheetTitle] = useState<string | null>(null);
+  /** the panel's own count for its title, or -1 — see `CityBlockPanel.onTitle` */
+  const [sheetN, setSheetN] = useState(-1);
   /* ── A TAP IS NOT A SEARCH ─────────────────────────────────────────────
      A pick that came from a tap on the map, so the record effect can open
      it at the level the zoom implies: at the two wide stops a fingertip
@@ -820,12 +856,55 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
             /* the last tap's request must not outlive it: the handle named
                the previous block's neighbourhood on the next block */
             setRequest(undefined);
+            setSheetTitle(null);
+            setSheetN(-1);
             setSheetOpen(true);
             setPicked(b);
           })();
         });
 
         apiRef.current = {
+          /* ── FIND MY STREET ─────────────────────────────────────────────
+             The manifest's own equirectangular frame (`lon0`, `lat0`, `mpd`,
+             `cosl`, the same four numbers `build_bikeways.py` uses) turns a
+             fix into world metres; the projection and the plane do the rest
+             exactly as a stop does. The tap that follows is the map's own
+             click, fired at the point the flight lands on, so the drawer
+             opens the way it opens for a thumb. */
+          locate(lon, lat, done) {
+            if (!map) return false;
+            const P = proj as unknown as { lon0: number; lat0: number; mpd: number; cosl: number };
+            const c = projection.proj((lon - P.lon0) * P.mpd * P.cosl, (lat - P.lat0) * P.mpd, 0);
+            const [X, Y] = tp.toFrame(c[0], c[1]);
+            const at = ll(X, Y);
+            if (!extent.contains(at)) return false;
+            const z = zoomOf(descriptor.stops[descriptor.stops.length - 1]);
+            /* ── THE TAP WAITS FOR THE GROUND ────────────────────────────
+               The click handler stands down when there is no picker, and on
+               a slow connection the ground is still loading when the flight
+               lands — measured on prod while a 10 GB upload held the link,
+               where 15 s of waiting was not enough and the button simply did
+               nothing. It waits 40 s now, and says so when it gives up
+               rather than leaving the reader pressing a dead button. */
+            const LOCATE_TRIES = 160;
+            const tap = (left: number) => {
+              if (!map || dead) return;
+              if (!picker) {
+                if (left > 0) {
+                  setTimeout(() => tap(left - 1), 250);
+                } else {
+                  done?.(false);
+                }
+                return;
+              }
+              setZoomStop(nearestStop());
+              map.fire("click", { containerPoint: map.latLngToContainerPoint(at) });
+              done?.(true);
+            };
+            map.once("moveend", () => tap(LOCATE_TRIES));
+            fly(at, z.zoom);
+            return true;
+          },
           showBlock(pos, stop) {
             if (!map || !picker) return;
             const ring = picker.ringOf(pos);
@@ -1165,10 +1244,15 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
      tap opened one (the two wide stops), the block's streets otherwise */
   const sheetLabel = markCard
     ? markCard.place
-    : request?.req.kind === "hood" && request.block === ctx?.id && ctx?.hood
-      ? ctx.hood
-      : (record ? blockPlaceName(record.streets) : null) || ctx?.hood || "";
-  const n = markCard ? markCard.rows.length : (record?.decisions.length ?? 0);
+    : sheetTitle
+      ?? (request?.req.kind === "hood" && request.block === ctx?.id && ctx?.hood
+        ? ctx.hood
+        : (record ? blockPlaceName(record.streets) : null) || ctx?.hood || "");
+  const n = markCard
+    ? markCard.rows.length
+    : sheetTitle && sheetN >= 0
+      ? sheetN
+      : (record?.decisions.length ?? 0);
 
   return (
     <div className="fx-city-wrap">
@@ -1197,17 +1281,42 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
                 </button>
               </div>
             ) : (
-              <button
-                type="button"
-                className="fx-city-find-btn"
-                aria-label={t("us.sf.thecity.search.placeholder")}
-                onClick={() => setFindOpen(true)}
-              >
-                <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
-                  <circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" strokeWidth="1.8" />
-                  <path d="M12.8 12.8 L17.5 17.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-                </svg>
-              </button>
+              <>
+                <button
+                  type="button"
+                  className="fx-city-find-btn"
+                  aria-label={t("us.sf.thecity.search.placeholder")}
+                  onClick={() => setFindOpen(true)}
+                >
+                  <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+                    <circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" strokeWidth="1.8" />
+                    <path d="M12.8 12.8 L17.5 17.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                  </svg>
+                </button>
+                {/* ── FIND MY STREET ─────────────────────────────────────
+                    One press, and the reader's own street opens — the
+                    cheapest thing this page can do for a citizen. Only
+                    where the phone can answer. */}
+                <button
+                  type="button"
+                  className={`fx-city-find-btn fx-city-locate-btn${locating === "busy" ? " is-busy" : ""}`}
+                  aria-label={t("us.sf.thecity.locate.label")}
+                  title={t("us.sf.thecity.locate.label")}
+                  disabled={locating === "busy"}
+                  onClick={locate}
+                >
+                  <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+                    <circle cx="10" cy="10" r="3.2" fill="none" stroke="currentColor" strokeWidth="1.8" />
+                    <circle cx="10" cy="10" r="7" fill="none" stroke="currentColor" strokeWidth="1.4" />
+                    <path d="M10 1v3M10 16v3M1 10h3M16 10h3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+                  </svg>
+                </button>
+                {locating === "outside" || locating === "denied" || locating === "slow" ? (
+                  <span className="fx-city-locate-note" role="status">
+                    {t(`us.sf.thecity.locate.${locating}`)}
+                  </span>
+                ) : null}
+              </>
             )
           ) : null}
           {!loading && filmUrl ? (
@@ -1422,6 +1531,12 @@ export default function CityTileMap({ descriptor, pyramid = "now" }: CityTileMap
                 onFiche={setAt}
                 loading={recLoading}
                 onClose={close}
+                onTitle={(title, n) => {
+                  setSheetTitle(title);
+                  setSheetN(n);
+                }}
+                /* the fiche's decade takes the clock with it */
+                onYear={(y) => scrubTo(y, true)}
               />
             )}
           </div>

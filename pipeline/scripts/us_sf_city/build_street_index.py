@@ -47,10 +47,18 @@ def main() -> int:
     }
 
     referenced = set()
+    # the block that holds the most of its own record among those fronting
+    # the street — where a link to the street opens the map (`b` below)
+    best: dict[str, tuple[int, str]] = {}
     for fn in sorted(glob.glob(os.path.join(BLOCKS, "block-*.json"))):
-        for _bid, rec in json.load(open(fn)).items():
+        for bid, rec in json.load(open(fn)).items():
             if isinstance(rec, dict):
                 referenced.update(rec.get("s") or [])
+                n_own = len(rec.get("d") or [])
+                for k in rec.get("s") or []:
+                    f = file_name(k)
+                    if f not in best or n_own > best[f][0]:
+                        best[f] = (n_own, bid)
 
     counts: dict[str, int] = {}
     for name, path in on_disk.items():
@@ -71,6 +79,8 @@ def main() -> int:
                "prints it as text rather than offering a link that opens an empty "
                "page. 19% of the streets blocks name were in that state.",
         "n": dict(sorted(counts.items())),
+        # file name → the block a street page opens the map on
+        "b": {f: best[f][1] for f in sorted(counts) if f in best},
     }
     with open(OUT, "w") as f:
         json.dump(payload, f, separators=(",", ":"))

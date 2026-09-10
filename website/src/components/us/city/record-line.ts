@@ -316,3 +316,60 @@ export function recordLine(
     sum: formatSum(raw),
   };
 }
+
+/* ── MONEY, ONE WAY ─────────────────────────────────────────────────────────
+   The written lines print money four ways in one list — "$339,102,572",
+   "$20.1M", "$1,500,000", "$9 billion" (audit of 2026-09-09). A figure of a
+   million or more with commas in it is shown compact; anything under a
+   million, and anything already written in words, stays as written. */
+const LONG_MONEY = /\$(\d{1,3}(?:,\d{3}){2,})(?:\.\d+)?/g;
+export function compactMoney(text: string): string {
+  return text.replace(LONG_MONEY, (whole, digits: string) => {
+    const v = Number(digits.replace(/,/g, ""));
+    if (!Number.isFinite(v) || v < 1e6) return whole;
+    return v >= 1e9 ? `$${(v / 1e9).toFixed(1)}B` : `$${(v / 1e6).toFixed(1)}M`;
+  });
+}
+
+/* ── ONE FILE, SEVERAL STEPS ────────────────────────────────────────────────
+   A Board file passes through committee, a first reading and a final vote,
+   and the minutes record each; the year list read "Police policy for
+   electronic location trackers" three times in a row. The lines carry no
+   file number, so the file is recognised by its stem: the written line
+   without its money and without its closing status. MEASURED on 2026: 14
+   files fold 16 rows out of 570 — few, but they sit at the top of the list. */
+const STATUS_TAIL = /\s*(?:,\s*)?(?:finally passed|passed on (?:first|second) reading|passed second reading|moved for approval|sent to (?:the )?[a-z ]*committee|declared necessary and adopted|adopted|approved|sought|proposed|to go to voters[^,]*|sent to [A-Z][a-z]+ voters)\s*$/i;
+const MONEY_PHRASE = /\s*(?:to rise to|raised to|to grow by|of|for)\s+\$[\d,.]+(?:M|B|K| billion| million)?/gi;
+export function fileStem(line: string): string {
+  return line.replace(MONEY_PHRASE, " ").replace(STATUS_TAIL, "").replace(/\s+/g, " ").trim().toLowerCase();
+}
+
+/**
+ * THE OUTCOME, AS ONE WORD A READER CAN SCAN.
+ *
+ * "Liquor licence supported for The Epicurean Trader" does not say whether it
+ * happened. The written line carries the status in its own words ("finally
+ * passed", "sought", "sent to committee") and `statusRank` already reads it;
+ * this folds the rank into three words for a tag. Nothing is inferred beyond
+ * what the line says — a line with no status word gets no tag.
+ */
+export type StatusWord = "passed" | "moving" | "proposed";
+export function statusWord(line: string): StatusWord | null {
+  const r = statusRank(line);
+  if (r >= 4) return "passed";
+  if (r >= 2) return "moving";
+  if (r === 1) return "proposed";
+  return null;
+}
+
+/** how far along a line's status is — the row shown for a folded file is
+ *  the furthest one, and its steps are counted beside it */
+export function statusRank(line: string): number {
+  const l = line.toLowerCase();
+  if (/finally passed|declared necessary and adopted/.test(l)) return 5;
+  if (/, adopted|\badopted\b|approved/.test(l)) return 4;
+  if (/passed on (first|second) reading|passed second reading/.test(l)) return 3;
+  if (/moved for approval|sent to .*committee/.test(l)) return 2;
+  if (/sought|proposed|to go to voters|sent to .* voters/.test(l)) return 1;
+  return 0;
+}
