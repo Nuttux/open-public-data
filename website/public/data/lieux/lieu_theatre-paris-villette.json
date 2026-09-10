@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T19:26:56.680581+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "theatre-paris-villette",
   "name": "Théâtre Paris-Villette",
@@ -33,8 +33,10 @@
     ],
     "n_bmo_brut": 2000,
     "n_bmo_verifies": 3,
-    "invest_total_eur": 0,
-    "invest_annees": [],
+    "invest_total_eur": 140636.0,
+    "invest_annees": [
+      "2019"
+    ],
     "lecture_mode": "titre nommant le lieu (2 trouvés)",
     "lecture_mode_en": "title naming the place (2 found)",
     "n_lus": 2,
@@ -124,6 +126,16 @@
   },
   "residents": [
     {
+      "beneficiaire": "POUR AINSI DIRE",
+      "montant_total": 7000.0,
+      "preuve": "Objet verbatim : « Aide à la diffusion de \"Soeur je ne sais pas quoi frère\" au Théâtre Paris Villette » — l'objet nomme le lieu comme salle de diffusion ; aide à un spectacle accueilli DANS le lieu, sans gestion (SIRET 40998020800030, distinct de celui de l'exploitant)."
+    },
+    {
+      "beneficiaire": "THEATRE MAJAZ",
+      "montant_total": 7000.0,
+      "preuve": "Objet verbatim : « Aide à la diffusion du spectacle L'Incivile au Grand Parquet/Théâtre Paris-VilletteCie émergente » — l'objet nomme le lieu, mais conjointement avec le Grand Parquet (18e), l'autre site géré par la même association : le spectacle a pu être diffusé sur l'un ou l'autre. Aide à une activité, sans gestion du lieu."
+    },
+    {
       "beneficiaire": "MADANI COMPAGNIE",
       "montant_total": 6000.0,
       "preuve": "Objet verbatim : « Aide à la diffusion du spectacle Incandescences au Théâtre Paris-Villette » — l'objet nomme explicitement et uniquement le lieu ; aide à une activité DANS le lieu, sans gestion.",
@@ -134,6 +146,11 @@
       "montant_total": 5000.0,
       "preuve": "Objet verbatim : « Théâtre Paris-Villette - spectacle \"Luce\" » — l'objet nomme explicitement le lieu ; aide à un spectacle DANS le lieu, sans gestion.",
       "preuve_en": "Grant purpose, verbatim: \"Théâtre Paris-Villette – show 'Luce'\" — the purpose explicitly names the site; support for a show held INSIDE the site, without operating it."
+    },
+    {
+      "beneficiaire": "LA DISSIPATION DES BRUMES MATINALES",
+      "montant_total": 5000.0,
+      "preuve": "Objet verbatim : « Aide au projet - Théâtre - \"Le Prince\" au Théâtre Paris-Villette » — l'objet nomme explicitement le lieu comme salle du projet ; aide à une activité DANS le lieu, sans gestion (SIRET 52107483100012, distinct de celui de l'exploitant)."
     }
   ],
   "kpi_montant": null,
@@ -171,7 +188,15 @@
   ],
   "bmo_extraits": [],
   "bmo_recit": null,
-  "invest": [],
+  "invest": [
+    {
+      "annee": 2019,
+      "montant_eur": 140636.0,
+      "nom_projet": "Salles de spectacle Théâtre Paris Villette - Travaux divers",
+      "preuve": "Le nom du projet nomme le lieu et désigne des travaux sur ses salles : « Salles de spectacle Théâtre Paris Villette - Travaux divers ». Le rattachement repose sur le nom, pas sur la distance (le point géocodé est à 942 m, vraisemblablement imprécis).",
+      "id": "2019_19_il_001"
+    }
+  ],
   "marches": [
     {
       "numero_marche": "20191320000205",

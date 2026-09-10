@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "piscine-butte-aux-cailles",
   "name": "Piscine de la Butte-aux-Cailles",
@@ -33,8 +33,11 @@
     ],
     "n_bmo_brut": 473,
     "n_bmo_verifies": 18,
-    "invest_total_eur": 0,
-    "invest_annees": [],
+    "invest_total_eur": 2544047.0,
+    "invest_annees": [
+      "2019",
+      "2021"
+    ],
     "lecture_mode": "titre nommant le lieu (4 trouvés)",
     "lecture_mode_en": "title naming the place (4 found)",
     "n_lus": 3,
@@ -124,7 +127,22 @@
     }
   ],
   "bmo_recit": "La piscine apparaît dans le Bulletin municipal dès l'entre-deux-guerres, par des questions d'équipement : en 1926, l'installation de pommes de douches, évaluée à 500 francs pour deux pommes, doit être financée sur les reliquats de l'opération, et en 1929 le Bulletin la présente comme inaugurée en mai 1924, première exploitée sur ce modèle, avec un bassin de 700 mètres cubes. L'entretien revient ensuite régulièrement : en 1938, les buées et les intempéries ayant détérioré les châssis vitrés du hall de natation, leur remplacement est rapporté au Conseil, et en 1952 le plongeoir de quatre mètres est supprimé pour des raisons de sécurité, une question adressée au préfet de la Seine demandant s'il sera bientôt remplacé. En 1963, un intervenant en séance déplore que la procédure liée à la création d'une piscine à la Butte-aux-Cailles, décidée en mars 1961, ait demandé trois longues années. En 1975 enfin, le Bulletin fait état d'un très grand nombre de lettres d'usagers et rappelle que la piscine, alimentée par un puits artésien, ne nécessite qu'un chauffage complémentaire.",
-  "invest": [],
+  "invest": [
+    {
+      "annee": 2019,
+      "montant_eur": 352330.0,
+      "nom_projet": "Bains-douches Bains-douches 5, place Paul Verlaine - Rénovation des bains",
+      "preuve": "Le nom du projet porte l'adresse de la piscine : « Bains-douches Bains-douches 5, place Paul Verlaine - Rénovation des bains ». La délibération du Conseil de Paris de mai 1996 situe « la piscine de la Butte-aux-Cailles, 5, place Paul-Verlaine (13e) » : même adresse. Les bains-douches sont un service distinct logé sur ce site, et la Ville les budgète avec la piscine : libellé d'opération « PISCINE ET BD BUTTE AUX CAILLES » (DJS) et projet 2021 « Piscines et bassins école Piscine Butte aux Cailles - Rénovation des bains douches, réfect ». Réserve : le nom du projet ne nomme pas la piscine elle-même et le montant porte sur la partie bains-douches du site — confiance moyenne.",
+      "id": "2019_13_il_012"
+    },
+    {
+      "annee": 2021,
+      "montant_eur": 2191717.0,
+      "nom_projet": "Piscines et bassins école Piscine Butte aux Cailles - Rénovation des bains douches, réfect",
+      "preuve": "Le nom du projet nomme le lieu : « Piscines et bassins école Piscine Butte aux Cailles - Rénovation des bains douches, réfect » (le libellé est tronqué en fin de chaîne par la source). Le rattachement repose sur ce nom, pas sur la distance : le candidat relève 165 m, distance non probante ici puisque le nom désigne explicitement l'équipement. L'opération porte aussi sur les bains-douches du même site (voir piscine-butte-aux-cailles_perimetre.json).",
+      "id": null
+    }
+  ],
   "marches": [
     {
       "numero_marche": "20242024S02607",
@@ -133,7 +151,7 @@
       "fournisseur": "BUREAU D ETUDES ET DE CONSEILS EN",
       "montant_max": 25979.33,
       "date_notification": "2024-04-16",
-      "preuve": "L'objet nomme le lieu en toutes lettres : « MS CSPS PISCINE DE LA BUTTE-AUX-CAILLES ». Il s'agit d'un marché subséquent (MS) d'un accord-cadre de coordination sécurité et protection de la santé, mais rattaché à cette seule opération : l'objet DECP du même numéro se termine par « Modernisation et extension de la Piscine de la Butte-aux-Cailles, 75013 Paris ». Le montant de 25 979,33 € est propre à ce marché subséquent, ce n'est pas l'enveloppe de l'accord-cadre."
+      "preuve": "L'objet nomme le lieu en toutes lettres : « MS CSPS PISCINE DE LA BUTTE-AUX-CAILLES ». Le lieu est l'objet du marché, pas un repère d'adresse, et l'objet ne cite aucun autre équipement. « CSPS » renvoie à la coordination « de sécurité et protection de la santé », formulation écrite en clair dans l'objet de l'autre marché rattaché (decp-2024S03906). Fournisseur « BUREAU D ETUDES ET DE CONSEILS EN » (SIRET 40353972900232), notifié le 2024-04-16, montant max 25 979,33 € — valeur reprise telle quelle du candidat."
     },
     {
       "numero_marche": "decp-2024S03906",
@@ -142,10 +160,89 @@
       "fournisseur": "ALPHA CONTROLE",
       "montant_max": 16782.0,
       "date_notification": "2024-05-23",
-      "preuve": "L'objet désigne l'opération elle-même : « Modernisation et extension de la Piscine de la Butte-aux-Cailles, 5 Place Paul Verlaine, 75013 Paris ». Une seule opération est citée, le lieu est l'objet du contrôle technique et non un repère d'adresse. L'adresse concorde avec la délibération de mai 1996 qui situe « la piscine de la Butte-aux-Cailles, 5, place Paul-Verlaine (13e) »."
+      "preuve": "La seconde moitié de l'objet désigne une opération sur ce lieu : « Modernisation et extension de la Piscine de la Butte-aux-Cailles, 5 Place » (l'objet s'arrête là, tronqué par la source) ; l'adresse amorcée concorde avec la délibération de mai 1996, « la piscine de la Butte-aux-Cailles, 5, place Paul-Verlaine (13e) ». Le lieu est l'ouvrage contrôlé, pas un repère d'adresse. Réserve : la première moitié de l'objet est l'intitulé générique d'un accord-cadre (« Contrôle technique de la construction pour des opérations nécessitant un coordinateur de sécurité et protection de la santé de catégories 1 ou 2 ») ; le candidat ne permet pas de vérifier que le montant max de 16 782 € ne couvre que cette opération — confiance moyenne."
     }
   ],
-  "mandate": null,
+  "mandate": {
+    "par_annee": {
+      "2012": 351541.68,
+      "2013": 2961314.91,
+      "2014": 3186544.33,
+      "2015": 92144.96,
+      "2016": 434798.79,
+      "2017": 124555.23
+    },
+    "total_eur": 7150899.9,
+    "operations": [
+      {
+        "ap_cle": "1004019",
+        "ap_texte": "¨PISCINE ET BD BUTTE AUX CAILLES",
+        "mandate_par_annee": {
+          "2014": 2506150.79,
+          "2015": 19243.59,
+          "2016": 73838.38,
+          "2017": 9320.43
+        },
+        "total_mandate": 2608553.19,
+        "preuve": "Le libellé d'opération nomme le lieu : « ¨PISCINE ET BD BUTTE AUX CAILLES ». Le signal du candidat est une « partie distinctive (butte aux cailles) », indice faible pris seul ; il est confirmé ici par le type d'équipement inscrit dans le libellé lui-même (« PISCINE ») et par le porteur : direction DJS, mission « JEUNESSE ET SPORTS ». Ce n'est pas une enveloppe générique de direction : le libellé désigne un équipement nommé. Il mentionne aussi les « BD » (bains-douches) du même site, 5 place Paul-Verlaine : l'opération couvre l'ensemble piscine + bains-douches, sans ventilation dans la source (voir piscine-butte-aux-cailles_perimetre.json). Mandatements 2014-2017 recopiés à l'identique du candidat.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1004019"
+      },
+      {
+        "ap_cle": "B100/1004019",
+        "ap_texte": "¨PISCINE ET BD BUTTE AUX CAILLES",
+        "mandate_par_annee": {
+          "2012": 351541.68,
+          "2013": 2205222.37
+        },
+        "total_mandate": 2556764.05,
+        "preuve": "Le libellé d'opération nomme le lieu : « ¨PISCINE ET BD BUTTE AUX CAILLES », sous la clé B100/1004019. Le signal du candidat est une « partie distinctive (butte aux cailles) », indice faible pris seul ; il est confirmé ici par le type d'équipement inscrit dans le libellé lui-même (« PISCINE ») et par le porteur : direction DJS, mission « JEUNESSE ET SPORTS ». Ce n'est pas une enveloppe générique de direction : le libellé désigne un équipement nommé. Il mentionne aussi les « BD » (bains-douches) du même site, 5 place Paul-Verlaine : l'opération couvre l'ensemble piscine + bains-douches, sans ventilation dans la source (voir piscine-butte-aux-cailles_perimetre.json). Mandatements 2012-2013 recopiés à l'identique du candidat ; la source ne dit pas comment cette clé s'articule avec les autres clés portant le même libellé, aucun lien de tranche n'est affirmé ici.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1004019"
+      },
+      {
+        "ap_cle": "1304019",
+        "ap_texte": "PISCINE ET BD BUTTE AUX CAILLES",
+        "mandate_par_annee": {
+          "2014": 482753.43,
+          "2015": 72901.37,
+          "2016": 355098.09,
+          "2017": 97926.58
+        },
+        "total_mandate": 1008679.47,
+        "preuve": "Le libellé d'opération nomme le lieu : « PISCINE ET BD BUTTE AUX CAILLES », sous la clé 1304019. Le signal du candidat est une « partie distinctive (butte aux cailles) », indice faible pris seul ; il est confirmé ici par le type d'équipement inscrit dans le libellé lui-même (« PISCINE ») et par le porteur : direction DJS, mission « JEUNESSE ET SPORTS ». Ce n'est pas une enveloppe générique de direction : le libellé désigne un équipement nommé. Il mentionne aussi les « BD » (bains-douches) du même site, 5 place Paul-Verlaine : l'opération couvre l'ensemble piscine + bains-douches, sans ventilation dans la source (voir piscine-butte-aux-cailles_perimetre.json). Mandatements 2014-2017 recopiés à l'identique du candidat.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1304019"
+      },
+      {
+        "ap_cle": "B100/1204019",
+        "ap_texte": "PISCINE ET BD BUTTE AUX CAILLES",
+        "mandate_par_annee": {
+          "2013": 756092.54
+        },
+        "total_mandate": 756092.54,
+        "preuve": "Le libellé d'opération nomme le lieu : « PISCINE ET BD BUTTE AUX CAILLES », sous la clé B100/1204019. Le signal du candidat est une « partie distinctive (butte aux cailles) », indice faible pris seul ; il est confirmé ici par le type d'équipement inscrit dans le libellé lui-même (« PISCINE ») et par le porteur : direction DJS, mission « JEUNESSE ET SPORTS ». Ce n'est pas une enveloppe générique de direction : le libellé désigne un équipement nommé. Il mentionne aussi les « BD » (bains-douches) du même site, 5 place Paul-Verlaine : l'opération couvre l'ensemble piscine + bains-douches, sans ventilation dans la source (voir piscine-butte-aux-cailles_perimetre.json). Mandatement 2013 recopié à l'identique du candidat.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1204019"
+      },
+      {
+        "ap_cle": "1204019",
+        "ap_texte": "PISCINE ET BD BUTTE AUX CAILLES",
+        "mandate_par_annee": {
+          "2014": 197640.11,
+          "2016": 5862.32,
+          "2017": 17308.22
+        },
+        "total_mandate": 220810.65,
+        "preuve": "Le libellé d'opération nomme le lieu : « PISCINE ET BD BUTTE AUX CAILLES », sous la clé 1204019. Le signal du candidat est une « partie distinctive (butte aux cailles) », indice faible pris seul ; il est confirmé ici par le type d'équipement inscrit dans le libellé lui-même (« PISCINE ») et par le porteur : direction DJS, mission « JEUNESSE ET SPORTS ». Ce n'est pas une enveloppe générique de direction : le libellé désigne un équipement nommé. Il mentionne aussi les « BD » (bains-douches) du même site, 5 place Paul-Verlaine : l'opération couvre l'ensemble piscine + bains-douches, sans ventilation dans la source (voir piscine-butte-aux-cailles_perimetre.json). Mandatements 2014, 2016 et 2017 recopiés à l'identique du candidat.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1204019"
+      }
+    ],
+    "periode": [
+      "2012",
+      "2017"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
   "sources": {
     "delibs": {
       "name": "Débat-Délibs — Conseil de Paris",

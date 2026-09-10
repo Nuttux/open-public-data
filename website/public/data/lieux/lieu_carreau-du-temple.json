@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T14:24:24.851547+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "carreau-du-temple",
   "name": "Carreau du Temple",
@@ -42,9 +42,9 @@
   },
   "subventions_exploitant": {
     "nom_fiche": "SOCIETE PUBLIQUE LOCALE LE CARREAU DU TEMPLE",
-    "total_eur": 97250.0,
+    "total_eur": 106050.0,
     "annees": [
-      "2022",
+      "2014",
       "2022"
     ],
     "rows": [
@@ -52,6 +52,12 @@
         "annee": "2022",
         "montant_eur": 97250.0,
         "beneficiaire": "SOCIETE PUBLIQUE LOCALE LE CARREAU DU TEMPLE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2014",
+        "montant_eur": 8800.0,
+        "beneficiaire": "SPL CARREAU DU TEMPLE",
         "thematique": "Culture"
       }
     ],
@@ -298,7 +304,7 @@
       "fournisseur": "SOC PUBLIQUE LOCALE CARREAU TEMPLE",
       "montant_max": 5834850.0,
       "date_notification": "2024-12-05",
-      "preuve": "Objet « CONCESSION GESTION CARREAU DU TEMPLE » attribué à la SPL Carreau du Temple (SIRET 78977257100020), exploitant confirmé par les délibérations DSP (2018 DAC 42) ; le contrat DSP précédent s'achevait en 2024."
+      "preuve": "Objet « CONCESSION GESTION CARREAU DU TEMPLE » attribué à la SPL Carreau du Temple (SIRET 78977257100020), exploitant confirmé par la délibération 2018 DAC 42 (« Principe de la délégation du service public relatif à l'exploitation du Carreau du Temple »)."
     },
     {
       "numero_marche": "20131210009282",
@@ -307,7 +313,7 @@
       "fournisseur": "D B S",
       "montant_max": 980620.0,
       "date_notification": "2013-05-22",
-      "preuve": "Objet nomme le lieu et l'opération : « CARREAU DU TEMPLE REHABILITATION EXTENSION EN SOUS-SOL », opération confirmée par la délibération 2009 DPA 56 (« réhabilitation et l'extension en sous-sol du Carreau du Temple »)."
+      "preuve": "Objet nomme le lieu et l'opération : « CARREAU DU TEMPLE REHABILITATION EXTENSION EN SOUS-SOL », opération confirmée par la délibération 2009 DPA 56 (« avenant au marché de maîtrise d'œuvre de l'opération de réhabilitation du Carreau du Temple (3e) »)."
     },
     {
       "numero_marche": "20232023T04109",
@@ -375,20 +381,21 @@
   ],
   "mandate": {
     "par_annee": {
-      "2009": 2723539.49,
-      "2010": 3274492.7,
-      "2011": 12477126.79,
-      "2012": 15021876.76,
+      "2009": 2731213.18,
+      "2010": 3274833.08,
+      "2011": 12482729.48,
+      "2012": 15024579.95,
       "2013": 15662813.1,
       "2014": 5002217.46,
       "2015": 2139985.35,
       "2016": 1342231.1,
       "2017": 480715.96,
-      "2018": 134992.45,
-      "2019": 817861.3,
-      "2020": 10336.19
+      "2018": 139803.69,
+      "2019": 849832.71,
+      "2020": 261297.52,
+      "2021": 18732.46
     },
-    "total_eur": 59088188.65,
+    "total_eur": 59410985.04,
     "operations": [
       {
         "ap_cle": "B100/0903798",
@@ -401,7 +408,7 @@
           "2013": 14937476.12
         },
         "total_mandate": 41284532.24,
-        "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS, mission Jeunesse et Sports) : opération de réhabilitation de l'équipement, cohérente avec la délibération 2009 DPA 56 (réhabilitation avec extension en sous-sol) et la livraison du bâtiment en 2014 ; pic de mandatement 2011-2013 pendant le chantier.",
+        "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS, mission Jeunesse et Sports) : opération sur l'équipement lui-même, cohérente avec la délibération 2007 DPA 331 (« principe de réalisation des travaux de réhabilitation avec extension en sous sol du Carreau du Temple, 4 rue Eugène Spuller ») et la livraison du bâtiment en 2014 ; pic de mandatement 2011-2013 pendant le chantier.",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903798"
       },
       {
@@ -417,7 +424,7 @@
           "2020": 3727.92
         },
         "total_mandate": 5925203.16,
-        "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS) : suite 2014-2017 de la même opération 03798 sur le bâtiment, après la livraison de l'équipement en 2014.",
+        "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS) : suite 2014-2020 de la même opération 03798 sur le bâtiment, après la livraison de l'équipement en 2014.",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=0903798"
       },
       {
@@ -431,7 +438,7 @@
           "2013": 266736.89
         },
         "total_mandate": 3380655.13,
-        "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS) : tranche AP 2008 de l'opération de réhabilitation du bâtiment (opération confirmée par les délibérations DPA 2004-2009).",
+        "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS) : tranche AP 2008 de l'opération de réhabilitation du bâtiment (opération approuvée par 2004 DPA 187, puis 2007 DPA 331).",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0803798"
       },
       {
@@ -445,7 +452,7 @@
           "2013": 356134.61
         },
         "total_mandate": 3042195.99,
-        "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS) : tranche AP 2007 de la même opération, année de la délibération 2007 DPA 331 approuvant la réhabilitation avec extension en sous-sol.",
+        "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS) : tranche AP 2007 de la même opération, année de la délibération 2007 DPA 331 approuvant « le principe de réalisation des travaux de réhabilitation avec extension en sous sol du Carreau du Temple ».",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0703798"
       },
       {
@@ -501,6 +508,19 @@
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0803798"
       },
       {
+        "ap_cle": "1604925",
+        "ap_texte": "CARREAU DU TEMPLE - RUE DE PICARDIE (3e)",
+        "mandate_par_annee": {
+          "2018": 4811.24,
+          "2019": 31971.41,
+          "2020": 250961.33,
+          "2021": 18732.46
+        },
+        "total_mandate": 306476.44,
+        "preuve": "Libellé « CARREAU DU TEMPLE - RUE DE PICARDIE (3e) » (DVD, mission Voirie et déplacements) : la rue de Picardie est l'une des adresses mêmes du lieu — la délibération 2004 DPA 187 situe l'équipement « au 4, rue Eugène Spuller, 3x rue Dupetit-Thouars, 2 rue Perrée, 25 rue de Picardie - 75003 Paris ». Opération d'aménagement de voirie sur cette façade du Carreau, mandatée 2018-2021.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604925"
+      },
+      {
         "ap_cle": "B100/1003798",
         "ap_texte": "CS CARREAU DU TEMPLE",
         "mandate_par_annee": {
@@ -509,11 +529,24 @@
         "total_mandate": 102465.48,
         "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS) : tranche AP 2010 de la même opération sur le bâtiment, mandatée en 2013 pendant le chantier.",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1003798"
+      },
+      {
+        "ap_cle": "B100/0703708",
+        "ap_texte": "ETUDES CARREAU DU TEMPLE",
+        "mandate_par_annee": {
+          "2009": 7673.69,
+          "2010": 340.38,
+          "2011": 5602.69,
+          "2012": 2703.19
+        },
+        "total_mandate": 16319.95,
+        "preuve": "Libellé « ETUDES CARREAU DU TEMPLE » (DPA, mission Études) : études préalables au projet de réhabilitation du lieu, cohérentes avec la délibération 2004 DPA 187 qui approuve « la passation de deux marchés de prestations intellectuelles préalables » pour le Carreau du Temple, « 4, rue Eugène Spuller, 3x rue Dupetit-Thouars, 2 rue Perrée, 25 rue de Picardie - 75003 Paris ».",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0703708"
       }
     ],
     "periode": [
       "2009",
-      "2020"
+      "2021"
     ],
     "source": {
       "name": "Comptes administratifs — autorisations de programme, Ville de Paris",

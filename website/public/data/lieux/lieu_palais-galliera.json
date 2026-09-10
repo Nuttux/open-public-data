@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "palais-galliera",
   "name": "Palais Galliera",
@@ -193,7 +193,7 @@
       "fournisseur": "ATELIER DE L'ILE",
       "montant_max": 777464.36,
       "date_notification": "2017-03-29",
-      "preuve": "L'objet nomme le lieu ET son adresse verbatim : « MOE RESTRUCTURATION PALAIS GALLIERA 10 AV.PIERRE 1ER SERBIE ». L'adresse correspond à celle confirmée par les délibérations (2017 DPA 9 : « Palais Galliera, 10, avenue Pierre-Ier-de-Serbie (16e). - Restructuration partielle. - Objectifs, programme des travaux, modalités de réalisation. », séance de janvier 2017). Marché de maîtrise d'œuvre notifié le 2017-03-29, soit deux mois après cette délibération, ce qui concorde avec la MOE de cette restructuration ; le rattachement au lieu repose de toute façon sur l'objet et l'adresse, cités verbatim."
+      "preuve": "L'objet nomme le lieu et son adresse verbatim : « MOE RESTRUCTURATION PALAIS GALLIERA 10 AV.PIERRE 1ER SERBIE ». Marché de maîtrise d'œuvre portant sur le bâtiment lui-même. L'adresse citée est celle du lieu telle qu'elle figure dans les délibérations : « Palais Galliera, 10, avenue Pierre-Ier-de-Serbie (16e). - Restructuration partielle » (2017 DPA 9, séance de janvier 2017). Le rattachement repose sur l'objet et l'adresse, cités verbatim."
     },
     {
       "numero_marche": "20191210000448",
@@ -202,7 +202,7 @@
       "fournisseur": "STE LOUIS GENESTE ET SES FILS",
       "montant_max": 529283.38,
       "date_notification": "2019-04-23",
-      "preuve": "L'objet nomme le lieu et porte sur le bâtiment lui-même : « CSP5 TVX RESTRUCTUR PALAIS GALLIERA LOT8 : RESTAUR. FACADES ». Lot de travaux de la restructuration approuvée par 2017 DPA 9 (« Palais Galliera, 10, avenue Pierre-Ier-de-Serbie (16e). - Restructuration partielle »)."
+      "preuve": "L'objet nomme le lieu et porte sur le bâtiment : « CSP5 TVX RESTRUCTUR PALAIS GALLIERA LOT8 : RESTAUR. FACADES ». Travaux de restauration des façades du monument ; le rattachement repose sur l'objet seul."
     },
     {
       "numero_marche": "20191210000268",
@@ -211,7 +211,7 @@
       "fournisseur": "STE LOUIS GENESTE ET SES FILS",
       "montant_max": 328949.53,
       "date_notification": "2019-03-06",
-      "preuve": "L'objet nomme le lieu et porte sur des éléments bâtis du monument : « CSP5 TVX PALAIS GALLIERA - LOT6 : BALUSTRADES & ESCALIERS ». Le rattachement repose sur ce seul objet, qui suffit. Le rapprochement avec l'opération de restructuration (2017 DPA 9) n'est qu'un indice concordant (même préfixe CSP5, même titulaire et même période que le lot 8) et n'est pas écrit dans la source."
+      "preuve": "L'objet nomme le lieu et porte sur des éléments bâtis : « CSP5 TVX PALAIS GALLIERA - LOT6 : BALUSTRADES & ESCALIERS ». Le rattachement repose sur ce seul objet. Le rapprochement avec les autres lots CSP5 (même préfixe, même titulaire, même période) est un indice concordant, non écrit dans la source."
     },
     {
       "numero_marche": "20191210000447",
@@ -220,10 +220,124 @@
       "fournisseur": "SINIO",
       "montant_max": 25128.0,
       "date_notification": "2019-04-23",
-      "preuve": "L'objet nomme le lieu et porte sur son équipement : « CSP5 TVX RESTRUCTURATION PALAIS GALLIERA LOT7 : SIGNALETIQUE ». Lot de la même restructuration (2017 DPA 9), notifié le même jour que le lot 8."
+      "preuve": "L'objet nomme le lieu et porte sur son équipement : « CSP5 TVX RESTRUCTURATION PALAIS GALLIERA LOT7 : SIGNALETIQUE ». Le rattachement repose sur ce seul objet."
     }
   ],
-  "mandate": null,
+  "mandate": {
+    "par_annee": {
+      "2010": 328498.3,
+      "2011": 315944.65,
+      "2012": 275864.38,
+      "2013": 4536900.85,
+      "2014": 175088.81,
+      "2015": 84447.87,
+      "2016": 112.37,
+      "2017": 272727.18,
+      "2018": 344083.51,
+      "2019": 338620.61,
+      "2020": 175683.96,
+      "2021": 6210.19,
+      "2022": 12656.38
+    },
+    "total_eur": 6866839.06,
+    "operations": [
+      {
+        "ap_cle": "B100/1104237",
+        "ap_texte": "MUSEE GALLIERA",
+        "mandate_par_annee": {
+          "2011": 3295.35,
+          "2012": 243062.49,
+          "2013": 4535093.57
+        },
+        "total_mandate": 4781451.41,
+        "preuve": "Le libellé de l'opération nomme le lieu : « MUSEE GALLIERA » (mission « AFFAIRES CULTURELLES », direction DAC). Les délibérations établissent que le Musée Galliera est bien ce lieu : « travaux de désenfumage des salles d’exposition du Musée Galliera - 10, avenue Pierre 1er de Serbie (16e) » (2009 DPA 13), même adresse que le Palais Galliera. Signal « partie distinctive (galliera) » levé par cette adresse et par le type d'équipement (musée, direction des affaires culturelles). Dépense mandatée 2011-2013.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1104237"
+      },
+      {
+        "ap_cle": "1604814",
+        "ap_texte": "EPM -GALLIERA - CREATION SALLES EN S/SOL",
+        "mandate_par_annee": {
+          "2017": 217296.61,
+          "2018": 344083.51,
+          "2019": 338506.67,
+          "2020": 166673.81,
+          "2022": 8421.23
+        },
+        "total_mandate": 1074981.83,
+        "preuve": "Le libellé mentionne le lieu et décrit des travaux sur le bâtiment : « EPM -GALLIERA - CREATION SALLES EN S/SOL » (mission « OPERATIONS SOUS MAND », direction DCPA). Attention : ce libellé fait exactement 40 caractères, soit le plafond de la source — il peut être tronqué, et le sigle « EPM » n'est pas explicité par la source. Le rattachement repose sur le mot « GALLIERA » associé à des travaux de création de salles en sous-sol : le seul équipement municipal de ce nom est le musée du 10, avenue Pierre 1er de Serbie (16e), dont le sous-sol a déjà fait l'objet de travaux (« rénovation des locaux personnel en sous-sol au Musée Galliera sis 10, avenue Pierre 1er de Serbie (16e) », 2007 DPA 4). La période mandatée (2017-2022) coïncide avec la restructuration partielle approuvée par 2017 DPA 9, mais aucune source ne relie explicitement cette opération à cette délibération : confiance moyenne.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604814"
+      },
+      {
+        "ap_cle": "B100/0701325",
+        "ap_texte": "MUSEE GALLIERA",
+        "mandate_par_annee": {
+          "2010": 304058.25,
+          "2011": 210947.37,
+          "2012": 14094.38
+        },
+        "total_mandate": 529100.0,
+        "preuve": "Le libellé nomme le lieu : « MUSEE GALLIERA » (mission « AFFAIRES CULTURELLES », direction DAC). Les délibérations nomment l'équipement et donnent son adresse : « Musée Galliera, Musée de la Mode de la Ville de Paris » (2005 DAC 347) et « Musée Galliera sis 10, avenue Pierre 1er de Serbie (16e) » (2007 DPA 4), adresse du Palais Galliera. Dépense mandatée 2010-2012.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0701325"
+      },
+      {
+        "ap_cle": "1104237",
+        "ap_texte": "MUSEE GALLIERA",
+        "mandate_par_annee": {
+          "2014": 175088.81,
+          "2015": 84093.98,
+          "2016": 112.37
+        },
+        "total_mandate": 259295.16,
+        "preuve": "Le libellé nomme le lieu : « MUSEE GALLIERA » (mission « AFFAIRES CULTURELLES », direction DAC), équipement dont les délibérations donnent l'adresse 10, avenue Pierre 1er de Serbie (16e) (2007 DPA 4, 2009 DPA 13). Même libellé et même numéro d'opération que l'autorisation de programme B100/1104237. Dépense mandatée 2014-2016.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1104237"
+      },
+      {
+        "ap_cle": "B100/0901325",
+        "ap_texte": "MUSEE GALLIERA",
+        "mandate_par_annee": {
+          "2010": 24440.05,
+          "2011": 101701.93,
+          "2012": 18707.51,
+          "2013": 1807.28
+        },
+        "total_mandate": 146656.77,
+        "preuve": "Le libellé nomme le lieu : « MUSEE GALLIERA » (mission « AFFAIRES CULTURELLES », direction DAC). Identité du lieu confirmée par les délibérations qui donnent l'adresse du musée : « Musée Galliera - 10, avenue Pierre 1er de Serbie (16e) » (2009 DPA 13). Dépense mandatée 2010-2013.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0901325"
+      },
+      {
+        "ap_cle": "1504814",
+        "ap_texte": "EPM -GALLIERA - CREATION SALLES EN S/SOL",
+        "mandate_par_annee": {
+          "2017": 55430.57,
+          "2019": 113.94,
+          "2020": 9010.15,
+          "2021": 6210.19,
+          "2022": 4235.15
+        },
+        "total_mandate": 75000.0,
+        "preuve": "Même libellé que l'opération 1604814 : « EPM -GALLIERA - CREATION SALLES EN S/SOL » (mission « OPERATIONS SOUS MAND », direction DCPA) ; les numéros d'opération sont distincts (1504814 et 1604814). Mêmes réserves : libellé au plafond de 40 caractères de la source, sigle « EPM » non explicité. Le rattachement repose sur le mot « GALLIERA » associé à des travaux de création de salles en sous-sol, le seul équipement municipal de ce nom étant le musée du 10, avenue Pierre 1er de Serbie (16e) : confiance moyenne.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1504814"
+      },
+      {
+        "ap_cle": "0901325",
+        "ap_texte": "MUSEE GALLIERA",
+        "mandate_par_annee": {
+          "2015": 353.89
+        },
+        "total_mandate": 353.89,
+        "preuve": "Le libellé nomme le lieu : « MUSEE GALLIERA » (mission « AFFAIRES CULTURELLES », direction DAC), équipement situé 10, avenue Pierre 1er de Serbie (16e) d'après les délibérations (2009 DPA 13). Même libellé et même numéro d'opération que l'autorisation de programme B100/0901325. Dépense mandatée 2015.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0901325"
+      }
+    ],
+    "periode": [
+      "2010",
+      "2022"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
   "sources": {
     "delibs": {
       "name": "Débat-Délibs — Conseil de Paris",

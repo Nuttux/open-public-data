@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "beneficiaires": {
     "la cite de la musique": {
       "slug": "philharmonie-de-paris",
@@ -61,6 +61,11 @@
       "lieu": "Carreau du Temple",
       "role": "resident"
     },
+    "spl carreau du temple": {
+      "slug": "carreau-du-temple",
+      "lieu": "Carreau du Temple",
+      "role": "exploitant"
+    },
     "artincidence": {
       "slug": "carreau-du-temple",
       "lieu": "Carreau du Temple",
@@ -80,6 +85,16 @@
       "slug": "maison-des-metallos",
       "lieu": "Maison des Métallos",
       "role": "exploitant"
+    },
+    "a l adresse du jeu": {
+      "slug": "place-de-la-republique",
+      "lieu": "Place de la République",
+      "role": "resident"
+    },
+    "f n m walls": {
+      "slug": "canal-saint-martin",
+      "lieu": "Canal Saint-Martin",
+      "role": "resident"
     },
     "pavillon de l arsenal": {
       "slug": "pavillon-de-larsenal",
@@ -176,6 +191,21 @@
       "lieu": "Théâtre Paris-Villette",
       "role": "resident"
     },
+    "pour ainsi dire": {
+      "slug": "theatre-paris-villette",
+      "lieu": "Théâtre Paris-Villette",
+      "role": "resident"
+    },
+    "theatre majaz": {
+      "slug": "theatre-paris-villette",
+      "lieu": "Théâtre Paris-Villette",
+      "role": "resident"
+    },
+    "la dissipation des brumes matinales": {
+      "slug": "theatre-paris-villette",
+      "lieu": "Théâtre Paris-Villette",
+      "role": "resident"
+    },
     "universites populaires du theatre": {
       "slug": "theatre-14",
       "lieu": "Théâtre 14",
@@ -191,6 +221,11 @@
       "lieu": "Porte de la Chapelle",
       "role": "resident"
     },
+    "federation francaise d athletisme": {
+      "slug": "stade-charlety",
+      "lieu": "Stade Charléty",
+      "role": "resident"
+    },
     "maison de la poesie": {
       "slug": "maison-de-la-poesie",
       "lieu": "Maison de la Poésie",
@@ -201,7 +236,17 @@
       "lieu": "Théâtre de la Cité internationale",
       "role": "resident"
     },
+    "theatre de la cite internationale": {
+      "slug": "theatre-de-la-cite-internationale",
+      "lieu": "Théâtre de la Cité internationale",
+      "role": "exploitant"
+    },
     "cabanes": {
+      "slug": "bois-de-vincennes",
+      "lieu": "Bois de Vincennes",
+      "role": "resident"
+    },
+    "grumpy nature": {
       "slug": "bois-de-vincennes",
       "lieu": "Bois de Vincennes",
       "role": "resident"
@@ -276,6 +321,11 @@
       "lieu": "Théâtre du Soleil",
       "role": "resident"
     },
+    "belladone": {
+      "slug": "piscine-chateau-landon",
+      "lieu": "Piscine Château-Landon",
+      "role": "resident"
+    },
     "la septieme compagnie": {
       "slug": "piscine-mathis",
       "lieu": "Piscine Mathis",
@@ -311,6 +361,10 @@
       "slug": "theatre-de-la-ville",
       "lieu": "Théâtre de la Ville"
     },
+    "salles de theatre theatre de la ville renovation et restructuration": {
+      "slug": "theatre-de-la-ville",
+      "lieu": "Théâtre de la Ville"
+    },
     "porte maillot reamenagement": {
       "slug": "porte-maillot",
       "lieu": "Porte Maillot"
@@ -318,6 +372,14 @@
     "parcs de stationnememnt porte maillot": {
       "slug": "porte-maillot",
       "lieu": "Porte Maillot"
+    },
+    "piscines et bassins ecole piscine butte aux cailles renovation des bains douches refect": {
+      "slug": "piscine-butte-aux-cailles",
+      "lieu": "Piscine de la Butte-aux-Cailles"
+    },
+    "bains douches bains douches 5 place paul verlaine renovation des bains": {
+      "slug": "piscine-butte-aux-cailles",
+      "lieu": "Piscine de la Butte-aux-Cailles"
     },
     "parc des buttes chaumont ile de la falaise": {
       "slug": "parc-des-buttes-chaumont",
@@ -331,7 +393,23 @@
       "slug": "parc-des-buttes-chaumont",
       "lieu": "Parc des Buttes-Chaumont"
     },
+    "edition 2015 la reconquete de la petite ceinture": {
+      "slug": "petite-ceinture",
+      "lieu": "Petite Ceinture"
+    },
     "poursuivre l ouverture de la petite ceinture": {
+      "slug": "petite-ceinture",
+      "lieu": "Petite Ceinture"
+    },
+    "la reconquete de la petite ceinture": {
+      "slug": "petite-ceinture",
+      "lieu": "Petite Ceinture"
+    },
+    "edition 2018 quartiers populaires reconquete de la petite ceinture": {
+      "slug": "petite-ceinture",
+      "lieu": "Petite Ceinture"
+    },
+    "une coulee verte sur la rue sorbier et la petite ceinture": {
       "slug": "petite-ceinture",
       "lieu": "Petite Ceinture"
     },
@@ -339,7 +417,15 @@
       "slug": "petite-ceinture",
       "lieu": "Petite Ceinture"
     },
-    "la reconquete de la petite ceinture": {
+    "petite ceinture": {
+      "slug": "petite-ceinture",
+      "lieu": "Petite Ceinture"
+    },
+    "edition 2016 une coulee verte sur la rue sorbier et la petite ceinture": {
+      "slug": "petite-ceinture",
+      "lieu": "Petite Ceinture"
+    },
+    "edition 2015 reconquete de la petite ceinture": {
       "slug": "petite-ceinture",
       "lieu": "Petite Ceinture"
     },
@@ -352,6 +438,14 @@
       "lieu": "Piscine Pontoise"
     },
     "piscine pontoise renovation de la piscine": {
+      "slug": "piscine-pontoise",
+      "lieu": "Piscine Pontoise"
+    },
+    "piscine pontoise": {
+      "slug": "piscine-pontoise",
+      "lieu": "Piscine Pontoise"
+    },
+    "piscines piscine 19 rue de pontoise travaux de renovation": {
       "slug": "piscine-pontoise",
       "lieu": "Piscine Pontoise"
     },
@@ -399,6 +493,10 @@
       "slug": "parc-georges-brassens",
       "lieu": "Parc Georges-Brassens"
     },
+    "aires de jeux parc de belleville renovation des aires de jeux": {
+      "slug": "parc-de-belleville",
+      "lieu": "Parc de Belleville"
+    },
     "maison de l air": {
       "slug": "parc-de-belleville",
       "lieu": "Parc de Belleville"
@@ -407,6 +505,22 @@
       "slug": "place-de-la-republique",
       "lieu": "Place de la République"
     },
+    "operations d amenagement place de la republique amenagement plantations commemoratives": {
+      "slug": "place-de-la-republique",
+      "lieu": "Place de la République"
+    },
+    "securisation hotel de ville": {
+      "slug": "hotel-de-ville",
+      "lieu": "Hôtel de Ville"
+    },
+    "hotel de ville": {
+      "slug": "hotel-de-ville",
+      "lieu": "Hôtel de Ville"
+    },
+    "hotel de ville accessibilite": {
+      "slug": "hotel-de-ville",
+      "lieu": "Hôtel de Ville"
+    },
     "renovation partielle pavillon de l arsenal": {
       "slug": "pavillon-de-larsenal",
       "lieu": "Pavillon de l'Arsenal"
@@ -414,6 +528,22 @@
     "jardin des serres d auteuil refection de la couverture du local du personnel": {
       "slug": "serres-dauteuil",
       "lieu": "Serres d'Auteuil"
+    },
+    "cimetiere du pere lachaise rehabilitation mise en accessibilite et diagnostic structure": {
+      "slug": "pere-lachaise",
+      "lieu": "Cimetière du Père-Lachaise"
+    },
+    "cimetieres cimetiere du pere lachaise travaux de confortement et reparation du mur karch": {
+      "slug": "pere-lachaise",
+      "lieu": "Cimetière du Père-Lachaise"
+    },
+    "cimetiere du pere lachaise travaux sur les murs fourniture et pose de rambardes restau": {
+      "slug": "pere-lachaise",
+      "lieu": "Cimetière du Père-Lachaise"
+    },
+    "cimetiere du pere lachaise entretien des sols des cheminements et des escaliers cimeti": {
+      "slug": "pere-lachaise",
+      "lieu": "Cimetière du Père-Lachaise"
     },
     "mairie du 18e arrondissement schema fonctionel et immobilier": {
       "slug": "mairie-du-18e",
@@ -434,6 +564,14 @@
     "stade jean bouin codp": {
       "slug": "stade-jean-bouin",
       "lieu": "Stade Jean-Bouin"
+    },
+    "musee carnavalet mise aux normes du systeme de securite incendie": {
+      "slug": "musee-carnavalet",
+      "lieu": "Musée Carnavalet"
+    },
+    "salles de spectacle theatre paris villette travaux divers": {
+      "slug": "theatre-paris-villette",
+      "lieu": "Théâtre Paris-Villette"
     },
     "reamenagement de la porte chapelle jo 2024": {
       "slug": "porte-de-la-chapelle",
@@ -459,6 +597,14 @@
       "slug": "piscine-belliard",
       "lieu": "Piscine Belliard"
     },
+    "piscines piscine belliard construction": {
+      "slug": "piscine-belliard",
+      "lieu": "Piscine Belliard"
+    },
+    "piscine 133 rue belliard 18e": {
+      "slug": "piscine-belliard",
+      "lieu": "Piscine Belliard"
+    },
     "mediatheque james baldwin": {
       "slug": "mediatheque-james-baldwin",
       "lieu": "Médiathèque James Baldwin"
@@ -467,15 +613,79 @@
       "slug": "mediatheque-james-baldwin",
       "lieu": "Médiathèque James Baldwin"
     },
+    "enseignement artistique mediatheque jean quarre creation d une mediatheque et d une mais": {
+      "slug": "mediatheque-james-baldwin",
+      "lieu": "Médiathèque James Baldwin"
+    },
+    "bibliotheques creation de la mediatheque jean quarre": {
+      "slug": "mediatheque-james-baldwin",
+      "lieu": "Médiathèque James Baldwin"
+    },
+    "creations d espaces verts parc martin luther king amenagement phase 3": {
+      "slug": "parc-martin-luther-king",
+      "lieu": "Parc Martin Luther King"
+    },
     "parc martin luther king amenagement phase 3": {
       "slug": "parc-martin-luther-king",
       "lieu": "Parc Martin Luther King"
+    },
+    "creations d espaces verts bois de vincennes amenagement de la route du pesage": {
+      "slug": "bois-de-vincennes",
+      "lieu": "Bois de Vincennes"
+    },
+    "edition 2019 ameliorons l environnement des usagers du bois de vincennes": {
+      "slug": "bois-de-vincennes",
+      "lieu": "Bois de Vincennes"
+    },
+    "edition 2019 ameliorons l environnement des usages du bois de vincennes": {
+      "slug": "bois-de-vincennes",
+      "lieu": "Bois de Vincennes"
+    },
+    "bois de vincennes carrefour de la port": {
+      "slug": "bois-de-vincennes",
+      "lieu": "Bois de Vincennes"
     },
     "ameliorons l environnement des usages du bois de vincennes": {
       "slug": "bois-de-vincennes",
       "lieu": "Bois de Vincennes"
     },
+    "baignade daumesnil bois de vincennes": {
+      "slug": "bois-de-vincennes",
+      "lieu": "Bois de Vincennes"
+    },
+    "bois de vincennes": {
+      "slug": "bois-de-vincennes",
+      "lieu": "Bois de Vincennes"
+    },
+    "pagode du bois de vincennes": {
+      "slug": "bois-de-vincennes",
+      "lieu": "Bois de Vincennes"
+    },
+    "bois de vincennes entretien des reseaux d eau d arrosage du cheminement des jeux pour": {
+      "slug": "bois-de-vincennes",
+      "lieu": "Bois de Vincennes"
+    },
     "ameliorer le cadre de vie bois de boulogne": {
+      "slug": "bois-de-boulogne",
+      "lieu": "Bois de Boulogne"
+    },
+    "bois de boulogne cheminement du bois rehabilitation des lacs renovation parking assai": {
+      "slug": "bois-de-boulogne",
+      "lieu": "Bois de Boulogne"
+    },
+    "bois de boulogne rehabilitation des lacs et rivieres mise en accessibilite remplacemen": {
+      "slug": "bois-de-boulogne",
+      "lieu": "Bois de Boulogne"
+    },
+    "bois de boulogne travaux de mise en accessibilite et creation d un eclairage public": {
+      "slug": "bois-de-boulogne",
+      "lieu": "Bois de Boulogne"
+    },
+    "operations bois de boulogne travaux d amenagement du carrefour du bout des lacs": {
+      "slug": "bois-de-boulogne",
+      "lieu": "Bois de Boulogne"
+    },
+    "bois de boulogne": {
       "slug": "bois-de-boulogne",
       "lieu": "Bois de Boulogne"
     },
@@ -495,6 +705,14 @@
       "slug": "place-denfert-rochereau",
       "lieu": "Place Denfert-Rochereau"
     },
+    "place de la madeleine travaux de reamenagement": {
+      "slug": "place-de-la-madeleine",
+      "lieu": "Place de la Madeleine"
+    },
+    "operations d amenagement place de la madeleine travaux de reamenagement": {
+      "slug": "place-de-la-madeleine",
+      "lieu": "Place de la Madeleine"
+    },
     "jardin du port de l arsenal renovation de l aire de jeux": {
       "slug": "port-de-l-arsenal",
       "lieu": "Port de l'Arsenal"
@@ -511,9 +729,17 @@
       "slug": "place-de-la-concorde",
       "lieu": "Place de la Concorde"
     },
+    "patrimoine de voirie place de la concorde refection des trottoirs et de la chaussee": {
+      "slug": "place-de-la-concorde",
+      "lieu": "Place de la Concorde"
+    },
     "place charles de gaulle refection des trottoirs": {
       "slug": "place-charles-de-gaulle-etoile",
       "lieu": "Place Charles-de-Gaulle (Étoile)"
+    },
+    "operations d amenagement place du pantheon amenagement": {
+      "slug": "place-du-pantheon",
+      "lieu": "Place du Panthéon"
     },
     "diversifier les commerces de la place pigalle": {
       "slug": "place-pigalle",
@@ -527,6 +753,14 @@
       "slug": "place-pigalle",
       "lieu": "Place Pigalle"
     },
+    "place gambetta reamenagement": {
+      "slug": "place-gambetta",
+      "lieu": "Place Gambetta"
+    },
+    "operations place gambetta reamenagement": {
+      "slug": "place-gambetta",
+      "lieu": "Place Gambetta"
+    },
     "square du temple renovation des sols": {
       "slug": "square-du-temple",
       "lieu": "Square du Temple"
@@ -534,6 +768,10 @@
     "square des batignolles renovation de l aire de jeux": {
       "slug": "square-des-batignolles",
       "lieu": "Square des Batignolles"
+    },
+    "edition 2016 restauration de la fontaine du marche saint germain": {
+      "slug": "marche-saint-germain",
+      "lieu": "Marché Saint-Germain"
     },
     "mairie du 5e arrondissement transformation en salle d exposition": {
       "slug": "mairie-du-5e",
@@ -555,6 +793,10 @@
       "slug": "mairie-du-20e",
       "lieu": "Mairie du 20e"
     },
+    "entretien d espaces verts square louise michel renovation": {
+      "slug": "square-louise-michel",
+      "lieu": "Square Louise-Michel"
+    },
     "jardin atlantique renovation des aires de jeux": {
       "slug": "jardin-atlantique",
       "lieu": "Jardin Atlantique"
@@ -567,9 +809,49 @@
       "slug": "piscine-chateau-landon",
       "lieu": "Piscine Château-Landon"
     },
+    "piscine chateau landon refection la voute du hall bassin modernisation du local de stoc": {
+      "slug": "piscine-chateau-landon",
+      "lieu": "Piscine Château-Landon"
+    },
+    "la ventilation et installation d une porte coupe feu piscines piscine chateau landon ref": {
+      "slug": "piscine-chateau-landon",
+      "lieu": "Piscine Château-Landon"
+    },
+    "piscine armand massard renovation des installations de filtration fourniture et pose de": {
+      "slug": "piscine-armand-massard",
+      "lieu": "Piscine Armand-Massard"
+    },
+    "piscine armand massard refection du carrelage remplacement des pompes de filtration de": {
+      "slug": "piscine-armand-massard",
+      "lieu": "Piscine Armand-Massard"
+    },
+    "piscines piscine armand massard installation de masses filtrantes pose de porte d entre": {
+      "slug": "piscine-armand-massard",
+      "lieu": "Piscine Armand-Massard"
+    },
+    "piscine blomet travaux de restructuration": {
+      "slug": "piscine-blomet",
+      "lieu": "Piscine Blomet"
+    },
+    "piscine blomet 15e renovation": {
+      "slug": "piscine-blomet",
+      "lieu": "Piscine Blomet"
+    },
+    "piscines piscine blomet travaux de restructuration": {
+      "slug": "piscine-blomet",
+      "lieu": "Piscine Blomet"
+    },
     "renovation de la piscine mathis": {
       "slug": "piscine-mathis",
       "lieu": "Piscine Mathis"
+    },
+    "parc chapelle charbon travaux d amenagement": {
+      "slug": "parc-chapelle-charbon",
+      "lieu": "Parc Chapelle-Charbon"
+    },
+    "creations d espaces verts parc chapelle charbon creation d un nouveau parc sur le site c": {
+      "slug": "parc-chapelle-charbon",
+      "lieu": "Parc Chapelle-Charbon"
     },
     "parc de choisy renovation des griles 2eme tranche": {
       "slug": "parc-de-choisy",

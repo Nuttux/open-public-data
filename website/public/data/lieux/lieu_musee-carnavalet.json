@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T14:24:24.851547+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "musee-carnavalet",
   "name": "Musée Carnavalet",
@@ -396,7 +396,7 @@
       "fournisseur": "BOUYGUES BATIMENT ILE DE FRANCE",
       "montant_max": 25957872.68,
       "date_notification": "2017-11-27",
-      "preuve": "Objet nomme le lieu : \"RENOVATION PARTIELLE MUSEE CARNAVALET-LOT3 BATIMENT TCE\" ; correspond au chantier de rénovation du musée (délib 2013 DPA 3, travaux estimés 30-40 M EUR ; vœu mai 2018 : \"musée en travaux, qui va rouvrir l'année prochaine\")."
+      "preuve": "Objet nomme le lieu : \"CSP5 RENOVATION PARTIELLE MUSEE CARNAVALET-LOT3 BATIMENT TCE\" — travaux sur le bâtiment du musée. Le chantier de rénovation est documenté en Conseil de Paris (2013 DPA 3, « rénovation globale du musée Carnavalet (3e) » ; vœu de mai 2018 : « C'est un musée en travaux, qui va rouvrir l'année prochaine »)."
     },
     {
       "numero_marche": "20181210020013",
@@ -405,7 +405,7 @@
       "fournisseur": "VITRINEN-UND",
       "montant_max": 3605352.0,
       "date_notification": "2018-06-18",
-      "preuve": "Objet nomme le lieu : \"RENOV PARTIELLE MUSEE CARNAVALET AMENAGT MUSEOGRAPHIQUE\" ; le réaménagement muséographique est un axe explicite de la rénovation (débat 2013 DPA 3 : \"repenser le circuit muséographique\")."
+      "preuve": "Objet nomme le lieu : \"CSP5 RENOV PARTIELLE MUSEE CARNAVALET AMENAGT MUSEOGRAPHIQUE\" ; l'aménagement muséographique fait partie des orientations de la rénovation citées en Conseil de Paris (« repenser le circuit muséographique », 2013 DPA 3)."
     },
     {
       "numero_marche": "20161210000654",
@@ -504,7 +504,7 @@
       "fournisseur": "MEDICIS",
       "montant_max": 214086.7,
       "date_notification": "2019-01-14",
-      "preuve": "Objet nomme le lieu : \"RENOV PARTIELLE MUSEE CARNAVALET - LOT8 GRAPH MUSEOGRAP\" (graphisme muséographique du même chantier)."
+      "preuve": "Objet nomme le lieu : \"CSP5 RENOV PARTIELLE MUSEE CARNAVALET - LOT8 GRAPH MUSEOGRAP\" (lot 8 du même chantier, libellé tronqué par la source)."
     },
     {
       "numero_marche": "20141210010907",
@@ -540,7 +540,7 @@
       "fournisseur": "SEBAN",
       "montant_max": 155575.09,
       "date_notification": "2014-01-09",
-      "preuve": "Objet nomme le lieu : \"ÉTUDE DE PROGRAMMATION RÉNOVATION GLOBALE MUSÉE CARNAVALET\" ; correspond à la délibération 2013 DPA 3 (\"étude de programmation pour la rénovation globale du musée Carnavalet (3e)\")."
+      "preuve": "Objet nomme le lieu : \"ÉTUDE DE PROGRAMMATION RÉNOVATION GLOBALE MUSÉE CARNAVALET\" ; même objet que la délibération « 2013 DPA 3 - Lancement d'un marché d'assistance à maîtrise d'ouvrage pour l'étude de programmation pour la rénovation globale du musée Carnavalet (3e) »."
     },
     {
       "numero_marche": "20161210005701",
@@ -549,7 +549,7 @@
       "fournisseur": "QUALICONSULT",
       "montant_max": 100982.5,
       "date_notification": "2016-11-15",
-      "preuve": "Objet nomme le lieu : \"BCT RESTRUCTURATION MUSÉE CARNAVALET\" (bureau de contrôle technique du chantier)."
+      "preuve": "Objet nomme le lieu : \"MARCHÉ SUBSÉQUENT BCT RESTRUCTURATION MUSÉE CARNAVALET\" — prestation portant sur la restructuration du musée."
     },
     {
       "numero_marche": "20141210010911",
@@ -567,22 +567,24 @@
       "fournisseur": "COORDEF INGENIERIE",
       "montant_max": 59660.0,
       "date_notification": "2018-07-10",
-      "preuve": "Objet nomme le lieu : \"CSPS RENOVATION /RESTRUCTURATION PARTIELLE MUSEE CARNAVALET\" (coordination sécurité-protection-santé du même chantier)."
+      "preuve": "Objet nomme le lieu : \"CSPS  RENOVATION /RESTRUCTURATION PARTIELLE MUSEE CARNAVALET\" — prestation portant sur le chantier du musée."
     }
   ],
   "mandate": {
     "par_annee": {
-      "2014": 101338.89,
-      "2015": 120886.59,
-      "2016": 2091437.4,
-      "2017": 2526518.72,
+      "2012": 66806.65,
+      "2013": 433677.11,
+      "2014": 780174.85,
+      "2015": 847037.39,
+      "2016": 2256008.24,
+      "2017": 2527247.49,
       "2018": 12162405.42,
       "2019": 17946760.61,
       "2020": 3337315.59,
       "2021": 293622.03,
       "2022": 350808.9
     },
-    "total_eur": 38931094.15,
+    "total_eur": 41001864.28,
     "operations": [
       {
         "ap_cle": "1604484",
@@ -599,6 +601,29 @@
         "total_mandate": 38478141.31,
         "preuve": "Libellé nomme le lieu : \"EP MUSEES: MUSEE CARNAVALET ACCESSIBILIT\" (direction DPA, opérations sous mandat pour l'EP Paris Musées) ; la mise en accessibilité est un axe cité en Conseil de Paris (débat 2013 DPA 3 : \"la nécessaire mise en accessibilité handicapés de tout le musée\").",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604484"
+      },
+      {
+        "ap_cle": "1203893",
+        "ap_texte": "CARNAVALET ACCESSIBILITE  ACCUEIL RENOVA",
+        "mandate_par_annee": {
+          "2014": 678835.96,
+          "2015": 672243.99,
+          "2016": 108500.92
+        },
+        "total_mandate": 1459580.87,
+        "preuve": "Libellé plafonné à 40 caractères par la source : \"CARNAVALET ACCESSIBILITE  ACCUEIL RENOVA\" ; le candidat est reconnu sur la partie distinctive \"carnavalet\" (signal faible : le nom complet du musée n'apparaît pas dans le libellé). Confirmé par le type d'équipement et par le programme documenté : l'opération relève de la mission AFFAIRES CULTURELLES (direction DAC) et son objet (accessibilité, accueil, rénovation) recouvre les orientations décrites en Conseil de Paris pour ce musée — « la nécessaire mise en accessibilité handicapés de tout le musée », « repenser le circuit muséographique » (2013 DPA 3, séance de février 2013). Aucun autre équipement parisien nommé Carnavalet n'apparaît dans les 44 délibérations lues du contexte, ni dans les autres candidats. AP de millésime 2012 (créée avant le transfert de la gestion et de la rénovation des musées à l'EP Paris Musées le 1er janvier 2013 — « Depuis le 1er janvier de cette année, c'est l'établissement public Paris Musées qui gère les musées et aussi leur rénovation », 2013 DPA 3), mandatée sur 2014, 2015, 2016. Rattachement retenu au lieu, mais confiance moyenne : la preuve repose sur un libellé tronqué, pas sur le nom complet.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1203893"
+      },
+      {
+        "ap_cle": "B100/0903893",
+        "ap_texte": "CARNAVALET ACCESSIBILITE  ACCUEIL RENOVA",
+        "mandate_par_annee": {
+          "2012": 32979.95,
+          "2013": 358725.83
+        },
+        "total_mandate": 391705.78,
+        "preuve": "Libellé plafonné à 40 caractères par la source : \"CARNAVALET ACCESSIBILITE  ACCUEIL RENOVA\" ; le candidat est reconnu sur la partie distinctive \"carnavalet\" (signal faible : le nom complet du musée n'apparaît pas dans le libellé). Confirmé par le type d'équipement et par le programme documenté : l'opération relève de la mission AFFAIRES CULTURELLES (direction DAC) et son objet (accessibilité, accueil, rénovation) recouvre les orientations décrites en Conseil de Paris pour ce musée — « la nécessaire mise en accessibilité handicapés de tout le musée », « repenser le circuit muséographique » (2013 DPA 3, séance de février 2013). Aucun autre équipement parisien nommé Carnavalet n'apparaît dans les 44 délibérations lues du contexte, ni dans les autres candidats. AP de millésime 2009 (ligne B100) (créée avant le transfert de la gestion et de la rénovation des musées à l'EP Paris Musées le 1er janvier 2013 — « Depuis le 1er janvier de cette année, c'est l'établissement public Paris Musées qui gère les musées et aussi leur rénovation », 2013 DPA 3), mandatée sur 2012, 2013. Rattachement retenu au lieu, mais confiance moyenne : la preuve repose sur un libellé tronqué, pas sur le nom complet.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903893"
       },
       {
         "ap_cle": "1304484",
@@ -626,10 +651,33 @@
         "total_mandate": 154487.54,
         "preuve": "Libellé nomme le lieu : \"EPM : MUSEE CARNAVALET ACCESSIBILITE\" (direction DPA, opérations sous mandat pour l'EP Paris Musées), autre millésime de la même opération d'accessibilité.",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1504484"
+      },
+      {
+        "ap_cle": "0903893",
+        "ap_texte": "CARNAVALET ACCESSIBILITE  ACCUEIL RENOVA",
+        "mandate_par_annee": {
+          "2015": 53906.81,
+          "2016": 56069.92,
+          "2017": 728.77
+        },
+        "total_mandate": 110705.5,
+        "preuve": "Libellé plafonné à 40 caractères par la source : \"CARNAVALET ACCESSIBILITE  ACCUEIL RENOVA\" ; le candidat est reconnu sur la partie distinctive \"carnavalet\" (signal faible : le nom complet du musée n'apparaît pas dans le libellé). Confirmé par le type d'équipement et par le programme documenté : l'opération relève de la mission AFFAIRES CULTURELLES (direction DAC) et son objet (accessibilité, accueil, rénovation) recouvre les orientations décrites en Conseil de Paris pour ce musée — « la nécessaire mise en accessibilité handicapés de tout le musée », « repenser le circuit muséographique » (2013 DPA 3, séance de février 2013). Aucun autre équipement parisien nommé Carnavalet n'apparaît dans les 44 délibérations lues du contexte, ni dans les autres candidats. AP de millésime 2009 (créée avant le transfert de la gestion et de la rénovation des musées à l'EP Paris Musées le 1er janvier 2013 — « Depuis le 1er janvier de cette année, c'est l'établissement public Paris Musées qui gère les musées et aussi leur rénovation », 2013 DPA 3), mandatée sur 2015, 2016, 2017. Rattachement retenu au lieu, mais confiance moyenne : la preuve repose sur un libellé tronqué, pas sur le nom complet.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903893"
+      },
+      {
+        "ap_cle": "B100/1203893",
+        "ap_texte": "CARNAVALET ACCESSIBILITE  ACCUEIL RENOVA",
+        "mandate_par_annee": {
+          "2012": 33826.7,
+          "2013": 74951.28
+        },
+        "total_mandate": 108777.98,
+        "preuve": "Libellé plafonné à 40 caractères par la source : \"CARNAVALET ACCESSIBILITE  ACCUEIL RENOVA\" ; le candidat est reconnu sur la partie distinctive \"carnavalet\" (signal faible : le nom complet du musée n'apparaît pas dans le libellé). Confirmé par le type d'équipement et par le programme documenté : l'opération relève de la mission AFFAIRES CULTURELLES (direction DAC) et son objet (accessibilité, accueil, rénovation) recouvre les orientations décrites en Conseil de Paris pour ce musée — « la nécessaire mise en accessibilité handicapés de tout le musée », « repenser le circuit muséographique » (2013 DPA 3, séance de février 2013). Aucun autre équipement parisien nommé Carnavalet n'apparaît dans les 44 délibérations lues du contexte, ni dans les autres candidats. AP de millésime 2012 (ligne B100) (créée avant le transfert de la gestion et de la rénovation des musées à l'EP Paris Musées le 1er janvier 2013 — « Depuis le 1er janvier de cette année, c'est l'établissement public Paris Musées qui gère les musées et aussi leur rénovation », 2013 DPA 3), mandatée sur 2012, 2013. Rattachement retenu au lieu, mais confiance moyenne : la preuve repose sur un libellé tronqué, pas sur le nom complet.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1203893"
       }
     ],
     "periode": [
-      "2014",
+      "2012",
       "2022"
     ],
     "source": {

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "parc-martin-luther-king",
   "name": "Parc Martin Luther King",
@@ -32,10 +32,8 @@
     ],
     "n_bmo_brut": 18,
     "n_bmo_verifies": null,
-    "invest_total_eur": 208011.0,
-    "invest_annees": [
-      "2022"
-    ],
+    "invest_total_eur": 0,
+    "invest_annees": [],
     "lecture_mode": "titre nommant le lieu (9 trouvés)",
     "lecture_mode_en": "title naming the place (9 found)",
     "n_lus": 9,
@@ -130,17 +128,42 @@
   "montants": [],
   "bmo_extraits": [],
   "bmo_recit": null,
-  "invest": [
-    {
-      "annee": 2022,
-      "montant_eur": 208011.0,
-      "nom_projet": "Parc Martin Luther King - Aménagement (phase 3)",
-      "preuve": "Le nom du projet nomme explicitement ce lieu : « Parc Martin Luther King - Aménagement (phase 3) ». La distance de 656 m au point de référence est cohérente avec l'emprise du parc, décrit en séance du Conseil de Paris (mars 2021) comme « ce parc de 10 hectares », et l'aménagement par phases est confirmé par la même séance : « Nous allons livrer, dans les semaines qui viennent, la dernière tranche de ce parc de 10 hectares ».",
-      "id": "2022_17_52_018"
-    }
-  ],
+  "invest": [],
   "marches": [],
-  "mandate": null,
+  "mandate": {
+    "par_annee": {
+      "2018": 3189222.14,
+      "2019": 6433322.91,
+      "2020": 6215910.84,
+      "2021": 2899747.36,
+      "2022": 66845.58
+    },
+    "total_eur": 18805048.83,
+    "operations": [
+      {
+        "ap_cle": "1705028",
+        "ap_texte": "CLICHY-BATIGNOLLES (17e) - PARC MARTIN L",
+        "mandate_par_annee": {
+          "2018": 3189222.14,
+          "2019": 6433322.91,
+          "2020": 6215910.84,
+          "2021": 2899747.36,
+          "2022": 66845.58
+        },
+        "total_mandate": 18805048.83,
+        "preuve": "Libellé coupé à 40 caractères par la source : « CLICHY-BATIGNOLLES (17e) - PARC MARTIN L », soit « PARC MARTIN L[UTHER KING] ». La confirmation vient du contexte : le vœu de juillet 2007 du Conseil de Paris demande « Que le parc Clichy-Batignolles soit dénommé ?parc Martin Luther King? » — le parc de la ZAC Clichy-Batignolles dans le 17e EST ce lieu. Cohérent aussi avec le type d'équipement (mission « ESPACES VERTS ET ENV », direction DEVE) et avec l'arrondissement 17. Les montants mandatés par année (6,43 M€ en 2019, 6,22 M€ en 2020) suivent la même trajectoire que le projet d'investissement « Parc Martin Luther King - Aménagement (phase 3) » ; l'opération couvre l'aménagement de l'ensemble du parc.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1705028"
+      }
+    ],
+    "periode": [
+      "2018",
+      "2022"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
   "sources": {
     "delibs": {
       "name": "Débat-Délibs — Conseil de Paris",

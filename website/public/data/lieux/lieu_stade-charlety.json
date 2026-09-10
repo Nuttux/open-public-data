@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "stade-charlety",
   "name": "Stade Charléty",
@@ -41,7 +41,13 @@
     "n_lieu": 42
   },
   "subventions_exploitant": null,
-  "residents": [],
+  "residents": [
+    {
+      "beneficiaire": "FEDERATION FRANCAISE D'ATHLETISME",
+      "montant_total": 125000.0,
+      "preuve": "Objet de la subvention (candidat) : « Championnats de France élite sur piste au stade Charléty » — l'objet nomme le lieu, mais la FFA (SIRET 78444873000027) y organise une compétition sans gérer l'équipement : résident, pas exploitant. Aide du même type votée par le Conseil de Paris à la même fédération : 2006 DJS 135 (séance de septembre 2006), « Subvention d'aide au projet à la Fédération Française d'Athlétisme pour l'organisation du Décanation qui a eu lieu le 26 août 2006 au stade Charléty ». La gestion du stade fait l'objet de marchés distincts de la Ville (2008 DJS 319, « gestion technique globale du Stade Charléty (13e) »)."
+    }
+  ],
   "kpi_montant": null,
   "synthese_fr": "En février 2000, le Conseil de Paris approuve une convention de délégation de service public pour la gestion du stade et autorise le Maire à la signer avec la Société d'exploitation du stade Charléty, délégation prolongée d'un an en 2005. À partir de 2005-2006, la Ville remplace cette délégation par des marchés de gestion technique globale et fixe une grille de tarifs d'utilisation, tandis que plusieurs élus décrivent en séance un grand stade sous-utilisé depuis le départ de l'athlétisme vers le Stade de France. La même période ouvre un débat récurrent sur la vocation du site : un vœu des Verts (2005) demande que Charléty devienne le stade résidant du Stade français, et l'Exécutif y répond par un vœu proposant un groupe de travail sur la complémentarité avec Jean-Bouin. De 2004 à 2011, le Conseil approuve une longue série de principes de travaux et de marchés (mise aux normes du terrain annexe, réfection de la pelouse, vestiaires, garde-corps, sécurité incendie, contrôle des structures) et subventionne des fédérations pour des événements tenus sur place, comme le DecaNation d'athlétisme et un tournoi de rugby à sept. Le stade accueille aussi une retransmission de la Coupe du monde 2010, à l'origine d'un litige réglé par transaction en 2011, et reste en 2022-2024 l'objet de vœux sur l'état de sa pelouse et sur les nuisances sonores.",
   "moments": [
@@ -275,7 +281,7 @@
       "fournisseur": "FRANCE SECURITY PRIVEE",
       "montant_max": 3013824.82,
       "date_notification": "2024-12-03",
-      "preuve": "Objet nomme le lieu : « SECURITE INCENDIE ACCEUIL STADE CHARLETY_LOT 1 »."
+      "preuve": "Objet nomme le lieu : « SECURITE INCENDIE ACCEUIL STADE CHARLETY_LOT 1 ». Doublon possible avec l'entrée DECP decp-2024S11836 (même identifiant de lot 11836, même date de notification 2024-12-03) : les deux montants ne s'additionnent pas."
     },
     {
       "numero_marche": "20202020S08283",
@@ -293,7 +299,7 @@
       "fournisseur": "REKEEP FACILITY SAS",
       "montant_max": 1847694.68,
       "date_notification": "2024-12-03",
-      "preuve": "Objet nomme le lieu : « NETTOYAGE STADE CHARLETY_LOT2 »."
+      "preuve": "Objet nomme le lieu : « NETTOYAGE STADE CHARLETY_LOT2 ». Doublon possible avec l'entrée DECP decp-2024S11837 (même fournisseur REKEEP FACILITY SAS, SIRET 83991160900015, même date 2024-12-03) : les deux montants ne s'additionnent pas."
     },
     {
       "numero_marche": "20201410000480",
@@ -320,7 +326,7 @@
       "fournisseur": null,
       "montant_max": 1356912.41,
       "date_notification": "2024-12-03",
-      "preuve": "Objet DECP nomme le lieu : « Sécurité incendie accueil du stade CHARLETY » ; le lieu_execution « Paris » est large mais l'objet est explicite."
+      "preuve": "Objet DECP nomme le lieu : « Sécurité incendie accueil du stade CHARLETY » ; le lieu_execution « Paris » est large mais l'objet est explicite. Doublon possible avec le marché Ville 20242024F11836 (même identifiant de lot 11836, même date de notification 2024-12-03) : les deux montants ne s'additionnent pas."
     },
     {
       "numero_marche": "20202020S08284",
@@ -365,7 +371,7 @@
       "fournisseur": "REKEEP FACILITY SAS",
       "montant_max": 623847.34,
       "date_notification": "2024-12-03",
-      "preuve": "Objet DECP nomme le lieu : « Nettoyage du stade CHARLETY » ; même consultation que le lot notifié 20242024F11837 (même fournisseur REKEEP FACILITY SAS, SIRET 83991160900015, même date 2024-12-03)."
+      "preuve": "Objet DECP nomme le lieu : « Nettoyage du stade CHARLETY » ; même consultation que le lot notifié 20242024F11837 (même fournisseur REKEEP FACILITY SAS, SIRET 83991160900015, même date 2024-12-03). Doublon possible avec le marché Ville 20242024F11837 (même fournisseur, même SIRET, même date) : les deux montants ne s'additionnent pas."
     },
     {
       "numero_marche": "20161410000690",
@@ -415,13 +421,28 @@
   ],
   "mandate": {
     "par_annee": {
-      "2009": 2304080.69,
-      "2010": 652006.12,
-      "2011": 441512.06,
-      "2012": 3047.46
+      "2009": 5074925.23,
+      "2010": 1693901.77,
+      "2011": 1382696.64,
+      "2012": 627309.09,
+      "2013": 80967.07,
+      "2014": 32090.97
     },
-    "total_eur": 3400646.33,
+    "total_eur": 8891890.77,
     "operations": [
+      {
+        "ap_cle": "B100/0803636",
+        "ap_texte": "CHARLETY",
+        "mandate_par_annee": {
+          "2009": 2663448.71,
+          "2010": 900732.77,
+          "2011": 578992.87,
+          "2012": 89064.55
+        },
+        "total_mandate": 4232238.9,
+        "preuve": "Libellé complet « CHARLETY » (signal candidat : partie distinctive — le libellé ne contient pas le mot « stade »), mission « JEUNESSE ET SPORTS », direction DJS. Deux éléments de confirmation : le numéro d'opération 03636 est celui de l'opération B100/0703636 libellée « STADE CHARLETY », et les mandatements 2009-2012 sont concomitants des travaux votés sur le site (2008 DJS 341, séance de novembre 2008, « travaux de réfection de la pelouse du terrain d'honneur du stade Charléty (13e) » ; 2008 DPA 111, séance de septembre 2008, « travaux d'aménagement de locaux en vestiaires au stade Sébastien Charléty »). Opération couvrant l'ensemble du site ; confiance moyenne, le libellé seul ne dit pas « stade ».",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0803636"
+      },
       {
         "ap_cle": "B100/0703636",
         "ap_texte": "STADE CHARLETY",
@@ -432,13 +453,71 @@
           "2012": 3047.46
         },
         "total_mandate": 3400646.33,
-        "preuve": "Libellé de l'opération = « STADE CHARLETY », mission « JEUNESSE ET SPORTS », direction DJS — l'opération désigne nommément ce stade, équipement sportif municipal du 13e géré par la DJS (cf. délibérations DJS du Conseil de Paris, ex. 2023 DJS 62 « PUC Social Club, Stade Charléty (13e) »).",
+        "preuve": "Libellé complet de l'opération = « STADE CHARLETY » (signal candidat : nom), mission « JEUNESSE ET SPORTS », direction DJS — l'opération nomme ce stade. Libellé large : l'opération couvre l'ensemble du complexe sportif. Mandatée 2009-2012.",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0703636"
+      },
+      {
+        "ap_cle": "B100/0903636",
+        "ap_texte": "CHARLETY",
+        "mandate_par_annee": {
+          "2009": 107395.83,
+          "2010": 52628.36,
+          "2011": 172618.63,
+          "2012": 326131.61,
+          "2013": 76034.15
+        },
+        "total_mandate": 734808.58,
+        "preuve": "Libellé complet « CHARLETY » (signal candidat : partie distinctive), mission « JEUNESSE ET SPORTS », direction DJS. Confirmation : numéro d'opération 03636, celui de l'opération B100/0703636 libellée « STADE CHARLETY » ; mandatements 2009-2013 concomitants des travaux votés sur le site (2009 DPA 253, séance de septembre 2009, « démolition d'une tribune et la mise en place de vestiaires provisoires au Stade Sébastien Charléty » ; 2009 DPA 153, séance d'avril 2009, « rehaussement articulé des garde-corps séparant piste et tribune au stade Sébastien Charléty (13e) »). Opération couvrant l'ensemble du site ; confiance moyenne, le libellé seul ne dit pas « stade ».",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903636"
+      },
+      {
+        "ap_cle": "B100/1004105",
+        "ap_texte": "CHARLETY TRAVAUX GR",
+        "mandate_par_annee": {
+          "2010": 88534.52,
+          "2011": 119533.72,
+          "2012": 205843.14
+        },
+        "total_mandate": 413911.38,
+        "preuve": "Libellé complet « CHARLETY TRAVAUX GR » (signal candidat : partie distinctive ; libellé non tronqué, mais il ne dit pas « stade » et ne partage pas le numéro d'opération des lignes libellées « STADE CHARLETY »), mission « JEUNESSE ET SPORTS », direction DJS : travaux de grosses réparations rattachés au site sportif Charléty (13e), seul équipement de ce nom relevant de cette direction dans les délibérations DJS lues (marchés de gestion technique globale du stade Charléty, 2005 DJS 426, 2008 DJS 319). Rattachement fondé sur le nom du site et la direction gestionnaire, sans pièce nommant explicitement l'opération : confiance moyenne. Mandatée 2010-2012.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1004105"
+      },
+      {
+        "ap_cle": "B100/1104105",
+        "ap_texte": "CHARLETY TRAVAUX GR",
+        "mandate_par_annee": {
+          "2011": 70039.36,
+          "2012": 3222.33,
+          "2013": 4932.92
+        },
+        "total_mandate": 78194.61,
+        "preuve": "Libellé complet « CHARLETY TRAVAUX GR », mission « JEUNESSE ET SPORTS », direction DJS — même numéro d'opération (04105) que B100/1004105, exercice suivant, mandaté 2011-2013. Même base de rattachement (nom du site + direction gestionnaire), sans pièce nommant explicitement l'opération : confiance moyenne.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1104105"
+      },
+      {
+        "ap_cle": "0803636",
+        "ap_texte": "CHARLETY",
+        "mandate_par_annee": {
+          "2014": 20892.12
+        },
+        "total_mandate": 20892.12,
+        "preuve": "Libellé complet « CHARLETY » (signal candidat : partie distinctive), mission « JEUNESSE ET SPORTS », direction DJS ; même numéro d'opération (0803636) que B100/0803636 — reliquat mandaté en 2014. Confiance moyenne, le libellé seul ne dit pas « stade ».",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0803636"
+      },
+      {
+        "ap_cle": "0903636",
+        "ap_texte": "CHARLETY",
+        "mandate_par_annee": {
+          "2014": 11198.85
+        },
+        "total_mandate": 11198.85,
+        "preuve": "Libellé complet « CHARLETY » (signal candidat : partie distinctive), mission « JEUNESSE ET SPORTS », direction DJS ; même numéro d'opération (0903636) que B100/0903636 — reliquat mandaté en 2014. Confiance moyenne, le libellé seul ne dit pas « stade ».",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903636"
       }
     ],
     "periode": [
       "2009",
-      "2012"
+      "2014"
     ],
     "source": {
       "name": "Comptes administratifs — autorisations de programme, Ville de Paris",

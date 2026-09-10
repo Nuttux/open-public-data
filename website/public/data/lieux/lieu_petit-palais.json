@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "petit-palais",
   "name": "Petit Palais",
@@ -258,7 +258,7 @@
           "2013": 27129.05
         },
         "total_mandate": 364026.6,
-        "preuve": "Libellé AP « MUSEE PETIT PALAIS », mission AFFAIRES CULTURELLES, direction DAC — nomme explicitement le lieu ; le contexte des délibérations (ex. 2010 DAC 588, 2011 DAC 84) confirme que le Petit Palais est le musée des Beaux-Arts de la Ville de Paris géré par la DAC.",
+        "preuve": "Libellé AP « MUSEE PETIT PALAIS », mission AFFAIRES CULTURELLES, direction DAC — nomme explicitement le lieu ; les délibérations désignent le Petit Palais comme « musée des Beaux-Arts de la Ville de Paris » et sont instruites par la DAC (2010 DAC 588, 2011 DAC 84).",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0700128"
       },
       {
@@ -270,7 +270,7 @@
           "2011": 6000.0
         },
         "total_mandate": 278103.11,
-        "preuve": "Libellé AP « MUSEE PETIT PALAIS », mission AFFAIRES CULTURELLES, direction DAC — nomme explicitement le lieu (musée municipal des Beaux-Arts, 8e, régie directe Ville/DAC confirmée par les délibérations).",
+        "preuve": "Libellé AP « MUSEE PETIT PALAIS », mission AFFAIRES CULTURELLES, direction DAC — nomme explicitement le lieu (musée des Beaux-Arts de la Ville de Paris, 1 avenue Dutuit, 8e, selon 2010 DAC 124).",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0600128"
       },
       {
@@ -294,7 +294,7 @@
           "2010": 38224.8
         },
         "total_mandate": 65866.69,
-        "preuve": "Libellé AP « PETIT PALAIS », mission AFFAIRES CULTURELLES, direction DAC — nomme explicitement le lieu ; même série d'opérations (…0128) que les AP « MUSEE PETIT PALAIS ».",
+        "preuve": "Libellé AP « PETIT PALAIS », mission AFFAIRES CULTURELLES, direction DAC — nomme explicitement le lieu ; le code d'opération est le même (…0128) que celui des AP « MUSEE PETIT PALAIS ».",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0400128"
       },
       {
@@ -304,7 +304,7 @@
           "2009": 186.1
         },
         "total_mandate": 186.1,
-        "preuve": "Libellé AP « PETIT PALAIS », mission AFFAIRES CULTURELLES, direction DAC — nomme explicitement le lieu ; même série d'opérations (…0128).",
+        "preuve": "Libellé AP « PETIT PALAIS », mission AFFAIRES CULTURELLES, direction DAC — nomme explicitement le lieu ; même code d'opération (…0128) que les AP « MUSEE PETIT PALAIS ».",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0300128"
       }
     ],

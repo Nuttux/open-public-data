@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "piscine-armand-massard",
   "name": "Piscine Armand-Massard",
@@ -27,8 +27,12 @@
     ],
     "n_bmo_brut": 0,
     "n_bmo_verifies": null,
-    "invest_total_eur": 0,
-    "invest_annees": [],
+    "invest_total_eur": 829015.0,
+    "invest_annees": [
+      "2019",
+      "2020",
+      "2021"
+    ],
     "lecture_mode": "titre nommant le lieu (1 trouvés)",
     "lecture_mode_en": "title naming the place (1 found)",
     "n_lus": 1,
@@ -61,7 +65,29 @@
   ],
   "bmo_extraits": [],
   "bmo_recit": null,
-  "invest": [],
+  "invest": [
+    {
+      "annee": 2019,
+      "montant_eur": 252628.0,
+      "nom_projet": "Piscine Armand Massard - Réfection du carrelage, remplacement des pompes de filtration, dé",
+      "preuve": "Nom du projet : \"Piscine Armand Massard - Réfection du carrelage, remplacement des pompes de filtration, dé\" — nomme explicitement le lieu (signal \"nom\"). La distance géocodée (5165 m) ne correspond pas à l'adresse du lieu, mais l'intitulé est sans ambiguïté.",
+      "id": null
+    },
+    {
+      "annee": 2020,
+      "montant_eur": 460192.0,
+      "nom_projet": "Piscine Armand Massard - Rénovation des installations de filtration, fourniture et pose de",
+      "preuve": "Nom du projet : \"Piscine Armand Massard - Rénovation des installations de filtration, fourniture et pose de\" — nomme explicitement le lieu (signal \"nom\"). La distance géocodée (5165 m) ne correspond pas à l'adresse du lieu (66 boulevard du Montparnasse, 15e), mais l'intitulé du projet est sans ambiguïté.",
+      "id": null
+    },
+    {
+      "annee": 2021,
+      "montant_eur": 116195.0,
+      "nom_projet": "Piscines Piscine Armand Massard - Installation de masses filtrantes, pose de porte d'entré",
+      "preuve": "Nom du projet : \"Piscines Piscine Armand Massard - Installation de masses filtrantes, pose de porte d'entré\" — nomme explicitement le lieu (signal \"nom\"). La distance géocodée (5326 m) ne correspond pas à l'adresse du lieu, mais l'intitulé est sans ambiguïté.",
+      "id": null
+    }
+  ],
   "marches": [
     {
       "numero_marche": "20212021T05619",
@@ -82,7 +108,42 @@
       "preuve": "Objet du marché : \"TX POSE ONDULEUR DE SÉCURITÉ PISCINE ARMAND MASSARD\" — nomme explicitement le lieu."
     }
   ],
-  "mandate": null,
+  "mandate": {
+    "par_annee": {
+      "2009": 2107.54
+    },
+    "total_eur": 2107.54,
+    "operations": [
+      {
+        "ap_cle": "B100/0503211",
+        "ap_texte": "PISCINE MONTPARNASSE (ARMAND MASSARD)",
+        "mandate_par_annee": {
+          "2009": 1443.93
+        },
+        "total_mandate": 1443.93,
+        "preuve": "Libellé de l'opération : \"PISCINE MONTPARNASSE (ARMAND MASSARD)\" — nomme le lieu entre parenthèses ; la délibération 2002 JS 20 situe \"la piscine Armand-Massard, 66, boulevard du Montparnasse (15e)\", ce qui confirme que \"PISCINE MONTPARNASSE\" désigne bien cet équipement. Direction DJS, mission \"JEUNESSE ET SPORTS\", cohérente avec une piscine.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0503211"
+      },
+      {
+        "ap_cle": "B100/0703211",
+        "ap_texte": "PISCINE MONTPARNASSE (ARMAND MASSARD)",
+        "mandate_par_annee": {
+          "2009": 663.61
+        },
+        "total_mandate": 663.61,
+        "preuve": "Libellé de l'opération : \"PISCINE MONTPARNASSE (ARMAND MASSARD)\" — nomme le lieu entre parenthèses ; la délibération 2002 JS 20 situe \"la piscine Armand-Massard, 66, boulevard du Montparnasse (15e)\", ce qui confirme l'identification. Direction DJS, mission \"JEUNESSE ET SPORTS\".",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0703211"
+      }
+    ],
+    "periode": [
+      "2009",
+      "2009"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
   "sources": {
     "delibs": {
       "name": "Débat-Délibs — Conseil de Paris",

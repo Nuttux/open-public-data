@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "musee-bourdelle",
   "name": "Musée Bourdelle",
@@ -337,7 +337,7 @@
       "fournisseur": "ENTREPRISE DESTAS ET CREIB",
       "montant_max": 1132659.88,
       "date_notification": "2014-02-10",
-      "preuve": "L'objet du marché nomme le lieu et porte sur des travaux le concernant : « CSP5 MUSEE BOURDELLE RESTRUCTURATION TCE » (tous corps d'état). Il correspond à l'opération votée par la délibération 2011 DPA 7 : « Est approuvé le principe de réalisation des travaux de restructuration partielle du musée Bourdelle - 16, rue Antoine Bourdelle (15e) », discutée en séance de février 2011 pour « un montant estimé à près de 2,5 millions d'euros ». Notification 2014-02-10, cohérente avec le calendrier de l'opération (maîtrise d'œuvre lancée en 2011)."
+      "preuve": "L'objet du marché nomme le lieu et porte sur des travaux le concernant : « CSP5 MUSEE BOURDELLE RESTRUCTURATION TCE » (tous corps d'état), nature « TRAVAUX ». Le libellé désigne un site précis, sans marqueur de marché transversal (les marchés-cadres de la même série portent la mention « MUNICIPAL » ou « TRANSVERSAL », ex. « CSP5 TX DESAMIANTAGE MUNICIPAL »). Il correspond à l'opération votée par la délibération 2011 DPA 7 : « Est approuvé le principe de réalisation des travaux de restructuration partielle du musée Bourdelle - 16, rue Antoine Bourdelle (15e) », dont le marché de maîtrise d'œuvre est approuvé par la même délibération ; en séance (février 2011), une conseillère évoque « un montant estimé à près de 2,5 millions d'euros ». Notification 2014-02-10, postérieure à la maîtrise d'œuvre."
     },
     {
       "numero_marche": "20141210010853",
@@ -346,7 +346,7 @@
       "fournisseur": "SERVICES INSTALLATIONS ELECTRIQUES",
       "montant_max": 605241.8,
       "date_notification": "2014-02-10",
-      "preuve": "L'objet nomme le lieu et désigne un lot de travaux de la même opération : « CSP5 MUSEE BOURDELLE RESTRUCTURATION ELECTRICITE LOT 2 ». Même préfixe d'opération (« CSP5 MUSEE BOURDELLE RESTRUCTURATION ») et même date de notification (2014-02-10) que le lot TCE, rattachés à la restructuration partielle du musée votée par la délibération 2011 DPA 7 (16, rue Antoine Bourdelle, 15e)."
+      "preuve": "L'objet nomme le lieu et désigne un lot de travaux de la même opération : « CSP5 MUSEE BOURDELLE RESTRUCTURATION ELECTRICITE LOT 2 ». Même préfixe d'opération (« CSP5 MUSEE BOURDELLE RESTRUCTURATION ») et même date de notification (2014-02-10) que le lot TCE, rattachés à la restructuration partielle du musée approuvée par la délibération 2011 DPA 7 (16, rue Antoine Bourdelle, 15e)."
     },
     {
       "numero_marche": "20141210011260",
@@ -355,7 +355,7 @@
       "fournisseur": "CELSIO",
       "montant_max": 324635.65,
       "date_notification": "2014-05-06",
-      "preuve": "L'objet du marché nomme le lieu verbatim (« … MUSEE BOURDELLE … ») pour des travaux sur sous-stations vapeur. L'objet couvre toutefois deux sites — « E TANDOU … 19E » (site rue Tandou, 19e) et le Musée Bourdelle (15e, 16 rue Antoine Bourdelle) — le montant_max ne porte donc pas exclusivement sur ce lieu."
+      "preuve": "L'objet du marché nomme le lieu verbatim (« … MUSEE BOURDELLE … ») pour des travaux de sous-station vapeur, c'est-à-dire sur l'installation de chauffage du bâtiment — le lieu n'y est pas un simple repère d'adresse. Il s'agit du lot 21 d'un programme de modernisation des sous-stations vapeur découpé par site en 2014 (autres lots du même exercice : « LOT 11 MODERN SOUS-STATION VAPEUR MAIRIE DU 17EME », « SOUS STATION VAPEUR PISCINE LE GALL ET CA RAVEL »). Réserve : l'objet cite deux sites (« E TANDOU » et le musée Bourdelle), le montant_max ne porte donc pas exclusivement sur ce lieu ; et il mentionne « 19E » alors que le musée Bourdelle est au 15e (16, rue Antoine Bourdelle) — cette mention paraît se rapporter au site Tandou, sans que la source le confirme. Confiance limitée à « moyenne » pour cette raison."
     }
   ],
   "mandate": {
@@ -366,9 +366,14 @@
       "2014": 996527.23,
       "2015": 961974.83,
       "2016": 235521.66,
-      "2017": 24685.32
+      "2017": 96941.23,
+      "2018": 30089.66,
+      "2019": 117092.83,
+      "2020": 80501.62,
+      "2021": 142487.9,
+      "2022": 452417.36
     },
-    "total_eur": 2316573.36,
+    "total_eur": 3211418.64,
     "operations": [
       {
         "ap_cle": "1104244",
@@ -380,8 +385,22 @@
           "2017": 24685.32
         },
         "total_mandate": 2218709.04,
-        "preuve": "Le libellé de l'opération nomme le lieu verbatim : « DONS ET LEGS - MUSEE BOURDELLE » (direction DAC). Correspond au « legs universel consenti à la Ville de Paris - Musée BOURDELLE - par Madame Rodia DUFET-BOURDELLE » accepté par la délibération 2002 DVLR 193 ; la délibération 2009 DAC 725 précise que le produit rattaché au legs est « affecté exclusivement aux dépenses du musée conformément aux volontés de la légatrice ».",
+        "preuve": "Le libellé de l'opération nomme le lieu verbatim : « DONS ET LEGS - MUSEE BOURDELLE » (direction DAC, mission « DONS ET LEGS »). Les lignes reprises ici sont des dépenses réelles d'investissement de nature budgétaire « Constructions » (source AP/CP, exercices 2014-2017). L'opération correspond au « legs universel consenti à la Ville de Paris - Musée BOURDELLE - par Madame Rodia DUFET-BOURDELLE » accepté par la délibération 2002 DVLR 193 ; la délibération 2009 DAC 725 précise que le produit rattaché au legs « sera rattaché au legs et affecté exclusivement aux dépenses du musée conformément aux volontés de la légatrice ».",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1104244"
+      },
+      {
+        "ap_cle": "1604813",
+        "ap_texte": "EPM - BOURDELLE - MODERNISATION  TOITURE",
+        "mandate_par_annee": {
+          "2018": 30089.66,
+          "2019": 117092.83,
+          "2020": 80501.62,
+          "2021": 142487.9,
+          "2022": 452417.36
+        },
+        "total_mandate": 822589.37,
+        "preuve": "Libellé plafonné à 40 caractères par la source (« EPM - BOURDELLE - MODERNISATION  TOITURE », direction DCPA, mission « OPERATIONS SOUS MAND »), mais la même ligne source porte deux champs qui lèvent l'ambiguïté du seul mot « Bourdelle » : nature budgétaire « EP Musées - Bourdelle - Modernisation des toitures » et rubrique fonctionnelle 314 « Musées » (activité « EP MUSEES »). Le préfixe « EPM » est celui des opérations menées sous mandat pour l'établissement public Paris Musées, dont les autres opérations nomment toutes un musée municipal (« EPM : MUSEE CARNAVALET ACCESSIBILITE », « EPM - COGNACQ JAY -  ACCESSIBILITE   MOD », « EPM -GALLIERA - CREATION SALLES EN S/SOL », « EPM - VICTOR HUGO - REAMENAGEMENT PARTIE »). Le seul musée de ce réseau nommé « Bourdelle » est le musée Bourdelle, 16 rue Antoine Bourdelle (15e) (adresse confirmée par la délibération 2011 DPA 7). Travaux de toiture = travaux sur le bâtiment lui-même.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604813"
       },
       {
         "ap_cle": "B100/1104244",
@@ -392,13 +411,23 @@
           "2013": 65631.07
         },
         "total_mandate": 97864.32,
-        "preuve": "Même opération « DONS ET LEGS - MUSEE BOURDELLE » (direction DAC, clé B100/1104244, mandats 2011-2013) : libellé nommant le lieu, rattachée au legs universel Dufet-Bourdelle en faveur du Musée Bourdelle (délibération 2002 DVLR 193), dont le produit est affecté exclusivement aux dépenses du musée.",
+        "preuve": "Même opération « DONS ET LEGS - MUSEE BOURDELLE » (direction DAC, clé B100/1104244, dépenses réelles d'investissement de nature « Constructions », exercices 2011-2013) : libellé nommant le lieu, rattachée au legs universel Dufet-Bourdelle en faveur du Musée Bourdelle (délibération 2002 DVLR 193), dont le produit est « affecté exclusivement aux dépenses du musée conformément aux volontés de la légatrice » (2009 DAC 725).",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1104244"
+      },
+      {
+        "ap_cle": "1504813",
+        "ap_texte": "EPM BOURDELLE MODERNISA TOITURES FACADES",
+        "mandate_par_annee": {
+          "2017": 72255.91
+        },
+        "total_mandate": 72255.91,
+        "preuve": "Même opération de modernisation, exercice antérieur : « EPM BOURDELLE MODERNISA TOITURES FACADES » (DCPA, mission « OPERATIONS SOUS MAND », clé 1504813 pour 1604813 — même radical 4813), libellé également plafonné à 40 caractères. La ligne source porte la nature budgétaire « EP Musées Bourdelle - Modernisation des toitures, façades et… » et la rubrique fonctionnelle 314 « Musées », qui identifient le musée Bourdelle (16, rue Antoine Bourdelle, 15e) et non un homonyme de voirie. Travaux de toitures et façades portant sur le bâtiment.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1504813"
       }
     ],
     "periode": [
       "2011",
-      "2017"
+      "2022"
     ],
     "source": {
       "name": "Comptes administratifs — autorisations de programme, Ville de Paris",

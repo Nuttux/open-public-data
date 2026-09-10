@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "piscine-pailleron",
   "name": "Piscine Pailleron",
@@ -230,7 +230,43 @@
   "bmo_recit": null,
   "invest": [],
   "marches": [],
-  "mandate": null,
+  "mandate": {
+    "par_annee": {
+      "2009": 20675.25,
+      "2016": 42583.62
+    },
+    "total_eur": 63258.87,
+    "operations": [
+      {
+        "ap_cle": "0500221",
+        "ap_texte": "PISCINE PATINOIRE PAILLERON",
+        "mandate_par_annee": {
+          "2016": 42583.62
+        },
+        "total_mandate": 42583.62,
+        "preuve": "Libellé d'opération « PISCINE PATINOIRE PAILLERON » (mission « JEUNESSE ET SPORTS », direction DJS) : il nomme le lieu et son type d'équipement. Les délibérations confirment que la piscine et la patinoire sont le même site : « l'étude et la rénovation de la piscine Pailleron, l'étude et la reconstruction d'une patinoire de quartier et de loisir ainsi que la réalisation d'un bassin d'initiation dans l'enceinte du centre sportif Edouard-Pailleron (19e) » (2004 JS 336) et « centre sportif Pailleron, 28-32, rue Edouard-Pailleron (19e) » (2005 DJS 225). L'opération couvre l'ensemble du complexe piscine + patinoire.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0500221"
+      },
+      {
+        "ap_cle": "B100/0700221",
+        "ap_texte": "PISCINE PATINOIRE PAILLERON",
+        "mandate_par_annee": {
+          "2009": 20675.25
+        },
+        "total_mandate": 20675.25,
+        "preuve": "Libellé d'opération « PISCINE PATINOIRE PAILLERON » (mission « JEUNESSE ET SPORTS », direction DJS), identique à l'opération 0500221 et désignant le même équipement du 19e. Adresse confirmée par la délibération 2005 DJS 225 : « centre sportif Pailleron, 28-32, rue Edouard-Pailleron (19e) ». L'opération couvre l'ensemble du complexe piscine + patinoire.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0700221"
+      }
+    ],
+    "periode": [
+      "2009",
+      "2016"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
   "sources": {
     "delibs": {
       "name": "Débat-Délibs — Conseil de Paris",

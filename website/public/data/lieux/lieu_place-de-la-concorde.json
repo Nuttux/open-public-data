@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "place-de-la-concorde",
   "name": "Place de la Concorde",
@@ -33,8 +33,9 @@
     ],
     "n_bmo_brut": 0,
     "n_bmo_verifies": null,
-    "invest_total_eur": 106818.0,
+    "invest_total_eur": 301080.0,
     "invest_annees": [
+      "2021",
       "2022"
     ],
     "lecture_mode": "titre nommant le lieu (38 trouvés)",
@@ -246,10 +247,17 @@
   "bmo_recit": null,
   "invest": [
     {
+      "annee": 2021,
+      "montant_eur": 194262.0,
+      "nom_projet": "Patrimoine de voirie Place de la Concorde - Réfection des trottoirs et de la chaussée",
+      "preuve": "Nom du projet : « Patrimoine de voirie Place de la Concorde - Réfection des trottoirs et de la chaussée » — le nom désigne explicitement la place et l'objet porte sur la voirie de la place elle-même ; distance 0 m, signal nom+proximite.",
+      "id": "2021_08_il_012"
+    },
+    {
       "annee": 2022,
       "montant_eur": 106818.0,
       "nom_projet": "Place de la Concorde - Travaux d'entretien",
-      "preuve": "Nom du projet : \"Place de la Concorde - Travaux d'entretien\" (nomme explicitement le lieu), distance 32 m, signal nom+proximite.",
+      "preuve": "Nom du projet : « Place de la Concorde - Travaux d'entretien » — le nom nomme explicitement la place et l'objet porte sur son entretien ; distance 0 m, signal nom+proximite.",
       "id": "2022_08_21_011"
     }
   ],
@@ -280,15 +288,6 @@
       "montant_max": 44864.0,
       "date_notification": "2024-12-11",
       "preuve": "Objet : \"MS LUGE PLACE DE LA CONCORDE LOT 1\" — installation événementielle (luge) montée sur la place elle-même."
-    },
-    {
-      "numero_marche": "20232023S06869",
-      "objet": "CAMPAGNE PLAN MEDIA VILLAGE RUGBY PLACE DE LA CONCORDE",
-      "objet_clair": null,
-      "fournisseur": "O CONNECTION",
-      "montant_max": 41040.0,
-      "date_notification": "2023-11-21",
-      "preuve": "Objet : \"CAMPAGNE PLAN MEDIA VILLAGE RUGBY PLACE DE LA CONCORDE\" — campagne de communication pour le village rugby installé physiquement sur la place (Coupe du monde de rugby 2023)."
     },
     {
       "numero_marche": "20181060020024",
@@ -327,7 +326,32 @@
       "preuve": "Objet : \"STAND PARISPOUR L'EMPLOI PLACE DE LA CONCORDE 4-5 OCT 2018\" — construction d'un stand physiquement sur la place, dates précises."
     }
   ],
-  "mandate": null,
+  "mandate": {
+    "par_annee": {
+      "2009": 2780.44
+    },
+    "total_eur": 2780.44,
+    "operations": [
+      {
+        "ap_cle": "B100/0400357",
+        "ap_texte": "FONTAINE DE LA CONCORDE",
+        "mandate_par_annee": {
+          "2009": 2780.44
+        },
+        "total_mandate": 2780.44,
+        "preuve": "Libellé d'opération « FONTAINE DE LA CONCORDE », direction DPA, mission « PATRIMOINE ET ARCHIT ». Le signal n'est qu'une partie distinctive (« concorde ») ; il est confirmé par le contexte, qui documente des fontaines sur la place et des marchés portés par la même direction : 2001 DPA 217 « travaux d'entretien périodique, de maintenance et de réparations urgentes des fontaines de la place de la Concorde (8e) » et 2002 DPA 230 « restructuration de la fontaine des Fleuves sise Place de la Concorde (8e) ». Aucune délibération ne cite le code d'opération lui-même, d'où une confiance moyenne.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0400357"
+      }
+    ],
+    "periode": [
+      "2009",
+      "2009"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
   "sources": {
     "delibs": {
       "name": "Débat-Délibs — Conseil de Paris",

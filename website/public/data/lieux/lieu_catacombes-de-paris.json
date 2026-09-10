@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "catacombes-de-paris",
   "name": "Catacombes de Paris",
@@ -162,7 +162,57 @@
   "bmo_recit": null,
   "invest": [],
   "marches": [],
-  "mandate": null,
+  "mandate": {
+    "par_annee": {
+      "2016": 861029.93,
+      "2017": 3389067.21,
+      "2018": 7919794.56,
+      "2019": 4333510.14,
+      "2020": 639925.12,
+      "2021": 37170.75,
+      "2022": 2179.58
+    },
+    "total_eur": 17182677.29,
+    "operations": [
+      {
+        "ap_cle": "1604804",
+        "ap_texte": "EPM - MUSEE LIBERATION / ENTREE CATACOMB",
+        "mandate_par_annee": {
+          "2016": 556358.2,
+          "2017": 3308486.8,
+          "2018": 7919783.28,
+          "2019": 4333510.14,
+          "2020": 638704.12,
+          "2021": 37170.75,
+          "2022": 2179.58
+        },
+        "total_mandate": 16796192.87,
+        "preuve": "Libellé d'opération « EPM - MUSEE LIBERATION / ENTREE CATACOMB » (direction DPA, mission « OPERATIONS SOUS MAND »). Le libellé, plafonné à 40 caractères par la source, nomme l'équipement lui-même : « ENTREE CATACOMB[ES] ». Le lieu visé est bien le musée des Catacombes, identifié par les délibérations du Conseil de Paris versées au contexte : « travaux de remplacement des grilles du circuit de visite du musée des Catacombes 1, place Denfert-Rochereau (14e) » (2003 DPA 151, octobre 2003) et « au musée des Catacombes sis 1, avenue du Colonel Henri Rol-Tanguy à Paris (14ème) » (2007 DPA 128, mai 2007). Périmètre partagé : le libellé associe deux objets, « MUSEE LIBERATION » et « ENTREE CATACOMB[ES] » ; le montant mandaté couvre l'opération dans son ensemble et n'est pas imputable aux seules Catacombes.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604804"
+      },
+      {
+        "ap_cle": "1504804",
+        "ap_texte": "EPM - MUSEE LIBERATION/ENTREE CATACOMBE",
+        "mandate_par_annee": {
+          "2016": 304671.73,
+          "2017": 80580.41,
+          "2018": 11.28,
+          "2020": 1221.0
+        },
+        "total_mandate": 386484.42,
+        "preuve": "Libellé d'opération « EPM - MUSEE LIBERATION/ENTREE CATACOMBE » (direction DPA, mission « OPERATIONS SOUS MAND ») : autre autorisation de programme portant le même libellé que l'opération 1604804. Le libellé nomme « ENTREE CATACOMBE[S] », soit l'entrée du musée des Catacombes, situé 1, place Denfert-Rochereau / 1, avenue du Colonel Henri Rol-Tanguy (14e) d'après les délibérations 2003 DPA 151 et 2007 DPA 128 versées au contexte. Périmètre partagé, comme pour 1604804 : le libellé associe « MUSEE LIBERATION » et « ENTREE CATACOMBE[S] », le montant mandaté n'est donc pas imputable aux seules Catacombes.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1504804"
+      }
+    ],
+    "periode": [
+      "2016",
+      "2022"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
   "sources": {
     "delibs": {
       "name": "Débat-Délibs — Conseil de Paris",

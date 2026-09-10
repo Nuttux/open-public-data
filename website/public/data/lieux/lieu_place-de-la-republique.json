@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "place-de-la-republique",
   "name": "Place de la République",
@@ -33,8 +33,9 @@
     ],
     "n_bmo_brut": 2000,
     "n_bmo_verifies": 5,
-    "invest_total_eur": 37864.05,
+    "invest_total_eur": 241734.05,
     "invest_annees": [
+      "2019",
       "2023"
     ],
     "lecture_mode": "titre nommant le lieu (41 trouvés)",
@@ -43,7 +44,13 @@
     "n_lieu": 32
   },
   "subventions_exploitant": null,
-  "residents": [],
+  "residents": [
+    {
+      "beneficiaire": "A L ADRESSE DU JEU",
+      "montant_total": 316800.0,
+      "preuve": "L'objet de la subvention nomme le lieu et décrit une activité qui s'y déroule (verbatim : « Proposition d'activités ludiques aux familles place de la République avec la ludothèque à ciel ouver[t] »), SIRET 52850503500022. Rôle « résident » et non « exploitant » : l'association anime une activité sur la place, rien dans l'objet n'indique qu'elle gère la place elle-même. Réserve : aucune délibération du corpus consulté ne mentionne cette association ni la ludothèque à ciel ouvert ; le rattachement repose sur l'objet de la subvention seul."
+    }
+  ],
   "kpi_montant": null,
   "synthese_fr": "En 2003, le Conseil de Paris autorise la restauration du monument à la gloire de la République, au centre de la place, quand des élus demandent déjà d'en écarter la circulation automobile. À partir de 2009, la Ville engage le réaménagement : désignation d'un jury, concertation présentée comme large, puis attribution en 2010 du marché de maîtrise d'œuvre à l'équipe TVK, autour d'un projet qui doit transformer le rond-point de la statue en espace piétonnier ; un coût de 17,5 millions d'euros, avancé dans la délibération, est contesté en séance par l'opposition. Inaugurée en 2013, la place se dote d'un café-pavillon destiné à l'animer et voit sa charge symbolique renforcée par les grands rassemblements qui suivent les attentats de janvier 2015. Elle devient ensuite le théâtre de tensions — mouvement Nuit Debout en 2016, évacuation d'un campement de migrants en 2020 — et fait l'objet de demandes répétées, jusqu'en 2025, sur son entretien, son éclairage et sa végétalisation.",
   "moments": [
@@ -155,10 +162,17 @@
   "bmo_recit": null,
   "invest": [
     {
+      "annee": 2019,
+      "montant_eur": 203870.0,
+      "nom_projet": "Opérations d'aménagement Place de la République - Aménagement (plantations commémoratives)",
+      "preuve": "Le nom du projet nomme explicitement CE lieu en tête de libellé (verbatim : « Opérations d'aménagement Place de la République - Aménagement (plantations commémoratives) »). Le corpus de délibérations décrit la place comme « un lieu de rassemblements après les attentats de Charlie Hebdo et de l'Hyper casher », ce qui rend des plantations commémoratives sur ce site plausibles, sans qu'aucune délibération lue ne mentionne cette opération. Réserve forte : la distance au point de référence du lieu est de 2 296 m, incompatible avec l'emprise de la place — le rattachement repose sur le nom du projet seul, le point géographique de l'enregistrement n'étant pas cohérent.",
+      "id": "2019_03_il_012"
+    },
+    {
       "annee": 2023,
       "montant_eur": 37864.05,
       "nom_projet": "Place de la république - Réfection des trottoirs",
-      "preuve": "Le nom du projet nomme explicitement CE lieu (verbatim : « Place de la république - Réfection des trottoirs ») et porte sur les trottoirs de la place elle-même, qui font partie de son emprise : les délibérations traitent « l'élargissement des trottoirs autour de la place » comme un élément de la place (2009 DVD 178). Distance de 144 m au point de référence, compatible avec un point situé sur cette très grande place (3e, 10e et 11e arrondissements). Limite : cette citation de 2009 documente le réaménagement de 2009-2013, pas l'opération de 2023 ; le rattachement repose sur le nom du projet seul.",
+      "preuve": "Le nom du projet nomme explicitement CE lieu (verbatim : « Place de la république - Réfection des trottoirs ») et porte sur les trottoirs de la place elle-même, qui font partie de son emprise : les délibérations traitent « l'élargissement des trottoirs autour de la place » comme un élément de la place (2009 DVD 178). Distance de 155 m au point de référence, compatible avec un point situé sur cette très grande place (3e, 10e et 11e arrondissements). Limite : cette citation de 2009 documente le réaménagement de 2009-2013, pas l'opération de 2023 ; le rattachement repose sur le nom du projet seul.",
       "id": "2023_00_9_026"
     }
   ],
@@ -180,11 +194,11 @@
       "2011": 2222098.01,
       "2012": 9365843.57,
       "2013": 10185603.51,
-      "2014": 922941.72,
-      "2015": 74452.21,
+      "2014": 920044.98,
+      "2015": 73955.25,
       "2016": 57605.38
     },
-    "total_eur": 23900158.39,
+    "total_eur": 23896764.69,
     "operations": [
       {
         "ap_cle": "B100/1103923",
@@ -292,17 +306,6 @@
         "total_mandate": 8288.24,
         "preuve": "Libellé verbatim « PLACE DE LA REPUBLIQUE », mission voirie, direction DVD ; même numéro d'opération 1003923 que B100/1003923, solde 2014-2015 de la tranche 2010 du chantier de réaménagement.",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1003923"
-      },
-      {
-        "ap_cle": "0903923",
-        "ap_texte": "PLACE DE LA REPUBLIQUE",
-        "mandate_par_annee": {
-          "2014": 2896.74,
-          "2015": 496.96
-        },
-        "total_mandate": 3393.7,
-        "preuve": "Libellé verbatim « PLACE DE LA REPUBLIQUE », mission voirie, direction DVD ; même numéro d'opération 0903923 que B100/0903923, solde 2014-2015 de la tranche 2009 du chantier de réaménagement.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903923"
       }
     ],
     "periode": [

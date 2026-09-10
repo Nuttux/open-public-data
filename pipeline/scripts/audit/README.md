@@ -146,3 +146,34 @@ plusieurs lignes chez nous quand elle mêle des financements, et `annee` est un
 champ DATE qu'il faut interroger avec `year()`. Chacun faisait crier au faux
 sur une donnée juste. Une alerte fausse fait perdre sa valeur à l'outil : les
 trois sont documentés dans le code à l'endroit exact où ils mordent.
+
+## `check_lieu_money_resolved.py`
+
+Le garde-fou déterministe entre le juge et l'export des fiches lieu.
+
+Le rattachement de l'argent à un lieu passe par un modèle, encadré par une
+vérification adverse elle aussi menée par un modèle. Le 2026-09-10, cette
+vérification a rattrapé des opérations budgétaires fabriquées par le juge, avec
+des montants au centime. Elle a fait son travail — mais une vérification qui
+dépend d'un modèle ne peut pas être la dernière barrière avant publication.
+
+Ce script est mécanique et sans jugement. Il contrôle le résolu contre les
+données PUBLIÉES, pas contre le fichier de candidats : la collecte est rejouée
+régulièrement, et comparer à un instantané de candidats produit des refus sur
+des lignes parfaitement fondées.
+
+```bash
+python3 pipeline/scripts/audit/check_lieu_money_resolved.py --check
+python3 pipeline/scripts/audit/check_lieu_money_resolved.py --fix
+```
+
+Règle de correction : le juge décide du RATTACHEMENT, jamais du montant. Une
+opération rattachée voit ses exercices réécrits depuis la table des opérations ;
+seules les lignes introuvables à la source sont retirées. Une première version
+supprimait l'opération entière dès qu'un exercice clochait, ce qui coûtait
+159,7 M€ parfaitement fondés à la Philharmonie.
+
+Deux pièges de comparaison sont encodés dans le script : les noms de projet
+sont tronqués à 90 caractères par la collecte (comparer par préfixe), et le
+montant d'une subvention affiché sur une fiche n'est pas celui du résolu mais
+un recalcul exercice par exercice fait à l'export.

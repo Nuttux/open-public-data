@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T14:24:24.851547+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "bois-de-boulogne",
   "name": "Bois de Boulogne",
@@ -258,11 +258,29 @@
       "annee": 2024,
       "montant_eur": 57153.59,
       "nom_projet": "Améliorer le cadre de vie Bois de Boulogne",
-      "preuve": "Le nom du projet nomme explicitement le lieu : « Améliorer le cadre de vie Bois de Boulogne ». La distance au point de référence (2 132 m) n'est pas disqualifiante : le bois couvre ~846 ha.",
+      "preuve": "Le nom du projet d'investissement nomme explicitement le lieu : « Améliorer le cadre de vie Bois de Boulogne ». La distance au point de référence (2 132 m dans le candidat) n'est pas disqualifiante : ce point est un centroïde d'adresse, pas le périmètre du bois.",
       "id": "2024_16_45_021"
     }
   ],
   "marches": [
+    {
+      "numero_marche": "decp-2026T01251",
+      "objet": "Travaux de fontainerie, d’entretien, de réparation et d’extension des réseaux d’adduction d’eau dans les bois, espaces verts et cimetières de la ville de Paris.\n\n - Travaux de fontainerie, d’entretien",
+      "objet_clair": null,
+      "fournisseur": "EIFFAGE GENIE CIVIL RESEAUX",
+      "montant_max": 6000000.0,
+      "date_notification": "2026-03-10",
+      "preuve": "Objet complet du marché (DECP) : « Travaux de fontainerie, d'entretien, de réparation et d'extension des réseaux d'adduction d'eau dans les bois, espaces verts et cimetières de la ville de Paris. - Travaux de fontainerie, d'entretien, de réparation et d'extension des réseaux d'adduction d'eau dans les bois de Boulogne (16ème) et de Vincennes (12ème) et de l'École du Breuil. » — le lot nomme le bois comme périmètre ; le montant maximum couvre aussi le bois de Vincennes et l'École du Breuil."
+    },
+    {
+      "numero_marche": "decp-2025T02922",
+      "objet": "Accords-cadres à bons de commande pour les travaux de fouilles et plantations d'arbres pour la Ville de Paris et le Centre d'Action Sociale de la Ville de Paris. - Travaux de fouilles et de plantation",
+      "objet_clair": null,
+      "fournisseur": "UNIVERSAL PAYSAGE",
+      "montant_max": 2010000.0,
+      "date_notification": "2025-06-05",
+      "preuve": "Objet complet du marché (DECP) : « … Travaux de fouilles et de plantations d'arbres pour le bois de Boulogne, le bois de Vincennes et le domaine de Beauregard (78) de la Ville de Paris et le parc de la résidence de Saint-Vrain (91) du CAS-VP. » — le bois est nommé en tête du périmètre ; montant maximum partagé avec trois autres sites."
+    },
     {
       "numero_marche": "20212021T00511",
       "objet": "SA3 AC BC LOT4 TRAVAVAUX DE FOUILLES - BOIS DE BOULOGNE",
@@ -270,7 +288,16 @@
       "fournisseur": "UNIVERSAL PAYSAGE",
       "montant_max": 1920009.99,
       "date_notification": "2021-03-17",
-      "preuve": "Objet verbatim : « SA3 AC BC LOT4 TRAVAVAUX DE FOUILLES - BOIS DE BOULOGNE » — lot nommant ce lieu comme seul périmètre."
+      "preuve": "Objet verbatim : « SA3 AC BC LOT4 TRAVAVAUX DE FOUILLES - BOIS DE BOULOGNE » — le lot nomme ce lieu comme seul périmètre."
+    },
+    {
+      "numero_marche": "decp-2025T05384",
+      "objet": "Travaux d’entretien des sols (voirie, réseaux et travaux divers) dans les espaces verts, bois et cimetières parisiens. - Travaux d’entretien des sols (voirie, réseaux et travaux divers) dans les espac",
+      "objet_clair": null,
+      "fournisseur": "ACTIV TP",
+      "montant_max": 999637.0,
+      "date_notification": "2025-07-01",
+      "preuve": "Objet complet du marché (DECP) : « … Travaux d'entretien des sols (voirie, réseaux et travaux divers) dans les espaces verts du bois de Boulogne, le Domaine de Beauregard (78) et les centres horticoles de Rungis (94) et d'Achères (78). » — le bois est le premier périmètre nommé ; montant maximum partagé avec les sites extérieurs."
     },
     {
       "numero_marche": "20161230001022",
@@ -279,7 +306,7 @@
       "fournisseur": "TERIDEAL SEGEX",
       "montant_max": 996122.96,
       "date_notification": "2016-07-25",
-      "preuve": "Objet verbatim : « AAGV BOIS DE BOULOGNE LOT 2 » — travaux VRD/espaces verts pour l’aire d’accueil des gens du voyage située dans le bois, nommé en toutes lettres."
+      "preuve": "Objet verbatim : « CSP5 - VRD ET ESPACES VERTS - AAGV BOIS DE BOULOGNE LOT 2 » — travaux de voirie/réseaux et d'espaces verts dont l'objet nomme le bois comme périmètre. Le sigle « AAGV » n'est pas explicité par la source."
     },
     {
       "numero_marche": "20151400000758",
@@ -288,7 +315,7 @@
       "fournisseur": "TRANSPORTS PIERRE ROSSION",
       "montant_max": 800000.0,
       "date_notification": "2015-07-06",
-      "preuve": "Objet verbatim : « CSP2-BUNGALOWS-CELLES-ST-CLOUD/BOIS DE BOULOGNE-LOT 1 » — le lieu est nommé dans l’objet ; libellé abrégé et périmètre partagé avec La Celle-Saint-Cloud (78)."
+      "preuve": "Objet verbatim : « CSP2-BUNGALOWS-CELLES-ST-CLOUD/BOIS DE BOULOGNE-LOT 1 » — le lieu est nommé dans l'objet ; libellé abrégé par la source et périmètre partagé avec un second site (« CELLES-ST-CLOUD »)."
     },
     {
       "numero_marche": "decp-2025S07121",
@@ -297,7 +324,7 @@
       "fournisseur": "ESPACE DECO",
       "montant_max": 400000.0,
       "date_notification": "2025-08-19",
-      "preuve": "Objet verbatim : « Entretien des jeunes peuplements forestiers dans le bois de Boulogne (16ème) et le Domaine de Beauregard (78) » — prestation forestière dans le bois ; montant max partagé avec Beauregard (78)."
+      "preuve": "Objet verbatim : « Entretien des jeunes peuplements forestiers dans le bois de Boulogne (16ème) et le Domaine de Beauregard (78). » — prestation forestière dans le bois ; montant maximum partagé avec Beauregard (78)."
     },
     {
       "numero_marche": "20212021T02137",
@@ -306,7 +333,16 @@
       "fournisseur": "PROCHALOR",
       "montant_max": 338189.48,
       "date_notification": "2021-04-26",
-      "preuve": "Objet verbatim : « BAT DEVE 93W AVENUE DE L'HIPPODROME BOIS DE BOULOGNE » — travaux sur un bâtiment de la DEVE (direction gestionnaire du bois) à une adresse située dans le bois (avenue de l’Hippodrome)."
+      "preuve": "Objet verbatim : « BAT DEVE 93W AVENUE DE L'HIPPODROME BOIS DE BOULOGNE » — travaux sur un bâtiment de la direction DEVE à une adresse dont l'objet précise qu'elle se situe dans le bois. L'objet ne dit pas quelle fonction ce bâtiment remplit."
+    },
+    {
+      "numero_marche": "decp-2026S01626",
+      "objet": "Prestations de fauchage de prairies et pelouses, de débroussaillage de bords de voies et de taillage de haies pour les bois de Vincennes (12ème arrondissement) et Boulogne (16ème arrondissement), ains",
+      "objet_clair": null,
+      "fournisseur": "ROBERT PAYSAGE",
+      "montant_max": 120000.0,
+      "date_notification": "2026-03-27",
+      "preuve": "Objet complet du marché (DECP) : « … pour les bois de Vincennes (12ème arrondissement) et Boulogne (16ème arrondissement), ainsi que pour le domaine de Beauregard (78). - Lot 2 : Bois de Boulogne (16ème arrondissement) et domaine de Beauregard (78) » — le lot retenu porte sur le bois ; montant maximum partagé avec Beauregard (78)."
     },
     {
       "numero_marche": "decp-2025S03215",
@@ -315,7 +351,7 @@
       "fournisseur": "CONTRASTE PRO",
       "montant_max": 32569.0,
       "date_notification": "2025-03-28",
-      "preuve": "Objet verbatim : « … vers le Kiosque de l’Empereur situé sur l’ile du lac intérieur du Bois de Boulogne, 75016 Paris » — prestation se déroulant dans le bois."
+      "preuve": "Objet verbatim : « Marché de location d'une barge motorisée pour accessibilité et transport de matériaux vers le Kiosque de l'Empereur situé sur l'ile du lac intérieur du Bois de Boulogne, 75016 Paris » — prestation se déroulant dans le bois."
     }
   ],
   "mandate": {
@@ -325,14 +361,16 @@
       "2011": 1925188.78,
       "2012": 912612.78,
       "2013": 2934271.79,
-      "2014": 764312.63,
-      "2015": 744027.95,
+      "2014": 719046.49,
+      "2015": 721714.86,
       "2016": 499869.28,
       "2017": 624893.84,
       "2018": 20909.77,
-      "2019": 9360.58
+      "2019": 217051.86,
+      "2020": 37284.7,
+      "2021": 8913.56
     },
-    "total_eur": 12974947.92,
+    "total_eur": 13161258.23,
     "operations": [
       {
         "ap_cle": "B100/0700658",
@@ -344,7 +382,7 @@
           "2012": 1927.1
         },
         "total_mandate": 3305419.89,
-        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE, gestionnaire du bois). Opération couvrant l'ensemble du site.",
+        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE). Le libellé désigne le site lui-même : opération couvrant l'ensemble du bois, sans autre équipement nommé.",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0700658"
       },
       {
@@ -357,7 +395,7 @@
           "2013": 304266.49
         },
         "total_mandate": 2577005.69,
-        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE, gestionnaire du bois). Opération couvrant l'ensemble du site.",
+        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE). Le libellé désigne le site lui-même : opération couvrant l'ensemble du bois, sans autre équipement nommé.",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1000658"
       },
       {
@@ -368,7 +406,7 @@
           "2013": 1956349.1
         },
         "total_mandate": 2047777.44,
-        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE, gestionnaire du bois). Opération couvrant l'ensemble du site.",
+        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE). Le libellé désigne le site lui-même : opération couvrant l'ensemble du bois, sans autre équipement nommé.",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1200658"
       },
       {
@@ -380,7 +418,7 @@
           "2012": 32521.96
         },
         "total_mandate": 1210121.43,
-        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE, gestionnaire du bois). Opération couvrant l'ensemble du site.",
+        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE). Le libellé désigne le site lui-même : opération couvrant l'ensemble du bois, sans autre équipement nommé.",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0800658"
       },
       {
@@ -391,7 +429,7 @@
           "2013": 673656.2
         },
         "total_mandate": 1171249.42,
-        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE, gestionnaire du bois). Opération couvrant l'ensemble du site.",
+        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE). Le libellé désigne le site lui-même : opération couvrant l'ensemble du bois, sans autre équipement nommé.",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0900658"
       },
       {
@@ -404,7 +442,7 @@
           "2019": 9360.58
         },
         "total_mandate": 731884.51,
-        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE, gestionnaire du bois). Opération couvrant l'ensemble du site.",
+        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE). Le libellé désigne le site lui-même : opération couvrant l'ensemble du bois, sans autre équipement nommé.",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1500658"
       },
       {
@@ -416,7 +454,7 @@
           "2016": 271.47
         },
         "total_mandate": 577620.16,
-        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE, gestionnaire du bois). Opération couvrant l'ensemble du site.",
+        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE). Le libellé désigne le site lui-même : opération couvrant l'ensemble du bois, sans autre équipement nommé.",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1400658"
       },
       {
@@ -427,7 +465,7 @@
           "2018": 19828.53
         },
         "total_mandate": 569877.0,
-        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE, gestionnaire du bois). Opération couvrant l'ensemble du site.",
+        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE). Le libellé désigne le site lui-même : opération couvrant l'ensemble du bois, sans autre équipement nommé.",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1700658"
       },
       {
@@ -439,7 +477,7 @@
           "2018": 1081.24
         },
         "total_mandate": 384629.25,
-        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE, gestionnaire du bois). Opération couvrant l'ensemble du site.",
+        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE). Le libellé désigne le site lui-même : opération couvrant l'ensemble du bois, sans autre équipement nommé.",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1600658"
       },
       {
@@ -450,35 +488,25 @@
           "2015": 175628.5
         },
         "total_mandate": 331783.9,
-        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE, gestionnaire du bois). Opération couvrant l'ensemble du site.",
+        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE). Le libellé désigne le site lui-même : opération couvrant l'ensemble du bois, sans autre équipement nommé.",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1300658"
       },
       {
-        "ap_cle": "1200658",
-        "ap_texte": "BOIS DE BOULOGNE",
+        "ap_cle": "1705065",
+        "ap_texte": "BOIS DE BOULOGNE - CARREFOUR DU BOUT DES",
         "mandate_par_annee": {
-          "2014": 42705.85,
-          "2015": 11675.87
+          "2019": 207691.28,
+          "2020": 37284.7,
+          "2021": 8913.56
         },
-        "total_mandate": 54381.72,
-        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE, gestionnaire du bois). Opération couvrant l'ensemble du site.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1200658"
-      },
-      {
-        "ap_cle": "0900658",
-        "ap_texte": "BOIS DE BOULOGNE",
-        "mandate_par_annee": {
-          "2014": 2560.29,
-          "2015": 10637.22
-        },
-        "total_mandate": 13197.51,
-        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE, gestionnaire du bois). Opération couvrant l'ensemble du site.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0900658"
+        "total_mandate": 253889.54,
+        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE - CARREFOUR DU BOUT DES » (libellé plafonné à 40 caractères par la source ; mission VOIRIE ET DEPLACEMEN, direction DVD). Le libellé commence par le nom du lieu et désigne un aménagement de voirie du bois ; recoupé par le projet d'investissement 2020 « Opérations Bois de Boulogne - Travaux d'aménagement du carrefour du bout des lacs » (37 285 €), à ne pas additionner avec les 37 284,70 € mandatés ici en 2020.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1705065"
       }
     ],
     "periode": [
       "2009",
-      "2019"
+      "2021"
     ],
     "source": {
       "name": "Comptes administratifs — autorisations de programme, Ville de Paris",

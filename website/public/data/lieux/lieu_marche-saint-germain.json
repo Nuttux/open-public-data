@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "marche-saint-germain",
   "name": "Marché Saint-Germain",
@@ -33,8 +33,10 @@
     ],
     "n_bmo_brut": 0,
     "n_bmo_verifies": null,
-    "invest_total_eur": 0,
-    "invest_annees": [],
+    "invest_total_eur": 174199.0,
+    "invest_annees": [
+      "2020"
+    ],
     "lecture_mode": "titre nommant le lieu (1 trouvés)",
     "lecture_mode_en": "title naming the place (1 found)",
     "n_lus": 1,
@@ -59,8 +61,25 @@
   "montants": [],
   "bmo_extraits": [],
   "bmo_recit": null,
-  "invest": [],
+  "invest": [
+    {
+      "annee": 2020,
+      "montant_eur": 174199.0,
+      "nom_projet": "Edition 2016 Restauration de la fontaine du marché Saint-Germain",
+      "preuve": "Nom du projet : « Edition 2016 Restauration de la fontaine du marché Saint-Germain » — il nomme le lieu. Le rattachement se fait sur le nom, pas sur la distance : la distance calculée (3 051 m) est incohérente avec les coordonnées du lieu, comme le montrent les autres candidats de proximité (écoles des rues Traversière et Charles-Baudelaire, situées dans le 12e). Même objet que le marché de maîtrise d'œuvre « RESTAURATION DE LA FONTAINE DU MARCHÉ SAINT GERMAIN » (2017) déjà rattaché.",
+      "id": "2020_06_il_016"
+    }
+  ],
   "marches": [
+    {
+      "numero_marche": "decp-20202020T03248",
+      "objet": "TVX MODERNISATION CHARPENTE MARCHÉ SAINT-GERMAIN",
+      "objet_clair": null,
+      "fournisseur": "SOC COOP PRODUCT CHARPENTIERS DE PARIS",
+      "montant_max": 42851.4,
+      "date_notification": "2020-06-05",
+      "preuve": "Objet du marché : « TVX MODERNISATION CHARPENTE MARCHÉ SAINT-GERMAIN » — travaux de charpente portant sur le bâtiment lui-même, titulaire SOC COOP PRODUCT CHARPENTIERS DE PARIS (SIRET 57201099900017), notifié le 2020-06-05."
+    },
     {
       "numero_marche": "20171210001042",
       "objet": "RESTAURATION DE LA FONTAINE DU MARCHÉ SAINT GERMAIN",
@@ -71,7 +90,51 @@
       "preuve": "Objet du marché : « RESTAURATION DE LA FONTAINE DU MARCHÉ SAINT GERMAIN » — nomme explicitement le lieu, ce n'est pas un simple repère d'adresse."
     }
   ],
-  "mandate": null,
+  "mandate": {
+    "par_annee": {
+      "2013": 10534.84,
+      "2014": 41805.83,
+      "2015": 19250.7,
+      "2016": 9249.01,
+      "2017": 2833.16,
+      "2018": 51000.69
+    },
+    "total_eur": 134674.23,
+    "operations": [
+      {
+        "ap_cle": "0903895",
+        "ap_texte": "AUDITORIUM SAINT GERMAIN",
+        "mandate_par_annee": {
+          "2014": 41805.83,
+          "2015": 19250.7,
+          "2016": 9249.01,
+          "2017": 2833.16,
+          "2018": 51000.69
+        },
+        "total_mandate": 124139.39,
+        "preuve": "Opération « AUDITORIUM SAINT GERMAIN » (DAC, mission AFFAIRES CULTURELLES). Le signal du candidat n'est qu'une « partie distinctive (saint germain) » ; la confirmation vient du contexte : la délibération 2014 DILT 1002 - DU décrit le site comme « un véritable patchwork composé d'un centre commercial privé mais aussi de très nombreux équipements publics appartenant à la Ville de Paris : piscine, gymnase, crèche, auditorium, qui accueille actuellement la M.P.A.A. » — l'auditorium est donc un équipement situé dans le marché Saint-Germain. L'opération porte sur cet équipement du site, pas sur l'ensemble du marché.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=0903895"
+      },
+      {
+        "ap_cle": "B100/0903895",
+        "ap_texte": "AUDITORIUM SAINT GERMAIN",
+        "mandate_par_annee": {
+          "2013": 10534.84
+        },
+        "total_mandate": 10534.84,
+        "preuve": "Même opération 0903895 « AUDITORIUM SAINT GERMAIN » (DAC), sur une autre clé de la source. Confirmée par la délibération 2014 DILT 1002 - DU, qui range l'« auditorium, qui accueille actuellement la M.P.A.A. » parmi les équipements publics du marché Saint-Germain. Porte sur cet équipement du site.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903895"
+      }
+    ],
+    "periode": [
+      "2013",
+      "2018"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
   "sources": {
     "delibs": {
       "name": "Débat-Délibs — Conseil de Paris",

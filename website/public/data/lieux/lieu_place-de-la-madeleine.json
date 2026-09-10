@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "place-de-la-madeleine",
   "name": "Place de la Madeleine",
@@ -33,8 +33,11 @@
     ],
     "n_bmo_brut": 2000,
     "n_bmo_verifies": 18,
-    "invest_total_eur": 0,
-    "invest_annees": [],
+    "invest_total_eur": 3478784.0,
+    "invest_annees": [
+      "2019",
+      "2020"
+    ],
     "lecture_mode": "titre nommant le lieu (22 trouvés)",
     "lecture_mode_en": "title naming the place (22 found)",
     "n_lus": 22,
@@ -151,7 +154,22 @@
   ],
   "bmo_extraits": [],
   "bmo_recit": null,
-  "invest": [],
+  "invest": [
+    {
+      "annee": 2019,
+      "montant_eur": 3077885.0,
+      "nom_projet": "Place de la Madeleine - Travaux de réaménagement",
+      "preuve": "Le nom du projet nomme le lieu verbatim : « Place de la Madeleine - Travaux de réaménagement » (2019, à 62 m du point du lieu). Le chantier est attesté au Conseil de Paris en septembre 2019 : « les difficultés qu'ils rencontrent depuis la réalisation, début avril, des travaux de réaménagement de la place de la Madeleine au niveau des angles Sud-est et Sud-ouest ». Un marché de travaux au même objet figure parmi les candidats (20181370001240, « AMÉNAGEMENT DE LA PLACE DE LA MADELEINE PARIS 8ÈME. », notifié le 2018-09-17).",
+      "id": "2019_08_il_017"
+    },
+    {
+      "annee": 2020,
+      "montant_eur": 400899.0,
+      "nom_projet": "Opérations d'aménagement Place de la Madeleine - Travaux de réaménagement",
+      "preuve": "Le nom du projet nomme le lieu verbatim : « Opérations d'aménagement Place de la Madeleine - Travaux de réaménagement » (2020, à 62 m du point du lieu). Le Conseil de Paris de novembre 2019 situe le chantier sur ce site : « La place de la Madeleine vient d'être achevée, elle a été réaménagée » (Christophe NAJDOVSKI).",
+      "id": "2020_08_il_016"
+    }
+  ],
   "marches": [
     {
       "numero_marche": "20181370001240",
@@ -169,7 +187,7 @@
       "fournisseur": "OMNIUM GENERAL D'INGENIERIE",
       "montant_max": 222788.75,
       "date_notification": "2017-01-23",
-      "preuve": "L'objet nomme le lieu verbatim et décrit une mission de maîtrise d'œuvre dédiée à ce site : « CSP4:MA SUB_AC:MISSION MOE AMENAGEMENT PLACE DE LA MADELEINE » (SIRET fournisseur 38400090700020). Notifié le 2017-01-23, il précède de vingt mois le marché de travaux 20181370001240 portant sur le même aménagement, séquence cohérente avec le chantier confirmé par les délibérations de 2018-2019."
+      "preuve": "L'objet nomme le lieu verbatim et décrit une mission de maîtrise d'œuvre dédiée à ce site : « CSP4:MA SUB_AC:MISSION MOE AMENAGEMENT PLACE DE LA MADELEINE » (SIRET fournisseur 38400090700020), notifié le 2017-01-23. Le marché de travaux 20181370001240, au même objet d'aménagement de la place, est notifié vingt mois plus tard."
     }
   ],
   "mandate": null,

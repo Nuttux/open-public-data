@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "place-gambetta",
   "name": "Place Gambetta",
@@ -33,8 +33,11 @@
     ],
     "n_bmo_brut": 0,
     "n_bmo_verifies": null,
-    "invest_total_eur": 0,
-    "invest_annees": [],
+    "invest_total_eur": 2088972.0,
+    "invest_annees": [
+      "2019",
+      "2020"
+    ],
     "lecture_mode": "titre nommant le lieu (6 trouvés)",
     "lecture_mode_en": "title naming the place (6 found)",
     "n_lus": 6,
@@ -109,7 +112,22 @@
   "montants": [],
   "bmo_extraits": [],
   "bmo_recit": null,
-  "invest": [],
+  "invest": [
+    {
+      "annee": 2019,
+      "montant_eur": 1370375.0,
+      "nom_projet": "Place Gambetta - Réaménagement",
+      "preuve": "Nom du projet d'investissement verbatim : « Place Gambetta - Réaménagement » (signal nom+proximite, distance 3 m) — le nom désigne ce lieu même et l'objet porte sur le réaménagement de la place elle-même.",
+      "id": "2019_20_il_026"
+    },
+    {
+      "annee": 2020,
+      "montant_eur": 718597.0,
+      "nom_projet": "Opérations Place Gambetta - Réaménagement",
+      "preuve": "Nom du projet d'investissement verbatim : « Opérations Place Gambetta - Réaménagement » (signal nom+proximite, distance 3 m) — le nom désigne ce lieu même et l'objet porte sur le réaménagement de la place elle-même.",
+      "id": "2020_20_il_024"
+    }
+  ],
   "marches": [],
   "mandate": null,
   "sources": {

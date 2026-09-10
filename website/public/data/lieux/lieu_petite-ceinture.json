@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T14:24:24.851547+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "petite-ceinture",
   "name": "Petite Ceinture",
@@ -46,15 +46,15 @@
   "residents": [
     {
       "beneficiaire": "HALAGE",
-      "montant_total": 358108.0,
-      "preuve": "Objet : « Chantier d¿insertion entretien de la Petite Ceinture ferroviaire PC18, PC19, PC20) » — nomme explicitement le lieu et ses tronçons (18e, 19e, 20e) ; SIRET 40116107000032. Corroboré par la délibération 2023 DEVE 20 (Conseil de Paris, juin 2023) : « Subventions (410.676 euros) à 5 associations pour des projets d'insertion professionnelle par l'entretien de la petite ceinture ferroviaire ». L'association réalise un chantier d'insertion SUR le site sous convention, elle ne gère pas la Petite Ceinture.",
-      "preuve_en": "Purpose: \"Integration project maintaining the Petite Ceinture railway (PC18, PC19, PC20)\" — explicitly names the place and its sections (18th, 19th, 20th arrondissements); SIRET 40116107000032. Corroborated by deliberation 2023 DEVE 20 (Conseil de Paris, June 2023): \"Grants (410,676 euros) to 5 associations for professional integration projects through the maintenance of the Petite Ceinture railway.\" The association carries out an integration project ON the site under an agreement; it does not manage the Petite Ceinture."
+      "montant_total": 441558.0,
+      "preuve": "Objet de la subvention : « Atelier chantier d'insertion entretien espaces verts Stade des Poissonniers 18e,REPRISE pour 2017 DEVE 2G entretien petite ceinture - Insertion » — l'objet nomme explicitement « entretien petite ceinture » ; SIRET 40116107000032. Corroboré par la délibération 2023 DEVE 20 (Conseil de Paris, juin 2023), « Subventions (410.676 euros) à 5 associations pour des projets d'insertion professionnelle par l'entretien de la petite ceinture ferroviaire (12e, 13e, 14e, 15e, 16e, 17e, 18e, 19e et 20e) », dont le débat cite nommément « Halage » parmi « les structures que nous nous apprêtons à subventionner ». L'association réalise un chantier d'insertion SUR le site sous convention : elle ne gère pas la Petite Ceinture, d'où le rôle « résident ». Réserve : le même objet cite aussi le « Stade des Poissonniers 18e », le montant total ne porte donc pas uniquement sur la Petite Ceinture.",
+      "preuve_en": "Grant purpose as recorded: \"Atelier chantier d'insertion entretien espaces verts Stade des Poissonniers 18e, REPRISE pour 2017 DEVE 2G entretien petite ceinture - Insertion\" — the purpose explicitly names \"entretien petite ceinture\" (maintenance of the Petite Ceinture); SIRET 40116107000032. Corroborated by deliberation 2023 DEVE 20 (Conseil de Paris, June 2023), \"Grants (410,676 euros) to 5 associations for professional integration projects through the maintenance of the Petite Ceinture railway (12th to 20th arrondissements)\", whose debate names \"Halage\" among the organisations being subsidised. The association runs an integration work programme ON the site under an agreement; it does not manage the Petite Ceinture. Caveat: the same purpose also names the \"Stade des Poissonniers 18e\", so the total does not relate to the Petite Ceinture alone."
     },
     {
       "beneficiaire": "INTERFACE FORMATION",
-      "montant_total": 96300.0,
-      "preuve": "Objet : « Chantier d'insertion Petite ceinture ferroviaire 12e et 20e association Interface Formation-Fonctionnement » — nomme explicitement le lieu et les tronçons (12e et 20e) ; SIRET 40218568000020. Corroboré par la délibération 2023 DEVE 20 (Conseil de Paris, juin 2023) sur les chantiers d'insertion d'entretien de la petite ceinture ferroviaire. Activité d'entretien sur le lieu, pas de gestion du site.",
-      "preuve_en": "Purpose: \"Integration project, Petite Ceinture railway, 12th and 20th arrondissements, association Interface Formation - Operations\" — explicitly names the place and its sections (12th and 20th arrondissements); SIRET 40218568000020. Corroborated by deliberation 2023 DEVE 20 (Conseil de Paris, June 2023) on integration-project maintenance work on the Petite Ceinture railway. Maintenance activity at the site, not management of the site."
+      "montant_total": 212600.0,
+      "preuve": "Objet de la subvention : « Reconduction micro lots espaces verts VP chantier d'insertion-REPRISE pour petite ceinture Insertion professionnelle 2017 DEVE 2G » — l'objet nomme explicitement « petite ceinture » ; SIRET 40218568000020. Le dispositif d'ensemble est attesté par les délibérations 2023 DEVE 20 et 2025 DEVE 26 (« Subventions versées à 5 associations pour des projets d'insertion professionnelle par l'entretien de la P.C. ferroviaire »), qui ne nomment toutefois pas les associations bénéficiaires dans le contexte disponible : le rattachement repose sur l'objet de la subvention elle-même. Activité d'entretien sur le lieu, sans gestion du site. Réserve : l'objet couvre aussi des « micro lots espaces verts VP », le montant total ne porte donc pas uniquement sur la Petite Ceinture.",
+      "preuve_en": "Grant purpose as recorded: \"Reconduction micro lots espaces verts VP chantier d'insertion-REPRISE pour petite ceinture Insertion professionnelle 2017 DEVE 2G\" — the purpose explicitly names \"petite ceinture\"; SIRET 40218568000020. The wider scheme is documented by deliberations 2023 DEVE 20 and 2025 DEVE 26 (\"Grants to 5 associations for professional integration projects through the maintenance of the Petite Ceinture railway\"), which do not name the recipient associations in the available record: the link rests on the grant's own stated purpose. Maintenance activity at the site, not management of the site. Caveat: the purpose also covers \"micro lots espaces verts VP\", so the total does not relate to the Petite Ceinture alone."
     }
   ],
   "kpi_montant": null,
@@ -232,7 +232,7 @@
       "annee": 2024,
       "montant_eur": 1563987.69,
       "nom_projet": "Poursuivre l'ouverture de la Petite Ceinture",
-      "preuve": "Le nom du projet nomme explicitement le lieu : « Poursuivre l'ouverture de la Petite Ceinture ». La distance (2 950 m) n'est pas disqualifiante : la Petite Ceinture est une infrastructure linéaire traversant Paris.",
+      "preuve": "Le nom du projet nomme explicitement le lieu : « Poursuivre l'ouverture de la Petite Ceinture ». La distance au point de référence du lieu (8 325 m dans les candidats, valeur identique pour tous les projets) n'est pas disqualifiante : la Petite Ceinture est une infrastructure linéaire de ceinture, mal représentée par un point unique.",
       "id": "2024_18_51_025"
     },
     {
@@ -265,7 +265,7 @@
       "fournisseur": "ENTREPRISE DE TRAVAUX PUBLICS EGA",
       "montant_max": 1580837.76,
       "date_notification": "2023-06-14",
-      "preuve": "Objet du marché : « AMENAGEMENT PROMENADE PETITE CEINTURE 20EME LOT 1 » — travaux d'aménagement portant nommément sur la promenade de la Petite Ceinture (20e)."
+      "preuve": "Objet du marché : « AMENAGEMENT PROMENADE PETITE CEINTURE 20EME LOT 1 » — travaux d'aménagement portant nommément sur la promenade de la Petite Ceinture (20e). Réserve : l'intitulé porte la mention « ACBC » (accord-cadre à bons de commande) ; le montant affiché est un plafond contractuel, pas une dépense constatée."
     },
     {
       "numero_marche": "20222022T06773",
@@ -310,7 +310,7 @@
       "fournisseur": "ENVIRONNEMENT SERVICES",
       "montant_max": 499985.92,
       "date_notification": "2023-06-14",
-      "preuve": "Objet du marché : « AMENAGEMENT PROMENADE PETITE CEINTURE 20EME LOT 2 » — travaux d'aménagement portant nommément sur la promenade de la Petite Ceinture (20e)."
+      "preuve": "Objet du marché : « AMENAGEMENT PROMENADE PETITE CEINTURE 20EME LOT 2 » — travaux d'aménagement portant nommément sur la promenade de la Petite Ceinture (20e). Réserve : l'intitulé porte la mention « ACBC » (accord-cadre à bons de commande) ; le montant affiché est un plafond contractuel, pas une dépense constatée."
     },
     {
       "numero_marche": "20232023T11232",
@@ -319,7 +319,7 @@
       "fournisseur": "URBAINE DE TRAVAUX",
       "montant_max": 179510.48,
       "date_notification": "2023-12-30",
-      "preuve": "Objet du marché : « TVX AMENAGMT ACCES A LA PROMENADE (PETITE CEINTURE) » — aménagement des accès à la promenade de la Petite Ceinture."
+      "preuve": "Objet du marché : « TVX AMENAGMT ACCES A LA PROMENADE (PETITE CEINTURE) » — aménagement des accès à la promenade de la Petite Ceinture. Réserve : l'intitulé porte la mention « ACBC » (accord-cadre à bons de commande) ; le montant affiché est un plafond contractuel, pas une dépense constatée."
     },
     {
       "numero_marche": "20242024T04674",
@@ -378,13 +378,13 @@
       "2015": 1877165.02,
       "2016": 1086374.89,
       "2017": 956008.61,
-      "2018": 1699579.88,
-      "2019": 3626175.54,
-      "2020": 826150.45,
-      "2021": 216089.57,
+      "2018": 1728618.4,
+      "2019": 3794684.55,
+      "2020": 1111798.17,
+      "2021": 410365.01,
       "2022": 244552.84
     },
-    "total_eur": 16953966.96,
+    "total_eur": 17631437.65,
     "operations": [
       {
         "ap_cle": "1604952",
@@ -444,6 +444,19 @@
         "total_mandate": 1549118.91,
         "preuve": "Libellé : « PETITE CEINTURE SECTEUR 15 - 1ERE PHASE » (DEVE, espaces verts) — opération nommément sur la Petite Ceinture, secteur du 15e.",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0702630"
+      },
+      {
+        "ap_cle": "1604722",
+        "ap_texte": "PETITE CEINTURE",
+        "mandate_par_annee": {
+          "2018": 29038.52,
+          "2019": 168509.01,
+          "2020": 285647.72,
+          "2021": 194275.44
+        },
+        "total_mandate": 677470.69,
+        "preuve": "Libellé : « PETITE CEINTURE » (mission ESPACES VERTS ET ENV, direction DEVE) — opération nommément sur la Petite Ceinture ; libellé large, l'opération couvre l'ensemble du site. Clé d'autorisation de programme distincte de 1504722, qui porte le même libellé et la même direction ; les deux comportent des mandatements sur 2018-2021, on ne peut donc pas dire que l'une succède à l'autre.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604722"
       },
       {
         "ap_cle": "1002630",

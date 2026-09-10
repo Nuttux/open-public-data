@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T14:24:24.851547+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "canal-saint-martin",
   "name": "Canal Saint-Martin",
@@ -41,7 +41,13 @@
     "n_lieu": 25
   },
   "subventions_exploitant": null,
-  "residents": [],
+  "residents": [
+    {
+      "beneficiaire": "F.N.M WALLS",
+      "montant_total": 5000.0,
+      "preuve": "L'objet de la subvention nomme le lieu, verbatim : « ré-interprétation du mur \"fluctuat nec mergitur\" canal saint martin. » (SIRET 81950170100018). Il s'agit d'une aide à une intervention artistique sur un mur au bord du canal, pas à la gestion du canal : celui-ci relève du domaine public fluvial de la Ville, qui en délivre les autorisations d'occupation (délibération 2023 DVD 40, mars 2023 : « Canaux parisiens. - Convention d'occupation du domaine public fluvial pour l'exploitation des locaux situés 200 à 206, quai de Valmy, sur le canal Saint-Martin (10e). »), d'où le rôle résident. Le montant est le total versé au bénéficiaire, dont l'objet principal est cette intervention."
+    }
+  ],
   "kpi_montant": null,
   "synthese_fr": "Dans les délibérations du Conseil de Paris, le canal Saint-Martin apparaît d'abord comme un chantier : au tournant des années 2000, la Ville engage la reconstruction des bassins Louis-Blanc et des Récollets, la fabrication de portes d'écluses et l'illumination artistique de sa voûte couverte, cette dernière dépense étant contestée en séance par une élue du 11e. Le domaine public fluvial devient ensuite un support d'occupations — Point Éphémère et pompiers au bassin Louis-Blanc, Maison des associations du 10e — tandis que les berges concentrent des tensions d'usage : nuisances sonores et propreté dénoncées par des riverains, campements de personnes sans abri et grévistes de la faim en 2007. Des questions récurrentes portent aussi sur la piétonnisation dominicale des quais et sur les liaisons cyclables. À plusieurs reprises, la Ville approuve la mise en chômage (mise à sec) du canal pour l'entretenir — pour un chômage prévu fin 2001, puis une mission de maîtrise d'œuvre approuvée en 2008 — et la question des algues revient en 2019. Plus récemment, le canal est présenté comme le cadre d'un projet de réaménagement annoncé pour une livraison en 2026 et de baignades estivales rendues gratuites pendant l'été des Jeux de 2024.",
   "moments": [

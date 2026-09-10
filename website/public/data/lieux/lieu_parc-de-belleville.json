@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "parc-de-belleville",
   "name": "Parc de Belleville",
@@ -33,8 +33,9 @@
     ],
     "n_bmo_brut": 2000,
     "n_bmo_verifies": 18,
-    "invest_total_eur": 216838.4,
+    "invest_total_eur": 846421.4,
     "invest_annees": [
+      "2019",
       "2024"
     ],
     "lecture_mode": "titre nommant le lieu (14 trouvés)",
@@ -155,10 +156,17 @@
   "bmo_recit": null,
   "invest": [
     {
+      "annee": 2019,
+      "montant_eur": 629583.0,
+      "nom_projet": "Aires de jeux Parc de Belleville - Rénovation des aires de jeux",
+      "preuve": "Le libellé du projet d'investissement nomme le lieu verbatim : « Aires de jeux Parc de Belleville - Rénovation des aires de jeux » (signal du candidat : « nom »). Le contexte confirme que l'aire de jeux de ce parc fait l'objet de travaux de la Ville : délibération 2006 DPJEV 119 « Approbation du principe et des modalités du réaménagement de l'aire de jeux du parc de Belleville (20e) » et 2007 DEVE 185 « avenant de transfert dans le cadre du marché de rénovation de la grande aire de jeux du parc de Belleville (20e) ». Réserve : le candidat porte une distance de 1 287 m au point du lieu, non expliquée par la source ; le rattachement repose sur le libellé, pas sur la distance.",
+      "id": "2019_20_il_006"
+    },
+    {
       "annee": 2024,
       "montant_eur": 216838.4,
       "nom_projet": "Maison de l'air",
-      "preuve": "Le pavillon « Maison de l'air » est un equipement situe A L'INTERIEUR du parc de Belleville, prouve par les deliberations du contexte : 2023 DDCT 123 « Approbation de la convention de mise a disposition temporaire du pavillon \"Maison de l'air\" du parc de Belleville 27, rue Piat (20e) » et 2022 DDCT 22 « pavillon \"Maison de l'air\" du Parc de Belleville 27, rue Piat (20e) ». En seance, le maire du 20e decrit « ce lieu situe en haut du parc de Belleville ». Le nom du projet d'investissement (a 115 m) designe exactement ce pavillon.",
+      "preuve": "Le contexte établit explicitement que la « Maison de l'air » est un pavillon situé dans le parc de Belleville : 2023 DDCT 123 « pavillon \"Maison de l'air\" du parc de Belleville 27, rue Piat (20e) », 2023 DDCT 27 « pavillon \"Maison de l'air\" dans le parc de Belleville », 2022 DDCT 22, 2021 SG 5 et 2015 DEVE 50 (« locaux situés dans la Maison de l'Air, parc de Belleville à Paris 20e »). En séance, le maire du 20e parle de « ce lieu situé en haut du parc de Belleville » et annonce des « travaux importants de réhabilitation » votés, ce qui correspond à une opération d'investissement sur ce pavillon. Réserve : le signal du candidat est la proximité (115 m), pas le nom du lieu ; l'identification repose sur le nom propre du pavillon, d'où une confiance moyenne.",
       "id": "2024_20_57_014"
     }
   ],

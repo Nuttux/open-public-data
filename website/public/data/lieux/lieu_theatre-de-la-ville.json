@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T19:26:56.680581+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "theatre-de-la-ville",
   "name": "Théâtre de la Ville",
@@ -622,7 +622,7 @@
       "fournisseur": "SAS 2GUEUDRY CONSTRUCTIONS",
       "montant_max": 28850.0,
       "date_notification": "2020-09-29",
-      "preuve": "Objet nomme le lieu : « RESTAURATION MISE A DISPOSITION-MARCHES THEATRE DE LA VILLE » — libellé abrégé mais notifié pendant le chantier de restauration du théâtre (2020) ; nature exacte de la prestation moins explicite que les autres lots."
+      "preuve": "Objet nomme le lieu comme site de la prestation, sans adresse tierce : « RESTAURATION MISE A DISPOSITION-MARCHES THEATRE DE LA VILLE » (titulaire : entreprise de construction). Libellé abrégé par la source : la nature exacte de la prestation reste moins explicite que celle des autres lots, d'où une confiance moyenne ; aucun élément du contexte ne la rattache nommément au chantier de rénovation."
     }
   ],
   "mandate": {
@@ -637,12 +637,12 @@
       "2016": 1054804.97,
       "2017": 1806281.38,
       "2018": 695872.45,
-      "2019": 2818122.05,
-      "2020": 1916773.11,
-      "2021": 5374354.05,
-      "2022": 9555997.79
+      "2019": 3138242.82,
+      "2020": 2296560.59,
+      "2021": 5505213.76,
+      "2022": 9655229.39
     },
-    "total_eur": 25951809.32,
+    "total_eur": 26881808.88,
     "operations": [
       {
         "ap_cle": "1604553",
@@ -682,6 +682,19 @@
         "total_mandate": 956140.1,
         "preuve": "Libellé désigne ce lieu : « THEATRE DE LA VILLE » (DAC, Affaires culturelles). Enveloppe au nom du lieu, sans détail d'opération ; peut couvrir l'établissement dans son ensemble (site des Abbesses inclus).",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1202065"
+      },
+      {
+        "ap_cle": "1704553",
+        "ap_texte": "THEATRE DE LA VILLE - RENOVATION",
+        "mandate_par_annee": {
+          "2019": 320120.77,
+          "2020": 379787.48,
+          "2021": 130859.71,
+          "2022": 99231.6
+        },
+        "total_mandate": 929999.56,
+        "preuve": "Libellé nomme ce lieu et l'opération : « THEATRE DE LA VILLE - RENOVATION » (DAC, Affaires culturelles), signal « nom » — même racine d'opération (4553) que 1404553 et 1604553, mandatée de 2019 à 2022, pour le chantier du bâtiment 2 place du Châtelet (4e) acté par 2015 DPA 34.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1704553"
       },
       {
         "ap_cle": "1404553",

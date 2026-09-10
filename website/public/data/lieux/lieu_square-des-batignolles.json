@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "square-des-batignolles",
   "name": "Square des Batignolles",
@@ -86,19 +86,19 @@
       "annee": 2022,
       "montant_eur": 168646.0,
       "nom_projet": "Square des Batignolles - Rénovation de l'aire de jeux",
-      "preuve": "Nom du projet : \"Square des Batignolles - Rénovation de l'aire de jeux\" (nomme explicitement le lieu)",
+      "preuve": "Signal \"nom\" du candidat : le nom du projet est \"Square des Batignolles - Rénovation de l'aire de jeux\" — il nomme explicitement le square.",
       "id": "2022_17_52_008"
     }
   ],
   "marches": [
     {
       "numero_marche": "decp-2025T02477",
-      "objet": "Réfection et restructuration de l'atelier et des locaux sociaux du Square des Batignolles situé 114 rue Cardinet 75017 Paris",
+      "objet": "Réfection et restructuration de l’atelier et des locaux sociaux du Square des Batignolles situé 114 rue Cardinet 75017 Paris",
       "objet_clair": null,
       "fournisseur": "REOLIAN MULTITEC",
       "montant_max": 234200.02,
       "date_notification": "2025-03-07",
-      "preuve": "Objet du marché nomme explicitement le lieu et son adresse : \"Réfection et restructuration de l'atelier et des locaux sociaux du Square des Batignolles situé 114 rue Cardinet 75017 Paris\""
+      "preuve": "Signal \"objet\" du candidat : l'objet porte sur des bâtiments du square lui-même — \"Réfection et restructuration de l’atelier et des locaux sociaux du Square des Batignolles situé 114 rue Cardinet 75017 Paris\" (l'adresse 114 rue Cardinet est celle du square, pas un simple repère)."
     }
   ],
   "mandate": null,

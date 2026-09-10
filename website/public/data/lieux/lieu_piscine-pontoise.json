@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "piscine-pontoise",
   "name": "Piscine Pontoise",
@@ -33,9 +33,8 @@
     ],
     "n_bmo_brut": 319,
     "n_bmo_verifies": 2,
-    "invest_total_eur": 6218252.79,
+    "invest_total_eur": 487745.79,
     "invest_annees": [
-      "2022",
       "2024"
     ],
     "lecture_mode": "titre nommant le lieu (23 trouvés)",
@@ -212,17 +211,10 @@
   "bmo_recit": null,
   "invest": [
     {
-      "annee": 2022,
-      "montant_eur": 5730507.0,
-      "nom_projet": "Piscine 19, rue de Pontoise - Travaux de rénovation",
-      "preuve": "Nom du projet 'Piscine 19, rue de Pontoise - Travaux de rénovation' : l'adresse '19, rue de Pontoise' correspond exactement à celle du lieu (ctx : 'la gestion de la piscine Pontoise, 19, rue de Pontoise (5e)', délib. 2004 JS 18 ; délib. 2022 DCPA 7 'Restructuration partielle de la piscine, 19, rue de Pontoise (5e)'). distance_m=89.",
-      "id": "2022_05_12_014"
-    },
-    {
       "annee": 2024,
       "montant_eur": 487745.79,
       "nom_projet": "Piscine Pontoise - Rénovation de la piscine",
-      "preuve": "Nom du projet 'Piscine Pontoise - Rénovation de la piscine' nomme directement le lieu (alias 'Piscine Pontoise'), cohérent avec le chantier documenté au Conseil de Paris (ctx : vœu 'relatif au chantier de la piscine Pontoise (5e)', et 2022 DCPA 7 : 'nous votons des travaux de restructuration'). distance_m=89.",
+      "preuve": "Le nom du projet nomme directement le lieu : 'Piscine Pontoise - Rénovation de la piscine' (alias 'Piscine Pontoise'), candidat signal 'nom+proximite', distance_m=89. Cohérent avec le chantier documenté au Conseil de Paris (ctx : vœu de février 2021 'relatif au chantier de la piscine Pontoise (5e)' ; 2022 DCPA 7 'nous votons des travaux de restructuration').",
       "id": "2024_05_12_016"
     }
   ],
@@ -252,7 +244,7 @@
       "fournisseur": "EIFFAGE METAL",
       "montant_max": 1832099.0,
       "date_notification": "2021-04-02",
-      "preuve": "L'objet nomme le lieu : 'SA4 RENOVATION CHARPENTE VERRIERE PISCINE PONTOISE LOT2'. La verrière est l'élément central du chantier selon les débats (ctx 2019 : 'la verrière de la piscine Pontoise menace de s'effondrer' ; 2022 DCPA 7 : 'la verrière a été entièrement déposée [...] remplacée par une nouvelle verrière montée sur des fermes métalliques')."
+      "preuve": "L'objet nomme le lieu : 'SA4 RENOVATION CHARPENTE VERRIERE PISCINE PONTOISE LOT2'. La verrière est au cœur du chantier selon les débats (ctx, vœu de février 2019 sur 'la rénovation de la double verrière de la piscine Pontoise' : « la verrière de la piscine Pontoise menace de s'effondrer » ; 2022 DCPA 7 : « la verrière a été entièrement déposée [...] remplacée par une nouvelle verrière montée sur des fermes métalliques »)."
     },
     {
       "numero_marche": "20212021T01398",
@@ -270,7 +262,7 @@
       "fournisseur": "ENTREPRISE GUIBAN SA",
       "montant_max": 1245790.03,
       "date_notification": "2021-12-14",
-      "preuve": "L'objet nomme le lieu et vise des travaux dans le bâtiment : 'TVX RÉNOVATION PLOMBERIE ET SSI PISCINE PONTOISE'."
+      "preuve": "L'objet nomme le lieu et porte sur ses installations de plomberie et de sécurité incendie : 'TVX RÉNOVATION PLOMBERIE ET SSI PISCINE PONTOISE'. Candidat signal 'objet'."
     },
     {
       "numero_marche": "20222022T00424",
@@ -297,7 +289,7 @@
       "fournisseur": "MARCHAND",
       "montant_max": 466886.04,
       "date_notification": "2019-02-25",
-      "preuve": "L'objet nomme le lieu et son arrondissement : 'MOE VERRIÈRE ET RÉNOVATION VENTILATION PISCINE PONTOISE 5ÈME' (le lieu est au 19, rue de Pontoise, 5e). Le rattachement repose sur ce seul signal : les sources disponibles ne permettent pas d'identifier le titulaire de ce marché parmi les consultations de maîtrise d'œuvre évoquées en 2022 DCPA 7."
+      "preuve": "L'objet nomme le lieu et son arrondissement : 'MOE VERRIÈRE ET RÉNOVATION VENTILATION PISCINE PONTOISE 5ÈME' (le lieu est au 19, rue de Pontoise, 5e). Le rattachement repose sur ce seul signal d'objet : les sources disponibles ne permettent pas de relier ce marché à l'une des consultations de maîtrise d'œuvre successives évoquées en 2022 DCPA 7."
     },
     {
       "numero_marche": "20171210001559",
@@ -315,7 +307,7 @@
       "fournisseur": "TECHNIQUE FRANCAISE DE L EAU",
       "montant_max": 105449.53,
       "date_notification": "2015-06-15",
-      "preuve": "L'objet nomme le lieu et son code postal, et porte sur un équipement du bâtiment : 'M. SUBS. TX RÉNOVATION FILTRATION PISCINE PONTOISE 75005'."
+      "preuve": "L'objet nomme le lieu et son code postal, et porte sur un équipement technique de la piscine : 'M. SUBS. TX RÉNOVATION FILTRATION PISCINE PONTOISE 75005'. Candidat signal 'objet'."
     },
     {
       "numero_marche": "20181210001130",
@@ -324,10 +316,43 @@
       "fournisseur": "ALTITUDE 44",
       "montant_max": 30363.54,
       "date_notification": "2018-08-13",
-      "preuve": "L'objet nomme le lieu et son code postal : 'CONCEPTION-RÉALISATION D'UN FILET PISCINE PONTOISE 75005', prestation réalisée dans le bâtiment. La destination précise du filet n'est pas documentée par les sources disponibles."
+      "preuve": "L'objet nomme le lieu et son code postal : 'CONCEPTION-RÉALISATION D'UN FILET PISCINE PONTOISE 75005' (le lieu est au 19, rue de Pontoise, 75005). La nature exacte et l'emplacement du filet ne sont pas documentés par les sources disponibles ; le rattachement repose sur le seul signal d'objet."
     }
   ],
-  "mandate": null,
+  "mandate": {
+    "par_annee": {
+      "2018": 40288.25,
+      "2019": 65865.76,
+      "2020": 160233.68,
+      "2021": 1243586.92,
+      "2022": 633505.35
+    },
+    "total_eur": 2143479.96,
+    "operations": [
+      {
+        "ap_cle": "1705114",
+        "ap_texte": "PISCINE PONTOISE",
+        "mandate_par_annee": {
+          "2018": 40288.25,
+          "2019": 65865.76,
+          "2020": 160233.68,
+          "2021": 1243586.92,
+          "2022": 633505.35
+        },
+        "total_mandate": 2143479.96,
+        "preuve": "Le libellé de l'opération est exactement le nom du lieu : 'PISCINE PONTOISE' (signal 'nom', libellé non tronqué), porté par la direction DJS sur la mission 'JEUNESSE ET SPORTS' — cohérent avec un équipement sportif municipal (ctx : 2023 DJS 99 'la gestion de l'espace sportif Pontoise situé 19, rue de Pontoise (5e)'). Le calendrier des mandatements (2018-2022, pic de 1 243 586,92 € en 2021) recoupe le chantier de rénovation documenté au Conseil de Paris (vœu de février 2021 'relatif au chantier de la piscine Pontoise (5e)' ; 2022 DCPA 7).",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1705114"
+      }
+    ],
+    "periode": [
+      "2018",
+      "2022"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
   "sources": {
     "delibs": {
       "name": "Débat-Délibs — Conseil de Paris",

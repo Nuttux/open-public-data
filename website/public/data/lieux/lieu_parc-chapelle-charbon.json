@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "parc-chapelle-charbon",
   "name": "Parc Chapelle-Charbon",
@@ -92,10 +92,47 @@
       "fournisseur": "IDVERDE",
       "montant_max": 754391.35,
       "date_notification": "2019-02-21",
-      "preuve": "Objet du marché : \"CSP4 LOT2 TVX ESPACES VERTS PARC CHAPELLE CHARBON 8EME\" — nomme explicitement le lieu (travaux espaces verts)."
+      "preuve": "Objet du marché : \"CSP4 LOT2 TVX ESPACES VERTS PARC CHAPELLE CHARBON 8EME\" — l'objet nomme explicitement le parc (signal \"objet\"). La mention \"8EME\" en fin d'objet contredit l'arrondissement du lieu (18e) : elle est traitée comme une anomalie de saisie de la source, non comme une preuve, le rattachement reposant sur le nom du parc dans l'objet. Ce lot 2 (espaces verts) est le pendant du lot 1 (génie civil, marché 20191230000147) : même préfixe CSP4, numéros consécutifs et même date de notification (2019-02-21)."
     }
   ],
-  "mandate": null,
+  "mandate": {
+    "par_annee": {
+      "2016": 5886.0,
+      "2017": 264440.39,
+      "2018": 595874.45,
+      "2019": 1703021.86,
+      "2020": 647445.26,
+      "2021": 82451.25,
+      "2022": 52548.3
+    },
+    "total_eur": 3351667.51,
+    "operations": [
+      {
+        "ap_cle": "1605001",
+        "ap_texte": "PNE - CHAPELLE CHARBON (18e)  CREATION E",
+        "mandate_par_annee": {
+          "2016": 5886.0,
+          "2017": 264440.39,
+          "2018": 595874.45,
+          "2019": 1703021.86,
+          "2020": 647445.26,
+          "2021": 82451.25,
+          "2022": 52548.3
+        },
+        "total_mandate": 3351667.51,
+        "preuve": "Libellé d'opération, plafonné à 40 caractères par la source : \"PNE - CHAPELLE CHARBON (18e)  CREATION E\" — reconnu via le signal \"partie distinctive (chapelle charbon)\", donc indice faible pris seul. Confirmations : le libellé porte l'arrondissement du lieu (18e) ; la mission \"ESPACES VERTS ET ENV\" et la direction DEVE correspondent à la création d'un parc ; le sigle \"PNE\" est celui employé par la Ville pour ce projet précis dans la délibération 2016 DU 138 - DEVE \"Lancement du projet urbain et du grand parc public de Chapelle Charbon - PNE (18e)\", de la même année que la clé d'AP (1605001). Note secondaire, non probante : les mandatements courent de 2016 à 2022, période cohérente avec la MOE (2017) et les travaux (2019) rattachés par ailleurs.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1605001"
+      }
+    ],
+    "periode": [
+      "2016",
+      "2022"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
   "sources": {
     "delibs": {
       "name": "Débat-Délibs — Conseil de Paris",

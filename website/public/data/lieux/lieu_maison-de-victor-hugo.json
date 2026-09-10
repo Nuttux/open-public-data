@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "maison-de-victor-hugo",
   "name": "Maison de Victor Hugo",
@@ -255,7 +255,72 @@
   "bmo_recit": null,
   "invest": [],
   "marches": [],
-  "mandate": null,
+  "mandate": {
+    "par_annee": {
+      "2016": 27444.78,
+      "2017": 116746.12,
+      "2018": 147415.59,
+      "2019": 1575498.66,
+      "2020": 1350470.32,
+      "2021": 995910.89,
+      "2022": 291069.32
+    },
+    "total_eur": 4504555.68,
+    "operations": [
+      {
+        "ap_cle": "1604812",
+        "ap_texte": "EPM - VICTOR HUGO - REAMENAGEMENT PARTIE",
+        "mandate_par_annee": {
+          "2016": 3326.23,
+          "2017": 114211.76,
+          "2018": 147415.59,
+          "2019": 1542123.7,
+          "2020": 705389.41,
+          "2021": 280217.22,
+          "2022": 136181.39
+        },
+        "total_mandate": 2928865.3,
+        "preuve": "Libelle d'operation \"EPM - VICTOR HUGO - REAMENAGEMENT PARTIE\" (plafonne a 40 caracteres par la source), direction DPA (patrimoine et architecture), mission \"OPERATIONS SOUS MAND\". Le prefixe EPM designe dans ce budget les operations des musees municipaux : les autres operations EPM du meme corpus portent sur Bourdelle, Cognacq-Jay, Carnavalet, Galliera et le musee de la Liberation. \"VICTOR HUGO\" y designe donc le musee de la Ville de ce nom, et non l'avenue ou la rue (l'operation homonyme \"GARAGE IVRY VICTOR HUGO\", direction DPE, a ete ecartee). Le contexte des deliberations atteste que la Ville conduit ce type de chantier sur ce lieu : delib. 2000 DPA 105 \"approuvant le principe de la realisation des travaux de restructuration partielle de la Maison de Victor Hugo\", et 2001 DPA 62 \"amelioration des conditions d'accueil du public a la Maison de Victor Hugo situee 6, place des Vosges (4e)\". Le rattachement repose sur un signal de nom partiel corrobore par le type d'equipement, pas sur une adresse citee dans la source budgetaire.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604812"
+      },
+      {
+        "ap_cle": "1704812",
+        "ap_texte": "EPM - VICTOR HUGO - REAMENAGEMENT PARTIE",
+        "mandate_par_annee": {
+          "2019": 26095.34,
+          "2020": 618179.85,
+          "2021": 710510.88,
+          "2022": 153135.6
+        },
+        "total_mandate": 1507921.67,
+        "preuve": "Meme libelle d'operation \"EPM - VICTOR HUGO - REAMENAGEMENT PARTIE\" (plafonne a 40 caracteres), sous une cle d'AP distincte et rattache a la direction DCPA, mission \"OPERATIONS SOUS MAND\". Comme pour l'AP 1604812, le prefixe EPM identifie une operation de musee municipal (Bourdelle, Cognacq-Jay, Carnavalet, Galliera, musee de la Liberation dans le meme corpus), ce qui rattache \"VICTOR HUGO\" au musee du 6, place des Vosges (4e) plutot qu'a une voie de ce nom. Les deliberations de la Ville documentent des travaux sur ce lieu (2000 DPA 105, restructuration partielle de la Maison de Victor Hugo). Signal de nom partiel corrobore par le type d'equipement ; la source budgetaire ne cite pas l'adresse.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1704812"
+      },
+      {
+        "ap_cle": "1504812",
+        "ap_texte": "EPM VICTOR HUGO - REAMENAGEMENT PARTIEL",
+        "mandate_par_annee": {
+          "2016": 24118.55,
+          "2017": 2534.36,
+          "2019": 7279.62,
+          "2020": 26901.06,
+          "2021": 5182.79,
+          "2022": 1752.33
+        },
+        "total_mandate": 67768.71,
+        "preuve": "Libelle complet, non coupe : \"EPM VICTOR HUGO - REAMENAGEMENT PARTIEL\", direction DPA, mission \"OPERATIONS SOUS MAND\". Meme serie que les AP 1604812 et 1704812 ; le prefixe EPM designe les operations des musees municipaux (autres operations EPM du corpus : Bourdelle, Cognacq-Jay, Carnavalet, Galliera, musee de la Liberation), donc le musee Maison de Victor Hugo. Contexte concordant : delib. 2000 DPA 105 \"travaux de restructuration partielle de la Maison de Victor Hugo\". Signal de nom, sans adresse dans la source budgetaire.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1504812"
+      }
+    ],
+    "periode": [
+      "2016",
+      "2022"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
   "sources": {
     "delibs": {
       "name": "Débat-Délibs — Conseil de Paris",

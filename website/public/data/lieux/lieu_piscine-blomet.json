@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T14:24:24.851547+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "piscine-blomet",
   "name": "Piscine Blomet",
@@ -94,12 +94,26 @@
     "par_annee": {
       "2016": 17767.48,
       "2017": 95965.34,
-      "2018": 67197.75,
-      "2019": 156782.62,
-      "2020": 85376.66
+      "2018": 1511577.15,
+      "2019": 5539014.58,
+      "2020": 652050.9,
+      "2021": 43165.35
     },
-    "total_eur": 423089.85,
+    "total_eur": 7859540.8,
     "operations": [
+      {
+        "ap_cle": "1604769",
+        "ap_texte": "PISCINE BLOMET (15e) - RENOVATION",
+        "mandate_par_annee": {
+          "2018": 1444379.4,
+          "2019": 5382231.96,
+          "2020": 566674.24,
+          "2021": 43165.35
+        },
+        "total_mandate": 7436450.95,
+        "preuve": "Le libellé de l'opération nomme explicitement le lieu et son arrondissement : \"PISCINE BLOMET (15e) - RENOVATION\" (direction DJS, mission \"JEUNESSE ET SPORTS\") ; signal \"nom\", libellé de 33 caractères donc non tronqué par la source.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604769"
+      },
       {
         "ap_cle": "1504769",
         "ap_texte": "PISCINE BLOMET (15e) - RENOVATION",
@@ -111,13 +125,13 @@
           "2020": 85376.66
         },
         "total_mandate": 423089.85,
-        "preuve": "Libellé de l'opération nomme explicitement le lieu : \"PISCINE BLOMET (15e) - RENOVATION\" (direction DJS, mission Jeunesse et Sports).",
+        "preuve": "Le libellé de l'opération nomme explicitement le lieu et son arrondissement : \"PISCINE BLOMET (15e) - RENOVATION\" (direction DJS, mission \"JEUNESSE ET SPORTS\") ; signal \"nom\", libellé non tronqué. Mandatements 2016-2020 repris à l'identique du candidat.",
         "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1504769"
       }
     ],
     "periode": [
       "2016",
-      "2020"
+      "2021"
     ],
     "source": {
       "name": "Comptes administratifs — autorisations de programme, Ville de Paris",

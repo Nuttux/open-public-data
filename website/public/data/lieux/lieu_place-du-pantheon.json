@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "place-du-pantheon",
   "name": "Place du Panthéon",
@@ -32,8 +32,10 @@
     ],
     "n_bmo_brut": 0,
     "n_bmo_verifies": null,
-    "invest_total_eur": 0,
-    "invest_annees": [],
+    "invest_total_eur": 346425.0,
+    "invest_annees": [
+      "2019"
+    ],
     "lecture_mode": "titre nommant le lieu (11 trouvés)",
     "lecture_mode_en": "title naming the place (11 found)",
     "n_lus": 11,
@@ -164,7 +166,15 @@
   ],
   "bmo_extraits": [],
   "bmo_recit": null,
-  "invest": [],
+  "invest": [
+    {
+      "annee": 2019,
+      "montant_eur": 346425.0,
+      "nom_projet": "Opérations d'aménagement Place du Panthéon - Aménagement",
+      "preuve": "Le nom du projet nomme le lieu lui-même : « Opérations d'aménagement Place du Panthéon - Aménagement », localisé à 0 m de la place (signal « nom+proximite »). Le réaménagement de la place est confirmé par le Conseil de Paris (vœu de décembre 2016 : « Considérant le projet de réaménagement de la place, qui a été voté en mars 2016 au Conseil de Paris […] consistant à piétonniser le tronçon de la place reliant les rues Cujas et Valette et à élargir les trottoirs »).",
+      "id": "2019_05_il_019"
+    }
+  ],
   "marches": [],
   "mandate": null,
   "sources": {

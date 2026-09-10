@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "theatre-de-la-cite-internationale",
   "name": "Théâtre de la Cité internationale",
@@ -40,12 +40,33 @@
     "n_lus": 10,
     "n_lieu": 9
   },
-  "subventions_exploitant": null,
+  "subventions_exploitant": {
+    "nom_fiche": "THEATRE DE LA CITE INTERNATIONALE",
+    "total_eur": 10000.0,
+    "annees": [
+      "2013",
+      "2014"
+    ],
+    "rows": [
+      {
+        "annee": "2014",
+        "montant_eur": 5000.0,
+        "beneficiaire": "THEATRE DE LA CITE INTERNATIONALE",
+        "thematique": "Non classifié"
+      },
+      {
+        "annee": "2013",
+        "montant_eur": 5000.0,
+        "beneficiaire": "THEATRE DE LA CITE INTERNATIONALE",
+        "thematique": "Non classifié"
+      }
+    ]
+  },
   "residents": [
     {
       "beneficiaire": "TSARA",
       "montant_total": 9000,
-      "preuve": "Objet de la subvention (verbatim) : « Résidence de la compagnie Tsara au Théâtre de la Cité internationale pour le projet \"Contes d'État\" » — nomme explicitement le lieu ; activité accueillie DANS le théâtre, la compagnie ne le gère pas. L'exploitant réel confirmé par les délibérations est la Fondation Nationale « Cité internationale universitaire de Paris ».",
+      "preuve": "Objet de la subvention (verbatim du candidat) : « Résidence de la compagnie Tsara au Théâtre de la Cité internationale pour le projet \"Contes d'État\" » — l'objet nomme explicitement le lieu, et décrit une activité accueillie DANS le théâtre : Tsara ne gère pas l'équipement, d'où le rôle « resident ». Les délibérations 2002-2008 montrent que la subvention de fonctionnement du théâtre était versée à la Fondation nationale « Cité internationale universitaire de Paris », 19 boulevard Jourdan (14e) — par exemple 2003 DAC 250 — et non à Tsara.",
       "preuve_en": "Subsidy purpose (verbatim): \"Residency of the company Tsara at Théâtre de la Cité internationale for the project \\\"Contes d'État\\\"\" — explicitly names the venue; activity hosted INSIDE the theatre, the company does not manage it. The actual operator confirmed by the deliberations is the Fondation Nationale \"Cité internationale universitaire de Paris.\""
     }
   ],

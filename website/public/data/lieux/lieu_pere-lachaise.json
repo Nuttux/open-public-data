@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
+  "generated_at": "2026-09-10T20:35:00.396774+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "pere-lachaise",
   "name": "Cimetière du Père-Lachaise",
@@ -33,8 +33,12 @@
     ],
     "n_bmo_brut": 3664,
     "n_bmo_verifies": 18,
-    "invest_total_eur": 0,
-    "invest_annees": [],
+    "invest_total_eur": 3885341.0,
+    "invest_annees": [
+      "2019",
+      "2020",
+      "2021"
+    ],
     "lecture_mode": "titre nommant le lieu (50 trouvés)",
     "lecture_mode_en": "title naming the place (50 found)",
     "n_lus": 45,
@@ -240,7 +244,36 @@
     }
   ],
   "bmo_recit": "Le cimetière du Père-Lachaise n'apparaît que ponctuellement dans le Bulletin municipal, à travers trois épisodes entre 1888 et 1911. En 1888, une pétition réclame des trottoirs en asphalte sur les boulevards qu'empruntent les personnes se rendant au cimetière ; il est répondu en séance que l'Administration a depuis longtemps manifesté l'intention de les établir, sans que le Bulletin dise si les travaux ont suivi. En 1897, le Conseil revient sur une délibération du 19 juin 1896 par laquelle il avait accordé à M. Gérard, ancien maire du 20e arrondissement, une concession de deux mètres dans le cimetière. En 1911 enfin, le Bulletin consigne les discours prononcés au cimetière lors d'une cérémonie. Trois traces brèves, entre l'entretien des abords, l'hommage à un ancien élu et la prise de parole publique.",
-  "invest": [],
+  "invest": [
+    {
+      "annee": 2019,
+      "montant_eur": 598407.0,
+      "nom_projet": "Cimetière du Père Lachaise - Entretien des sols, des cheminements et des escaliers, Cimeti",
+      "preuve": "Le nom du projet commence par « Cimetière du Père Lachaise - Entretien des sols, des cheminements et des escaliers », donc désigne bien ce site ; le libellé est tronqué par la source et repart sur « Cimeti… », ce qui indique que l'opération peut couvrir d'autres cimetières : le montant n'est pas nécessairement dépensé en totalité au Père-Lachaise.",
+      "id": null
+    },
+    {
+      "annee": 2020,
+      "montant_eur": 913946.0,
+      "nom_projet": "Cimetière du Père Lachaise - Travaux sur les murs, fourniture et pose de rambardes, restau",
+      "preuve": "Le nom du projet nomme le lieu : « Cimetière du Père Lachaise - Travaux sur les murs, fourniture et pose de rambardes, restau… » (libellé tronqué par la source). Murs et rambardes sont des ouvrages du cimetière.",
+      "id": null
+    },
+    {
+      "annee": 2021,
+      "montant_eur": 1281419.0,
+      "nom_projet": "Cimetière du Père Lachaise - Réhabilitation, mise en accessibilité et diagnostic structure",
+      "preuve": "Le nom du projet nomme le lieu en toutes lettres : « Cimetière du Père Lachaise - Réhabilitation, mise en accessibilité et diagnostic structure ». Le rattachement repose sur ce signal de nom, pas sur la distance (499 m mesurés de centroïde à centroïde).",
+      "id": null
+    },
+    {
+      "annee": 2021,
+      "montant_eur": 1091569.0,
+      "nom_projet": "Cimetières Cimetière du Père Lachaise - Travaux de confortement et réparation du mur Karch",
+      "preuve": "Le nom du projet nomme le lieu : « Cimetière du Père Lachaise - Travaux de confortement et réparation du mur Karch ». Il s'agit d'un ouvrage du cimetière (mur), donc de travaux sur l'emprise du site.",
+      "id": null
+    }
+  ],
   "marches": [
     {
       "numero_marche": "decp-2025T02140",
@@ -279,7 +312,32 @@
       "preuve": "Marché subséquent (donc opération individualisée, pas l'accord-cadre lui-même) dont l'objet porte sur « le réaménagement des bureaux de la conservation cimetière du Père Lachaise, 16 rue du Repos, 75020 Paris ». L'adresse 16 rue du Repos (20e) est celle du cimetière, corroborée par les délibérations du Conseil de Paris citant « rue du Repos (20e) ». La prestation SPS s'exécute sur ce chantier."
     }
   ],
-  "mandate": null,
+  "mandate": {
+    "par_annee": {
+      "2015": 1550048.0
+    },
+    "total_eur": 1550048.0,
+    "operations": [
+      {
+        "ap_cle": "1504831",
+        "ap_texte": "DSP PERE LACHAISE",
+        "mandate_par_annee": {
+          "2015": 1550048.0
+        },
+        "total_mandate": 1550048.0,
+        "preuve": "Opération « DSP PERE LACHAISE » portée par la DEVE (mission « ESPACES VERTS ET ENV »). Le libellé nomme le lieu mais ne dit pas de quelle délégation de service public il s'agit : le rapprochement passe par les délibérations du Conseil de Paris, qui n'identifient qu'une seule DSP de ce nom, celle du crématorium — « Approbation du principe de la passation d'une convention de délégation de service public pour la gestion du crématorium du cimetière du Père-Lachaise situé 16, rue du Repos (20e) » (1997 DFAECG 54), puis « Avenant n° 1 à la convention du 28 mai 2015 portant sur la gestion du crématorium du Père-Lachaise (20e) » (2018 DEVE 30). La date de cette convention (28 mai 2015) coïncide avec le seul exercice mandaté sur l'opération (2015). Le crématorium est bien sur le site — « ce crématorium est situé au sein du périmètre classé du cimetière du Père-Lachaise » (débat du Conseil de Paris) — mais c'est un équipement distinct, exploité par un délégataire : la somme concerne cet équipement, pas l'ensemble du cimetière.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1504831"
+      }
+    ],
+    "periode": [
+      "2015",
+      "2015"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
   "sources": {
     "delibs": {
       "name": "Débat-Délibs — Conseil de Paris",
