@@ -9,7 +9,8 @@ import ChartSource from "@/components/fusion/ChartSource";
 import RelatedLinks, { type RelatedBlock } from "@/components/fiche/RelatedLinks";
 import { V3Fold } from "@/components/fiche/v3";
 import { useT, useLocale } from "@/lib/localeContext";
-import { aNom } from "@/lib/nom-commune";
+import { aNom, deNom } from "@/lib/nom-commune";
+import type { CommuneFonctions, FonctionPart } from "@/lib/commune-fonctions";
 import { useTrack } from "@/lib/analyticsContext";
 import { fmtDec } from "@/lib/fmt";
 import type { BudgetPageData } from "@/lib/fusion-data";
@@ -74,6 +75,8 @@ export type PageVilleProps = {
   peers: PeerComparison | null;
   compare: { me: CompareEntry; other: CompareEntry | null; options: { slug: string; nom: string; pop: number }[]; year: number } | null;
   sources: { dgfip: string; ofgl: string; decp: string };
+  fonctions: CommuneFonctions | null;
+  fonctionsSource: { label: string; url: string; annee: number };
   related?: RelatedBlock | null;
 };
 
@@ -244,7 +247,9 @@ function ShareButton({ label, title, done }: { label: string; title: string; don
   );
 }
 
-export default function PageVilleClient({ commune, budget, evolution, invest, marches, maire, taxeFonciere, marchesHref, peers, compare, sources, related }: PageVilleProps) {
+export default function PageVilleClient({ commune, budget, evolution, invest, marches, maire, taxeFonciere, fonctions, fonctionsSource, marchesHref, peers, compare, sources, related }: PageVilleProps) {
+  const { locale: pageLocale } = useLocale();
+  const isEn = pageLocale === "en";
   const t = useT();
   const { euro, split, int, signedPct, locale } = useFmt();
   const en = locale === "en";
@@ -439,6 +444,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
 
   const toc = [
     { id: "depenses", label: t("fx.pv.toc.depenses") },
+    ...(fonctions && fonctions.fonctions.length >= 3 ? [{ id: "a-quoi-sert", label: t("fx.pv.toc.fonc") }] : []),
     ...(taxeFonciere && taxeFonciere.tfb != null ? [{ id: "taxe-fonciere", label: t("fx.pv.toc.taxe") }] : []),
     ...(invYear && invYear.total.depenses > 0 ? [{ id: "construit", label: t("fx.pv.toc.construit") }] : []),
     ...(evoLast?.dette != null ? [{ id: "dette", label: t("fx.pv.toc.dette") }] : []),
@@ -528,11 +534,38 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
               {rec.map((x) => <Row key={x.label} side="revenue" label={x.label} value={x.value} total={data.recettes} />)}
             </div>
           </div>
-          <p className="fx-v3-foot">{t("fx.pv.fonction_absent")}</p>
+          {!fonctions ? <p className="fx-v3-foot">{t("fx.pv.fonction_absent")}</p> : null}
 
           {/* Sur desktop, les sections repliées se rangent deux par deux au lieu
               de s'étaler sur une colonne vide à droite. */}
           <div className="fx-pv-grid">
+          {/* 2a. À quoi sert l'argent — ventilation par fonction (DGFiP) */}
+          {fonctions && fonctions.fonctions.length >= 3 && (() => {
+            const top = fonctions.fonctions[0];
+            const deux = fonctions.fonctions.slice(0, 2);
+            const reste = fonctions.fonctions.slice(0, 6);
+            return (
+              <section className="fx-pv-section">
+                <H2 id="a-quoi-sert">{fill("fx.pv.fonc.h2", { denom: deNom(commune.nom) })}</H2>
+                <SecNum v={String(Math.round(top.share * 100))} u="%" />
+                <p className="fx-pv-l1">{fill("fx.pv.fonc.l1", { lib: (isEn ? top.libelle_en : top.libelle).toLowerCase(), n: euro(top.montant) })}</p>
+                <p className="fx-pv-l2">{fill("fx.pv.fonc.l2", { a: (isEn ? deux[1].libelle_en : deux[1].libelle).toLowerCase(), pct: Math.round(deux[1].share * 100) })}</p>
+                <SectionFold id="a-quoi-sert" label={fill("fx.pv.fonc.fold", { n: fonctions.fonctions.length })} slug={commune.slug} pop={commune.pop}>
+                  <ul className="fx-pv-fonc-list">
+                    {reste.map((f: FonctionPart) => (
+                      <li key={f.cle}>
+                        <span>{isEn ? f.libelle_en : f.libelle}</span>
+                        <span className="tnum">{euro(f.montant)}</span>
+                        <span className="tnum fx-pv-fonc-pct">{Math.round(f.share * 100)}&nbsp;%</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="fx-v3-foot">{fill("fx.pv.fonc.note", { year: fonctionsSource.annee })}</p>
+                </SectionFold>
+              </section>
+            );
+          })()}
+
           {/* 2b. Taxe foncière */}
           {taxeFonciere && taxeFonciere.tfb != null && (
             <section className="fx-pv-section">
