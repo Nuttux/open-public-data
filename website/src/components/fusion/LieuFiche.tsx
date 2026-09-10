@@ -136,7 +136,6 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
    * 39,2 M€ sur 2009-2022 pendant que le chiffre de tête en excluait 4,1 :
    * deux nombres justes qui ne s'additionnent pas sous les yeux du lecteur.
    * Ce qui tombe avant le seuil est dit en une ligne, sous les graphes. */
-  const barMax = Math.max(subvTotal, travauxTotal);
   const showBars = subvTotal > 0 && travauxTotal > 0;
 
   /* La fenêtre commune. Les deux flux ne commencent pas la même année : la
