@@ -268,6 +268,10 @@ export function hoodPage(slug: string): CityPage | null {
     subjects: (h.subjects ?? [])
       .map((s) => ({ l: s.l, n: s.n, note: s.note }))
       .sort((a, b) => b.n - a.n),
+    /* WHICH streets is the builder's ranking — how much of this
+       neighbourhood's own record names each one. The ORDER they are printed
+       in is the number printed beside them, or `Liberty St 27` sits between
+       two `120+` and the line reads as a sort that failed. */
     streets: (h.streets ?? [])
       .map((s) => {
         const file = s.k.replace(/[^A-Za-z0-9]+/g, "_");
@@ -275,7 +279,8 @@ export function hoodPage(slug: string): CityPage | null {
         return { label: streetLabelFromFile(file), slug: streetSlug(file), count: countLabel(n, cap), n };
       })
       .filter((s) => s.n > 0)
-      .slice(0, 8),
+      .slice(0, 8)
+      .sort((a, b) => b.n - a.n),
     notable: notableOf(rows),
     mapHref: block ? `/us/city/sf/the-city?block=${encodeURIComponent(block)}&hood=1` : "/us/city/sf/the-city",
     holds: `This page carries the ${h.per_decade} most notable decisions of each decade, ${h.n_shipped.toLocaleString("en-US")} of the ${h.n.toLocaleString("en-US")} on record; the rest are on its streets.`,

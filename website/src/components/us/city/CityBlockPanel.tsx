@@ -2295,10 +2295,14 @@ function HoodLevel({
      Its busiest streets, each with the street's whole count. A street the
      index has no file for is not offered — a chip that opens nothing is
      worse than no chip (see `UnitChooser`). */
+  /* the builder's order picks WHICH streets (how much of this
+     neighbourhood's record names each); the count printed beside them picks
+     the order they are printed in — see the page's own note */
   const streets = (recs.streets ?? [])
     .map((s) => ({ key: s.k, n: streetRecordCount(streetIndex, s.k) }))
     .filter((s) => s.n > 0)
-    .slice(0, HOOD_STREETS_SHOWN);
+    .slice(0, HOOD_STREETS_SHOWN)
+    .sort((a, b) => b.n - a.n);
   return (
     <>
       {streets.length > 0 ? (
