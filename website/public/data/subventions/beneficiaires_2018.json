@@ -1,6 +1,6 @@
 {
   "year": 2018,
-  "generated_at": "2026-08-26T20:49:37.755998",
+  "generated_at": "2026-09-10T19:28:34.600518",
   "total_montant": 1241346409.0,
   "nb_beneficiaires": 9863,
   "data": [
@@ -1636,7 +1636,7 @@
       "source_thematique": "direction",
       "montant_total": 990000.0,
       "nb_subventions": 1,
-      "objet_principal": "acompte 2018-dac",
+      "objet_principal": "subvention de fonctionnement",
       "siret": "37978422600043"
     },
     {
@@ -2521,7 +2521,7 @@
       "source_thematique": "direction",
       "montant_total": 476000.0,
       "nb_subventions": 2,
-      "objet_principal": "Demande de subvention de fonctionnement pour le Mouffetard - Théâtre des arts de la marionnette",
+      "objet_principal": "acompte 2018",
       "siret": "34112346100046"
     },
     {
@@ -4141,7 +4141,7 @@
       "source_thematique": "direction",
       "montant_total": 192840.0,
       "nb_subventions": 1,
-      "objet_principal": "SUBVENTION DE FONCTIONNEMENT pourfinancement des opérations ECOLE ET CINEMAet MON 1ER CINEMA",
+      "objet_principal": "Acompte 2018 - DAC",
       "siret": "48154244700026"
     },
     {
@@ -4201,7 +4201,7 @@
       "source_thematique": "direction",
       "montant_total": 188000.0,
       "nb_subventions": 2,
-      "objet_principal": "Demande de subvention de fonctionnement pour l'année 2017-2018",
+      "objet_principal": "acompte 2018 - DAC",
       "siret": "49396355700027"
     },
     {
@@ -6481,7 +6481,7 @@
       "source_thematique": "direction",
       "montant_total": 102500.0,
       "nb_subventions": 2,
-      "objet_principal": "WOMEN CODING ACADEMY",
+      "objet_principal": "DEVELOPPEUSE CERTIFIEE SALESFORCE",
       "siret": "53914519300022"
     },
     {
@@ -6946,7 +6946,7 @@
       "source_thematique": "default",
       "montant_total": 98200.0,
       "nb_subventions": 2,
-      "objet_principal": "permanences juridiques gratuites",
+      "objet_principal": "Accès au droit et santé mentale (ADSM)",
       "siret": "45101859200027"
     },
     {
@@ -8356,7 +8356,7 @@
       "source_thematique": "direction",
       "montant_total": 75000.0,
       "nb_subventions": 2,
-      "objet_principal": "fonctionnement",
+      "objet_principal": "acompte 2018-dac",
       "siret": "32765797900040"
     },
     {
@@ -18106,7 +18106,7 @@
       "source_thematique": "llm",
       "montant_total": 20000.0,
       "nb_subventions": 1,
-      "objet_principal": "Programme : \"Les migrants, acteurs des dynamiques culturelles et citoyennes parisiennes\" Action : OU",
+      "objet_principal": "Programme: \"Les migrants, acteurs des dynamiques culturelles et citoyennes parisiennes\" Action : Méd",
       "siret": "49372134400031"
     },
     {
@@ -18496,7 +18496,7 @@
       "source_thematique": "direction",
       "montant_total": 20000.0,
       "nb_subventions": 1,
-      "objet_principal": "Parcours linguistique en français à visée professionnelle pour les primo-arrivants et réfugiés analp",
+      "objet_principal": "Emploi - renforcer l¿employabilité des Parisiens ayant une faible maîtrise du français.",
       "siret": "49205924100017"
     },
     {
@@ -23506,7 +23506,7 @@
       "source_thematique": "llm",
       "montant_total": 11000.0,
       "nb_subventions": 1,
-      "objet_principal": "CPO PDV - COMPAGNIE VARSORIO,Culture et Citoyenneté - CULTUREL",
+      "objet_principal": "CPO PDV - COMPAGNIE VARSORIO, Paroles de femmes - CULTURE",
       "siret": "44116591700051"
     },
     {
@@ -32521,7 +32521,7 @@
       "source_thematique": "direction",
       "montant_total": 5000.0,
       "nb_subventions": 1,
-      "objet_principal": "\"FEMMES SOUS UN AUTRE JOUR\"",
+      "objet_principal": "LIEN SOCIALMEDIATION SOCIALE ET CULTURELLE EN DIRECTION DES FEMMES ISOLEES DU QUARTIER POLITIQUE D",
       "siret": "53044620200018"
     },
     {
@@ -147949,13 +147949,5 @@
       "objet_principal": null,
       "siret": null
     }
-  ],
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
-  }
+  ]
 }

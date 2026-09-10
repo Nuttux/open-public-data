@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-26T20:49:19.674630",
+  "generated_at": "2026-09-10T19:28:14.411820",
   "source": "dbt marts (mart_subventions_treemap, mart_subventions_beneficiaires)",
   "availableYears": [
     2024,
@@ -8,7 +8,12 @@
     2021,
     2020,
     2019,
-    2018
+    2018,
+    2017,
+    2016,
+    2015,
+    2014,
+    2013
   ],
   "totalsByYear": {
     "2024": {
@@ -38,6 +43,26 @@
     "2018": {
       "montant_total": 1241346409.0,
       "nb_subventions": 10266
+    },
+    "2017": {
+      "montant_total": 1150092852.03,
+      "nb_subventions": 3640
+    },
+    "2016": {
+      "montant_total": 1260982793.39,
+      "nb_subventions": 3648
+    },
+    "2015": {
+      "montant_total": 1149891407.5600002,
+      "nb_subventions": 3504
+    },
+    "2014": {
+      "montant_total": 1362113353.96,
+      "nb_subventions": 3501
+    },
+    "2013": {
+      "montant_total": 1265816522.23,
+      "nb_subventions": 3638
     }
   },
   "filters": {
@@ -46,14 +71,14 @@
       "Logement",
       "Culture",
       "Éducation",
-      "Transport",
+      "Non classifié",
       "Économie",
+      "Transport",
       "Social - Petite enfance",
       "Sport",
-      "Sécurité",
       "Administration",
+      "Sécurité",
       "Santé",
-      "Non classifié",
       "International",
       "Environnement",
       "Autre",
@@ -64,13 +89,19 @@
       "Autres",
       "Autres personnes de droit privé",
       "Autres personnes de droit public",
+      "Commune",
       "Communes",
+      "Departement",
       "Département",
       "Départements",
+      "Entreprise",
       "Entreprises",
       "Etablissements publics",
       "Etat",
+      "Fondations",
       "Personnes physiques",
+      "Region",
+      "Région",
       "Régions",
       "Établissements publics",
       "État"
@@ -81,31 +112,26 @@
       "DJS",
       "DAE",
       "DASES",
-      "DSOL",
       "DFPE",
       "DASCO",
+      "DSOL",
       "DGRI",
       "DEVE",
+      "DPVI",
       "DSP",
       "DPE",
       "DVD",
-      "DPMP",
-      "DPSP",
       "DGOM",
-      "DTEC",
+      "DPSP",
       "SG",
+      "DPMP",
+      "DUCT",
+      "SG-MI-CINEMA",
+      "DTEC",
+      "DU",
       "DILT",
       "DLH",
-      "DU",
-      "DAJ"
+      "DFA"
     ]
-  },
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
   }
 }

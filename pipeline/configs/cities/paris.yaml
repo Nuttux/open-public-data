@@ -65,6 +65,22 @@ sources:
     description: "Annexe CA - Toutes subventions versées"
     map_to: subvention
 
+  # ---------------------------------------------------------------------------
+  # SUBVENTIONS 2013-2017 — la première moitié de la même annexe CA. La Ville a
+  # coupé la série au changement de plan comptable et republié la suite sous un
+  # autre identifiant ; on ne lisait que la seconde, donc cinq exercices et
+  # 6,2 Md€ n'existaient nulle part chez nous (constaté 2026-09-10).
+  # Différence de forme à connaître : ici les particuliers SONT présents, sous
+  # pseudonyme (« Nom 323 »), avec nature_juridique = « Personnes physiques ».
+  # Le staging les agrège en une ligne par exercice, comme la branche PDF.
+  # ---------------------------------------------------------------------------
+  - id: subventions_2013_2017
+    type: ods_dataset
+    dataset_id: subventions-versees
+    target_table: subventions_versees_2013_2017
+    description: "Annexe CA - Subventions versées 2013-2017 (M14-M52)"
+    map_to: subvention
+
   - id: associations
     type: ods_dataset
     dataset_id: subventions-associations-votees-

@@ -1,6 +1,6 @@
 # Couverture de publication — Ville × entrepôt × site
 
-Généré le 2026-09-10 depuis opendata.paris.fr. 9 séries, 30 constats (11 erreurs), dont 13 de notre côté et 17 du côté de la Ville.
+Généré le 2026-09-10 depuis opendata.paris.fr. 9 séries, 28 constats (9 erreurs), dont 11 de notre côté et 17 du côté de la Ville.
 
 
 ## Tableau croisé
@@ -11,7 +11,7 @@ Généré le 2026-09-10 depuis opendata.paris.fr. 9 séries, 30 constats (11 err
 | Budget voté — budget principal | 2009→2021 | 2019→2026 | 10 | 2 |
 | Investissement — autorisations de programme (exécuté) | 2009→2022 | 2009→2022 | — | — |
 | Investissement — carte des projets localisés | 2009→2022 | 2018→2024 | 9 | 1 |
-| Subventions versées (annexe du compte administratif) | 2013→2024 | 2018→2024 | 5 | 1 |
+| Subventions versées (annexe du compte administratif) | 2013→2024 | 2013→2024 | — | — |
 | Marchés publics de la collectivité parisienne | 2013→2024 | 2013→2026 | — | — |
 | Logements sociaux financés | 2001→2025 | 2001→2025 | — | — |
 | Dette garantie par la Ville | 2007→2025 | 2007→2025 | — | — |
@@ -31,7 +31,7 @@ Généré le 2026-09-10 depuis opendata.paris.fr. 9 séries, 30 constats (11 err
 | ap_execute | [comptes-administratifs-autorisations-de-programmes-a](https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/) | oui | 27927 | 2009→2017 | 14 436 M€ | 2019-11-28 |
 | investissements_carte | [comptes-administratifs-autorisations-de-programmes-a](https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/) | oui | 7466 | 2018→2022 | 2 278 M€ | 2019-11-28 |
 | investissements_carte | [comptes-administratifs-autorisations-de-programmes-a](https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/) | **non** | 27927 | 2009→2017 | 26 722 M€ | 2019-11-28 |
-| subventions | [subventions-versees](https://opendata.paris.fr/explore/dataset/subventions-versees/) | **non** | 39431 | 2013→2017 | 6 189 M€ | 2019-12-19 |
+| subventions | [subventions-versees](https://opendata.paris.fr/explore/dataset/subventions-versees/) | oui | 39431 | 2013→2017 | 6 189 M€ | 2019-12-19 |
 | subventions | [subventions-versees-annexe-compte-administratif-a-pa](https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/) | oui | 47381 | 2018→2024 | 6 267 M€ | 2025-08-26 |
 | marches | [liste-des-marches-de-la-collectivite-parisienne](https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/) | oui | 17639 | 2013→2024 | 33 184 M€ | 2024-05-02 |
 | logements_sociaux | [logements-sociaux-finances-a-paris](https://opendata.paris.fr/explore/dataset/logements-sociaux-finances-a-paris/) | oui | 4293 | 2001→2025 | — | 2026-09-08 |
@@ -49,8 +49,6 @@ Généré le 2026-09-10 depuis opendata.paris.fr. 9 séries, 30 constats (11 err
 - **erreur** · `ANNEES_MANQUANTES` · budget_vote — la Ville publie 2009→2021, le site sert 2019→2026 : 10 exercice(s) absent(s) (2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018)
 - **erreur** · `SERIE_COUPEE` · investissements_carte — « Comptes Administratifs - Autorisations de Programmes 2009 - 2017 (M14-M52 Ville-Département) » (comptes-administratifs-autorisations-de-programmes-ap-ville-departement) est un autre morceau d'une série qu'on ingère déjà, et il n'est pas ingéré : 27927 lignes, 26722 M€, exercices 2009→2017
 - **erreur** · `ANNEES_MANQUANTES` · investissements_carte — la Ville publie 2009→2022, le site sert 2018→2024 : 9 exercice(s) absent(s) (2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017)
-- **erreur** · `SERIE_COUPEE` · subventions — « Subventions versées - Annexe Compte administratif 2013-2017 » (subventions-versees) est un autre morceau d'une série qu'on ingère déjà, et il n'est pas ingéré : 39431 lignes, 6189 M€, exercices 2013→2017
-- **erreur** · `ANNEES_MANQUANTES` · subventions — la Ville publie 2013→2024, le site sert 2018→2024 : 5 exercice(s) absent(s) (2013, 2014, 2015, 2016, 2017)
 - info · `PERIMETRE_NON_ALIGNE` · marches — 2022 : source 3824.6 M€ vs site 3934.6 M€ (2.9 % d'écart) — périmètres différents : l'export fusionne l'open data et les DECP nationales : le total dépasse la seule source ODS
 - info · `PERIMETRE_NON_ALIGNE` · marches — 2024 : source 2495.7 M€ vs site 3219.8 M€ (29.0 % d'écart) — périmètres différents : l'export fusionne l'open data et les DECP nationales : le total dépasse la seule source ODS
 
@@ -98,6 +96,11 @@ Généré le 2026-09-10 depuis opendata.paris.fr. 9 séries, 30 constats (11 err
 | ap_execute | 2020 | 318.7 M€ | 318.7 M€ | 0.0 % |
 | ap_execute | 2021 | 247.5 M€ | 247.5 M€ | 0.0 % |
 | ap_execute | 2022 | 156.9 M€ | 156.9 M€ | 0.0 % |
+| subventions | 2013 | 1265.8 M€ | 1265.8 M€ | 0.0 % |
+| subventions | 2014 | 1362.1 M€ | 1362.1 M€ | 0.0 % |
+| subventions | 2015 | 1149.9 M€ | 1149.9 M€ | 0.0 % |
+| subventions | 2016 | 1261.0 M€ | 1261.0 M€ | 0.0 % |
+| subventions | 2017 | 1150.1 M€ | 1150.1 M€ | 0.0 % |
 | subventions | 2018 | 1241.3 M€ | 1241.3 M€ | 0.0 % |
 | subventions | 2019 | 1304.0 M€ | 1304.0 M€ | 0.0 % |
 | subventions | 2022 | 1167.6 M€ | 1167.6 M€ | 0.0 % |

@@ -155,7 +155,8 @@ FAMILLES = [
     {
         "id": "subventions",
         "label": "Subventions versées (annexe du compte administratif)",
-        "ingere": ["subventions-versees-annexe-compte-administratif-a-partir-de-2018"],
+        "ingere": ["subventions-versees",                                    # 2013-2017 (M14-M52)
+                   "subventions-versees-annexe-compte-administratif-a-partir-de-2018"],
         "annee": ["publication"],
         "montant": ["montant_de_la_subvention"],
         "site": {"glob": "subventions/beneficiaires_*.json", "total": ["total_montant"]},

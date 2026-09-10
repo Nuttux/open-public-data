@@ -24,7 +24,7 @@
 --   - Normalisation nom bénéficiaire (pour jointures)
 --   - Typage: FLOAT64 pour montants
 --
--- Output: ~55k lignes, années 2018, 2019, 2020, 2021, 2022, 2023, 2024 (+2025
+-- Output: ~94k lignes, années 2013→2024 (+2025
 --         si Annexe CA publiée).
 -- =============================================================================
 
@@ -176,13 +176,100 @@ pdf_named AS (
     WHERE COALESCE(nature_juridique, '') != 'Personnes physiques'
 ),
 
--- ─── UNION des deux sources ──────────────────────────────────────────────────
+-- ─── Source 3 : Annexe CA OpenData 2013-2017 (M14-M52) ──────────────────────
+--
+-- La Ville a coupé la série au changement de plan comptable et republié la
+-- suite sous un autre identifiant. On ne lisait que la seconde moitié : cinq
+-- exercices et 6,19 Md€ n'existaient nulle part chez nous (constaté
+-- 2026-09-10, total vérifié au million près contre l'agrégat du portail).
+--
+-- Différence de forme à connaître : ici les PARTICULIERS sont présents, sous
+-- pseudonyme (« Nom 323 ») posé par la Ville, avec nature_juridique =
+-- « Personnes physiques ». 21 218 lignes pour 11,4 M€, soit 0,2 % du total.
+-- On les agrège en une ligne par exercice, exactement comme la branche PDF :
+-- le total reste juste et aucune aide individuelle n'est exposée. Le jeu
+-- 2018+ ne contient pas de particuliers du tout, d'où la différence de
+-- traitement entre les deux moitiés.
+source_ods_2013_2017 AS (
+    SELECT
+        SAFE_CAST(REGEXP_EXTRACT(COALESCE(publication, ''), r'(\d{4})') AS INT64) AS annee,
+        nom_de_l_organisme_beneficiaire_d_une_subvention AS nom,
+        COALESCE(categorie, '—') AS categorie,
+        COALESCE(nature_juridique, '—') AS nature_juridique,
+        ABS(SAFE_CAST(montant_de_la_subvention AS FLOAT64)) AS montant,
+        COALESCE(ABS(SAFE_CAST(prestations_diverses AS FLOAT64)), 0) AS prestations_nature
+    FROM {{ source('paris_raw', 'subventions_versees_2013_2017') }}
+    WHERE ABS(SAFE_CAST(montant_de_la_subvention AS FLOAT64)) > 0
+      AND SAFE_CAST(REGEXP_EXTRACT(COALESCE(publication, ''), r'(\d{4})') AS INT64) IS NOT NULL
+),
+
+-- Particuliers 2013-2017 : agrégation RGPD (1 ligne par exercice)
+ods_2013_2017_personnes_physiques AS (
+    SELECT
+        annee,
+        'Paris' AS collectivite,
+        CONCAT(
+            'Personnes physiques anonymisées RGPD (',
+            CAST(COUNT(*) AS STRING),
+            ' aides individuelles)'
+        ) AS beneficiaire,
+        'PERSONNES PHYSIQUES ANONYMISEES RGPD' AS beneficiaire_normalise,
+        'Personnes de droit privé' AS categorie,
+        'Personnes physiques' AS nature_juridique,
+        SUM(montant) AS montant,
+        SUM(prestations_nature) AS prestations_nature,
+        TRUE AS donnees_disponibles,
+        'opendata_2013_2017' AS source_systeme,
+        CONCAT(CAST(annee AS STRING), '-Paris-PP-RGPD-AGGR-ODS') AS cle_technique
+    FROM source_ods_2013_2017
+    WHERE nature_juridique = 'Personnes physiques'
+    GROUP BY annee
+),
+
+-- Bénéficiaires nommés 2013-2017 (tout sauf particuliers)
+ods_2013_2017_named AS (
+    SELECT
+        annee,
+        'Paris' AS collectivite,
+        nom AS beneficiaire,
+        UPPER(TRIM(REGEXP_REPLACE(
+            REGEXP_REPLACE(
+                REGEXP_REPLACE(
+                    COALESCE(nom, ''),
+                    r"^(L'|LA |LE |LES |D'|DU |DE LA |DE L'|DES )", ''
+                ),
+                r'[^A-Za-zÀ-ÿ0-9\s]', ' '
+            ),
+            r'\s+', ' '
+        ))) AS beneficiaire_normalise,
+        categorie,
+        nature_juridique,
+        montant,
+        prestations_nature,
+        TRUE AS donnees_disponibles,
+        'opendata_2013_2017' AS source_systeme,
+        CONCAT(
+            CAST(annee AS STRING), '-Paris-',
+            UPPER(REGEXP_REPLACE(COALESCE(nom, 'INCONNU'), r'\s+', ' ')), '-',
+            CAST(CAST(montant AS INT64) AS STRING), '-',
+            SUBSTR(TO_HEX(MD5(CONCAT(categorie, nature_juridique))), 1, 6)
+        ) AS cle_technique
+    FROM source_ods_2013_2017
+    WHERE nature_juridique != 'Personnes physiques'
+      AND nom IS NOT NULL
+),
+
+-- ─── UNION des sources ───────────────────────────────────────────────────────
 unioned AS (
     SELECT * FROM opendata_cleaned
     UNION ALL
     SELECT * FROM pdf_named
     UNION ALL
     SELECT * FROM pdf_personnes_physiques
+    UNION ALL
+    SELECT * FROM ods_2013_2017_named
+    UNION ALL
+    SELECT * FROM ods_2013_2017_personnes_physiques
 ),
 
 -- Ajoute un suffixe numérique pour les rares doublons restants

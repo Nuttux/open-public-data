@@ -1,14 +1,14 @@
 {
  "schema_version": 1,
- "generated_at": "2026-09-10T17:21:41.062510+00:00",
+ "generated_at": "2026-09-10T17:30:43.682794+00:00",
  "portail": "opendata.paris.fr",
  "tolerance_ecart_pct": 1.0,
  "resume": {
   "familles": 9,
-  "jeux_de_la_serie_non_ingeres": 6,
-  "constats": 30,
-  "erreurs": 11,
-  "cote_nous": 13,
+  "jeux_de_la_serie_non_ingeres": 5,
+  "constats": 28,
+  "erreurs": 9,
+  "cote_nous": 11,
   "cote_ville": 17
  },
  "familles": [
@@ -676,7 +676,7 @@
      "titre": "Subventions versées - Annexe Compte administratif 2013-2017",
      "lignes_catalogue": 39431,
      "derniere_maj": "2019-12-19T07:49:29.649000+00:00",
-     "ingere": false,
+     "ingere": true,
      "champ_annee": "publication",
      "champ_montant": "montant_de_la_subvention",
      "annees": [
@@ -736,9 +736,7 @@
      "url": "https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/"
     }
    ],
-   "non_ingeres": [
-    "subventions-versees"
-   ],
+   "non_ingeres": [],
    "annees_source": [
     "2013",
     "2014",
@@ -752,6 +750,11 @@
     "2024"
    ],
    "annees_site": [
+    "2013",
+    "2014",
+    "2015",
+    "2016",
+    "2017",
     "2018",
     "2019",
     "2020",
@@ -760,14 +763,43 @@
     "2023",
     "2024"
    ],
-   "annees_manquantes": [
-    "2013",
-    "2014",
-    "2015",
-    "2016",
-    "2017"
-   ],
+   "annees_manquantes": [],
    "ecarts": [
+    {
+     "annee": "2013",
+     "source": 1265816522.23,
+     "site": 1265816522.23,
+     "ecart_pct": 0.0,
+     "perimetre": "exact"
+    },
+    {
+     "annee": "2014",
+     "source": 1362113353.96,
+     "site": 1362113353.96,
+     "ecart_pct": 0.0,
+     "perimetre": "exact"
+    },
+    {
+     "annee": "2015",
+     "source": 1149891407.56,
+     "site": 1149891407.56,
+     "ecart_pct": 0.0,
+     "perimetre": "exact"
+    },
+    {
+     "annee": "2016",
+     "source": 1260982793.39,
+     "site": 1260982793.39,
+     "ecart_pct": 0.0,
+     "perimetre": "exact"
+    },
+    {
+     "annee": "2017",
+     "source": 1150092852.03,
+     "site": 1150092852.03,
+     "ecart_pct": 0.0,
+     "perimetre": "exact"
+    },
     {
      "annee": "2018",
      "source": 1241346409.0,
@@ -1391,22 +1423,6 @@
    "famille": "investissements_carte",
    "code": "ANNEES_MANQUANTES",
    "message": "la Ville publie 2009→2022, le site sert 2018→2024 : 9 exercice(s) absent(s) (2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017)"
-  },
-  {
-   "gravite": "erreur",
-   "cote": "nous",
-   "famille": "subventions",
-   "code": "SERIE_COUPEE",
-   "message": "« Subventions versées - Annexe Compte administratif 2013-2017 » (subventions-versees) est un autre morceau d'une série qu'on ingère déjà, et il n'est pas ingéré : 39431 lignes, 6189 M€, exercices 2013→2017",
-   "dataset": "subventions-versees",
-   "url": "https://opendata.paris.fr/explore/dataset/subventions-versees/"
-  },
-  {
-   "gravite": "erreur",
-   "cote": "nous",
-   "famille": "subventions",
-   "code": "ANNEES_MANQUANTES",
-   "message": "la Ville publie 2013→2024, le site sert 2018→2024 : 5 exercice(s) absent(s) (2013, 2014, 2015, 2016, 2017)"
   },
   {
    "gravite": "avertissement",

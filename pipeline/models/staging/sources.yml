@@ -208,6 +208,21 @@ sources:
       # SUBVENTIONS - Détail des bénéficiaires
       # =========================================================================
       
+      - name: subventions_versees_2013_2017
+        description: |
+          Annexe Compte Administratif - subventions versées 2013-2017 (M14-M52).
+          Première moitié de la même série que le jeu « à partir de 2018 » :
+          la Ville l'a coupée au changement de plan comptable et republiée sous
+          un autre identifiant (subventions-versees).
+          Particularité : les particuliers y sont présents sous pseudonyme
+          (« Nom 323 »), nature_juridique = « Personnes physiques ». Le staging
+          les agrège en une ligne par exercice (RGPD), comme la branche PDF.
+        columns:
+          - name: publication
+            description: "Exercice au format « CA 2014 »"
+          - name: montant_de_la_subvention
+            description: "Montant versé, en euros"
+
       - name: subventions_versees_annexe_compte_administratif_a_partir_de_2018
         description: |
           Annexe Compte Administratif - TOUTES subventions versées.

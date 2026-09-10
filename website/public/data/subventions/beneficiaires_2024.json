@@ -1,6 +1,6 @@
 {
   "year": 2024,
-  "generated_at": "2026-08-26T20:49:22.167754",
+  "generated_at": "2026-09-10T19:28:17.586073",
   "total_montant": 1353488225.0,
   "nb_beneficiaires": 5948,
   "data": [
@@ -811,7 +811,7 @@
       "source_thematique": "direction",
       "montant_total": 3690072.0,
       "nb_subventions": 1,
-      "objet_principal": "Acompte 2024 DAC",
+      "objet_principal": "Paris Ateliers - Subvention de fonctionnement 2024",
       "siret": "31293687500094"
     },
     {
@@ -4546,7 +4546,7 @@
       "source_thematique": "direction",
       "montant_total": 181000.0,
       "nb_subventions": 1,
-      "objet_principal": "Subvention de fonctionnement pour le financement des opérations Ecole et Cinéma et Mon 1er Cinéma",
+      "objet_principal": "Acompte 2024 DAC",
       "siret": "48154244700018"
     },
     {
@@ -7441,7 +7441,7 @@
       "source_thematique": "direction",
       "montant_total": 92750.0,
       "nb_subventions": 1,
-      "objet_principal": "POLYNOTES, E?cole de Musiques Subvention de fonctionnement 2024",
+      "objet_principal": "Acompte 2024 DAC",
       "siret": "39187280100041"
     },
     {
@@ -9556,7 +9556,7 @@
       "source_thematique": "direction",
       "montant_total": 64500.0,
       "nb_subventions": 1,
-      "objet_principal": "Alimentation durable",
+      "objet_principal": "DAE Moulin à café, subvention annuelle fonctionnement 2024",
       "siret": "48332094100022"
     },
     {
@@ -15466,7 +15466,7 @@
       "source_thematique": "default",
       "montant_total": 32500.0,
       "nb_subventions": 1,
-      "objet_principal": "Complément de financement poste Adulte-relais AR075 23 R0036 00",
+      "objet_principal": "Complément de financement poste Adulte-relais AR075 16 R0012 02",
       "siret": "42894726100023"
     },
     {
@@ -16561,7 +16561,7 @@
       "source_thematique": "direction",
       "montant_total": 30000.0,
       "nb_subventions": 1,
-      "objet_principal": "Projet Formation - Adminsitrateur Cybersécurité",
+      "objet_principal": "Projet Formation - DEVOPS",
       "siret": "88311529700011"
     },
     {
@@ -31126,7 +31126,7 @@
       "source_thematique": "direction",
       "montant_total": 9000.0,
       "nb_subventions": 1,
-      "objet_principal": "LA PISTE AU FEMININ",
+      "objet_principal": "Accompagnement d¿athlètes de haut niveau dans la perspective des Jeux Olympiques de Paris 2024",
       "siret": "83966546000011"
     },
     {
@@ -34066,7 +34066,7 @@
       "source_thematique": "llm",
       "montant_total": 8000.0,
       "nb_subventions": 1,
-      "objet_principal": "Spectacle ''Influence'' favorisant l'éducation à la citoyenneté à destination des habitants QPV 11è",
+      "objet_principal": "Spectacle et ateliers artistiques dans l'espace public QPV 18è",
       "siret": "48840115900022"
     },
     {
@@ -37876,7 +37876,7 @@
       "source_thematique": "llm",
       "montant_total": 6000.0,
       "nb_subventions": 1,
-      "objet_principal": "Paris-Saigon Aller Simple",
+      "objet_principal": "Paroles de femmes en pied d'immeuble",
       "siret": "39408295200034"
     },
     {
@@ -43666,7 +43666,7 @@
       "source_thematique": "llm",
       "montant_total": 5000.0,
       "nb_subventions": 1,
-      "objet_principal": "Les stéréotypes de genre entretiennent-ils les inégalités filles-garçons?",
+      "objet_principal": "Est-ce que j'ai ma place dans l'espace public ?",
       "siret": "79888637000013"
     },
     {
@@ -48151,7 +48151,7 @@
       "source_thematique": "direction",
       "montant_total": 4000.0,
       "nb_subventions": 1,
-      "objet_principal": "Fonctionnement Asso Art'Sign 2024",
+      "objet_principal": "L'info c'est clair",
       "siret": "49008480300025"
     },
     {
@@ -54991,7 +54991,7 @@
       "source_thematique": "llm",
       "montant_total": 2000.0,
       "nb_subventions": 1,
-      "objet_principal": "Campagne de sensibilisation contre la discrimination",
+      "objet_principal": "Les Courbes Parisiennes",
       "siret": "92309057500013"
     },
     {
@@ -55951,7 +55951,7 @@
       "source_thematique": "llm",
       "montant_total": 2000.0,
       "nb_subventions": 1,
-      "objet_principal": "FONCTIONNEMENT ANNUEL",
+      "objet_principal": "FSF09",
       "siret": "83836170700014"
     },
     {
@@ -64876,7 +64876,7 @@
       "source_thematique": "llm",
       "montant_total": 1000.0,
       "nb_subventions": 1,
-      "objet_principal": "FSF18 :  Comme des étourneaux",
+      "objet_principal": "FSF18 : « Rolling tango »",
       "siret": "43308307800025"
     },
     {
@@ -89224,13 +89224,5 @@
       "objet_principal": null,
       "siret": null
     }
-  ],
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
-  }
+  ]
 }
