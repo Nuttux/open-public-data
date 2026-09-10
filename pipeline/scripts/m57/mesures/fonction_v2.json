@@ -1,0 +1,487 @@
+{
+ "Nantes": {
+  "n": 58,
+  "fonction": true,
+  "preuve": {
+   "jeu": "Compte administratif (CA) 2011 de la Ville de Nant",
+   "cols": [
+    "Investissement/Fonctionnement",
+    "Code sous-fonction"
+   ]
+  },
+  "testes": 1
+ },
+ "La Rochelle": {
+  "n": 25,
+  "fonction": true,
+  "preuve": {
+   "jeu": "Budget primitif et compte administratif – BP 2014 ",
+   "cols": []
+  },
+  "testes": 1
+ },
+ "Agen": {
+  "n": 24,
+  "fonction": false,
+  "preuve": null,
+  "testes": 0
+ },
+ "Bar-le-Duc": {
+  "n": 21,
+  "fonction": false,
+  "preuve": null,
+  "testes": 13
+ },
+ "Lille": {
+  "n": 18,
+  "fonction": false,
+  "preuve": null,
+  "testes": 6
+ },
+ "La Possession": {
+  "n": 16,
+  "fonction": false,
+  "preuve": null,
+  "testes": 9
+ },
+ "Paris": {
+  "n": 16,
+  "fonction": true,
+  "preuve": {
+   "jeu": "CASVP - Compte administratif - Budget général",
+   "cols": []
+  },
+  "testes": 3
+ },
+ "Marseille": {
+  "n": 14,
+  "fonction": true,
+  "preuve": {
+   "jeu": "Marseille - Budget primitif 2021",
+   "cols": []
+  },
+  "testes": 3
+ },
+ "Cannes": {
+  "n": 13,
+  "fonction": true,
+  "preuve": {
+   "jeu": "Budget primitif 2023",
+   "cols": []
+  },
+  "testes": 1
+ },
+ "Issy-les-Moulineaux": {
+  "n": 11,
+  "fonction": true,
+  "preuve": {
+   "jeu": "Budget primitif d'Issy-les-Moulineaux",
+   "cols": [
+    "Fonction (Code et Libellé)"
+   ]
+  },
+  "testes": 2
+ },
+ "Bordeaux": {
+  "n": 11,
+  "fonction": true,
+  "preuve": {
+   "jeu": "Budget supplémentaire 2021 de la ville de Bordeaux",
+   "cols": [
+    "bgt_fonction",
+    "bgt_fonction_label"
+   ]
+  },
+  "testes": 3
+ },
+ "Rennes": {
+  "n": 9,
+  "fonction": false,
+  "preuve": null,
+  "testes": 0
+ },
+ "Lanester": {
+  "n": 7,
+  "fonction": true,
+  "preuve": {
+   "jeu": "Budget Primitif 2019",
+   "cols": []
+  },
+  "testes": 3
+ },
+ "Lisieux": {
+  "n": 6,
+  "fonction": false,
+  "preuve": null,
+  "testes": 0
+ },
+ "Tours": {
+  "n": 6,
+  "fonction": true,
+  "preuve": {
+   "jeu": "Compte administratif du budget Principal - TOURS",
+   "cols": [
+    "BGT_FONCTION",
+    "BGT_FONCTION_LABEL"
+   ]
+  },
+  "testes": 1
+ },
+ "Les Lilas": {
+  "n": 5,
+  "fonction": true,
+  "preuve": {
+   "jeu": "Budget primitif - Les Lilas - Budget Principal",
+   "cols": [
+    "Exercice;D/R;I/F;Gestionnaire;Fonction;Nature;Op�ration;Service;Antenne;Chapitre;Libell�;Montant;Type",
+    "Fonction"
+   ]
+  },
+  "testes": 1
+ },
+ "Boé": {
+  "n": 5,
+  "fonction": false,
+  "preuve": null,
+  "testes": 10
+ },
+ "Bains-sur-Oust": {
+  "n": 4,
+  "fonction": false,
+  "preuve": null,
+  "testes": 0
+ },
+ "Toulouse": {
+  "n": 3,
+  "fonction": false,
+  "preuve": null,
+  "testes": 0
+ },
+ "Caen": {
+  "n": 3,
+  "fonction": true,
+  "preuve": {
+   "jeu": "Ville de Caen - Budget principal 2020",
+   "cols": [
+    "FONCTION",
+    "SOUS_FONCTION"
+   ]
+  },
+  "testes": 1
+ },
+ "Saint-Paul-lès-Dax": {
+  "n": 2,
+  "fonction": true,
+  "preuve": {
+   "jeu": "Budgets primitifs",
+   "cols": []
+  },
+  "testes": 1
+ },
+ "Fort-de-France": {
+  "n": 2,
+  "fonction": false,
+  "preuve": null,
+  "testes": 2
+ },
+ "Saint-Vincent-sur-Oust": {
+  "n": 2,
+  "fonction": false,
+  "preuve": null,
+  "testes": 1
+ },
+ "Digne-les-Bains": {
+  "n": 2,
+  "fonction": false,
+  "preuve": null,
+  "testes": 0
+ },
+ "Jouarre": {
+  "n": 2,
+  "fonction": false,
+  "preuve": null,
+  "testes": 0
+ },
+ "Saint-Nazaire": {
+  "n": 2,
+  "fonction": true,
+  "preuve": {
+   "jeu": "Comptes Administratifs (CA) de la ville de Saint-N",
+   "cols": [
+    "Fonction",
+    "Libellé de la fonction"
+   ]
+  },
+  "testes": 1
+ },
+ "Lys-Saint-Georges": {
+  "n": 2,
+  "fonction": false,
+  "preuve": null,
+  "testes": 2
+ },
+ "Rillieux-la-Pape": {
+  "n": 2,
+  "fonction": true,
+  "preuve": {
+   "jeu": "Données essentielles du budget de la commune de Ri",
+   "cols": [
+    "bgt_fonction",
+    "bgt_fonction_label"
+   ]
+  },
+  "testes": 2
+ },
+ "Redon": {
+  "n": 2,
+  "fonction": false,
+  "preuve": null,
+  "testes": 1
+ },
+ "Le Poinçonnet": {
+  "n": 2,
+  "fonction": true,
+  "preuve": {
+   "jeu": "Budget 2026 de la ville du Poinçonnet",
+   "cols": [
+    "Fonction",
+    "Libellé de la fonction"
+   ]
+  },
+  "testes": 1
+ },
+ "Grenoble": {
+  "n": 2,
+  "fonction": false,
+  "preuve": null,
+  "testes": 5
+ },
+ "Quimper": {
+  "n": 2,
+  "fonction": false,
+  "preuve": null,
+  "testes": 4
+ },
+ "Baugé-en-Anjou": {
+  "n": 2,
+  "fonction": true,
+  "preuve": {
+   "jeu": "Subventions aux associations de la Ville de Baugé-",
+   "cols": []
+  },
+  "testes": 2
+ },
+ "Chambéry": {
+  "n": 2,
+  "fonction": true,
+  "preuve": {
+   "jeu": "Budget 2019_Ville de Chambéry",
+   "cols": [
+    "FONCTION CODE",
+    "FONCTION LIBELLE"
+   ]
+  },
+  "testes": 1
+ },
+ "Lyon": {
+  "n": 2,
+  "fonction": false,
+  "preuve": null,
+  "testes": 2
+ },
+ "Rodez": {
+  "n": 1,
+  "fonction": false,
+  "preuve": null,
+  "testes": 0
+ },
+ "Blagnac": {
+  "n": 1,
+  "fonction": true,
+  "preuve": {
+   "jeu": "Budget primitif 2022 - Budget principal ville de B",
+   "cols": [
+    "Code fonction",
+    "Libellé fonction"
+   ]
+  },
+  "testes": 1
+ },
+ "Eu": {
+  "n": 1,
+  "fonction": true,
+  "preuve": {
+   "jeu": "Budget Primitif",
+   "cols": []
+  },
+  "testes": 1
+ },
+ "Garges-lès-Gonesse": {
+  "n": 1,
+  "fonction": false,
+  "preuve": null,
+  "testes": 0
+ },
+ "Sailly-lez-Lannoy": {
+  "n": 1,
+  "fonction": false,
+  "preuve": null,
+  "testes": 1
+ },
+ "Guémené-Penfao": {
+  "n": 1,
+  "fonction": false,
+  "preuve": null,
+  "testes": 2
+ },
+ "Peillac": {
+  "n": 1,
+  "fonction": false,
+  "preuve": null,
+  "testes": 1
+ },
+ "Bergerac": {
+  "n": 1,
+  "fonction": true,
+  "preuve": {
+   "jeu": "Budget primitif - commune de Bergerac - 2020",
+   "cols": [
+    "BGT_FONCTION",
+    "BGT_FONCTION_LABEL"
+   ]
+  },
+  "testes": 1
+ },
+ "Pornichet": {
+  "n": 1,
+  "fonction": true,
+  "preuve": {
+   "jeu": "Budget primitif (BP) de la ville de Pornichet",
+   "cols": [
+    "Fonction",
+    "Libellé de la fonction"
+   ]
+  },
+  "testes": 1
+ },
+ "Wambrechies": {
+  "n": 1,
+  "fonction": false,
+  "preuve": null,
+  "testes": 2
+ },
+ "Mazingarbe": {
+  "n": 1,
+  "fonction": false,
+  "preuve": null,
+  "testes": 0
+ },
+ "Sainte-Marie": {
+  "n": 1,
+  "fonction": false,
+  "preuve": null,
+  "testes": 1
+ },
+ "Caluire-et-Cuire": {
+  "n": 1,
+  "fonction": true,
+  "preuve": {
+   "jeu": "Données essentielles du budget de la commune de Ca",
+   "cols": [
+    "BGT_FONCTION",
+    "BGT_FONCTION_LABEL"
+   ]
+  },
+  "testes": 1
+ },
+ "Besançon": {
+  "n": 1,
+  "fonction": true,
+  "preuve": {
+   "jeu": "Budgets Ville de Besançon",
+   "cols": [
+    "BGT_FONCTION",
+    "BGT_FONCTION_LABEL"
+   ]
+  },
+  "testes": 2
+ },
+ "Saint-Herblain": {
+  "n": 1,
+  "fonction": false,
+  "preuve": null,
+  "testes": 2
+ },
+ "Soissons": {
+  "n": 1,
+  "fonction": false,
+  "preuve": null,
+  "testes": 1
+ },
+ "Castelnaudary": {
+  "n": 1,
+  "fonction": false,
+  "preuve": null,
+  "testes": 0
+ },
+ "Villejuif": {
+  "n": 1,
+  "fonction": false,
+  "preuve": null,
+  "testes": 3
+ },
+ "Sarcelles": {
+  "n": 1,
+  "fonction": false,
+  "preuve": null,
+  "testes": 1
+ },
+ "Plouézec": {
+  "n": 1,
+  "fonction": false,
+  "preuve": null,
+  "testes": 1
+ },
+ "Charleville-Mézières": {
+  "n": 1,
+  "fonction": false,
+  "preuve": null,
+  "testes": 2
+ },
+ "Le Val d'Hazey": {
+  "n": 1,
+  "fonction": false,
+  "preuve": null,
+  "testes": 0
+ },
+ "Communay": {
+  "n": 1,
+  "fonction": false,
+  "preuve": null,
+  "testes": 2
+ },
+ "Vaulx-en-Velin": {
+  "n": 1,
+  "fonction": false,
+  "preuve": null,
+  "testes": 2
+ },
+ "Torcy": {
+  "n": 1,
+  "fonction": false,
+  "preuve": null,
+  "testes": 1
+ },
+ "Antibes": {
+  "n": 1,
+  "fonction": false,
+  "preuve": null,
+  "testes": 2
+ },
+ "Bayonne": {
+  "n": 1,
+  "fonction": false,
+  "preuve": null,
+  "testes": 3
+ }
+}

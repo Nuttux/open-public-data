@@ -1,0 +1,1056 @@
+[
+ {
+  "nom": "Nanterre",
+  "insee": "92050",
+  "pop": 97783,
+  "site": "https://www.nanterre.fr/",
+  "attendu": "2 maquettes connues (CA2022, BP2024)",
+  "site_final": "https://www.nanterre.fr/",
+  "pdfs": 25,
+  "testes": 2,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 10
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 4
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 23
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0
+    }
+   },
+   "pages_parcourues": 4,
+   "lecteurs_externes": 9
+  },
+  "conclusion": "LU : fonction lue",
+  "pdf": {
+   "url": "https://www.nanterre.fr/fileadmin/mediatheque/Vie_citoyenne/Vie_municipale/budget_et_fiscalite/La_maquette_du_rapport_compte_administratif_2022.pdf",
+   "pages": 231,
+   "scan": false,
+   "ocr": false,
+   "annee": "2022",
+   "nomenclature": "M14",
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": true,
+    "autre": null,
+    "entete": "VILLE DE NANTERRE - Budget Principal - CA - 2022"
+   }
+  },
+  "fonctions": {
+   "fct": {
+    "0": {
+     "libelle": "Services généraux des administrations publiques locales",
+     "dep": 170125315.33,
+     "rec": null,
+     "page": 34,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "1": {
+     "libelle": "Sécurité et salubrité publiques",
+     "dep": 2839581.85,
+     "rec": 535033.55,
+     "page": 44,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "2": {
+     "libelle": "Enseignement - Formation",
+     "dep": 12138689.33,
+     "rec": null,
+     "page": 47,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "3": {
+     "libelle": "Culture",
+     "dep": 10079725.24,
+     "rec": null,
+     "page": 52,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "4": {
+     "libelle": "Sport et jeunesse",
+     "dep": 32743712.71,
+     "rec": null,
+     "page": 57,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "5": {
+     "libelle": "Interventions sociales et santé",
+     "dep": 12240493.23,
+     "rec": null,
+     "page": 62,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "6": {
+     "libelle": "Famille",
+     "dep": 19245537.98,
+     "rec": null,
+     "page": 66,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "7": {
+     "libelle": "Logement",
+     "dep": 1451624.88,
+     "rec": 51878.4,
+     "page": 68,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "8": {
+     "libelle": "Aménagement et services urbains, environnement",
+     "dep": 20760295.28,
+     "rec": null,
+     "page": 70,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "9": {
+     "libelle": "Action économique",
+     "dep": 1184064.24,
+     "rec": null,
+     "page": 78,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    }
+   },
+   "inv": {
+    "0": {
+     "libelle": "Services généraux des administrations publiques locales",
+     "dep": 27505921.27,
+     "rec": null,
+     "page": 81,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "1": {
+     "libelle": "Sécurité et salubrité publiques",
+     "dep": 1511843.52,
+     "rec": 0.0,
+     "page": 89,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "2": {
+     "libelle": "Enseignement - Formation",
+     "dep": 16020945.74,
+     "rec": null,
+     "page": 92,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "3": {
+     "libelle": "Culture",
+     "dep": 7943395.07,
+     "rec": 3480000.0,
+     "page": 96,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "4": {
+     "libelle": "Sport et jeunesse",
+     "dep": 5062666.16,
+     "rec": 162668.84,
+     "page": 100,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "5": {
+     "libelle": "Interventions sociales et santé",
+     "dep": 477413.4,
+     "rec": 618554.51,
+     "page": 103,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "6": {
+     "libelle": "Famille",
+     "dep": 568732.45,
+     "rec": 0.0,
+     "page": 106,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "7": {
+     "libelle": "Logement",
+     "dep": 337538.13,
+     "rec": 12473.0,
+     "page": 108,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "8": {
+     "libelle": "Aménagement et services urbains, environnement",
+     "dep": 11560566.8,
+     "rec": 3639986.97,
+     "page": 110,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "9": {
+     "libelle": "Action économique",
+     "dep": 287273.35,
+     "rec": null,
+     "page": 116,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    }
+   }
+  },
+  "essais": [
+   {
+    "url": "pale/budget_et_fiscalite/2025/DEL2025-18_1_Annexe_Rapport_BP.pdf",
+    "n_fct": 0,
+    "pages": 29,
+    "scan": false,
+    "entete": "2",
+    "annee": "2025"
+   },
+   {
+    "url": "t_fiscalite/La_maquette_du_rapport_compte_administratif_2022.pdf",
+    "n_fct": 10,
+    "pages": 231,
+    "scan": false,
+    "entete": "VILLE DE NANTERRE - Budget Principal - CA - ",
+    "annee": "2022"
+   }
+  ],
+  "secs": 69
+ },
+ {
+  "nom": "Sartrouville",
+  "insee": "78586",
+  "pop": 51617,
+  "site": "https://www.sartrouville.fr/",
+  "attendu": "fichiers 'Annexe-2-compte-administratif'",
+  "site_final": "https://www.sartrouville.fr/",
+  "pdfs": 90,
+  "testes": 22,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 79
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 4
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 24
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0
+    }
+   },
+   "pages_parcourues": 4,
+   "lecteurs_externes": 98
+  },
+  "conclusion": "PUBLIE SANS MAQUETTE",
+  "pdf": {
+   "url": "https://www.sartrouville.fr/wp-content/uploads/2025/11/Liste-des-deliberations-20-novembre-2025.pdf",
+   "pages": 2,
+   "scan": false,
+   "ocr": false,
+   "annee": "2027",
+   "nomenclature": null,
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "CESSION D'UN TÈNEMENT FONCIER SIS RUE HENRI BRISSON ET AV. MAURICE BERTEAUX"
+   }
+  },
+  "fonctions": {
+   "fct": {},
+   "inv": {}
+  },
+  "essais": [
+   {
+    "url": "ads/2024/01/43-2023-Annexe-2-compte-administratif-Ville-2022.pdf",
+    "n_fct": 0,
+    "pages": 51,
+    "scan": false,
+    "entete": "2",
+    "annee": "2022"
+   },
+   {
+    "url": "rtrouville.fr/wp-content/uploads/2025/01/CM103-2024-Annexe-1.pdf",
+    "n_fct": 0,
+    "pages": 14,
+    "scan": false,
+    "entete": "Le budget primitif 2025 s’établit en dépense",
+    "annee": "2025"
+   },
+   {
+    "url": "obation-du-budget-primitif-2024-Budget-principal-de-la-Ville.pdf",
+    "n_fct": 0,
+    "pages": 15,
+    "scan": false,
+    "entete": "Le budget 2024 en 4 points",
+    "annee": "2024"
+   },
+   {
+    "url": "obation-du-budget-primitif-2024-Budget-principal-de-la-Ville.pdf",
+    "n_fct": 0,
+    "pages": 20,
+    "scan": false,
+    "entete": "RAPPEL : le budget est désormais présenté en",
+    "annee": "2024"
+   },
+   {
+    "url": "tps://www.sartrouville.fr/wp-content/uploads/2026/08/BP-2026.pdf",
+    "n_fct": 0,
+    "pages": 15,
+    "scan": false,
+    "entete": "Le budget primitif 2026 s’établit en dépense",
+    "annee": "2026"
+   },
+   {
+    "url": "ation-du-budget-primitif-2023-Budget-principal-de-la-Ville-1.pdf",
+    "n_fct": 0,
+    "pages": 21,
+    "scan": false,
+    "entete": "Le budget primitif 2023 s’établit en dépense",
+    "annee": "2023"
+   },
+   {
+    "url": "le.fr/wp-content/uploads/2024/07/25093_RP-version-definitive.pdf",
+    "n_fct": 0,
+    "pages": 31,
+    "scan": false,
+    "entete": "2",
+    "annee": "2023"
+   },
+   {
+    "url": "/wp-content/uploads/2026/08/Rapport-de-presentation-CFU-2024.pdf",
+    "n_fct": 0,
+    "pages": 29,
+    "scan": false,
+    "entete": "2",
+    "annee": "2024"
+   }
+  ],
+  "secs": 138
+ },
+ {
+  "nom": "Châteauneuf-les-Martigues",
+  "insee": "13026",
+  "pop": 17986,
+  "site": "https://www.chateauneuflesmartigues.fr/",
+  "attendu": "'Annexe_CA_2021_Commune.pdf'",
+  "site_final": "https://www.chateauneuflesmartigues.fr/",
+  "pdfs": 191,
+  "testes": 22,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 186
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 2
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 23
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0
+    }
+   },
+   "pages_parcourues": 2,
+   "lecteurs_externes": 8
+  },
+  "conclusion": "SCAN illisible",
+  "pdf": {
+   "url": "https://www.chateauneuflesmartigues.fr/fileadmin/ARBORESCENCE/Vie_municipale/BUDGET_-_FINANCES/2024/D%C3%A9lib%C3%A9ration_N__24_085-annexe1.pdf",
+   "pages": 142,
+   "scan": true,
+   "ocr": true,
+   "annee": "2024",
+   "nomenclature": "M57",
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "Envoyé en préfecture le 10/04/2024"
+   }
+  },
+  "fonctions": {
+   "fct": {
+    "0": {
+     "libelle": "fonction 0",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 51,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    }
+   },
+   "inv": {}
+  },
+  "essais": [
+   {
+    "url": "Vie_municipale/BUDGET_-_FINANCES/2022/Annexe_CA_2021_Commune.pdf",
+    "n_fct": 0,
+    "pages": 116,
+    "scan": false,
+    "entete": "CHATEAUNEUF LES MARTIGUES . CHATEAUNEUF LES ",
+    "annee": "2021"
+   },
+   {
+    "url": "GET_-_FINANCES/2024/D%C3%A9lib%C3%A9ration_N__24_083-annexe1.pdf",
+    "n_fct": 0,
+    "pages": 150,
+    "scan": true,
+    "entete": "Envoyé en préfecture le 10/04/2024",
+    "annee": "2024"
+   },
+   {
+    "url": "Vie_municipale/BUDGET_-_FINANCES/2022/Annexe_BP_2022_Commune.pdf",
+    "n_fct": 0,
+    "pages": 126,
+    "scan": false,
+    "entete": "CHATEAUNEUF LES MARTIGUES . CHATEAUNEUF LES ",
+    "annee": "2022"
+   },
+   {
+    "url": "icipale/BUDGET_-_FINANCES/2026/D%C3%A9lib_2025_12_366_Annexe.pdf",
+    "n_fct": 0,
+    "pages": 64,
+    "scan": false,
+    "entete": "Ville de Châteauneuf-les-Martigues",
+    "annee": "2024"
+   },
+   {
+    "url": "GET_-_FINANCES/2024/D%C3%A9lib%C3%A9ration_N__24_085-annexe1.pdf",
+    "n_fct": 0,
+    "pages": 142,
+    "scan": true,
+    "entete": "Envoyé en préfecture le 10/04/2024",
+    "annee": "2024"
+   },
+   {
+    "url": "il_municipal/2021/03_Note_de_synthese_Approbation_du_CA_2020.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": false,
+    "entete": "Après en avoir délibéré, il est proposé au C",
+    "annee": "2020"
+   },
+   {
+    "url": "T_-_FINANCES/2026/Microsoft_Word_-_Rapport_CFU_2025_intranet.pdf",
+    "n_fct": 0,
+    "pages": 59,
+    "scan": false,
+    "entete": "Rapport de présentation du Compte Financier ",
+    "annee": "2025"
+   },
+   {
+    "url": "CE/Vie_municipale/BUDGET_-_FINANCES/2025/Rapport_CFU_2024_SP.pdf",
+    "n_fct": 0,
+    "pages": 95,
+    "scan": true,
+    "entete": "Envoyé en préfecture le 09/04/2025",
+    "annee": "2025"
+   }
+  ],
+  "secs": 88
+ },
+ {
+  "nom": "Évry-Courcouronnes",
+  "insee": "91228",
+  "pop": 66517,
+  "site": "https://evrycourcouronnes.fr/",
+  "attendu": "portail Huwise",
+  "site_final": "https://evrycourcouronnes.fr/",
+  "pdfs": 27,
+  "testes": 22,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 25
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 2,
+     "pages": 3
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 25
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0
+    }
+   },
+   "pages_parcourues": 3,
+   "lecteurs_externes": 2
+  },
+  "conclusion": "PUBLIE SANS MAQUETTE",
+  "pdf": {
+   "url": "https://evrycourcouronnes.fr/app/uploads/2025/01/La-Quinzaine-n%C2%B086-BD.pdf",
+   "pages": 8,
+   "scan": false,
+   "ocr": false,
+   "annee": "2028",
+   "nomenclature": null,
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "VENDREDI 17 JANVIER 2025"
+   }
+  },
+  "fonctions": {
+   "fct": {},
+   "inv": {}
+  },
+  "essais": [
+   {
+    "url": "240404_046-APPROBATION-DES-MODALITES-DE-FONCTIONNEMENT-DU-BP.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": false,
+    "entete": "Le 4 avril 2024",
+    "annee": "2024"
+   },
+   {
+    "url": "nnes.fr/app/uploads/2025/03/Quinzaine-Special-Budget-2025_BD.pdf",
+    "n_fct": 0,
+    "pages": 3,
+    "scan": false,
+    "entete": "VENDREDI 14 MARS 2025",
+    "annee": "2025"
+   },
+   {
+    "url": "ns-2024-format-scdl-copie/files/6c77457de21caf0a6cb1faecfa4222e7",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": false,
+    "entete": "Article 5 : Le montant maximum de la partici",
+    "annee": "2026"
+   },
+   {
+    "url": "ycourcouronnes.fr/app/uploads/2024/06/La-Quinzaine-n%C2%B071.pdf",
+    "n_fct": 0,
+    "pages": 8,
+    "scan": false,
+    "entete": "VENDREDI 19 JANVIER 2024",
+    "annee": "2025"
+   },
+   {
+    "url": "urcouronnes.fr/app/uploads/2025/01/La-Quinzaine-n%C2%B086-BD.pdf",
+    "n_fct": 0,
+    "pages": 8,
+    "scan": false,
+    "entete": "VENDREDI 17 JANVIER 2025",
+    "annee": "2028"
+   },
+   {
+    "url": "ycourcouronnes.fr/app/uploads/2024/06/La-Quinzaine-n%C2%B077.pdf",
+    "n_fct": 0,
+    "pages": 8,
+    "scan": false,
+    "entete": "VENDREDI 24 MAI 2024",
+    "annee": "2026"
+   },
+   {
+    "url": "urcouronnes.fr/app/uploads/2024/11/La-Quinzaine-n%C2%B081-BD.pdf",
+    "n_fct": 0,
+    "pages": 8,
+    "scan": false,
+    "entete": "VENDREDI 27 SEPTEMBRE 2024",
+    "annee": "2025"
+   },
+   {
+    "url": "urcouronnes.fr/app/uploads/2024/07/Guide-parentalite-A5-web1.pdf",
+    "n_fct": 0,
+    "pages": 84,
+    "scan": false,
+    "entete": "GUIDE DE LA PARENTALITÉ",
+    "annee": "2022"
+   }
+  ],
+  "secs": 185
+ },
+ {
+  "nom": "Clermont-Ferrand",
+  "insee": "63113",
+  "pop": 146351,
+  "site": "https://clermont-ferrand.fr/",
+  "attendu": "open data + délibérations",
+  "site_final": "https://clermont-ferrand.fr/",
+  "pdfs": 23,
+  "testes": 10,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 22
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 3
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 26
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0
+    },
+    "wayback": {
+     "ok": true,
+     "n": 0
+    }
+   },
+   "pages_parcourues": 3,
+   "lecteurs_externes": 4
+  },
+  "conclusion": "LU : fonction lue",
+  "pdf": {
+   "url": "https://clermont-ferrand.fr/docs/delib/CM23062023/CM23062023_005_A03.pdf",
+   "pages": 91,
+   "scan": false,
+   "ocr": false,
+   "annee": "2022",
+   "nomenclature": "M57",
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "VILLE DE CLERMONT-FERRAND - B.A. CENTRE D'EXPOS VILLE - CA - 2022"
+   }
+  },
+  "fonctions": {
+   "fct": {
+    "0": {
+     "libelle": "Services généraux des administrations publiques locales",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 21,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "1": {
+     "libelle": "Sécurité et salubrité publiques",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 24,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "2": {
+     "libelle": "Enseignement - Formation",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 26,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "3": {
+     "libelle": "Culture",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 29,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "4": {
+     "libelle": "Sport et jeunesse",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 31,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "5": {
+     "libelle": "Interventions sociales et santé",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 33,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "6": {
+     "libelle": "Famille",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 35,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "7": {
+     "libelle": "Logement",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 37,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "8": {
+     "libelle": "Aménagement et services urbains, environnement",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 39,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "9": {
+     "libelle": "Action économique",
+     "dep": 283.74,
+     "rec": 0.39,
+     "page": 42,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    }
+   },
+   "inv": {
+    "0": {
+     "libelle": "Services généraux des administrations publiques locales",
+     "dep": 0.0,
+     "rec": 3532.35,
+     "page": 44,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "1": {
+     "libelle": "Sécurité et salubrité publiques",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 48,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "2": {
+     "libelle": "Enseignement - Formation",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 51,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "3": {
+     "libelle": "Culture",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 54,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "4": {
+     "libelle": "Sport et jeunesse",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 57,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "5": {
+     "libelle": "Interventions sociales et santé",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 60,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "6": {
+     "libelle": "Famille",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 63,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "7": {
+     "libelle": "Logement",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 65,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "8": {
+     "libelle": "Aménagement et services urbains, environnement",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 67,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "9": {
+     "libelle": "Action économique",
+     "dep": 0.0,
+     "rec": null,
+     "page": 72,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    }
+   }
+  },
+  "essais": [
+   {
+    "url": "fault/files/2023-10/Budget%20primitif%202023%20sans%20annexe.pdf",
+    "n_fct": 0,
+    "pages": 22,
+    "scan": false,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "ROB%20de%20CM%2022%2011%202024%20Recueil%20au%20conseil%20-1.pdf",
+    "n_fct": 0,
+    "pages": 25,
+    "scan": false,
+    "entete": "Table des matières",
+    "annee": "2023"
+   },
+   {
+    "url": "025%20de%20CM%2018%2012%202024%20recueil%20conseil%20%281%29.pdf",
+    "n_fct": 0,
+    "pages": 25,
+    "scan": false,
+    "entete": "Présentation générale du budget primitif 202",
+    "annee": "2025"
+   },
+   {
+    "url": "s://clermont-ferrand.fr/docs/delib/CM20062019/CM200619_ODJ03.pdf",
+    "n_fct": 10,
+    "pages": 681,
+    "scan": false,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "tps://clermont-ferrand.fr/docs/delib/CM25062009/25062009ODJ1.pdf",
+    "n_fct": 0,
+    "pages": 41,
+    "scan": false,
+    "entete": "--------------------------------------------",
+    "annee": null
+   },
+   {
+    "url": "https://clermont-ferrand.fr/print/pdf/node/13578",
+    "n_fct": 0,
+    "pages": 1,
+    "scan": false,
+    "entete": "",
+    "annee": "2025"
+   },
+   {
+    "url": "tes/default/files/2025-02/Reglement%20AP%20Musique%202025(1).pdf",
+    "n_fct": 0,
+    "pages": 3,
+    "scan": false,
+    "entete": "Le dossier devra faire apparaître le projet ",
+    "annee": "2025"
+   },
+   {
+    "url": "clermont-ferrand.fr/docs/delib/CM23062023/CM23062023_007_A03.pdf",
+    "n_fct": 0,
+    "pages": 18,
+    "scan": false,
+    "entete": "VILLE DE CLERMONT-FERRAND - B.A. COOPERATIVE",
+    "annee": "2023"
+   }
+  ],
+  "secs": 109
+ },
+ {
+  "nom": "Fort-de-France",
+  "insee": "97209",
+  "pop": 75627,
+  "site": "https://www.fortdefrance.fr/",
+  "attendu": "?",
+  "site_final": "https://www.fortdefrance.fr/",
+  "pdfs": 7,
+  "testes": 7,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 7
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 2
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 12
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0
+    }
+   },
+   "pages_parcourues": 2,
+   "lecteurs_externes": 0
+  },
+  "conclusion": "PUBLIE SANS MAQUETTE",
+  "pdf": {
+   "url": "https://www.fortdefrance.fr/wp-content/uploads/2018/04/Livret-Conseil-Municipal-des-Jeunes-Mars-2018W.pdf",
+   "pages": 14,
+   "scan": false,
+   "ocr": false,
+   "annee": "2018",
+   "nomenclature": null,
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "Permettre à la jeunesse foyalaise de s’exprimer sur"
+   }
+  },
+  "fonctions": {
+   "fct": {},
+   "inv": {}
+  },
+  "essais": [
+   {
+    "url": "efrance.fr/wp-content/uploads/2019/08/Maquette-DUI-2019-2020.pdf",
+    "n_fct": 0,
+    "pages": 0,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "9-8BFD-A427A381D32/Maquette%20FDFMag%203%20all%C3%A9g%C3%A9e.pdf",
+    "n_fct": 0,
+    "pages": 40,
+    "scan": false,
+    "entete": "2",
+    "annee": "2013"
+   },
+   {
+    "url": "loads/2018/04/Livret-Conseil-Municipal-des-Jeunes-Mars-2018W.pdf",
+    "n_fct": 0,
+    "pages": 14,
+    "scan": false,
+    "entete": "Permettre à la jeunesse foyalaise de s’expri",
+    "annee": "2018"
+   },
+   {
+    "url": "nt/uploads/2020/02/LettrePrefet-Arreteprefectoral-30janv2020.pdf",
+    "n_fct": 0,
+    "pages": 3,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "uploads/2020/09/histoire-the%CC%81a%CC%82tre-municipal-2020W.pdf",
+    "n_fct": 0,
+    "pages": 28,
+    "scan": false,
+    "entete": "2",
+    "annee": null
+   },
+   {
+    "url": "AC-EE3D71B28D8/Finances%20villes%20capitales%20d'outre%20mer.pdf",
+    "n_fct": 0,
+    "pages": 26,
+    "scan": false,
+    "entete": "Document de travail-seconde conférence des v",
+    "annee": null
+   },
+   {
+    "url": "documents/pdf/--fdf---23090404-Orientations-Budgetaires-2010.pdf",
+    "n_fct": 0,
+    "pages": 18,
+    "scan": false,
+    "entete": " le débat d’orientation budgétaire est un d",
+    "annee": "2010"
+   }
+  ],
+  "secs": 198
+ }
+]

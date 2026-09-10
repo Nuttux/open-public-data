@@ -1,0 +1,4090 @@
+[
+ {
+  "nom": "Castres",
+  "insee": "81065",
+  "pop": 42505,
+  "reg": "76",
+  "site_final": "https://www.ville-castres.fr/",
+  "pdfs": 24,
+  "testes": 16,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 15
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 15
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 19
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    },
+    "wayback": {
+     "ok": true,
+     "n": 4
+    }
+   },
+   "pages_parcourues": 15,
+   "lecteurs_externes": 22,
+   "ecartes": [
+    "https://www.castres-mazamet.fr/sites/castres-mazamet.fr/www.castres-mazamet.fr/files/inlin",
+    "https://data.ccas.tresses.org/OpenData/4_Finances_locales/2023/compte_administratif_2022_t"
+   ]
+  },
+  "conclusion": "PUBLIE SANS MAQUETTE : document de la commune lu, présentation croisée absente",
+  "subventions": null,
+  "pdf": {
+   "url": "https://www.ville-castres.fr/wp-content/uploads/2026/07/RAPPORT-DE-PRESENTATION-CFU-2025-1.pdf",
+   "pages": 14,
+   "scan": false,
+   "ocr": false,
+   "annee": "2025",
+   "nomenclature": null,
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": true,
+    "autre": null,
+    "entete": "Table des matières"
+   }
+  },
+  "fonctions": {
+   "fct": {},
+   "inv": {}
+  },
+  "essais": [
+   {
+    "url": "p-content/uploads/2026/07/RAPPORT-DE-PRESENTATION-CFU-2025-1.pdf",
+    "n_fct": 0,
+    "pages": 14,
+    "scan": false,
+    "entete": "Table des matières",
+    "annee": "2025"
+   },
+   {
+    "url": "-castres.fr/wp-content/uploads/2026/07/DELIBERATION-CFU-2025.pdf",
+    "n_fct": 0,
+    "pages": 6,
+    "scan": false,
+    "entete": "DCM 30/06/2026",
+    "annee": "2025"
+   },
+   {
+    "url": "atoms/files/compte_administratif_2017_-_budget_primitif_2018.pdf",
+    "n_fct": 0,
+    "pages": 18,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "tratif_2018_-_budget_primitif_2019_-_rapport_de_presentation.pdf",
+    "n_fct": 0,
+    "pages": 18,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "e-castres.fr/wp-content/uploads/2025/06/rapport_ville_ca2024.pdf",
+    "n_fct": 0,
+    "pages": 12,
+    "scan": false,
+    "entete": "Table des matières",
+    "annee": "2024"
+   },
+   {
+    "url": "e-castres.fr/wp-content/uploads/2025/06/rapport_ville_bp2025.pdf",
+    "n_fct": 0,
+    "pages": 9,
+    "scan": false,
+    "entete": "Table des matières",
+    "annee": "2025"
+   },
+   {
+    "url": "ration_2021_-_budget_primitif_2022_-_rapport_de_presentation.pdf",
+    "n_fct": 0,
+    "pages": 20,
+    "scan": false,
+    "entete": "Compte administratif 2021 et Budget primitif",
+    "annee": "2021"
+   },
+   {
+    "url": "ds/2025/03/Compte-rendu-du-Conseil-municipal-du-28-juin-2022.pdf",
+    "n_fct": 0,
+    "pages": 147,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   }
+  ],
+  "secs": 890
+ },
+ {
+  "nom": "Ars-sur-Moselle",
+  "insee": "57032",
+  "pop": 4616,
+  "reg": "44",
+  "site_final": "https://www.ville-arssurmoselle.fr/",
+  "pdfs": 32,
+  "testes": 16,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 32
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 3
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 13
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    },
+    "wayback": {
+     "ok": true,
+     "n": 0
+    }
+   },
+   "pages_parcourues": 3,
+   "lecteurs_externes": 0
+  },
+  "conclusion": "SCAN illisible",
+  "subventions": null,
+  "pdf": {
+   "url": "https://www.ville-arssurmoselle.fr/fileadmin/user_upload/ars-sur-moselle/ACTUALITES/PV_CM_11.06.2025.pdf",
+   "pages": 20,
+   "scan": true,
+   "ocr": true,
+   "annee": "2027",
+   "nomenclature": null,
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "Fongibilité des crédits budgétaires dans le cadre de l'application de la nomencl"
+   }
+  },
+  "fonctions": {
+   "fct": {},
+   "inv": {}
+  },
+  "essais": [
+   {
+    "url": "dmin/user_upload/ars-sur-moselle/MUNICIPALITE/20240717164311.pdf",
+    "n_fct": 0,
+    "pages": 6,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "dmin/user_upload/ars-sur-moselle/MUNICIPALITE/20240717165358.pdf",
+    "n_fct": 0,
+    "pages": 10,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "dmin/user_upload/ars-sur-moselle/MUNICIPALITE/20240718150744.pdf",
+    "n_fct": 0,
+    "pages": 10,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "aurant_panneaux_cedez_le_passage_parking_Pierre_de_Coubertin.pdf",
+    "n_fct": 0,
+    "pages": 3,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "eadmin/user_upload/ars-sur-moselle/ACTUALITES/20241030150030.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "n_de_places_de_stationnement_PMR_parking_Pierre_de_Coubertin.pdf",
+    "n_fct": 0,
+    "pages": 3,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "eadmin/user_upload/ars-sur-moselle/MA_VILLE/CM_du_22.02.2023.pdf",
+    "n_fct": 0,
+    "pages": 5,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "admin/user_upload/ars-sur-moselle/MA_VILLE/CM_du_08.03.20238.pdf",
+    "n_fct": 0,
+    "pages": 3,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   }
+  ],
+  "secs": 174
+ },
+ {
+  "nom": "Château-Arnoux-Saint-Auban",
+  "insee": "04049",
+  "pop": 5107,
+  "reg": "93",
+  "site_final": "https://chateau-arnoux-saint-auban.fr/",
+  "pdfs": 27,
+  "testes": 16,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 27
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 2
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 18
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    }
+   },
+   "pages_parcourues": 2,
+   "lecteurs_externes": 0
+  },
+  "conclusion": "PUBLIE SANS MAQUETTE : document de la commune lu, présentation croisée absente",
+  "subventions": null,
+  "pdf": {
+   "url": "https://chateau-arnoux-saint-auban.fr/wp-content/uploads/2025/12/CODP_N%C2%B0040490002_CHATEAU_ARNOUX_SAINT_AUBAN-1.pdf",
+   "pages": 7,
+   "scan": false,
+   "ocr": false,
+   "annee": "2028",
+   "nomenclature": null,
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "A l’issue d’une procédure de mise en concurrence, le Bénéficiaire, dont les asso"
+   }
+  },
+  "fonctions": {
+   "fct": {},
+   "inv": {}
+  },
+  "essais": [
+   {
+    "url": "s/2025/12/CODP_N%C2%B0040490002_CHATEAU_ARNOUX_SAINT_AUBAN-1.pdf",
+    "n_fct": 0,
+    "pages": 7,
+    "scan": false,
+    "entete": "A l’issue d’une procédure de mise en concurr",
+    "annee": "2028"
+   },
+   {
+    "url": "DM_20240307N015-LOCATION-LOGEMENT-A-M.-PRIETO-GONZALEZ-ANGEL.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "fr/wp-content/uploads/2023/03/ANNEXE_N158_Convention_CTG_P2A.pdf",
+    "n_fct": 0,
+    "pages": 43,
+    "scan": false,
+    "entete": "- la Commune de Seyne les Alpes, représentée",
+    "annee": "2025"
+   },
+   {
+    "url": "loads/2023/05/DM_20230405N033-2-Subventions-aux-associations.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "/10/DM_20220929N119-PRISE_EN_CHARGE_DES_FRAIS_DE_DEPLACEMENT.pdf",
+    "n_fct": 0,
+    "pages": 4,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "arnoux-saint-auban.fr/wp-content/uploads/2022/10/Annexe_N114.pdf",
+    "n_fct": 0,
+    "pages": 5,
+    "scan": false,
+    "entete": "L’amélioration de l’habitat, pour répondre a",
+    "annee": null
+   },
+   {
+    "url": "arnoux-saint-auban.fr/wp-content/uploads/2022/04/CR-20220412.pdf",
+    "n_fct": 0,
+    "pages": 16,
+    "scan": false,
+    "entete": "Compte–rendu du Conseil Municipal du 12 Avri",
+    "annee": "2021"
+   },
+   {
+    "url": "ent/uploads/2024/09/Liste-des-deliberations-du-04-avril-2024.pdf",
+    "n_fct": 0,
+    "pages": 1,
+    "scan": false,
+    "entete": "",
+    "annee": "2024"
+   }
+  ],
+  "secs": 263
+ },
+ {
+  "nom": "Blanzat",
+  "insee": "63042",
+  "pop": 3709,
+  "reg": "84",
+  "site_final": "https://www.ville-blanzat.fr/",
+  "pdfs": 32,
+  "testes": 0,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 32
+    },
+    "deliberations": {
+     "ok": false,
+     "n": 0,
+     "pages": 0
+    },
+    "google": {
+     "ok": true,
+     "profil": 1,
+     "n": 13
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    },
+    "wayback": {
+     "ok": true,
+     "n": 0
+    }
+   },
+   "pages_parcourues": 0,
+   "lecteurs_externes": 2
+  },
+  "conclusion": "NON CONCLUANT (deliberations en échec) — sinon : RIEN TROUVÉ (tous canaux ok)",
+  "subventions": null,
+  "pdf": null,
+  "fonctions": null,
+  "essais": [],
+  "secs": 294
+ },
+ {
+  "nom": "Montbard",
+  "insee": "21425",
+  "pop": 4639,
+  "reg": "27",
+  "site_final": "https://www.montbard.fr/",
+  "pdfs": 542,
+  "testes": 16,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 530
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 3,
+     "pages": 14
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 20
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    }
+   },
+   "pages_parcourues": 14,
+   "lecteurs_externes": 0
+  },
+  "conclusion": "PUBLIE SANS MAQUETTE : document de la commune lu, présentation croisée absente",
+  "subventions": null,
+  "pdf": {
+   "url": "https://www.montbard.fr/wp-content/uploads/2026/07/2025-CFU-NOTE-DE-PRESENTATION-BREVE-ET-SYNTHETIQUE.pdf",
+   "pages": 6,
+   "scan": false,
+   "ocr": false,
+   "annee": "2026",
+   "nomenclature": null,
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "→Exécution financière :"
+   }
+  },
+  "fonctions": {
+   "fct": {},
+   "inv": {}
+  },
+  "essais": [
+   {
+    "url": "s/2026/07/2025-CFU-NOTE-DE-PRESENTATION-BREVE-ET-SYNTHETIQUE.pdf",
+    "n_fct": 0,
+    "pages": 6,
+    "scan": false,
+    "entete": "→Exécution financière :",
+    "annee": "2026"
+   },
+   {
+    "url": "ds/2026/03/2024-CA-NOTE-DE-PRESENTATION-BREVE-ET-SYNTHETIQUE.pdf",
+    "n_fct": 0,
+    "pages": 5,
+    "scan": false,
+    "entete": "Recettes de fonctionnement",
+    "annee": "2023"
+   },
+   {
+    "url": "nt/uploads/2024/11/presentation-synthetique-ca-2023-montbard.pdf",
+    "n_fct": 0,
+    "pages": 5,
+    "scan": false,
+    "entete": "Recettes de fonctionnement",
+    "annee": "2022"
+   },
+   {
+    "url": "nt/uploads/2024/11/presentation-synthetique-ca-2022-montbard.pdf",
+    "n_fct": 0,
+    "pages": 5,
+    "scan": false,
+    "entete": "Section de fonctionnement",
+    "annee": "2021"
+   },
+   {
+    "url": "nt/uploads/2024/11/presentation-synthetique-ca-2021-montbard.pdf",
+    "n_fct": 0,
+    "pages": 6,
+    "scan": false,
+    "entete": "- La maitrise des charges de fonctionnement,",
+    "annee": "2020"
+   },
+   {
+    "url": ".fr/wp-content/uploads/2026/06/deliberation.70.2026.montbard.pdf",
+    "n_fct": 0,
+    "pages": 1,
+    "scan": false,
+    "entete": "",
+    "annee": "2025"
+   },
+   {
+    "url": ".fr/wp-content/uploads/2026/06/deliberation.69.2026.montbard.pdf",
+    "n_fct": 0,
+    "pages": 1,
+    "scan": false,
+    "entete": "",
+    "annee": "2025"
+   },
+   {
+    "url": ".fr/wp-content/uploads/2026/03/deliberation.09.2026.montbard.pdf",
+    "n_fct": 0,
+    "pages": 1,
+    "scan": false,
+    "entete": "",
+    "annee": "2025"
+   }
+  ],
+  "secs": 138
+ },
+ {
+  "nom": "Valdoie",
+  "insee": "90099",
+  "pop": 5175,
+  "reg": "27",
+  "site_final": "https://www.mairievaldoie.com/",
+  "pdfs": 0,
+  "testes": 0,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 0
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 2
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 6
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    },
+    "wayback": {
+     "ok": true,
+     "n": 0
+    }
+   },
+   "pages_parcourues": 2,
+   "lecteurs_externes": 0
+  },
+  "conclusion": "RIEN TROUVÉ (tous canaux ok)",
+  "subventions": null,
+  "pdf": null,
+  "fonctions": null,
+  "essais": [],
+  "secs": 65
+ },
+ {
+  "nom": "Eauze",
+  "insee": "32119",
+  "pop": 4108,
+  "reg": "76",
+  "site_final": "https://www.mairie-eauze.fr/",
+  "pdfs": 24,
+  "testes": 16,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 10
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 2,
+     "pages": 12
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 15
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    },
+    "wayback": {
+     "ok": true,
+     "n": 0
+    }
+   },
+   "pages_parcourues": 12,
+   "lecteurs_externes": 0
+  },
+  "conclusion": "PUBLIE SANS MAQUETTE : document de la commune lu, présentation croisée absente",
+  "subventions": null,
+  "pdf": {
+   "url": "https://www.mairie-eauze.fr/local/documentModule/article_139/compte-rendu-cm-mardi-31-mars-2026-à-19h00-pdf.pdf",
+   "pages": 8,
+   "scan": false,
+   "ocr": false,
+   "annee": "2028",
+   "nomenclature": null,
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "RAPPORTS DE SEANCE"
+   }
+  },
+  "fonctions": {
+   "fct": {},
+   "inv": {}
+  },
+  "essais": [
+   {
+    "url": "e_84/compte-rendu-cm-mercredi-10-avril-2024-%C3%A0-20h30-pdf.pdf",
+    "n_fct": 0,
+    "pages": 6,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "e-eauze.fr/local/documentModule/article_28/cm-12-octobre-pdf.pdf",
+    "n_fct": 0,
+    "pages": 6,
+    "scan": false,
+    "entete": "RAPPORTS DE SEANCE",
+    "annee": "2021"
+   },
+   {
+    "url": "rticle_104/d%C3%A9lib%C3%A9ration-du-cm-du-03-avril-2025-pdf.pdf",
+    "n_fct": 0,
+    "pages": 1,
+    "scan": false,
+    "entete": "",
+    "annee": "2024"
+   },
+   {
+    "url": "ticle_79/compte-rendu-cm-jeudi-21-mars-2024-%C3%A0-20h30-pdf.pdf",
+    "n_fct": 0,
+    "pages": 12,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "/mairie-eauze.fr/local/documentModule/article_103/doc001-pdf.pdf",
+    "n_fct": 0,
+    "pages": 6,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "ttps://mairie-eauze.fr/local/documentModule/article_5/83-pdf.pdf",
+    "n_fct": 0,
+    "pages": 6,
+    "scan": false,
+    "entete": "1. COMPTE ADMINISTRATIF 2018 - COMPTE DE GES",
+    "annee": "2018"
+   },
+   {
+    "url": "-eauze.fr/resource/doc/AppelOffreEauze/AmiTennis_MairieEauze.pdf",
+    "n_fct": 0,
+    "pages": 4,
+    "scan": false,
+    "entete": "La convention d’occupation sera établie pour",
+    "annee": "2022"
+   },
+   {
+    "url": "ticle_49/compte-rendu-cm-mardi-07-mars-2023-%C3%A0-19h30-pdf.pdf",
+    "n_fct": 0,
+    "pages": 4,
+    "scan": false,
+    "entete": "RAPPORTS DE SEANCE",
+    "annee": "2023"
+   }
+  ],
+  "secs": 177
+ },
+ {
+  "nom": "Saint-Martin-en-Haut",
+  "insee": "69227",
+  "pop": 3942,
+  "reg": "84",
+  "site_final": "https://saint-martin-en-haut.fr/",
+  "pdfs": 48,
+  "testes": 16,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 35
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 3
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 17
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    },
+    "wayback": {
+     "ok": true,
+     "n": 3
+    }
+   },
+   "pages_parcourues": 3,
+   "lecteurs_externes": 0
+  },
+  "conclusion": "PUBLIE SANS MAQUETTE : document de la commune lu, présentation croisée absente",
+  "subventions": null,
+  "pdf": {
+   "url": "https://saint-martin-en-haut.fr/wp-content/uploads/62-juin-2024.pdf",
+   "pages": 24,
+   "scan": false,
+   "ocr": false,
+   "annee": "2025",
+   "nomenclature": null,
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "Je commence souvent mes éditos par quelques élé-"
+   }
+  },
+  "fonctions": {
+   "fct": {},
+   "inv": {}
+  },
+  "essais": [
+   {
+    "url": "nt-martin-en-haut.fr/wp-content/uploads/budget-communal-2024.pdf",
+    "n_fct": 0,
+    "pages": 12,
+    "scan": false,
+    "entete": "1. Section de fonctionnement",
+    "annee": "2024"
+   },
+   {
+    "url": "ps://saint-martin-en-haut.fr/wp-content/uploads/62-juin-2024.pdf",
+    "n_fct": 0,
+    "pages": 24,
+    "scan": false,
+    "entete": "Je commence souvent mes éditos par quelques ",
+    "annee": "2025"
+   },
+   {
+    "url": "artin-en-haut.fr/wp-content/uploads/finances-communales-2023.pdf",
+    "n_fct": 0,
+    "pages": 4,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "ps://saint-martin-en-haut.fr/wp-content/uploads/61-juin-2023.pdf",
+    "n_fct": 0,
+    "pages": 20,
+    "scan": false,
+    "entete": "Je voudrais à nouveau commencer mon édito pa",
+    "annee": "2024"
+   },
+   {
+    "url": "nt-martin-en-haut.fr/wp-content/uploads/cm_2023_04_13_convoc.pdf",
+    "n_fct": 0,
+    "pages": 1,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "artin-en-haut.fr/wp-content/uploads/finances-communales-2022.pdf",
+    "n_fct": 0,
+    "pages": 1,
+    "scan": false,
+    "entete": "",
+    "annee": "2022"
+   },
+   {
+    "url": "t.fr/wp-content/uploads/smh-budget-de-la-commune-r2020-p2021.pdf",
+    "n_fct": 0,
+    "pages": 1,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "rtin-en-haut.fr/wp-content/uploads/cm_2024_04_04_convocation.pdf",
+    "n_fct": 0,
+    "pages": 1,
+    "scan": false,
+    "entete": "",
+    "annee": "2024"
+   }
+  ],
+  "secs": 134
+ },
+ {
+  "nom": "Trith-Saint-Léger",
+  "insee": "59603",
+  "pop": 6019,
+  "reg": "32",
+  "conclusion": "NON CONCLUANT : pas de site dans l'annuaire"
+ },
+ {
+  "nom": "La Séguinière",
+  "insee": "49332",
+  "pop": 4248,
+  "reg": "52",
+  "site_final": "https://www.mairie-laseguiniere.fr/",
+  "pdfs": 126,
+  "testes": 2,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 112
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 1,
+     "pages": 2
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 18
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    },
+    "wayback": {
+     "ok": true,
+     "n": 2
+    }
+   },
+   "pages_parcourues": 2,
+   "lecteurs_externes": 0
+  },
+  "conclusion": "PUBLIE SANS MAQUETTE : document de la commune lu, présentation croisée absente",
+  "subventions": null,
+  "pdf": {
+   "url": "https://www.mairie-laseguiniere.fr/wp-content/uploads/2022/02/Analyse-financiere2022.pdf",
+   "pages": 12,
+   "scan": false,
+   "ocr": false,
+   "annee": "2022",
+   "nomenclature": null,
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "- 1 -"
+   }
+  },
+  "fonctions": {
+   "fct": {},
+   "inv": {}
+  },
+  "essais": [
+   {
+    "url": "iere.fr/wp-content/uploads/2014/11/Maquette_RDV_Culturels_v7.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": false,
+    "entete": "Cinéma",
+    "annee": "2015"
+   },
+   {
+    "url": "uiniere.fr/wp-content/uploads/2022/02/Analyse-financiere2022.pdf",
+    "n_fct": 0,
+    "pages": 12,
+    "scan": false,
+    "entete": "- 1 -",
+    "annee": "2022"
+   }
+  ],
+  "secs": 2491
+ },
+ {
+  "nom": "Kingersheim",
+  "insee": "68166",
+  "pop": 13354,
+  "reg": "44",
+  "site_final": "https://www.ville-kingersheim.fr/",
+  "pdfs": 89,
+  "testes": 16,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 88
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 5
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 17
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    },
+    "wayback": {
+     "ok": true,
+     "n": 5
+    }
+   },
+   "pages_parcourues": 5,
+   "lecteurs_externes": 0
+  },
+  "conclusion": "PUBLIE SANS MAQUETTE : document de la commune lu, présentation croisée absente",
+  "subventions": null,
+  "pdf": {
+   "url": "https://www.ville-kingersheim.fr/wp-content/uploads/2025/12/site-KING-SENIORS-2026.pdf",
+   "pages": 19,
+   "scan": false,
+   "ocr": false,
+   "annee": "2026",
+   "nomenclature": null,
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "Directeur de la publication : Laurent Riche"
+   }
+  },
+  "fonctions": {
+   "fct": {},
+   "inv": {}
+  },
+  "essais": [
+   {
+    "url": "tent/uploads/2026/03/Indicateurs-financiers-Kingersheim-2025.pdf",
+    "n_fct": 0,
+    "pages": 8,
+    "scan": false,
+    "entete": "Les comptes individuels des communes",
+    "annee": "2025"
+   },
+   {
+    "url": "loads/2026/03/Conseil-Municipal-du-26-mars-2025-Pts-Finances.pdf",
+    "n_fct": 0,
+    "pages": 28,
+    "scan": false,
+    "entete": "Ville en transition Démocratique et Écologiq",
+    "annee": "2024"
+   },
+   {
+    "url": "ersheim.fr/wp-content/uploads/2025/12/site-KING-SENIORS-2026.pdf",
+    "n_fct": 0,
+    "pages": 19,
+    "scan": false,
+    "entete": "Directeur de la publication : Laurent Riche",
+    "annee": "2026"
+   },
+   {
+    "url": "ntent/uploads/2022/06/Presentation-CA-2018-Ville-KINGERSHEIM.pdf",
+    "n_fct": 0,
+    "pages": 11,
+    "scan": false,
+    "entete": "Budget principal ville",
+    "annee": "2018"
+   },
+   {
+    "url": "ww.ville-kingersheim.fr/wp-content/uploads/2024/06/BD-KM-152.pdf",
+    "n_fct": 0,
+    "pages": 20,
+    "scan": false,
+    "entete": "Notre couverture :",
+    "annee": "2024"
+   },
+   {
+    "url": "w.ville-kingersheim.fr/content/download/30496/399439/file/Budget",
+    "n_fct": 0,
+    "pages": 27,
+    "scan": false,
+    "entete": "Contexte de préparation du BP 2019",
+    "annee": "2019"
+   },
+   {
+    "url": "lle-kingersheim.fr/content/download/30496/399439/file/BudgetComm",
+    "n_fct": 0,
+    "pages": 27,
+    "scan": false,
+    "entete": "Contexte de préparation du BP 2019",
+    "annee": "2019"
+   },
+   {
+    "url": "heim.fr/content/download/31190/406331/file/Indicateursfinanciers",
+    "n_fct": 0,
+    "pages": 7,
+    "scan": false,
+    "entete": "Les comptes individuels des communes",
+    "annee": "2018"
+   }
+  ],
+  "secs": 445
+ },
+ {
+  "nom": "Villette-d'Anthon",
+  "insee": "38557",
+  "pop": 5268,
+  "reg": "84",
+  "site_final": "https://www.mairie-villettedanthon.fr/",
+  "pdfs": 3,
+  "testes": 3,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 3
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 2
+    },
+    "google": {
+     "ok": false,
+     "raison": "zéro résultat sur 3 profils → blocage probable"
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    },
+    "wayback": {
+     "ok": true,
+     "n": 2
+    }
+   },
+   "pages_parcourues": 2,
+   "lecteurs_externes": 0
+  },
+  "conclusion": "NON CONCLUANT (google en échec) — sinon : PUBLIE SANS MAQUETTE : document de la commune lu, présentation croisée absente",
+  "subventions": null,
+  "pdf": {
+   "url": "https://www.mairie-villettedanthon.fr/download/A_la_une/LV_juin_2026.pdf",
+   "pages": 24,
+   "scan": false,
+   "ocr": false,
+   "annee": "2026",
+   "nomenclature": null,
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "Actualité municipale"
+   }
+  },
+  "fonctions": {
+   "fct": {},
+   "inv": {}
+  },
+  "essais": [
+   {
+    "url": "ites/050-A2024-03-01_Rapport_d_orientations_budgetaires_2024.pdf",
+    "n_fct": 0,
+    "pages": 35,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "www.mairie-villettedanthon.fr/download/A_la_une/LV_juin_2026.pdf",
+    "n_fct": 0,
+    "pages": 24,
+    "scan": false,
+    "entete": "Actualité municipale",
+    "annee": "2026"
+   },
+   {
+    "url": "ie-villettedanthon.fr/download//presentation_financiere_2019.pdf",
+    "n_fct": 0,
+    "pages": 22,
+    "scan": false,
+    "entete": "La commune de Villette d'Anthon se situe à 2",
+    "annee": "2019"
+   }
+  ],
+  "secs": 249
+ },
+ {
+  "nom": "Penmarch",
+  "insee": "29158",
+  "pop": 5508,
+  "reg": "53",
+  "site_final": "https://www.penmarch.bzh/",
+  "pdfs": 91,
+  "testes": 16,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 91
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 8
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 13
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    },
+    "wayback": {
+     "ok": true,
+     "n": 0
+    }
+   },
+   "pages_parcourues": 8,
+   "lecteurs_externes": 153
+  },
+  "conclusion": "SCAN illisible",
+  "subventions": null,
+  "pdf": {
+   "url": "https://www.penmarch.bzh/wp-content/uploads/2026/03/09-ville-de-penmarch-proces-verbal-conseil-municipal-10-decembre-2025.pdf",
+   "pages": 28,
+   "scan": true,
+   "ocr": true,
+   "annee": "2026",
+   "nomenclature": null,
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": ""
+   }
+  },
+  "fonctions": {
+   "fct": {},
+   "inv": {}
+  },
+  "essais": [
+   {
+    "url": "de-penmarch-proces-verbal-conseil-municipal-10-decembre-2025.pdf",
+    "n_fct": 0,
+    "pages": 28,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "-de-penmarch-proces-verbal-conseil-municipal-29-octobre-2025.pdf",
+    "n_fct": 0,
+    "pages": 20,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "de-penmarch-proces-verbal-conseil-municipal-4-septembre-2025.pdf",
+    "n_fct": 0,
+    "pages": 22,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "e-de-penmarch-proces-verbal-conseil-municipal-2-juillet-2025.pdf",
+    "n_fct": 0,
+    "pages": 14,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "ille-de-penmarch-proces-verbal-conseil-municipal-28-mai-2025.pdf",
+    "n_fct": 0,
+    "pages": 24,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "le-de-penmarch-proces-verbal-conseil-municipal-29-avril-2025.pdf",
+    "n_fct": 0,
+    "pages": 11,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "lle-de-penmarch-proces-verbal-conseil-municipal-26-mars-2025.pdf",
+    "n_fct": 0,
+    "pages": 32,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "-de-penmarch-proces-verbal-conseil-municipal-26-fevrier-2025.pdf",
+    "n_fct": 0,
+    "pages": 21,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   }
+  ],
+  "secs": 463
+ },
+ {
+  "nom": "Nemours",
+  "insee": "77333",
+  "pop": 12889,
+  "reg": "11",
+  "site_final": "https://www.nemours.fr/",
+  "pdfs": 83,
+  "testes": 6,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 81
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 2
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 2
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    }
+   },
+   "pages_parcourues": 2,
+   "lecteurs_externes": 0
+  },
+  "conclusion": "LU : fonction lue",
+  "subventions": {
+   "format": "M57 B8",
+   "n": 58,
+   "total": {
+    "fct": 1182675.0,
+    "inv": 0
+   },
+   "ecart_pct": {
+    "fct": 0.0,
+    "inv": null
+   },
+   "pages": [
+    151,
+    152
+   ]
+  },
+  "pdf": {
+   "url": "https://www.nemours.fr/wp-content/uploads/2025/06/Maquette-Budgetaire-M57-du-budget-primitif-2025.pdf",
+   "pages": 177,
+   "scan": false,
+   "ocr": false,
+   "annee": "2025",
+   "nomenclature": "M57",
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "MAIRIE DE NEMOURS - BUDGET VILLE - BP - 2025"
+   }
+  },
+  "fonctions": {
+   "fct": {
+    "0": {
+     "libelle": "Services généraux",
+     "dep": 5063587.0,
+     "rec": 544680.0,
+     "page": 82,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "1": {
+     "libelle": "Sécurité",
+     "dep": 765877.0,
+     "rec": 2660.0,
+     "page": 85,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "2": {
+     "libelle": "Enseignement, formation professionnelle et apprentissage",
+     "dep": 2608118.0,
+     "rec": 474150.0,
+     "page": 86,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "3": {
+     "libelle": "Culture, vie sociale, jeunesse, sports et loisirs",
+     "dep": 3340551.0,
+     "rec": 423220.0,
+     "page": 94,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "4": {
+     "libelle": "Santé et action sociale",
+     "dep": 1583594.0,
+     "rec": 73000.0,
+     "page": 98,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "5": {
+     "libelle": "Aménagement des territoires et habitat",
+     "dep": 1852755.0,
+     "rec": 231310.0,
+     "page": 101,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "6": {
+     "libelle": "Action économique",
+     "dep": 285743.0,
+     "rec": 89679.92,
+     "page": 104,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "7": {
+     "libelle": "Environnement",
+     "dep": 708007.0,
+     "rec": 0.0,
+     "page": 108,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "8": {
+     "libelle": "Transports",
+     "dep": 573609.0,
+     "rec": 325120.0,
+     "page": 109,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    }
+   },
+   "inv": {
+    "0": {
+     "libelle": "Services généraux",
+     "dep": 1392015.68,
+     "rec": 582195.0,
+     "page": 48,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "1": {
+     "libelle": "Sécurité",
+     "dep": 73130.0,
+     "rec": 35000.0,
+     "page": 52,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "2": {
+     "libelle": "Enseignement, formation professionnelle et apprentissage",
+     "dep": 231435.0,
+     "rec": 0.0,
+     "page": 55,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "3": {
+     "libelle": "Culture, vie sociale, jeunesse, sports et loisirs",
+     "dep": 855688486.0,
+     "rec": 950748.0,
+     "page": 56,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "4": {
+     "libelle": "Santé et action sociale",
+     "dep": 17366.61,
+     "rec": 0.0,
+     "page": 59,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "5": {
+     "libelle": "Aménagement des territoires et habitat",
+     "dep": 1220130.0,
+     "rec": 555500.0,
+     "page": 63,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "6": {
+     "libelle": "Action économique",
+     "dep": 67065.0,
+     "rec": 0.0,
+     "page": 66,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "7": {
+     "libelle": "Environnement",
+     "dep": 155500.0,
+     "rec": 66500.0,
+     "page": 68,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "8": {
+     "libelle": "Transports",
+     "dep": 2027400.0,
+     "rec": 1088312.0,
+     "page": 71,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    }
+   }
+  },
+  "essais": [
+   {
+    "url": "inances-Maquette-budgetaire-M57-Compte-financier-Unique-2025.pdf",
+    "n_fct": 0,
+    "pages": 108,
+    "scan": false,
+    "entete": "COMMUNE DE NEMOURS - BUDGET VILLE - CFU - 20",
+    "annee": "2025"
+   },
+   {
+    "url": "05/25-23-FINANCES-PJ-1-Compte-financier-Unique-2024-Maquette.pdf",
+    "n_fct": 0,
+    "pages": 160,
+    "scan": false,
+    "entete": "MAIRIE DE NEMOURS - BUDGET VILLE - CFU - 202",
+    "annee": "2024"
+   },
+   {
+    "url": "/uploads/2025/05/25-23-FINANCES-Compte-financier-unique-2024.pdf",
+    "n_fct": 0,
+    "pages": 3,
+    "scan": true,
+    "entete": "Accusé de réception en préfecture",
+    "annee": "2025"
+   },
+   {
+    "url": "5/12/D-2025-63-FINANCES-PJ-Decision-modificative-n.2-BP-2025.pdf",
+    "n_fct": 0,
+    "pages": 52,
+    "scan": false,
+    "entete": "MAIRIE DE NEMOURS - BUDGET VILLE - DM - 2025",
+    "annee": "2025"
+   },
+   {
+    "url": "fr/wp-content/uploads/2025/03/25-05-Finances-Budget-primitif.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": true,
+    "entete": "Accusé de réception en préfecture",
+    "annee": "2025"
+   },
+   {
+    "url": "oads/2025/06/Maquette-Budgetaire-M57-du-budget-primitif-2025.pdf",
+    "n_fct": 9,
+    "pages": 177,
+    "scan": false,
+    "entete": "MAIRIE DE NEMOURS - BUDGET VILLE - BP - 2025",
+    "annee": "2025"
+   }
+  ],
+  "secs": 114
+ },
+ {
+  "nom": "Saint-Étienne",
+  "insee": "42218",
+  "pop": 173136,
+  "reg": "84",
+  "site_final": "https://www.saint-etienne.fr/",
+  "pdfs": 108,
+  "testes": 16,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 108
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 5
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 27
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    }
+   },
+   "pages_parcourues": 5,
+   "lecteurs_externes": 16,
+   "ecartes": [
+    "https://www.saintetiennedurouvray.fr/wp-content/uploads/2025/03/Delib-2025.03.27-12.pdf",
+    "https://www.saintetiennedurouvray.fr/wp-content/uploads/2023/03/Deliberation-n%C2%B02023-0"
+   ]
+  },
+  "conclusion": "PUBLIE SANS MAQUETTE",
+  "subventions": null,
+  "pdf": {
+   "url": "http://www.saint-etienne.fr/budget/pdf/annexe_section_fonctionnement.pdf",
+   "pages": 75,
+   "scan": false,
+   "ocr": false,
+   "annee": null,
+   "nomenclature": "M14",
+   "entite": {
+    "nom_ok": false,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "IV"
+   }
+  },
+  "fonctions": {
+   "fct": {
+    "0": {
+     "libelle": "A-",
+     "dep": 606072.16,
+     "rec": null,
+     "page": 3,
+     "cumul": false,
+     "somme_articles": 606072.16,
+     "pages_sommees": 9,
+     "dep_source": "somme des articles"
+    },
+    "2": {
+     "libelle": "A-",
+     "dep": 36938.91,
+     "rec": null,
+     "page": 23,
+     "cumul": false,
+     "somme_articles": 36938.91,
+     "pages_sommees": 4,
+     "dep_source": "somme des articles"
+    },
+    "3": {
+     "libelle": "A-",
+     "dep": 80300.44,
+     "rec": null,
+     "page": 32,
+     "cumul": false,
+     "somme_articles": 80300.44,
+     "pages_sommees": 6,
+     "dep_source": "somme des articles"
+    },
+    "4": {
+     "libelle": "A-",
+     "dep": 17301.36,
+     "rec": null,
+     "page": 44,
+     "cumul": false,
+     "somme_articles": 17301.36,
+     "pages_sommees": 3,
+     "dep_source": "somme des articles"
+    },
+    "5": {
+     "libelle": "A-",
+     "dep": 4152.5,
+     "rec": null,
+     "page": 56,
+     "cumul": false,
+     "somme_articles": 4152.5,
+     "pages_sommees": 1,
+     "dep_source": "somme des articles"
+    },
+    "8": {
+     "libelle": "A-",
+     "dep": 94030.0,
+     "rec": null,
+     "page": 62,
+     "cumul": false,
+     "somme_articles": 94030.0,
+     "pages_sommees": 4,
+     "dep_source": "somme des articles"
+    }
+   },
+   "inv": {}
+  },
+  "essais": [
+   {
+    "url": "w.saint-etienne.fr/budget/pdf/vote_ca_section_fonctionnement.pdf",
+    "n_fct": 0,
+    "pages": 11,
+    "scan": false,
+    "entete": "III",
+    "annee": null
+   },
+   {
+    "url": "w.saint-etienne.fr/budget/pdf/vote_ca_section_investissement.pdf",
+    "n_fct": 0,
+    "pages": 14,
+    "scan": false,
+    "entete": "III - VOTE DU COMPTE ADMINISTRATIF",
+    "annee": null
+   },
+   {
+    "url": ".fr/sites/default/files/media/downloads/99_de-2025_03_06_d06.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "ienne.fr/sites/default/files/media/downloads/rapport_bp_2025.pdf",
+    "n_fct": 0,
+    "pages": 65,
+    "scan": false,
+    "entete": "INTRODUCTION……………………………………………………………………………………",
+    "annee": "2025"
+   },
+   {
+    "url": "ult/files/media/downloads/rapport_bp_2026_version_18_12_2025.pdf",
+    "n_fct": 0,
+    "pages": 66,
+    "scan": false,
+    "entete": "INTRODUCTION……………………………………………………………………………………",
+    "annee": "2026"
+   },
+   {
+    "url": "enne.fr/sites/default/files/media/downloads/rapport_bp_2024_.pdf",
+    "n_fct": 0,
+    "pages": 65,
+    "scan": false,
+    "entete": "INTRODUCTION……………………………………………………………………………………",
+    "annee": "2024"
+   },
+   {
+    "url": ".fr/sites/default/files/media/downloads/99_de-2025_01_07_d08.pdf",
+    "n_fct": 0,
+    "pages": 5,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "e.fr/budget/pdf/annexe_operation_investissement_rochetaillee.pdf",
+    "n_fct": 0,
+    "pages": 1,
+    "scan": false,
+    "entete": "",
+    "annee": null
+   }
+  ],
+  "secs": 165
+ },
+ {
+  "nom": "Chabanière",
+  "insee": "69228",
+  "pop": 4323,
+  "reg": "84",
+  "site_final": "https://www.chabaniere.fr/",
+  "pdfs": 11,
+  "testes": 11,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 11
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 7
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 4
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    },
+    "wayback": {
+     "ok": true,
+     "n": 4
+    }
+   },
+   "pages_parcourues": 7,
+   "lecteurs_externes": 0
+  },
+  "conclusion": "PUBLIE SANS MAQUETTE : document de la commune lu, présentation croisée absente",
+  "subventions": null,
+  "pdf": {
+   "url": "https://www.chabaniere.fr/download/kiosque/CHABINFO-N19-BD.pdf",
+   "pages": 28,
+   "scan": false,
+   "ocr": false,
+   "annee": "2029",
+   "nomenclature": null,
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "2 -  CHAB’INFO - la vie de nos 3 villages - N°19"
+   }
+  },
+  "fonctions": {
+   "fct": {},
+   "inv": {}
+  },
+  "essais": [
+   {
+    "url": "ps://www.chabaniere.fr/download/kiosque/2025/CHABINFO-N18-BD.pdf",
+    "n_fct": 0,
+    "pages": 28,
+    "scan": false,
+    "entete": "2 -  CHAB’INFO - la vie de nos 3 villages - ",
+    "annee": "2027"
+   },
+   {
+    "url": "ps://www.chabaniere.fr/download/kiosque/2025/CHABINFO-N17-BD.pdf",
+    "n_fct": 0,
+    "pages": 28,
+    "scan": false,
+    "entete": "2 -  CHAB’INFO - la vie de nos 3 villages - ",
+    "annee": "2026"
+   },
+   {
+    "url": "ps://www.chabaniere.fr/download/kiosque/2025/CHABINFO-N16-BD.pdf",
+    "n_fct": 0,
+    "pages": 28,
+    "scan": false,
+    "entete": "2 -  CHAB’INFO - la vie de nos 3 villages - ",
+    "annee": "2025"
+   },
+   {
+    "url": "https://www.chabaniere.fr/download/kiosque/CHABINFO-N20-BD.pdf",
+    "n_fct": 0,
+    "pages": 24,
+    "scan": false,
+    "entete": "2 -  CHAB’INFO - la vie de nos 3 villages - ",
+    "annee": "2026"
+   },
+   {
+    "url": "https://www.chabaniere.fr/download/kiosque/CHABINFO-N19-BD.pdf",
+    "n_fct": 0,
+    "pages": 28,
+    "scan": false,
+    "entete": "2 -  CHAB’INFO - la vie de nos 3 villages - ",
+    "annee": "2029"
+   },
+   {
+    "url": "les/Publications/Fichiers/debat_dorientation_budgetaire_2022.pdf",
+    "n_fct": 0,
+    "pages": 27,
+    "scan": false,
+    "entete": "Croissance prévisionnelle en France en forte",
+    "annee": "2023"
+   },
+   {
+    "url": "Publications/Fichiers/rapport_dorientations_budgetaires_2022.pdf",
+    "n_fct": 0,
+    "pages": 19,
+    "scan": false,
+    "entete": "CM du 7 février 2022 : Débat d’orientation b",
+    "annee": "2022"
+   },
+   {
+    "url": "efault/files/Publications/Fichiers/presentation_budgets_2021.pdf",
+    "n_fct": 0,
+    "pages": 20,
+    "scan": false,
+    "entete": "Approbation du Compte Administratif 2020 – B",
+    "annee": "2020"
+   }
+  ],
+  "secs": 122
+ },
+ {
+  "nom": "Égletons",
+  "insee": "19073",
+  "pop": 4341,
+  "reg": "75",
+  "site_final": "https://www.egletons.fr/",
+  "pdfs": 13,
+  "testes": 13,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 13
+    },
+    "deliberations": {
+     "ok": false,
+     "n": 0,
+     "pages": 0
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 13
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    },
+    "wayback": {
+     "ok": true,
+     "n": 0
+    }
+   },
+   "pages_parcourues": 0,
+   "lecteurs_externes": 1
+  },
+  "conclusion": "NON CONCLUANT (deliberations en échec) — sinon : SCAN illisible",
+  "subventions": null,
+  "pdf": {
+   "url": "https://www.egletons.fr/wp-content/uploads/2024/12/Proces_verbal_26_septembre_2024.pdf",
+   "pages": 21,
+   "scan": true,
+   "ocr": true,
+   "annee": "2024",
+   "nomenclature": null,
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "Commune d'Égletons - Séance du Conseil Municipal du 26/09/2024"
+   }
+  },
+  "fonctions": {
+   "fct": {},
+   "inv": {}
+  },
+  "essais": [
+   {
+    "url": "ploads/2024/12/DOSSIER_DEMANDE_DE_SUBVENTION_2025_EGLETONS-2.pdf",
+    "n_fct": 0,
+    "pages": 11,
+    "scan": false,
+    "entete": "Dossier demande de subvention des associatio",
+    "annee": "2025"
+   },
+   {
+    "url": "s/2024/08/Proces_verbal_du_conseil_municipal_du_27_mars_2024.pdf",
+    "n_fct": 0,
+    "pages": 24,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "ons.fr/wp-content/uploads/2026/01/Proces_verbal_du_6_11_2025.pdf",
+    "n_fct": 0,
+    "pages": 18,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "etons.fr/wp-content/uploads/2024/10/PROCES-VERBAL-20-06-2024.pdf",
+    "n_fct": 0,
+    "pages": 20,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "r/wp-content/uploads/2024/12/Proces_verbal_26_septembre_2024.pdf",
+    "n_fct": 0,
+    "pages": 21,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "roces_verbal_seance_du_conseil_municipal_du_19_decembre_2024.pdf",
+    "n_fct": 0,
+    "pages": 16,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "fr/wp-content/uploads/2026/07/LISTE-DELIBERATIONS-01-07-2026.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "s.fr/wp-content/uploads/2026/07/LISTE-DELIBERATIONS-25062026.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": false,
+    "entete": "Commune d’Egletons – Séance du Conseil Munic",
+    "annee": "2026"
+   }
+  ],
+  "secs": 446
+ },
+ {
+  "nom": "Lillers",
+  "insee": "62516",
+  "pop": 10193,
+  "reg": "32",
+  "site_final": "https://lillers.fr/",
+  "pdfs": 14,
+  "testes": 14,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 12
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 5
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 6
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    },
+    "wayback": {
+     "ok": true,
+     "n": 0
+    }
+   },
+   "pages_parcourues": 5,
+   "lecteurs_externes": 0
+  },
+  "conclusion": "LU : fonction lue",
+  "subventions": null,
+  "pdf": {
+   "url": "https://www.mairie-lillers.fr/images/PDF/Votre-mairie/actes-reglementaires-2020/BP-VILLE-DE-LILLERS-2020.pdf",
+   "pages": 129,
+   "scan": true,
+   "ocr": true,
+   "annee": "2020",
+   "nomenclature": "M57",
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": ""
+   }
+  },
+  "fonctions": {
+   "fct": {
+    "0": {
+     "libelle": "Services généraux des administrations publiques locales o Li",
+     "dep": 5785227.38,
+     "rec": 11964942.38,
+     "page": 29,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "1": {
+     "libelle": "Sécurité et salubrité publiques",
+     "dep": 392180.0,
+     "rec": 2000.0,
+     "page": 32,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "2": {
+     "libelle": "Enseignement - Formation",
+     "dep": 1316.0,
+     "rec": 149700.0,
+     "page": 34,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "3": {
+     "libelle": "Culture p T",
+     "dep": 998120.0,
+     "rec": 79340.0,
+     "page": 36,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "4": {
+     "libelle": "Sport et jeunesse a",
+     "dep": 1001622.0,
+     "rec": 216800.0,
+     "page": 38,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "5": {
+     "libelle": "fonction 5",
+     "dep": 1976987.0,
+     "rec": 316800.0,
+     "page": 40,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "6": {
+     "libelle": "Famille",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 42,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "7": {
+     "libelle": "Logement",
+     "dep": 117585.0,
+     "rec": 25000.0,
+     "page": 43,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "8": {
+     "libelle": "Aménagement et services urbains, environnement O",
+     "dep": 1448304.0,
+     "rec": 203900.0,
+     "page": 44,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "9": {
+     "libelle": "Action économique",
+     "dep": 131662.0,
+     "rec": 13600.0,
+     "page": 47,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    }
+   },
+   "inv": {
+    "0": {
+     "libelle": "Services généraux des administrations publiques locales",
+     "dep": 1597800.0,
+     "rec": 2771.0,
+     "page": 49,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "1": {
+     "libelle": "fonction 1",
+     "dep": 237800.0,
+     "rec": 36200.0,
+     "page": 53,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "2": {
+     "libelle": "Enseignement - Formation F",
+     "dep": 296600.0,
+     "rec": 380200.0,
+     "page": 56,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "3": {
+     "libelle": "Culture",
+     "dep": 19000.0,
+     "rec": 0.0,
+     "page": 59,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "4": {
+     "libelle": "Sport et jeunesse",
+     "dep": 221200.0,
+     "rec": 0.0,
+     "page": 62,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "5": {
+     "libelle": "Interventions sociales et santé",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 65,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "6": {
+     "libelle": "Famille T",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 68,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "7": {
+     "libelle": "Logement",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 70,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "8": {
+     "libelle": "Aménagement et services urbains, environnement",
+     "dep": 461500.0,
+     "rec": 144600.0,
+     "page": 72,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "9": {
+     "libelle": "fonction 9",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 77,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    }
+   }
+  },
+  "essais": [
+   {
+    "url": "https://lillers.fr/wp-content/uploads/2025/12/Classeur1.pdf",
+    "n_fct": 0,
+    "pages": 41,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "ontent/uploads/2025/10/Deliberation-executoires-CM25.09.2025.pdf",
+    "n_fct": 0,
+    "pages": 76,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "wp-content/uploads/2025/10/Deliberation-executoire-CM06.2025.pdf",
+    "n_fct": 0,
+    "pages": 63,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "/2012.05.12-Zone-Bleue-Autorisation-zone-bleues-duree-darret.pdf",
+    "n_fct": 0,
+    "pages": 1,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "re-mairie/actes-reglementaires-2020/BP-VILLE-DE-LILLERS-2020.pdf",
+    "n_fct": 0,
+    "pages": 129,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "ie-lillers.fr/images/PDF/Votre-mairie/CR-du-CM-du-15.04.2021.pdf",
+    "n_fct": 0,
+    "pages": 36,
+    "scan": false,
+    "entete": "I-02a) Compte Administratif 2020 – Ville",
+    "annee": "2020"
+   },
+   {
+    "url": "://lillers.fr/wp-content/uploads/2026/06/Conseil-Municipal-1.pdf",
+    "n_fct": 0,
+    "pages": 68,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "https://lillers.fr/wp-content/uploads/2026/08/cm-du-30.06.pdf",
+    "n_fct": 0,
+    "pages": 59,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   }
+  ],
+  "secs": 538
+ },
+ {
+  "nom": "Villeneuve-d'Ascq",
+  "insee": "59009",
+  "pop": 62868,
+  "reg": "32",
+  "site_final": "https://www.villeneuvedascq.fr",
+  "pdfs": 28,
+  "testes": 16,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 28
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 12
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 23
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    }
+   },
+   "pages_parcourues": 12,
+   "lecteurs_externes": 57
+  },
+  "conclusion": "PUBLIE SANS MAQUETTE : document de la commune lu, présentation croisée absente",
+  "subventions": null,
+  "pdf": {
+   "url": "https://www.villeneuvedascq.fr/sites/default/files/2026-06/maquette_bs_16_06.pdf",
+   "pages": 93,
+   "scan": false,
+   "ocr": false,
+   "annee": "2026",
+   "nomenclature": "M57",
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": true,
+    "autre": null,
+    "entete": "Ville de Villeneuve d'Ascq - Budget principal - BS (projet de budget) - 2026"
+   }
+  },
+  "fonctions": {
+   "fct": {},
+   "inv": {}
+  },
+  "essais": [
+   {
+    "url": "villeneuvedascq.fr/sites/default/files/2024-04/VA_DEL2024_27.pdf",
+    "n_fct": 0,
+    "pages": 35,
+    "scan": false,
+    "entete": "Après avis de la Commission Plénière du jeud",
+    "annee": "2024"
+   },
+   {
+    "url": "uvedascq.fr/sites/default/files/2024-10/BS%202024%20maquette.pdf",
+    "n_fct": 0,
+    "pages": 72,
+    "scan": false,
+    "entete": "Ville de Villeneuve d'Ascq - Budget principa",
+    "annee": "2024"
+   },
+   {
+    "url": "euvedascq.fr/sites/default/files/2021-06/PPT%20CA%202020%203.pdf",
+    "n_fct": 0,
+    "pages": 50,
+    "scan": false,
+    "entete": "INTRODUCTION",
+    "annee": "2020"
+   },
+   {
+    "url": "uvedascq.fr/sites/default/files/2023-11/Maquette%20BS%202023.pdf",
+    "n_fct": 0,
+    "pages": 78,
+    "scan": false,
+    "entete": "Ville de Villeneuve d'Ascq - Budget principa",
+    "annee": "2023"
+   },
+   {
+    "url": "illeneuvedascq.fr/sites/default/files/2023-04/ppt_bp_2023_v2.pdf",
+    "n_fct": 0,
+    "pages": 123,
+    "scan": false,
+    "entete": "Un budget qui se construit dans un contexte ",
+    "annee": "2023"
+   },
+   {
+    "url": "lleneuvedascq.fr/sites/default/files/2022-06/rapport_ca_2021.pdf",
+    "n_fct": 0,
+    "pages": 43,
+    "scan": false,
+    "entete": "Vue d’ensemble du compte administratif 2021 ",
+    "annee": "2021"
+   },
+   {
+    "url": "villeneuvedascq.fr/sites/default/files/2025-06/VA_DEL2025_56.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": false,
+    "entete": "Résultat de clôture de l’exercice 2024 : (1+",
+    "annee": "2024"
+   },
+   {
+    "url": "efault/files/2025-03/bp_2025_rapport_de_presentation_pour_cm.pdf",
+    "n_fct": 0,
+    "pages": 40,
+    "scan": false,
+    "entete": "Introduction ...............................",
+    "annee": "2025"
+   }
+  ],
+  "secs": 149
+ },
+ {
+  "nom": "Pont-Audemer",
+  "insee": "27467",
+  "pop": 10023,
+  "reg": "28",
+  "site_final": "https://www.ville-pont-audemer.fr/",
+  "pdfs": 207,
+  "testes": 10,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 23
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 169,
+     "pages": 16
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 23
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    }
+   },
+   "pages_parcourues": 16,
+   "lecteurs_externes": 0
+  },
+  "conclusion": "LU : fonction lue",
+  "subventions": null,
+  "pdf": {
+   "url": "https://www.ville-pont-audemer.fr/wp-content/uploads/2025/04/CCPAVR_CA2023BP81.pdf",
+   "pages": 178,
+   "scan": false,
+   "ocr": false,
+   "annee": "2023",
+   "nomenclature": "M57",
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "CDC PONT-AUDEMER - VAL DE RISLE - CDC PONT AUDEMER-VAL DE RISLE - CA - 2023"
+   }
+  },
+  "fonctions": {
+   "fct": {
+    "0": {
+     "libelle": "Services généraux des administrations publiques locales",
+     "dep": 6266087.72,
+     "rec": null,
+     "page": 32,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "1": {
+     "libelle": "Sécurité et salubrité publiques",
+     "dep": 1078243.48,
+     "rec": 0.0,
+     "page": 39,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "2": {
+     "libelle": "Enseignement - Formation",
+     "dep": 6645612.84,
+     "rec": null,
+     "page": 41,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "3": {
+     "libelle": "Culture",
+     "dep": 87328.89,
+     "rec": 15035.17,
+     "page": 46,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "4": {
+     "libelle": "Sport et jeunesse",
+     "dep": 2861934.38,
+     "rec": null,
+     "page": 49,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "5": {
+     "libelle": "Interventions sociales et santé",
+     "dep": 2198061.78,
+     "rec": null,
+     "page": 54,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "6": {
+     "libelle": "Famille",
+     "dep": 458633.69,
+     "rec": null,
+     "page": 58,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "7": {
+     "libelle": "Logement",
+     "dep": 63517.18,
+     "rec": 0.0,
+     "page": 60,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "8": {
+     "libelle": "Aménagement et services urbains, environnement",
+     "dep": 6096102.76,
+     "rec": null,
+     "page": 62,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "9": {
+     "libelle": "Action économique",
+     "dep": 605672.1,
+     "rec": null,
+     "page": 71,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    }
+   },
+   "inv": {
+    "0": {
+     "libelle": "Services généraux des administrations publiques locales",
+     "dep": 2781217.64,
+     "rec": null,
+     "page": 74,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "1": {
+     "libelle": "Sécurité et salubrité publiques",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 79,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "2": {
+     "libelle": "Enseignement - Formation",
+     "dep": 196408.96,
+     "rec": 115176.62,
+     "page": 82,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "3": {
+     "libelle": "Culture",
+     "dep": 26905.0,
+     "rec": 175382.97,
+     "page": 86,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "4": {
+     "libelle": "Sport et jeunesse",
+     "dep": 377112.67,
+     "rec": 78609.09,
+     "page": 89,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "5": {
+     "libelle": "Interventions sociales et santé",
+     "dep": 103057.48,
+     "rec": 2185.56,
+     "page": 93,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "6": {
+     "libelle": "Famille",
+     "dep": 7643.87,
+     "rec": 2067.65,
+     "page": 96,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "7": {
+     "libelle": "Logement",
+     "dep": 11500.0,
+     "rec": 1695.0,
+     "page": 98,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "8": {
+     "libelle": "Aménagement et services urbains, environnement",
+     "dep": 3198125.89,
+     "rec": null,
+     "page": 100,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "9": {
+     "libelle": "Action économique",
+     "dep": 113078.37,
+     "rec": 67002.47,
+     "page": 109,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    }
+   }
+  },
+  "essais": [
+   {
+    "url": "023_budget_annexe_service_assainissement_non_collectif-SPANC.pdf",
+    "n_fct": 0,
+    "pages": 4,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "_slow_Compte-administratif-2024-Budget-annexe-assainissement.pdf",
+    "n_fct": 0,
+    "pages": 4,
+    "scan": true,
+    "entete": "Envoyé en préfecture le 11/04/2025",
+    "annee": "2025"
+   },
+   {
+    "url": "0029_2025_slow_Compte-administratif-2024-budget-annexe-SPANC.pdf",
+    "n_fct": 0,
+    "pages": 4,
+    "scan": true,
+    "entete": "Envoyé en préfecture le 11/04/2025",
+    "annee": "2025"
+   },
+   {
+    "url": "dministratif-2024-budget-annexe-Budget-à-Vocation-Économique.pdf",
+    "n_fct": 0,
+    "pages": 4,
+    "scan": true,
+    "entete": "Envoyé en préfecture le 11/04/2025",
+    "annee": "2025"
+   },
+   {
+    "url": "inistratif-2024-Budget-annexe-Pole-santé-libéral-ambulatoire.pdf",
+    "n_fct": 0,
+    "pages": 4,
+    "scan": true,
+    "entete": "Envoyé en préfecture le 11/04/2025",
+    "annee": "2025"
+   },
+   {
+    "url": "du-compte-financier-unique-2025-budget-annexe-assainissement.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": true,
+    "entete": "Envoyé en préfecture le 10/06/2026",
+    "annee": "2026"
+   },
+   {
+    "url": "robation-du-compte-financier-unique-2025-budget-annexe-spanc.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": true,
+    "entete": "Envoyé en préfecture le 10/06/2026",
+    "annee": "2026"
+   },
+   {
+    "url": "ier-unique-2025-budget-annexe-batiment-a-vocation-economique.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": true,
+    "entete": "Envoyé en préfecture le 10/06/2026",
+    "annee": "2026"
+   }
+  ],
+  "secs": 487
+ },
+ {
+  "nom": "Triel-sur-Seine",
+  "insee": "78624",
+  "pop": 12206,
+  "reg": "11",
+  "site_final": "https://www.triel-sur-seine.fr/",
+  "pdfs": 132,
+  "testes": 2,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 121
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 5
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 17
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    }
+   },
+   "pages_parcourues": 5,
+   "lecteurs_externes": 0
+  },
+  "conclusion": "PUBLIE SANS MAQUETTE : document de la commune lu, présentation croisée absente",
+  "subventions": null,
+  "pdf": {
+   "url": "https://www.triel-sur-seine.fr/cms_viewFile.php?idtf=163456&path=avis-CRC-compte-administratif-2023.pdf",
+   "pages": 8,
+   "scan": false,
+   "ocr": false,
+   "annee": "2023",
+   "nomenclature": null,
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "COMMUNE DE TRIEL-SUR-SEINE"
+   }
+  },
+  "fonctions": {
+   "fct": {},
+   "inv": {}
+  },
+  "essais": [
+   {
+    "url": "p?idtf=108557&path=2023-03-DEL-187-Compte-administratif-2022.pdf",
+    "n_fct": 0,
+    "pages": 6,
+    "scan": false,
+    "entete": "MAIRIE DE TRIEL SUR SEINE - VILLE DE TRIEL S",
+    "annee": "2022"
+   },
+   {
+    "url": "File.php?idtf=163456&path=avis-CRC-compte-administratif-2023.pdf",
+    "n_fct": 0,
+    "pages": 8,
+    "scan": false,
+    "entete": "COMMUNE DE TRIEL-SUR-SEINE",
+    "annee": "2023"
+   }
+  ],
+  "secs": 228
+ },
+ {
+  "nom": "Fillinges",
+  "insee": "74128",
+  "pop": 3671,
+  "reg": "84",
+  "site_final": "https://www.fillinges.fr",
+  "pdfs": 142,
+  "testes": 15,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 129
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 1
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 16
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    },
+    "wayback": {
+     "ok": true,
+     "n": 2
+    }
+   },
+   "pages_parcourues": 1,
+   "lecteurs_externes": 0
+  },
+  "conclusion": "PUBLIE SANS MAQUETTE : document de la commune lu, présentation croisée absente",
+  "subventions": null,
+  "pdf": {
+   "url": "https://www.fillinges.fr/cms_viewFile.php?idtf=216785&path=liste-delibs-16.pdf",
+   "pages": 2,
+   "scan": false,
+   "ocr": false,
+   "annee": "2026",
+   "nomenclature": null,
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "N° 04 - 12 - 2025 Contrat Natura 2000"
+   }
+  },
+  "fonctions": {
+   "fct": {},
+   "inv": {}
+  },
+  "essais": [
+   {
+    "url": "es.fr/cms_viewFile.php?idtf=157757&path=Budget-primitif-2024.pdf",
+    "n_fct": 0,
+    "pages": 57,
+    "scan": false,
+    "entete": "Compte administratif 2023",
+    "annee": "2023"
+   },
+   {
+    "url": "linges.fr/cms_viewFile.php?idtf=187243&path=Vote-Budget-2025.pdf",
+    "n_fct": 0,
+    "pages": 44,
+    "scan": false,
+    "entete": "Compte administratif 2024",
+    "annee": "2024"
+   },
+   {
+    "url": "/cms_viewFile.php?idtf=240037&path=260224_Fillinges_CA25BP26.pdf",
+    "n_fct": 0,
+    "pages": 39,
+    "scan": false,
+    "entete": "Compte administratif 2025",
+    "annee": "2025"
+   },
+   {
+    "url": "llinges.fr/cms_viewFile.php?idtf=216785&path=liste-delibs-16.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": false,
+    "entete": "N° 04 - 12 - 2025 Contrat Natura 2000",
+    "annee": "2026"
+   },
+   {
+    "url": "ges.fr/cms_viewFile.php?idtf=213286&path=liste-des-delibs-12.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": false,
+    "entete": "N° 04 - 11 - 2025 Ouvertures dominicales 202",
+    "annee": "2026"
+   },
+   {
+    "url": "llinges.fr/cms_viewFile.php?idtf=207958&path=liste-delibs-16.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": false,
+    "entete": "N° 04 - 09 - 2025",
+    "annee": "2026"
+   },
+   {
+    "url": "llinges.fr/cms_viewFile.php?idtf=202539&path=liste-delibs-22.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": false,
+    "entete": "N° 05 - 07 - 2025",
+    "annee": "2026"
+   },
+   {
+    "url": "llinges.fr/cms_viewFile.php?idtf=199396&path=liste-delibs-24.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": false,
+    "entete": "N° 02 - 006 - 2025 Dossiers d’urbanisme",
+    "annee": "2025"
+   }
+  ],
+  "secs": 277
+ },
+ {
+  "nom": "Rochechouart",
+  "insee": "87126",
+  "pop": 3603,
+  "reg": "75",
+  "site_final": "https://www.rochechouart.com/",
+  "pdfs": 3,
+  "testes": 3,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 3
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 24
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 3
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    },
+    "wayback": {
+     "ok": true,
+     "n": 1
+    }
+   },
+   "pages_parcourues": 24,
+   "lecteurs_externes": 0
+  },
+  "conclusion": "PUBLIE SANS MAQUETTE : document de la commune lu, présentation croisée absente",
+  "subventions": null,
+  "pdf": {
+   "url": "https://www.rochechouart.com/wp-content/uploads/2021/07/Reglement-Budget-Participatif.pdf",
+   "pages": 7,
+   "scan": false,
+   "ocr": false,
+   "annee": "2026",
+   "nomenclature": null,
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "Article 4 : Le territoire"
+   }
+  },
+  "fonctions": {
+   "fct": {},
+   "inv": {}
+  },
+  "essais": [
+   {
+    "url": "https://rochechouart.com/pdf/cles/cles23.pdf",
+    "n_fct": 0,
+    "pages": 4,
+    "scan": false,
+    "entete": "Etablir le budget d’une collectivité est un",
+    "annee": "2012"
+   },
+   {
+    "url": "http://www.rochechouart.com/pdf/Budget_2015.pdf",
+    "n_fct": 0,
+    "pages": 10,
+    "scan": false,
+    "entete": "FONCTIONNEMENT INVESTISSEMENT",
+    "annee": "2015"
+   },
+   {
+    "url": "com/wp-content/uploads/2021/07/Reglement-Budget-Participatif.pdf",
+    "n_fct": 0,
+    "pages": 7,
+    "scan": false,
+    "entete": "Article 4 : Le territoire",
+    "annee": "2026"
+   }
+  ],
+  "secs": 140
+ },
+ {
+  "nom": "Tassin-la-Demi-Lune",
+  "insee": "69244",
+  "pop": 23200,
+  "reg": "84",
+  "site_final": "https://www.tassinlademilune.fr/",
+  "pdfs": 145,
+  "testes": 16,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 123
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 1
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 24
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    }
+   },
+   "pages_parcourues": 1,
+   "lecteurs_externes": 0
+  },
+  "conclusion": "LU : fonction lue",
+  "subventions": null,
+  "pdf": {
+   "url": "https://www.tassinlademilune.fr/images/Deliberation/D2023-03%20Budget%20primitif%202023%20-%20Budget%20principal%20Ville.pdf",
+   "pages": 119,
+   "scan": false,
+   "ocr": false,
+   "annee": "2023",
+   "nomenclature": "M57",
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": true,
+    "autre": null,
+    "entete": "Ville de TASSIN LA DEMI - LUNE - Budget Principal - BP - 2023"
+   }
+  },
+  "fonctions": {
+   "fct": {
+    "0": {
+     "libelle": "Services généraux des administrations publiques locales",
+     "dep": 9843208.0,
+     "rec": 18593906.0,
+     "page": 31,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "1": {
+     "libelle": "Sécurité et salubrité publiques",
+     "dep": 1750380.0,
+     "rec": 0.0,
+     "page": 34,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "2": {
+     "libelle": "Enseignement - Formation",
+     "dep": 2736243.0,
+     "rec": 50000.0,
+     "page": 36,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "3": {
+     "libelle": "Culture",
+     "dep": 1298149.0,
+     "rec": 27000.0,
+     "page": 38,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "4": {
+     "libelle": "Sport et jeunesse",
+     "dep": 776604.0,
+     "rec": 63500.0,
+     "page": 40,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "5": {
+     "libelle": "Interventions sociales et santé",
+     "dep": 3925156.0,
+     "rec": 0.0,
+     "page": 42,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "6": {
+     "libelle": "Famille",
+     "dep": 210343.0,
+     "rec": 26500.0,
+     "page": 44,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "7": {
+     "libelle": "Logement",
+     "dep": 25059.0,
+     "rec": 22000.0,
+     "page": 45,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "8": {
+     "libelle": "Aménagement et services urbains, environnement",
+     "dep": 1573482.0,
+     "rec": 599000.0,
+     "page": 46,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "9": {
+     "libelle": "Action économique",
+     "dep": 111050.0,
+     "rec": 30000.0,
+     "page": 49,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    }
+   },
+   "inv": {
+    "0": {
+     "libelle": "Services généraux des administrations publiques locales",
+     "dep": 5534063.0,
+     "rec": 10614813.0,
+     "page": 50,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "1": {
+     "libelle": "Sécurité et salubrité publiques",
+     "dep": 8000.0,
+     "rec": 0.0,
+     "page": 54,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "2": {
+     "libelle": "Enseignement - Formation",
+     "dep": 320000.0,
+     "rec": 0.0,
+     "page": 57,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "3": {
+     "libelle": "Culture",
+     "dep": 113450.0,
+     "rec": 0.0,
+     "page": 60,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "4": {
+     "libelle": "Sport et jeunesse",
+     "dep": 723300.0,
+     "rec": 0.0,
+     "page": 63,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "5": {
+     "libelle": "Interventions sociales et santé",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 66,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "6": {
+     "libelle": "Famille",
+     "dep": 1497000.0,
+     "rec": 0.0,
+     "page": 69,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "7": {
+     "libelle": "Logement",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 71,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "8": {
+     "libelle": "Aménagement et services urbains, environnement",
+     "dep": 1635000.0,
+     "rec": 1180000.0,
+     "page": 73,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "9": {
+     "libelle": "Action économique",
+     "dep": 1968000.0,
+     "rec": 0.0,
+     "page": 78,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    }
+   }
+  },
+  "essais": [
+   {
+    "url": "06.24/D2024-32 Approbation compte administratif 2023 - Ville.pdf",
+    "n_fct": 0,
+    "pages": 103,
+    "scan": false,
+    "entete": "Ville de TASSIN LA DEMI - LUNE - Budget Prin",
+    "annee": "2023"
+   },
+   {
+    "url": "6.24/D2024-35 Approbation compte administratif 2023 - Atrium.pdf",
+    "n_fct": 0,
+    "pages": 48,
+    "scan": false,
+    "entete": "Ville de TASSIN LA DEMI - LUNE - Espace Cult",
+    "annee": "2023"
+   },
+   {
+    "url": "maire/2024/DC-2024-88 Admission en non-valeur - budget Ville.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": true,
+    "entete": "Accusé de réception en préfecture",
+    "annee": "2024"
+   },
+   {
+    "url": "dificative portant virement de credit de chapitre a chapitre.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": true,
+    "entete": "Accusé de réception en préfecture",
+    "annee": "2025"
+   },
+   {
+    "url": "dificative portant virement de credit de chapitre a chapitre.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": true,
+    "entete": "Accusé de réception en préfecture",
+    "annee": "2025"
+   },
+   {
+    "url": "sions maire/2025/DC-2025-41 Decision budgetaire modificative.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": true,
+    "entete": "Accusé de réception en préfecture",
+    "annee": "2025"
+   },
+   {
+    "url": "25/DC-2025-77 Admission en non -valeur - Budget ville - 2025.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": true,
+    "entete": "Accusé de réception en préfecture",
+    "annee": "2025"
+   },
+   {
+    "url": "Budgetaire portant virement de credit de chapitre a chapitre.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": true,
+    "entete": "Accusé de réception en préfecture",
+    "annee": "2026"
+   }
+  ],
+  "secs": 82
+ },
+ {
+  "nom": "Blotzheim",
+  "insee": "68042",
+  "pop": 5282,
+  "reg": "44",
+  "site_final": "https://www.blotzheim.fr/main/main.php",
+  "pdfs": 39,
+  "testes": 16,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 36
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 2
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 16
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 3,
+     "jeux": 1,
+     "interroges": 1
+    },
+    "wayback": {
+     "ok": true,
+     "n": 0
+    }
+   },
+   "pages_parcourues": 2,
+   "lecteurs_externes": 0
+  },
+  "conclusion": "PUBLIE SANS MAQUETTE : document de la commune lu, présentation croisée absente",
+  "subventions": null,
+  "pdf": {
+   "url": "https://www.blotzheim.fr/maindocs/cm/cm_doc_32.pdf",
+   "pages": 3,
+   "scan": false,
+   "ocr": false,
+   "annee": "2024",
+   "nomenclature": null,
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "6. Recrutement d’agents contractuels pour faire face à un accroissement temporai"
+   }
+  },
+  "fonctions": {
+   "fct": {},
+   "inv": {}
+  },
+  "essais": [
+   {
+    "url": "catalog/datasets/20230328/files/9ccdd1cd73cac9ece50831bfb0ee1381",
+    "n_fct": 0,
+    "pages": 3,
+    "scan": false,
+    "entete": "Accusé de réception en préfecture",
+    "annee": "2023"
+   },
+   {
+    "url": "catalog/datasets/20230328/files/babd6ccd623580ff1d45cb1dd299715a",
+    "n_fct": 0,
+    "pages": 3,
+    "scan": false,
+    "entete": "Accusé de réception en préfecture",
+    "annee": "2023"
+   },
+   {
+    "url": "https://www.blotzheim.fr/maindocs/cm/cm_doc_15.pdf",
+    "n_fct": 0,
+    "pages": 14,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "catalog/datasets/20230328/files/8938f5c8b2d10648cf94a28b401dbe8b",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": false,
+    "entete": "Accusé de réception en préfecture",
+    "annee": "2023"
+   },
+   {
+    "url": "https://www.blotzheim.fr/maindocs/cm/cm_doc_22.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": false,
+    "entete": "6. Indemnisation des frais de déplacement du",
+    "annee": "2022"
+   },
+   {
+    "url": "https://www.blotzheim.fr/maindocs/cons/cons_cr_11.pdf",
+    "n_fct": 0,
+    "pages": 4,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "https://www.blotzheim.fr/maindocs/cons/cons_cr_59.pdf",
+    "n_fct": 0,
+    "pages": 3,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "https://www.blotzheim.fr/maindocs/cm/cm_doc_32.pdf",
+    "n_fct": 0,
+    "pages": 3,
+    "scan": false,
+    "entete": "6. Recrutement d’agents contractuels pour fa",
+    "annee": "2024"
+   }
+  ],
+  "secs": 1031
+ },
+ {
+  "nom": "La Garenne-Colombes",
+  "insee": "92035",
+  "pop": 30197,
+  "reg": "11",
+  "site_final": "https://www.lagarennecolombes.fr/",
+  "pdfs": 1266,
+  "testes": 4,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 1264
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 1,
+     "pages": 6
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 18
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    }
+   },
+   "pages_parcourues": 6,
+   "lecteurs_externes": 22
+  },
+  "conclusion": "LU : fonction lue",
+  "subventions": null,
+  "pdf": {
+   "url": "https://www.lagarennecolombes.fr/download/BP_2023_VILLE.pdf",
+   "pages": 91,
+   "scan": false,
+   "ocr": false,
+   "annee": "2023",
+   "nomenclature": "M14",
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": true,
+    "autre": null,
+    "entete": "MAIRIE DE LA GARENNE COLOMBES - BUDGET PRINCIPAL - Exercice : 2023"
+   }
+  },
+  "fonctions": {
+   "fct": {
+    "0": {
+     "libelle": "SCES GENERAUX ADM",
+     "dep": 30609665.0,
+     "rec": 55605289.0,
+     "page": 29,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "1": {
+     "libelle": "SECURITE ET SALUBRITE PUBLIQUE",
+     "dep": 2702711.0,
+     "rec": 72972.0,
+     "page": 31,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "2": {
+     "libelle": "ENSEIGNEMENT - FORMATION",
+     "dep": 6807940.0,
+     "rec": 1690000.0,
+     "page": 32,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "3": {
+     "libelle": "CULTURE",
+     "dep": 2953978.0,
+     "rec": 179897.0,
+     "page": 33,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "4": {
+     "libelle": "SPORTS ET JEUNESSE",
+     "dep": 8192711.0,
+     "rec": 2113000.0,
+     "page": 34,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "5": {
+     "libelle": "INTERVENTIONS SOCIALES ET SANTE",
+     "dep": 900573.0,
+     "rec": 65000.0,
+     "page": 35,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "7": {
+     "libelle": "LOGEMENT",
+     "dep": 417712.0,
+     "rec": 566000.0,
+     "page": 36,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "8": {
+     "libelle": "AMENAGEMENT ET SERVICE URBAIN, ENVIRONNEMENT",
+     "dep": 6739808.0,
+     "rec": 2178843.0,
+     "page": 37,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "9": {
+     "libelle": "ACTION ECONOMIQUE",
+     "dep": 173091.0,
+     "rec": 300850.0,
+     "page": 38,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    }
+   },
+   "inv": {
+    "0": {
+     "libelle": "SCES GENERAUX ADM",
+     "dep": 12342113.07,
+     "rec": 41110439.56,
+     "page": 41,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "1": {
+     "libelle": "SECURITE ET SALUBRITE PUBLIQUE",
+     "dep": 520465.27,
+     "rec": 307159.12,
+     "page": 42,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "2": {
+     "libelle": "ENSEIGNEMENT - FORMATION",
+     "dep": 1492483.36,
+     "rec": 248173.0,
+     "page": 43,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "3": {
+     "libelle": "CULTURE",
+     "dep": 2149821.43,
+     "rec": 950000.0,
+     "page": 44,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "4": {
+     "libelle": "SPORTS ET JEUNESSE",
+     "dep": 2583112.56,
+     "rec": 612501.0,
+     "page": 46,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "5": {
+     "libelle": "INTERVENTIONS SOCIALES ET SANTE",
+     "dep": 716208.0,
+     "rec": null,
+     "page": 47,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "6": {
+     "libelle": "FAMILLE",
+     "dep": 359050.57,
+     "rec": 317098.5,
+     "page": 48,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "7": {
+     "libelle": "LOGEMENT",
+     "dep": 12096903.23,
+     "rec": null,
+     "page": 49,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "8": {
+     "libelle": "AMENAGEMENT ET SERVICE URBAIN, ENVIRONNEMENT",
+     "dep": 22354642.37,
+     "rec": 11109428.68,
+     "page": 50,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "9": {
+     "libelle": "ACTION ECONOMIQUE",
+     "dep": 40000.0,
+     "rec": null,
+     "page": 52,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    }
+   }
+  },
+  "essais": [
+   {
+    "url": "unicipal/Arretes/077-_evaluation_environnementale_du_CA_2024.pdf",
+    "n_fct": 0,
+    "pages": 11,
+    "scan": false,
+    "entete": "EVALUATION DE L’IMPACT DES DEPENSES 2024 SUR",
+    "annee": null
+   },
+   {
+    "url": "//www.lagarennecolombes.fr/download/DOC260424-26042024163635.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "nces/Budget_2022/059_-_Compte_administratif_budget_principal.pdf",
+    "n_fct": 0,
+    "pages": 18,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "https://www.lagarennecolombes.fr/download/BP_2023_VILLE.pdf",
+    "n_fct": 9,
+    "pages": 91,
+    "scan": false,
+    "entete": "MAIRIE DE LA GARENNE COLOMBES - BUDGET PRINC",
+    "annee": "2023"
+   }
+  ],
+  "secs": 66
+ },
+ {
+  "nom": "Puget-sur-Argens",
+  "insee": "83099",
+  "pop": 8602,
+  "reg": "93",
+  "site_final": "https://www.pugetsurargens.fr/",
+  "pdfs": 10,
+  "testes": 10,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 10
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 1
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 14
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    }
+   },
+   "pages_parcourues": 1,
+   "lecteurs_externes": 4
+  },
+  "conclusion": "PUBLIE SANS MAQUETTE : document de la commune lu, présentation croisée absente",
+  "subventions": null,
+  "pdf": {
+   "url": "https://pugetsurargens.fr/doclink/guide-des-associations/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJndWlkZS1kZXMtYXNzb2NpYXRpb25zIiwiaWF0IjoxNzg4NzczMDE4LCJleHAiOjE3ODg4NTk0MTh9.ZZh7YJsTA12nFxYoUzhEs1FeKmpeVC1yxCpJVBzhNug",
+   "pages": 36,
+   "scan": false,
+   "ocr": false,
+   "annee": "2028",
+   "nomenclature": null,
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "Chères Pugétoises, chers Pugétois,"
+   }
+  },
+  "fonctions": {
+   "fct": {},
+   "inv": {}
+  },
+  "essais": [
+   {
+    "url": "hwIjoxNzE0NDc5OTg4fQ.jCAlaq1A5_-TIk-uZg1n6Jb0GMPmHJluoppQhYnRNOo",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": true,
+    "entete": "Envoyé en préfecture le 25/04/2024",
+    "annee": "2024"
+   },
+   {
+    "url": "eHAiOjE3NDI5NzQ0NTF9.C522c8OJQTt4Nu0WspnGLXU5bsZWaZox4aCpGozBE_0",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "eHAiOjE3NzI3MDY1Mzd9.myUvk34lWtj81CobxGKOn4NbaTpMIhsG7AXKfSYsYh0",
+    "n_fct": 0,
+    "pages": 1,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "eHAiOjE3NzI3MDY1Mzd9.meGyhIL3Zj5ze-poOlKSGXeofkYfnTW6jTzNvxRak5Q",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "eHAiOjE3MTgwOTA4MDF9.c0U8kOk-tfI_N17z_P11bSX1rUQKyOhRYjervDQZEi8",
+    "n_fct": 0,
+    "pages": 12,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "4cCI6MTc4MzA3MTMyOX0.VFw0cTxBPd_gpf2lPJ2HUOtFy4pPdDakN4fO_uMd51Y",
+    "n_fct": 0,
+    "pages": 32,
+    "scan": false,
+    "entete": "AU CŒUR DE LA RÉTROSPECTIVE",
+    "annee": null
+   },
+   {
+    "url": "eHAiOjE3ODg4NTk0MTh9.ZZh7YJsTA12nFxYoUzhEs1FeKmpeVC1yxCpJVBzhNug",
+    "n_fct": 0,
+    "pages": 36,
+    "scan": false,
+    "entete": "Chères Pugétoises, chers Pugétois,",
+    "annee": "2028"
+   },
+   {
+    "url": "eHAiOjE3ODIyODcyMzJ9.ExKtMZewRY7nK4-Q0lQBWQLceJPRbIBUwT0J3hwBPGk",
+    "n_fct": 0,
+    "pages": 64,
+    "scan": false,
+    "entete": "Chères Pugétoises, Chers Pugétois,",
+    "annee": "2027"
+   }
+  ],
+  "secs": 147
+ },
+ {
+  "nom": "Lillebonne",
+  "insee": "76384",
+  "pop": 8541,
+  "reg": "28",
+  "site_final": "chrome-error://chromewebdata/",
+  "pdfs": 0,
+  "testes": 0,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 0
+    },
+    "deliberations": {
+     "ok": false,
+     "n": 0,
+     "pages": 0
+    },
+    "google": {
+     "ok": false,
+     "raison": "zéro résultat sur 3 profils → blocage probable"
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    },
+    "wayback": {
+     "ok": true,
+     "n": 0
+    }
+   },
+   "pages_parcourues": 0,
+   "lecteurs_externes": 0
+  },
+  "conclusion": "NON CONCLUANT (deliberations, google en échec) — sinon : RIEN TROUVÉ (tous canaux ok)",
+  "subventions": null,
+  "pdf": null,
+  "fonctions": null,
+  "essais": [],
+  "secs": 244
+ },
+ {
+  "nom": "Réalmont",
+  "insee": "81222",
+  "pop": 3561,
+  "reg": "76",
+  "site_final": "https://www.realmont.fr/",
+  "pdfs": 33,
+  "testes": 16,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 19
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 2
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 19
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    },
+    "wayback": {
+     "ok": true,
+     "n": 0
+    }
+   },
+   "pages_parcourues": 2,
+   "lecteurs_externes": 0
+  },
+  "conclusion": "PUBLIE SANS MAQUETTE : document de la commune lu, présentation croisée absente",
+  "subventions": null,
+  "pdf": {
+   "url": "https://www.realmont.fr/sites/default/files/annexe_convention_petitevilledemain_et_annexes.pdf",
+   "pages": 115,
+   "scan": false,
+   "ocr": false,
+   "annee": "2026",
+   "nomenclature": null,
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "2/15"
+   }
+  },
+  "fonctions": {
+   "fct": {},
+   "inv": {}
+  },
+  "essais": [
+   {
+    "url": "ww.realmont.fr/sites/default/files/pv_cm_27_juin_2024_valide.pdf",
+    "n_fct": 0,
+    "pages": 8,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "https://www.realmont.fr/sites/default/files/pv_22.11.2024_0.pdf",
+    "n_fct": 0,
+    "pages": 10,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "ww.realmont.fr/sites/default/files/pv_du_cm_de_12_avril_2023.pdf",
+    "n_fct": 0,
+    "pages": 14,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "default/files/annexe_convention_petitevilledemain_et_annexes.pdf",
+    "n_fct": 0,
+    "pages": 115,
+    "scan": false,
+    "entete": "2/15",
+    "annee": "2026"
+   },
+   {
+    "url": "nt.fr/sites/default/files/pv_modifie_seance_cm_du_01.04.2022.pdf",
+    "n_fct": 0,
+    "pages": 11,
+    "scan": false,
+    "entete": "I – ORDRE DU JOUR :",
+    "annee": "2021"
+   },
+   {
+    "url": "ps://www.realmont.fr/sites/default/files/pv_cm_du_14.04.2022.pdf",
+    "n_fct": 0,
+    "pages": 17,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "w.realmont.fr/sites/default/files/compte_rendu_cm_24.03.2021.pdf",
+    "n_fct": 0,
+    "pages": 31,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "w.realmont.fr/sites/default/files/compte_rendu_cm_15.04.2021.pdf",
+    "n_fct": 0,
+    "pages": 35,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   }
+  ],
+  "secs": 378
+ },
+ {
+  "nom": "Val d'Erdre-Auxence",
+  "insee": "49183",
+  "pop": 4981,
+  "reg": "52",
+  "site_final": "https://www.val-erdre-auxence.fr/",
+  "pdfs": 26,
+  "testes": 0,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 10
+    },
+    "deliberations": {
+     "ok": false,
+     "n": 0,
+     "pages": 0
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 16
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    },
+    "wayback": {
+     "ok": true,
+     "n": 5
+    }
+   },
+   "pages_parcourues": 0,
+   "lecteurs_externes": 0
+  },
+  "conclusion": "NON CONCLUANT (deliberations en échec) — sinon : RIEN TROUVÉ (tous canaux ok)",
+  "subventions": null,
+  "pdf": null,
+  "fonctions": null,
+  "essais": [],
+  "secs": 2794
+ }
+]

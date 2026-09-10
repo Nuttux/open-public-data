@@ -1,0 +1,4673 @@
+[
+ {
+  "id": "scdl-assemblee-de-corse-deliberations-2021@datacorsica",
+  "base": "scdl-assemblee-de-corse-deliberations-2021",
+  "portail": "datacorsica",
+  "hote": "www.data.corsica",
+  "hote_secours": "datacorsica.opendatasoft.com",
+  "titre": "SCDL - Assemblée de Corse - délibérations -  2021",
+  "editeur": "Collectivité de Corse",
+  "n": 239,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "collectivite de corse scdl assemblee de corse deliberations 2021 datacorsica"
+ },
+ {
+  "id": "ac2022exportdata@datacorsica",
+  "base": "ac2022exportdata",
+  "portail": "datacorsica",
+  "hote": "www.data.corsica",
+  "hote_secours": "datacorsica.opendatasoft.com",
+  "titre": "SCDL - Assemblée de Corse - délibérations - 2022",
+  "editeur": "",
+  "n": 208,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "scdl assemblee de corse deliberations 2022 datacorsica"
+ },
+ {
+  "id": "fla-viepublique-deliberation@orleansmetropole",
+  "base": "fla-viepublique-deliberation",
+  "portail": "orleansmetropole",
+  "hote": "data.orleans-metropole.fr",
+  "hote_secours": "orleansmetropole.opendatasoft.com",
+  "titre": "Délibérations - Ville de Fleury les Aubrais",
+  "editeur": "Direction de la Vie Institutionnelle et des Affaires Juridiq",
+  "n": 190,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "direction de la vie institutionnelle et des affaires juridiques ville de fleury les aubrais deliberations ville de fleury les aubrais orleansmetropole"
+ },
+ {
+  "id": "liste-des-deliberations-du-conseil-municipal-de-2003-a-2013-toulouse@toulouse-metropole",
+  "base": "liste-des-deliberations-du-conseil-municipal-de-2003-a-2013-toulouse",
+  "portail": "toulouse-metropole",
+  "hote": "data.toulouse-metropole.fr",
+  "hote_secours": "toulouse-metropole.opendatasoft.com",
+  "titre": "Délibérations de 2003 à Mars 2014 - Mairie de Toulouse",
+  "editeur": "Mairie de Toulouse",
+  "n": 11262,
+  "champs_texte": [
+   "titre",
+   "nom_rapporteur"
+  ],
+  "champs_fichier": [],
+  "cle": "mairie de toulouse deliberations de 2003 a mars 2014 mairie de toulouse toulouse metropole"
+ },
+ {
+  "id": "vineuil-41350-deliberations-du-conseil-municipal-adoptees-en-2021@blois-agglopolys-centrevaldeloire",
+  "base": "vineuil-41350-deliberations-du-conseil-municipal-adoptees-en-2021",
+  "portail": "blois-agglopolys-centrevaldeloire",
+  "hote": "data.blois.agglopolys.fr",
+  "hote_secours": "blois-agglopolys-centrevaldeloire.opendatasoft.com",
+  "titre": "Vineuil (41350) - délibérations du conseil municipal adoptées en 2021",
+  "editeur": "Ville de Vineuil (41350)",
+  "n": 102,
+  "champs_texte": [
+   "intitule_deliberation"
+  ],
+  "champs_fichier": [],
+  "cle": "ville de vineuil 41350 vineuil 41350 deliberations du conseil municipal adoptees en 2021 blois agglopolys centrevaldeloire"
+ },
+ {
+  "id": "blois-deliberations-du-conseil-municipal-annee-2024@blois-agglopolys-centrevaldeloire",
+  "base": "blois-deliberations-du-conseil-municipal-annee-2024",
+  "portail": "blois-agglopolys-centrevaldeloire",
+  "hote": "data.blois.agglopolys.fr",
+  "hote_secours": "blois-agglopolys-centrevaldeloire.opendatasoft.com",
+  "titre": "Blois - délibérations du conseil municipal - année 2024",
+  "editeur": "Ville de Blois",
+  "n": 48,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [
+   "lien_url"
+  ],
+  "cle": "ville de blois blois deliberations du conseil municipal annee 2024 blois agglopolys centrevaldeloire"
+ },
+ {
+  "id": "agglopolys-deliberations-du-conseil-communautaire-annee-2023@blois-agglopolys-centrevaldeloire",
+  "base": "agglopolys-deliberations-du-conseil-communautaire-annee-2023",
+  "portail": "blois-agglopolys-centrevaldeloire",
+  "hote": "data.blois.agglopolys.fr",
+  "hote_secours": "blois-agglopolys-centrevaldeloire.opendatasoft.com",
+  "titre": "Agglopolys - délibérations du conseil communautaire - année 2023",
+  "editeur": "Agglopolys",
+  "n": 298,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [
+   "lien_url"
+  ],
+  "cle": "agglopolys agglopolys deliberations du conseil communautaire annee 2023 blois agglopolys centrevaldeloire"
+ },
+ {
+  "id": "centre-intercommunal-d-action-sociale-du-blaisois-deliberations-du-conseil-d-adm@blois-agglopolys-centrevaldeloire",
+  "base": "centre-intercommunal-d-action-sociale-du-blaisois-deliberations-du-conseil-d-adm",
+  "portail": "blois-agglopolys-centrevaldeloire",
+  "hote": "data.blois.agglopolys.fr",
+  "hote_secours": "blois-agglopolys-centrevaldeloire.opendatasoft.com",
+  "titre": "Centre Intercommunal d'Action Sociale du Blaisois - délibérations du conseil d'a",
+  "editeur": "Centre Intercommunal d'Action Sociale du Blaisois",
+  "n": 142,
+  "champs_texte": [
+   "objet"
+  ],
+  "champs_fichier": [
+   "lien_url"
+  ],
+  "cle": "centre intercommunal d action sociale du blaisois centre intercommunal d action sociale du blaisois deliberations du conseil d administration et de la sous commission finance et personnel blois agglopolys centrevaldeloire"
+ },
+ {
+  "id": "blois-deliberations-du-conseil-municipal-annee-2023@blois-agglopolys-centrevaldeloire",
+  "base": "blois-deliberations-du-conseil-municipal-annee-2023",
+  "portail": "blois-agglopolys-centrevaldeloire",
+  "hote": "data.blois.agglopolys.fr",
+  "hote_secours": "blois-agglopolys-centrevaldeloire.opendatasoft.com",
+  "titre": "Blois - délibérations du conseil municipal - année 2023",
+  "editeur": "Ville de Blois",
+  "n": 312,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [
+   "lien_url"
+  ],
+  "cle": "ville de blois blois deliberations du conseil municipal annee 2023 blois agglopolys centrevaldeloire"
+ },
+ {
+  "id": "blois-deliberations-du-conseil-municipal@blois-agglopolys-centrevaldeloire",
+  "base": "blois-deliberations-du-conseil-municipal",
+  "portail": "blois-agglopolys-centrevaldeloire",
+  "hote": "data.blois.agglopolys.fr",
+  "hote_secours": "blois-agglopolys-centrevaldeloire.opendatasoft.com",
+  "titre": "Blois - délibérations du conseil municipal - 2018 et 2019",
+  "editeur": "Ville de Blois",
+  "n": 643,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [
+   "lien"
+  ],
+  "cle": "ville de blois blois deliberations du conseil municipal 2018 et 2019 blois agglopolys centrevaldeloire"
+ },
+ {
+  "id": "deliberations-lisses-2023@lisses-grandparissud",
+  "base": "deliberations-lisses-2023",
+  "portail": "lisses-grandparissud",
+  "hote": "lisses-grandparissud.opendatasoft.com",
+  "hote_secours": "lisses-grandparissud.opendatasoft.com",
+  "titre": "2023 - Délibérations municipales - Lisses",
+  "editeur": "",
+  "n": 85,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "2023 deliberations municipales lisses lisses grandparissud"
+ },
+ {
+  "id": "agglopolys-deliberations-du-conseil-communautaire-et-du-bureau-communautaire-ann@blois-agglopolys-centrevaldeloire",
+  "base": "agglopolys-deliberations-du-conseil-communautaire-et-du-bureau-communautaire-ann",
+  "portail": "blois-agglopolys-centrevaldeloire",
+  "hote": "data.blois.agglopolys.fr",
+  "hote_secours": "blois-agglopolys-centrevaldeloire.opendatasoft.com",
+  "titre": "Agglopolys - délibérations du conseil communautaire - année 2020",
+  "editeur": "Agglopolys",
+  "n": 312,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [
+   "lien"
+  ],
+  "cle": "agglopolys agglopolys deliberations du conseil communautaire annee 2020 blois agglopolys centrevaldeloire"
+ },
+ {
+  "id": "deliberations-lisses@lisses-grandparissud",
+  "base": "deliberations-lisses",
+  "portail": "lisses-grandparissud",
+  "hote": "lisses-grandparissud.opendatasoft.com",
+  "hote_secours": "lisses-grandparissud.opendatasoft.com",
+  "titre": "Délibérations (Lisses)",
+  "editeur": "Ville de Lisses",
+  "n": 217,
+  "champs_texte": [
+   "intitule"
+  ],
+  "champs_fichier": [],
+  "cle": "ville de lisses deliberations lisses lisses grandparissud"
+ },
+ {
+  "id": "blois-deliberations-du-conseil-municipal-annee-2022@blois-agglopolys-centrevaldeloire",
+  "base": "blois-deliberations-du-conseil-municipal-annee-2022",
+  "portail": "blois-agglopolys-centrevaldeloire",
+  "hote": "data.blois.agglopolys.fr",
+  "hote_secours": "blois-agglopolys-centrevaldeloire.opendatasoft.com",
+  "titre": "Blois - délibérations du conseil municipal - année 2022",
+  "editeur": "Ville de Blois",
+  "n": 312,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [
+   "lien"
+  ],
+  "cle": "ville de blois blois deliberations du conseil municipal annee 2022 blois agglopolys centrevaldeloire"
+ },
+ {
+  "id": "deliberations-bureau-communautaire@gpseo",
+  "base": "deliberations-bureau-communautaire",
+  "portail": "gpseo",
+  "hote": "gpseo.opendatasoft.com",
+  "hote_secours": "gpseo.opendatasoft.com",
+  "titre": "Délibérations Bureau Communautaire de 2016 à 2025",
+  "editeur": "GPS&O",
+  "n": 1389,
+  "champs_texte": [
+   "titres_deliberations"
+  ],
+  "champs_fichier": [],
+  "cle": "gps o deliberations bureau communautaire de 2016 a 2025 gpseo"
+ },
+ {
+  "id": "deliberations-conseil-communautaire@gpseo",
+  "base": "deliberations-conseil-communautaire",
+  "portail": "gpseo",
+  "hote": "gpseo.opendatasoft.com",
+  "hote_secours": "gpseo.opendatasoft.com",
+  "titre": "Délibérations Conseil Communautaire de 2016 à 2025",
+  "editeur": "GPS&O",
+  "n": 2747,
+  "champs_texte": [
+   "titres_deliberations"
+  ],
+  "champs_fichier": [],
+  "cle": "gps o deliberations conseil communautaire de 2016 a 2025 gpseo"
+ },
+ {
+  "id": "deliberations-conseil-2021-et-2022@tco-lareunion",
+  "base": "deliberations-conseil-2021-et-2022",
+  "portail": "tco-lareunion",
+  "hote": "data.tco.re",
+  "hote_secours": "tco-lareunion.opendatasoft.com",
+  "titre": "Territoire de l'Ouest - Délibérations des Conseils Communautaires 2021 et 2022",
+  "editeur": "Territoire de l'Ouest (Réunion)",
+  "n": 175,
+  "champs_texte": [
+   "intitule_de_l_affaire"
+  ],
+  "champs_fichier": [],
+  "cle": "territoire de l ouest reunion territoire de l ouest deliberations des conseils communautaires 2021 et 2022 tco lareunion"
+ },
+ {
+  "id": "deliberation-de-la-ville-de-la-possession-fevrier-2024@lareunion",
+  "base": "deliberation-de-la-ville-de-la-possession-fevrier-2024",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Délibération de la Ville de La Possession - février 2024",
+  "editeur": "Mairie de La Possession",
+  "n": 18,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession fevrier 2024 lareunion"
+ },
+ {
+  "id": "deliberation-possession-09-22@lareunion",
+  "base": "deliberation-possession-09-22",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Délibération de la Ville de La Possession - septembre 2022",
+  "editeur": "Mairie de La Possession",
+  "n": 53,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession septembre 2022 lareunion"
+ },
+ {
+  "id": "deliberation-possession-09-23@lareunion",
+  "base": "deliberation-possession-09-23",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Délibération de la Ville de La Possession - septembre 2023",
+  "editeur": "Mairie de La Possession",
+  "n": 22,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession septembre 2023 lareunion"
+ },
+ {
+  "id": "deliberation-de-la-ville-de-la-possession-aout-2024@lareunion",
+  "base": "deliberation-de-la-ville-de-la-possession-aout-2024",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Délibération de la Ville de La Possession - août 2024",
+  "editeur": "Mairie de La Possession",
+  "n": 19,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession aout 2024 lareunion"
+ },
+ {
+  "id": "deliberation-de-la-ville-de-la-possession-juin-2024@lareunion",
+  "base": "deliberation-de-la-ville-de-la-possession-juin-2024",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Délibération de la Ville de La Possession - juin 2024",
+  "editeur": "Mairie de La Possession",
+  "n": 20,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession juin 2024 lareunion"
+ },
+ {
+  "id": "deliberations-conseils-municipaux-2024@combslaville-grandparissud",
+  "base": "deliberations-conseils-municipaux-2024",
+  "portail": "combslaville-grandparissud",
+  "hote": "data.combs-la-ville.fr",
+  "hote_secours": "combslaville-grandparissud.opendatasoft.com",
+  "titre": "Délibérations Conseils municipaux - 2024",
+  "editeur": "Mairie de Combs-la-Ville",
+  "n": 63,
+  "champs_texte": [
+   "objet"
+  ],
+  "champs_fichier": [
+   "document"
+  ],
+  "cle": "mairie de combs la ville deliberations conseils municipaux 2024 combslaville grandparissud"
+ },
+ {
+  "id": "deliberations_2014_2020@agglo-montargoise-centrevaldeloire",
+  "base": "deliberations_2014_2020",
+  "portail": "agglo-montargoise-centrevaldeloire",
+  "hote": "data.agglo-montargoise.fr",
+  "hote_secours": "agglo-montargoise-centrevaldeloire.opendatasoft.com",
+  "titre": "Délibérations - Mandature 2014/2020",
+  "editeur": "Agglomération Montargoise",
+  "n": 2047,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "agglomeration montargoise deliberations mandature 2014 2020 agglo montargoise centrevaldeloire"
+ },
+ {
+  "id": "deliberation-de-la-ville-de-la-possession-aout-2023@lareunion",
+  "base": "deliberation-de-la-ville-de-la-possession-aout-2023",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Délibération de la Ville de La Possession - août 2023",
+  "editeur": "Mairie de La Possession",
+  "n": 25,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession aout 2023 lareunion"
+ },
+ {
+  "id": "deliberation-de-la-ville-de-la-possession-mai-2023@lareunion",
+  "base": "deliberation-de-la-ville-de-la-possession-mai-2023",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Délibération de la Ville de La Possession - mai 2023",
+  "editeur": "Mairie de La Possession",
+  "n": 27,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession mai 2023 lareunion"
+ },
+ {
+  "id": "deliberations-du-conseil-municipal-de-toulouse-davril-2014-a-juin-2020@toulouse-metropole",
+  "base": "deliberations-du-conseil-municipal-de-toulouse-davril-2014-a-juin-2020",
+  "portail": "toulouse-metropole",
+  "hote": "data.toulouse-metropole.fr",
+  "hote_secours": "toulouse-metropole.opendatasoft.com",
+  "titre": "Délibérations d’Avril 2014 à Juin 2020 - Mairie de Toulouse",
+  "editeur": "Mairie de Toulouse",
+  "n": 3725,
+  "champs_texte": [
+   "titre",
+   "libelle_emetteur",
+   "libelle_theme_prefecture",
+   "nom_rapporteur"
+  ],
+  "champs_fichier": [],
+  "cle": "mairie de toulouse deliberations davril 2014 a juin 2020 mairie de toulouse toulouse metropole"
+ },
+ {
+  "id": "214401507_deliberations-conseil-municipal-sagl@nantesmetropole",
+  "base": "214401507_deliberations-conseil-municipal-sagl",
+  "portail": "nantesmetropole",
+  "hote": "data.nantesmetropole.fr",
+  "hote_secours": "nantesmetropole.opendatasoft.com",
+  "titre": "Délibérations du conseil municipal de la commune de Saint-Aignan de Grand Lieu",
+  "editeur": "Saint-Aignan de Grand Lieu",
+  "n": 99,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_url",
+   "annexe_url",
+   "pv_url",
+   "liste_delib_url"
+  ],
+  "cle": "saint aignan de grand lieu deliberations du conseil municipal de la commune de saint aignan de grand lieu nantesmetropole"
+ },
+ {
+  "id": "delib-ccas-lisses@lisses-grandparissud",
+  "base": "delib-ccas-lisses",
+  "portail": "lisses-grandparissud",
+  "hote": "lisses-grandparissud.opendatasoft.com",
+  "hote_secours": "lisses-grandparissud.opendatasoft.com",
+  "titre": "2022 - Délibérations CCAS - Lisses",
+  "editeur": "CCAS de Lisses",
+  "n": 1,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "ccas de lisses 2022 deliberations ccas lisses lisses grandparissud"
+ },
+ {
+  "id": "214401143_deliberations-du-conseil-municipal-de-la-ville-dorvault-en-2023-delibe@nantesmetropole",
+  "base": "214401143_deliberations-du-conseil-municipal-de-la-ville-dorvault-en-2023-delibe",
+  "portail": "nantesmetropole",
+  "hote": "data.nantesmetropole.fr",
+  "hote_secours": "nantesmetropole.opendatasoft.com",
+  "titre": "Délibérations du conseil municipal de la ville d'Orvault en 2023 (délibérations ",
+  "editeur": "Orvault",
+  "n": 156,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "orvault deliberations du conseil municipal de la ville d orvault en 2023 deliberations incluses en pdf nantesmetropole"
+ },
+ {
+  "id": "214401200_deliberation-17-mars-2016-tarifs-le-pellerin@nantesmetropole",
+  "base": "214401200_deliberation-17-mars-2016-tarifs-le-pellerin",
+  "portail": "nantesmetropole",
+  "hote": "data.nantesmetropole.fr",
+  "hote_secours": "nantesmetropole.opendatasoft.com",
+  "titre": "Délibération du 17 mars 2016 fixant les tarifs applicables sur la commune du Pel",
+  "editeur": "Le Pellerin",
+  "n": 1,
+  "champs_texte": [],
+  "champs_fichier": [
+   "file"
+  ],
+  "cle": "le pellerin deliberation du 17 mars 2016 fixant les tarifs applicables sur la commune du pellerin nantesmetropole"
+ },
+ {
+  "id": "deliberations-conseils-municipaux-2022@combslaville-grandparissud",
+  "base": "deliberations-conseils-municipaux-2022",
+  "portail": "combslaville-grandparissud",
+  "hote": "data.combs-la-ville.fr",
+  "hote_secours": "combslaville-grandparissud.opendatasoft.com",
+  "titre": "Délibérations Conseils municipaux - 2022",
+  "editeur": "Mairie de Combs-la-Ville",
+  "n": 163,
+  "champs_texte": [
+   "objet"
+  ],
+  "champs_fichier": [
+   "document"
+  ],
+  "cle": "mairie de combs la ville deliberations conseils municipaux 2022 combslaville grandparissud"
+ },
+ {
+  "id": "deliberations-2023@cachan",
+  "base": "deliberations-2023",
+  "portail": "cachan",
+  "hote": "cachan.opendatasoft.com",
+  "hote_secours": "cachan.opendatasoft.com",
+  "titre": "Délibérations 2023",
+  "editeur": "",
+  "n": 144,
+  "champs_texte": [
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "fichier"
+  ],
+  "cle": "deliberations 2023 cachan"
+ },
+ {
+  "id": "deliberations-25-juin-2018@lecoudraymontceaux-grandparissud",
+  "base": "deliberations-25-juin-2018",
+  "portail": "lecoudraymontceaux-grandparissud",
+  "hote": "data.coudray-montceaux.fr",
+  "hote_secours": "lecoudraymontceaux-grandparissud.opendatasoft.com",
+  "titre": "Délibérations 25 juin 2018",
+  "editeur": "Mairie du Coudray-Montceaux",
+  "n": 16,
+  "champs_texte": [],
+  "champs_fichier": [
+   "file"
+  ],
+  "cle": "mairie du coudray montceaux deliberations 25 juin 2018 lecoudraymontceaux grandparissud"
+ },
+ {
+  "id": "liste-de-deliberations-du-conseil-municipal-de-toulouse@toulouse-metropole",
+  "base": "liste-de-deliberations-du-conseil-municipal-de-toulouse",
+  "portail": "toulouse-metropole",
+  "hote": "data.toulouse-metropole.fr",
+  "hote_secours": "toulouse-metropole.opendatasoft.com",
+  "titre": "Liste de délibérations du conseil municipal de 1909 à 1969 - Toulouse",
+  "editeur": "Mairie de Toulouse",
+  "n": 17655,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [],
+  "cle": "mairie de toulouse liste de deliberations du conseil municipal de 1909 a 1969 toulouse toulouse metropole"
+ },
+ {
+  "id": "deliberations-ccas-2022@cachan",
+  "base": "deliberations-ccas-2022",
+  "portail": "cachan",
+  "hote": "cachan.opendatasoft.com",
+  "hote_secours": "cachan.opendatasoft.com",
+  "titre": "Délibérations CCAS 2022",
+  "editeur": "",
+  "n": 47,
+  "champs_texte": [
+   "objet"
+  ],
+  "champs_fichier": [
+   "fichier"
+  ],
+  "cle": "deliberations ccas 2022 cachan"
+ },
+ {
+  "id": "deliberations@lecoudraymontceaux-grandparissud",
+  "base": "deliberations",
+  "portail": "lecoudraymontceaux-grandparissud",
+  "hote": "data.coudray-montceaux.fr",
+  "hote_secours": "lecoudraymontceaux-grandparissud.opendatasoft.com",
+  "titre": "Délibérations 24 mai 2018",
+  "editeur": "Mairie du Coudray-Montceaux",
+  "n": 16,
+  "champs_texte": [],
+  "champs_fichier": [
+   "file"
+  ],
+  "cle": "mairie du coudray montceaux deliberations 24 mai 2018 lecoudraymontceaux grandparissud"
+ },
+ {
+  "id": "deliberations-du-mandat-2020-2026@cachan",
+  "base": "deliberations-du-mandat-2020-2026",
+  "portail": "cachan",
+  "hote": "cachan.opendatasoft.com",
+  "hote_secours": "cachan.opendatasoft.com",
+  "titre": "Délibérations du mandat 2020-2026",
+  "editeur": "Ville de Cachan",
+  "n": 431,
+  "champs_texte": [
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "fichier"
+  ],
+  "cle": "ville de cachan deliberations du mandat 2020 2026 cachan"
+ },
+ {
+  "id": "deliberations-2023-ccas@cachan",
+  "base": "deliberations-2023-ccas",
+  "portail": "cachan",
+  "hote": "cachan.opendatasoft.com",
+  "hote_secours": "cachan.opendatasoft.com",
+  "titre": "Délibérations 2023 CCAS",
+  "editeur": "",
+  "n": 41,
+  "champs_texte": [
+   "objet"
+  ],
+  "champs_fichier": [
+   "fichier"
+  ],
+  "cle": "deliberations 2023 ccas cachan"
+ },
+ {
+  "id": "deliberations-2021@moissycramayel-grandparissud",
+  "base": "deliberations-2021",
+  "portail": "moissycramayel-grandparissud",
+  "hote": "data.moissy-cramayel.fr",
+  "hote_secours": "moissycramayel-grandparissud.opendatasoft.com",
+  "titre": "délibérations 2021",
+  "editeur": "",
+  "n": 100,
+  "champs_texte": [
+   "coll_nom",
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_fichier"
+  ],
+  "cle": "deliberations 2021 moissycramayel grandparissud"
+ },
+ {
+  "id": "deliberations-24-septembre-2018@lecoudraymontceaux-grandparissud",
+  "base": "deliberations-24-septembre-2018",
+  "portail": "lecoudraymontceaux-grandparissud",
+  "hote": "data.coudray-montceaux.fr",
+  "hote_secours": "lecoudraymontceaux-grandparissud.opendatasoft.com",
+  "titre": "Délibérations 24 septembre 2018",
+  "editeur": "Mairie du Coudray-Montceaux",
+  "n": 13,
+  "champs_texte": [],
+  "champs_fichier": [
+   "file"
+  ],
+  "cle": "mairie du coudray montceaux deliberations 24 septembre 2018 lecoudraymontceaux grandparissud"
+ },
+ {
+  "id": "68376_deliberations-conseil-municipal_zillisheim@mulhouse",
+  "base": "68376_deliberations-conseil-municipal_zillisheim",
+  "portail": "mulhouse",
+  "hote": "data.mulhouse-alsace.fr",
+  "hote_secours": "mulhouse.opendatasoft.com",
+  "titre": "Liste des délibérations du conseil municipal de Zillisheim",
+  "editeur": "Commune de Zillisheim",
+  "n": 21,
+  "champs_texte": [
+   "coll_nom",
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "url_delib"
+  ],
+  "cle": "commune de zillisheim liste des deliberations du conseil municipal de zillisheim mulhouse"
+ },
+ {
+  "id": "deliberations_2022@moissycramayel-grandparissud",
+  "base": "deliberations_2022",
+  "portail": "moissycramayel-grandparissud",
+  "hote": "data.moissy-cramayel.fr",
+  "hote_secours": "moissycramayel-grandparissud.opendatasoft.com",
+  "titre": "délibérations 2022",
+  "editeur": "",
+  "n": 105,
+  "champs_texte": [
+   "objet",
+   "coll_nom"
+  ],
+  "champs_fichier": [
+   "fichier_a_telecharger",
+   "concatener_sup",
+   "acte_url_sup",
+   "pdf_sup"
+  ],
+  "cle": "deliberations 2022 moissycramayel grandparissud"
+ },
+ {
+  "id": "deliberation-2018@moissycramayel-grandparissud",
+  "base": "deliberation-2018",
+  "portail": "moissycramayel-grandparissud",
+  "hote": "data.moissy-cramayel.fr",
+  "hote_secours": "moissycramayel-grandparissud.opendatasoft.com",
+  "titre": "Délibérations 2018",
+  "editeur": "",
+  "n": 97,
+  "champs_texte": [
+   "coll_nom",
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_fichier"
+  ],
+  "cle": "deliberations 2018 moissycramayel grandparissud"
+ },
+ {
+  "id": "deliberations-8-mars-2018@lecoudraymontceaux-grandparissud",
+  "base": "deliberations-8-mars-2018",
+  "portail": "lecoudraymontceaux-grandparissud",
+  "hote": "data.coudray-montceaux.fr",
+  "hote_secours": "lecoudraymontceaux-grandparissud.opendatasoft.com",
+  "titre": "Délibérations 8 mars 2018",
+  "editeur": "Mairie du Coudray-Montceaux",
+  "n": 4,
+  "champs_texte": [],
+  "champs_fichier": [
+   "file"
+  ],
+  "cle": "mairie du coudray montceaux deliberations 8 mars 2018 lecoudraymontceaux grandparissud"
+ },
+ {
+  "id": "deliberations-meudon@meudon-seineouest",
+  "base": "deliberations-meudon",
+  "portail": "meudon-seineouest",
+  "hote": "data.meudon.fr",
+  "hote_secours": "meudon-seineouest.opendatasoft.com",
+  "titre": "Délibérations",
+  "editeur": "Ville de Meudon",
+  "n": 428,
+  "champs_texte": [
+   "titre",
+   "description"
+  ],
+  "champs_fichier": [
+   "fichier",
+   "type_de_document"
+  ],
+  "cle": "ville de meudon deliberations meudon seineouest"
+ },
+ {
+  "id": "deliberations-2019@moissycramayel-grandparissud",
+  "base": "deliberations-2019",
+  "portail": "moissycramayel-grandparissud",
+  "hote": "data.moissy-cramayel.fr",
+  "hote_secours": "moissycramayel-grandparissud.opendatasoft.com",
+  "titre": "Délibérations 2019",
+  "editeur": "",
+  "n": 115,
+  "champs_texte": [
+   "coll_nom",
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_fichier"
+  ],
+  "cle": "deliberations 2019 moissycramayel grandparissud"
+ },
+ {
+  "id": "scdl-commission-permanente-deliberations-2023@datacorsica",
+  "base": "scdl-commission-permanente-deliberations-2023",
+  "portail": "datacorsica",
+  "hote": "www.data.corsica",
+  "hote_secours": "datacorsica.opendatasoft.com",
+  "titre": "SCDL - Commission Permanente - délibérations - 2023",
+  "editeur": "Collectivité de Corse",
+  "n": 141,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "collectivite de corse scdl commission permanente deliberations 2023 datacorsica"
+ },
+ {
+  "id": "cp2022exportdata@datacorsica",
+  "base": "cp2022exportdata",
+  "portail": "datacorsica",
+  "hote": "www.data.corsica",
+  "hote_secours": "datacorsica.opendatasoft.com",
+  "titre": "SCDL - Commission Permanente - délibérations - 2022",
+  "editeur": "",
+  "n": 179,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "scdl commission permanente deliberations 2022 datacorsica"
+ },
+ {
+  "id": "scdl-assemblee-de-corse-deliberations-2023@datacorsica",
+  "base": "scdl-assemblee-de-corse-deliberations-2023",
+  "portail": "datacorsica",
+  "hote": "www.data.corsica",
+  "hote_secours": "datacorsica.opendatasoft.com",
+  "titre": "SCDL - Assemblée de Corse - délibérations - 2023",
+  "editeur": "",
+  "n": 162,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "scdl assemblee de corse deliberations 2023 datacorsica"
+ },
+ {
+  "id": "deliberations_cclo_archive_pastell@cc-lacqorthez-data64",
+  "base": "deliberations_cclo_archive_pastell",
+  "portail": "cc-lacqorthez-data64",
+  "hote": "opendata.cc-lacqorthez.fr",
+  "hote_secours": "cc-lacqorthez-data64.opendatasoft.com",
+  "titre": "Délibérations de la CCLO",
+  "editeur": "CCLO",
+  "n": 1781,
+  "champs_texte": [
+   "objet"
+  ],
+  "champs_fichier": [
+   "deliberation_pdf"
+  ],
+  "cle": "cclo deliberations de la cclo cc lacqorthez data64"
+ },
+ {
+  "id": "actes-et-deliberation-du-conseil-municipal-de-la-ville-de-roubaix@ville-de-roubaix",
+  "base": "actes-et-deliberation-du-conseil-municipal-de-la-ville-de-roubaix",
+  "portail": "ville-de-roubaix",
+  "hote": "opendata.roubaix.fr",
+  "hote_secours": "ville-de-roubaix.opendatasoft.com",
+  "titre": "Délibérations du Conseil Municipal et décisions du Maire de la Ville de Roubaix ",
+  "editeur": "Ville de Roubaix",
+  "n": 3603,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [
+   "lien"
+  ],
+  "cle": "ville de roubaix deliberations du conseil municipal et decisions du maire de la ville de roubaix depuis 2014 ville de roubaix"
+ },
+ {
+  "id": "244400552_deliberations_2018@loireatlantique",
+  "base": "244400552_deliberations_2018",
+  "portail": "loireatlantique",
+  "hote": "data.loire-atlantique.fr",
+  "hote_secours": "loireatlantique.opendatasoft.com",
+  "titre": "Délibérations prises en 2018 par la COMPA",
+  "editeur": "COMPA",
+  "n": 274,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [],
+  "cle": "compa deliberations prises en 2018 par la compa loireatlantique"
+ },
+ {
+  "id": "cceg_deliberations@cceg-loireatlantique",
+  "base": "cceg_deliberations",
+  "portail": "cceg-loireatlantique",
+  "hote": "data.cceg.fr",
+  "hote_secours": "cceg-loireatlantique.opendatasoft.com",
+  "titre": "Délibérations de la CC Erdre et Gesvres",
+  "editeur": "Communauté de Communes Erdre & Gesvres",
+  "n": 734,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "communaute de communes erdre gesvres deliberations de la cc erdre et gesvres cceg loireatlantique"
+ },
+ {
+  "id": "deliberations_2019@savignyletemple-grandparissud",
+  "base": "deliberations_2019",
+  "portail": "savignyletemple-grandparissud",
+  "hote": "data.savigny-le-temple.fr",
+  "hote_secours": "savignyletemple-grandparissud.opendatasoft.com",
+  "titre": "Délibérations_2019",
+  "editeur": "Ville de Savigny-le-Temple",
+  "n": 156,
+  "champs_texte": [
+   "intitule_de_la_deliberation"
+  ],
+  "champs_fichier": [
+   "fichiers_pdf"
+  ],
+  "cle": "ville de savigny le temple deliberations 2019 savignyletemple grandparissud"
+ },
+ {
+  "id": "244400552_deliberations_2022@loireatlantique",
+  "base": "244400552_deliberations_2022",
+  "portail": "loireatlantique",
+  "hote": "data.loire-atlantique.fr",
+  "hote_secours": "loireatlantique.opendatasoft.com",
+  "titre": "Délibérations prises en 2022 par la COMPA",
+  "editeur": "COMPA",
+  "n": 243,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [],
+  "cle": "compa deliberations prises en 2022 par la compa loireatlantique"
+ },
+ {
+  "id": "deliberations-conseils-municipaux-2023@combslaville-grandparissud",
+  "base": "deliberations-conseils-municipaux-2023",
+  "portail": "combslaville-grandparissud",
+  "hote": "data.combs-la-ville.fr",
+  "hote_secours": "combslaville-grandparissud.opendatasoft.com",
+  "titre": "Délibérations Conseils municipaux - 2023",
+  "editeur": "Mairie de Combs-la-Ville",
+  "n": 143,
+  "champs_texte": [
+   "objet"
+  ],
+  "champs_fichier": [
+   "document"
+  ],
+  "cle": "mairie de combs la ville deliberations conseils municipaux 2023 combslaville grandparissud"
+ },
+ {
+  "id": "agglopolys-liste-des-deliberations-du-bureau-communautaire-prises-par-delegation@blois-agglopolys-centrevaldeloire",
+  "base": "agglopolys-liste-des-deliberations-du-bureau-communautaire-prises-par-delegation",
+  "portail": "blois-agglopolys-centrevaldeloire",
+  "hote": "data.blois.agglopolys.fr",
+  "hote_secours": "blois-agglopolys-centrevaldeloire.opendatasoft.com",
+  "titre": "Agglopolys - liste des délibérations du bureau communautaire prises par délégati",
+  "editeur": "Agglopolys",
+  "n": 320,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [],
+  "cle": "agglopolys agglopolys liste des deliberations du bureau communautaire prises par delegation du conseil communautaire 2020 2026 blois agglopolys centrevaldeloire"
+ },
+ {
+  "id": "blois-deliberations-du-conseil-municipal-annees-2020-et-suivantes@blois-agglopolys-centrevaldeloire",
+  "base": "blois-deliberations-du-conseil-municipal-annees-2020-et-suivantes",
+  "portail": "blois-agglopolys-centrevaldeloire",
+  "hote": "data.blois.agglopolys.fr",
+  "hote_secours": "blois-agglopolys-centrevaldeloire.opendatasoft.com",
+  "titre": "Blois - délibérations du conseil municipal - année 2020",
+  "editeur": "Ville de Blois",
+  "n": 312,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [
+   "lien"
+  ],
+  "cle": "ville de blois blois deliberations du conseil municipal annee 2020 blois agglopolys centrevaldeloire"
+ },
+ {
+  "id": "agglopolys-deliberations-du-conseil-communautaire-annee-2022@blois-agglopolys-centrevaldeloire",
+  "base": "agglopolys-deliberations-du-conseil-communautaire-annee-2022",
+  "portail": "blois-agglopolys-centrevaldeloire",
+  "hote": "data.blois.agglopolys.fr",
+  "hote_secours": "blois-agglopolys-centrevaldeloire.opendatasoft.com",
+  "titre": "Agglopolys - délibérations du conseil communautaire - année 2022",
+  "editeur": "Agglopolys",
+  "n": 266,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [
+   "lien"
+  ],
+  "cle": "agglopolys agglopolys deliberations du conseil communautaire annee 2022 blois agglopolys centrevaldeloire"
+ },
+ {
+  "id": "blois-deliberations-du-conseil-municipal-annee-2021@blois-agglopolys-centrevaldeloire",
+  "base": "blois-deliberations-du-conseil-municipal-annee-2021",
+  "portail": "blois-agglopolys-centrevaldeloire",
+  "hote": "data.blois.agglopolys.fr",
+  "hote_secours": "blois-agglopolys-centrevaldeloire.opendatasoft.com",
+  "titre": "Blois - délibérations du conseil municipal - année 2021",
+  "editeur": "Ville de Blois",
+  "n": 312,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [
+   "lien"
+  ],
+  "cle": "ville de blois blois deliberations du conseil municipal annee 2021 blois agglopolys centrevaldeloire"
+ },
+ {
+  "id": "agglopolys-deliberations-du-conseil-communautaire-2024@blois-agglopolys-centrevaldeloire",
+  "base": "agglopolys-deliberations-du-conseil-communautaire-2024",
+  "portail": "blois-agglopolys-centrevaldeloire",
+  "hote": "data.blois.agglopolys.fr",
+  "hote_secours": "blois-agglopolys-centrevaldeloire.opendatasoft.com",
+  "titre": "Agglopolys - délibérations du conseil communautaire - année 2024",
+  "editeur": "Agglopolys",
+  "n": 100,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [
+   "lien_url"
+  ],
+  "cle": "agglopolys agglopolys deliberations du conseil communautaire annee 2024 blois agglopolys centrevaldeloire"
+ },
+ {
+  "id": "214401838_liste_delib_pv_seance@capatlantique-loireatlantique",
+  "base": "214401838_liste_delib_pv_seance",
+  "portail": "capatlantique-loireatlantique",
+  "hote": "data.capatlantique.fr",
+  "hote_secours": "capatlantique-loireatlantique.opendatasoft.com",
+  "titre": "Liste des délibérations et Procès-verbaux des conseils municipaux de la commune ",
+  "editeur": "Guérande",
+  "n": 1,
+  "champs_texte": [
+   "coll_nom"
+  ],
+  "champs_fichier": [
+   "pv_seance_url",
+   "liste_delib_url"
+  ],
+  "cle": "guerande liste des deliberations et proces verbaux des conseils municipaux de la commune de saint molf capatlantique loireatlantique"
+ },
+ {
+  "id": "20220707-deliberations-lisses-2022@lisses-grandparissud",
+  "base": "20220707-deliberations-lisses-2022",
+  "portail": "lisses-grandparissud",
+  "hote": "lisses-grandparissud.opendatasoft.com",
+  "hote_secours": "lisses-grandparissud.opendatasoft.com",
+  "titre": "2022 - Délibérations municipales - Lisses",
+  "editeur": "",
+  "n": 137,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "2022 deliberations municipales lisses lisses grandparissud"
+ },
+ {
+  "id": "caisse-des-ecoles-lisses-deliberations-2022@lisses-grandparissud",
+  "base": "caisse-des-ecoles-lisses-deliberations-2022",
+  "portail": "lisses-grandparissud",
+  "hote": "lisses-grandparissud.opendatasoft.com",
+  "hote_secours": "lisses-grandparissud.opendatasoft.com",
+  "titre": "2022 - Délibérations Caisse des écoles - Lisses - consolidé",
+  "editeur": "",
+  "n": 5,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "2022 deliberations caisse des ecoles lisses consolide lisses grandparissud"
+ },
+ {
+  "id": "244400552_deliberations_2020@loireatlantique",
+  "base": "244400552_deliberations_2020",
+  "portail": "loireatlantique",
+  "hote": "data.loire-atlantique.fr",
+  "hote_secours": "loireatlantique.opendatasoft.com",
+  "titre": "Délibérations prises en 2020 par la COMPA",
+  "editeur": "COMPA",
+  "n": 375,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [],
+  "cle": "compa deliberations prises en 2020 par la compa loireatlantique"
+ },
+ {
+  "id": "agglopolys-deliberations-du-conseil-communautaire-annee-2021@blois-agglopolys-centrevaldeloire",
+  "base": "agglopolys-deliberations-du-conseil-communautaire-annee-2021",
+  "portail": "blois-agglopolys-centrevaldeloire",
+  "hote": "data.blois.agglopolys.fr",
+  "hote_secours": "blois-agglopolys-centrevaldeloire.opendatasoft.com",
+  "titre": "Agglopolys - délibérations du conseil communautaire - année 2021",
+  "editeur": "Agglopolys",
+  "n": 292,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [
+   "lien"
+  ],
+  "cle": "agglopolys agglopolys deliberations du conseil communautaire annee 2021 blois agglopolys centrevaldeloire"
+ },
+ {
+  "id": "deliberation-possession-03-23@lareunion",
+  "base": "deliberation-possession-03-23",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Délibération de la Ville de La Possession - mars 2023",
+  "editeur": "Mairie de La Possession",
+  "n": 18,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession mars 2023 lareunion"
+ },
+ {
+  "id": "deliberation-possession-05-22@lareunion",
+  "base": "deliberation-possession-05-22",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Délibération de la Ville de La Possession - mai 2022",
+  "editeur": "Mairie de La Possession",
+  "n": 28,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession mai 2022 lareunion"
+ },
+ {
+  "id": "20230328@saint-louis-agglo",
+  "base": "20230328",
+  "portail": "saint-louis-agglo",
+  "hote": "saint-louis-agglo.opendatasoft.com",
+  "hote_secours": "saint-louis-agglo.opendatasoft.com",
+  "titre": "Blotzheim – Délibérations du conseil municipal du 1er janvier au 31 décembre 202",
+  "editeur": "",
+  "n": 84,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "blotzheim deliberations du conseil municipal du 1er janvier au 31 decembre 2023 saint louis agglo"
+ },
+ {
+  "id": "sommaire-des-deliberations-2018@lieusaint-grandparissud",
+  "base": "sommaire-des-deliberations-2018",
+  "portail": "lieusaint-grandparissud",
+  "hote": "data.ville-lieusaint.fr",
+  "hote_secours": "lieusaint-grandparissud.opendatasoft.com",
+  "titre": "Sommaire des délibérations du conseil municipal de la ville de Lieusaint depuis ",
+  "editeur": "Mairie de Lieusaint",
+  "n": 104,
+  "champs_texte": [
+   "objet"
+  ],
+  "champs_fichier": [],
+  "cle": "mairie de lieusaint sommaire des deliberations du conseil municipal de la ville de lieusaint depuis 2018 lieusaint grandparissud"
+ },
+ {
+  "id": "deliberations-conseils-municipaux-2018@nandy-grandparissud",
+  "base": "deliberations-conseils-municipaux-2018",
+  "portail": "nandy-grandparissud",
+  "hote": "nandy-grandparissud.opendatasoft.com",
+  "hote_secours": "nandy-grandparissud.opendatasoft.com",
+  "titre": "Délibérations Conseils municipaux - 2018",
+  "editeur": "Mairie de Nandy",
+  "n": 1,
+  "champs_texte": [],
+  "champs_fichier": [
+   "file"
+  ],
+  "cle": "mairie de nandy deliberations conseils municipaux 2018 nandy grandparissud"
+ },
+ {
+  "id": "deliberation-de-la-ville-de-la-possession-octobre-2024@lareunion",
+  "base": "deliberation-de-la-ville-de-la-possession-octobre-2024",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Délibération de la Ville de La Possession - octobre 2024",
+  "editeur": "Mairie de La Possession",
+  "n": 35,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession octobre 2024 lareunion"
+ },
+ {
+  "id": "244400552_deliberations_2019@loireatlantique",
+  "base": "244400552_deliberations_2019",
+  "portail": "loireatlantique",
+  "hote": "data.loire-atlantique.fr",
+  "hote_secours": "loireatlantique.opendatasoft.com",
+  "titre": "Délibérations prises en 2019 par la COMPA",
+  "editeur": "COMPA",
+  "n": 256,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [],
+  "cle": "compa deliberations prises en 2019 par la compa loireatlantique"
+ },
+ {
+  "id": "244400644_deliberations_liste_01-18_06-22@carene-loireatlantique",
+  "base": "244400644_deliberations_liste_01-18_06-22",
+  "portail": "carene-loireatlantique",
+  "hote": "data.saintnazaireagglo.fr",
+  "hote_secours": "carene-loireatlantique.opendatasoft.com",
+  "titre": "Délibérations de la CARENE (janvier 2018 - juin 2022)",
+  "editeur": "CARENE",
+  "n": 1526,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "carene deliberations de la carene janvier 2018 juin 2022 carene loireatlantique"
+ },
+ {
+  "id": "deliberation-possession-12-22@lareunion",
+  "base": "deliberation-possession-12-22",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Délibération de la Ville de La Possession - décembre 2022",
+  "editeur": "Mairie de La Possession",
+  "n": 35,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession decembre 2022 lareunion"
+ },
+ {
+  "id": "deliberations-2020@moissycramayel-grandparissud",
+  "base": "deliberations-2020",
+  "portail": "moissycramayel-grandparissud",
+  "hote": "data.moissy-cramayel.fr",
+  "hote_secours": "moissycramayel-grandparissud.opendatasoft.com",
+  "titre": "Délibérations 2020",
+  "editeur": "",
+  "n": 112,
+  "champs_texte": [
+   "coll_nom",
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_fichier"
+  ],
+  "cle": "deliberations 2020 moissycramayel grandparissud"
+ },
+ {
+  "id": "agglopolys-deliberations-du-conseil-communautaire-et-du-bureau-communautaire@blois-agglopolys-centrevaldeloire",
+  "base": "agglopolys-deliberations-du-conseil-communautaire-et-du-bureau-communautaire",
+  "portail": "blois-agglopolys-centrevaldeloire",
+  "hote": "data.blois.agglopolys.fr",
+  "hote_secours": "blois-agglopolys-centrevaldeloire.opendatasoft.com",
+  "titre": "Agglopolys - délibérations du conseil communautaire - 2018 et 2019",
+  "editeur": "Agglopolys",
+  "n": 648,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [
+   "lien"
+  ],
+  "cle": "agglopolys agglopolys deliberations du conseil communautaire 2018 et 2019 blois agglopolys centrevaldeloire"
+ },
+ {
+  "id": "244400552_deliberations_2021@loireatlantique",
+  "base": "244400552_deliberations_2021",
+  "portail": "loireatlantique",
+  "hote": "data.loire-atlantique.fr",
+  "hote_secours": "loireatlantique.opendatasoft.com",
+  "titre": "Délibérations prises en 2021 par la COMPA",
+  "editeur": "COMPA",
+  "n": 306,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [],
+  "cle": "compa deliberations prises en 2021 par la compa loireatlantique"
+ },
+ {
+  "id": "deliberations-cc-grand-chambord-2020@data-grandchambord-centrevaldeloire",
+  "base": "deliberations-cc-grand-chambord-2020",
+  "portail": "data-grandchambord-centrevaldeloire",
+  "hote": "www.data.grandchambord.fr",
+  "hote_secours": "data-grandchambord-centrevaldeloire.opendatasoft.com",
+  "titre": "Délibérations - CC Grand Chambord (2020)",
+  "editeur": "CC Grand Chambord",
+  "n": 178,
+  "champs_texte": [
+   "delib_objet",
+   "nom_collectivite",
+   "coll_nom"
+  ],
+  "champs_fichier": [
+   "lien"
+  ],
+  "cle": "cc grand chambord deliberations cc grand chambord 2020 data grandchambord centrevaldeloire"
+ },
+ {
+  "id": "deliberations-de-saint-nazaire-avant-2022@carene-loireatlantique",
+  "base": "deliberations-de-saint-nazaire-avant-2022",
+  "portail": "carene-loireatlantique",
+  "hote": "data.saintnazaireagglo.fr",
+  "hote_secours": "carene-loireatlantique.opendatasoft.com",
+  "titre": "Délibérations de Saint-Nazaire entre octobre 2021 et juin 2022",
+  "editeur": "CARENE",
+  "n": 300,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "carene deliberations de saint nazaire entre octobre 2021 et juin 2022 carene loireatlantique"
+ },
+ {
+  "id": "214401143_deliberations-du-conseil-municipal-de-la-ville-dorvault-en-2019-delibe@nantesmetropole",
+  "base": "214401143_deliberations-du-conseil-municipal-de-la-ville-dorvault-en-2019-delibe",
+  "portail": "nantesmetropole",
+  "hote": "data.nantesmetropole.fr",
+  "hote_secours": "nantesmetropole.opendatasoft.com",
+  "titre": "Délibérations du conseil municipal de la ville d'Orvault en 2020 (délibérations ",
+  "editeur": "Orvault",
+  "n": 129,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "orvault deliberations du conseil municipal de la ville d orvault en 2020 deliberations incluses en pdf nantesmetropole"
+ },
+ {
+  "id": "deliberations-du-conseil-municipal-de-la-ville-dorvault-en-2024-deliberations-in@nantesmetropole",
+  "base": "deliberations-du-conseil-municipal-de-la-ville-dorvault-en-2024-deliberations-in",
+  "portail": "nantesmetropole",
+  "hote": "data.nantesmetropole.fr",
+  "hote_secours": "nantesmetropole.opendatasoft.com",
+  "titre": "Délibérations du conseil municipal de la ville d'Orvault en 2024 (délibérations ",
+  "editeur": "Orvault",
+  "n": 168,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "orvault deliberations du conseil municipal de la ville d orvault en 2024 deliberations incluses en pdf nantesmetropole"
+ },
+ {
+  "id": "248500589_cr-deliberations-et-proces-verbaux-rsya@data-larochesuryon-fr-paysdelaloire",
+  "base": "248500589_cr-deliberations-et-proces-verbaux-rsya",
+  "portail": "data-larochesuryon-fr-paysdelaloire",
+  "hote": "data.larochesuryon.fr",
+  "hote_secours": "data-larochesuryon-fr-paysdelaloire.opendatasoft.com",
+  "titre": "Compte-rendus, délibérations et procès-verbaux de la Roche-sur-Yon Agglomération",
+  "editeur": "Ville de la Roche-sur-Yon",
+  "n": 32,
+  "champs_texte": [
+   "coll_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "ville de la roche sur yon compte rendus deliberations et proces verbaux de la roche sur yon agglomeration data larochesuryon fr paysdelaloire"
+ },
+ {
+  "id": "234400034_001-001_rapports-deliberations-et-proces-verbaux-rpdl@paysdelaloire",
+  "base": "234400034_001-001_rapports-deliberations-et-proces-verbaux-rpdl",
+  "portail": "paysdelaloire",
+  "hote": "data.paysdelaloire.fr",
+  "hote_secours": "paysdelaloire.opendatasoft.com",
+  "titre": "Rapports, délibérations et procès-verbaux du Conseil régional des Pays de la Loi",
+  "editeur": "Région des Pays de la Loire",
+  "n": 72,
+  "champs_texte": [
+   "coll_nom"
+  ],
+  "champs_fichier": [
+   "delib_url",
+   "rapp_url"
+  ],
+  "cle": "region des pays de la loire rapports deliberations et proces verbaux du conseil regional des pays de la loire de 2012 a 2018 paysdelaloire"
+ },
+ {
+  "id": "214401143_deliberations-du-conseil-municipal-de-la-ville-dorvault-en-2022-delibe@nantesmetropole",
+  "base": "214401143_deliberations-du-conseil-municipal-de-la-ville-dorvault-en-2022-delibe",
+  "portail": "nantesmetropole",
+  "hote": "data.nantesmetropole.fr",
+  "hote_secours": "nantesmetropole.opendatasoft.com",
+  "titre": "Délibérations du conseil municipal de la ville d'Orvault en 2022 (délibérations ",
+  "editeur": "Orvault",
+  "n": 159,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "orvault deliberations du conseil municipal de la ville d orvault en 2022 deliberations incluses en pdf nantesmetropole"
+ },
+ {
+  "id": "deliberations-rcvl@centrevaldeloire",
+  "base": "deliberations-rcvl",
+  "portail": "centrevaldeloire",
+  "hote": "data.centrevaldeloire.fr",
+  "hote_secours": "centrevaldeloire.opendatasoft.com",
+  "titre": "Délibérations 2015-2021 du Conseil Régional Centre-Val de Loire",
+  "editeur": "Région Centre-Val de Loire",
+  "n": 4260,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_url",
+   "lien_annexe_1",
+   "lien_annexe_2"
+  ],
+  "cle": "region centre val de loire deliberations 2015 2021 du conseil regional centre val de loire centrevaldeloire"
+ },
+ {
+  "id": "deliberations-toulouse-metropole-2011-fevrier-2014@toulouse-metropole",
+  "base": "deliberations-toulouse-metropole-2011-fevrier-2014",
+  "portail": "toulouse-metropole",
+  "hote": "data.toulouse-metropole.fr",
+  "hote_secours": "toulouse-metropole.opendatasoft.com",
+  "titre": "Délibérations de 2011 à Février 2014- Toulouse Métropole",
+  "editeur": "Toulouse Métropole",
+  "n": 2405,
+  "champs_texte": [
+   "titre",
+   "libelle_emetteur",
+   "libelle_seance",
+   "nom_rapporteur"
+  ],
+  "champs_fichier": [],
+  "cle": "toulouse metropole deliberations de 2011 a fevrier 2014 toulouse metropole toulouse metropole"
+ },
+ {
+  "id": "214401143_deliberations-du-conseil-municipal-de-la-ville-dorvault-en-2021-delibe@nantesmetropole",
+  "base": "214401143_deliberations-du-conseil-municipal-de-la-ville-dorvault-en-2021-delibe",
+  "portail": "nantesmetropole",
+  "hote": "data.nantesmetropole.fr",
+  "hote_secours": "nantesmetropole.opendatasoft.com",
+  "titre": "Délibérations du conseil municipal de la ville d'Orvault en 2021 (délibérations ",
+  "editeur": "Orvault",
+  "n": 162,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "orvault deliberations du conseil municipal de la ville d orvault en 2021 deliberations incluses en pdf nantesmetropole"
+ },
+ {
+  "id": "deliberations-conseils-municipaux-2020@combslaville-grandparissud",
+  "base": "deliberations-conseils-municipaux-2020",
+  "portail": "combslaville-grandparissud",
+  "hote": "data.combs-la-ville.fr",
+  "hote_secours": "combslaville-grandparissud.opendatasoft.com",
+  "titre": "Délibérations Conseils municipaux - 2020",
+  "editeur": "Mairie de Combs-la-Ville",
+  "n": 150,
+  "champs_texte": [
+   "objet"
+  ],
+  "champs_fichier": [
+   "document"
+  ],
+  "cle": "mairie de combs la ville deliberations conseils municipaux 2020 combslaville grandparissud"
+ },
+ {
+  "id": "deliberations-conseils-municipaux-2021@combslaville-grandparissud",
+  "base": "deliberations-conseils-municipaux-2021",
+  "portail": "combslaville-grandparissud",
+  "hote": "data.combs-la-ville.fr",
+  "hote_secours": "combslaville-grandparissud.opendatasoft.com",
+  "titre": "Délibérations Conseils municipaux - 2021",
+  "editeur": "Mairie de Combs-la-Ville",
+  "n": 162,
+  "champs_texte": [
+   "objet"
+  ],
+  "champs_fichier": [
+   "document"
+  ],
+  "cle": "mairie de combs la ville deliberations conseils municipaux 2021 combslaville grandparissud"
+ },
+ {
+  "id": "deliberations-conseils-municipaux-2018@combslaville-grandparissud",
+  "base": "deliberations-conseils-municipaux-2018",
+  "portail": "combslaville-grandparissud",
+  "hote": "data.combs-la-ville.fr",
+  "hote_secours": "combslaville-grandparissud.opendatasoft.com",
+  "titre": "Délibérations Conseils municipaux - 2018",
+  "editeur": "Mairie de Combs-la-Ville",
+  "n": 157,
+  "champs_texte": [
+   "objet"
+  ],
+  "champs_fichier": [
+   "document"
+  ],
+  "cle": "mairie de combs la ville deliberations conseils municipaux 2018 combslaville grandparissud"
+ },
+ {
+  "id": "deliberations-de-la-commune-de-marseillan@data-herault-occitanie",
+  "base": "deliberations-de-la-commune-de-marseillan",
+  "portail": "data-herault-occitanie",
+  "hote": "www.herault-data.fr",
+  "hote_secours": "data-herault-occitanie.opendatasoft.com",
+  "titre": "Délibérations de la commune de Marseillan",
+  "editeur": "Mairie de Marseillan",
+  "n": 2554,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de marseillan deliberations de la commune de marseillan data herault occitanie"
+ },
+ {
+  "id": "huningue_dcm@saint-louis-agglo",
+  "base": "huningue_dcm",
+  "portail": "saint-louis-agglo",
+  "hote": "saint-louis-agglo.opendatasoft.com",
+  "hote_secours": "saint-louis-agglo.opendatasoft.com",
+  "titre": "Huningue - Délibérations 2022",
+  "editeur": "Commune de Huningue ",
+  "n": 39,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "commune de huningue huningue deliberations 2022 saint louis agglo"
+ },
+ {
+  "id": "deliberations-ca-ccas-2024@cachan",
+  "base": "deliberations-ca-ccas-2024",
+  "portail": "cachan",
+  "hote": "cachan.opendatasoft.com",
+  "hote_secours": "cachan.opendatasoft.com",
+  "titre": "Délibérations CA CCAS 2024",
+  "editeur": "",
+  "n": 44,
+  "champs_texte": [
+   "objet"
+  ],
+  "champs_fichier": [
+   "fichier"
+  ],
+  "cle": "deliberations ca ccas 2024 cachan"
+ },
+ {
+  "id": "deliberations-2024@cachan",
+  "base": "deliberations-2024",
+  "portail": "cachan",
+  "hote": "cachan.opendatasoft.com",
+  "hote_secours": "cachan.opendatasoft.com",
+  "titre": "Délibérations 2024",
+  "editeur": "",
+  "n": 140,
+  "champs_texte": [
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "fichier"
+  ],
+  "cle": "deliberations 2024 cachan"
+ },
+ {
+  "id": "deliberations-29-mars-2018@lecoudraymontceaux-grandparissud",
+  "base": "deliberations-29-mars-2018",
+  "portail": "lecoudraymontceaux-grandparissud",
+  "hote": "data.coudray-montceaux.fr",
+  "hote_secours": "lecoudraymontceaux-grandparissud.opendatasoft.com",
+  "titre": "Délibérations 29 mars 2018",
+  "editeur": "Mairie du Coudray-Montceaux",
+  "n": 6,
+  "champs_texte": [],
+  "champs_fichier": [
+   "file"
+  ],
+  "cle": "mairie du coudray montceaux deliberations 29 mars 2018 lecoudraymontceaux grandparissud"
+ },
+ {
+  "id": "deliberations-conseils-municipaux-2019@combslaville-grandparissud",
+  "base": "deliberations-conseils-municipaux-2019",
+  "portail": "combslaville-grandparissud",
+  "hote": "data.combs-la-ville.fr",
+  "hote_secours": "combslaville-grandparissud.opendatasoft.com",
+  "titre": "Délibérations Conseils municipaux - 2019",
+  "editeur": "Mairie de Combs-la-Ville",
+  "n": 161,
+  "champs_texte": [
+   "objet"
+  ],
+  "champs_fichier": [
+   "document"
+  ],
+  "cle": "mairie de combs la ville deliberations conseils municipaux 2019 combslaville grandparissud"
+ },
+ {
+  "id": "deliberations-1er-fevrier-2018@lecoudraymontceaux-grandparissud",
+  "base": "deliberations-1er-fevrier-2018",
+  "portail": "lecoudraymontceaux-grandparissud",
+  "hote": "data.coudray-montceaux.fr",
+  "hote_secours": "lecoudraymontceaux-grandparissud.opendatasoft.com",
+  "titre": "Délibérations 1er Février 2018",
+  "editeur": "Mairie du Coudray-Montceaux",
+  "n": 9,
+  "champs_texte": [],
+  "champs_fichier": [
+   "file"
+  ],
+  "cle": "mairie du coudray montceaux deliberations 1er fevrier 2018 lecoudraymontceaux grandparissud"
+ },
+ {
+  "id": "ccas-deliberations-2022@moissycramayel-grandparissud",
+  "base": "ccas-deliberations-2022",
+  "portail": "moissycramayel-grandparissud",
+  "hote": "data.moissy-cramayel.fr",
+  "hote_secours": "moissycramayel-grandparissud.opendatasoft.com",
+  "titre": "CCAS - DELIBERATIONS 2022",
+  "editeur": "",
+  "n": 0,
+  "champs_texte": [],
+  "champs_fichier": [],
+  "cle": "ccas deliberations 2022 moissycramayel grandparissud"
+ },
+ {
+  "id": "deliberations-2024@moissycramayel-grandparissud",
+  "base": "deliberations-2024",
+  "portail": "moissycramayel-grandparissud",
+  "hote": "data.moissy-cramayel.fr",
+  "hote_secours": "moissycramayel-grandparissud.opendatasoft.com",
+  "titre": "DELIBERATIONS 2024",
+  "editeur": "",
+  "n": 91,
+  "champs_texte": [
+   "objet",
+   "coll_nom"
+  ],
+  "champs_fichier": [
+   "fichier_a_telecharger"
+  ],
+  "cle": "deliberations 2024 moissycramayel grandparissud"
+ },
+ {
+  "id": "deliberations-2023@moissycramayel-grandparissud",
+  "base": "deliberations-2023",
+  "portail": "moissycramayel-grandparissud",
+  "hote": "data.moissy-cramayel.fr",
+  "hote_secours": "moissycramayel-grandparissud.opendatasoft.com",
+  "titre": "DELIBERATIONS 2023",
+  "editeur": "",
+  "n": 94,
+  "champs_texte": [
+   "objet",
+   "coll_nom"
+  ],
+  "champs_fichier": [
+   "fichier_a_telecharger",
+   "acte_url_sup",
+   "pdf_sup"
+  ],
+  "cle": "deliberations 2023 moissycramayel grandparissud"
+ },
+ {
+  "id": "delibere-di-giunta@bologna",
+  "base": "delibere-di-giunta",
+  "portail": "bologna",
+  "hote": "opendata.comune.bologna.it",
+  "hote_secours": "bologna.opendatasoft.com",
+  "titre": "Delibere di Giunta",
+  "editeur": "Comune di Bologna - Staff del Consiglio e Gabinetto del Sind",
+  "n": 4982,
+  "champs_texte": [],
+  "champs_fichier": [],
+  "cle": "comune di bologna staff del consiglio e gabinetto del sindaco delibere di giunta bologna"
+ },
+ {
+  "id": "delibere-e-odg-del-consiglio-comunale@bologna",
+  "base": "delibere-e-odg-del-consiglio-comunale",
+  "portail": "bologna",
+  "hote": "opendata.comune.bologna.it",
+  "hote_secours": "bologna.opendatasoft.com",
+  "titre": "Delibere e O.d.G. del Consiglio Comunale",
+  "editeur": "Comune di Bologna - Staff del Consiglio e Gabinetto del Sind",
+  "n": 3309,
+  "champs_texte": [],
+  "champs_fichier": [],
+  "cle": "comune di bologna staff del consiglio e gabinetto del sindaco delibere e o d g del consiglio comunale bologna"
+ },
+ {
+  "id": "delib-2017-open-data@fos-sur-mer",
+  "base": "delib-2017-open-data",
+  "portail": "fos-sur-mer",
+  "hote": "fos-sur-mer.opendatasoft.com",
+  "hote_secours": "fos-sur-mer.opendatasoft.com",
+  "titre": "Delib 2017 - Open Data",
+  "editeur": "Commune Fos-Sur-Mer",
+  "n": 182,
+  "champs_texte": [
+   "objet"
+  ],
+  "champs_fichier": [
+   "fichier"
+  ],
+  "cle": "commune fos sur mer delib 2017 open data fos sur mer"
+ },
+ {
+  "id": "delib-2022-open-data@fos-sur-mer",
+  "base": "delib-2022-open-data",
+  "portail": "fos-sur-mer",
+  "hote": "fos-sur-mer.opendatasoft.com",
+  "hote_secours": "fos-sur-mer.opendatasoft.com",
+  "titre": "Délib 2022 - Open Data",
+  "editeur": "",
+  "n": 122,
+  "champs_texte": [
+   "objet"
+  ],
+  "champs_fichier": [
+   "fichier"
+  ],
+  "cle": "delib 2022 open data fos sur mer"
+ },
+ {
+  "id": "deliberations-ca-ccas-2026@cachan",
+  "base": "deliberations-ca-ccas-2026",
+  "portail": "cachan",
+  "hote": "cachan.opendatasoft.com",
+  "hote_secours": "cachan.opendatasoft.com",
+  "titre": "Délibérations CA CCAS 2026",
+  "editeur": "",
+  "n": 47,
+  "champs_texte": [
+   "objet"
+  ],
+  "champs_fichier": [
+   "fichier"
+  ],
+  "cle": "deliberations ca ccas 2026 cachan"
+ },
+ {
+  "id": "deliberations-stpdp@stpdp-grandparissud",
+  "base": "deliberations-stpdp",
+  "portail": "stpdp-grandparissud",
+  "hote": "data.saint-pierre-du-perray.fr",
+  "hote_secours": "stpdp-grandparissud.opendatasoft.com",
+  "titre": "Délibérations 2025 STPDP",
+  "editeur": "",
+  "n": 69,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "deliberations 2025 stpdp stpdp grandparissud"
+ },
+ {
+  "id": "deliberation-de-grand-paris-sud@lieusaint-grandparissud",
+  "base": "deliberation-de-grand-paris-sud",
+  "portail": "lieusaint-grandparissud",
+  "hote": "data.ville-lieusaint.fr",
+  "hote_secours": "lieusaint-grandparissud.opendatasoft.com",
+  "titre": "Délibération de Grand Paris Sud",
+  "editeur": "Grand Paris Sud",
+  "n": 3076,
+  "champs_texte": [
+   "intitule_de_la_deliberation"
+  ],
+  "champs_fichier": [
+   "fichier_pdf"
+  ],
+  "cle": "grand paris sud deliberation de grand paris sud lieusaint grandparissud"
+ },
+ {
+  "id": "deliberations-du-conseil-municipal@noisylegrand",
+  "base": "deliberations-du-conseil-municipal",
+  "portail": "noisylegrand",
+  "hote": "opendata.noisylegrand.fr",
+  "hote_secours": "noisylegrand.opendatasoft.com",
+  "titre": "Délibérations du Conseil municipal depuis 2014",
+  "editeur": "Ville de Noisy-le-Grand",
+  "n": 539,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [
+   "delib_ndeg"
+  ],
+  "cle": "ville de noisy le grand deliberations du conseil municipal depuis 2014 noisylegrand"
+ },
+ {
+  "id": "deliberations-communautaires-cangt@cangt-guadeloupe",
+  "base": "deliberations-communautaires-cangt",
+  "portail": "cangt-guadeloupe",
+  "hote": "opendata.cangt.fr",
+  "hote_secours": "cangt-guadeloupe.opendatasoft.com",
+  "titre": "Délibérations Communautaires - CANGT",
+  "editeur": "CANGT",
+  "n": 1844,
+  "champs_texte": [
+   "objet_deliberation"
+  ],
+  "champs_fichier": [],
+  "cle": "cangt deliberations communautaires cangt cangt guadeloupe"
+ },
+ {
+  "id": "deliberations-du-ccas-20230@lisses-grandparissud",
+  "base": "deliberations-du-ccas-20230",
+  "portail": "lisses-grandparissud",
+  "hote": "lisses-grandparissud.opendatasoft.com",
+  "hote_secours": "lisses-grandparissud.opendatasoft.com",
+  "titre": "Délibérations du CCAS 2023",
+  "editeur": "",
+  "n": 41,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "deliberations du ccas 2023 lisses grandparissud"
+ },
+ {
+  "id": "deliberations-2023-commune-de-nandy@nandy-grandparissud",
+  "base": "deliberations-2023-commune-de-nandy",
+  "portail": "nandy-grandparissud",
+  "hote": "nandy-grandparissud.opendatasoft.com",
+  "hote_secours": "nandy-grandparissud.opendatasoft.com",
+  "titre": "Deliberations  2023 commune de Nandy",
+  "editeur": "Commune de Nandy",
+  "n": 33,
+  "champs_texte": [
+   "coll_nom",
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "commune de nandy deliberations 2023 commune de nandy nandy grandparissud"
+ },
+ {
+  "id": "deliberation-de-grand-paris-sud@lisses-grandparissud",
+  "base": "deliberation-de-grand-paris-sud",
+  "portail": "lisses-grandparissud",
+  "hote": "lisses-grandparissud.opendatasoft.com",
+  "hote_secours": "lisses-grandparissud.opendatasoft.com",
+  "titre": "Délibération de Grand Paris Sud",
+  "editeur": "Grand Paris Sud",
+  "n": 3076,
+  "champs_texte": [
+   "intitule_de_la_deliberation"
+  ],
+  "champs_fichier": [
+   "fichier_pdf"
+  ],
+  "cle": "grand paris sud deliberation de grand paris sud lisses grandparissud"
+ },
+ {
+  "id": "deliberations0@opendataroumoisseine",
+  "base": "deliberations0",
+  "portail": "opendataroumoisseine",
+  "hote": "opendata.roumoiseine.fr",
+  "hote_secours": "opendataroumoisseine.opendatasoft.com",
+  "titre": "Délibérations",
+  "editeur": "CC Roumois Seine",
+  "n": 893,
+  "champs_texte": [
+   "nom_du_document"
+  ],
+  "champs_fichier": [
+   "nature_du_document",
+   "nom_du_document",
+   "lien_deliberation",
+   "lien_annexe"
+  ],
+  "cle": "cc roumois seine deliberations opendataroumoisseine"
+ },
+ {
+  "id": "deliberation-de-grand-paris-sud@cesson-grandparissud",
+  "base": "deliberation-de-grand-paris-sud",
+  "portail": "cesson-grandparissud",
+  "hote": "data.ville-cesson.fr",
+  "hote_secours": "cesson-grandparissud.opendatasoft.com",
+  "titre": "Délibération de Grand Paris Sud",
+  "editeur": "Grand Paris Sud",
+  "n": 3076,
+  "champs_texte": [
+   "intitule_de_la_deliberation"
+  ],
+  "champs_fichier": [
+   "fichier_pdf"
+  ],
+  "cle": "grand paris sud deliberation de grand paris sud cesson grandparissud"
+ },
+ {
+  "id": "deliberation-de-grand-paris-sud@moissycramayel-grandparissud",
+  "base": "deliberation-de-grand-paris-sud",
+  "portail": "moissycramayel-grandparissud",
+  "hote": "data.moissy-cramayel.fr",
+  "hote_secours": "moissycramayel-grandparissud.opendatasoft.com",
+  "titre": "Délibération de Grand Paris Sud",
+  "editeur": "Grand Paris Sud",
+  "n": 3076,
+  "champs_texte": [
+   "intitule_de_la_deliberation"
+  ],
+  "champs_fichier": [
+   "fichier_pdf"
+  ],
+  "cle": "grand paris sud deliberation de grand paris sud moissycramayel grandparissud"
+ },
+ {
+  "id": "deliberation-possession-02-26@lareunion",
+  "base": "deliberation-possession-02-26",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Déliberation de la Ville de La Possession - février 2026",
+  "editeur": "Mairie de La Possession",
+  "n": 25,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession fevrier 2026 lareunion"
+ },
+ {
+  "id": "deliberation-possession-10-23@lareunion",
+  "base": "deliberation-possession-10-23",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Délibération de la Ville de La Possession - octobre 2023",
+  "editeur": "Mairie de La Possession",
+  "n": 12,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession octobre 2023 lareunion"
+ },
+ {
+  "id": "deliberation-possession-06-22@lareunion",
+  "base": "deliberation-possession-06-22",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Délibération de la Ville de La Possession - juin 2022",
+  "editeur": "Mairie de La Possession",
+  "n": 20,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession juin 2022 lareunion"
+ },
+ {
+  "id": "deliberations-commune-de-cesson@cesson-grandparissud",
+  "base": "deliberations-commune-de-cesson",
+  "portail": "cesson-grandparissud",
+  "hote": "data.ville-cesson.fr",
+  "hote_secours": "cesson-grandparissud.opendatasoft.com",
+  "titre": "Délibérations commune de Cesson",
+  "editeur": "Mairie de Cesson ",
+  "n": 1020,
+  "champs_texte": [
+   "coll_nom",
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de cesson deliberations commune de cesson cesson grandparissud"
+ },
+ {
+  "id": "deliberation-possession-02-23@lareunion",
+  "base": "deliberation-possession-02-23",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Délibération de la ville de La Possession - février 2023",
+  "editeur": "Mairie de La Possession",
+  "n": 26,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession fevrier 2023 lareunion"
+ },
+ {
+  "id": "deliberation-de-la-ville-de-la-possession-decembre-2024@lareunion",
+  "base": "deliberation-de-la-ville-de-la-possession-decembre-2024",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Délibération de la Ville de La Possession - décembre 2024",
+  "editeur": "Mairie de La Possession",
+  "n": 32,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession decembre 2024 lareunion"
+ },
+ {
+  "id": "deliberation-de-la-ville-de-la-possession-novembre-2024@lareunion",
+  "base": "deliberation-de-la-ville-de-la-possession-novembre-2024",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Délibération de la Ville de La Possession - novembre 2024",
+  "editeur": "Mairie de La Possession",
+  "n": 13,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession novembre 2024 lareunion"
+ },
+ {
+  "id": "deliberation-de-la-ville-de-la-possession-25-avril-2026@lareunion",
+  "base": "deliberation-de-la-ville-de-la-possession-25-avril-2026",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Déliberation de la Ville de La Possession - 25 avril 2026",
+  "editeur": "Mairie de La Possession",
+  "n": 19,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession 25 avril 2026 lareunion"
+ },
+ {
+  "id": "deliberation-de-la-ville-de-la-possession-octobre-2025@lareunion",
+  "base": "deliberation-de-la-ville-de-la-possession-octobre-2025",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Déliberation de la Ville de La Possession - octobre 2025",
+  "editeur": "Mairie de La Possession",
+  "n": 24,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession octobre 2025 lareunion"
+ },
+ {
+  "id": "deliberation-possession-04-26@lareunion",
+  "base": "deliberation-possession-04-26",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Déliberation de la Ville de La Possession - 11 avril 2026",
+  "editeur": "Mairie de La Possession",
+  "n": 33,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession 11 avril 2026 lareunion"
+ },
+ {
+  "id": "deliberation-de-la-ville-de-la-possession-janvier-2022@lareunion",
+  "base": "deliberation-de-la-ville-de-la-possession-janvier-2022",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Délibération de la Ville de La Possession - janvier 2022",
+  "editeur": "Mairie de La Possession",
+  "n": 18,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession janvier 2022 lareunion"
+ },
+ {
+  "id": "deliberation-de-la-ville-de-la-possession-06-juin-2026@lareunion",
+  "base": "deliberation-de-la-ville-de-la-possession-06-juin-2026",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Déliberation de la Ville de La Possession - 06 juin 2026",
+  "editeur": "Mairie de La Possession",
+  "n": 26,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession 06 juin 2026 lareunion"
+ },
+ {
+  "id": "deliberation-possession-03-22@lareunion",
+  "base": "deliberation-possession-03-22",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Délibération de la Ville de La Possession - mars 2022",
+  "editeur": "Mairie de La Possession",
+  "n": 14,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession mars 2022 lareunion"
+ },
+ {
+  "id": "deliberation-de-la-ville-de-la-possession-18-juillet-2026@lareunion",
+  "base": "deliberation-de-la-ville-de-la-possession-18-juillet-2026",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Déliberation de la Ville de La Possession - 18 juillet 2026",
+  "editeur": "Mairie de La Possession",
+  "n": 22,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession 18 juillet 2026 lareunion"
+ },
+ {
+  "id": "deliberation-de-la-ville-de-la-possession-mars-2026@lareunion",
+  "base": "deliberation-de-la-ville-de-la-possession-mars-2026",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Déliberation de la Ville de La Possession - mars 2026",
+  "editeur": "Mairie de La Possession",
+  "n": 10,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession mars 2026 lareunion"
+ },
+ {
+  "id": "deliberations-communicables-conseil-d-administration-annee-2022@risorangis-grandparissud",
+  "base": "deliberations-communicables-conseil-d-administration-annee-2022",
+  "portail": "risorangis-grandparissud",
+  "hote": "data.mairie-ris-orangis.fr",
+  "hote_secours": "risorangis-grandparissud.opendatasoft.com",
+  "titre": "Délibérations communicables Conseil d'Administration -année 2022",
+  "editeur": "",
+  "n": 59,
+  "champs_texte": [
+   "libelle_deliberation_decision_ccas_reed_ssiad"
+  ],
+  "champs_fichier": [],
+  "cle": "deliberations communicables conseil d administration annee 2022 risorangis grandparissud"
+ },
+ {
+  "id": "deliberation-de-la-ville-de-la-possession-juin-2023@lareunion",
+  "base": "deliberation-de-la-ville-de-la-possession-juin-2023",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Délibération de la Ville de La Possession - juin 2023",
+  "editeur": "Mairie de La Possession",
+  "n": 12,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession juin 2023 lareunion"
+ },
+ {
+  "id": "deliberation-de-la-ville-de-la-possession-fevrier-2025@lareunion",
+  "base": "deliberation-de-la-ville-de-la-possession-fevrier-2025",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Déliberation de la Ville de La Possession - février 2025",
+  "editeur": "Mairie de La Possession",
+  "n": 20,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession fevrier 2025 lareunion"
+ },
+ {
+  "id": "deliberations-du-bureau-et-du-conseil-communautaire-de-mauges-communaute@data-mauges-communaute-fr-paysdelaloire",
+  "base": "deliberations-du-bureau-et-du-conseil-communautaire-de-mauges-communaute",
+  "portail": "data-mauges-communaute-fr-paysdelaloire",
+  "hote": "data.maugescommunaute.fr",
+  "hote_secours": "data-mauges-communaute-fr-paysdelaloire.opendatasoft.com",
+  "titre": "Délibérations du Bureau et du Conseil communautaire de Mauges Communauté",
+  "editeur": "Mauges Communauté",
+  "n": 1311,
+  "champs_texte": [
+   "coll_nom",
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mauges communaute deliberations du bureau et du conseil communautaire de mauges communaute data mauges communaute fr paysdelaloire"
+ },
+ {
+  "id": "deliberations-de-fiscalite-directe-locale-des-communes-2022-hors-deliberations-s@opendatamef",
+  "base": "deliberations-de-fiscalite-directe-locale-des-communes-2022-hors-deliberations-s",
+  "portail": "opendatamef",
+  "hote": "data.economie.gouv.fr",
+  "hote_secours": "opendatamef.opendatasoft.com",
+  "titre": "Délibérations de fiscalité directe locale des communes 2022 (hors taux)",
+  "editeur": "DGFIP",
+  "n": 34960,
+  "champs_texte": [],
+  "champs_fichier": [],
+  "cle": "dgfip deliberations de fiscalite directe locale des communes 2022 hors taux opendatamef"
+ },
+ {
+  "id": "deliberation-emploi@parisdata",
+  "base": "deliberation-emploi",
+  "portail": "parisdata",
+  "hote": "opendata.paris.fr",
+  "hote_secours": "parisdata.opendatasoft.com",
+  "titre": "Délibération Emploi",
+  "editeur": "Direction des Ressources Humaines - Ville de Paris",
+  "n": 20888,
+  "champs_texte": [
+   "libelle_de_regroupement_originel",
+   "nouveau_libelle_de_regroupement_rang_1",
+   "nouveau_libelle_de_regroupement_rang_2"
+  ],
+  "champs_fichier": [],
+  "cle": "direction des ressources humaines ville de paris deliberation emploi parisdata"
+ },
+ {
+  "id": "deliberations-de-fiscalite-directe-locale-des-communes-2026-hors-taux@opendatamef",
+  "base": "deliberations-de-fiscalite-directe-locale-des-communes-2026-hors-taux",
+  "portail": "opendatamef",
+  "hote": "data.economie.gouv.fr",
+  "hote_secours": "opendatamef.opendatasoft.com",
+  "titre": "Délibérations de fiscalité directe locale des communes 2026 (hors taux)",
+  "editeur": "DGFIP",
+  "n": 34876,
+  "champs_texte": [],
+  "champs_fichier": [],
+  "cle": "dgfip deliberations de fiscalite directe locale des communes 2026 hors taux opendatamef"
+ },
+ {
+  "id": "deliberations-de-fiscalite-directe-locale-des-communes-2025-hors-taux@opendatamef",
+  "base": "deliberations-de-fiscalite-directe-locale-des-communes-2025-hors-taux",
+  "portail": "opendatamef",
+  "hote": "data.economie.gouv.fr",
+  "hote_secours": "opendatamef.opendatasoft.com",
+  "titre": "Délibérations de fiscalité directe locale des communes 2025 (hors taux)",
+  "editeur": "DGFIP",
+  "n": 34907,
+  "champs_texte": [],
+  "champs_fichier": [],
+  "cle": "dgfip deliberations de fiscalite directe locale des communes 2025 hors taux opendatamef"
+ },
+ {
+  "id": "deliberations-de-fiscalite-directe-locale-des-gfp-2022-hors-deliberations@opendatamef",
+  "base": "deliberations-de-fiscalite-directe-locale-des-gfp-2022-hors-deliberations",
+  "portail": "opendatamef",
+  "hote": "data.economie.gouv.fr",
+  "hote_secours": "opendatamef.opendatasoft.com",
+  "titre": "Délibérations de fiscalité directe locale des groupements à fiscalité propre 202",
+  "editeur": "DGFIP",
+  "n": 1376,
+  "champs_texte": [],
+  "champs_fichier": [],
+  "cle": "dgfip deliberations de fiscalite directe locale des groupements a fiscalite propre 2022 hors taux opendatamef"
+ },
+ {
+  "id": "deliberations-2022@cddoubs",
+  "base": "deliberations-2022",
+  "portail": "cddoubs",
+  "hote": "opendata.doubs.fr",
+  "hote_secours": "cddoubs.opendatasoft.com",
+  "titre": "Délibérations 2022",
+  "editeur": "CD25",
+  "n": 465,
+  "champs_texte": [
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_url",
+   "rapport_url",
+   "debat_url",
+   "odj_url"
+  ],
+  "cle": "cd25 deliberations 2022 cddoubs"
+ },
+ {
+  "id": "deliberation-possession-12-23@lareunion",
+  "base": "deliberation-possession-12-23",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Délibération de la Ville de La Possession - décembre 2023",
+  "editeur": "Mairie de La Possession",
+  "n": 34,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession decembre 2023 lareunion"
+ },
+ {
+  "id": "deliberations-votees-ville-de-clermont-ferrand@data-clermont-clermont-metropole",
+  "base": "deliberations-votees-ville-de-clermont-ferrand",
+  "portail": "data-clermont-clermont-metropole",
+  "hote": "opendata.clermont-ferrand.fr",
+  "hote_secours": "data-clermont-clermont-metropole.opendatasoft.com",
+  "titre": "Délibérations votées - Ville de Clermont-Ferrand",
+  "editeur": "Ville de Clermont-Ferrand",
+  "n": 1691,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [],
+  "cle": "ville de clermont ferrand deliberations votees ville de clermont ferrand data clermont clermont metropole"
+ },
+ {
+  "id": "deliberation-de-grand-paris-sud@bondoufle-grandparissud",
+  "base": "deliberation-de-grand-paris-sud",
+  "portail": "bondoufle-grandparissud",
+  "hote": "data.ville-bondoufle.fr",
+  "hote_secours": "bondoufle-grandparissud.opendatasoft.com",
+  "titre": "Délibération de Grand Paris Sud",
+  "editeur": "Grand Paris Sud",
+  "n": 3076,
+  "champs_texte": [
+   "intitule_de_la_deliberation"
+  ],
+  "champs_fichier": [
+   "fichier_pdf"
+  ],
+  "cle": "grand paris sud deliberation de grand paris sud bondoufle grandparissud"
+ },
+ {
+  "id": "deliberations_cd28@eure-et-loir",
+  "base": "deliberations_cd28",
+  "portail": "eure-et-loir",
+  "hote": "data.eurelien.fr",
+  "hote_secours": "eure-et-loir.opendatasoft.com",
+  "titre": "Délibérations et actes réglementaires du Conseil départemental - Depuis juillet ",
+  "editeur": "CD28",
+  "n": 14579,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "cd28 deliberations et actes reglementaires du conseil departemental depuis juillet 2022 eure et loir"
+ },
+ {
+  "id": "deliberations-de-2020-a-fevrier-2026-toulouse-metropole@toulouse-metropole",
+  "base": "deliberations-de-2020-a-fevrier-2026-toulouse-metropole",
+  "portail": "toulouse-metropole",
+  "hote": "data.toulouse-metropole.fr",
+  "hote_secours": "toulouse-metropole.opendatasoft.com",
+  "titre": "Délibérations de juillet 2020 à février 2026 Toulouse Métropole",
+  "editeur": "Toulouse Métropole",
+  "n": 5118,
+  "champs_texte": [
+   "titre",
+   "libelle_emetteur",
+   "libelle_seance",
+   "nom_rapporteur"
+  ],
+  "champs_fichier": [],
+  "cle": "toulouse metropole deliberations de juillet 2020 a fevrier 2026 toulouse metropole toulouse metropole"
+ },
+ {
+  "id": "deliberations-commune-de-roques@haute-garonne",
+  "base": "deliberations-commune-de-roques",
+  "portail": "haute-garonne",
+  "hote": "data.haute-garonne.fr",
+  "hote_secours": "haute-garonne.opendatasoft.com",
+  "titre": "Délibérations Commune de Roques",
+  "editeur": "Commune de Roques",
+  "n": 495,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "commune de roques deliberations commune de roques haute garonne"
+ },
+ {
+  "id": "deliberations-du-conseil-departemental-de-lherault@data-herault-occitanie",
+  "base": "deliberations-du-conseil-departemental-de-lherault",
+  "portail": "data-herault-occitanie",
+  "hote": "www.herault-data.fr",
+  "hote_secours": "data-herault-occitanie.opendatasoft.com",
+  "titre": "Délibérations du Conseil Départemental de l'Hérault",
+  "editeur": "Conseil Départemental de l'Hérault",
+  "n": 10295,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "conseil departemental de l herault deliberations du conseil departemental de l herault data herault occitanie"
+ },
+ {
+  "id": "deliberations-2021@risorangis-grandparissud",
+  "base": "deliberations-2021",
+  "portail": "risorangis-grandparissud",
+  "hote": "data.mairie-ris-orangis.fr",
+  "hote_secours": "risorangis-grandparissud.opendatasoft.com",
+  "titre": "DELIBERATIONS 2021",
+  "editeur": "Mairie de Ris-Orangis",
+  "n": 161,
+  "champs_texte": [
+   "objet_de_la_deliberation"
+  ],
+  "champs_fichier": [
+   "fichiers"
+  ],
+  "cle": "mairie de ris orangis deliberations 2021 risorangis grandparissud"
+ },
+ {
+  "id": "deliberations-de-fiscalite-directe-locale-des-groupements-a-fiscalite-propre-2025-hors-taux@opendatamef",
+  "base": "deliberations-de-fiscalite-directe-locale-des-groupements-a-fiscalite-propre-2025-hors-taux",
+  "portail": "opendatamef",
+  "hote": "data.economie.gouv.fr",
+  "hote_secours": "opendatamef.opendatasoft.com",
+  "titre": "Délibérations de fiscalité directe locale des groupements à fiscalité propre 202",
+  "editeur": "DGFIP",
+  "n": 1372,
+  "champs_texte": [],
+  "champs_fichier": [],
+  "cle": "dgfip deliberations de fiscalite directe locale des groupements a fiscalite propre 2025 hors taux opendatamef"
+ },
+ {
+  "id": "deliberations-de-fiscalite-directe-locale-des-groupements-a-fiscalite-propre-200@opendatamef",
+  "base": "deliberations-de-fiscalite-directe-locale-des-groupements-a-fiscalite-propre-200",
+  "portail": "opendatamef",
+  "hote": "data.economie.gouv.fr",
+  "hote_secours": "opendatamef.opendatasoft.com",
+  "titre": "Délibérations de fiscalité directe locale des groupements à fiscalité propre 202",
+  "editeur": "DGFIP",
+  "n": 1374,
+  "champs_texte": [],
+  "champs_fichier": [],
+  "cle": "dgfip deliberations de fiscalite directe locale des groupements a fiscalite propre 2023 hors taux opendatamef"
+ },
+ {
+  "id": "deliberations-de-fiscalite-directe-locale-des-communes-2023-hors-taux@opendatamef",
+  "base": "deliberations-de-fiscalite-directe-locale-des-communes-2023-hors-taux",
+  "portail": "opendatamef",
+  "hote": "data.economie.gouv.fr",
+  "hote_secours": "opendatamef.opendatasoft.com",
+  "titre": "Délibérations de fiscalité directe locale des communes 2023 (hors taux)",
+  "editeur": "DGFIP",
+  "n": 34951,
+  "champs_texte": [],
+  "champs_fichier": [],
+  "cle": "dgfip deliberations de fiscalite directe locale des communes 2023 hors taux opendatamef"
+ },
+ {
+  "id": "deliberations-2026@cddoubs",
+  "base": "deliberations-2026",
+  "portail": "cddoubs",
+  "hote": "opendata.doubs.fr",
+  "hote_secours": "cddoubs.opendatasoft.com",
+  "titre": "Délibérations 2026",
+  "editeur": "CD25",
+  "n": 222,
+  "champs_texte": [
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_url",
+   "rapport_url",
+   "debat_url",
+   "odj_url"
+  ],
+  "cle": "cd25 deliberations 2026 cddoubs"
+ },
+ {
+  "id": "deliberations-2025@cachan",
+  "base": "deliberations-2025",
+  "portail": "cachan",
+  "hote": "cachan.opendatasoft.com",
+  "hote_secours": "cachan.opendatasoft.com",
+  "titre": "DELIBERATIONS 2025",
+  "editeur": "",
+  "n": 163,
+  "champs_texte": [
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "fichier"
+  ],
+  "cle": "deliberations 2025 cachan"
+ },
+ {
+  "id": "deliberations-toulouse-metropole-avril-2014-a-juin-2020@toulouse-metropole",
+  "base": "deliberations-toulouse-metropole-avril-2014-a-juin-2020",
+  "portail": "toulouse-metropole",
+  "hote": "data.toulouse-metropole.fr",
+  "hote_secours": "toulouse-metropole.opendatasoft.com",
+  "titre": "Délibérations d'Avril 2014 à Juin 2020 - Toulouse Métropole",
+  "editeur": "Toulouse Métropole",
+  "n": 5266,
+  "champs_texte": [
+   "titre",
+   "libelle_emetteur",
+   "libelle_seance",
+   "nom_rapporteur"
+  ],
+  "champs_fichier": [],
+  "cle": "toulouse metropole deliberations d avril 2014 a juin 2020 toulouse metropole toulouse metropole"
+ },
+ {
+  "id": "deliberations-villerennes-2021@rennes-metropole",
+  "base": "deliberations-villerennes-2021",
+  "portail": "rennes-metropole",
+  "hote": "data.rennesmetropole.fr",
+  "hote_secours": "rennes-metropole.opendatasoft.com",
+  "titre": "Délibérations Ville de Rennes",
+  "editeur": "Mégalis Bretagne",
+  "n": 1798,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "megalis bretagne deliberations ville de rennes rennes metropole"
+ },
+ {
+  "id": "deliberations-partenaires-agregees@haute-garonne",
+  "base": "deliberations-partenaires-agregees",
+  "portail": "haute-garonne",
+  "hote": "data.haute-garonne.fr",
+  "hote_secours": "haute-garonne.opendatasoft.com",
+  "titre": "Données Délibérations Partenaires Agrégées",
+  "editeur": "Communes de la Haute-Garonne",
+  "n": 12832,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "communes de la haute garonne donnees deliberations partenaires agregees haute garonne"
+ },
+ {
+  "id": "deliberations-du-conseil-municipal@montreuil",
+  "base": "deliberations-du-conseil-municipal",
+  "portail": "montreuil",
+  "hote": "data.montreuil.fr",
+  "hote_secours": "montreuil.opendatasoft.com",
+  "titre": "Délibérations du Conseil municipal",
+  "editeur": "Ville de Montreuil",
+  "n": 2472,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [
+   "ndeg_de_delib"
+  ],
+  "cle": "ville de montreuil deliberations du conseil municipal montreuil"
+ },
+ {
+  "id": "deliberations-2024@cddoubs",
+  "base": "deliberations-2024",
+  "portail": "cddoubs",
+  "hote": "opendata.doubs.fr",
+  "hote_secours": "cddoubs.opendatasoft.com",
+  "titre": "Délibérations 2024",
+  "editeur": "CD25",
+  "n": 486,
+  "champs_texte": [
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_url",
+   "rapport_url",
+   "debat_url",
+   "odj_url"
+  ],
+  "cle": "cd25 deliberations 2024 cddoubs"
+ },
+ {
+  "id": "deliberations-2025@cddoubs",
+  "base": "deliberations-2025",
+  "portail": "cddoubs",
+  "hote": "opendata.doubs.fr",
+  "hote_secours": "cddoubs.opendatasoft.com",
+  "titre": "Délibérations 2025",
+  "editeur": "CD25",
+  "n": 413,
+  "champs_texte": [
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_url",
+   "rapport_url",
+   "debat_url",
+   "odj_url"
+  ],
+  "cle": "cd25 deliberations 2025 cddoubs"
+ },
+ {
+  "id": "deliberations@cannesdata",
+  "base": "deliberations",
+  "portail": "cannesdata",
+  "hote": "data.cannes.com",
+  "hote_secours": "cannesdata.opendatasoft.com",
+  "titre": "Délibérations",
+  "editeur": "Mairie de Cannes",
+  "n": 4402,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de cannes deliberations cannesdata"
+ },
+ {
+  "id": "deliberations-commune-de-fronton@haute-garonne",
+  "base": "deliberations-commune-de-fronton",
+  "portail": "haute-garonne",
+  "hote": "data.haute-garonne.fr",
+  "hote_secours": "haute-garonne.opendatasoft.com",
+  "titre": "Délibérations Commune de Fronton",
+  "editeur": "Commune de Fronton",
+  "n": 275,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "commune de fronton deliberations commune de fronton haute garonne"
+ },
+ {
+  "id": "deliberations-bassin-auterivain-communaute-de-communes@haute-garonne",
+  "base": "deliberations-bassin-auterivain-communaute-de-communes",
+  "portail": "haute-garonne",
+  "hote": "data.haute-garonne.fr",
+  "hote_secours": "haute-garonne.opendatasoft.com",
+  "titre": "Délibérations Bassin Auterivain, communauté de communes",
+  "editeur": "Communauté de Communes Bassin Auterivain",
+  "n": 817,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "communaute de communes bassin auterivain deliberations bassin auterivain communaute de communes haute garonne"
+ },
+ {
+  "id": "deliberations-2021-2028-du-conseil-regional-centre-val-de-loire@centrevaldeloire",
+  "base": "deliberations-2021-2028-du-conseil-regional-centre-val-de-loire",
+  "portail": "centrevaldeloire",
+  "hote": "data.centrevaldeloire.fr",
+  "hote_secours": "centrevaldeloire.opendatasoft.com",
+  "titre": "Délibérations 2021-2028 du Conseil Régional Centre-Val de Loire",
+  "editeur": "Région Centre-Val de Loire",
+  "n": 4014,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_url",
+   "lien_annexe_1",
+   "lien_annexe_2"
+  ],
+  "cle": "region centre val de loire deliberations 2021 2028 du conseil regional centre val de loire centrevaldeloire"
+ },
+ {
+  "id": "deliberations-communaute-de-communes-du-frontonnais@haute-garonne",
+  "base": "deliberations-communaute-de-communes-du-frontonnais",
+  "portail": "haute-garonne",
+  "hote": "data.haute-garonne.fr",
+  "hote_secours": "haute-garonne.opendatasoft.com",
+  "titre": "Délibérations Communauté de Communes du Frontonnais",
+  "editeur": "Communauté de Communes du Frontonnais",
+  "n": 57,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "communaute de communes du frontonnais deliberations communaute de communes du frontonnais haute garonne"
+ },
+ {
+  "id": "deliberations-commune-de-castelmaurou@haute-garonne",
+  "base": "deliberations-commune-de-castelmaurou",
+  "portail": "haute-garonne",
+  "hote": "data.haute-garonne.fr",
+  "hote_secours": "haute-garonne.opendatasoft.com",
+  "titre": "Délibérations Commune de Castelmaurou",
+  "editeur": "Commune de Castelmaurou",
+  "n": 259,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "commune de castelmaurou deliberations commune de castelmaurou haute garonne"
+ },
+ {
+  "id": "deliberations-2025-copie@moissycramayel-grandparissud",
+  "base": "deliberations-2025-copie",
+  "portail": "moissycramayel-grandparissud",
+  "hote": "data.moissy-cramayel.fr",
+  "hote_secours": "moissycramayel-grandparissud.opendatasoft.com",
+  "titre": "DELIBERATIONS 2026",
+  "editeur": "",
+  "n": 59,
+  "champs_texte": [
+   "objet",
+   "coll_nom"
+  ],
+  "champs_fichier": [
+   "fichier_a_telecharger"
+  ],
+  "cle": "deliberations 2026 moissycramayel grandparissud"
+ },
+ {
+  "id": "deliberations-commune-de-labege@haute-garonne",
+  "base": "deliberations-commune-de-labege",
+  "portail": "haute-garonne",
+  "hote": "data.haute-garonne.fr",
+  "hote_secours": "haute-garonne.opendatasoft.com",
+  "titre": "Délibérations Commune de Labège",
+  "editeur": "Commune de Labège",
+  "n": 359,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "commune de labege deliberations commune de labege haute garonne"
+ },
+ {
+  "id": "deliberations-2025@issy-les-moulineaux",
+  "base": "deliberations-2025",
+  "portail": "issy-les-moulineaux",
+  "hote": "data.issy.com",
+  "hote_secours": "issy-les-moulineaux.opendatasoft.com",
+  "titre": "🔎 Délibérations du Conseil Municipal d'Issy-les-Moulineaux",
+  "editeur": "Ville d'Issy-les-Moulineaux",
+  "n": 1841,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "ville d issy les moulineaux deliberations du conseil municipal d issy les moulineaux issy les moulineaux"
+ },
+ {
+  "id": "deliberations-te44@te44-loireatlantique",
+  "base": "deliberations-te44",
+  "portail": "te44-loireatlantique",
+  "hote": "data.te44.fr",
+  "hote_secours": "te44-loireatlantique.opendatasoft.com",
+  "titre": "Délibérations de Territoire d'énergie Loire-Atlantique",
+  "editeur": "Territoire d’énergie Loire-Atlantique",
+  "n": 1269,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "delib_theme_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "territoire denergie loire atlantique deliberations de territoire d energie loire atlantique te44 loireatlantique"
+ },
+ {
+  "id": "delib-2020-open-data@fos-sur-mer",
+  "base": "delib-2020-open-data",
+  "portail": "fos-sur-mer",
+  "hote": "fos-sur-mer.opendatasoft.com",
+  "hote_secours": "fos-sur-mer.opendatasoft.com",
+  "titre": "Délib 2020 - Open Data",
+  "editeur": "Commune de Fos-Sur-Mer",
+  "n": 230,
+  "champs_texte": [
+   "objet"
+  ],
+  "champs_fichier": [
+   "fichier"
+  ],
+  "cle": "commune de fos sur mer delib 2020 open data fos sur mer"
+ },
+ {
+  "id": "delib-2021-test@fos-sur-mer",
+  "base": "delib-2021-test",
+  "portail": "fos-sur-mer",
+  "hote": "fos-sur-mer.opendatasoft.com",
+  "hote_secours": "fos-sur-mer.opendatasoft.com",
+  "titre": "Délib 2021 - Open Data",
+  "editeur": "",
+  "n": 152,
+  "champs_texte": [
+   "objet"
+  ],
+  "champs_fichier": [
+   "fichier"
+  ],
+  "cle": "delib 2021 open data fos sur mer"
+ },
+ {
+  "id": "delib-2019-open-data@fos-sur-mer",
+  "base": "delib-2019-open-data",
+  "portail": "fos-sur-mer",
+  "hote": "fos-sur-mer.opendatasoft.com",
+  "hote_secours": "fos-sur-mer.opendatasoft.com",
+  "titre": "Délib 2019 - Open data",
+  "editeur": "Commune de Fos-Sur-Mer",
+  "n": 208,
+  "champs_texte": [
+   "objet"
+  ],
+  "champs_fichier": [
+   "fichier"
+  ],
+  "cle": "commune de fos sur mer delib 2019 open data fos sur mer"
+ },
+ {
+  "id": "deliberations-ilm@issy-les-moulineaux",
+  "base": "deliberations-ilm",
+  "portail": "issy-les-moulineaux",
+  "hote": "data.issy.com",
+  "hote_secours": "issy-les-moulineaux.opendatasoft.com",
+  "titre": "[>2025] 🔎 Délibérations du Conseil Municipal d'Issy-les-Moulineaux",
+  "editeur": "Ville d'Issy-les-Moulineaux",
+  "n": 0,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "ville d issy les moulineaux 2025 deliberations du conseil municipal d issy les moulineaux issy les moulineaux"
+ },
+ {
+  "id": "deliberations-2021-2028-du-conseil-regional-centre-val-de-loire@dreux-agglomeration-centrevaldeloire",
+  "base": "deliberations-2021-2028-du-conseil-regional-centre-val-de-loire",
+  "portail": "dreux-agglomeration-centrevaldeloire",
+  "hote": "dreux-agglomeration-centrevaldeloire.opendatasoft.com",
+  "hote_secours": "dreux-agglomeration-centrevaldeloire.opendatasoft.com",
+  "titre": "Délibérations 2021-2028 du Conseil Régional Centre-Val de Loire",
+  "editeur": "Région Centre-Val de Loire",
+  "n": 3367,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_url",
+   "lien_annexe_1",
+   "lien_annexe_2"
+  ],
+  "cle": "region centre val de loire deliberations 2021 2028 du conseil regional centre val de loire dreux agglomeration centrevaldeloire"
+ },
+ {
+  "id": "deliberations-du-conseil-communautaire-grandsoissons-agglomeration@soissons",
+  "base": "deliberations-du-conseil-communautaire-grandsoissons-agglomeration",
+  "portail": "soissons",
+  "hote": "data.ville-soissons.fr",
+  "hote_secours": "soissons.opendatasoft.com",
+  "titre": "Délibérations du conseil communautaire - GrandSoissons Agglomération",
+  "editeur": "GrandSoissons Agglomération",
+  "n": 1242,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [
+   "fichier_media"
+  ],
+  "cle": "grandsoissons agglomeration deliberations du conseil communautaire grandsoissons agglomeration soissons"
+ },
+ {
+  "id": "deliberations-du-conseil-municipal@soissons",
+  "base": "deliberations-du-conseil-municipal",
+  "portail": "soissons",
+  "hote": "data.ville-soissons.fr",
+  "hote_secours": "soissons.opendatasoft.com",
+  "titre": "Délibérations du Conseil Municipal de Soissons",
+  "editeur": "Ville de Soissons ",
+  "n": 2071,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [
+   "fichier_media"
+  ],
+  "cle": "ville de soissons deliberations du conseil municipal de soissons soissons"
+ },
+ {
+  "id": "delib-2018-open-data@fos-sur-mer",
+  "base": "delib-2018-open-data",
+  "portail": "fos-sur-mer",
+  "hote": "fos-sur-mer.opendatasoft.com",
+  "hote_secours": "fos-sur-mer.opendatasoft.com",
+  "titre": "Délib 2018 - Open Data",
+  "editeur": "Commune de Fos-Sur-Mer",
+  "n": 193,
+  "champs_texte": [
+   "objet"
+  ],
+  "champs_fichier": [
+   "fichier"
+  ],
+  "cle": "commune de fos sur mer delib 2018 open data fos sur mer"
+ },
+ {
+  "id": "deliberations_conseil_municipal@tourcoing--metropole-europeenne-de-lille",
+  "base": "deliberations_conseil_municipal",
+  "portail": "tourcoing--metropole-europeenne-de-lille",
+  "hote": "opendata.tourcoing.fr",
+  "hote_secours": "tourcoing--metropole-europeenne-de-lille.opendatasoft.com",
+  "titre": "Déliberations du conseil municipal",
+  "editeur": "Ville de Tourcoing",
+  "n": 657,
+  "champs_texte": [
+   "titre_rapport"
+  ],
+  "champs_fichier": [
+   "lien_delib"
+  ],
+  "cle": "ville de tourcoing deliberations du conseil municipal tourcoing metropole europeenne de lille"
+ },
+ {
+  "id": "deliberation-de-grand-paris-sud@saintgermainlescorbeil-grandparissud",
+  "base": "deliberation-de-grand-paris-sud",
+  "portail": "saintgermainlescorbeil-grandparissud",
+  "hote": "saintgermainlescorbeil-grandparissud.opendatasoft.com",
+  "hote_secours": "saintgermainlescorbeil-grandparissud.opendatasoft.com",
+  "titre": "Délibération de Grand Paris Sud",
+  "editeur": "Grand Paris Sud",
+  "n": 3076,
+  "champs_texte": [
+   "intitule_de_la_deliberation"
+  ],
+  "champs_fichier": [
+   "fichier_pdf"
+  ],
+  "cle": "grand paris sud deliberation de grand paris sud saintgermainlescorbeil grandparissud"
+ },
+ {
+  "id": "deliberations-2018@risorangis-grandparissud",
+  "base": "deliberations-2018",
+  "portail": "risorangis-grandparissud",
+  "hote": "data.mairie-ris-orangis.fr",
+  "hote_secours": "risorangis-grandparissud.opendatasoft.com",
+  "titre": "Délibérations CCAS",
+  "editeur": "",
+  "n": 54,
+  "champs_texte": [
+   "libelle"
+  ],
+  "champs_fichier": [],
+  "cle": "deliberations ccas risorangis grandparissud"
+ },
+ {
+  "id": "deliberations-conseil-municipal_1939-1945@noisylegrand",
+  "base": "deliberations-conseil-municipal_1939-1945",
+  "portail": "noisylegrand",
+  "hote": "opendata.noisylegrand.fr",
+  "hote_secours": "noisylegrand.opendatasoft.com",
+  "titre": "Les délibérations du conseil municipal entre 1939 et 1945",
+  "editeur": "Ville de Noisy-le-Grand",
+  "n": 1192,
+  "champs_texte": [
+   "page_nombre_total_de_pages",
+   "titre"
+  ],
+  "champs_fichier": [],
+  "cle": "ville de noisy le grand les deliberations du conseil municipal entre 1939 et 1945 noisylegrand"
+ },
+ {
+  "id": "deliberation-communicables-du-conseil-d-administration-du-ccas-annee-2023@risorangis-grandparissud",
+  "base": "deliberation-communicables-du-conseil-d-administration-du-ccas-annee-2023",
+  "portail": "risorangis-grandparissud",
+  "hote": "data.mairie-ris-orangis.fr",
+  "hote_secours": "risorangis-grandparissud.opendatasoft.com",
+  "titre": "Délibérations communicables du Conseil d'Administration du CCAS -Année 2023",
+  "editeur": "",
+  "n": 62,
+  "champs_texte": [
+   "libelle_deliberation_decision_ccas_reed_ssiad"
+  ],
+  "champs_fichier": [],
+  "cle": "deliberations communicables du conseil d administration du ccas annee 2023 risorangis grandparissud"
+ },
+ {
+  "id": "deliberation-du-ccas-2025@lisses-grandparissud",
+  "base": "deliberation-du-ccas-2025",
+  "portail": "lisses-grandparissud",
+  "hote": "lisses-grandparissud.opendatasoft.com",
+  "hote_secours": "lisses-grandparissud.opendatasoft.com",
+  "titre": "Délibération du CCAS 2025",
+  "editeur": "",
+  "n": 31,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "deliberation du ccas 2025 lisses grandparissud"
+ },
+ {
+  "id": "deliberations-1914-1918@noisylegrand",
+  "base": "deliberations-1914-1918",
+  "portail": "noisylegrand",
+  "hote": "opendata.noisylegrand.fr",
+  "hote_secours": "noisylegrand.opendatasoft.com",
+  "titre": "Les délibérations du Conseil Municipal entre 1914 et 1918",
+  "editeur": "Ville de Noisy-le-Grand",
+  "n": 335,
+  "champs_texte": [
+   "page_nombre_total_de_pages",
+   "titre"
+  ],
+  "champs_fichier": [],
+  "cle": "ville de noisy le grand les deliberations du conseil municipal entre 1914 et 1918 noisylegrand"
+ },
+ {
+  "id": "deliberation2026-stpdp-scdl@stpdp-grandparissud",
+  "base": "deliberation2026-stpdp-scdl",
+  "portail": "stpdp-grandparissud",
+  "hote": "data.saint-pierre-du-perray.fr",
+  "hote_secours": "stpdp-grandparissud.opendatasoft.com",
+  "titre": "Délibérations 2026 STPDP",
+  "editeur": "",
+  "n": 45,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "deliberations 2026 stpdp stpdp grandparissud"
+ },
+ {
+  "id": "deliberations-2021@cddoubs",
+  "base": "deliberations-2021",
+  "portail": "cddoubs",
+  "hote": "opendata.doubs.fr",
+  "hote_secours": "cddoubs.opendatasoft.com",
+  "titre": "Délibérations 2021",
+  "editeur": "CD25",
+  "n": 430,
+  "champs_texte": [
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_url",
+   "rapport_url",
+   "debat_url",
+   "odj_url"
+  ],
+  "cle": "cd25 deliberations 2021 cddoubs"
+ },
+ {
+  "id": "deliberations-du-ccas-2023@lisses-grandparissud",
+  "base": "deliberations-du-ccas-2023",
+  "portail": "lisses-grandparissud",
+  "hote": "lisses-grandparissud.opendatasoft.com",
+  "hote_secours": "lisses-grandparissud.opendatasoft.com",
+  "titre": "Délibérations du CCAS 2023",
+  "editeur": "",
+  "n": 26,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "deliberations du ccas 2023 lisses grandparissud"
+ },
+ {
+  "id": "deliberations-de-la-commune-de-baule@centrevaldeloire",
+  "base": "deliberations-de-la-commune-de-baule",
+  "portail": "centrevaldeloire",
+  "hote": "data.centrevaldeloire.fr",
+  "hote_secours": "centrevaldeloire.opendatasoft.com",
+  "titre": "Délibérations de la commune de Baule depuis 2018",
+  "editeur": "Commune de Baule",
+  "n": 421,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "commune de baule deliberations de la commune de baule depuis 2018 centrevaldeloire"
+ },
+ {
+  "id": "deliberation-de-grand-paris-sud@combslaville-grandparissud",
+  "base": "deliberation-de-grand-paris-sud",
+  "portail": "combslaville-grandparissud",
+  "hote": "data.combs-la-ville.fr",
+  "hote_secours": "combslaville-grandparissud.opendatasoft.com",
+  "titre": "Délibération de Grand Paris Sud",
+  "editeur": "Grand Paris Sud",
+  "n": 3076,
+  "champs_texte": [
+   "intitule_de_la_deliberation"
+  ],
+  "champs_fichier": [
+   "fichier_pdf"
+  ],
+  "cle": "grand paris sud deliberation de grand paris sud combslaville grandparissud"
+ },
+ {
+  "id": "deliberation-de-grand-paris-sud@risorangis-grandparissud",
+  "base": "deliberation-de-grand-paris-sud",
+  "portail": "risorangis-grandparissud",
+  "hote": "data.mairie-ris-orangis.fr",
+  "hote_secours": "risorangis-grandparissud.opendatasoft.com",
+  "titre": "Délibération de Grand Paris Sud",
+  "editeur": "Grand Paris Sud",
+  "n": 3076,
+  "champs_texte": [
+   "intitule_de_la_deliberation"
+  ],
+  "champs_fichier": [
+   "fichier_pdf"
+  ],
+  "cle": "grand paris sud deliberation de grand paris sud risorangis grandparissud"
+ },
+ {
+  "id": "deliberations-du-conseil-municipal-de-la-ville-dorvault-en-2026-deliberations-incluses-en-pdf-copie0@nantesmetropole",
+  "base": "deliberations-du-conseil-municipal-de-la-ville-dorvault-en-2026-deliberations-incluses-en-pdf-copie0",
+  "portail": "nantesmetropole",
+  "hote": "data.nantesmetropole.fr",
+  "hote_secours": "nantesmetropole.opendatasoft.com",
+  "titre": "Délibérations du conseil municipal de la ville d'Orvault en 2026 (délibérations ",
+  "editeur": "Orvault",
+  "n": 115,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "orvault deliberations du conseil municipal de la ville d orvault en 2026 deliberations incluses en pdf nantesmetropole"
+ },
+ {
+  "id": "deliberation-possession-12-25@lareunion",
+  "base": "deliberation-possession-12-25",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Déliberation de la Ville de La Possession - décembre 2025",
+  "editeur": "Mairie de La Possession",
+  "n": 30,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession decembre 2025 lareunion"
+ },
+ {
+  "id": "deliberation-de-la-ville-de-la-possession-mai-2024@lareunion",
+  "base": "deliberation-de-la-ville-de-la-possession-mai-2024",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Délibération de la Ville de La Possession - mai 2024",
+  "editeur": "Mairie de La Possession",
+  "n": 23,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession mai 2024 lareunion"
+ },
+ {
+  "id": "deliberation-de-la-ville-de-la-possession-mars-2025@lareunion",
+  "base": "deliberation-de-la-ville-de-la-possession-mars-2025",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Déliberation de la Ville de La Possession - mars 2025",
+  "editeur": "Mairie de La Possession",
+  "n": 38,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession mars 2025 lareunion"
+ },
+ {
+  "id": "deliberation-de-grand-paris-sud@nandy-grandparissud",
+  "base": "deliberation-de-grand-paris-sud",
+  "portail": "nandy-grandparissud",
+  "hote": "nandy-grandparissud.opendatasoft.com",
+  "hote_secours": "nandy-grandparissud.opendatasoft.com",
+  "titre": "Délibération de Grand Paris Sud",
+  "editeur": "Grand Paris Sud",
+  "n": 3076,
+  "champs_texte": [
+   "intitule_de_la_deliberation"
+  ],
+  "champs_fichier": [
+   "fichier_pdf"
+  ],
+  "cle": "grand paris sud deliberation de grand paris sud nandy grandparissud"
+ },
+ {
+  "id": "deliberation-de-la-ville-de-la-possession-mars-2024@lareunion",
+  "base": "deliberation-de-la-ville-de-la-possession-mars-2024",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Délibération de la Ville de La Possession - mars 2024",
+  "editeur": "Mairie de La Possession",
+  "n": 18,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession mars 2024 lareunion"
+ },
+ {
+  "id": "deliberation-de-la-ville-de-la-possession-juin-2025@lareunion",
+  "base": "deliberation-de-la-ville-de-la-possession-juin-2025",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Déliberation de la Ville de La Possession - juin 2025",
+  "editeur": "Mairie de La Possession",
+  "n": 37,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession juin 2025 lareunion"
+ },
+ {
+  "id": "deliberations-du-conseil-municipal-de-la-ville-dorvault-en-2025-deliberations-incluses-en-pdf-copie@nantesmetropole",
+  "base": "deliberations-du-conseil-municipal-de-la-ville-dorvault-en-2025-deliberations-incluses-en-pdf-copie",
+  "portail": "nantesmetropole",
+  "hote": "data.nantesmetropole.fr",
+  "hote_secours": "nantesmetropole.opendatasoft.com",
+  "titre": "Délibérations du conseil municipal de la ville d'Orvault en 2025 (délibérations ",
+  "editeur": "Orvault",
+  "n": 166,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "orvault deliberations du conseil municipal de la ville d orvault en 2025 deliberations incluses en pdf nantesmetropole"
+ },
+ {
+  "id": "deliberations-cc-val2c@val-de-cher-controis-centrevaldeloire",
+  "base": "deliberations-cc-val2c",
+  "portail": "val-de-cher-controis-centrevaldeloire",
+  "hote": "data.val2c.fr",
+  "hote_secours": "val-de-cher-controis-centrevaldeloire.opendatasoft.com",
+  "titre": "Délibérations du Conseil communautaire - CC VAL2C",
+  "editeur": "Communauté de communes Val de Cher Controis",
+  "n": 1987,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "communaute de communes val de cher controis deliberations du conseil communautaire cc val2c val de cher controis centrevaldeloire"
+ },
+ {
+  "id": "deliberations-toulouse-metropole-2000-2011@toulouse-metropole",
+  "base": "deliberations-toulouse-metropole-2000-2011",
+  "portail": "toulouse-metropole",
+  "hote": "data.toulouse-metropole.fr",
+  "hote_secours": "toulouse-metropole.opendatasoft.com",
+  "titre": "Délibérations de 2000 à 2011 - Toulouse Metropole",
+  "editeur": "Toulouse Métropole",
+  "n": 5159,
+  "champs_texte": [
+   "titre_du_document"
+  ],
+  "champs_fichier": [
+   "titre_du_document",
+   "url",
+   "type_de_document"
+  ],
+  "cle": "toulouse metropole deliberations de 2000 a 2011 toulouse metropole toulouse metropole"
+ },
+ {
+  "id": "deliberations-a-partir-d-avril-2026-toulouse-metropole@toulouse-metropole",
+  "base": "deliberations-a-partir-d-avril-2026-toulouse-metropole",
+  "portail": "toulouse-metropole",
+  "hote": "data.toulouse-metropole.fr",
+  "hote_secours": "toulouse-metropole.opendatasoft.com",
+  "titre": "Délibérations à partir d'avril 2026 - Toulouse Métropole",
+  "editeur": "Toulouse Métropole",
+  "n": 241,
+  "champs_texte": [
+   "libelle_type_acte",
+   "titre",
+   "libelle_emetteur",
+   "libelle_seance"
+  ],
+  "champs_fichier": [],
+  "cle": "toulouse metropole deliberations a partir d avril 2026 toulouse metropole toulouse metropole"
+ },
+ {
+  "id": "deliberations-2023@cddoubs",
+  "base": "deliberations-2023",
+  "portail": "cddoubs",
+  "hote": "opendata.doubs.fr",
+  "hote_secours": "cddoubs.opendatasoft.com",
+  "titre": "Délibérations 2023",
+  "editeur": "CD25",
+  "n": 507,
+  "champs_texte": [
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_url",
+   "rapport_url",
+   "debat_url",
+   "odj_url"
+  ],
+  "cle": "cd25 deliberations 2023 cddoubs"
+ },
+ {
+  "id": "deliberation-de-la-ville-de-la-possession-mai-2025@lareunion",
+  "base": "deliberation-de-la-ville-de-la-possession-mai-2025",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Déliberation de la Ville de La Possession - mai 2025",
+  "editeur": "Mairie de La Possession",
+  "n": 15,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession mai 2025 lareunion"
+ },
+ {
+  "id": "deliberation-de-la-ville-de-la-possession-mars-20240@lareunion",
+  "base": "deliberation-de-la-ville-de-la-possession-mars-20240",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Délibération de la Ville de La Possession - avril 2024",
+  "editeur": "Mairie de La Possession",
+  "n": 6,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession avril 2024 lareunion"
+ },
+ {
+  "id": "deliberations-de-fiscalite-directe-locale-des-communes-2024@opendatamef",
+  "base": "deliberations-de-fiscalite-directe-locale-des-communes-2024",
+  "portail": "opendatamef",
+  "hote": "data.economie.gouv.fr",
+  "hote_secours": "opendatamef.opendatasoft.com",
+  "titre": "Délibérations de fiscalité directe locale des communes 2024 (hors taux)",
+  "editeur": "DGFIP",
+  "n": 34940,
+  "champs_texte": [],
+  "champs_fichier": [],
+  "cle": "dgfip deliberations de fiscalite directe locale des communes 2024 hors taux opendatamef"
+ },
+ {
+  "id": "deliberation-de-la-ville-de-la-possession-aout-2025@lareunion",
+  "base": "deliberation-de-la-ville-de-la-possession-aout-2025",
+  "portail": "lareunion",
+  "hote": "data.regionreunion.com",
+  "hote_secours": "lareunion.opendatasoft.com",
+  "titre": "Déliberation de la Ville de La Possession - août 2025",
+  "editeur": "Mairie de La Possession",
+  "n": 27,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de la possession deliberation de la ville de la possession aout 2025 lareunion"
+ },
+ {
+  "id": "delib-sa@breizh",
+  "base": "delib-sa",
+  "portail": "breizh",
+  "hote": "data.bretagne.bzh",
+  "hote_secours": "breizh.opendatasoft.com",
+  "titre": "Délibérations, arrêtés, procès-verbaux...  - Région Bretagne",
+  "editeur": "Région Bretagne",
+  "n": 2939,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "region bretagne deliberations arretes proces verbaux region bretagne breizh"
+ },
+ {
+  "id": "deliberations-2024-copie@moissycramayel-grandparissud",
+  "base": "deliberations-2024-copie",
+  "portail": "moissycramayel-grandparissud",
+  "hote": "data.moissy-cramayel.fr",
+  "hote_secours": "moissycramayel-grandparissud.opendatasoft.com",
+  "titre": "DELIBERATIONS 2025",
+  "editeur": "",
+  "n": 75,
+  "champs_texte": [
+   "objet",
+   "coll_nom"
+  ],
+  "champs_fichier": [
+   "fichier_a_telecharger"
+  ],
+  "cle": "deliberations 2025 moissycramayel grandparissud"
+ },
+ {
+  "id": "deliberation@saint-maur",
+  "base": "deliberation",
+  "portail": "saint-maur",
+  "hote": "data.saint-maur.com",
+  "hote_secours": "saint-maur.opendatasoft.com",
+  "titre": "Délibérations",
+  "editeur": "Gouvernance des données Saint-Maur-des-Fossés",
+  "n": 4609,
+  "champs_texte": [
+   "objet_de_la_deliberation"
+  ],
+  "champs_fichier": [
+   "file"
+  ],
+  "cle": "gouvernance des donnees saint maur des fosses deliberations saint maur"
+ },
+ {
+  "id": "deliberations-grigny@grigny91-grandparissud",
+  "base": "deliberations-grigny",
+  "portail": "grigny91-grandparissud",
+  "hote": "www.data.grigny91.fr",
+  "hote_secours": "grigny91-grandparissud.opendatasoft.com",
+  "titre": "Délibérations Grigny",
+  "editeur": "Mairie de Grigny",
+  "n": 1357,
+  "champs_texte": [
+   "titre",
+   "nom_du_budget"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "mairie de grigny deliberations grigny grigny91 grandparissud"
+ },
+ {
+  "id": "deliberations-de-fiscalite-directe-locale-des-groupements-a-fiscalite-propre-24@opendatamef",
+  "base": "deliberations-de-fiscalite-directe-locale-des-groupements-a-fiscalite-propre-24",
+  "portail": "opendatamef",
+  "hote": "data.economie.gouv.fr",
+  "hote_secours": "opendatamef.opendatasoft.com",
+  "titre": "Délibérations de fiscalité directe locale des groupements à fiscalité propre 202",
+  "editeur": "DGFIP",
+  "n": 1372,
+  "champs_texte": [],
+  "champs_fichier": [],
+  "cle": "dgfip deliberations de fiscalite directe locale des groupements a fiscalite propre 2024 hors taux opendatamef"
+ },
+ {
+  "id": "deliberations-de-fiscalite-directe-locale-des-groupements-a-fiscalite-propre-2026-hors-taux@opendatamef",
+  "base": "deliberations-de-fiscalite-directe-locale-des-groupements-a-fiscalite-propre-2026-hors-taux",
+  "portail": "opendatamef",
+  "hote": "data.economie.gouv.fr",
+  "hote_secours": "opendatamef.opendatasoft.com",
+  "titre": "Délibérations de fiscalité directe locale des groupements à fiscalité propre 202",
+  "editeur": "DGFIP",
+  "n": 1368,
+  "champs_texte": [],
+  "champs_fichier": [],
+  "cle": "dgfip deliberations de fiscalite directe locale des groupements a fiscalite propre 2026 hors taux opendatamef"
+ },
+ {
+  "id": "deliberations-2020@risorangis-grandparissud",
+  "base": "deliberations-2020",
+  "portail": "risorangis-grandparissud",
+  "hote": "data.mairie-ris-orangis.fr",
+  "hote_secours": "risorangis-grandparissud.opendatasoft.com",
+  "titre": "CCAS - CA DELIBERATIONS 2020",
+  "editeur": "",
+  "n": 30,
+  "champs_texte": [],
+  "champs_fichier": [
+   "file"
+  ],
+  "cle": "ccas ca deliberations 2020 risorangis grandparissud"
+ },
+ {
+  "id": "deliberations-rennes-metropole-2021-copie@rennes-metropole",
+  "base": "deliberations-rennes-metropole-2021-copie",
+  "portail": "rennes-metropole",
+  "hote": "data.rennesmetropole.fr",
+  "hote_secours": "rennes-metropole.opendatasoft.com",
+  "titre": "Délibérations Rennes Métropole",
+  "editeur": "Mégalis Bretagne",
+  "n": 2993,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "megalis bretagne deliberations rennes metropole rennes metropole"
+ },
+ {
+  "id": "deliberations@seineouest",
+  "base": "deliberations",
+  "portail": "seineouest",
+  "hote": "data.seineouest.fr",
+  "hote_secours": "seineouest.opendatasoft.com",
+  "titre": "Délibérations",
+  "editeur": "Seine Ouest",
+  "n": 1600,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "seine ouest deliberations seineouest"
+ },
+ {
+  "id": "deliberations-suivi@saint-louis-agglo",
+  "base": "deliberations-suivi",
+  "portail": "saint-louis-agglo",
+  "hote": "saint-louis-agglo.opendatasoft.com",
+  "hote_secours": "saint-louis-agglo.opendatasoft.com",
+  "titre": "SLA - Délibérations depuis 2017 de Saint-Louis Agglomération",
+  "editeur": "Saint-Louis Agglomération",
+  "n": 2623,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "saint louis agglomeration sla deliberations depuis 2017 de saint louis agglomeration saint louis agglo"
+ },
+ {
+  "id": "deliberations-commune-de-castelnau-destretefonds@haute-garonne",
+  "base": "deliberations-commune-de-castelnau-destretefonds",
+  "portail": "haute-garonne",
+  "hote": "data.haute-garonne.fr",
+  "hote_secours": "haute-garonne.opendatasoft.com",
+  "titre": "Délibérations Commune de Castelnau-d'Estrétefonds",
+  "editeur": "Commune de Castelnau-d'Estrétefonds",
+  "n": 126,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "commune de castelnau d estretefonds deliberations commune de castelnau d estretefonds haute garonne"
+ },
+ {
+  "id": "deliberations-commune-de-cazeres-sur-garonne@haute-garonne",
+  "base": "deliberations-commune-de-cazeres-sur-garonne",
+  "portail": "haute-garonne",
+  "hote": "data.haute-garonne.fr",
+  "hote_secours": "haute-garonne.opendatasoft.com",
+  "titre": "Délibérations Commune de Cazères-sur-Garonne",
+  "editeur": "Commune de Cazères-sur-Garonne",
+  "n": 714,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "commune de cazeres sur garonne deliberations commune de cazeres sur garonne haute garonne"
+ },
+ {
+  "id": "deliberations-tours-metropole-val-de-loire@toursmetropole",
+  "base": "deliberations-tours-metropole-val-de-loire",
+  "portail": "toursmetropole",
+  "hote": "data.tours-metropole.fr",
+  "hote_secours": "toursmetropole.opendatasoft.com",
+  "titre": "Délibérations - Tours Métropole Val de Loire",
+  "editeur": "Tours Métropole Val de Loire",
+  "n": 5323,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "tours metropole val de loire deliberations tours metropole val de loire toursmetropole"
+ },
+ {
+  "id": "deliberations-commune-dauterive@haute-garonne",
+  "base": "deliberations-commune-dauterive",
+  "portail": "haute-garonne",
+  "hote": "data.haute-garonne.fr",
+  "hote_secours": "haute-garonne.opendatasoft.com",
+  "titre": "Délibérations Commune d'Auterive",
+  "editeur": "Commune d'Auterive",
+  "n": 161,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "commune d auterive deliberations commune d auterive haute garonne"
+ },
+ {
+  "id": "deliberations-commune-de-bouloc@haute-garonne",
+  "base": "deliberations-commune-de-bouloc",
+  "portail": "haute-garonne",
+  "hote": "data.haute-garonne.fr",
+  "hote_secours": "haute-garonne.opendatasoft.com",
+  "titre": "Délibérations Commune de Bouloc",
+  "editeur": "Commune de Bouloc",
+  "n": 296,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "commune de bouloc deliberations commune de bouloc haute garonne"
+ },
+ {
+  "id": "deliberations-tours@toursmetropole",
+  "base": "deliberations-tours",
+  "portail": "toursmetropole",
+  "hote": "data.tours-metropole.fr",
+  "hote_secours": "toursmetropole.opendatasoft.com",
+  "titre": "Délibérations - TOURS",
+  "editeur": "Ville de Tours",
+  "n": 1471,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "delib_matiere_nom_1"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "ville de tours deliberations tours toursmetropole"
+ },
+ {
+  "id": "deliberations-de-2020-a-fevrier-2026-mairie-de-toulouse@toulouse-metropole",
+  "base": "deliberations-de-2020-a-fevrier-2026-mairie-de-toulouse",
+  "portail": "toulouse-metropole",
+  "hote": "data.toulouse-metropole.fr",
+  "hote_secours": "toulouse-metropole.opendatasoft.com",
+  "titre": "Délibérations de juillet 2020 à février 2026 - Mairie de Toulouse",
+  "editeur": "Mairie de Toulouse",
+  "n": 3838,
+  "champs_texte": [
+   "titre",
+   "libelle_emetteur",
+   "libelle_theme_prefecture",
+   "nom_rapporteur"
+  ],
+  "champs_fichier": [],
+  "cle": "mairie de toulouse deliberations de juillet 2020 a fevrier 2026 mairie de toulouse toulouse metropole"
+ },
+ {
+  "id": "deliberations-votees-ville-de-clermont-ferrand@clermont-metropole",
+  "base": "deliberations-votees-ville-de-clermont-ferrand",
+  "portail": "clermont-metropole",
+  "hote": "opendata.clermontmetropole.eu",
+  "hote_secours": "clermont-metropole.opendatasoft.com",
+  "titre": "Délibérations votées - Ville de Clermont-Ferrand",
+  "editeur": "Ville de Clermont-Ferrand",
+  "n": 1691,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [],
+  "cle": "ville de clermont ferrand deliberations votees ville de clermont ferrand clermont metropole"
+ },
+ {
+  "id": "deliberations-de-bondoufle-format-scdl@bondoufle-grandparissud",
+  "base": "deliberations-de-bondoufle-format-scdl",
+  "portail": "bondoufle-grandparissud",
+  "hote": "data.ville-bondoufle.fr",
+  "hote_secours": "bondoufle-grandparissud.opendatasoft.com",
+  "titre": "Délibérations de Bondoufle - format SCDL",
+  "editeur": "Ville de Bondoufle",
+  "n": 938,
+  "champs_texte": [
+   "titre",
+   "nom_du_budget",
+   "libelle_entite_emettrice",
+   "nom_matiere"
+  ],
+  "champs_fichier": [
+   "fichier_pdf"
+  ],
+  "cle": "ville de bondoufle deliberations de bondoufle format scdl bondoufle grandparissud"
+ },
+ {
+  "id": "deliberations-commune-castanet-tolosan@haute-garonne",
+  "base": "deliberations-commune-castanet-tolosan",
+  "portail": "haute-garonne",
+  "hote": "data.haute-garonne.fr",
+  "hote_secours": "haute-garonne.opendatasoft.com",
+  "titre": "Délibérations Commune de Castanet-Tolosan",
+  "editeur": "Commune de Castanet-Tolosan",
+  "n": 1113,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "commune de castanet tolosan deliberations commune de castanet tolosan haute garonne"
+ },
+ {
+  "id": "deliberations-2026@cachan",
+  "base": "deliberations-2026",
+  "portail": "cachan",
+  "hote": "cachan.opendatasoft.com",
+  "hote_secours": "cachan.opendatasoft.com",
+  "titre": "Délibérations 2026",
+  "editeur": "",
+  "n": 114,
+  "champs_texte": [
+   "delib_objet"
+  ],
+  "champs_fichier": [
+   "fichier"
+  ],
+  "cle": "deliberations 2026 cachan"
+ },
+ {
+  "id": "deliberations-communaute-de-communes-du-volvestre@haute-garonne",
+  "base": "deliberations-communaute-de-communes-du-volvestre",
+  "portail": "haute-garonne",
+  "hote": "data.haute-garonne.fr",
+  "hote_secours": "haute-garonne.opendatasoft.com",
+  "titre": "Délibérations Communauté de Communes du Volvestre",
+  "editeur": "Communauté de Communes du Volvestre",
+  "n": 14,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "communaute de communes du volvestre deliberations communaute de communes du volvestre haute garonne"
+ },
+ {
+  "id": "deliberations-ca-ccas-2025@cachan",
+  "base": "deliberations-ca-ccas-2025",
+  "portail": "cachan",
+  "hote": "cachan.opendatasoft.com",
+  "hote_secours": "cachan.opendatasoft.com",
+  "titre": "Délibérations CA CCAS 2025",
+  "editeur": "",
+  "n": 62,
+  "champs_texte": [
+   "objet"
+  ],
+  "champs_fichier": [
+   "fichier"
+  ],
+  "cle": "deliberations ca ccas 2025 cachan"
+ },
+ {
+  "id": "deliberations-commune-de-fonsorbes@haute-garonne",
+  "base": "deliberations-commune-de-fonsorbes",
+  "portail": "haute-garonne",
+  "hote": "data.haute-garonne.fr",
+  "hote_secours": "haute-garonne.opendatasoft.com",
+  "titre": "Délibérations Commune de Fonsorbes",
+  "editeur": "Commune de Fonsorbes",
+  "n": 1102,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "commune de fonsorbes deliberations commune de fonsorbes haute garonne"
+ },
+ {
+  "id": "deliberations-commune-de-fontenilles@haute-garonne",
+  "base": "deliberations-commune-de-fontenilles",
+  "portail": "haute-garonne",
+  "hote": "data.haute-garonne.fr",
+  "hote_secours": "haute-garonne.opendatasoft.com",
+  "titre": "Délibérations Commune de Fontenilles",
+  "editeur": "Commune de Fontenilles",
+  "n": 431,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "commune de fontenilles deliberations commune de fontenilles haute garonne"
+ },
+ {
+  "id": "deliberations-communaute-de-communes-coeur-de-garonne@haute-garonne",
+  "base": "deliberations-communaute-de-communes-coeur-de-garonne",
+  "portail": "haute-garonne",
+  "hote": "data.haute-garonne.fr",
+  "hote_secours": "haute-garonne.opendatasoft.com",
+  "titre": "Délibérations Communauté de Communes Coeur de Garonne",
+  "editeur": "Communauté de Communes Coeur de Garonne",
+  "n": 1895,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "communaute de communes coeur de garonne deliberations communaute de communes coeur de garonne haute garonne"
+ },
+ {
+  "id": "deliberations-commune-de-ramonville-saint-agne@haute-garonne",
+  "base": "deliberations-commune-de-ramonville-saint-agne",
+  "portail": "haute-garonne",
+  "hote": "data.haute-garonne.fr",
+  "hote_secours": "haute-garonne.opendatasoft.com",
+  "titre": "Délibérations Commune de Ramonville-Saint-Agne",
+  "editeur": "Commune de Ramonville-Saint-Agne",
+  "n": 1152,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "commune de ramonville saint agne deliberations commune de ramonville saint agne haute garonne"
+ },
+ {
+  "id": "deliberations-commune-du-vernet@haute-garonne",
+  "base": "deliberations-commune-du-vernet",
+  "portail": "haute-garonne",
+  "hote": "data.haute-garonne.fr",
+  "hote_secours": "haute-garonne.opendatasoft.com",
+  "titre": "Délibérations Commune du Vernet",
+  "editeur": "Commune Le Vernet",
+  "n": 178,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "commune le vernet deliberations commune du vernet haute garonne"
+ },
+ {
+  "id": "deliberations0@courcouronnes-grandparissud",
+  "base": "deliberations0",
+  "portail": "courcouronnes-grandparissud",
+  "hote": "evrycourcouronnes-grandparissud.opendatasoft.com",
+  "hote_secours": "courcouronnes-grandparissud.opendatasoft.com",
+  "titre": "Déliberations Évry-Courcouronnes - Format SCDL",
+  "editeur": "Ville d'Évry-Courcouronnes",
+  "n": 1284,
+  "champs_texte": [
+   "coll_nom",
+   "delib_matiere_nom",
+   "delib_objet",
+   "budget_nom"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "ville d evry courcouronnes deliberations evry courcouronnes format scdl courcouronnes grandparissud"
+ },
+ {
+  "id": "actes-administratifs-de-la-ville-de-dunkerque@cudunkerque",
+  "base": "actes-administratifs-de-la-ville-de-dunkerque",
+  "portail": "cudunkerque",
+  "hote": "data.dunkerque-agglo.fr",
+  "hote_secours": "cudunkerque.opendatasoft.com",
+  "titre": "Actes administratifs de la ville de Dunkerque",
+  "editeur": "Communauté urbaine de Dunkerque",
+  "n": 13888,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [],
+  "cle": "communaute urbaine de dunkerque actes administratifs de la ville de dunkerque cudunkerque"
+ },
+ {
+  "id": "actes-administratifs-de-la-ville-dorvault-en-2023-actes-inclus-en-pdf-copie@nantesmetropole",
+  "base": "actes-administratifs-de-la-ville-dorvault-en-2023-actes-inclus-en-pdf-copie",
+  "portail": "nantesmetropole",
+  "hote": "data.nantesmetropole.fr",
+  "hote_secours": "nantesmetropole.opendatasoft.com",
+  "titre": "Actes administratifs de la Ville d'Orvault en 2024 (actes inclus en PDF)",
+  "editeur": "Orvault",
+  "n": 32,
+  "champs_texte": [
+   "coll_nom",
+   "acte_objet"
+  ],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "orvault actes administratifs de la ville d orvault en 2024 actes inclus en pdf nantesmetropole"
+ },
+ {
+  "id": "actes_administratifs_gpge@gpge",
+  "base": "actes_administratifs_gpge",
+  "portail": "gpge",
+  "hote": "data.grandparisgrandest.fr",
+  "hote_secours": "gpge.opendatasoft.com",
+  "titre": "Actes administratifs de Grand Paris Grand Est",
+  "editeur": "Grand Paris Grand Est",
+  "n": 7253,
+  "champs_texte": [
+   "intitule"
+  ],
+  "champs_fichier": [
+   "url_acte",
+   "url_odj",
+   "url_pv"
+  ],
+  "cle": "grand paris grand est actes administratifs de grand paris grand est gpge"
+ },
+ {
+  "id": "214401143_liste-des-acters-administratifs-orvault@nantesmetropole",
+  "base": "214401143_liste-des-acters-administratifs-orvault",
+  "portail": "nantesmetropole",
+  "hote": "data.nantesmetropole.fr",
+  "hote_secours": "nantesmetropole.opendatasoft.com",
+  "titre": "Liste des actes administratifs de la ville d'Orvault",
+  "editeur": "Orvault",
+  "n": 32,
+  "champs_texte": [
+   "coll_nom",
+   "acte_objet"
+  ],
+  "champs_fichier": [],
+  "cle": "orvault liste des actes administratifs de la ville d orvault nantesmetropole"
+ },
+ {
+  "id": "actes-administratifs-2022@moissycramayel-grandparissud",
+  "base": "actes-administratifs-2022",
+  "portail": "moissycramayel-grandparissud",
+  "hote": "data.moissy-cramayel.fr",
+  "hote_secours": "moissycramayel-grandparissud.opendatasoft.com",
+  "titre": "ACTES ADMINISTRATIFS 2022",
+  "editeur": "",
+  "n": 483,
+  "champs_texte": [
+   "acte_objet",
+   "coll_nom"
+  ],
+  "champs_fichier": [
+   "fichier_a_telecharger"
+  ],
+  "cle": "actes administratifs 2022 moissycramayel grandparissud"
+ },
+ {
+  "id": "comptes-rendus-succincts-des-conseils-municipaux-de-soissons@soissons",
+  "base": "comptes-rendus-succincts-des-conseils-municipaux-de-soissons",
+  "portail": "soissons",
+  "hote": "data.ville-soissons.fr",
+  "hote_secours": "soissons.opendatasoft.com",
+  "titre": "Comptes rendus succincts des conseils municipaux de Soissons",
+  "editeur": "Ville de Soissons ",
+  "n": 36,
+  "champs_texte": [],
+  "champs_fichier": [
+   "fichier_media"
+  ],
+  "cle": "ville de soissons comptes rendus succincts des conseils municipaux de soissons soissons"
+ },
+ {
+  "id": "comptes-rendus-du-conseil-municipal@fleurysurorne",
+  "base": "comptes-rendus-du-conseil-municipal",
+  "portail": "fleurysurorne",
+  "hote": "data.fleurysurorne.fr",
+  "hote_secours": "fleurysurorne.opendatasoft.com",
+  "titre": "Comptes-rendus du conseil municipal",
+  "editeur": "Ville de Fleury-sur-Orne",
+  "n": 93,
+  "champs_texte": [],
+  "champs_fichier": [
+   "lien_vers_le_compte_rendu"
+  ],
+  "cle": "ville de fleury sur orne comptes rendus du conseil municipal fleurysurorne"
+ },
+ {
+  "id": "vineuil-41350-decisions-du-maire-prises-par-delegation-du-conseil-municipal@blois-agglopolys-centrevaldeloire",
+  "base": "vineuil-41350-decisions-du-maire-prises-par-delegation-du-conseil-municipal",
+  "portail": "blois-agglopolys-centrevaldeloire",
+  "hote": "data.blois.agglopolys.fr",
+  "hote_secours": "blois-agglopolys-centrevaldeloire.opendatasoft.com",
+  "titre": "Vineuil (41350) - Liste des décisions du maire prises par délégation du conseil ",
+  "editeur": "Ville de Vineuil (41350)",
+  "n": 58,
+  "champs_texte": [],
+  "champs_fichier": [],
+  "cle": "ville de vineuil 41350 vineuil 41350 liste des decisions du maire prises par delegation du conseil municipal en 2021 blois agglopolys centrevaldeloire"
+ },
+ {
+  "id": "blois-liste-des-elus-membres-du-conseil-municipal@blois-agglopolys-centrevaldeloire",
+  "base": "blois-liste-des-elus-membres-du-conseil-municipal",
+  "portail": "blois-agglopolys-centrevaldeloire",
+  "hote": "data.blois.agglopolys.fr",
+  "hote_secours": "blois-agglopolys-centrevaldeloire.opendatasoft.com",
+  "titre": "Blois - liste des membres du conseil municipal - mandat 2020/2026",
+  "editeur": "Répertoire National des Elus (RNE)",
+  "n": 43,
+  "champs_texte": [
+   "libelle_de_la_commune",
+   "nom_de_l_elu",
+   "prenom_de_l_elu",
+   "libelle_de_la_categorie_socio_professionnelle"
+  ],
+  "champs_fichier": [],
+  "cle": "repertoire national des elus rne blois liste des membres du conseil municipal mandat 2020 2026 blois agglopolys centrevaldeloire"
+ },
+ {
+  "id": "liste-des-conseillers-municipaux-de-saint-malo-2020-2026@saint-malo",
+  "base": "liste-des-conseillers-municipaux-de-saint-malo-2020-2026",
+  "portail": "saint-malo",
+  "hote": "data.stmalo-agglomeration.fr",
+  "hote_secours": "saint-malo.opendatasoft.com",
+  "titre": "Liste des conseillers municipaux de Saint-Malo (2020-2026)",
+  "editeur": "Ville de Saint-Malo",
+  "n": 43,
+  "champs_texte": [
+   "nom",
+   "prenom"
+  ],
+  "champs_fichier": [],
+  "cle": "ville de saint malo liste des conseillers municipaux de saint malo 2020 2026 saint malo"
+ },
+ {
+  "id": "conseils-municipaux-proces-verbaux-2021@etiolles-grandparissud",
+  "base": "conseils-municipaux-proces-verbaux-2021",
+  "portail": "etiolles-grandparissud",
+  "hote": "data.etiolles.fr",
+  "hote_secours": "etiolles-grandparissud.opendatasoft.com",
+  "titre": "Conseils municipaux - Procès-verbaux 2021",
+  "editeur": "Mairie d'Étiolles",
+  "n": 6,
+  "champs_texte": [
+   "objet"
+  ],
+  "champs_fichier": [
+   "fichier"
+  ],
+  "cle": "mairie d etiolles conseils municipaux proces verbaux 2021 etiolles grandparissud"
+ },
+ {
+  "id": "conseils-municipaux-proces-verbaux-2023@etiolles-grandparissud",
+  "base": "conseils-municipaux-proces-verbaux-2023",
+  "portail": "etiolles-grandparissud",
+  "hote": "data.etiolles.fr",
+  "hote_secours": "etiolles-grandparissud.opendatasoft.com",
+  "titre": "Conseils municipaux - Procès-verbaux 2023",
+  "editeur": "Mairie d'Étiolles",
+  "n": 6,
+  "champs_texte": [
+   "objet"
+  ],
+  "champs_fichier": [
+   "fichier"
+  ],
+  "cle": "mairie d etiolles conseils municipaux proces verbaux 2023 etiolles grandparissud"
+ },
+ {
+  "id": "conseils-municipaux-proces-verbaux-2022@etiolles-grandparissud",
+  "base": "conseils-municipaux-proces-verbaux-2022",
+  "portail": "etiolles-grandparissud",
+  "hote": "data.etiolles.fr",
+  "hote_secours": "etiolles-grandparissud.opendatasoft.com",
+  "titre": "Conseils municipaux - Procès-verbaux 2022",
+  "editeur": "Mairie d'Étiolles",
+  "n": 6,
+  "champs_texte": [
+   "objet"
+  ],
+  "champs_fichier": [
+   "fichier"
+  ],
+  "cle": "mairie d etiolles conseils municipaux proces verbaux 2022 etiolles grandparissud"
+ },
+ {
+  "id": "liste-des-maires-de-corse-2026@datacorsica",
+  "base": "liste-des-maires-de-corse-2026",
+  "portail": "datacorsica",
+  "hote": "www.data.corsica",
+  "hote_secours": "datacorsica.opendatasoft.com",
+  "titre": "Répertoire des maires et des conseillers municipaux de Corse (municipale 2026)",
+  "editeur": "",
+  "n": 4277,
+  "champs_texte": [
+   "libelle_du_departement",
+   "libelle_de_la_collectivite_a_statut_particulier",
+   "libelle_de_la_commune",
+   "nom_de_l_elu"
+  ],
+  "champs_fichier": [],
+  "cle": "repertoire des maires et des conseillers municipaux de corse municipale 2026 datacorsica"
+ },
+ {
+  "id": "liste-des-conseillers-municipaux@saint-malo",
+  "base": "liste-des-conseillers-municipaux",
+  "portail": "saint-malo",
+  "hote": "data.stmalo-agglomeration.fr",
+  "hote_secours": "saint-malo.opendatasoft.com",
+  "titre": "Liste des conseillers municipaux de Saint-Malo (2014-2020)",
+  "editeur": "Ville de Saint-Malo",
+  "n": 43,
+  "champs_texte": [
+   "nom",
+   "prenom"
+  ],
+  "champs_fichier": [],
+  "cle": "ville de saint malo liste des conseillers municipaux de saint malo 2014 2020 saint malo"
+ },
+ {
+  "id": "blois-liste-des-decisions-du-maire-prises-par-delegation-du-conseil-municipal-20@blois-agglopolys-centrevaldeloire",
+  "base": "blois-liste-des-decisions-du-maire-prises-par-delegation-du-conseil-municipal-20",
+  "portail": "blois-agglopolys-centrevaldeloire",
+  "hote": "data.blois.agglopolys.fr",
+  "hote_secours": "blois-agglopolys-centrevaldeloire.opendatasoft.com",
+  "titre": "Blois - liste des décisions du maire prises par délégation du conseil municipal ",
+  "editeur": "",
+  "n": 851,
+  "champs_texte": [
+   "objet"
+  ],
+  "champs_fichier": [],
+  "cle": "blois liste des decisions du maire prises par delegation du conseil municipal 2020 2026 blois agglopolys centrevaldeloire"
+ },
+ {
+  "id": "214400400_representations-des-elus-du-conseil-municipal-de-chemere-2014-2015@loireatlantique",
+  "base": "214400400_representations-des-elus-du-conseil-municipal-de-chemere-2014-2015",
+  "portail": "loireatlantique",
+  "hote": "data.loire-atlantique.fr",
+  "hote_secours": "loireatlantique.opendatasoft.com",
+  "titre": "Représentations des élus du Conseil municipal de Chéméré (Loire-Atlantique)",
+  "editeur": "Ville de Chéméré",
+  "n": 87,
+  "champs_texte": [
+   "nom"
+  ],
+  "champs_fichier": [],
+  "cle": "ville de chemere representations des elus du conseil municipal de chemere loire atlantique loireatlantique"
+ },
+ {
+  "id": "214400400_elus-du-conseil-municipal-de-chemere-2014-2015@loireatlantique",
+  "base": "214400400_elus-du-conseil-municipal-de-chemere-2014-2015",
+  "portail": "loireatlantique",
+  "hote": "data.loire-atlantique.fr",
+  "hote_secours": "loireatlantique.opendatasoft.com",
+  "titre": "Élus du Conseil municipal de Chéméré (Loire-Atlantique)",
+  "editeur": "Ville de Chéméré",
+  "n": 19,
+  "champs_texte": [
+   "titre",
+   "prenom",
+   "nom"
+  ],
+  "champs_fichier": [],
+  "cle": "ville de chemere elus du conseil municipal de chemere loire atlantique loireatlantique"
+ },
+ {
+  "id": "ordres_du_jour_du_conseil_municipal@parisdata",
+  "base": "ordres_du_jour_du_conseil_municipal",
+  "portail": "parisdata",
+  "hote": "opendata.paris.fr",
+  "hote_secours": "parisdata.opendatasoft.com",
+  "titre": "Ordres du jour du Conseil Municipal - 2008 à 2014",
+  "editeur": "Direction de la Démocratie, des Citoyen.ne.s et des Territoi",
+  "n": 32167,
+  "champs_texte": [
+   "objet"
+  ],
+  "champs_fichier": [],
+  "cle": "direction de la democratie des citoyen ne s et des territoires ville de paris ordres du jour du conseil municipal 2008 a 2014 parisdata"
+ },
+ {
+  "id": "conseillers-municipaux-haute-garonne-scrutin-2020@haute-garonne",
+  "base": "conseillers-municipaux-haute-garonne-scrutin-2020",
+  "portail": "haute-garonne",
+  "hote": "data.haute-garonne.fr",
+  "hote_secours": "haute-garonne.opendatasoft.com",
+  "titre": "Maires, conseillères et conseillers municipaux de la Haute-Garonne - scrutin 202",
+  "editeur": "Conseil départemental de la Haute-Garonne",
+  "n": 8232,
+  "champs_texte": [
+   "nom_commune",
+   "nom_de_l_elu",
+   "prenom_de_l_elu",
+   "libelle_de_la_fonction"
+  ],
+  "champs_fichier": [],
+  "cle": "conseil departemental de la haute garonne maires conseilleres et conseillers municipaux de la haute garonne scrutin 2020 haute garonne"
+ },
+ {
+  "id": "proces-verbaux-conseils-municipaux-2020-2026@cachan",
+  "base": "proces-verbaux-conseils-municipaux-2020-2026",
+  "portail": "cachan",
+  "hote": "cachan.opendatasoft.com",
+  "hote_secours": "cachan.opendatasoft.com",
+  "titre": "Procés-verbaux Comptes-rendus Conseils municipaux 2020-2026",
+  "editeur": "",
+  "n": 34,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [
+   "fichier"
+  ],
+  "cle": "proces verbaux comptes rendus conseils municipaux 2020 2026 cachan"
+ },
+ {
+  "id": "ordre-du-jour-conseils-municipaux-2020-2026@cachan",
+  "base": "ordre-du-jour-conseils-municipaux-2020-2026",
+  "portail": "cachan",
+  "hote": "cachan.opendatasoft.com",
+  "hote_secours": "cachan.opendatasoft.com",
+  "titre": "Ordre du jour Conseils municipaux 2020-2026",
+  "editeur": "",
+  "n": 19,
+  "champs_texte": [
+   "titre"
+  ],
+  "champs_fichier": [
+   "fichier"
+  ],
+  "cle": "ordre du jour conseils municipaux 2020 2026 cachan"
+ },
+ {
+  "id": "conseils-municipaux-proces-verbaux-2024@etiolles-grandparissud",
+  "base": "conseils-municipaux-proces-verbaux-2024",
+  "portail": "etiolles-grandparissud",
+  "hote": "data.etiolles.fr",
+  "hote_secours": "etiolles-grandparissud.opendatasoft.com",
+  "titre": "Conseils municipaux - Procès-verbaux 2024",
+  "editeur": "Mairie d'Étiolles",
+  "n": 6,
+  "champs_texte": [
+   "objet"
+  ],
+  "champs_fichier": [
+   "fichier"
+  ],
+  "cle": "mairie d etiolles conseils municipaux proces verbaux 2024 etiolles grandparissud"
+ },
+ {
+  "id": "conseil-municipaux-mandature-2020-2026@cachan",
+  "base": "conseil-municipaux-mandature-2020-2026",
+  "portail": "cachan",
+  "hote": "cachan.opendatasoft.com",
+  "hote_secours": "cachan.opendatasoft.com",
+  "titre": "Conseils municipaux - Mandature 2020-2026",
+  "editeur": "Ville de Cachan",
+  "n": 9,
+  "champs_texte": [],
+  "champs_fichier": [
+   "delib_url"
+  ],
+  "cle": "ville de cachan conseils municipaux mandature 2020 2026 cachan"
+ }
+]

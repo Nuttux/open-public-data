@@ -1,0 +1,951 @@
+[
+ {
+  "nom": "Évry-Courcouronnes",
+  "insee": "91228",
+  "pop": 66517,
+  "site": "https://evrycourcouronnes.fr/",
+  "attendu": "portail Huwise",
+  "site_final": "https://evrycourcouronnes.fr/",
+  "pdfs": 69,
+  "testes": 2,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 25
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 2,
+     "pages": 3
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 25
+    },
+    "ods_delib": {
+     "ok": true,
+     "n": 42,
+     "jeux": 1,
+     "interroges": 1
+    }
+   },
+   "pages_parcourues": 3,
+   "lecteurs_externes": 2
+  },
+  "conclusion": "LU : fonction lue",
+  "pdf": {
+   "url": "https://evrycourcouronnes-grandparissud.opendatasoft.com/api/explore/v2.1/catalog/datasets/deliberations0/files/65da60e38af92fccd3c993e924531ba8",
+   "pages": 319,
+   "scan": false,
+   "ocr": false,
+   "annee": "2024",
+   "nomenclature": "M57",
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "Le 26 juin 2025"
+   }
+  },
+  "fonctions": {
+   "fct": {
+    "0": {
+     "libelle": "Services généraux",
+     "dep": 27001994.57,
+     "rec": 0.0,
+     "page": 109,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "1": {
+     "libelle": "Sécurité",
+     "dep": 7085689.87,
+     "rec": null,
+     "page": 122,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "2": {
+     "libelle": "Enseignement, formation professionnelle et apprentissage",
+     "dep": 9749145.53,
+     "rec": null,
+     "page": 124,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "3": {
+     "libelle": "Culture, vie sociale, jeunesse, sports et loisirs",
+     "dep": 23690222.27,
+     "rec": null,
+     "page": 139,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "4": {
+     "libelle": "Santé et action sociale",
+     "dep": 13098280.39,
+     "rec": 0.0,
+     "page": 148,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "5": {
+     "libelle": "Aménagement des territoires et habitat",
+     "dep": 9841628.14,
+     "rec": null,
+     "page": 153,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "6": {
+     "libelle": "Action économique",
+     "dep": 30823.62,
+     "rec": 0.0,
+     "page": 159,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "7": {
+     "libelle": "Environnement",
+     "dep": 306992.46,
+     "rec": 697904.23,
+     "page": 161,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "8": {
+     "libelle": "Transports",
+     "dep": 6102822.62,
+     "rec": null,
+     "page": 164,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    }
+   },
+   "inv": {
+    "0": {
+     "libelle": "Services généraux",
+     "dep": 4908969.74,
+     "rec": 2205622.02,
+     "page": 76,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "1": {
+     "libelle": "Sécurité",
+     "dep": 405525.18,
+     "rec": 13333.33,
+     "page": 80,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "2": {
+     "libelle": "Enseignement, formation professionnelle et apprentissage",
+     "dep": 39300574.45,
+     "rec": 7418959.86,
+     "page": 81,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "3": {
+     "libelle": "Culture, vie sociale, jeunesse, sports et loisirs",
+     "dep": 8638090.31,
+     "rec": 988059.57,
+     "page": 88,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "4": {
+     "libelle": "Santé et action sociale",
+     "dep": 3798172.7,
+     "rec": 233165.26,
+     "page": 91,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "5": {
+     "libelle": "Aménagement des territoires et habitat",
+     "dep": 1837955.05,
+     "rec": 978340.0,
+     "page": 93,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "6": {
+     "libelle": "Action économique",
+     "dep": 786688.03,
+     "rec": 0.0,
+     "page": 97,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "7": {
+     "libelle": "Environnement",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 98,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "8": {
+     "libelle": "Transports",
+     "dep": 5819713.64,
+     "rec": 301936.16,
+     "page": 101,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    }
+   }
+  },
+  "essais": [
+   {
+    "url": "240404_046-APPROBATION-DES-MODALITES-DE-FONCTIONNEMENT-DU-BP.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": false,
+    "entete": "Le 4 avril 2024",
+    "annee": "2024"
+   },
+   {
+    "url": "g/datasets/deliberations0/files/65da60e38af92fccd3c993e924531ba8",
+    "n_fct": 9,
+    "pages": 319,
+    "scan": false,
+    "entete": "Le 26 juin 2025",
+    "annee": "2024"
+   }
+  ],
+  "secs": 170
+ },
+ {
+  "nom": "Fort-de-France",
+  "insee": "97209",
+  "pop": 75627,
+  "site": "https://www.fortdefrance.fr/",
+  "attendu": "?",
+  "site_final": "https://www.fortdefrance.fr/",
+  "pdfs": 8,
+  "testes": 8,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 8
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 2
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 11
+    },
+    "ods_delib": {
+     "ok": false,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    }
+   },
+   "pages_parcourues": 2,
+   "lecteurs_externes": 0
+  },
+  "conclusion": "PUBLIE SANS MAQUETTE : document de la commune lu, présentation croisée absente",
+  "pdf": {
+   "url": "https://www.fortdefrance.fr/wp-content/uploads/2024/07/ACE-Chef.fe-de-service-Ex%C3%A9cution-budg%C3%A9taire_18072024.pdf",
+   "pages": 2,
+   "scan": false,
+   "ocr": false,
+   "annee": "2024",
+   "nomenclature": null,
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "Angles Bd Général de Gaulle et Rue République"
+   }
+  },
+  "fonctions": {
+   "fct": {},
+   "inv": {}
+  },
+  "essais": [
+   {
+    "url": "E-Chef.fe-de-service-Ex%C3%A9cution-budg%C3%A9taire_18072024.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": false,
+    "entete": "Angles Bd Général de Gaulle et Rue Républiqu",
+    "annee": "2024"
+   },
+   {
+    "url": "efrance.fr/wp-content/uploads/2019/08/Maquette-DUI-2019-2020.pdf",
+    "n_fct": 0,
+    "pages": 0,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "9-8BFD-A427A381D32/Maquette%20FDFMag%203%20all%C3%A9g%C3%A9e.pdf",
+    "n_fct": 0,
+    "pages": 40,
+    "scan": false,
+    "entete": "2",
+    "annee": "2013"
+   },
+   {
+    "url": "loads/2018/04/Livret-Conseil-Municipal-des-Jeunes-Mars-2018W.pdf",
+    "n_fct": 0,
+    "pages": 14,
+    "scan": false,
+    "entete": "Permettre à la jeunesse foyalaise de s’expri",
+    "annee": "2018"
+   },
+   {
+    "url": "nt/uploads/2020/02/LettrePrefet-Arreteprefectoral-30janv2020.pdf",
+    "n_fct": 0,
+    "pages": 3,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "uploads/2020/09/histoire-the%CC%81a%CC%82tre-municipal-2020W.pdf",
+    "n_fct": 0,
+    "pages": 28,
+    "scan": false,
+    "entete": "2",
+    "annee": null
+   },
+   {
+    "url": "AC-EE3D71B28D8/Finances%20villes%20capitales%20d'outre%20mer.pdf",
+    "n_fct": 0,
+    "pages": 26,
+    "scan": false,
+    "entete": "Document de travail-seconde conférence des v",
+    "annee": null
+   },
+   {
+    "url": "documents/pdf/--fdf---23090404-Orientations-Budgetaires-2010.pdf",
+    "n_fct": 0,
+    "pages": 18,
+    "scan": false,
+    "entete": " le débat d’orientation budgétaire est un d",
+    "annee": "2010"
+   }
+  ],
+  "secs": 224
+ },
+ {
+  "nom": "Langres",
+  "insee": "52269",
+  "pop": 8096,
+  "site": "https://langres.fr/",
+  "attendu": "45 PDF vus, rien lu",
+  "site_final": "https://langres.fr/",
+  "pdfs": 58,
+  "testes": 22,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 57
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 19
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 19
+    },
+    "ods_delib": {
+     "ok": false,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    },
+    "wayback": {
+     "ok": true,
+     "n": 1
+    }
+   },
+   "pages_parcourues": 19,
+   "lecteurs_externes": 0
+  },
+  "conclusion": "PUBLIE SANS MAQUETTE : document de la commune lu, présentation croisée absente",
+  "pdf": {
+   "url": "https://langres.fr/wp-content/uploads/2025/10/Proces-Verbal-Du-Conseil-Municipal-5-juin-2025.pdf",
+   "pages": 25,
+   "scan": false,
+   "ocr": false,
+   "annee": "2029",
+   "nomenclature": null,
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "Aide de la ville de Langres au cinéma New Vox – Convention 2025-2029 avec"
+   }
+  },
+  "fonctions": {
+   "fct": {},
+   "inv": {}
+  },
+  "essais": [
+   {
+    "url": "-5-LOCATIONBATIMENTS31TURENNE-BOX17-LUDILANGRES_postMarque-1.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": false,
+    "entete": "La convention est conclue pour une durée d’u",
+    "annee": "2024"
+   },
+   {
+    "url": "ISPOSITIONGRATUIRE-TOURSAINTFERJEUX-HALLEBARDIERS_postMarque.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": false,
+    "entete": "Article 2 : M. le Directeur Général des Serv",
+    "annee": "2024"
+   },
+   {
+    "url": "01092025AC-VilledeLangres-PlaceDiderot-RueJeanRoussat_signed.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": false,
+    "entete": "412 – 01092025AC – Ville de Langres – Place ",
+    "annee": "2025"
+   },
+   {
+    "url": "ancement-poste-chef-projet-programme-petites-ville-de-demain.pdf",
+    "n_fct": 0,
+    "pages": 1,
+    "scan": false,
+    "entete": "",
+    "annee": "2023"
+   },
+   {
+    "url": "2023/06/DEC-BD-2023-43-MICRO-PROJET-CONVENTIONCOL_postMarque.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": false,
+    "entete": "",
+    "annee": "2023"
+   },
+   {
+    "url": "023-80-LOCATIONGARAGERUEDU8MAI1945-MJULIENMAULINI_postMarque.pdf",
+    "n_fct": 0,
+    "pages": 6,
+    "scan": false,
+    "entete": "Article 3 La présente Décision peut faire l’",
+    "annee": "2025"
+   },
+   {
+    "url": "t/uploads/2025/10/CM-25-09-25-LISTEDESDELIBERATIONS_signed-3.pdf",
+    "n_fct": 0,
+    "pages": 2,
+    "scan": false,
+    "entete": "Politique de la Ville – Contrat de Ville 202",
+    "annee": "2025"
+   },
+   {
+    "url": "ds/2025/10/CM-25-09-25-Delibs_communication_Biffe_compressed.pdf",
+    "n_fct": 0,
+    "pages": 894,
+    "scan": false,
+    "entete": "Vu la délibération 2022-1 du conseil communa",
+    "annee": "2025"
+   }
+  ],
+  "secs": 322
+ },
+ {
+  "nom": "Montpon-Ménestérol",
+  "insee": "24291",
+  "pop": 5904,
+  "site": "https://www.montpon-menesterol.fr/",
+  "attendu": "?",
+  "site_final": "https://www.montpon-menesterol.fr/",
+  "pdfs": 19,
+  "testes": 19,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 19
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 0,
+     "pages": 5
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 17
+    },
+    "ods_delib": {
+     "ok": false,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    },
+    "wayback": {
+     "ok": true,
+     "n": 0
+    }
+   },
+   "pages_parcourues": 5,
+   "lecteurs_externes": 0
+  },
+  "conclusion": "PUBLIE SANS MAQUETTE : document de la commune lu, présentation croisée absente",
+  "pdf": {
+   "url": "https://www.montpon-menesterol.fr/fichiers/389/Ordre-du-jour-Liste-des-deliberations-Proces-verbal/4484/Liste-des-deliberationsConseil-Municipal-du-1072026.pdf",
+   "pages": 2,
+   "scan": false,
+   "ocr": false,
+   "annee": "2027",
+   "nomenclature": null,
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "Convention de mise à disposition de locaux à l’association"
+   }
+  },
+  "fonctions": {
+   "fct": {},
+   "inv": {}
+  },
+  "essais": [
+   {
+    "url": "ers/157/Journal-Municipal/3534/LE-LIEN-decembre-2024--quadri.pdf",
+    "n_fct": 0,
+    "pages": 20,
+    "scan": false,
+    "entete": "Bonne Année 2025 !",
+    "annee": "2025"
+   },
+   {
+    "url": "6/Conseils-municipaux/1793/Conseil-municipal-du-28-mars-2022.pdf",
+    "n_fct": 0,
+    "pages": 15,
+    "scan": false,
+    "entete": "COMMUNE DE MONTPON-MÉNESTÉROL",
+    "annee": "2021"
+   },
+   {
+    "url": "onseils-municipaux/1787/Conseil-municipal-du-24-janvier-2022.pdf",
+    "n_fct": 0,
+    "pages": 22,
+    "scan": false,
+    "entete": "COMMUNE DE MONTPON-MÉNESTÉROL",
+    "annee": "2022"
+   },
+   {
+    "url": "on-menesterol.fr/fichiers/243/2022/1853/Le-lien-de-juin-2022.pdf",
+    "n_fct": 0,
+    "pages": 32,
+    "scan": false,
+    "entete": ". . . . . . . . . . . . . . . . . . . . . . ",
+    "annee": "2022"
+   },
+   {
+    "url": "515/DELIBERATION-REGLEMENT-INTERIEUR-BIBLIOTHEQUE-06-06-2024.pdf",
+    "n_fct": 0,
+    "pages": 1,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "oces-verbal/3493/Proces-verbal-Conseil-Municipal-du-19112024.pdf",
+    "n_fct": 0,
+    "pages": 11,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "roces-Verbal/3614/Proces-verbal-Conseil-Municipl-du-22012025.pdf",
+    "n_fct": 0,
+    "pages": 16,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   },
+   {
+    "url": "oces-verbal/3033/Proces-Verbal-Conseil-Municipal-du-21022024.pdf",
+    "n_fct": 0,
+    "pages": 28,
+    "scan": true,
+    "entete": "",
+    "annee": null
+   }
+  ],
+  "secs": 133
+ },
+ {
+  "nom": "Gentilly",
+  "insee": "94037",
+  "pop": 19160,
+  "site": "https://www.gentilly.fr/",
+  "attendu": "TÉMOIN — était lue",
+  "site_final": "chrome-error://chromewebdata/",
+  "pdfs": 0,
+  "testes": 0,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 0
+    },
+    "deliberations": {
+     "ok": false,
+     "n": 0,
+     "pages": 0
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 2
+    },
+    "ods_delib": {
+     "ok": false,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    },
+    "wayback": {
+     "ok": true,
+     "n": 0
+    }
+   },
+   "pages_parcourues": 0,
+   "lecteurs_externes": 0,
+   "ecartes": [
+    "https://www.ville-gentilly.fr/sites/default/files/compte_administratif_2018.pdf",
+    "https://www.ville-gentilly.fr/sites/default/files/3_-_decision_modificative_ndeg_2_2023.pd"
+   ]
+  },
+  "conclusion": "NON CONCLUANT : deliberations, ods_delib en échec",
+  "pdf": null,
+  "fonctions": null,
+  "essais": [],
+  "secs": 82
+ },
+ {
+  "nom": "Bondy",
+  "insee": "93010",
+  "pop": 53067,
+  "site": "https://www.ville-bondy.fr/",
+  "attendu": "TÉMOIN — était lue",
+  "site_final": "https://www.ville-bondy.fr/",
+  "pdfs": 129,
+  "testes": 1,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 108
+    },
+    "deliberations": {
+     "ok": true,
+     "n": 1,
+     "pages": 8
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 26
+    },
+    "ods_delib": {
+     "ok": false,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    }
+   },
+   "pages_parcourues": 8,
+   "lecteurs_externes": 1
+  },
+  "conclusion": "LU : fonction lue",
+  "pdf": {
+   "url": "https://www.ville-bondy.fr/wp-content/uploads/2025/11/CA-2024-ANNEXES-SIGNE-ET-EXECUTOIRE-V2.pdf",
+   "pages": 330,
+   "scan": false,
+   "ocr": false,
+   "annee": "2024",
+   "nomenclature": "M57",
+   "entite": {
+    "nom_ok": true,
+    "epci": false,
+    "annexe": false,
+    "principal": false,
+    "autre": null,
+    "entete": "VILLE DE BONDY - BUDGET VILLE DE BONDY 2024 - CA - 2024"
+   }
+  },
+  "fonctions": {
+   "fct": {
+    "0": {
+     "libelle": "Services généraux",
+     "dep": 24819189.55,
+     "rec": 0.0,
+     "page": 79,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 1
+    },
+    "1": {
+     "libelle": "Sécurité",
+     "dep": 3004915.5,
+     "rec": 29000.0,
+     "page": 90,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "2": {
+     "libelle": "Enseignement, formation professionnelle et apprentissage",
+     "dep": 17567332.91,
+     "rec": null,
+     "page": 91,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "3": {
+     "libelle": "Culture, vie sociale, jeunesse, sports et loisirs",
+     "dep": 9334518.41,
+     "rec": null,
+     "page": 104,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "4": {
+     "libelle": "Santé et action sociale",
+     "dep": 6900020.11,
+     "rec": 0.0,
+     "page": 111,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "5": {
+     "libelle": "Aménagement des territoires et habitat",
+     "dep": 3396437.13,
+     "rec": null,
+     "page": 115,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "6": {
+     "libelle": "Action économique",
+     "dep": 124709.76,
+     "rec": 140049.44,
+     "page": 121,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "7": {
+     "libelle": "Environnement",
+     "dep": 3122155.12,
+     "rec": 150754.0,
+     "page": 123,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "8": {
+     "libelle": "Transports",
+     "dep": 757051.99,
+     "rec": 606642.72,
+     "page": 129,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    }
+   },
+   "inv": {
+    "0": {
+     "libelle": "Services généraux",
+     "dep": 9165066.36,
+     "rec": 45952.51,
+     "page": 48,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "1": {
+     "libelle": "Sécurité",
+     "dep": 375580.83,
+     "rec": 954260.0,
+     "page": 52,
+     "cumul": false,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "2": {
+     "libelle": "Enseignement, formation professionnelle et apprentissage",
+     "dep": 856529.88,
+     "rec": 367593.0,
+     "page": 55,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "3": {
+     "libelle": "Culture, vie sociale, jeunesse, sports et loisirs",
+     "dep": 755968.33,
+     "rec": 442849.2,
+     "page": 58,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "4": {
+     "libelle": "Santé et action sociale",
+     "dep": 49734.23,
+     "rec": 17524.64,
+     "page": 59,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "5": {
+     "libelle": "Aménagement des territoires et habitat",
+     "dep": 195852.14,
+     "rec": 543928.27,
+     "page": 63,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "6": {
+     "libelle": "Action économique",
+     "dep": 0.0,
+     "rec": 0.0,
+     "page": 66,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "7": {
+     "libelle": "Environnement",
+     "dep": 0.0,
+     "rec": 20392.58,
+     "page": 68,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    },
+    "8": {
+     "libelle": "Transports",
+     "dep": 244791.22,
+     "rec": 38665.36,
+     "page": 71,
+     "cumul": true,
+     "somme_articles": 0.0,
+     "pages_sommees": 0
+    }
+   }
+  },
+  "essais": [
+   {
+    "url": "ntent/uploads/2025/11/CA-2024-ANNEXES-SIGNE-ET-EXECUTOIRE-V2.pdf",
+    "n_fct": 9,
+    "pages": 330,
+    "scan": false,
+    "entete": "VILLE DE BONDY - BUDGET VILLE DE BONDY 2024 ",
+    "annee": "2024"
+   }
+  ],
+  "secs": 113
+ },
+ {
+  "nom": "Avrillé",
+  "insee": "49015",
+  "pop": 15330,
+  "site": "https://www.avrille.fr/",
+  "attendu": "TÉMOIN — était lue",
+  "site_final": "chrome-error://chromewebdata/",
+  "pdfs": 0,
+  "testes": 0,
+  "preuve": {
+   "canaux": {
+    "crawl": {
+     "ok": true,
+     "n": 0
+    },
+    "deliberations": {
+     "ok": false,
+     "n": 0,
+     "pages": 0
+    },
+    "google": {
+     "ok": true,
+     "profil": 0,
+     "n": 1
+    },
+    "ods_delib": {
+     "ok": false,
+     "n": 0,
+     "jeux": 0,
+     "interroges": 0
+    },
+    "wayback": {
+     "ok": true,
+     "n": 0
+    }
+   },
+   "pages_parcourues": 0,
+   "lecteurs_externes": 0,
+   "ecartes": [
+    "https://www.ville-avrille.fr/wp-content/uploads/2024/05/CA-2023-MULTIACCUEIL-COMPLET.pdf"
+   ]
+  },
+  "conclusion": "NON CONCLUANT : deliberations, ods_delib en échec",
+  "pdf": null,
+  "fonctions": null,
+  "essais": [],
+  "secs": 76
+ }
+]
