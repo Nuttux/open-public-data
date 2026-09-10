@@ -1,6 +1,6 @@
 {
   "year": 2012,
-  "generated_at": "2026-09-10T17:17:53.021500+00:00",
+  "generated_at": "2026-09-10T17:39:10.944202+00:00",
   "totals": {
     "capital_restant": 7923943646,
     "montant_initial": 9675422041,
@@ -3658,10 +3658,10 @@
           "annee_mobilisation": 2012,
           "montant_initial": 11000000,
           "capital_restant": 10911611,
-          "duree_residuelle": 29.04,
+          "duree_residuelle": 29.2,
           "taux_type": "FIXE",
           "taux_index": "",
-          "taux_actuariel": 4.56687791646,
+          "taux_actuariel": 4.49289581028,
           "programme": null
         },
         {
@@ -3670,10 +3670,10 @@
           "annee_mobilisation": 2012,
           "montant_initial": 11000000,
           "capital_restant": 10911611,
-          "duree_residuelle": 29.2,
+          "duree_residuelle": 29.04,
           "taux_type": "FIXE",
           "taux_index": "",
-          "taux_actuariel": 4.49289581028,
+          "taux_actuariel": 4.56687791646,
           "programme": null
         }
       ],
@@ -3683,7 +3683,7 @@
         "capital_portefeuille": 15401104,
         "capital_non_rattache": 53024001,
         "part_rattachee": 0.3647526687475946,
-        "n_programmes": 461
+        "n_programmes": 463
       }
     },
     {
@@ -8992,7 +8992,7 @@
         "capital_portefeuille": 2167529,
         "capital_non_rattache": 37273132,
         "part_rattachee": 0.20078517892547953,
-        "n_programmes": 43
+        "n_programmes": 44
       }
     }
   ],
@@ -9069,5 +9069,13 @@
     "url": "https://opendata.paris.fr/explore/dataset/dette-garantie/",
     "license": "ODbL",
     "note": "Une ligne = un emprunt garanti par la Ville de Paris. Le capital restant dû au 31/12 représente l'engagement hors bilan : Paris rembourse à la place du bénéficiaire uniquement en cas de défaut. Majoritairement des emprunts de bailleurs sociaux auprès de la CDC, donc un risque jugé faible par les agences de notation."
+  },
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
 }

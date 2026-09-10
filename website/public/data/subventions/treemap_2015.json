@@ -1,6 +1,6 @@
 {
   "year": 2015,
-  "generated_at": "2026-09-10T19:28:40.671055",
+  "generated_at": "2026-09-10T19:40:12.573087",
   "total_montant": 1149891407.5600002,
   "nb_thematiques": 16,
   "data": [
@@ -132,5 +132,13 @@
       "montant_total": 150000.0,
       "pct_total": 0.01
     }
-  ]
+  ],
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
+  }
 }

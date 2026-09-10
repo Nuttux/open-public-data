@@ -1,6 +1,6 @@
 {
   "year": 2015,
-  "generated_at": "2026-09-10T17:18:01.015535+00:00",
+  "generated_at": "2026-09-10T17:39:16.462001+00:00",
   "totals": {
     "capital_restant": 8933442394,
     "montant_initial": 10768003741,
@@ -3688,7 +3688,7 @@
         "capital_portefeuille": 890513492,
         "capital_non_rattache": 430363315,
         "part_rattachee": 0.13395251245804757,
-        "n_programmes": 461
+        "n_programmes": 463
       }
     },
     {
@@ -6455,7 +6455,7 @@
         "capital_portefeuille": 2089131,
         "capital_non_rattache": 42305692,
         "part_rattachee": 0.3617584406219502,
-        "n_programmes": 43
+        "n_programmes": 44
       }
     },
     {
@@ -7900,7 +7900,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7917,7 +7917,7 @@
             "adresse": "21 RUE BREGUET",
             "nb_logements": 47,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7934,7 +7934,7 @@
             "adresse": "21 RUE BREGUET",
             "nb_logements": 47,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7951,7 +7951,7 @@
             "adresse": "56, RUE RENE BOULANGER",
             "nb_logements": 12,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7968,7 +7968,7 @@
             "adresse": "54, RUE D'ABOUKIR",
             "nb_logements": 43,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7985,7 +7985,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8002,7 +8002,7 @@
             "adresse": "62-64, RUE PLANCHAT",
             "nb_logements": 36,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8019,7 +8019,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8036,7 +8036,7 @@
             "adresse": "12-14 PASSAGE RAGUINOT",
             "nb_logements": 32,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8065,7 +8065,7 @@
             "adresse": "33-35, AVENUE JEAN JAURES",
             "nb_logements": 17,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8082,7 +8082,7 @@
             "adresse": "62-64, RUE PLANCHAT",
             "nb_logements": 36,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8099,7 +8099,7 @@
             "adresse": "12-14 PASSAGE RAGUINOT",
             "nb_logements": 32,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8128,7 +8128,7 @@
             "adresse": "90, RUE SAINT DENIS",
             "nb_logements": 14,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8145,7 +8145,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8162,7 +8162,7 @@
             "adresse": "38, RUE VIGNON",
             "nb_logements": 14,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8179,7 +8179,7 @@
             "adresse": "69-71, BD PONIATOWSKI",
             "nb_logements": 23,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8220,7 +8220,7 @@
             "adresse": "57 AVENUE DE SAINT OUEN",
             "nb_logements": 12,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8237,7 +8237,7 @@
             "adresse": "230 RUE DE CHARENTON",
             "nb_logements": 27,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8254,7 +8254,7 @@
             "adresse": "54, RUE D'ABOUKIR",
             "nb_logements": 43,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8283,7 +8283,7 @@
             "adresse": "54, RUE D'ABOUKIR",
             "nb_logements": 43,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         }
       ],
@@ -9075,7 +9075,7 @@
         "capital_portefeuille": 0,
         "capital_non_rattache": 1423329,
         "part_rattachee": 0.9051245130018803,
-        "n_programmes": 54
+        "n_programmes": 55
       }
     }
   ],
@@ -9152,5 +9152,13 @@
     "url": "https://opendata.paris.fr/explore/dataset/dette-garantie/",
     "license": "ODbL",
     "note": "Une ligne = un emprunt garanti par la Ville de Paris. Le capital restant dû au 31/12 représente l'engagement hors bilan : Paris rembourse à la place du bénéficiaire uniquement en cas de défaut. Majoritairement des emprunts de bailleurs sociaux auprès de la CDC, donc un risque jugé faible par les agences de notation."
+  },
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
 }

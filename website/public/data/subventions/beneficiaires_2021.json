@@ -1,6 +1,6 @@
 {
   "year": 2021,
-  "generated_at": "2026-09-10T19:28:25.239518",
+  "generated_at": "2026-09-10T19:39:59.309096",
   "total_montant": 1262572237.71,
   "nb_beneficiaires": 3835,
   "data": [
@@ -3601,7 +3601,7 @@
       "source_thematique": "direction",
       "montant_total": 218860.0,
       "nb_subventions": 1,
-      "objet_principal": "Appel à projets IAECIRC21",
+      "objet_principal": "IAE ACI",
       "siret": "75232961500039"
     },
     {
@@ -4396,7 +4396,7 @@
       "source_thematique": "pattern",
       "montant_total": 160000.0,
       "nb_subventions": 1,
-      "objet_principal": "Demande de subvention Bureau de la musique 2021",
+      "objet_principal": "acompte 2021 DAC",
       "siret": "78434004400030"
     },
     {
@@ -4651,7 +4651,7 @@
       "source_thematique": "direction",
       "montant_total": 150000.0,
       "nb_subventions": 1,
-      "objet_principal": "acompte 2021 DAC",
+      "objet_principal": "Subvention de fonctionnement 2021",
       "siret": "30666486300033"
     },
     {
@@ -11266,7 +11266,7 @@
       "source_thematique": "llm",
       "montant_total": 48958.0,
       "nb_subventions": 1,
-      "objet_principal": "Soutien aux postes des animateurs-trices/accompagnateurs-trices des conseils citoyens parisiens 13e",
+      "objet_principal": "Soutien aux postes des animateurs-trices/accompagnateurs-trices des conseils citoyens parisiens 19e",
       "siret": "39430133700041"
     },
     {
@@ -18121,7 +18121,7 @@
       "source_thematique": "llm",
       "montant_total": 24000.0,
       "nb_subventions": 1,
-      "objet_principal": "Animation Espaces Publics: Projets artistiques et citoyens participatifs",
+      "objet_principal": "Résidence territoriale artistique et culturelle au collège Flora Tristan",
       "siret": "38126081900051"
     },
     {
@@ -20521,7 +20521,7 @@
       "source_thematique": "llm",
       "montant_total": 19500.0,
       "nb_subventions": 1,
-      "objet_principal": "Les permanences: initiation au numérique",
+      "objet_principal": "Pied d'Immeuble Numérique Paris 18",
       "siret": "81415159300021"
     },
     {
@@ -25936,7 +25936,7 @@
       "source_thematique": "direction",
       "montant_total": 11940.0,
       "nb_subventions": 1,
-      "objet_principal": "TAP Atelier Théâtre (le corps comme outil théâtral)",
+      "objet_principal": "Atelier Théâtre (le corps comme outil théâtral)",
       "siret": "79849279900027"
     },
     {
@@ -26701,7 +26701,7 @@
       "source_thematique": "llm",
       "montant_total": 10500.0,
       "nb_subventions": 1,
-      "objet_principal": "CPO SPV - THÉÂTRE, MASQUES ET LIEN SOCIAL",
+      "objet_principal": "CPO SPV - CULTURE ET CITOYENNETE",
       "siret": "44116591700069"
     },
     {
@@ -29476,7 +29476,7 @@
       "source_thematique": "llm",
       "montant_total": 9000.0,
       "nb_subventions": 1,
-      "objet_principal": "POLITIQUE DE LA VILLE 2021(20ème BA)",
+      "objet_principal": "Fonctionnement de l'association - recrutement",
       "siret": "84162859700012"
     },
     {
@@ -30616,7 +30616,7 @@
       "source_thematique": "direction",
       "montant_total": 8000.0,
       "nb_subventions": 1,
-      "objet_principal": "Ana Houna - soutien aux structures accompagnant les artistes en exil proches des zones de conflit",
+      "objet_principal": "Fonds Zodeh - soutien à la structuration des équipes artistiques et culturelles du monde arabe/MO",
       "siret": "85135637800014"
     },
     {
@@ -57529,5 +57529,13 @@
       "objet_principal": null,
       "siret": null
     }
-  ]
+  ],
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
+  }
 }

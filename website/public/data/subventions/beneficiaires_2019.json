@@ -1,6 +1,6 @@
 {
   "year": 2019,
-  "generated_at": "2026-09-10T19:28:30.781667",
+  "generated_at": "2026-09-10T19:40:04.222706",
   "total_montant": 1304037463.0,
   "nb_beneficiaires": 12093,
   "data": [
@@ -1456,7 +1456,7 @@
       "source_thematique": "direction",
       "montant_total": 1135904.0,
       "nb_subventions": 1,
-      "objet_principal": "FONCTIONNEMENT 2019",
+      "objet_principal": "Acompte 2019 DAC",
       "siret": "82349520500010"
     },
     {
@@ -2371,7 +2371,7 @@
       "source_thematique": "direction",
       "montant_total": 478000.0,
       "nb_subventions": 1,
-      "objet_principal": "Demande de subvention de fonctionnement pour le Mouffetard - Théâtre des arts de la marionnette",
+      "objet_principal": "Acompte 2019 DAC",
       "siret": "34112346100046"
     },
     {
@@ -2956,7 +2956,7 @@
       "source_thematique": "direction",
       "montant_total": 327880.0,
       "nb_subventions": 1,
-      "objet_principal": "acompte 2019 DAC",
+      "objet_principal": "SUBVENTION DE FONCTIONNEMENT",
       "siret": "39864093800021"
     },
     {
@@ -2986,7 +2986,7 @@
       "source_thematique": "pattern",
       "montant_total": 325870.0,
       "nb_subventions": 1,
-      "objet_principal": "Acompte 2019 DAC",
+      "objet_principal": "Subvention de fonctionnement 2019",
       "siret": "78424378400013"
     },
     {
@@ -3676,7 +3676,7 @@
       "source_thematique": "direction",
       "montant_total": 230000.0,
       "nb_subventions": 1,
-      "objet_principal": "acompte 2019 DAC",
+      "objet_principal": "SUBVENTION DE FONCTIONNEMENT 2019",
       "siret": "48957504300034"
     },
     {
@@ -7486,7 +7486,7 @@
       "source_thematique": "default",
       "montant_total": 88500.0,
       "nb_subventions": 1,
-      "objet_principal": "Tenue de permanences juridiques gratuites par des bénévoles professionnels du droit et suivi de doss",
+      "objet_principal": "\"Accès au droit et santé mentale\" (ADSM)",
       "siret": "45101859200027"
     },
     {
@@ -47701,7 +47701,7 @@
       "source_thematique": "direction",
       "montant_total": 2000.0,
       "nb_subventions": 1,
-      "objet_principal": "5ème édition de ParisArtistes#.Parcours à la découverte d'artistes dans la capitale.bloch",
+      "objet_principal": "Exposition collective Objectif Femmes à la Mairie du 9ème arrond. en octobre 2019.",
       "siret": "79970320200017"
     },
     {
@@ -181399,5 +181399,13 @@
       "objet_principal": null,
       "siret": null
     }
-  ]
+  ],
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
+  }
 }

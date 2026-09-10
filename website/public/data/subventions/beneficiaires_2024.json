@@ -1,6 +1,6 @@
 {
   "year": 2024,
-  "generated_at": "2026-09-10T19:28:17.586073",
+  "generated_at": "2026-09-10T19:39:51.534354",
   "total_montant": 1353488225.0,
   "nb_beneficiaires": 5948,
   "data": [
@@ -811,7 +811,7 @@
       "source_thematique": "direction",
       "montant_total": 3690072.0,
       "nb_subventions": 1,
-      "objet_principal": "Paris Ateliers - Subvention de fonctionnement 2024",
+      "objet_principal": "Acompte 2024 DAC",
       "siret": "31293687500094"
     },
     {
@@ -7441,7 +7441,7 @@
       "source_thematique": "direction",
       "montant_total": 92750.0,
       "nb_subventions": 1,
-      "objet_principal": "Acompte 2024 DAC",
+      "objet_principal": "POLYNOTES, E?cole de Musiques Subvention de fonctionnement 2024",
       "siret": "39187280100041"
     },
     {
@@ -9556,7 +9556,7 @@
       "source_thematique": "direction",
       "montant_total": 64500.0,
       "nb_subventions": 1,
-      "objet_principal": "DAE Moulin à café, subvention annuelle fonctionnement 2024",
+      "objet_principal": "Alimentation durable",
       "siret": "48332094100022"
     },
     {
@@ -15466,7 +15466,7 @@
       "source_thematique": "default",
       "montant_total": 32500.0,
       "nb_subventions": 1,
-      "objet_principal": "Complément de financement poste Adulte-relais AR075 16 R0012 02",
+      "objet_principal": "Complément de financement poste Adulte-relais AR075 23 R0036 00",
       "siret": "42894726100023"
     },
     {
@@ -23296,7 +23296,7 @@
       "source_thematique": "llm",
       "montant_total": 16000.0,
       "nb_subventions": 1,
-      "objet_principal": "Le Parlement des Voix Nouvelles",
+      "objet_principal": "IMPACT 2024 - Parcours de femmes",
       "siret": "89203455400014"
     },
     {
@@ -34066,7 +34066,7 @@
       "source_thematique": "llm",
       "montant_total": 8000.0,
       "nb_subventions": 1,
-      "objet_principal": "Spectacle et ateliers artistiques dans l'espace public QPV 18è",
+      "objet_principal": "Spectacle ''Influence'' favorisant l'éducation à la citoyenneté à destination des habitants QPV 11è",
       "siret": "48840115900022"
     },
     {
@@ -43666,7 +43666,7 @@
       "source_thematique": "llm",
       "montant_total": 5000.0,
       "nb_subventions": 1,
-      "objet_principal": "Est-ce que j'ai ma place dans l'espace public ?",
+      "objet_principal": "Les stéréotypes de genre entretiennent-ils les inégalités filles-garçons?",
       "siret": "79888637000013"
     },
     {
@@ -48151,7 +48151,7 @@
       "source_thematique": "direction",
       "montant_total": 4000.0,
       "nb_subventions": 1,
-      "objet_principal": "L'info c'est clair",
+      "objet_principal": "Fonctionnement Asso Art'Sign 2024",
       "siret": "49008480300025"
     },
     {
@@ -55951,7 +55951,7 @@
       "source_thematique": "llm",
       "montant_total": 2000.0,
       "nb_subventions": 1,
-      "objet_principal": "FSF09",
+      "objet_principal": "FONCTIONNEMENT ANNUEL",
       "siret": "83836170700014"
     },
     {
@@ -89224,5 +89224,13 @@
       "objet_principal": null,
       "siret": null
     }
-  ]
+  ],
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
+  }
 }

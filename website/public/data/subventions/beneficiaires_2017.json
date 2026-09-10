@@ -1,6 +1,6 @@
 {
   "year": 2017,
-  "generated_at": "2026-09-10T19:28:37.256047",
+  "generated_at": "2026-09-10T19:40:09.966460",
   "total_montant": 1150092852.03,
   "nb_beneficiaires": 3220,
   "data": [
@@ -571,7 +571,7 @@
       "source_thematique": "direction",
       "montant_total": 4626000.0,
       "nb_subventions": 2,
-      "objet_principal": "acompte 2017/dac",
+      "objet_principal": "Fonctionnement/Solde de subvention 2017",
       "siret": "31390568900078"
     },
     {
@@ -5671,7 +5671,7 @@
       "source_thematique": "direction",
       "montant_total": 120000.0,
       "nb_subventions": 2,
-      "objet_principal": "Expérimentation Territoires Zéro Chômeur-Appui au démarrage de 13 Avenir, Entreprise à But d'Emploi",
+      "objet_principal": "Expérimentation Territoires Zéro Chômeur-Soutien aux investissements de 13 Avenir",
       "siret": "82852040300019"
     },
     {
@@ -12841,7 +12841,7 @@
       "source_thematique": "direction",
       "montant_total": 34000.0,
       "nb_subventions": 1,
-      "objet_principal": "ILLUMINATION 2017",
+      "objet_principal": "ILLUMATIONS",
       "siret": "53499878600014"
     },
     {
@@ -25441,7 +25441,7 @@
       "source_thematique": "llm",
       "montant_total": 9500.0,
       "nb_subventions": 1,
-      "objet_principal": "CULTURE Parole de mères",
+      "objet_principal": "CULTURE Théâtre, masques et lien social",
       "siret": "44116591700051"
     },
     {
@@ -28621,7 +28621,7 @@
       "source_thematique": "default",
       "montant_total": 7000.0,
       "nb_subventions": 1,
-      "objet_principal": "aap pvi Lien social - Atelier réalisation d'un journal",
+      "objet_principal": "Lien social - Atelier Conversation - Porte de la Chapelle",
       "siret": "50835733200024"
     },
     {
@@ -29236,7 +29236,7 @@
       "source_thematique": "llm",
       "montant_total": 6000.0,
       "nb_subventions": 1,
-      "objet_principal": "les mardis de l'outre mer",
+      "objet_principal": "semaine du film de la Caraïbe et Outre-Mer",
       "siret": "48004476700014"
     },
     {
@@ -29716,7 +29716,7 @@
       "source_thematique": "llm",
       "montant_total": 6000.0,
       "nb_subventions": 1,
-      "objet_principal": "AAP PVI. CADRE DE VIE / CULTURE ¿ Balisage désOrienté Urbain et SenSible d¿Observateurs en Libe",
+      "objet_principal": "AAP PVI. CULTURE/CADRE DE VIE : Protocole d'Interprétation Créative d'un Territoired'Agglomé",
       "siret": "53798494000016"
     },
     {
@@ -34096,7 +34096,7 @@
       "source_thematique": "direction",
       "montant_total": 4000.0,
       "nb_subventions": 1,
-      "objet_principal": "amendement bloche",
+      "objet_principal": "bloche complémentaire m18",
       "siret": "83121146100015"
     },
     {
@@ -48304,5 +48304,13 @@
       "objet_principal": null,
       "siret": null
     }
-  ]
+  ],
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
+  }
 }

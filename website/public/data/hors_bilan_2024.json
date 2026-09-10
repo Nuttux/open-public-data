@@ -1,6 +1,6 @@
 {
   "year": 2024,
-  "generated_at": "2026-09-10T17:18:20.967901+00:00",
+  "generated_at": "2026-09-10T17:39:41.314892+00:00",
   "totals": {
     "capital_restant": 12280381570,
     "montant_initial": 15446260487,
@@ -3699,11 +3699,11 @@
       ],
       "financement": {
         "base_logement": 4254392736,
-        "capital_rattache": 1208577634,
+        "capital_rattache": 1213674049,
         "capital_portefeuille": 1423997719,
-        "capital_non_rattache": 1621817383,
-        "part_rattachee": 0.2840775897347327,
-        "n_programmes": 461
+        "capital_non_rattache": 1616720968,
+        "part_rattachee": 0.2852755080551111,
+        "n_programmes": 463
       }
     },
     {
@@ -4422,11 +4422,11 @@
       ],
       "financement": {
         "base_logement": 1676360468,
-        "capital_rattache": 600171533,
+        "capital_rattache": 601597973,
         "capital_portefeuille": 197781589,
-        "capital_non_rattache": 878407346,
-        "part_rattachee": 0.3580205714930581,
-        "n_programmes": 711
+        "capital_non_rattache": 876980906,
+        "part_rattachee": 0.358871486291414,
+        "n_programmes": 712
       }
     },
     {
@@ -5820,7 +5820,7 @@
         "capital_portefeuille": 47782095,
         "capital_non_rattache": 72079685,
         "part_rattachee": 0.2790854015875161,
-        "n_programmes": 37
+        "n_programmes": 38
       }
     },
     {
@@ -6810,10 +6810,10 @@
           "annee_mobilisation": 2024,
           "montant_initial": 2495907,
           "capital_restant": 2495907,
-          "duree_residuelle": 41.58,
+          "duree_residuelle": 81.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 4.1101,
+          "taux_actuariel": 3.62,
           "programme": {
             "adresse": "18, AVENUE DE LA PORTE DE LA VILLETTE",
             "nb_logements": 112,
@@ -6827,10 +6827,10 @@
           "annee_mobilisation": 2024,
           "montant_initial": 2495907,
           "capital_restant": 2495907,
-          "duree_residuelle": 81.58,
+          "duree_residuelle": 41.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 3.62,
+          "taux_actuariel": 4.1101,
           "programme": {
             "adresse": "18, AVENUE DE LA PORTE DE LA VILLETTE",
             "nb_logements": 112,
@@ -8040,7 +8040,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8103,7 +8103,7 @@
             "adresse": "56, RUE RENE BOULANGER",
             "nb_logements": 12,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8132,7 +8132,7 @@
             "adresse": "54, RUE D'ABOUKIR",
             "nb_logements": 43,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8161,7 +8161,7 @@
             "adresse": "21 RUE BREGUET",
             "nb_logements": 47,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8190,7 +8190,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8207,7 +8207,7 @@
             "adresse": "62-64, RUE PLANCHAT",
             "nb_logements": 36,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8236,7 +8236,7 @@
             "adresse": "116 RUE DE JAVEL",
             "nb_logements": 55,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8265,7 +8265,7 @@
             "adresse": "21 RUE BREGUET",
             "nb_logements": 47,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8282,7 +8282,7 @@
             "adresse": "23, RUE D'ALLERAY",
             "nb_logements": 1,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8311,7 +8311,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8352,7 +8352,7 @@
             "adresse": "12-14 PASSAGE RAGUINOT",
             "nb_logements": 32,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -9186,7 +9186,7 @@
         "capital_portefeuille": 0,
         "capital_non_rattache": 46821303,
         "part_rattachee": 0.44493507336782506,
-        "n_programmes": 16
+        "n_programmes": 17
       }
     },
     {
@@ -9395,5 +9395,13 @@
     "url": "https://opendata.paris.fr/explore/dataset/dette-garantie/",
     "license": "ODbL",
     "note": "Une ligne = un emprunt garanti par la Ville de Paris. Le capital restant dû au 31/12 représente l'engagement hors bilan : Paris rembourse à la place du bénéficiaire uniquement en cas de défaut. Majoritairement des emprunts de bailleurs sociaux auprès de la CDC, donc un risque jugé faible par les agences de notation."
+  },
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
 }

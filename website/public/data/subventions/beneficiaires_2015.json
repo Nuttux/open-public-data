@@ -1,6 +1,6 @@
 {
   "year": 2015,
-  "generated_at": "2026-09-10T19:28:42.454182",
+  "generated_at": "2026-09-10T19:40:14.644409",
   "total_montant": 1149891407.56,
   "nb_beneficiaires": 3464,
   "data": [
@@ -18346,7 +18346,7 @@
       "source_thematique": "default",
       "montant_total": 19500.0,
       "nb_subventions": 1,
-      "objet_principal": "Quartier en En Ebull Ation",
+      "objet_principal": "Citoyenneté, laïcité et valeurs de la République.\"Rire et réfléchir, une voie pour prévenir\"",
       "siret": "44415455300028"
     },
     {
@@ -36991,7 +36991,7 @@
       "source_thematique": "default",
       "montant_total": 4000.0,
       "nb_subventions": 1,
-      "objet_principal": "Projet de la Déambulle, Bibliothèque itinérante dans le sud du 13éme-juillet 2015",
+      "objet_principal": "Projet Déambulle bibliothèque itinérante dans le quartier de la Fontaine au roi-75011-Aout 2015",
       "siret": "50031626000024"
     },
     {
@@ -44251,7 +44251,7 @@
       "source_thematique": "default",
       "montant_total": 2000.0,
       "nb_subventions": 1,
-      "objet_principal": "LE THÉÂTRE AU SERVICE DES ENFANTS",
+      "objet_principal": "ACTION CULTURELLE ET LINGUISTIQUE A DESTINATION DES MIGRANT_ES",
       "siret": "45002852700031"
     },
     {
@@ -51964,5 +51964,13 @@
       "objet_principal": null,
       "siret": null
     }
-  ]
+  ],
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
+  }
 }

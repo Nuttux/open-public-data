@@ -1,6 +1,6 @@
 {
   "year": 2016,
-  "generated_at": "2026-09-10T19:28:39.958485",
+  "generated_at": "2026-09-10T19:40:12.025364",
   "total_montant": 1260982793.3899999,
   "nb_beneficiaires": 3215,
   "data": [
@@ -1591,7 +1591,7 @@
       "source_thematique": "direction",
       "montant_total": 1014000.0,
       "nb_subventions": 1,
-      "objet_principal": "fonctionnement 2016 - Délibération 216 DAC 242",
+      "objet_principal": "Acompte 2016 - Délibération 2015 DAC 603",
       "siret": "32590961200047"
     },
     {
@@ -1754,7 +1754,7 @@
       "thematique": "Social - Solidarité",
       "sous_categorie": "Hébergement et insertion des personnes en difficulté",
       "source_thematique": "llm",
-      "montant_total": 900141.6499999999,
+      "montant_total": 900141.65,
       "nb_subventions": 7,
       "objet_principal": null,
       "siret": null
@@ -8371,7 +8371,7 @@
       "source_thematique": "direction",
       "montant_total": 67500.0,
       "nb_subventions": 1,
-      "objet_principal": "PRINTEMPS DES RUES 2016 - Acompte 2016",
+      "objet_principal": "PRINTEMPS DES RUES 2016 - Solde 2016",
       "siret": "41778123400048"
     },
     {
@@ -48229,5 +48229,13 @@
       "objet_principal": null,
       "siret": null
     }
-  ]
+  ],
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
+  }
 }

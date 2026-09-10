@@ -1,6 +1,6 @@
 {
   "year": 2018,
-  "generated_at": "2026-09-10T19:28:34.600518",
+  "generated_at": "2026-09-10T19:40:07.233752",
   "total_montant": 1241346409.0,
   "nb_beneficiaires": 9863,
   "data": [
@@ -661,7 +661,7 @@
       "source_thematique": "direction",
       "montant_total": 4603000.0,
       "nb_subventions": 2,
-      "objet_principal": "Subvention de fonctionnement (complément de prix) 2018",
+      "objet_principal": "acompte 2018-dac",
       "siret": "31390568900078"
     },
     {
@@ -1531,7 +1531,7 @@
       "source_thematique": "direction",
       "montant_total": 1035695.0,
       "nb_subventions": 2,
-      "objet_principal": "acompte 2018",
+      "objet_principal": "FONCTIONNEMENT",
       "siret": "82349520500010"
     },
     {
@@ -1636,7 +1636,7 @@
       "source_thematique": "direction",
       "montant_total": 990000.0,
       "nb_subventions": 1,
-      "objet_principal": "subvention de fonctionnement",
+      "objet_principal": "acompte 2018-dac",
       "siret": "37978422600043"
     },
     {
@@ -2866,7 +2866,7 @@
       "source_thematique": "direction",
       "montant_total": 394500.0,
       "nb_subventions": 2,
-      "objet_principal": "subvention de fonctionnement de l'étoile du nord , incluant \"L'art pour grandir\"",
+      "objet_principal": "acompte 2018",
       "siret": "32618492600011"
     },
     {
@@ -4201,7 +4201,7 @@
       "source_thematique": "direction",
       "montant_total": 188000.0,
       "nb_subventions": 2,
-      "objet_principal": "acompte 2018 - DAC",
+      "objet_principal": "Demande de subvention de fonctionnement pour l'année 2017-2018",
       "siret": "49396355700027"
     },
     {
@@ -6481,7 +6481,7 @@
       "source_thematique": "direction",
       "montant_total": 102500.0,
       "nb_subventions": 2,
-      "objet_principal": "DEVELOPPEUSE CERTIFIEE SALESFORCE",
+      "objet_principal": "WOMEN CODING ACADEMY",
       "siret": "53914519300022"
     },
     {
@@ -8476,7 +8476,7 @@
       "source_thematique": "direction",
       "montant_total": 75000.0,
       "nb_subventions": 1,
-      "objet_principal": "Polynotes, Ecole de musique associative : fonctionnement et développement de l'activité",
+      "objet_principal": "acompte 2018 - DAC",
       "siret": "39187280100041"
     },
     {
@@ -21526,7 +21526,7 @@
       "source_thematique": "direction",
       "montant_total": 14000.0,
       "nb_subventions": 1,
-      "objet_principal": "PARIS ILLUMINE PARIS 2018-2019",
+      "objet_principal": "PARIS ILLUMINE PARIS 2017-2018",
       "siret": "75010539700020"
     },
     {
@@ -23506,7 +23506,7 @@
       "source_thematique": "llm",
       "montant_total": 11000.0,
       "nb_subventions": 1,
-      "objet_principal": "CPO PDV - COMPAGNIE VARSORIO, Paroles de femmes - CULTURE",
+      "objet_principal": "CPO PDV - COMPAGNIE VARSORIO, Théâtre masques et lien social -CULTURE",
       "siret": "44116591700051"
     },
     {
@@ -25366,7 +25366,7 @@
       "source_thematique": "direction",
       "montant_total": 10000.0,
       "nb_subventions": 1,
-      "objet_principal": "PARIS ILLUMINE PARIS 2018-2019",
+      "objet_principal": "PARIS ILLUMINE PARIS 2017-2018",
       "siret": "75028270900013"
     },
     {
@@ -36181,7 +36181,7 @@
       "source_thematique": "llm",
       "montant_total": 4000.0,
       "nb_subventions": 1,
-      "objet_principal": "LIEN SOCIAL - Village Borrégo",
+      "objet_principal": "Fonds du Maire du 20e arrondissement",
       "siret": "53280222000022"
     },
     {
@@ -44146,7 +44146,7 @@
       "source_thematique": "llm",
       "montant_total": 2000.0,
       "nb_subventions": 1,
-      "objet_principal": "LIEN SOCIAL + Notre grande petite histoire",
+      "objet_principal": "CULTURE + Ateliers et parcours artistiques dans le quartier des Fougères-Le Vau - Épisode 2",
       "siret": "43901252700016"
     },
     {
@@ -147949,5 +147949,13 @@
       "objet_principal": null,
       "siret": null
     }
-  ]
+  ],
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
+  }
 }

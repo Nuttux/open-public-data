@@ -1,6 +1,6 @@
 {
   "year": 2016,
-  "generated_at": "2026-09-10T17:18:02.981583+00:00",
+  "generated_at": "2026-09-10T17:39:18.720271+00:00",
   "totals": {
     "capital_restant": 9220787642,
     "montant_initial": 11163114946,
@@ -3688,7 +3688,7 @@
         "capital_portefeuille": 899476486,
         "capital_non_rattache": 569541506,
         "part_rattachee": 0.12522522339158385,
-        "n_programmes": 461
+        "n_programmes": 463
       }
     },
     {
@@ -4417,11 +4417,11 @@
       ],
       "financement": {
         "base_logement": 380759043,
-        "capital_rattache": 163304178,
+        "capital_rattache": 164230896,
         "capital_portefeuille": 31255449,
-        "capital_non_rattache": 186199417,
-        "part_rattachee": 0.4288911339467057,
-        "n_programmes": 711
+        "capital_non_rattache": 185272699,
+        "part_rattachee": 0.4313250033874658,
+        "n_programmes": 712
       }
     },
     {
@@ -5651,7 +5651,7 @@
         "capital_portefeuille": 34157887,
         "capital_non_rattache": 41374652,
         "part_rattachee": 0.3186626932930468,
-        "n_programmes": 43
+        "n_programmes": 44
       }
     },
     {
@@ -8017,7 +8017,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8034,20 +8034,8 @@
             "adresse": "21 RUE BREGUET",
             "nb_logements": 47,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
-        },
-        {
-          "objet": "101 à 105 bd Brune - 75014",
-          "preteur": "CDC",
-          "annee_mobilisation": 2016,
-          "montant_initial": 1860000,
-          "capital_restant": 1860000,
-          "duree_residuelle": 9.83,
-          "taux_type": "V",
-          "taux_index": "LIVRET A",
-          "taux_actuariel": 1.58,
-          "programme": null
         },
         {
           "objet": "101 à 105 bd Brune - 75014",
@@ -8059,6 +8047,18 @@
           "taux_type": "V",
           "taux_index": "LIVRET A",
           "taux_actuariel": 1.35,
+          "programme": null
+        },
+        {
+          "objet": "101 à 105 bd Brune - 75014",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "montant_initial": 1860000,
+          "capital_restant": 1860000,
+          "duree_residuelle": 9.83,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.58,
           "programme": null
         },
         {
@@ -8087,7 +8087,7 @@
             "adresse": "21 RUE BREGUET",
             "nb_logements": 47,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8104,7 +8104,7 @@
             "adresse": "56, RUE RENE BOULANGER",
             "nb_logements": 12,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8121,7 +8121,7 @@
             "adresse": "54, RUE D'ABOUKIR",
             "nb_logements": 43,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8138,7 +8138,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8155,7 +8155,7 @@
             "adresse": "62-64, RUE PLANCHAT",
             "nb_logements": 36,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8172,7 +8172,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8189,7 +8189,7 @@
             "adresse": "12-14 PASSAGE RAGUINOT",
             "nb_logements": 32,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8218,7 +8218,7 @@
             "adresse": "33-35, AVENUE JEAN JAURES",
             "nb_logements": 17,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8235,7 +8235,7 @@
             "adresse": "62-64, RUE PLANCHAT",
             "nb_logements": 36,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8252,7 +8252,7 @@
             "adresse": "12-14 PASSAGE RAGUINOT",
             "nb_logements": 32,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8293,7 +8293,7 @@
             "adresse": "90, RUE SAINT DENIS",
             "nb_logements": 14,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8310,7 +8310,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8327,7 +8327,7 @@
             "adresse": "38, RUE VIGNON",
             "nb_logements": 14,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8344,7 +8344,7 @@
             "adresse": "69-71, BD PONIATOWSKI",
             "nb_logements": 23,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8373,7 +8373,7 @@
             "adresse": "57 AVENUE DE SAINT OUEN",
             "nb_logements": 12,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8390,7 +8390,7 @@
             "adresse": "230 RUE DE CHARENTON",
             "nb_logements": 27,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         }
       ],
@@ -8841,5 +8841,13 @@
     "url": "https://opendata.paris.fr/explore/dataset/dette-garantie/",
     "license": "ODbL",
     "note": "Une ligne = un emprunt garanti par la Ville de Paris. Le capital restant dû au 31/12 représente l'engagement hors bilan : Paris rembourse à la place du bénéficiaire uniquement en cas de défaut. Majoritairement des emprunts de bailleurs sociaux auprès de la CDC, donc un risque jugé faible par les agences de notation."
+  },
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
 }

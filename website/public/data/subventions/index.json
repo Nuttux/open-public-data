@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T19:28:14.411820",
+  "generated_at": "2026-09-10T19:39:48.919146",
   "source": "dbt marts (mart_subventions_treemap, mart_subventions_beneficiaires)",
   "availableYears": [
     2024,
@@ -133,5 +133,13 @@
       "DLH",
       "DFA"
     ]
+  },
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T19:29:21.633118",
+  "generated_at": "2026-09-10T19:40:42.995595",
   "source": "dbt marts (mart_subventions_beneficiaires)",
   "note_perimetre": "Tous les bénéficiaires (long tail complet, aucun cap).",
   "years": [
@@ -238,7 +238,7 @@
         },
         {
           "label": "Logement",
-          "montant": 224488856.35000002,
+          "montant": 224488856.35,
           "count": 35
         },
         {
@@ -2432,5 +2432,13 @@
         }
       ]
     }
-  ]
+  ],
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
+  }
 }

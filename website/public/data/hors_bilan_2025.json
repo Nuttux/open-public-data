@@ -1,6 +1,6 @@
 {
   "year": 2025,
-  "generated_at": "2026-09-10T17:18:23.255377+00:00",
+  "generated_at": "2026-09-10T17:39:43.804881+00:00",
   "totals": {
     "capital_restant": 12971193434,
     "montant_initial": 16260706975,
@@ -3698,7 +3698,7 @@
         "capital_portefeuille": 1363127937,
         "capital_non_rattache": 1234370730,
         "part_rattachee": 0.262928765441936,
-        "n_programmes": 461
+        "n_programmes": 463
       }
     },
     {
@@ -4412,11 +4412,11 @@
       ],
       "financement": {
         "base_logement": 1465380788,
-        "capital_rattache": 524016084,
+        "capital_rattache": 525343667,
         "capital_portefeuille": 177197069,
-        "capital_non_rattache": 764167635,
-        "part_rattachee": 0.35759721172661596,
-        "n_programmes": 711
+        "capital_non_rattache": 762840052,
+        "part_rattachee": 0.3585031762452695,
+        "n_programmes": 712
       }
     },
     {
@@ -6103,7 +6103,7 @@
         "capital_portefeuille": 45773160,
         "capital_non_rattache": 67927500,
         "part_rattachee": 0.27750211840916134,
-        "n_programmes": 37
+        "n_programmes": 38
       }
     },
     {
@@ -7867,7 +7867,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7942,7 +7942,7 @@
             "adresse": "56, RUE RENE BOULANGER",
             "nb_logements": 12,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -7971,7 +7971,7 @@
             "adresse": "54, RUE D'ABOUKIR",
             "nb_logements": 43,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8024,7 +8024,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8041,7 +8041,7 @@
             "adresse": "62-64, RUE PLANCHAT",
             "nb_logements": 36,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8142,7 +8142,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -9020,7 +9020,7 @@
         "capital_portefeuille": 0,
         "capital_non_rattache": 43101909,
         "part_rattachee": 0.46129713113788223,
-        "n_programmes": 16
+        "n_programmes": 17
       }
     },
     {
@@ -9264,5 +9264,13 @@
     "url": "https://opendata.paris.fr/explore/dataset/dette-garantie/",
     "license": "ODbL",
     "note": "Une ligne = un emprunt garanti par la Ville de Paris. Le capital restant dû au 31/12 représente l'engagement hors bilan : Paris rembourse à la place du bénéficiaire uniquement en cas de défaut. Majoritairement des emprunts de bailleurs sociaux auprès de la CDC, donc un risque jugé faible par les agences de notation."
+  },
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
 }

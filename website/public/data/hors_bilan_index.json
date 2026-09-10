@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T17:18:23.262104+00:00",
+  "generated_at": "2026-09-10T17:39:43.811323+00:00",
   "source": "opendata.paris.fr · dette-garantie",
   "description": "Garanties d'emprunt accordées par la Ville de Paris (engagements hors bilan).",
   "availableYears": [
@@ -23,5 +23,13 @@
     2008,
     2007
   ],
-  "latestYear": 2025
+  "latestYear": 2025,
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
+  }
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T19:13:14.061182",
+  "generated_at": "2026-09-10T19:38:54.522980",
   "source": "dbt core (core_bilan_comptable)",
   "description": "Bilan comptable de la Ville de Paris - État patrimonial Actif/Passif",
   "availableYears": [
@@ -46,5 +46,13 @@
       "actif_net": 28049545134.83,
       "passif_net": 28050486255.51
     }
+  },
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
 }
