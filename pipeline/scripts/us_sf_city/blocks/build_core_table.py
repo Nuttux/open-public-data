@@ -97,6 +97,9 @@ def source_url(r) -> str:
     BookReader leaf, and without the map that link can be a page or two off, so
     it is built only where it is exact.
     """
+    own = (r.get("_url") or "").strip()
+    if own.startswith("http") and "legistar" in own.lower():
+        return own
     v = r["_v"] or ""
     if v.startswith(SFBOS_NS):
         stem = v[len(SFBOS_NS):]
@@ -144,6 +147,10 @@ def stg_rows():
                 "text": text,
                 "_src": src,
                 "_v": r.get("v"), "_n": r.get("n"),
+                # The Legistar sweep records the document's own address. The
+                # stem-built sfbos.org URL is right for the Clerk's own PDFs
+                # and a 404 for a Legistar meeting, so carry what the sweep saw.
+                "_url": r.get("url") or "",
                 "_amounts": [a for a in (r.get("m") or []) if a],
                 "_has_street": bool(r.get("r")),
             }

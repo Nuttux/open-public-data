@@ -1,31 +1,31 @@
 {
- "rows": 159180,
+ "rows": 160757,
  "generated_at": "",
  "years": [
   1906,
   2026
  ],
- "read": 159180,
- "decisions": 130930,
- "decisions_with_topic": 130930,
+ "read": 160757,
+ "decisions": 132162,
+ "decisions_with_topic": 132162,
  "decisions_without_topic": 0,
- "download_bytes": 29192272,
+ "download_bytes": 29425751,
  "record_type": [
   [
    "decision",
-   130930
+   132162
   ],
   [
    "vote-outcome-only",
-   21853
+   22133
   ],
   [
    "public-comment",
-   1728
+   1733
   ],
   [
    "cut-in-half",
-   1298
+   1358
   ],
   [
    "departmental-work",
@@ -47,69 +47,69 @@
  "topic_decisions": [
   [
    "The street",
-   27933
+   27967
   ],
   [
    "Land and building",
-   26757
+   27024
   ],
   [
    "Public money",
-   21624
+   21929
   ],
   [
    "Running the city",
-   17630
+   17968
   ],
   [
    "Doing business",
-   14926
+   14950
   ],
   [
    "What the city runs",
-   10345
+   10514
   ],
   [
    "Getting around",
-   7812
+   7815
   ],
   [
    "Civic life",
-   3903
+   3995
   ]
  ],
  "action": [
   [
    "ordered",
-   35036
+   35201
   ],
   [
    "voted-or-scheduled",
-   26912
+   27347
   ],
   [
    "granted",
-   23892
+   23950
   ],
   [
    "amended",
-   18370
+   18817
   ],
   [
    "accepted",
-   15558
+   15654
   ],
   [
    "other",
-   15379
+   15492
   ],
   [
    "appropriated",
-   8618
+   8667
   ],
   [
    "settled",
-   6205
+   6291
   ],
   [
    "paid",
@@ -121,37 +121,37 @@
   ],
   [
    "appointed",
-   1774
+   1833
   ],
   [
    "commended",
-   1705
+   1774
   ]
  ],
  "how_we_know_where": [
   [
    "no place given",
-   64065
+   65297
   ],
   [
    "street only",
-   39696
+   39758
   ],
   [
    "street corner",
-   24525
+   24539
   ],
   [
    "street address",
-   18451
+   18553
   ],
   [
    "between two streets",
-   7862
+   7871
   ],
   [
    "names its own block",
-   4581
+   4739
   ]
  ],
  "classified_by": [
@@ -165,7 +165,7 @@
   ],
   [
    "title",
-   18306
+   19883
   ],
   [
    "purpose-clause",
@@ -235,7 +235,7 @@
   ],
   [
    2020,
-   19911
+   21143
   ]
  ],
  "decisions_with_topic_by_decade": [
@@ -289,7 +289,7 @@
   ],
   [
    2020,
-   19911
+   21143
   ]
  ]
 }

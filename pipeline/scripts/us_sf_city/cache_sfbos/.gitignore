@@ -12,3 +12,10 @@ items.jsonl
 items_all.jsonl
 items_all.meta.json
 film_pool.jsonl
+
+# The Legistar extraction, same reasoning: derived from the PDFs above and
+# reproducible with `fetch_legistar_minutes.py --fetch --extract-all`. The
+# MEETING LIST (legistar.json) is a measurement of what the Clerk published,
+# so that one stays versioned.
+items_legistar.jsonl
+items_all_legistar.jsonl

@@ -163,6 +163,28 @@ def main() -> None:
     # worse than its absence.
     placed_keys = set(by_key)
     unplaced = 0
+
+    # ── AND IT KEEPS ITS SUBJECT CHIP TOO ──────────────────────────────────
+    # `cs`/`ca` are indices into `classify.json`, which is how a surface names
+    # a decision's subject and what the Board did with it. build_index fills
+    # them for the placed half from the frozen seed; the unplaced half was
+    # written -1/-1 and so carried no subject at all — 517 of 2026's decisions
+    # among them. The seed classifies BOTH halves and this table publishes the
+    # result in `subtopic`/`action`, so the lookup is a label match against the
+    # same two lists build_index wrote. `action_other_is_dropped` is that
+    # file's own rule and is honoured here: "other" is not one of the eleven.
+    _cls = json.loads((BLK / "classify.json").read_text())
+    _tax = json.loads((ROOT / "pipeline/seeds/sf_bos_taxonomy.json").read_text())
+    _sub_label = {s["slug"]: s["label"] for t in _tax["topics"] for s in t["subtopics"]}
+    _act_label = {a["slug"]: a["label"] for a in _tax["actions"]}
+    _sub_ix = {lab: i for i, lab in enumerate(_cls["sub"])}
+    _act_ix = {lab: i for i, lab in enumerate(_cls["act"])}
+
+    def _chip(rec):
+        cs = _sub_ix.get(_sub_label.get((rec.get("subtopic") or "").strip(), ""), -1)
+        ca = _act_ix.get(_act_label.get((rec.get("action") or "").strip(), ""), -1)
+        return cs, ca
+
     core = ROOT / "website/public/data/us/sf/city/records/sf_bos_records.csv.gz"
     if core.exists():
         import csv as _csv, gzip as _gzip
@@ -216,10 +238,11 @@ def main() -> None:
                     TH.subject_span(rec.get("text") or "",
                                     (rec.get("heading") or "").strip() or None),
                     THEMES)
+                _cs, _ca = _chip(rec)
                 by_key[key] = {
                     "y": int(y), "m": _mask, "k": rec.get("kind") or "",
                     "a": 0, "u": key[1], "t": key[2],
-                    "cs": -1, "ca": -1, "g": "", "pl": line, "p": [],
+                    "cs": _cs, "ca": _ca, "g": "", "pl": line, "p": [],
                     "iv": int(rec["importance"]) if (rec.get("importance") or "").strip().isdigit() else -1,
                 }
                 unplaced += 1
