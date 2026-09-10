@@ -6170,7 +6170,7 @@ const fr: Record<string, string> = {
   'fx.lieu.hero.verse': 'versés par la Ville pour ce lieu depuis {y}',
   'fx.lieu.hero.verse_one': 'versés par la Ville pour ce lieu en {y}',
   'fx.lieu.years.axe': 'Les deux séries sont dessinées sur le même axe, de {a} à {b} ; en pointillé, les exercices que la Ville ne publie pas pour cette ligne.',
-  'fx.lieu.avant_seuil': 'S\u2019y ajoutent {m} de {l} entre {a} et {b}, qui ne sont pas dans le chiffre ci-dessus : la Ville publie l\u2019investissement d\u00e8s 2009 mais les subventions seulement \u00e0 partir de {s}, et un total qui m\u00e9lange les deux ne veut rien dire.',
+  'fx.lieu.avant_seuil': 'S\u2019y ajoutent {m} de {l} entre {a} et {b}, qui ne sont pas dans le chiffre ci-dessus : la Ville publie l\u2019investissement d\u00e8s 2009 mais les subventions seulement \u00e0 partir de {s}.',
   'fx.lieu.hero.engage': 'commandés à des entreprises pour ce lieu — plafond des contrats, pas la dépense',
   'fx.lieu.h.argent': 'Ce que la Ville finance ici',
   'fx.lieu.line.exploitant': 'faire tourner {k}',
