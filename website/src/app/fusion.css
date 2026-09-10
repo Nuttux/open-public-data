@@ -19335,7 +19335,7 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-v3-line .q { font-family: var(--f-mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-top: 6px; white-space: nowrap; }
 .theme-fusion .fx-v3-line .s { grid-column: 1; font-size: 13.5px; color: var(--muted); line-height: 1.45; }
 .theme-fusion .fx-v3-line .s a { color: var(--bleu); }
-.theme-fusion .fx-v3-line .bar { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) 44px; gap: 10px; align-items: center; margin: 8px 0 4px; }
+.theme-fusion .fx-v3-line .bar { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 560px) 44px; gap: 10px; align-items: center; margin: 8px 0 4px; }
 .theme-fusion .fx-v3-line .bar .track { height: 4px; background: #ecedf0; }
 .theme-fusion .fx-v3-line .bar span { display: block; height: 4px; background: var(--bleu); }
 .theme-fusion .fx-v3-line .bar.w span { background: var(--ocre); }
@@ -19343,8 +19343,14 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 /* Fiche lieu — sous chaque ligne d'argent, ses années : une barre par
  * exercice publié, dans la couleur de la ligne (bleu = faire tourner,
  * ocre = travaux). Deux sources, deux couvertures, jamais empilées. */
-.theme-fusion .fx-v3-years { grid-column: 1 / -1; display: flex; align-items: flex-end; gap: 3px; height: 42px; margin: 10px 0 18px; }
-.theme-fusion .fx-v3-years > div { flex: 1 1 0; max-width: 28px; position: relative; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; }
+/* Le graphe des années et la barre de part appartiennent à la MÊME ligne
+ * d'argent : ils doivent avoir la même largeur, sinon la ligne se lit comme
+ * deux objets inachevés. Mesuré le 2026-09-10 : les barres remplissaient 430 px
+ * quand la part en occupait 710. On fixe une largeur commune, à laquelle les
+ * barres s'étirent quelle que soit leur nombre — sept exercices ou quatorze. */
+.theme-fusion .fx-v3-ligne-w { max-width: 560px; }
+.theme-fusion .fx-v3-years { grid-column: 1 / -1; display: flex; align-items: flex-end; gap: 4px; height: 46px; margin: 12px 0 20px; max-width: 560px; }
+.theme-fusion .fx-v3-years > div { flex: 1 1 0; position: relative; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; }
 .theme-fusion .fx-v3-years i { display: block; width: 100%; background: var(--bleu); }
 .theme-fusion .fx-v3-years.w i { background: var(--ocre); }
 .theme-fusion .fx-v3-years .yr { position: absolute; top: 100%; left: 0; margin-top: 4px; font-family: var(--f-mono); font-size: 9.5px; color: var(--muted); white-space: nowrap; }
