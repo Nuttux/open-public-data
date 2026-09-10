@@ -135,14 +135,18 @@ const nextConfig: NextConfig = {
        `blocks/street/**` is excluded from every `/us/**` function below, and
        an exclude beats an include. It fetches them from our own origin
        instead (`lib/us/sf-city-pages.ts` §THE STREET'S OWN ROWS). */
-    '/us/city/sf/the-city/neighbourhood/[slug]': [
+    /* NO `[slug]` IN THESE TWO KEYS. Keys are globs, and `[slug]` is a
+       character class — it matches one letter out of {s,l,u,g}, never the
+       literal segment. A prefix matches the route the way `'/us/city/sf/
+       the-city'` above matches this one, because matching is `contains`. */
+    '/us/city/sf/the-city/neighbourhood': [
       './public/data/us/sf/city/blocks/hood/**',
       './public/data/us/sf/city/blocks/hood-facts.json',
       './public/data/us/sf/city/blocks/street-index.json',
       './public/data/us/sf/city/blocks/subjects.json',
       './public/data/us/sf/city/blocks/shards.json',
     ],
-    '/us/city/sf/the-city/street/[slug]': [
+    '/us/city/sf/the-city/street': [
       './public/data/us/sf/city/blocks/street-index.json',
       './public/data/us/sf/city/blocks/subjects.json',
       './public/data/us/sf/city/blocks/shards.json',

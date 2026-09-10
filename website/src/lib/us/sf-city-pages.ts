@@ -27,9 +27,57 @@ import {
 import { compactMoney, fileStem, statusRank, statusWord } from "@/components/us/city/record-line";
 
 const DIR = path.join(process.cwd(), "public/data/us/sf/city/blocks");
+const URL_BASE = "/data/us/sf/city/blocks";
 
 function readJson<T>(rel: string): T {
   return JSON.parse(readFileSync(path.join(DIR, rel), "utf8")) as T;
+}
+
+/**
+ * ── EVERY FILE THIS PAGE OPENS, AND THE TWO WAYS TO GET IT ──────────────
+ *
+ * These pages render at request time, and a function carries only the files
+ * `next.config.ts` names for its route. That config's `'/'` exclude strips
+ * public/data/us/sf/city/** from EVERY route, so a missing include is a
+ * 500 on the live site — which is exactly what shipped (2026-09-10), and the
+ * page fell over on the first file it opened.
+ *
+ * The includes are there now. This is the second line: what is not on disk
+ * is fetched from our own origin, where every one of these files is a
+ * public static asset — the same answer the block share card gives to the
+ * same problem. A page renders on either path, and the only difference is
+ * one HTTP request per file per lambda.
+ *
+ * Cached by path for the life of the lambda: a promise, so ten concurrent
+ * renders of ten streets share one read of the index rather than ten.
+ */
+const cache = new Map<string, Promise<unknown>>();
+
+async function readData<T>(rel: string): Promise<T | null> {
+  const hit = cache.get(rel);
+  if (hit) return hit as Promise<T | null>;
+  const p = (async (): Promise<T | null> => {
+    try {
+      return readJson<T>(rel);
+    } catch {
+      /* not in this bundle — over HTTP, below */
+    }
+    try {
+      const h = await headers();
+      const host = h.get("x-forwarded-host") ?? h.get("host");
+      if (!host) return null;
+      const proto =
+        h.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
+      const r = await fetch(`${proto}://${host}${URL_BASE}/${rel}`, {
+        next: { revalidate: 86400 },
+      });
+      return r.ok ? ((await r.json()) as T) : null;
+    } catch {
+      return null;
+    }
+  })();
+  cache.set(rel, p);
+  return p;
 }
 
 interface StreetIndexFile {
@@ -48,59 +96,15 @@ interface HoodFacts {
 }
 
 /**
- * ── ONE FILE PER QUESTION, AND NEVER A FILE THIS ROUTE DOES NOT ASK ─────
- *
- * Each of these is read at most once per lambda and cached in module scope.
- * They are separate rather than one `base()` because a route carries only
- * the files it opens (`next.config.ts` §outputFileTracingIncludes) and a
- * street page has no use for the 2.2 MB of neighbourhood records.
+ * Read once, on demand: a street page has no use for the 2.2 MB of
+ * neighbourhood records, and a route carries only what it opens.
  */
-function once<T>(read: () => T): () => T {
-  let v: T | undefined;
-  return () => (v === undefined ? (v = read()) : v);
-}
-
-const streetIndex = once(() => readJson<StreetIndexFile>("street-index.json"));
-const subjectsFile = once(() => readJson<SubjectsFile>("subjects.json"));
-const hoodFacts = once(() => readJson<HoodFacts>("hood-facts.json"));
-const streetCap = once(
-  () => readJson<{ street_cap?: number }>("shards.json").street_cap ?? 0,
-);
-
-/**
- * ── THE STREET'S OWN ROWS, WHICH THIS FUNCTION MAY NOT CARRY ────────────
- *
- * `public/data/us/sf/city/blocks/street/**` is excluded from every `/us/**`
- * function bundle (`next.config.ts`): 21 MB of per-street records that the
- * BROWSER fetches as it needs them, and that no server route opened until
- * this page existed. An `outputFileTracingIncludes` entry cannot bring them
- * back — excludes are applied after includes and always win.
- *
- * So the file is read from disk where it is there (dev, and the build), and
- * fetched from our own origin where it is not — the same answer the block
- * share card gives to the same problem (`lib/og/us-sf-cards.tsx`). The page
- * is edge-cached for a day, so this is one request per street per deploy.
- */
-async function streetRows(file: string): Promise<BlockDecision[] | null> {
-  try {
-    return readJson<BlockDecision[]>(`street/${file}.json`);
-  } catch {
-    /* not in this bundle — over HTTP, below */
-  }
-  try {
-    const h = await headers();
-    const host = h.get("x-forwarded-host") ?? h.get("host");
-    if (!host) return null;
-    const proto = h.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
-    const r = await fetch(
-      `${proto}://${host}/data/us/sf/city/blocks/street/${file}.json`,
-      { next: { revalidate: 86400 } },
-    );
-    return r.ok ? ((await r.json()) as BlockDecision[]) : null;
-  } catch {
-    return null;
-  }
-}
+const streetIndex = () => readData<StreetIndexFile>("street-index.json");
+const subjectsFile = () => readData<SubjectsFile>("subjects.json");
+const hoodFacts = () => readData<HoodFacts>("hood-facts.json");
+const streetCap = async () =>
+  (await readData<{ street_cap?: number }>("shards.json"))?.street_cap ?? 0;
+const streetRows = (file: string) => readData<BlockDecision[]>(`street/${file}.json`);
 
 const MONTHS = [
   "January", "February", "March", "April", "May", "June",
@@ -176,9 +180,11 @@ function faceOf(rows: readonly BlockDecision[]): PageRow | null {
 }
 
 /** subjects by the row's own mask — the same bits `threadsIn` reads */
-function subjectsOf(rows: readonly BlockDecision[], top = 6): PageSubject[] {
+async function subjectsOf(rows: readonly BlockDecision[], top = 6): Promise<PageSubject[]> {
+  const file = await subjectsFile();
+  if (!file) return [];
   const out: PageSubject[] = [];
-  for (const s of subjectsFile().s) {
+  for (const s of file.s) {
     let n = 0;
     for (const r of rows) {
       const sm = r.sm;
@@ -219,26 +225,28 @@ function busiestOf(decades: readonly PageDecade[], n: number): number | null {
 
 export function listHoodPages(): { slug: string; name: string; n: number }[] {
   /* hood-facts names every neighbourhood and its count — the 41 record files
-     are opened only by the page that renders one */
-  return hoodFacts().hoods.map((h) => ({
+     are opened only by the page that renders one. Synchronous on purpose:
+     its callers are `generateStaticParams` and the sitemap, both of which
+     read from disk, and the sitemap swallows a throw into a missing family
+     rather than a broken page. */
+  return readJson<HoodFacts>("hood-facts.json").hoods.map((h) => ({
     slug: hoodSlug(h.name),
     name: h.name,
     n: h.record.n,
   }));
 }
 
-export function hoodPage(slug: string): CityPage | null {
-  const facts = hoodFacts();
-  const at = facts.hoods.find((x) => hoodSlug(x.name) === slug);
+export async function hoodPage(slug: string): Promise<CityPage | null> {
+  const facts = await hoodFacts();
+  const at = facts?.hoods.find((x) => hoodSlug(x.name) === slug);
   if (!at) return null;
-  let h: HoodRecords;
-  try {
-    h = readJson<HoodRecords>(`hood/${at.i}.json`);
-  } catch {
-    return null;
-  }
-  const streets = streetIndex();
-  const cap = streetCap();
+  const h = await readData<HoodRecords>(`hood/${at.i}.json`);
+  if (!h) return null;
+  /* the chips and their counts are the one part of this page that degrades:
+     without the index a street cannot be offered with an honest number, so
+     it is not offered */
+  const streets = (await streetIndex()) ?? { n: {} as Record<string, number> };
+  const cap = await streetCap();
   const rec = at.record;
   const rows = h.decades.flatMap((d) => d.rows);
   const decades: PageDecade[] = h.decades
@@ -290,14 +298,15 @@ export function hoodPage(slug: string): CityPage | null {
 /* ── STREETS ─────────────────────────────────────────────────────────────── */
 
 export function listStreetPages(): { slug: string; file: string; n: number }[] {
-  return Object.entries(streetIndex().n)
+  return Object.entries(readJson<StreetIndexFile>("street-index.json").n)
     .filter(([, n]) => n > 0)
     .map(([file, n]) => ({ slug: streetSlug(file), file, n }));
 }
 
 export async function streetPage(slug: string): Promise<CityPage | null> {
-  const streets = streetIndex();
-  const cap = streetCap();
+  const streets = await streetIndex();
+  if (!streets) return null;
+  const cap = await streetCap();
   const file = Object.keys(streets.n).find((f) => streetSlug(f) === slug);
   if (!file) return null;
   const rows = await streetRows(file);
@@ -326,7 +335,7 @@ export async function streetPage(slug: string): Promise<CityPage | null> {
     y1: Math.max(...ys),
     busiest: busiestOf(decades, rows.length),
     decades,
-    subjects: subjectsOf(rows),
+    subjects: await subjectsOf(rows),
     streets: [],
     notable: notableOf(rows),
     mapHref: block

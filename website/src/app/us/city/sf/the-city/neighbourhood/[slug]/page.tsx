@@ -18,7 +18,7 @@ export function generateStaticParams(): Params[] {
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { slug } = await params;
-  const page = hoodPage(slug);
+  const page = await hoodPage(slug);
   if (!page) return { title: { absolute: "Neighbourhood not found" }, robots: { index: false } };
   return answerMetadata(cityPageAnswer(page), `${PREFIX}/${slug}`, "en", {
     openGraph: { type: "article", locale: "en_US" },
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
 
 export default async function SfHoodPage({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
-  const page = hoodPage(slug);
+  const page = await hoodPage(slug);
   if (!page) return notFound();
   const a = cityPageAnswer(page);
   return (
