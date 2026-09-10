@@ -2,22 +2,22 @@
   "year": 2022,
   "source": "Fusion PDF + BigQuery",
   "methodology": "PDF Investissements Localisés + Gros projets BQ (>500k€, localisables)",
-  "generated_at": "2026-02-06T01:14:39.049265",
+  "generated_at": "2026-09-10T19:08:59.964507",
   "stats": {
     "pdf_projets": 446,
     "pdf_total": 143575901.0,
-    "bq_added": 13,
-    "bq_added_total": 41284304.14,
-    "total_projets": 459,
-    "total_montant": 184860205.14,
-    "geo_rate": 95.6,
-    "precise_geo_rate": 7.2,
+    "bq_added": 19,
+    "bq_added_total": 52018859.32,
+    "total_projets": 465,
+    "total_montant": 195594760.32,
+    "geo_rate": 95.7,
+    "precise_geo_rate": 7.1,
     "geo_breakdown": {
       "lieu_connu": 22,
       "api_numero": 11,
       "api_rue": 120,
-      "api_lieu": 25,
-      "centroid": 261,
+      "api_lieu": 23,
+      "centroid": 269,
       "none": 20
     }
   },
@@ -53,10 +53,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.865437,
-      "lon": 2.333694,
+      "lat": 48.865459,
+      "lon": 2.333679,
       "geo_source": "api_rue",
-      "geo_score": 0.9641090909090907,
+      "geo_score": 0.9640018181818182,
       "geo_label": "Rue d'Argenteuil 75001 Paris"
     },
     {
@@ -73,10 +73,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.886065,
+      "lat": 48.886158,
       "lon": 2.354211,
       "geo_source": "api_rue",
-      "geo_score": 0.6981772727272727,
+      "geo_score": 0.69811,
       "geo_label": "Rue Saint-Luc 75018 Paris"
     },
     {
@@ -127,10 +127,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.868305,
-      "lon": 2.337286,
+      "lat": 48.868294,
+      "lon": 2.337199,
       "geo_source": "api_rue",
-      "geo_score": 0.960110909090909,
+      "geo_score": 0.9599781818181817,
       "geo_label": "Rue de Louvois 75002 Paris"
     },
     {
@@ -147,11 +147,8 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "lat": 48.855145,
-      "lon": 2.365351,
-      "geo_label": "Place des Vosges 75004 Paris"
+      "geo_source": "none",
+      "geo_score": 0
     },
     {
       "id": "2022_00_9_007",
@@ -184,10 +181,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.864203,
-      "lon": 2.359196,
+      "lat": 48.863651,
+      "lon": 2.358599,
       "geo_source": "api_rue",
-      "geo_score": 0.9737218181818181,
+      "geo_score": 0.9736390909090907,
       "geo_label": "Rue du Temple 75003 Paris"
     },
     {
@@ -204,10 +201,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.865286,
-      "lon": 2.35642,
+      "lat": 48.865362,
+      "lon": 2.356659,
       "geo_source": "api_rue",
-      "geo_score": 0.749718851674641,
+      "geo_score": 0.7496361244019139,
       "geo_label": "Rue Réaumur 75003 Paris"
     },
     {
@@ -224,10 +221,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.863899,
-      "lon": 2.335212,
+      "lat": 48.863916,
+      "lon": 2.335126,
       "geo_source": "api_rue",
-      "geo_score": 0.9560927272727271,
+      "geo_score": 0.9559854545454546,
       "geo_label": "Place André Malraux 75001 Paris"
     },
     {
@@ -244,10 +241,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.857973,
-      "lon": 2.353007,
+      "lat": 48.857935,
+      "lon": 2.353061,
       "geo_source": "api_rue",
-      "geo_score": 0.9705099999999999,
+      "geo_score": 0.9703945454545454,
       "geo_label": "Rue de la Verrerie 75004 Paris"
     },
     {
@@ -264,10 +261,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
+      "lat": 48.861176,
+      "lon": 2.353619,
       "geo_source": "api_rue",
-      "geo_score": 0.967111818181818,
-      "lat": 48.861424,
-      "lon": 2.352985,
+      "geo_score": 0.9670281818181817,
       "geo_label": "Rue Rambuteau 75003 Paris"
     },
     {
@@ -284,10 +281,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.855291,
-      "lon": 2.355324,
+      "lat": 48.855388,
+      "lon": 2.355384,
       "geo_source": "api_rue",
-      "geo_score": 0.9646990909090909,
+      "geo_score": 0.9645836363636363,
       "geo_label": "Rue des Barres 75004 Paris"
     },
     {
@@ -304,10 +301,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.859295,
-      "lon": 2.356498,
+      "lat": 48.859207,
+      "lon": 2.356372,
       "geo_source": "api_rue",
-      "geo_score": 0.9680518181818181,
+      "geo_score": 0.9679363636363635,
       "geo_label": "Rue des Blancs Manteaux 75004 Paris"
     },
     {
@@ -392,10 +389,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "geo_source": "lieu_connu",
-      "geo_score": 1.0,
       "lat": 48.8547,
       "lon": 2.3542,
+      "geo_source": "lieu_connu",
+      "geo_score": 1.0,
       "geo_label": "Place Saint-Gervais"
     },
     {
@@ -429,10 +426,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.851404,
-      "lon": 2.367303,
+      "lat": 48.850065,
+      "lon": 2.366729,
       "geo_source": "api_rue",
-      "geo_score": 0.9661090909090909,
+      "geo_score": 0.9659936363636362,
       "geo_label": "Boulevard Bourdon 75004 Paris"
     },
     {
@@ -466,10 +463,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.865737,
-      "lon": 2.332438,
+      "lat": 48.865681,
+      "lon": 2.332449,
       "geo_source": "api_rue",
-      "geo_score": 0.9659081818181818,
+      "geo_score": 0.965800909090909,
       "geo_label": "Rue Saint-Roch 75001 Paris"
     },
     {
@@ -537,10 +534,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.857289,
-      "lon": 2.367318,
+      "lat": 48.857346,
+      "lon": 2.367332,
       "geo_source": "api_lieu",
-      "geo_score": 0.6955109090909091,
+      "geo_score": 0.6954281818181818,
       "geo_label": "Rue des Tournelles 75003 Paris"
     },
     {
@@ -659,10 +656,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.842233,
-      "lon": 2.360277,
+      "lat": 48.842214,
+      "lon": 2.360209,
       "geo_source": "api_lieu",
-      "geo_score": 0.5909328739002933,
+      "geo_score": 0.5908783284457477,
       "geo_label": "Rue Buffon 75005 Paris"
     },
     {
@@ -679,10 +676,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.847791,
-      "lon": 2.342404,
+      "lat": 48.847746,
+      "lon": 2.342356,
       "geo_source": "api_rue",
-      "geo_score": 0.9660963636363635,
+      "geo_score": 0.9660418181818181,
       "geo_label": "Rue Victor Cousin 75005 Paris"
     },
     {
@@ -739,10 +736,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.84466,
-      "lon": 2.351027,
+      "lat": 48.844663,
+      "lon": 2.351036,
       "geo_source": "api_rue",
-      "geo_score": 0.9678372727272727,
+      "geo_score": 0.9677827272727273,
       "geo_label": "Rue Rollin 75005 Paris"
     },
     {
@@ -779,10 +776,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.84024,
-      "lon": 2.352747,
+      "lat": 48.840403,
+      "lon": 2.353175,
       "geo_source": "api_rue",
-      "geo_score": 0.9715690909090909,
+      "geo_score": 0.9715145454545453,
       "geo_label": "Rue Censier 75005 Paris"
     },
     {
@@ -799,10 +796,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.841585,
-      "lon": 2.348949,
+      "lat": 48.841566,
+      "lon": 2.34908,
       "geo_source": "api_rue",
-      "geo_score": 0.967170909090909,
+      "geo_score": 0.9671163636363636,
       "geo_label": "Rue Jean Calvin 75005 Paris"
     },
     {
@@ -839,10 +836,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.838569,
-      "lon": 2.356785,
+      "lat": 48.838624,
+      "lon": 2.356958,
       "geo_source": "api_rue",
-      "geo_score": 0.9716590909090908,
+      "geo_score": 0.9716045454545453,
       "geo_label": "Boulevard Saint-Marcel 75005 Paris"
     },
     {
@@ -859,10 +856,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.837937,
-      "lon": 2.345009,
+      "lat": 48.838097,
+      "lon": 2.344768,
       "geo_source": "api_rue",
-      "geo_score": 0.7365404278074866,
+      "geo_score": 0.7364849732620321,
       "geo_label": "Boulevard de Port-Royal 75005 Paris"
     },
     {
@@ -919,11 +916,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.850829,
-      "lon": 2.346865,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "Rue Domat 75005 Paris"
+      "lat": 48.845,
+      "lon": 2.3497,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 5"
     },
     {
       "id": "2022_05_12_014",
@@ -939,10 +936,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.849506,
-      "lon": 2.351722,
+      "lat": 48.849576,
+      "lon": 2.351754,
       "geo_source": "api_rue",
-      "geo_score": 0.9690936363636363,
+      "geo_score": 0.9690381818181817,
       "geo_label": "Rue de Pontoise 75005 Paris"
     },
     {
@@ -999,10 +996,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.840056,
-      "lon": 2.34806,
+      "lat": 48.840062,
+      "lon": 2.348162,
       "geo_source": "api_lieu",
-      "geo_score": 0.5982809090909091,
+      "geo_score": 0.5982254545454546,
       "geo_label": "Rue de l'Arbalète 75005 Paris"
     },
     {
@@ -1062,7 +1059,7 @@
       "lat": 48.852665,
       "lon": 2.340008,
       "geo_source": "api_numero",
-      "geo_score": 0.7831931168831169,
+      "geo_score": 0.7831885714285713,
       "geo_label": "7 Rue du Jardinet 75006 Paris"
     },
     {
@@ -1099,11 +1096,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.845643,
-      "lon": 2.323773,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "6 Rue Littré 75006 Paris"
+      "lat": 48.8492,
+      "lon": 2.3337,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 6"
     },
     {
       "id": "2022_06_15_005",
@@ -1162,7 +1159,7 @@
       "lat": 48.848942,
       "lon": 2.331604,
       "geo_source": "api_numero",
-      "geo_score": 0.9723981818181818,
+      "geo_score": 0.9724481818181817,
       "geo_label": "42 Rue Madame 75006 Paris"
     },
     {
@@ -1179,11 +1176,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.84777,
-      "lon": 2.321023,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "Square Saint-Romain 75006 Paris"
+      "lat": 48.8492,
+      "lon": 2.3337,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 6"
     },
     {
       "id": "2022_06_15_009",
@@ -1199,10 +1196,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.855797,
-      "lon": 2.335458,
+      "lat": 48.855786,
+      "lon": 2.335602,
       "geo_source": "api_rue",
-      "geo_score": 0.9674590909090909,
+      "geo_score": 0.9674545454545455,
       "geo_label": "Rue Visconti 75006 Paris"
     },
     {
@@ -1239,10 +1236,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.847973,
-      "lon": 2.330338,
+      "lat": 48.847488,
+      "lon": 2.329531,
       "geo_source": "api_lieu",
-      "geo_score": 0.5480693006993007,
+      "geo_score": 0.5481311188811189,
       "geo_label": "Rue de Vaugirard 75006 Paris"
     },
     {
@@ -1259,10 +1256,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.852041,
-      "lon": 2.33523,
+      "lat": 48.851975,
+      "lon": 2.335242,
       "geo_source": "api_rue",
-      "geo_score": 0.9649154545454545,
+      "geo_score": 0.9649109090909089,
       "geo_label": "Rue Mabillon 75006 Paris"
     },
     {
@@ -1279,10 +1276,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.848878,
-      "lon": 2.32856,
+      "lat": 48.848741,
+      "lon": 2.328502,
       "geo_source": "api_rue",
-      "geo_score": 0.9742963636363635,
+      "geo_score": 0.974290909090909,
       "geo_label": "Rue de Rennes 75006 Paris"
     },
     {
@@ -1319,10 +1316,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.854869,
-      "lon": 2.333096,
+      "lat": 48.854815,
+      "lon": 2.333011,
       "geo_source": "api_rue",
-      "geo_score": 0.6637278787878786,
+      "geo_score": 0.6637233333333332,
       "geo_label": "Rue Saint-Benoît 75006 Paris"
     },
     {
@@ -1339,10 +1336,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.846753,
-      "lon": 2.328271,
+      "lat": 48.846738,
+      "lon": 2.328212,
       "geo_source": "api_rue",
-      "geo_score": 0.9729154545454544,
+      "geo_score": 0.9729590909090908,
       "geo_label": "Boulevard Raspail 75006 Paris"
     },
     {
@@ -1359,11 +1356,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.851382,
-      "lon": 2.336213,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "Rue Saint-Sulpice 75006 Paris"
+      "lat": 48.8492,
+      "lon": 2.3337,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 6"
     },
     {
       "id": "2022_06_15_018",
@@ -1379,11 +1376,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.850276,
-      "lon": 2.335768,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "Rue Garancière 75006 Paris"
+      "lat": 48.8492,
+      "lon": 2.3337,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 6"
     },
     {
       "id": "2022_06_15_019",
@@ -1439,11 +1436,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.851382,
-      "lon": 2.336213,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "Rue Saint-Sulpice 75006 Paris"
+      "lat": 48.8492,
+      "lon": 2.3337,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 6"
     },
     {
       "id": "2022_06_15_022",
@@ -1619,10 +1616,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.857608,
-      "lon": 2.317057,
+      "lat": 48.856278,
+      "lon": 2.317069,
       "geo_source": "api_rue",
-      "geo_score": 0.977480909090909,
+      "geo_score": 0.9774636363636363,
       "geo_label": "Rue de Grenelle 75007 Paris"
     },
     {
@@ -1639,10 +1636,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.857337,
-      "lon": 2.306104,
+      "lat": 48.857224,
+      "lon": 2.306193,
       "geo_source": "api_lieu",
-      "geo_score": 0.49743909090909083,
+      "geo_score": 0.49742181818181813,
       "geo_label": "Rue Cler 75007 Paris"
     },
     {
@@ -1659,10 +1656,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.853794,
-      "lon": 2.326134,
+      "lat": 48.853747,
+      "lon": 2.326163,
       "geo_source": "api_rue",
-      "geo_score": 0.9699909090909091,
+      "geo_score": 0.9699736363636364,
       "geo_label": "Boulevard Raspail 75007 Paris"
     },
     {
@@ -1679,10 +1676,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.853665,
-      "lon": 2.297252,
+      "lat": 48.852316,
+      "lon": 2.299485,
       "geo_source": "api_rue",
-      "geo_score": 0.9724227272727273,
+      "geo_score": 0.9724054545454546,
       "geo_label": "Avenue de Suffren 75007 Paris"
     },
     {
@@ -1699,10 +1696,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.86086,
-      "lon": 2.315226,
+      "lat": 48.859727,
+      "lon": 2.314879,
       "geo_source": "api_rue",
-      "geo_score": 0.9776481818181817,
+      "geo_score": 0.9776518181818181,
       "geo_label": "Rue de l'Université 75007 Paris"
     },
     {
@@ -1779,11 +1776,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.879003,
-      "lon": 2.323384,
+      "lat": 48.879008,
+      "lon": 2.323341,
       "geo_source": "api_lieu",
-      "geo_score": 0.3578991978609625,
-      "geo_label": "Place de l' Europe-Simone Veil 75008 Paris"
+      "geo_score": 0.3578864705882353,
+      "geo_label": "Place de l'Europe - Simone Veil 75008 Paris"
     },
     {
       "id": "2022_08_21_001",
@@ -1799,11 +1796,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.873389,
-      "lon": 2.320196,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "3 Rue Roquépine 75008 Paris"
+      "lat": 48.8744,
+      "lon": 2.3117,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 8"
     },
     {
       "id": "2022_08_21_002",
@@ -1939,10 +1936,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.871185,
-      "lon": 2.307958,
+      "lat": 48.871239,
+      "lon": 2.307826,
       "geo_source": "api_rue",
-      "geo_score": 0.9709572727272726,
+      "geo_score": 0.9709436363636363,
       "geo_label": "Rue de Ponthieu 75008 Paris"
     },
     {
@@ -1979,10 +1976,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.876683,
-      "lon": 2.317287,
+      "lat": 48.876644,
+      "lon": 2.317174,
       "geo_source": "api_rue",
-      "geo_score": 0.9700881818181817,
+      "geo_score": 0.9700754545454545,
       "geo_label": "Rue de la Bienfaisance 75008 Paris"
     },
     {
@@ -1999,10 +1996,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.867113,
-      "lon": 2.321119,
+      "lat": 48.867063,
+      "lon": 2.321554,
       "geo_source": "api_rue",
-      "geo_score": 0.9605563636363634,
+      "geo_score": 0.9605436363636363,
       "geo_label": "Place de la Concorde 75008 Paris"
     },
     {
@@ -2019,11 +2016,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.871483,
-      "lon": 2.320508,
+      "lat": 48.871522,
+      "lon": 2.32044,
       "geo_source": "api_rue",
-      "geo_score": 0.9676045454545453,
-      "geo_label": "Rue de la Ville l'Evêque 75008 Paris"
+      "geo_score": 0.967590909090909,
+      "geo_label": "Rue de la Ville l'Évêque 75008 Paris"
     },
     {
       "id": "2022_08_21_013",
@@ -2039,10 +2036,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.867247,
-      "lon": 2.323968,
+      "lat": 48.867273,
+      "lon": 2.323988,
       "geo_source": "api_rue",
-      "geo_score": 0.9621772727272726,
+      "geo_score": 0.9621645454545454,
       "geo_label": "Rue Saint-Florentin 75008 Paris"
     },
     {
@@ -2059,10 +2056,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.871522,
-      "lon": 2.323261,
+      "lat": 48.871478,
+      "lon": 2.32335,
       "geo_source": "api_rue",
-      "geo_score": 0.9648490909090909,
+      "geo_score": 0.9648363636363636,
       "geo_label": "Rue Chauveau-Lagarde 75008 Paris"
     },
     {
@@ -2079,11 +2076,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.870062,
-      "lon": 2.324455,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "Place de la Madeleine 75008 Paris"
+      "lat": 48.8744,
+      "lon": 2.3117,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 8"
     },
     {
       "id": "2022_08_21_016",
@@ -2119,10 +2116,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.877975,
-      "lon": 2.311423,
+      "lat": 48.877918,
+      "lon": 2.311222,
       "geo_source": "api_lieu",
-      "geo_score": 0.4929127272727272,
+      "geo_score": 0.4929,
       "geo_label": "Rue de Monceau 75008 Paris"
     },
     {
@@ -2179,10 +2176,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.877975,
-      "lon": 2.311423,
+      "lat": 48.877918,
+      "lon": 2.311222,
       "geo_source": "api_rue",
-      "geo_score": 0.9724581818181818,
+      "geo_score": 0.9724454545454545,
       "geo_label": "Rue de Monceau 75008 Paris"
     },
     {
@@ -2239,10 +2236,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.87575,
-      "lon": 2.318465,
+      "lat": 48.87578,
+      "lon": 2.318171,
       "geo_source": "api_rue",
-      "geo_score": 0.9731590909090909,
+      "geo_score": 0.9731454545454544,
       "geo_label": "Boulevard Malesherbes 75008 Paris"
     },
     {
@@ -2299,10 +2296,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.87565,
-      "lon": 2.341962,
+      "lat": 48.875655,
+      "lon": 2.341939,
       "geo_source": "api_rue",
-      "geo_score": 0.7752490909090908,
+      "geo_score": 0.7751590909090909,
       "geo_label": "Rue Buffault 75009 Paris"
     },
     {
@@ -2319,10 +2316,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.87565,
-      "lon": 2.341962,
+      "lat": 48.875655,
+      "lon": 2.341939,
       "geo_source": "api_rue",
-      "geo_score": 0.7752490909090908,
+      "geo_score": 0.7751590909090909,
       "geo_label": "Rue Buffault 75009 Paris"
     },
     {
@@ -2359,10 +2356,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.879047,
-      "lon": 2.334782,
+      "lat": 48.879048,
+      "lon": 2.334847,
       "geo_source": "api_rue",
-      "geo_score": 0.6961004958677685,
+      "geo_score": 0.6960104958677685,
       "geo_label": "Rue Catherine de la Rochefoucauld 75009 Paris"
     },
     {
@@ -2399,10 +2396,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.878177,
-      "lon": 2.335931,
+      "lat": 48.878165,
+      "lon": 2.335972,
       "geo_source": "api_lieu",
-      "geo_score": 0.4214662032085561,
+      "geo_score": 0.42137620320855607,
       "geo_label": "Rue d'Aumale 75009 Paris"
     },
     {
@@ -2419,10 +2416,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.87945,
-      "lon": 2.334222,
+      "lat": 48.87943,
+      "lon": 2.334233,
       "geo_source": "api_rue",
-      "geo_score": 0.9724418181818181,
+      "geo_score": 0.9723518181818182,
       "geo_label": "Rue la Bruyère 75009 Paris"
     },
     {
@@ -2439,10 +2436,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.879948,
-      "lon": 2.344777,
+      "lat": 48.879957,
+      "lon": 2.344612,
       "geo_source": "api_rue",
-      "geo_score": 0.9736109090909091,
+      "geo_score": 0.9735199999999999,
       "geo_label": "Rue Condorcet 75009 Paris"
     },
     {
@@ -2459,11 +2456,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.879294,
-      "lon": 2.343128,
+      "lat": 48.879296,
+      "lon": 2.343007,
       "geo_source": "api_rue",
-      "geo_score": 0.4072909090909091,
-      "geo_label": "Rue Louise-Emilie de la Tour d'Auvergne 75009 Paris"
+      "geo_score": 0.40720090909090906,
+      "geo_label": "Rue Louise-Émilie de La Tour d'Auvergne 75009 Paris"
     },
     {
       "id": "2022_09_24_010",
@@ -2519,10 +2516,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.880842,
-      "lon": 2.333239,
+      "lat": 48.880866,
+      "lon": 2.333135,
       "geo_source": "api_rue",
-      "geo_score": 0.9701463636363635,
+      "geo_score": 0.9700563636363635,
       "geo_label": "Rue Chaptal 75009 Paris"
     },
     {
@@ -2739,11 +2736,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.876658,
-      "lon": 2.371425,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "Boulevard de la Villette 75010 Paris"
+      "lat": 48.876,
+      "lon": 2.3616,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 10"
     },
     {
       "id": "2022_10_27_008",
@@ -2919,11 +2916,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.875426,
-      "lon": 2.367094,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "Rue de la Grange aux Belles 75010 Paris"
+      "lat": 48.876,
+      "lon": 2.3616,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 10"
     },
     {
       "id": "2022_10_27_017",
@@ -2939,10 +2936,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.871067,
-      "lon": 2.37027,
+      "lat": 48.871085,
+      "lon": 2.37023,
       "geo_source": "api_lieu",
-      "geo_score": 0.6147168449197861,
+      "geo_score": 0.6148241176470588,
       "geo_label": "Avenue Parmentier 75010 Paris"
     },
     {
@@ -2959,10 +2956,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.880825,
-      "lon": 2.352529,
+      "lat": 48.880685,
+      "lon": 2.352421,
       "geo_source": "api_rue",
-      "geo_score": 0.9705036363636362,
+      "geo_score": 0.970610909090909,
       "geo_label": "Rue Saint-Vincent de Paul 75010 Paris"
     },
     {
@@ -2979,10 +2976,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.870946,
-      "lon": 2.35855,
+      "lat": 48.871041,
+      "lon": 2.358422,
       "geo_source": "api_rue",
-      "geo_score": 0.9755536363636363,
+      "geo_score": 0.97566,
       "geo_label": "Rue du Château d'Eau 75010 Paris"
     },
     {
@@ -2999,10 +2996,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.873227,
-      "lon": 2.360799,
+      "lat": 48.873211,
+      "lon": 2.360878,
       "geo_source": "api_rue",
-      "geo_score": 0.5856275206611571,
+      "geo_score": 0.5857338842975206,
       "geo_label": "Rue des Vinaigriers 75010 Paris"
     },
     {
@@ -3019,10 +3016,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.877221,
-      "lon": 2.368104,
+      "lat": 48.877205,
+      "lon": 2.368271,
       "geo_source": "api_rue",
-      "geo_score": 0.7663918808777429,
+      "geo_score": 0.7664991536050156,
       "geo_label": "Rue Boy-Zelenski 75010 Paris"
     },
     {
@@ -3042,7 +3039,7 @@
       "lat": 48.871275,
       "lon": 2.377435,
       "geo_source": "api_numero",
-      "geo_score": 0.9749472727272726,
+      "geo_score": 0.9748881818181817,
       "geo_label": "77 Boulevard de Belleville 75011 Paris"
     },
     {
@@ -3059,10 +3056,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.864353,
-      "lon": 2.375397,
+      "lat": 48.864171,
+      "lon": 2.375455,
       "geo_source": "api_rue",
-      "geo_score": 0.9808827272727273,
+      "geo_score": 0.9808227272727272,
       "geo_label": "Avenue Parmentier 75011 Paris"
     },
     {
@@ -3079,10 +3076,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.86066,
-      "lon": 2.383981,
+      "lat": 48.860644,
+      "lon": 2.383919,
       "geo_source": "api_rue",
-      "geo_score": 0.9717963636363635,
+      "geo_score": 0.9717372727272726,
       "geo_label": "Rue Duranti 75011 Paris"
     },
     {
@@ -3119,10 +3116,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.864353,
-      "lon": 2.375397,
+      "lat": 48.864171,
+      "lon": 2.375455,
       "geo_source": "api_rue",
-      "geo_score": 0.9808827272727273,
+      "geo_score": 0.9808227272727272,
       "geo_label": "Avenue Parmentier 75011 Paris"
     },
     {
@@ -3159,10 +3156,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.858598,
-      "lon": 2.37658,
+      "lat": 48.858471,
+      "lon": 2.37664,
       "geo_source": "api_rue",
-      "geo_score": 0.9770018181818182,
+      "geo_score": 0.9769427272727272,
       "geo_label": "Rue Popincourt 75011 Paris"
     },
     {
@@ -3179,10 +3176,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.864419,
-      "lon": 2.378024,
+      "lat": 48.86447,
+      "lon": 2.378265,
       "geo_source": "api_rue",
-      "geo_score": 0.72731,
+      "geo_score": 0.7272509090909092,
       "geo_label": "Rue Saint-Maur 75011 Paris"
     },
     {
@@ -3239,10 +3236,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.864924,
-      "lon": 2.376252,
+      "lat": 48.864841,
+      "lon": 2.376682,
       "geo_source": "api_rue",
-      "geo_score": 0.9799763636363635,
+      "geo_score": 0.9799527272727271,
       "geo_label": "Avenue de la République 75011 Paris"
     },
     {
@@ -3259,10 +3256,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.863235,
-      "lon": 2.386752,
+      "lat": 48.862914,
+      "lon": 2.386377,
       "geo_source": "api_rue",
-      "geo_score": 0.9777018181818181,
+      "geo_score": 0.9776427272727272,
       "geo_label": "Boulevard de Ménilmontant 75011 Paris"
     },
     {
@@ -3359,11 +3356,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.866076,
-      "lon": 2.382143,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "Cité Durmar 75011 Paris"
+      "lat": 48.8596,
+      "lon": 2.3794,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 11"
     },
     {
       "id": "2022_11_31_017",
@@ -3379,11 +3376,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.857217,
-      "lon": 2.383756,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "Rue Mercoeur 75011 Paris"
+      "lat": 48.8596,
+      "lon": 2.3794,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 11"
     },
     {
       "id": "2022_11_31_018",
@@ -3399,10 +3396,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.850531,
-      "lon": 2.382187,
+      "lat": 48.850899,
+      "lon": 2.380362,
       "geo_source": "api_rue",
-      "geo_score": 0.7265090909090909,
+      "geo_score": 0.72645,
       "geo_label": "Rue du Faubourg Saint-Antoine 75011 Paris"
     },
     {
@@ -3939,11 +3936,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.875942,
-      "lon": 2.293174,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "Avenue Carnot 75017 Paris"
+      "lat": 48.8391,
+      "lon": 2.3896,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 12"
     },
     {
       "id": "2022_12_34_021",
@@ -3999,10 +3996,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.837463,
-      "lon": 2.394091,
+      "lat": 48.837549,
+      "lon": 2.39431,
       "geo_source": "api_rue",
-      "geo_score": 0.9756418181818182,
+      "geo_score": 0.9755836363636363,
       "geo_label": "Rue de la Brèche aux Loups 75012 Paris"
     },
     {
@@ -4019,10 +4016,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.843444,
-      "lon": 2.384959,
+      "lat": 48.843283,
+      "lon": 2.383311,
       "geo_source": "api_rue",
-      "geo_score": 0.98488,
+      "geo_score": 0.9848218181818181,
       "geo_label": "Rue de Charenton 75012 Paris"
     },
     {
@@ -4039,10 +4036,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.843444,
-      "lon": 2.384959,
+      "lat": 48.843283,
+      "lon": 2.383311,
       "geo_source": "api_rue",
-      "geo_score": 0.98488,
+      "geo_score": 0.9848218181818181,
       "geo_label": "Rue de Charenton 75012 Paris"
     },
     {
@@ -4059,10 +4056,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.844756,
-      "lon": 2.389791,
+      "lat": 48.844758,
+      "lon": 2.389814,
       "geo_source": "api_rue",
-      "geo_score": 0.9807872727272727,
+      "geo_score": 0.9807290909090909,
       "geo_label": "Rue de Reuilly 75012 Paris"
     },
     {
@@ -4099,10 +4096,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.843379,
-      "lon": 2.37117,
+      "lat": 48.842889,
+      "lon": 2.371617,
       "geo_source": "api_rue",
-      "geo_score": 0.9761663636363634,
+      "geo_score": 0.9761090909090908,
       "geo_label": "Quai de la Rapée 75012 Paris"
     },
     {
@@ -4119,10 +4116,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.834777,
-      "lon": 2.381362,
+      "lat": 48.834227,
+      "lon": 2.382079,
       "geo_source": "api_rue",
-      "geo_score": 0.9781454545454545,
+      "geo_score": 0.9780872727272726,
       "geo_label": "Quai de Bercy 75012 Paris"
     },
     {
@@ -4139,10 +4136,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.831667,
-      "lon": 2.344214,
+      "lat": 48.831679,
+      "lon": 2.344,
       "geo_source": "api_rue",
-      "geo_score": 0.7215691849529781,
+      "geo_score": 0.7216591849529781,
       "geo_label": "Rue de la Glacière 75013 Paris"
     },
     {
@@ -4182,7 +4179,7 @@
       "lat": 48.824315,
       "lon": 2.370176,
       "geo_source": "api_numero",
-      "geo_score": 0.8327421286031043,
+      "geo_score": 0.8328730376940133,
       "geo_label": "31 Rue du Château des Rentiers 75013 Paris"
     },
     {
@@ -4259,10 +4256,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.825423,
-      "lon": 2.365313,
+      "lat": 48.825474,
+      "lon": 2.365435,
       "geo_source": "api_rue",
-      "geo_score": 0.9759227272727272,
+      "geo_score": 0.9760127272727273,
       "geo_label": "Rue du Javelot 75013 Paris"
     },
     {
@@ -4279,10 +4276,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.822678,
-      "lon": 2.364407,
+      "lat": 48.822703,
+      "lon": 2.364449,
       "geo_source": "api_rue",
-      "geo_score": 0.9749363636363636,
+      "geo_score": 0.9750254545454544,
       "geo_label": "Rue de la Pointe d'Ivry 75013 Paris"
     },
     {
@@ -4359,10 +4356,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.822594,
-      "lon": 2.360637,
+      "lat": 48.822567,
+      "lon": 2.360624,
       "geo_source": "api_rue",
-      "geo_score": 0.9759227272727272,
+      "geo_score": 0.9760127272727273,
       "geo_label": "Rue Caillaux 75013 Paris"
     },
     {
@@ -4379,10 +4376,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.835277,
-      "lon": 2.362184,
+      "lat": 48.835168,
+      "lon": 2.362437,
       "geo_source": "api_rue",
-      "geo_score": 0.97734,
+      "geo_score": 0.9774299999999999,
       "geo_label": "Rue Jenner 75013 Paris"
     },
     {
@@ -4399,11 +4396,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.827782,
-      "lon": 2.349909,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "Rue de la Butte aux Cailles 75013 Paris"
+      "lat": 48.8311,
+      "lon": 2.3592,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 13"
     },
     {
       "id": "2022_13_38_014",
@@ -4419,10 +4416,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.827026,
-      "lon": 2.380181,
+      "lat": 48.827458,
+      "lon": 2.381093,
       "geo_source": "api_rue",
-      "geo_score": 0.9740236363636363,
+      "geo_score": 0.9739418181818181,
       "geo_label": "Rue Watt 75013 Paris"
     },
     {
@@ -4439,10 +4436,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.826431,
-      "lon": 2.363728,
+      "lat": 48.82626,
+      "lon": 2.363474,
       "geo_source": "api_rue",
-      "geo_score": 0.9790181818181818,
+      "geo_score": 0.9791072727272727,
       "geo_label": "Rue Baudricourt 75013 Paris"
     },
     {
@@ -4599,11 +4596,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.835848,
-      "lon": 2.344711,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "Square Grangé 75013 Paris"
+      "lat": 48.8311,
+      "lon": 2.3592,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 13"
     },
     {
       "id": "2022_13_38_024",
@@ -4619,10 +4616,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.826521,
+      "lat": 48.826388,
       "lon": 2.350917,
       "geo_source": "api_rue",
-      "geo_score": 0.9809536363636362,
+      "geo_score": 0.9810427272727272,
       "geo_label": "Rue Bobillot 75013 Paris"
     },
     {
@@ -4779,11 +4776,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.832943,
-      "lon": 2.31409,
-      "geo_source": "api_lieu",
-      "geo_score": 0.3250654231974922,
-      "geo_label": "Rue du Moulin de la Vierge 75014 Paris"
+      "lat": 48.8339,
+      "lon": 2.3265,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 14"
     },
     {
       "id": "2022_14_41_008",
@@ -4899,11 +4896,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.830427,
-      "lon": 2.316691,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "Rue Bardinet 75014 Paris"
+      "lat": 48.8339,
+      "lon": 2.3265,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 14"
     },
     {
       "id": "2022_14_41_014",
@@ -4919,11 +4916,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.825916,
-      "lon": 2.307703,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "Avenue Marc Sangnier 75014 Paris"
+      "lat": 48.8339,
+      "lon": 2.3265,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 14"
     },
     {
       "id": "2022_14_41_015",
@@ -4939,11 +4936,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.84086,
-      "lon": 2.328611,
+      "lat": 48.834487,
+      "lon": 2.326485,
       "geo_source": "api_lieu",
-      "geo_score": 0.6541428526645767,
-      "geo_label": "Rue Huyghens 75014 Paris"
+      "geo_score": 0.4177775324675324,
+      "geo_label": "Rue Gassendi 75014 Paris"
     },
     {
       "id": "2022_14_41_016",
@@ -4979,10 +4976,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.828565,
-      "lon": 2.325004,
+      "lat": 48.829184,
+      "lon": 2.324935,
       "geo_source": "api_lieu",
-      "geo_score": 0.6100256112852664,
+      "geo_score": 0.6100065203761754,
       "geo_label": "Rue d'Alésia 75014 Paris"
     },
     {
@@ -4999,10 +4996,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.834398,
-      "lon": 2.314955,
+      "lat": 48.834356,
+      "lon": 2.31497,
       "geo_source": "api_lieu",
-      "geo_score": 0.569503354231975,
+      "geo_score": 0.5694660815047021,
       "geo_label": "Rue du Cange 75014 Paris"
     },
     {
@@ -5079,10 +5076,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.836451,
-      "lon": 2.320256,
+      "lat": 48.836421,
+      "lon": 2.320283,
       "geo_source": "api_rue",
-      "geo_score": 0.7777515415019763,
+      "geo_score": 0.7777142687747035,
       "geo_label": "Rue du Texel 75014 Paris"
     },
     {
@@ -5099,10 +5096,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.834386,
-      "lon": 2.326398,
+      "lat": 48.834487,
+      "lon": 2.326485,
       "geo_source": "api_rue",
-      "geo_score": 0.9762563636363636,
+      "geo_score": 0.9762190909090909,
       "geo_label": "Rue Gassendi 75014 Paris"
     },
     {
@@ -5139,10 +5136,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.838398,
-      "lon": 2.330927,
+      "lat": 48.838484,
+      "lon": 2.330925,
       "geo_source": "api_rue",
-      "geo_score": 0.9785781818181817,
+      "geo_score": 0.978540909090909,
       "geo_label": "Boulevard Raspail 75014 Paris"
     },
     {
@@ -5239,11 +5236,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.844112,
-      "lon": 2.324043,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "Place du Dix-Huit Juin 1940 75006 Paris"
+      "lat": 48.8339,
+      "lon": 2.3265,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 14"
     },
     {
       "id": "2022_14_41_031",
@@ -5259,10 +5256,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.834407,
-      "lon": 2.324211,
+      "lat": 48.834522,
+      "lon": 2.324126,
       "geo_source": "api_rue",
-      "geo_score": 0.9812499999999998,
+      "geo_score": 0.9812127272727272,
       "geo_label": "Avenue du Maine 75014 Paris"
     },
     {
@@ -5279,11 +5276,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.849896,
-      "lon": 2.286385,
+      "lat": 48.849714,
+      "lon": 2.28626,
       "geo_source": "api_rue",
-      "geo_score": 0.9795654545454545,
-      "geo_label": "Rue Emeriau 75015 Paris"
+      "geo_score": 0.9795845454545453,
+      "geo_label": "Rue Émeriau 75015 Paris"
     },
     {
       "id": "2022_15_45_001",
@@ -5299,10 +5296,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.837361,
-      "lon": 2.289186,
+      "lat": 48.837372,
+      "lon": 2.288846,
       "geo_source": "api_rue",
-      "geo_score": 0.9783218181818182,
+      "geo_score": 0.9783409090909091,
       "geo_label": "Rue Théodore Deck 75015 Paris"
     },
     {
@@ -5319,10 +5316,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.834938,
-      "lon": 2.307934,
+      "lat": 48.835096,
+      "lon": 2.307897,
       "geo_source": "api_rue",
-      "geo_score": 0.6968833566433567,
+      "geo_score": 0.6969024475524476,
       "geo_label": "Rue Saint-Amand 75015 Paris"
     },
     {
@@ -5339,10 +5336,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.84361,
-      "lon": 2.298207,
+      "lat": 48.843431,
+      "lon": 2.29813,
       "geo_source": "api_rue",
-      "geo_score": 0.9807927272727273,
+      "geo_score": 0.9808118181818182,
       "geo_label": "Rue Mademoiselle 75015 Paris"
     },
     {
@@ -5359,11 +5356,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.837975,
-      "lon": 2.308079,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "Rue Dutot 75015 Paris"
+      "lat": 48.8418,
+      "lon": 2.2988,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 15"
     },
     {
       "id": "2022_15_45_005",
@@ -5419,10 +5416,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.840712,
-      "lon": 2.313192,
+      "lat": 48.840208,
+      "lon": 2.31336,
       "geo_source": "api_rue",
-      "geo_score": 0.9825863636363636,
+      "geo_score": 0.9826054545454546,
       "geo_label": "Rue Falguière 75015 Paris"
     },
     {
@@ -5459,11 +5456,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.879946,
-      "lon": 2.399892,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "Rue Frédéric Mourlon 75019 Paris"
+      "lat": 48.8418,
+      "lon": 2.2988,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 15"
     },
     {
       "id": "2022_15_45_010",
@@ -5479,10 +5476,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.845352,
-      "lon": 2.319042,
+      "lat": 48.845193,
+      "lon": 2.319667,
       "geo_source": "api_lieu",
-      "geo_score": 0.523787801268499,
+      "geo_score": 0.5238068921775898,
       "geo_label": "Boulevard du Montparnasse 75015 Paris"
     },
     {
@@ -5499,10 +5496,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.832692,
-      "lon": 2.303619,
+      "lat": 48.832345,
+      "lon": 2.303482,
       "geo_source": "api_rue",
-      "geo_score": 0.9822090909090908,
+      "geo_score": 0.9822281818181818,
       "geo_label": "Rue Brancion 75015 Paris"
     },
     {
@@ -5519,10 +5516,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.842901,
-      "lon": 2.296997,
+      "lat": 48.842903,
+      "lon": 2.296821,
       "geo_source": "api_rue",
-      "geo_score": 0.9744418181818182,
+      "geo_score": 0.974460909090909,
       "geo_label": "Rue Léon Lhermitte 75015 Paris"
     },
     {
@@ -5539,10 +5536,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.850132,
-      "lon": 2.300518,
+      "lat": 48.850152,
+      "lon": 2.300539,
       "geo_source": "api_rue",
-      "geo_score": 0.8155866985645932,
+      "geo_score": 0.8156057894736842,
       "geo_label": "Rue du Général de Castelnau 75015 Paris"
     },
     {
@@ -5579,10 +5576,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.850887,
-      "lon": 2.296644,
+      "lat": 48.850824,
+      "lon": 2.29684,
       "geo_source": "api_rue",
-      "geo_score": 0.9718490909090909,
+      "geo_score": 0.9718681818181818,
       "geo_label": "Place du Cardinal Amette 75015 Paris"
     },
     {
@@ -5599,10 +5596,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.834158,
-      "lon": 2.295598,
+      "lat": 48.834163,
+      "lon": 2.295406,
       "geo_source": "api_rue",
-      "geo_score": 0.9817181818181817,
+      "geo_score": 0.9817372727272727,
       "geo_label": "Rue Olivier de Serres 75015 Paris"
     },
     {
@@ -5619,11 +5616,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.843896,
-      "lon": 2.275399,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "Quai André Citroën 75015 Paris"
+      "lat": 48.8418,
+      "lon": 2.2988,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 15"
     },
     {
       "id": "2022_15_45_018",
@@ -5639,10 +5636,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.847096,
-      "lon": 2.248455,
+      "lat": 48.846996,
+      "lon": 2.248322,
       "geo_source": "api_lieu",
-      "geo_score": 0.6520345454545454,
+      "geo_score": 0.6520245454545455,
       "geo_label": "Rue Suzanne Lenglen 75016 Paris"
     },
     {
@@ -5859,11 +5856,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.866745,
-      "lon": 2.285033,
+      "lat": 48.840591,
+      "lon": 2.260808,
       "geo_source": "api_lieu",
-      "geo_score": 0.3828989555125725,
-      "geo_label": "Rue Saint-Didier 75016 Paris"
+      "geo_score": 0.3721681818181818,
+      "geo_label": "Villa Émile Meyer 75016 Paris"
     },
     {
       "id": "2022_16_48_005",
@@ -6019,11 +6016,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.849923,
-      "lon": 2.250162,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "Route du Point du Jour à Bagatelle 75116 Paris"
+      "lat": 48.86,
+      "lon": 2.269,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 16"
     },
     {
       "id": "2022_16_48_013",
@@ -6099,10 +6096,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.843833,
-      "lon": 2.269852,
+      "lat": 48.843794,
+      "lon": 2.268663,
       "geo_source": "api_rue",
-      "geo_score": 0.9831563636363635,
+      "geo_score": 0.9831463636363635,
       "geo_label": "Avenue de Versailles 75016 Paris"
     },
     {
@@ -6139,10 +6136,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.843165,
-      "lon": 2.25667,
+      "lat": 48.841065,
+      "lon": 2.259586,
       "geo_source": "api_rue",
-      "geo_score": 0.9816827272727273,
+      "geo_score": 0.9816727272727271,
       "geo_label": "Boulevard Murat 75016 Paris"
     },
     {
@@ -6159,11 +6156,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.867824,
-      "lon": 2.295257,
+      "lat": 48.868215,
+      "lon": 2.295125,
       "geo_source": "api_rue",
-      "geo_score": 0.9783018181818182,
-      "geo_label": "Avenue d'Iéna 75016 Paris"
+      "geo_score": 0.7615086013986013,
+      "geo_label": "Avenue d'Iéna 75116 Paris"
     },
     {
       "id": "2022_16_48_020",
@@ -6222,8 +6219,8 @@
       "lat": 48.872916,
       "lon": 2.29402,
       "geo_source": "api_rue",
-      "geo_score": 0.9617081818181817,
-      "geo_label": "Place Charles de Gaulle 75016 Paris"
+      "geo_score": 0.7798799999999999,
+      "geo_label": "Place Charles de Gaulle 75116 Paris"
     },
     {
       "id": "2022_16_48_023",
@@ -6239,10 +6236,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.843165,
-      "lon": 2.25667,
+      "lat": 48.841065,
+      "lon": 2.259586,
       "geo_source": "api_rue",
-      "geo_score": 0.5341302797202797,
+      "geo_score": 0.5341202797202796,
       "geo_label": "Boulevard Murat 75016 Paris"
     },
     {
@@ -6299,11 +6296,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.861023,
-      "lon": 2.278984,
-      "geo_source": "api_lieu",
-      "geo_score": 0.5147919008264462,
-      "geo_label": "Rue Cortambert 75016 Paris"
+      "lat": 48.86,
+      "lon": 2.269,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 16"
     },
     {
       "id": "2022_17_52_000",
@@ -6319,10 +6316,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.893639,
-      "lon": 2.326502,
+      "lat": 48.893623,
+      "lon": 2.326573,
       "geo_source": "api_lieu",
-      "geo_score": 0.4919318181818182,
+      "geo_score": 0.49187545454545456,
       "geo_label": "Rue Collette 75017 Paris"
     },
     {
@@ -6339,10 +6336,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.88857,
-      "lon": 2.307588,
+      "lat": 48.888599,
+      "lon": 2.307586,
       "geo_source": "api_rue",
-      "geo_score": 0.772649090909091,
+      "geo_score": 0.7725927272727272,
       "geo_label": "Rue des Tapisseries 75017 Paris"
     },
     {
@@ -6362,7 +6359,7 @@
       "lat": 48.8865,
       "lon": 2.310897,
       "geo_source": "api_numero",
-      "geo_score": 0.98051,
+      "geo_score": 0.9804527272727271,
       "geo_label": "20 Rue Jouffroy d'Abbans 75017 Paris"
     },
     {
@@ -6399,10 +6396,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.896252,
-      "lon": 2.320469,
+      "lat": 48.896728,
+      "lon": 2.321287,
       "geo_source": "api_rue",
-      "geo_score": 0.9806181818181818,
+      "geo_score": 0.9805618181818182,
       "geo_label": "Boulevard Bessières 75017 Paris"
     },
     {
@@ -6419,11 +6416,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.896039,
-      "lon": 2.318826,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "Cité Marie 75017 Paris"
+      "lat": 48.8867,
+      "lon": 2.3102,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 17"
     },
     {
       "id": "2022_17_52_006",
@@ -6439,11 +6436,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.88851,
-      "lon": 2.306839,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "Square de Tocqueville 75017 Paris"
+      "lat": 48.8867,
+      "lon": 2.3102,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 17"
     },
     {
       "id": "2022_17_52_007",
@@ -6519,10 +6516,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.889977,
-      "lon": 2.308257,
+      "lat": 48.889919,
+      "lon": 2.308808,
       "geo_source": "api_rue",
-      "geo_score": 0.9744927272727272,
+      "geo_score": 0.9744363636363635,
       "geo_label": "Rue Christine de Pisan 75017 Paris"
     },
     {
@@ -6599,10 +6596,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.885031,
-      "lon": 2.317661,
+      "lat": 48.884552,
+      "lon": 2.31783,
       "geo_source": "api_rue",
-      "geo_score": 0.9782845454545455,
+      "geo_score": 0.9782281818181818,
       "geo_label": "Rue de Rome 75017 Paris"
     },
     {
@@ -6622,7 +6619,7 @@
       "lat": 48.884189,
       "lon": 2.321607,
       "geo_source": "api_rue",
-      "geo_score": 0.8475988563049852,
+      "geo_score": 0.8475415835777126,
       "geo_label": "Place Richard Baret 75017 Paris"
     },
     {
@@ -6659,11 +6656,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.885121,
-      "lon": 2.289222,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "Rue Claude Debussy 75017 Paris"
+      "lat": 48.8867,
+      "lon": 2.3102,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 17"
     },
     {
       "id": "2022_17_52_018",
@@ -6739,10 +6736,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.884747,
-      "lon": 2.321188,
+      "lat": 48.885026,
+      "lon": 2.320797,
       "geo_source": "api_lieu",
-      "geo_score": 0.4333758741258741,
+      "geo_score": 0.43331951048951045,
       "geo_label": "Rue des Batignolles 75017 Paris"
     },
     {
@@ -6759,10 +6756,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.884743,
-      "lon": 2.319147,
+      "lat": 48.884745,
+      "lon": 2.319157,
       "geo_source": "api_lieu",
-      "geo_score": 0.7127171428571428,
+      "geo_score": 0.7126607792207792,
       "geo_label": "Rue Boursault 75017 Paris"
     },
     {
@@ -6799,10 +6796,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.890594,
-      "lon": 2.319921,
+      "lat": 48.890105,
+      "lon": 2.319866,
       "geo_source": "api_rue",
-      "geo_score": 0.9827499999999998,
+      "geo_score": 0.9826709090909089,
       "geo_label": "Avenue de Clichy 75017 Paris"
     },
     {
@@ -6839,10 +6836,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.88581,
-      "lon": 2.32179,
+      "lat": 48.885922,
+      "lon": 2.321662,
       "geo_source": "api_rue",
-      "geo_score": 0.8070263636363637,
+      "geo_score": 0.8069700000000001,
       "geo_label": "Rue la Condamine 75017 Paris"
     },
     {
@@ -6859,10 +6856,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.892422,
-      "lon": 2.345174,
+      "lat": 48.892531,
+      "lon": 2.345143,
       "geo_source": "api_rue",
-      "geo_score": 0.9784909090909091,
+      "geo_score": 0.9784245454545455,
       "geo_label": "Rue Hermel 75018 Paris"
     },
     {
@@ -6962,7 +6959,7 @@
       "lat": 48.894455,
       "lon": 2.360465,
       "geo_source": "api_numero",
-      "geo_score": 0.9709045454545454,
+      "geo_score": 0.9708372727272726,
       "geo_label": "3 Rue Maurice Genevoix 75018 Paris"
     },
     {
@@ -7199,10 +7196,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.891067,
-      "lon": 2.331478,
+      "lat": 48.890944,
+      "lon": 2.331299,
       "geo_source": "api_rue",
-      "geo_score": 0.9747054545454544,
+      "geo_score": 0.9746390909090908,
       "geo_label": "Rue Carpeaux 75018 Paris"
     },
     {
@@ -7339,10 +7336,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.892172,
-      "lon": 2.352191,
+      "lat": 48.892895,
+      "lon": 2.352513,
       "geo_source": "api_rue",
-      "geo_score": 0.9840036363636362,
+      "geo_score": 0.9839363636363636,
       "geo_label": "Rue des Poissonniers 75018 Paris"
     },
     {
@@ -7379,10 +7376,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.894317,
-      "lon": 2.340685,
+      "lat": 48.894338,
+      "lon": 2.340825,
       "geo_source": "api_rue",
-      "geo_score": 0.9803999999999999,
+      "geo_score": 0.9803327272727271,
       "geo_label": "Rue du Ruisseau 75018 Paris"
     },
     {
@@ -7399,10 +7396,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.8993,
-      "lon": 2.340111,
+      "lat": 48.899342,
+      "lon": 2.340003,
       "geo_source": "api_rue",
-      "geo_score": 0.97746,
+      "geo_score": 0.9773936363636364,
       "geo_label": "Rue René Binet 75018 Paris"
     },
     {
@@ -7419,10 +7416,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.891948,
-      "lon": 2.342977,
+      "lat": 48.891908,
+      "lon": 2.342954,
       "geo_source": "api_rue",
-      "geo_score": 0.9723836363636363,
+      "geo_score": 0.9723172727272728,
       "geo_label": "Rue Lapeyrère 75018 Paris"
     },
     {
@@ -7439,10 +7436,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.884773,
-      "lon": 2.348329,
+      "lat": 48.884778,
+      "lon": 2.348277,
       "geo_source": "api_rue",
-      "geo_score": 0.9736909090909089,
+      "geo_score": 0.9736245454545452,
       "geo_label": "Rue de Sofia 75018 Paris"
     },
     {
@@ -7459,10 +7456,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.887933,
-      "lon": 2.327785,
+      "lat": 48.887566,
+      "lon": 2.327754,
       "geo_source": "api_rue",
-      "geo_score": 0.9768418181818181,
+      "geo_score": 0.9767754545454546,
       "geo_label": "Rue Ganneron 75018 Paris"
     },
     {
@@ -7479,10 +7476,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.886284,
-      "lon": 2.381914,
+      "lat": 48.886526,
+      "lon": 2.381566,
       "geo_source": "api_lieu",
-      "geo_score": 0.5564388770053476,
+      "geo_score": 0.5564652406417112,
       "geo_label": "Rue de Crimée 75019 Paris"
     },
     {
@@ -7499,10 +7496,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.878843,
-      "lon": 2.394716,
+      "lat": 48.878579,
+      "lon": 2.394529,
       "geo_source": "api_rue",
-      "geo_score": 0.9738690909090908,
+      "geo_score": 0.9738772727272725,
       "geo_label": "Rue Eugénie Cotton 75019 Paris"
     },
     {
@@ -7539,10 +7536,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.89265,
-      "lon": 2.383599,
+      "lat": 48.892644,
+      "lon": 2.383619,
       "geo_source": "api_rue",
-      "geo_score": 0.9743654545454544,
+      "geo_score": 0.9743736363636364,
       "geo_label": "Rue Barbanègre 75019 Paris"
     },
     {
@@ -7559,10 +7556,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.891374,
-      "lon": 2.374206,
+      "lat": 48.891451,
+      "lon": 2.374224,
       "geo_source": "api_rue",
-      "geo_score": 0.9791445454545453,
+      "geo_score": 0.9791527272727271,
       "geo_label": "Rue Archereau 75019 Paris"
     },
     {
@@ -7682,7 +7679,7 @@
       "lat": 48.876384,
       "lon": 2.395499,
       "geo_source": "api_numero",
-      "geo_score": 0.9736909090909089,
+      "geo_score": 0.9736981818181817,
       "geo_label": "8 Rue Henri Ribière 75019 Paris"
     },
     {
@@ -7699,10 +7696,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.875541,
-      "lon": 2.391897,
+      "lat": 48.875062,
+      "lon": 2.392401,
       "geo_source": "api_rue",
-      "geo_score": 0.9824036363636363,
+      "geo_score": 0.9824118181818182,
       "geo_label": "Rue de Belleville 75019 Paris"
     },
     {
@@ -7779,10 +7776,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.874555,
-      "lon": 2.378964,
+      "lat": 48.87436,
+      "lon": 2.379614,
       "geo_source": "api_rue",
-      "geo_score": 0.9796127272727272,
+      "geo_score": 0.9796209090909089,
       "geo_label": "Rue Rébeval 75019 Paris"
     },
     {
@@ -7799,10 +7796,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.886138,
-      "lon": 2.382807,
+      "lat": 48.886099,
+      "lon": 2.382839,
       "geo_source": "api_rue",
-      "geo_score": 0.9843872727272727,
+      "geo_score": 0.9843954545454544,
       "geo_label": "Avenue Jean Jaurès 75019 Paris"
     },
     {
@@ -7819,10 +7816,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.897883,
-      "lon": 2.383211,
+      "lat": 48.897712,
+      "lon": 2.383317,
       "geo_source": "api_rue",
-      "geo_score": 0.9721972727272727,
+      "geo_score": 0.9722054545454545,
       "geo_label": "Quai de la Charente 75019 Paris"
     },
     {
@@ -7839,11 +7836,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.88602,
-      "lon": 2.397029,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "Avenue de la Porte Chaumont 75019 Paris"
+      "lat": 48.884,
+      "lon": 2.382,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 19"
     },
     {
       "id": "2022_19_59_019",
@@ -7879,10 +7876,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.891871,
-      "lon": 2.369838,
+      "lat": 48.892436,
+      "lon": 2.369711,
       "geo_source": "api_rue",
-      "geo_score": 0.9825354545454544,
+      "geo_score": 0.9825436363636362,
       "geo_label": "Rue d'Aubervilliers 75019 Paris"
     },
     {
@@ -7939,8 +7936,8 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.86,
-      "lon": 2.4,
+      "lat": 48.838,
+      "lon": 2.277,
       "geo_source": "lieu_connu",
       "geo_score": 1.0,
       "geo_label": "Ancienne voie ferrée"
@@ -8039,10 +8036,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.890744,
-      "lon": 2.374435,
+      "lat": 48.890926,
+      "lon": 2.374429,
       "geo_source": "api_lieu",
-      "geo_score": 0.6428221212121212,
+      "geo_score": 0.642830303030303,
       "geo_label": "Rue Mathis 75019 Paris"
     },
     {
@@ -8079,10 +8076,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.870359,
-      "lon": 2.385413,
+      "lat": 48.870505,
+      "lon": 2.385752,
       "geo_source": "api_rue",
-      "geo_score": 0.9808981818181818,
+      "geo_score": 0.9808354545454544,
       "geo_label": "Rue des Couronnes 75020 Paris"
     },
     {
@@ -8099,10 +8096,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.859342,
-      "lon": 2.402281,
+      "lat": 48.859367,
+      "lon": 2.401662,
       "geo_source": "api_rue",
-      "geo_score": 0.9832118181818181,
+      "geo_score": 0.9831500000000001,
       "geo_label": "Rue de Bagnolet 75020 Paris"
     },
     {
@@ -8142,7 +8139,7 @@
       "lat": 48.867438,
       "lon": 2.388824,
       "geo_source": "api_numero",
-      "geo_score": 0.9806563636363635,
+      "geo_score": 0.9805945454545454,
       "geo_label": "103 Rue des Amandiers 75020 Paris"
     },
     {
@@ -8379,10 +8376,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.855664,
-      "lon": 2.401078,
+      "lat": 48.85562,
+      "lon": 2.400992,
       "geo_source": "api_rue",
-      "geo_score": 0.9705854545454545,
+      "geo_score": 0.9705236363636364,
       "geo_label": "Place de la Réunion 75020 Paris"
     },
     {
@@ -8499,10 +8496,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.85104,
-      "lon": 2.412782,
+      "lat": 48.850669,
+      "lon": 2.412791,
       "geo_source": "api_lieu",
-      "geo_score": 0.5774563636363637,
+      "geo_score": 0.5773945454545454,
       "geo_label": "Rue Maryse Hilsz 75020 Paris"
     },
     {
@@ -8519,10 +8516,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.867502,
-      "lon": 2.402791,
+      "lat": 48.867481,
+      "lon": 2.402799,
       "geo_source": "api_lieu",
-      "geo_score": 0.6688972140762462,
+      "geo_score": 0.668834486803519,
       "geo_label": "Rue Bretonneau 75020 Paris"
     },
     {
@@ -8539,10 +8536,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.868576,
-      "lon": 2.411021,
+      "lat": 48.868725,
+      "lon": 2.410991,
       "geo_source": "api_lieu",
-      "geo_score": 0.6426103030303031,
+      "geo_score": 0.6425475757575758,
       "geo_label": "Rue Le Vau 75020 Paris"
     },
     {
@@ -8599,10 +8596,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.866463,
-      "lon": 2.406687,
+      "lat": 48.866639,
+      "lon": 2.406843,
       "geo_source": "api_rue",
-      "geo_score": 0.978050909090909,
+      "geo_score": 0.9779881818181818,
       "geo_label": "Rue du Capitaine Ferber 75020 Paris"
     },
     {
@@ -8619,10 +8616,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.866901,
-      "lon": 2.391549,
+      "lat": 48.866808,
+      "lon": 2.391571,
       "geo_source": "api_rue",
-      "geo_score": 0.976791818181818,
+      "geo_score": 0.9767290909090909,
       "geo_label": "Rue Sorbier 75020 Paris"
     },
     {
@@ -8639,10 +8636,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.876659,
-      "lon": 2.407975,
+      "lat": 48.876664,
+      "lon": 2.407971,
       "geo_source": "api_rue",
-      "geo_score": 0.730250303030303,
+      "geo_score": 0.7301884848484848,
       "geo_label": "Rue Charles Cros 75020 Paris"
     },
     {
@@ -8659,10 +8656,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.868957,
-      "lon": 2.391318,
+      "lat": 48.868898,
+      "lon": 2.390846,
       "geo_source": "api_rue",
-      "geo_score": 0.98302,
+      "geo_score": 0.9829572727272726,
       "geo_label": "Rue de Ménilmontant 75020 Paris"
     },
     {
@@ -8679,10 +8676,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.870029,
-      "lon": 2.4042,
+      "lat": 48.869918,
+      "lon": 2.404397,
       "geo_source": "api_rue",
-      "geo_score": 0.9773372727272726,
+      "geo_score": 0.9772754545454544,
       "geo_label": "Rue du Groupe Manouchian 75020 Paris"
     },
     {
@@ -8702,7 +8699,7 @@
       "lat": 48.873411,
       "lon": 2.399106,
       "geo_source": "api_numero",
-      "geo_score": 0.977250909090909,
+      "geo_score": 0.9771890909090908,
       "geo_label": "29 Rue du Télégraphe 75020 Paris"
     },
     {
@@ -8742,7 +8739,7 @@
       "lat": 48.854122,
       "lon": 2.410241,
       "geo_source": "api_numero",
-      "geo_score": 0.6553824340175953,
+      "geo_score": 0.6553197067448681,
       "geo_label": "75 Boulevard Davout 75020 Paris"
     },
     {
@@ -8799,10 +8796,10 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.855831,
-      "lon": 2.410039,
+      "lat": 48.855545,
+      "lon": 2.410207,
       "geo_source": "api_rue",
-      "geo_score": 0.9838281818181818,
+      "geo_score": 0.9837654545454544,
       "geo_label": "Boulevard Davout 75020 Paris"
     },
     {
@@ -8822,7 +8819,7 @@
       "lat": 48.866961,
       "lon": 2.405494,
       "geo_source": "api_numero",
-      "geo_score": 0.977250909090909,
+      "geo_score": 0.9771890909090908,
       "geo_label": "12 Rue du Capitaine Marchal 75020 Paris"
     },
     {
@@ -8859,11 +8856,11 @@
       "source_pdf": "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf",
       "date_extraction": "2026-02-06",
       "source": "PDF",
-      "lat": 48.860953,
-      "lon": 2.411034,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "Rue Louis Lumière 75020 Paris"
+      "lat": 48.8639,
+      "lon": 2.3985,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 20"
     },
     {
       "id": "2022_20_62_040",
@@ -8898,8 +8895,7 @@
       "lon": 2.3936,
       "geo_source": "lieu_connu",
       "geo_score": 1.0,
-      "geo_label": "221 avenue Jean Jaurès",
-      "id": "2022_gen_dd1bcb2c"
+      "geo_label": "221 avenue Jean Jaurès"
     },
     {
       "nom_projet": "THEATRE DE LA VILLE - RENOVATION",
@@ -8914,8 +8910,7 @@
       "lon": 2.3472,
       "geo_source": "lieu_connu",
       "geo_score": 1.0,
-      "geo_label": "2 place du Châtelet",
-      "id": "2022_gen_9d45860f"
+      "geo_label": "2 place du Châtelet"
     },
     {
       "nom_projet": "GPRU ST BLAISE - EE DU CLOS - RECONSTRUC",
@@ -8930,8 +8925,7 @@
       "lon": 2.4087,
       "geo_source": "lieu_connu",
       "geo_score": 1.0,
-      "geo_label": "Rue Saint-Blaise",
-      "id": "2022_gen_d029bca6"
+      "geo_label": "Rue Saint-Blaise"
     },
     {
       "nom_projet": "GPRU - GS BAUDRICOURT 13e",
@@ -8942,28 +8936,56 @@
       "thematique": "autre",
       "type_ap": "grands_projets",
       "confidence": 0.9,
-      "lat": 48.826431,
-      "lon": 2.363728,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "Rue Baudricourt 75013 Paris",
-      "id": "2022_gen_a2a83160"
+      "lat": 48.8311,
+      "lon": 2.3592,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 13"
+    },
+    {
+      "nom_projet": "RENOVATION ENERGETIQUE ECOLES NT 200 ECO",
+      "montant": 4105081.4,
+      "arrondissement": 16,
+      "source": "BigQuery",
+      "reason": "AVEC_ARRONDISSEMENT",
+      "thematique": "etablissement_scolaire",
+      "type_ap": "grands_projets",
+      "confidence": 0.9,
+      "lat": 48.86,
+      "lon": 2.269,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 16"
     },
     {
       "nom_projet": "CC 77 AVE DR NETTER / 27 RUE DU RV / CIT",
       "montant": 2178000.0,
-      "arrondissement": 12,
+      "arrondissement": 13,
       "source": "BigQuery",
       "reason": "AVEC_ARRONDISSEMENT",
       "thematique": "autre",
       "type_ap": "grands_projets",
       "confidence": 0.9,
-      "lat": 48.8391,
-      "lon": 2.3896,
+      "lat": 48.8311,
+      "lon": 2.3592,
       "geo_source": "centroid",
       "geo_score": 0.1,
-      "geo_label": "Arrondissement 12",
-      "id": "2022_gen_4b3b8bc6"
+      "geo_label": "Arrondissement 13"
+    },
+    {
+      "nom_projet": "SCHEMA DIRECTEUR IMPLANTATION GARAGES",
+      "montant": 2084846.14,
+      "arrondissement": 15,
+      "source": "BigQuery",
+      "reason": "AVEC_ARRONDISSEMENT",
+      "thematique": "autre",
+      "type_ap": "grands_projets",
+      "confidence": 0.9,
+      "lat": 48.8418,
+      "lon": 2.2988,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 15"
     },
     {
       "nom_projet": "CC 73 BD DAVOUT 20EME",
@@ -8978,8 +9000,22 @@
       "lon": 2.3985,
       "geo_source": "centroid",
       "geo_score": 0.1,
-      "geo_label": "Arrondissement 20",
-      "id": "2022_gen_6e3ded3f"
+      "geo_label": "Arrondissement 20"
+    },
+    {
+      "nom_projet": "PLAN PISCINES",
+      "montant": 1562653.7899999998,
+      "arrondissement": 16,
+      "source": "BigQuery",
+      "reason": "AVEC_ARRONDISSEMENT",
+      "thematique": "piscine",
+      "type_ap": "grands_projets",
+      "confidence": 0.9,
+      "lat": 48.86,
+      "lon": 2.269,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 16"
     },
     {
       "nom_projet": "T3 EXTENTION ASNIERES MAILLOT/DAUPHINE",
@@ -8990,12 +9026,26 @@
       "thematique": "urbanisme",
       "type_ap": "grands_projets",
       "confidence": 0.9,
-      "lat": 48.878824,
-      "lon": 2.283169,
-      "geo_source": "knowledge",
-      "geo_score": 0.9,
-      "geo_label": "Place de la Porte Maillot 75017 Paris",
-      "id": "2022_gen_2080615b"
+      "lat": 48.86,
+      "lon": 2.269,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 16"
+    },
+    {
+      "nom_projet": "MISE EN CONFORMITE DES TUNNELS ROUTIERS",
+      "montant": 1182603.42,
+      "arrondissement": 15,
+      "source": "BigQuery",
+      "reason": "AVEC_ARRONDISSEMENT",
+      "thematique": "urbanisme",
+      "type_ap": "grands_projets",
+      "confidence": 0.9,
+      "lat": 48.8418,
+      "lon": 2.2988,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 15"
     },
     {
       "nom_projet": "CRECHE COLLECTIVE GARANCIERE (6e)",
@@ -9010,8 +9060,37 @@
       "lon": 2.3337,
       "geo_source": "centroid",
       "geo_score": 0.1,
-      "geo_label": "Arrondissement 6",
-      "id": "2022_gen_a419d70c"
+      "geo_label": "Arrondissement 6"
+    },
+    {
+      "nom_projet": "DECHETTERIES -CREATION CVAE -RECYCLERIES",
+      "montant": 928684.26,
+      "arrondissement": 15,
+      "source": "BigQuery",
+      "reason": "AVEC_ARRONDISSEMENT",
+      "thematique": "autre",
+      "type_ap": "grands_projets",
+      "confidence": 0.9,
+      "lat": 48.8418,
+      "lon": 2.2988,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 15"
+    },
+    {
+      "nom_projet": "CHAPELLE (CARREFOUR ET BOULEVARD)",
+      "montant": 870686.17,
+      "arrondissement": 16,
+      "source": "BigQuery",
+      "reason": "AVEC_ARRONDISSEMENT",
+      "thematique": "urbanisme",
+      "type_ap": "grands_projets",
+      "confidence": 0.9,
+      "lat": 48.86,
+      "lon": 2.269,
+      "geo_source": "centroid",
+      "geo_score": 0.1,
+      "geo_label": "Arrondissement 16"
     },
     {
       "nom_projet": "CC 10/12 ERUE DU CAPITAINE MARCHAL (20e)",
@@ -9026,8 +9105,7 @@
       "lon": 2.3985,
       "geo_source": "centroid",
       "geo_score": 0.1,
-      "geo_label": "Arrondissement 20",
-      "id": "2022_gen_a0ef673f"
+      "geo_label": "Arrondissement 20"
     },
     {
       "nom_projet": "MAIRIE 17 - PLAN CLIMAT ET RENOVATION",
@@ -9042,24 +9120,22 @@
       "lon": 2.3102,
       "geo_source": "centroid",
       "geo_score": 0.1,
-      "geo_label": "Arrondissement 17",
-      "id": "2022_gen_76484cc0"
+      "geo_label": "Arrondissement 17"
     },
     {
       "nom_projet": "GS DUPLEIX / CARDINAL AMETTE",
       "montant": 713057.94,
-      "arrondissement": 15,
+      "arrondissement": 13,
       "source": "BigQuery",
       "reason": "AVEC_ARRONDISSEMENT",
       "thematique": "autre",
       "type_ap": "grands_projets",
       "confidence": 0.9,
-      "lat": 48.8418,
-      "lon": 2.2988,
+      "lat": 48.8311,
+      "lon": 2.3592,
       "geo_source": "centroid",
       "geo_score": 0.1,
-      "geo_label": "Arrondissement 15",
-      "id": "2022_gen_9594f82d"
+      "geo_label": "Arrondissement 13"
     },
     {
       "nom_projet": "Stade Jean Bouin (CODP)",
@@ -9074,8 +9150,7 @@
       "lon": 2.2532,
       "geo_source": "lieu_connu",
       "geo_score": 1.0,
-      "geo_label": "20 avenue du Général Sarrail",
-      "id": "2022_gen_2dac1f39"
+      "geo_label": "20 avenue du Général Sarrail"
     },
     {
       "nom_projet": "TRAMWAY T3 EXTENSION VERS ASNIERES",
@@ -9090,17 +9165,8 @@
       "lon": 2.2836,
       "geo_source": "lieu_connu",
       "geo_score": 1.0,
-      "geo_label": "Boulevard des Maréchaux",
-      "id": "2022_gen_0471b903"
+      "geo_label": "Boulevard des Maréchaux"
     }
   ],
-  "geocoded_at": "2026-02-06T01:29:01.779992",
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
-  }
+  "geocoded_at": "2026-09-10T19:16:04.880353"
 }

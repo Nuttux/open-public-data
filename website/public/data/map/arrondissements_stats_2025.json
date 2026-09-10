@@ -1,0 +1,225 @@
+{
+  "year": 2025,
+  "data": [
+    {
+      "arrondissement": 1,
+      "investissements": {
+        "total": 0,
+        "count": 0
+      },
+      "logements": {
+        "total": 37,
+        "count": 2
+      }
+    },
+    {
+      "arrondissement": 2,
+      "investissements": {
+        "total": 0,
+        "count": 0
+      },
+      "logements": {
+        "total": 7,
+        "count": 2
+      }
+    },
+    {
+      "arrondissement": 3,
+      "investissements": {
+        "total": 0,
+        "count": 0
+      },
+      "logements": {
+        "total": 31,
+        "count": 5
+      }
+    },
+    {
+      "arrondissement": 4,
+      "investissements": {
+        "total": 0,
+        "count": 0
+      },
+      "logements": {
+        "total": 162,
+        "count": 4
+      }
+    },
+    {
+      "arrondissement": 5,
+      "investissements": {
+        "total": 0,
+        "count": 0
+      },
+      "logements": {
+        "total": 171,
+        "count": 7
+      }
+    },
+    {
+      "arrondissement": 6,
+      "investissements": {
+        "total": 0,
+        "count": 0
+      },
+      "logements": {
+        "total": 43,
+        "count": 3
+      }
+    },
+    {
+      "arrondissement": 7,
+      "investissements": {
+        "total": 0,
+        "count": 0
+      },
+      "logements": {
+        "total": 0,
+        "count": 0
+      }
+    },
+    {
+      "arrondissement": 8,
+      "investissements": {
+        "total": 0,
+        "count": 0
+      },
+      "logements": {
+        "total": 37,
+        "count": 2
+      }
+    },
+    {
+      "arrondissement": 9,
+      "investissements": {
+        "total": 0,
+        "count": 0
+      },
+      "logements": {
+        "total": 175,
+        "count": 7
+      }
+    },
+    {
+      "arrondissement": 10,
+      "investissements": {
+        "total": 0,
+        "count": 0
+      },
+      "logements": {
+        "total": 136,
+        "count": 6
+      }
+    },
+    {
+      "arrondissement": 11,
+      "investissements": {
+        "total": 0,
+        "count": 0
+      },
+      "logements": {
+        "total": 224,
+        "count": 7
+      }
+    },
+    {
+      "arrondissement": 12,
+      "investissements": {
+        "total": 0,
+        "count": 0
+      },
+      "logements": {
+        "total": 59,
+        "count": 4
+      }
+    },
+    {
+      "arrondissement": 13,
+      "investissements": {
+        "total": 0,
+        "count": 0
+      },
+      "logements": {
+        "total": 561,
+        "count": 11
+      }
+    },
+    {
+      "arrondissement": 14,
+      "investissements": {
+        "total": 0,
+        "count": 0
+      },
+      "logements": {
+        "total": 355,
+        "count": 6
+      }
+    },
+    {
+      "arrondissement": 15,
+      "investissements": {
+        "total": 0,
+        "count": 0
+      },
+      "logements": {
+        "total": 832,
+        "count": 16
+      }
+    },
+    {
+      "arrondissement": 16,
+      "investissements": {
+        "total": 0,
+        "count": 0
+      },
+      "logements": {
+        "total": 47,
+        "count": 4
+      }
+    },
+    {
+      "arrondissement": 17,
+      "investissements": {
+        "total": 0,
+        "count": 0
+      },
+      "logements": {
+        "total": 141,
+        "count": 7
+      }
+    },
+    {
+      "arrondissement": 18,
+      "investissements": {
+        "total": 0,
+        "count": 0
+      },
+      "logements": {
+        "total": 590,
+        "count": 11
+      }
+    },
+    {
+      "arrondissement": 19,
+      "investissements": {
+        "total": 0,
+        "count": 0
+      },
+      "logements": {
+        "total": 130,
+        "count": 4
+      }
+    },
+    {
+      "arrondissement": 20,
+      "investissements": {
+        "total": 0,
+        "count": 0
+      },
+      "logements": {
+        "total": 189,
+        "count": 12
+      }
+    }
+  ]
+}

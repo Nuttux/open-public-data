@@ -11,7 +11,7 @@
 --   - Agrégation des doublons par clé technique
 --   - NULL → 0: valeurs manquantes converties en 0 (logique comptable)
 --
--- Output: ~300 lignes (après nettoyage), années 2019-2024
+-- Output: ~300 lignes (après nettoyage), années 2016, 2018-2024 (2017 : passif absent à la source)
 -- =============================================================================
 
 WITH source AS (
@@ -78,14 +78,34 @@ cleaned AS (
         -- =====================================================================
         COALESCE(ABS(SAFE_CAST(brut AS FLOAT64)), 0) AS montant_brut,
         COALESCE(ABS(SAFE_CAST(amortissements_et_provisions AS FLOAT64)), 0) AS montant_amortissements,
-        COALESCE(ABS(SAFE_CAST(net AS FLOAT64)), 0) AS montant_net
+        -- Le net du passif : sur l'exercice 2018 la Ville a laissé la colonne
+        -- `net` vide côté passif et n'a rempli que `brut` (20 lignes sur 27).
+        -- Au passif il n'y a pas d'amortissement, donc brut = net : le repli est
+        -- comptablement exact, et il rend l'exercice utilisable. Vérifié
+        -- 2026-09-10 : passif brut 2018 = 30,26 Md€ = actif net 2018.
+        CASE
+            WHEN UPPER(TRIM(actif_passif)) = 'PASSIF'
+                THEN COALESCE(ABS(SAFE_CAST(net AS FLOAT64)),
+                              ABS(SAFE_CAST(brut AS FLOAT64)), 0)
+            ELSE COALESCE(ABS(SAFE_CAST(net AS FLOAT64)), 0)
+        END AS montant_net
         
     FROM source
     WHERE 
         -- Exclure uniquement les lignes d'en-tête ou invalides
         SAFE_CAST(exercice_comptable AS INT64) IS NOT NULL
-        -- Filtrer à partir de 2019 (données M57 fiables)
-        AND SAFE_CAST(exercice_comptable AS INT64) >= 2019
+        -- Le plancher était à 2019, au motif que les données M57 y seraient
+        -- « fiables ». Vérifié exercice par exercice le 2026-09-10 : 2016 et
+        -- 2018 équilibrent actif et passif au centime et sont donc publiables ;
+        -- leur nomenclature est seulement plus grossière (3 postes d'actif et
+        -- 4 de passif, contre 5 et 7 depuis 2019), ce qui est moins détaillé,
+        -- pas faux.
+        AND SAFE_CAST(exercice_comptable AS INT64) >= 2016
+        -- 2017 reste dehors, et ce n'est pas notre choix : la Ville a publié
+        -- un actif sans aucun passif cette année-là (28 lignes de passif, zéro
+        -- valeur dans `brut` comme dans `net`). Un bilan sans passif n'est pas
+        -- un bilan. À réintégrer si la Ville complète la source.
+        AND SAFE_CAST(exercice_comptable AS INT64) != 2017
 ),
 
 -- =============================================================================

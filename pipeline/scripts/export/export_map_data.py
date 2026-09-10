@@ -139,6 +139,15 @@ def export_investissements(client):
             "nomLieu": r.ode_nom_lieu,
             "sourceGeo": r.ode_source_geo,
             "confiance": r.ode_confiance,
+            # Noms canoniques. Le site (fusion-data.ts) et la chaîne lieux ne
+            # lisent QUE ces trois clés : un projet sans `nom_projet` est
+            # invisible à l'écran. Les millésimes 2018-2021 ne les portaient pas
+            # et 6 670 lignes, 1,9 Md€, existaient sur le disque sans jamais
+            # être affichées (constaté 2026-09-10). On les écrit en plus des
+            # clés historiques, sans rien retirer, pour ne casser aucun lecteur.
+            "nom_projet": r.ap_texte,
+            "lat": r.ode_latitude,
+            "lon": r.ode_longitude,
         }
         by_year[r.annee].append(item)
     
@@ -255,8 +264,13 @@ def export_logements_sociaux(client):
         by_year[r.annee].append(item)
     
     # Sauvegarder par année
+    #
+    # Pas de plancher d'année ici. Il y en avait un à 2010, motivé par un
+    # « filtrer les années anciennes » qui ne dit ni pourquoi ni au nom de quoi.
+    # La source publie depuis 2001 : neuf millésimes étaient jetés en silence.
+    # Une année ancienne est une année ancienne, pas une année fausse.
     for year, items in sorted(by_year.items(), reverse=True):
-        if year and year >= 2010:  # Filtrer les années anciennes
+        if year:
             # Stats par arrondissement
             arrondissements = {i: {"total": 0, "count": 0} for i in range(1, 21)}
             for item in items:
@@ -278,7 +292,7 @@ def export_logements_sociaux(client):
             print(f"  Sauvegardé: {output_file.name} ({len(items)} livraisons, {sum(i['nbLogements'] or 0 for i in items)} logements)")
     
     # Index
-    years = sorted([y for y in by_year.keys() if y and y >= 2010], reverse=True)
+    years = sorted([y for y in by_year.keys() if y], reverse=True)
     with open(OUTPUT_DIR / "logements_index.json", "w", encoding="utf-8") as f:
         json.dump({
             "years": years,

@@ -231,13 +231,37 @@ def _get(url: str, tries: int = 3) -> dict:
     raise last if last else RuntimeError("injoignable")
 
 
+class CatalogueIncomplet(RuntimeError):
+    """Le catalogue n'a pas été récupéré en entier : tout le crible en dépend."""
+
+
 def catalogue() -> dict[str, dict]:
-    """Tout le catalogue : identifiant → {titre, lignes}. Une seule pagination."""
+    """Tout le catalogue : identifiant → {titre, lignes, modifie}.
+
+    Sortir de la pagination parce qu'une page revient courte est le pire défaut
+    possible ici : le crible se tait au lieu de crier. Vu le 2026-09-10, deux
+    exécutions à quelques minutes d'écart ont ramené 490 puis 282 jeux, et la
+    seconde a déclaré « aucun jeu manquant » sur le budget alors que deux
+    manquaient. On boucle donc jusqu'au compte annoncé, on retente les pages
+    courtes, et on refuse de rendre un catalogue incomplet."""
     out: dict[str, dict] = {}
-    start, rows = 0, 100
+    rows = 100
+    total: int | None = None
+    start = 0
     while True:
-        d = _get(f"{API_V1}?rows={rows}&start={start}")
-        lot = d.get("datasets") or []
+        # Le portail rend parfois une page courte ou vide sans erreur. On
+        # redemande la MÊME page plutôt que d'avancer : avancer laisse un trou
+        # silencieux dans le catalogue, et c'est exactement ce qu'on veut éviter.
+        lot: list = []
+        for essai in range(6):
+            d = _get(f"{API_V1}?rows={rows}&start={start}")
+            if total is None:
+                total = int(d.get("nhits") or 0)
+            lot = d.get("datasets") or []
+            attendu = min(rows, (total or 0) - start)
+            if len(lot) >= attendu or attendu <= 0:
+                break
+            time.sleep(2.0 * (essai + 1))
         for ds in lot:
             m = ds.get("metas") or {}
             out[ds["datasetid"]] = {
@@ -246,8 +270,19 @@ def catalogue() -> dict[str, dict]:
                 "modifie": m.get("modified"),
             }
         start += rows
-        if len(lot) < rows or start >= (d.get("nhits") or 0):
+        if total and start >= total:
             break
+        if start > 20000:       # garde-fou, jamais atteint sur ce portail
+            break
+        # Le portail renvoie des pages tronquées quand on l'interroge trop vite.
+        # Sondé le 2026-09-10, page par page, il est parfaitement régulier à ce
+        # rythme : 100, 100, 100, 100, 90, 10 pour 490 jeux.
+        time.sleep(0.4)
+    if total and len(out) < total * 0.95:
+        raise CatalogueIncomplet(
+            f"{len(out)} jeux récupérés sur {total} annoncés par {PORTAL}. "
+            f"Le crible ne peut pas conclure sur ce qui manque avec un catalogue "
+            f"partiel : relancer.")
     return out
 
 

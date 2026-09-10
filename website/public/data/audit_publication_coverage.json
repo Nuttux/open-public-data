@@ -1,14 +1,14 @@
 {
  "schema_version": 1,
- "generated_at": "2026-09-10T17:01:12.773185+00:00",
+ "generated_at": "2026-09-10T17:21:41.062510+00:00",
  "portail": "opendata.paris.fr",
  "tolerance_ecart_pct": 1.0,
  "resume": {
   "familles": 9,
   "jeux_de_la_serie_non_ingeres": 6,
-  "constats": 32,
-  "erreurs": 13,
-  "cote_nous": 15,
+  "constats": 30,
+  "erreurs": 11,
+  "cote_nous": 13,
   "cote_ville": 17
  },
  "familles": [
@@ -645,6 +645,10 @@
     "2022"
    ],
    "annees_site": [
+    "2018",
+    "2019",
+    "2020",
+    "2021",
     "2022",
     "2023",
     "2024"
@@ -658,11 +662,7 @@
     "2014",
     "2015",
     "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021"
+    "2017"
    ],
    "ecarts": [],
    "note_site": null
@@ -1084,6 +1084,15 @@
     "2025"
    ],
    "annees_site": [
+    "2001",
+    "2002",
+    "2003",
+    "2004",
+    "2005",
+    "2006",
+    "2007",
+    "2008",
+    "2009",
     "2010",
     "2011",
     "2012",
@@ -1098,20 +1107,10 @@
     "2021",
     "2022",
     "2023",
-    "2024"
-   ],
-   "annees_manquantes": [
-    "2001",
-    "2002",
-    "2003",
-    "2004",
-    "2005",
-    "2006",
-    "2007",
-    "2008",
-    "2009",
+    "2024",
     "2025"
    ],
+   "annees_manquantes": [],
    "ecarts": [],
    "note_site": null
   },
@@ -1217,14 +1216,6 @@
     "2025"
    ],
    "annees_site": [
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024"
-   ],
-   "annees_manquantes": [
     "2007",
     "2008",
     "2009",
@@ -1237,8 +1228,15 @@
     "2016",
     "2017",
     "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
     "2025"
    ],
+   "annees_manquantes": [],
    "ecarts": [],
    "note_site": null
   },
@@ -1304,6 +1302,8 @@
     "2024"
    ],
    "annees_site": [
+    "2016",
+    "2018",
     "2019",
     "2020",
     "2021",
@@ -1312,9 +1312,7 @@
     "2024"
    ],
    "annees_manquantes": [
-    "2016",
-    "2017",
-    "2018"
+    "2017"
    ],
    "ecarts": [],
    "note_site": null
@@ -1326,7 +1324,7 @@
    "cote": "nous",
    "famille": "bilan",
    "code": "ANNEES_MANQUANTES",
-   "message": "la Ville publie 2016→2024, le site sert 2019→2024 : 3 exercice(s) absent(s) (2016, 2017, 2018)"
+   "message": "la Ville publie 2016→2024, le site sert 2016→2024 : 1 exercice(s) absent(s) (2017)"
   },
   {
    "gravite": "erreur",
@@ -1381,13 +1379,6 @@
   {
    "gravite": "erreur",
    "cote": "nous",
-   "famille": "dette_garantie",
-   "code": "ANNEES_MANQUANTES",
-   "message": "la Ville publie 2007→2025, le site sert 2019→2024 : 13 exercice(s) absent(s) (2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018…)"
-  },
-  {
-   "gravite": "erreur",
-   "cote": "nous",
    "famille": "investissements_carte",
    "code": "SERIE_COUPEE",
    "message": "« Comptes Administratifs - Autorisations de Programmes 2009 - 2017 (M14-M52 Ville-Département) » (comptes-administratifs-autorisations-de-programmes-ap-ville-departement) est un autre morceau d'une série qu'on ingère déjà, et il n'est pas ingéré : 27927 lignes, 26722 M€, exercices 2009→2017",
@@ -1399,14 +1390,7 @@
    "cote": "nous",
    "famille": "investissements_carte",
    "code": "ANNEES_MANQUANTES",
-   "message": "la Ville publie 2009→2022, le site sert 2022→2024 : 13 exercice(s) absent(s) (2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020…)"
-  },
-  {
-   "gravite": "erreur",
-   "cote": "nous",
-   "famille": "logements_sociaux",
-   "code": "ANNEES_MANQUANTES",
-   "message": "la Ville publie 2001→2025, le site sert 2010→2024 : 10 exercice(s) absent(s) (2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2025)"
+   "message": "la Ville publie 2009→2022, le site sert 2018→2024 : 9 exercice(s) absent(s) (2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017)"
   },
   {
    "gravite": "erreur",
