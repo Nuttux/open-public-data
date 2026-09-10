@@ -9,7 +9,7 @@ import { loadCommunePeers } from "@/lib/commune-peers";
 import { loadCommuneChantiers } from "@/lib/commune-chantiers";
 import { loadMaire } from "@/lib/commune-maires";
 import { loadTaux, TAUX_SOURCE, type TauxCommune } from "@/lib/commune-taux";
-import { loadFonctions, FONCTIONS_SOURCE, type CommuneFonctions } from "@/lib/commune-fonctions";
+import { loadCommuneFonctions, FONCTIONS_SOURCE, type CommuneFonctions } from "@/lib/commune-fonctions";
 import type { RelatedBlock, RelatedRow } from "@/components/fiche/RelatedLinks";
 import type { CompareEntry, PageVilleProps } from "./PageVilleClient";
 
@@ -76,9 +76,10 @@ export async function loadPageVille(slug: string, requestedYear?: number, en = f
   const taxeFonciere = tauxFull && tauxFull.tfb != null
     ? { ...tauxFull, source: TAUX_SOURCE.label, source_url: TAUX_SOURCE.url }
     : null;
-  // Ventilation par fonction : présente pour les ~3 400 communes qui votent
-  // leur budget par fonction (DGFiP, présentation croisée nature-fonction).
-  const fonctions = loadFonctions(commune.insee);
+  // Ventilation par fonction : présente pour les 3 248 communes qui votent leur
+  // budget par fonction (DGFiP, présentation croisée nature-fonction). Le détail
+  // (domaines, natures) vient du bucket privé, comme les marchés et l'investissement.
+  const fonctions = await loadCommuneFonctions(slug);
 
   const me = entry(slug);
   const options = compareOptions(slug);

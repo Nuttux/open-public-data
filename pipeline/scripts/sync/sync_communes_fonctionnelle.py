@@ -58,6 +58,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import re
 import shutil
 import statistics
 import zipfile
@@ -72,6 +73,7 @@ from urllib.request import Request, urlopen
 ROOT = Path(__file__).resolve().parents[3]
 CACHE_DIR = ROOT / "pipeline" / "cache" / "dgfip"
 NOMENCLATURE_FILE = ROOT / "pipeline" / "data" / "nomenclature-budgetaire.json"
+TRADUCTIONS_FILE = ROOT / "pipeline" / "data" / "nomenclature-libelles-en.json"
 INDEX_FILE = ROOT / "website" / "public" / "data" / "communes-all" / "index.json"
 OUT_ROOT = ROOT / "website" / "public" / "data" / "communes-fonctions"
 MANIFEST_FILE = ROOT / "website" / "src" / "data" / "communes-fonctions-manifest.json"
@@ -205,6 +207,15 @@ def fonction_principale(ref: str) -> str | None:
 # ---------------------------------------------------------------------------
 # Libellés
 
+def _norm(s: str) -> str:
+    """Clé de comparaison d'un libellé : une seule forme d'apostrophe.
+
+    Même normalisation que dans sync_nomenclature_budgetaire.py — voir le
+    commentaire là-bas sur le Windows-1252 et les apostrophes doublées.
+    """
+    return re.sub(r"’{2,}", "’", s.replace("\x92", "’").replace("'", "’"))
+
+
 class Libelles:
     """Résolution code → libellé, par axe et par nomenclature.
 
@@ -214,12 +225,30 @@ class Libelles:
     d'un code court vers un libellé plus précis qu'on aurait choisi.
     """
 
-    def __init__(self, path: Path) -> None:
+    def __init__(self, path: Path, traductions: Path) -> None:
         d = json.loads(path.read_text(encoding="utf-8"))
         self.fonction = d["fonction_m57"]
         self.nature_m57 = d["nature_m57"]
         self.nature_m14 = d["nature_m14"]
         self.source_url = d["source_url"]
+        # La DGCL ne publie pas de version anglaise : la traduction est la nôtre
+        # (voir le fichier). Tout libellé sans entrée est signalé en fin de run
+        # plutôt que de laisser passer du français sur le site anglais.
+        t = json.loads(traductions.read_text(encoding="utf-8"))
+        # Les clés sont normalisées des deux côtés : le fichier de traduction est
+        # écrit à la main, et une apostrophe droite tapée là où la nomenclature
+        # en a une courbe fait échouer la correspondance sans rien dire d'utile.
+        self.en_fonction = {_norm(k): v for k, v in t["fonctions"].items()}
+        self.en_nature = {_norm(k): v for k, v in t["natures"].items()}
+        self.manquants: set[tuple[str, str]] = set()
+
+    def en(self, axe: str, fr: str) -> str:
+        table = self.en_fonction if axe == "fonction" else self.en_nature
+        trad = table.get(_norm(fr))
+        if trad is None:
+            self.manquants.add((axe, fr))
+            return fr
+        return trad
 
     # Un libellé qui ne se suffit pas à lui-même : soit un fragment de phrase
     # (« à caractère administratif »), soit un mot passe-partout. La
@@ -347,7 +376,7 @@ def stream_aggregate(zip_path: Path) -> tuple[dict[str, dict], dict[str, float],
 # ---------------------------------------------------------------------------
 # Repliement en arbre
 
-def _top(items: list[dict], n: int, autres_label: str) -> list[dict]:
+def _top(items: list[dict], n: int, autres_fr: str, autres_en: str) -> list[dict]:
     """Les n plus gros, puis une ligne « Autres » qui porte tout le reste.
 
     La ligne de reste n'est pas cosmétique : sans elle la somme des lignes
@@ -366,8 +395,17 @@ def _top(items: list[dict], n: int, autres_label: str) -> list[dict]:
     reste = sum(x["montant"] for x in items[n:])
     out = items[:n]
     if reste != 0:
-        out.append({"code": "autres", "libelle": autres_label, "montant": reste, "autres": True})
+        out.append({"code": "autres", "libelle": autres_fr, "libelle_en": autres_en,
+                    "montant": reste, "autres": True})
     return out
+
+
+def _traduire(rows: list[dict], axe: str, lib: "Libelles") -> list[dict]:
+    """Attache le libellé anglais aux lignes retenues, sur place."""
+    for r in rows:
+        if "libelle_en" not in r:
+            r["libelle_en"] = lib.en(axe, r["libelle"])
+    return rows
 
 
 def build_commune(bucket: dict, lib: Libelles) -> dict | None:
@@ -394,7 +432,10 @@ def build_commune(bucket: dict, lib: Libelles) -> dict | None:
             {"code": c, "libelle": lib.nature_label(c, nomen) or f"Compte {c}", "montant": round(v)}
             for c, v in counts.items() if v != 0
         ]
-        return _top(rows, n, "Autres natures de dépense")
+        # Traduire APRÈS l'élagage : seuls les libellés réellement affichés ont
+        # besoin d'une version anglaise, et l'ensemble à maintenir à la main
+        # reste borné (quelques centaines, pas les 2 573 codes du plan).
+        return _traduire(_top(rows, n, "Autres natures de dépense", "Other types of spending"), "nature", lib)
 
     fonctions_out: list[dict] = []
     for cle, fr_def, en_def in FONCTIONS:
@@ -435,7 +476,7 @@ def build_commune(bucket: dict, lib: Libelles) -> dict | None:
                     "montant": round(v),
                     "natures": natures_rows(sous_natures[(cle, ref)], TOP_NATURES_SOUS),
                 })
-            rows = _top(rows, TOP_SOUS_FONCTIONS, "Autres domaines")
+            rows = _traduire(_top(rows, TOP_SOUS_FONCTIONS, "Autres domaines", "Other areas"), "fonction", lib)
             # Un seul poste dont le libellé répète celui de la fonction n'ajoute
             # rien : la commune a voté au niveau de la fonction, sans détail.
             if len(rows) > 1 or (len(rows) == 1 and rows[0]["libelle"] != fr):
@@ -479,7 +520,7 @@ def main() -> int:
         _log(f"✗ {NOMENCLATURE_FILE.relative_to(ROOT)} manquant — lancer d'abord "
              "pipeline/scripts/sync/sync_nomenclature_budgetaire.py")
         return 1
-    lib = Libelles(NOMENCLATURE_FILE)
+    lib = Libelles(NOMENCLATURE_FILE, TRADUCTIONS_FILE)
     _log(f"  = libellés : {len(lib.fonction)} fonctions, {len(lib.nature_m57)} comptes M57, "
          f"{len(lib.nature_m14)} comptes M14")
 
@@ -555,6 +596,14 @@ def main() -> int:
         _log(f"  • poids par commune : médiane {statistics.median(tailles)/1024:.1f} Ko · "
              f"max {max(tailles)/1024:.1f} Ko · total {sum(tailles)/1e6:.1f} Mo")
     _log(f"  ✓ {MANIFEST_FILE.relative_to(ROOT)} ({MANIFEST_FILE.stat().st_size/1024:.0f} Ko)")
+
+    if lib.manquants:
+        _log(f"✗ {len(lib.manquants)} libellés sans traduction anglaise "
+             f"(pipeline/data/nomenclature-libelles-en.json) :")
+        for axe, fr in sorted(lib.manquants)[:20]:
+            _log(f"      [{axe}] {fr}")
+        return 1
+    _log("  ✓ tous les libellés affichés ont une traduction anglaise")
 
     nat_total = sum(national.values())
     nat_nv = national.get("nv", 0.0)

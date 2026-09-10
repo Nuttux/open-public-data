@@ -7,7 +7,6 @@ import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import ChartSource from "@/components/fusion/ChartSource";
 import RelatedLinks, { type RelatedBlock } from "@/components/fiche/RelatedLinks";
-import { V3Fold } from "@/components/fiche/v3";
 import { useT, useLocale } from "@/lib/localeContext";
 import { aNom, deNom } from "@/lib/nom-commune";
 import type { CommuneFonctions, FonctionPart } from "@/lib/commune-fonctions";
@@ -314,6 +313,10 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
   const evoYear = evolution?.series.find((p) => p.year === year) ?? null;
   const strip = (l: string) => l.replace(/\s\((D|R)\)$/, "");
   const [openRow, setOpenRow] = useState<string | null>(null);
+  // Une seule fonction ouverte à la fois, et un seul domaine dans celle-ci :
+  // la section reste lisible même quand une commune a douze domaines.
+  const [openFonction, setOpenFonction] = useState<string | null>(null);
+  const [openSous, setOpenSous] = useState<string | null>(null);
   const comptesFor = (side: "expenses" | "revenue", label: string) => data.comptes?.[side]?.[label] ?? [];
   // Sous-lignes « dont … » : les agrégats OFGL de l'année, rangés sous la
   // ligne DGFiP qui les contient. Une phrase, jamais un bloc.
@@ -544,9 +547,67 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
               propre ligne, en bas, sans pourcentage. */}
           {fonctions && fonctions.fonctions.length >= 3 && (() => {
             const parts = fonctions.fonctions;
+            const nvd = fonctions.non_ventile_detail;
             const maxMontant = Math.max(...parts.map((f) => f.montant), fonctions.non_ventile, 1);
             const admin = parts.find((f) => f.cle === "f0_services_generaux") ?? null;
-            const barWidth = (n: number) => `${Math.max(1.5, (n / maxMontant) * 100)}%`;
+            // Une barre ne représente qu'une part positive. Les rares fonctions
+            // nettes négatives (annulations d'exercices antérieurs supérieures
+            // aux dépenses de l'année) n'en reçoivent pas.
+            const barWidth = (n: number) => (n <= 0 ? null : `${Math.max(1.5, (n / maxMontant) * 100)}%`);
+            const lbl = (x: { libelle: string; libelle_en: string }) => (isEn ? x.libelle_en : x.libelle);
+
+            /** Le détail d'une ligne : ses natures, ou ses domaines et ses natures. */
+            const Detail = ({ f }: { f: FonctionPart | NonNullable<typeof nvd> }) => {
+              const sous = "sous_fonctions" in f ? f.sous_fonctions : undefined;
+              return (
+                <div className="fx-pv-fonc-detail">
+                  {sous && sous.length ? (
+                    <div className="col">
+                      <h4>{t("fx.pv.fonc.pourquoi")}</h4>
+                      {sous.map((sf) => {
+                        const key = `${"cle" in f ? f.cle : "nv"}:${sf.code}`;
+                        const open = openSous === key;
+                        const peutOuvrir = Boolean(sf.natures && sf.natures.length);
+                        return (
+                          <div key={sf.code}>
+                            <button
+                              type="button"
+                              className={`line${peutOuvrir ? " clic" : ""}${sf.autres ? " autres" : ""}${open ? " open" : ""}`}
+                              onClick={() => peutOuvrir && setOpenSous(open ? null : key)}
+                              aria-expanded={peutOuvrir ? open : undefined}
+                              disabled={!peutOuvrir}
+                            >
+                              <span>{lbl(sf)}{peutOuvrir ? <span className="chev" aria-hidden="true">{open ? "▾" : "▸"}</span> : null}</span>
+                              <Amt n={sf.montant} size={13} />
+                            </button>
+                            {open && sf.natures ? (
+                              <div className="sub">
+                                {sf.natures.map((n) => (
+                                  <div key={n.code} className={`line${n.autres ? " autres" : ""}`}>
+                                    <span>{lbl(n)}</span>
+                                    <Amt n={n.montant} size={12} />
+                                  </div>
+                                ))}
+                              </div>
+                            ) : null}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : null}
+                  <div className="col">
+                    <h4>{t("fx.pv.fonc.surquoi")}</h4>
+                    {f.natures.map((n) => (
+                      <div key={n.code} className={`line${n.autres ? " autres" : ""}`}>
+                        <span>{lbl(n)}</span>
+                        <Amt n={n.montant} size={13} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            };
+
             return (
               <section className="fx-pv-fonc">
                 <H2 id="a-quoi-sert" sub={fill("fx.pv.fonc.h2sub", { year: fonctionsSource.annee })}>{fill("fx.pv.fonc.h2", { denom: isEn ? commune.nom : deNom(commune.nom) })}</H2>
@@ -555,25 +616,49 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                   <span className="tnum">{euro(fonctions.total_ventile)}</span>
                 </h3>
                 <ul className="fx-pv-fonc-list">
-                  {parts.map((f: FonctionPart) => (
-                    <li key={f.cle} className="fx-bud-row fx-pv-fonc-row">
-                      <span className="n">{isEn ? f.libelle_en : f.libelle}</span>
-                      <span className="bar" aria-hidden="true"><i style={{ width: barWidth(f.montant) }} /></span>
-                      <Amt n={f.montant} />
-                      <span className="p tnum">{Math.round(f.share * 100)}&nbsp;%</span>
-                    </li>
-                  ))}
-                  {fonctions.non_ventile > 0 ? (
-                    <li className="fx-bud-row fx-pv-fonc-row fx-pv-fonc-nv">
-                      <span className="n">
-                        {t("fx.pv.fonc.nv")}
-                        <span className="dont">{t("fx.pv.fonc.nv_dont")}</span>
-                      </span>
-                      <span className="bar" aria-hidden="true"><i style={{ width: barWidth(fonctions.non_ventile) }} /></span>
-                      <Amt n={fonctions.non_ventile} />
-                      <span className="p tnum" />
-                    </li>
-                  ) : null}
+                  {parts.map((f: FonctionPart) => {
+                    const open = openFonction === f.cle;
+                    const w = barWidth(f.montant);
+                    return (
+                      <li key={f.cle}>
+                        <button
+                          type="button"
+                          className={`fx-bud-row fx-pv-fonc-row${open ? " open" : ""}`}
+                          onClick={() => setOpenFonction(open ? null : f.cle)}
+                          aria-expanded={open}
+                        >
+                          <span className="n">{lbl(f)}<span className="chev" aria-hidden="true">{open ? "▾" : "▸"}</span></span>
+                          <span className="bar" aria-hidden="true">{w ? <i style={{ width: w }} /> : null}</span>
+                          <Amt n={f.montant} />
+                          <span className="p tnum">{f.share != null && f.share > 0 ? `${Math.round(f.share * 100)}\u00a0%` : ""}</span>
+                        </button>
+                        {open ? <Detail f={f} /> : null}
+                      </li>
+                    );
+                  })}
+                  {nvd ? (() => {
+                    const open = openFonction === "nv";
+                    const w = barWidth(nvd.montant);
+                    return (
+                      <li>
+                        <button
+                          type="button"
+                          className={`fx-bud-row fx-pv-fonc-row fx-pv-fonc-nv${open ? " open" : ""}`}
+                          onClick={() => setOpenFonction(open ? null : "nv")}
+                          aria-expanded={open}
+                        >
+                          <span className="n">
+                            {t("fx.pv.fonc.nv")}<span className="chev" aria-hidden="true">{open ? "▾" : "▸"}</span>
+                            <span className="dont">{t("fx.pv.fonc.nv_dont")}</span>
+                          </span>
+                          <span className="bar" aria-hidden="true">{w ? <i style={{ width: w }} /> : null}</span>
+                          <Amt n={nvd.montant} />
+                          <span className="p tnum" />
+                        </button>
+                        {open ? <Detail f={nvd} /> : null}
+                      </li>
+                    );
+                  })() : null}
                 </ul>
                 {admin ? <p className="fx-v3-foot">{t("fx.pv.fonc.admin_note")}</p> : null}
                 <p className="fx-v3-foot">{t("fx.pv.fonc.note")}</p>

@@ -45,6 +45,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import re
 import sys
 from pathlib import Path
 from urllib.request import Request, urlopen
@@ -87,6 +88,22 @@ def download(force: bool = False) -> None:
         print(f"    {dest.stat().st_size:,} octets")
 
 
+def normalise_apostrophes(s: str) -> str:
+    """Une seule apostrophe, la typographique.
+
+    Le CSV DGCL est en Windows-1252 : lu en latin-1, son apostrophe courbe
+    devient U+0092, un caractère de contrôle invisible qui casse toute
+    comparaison de chaîne. On lit donc en cp1252 — et on répare quand même
+    U+0092 ici, au cas où une autre source arriverait mal décodée.
+
+    La source contient aussi des apostrophes doublées, séquelles d'un
+    échappement SQL : « Charges d’'intervention », « Droits d''utilisation ».
+    On les réduit à une.
+    """
+    s = s.replace("\x92", "’").replace("\u2019", "’").replace("'", "’")
+    return re.sub(r"’{2,}", "’", s)
+
+
 def clean(label: str) -> str:
     """Libellé de nomenclature → texte affichable.
 
@@ -95,7 +112,7 @@ def clean(label: str) -> str:
     numéro de classe traînant et on remet en casse de phrase ce qui est tout
     en capitales, sans toucher aux libellés déjà correctement casés.
     """
-    s = " ".join(label.split())
+    s = normalise_apostrophes(" ".join(label.split()))
     if s and s[-1].isdigit() and s[:-1].rstrip().isupper():
         s = s[:-1].rstrip()
     letters = [c for c in s if c.isalpha()]
@@ -111,7 +128,7 @@ def build() -> dict[str, dict[str, str]]:
     out: dict[str, dict[str, str]] = {"fonction_m57": {}, "nature_m57": {}, "nature_m14": {}}
 
     # M57 : un seul fichier, deux axes, distingués par la colonne TYPE.
-    with (CACHE_DIR / "m57d-v2.csv").open(encoding="latin-1", newline="") as f:
+    with (CACHE_DIR / "m57d-v2.csv").open(encoding="cp1252", newline="") as f:
         for row in csv.DictReader(f, delimiter=";"):
             code = (row.get("CODE") or "").strip()
             lib = clean(row.get("LIBELLE") or "")
