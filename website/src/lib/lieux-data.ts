@@ -33,7 +33,8 @@ export type LieuMontant = {
 export type LieuBmoExtrait = { date: string; extrait: string; extrait_en?: string | null; source_url: string };
 /** Dépense d'investissement RÉELLEMENT mandatée (comptes administratifs).
  *  Série par exercice fusionnant les opérations AP jugées « au-lieu »
- *  (2009-2017 — le niveau opération n'est plus publié après). */
+ *  (série continue depuis 2009 : la Ville la publie en deux jeux, M14 jusqu'en
+ *  2017 puis M57, empilés à l'export sur la clé d'autorisation de programme). */
 export type LieuMandate = {
   par_annee: Record<string, number>;
   total_eur: number;

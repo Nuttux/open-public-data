@@ -133,6 +133,36 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
   const kindTxt = kindArt ? (en ? kindArt.en : kindArt.fr) : t("fx.lieu.line.lieu_generique");
   const barMax = Math.max(subvTotal, travauxTotal);
   const showBars = subvTotal > 0 && travauxTotal > 0;
+  const pctTxt = (n: number) => `${Math.round((n / reelTotal) * 100)}${en ? "%" : "\u00a0%"}`;
+
+  /* ── Deux séries annuelles, une par source, jamais empilées : les
+   *    subventions à l'exploitant sont publiées depuis 2018, le détail des
+   *    chantiers sur la plage que la Ville publie. Chacune vit sous sa ligne, sur ses
+   *    propres années ; un trou est une absence de donnée, pas un zéro. */
+  const yearly = (pairs: [number, number][]) => {
+    const m = new Map<number, number>();
+    pairs.forEach(([y, v]) => { if (Number.isFinite(y) && y > 1900 && v > 0) m.set(y, (m.get(y) ?? 0) + v); });
+    return [...m.entries()].sort((a, b) => a[0] - b[0]).map(([year, value]) => ({ year, value }));
+  };
+  const exploitSeries = yearly((subv?.rows ?? []).map((r) => [parseInt(r.annee, 10), r.montant_eur]));
+  const travauxSeries = yearly([
+    ...lieu.invest.map((r) => [parseInt(String(r.annee), 10), r.montant_eur] as [number, number]),
+    ...(lieu.mandate?.operations ?? []).flatMap((o) => Object.entries(o.mandate_par_annee).map(([y, v]) => [parseInt(y, 10), v] as [number, number])),
+  ]);
+  const Years = ({ series, tone }: { series: { year: number; value: number }[]; tone: "x" | "w" }) => {
+    if (series.length < 3) return null;
+    const max = Math.max(...series.map((s) => s.value), 1);
+    return (
+      <div className={`fx-v3-years ${tone}`} aria-hidden="true">
+        {series.map((s, i) => (
+          <div key={s.year} title={`${s.year} · ${eurTxt(s.value)}`}>
+            <i style={{ height: Math.max(2, Math.round((s.value / max) * 40)) }} />
+            {(i === 0 || i === series.length - 1) && <span className={i === 0 ? "yr" : "yr end"}>{s.year}</span>}
+          </div>
+        ))}
+      </div>
+    );
+  };
 
   /* ── Les décisions : vedettes d'abord, récentes d'abord ──────────────── */
   type Moment = LieuFicheData["moments"][number];
@@ -152,7 +182,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
     <a key={m.id} className="fx-v3-mom fx-row-link" href={m.source_url ?? undefined} target="_blank" rel="noopener noreferrer">
       <span className="d tnum">{seanceEn(m.seance, locale)}</span>
       <span className="t">{cap((en && m.pourquoi_en) || m.pourquoi || m.fait)}</span>
-      <span className="c" aria-hidden="true">→</span>
+      <span className="c" aria-hidden="true">↗</span>
       {m.pourquoi && <span className="s">{firstSentence((en && m.fait_en) || m.fait)}</span>}
     </a>
   );
@@ -234,7 +264,8 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
                 <Link href={`${basePath}/subventions/association/${assocSlug(subv.nom_fiche)}`} scroll={false}>{subv.nom_fiche} →</Link>
                 {subv.note_publique && <> {(en && subv.note_publique_en) || subv.note_publique}</>}
               </div>
-              {showBars && <div className="bar"><span style={{ width: `${(subvTotal / barMax) * 100}%` }} /></div>}
+              <Years series={exploitSeries} tone="x" />
+              {showBars && <div className="bar x"><div className="track"><span style={{ width: `${(subvTotal / barMax) * 100}%` }} /></div><i className="tnum">{pctTxt(subvTotal)}</i></div>}
               {subv.rows.length > 1 && (
                 <div className="fold-wrap">
                   <Fold label={fill(t("fx.lieu.subv_deplier"), { n: subv.rows.length })}>
@@ -275,7 +306,8 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
                     }))}
                   </div>
                 )}
-                {showBars && <div className="bar"><span style={{ width: `${(travauxTotal / barMax) * 100}%` }} /></div>}
+                <Years series={travauxSeries} tone="w" />
+                {showBars && <div className="bar w"><div className="track"><span style={{ width: `${(travauxTotal / barMax) * 100}%` }} /></div><i className="tnum">{pctTxt(travauxTotal)}</i></div>}
                 <div className="fold-wrap">
                   {paye && nChantiers > 0 && (
                     <Fold label={fill(t(nChantiers === 1 ? "fx.lieu.fold_chantier1" : "fx.lieu.fold_chantiers"), { n: nChantiers })}>
@@ -340,7 +372,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
           {(marches.length > 0 || lieu.mandate) && (
             <p className="fx-v3-foot">
               {marches.length > 0 ? (reelTotal > 0 ? fill(t("fx.lieu.note.total"), { t: eurTxt(reelTotal) }) : t("fx.lieu.note.plafond_seul")) : ""}
-              {lieu.mandate ? ` ${t("fx.lieu.line.travaux_caveat")}` : ""}
+              {lieu.mandate ? ` ${fill(t("fx.lieu.line.travaux_caveat"), { y: lieu.mandate.periode[1] })}` : ""}
             </p>
           )}
         </section>

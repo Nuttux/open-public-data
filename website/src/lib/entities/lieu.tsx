@@ -71,7 +71,20 @@ export const lieuConfig: EntityPageConfig<D> = {
           <h1 className="fx-page-title" style={{ fontSize: "clamp(26px, 3.4vw, 40px)", margin: "4px 0 24px" }}>
             {lieu.name}
           </h1>
-          <p className="fx-page-lede fx-answer">{lieuAnswer(lieu, locale).answer}</p>
+          {(() => {
+            // La réponse SEO reste entière dans le DOM ; à l'écran, la phrase
+            // « Source : … » passe en petit sous la phrase de réponse.
+            const answer = lieuAnswer(lieu, locale).answer;
+            const cut = answer.search(/\sSource\s?:/);
+            const main = cut > 0 ? answer.slice(0, cut) : answer;
+            const src = cut > 0 ? answer.slice(cut + 1) : "";
+            return (
+              <>
+                <p className="fx-page-lede fx-answer">{main}</p>
+                {src && <p className="fx-v3-lead-src">{src}</p>}
+              </>
+            );
+          })()}
           <LieuFiche lieu={lieu} />
           <LieuxVoisins slug={lieu.slug} famille={lieu.famille} arrondissement={lieu.arrondissement} />
         </>

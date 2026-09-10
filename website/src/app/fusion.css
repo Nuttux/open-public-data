@@ -19335,8 +19335,20 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-v3-line .q { font-family: var(--f-mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-top: 6px; white-space: nowrap; }
 .theme-fusion .fx-v3-line .s { grid-column: 1; font-size: 13.5px; color: var(--muted); line-height: 1.45; }
 .theme-fusion .fx-v3-line .s a { color: var(--bleu); }
-.theme-fusion .fx-v3-line .bar { grid-column: 1 / -1; height: 3px; background: #ecedf0; margin: 8px 0 4px; }
-.theme-fusion .fx-v3-line .bar span { display: block; height: 3px; background: var(--bleu); }
+.theme-fusion .fx-v3-line .bar { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) 44px; gap: 10px; align-items: center; margin: 8px 0 4px; }
+.theme-fusion .fx-v3-line .bar .track { height: 4px; background: #ecedf0; }
+.theme-fusion .fx-v3-line .bar span { display: block; height: 4px; background: var(--bleu); }
+.theme-fusion .fx-v3-line .bar.w span { background: var(--ocre); }
+.theme-fusion .fx-v3-line .bar i { font-family: var(--f-mono); font-style: normal; font-size: 11px; font-weight: 600; color: var(--ink); text-align: right; white-space: nowrap; }
+/* Fiche lieu — sous chaque ligne d'argent, ses années : une barre par
+ * exercice publié, dans la couleur de la ligne (bleu = faire tourner,
+ * ocre = travaux). Deux sources, deux couvertures, jamais empilées. */
+.theme-fusion .fx-v3-years { grid-column: 1 / -1; display: flex; align-items: flex-end; gap: 3px; height: 42px; margin: 10px 0 18px; }
+.theme-fusion .fx-v3-years > div { flex: 1 1 0; max-width: 28px; position: relative; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; }
+.theme-fusion .fx-v3-years i { display: block; width: 100%; background: var(--bleu); }
+.theme-fusion .fx-v3-years.w i { background: var(--ocre); }
+.theme-fusion .fx-v3-years .yr { position: absolute; top: 100%; left: 0; margin-top: 4px; font-family: var(--f-mono); font-size: 9.5px; color: var(--muted); white-space: nowrap; }
+.theme-fusion .fx-v3-years .yr.end { left: auto; right: 0; }
 .theme-fusion .fx-v3-line .fold-wrap { grid-column: 1 / -1; }
 .theme-fusion .fx-v3-fold > summary {
   font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase;
@@ -19362,7 +19374,11 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-v3-mom .s {
   grid-column: 2; font-size: 13.5px; color: var(--muted); line-height: 1.45;
 }
-.theme-fusion .fx-v3-mom .c { font-size: 15px; color: var(--muted); text-align: right; }
+.theme-fusion .fx-v3-mom .t { text-decoration: underline; text-decoration-color: #c9cdd4; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.theme-fusion .fx-v3-mom .c { font-size: 15px; color: var(--bleu); font-weight: 600; text-align: right; }
+@media (hover: hover) and (pointer: fine) {
+  .theme-fusion .fx-v3-mom:hover .t { text-decoration-color: currentColor; }
+}
 .theme-fusion .fx-v3-more { padding: 12px 0 0; font-size: 13.5px; display: flex; flex-direction: column; gap: 6px; }
 .theme-fusion .fx-v3-more p { margin: 0; color: var(--muted); }
 .theme-fusion .fx-v3-more a { color: var(--bleu); }

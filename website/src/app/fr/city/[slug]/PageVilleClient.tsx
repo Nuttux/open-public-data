@@ -7,7 +7,6 @@ import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import ChartSource from "@/components/fusion/ChartSource";
 import RelatedLinks, { type RelatedBlock } from "@/components/fiche/RelatedLinks";
-import { V3Fold } from "@/components/fiche/v3";
 import { useT, useLocale } from "@/lib/localeContext";
 import { aNom } from "@/lib/nom-commune";
 import { useTrack } from "@/lib/analyticsContext";

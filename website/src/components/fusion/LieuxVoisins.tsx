@@ -7,6 +7,18 @@ import { readLocale } from "@/lib/seo";
  * arrondissement. Sert à ne pas finir en cul-de-sac (audit UX) — `famille` et
  * `arrondissement` sont déjà indexés.
  */
+/** « 117 M € » / « €117M » — le total versé par la Ville, tel que l'index le porte. */
+function fmtEur(n: number, locale: string): string {
+  const en = locale === "en";
+  const loc = en ? "en-US" : "fr-FR";
+  const v = n >= 1e9
+    ? `${new Intl.NumberFormat(loc, { maximumFractionDigits: 1 }).format(n / 1e9)} ${en ? "bn" : "Md"}`
+    : n >= 1e6
+      ? `${new Intl.NumberFormat(loc, { maximumFractionDigits: n >= 1e7 ? 0 : 1 }).format(n / 1e6)} M`
+      : `${new Intl.NumberFormat(loc, { maximumFractionDigits: 0 }).format(n / 1e3)} k`;
+  return `${v} €`;
+}
+
 export default async function LieuxVoisins({
   slug,
   famille,
@@ -35,6 +47,7 @@ export default async function LieuxVoisins({
           <Link key={l.slug} href={`/fr/city/paris/lieu/${l.slug}`} scroll={false} className="fx-voisin">
             {l.photo ? <img src={l.photo} alt="" loading="lazy" /> : <span className="fx-voisin-noimg" />}
             <span className="fx-voisin-name">{l.name}</span>
+            {(l.argent_total_eur ?? 0) > 0 && <span className="fx-voisin-meta">{fmtEur(l.argent_total_eur ?? 0, locale)}</span>}
           </Link>
         ))}
       </div>
