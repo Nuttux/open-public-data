@@ -6169,6 +6169,7 @@ const fr: Record<string, string> = {
   'fx.lieu.sources': 'Sources ·',
   'fx.lieu.hero.verse': 'versés par la Ville pour ce lieu depuis {y}',
   'fx.lieu.hero.verse_one': 'versés par la Ville pour ce lieu en {y}',
+  'fx.lieu.years.axe': 'Les deux séries sont dessinées sur le même axe, de {a} à {b} ; en pointillé, les exercices que la Ville ne publie pas pour cette ligne.',
   'fx.lieu.hero.engage': 'commandés à des entreprises pour ce lieu — plafond des contrats, pas la dépense',
   'fx.lieu.h.argent': 'Ce que la Ville finance ici',
   'fx.lieu.line.exploitant': 'faire tourner {k}',

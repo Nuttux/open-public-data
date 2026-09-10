@@ -19354,6 +19354,10 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-v3-years i { display: block; width: 100%; background: var(--bleu); }
 .theme-fusion .fx-v3-years.w i { background: var(--ocre); }
 .theme-fusion .fx-v3-years .yr { position: absolute; top: 100%; left: 0; margin-top: 4px; font-family: var(--f-mono); font-size: 9.5px; color: var(--muted); white-space: nowrap; }
+/* Exercice que la source ne publie pas pour cette ligne. Un vide se lirait
+ * comme un zéro — l'erreur même qui faisait croire à un théâtre à l'arrêt
+ * pendant sa rénovation. Un tiret bas discret, et la légende le nomme. */
+.theme-fusion .fx-v3-years .hors em { display: block; width: 100%; height: 2px; background: repeating-linear-gradient(90deg, #c9cdd4 0 3px, transparent 3px 6px); }
 .theme-fusion .fx-v3-years .yr.end { left: auto; right: 0; }
 .theme-fusion .fx-v3-line .fold-wrap { grid-column: 1 / -1; }
 .theme-fusion .fx-v3-fold > summary {

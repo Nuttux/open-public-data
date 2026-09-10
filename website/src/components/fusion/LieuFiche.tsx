@@ -149,18 +149,46 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
     ...lieu.invest.map((r) => [parseInt(String(r.annee), 10), r.montant_eur] as [number, number]),
     ...(lieu.mandate?.operations ?? []).flatMap((o) => Object.entries(o.mandate_par_annee).map(([y, v]) => [parseInt(y, 10), v] as [number, number])),
   ]);
+  /* L'axe commun. Les deux lignes d'argent ne couvrent pas les mêmes
+   * exercices, et ce n'est pas un choix : la Ville publie les subventions à
+   * partir de 2013 et la dépense d'investissement à partir de 2009. Dessiner
+   * chaque graphe sur ses propres années met côte à côte deux axes différents,
+   * que l'œil compare quand même. On les pose sur le MÊME axe, du premier au
+   * dernier exercice de la fiche.
+   *
+   * Un exercice que la source ne publie pas ne peut pas rester vide : un vide
+   * se lit comme un zéro, et c'est exactement l'erreur qui faisait croire à un
+   * théâtre à l'arrêt pendant sa rénovation. Il porte donc une marque propre,
+   * un tiret pointillé, et la légende le nomme. */
+  const spanGlobal = (() => {
+    const ys = [...exploitSeries, ...travauxSeries].map((s) => s.year);
+    return ys.length ? ([Math.min(...ys), Math.max(...ys)] as const) : null;
+  })();
+
   const Years = ({ series, tone }: { series: { year: number; value: number }[]; tone: "x" | "w" }) => {
-    if (series.length < 3) return null;
+    if (series.length < 3 || !spanGlobal) return null;
     const max = Math.max(...series.map((s) => s.value), 1);
+    const parAn = new Map(series.map((s) => [s.year, s.value]));
+    const annees: number[] = [];
+    for (let y = spanGlobal[0]; y <= spanGlobal[1]; y++) annees.push(y);
+    const debut = series[0].year;
+    const fin = series[series.length - 1].year;
     return (
-      <div className={`fx-v3-years ${tone}`} aria-hidden="true">
-        {series.map((s, i) => (
-          <div key={s.year} title={`${s.year} · ${eurTxt(s.value)}`}>
-            <i style={{ height: Math.max(2, Math.round((s.value / max) * 40)) }} />
-            {(i === 0 || i === series.length - 1) && <span className={i === 0 ? "yr" : "yr end"}>{s.year}</span>}
-          </div>
-        ))}
-      </div>
+      <>
+        <div className={`fx-v3-years ${tone}`} aria-hidden="true">
+          {annees.map((y, i) => {
+            const v = parAn.get(y);
+            const hors = y < debut || y > fin;
+            return (
+              <div key={y} className={hors ? "hors" : undefined}
+                   title={hors ? `${y} · non publié par la Ville` : `${y} · ${eurTxt(v ?? 0)}`}>
+                {hors ? <em /> : <i style={{ height: Math.max(2, Math.round(((v ?? 0) / max) * 40)) }} />}
+                {(i === 0 || i === annees.length - 1) && <span className={i === 0 ? "yr" : "yr end"}>{y}</span>}
+              </div>
+            );
+          })}
+        </div>
+      </>
     );
   };
 
@@ -373,6 +401,9 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
             <p className="fx-v3-foot">
               {marches.length > 0 ? (reelTotal > 0 ? fill(t("fx.lieu.note.total"), { t: eurTxt(reelTotal) }) : t("fx.lieu.note.plafond_seul")) : ""}
               {lieu.mandate ? ` ${fill(t("fx.lieu.line.travaux_caveat"), { y: lieu.mandate.periode[1] })}` : ""}
+              {spanGlobal && (exploitSeries.length > 2 || travauxSeries.length > 2)
+                ? ` ${fill(t("fx.lieu.years.axe"), { a: spanGlobal[0], b: spanGlobal[1] })}`
+                : ""}
             </p>
           )}
         </section>

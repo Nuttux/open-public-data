@@ -6163,6 +6163,7 @@ const en: Record<string, string> = {
   'fx.lieu.sources': 'Sources ·',
   'fx.lieu.hero.verse': 'paid by the City for this place since {y}',
   'fx.lieu.hero.verse_one': 'paid by the City for this place in {y}',
+  'fx.lieu.years.axe': 'Both series are drawn on the same axis, {a} to {b}; dotted years are those the City does not publish for that line.',
   'fx.lieu.hero.engage': 'ordered from companies for this place — contract ceilings, not spending',
   'fx.lieu.h.argent': 'What the City funds here',
   'fx.lieu.line.exploitant': 'running {k}',
