@@ -100,6 +100,15 @@ FAMILLES = [
                           'and sens_depense_recette="Dépenses"'),
         "perimetre": "indicatif",
         "note_perimetre": "l'export exclut les chapitres d'ordre 925/926/946 (opérations comptables)",
+        "raison_exclusion": (
+            "Les exercices 2009-2018 existent (deux jeux, 35 480 lignes, 110 Md€) et NE SONT PAS "
+            "ingérés, volontairement. Les deux plans comptables ne partagent qu'UNE valeur de "
+            "chapitre sur 100 côté M14 et 25 côté M57, et les libellés de fonction communs le sont "
+            "par coïncidence (« APA versée à l'établissement » contre « APA versé bénéf établisem »). "
+            "Les empiler donnerait un graphique dont les catégories ne veulent pas dire la même "
+            "chose avant et après 2019 : faux et vraisemblable, ce qui est pire que manquant. "
+            "Il faut une table de correspondance M14 → catégories du site, écrite et relue. "
+            "Mesuré le 2026-09-10."),
     },
     {
         "id": "budget_vote",
@@ -113,6 +122,8 @@ FAMILLES = [
         # ferait apparaître 2019-2021 comme manquants alors qu'ils sont servis
         # en exécuté par la famille budget_execute.
         "site": {"glob": "budget_sankey_*.json", "total": None},
+        "raison_exclusion": "Même obstacle que le budget exécuté : nomenclatures M14 et M57 "
+                            "non compatibles, une table de correspondance est nécessaire.",
         "filtre_source": None,
         "perimetre": "indicatif",
         "note_perimetre": "le budget voté n'a pas de colonne « mandaté » : le total du site vient d'un autre champ",
@@ -145,6 +156,12 @@ FAMILLES = [
         "id": "investissements_carte",
         "label": "Investissement — carte des projets localisés",
         "ingere": ["comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de"],
+        # La carte n'a jamais eu vocation a remonter avant 2018 : son mart filtre
+        # explicitement `annee >= 2018`, et la periode anterieure est servie par
+        # les fiches lieu via la serie comptable (famille ap_execute). Sans cette
+        # ligne, la carte se voyait reprocher un trou 2009-2017 qui appartient a
+        # une autre famille, et le rapport perdait en lisibilite.
+        "souche_ignoree": True,
         "annee": ["exercice_comptable"],
         "montant": ["mandate_titre_apres_regul"],
         "site": {"glob": "map/investissements_complet_*.json", "total": None,
@@ -203,6 +220,9 @@ FAMILLES = [
         "ingere": ["bilan-comptable"],
         "annee": ["exercice_comptable"],
         "montant": ["net"],
+        "raison_exclusion": "L'exercice 2017 manque parce que la Ville a publié un actif sans "
+                            "aucun passif cette année-là (28 lignes de passif, zéro valeur dans "
+                            "`brut` comme dans `net`). Un bilan sans passif n'est pas un bilan.",
         "site": {"glob": "bilan_sankey_*.json", "total": None},
         "filtre_source": None, "perimetre": "indicatif",
     },
@@ -236,8 +256,16 @@ class CatalogueIncomplet(RuntimeError):
     """Le catalogue n'a pas été récupéré en entier : tout le crible en dépend."""
 
 
-def catalogue() -> dict[str, dict]:
+CACHE_CATALOGUE = ROOT / "pipeline" / "cache" / "audit" / "catalogue_paris.json"
+CACHE_TTL_H = 12
+
+
+def catalogue(refresh: bool = False) -> dict[str, dict]:
     """Tout le catalogue : identifiant → {titre, lignes, modifie}.
+
+    Mis en cache 12 h sur disque. Relancer le crible trois fois de suite fait
+    tomber le portail en pages tronquées, et un catalogue partiel est refusé
+    plus bas : sans cache l'outil devient inutilisable dès qu'on itère dessus.
 
     Sortir de la pagination parce qu'une page revient courte est le pire défaut
     possible ici : le crible se tait au lieu de crier. Vu le 2026-09-10, deux
@@ -245,8 +273,20 @@ def catalogue() -> dict[str, dict]:
     seconde a déclaré « aucun jeu manquant » sur le budget alors que deux
     manquaient. On boucle donc jusqu'au compte annoncé, on retente les pages
     courtes, et on refuse de rendre un catalogue incomplet."""
+    if not refresh and CACHE_CATALOGUE.exists():
+        age_h = (time.time() - CACHE_CATALOGUE.stat().st_mtime) / 3600
+        if age_h < CACHE_TTL_H:
+            try:
+                cache = json.load(open(CACHE_CATALOGUE))
+                if cache.get("datasets"):
+                    print(f"  catalogue en cache ({len(cache['datasets'])} jeux, "
+                          f"{age_h:.1f} h) — --refresh pour le recharger", file=sys.stderr)
+                    return cache["datasets"]
+            except Exception:  # noqa: BLE001 — cache illisible : on recharge
+                pass
+
     out: dict[str, dict] = {}
-    rows = 100
+    rows = 50
     total: int | None = None
     start = 0
     while True:
@@ -262,7 +302,7 @@ def catalogue() -> dict[str, dict]:
             attendu = min(rows, (total or 0) - start)
             if len(lot) >= attendu or attendu <= 0:
                 break
-            time.sleep(2.0 * (essai + 1))
+            time.sleep(4.0 * (essai + 1))
         for ds in lot:
             m = ds.get("metas") or {}
             out[ds["datasetid"]] = {
@@ -278,7 +318,12 @@ def catalogue() -> dict[str, dict]:
         # Le portail renvoie des pages tronquées quand on l'interroge trop vite.
         # Sondé le 2026-09-10, page par page, il est parfaitement régulier à ce
         # rythme : 100, 100, 100, 100, 90, 10 pour 490 jeux.
-        time.sleep(0.4)
+        time.sleep(1.2)
+    if total and len(out) >= total * 0.95:
+        CACHE_CATALOGUE.parent.mkdir(parents=True, exist_ok=True)
+        CACHE_CATALOGUE.write_text(json.dumps(
+            {"fetched_at": datetime.now(timezone.utc).isoformat(),
+             "annonce": total, "datasets": out}, ensure_ascii=False))
     if total and len(out) < total * 0.95:
         raise CatalogueIncomplet(
             f"{len(out)} jeux récupérés sur {total} annoncés par {PORTAL}. "
@@ -477,8 +522,8 @@ def cote_site(spec: dict | None) -> tuple[dict[str, float], list[str], str | Non
 # ─────────────────────────────────────────────────────────────────────────────
 # Le crible
 # ─────────────────────────────────────────────────────────────────────────────
-def auditer(familles: list[dict], avec_totaux: bool = True) -> dict:
-    cat = catalogue()
+def auditer(familles: list[dict], avec_totaux: bool = True, refresh: bool = False) -> dict:
+    cat = catalogue(refresh=refresh)
     par_souche = familles_du_catalogue(cat)
     annee_courante = date.today().year
     lignes_rapport = []
@@ -487,7 +532,9 @@ def auditer(familles: list[dict], avec_totaux: bool = True) -> dict:
     for fam in familles:
         # 1. Les frères : tous les jeux qui partagent une souche avec les nôtres.
         freres: set[str] = set()
-        for ds in fam["ingere"]:
+        if fam.get("souche_ignoree"):
+            freres = set(fam["ingere"])
+        for ds in ([] if fam.get("souche_ignoree") else fam["ingere"]):
             if ds not in cat:
                 constats.append({
                     "gravite": "erreur", "cote": "nous", "famille": fam["id"],
@@ -548,8 +595,10 @@ def auditer(familles: list[dict], avec_totaux: bool = True) -> dict:
                 lignes = meta["lignes"]
                 montant = sum(totaux.values()) if totaux else None
                 constats.append({
-                    "gravite": "erreur" if lignes > 500 else "avertissement",
-                    "cote": "nous", "famille": fam["id"], "code": "SERIE_COUPEE",
+                    "gravite": "info" if fam.get("raison_exclusion")
+                               else ("erreur" if lignes > 500 else "avertissement"),
+                    "cote": "nous", "famille": fam["id"],
+                    "code": "SERIE_COUPEE_DOCUMENTEE" if fam.get("raison_exclusion") else "SERIE_COUPEE",
                     "message": f"« {meta['titre']} » ({ds}) est un autre morceau d'une série qu'on ingère "
                                f"déjà, et il n'est pas ingéré : {lignes} lignes"
                                + (f", {montant/1e6:.0f} M€" if montant else "")
@@ -567,12 +616,19 @@ def auditer(familles: list[dict], avec_totaux: bool = True) -> dict:
             toutes_src |= set(j["annees"])
         trous = sorted(a for a in toutes_src if a not in set(site_annees))
         if trous and site_annees:
+            # Un trou documenté n'est pas le même objet qu'un trou qu'on n'a pas
+            # regardé. Le premier est une décision qu'on peut discuter, le second
+            # est un oubli. Les confondre rend le rapport illisible et finit par
+            # le faire ignorer.
+            raison = fam.get("raison_exclusion")
             constats.append({
-                "gravite": "erreur", "cote": "nous", "famille": fam["id"],
-                "code": "ANNEES_MANQUANTES",
+                "gravite": "info" if raison else "erreur",
+                "cote": "nous", "famille": fam["id"],
+                "code": "ECART_DOCUMENTE" if raison else "ANNEES_MANQUANTES",
                 "message": f"la Ville publie {min(toutes_src)}→{max(toutes_src)}, le site sert "
                            f"{min(site_annees)}→{max(site_annees)} : {len(trous)} exercice(s) "
-                           f"absent(s) ({', '.join(trous[:12])}{'…' if len(trous) > 12 else ''})",
+                           f"absent(s) ({', '.join(trous[:12])}{'…' if len(trous) > 12 else ''})"
+                           + (f" — {raison}" if raison else ""),
             })
 
         # 5. Écart de total sur les années communes.
@@ -757,6 +813,8 @@ def main() -> int:
     ap.add_argument("--famille", help="n'auditer qu'une série (son id)")
     ap.add_argument("--no-totaux", action="store_true", help="années seulement, plus rapide")
     ap.add_argument("--dry-run", action="store_true", help="n'écrit aucun fichier")
+    ap.add_argument("--refresh", action="store_true",
+                    help="recharge le catalogue du portail au lieu du cache (12 h)")
     a = ap.parse_args()
 
     familles = [f for f in FAMILLES if not a.famille or f["id"] == a.famille]
@@ -764,7 +822,7 @@ def main() -> int:
         print(f"famille inconnue : {a.famille}", file=sys.stderr)
         return 2
 
-    rapport = auditer(familles, avec_totaux=not a.no_totaux)
+    rapport = auditer(familles, avec_totaux=not a.no_totaux, refresh=a.refresh)
     md = markdown(rapport)
     if not a.dry_run:
         OUT_JSON.parent.mkdir(parents=True, exist_ok=True)

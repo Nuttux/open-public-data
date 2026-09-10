@@ -1,15 +1,15 @@
 {
  "schema_version": 1,
- "generated_at": "2026-09-10T17:30:43.682794+00:00",
+ "generated_at": "2026-09-10T17:37:02.275240+00:00",
  "portail": "opendata.paris.fr",
  "tolerance_ecart_pct": 1.0,
  "resume": {
   "familles": 9,
-  "jeux_de_la_serie_non_ingeres": 5,
-  "constats": 28,
-  "erreurs": 9,
-  "cote_nous": 11,
-  "cote_ville": 17
+  "jeux_de_la_serie_non_ingeres": 4,
+  "constats": 25,
+  "erreurs": 0,
+  "cote_nous": 9,
+  "cote_ville": 16
  },
  "familles": [
   {
@@ -579,65 +579,10 @@
      },
      "erreur": null,
      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/"
-    },
-    {
-     "dataset": "comptes-administratifs-autorisations-de-programmes-ap-ville-departement",
-     "titre": "Comptes Administratifs - Autorisations de Programmes 2009 - 2017 (M14-M52 Ville-Département)",
-     "lignes_catalogue": 27927,
-     "derniere_maj": "2019-11-28T15:44:25.100000+00:00",
-     "ingere": false,
-     "champ_annee": "exercice_comptable",
-     "champ_montant": "mandate_titre_apres_regul",
-     "annees": [
-      "2009",
-      "2010",
-      "2011",
-      "2012",
-      "2013",
-      "2014",
-      "2015",
-      "2016",
-      "2017"
-     ],
-     "lignes_par_annee": {
-      "2009": 3018,
-      "2010": 2915,
-      "2011": 2917,
-      "2012": 2997,
-      "2013": 2982,
-      "2014": 2898,
-      "2015": 3049,
-      "2016": 3534,
-      "2017": 3617
-     },
-     "total_par_annee": {
-      "2009": 2922036469.59,
-      "2010": 3280593743.01,
-      "2011": 3363775328.91,
-      "2012": 2627611925.46,
-      "2013": 3338690525.36,
-      "2014": 3707905141.81,
-      "2015": 2722782802.17,
-      "2016": 3086270073.9,
-      "2017": 1672457758.68
-     },
-     "erreur": null,
-     "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
     }
    ],
-   "non_ingeres": [
-    "comptes-administratifs-autorisations-de-programmes-ap-ville-departement"
-   ],
+   "non_ingeres": [],
    "annees_source": [
-    "2009",
-    "2010",
-    "2011",
-    "2012",
-    "2013",
-    "2014",
-    "2015",
-    "2016",
-    "2017",
     "2018",
     "2019",
     "2020",
@@ -653,17 +598,7 @@
     "2023",
     "2024"
    ],
-   "annees_manquantes": [
-    "2009",
-    "2010",
-    "2011",
-    "2012",
-    "2013",
-    "2014",
-    "2015",
-    "2016",
-    "2017"
-   ],
+   "annees_manquantes": [],
    "ecarts": [],
    "note_site": null
   },
@@ -1352,79 +1287,6 @@
  ],
  "constats": [
   {
-   "gravite": "erreur",
-   "cote": "nous",
-   "famille": "bilan",
-   "code": "ANNEES_MANQUANTES",
-   "message": "la Ville publie 2016→2024, le site sert 2016→2024 : 1 exercice(s) absent(s) (2017)"
-  },
-  {
-   "gravite": "erreur",
-   "cote": "nous",
-   "famille": "budget_execute",
-   "code": "SERIE_COUPEE",
-   "message": "« Comptes Administratifs - Budgets Principaux 2018 (M57 Ville-département) » (comptes-administratifs-principaux-2018-m57-ville-departement) est un autre morceau d'une série qu'on ingère déjà, et il n'est pas ingéré : 4581 lignes, 21560 M€, exercices 2018→2018",
-   "dataset": "comptes-administratifs-principaux-2018-m57-ville-departement",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-principaux-2018-m57-ville-departement/"
-  },
-  {
-   "gravite": "erreur",
-   "cote": "nous",
-   "famille": "budget_execute",
-   "code": "SERIE_COUPEE",
-   "message": "« Comptes Administratifs - Budgets Principaux 2009 - 2017 (M14-M52 Ville-département) » (comptes-administratifs-principaux-ville-departement) est un autre morceau d'une série qu'on ingère déjà, et il n'est pas ingéré : 30899 lignes, 88835 M€, exercices 2009→2017",
-   "dataset": "comptes-administratifs-principaux-ville-departement",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-principaux-ville-departement/"
-  },
-  {
-   "gravite": "erreur",
-   "cote": "nous",
-   "famille": "budget_execute",
-   "code": "ANNEES_MANQUANTES",
-   "message": "la Ville publie 2009→2024, le site sert 2019→2024 : 10 exercice(s) absent(s) (2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018)"
-  },
-  {
-   "gravite": "erreur",
-   "cote": "nous",
-   "famille": "budget_vote",
-   "code": "SERIE_COUPEE",
-   "message": "« Budgets Votés - Budget Principal 2009 - 2017 (M14-M52 Ville-département) » (bugdet-votes-principaux) est un autre morceau d'une série qu'on ingère déjà, et il n'est pas ingéré : 28075 lignes, exercices 2009→2017",
-   "dataset": "bugdet-votes-principaux",
-   "url": "https://opendata.paris.fr/explore/dataset/bugdet-votes-principaux/"
-  },
-  {
-   "gravite": "erreur",
-   "cote": "nous",
-   "famille": "budget_vote",
-   "code": "SERIE_COUPEE",
-   "message": "« Budgets Votés - Budget Principal 2018 (M57 Ville-département) » (bugdet-votes-principaux_2018_m57_ville_dpt) est un autre morceau d'une série qu'on ingère déjà, et il n'est pas ingéré : 3715 lignes, exercices 2018→2018",
-   "dataset": "bugdet-votes-principaux_2018_m57_ville_dpt",
-   "url": "https://opendata.paris.fr/explore/dataset/bugdet-votes-principaux_2018_m57_ville_dpt/"
-  },
-  {
-   "gravite": "erreur",
-   "cote": "nous",
-   "famille": "budget_vote",
-   "code": "ANNEES_MANQUANTES",
-   "message": "la Ville publie 2009→2021, le site sert 2019→2026 : 10 exercice(s) absent(s) (2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018)"
-  },
-  {
-   "gravite": "erreur",
-   "cote": "nous",
-   "famille": "investissements_carte",
-   "code": "SERIE_COUPEE",
-   "message": "« Comptes Administratifs - Autorisations de Programmes 2009 - 2017 (M14-M52 Ville-Département) » (comptes-administratifs-autorisations-de-programmes-ap-ville-departement) est un autre morceau d'une série qu'on ingère déjà, et il n'est pas ingéré : 27927 lignes, 26722 M€, exercices 2009→2017",
-   "dataset": "comptes-administratifs-autorisations-de-programmes-ap-ville-departement",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  },
-  {
-   "gravite": "erreur",
-   "cote": "nous",
-   "famille": "investissements_carte",
-   "code": "ANNEES_MANQUANTES",
-   "message": "la Ville publie 2009→2022, le site sert 2018→2024 : 9 exercice(s) absent(s) (2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017)"
-  },
-  {
    "gravite": "avertissement",
    "cote": "ville",
    "famille": "ap_execute",
@@ -1484,13 +1346,6 @@
    "gravite": "avertissement",
    "cote": "ville",
    "famille": "investissements_carte",
-   "code": "JEU_ABANDONNE",
-   "message": "comptes-administratifs-autorisations-de-programmes-ap-ville-departement : dernier exercice 2017, dernière mise à jour déclarée le 2019-11-28 — les deux concordent, le jeu n'est plus alimenté"
-  },
-  {
-   "gravite": "avertissement",
-   "cote": "ville",
-   "famille": "investissements_carte",
    "code": "SOURCE_GELEE",
    "message": "dernier exercice publié 2022, soit 4 ans de retard sur 2026 : la Ville a cessé d'alimenter la série"
   },
@@ -1500,6 +1355,63 @@
    "famille": "subventions",
    "code": "JEU_ABANDONNE",
    "message": "subventions-versees : dernier exercice 2017, dernière mise à jour déclarée le 2019-12-19 — les deux concordent, le jeu n'est plus alimenté"
+  },
+  {
+   "gravite": "info",
+   "cote": "nous",
+   "famille": "bilan",
+   "code": "ECART_DOCUMENTE",
+   "message": "la Ville publie 2016→2024, le site sert 2016→2024 : 1 exercice(s) absent(s) (2017) — L'exercice 2017 manque parce que la Ville a publié un actif sans aucun passif cette année-là (28 lignes de passif, zéro valeur dans `brut` comme dans `net`). Un bilan sans passif n'est pas un bilan."
+  },
+  {
+   "gravite": "info",
+   "cote": "nous",
+   "famille": "budget_execute",
+   "code": "SERIE_COUPEE_DOCUMENTEE",
+   "message": "« Comptes Administratifs - Budgets Principaux 2018 (M57 Ville-département) » (comptes-administratifs-principaux-2018-m57-ville-departement) est un autre morceau d'une série qu'on ingère déjà, et il n'est pas ingéré : 4581 lignes, 21560 M€, exercices 2018→2018",
+   "dataset": "comptes-administratifs-principaux-2018-m57-ville-departement",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-principaux-2018-m57-ville-departement/"
+  },
+  {
+   "gravite": "info",
+   "cote": "nous",
+   "famille": "budget_execute",
+   "code": "SERIE_COUPEE_DOCUMENTEE",
+   "message": "« Comptes Administratifs - Budgets Principaux 2009 - 2017 (M14-M52 Ville-département) » (comptes-administratifs-principaux-ville-departement) est un autre morceau d'une série qu'on ingère déjà, et il n'est pas ingéré : 30899 lignes, 88835 M€, exercices 2009→2017",
+   "dataset": "comptes-administratifs-principaux-ville-departement",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-principaux-ville-departement/"
+  },
+  {
+   "gravite": "info",
+   "cote": "nous",
+   "famille": "budget_execute",
+   "code": "ECART_DOCUMENTE",
+   "message": "la Ville publie 2009→2024, le site sert 2019→2024 : 10 exercice(s) absent(s) (2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018) — Les exercices 2009-2018 existent (deux jeux, 35 480 lignes, 110 Md€) et NE SONT PAS ingérés, volontairement. Les deux plans comptables ne partagent qu'UNE valeur de chapitre sur 100 côté M14 et 25 côté M57, et les libellés de fonction communs le sont par coïncidence (« APA versée à l'établissement » contre « APA versé bénéf établisem »). Les empiler donnerait un graphique dont les catégories ne veulent pas dire la même chose avant et après 2019 : faux et vraisemblable, ce qui est pire que manquant. Il faut une table de correspondance M14 → catégories du site, écrite et relue. Mesuré le 2026-09-10."
+  },
+  {
+   "gravite": "info",
+   "cote": "nous",
+   "famille": "budget_vote",
+   "code": "SERIE_COUPEE_DOCUMENTEE",
+   "message": "« Budgets Votés - Budget Principal 2009 - 2017 (M14-M52 Ville-département) » (bugdet-votes-principaux) est un autre morceau d'une série qu'on ingère déjà, et il n'est pas ingéré : 28075 lignes, exercices 2009→2017",
+   "dataset": "bugdet-votes-principaux",
+   "url": "https://opendata.paris.fr/explore/dataset/bugdet-votes-principaux/"
+  },
+  {
+   "gravite": "info",
+   "cote": "nous",
+   "famille": "budget_vote",
+   "code": "SERIE_COUPEE_DOCUMENTEE",
+   "message": "« Budgets Votés - Budget Principal 2018 (M57 Ville-département) » (bugdet-votes-principaux_2018_m57_ville_dpt) est un autre morceau d'une série qu'on ingère déjà, et il n'est pas ingéré : 3715 lignes, exercices 2018→2018",
+   "dataset": "bugdet-votes-principaux_2018_m57_ville_dpt",
+   "url": "https://opendata.paris.fr/explore/dataset/bugdet-votes-principaux_2018_m57_ville_dpt/"
+  },
+  {
+   "gravite": "info",
+   "cote": "nous",
+   "famille": "budget_vote",
+   "code": "ECART_DOCUMENTE",
+   "message": "la Ville publie 2009→2021, le site sert 2019→2026 : 10 exercice(s) absent(s) (2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018) — Même obstacle que le budget exécuté : nomenclatures M14 et M57 non compatibles, une table de correspondance est nécessaire."
   },
   {
    "gravite": "info",
