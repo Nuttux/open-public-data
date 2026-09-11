@@ -80,7 +80,7 @@ export const lieuConfig: EntityPageConfig<D> = {
             const src = cut > 0 ? answer.slice(cut + 1) : "";
             return (
               <>
-                <p className="fx-page-lede fx-answer">{main}</p>
+                <p className="fx-page-lede fx-answer fx-lieu-lede">{main}</p>
                 {src && <p className="fx-v3-lead-src">{src}</p>}
               </>
             );

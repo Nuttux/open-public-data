@@ -8,12 +8,12 @@ await p.addStyleTag({ content: "nextjs-portal,.fx-chat-launcher{display:none!imp
 const a = await p.$('a[href$="/lieu/theatre-du-chatelet"]');
 if (!a) { console.log("no link"); process.exit(1); }
 await a.click();
-await p.waitForSelector(".fx-v3-years", { timeout: 15000 });
+await p.waitForSelector(".fx-lieu-hero", { timeout: 15000 });
 await p.waitForTimeout(800);
 const body = await p.$(".fx-drawer-body");
 const box = await body.boundingBox();
 console.log("drawer body width", box.width);
 await p.screenshot({ path: `${out}/drawer-desk.png` });
-const hero = await p.$(".fx-v3-years");
+const hero = await p.$(".fx-lieu-hero");
 await hero.screenshot({ path: `${out}/drawer-hero.png` });
 await ctx.close(); await b.close();

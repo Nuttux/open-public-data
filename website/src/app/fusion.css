@@ -2698,6 +2698,13 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 /* The one-sentence answer under a fiche's h1 (lib/entities/seo-text.ts):
    same voice as the lede, a touch more air above and below. */
 .theme-fusion .fx-answer { margin: 10px 0 4px; }
+/* Fiche lieu : la phrase-réponse reste en tête pour les moteurs et les
+ * assistants (c'est la réponse à « qu'est-ce que la Ville a décidé et investi
+ * ici »), mais elle ne doit pas repousser le chiffre sous la ligne de
+ * flottaison. Corps de 15 px, gris, et pas de marge sous la ligne de source :
+ * l'œil passe du titre au chiffre en une seconde. */
+.theme-fusion .fx-lieu-lede { font-size: 15px; line-height: 1.45; color: var(--muted); margin: 6px 0 2px; max-width: 640px; }
+.theme-fusion .fx-lieu-lede + .fx-v3-lead-src { margin-top: 4px; font-size: 12px; }
 /* Browse indexes (components/browse/BrowseList.tsx): the letter / year rail
    and the pager — plain links, sized like the v3 rows. */
 .theme-fusion .fx-browse-rail { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 0; }
@@ -19327,6 +19334,51 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-v3-hero-num { white-space: nowrap; }
 .theme-fusion .fx-v3-hero-num .u { font-size: .42em; color: var(--muted); font-weight: 500; letter-spacing: -.01em; margin-left: 6px; white-space: nowrap; }
 .theme-fusion .fx-v3-hero-cap { font-size: 15px; color: var(--muted); margin-top: 12px; }
+/* ── Fiche lieu : le premier écran ─────────────────────────────────────────
+ * Chiffre à gauche, photo à droite, et entre les deux le petit livre de compte
+ * dans les couleurs des graphes du dessous. Tout ce que la page promet tient
+ * dans le premier écran d'un portable ; avant, le chiffre arrivait à 800 px. */
+.theme-fusion .fx-lieu-hero { display: grid; grid-template-columns: minmax(0, 1fr) 312px; gap: 20px 40px; align-items: stretch; margin: 26px 0 44px; }
+.theme-fusion .fx-lieu-hero.sans-photo { grid-template-columns: minmax(0, 1fr); }
+.theme-fusion .fx-lieu-hero-txt { display: flex; flex-direction: column; justify-content: flex-start; min-width: 0; }
+.theme-fusion .fx-lieu-hero .fx-v3-hero-num { font-size: clamp(52px, 6.4vw, 76px); }
+.theme-fusion .fx-lieu-hero .fx-v3-hero-cap { margin-top: 10px; }
+.theme-fusion .fx-lieu-hero .fx-v3-lead { margin-top: auto; padding-top: 22px; font-size: 14px; color: var(--muted); }
+.theme-fusion .fx-lieu-hero-photo { position: relative; min-height: 250px; }
+.theme-fusion .fx-lieu-hero-photo .fx-v3-photo { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; }
+/* Le livre de compte : deux lignes, l'intitulé, le montant, la part, et sous
+ * chacune une barre à l'échelle de la part — la même grammaire que la section
+ * détaillée, en plus petit, pour que le lecteur reconnaisse la suite. */
+.theme-fusion .fx-lieu-ledger { margin-top: 22px; border-top: 1px solid var(--ink); }
+.theme-fusion .fx-lieu-ledger .r { display: grid; grid-template-columns: minmax(0, 1fr) auto 44px; gap: 2px 14px; align-items: baseline; padding: 11px 0 10px; border-bottom: 1px solid var(--rule); }
+.theme-fusion .fx-lieu-ledger .l { font-size: 14px; font-weight: 600; color: var(--ink); line-height: 1.3; }
+.theme-fusion .fx-lieu-ledger .a { font-family: var(--f-disp); font-weight: 700; font-size: 17px; letter-spacing: -.02em; white-space: nowrap; }
+.theme-fusion .fx-lieu-ledger .p { font-family: var(--f-mono); font-size: 11px; color: var(--muted); text-align: right; white-space: nowrap; }
+.theme-fusion .fx-lieu-ledger .b { grid-column: 1 / -1; display: block; height: 3px; background: #ecedf0; margin-top: 4px; }
+.theme-fusion .fx-lieu-ledger .b span { display: block; height: 3px; background: var(--bleu); }
+.theme-fusion .fx-lieu-ledger .r.w .b span { background: var(--ocre); }
+.theme-fusion .fx-lieu-ledger .r.x .l::before, .theme-fusion .fx-lieu-ledger .r.w .l::before { content: ""; display: inline-block; width: 9px; height: 9px; margin-right: 8px; vertical-align: 0; background: var(--bleu); }
+.theme-fusion .fx-lieu-ledger .r.w .l::before { background: var(--ocre); }
+/* Tiroir et téléphone : une colonne, la photo après le chiffre. */
+.theme-fusion .fx-drawer-body .fx-lieu-hero { grid-template-columns: minmax(0, 1fr); margin-top: 8px; }
+.theme-fusion .fx-drawer-body .fx-lieu-hero-photo { min-height: 0; aspect-ratio: 2 / 1; order: 2; }
+@media (max-width: 720px) {
+  .theme-fusion .fx-lieu-hero { grid-template-columns: minmax(0, 1fr); gap: 18px; margin: 18px 0 36px; }
+  .theme-fusion .fx-lieu-hero-photo { min-height: 0; aspect-ratio: 2 / 1; order: 2; }
+  .theme-fusion .fx-lieu-hero .fx-v3-hero-num { font-size: clamp(44px, 12vw, 56px); }
+}
+/* ── Les moments du Conseil : un rail chronologique ────────────────────────
+ * Un fil vertical entre la date et le titre, une pastille rouge par séance :
+ * la liste se lit comme une frise, ce qu'elle est. Désactivé quand la date
+ * passe au-dessus du titre (téléphone, tiroir). */
+.theme-fusion .fx-v3-mom { position: relative; }
+.theme-fusion .fx-v3-mom::before { content: ""; position: absolute; left: 117px; top: 0; bottom: -1px; width: 1px; background: var(--rule); }
+.theme-fusion .fx-v3-mom::after { content: ""; position: absolute; left: 113px; top: 21px; width: 9px; height: 9px; border-radius: 50%; background: var(--rouge); box-shadow: 0 0 0 3px var(--bg); }
+.theme-fusion .fx-v3-more .fx-v3-mom::after { top: 17px; }
+.theme-fusion .fx-drawer-body .fx-v3-mom::before, .theme-fusion .fx-drawer-body .fx-v3-mom::after { display: none; }
+@media (max-width: 720px) {
+  .theme-fusion .fx-v3-mom::before, .theme-fusion .fx-v3-mom::after { display: none; }
+}
 .theme-fusion .fx-v3-section { margin: 0 0 48px; }
 .theme-fusion .fx-v3-h2 {
   font-family: var(--f-disp); font-weight: 700; font-size: 24px; letter-spacing: -.02em;

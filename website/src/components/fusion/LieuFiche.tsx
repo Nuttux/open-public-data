@@ -272,46 +272,77 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
 
   return (
     <div className="fx-v3">
-      {lieu.photo && (
-        <div className="fx-fiche-thumb-wrap" style={{ position: "relative" }}>
-          <img src={lieu.photo} alt={lieu.name} className="fx-fiche-thumb fx-v3-photo" />
-          {lieu.photo_credit?.url && (
-            <a href={lieu.photo_credit.url} target="_blank" rel="noopener noreferrer" className="fx-v3-credit">
-              {lieu.photo_credit.licence ? `© ${lieu.photo_credit.licence} · ` : ""}
-              {lieu.photo_credit.source}
-            </a>
-          )}
-        </div>
-      )}
-
-      {leadMain && (
-        <p className="fx-v3-lead">
-          {leadMain}{" "}
-          {lieu.wiki.url && (
-            <a href={lieu.wiki.url} target="_blank" rel="noopener noreferrer" className="fx-v3-lead-link">
-              {en ? "Wikipedia ↗" : "Wikipédia ↗"}
-            </a>
-          )}
-        </p>
-      )}
-
-      {/* ── Le chiffre — versé si on en a, sinon le plafond, sinon rien ── */}
-      {reelTotal > 0 ? (
-        <div className="fx-v3-hero">
-          <div className="fx-v3-hero-num tnum">{fmtEur(heroTotal).v}<span className="u">{fmtEur(heroTotal).u}</span></div>
-          <div className="fx-v3-hero-cap">
-            {verseSpan && verseSpan[0] !== verseSpan[1]
-              ? fill(t("fx.lieu.hero.verse"), { y: heroDepuis })
-              : fill(t("fx.lieu.hero.verse_one"), { y: verseSpan?.[1] ?? "" })}
+      {/* ── Le premier écran : le nom (au-dessus, dans la page), le chiffre,
+       *    les deux flux et la photo, ensemble. Avant, le chiffre n'arrivait
+       *    qu'à 800 px du haut, sous la ligne de flottaison d'un portable :
+       *    toute la promesse de la page est l'argent et il fallait défiler
+       *    pour le voir. La photo passe à droite du chiffre au lieu de le
+       *    repousser ; le petit livre de compte reprend les deux couleurs des
+       *    graphes du dessous, pour que l'œil les retrouve. */}
+      {(reelTotal > 0 || plafond > 0 || lieu.photo) && (
+        <div className={`fx-lieu-hero${lieu.photo ? "" : " sans-photo"}`}>
+          <div className="fx-lieu-hero-txt">
+            {reelTotal > 0 ? (
+              <>
+                <div className="fx-v3-hero-num tnum">{fmtEur(heroTotal).v}<span className="u">{fmtEur(heroTotal).u}</span></div>
+                <div className="fx-v3-hero-cap">
+                  {verseSpan && verseSpan[0] !== verseSpan[1]
+                    ? fill(t("fx.lieu.hero.verse"), { y: heroDepuis })
+                    : fill(t("fx.lieu.hero.verse_one"), { y: verseSpan?.[1] ?? "" })}
+                </div>
+                {(subvDansFenetre > 0 || travauxDansFenetre > 0) && (
+                  <div className="fx-lieu-ledger" aria-hidden="true">
+                    {subvDansFenetre > 0 && (
+                      <div className="r x">
+                        <span className="l">{cap(fill(t("fx.lieu.line.exploitant"), { k: kindTxt }))}</span>
+                        <span className="a tnum">{eurTxt(subvDansFenetre)}</span>
+                        <span className="p tnum">{pctTxt(subvDansFenetre)}</span>
+                        <span className="b"><span style={{ width: `${(subvDansFenetre / (heroTotal || 1)) * 100}%` }} /></span>
+                      </div>
+                    )}
+                    {travauxDansFenetre > 0 && (
+                      <div className="r w">
+                        <span className="l">{t("fx.lieu.line.travaux")}</span>
+                        <span className="a tnum">{eurTxt(travauxDansFenetre)}</span>
+                        <span className="p tnum">{pctTxt(travauxDansFenetre)}</span>
+                        <span className="b"><span style={{ width: `${(travauxDansFenetre / (heroTotal || 1)) * 100}%` }} /></span>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </>
+            ) : plafond > 0 ? (
+              <>
+                <div className="fx-v3-hero-num tnum">{fmtEur(plafond).v}<span className="u">{fmtEur(plafond).u}</span></div>
+                <div className="fx-v3-hero-cap">{t("fx.lieu.hero.engage")}</div>
+              </>
+            ) : null}
+            {leadMain && (
+              <p className="fx-v3-lead">
+                {leadMain}{" "}
+                {lieu.wiki.url && (
+                  <a href={lieu.wiki.url} target="_blank" rel="noopener noreferrer" className="fx-v3-lead-link">
+                    {en ? "Wikipedia ↗" : "Wikipédia ↗"}
+                  </a>
+                )}
+              </p>
+            )}
           </div>
+          {lieu.photo && (
+            <div className="fx-lieu-hero-photo">
+              <img src={lieu.photo} alt={lieu.name} className="fx-v3-photo" />
+              {lieu.photo_credit?.url && (
+                <a href={lieu.photo_credit.url} target="_blank" rel="noopener noreferrer" className="fx-v3-credit">
+                  {lieu.photo_credit.licence ? `© ${lieu.photo_credit.licence} · ` : ""}
+                  {lieu.photo_credit.source}
+                </a>
+              )}
+            </div>
+          )}
         </div>
-      ) : plafond > 0 ? (
-        <div className="fx-v3-hero">
-          <div className="fx-v3-hero-num tnum">{fmtEur(plafond).v}<span className="u">{fmtEur(plafond).u}</span></div>
-          <div className="fx-v3-hero-cap">{t("fx.lieu.hero.engage")}</div>
-        </div>
-      ) : (
-        lieu.residents.length === 0 && <p className="fx-v3-foot" style={{ margin: "20px 0 32px" }}>{t("fx.lieu.argent_absent")}</p>
+      )}
+      {reelTotal === 0 && plafond === 0 && lieu.residents.length === 0 && (
+        <p className="fx-v3-foot" style={{ margin: "20px 0 32px" }}>{t("fx.lieu.argent_absent")}</p>
       )}
 
       {/* ── Où va l'argent ─────────────────────────────────────────────── */}
