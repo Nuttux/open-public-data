@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:56:10.126711+00:00",
+  "generated_at": "2026-09-11T14:25:25.461202+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "porte-de-la-chapelle",
   "name": "Porte de la Chapelle",
@@ -16,7 +16,7 @@
     "url": "https://commons.wikimedia.org/wiki/File:Sprague-Thomson_%C3%A0_Porte_de_La_Chapelle_(17_juin_2006).jpg",
     "source": "Wikimedia Commons"
   },
-  "seuil_commun": 2013,
+  "seuil_commun": 2010,
   "wiki": {
     "extract": "La porte de la Chapelle, de son nom complet porte de la Chapelle-Saint-Denis est l'une des 17 portes percées dans l'enceinte de Thiers au milieu du XIXe siècle pour protéger Paris, en France.",
     "url": "https://fr.wikipedia.org/wiki/Porte_de_la_Chapelle",

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T19:39:48.919146",
+  "generated_at": "2026-09-11T16:24:23.125531",
   "source": "dbt marts (mart_subventions_treemap, mart_subventions_beneficiaires)",
   "availableYears": [
     2024,
@@ -13,7 +13,10 @@
     2016,
     2015,
     2014,
-    2013
+    2013,
+    2012,
+    2011,
+    2010
   ],
   "totalsByYear": {
     "2024": {
@@ -57,12 +60,24 @@
       "nb_subventions": 3504
     },
     "2014": {
-      "montant_total": 1362113353.96,
+      "montant_total": 1362113353.9600003,
       "nb_subventions": 3501
     },
     "2013": {
       "montant_total": 1265816522.23,
       "nb_subventions": 3638
+    },
+    "2012": {
+      "montant_total": 1051562457.15,
+      "nb_subventions": 2425
+    },
+    "2011": {
+      "montant_total": 949956726.6000001,
+      "nb_subventions": 2459
+    },
+    "2010": {
+      "montant_total": 964726146.8000001,
+      "nb_subventions": 2557
     }
   },
   "filters": {
@@ -73,10 +88,10 @@
       "Éducation",
       "Non classifié",
       "Économie",
+      "Administration",
       "Transport",
       "Social - Petite enfance",
       "Sport",
-      "Administration",
       "Sécurité",
       "Santé",
       "International",

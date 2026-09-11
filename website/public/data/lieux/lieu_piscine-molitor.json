@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:56:10.126711+00:00",
+  "generated_at": "2026-09-11T14:25:25.461202+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "piscine-molitor",
   "name": "Piscine Molitor",
@@ -16,7 +16,7 @@
     "url": "https://fr.wikipedia.org/wiki/Piscine_Molitor",
     "source": "Wikipédia"
   },
-  "seuil_commun": 2013,
+  "seuil_commun": 2010,
   "wiki": {
     "extract": "La piscine Molitor est un complexe nautique et hôtelier jouxtant le bois de Boulogne, entre le stade Roland-Garros et le Parc des Princes, dans le 16e arrondissement de Paris. Inaugurée en 1929 par les nageurs médaillés olympiques Aileen Riggin Soule et Johnny Weissmuller, elle est restée célèbre pour sa décoration Art déco et quelques événements comme la première apparition du bikini après 1945. Surnommée « le paquebot blanc », elle a fermé ses portes en 1989.",
     "url": "https://fr.wikipedia.org/wiki/Piscine_Molitor",

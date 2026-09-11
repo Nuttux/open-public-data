@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:56:10.126711+00:00",
+  "generated_at": "2026-09-11T14:25:25.461202+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "musee-cognacq-jay",
   "name": "Musée Cognacq-Jay",
@@ -16,7 +16,7 @@
     "url": "https://commons.wikimedia.org/wiki/File:Cognacq-Jay_mus%C3%A9e_int%C3%A9rieur_XVIIIe.jpg",
     "source": "Wikimedia Commons"
   },
-  "seuil_commun": 2013,
+  "seuil_commun": 2010,
   "wiki": {
     "extract": "Le musée Cognacq-Jay est un musée municipal de la Ville de Paris présentant une collection d'œuvres et d'objets d'art du XVIIIe siècle issue du legs d'Ernest Cognacq.",
     "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_Cognacq-Jay",

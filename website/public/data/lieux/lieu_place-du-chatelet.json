@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:56:10.126711+00:00",
+  "generated_at": "2026-09-11T14:25:25.461202+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "place-du-chatelet",
   "name": "Place du Châtelet",
@@ -16,7 +16,7 @@
     "url": "https://commons.wikimedia.org/wiki/File:Paris_1er_-_Place_du_Ch%C3%A2telet_-_Th%C3%A9%C3%A2tre_du_Ch%C3%A2telet_-_Fa%C3%A7ade_est_-_Paratonnerre_et_angelots_du_toit.jpg",
     "source": "Wikimedia Commons"
   },
-  "seuil_commun": 2013,
+  "seuil_commun": 2010,
   "wiki": {
     "extract": "La place du Châtelet est située à cheval sur le 1er et le 4e arrondissement de Paris, au bord de la Seine, à l'entrée du pont au Change.",
     "url": "https://fr.wikipedia.org/wiki/Place_du_Ch%C3%A2telet",

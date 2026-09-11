@@ -1,6 +1,6 @@
 {
   "year": 2016,
-  "generated_at": "2026-09-10T19:40:12.025364",
+  "generated_at": "2026-09-11T16:24:45.181770",
   "total_montant": 1260982793.3899999,
   "nb_beneficiaires": 3215,
   "data": [
@@ -1591,7 +1591,7 @@
       "source_thematique": "direction",
       "montant_total": 1014000.0,
       "nb_subventions": 1,
-      "objet_principal": "Acompte 2016 - Délibération 2015 DAC 603",
+      "objet_principal": "fonctionnement 2016 - Délibération 216 DAC 242",
       "siret": "32590961200047"
     },
     {
@@ -2611,7 +2611,7 @@
       "source_thematique": "direction",
       "montant_total": 475310.0,
       "nb_subventions": 1,
-      "objet_principal": "Acompte 2016 Délibération 2015 DAC 603",
+      "objet_principal": "fonctionnement 2016 DAC 27",
       "siret": "34112346100046"
     },
     {
@@ -3016,7 +3016,7 @@
       "source_thematique": "direction",
       "montant_total": 365000.0,
       "nb_subventions": 2,
-      "objet_principal": "fonctionnement - Solde 2016 DAC 24",
+      "objet_principal": "fonctionnement - Acompte 2016 Délibération 2015 DAC 603",
       "siret": "32618492600011"
     },
     {
@@ -4741,7 +4741,7 @@
       "source_thematique": "direction",
       "montant_total": 173000.0,
       "nb_subventions": 1,
-      "objet_principal": "Impliquer les entreprises en faveur de l'inclusion sociale et du développement de l'emploi",
+      "objet_principal": "Mobiliser les entreprises sur Paris pour des actions emploi, alternance, lutte contre les exclusions",
       "siret": "49241040200027"
     },
     {
@@ -8371,7 +8371,7 @@
       "source_thematique": "direction",
       "montant_total": 67500.0,
       "nb_subventions": 1,
-      "objet_principal": "PRINTEMPS DES RUES 2016 - Solde 2016",
+      "objet_principal": "PRINTEMPS DES RUES 2016 - Acompte 2016",
       "siret": "41778123400048"
     },
     {
@@ -13186,7 +13186,7 @@
       "source_thematique": "llm",
       "montant_total": 30000.0,
       "nb_subventions": 1,
-      "objet_principal": "Permanence Droits Sociaux d'Act Up-Paris",
+      "objet_principal": "fonctionnement",
       "siret": "39489556900033"
     },
     {
@@ -17131,7 +17131,7 @@
       "source_thematique": "llm",
       "montant_total": 20000.0,
       "nb_subventions": 1,
-      "objet_principal": "Médiatiser et valoriser la prise de parole des migrants",
+      "objet_principal": "OUTILS D'APPRENTISSAGE LINGUISTIQUE A DESTINATION DES MIGRANTS",
       "siret": "49372134400031"
     },
     {
@@ -28951,7 +28951,7 @@
       "source_thematique": "direction",
       "montant_total": 7000.0,
       "nb_subventions": 2,
-      "objet_principal": "Dispositif Paris Collèges Familles- collège Rouault",
+      "objet_principal": "Paris Collèges Familles- collège Michelet",
       "siret": "42423937400046"
     },
     {
@@ -33856,7 +33856,7 @@
       "source_thematique": "llm",
       "montant_total": 4500.0,
       "nb_subventions": 1,
-      "objet_principal": "Atelier de jeu pour l'apprentissage du français - Territoire Belleville, Amandiers Pelleport",
+      "objet_principal": "LUDICONTE",
       "siret": "80306608300012"
     },
     {

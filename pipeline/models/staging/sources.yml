@@ -264,12 +264,15 @@ sources:
           Utilisée pour combler le trou OpenData sur 2020 et 2021 où le
           nom du bénéficiaire est NULL côté portail.
 
-          ~29k lignes, années 2020 et 2021 (extensible à d'autres exercices
-          si l'OpenData régresse).
+          ~29k lignes pour 2020 et 2021, plus ~14k lignes pour 2010-2012
+          extraites de l'annexe M14 équivalente (B1.6/B1.7) par
+          `parse_subv_pdf_m14.py` — la Ville ne publie aucune subvention en
+          open data avant 2013, mais ces listes existaient en PDF sur un
+          mini-site archivé (labs.paris.fr, Wayback Machine).
         loaded_at_field: loaded_at
         columns:
           - name: annee
-            description: "Année d'exercice (INTEGER, 2020 ou 2021)"
+            description: "Année d'exercice (INTEGER : 2010-2012 M14, 2020-2021 M57)"
           - name: source_pdf
             description: "URL du PDF source (Tome 3 du CA)"
           - name: source_section

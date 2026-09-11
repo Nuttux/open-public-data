@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:56:10.126711+00:00",
+  "generated_at": "2026-09-11T14:25:25.461202+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "stade-jean-bouin",
   "name": "Stade Jean-Bouin",
@@ -16,7 +16,7 @@
     "url": "https://fr.wikipedia.org/wiki/Stade_Jean-Bouin_(Paris)",
     "source": "Wikipédia"
   },
-  "seuil_commun": 2013,
+  "seuil_commun": 2010,
   "wiki": {
     "extract": "Le stade Jean-Bouin est un stade inauguré en 1928 et situé dans le 16e arrondissement de Paris. Il est principalement destiné à la pratique du rugby à XV et du football. Sa capacité actuelle est de 19 607 places.",
     "url": "https://fr.wikipedia.org/wiki/Stade_Jean-Bouin_(Paris)",

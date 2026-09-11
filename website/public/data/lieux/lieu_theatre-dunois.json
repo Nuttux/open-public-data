@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:56:10.126711+00:00",
+  "generated_at": "2026-09-11T14:25:25.461202+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "theatre-dunois",
   "name": "Théâtre Dunois",
@@ -16,7 +16,7 @@
     "url": "https://commons.wikimedia.org/wiki/File:Au_th%C3%A9%C3%A2tre_des_Vari%C3%A9t%C3%A9s,_par_DranerLe_beau_Dunois._Paris_Mus%C3%A9es_20230818171655.jpg",
     "source": "Wikimedia Commons"
   },
-  "seuil_commun": 2013,
+  "seuil_commun": 2010,
   "wiki": {
     "extract": null,
     "url": null,
@@ -42,9 +42,9 @@
   },
   "subventions_exploitant": {
     "nom_fiche": "LA MAISON OUVERTE",
-    "total_eur": 1849228.8,
+    "total_eur": 2172653.8,
     "annees": [
-      "2013",
+      "2010",
       "2024"
     ],
     "rows": [
@@ -117,6 +117,24 @@
       {
         "annee": "2013",
         "montant_eur": 117000.0,
+        "beneficiaire": "LA MAISON OUVERTE",
+        "thematique": "Social - Petite enfance"
+      },
+      {
+        "annee": "2012",
+        "montant_eur": 112000.0,
+        "beneficiaire": "LA MAISON OUVERTE",
+        "thematique": "Social - Petite enfance"
+      },
+      {
+        "annee": "2011",
+        "montant_eur": 108000.0,
+        "beneficiaire": "LA MAISON OUVERTE",
+        "thematique": "Social - Petite enfance"
+      },
+      {
+        "annee": "2010",
+        "montant_eur": 103425.0,
         "beneficiaire": "LA MAISON OUVERTE",
         "thematique": "Social - Petite enfance"
       }

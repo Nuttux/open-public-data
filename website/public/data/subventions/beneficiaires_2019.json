@@ -1,6 +1,6 @@
 {
   "year": 2019,
-  "generated_at": "2026-09-10T19:40:04.222706",
+  "generated_at": "2026-09-11T16:24:37.876016",
   "total_montant": 1304037463.0,
   "nb_beneficiaires": 12093,
   "data": [
@@ -1456,7 +1456,7 @@
       "source_thematique": "direction",
       "montant_total": 1135904.0,
       "nb_subventions": 1,
-      "objet_principal": "Acompte 2019 DAC",
+      "objet_principal": "FONCTIONNEMENT 2019",
       "siret": "82349520500010"
     },
     {
@@ -1546,7 +1546,7 @@
       "source_thematique": "direction",
       "montant_total": 1019150.0,
       "nb_subventions": 1,
-      "objet_principal": "acompte 2019 DAC",
+      "objet_principal": "Subvention de fonctionnement 2019",
       "siret": "43353723000040"
     },
     {
@@ -1771,7 +1771,7 @@
       "source_thematique": "direction",
       "montant_total": 849000.0,
       "nb_subventions": 1,
-      "objet_principal": "Subvention de fonctionnement",
+      "objet_principal": "Acompte 2019 DAC",
       "siret": "37978422600050"
     },
     {
@@ -2956,7 +2956,7 @@
       "source_thematique": "direction",
       "montant_total": 327880.0,
       "nb_subventions": 1,
-      "objet_principal": "SUBVENTION DE FONCTIONNEMENT",
+      "objet_principal": "acompte 2019 DAC",
       "siret": "39864093800021"
     },
     {
@@ -3556,7 +3556,7 @@
       "source_thematique": "pattern",
       "montant_total": 240000.0,
       "nb_subventions": 1,
-      "objet_principal": "Subvention d'aide au fonctionnement 2019",
+      "objet_principal": "acompte de subvention 2019 - dac",
       "siret": "82095968200023"
     },
     {
@@ -3676,7 +3676,7 @@
       "source_thematique": "direction",
       "montant_total": 230000.0,
       "nb_subventions": 1,
-      "objet_principal": "SUBVENTION DE FONCTIONNEMENT 2019",
+      "objet_principal": "acompte 2019 DAC",
       "siret": "48957504300034"
     },
     {
@@ -14056,7 +14056,7 @@
       "source_thematique": "direction",
       "montant_total": 35000.0,
       "nb_subventions": 1,
-      "objet_principal": "Bea_BA (Bureau d'Entre Accompagnement Banane-Amandiers)",
+      "objet_principal": "subvention de fonctionnement pour les activités 2019 de la ktha compagnie et pour le projet Bea_BA",
       "siret": "43514736800045"
     },
     {
@@ -34381,7 +34381,7 @@
       "source_thematique": "direction",
       "montant_total": 5500.0,
       "nb_subventions": 1,
-      "objet_principal": "Un accès durable à l'éducation et à l'hygiène pour les enfants des  villages de Thad et NaHom (Lao",
+      "objet_principal": "Action en faveur des femmes de villages du sud du Laos : hygiène et nutrition",
       "siret": "49794116100026"
     },
     {
@@ -38491,7 +38491,7 @@
       "source_thematique": "llm",
       "montant_total": 4000.0,
       "nb_subventions": 1,
-      "objet_principal": "subvention complémentaire",
+      "objet_principal": "Association Arpejeh (accompagner la réalisation des projets d'éudes de jeunes élèves et étudiants ha",
       "siret": "50464306500023"
     },
     {

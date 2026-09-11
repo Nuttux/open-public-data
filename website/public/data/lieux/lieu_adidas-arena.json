@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:56:10.126711+00:00",
+  "generated_at": "2026-09-11T14:25:25.461202+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "adidas-arena",
   "name": "Adidas Arena",
@@ -16,7 +16,7 @@
     "url": "https://fr.wikipedia.org/wiki/Arena_Porte_de_la_Chapelle",
     "source": "Wikipédia"
   },
-  "seuil_commun": 2013,
+  "seuil_commun": 2010,
   "wiki": {
     "extract": "L’Adidas Arena est une salle polyvalente et modulable située dans le quartier de la Chapelle à Paris en France. Inaugurée le 11 février 2024, elle a été spécialement construite pour les Jeux olympiques d'été de 2024.",
     "url": "https://fr.wikipedia.org/wiki/Arena_Porte_de_la_Chapelle",

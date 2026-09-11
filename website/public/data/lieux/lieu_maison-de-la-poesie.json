@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:56:10.126711+00:00",
+  "generated_at": "2026-09-11T14:25:25.461202+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "maison-de-la-poesie",
   "name": "Maison de la Poésie",
@@ -16,7 +16,7 @@
     "url": "https://commons.wikimedia.org/wiki/File:Katia-Sofia_Hakim_%C3%A0_la_Maison_de_la_Po%C3%A9sie.jpg",
     "source": "Wikimedia Commons"
   },
-  "seuil_commun": 2013,
+  "seuil_commun": 2010,
   "wiki": {
     "extract": "La Maison de la Poésie de la Ville de Paris est un lieu de création, de diffusion et de rencontres créé en 1983 consacré initialement à la poésie contemporaine.",
     "url": "https://fr.wikipedia.org/wiki/Maison_de_la_Po%C3%A9sie",
@@ -42,9 +42,9 @@
   },
   "subventions_exploitant": {
     "nom_fiche": "MAISON DE LA POESIE",
-    "total_eur": 12463258.0,
+    "total_eur": 15242758.0,
     "annees": [
-      "2013",
+      "2010",
       "2024"
     ],
     "rows": [
@@ -117,6 +117,24 @@
       {
         "annee": "2013",
         "montant_eur": 1091299.0,
+        "beneficiaire": "MAISON DE LA POESIE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2012",
+        "montant_eur": 900000.0,
+        "beneficiaire": "MAISON DE LA POESIE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2011",
+        "montant_eur": 939500.0,
+        "beneficiaire": "MAISON DE LA POESIE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2010",
+        "montant_eur": 940000.0,
         "beneficiaire": "MAISON DE LA POESIE",
         "thematique": "Culture"
       }

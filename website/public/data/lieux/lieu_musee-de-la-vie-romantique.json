@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:56:10.126711+00:00",
+  "generated_at": "2026-09-11T14:25:25.461202+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "musee-de-la-vie-romantique",
   "name": "Musée de la Vie romantique",
@@ -16,7 +16,7 @@
     "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_de_la_Vie_romantique",
     "source": "Wikipédia"
   },
-  "seuil_commun": 2013,
+  "seuil_commun": 2010,
   "wiki": {
     "extract": "Le musée de la Vie romantique est situé dans le quartier de la Nouvelle Athènes du 9e arrondissement de Paris. Il est installé au 16, rue Chaptal, dans l’hôtel Scheffer-Renan, ancienne demeure du peintre d'origine hollandaise Ary Scheffer et foyer d'inspiration romantique durant la première partie du XIXe siècle.",
     "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_de_la_Vie_romantique",

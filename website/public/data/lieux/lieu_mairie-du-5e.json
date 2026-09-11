@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:56:10.126711+00:00",
+  "generated_at": "2026-09-11T14:25:25.461202+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "mairie-du-5e",
   "name": "Mairie du 5e",
@@ -11,7 +11,7 @@
   "lon": 2.3462,
   "photo": null,
   "photo_credit": null,
-  "seuil_commun": 2013,
+  "seuil_commun": 2010,
   "wiki": {
     "extract": null,
     "url": null,

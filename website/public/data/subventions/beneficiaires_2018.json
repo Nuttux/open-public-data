@@ -1,6 +1,6 @@
 {
   "year": 2018,
-  "generated_at": "2026-09-10T19:40:07.233752",
+  "generated_at": "2026-09-11T16:24:40.626374",
   "total_montant": 1241346409.0,
   "nb_beneficiaires": 9863,
   "data": [
@@ -661,7 +661,7 @@
       "source_thematique": "direction",
       "montant_total": 4603000.0,
       "nb_subventions": 2,
-      "objet_principal": "acompte 2018-dac",
+      "objet_principal": "Subvention de fonctionnement (complément de prix) 2018",
       "siret": "31390568900078"
     },
     {
@@ -1636,7 +1636,7 @@
       "source_thematique": "direction",
       "montant_total": 990000.0,
       "nb_subventions": 1,
-      "objet_principal": "acompte 2018-dac",
+      "objet_principal": "subvention de fonctionnement",
       "siret": "37978422600043"
     },
     {
@@ -2521,7 +2521,7 @@
       "source_thematique": "direction",
       "montant_total": 476000.0,
       "nb_subventions": 2,
-      "objet_principal": "acompte 2018",
+      "objet_principal": "Demande de subvention de fonctionnement pour le Mouffetard - Théâtre des arts de la marionnette",
       "siret": "34112346100046"
     },
     {
@@ -2866,7 +2866,7 @@
       "source_thematique": "direction",
       "montant_total": 394500.0,
       "nb_subventions": 2,
-      "objet_principal": "acompte 2018",
+      "objet_principal": "subvention de fonctionnement de l'étoile du nord , incluant \"L'art pour grandir\"",
       "siret": "32618492600011"
     },
     {
@@ -4141,7 +4141,7 @@
       "source_thematique": "direction",
       "montant_total": 192840.0,
       "nb_subventions": 1,
-      "objet_principal": "Acompte 2018 - DAC",
+      "objet_principal": "SUBVENTION DE FONCTIONNEMENT pourfinancement des opérations ECOLE ET CINEMAet MON 1ER CINEMA",
       "siret": "48154244700026"
     },
     {
@@ -4936,7 +4936,7 @@
       "source_thematique": "direction",
       "montant_total": 145000.0,
       "nb_subventions": 1,
-      "objet_principal": "acompte 2018-dac",
+      "objet_principal": "Art'R lieu de fabrique itinérant pour les Arts de la Rue à Paris et en Ile de France",
       "siret": "48232562800022"
     },
     {
@@ -6481,7 +6481,7 @@
       "source_thematique": "direction",
       "montant_total": 102500.0,
       "nb_subventions": 2,
-      "objet_principal": "WOMEN CODING ACADEMY",
+      "objet_principal": "DEVELOPPEUSE CERTIFIEE SALESFORCE",
       "siret": "53914519300022"
     },
     {
@@ -8356,7 +8356,7 @@
       "source_thematique": "direction",
       "montant_total": 75000.0,
       "nb_subventions": 2,
-      "objet_principal": "acompte 2018-dac",
+      "objet_principal": "fonctionnement",
       "siret": "32765797900040"
     },
     {
@@ -8476,7 +8476,7 @@
       "source_thematique": "direction",
       "montant_total": 75000.0,
       "nb_subventions": 1,
-      "objet_principal": "acompte 2018 - DAC",
+      "objet_principal": "Polynotes, Ecole de musique associative : fonctionnement et développement de l'activité",
       "siret": "39187280100041"
     },
     {
@@ -21526,7 +21526,7 @@
       "source_thematique": "direction",
       "montant_total": 14000.0,
       "nb_subventions": 1,
-      "objet_principal": "PARIS ILLUMINE PARIS 2017-2018",
+      "objet_principal": "PARIS ILLUMINE PARIS 2018-2019",
       "siret": "75010539700020"
     },
     {
@@ -29311,7 +29311,7 @@
       "source_thematique": "llm",
       "montant_total": 7000.0,
       "nb_subventions": 1,
-      "objet_principal": "Cadre  de vie et Education Ateliers intergénérationnels pour la planète pour construire le grand D",
+      "objet_principal": "Territoire d'Opéra: à toi de jouer!",
       "siret": "48909505900015"
     },
     {
@@ -31156,7 +31156,7 @@
       "source_thematique": "llm",
       "montant_total": 6000.0,
       "nb_subventions": 1,
-      "objet_principal": "Ligne d'écoute et visites à domicile",
+      "objet_principal": "Colloque \"Vieillir sans tabou\"",
       "siret": "82461308700017"
     },
     {
@@ -36181,7 +36181,7 @@
       "source_thematique": "llm",
       "montant_total": 4000.0,
       "nb_subventions": 1,
-      "objet_principal": "Fonds du Maire du 20e arrondissement",
+      "objet_principal": "LIEN SOCIAL - Village Borrégo",
       "siret": "53280222000022"
     },
     {

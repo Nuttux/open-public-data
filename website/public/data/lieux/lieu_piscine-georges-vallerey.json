@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:56:10.126711+00:00",
+  "generated_at": "2026-09-11T14:25:25.461202+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "piscine-georges-vallerey",
   "name": "Piscine Georges-Vallerey",
@@ -16,7 +16,7 @@
     "url": "https://commons.wikimedia.org/wiki/File:Piscine_Georges_Vallerey,_Paris_8_April_2017.jpg",
     "source": "Wikimedia Commons"
   },
-  "seuil_commun": 2013,
+  "seuil_commun": 2010,
   "wiki": {
     "extract": "La piscine Georges-Vallerey ou piscine des Tourelles est un complexe aquatique situé 148 avenue Gambetta, près de la porte des Lilas, dans le 20e arrondissement de Paris. Construite à l'occasion des Jeux olympiques d'été de 1924, la piscine était le siège de la Fédération française de natation, et de nombreuses éditions des championnats de France de natation y ont été organisées.",
     "url": "https://fr.wikipedia.org/wiki/Piscine_Georges-Vallerey",

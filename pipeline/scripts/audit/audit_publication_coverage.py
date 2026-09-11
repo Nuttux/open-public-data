@@ -186,8 +186,9 @@ FAMILLES = [
         "filtre_source": ('montant_de_la_subvention>0 '
                           'and nom_de_l_organisme_beneficiaire is not null'),
         "perimetre": "exact",
-        "exercices_hors_source": ["2020", "2021"],
-        "note_perimetre": "2020 et 2021 sont reconstruits depuis l'annexe PDF B8.1.1 (noms absents de l'open data)",
+        "exercices_hors_source": ["2010", "2011", "2012", "2020", "2021"],
+        "note_perimetre": "2020 et 2021 sont reconstruits depuis l'annexe PDF B8.1.1 (noms absents de l'open data) ; "
+                          "2010-2012 depuis l'annexe M14 équivalente, antérieure à tout open data",
     },
     {
         "id": "marches",

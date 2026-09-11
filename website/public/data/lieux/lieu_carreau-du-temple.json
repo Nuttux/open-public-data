@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:56:10.126711+00:00",
+  "generated_at": "2026-09-11T14:25:25.461202+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "carreau-du-temple",
   "name": "Carreau du Temple",
@@ -16,7 +16,7 @@
     "url": "https://fr.wikipedia.org/wiki/Carreau_du_Temple",
     "source": "Wikipédia"
   },
-  "seuil_commun": 2013,
+  "seuil_commun": 2010,
   "wiki": {
     "extract": "Le Carreau du Temple, situé dans le 3e arrondissement de Paris, est un ancien marché couvert du XIXe siècle. Sauvé de la démolition à la suite d'une mobilisation citoyenne, il est désormais un lieu culturel et sportif reposant sur une économie mixte publique-privée.",
     "url": "https://fr.wikipedia.org/wiki/Carreau_du_Temple",
@@ -43,9 +43,9 @@
   },
   "subventions_exploitant": {
     "nom_fiche": "SOCIETE PUBLIQUE LOCALE LE CARREAU DU TEMPLE",
-    "total_eur": 106050.0,
+    "total_eur": 1456050.0,
     "annees": [
-      "2014",
+      "2012",
       "2022"
     ],
     "rows": [
@@ -58,6 +58,12 @@
       {
         "annee": "2014",
         "montant_eur": 8800.0,
+        "beneficiaire": "SPL CARREAU DU TEMPLE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2012",
+        "montant_eur": 1350000.0,
         "beneficiaire": "SPL CARREAU DU TEMPLE",
         "thematique": "Culture"
       }

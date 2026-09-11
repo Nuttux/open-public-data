@@ -1,6 +1,6 @@
 # Couverture de publication — Ville × entrepôt × site
 
-Généré le 2026-09-10 depuis opendata.paris.fr. 9 séries, 25 constats (0 erreurs), dont 9 de notre côté et 16 du côté de la Ville.
+Généré le 2026-09-11 depuis opendata.paris.fr. 9 séries, 25 constats (0 erreurs), dont 9 de notre côté et 16 du côté de la Ville.
 
 
 ## Tableau croisé
@@ -11,7 +11,7 @@ Généré le 2026-09-10 depuis opendata.paris.fr. 9 séries, 25 constats (0 erre
 | Budget voté — budget principal | 2009→2021 | 2019→2026 | 10 | 2 |
 | Investissement — autorisations de programme (exécuté) | 2009→2022 | 2009→2022 | — | — |
 | Investissement — carte des projets localisés | 2018→2022 | 2018→2024 | — | — |
-| Subventions versées (annexe du compte administratif) | 2013→2024 | 2013→2024 | — | — |
+| Subventions versées (annexe du compte administratif) | 2013→2024 | 2010→2024 | — | — |
 | Marchés publics de la collectivité parisienne | 2013→2024 | 2013→2026 | — | — |
 | Logements sociaux financés | 2001→2025 | 2001→2025 | — | — |
 | Dette garantie par la Ville | 2007→2025 | 2007→2025 | — | — |

@@ -24,7 +24,7 @@
 --   - Normalisation nom bénéficiaire (pour jointures)
 --   - Typage: FLOAT64 pour montants
 --
--- Output: ~94k lignes, années 2013→2024 (+2025
+-- Output: ~108k lignes, années 2010→2024 (+2025
 --         si Annexe CA publiée).
 -- =============================================================================
 
@@ -124,7 +124,10 @@ opendata_cleaned AS (
 source_pdf_b811 AS (
     SELECT *
     FROM {{ source('paris_raw', 'pdf_subventions_b811_paris') }}
-    WHERE annee IN (2020, 2021)
+    -- 2020-2021 : annexe B8.1.1 (M57), trou de noms dans l'open data.
+    -- 2010-2012 : annexe B1.6/B1.7 (M14), avant tout open data ; retrouvée
+    -- dans l'archive du mini-site de la Ville, totaux contrôlés à l'euro.
+    WHERE annee IN (2010, 2011, 2012, 2020, 2021)
 ),
 
 -- Personnes physiques : agrégation RGPD (1 ligne par année)

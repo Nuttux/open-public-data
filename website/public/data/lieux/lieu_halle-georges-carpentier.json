@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:56:10.126711+00:00",
+  "generated_at": "2026-09-11T14:25:25.461202+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "halle-georges-carpentier",
   "name": "Halle Georges-Carpentier",
@@ -16,7 +16,7 @@
     "url": "https://fr.wikipedia.org/wiki/Halle_Georges-Carpentier",
     "source": "Wikipédia"
   },
-  "seuil_commun": 2013,
+  "seuil_commun": 2010,
   "wiki": {
     "extract": "La halle Georges-Carpentier est une salle polyvalente de 4 800 places, 5 009 en configuration basket-ball, située dans le 13e arrondissement de Paris, au 81, boulevard Masséna. Elle fait partie d'un centre sportif important qui comprend un gymnase, des terrains de football, de rugby et d'athlétisme.",
     "url": "https://fr.wikipedia.org/wiki/Halle_Georges-Carpentier",

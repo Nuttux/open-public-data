@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:56:10.126711+00:00",
+  "generated_at": "2026-09-11T14:25:25.461202+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "musee-carnavalet",
   "name": "Musée Carnavalet",
@@ -16,7 +16,7 @@
     "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_Carnavalet",
     "source": "Wikipédia"
   },
-  "seuil_commun": 2013,
+  "seuil_commun": 2010,
   "wiki": {
     "extract": "Le musée Carnavalet - Histoire de Paris est le musée municipal parisien consacré à l'histoire de Paris des origines de la ville à nos jours. Situé dans le quartier du Marais au no 23 rue Madame-de-Sévigné à Paris, dans le 3e arrondissement, il présente des collections sur des thématiques variées : souvenirs de la Révolution française, peintures historiques, sculptures, mobilier et décors des XVIIe et XVIIIe siècles, objets d'art, estampes, etc.",
     "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_Carnavalet",

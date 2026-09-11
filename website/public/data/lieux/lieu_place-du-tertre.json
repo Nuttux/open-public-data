@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:56:10.126711+00:00",
+  "generated_at": "2026-09-11T14:25:25.461202+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "place-du-tertre",
   "name": "Place du Tertre",
@@ -16,7 +16,7 @@
     "url": "https://commons.wikimedia.org/wiki/File:Restaurants,_Place_du_Tertre,_Paris_30_September_2019.jpg",
     "source": "Wikimedia Commons"
   },
-  "seuil_commun": 2013,
+  "seuil_commun": 2010,
   "wiki": {
     "extract": "La place du Tertre est située sur la butte Montmartre, dans le quartier de Clignancourt du 18e arrondissement de Paris, en France, à 130 m d'altitude. Place principale de l’ancien village de Montmartre et célèbre dans le monde entier pour ses artistes peintres et ses terrasses, de nombreux artistes y dressent leurs chevalets chaque jour pour les touristes. Elle est un des lieux de Paris les plus visités.",
     "url": "https://fr.wikipedia.org/wiki/Place_du_Tertre",

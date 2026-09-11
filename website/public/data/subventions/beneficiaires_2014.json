@@ -1,6 +1,6 @@
 {
   "year": 2014,
-  "generated_at": "2026-09-10T19:40:16.590567",
+  "generated_at": "2026-09-11T16:24:49.504410",
   "total_montant": 1362113353.96,
   "nb_beneficiaires": 3046,
   "data": [
@@ -344,7 +344,7 @@
       "thematique": "Logement",
       "sous_categorie": "Logement social HLM",
       "source_thematique": "pattern",
-      "montant_total": 8329120.510000001,
+      "montant_total": 8329120.51,
       "nb_subventions": 3,
       "objet_principal": null,
       "siret": null
@@ -13891,7 +13891,7 @@
       "source_thematique": "direction",
       "montant_total": 25600.0,
       "nb_subventions": 1,
-      "objet_principal": "appel a projet ARE2014 laboratoire musical",
+      "objet_principal": "appel à projet AREatelier learn and smile  : anglais en musique",
       "siret": "43963691100018"
     },
     {
@@ -36346,7 +36346,7 @@
       "source_thematique": "direction",
       "montant_total": 2800.0,
       "nb_subventions": 1,
-      "objet_principal": "Atelier Jeux de Société",
+      "objet_principal": "ARE Initiation à l'Origami",
       "siret": "50071895200012"
     },
     {

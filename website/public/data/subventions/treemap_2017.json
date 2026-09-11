@@ -1,6 +1,6 @@
 {
   "year": 2017,
-  "generated_at": "2026-09-10T19:40:08.019587",
+  "generated_at": "2026-09-11T16:24:41.392586",
   "total_montant": 1150092852.03,
   "nb_thematiques": 16,
   "data": [
@@ -9,7 +9,7 @@
       "thematique": "Social - Solidarité",
       "nb_beneficiaires": 362,
       "nb_subventions": 473,
-      "montant_total": 424706215.89,
+      "montant_total": 424706215.8899999,
       "pct_total": 36.93
     },
     {
@@ -25,7 +25,7 @@
       "thematique": "Logement",
       "nb_beneficiaires": 49,
       "nb_subventions": 67,
-      "montant_total": 174893622.52999997,
+      "montant_total": 174893622.53,
       "pct_total": 15.21
     },
     {

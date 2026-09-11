@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:56:10.126711+00:00",
+  "generated_at": "2026-09-11T14:25:25.461202+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "place-des-fetes",
   "name": "Place des Fêtes",
@@ -16,7 +16,7 @@
     "url": "https://commons.wikimedia.org/wiki/File:P1200479_Paris_XIX_place_des_Fetes_parvis_central_rwk.jpg",
     "source": "Wikimedia Commons"
   },
-  "seuil_commun": 2013,
+  "seuil_commun": 2010,
   "wiki": {
     "extract": "La place des Fêtes est une vaste place de l'est du 19e arrondissement de Paris, qui a donné son nom au quartier qui l'entoure.",
     "url": "https://fr.wikipedia.org/wiki/Place_des_F%C3%AAtes_(Paris)",

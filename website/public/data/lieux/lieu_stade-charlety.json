@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:56:10.126711+00:00",
+  "generated_at": "2026-09-11T14:25:25.461202+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "stade-charlety",
   "name": "Stade Charléty",
@@ -16,7 +16,7 @@
     "url": "https://fr.wikipedia.org/wiki/Stade_Charl%C3%A9ty",
     "source": "Wikipédia"
   },
-  "seuil_commun": 2013,
+  "seuil_commun": 2010,
   "wiki": {
     "extract": "Le stade Charléty, officiellement stade Sébastien-Charléty, est un complexe sportif omnisports de Paris, comprenant un stade d'une capacité de 19 151 places assises, un terrain d'entraînement, la salle omnisports Pierre Charpy, des salles spécialisées et des courts de tennis et de squash. Il abrite également la Maison du sport français, avec les bureaux du Comité national olympique et sportif français et la Fédération française d'athlétisme.",
     "url": "https://fr.wikipedia.org/wiki/Stade_Charl%C3%A9ty",

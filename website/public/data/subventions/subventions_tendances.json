@@ -1,8 +1,359 @@
 {
-  "generated_at": "2026-09-10T19:40:42.995595",
+  "generated_at": "2026-09-11T16:25:24.641391",
   "source": "dbt marts (mart_subventions_beneficiaires)",
   "note_perimetre": "Tous les bénéficiaires (long tail complet, aucun cap).",
   "years": [
+    {
+      "year": 2010,
+      "total_montant": 964726146.8000001,
+      "nb_subventions": 2557,
+      "nb_beneficiaires": 2557,
+      "par_thematique": [
+        {
+          "label": "Administration",
+          "montant": 367068835.8000001,
+          "count": 68
+        },
+        {
+          "label": "Logement",
+          "montant": 164204656.11,
+          "count": 20
+        },
+        {
+          "label": "Économie",
+          "montant": 153618235.3,
+          "count": 113
+        },
+        {
+          "label": "Culture",
+          "montant": 83457090.47,
+          "count": 304
+        },
+        {
+          "label": "Non classifié",
+          "montant": 62033427.269999996,
+          "count": 1272
+        },
+        {
+          "label": "Éducation",
+          "montant": 53440469.83,
+          "count": 177
+        },
+        {
+          "label": "Social - Solidarité",
+          "montant": 31871609.14,
+          "count": 172
+        },
+        {
+          "label": "Social - Petite enfance",
+          "montant": 21863532.97,
+          "count": 71
+        },
+        {
+          "label": "Sécurité",
+          "montant": 13754779.62,
+          "count": 4
+        },
+        {
+          "label": "Sport",
+          "montant": 7246519.0,
+          "count": 225
+        },
+        {
+          "label": "Santé",
+          "montant": 2886245.0,
+          "count": 25
+        },
+        {
+          "label": "Autre",
+          "montant": 1087664.0,
+          "count": 38
+        },
+        {
+          "label": "International",
+          "montant": 1019263.0,
+          "count": 31
+        },
+        {
+          "label": "Environnement",
+          "montant": 665069.0,
+          "count": 25
+        },
+        {
+          "label": "Transport",
+          "montant": 362013.29,
+          "count": 3
+        },
+        {
+          "label": "Social",
+          "montant": 146737.0,
+          "count": 9
+        }
+      ],
+      "par_direction": [
+        {
+          "label": "Non renseignée",
+          "montant": 964726146.7999998,
+          "count": 2557
+        }
+      ],
+      "par_type_organisme": [
+        {
+          "label": "Autres",
+          "montant": 532574184.22000015,
+          "count": 175
+        },
+        {
+          "label": "Entreprises",
+          "montant": 236648756.48,
+          "count": 159
+        },
+        {
+          "label": "Associations",
+          "montant": 194860520.71,
+          "count": 2222
+        },
+        {
+          "label": "Personnes physiques",
+          "montant": 642685.3899999993,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "year": 2011,
+      "total_montant": 949956726.6,
+      "nb_subventions": 2459,
+      "nb_beneficiaires": 2459,
+      "par_thematique": [
+        {
+          "label": "Administration",
+          "montant": 392234449.51,
+          "count": 70
+        },
+        {
+          "label": "Logement",
+          "montant": 149459486.57000002,
+          "count": 21
+        },
+        {
+          "label": "Économie",
+          "montant": 102218874.39999998,
+          "count": 129
+        },
+        {
+          "label": "Éducation",
+          "montant": 86330416.38000001,
+          "count": 179
+        },
+        {
+          "label": "Culture",
+          "montant": 84075808.82000002,
+          "count": 330
+        },
+        {
+          "label": "Non classifié",
+          "montant": 69392914.57000001,
+          "count": 1096
+        },
+        {
+          "label": "Social - Petite enfance",
+          "montant": 25091471.45,
+          "count": 71
+        },
+        {
+          "label": "Social - Solidarité",
+          "montant": 18233624.83,
+          "count": 197
+        },
+        {
+          "label": "Sécurité",
+          "montant": 9074362.74,
+          "count": 4
+        },
+        {
+          "label": "Sport",
+          "montant": 7760654.0,
+          "count": 219
+        },
+        {
+          "label": "Santé",
+          "montant": 2382287.0,
+          "count": 25
+        },
+        {
+          "label": "International",
+          "montant": 1216133.0,
+          "count": 34
+        },
+        {
+          "label": "Autre",
+          "montant": 1168838.33,
+          "count": 42
+        },
+        {
+          "label": "Environnement",
+          "montant": 1095529.0,
+          "count": 29
+        },
+        {
+          "label": "Social",
+          "montant": 194619.0,
+          "count": 10
+        },
+        {
+          "label": "Transport",
+          "montant": 27257.0,
+          "count": 3
+        }
+      ],
+      "par_direction": [
+        {
+          "label": "Non renseignée",
+          "montant": 949956726.6,
+          "count": 2459
+        }
+      ],
+      "par_type_organisme": [
+        {
+          "label": "Autres",
+          "montant": 568703742.2000002,
+          "count": 185
+        },
+        {
+          "label": "Associations",
+          "montant": 196340723.13999993,
+          "count": 2093
+        },
+        {
+          "label": "Entreprises",
+          "montant": 184229148.92000008,
+          "count": 180
+        },
+        {
+          "label": "Personnes physiques",
+          "montant": 683112.3399999996,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "year": 2012,
+      "total_montant": 1051562457.15,
+      "nb_subventions": 2425,
+      "nb_beneficiaires": 2425,
+      "par_thematique": [
+        {
+          "label": "Administration",
+          "montant": 360000615.1399999,
+          "count": 73
+        },
+        {
+          "label": "Logement",
+          "montant": 221743302.45,
+          "count": 27
+        },
+        {
+          "label": "Économie",
+          "montant": 113395192.13999997,
+          "count": 160
+        },
+        {
+          "label": "Éducation",
+          "montant": 107340808.72,
+          "count": 149
+        },
+        {
+          "label": "Culture",
+          "montant": 89112579.15999998,
+          "count": 365
+        },
+        {
+          "label": "Non classifié",
+          "montant": 76283422.24999999,
+          "count": 981
+        },
+        {
+          "label": "Social - Solidarité",
+          "montant": 31197670.130000003,
+          "count": 211
+        },
+        {
+          "label": "Social - Petite enfance",
+          "montant": 29726342.72,
+          "count": 71
+        },
+        {
+          "label": "Sécurité",
+          "montant": 8692046.18,
+          "count": 4
+        },
+        {
+          "label": "Sport",
+          "montant": 8291957.9399999995,
+          "count": 222
+        },
+        {
+          "label": "Santé",
+          "montant": 2099627.0,
+          "count": 25
+        },
+        {
+          "label": "International",
+          "montant": 1220115.0,
+          "count": 40
+        },
+        {
+          "label": "Environnement",
+          "montant": 1211997.0,
+          "count": 34
+        },
+        {
+          "label": "Autre",
+          "montant": 1027577.32,
+          "count": 50
+        },
+        {
+          "label": "Social",
+          "montant": 216447.0,
+          "count": 11
+        },
+        {
+          "label": "Transport",
+          "montant": 2757.0,
+          "count": 2
+        }
+      ],
+      "par_direction": [
+        {
+          "label": "Non renseignée",
+          "montant": 1051562457.15,
+          "count": 2425
+        }
+      ],
+      "par_type_organisme": [
+        {
+          "label": "Autres",
+          "montant": 604611715.29,
+          "count": 138
+        },
+        {
+          "label": "Entreprises",
+          "montant": 250958120.8100001,
+          "count": 210
+        },
+        {
+          "label": "Associations",
+          "montant": 195183562.32,
+          "count": 2076
+        },
+        {
+          "label": "Personnes physiques",
+          "montant": 809058.7299999993,
+          "count": 1
+        }
+      ]
+    },
     {
       "year": 2013,
       "total_montant": 1265816522.23,

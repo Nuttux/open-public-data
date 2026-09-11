@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:56:10.126711+00:00",
+  "generated_at": "2026-09-11T14:25:25.461202+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "fontaine-de-mars",
   "name": "Fontaine de Mars",
@@ -16,7 +16,7 @@
     "url": "https://commons.wikimedia.org/wiki/File:Boucherie_de_la_Fontaine_de_Mars,_112_rue_Saint-Dominique_Paris_7e.jpg",
     "source": "Wikimedia Commons"
   },
-  "seuil_commun": 2013,
+  "seuil_commun": 2010,
   "wiki": {
     "extract": "La fontaine de Mars, également appelée fontaine du Gros-Caillou, est une fontaine du 7e arrondissement de Paris, en France.",
     "url": "https://fr.wikipedia.org/wiki/Fontaine_de_Mars",

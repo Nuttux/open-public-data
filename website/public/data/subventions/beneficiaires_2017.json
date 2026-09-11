@@ -1,6 +1,6 @@
 {
   "year": 2017,
-  "generated_at": "2026-09-10T19:40:09.966460",
+  "generated_at": "2026-09-11T16:24:42.878553",
   "total_montant": 1150092852.03,
   "nb_beneficiaires": 3220,
   "data": [
@@ -571,7 +571,7 @@
       "source_thematique": "direction",
       "montant_total": 4626000.0,
       "nb_subventions": 2,
-      "objet_principal": "Fonctionnement/Solde de subvention 2017",
+      "objet_principal": "acompte 2017/dac",
       "siret": "31390568900078"
     },
     {
@@ -1501,7 +1501,7 @@
       "source_thematique": "direction",
       "montant_total": 1004500.0,
       "nb_subventions": 1,
-      "objet_principal": "solde de fonctionnement",
+      "objet_principal": "acompte 2017-dac",
       "siret": "32590961200047"
     },
     {
@@ -7276,7 +7276,7 @@
       "source_thematique": "direction",
       "montant_total": 85000.0,
       "nb_subventions": 2,
-      "objet_principal": "Fonctionnement/Solde de subvention 2017",
+      "objet_principal": "acompte 2017 - DAC",
       "siret": "32765797900040"
     },
     {
@@ -11281,7 +11281,7 @@
       "source_thematique": "llm",
       "montant_total": 40000.0,
       "nb_subventions": 1,
-      "objet_principal": "Soutien à l'action d'information et d'accompagnement autour des droits sociaux d'Act Up-Paris",
+      "objet_principal": "Soutien aux actions d'information et de prévention d'Act Up-Paris",
       "siret": "39489556900033"
     },
     {
@@ -12841,7 +12841,7 @@
       "source_thematique": "direction",
       "montant_total": 34000.0,
       "nb_subventions": 1,
-      "objet_principal": "ILLUMATIONS",
+      "objet_principal": "ILLUMINATION 2017",
       "siret": "53499878600014"
     },
     {
@@ -21556,7 +21556,7 @@
       "source_thematique": "llm",
       "montant_total": 12700.0,
       "nb_subventions": 1,
-      "objet_principal": "Atelier Cuisine BIO",
+      "objet_principal": "aap pvi Offrir un lieu de partage et de convivialité aux seniors du quartier",
       "siret": "48978535200019"
     },
     {
@@ -22096,7 +22096,7 @@
       "source_thematique": "direction",
       "montant_total": 12000.0,
       "nb_subventions": 1,
-      "objet_principal": "Fil Manfa - soutien aux lieux d'accueil d'artistes en exil en proximité des zones de conflits",
+      "objet_principal": "Fonds Tamteen",
       "siret": "48175619500014"
     },
     {
@@ -25336,7 +25336,7 @@
       "source_thematique": "direction",
       "montant_total": 9750.0,
       "nb_subventions": 2,
-      "objet_principal": "Dispositif \"Paris Collèges Familles\" : Intervention de l'Entraide Scolaire Amicale au collège Germai",
+      "objet_principal": "Dispositif \"Paris Collèges Familles\" : intervention de l'Entraide Scolaire Amicale au collège George",
       "siret": "42423937400046"
     },
     {
@@ -29236,7 +29236,7 @@
       "source_thematique": "llm",
       "montant_total": 6000.0,
       "nb_subventions": 1,
-      "objet_principal": "semaine du film de la Caraïbe et Outre-Mer",
+      "objet_principal": "les mardis de l'outre mer",
       "siret": "48004476700014"
     },
     {
@@ -29716,7 +29716,7 @@
       "source_thematique": "llm",
       "montant_total": 6000.0,
       "nb_subventions": 1,
-      "objet_principal": "AAP PVI. CULTURE/CADRE DE VIE : Protocole d'Interprétation Créative d'un Territoired'Agglomé",
+      "objet_principal": "AAP PVI. CADRE DE VIE / CULTURE ¿ Balisage désOrienté Urbain et SenSible d¿Observateurs en Libe",
       "siret": "53798494000016"
     },
     {
@@ -34096,7 +34096,7 @@
       "source_thematique": "direction",
       "montant_total": 4000.0,
       "nb_subventions": 1,
-      "objet_principal": "bloche complémentaire m18",
+      "objet_principal": "amendement bloche",
       "siret": "83121146100015"
     },
     {

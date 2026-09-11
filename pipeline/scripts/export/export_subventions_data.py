@@ -152,8 +152,9 @@ def fetch_beneficiaires_data(client: bigquery.Client, year: int = None, limit: i
 # l'ingestion du jeu 2013-2017 (la première moitié de la même annexe, que la
 # Ville a republiée sous un autre identifiant), le plancher jetait cinq
 # exercices et 6,19 Md€ déjà présents dans l'entrepôt. On descend à la première
-# année réellement disponible ; `--min-year` reste là pour un export restreint.
-MIN_YEAR_EXPORTED = 2013
+# année réellement disponible — 2010 depuis l'annexe M14 retrouvée le
+# 2026-09-11 ; `--min-year` reste là pour un export restreint.
+MIN_YEAR_EXPORTED = 2010
 
 
 def get_available_years(client: bigquery.Client) -> list:

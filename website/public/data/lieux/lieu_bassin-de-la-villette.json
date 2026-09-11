@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:56:10.126711+00:00",
+  "generated_at": "2026-09-11T14:25:25.461202+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "bassin-de-la-villette",
   "name": "Bassin de la Villette",
@@ -16,7 +16,7 @@
     "url": "https://fr.wikipedia.org/wiki/Bassin_de_la_Villette",
     "source": "Wikipédia"
   },
-  "seuil_commun": 2013,
+  "seuil_commun": 2010,
   "wiki": {
     "extract": "Le bassin de la Villette est le plus grand plan d'eau artificiel de Paris. Il a été mis en eau le 2 décembre 1808. Situé dans le 19e arrondissement de la capitale, il relie le canal de l'Ourcq et le canal Saint-Denis au canal Saint-Martin et constitue l'un des éléments du réseau des canaux parisiens.",
     "url": "https://fr.wikipedia.org/wiki/Bassin_de_la_Villette",

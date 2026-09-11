@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:56:10.126711+00:00",
+  "generated_at": "2026-09-11T14:25:25.461202+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "musee-zadkine",
   "name": "Musée Zadkine",
@@ -16,7 +16,7 @@
     "url": "https://commons.wikimedia.org/wiki/File:P1020116_Paris_VI_Rue_d%27Assas_Mus%C3%A9e_Zadkine_reductwk.JPG",
     "source": "Wikimedia Commons"
   },
-  "seuil_commun": 2013,
+  "seuil_commun": 2010,
   "wiki": {
     "extract": "Le musée Zadkine est un musée parisien consacré au sculpteur d'origine russe Ossip Zadkine (1890-1967) qui s'est établi à Paris en 1910. Il est situé no 100 bis, rue d'Assas, dans le 6e arrondissement de Paris. Il existe également un musée départemental dans le village des Arques dans le Lot, où vécut Ossip Zadkine.",
     "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_Zadkine",

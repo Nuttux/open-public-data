@@ -67,8 +67,8 @@ def tirage_subventions(rng, n):
     lignes = []
     for f in sorted(DATA.glob("subventions/beneficiaires_*.json")):
         an = f.stem.split("_")[-1]
-        if an in ("2020", "2021"):
-            continue      # reconstruits depuis le PDF B8.1.1, non interrogeables
+        if an in ("2010", "2011", "2012", "2020", "2021"):
+            continue      # reconstruits depuis les annexes PDF, non interrogeables au portail
         d = json.load(open(f))
         for r in d.get("data") or []:
             nom = str(r.get("beneficiaire") or "")

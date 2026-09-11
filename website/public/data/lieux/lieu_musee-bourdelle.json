@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:56:10.126711+00:00",
+  "generated_at": "2026-09-11T14:25:25.461202+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "musee-bourdelle",
   "name": "Musée Bourdelle",
@@ -16,7 +16,7 @@
     "url": "https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_Ingres-Bourdelle_-_La_Com%C3%A9die_-_Platre_-_Antoine_Bourdelle_Joconde06070001207.jpg",
     "source": "Wikimedia Commons"
   },
-  "seuil_commun": 2013,
+  "seuil_commun": 2010,
   "wiki": {
     "extract": "Le musée Bourdelle est l'un des quatorze musées de la Ville de Paris. Consacré à l'œuvre d'Antoine Bourdelle, il est situé dans le 15e arrondissement, sur les lieux où le sculpteur vivait et travaillait de 1885 à sa mort. Son adresse actuelle est no 18, rue Antoine-Bourdelle ; pendant la vie de Bourdelle, elle était no 16, impasse du Maine.",
     "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_Bourdelle",

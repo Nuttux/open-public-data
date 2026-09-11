@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:56:10.126711+00:00",
+  "generated_at": "2026-09-11T14:25:25.461202+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "hotel-de-ville",
   "name": "Hôtel de Ville",
@@ -16,7 +16,7 @@
     "url": "https://fr.wikipedia.org/wiki/H%C3%B4tel_de_ville_de_Paris",
     "source": "Wikipédia"
   },
-  "seuil_commun": 2013,
+  "seuil_commun": 2010,
   "wiki": {
     "extract": "L’hôtel de ville de Paris, communément appelé l’Hôtel de Ville, est le bâtiment qui héberge les institutions municipales de la Ville de Paris depuis 1357.",
     "url": "https://fr.wikipedia.org/wiki/H%C3%B4tel_de_ville_de_Paris",

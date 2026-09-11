@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:56:10.126711+00:00",
+  "generated_at": "2026-09-11T14:25:25.461202+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "square-rene-viviani",
   "name": "Square René-Viviani",
@@ -16,7 +16,7 @@
     "url": "https://commons.wikimedia.org/wiki/File:Square_Ren%C3%A9-Viviani,_Paris_5e_7.jpg",
     "source": "Wikimedia Commons"
   },
-  "seuil_commun": 2013,
+  "seuil_commun": 2010,
   "wiki": {
     "extract": "Le square René-Viviani est un espace vert situé dans le 5e arrondissement de Paris, près de la Seine.",
     "url": "https://fr.wikipedia.org/wiki/Square_Ren%C3%A9-Viviani",

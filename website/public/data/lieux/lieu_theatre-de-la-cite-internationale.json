@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:56:10.126711+00:00",
+  "generated_at": "2026-09-11T14:25:25.461202+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "theatre-de-la-cite-internationale",
   "name": "Théâtre de la Cité internationale",
@@ -16,7 +16,7 @@
     "url": "https://fr.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_de_la_Cit%C3%A9_internationale",
     "source": "Wikipédia"
   },
-  "seuil_commun": 2013,
+  "seuil_commun": 2010,
   "wiki": {
     "extract": "Le théâtre de la Cité internationale est une salle de spectacles parisienne située 17, boulevard Jourdan, dans le XIVe arrondissement au sein de la Cité internationale universitaire de Paris.",
     "url": "https://fr.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_de_la_Cit%C3%A9_internationale",

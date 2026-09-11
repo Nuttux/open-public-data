@@ -1,6 +1,6 @@
 {
   "year": 2015,
-  "generated_at": "2026-09-10T19:40:14.644409",
+  "generated_at": "2026-09-11T16:24:47.266572",
   "total_montant": 1149891407.56,
   "nb_beneficiaires": 3464,
   "data": [
@@ -18346,7 +18346,7 @@
       "source_thematique": "default",
       "montant_total": 19500.0,
       "nb_subventions": 1,
-      "objet_principal": "Citoyenneté, laïcité et valeurs de la République.\"Rire et réfléchir, une voie pour prévenir\"",
+      "objet_principal": "Quartier en En Ebull Ation",
       "siret": "44415455300028"
     },
     {
@@ -31036,7 +31036,7 @@
       "source_thematique": "direction",
       "montant_total": 6000.0,
       "nb_subventions": 1,
-      "objet_principal": "Résonances",
+      "objet_principal": "Résonances, Cartographie sonore et visuelle de la Ville de Paris",
       "siret": "51301383900024"
     },
     {
@@ -44251,7 +44251,7 @@
       "source_thematique": "default",
       "montant_total": 2000.0,
       "nb_subventions": 1,
-      "objet_principal": "ACTION CULTURELLE ET LINGUISTIQUE A DESTINATION DES MIGRANT_ES",
+      "objet_principal": "LE THÉÂTRE AU SERVICE DES ENFANTS",
       "siret": "45002852700031"
     },
     {

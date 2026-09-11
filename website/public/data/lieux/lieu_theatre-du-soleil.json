@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:56:10.126711+00:00",
+  "generated_at": "2026-09-11T14:25:25.461202+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "theatre-du-soleil",
   "name": "Théâtre du Soleil",
@@ -16,7 +16,7 @@
     "url": "https://commons.wikimedia.org/wiki/File:La_Justice_(dos)_-_Th%C3%A9%C3%A2tre_du_Soleil_-_Manifestation_du_11_f%C3%A9vrier_2023_%C3%A0_Paris.jpg",
     "source": "Wikimedia Commons"
   },
-  "seuil_commun": 2013,
+  "seuil_commun": 2010,
   "wiki": {
     "extract": null,
     "url": null,
@@ -42,9 +42,9 @@
   },
   "subventions_exploitant": {
     "nom_fiche": "THEATRE DU SOLEIL",
-    "total_eur": 928569.0,
+    "total_eur": 1058569.0,
     "annees": [
-      "2013",
+      "2010",
       "2024"
     ],
     "rows": [
@@ -117,6 +117,18 @@
       {
         "annee": "2013",
         "montant_eur": 133487.0,
+        "beneficiaire": "THEATRE DU SOLEIL",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2011",
+        "montant_eur": 10000.0,
+        "beneficiaire": "THEATRE DU SOLEIL",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2010",
+        "montant_eur": 120000.0,
         "beneficiaire": "THEATRE DU SOLEIL",
         "thematique": "Culture"
       }

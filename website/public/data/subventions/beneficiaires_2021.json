@@ -1,6 +1,6 @@
 {
   "year": 2021,
-  "generated_at": "2026-09-10T19:39:59.309096",
+  "generated_at": "2026-09-11T16:24:32.647086",
   "total_montant": 1262572237.71,
   "nb_beneficiaires": 3835,
   "data": [
@@ -3601,7 +3601,7 @@
       "source_thematique": "direction",
       "montant_total": 218860.0,
       "nb_subventions": 1,
-      "objet_principal": "IAE ACI",
+      "objet_principal": "Appel à projets IAECIRC21",
       "siret": "75232961500039"
     },
     {
@@ -4396,7 +4396,7 @@
       "source_thematique": "pattern",
       "montant_total": 160000.0,
       "nb_subventions": 1,
-      "objet_principal": "acompte 2021 DAC",
+      "objet_principal": "Demande de subvention Bureau de la musique 2021",
       "siret": "78434004400030"
     },
     {
@@ -5056,7 +5056,7 @@
       "source_thematique": "direction",
       "montant_total": 137000.0,
       "nb_subventions": 1,
-      "objet_principal": "DigiTous : des formation au numérique pour tous - Ivt",
+      "objet_principal": "DigiTous : des formation au numérique pour tous - Fct",
       "siret": "82424482600023"
     },
     {
@@ -7471,7 +7471,7 @@
       "source_thematique": "default",
       "montant_total": 83800.0,
       "nb_subventions": 1,
-      "objet_principal": "Actions des bénévoles professionnels du droit auprès des publics exclus : permanences juridiques",
+      "objet_principal": "Fonctionnement du dispositif \"Accès au droit et santé mentale\" (ADSM)",
       "siret": "45101859200027"
     },
     {
@@ -20521,7 +20521,7 @@
       "source_thematique": "llm",
       "montant_total": 19500.0,
       "nb_subventions": 1,
-      "objet_principal": "Pied d'Immeuble Numérique Paris 18",
+      "objet_principal": "Les permanences: initiation au numérique",
       "siret": "81415159300021"
     },
     {
@@ -25936,7 +25936,7 @@
       "source_thematique": "direction",
       "montant_total": 11940.0,
       "nb_subventions": 1,
-      "objet_principal": "Atelier Théâtre (le corps comme outil théâtral)",
+      "objet_principal": "TAP Atelier Théâtre (le corps comme outil théâtral)",
       "siret": "79849279900027"
     },
     {
@@ -26701,7 +26701,7 @@
       "source_thematique": "llm",
       "montant_total": 10500.0,
       "nb_subventions": 1,
-      "objet_principal": "CPO SPV - CULTURE ET CITOYENNETE",
+      "objet_principal": "CPO SPV - PAROLES DE FEMMES",
       "siret": "44116591700069"
     },
     {
@@ -29476,7 +29476,7 @@
       "source_thematique": "llm",
       "montant_total": 9000.0,
       "nb_subventions": 1,
-      "objet_principal": "Fonctionnement de l'association - recrutement",
+      "objet_principal": "POLITIQUE DE LA VILLE 2021(20ème BA)",
       "siret": "84162859700012"
     },
     {
@@ -29926,7 +29926,7 @@
       "source_thematique": "llm",
       "montant_total": 8500.0,
       "nb_subventions": 1,
-      "objet_principal": "\"Murs éphémères : PAYSAGE\"",
+      "objet_principal": "PAYSAGE CQuand les murs se transforment avec la créativité de chacun",
       "siret": "52767534200010"
     },
     {
@@ -32701,7 +32701,7 @@
       "source_thematique": "llm",
       "montant_total": 6500.0,
       "nb_subventions": 1,
-      "objet_principal": "VVV Hip Hope 2021-11eme - Grand Belleville",
+      "objet_principal": "VVV Hip Hope 2021 -20eme - Grand Belleville",
       "siret": "53166980200021"
     },
     {
@@ -37096,7 +37096,7 @@
       "source_thematique": "default",
       "montant_total": 5000.0,
       "nb_subventions": 1,
-      "objet_principal": "Exploitation du baromètre des villes marchablesZoom sur Paris",
+      "objet_principal": "Agir pour des abords d'école sûrs et agréables",
       "siret": "38072726300036"
     },
     {
