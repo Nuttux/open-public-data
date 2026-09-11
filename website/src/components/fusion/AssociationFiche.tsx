@@ -13,6 +13,7 @@ import { FicheBreakdown } from "@/components/fiche";
 import type { FicheBreakdownRow } from "@/components/fiche";
 import { V3Amt, V3Fold, V3Foot, V3Hero, V3Lead, V3Row, V3Section, foldRest } from "@/components/fiche/v3";
 import YearBars from "./YearBars";
+import AnneesRail from "./AnneesRail";
 
 /** Source réelle des subventions : dataset "versées annexe CA" (les noms de
  * l'export en sont issus verbatim, le refine matche donc exactement).
@@ -181,6 +182,7 @@ export default function AssociationFiche({
 
       {asso.byYear.length > 1 && (
         <V3Section title={t("fx.fiche.asso.h.annees")}>
+          <AnneesRail rows={yearsDesc.map((y) => ({ year: y.year, amount: y.amount }))} />
           {yearBars(years.shown)}
           {years.rest.length > 0 && (
             <V3Fold text label={fill(t("fx.fiche.asso.fold_annees"), { n: years.rest.length })}>{yearBars(years.rest)}</V3Fold>

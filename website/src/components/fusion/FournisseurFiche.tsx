@@ -11,6 +11,7 @@ import { FicheBreakdown } from "@/components/fiche";
 import { V3Amt, V3Fold, V3Foot, V3Hero, V3Lead, V3Row, V3Section, foldRest } from "@/components/fiche/v3";
 import { useCity } from "./CityContext";
 import YearBars from "./YearBars";
+import AnneesRail from "./AnneesRail";
 
 const CONTRATS_CAP = 8;
 const YEARS_CAP = 5;
@@ -119,6 +120,7 @@ export default function FournisseurFiche({
 
       {fournisseur.byYear.length > 1 && (
         <V3Section title={t("fx.fiche.fourn.h.annees")}>
+          <AnneesRail rows={yearsDesc.map((y) => ({ year: y.year, amount: y.amount }))} tone="w" />
           {yearBars(years.shown)}
           {years.rest.length > 0 && (
             <V3Fold text label={fill(t("fx.fiche.fourn.fold_annees"), { n: years.rest.length })}>{yearBars(years.rest)}</V3Fold>
