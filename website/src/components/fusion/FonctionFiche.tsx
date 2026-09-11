@@ -87,7 +87,6 @@ export default function FonctionFiche({
             />
           </div>
           <p className="fx-fonc-chiffres">
-            <span>{fill("fx.fonc.rang_part", { rang: c.rang, n: c.n_communes })}</span>
             {c.ecart_pct != null ? (
               <span>{fill("fx.fonc.niveau_fonc", { n: int.format(Math.round(c.eur_hab)), med: int.format(Math.round(c.mediane)), ecart: `${c.ecart_pct >= 0 ? "+" : "−"}${Math.abs(Math.round(c.ecart_pct))}\u00a0%` })}</span>
             ) : null}
@@ -114,7 +113,7 @@ export default function FonctionFiche({
             {c.voisins.map((v) => (
               <Link key={v.slug} href={`/fr/city/${v.slug}/fonction/${fonction.slug}`} className="l lien">
                 <span>
-                  <span className="rg tnum">{v.rang}</span>
+                  
                   {v.nom}
                 </span>
                 <span className="tnum">{fill("fx.fonc.part_court", { n: v.part.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 1 }) })}</span>
