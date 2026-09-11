@@ -1,0 +1,163 @@
+{
+ "generated_at": "2026-09-11T15:58:09.539515+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "temple-de-l-oratoire-du-louvre",
+ "name": "Temple de l'Oratoire du Louvre",
+ "kind_fr": "Temple",
+ "kind_en": "Temple",
+ "famille": "culture",
+ "arrondissement": 1,
+ "lat": 48.861669,
+ "lon": 2.340001,
+ "photo": "/img/lieux/temple-de-l-oratoire-du-louvre.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Arthur Weidmann",
+  "url": "https://commons.wikimedia.org/wiki/File:Oratoire_du_Louvre_1.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 769,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "tête du classement Solr (769 documents au total)",
+  "lecture_mode_en": "top of the Solr ranking (769 documents total)",
+  "n_lus": 43,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": null,
+ "invest": [],
+ "marches": [],
+ "mandate": {
+  "par_annee": {
+   "2009": 194.12,
+   "2010": 4832.14,
+   "2011": 771471.22,
+   "2012": 331446.2,
+   "2013": 76248.73,
+   "2014": 39321.83,
+   "2015": 5014.19,
+   "2016": 19618.73
+  },
+  "total_eur": 1248147.16,
+  "operations": [
+   {
+    "ap_cle": "B100/0903656",
+    "ap_texte": "TEMPLE DE L'ORATOIRE DU LOUVRE",
+    "mandate_par_annee": {
+     "2011": 749871.06,
+     "2012": 327108.08,
+     "2013": 69171.98
+    },
+    "total_mandate": 1146151.12,
+    "preuve": "Le libellé de l'opération d'investissement nomme exactement le lieu : « TEMPLE DE L'ORATOIRE DU LOUVRE » (mission « AFFAIRES CULTURELLES », direction DAC) — il désigne ce temple et aucun autre équipement. Mandatements en 2011, 2012 et 2013. Le Conseil de Paris a par ailleurs approuvé, en septembre 2008, les « marchés de travaux relatifs à la restauration de la façade nord de l'oratoire du Louvre » (2008 DAC 211) : la source d'investissement ne dit pas si cette opération finance ces marchés.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903656"
+   },
+   {
+    "ap_cle": "0903656",
+    "ap_texte": "TEMPLE DE L'ORATOIRE DU LOUVRE",
+    "mandate_par_annee": {
+     "2014": 39005.1,
+     "2015": 3324.63
+    },
+    "total_mandate": 42329.73,
+    "preuve": "Libellé de l'opération identique au nom du lieu : « TEMPLE DE L'ORATOIRE DU LOUVRE » (mission « AFFAIRES CULTURELLES », direction DAC). Même numéro d'opération 0903656 que la ligne B100/0903656 (deux clés distinctes dans la source). Mandatements en 2014 et 2015.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903656"
+   },
+   {
+    "ap_cle": "B100/0703656",
+    "ap_texte": "TEMPLE DE L'ORATOIRE DU LOUVRE",
+    "mandate_par_annee": {
+     "2009": 194.12,
+     "2010": 4832.14,
+     "2011": 21600.16,
+     "2012": 4338.12,
+     "2013": 5634.63
+    },
+    "total_mandate": 36599.17,
+    "preuve": "Libellé de l'opération : « TEMPLE DE L'ORATOIRE DU LOUVRE » (mission « AFFAIRES CULTURELLES », direction DAC) — il nomme ce lieu et aucun autre équipement. Mandatements de 2009 à 2013.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0703656"
+   },
+   {
+    "ap_cle": "1103656",
+    "ap_texte": "TEMPLE DE L'ORATOIRE DU LOUVRE",
+    "mandate_par_annee": {
+     "2015": 1689.56,
+     "2016": 19618.73
+    },
+    "total_mandate": 21308.29,
+    "preuve": "Libellé de l'opération : « TEMPLE DE L'ORATOIRE DU LOUVRE » (mission « AFFAIRES CULTURELLES », direction DAC). Le temple est situé 145, rue Saint-Honoré (1er), adresse citée par la délibération 2022 DAC 394 (« à l'Oratoire du Louvre, 145, rue Saint-Honoré (1er) »). Mandatements en 2015 et 2016.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1103656"
+   },
+   {
+    "ap_cle": "B100/1103656",
+    "ap_texte": "TEMPLE DE L'ORATOIRE DU LOUVRE",
+    "mandate_par_annee": {
+     "2013": 1442.12
+    },
+    "total_mandate": 1442.12,
+    "preuve": "Libellé de l'opération : « TEMPLE DE L'ORATOIRE DU LOUVRE » (mission « AFFAIRES CULTURELLES », direction DAC). Même numéro d'opération 1103656 que la ligne 1103656 (deux clés distinctes dans la source) ; un seul mandatement, en 2013.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1103656"
+   },
+   {
+    "ap_cle": "0703656",
+    "ap_texte": "TEMPLE DE L'ORATOIRE DU LOUVRE",
+    "mandate_par_annee": {
+     "2014": 316.73
+    },
+    "total_mandate": 316.73,
+    "preuve": "Libellé de l'opération : « TEMPLE DE L'ORATOIRE DU LOUVRE » (mission « AFFAIRES CULTURELLES », direction DAC). Même numéro d'opération 0703656 que la ligne B100/0703656 (deux clés distinctes dans la source) ; un seul mandatement, en 2014.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0703656"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2016"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Temple+de+l%27Oratoire+du+Louvre"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

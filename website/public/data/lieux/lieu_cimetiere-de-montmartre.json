@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:36:20.273223+00:00",
+ "generated_at": "2026-09-11T15:58:09.539515+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "cimetiere-de-montmartre",
  "name": "Cimetière de Montmartre",
@@ -9,8 +9,13 @@
  "arrondissement": 18,
  "lat": 48.887778,
  "lon": 2.330278,
- "photo": null,
- "photo_credit": null,
+ "photo": "/img/lieux/cimetiere-de-montmartre.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Dietmar Rabich",
+  "url": "https://commons.wikimedia.org/wiki/File:Paris,_Sacr%C3%A9-C%C5%93ur_de_Montmartre_--_2014_--_1180.jpg",
+  "source": "Wikimedia Commons"
+ },
  "seuil_commun": 2010,
  "wiki": {
   "extract": "Le cimetière du Nord, communément appelé cimetière de Montmartre, est situé dans le 18e arrondissement de Paris. Il occupe une surface de 11 hectares. C'est le troisième plus grand de Paris, après le cimetière de l'Est, dit cimetière du Père-Lachaise, et le cimetière du sud ou cimetière du Montparnasse. Ces cimetières étaient tous hors de Paris au moment de leur création. Le cimetière de Montmartre présente la singularité d'être enjambé par un grand pont routier, le pont Caulaincourt.",

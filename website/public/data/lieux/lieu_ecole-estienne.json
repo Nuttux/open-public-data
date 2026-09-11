@@ -1,0 +1,409 @@
+{
+ "generated_at": "2026-09-11T15:58:09.539515+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "ecole-estienne",
+ "name": "École Estienne",
+ "kind_fr": "École",
+ "kind_en": "École",
+ "famille": "services",
+ "arrondissement": 13,
+ "lat": 48.831168,
+ "lon": 2.351772,
+ "photo": "/img/lieux/ecole-estienne.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/%C3%89cole_Estienne",
+  "source": "Wikipédia"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "L’école Estienne, dénomination courante de l’École supérieure des arts et industries graphiques (ESAIG), est un établissement français d’enseignement supérieur public situé au 18, boulevard Auguste-Blanqui dans le 13e arrondissement de Paris, non loin de la Butte-aux-Cailles. Elle forme de jeunes créateurs dans les métiers de l’imprimerie, du design de communication et des métiers d’art du livre. Elle offre l'une des 28 formations reconnues du Réseau des écoles françaises de cinéma d’animation (RECA).",
+  "url": "https://fr.wikipedia.org/wiki/%C3%89cole_Estienne",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1293,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 125634.0,
+  "invest_annees": [
+   "2021"
+  ],
+  "lecture_mode": "titre nommant le lieu (15 trouvés)",
+  "lecture_mode_en": "title naming the place (15 found)",
+  "n_lus": 14,
+  "n_lieu": null
+ },
+ "subventions_exploitant": {
+  "nom_fiche": "LYCEE TECHNOLOGIQUE ESTIENNE E.S.A.",
+  "total_eur": 12474790.0,
+  "annees": [
+   "2010",
+   "2024"
+  ],
+  "rows": [
+   {
+    "annee": "2024",
+    "montant_eur": 932800.0,
+    "beneficiaire": "LYCEE TECHNOLOGIQUE ESTIENNE E.S.A.",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2023",
+    "montant_eur": 1115800.0,
+    "beneficiaire": "LYCEE TECHNOLOGIQUE ESTIENNE ESA",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2022",
+    "montant_eur": 1047800.0,
+    "beneficiaire": "LYCEE TECHNOLOGIQUE ESTIENNE E.S.A.",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2021",
+    "montant_eur": 907800.0,
+    "beneficiaire": "LYCEE TECHNOLOGIQUE ESTIENNE E.S.A.",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2020",
+    "montant_eur": 849100.0,
+    "beneficiaire": "LYCEE TECHNOLOGIQUE ESTIENNE E.S.A.",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2019",
+    "montant_eur": 951800.0,
+    "beneficiaire": "LYCEE TECHNOLOGIQUE ESTIENNE E.S.A.",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2018",
+    "montant_eur": 872800.0,
+    "beneficiaire": "LYCEE TECHNOLOGIQUE ESTIENNE E.S.A.",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2017",
+    "montant_eur": 983800.0,
+    "beneficiaire": "LYCEE TECHNOLOGIQUE ESTIENNE E.S.A.",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2016",
+    "montant_eur": 946280.0,
+    "beneficiaire": "LYCEE TECHNOLOGIQUE ESTIENNE E.S.A.",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2014",
+    "montant_eur": 899636.0,
+    "beneficiaire": "LYCEE TECHNOLOGIQUE ESTIENNE E.S.A.",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2013",
+    "montant_eur": 663971.0,
+    "beneficiaire": "LYCEE TECHNOLOGIQUE ESTIENNE E.S.A.",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2012",
+    "montant_eur": 700731.0,
+    "beneficiaire": "LYCEE TECHNOLOGIQUE ESTIENNE E.S.A.",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2011",
+    "montant_eur": 934360.0,
+    "beneficiaire": "LYCEE TECHNOLOGIQUE ESTIENNE E.S.A.",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2010",
+    "montant_eur": 668112.0,
+    "beneficiaire": "LYCEE TECHNOLOGIQUE ESTIENNE E.S.A.",
+    "thematique": "Éducation"
+   }
+  ]
+ },
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "2000": [
+   {
+    "reference": "2000 DASCO 76",
+    "titre": "Autorisation à M. le Maire de Paris de solliciter de M. le Préfet de la Région d'Ile-de-France une subvention complémentaire de l'Etat (Ministère de l'Education nationale) pour la réalisation de travaux de sécurité à l'école Estienne (13e). M. Vincent REINA, rapporteur.",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
+    "seance": "MAI 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43278"
+   },
+   {
+    "reference": "2000 DPA 326",
+    "titre": "Approbation du principe de la réalisation de travaux de mise aux normes de l'éclairage et de travaux de sécurité à l'école Estienne (13e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché correspondant. M. Vincent REINA, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JANVIER 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85254"
+   }
+  ],
+  "2001": [
+   {
+    "reference": "2001 DPA 35",
+    "titre": "Approbation du principe de la réalisation de travaux de réhabilitation d'un escalier de la cour intérieure et des appuis et bandeaux de façades à l'école Estienne, 18, boulevard Auguste-Blanqui (13e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Danièle POURTAUD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28717"
+   }
+  ],
+  "2002": [
+   {
+    "reference": "2002 DPA 458",
+    "titre": "Approbation du principe de réalisation des travaux de sécurité à l'école Estienne 18, boulevard Auguste Blanqui à Paris 13ème et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Eric FERRAND, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "NOVEMBRE 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45267"
+   }
+  ],
+  "2003": [
+   {
+    "reference": "2003 DASCO 222",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec la Caisse des écoles du 13e arrondissement une convention relative au fonctionnement du service de restauration de l'école Estienne et de fixer les tarifs applicables aux usagers. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
+    "seance": "NOVEMBRE 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94048"
+   },
+   {
+    "reference": "2003 DASCO 288",
+    "titre": "Subvention de 1.500 euros à l'association foyer socio-éducatif des élèves de l'école ESTIENNE 18 boulevard Auguste-Blanqui (13e). M. Eric FERRAND, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93998"
+   },
+   {
+    "reference": "2003 DPA 339",
+    "titre": "Approbation du principe de réalisation des travaux de modernisation du centre thermique à l'école supérieure Ecole Estienne (13e) et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "NOVEMBRE 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93830"
+   }
+  ],
+  "2004": [
+   {
+    "reference": "2004 DPA 275",
+    "titre": "Approbation du principe de réalisation des travaux de modernisation des sanitaires à l’école Estienne, 18, boulevard Auguste-Blanqui (13e), et des modalités de passation du marché de travaux correspondant. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87761"
+   },
+   {
+    "reference": "2004 DPA 275",
+    "titre": "Approbation du principe de réalisation des travaux de modernisation de la verrière à l’école Estienne, 18, boulevard Auguste-Blanqui (13e), et des modalités de passation du marché de travaux correspondant. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87807"
+   },
+   {
+    "reference": "2004 DPA 275",
+    "titre": "Approbation du principe de réalisation des travaux de modernisation du local acide à l’école Estienne, 18, boulevard Auguste-Blanqui (13e), et des modalités de passation du marché de travaux correspondant. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87898"
+   },
+   {
+    "reference": "2004 DPA 275",
+    "titre": "Approbation du principe de réalisation des travaux de mise en sécurité des faux plafonds à l’école Estienne, 18, boulevard Auguste-Blanqui (13e), et des modalités de passation du marché de travaux correspondant. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87864"
+   }
+  ],
+  "2007": [
+   {
+    "reference": "2007 DPA 368",
+    "titre": "Approbation du principe de réalisation des travaux de modernisation de l’étanchéité de la toiture du magasin papier à l’école Estienne 18, boulevard Auguste Blanqui (13e) et des modalités de passation du marché de travaux correspondant. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54771"
+   }
+  ],
+  "2009": [
+   {
+    "reference": "2009 DPA 106",
+    "titre": "Approbation du principe de réalisation des travaux de réfection de l’étanchéité des toitures terrasses à l’Ecole Estienne (13e) et des modalités de passation du marché de travaux. M. Jean-Louis MISSIKA, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49953"
+   }
+  ]
+ },
+ "invest": [
+  {
+   "annee": 2021,
+   "montant_eur": 125634.0,
+   "nom_projet": "Ecole Estienne - Modernisation de l'installation électrique, remplacement du réseau d'eau ",
+   "preuve": "Le nom du projet nomme explicitement le lieu : « Ecole Estienne - Modernisation de l'installation électrique, remplacement du réseau d'eau » — travaux sur le bâtiment lui-même. Le point géocodé est à 544 m : la distance n'a pas servi au rattachement, qui repose sur le libellé.",
+   "id": null
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20141060010857",
+   "objet": "FOURNITURE PRODUITS DERIVES ECOLE ESTIENNE",
+   "objet_clair": null,
+   "fournisseur": "LYCEE TECHNOLOGIQUE ESTIENNE E.S.A.",
+   "montant_max": 50000.0,
+   "date_notification": "2014-04-01",
+   "preuve": "L'objet nomme le lieu (« FOURNITURE PRODUITS DERIVES ECOLE ESTIENNE ») et le titulaire est l'établissement du lieu lui-même, SIRET 19750686800011. Le lieu n'est pas un repère d'adresse et l'objet n'est pas un marché-cadre de toute la Ville. Le champ lieu_execution est vide dans la source : le rattachement repose sur l'objet et sur l'identité du titulaire."
+  },
+  {
+   "numero_marche": "20181210001302",
+   "objet": "REMPLACEMENT DU TRANSFORMATEUR ÉCOLE ESTIENNE 75013",
+   "objet_clair": null,
+   "fournisseur": "REOLIAN MULTITEC",
+   "montant_max": 46599.09,
+   "date_notification": "2018-09-21",
+   "preuve": "L'objet porte sur un équipement du bâtiment : « REMPLACEMENT DU TRANSFORMATEUR ÉCOLE ESTIENNE 75013 », avec l'arrondissement du lieu (13e). Travaux sur site, pas un marché-cadre citant le lieu en exemple. Le champ lieu_execution est vide dans la source : le rattachement repose sur l'objet."
+  }
+ ],
+ "mandate": {
+  "par_annee": {
+   "2012": 148708.97,
+   "2013": 1098583.33,
+   "2014": 2317997.62,
+   "2015": 50420.19,
+   "2016": 79807.92,
+   "2017": 5111.69,
+   "2019": 95854.78,
+   "2020": 21516.36
+  },
+  "total_eur": 3818000.86,
+  "operations": [
+   {
+    "ap_cle": "1004166",
+    "ap_texte": "ECOLE ESTIENNE 18 Av AUGUSTE BLANQUI",
+    "mandate_par_annee": {
+     "2014": 1699171.62,
+     "2015": 41897.94,
+     "2016": 47603.64,
+     "2017": 99.72
+    },
+    "total_mandate": 1788772.92,
+    "preuve": "Le libellé nomme le lieu et son adresse, confirmée par les délibérations : « école Estienne, 18, boulevard Auguste-Blanqui (13e) » (2004 DPA 275-1°, 2002 DPA 458). Opération individualisée de la mission AFFAIRES SCOLAIRES (DASCO) portant le nom du lieu, et non une enveloppe générique de direction. Mandatements 2014-2017.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1004166"
+   },
+   {
+    "ap_cle": "B100/1004166",
+    "ap_texte": "ECOLE ESTIENNE 18 Av AUGUSTE BLANQUI",
+    "mandate_par_annee": {
+     "2012": 148708.97,
+     "2013": 1048881.51
+    },
+    "total_mandate": 1197590.48,
+    "preuve": "Même libellé nominatif et même adresse (18 boulevard Auguste-Blanqui, 13e) sous une autre clé d'autorisation de programme. Opération individualisée au nom du lieu, pas une enveloppe générique de direction. Mandatements 2012-2013.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1004166"
+   },
+   {
+    "ap_cle": "1104166",
+    "ap_texte": "ECOLE ESTIENNE 18 av AUGUSTE BLANQUI",
+    "mandate_par_annee": {
+     "2014": 618826.0,
+     "2015": 8522.25,
+     "2016": 32204.28
+    },
+    "total_mandate": 659552.53,
+    "preuve": "Libellé nommant le lieu et son adresse (« ECOLE ESTIENNE 18 av AUGUSTE BLANQUI »), mission AFFAIRES SCOLAIRES / DASCO. Opération individualisée dédiée à ce site, pas une enveloppe générique de direction. Mandatements 2014-2016.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1104166"
+   },
+   {
+    "ap_cle": "1604855",
+    "ap_texte": "ECOLE ESTIENNE - MISE EN ACCESSIBILITE",
+    "mandate_par_annee": {
+     "2017": 5011.97,
+     "2019": 95854.78,
+     "2020": 21516.36
+    },
+    "total_mandate": 122383.11,
+    "preuve": "Le libellé désigne des travaux sur ce lieu : « ECOLE ESTIENNE - MISE EN ACCESSIBILITE », mission AFFAIRES SCOLAIRES / DASCO. Opération individualisée au nom du lieu. Mandatements 2017-2020.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604855"
+   },
+   {
+    "ap_cle": "B100/1104166",
+    "ap_texte": "ECOLE ESTIENNE 18 av AUGUSTE BLANQUI",
+    "mandate_par_annee": {
+     "2013": 49701.82
+    },
+    "total_mandate": 49701.82,
+    "preuve": "Libellé nominatif avec l'adresse du lieu, sous une clé distincte de l'opération 1104166. Opération individualisée au nom du lieu, pas une enveloppe générique de direction. Mandatement 2013.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1104166"
+   }
+  ],
+  "periode": [
+   "2012",
+   "2020"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89cole+Estienne"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

@@ -1,0 +1,230 @@
+{
+ "generated_at": "2026-09-11T15:58:09.539515+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "eglise-saint-louis-en-l-ile",
+ "name": "Église Saint-Louis-en-l'Île",
+ "kind_fr": "Église",
+ "kind_en": "Église",
+ "famille": "culture",
+ "arrondissement": 4,
+ "lat": 48.851278,
+ "lon": 2.357576,
+ "photo": "/img/lieux/eglise-saint-louis-en-l-ile.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Saint-Louis-en-l'%C3%8Ele",
+  "source": "Wikipédia"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "L’église Saint-Louis-en-l’Île est située sur l’île Saint-Louis à l'angle de la rue Saint-Louis-en-l’Île et de la rue Poulletier. Cet édifice a été construit en plusieurs étapes de 1624 à 1726. Son saint patron est Saint Louis, roi de France.",
+  "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Saint-Louis-en-l'%C3%8Ele",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 595,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 3609971.32,
+  "invest_annees": [
+   "2021",
+   "2022",
+   "2023",
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (4 trouvés)",
+  "lecture_mode_en": "title naming the place (4 found)",
+  "n_lus": 4,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "1997": [
+   {
+    "reference": "1997 DAC 47",
+    "titre": "Approbation du principe de la réalisation des travaux de construction d'un nouvel orgue de tribune à l'église Saint-Louis-en-l'Ile (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 1997",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40142"
+   }
+  ],
+  "1999": [
+   {
+    "reference": "1999 DAC 42",
+    "titre": "Approbation du principe de la réalisation des travaux de restauration des couvertures de la chapelle Sainte-Claire de l'église Saint-Louis-en-l'Ile (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75818"
+   }
+  ],
+  "2001": [
+   {
+    "reference": "2001 DAC 179",
+    "titre": "Autorisation à M. le Maire de Paris de lancer un appel d'offres ouvert en vue des travaux de mise en sécurité des façades sur rue de l'église Saint-Louis-en-l'Ile (4e). Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84370"
+   },
+   {
+    "reference": "2001 DAC 21",
+    "titre": "Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres pour le démontage préalable du grand-orgue de l'église Saint-Louis en l'Ile (4e) dans le cadre de l'opération de construction d'un orgue neuf sur le même site. M. Claude ROLAND, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JANVIER 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85351"
+   }
+  ],
+  "2003": [
+   {
+    "reference": "2003 DAC 121",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec l'Etat (Ministère de la Culture) une convention de versement de fonds de concours en vue de la restauration des couvertures de l'église Saint-Louis-en-l'Ile (tranche ferme) (4e). Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "AVRIL 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89661"
+   },
+   {
+    "reference": "2003 DAC 153",
+    "titre": "Approbation du principe et des modalités d'attribution d'un marché de travaux sur appel d'offres ouvert en vue du renforcement de la tribune et travaux annexes à la construction de l'orgue de l'église Saint-Louis en l'Ile (4e). - Autorisation à M. le Maire de Paris de signer lesdits marchés correspondants. Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56884"
+   },
+   {
+    "reference": "2003 DAC 42",
+    "titre": "Approbation du principe et des modalités d'attribution d'un marché de travaux sur appel d'offres ouvert en vue de la réalisation des travaux de mise en conformité de l'installation électrique de l'église Saint- Louis-en-l'Ile (4e). - Autorisation à M. le Maire de Paris de signer le marché correspondant. Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78876"
+   }
+  ],
+  "2004": [
+   {
+    "reference": "2004 DAC 210",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec l'Etat (Ministère de la Culture et de la Communication) des conventions de versement de fonds de concours en vue de la restauration des couvertures de l'église Saint-Louis en l'Ile (4e) (tranches conditionnelles 1 et 2). Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45690"
+   },
+   {
+    "reference": "2004 DAC 535",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché n° 03/41152 passé avec l’entreprise VD IE2S en vue de substituer la société VD à la société VD IE2S pour le renforcement de la tribune et travaux annexes à la construction de l’orgue de l’église Saint Louis en l’Ile (4e), lot n° 5 “électricité”. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87615"
+   }
+  ],
+  "2006": [
+   {
+    "reference": "2006 DAC 111",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché n° 03/41148 passé avec l’entreprise Gueblif en vue de substituer la SA Paris Ouest Construction à la SAS Gueblif pour le renforcement de la tribune et travaux annexes à la construction de l’orgue de l’église Saint-Louis-en-l’Ile (4e), Lot n° 1 : “maçonnerie, pierre de taille”. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "AVRIL 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38512"
+   },
+   {
+    "reference": "2006 DAC 50",
+    "titre": "Autorisation à M. le Maire de Paris de réimputer la dépense correspondant au versement de fonds de concours en vue de la réalisation des travaux de restauration des couvertures de l’église Saint-Louis-en-l’Ile (4e) - Tranches conditionnelles n° 1 et n° 2 sur le budget d’investissement de la Ville de Paris, exercices 2006 et suivants. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27600"
+   }
+  ],
+  "2009": [
+   {
+    "reference": "2009 DAC 336",
+    "titre": "Signature avec l’Etat (Ministère de la Culture) deux conventions portant résiliation des contrats correspondant au versement de fonds de concours en vue de la réalisation des travaux de restauration des couvertures de l’église Saint-Louis en l’Ile (4e) - Tranches conditionnelles n° 1 et n° 2. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74859"
+   }
+  ]
+ },
+ "invest": [
+  {
+   "annee": 2021,
+   "montant_eur": 947552.0,
+   "nom_projet": "Eglise Saint-Louis-en-l'Île - Restauration des toitures et des façades",
+   "preuve": "Le nom du projet nomme le lieu verbatim : « Eglise Saint-Louis-en-l'Île - Restauration des toitures et des façades » (candidat signal « nom »). Le corpus du 4e contient aussi la « rue Saint-Louis-en-l'Île », l'« école élémentaire Saint-Louis-en-l'Ile » et le « groupe scolaire Poulletier-Saint-Louis-en-L'Ile » (1998 DPA 189, 2001 DPA 323) : le nom du projet commence par « Eglise », il désigne donc le bâtiment cultuel et non ces homonymes de rue ou d'école. Réserve : le point géocodé du candidat est donné à 1 250 m du lieu ; le rattachement repose sur le nom exact, pas sur la distance, et cette contradiction non résolue justifie une confiance moyenne. La Ville a délibéré à plusieurs reprises des travaux sur les couvertures et les façades de cette église : 1999 DAC 42 (« restauration des couvertures de la chapelle Sainte-Claire de l'église Saint-Louis-en-l'Ile (4e) »), 2001 DAC 179 (« travaux de mise en sécurité des façades sur rue de l'église Saint-Louis-en-l'Ile (4e) »), 2003 DAC 121 (« restauration des couvertures de l'église Saint-Louis-en-l'Ile (tranche ferme) (4e) ») ; ces délibérations portent sur des opérations antérieures, elles corroborent la nature des travaux sur ce bâtiment, pas la ligne d'investissement de l'année.",
+   "id": "2021_01_il_017"
+  },
+  {
+   "annee": 2022,
+   "montant_eur": 1357293.0,
+   "nom_projet": "Eglise Saint-Louis en l'Île - Toitures et façades",
+   "preuve": "Le nom du projet nomme le lieu verbatim : « Eglise Saint-Louis en l'Île - Toitures et façades » (candidat signal « nom », aucune distance fournie). Le corpus du 4e contient aussi la « rue Saint-Louis-en-l'Île », l'« école élémentaire Saint-Louis-en-l'Ile » et le « groupe scolaire Poulletier-Saint-Louis-en-L'Ile » (1998 DPA 189, 2001 DPA 323) : le nom du projet commence par « Eglise », il désigne donc le bâtiment cultuel et non ces homonymes de rue ou d'école. La Ville a délibéré à plusieurs reprises des travaux sur les couvertures et les façades de cette église : 1999 DAC 42 (« restauration des couvertures de la chapelle Sainte-Claire de l'église Saint-Louis-en-l'Ile (4e) »), 2001 DAC 179 (« travaux de mise en sécurité des façades sur rue de l'église Saint-Louis-en-l'Ile (4e) »), 2003 DAC 121 (« restauration des couvertures de l'église Saint-Louis-en-l'Ile (tranche ferme) (4e) ») ; ces délibérations portent sur des opérations antérieures, elles corroborent la nature des travaux sur ce bâtiment, pas la ligne d'investissement de l'année.",
+   "id": "2022_00_9_018"
+  },
+  {
+   "annee": 2023,
+   "montant_eur": 857570.37,
+   "nom_projet": "Eglise Saint-Louis en l'île -Toitures et façades",
+   "preuve": "Le nom du projet nomme le lieu verbatim : « Eglise Saint-Louis en l'île -Toitures et façades » (candidat signal « nom », aucune distance fournie). Le même intitulé, à la casse et à la ponctuation près, revient dans les candidats pour 2021, 2022, 2023 et 2024 ; le montant retenu est celui de la ligne 2023. Le corpus du 4e contient aussi la « rue Saint-Louis-en-l'Île », l'« école élémentaire Saint-Louis-en-l'Ile » et le « groupe scolaire Poulletier-Saint-Louis-en-L'Ile » (1998 DPA 189, 2001 DPA 323) : le nom du projet commence par « Eglise », il désigne donc le bâtiment cultuel et non ces homonymes de rue ou d'école.",
+   "id": "2023_00_9_029"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 447555.95,
+   "nom_projet": "Eglise Saint-Louis En L'Île - Toitures et façades",
+   "preuve": "Le nom du projet nomme le lieu verbatim : « Eglise Saint-Louis En L'Île - Toitures et façades » (candidat signal « nom », aucune distance fournie). Le même intitulé, à la casse et à la ponctuation près, revient dans les candidats pour 2021, 2022, 2023 et 2024 ; le montant retenu est celui de la ligne 2024, dernière année présente dans les candidats. Le corpus du 4e contient aussi la « rue Saint-Louis-en-l'Île », l'« école élémentaire Saint-Louis-en-l'Ile » et le « groupe scolaire Poulletier-Saint-Louis-en-L'Ile » (1998 DPA 189, 2001 DPA 323) : le nom du projet commence par « Eglise », il désigne donc le bâtiment cultuel et non ces homonymes de rue ou d'école.",
+   "id": "2024_00_9_020"
+  }
+ ],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89glise+Saint-Louis-en-l%27%C3%8Ele"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

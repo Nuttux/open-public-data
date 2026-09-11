@@ -1,0 +1,526 @@
+{
+ "generated_at": "2026-09-11T15:58:09.539515+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "ecole-du-breuil",
+ "name": "École du Breuil",
+ "kind_fr": "École",
+ "kind_en": "École",
+ "famille": "vert",
+ "arrondissement": 12,
+ "lat": 48.823324,
+ "lon": 2.458364,
+ "photo": "/img/lieux/ecole-du-breuil.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Chabe01",
+  "url": "https://commons.wikimedia.org/wiki/File:Arr%C3%AAt_Bus_%C3%89cole_Breuil_Route_Ferme_-_Paris_XII_(FR75)_-_2023-03-24_-_2.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1235,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (43 trouvés)",
+  "lecture_mode_en": "title naming the place (43 found)",
+  "n_lus": 40,
+  "n_lieu": null
+ },
+ "subventions_exploitant": {
+  "nom_fiche": "ECOLE DU BREUIL",
+  "total_eur": 29306000.0,
+  "annees": [
+   "2019",
+   "2024"
+  ],
+  "rows": [
+   {
+    "annee": "2024",
+    "montant_eur": 5650000.0,
+    "beneficiaire": "ECOLE DU BREUIL",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2023",
+    "montant_eur": 5350000.0,
+    "beneficiaire": "ECOLE DU BREUIL",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2022",
+    "montant_eur": 4450000.0,
+    "beneficiaire": "ECOLE DU BREUIL",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2021",
+    "montant_eur": 3706000.0,
+    "beneficiaire": "ECOLE DU BREUIL",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2020",
+    "montant_eur": 5000000.0,
+    "beneficiaire": "ECOLE DU BREUIL",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2019",
+    "montant_eur": 5150000.0,
+    "beneficiaire": "ECOLE DU BREUIL",
+    "thematique": "Éducation"
+   }
+  ]
+ },
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "2000": [
+   {
+    "reference": "2000 DPA 276",
+    "titre": "Approbation du principe de la modernisation de 3 centres thermiques à l'école du Breuil - route de la Ferme (12e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Suzanne DECRESSAC-DESPUJOLS, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "OCTOBRE 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59046"
+   }
+  ],
+  "2003": [
+   {
+    "reference": "2003 DASCO 131",
+    "titre": "Approbation des modalités d'attribution d'un appel d'offres ouvert en 4 lots géographiques pour la fourniture et la livraison d'articles pour travaux manuels et arts plastiques nécessaires aux centres de loisirs de la ville de Paris gérés par la Direction des affaires scolaires, aux musées municipaux gérés par la Direction des Affaires Culturelles, le service Paris-Nature et l'Ecole Du Breuil gérés par la Direction des Parcs, Jardins et Espaces Verts, pour l'année 2004 et reconductible pour deux",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48150"
+   },
+   {
+    "reference": "2003 DSTI 67",
+    "titre": "Autorisation à M. le Maire de Paris de signer un avenant n° 1 ayant pour objet d'ajouter au lot 2 du marché n° 03/05204 passé avec la société \"GEAC France\" une prestation forfaitaire unique visant à assurer la maintenance préventive, curative des logiciels utilisés par la bibliothèque de l'Ecole du Breuil et de transférer le marché à la société \"GEAC France\" sous son nouveau numéro de SIRET suite à sa fusion avec la société \"JBA PRESYS\". M. François DAGNAUD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33895"
+   }
+  ],
+  "2006": [
+   {
+    "reference": "2006 DASCO 102",
+    "titre": "Approbation des modalités de lancement d’un appel d’offres ouvert relatif à la fourniture et à la livraison d’articles pour travaux manuels et arts plastiques nécessaires aux centres de loisirs de la Ville de Paris gérés par la Direction des Affaires scolaires, aux musées municipaux gérés par la Direction des Affaires culturelles, au Service de l’Ecologie Urbaine - Section Education à l’Environnement et à l’Ecole du Breuil, gérés par la Direction des Parcs, Jardins et Espaces Verts pour l’année",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81315"
+   },
+   {
+    "reference": "2006 DPJEV 137",
+    "titre": "Autorisation à M. le Maire de Paris de signer un marché négocié pour la fourniture et la distribution de repas aux élèves de l’Ecole Du Breuil (12e). M. Yves CONTASSOT, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91968"
+   }
+  ],
+  "2007": [
+   {
+    "reference": "2007 DPJEV 16",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec l’ADAFA, organisme gestionnaire du Centre de Formation d’Apprentis des métiers de l’Agriculture, une convention précisant les modalités de création et de gestion d’une Unité de Formation par Apprentissage dénommée UFA école Du Breuil. M. Yves CONTASSOT, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "JUILLET 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90513"
+   }
+  ],
+  "2008": [
+   {
+    "reference": "2008 DEVE 87",
+    "titre": "Autorisation à M. le Maire de Paris de signer un marché négocié pour la fourniture et la distribution de repas aux élèves de l’Ecole du Breuil (12e) et à des agents de la Ville de Paris. Mme Fabienne GIBOUDEAUX, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77864"
+   }
+  ],
+  "2018": [
+   {
+    "reference": "2018 DEVE 107",
+    "titre": "2018 DEVE 107 - Création de la régie personnalisée école Du Breuil. Vœu déposé par les groupes Communiste - Front de Gauche et Ecologiste de Paris relatif au statut de l'école. Vœu déposé par le groupe les Républicains et Indépendants relatif au financement des travaux de rénovation. Vœu déposé par le groupe UDI-MODEM relatif à la rénovation des bâtiments. Voeu déposé par l'Exécutif.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2018",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144055"
+   },
+   {
+    "reference": "2018 DEVE 189",
+    "titre": "2018 DEVE 189 - Subvention de fonctionnement (4.650.000 euros) au bénéfice de la régie personnalisée de l’école Du Breuil.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "DECEMBRE 2018",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=147078"
+   },
+   {
+    "reference": "2018 DEVE 71",
+    "titre": "2018 DEVE 71 - Convention de partenariat avec le C.N.F.P.T. et l'A.D.A.F.A. pour la formation d'apprentis de collectivités territoriales au sein de l'Ecole Du Breuil.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "MAI 2018",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=142251"
+   }
+  ],
+  "2019": [
+   {
+    "reference": "2019 DEVE 103",
+    "titre": "2019 DEVE 103 - Subvention de fonctionnement (4.400.000 euros) et d’investissement (600 000 euros) au bénéfice de la régie personnalisée de l’école Du Breuil.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "DECEMBRE 2019",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=175706"
+   },
+   {
+    "reference": "2019 DEVE 15",
+    "titre": "2019 DEVE 15 - Subvention d'investissement à la régie personnalisée école Du Breuil.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "FEVRIER 2019",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=147571"
+   }
+  ],
+  "2021": [
+   {
+    "reference": "2021 DEVE 116",
+    "titre": "2021 DEVE 116 - Renouvellement des conventions entre la Ville de Paris et l’école Du Breuil.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "DECEMBRE 2021",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164310"
+   },
+   {
+    "reference": "2021 DSIN 5",
+    "titre": "2021 DSIN 5 - Convention de services entre la Ville de Paris (DSIN) et l’École du Breuil. - Approbation signature.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "OCTOBRE 2021",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=161051"
+   }
+  ],
+  "2022": [
+   {
+    "reference": "2022 DEVE 18",
+    "titre": "2022 DEVE 18 - Subvention de fonctionnement (250.000 euros) à l'école Du Breuil au titre de l'agriculture urbaine.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MAI 2022",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164935"
+   },
+   {
+    "reference": "2022 DEVE 94",
+    "titre": "2022 DEVE 94 - Subvention à l'Ecole Du Breuil au titre des exercices 2022 et 2023.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "DECEMBRE 2022",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168063"
+   }
+  ],
+  "2023": [
+   {
+    "reference": "2023 DEVE 3",
+    "titre": "2023 DEVE 3 - Subvention (200.000 euros) à l'école Du Breuil pour ses actions de formation en matière d'agriculture durable.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUIN 2023",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=169752"
+   },
+   {
+    "reference": "2023 DEVE 60",
+    "titre": "2023 DEVE 60 - Subvention complémentaire de fonctionnement (200.000 euros) à la régie personnalisée de l’école Du Breuil. Vœu déposé par le groupe Communiste et Citoyen relatif à la situation du personnel de l’école Du Breuil.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "OCTOBRE 2023",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=171998"
+   }
+  ],
+  "2024": [
+   {
+    "reference": "2024 DEVE 26",
+    "titre": "2024 DEVE 26 - Subvention de fonctionnement (250.000 euros) au bénéfice de la régie personnalisée école Du Breuil pour l’année 2024 au titre de ses actions de formation dans le domaine de l'agriculture durable. Vœu déposé par le groupe \"Indépendants et Progressistes\" relatif à la plantation d’arbres fruitiers à Paris.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MAI 2024",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176129"
+   },
+   {
+    "reference": "2024 DEVE 96",
+    "titre": "2024 DEVE 96 - Subvention en fonctionnement (5.200.000 euros) et en investissement (200.000 euros) à la régie personnalisée école Du Breuil pour l'exercice 2025.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "DECEMBRE 2024",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179193"
+   }
+  ]
+ },
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20131230009875",
+   "objet": "CSP4 ENTRETIEN SOLS LOT 8 BOIS VINCENNES & ECOLE DU BREUIL",
+   "objet_clair": null,
+   "fournisseur": "LES PAVEURS DE MONTROUGE",
+   "montant_max": 5317000.0,
+   "date_notification": "2013-08-13",
+   "preuve": "Objet verbatim « CSP4 ENTRETIEN SOLS LOT 8 BOIS VINCENNES & ECOLE DU BREUIL » : l'École du Breuil est nommée dans le périmètre du lot (et non citée comme simple repère d'adresse), il ne s'agit pas d'un marché-cadre de toute la Ville. Réserve : le même lot couvre l'ensemble du bois de Vincennes, dont l'école n'est qu'une emprise ; le montant maximum de 5 317 000 € ne porte donc pas sur la seule école et ne peut pas lui être attribué en totalité."
+  },
+  {
+   "numero_marche": "20212021T03496",
+   "objet": "ECOLE DU BREUIL 21 RTE DE LA FERME BOIS DE VINCENNES",
+   "objet_clair": null,
+   "fournisseur": "SOCIETE AURION ET COMPAGNIE",
+   "montant_max": 169872.6,
+   "date_notification": "2021-05-26",
+   "preuve": "Objet verbatim « ECOLE DU BREUIL 21 RTE DE LA FERME BOIS DE VINCENNES » : l'objet du marché est ce site lui-même, avec son adresse, cohérente avec la délibération d'octobre 2000 « l'école du Breuil - route de la Ferme (12e) ». Réserve : l'objet publié ne précise pas la nature de la prestation."
+  },
+  {
+   "numero_marche": "20131230008863",
+   "objet": "FOURNITURE ET POSE DE BARRIÈRES ET PORTAILS ECOLE DU BREUIL",
+   "objet_clair": null,
+   "fournisseur": "AVI CONCEPT",
+   "montant_max": 62750.0,
+   "date_notification": "2013-03-20",
+   "preuve": "Objet verbatim « FOURNITURE ET POSE DE BARRIÈRES ET PORTAILS ECOLE DU BREUIL » : fourniture et travaux d'équipement sur ce site, qui est nommé dans l'objet."
+  },
+  {
+   "numero_marche": "20141210011458",
+   "objet": "RÉAMÉNAGEMENT SALLE INFORMATIQUE ECOLE DU BREUIL À PARIS",
+   "objet_clair": null,
+   "fournisseur": "TRAVAUX BATIMENTS ELECTRICITE SECUR",
+   "montant_max": 29447.77,
+   "date_notification": "2014-06-10",
+   "preuve": "Objet verbatim « RÉAMÉNAGEMENT SALLE INFORMATIQUE ECOLE DU BREUIL À PARIS » : travaux d'aménagement dans les locaux de ce site, qui est nommé dans l'objet."
+  }
+ ],
+ "mandate": {
+  "par_annee": {
+   "2009": 235052.41,
+   "2010": 158719.46,
+   "2011": 66273.67,
+   "2012": 99060.02,
+   "2013": 134457.85,
+   "2014": 94431.04,
+   "2015": 53455.76,
+   "2016": 141345.47,
+   "2017": 44056.13,
+   "2018": 170626.82,
+   "2019": 11800.36
+  },
+  "total_eur": 1209278.99,
+  "operations": [
+   {
+    "ap_cle": "B100/0702027",
+    "ap_texte": "ECOLE DU BREUIL",
+    "mandate_par_annee": {
+     "2009": 221739.49,
+     "2010": 65819.99,
+     "2011": 638.9
+    },
+    "total_mandate": 288198.38,
+    "preuve": "Libellé d'opération verbatim « ECOLE DU BREUIL » (direction DEVE, mission « ESPACES VERTS ET ENV ») : le libellé nomme ce lieu — ce n'est ni une enveloppe générique de direction ni un autre équipement du quartier. L'école relevait de la DEVE jusqu'à la création de la régie en 2018 (« 2018 DEVE 107 - Création de la régie personnalisée école Du Breuil » (séance de juillet 2018) ; dans ce débat, la réforme est décrite comme « l'extraire de la Direction des Espaces Verts et de l'Environnement pour en faire une régie personnalisée de la Ville de Paris, dotée de l'autonomie juridique et financière »), et la Ville porte de longue date des opérations de travaux sur ce site : « aménagement des combles de l'aile droite du bâtiment central de l'Ecole du Breuil (12e) » (mai 2000), « modernisation de 3 centres thermiques à l'école du Breuil - route de la Ferme (12e) » (octobre 2000).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0702027"
+   },
+   {
+    "ap_cle": "1402027",
+    "ap_texte": "Ecole du Breuil - subvention équipmt",
+    "mandate_par_annee": {
+     "2014": 64356.97,
+     "2015": 16145.45,
+     "2016": 12744.1,
+     "2017": 255.96,
+     "2018": 55566.72,
+     "2019": 925.21
+    },
+    "total_mandate": 149994.41,
+    "preuve": "Libellé d'opération verbatim « Ecole du Breuil - subvention équipmt » (direction DEVE, mission « ESPACES VERTS ET ENV ») : le libellé nomme ce lieu, ce n'est pas une enveloppe générique d'équipement. Réserve : il s'agit d'une subvention d'équipement versée à l'exploitant de l'école et non de travaux commandés par la Ville sur le site ; elle peut recouper la ligne subvention du même bénéficiaire, les délibérations votant ensemble fonctionnement et investissement (« 2019 DEVE 103 - Subvention de fonctionnement (4.400.000 euros) et d'investissement (600 000 euros) au bénéfice de la régie personnalisée de l'école Du Breuil », « 2019 DEVE 15 - Subvention d'investissement à la régie personnalisée école Du Breuil »). Le mandatement 2018 de cette opération est en outre repris ligne à ligne dans le bloc projets : les deux blocs ne s'additionnent pas.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1402027"
+   },
+   {
+    "ap_cle": "B100/0902027",
+    "ap_texte": "ECOLE DU BREUIL",
+    "mandate_par_annee": {
+     "2009": 13312.92,
+     "2010": 92899.47,
+     "2011": 16253.84,
+     "2012": 7405.89
+    },
+    "total_mandate": 129872.12,
+    "preuve": "Libellé d'opération verbatim « ECOLE DU BREUIL » (direction DEVE, mission « ESPACES VERTS ET ENV ») : le libellé nomme ce lieu — ce n'est ni une enveloppe générique de direction ni un autre équipement du quartier. L'école relevait de la DEVE jusqu'à la création de la régie en 2018 (« 2018 DEVE 107 - Création de la régie personnalisée école Du Breuil » (séance de juillet 2018) ; dans ce débat, la réforme est décrite comme « l'extraire de la Direction des Espaces Verts et de l'Environnement pour en faire une régie personnalisée de la Ville de Paris, dotée de l'autonomie juridique et financière »), et la Ville porte de longue date des opérations de travaux sur ce site : « aménagement des combles de l'aile droite du bâtiment central de l'Ecole du Breuil (12e) » (mai 2000), « modernisation de 3 centres thermiques à l'école du Breuil - route de la Ferme (12e) » (octobre 2000).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0902027"
+   },
+   {
+    "ap_cle": "1502027",
+    "ap_texte": "Ecole du Breuil - subvention équipmt",
+    "mandate_par_annee": {
+     "2015": 34729.47,
+     "2016": 74648.28,
+     "2017": 9637.5,
+     "2018": 1237.19,
+     "2019": 60.14
+    },
+    "total_mandate": 120312.58,
+    "preuve": "Libellé d'opération verbatim « Ecole du Breuil - subvention équipmt » (direction DEVE, mission « ESPACES VERTS ET ENV ») : le libellé nomme ce lieu, ce n'est pas une enveloppe générique d'équipement. Réserve : il s'agit d'une subvention d'équipement versée à l'exploitant de l'école et non de travaux commandés par la Ville sur le site ; elle peut recouper la ligne subvention du même bénéficiaire, les délibérations votant ensemble fonctionnement et investissement (« 2019 DEVE 103 - Subvention de fonctionnement (4.400.000 euros) et d'investissement (600 000 euros) au bénéfice de la régie personnalisée de l'école Du Breuil », « 2019 DEVE 15 - Subvention d'investissement à la régie personnalisée école Du Breuil »). Le mandatement 2018 de cette opération est en outre repris ligne à ligne dans le bloc projets : les deux blocs ne s'additionnent pas.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1502027"
+   },
+   {
+    "ap_cle": "B100/1302027",
+    "ap_texte": "ECOLE DU BREUIL",
+    "mandate_par_annee": {
+     "2013": 115697.51
+    },
+    "total_mandate": 115697.51,
+    "preuve": "Libellé d'opération verbatim « ECOLE DU BREUIL » (direction DEVE, mission « ESPACES VERTS ET ENV ») : le libellé nomme ce lieu — ce n'est ni une enveloppe générique de direction ni un autre équipement du quartier. L'école relevait de la DEVE jusqu'à la création de la régie en 2018 (« 2018 DEVE 107 - Création de la régie personnalisée école Du Breuil » (séance de juillet 2018) ; dans ce débat, la réforme est décrite comme « l'extraire de la Direction des Espaces Verts et de l'Environnement pour en faire une régie personnalisée de la Ville de Paris, dotée de l'autonomie juridique et financière »), et la Ville porte de longue date des opérations de travaux sur ce site : « aménagement des combles de l'aile droite du bâtiment central de l'Ecole du Breuil (12e) » (mai 2000), « modernisation de 3 centres thermiques à l'école du Breuil - route de la Ferme (12e) » (octobre 2000).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1302027"
+   },
+   {
+    "ap_cle": "1602027",
+    "ap_texte": "Ecole du Breuil - subvention équipmt",
+    "mandate_par_annee": {
+     "2016": 53953.09,
+     "2017": 34162.67,
+     "2018": 22436.21,
+     "2019": 4602.5
+    },
+    "total_mandate": 115154.47,
+    "preuve": "Libellé d'opération verbatim « Ecole du Breuil - subvention équipmt » (direction DEVE, mission « ESPACES VERTS ET ENV ») : le libellé nomme ce lieu, ce n'est pas une enveloppe générique d'équipement. Réserve : il s'agit d'une subvention d'équipement versée à l'exploitant de l'école et non de travaux commandés par la Ville sur le site ; elle peut recouper la ligne subvention du même bénéficiaire, les délibérations votant ensemble fonctionnement et investissement (« 2019 DEVE 103 - Subvention de fonctionnement (4.400.000 euros) et d'investissement (600 000 euros) au bénéfice de la régie personnalisée de l'école Du Breuil », « 2019 DEVE 15 - Subvention d'investissement à la régie personnalisée école Du Breuil »). Le mandatement 2018 de cette opération est en outre repris ligne à ligne dans le bloc projets : les deux blocs ne s'additionnent pas.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1602027"
+   },
+   {
+    "ap_cle": "B100/1102027",
+    "ap_texte": "ECOLE DU BREUIL",
+    "mandate_par_annee": {
+     "2011": 49380.93,
+     "2012": 45955.27,
+     "2013": 4564.59
+    },
+    "total_mandate": 99900.79,
+    "preuve": "Libellé d'opération verbatim « ECOLE DU BREUIL » (direction DEVE, mission « ESPACES VERTS ET ENV ») : le libellé nomme ce lieu — ce n'est ni une enveloppe générique de direction ni un autre équipement du quartier. L'école relevait de la DEVE jusqu'à la création de la régie en 2018 (« 2018 DEVE 107 - Création de la régie personnalisée école Du Breuil » (séance de juillet 2018) ; dans ce débat, la réforme est décrite comme « l'extraire de la Direction des Espaces Verts et de l'Environnement pour en faire une régie personnalisée de la Ville de Paris, dotée de l'autonomie juridique et financière »), et la Ville porte de longue date des opérations de travaux sur ce site : « aménagement des combles de l'aile droite du bâtiment central de l'Ecole du Breuil (12e) » (mai 2000), « modernisation de 3 centres thermiques à l'école du Breuil - route de la Ferme (12e) » (octobre 2000).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1102027"
+   },
+   {
+    "ap_cle": "1702027",
+    "ap_texte": "Ecole du Breuil - subvention équipmt",
+    "mandate_par_annee": {
+     "2018": 91386.7,
+     "2019": 6212.51
+    },
+    "total_mandate": 97599.21,
+    "preuve": "Libellé d'opération verbatim « Ecole du Breuil - subvention équipmt » (direction DEVE, mission « ESPACES VERTS ET ENV ») : le libellé nomme ce lieu, ce n'est pas une enveloppe générique d'équipement. Réserve : il s'agit d'une subvention d'équipement versée à l'exploitant de l'école et non de travaux commandés par la Ville sur le site ; elle peut recouper la ligne subvention du même bénéficiaire, les délibérations votant ensemble fonctionnement et investissement (« 2019 DEVE 103 - Subvention de fonctionnement (4.400.000 euros) et d'investissement (600 000 euros) au bénéfice de la régie personnalisée de l'école Du Breuil », « 2019 DEVE 15 - Subvention d'investissement à la régie personnalisée école Du Breuil »). Le mandatement 2018 de cette opération est en outre repris ligne à ligne dans le bloc projets : les deux blocs ne s'additionnent pas.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1702027"
+   },
+   {
+    "ap_cle": "B100/1202027",
+    "ap_texte": "ECOLE DU BREUIL",
+    "mandate_par_annee": {
+     "2012": 30251.56,
+     "2013": 453.74
+    },
+    "total_mandate": 30705.3,
+    "preuve": "Libellé d'opération verbatim « ECOLE DU BREUIL » (direction DEVE, mission « ESPACES VERTS ET ENV ») : le libellé nomme ce lieu — ce n'est ni une enveloppe générique de direction ni un autre équipement du quartier. L'école relevait de la DEVE jusqu'à la création de la régie en 2018 (« 2018 DEVE 107 - Création de la régie personnalisée école Du Breuil » (séance de juillet 2018) ; dans ce débat, la réforme est décrite comme « l'extraire de la Direction des Espaces Verts et de l'Environnement pour en faire une régie personnalisée de la Ville de Paris, dotée de l'autonomie juridique et financière »), et la Ville porte de longue date des opérations de travaux sur ce site : « aménagement des combles de l'aile droite du bâtiment central de l'Ecole du Breuil (12e) » (mai 2000), « modernisation de 3 centres thermiques à l'école du Breuil - route de la Ferme (12e) » (octobre 2000).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1202027"
+   },
+   {
+    "ap_cle": "B100/1002027",
+    "ap_texte": "ECOLE DU BREUIL",
+    "mandate_par_annee": {
+     "2012": 15447.3,
+     "2013": 13742.01
+    },
+    "total_mandate": 29189.31,
+    "preuve": "Libellé d'opération verbatim « ECOLE DU BREUIL » (direction DEVE, mission « ESPACES VERTS ET ENV ») : le libellé nomme ce lieu — ce n'est ni une enveloppe générique de direction ni un autre équipement du quartier. L'école relevait de la DEVE jusqu'à la création de la régie en 2018 (« 2018 DEVE 107 - Création de la régie personnalisée école Du Breuil » (séance de juillet 2018) ; dans ce débat, la réforme est décrite comme « l'extraire de la Direction des Espaces Verts et de l'Environnement pour en faire une régie personnalisée de la Ville de Paris, dotée de l'autonomie juridique et financière »), et la Ville porte de longue date des opérations de travaux sur ce site : « aménagement des combles de l'aile droite du bâtiment central de l'Ecole du Breuil (12e) » (mai 2000), « modernisation de 3 centres thermiques à l'école du Breuil - route de la Ferme (12e) » (octobre 2000).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1002027"
+   },
+   {
+    "ap_cle": "1302027",
+    "ap_texte": "ECOLE DU BREUIL",
+    "mandate_par_annee": {
+     "2014": 15800.07,
+     "2015": 2580.84
+    },
+    "total_mandate": 18380.91,
+    "preuve": "Libellé d'opération verbatim « ECOLE DU BREUIL » (direction DEVE, mission « ESPACES VERTS ET ENV ») : le libellé nomme ce lieu — ce n'est ni une enveloppe générique de direction ni un autre équipement du quartier. L'école relevait de la DEVE jusqu'à la création de la régie en 2018 (« 2018 DEVE 107 - Création de la régie personnalisée école Du Breuil » (séance de juillet 2018) ; dans ce débat, la réforme est décrite comme « l'extraire de la Direction des Espaces Verts et de l'Environnement pour en faire une régie personnalisée de la Ville de Paris, dotée de l'autonomie juridique et financière »), et la Ville porte de longue date des opérations de travaux sur ce site : « aménagement des combles de l'aile droite du bâtiment central de l'Ecole du Breuil (12e) » (mai 2000), « modernisation de 3 centres thermiques à l'école du Breuil - route de la Ferme (12e) » (octobre 2000).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1302027"
+   },
+   {
+    "ap_cle": "1202027",
+    "ap_texte": "ECOLE DU BREUIL",
+    "mandate_par_annee": {
+     "2014": 14274.0
+    },
+    "total_mandate": 14274.0,
+    "preuve": "Libellé d'opération verbatim « ECOLE DU BREUIL » (direction DEVE, mission « ESPACES VERTS ET ENV ») : le libellé nomme ce lieu — ce n'est ni une enveloppe générique de direction ni un autre équipement du quartier. L'école relevait de la DEVE jusqu'à la création de la régie en 2018 (« 2018 DEVE 107 - Création de la régie personnalisée école Du Breuil » (séance de juillet 2018) ; dans ce débat, la réforme est décrite comme « l'extraire de la Direction des Espaces Verts et de l'Environnement pour en faire une régie personnalisée de la Ville de Paris, dotée de l'autonomie juridique et financière »), et la Ville porte de longue date des opérations de travaux sur ce site : « aménagement des combles de l'aile droite du bâtiment central de l'Ecole du Breuil (12e) » (mai 2000), « modernisation de 3 centres thermiques à l'école du Breuil - route de la Ferme (12e) » (octobre 2000).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1202027"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2019"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89cole+du+Breuil"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

@@ -1,0 +1,156 @@
+{
+ "generated_at": "2026-09-11T15:58:09.539515+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "eglise-saint-merri",
+ "name": "Église Saint-Merri",
+ "kind_fr": "Église",
+ "kind_en": "Église",
+ "famille": "culture",
+ "arrondissement": 4,
+ "lat": 48.859083,
+ "lon": 2.350805,
+ "photo": "/img/lieux/eglise-saint-merri.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Saint-Merri",
+  "source": "Wikipédia"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "L’église Saint-Merry, communément appelée Saint-Merry, est une église catholique située sur l’actuelle rue Saint Martin au 78 et sur la rue de la Verrerie, avec au 76 le siège de la paroisse, dans le 4e arrondissement de Paris, à proximité du centre Georges-Pompidou.",
+  "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Saint-Merri",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 572,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 1122117.0,
+  "invest_annees": [
+   "2019"
+  ],
+  "lecture_mode": "titre nommant le lieu (5 trouvés)",
+  "lecture_mode_en": "title naming the place (5 found)",
+  "n_lus": 5,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "2003": [
+   {
+    "reference": "2003 DAC 157",
+    "titre": "Approbation du principe et des modalités d'attribution d'un marché de travaux sur appel d'offres ouvert en vue de la restauration des parties hautes de la façade ouest compris clocher et début des travées droites du chœur de l'église Saint Merri (4e). - Autorisation à M. le Maire de Paris de signer lesdits marchés correspondants. Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70442"
+   },
+   {
+    "reference": "2003 DAC 235",
+    "titre": "Autorisation à M. le Maire de Paris de signer un marché négocié relatif à une mission de maîtrise d'œuvre en vue de la restauration des parties hautes de la façade Ouest et début des travées droites du choeur de l'église Saint-Merri (4ème). Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70683"
+   }
+  ],
+  "2004": [
+   {
+    "reference": "2004 DAC 484",
+    "titre": "Approbation du principe de mise en conformité des installations électriques de l'église Saint-Merri (4e) et des modalités de passation du marché de travaux correspondant. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46799"
+   }
+  ],
+  "2005": [
+   {
+    "reference": "2005 DAC 313",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché n° 03/41168 passé avec l’entreprise QUELIN - Lot n°1 : “Maçonnerie, pierre de taille” et de souscrire un avenant n° 1 au marché n°04/41098 passé avec l’entreprise ESMOINGT - Lot n°4 : “sculpture, restauration de sculpture” pour la réalisation de prestations complémentaires nécessaires pour la restauration des parties hautes de la façade ouest compris clocher et début des travées droites du chœur de l’église Saint-Merri (4",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83223"
+   }
+  ],
+  "2008": [
+   {
+    "reference": "2008 DAC 212",
+    "titre": "Signature d’un avenant n°1 au marché passé avec la SAS BORNHAUSER MOLINARI MELUN en vue de lui substituer la SAS FORCLUM ILE-DE-FRANCE - Etablissement de Melun pour les travaux de mise en conformité des installations électriques de l’église Saint-Merri (4e). Mme Colombe BROSSEL, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69604"
+   }
+  ]
+ },
+ "invest": [
+  {
+   "annee": 2019,
+   "montant_eur": 1122117.0,
+   "nom_projet": "Edifices cultuels Eglise Saint-Merri - Restauration des façades sud du chevet",
+   "preuve": "Le nom du projet nomme explicitement ce lieu : « Edifices cultuels Eglise Saint-Merri - Restauration des façades sud du chevet » (signal « nom » dans les candidats). Le chevet et ses façades sont des parties de l'édifice : l'opération porte sur le bâtiment lui-même, et le libellé ne nomme aucun autre équipement. La distance de 796 m provient du géocodage du point projet et n'est pas retenue comme preuve : c'est le libellé qui rattache. Les délibérations du Conseil de Paris attestent par ailleurs que la Ville conduit des travaux de restauration sur cette église (2003 DAC 235, maîtrise d'œuvre pour les parties hautes de la façade Ouest ; 2005 DAC 313, avenants sur ces mêmes travaux) — campagne distincte de celle-ci, qui porte sur les façades sud du chevet.",
+   "id": "2019_04_il_019"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20131320009089",
+   "objet": "CSP5 RESTAURATION FACADE EGLISE SAINT-MERRI LOT 2",
+   "objet_clair": null,
+   "fournisseur": "TOLLIS",
+   "montant_max": 96563.17,
+   "date_notification": "2013-05-27",
+   "preuve": "L'objet du marché nomme le lieu et porte sur des travaux sur le bâtiment : « CSP5 RESTAURATION FACADE EGLISE SAINT-MERRI LOT 2 » (titulaire TOLLIS, SIRET 40081821700012, repris du candidat). Le lieu n'est pas un simple repère d'adresse et l'objet ne décrit pas un marché-cadre de toute la Ville : la restauration de la façade de cette église est l'objet même du marché. Le champ lieu_execution est vide dans la source et n'est pas utilisé comme preuve."
+  },
+  {
+   "numero_marche": "20161320000035",
+   "objet": "CSP5 MOE FACADES EGLISE SAINT MERRI 4ÈME",
+   "objet_clair": null,
+   "fournisseur": "BRUNELLE",
+   "montant_max": 93561.25,
+   "date_notification": "2016-03-18",
+   "preuve": "L'objet nomme le lieu et son arrondissement : « CSP5 MOE FACADES EGLISE SAINT MERRI 4ÈME », soit une mission de maîtrise d'œuvre sur les façades de cette église, dans le 4e arrondissement qui est celui du lieu (titulaire BRUNELLE, SIRET 32406049000020, repris du candidat). Prestation portant sur ce bâtiment, pas un marché-cadre Ville citant le lieu en exemple. Le champ lieu_execution est vide dans la source et n'est pas utilisé comme preuve."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89glise+Saint-Merri"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

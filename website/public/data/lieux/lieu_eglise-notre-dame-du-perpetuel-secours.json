@@ -1,0 +1,108 @@
+{
+ "generated_at": "2026-09-11T15:58:09.539515+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "eglise-notre-dame-du-perpetuel-secours",
+ "name": "Église Notre-Dame-du-Perpétuel-Secours",
+ "kind_fr": "Église",
+ "kind_en": "Église",
+ "famille": "culture",
+ "arrondissement": 11,
+ "lat": 48.861721,
+ "lon": 2.387028,
+ "photo": "/img/lieux/eglise-notre-dame-du-perpetuel-secours.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 3.0",
+  "auteur": "GFreihalter",
+  "url": "https://commons.wikimedia.org/wiki/File:Paris_Notre-Dame-du-Perp%C3%A9tuel-Secours_au%C3%9Fen82.JPG",
+  "source": "Wikimedia Commons"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1208,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "tête du classement Solr (1208 documents au total)",
+  "lecture_mode_en": "top of the Solr ranking (1208 documents total)",
+  "n_lus": 43,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": null,
+ "invest": [],
+ "marches": [],
+ "mandate": {
+  "par_annee": {
+   "2017": 72221.67,
+   "2018": 34970.26,
+   "2019": 391622.59,
+   "2020": 1431310.22,
+   "2021": 1461589.76,
+   "2022": 106979.94
+  },
+  "total_eur": 3498694.44,
+  "operations": [
+   {
+    "ap_cle": "1504790",
+    "ap_texte": "EGLISE NOTRE DAME DU PERPETUEL SECOURS (",
+    "mandate_par_annee": {
+     "2017": 72221.67,
+     "2018": 34970.26,
+     "2019": 391622.59,
+     "2020": 1431310.22,
+     "2021": 1461589.76,
+     "2022": 106979.94
+    },
+    "total_mandate": 3498694.44,
+    "preuve": "Le libellé de l'opération nomme un édifice précis — « EGLISE NOTRE DAME DU PERPETUEL SECOURS ( » — et non une enveloppe générique de direction ; mission « AFFAIRES CULTURELLES », direction DAC, mandatements 2017-2022. Les lignes de mandatement sont rattachées au 11e arrondissement (55 boulevard de Ménilmontant) dans l'export d'investissements, et le marché 20161320001415 « CSP5 MOE EGLISE NOTRE DAME PERPETUEL SECOURS 11ÈME » situe l'opération sur l'église du 11e. Les montants recoupent les lignes projets nommant l'église : 2018 = 34 970,26 € (33 284,40 + 1 685,86), 2019 = 391 622,59 € (projet 391 623 €), 2020 = 1 431 310,22 € (projet 1 431 310 €). Les projets retenus ci-dessus sont des mandats de cette même opération : c'est le même argent décrit deux fois, pas un cumul.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1504790"
+   }
+  ],
+  "periode": [
+   "2017",
+   "2022"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89glise+Notre-Dame-du-Perp%C3%A9tuel-Secours"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

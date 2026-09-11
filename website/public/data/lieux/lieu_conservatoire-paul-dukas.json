@@ -1,0 +1,93 @@
+{
+ "generated_at": "2026-09-11T15:58:09.539515+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "conservatoire-paul-dukas",
+ "name": "Conservatoire Paul-Dukas",
+ "kind_fr": "Conservatoire",
+ "kind_en": "Conservatoire",
+ "famille": "culture",
+ "arrondissement": 12,
+ "lat": 48.842318,
+ "lon": 2.384129,
+ "photo": "/img/lieux/conservatoire-paul-dukas.jpg",
+ "photo_credit": {
+  "licence": "Public domain",
+  "auteur": "\nDukas, Paul (1865-1935). Auteur du texte",
+  "url": "https://commons.wikimedia.org/wiki/File:Quelques_r%C3%A9flexions_faites_par_Paul_Dukas_%C3%A0_sa_classe_du_Conservatoire,_de_janvier_1934_%C3%A0_avril_1935_(manuscrit_autographe)_-_btv1b52518345f_(2_of_2).jpg",
+  "source": "Wikimedia Commons"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1251,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 100439.0,
+  "invest_annees": [
+   "2019"
+  ],
+  "lecture_mode": "tête du classement Solr (1251 documents au total)",
+  "lecture_mode_en": "top of the Solr ranking (1251 documents total)",
+  "n_lus": 44,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": null,
+ "invest": [
+  {
+   "annee": 2019,
+   "montant_eur": 100439.0,
+   "nom_projet": "Enseignement artistique Conservatoire Paul Dukas - Divers travaux de construction",
+   "preuve": "Signal exact « nom » : le libellé du projet nomme le lieu verbatim — « Enseignement artistique Conservatoire Paul Dukas - Divers travaux de construction » — et porte sur des travaux de construction sur cet équipement. Montant (100 439 €) et année (2019) repris tels quels du candidat. La distance_m du candidat vaut 537 m, mais la distance n'est pas le signal retenu et n'a pas servi à rattacher : seule la dénomination du projet fonde le rattachement.",
+   "id": "2019_12_il_021"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "decp-2025T05503",
+   "objet": "Travaux de mise en œuvre de films solaires au conservatoire Paul Dukas Paris 12ème N° Opération 202202390",
+   "objet_clair": null,
+   "fournisseur": "CONFORT GLASS",
+   "montant_max": 37668.0,
+   "date_notification": "2025-06-05",
+   "preuve": "Signal exact « objet » : l'objet du marché porte sur des travaux exécutés SUR le bâtiment et nomme le lieu — « Travaux de mise en œuvre de films solaires au conservatoire Paul Dukas Paris 12ème N° Opération 202202390 ». L'arrondissement cité (12e) concorde avec l'arrondissement du lieu (12). Ce n'est ni un repère d'adresse ni un marché-cadre de toute la Ville. Le champ lieu_execution du candidat vaut « Paris » et n'est pas utilisé comme preuve. Titulaire CONFORT GLASS, SIRET 48829585800028 (champ fournisseur_siret du candidat). Montant max (37 668 €) et date de notification (2025-06-05) repris tels quels du candidat."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Conservatoire+Paul-Dukas"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

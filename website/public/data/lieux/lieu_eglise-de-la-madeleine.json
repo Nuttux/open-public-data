@@ -1,0 +1,256 @@
+{
+ "generated_at": "2026-09-11T15:58:09.539515+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "eglise-de-la-madeleine",
+ "name": "Église de la Madeleine",
+ "kind_fr": "Église",
+ "kind_en": "Église",
+ "famille": "culture",
+ "arrondissement": 8,
+ "lat": 48.870134,
+ "lon": 2.324543,
+ "photo": "/img/lieux/eglise-de-la-madeleine.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/%C3%89glise_de_la_Madeleine",
+  "source": "Wikipédia"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "L’église de la Madeleine est une église paroissiale catholique située sur la place de la Madeleine, dans le 8e arrondissement de Paris. Elle constitue une illustration du style architectural néo-classique, notamment grâce à son portique octostyle et aux 52 colonnes corinthiennes qui la ceinturent.",
+  "url": "https://fr.wikipedia.org/wiki/%C3%89glise_de_la_Madeleine",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 879,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (14 trouvés)",
+  "lecture_mode_en": "title naming the place (14 found)",
+  "n_lus": 14,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "1998": [
+   {
+    "reference": "1998 DAC 66",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec l'Etat (Ministère de la culture et de la communication) une convention de versement de fonds de concours en vue de la réalisation des travaux de couverture et de réfection des chéneaux du côté Est de l'église de la Madeleine (8e). Mme Hélène MACE de LEPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 1998",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82732"
+   }
+  ],
+  "1999": [
+   {
+    "reference": "1999 DAC 108",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec l'Etat (Ministère de la Culture et de la Communication) une convention de versement de fonds de concours en vue de la réalisation des travaux de couverture et de réfection des chêneaux (côté ouest) de l'église de la Madeleine (8e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83925"
+   }
+  ],
+  "2000": [
+   {
+    "reference": "2000 DAC 66",
+    "titre": "Approbation du principe de la réalisation des travaux de mise en place d'une couverture provisoire sur l'église de la Madeleine (8e), suite à la tempête du 26 décembre 1999. - Autorisation à M. le Maire de Paris de signer un marché négocié. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51255"
+   }
+  ],
+  "2001": [
+   {
+    "reference": "2001 DAC 391",
+    "titre": "Approbation des modalités d'attribution d'un marché négocié pour l'acquisition d'un échafaudage de protection du pronaos de l'église de la Madeleine (8e).- Autorisation à M. le Maire de Paris de signer ledit marché ainsi qu'un contrat de transaction avec la société Echafaudage Service pour l'indemniser de l'immobilisation d'un échafaudage de protection du pronaos de l'église de la Madeleine (8e). Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "OCTOBRE 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33724"
+   }
+  ],
+  "2003": [
+   {
+    "reference": "2003 DAC 125",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec l'Etat (Ministère de la Culture) une convention de versement de fonds de concours en vue de la restauration des couvertures, chéneaux et corniches - versant ouest-de l'église de la Madeleine (8ème). Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56981"
+   },
+   {
+    "reference": "2003 DAC 237",
+    "titre": "Autorisation à M. le Maire de Paris de signer un marché négocié relatif à une mission de maîtrise d'œuvre en vue de la réalisation d'une couverture provisoire en bacs acier sur le versant Ouest de l'église de la Madeleine (8e). Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70370"
+   },
+   {
+    "reference": "2003 DAC 43",
+    "titre": "Approbation du principe et des modalités d'attribution d'un marché de travaux sur appel d'offres ouvert en vue de la réalisation des travaux de mise en conformité des installations électriques et travaux annexes d'aménagement de l'église de la Madeleine (8e). - Autorisation à M. le Maire de signer le marché correspondant. Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78892"
+   }
+  ],
+  "2004": [
+   {
+    "reference": "2004 DAC 126",
+    "titre": "Approbation du principe de réalisation d'une couverture provisoire en bacs acier sur le versant ouest de l'église de la Madeleine (8e) et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45537"
+   }
+  ],
+  "2006": [
+   {
+    "reference": "2006 DAC 238",
+    "titre": "Approbation du principe de réalisation d’une opération de restauration des chéneaux et corniches au bas du versant Est des couvertures de l’église de la Madeleine (8e) et des modalités de passation du marché de maîtrise d’oeuvre correspondant. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81333"
+   }
+  ],
+  "2015": [
+   {
+    "reference": "2015 DAC 327",
+    "titre": "2015 DAC 327 - Demande auprès de l’Etat d'une subvention (523.579,10 euros) pour le financement des deux tranches de travaux de l’église de la Madeleine (8e).",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
+    "seance": "MAI 2015",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125353"
+   }
+  ],
+  "2025": [
+   {
+    "reference": "2025 DAC 483",
+    "titre": "2025 DAC 483 - Convention d'occupation du domaine public relative à l'installation et l'exploitation d'un espace publicitaire sur l'échafaudage des travaux de l'église Saint-Pierre-du-Gros-Caillou (7e). 2025 DAC 493 - Convention d'occupation du domaine public relative à l'installation et à l'exploitation d'un espace d'affichage publicitaire sur l'échafaudage des travaux de l'église de la Madeleine (8e).",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2025",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183862"
+   }
+  ]
+ },
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "decp-2026T01688",
+   "objet": "Restauration des façades Nord, Est et Ouest de l’église de La Madeleine, Paris 8ème - Echafaudages - Pierre de taille",
+   "objet_clair": null,
+   "fournisseur": "ENTREPRISE DEGAINE",
+   "montant_max": 8448709.57,
+   "date_notification": "2026-03-18",
+   "preuve": "L'objet nomme le lieu et son arrondissement : « Restauration des façades Nord, Est et Ouest de l’église de La Madeleine, Paris 8ème - Echafaudages - Pierre de taille ». La délibération du Conseil de Paris de septembre 1995 désigne l'édifice comme « l'église de la Madeleine, place de la Madeleine (8e), appartenant à la Ville de Paris et classée parmi les Monuments historiques »."
+  },
+  {
+   "numero_marche": "20232023S03703",
+   "objet": "MO RESTAURATION FACADES EGLISE DE LA MADELEINE",
+   "objet_clair": null,
+   "fournisseur": "1090 ARCHITECTES",
+   "montant_max": 630720.0,
+   "date_notification": "2023-05-15",
+   "preuve": "Objet verbatim « MO RESTAURATION FACADES EGLISE DE LA MADELEINE » : maîtrise d'œuvre de la restauration des façades de ce bâtiment, nommé explicitement. Cohérent avec le marché de travaux de façades notifié en 2026 sur le même édifice."
+  },
+  {
+   "numero_marche": "20232023T07124",
+   "objet": "MODERNISATION GENIE CLIMATIQUE EGLISE DE LA MADELEINE",
+   "objet_clair": null,
+   "fournisseur": "PROCHALOR",
+   "montant_max": 339090.91,
+   "date_notification": "2023-08-01",
+   "preuve": "Objet verbatim « MODERNISATION GENIE CLIMATIQUE EGLISE DE LA MADELEINE » : travaux d'équipement (génie climatique) portant sur le bâtiment lui-même, qui est nommé."
+  },
+  {
+   "numero_marche": "decp-2026T01690",
+   "objet": "Restauration des façades Nord, Est et Ouest de l’église de La Madeleine, Paris 8ème - Couverture",
+   "objet_clair": null,
+   "fournisseur": "LE BRAS FRERES",
+   "montant_max": 302118.95,
+   "date_notification": "2026-03-18",
+   "preuve": "Objet verbatim « Restauration des façades Nord, Est et Ouest de l’église de La Madeleine, Paris 8ème - Couverture » : lot couverture du même chantier de restauration, le lieu et l'arrondissement sont nommés."
+  },
+  {
+   "numero_marche": "20161320008700",
+   "objet": "CSP5 SPS POUR RESTAURATION FACADES EGLISE DE LA MADELEINE",
+   "objet_clair": null,
+   "fournisseur": "SOLUTECH",
+   "montant_max": 208000.0,
+   "date_notification": "2016-09-01",
+   "preuve": "Objet verbatim « CSP5 SPS POUR RESTAURATION FACADES EGLISE DE LA MADELEINE » : mission de coordination sécurité et protection de la santé sur le chantier de restauration des façades de cet édifice, nommé dans l'objet."
+  },
+  {
+   "numero_marche": "20211320010706",
+   "objet": "MS_HABILLAGE PALISSADE DE L EGLISE DE LA MADELEINE",
+   "objet_clair": null,
+   "fournisseur": "DUPLIGRAFIC",
+   "montant_max": 35790.24,
+   "date_notification": "2021-07-19",
+   "preuve": "Objet verbatim « MS_HABILLAGE PALISSADE DE L EGLISE DE LA MADELEINE » : prestation exécutée sur la palissade de chantier de ce bâtiment, nommé dans l'objet."
+  },
+  {
+   "numero_marche": "20201320010625",
+   "objet": "MS_SPS RESTAURATION FACADE SUD EGLISE DE LA MADELEINE",
+   "objet_clair": null,
+   "fournisseur": "SOLUTECH",
+   "montant_max": 32715.0,
+   "date_notification": "2020-02-18",
+   "preuve": "Objet verbatim « MS_SPS RESTAURATION FACADE SUD EGLISE DE LA MADELEINE » : mission SPS pour la restauration de la façade sud de cet édifice, nommé dans l'objet."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89glise+de+la+Madeleine"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

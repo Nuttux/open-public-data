@@ -1,0 +1,448 @@
+{
+ "generated_at": "2026-09-11T15:58:09.539515+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "musee-d-art-et-d-histoire-du-judaisme",
+ "name": "Musée d'art et d'histoire du Judaïsme",
+ "kind_fr": "Musée",
+ "kind_en": "Musée",
+ "famille": "culture",
+ "arrondissement": 3,
+ "lat": 48.861266,
+ "lon": 2.355442,
+ "photo": "/img/lieux/musee-d-art-et-d-histoire-du-judaisme.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_d'Art_et_d'Histoire_du_juda%C3%AFsme",
+  "source": "Wikipédia"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "Le musée d'Art et d'Histoire du judaïsme (mahJ) est installé dans l'hôtel de Saint-Aignan dans le quartier du Marais.",
+  "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_d'Art_et_d'Histoire_du_juda%C3%AFsme",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 667,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (12 trouvés)",
+  "lecture_mode_en": "title naming the place (12 found)",
+  "n_lus": 12,
+  "n_lieu": null
+ },
+ "subventions_exploitant": {
+  "nom_fiche": "MUSEE D ART ET D HISTOIRE DU JUDAIS",
+  "total_eur": 32394400.0,
+  "annees": [
+   "2010",
+   "2024"
+  ],
+  "rows": [
+   {
+    "annee": "2024",
+    "montant_eur": 2238805.0,
+    "beneficiaire": "MUSEE D ART ET D HISTOIRE DU JUDAIS",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2023",
+    "montant_eur": 2138805.0,
+    "beneficiaire": "MUSEE D'ART ET D'HISTOIRE DU JUDAISME",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2022",
+    "montant_eur": 2038805.0,
+    "beneficiaire": "MUSEE D ART ET D HISTOIRE DU JUDAIS",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2021",
+    "montant_eur": 1974641.0,
+    "beneficiaire": "MUSEE D ART ET D HISTOIRE DU JUDAIS",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2020",
+    "montant_eur": 2202969.0,
+    "beneficiaire": "MUSEE D ART ET D HISTOIRE DU JUDAIS",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2019",
+    "montant_eur": 2155436.0,
+    "beneficiaire": "MUSEE D ART ET D HISTOIRE DU JUDAIS",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2018",
+    "montant_eur": 2172174.0,
+    "beneficiaire": "MUSEE D ART ET D HISTOIRE DU JUDAIS",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2017",
+    "montant_eur": 2193805.0,
+    "beneficiaire": "MUSEE D ART ET D HISTOIRE DU JUDAIS",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2016",
+    "montant_eur": 2138805.0,
+    "beneficiaire": "MUSEE D ART ET D HISTOIRE DU JUDAIS",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2015",
+    "montant_eur": 2100355.0,
+    "beneficiaire": "MUSEE D ART ET D HISTOIRE DU JUDAIS",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2014",
+    "montant_eur": 2037017.0,
+    "beneficiaire": "MUSEE D ART ET D HISTOIRE DU JUDAIS",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2013",
+    "montant_eur": 2107592.0,
+    "beneficiaire": "MUSEE D ART ET D HISTOIRE DU JUDAIS",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2012",
+    "montant_eur": 2046805.0,
+    "beneficiaire": "MUSEE D ART ET D HISTOIRE DU JUDAIS",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2011",
+    "montant_eur": 2088805.0,
+    "beneficiaire": "MUSEE D ART ET D HISTOIRE DU JUDAIS",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2010",
+    "montant_eur": 2759581.0,
+    "beneficiaire": "MUSEE D ART ET D HISTOIRE DU JUDAIS",
+    "thematique": "Culture"
+   }
+  ]
+ },
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "1997": [
+   {
+    "reference": "1997 DAC 161",
+    "titre": "Restauration de l'Hôtel de Saint-Aignan (3e). - Installation du musée d'art et d'histoire du judaïsme. - Autorisation à M. le Maire de Paris de souscrire un avenant n° 8 à la convention de délégation de maîtrise d'ouvrage signée avec l'Etat (Ministère de la Culture et de la Communication). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "NOVEMBRE 1997",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49372"
+   },
+   {
+    "reference": "1997 DPA 169",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire les avenants aux marchés de maîtrise d'oeuvre signé avec Melle BIZOUARD et M. PIN, architectes, de travaux signé avec la société Bouygues, et de maîtrise d'oeuvre signé avec la société Serete constructions, en vue de l'aménagement du Musée d'art et d'histoire du judaïsme dans l'Hôtel de Saint-Aignan (3e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "NOVEMBRE 1997",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49404"
+   }
+  ],
+  "1999": [
+   {
+    "reference": "1999 DAC 32",
+    "titre": "34 - 1999, DAC 32 - Autorisation à M. le Maire de Paris de signer avec l'association \" Musée d'art et d'histoire du judaïsme \" (3e) une convention d'occupation du domaine public",
+    "genres": [
+     "autre"
+    ],
+    "seance": "FEVRIER 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23212"
+   },
+   {
+    "reference": "1999 DAC 32",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Musée d'art et d'histoire du judaïsme\" (3e) une convention d'occupation du domaine public. Mme Hélène MACE de LEPINAY, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "FEVRIER 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59127"
+   },
+   {
+    "reference": "1999 DPA 282",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire des avenants aux marchés signés avec Melle BIZOUARD et M. PIN, architectes, et les sociétés \"SERETE CONSTRUCTIONS\", \"AFITEST\", \"AFICOOR\", \"BOUYGUES\", \"CAVECCHI\", \"ATELIER MERIGUET CARRERE\", en vue de l'aménagement du Musée d'art et d'histoire du judaïsme et de la restauration de l'Hôtel de Saint-Aignan (3e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51457"
+   }
+  ],
+  "2000": [
+   {
+    "reference": "2000 DAC 223",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant de substitution au marché de travaux signé avec la S.A.R.L \"AVS AZUR\" pour l'installation des équipements audiovisuels de l'auditorium du musée d'Art et d'Histoire du judaïsme (3e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28480"
+   }
+  ],
+  "2002": [
+   {
+    "reference": "2002 DAC 23",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention d'objectifs relative à l'attribution d'une subvention de fonctionnement avec l'association du \"Musée d'Art et d'Histoire du Judaïsme\" (3e). Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "AVRIL 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73607"
+   },
+   {
+    "reference": "2002 DAC 23",
+    "titre": "147 - 2002, DAC 23 - Autorisation à M. le Maire de Paris de signer avec l'association du \"Musée d'art et d'histoire du judaïsme\" (3e) une convention d'objectifs relative à l'attribution d'une subvention de fonctionnement. - Montant : 2.630.959 euros",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "AVRIL 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2548"
+   },
+   {
+    "reference": "2002 DAC 387",
+    "titre": "Autorisation à M. le Maire de Paris de signer un avenant à la convention d'objectifs établie entre la Ville de Paris et l'association \"Le Musée d'Art et d'Histoire du Judaïsme\" ayant son siège social à l'Hôtel de Saint-Aignan, 71 rue du Temple (3e). Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "DECEMBRE 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70923"
+   }
+  ],
+  "2003": [
+   {
+    "reference": "2003 DAC 325",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention d'objectifs relative à l'attribution d'une subvention de fonctionnement avec l'association du \"Musée d'Art et d'Histoire du Judaïsme\". Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70456"
+   }
+  ],
+  "2004": [
+   {
+    "reference": "2004 DAC 147",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention d'objectifs relative à l'attribution d'une subvention de fonctionnement avec l'association du \"Musée d'Art et d'Histoire du Judaïsme\" ayant son siège social à l'Hôtel de Saint-Aignan, 71, rue du Temple (3e), et de signer l'avenant n° 1 à la convention d'occupation du domaine public prorogeant la mise à disposition de l'Hôtel de Saint-Aignan à l'association. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59984"
+   },
+   {
+    "reference": "2004 DAC 539",
+    "titre": "Autorisation à M. le Maire de Paris de signer un avenant à la convention d’objectifs établie entre la Ville de Paris et l’association “Le Musée d’Art et d’Histoire du Judaïsme” ayant son siège social à l’Hôtel de Saint-Aignan, 71 rue du Temple (3e). Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "DECEMBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87788"
+   }
+  ],
+  "2005": [
+   {
+    "reference": "2005 DAC 248",
+    "titre": "2005, DAC 248 - Autorisation à M. le Maire de Paris de signer une convention d’objectifs relative à l’attribution d’une subvention de fonctionnement de 2.687.581 euros avec l’association du “Musée d’Art et d’Histoire du Judaïsme” et de signer une convention d’occupation du domaine public.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUIN 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15158"
+   },
+   {
+    "reference": "2005 DAC 248",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention d’objectifs relative à l’attribution d’une subvention de fonctionnement avec l’association du “Musée d’Art et d’Histoire du Judaïsme” ayant son siège social à l’Hôtel de Saint-Aignan, 71, rue du Temple (3e), et de signer la convention d’occupation du domaine public prorogeant la mise à disposition de l’Hôtel de Saint-Aignan à l’association. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUIN 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83270"
+   },
+   {
+    "reference": "2005 DPA 90",
+    "titre": "Approbation du principe de la réalisation des travaux relatifs au renforcement de la sécurité et de l’amélioration de l’accès pour les livraisons au Musée d’Art et d’Histoire du Judaïsme - Hôtel de Saint-Aignan 71, rue du Temple (3e) et des modalités de passation des marchés de travaux correspondants. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80804"
+   }
+  ],
+  "2006": [
+   {
+    "reference": "2006 DAC 207",
+    "titre": "2006, DAC 207 - Autorisation à M. le Maire de Paris de signer une convention d’objectifs relative à l’attribution d’une subvention de fonctionnement avec l’association du “Musée d’art et d’histoire du judaïsme”. Montant : 2.709.581 euros.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUIN 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11465"
+   },
+   {
+    "reference": "2006 DAC 207",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention d’objectifs relative à l’attribution d’une subvention de fonctionnement avec l’association du “Musée d’Art et d’Histoire du Judaïsme” ayant son siège social à l’Hôtel de Saint-Aignan, 71, rue du Temple (3e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUIN 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44296"
+   }
+  ],
+  "2007": [
+   {
+    "reference": "2007 DAC 152",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention d’objectifs relative à l’attribution d’une subvention de fonctionnement de 2.709.581 euros avec l’association du “Musée d’Art et d’Histoire du Judaïsme” ayant son siège social à l’Hôtel de Saint-Aignan, 71, rue du Temple (3e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MARS 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31436"
+   }
+  ],
+  "2008": [
+   {
+    "reference": "2008 DAC 301",
+    "titre": "Avenant à la convention signée le 26 février 2008 pour l’attribution d’une subvention à l’association “Musée d’Art et d’Histoire du Judaïsme” (3e). Mme Colombe BROSSEL, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67155"
+   }
+  ],
+  "2009": [
+   {
+    "reference": "2009 DAC 519",
+    "titre": "Signature d'une convention de partenariat liant le musée Carnavalet et le musée d’Art et d’Histoire du Judaïsme (MAHJ) à l’occasion de l’exposition \"La splendeur des Camondo, de Constantinople à Paris (1806-1944)\" présentée au MAHJ. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "OCTOBRE 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93180"
+   },
+   {
+    "reference": "2009 DAC 61",
+    "titre": "Signature d’une convention avec l’association Musée d’Art et d’Histoire du Judaïsme (3e) pour l’attribution d’une subvention. Mme Colombe BROSSEL, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "FEVRIER 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49986"
+   }
+  ],
+  "2010": [
+   {
+    "reference": "2010 DAC 1",
+    "titre": "Signature d’une convention pour l’attribution d’une subvention au Musée d’Art et d’Histoire du Judaïsme(3e). Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "FEVRIER 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79236"
+   },
+   {
+    "reference": "2010 DAC 180",
+    "titre": "Signature d’une convention pour l’attribution d’une subvention au Musée d’Art et d’Histoire du Judaïsme (3e). Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUIN 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48946"
+   }
+  ],
+  "2021": [
+   {
+    "reference": "2021 DAC 391",
+    "titre": "2021 DAC 391 - Subvention (2.038.805 euros) à l’association Musée d’Art et d’Histoire du Judaïsme (3e) dans le cadre de la convention pluriannuelle d’objectifs conclue en 2019.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2021",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163793"
+   }
+  ],
+  "2022": [
+   {
+    "reference": "2022 DAC 384",
+    "titre": "2022 DAC 384 - Subvention (2.038.805 euros) et convention pluriannuelle d’objectifs avec l’association \"Musée d’art et d’histoire du Judaïsme\" (Paris Centre).",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2022",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=165260"
+   }
+  ],
+  "2024": [
+   {
+    "reference": "2024 DAC 269",
+    "titre": "2024 DAC 269 - Subvention (955.522 euros) à l’association \"Musée d’Art et d’Histoire du Judaïsme\" (Paris Centre) dans le cadre d’une convention pluriannuelle d’objectifs.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUIN 2024",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176576"
+   }
+  ],
+  "2025": [
+   {
+    "reference": "2025 DAC 278",
+    "titre": "2025 DAC 278 Subvention (2.238.805 euros) à l’association Musée d’Art et d’Histoire du Judaïsme (Paris Centre) et signature d’une convention pluriannuelle d’objectifs.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "OCTOBRE 2025",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183524"
+   }
+  ]
+ },
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mus%C3%A9e+d%27art+et+d%27histoire+du+Juda%C3%AFsme"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

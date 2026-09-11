@@ -1,0 +1,1049 @@
+{
+ "generated_at": "2026-09-11T15:58:09.539515+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "parc-des-princes",
+ "name": "Parc des Princes",
+ "kind_fr": "Stade",
+ "kind_en": "Stadium",
+ "famille": "sport",
+ "arrondissement": 16,
+ "lat": 48.841363,
+ "lon": 2.253069,
+ "photo": "/img/lieux/parc-des-princes.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Parc_des_Princes",
+  "source": "Wikipédia"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "Le Parc des Princes est un stade situé dans le quartier d'Auteuil du 16e arrondissement de Paris, en partie au-dessus du périphérique. Inauguré le 18 juillet 1897 sous le nom de « stade vélodrome du Parc des Princes », à proximité de l'ancien lieu-dit éponyme de Boulogne-Billancourt, c'est aujourd’hui le cinquième plus grand stade en France et le plus ancien toujours en activité.",
+  "url": "https://fr.wikipedia.org/wiki/Parc_des_Princes",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1039,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (55 trouvés)",
+  "lecture_mode_en": "title naming the place (55 found)",
+  "n_lus": 43,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "1996": [
+   {
+    "reference": "1996 D 166",
+    "titre": "15 - 1996, D. 166- Autorisation à M. le Maire de Paris de signer un marché d'études pour la réalisation de divers travaux pour la mise en conformité du stade du Parc-des-Princes (16e) en vue de l'obtention de son homologation pour la Coupe du monde 1998.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 1996",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4902"
+   },
+   {
+    "reference": "1996 D 645",
+    "titre": "7 - 1996, D. 645- Autorisation à M. le Maire de Paris de signer des marchés sur appel d'offres ou des marchés négociés, en cas d'appel d'offres infructueux, pour la réalisation de divers travaux pour la mise en conformité aux normes de la F.I.F.A. du stade du Parc-des-Princes (16e) en vue de l'obtention de son homologation pour la Coupe du monde de 1998.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 1996",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22948"
+   },
+   {
+    "reference": "1996 D 766",
+    "titre": "26- 1996, D. 766 - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres ou un marché négocié, en cas d'appel d'offres infructueux, pour la réalisation des travaux de mise en sécurité des circulations au niveau - 1 du Parc-des-Princes (16e).",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 1996",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7257"
+   },
+   {
+    "reference": "1996 D 966",
+    "titre": "48 - 1996, D. 966- Autorisation à M. le Maire de Paris de souscrire un avenant n° 2 à la convention signée avec la S.A. \"Société d'exploitation sports et événements\" pour la gestion du Parc des Princes (16e).",
+    "genres": [
+     "autre"
+    ],
+    "seance": "JUILLET 1996",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4151"
+   }
+  ],
+  "1997": [
+   {
+    "reference": "1997 DPA 125",
+    "titre": "Approbation du principe de la réalisation des travaux de remplacement des sièges au stade du Parc-des-Princes (16e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Dominique CANE, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 1997",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42184"
+   },
+   {
+    "reference": "1997 DPA 125",
+    "titre": "28- 1997, DPA 125 - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres ou un marché négocié, en cas d'appel d'offres infructueux, pour la réalisation des travaux de remplacement des sièges au stade du Parc-des-Princes (16e).",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 1997",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19929"
+   },
+   {
+    "reference": "1997 DPA 140",
+    "titre": "G - Approbation du principe de la réalisation des travaux de création de 3 laboratoires P.S.I. dans l'ensemble immobilier scolaire Claude-Bernard, 1, avenue du Parc-des-Princes (16e). - Approbation des modalités d'attribution du marché négocié correspondant. - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer ledit marché. M. Jean-Philippe HUBIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 1997",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=76078"
+   },
+   {
+    "reference": "1997 DPA 150",
+    "titre": "G - Approbation du principe de la réalisation des travaux de réfection du parquet des salles du 2e étage dans l'ensemble immobilier scolaire Claude-Bernard, 1, avenue du Parc-des-Princes (16e). - Approbation des modalités d'attribution du marché négocié correspondant. - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer ledit marché. M. Jean-Philippe HUBIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 1997",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=60364"
+   },
+   {
+    "reference": "1997 DPA 18",
+    "titre": "Approbation du principe de la réalisation au stade du Parc-des-Princes, du réaménagement du poste de commandement et de la Tribune officielle avec extension de la corbeille, de l'aménagement des vestiaires, du local arbitres et antidopage, de la zone mixte et du local interviews et de l'aménagement du pôle de presse audiovisuelle dans l'enceinte du stade du Parc-des-Princes (16e) en vue de la Coupe du Monde de football 1998. - Approbation des modalités d'attribution des marchés de travaux corres",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 1997",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68378"
+   },
+   {
+    "reference": "1997 DPA 18",
+    "titre": "23 - 1997, DPA 18 - Autorisation à M. Le Maire de Paris de signer des marchés sur appel d'offres ou des marchés négociés, en cas d'appel d'offres infructueux, pour la réalisation de différents travaux au stade du Parc-des-Princes (16e).",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 1997",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4521"
+   },
+   {
+    "reference": "1997 DPA 180",
+    "titre": "51- 1997, DPA 180 - Autorisation à M. le Maire de Paris de signer des marchés sur appel d'offres ou des marchés négociés, en cas d'appel d'offres infructueux, pour l'aménagement d'un centre de presse au stade Géo-André (16e) et d'une liaison technique souterraine entre le parc de stationnement Guilbaud et le stade du Parc-des-Princes (16e).",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 1997",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19623"
+   },
+   {
+    "reference": "1997 DPA 180",
+    "titre": "Approbation du principe de la réalisation des travaux d'aménagement d'un centre de presse au stade Géo-André (16e) et la création d'une liaison technique souterraine entre le parc de stationnement Guilbaud et le stade du Parc-des-Princes (16e). - Approbation des modalités d'attribution des marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. M. Dominique CANE, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 1997",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75171"
+   },
+   {
+    "reference": "1997 DPA 211",
+    "titre": "G - Approbation des modalités d'attribution d'un marché en vue de la réalisation des travaux de restructuration et d'extension des locaux du rez-de-chaussée et du sous-sol aux lycée et collège Claude-Bernard, 1, avenue du Parc-des-Princes (16e). - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer le marché de travaux correspondant. M. Jean-Philippe HUBIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 1998",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72070"
+   },
+   {
+    "reference": "1997 DPA 211",
+    "titre": "3- 1997, DPA 211 G - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer un marché sur appel d'offres ou un marché négocié, dans l'hypothèse où l'appel d'offres serait déclaré infructueux, en vue de la réalisation des travaux de restructuration et d'extension des locaux du rez-de-chaussée et du sous-sol aux lycée et collège Claude-Bernard, 1, avenue du Parc-des-Princes (16e).",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 1998",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20207"
+   },
+   {
+    "reference": "1997 DPA 211",
+    "titre": "5- 1997, DPA 211 G - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer un marché sur appel d'offres ou un marché négocié, dans l'hypothèse où l'appel d'offres serait déclaré infructueux, en vue de la réalisation des travaux de restructuration et d'extension des locaux du rez-de-chaussée et du sous-sol aux lycée et collège Claude-Bernard, 1, avenue du Parc-des-Princes (16e) (suite de la discussion).",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 1998",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20200"
+   }
+  ],
+  "1998": [
+   {
+    "reference": "1998 DPA 120",
+    "titre": "G - Approbation du principe de la réalisation des travaux de mise aux normes du monte-charge et de la cage d'escalier desservant la cuisine au lycée-collège Claude-Bernard, 1, avenue du Parc-des-Princes (16e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer ledit marché. M. Jean-Michel MICHAUX, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "OCTOBRE 1998",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36247"
+   },
+   {
+    "reference": "1998 DPA 65",
+    "titre": "G - Approbation du principe de la réalisation des travaux de mise en conformité des salles de biologie du lycée-collège Claude-Bernard, 1, avenue du Parc-des-Princes (16e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer ledit marché. M. Jean-Philippe HUBIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 1998",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56717"
+   },
+   {
+    "reference": "1998 DPA 88",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant au marché de travaux signé avec l'entreprise \"Delau\" en vue de la réalisation des travaux d'aménagement de la tribune de presse au stade du Parc-des-Princes (16e). M. Dominique CANE, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 1998",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83462"
+   }
+  ],
+  "1999": [
+   {
+    "reference": "1999 DPA 106",
+    "titre": "Approbation du principe de la rénovation du stade du Parc-des-Princes (16e). - Approbation des modalités d'attribution des marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. M. Jean-François LEGARET et M. Jean-Pierre-BURRIEZ, au lieu et place de M. Dominique CANE, rapporteurs.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55532"
+   },
+   {
+    "reference": "1999 DPA 106",
+    "titre": "18 - 1999, JS 73 - Autorisation à M. le Maire de Paris de signer avec la Société d'exploitation du sports et événements S.A. une convention de délégation de service public pour la gestion du Parc-des-Princes et du terrain situé rue du Commandant-Guilbaud (16e).1999, JS 92 - Autorisation à M. le Maire de Paris de signer avec l'association \"Paris-Saint-Germain\" et la Société à objet sportif Paris-Saint-Germain une convention de partenariat.1999, DPA 106 - Autorisation à M. le Maire de Paris de sig",
+    "genres": [
+     "autre"
+    ],
+    "seance": "JUIN 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20041"
+   },
+   {
+    "reference": "1999 DPA 116",
+    "titre": "G - Approbation du principe de la réalisation des travaux de modernisation de la cuisine aux lycée-collège \"Claude-Bernard\", 1, avenue du Parc-des-Princes (16e). - Approbation des modalités d'attribution de marchés de travaux et de contrôle technique correspondants. - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer lesdits marchés. M. Jean-Michel MICHAUX, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36179"
+   },
+   {
+    "reference": "1999 DPA 19",
+    "titre": "G - Approbation du principe de la réalisation de divers travaux de rénovation aux lycée-collège Claude-Bernard, 1, avenue du Parc-des-Princes (16e). - Approbation des modalités d'attribution des marchés de travaux, de coordination et de contrôle technique correspondants. - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer lesdits marchés. M. Jean-Michel MICHAUX, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "AVRIL 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49828"
+   }
+  ],
+  "2000": [
+   {
+    "reference": "2000 DASCO 120",
+    "titre": "Subvention à l'école élémentaire d'application, 23, avenue du Parc-des-Princes (16e). M. Vincent REINA, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28512"
+   },
+   {
+    "reference": "2000 DPA 120",
+    "titre": "G - Approbation du principe de la réalisation de la mise en sécurité des escaliers aux lycée-collège Claude-Bernard, 1, avenue du Parc-des-Princes (16e). - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer les marchés de maîtrise d'œuvre, de géomètre, de contrôle technique et de coordination en matière de sécurité et de santé des travailleurs sur le chantier et en matière de systèmes sécurité incendie correspondants. M. Jean-Michel MICHAUX, r",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56785"
+   },
+   {
+    "reference": "2000 DPA 140",
+    "titre": "Approbation du principe de la réalisation des travaux de mise en conformité des installations électriques du groupe scolaire Parc-des-Princes (16e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Vincent REINA, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "AVRIL 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50900"
+   },
+   {
+    "reference": "2000 DPA 172",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant au marché de travaux signé avec la société \"Petit S.A.\" relatif à la rénovation des sanitaires du stade du Parc-des-Princes, 24, rue du Commandant-Guilbaud (16e). M. Dominique CANE, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "OCTOBRE 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59001"
+   },
+   {
+    "reference": "2000 DPA 185",
+    "titre": "Approbation du principe de la réalisation des travaux de reprise des appuis de dalles du stade du Parc-des-Princes (16e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Dominique CANE, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50583"
+   },
+   {
+    "reference": "2000 DPA 31",
+    "titre": "G - Approbation du principe de la réalisation des travaux de rénovation de la salle de judo, de restructuration et de mise en sécurité de la salle de musique et du foyer aux lycée-collège \"Claude-Bernard\", 1, avenue du Parc-des-Princes (16e). - Approbation des modalités d'attribution des marchés de travaux et de contrôle technique correspondants. - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer lesdits marchés. M. Jean-Michel MICHAUX, rapp",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28009"
+   },
+   {
+    "reference": "2000 DPA 330",
+    "titre": "Approbation du principe de réalisation de la 2e phase des travaux de ravalement au stade du Parc-des-Princes (16e). - Approbation des modalités d'attribution du marché correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. l'Adjoint au Maire de Paris chargé des Sports, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40818"
+   },
+   {
+    "reference": "2000 DPA 337",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant de substitution au marché de travaux n° 00/26458 signé avec la S.A. Charles Delau et fils, relatif à la rénovation du stade du Parc-des-Princes (16e). M. l'Adjoint au Maire de Paris chargé des Sports, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40974"
+   },
+   {
+    "reference": "2000 DPA 83",
+    "titre": "Approbation du principe de la réalisation des travaux de rénovation au stade du Parc-des-Princes (16e). - Approbation des modalités d'attribution des marchés correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. M. Dominique CANE, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31027"
+   },
+   {
+    "reference": "2000 DPA 95",
+    "titre": "Autorisation à M. le Maire de Paris de signer un protocole d'accord, en vue de procéder à l'indemnisation de l'entreprise \"S.A. C. DELAU\", suite aux difficultés rencontrées lors des travaux d'aménagement de la tribune de presse au stade du Parc-des-Princes (16e). Mme Claude-Annick TISSOT, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "NOVEMBRE 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88539"
+   }
+  ],
+  "2001": [
+   {
+    "reference": "2001 DPA 38",
+    "titre": "G - Approbation des modalités d'attribution du marché de travaux pour la mise en sécurité des escaliers du lycée-collège Claude-Bernard, 1, avenue du Parc-des-Princes (16e). - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer le marché de travaux correspondant. Mme Michèle BLUMENTHAL, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "AVRIL 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72937"
+   },
+   {
+    "reference": "2001 DPA 4",
+    "titre": "G - Approbation du principe de la réalisation des travaux de réaménagement de 3 salles au 1er étage, rue de l'Arioste et de mise en conformité des installations électriques aux lycée-collège Claude-Bernard, 1, avenue du Parc-des-Princes (16e). - Approbation des modalités d'attribution des marchés de travaux, de contrôle technique, de bureau d'études techniques et de coordination santé sécurité des travailleurs correspondants. - Autorisation à M. le Président du Conseil de Paris, siégeant en form",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "AVRIL 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72963"
+   },
+   {
+    "reference": "2001 DPA 71",
+    "titre": "G - Approbation du principe de la réalisation des travaux de création d'un amphithéâtre, d'une salle de travail et d'un bureau au lycée-collège Claude-Bernard, 1, avenue du Parc-des-Princes (16e). - Approbation des modalités d'attribution des marchés de travaux, de contrôle technique et de coordination santé sécurité des travailleurs correspondants. - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer lesdits marchés. Mme Michèle BLUMENTHAL, r",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30108"
+   }
+  ],
+  "2002": [
+   {
+    "reference": "2002 DPA 159",
+    "titre": "Approbation du principe de la réalisation des vérifications techniques de maintenance des ouvrages de génie civil du Stade du Parc-des-Princes (16e) et des modalités de passation du marché d'études de contrôle technique correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55896"
+   },
+   {
+    "reference": "2002 DPA 50",
+    "titre": "G - Approbation du principe de la réalisation des travaux de mise aux normes des installations électriques et de mise en conformité des réseaux d'alimentation en eau du lycée-collège Claude-Bernard, 1, avenue du Parc-des-Princes (16e), et des modalités d'attribution des marchés de travaux correspondants. - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer lesdits marchés. M. Eric FERRAND, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45108"
+   },
+   {
+    "reference": "2002 DPA 57",
+    "titre": "Autorisation à M. le Maire de Paris, de souscrire un avenant de substitution au marché de travaux relatif à la création de loges et l'aménagement des foyers et un avenant de substitution n° 1 au marché de travaux relatif à la rénovation des appuis de dalles, au stade du Parc-des-Princes (16e) - Autorisation à M. le Maire de Paris, de souscrire un avenant n° 2 de substitution au marché de travaux relatif à la construction d'une école polyvalente de 12 classes, Z.A.C. \"Alésia-Montsouris\" (14e). M.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "AVRIL 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73715"
+   }
+  ],
+  "2003": [
+   {
+    "reference": "2003 DPA 10",
+    "titre": "G - Approbation du principe de réalisation des travaux de mise aux normes des installations électriques au lycée-collège Claude-Bernard, 1, avenue du Parc-des-Princes (16e) et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer ledit marché. M. Eric FERRAND, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=60721"
+   },
+   {
+    "reference": "2003 DPA 10",
+    "titre": "G - Approbation du principe de réalisation des travaux de modernisation et mise en sécurité du gymnase au lycée-collège Claude-Bernard, 1, avenue du Parc-des-Princes (16e) et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer ledit marché. M. Eric FERRAND, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=60742"
+   },
+   {
+    "reference": "2003 DPA 10",
+    "titre": "G - Approbation du principe de réalisation des travaux de réfection de sols dans les circulations des deuxième et troisième étages au lycée-collège Claude-Bernard, 1, avenue du Parc-des-Princes (16e) et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer ledit marché. M. Eric FERRAND, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=60775"
+   },
+   {
+    "reference": "2003 DPA 146",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 3 au marché de travaux n° 00/26458 signé avec l'entreprise Lainé Delau, souscrire un avenant n° 1 au marché de travaux n° 00/26459 signé avec l'entreprise S.A. Dutemple, souscrire un avenant n° 1 au marché de travaux n° 00/26460 signé avec le groupement d'entreprise SCLE-Fouassin, relatifs aux travaux de rénovation du stade du Parc-des-Princes, 24, rue du Commandant-Guilbaud (16e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47527"
+   },
+   {
+    "reference": "2003 DPA 206",
+    "titre": "Approbation du principe de réalisation des travaux de rénovation des contrôles d'accès du stade du Parc des Princes, sis 24, rue du Commandant Guilbaud (16ème) et des modalités de passation des marchés de maîtrise d'œuvre, et de mission d'ordonnancement, pilotage et coordination correspondants. - Autorisation à Monsieur le Maire de Paris de signer lesdits marchés. - Autorisation à Monsieur le Maire de Paris de déposer les demandes de permis de démolir et de permis de construire pour la réalisati",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47726"
+   },
+   {
+    "reference": "2003 DPA 61",
+    "titre": "G - Approbation du principe de réalisation des travaux de création d'une salle de sciences au lycée collège Claude Bernard, 1, avenue du Parc-des-Princes (16e) et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil Général, de signer ledit marché. M. Eric FERRAND, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "AVRIL 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30977"
+   }
+  ],
+  "2004": [
+   {
+    "reference": "2004 DPA 104",
+    "titre": "G - Approbation du principe de réalisation des travaux de mise en conformité des réseaux d'alimentation en eau au lycée collège Claude Bernard sis 1, avenue du Parc des Princes (16e) et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer ledit marché. M. Eric FERRAND, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "NOVEMBRE 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31950"
+   }
+  ],
+  "2005": [
+   {
+    "reference": "2005 DPA 132",
+    "titre": "Approbation des modalités de passation du marché de travaux relatif à la rénovation des contrôles d’accès du stade du Parc-des-Princes, 24, rue du Commandant-Guilbaud (16e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83438"
+   },
+   {
+    "reference": "2005 DPA 30",
+    "titre": "G - Approbation du principe de réalisation des travaux pour la mise en sécurité des escaliers C et D du lycée collège Claude Bernard 1, avenue du Parc des Princes (16e) et des modalités de passation du marché de travaux correspondant. M. Eric FERRAND, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30067"
+   },
+   {
+    "reference": "2005 DPA 303",
+    "titre": "Approbation des modalités de passation du marché de travaux relatif à la rénovation des contrôles d’accès du stade du Parc des Princes (16e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33038"
+   },
+   {
+    "reference": "2005 DVD 149",
+    "titre": "Approbation du principe et des modalités de passation d’un marché de maîtrise d’œuvre conception et réalisation portant sur la mise en conformité du passage souterrain Parc des Princes du boulevard périphérique (16e). M. Denis BAUPIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "OCTOBRE 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25841"
+   }
+  ],
+  "2006": [
+   {
+    "reference": "2006 DJS 304",
+    "titre": "Autorisation à M. le Maire de Paris de passer un marché avec le G.I.P. Coupe du monde de rugby 2007 pour l’achat, pendant la Coupe du monde de rugby de places pour les matchs qui auront lieu au Parc des Princes à Paris et au Stade de France. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89307"
+   },
+   {
+    "reference": "2006 DJS 305",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention avec le G.I.P. Coupe du monde de rugby 2007 et la Société d’Exploitation Sports et Evénements (SESE), pour la mise à disposition du Parc des Princes durant la Coupe du monde de rugby qui se déroulera du 7 septembre au 20 octobre 2007. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "DECEMBRE 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91960"
+   },
+   {
+    "reference": "2006 DPA 137",
+    "titre": "Approbation du principe de réalisation des travaux de génie climatique au Stade du Parc des Princes (16e) et des modalités de passation du marché de travaux correspondant. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89067"
+   },
+   {
+    "reference": "2006 DPA 137",
+    "titre": "Approbation du principe de réalisation des travaux d’installation de séparatif vitré au Stade du Parc des Princes (16e) et des modalités de passation du marché de travaux correspondant. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89180"
+   },
+   {
+    "reference": "2006 DPA 137",
+    "titre": "Approbation du principe de réalisation des travaux de mise en sécurité de la toiture du Stade du Parc des Princes (16e) et des modalités de passation du marché de travaux correspondant. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89055"
+   },
+   {
+    "reference": "2006 DPA 137",
+    "titre": "Approbation du principe de réalisation des travaux d’aménagement de l’auditorium en salle de conférence de presse au Stade du Parc des Princes (16e) et des modalités de passation du marché de travaux correspondant. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89219"
+   },
+   {
+    "reference": "2006 DPA 137",
+    "titre": "Approbation du principe de réalisation des travaux d’amélioration de la sécurité électrique et incendie du rez-de-pelouse au Stade du Parc des Princes (16e) et des modalités de passation du marché de travaux correspondant. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89156"
+   },
+   {
+    "reference": "2006 DVD 265",
+    "titre": "Autorisation à M. le Maire de Paris de signer un avenant n° 1 au marché de maîtrise d’œuvre de conception et de réalisation concernant la mise en conformité du passage souterrain Parc des Princes du boulevard périphérique à Paris 16e. M. Denis BAUPIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92075"
+   }
+  ],
+  "2007": [
+   {
+    "reference": "2007 DPA 158",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché de travaux n° 06/26.018 signé avec l’entreprise LAINE DELAU S.A. relatif à la réalisation des travaux de rénovation des contrôles d’accès au Stade du Parc des Princes 24, rue du Commandant Guilbaud (16e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72792"
+   },
+   {
+    "reference": "2007 DPA 26",
+    "titre": "Approbation du principe de réalisation des travaux de création d’un Centre de Média au Stade du Parc des Princes 24, rue du Commandant-Guilbaud (16e), et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de déposer la demande de permis de construire pour la création d’un centre de média. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26838"
+   }
+  ],
+  "2008": [
+   {
+    "reference": "2008 DJS 468",
+    "titre": "Signature de l’avenant n° 2 à la convention de délégation de service public pour la gestion du stade du Parc des Princes, situé 24 rue du Commandant-Guilbaud et du terrain communal, dit parking Guilbaud. M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "DECEMBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78385"
+   },
+   {
+    "reference": "2008 DVD 21",
+    "titre": "Autorisation à M. le Maire de Paris de signer l’avenant n° 2 au marché 06 61 066 de mission de maîtrise d’œuvre - conception et réalisation - pour la mise en conformité du passage souterrain Parc des Princes du Boulevard Périphérique substituant la société EGIS STRUCTURE ET ENVIRONNEMENT à la société SCETAUROUTE SA. Mme Annick LEPETIT, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69915"
+   }
+  ],
+  "2009": [
+   {
+    "reference": "2009 DPA 10",
+    "titre": "Approbation du principe de réalisation des travaux de modernisation de la couverture en zinc de l’école élémentaire, 23 avenue du Parc des Princes (16e) et des modalités de passation du marché de travaux correspondant. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50054"
+   },
+   {
+    "reference": "2009 DVD 112",
+    "titre": "Approbation du principe et des modalités de passation d’un marché de travaux de mise en conformité du passage souterrain Parc des Princes du boulevard Périphérique, à Paris (16e). Mme Annick LEPETIT, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74845"
+   },
+   {
+    "reference": "2009 DVD 38",
+    "titre": "2009, DVD 38 - Signature du marché complémentaire au marché de maîtrise d'oeuvre relatif à la mise en conformité du passage souterrain du boulevard périphérique Parc des Princes en vue de la coordination technique avec l'opération de reconstruction du stade Jean Bouin (16e).",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17418"
+   },
+   {
+    "reference": "2009 DVD 38",
+    "titre": "Attribution et autorisation à M. le Maire de Paris de signer un marché de prestations complémentaires au marché de maîtrise d’œuvre relatif à la mise aux normes du passage souterrain “Parc des Princes” du boulevard du périphérique en vertu de l’article 35-II5 du Code des marchés publics en vue de la coordination technique avec l’opération de démolition et reconstruction du Stade Jean Bouin (16e). Mme Annick LEPETIT, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34399"
+   }
+  ],
+  "2011": [
+   {
+    "reference": "2011 DJS 344",
+    "titre": "44 - 2011, DJS 344 - Approbation du principe et des modalités de passation d’un marché de maîtrise d’oeuvre sur appel d’offres ouvert européen relatif à la mise en conformité des installations techniques du Parc des Princes (16e). Vœu déposé par le groupe U.M.P.P.A. relatif à la rénovation du Parc des Princes. Vœu déposé par le groupe U.M.P.P.A. relatif à la mise en conformité des installations techniques du Parc des princes (16e).",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2011",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=100748"
+   },
+   {
+    "reference": "2011 DVD 85",
+    "titre": "Signature d’un marché pour la maintenance et l’évolution des équipements de sécurité du tunnel Parc des Princes mis en conformité. Mme Annick LEPETIT, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 2011",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96736"
+   }
+  ],
+  "2012": [
+   {
+    "reference": "2012 DPA 42",
+    "titre": "2012, DPA 42 - Approbation des modalités de passation des marchés de travaux et de prestations intellectuelles sur appel d'offres ouvert relatifs à la mise en conformité des installations techniques du Parc des Princes (16e). Vœu déposé par le groupe CI relatif à l’attribution du bail emphytéotique du Parc des Princes.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2012",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=107230"
+   }
+  ],
+  "2013": [
+   {
+    "reference": "2013 DJS 289",
+    "titre": "2013 DJS 289 - Résiliation amiable de la Convention de délégation de service public signée avec la Société d'Exploitation Sport et Evénements (SESE) pour la gestion du stade municipal du Parc des Princes situé 24, rue du Commandant Guilbaud (16e). 2013 DJS 413 - Approbation de la convention d'occupation temporaire du domaine public avec la Société d'Exploitation Sports et Evénements (SESE) pour l'exploitation privative du stade du Parc des Princes et diverses dépendances adjacentes (16e). Vœu dé",
+    "genres": [
+     "autre"
+    ],
+    "seance": "DECEMBRE 2013",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116761"
+   }
+  ]
+ },
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20141210011019",
+   "objet": "CSP5 PARC DES PRINCES MISE EN CONFORMITE",
+   "objet_clair": null,
+   "fournisseur": "BOUYGUES TRAVAUX PUBLICS REGIONS FR",
+   "montant_max": 1885749.0,
+   "date_notification": "2014-03-14",
+   "preuve": "Objet du marché « CSP5 PARC DES PRINCES MISE EN CONFORMITE » : nomme le lieu ; travaux/prestation sur le stade municipal du Parc des Princes, 24 rue du Commandant Guilbaud (16e) (délibération 2013 DJS 289 : « gestion du stade municipal du Parc des Princes situé 24, rue du Commandant Guilbaud (16e) »)."
+  },
+  {
+   "numero_marche": "20161210000529",
+   "objet": "PARC DES PRINCES RENOVATION CONSOLES",
+   "objet_clair": null,
+   "fournisseur": "FREYSSINET FRANCE",
+   "montant_max": 1392782.13,
+   "date_notification": "2016-05-04",
+   "preuve": "Objet du marché « PARC DES PRINCES RENOVATION CONSOLES » : le lieu est nommé dans l'objet ; même famille d'opérations que « CSP5 PARC DES PRINCES SURVEILLANCE CONSOLES » (marché 20131210009686)."
+  },
+  {
+   "numero_marche": "20232023T08580",
+   "objet": "TRAVAUX INSTALLATIONS ÉLECTRIQUES PARC DES PRINCES JOP 2024",
+   "objet_clair": null,
+   "fournisseur": "SPIE BUILDING SOLUTIONS",
+   "montant_max": 1000000.0,
+   "date_notification": "2023-09-25",
+   "preuve": "Objet « TRAVAUX INSTALLATIONS ÉLECTRIQUES PARC DES PRINCES JOP 2024 » : travaux électriques dans le stade en vue des Jeux olympiques et paralympiques 2024, le lieu est nommé dans l'objet."
+  },
+  {
+   "numero_marche": "20131210009686",
+   "objet": "CSP5 PARC DES PRINCES SURVEILLANCE CONSOLES",
+   "objet_clair": null,
+   "fournisseur": "SIXENSE SYSTEMS",
+   "montant_max": 520152.0,
+   "date_notification": "2013-08-16",
+   "preuve": "Objet du marché « CSP5 PARC DES PRINCES SURVEILLANCE CONSOLES » : nomme le lieu ; travaux/prestation sur le stade municipal du Parc des Princes, 24 rue du Commandant Guilbaud (16e) (délibération 2013 DJS 289 : « gestion du stade municipal du Parc des Princes situé 24, rue du Commandant Guilbaud (16e) »)."
+  },
+  {
+   "numero_marche": "20191210000135",
+   "objet": "CSP5 PARC DES PRINCES SECURITE PARKING SOUTERRAIN",
+   "objet_clair": null,
+   "fournisseur": "SERVICES INSTALLATIONS ELECTRIQUES",
+   "montant_max": 519500.0,
+   "date_notification": "2019-02-05",
+   "preuve": "Objet du marché « CSP5 PARC DES PRINCES SECURITE PARKING SOUTERRAIN » : le lieu est nommé dans l'objet ; le parking figure au périmètre de la gestion du stade (2008 DJS 468 : « pour la gestion du stade du Parc des Princes, situé 24 rue du Commandant-Guilbaud et du terrain communal, dit parking Guilbaud »)."
+  },
+  {
+   "numero_marche": "20141210011935",
+   "objet": "CSP5 PARC DES PRINCES RENOVATION INFIRMERIES LOT 1 TCE",
+   "objet_clair": null,
+   "fournisseur": "PARIS OUEST CONSTRUCTION",
+   "montant_max": 491660.26,
+   "date_notification": "2014-08-25",
+   "preuve": "Objet du marché « CSP5 PARC DES PRINCES RENOVATION INFIRMERIES LOT 1 TCE » : le lieu est nommé dans l'objet ; travaux de rénovation à l'intérieur du stade municipal, 24 rue du Commandant Guilbaud (16e) (2013 DJS 289 : « gestion du stade municipal du Parc des Princes situé 24, rue du Commandant Guilbaud (16e) »)."
+  },
+  {
+   "numero_marche": "20131210009974",
+   "objet": "CSP5 PARC DES PRINCES CONFORMITE GROUPE ELECTROGENE LOT 1",
+   "objet_clair": null,
+   "fournisseur": "ALTARES",
+   "montant_max": 458358.0,
+   "date_notification": "2013-08-12",
+   "preuve": "Objet du marché « CSP5 PARC DES PRINCES CONFORMITE GROUPE ELECTROGENE LOT 1 » : nomme le lieu ; travaux/prestation sur le stade municipal du Parc des Princes, 24 rue du Commandant Guilbaud (16e) (délibération 2013 DJS 289 : « gestion du stade municipal du Parc des Princes situé 24, rue du Commandant Guilbaud (16e) »)."
+  },
+  {
+   "numero_marche": "20232023T01494",
+   "objet": "AMELIORAT° COMPORTEMENT VIBRATOIRE TRIBUNE PARC DES PRINCES",
+   "objet_clair": null,
+   "fournisseur": "FREYSSINET FRANCE",
+   "montant_max": 453930.0,
+   "date_notification": "2023-03-03",
+   "preuve": "Objet du marché « AMELIORAT° COMPORTEMENT VIBRATOIRE TRIBUNE PARC DES PRINCES » : le lieu est nommé dans l'objet, qui porte sur une tribune du stade."
+  },
+  {
+   "numero_marche": "20141210000117",
+   "objet": "CSP5 PARC DES PRINCES INSTALLATIONS TECHNIQUES",
+   "objet_clair": null,
+   "fournisseur": "ALTARES",
+   "montant_max": 373497.0,
+   "date_notification": "2014-11-26",
+   "preuve": "Objet du marché « CSP5 PARC DES PRINCES INSTALLATIONS TECHNIQUES » : nomme le lieu ; travaux/prestation sur le stade municipal du Parc des Princes, 24 rue du Commandant Guilbaud (16e) (délibération 2013 DJS 289 : « gestion du stade municipal du Parc des Princes situé 24, rue du Commandant Guilbaud (16e) »)."
+  },
+  {
+   "numero_marche": "20141210011015",
+   "objet": "CSP5 PARC DES PRINCES DESAMIANTAGE",
+   "objet_clair": null,
+   "fournisseur": "RUDO-CHANTIER",
+   "montant_max": 363130.0,
+   "date_notification": "2014-03-06",
+   "preuve": "Objet du marché « CSP5 PARC DES PRINCES DESAMIANTAGE » : nomme le lieu ; travaux/prestation sur le stade municipal du Parc des Princes, 24 rue du Commandant Guilbaud (16e) (délibération 2013 DJS 289 : « gestion du stade municipal du Parc des Princes situé 24, rue du Commandant Guilbaud (16e) »)."
+  },
+  {
+   "numero_marche": "20131210009149",
+   "objet": "PARC DES PRINCES INSTALLATION TECHNIQUE MARCHE COMPLEMENTAIR",
+   "objet_clair": null,
+   "fournisseur": "CET INGENIERIE",
+   "montant_max": 348780.0,
+   "date_notification": "2013-05-07",
+   "preuve": "Objet du marché « PARC DES PRINCES INSTALLATION TECHNIQUE MARCHE COMPLEMENTAIR » : nomme le lieu ; travaux/prestation sur le stade municipal du Parc des Princes, 24 rue du Commandant Guilbaud (16e) (délibération 2013 DJS 289 : « gestion du stade municipal du Parc des Princes situé 24, rue du Commandant Guilbaud (16e) »)."
+  },
+  {
+   "numero_marche": "20161210000259",
+   "objet": "CSP5 PARC DES PRINCES SURVEILLANCE DES CONSOLES",
+   "objet_clair": null,
+   "fournisseur": "SIXENSE SYSTEMS",
+   "montant_max": 344880.0,
+   "date_notification": "2016-03-03",
+   "preuve": "Objet du marché « CSP5 PARC DES PRINCES SURVEILLANCE DES CONSOLES » : nomme le lieu ; travaux/prestation sur le stade municipal du Parc des Princes, 24 rue du Commandant Guilbaud (16e) (délibération 2013 DJS 289 : « gestion du stade municipal du Parc des Princes situé 24, rue du Commandant Guilbaud (16e) »)."
+  },
+  {
+   "numero_marche": "20131210009221",
+   "objet": "CSP5 PARC DES PRINCES STRUCTURES EN BETON",
+   "objet_clair": null,
+   "fournisseur": "SPIE BATIGNOLLES TECHNOLOGIES",
+   "montant_max": 231900.0,
+   "date_notification": "2013-05-21",
+   "preuve": "Objet « CSP5 PARC DES PRINCES STRUCTURES EN BETON » : travaux sur les structures béton du stade, le lieu est nommé dans l'objet (SIRET fournisseur non renseigné dans la source : « # »)."
+  },
+  {
+   "numero_marche": "20171210001218",
+   "objet": "CSP5 PARC DES PRINCES TRAITEMENT FACADES EN BETON",
+   "objet_clair": null,
+   "fournisseur": "SOGEA ILE DE FRANCE HYDRAULIQUE",
+   "montant_max": 191729.68,
+   "date_notification": "2017-07-20",
+   "preuve": "Objet du marché « CSP5 PARC DES PRINCES TRAITEMENT FACADES EN BETON » : nomme le lieu ; travaux/prestation sur le stade municipal du Parc des Princes, 24 rue du Commandant Guilbaud (16e) (délibération 2013 DJS 289 : « gestion du stade municipal du Parc des Princes situé 24, rue du Commandant Guilbaud (16e) »)."
+  },
+  {
+   "numero_marche": "20131210009973",
+   "objet": "CSP5 PARC DES PRINCES INSTALLATIONS TECHNIQUES LOT 2",
+   "objet_clair": null,
+   "fournisseur": "EURO-ASCENSEURS",
+   "montant_max": 162014.0,
+   "date_notification": "2013-09-16",
+   "preuve": "Objet du marché « CSP5 PARC DES PRINCES INSTALLATIONS TECHNIQUES LOT 2 » : nomme le lieu ; travaux/prestation sur le stade municipal du Parc des Princes, 24 rue du Commandant Guilbaud (16e) (délibération 2013 DJS 289 : « gestion du stade municipal du Parc des Princes situé 24, rue du Commandant Guilbaud (16e) »)."
+  },
+  {
+   "numero_marche": "20222022S01788",
+   "objet": "MOE CONFORTEMENT VOILES ET POUTRES PARC DES PRINCES 75016",
+   "objet_clair": null,
+   "fournisseur": "SIXENSE ENGINEERING",
+   "montant_max": 104700.0,
+   "date_notification": "2022-03-25",
+   "preuve": "Objet « MOE CONFORTEMENT VOILES ET POUTRES PARC DES PRINCES 75016 » : maîtrise d'œuvre de confortement de la structure du stade, le lieu ET le code postal 75016 sont dans l'objet."
+  },
+  {
+   "numero_marche": "20141210012102",
+   "objet": "PARC DES PRINCES MISE CONFORMITE INSTALLATIONS TECHNIQUE",
+   "objet_clair": null,
+   "fournisseur": "ALTARES",
+   "montant_max": 82841.0,
+   "date_notification": "2014-09-30",
+   "preuve": "Objet du marché « PARC DES PRINCES MISE CONFORMITE INSTALLATIONS TECHNIQUE » : nomme le lieu ; travaux/prestation sur le stade municipal du Parc des Princes, 24 rue du Commandant Guilbaud (16e) (délibération 2013 DJS 289 : « gestion du stade municipal du Parc des Princes situé 24, rue du Commandant Guilbaud (16e) »)."
+  }
+ ],
+ "mandate": {
+  "par_annee": {
+   "2009": 108842.25,
+   "2010": 342776.86,
+   "2011": 718033.07,
+   "2012": 783991.21,
+   "2013": 9659035.93,
+   "2014": 5522305.29,
+   "2015": 3293468.75,
+   "2016": 1987944.67,
+   "2017": 2833329.82,
+   "2018": 920322.05,
+   "2019": 241998.87,
+   "2020": 9755.4,
+   "2021": 5123.1,
+   "2022": 3973.6
+  },
+  "total_eur": 26430900.87,
+  "operations": [
+   {
+    "ap_cle": "1200842",
+    "ap_texte": "PARC DES PRINCES",
+    "mandate_par_annee": {
+     "2014": 5245004.8,
+     "2015": 2404757.02,
+     "2016": 1574060.61,
+     "2017": 496930.33,
+     "2018": 214575.73,
+     "2019": 13386.57,
+     "2020": 3639.6,
+     "2021": 5123.1,
+     "2022": 3973.6
+    },
+    "total_mandate": 9961451.36,
+    "preuve": "Libellé de l'opération « PARC DES PRINCES » (mission JEUNESSE ET SPORTS, direction DJS) : nomme le stade municipal du Parc des Princes, 24 rue du Commandant Guilbaud (16e) (délibération 2013 DJS 289 : « gestion du stade municipal du Parc des Princes situé 24, rue du Commandant Guilbaud (16e) »). Opération d'investissement de la direction de la Jeunesse et des Sports sur le stade municipal, mandatée de 2014 à 2022.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1200842"
+   },
+   {
+    "ap_cle": "B100/1200842",
+    "ap_texte": "PARC DES PRINCES",
+    "mandate_par_annee": {
+     "2013": 9085043.86
+    },
+    "total_mandate": 9085043.86,
+    "preuve": "Libellé de l'opération « PARC DES PRINCES » (mission JEUNESSE ET SPORTS, direction DJS) : nomme le stade municipal du Parc des Princes, 24 rue du Commandant Guilbaud (16e) (délibération 2013 DJS 289 : « gestion du stade municipal du Parc des Princes situé 24, rue du Commandant Guilbaud (16e) »). Opération d'investissement de la direction de la Jeunesse et des Sports sur le stade municipal, mandatée de 2013 à 2013.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1200842"
+   },
+   {
+    "ap_cle": "B100/0800842",
+    "ap_texte": "PARC DES PRINCES",
+    "mandate_par_annee": {
+     "2009": 46876.37,
+     "2010": 43352.11,
+     "2011": 717265.99,
+     "2012": 677491.78,
+     "2013": 511059.86
+    },
+    "total_mandate": 1996046.11,
+    "preuve": "Libellé de l'opération « PARC DES PRINCES » (mission JEUNESSE ET SPORTS, direction DJS) : nomme le stade municipal du Parc des Princes, 24 rue du Commandant Guilbaud (16e) (délibération 2013 DJS 289 : « gestion du stade municipal du Parc des Princes situé 24, rue du Commandant Guilbaud (16e) »). Opération d'investissement de la direction de la Jeunesse et des Sports sur le stade municipal, mandatée de 2009 à 2013.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0800842"
+   },
+   {
+    "ap_cle": "1400754",
+    "ap_texte": "PARC DES PRINCES",
+    "mandate_par_annee": {
+     "2015": 828254.12,
+     "2016": 304894.14,
+     "2017": 721171.45,
+     "2018": 11886.07
+    },
+    "total_mandate": 1866205.78,
+    "preuve": "Libellé de l'opération « PARC DES PRINCES » (mission JEUNESSE ET SPORTS, direction DJS) : nomme le stade municipal du Parc des Princes, 24 rue du Commandant Guilbaud (16e) (délibération 2013 DJS 289 : « gestion du stade municipal du Parc des Princes situé 24, rue du Commandant Guilbaud (16e) »). Opération d'investissement de la direction de la Jeunesse et des Sports sur le stade municipal, mandatée de 2015 à 2018.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1400754"
+   },
+   {
+    "ap_cle": "1705104",
+    "ap_texte": "PARC DES PRINCES - SUBVENTION",
+    "mandate_par_annee": {
+     "2017": 1250000.0
+    },
+    "total_mandate": 1250000.0,
+    "preuve": "Libellé de l'opération « PARC DES PRINCES - SUBVENTION » : nomme explicitement le lieu — ce n'est pas une enveloppe générique citant seulement une direction. Réserve : l'opération relève de la mission « SUBVENTIONS D'EQUIPE » (direction DJS), 1 250 000 € mandatés en 2017 ; le bénéficiaire de cette subvention d'équipement n'est pas identifié dans la source, et rien n'établit qu'il s'agisse de travaux réalisés en direct par la Ville.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1705104"
+   },
+   {
+    "ap_cle": "1600754",
+    "ap_texte": "PARC DES PRINCES",
+    "mandate_par_annee": {
+     "2017": 4361.26,
+     "2018": 557145.09,
+     "2019": 228612.3,
+     "2020": 6115.8
+    },
+    "total_mandate": 796234.45,
+    "preuve": "Libellé de l'opération « PARC DES PRINCES » (mission JEUNESSE ET SPORTS, direction DJS) : nomme le stade municipal du Parc des Princes, 24 rue du Commandant Guilbaud (16e) (délibération 2013 DJS 289 : « gestion du stade municipal du Parc des Princes situé 24, rue du Commandant Guilbaud (16e) »). Opération d'investissement de la direction de la Jeunesse et des Sports sur le stade municipal, mandatée de 2017 à 2020.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1600754"
+   },
+   {
+    "ap_cle": "0800842",
+    "ap_texte": "PARC DES PRINCES",
+    "mandate_par_annee": {
+     "2014": 175604.62,
+     "2015": 60457.61,
+     "2016": 108989.92,
+     "2017": 269460.02,
+     "2018": 20121.92
+    },
+    "total_mandate": 634634.09,
+    "preuve": "Libellé de l'opération « PARC DES PRINCES » (mission JEUNESSE ET SPORTS, direction DJS) : nomme le stade municipal du Parc des Princes, 24 rue du Commandant Guilbaud (16e) (délibération 2013 DJS 289 : « gestion du stade municipal du Parc des Princes situé 24, rue du Commandant Guilbaud (16e) »). Opération d'investissement de la direction de la Jeunesse et des Sports sur le stade municipal, mandatée de 2014 à 2018.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=0800842"
+   },
+   {
+    "ap_cle": "B100/0700842",
+    "ap_texte": "PARC DES PRINCES",
+    "mandate_par_annee": {
+     "2009": 41048.37,
+     "2010": 250350.82,
+     "2013": 62932.21
+    },
+    "total_mandate": 354331.4,
+    "preuve": "Libellé de l'opération « PARC DES PRINCES » (mission JEUNESSE ET SPORTS, direction DJS) : nomme le stade municipal du Parc des Princes, 24 rue du Commandant Guilbaud (16e) (délibération 2013 DJS 289 : « gestion du stade municipal du Parc des Princes situé 24, rue du Commandant Guilbaud (16e) »). Opération d'investissement de la direction de la Jeunesse et des Sports sur le stade municipal, mandatée de 2009 à 2013.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0700842"
+   },
+   {
+    "ap_cle": "1700842",
+    "ap_texte": "Parc des Princes",
+    "mandate_par_annee": {
+     "2017": 91406.76,
+     "2018": 116593.24
+    },
+    "total_mandate": 208000.0,
+    "preuve": "Libellé de l'opération « Parc des Princes » (mission JEUNESSE ET SPORTS, direction DJS) : nomme le stade municipal du Parc des Princes, 24 rue du Commandant Guilbaud (16e) (délibération 2013 DJS 289 : « gestion du stade municipal du Parc des Princes situé 24, rue du Commandant Guilbaud (16e) »). Opération d'investissement de la direction de la Jeunesse et des Sports sur le stade municipal, mandatée de 2017 à 2018.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1700842"
+   },
+   {
+    "ap_cle": "B100/0900842",
+    "ap_texte": "PARC DES PRINCES",
+    "mandate_par_annee": {
+     "2009": 20917.51,
+     "2010": 49073.93,
+     "2011": 767.08,
+     "2012": 106499.43
+    },
+    "total_mandate": 177257.95,
+    "preuve": "Libellé de l'opération « PARC DES PRINCES » (mission JEUNESSE ET SPORTS, direction DJS) : nomme le stade municipal du Parc des Princes, 24 rue du Commandant Guilbaud (16e) (délibération 2013 DJS 289 : « gestion du stade municipal du Parc des Princes situé 24, rue du Commandant Guilbaud (16e) »). Opération d'investissement de la direction de la Jeunesse et des Sports sur le stade municipal, mandatée de 2009 à 2012.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0900842"
+   },
+   {
+    "ap_cle": "0900842",
+    "ap_texte": "PARC DES PRINCES",
+    "mandate_par_annee": {
+     "2014": 101695.87
+    },
+    "total_mandate": 101695.87,
+    "preuve": "Libellé de l'opération « PARC DES PRINCES » (mission JEUNESSE ET SPORTS, direction DJS) : nomme le stade municipal du Parc des Princes, 24 rue du Commandant Guilbaud (16e) (délibération 2013 DJS 289 : « gestion du stade municipal du Parc des Princes situé 24, rue du Commandant Guilbaud (16e) »). Opération d'investissement de la direction de la Jeunesse et des Sports sur le stade municipal, mandatée de 2014 à 2014.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0900842"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2022"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Parc+des+Princes"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

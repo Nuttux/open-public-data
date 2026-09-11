@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:36:20.273223+00:00",
+ "generated_at": "2026-09-11T15:58:09.539515+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "musee-de-la-liberation-de-paris",
  "name": "Musée de la Libération de Paris",
@@ -18,8 +18,8 @@
  },
  "seuil_commun": 2010,
  "wiki": {
-  "extract": null,
-  "url": null,
+  "extract": "Le musée de la Libération de Paris - musée du Général Leclerc - musée Jean-Moulin est un des quatorze musées de la ville de Paris gérés par l'établissement public administratif Paris Musées. Il prend la suite du musée du Général Leclerc de Hauteclocque et de la Libération de Paris - musée Jean-Moulin (1994-2018).",
+  "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_de_la_Lib%C3%A9ration_de_Paris_-_mus%C3%A9e_du_G%C3%A9n%C3%A9ral_Leclerc_-_mus%C3%A9e_Jean-Moulin",
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"

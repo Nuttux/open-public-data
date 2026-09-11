@@ -1,0 +1,155 @@
+{
+ "generated_at": "2026-09-11T15:58:09.539515+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "eglise-sainte-anne-de-la-butte-aux-cailles",
+ "name": "Église Sainte-Anne de la Butte-aux-Cailles",
+ "kind_fr": "Église",
+ "kind_en": "Église",
+ "famille": "culture",
+ "arrondissement": 13,
+ "lat": 48.82617,
+ "lon": 2.350038,
+ "photo": "/img/lieux/eglise-sainte-anne-de-la-butte-aux-cailles.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Chabe01",
+  "url": "https://commons.wikimedia.org/wiki/File:%C3%89glise_Sainte_Anne_Butte_Cailles_-_Paris_XIII_(FR75)_-_2021-07-21_-_2.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 858,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 8160233.0,
+  "invest_annees": [
+   "2023",
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (4 trouvés)",
+  "lecture_mode_en": "title naming the place (4 found)",
+  "n_lus": 4,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "2001": [
+   {
+    "reference": "2001 DAC 2",
+    "titre": "Autorisation à M. le Maire de Paris de lancer un appel d'offres ouvert en vue des travaux de mise en sécurité et de restructuration du narthex de l'église Sainte-Anne de la Butte-aux-Cailles (13e). Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84801"
+   }
+  ],
+  "2003": [
+   {
+    "reference": "2003 DAC 189",
+    "titre": "Approbation du principe et des modalités d'attribution d'un marché de travaux sur appel d'offres ouvert en vue de l'aménagement du narthex de l'église Sainte Anne de la Butte aux Cailles (13e). - Autorisation à M. le Maire de Paris de signer lesdits marchés correspondants. Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70505"
+   }
+  ],
+  "2004": [
+   {
+    "reference": "2004 DAC 205",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention avec la Région Ile-de-France pour le versement d'une subvention en vue de la réalisation de l'opération d'aménagement des cryptes de l'église Sainte-Anne de la Butte-aux-Cailles (13e). Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
+    "seance": "JUIN 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95004"
+   },
+   {
+    "reference": "2004 DAC 46",
+    "titre": "Approbation du principe de réalisation de l'opération d'aménagement des cryptes de l'église Sainte-Anne de la Butte-aux-Cailles (13e). - Autorisation à M. le Maire de Paris de signer une convention avec l'Association Diocésaine de Paris et de déposer le permis de démolir et le permis de construire en vue de la réalisation de cette opération. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57809"
+   }
+  ],
+  "2005": [
+   {
+    "reference": "2005 DAC 316",
+    "titre": "Approbation des modalités de passation des marchés de travaux relatifs à l’aménagement des cryptes de l’église Sainte-Anne de la Butte aux Cailles (13ème). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87043"
+   },
+   {
+    "reference": "2005 DAC 316",
+    "titre": "2005, DAC 316 - Approbation des modalités de passation des marchés de travaux relatifs à l’aménagement des cryptes de l’église Sainte-Anne-de-la-Butte-aux-cailles (13e). Vœu déposé par MM. Serge BLISKO, Jérôme COUMET et les membres du groupe socialiste et radical de gauche.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9351"
+   }
+  ]
+ },
+ "invest": [
+  {
+   "annee": 2023,
+   "montant_eur": 3897786.69,
+   "nom_projet": "Eglise Sainte Anne de la Butte-aux-Cailles - Consolidation perenne",
+   "preuve": "Signal « nom » : le libellé du projet nomme le lieu verbatim (« Eglise Sainte Anne de la Butte-aux-Cailles - Consolidation perenne »), même intitulé d'opération que la ligne 2024. Le point géocodé de la ligne est à 866 m du point du lieu ; cet écart n'est expliqué par aucune source disponible ici, et le rattachement repose sur le seul libellé — d'où une confiance moyenne.",
+   "id": "2023_13_36_027"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 4262446.31,
+   "nom_projet": "Eglise Sainte-Anne De La Butte-Aux-Cailles - Consolidation pérenne",
+   "preuve": "Signal « nom » : le libellé du projet nomme le lieu verbatim (« Eglise Sainte-Anne De La Butte-Aux-Cailles - Consolidation pérenne »). Des travaux de la Ville sur cet édifice sont attestés par ailleurs au Conseil de Paris (2001 DAC 2, « travaux de mise en sécurité et de restructuration du narthex de l'église Sainte-Anne de la Butte-aux-Cailles (13e) », dépenses imputées au budget d'investissement, nature 2313, rubrique 324) — opération antérieure et distincte, citée comme contexte, pas comme source du montant. Le point géocodé de la ligne est à 202 m du point du lieu : le rattachement repose sur le libellé, pas sur la distance.",
+   "id": "2024_13_36_014"
+  }
+ ],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89glise+Sainte-Anne+de+la+Butte-aux-Cailles"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

@@ -1,0 +1,131 @@
+{
+ "generated_at": "2026-09-11T15:58:09.539515+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "eglise-saint-joseph-des-nations",
+ "name": "Église Saint-Joseph-des-Nations",
+ "kind_fr": "Église",
+ "kind_en": "Église",
+ "famille": "culture",
+ "arrondissement": 11,
+ "lat": 48.86896,
+ "lon": 2.373322,
+ "photo": "/img/lieux/eglise-saint-joseph-des-nations.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Saint-Joseph-des-Nations",
+  "source": "Wikipédia"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "L'église Saint-Joseph-des-Nations est un édifice religieux catholique situé au 161 rue Saint-Maur dans le 11e arrondissement de Paris (France).",
+  "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Saint-Joseph-des-Nations",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 666,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (1 trouvés)",
+  "lecture_mode_en": "title naming the place (1 found)",
+  "n_lus": 1,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "2006": [
+   {
+    "reference": "2006 DAC 44",
+    "titre": "Approbation du principe de réalisation de l’opération de restauration des couvertures de l’église Saint-Joseph des Nations (11e), et des modalités de passation des marchés de travaux correspondants. Autorisation à M. le Maire Paris de déposer le permis de démolir et le permis de construire en vue de la réalisation de cette opération. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27832"
+   }
+  ],
+  "2008": [
+   {
+    "reference": "2008 DAC 27",
+    "titre": "Signature d’un avenant n° 1 au marché relatif à la restauration des couvertures de l’église Saint-Joseph des Nations (11e) - lot n° 1 “échafaudage-char-pente-couverture”. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77123"
+   }
+  ]
+ },
+ "invest": [],
+ "marches": [],
+ "mandate": {
+  "par_annee": {
+   "2017": 66045.94,
+   "2018": 165042.57,
+   "2019": 841490.44,
+   "2020": 908213.58,
+   "2021": 238399.44,
+   "2022": 79473.59
+  },
+  "total_eur": 2298665.56,
+  "operations": [
+   {
+    "ap_cle": "1603599",
+    "ap_texte": "EGLISE SAINT JOSEPH DES NATIONS (11e)",
+    "mandate_par_annee": {
+     "2017": 66045.94,
+     "2018": 165042.57,
+     "2019": 841490.44,
+     "2020": 908213.58,
+     "2021": 238399.44,
+     "2022": 79473.59
+    },
+    "total_mandate": 2298665.56,
+    "preuve": "Le libellé de l'opération nomme ce seul édifice : « EGLISE SAINT JOSEPH DES NATIONS (11e) » — ce n'est pas une enveloppe générique de direction, même si elle est portée par la DAC (mission « AFFAIRES CULTURELLES »). La question QOC 2002-243 (mars 2002) situe l'église 154, rue Saint-Maur (11e) et indique que le Bureau des Affaires cultuelles et historiques y conduit des travaux de restauration. Attention au cumul : le mandaté 2018 de l'opération (165 042,57 €) est exactement la somme des trois lignes projet 2018 ci-dessus (136 359,61 + 25 464,79 + 3 218,17 €) — l'opération AP et ces lignes décrivent la même dépense.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1603599"
+   }
+  ],
+  "periode": [
+   "2017",
+   "2022"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89glise+Saint-Joseph-des-Nations"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}
