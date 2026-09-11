@@ -19592,6 +19592,19 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-pv-forme .stack button:hover, .theme-fusion .fx-pv-forme .stack button:focus-visible { transform: scaleY(1.35); filter: brightness(.92); outline: none; }
 .theme-fusion .fx-pv-forme .legend span { font-size: 12.5px; color: var(--muted); }
 
+/* ══ BLOC 2 — preview visible, lien vers la page, plus de repli ══════════════
+   Les cinq sections du bas étaient un chiffre, deux lignes et un repli que
+   personne n'ouvrait. Le repli disparaît ; ce qu'il cachait a sa propre page
+   et une ligne d'appel y mène. Comparer sort de la grille et s'affiche
+   d'emblée, voisine par défaut comprise. */
+.theme-fusion .fx-pv-more { margin: 14px 0 0; font-size: 14px; }
+.theme-fusion .fx-pv-top5 { margin-top: 16px; }
+.theme-fusion .fx-pv-top5 .fx-pv-line { font-size: 13.5px; }
+.theme-fusion .fx-pv-section .fx-pv-vs { margin-top: 18px; }
+/* La grille à deux colonnes garde ses quatre sections ; Comparer, en pleine
+   largeur après elle, prend l'espace que ses barres face à face méritent. */
+.theme-fusion .fx-pv-grid + .fx-pv-section { margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--rule); }
+
 /* ══ HYGIÈNE TACTILE DE LA PAGE COMMUNE (audit du 2026-09-10) ═══════════════
    Mesuré à 390 px : 61 cibles sous 44 px, dont le sélecteur d'année à 25 px et
    le bouton de partage à 29 px. Les commandes autonomes montent à 44 px ; les
