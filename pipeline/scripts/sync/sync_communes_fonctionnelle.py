@@ -60,6 +60,7 @@ import csv
 import json
 import re
 import shutil
+import unicodedata
 import statistics
 import zipfile
 from collections import defaultdict
@@ -126,6 +127,39 @@ LIB_M14 = {
     "f7": ("Logement", "Housing"),
     "f8": ("Aménagement, environnement", "Urban planning, environment"),
 }
+# Reversements à d'autres collectivités : de l'argent que la commune encaisse et
+# transmet, pas un service qu'elle rend. La nomenclature les range en fonction 0
+# faute de politique publique à laquelle les rattacher, ce qui fait ressortir les
+# communes d'un établissement public territorial à +124 % d'« administration »
+# pour une raison de structure et non de gestion. On les DÉDUIT des deux côtés de
+# la comparaison — de la commune comme de chacun de ses pairs — et jamais du
+# montant affiché, qui reste ce que la commune a réellement dépensé.
+REVERSEMENTS = ("6554", "6556")
+
+# Strates démographiques de la DGFiP. Ce sont exactement celles que le site
+# emploie déjà pour la médiane de taxe foncière (mart_taux_fonciers_national) :
+# une seule définition de « commune comparable » sur tout le site.
+STRATES = [
+    (0, 100, "moins de 100 habitants"), (100, 200, "100 à 200 habitants"),
+    (200, 500, "200 à 500 habitants"), (500, 1000, "500 à 1 000 habitants"),
+    (1000, 2000, "1 000 à 2 000 habitants"), (2000, 3500, "2 000 à 3 500 habitants"),
+    (3500, 5000, "3 500 à 5 000 habitants"), (5000, 10000, "5 000 à 10 000 habitants"),
+    (10000, 20000, "10 000 à 20 000 habitants"), (20000, 50000, "20 000 à 50 000 habitants"),
+    (50000, 100000, "50 000 à 100 000 habitants"), (100000, 10**9, "100 000 habitants et plus"),
+]
+STRATES_EN = ["under 100 inhabitants", "100 to 200 inhabitants", "200 to 500 inhabitants",
+              "500 to 1,000 inhabitants", "1,000 to 2,000 inhabitants", "2,000 to 3,500 inhabitants",
+              "3,500 to 5,000 inhabitants", "5,000 to 10,000 inhabitants", "10,000 to 20,000 inhabitants",
+              "20,000 to 50,000 inhabitants", "50,000 to 100,000 inhabitants", "100,000 inhabitants and over"]
+
+
+def strate_de(pop: int) -> int:
+    for i, (lo, hi, _) in enumerate(STRATES):
+        if lo <= pop < hi:
+            return i
+    return len(STRATES) - 1
+
+
 NV_FR = "Non ventilé"
 NV_EN = "Not allocated"
 
@@ -206,6 +240,18 @@ def fonction_principale(ref: str) -> str | None:
 
 # ---------------------------------------------------------------------------
 # Libellés
+
+def slugify(s: str) -> str:
+    """Libellé → segment d'URL lisible.
+
+    Le slug est dérivé du LIBELLÉ, pas de la clé neutre : « f4 » désigne la
+    santé en M57 et le sport et la jeunesse en M14, et deux choses différentes
+    ne peuvent pas partager une URL.
+    """
+    s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode()
+    s = re.sub(r"[^a-zA-Z0-9]+", "-", s).strip("-").lower()
+    return re.sub(r"-{2,}", "-", s)[:60]
+
 
 def _norm(s: str) -> str:
     """Clé de comparaison d'un libellé : une seule forme d'apostrophe.
@@ -416,6 +462,7 @@ def build_commune(bucket: dict, lib: Libelles) -> dict | None:
     est_m14 = nomen.startswith("M14")
 
     par_fonction: dict[str, float] = defaultdict(float)
+    reversements: dict[str, float] = defaultdict(float)
     natures: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
     sous: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
     sous_natures: dict[tuple[str, str], dict[str, float]] = defaultdict(lambda: defaultdict(float))
@@ -424,6 +471,8 @@ def build_commune(bucket: dict, lib: Libelles) -> dict | None:
         natures[fkey][compte] += montant
         sous[fkey][ref] += montant
         sous_natures[(fkey, ref)][compte] += montant
+        if compte.startswith(REVERSEMENTS):
+            reversements[fkey] += montant
 
     ventile = total - par_fonction.get("nv", 0.0)
 
@@ -451,12 +500,17 @@ def build_commune(bucket: dict, lib: Libelles) -> dict | None:
         fr, en = (LIB_M14.get(cle) if est_m14 else None) or (fr_def, en_def)
         entry = {
             "cle": cle,
+            "slug": slugify(fr),
             "libelle": fr,
             "libelle_en": en,
             "montant": round(montant),
             "share": round(montant / ventile, 4) if ventile > 0 else None,
             "natures": natures_rows(natures[cle], TOP_NATURES),
         }
+        # Signalé seulement s'il pèse : un reversement de trois euros n'explique
+        # rien et produirait une note « dont 0 M€ reversé » sur la page.
+        if reversements.get(cle, 0) > 0.01 * montant and reversements[cle] > 10_000:
+            entry["reversement"] = round(reversements[cle])
         # Sous-fonctions : uniquement en M57. La nomenclature FONCTIONNELLE M14
         # n'est pas publiée dans le jeu DGCL qu'on ingère, et la table M14 qu'on
         # a est un plan de comptes par NATURE : y chercher un code de fonction
@@ -506,6 +560,98 @@ def build_commune(bucket: dict, lib: Libelles) -> dict | None:
     return out
 
 
+
+# ---------------------------------------------------------------------------
+# Comparaison aux communes de même taille
+
+def attacher_comparaisons(docs: dict[str, dict], pops: dict[str, int], noms: dict[str, str]) -> dict[str, int]:
+    """« Est-ce que ma ville met assez dans les écoles ? »
+
+    La seule question qu'un habitant se pose vraiment, et à laquelle aucune
+    source ne répond aujourd'hui. On y répond par fonction, en euros par
+    habitant, contre la MÉDIANE des communes de la même strate démographique.
+
+    Deux précautions, sans lesquelles le chiffre mentirait :
+
+      - les reversements aux groupements sont déduits de la commune COMME de
+        chacun de ses pairs (voir REVERSEMENTS). Sans ça, Pantin sort à +124 %
+        d'administration parce qu'elle appartient à un établissement public
+        territorial, pas parce qu'elle administre plus ;
+      - une strate de moins de 12 communes ne donne pas de médiane publiable :
+        on n'attache alors aucune comparaison plutôt qu'un chiffre fragile.
+    """
+    MIN_STRATE = 12
+    # strate → fonction → liste des € par habitant, nets de reversements
+    vals: dict[int, dict[str, list[float]]] = defaultdict(lambda: defaultdict(list))
+    for slug, doc in docs.items():
+        pop = pops.get(slug, 0)
+        if pop <= 0:
+            continue
+        st = strate_de(pop)
+        for f in doc["fonctions"]:
+            vals[st][f["cle"]].append((f["montant"] - f.get("reversement", 0)) / pop)
+
+    # Un classement par strate et par fonction, du plus dépensier au moins,
+    # calculé une seule fois pour toutes les communes.
+    classements: dict[int, dict[str, list[tuple[str, float]]]] = defaultdict(dict)
+    par_slug: dict[int, dict[str, list[tuple[str, float]]]] = defaultdict(lambda: defaultdict(list))
+    for slug, doc in docs.items():
+        pop = pops.get(slug, 0)
+        if pop <= 0:
+            continue
+        st = strate_de(pop)
+        for f in doc["fonctions"]:
+            par_slug[st][f["cle"]].append((slug, (f["montant"] - f.get("reversement", 0)) / pop))
+    for st, d in par_slug.items():
+        for cle, lst in d.items():
+            classements[st][cle] = sorted(lst, key=lambda x: -x[1])
+
+    attachees = 0
+    for slug, doc in docs.items():
+        pop = pops.get(slug, 0)
+        if pop <= 0:
+            continue
+        st = strate_de(pop)
+        lo, hi, lib = STRATES[st]
+        n_strate = max((len(v) for v in vals[st].values()), default=0)
+        if n_strate < MIN_STRATE:
+            continue
+        doc["strate"] = {
+            "code": st, "libelle": lib, "libelle_en": STRATES_EN[st],
+            "min": lo, "max": None if hi >= 10**9 else hi, "n_communes": n_strate,
+        }
+        for f in doc["fonctions"]:
+            serie = vals[st].get(f["cle"]) or []
+            if len(serie) < MIN_STRATE:
+                continue
+            net = (f["montant"] - f.get("reversement", 0)) / pop
+            med = statistics.median(serie)
+            if med <= 0:
+                continue
+            # Rang : 1 = la commune qui dépense le plus, sur cette fonction.
+            rang = sum(1 for v in serie if v > net) + 1
+            f["comparaison"] = {
+                "eur_hab": round(net, 1),
+                "mediane": round(med, 1),
+                "ecart_pct": round((net - med) / med * 100, 1),
+                "rang": rang,
+                "n_communes": len(serie),
+            }
+            # Les communes qui l'encadrent sur CETTE fonction. C'est ce qui rend
+            # une fiche « écoles à Pantin » lisible plutôt que mince — et le
+            # maillage interne se tisse tout seul, de commune en commune.
+            ordre = classements[st].get(f["cle"]) or []
+            i = next((k for k, (sl, _) in enumerate(ordre) if sl == slug), None)
+            if i is not None:
+                deb, fin = max(0, i - 3), min(len(ordre), i + 4)
+                f["comparaison"]["voisins"] = [
+                    {"slug": sl, "nom": noms.get(sl, sl), "eur_hab": round(v, 1), "rang": k + 1}
+                    for k, (sl, v) in enumerate(ordre[deb:fin], start=deb) if sl != slug
+                ]
+            attachees += 1
+    return {"fonctions_comparees": attachees}
+
+
 # ---------------------------------------------------------------------------
 # Écriture
 
@@ -536,10 +682,12 @@ def main() -> int:
         shutil.rmtree(OUT_ROOT)
     OUT_ROOT.mkdir(parents=True, exist_ok=True)
 
-    manifest: dict[str, dict] = {}
+    # Passe 1 : construire tous les documents. Passe 2 : comparer chaque commune
+    # à sa strate — impossible avant d'avoir lu toutes les communes.
+    docs: dict[str, dict] = {}
+    metas: dict[str, dict] = {}
+    pops: dict[str, int] = {}
     sans_slug = 0
-    tailles: list[int] = []
-    written = 0
     for insee, bucket in sorted(by_insee.items()):
         meta = index.get(insee)
         if not meta:
@@ -548,7 +696,22 @@ def main() -> int:
         payload = build_commune(bucket, lib)
         if payload is None or not payload["fonctions"]:
             continue
-        slug = meta["slug"]
+        docs[meta["slug"]] = payload
+        metas[meta["slug"]] = meta
+        pops[meta["slug"]] = meta.get("pop") or 0
+
+    noms = {sl: m["nom"] for sl, m in metas.items()}
+    stats = attacher_comparaisons(docs, pops, noms)
+    n_avec_strate = sum(1 for d in docs.values() if "strate" in d)
+    _log(f"  ✓ comparaison à la strate : {stats['fonctions_comparees']:,} fonctions "
+         f"sur {n_avec_strate:,} communes")
+
+    manifest: dict[str, dict] = {}
+    tailles: list[int] = []
+    written = 0
+    for slug, payload in docs.items():
+        meta = metas[slug]
+        insee = meta["insee"]
         doc = {
             "source": SOURCE_LABEL,
             "source_url": DATASET_PAGE,
@@ -557,7 +720,7 @@ def main() -> int:
             "annee": YEAR,
             "scope": SCOPE,
             "generated_at": datetime.now(timezone.utc).isoformat(),
-            "commune": {"insee": insee, "slug": slug, "nom": meta["nom"]},
+            "commune": {"insee": insee, "slug": slug, "nom": meta["nom"], "pop": meta.get("pop")},
             **payload,
         }
         dest = OUT_ROOT / slug / "fonctions.json"
@@ -571,6 +734,7 @@ def main() -> int:
             "non_ventile": payload["non_ventile"],
             "nomenclature": payload["nomenclature"],
             "n_fonctions": len(payload["fonctions"]),
+            "strate": payload.get("strate", {}).get("code"),
         }
         written += 1
         if args.limit and written >= args.limit:
