@@ -596,5 +596,3 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
     </div>
   );
 }
-
-// nudge 1789139351
