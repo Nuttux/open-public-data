@@ -20,6 +20,21 @@ import { displayFournisseur } from "@/lib/fournisseur-display";
 import type { PeerComparison } from "@/lib/commune-peers";
 import type { ChantiersData } from "@/lib/commune-chantiers";
 import { displayNomElu, type Maire } from "@/lib/commune-maires";
+import { NATURE_GROUPS } from "@/lib/budget-natures";
+
+/* Les chapitres de dépense d'une commune, rangés dans les familles de natures
+   du site pour en prendre la couleur. Un chapitre inconnu tombe en gris. */
+const COULEUR_NATURE: Record<string, string> = Object.fromEntries(NATURE_GROUPS.map((g) => [g.key, g.color]));
+function couleurChapitre(label: string): string {
+  const l = label.toLowerCase();
+  if (l.includes("personnel")) return COULEUR_NATURE.salaires;
+  if (l.includes("équipement") || l.includes("equipement") || l.includes("immobilis")) return COULEUR_NATURE.chantiers;
+  if (l.includes("gestion courante") || l.includes("subvention")) return COULEUR_NATURE.subventions;
+  if (l.includes("achats") || l.includes("charges externes")) return COULEUR_NATURE.achats;
+  if (l.includes("emprunt") || l.includes("dette") || l.includes("financi")) return COULEUR_NATURE.dette;
+  if (l.includes("impôt") || l.includes("impot") || l.includes("taxe") || l.includes("reversement") || l.includes("atténuation")) return COULEUR_NATURE.reverses;
+  return COULEUR_NATURE.autres;
+}
 
 /**
  * La page ville (bloc 2 de l'architecture multi-villes, 2026-09-09) — l'entrée
@@ -363,6 +378,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
       <>
         <button
           type="button"
+          id={`nat-${side}-${strip(label).replace(/[^a-z0-9]+/gi, "-").toLowerCase()}`}
           className={`fx-bud-row fx-pv-row${canOpen ? "" : " fx-bud-row--static"}${open ? " open" : ""}`}
           onClick={() => canOpen && setOpenRow(open ? null : key)}
           aria-expanded={canOpen ? open : undefined}
@@ -451,8 +467,8 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
   );
 
   const toc = [
-    { id: "depenses", label: t("fx.pv.toc.depenses") },
     ...(fonctions && fonctions.fonctions.length >= 3 ? [{ id: "a-quoi-sert", label: t("fx.pv.toc.fonc") }] : []),
+    { id: "depenses", label: t("fx.pv.toc.depenses") },
     ...(taxeFonciere && taxeFonciere.tfb != null ? [{ id: "taxe-fonciere", label: t("fx.pv.toc.taxe") }] : []),
     ...(invYear && invYear.total.depenses > 0 ? [{ id: "construit", label: t("fx.pv.toc.construit") }] : []),
     ...(evoLast?.dette != null ? [{ id: "dette", label: t("fx.pv.toc.dette") }] : []),
@@ -533,20 +549,6 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
 
           <SectionChips items={toc} label={t("fx.pv.chips_aria")} />
 
-          {/* 2. Dépenses et recettes */}
-          <H2 id="depenses" sub={`${t("fx.natbud.v3.h2sub")} ${data.comptes && Object.keys(data.comptes.expenses).length ? t("fx.pv.h2sub_click") : ""}${hasSeries ? ` ${fill("fx.natbud.v3.span", { span })}` : ""}`}>{t("fx.bud.v3.h2")}</H2>
-          <div className="fx-bud-cols">
-            <div className="fx-bud-col">
-              <h3><span>{t("fx.bud.v3.col_dep")}</span><span className="tnum">{euro(data.depenses)}</span></h3>
-              {dep.map((x) => <Row key={x.label} side="expenses" label={x.label} value={x.value} total={data.depenses} />)}
-            </div>
-            <div className="fx-bud-col">
-              <h3><span>{t("fx.bud.v3.col_rec")}</span><span className="tnum">{euro(data.recettes)}</span></h3>
-              {rec.map((x) => <Row key={x.label} side="revenue" label={x.label} value={x.value} total={data.recettes} />)}
-            </div>
-          </div>
-          {!fonctions ? <p className="fx-v3-foot">{t("fx.pv.fonction_absent")}</p> : null}
-
           {/* 2a. À quoi sert l'argent — ventilation par fonction (DGFiP).
               Liste ouverte, même grammaire que « par nature » juste au-dessus :
               un libellé, une barre, un montant, une part. Les parts se calculent
@@ -556,7 +558,9 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
           {fonctions && fonctions.fonctions.length >= 3 && (() => {
             const parts = fonctions.fonctions;
             const nvd = fonctions.non_ventile_detail;
-            const maxMontant = Math.max(...parts.map((f) => f.montant), fonctions.non_ventile, 1);
+            const revd = fonctions.reversement_detail;
+            const cg = fonctions.comparaison_globale;
+            const maxMontant = Math.max(...parts.map((f) => f.montant), fonctions.non_ventile, fonctions.reversement, 1);
             const admin = parts.find((f) => f.cle === "f0_services_generaux") ?? null;
             // Une barre ne représente qu'une part positive. Les rares fonctions
             // nettes négatives (annulations d'exercices antérieurs supérieures
@@ -619,8 +623,19 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
             return (
               <section className="fx-pv-fonc">
                 <H2 id="a-quoi-sert" sub={fill("fx.pv.fonc.h2sub", { year: fonctionsSource.annee })}>{fill("fx.pv.fonc.h2", { denom: isEn ? commune.nom : deNom(commune.nom) })}</H2>
+                {cg && cg.ecart_pct != null && fonctions.strate ? (
+                  /* Le NIVEAU se dit une fois. Sans cette phrase, le lecteur
+                     attribuerait aux choix de la commune ce qui n'est que son
+                     niveau de dépense global. */
+                  <p className="fx-pv-fonc-niveau">
+                    {fill("fx.pv.fonc.niveau", { nom: commune.nom, n: int.format(Math.round(cg.eur_hab)) })}{" "}
+                    <b className={cg.ecart_pct >= 0 ? "plus" : "moins"}>{cg.ecart_pct >= 0 ? "+" : "−"}{Math.abs(Math.round(cg.ecart_pct))}&nbsp;%</b>{" "}
+                    {fill("fx.pv.fonc.niveau_suite", { sens: t(cg.ecart_pct >= 0 ? "fx.fonc.plus_que" : "fx.fonc.moins_que"), strate: isEn ? fonctions.strate.libelle_en : fonctions.strate.libelle, n: cg.n_communes })}
+                  </p>
+                ) : null}
                 <h3 className="fx-pv-fonc-h3">
                   <span>{t("fx.pv.fonc.col")}</span>
+                  <span className="fx-pv-fonc-h3-bande">{cg ? t("fx.pv.fonc.col_bande") : null}</span>
                   <span className="tnum">{euro(fonctions.total_ventile)}</span>
                 </h3>
                 <ul className="fx-pv-fonc-list">
@@ -637,9 +652,27 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                           <Link href={`/fr/city/${commune.slug}/fonction/${f.slug}`} className="n" prefetch={false}>
                             {lbl(f)}
                           </Link>
-                          <span className="bar" aria-hidden="true">{w ? <i style={{ width: w }} /> : null}</span>
+                          {f.comparaison ? (
+                            /* La PRIORITÉ : la part du budget face à la part médiane des
+                               communes de même taille. La médiane est au centre ; le
+                               segment part à droite (ocre) si la commune y met plus que
+                               ses pairs, à gauche (marine) si moins. C'est la lecture
+                               qui ne dépend pas de la richesse de la commune — en euros,
+                               une ville dépensière est « au-dessus » partout. */
+                            <span className="bande" aria-hidden="true" title={fill("fx.pv.fonc.bande_title", { part: f.comparaison.part, med: f.comparaison.part_mediane })}>
+                              <i className="mid" />
+                              <i className={`seg ${f.comparaison.ecart_pt >= 0 ? "plus" : "moins"}`} style={f.comparaison.ecart_pt >= 0
+                                ? { left: "50%", width: `${Math.min(50, Math.abs(f.comparaison.ecart_pt) * 5)}%` }
+                                : { right: "50%", width: `${Math.min(50, Math.abs(f.comparaison.ecart_pt) * 5)}%` }} />
+                            </span>
+                          ) : (
+                            <span className="bar" aria-hidden="true">{w ? <i style={{ width: w }} /> : null}</span>
+                          )}
                           <Amt n={f.montant} />
-                          <span className="p tnum">{f.share != null && f.share > 0 ? `${Math.round(f.share * 100)}\u00a0%` : ""}</span>
+                          <span className="p tnum">
+                            {f.share != null && f.share > 0 ? `${Math.round(f.share * 100)}\u00a0%` : ""}
+                            {f.comparaison ? <span className="med">{fill("fx.pv.fonc.med_court", { n: Math.round(f.comparaison.part_mediane) })}</span> : null}
+                          </span>
                           <button
                             type="button"
                             className="fx-pv-fonc-chev"
@@ -654,6 +687,30 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                       </li>
                     );
                   })}
+                  {revd ? (() => {
+                    const open = openFonction === "rev";
+                    const w = barWidth(revd.montant);
+                    return (
+                      <li>
+                        <button
+                          type="button"
+                          className={`fx-bud-row fx-pv-fonc-row fx-pv-fonc-nv${open ? " open" : ""}`}
+                          onClick={() => setOpenFonction(open ? null : "rev")}
+                          aria-expanded={open}
+                        >
+                          <span className="n">
+                            {lbl(revd)}<span className="chev" aria-hidden="true">{open ? "▾" : "▸"}</span>
+                            <span className="dont">{t("fx.pv.fonc.rev_dont")}</span>
+                          </span>
+                          <span className="bar" aria-hidden="true">{w ? <i style={{ width: w }} /> : null}</span>
+                          <Amt n={revd.montant} />
+                          <span className="p tnum" />
+                          <span />
+                        </button>
+                        {open ? <Detail f={revd} /> : null}
+                      </li>
+                    );
+                  })() : null}
                   {nvd ? (() => {
                     const open = openFonction === "nv";
                     const w = barWidth(nvd.montant);
@@ -672,6 +729,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                           <span className="bar" aria-hidden="true">{w ? <i style={{ width: w }} /> : null}</span>
                           <Amt n={nvd.montant} />
                           <span className="p tnum" />
+                          <span />
                         </button>
                         {open ? <Detail f={nvd} /> : null}
                       </li>
@@ -684,6 +742,47 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
             );
           })()}
 
+          {/* 2. Dépenses et recettes */}
+          <H2 id="depenses" sub={`${t("fx.natbud.v3.h2sub")} ${data.comptes && Object.keys(data.comptes.expenses).length ? t("fx.pv.h2sub_click") : ""}${hasSeries ? ` ${fill("fx.natbud.v3.span", { span })}` : ""}`}>{t("fx.bud.v3.h2")}</H2>
+          {dep.length > 1 ? (
+            <div className="fx-bud-forme fx-pv-forme">
+              <div className="stack">
+                {dep.map((x) => {
+                  const pct = Math.round((x.value / data.depenses) * 100);
+                  const id = `nat-expenses-${strip(x.label).replace(/[^a-z0-9]+/gi, "-").toLowerCase()}`;
+                  const key = `expenses:${x.label}`;
+                  return (
+                    <button
+                      key={x.label}
+                      type="button"
+                      style={{ width: `${(x.value / data.depenses) * 100}%`, background: couleurChapitre(x.label) }}
+                      title={`${strip(x.label)} · ${pct} %`}
+                      aria-label={`${strip(x.label)} · ${pct} %`}
+                      onClick={() => {
+                        setOpenRow(openRow === key ? null : key);
+                        document.getElementById(id)?.scrollIntoView({ block: "center", behavior: "smooth" });
+                      }}
+                    />
+                  );
+                })}
+              </div>
+              <div className="legend">
+                {dep.map((x) => (
+                  <span key={x.label}><i style={{ background: couleurChapitre(x.label) }} /><b>{Math.round((x.value / data.depenses) * 100)} %</b> {strip(x.label)}</span>
+                ))}
+              </div>
+            </div>
+          ) : null}
+          <div className="fx-bud-cols">
+            <div className="fx-bud-col">
+              <h3><span>{t("fx.bud.v3.col_dep")}</span><span className="tnum">{euro(data.depenses)}</span></h3>
+              {dep.map((x) => <Row key={x.label} side="expenses" label={x.label} value={x.value} total={data.depenses} />)}
+            </div>
+            <div className="fx-bud-col">
+              <h3><span>{t("fx.bud.v3.col_rec")}</span><span className="tnum">{euro(data.recettes)}</span></h3>
+              {rec.map((x) => <Row key={x.label} side="revenue" label={x.label} value={x.value} total={data.recettes} />)}
+            </div>
+          </div>
           {/* Sur desktop, les sections repliées se rangent deux par deux au lieu
               de s'étaler sur une colonne vide à droite. */}
           <div className="fx-pv-grid">

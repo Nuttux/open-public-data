@@ -66,35 +66,33 @@ export default function FonctionFiche({
       {c && doc.strate ? (
         <section className="fx-fonc-bloc">
           <h3>{t("fx.fonc.h_compare")}</h3>
+          {/* La PRIORITÉ d'abord — la part du budget, qui ne dépend pas de la
+              richesse de la commune. Le niveau en euros vient après, en second. */}
           <p className="fx-fonc-verdict">
-            <b className={c.ecart_pct >= 0 ? "plus" : "moins"}>
-              {c.ecart_pct >= 0 ? "+" : "−"}{Math.abs(Math.round(c.ecart_pct))}&nbsp;%
+            <b className={c.ecart_pt >= 0 ? "plus" : "moins"}>
+              {c.ecart_pt >= 0 ? "+" : "−"}{Math.abs(c.ecart_pt).toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 1 })}&nbsp;pt
             </b>{" "}
-            {fill("fx.fonc.verdict", {
-              sens: t(c.ecart_pct >= 0 ? "fx.fonc.plus_que" : "fx.fonc.moins_que"),
+            {fill("fx.fonc.verdict_part", {
+              nom, part: c.part.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 1 }),
+              med: c.part_mediane.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 1 }),
               strate: en ? doc.strate.libelle_en : doc.strate.libelle,
             })}
           </p>
-          {/* Une règle, la médiane au centre, la commune posée dessus. */}
           <div className="fx-fonc-regle" aria-hidden="true">
             <span className="mid" />
             <span
-              className={`seg ${c.ecart_pct >= 0 ? "plus" : "moins"}`}
-              style={
-                c.ecart_pct >= 0
-                  ? { left: "50%", width: `${Math.min(48, Math.abs(c.ecart_pct) / 3)}%` }
-                  : { right: "50%", width: `${Math.min(48, Math.abs(c.ecart_pct) / 3)}%` }
-              }
+              className={`seg ${c.ecart_pt >= 0 ? "plus" : "moins"}`}
+              style={c.ecart_pt >= 0
+                ? { left: "50%", width: `${Math.min(48, Math.abs(c.ecart_pt) * 5)}%` }
+                : { right: "50%", width: `${Math.min(48, Math.abs(c.ecart_pt) * 5)}%` }}
             />
           </div>
           <p className="fx-fonc-chiffres">
-            <span>{fill("fx.fonc.ici", { nom, n: int.format(Math.round(c.eur_hab)) })}</span>
-            <span>{fill("fx.fonc.med", { n: int.format(Math.round(c.mediane)) })}</span>
-            <span>{fill("fx.fonc.rang", { rang: c.rang, n: c.n_communes })}</span>
+            <span>{fill("fx.fonc.rang_part", { rang: c.rang, n: c.n_communes })}</span>
+            {c.ecart_pct != null ? (
+              <span>{fill("fx.fonc.niveau_fonc", { n: int.format(Math.round(c.eur_hab)), med: int.format(Math.round(c.mediane)), ecart: `${c.ecart_pct >= 0 ? "+" : "−"}${Math.abs(Math.round(c.ecart_pct))}\u00a0%` })}</span>
+            ) : null}
           </p>
-          {fonction.reversement ? (
-            <p className="fx-fonc-note">{fill("fx.fonc.reversement", { n: euro(fonction.reversement) })}</p>
-          ) : null}
         </section>
       ) : null}
 
@@ -112,7 +110,7 @@ export default function FonctionFiche({
 
       {c?.voisins?.length ? (
         <section className="fx-fonc-bloc">
-          <h3>{fill("fx.fonc.h_voisins", { lib: titre.toLowerCase() })}</h3>
+          <h3>{t("fx.fonc.h_voisins")}</h3>
           <div className="fx-fonc-lignes">
             {c.voisins.map((v) => (
               <Link key={v.slug} href={`/fr/city/${v.slug}/fonction/${fonction.slug}`} className="l lien">
@@ -120,7 +118,7 @@ export default function FonctionFiche({
                   <span className="rg tnum">{v.rang}</span>
                   {v.nom}
                 </span>
-                <span className="tnum">{fill("fx.fonc.eur_hab", { n: int.format(Math.round(v.eur_hab)) })}</span>
+                <span className="tnum">{fill("fx.fonc.part_court", { n: v.part.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 1 }) })}</span>
               </Link>
             ))}
           </div>

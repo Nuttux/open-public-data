@@ -55,18 +55,40 @@ export type SousFonction = FonctionLigne & {
 };
 
 /** Une commune de même taille, voisine au classement sur CETTE fonction. */
-export type FonctionVoisin = { slug: string; nom: string; eur_hab: number; rang: number };
+export type FonctionVoisin = { slug: string; nom: string; part: number; eur_hab: number; rang: number };
 
-/** Où se situe la commune face aux communes de sa taille, sur cette fonction. */
+/**
+ * Où se situe la commune face aux communes de sa taille, sur cette fonction.
+ *
+ * Deux lectures, et la première trompe seule : une commune plus dépensière que
+ * ses pairs est « au-dessus » presque partout en euros sans que ça dise rien de
+ * ses choix. La PRIORITÉ — la part du budget contre la part médiane — est la
+ * lecture principale ; les euros par habitant restent en second.
+ */
 export type FonctionComparaison = {
-  /** € par habitant, net des reversements aux groupements. */
-  eur_hab: number;
-  mediane: number;
-  ecart_pct: number;
-  /** 1 = la commune qui dépense le plus de sa strate sur cette fonction. */
+  /** Part du budget ventilé, en % : « Pantin met 10 % dans les écoles ». */
+  part: number;
+  /** Part médiane des communes de la strate, en %. */
+  part_mediane: number;
+  /** Écart de part, en points. */
+  ecart_pt: number;
+  /** 1 = la commune qui y consacre la plus grande part de sa strate. */
   rang: number;
   n_communes: number;
+  /** € par habitant, en second. */
+  eur_hab: number;
+  mediane: number;
+  ecart_pct: number | null;
   voisins: FonctionVoisin[];
+};
+
+/** Le niveau général de la commune, dit une fois : « +46 % par habitant ». */
+export type ComparaisonGlobale = {
+  eur_hab: number;
+  mediane: number;
+  ecart_pct: number | null;
+  rang: number;
+  n_communes: number;
 };
 
 export type FonctionPart = {
@@ -84,12 +106,6 @@ export type FonctionPart = {
   share: number | null;
   /** Sur quoi l'argent est parti : personnel, achats, subventions… */
   natures: FonctionLigne[];
-  /**
-   * Reversements aux groupements contenus dans ce montant (comptes 6554, 6556),
-   * quand ils pèsent assez pour expliquer un écart. Déduits de la comparaison,
-   * jamais du montant affiché.
-   */
-  reversement?: number;
   comparaison?: FonctionComparaison;
   /**
    * Pour quoi : écoles maternelles, crèches, bibliothèques. Absent pour les
@@ -115,8 +131,17 @@ export type CommuneFonctions = {
   total_ventile: number;
   /** Rubrique 01 « opérations non ventilables » : dette, amortissements, fiscalité. */
   non_ventile: number;
+  /**
+   * Reversé à d'autres collectivités (comptes 6554, 6556) : de l'argent que la
+   * commune transmet, pas un service qu'elle rend. Hors des fonctions et hors du
+   * dénominateur des parts — sinon une commune en établissement public
+   * territorial paraît administrer deux fois plus que ses pairs.
+   */
+  reversement: number;
   nomenclature: string;
+  comparaison_globale?: ComparaisonGlobale;
   fonctions: FonctionPart[];
+  reversement_detail?: { libelle: string; libelle_en: string; montant: number; natures: FonctionLigne[] };
   /** Ce qu'il y a dans le non-ventilé, quand il y en a. */
   non_ventile_detail?: {
     libelle: string;

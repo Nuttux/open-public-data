@@ -30,15 +30,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!r) notFound();
   const nom = r.doc.commune.nom;
   const c = r.fonction.comparaison;
-  const ecart = c ? `${c.ecart_pct >= 0 ? "+" : "−"}${Math.abs(Math.round(c.ecart_pct))} %` : null;
-  // Le titre RÉPOND, avec les chiffres de la page — la règle SEO du site.
+  const strateFr = r.doc.strate?.libelle ?? "sa taille";
+  const strateEn = r.doc.strate?.libelle_en ?? "its size";
+  const pt = (v: number, en: boolean) => `${v >= 0 ? "+" : "−"}${Math.abs(v).toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 1 })} pt`;
+  // Le titre RÉPOND, avec les chiffres de la page — la règle SEO du site. La
+  // description dit la PRIORITÉ (part du budget), pas les euros : c'est la
+  // lecture qui ne dépend pas de la richesse de la commune.
   const titreFr = `${r.fonction.libelle} ${aNom(nom)} : ${euroCourt(r.fonction.montant, false)} en ${r.doc.annee}`;
   const titreEn = `${r.fonction.libelle_en} in ${nom}: ${euroCourt(r.fonction.montant, true)} in ${r.doc.annee}`;
   const descFr = c
-    ? `${nom} y consacre ${Math.round(c.eur_hab)} € par habitant, soit ${ecart} par rapport à la médiane des communes de ${r.doc.strate?.libelle ?? "sa taille"} (rang ${c.rang} sur ${c.n_communes}). Le détail par domaine et par nature de dépense, source DGFiP.`
+    ? `${nom} y consacre ${c.part.toLocaleString("fr-FR", { maximumFractionDigits: 1 })} % de son budget de fonctionnement, contre ${c.part_mediane.toLocaleString("fr-FR", { maximumFractionDigits: 1 })} % pour la médiane des communes de ${strateFr} (${pt(c.ecart_pt, false)}, rang ${c.rang} sur ${c.n_communes}). Le détail par domaine et par nature de dépense, source DGFiP.`
     : `Le détail par domaine et par nature de dépense, à partir des balances comptables de la DGFiP.`;
   const descEn = c
-    ? `${nom} spends €${Math.round(c.eur_hab)} per inhabitant on this, ${ecart} against the median of towns of ${r.doc.strate?.libelle_en ?? "its size"} (ranked ${c.rang} of ${c.n_communes}). Breakdown by area and by type of spending, from DGFiP accounts.`
+    ? `${nom} devotes ${c.part.toLocaleString("en-GB", { maximumFractionDigits: 1 })}% of its operating budget to this, against ${c.part_mediane.toLocaleString("en-GB", { maximumFractionDigits: 1 })}% for the median of towns of ${strateEn} (${pt(c.ecart_pt, true)}, ranked ${c.rang} of ${c.n_communes}). Breakdown by area and by type of spending, from DGFiP accounts.`
     : `Breakdown by area and by type of spending, from DGFiP accounting balances.`;
   return buildLocaleAwareMetadata({
     title: titreFr,

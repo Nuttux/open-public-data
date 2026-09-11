@@ -129,12 +129,15 @@ LIB_M14 = {
 }
 # Reversements à d'autres collectivités : de l'argent que la commune encaisse et
 # transmet, pas un service qu'elle rend. La nomenclature les range en fonction 0
-# faute de politique publique à laquelle les rattacher, ce qui fait ressortir les
-# communes d'un établissement public territorial à +124 % d'« administration »
-# pour une raison de structure et non de gestion. On les DÉDUIT des deux côtés de
-# la comparaison — de la commune comme de chacun de ses pairs — et jamais du
-# montant affiché, qui reste ce que la commune a réellement dépensé.
+# faute de politique publique à laquelle les rattacher, ce qui faisait ressortir
+# les communes d'un établissement public territorial à 43 % d'« administration »
+# — 22 M€ sur 56 à Pantin — pour une raison de structure et non de gestion.
+# Ils sortent en compartiment PROPRE, comme le non-ventilé : une ligne, c'est
+# une politique que la commune délivre, et un transfert n'en est pas une. Le
+# total ne bouge pas, rien n'est caché, le premier regard dit enfin la vérité.
 REVERSEMENTS = ("6554", "6556")
+REV_FR = "Reversé à l'intercommunalité"
+REV_EN = "Passed on to the inter-municipal body"
 
 # Strates démographiques de la DGFiP. Ce sont exactement celles que le site
 # emploie déjà pour la médiane de taxe foncière (mart_taux_fonciers_national) :
@@ -390,6 +393,10 @@ def stream_aggregate(zip_path: Path) -> tuple[dict[str, dict], dict[str, float],
             if fkey is None:
                 skipped += 1
                 continue
+            # Un reversement n'est pas une politique : il quitte sa fonction ici,
+            # avant toute agrégation, pour que natures, domaines et totaux suivent.
+            if compte.startswith(REVERSEMENTS):
+                fkey = "rev"
             montant = parse_montant(row[COL_OBNETDEB])
             if montant == 0.0:
                 skipped += 1
@@ -462,7 +469,6 @@ def build_commune(bucket: dict, lib: Libelles) -> dict | None:
     est_m14 = nomen.startswith("M14")
 
     par_fonction: dict[str, float] = defaultdict(float)
-    reversements: dict[str, float] = defaultdict(float)
     natures: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
     sous: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
     sous_natures: dict[tuple[str, str], dict[str, float]] = defaultdict(lambda: defaultdict(float))
@@ -471,10 +477,10 @@ def build_commune(bucket: dict, lib: Libelles) -> dict | None:
         natures[fkey][compte] += montant
         sous[fkey][ref] += montant
         sous_natures[(fkey, ref)][compte] += montant
-        if compte.startswith(REVERSEMENTS):
-            reversements[fkey] += montant
 
-    ventile = total - par_fonction.get("nv", 0.0)
+    # Le dénominateur des parts : ce que la commune rattache à une politique
+    # qu'elle délivre — ni le non-ventilé, ni ce qu'elle reverse.
+    ventile = total - par_fonction.get("nv", 0.0) - par_fonction.get("rev", 0.0)
 
     def natures_rows(counts: dict[str, float], n: int) -> list[dict]:
         rows = [
@@ -507,10 +513,6 @@ def build_commune(bucket: dict, lib: Libelles) -> dict | None:
             "share": round(montant / ventile, 4) if ventile > 0 else None,
             "natures": natures_rows(natures[cle], TOP_NATURES),
         }
-        # Signalé seulement s'il pèse : un reversement de trois euros n'explique
-        # rien et produirait une note « dont 0 M€ reversé » sur la page.
-        if reversements.get(cle, 0) > 0.01 * montant and reversements[cle] > 10_000:
-            entry["reversement"] = round(reversements[cle])
         # Sous-fonctions : uniquement en M57. La nomenclature FONCTIONNELLE M14
         # n'est pas publiée dans le jeu DGCL qu'on ingère, et la table M14 qu'on
         # a est un plan de comptes par NATURE : y chercher un code de fonction
@@ -540,13 +542,22 @@ def build_commune(bucket: dict, lib: Libelles) -> dict | None:
     fonctions_out.sort(key=lambda x: -x["montant"])
 
     non_ventile = round(par_fonction.get("nv", 0.0))
+    reverse = round(par_fonction.get("rev", 0.0))
     out = {
         "total": round(total),
         "total_ventile": round(ventile),
         "non_ventile": non_ventile,
+        "reversement": reverse,
         "nomenclature": nomen,
         "fonctions": fonctions_out,
     }
+    if reverse > 0:
+        out["reversement_detail"] = {
+            "libelle": REV_FR,
+            "libelle_en": REV_EN,
+            "montant": reverse,
+            "natures": natures_rows(natures["rev"], TOP_NATURES),
+        }
     if non_ventile > 0:
         # « C'est quoi, ces millions non ventilés ? » — la question se pose, la
         # réponse est dans le fichier : intérêts de la dette, reversements de
@@ -571,83 +582,101 @@ def attacher_comparaisons(docs: dict[str, dict], pops: dict[str, int], noms: dic
     source ne répond aujourd'hui. On y répond par fonction, en euros par
     habitant, contre la MÉDIANE des communes de la même strate démographique.
 
-    Deux précautions, sans lesquelles le chiffre mentirait :
+    DEUX LECTURES, ET LA PREMIÈRE TROMPE SEULE. Une commune qui dépense plus par
+    habitant que ses pairs — Pantin : +46 % toutes politiques confondues — est
+    « au-dessus » presque partout en euros, sans que ça dise rien de ses choix.
+    Mesuré sur sa strate : 25 communes sur 81 sont ainsi « + » ou « − » presque
+    partout. Et l'écart en euros cache l'inverse : Pantin est « dans la moyenne »
+    en culture (+3 %) alors qu'elle y met un tiers de part en moins (14,5 %
+    contre 21,4 %).
 
-      - les reversements aux groupements sont déduits de la commune COMME de
-        chacun de ses pairs (voir REVERSEMENTS). Sans ça, Pantin sort à +124 %
-        d'administration parce qu'elle appartient à un établissement public
-        territorial, pas parce qu'elle administre plus ;
-      - une strate de moins de 12 communes ne donne pas de médiane publiable :
-        on n'attache alors aucune comparaison plutôt qu'un chiffre fragile.
+    On sépare donc le NIVEAU de la COMPOSITION, comme en benchmarking :
+      - la priorité : la part du budget contre la part médiane — la lecture
+        principale, indépendante de la richesse de la commune ;
+      - le niveau général : les € par habitant toutes politiques confondues,
+        contre la médiane, dit UNE fois par commune ;
+      - le niveau par fonction : les € par habitant, gardés en second.
+
+    Précautions : les reversements sont déjà hors des fonctions (compartiment
+    « rev ») ; une strate de moins de 12 communes ne donne pas de médiane
+    publiable, on n'attache alors rien plutôt qu'un chiffre fragile.
     """
     MIN_STRATE = 12
-    # strate → fonction → liste des € par habitant, nets de reversements
-    vals: dict[int, dict[str, list[float]]] = defaultdict(lambda: defaultdict(list))
+    # strate → fonction → { slug: (€/hab, part) } ; strate → { slug: €/hab global }
+    vals: dict[int, dict[str, dict[str, tuple[float, float]]]] = defaultdict(lambda: defaultdict(dict))
+    glob: dict[int, dict[str, float]] = defaultdict(dict)
     for slug, doc in docs.items():
         pop = pops.get(slug, 0)
-        if pop <= 0:
+        if pop <= 0 or doc["total_ventile"] <= 0:
             continue
         st = strate_de(pop)
+        glob[st][slug] = doc["total_ventile"] / pop
         for f in doc["fonctions"]:
-            vals[st][f["cle"]].append((f["montant"] - f.get("reversement", 0)) / pop)
+            vals[st][f["cle"]][slug] = (f["montant"] / pop, f["montant"] / doc["total_ventile"])
 
-    # Un classement par strate et par fonction, du plus dépensier au moins,
-    # calculé une seule fois pour toutes les communes.
-    classements: dict[int, dict[str, list[tuple[str, float]]]] = defaultdict(dict)
-    par_slug: dict[int, dict[str, list[tuple[str, float]]]] = defaultdict(lambda: defaultdict(list))
-    for slug, doc in docs.items():
-        pop = pops.get(slug, 0)
-        if pop <= 0:
-            continue
-        st = strate_de(pop)
-        for f in doc["fonctions"]:
-            par_slug[st][f["cle"]].append((slug, (f["montant"] - f.get("reversement", 0)) / pop))
-    for st, d in par_slug.items():
-        for cle, lst in d.items():
-            classements[st][cle] = sorted(lst, key=lambda x: -x[1])
+    # Un classement par strate et par fonction, sur la PART, du plus au moins.
+    classements: dict[int, dict[str, list[tuple[str, float, float]]]] = defaultdict(dict)
+    for st, d in vals.items():
+        for cle, m in d.items():
+            classements[st][cle] = sorted(((sl, v[1], v[0]) for sl, v in m.items()), key=lambda x: -x[1])
 
     attachees = 0
     for slug, doc in docs.items():
         pop = pops.get(slug, 0)
-        if pop <= 0:
+        if pop <= 0 or slug not in glob.get(strate_de(pop), {}):
             continue
         st = strate_de(pop)
         lo, hi, lib = STRATES[st]
-        n_strate = max((len(v) for v in vals[st].values()), default=0)
+        n_strate = len(glob[st])
         if n_strate < MIN_STRATE:
             continue
         doc["strate"] = {
             "code": st, "libelle": lib, "libelle_en": STRATES_EN[st],
             "min": lo, "max": None if hi >= 10**9 else hi, "n_communes": n_strate,
         }
+        # Le niveau général, dit une fois : « +46 % par habitant que ses semblables ».
+        serie_g = list(glob[st].values())
+        med_g = statistics.median(serie_g)
+        mien_g = glob[st][slug]
+        doc["comparaison_globale"] = {
+            "eur_hab": round(mien_g, 1),
+            "mediane": round(med_g, 1),
+            "ecart_pct": round((mien_g - med_g) / med_g * 100, 1) if med_g > 0 else None,
+            "rang": sum(1 for v in serie_g if v > mien_g) + 1,
+            "n_communes": n_strate,
+        }
         for f in doc["fonctions"]:
-            serie = vals[st].get(f["cle"]) or []
-            if len(serie) < MIN_STRATE:
+            m = vals[st].get(f["cle"]) or {}
+            if len(m) < MIN_STRATE or slug not in m:
                 continue
-            net = (f["montant"] - f.get("reversement", 0)) / pop
-            med = statistics.median(serie)
-            if med <= 0:
+            eur, part = m[slug]
+            med_eur = statistics.median(v[0] for v in m.values())
+            med_part = statistics.median(v[1] for v in m.values())
+            if med_part <= 0:
                 continue
-            # Rang : 1 = la commune qui dépense le plus, sur cette fonction.
-            rang = sum(1 for v in serie if v > net) + 1
+            ordre = classements[st][f["cle"]]
+            rang = next(k for k, (sl, _, _) in enumerate(ordre) if sl == slug) + 1
             f["comparaison"] = {
-                "eur_hab": round(net, 1),
-                "mediane": round(med, 1),
-                "ecart_pct": round((net - med) / med * 100, 1),
+                # La lecture principale : la priorité.
+                "part": round(part * 100, 1),
+                "part_mediane": round(med_part * 100, 1),
+                "ecart_pt": round((part - med_part) * 100, 1),
                 "rang": rang,
-                "n_communes": len(serie),
+                "n_communes": len(m),
+                # Le niveau par fonction, en second.
+                "eur_hab": round(eur, 1),
+                "mediane": round(med_eur, 1),
+                "ecart_pct": round((eur - med_eur) / med_eur * 100, 1) if med_eur > 0 else None,
             }
-            # Les communes qui l'encadrent sur CETTE fonction. C'est ce qui rend
-            # une fiche « écoles à Pantin » lisible plutôt que mince — et le
-            # maillage interne se tisse tout seul, de commune en commune.
-            ordre = classements[st].get(f["cle"]) or []
-            i = next((k for k, (sl, _) in enumerate(ordre) if sl == slug), None)
-            if i is not None:
-                deb, fin = max(0, i - 3), min(len(ordre), i + 4)
-                f["comparaison"]["voisins"] = [
-                    {"slug": sl, "nom": noms.get(sl, sl), "eur_hab": round(v, 1), "rang": k + 1}
-                    for k, (sl, v) in enumerate(ordre[deb:fin], start=deb) if sl != slug
-                ]
+            # Les communes qui l'encadrent sur CETTE politique, par priorité. C'est
+            # ce qui rend une fiche « écoles à Pantin » lisible plutôt que mince —
+            # et le maillage interne se tisse tout seul, de commune en commune.
+            i = rang - 1
+            deb, fin = max(0, i - 3), min(len(ordre), i + 4)
+            f["comparaison"]["voisins"] = [
+                {"slug": sl, "nom": noms.get(sl, sl), "part": round(pt * 100, 1), "eur_hab": round(e, 1), "rang": k + 1}
+                for k, (sl, pt, e) in enumerate(ordre[deb:fin], start=deb) if sl != slug
+            ]
             attachees += 1
     return {"fonctions_comparees": attachees}
 

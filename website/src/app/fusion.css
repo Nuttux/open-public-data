@@ -19558,6 +19558,39 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-fonc-retour a { color: var(--bleu); }
 
 
+/* ══ PRIORITÉ, NIVEAU, REVERSEMENT — la section fonction après le 2026-09-11 ══
+   Deux lectures de la comparaison, et la première trompe seule : en euros, une
+   commune dépensière est « au-dessus » partout. La bande montre donc la PART du
+   budget face à la part médiane — la médiane au centre, le segment à droite en
+   ocre si la commune y met plus que ses pairs, à gauche en marine si moins. Le
+   niveau général, lui, se dit une fois, en phrase, au-dessus de la liste. */
+.theme-fusion .fx-pv-fonc-niveau { font-size: 15px; line-height: 1.55; color: var(--ink-2); max-width: 66ch; margin: 0 0 18px; }
+.theme-fusion .fx-pv-fonc-niveau b { font-weight: 700; }
+.theme-fusion .fx-pv-fonc-niveau b.plus { color: var(--ocre); }
+.theme-fusion .fx-pv-fonc-niveau b.moins { color: var(--bleu); }
+.theme-fusion .fx-pv-fonc-h3 { display: grid; grid-template-columns: minmax(0, 1fr) 160px 92px 88px 24px; gap: 12px; }
+.theme-fusion .fx-pv-fonc-h3 .tnum { grid-column: 3 / 5; text-align: right; }
+.theme-fusion .fx-pv-fonc-h3-bande { text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 9.5px; letter-spacing: .06em; }
+.theme-fusion .fx-pv-fonc-row .bande { position: relative; display: block; height: 9px; background: color-mix(in srgb, var(--muted) 12%, transparent); }
+.theme-fusion .fx-pv-fonc-row .bande .mid { position: absolute; left: 50%; top: -3px; bottom: -3px; width: 1px; background: var(--rule-2, #cfcdc4); }
+.theme-fusion .fx-pv-fonc-row .bande .seg { position: absolute; top: 0; height: 9px; }
+.theme-fusion .fx-pv-fonc-row .bande .seg.plus { background: var(--ocre); }
+.theme-fusion .fx-pv-fonc-row .bande .seg.moins { background: var(--bleu); }
+.theme-fusion .fx-pv-fonc-row .p .med { display: block; font-size: 9.5px; color: var(--muted); white-space: nowrap; letter-spacing: 0; margin-top: 1px; }
+@media (max-width: 700px) {
+  .theme-fusion .fx-pv-fonc-h3 { grid-template-columns: minmax(0, 1fr) 56px 80px 34px 22px; gap: 8px; }
+  .theme-fusion .fx-pv-fonc-h3-bande { display: none; }
+  .theme-fusion .fx-pv-fonc-row .p .med { display: none; }
+  .theme-fusion .fx-pv-fonc-row .dont { display: none; }
+}
+
+/* La barre empilée par nature, reprise de Paris. Ici un segment n'ouvre pas de
+   fiche — la commune n'en a pas par nature — il ouvre sa ligne et y mène. */
+.theme-fusion .fx-pv-forme { margin: 0 0 22px; }
+.theme-fusion .fx-pv-forme .stack button { display: block; height: 14px; border: 0; padding: 0; cursor: pointer; transition: transform .12s, filter .12s; }
+.theme-fusion .fx-pv-forme .stack button:hover, .theme-fusion .fx-pv-forme .stack button:focus-visible { transform: scaleY(1.35); filter: brightness(.92); outline: none; }
+.theme-fusion .fx-pv-forme .legend span { font-size: 12.5px; color: var(--muted); }
+
 /* ══ HYGIÈNE TACTILE DE LA PAGE COMMUNE (audit du 2026-09-10) ═══════════════
    Mesuré à 390 px : 61 cibles sous 44 px, dont le sélecteur d'année à 25 px et
    le bouton de partage à 29 px. Les commandes autonomes montent à 44 px ; les
@@ -20066,7 +20099,7 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
    vers la fiche de la politique publique ; le chevron, lui, déplie le détail sur
    place. Deux gestes distincts, donc deux cibles distinctes — et pas de curseur
    « main » sur toute la ligne, qui promettrait un clic qu'elle ne tient pas. */
-.theme-fusion .fx-pv-fonc-row { grid-template-columns: minmax(0, 1fr) 160px 92px 42px 24px; cursor: default; }
+.theme-fusion .fx-pv-fonc-row { grid-template-columns: minmax(0, 1fr) 160px 92px 88px 24px; cursor: default; }
 .theme-fusion .fx-pv-fonc-row > a.n { color: var(--ink); text-decoration: none; align-self: center; }
 .theme-fusion .fx-pv-fonc-row > a.n:hover { text-decoration: underline; text-underline-offset: 3px; }
 .theme-fusion .fx-pv-fonc-chev { background: transparent; border: 0; color: var(--muted); font: inherit; font-size: 11px; cursor: pointer; padding: 4px 0; text-align: right; }
