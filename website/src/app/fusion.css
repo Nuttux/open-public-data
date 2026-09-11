@@ -19525,6 +19525,39 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 }
 .theme-fusion .fx-bud-row--static { cursor: default; } .theme-fusion .fx-bud-row--static:hover { background: transparent; }
 
+/* ══ FICHE D'UNE POLITIQUE PUBLIQUE ════════════════════════════════════════
+   « Combien Pantin dépense pour les écoles ? » — une adresse par couple
+   commune × politique, ouverte en drawer depuis la page ville et servie en page
+   pleine en accès direct. Le même corps dans les deux cas. */
+.theme-fusion .fx-fonc-kicker { font-family: var(--f-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+.theme-fusion .fx-fonc-titre { font-family: var(--f-disp); font-size: clamp(28px, 4.4vw, 40px); line-height: 1.08; letter-spacing: -.02em; margin: 0 0 20px; }
+.theme-fusion .fx-fonc-reponse { font-size: 17px; line-height: 1.5; color: var(--ink); max-width: 60ch; margin: 0 0 26px; }
+.theme-fusion .fx-fonc-bloc { margin-top: 30px; }
+.theme-fusion .fx-fonc-bloc h3 { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin: 0 0 8px; padding-bottom: 8px; border-bottom: 1px solid var(--ink); }
+.theme-fusion .fx-fonc-verdict { font-size: 15px; color: var(--ink-2); margin: 0 0 14px; max-width: 58ch; }
+/* L'écart reprend l'accent du site : il dit le mouvement, ici l'écart à la
+   médiane. Jamais de vert ni de rouge — dépenser plus n'est ni bien ni mal. */
+.theme-fusion .fx-fonc-verdict b { font-size: 19px; font-weight: 700; }
+.theme-fusion .fx-fonc-verdict b.plus { color: var(--ocre); }
+.theme-fusion .fx-fonc-verdict b.moins { color: var(--bleu); }
+.theme-fusion .fx-fonc-regle { position: relative; height: 14px; background: var(--rule); margin: 0 0 10px; }
+.theme-fusion .fx-fonc-regle .mid { position: absolute; left: 50%; top: -3px; bottom: -3px; width: 1px; background: var(--rule-2, #cfcdc4); }
+.theme-fusion .fx-fonc-regle .seg { position: absolute; top: 0; height: 14px; }
+.theme-fusion .fx-fonc-regle .seg.plus { background: var(--ocre); }
+.theme-fusion .fx-fonc-regle .seg.moins { background: var(--bleu); }
+.theme-fusion .fx-fonc-chiffres { display: flex; flex-wrap: wrap; gap: 6px 20px; font-family: var(--f-mono); font-size: 11.5px; color: var(--muted); margin: 0; }
+.theme-fusion .fx-fonc-note { font-size: 12.5px; color: var(--muted); line-height: 1.5; margin: 12px 0 0; max-width: 66ch; }
+.theme-fusion .fx-fonc-lignes .l { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 8px 0; border-bottom: 1px solid var(--rule); color: var(--ink-2); text-decoration: none; }
+.theme-fusion .fx-fonc-lignes .l.autres { color: var(--muted); }
+.theme-fusion .fx-fonc-lignes a.l { color: var(--ink); }
+.theme-fusion .fx-fonc-lignes a.l:hover { background: var(--bg-hover); }
+.theme-fusion .fx-fonc-lignes .rg { display: inline-block; width: 30px; color: var(--muted); font-family: var(--f-mono); font-size: 11px; }
+.theme-fusion .fx-fonc-source { font-size: 12.5px; color: var(--muted); line-height: 1.5; margin: 30px 0 0; max-width: 70ch; }
+.theme-fusion .fx-fonc-source a { color: var(--bleu); }
+.theme-fusion .fx-fonc-retour { margin: 26px 0 0; font-size: 14px; }
+.theme-fusion .fx-fonc-retour a { color: var(--bleu); }
+
+
 /* ══ HYGIÈNE TACTILE DE LA PAGE COMMUNE (audit du 2026-09-10) ═══════════════
    Mesuré à 390 px : 61 cibles sous 44 px, dont le sélecteur d'année à 25 px et
    le bouton de partage à 29 px. Les commandes autonomes montent à 44 px ; les
@@ -20029,9 +20062,15 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   display: flex; justify-content: space-between; font-weight: 500;
 }
 .theme-fusion .fx-pv-fonc-list { list-style: none; margin: 0; padding: 0; }
-/* Quatre colonnes, pas les cinq de .fx-bud-row : rien ne se déplie ici, donc
-   pas de gouttière de chevron. */
-.theme-fusion .fx-pv-fonc-row { grid-template-columns: minmax(0, 1fr) 160px 92px 42px; cursor: default; }
+/* Cinq colonnes : libellé, barre, montant, part, chevron. Le libellé est un LIEN
+   vers la fiche de la politique publique ; le chevron, lui, déplie le détail sur
+   place. Deux gestes distincts, donc deux cibles distinctes — et pas de curseur
+   « main » sur toute la ligne, qui promettrait un clic qu'elle ne tient pas. */
+.theme-fusion .fx-pv-fonc-row { grid-template-columns: minmax(0, 1fr) 160px 92px 42px 24px; cursor: default; }
+.theme-fusion .fx-pv-fonc-row > a.n { color: var(--ink); text-decoration: none; align-self: center; }
+.theme-fusion .fx-pv-fonc-row > a.n:hover { text-decoration: underline; text-underline-offset: 3px; }
+.theme-fusion .fx-pv-fonc-chev { background: transparent; border: 0; color: var(--muted); font: inherit; font-size: 11px; cursor: pointer; padding: 4px 0; text-align: right; }
+.theme-fusion .fx-pv-fonc-chev:hover { color: var(--ink); }
 .theme-fusion .fx-pv-fonc-row:hover { background: transparent; }
 .theme-fusion .fx-pv-fonc-row .n { white-space: normal; }
 .theme-fusion .fx-pv-fonc-row .dont { display: block; font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.4; }
@@ -20042,7 +20081,8 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-pv-fonc-nv { color: var(--muted); margin-top: 10px; }
 .theme-fusion .fx-pv-fonc-nv .bar i { background: repeating-linear-gradient(135deg, #9aa1ad 0 2px, var(--bg) 2px 5px); }
 /* La ligne s'ouvre : même bouton que « par nature », même chevron. */
-.theme-fusion .fx-pv-fonc-row { width: 100%; background: transparent; border-left: 0; border-right: 0; border-top: 0; text-align: left; font: inherit; cursor: pointer; }
+.theme-fusion .fx-pv-fonc-row { width: 100%; background: transparent; border-left: 0; border-right: 0; border-top: 0; text-align: left; font: inherit; }
+.theme-fusion .fx-pv-fonc-nv { cursor: pointer; }
 .theme-fusion .fx-pv-fonc-row:hover { background: rgba(10, 10, 10, .03); }
 .theme-fusion .fx-pv-fonc-row.open { border-bottom: 0; }
 .theme-fusion .fx-pv-fonc-row .chev { color: var(--muted); font-size: 11px; margin-left: 6px; }
@@ -20068,7 +20108,7 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-pv-fonc-detail .sub { padding: 0 0 6px 14px; }
 .theme-fusion .fx-pv-fonc-detail .sub .line { font-size: 12px; color: var(--muted); border-bottom: 0; padding: 3px 0; }
 @media (max-width: 700px) {
-  .theme-fusion .fx-pv-fonc-row { grid-template-columns: minmax(0, 1fr) 64px 84px 36px; gap: 10px; font-size: 13.5px; }
+  .theme-fusion .fx-pv-fonc-row { grid-template-columns: minmax(0, 1fr) 56px 80px 34px 22px; gap: 8px; font-size: 13.5px; }
   .theme-fusion .fx-pv-fonc-detail { grid-template-columns: 1fr; gap: 0; padding-left: 12px; padding-right: 46px; }
 }
 

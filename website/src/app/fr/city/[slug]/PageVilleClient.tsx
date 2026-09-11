@@ -99,7 +99,12 @@ function useFmt() {
     const abs = Math.abs(eur);
     if (abs >= 1e9) return { v: nf({ maximumFractionDigits: 2 }).format(eur / 1e9), u: "Md€" };
     if (abs >= 1e6) return { v: nf({ maximumFractionDigits: abs >= 1e8 ? 0 : 1 }).format(eur / 1e6), u: "M€" };
-    if (abs >= 1e3) return { v: int.format(eur / 1e3), u: "k€" };
+    if (abs >= 1e3) {
+      // 999 500 € arrondi au millier donne « 1000 k€ », qui se lit mal et qu'on
+      // n'écrit jamais : au-delà du millier de milliers, on passe en M€.
+      if (Math.round(abs / 1e3) >= 1000) return { v: nf({ maximumFractionDigits: 1 }).format(eur / 1e6), u: "M€" };
+      return { v: int.format(eur / 1e3), u: "k€" };
+    }
     return { v: int.format(eur), u: "€" };
   };
   const signedPct = (x: number) => `${x >= 0 ? "+" : "−"}${fmtDec(Math.abs(x), 1)} %`;
@@ -624,17 +629,27 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                     const w = barWidth(f.montant);
                     return (
                       <li key={f.cle}>
-                        <button
-                          type="button"
-                          className={`fx-bud-row fx-pv-fonc-row${open ? " open" : ""}`}
-                          onClick={() => setOpenFonction(open ? null : f.cle)}
-                          aria-expanded={open}
-                        >
-                          <span className="n">{lbl(f)}<span className="chev" aria-hidden="true">{open ? "▾" : "▸"}</span></span>
+                        {/* La ligne MÈNE à la fiche de la politique publique — une
+                            vraie adresse, partageable et indexable, qui s'ouvre en
+                            drawer depuis ici. Le chevron, lui, déplie le détail sur
+                            place pour qui veut juste jeter un œil. */}
+                        <div className={`fx-bud-row fx-pv-fonc-row${open ? " open" : ""}`}>
+                          <Link href={`/fr/city/${commune.slug}/fonction/${f.slug}`} className="n" prefetch={false}>
+                            {lbl(f)}
+                          </Link>
                           <span className="bar" aria-hidden="true">{w ? <i style={{ width: w }} /> : null}</span>
                           <Amt n={f.montant} />
                           <span className="p tnum">{f.share != null && f.share > 0 ? `${Math.round(f.share * 100)}\u00a0%` : ""}</span>
-                        </button>
+                          <button
+                            type="button"
+                            className="fx-pv-fonc-chev"
+                            onClick={() => setOpenFonction(open ? null : f.cle)}
+                            aria-expanded={open}
+                            aria-label={fill(open ? "fx.pv.fonc.replier" : "fx.pv.fonc.deplier", { lib: lbl(f) })}
+                          >
+                            <span aria-hidden="true">{open ? "▾" : "▸"}</span>
+                          </button>
+                        </div>
                         {open ? <Detail f={f} /> : null}
                       </li>
                     );
@@ -646,7 +661,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                       <li>
                         <button
                           type="button"
-                          className={`fx-bud-row fx-pv-fonc-row fx-pv-fonc-nv${open ? " open" : ""}`}
+                          className={`fx-bud-row fx-pv-fonc-row fx-pv-fonc-nv fx-pv-fonc-nvbtn${open ? " open" : ""}`}
                           onClick={() => setOpenFonction(open ? null : "nv")}
                           aria-expanded={open}
                         >

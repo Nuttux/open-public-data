@@ -4,6 +4,7 @@ import { LOCALE_HOSTS, localesForPath } from '@/lib/site-locale';
 import { brEntityPaths, frEntityPaths, frenchCitySectionPaths, sfBrowsePaths } from '@/lib/seo/entity-paths';
 import { listCities } from '@/lib/cities';
 import { listAllCommunesMeta, loadAllCommunesGeneratedAt } from '@/lib/all-communes';
+import fonctionsManifest from '@/data/communes-fonctions-manifest.json';
 import { listDataDir } from '@/lib/data/read';
 import {
   sfAuthorityFamilies,
@@ -165,6 +166,26 @@ function brChunkCount(): number {
 }
 
 /**
+ * Une page par couple commune × politique publique — « combien Pantin dépense
+ * pour les écoles ». 27 246 adresses, déclarées depuis le manifeste engagé, donc
+ * sans ouvrir les 3 248 fichiers du bucket au build.
+ */
+let _fonctionPaths: string[] | null = null;
+function fonctionPaths(): string[] {
+  if (_fonctionPaths) return _fonctionPaths;
+  const communes = (fonctionsManifest as { communes: Record<string, { fonctions?: string[] }> }).communes;
+  const out: string[] = [];
+  for (const [slug, e] of Object.entries(communes)) {
+    for (const f of e.fonctions ?? []) out.push(`/fr/city/${slug}/fonction/${f}`);
+  }
+  _fonctionPaths = out;
+  return out;
+}
+function fonctionChunkCount(): number {
+  return Math.max(1, Math.ceil(fonctionPaths().length / CHUNK_SIZE));
+}
+
+/**
  * Generate one sitemap per chunk of ~5 000 URLs.
  * Returns sitemap segment ids; Next.js then calls `sitemap(id)` for each.
  */
@@ -174,11 +195,13 @@ export async function generateSitemaps() {
   // Segments N+1..N+M         = San Francisco entity fiches.
   // Segments N+M+1..N+M+F     = French entity fiches (Paris, Marseille).
   // Segments N+M+F+1..+B      = Brazilian pages (Recife).
+  // Segments ..+P             = commune × politique publique.
   const n = chunkCount();
   const m = sfChunkCount();
   const f = frChunkCount();
   const b = brChunkCount();
-  return Array.from({ length: n + m + f + b + 1 }, (_, i) => ({ id: i }));
+  const p = fonctionChunkCount();
+  return Array.from({ length: n + m + f + b + p + 1 }, (_, i) => ({ id: i }));
 }
 
 /**
@@ -265,6 +288,7 @@ async function segment(id: number): Promise<MetadataRoute.Sitemap> {
       [sfChunkCount(), sfEntityPaths],
       [frChunkCount(), frEntityPaths],
       [brChunkCount(), brEntityPaths],
+      [fonctionChunkCount(), fonctionPaths],
     ];
     let offset = nCommuneChunks;
     for (const [count, list] of families) {

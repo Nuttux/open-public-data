@@ -54,8 +54,25 @@ export type SousFonction = FonctionLigne & {
   natures?: FonctionLigne[];
 };
 
+/** Une commune de même taille, voisine au classement sur CETTE fonction. */
+export type FonctionVoisin = { slug: string; nom: string; eur_hab: number; rang: number };
+
+/** Où se situe la commune face aux communes de sa taille, sur cette fonction. */
+export type FonctionComparaison = {
+  /** € par habitant, net des reversements aux groupements. */
+  eur_hab: number;
+  mediane: number;
+  ecart_pct: number;
+  /** 1 = la commune qui dépense le plus de sa strate sur cette fonction. */
+  rang: number;
+  n_communes: number;
+  voisins: FonctionVoisin[];
+};
+
 export type FonctionPart = {
   cle: string;
+  /** Segment d'URL, dérivé du libellé : « enseignement-formation ». */
+  slug: string;
   libelle: string;
   libelle_en: string;
   montant: number;
@@ -67,6 +84,13 @@ export type FonctionPart = {
   share: number | null;
   /** Sur quoi l'argent est parti : personnel, achats, subventions… */
   natures: FonctionLigne[];
+  /**
+   * Reversements aux groupements contenus dans ce montant (comptes 6554, 6556),
+   * quand ils pèsent assez pour expliquer un écart. Déduits de la comparaison,
+   * jamais du montant affiché.
+   */
+  reversement?: number;
+  comparaison?: FonctionComparaison;
   /**
    * Pour quoi : écoles maternelles, crèches, bibliothèques. Absent pour les
    * communes en M14 — la nomenclature fonctionnelle M14 n'est pas publiée dans
@@ -82,7 +106,9 @@ export type CommuneFonctions = {
   source_libelles: string;
   annee: number;
   scope: string;
-  commune: { insee: string; slug: string; nom: string };
+  commune: { insee: string; slug: string; nom: string; pop?: number };
+  /** La strate démographique DGFiP à laquelle la commune est comparée. */
+  strate?: { code: number; libelle: string; libelle_en: string; min: number; max: number | null; n_communes: number };
   /** Toutes les dépenses de fonctionnement, ventilées ou non. */
   total: number;
   /** Ce qui est rattaché à une politique publique : le dénominateur des parts. */
@@ -110,6 +136,17 @@ export async function loadCommuneFonctions(slug: string): Promise<CommuneFonctio
   if (!communeHasFonctions(slug)) return null;
   const d = await readCommuneJson<CommuneFonctions>(`${PREFIX}/${slug}/fonctions.json`);
   return d && d.fonctions.length > 0 ? d : null;
+}
+
+/** Une seule politique publique d'une commune, par son segment d'URL. */
+export async function loadCommuneFonction(
+  slug: string,
+  fonctionSlug: string,
+): Promise<{ doc: CommuneFonctions; fonction: FonctionPart } | null> {
+  const doc = await loadCommuneFonctions(slug);
+  if (!doc) return null;
+  const fonction = doc.fonctions.find((f) => f.slug === fonctionSlug);
+  return fonction ? { doc, fonction } : null;
 }
 
 export const FONCTIONS_SOURCE = { label: M.source, url: M.source_url, annee: M.annee };

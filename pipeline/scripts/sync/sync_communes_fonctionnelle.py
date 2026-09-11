@@ -735,6 +735,9 @@ def main() -> int:
             "nomenclature": payload["nomenclature"],
             "n_fonctions": len(payload["fonctions"]),
             "strate": payload.get("strate", {}).get("code"),
+            # Les slugs de fonction, pour que le sitemap et le pré-rendu sachent
+            # quelles pages existent sans ouvrir les 3 248 fichiers du bucket.
+            "fonctions": [f["slug"] for f in payload["fonctions"]],
         }
         written += 1
         if args.limit and written >= args.limit:
