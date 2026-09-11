@@ -904,6 +904,11 @@ export type AssociationFiche = {
   themeRank: { rank: number; total: number; theme: string } | null;
   /** Year-over-year swings ≥ 20% on the byYear timeline — used to annotate the chart. */
   highlights: { year: number; pct: number; kind: "up" | "down" }[];
+  /** Les délibérations du Conseil de Paris qui ont voté cet argent, par année
+   *  du VOTE. Renseigné pour les bénéficiaires rattachés à un lieu, dont on a
+   *  synchronisé le corpus de délibérations ; null pour les autres, et la
+   *  fiche n'affiche alors rien plutôt qu'une section vide. */
+  delibsParAnnee?: Record<string, { reference: string; titre: string; seance?: string | null; source_url?: string | null }[]> | null;
   /** One entry per (year × direction) with aggregated montant + objet principal.
    * Beneficiaires_*.json already pre-aggregates per beneficiary per year, so
    * this is essentially the line-level public data we have. */
@@ -1029,7 +1034,25 @@ export function loadAssociation(name: string, city: string = "paris"): Associati
     byTheme,
     themeRank,
     highlights,
+    delibsParAnnee: delibsDuBeneficiaire(canonicalName, city),
   };
+}
+
+/** Les délibérations d'un bénéficiaire, produites par
+ *  pipeline/scripts/enrich/link_delibs_par_annee.py depuis les corpus de lieux.
+ *  Le fichier est indexé par le nom EXACT du bénéficiaire ; on compare par slug
+ *  pour retrouver les variantes d'écriture d'une même organisation. */
+function delibsDuBeneficiaire(nom: string, city: string): AssociationFiche["delibsParAnnee"] {
+  if (!nom) return null;
+  const f = readDataJsonOrNull<{ beneficiaires: Record<string, NonNullable<AssociationFiche["delibsParAnnee"]>> }>(
+    cityJsonPath(city, "subventions/delibs_par_beneficiaire.json"),
+  );
+  if (!f?.beneficiaires) return null;
+  const cible = assocSlug(nom);
+  for (const [k, v] of Object.entries(f.beneficiaires)) {
+    if (assocSlug(k) === cible) return v;
+  }
+  return null;
 }
 
 // ─── Projet (investissements) fiche ────────────────────────────────────────

@@ -182,7 +182,8 @@ export default function AssociationFiche({
 
       {asso.byYear.length > 1 && (
         <V3Section title={t("fx.fiche.asso.h.annees")}>
-          <AnneesRail rows={yearsDesc.map((y) => ({ year: y.year, amount: y.amount }))} />
+          <AnneesRail rows={yearsDesc.map((y) => ({ year: y.year, amount: y.amount }))}
+                      delibs={asso.delibsParAnnee ?? null} />
           {yearBars(years.shown)}
           {years.rest.length > 0 && (
             <V3Fold text label={fill(t("fx.fiche.asso.fold_annees"), { n: years.rest.length })}>{yearBars(years.rest)}</V3Fold>
