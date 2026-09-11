@@ -76,7 +76,6 @@ export default function CommuneNatureFiche({
               : { right: "50%", width: `${Math.min(48, Math.abs(c.ecart_pt) * 5)}%` }} />
           </div>
           <p className="fx-fonc-chiffres">
-            <span>{fill("fx.fonc.rang_part", { rang: c.rang, n: c.n_communes })}</span>
             {c.ecart_pct != null ? <span>{fill("fx.fonc.niveau_fonc", { n: int.format(Math.round(c.eur_hab)), med: int.format(Math.round(c.mediane)), ecart: `${c.ecart_pct >= 0 ? "+" : "−"}${Math.abs(Math.round(c.ecart_pct))} %` })}</span> : null}
           </p>
         </section>
@@ -112,7 +111,7 @@ export default function CommuneNatureFiche({
           <div className="fx-fonc-lignes">
             {c.voisins.map((v) => (
               <Link key={v.slug} href={`/fr/city/${v.slug}/nature/${nature.slug}`} className="l lien">
-                <span><span className="rg tnum">{v.rang}</span>{v.nom}</span>
+                <span>{v.nom}</span>
                 <span className="tnum">{fill("fx.fonc.part_court", { n: dec1(v.part) })}</span>
               </Link>
             ))}

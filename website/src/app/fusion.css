@@ -19569,7 +19569,7 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-pv-fonc-niveau b { font-weight: 700; }
 .theme-fusion .fx-pv-fonc-niveau b.plus { color: var(--ocre); }
 .theme-fusion .fx-pv-fonc-niveau b.moins { color: var(--bleu); }
-.theme-fusion .fx-pv-fonc-h3 { display: grid; grid-template-columns: minmax(0, 1fr) 160px 92px 88px 24px; gap: 12px; }
+.theme-fusion .fx-pv-fonc-h3 { display: grid; grid-template-columns: minmax(0, 1fr) 160px 92px 88px; gap: 12px; }
 .theme-fusion .fx-pv-fonc-h3 .tnum { grid-column: 3 / 5; text-align: right; }
 .theme-fusion .fx-pv-fonc-h3-bande { text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 9.5px; letter-spacing: .06em; }
 .theme-fusion .fx-pv-fonc-row .bande { position: relative; display: block; height: 9px; background: color-mix(in srgb, var(--muted) 12%, transparent); }
@@ -19579,7 +19579,7 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-pv-fonc-row .bande .seg.moins { background: var(--bleu); }
 .theme-fusion .fx-pv-fonc-row .p .med { display: block; font-size: 9.5px; color: var(--muted); white-space: nowrap; letter-spacing: 0; margin-top: 1px; }
 @media (max-width: 700px) {
-  .theme-fusion .fx-pv-fonc-h3 { grid-template-columns: minmax(0, 1fr) 56px 80px 34px 22px; gap: 8px; }
+  .theme-fusion .fx-pv-fonc-h3 { grid-template-columns: minmax(0, 1fr) 56px 80px 34px; gap: 8px; }
   .theme-fusion .fx-pv-fonc-h3-bande { display: none; }
   .theme-fusion .fx-pv-fonc-row .p .med { display: none; }
   .theme-fusion .fx-pv-fonc-row .dont { display: none; }
@@ -19590,7 +19590,11 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-pv-forme { margin: 0 0 22px; }
 .theme-fusion .fx-pv-forme .stack button { display: block; height: 14px; border: 0; padding: 0; cursor: pointer; transition: transform .12s, filter .12s; }
 .theme-fusion .fx-pv-forme .stack button:hover, .theme-fusion .fx-pv-forme .stack button:focus-visible { transform: scaleY(1.35); filter: brightness(.92); outline: none; }
-.theme-fusion .fx-pv-forme .legend span { font-size: 12.5px; color: var(--muted); }
+/* Plus de légende sous la barre : les lignes du dessous SONT la légende, une
+   pastille de la couleur du segment devant chacune. */
+.theme-fusion .fx-pv-row .sw { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 9px; vertical-align: -1px; }
+a.fx-pv-row--fiche { text-decoration: none; color: var(--ink); }
+a.fx-pv-row--fiche:hover .n { text-decoration: underline; text-underline-offset: 3px; }
 
 /* ══ BLOC 2 — preview visible, lien vers la page, plus de repli ══════════════
    Les cinq sections du bas étaient un chiffre, deux lignes et un repli que
@@ -20113,11 +20117,10 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
    vers la fiche de la politique publique ; le chevron, lui, déplie le détail sur
    place. Deux gestes distincts, donc deux cibles distinctes — et pas de curseur
    « main » sur toute la ligne, qui promettrait un clic qu'elle ne tient pas. */
-.theme-fusion .fx-pv-fonc-row { grid-template-columns: minmax(0, 1fr) 160px 92px 88px 24px; cursor: default; }
-.theme-fusion .fx-pv-fonc-row > a.n { color: var(--ink); text-decoration: none; align-self: center; }
-.theme-fusion .fx-pv-fonc-row > a.n:hover { text-decoration: underline; text-underline-offset: 3px; }
-.theme-fusion .fx-pv-fonc-chev { background: transparent; border: 0; color: var(--muted); font: inherit; font-size: 11px; cursor: pointer; padding: 4px 0; text-align: right; }
-.theme-fusion .fx-pv-fonc-chev:hover { color: var(--ink); }
+.theme-fusion .fx-pv-fonc-row { grid-template-columns: minmax(0, 1fr) 160px 92px 88px; cursor: default; }
+a.fx-pv-fonc-row { text-decoration: none; color: var(--ink); cursor: pointer; }
+a.fx-pv-fonc-row:hover { background: var(--bg-hover); }
+a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3px; }
 .theme-fusion .fx-pv-fonc-row:hover { background: transparent; }
 .theme-fusion .fx-pv-fonc-row .n { white-space: normal; }
 .theme-fusion .fx-pv-fonc-row .dont { display: block; font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.4; }
@@ -20134,28 +20137,7 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-pv-fonc-row.open { border-bottom: 0; }
 .theme-fusion .fx-pv-fonc-row .chev { color: var(--muted); font-size: 11px; margin-left: 6px; }
 
-/* Le détail : deux lectures côte à côte du même argent — pour quelle politique
-   fine (« Écoles maternelles ») et sur quelle nature (« Personnel titulaire »).
-   C'est le croisement que porte la source ; l'afficher en deux colonnes évite
-   de faire croire à une hiérarchie entre les deux. */
-/* La gouttière de droite reprend la colonne de pourcentage des lignes du
-   dessus (42 px + 12 px de gap) : sans elle les montants du détail
-   dépassent ceux de leur propre fonction et le bord droit part en dents
-   de scie. */
-.theme-fusion .fx-pv-fonc-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 0 36px; padding: 4px 54px 14px 18px; margin: 0 0 6px 4px; border-left: 2px solid var(--rule-2, #cfcdc4); }
-.theme-fusion .fx-pv-fonc-detail .col { min-width: 0; }
-.theme-fusion .fx-pv-fonc-detail h4 { font-family: var(--f-mono); font-size: 10px; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin: 6px 0 2px; }
-.theme-fusion .fx-pv-fonc-detail .line { display: flex; width: 100%; justify-content: space-between; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid var(--rule); font-size: 13px; color: var(--ink-2); background: transparent; border-left: 0; border-right: 0; border-top: 0; text-align: left; font-family: inherit; }
-.theme-fusion .fx-pv-fonc-detail .line.autres { color: var(--muted); }
-.theme-fusion .fx-pv-fonc-detail .line.clic { cursor: pointer; }
-.theme-fusion .fx-pv-fonc-detail .line.clic:hover { color: var(--ink); }
-.theme-fusion .fx-pv-fonc-detail .line .chev { color: var(--muted); font-size: 10px; margin-left: 5px; }
-/* Le troisième niveau : les natures d'un domaine. Décalé, plus petit, sans
-   filet, pour qu'on voie tout de suite qu'il appartient à la ligne du dessus. */
-.theme-fusion .fx-pv-fonc-detail .sub { padding: 0 0 6px 14px; }
-.theme-fusion .fx-pv-fonc-detail .sub .line { font-size: 12px; color: var(--muted); border-bottom: 0; padding: 3px 0; }
 @media (max-width: 700px) {
-  .theme-fusion .fx-pv-fonc-row { grid-template-columns: minmax(0, 1fr) 56px 80px 34px 22px; gap: 8px; font-size: 13.5px; }
-  .theme-fusion .fx-pv-fonc-detail { grid-template-columns: 1fr; gap: 0; padding-left: 12px; padding-right: 46px; }
+  .theme-fusion .fx-pv-fonc-row { grid-template-columns: minmax(0, 1fr) 56px 80px 34px; gap: 8px; font-size: 13.5px; }
 }
 

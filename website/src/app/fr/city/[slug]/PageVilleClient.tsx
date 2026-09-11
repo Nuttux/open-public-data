@@ -11,7 +11,7 @@ import ChartSource from "@/components/fusion/ChartSource";
 import RelatedLinks, { type RelatedBlock } from "@/components/fiche/RelatedLinks";
 import { useT, useLocale } from "@/lib/localeContext";
 import { aNom, deNom } from "@/lib/nom-commune";
-import type { CommuneFonctions, FonctionPart } from "@/lib/commune-fonctions";
+import type { CommuneFonctions, FonctionLigne, FonctionPart } from "@/lib/commune-fonctions";
 import { fmtDec } from "@/lib/fmt";
 import type { BudgetPageData } from "@/lib/fusion-data";
 import type { EvolutionData } from "@/lib/commune-evolution";
@@ -346,10 +346,10 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
   const evoYear = evolution?.series.find((p) => p.year === year) ?? null;
   const strip = (l: string) => l.replace(/\s\((D|R)\)$/, "");
   const [openRow, setOpenRow] = useState<string | null>(null);
-  // Une seule fonction ouverte à la fois, et un seul domaine dans celle-ci :
-  // la section reste lisible même quand une commune a douze domaines.
+  // Les deux compartiments sans fiche — reversé, non ventilé — se déplient sur
+  // place. Les politiques, elles, mènent à leur fiche : une seule règle sur la
+  // page, un clic ouvre la fiche quand elle existe, sinon déplie.
   const [openFonction, setOpenFonction] = useState<string | null>(null);
-  const [openSous, setOpenSous] = useState<string | null>(null);
   const comptesFor = (side: "expenses" | "revenue", label: string) => data.comptes?.[side]?.[label] ?? [];
   // Sous-lignes « dont … » : les agrégats OFGL de l'année, rangés sous la
   // ligne DGFiP qui les contient. Une phrase, jamais un bloc.
@@ -387,18 +387,34 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
     const open = openRow === key;
     const sub = dont(side, label);
     const canOpen = items.length > 0;
+    const id = `nat-${side}-${strip(label).replace(/[^a-z0-9]+/gi, "-").toLowerCase()}`;
+    const fiche = side === "expenses" ? natureFiches[strip(label)] : undefined;
+    const swatch = side === "expenses" ? <i className="sw" style={{ background: couleurChapitre(label) }} aria-hidden="true" /> : null;
+    // La même règle que partout : la fiche quand elle existe, sinon le dépliement.
+    if (fiche) {
+      return (
+        <Link href={`/fr/city/${commune.slug}/nature/${fiche}`} id={id} className="fx-bud-row fx-pv-row fx-pv-row--fiche" scroll={false} prefetch={false}>
+          {/* Même chevron que les lignes qui déplient : les deux gestes mènent au
+              détail, le lecteur n'a pas à savoir lequel ouvre une page. */}
+          <span className="n">{swatch}{strip(label)}<span className="chev" aria-hidden="true">▸</span>{sub ? <span className="dont">{sub}</span> : null}</span>
+          <Spark label={label} />
+          <Amt n={value} />
+          <span className="p tnum">{Math.round((value / total) * 100)} %</span>
+        </Link>
+      );
+    }
     return (
       <>
         <button
           type="button"
-          id={`nat-${side}-${strip(label).replace(/[^a-z0-9]+/gi, "-").toLowerCase()}`}
+          id={id}
           className={`fx-bud-row fx-pv-row${canOpen ? "" : " fx-bud-row--static"}${open ? " open" : ""}`}
           onClick={() => canOpen && setOpenRow(open ? null : key)}
           aria-expanded={canOpen ? open : undefined}
           disabled={!canOpen}
         >
           <span className="n">
-            {strip(label)}
+            {swatch}{strip(label)}
             {canOpen ? <span className="chev" aria-hidden="true">{open ? "▾" : "▸"}</span> : null}
             {sub ? <span className="dont">{sub}</span> : null}
           </span>
@@ -575,64 +591,23 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
             const revd = fonctions.reversement_detail;
             const cg = fonctions.comparaison_globale;
             const maxMontant = Math.max(...parts.map((f) => f.montant), fonctions.non_ventile, fonctions.reversement, 1);
-            const admin = parts.find((f) => f.cle === "f0_services_generaux") ?? null;
             // Une barre ne représente qu'une part positive. Les rares fonctions
             // nettes négatives (annulations d'exercices antérieurs supérieures
             // aux dépenses de l'année) n'en reçoivent pas.
             const barWidth = (n: number) => (n <= 0 ? null : `${Math.max(1.5, (n / maxMontant) * 100)}%`);
             const lbl = (x: { libelle: string; libelle_en: string }) => (isEn ? x.libelle_en : x.libelle);
 
-            /** Le détail d'une ligne : ses natures, ou ses domaines et ses natures. */
-            const Detail = ({ f }: { f: FonctionPart | NonNullable<typeof nvd> }) => {
-              const sous = "sous_fonctions" in f ? f.sous_fonctions : undefined;
-              return (
-                <div className="fx-pv-fonc-detail">
-                  {sous && sous.length ? (
-                    <div className="col">
-                      <h4>{t("fx.pv.fonc.pourquoi")}</h4>
-                      {sous.map((sf) => {
-                        const key = `${"cle" in f ? f.cle : "nv"}:${sf.code}`;
-                        const open = openSous === key;
-                        const peutOuvrir = Boolean(sf.natures && sf.natures.length);
-                        return (
-                          <div key={sf.code}>
-                            <button
-                              type="button"
-                              className={`line${peutOuvrir ? " clic" : ""}${sf.autres ? " autres" : ""}${open ? " open" : ""}`}
-                              onClick={() => peutOuvrir && setOpenSous(open ? null : key)}
-                              aria-expanded={peutOuvrir ? open : undefined}
-                              disabled={!peutOuvrir}
-                            >
-                              <span>{lbl(sf)}{peutOuvrir ? <span className="chev" aria-hidden="true">{open ? "▾" : "▸"}</span> : null}</span>
-                              <Amt n={sf.montant} size={13} />
-                            </button>
-                            {open && sf.natures ? (
-                              <div className="sub">
-                                {sf.natures.map((n) => (
-                                  <div key={n.code} className={`line${n.autres ? " autres" : ""}`}>
-                                    <span>{lbl(n)}</span>
-                                    <Amt n={n.montant} size={12} />
-                                  </div>
-                                ))}
-                              </div>
-                            ) : null}
-                          </div>
-                        );
-                      })}
-                    </div>
-                  ) : null}
-                  <div className="col">
-                    <h4>{t("fx.pv.fonc.surquoi")}</h4>
-                    {f.natures.map((n) => (
-                      <div key={n.code} className={`line${n.autres ? " autres" : ""}`}>
-                        <span>{lbl(n)}</span>
-                        <Amt n={n.montant} size={13} />
-                      </div>
-                    ))}
+            /** Le dépliement d'un compartiment sans fiche : ses natures, une colonne. */
+            const DetailNatures = ({ rows }: { rows: FonctionLigne[] }) => (
+              <div className="fx-pv-drill">
+                {rows.map((n) => (
+                  <div key={n.code} className={`line${n.autres ? " autres" : ""}`}>
+                    <span>{lbl(n)}</span>
+                    <Amt n={n.montant} size={13} />
                   </div>
-                </div>
-              );
-            };
+                ))}
+              </div>
+            );
 
             return (
               <section className="fx-pv-fonc">
@@ -642,9 +617,9 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                      attribuerait aux choix de la commune ce qui n'est que son
                      niveau de dépense global. */
                   <p className="fx-pv-fonc-niveau">
-                    {fill("fx.pv.fonc.niveau", { nom: commune.nom, n: int.format(Math.round(cg.eur_hab)) })}{" "}
-                    <b className={cg.ecart_pct >= 0 ? "plus" : "moins"}>{cg.ecart_pct >= 0 ? "+" : "−"}{Math.abs(Math.round(cg.ecart_pct))}&nbsp;%</b>{" "}
-                    {fill("fx.pv.fonc.niveau_suite", { sens: t(cg.ecart_pct >= 0 ? "fx.fonc.plus_que" : "fx.fonc.moins_que"), strate: isEn ? fonctions.strate.libelle_en : fonctions.strate.libelle, n: cg.n_communes })}
+                    {fill("fx.pv.fonc.niveau_court", { nom: commune.nom })}{" "}
+                    <b className={cg.ecart_pct >= 0 ? "plus" : "moins"}>{Math.abs(Math.round(cg.ecart_pct))}&nbsp;%</b>{" "}
+                    {fill("fx.pv.fonc.niveau_court_suite", { sens: t(cg.ecart_pct >= 0 ? "fx.fonc.plus_que" : "fx.fonc.moins_que"), strate: isEn ? fonctions.strate.libelle_en : fonctions.strate.libelle })}
                   </p>
                 ) : null}
                 <h3 className="fx-pv-fonc-h3">
@@ -654,25 +629,18 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                 </h3>
                 <ul className="fx-pv-fonc-list">
                   {parts.map((f: FonctionPart) => {
-                    const open = openFonction === f.cle;
                     const w = barWidth(f.montant);
                     return (
                       <li key={f.cle}>
-                        {/* La ligne MÈNE à la fiche de la politique publique — une
-                            vraie adresse, partageable et indexable, qui s'ouvre en
-                            drawer depuis ici. Le chevron, lui, déplie le détail sur
-                            place pour qui veut juste jeter un œil. */}
-                        <div className={`fx-bud-row fx-pv-fonc-row${open ? " open" : ""}`}>
-                          <Link href={`/fr/city/${commune.slug}/fonction/${f.slug}`} className="n" prefetch={false}>
-                            {lbl(f)}
-                          </Link>
+                        {/* Toute la ligne mène à la fiche de la politique publique —
+                            une vraie adresse, qui s'ouvre en drawer depuis ici. */}
+                        <Link href={`/fr/city/${commune.slug}/fonction/${f.slug}`} className="fx-bud-row fx-pv-fonc-row" prefetch={false}>
+                          <span className="n">{lbl(f)}</span>
                           {f.comparaison ? (
                             /* La PRIORITÉ : la part du budget face à la part médiane des
                                communes de même taille. La médiane est au centre ; le
                                segment part à droite (ocre) si la commune y met plus que
-                               ses pairs, à gauche (marine) si moins. C'est la lecture
-                               qui ne dépend pas de la richesse de la commune — en euros,
-                               une ville dépensière est « au-dessus » partout. */
+                               ses pairs, à gauche (marine) si moins. */
                             <span className="bande" aria-hidden="true" title={fill("fx.pv.fonc.bande_title", { part: f.comparaison.part, med: f.comparaison.part_mediane })}>
                               <i className="mid" />
                               <i className={`seg ${f.comparaison.ecart_pt >= 0 ? "plus" : "moins"}`} style={f.comparaison.ecart_pt >= 0
@@ -687,17 +655,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                             {f.share != null && f.share > 0 ? `${Math.round(f.share * 100)}\u00a0%` : ""}
                             {f.comparaison ? <span className="med">{fill("fx.pv.fonc.med_court", { n: Math.round(f.comparaison.part_mediane) })}</span> : null}
                           </span>
-                          <button
-                            type="button"
-                            className="fx-pv-fonc-chev"
-                            onClick={() => setOpenFonction(open ? null : f.cle)}
-                            aria-expanded={open}
-                            aria-label={fill(open ? "fx.pv.fonc.replier" : "fx.pv.fonc.deplier", { lib: lbl(f) })}
-                          >
-                            <span aria-hidden="true">{open ? "▾" : "▸"}</span>
-                          </button>
-                        </div>
-                        {open ? <Detail f={f} /> : null}
+                        </Link>
                       </li>
                     );
                   })}
@@ -719,9 +677,8 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                           <span className="bar" aria-hidden="true">{w ? <i style={{ width: w }} /> : null}</span>
                           <Amt n={revd.montant} />
                           <span className="p tnum" />
-                          <span />
                         </button>
-                        {open ? <Detail f={revd} /> : null}
+                        {open ? <DetailNatures rows={revd.natures} /> : null}
                       </li>
                     );
                   })() : null}
@@ -732,7 +689,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                       <li>
                         <button
                           type="button"
-                          className={`fx-bud-row fx-pv-fonc-row fx-pv-fonc-nv fx-pv-fonc-nvbtn${open ? " open" : ""}`}
+                          className={`fx-bud-row fx-pv-fonc-row fx-pv-fonc-nv${open ? " open" : ""}`}
                           onClick={() => setOpenFonction(open ? null : "nv")}
                           aria-expanded={open}
                         >
@@ -743,21 +700,19 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                           <span className="bar" aria-hidden="true">{w ? <i style={{ width: w }} /> : null}</span>
                           <Amt n={nvd.montant} />
                           <span className="p tnum" />
-                          <span />
                         </button>
-                        {open ? <Detail f={nvd} /> : null}
+                        {open ? <DetailNatures rows={nvd.natures} /> : null}
                       </li>
                     );
                   })() : null}
                 </ul>
-                {admin ? <p className="fx-v3-foot">{t("fx.pv.fonc.admin_note")}</p> : null}
                 <p className="fx-v3-foot">{t("fx.pv.fonc.note")}</p>
               </section>
             );
           })()}
 
           {/* 2. Dépenses et recettes */}
-          <H2 id="depenses" sub={`${t("fx.natbud.v3.h2sub")} ${data.comptes && Object.keys(data.comptes.expenses).length ? t("fx.pv.h2sub_click") : ""}${hasSeries ? ` ${fill("fx.natbud.v3.span", { span })}` : ""}`}>{t("fx.bud.v3.h2")}</H2>
+          <H2 id="depenses" sub={`${t("fx.pv.nature_sub")}${hasSeries ? ` ${fill("fx.natbud.v3.span", { span })}` : ""}`}>{t("fx.bud.v3.h2")}</H2>
           {dep.length > 1 ? (
             <div className="fx-bud-forme fx-pv-forme">
               <div className="stack">
@@ -782,15 +737,6 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                       }}
                     />
                   );
-                })}
-              </div>
-              <div className="legend">
-                {dep.map((x) => {
-                  const fiche = natureFiches[strip(x.label)];
-                  const inner = <><i style={{ background: couleurChapitre(x.label) }} /><b>{Math.round((x.value / data.depenses) * 100)} %</b> {strip(x.label)}</>;
-                  return fiche
-                    ? <Link key={x.label} href={`/fr/city/${commune.slug}/nature/${fiche}`} scroll={false}>{inner}</Link>
-                    : <span key={x.label}>{inner}</span>;
                 })}
               </div>
             </div>
