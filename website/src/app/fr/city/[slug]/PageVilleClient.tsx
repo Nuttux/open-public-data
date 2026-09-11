@@ -319,28 +319,18 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
   const deltaYear = prevYear && prevYear.depenses > 0 ? ((data.depenses - prevYear.depenses) / prevYear.depenses) * 100 : null;
   const first = years[0];
   const sinceFirst = first && first.year !== year && first.year !== prevYear?.year && first.depenses > 0 ? ((data.depenses - first.depenses) / first.depenses) * 100 : null;
+  // Une petite commune dont le total a VRAIMENT bougé : un seul chantier suffit
+  // à l'expliquer, et le lecteur mérite de le savoir avant de conclure. Sur une
+  // petite commune stable, la même phrase n'explique rien et encombre.
+  const volatile = commune.pop < 10000 && years.length > 1 && deltaYear != null && Math.abs(deltaYear) > 20;
 
-  // La position face aux villes de sa taille, en mots : seulement les trois
-  // indicateurs OFGL sans jumeau DGFiP sur la page (impôts locaux, dette,
-  // épargne), pour ne jamais afficher deux « par habitant » qui se contredisent.
-  const position = useMemo(() => {
-    if (!peers) return null;
-    const above: string[] = [];
-    const below: string[] = [];
-    for (const k of COMPARE_KEYS) {
-      const r = peers.rows.find((x) => x.key === k);
-      if (!r || r.deltaPct == null) continue;
-      const lab = t(`fx.pv.kpi.${k}`);
-      if (r.deltaPct > 15) above.push(lab);
-      else if (r.deltaPct < -15) below.push(lab);
-    }
-    const list = (xs: string[]) => (xs.length <= 1 ? xs.join("") : `${xs.slice(0, -1).join(", ")} ${t("fx.pv.and")} ${xs[xs.length - 1]}`);
-    if (above.length && below.length) return fill("fx.pv.pos_mixed", { above: list(above), below: list(below) });
-    if (above.length) return fill("fx.pv.pos_above", { list: list(above) });
-    if (below.length) return fill("fx.pv.pos_below", { list: list(below) });
-    return t("fx.pv.pos_avg");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [peers, locale]);
+  // Pas de phrase de position dans le héros. Elle disait « au-dessus pour la
+  // dette, en dessous pour les impôts et l'épargne » : un verdict SANS AUCUN
+  // CHIFFRE, sur trois indicateurs dont le bon sens diffère — une dette haute
+  // se lit comme un reproche, une épargne basse aussi, des impôts bas comme un
+  // compliment. Trois directions incompatibles dans une phrase, et rien pour
+  // les vérifier. Les mêmes faits sont plus bas, dans leur section, avec leurs
+  // nombres : « 1 793 € par habitant · communes de sa taille : 1 317 € ».
 
   /* ── 2. Dépenses et recettes : lignes, courbe, détail des comptes ── */
   const evoYear = evolution?.series.find((p) => p.year === year) ?? null;
@@ -555,6 +545,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                     {deltaYear != null && <b>{deltaWords(deltaYear, prevYear.year) ?? `${signedPct(deltaYear)} ${fill("fx.bud.v3.vs", { y: prevYear.year })}`}</b>}
                     {sinceFirst != null && <span> · {deltaWords(sinceFirst, first.year) ?? `${signedPct(sinceFirst)} ${fill("fx.bud.v3.depuis", { y: first.year })}`}</span>}
                   </div>
+                  {volatile ? <p className="fx-pv-petite">{t("fx.pv.petite_commune")}</p> : null}
                 </div>
               )}
               <div className="fx-v3-hero-meta">
@@ -562,10 +553,12 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                 {fill("fx.bud.v3.recettes_exec", { rec: euro(data.recettes) })}
                 {` · ${t("fx.natbud.solde").toLowerCase()} ${euro(data.solde, true)}`}
               </div>
-              {position ? <p className="fx-pv-position">{position}</p> : null}
-              {commune.pop < 10000 && years.length > 1 ? <p className="fx-pv-petite">{t("fx.pv.petite_commune")}</p> : null}
               <ShareButton label={t("fx.pv.share_num")} title={fill("fx.pv.share_title", { nom: commune.nom, year, n: euro(data.depenses) })} done={t("fx.pv.share_done")} />
             </div>
+            {/* La mise en garde sur la volatilité ne s'affiche que si le total a
+                vraiment bougé : sur une petite commune stable, elle n'explique
+                rien et encombre. Elle est posée sous la tendance, à côté du
+                chiffre qu'elle justifie. */}
             {years.length > 1 && (
               <div className="fx-v3-trend fx-pv-trend-desk">
                 <div className="t">
@@ -573,6 +566,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                   {sinceFirst != null && <span> · {deltaWords(sinceFirst, first.year) ?? `${signedPct(sinceFirst)} ${fill("fx.bud.v3.depuis", { y: first.year })}`}</span>}
                 </div>
                 <Bars points={years.map((y) => ({ year: y.year, value: y.depenses, type: y.type }))} year={year} ends={euro} />
+                {volatile ? <p className="fx-pv-petite">{t("fx.pv.petite_commune")}</p> : null}
               </div>
             )}
           </div>
@@ -786,7 +780,25 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                   {invDelta != null && invPrev ? ` ${fill("fx.pv.construit_delta", { pct: signedPct(invDelta), y: invPrev.year })}` : ""}
                 </p>
               ) : null}
-              <p className="fx-pv-more"><Link href={`/fr/city/${commune.slug}/investissements`} className="fx-pv-link">{t("fx.pv.construit_fold")}<i className="fx-pv-arrow" aria-hidden="true" /></Link></p>
+              {/* Les pages /investissements et /evolution ont été supprimées en
+                  septembre 2026 — elles redirigent vers l'ancre de cette section.
+                  Y envoyer un lien renvoyait le lecteur là où il était déjà. Le
+                  contenu revient donc ICI, en deux colonnes sobres. */}
+              <div className="fx-pv-two">
+                <div>
+                  <div className="fx-pv-colhead"><span>{t("fx.pv.financement")}</span><span className="tnum">{euro(invYear.total.recettes)}</span></div>
+                  {invYear.financement_par_groupe.map((g) => (
+                    <div key={g.groupe} className="fx-pv-line"><span>{g.groupe}</span><Amt n={g.montant} size={13} /></div>
+                  ))}
+                </div>
+                <div>
+                  <div className="fx-pv-colhead"><span>{t("fx.pv.invest_va")}</span><span className="tnum">{euro(invYear.total.depenses)}</span></div>
+                  {invYear.depenses_par_groupe.map((g) => (
+                    <div key={g.groupe} className="fx-pv-line"><span>{g.groupe}</span><Amt n={g.montant} size={13} /></div>
+                  ))}
+                </div>
+              </div>
+              <p className="fx-v3-foot">{t("fx.pv.construit_note")}</p>
             </>)}</Reveal>
           )}
 
@@ -803,7 +815,12 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                 </p>
               ) : null}
               {capacite != null && capacite > 0 ? <p className="fx-pv-l2">{fill("fx.pv.dette_cap", { years: capaciteWords(capacite) })}</p> : null}
-              {evolution && evolution.series.length > 1 ? <p className="fx-pv-more"><Link href={`/fr/city/${commune.slug}/evolution`} className="fx-pv-link">{t("fx.pv.dette_fold")}<i className="fx-pv-arrow" aria-hidden="true" /></Link></p> : null}
+              {evolution && evolution.series.length > 1 ? (
+                <div className="fx-v3-trend fx-pv-trend-fold">
+                  <Bars points={evolution.series.filter((p) => p.dette_hab != null).map((p) => ({ year: p.year, value: p.dette_hab as number }))} year={evoLast.year} ends={(v) => `${int.format(Math.round(v))} €`} />
+                </div>
+              ) : null}
+              <p className="fx-v3-foot">{t("fx.pv.dette_note")}</p>
             </>)}</Reveal>
           )}
 
