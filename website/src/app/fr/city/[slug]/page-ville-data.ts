@@ -9,7 +9,7 @@ import { loadCommunePeers } from "@/lib/commune-peers";
 import { loadCommuneChantiers } from "@/lib/commune-chantiers";
 import { loadMaire } from "@/lib/commune-maires";
 import { loadTaux, TAUX_SOURCE, type TauxCommune } from "@/lib/commune-taux";
-import { loadCommuneFonctions, FONCTIONS_SOURCE, type CommuneFonctions } from "@/lib/commune-fonctions";
+import { loadCommuneFonctions, FONCTIONS_SOURCE } from "@/lib/commune-fonctions";
 import type { RelatedBlock, RelatedRow } from "@/components/fiche/RelatedLinks";
 import type { CompareEntry, PageVilleProps } from "./PageVilleClient";
 
@@ -80,6 +80,22 @@ export async function loadPageVille(slug: string, requestedYear?: number, en = f
   // budget par fonction (DGFiP, présentation croisée nature-fonction). Le détail
   // (domaines, natures) vient du bucket privé, comme les marchés et l'investissement.
   const fonctions = await loadCommuneFonctions(slug);
+  // Le chapitre de la liste par nature → le segment d'URL de sa fiche nature,
+  // quand la commune en a (celles à axe fonction). Correspondance par libellé
+  // de chapitre M57, stable d'une commune à l'autre.
+  const CHAPITRE_VERS_NATURE: Record<string, string> = {
+    "Charges de personnel": "salaires",
+    "Achats et charges externes": "achats",
+    "Charges de gestion courante": "gestion",
+    "Charges financières": "dette",
+    "Impôts et taxes (charges)": "impots",
+    "Charges exceptionnelles": "exceptionnel",
+  };
+  const natureFiches: Record<string, string> = {};
+  if (fonctions) {
+    const parKey = Object.fromEntries((fonctions.natures ?? []).map((n) => [n.key, n.slug]));
+    for (const [chap, key] of Object.entries(CHAPITRE_VERS_NATURE)) if (parKey[key]) natureFiches[chap] = parKey[key];
+  }
 
   const me = entry(slug);
   const options = compareOptions(slug);
@@ -118,6 +134,7 @@ export async function loadPageVille(slug: string, requestedYear?: number, en = f
     taxeFonciere,
     fonctions,
     fonctionsSource: FONCTIONS_SOURCE,
+    natureFiches,
     marchesHref: marches && marches.total.nb_marches > MARCHES_EXPLORER_MIN ? `/fr/city/${slug}/marches` : undefined,
     peers,
     compare,

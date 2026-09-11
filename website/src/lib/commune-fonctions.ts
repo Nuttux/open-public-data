@@ -116,6 +116,27 @@ export type FonctionPart = {
   sous_fonctions?: SousFonction[];
 };
 
+/**
+ * Une famille de natures — « sous quelle forme l'argent sort » — avec le
+ * croisement vers les politiques publiques, la lecture de la fiche poste de
+ * Paris : les salaires, dans quelles politiques. Familles = préfixes officiels
+ * de la classe 6 (64 salaires, 60-62 achats, 65 subventions et contributions…).
+ */
+export type NatureFamille = {
+  key: string;
+  slug: string;
+  libelle: string;
+  libelle_en: string;
+  montant: number;
+  /** Part des dépenses de fonctionnement hors reversements. */
+  share: number | null;
+  /** Les comptes qui la composent, les plus gros d'abord. */
+  comptes: FonctionLigne[];
+  /** Le croisement : dans quelles politiques cette forme de dépense va. */
+  fonctions: { cle: string; slug: string | null; libelle: string; libelle_en: string; montant: number }[];
+  comparaison?: FonctionComparaison;
+};
+
 export type CommuneFonctions = {
   source: string;
   source_url: string;
@@ -141,6 +162,7 @@ export type CommuneFonctions = {
   nomenclature: string;
   comparaison_globale?: ComparaisonGlobale;
   fonctions: FonctionPart[];
+  natures: NatureFamille[];
   reversement_detail?: { libelle: string; libelle_en: string; montant: number; natures: FonctionLigne[] };
   /** Ce qu'il y a dans le non-ventilé, quand il y en a. */
   non_ventile_detail?: {
@@ -172,6 +194,22 @@ export async function loadCommuneFonction(
   if (!doc) return null;
   const fonction = doc.fonctions.find((f) => f.slug === fonctionSlug);
   return fonction ? { doc, fonction } : null;
+}
+
+/** Une famille de natures d'une commune, par son segment d'URL. */
+export async function loadCommuneNature(
+  slug: string,
+  natureSlug: string,
+): Promise<{ doc: CommuneFonctions; nature: NatureFamille } | null> {
+  const doc = await loadCommuneFonctions(slug);
+  if (!doc) return null;
+  const nature = (doc.natures ?? []).find((n) => n.slug === natureSlug);
+  return nature ? { doc, nature } : null;
+}
+
+/** Les segments d'URL des familles de natures d'une commune, depuis le manifeste. */
+export function communeNatureSlugs(slug: string): string[] {
+  return (M.communes[slug] as ManifestEntry & { natures?: string[] } | undefined)?.natures ?? [];
 }
 
 export const FONCTIONS_SOURCE = { label: M.source, url: M.source_url, annee: M.annee };

@@ -42,7 +42,6 @@ export default function FonctionFiche({
 
   const c = fonction.comparaison;
   const nom = doc.commune.nom;
-  const titre = lbl(fonction);
 
   const Lignes = ({ rows, taille = 14 }: { rows: FonctionLigne[]; taille?: number }) => (
     <div className="fx-fonc-lignes">

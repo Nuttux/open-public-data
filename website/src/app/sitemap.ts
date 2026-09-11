@@ -185,6 +185,20 @@ function fonctionChunkCount(): number {
   return Math.max(1, Math.ceil(fonctionPaths().length / CHUNK_SIZE));
 }
 
+/** Une page par couple commune × forme de dépense, pour les communes à axe fonction. */
+let _naturePaths: string[] | null = null;
+function naturePaths(): string[] {
+  if (_naturePaths) return _naturePaths;
+  const communes = (fonctionsManifest as { communes: Record<string, { natures?: string[] }> }).communes;
+  const out: string[] = [];
+  for (const [slug, e] of Object.entries(communes)) for (const n of e.natures ?? []) out.push(`/fr/city/${slug}/nature/${n}`);
+  _naturePaths = out;
+  return out;
+}
+function natureChunkCount(): number {
+  return Math.max(1, Math.ceil(naturePaths().length / CHUNK_SIZE));
+}
+
 /**
  * Generate one sitemap per chunk of ~5 000 URLs.
  * Returns sitemap segment ids; Next.js then calls `sitemap(id)` for each.
@@ -201,7 +215,8 @@ export async function generateSitemaps() {
   const f = frChunkCount();
   const b = brChunkCount();
   const p = fonctionChunkCount();
-  return Array.from({ length: n + m + f + b + p + 1 }, (_, i) => ({ id: i }));
+  const q = natureChunkCount();
+  return Array.from({ length: n + m + f + b + p + q + 1 }, (_, i) => ({ id: i }));
 }
 
 /**
@@ -289,6 +304,7 @@ async function segment(id: number): Promise<MetadataRoute.Sitemap> {
       [frChunkCount(), frEntityPaths],
       [brChunkCount(), brEntityPaths],
       [fonctionChunkCount(), fonctionPaths],
+      [natureChunkCount(), naturePaths],
     ];
     let offset = nCommuneChunks;
     for (const [count, list] of families) {

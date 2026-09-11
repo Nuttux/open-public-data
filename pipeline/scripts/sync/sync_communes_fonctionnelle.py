@@ -163,6 +163,22 @@ def strate_de(pop: int) -> int:
     return len(STRATES) - 1
 
 
+# Les familles de natures : la seconde lecture du budget, « sous quelle forme
+# l'argent sort ». Elles suivent les préfixes officiels de la classe 6 — c'est la
+# structure des chapitres M57 (011 = 60-62, 012 = 64, 65, 66…), pas une grille
+# maison. Chaque famille a sa fiche pour les communes qui ont l'axe fonction :
+# c'est là qu'elle porte le croisement « les salaires, dans quelles politiques ».
+NATURES = [
+    ("salaires", "salaires", ("64",), "Salaires et charges de personnel", "Staff pay and costs"),
+    ("achats", "achats-et-services", ("60", "61", "62"), "Achats et services extérieurs", "Purchases and external services"),
+    ("gestion", "subventions-et-contributions", ("65",), "Subventions et contributions", "Grants and contributions"),
+    ("dette", "interets-de-la-dette", ("66",), "Intérêts de la dette", "Debt interest"),
+    ("impots", "impots-et-taxes", ("63",), "Impôts et taxes payés", "Taxes paid"),
+    ("exceptionnel", "charges-exceptionnelles", ("67",), "Charges exceptionnelles", "Exceptional charges"),
+    ("dotations", "amortissements-et-provisions", ("68",), "Amortissements et provisions", "Depreciation and provisions"),
+]
+NATURE_DE_PREFIXE = {pfx: n[0] for n in NATURES for pfx in n[2]}
+
 NV_FR = "Non ventilé"
 NV_EN = "Not allocated"
 
@@ -541,6 +557,50 @@ def build_commune(bucket: dict, lib: Libelles) -> dict | None:
 
     fonctions_out.sort(key=lambda x: -x["montant"])
 
+    # Les familles de natures. Le reversement en est exclu, comme des fonctions :
+    # un transfert n'est ni une politique ni une forme de dépense de la commune.
+    fam_montant: dict[str, float] = defaultdict(float)
+    fam_comptes: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
+    fam_fonctions: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
+    for (fkey, ref, compte), montant in bucket["cellules"].items():
+        if fkey == "rev":
+            continue
+        fam = NATURE_DE_PREFIXE.get(compte[:2])
+        if not fam:
+            continue
+        fam_montant[fam] += montant
+        fam_comptes[fam][compte] += montant
+        fam_fonctions[fam][fkey] += montant
+    base_natures = total - par_fonction.get("rev", 0.0)
+    lib_fonction = {cle: (fr, en) for cle, fr, en in FONCTIONS}
+    lib_fonction["nv"] = (NV_FR, NV_EN)
+    natures_out: list[dict] = []
+    for key, slug_n, _pfx, fr_n, en_n in NATURES:
+        montant = fam_montant.get(key, 0.0)
+        if montant == 0:
+            continue
+        # Le croisement : cette forme de dépense, dans quelles politiques. C'est
+        # la lecture de la fiche poste de Paris, et la seule chose qu'une fiche
+        # nature peut dire que la page ville ne montre pas déjà.
+        croise = []
+        for fkey, v in fam_fonctions[key].items():
+            if v == 0:
+                continue
+            fr_f, en_f = (LIB_M14.get(fkey) if est_m14 and fkey in LIB_M14 else None) or lib_fonction.get(fkey, (fkey, fkey))
+            croise.append({"cle": fkey, "slug": slugify(fr_f) if fkey != "nv" else None, "libelle": fr_f, "libelle_en": en_f, "montant": round(v)})
+        croise.sort(key=lambda x: -x["montant"])
+        natures_out.append({
+            "key": key,
+            "slug": slug_n,
+            "libelle": fr_n,
+            "libelle_en": en_n,
+            "montant": round(montant),
+            "share": round(montant / base_natures, 4) if base_natures > 0 else None,
+            "comptes": natures_rows(fam_comptes[key], TOP_NATURES),
+            "fonctions": croise,
+        })
+    natures_out.sort(key=lambda x: -x["montant"])
+
     non_ventile = round(par_fonction.get("nv", 0.0))
     reverse = round(par_fonction.get("rev", 0.0))
     out = {
@@ -550,6 +610,7 @@ def build_commune(bucket: dict, lib: Libelles) -> dict | None:
         "reversement": reverse,
         "nomenclature": nomen,
         "fonctions": fonctions_out,
+        "natures": natures_out,
     }
     if reverse > 0:
         out["reversement_detail"] = {
@@ -678,7 +739,48 @@ def attacher_comparaisons(docs: dict[str, dict], pops: dict[str, int], noms: dic
                 for k, (sl, pt, e) in enumerate(ordre[deb:fin], start=deb) if sl != slug
             ]
             attachees += 1
-    return {"fonctions_comparees": attachees}
+    # Les natures : même méthode, même strate, même lecture par la part.
+    valn: dict[int, dict[str, dict[str, tuple[float, float]]]] = defaultdict(lambda: defaultdict(dict))
+    for slug, doc in docs.items():
+        pop = pops.get(slug, 0)
+        base = doc["total"] - doc.get("reversement", 0)
+        if pop <= 0 or base <= 0:
+            continue
+        st = strate_de(pop)
+        for n in doc.get("natures", []):
+            valn[st][n["key"]][slug] = (n["montant"] / pop, n["montant"] / base)
+    classn: dict[int, dict[str, list[tuple[str, float, float]]]] = defaultdict(dict)
+    for st, d in valn.items():
+        for key, m in d.items():
+            classn[st][key] = sorted(((sl, v[1], v[0]) for sl, v in m.items()), key=lambda x: -x[1])
+    attachees_n = 0
+    for slug, doc in docs.items():
+        if "strate" not in doc:
+            continue
+        st = doc["strate"]["code"]
+        for n in doc.get("natures", []):
+            m = valn[st].get(n["key"]) or {}
+            if len(m) < MIN_STRATE or slug not in m:
+                continue
+            eur, part = m[slug]
+            med_eur = statistics.median(v[0] for v in m.values())
+            med_part = statistics.median(v[1] for v in m.values())
+            if med_part <= 0:
+                continue
+            ordre = classn[st][n["key"]]
+            rang = next(k for k, (sl, _, _) in enumerate(ordre) if sl == slug) + 1
+            i = rang - 1
+            deb, fin = max(0, i - 3), min(len(ordre), i + 4)
+            n["comparaison"] = {
+                "part": round(part * 100, 1), "part_mediane": round(med_part * 100, 1), "ecart_pt": round((part - med_part) * 100, 1),
+                "rang": rang, "n_communes": len(m),
+                "eur_hab": round(eur, 1), "mediane": round(med_eur, 1),
+                "ecart_pct": round((eur - med_eur) / med_eur * 100, 1) if med_eur > 0 else None,
+                "voisins": [{"slug": sl, "nom": noms.get(sl, sl), "part": round(pt * 100, 1), "eur_hab": round(e, 1), "rang": k + 1}
+                            for k, (sl, pt, e) in enumerate(ordre[deb:fin], start=deb) if sl != slug],
+            }
+            attachees_n += 1
+    return {"fonctions_comparees": attachees, "natures_comparees": attachees_n}
 
 
 # ---------------------------------------------------------------------------
@@ -732,8 +834,8 @@ def main() -> int:
     noms = {sl: m["nom"] for sl, m in metas.items()}
     stats = attacher_comparaisons(docs, pops, noms)
     n_avec_strate = sum(1 for d in docs.values() if "strate" in d)
-    _log(f"  ✓ comparaison à la strate : {stats['fonctions_comparees']:,} fonctions "
-         f"sur {n_avec_strate:,} communes")
+    _log(f"  ✓ comparaison à la strate : {stats['fonctions_comparees']:,} fonctions et "
+         f"{stats['natures_comparees']:,} natures sur {n_avec_strate:,} communes")
 
     manifest: dict[str, dict] = {}
     tailles: list[int] = []
@@ -767,6 +869,7 @@ def main() -> int:
             # Les slugs de fonction, pour que le sitemap et le pré-rendu sachent
             # quelles pages existent sans ouvrir les 3 248 fichiers du bucket.
             "fonctions": [f["slug"] for f in payload["fonctions"]],
+            "natures": [n["slug"] for n in payload.get("natures", [])],
         }
         written += 1
         if args.limit and written >= args.limit:
@@ -794,8 +897,12 @@ def main() -> int:
     _log(f"  ✓ {MANIFEST_FILE.relative_to(ROOT)} ({MANIFEST_FILE.stat().st_size/1024:.0f} Ko)")
 
     if lib.manquants:
+        # La liste COMPLÈTE part dans un fichier : vingt lignes à l'écran ne
+        # suffisent pas pour compléter la table de traduction en une passe.
+        dump = ROOT / "pipeline" / "cache" / "libelles-manquants.json"
+        dump.write_text(json.dumps(sorted(lib.manquants), ensure_ascii=False, indent=1), encoding="utf-8")
         _log(f"✗ {len(lib.manquants)} libellés sans traduction anglaise "
-             f"(pipeline/data/nomenclature-libelles-en.json) :")
+             f"(pipeline/data/nomenclature-libelles-en.json) — liste dans {dump.relative_to(ROOT)} :")
         for axe, fr in sorted(lib.manquants)[:20]:
             _log(f"      [{axe}] {fr}")
         return 1

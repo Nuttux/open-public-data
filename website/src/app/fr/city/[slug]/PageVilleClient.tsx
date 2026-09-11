@@ -91,6 +91,8 @@ export type PageVilleProps = {
   sources: { dgfip: string; ofgl: string; decp: string };
   fonctions: CommuneFonctions | null;
   fonctionsSource: { label: string; url: string; annee: number };
+  /** Les fiches nature de la commune (segment d'URL par chapitre affiché), quand elles existent. */
+  natureFiches: Record<string, string>;
   related?: RelatedBlock | null;
 };
 
@@ -266,7 +268,7 @@ function ShareButton({ label, title, done }: { label: string; title: string; don
   );
 }
 
-export default function PageVilleClient({ commune, budget, evolution, invest, marches, maire, taxeFonciere, fonctions, fonctionsSource, marchesHref, peers, compare, sources, related }: PageVilleProps) {
+export default function PageVilleClient({ commune, budget, evolution, invest, marches, maire, taxeFonciere, fonctions, fonctionsSource, natureFiches, marchesHref, peers, compare, sources, related }: PageVilleProps) {
   const { locale: pageLocale } = useLocale();
   const isEn = pageLocale === "en";
   const t = useT();
@@ -751,11 +753,15 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                   const pct = Math.round((x.value / data.depenses) * 100);
                   const id = `nat-expenses-${strip(x.label).replace(/[^a-z0-9]+/gi, "-").toLowerCase()}`;
                   const key = `expenses:${x.label}`;
-                  return (
+                  const fiche = natureFiches[strip(x.label)];
+                  const style = { width: `${(x.value / data.depenses) * 100}%`, background: couleurChapitre(x.label) };
+                  return fiche ? (
+                    <Link key={x.label} href={`/fr/city/${commune.slug}/nature/${fiche}`} scroll={false} style={style} title={`${strip(x.label)} · ${pct} %`} aria-label={`${strip(x.label)} · ${pct} %`} />
+                  ) : (
                     <button
                       key={x.label}
                       type="button"
-                      style={{ width: `${(x.value / data.depenses) * 100}%`, background: couleurChapitre(x.label) }}
+                      style={style}
                       title={`${strip(x.label)} · ${pct} %`}
                       aria-label={`${strip(x.label)} · ${pct} %`}
                       onClick={() => {
@@ -767,9 +773,13 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                 })}
               </div>
               <div className="legend">
-                {dep.map((x) => (
-                  <span key={x.label}><i style={{ background: couleurChapitre(x.label) }} /><b>{Math.round((x.value / data.depenses) * 100)} %</b> {strip(x.label)}</span>
-                ))}
+                {dep.map((x) => {
+                  const fiche = natureFiches[strip(x.label)];
+                  const inner = <><i style={{ background: couleurChapitre(x.label) }} /><b>{Math.round((x.value / data.depenses) * 100)} %</b> {strip(x.label)}</>;
+                  return fiche
+                    ? <Link key={x.label} href={`/fr/city/${commune.slug}/nature/${fiche}`} scroll={false}>{inner}</Link>
+                    : <span key={x.label}>{inner}</span>;
+                })}
               </div>
             </div>
           ) : null}
