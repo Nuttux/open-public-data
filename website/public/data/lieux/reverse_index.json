@@ -1,937 +1,929 @@
 {
-  "generated_at": "2026-09-10T20:56:10.126711+00:00",
-  "beneficiaires": {
-    "la cite de la musique": {
-      "slug": "philharmonie-de-paris",
-      "lieu": "Philharmonie de Paris",
-      "role": "exploitant"
-    },
-    "theatre de la ville": {
-      "slug": "theatre-de-la-ville",
-      "lieu": "Théâtre de la Ville",
-      "role": "exploitant"
-    },
-    "halage": {
-      "slug": "petite-ceinture",
-      "lieu": "Petite Ceinture",
-      "role": "resident"
-    },
-    "interface formation": {
-      "slug": "petite-ceinture",
-      "lieu": "Petite Ceinture",
-      "role": "resident"
-    },
-    "theatre musical de paris": {
-      "slug": "theatre-du-chatelet",
-      "lieu": "Théâtre du Châtelet",
-      "role": "exploitant"
-    },
-    "ste exploitat de la gaite lyrique": {
-      "slug": "gaite-lyrique",
-      "lieu": "Gaîté-Lyrique",
-      "role": "exploitant"
-    },
-    "gaite lyrique s a s": {
-      "slug": "gaite-lyrique",
-      "lieu": "Gaîté-Lyrique",
-      "role": "exploitant"
-    },
-    "soc de gestion de la gaite lyrique": {
-      "slug": "gaite-lyrique",
-      "lieu": "Gaîté-Lyrique",
-      "role": "exploitant"
-    },
-    "marathon": {
-      "slug": "gaite-lyrique",
-      "lieu": "Gaîté-Lyrique",
-      "role": "resident"
-    },
-    "societe publique locale le carreau du temple": {
-      "slug": "carreau-du-temple",
-      "lieu": "Carreau du Temple",
-      "role": "exploitant"
-    },
-    "cinecaro": {
-      "slug": "carreau-du-temple",
-      "lieu": "Carreau du Temple",
-      "role": "resident"
-    },
-    "mamama": {
-      "slug": "carreau-du-temple",
-      "lieu": "Carreau du Temple",
-      "role": "resident"
-    },
-    "spl carreau du temple": {
-      "slug": "carreau-du-temple",
-      "lieu": "Carreau du Temple",
-      "role": "exploitant"
-    },
-    "artincidence": {
-      "slug": "carreau-du-temple",
-      "lieu": "Carreau du Temple",
-      "role": "resident"
-    },
-    "defracto": {
-      "slug": "carreau-du-temple",
-      "lieu": "Carreau du Temple",
-      "role": "resident"
-    },
-    "les sens des mots": {
-      "slug": "carreau-du-temple",
-      "lieu": "Carreau du Temple",
-      "role": "resident"
-    },
-    "maison des metallos": {
-      "slug": "maison-des-metallos",
-      "lieu": "Maison des Métallos",
-      "role": "exploitant"
-    },
-    "a l adresse du jeu": {
-      "slug": "place-de-la-republique",
-      "lieu": "Place de la République",
-      "role": "resident"
-    },
-    "f n m walls": {
-      "slug": "canal-saint-martin",
-      "lieu": "Canal Saint-Martin",
-      "role": "resident"
-    },
-    "pavillon de l arsenal": {
-      "slug": "pavillon-de-larsenal",
-      "lieu": "Pavillon de l'Arsenal",
-      "role": "exploitant"
-    },
-    "ars mobilis": {
-      "slug": "serres-dauteuil",
-      "lieu": "Serres d'Auteuil",
-      "role": "resident"
-    },
-    "bourse du travail de paris": {
-      "slug": "bourse-du-travail",
-      "lieu": "Bourse du Travail",
-      "role": "exploitant"
-    },
-    "association des organisations syndicales de la bourse du travail de paris": {
-      "slug": "bourse-du-travail",
-      "lieu": "Bourse du Travail",
-      "role": "resident"
-    },
-    "association halle saint pierre": {
-      "slug": "halle-saint-pierre",
-      "lieu": "Halle Saint-Pierre",
-      "role": "exploitant"
-    },
-    "les mille printemps": {
-      "slug": "theatre-13",
-      "lieu": "Théâtre 13",
-      "role": "resident"
-    },
-    "teatro picaro": {
-      "slug": "theatre-13",
-      "lieu": "Théâtre 13",
-      "role": "resident"
-    },
-    "compagnie dtm 9 4": {
-      "slug": "theatre-13",
-      "lieu": "Théâtre 13",
-      "role": "resident"
-    },
-    "compagnie eulalie": {
-      "slug": "theatre-13",
-      "lieu": "Théâtre 13",
-      "role": "resident"
-    },
-    "compagnie mesden": {
-      "slug": "theatre-13",
-      "lieu": "Théâtre 13",
-      "role": "resident"
-    },
-    "le temps des possibles": {
-      "slug": "theatre-13",
-      "lieu": "Théâtre 13",
-      "role": "resident"
-    },
-    "theatre du rond point": {
-      "slug": "theatre-du-rond-point",
-      "lieu": "Théâtre du Rond-Point",
-      "role": "exploitant"
-    },
-    "compagnie 7bis": {
-      "slug": "theatre-du-rond-point",
-      "lieu": "Théâtre du Rond-Point",
-      "role": "resident"
-    },
-    "theatre silvia monfort": {
-      "slug": "theatre-silvia-monfort",
-      "lieu": "Théâtre Silvia Monfort",
-      "role": "exploitant"
-    },
-    "groupe chiendent": {
-      "slug": "theatre-silvia-monfort",
-      "lieu": "Théâtre Silvia Monfort",
-      "role": "resident"
-    },
-    "hybridites france chine": {
-      "slug": "theatre-silvia-monfort",
-      "lieu": "Théâtre Silvia Monfort",
-      "role": "resident"
-    },
-    "theatre paris villette": {
-      "slug": "theatre-paris-villette",
-      "lieu": "Théâtre Paris-Villette",
-      "role": "exploitant"
-    },
-    "madani compagnie": {
-      "slug": "theatre-paris-villette",
-      "lieu": "Théâtre Paris-Villette",
-      "role": "resident"
-    },
-    "compagnie marizibill": {
-      "slug": "theatre-paris-villette",
-      "lieu": "Théâtre Paris-Villette",
-      "role": "resident"
-    },
-    "pour ainsi dire": {
-      "slug": "theatre-paris-villette",
-      "lieu": "Théâtre Paris-Villette",
-      "role": "resident"
-    },
-    "theatre majaz": {
-      "slug": "theatre-paris-villette",
-      "lieu": "Théâtre Paris-Villette",
-      "role": "resident"
-    },
-    "la dissipation des brumes matinales": {
-      "slug": "theatre-paris-villette",
-      "lieu": "Théâtre Paris-Villette",
-      "role": "resident"
-    },
-    "universites populaires du theatre": {
-      "slug": "theatre-14",
-      "lieu": "Théâtre 14",
-      "role": "resident"
-    },
-    "association aurore": {
-      "slug": "porte-de-la-chapelle",
-      "lieu": "Porte de la Chapelle",
-      "role": "resident"
-    },
-    "l intestine": {
-      "slug": "porte-de-la-chapelle",
-      "lieu": "Porte de la Chapelle",
-      "role": "resident"
-    },
-    "federation francaise d athletisme": {
-      "slug": "stade-charlety",
-      "lieu": "Stade Charléty",
-      "role": "resident"
-    },
-    "maison de la poesie": {
-      "slug": "maison-de-la-poesie",
-      "lieu": "Maison de la Poésie",
-      "role": "exploitant"
-    },
-    "tsara": {
-      "slug": "theatre-de-la-cite-internationale",
-      "lieu": "Théâtre de la Cité internationale",
-      "role": "resident"
-    },
-    "theatre de la cite internationale": {
-      "slug": "theatre-de-la-cite-internationale",
-      "lieu": "Théâtre de la Cité internationale",
-      "role": "exploitant"
-    },
-    "cabanes": {
-      "slug": "bois-de-vincennes",
-      "lieu": "Bois de Vincennes",
-      "role": "resident"
-    },
-    "grumpy nature": {
-      "slug": "bois-de-vincennes",
-      "lieu": "Bois de Vincennes",
-      "role": "resident"
-    },
-    "escrime des quais de seine": {
-      "slug": "arenes-de-lutece",
-      "lieu": "Arènes de Lutèce",
-      "role": "resident"
-    },
-    "zero waste paris": {
-      "slug": "bassin-de-la-villette",
-      "lieu": "Bassin de la Villette",
-      "role": "resident"
-    },
-    "les aliennes": {
-      "slug": "cimetiere-des-batignolles",
-      "lieu": "Cimetière des Batignolles",
-      "role": "resident"
-    },
-    "les meres en place": {
-      "slug": "place-des-fetes",
-      "lieu": "Place des Fêtes",
-      "role": "resident"
-    },
-    "les chemins de la danse": {
-      "slug": "mairie-du-20e",
-      "lieu": "Mairie du 20e",
-      "role": "resident"
-    },
-    "la maison ouverte": {
-      "slug": "theatre-dunois",
-      "lieu": "Théâtre Dunois",
-      "role": "exploitant"
-    },
-    "la s o u p e": {
-      "slug": "theatre-dunois",
-      "lieu": "Théâtre Dunois",
-      "role": "resident"
-    },
-    "ltk production": {
-      "slug": "theatre-dunois",
-      "lieu": "Théâtre Dunois",
-      "role": "resident"
-    },
-    "le joli collectif": {
-      "slug": "theatre-dunois",
-      "lieu": "Théâtre Dunois",
-      "role": "resident"
-    },
-    "compagnie boom": {
-      "slug": "theatre-dunois",
-      "lieu": "Théâtre Dunois",
-      "role": "resident"
-    },
-    "l yeuse": {
-      "slug": "theatre-dunois",
-      "lieu": "Théâtre Dunois",
-      "role": "resident"
-    },
-    "theatre du soleil": {
-      "slug": "theatre-du-soleil",
-      "lieu": "Théâtre du Soleil",
-      "role": "exploitant"
-    },
-    "le bal rebondissant": {
-      "slug": "theatre-du-soleil",
-      "lieu": "Théâtre du Soleil",
-      "role": "resident"
-    },
-    "compagnie des cinq roues": {
-      "slug": "theatre-du-soleil",
-      "lieu": "Théâtre du Soleil",
-      "role": "resident"
-    },
-    "belladone": {
-      "slug": "piscine-chateau-landon",
-      "lieu": "Piscine Château-Landon",
-      "role": "resident"
-    },
-    "la septieme compagnie": {
-      "slug": "piscine-mathis",
-      "lieu": "Piscine Mathis",
-      "role": "resident"
-    },
-    "ornatus": {
-      "slug": "cimetiere-de-charonne",
-      "lieu": "Cimetière de Charonne",
-      "role": "resident"
-    },
-    "intemporelles un temps pour elles": {
-      "slug": "mairie-du-7e",
-      "lieu": "Mairie du 7e",
-      "role": "resident"
-    },
-    "paris artistes": {
-      "slug": "mairie-du-9e",
-      "lieu": "Mairie du 9e",
-      "role": "resident"
-    },
-    "c14 paris": {
-      "slug": "mairie-du-14e",
-      "lieu": "Mairie du 14e",
-      "role": "resident"
-    }
+ "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "beneficiaires": {
+  "la cite de la musique": {
+   "slug": "philharmonie-de-paris",
+   "lieu": "Philharmonie de Paris",
+   "role": "exploitant"
   },
-  "projets": {
-    "prov sub equip philharmonie de paris": {
-      "slug": "philharmonie-de-paris",
-      "lieu": "Philharmonie de Paris"
-    },
-    "theatre de la ville renovation": {
-      "slug": "theatre-de-la-ville",
-      "lieu": "Théâtre de la Ville"
-    },
-    "salles de theatre theatre de la ville renovation et restructuration": {
-      "slug": "theatre-de-la-ville",
-      "lieu": "Théâtre de la Ville"
-    },
-    "porte maillot reamenagement": {
-      "slug": "porte-maillot",
-      "lieu": "Porte Maillot"
-    },
-    "parcs de stationnememnt porte maillot": {
-      "slug": "porte-maillot",
-      "lieu": "Porte Maillot"
-    },
-    "piscines et bassins ecole piscine butte aux cailles renovation des bains douches refect": {
-      "slug": "piscine-butte-aux-cailles",
-      "lieu": "Piscine de la Butte-aux-Cailles"
-    },
-    "bains douches bains douches 5 place paul verlaine renovation des bains": {
-      "slug": "piscine-butte-aux-cailles",
-      "lieu": "Piscine de la Butte-aux-Cailles"
-    },
-    "parc des buttes chaumont ile de la falaise": {
-      "slug": "parc-des-buttes-chaumont",
-      "lieu": "Parc des Buttes-Chaumont"
-    },
-    "parc des buttes chaumont curage du lac": {
-      "slug": "parc-des-buttes-chaumont",
-      "lieu": "Parc des Buttes-Chaumont"
-    },
-    "parc des buttes chaumont ile de la falaise etudes de diagnostic et mis en securite": {
-      "slug": "parc-des-buttes-chaumont",
-      "lieu": "Parc des Buttes-Chaumont"
-    },
-    "edition 2015 la reconquete de la petite ceinture": {
-      "slug": "petite-ceinture",
-      "lieu": "Petite Ceinture"
-    },
-    "poursuivre l ouverture de la petite ceinture": {
-      "slug": "petite-ceinture",
-      "lieu": "Petite Ceinture"
-    },
-    "la reconquete de la petite ceinture": {
-      "slug": "petite-ceinture",
-      "lieu": "Petite Ceinture"
-    },
-    "edition 2018 quartiers populaires reconquete de la petite ceinture": {
-      "slug": "petite-ceinture",
-      "lieu": "Petite Ceinture"
-    },
-    "une coulee verte sur la rue sorbier et la petite ceinture": {
-      "slug": "petite-ceinture",
-      "lieu": "Petite Ceinture"
-    },
-    "quartiers populaires reconquete de la petite ceinture": {
-      "slug": "petite-ceinture",
-      "lieu": "Petite Ceinture"
-    },
-    "petite ceinture": {
-      "slug": "petite-ceinture",
-      "lieu": "Petite Ceinture"
-    },
-    "edition 2016 une coulee verte sur la rue sorbier et la petite ceinture": {
-      "slug": "petite-ceinture",
-      "lieu": "Petite Ceinture"
-    },
-    "edition 2015 reconquete de la petite ceinture": {
-      "slug": "petite-ceinture",
-      "lieu": "Petite Ceinture"
-    },
-    "reconquete de la petite ceinture": {
-      "slug": "petite-ceinture",
-      "lieu": "Petite Ceinture"
-    },
-    "piscine 19 rue de pontoise travaux de renovation": {
-      "slug": "piscine-pontoise",
-      "lieu": "Piscine Pontoise"
-    },
-    "piscine pontoise renovation de la piscine": {
-      "slug": "piscine-pontoise",
-      "lieu": "Piscine Pontoise"
-    },
-    "piscine pontoise": {
-      "slug": "piscine-pontoise",
-      "lieu": "Piscine Pontoise"
-    },
-    "piscines piscine 19 rue de pontoise travaux de renovation": {
-      "slug": "piscine-pontoise",
-      "lieu": "Piscine Pontoise"
-    },
-    "parc montsouris entretien courant": {
-      "slug": "parc-montsouris",
-      "lieu": "Parc Montsouris"
-    },
-    "parc montsouris travaux d entretien courant": {
-      "slug": "parc-montsouris",
-      "lieu": "Parc Montsouris"
-    },
-    "parc monceau entretien courant": {
-      "slug": "parc-monceau",
-      "lieu": "Parc Monceau"
-    },
-    "renouveau au parc monceau": {
-      "slug": "parc-monceau",
-      "lieu": "Parc Monceau"
-    },
-    "parc monceau travaux de maintenance et entretiens courants": {
-      "slug": "parc-monceau",
-      "lieu": "Parc Monceau"
-    },
-    "parc monceau": {
-      "slug": "parc-monceau",
-      "lieu": "Parc Monceau"
-    },
-    "parc andre citroen renovation du grand canal": {
-      "slug": "parc-andre-citroen",
-      "lieu": "Parc André-Citroën"
-    },
-    "parc andre citroen renovation": {
-      "slug": "parc-andre-citroen",
-      "lieu": "Parc André-Citroën"
-    },
-    "parc andre citroen travaux de renovation": {
-      "slug": "parc-andre-citroen",
-      "lieu": "Parc André-Citroën"
-    },
-    "parc de bercy renovation de la roseraie": {
-      "slug": "parc-de-bercy",
-      "lieu": "Parc de Bercy"
-    },
-    "parc georges brassens renovation des allees": {
-      "slug": "parc-georges-brassens",
-      "lieu": "Parc Georges-Brassens"
-    },
-    "aires de jeux parc de belleville renovation des aires de jeux": {
-      "slug": "parc-de-belleville",
-      "lieu": "Parc de Belleville"
-    },
-    "maison de l air": {
-      "slug": "parc-de-belleville",
-      "lieu": "Parc de Belleville"
-    },
-    "place de la republique refection des trottoirs": {
-      "slug": "place-de-la-republique",
-      "lieu": "Place de la République"
-    },
-    "operations d amenagement place de la republique amenagement plantations commemoratives": {
-      "slug": "place-de-la-republique",
-      "lieu": "Place de la République"
-    },
-    "securisation hotel de ville": {
-      "slug": "hotel-de-ville",
-      "lieu": "Hôtel de Ville"
-    },
-    "hotel de ville": {
-      "slug": "hotel-de-ville",
-      "lieu": "Hôtel de Ville"
-    },
-    "hotel de ville accessibilite": {
-      "slug": "hotel-de-ville",
-      "lieu": "Hôtel de Ville"
-    },
-    "renovation partielle pavillon de l arsenal": {
-      "slug": "pavillon-de-larsenal",
-      "lieu": "Pavillon de l'Arsenal"
-    },
-    "jardin des serres d auteuil refection de la couverture du local du personnel": {
-      "slug": "serres-dauteuil",
-      "lieu": "Serres d'Auteuil"
-    },
-    "cimetiere du pere lachaise rehabilitation mise en accessibilite et diagnostic structure": {
-      "slug": "pere-lachaise",
-      "lieu": "Cimetière du Père-Lachaise"
-    },
-    "cimetieres cimetiere du pere lachaise travaux de confortement et reparation du mur karch": {
-      "slug": "pere-lachaise",
-      "lieu": "Cimetière du Père-Lachaise"
-    },
-    "cimetiere du pere lachaise travaux sur les murs fourniture et pose de rambardes restau": {
-      "slug": "pere-lachaise",
-      "lieu": "Cimetière du Père-Lachaise"
-    },
-    "cimetiere du pere lachaise entretien des sols des cheminements et des escaliers cimeti": {
-      "slug": "pere-lachaise",
-      "lieu": "Cimetière du Père-Lachaise"
-    },
-    "mairie du 18e arrondissement schema fonctionel et immobilier": {
-      "slug": "mairie-du-18e",
-      "lieu": "Mairie du 18e"
-    },
-    "mairie du 18eme arrondissement travaux de restructuration": {
-      "slug": "mairie-du-18e",
-      "lieu": "Mairie du 18e"
-    },
-    "mairie du 18eme arrondissement travaux dans le cadre du schema fonctionel et immobilier": {
-      "slug": "mairie-du-18e",
-      "lieu": "Mairie du 18e"
-    },
-    "marche couvert 21 place louis lepine rehabilitation des pavillons": {
-      "slug": "kiosque-fleurs-cite",
-      "lieu": "Marché aux fleurs de la Cité"
-    },
-    "stade jean bouin codp": {
-      "slug": "stade-jean-bouin",
-      "lieu": "Stade Jean-Bouin"
-    },
-    "musee carnavalet mise aux normes du systeme de securite incendie": {
-      "slug": "musee-carnavalet",
-      "lieu": "Musée Carnavalet"
-    },
-    "salles de spectacle theatre paris villette travaux divers": {
-      "slug": "theatre-paris-villette",
-      "lieu": "Théâtre Paris-Villette"
-    },
-    "reamenagement de la porte chapelle jo 2024": {
-      "slug": "porte-de-la-chapelle",
-      "lieu": "Porte de la Chapelle"
-    },
-    "porte de la chapelle reamenagement jo 2024": {
-      "slug": "porte-de-la-chapelle",
-      "lieu": "Porte de la Chapelle"
-    },
-    "porte de la chapelle rue de la chapelle rue marx dormoy rond point": {
-      "slug": "porte-de-la-chapelle",
-      "lieu": "Porte de la Chapelle"
-    },
-    "porte de montreuil": {
-      "slug": "porte-de-montreuil",
-      "lieu": "Porte de Montreuil"
-    },
-    "piscine belliard": {
-      "slug": "piscine-belliard",
-      "lieu": "Piscine Belliard"
-    },
-    "piscine belliard construction": {
-      "slug": "piscine-belliard",
-      "lieu": "Piscine Belliard"
-    },
-    "piscines piscine belliard construction": {
-      "slug": "piscine-belliard",
-      "lieu": "Piscine Belliard"
-    },
-    "piscine 133 rue belliard 18e": {
-      "slug": "piscine-belliard",
-      "lieu": "Piscine Belliard"
-    },
-    "mediatheque james baldwin": {
-      "slug": "mediatheque-james-baldwin",
-      "lieu": "Médiathèque James Baldwin"
-    },
-    "mediatheque james baldwin et maison des refugies creation": {
-      "slug": "mediatheque-james-baldwin",
-      "lieu": "Médiathèque James Baldwin"
-    },
-    "enseignement artistique mediatheque jean quarre creation d une mediatheque et d une mais": {
-      "slug": "mediatheque-james-baldwin",
-      "lieu": "Médiathèque James Baldwin"
-    },
-    "bibliotheques creation de la mediatheque jean quarre": {
-      "slug": "mediatheque-james-baldwin",
-      "lieu": "Médiathèque James Baldwin"
-    },
-    "creations d espaces verts parc martin luther king amenagement phase 3": {
-      "slug": "parc-martin-luther-king",
-      "lieu": "Parc Martin Luther King"
-    },
-    "parc martin luther king amenagement phase 3": {
-      "slug": "parc-martin-luther-king",
-      "lieu": "Parc Martin Luther King"
-    },
-    "creations d espaces verts bois de vincennes amenagement de la route du pesage": {
-      "slug": "bois-de-vincennes",
-      "lieu": "Bois de Vincennes"
-    },
-    "edition 2019 ameliorons l environnement des usagers du bois de vincennes": {
-      "slug": "bois-de-vincennes",
-      "lieu": "Bois de Vincennes"
-    },
-    "edition 2019 ameliorons l environnement des usages du bois de vincennes": {
-      "slug": "bois-de-vincennes",
-      "lieu": "Bois de Vincennes"
-    },
-    "bois de vincennes carrefour de la port": {
-      "slug": "bois-de-vincennes",
-      "lieu": "Bois de Vincennes"
-    },
-    "ameliorons l environnement des usages du bois de vincennes": {
-      "slug": "bois-de-vincennes",
-      "lieu": "Bois de Vincennes"
-    },
-    "baignade daumesnil bois de vincennes": {
-      "slug": "bois-de-vincennes",
-      "lieu": "Bois de Vincennes"
-    },
-    "bois de vincennes": {
-      "slug": "bois-de-vincennes",
-      "lieu": "Bois de Vincennes"
-    },
-    "pagode du bois de vincennes": {
-      "slug": "bois-de-vincennes",
-      "lieu": "Bois de Vincennes"
-    },
-    "bois de vincennes entretien des reseaux d eau d arrosage du cheminement des jeux pour": {
-      "slug": "bois-de-vincennes",
-      "lieu": "Bois de Vincennes"
-    },
-    "ameliorer le cadre de vie bois de boulogne": {
-      "slug": "bois-de-boulogne",
-      "lieu": "Bois de Boulogne"
-    },
-    "bois de boulogne cheminement du bois rehabilitation des lacs renovation parking assai": {
-      "slug": "bois-de-boulogne",
-      "lieu": "Bois de Boulogne"
-    },
-    "bois de boulogne rehabilitation des lacs et rivieres mise en accessibilite remplacemen": {
-      "slug": "bois-de-boulogne",
-      "lieu": "Bois de Boulogne"
-    },
-    "bois de boulogne travaux de mise en accessibilite et creation d un eclairage public": {
-      "slug": "bois-de-boulogne",
-      "lieu": "Bois de Boulogne"
-    },
-    "operations bois de boulogne travaux d amenagement du carrefour du bout des lacs": {
-      "slug": "bois-de-boulogne",
-      "lieu": "Bois de Boulogne"
-    },
-    "bois de boulogne": {
-      "slug": "bois-de-boulogne",
-      "lieu": "Bois de Boulogne"
-    },
-    "place des vosges": {
-      "slug": "place-des-vosges",
-      "lieu": "Place des Vosges"
-    },
-    "square louis xiii amenagement des sanitaires pmr renovation des sols": {
-      "slug": "place-des-vosges",
-      "lieu": "Place des Vosges"
-    },
-    "lycee municipal theophile gautier annexe place des vosges": {
-      "slug": "place-des-vosges",
-      "lieu": "Place des Vosges"
-    },
-    "place denfert rocherau amenagement": {
-      "slug": "place-denfert-rochereau",
-      "lieu": "Place Denfert-Rochereau"
-    },
-    "place de la madeleine travaux de reamenagement": {
-      "slug": "place-de-la-madeleine",
-      "lieu": "Place de la Madeleine"
-    },
-    "operations d amenagement place de la madeleine travaux de reamenagement": {
-      "slug": "place-de-la-madeleine",
-      "lieu": "Place de la Madeleine"
-    },
-    "jardin du port de l arsenal renovation de l aire de jeux": {
-      "slug": "port-de-l-arsenal",
-      "lieu": "Port de l'Arsenal"
-    },
-    "renovation de l ile aux cygnes": {
-      "slug": "ile-aux-cygnes",
-      "lieu": "Île aux Cygnes"
-    },
-    "ile aux cygnes renovation": {
-      "slug": "ile-aux-cygnes",
-      "lieu": "Île aux Cygnes"
-    },
-    "place de la concorde travaux d entretien": {
-      "slug": "place-de-la-concorde",
-      "lieu": "Place de la Concorde"
-    },
-    "patrimoine de voirie place de la concorde refection des trottoirs et de la chaussee": {
-      "slug": "place-de-la-concorde",
-      "lieu": "Place de la Concorde"
-    },
-    "place charles de gaulle refection des trottoirs": {
-      "slug": "place-charles-de-gaulle-etoile",
-      "lieu": "Place Charles-de-Gaulle (Étoile)"
-    },
-    "operations d amenagement place du pantheon amenagement": {
-      "slug": "place-du-pantheon",
-      "lieu": "Place du Panthéon"
-    },
-    "diversifier les commerces de la place pigalle": {
-      "slug": "place-pigalle",
-      "lieu": "Place Pigalle"
-    },
-    "amenagement de la place pigalle": {
-      "slug": "place-pigalle",
-      "lieu": "Place Pigalle"
-    },
-    "place pigalle travaux d amenagement": {
-      "slug": "place-pigalle",
-      "lieu": "Place Pigalle"
-    },
-    "place gambetta reamenagement": {
-      "slug": "place-gambetta",
-      "lieu": "Place Gambetta"
-    },
-    "operations place gambetta reamenagement": {
-      "slug": "place-gambetta",
-      "lieu": "Place Gambetta"
-    },
-    "square du temple renovation des sols": {
-      "slug": "square-du-temple",
-      "lieu": "Square du Temple"
-    },
-    "square des batignolles renovation de l aire de jeux": {
-      "slug": "square-des-batignolles",
-      "lieu": "Square des Batignolles"
-    },
-    "edition 2016 restauration de la fontaine du marche saint germain": {
-      "slug": "marche-saint-germain",
-      "lieu": "Marché Saint-Germain"
-    },
-    "mairie du 5e arrondissement transformation en salle d exposition": {
-      "slug": "mairie-du-5e",
-      "lieu": "Mairie du 5e"
-    },
-    "mairie du 5eme arrondissement schema directeur securite accessibilite": {
-      "slug": "mairie-du-5e",
-      "lieu": "Mairie du 5e"
-    },
-    "mairie du 11e arrondissement ravalement et couverture": {
-      "slug": "mairie-du-11e",
-      "lieu": "Mairie du 11e"
-    },
-    "mairie du 11eme arrondissement ravalement et couverture": {
-      "slug": "mairie-du-11e",
-      "lieu": "Mairie du 11e"
-    },
-    "mairie du 20eme arrondissement travaux divers": {
-      "slug": "mairie-du-20e",
-      "lieu": "Mairie du 20e"
-    },
-    "entretien d espaces verts square louise michel renovation": {
-      "slug": "square-louise-michel",
-      "lieu": "Square Louise-Michel"
-    },
-    "jardin atlantique renovation des aires de jeux": {
-      "slug": "jardin-atlantique",
-      "lieu": "Jardin Atlantique"
-    },
-    "jardin anne frank renovation de la structure de la pergola": {
-      "slug": "jardin-anne-frank",
-      "lieu": "Jardin Anne-Frank"
-    },
-    "piscine chateau landon travaux de renovation": {
-      "slug": "piscine-chateau-landon",
-      "lieu": "Piscine Château-Landon"
-    },
-    "piscine chateau landon refection la voute du hall bassin modernisation du local de stoc": {
-      "slug": "piscine-chateau-landon",
-      "lieu": "Piscine Château-Landon"
-    },
-    "la ventilation et installation d une porte coupe feu piscines piscine chateau landon ref": {
-      "slug": "piscine-chateau-landon",
-      "lieu": "Piscine Château-Landon"
-    },
-    "piscine armand massard renovation des installations de filtration fourniture et pose de": {
-      "slug": "piscine-armand-massard",
-      "lieu": "Piscine Armand-Massard"
-    },
-    "piscine armand massard refection du carrelage remplacement des pompes de filtration de": {
-      "slug": "piscine-armand-massard",
-      "lieu": "Piscine Armand-Massard"
-    },
-    "piscines piscine armand massard installation de masses filtrantes pose de porte d entre": {
-      "slug": "piscine-armand-massard",
-      "lieu": "Piscine Armand-Massard"
-    },
-    "piscine blomet travaux de restructuration": {
-      "slug": "piscine-blomet",
-      "lieu": "Piscine Blomet"
-    },
-    "piscine blomet 15e renovation": {
-      "slug": "piscine-blomet",
-      "lieu": "Piscine Blomet"
-    },
-    "piscines piscine blomet travaux de restructuration": {
-      "slug": "piscine-blomet",
-      "lieu": "Piscine Blomet"
-    },
-    "renovation de la piscine mathis": {
-      "slug": "piscine-mathis",
-      "lieu": "Piscine Mathis"
-    },
-    "parc chapelle charbon travaux d amenagement": {
-      "slug": "parc-chapelle-charbon",
-      "lieu": "Parc Chapelle-Charbon"
-    },
-    "creations d espaces verts parc chapelle charbon creation d un nouveau parc sur le site c": {
-      "slug": "parc-chapelle-charbon",
-      "lieu": "Parc Chapelle-Charbon"
-    },
-    "parc de choisy renovation des griles 2eme tranche": {
-      "slug": "parc-de-choisy",
-      "lieu": "Parc de Choisy"
-    },
-    "mairie du 6e arrondissement renovation des stores rue madame": {
-      "slug": "mairie-du-6e",
-      "lieu": "Mairie du 6e"
-    },
-    "mairie du 8eme arrondissement reamenagement des locaux": {
-      "slug": "mairie-du-8e",
-      "lieu": "Mairie du 8e"
-    },
-    "mairie du 9eme arrondissement refection facade rossini de la salle polyvalente": {
-      "slug": "mairie-du-9e",
-      "lieu": "Mairie du 9e"
-    },
-    "mairie du 9e salle des fetes rossini restauration de la facade": {
-      "slug": "mairie-du-9e",
-      "lieu": "Mairie du 9e"
-    },
-    "mairie du 10e arrondissement restauration des facades et menuiseries": {
-      "slug": "mairie-du-10e",
-      "lieu": "Mairie du 10e"
-    },
-    "mairie du 10eme arrondissement restauration des facades et des menuiseries": {
-      "slug": "mairie-du-10e",
-      "lieu": "Mairie du 10e"
-    },
-    "mairie du 12e arrondissement modernisation de la couverture de la salle des fetes": {
-      "slug": "mairie-du-12e",
-      "lieu": "Mairie du 12e"
-    },
-    "mairie du 12eme arrondissement travaux d amenagement de la terrasse du niveau r 1": {
-      "slug": "mairie-du-12e",
-      "lieu": "Mairie du 12e"
-    },
-    "mairie du 13e arrondissement renovation interieure de la salle des fetes": {
-      "slug": "mairie-du-13e",
-      "lieu": "Mairie du 13e"
-    },
-    "mairie du 13e arrondissement ravalement des facades": {
-      "slug": "mairie-du-13e",
-      "lieu": "Mairie du 13e"
-    },
-    "mairie du 13eme arrondissement ravalement des facades": {
-      "slug": "mairie-du-13e",
-      "lieu": "Mairie du 13e"
-    },
-    "mairie du 14e arrondissement reamenagement de l accueil du rdc": {
-      "slug": "mairie-du-14e",
-      "lieu": "Mairie du 14e"
-    },
-    "mairie du 15e arrondissement eclairage des facades": {
-      "slug": "mairie-du-15e",
-      "lieu": "Mairie du 15e"
-    },
-    "mairie du 16e arrondissement transformation d un logement en bureaux": {
-      "slug": "mairie-du-16e",
-      "lieu": "Mairie du 16e"
-    },
-    "mairie du 17e arrondissement amenagement de l accueil du rdc": {
-      "slug": "mairie-du-17e",
-      "lieu": "Mairie du 17e"
-    },
-    "mairie du 17e arrondissement modernisation de la fonction reception": {
-      "slug": "mairie-du-17e",
-      "lieu": "Mairie du 17e"
-    },
-    "mairie du 17eme arrondissement modernisation et amenagement de differents locaux": {
-      "slug": "mairie-du-17e",
-      "lieu": "Mairie du 17e"
-    }
+  "theatre de la ville": {
+   "slug": "theatre-de-la-ville",
+   "lieu": "Théâtre de la Ville",
+   "role": "exploitant"
   },
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
+  "halage": {
+   "slug": "petite-ceinture",
+   "lieu": "Petite Ceinture",
+   "role": "resident"
+  },
+  "interface formation": {
+   "slug": "petite-ceinture",
+   "lieu": "Petite Ceinture",
+   "role": "resident"
+  },
+  "theatre musical de paris": {
+   "slug": "theatre-du-chatelet",
+   "lieu": "Théâtre du Châtelet",
+   "role": "exploitant"
+  },
+  "ste exploitat de la gaite lyrique": {
+   "slug": "gaite-lyrique",
+   "lieu": "Gaîté-Lyrique",
+   "role": "exploitant"
+  },
+  "gaite lyrique s a s": {
+   "slug": "gaite-lyrique",
+   "lieu": "Gaîté-Lyrique",
+   "role": "exploitant"
+  },
+  "soc de gestion de la gaite lyrique": {
+   "slug": "gaite-lyrique",
+   "lieu": "Gaîté-Lyrique",
+   "role": "exploitant"
+  },
+  "marathon": {
+   "slug": "gaite-lyrique",
+   "lieu": "Gaîté-Lyrique",
+   "role": "resident"
+  },
+  "societe publique locale le carreau du temple": {
+   "slug": "carreau-du-temple",
+   "lieu": "Carreau du Temple",
+   "role": "exploitant"
+  },
+  "cinecaro": {
+   "slug": "carreau-du-temple",
+   "lieu": "Carreau du Temple",
+   "role": "resident"
+  },
+  "mamama": {
+   "slug": "carreau-du-temple",
+   "lieu": "Carreau du Temple",
+   "role": "resident"
+  },
+  "spl carreau du temple": {
+   "slug": "carreau-du-temple",
+   "lieu": "Carreau du Temple",
+   "role": "exploitant"
+  },
+  "artincidence": {
+   "slug": "carreau-du-temple",
+   "lieu": "Carreau du Temple",
+   "role": "resident"
+  },
+  "defracto": {
+   "slug": "carreau-du-temple",
+   "lieu": "Carreau du Temple",
+   "role": "resident"
+  },
+  "les sens des mots": {
+   "slug": "carreau-du-temple",
+   "lieu": "Carreau du Temple",
+   "role": "resident"
+  },
+  "maison des metallos": {
+   "slug": "maison-des-metallos",
+   "lieu": "Maison des Métallos",
+   "role": "exploitant"
+  },
+  "a l adresse du jeu": {
+   "slug": "place-de-la-republique",
+   "lieu": "Place de la République",
+   "role": "resident"
+  },
+  "f n m walls": {
+   "slug": "canal-saint-martin",
+   "lieu": "Canal Saint-Martin",
+   "role": "resident"
+  },
+  "pavillon de l arsenal": {
+   "slug": "pavillon-de-larsenal",
+   "lieu": "Pavillon de l'Arsenal",
+   "role": "exploitant"
+  },
+  "ars mobilis": {
+   "slug": "serres-dauteuil",
+   "lieu": "Serres d'Auteuil",
+   "role": "resident"
+  },
+  "bourse du travail de paris": {
+   "slug": "bourse-du-travail",
+   "lieu": "Bourse du Travail",
+   "role": "exploitant"
+  },
+  "association des organisations syndicales de la bourse du travail de paris": {
+   "slug": "bourse-du-travail",
+   "lieu": "Bourse du Travail",
+   "role": "resident"
+  },
+  "association halle saint pierre": {
+   "slug": "halle-saint-pierre",
+   "lieu": "Halle Saint-Pierre",
+   "role": "exploitant"
+  },
+  "les mille printemps": {
+   "slug": "theatre-13",
+   "lieu": "Théâtre 13",
+   "role": "resident"
+  },
+  "teatro picaro": {
+   "slug": "theatre-13",
+   "lieu": "Théâtre 13",
+   "role": "resident"
+  },
+  "compagnie dtm 9 4": {
+   "slug": "theatre-13",
+   "lieu": "Théâtre 13",
+   "role": "resident"
+  },
+  "compagnie eulalie": {
+   "slug": "theatre-13",
+   "lieu": "Théâtre 13",
+   "role": "resident"
+  },
+  "compagnie mesden": {
+   "slug": "theatre-13",
+   "lieu": "Théâtre 13",
+   "role": "resident"
+  },
+  "le temps des possibles": {
+   "slug": "theatre-13",
+   "lieu": "Théâtre 13",
+   "role": "resident"
+  },
+  "theatre du rond point": {
+   "slug": "theatre-du-rond-point",
+   "lieu": "Théâtre du Rond-Point",
+   "role": "exploitant"
+  },
+  "compagnie 7bis": {
+   "slug": "theatre-du-rond-point",
+   "lieu": "Théâtre du Rond-Point",
+   "role": "resident"
+  },
+  "theatre silvia monfort": {
+   "slug": "theatre-silvia-monfort",
+   "lieu": "Théâtre Silvia Monfort",
+   "role": "exploitant"
+  },
+  "groupe chiendent": {
+   "slug": "theatre-silvia-monfort",
+   "lieu": "Théâtre Silvia Monfort",
+   "role": "resident"
+  },
+  "hybridites france chine": {
+   "slug": "theatre-silvia-monfort",
+   "lieu": "Théâtre Silvia Monfort",
+   "role": "resident"
+  },
+  "theatre paris villette": {
+   "slug": "theatre-paris-villette",
+   "lieu": "Théâtre Paris-Villette",
+   "role": "exploitant"
+  },
+  "madani compagnie": {
+   "slug": "theatre-paris-villette",
+   "lieu": "Théâtre Paris-Villette",
+   "role": "resident"
+  },
+  "compagnie marizibill": {
+   "slug": "theatre-paris-villette",
+   "lieu": "Théâtre Paris-Villette",
+   "role": "resident"
+  },
+  "pour ainsi dire": {
+   "slug": "theatre-paris-villette",
+   "lieu": "Théâtre Paris-Villette",
+   "role": "resident"
+  },
+  "theatre majaz": {
+   "slug": "theatre-paris-villette",
+   "lieu": "Théâtre Paris-Villette",
+   "role": "resident"
+  },
+  "la dissipation des brumes matinales": {
+   "slug": "theatre-paris-villette",
+   "lieu": "Théâtre Paris-Villette",
+   "role": "resident"
+  },
+  "universites populaires du theatre": {
+   "slug": "theatre-14",
+   "lieu": "Théâtre 14",
+   "role": "resident"
+  },
+  "association aurore": {
+   "slug": "porte-de-la-chapelle",
+   "lieu": "Porte de la Chapelle",
+   "role": "resident"
+  },
+  "l intestine": {
+   "slug": "porte-de-la-chapelle",
+   "lieu": "Porte de la Chapelle",
+   "role": "resident"
+  },
+  "federation francaise d athletisme": {
+   "slug": "stade-charlety",
+   "lieu": "Stade Charléty",
+   "role": "resident"
+  },
+  "maison de la poesie": {
+   "slug": "maison-de-la-poesie",
+   "lieu": "Maison de la Poésie",
+   "role": "exploitant"
+  },
+  "tsara": {
+   "slug": "theatre-de-la-cite-internationale",
+   "lieu": "Théâtre de la Cité internationale",
+   "role": "resident"
+  },
+  "theatre de la cite internationale": {
+   "slug": "theatre-de-la-cite-internationale",
+   "lieu": "Théâtre de la Cité internationale",
+   "role": "exploitant"
+  },
+  "cabanes": {
+   "slug": "bois-de-vincennes",
+   "lieu": "Bois de Vincennes",
+   "role": "resident"
+  },
+  "grumpy nature": {
+   "slug": "bois-de-vincennes",
+   "lieu": "Bois de Vincennes",
+   "role": "resident"
+  },
+  "escrime des quais de seine": {
+   "slug": "arenes-de-lutece",
+   "lieu": "Arènes de Lutèce",
+   "role": "resident"
+  },
+  "zero waste paris": {
+   "slug": "bassin-de-la-villette",
+   "lieu": "Bassin de la Villette",
+   "role": "resident"
+  },
+  "les aliennes": {
+   "slug": "cimetiere-des-batignolles",
+   "lieu": "Cimetière des Batignolles",
+   "role": "resident"
+  },
+  "les meres en place": {
+   "slug": "place-des-fetes",
+   "lieu": "Place des Fêtes",
+   "role": "resident"
+  },
+  "les chemins de la danse": {
+   "slug": "mairie-du-20e",
+   "lieu": "Mairie du 20e",
+   "role": "resident"
+  },
+  "la maison ouverte": {
+   "slug": "theatre-dunois",
+   "lieu": "Théâtre Dunois",
+   "role": "exploitant"
+  },
+  "la s o u p e": {
+   "slug": "theatre-dunois",
+   "lieu": "Théâtre Dunois",
+   "role": "resident"
+  },
+  "ltk production": {
+   "slug": "theatre-dunois",
+   "lieu": "Théâtre Dunois",
+   "role": "resident"
+  },
+  "le joli collectif": {
+   "slug": "theatre-dunois",
+   "lieu": "Théâtre Dunois",
+   "role": "resident"
+  },
+  "compagnie boom": {
+   "slug": "theatre-dunois",
+   "lieu": "Théâtre Dunois",
+   "role": "resident"
+  },
+  "l yeuse": {
+   "slug": "theatre-dunois",
+   "lieu": "Théâtre Dunois",
+   "role": "resident"
+  },
+  "theatre du soleil": {
+   "slug": "theatre-du-soleil",
+   "lieu": "Théâtre du Soleil",
+   "role": "exploitant"
+  },
+  "le bal rebondissant": {
+   "slug": "theatre-du-soleil",
+   "lieu": "Théâtre du Soleil",
+   "role": "resident"
+  },
+  "compagnie des cinq roues": {
+   "slug": "theatre-du-soleil",
+   "lieu": "Théâtre du Soleil",
+   "role": "resident"
+  },
+  "belladone": {
+   "slug": "piscine-chateau-landon",
+   "lieu": "Piscine Château-Landon",
+   "role": "resident"
+  },
+  "la septieme compagnie": {
+   "slug": "piscine-mathis",
+   "lieu": "Piscine Mathis",
+   "role": "resident"
+  },
+  "ornatus": {
+   "slug": "cimetiere-de-charonne",
+   "lieu": "Cimetière de Charonne",
+   "role": "resident"
+  },
+  "intemporelles un temps pour elles": {
+   "slug": "mairie-du-7e",
+   "lieu": "Mairie du 7e",
+   "role": "resident"
+  },
+  "paris artistes": {
+   "slug": "mairie-du-9e",
+   "lieu": "Mairie du 9e",
+   "role": "resident"
+  },
+  "c14 paris": {
+   "slug": "mairie-du-14e",
+   "lieu": "Mairie du 14e",
+   "role": "resident"
   }
+ },
+ "projets": {
+  "prov sub equip philharmonie de paris": {
+   "slug": "philharmonie-de-paris",
+   "lieu": "Philharmonie de Paris"
+  },
+  "theatre de la ville renovation": {
+   "slug": "theatre-de-la-ville",
+   "lieu": "Théâtre de la Ville"
+  },
+  "salles de theatre theatre de la ville renovation et restructuration": {
+   "slug": "theatre-de-la-ville",
+   "lieu": "Théâtre de la Ville"
+  },
+  "porte maillot reamenagement": {
+   "slug": "porte-maillot",
+   "lieu": "Porte Maillot"
+  },
+  "parcs de stationnememnt porte maillot": {
+   "slug": "porte-maillot",
+   "lieu": "Porte Maillot"
+  },
+  "piscines et bassins ecole piscine butte aux cailles renovation des bains douches refect": {
+   "slug": "piscine-butte-aux-cailles",
+   "lieu": "Piscine de la Butte-aux-Cailles"
+  },
+  "bains douches bains douches 5 place paul verlaine renovation des bains": {
+   "slug": "piscine-butte-aux-cailles",
+   "lieu": "Piscine de la Butte-aux-Cailles"
+  },
+  "parc des buttes chaumont ile de la falaise": {
+   "slug": "parc-des-buttes-chaumont",
+   "lieu": "Parc des Buttes-Chaumont"
+  },
+  "parc des buttes chaumont curage du lac": {
+   "slug": "parc-des-buttes-chaumont",
+   "lieu": "Parc des Buttes-Chaumont"
+  },
+  "parc des buttes chaumont ile de la falaise etudes de diagnostic et mis en securite": {
+   "slug": "parc-des-buttes-chaumont",
+   "lieu": "Parc des Buttes-Chaumont"
+  },
+  "edition 2015 la reconquete de la petite ceinture": {
+   "slug": "petite-ceinture",
+   "lieu": "Petite Ceinture"
+  },
+  "poursuivre l ouverture de la petite ceinture": {
+   "slug": "petite-ceinture",
+   "lieu": "Petite Ceinture"
+  },
+  "la reconquete de la petite ceinture": {
+   "slug": "petite-ceinture",
+   "lieu": "Petite Ceinture"
+  },
+  "edition 2018 quartiers populaires reconquete de la petite ceinture": {
+   "slug": "petite-ceinture",
+   "lieu": "Petite Ceinture"
+  },
+  "une coulee verte sur la rue sorbier et la petite ceinture": {
+   "slug": "petite-ceinture",
+   "lieu": "Petite Ceinture"
+  },
+  "quartiers populaires reconquete de la petite ceinture": {
+   "slug": "petite-ceinture",
+   "lieu": "Petite Ceinture"
+  },
+  "petite ceinture": {
+   "slug": "petite-ceinture",
+   "lieu": "Petite Ceinture"
+  },
+  "edition 2016 une coulee verte sur la rue sorbier et la petite ceinture": {
+   "slug": "petite-ceinture",
+   "lieu": "Petite Ceinture"
+  },
+  "edition 2015 reconquete de la petite ceinture": {
+   "slug": "petite-ceinture",
+   "lieu": "Petite Ceinture"
+  },
+  "reconquete de la petite ceinture": {
+   "slug": "petite-ceinture",
+   "lieu": "Petite Ceinture"
+  },
+  "piscine 19 rue de pontoise travaux de renovation": {
+   "slug": "piscine-pontoise",
+   "lieu": "Piscine Pontoise"
+  },
+  "piscine pontoise renovation de la piscine": {
+   "slug": "piscine-pontoise",
+   "lieu": "Piscine Pontoise"
+  },
+  "piscine pontoise": {
+   "slug": "piscine-pontoise",
+   "lieu": "Piscine Pontoise"
+  },
+  "piscines piscine 19 rue de pontoise travaux de renovation": {
+   "slug": "piscine-pontoise",
+   "lieu": "Piscine Pontoise"
+  },
+  "parc montsouris entretien courant": {
+   "slug": "parc-montsouris",
+   "lieu": "Parc Montsouris"
+  },
+  "parc montsouris travaux d entretien courant": {
+   "slug": "parc-montsouris",
+   "lieu": "Parc Montsouris"
+  },
+  "parc monceau entretien courant": {
+   "slug": "parc-monceau",
+   "lieu": "Parc Monceau"
+  },
+  "renouveau au parc monceau": {
+   "slug": "parc-monceau",
+   "lieu": "Parc Monceau"
+  },
+  "parc monceau travaux de maintenance et entretiens courants": {
+   "slug": "parc-monceau",
+   "lieu": "Parc Monceau"
+  },
+  "parc monceau": {
+   "slug": "parc-monceau",
+   "lieu": "Parc Monceau"
+  },
+  "parc andre citroen renovation du grand canal": {
+   "slug": "parc-andre-citroen",
+   "lieu": "Parc André-Citroën"
+  },
+  "parc andre citroen renovation": {
+   "slug": "parc-andre-citroen",
+   "lieu": "Parc André-Citroën"
+  },
+  "parc andre citroen travaux de renovation": {
+   "slug": "parc-andre-citroen",
+   "lieu": "Parc André-Citroën"
+  },
+  "parc de bercy renovation de la roseraie": {
+   "slug": "parc-de-bercy",
+   "lieu": "Parc de Bercy"
+  },
+  "parc georges brassens renovation des allees": {
+   "slug": "parc-georges-brassens",
+   "lieu": "Parc Georges-Brassens"
+  },
+  "aires de jeux parc de belleville renovation des aires de jeux": {
+   "slug": "parc-de-belleville",
+   "lieu": "Parc de Belleville"
+  },
+  "maison de l air": {
+   "slug": "parc-de-belleville",
+   "lieu": "Parc de Belleville"
+  },
+  "place de la republique refection des trottoirs": {
+   "slug": "place-de-la-republique",
+   "lieu": "Place de la République"
+  },
+  "operations d amenagement place de la republique amenagement plantations commemoratives": {
+   "slug": "place-de-la-republique",
+   "lieu": "Place de la République"
+  },
+  "securisation hotel de ville": {
+   "slug": "hotel-de-ville",
+   "lieu": "Hôtel de Ville"
+  },
+  "hotel de ville": {
+   "slug": "hotel-de-ville",
+   "lieu": "Hôtel de Ville"
+  },
+  "hotel de ville accessibilite": {
+   "slug": "hotel-de-ville",
+   "lieu": "Hôtel de Ville"
+  },
+  "renovation partielle pavillon de l arsenal": {
+   "slug": "pavillon-de-larsenal",
+   "lieu": "Pavillon de l'Arsenal"
+  },
+  "jardin des serres d auteuil refection de la couverture du local du personnel": {
+   "slug": "serres-dauteuil",
+   "lieu": "Serres d'Auteuil"
+  },
+  "cimetiere du pere lachaise rehabilitation mise en accessibilite et diagnostic structure": {
+   "slug": "pere-lachaise",
+   "lieu": "Cimetière du Père-Lachaise"
+  },
+  "cimetieres cimetiere du pere lachaise travaux de confortement et reparation du mur karch": {
+   "slug": "pere-lachaise",
+   "lieu": "Cimetière du Père-Lachaise"
+  },
+  "cimetiere du pere lachaise travaux sur les murs fourniture et pose de rambardes restau": {
+   "slug": "pere-lachaise",
+   "lieu": "Cimetière du Père-Lachaise"
+  },
+  "cimetiere du pere lachaise entretien des sols des cheminements et des escaliers cimeti": {
+   "slug": "pere-lachaise",
+   "lieu": "Cimetière du Père-Lachaise"
+  },
+  "mairie du 18e arrondissement schema fonctionel et immobilier": {
+   "slug": "mairie-du-18e",
+   "lieu": "Mairie du 18e"
+  },
+  "mairie du 18eme arrondissement travaux de restructuration": {
+   "slug": "mairie-du-18e",
+   "lieu": "Mairie du 18e"
+  },
+  "mairie du 18eme arrondissement travaux dans le cadre du schema fonctionel et immobilier": {
+   "slug": "mairie-du-18e",
+   "lieu": "Mairie du 18e"
+  },
+  "marche couvert 21 place louis lepine rehabilitation des pavillons": {
+   "slug": "kiosque-fleurs-cite",
+   "lieu": "Marché aux fleurs de la Cité"
+  },
+  "stade jean bouin codp": {
+   "slug": "stade-jean-bouin",
+   "lieu": "Stade Jean-Bouin"
+  },
+  "musee carnavalet mise aux normes du systeme de securite incendie": {
+   "slug": "musee-carnavalet",
+   "lieu": "Musée Carnavalet"
+  },
+  "salles de spectacle theatre paris villette travaux divers": {
+   "slug": "theatre-paris-villette",
+   "lieu": "Théâtre Paris-Villette"
+  },
+  "reamenagement de la porte chapelle jo 2024": {
+   "slug": "porte-de-la-chapelle",
+   "lieu": "Porte de la Chapelle"
+  },
+  "porte de la chapelle reamenagement jo 2024": {
+   "slug": "porte-de-la-chapelle",
+   "lieu": "Porte de la Chapelle"
+  },
+  "porte de la chapelle rue de la chapelle rue marx dormoy rond point": {
+   "slug": "porte-de-la-chapelle",
+   "lieu": "Porte de la Chapelle"
+  },
+  "porte de montreuil": {
+   "slug": "porte-de-montreuil",
+   "lieu": "Porte de Montreuil"
+  },
+  "piscine belliard": {
+   "slug": "piscine-belliard",
+   "lieu": "Piscine Belliard"
+  },
+  "piscine belliard construction": {
+   "slug": "piscine-belliard",
+   "lieu": "Piscine Belliard"
+  },
+  "piscines piscine belliard construction": {
+   "slug": "piscine-belliard",
+   "lieu": "Piscine Belliard"
+  },
+  "piscine 133 rue belliard 18e": {
+   "slug": "piscine-belliard",
+   "lieu": "Piscine Belliard"
+  },
+  "mediatheque james baldwin": {
+   "slug": "mediatheque-james-baldwin",
+   "lieu": "Médiathèque James Baldwin"
+  },
+  "mediatheque james baldwin et maison des refugies creation": {
+   "slug": "mediatheque-james-baldwin",
+   "lieu": "Médiathèque James Baldwin"
+  },
+  "enseignement artistique mediatheque jean quarre creation d une mediatheque et d une mais": {
+   "slug": "mediatheque-james-baldwin",
+   "lieu": "Médiathèque James Baldwin"
+  },
+  "bibliotheques creation de la mediatheque jean quarre": {
+   "slug": "mediatheque-james-baldwin",
+   "lieu": "Médiathèque James Baldwin"
+  },
+  "creations d espaces verts parc martin luther king amenagement phase 3": {
+   "slug": "parc-martin-luther-king",
+   "lieu": "Parc Martin Luther King"
+  },
+  "parc martin luther king amenagement phase 3": {
+   "slug": "parc-martin-luther-king",
+   "lieu": "Parc Martin Luther King"
+  },
+  "creations d espaces verts bois de vincennes amenagement de la route du pesage": {
+   "slug": "bois-de-vincennes",
+   "lieu": "Bois de Vincennes"
+  },
+  "edition 2019 ameliorons l environnement des usagers du bois de vincennes": {
+   "slug": "bois-de-vincennes",
+   "lieu": "Bois de Vincennes"
+  },
+  "edition 2019 ameliorons l environnement des usages du bois de vincennes": {
+   "slug": "bois-de-vincennes",
+   "lieu": "Bois de Vincennes"
+  },
+  "bois de vincennes carrefour de la port": {
+   "slug": "bois-de-vincennes",
+   "lieu": "Bois de Vincennes"
+  },
+  "ameliorons l environnement des usages du bois de vincennes": {
+   "slug": "bois-de-vincennes",
+   "lieu": "Bois de Vincennes"
+  },
+  "baignade daumesnil bois de vincennes": {
+   "slug": "bois-de-vincennes",
+   "lieu": "Bois de Vincennes"
+  },
+  "bois de vincennes": {
+   "slug": "bois-de-vincennes",
+   "lieu": "Bois de Vincennes"
+  },
+  "pagode du bois de vincennes": {
+   "slug": "bois-de-vincennes",
+   "lieu": "Bois de Vincennes"
+  },
+  "bois de vincennes entretien des reseaux d eau d arrosage du cheminement des jeux pour": {
+   "slug": "bois-de-vincennes",
+   "lieu": "Bois de Vincennes"
+  },
+  "ameliorer le cadre de vie bois de boulogne": {
+   "slug": "bois-de-boulogne",
+   "lieu": "Bois de Boulogne"
+  },
+  "bois de boulogne cheminement du bois rehabilitation des lacs renovation parking assai": {
+   "slug": "bois-de-boulogne",
+   "lieu": "Bois de Boulogne"
+  },
+  "bois de boulogne rehabilitation des lacs et rivieres mise en accessibilite remplacemen": {
+   "slug": "bois-de-boulogne",
+   "lieu": "Bois de Boulogne"
+  },
+  "bois de boulogne travaux de mise en accessibilite et creation d un eclairage public": {
+   "slug": "bois-de-boulogne",
+   "lieu": "Bois de Boulogne"
+  },
+  "operations bois de boulogne travaux d amenagement du carrefour du bout des lacs": {
+   "slug": "bois-de-boulogne",
+   "lieu": "Bois de Boulogne"
+  },
+  "bois de boulogne": {
+   "slug": "bois-de-boulogne",
+   "lieu": "Bois de Boulogne"
+  },
+  "place des vosges": {
+   "slug": "place-des-vosges",
+   "lieu": "Place des Vosges"
+  },
+  "square louis xiii amenagement des sanitaires pmr renovation des sols": {
+   "slug": "place-des-vosges",
+   "lieu": "Place des Vosges"
+  },
+  "lycee municipal theophile gautier annexe place des vosges": {
+   "slug": "place-des-vosges",
+   "lieu": "Place des Vosges"
+  },
+  "place denfert rocherau amenagement": {
+   "slug": "place-denfert-rochereau",
+   "lieu": "Place Denfert-Rochereau"
+  },
+  "place de la madeleine travaux de reamenagement": {
+   "slug": "place-de-la-madeleine",
+   "lieu": "Place de la Madeleine"
+  },
+  "operations d amenagement place de la madeleine travaux de reamenagement": {
+   "slug": "place-de-la-madeleine",
+   "lieu": "Place de la Madeleine"
+  },
+  "jardin du port de l arsenal renovation de l aire de jeux": {
+   "slug": "port-de-l-arsenal",
+   "lieu": "Port de l'Arsenal"
+  },
+  "renovation de l ile aux cygnes": {
+   "slug": "ile-aux-cygnes",
+   "lieu": "Île aux Cygnes"
+  },
+  "ile aux cygnes renovation": {
+   "slug": "ile-aux-cygnes",
+   "lieu": "Île aux Cygnes"
+  },
+  "place de la concorde travaux d entretien": {
+   "slug": "place-de-la-concorde",
+   "lieu": "Place de la Concorde"
+  },
+  "patrimoine de voirie place de la concorde refection des trottoirs et de la chaussee": {
+   "slug": "place-de-la-concorde",
+   "lieu": "Place de la Concorde"
+  },
+  "place charles de gaulle refection des trottoirs": {
+   "slug": "place-charles-de-gaulle-etoile",
+   "lieu": "Place Charles-de-Gaulle (Étoile)"
+  },
+  "operations d amenagement place du pantheon amenagement": {
+   "slug": "place-du-pantheon",
+   "lieu": "Place du Panthéon"
+  },
+  "diversifier les commerces de la place pigalle": {
+   "slug": "place-pigalle",
+   "lieu": "Place Pigalle"
+  },
+  "amenagement de la place pigalle": {
+   "slug": "place-pigalle",
+   "lieu": "Place Pigalle"
+  },
+  "place pigalle travaux d amenagement": {
+   "slug": "place-pigalle",
+   "lieu": "Place Pigalle"
+  },
+  "place gambetta reamenagement": {
+   "slug": "place-gambetta",
+   "lieu": "Place Gambetta"
+  },
+  "operations place gambetta reamenagement": {
+   "slug": "place-gambetta",
+   "lieu": "Place Gambetta"
+  },
+  "square du temple renovation des sols": {
+   "slug": "square-du-temple",
+   "lieu": "Square du Temple"
+  },
+  "square des batignolles renovation de l aire de jeux": {
+   "slug": "square-des-batignolles",
+   "lieu": "Square des Batignolles"
+  },
+  "edition 2016 restauration de la fontaine du marche saint germain": {
+   "slug": "marche-saint-germain",
+   "lieu": "Marché Saint-Germain"
+  },
+  "mairie du 5e arrondissement transformation en salle d exposition": {
+   "slug": "mairie-du-5e",
+   "lieu": "Mairie du 5e"
+  },
+  "mairie du 5eme arrondissement schema directeur securite accessibilite": {
+   "slug": "mairie-du-5e",
+   "lieu": "Mairie du 5e"
+  },
+  "mairie du 11e arrondissement ravalement et couverture": {
+   "slug": "mairie-du-11e",
+   "lieu": "Mairie du 11e"
+  },
+  "mairie du 11eme arrondissement ravalement et couverture": {
+   "slug": "mairie-du-11e",
+   "lieu": "Mairie du 11e"
+  },
+  "mairie du 20eme arrondissement travaux divers": {
+   "slug": "mairie-du-20e",
+   "lieu": "Mairie du 20e"
+  },
+  "entretien d espaces verts square louise michel renovation": {
+   "slug": "square-louise-michel",
+   "lieu": "Square Louise-Michel"
+  },
+  "jardin atlantique renovation des aires de jeux": {
+   "slug": "jardin-atlantique",
+   "lieu": "Jardin Atlantique"
+  },
+  "jardin anne frank renovation de la structure de la pergola": {
+   "slug": "jardin-anne-frank",
+   "lieu": "Jardin Anne-Frank"
+  },
+  "piscine chateau landon travaux de renovation": {
+   "slug": "piscine-chateau-landon",
+   "lieu": "Piscine Château-Landon"
+  },
+  "piscine chateau landon refection la voute du hall bassin modernisation du local de stoc": {
+   "slug": "piscine-chateau-landon",
+   "lieu": "Piscine Château-Landon"
+  },
+  "la ventilation et installation d une porte coupe feu piscines piscine chateau landon ref": {
+   "slug": "piscine-chateau-landon",
+   "lieu": "Piscine Château-Landon"
+  },
+  "piscine armand massard renovation des installations de filtration fourniture et pose de": {
+   "slug": "piscine-armand-massard",
+   "lieu": "Piscine Armand-Massard"
+  },
+  "piscine armand massard refection du carrelage remplacement des pompes de filtration de": {
+   "slug": "piscine-armand-massard",
+   "lieu": "Piscine Armand-Massard"
+  },
+  "piscines piscine armand massard installation de masses filtrantes pose de porte d entre": {
+   "slug": "piscine-armand-massard",
+   "lieu": "Piscine Armand-Massard"
+  },
+  "piscine blomet travaux de restructuration": {
+   "slug": "piscine-blomet",
+   "lieu": "Piscine Blomet"
+  },
+  "piscine blomet 15e renovation": {
+   "slug": "piscine-blomet",
+   "lieu": "Piscine Blomet"
+  },
+  "piscines piscine blomet travaux de restructuration": {
+   "slug": "piscine-blomet",
+   "lieu": "Piscine Blomet"
+  },
+  "renovation de la piscine mathis": {
+   "slug": "piscine-mathis",
+   "lieu": "Piscine Mathis"
+  },
+  "parc chapelle charbon travaux d amenagement": {
+   "slug": "parc-chapelle-charbon",
+   "lieu": "Parc Chapelle-Charbon"
+  },
+  "creations d espaces verts parc chapelle charbon creation d un nouveau parc sur le site c": {
+   "slug": "parc-chapelle-charbon",
+   "lieu": "Parc Chapelle-Charbon"
+  },
+  "parc de choisy renovation des griles 2eme tranche": {
+   "slug": "parc-de-choisy",
+   "lieu": "Parc de Choisy"
+  },
+  "mairie du 6e arrondissement renovation des stores rue madame": {
+   "slug": "mairie-du-6e",
+   "lieu": "Mairie du 6e"
+  },
+  "mairie du 8eme arrondissement reamenagement des locaux": {
+   "slug": "mairie-du-8e",
+   "lieu": "Mairie du 8e"
+  },
+  "mairie du 9eme arrondissement refection facade rossini de la salle polyvalente": {
+   "slug": "mairie-du-9e",
+   "lieu": "Mairie du 9e"
+  },
+  "mairie du 9e salle des fetes rossini restauration de la facade": {
+   "slug": "mairie-du-9e",
+   "lieu": "Mairie du 9e"
+  },
+  "mairie du 10e arrondissement restauration des facades et menuiseries": {
+   "slug": "mairie-du-10e",
+   "lieu": "Mairie du 10e"
+  },
+  "mairie du 10eme arrondissement restauration des facades et des menuiseries": {
+   "slug": "mairie-du-10e",
+   "lieu": "Mairie du 10e"
+  },
+  "mairie du 12e arrondissement modernisation de la couverture de la salle des fetes": {
+   "slug": "mairie-du-12e",
+   "lieu": "Mairie du 12e"
+  },
+  "mairie du 12eme arrondissement travaux d amenagement de la terrasse du niveau r 1": {
+   "slug": "mairie-du-12e",
+   "lieu": "Mairie du 12e"
+  },
+  "mairie du 13e arrondissement renovation interieure de la salle des fetes": {
+   "slug": "mairie-du-13e",
+   "lieu": "Mairie du 13e"
+  },
+  "mairie du 13e arrondissement ravalement des facades": {
+   "slug": "mairie-du-13e",
+   "lieu": "Mairie du 13e"
+  },
+  "mairie du 13eme arrondissement ravalement des facades": {
+   "slug": "mairie-du-13e",
+   "lieu": "Mairie du 13e"
+  },
+  "mairie du 14e arrondissement reamenagement de l accueil du rdc": {
+   "slug": "mairie-du-14e",
+   "lieu": "Mairie du 14e"
+  },
+  "mairie du 15e arrondissement eclairage des facades": {
+   "slug": "mairie-du-15e",
+   "lieu": "Mairie du 15e"
+  },
+  "mairie du 16e arrondissement transformation d un logement en bureaux": {
+   "slug": "mairie-du-16e",
+   "lieu": "Mairie du 16e"
+  },
+  "mairie du 17e arrondissement amenagement de l accueil du rdc": {
+   "slug": "mairie-du-17e",
+   "lieu": "Mairie du 17e"
+  },
+  "mairie du 17e arrondissement modernisation de la fonction reception": {
+   "slug": "mairie-du-17e",
+   "lieu": "Mairie du 17e"
+  },
+  "mairie du 17eme arrondissement modernisation et amenagement de differents locaux": {
+   "slug": "mairie-du-17e",
+   "lieu": "Mairie du 17e"
+  }
+ }
 }

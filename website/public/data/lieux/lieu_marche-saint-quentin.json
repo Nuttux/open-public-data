@@ -1,151 +1,183 @@
 {
-  "generated_at": "2026-09-11T14:25:25.461202+00:00",
-  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
-  "slug": "marche-saint-quentin",
-  "name": "Marché Saint-Quentin",
-  "kind_fr": "Marché couvert",
-  "kind_en": "Covered market",
-  "famille": "services",
-  "arrondissement": 10,
-  "lat": 48.8781,
-  "lon": 2.3577,
-  "photo": "/img/lieux/marche-saint-quentin.jpg",
-  "photo_credit": {
-    "licence": null,
-    "auteur": null,
-    "url": "https://fr.wikipedia.org/wiki/March%C3%A9_Saint-Quentin",
-    "source": "Wikipédia"
+ "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "marche-saint-quentin",
+ "name": "Marché Saint-Quentin",
+ "kind_fr": "Marché couvert",
+ "kind_en": "Covered market",
+ "famille": "services",
+ "arrondissement": 10,
+ "lat": 48.8781,
+ "lon": 2.3577,
+ "photo": "/img/lieux/marche-saint-quentin.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/March%C3%A9_Saint-Quentin",
+  "source": "Wikipédia"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "Le marché Saint-Quentin est un marché couvert parisien, situé au 85 bis, boulevard de Magenta dans le 10e arrondissement.",
+  "url": "https://fr.wikipedia.org/wiki/March%C3%A9_Saint-Quentin",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
   },
-  "seuil_commun": 2010,
-  "wiki": {
-    "extract": "Le marché Saint-Quentin est un marché couvert parisien, situé au 85 bis, boulevard de Magenta dans le 10e arrondissement.",
-    "url": "https://fr.wikipedia.org/wiki/March%C3%A9_Saint-Quentin",
-    "source": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    },
-    "extract_en": "The Marché Saint-Quentin is a Parisian covered market, located at 85 bis boulevard de Magenta in the 10th arrondissement."
-  },
-  "stats": {
-    "n_delibs": 1752,
-    "delibs_span": [
-      2000,
-      2004
-    ],
-    "n_bmo_brut": 2000,
-    "n_bmo_verifies": 11,
-    "invest_total_eur": 0,
-    "invest_annees": [],
-    "lecture_mode": "titre nommant le lieu (6 trouvés)",
-    "lecture_mode_en": "title naming the place (6 found)",
-    "n_lus": 6,
-    "n_lieu": 5
-  },
-  "subventions_exploitant": null,
-  "residents": [],
-  "kpi_montant": null,
-  "synthese_fr": "Au tournant des années 2000, le Conseil de Paris traite d'abord le marché couvert Saint-Quentin comme une vitrine commerciale : en avril 2000, il approuve les modalités de deux marchés pour des campagnes d'animations sur les marchés Saint-Quentin et des Ternes « visant à les promouvoir comme vitrine des produits du terroir français », puis attribue en septembre 2000 une subvention de 30.000 F à l'association des commerçants du quartier. À partir de 2001, l'attention se déplace vers le bâti : en octobre 2001, le Conseil approuve le principe des travaux de réfection des peintures intérieures du marché, au 85 boulevard Magenta, et autorise le Maire à signer les marchés correspondants. Ce chantier nourrit en septembre 2002 une question de M. René LE GOFF, qui rapporte des travaux entrepris « sans aucune concertation préalable » selon les commerçants, tandis que Mme Cohen-Solal répond en retraçant un calendrier plusieurs fois décalé. Les tensions se prolongent ensuite : en juillet 2004, MM. Toubon et Le Goff signalent que, selon eux, les verrières zénithales remplacées laissent le soleil frapper les étals alimentaires, et en octobre 2005 M. Le Goff relaie des commerçants « au bord de la faillite collective » du fait des travaux du boulevard Magenta, réclamant une exonération de loyer.",
-  "moments": [
-    {
-      "id": "50983",
-      "seance": "AVRIL 2000",
-      "fait": "Le Conseil approuve les modalités de deux marchés d'animations pour promouvoir Saint-Quentin et Ternes comme vitrine du terroir français.",
-      "pourquoi": "Promouvoir le marché comme vitrine du terroir",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50983",
-      "fait_en": "The Council approved the terms of two contracts for promotional events to promote Saint-Quentin and Ternes as a showcase for French regional produce.",
-      "pourquoi_en": "promoting the market as a showcase for regional produce"
-    },
-    {
-      "id": "28624",
-      "seance": "SEPTEMBRE 2000",
-      "fait": "Le Conseil attribue 30 000 F à l'association des commerçants pour des animations commerciales tenues en avril et mai 2000.",
-      "pourquoi": "30 000 F pour animer le marché",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28624",
-      "fait_en": "The Council granted 30,000 francs to the merchants' association for promotional events held in April and May 2000.",
-      "pourquoi_en": "30,000 francs to liven up the market"
-    },
-    {
-      "id": "33529",
-      "seance": "OCTOBRE 2001",
-      "fait": "Le Conseil approuve le principe de la réfection des peintures intérieures et autorise le Maire à signer les marchés.",
-      "pourquoi": "Feu vert au principe de rénovation du bâti",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33529",
-      "fait_en": "The Council approved the principle of redoing the interior paintwork and authorized the Mayor to sign the contracts.",
-      "pourquoi_en": "green light for the building's renovation, in principle"
-    },
-    {
-      "id": "6001",
-      "seance": "SEPTEMBRE 2002",
-      "fait": "M. Le Goff dénonce un chantier engagé selon les commerçants sans concertation ; l'adjointe retrace un calendrier décalé.",
-      "pourquoi": "Travaux contestés en pleine activité",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6001",
-      "fait_en": "Mr Le Goff denounced works undertaken, according to the merchants, without consultation; the deputy mayor retraced a shifted timeline.",
-      "pourquoi_en": "works disputed while the market is in full operation"
-    },
-    {
-      "id": "11019",
-      "seance": "JUILLET 2004",
-      "fait": "MM. Toubon et Le Goff signalent que les nouvelles verrières laissent, selon eux, le soleil frapper les étals alimentaires.",
-      "pourquoi": "Verrières neuves accusées de surchauffer les étals",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11019",
-      "fait_en": "Mr Toubon and Mr Le Goff reported that the new skylights, in their view, let the sun beat down on the food stalls.",
-      "pourquoi_en": "new skylights accused of overheating the stalls"
-    },
-    {
-      "id": "11665",
-      "seance": "OCTOBRE 2005",
-      "fait": "M. Le Goff relaie des commerçants dits au bord de la faillite à cause du chantier Magenta et demande une exonération de loyer.",
-      "pourquoi": "Baisse d'activité imputée aux travaux du boulevard Magenta",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11665",
-      "fait_en": "Mr Le Goff relayed merchants said to be on the verge of bankruptcy because of the Magenta works and asked for a rent exemption.",
-      "pourquoi_en": "drop in business blamed on the boulevard Magenta works"
-    }
+  "extract_en": "The Marché Saint-Quentin is a Parisian covered market, located at 85 bis boulevard de Magenta in the 10th arrondissement."
+ },
+ "stats": {
+  "n_delibs": 1752,
+  "delibs_span": [
+   2000,
+   2004
   ],
-  "montants": [
-    {
-      "seance": "SEPTEMBRE 2000",
-      "montant": "30.000 F",
-      "objet": "subvention à l'Association des commerçants du quartier du marché Saint-Quentin pour l'organisation d'animations commerciales (avril-mai 2000)",
-      "citation": "Une subvention de 30.000 F est attribuée à l'Association des commerçants du quartier du marché Saint-Quentin, 12, rue de Chabrol (10e) (C00273), pour l'organisation des animations commerciales qui ont eu lieu en avril et mai 2000.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28624"
-    }
-  ],
-  "bmo_extraits": [],
-  "bmo_recit": null,
-  "invest": [],
-  "marches": [],
-  "mandate": null,
-  "sources": {
-    "delibs": {
-      "name": "Débat-Délibs — Conseil de Paris",
-      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=march%C3%A9+AND+Saint-Quentin"
-    },
-    "bmo": {
-      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22march%C3%A9+Saint-Quentin%22%29"
-    },
-    "invest": {
-      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-      "url": "https://opendata.paris.fr/"
-    },
-    "wiki": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": 11,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (6 trouvés)",
+  "lecture_mode_en": "title naming the place (6 found)",
+  "n_lus": 6,
+  "n_lieu": 5
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Au tournant des années 2000, le Conseil de Paris traite d'abord le marché couvert Saint-Quentin comme une vitrine commerciale : en avril 2000, il approuve les modalités de deux marchés pour des campagnes d'animations sur les marchés Saint-Quentin et des Ternes « visant à les promouvoir comme vitrine des produits du terroir français », puis attribue en septembre 2000 une subvention de 30.000 F à l'association des commerçants du quartier. À partir de 2001, l'attention se déplace vers le bâti : en octobre 2001, le Conseil approuve le principe des travaux de réfection des peintures intérieures du marché, au 85 boulevard Magenta, et autorise le Maire à signer les marchés correspondants. Ce chantier nourrit en septembre 2002 une question de M. René LE GOFF, qui rapporte des travaux entrepris « sans aucune concertation préalable » selon les commerçants, tandis que Mme Cohen-Solal répond en retraçant un calendrier plusieurs fois décalé. Les tensions se prolongent ensuite : en juillet 2004, MM. Toubon et Le Goff signalent que, selon eux, les verrières zénithales remplacées laissent le soleil frapper les étals alimentaires, et en octobre 2005 M. Le Goff relaie des commerçants « au bord de la faillite collective » du fait des travaux du boulevard Magenta, réclamant une exonération de loyer.",
+ "moments": [
+  {
+   "id": "50983",
+   "seance": "AVRIL 2000",
+   "fait": "Le Conseil approuve les modalités de deux marchés d'animations pour promouvoir Saint-Quentin et Ternes comme vitrine du terroir français.",
+   "pourquoi": "Promouvoir le marché comme vitrine du terroir",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50983",
+   "fait_en": "The Council approved the terms of two contracts for promotional events to promote Saint-Quentin and Ternes as a showcase for French regional produce.",
+   "pourquoi_en": "promoting the market as a showcase for regional produce"
   },
-  "synthese_en": "At the turn of the 2000s, Conseil de Paris first treated the Marché Saint-Quentin covered market as a commercial showcase: in April 2000, it approved the terms of two contracts for promotional campaigns at the Saint-Quentin and Ternes markets \"aimed at promoting them as a showcase for French regional produce,\" then granted, in September 2000, a subsidy of 30,000 francs to the neighborhood merchants' association. From 2001 onward, attention shifted to the building itself: in October 2001, the Council approved the principle of works to redo the market's interior paintwork, at 85 boulevard Magenta, and authorized the Mayor to sign the corresponding contracts. This project fed a question in September 2002 from Mr René LE GOFF, who reported that works had been undertaken, according to the merchants, \"without any prior consultation,\" while Ms Cohen-Solal replied by retracing a timeline that had shifted several times. Tensions then continued: in July 2004, Mr Toubon and Mr Le Goff reported that, in their view, the replaced overhead skylights let the sun beat down on the food stalls, and in October 2005 Mr Le Goff relayed merchants described as \"on the verge of collective bankruptcy\" because of the boulevard Magenta works, demanding a rent exemption.",
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
+  {
+   "id": "28624",
+   "seance": "SEPTEMBRE 2000",
+   "fait": "Le Conseil attribue 30 000 F à l'association des commerçants pour des animations commerciales tenues en avril et mai 2000.",
+   "pourquoi": "30 000 F pour animer le marché",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28624",
+   "fait_en": "The Council granted 30,000 francs to the merchants' association for promotional events held in April and May 2000.",
+   "pourquoi_en": "30,000 francs to liven up the market"
+  },
+  {
+   "id": "33529",
+   "seance": "OCTOBRE 2001",
+   "fait": "Le Conseil approuve le principe de la réfection des peintures intérieures et autorise le Maire à signer les marchés.",
+   "pourquoi": "Feu vert au principe de rénovation du bâti",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33529",
+   "fait_en": "The Council approved the principle of redoing the interior paintwork and authorized the Mayor to sign the contracts.",
+   "pourquoi_en": "green light for the building's renovation, in principle"
+  },
+  {
+   "id": "6001",
+   "seance": "SEPTEMBRE 2002",
+   "fait": "M. Le Goff dénonce un chantier engagé selon les commerçants sans concertation ; l'adjointe retrace un calendrier décalé.",
+   "pourquoi": "Travaux contestés en pleine activité",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6001",
+   "fait_en": "Mr Le Goff denounced works undertaken, according to the merchants, without consultation; the deputy mayor retraced a shifted timeline.",
+   "pourquoi_en": "works disputed while the market is in full operation"
+  },
+  {
+   "id": "11019",
+   "seance": "JUILLET 2004",
+   "fait": "MM. Toubon et Le Goff signalent que les nouvelles verrières laissent, selon eux, le soleil frapper les étals alimentaires.",
+   "pourquoi": "Verrières neuves accusées de surchauffer les étals",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11019",
+   "fait_en": "Mr Toubon and Mr Le Goff reported that the new skylights, in their view, let the sun beat down on the food stalls.",
+   "pourquoi_en": "new skylights accused of overheating the stalls"
+  },
+  {
+   "id": "11665",
+   "seance": "OCTOBRE 2005",
+   "fait": "M. Le Goff relaie des commerçants dits au bord de la faillite à cause du chantier Magenta et demande une exonération de loyer.",
+   "pourquoi": "Baisse d'activité imputée aux travaux du boulevard Magenta",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11665",
+   "fait_en": "Mr Le Goff relayed merchants said to be on the verge of bankruptcy because of the Magenta works and asked for a rent exemption.",
+   "pourquoi_en": "drop in business blamed on the boulevard Magenta works"
   }
+ ],
+ "montants": [
+  {
+   "seance": "SEPTEMBRE 2000",
+   "montant": "30.000 F",
+   "objet": "subvention à l'Association des commerçants du quartier du marché Saint-Quentin pour l'organisation d'animations commerciales (avril-mai 2000)",
+   "citation": "Une subvention de 30.000 F est attribuée à l'Association des commerçants du quartier du marché Saint-Quentin, 12, rue de Chabrol (10e) (C00273), pour l'organisation des animations commerciales qui ont eu lieu en avril et mai 2000.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28624"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "2000": [
+   {
+    "reference": "2000 DFAE 102",
+    "titre": "Subvention à l'Association des commerçants du quartier du marché Saint-Quentin (10e). M. Jean-Pierre PIERRE-BLOCH, rapporteur.",
+    "seance": "SEPTEMBRE 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28624"
+   },
+   {
+    "reference": "2000 DFAE 41",
+    "titre": "Approbation des modalités d'attribution de 2 marchés sur appel d'offres pour la réalisation de campagnes d'animations sur 2 marchés couverts de Paris [Saint-Quentin (10e) et Ternes (17e)]. - Autorisation à M. le Maire de Paris de signer lesdits marchés. M. Jean-Pierre PIERRE-BLOCH, rapporteur.",
+    "seance": "AVRIL 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50983"
+   }
+  ],
+  "2001": [
+   {
+    "reference": "2001 DPA 87",
+    "titre": "Approbation du principe de la réalisation des travaux de réfection des peintures intérieures du marché Saint-Quentin, 85, boulevard Magenta (10e) et des modalités d'attribution des marchés de travaux, de contrôle technique et de coordination santé/sécurité correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Lyne COHEN-SOLAL, rapporteur.",
+    "seance": "OCTOBRE 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33529"
+   }
+  ],
+  "2002": [
+   {
+    "reference": "2002 DPA 31",
+    "titre": "Approbation du principe de la réalisation des travaux de restauration des façades du marché Saint Quentin 85 bis boulevard Magenta (10e). - Approbation des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Lyne COHEN-SOLAL, rapporteur.",
+    "seance": "MARS 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38967"
+   }
+  ],
+  "2006": [
+   {
+    "reference": "2006 DDEE 184",
+    "titre": "Indemnisation des commerçants du marché couvert Saint Quentin (Paris 10ème), en raison des difficultés d’exploitation rencontrées du fait des travaux réalisés sur le boulevard Magenta. Mme Lyne COHEN-SOLAL, rapporteure.",
+    "seance": "JUILLET 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81434"
+   }
+  ]
+ },
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=march%C3%A9+AND+Saint-Quentin"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22march%C3%A9+Saint-Quentin%22%29"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "At the turn of the 2000s, Conseil de Paris first treated the Marché Saint-Quentin covered market as a commercial showcase: in April 2000, it approved the terms of two contracts for promotional campaigns at the Saint-Quentin and Ternes markets \"aimed at promoting them as a showcase for French regional produce,\" then granted, in September 2000, a subsidy of 30,000 francs to the neighborhood merchants' association. From 2001 onward, attention shifted to the building itself: in October 2001, the Council approved the principle of works to redo the market's interior paintwork, at 85 boulevard Magenta, and authorized the Mayor to sign the corresponding contracts. This project fed a question in September 2002 from Mr René LE GOFF, who reported that works had been undertaken, according to the merchants, \"without any prior consultation,\" while Ms Cohen-Solal replied by retracing a timeline that had shifted several times. Tensions then continued: in July 2004, Mr Toubon and Mr Le Goff reported that, in their view, the replaced overhead skylights let the sun beat down on the food stalls, and in October 2005 Mr Le Goff relayed merchants described as \"on the verge of collective bankruptcy\" because of the boulevard Magenta works, demanding a rent exemption."
 }

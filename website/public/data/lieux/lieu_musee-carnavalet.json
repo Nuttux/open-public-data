@@ -1,717 +1,835 @@
 {
-  "generated_at": "2026-09-11T14:25:25.461202+00:00",
-  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
-  "slug": "musee-carnavalet",
-  "name": "Musée Carnavalet",
-  "kind_fr": "Musée",
-  "kind_en": "Musée",
-  "famille": "culture",
-  "arrondissement": 3,
-  "lat": 48.85706,
-  "lon": 2.36285,
-  "photo": "/img/lieux/musee-carnavalet.jpg",
-  "photo_credit": {
-    "licence": null,
-    "auteur": null,
-    "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_Carnavalet",
-    "source": "Wikipédia"
+ "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "musee-carnavalet",
+ "name": "Musée Carnavalet",
+ "kind_fr": "Musée",
+ "kind_en": "Musée",
+ "famille": "culture",
+ "arrondissement": 3,
+ "lat": 48.85706,
+ "lon": 2.36285,
+ "photo": "/img/lieux/musee-carnavalet.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_Carnavalet",
+  "source": "Wikipédia"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "Le musée Carnavalet - Histoire de Paris est le musée municipal parisien consacré à l'histoire de Paris des origines de la ville à nos jours. Situé dans le quartier du Marais au no 23 rue Madame-de-Sévigné à Paris, dans le 3e arrondissement, il présente des collections sur des thématiques variées : souvenirs de la Révolution française, peintures historiques, sculptures, mobilier et décors des XVIIe et XVIIIe siècles, objets d'art, estampes, etc.",
+  "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_Carnavalet",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
   },
-  "seuil_commun": 2010,
-  "wiki": {
-    "extract": "Le musée Carnavalet - Histoire de Paris est le musée municipal parisien consacré à l'histoire de Paris des origines de la ville à nos jours. Situé dans le quartier du Marais au no 23 rue Madame-de-Sévigné à Paris, dans le 3e arrondissement, il présente des collections sur des thématiques variées : souvenirs de la Révolution française, peintures historiques, sculptures, mobilier et décors des XVIIe et XVIIIe siècles, objets d'art, estampes, etc.",
-    "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_Carnavalet",
-    "source": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    },
-    "extract_en": "The Musée Carnavalet - Histoire de Paris is the Paris municipal museum devoted to the history of Paris from the city's origins to the present day. Located in the Marais district at 23 rue Madame-de-Sévigné in Paris, in the 3rd arrondissement, it presents collections on varied themes: mementos of the French Revolution, historical paintings, sculptures, 17th- and 18th-century furniture and interior decor, art objects, prints, etc."
-  },
-  "stats": {
-    "n_delibs": 242,
-    "delibs_span": [
-      1995,
-      2018
-    ],
-    "n_bmo_brut": 1575,
-    "n_bmo_verifies": 18,
-    "invest_total_eur": 0,
-    "invest_annees": [],
-    "lecture_mode": "titre nommant le lieu (47 trouvés)",
-    "lecture_mode_en": "title naming the place (47 found)",
-    "n_lus": 44,
-    "n_lieu": 43
-  },
-  "subventions_exploitant": null,
-  "residents": [],
-  "kpi_montant": null,
-  "synthese_fr": "Entre 1995 et 2018, le musée Carnavalet revient à de nombreuses reprises devant le Conseil de Paris, le plus souvent pour enrichir ses collections : acquisitions d'œuvres — du Recueil Marigny (1.000.000 F, 1995) au portrait de Madame Tallien par le baron Gérard (5.000.000 F, 2001) — et acceptations de legs et donations de particuliers, allant de quelques centaines à plus de 100.000 euros. La Ville engage aussi des travaux sur le bâtiment, du principe de restauration de l'Orangerie de l'hôtel Le Peletier-de-Saint-Fargeau (1999) à la restauration du cabinet doré des salons La Rivière (401.980 euros TTC, 2004), et approuve en 1996 le programme de l'opération archéologique de Bercy et du transfert des fouilles au musée. Ces délibérations autorisent le plus souvent le Maire à signer ou à accepter, et approuvent des principes ou des conventions, sans que leur réalisation soit constatée dans le texte. Le musée est aussi un lieu de débat : en 2003, un élu met en doute l'expertise et l'authenticité d'un tableau en cours d'acquisition ; en 2010, l'opposition critique l'état architectural des musées municipaux. À partir de 2013, le Conseil lance l'étude de programmation (350.000 euros) de la rénovation globale, et un vœu de 2018 réclame un point d'étape avant la réouverture annoncée.",
-  "moments": [
-    {
-      "id": "55014",
-      "seance": "OCTOBRE 1996",
-      "fait": "Le Conseil approuve le programme de l'opération archéologique de Bercy et le transfert des fouilles au musée Carnavalet, et autorise le Maire à signer la convention avec l'État.",
-      "pourquoi": "Les fouilles de Bercy rejoignent le musée",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55014",
-      "fait_en": "The Council approved the program for the Bercy archaeological operation and the transfer of the excavation finds to the Musée Carnavalet, and authorized the Mayor to sign the agreement with the State.",
-      "pourquoi_en": "The Bercy excavation finds join the museum"
-    },
-    {
-      "id": "27459",
-      "seance": "AVRIL 1999",
-      "fait": "Le Conseil approuve le principe des travaux de restauration et d'aménagement intérieur de l'Orangerie de l'hôtel Le Peletier-de-Saint-Fargeau et autorise deux marchés de maîtrise d'œuvre.",
-      "pourquoi": "Premiers grands travaux sur le bâtiment",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27459",
-      "fait_en": "The Council approved the principle of restoration and interior fit-out works at the Orangery of the Hôtel Le Peletier-de-Saint-Fargeau and authorized two project management contracts.",
-      "pourquoi_en": "First major works on the building"
-    },
-    {
-      "id": "84343",
-      "seance": "SEPTEMBRE 2001",
-      "fait": "Le Conseil autorise le Maire à acquérir le portrait de Madame Tallien par le baron François Gérard pour 5 000 000 F, avec une convention associant la Société des Amis du musée et la baronne Elie de Rothschild.",
-      "pourquoi": "Cinq millions de francs pour un portrait révolutionnaire",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84343",
-      "fait_en": "The Council authorized the Mayor to acquire the portrait of Madame Tallien by Baron François Gérard for 5,000,000 francs, with an agreement involving the Société des Amis du musée and the Baroness Elie de Rothschild.",
-      "pourquoi_en": "Five million francs for a Revolutionary-era portrait"
-    },
-    {
-      "id": "8366",
-      "seance": "JUILLET 2003",
-      "fait": "Lors de l'examen d'une acquisition d'œuvre d'art, Yves POZZO di BORGO conteste le manque d'informations sur l'expertise et l'historique du tableau.",
-      "pourquoi": "Un élu doute de l'authenticité d'un achat",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8366",
-      "fait_en": "During the examination of an art acquisition, Yves POZZO di BORGO challenged the lack of information on the painting's expert appraisal and provenance.",
-      "pourquoi_en": "A councillor doubts the authenticity of a purchase"
-    },
-    {
-      "id": "42905",
-      "seance": "OCTOBRE 2008",
-      "fait": "Le Conseil autorise le Maire à signer une convention avec la Getty Foundation finançant la restauration des boiseries de l'ancien hôtel du duc de Richelieu, pour une recette de 170 500 euros.",
-      "pourquoi": "Une fondation américaine finance les boiseries",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42905",
-      "fait_en": "The Council authorized the Mayor to sign an agreement with the Getty Foundation funding the restoration of the paneling in the former Hôtel du duc de Richelieu, for revenue of 170,500 euros.",
-      "pourquoi_en": "An American foundation funds the paneling"
-    },
-    {
-      "id": "3972",
-      "seance": "FEVRIER 2010",
-      "fait": "Pendant le débat sur les librairies, Hélène MACÉ de LÉPINAY critique l'état architectural des musées municipaux ; Danièle POURTAUD défend la politique de la Ville.",
-      "pourquoi": "L'opposition dénonce l'état des musées",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3972",
-      "fait_en": "During the debate on bookshops, Hélène MACÉ de LÉPINAY criticized the architectural condition of the City's museums; Danièle POURTAUD defended the City's policy.",
-      "pourquoi_en": "The opposition denounces the condition of the museums"
-    },
-    {
-      "id": "111201",
-      "seance": "FEVRIER 2013",
-      "fait": "Le Conseil adopte à l'unanimité le lancement d'un marché d'assistance à maîtrise d'ouvrage (350 000 euros) pour l'étude de programmation de la rénovation globale.",
-      "pourquoi": "Le coup d'envoi de la rénovation globale",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=111201",
-      "fait_en": "The Council unanimously adopted the launch of a project-owner assistance contract (350,000 euros) for the programming study of the comprehensive renovation.",
-      "pourquoi_en": "The starting signal for the comprehensive renovation"
-    },
-    {
-      "id": "142467",
-      "seance": "MAI 2018",
-      "fait": "Un vœu du groupe PPCI demande un point d'étape sur les travaux, la programmation et les objectifs du nouveau musée Carnavalet avant sa réouverture.",
-      "pourquoi": "Avant la réouverture, un vœu réclame des comptes",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=142467",
-      "fait_en": "A motion from the PPCI group called for a progress report on the works, programming, and objectives of the new Musée Carnavalet ahead of its reopening.",
-      "pourquoi_en": "Before the reopening, a motion demands accountability"
-    }
+  "extract_en": "The Musée Carnavalet - Histoire de Paris is the Paris municipal museum devoted to the history of Paris from the city's origins to the present day. Located in the Marais district at 23 rue Madame-de-Sévigné in Paris, in the 3rd arrondissement, it presents collections on varied themes: mementos of the French Revolution, historical paintings, sculptures, 17th- and 18th-century furniture and interior decor, art objects, prints, etc."
+ },
+ "stats": {
+  "n_delibs": 242,
+  "delibs_span": [
+   1995,
+   2018
   ],
-  "montants": [
-    {
-      "seance": "MAI 2018",
-      "montant": "110 millions d'euros",
-      "objet": "Plan de rénovation des musées de la Ville cité en séance par Bruno Julliard, premier adjoint",
-      "citation": "grand plan de rénovation des musées de la Ville, à hauteur de 110 millions d'euros, et une quarantaine de millions d'euros pour le musée Carnavalet",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=142467"
-    },
-    {
-      "seance": "MAI 2018",
-      "montant": "une quarantaine de millions d'euros",
-      "objet": "Part estimée pour le musée Carnavalet dans ce plan, selon Bruno Julliard",
-      "citation": "grand plan de rénovation des musées de la Ville, à hauteur de 110 millions d'euros, et une quarantaine de millions d'euros pour le musée Carnavalet",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=142467"
-    },
-    {
-      "seance": "SEPTEMBRE 2010",
-      "montant": "4.000 euros",
-      "objet": "Valeur d'immobilisation des biens donnés par M. et Mme WISE",
-      "citation": "La valeur d?immobilisation des biens donnés, estimés au total à la somme de 4.000 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39305"
-    },
-    {
-      "seance": "MAI 2011",
-      "montant": "32.000 euros",
-      "objet": "Valeur d'immobilisation des objets légués par M. Jean CLAVERIE",
-      "citation": "La valeur d?immobilisation des objets légués, estimés à la somme de 32.000 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97794"
-    },
-    {
-      "seance": "MAI 2006",
-      "montant": "100.000 euros",
-      "objet": "Acquisition d'un tableau de Charles Poërson pour le musée",
-      "citation": "un tableau de Charles Poërson ?Le repos pendant la fuite en Egypte?, pour un montant de 100.000 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89030"
-    },
-    {
-      "seance": "OCTOBRE 2007",
-      "montant": "60.000 euros",
-      "objet": "Valeur globale de la donation DEVERNE au bénéfice du musée",
-      "citation": "la donation consentie au bénéfice du Musée Carnavalet par M. Michel DEVERNE, laquelle a été estimée à la somme globale de 60.000 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53349"
-    },
-    {
-      "seance": "MARS 2011",
-      "montant": "4.200 euros",
-      "objet": "Recettes estimées des frais de mise à disposition du personnel d'accueil et de sécurité",
-      "citation": "Les recettes correspondant aux frais de mise à disposition du personnel d?accueil et de sécurité (article 3.4 de la convention) estimées à 4.200 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96708"
-    },
-    {
-      "seance": "JUIN 2007",
-      "montant": "97.000 euros",
-      "objet": "Valeur d'immobilisation des œuvres léguées par Melle Denise POLLIEN",
-      "citation": "La valeur d?immobilisation des ?uvres léguées, estimée à 97.000 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72214"
-    },
-    {
-      "seance": "NOVEMBRE 2006",
-      "montant": "10.100 euros",
-      "objet": "Valeur d'immobilisation des œuvres léguées par Mlle Renée BERNARD",
-      "citation": "La valeur d?immobilisation des ?uvres léguées, estimée à 10.100 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52303"
-    },
-    {
-      "seance": "FEVRIER 2013",
-      "montant": "350.000 euros",
-      "objet": "Coût global estimé de l'assistance à maîtrise d'ouvrage de programmation",
-      "citation": "il nous est proposé de désigner une assistance à maîtrise d'ouvrage de programmation, réunissant une équipe pluridisciplinaire pour un coût global estimé à 350.000 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=111201"
-    },
-    {
-      "seance": "FEVRIER 2013",
-      "montant": "30 ou 40 millions d'euros",
-      "objet": "Coût total probable des travaux à venir, estimation avancée en séance par Danièle POURTAUD",
-      "citation": "Il est probable, malheureusement, que la totalité des travaux sera plutôt proche de 30 ou 40 millions d'euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=111201"
-    },
-    {
-      "seance": "DECEMBRE 2005",
-      "montant": "503 euros",
-      "objet": "Valeur d'immobilisation des objets légués par Mme Marie-Louise MOUSSALLI",
-      "citation": "La valeur d?immobilisation des objets légués, estimée à 503 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32865"
-    },
-    {
-      "seance": "SEPTEMBRE 2001",
-      "montant": "5.000.000 F",
-      "objet": "Acquisition du portrait de Madame Tallien par le baron François Gérard",
-      "citation": "est autorisé à acquérir \"le portrait de Madame Tallien, née Thérèse de Cabarrus\" par le Baron François GERARD pour le musée Carnavalet à concurrence de la somme de 5.000.000 F",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84343"
-    },
-    {
-      "seance": "SEPTEMBRE 2001",
-      "montant": "650.000 F",
-      "objet": "Acquisition d'une œuvre de Jacques-Augustin Pajou pour le musée",
-      "citation": "est autorisé à acquérir une ?uvre de Jacques-Augustin Pajou \"Dernière scène de la tragédie Rodogune au Théâtre Français\" pour la somme de 650.000 F",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84805"
-    },
-    {
-      "seance": "SEPTEMBRE 2005",
-      "montant": "200.000 euros",
-      "objet": "Acquisition de l'huile d'Eugène Giraud « Le Bal de l'Opéra »",
-      "citation": "est autorisé à acquérir une huile sur toile d?Eugène Giraud ?Le Bal de l?Opéra? pour le musée Carnavalet, pour une somme de 200.000 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63367"
-    },
-    {
-      "seance": "OCTOBRE 2007",
-      "montant": "3.500 euros",
-      "objet": "Recettes estimées des frais de mise à disposition du personnel d'accueil et de sécurité",
-      "citation": "Les recettes correspondant aux frais de mise à disposition du personnel d?accueil et de sécurité (article 3-4 de la convention), estimées à 3.500 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53669"
-    },
-    {
-      "seance": "JANVIER 2003",
-      "montant": "21.000 euros",
-      "objet": "Valeur d'immobilisation des biens légués par Mme Ilse BING",
-      "citation": "La valeur d'immobilisation des biens légués, estimée à 21.000 euros au total",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41613"
-    },
-    {
-      "seance": "JUILLET 2003",
-      "montant": "91.000 euros",
-      "objet": "Acquisition de la peinture de Charles Bénazech « L'exécution de Louis XVI »",
-      "citation": "est autorisé à acquérir une peinture de Charles Bénazech \"L'exécution de Louis XVI, le 21 janvier 1793\" pour un montant de 91.000 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70215"
-    },
-    {
-      "seance": "JUIN 2002",
-      "montant": "216.833,36 euros",
-      "objet": "Achat de photographies de Charles Nègre (collection Jammes)",
-      "citation": "acquérir des photographies de Charles Nègre appartenant à la collection Jammes pour un montant de 216.833,36 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55989"
-    },
-    {
-      "seance": "JUIN 2002",
-      "montant": "106.715 euros",
-      "objet": "Achat d'une série de dix gouaches de Lesueur",
-      "citation": "une série de dix gouaches de Lesueur pour un montant de 106.715 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55989"
-    },
-    {
-      "seance": "JUIN 2002",
-      "montant": "323.548,36 euros",
-      "objet": "Total de l'acquisition",
-      "citation": "soit au total une somme de 323.548,36 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55989"
-    },
-    {
-      "seance": "FEVRIER 2002",
-      "montant": "9.147 euros",
-      "objet": "Valeur d'immobilisation des œuvres léguées par Melle Monique MARTIN LAVALLEE",
-      "citation": "La valeur d'immobilisation des ?uvres léguées, estimée à 9.147 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57965"
-    },
-    {
-      "seance": "DECEMBRE 1999",
-      "montant": "490.400 F",
-      "objet": "Dépense pour l'acquisition de deux daguerréotypes (45.873,75 livres sterling)",
-      "citation": "La dépense relative à cette acquisition, soit 45.873,75 livres sterling équivalant à 490.400 F",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51562"
-    },
-    {
-      "seance": "SEPTEMBRE 2002",
-      "montant": "environ 114.032 euros",
-      "objet": "Valeur d'immobilisation des biens légués par M. Michel PRECOUL",
-      "citation": "La valeur d'immobilisation des biens légués, estimée à environ 114.032 euros au total",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29508"
-    },
-    {
-      "seance": "SEPTEMBRE 2000",
-      "montant": "332.292 F",
-      "objet": "Acquisition d'une œuvre de Jacques-Emile Blanche pour le musée",
-      "citation": "est autorisé à acquérir une oeuvre de Jacques-Emile Blanche pour le musée Carnavalet pour un montant de 332.292 F",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28590"
-    },
-    {
-      "seance": "SEPTEMBRE 2001",
-      "montant": "17.500 F",
-      "objet": "Valeur d'immobilisation des œuvres léguées par Mme Roberte JOUVE (musée et bibliothèque)",
-      "citation": "La valeur d'immobilisation des ?uvres léguées, estimée à 17.500 F au total",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84874"
-    },
-    {
-      "seance": "SEPTEMBRE 1995",
-      "montant": "1.000.000 F",
-      "objet": "Acquisition du Recueil Marigny auprès de M. Antoine Mouradian",
-      "citation": "restituant l'intégralité des projets du concours de 1753 pour la place de la Concorde, vendu par M. Antoine MOURADIAN pour la somme de 1.000.000 F",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=1647"
-    },
-    {
-      "seance": "JUILLET 1998",
-      "montant": "70.000 F",
-      "objet": "Valeur des dessins et tableaux légués par Melle Claude PORTEFIN, après réduction",
-      "citation": "lequel après réduction se compose de dessins et tableaux, estimés au total à 70.000 F",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82603"
-    },
-    {
-      "seance": "MARS 2003",
-      "montant": "1.524,49 euros",
-      "objet": "Valeur d'immobilisation du bien légué par M. Jacques Laurent dit Cecil Saint-Laurent",
-      "citation": "La valeur d'immobilisation du bien légué, estimée à 1.524,49 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68886"
-    },
-    {
-      "seance": "OCTOBRE 2008",
-      "montant": "170.500 euros",
-      "objet": "Recette constatée du financement de la Getty Foundation pour la restauration des boiseries",
-      "citation": "La recette sera constatée à hauteur de 170.500 euros sur le budget d?investissement de la Ville de Paris de 2008",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42905"
-    },
-    {
-      "seance": "JUIN 1997",
-      "montant": "60.000 F T.T.C.",
-      "objet": "Aide financière de la Fondation Florence Gould apportée au musée Carnavalet",
-      "citation": "M. le Maire de Paris est autorisé à accepter l'aide financière, d'un montant de 60.000 F T.T.C., que la Fondation Florence Gould est disposée à apporter au musée Carnavalet",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42298"
-    },
-    {
-      "seance": "OCTOBRE 1996",
-      "montant": "4.000.000 F H.T.",
-      "objet": "Programme de l'opération archéologique de Bercy et du transfert des fouilles au musée",
-      "citation": "Est approuvé le programme relatif à l'opération archéologique de Bercy et au transfert des fouilles au musée Carnavalet, fixé à la somme de 4.000.000 F H.T., soit 4.824.000 F T.T.C.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55014"
-    },
-    {
-      "seance": "OCTOBRE 1996",
-      "montant": "2.000.000 F H.T.",
-      "objet": "Subvention sollicitée de l'État, soit 50 % du montant hors taxes du programme",
-      "citation": "autorisé à solliciter de l'Etat l'attribution de la subvention de 2.000.000 F H.T., au titre du programme décrit ci-dessus, soit 50 % du montant hors taxes de ce programme",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55014"
-    },
-    {
-      "seance": "SEPTEMBRE 2004",
-      "montant": "401.980 euros TTC",
-      "objet": "Dépense imputée pour la restauration du cabinet doré des salons La Rivière",
-      "citation": "au bloc1, rubrique 322, code nature 2316 pour un montant de 401.980 euros TTC, par prélèvement sur le compte de provision 4000-1-99§003",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46049"
-    }
-  ],
-  "bmo_extraits": [
-    {
-      "date": "1902-04-04",
-      "extrait": "Conformément aux conclusions présentées par M. John Labusquière, au nom de la 4e Commission, Renvoie à l'Administration une pétition de M. Le Fustec proposant l'acquisition pour le musée Carnavalet d'un portrait du président Félix Faure, par Edouard Krug",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64533705/f14.item",
-      "extrait_en": "In accordance with the findings presented by Mr John Labusquière, on behalf of the 4th Commission, refers to the Administration a petition from Mr Le Fustec proposing the acquisition for the Musée Carnavalet of a portrait of President Félix Faure, by Édouard Krug"
-    },
-    {
-      "date": "1905-12-16",
-      "extrait": "Achille, au nom de la 28 Commission. — Messieurs, la ville de Paris est propriétaire d'une maison située rue de Sévigné, n° 25, dont l'acquisition a été faite en vue de l'agrandissement du musée Carnavalet , auquel elle est",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6343248g/f7.item",
-      "extrait_en": "Achille, on behalf of the 28th Commission. — Gentlemen, the city of Paris owns a house located at 25 rue de Sévigné, which was purchased with a view to the expansion of the Musée Carnavalet, to which it is"
-    },
-    {
-      "date": "1926-03-20",
-      "extrait": "de M. Guillaumin, président 56. - Acceptation d'un don fait au musée Carnavalet par les héritiers de M. Ernest May … M. d'Andigné, au nom de la 4e Commission. — Messieurs, en exécution d'un désir exprimé par l'éminent collectionneur M. Ernest May, ses héritiers offrent à la Vil",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6291215m/f20.item",
-      "extrait_en": "by Mr Guillaumin, chairman 56. — Acceptance of a gift made to the Musée Carnavalet by the heirs of Mr Ernest May … Mr d'Andigné, on behalf of the 4th Commission. — Gentlemen, in fulfillment of a wish expressed by the eminent collector Mr Ernest May, his heirs are offering to the Ci"
-    }
-  ],
-  "bmo_recit": "Au début du XXe siècle, le musée apparaît dans le Bulletin municipal d'abord par ses collections : en 1902, le Conseil renvoie à l'Administration une pétition de M. Le Fustec proposant d'acquérir pour le musée un portrait du président Félix Faure peint par Édouard Krug — la question est transmise, non tranchée. En 1905, un rapport en séance rappelle que la Ville est propriétaire d'une maison au 25 rue de Sévigné, acquise en vue de l'agrandissement du musée. Deux décennies plus tard, en 1926, l'archive montre le Conseil saisi de l'acceptation d'un don : les héritiers du collectionneur Ernest May, en exécution d'un désir qu'il avait exprimé, offrent des œuvres à la Ville de Paris pour le musée. Sur près d'un quart de siècle, le Bulletin donne ainsi à voir ces épisodes ponctuels d'une même vie administrative : des murs qu'on prévoit d'étendre et des collections qui s'enrichissent par dons et propositions d'achat.",
-  "invest": [],
-  "marches": [
-    {
-      "numero_marche": "20171210001782",
-      "objet": "CSP5 RENOVATION PARTIELLE MUSEE CARNAVALET-LOT3 BATIMENT TCE",
-      "objet_clair": null,
-      "fournisseur": "BOUYGUES BATIMENT ILE DE FRANCE",
-      "montant_max": 25957872.68,
-      "date_notification": "2017-11-27",
-      "preuve": "Objet nomme le lieu : \"CSP5 RENOVATION PARTIELLE MUSEE CARNAVALET-LOT3 BATIMENT TCE\" — travaux sur le bâtiment du musée. Le chantier de rénovation est documenté en Conseil de Paris (2013 DPA 3, « rénovation globale du musée Carnavalet (3e) » ; vœu de mai 2018 : « C'est un musée en travaux, qui va rouvrir l'année prochaine »)."
-    },
-    {
-      "numero_marche": "20181210020013",
-      "objet": "CSP5 RENOV PARTIELLE MUSEE CARNAVALET AMENAGT MUSEOGRAPHIQUE",
-      "objet_clair": null,
-      "fournisseur": "VITRINEN-UND",
-      "montant_max": 3605352.0,
-      "date_notification": "2018-06-18",
-      "preuve": "Objet nomme le lieu : \"CSP5 RENOV PARTIELLE MUSEE CARNAVALET AMENAGT MUSEOGRAPHIQUE\" ; l'aménagement muséographique fait partie des orientations de la rénovation citées en Conseil de Paris (« repenser le circuit muséographique », 2013 DPA 3)."
-    },
-    {
-      "numero_marche": "20161210000654",
-      "objet": "MARCHÉ SUBSÉQUENT 2 MOE RENOVATION MUSEE CARNAVALET 3EME",
-      "objet_clair": null,
-      "fournisseur": "CHATILLON ARCHITECTES",
-      "montant_max": 3253221.47,
-      "date_notification": "2016-05-25",
-      "preuve": "Objet nomme le lieu et l'arrondissement : \"MOE RENOVATION MUSEE CARNAVALET 3EME\" — le musée est bien dans le 3e (23 rue de Sévigné, délib 2008 DAC 664)."
-    },
-    {
-      "numero_marche": "20151210020012",
-      "objet": "MARCHÉ SUBSÉQUENT MOE RÉNOVATION DU MUSÉE CARNAVALET 75003",
-      "objet_clair": null,
-      "fournisseur": "CHATILLON ARCHITECTES",
-      "montant_max": 1896816.68,
-      "date_notification": "2015-12-17",
-      "preuve": "Objet nomme le lieu et le code postal : \"MOE RÉNOVATION DU MUSÉE CARNAVALET 75003\"."
-    },
-    {
-      "numero_marche": "20171210000854",
-      "objet": "CSP5 TVX RENOVATION PARTIELLE MUSEE CARNAVALET LOT1",
-      "objet_clair": null,
-      "fournisseur": "AVENIR DECONSTRUCTION",
-      "montant_max": 783890.0,
-      "date_notification": "2017-06-02",
-      "preuve": "Objet nomme le lieu : \"TVX RENOVATION PARTIELLE MUSEE CARNAVALET LOT1\"."
-    },
-    {
-      "numero_marche": "20181210000996",
-      "objet": "CSP5 RENOVATION PARTIELLE DU MUSEE CARNAVALET LOT 07",
-      "objet_clair": null,
-      "fournisseur": "ARTECHNIC",
-      "montant_max": 602809.73,
-      "date_notification": "2018-07-10",
-      "preuve": "Objet nomme le lieu : \"RENOVATION PARTIELLE DU MUSEE CARNAVALET LOT 07\"."
-    },
-    {
-      "numero_marche": "20181210000994",
-      "objet": "CSP5 RENOVATION PARTIELLE DU MUSEE CARNAVALET LOT 05",
-      "objet_clair": null,
-      "fournisseur": "ENVIRONNEMENT SERVICES CONSTRUCTION",
-      "montant_max": 562142.19,
-      "date_notification": "2018-07-10",
-      "preuve": "Objet nomme le lieu : \"RENOVATION PARTIELLE DU MUSEE CARNAVALET LOT 05\"."
-    },
-    {
-      "numero_marche": "20171210003002",
-      "objet": "MARCHÉ SUSÉQUENT 3 MOE RENOVATION MUSEE CARNAVALET 3EME",
-      "objet_clair": null,
-      "fournisseur": "CHATILLON ARCHITECTES",
-      "montant_max": 555100.0,
-      "date_notification": "2017-02-16",
-      "preuve": "Objet nomme le lieu et l'arrondissement : \"MOE RENOVATION MUSEE CARNAVALET 3EME\" ; même titulaire (CHATILLON ARCHITECTES, SIRET 51747325200057) que les autres marchés subséquents de MOE du chantier."
-    },
-    {
-      "numero_marche": "20141210010908",
-      "objet": "CSP5 TX FACADES MUSEE CARNAVALET LOT 1",
-      "objet_clair": null,
-      "fournisseur": "EIFFAGE CONSTRUCTION EQUIPEMENTS",
-      "montant_max": 498319.04,
-      "date_notification": "2014-03-07",
-      "preuve": "Objet nomme le lieu : \"TX FACADES MUSEE CARNAVALET LOT 1\" (travaux sur les façades du bâtiment)."
-    },
-    {
-      "numero_marche": "20181210000995",
-      "objet": "CSP5 RENOVATION PARTIELLE DU MUSEE CARNAVALET LOT 06",
-      "objet_clair": null,
-      "fournisseur": "VIDELIO IEC",
-      "montant_max": 337165.24,
-      "date_notification": "2018-07-10",
-      "preuve": "Objet nomme le lieu : \"RENOVATION PARTIELLE DU MUSEE CARNAVALET LOT 06\"."
-    },
-    {
-      "numero_marche": "20141210010910",
-      "objet": "CSP5 TX MENUISERIE MUSEE CARNAVALET LOT 4",
-      "objet_clair": null,
-      "fournisseur": "LES ETABLISSEMENTS GIFFARD",
-      "montant_max": 314035.05,
-      "date_notification": "2014-03-05",
-      "preuve": "Objet nomme le lieu : \"TX MENUISERIE MUSEE CARNAVALET LOT 4\"."
-    },
-    {
-      "numero_marche": "20202020S03798",
-      "objet": "SUBSÉQUENT RÉNOVATION MUSÉE CARNAVALET 23 RUE DE SÉVIGNÉ 3È",
-      "objet_clair": null,
-      "fournisseur": "CHATILLON ARCHITECTES",
-      "montant_max": 219148.88,
-      "date_notification": "2020-07-02",
-      "preuve": "Objet nomme le lieu ET son adresse exacte : \"MUSÉE CARNAVALET 23 RUE DE SÉVIGNÉ 3È\" — adresse confirmée par la délibération 2008 DAC 664 (\"Musée Carnavalet situé 23 rue de Sévigné (3e)\")."
-    },
-    {
-      "numero_marche": "20191210000082",
-      "objet": "CSP5 RENOV PARTIELLE MUSEE CARNAVALET - LOT8 GRAPH MUSEOGRAP",
-      "objet_clair": null,
-      "fournisseur": "MEDICIS",
-      "montant_max": 214086.7,
-      "date_notification": "2019-01-14",
-      "preuve": "Objet nomme le lieu : \"CSP5 RENOV PARTIELLE MUSEE CARNAVALET - LOT8 GRAPH MUSEOGRAP\" (lot 8 du même chantier, libellé tronqué par la source)."
-    },
-    {
-      "numero_marche": "20141210010907",
-      "objet": "CSP5 TX FACADE MUSEE CARNAVALET LOT 3",
-      "objet_clair": null,
-      "fournisseur": "BALAS",
-      "montant_max": 213983.84,
-      "date_notification": "2014-03-07",
-      "preuve": "Objet nomme le lieu : \"TX FACADE MUSEE CARNAVALET LOT 3\"."
-    },
-    {
-      "numero_marche": "20191210000654",
-      "objet": "SUBSÉQUENT RESTRUCTURATION MUSÉE CARNAVALET 75003 SAMO",
-      "objet_clair": null,
-      "fournisseur": "ARTELIA",
-      "montant_max": 203950.0,
-      "date_notification": "2019-06-12",
-      "preuve": "Objet nomme le lieu et le code postal : \"RESTRUCTURATION MUSÉE CARNAVALET 75003\"."
-    },
-    {
-      "numero_marche": "20202020S04397",
-      "objet": "SUBSÉQUENT N°5 MOE ÉTUDES MUSÉOGRAPHIQUES MUSÉE CARNAVALET",
-      "objet_clair": null,
-      "fournisseur": "CHATILLON ARCHITECTES",
-      "montant_max": 178702.52,
-      "date_notification": "2020-09-22",
-      "preuve": "Objet nomme le lieu : \"MOE ÉTUDES MUSÉOGRAPHIQUES MUSÉE CARNAVALET\"."
-    },
-    {
-      "numero_marche": "20131210012301",
-      "objet": "ÉTUDE DE PROGRAMMATION RÉNOVATION GLOBALE MUSÉE CARNAVALET",
-      "objet_clair": null,
-      "fournisseur": "SEBAN",
-      "montant_max": 155575.09,
-      "date_notification": "2014-01-09",
-      "preuve": "Objet nomme le lieu : \"ÉTUDE DE PROGRAMMATION RÉNOVATION GLOBALE MUSÉE CARNAVALET\" ; même objet que la délibération « 2013 DPA 3 - Lancement d'un marché d'assistance à maîtrise d'ouvrage pour l'étude de programmation pour la rénovation globale du musée Carnavalet (3e) »."
-    },
-    {
-      "numero_marche": "20161210005701",
-      "objet": "MARCHÉ SUBSÉQUENT BCT RESTRUCTURATION MUSÉE CARNAVALET",
-      "objet_clair": null,
-      "fournisseur": "QUALICONSULT",
-      "montant_max": 100982.5,
-      "date_notification": "2016-11-15",
-      "preuve": "Objet nomme le lieu : \"MARCHÉ SUBSÉQUENT BCT RESTRUCTURATION MUSÉE CARNAVALET\" — prestation portant sur la restructuration du musée."
-    },
-    {
-      "numero_marche": "20141210010911",
-      "objet": "CSP5 TX MACONNERIE FACADE MUSEE CARNAVALET LOT 2",
-      "objet_clair": null,
-      "fournisseur": "LITHOS FRANCE",
-      "montant_max": 62571.0,
-      "date_notification": "2014-03-06",
-      "preuve": "Objet nomme le lieu : \"TX MACONNERIE FACADE MUSEE CARNAVALET LOT 2\"."
-    },
-    {
-      "numero_marche": "20181210001002",
-      "objet": "CSPS  RENOVATION /RESTRUCTURATION PARTIELLE MUSEE CARNAVALET",
-      "objet_clair": null,
-      "fournisseur": "COORDEF INGENIERIE",
-      "montant_max": 59660.0,
-      "date_notification": "2018-07-10",
-      "preuve": "Objet nomme le lieu : \"CSPS  RENOVATION /RESTRUCTURATION PARTIELLE MUSEE CARNAVALET\" — prestation portant sur le chantier du musée."
-    }
-  ],
-  "mandate": {
-    "par_annee": {
-      "2012": 66806.65,
-      "2013": 433677.11,
-      "2014": 780174.85,
-      "2015": 847037.39,
-      "2016": 2256008.24,
-      "2017": 2527247.49,
-      "2018": 12162405.42,
-      "2019": 17946760.61,
-      "2020": 3337315.59,
-      "2021": 293622.03,
-      "2022": 350808.9
-    },
-    "total_eur": 41001864.28,
-    "operations": [
-      {
-        "ap_cle": "1604484",
-        "ap_texte": "EP MUSEES: MUSEE CARNAVALET ACCESSIBILIT",
-        "mandate_par_annee": {
-          "2016": 1863625.22,
-          "2017": 2524920.7,
-          "2018": 12161649.96,
-          "2019": 17946760.61,
-          "2020": 3336898.27,
-          "2021": 293477.65,
-          "2022": 350808.9
-        },
-        "total_mandate": 38478141.31,
-        "preuve": "Libellé nomme le lieu : \"EP MUSEES: MUSEE CARNAVALET ACCESSIBILIT\" (direction DPA, opérations sous mandat pour l'EP Paris Musées) ; la mise en accessibilité est un axe cité en Conseil de Paris (débat 2013 DPA 3 : \"la nécessaire mise en accessibilité handicapés de tout le musée\").",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604484"
-      },
-      {
-        "ap_cle": "1203893",
-        "ap_texte": "CARNAVALET ACCESSIBILITE  ACCUEIL RENOVA",
-        "mandate_par_annee": {
-          "2014": 678835.96,
-          "2015": 672243.99,
-          "2016": 108500.92
-        },
-        "total_mandate": 1459580.87,
-        "preuve": "Libellé plafonné à 40 caractères par la source : \"CARNAVALET ACCESSIBILITE  ACCUEIL RENOVA\" ; le candidat est reconnu sur la partie distinctive \"carnavalet\" (signal faible : le nom complet du musée n'apparaît pas dans le libellé). Confirmé par le type d'équipement et par le programme documenté : l'opération relève de la mission AFFAIRES CULTURELLES (direction DAC) et son objet (accessibilité, accueil, rénovation) recouvre les orientations décrites en Conseil de Paris pour ce musée — « la nécessaire mise en accessibilité handicapés de tout le musée », « repenser le circuit muséographique » (2013 DPA 3, séance de février 2013). Aucun autre équipement parisien nommé Carnavalet n'apparaît dans les 44 délibérations lues du contexte, ni dans les autres candidats. AP de millésime 2012 (créée avant le transfert de la gestion et de la rénovation des musées à l'EP Paris Musées le 1er janvier 2013 — « Depuis le 1er janvier de cette année, c'est l'établissement public Paris Musées qui gère les musées et aussi leur rénovation », 2013 DPA 3), mandatée sur 2014, 2015, 2016. Rattachement retenu au lieu, mais confiance moyenne : la preuve repose sur un libellé tronqué, pas sur le nom complet.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1203893"
-      },
-      {
-        "ap_cle": "B100/0903893",
-        "ap_texte": "CARNAVALET ACCESSIBILITE  ACCUEIL RENOVA",
-        "mandate_par_annee": {
-          "2012": 32979.95,
-          "2013": 358725.83
-        },
-        "total_mandate": 391705.78,
-        "preuve": "Libellé plafonné à 40 caractères par la source : \"CARNAVALET ACCESSIBILITE  ACCUEIL RENOVA\" ; le candidat est reconnu sur la partie distinctive \"carnavalet\" (signal faible : le nom complet du musée n'apparaît pas dans le libellé). Confirmé par le type d'équipement et par le programme documenté : l'opération relève de la mission AFFAIRES CULTURELLES (direction DAC) et son objet (accessibilité, accueil, rénovation) recouvre les orientations décrites en Conseil de Paris pour ce musée — « la nécessaire mise en accessibilité handicapés de tout le musée », « repenser le circuit muséographique » (2013 DPA 3, séance de février 2013). Aucun autre équipement parisien nommé Carnavalet n'apparaît dans les 44 délibérations lues du contexte, ni dans les autres candidats. AP de millésime 2009 (ligne B100) (créée avant le transfert de la gestion et de la rénovation des musées à l'EP Paris Musées le 1er janvier 2013 — « Depuis le 1er janvier de cette année, c'est l'établissement public Paris Musées qui gère les musées et aussi leur rénovation », 2013 DPA 3), mandatée sur 2012, 2013. Rattachement retenu au lieu, mais confiance moyenne : la preuve repose sur un libellé tronqué, pas sur le nom complet.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903893"
-      },
-      {
-        "ap_cle": "1304484",
-        "ap_texte": "EP MUSEES: MUSEE CARNAVALET ACCESSIBILIT",
-        "mandate_par_annee": {
-          "2014": 101338.89,
-          "2015": 120886.59,
-          "2016": 74076.1,
-          "2017": 1602.02,
-          "2020": 417.32,
-          "2021": 144.38
-        },
-        "total_mandate": 298465.3,
-        "preuve": "Libellé nomme le lieu : \"EP MUSEES: MUSEE CARNAVALET ACCESSIBILIT\" (direction DPA) ; même opération d'accessibilité du musée que l'AP 1604484, millésime antérieur.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1304484"
-      },
-      {
-        "ap_cle": "1504484",
-        "ap_texte": "EPM : MUSEE CARNAVALET ACCESSIBILITE",
-        "mandate_par_annee": {
-          "2016": 153736.08,
-          "2017": -4.0,
-          "2018": 755.46
-        },
-        "total_mandate": 154487.54,
-        "preuve": "Libellé nomme le lieu : \"EPM : MUSEE CARNAVALET ACCESSIBILITE\" (direction DPA, opérations sous mandat pour l'EP Paris Musées), autre millésime de la même opération d'accessibilité.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1504484"
-      },
-      {
-        "ap_cle": "0903893",
-        "ap_texte": "CARNAVALET ACCESSIBILITE  ACCUEIL RENOVA",
-        "mandate_par_annee": {
-          "2015": 53906.81,
-          "2016": 56069.92,
-          "2017": 728.77
-        },
-        "total_mandate": 110705.5,
-        "preuve": "Libellé plafonné à 40 caractères par la source : \"CARNAVALET ACCESSIBILITE  ACCUEIL RENOVA\" ; le candidat est reconnu sur la partie distinctive \"carnavalet\" (signal faible : le nom complet du musée n'apparaît pas dans le libellé). Confirmé par le type d'équipement et par le programme documenté : l'opération relève de la mission AFFAIRES CULTURELLES (direction DAC) et son objet (accessibilité, accueil, rénovation) recouvre les orientations décrites en Conseil de Paris pour ce musée — « la nécessaire mise en accessibilité handicapés de tout le musée », « repenser le circuit muséographique » (2013 DPA 3, séance de février 2013). Aucun autre équipement parisien nommé Carnavalet n'apparaît dans les 44 délibérations lues du contexte, ni dans les autres candidats. AP de millésime 2009 (créée avant le transfert de la gestion et de la rénovation des musées à l'EP Paris Musées le 1er janvier 2013 — « Depuis le 1er janvier de cette année, c'est l'établissement public Paris Musées qui gère les musées et aussi leur rénovation », 2013 DPA 3), mandatée sur 2015, 2016, 2017. Rattachement retenu au lieu, mais confiance moyenne : la preuve repose sur un libellé tronqué, pas sur le nom complet.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903893"
-      },
-      {
-        "ap_cle": "B100/1203893",
-        "ap_texte": "CARNAVALET ACCESSIBILITE  ACCUEIL RENOVA",
-        "mandate_par_annee": {
-          "2012": 33826.7,
-          "2013": 74951.28
-        },
-        "total_mandate": 108777.98,
-        "preuve": "Libellé plafonné à 40 caractères par la source : \"CARNAVALET ACCESSIBILITE  ACCUEIL RENOVA\" ; le candidat est reconnu sur la partie distinctive \"carnavalet\" (signal faible : le nom complet du musée n'apparaît pas dans le libellé). Confirmé par le type d'équipement et par le programme documenté : l'opération relève de la mission AFFAIRES CULTURELLES (direction DAC) et son objet (accessibilité, accueil, rénovation) recouvre les orientations décrites en Conseil de Paris pour ce musée — « la nécessaire mise en accessibilité handicapés de tout le musée », « repenser le circuit muséographique » (2013 DPA 3, séance de février 2013). Aucun autre équipement parisien nommé Carnavalet n'apparaît dans les 44 délibérations lues du contexte, ni dans les autres candidats. AP de millésime 2012 (ligne B100) (créée avant le transfert de la gestion et de la rénovation des musées à l'EP Paris Musées le 1er janvier 2013 — « Depuis le 1er janvier de cette année, c'est l'établissement public Paris Musées qui gère les musées et aussi leur rénovation », 2013 DPA 3), mandatée sur 2012, 2013. Rattachement retenu au lieu, mais confiance moyenne : la preuve repose sur un libellé tronqué, pas sur le nom complet.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1203893"
-      }
-    ],
-    "periode": [
-      "2012",
-      "2022"
-    ],
-    "source": {
-      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-    }
+  "n_bmo_brut": 1575,
+  "n_bmo_verifies": 18,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (47 trouvés)",
+  "lecture_mode_en": "title naming the place (47 found)",
+  "n_lus": 44,
+  "n_lieu": 43
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Entre 1995 et 2018, le musée Carnavalet revient à de nombreuses reprises devant le Conseil de Paris, le plus souvent pour enrichir ses collections : acquisitions d'œuvres — du Recueil Marigny (1.000.000 F, 1995) au portrait de Madame Tallien par le baron Gérard (5.000.000 F, 2001) — et acceptations de legs et donations de particuliers, allant de quelques centaines à plus de 100.000 euros. La Ville engage aussi des travaux sur le bâtiment, du principe de restauration de l'Orangerie de l'hôtel Le Peletier-de-Saint-Fargeau (1999) à la restauration du cabinet doré des salons La Rivière (401.980 euros TTC, 2004), et approuve en 1996 le programme de l'opération archéologique de Bercy et du transfert des fouilles au musée. Ces délibérations autorisent le plus souvent le Maire à signer ou à accepter, et approuvent des principes ou des conventions, sans que leur réalisation soit constatée dans le texte. Le musée est aussi un lieu de débat : en 2003, un élu met en doute l'expertise et l'authenticité d'un tableau en cours d'acquisition ; en 2010, l'opposition critique l'état architectural des musées municipaux. À partir de 2013, le Conseil lance l'étude de programmation (350.000 euros) de la rénovation globale, et un vœu de 2018 réclame un point d'étape avant la réouverture annoncée.",
+ "moments": [
+  {
+   "id": "55014",
+   "seance": "OCTOBRE 1996",
+   "fait": "Le Conseil approuve le programme de l'opération archéologique de Bercy et le transfert des fouilles au musée Carnavalet, et autorise le Maire à signer la convention avec l'État.",
+   "pourquoi": "Les fouilles de Bercy rejoignent le musée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55014",
+   "fait_en": "The Council approved the program for the Bercy archaeological operation and the transfer of the excavation finds to the Musée Carnavalet, and authorized the Mayor to sign the agreement with the State.",
+   "pourquoi_en": "The Bercy excavation finds join the museum"
   },
-  "sources": {
-    "delibs": {
-      "name": "Débat-Délibs — Conseil de Paris",
-      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Carnavalet"
-    },
-    "bmo": {
-      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Mus%C3%A9e+Carnavalet%22%29"
-    },
-    "invest": {
-      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-      "url": "https://opendata.paris.fr/"
-    },
-    "wiki": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
+  {
+   "id": "27459",
+   "seance": "AVRIL 1999",
+   "fait": "Le Conseil approuve le principe des travaux de restauration et d'aménagement intérieur de l'Orangerie de l'hôtel Le Peletier-de-Saint-Fargeau et autorise deux marchés de maîtrise d'œuvre.",
+   "pourquoi": "Premiers grands travaux sur le bâtiment",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27459",
+   "fait_en": "The Council approved the principle of restoration and interior fit-out works at the Orangery of the Hôtel Le Peletier-de-Saint-Fargeau and authorized two project management contracts.",
+   "pourquoi_en": "First major works on the building"
   },
-  "synthese_en": "Between 1995 and 2018, the Musée Carnavalet came before Conseil de Paris on many occasions, most often to enrich its collections: acquisitions of works — from the Recueil Marigny (1,000,000 francs, 1995) to the portrait of Madame Tallien by Baron Gérard (5,000,000 francs, 2001) — and the acceptance of bequests and donations from private individuals, ranging from a few hundred to over 100,000 euros. The City also undertook works on the building, from the principle of restoring the Orangery of the Hôtel Le Peletier-de-Saint-Fargeau (1999) to the restoration of the gilded cabinet of the La Rivière salons (401,980 euros including tax, 2004), and in 1996 approved the program for the Bercy archaeological operation and the transfer of the excavation finds to the museum. These deliberations most often authorized the Mayor to sign or accept, and approved principles or agreements, without the text confirming that they were carried out. The museum was also a site of debate: in 2003, a councillor questioned the expertise behind, and the authenticity of, a painting being acquired; in 2010, the opposition criticized the architectural condition of the City's museums. From 2013, the Council launched the programming study (350,000 euros) for the comprehensive renovation, and a 2018 motion demanded a progress report ahead of the announced reopening.",
-  "bmo_recit_en": "At the start of the 20th century, the museum appears in the municipal bulletin first through its collections: in 1902, the Council referred to the Administration a petition from Mr Le Fustec proposing to acquire for the museum a portrait of President Félix Faure painted by Édouard Krug — the matter was forwarded, not settled. In 1905, a report given in session recalled that the City owned a house at 25 rue de Sévigné, acquired with a view to expanding the museum. Two decades later, in 1926, the archive shows the Council taking up the acceptance of a gift: the heirs of the collector Ernest May, in fulfillment of a wish he had expressed, offered works to the City of Paris for the museum. Over nearly a quarter of a century, the bulletin thus gives a glimpse of these occasional episodes in the same administrative life: walls due to be extended, and collections enriched through gifts and purchase proposals.",
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
+  {
+   "id": "84343",
+   "seance": "SEPTEMBRE 2001",
+   "fait": "Le Conseil autorise le Maire à acquérir le portrait de Madame Tallien par le baron François Gérard pour 5 000 000 F, avec une convention associant la Société des Amis du musée et la baronne Elie de Rothschild.",
+   "pourquoi": "Cinq millions de francs pour un portrait révolutionnaire",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84343",
+   "fait_en": "The Council authorized the Mayor to acquire the portrait of Madame Tallien by Baron François Gérard for 5,000,000 francs, with an agreement involving the Société des Amis du musée and the Baroness Elie de Rothschild.",
+   "pourquoi_en": "Five million francs for a Revolutionary-era portrait"
+  },
+  {
+   "id": "8366",
+   "seance": "JUILLET 2003",
+   "fait": "Lors de l'examen d'une acquisition d'œuvre d'art, Yves POZZO di BORGO conteste le manque d'informations sur l'expertise et l'historique du tableau.",
+   "pourquoi": "Un élu doute de l'authenticité d'un achat",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8366",
+   "fait_en": "During the examination of an art acquisition, Yves POZZO di BORGO challenged the lack of information on the painting's expert appraisal and provenance.",
+   "pourquoi_en": "A councillor doubts the authenticity of a purchase"
+  },
+  {
+   "id": "42905",
+   "seance": "OCTOBRE 2008",
+   "fait": "Le Conseil autorise le Maire à signer une convention avec la Getty Foundation finançant la restauration des boiseries de l'ancien hôtel du duc de Richelieu, pour une recette de 170 500 euros.",
+   "pourquoi": "Une fondation américaine finance les boiseries",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42905",
+   "fait_en": "The Council authorized the Mayor to sign an agreement with the Getty Foundation funding the restoration of the paneling in the former Hôtel du duc de Richelieu, for revenue of 170,500 euros.",
+   "pourquoi_en": "An American foundation funds the paneling"
+  },
+  {
+   "id": "3972",
+   "seance": "FEVRIER 2010",
+   "fait": "Pendant le débat sur les librairies, Hélène MACÉ de LÉPINAY critique l'état architectural des musées municipaux ; Danièle POURTAUD défend la politique de la Ville.",
+   "pourquoi": "L'opposition dénonce l'état des musées",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3972",
+   "fait_en": "During the debate on bookshops, Hélène MACÉ de LÉPINAY criticized the architectural condition of the City's museums; Danièle POURTAUD defended the City's policy.",
+   "pourquoi_en": "The opposition denounces the condition of the museums"
+  },
+  {
+   "id": "111201",
+   "seance": "FEVRIER 2013",
+   "fait": "Le Conseil adopte à l'unanimité le lancement d'un marché d'assistance à maîtrise d'ouvrage (350 000 euros) pour l'étude de programmation de la rénovation globale.",
+   "pourquoi": "Le coup d'envoi de la rénovation globale",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=111201",
+   "fait_en": "The Council unanimously adopted the launch of a project-owner assistance contract (350,000 euros) for the programming study of the comprehensive renovation.",
+   "pourquoi_en": "The starting signal for the comprehensive renovation"
+  },
+  {
+   "id": "142467",
+   "seance": "MAI 2018",
+   "fait": "Un vœu du groupe PPCI demande un point d'étape sur les travaux, la programmation et les objectifs du nouveau musée Carnavalet avant sa réouverture.",
+   "pourquoi": "Avant la réouverture, un vœu réclame des comptes",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=142467",
+   "fait_en": "A motion from the PPCI group called for a progress report on the works, programming, and objectives of the new Musée Carnavalet ahead of its reopening.",
+   "pourquoi_en": "Before the reopening, a motion demands accountability"
   }
+ ],
+ "montants": [
+  {
+   "seance": "MAI 2018",
+   "montant": "110 millions d'euros",
+   "objet": "Plan de rénovation des musées de la Ville cité en séance par Bruno Julliard, premier adjoint",
+   "citation": "grand plan de rénovation des musées de la Ville, à hauteur de 110 millions d'euros, et une quarantaine de millions d'euros pour le musée Carnavalet",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=142467"
+  },
+  {
+   "seance": "MAI 2018",
+   "montant": "une quarantaine de millions d'euros",
+   "objet": "Part estimée pour le musée Carnavalet dans ce plan, selon Bruno Julliard",
+   "citation": "grand plan de rénovation des musées de la Ville, à hauteur de 110 millions d'euros, et une quarantaine de millions d'euros pour le musée Carnavalet",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=142467"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "4.000 euros",
+   "objet": "Valeur d'immobilisation des biens donnés par M. et Mme WISE",
+   "citation": "La valeur d?immobilisation des biens donnés, estimés au total à la somme de 4.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39305"
+  },
+  {
+   "seance": "MAI 2011",
+   "montant": "32.000 euros",
+   "objet": "Valeur d'immobilisation des objets légués par M. Jean CLAVERIE",
+   "citation": "La valeur d?immobilisation des objets légués, estimés à la somme de 32.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97794"
+  },
+  {
+   "seance": "MAI 2006",
+   "montant": "100.000 euros",
+   "objet": "Acquisition d'un tableau de Charles Poërson pour le musée",
+   "citation": "un tableau de Charles Poërson ?Le repos pendant la fuite en Egypte?, pour un montant de 100.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89030"
+  },
+  {
+   "seance": "OCTOBRE 2007",
+   "montant": "60.000 euros",
+   "objet": "Valeur globale de la donation DEVERNE au bénéfice du musée",
+   "citation": "la donation consentie au bénéfice du Musée Carnavalet par M. Michel DEVERNE, laquelle a été estimée à la somme globale de 60.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53349"
+  },
+  {
+   "seance": "MARS 2011",
+   "montant": "4.200 euros",
+   "objet": "Recettes estimées des frais de mise à disposition du personnel d'accueil et de sécurité",
+   "citation": "Les recettes correspondant aux frais de mise à disposition du personnel d?accueil et de sécurité (article 3.4 de la convention) estimées à 4.200 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96708"
+  },
+  {
+   "seance": "JUIN 2007",
+   "montant": "97.000 euros",
+   "objet": "Valeur d'immobilisation des œuvres léguées par Melle Denise POLLIEN",
+   "citation": "La valeur d?immobilisation des ?uvres léguées, estimée à 97.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72214"
+  },
+  {
+   "seance": "NOVEMBRE 2006",
+   "montant": "10.100 euros",
+   "objet": "Valeur d'immobilisation des œuvres léguées par Mlle Renée BERNARD",
+   "citation": "La valeur d?immobilisation des ?uvres léguées, estimée à 10.100 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52303"
+  },
+  {
+   "seance": "FEVRIER 2013",
+   "montant": "350.000 euros",
+   "objet": "Coût global estimé de l'assistance à maîtrise d'ouvrage de programmation",
+   "citation": "il nous est proposé de désigner une assistance à maîtrise d'ouvrage de programmation, réunissant une équipe pluridisciplinaire pour un coût global estimé à 350.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=111201"
+  },
+  {
+   "seance": "FEVRIER 2013",
+   "montant": "30 ou 40 millions d'euros",
+   "objet": "Coût total probable des travaux à venir, estimation avancée en séance par Danièle POURTAUD",
+   "citation": "Il est probable, malheureusement, que la totalité des travaux sera plutôt proche de 30 ou 40 millions d'euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=111201"
+  },
+  {
+   "seance": "DECEMBRE 2005",
+   "montant": "503 euros",
+   "objet": "Valeur d'immobilisation des objets légués par Mme Marie-Louise MOUSSALLI",
+   "citation": "La valeur d?immobilisation des objets légués, estimée à 503 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32865"
+  },
+  {
+   "seance": "SEPTEMBRE 2001",
+   "montant": "5.000.000 F",
+   "objet": "Acquisition du portrait de Madame Tallien par le baron François Gérard",
+   "citation": "est autorisé à acquérir \"le portrait de Madame Tallien, née Thérèse de Cabarrus\" par le Baron François GERARD pour le musée Carnavalet à concurrence de la somme de 5.000.000 F",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84343"
+  },
+  {
+   "seance": "SEPTEMBRE 2001",
+   "montant": "650.000 F",
+   "objet": "Acquisition d'une œuvre de Jacques-Augustin Pajou pour le musée",
+   "citation": "est autorisé à acquérir une ?uvre de Jacques-Augustin Pajou \"Dernière scène de la tragédie Rodogune au Théâtre Français\" pour la somme de 650.000 F",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84805"
+  },
+  {
+   "seance": "SEPTEMBRE 2005",
+   "montant": "200.000 euros",
+   "objet": "Acquisition de l'huile d'Eugène Giraud « Le Bal de l'Opéra »",
+   "citation": "est autorisé à acquérir une huile sur toile d?Eugène Giraud ?Le Bal de l?Opéra? pour le musée Carnavalet, pour une somme de 200.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63367"
+  },
+  {
+   "seance": "OCTOBRE 2007",
+   "montant": "3.500 euros",
+   "objet": "Recettes estimées des frais de mise à disposition du personnel d'accueil et de sécurité",
+   "citation": "Les recettes correspondant aux frais de mise à disposition du personnel d?accueil et de sécurité (article 3-4 de la convention), estimées à 3.500 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53669"
+  },
+  {
+   "seance": "JANVIER 2003",
+   "montant": "21.000 euros",
+   "objet": "Valeur d'immobilisation des biens légués par Mme Ilse BING",
+   "citation": "La valeur d'immobilisation des biens légués, estimée à 21.000 euros au total",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41613"
+  },
+  {
+   "seance": "JUILLET 2003",
+   "montant": "91.000 euros",
+   "objet": "Acquisition de la peinture de Charles Bénazech « L'exécution de Louis XVI »",
+   "citation": "est autorisé à acquérir une peinture de Charles Bénazech \"L'exécution de Louis XVI, le 21 janvier 1793\" pour un montant de 91.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70215"
+  },
+  {
+   "seance": "JUIN 2002",
+   "montant": "216.833,36 euros",
+   "objet": "Achat de photographies de Charles Nègre (collection Jammes)",
+   "citation": "acquérir des photographies de Charles Nègre appartenant à la collection Jammes pour un montant de 216.833,36 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55989"
+  },
+  {
+   "seance": "JUIN 2002",
+   "montant": "106.715 euros",
+   "objet": "Achat d'une série de dix gouaches de Lesueur",
+   "citation": "une série de dix gouaches de Lesueur pour un montant de 106.715 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55989"
+  },
+  {
+   "seance": "JUIN 2002",
+   "montant": "323.548,36 euros",
+   "objet": "Total de l'acquisition",
+   "citation": "soit au total une somme de 323.548,36 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55989"
+  },
+  {
+   "seance": "FEVRIER 2002",
+   "montant": "9.147 euros",
+   "objet": "Valeur d'immobilisation des œuvres léguées par Melle Monique MARTIN LAVALLEE",
+   "citation": "La valeur d'immobilisation des ?uvres léguées, estimée à 9.147 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57965"
+  },
+  {
+   "seance": "DECEMBRE 1999",
+   "montant": "490.400 F",
+   "objet": "Dépense pour l'acquisition de deux daguerréotypes (45.873,75 livres sterling)",
+   "citation": "La dépense relative à cette acquisition, soit 45.873,75 livres sterling équivalant à 490.400 F",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51562"
+  },
+  {
+   "seance": "SEPTEMBRE 2002",
+   "montant": "environ 114.032 euros",
+   "objet": "Valeur d'immobilisation des biens légués par M. Michel PRECOUL",
+   "citation": "La valeur d'immobilisation des biens légués, estimée à environ 114.032 euros au total",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29508"
+  },
+  {
+   "seance": "SEPTEMBRE 2000",
+   "montant": "332.292 F",
+   "objet": "Acquisition d'une œuvre de Jacques-Emile Blanche pour le musée",
+   "citation": "est autorisé à acquérir une oeuvre de Jacques-Emile Blanche pour le musée Carnavalet pour un montant de 332.292 F",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28590"
+  },
+  {
+   "seance": "SEPTEMBRE 2001",
+   "montant": "17.500 F",
+   "objet": "Valeur d'immobilisation des œuvres léguées par Mme Roberte JOUVE (musée et bibliothèque)",
+   "citation": "La valeur d'immobilisation des ?uvres léguées, estimée à 17.500 F au total",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84874"
+  },
+  {
+   "seance": "SEPTEMBRE 1995",
+   "montant": "1.000.000 F",
+   "objet": "Acquisition du Recueil Marigny auprès de M. Antoine Mouradian",
+   "citation": "restituant l'intégralité des projets du concours de 1753 pour la place de la Concorde, vendu par M. Antoine MOURADIAN pour la somme de 1.000.000 F",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=1647"
+  },
+  {
+   "seance": "JUILLET 1998",
+   "montant": "70.000 F",
+   "objet": "Valeur des dessins et tableaux légués par Melle Claude PORTEFIN, après réduction",
+   "citation": "lequel après réduction se compose de dessins et tableaux, estimés au total à 70.000 F",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82603"
+  },
+  {
+   "seance": "MARS 2003",
+   "montant": "1.524,49 euros",
+   "objet": "Valeur d'immobilisation du bien légué par M. Jacques Laurent dit Cecil Saint-Laurent",
+   "citation": "La valeur d'immobilisation du bien légué, estimée à 1.524,49 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68886"
+  },
+  {
+   "seance": "OCTOBRE 2008",
+   "montant": "170.500 euros",
+   "objet": "Recette constatée du financement de la Getty Foundation pour la restauration des boiseries",
+   "citation": "La recette sera constatée à hauteur de 170.500 euros sur le budget d?investissement de la Ville de Paris de 2008",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42905"
+  },
+  {
+   "seance": "JUIN 1997",
+   "montant": "60.000 F T.T.C.",
+   "objet": "Aide financière de la Fondation Florence Gould apportée au musée Carnavalet",
+   "citation": "M. le Maire de Paris est autorisé à accepter l'aide financière, d'un montant de 60.000 F T.T.C., que la Fondation Florence Gould est disposée à apporter au musée Carnavalet",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42298"
+  },
+  {
+   "seance": "OCTOBRE 1996",
+   "montant": "4.000.000 F H.T.",
+   "objet": "Programme de l'opération archéologique de Bercy et du transfert des fouilles au musée",
+   "citation": "Est approuvé le programme relatif à l'opération archéologique de Bercy et au transfert des fouilles au musée Carnavalet, fixé à la somme de 4.000.000 F H.T., soit 4.824.000 F T.T.C.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55014"
+  },
+  {
+   "seance": "OCTOBRE 1996",
+   "montant": "2.000.000 F H.T.",
+   "objet": "Subvention sollicitée de l'État, soit 50 % du montant hors taxes du programme",
+   "citation": "autorisé à solliciter de l'Etat l'attribution de la subvention de 2.000.000 F H.T., au titre du programme décrit ci-dessus, soit 50 % du montant hors taxes de ce programme",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55014"
+  },
+  {
+   "seance": "SEPTEMBRE 2004",
+   "montant": "401.980 euros TTC",
+   "objet": "Dépense imputée pour la restauration du cabinet doré des salons La Rivière",
+   "citation": "au bloc1, rubrique 322, code nature 2316 pour un montant de 401.980 euros TTC, par prélèvement sur le compte de provision 4000-1-99§003",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46049"
+  }
+ ],
+ "bmo_extraits": [
+  {
+   "date": "1902-04-04",
+   "extrait": "Conformément aux conclusions présentées par M. John Labusquière, au nom de la 4e Commission, Renvoie à l'Administration une pétition de M. Le Fustec proposant l'acquisition pour le musée Carnavalet d'un portrait du président Félix Faure, par Edouard Krug",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64533705/f14.item",
+   "extrait_en": "In accordance with the findings presented by Mr John Labusquière, on behalf of the 4th Commission, refers to the Administration a petition from Mr Le Fustec proposing the acquisition for the Musée Carnavalet of a portrait of President Félix Faure, by Édouard Krug"
+  },
+  {
+   "date": "1905-12-16",
+   "extrait": "Achille, au nom de la 28 Commission. — Messieurs, la ville de Paris est propriétaire d'une maison située rue de Sévigné, n° 25, dont l'acquisition a été faite en vue de l'agrandissement du musée Carnavalet , auquel elle est",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6343248g/f7.item",
+   "extrait_en": "Achille, on behalf of the 28th Commission. — Gentlemen, the city of Paris owns a house located at 25 rue de Sévigné, which was purchased with a view to the expansion of the Musée Carnavalet, to which it is"
+  },
+  {
+   "date": "1926-03-20",
+   "extrait": "de M. Guillaumin, président 56. - Acceptation d'un don fait au musée Carnavalet par les héritiers de M. Ernest May … M. d'Andigné, au nom de la 4e Commission. — Messieurs, en exécution d'un désir exprimé par l'éminent collectionneur M. Ernest May, ses héritiers offrent à la Vil",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6291215m/f20.item",
+   "extrait_en": "by Mr Guillaumin, chairman 56. — Acceptance of a gift made to the Musée Carnavalet by the heirs of Mr Ernest May … Mr d'Andigné, on behalf of the 4th Commission. — Gentlemen, in fulfillment of a wish expressed by the eminent collector Mr Ernest May, his heirs are offering to the Ci"
+  }
+ ],
+ "bmo_recit": "Au début du XXe siècle, le musée apparaît dans le Bulletin municipal d'abord par ses collections : en 1902, le Conseil renvoie à l'Administration une pétition de M. Le Fustec proposant d'acquérir pour le musée un portrait du président Félix Faure peint par Édouard Krug — la question est transmise, non tranchée. En 1905, un rapport en séance rappelle que la Ville est propriétaire d'une maison au 25 rue de Sévigné, acquise en vue de l'agrandissement du musée. Deux décennies plus tard, en 1926, l'archive montre le Conseil saisi de l'acceptation d'un don : les héritiers du collectionneur Ernest May, en exécution d'un désir qu'il avait exprimé, offrent des œuvres à la Ville de Paris pour le musée. Sur près d'un quart de siècle, le Bulletin donne ainsi à voir ces épisodes ponctuels d'une même vie administrative : des murs qu'on prévoit d'étendre et des collections qui s'enrichissent par dons et propositions d'achat.",
+ "delibs_par_annee": {
+  "1997": [
+   {
+    "reference": "1997 DPA 116",
+    "titre": "Approbation du principe de la réalisation des travaux de grosses réparations sur les réseaux d'assainissement et les maçonneries des caves au musée Carnavalet (3e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "seance": "JUIN 1997",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39983"
+   }
+  ],
+  "1999": [
+   {
+    "reference": "1999 DAC 279",
+    "titre": "Approbation des modalités d'attribution d'un marché pour le déménagement et l'installation dans le dépôt archéologique, situé sous la grande terrasse du parc de Bercy \"Les jardins de la mémoire\" (12e) d'objets archéologiques entreposés au musée Carnavalet (3e) à l'Hôtel de Saint-Aignan (3e) et au 11 bis, rue Claude-Terrasse (16e). - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "seance": "OCTOBRE 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42458"
+   },
+   {
+    "reference": "1999 DAC 65",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec l'association des \"Amis du musée Carnavalet\" (3e) une convention d'objectifs. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "seance": "AVRIL 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27405"
+   },
+   {
+    "reference": "1999 DPA 111",
+    "titre": "Approbation du principe de la réalisation de travaux, d'une part, de consolidation de l'escalier Mansart et de souches de cheminée, de mise en sécurité de la façade sud de la cour Louis XIV, et, d'autre part, de mise aux normes des installations de sécurité anti-intrusion et incendie, et de remplacement de parquets, au musée Carnavalet, 23, rue de Sévigné (3e). - Approbation des modalités d'attribution des marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits",
+    "seance": "JUIN 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75791"
+   },
+   {
+    "reference": "1999 DPA 98",
+    "titre": "Approbation du principe de la réalisation des travaux de restauration et d'aménagement intérieur de l'Orangerie de l'hôtel \"Le Peletier-de-Saint-Fargeau\" - Musée Carnavalet (3e). - Autorisation à M. le Maire de Paris de signer les 2 marchés de maîtrise d'oeuvre correspondants - Autorisation à M. le Maire de Paris de déposer les dossiers de permis de démolir et de construire correspondant à ces travaux. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "seance": "AVRIL 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27459"
+   }
+  ],
+  "2000": [
+   {
+    "reference": "2000 DAC 93",
+    "titre": "Approbation des modalités d'attribution de 2 marchés pour le déménagement, l'installation et le montage des objets qui doivent être présentés dans l'Orangerie du musée Carnavalet (3e). - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "seance": "AVRIL 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51087"
+   }
+  ],
+  "2004": [
+   {
+    "reference": "2004 DAC 296",
+    "titre": "Approbation des modalités de passation de 3 marchés pour la restauration des boiseries, dorures et peintures du cabinet doré des salons La Rivière du musée Carnavalet, en application de l'article 30 du Code des Marchés Publics et du décret N°2004-15 du 7 janvier 2004.- Autorisation à M. le Maire de Paris de signer les 3 marchés correspondants. Mme Sandrine MAZETIER, rapporteure.",
+    "seance": "SEPTEMBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46049"
+   }
+  ],
+  "2005": [
+   {
+    "reference": "2005 DAC 591",
+    "titre": "Autorisation à M. le Maire de Paris de signer deux avenants aux deux marchés de prestations de services conclus en application de l’article 30 du code des marchés publics pour la restauration des boiseries et peintures du cabinet doré des salons “La Rivière” appartenant aux collections du musée Carnavalet, musée de l’histoire de Paris. Mme Moïra GUILMART, rapporteure.",
+    "seance": "NOVEMBRE 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90830"
+   }
+  ],
+  "2007": [
+   {
+    "reference": "2007 DAC 357",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention d’objectifs entre la Ville de Paris et l’association “Les Amis du musée Carnavalet”. Mme Moïra GUILMART, rapporteure.",
+    "seance": "OCTOBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53669"
+   }
+  ],
+  "2008": [
+   {
+    "reference": "2008 DAC 560",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention de partenariat avec la Getty Foundation visant à soutenir un programme de restauration et de recherche portant sur les boiseries de l’ancien hôtel du duc de Richelieu, appartenant aux collections du musée Carnavalet. Mme Colombe BROSSEL, rapporteure.",
+    "seance": "OCTOBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42905"
+   },
+   {
+    "reference": "2008 DAC 664",
+    "titre": "Convention d’occupation du domaine public concernant l’établissement “La Librairie du Musée Carnavalet” situé 23 rue de Sévigné (3e). Mme Colombe BROSSEL, rapporteure.",
+    "seance": "DECEMBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78064"
+   },
+   {
+    "reference": "2008 DAC 86",
+    "titre": "Autorisation à Monsieur le Maire de signer une convention d’occupation du domaine public avec Art Zones pour la gestion de la librairie du musée Carnavalet. Mme Moïra GUILMART, rapporteure.",
+    "seance": "FEVRIER 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=76986"
+   }
+  ],
+  "2009": [
+   {
+    "reference": "2009 DAC 519",
+    "titre": "Signature d'une convention de partenariat liant le musée Carnavalet et le musée d’Art et d’Histoire du Judaïsme (MAHJ) à l’occasion de l’exposition \"La splendeur des Camondo, de Constantinople à Paris (1806-1944)\" présentée au MAHJ. Mme Danièle POURTAUD, rapporteure.",
+    "seance": "OCTOBRE 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93180"
+   }
+  ],
+  "2010": [
+   {
+    "reference": "2010 DAC 124",
+    "titre": "Convention d’occupation du domaine public concernant les établissements dénommés La Librairie du Petit Palais, situé au musée des Beaux-Arts de la Ville de Paris, 1 avenue Dutuit(8e) et La Librairie du Musée Carnavalet situé au 23 rue de Sévigné(3e). Mme Danièle POURTAUD, rapporteure.",
+    "seance": "FEVRIER 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79257"
+   },
+   {
+    "reference": "2010 DAC 124",
+    "titre": "2010, DAC 124 - Signature de conventions d'occupation du domaine public concernant les établissements dénommés La Librairie du Petit Palais, situé au musée des Beaux-Arts de la Ville de Paris, 1 avenue Dutuit (8e) et La Librairie du Musée Carnavalet, 23 rue de Sévigné (3e).",
+    "seance": "FEVRIER 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3972"
+   }
+  ],
+  "2011": [
+   {
+    "reference": "2011 DAC 19",
+    "titre": "Signature d’une convention d’objectifs liant la Ville de Paris à l’association Les Amis du Musée Carnavalet pour l’attribution d’une subvention. Mme Danièle POURTAUD, rapporteure.",
+    "seance": "MARS 2011",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96708"
+   }
+  ],
+  "2013": [
+   {
+    "reference": "2013 DPA 3",
+    "titre": "2013 DPA 3 - Lancement d'un marché d'assistance à maîtrise d'ouvrage pour l'étude de programmation pour la rénovation globale du musée Carnavalet (3e) et modalités de passation du marché d'assistance à maîtrise d'ouvrage.",
+    "seance": "FEVRIER 2013",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=111201"
+   }
+  ]
+ },
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20171210001782",
+   "objet": "CSP5 RENOVATION PARTIELLE MUSEE CARNAVALET-LOT3 BATIMENT TCE",
+   "objet_clair": null,
+   "fournisseur": "BOUYGUES BATIMENT ILE DE FRANCE",
+   "montant_max": 25957872.68,
+   "date_notification": "2017-11-27",
+   "preuve": "Objet nomme le lieu : \"CSP5 RENOVATION PARTIELLE MUSEE CARNAVALET-LOT3 BATIMENT TCE\" — travaux sur le bâtiment du musée. Le chantier de rénovation est documenté en Conseil de Paris (2013 DPA 3, « rénovation globale du musée Carnavalet (3e) » ; vœu de mai 2018 : « C'est un musée en travaux, qui va rouvrir l'année prochaine »)."
+  },
+  {
+   "numero_marche": "20181210020013",
+   "objet": "CSP5 RENOV PARTIELLE MUSEE CARNAVALET AMENAGT MUSEOGRAPHIQUE",
+   "objet_clair": null,
+   "fournisseur": "VITRINEN-UND",
+   "montant_max": 3605352.0,
+   "date_notification": "2018-06-18",
+   "preuve": "Objet nomme le lieu : \"CSP5 RENOV PARTIELLE MUSEE CARNAVALET AMENAGT MUSEOGRAPHIQUE\" ; l'aménagement muséographique fait partie des orientations de la rénovation citées en Conseil de Paris (« repenser le circuit muséographique », 2013 DPA 3)."
+  },
+  {
+   "numero_marche": "20161210000654",
+   "objet": "MARCHÉ SUBSÉQUENT 2 MOE RENOVATION MUSEE CARNAVALET 3EME",
+   "objet_clair": null,
+   "fournisseur": "CHATILLON ARCHITECTES",
+   "montant_max": 3253221.47,
+   "date_notification": "2016-05-25",
+   "preuve": "Objet nomme le lieu et l'arrondissement : \"MOE RENOVATION MUSEE CARNAVALET 3EME\" — le musée est bien dans le 3e (23 rue de Sévigné, délib 2008 DAC 664)."
+  },
+  {
+   "numero_marche": "20151210020012",
+   "objet": "MARCHÉ SUBSÉQUENT MOE RÉNOVATION DU MUSÉE CARNAVALET 75003",
+   "objet_clair": null,
+   "fournisseur": "CHATILLON ARCHITECTES",
+   "montant_max": 1896816.68,
+   "date_notification": "2015-12-17",
+   "preuve": "Objet nomme le lieu et le code postal : \"MOE RÉNOVATION DU MUSÉE CARNAVALET 75003\"."
+  },
+  {
+   "numero_marche": "20171210000854",
+   "objet": "CSP5 TVX RENOVATION PARTIELLE MUSEE CARNAVALET LOT1",
+   "objet_clair": null,
+   "fournisseur": "AVENIR DECONSTRUCTION",
+   "montant_max": 783890.0,
+   "date_notification": "2017-06-02",
+   "preuve": "Objet nomme le lieu : \"TVX RENOVATION PARTIELLE MUSEE CARNAVALET LOT1\"."
+  },
+  {
+   "numero_marche": "20181210000996",
+   "objet": "CSP5 RENOVATION PARTIELLE DU MUSEE CARNAVALET LOT 07",
+   "objet_clair": null,
+   "fournisseur": "ARTECHNIC",
+   "montant_max": 602809.73,
+   "date_notification": "2018-07-10",
+   "preuve": "Objet nomme le lieu : \"RENOVATION PARTIELLE DU MUSEE CARNAVALET LOT 07\"."
+  },
+  {
+   "numero_marche": "20181210000994",
+   "objet": "CSP5 RENOVATION PARTIELLE DU MUSEE CARNAVALET LOT 05",
+   "objet_clair": null,
+   "fournisseur": "ENVIRONNEMENT SERVICES CONSTRUCTION",
+   "montant_max": 562142.19,
+   "date_notification": "2018-07-10",
+   "preuve": "Objet nomme le lieu : \"RENOVATION PARTIELLE DU MUSEE CARNAVALET LOT 05\"."
+  },
+  {
+   "numero_marche": "20171210003002",
+   "objet": "MARCHÉ SUSÉQUENT 3 MOE RENOVATION MUSEE CARNAVALET 3EME",
+   "objet_clair": null,
+   "fournisseur": "CHATILLON ARCHITECTES",
+   "montant_max": 555100.0,
+   "date_notification": "2017-02-16",
+   "preuve": "Objet nomme le lieu et l'arrondissement : \"MOE RENOVATION MUSEE CARNAVALET 3EME\" ; même titulaire (CHATILLON ARCHITECTES, SIRET 51747325200057) que les autres marchés subséquents de MOE du chantier."
+  },
+  {
+   "numero_marche": "20141210010908",
+   "objet": "CSP5 TX FACADES MUSEE CARNAVALET LOT 1",
+   "objet_clair": null,
+   "fournisseur": "EIFFAGE CONSTRUCTION EQUIPEMENTS",
+   "montant_max": 498319.04,
+   "date_notification": "2014-03-07",
+   "preuve": "Objet nomme le lieu : \"TX FACADES MUSEE CARNAVALET LOT 1\" (travaux sur les façades du bâtiment)."
+  },
+  {
+   "numero_marche": "20181210000995",
+   "objet": "CSP5 RENOVATION PARTIELLE DU MUSEE CARNAVALET LOT 06",
+   "objet_clair": null,
+   "fournisseur": "VIDELIO IEC",
+   "montant_max": 337165.24,
+   "date_notification": "2018-07-10",
+   "preuve": "Objet nomme le lieu : \"RENOVATION PARTIELLE DU MUSEE CARNAVALET LOT 06\"."
+  },
+  {
+   "numero_marche": "20141210010910",
+   "objet": "CSP5 TX MENUISERIE MUSEE CARNAVALET LOT 4",
+   "objet_clair": null,
+   "fournisseur": "LES ETABLISSEMENTS GIFFARD",
+   "montant_max": 314035.05,
+   "date_notification": "2014-03-05",
+   "preuve": "Objet nomme le lieu : \"TX MENUISERIE MUSEE CARNAVALET LOT 4\"."
+  },
+  {
+   "numero_marche": "20202020S03798",
+   "objet": "SUBSÉQUENT RÉNOVATION MUSÉE CARNAVALET 23 RUE DE SÉVIGNÉ 3È",
+   "objet_clair": null,
+   "fournisseur": "CHATILLON ARCHITECTES",
+   "montant_max": 219148.88,
+   "date_notification": "2020-07-02",
+   "preuve": "Objet nomme le lieu ET son adresse exacte : \"MUSÉE CARNAVALET 23 RUE DE SÉVIGNÉ 3È\" — adresse confirmée par la délibération 2008 DAC 664 (\"Musée Carnavalet situé 23 rue de Sévigné (3e)\")."
+  },
+  {
+   "numero_marche": "20191210000082",
+   "objet": "CSP5 RENOV PARTIELLE MUSEE CARNAVALET - LOT8 GRAPH MUSEOGRAP",
+   "objet_clair": null,
+   "fournisseur": "MEDICIS",
+   "montant_max": 214086.7,
+   "date_notification": "2019-01-14",
+   "preuve": "Objet nomme le lieu : \"CSP5 RENOV PARTIELLE MUSEE CARNAVALET - LOT8 GRAPH MUSEOGRAP\" (lot 8 du même chantier, libellé tronqué par la source)."
+  },
+  {
+   "numero_marche": "20141210010907",
+   "objet": "CSP5 TX FACADE MUSEE CARNAVALET LOT 3",
+   "objet_clair": null,
+   "fournisseur": "BALAS",
+   "montant_max": 213983.84,
+   "date_notification": "2014-03-07",
+   "preuve": "Objet nomme le lieu : \"TX FACADE MUSEE CARNAVALET LOT 3\"."
+  },
+  {
+   "numero_marche": "20191210000654",
+   "objet": "SUBSÉQUENT RESTRUCTURATION MUSÉE CARNAVALET 75003 SAMO",
+   "objet_clair": null,
+   "fournisseur": "ARTELIA",
+   "montant_max": 203950.0,
+   "date_notification": "2019-06-12",
+   "preuve": "Objet nomme le lieu et le code postal : \"RESTRUCTURATION MUSÉE CARNAVALET 75003\"."
+  },
+  {
+   "numero_marche": "20202020S04397",
+   "objet": "SUBSÉQUENT N°5 MOE ÉTUDES MUSÉOGRAPHIQUES MUSÉE CARNAVALET",
+   "objet_clair": null,
+   "fournisseur": "CHATILLON ARCHITECTES",
+   "montant_max": 178702.52,
+   "date_notification": "2020-09-22",
+   "preuve": "Objet nomme le lieu : \"MOE ÉTUDES MUSÉOGRAPHIQUES MUSÉE CARNAVALET\"."
+  },
+  {
+   "numero_marche": "20131210012301",
+   "objet": "ÉTUDE DE PROGRAMMATION RÉNOVATION GLOBALE MUSÉE CARNAVALET",
+   "objet_clair": null,
+   "fournisseur": "SEBAN",
+   "montant_max": 155575.09,
+   "date_notification": "2014-01-09",
+   "preuve": "Objet nomme le lieu : \"ÉTUDE DE PROGRAMMATION RÉNOVATION GLOBALE MUSÉE CARNAVALET\" ; même objet que la délibération « 2013 DPA 3 - Lancement d'un marché d'assistance à maîtrise d'ouvrage pour l'étude de programmation pour la rénovation globale du musée Carnavalet (3e) »."
+  },
+  {
+   "numero_marche": "20161210005701",
+   "objet": "MARCHÉ SUBSÉQUENT BCT RESTRUCTURATION MUSÉE CARNAVALET",
+   "objet_clair": null,
+   "fournisseur": "QUALICONSULT",
+   "montant_max": 100982.5,
+   "date_notification": "2016-11-15",
+   "preuve": "Objet nomme le lieu : \"MARCHÉ SUBSÉQUENT BCT RESTRUCTURATION MUSÉE CARNAVALET\" — prestation portant sur la restructuration du musée."
+  },
+  {
+   "numero_marche": "20141210010911",
+   "objet": "CSP5 TX MACONNERIE FACADE MUSEE CARNAVALET LOT 2",
+   "objet_clair": null,
+   "fournisseur": "LITHOS FRANCE",
+   "montant_max": 62571.0,
+   "date_notification": "2014-03-06",
+   "preuve": "Objet nomme le lieu : \"TX MACONNERIE FACADE MUSEE CARNAVALET LOT 2\"."
+  },
+  {
+   "numero_marche": "20181210001002",
+   "objet": "CSPS  RENOVATION /RESTRUCTURATION PARTIELLE MUSEE CARNAVALET",
+   "objet_clair": null,
+   "fournisseur": "COORDEF INGENIERIE",
+   "montant_max": 59660.0,
+   "date_notification": "2018-07-10",
+   "preuve": "Objet nomme le lieu : \"CSPS  RENOVATION /RESTRUCTURATION PARTIELLE MUSEE CARNAVALET\" — prestation portant sur le chantier du musée."
+  }
+ ],
+ "mandate": {
+  "par_annee": {
+   "2012": 66806.65,
+   "2013": 433677.11,
+   "2014": 780174.85,
+   "2015": 847037.39,
+   "2016": 2256008.24,
+   "2017": 2527247.49,
+   "2018": 12162405.42,
+   "2019": 17946760.61,
+   "2020": 3337315.59,
+   "2021": 293622.03,
+   "2022": 350808.9
+  },
+  "total_eur": 41001864.28,
+  "operations": [
+   {
+    "ap_cle": "1604484",
+    "ap_texte": "EP MUSEES: MUSEE CARNAVALET ACCESSIBILIT",
+    "mandate_par_annee": {
+     "2016": 1863625.22,
+     "2017": 2524920.7,
+     "2018": 12161649.96,
+     "2019": 17946760.61,
+     "2020": 3336898.27,
+     "2021": 293477.65,
+     "2022": 350808.9
+    },
+    "total_mandate": 38478141.31,
+    "preuve": "Libellé nomme le lieu : \"EP MUSEES: MUSEE CARNAVALET ACCESSIBILIT\" (direction DPA, opérations sous mandat pour l'EP Paris Musées) ; la mise en accessibilité est un axe cité en Conseil de Paris (débat 2013 DPA 3 : \"la nécessaire mise en accessibilité handicapés de tout le musée\").",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604484"
+   },
+   {
+    "ap_cle": "1203893",
+    "ap_texte": "CARNAVALET ACCESSIBILITE  ACCUEIL RENOVA",
+    "mandate_par_annee": {
+     "2014": 678835.96,
+     "2015": 672243.99,
+     "2016": 108500.92
+    },
+    "total_mandate": 1459580.87,
+    "preuve": "Libellé plafonné à 40 caractères par la source : \"CARNAVALET ACCESSIBILITE  ACCUEIL RENOVA\" ; le candidat est reconnu sur la partie distinctive \"carnavalet\" (signal faible : le nom complet du musée n'apparaît pas dans le libellé). Confirmé par le type d'équipement et par le programme documenté : l'opération relève de la mission AFFAIRES CULTURELLES (direction DAC) et son objet (accessibilité, accueil, rénovation) recouvre les orientations décrites en Conseil de Paris pour ce musée — « la nécessaire mise en accessibilité handicapés de tout le musée », « repenser le circuit muséographique » (2013 DPA 3, séance de février 2013). Aucun autre équipement parisien nommé Carnavalet n'apparaît dans les 44 délibérations lues du contexte, ni dans les autres candidats. AP de millésime 2012 (créée avant le transfert de la gestion et de la rénovation des musées à l'EP Paris Musées le 1er janvier 2013 — « Depuis le 1er janvier de cette année, c'est l'établissement public Paris Musées qui gère les musées et aussi leur rénovation », 2013 DPA 3), mandatée sur 2014, 2015, 2016. Rattachement retenu au lieu, mais confiance moyenne : la preuve repose sur un libellé tronqué, pas sur le nom complet.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1203893"
+   },
+   {
+    "ap_cle": "B100/0903893",
+    "ap_texte": "CARNAVALET ACCESSIBILITE  ACCUEIL RENOVA",
+    "mandate_par_annee": {
+     "2012": 32979.95,
+     "2013": 358725.83
+    },
+    "total_mandate": 391705.78,
+    "preuve": "Libellé plafonné à 40 caractères par la source : \"CARNAVALET ACCESSIBILITE  ACCUEIL RENOVA\" ; le candidat est reconnu sur la partie distinctive \"carnavalet\" (signal faible : le nom complet du musée n'apparaît pas dans le libellé). Confirmé par le type d'équipement et par le programme documenté : l'opération relève de la mission AFFAIRES CULTURELLES (direction DAC) et son objet (accessibilité, accueil, rénovation) recouvre les orientations décrites en Conseil de Paris pour ce musée — « la nécessaire mise en accessibilité handicapés de tout le musée », « repenser le circuit muséographique » (2013 DPA 3, séance de février 2013). Aucun autre équipement parisien nommé Carnavalet n'apparaît dans les 44 délibérations lues du contexte, ni dans les autres candidats. AP de millésime 2009 (ligne B100) (créée avant le transfert de la gestion et de la rénovation des musées à l'EP Paris Musées le 1er janvier 2013 — « Depuis le 1er janvier de cette année, c'est l'établissement public Paris Musées qui gère les musées et aussi leur rénovation », 2013 DPA 3), mandatée sur 2012, 2013. Rattachement retenu au lieu, mais confiance moyenne : la preuve repose sur un libellé tronqué, pas sur le nom complet.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903893"
+   },
+   {
+    "ap_cle": "1304484",
+    "ap_texte": "EP MUSEES: MUSEE CARNAVALET ACCESSIBILIT",
+    "mandate_par_annee": {
+     "2014": 101338.89,
+     "2015": 120886.59,
+     "2016": 74076.1,
+     "2017": 1602.02,
+     "2020": 417.32,
+     "2021": 144.38
+    },
+    "total_mandate": 298465.3,
+    "preuve": "Libellé nomme le lieu : \"EP MUSEES: MUSEE CARNAVALET ACCESSIBILIT\" (direction DPA) ; même opération d'accessibilité du musée que l'AP 1604484, millésime antérieur.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1304484"
+   },
+   {
+    "ap_cle": "1504484",
+    "ap_texte": "EPM : MUSEE CARNAVALET ACCESSIBILITE",
+    "mandate_par_annee": {
+     "2016": 153736.08,
+     "2017": -4.0,
+     "2018": 755.46
+    },
+    "total_mandate": 154487.54,
+    "preuve": "Libellé nomme le lieu : \"EPM : MUSEE CARNAVALET ACCESSIBILITE\" (direction DPA, opérations sous mandat pour l'EP Paris Musées), autre millésime de la même opération d'accessibilité.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1504484"
+   },
+   {
+    "ap_cle": "0903893",
+    "ap_texte": "CARNAVALET ACCESSIBILITE  ACCUEIL RENOVA",
+    "mandate_par_annee": {
+     "2015": 53906.81,
+     "2016": 56069.92,
+     "2017": 728.77
+    },
+    "total_mandate": 110705.5,
+    "preuve": "Libellé plafonné à 40 caractères par la source : \"CARNAVALET ACCESSIBILITE  ACCUEIL RENOVA\" ; le candidat est reconnu sur la partie distinctive \"carnavalet\" (signal faible : le nom complet du musée n'apparaît pas dans le libellé). Confirmé par le type d'équipement et par le programme documenté : l'opération relève de la mission AFFAIRES CULTURELLES (direction DAC) et son objet (accessibilité, accueil, rénovation) recouvre les orientations décrites en Conseil de Paris pour ce musée — « la nécessaire mise en accessibilité handicapés de tout le musée », « repenser le circuit muséographique » (2013 DPA 3, séance de février 2013). Aucun autre équipement parisien nommé Carnavalet n'apparaît dans les 44 délibérations lues du contexte, ni dans les autres candidats. AP de millésime 2009 (créée avant le transfert de la gestion et de la rénovation des musées à l'EP Paris Musées le 1er janvier 2013 — « Depuis le 1er janvier de cette année, c'est l'établissement public Paris Musées qui gère les musées et aussi leur rénovation », 2013 DPA 3), mandatée sur 2015, 2016, 2017. Rattachement retenu au lieu, mais confiance moyenne : la preuve repose sur un libellé tronqué, pas sur le nom complet.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903893"
+   },
+   {
+    "ap_cle": "B100/1203893",
+    "ap_texte": "CARNAVALET ACCESSIBILITE  ACCUEIL RENOVA",
+    "mandate_par_annee": {
+     "2012": 33826.7,
+     "2013": 74951.28
+    },
+    "total_mandate": 108777.98,
+    "preuve": "Libellé plafonné à 40 caractères par la source : \"CARNAVALET ACCESSIBILITE  ACCUEIL RENOVA\" ; le candidat est reconnu sur la partie distinctive \"carnavalet\" (signal faible : le nom complet du musée n'apparaît pas dans le libellé). Confirmé par le type d'équipement et par le programme documenté : l'opération relève de la mission AFFAIRES CULTURELLES (direction DAC) et son objet (accessibilité, accueil, rénovation) recouvre les orientations décrites en Conseil de Paris pour ce musée — « la nécessaire mise en accessibilité handicapés de tout le musée », « repenser le circuit muséographique » (2013 DPA 3, séance de février 2013). Aucun autre équipement parisien nommé Carnavalet n'apparaît dans les 44 délibérations lues du contexte, ni dans les autres candidats. AP de millésime 2012 (ligne B100) (créée avant le transfert de la gestion et de la rénovation des musées à l'EP Paris Musées le 1er janvier 2013 — « Depuis le 1er janvier de cette année, c'est l'établissement public Paris Musées qui gère les musées et aussi leur rénovation », 2013 DPA 3), mandatée sur 2012, 2013. Rattachement retenu au lieu, mais confiance moyenne : la preuve repose sur un libellé tronqué, pas sur le nom complet.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1203893"
+   }
+  ],
+  "periode": [
+   "2012",
+   "2022"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Carnavalet"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Mus%C3%A9e+Carnavalet%22%29"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "Between 1995 and 2018, the Musée Carnavalet came before Conseil de Paris on many occasions, most often to enrich its collections: acquisitions of works — from the Recueil Marigny (1,000,000 francs, 1995) to the portrait of Madame Tallien by Baron Gérard (5,000,000 francs, 2001) — and the acceptance of bequests and donations from private individuals, ranging from a few hundred to over 100,000 euros. The City also undertook works on the building, from the principle of restoring the Orangery of the Hôtel Le Peletier-de-Saint-Fargeau (1999) to the restoration of the gilded cabinet of the La Rivière salons (401,980 euros including tax, 2004), and in 1996 approved the program for the Bercy archaeological operation and the transfer of the excavation finds to the museum. These deliberations most often authorized the Mayor to sign or accept, and approved principles or agreements, without the text confirming that they were carried out. The museum was also a site of debate: in 2003, a councillor questioned the expertise behind, and the authenticity of, a painting being acquired; in 2010, the opposition criticized the architectural condition of the City's museums. From 2013, the Council launched the programming study (350,000 euros) for the comprehensive renovation, and a 2018 motion demanded a progress report ahead of the announced reopening.",
+ "bmo_recit_en": "At the start of the 20th century, the museum appears in the municipal bulletin first through its collections: in 1902, the Council referred to the Administration a petition from Mr Le Fustec proposing to acquire for the museum a portrait of President Félix Faure painted by Édouard Krug — the matter was forwarded, not settled. In 1905, a report given in session recalled that the City owned a house at 25 rue de Sévigné, acquired with a view to expanding the museum. Two decades later, in 1926, the archive shows the Council taking up the acceptance of a gift: the heirs of the collector Ernest May, in fulfillment of a wish he had expressed, offered works to the City of Paris for the museum. Over nearly a quarter of a century, the bulletin thus gives a glimpse of these occasional episodes in the same administrative life: walls due to be extended, and collections enriched through gifts and purchase proposals."
 }

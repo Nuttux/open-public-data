@@ -69,6 +69,15 @@ export type LieuInvest = {
   id?: string | null;
 };
 
+export type LieuDelib = {
+  /** Référence officielle de la délibération, ex. « 2020 DAC 105 ». */
+  reference: string;
+  /** Titre intégral tel que la Ville l'a écrit — jamais reformulé. */
+  titre: string;
+  seance?: string | null;
+  source_url?: string | null;
+};
+
 export type LieuFicheData = {
   generated_at: string;
   source_pipeline: string;
@@ -123,6 +132,10 @@ export type LieuFicheData = {
   synthese_fr: string | null;
   synthese_en?: string | null;
   moments: LieuMoment[];
+  /** « Cliquer une année » : les délibérations du Conseil de Paris qui ont
+   *  décidé l'argent de cet exercice, rattachées mécaniquement au lieu. Le
+   *  titre est celui écrit par la Ville, publié verbatim. Clé = année du VOTE. */
+  delibs_par_annee?: Record<string, LieuDelib[]> | null;
   montants: LieuMontant[];
   bmo_extraits: LieuBmoExtrait[];
   bmo_recit?: LieuBmoRecit;

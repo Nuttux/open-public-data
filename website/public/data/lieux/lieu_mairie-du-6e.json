@@ -1,149 +1,189 @@
 {
-  "generated_at": "2026-09-11T14:25:25.461202+00:00",
-  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
-  "slug": "mairie-du-6e",
-  "name": "Mairie du 6e",
-  "kind_fr": "Mairie",
-  "kind_en": "Town hall",
-  "famille": "services",
-  "arrondissement": 6,
-  "lat": 48.8514,
-  "lon": 2.3336,
-  "photo": null,
-  "photo_credit": null,
-  "seuil_commun": 2010,
-  "wiki": {
-    "extract": null,
-    "url": null,
-    "source": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
-  },
-  "stats": {
-    "n_delibs": 778,
-    "delibs_span": [
-      1995,
-      2026
-    ],
-    "n_bmo_brut": 0,
-    "n_bmo_verifies": null,
-    "invest_total_eur": 40007.9,
-    "invest_annees": [
-      "2024"
-    ],
-    "lecture_mode": "titre nommant le lieu (15 trouvés)",
-    "lecture_mode_en": "title naming the place (15 found)",
-    "n_lus": 0,
-    "n_lieu": null
-  },
-  "subventions_exploitant": null,
-  "residents": [],
-  "kpi_montant": null,
-  "synthese_fr": null,
-  "moments": [],
-  "montants": [],
-  "bmo_extraits": [],
-  "bmo_recit": null,
-  "invest": [
-    {
-      "annee": 2024,
-      "montant_eur": 40007.9,
-      "nom_projet": "Mairie Du 6e Arrondissement - Rénovation des stores Rue Madame",
-      "preuve": "Nom du projet d'investissement : « Mairie Du 6e Arrondissement - Rénovation des stores Rue Madame », à 52 m du lieu — nomme explicitement la Mairie du 6e.",
-      "id": "2024_06_15_002"
-    }
-  ],
-  "marches": [
-    {
-      "numero_marche": "20202020T03246",
-      "objet": "TVX CRÉATION SALLE DE CONSEIL MAIRIE DU 6ÈME ARRT",
-      "objet_clair": null,
-      "fournisseur": "EZEL",
-      "montant_max": 471940.13,
-      "date_notification": "2020-06-05",
-      "preuve": "Objet du marché : « TVX CRÉATION SALLE DE CONSEIL MAIRIE DU 6ÈME ARRT » — désigne explicitement le bâtiment."
-    },
-    {
-      "numero_marche": "20151210001076",
-      "objet": "RAVALEMENT DE LA FAÇADE DE LA MAIRIE DU 6ÈME",
-      "objet_clair": null,
-      "fournisseur": "CHAMPAGNE CONSTRUCTION RENOVATION",
-      "montant_max": 125726.43,
-      "date_notification": "2015-06-12",
-      "preuve": "Objet du marché : « RAVALEMENT DE LA FAÇADE DE LA MAIRIE DU 6ÈME » — désigne explicitement le bâtiment."
-    },
-    {
-      "numero_marche": "decp-2025T06998",
-      "objet": "Nettoyage extérieur de la façade coté rue Madame Mairie du 6ème , 78 rue Bonaparte, 75006 Paris",
-      "objet_clair": null,
-      "fournisseur": null,
-      "montant_max": 95000.0,
-      "date_notification": "2025-07-07",
-      "preuve": "Objet du marché : « Nettoyage extérieur de la façade coté rue Madame Mairie du 6ème , 78 rue Bonaparte, 75006 Paris » — nomme le lieu et son adresse exacte."
-    },
-    {
-      "numero_marche": "20222022T02000",
-      "objet": "ACCESSIBILITÉ MAIRIE DU 6ÈME",
-      "objet_clair": null,
-      "fournisseur": "A2K BATIMENT ET SERVICES",
-      "montant_max": 90876.0,
-      "date_notification": "2022-04-05",
-      "preuve": "Objet du marché : « ACCESSIBILITÉ MAIRIE DU 6ÈME » — désigne explicitement le bâtiment."
-    },
-    {
-      "numero_marche": "20242024T10896",
-      "objet": "MISE EN SÉCURITÉ DE L'ENTRÉE-PORTE B MAIRIE DU 6ÈME",
-      "objet_clair": "Travaux de sécurisation de l'entrée de la mairie du 6ème arrondissement.",
-      "fournisseur": "EDO CONSTRUCTION",
-      "montant_max": 82010.0,
-      "date_notification": "2024-10-10",
-      "preuve": "Objet du marché : « MISE EN SÉCURITÉ DE L'ENTRÉE-PORTE B MAIRIE DU 6ÈME » — désigne explicitement le bâtiment."
-    },
-    {
-      "numero_marche": "20161210000960",
-      "objet": "MODERNISATION DE LA SALLE DE DESSIN À LA MAIRIE DU 6ÈME",
-      "objet_clair": null,
-      "fournisseur": "PHILADELPHIE",
-      "montant_max": 53198.14,
-      "date_notification": "2016-07-08",
-      "preuve": "Objet du marché : « MODERNISATION DE LA SALLE DE DESSIN À LA MAIRIE DU 6ÈME » — désigne explicitement le bâtiment."
-    },
-    {
-      "numero_marche": "decp-2025T04181",
-      "objet": "Marché de réfection de l’assainissement de la cour intérieure de la Mairie du 6ème arrondissement, 78 rue Bonaparte 75006 Paris",
-      "objet_clair": null,
-      "fournisseur": "ESPACES TP",
-      "montant_max": 25015.4,
-      "date_notification": "2025-05-05",
-      "preuve": "Objet du marché : « Marché de réfection de l'assainissement de la cour intérieure de la Mairie du 6ème arrondissement, 78 rue Bonaparte 75006 Paris » — nomme le lieu et son adresse exacte."
-    }
-  ],
-  "mandate": null,
-  "sources": {
-    "delibs": {
-      "name": "Débat-Délibs — Conseil de Paris",
-      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+6e"
-    },
-    "bmo": {
-      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-    },
-    "invest": {
-      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-      "url": "https://opendata.paris.fr/"
-    },
-    "wiki": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
-  },
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
+ "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "mairie-du-6e",
+ "name": "Mairie du 6e",
+ "kind_fr": "Mairie",
+ "kind_en": "Town hall",
+ "famille": "services",
+ "arrondissement": 6,
+ "lat": 48.8514,
+ "lon": 2.3336,
+ "photo": null,
+ "photo_credit": null,
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
   }
+ },
+ "stats": {
+  "n_delibs": 778,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 40007.9,
+  "invest_annees": [
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (15 trouvés)",
+  "lecture_mode_en": "title naming the place (15 found)",
+  "n_lus": 0,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "2000": [
+   {
+    "reference": "2000 DPA 61",
+    "titre": "Approbation du principe de la restructuration des locaux administratifs à la mairie du 6e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+    "seance": "FEVRIER 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51301"
+   },
+   {
+    "reference": "2000 DVLR 91",
+    "titre": "Subvention au Comité des fêtes et d'action sociale \"Les amis du 6e\", mairie du 6e arrondissement. M. Jean-François LEGARET, rapporteur.",
+    "seance": "NOVEMBRE 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88527"
+   }
+  ],
+  "2003": [
+   {
+    "reference": "2003 DPA 139",
+    "titre": "Approbation du principe de réalisation des travaux de réfection des peintures de la salle des fêtes à la mairie du 6e arrondissement et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
+    "seance": "MARS 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78842"
+   }
+  ],
+  "2005": [
+   {
+    "reference": "2005 DAC 652",
+    "titre": "Attribution d’une subvention de fonctionnement à l’association Société Historique du 6e arrondissement dont le siège social est situé à la mairie du 6e arrondissement, 78, rue Bonaparte (6e). M. Christophe GIRARD, rapporteur.",
+    "seance": "DECEMBRE 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33048"
+   }
+  ],
+  "2006": [
+   {
+    "reference": "2006 DAC 96",
+    "titre": "Attribution d’une subvention de fonctionnement à l’association Société Historique du VIe arrondissement dont le siège social est situé à la Mairie du 6e, 78, rue Bonaparte (6e). Mme Moïra GUILMART, rapporteure.",
+    "seance": "AVRIL 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38476"
+   }
+  ],
+  "2007": [
+   {
+    "reference": "2007 DAC 159",
+    "titre": "Attribution d’une subvention de fonctionnement à l’association Société Historique du VIe arrondissement dont le siège social est situé à la Mairie du 6e, 78, rue Bonaparte (6e). Mme Moïra GUILMART, rapporteure.",
+    "seance": "MARS 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31515"
+   }
+  ]
+ },
+ "invest": [
+  {
+   "annee": 2024,
+   "montant_eur": 40007.9,
+   "nom_projet": "Mairie Du 6e Arrondissement - Rénovation des stores Rue Madame",
+   "preuve": "Nom du projet d'investissement : « Mairie Du 6e Arrondissement - Rénovation des stores Rue Madame », à 52 m du lieu — nomme explicitement la Mairie du 6e.",
+   "id": "2024_06_15_002"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20202020T03246",
+   "objet": "TVX CRÉATION SALLE DE CONSEIL MAIRIE DU 6ÈME ARRT",
+   "objet_clair": null,
+   "fournisseur": "EZEL",
+   "montant_max": 471940.13,
+   "date_notification": "2020-06-05",
+   "preuve": "Objet du marché : « TVX CRÉATION SALLE DE CONSEIL MAIRIE DU 6ÈME ARRT » — désigne explicitement le bâtiment."
+  },
+  {
+   "numero_marche": "20151210001076",
+   "objet": "RAVALEMENT DE LA FAÇADE DE LA MAIRIE DU 6ÈME",
+   "objet_clair": null,
+   "fournisseur": "CHAMPAGNE CONSTRUCTION RENOVATION",
+   "montant_max": 125726.43,
+   "date_notification": "2015-06-12",
+   "preuve": "Objet du marché : « RAVALEMENT DE LA FAÇADE DE LA MAIRIE DU 6ÈME » — désigne explicitement le bâtiment."
+  },
+  {
+   "numero_marche": "decp-2025T06998",
+   "objet": "Nettoyage extérieur de la façade coté rue Madame Mairie du 6ème , 78 rue Bonaparte, 75006 Paris",
+   "objet_clair": null,
+   "fournisseur": null,
+   "montant_max": 95000.0,
+   "date_notification": "2025-07-07",
+   "preuve": "Objet du marché : « Nettoyage extérieur de la façade coté rue Madame Mairie du 6ème , 78 rue Bonaparte, 75006 Paris » — nomme le lieu et son adresse exacte."
+  },
+  {
+   "numero_marche": "20222022T02000",
+   "objet": "ACCESSIBILITÉ MAIRIE DU 6ÈME",
+   "objet_clair": null,
+   "fournisseur": "A2K BATIMENT ET SERVICES",
+   "montant_max": 90876.0,
+   "date_notification": "2022-04-05",
+   "preuve": "Objet du marché : « ACCESSIBILITÉ MAIRIE DU 6ÈME » — désigne explicitement le bâtiment."
+  },
+  {
+   "numero_marche": "20242024T10896",
+   "objet": "MISE EN SÉCURITÉ DE L'ENTRÉE-PORTE B MAIRIE DU 6ÈME",
+   "objet_clair": "Travaux de sécurisation de l'entrée de la mairie du 6ème arrondissement.",
+   "fournisseur": "EDO CONSTRUCTION",
+   "montant_max": 82010.0,
+   "date_notification": "2024-10-10",
+   "preuve": "Objet du marché : « MISE EN SÉCURITÉ DE L'ENTRÉE-PORTE B MAIRIE DU 6ÈME » — désigne explicitement le bâtiment."
+  },
+  {
+   "numero_marche": "20161210000960",
+   "objet": "MODERNISATION DE LA SALLE DE DESSIN À LA MAIRIE DU 6ÈME",
+   "objet_clair": null,
+   "fournisseur": "PHILADELPHIE",
+   "montant_max": 53198.14,
+   "date_notification": "2016-07-08",
+   "preuve": "Objet du marché : « MODERNISATION DE LA SALLE DE DESSIN À LA MAIRIE DU 6ÈME » — désigne explicitement le bâtiment."
+  },
+  {
+   "numero_marche": "decp-2025T04181",
+   "objet": "Marché de réfection de l’assainissement de la cour intérieure de la Mairie du 6ème arrondissement, 78 rue Bonaparte 75006 Paris",
+   "objet_clair": null,
+   "fournisseur": "ESPACES TP",
+   "montant_max": 25015.4,
+   "date_notification": "2025-05-05",
+   "preuve": "Objet du marché : « Marché de réfection de l'assainissement de la cour intérieure de la Mairie du 6ème arrondissement, 78 rue Bonaparte 75006 Paris » — nomme le lieu et son adresse exacte."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+6e"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
 }

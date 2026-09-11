@@ -1,166 +1,168 @@
 {
-  "generated_at": "2026-09-11T14:25:25.461202+00:00",
-  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
-  "slug": "marche-saint-germain",
-  "name": "Marché Saint-Germain",
-  "kind_fr": "Marché couvert",
-  "kind_en": "Covered market",
-  "famille": "services",
-  "arrondissement": 6,
-  "lat": 48.848177,
-  "lon": 2.375373,
-  "photo": "/img/lieux/marche-saint-germain.jpg",
-  "photo_credit": {
-    "licence": "CC BY 3.0",
-    "auteur": "Mbzt",
-    "url": "https://commons.wikimedia.org/wiki/File:P1020096_Paris_VI_March%C3%A9_Saint-Germain_reductwk.JPG",
-    "source": "Wikimedia Commons"
+ "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "marche-saint-germain",
+ "name": "Marché Saint-Germain",
+ "kind_fr": "Marché couvert",
+ "kind_en": "Covered market",
+ "famille": "services",
+ "arrondissement": 6,
+ "lat": 48.848177,
+ "lon": 2.375373,
+ "photo": "/img/lieux/marche-saint-germain.jpg",
+ "photo_credit": {
+  "licence": "CC BY 3.0",
+  "auteur": "Mbzt",
+  "url": "https://commons.wikimedia.org/wiki/File:P1020096_Paris_VI_March%C3%A9_Saint-Germain_reductwk.JPG",
+  "source": "Wikimedia Commons"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "Le marché Saint-Germain est un marché couvert construit entre 1813 et 1817 et situé à Paris dans le quartier de l'Odéon.",
+  "url": "https://fr.wikipedia.org/wiki/March%C3%A9_Saint-Germain",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
   },
-  "seuil_commun": 2010,
-  "wiki": {
-    "extract": "Le marché Saint-Germain est un marché couvert construit entre 1813 et 1817 et situé à Paris dans le quartier de l'Odéon.",
-    "url": "https://fr.wikipedia.org/wiki/March%C3%A9_Saint-Germain",
-    "source": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    },
-    "extract_en": "The Marché Saint-Germain is a covered market built between 1813 and 1817, located in Paris in the Odéon quarter."
-  },
-  "stats": {
-    "n_delibs": 648,
-    "delibs_span": [
-      2014,
-      2014
-    ],
-    "n_bmo_brut": 0,
-    "n_bmo_verifies": null,
-    "invest_total_eur": 174199.0,
-    "invest_annees": [
-      "2020"
-    ],
-    "lecture_mode": "titre nommant le lieu (1 trouvés)",
-    "lecture_mode_en": "title naming the place (1 found)",
-    "n_lus": 1,
-    "n_lieu": 1
-  },
-  "subventions_exploitant": null,
-  "residents": [],
-  "kpi_montant": null,
-  "synthese_fr": "En novembre 2014, le Conseil de Paris autorise la signature d'un avenant au protocole d'aménagement de la galerie commerciale du marché Saint-Germain (6e), conclu avec la société Paris Marché Saint-Germain. Le maire du 6e arrondissement, Jean-Pierre Lecoq, décrit un site qui associe un centre commercial privé à plusieurs équipements publics de la Ville — piscine, gymnase, crèche, auditorium, conservatoire, foyer pour personnes handicapées — et indique que la galerie doit accueillir un troisième « Apple Center » à l'horizon du 1er septembre 2016. Selon l'adjointe Olivia Polski, l'avenant encadre les nuisances du chantier de rénovation : mesures contre le bruit, les vibrations et les poussières, procédure de contrôle dédiée, et comité de suivi associant les directions de la Ville et l'entreprise. Une rénovation de la crèche du site est également annoncée à cette occasion. Le projet de délibération est adopté à main levée.",
-  "moments": [
-    {
-      "id": "121398",
-      "seance": "NOVEMBRE 2014",
-      "fait": "Avenant au protocole d'aménagement de la galerie commerciale, mesures anti-nuisances du chantier de rénovation",
-      "pourquoi": "un avenant pour encadrer le chantier au milieu des équipements publics du site",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121398",
-      "fait_en": "Amendment to the development agreement for the shopping arcade, anti-nuisance measures for the renovation work",
-      "pourquoi_en": "an amendment to manage the construction work amid the site's public facilities"
-    }
+  "extract_en": "The Marché Saint-Germain is a covered market built between 1813 and 1817, located in Paris in the Odéon quarter."
+ },
+ "stats": {
+  "n_delibs": 648,
+  "delibs_span": [
+   2014,
+   2014
   ],
-  "montants": [],
-  "bmo_extraits": [],
-  "bmo_recit": null,
-  "invest": [
-    {
-      "annee": 2020,
-      "montant_eur": 174199.0,
-      "nom_projet": "Edition 2016 Restauration de la fontaine du marché Saint-Germain",
-      "preuve": "Nom du projet : « Edition 2016 Restauration de la fontaine du marché Saint-Germain » — il nomme le lieu. Le rattachement se fait sur le nom, pas sur la distance : la distance calculée (3 051 m) est incohérente avec les coordonnées du lieu, comme le montrent les autres candidats de proximité (écoles des rues Traversière et Charles-Baudelaire, situées dans le 12e). Même objet que le marché de maîtrise d'œuvre « RESTAURATION DE LA FONTAINE DU MARCHÉ SAINT GERMAIN » (2017) déjà rattaché.",
-      "id": "2020_06_il_016"
-    }
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 174199.0,
+  "invest_annees": [
+   "2020"
   ],
-  "marches": [
-    {
-      "numero_marche": "decp-20202020T03248",
-      "objet": "TVX MODERNISATION CHARPENTE MARCHÉ SAINT-GERMAIN",
-      "objet_clair": null,
-      "fournisseur": "SOC COOP PRODUCT CHARPENTIERS DE PARIS",
-      "montant_max": 42851.4,
-      "date_notification": "2020-06-05",
-      "preuve": "Objet du marché : « TVX MODERNISATION CHARPENTE MARCHÉ SAINT-GERMAIN » — travaux de charpente portant sur le bâtiment lui-même, titulaire SOC COOP PRODUCT CHARPENTIERS DE PARIS (SIRET 57201099900017), notifié le 2020-06-05."
-    },
-    {
-      "numero_marche": "20171210001042",
-      "objet": "RESTAURATION DE LA FONTAINE DU MARCHÉ SAINT GERMAIN",
-      "objet_clair": null,
-      "fournisseur": "LAGNEAU ARCHITECTES",
-      "montant_max": 34440.0,
-      "date_notification": "2017-06-29",
-      "preuve": "Objet du marché : « RESTAURATION DE LA FONTAINE DU MARCHÉ SAINT GERMAIN » — nomme explicitement le lieu, ce n'est pas un simple repère d'adresse."
-    }
-  ],
-  "mandate": {
-    "par_annee": {
-      "2013": 10534.84,
-      "2014": 41805.83,
-      "2015": 19250.7,
-      "2016": 9249.01,
-      "2017": 2833.16,
-      "2018": 51000.69
-    },
-    "total_eur": 134674.23,
-    "operations": [
-      {
-        "ap_cle": "0903895",
-        "ap_texte": "AUDITORIUM SAINT GERMAIN",
-        "mandate_par_annee": {
-          "2014": 41805.83,
-          "2015": 19250.7,
-          "2016": 9249.01,
-          "2017": 2833.16,
-          "2018": 51000.69
-        },
-        "total_mandate": 124139.39,
-        "preuve": "Opération « AUDITORIUM SAINT GERMAIN » (DAC, mission AFFAIRES CULTURELLES). Le signal du candidat n'est qu'une « partie distinctive (saint germain) » ; la confirmation vient du contexte : la délibération 2014 DILT 1002 - DU décrit le site comme « un véritable patchwork composé d'un centre commercial privé mais aussi de très nombreux équipements publics appartenant à la Ville de Paris : piscine, gymnase, crèche, auditorium, qui accueille actuellement la M.P.A.A. » — l'auditorium est donc un équipement situé dans le marché Saint-Germain. L'opération porte sur cet équipement du site, pas sur l'ensemble du marché.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=0903895"
-      },
-      {
-        "ap_cle": "B100/0903895",
-        "ap_texte": "AUDITORIUM SAINT GERMAIN",
-        "mandate_par_annee": {
-          "2013": 10534.84
-        },
-        "total_mandate": 10534.84,
-        "preuve": "Même opération 0903895 « AUDITORIUM SAINT GERMAIN » (DAC), sur une autre clé de la source. Confirmée par la délibération 2014 DILT 1002 - DU, qui range l'« auditorium, qui accueille actuellement la M.P.A.A. » parmi les équipements publics du marché Saint-Germain. Porte sur cet équipement du site.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903895"
-      }
-    ],
-    "periode": [
-      "2013",
-      "2018"
-    ],
-    "source": {
-      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-    }
-  },
-  "sources": {
-    "delibs": {
-      "name": "Débat-Délibs — Conseil de Paris",
-      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=March%C3%A9+Saint-Germain"
-    },
-    "bmo": {
-      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-    },
-    "invest": {
-      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-      "url": "https://opendata.paris.fr/"
-    },
-    "wiki": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
-  },
-  "synthese_en": "In November 2014, the Council of Paris authorized the signing of an amendment to the development agreement for the shopping arcade of the Marché Saint-Germain (6th arrondissement), concluded with the company Paris Marché Saint-Germain. The mayor of the 6th arrondissement, Jean-Pierre Lecoq, described a site that combines a private shopping center with several public facilities run by the City — a swimming pool, a gymnasium, a daycare center, an auditorium, a conservatory, a residential facility for people with disabilities — and stated that the arcade is set to house a third \"Apple Center\" by September 1, 2016. According to Deputy Mayor Olivia Polski, the amendment sets out measures to limit the nuisances of the renovation work: measures against noise, vibration and dust, a dedicated inspection procedure, and a monitoring committee bringing together the City's departments and the company. A renovation of the site's daycare center was also announced on this occasion. The bill was adopted by a show of hands.",
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
+  "lecture_mode": "titre nommant le lieu (1 trouvés)",
+  "lecture_mode_en": "title naming the place (1 found)",
+  "n_lus": 1,
+  "n_lieu": 1
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En novembre 2014, le Conseil de Paris autorise la signature d'un avenant au protocole d'aménagement de la galerie commerciale du marché Saint-Germain (6e), conclu avec la société Paris Marché Saint-Germain. Le maire du 6e arrondissement, Jean-Pierre Lecoq, décrit un site qui associe un centre commercial privé à plusieurs équipements publics de la Ville — piscine, gymnase, crèche, auditorium, conservatoire, foyer pour personnes handicapées — et indique que la galerie doit accueillir un troisième « Apple Center » à l'horizon du 1er septembre 2016. Selon l'adjointe Olivia Polski, l'avenant encadre les nuisances du chantier de rénovation : mesures contre le bruit, les vibrations et les poussières, procédure de contrôle dédiée, et comité de suivi associant les directions de la Ville et l'entreprise. Une rénovation de la crèche du site est également annoncée à cette occasion. Le projet de délibération est adopté à main levée.",
+ "moments": [
+  {
+   "id": "121398",
+   "seance": "NOVEMBRE 2014",
+   "fait": "Avenant au protocole d'aménagement de la galerie commerciale, mesures anti-nuisances du chantier de rénovation",
+   "pourquoi": "un avenant pour encadrer le chantier au milieu des équipements publics du site",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121398",
+   "fait_en": "Amendment to the development agreement for the shopping arcade, anti-nuisance measures for the renovation work",
+   "pourquoi_en": "an amendment to manage the construction work amid the site's public facilities"
   }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "2014": [
+   {
+    "reference": "2014 DILT 1002",
+    "titre": "2014 DILT 1002 - DU - Protocole d'aménagement de la galerie commerciale du marché Saint-Germain (6e) avec la société Paris Marché Saint Germain - Avenant - Autorisation - Signature.",
+    "seance": "NOVEMBRE 2014",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121398"
+   }
+  ]
+ },
+ "invest": [
+  {
+   "annee": 2020,
+   "montant_eur": 174199.0,
+   "nom_projet": "Edition 2016 Restauration de la fontaine du marché Saint-Germain",
+   "preuve": "Nom du projet : « Edition 2016 Restauration de la fontaine du marché Saint-Germain » — il nomme le lieu. Le rattachement se fait sur le nom, pas sur la distance : la distance calculée (3 051 m) est incohérente avec les coordonnées du lieu, comme le montrent les autres candidats de proximité (écoles des rues Traversière et Charles-Baudelaire, situées dans le 12e). Même objet que le marché de maîtrise d'œuvre « RESTAURATION DE LA FONTAINE DU MARCHÉ SAINT GERMAIN » (2017) déjà rattaché.",
+   "id": "2020_06_il_016"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "decp-20202020T03248",
+   "objet": "TVX MODERNISATION CHARPENTE MARCHÉ SAINT-GERMAIN",
+   "objet_clair": null,
+   "fournisseur": "SOC COOP PRODUCT CHARPENTIERS DE PARIS",
+   "montant_max": 42851.4,
+   "date_notification": "2020-06-05",
+   "preuve": "Objet du marché : « TVX MODERNISATION CHARPENTE MARCHÉ SAINT-GERMAIN » — travaux de charpente portant sur le bâtiment lui-même, titulaire SOC COOP PRODUCT CHARPENTIERS DE PARIS (SIRET 57201099900017), notifié le 2020-06-05."
+  },
+  {
+   "numero_marche": "20171210001042",
+   "objet": "RESTAURATION DE LA FONTAINE DU MARCHÉ SAINT GERMAIN",
+   "objet_clair": null,
+   "fournisseur": "LAGNEAU ARCHITECTES",
+   "montant_max": 34440.0,
+   "date_notification": "2017-06-29",
+   "preuve": "Objet du marché : « RESTAURATION DE LA FONTAINE DU MARCHÉ SAINT GERMAIN » — nomme explicitement le lieu, ce n'est pas un simple repère d'adresse."
+  }
+ ],
+ "mandate": {
+  "par_annee": {
+   "2013": 10534.84,
+   "2014": 41805.83,
+   "2015": 19250.7,
+   "2016": 9249.01,
+   "2017": 2833.16,
+   "2018": 51000.69
+  },
+  "total_eur": 134674.23,
+  "operations": [
+   {
+    "ap_cle": "0903895",
+    "ap_texte": "AUDITORIUM SAINT GERMAIN",
+    "mandate_par_annee": {
+     "2014": 41805.83,
+     "2015": 19250.7,
+     "2016": 9249.01,
+     "2017": 2833.16,
+     "2018": 51000.69
+    },
+    "total_mandate": 124139.39,
+    "preuve": "Opération « AUDITORIUM SAINT GERMAIN » (DAC, mission AFFAIRES CULTURELLES). Le signal du candidat n'est qu'une « partie distinctive (saint germain) » ; la confirmation vient du contexte : la délibération 2014 DILT 1002 - DU décrit le site comme « un véritable patchwork composé d'un centre commercial privé mais aussi de très nombreux équipements publics appartenant à la Ville de Paris : piscine, gymnase, crèche, auditorium, qui accueille actuellement la M.P.A.A. » — l'auditorium est donc un équipement situé dans le marché Saint-Germain. L'opération porte sur cet équipement du site, pas sur l'ensemble du marché.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=0903895"
+   },
+   {
+    "ap_cle": "B100/0903895",
+    "ap_texte": "AUDITORIUM SAINT GERMAIN",
+    "mandate_par_annee": {
+     "2013": 10534.84
+    },
+    "total_mandate": 10534.84,
+    "preuve": "Même opération 0903895 « AUDITORIUM SAINT GERMAIN » (DAC), sur une autre clé de la source. Confirmée par la délibération 2014 DILT 1002 - DU, qui range l'« auditorium, qui accueille actuellement la M.P.A.A. » parmi les équipements publics du marché Saint-Germain. Porte sur cet équipement du site.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903895"
+   }
+  ],
+  "periode": [
+   "2013",
+   "2018"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=March%C3%A9+Saint-Germain"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In November 2014, the Council of Paris authorized the signing of an amendment to the development agreement for the shopping arcade of the Marché Saint-Germain (6th arrondissement), concluded with the company Paris Marché Saint-Germain. The mayor of the 6th arrondissement, Jean-Pierre Lecoq, described a site that combines a private shopping center with several public facilities run by the City — a swimming pool, a gymnasium, a daycare center, an auditorium, a conservatory, a residential facility for people with disabilities — and stated that the arcade is set to house a third \"Apple Center\" by September 1, 2016. According to Deputy Mayor Olivia Polski, the amendment sets out measures to limit the nuisances of the renovation work: measures against noise, vibration and dust, a dedicated inspection procedure, and a monitoring committee bringing together the City's departments and the company. A renovation of the site's daycare center was also announced on this occasion. The bill was adopted by a show of hands."
 }

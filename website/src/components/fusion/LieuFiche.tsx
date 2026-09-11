@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { useState } from "react";
 import type { LieuFicheData } from "@/lib/lieux-data";
 import Link from "next/link";
 import { useT, useLocale } from "@/lib/localeContext";
@@ -213,6 +214,19 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
     return { de: seuil || Math.min(...ys), a: Math.max(...ys) };
   })();
 
+  /* ── Cliquer une année ────────────────────────────────────────────────
+   * Un montant sur un graphe est la trace d'une décision : une délibération
+   * votée en séance. Son titre, écrit par la Ville, dit déjà pourquoi l'argent
+   * est parti (« Subvention (15.800.000 euros) et 2e avenant avec
+   * l'association Théâtre Musical de Paris »). On le publie tel quel sous le
+   * graphe, avec son lien : le lecteur passe du chiffre à la décision sans
+   * qu'on ait à écrire un motif à sa place.
+   *
+   * L'année est celle du VOTE, pas celle du paiement — les deux diffèrent
+   * souvent d'un exercice. La légende le dit, elle ne le masque pas. */
+  const delibs = lieu.delibs_par_annee || null;
+  const [ouvert, setOuvert] = useState<{ annee: number; tone: string } | null>(null);
+
   const Years = ({ series, tone }: { series: { year: number; value: number }[]; tone: "x" | "w" }) => {
     const dans = series.filter((r) => !axe || r.year >= axe.de);
     if (dans.length < 3 || !axe) return null;
@@ -220,19 +234,56 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
     const parAn = new Map(dans.map((r) => [r.year, r.value]));
     const annees: number[] = [];
     for (let y = axe.de; y <= axe.a; y++) annees.push(y);
+    const aDesDelibs = annees.some((y) => (delibs?.[String(y)] || []).length > 0);
+    const sel = ouvert && ouvert.tone === tone ? ouvert.annee : null;
+    const lignes = sel ? (delibs?.[String(sel)] || []) : [];
     return (
-      <div className={`fx-v3-years ${tone}`} aria-hidden="true">
-        {annees.map((y, i) => {
-          const v = parAn.get(y);
-          return (
-            <div key={y} className={v === undefined ? "hors" : undefined}
-                 title={v === undefined ? `${y} · non publié par la Ville` : `${y} · ${eurTxt(v)}`}>
-              {v === undefined ? <em /> : <i style={{ height: Math.max(2, Math.round((v / max) * 40)) }} />}
-              {(i === 0 || i === annees.length - 1) && <span className={i === 0 ? "yr" : "yr end"}>{y}</span>}
-            </div>
-          );
-        })}
-      </div>
+      <>
+        <div className={`fx-v3-years ${tone}${aDesDelibs ? " clic" : ""}`} aria-hidden={aDesDelibs ? undefined : "true"}>
+          {annees.map((y, i) => {
+            const v = parAn.get(y);
+            const n = (delibs?.[String(y)] || []).length;
+            const corps = (
+              <>
+                {v === undefined ? <em /> : <i style={{ height: Math.max(2, Math.round((v / max) * 40)) }} />}
+                {n > 0 && <b aria-hidden="true" />}
+                {(i === 0 || i === annees.length - 1) && <span className={i === 0 ? "yr" : "yr end"}>{y}</span>}
+              </>
+            );
+            const titre = v === undefined
+              ? `${y} · ${t("fx.lieu.years.non_publie")}`
+              : `${y} · ${eurTxt(v)}`;
+            if (!n) {
+              return <div key={y} className={v === undefined ? "hors" : undefined} title={titre}>{corps}</div>;
+            }
+            return (
+              <button key={y} type="button"
+                      className={`${v === undefined ? "hors " : ""}${sel === y ? "on" : ""}`}
+                      aria-expanded={sel === y}
+                      title={`${titre} · ${fill(t("fx.lieu.delib.n"), { n })}`}
+                      onClick={() => setOuvert(sel === y ? null : { annee: y, tone })}>
+                {corps}
+              </button>
+            );
+          })}
+        </div>
+        {sel !== null && lignes.length > 0 && (
+          <div className="fx-v3-delib">
+            <p className="hd">
+              <span className="an mono">{sel}</span>
+              {fill(t("fx.lieu.delib.titre"), { n: lignes.length })}
+            </p>
+            {lignes.map((d) => (
+              <a key={d.reference + d.titre.slice(0, 20)} className="dl"
+                 href={d.source_url || undefined} target="_blank" rel="noopener noreferrer">
+                <span className="ref mono">{d.reference}</span>
+                <span className="ti">{d.titre}</span>
+              </a>
+            ))}
+            <p className="fx-v3-foot" style={{ marginTop: 10 }}>{t("fx.lieu.delib.note")}</p>
+          </div>
+        )}
+      </>
     );
   };
 
@@ -545,3 +596,5 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
     </div>
   );
 }
+
+// nudge 1789139351

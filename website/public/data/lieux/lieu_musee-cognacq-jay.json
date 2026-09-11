@@ -1,174 +1,167 @@
 {
-  "generated_at": "2026-09-11T14:25:25.461202+00:00",
-  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
-  "slug": "musee-cognacq-jay",
-  "name": "Musée Cognacq-Jay",
-  "kind_fr": "Musée",
-  "kind_en": "Musée",
-  "famille": "culture",
-  "arrondissement": 3,
-  "lat": 48.8582,
-  "lon": 2.36147,
-  "photo": "/img/lieux/musee-cognacq-jay.jpg",
-  "photo_credit": {
-    "licence": "CC BY-SA 3.0",
-    "auteur": "Siren-Com",
-    "url": "https://commons.wikimedia.org/wiki/File:Cognacq-Jay_mus%C3%A9e_int%C3%A9rieur_XVIIIe.jpg",
-    "source": "Wikimedia Commons"
+ "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "musee-cognacq-jay",
+ "name": "Musée Cognacq-Jay",
+ "kind_fr": "Musée",
+ "kind_en": "Musée",
+ "famille": "culture",
+ "arrondissement": 3,
+ "lat": 48.8582,
+ "lon": 2.36147,
+ "photo": "/img/lieux/musee-cognacq-jay.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 3.0",
+  "auteur": "Siren-Com",
+  "url": "https://commons.wikimedia.org/wiki/File:Cognacq-Jay_mus%C3%A9e_int%C3%A9rieur_XVIIIe.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "Le musée Cognacq-Jay est un musée municipal de la Ville de Paris présentant une collection d'œuvres et d'objets d'art du XVIIIe siècle issue du legs d'Ernest Cognacq.",
+  "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_Cognacq-Jay",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
   },
-  "seuil_commun": 2010,
-  "wiki": {
-    "extract": "Le musée Cognacq-Jay est un musée municipal de la Ville de Paris présentant une collection d'œuvres et d'objets d'art du XVIIIe siècle issue du legs d'Ernest Cognacq.",
-    "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_Cognacq-Jay",
-    "source": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    },
-    "extract_en": "The Musée Cognacq-Jay is a City of Paris municipal museum presenting a collection of 18th-century works and art objects from the bequest of Ernest Cognacq."
-  },
-  "stats": {
-    "n_delibs": 49,
-    "delibs_span": [
-      2010,
-      2010
-    ],
-    "n_bmo_brut": 199,
-    "n_bmo_verifies": 9,
-    "invest_total_eur": 0,
-    "invest_annees": [],
-    "lecture_mode": "titre nommant le lieu (2 trouvés)",
-    "lecture_mode_en": "title naming the place (2 found)",
-    "n_lus": 2,
-    "n_lieu": 1
-  },
-  "subventions_exploitant": null,
-  "residents": [],
-  "kpi_montant": null,
-  "synthese_fr": "Au Conseil de Paris, le musée Cognacq-Jay, 8 rue Elzévir (4e), apparaît notamment en novembre 2010 : le Conseil approuve le principe d'une transaction après un accident survenu à une usagère au sein du musée et autorise le Maire de Paris à signer un contrat prévoyant le versement d'une indemnité de 8 125 euros, en échange de la renonciation à tout recours contre la Ville. Cette dépense serait imputée sur le budget de fonctionnement 2010 de la Ville, sous réserve de la décision de financement correspondante. La délibération n'approuve à ce stade que le principe et l'autorisation de signer, non un versement déjà effectué. Un second texte, de mai 2024, ne concerne pas ce musée mais la rue Cognacq-Jay (7e), rive gauche : il porte sur l'apposition d'une plaque en souvenir du premier journal télévisé français, un homonyme à ne pas confondre avec le musée du Marais.",
-  "moments": [
-    {
-      "id": "85988",
-      "seance": "NOVEMBRE 2010",
-      "fait": "Le Conseil approuve le principe d'une transaction et autorise le Maire à signer un contrat indemnisant une usagère de 8 125 euros après un accident survenu au sein du musée.",
-      "pourquoi": "Accident au musée : transaction à 8 125 euros",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85988",
-      "fait_en": "The Council approved the principle of a settlement and authorized the Mayor to sign a contract compensating a visitor 8,125 euros following an accident at the museum.",
-      "pourquoi_en": "Accident at the museum: 8,125-euro settlement"
-    }
+  "extract_en": "The Musée Cognacq-Jay is a City of Paris municipal museum presenting a collection of 18th-century works and art objects from the bequest of Ernest Cognacq."
+ },
+ "stats": {
+  "n_delibs": 49,
+  "delibs_span": [
+   2010,
+   2010
   ],
-  "montants": [
-    {
-      "seance": "NOVEMBRE 2010",
-      "montant": "8 125 euros",
-      "objet": "Indemnité que la Ville verserait à une usagère au titre du contrat de transaction, contre renonciation à tout recours",
-      "citation": "prévoyant le versement par la Ville d?une indemnité de 8.125 euros et la renonciation à tout recours ultérieur contre la Ville",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85988"
-    },
-    {
-      "seance": "NOVEMBRE 2010",
-      "montant": "8 125 euros",
-      "objet": "Dépense qui serait imputée sur le budget de fonctionnement 2010 de la Ville de Paris, sous réserve de la décision de financement correspondante",
-      "citation": "La dépense correspondante de 8.125 euros sera imputée sur le budget de fonctionnement de la Ville de Paris de 2010",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85988"
-    }
-  ],
-  "bmo_extraits": [
-    {
-      "date": "1936-07-08",
-      "extrait": "Certains de ces musées portent les noms des donateurs soit de leurs monuments, soit de leurs collections, mais ces noms par eux-mêmes ne disent pas au grand public le genre de collections que contiennent ces musées  …  musée Cognacq - Jay possède de rares collections de tableau",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64534908/f28.item",
-      "extrait_en": "Some of these museums bear the names of the donors of either their buildings or their collections, but these names by themselves do not tell the general public what kind of collections these museums contain … the Musée Cognacq-Jay possesses rare collections of painting"
-    },
-    {
-      "date": "1940-07-20",
-      "extrait": "gravures et moulages édités par les musées nationaux), qui se tient au Musée Cognacq - Jay , 25, boulevard des Capucines, est ouverte tous les jours de 14 heures à 18 heures",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k63568584/f1.item",
-      "extrait_en": "engravings and casts published by the national museums), which is being held at the Musée Cognacq-Jay, 25 boulevard des Capucines, is open every day from 2 p.m. to 6 p.m."
-    },
-    {
-      "date": "1949-02-23",
-      "extrait": "Les mêmes réductions d'effectifs ont empêché d'assurer au musée Cognacq - Jay une surveillance efficace pendant la période des congés et il était alors indispensable d'interdire au public l'accès de certaines salles … Aussi, M. René Fiquet, conseiller municipal, a-t-il l'honneu",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k96394913/f2.item",
-      "extrait_en": "The same staff cuts made it impossible to ensure effective supervision at the Musée Cognacq-Jay during the vacation period, and it then became necessary to close certain rooms to the public … Accordingly, Mr René Fiquet, municipal councillor, has the hono"
-    }
-  ],
-  "bmo_recit": "Le musée Cognacq-Jay traverse le Bulletin municipal en trois moments, du milieu des années 1930 à l'après-guerre. En 1936, au détour d'une réflexion sur les noms des musées de la Ville, qui ne disent pas au public le genre de collections qu'ils abritent, il est présenté comme possédant de rares collections de tableaux et de meubles. En juillet 1940, le Bulletin annonce une exposition de gravures et de moulages édités par les musées nationaux, tenue au musée, alors au 25, boulevard des Capucines, et ouverte tous les jours de 14 à 18 heures. En 1949 enfin, le conseiller municipal René Fiquet pose une question à l'administration : selon lui, les réductions d'effectifs ont empêché d'assurer une surveillance efficace pendant la période des congés, au point qu'il a fallu interdire au public l'accès de certaines salles. L'archive ne conserve, pour ce lieu, que ces trois traces.",
-  "invest": [],
-  "marches": [
-    {
-      "numero_marche": "20141210011375",
-      "objet": "MISE AUX NORMES SSI MUSÉE COGNACQ-JAY / HÔTEL DONON 75003",
-      "objet_clair": null,
-      "fournisseur": "SOC ETUDES REALIS INSTALLATIONS SEC",
-      "montant_max": 232408.1,
-      "date_notification": "2014-06-16",
-      "preuve": "L'objet du marché nomme explicitement le lieu et son bâtiment : « MISE AUX NORMES SSI MUSÉE COGNACQ-JAY / HÔTEL DONON 75003 ». L'Hôtel Donon est le bâtiment qui abrite le musée, et le code postal 75003 correspond à l'arrondissement du lieu. Il s'agit de travaux de mise aux normes du système de sécurité incendie portant sur le bâtiment lui-même, et non d'un simple repère d'adresse."
-    },
-    {
-      "numero_marche": "20131210010111",
-      "objet": "MOE ET COORDINATION SSI MUSÉE COGNACQ-JAY 75003",
-      "objet_clair": null,
-      "fournisseur": "RISK&CO SOLUTIONS",
-      "montant_max": 30925.0,
-      "date_notification": "2013-10-16",
-      "preuve": "L'objet nomme explicitement le lieu : « MOE ET COORDINATION SSI MUSÉE COGNACQ-JAY 75003 ». Il s'agit d'une prestation de maîtrise d'œuvre et de coordination du système de sécurité incendie portant sur ce bâtiment, dans le 75003 (arrondissement du lieu), et non d'un simple repère d'adresse ni d'un marché-cadre de toute la Ville."
-    }
-  ],
-  "mandate": {
-    "par_annee": {
-      "2020": 39391.44,
-      "2021": 24179.28
-    },
-    "total_eur": 63570.72,
-    "operations": [
-      {
-        "ap_cle": "1604811",
-        "ap_texte": "EPM - COGNACQ JAY -  ACCESSIBILITE   MOD",
-        "mandate_par_annee": {
-          "2020": 39391.44,
-          "2021": 24179.28
-        },
-        "total_mandate": 63570.72,
-        "preuve": "Le libellé de l'opération porte le nom du lieu derrière le préfixe de son gestionnaire : « EPM - COGNACQ JAY -  ACCESSIBILITE   MOD ». Dans la même liste de candidats, les opérations d'investissement de l'établissement public Paris Musées portent le même gabarit de libellé (« EP MUSEES: MUSEE CARNAVALET ACCESSIBILIT », « EPM : MUSEE CARNAVALET ACCESSIBILITE »), ce qui identifie « EPM » comme le préfixe des opérations de cet établissement et non une enveloppe générique de direction : il s'agit de travaux de mise en accessibilité d'un musée nommément désigné. Le signal n'est toutefois qu'une « partie distinctive » sur un libellé plafonné à 40 caractères par la source ; le rattachement repose sur la conjonction préfixe gestionnaire + type d'équipement, l'homonyme de la rue Cognacq-Jay (7e) n'accueillant aucun équipement Paris Musées. D'où une confiance moyenne.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604811"
-      }
-    ],
-    "periode": [
-      "2020",
-      "2021"
-    ],
-    "source": {
-      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-    }
-  },
-  "sources": {
-    "delibs": {
-      "name": "Débat-Délibs — Conseil de Paris",
-      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Cognacq-Jay"
-    },
-    "bmo": {
-      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Mus%C3%A9e+Cognacq-Jay%22%29"
-    },
-    "invest": {
-      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-      "url": "https://opendata.paris.fr/"
-    },
-    "wiki": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
-  },
-  "synthese_en": "At Conseil de Paris, the Musée Cognacq-Jay, 8 rue Elzévir (4th arrondissement), appears notably in November 2010: the Council approved the principle of a settlement following an accident suffered by a visitor at the museum and authorized the Mayor of Paris to sign a contract providing for payment of compensation of 8,125 euros, in exchange for the visitor's waiver of any further action against the City. This expenditure was to be charged to the City's 2010 operating budget, subject to the corresponding funding decision. At this stage, the deliberation approves only the principle and the authorization to sign, not a payment already made. A second text, from May 2024, does not concern this museum but rather the rue Cognacq-Jay (7th arrondissement), on the Left Bank: it concerns the installation of a plaque commemorating the first French television news broadcast, a namesake not to be confused with the museum in the Marais.",
-  "bmo_recit_en": "The Musée Cognacq-Jay passes through the municipal bulletin at three moments, from the mid-1930s to the postwar period. In 1936, in the course of a reflection on the names of the City's museums, which do not tell the public what kind of collections they house, it is presented as possessing rare collections of paintings and furniture. In July 1940, the bulletin announces an exhibition of engravings and casts published by the national museums, held at the museum, then at 25 boulevard des Capucines, and open every day from 2 to 6 p.m. Finally, in 1949, municipal councillor René Fiquet raises a question with the administration: according to him, staff cuts had made it impossible to ensure effective supervision during the vacation period, to the point that certain rooms had to be closed to the public. The archive preserves only these three traces for this location.",
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
+  "n_bmo_brut": 199,
+  "n_bmo_verifies": 9,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (2 trouvés)",
+  "lecture_mode_en": "title naming the place (2 found)",
+  "n_lus": 2,
+  "n_lieu": 1
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Au Conseil de Paris, le musée Cognacq-Jay, 8 rue Elzévir (4e), apparaît notamment en novembre 2010 : le Conseil approuve le principe d'une transaction après un accident survenu à une usagère au sein du musée et autorise le Maire de Paris à signer un contrat prévoyant le versement d'une indemnité de 8 125 euros, en échange de la renonciation à tout recours contre la Ville. Cette dépense serait imputée sur le budget de fonctionnement 2010 de la Ville, sous réserve de la décision de financement correspondante. La délibération n'approuve à ce stade que le principe et l'autorisation de signer, non un versement déjà effectué. Un second texte, de mai 2024, ne concerne pas ce musée mais la rue Cognacq-Jay (7e), rive gauche : il porte sur l'apposition d'une plaque en souvenir du premier journal télévisé français, un homonyme à ne pas confondre avec le musée du Marais.",
+ "moments": [
+  {
+   "id": "85988",
+   "seance": "NOVEMBRE 2010",
+   "fait": "Le Conseil approuve le principe d'une transaction et autorise le Maire à signer un contrat indemnisant une usagère de 8 125 euros après un accident survenu au sein du musée.",
+   "pourquoi": "Accident au musée : transaction à 8 125 euros",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85988",
+   "fait_en": "The Council approved the principle of a settlement and authorized the Mayor to sign a contract compensating a visitor 8,125 euros following an accident at the museum.",
+   "pourquoi_en": "Accident at the museum: 8,125-euro settlement"
   }
+ ],
+ "montants": [
+  {
+   "seance": "NOVEMBRE 2010",
+   "montant": "8 125 euros",
+   "objet": "Indemnité que la Ville verserait à une usagère au titre du contrat de transaction, contre renonciation à tout recours",
+   "citation": "prévoyant le versement par la Ville d?une indemnité de 8.125 euros et la renonciation à tout recours ultérieur contre la Ville",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85988"
+  },
+  {
+   "seance": "NOVEMBRE 2010",
+   "montant": "8 125 euros",
+   "objet": "Dépense qui serait imputée sur le budget de fonctionnement 2010 de la Ville de Paris, sous réserve de la décision de financement correspondante",
+   "citation": "La dépense correspondante de 8.125 euros sera imputée sur le budget de fonctionnement de la Ville de Paris de 2010",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85988"
+  }
+ ],
+ "bmo_extraits": [
+  {
+   "date": "1936-07-08",
+   "extrait": "Certains de ces musées portent les noms des donateurs soit de leurs monuments, soit de leurs collections, mais ces noms par eux-mêmes ne disent pas au grand public le genre de collections que contiennent ces musées  …  musée Cognacq - Jay possède de rares collections de tableau",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64534908/f28.item",
+   "extrait_en": "Some of these museums bear the names of the donors of either their buildings or their collections, but these names by themselves do not tell the general public what kind of collections these museums contain … the Musée Cognacq-Jay possesses rare collections of painting"
+  },
+  {
+   "date": "1940-07-20",
+   "extrait": "gravures et moulages édités par les musées nationaux), qui se tient au Musée Cognacq - Jay , 25, boulevard des Capucines, est ouverte tous les jours de 14 heures à 18 heures",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k63568584/f1.item",
+   "extrait_en": "engravings and casts published by the national museums), which is being held at the Musée Cognacq-Jay, 25 boulevard des Capucines, is open every day from 2 p.m. to 6 p.m."
+  },
+  {
+   "date": "1949-02-23",
+   "extrait": "Les mêmes réductions d'effectifs ont empêché d'assurer au musée Cognacq - Jay une surveillance efficace pendant la période des congés et il était alors indispensable d'interdire au public l'accès de certaines salles … Aussi, M. René Fiquet, conseiller municipal, a-t-il l'honneu",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k96394913/f2.item",
+   "extrait_en": "The same staff cuts made it impossible to ensure effective supervision at the Musée Cognacq-Jay during the vacation period, and it then became necessary to close certain rooms to the public … Accordingly, Mr René Fiquet, municipal councillor, has the hono"
+  }
+ ],
+ "bmo_recit": "Le musée Cognacq-Jay traverse le Bulletin municipal en trois moments, du milieu des années 1930 à l'après-guerre. En 1936, au détour d'une réflexion sur les noms des musées de la Ville, qui ne disent pas au public le genre de collections qu'ils abritent, il est présenté comme possédant de rares collections de tableaux et de meubles. En juillet 1940, le Bulletin annonce une exposition de gravures et de moulages édités par les musées nationaux, tenue au musée, alors au 25, boulevard des Capucines, et ouverte tous les jours de 14 à 18 heures. En 1949 enfin, le conseiller municipal René Fiquet pose une question à l'administration : selon lui, les réductions d'effectifs ont empêché d'assurer une surveillance efficace pendant la période des congés, au point qu'il a fallu interdire au public l'accès de certaines salles. L'archive ne conserve, pour ce lieu, que ces trois traces.",
+ "delibs_par_annee": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20141210011375",
+   "objet": "MISE AUX NORMES SSI MUSÉE COGNACQ-JAY / HÔTEL DONON 75003",
+   "objet_clair": null,
+   "fournisseur": "SOC ETUDES REALIS INSTALLATIONS SEC",
+   "montant_max": 232408.1,
+   "date_notification": "2014-06-16",
+   "preuve": "L'objet du marché nomme explicitement le lieu et son bâtiment : « MISE AUX NORMES SSI MUSÉE COGNACQ-JAY / HÔTEL DONON 75003 ». L'Hôtel Donon est le bâtiment qui abrite le musée, et le code postal 75003 correspond à l'arrondissement du lieu. Il s'agit de travaux de mise aux normes du système de sécurité incendie portant sur le bâtiment lui-même, et non d'un simple repère d'adresse."
+  },
+  {
+   "numero_marche": "20131210010111",
+   "objet": "MOE ET COORDINATION SSI MUSÉE COGNACQ-JAY 75003",
+   "objet_clair": null,
+   "fournisseur": "RISK&CO SOLUTIONS",
+   "montant_max": 30925.0,
+   "date_notification": "2013-10-16",
+   "preuve": "L'objet nomme explicitement le lieu : « MOE ET COORDINATION SSI MUSÉE COGNACQ-JAY 75003 ». Il s'agit d'une prestation de maîtrise d'œuvre et de coordination du système de sécurité incendie portant sur ce bâtiment, dans le 75003 (arrondissement du lieu), et non d'un simple repère d'adresse ni d'un marché-cadre de toute la Ville."
+  }
+ ],
+ "mandate": {
+  "par_annee": {
+   "2020": 39391.44,
+   "2021": 24179.28
+  },
+  "total_eur": 63570.72,
+  "operations": [
+   {
+    "ap_cle": "1604811",
+    "ap_texte": "EPM - COGNACQ JAY -  ACCESSIBILITE   MOD",
+    "mandate_par_annee": {
+     "2020": 39391.44,
+     "2021": 24179.28
+    },
+    "total_mandate": 63570.72,
+    "preuve": "Le libellé de l'opération porte le nom du lieu derrière le préfixe de son gestionnaire : « EPM - COGNACQ JAY -  ACCESSIBILITE   MOD ». Dans la même liste de candidats, les opérations d'investissement de l'établissement public Paris Musées portent le même gabarit de libellé (« EP MUSEES: MUSEE CARNAVALET ACCESSIBILIT », « EPM : MUSEE CARNAVALET ACCESSIBILITE »), ce qui identifie « EPM » comme le préfixe des opérations de cet établissement et non une enveloppe générique de direction : il s'agit de travaux de mise en accessibilité d'un musée nommément désigné. Le signal n'est toutefois qu'une « partie distinctive » sur un libellé plafonné à 40 caractères par la source ; le rattachement repose sur la conjonction préfixe gestionnaire + type d'équipement, l'homonyme de la rue Cognacq-Jay (7e) n'accueillant aucun équipement Paris Musées. D'où une confiance moyenne.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604811"
+   }
+  ],
+  "periode": [
+   "2020",
+   "2021"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Cognacq-Jay"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Mus%C3%A9e+Cognacq-Jay%22%29"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "At Conseil de Paris, the Musée Cognacq-Jay, 8 rue Elzévir (4th arrondissement), appears notably in November 2010: the Council approved the principle of a settlement following an accident suffered by a visitor at the museum and authorized the Mayor of Paris to sign a contract providing for payment of compensation of 8,125 euros, in exchange for the visitor's waiver of any further action against the City. This expenditure was to be charged to the City's 2010 operating budget, subject to the corresponding funding decision. At this stage, the deliberation approves only the principle and the authorization to sign, not a payment already made. A second text, from May 2024, does not concern this museum but rather the rue Cognacq-Jay (7th arrondissement), on the Left Bank: it concerns the installation of a plaque commemorating the first French television news broadcast, a namesake not to be confused with the museum in the Marais.",
+ "bmo_recit_en": "The Musée Cognacq-Jay passes through the municipal bulletin at three moments, from the mid-1930s to the postwar period. In 1936, in the course of a reflection on the names of the City's museums, which do not tell the public what kind of collections they house, it is presented as possessing rare collections of paintings and furniture. In July 1940, the bulletin announces an exhibition of engravings and casts published by the national museums, held at the museum, then at 25 boulevard des Capucines, and open every day from 2 to 6 p.m. Finally, in 1949, municipal councillor René Fiquet raises a question with the administration: according to him, staff cuts had made it impossible to ensure effective supervision during the vacation period, to the point that certain rooms had to be closed to the public. The archive preserves only these three traces for this location."
 }

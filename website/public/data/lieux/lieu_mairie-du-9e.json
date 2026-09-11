@@ -1,110 +1,180 @@
 {
-  "generated_at": "2026-09-11T14:25:25.461202+00:00",
-  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
-  "slug": "mairie-du-9e",
-  "name": "Mairie du 9e",
-  "kind_fr": "Mairie",
-  "kind_en": "Town hall",
-  "famille": "services",
-  "arrondissement": 9,
-  "lat": 48.8763,
-  "lon": 2.3376,
-  "photo": null,
-  "photo_credit": null,
-  "seuil_commun": 2010,
-  "wiki": {
-    "extract": null,
-    "url": null,
-    "source": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
-  },
-  "stats": {
-    "n_delibs": 764,
-    "delibs_span": [
-      1995,
-      2026
-    ],
-    "n_bmo_brut": 0,
-    "n_bmo_verifies": null,
-    "invest_total_eur": 203274.89,
-    "invest_annees": [
-      "2022",
-      "2024"
-    ],
-    "lecture_mode": "titre nommant le lieu (14 trouvés)",
-    "lecture_mode_en": "title naming the place (14 found)",
-    "n_lus": 0,
-    "n_lieu": null
-  },
-  "subventions_exploitant": null,
-  "residents": [
-    {
-      "beneficiaire": "PARIS ARTISTES",
-      "montant_total": 7200.0,
-      "preuve": "Objet de la subvention : « Exposition collective OBJECTIF FEMMES à la Mairie du 9ème arrondissement en octobre 2020 » — activité qui se déroule explicitement dans les locaux de la mairie.",
-      "preuve_en": "Grant purpose: \"Collective exhibition OBJECTIF FEMMES at the Mairie du 9ème arrondissement in October 2020\" — an activity taking place explicitly on the town hall's premises."
-    }
-  ],
-  "kpi_montant": null,
-  "synthese_fr": null,
-  "moments": [],
-  "montants": [],
-  "bmo_extraits": [],
-  "bmo_recit": null,
-  "invest": [
-    {
-      "annee": 2022,
-      "montant_eur": 29941.0,
-      "nom_projet": "Mairie du 9ème arrondissement - Réfection façade Rossini de la salle polyvalente",
-      "preuve": "Nom du projet : « Mairie du 9ème arrondissement - Réfection façade Rossini de la salle polyvalente » (nomme explicitement le lieu), à 29 m.",
-      "id": "2022_09_24_003"
-    },
-    {
-      "annee": 2024,
-      "montant_eur": 173333.89,
-      "nom_projet": "Mairie du 9e - Salle Des Fêtes Rossini - Restauration de la façade",
-      "preuve": "Nom du projet : « Mairie du 9e - Salle Des Fêtes Rossini - Restauration de la façade » — nomme explicitement le lieu (annexe/salle des fêtes de la mairie) ; distance géocodée de 281 m probablement due à l'adresse de l'annexe et non du bâtiment principal.",
-      "id": "2024_09_24_003"
-    }
-  ],
-  "marches": [
-    {
-      "numero_marche": "decp-2025S04085",
-      "objet": "Marché sans publicité ni mise en concurrence préalable pour la prestation d'entretien du poulailler de la mairie du 9eme",
-      "objet_clair": null,
-      "fournisseur": "LQE NATURE",
-      "montant_max": 33000.0,
-      "date_notification": "2025-05-02",
-      "preuve": "Objet du marché : « … entretien du poulailler de la mairie du 9eme » — nomme explicitement le lieu et décrit une prestation qui s'y déroule."
-    }
-  ],
-  "mandate": null,
-  "sources": {
-    "delibs": {
-      "name": "Débat-Délibs — Conseil de Paris",
-      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+9e"
-    },
-    "bmo": {
-      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-    },
-    "invest": {
-      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-      "url": "https://opendata.paris.fr/"
-    },
-    "wiki": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
-  },
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
+ "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "mairie-du-9e",
+ "name": "Mairie du 9e",
+ "kind_fr": "Mairie",
+ "kind_en": "Town hall",
+ "famille": "services",
+ "arrondissement": 9,
+ "lat": 48.8763,
+ "lon": 2.3376,
+ "photo": null,
+ "photo_credit": null,
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
   }
+ },
+ "stats": {
+  "n_delibs": 764,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 203274.89,
+  "invest_annees": [
+   "2022",
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (14 trouvés)",
+  "lecture_mode_en": "title naming the place (14 found)",
+  "n_lus": 0,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [
+  {
+   "beneficiaire": "PARIS ARTISTES",
+   "montant_total": 7200.0,
+   "preuve": "Objet de la subvention : « Exposition collective OBJECTIF FEMMES à la Mairie du 9ème arrondissement en octobre 2020 » — activité qui se déroule explicitement dans les locaux de la mairie.",
+   "preuve_en": "Grant purpose: \"Collective exhibition OBJECTIF FEMMES at the Mairie du 9ème arrondissement in October 2020\" — an activity taking place explicitly on the town hall's premises."
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "1998": [
+   {
+    "reference": "1998 DPA 199",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec la Compagnie d'assurances G.A.N. un protocole d'accord portant sur des travaux de peinture effectués dans l'appartement occupé par M. COHEN-SABBAN, 4, rue Drouot (9e), consécutifs à des infiltrations provenant d'un appartement de la mairie du 9e arrondissement. Mme Claude-Annick TISSOT, rapporteur.",
+    "seance": "NOVEMBRE 1998",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62370"
+   }
+  ],
+  "2001": [
+   {
+    "reference": "2001 DPA 170",
+    "titre": "Approbation du principe de réalisation des travaux de modernisation de menuiseries extérieures à la Mairie du 9e arrondissement, 6, rue Drouot (9e). - Autorisation à M. le Maire de Paris de déposer la demande de permis de construire relative à cette opération. Mme Mireille FLAM, rapporteur.",
+    "seance": "FEVRIER 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57982"
+   }
+  ],
+  "2002": [
+   {
+    "reference": "2002 DAC 174",
+    "titre": "Autorisation à M. le Maire de Paris d'attribuer à l'Association des Amis de Nadia et Lili Boulanger, dont le siège social est situé Mairie du 9e arrondissement, 6, rue Drouot (9e), une subvention de fonctionnement (D07200). M. Christophe GIRARD, rapporteur.",
+    "seance": "OCTOBRE 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95456"
+   },
+   {
+    "reference": "2002 DPA 112",
+    "titre": "Approbation du principe de la réalisation des travaux de ravalement de la façade sur rue, de mise aux normes de la porte cochère et de modification du réseau d'évacuation d'eau à la Mairie du 9e arrondissement, 6, rue Drouot (9e), et des modalités d'attribution des marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Mireille FLAM, rapporteur.",
+    "seance": "FEVRIER 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58135"
+   },
+   {
+    "reference": "2002 DPA 24",
+    "titre": "Approbation du principe de la réalisation des travaux de réfection des salons 1-2-3 et de la salle du Conseil à la Mairie du 9e arrondissement (9e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
+    "seance": "MARS 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38854"
+   },
+   {
+    "reference": "2002 DPA 405",
+    "titre": "Approbation du principe de la réalisation des travaux de rénovation des ascenseurs principaux à la mairie du 9ème arrondissement 6,rue Drouot à Paris 9ème et des modalités de passation du marché de travaux correspondant. - Autorisation à Monsieur le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
+    "seance": "SEPTEMBRE 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29326"
+   },
+   {
+    "reference": "2002 DPA 406",
+    "titre": "Approbation du principe de la réalisation des travaux de modernisation des menuiseries extérieures phase 2 à la Mairie du 9ème arrondissement 6 rue Drouot à Paris 9ème et des modalités de passation du marché de travaux correspondant. - Autorisation à Monsieur le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
+    "seance": "SEPTEMBRE 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29301"
+   },
+   {
+    "reference": "2002 DPA 74",
+    "titre": "Approbation du principe de la réalisation des travaux de modernisation de menuiseries extérieures à la mairie du 9e arrondissement. - Approbation des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
+    "seance": "MARS 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39101"
+   }
+  ],
+  "2003": [
+   {
+    "reference": "2003 DPA 365",
+    "titre": "Approbation du principe de réalisation des travaux de modernisation du centre thermique à la Mairie du 9e arrondissement, 6, rue Drouot (9e), et des modalités de passation du marché de travaux. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteure.",
+    "seance": "NOVEMBRE 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94050"
+   },
+   {
+    "reference": "2003 DPA 50",
+    "titre": "Approbation du principe de la réalisation des travaux de restructuration du service des affaires générales à la mairie du 9e arrondissement, 6, rue Drouot (9e) et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
+    "seance": "MARS 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68982"
+   }
+  ],
+  "2004": [
+   {
+    "reference": "2004 DPA 66",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché de travaux signé avec la société UTB relatif à la restructuration du Service des affaires générales à la mairie du 9e arrondissement. Mme Mireille FLAM, rapporteure.",
+    "seance": "AVRIL 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51929"
+   }
+  ]
+ },
+ "invest": [
+  {
+   "annee": 2022,
+   "montant_eur": 29941.0,
+   "nom_projet": "Mairie du 9ème arrondissement - Réfection façade Rossini de la salle polyvalente",
+   "preuve": "Nom du projet : « Mairie du 9ème arrondissement - Réfection façade Rossini de la salle polyvalente » (nomme explicitement le lieu), à 29 m.",
+   "id": "2022_09_24_003"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 173333.89,
+   "nom_projet": "Mairie du 9e - Salle Des Fêtes Rossini - Restauration de la façade",
+   "preuve": "Nom du projet : « Mairie du 9e - Salle Des Fêtes Rossini - Restauration de la façade » — nomme explicitement le lieu (annexe/salle des fêtes de la mairie) ; distance géocodée de 281 m probablement due à l'adresse de l'annexe et non du bâtiment principal.",
+   "id": "2024_09_24_003"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "decp-2025S04085",
+   "objet": "Marché sans publicité ni mise en concurrence préalable pour la prestation d'entretien du poulailler de la mairie du 9eme",
+   "objet_clair": null,
+   "fournisseur": "LQE NATURE",
+   "montant_max": 33000.0,
+   "date_notification": "2025-05-02",
+   "preuve": "Objet du marché : « … entretien du poulailler de la mairie du 9eme » — nomme explicitement le lieu et décrit une prestation qui s'y déroule."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+9e"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
 }

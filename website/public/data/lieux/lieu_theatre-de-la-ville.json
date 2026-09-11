@@ -1,804 +1,1008 @@
 {
-  "generated_at": "2026-09-11T14:25:25.461202+00:00",
-  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
-  "slug": "theatre-de-la-ville",
-  "name": "Théâtre de la Ville",
-  "kind_fr": "Théâtre",
-  "kind_en": "Theatre",
-  "famille": "culture",
-  "arrondissement": 4,
-  "lat": 48.8574,
-  "lon": 2.3477,
-  "photo": "/img/lieux/theatre-de-la-ville.jpg",
-  "photo_credit": {
-    "licence": null,
-    "auteur": null,
-    "url": "https://fr.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_de_la_Ville_-_Sarah-Bernhardt",
-    "source": "Wikipédia"
+ "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "theatre-de-la-ville",
+ "name": "Théâtre de la Ville",
+ "kind_fr": "Théâtre",
+ "kind_en": "Theatre",
+ "famille": "culture",
+ "arrondissement": 4,
+ "lat": 48.8574,
+ "lon": 2.3477,
+ "photo": "/img/lieux/theatre-de-la-ville.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_de_la_Ville_-_Sarah-Bernhardt",
+  "source": "Wikipédia"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "Le théâtre de la Ville - Sarah-Bernhardt est un théâtre parisien situé 2, place du Châtelet dans 4e arrondissement. Il est devenu à partir du début des années 1980 un lieu majeur de promotion et de reconnaissance internationale de la danse contemporaine et de ses jeunes créateurs. Il possède également, depuis 1996, une deuxième salle, dans le nord de Paris, le théâtre des Abbesses.",
+  "url": "https://fr.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_de_la_Ville_-_Sarah-Bernhardt",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
   },
-  "seuil_commun": 2010,
-  "wiki": {
-    "extract": "Le théâtre de la Ville - Sarah-Bernhardt est un théâtre parisien situé 2, place du Châtelet dans 4e arrondissement. Il est devenu à partir du début des années 1980 un lieu majeur de promotion et de reconnaissance internationale de la danse contemporaine et de ses jeunes créateurs. Il possède également, depuis 1996, une deuxième salle, dans le nord de Paris, le théâtre des Abbesses.",
-    "url": "https://fr.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_de_la_Ville_-_Sarah-Bernhardt",
-    "source": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    },
-    "extract_en": "Théâtre de la Ville - Sarah-Bernhardt is a Parisian theatre located at 2, place du Châtelet in the 4th arrondissement. From the early 1980s onward, it became a major venue for promoting contemporary dance and its young creators and securing their international recognition. Since 1996, it has also had a second venue in northern Paris, the Théâtre des Abbesses."
-  },
-  "stats": {
-    "n_delibs": 310,
-    "delibs_span": [
-      1996,
-      2024
-    ],
-    "n_bmo_brut": 2544,
-    "n_bmo_verifies": 1,
-    "invest_total_eur": 0,
-    "invest_annees": [],
-    "lecture_mode": "titre nommant le lieu (32 trouvés)",
-    "lecture_mode_en": "title naming the place (32 found)",
-    "n_lus": 32,
-    "n_lieu": 32
-  },
-  "subventions_exploitant": {
-    "nom_fiche": "THEATRE DE LA VILLE",
-    "total_eur": 179059281.07,
-    "annees": [
-      "2010",
-      "2024"
-    ],
-    "rows": [
-      {
-        "annee": "2024",
-        "montant_eur": 14429005.0,
-        "beneficiaire": "THEATRE DE LA VILLE",
-        "thematique": "Culture"
-      },
-      {
-        "annee": "2023",
-        "montant_eur": 13274487.0,
-        "beneficiaire": "THEATRE DE LA VILLE",
-        "thematique": "Culture"
-      },
-      {
-        "annee": "2022",
-        "montant_eur": 12161790.0,
-        "beneficiaire": "THEATRE DE LA VILLE",
-        "thematique": "Culture"
-      },
-      {
-        "annee": "2021",
-        "montant_eur": 11876400.0,
-        "beneficiaire": "THEATRE DE LA VILLE",
-        "thematique": "Culture"
-      },
-      {
-        "annee": "2020",
-        "montant_eur": 12626676.07,
-        "beneficiaire": "THEATRE DE LA VILLE",
-        "thematique": "Culture"
-      },
-      {
-        "annee": "2019",
-        "montant_eur": 11706623.0,
-        "beneficiaire": "THEATRE DE LA VILLE",
-        "thematique": "Culture"
-      },
-      {
-        "annee": "2018",
-        "montant_eur": 11696300.0,
-        "beneficiaire": "THEATRE DE LA VILLE",
-        "thematique": "Culture"
-      },
-      {
-        "annee": "2017",
-        "montant_eur": 11995000.0,
-        "beneficiaire": "THEATRE DE LA VILLE",
-        "thematique": "Culture"
-      },
-      {
-        "annee": "2016",
-        "montant_eur": 12003000.0,
-        "beneficiaire": "THEATRE DE LA VILLE",
-        "thematique": "Culture"
-      },
-      {
-        "annee": "2015",
-        "montant_eur": 11824000.0,
-        "beneficiaire": "THEATRE DE LA VILLE",
-        "thematique": "Culture"
-      },
-      {
-        "annee": "2014",
-        "montant_eur": 11196000.0,
-        "beneficiaire": "THEATRE DE LA VILLE",
-        "thematique": "Culture"
-      },
-      {
-        "annee": "2013",
-        "montant_eur": 11485000.0,
-        "beneficiaire": "THEATRE DE LA VILLE",
-        "thematique": "Culture"
-      },
-      {
-        "annee": "2012",
-        "montant_eur": 10985000.0,
-        "beneficiaire": "THEATRE DE LA VILLE",
-        "thematique": "Culture"
-      },
-      {
-        "annee": "2011",
-        "montant_eur": 11250000.0,
-        "beneficiaire": "THEATRE DE LA VILLE",
-        "thematique": "Culture"
-      },
-      {
-        "annee": "2010",
-        "montant_eur": 10550000.0,
-        "beneficiaire": "THEATRE DE LA VILLE",
-        "thematique": "Culture"
-      }
-    ],
-    "perimetre": "multi",
-    "note_publique": "L'association « Théâtre de la Ville » ne gère pas que la salle du 2 place du Châtelet : elle exploite aussi le Théâtre des Abbesses (18e) et, selon les délibérations récentes, un site du 8e arrondissement. La subvention affichée couvre l'ensemble de ces sites, pas ce seul bâtiment. Les marchés de travaux listés, eux, portent bien sur cette salle du 4e : leur objet nomme le « Théâtre de la Ville » et plusieurs précisent « 75004 » ou « 4ÈME ».",
-    "autres_sites": [
-      "Théâtre des Abbesses (18e)",
-      "site du 8e arrondissement cité dans les délibérations 2021 DAC 58 et 2022 DAC 58"
-    ],
-    "note_publique_en": "The association \"Théâtre de la Ville\" does not manage only the venue at 2 place du Châtelet: it also operates the Théâtre des Abbesses (18th arrondissement) and, according to recent deliberations, a site in the 8th arrondissement. The subsidy shown covers all of these sites, not this building alone. The works contracts listed, however, do concern this venue in the 4th arrondissement: their purpose names \"Théâtre de la Ville\" and several specify \"75004\" or \"4ÈME.\""
-  },
-  "residents": [],
-  "kpi_montant": null,
-  "synthese_fr": "De 1996 à 2006, le Conseil de Paris vote des subventions d'investissement récurrentes (1.200.000 F en 1996 et 1997, puis 200.000 à 300.000 euros) et une série de délibérations de travaux ponctuels sur le bâtiment du 2, place du Châtelet : façades (quai de Gesvres 1999, ensemble des façades 2002-2005), machinerie (2000), sécurité-incendie (1998), ouvrages vitrés (2004), poste haute tension (2004) et éclairage scénique (2006). Dans le même temps, la subvention de fonctionnement annuelle versée à l'association gestionnaire — présentée en séance comme la deuxième subvention culturelle de la Ville — passe de 9.895.868 euros (2002) à 10 millions (2004) puis 10,4 millions (2009), au fil de débats sur l'audit Arthur Andersen (2002), la succession de Gérard Violette par Emmanuel Demarcy-Mota (2008) et le poids de la subvention dans les produits (77 % selon un rapport de l'Inspection générale de 2007 cité en séance). En novembre 2013, l'Exécutif reconnaît qu'une « réfection globale » devra intervenir à la mandature suivante, et le rapport de la Chambre régionale des comptes communiqué en novembre 2014 salue la politique des publics tout en pointant un cadre statutaire et conventionnel lacunaire. En mai 2015, le Conseil examine l'autorisation de rénovation du site (DPA 34) avec une programmation « hors les murs » annoncée sur deux saisons, de septembre 2016 à l'été 2018 ; en septembre 2019, le chantier est toujours en cours, ses phases ont été regroupées et la restauration des façades, « phase non budgétée initialement », est financée par une bâche publicitaire aux recettes attendues entre 3 et 5 millions d'euros. Les délibérations 2021-2024 — subventions d'investissement de 600.000 puis 850.000 euros, subventions de fonctionnement de 11.595.000 à 13.650.000 puis 13.500.000 euros, conventions d'occupation et bail civil avec l'association (2023), nouveau rapport de la C.R.C. (2024) — ne sont ici connues que par leurs intitulés.",
-  "moments": [
-    {
-      "id": "7459",
-      "seance": "MARS 2002",
-      "fait": "Le vote d'une subvention d'équipement de 243 919 euros donne lieu à un débat sur l'audit du cabinet Arthur Andersen, l'Exécutif confirmant le maintien de Jean Maheu à la présidence du conseil d'administration.",
-      "pourquoi": "gouvernance associative sous tension",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7459",
-      "fait_en": "The vote on an equipment subsidy of 243,919 euros gave rise to a debate on the Arthur Andersen firm's audit, with the executive confirming that Jean Maheu would remain chairman of the board.",
-      "pourquoi_en": "association governance under strain"
-    },
-    {
-      "id": "13772",
-      "seance": "JUILLET 2008",
-      "fait": "Le vote des subventions accompagne la passation de direction entre Gérard Violette et Emmanuel Demarcy-Mota, l'opposition critiquant une subvention gelée pour la troisième année consécutive.",
-      "pourquoi": "changement de direction historique",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13772",
-      "fait_en": "The subsidy vote accompanied the handover of leadership between Gérard Violette and Emmanuel Demarcy-Mota, with the opposition criticizing a subsidy frozen for the third consecutive year.",
-      "pourquoi_en": "a historic change of leadership"
-    },
-    {
-      "id": "21020",
-      "seance": "FEVRIER 2009",
-      "fait": "La subvention de 10,4 millions d'euros est débattue au regard d'une coproduction passée de 840 000 à 600 000 euros et d'une subvention municipale représentant 77 % des produits.",
-      "pourquoi": "poids de l'argent public chiffré",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21020",
-      "fait_en": "The 10.4 million euro subsidy was debated in light of a co-production budget reduced from 840,000 to 600,000 euros and a municipal subsidy representing 77% of revenues.",
-      "pourquoi_en": "the weight of public funding quantified"
-    },
-    {
-      "id": "116546",
-      "seance": "NOVEMBRE 2013",
-      "fait": "En votant 300 000 euros d'équipement, l'Exécutif admet qu'une réfection globale du théâtre devra intervenir à la mandature suivante.",
-      "pourquoi": "première annonce de la rénovation",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116546",
-      "fait_en": "In voting 300,000 euros for equipment, the executive admitted that a comprehensive renovation of the theatre would have to take place in the following term.",
-      "pourquoi_en": "the first announcement of the renovation"
-    },
-    {
-      "id": "121345",
-      "seance": "NOVEMBRE 2014",
-      "fait": "Le rapport de la Chambre régionale des comptes salue publics et programmation mais pointe un cadre statutaire lacunaire et des instances au rôle secondaire.",
-      "pourquoi": "contrôle externe avant le chantier",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121345",
-      "fait_en": "The Chambre régionale des comptes report praised audiences and programming but pointed to a deficient statutory framework and governing bodies with a secondary role.",
-      "pourquoi_en": "external oversight ahead of the works"
-    },
-    {
-      "id": "125471",
-      "seance": "MAI 2015",
-      "fait": "Le Conseil fixe la subvention 2015 à 10,9 millions d'euros et examine la rénovation du site (DPA 34), avec fermeture et programmation « hors les murs » de septembre 2016 à l'été 2018.",
-      "pourquoi": "lancement du chantier, calendrier initial",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125471",
-      "fait_en": "The Council set the 2015 subsidy at 10.9 million euros and examined the site's renovation (DPA 34), with closure and \"off-site\" programming from September 2016 to summer 2018.",
-      "pourquoi_en": "the works launched, initial schedule"
-    },
-    {
-      "id": "152349",
-      "seance": "SEPTEMBRE 2019",
-      "fait": "Le chantier étant toujours en cours, une bâche publicitaire aux recettes attendues de 3 à 5 millions d'euros doit financer la restauration des façades, phase non budgétée initialement.",
-      "pourquoi": "financement inédit, chantier prolongé",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152349",
-      "fait_en": "With the works still under way, an advertising banner expected to bring in 3 to 5 million euros in revenue was to finance the restoration of the facades, a phase not originally budgeted.",
-      "pourquoi_en": "an unprecedented funding source, works prolonged"
-    },
-    {
-      "id": "176363",
-      "seance": "JUIN 2024",
-      "fait": "Le Conseil reçoit un nouveau rapport de la Chambre régionale des comptes consacré au Théâtre de la Ville.",
-      "pourquoi": "second contrôle externe en dix ans",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176363",
-      "fait_en": "The Council received a new Chambre régionale des comptes report devoted to the Théâtre de la Ville.",
-      "pourquoi_en": "a second external audit in ten years"
-    }
+  "extract_en": "Théâtre de la Ville - Sarah-Bernhardt is a Parisian theatre located at 2, place du Châtelet in the 4th arrondissement. From the early 1980s onward, it became a major venue for promoting contemporary dance and its young creators and securing their international recognition. Since 1996, it has also had a second venue in northern Paris, the Théâtre des Abbesses."
+ },
+ "stats": {
+  "n_delibs": 310,
+  "delibs_span": [
+   1996,
+   2024
   ],
-  "montants": [
-    {
-      "seance": "FEVRIER 2002",
-      "montant": "9.895.868 euros",
-      "objet": "subvention de fonctionnement 2002 à l'association Théâtre de la Ville",
-      "citation": "une convention relative à l'attribution d'une subvention de fonctionnement. - Montant : 9.895.868 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12582"
-    },
-    {
-      "seance": "FEVRIER 2002",
-      "montant": "305.000 euros",
-      "objet": "budget d'équipement 2002 du théâtre, non couvert par la convention votée",
-      "citation": "Pourquoi, alors que le théâtre a budgété 305.000 euros sur ce poste en 2002, le présent projet ne prévoit-il rien ?",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12582"
-    },
-    {
-      "seance": "DECEMBRE 2021",
-      "montant": "600.000 euros",
-      "objet": "subvention d'investissement 2021 à l'association",
-      "citation": "2021 DAC 58 - Subvention d’investissement (600.000 euros) et convention avec l’association \"Théâtre de la Ville\" (Paris centre, 8e, 18e).",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164306"
-    },
-    {
-      "seance": "NOVEMBRE 2013",
-      "montant": "300.000 euros",
-      "objet": "subvention d'équipement, programme d'acquisition 2012-2014",
-      "citation": "300.000 euros qui vise à permettre à l'association de réaliser pour la période 2012-2014 un nouveau programme d'acquisition d'équipements pour le son, la vidéo, les aménagements de bureaux, le mobilier et le système de sécurité",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116546"
-    },
-    {
-      "seance": "DECEMBRE 2019",
-      "montant": "11.595.000 euros",
-      "objet": "subvention 2019 à l'association",
-      "citation": "2019 DAC 86 - Subvention (11.595.000 euros) et avenant à convention avec l’association Théâtre de la Ville (4e, 8e, 18e).",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=175620"
-    },
-    {
-      "seance": "NOVEMBRE 1997",
-      "montant": "200.000 F",
-      "objet": "subvention d'investissement pour l'équipement du Théâtre des Abbesses",
-      "citation": "Une subvention d'investissement de 200.000 F est attribuée à l'association \"Théâtre de la Ville\", 2, place du Châtelet (4e), pour le financement de divers travaux et achats au Théâtre des Abbesses (18e).",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49740"
-    },
-    {
-      "seance": "MARS 2023",
-      "montant": "13.650. 000 euros",
-      "objet": "subventions de fonctionnement et d'investissement 2023",
-      "citation": "2023 DAC 18 - Subventions (13.650. 000 euros) et avenants à convention de fonctionnement et d'investissement avec l'association \"Théâtre de la Ville\".",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168429"
-    },
-    {
-      "seance": "MAI 2015",
-      "montant": "5.825.000 euros",
-      "objet": "subventions et avenants votés par la délibération DAC 200",
-      "citation": "2015 DAC 200 - Subventions (5.825.000 euros) et avenants avec l’association \"Théâtre de la Ville\" (4e et 18e).",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125471"
-    },
-    {
-      "seance": "MAI 2015",
-      "montant": "10.900.000 euros",
-      "objet": "subvention de fonctionnement 2015 de l'association",
-      "citation": "fixer le montant de la subvention de fonctionnement 2015 pour l?association \"Théâtre de la Ville\" à 10.900.000 euros, soit un complément de 5.527.000 euros après déduction de l?acompte déjà versé en décembre 2014",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125471"
-    },
-    {
-      "seance": "MAI 2015",
-      "montant": "5.527.000 euros",
-      "objet": "complément 2015 après déduction de l'acompte versé en décembre 2014",
-      "citation": "à 10.900.000 euros, soit un complément de 5.527.000 euros après déduction de l?acompte déjà versé en décembre 2014",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125471"
-    },
-    {
-      "seance": "MAI 2015",
-      "montant": "150.000 euros",
-      "objet": "hausse de la subvention de fonctionnement 2015 par rapport à 2014",
-      "citation": "On constate en effet une hausse de 150.000 euros de la subvention de fonctionnement",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125471"
-    },
-    {
-      "seance": "JUILLET 2008",
-      "montant": "5.200.000 euros",
-      "objet": "subvention de fonctionnement (convention et 3e avenant à la convention-cadre 2006-2008)",
-      "citation": "Montants : 5.200.000 euros (fonctionnement et 300.000 euros équipement).",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13772"
-    },
-    {
-      "seance": "JUILLET 2008",
-      "montant": "300.000 euros",
-      "objet": "subvention d'équipement du Théâtre de la Ville et du Théâtre des Abbesses",
-      "citation": "Montants : 5.200.000 euros (fonctionnement et 300.000 euros équipement).",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13772"
-    },
-    {
-      "seance": "SEPTEMBRE 2019",
-      "montant": "entre 3 millions et 5 millions d’euros",
-      "objet": "recettes publicitaires attendues pour financer la rénovation des façades",
-      "citation": "On peut rappeler que ces recettes importantes pour la Ville de Paris, entre 3 millions et 5 millions d?euros, permettront la rénovation des façades du bâtiment.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152349"
-    },
-    {
-      "seance": "SEPTEMBRE 2019",
-      "montant": "plus de 14 millions d’euros",
-      "objet": "chiffre d'affaires 2017 d'ATEM, signataire de la convention d'occupation",
-      "citation": "on apprend que c?est ATEM qui signera la convention d?occupation du domaine public. Sur l?année 2017, elle réalise un chiffre de plus de 14 millions d?euros.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152349"
-    },
-    {
-      "seance": "NOVEMBRE 2024",
-      "montant": "13.500.000 euros",
-      "objet": "subventions 2024 à l'association",
-      "citation": "2024 DAC 69 - Subventions (13.500.000 euros) et avenants à convention avec l’association \"Théâtre de la Ville\" (Paris Centre, 18e).",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178591"
-    },
-    {
-      "seance": "MARS 2004",
-      "montant": "10.000.000 euros",
-      "objet": "subvention de fonctionnement 2004",
-      "citation": "Subvention de fonctionnement de 10.000.000 euros et subvention d'équipement de 200.000 euros à l'association \"Théâtre de la Ville\" (4e)",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11803"
-    },
-    {
-      "seance": "MARS 2004",
-      "montant": "200.000 euros",
-      "objet": "subvention d'équipement 2004",
-      "citation": "Subvention de fonctionnement de 10.000.000 euros et subvention d'équipement de 200.000 euros à l'association \"Théâtre de la Ville\" (4e)",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11803"
-    },
-    {
-      "seance": "MARS 2004",
-      "montant": "100.000 euros",
-      "objet": "hausse de la subvention de fonctionnement entre 2003 et 2004",
-      "citation": "La subvention de fonctionnement proposée est donc de 10 millions d'euros en 2004 au lieu de 9,9 millions d'euros en 2003, soit une hausse de 100.000 euros.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11803"
-    },
-    {
-      "seance": "MARS 2004",
-      "montant": "470.000 euros",
-      "objet": "travaux du poste haute tension pris en charge par la Ville en 2004",
-      "citation": "en 2004, d'importants travaux seront pris en charge par la Ville : 470.000 euros pour le poste haute tension",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11803"
-    },
-    {
-      "seance": "MARS 2004",
-      "montant": "23 %",
-      "objet": "hausse de la subvention d'équipement en 2003, liée aux travaux d'électricité",
-      "citation": "La hausse de 23 % de la subvention d'équipement en 2003 avait été motivée par les nombreux travaux d'électricité pris directement en charge par le théâtre, cette année-là.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11803"
-    },
-    {
-      "seance": "DECEMBRE 2022",
-      "montant": "850.000 euros",
-      "objet": "subvention d'investissement 2022 à l'association",
-      "citation": "2022 DAC 58 - Subvention d’investissement (850.000 euros) et avenant avec l’association \"Théâtre de la Ville\" (Paris Centre, 8e, 18e).",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168024"
-    },
-    {
-      "seance": "MARS 2002",
-      "montant": "243.919 euros",
-      "objet": "subvention d'équipement 2002 à l'association",
-      "citation": "une convention relative à l'attribution d'une subvention d'équipement. - Montant : 243.919 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7459"
-    },
-    {
-      "seance": "NOVEMBRE 2014",
-      "montant": "près de 250.000 spectateurs",
-      "objet": "fréquentation 2010 relevée par le rapport de la C.R.C.",
-      "citation": "Ainsi, en 2010, - c'est l'objet de ce rapport - c'est près de 250.000 spectateurs, bien au-delà d'ailleurs de ce qu'enregistrent les théâtres de Chaillot ou même du Rond-point.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121345"
-    },
-    {
-      "seance": "NOVEMBRE 2014",
-      "montant": "de 23 % à 33 %",
-      "objet": "évolution de l'autofinancement en deux ans",
-      "citation": "l?amélioration de l?autofinancement qui est passé de 23 % à 33 % en deux ans",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121345"
-    },
-    {
-      "seance": "NOVEMBRE 2014",
-      "montant": "13.000 places",
-      "objet": "jauge citée en séance (Théâtre de la Ville avec le Théâtre des Abbesses)",
-      "citation": "une jauge de 13.000 places avec le théâtre des Abbesses qui en fait l?un des plus grands théâtres de Paris",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121345"
-    },
-    {
-      "seance": "MARS 1996",
-      "montant": "1.200.000 F",
-      "objet": "subvention d'investissement 1996",
-      "citation": "Une subvention d'investissement de 1.200.000 F est attribuée au Théâtre de la Ville, 2, place du Châtelet (4e).",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82868"
-    },
-    {
-      "seance": "FEVRIER 2009",
-      "montant": "10,4 millions d’euros",
-      "objet": "subvention 2009 à l'association",
-      "citation": "la signature d'une convention relative à l'attribution d'une subvention à l?association \"Théâtre de la Ville\" pour le montant de 10,4 millions d?euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21020"
-    },
-    {
-      "seance": "FEVRIER 2009",
-      "montant": "de 840.000 euros à 600.000 euros",
-      "objet": "évolution de la part consacrée à la coproduction",
-      "citation": "ce qui conduit, avec l'évolution du coût de la vie à ce que la part consacrée à la coproduction passe de 840.000 euros à 600.000 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21020"
-    },
-    {
-      "seance": "FEVRIER 2009",
-      "montant": "77 %",
-      "objet": "part de la subvention municipale dans les produits selon le rapport de l'Inspection générale (mars 2007)",
-      "citation": "il est indiqué que la subvention municipale représente l'essentiel des produits - 77 % je crois - les recettes des billetteries ne couvrant même pas les coûts directs des spectacles",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21020"
-    },
-    {
-      "seance": "JUILLET 1997",
-      "montant": "1.200.000 F",
-      "objet": "subvention d'investissement 1997",
-      "citation": "Une subvention d'investissement de 1.200.000 F est attribuée au Théâtre de la Ville, 2, place du Châtelet (4e).",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78752"
-    },
-    {
-      "seance": "JUIN 2024",
-      "montant": "500.000 euros",
-      "objet": "subvention 2024 à l'association",
-      "citation": "2024 DAC 65 - Subvention (500.000 euros) et avenant à convention avec l’association \"Théâtre de la Ville\" (Paris Centre et 18e).",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176451"
-    }
+  "n_bmo_brut": 2544,
+  "n_bmo_verifies": 1,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (32 trouvés)",
+  "lecture_mode_en": "title naming the place (32 found)",
+  "n_lus": 32,
+  "n_lieu": 32
+ },
+ "subventions_exploitant": {
+  "nom_fiche": "THEATRE DE LA VILLE",
+  "total_eur": 179059281.07,
+  "annees": [
+   "2010",
+   "2024"
   ],
-  "bmo_extraits": [],
-  "bmo_recit": null,
-  "invest": [],
-  "marches": [
-    {
-      "numero_marche": "20181210001694",
-      "objet": "CSP5 RENOVATION THEATRE DE LA VILLE - LOT 2 : TVX BAT. TCE",
-      "objet_clair": null,
-      "fournisseur": "COLAS FRANCE",
-      "montant_max": 14657894.43,
-      "date_notification": "2018-12-18",
-      "preuve": "Objet nomme le lieu et l'opération : « RENOVATION THEATRE DE LA VILLE - LOT 2 : TVX BAT. TCE » — lot travaux bâtiment du chantier de rénovation acté par 2015 DPA 34."
-    },
-    {
-      "numero_marche": "20181210001697",
-      "objet": "CSP5 RENOVATION THEATRE DE LA VILLE - LOT 3 : SCENOGRAPHIE",
-      "objet_clair": null,
-      "fournisseur": "A M G  FECHOZ",
-      "montant_max": 4832500.0,
-      "date_notification": "2018-12-18",
-      "preuve": "Objet nomme le lieu : « RENOVATION THEATRE DE LA VILLE - LOT 3 : SCENOGRAPHIE » — lot scénographie du même chantier."
-    },
-    {
-      "numero_marche": "20151210001173",
-      "objet": "RÉNOVATION PARTIELLE THÉÂTRE DE LA VILLE 75004   MOE",
-      "objet_clair": null,
-      "fournisseur": "BLOND ET ROUX ARCHITECTES",
-      "montant_max": 3093225.14,
-      "date_notification": "2015-06-30",
-      "preuve": "Objet nomme le lieu et son code postal : « RÉNOVATION PARTIELLE THÉÂTRE DE LA VILLE 75004 » (4e arr. du lieu) — même intitulé que 2015 DPA 34 « Rénovation partielle »."
-    },
-    {
-      "numero_marche": "20181210001036",
-      "objet": "CSP5 TVX DE CURAGE & DEPOLLUTION THEATRE DE LA VILLE 4ÈME",
-      "objet_clair": null,
-      "fournisseur": "SUPRAMIANTE",
-      "montant_max": 1377686.05,
-      "date_notification": "2018-07-16",
-      "preuve": "Objet nomme le lieu et l'arrondissement : « TVX DE CURAGE & DEPOLLUTION THEATRE DE LA VILLE 4ÈME »."
-    },
-    {
-      "numero_marche": "20191210001361",
-      "objet": "SA4 DEPLOMBAGE/RESTAURATION THEATRE DE LA VILLE",
-      "objet_clair": null,
-      "fournisseur": "STE LOUIS GENESTE ET SES FILS",
-      "montant_max": 1080033.02,
-      "date_notification": "2019-11-14",
-      "preuve": "Objet nomme le lieu : « DEPLOMBAGE/RESTAURATION THEATRE DE LA VILLE » — travaux sur le bâtiment pendant le chantier de rénovation en cours en 2019."
-    },
-    {
-      "numero_marche": "20191210020021",
-      "objet": "SA4 TVX RÉNOVATION THÉÂTRE DE LA VILLE LOT4 FAUTEUILS",
-      "objet_clair": null,
-      "fournisseur": "JEZET SEATING SA",
-      "montant_max": 499825.0,
-      "date_notification": "2019-08-29",
-      "preuve": "Objet nomme le lieu : « TVX RÉNOVATION THÉÂTRE DE LA VILLE LOT4 FAUTEUILS » — fauteuils de la salle rénovée."
-    },
-    {
-      "numero_marche": "20151210000972",
-      "objet": "REMPLACEMENT DU MONTE-DÉCOR THÉÂTRE DE LA VILLE 75004",
-      "objet_clair": null,
-      "fournisseur": "SN ERCT CONSTRUCTION",
-      "montant_max": 494514.82,
-      "date_notification": "2015-06-10",
-      "preuve": "Objet nomme le lieu et son code postal : « REMPLACEMENT DU MONTE-DÉCOR THÉÂTRE DE LA VILLE 75004 » — équipement scénique du bâtiment du 4e."
-    },
-    {
-      "numero_marche": "20131210008861",
-      "objet": "REMPLACT DU PROSCENIUM ET DE L'ÉCLAIRAGE THÉÂTRE DE LA VILLE",
-      "objet_clair": null,
-      "fournisseur": "A M G  FECHOZ",
-      "montant_max": 488292.0,
-      "date_notification": "2013-03-29",
-      "preuve": "Objet nomme le lieu : « REMPLACT DU PROSCENIUM ET DE L'ÉCLAIRAGE THÉÂTRE DE LA VILLE » — équipement de scène du théâtre."
-    },
-    {
-      "numero_marche": "20141210011769",
-      "objet": "MODERNISATION LOCAUX ET SSI THÉÂTRE DE LA VILLE",
-      "objet_clair": null,
-      "fournisseur": "AC2P",
-      "montant_max": 483079.65,
-      "date_notification": "2014-07-10",
-      "preuve": "Objet nomme le lieu : « MODERNISATION LOCAUX ET SSI THÉÂTRE DE LA VILLE » (système de sécurité incendie) ; cohérent avec 2013 DAC 673 qui finance équipements et « système de sécurité » du théâtre."
-    },
-    {
-      "numero_marche": "20202020S07442",
-      "objet": "OPC RÉNOVATION THÉÂTRE DE LA VILLE 75004",
-      "objet_clair": null,
-      "fournisseur": "IPCS",
-      "montant_max": 209950.0,
-      "date_notification": "2020-11-20",
-      "preuve": "Objet nomme le lieu et son code postal : « OPC RÉNOVATION THÉÂTRE DE LA VILLE 75004 » — ordonnancement-pilotage du chantier."
-    },
-    {
-      "numero_marche": "20232023T07085",
-      "objet": "FABRICATION GRADIN SPECIFIQUE COUPOLE THEATRE DE LA VILLE",
-      "objet_clair": null,
-      "fournisseur": "GUILLET",
-      "montant_max": 174000.0,
-      "date_notification": "2023-07-31",
-      "preuve": "Objet nomme le lieu : « FABRICATION GRADIN SPECIFIQUE COUPOLE THEATRE DE LA VILLE » — gradin pour une salle (coupole) du théâtre."
-    },
-    {
-      "numero_marche": "20232023F02219",
-      "objet": "FOURNITURE INSTALLATION DRAPERIES THEATRE DE LA VILLE",
-      "objet_clair": null,
-      "fournisseur": "SOCIETE NOUVELLE LEBLANC SCENIQUE",
-      "montant_max": 147943.0,
-      "date_notification": "2023-04-05",
-      "preuve": "Objet nomme le lieu : « FOURNITURE INSTALLATION DRAPERIES THEATRE DE LA VILLE » — draperies scéniques installées au théâtre."
-    },
-    {
-      "numero_marche": "20181210001512",
-      "objet": "MOE RESTAURATION DES FAÇADES THÉÂTRE DE LA VILLE 75004",
-      "objet_clair": null,
-      "fournisseur": "BLOND ET ROUX ARCHITECTES",
-      "montant_max": 137995.0,
-      "date_notification": "2018-11-29",
-      "preuve": "Objet nomme le lieu et son code postal : « RESTAURATION DES FAÇADES THÉÂTRE DE LA VILLE 75004 » ; opération confirmée par 2019 DAC 80 « l'échafaudage de restauration du Théâtre de la Ville (4e) »."
-    },
-    {
-      "numero_marche": "20151210001777",
-      "objet": "CSP5 BCT RENOVATION PARTIELLE THEATRE DE LA VILLE LOT1",
-      "objet_clair": null,
-      "fournisseur": "BTP CONSULTANTS",
-      "montant_max": 98950.0,
-      "date_notification": "2015-11-20",
-      "preuve": "Objet nomme le lieu et l'opération : « BCT RENOVATION PARTIELLE THEATRE DE LA VILLE LOT1 » — contrôle technique du chantier 2015 DPA 34."
-    },
-    {
-      "numero_marche": "20212021S00647",
-      "objet": "MOE SCÉNOGRAPHIE HALL THÉÂTRE DE LA VILLE",
-      "objet_clair": null,
-      "fournisseur": "BLOND ET ROUX ARCHITECTES",
-      "montant_max": 89995.83,
-      "date_notification": "2021-02-12",
-      "preuve": "Objet nomme le lieu : « MOE SCÉNOGRAPHIE HALL THÉÂTRE DE LA VILLE » — hall du théâtre, même maître d'œuvre que la rénovation (Blond et Roux Architectes)."
-    },
-    {
-      "numero_marche": "20141210000160",
-      "objet": "AMO RÉNOVATION PARTIELLE DU THÉÂTRE DE LA VILLE",
-      "objet_clair": null,
-      "fournisseur": "ABCD",
-      "montant_max": 47375.0,
-      "date_notification": "2014-12-01",
-      "preuve": "Objet nomme le lieu et l'opération : « AMO RÉNOVATION PARTIELLE DU THÉÂTRE DE LA VILLE » — assistance à maîtrise d'ouvrage du chantier 2015 DPA 34."
-    },
-    {
-      "numero_marche": "20151210001796",
-      "objet": "CSP5 PI CSPS RENOVATION PARTIELLE THEATRE DE LA VILLE LOT 2",
-      "objet_clair": null,
-      "fournisseur": "QUALICONSULT SECURITE",
-      "montant_max": 45640.01,
-      "date_notification": "2015-11-26",
-      "preuve": "Objet nomme le lieu et l'opération : « CSPS RENOVATION PARTIELLE THEATRE DE LA VILLE LOT 2 » — coordination sécurité-santé du chantier."
-    },
-    {
-      "numero_marche": "20232023T05623",
-      "objet": "MEUBLES SUR MESURE LIBRAIRIE THEATRE DE LA VILLE 4EME",
-      "objet_clair": null,
-      "fournisseur": "ATELIER MOSC",
-      "montant_max": 39999.0,
-      "date_notification": "2023-06-29",
-      "preuve": "Objet nomme le lieu et l'arrondissement : « MEUBLES SUR MESURE LIBRAIRIE THEATRE DE LA VILLE 4EME » — aménagement de la librairie du théâtre."
-    },
-    {
-      "numero_marche": "20201210020001",
-      "objet": "SUBSÉQUENT SPS RÉNOVATION ET FAÇADES THÉÂTRE DE LA VILLE",
-      "objet_clair": null,
-      "fournisseur": "PROJECTIO",
-      "montant_max": 32832.0,
-      "date_notification": "2020-01-28",
-      "preuve": "Objet nomme le lieu et les deux opérations menées sur le bâtiment : « SPS RÉNOVATION ET FAÇADES THÉÂTRE DE LA VILLE »."
-    },
-    {
-      "numero_marche": "20201320000606",
-      "objet": "RESTAURATION MISE A DISPOSITION-MARCHES THEATRE DE LA VILLE",
-      "objet_clair": null,
-      "fournisseur": "SAS 2GUEUDRY CONSTRUCTIONS",
-      "montant_max": 28850.0,
-      "date_notification": "2020-09-29",
-      "preuve": "Objet nomme le lieu comme site de la prestation, sans adresse tierce : « RESTAURATION MISE A DISPOSITION-MARCHES THEATRE DE LA VILLE » (titulaire : entreprise de construction). Libellé abrégé par la source : la nature exacte de la prestation reste moins explicite que celle des autres lots, d'où une confiance moyenne ; aucun élément du contexte ne la rattache nommément au chantier de rénovation."
-    }
+  "rows": [
+   {
+    "annee": "2024",
+    "montant_eur": 14429005.0,
+    "beneficiaire": "THEATRE DE LA VILLE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2023",
+    "montant_eur": 13274487.0,
+    "beneficiaire": "THEATRE DE LA VILLE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2022",
+    "montant_eur": 12161790.0,
+    "beneficiaire": "THEATRE DE LA VILLE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2021",
+    "montant_eur": 11876400.0,
+    "beneficiaire": "THEATRE DE LA VILLE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2020",
+    "montant_eur": 12626676.07,
+    "beneficiaire": "THEATRE DE LA VILLE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2019",
+    "montant_eur": 11706623.0,
+    "beneficiaire": "THEATRE DE LA VILLE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2018",
+    "montant_eur": 11696300.0,
+    "beneficiaire": "THEATRE DE LA VILLE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2017",
+    "montant_eur": 11995000.0,
+    "beneficiaire": "THEATRE DE LA VILLE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2016",
+    "montant_eur": 12003000.0,
+    "beneficiaire": "THEATRE DE LA VILLE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2015",
+    "montant_eur": 11824000.0,
+    "beneficiaire": "THEATRE DE LA VILLE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2014",
+    "montant_eur": 11196000.0,
+    "beneficiaire": "THEATRE DE LA VILLE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2013",
+    "montant_eur": 11485000.0,
+    "beneficiaire": "THEATRE DE LA VILLE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2012",
+    "montant_eur": 10985000.0,
+    "beneficiaire": "THEATRE DE LA VILLE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2011",
+    "montant_eur": 11250000.0,
+    "beneficiaire": "THEATRE DE LA VILLE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2010",
+    "montant_eur": 10550000.0,
+    "beneficiaire": "THEATRE DE LA VILLE",
+    "thematique": "Culture"
+   }
   ],
-  "mandate": {
-    "par_annee": {
-      "2009": 10395.09,
-      "2010": 675.81,
-      "2011": 82369.31,
-      "2012": 252831.31,
-      "2013": 742934.93,
-      "2014": 636451.14,
-      "2015": 1003945.93,
-      "2016": 1054804.97,
-      "2017": 1806281.38,
-      "2018": 695872.45,
-      "2019": 3138242.82,
-      "2020": 2296560.59,
-      "2021": 5505213.76,
-      "2022": 9655229.39
-    },
-    "total_eur": 26881808.88,
-    "operations": [
-      {
-        "ap_cle": "1604553",
-        "ap_texte": "THEATRE DE LA VILLE - RENOVATION",
-        "mandate_par_annee": {
-          "2016": 663467.19,
-          "2017": 1763908.17,
-          "2018": 662285.63,
-          "2019": 2818122.05,
-          "2020": 1900203.24,
-          "2021": 5374354.05,
-          "2022": 9555997.79
-        },
-        "total_mandate": 22738338.12,
-        "preuve": "Libellé nomme ce lieu et l'opération : « THEATRE DE LA VILLE - RENOVATION » (DAC, Affaires culturelles) — chantier de rénovation du bâtiment place du Châtelet acté par 2015 DPA 34.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604553"
-      },
-      {
-        "ap_cle": "1202065",
-        "ap_texte": "THEATRE DE LA VILLE",
-        "mandate_par_annee": {
-          "2014": 636451.14,
-          "2015": 602088.4,
-          "2016": 123150.98
-        },
-        "total_mandate": 1361690.52,
-        "preuve": "Libellé désigne ce lieu : « THEATRE DE LA VILLE » (DAC, Affaires culturelles). Enveloppe au nom du lieu, sans détail d'opération ; l'association exploitante gérant aussi le Théâtre des Abbesses, une part peut concerner l'établissement dans son ensemble.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1202065"
-      },
-      {
-        "ap_cle": "B100/1202065",
-        "ap_texte": "THEATRE DE LA VILLE",
-        "mandate_par_annee": {
-          "2012": 213904.17,
-          "2013": 742235.93
-        },
-        "total_mandate": 956140.1,
-        "preuve": "Libellé désigne ce lieu : « THEATRE DE LA VILLE » (DAC, Affaires culturelles). Enveloppe au nom du lieu, sans détail d'opération ; peut couvrir l'établissement dans son ensemble (site des Abbesses inclus).",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1202065"
-      },
-      {
-        "ap_cle": "1704553",
-        "ap_texte": "THEATRE DE LA VILLE - RENOVATION",
-        "mandate_par_annee": {
-          "2019": 320120.77,
-          "2020": 379787.48,
-          "2021": 130859.71,
-          "2022": 99231.6
-        },
-        "total_mandate": 929999.56,
-        "preuve": "Libellé nomme ce lieu et l'opération : « THEATRE DE LA VILLE - RENOVATION » (DAC, Affaires culturelles), signal « nom » — même racine d'opération (4553) que 1404553 et 1604553, mandatée de 2019 à 2022, pour le chantier du bâtiment 2 place du Châtelet (4e) acté par 2015 DPA 34.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1704553"
-      },
-      {
-        "ap_cle": "1404553",
-        "ap_texte": "THEATRE DE LA VILLE - RENOVATION",
-        "mandate_par_annee": {
-          "2015": 401857.53,
-          "2016": 268186.8,
-          "2017": 42373.21,
-          "2018": 33586.82,
-          "2020": 16569.87
-        },
-        "total_mandate": 762574.23,
-        "preuve": "Libellé nomme ce lieu et l'opération : « THEATRE DE LA VILLE - RENOVATION » (DAC) — correspond à la rénovation du bâtiment place du Châtelet (2015 DPA 34, mandats 2015-2017).",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1404553"
-      },
-      {
-        "ap_cle": "B100/0702065",
-        "ap_texte": "THEATRE DE LA VILLE",
-        "mandate_par_annee": {
-          "2009": 9321.46,
-          "2010": 252.16,
-          "2011": 82369.31,
-          "2012": 38927.14,
-          "2013": 699.0
-        },
-        "total_mandate": 131569.07,
-        "preuve": "Libellé désigne ce lieu : « THEATRE DE LA VILLE » (DAC, Affaires culturelles). Enveloppe au nom du lieu, sans détail d'opération ; peut couvrir l'établissement dans son ensemble (site des Abbesses inclus).",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0702065"
-      },
-      {
-        "ap_cle": "B100/0602065",
-        "ap_texte": "THEATRE DE LA VILLE",
-        "mandate_par_annee": {
-          "2009": 400.32,
-          "2010": 423.65
-        },
-        "total_mandate": 823.97,
-        "preuve": "Libellé désigne ce lieu : « THEATRE DE LA VILLE » (DAC, Affaires culturelles). Enveloppe au nom du lieu, sans détail d'opération ; peut couvrir l'établissement dans son ensemble (site des Abbesses inclus).",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0602065"
-      },
-      {
-        "ap_cle": "B100/0602938",
-        "ap_texte": "THEATRE DE LA VILLE FACADES",
-        "mandate_par_annee": {
-          "2009": 673.31
-        },
-        "total_mandate": 673.31,
-        "preuve": "Libellé nomme ce lieu et l'objet des travaux : « THEATRE DE LA VILLE FACADES » (DPA, Patrimoine et architecture) — façades du bâtiment place du Châtelet, dont la restauration est documentée par 2019 DAC 80.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0602938"
-      }
-    ],
-    "periode": [
-      "2009",
-      "2022"
-    ],
-    "source": {
-      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-    }
+  "perimetre": "multi",
+  "note_publique": "L'association « Théâtre de la Ville » ne gère pas que la salle du 2 place du Châtelet : elle exploite aussi le Théâtre des Abbesses (18e) et, selon les délibérations récentes, un site du 8e arrondissement. La subvention affichée couvre l'ensemble de ces sites, pas ce seul bâtiment. Les marchés de travaux listés, eux, portent bien sur cette salle du 4e : leur objet nomme le « Théâtre de la Ville » et plusieurs précisent « 75004 » ou « 4ÈME ».",
+  "autres_sites": [
+   "Théâtre des Abbesses (18e)",
+   "site du 8e arrondissement cité dans les délibérations 2021 DAC 58 et 2022 DAC 58"
+  ],
+  "note_publique_en": "The association \"Théâtre de la Ville\" does not manage only the venue at 2 place du Châtelet: it also operates the Théâtre des Abbesses (18th arrondissement) and, according to recent deliberations, a site in the 8th arrondissement. The subsidy shown covers all of these sites, not this building alone. The works contracts listed, however, do concern this venue in the 4th arrondissement: their purpose names \"Théâtre de la Ville\" and several specify \"75004\" or \"4ÈME.\""
+ },
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "De 1996 à 2006, le Conseil de Paris vote des subventions d'investissement récurrentes (1.200.000 F en 1996 et 1997, puis 200.000 à 300.000 euros) et une série de délibérations de travaux ponctuels sur le bâtiment du 2, place du Châtelet : façades (quai de Gesvres 1999, ensemble des façades 2002-2005), machinerie (2000), sécurité-incendie (1998), ouvrages vitrés (2004), poste haute tension (2004) et éclairage scénique (2006). Dans le même temps, la subvention de fonctionnement annuelle versée à l'association gestionnaire — présentée en séance comme la deuxième subvention culturelle de la Ville — passe de 9.895.868 euros (2002) à 10 millions (2004) puis 10,4 millions (2009), au fil de débats sur l'audit Arthur Andersen (2002), la succession de Gérard Violette par Emmanuel Demarcy-Mota (2008) et le poids de la subvention dans les produits (77 % selon un rapport de l'Inspection générale de 2007 cité en séance). En novembre 2013, l'Exécutif reconnaît qu'une « réfection globale » devra intervenir à la mandature suivante, et le rapport de la Chambre régionale des comptes communiqué en novembre 2014 salue la politique des publics tout en pointant un cadre statutaire et conventionnel lacunaire. En mai 2015, le Conseil examine l'autorisation de rénovation du site (DPA 34) avec une programmation « hors les murs » annoncée sur deux saisons, de septembre 2016 à l'été 2018 ; en septembre 2019, le chantier est toujours en cours, ses phases ont été regroupées et la restauration des façades, « phase non budgétée initialement », est financée par une bâche publicitaire aux recettes attendues entre 3 et 5 millions d'euros. Les délibérations 2021-2024 — subventions d'investissement de 600.000 puis 850.000 euros, subventions de fonctionnement de 11.595.000 à 13.650.000 puis 13.500.000 euros, conventions d'occupation et bail civil avec l'association (2023), nouveau rapport de la C.R.C. (2024) — ne sont ici connues que par leurs intitulés.",
+ "moments": [
+  {
+   "id": "7459",
+   "seance": "MARS 2002",
+   "fait": "Le vote d'une subvention d'équipement de 243 919 euros donne lieu à un débat sur l'audit du cabinet Arthur Andersen, l'Exécutif confirmant le maintien de Jean Maheu à la présidence du conseil d'administration.",
+   "pourquoi": "gouvernance associative sous tension",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7459",
+   "fait_en": "The vote on an equipment subsidy of 243,919 euros gave rise to a debate on the Arthur Andersen firm's audit, with the executive confirming that Jean Maheu would remain chairman of the board.",
+   "pourquoi_en": "association governance under strain"
   },
-  "sources": {
-    "delibs": {
-      "name": "Débat-Délibs — Conseil de Paris",
-      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Th%C3%A9%C3%A2tre+AND+Ville+AND+Ch%C3%A2telet"
-    },
-    "bmo": {
-      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Th%C3%A9%C3%A2tre+de+la+Ville%22%29"
-    },
-    "invest": {
-      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-      "url": "https://opendata.paris.fr/"
-    },
-    "wiki": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
+  {
+   "id": "13772",
+   "seance": "JUILLET 2008",
+   "fait": "Le vote des subventions accompagne la passation de direction entre Gérard Violette et Emmanuel Demarcy-Mota, l'opposition critiquant une subvention gelée pour la troisième année consécutive.",
+   "pourquoi": "changement de direction historique",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13772",
+   "fait_en": "The subsidy vote accompanied the handover of leadership between Gérard Violette and Emmanuel Demarcy-Mota, with the opposition criticizing a subsidy frozen for the third consecutive year.",
+   "pourquoi_en": "a historic change of leadership"
   },
-  "synthese_en": "From 1996 to 2006, the Conseil de Paris voted recurring investment subsidies (1,200,000 francs in 1996 and 1997, then 200,000 to 300,000 euros) and a series of deliberations on one-off works at the building at 2, place du Châtelet: facades (quai de Gesvres, 1999; all facades, 2002-2005), stage machinery (2000), fire safety (1998), glazed structures (2004), the high-voltage substation (2004), and stage lighting (2006). At the same time, the annual operating subsidy paid to the managing association — presented in session as the City's second-largest cultural subsidy — rose from 9,895,868 euros (2002) to 10 million (2004) and then 10.4 million (2009), amid debates over the Arthur Andersen audit (2002), Emmanuel Demarcy-Mota's succession to Gérard Violette (2008), and the weight of the subsidy in revenues (77%, according to a 2007 Inspection générale report cited in session). In November 2013, the executive acknowledged that a \"comprehensive renovation\" would have to take place in the following term, and the Chambre régionale des comptes report submitted in November 2014 praised the audience policy while pointing to gaps in the statutory and contractual framework. In May 2015, the Council examined the authorization to renovate the site (DPA 34), with an \"off-site\" programme announced over two seasons, from September 2016 to summer 2018; by September 2019, the works were still under way, their phases had been regrouped, and the restoration of the facades, a \"phase not originally budgeted,\" was financed by an advertising banner expected to bring in between 3 and 5 million euros in revenue. The 2021-2024 deliberations — investment subsidies of 600,000 then 850,000 euros, operating subsidies from 11,595,000 to 13,650,000 then 13,500,000 euros, occupancy agreements and a civil lease with the association (2023), a new C.R.C. report (2024) — are known here only by their titles.",
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
+  {
+   "id": "21020",
+   "seance": "FEVRIER 2009",
+   "fait": "La subvention de 10,4 millions d'euros est débattue au regard d'une coproduction passée de 840 000 à 600 000 euros et d'une subvention municipale représentant 77 % des produits.",
+   "pourquoi": "poids de l'argent public chiffré",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21020",
+   "fait_en": "The 10.4 million euro subsidy was debated in light of a co-production budget reduced from 840,000 to 600,000 euros and a municipal subsidy representing 77% of revenues.",
+   "pourquoi_en": "the weight of public funding quantified"
+  },
+  {
+   "id": "116546",
+   "seance": "NOVEMBRE 2013",
+   "fait": "En votant 300 000 euros d'équipement, l'Exécutif admet qu'une réfection globale du théâtre devra intervenir à la mandature suivante.",
+   "pourquoi": "première annonce de la rénovation",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116546",
+   "fait_en": "In voting 300,000 euros for equipment, the executive admitted that a comprehensive renovation of the theatre would have to take place in the following term.",
+   "pourquoi_en": "the first announcement of the renovation"
+  },
+  {
+   "id": "121345",
+   "seance": "NOVEMBRE 2014",
+   "fait": "Le rapport de la Chambre régionale des comptes salue publics et programmation mais pointe un cadre statutaire lacunaire et des instances au rôle secondaire.",
+   "pourquoi": "contrôle externe avant le chantier",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121345",
+   "fait_en": "The Chambre régionale des comptes report praised audiences and programming but pointed to a deficient statutory framework and governing bodies with a secondary role.",
+   "pourquoi_en": "external oversight ahead of the works"
+  },
+  {
+   "id": "125471",
+   "seance": "MAI 2015",
+   "fait": "Le Conseil fixe la subvention 2015 à 10,9 millions d'euros et examine la rénovation du site (DPA 34), avec fermeture et programmation « hors les murs » de septembre 2016 à l'été 2018.",
+   "pourquoi": "lancement du chantier, calendrier initial",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125471",
+   "fait_en": "The Council set the 2015 subsidy at 10.9 million euros and examined the site's renovation (DPA 34), with closure and \"off-site\" programming from September 2016 to summer 2018.",
+   "pourquoi_en": "the works launched, initial schedule"
+  },
+  {
+   "id": "152349",
+   "seance": "SEPTEMBRE 2019",
+   "fait": "Le chantier étant toujours en cours, une bâche publicitaire aux recettes attendues de 3 à 5 millions d'euros doit financer la restauration des façades, phase non budgétée initialement.",
+   "pourquoi": "financement inédit, chantier prolongé",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152349",
+   "fait_en": "With the works still under way, an advertising banner expected to bring in 3 to 5 million euros in revenue was to finance the restoration of the facades, a phase not originally budgeted.",
+   "pourquoi_en": "an unprecedented funding source, works prolonged"
+  },
+  {
+   "id": "176363",
+   "seance": "JUIN 2024",
+   "fait": "Le Conseil reçoit un nouveau rapport de la Chambre régionale des comptes consacré au Théâtre de la Ville.",
+   "pourquoi": "second contrôle externe en dix ans",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176363",
+   "fait_en": "The Council received a new Chambre régionale des comptes report devoted to the Théâtre de la Ville.",
+   "pourquoi_en": "a second external audit in ten years"
   }
+ ],
+ "montants": [
+  {
+   "seance": "FEVRIER 2002",
+   "montant": "9.895.868 euros",
+   "objet": "subvention de fonctionnement 2002 à l'association Théâtre de la Ville",
+   "citation": "une convention relative à l'attribution d'une subvention de fonctionnement. - Montant : 9.895.868 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12582"
+  },
+  {
+   "seance": "FEVRIER 2002",
+   "montant": "305.000 euros",
+   "objet": "budget d'équipement 2002 du théâtre, non couvert par la convention votée",
+   "citation": "Pourquoi, alors que le théâtre a budgété 305.000 euros sur ce poste en 2002, le présent projet ne prévoit-il rien ?",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12582"
+  },
+  {
+   "seance": "DECEMBRE 2021",
+   "montant": "600.000 euros",
+   "objet": "subvention d'investissement 2021 à l'association",
+   "citation": "2021 DAC 58 - Subvention d’investissement (600.000 euros) et convention avec l’association \"Théâtre de la Ville\" (Paris centre, 8e, 18e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164306"
+  },
+  {
+   "seance": "NOVEMBRE 2013",
+   "montant": "300.000 euros",
+   "objet": "subvention d'équipement, programme d'acquisition 2012-2014",
+   "citation": "300.000 euros qui vise à permettre à l'association de réaliser pour la période 2012-2014 un nouveau programme d'acquisition d'équipements pour le son, la vidéo, les aménagements de bureaux, le mobilier et le système de sécurité",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116546"
+  },
+  {
+   "seance": "DECEMBRE 2019",
+   "montant": "11.595.000 euros",
+   "objet": "subvention 2019 à l'association",
+   "citation": "2019 DAC 86 - Subvention (11.595.000 euros) et avenant à convention avec l’association Théâtre de la Ville (4e, 8e, 18e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=175620"
+  },
+  {
+   "seance": "NOVEMBRE 1997",
+   "montant": "200.000 F",
+   "objet": "subvention d'investissement pour l'équipement du Théâtre des Abbesses",
+   "citation": "Une subvention d'investissement de 200.000 F est attribuée à l'association \"Théâtre de la Ville\", 2, place du Châtelet (4e), pour le financement de divers travaux et achats au Théâtre des Abbesses (18e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49740"
+  },
+  {
+   "seance": "MARS 2023",
+   "montant": "13.650. 000 euros",
+   "objet": "subventions de fonctionnement et d'investissement 2023",
+   "citation": "2023 DAC 18 - Subventions (13.650. 000 euros) et avenants à convention de fonctionnement et d'investissement avec l'association \"Théâtre de la Ville\".",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168429"
+  },
+  {
+   "seance": "MAI 2015",
+   "montant": "5.825.000 euros",
+   "objet": "subventions et avenants votés par la délibération DAC 200",
+   "citation": "2015 DAC 200 - Subventions (5.825.000 euros) et avenants avec l’association \"Théâtre de la Ville\" (4e et 18e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125471"
+  },
+  {
+   "seance": "MAI 2015",
+   "montant": "10.900.000 euros",
+   "objet": "subvention de fonctionnement 2015 de l'association",
+   "citation": "fixer le montant de la subvention de fonctionnement 2015 pour l?association \"Théâtre de la Ville\" à 10.900.000 euros, soit un complément de 5.527.000 euros après déduction de l?acompte déjà versé en décembre 2014",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125471"
+  },
+  {
+   "seance": "MAI 2015",
+   "montant": "5.527.000 euros",
+   "objet": "complément 2015 après déduction de l'acompte versé en décembre 2014",
+   "citation": "à 10.900.000 euros, soit un complément de 5.527.000 euros après déduction de l?acompte déjà versé en décembre 2014",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125471"
+  },
+  {
+   "seance": "MAI 2015",
+   "montant": "150.000 euros",
+   "objet": "hausse de la subvention de fonctionnement 2015 par rapport à 2014",
+   "citation": "On constate en effet une hausse de 150.000 euros de la subvention de fonctionnement",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125471"
+  },
+  {
+   "seance": "JUILLET 2008",
+   "montant": "5.200.000 euros",
+   "objet": "subvention de fonctionnement (convention et 3e avenant à la convention-cadre 2006-2008)",
+   "citation": "Montants : 5.200.000 euros (fonctionnement et 300.000 euros équipement).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13772"
+  },
+  {
+   "seance": "JUILLET 2008",
+   "montant": "300.000 euros",
+   "objet": "subvention d'équipement du Théâtre de la Ville et du Théâtre des Abbesses",
+   "citation": "Montants : 5.200.000 euros (fonctionnement et 300.000 euros équipement).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13772"
+  },
+  {
+   "seance": "SEPTEMBRE 2019",
+   "montant": "entre 3 millions et 5 millions d’euros",
+   "objet": "recettes publicitaires attendues pour financer la rénovation des façades",
+   "citation": "On peut rappeler que ces recettes importantes pour la Ville de Paris, entre 3 millions et 5 millions d?euros, permettront la rénovation des façades du bâtiment.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152349"
+  },
+  {
+   "seance": "SEPTEMBRE 2019",
+   "montant": "plus de 14 millions d’euros",
+   "objet": "chiffre d'affaires 2017 d'ATEM, signataire de la convention d'occupation",
+   "citation": "on apprend que c?est ATEM qui signera la convention d?occupation du domaine public. Sur l?année 2017, elle réalise un chiffre de plus de 14 millions d?euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152349"
+  },
+  {
+   "seance": "NOVEMBRE 2024",
+   "montant": "13.500.000 euros",
+   "objet": "subventions 2024 à l'association",
+   "citation": "2024 DAC 69 - Subventions (13.500.000 euros) et avenants à convention avec l’association \"Théâtre de la Ville\" (Paris Centre, 18e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178591"
+  },
+  {
+   "seance": "MARS 2004",
+   "montant": "10.000.000 euros",
+   "objet": "subvention de fonctionnement 2004",
+   "citation": "Subvention de fonctionnement de 10.000.000 euros et subvention d'équipement de 200.000 euros à l'association \"Théâtre de la Ville\" (4e)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11803"
+  },
+  {
+   "seance": "MARS 2004",
+   "montant": "200.000 euros",
+   "objet": "subvention d'équipement 2004",
+   "citation": "Subvention de fonctionnement de 10.000.000 euros et subvention d'équipement de 200.000 euros à l'association \"Théâtre de la Ville\" (4e)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11803"
+  },
+  {
+   "seance": "MARS 2004",
+   "montant": "100.000 euros",
+   "objet": "hausse de la subvention de fonctionnement entre 2003 et 2004",
+   "citation": "La subvention de fonctionnement proposée est donc de 10 millions d'euros en 2004 au lieu de 9,9 millions d'euros en 2003, soit une hausse de 100.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11803"
+  },
+  {
+   "seance": "MARS 2004",
+   "montant": "470.000 euros",
+   "objet": "travaux du poste haute tension pris en charge par la Ville en 2004",
+   "citation": "en 2004, d'importants travaux seront pris en charge par la Ville : 470.000 euros pour le poste haute tension",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11803"
+  },
+  {
+   "seance": "MARS 2004",
+   "montant": "23 %",
+   "objet": "hausse de la subvention d'équipement en 2003, liée aux travaux d'électricité",
+   "citation": "La hausse de 23 % de la subvention d'équipement en 2003 avait été motivée par les nombreux travaux d'électricité pris directement en charge par le théâtre, cette année-là.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11803"
+  },
+  {
+   "seance": "DECEMBRE 2022",
+   "montant": "850.000 euros",
+   "objet": "subvention d'investissement 2022 à l'association",
+   "citation": "2022 DAC 58 - Subvention d’investissement (850.000 euros) et avenant avec l’association \"Théâtre de la Ville\" (Paris Centre, 8e, 18e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168024"
+  },
+  {
+   "seance": "MARS 2002",
+   "montant": "243.919 euros",
+   "objet": "subvention d'équipement 2002 à l'association",
+   "citation": "une convention relative à l'attribution d'une subvention d'équipement. - Montant : 243.919 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7459"
+  },
+  {
+   "seance": "NOVEMBRE 2014",
+   "montant": "près de 250.000 spectateurs",
+   "objet": "fréquentation 2010 relevée par le rapport de la C.R.C.",
+   "citation": "Ainsi, en 2010, - c'est l'objet de ce rapport - c'est près de 250.000 spectateurs, bien au-delà d'ailleurs de ce qu'enregistrent les théâtres de Chaillot ou même du Rond-point.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121345"
+  },
+  {
+   "seance": "NOVEMBRE 2014",
+   "montant": "de 23 % à 33 %",
+   "objet": "évolution de l'autofinancement en deux ans",
+   "citation": "l?amélioration de l?autofinancement qui est passé de 23 % à 33 % en deux ans",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121345"
+  },
+  {
+   "seance": "NOVEMBRE 2014",
+   "montant": "13.000 places",
+   "objet": "jauge citée en séance (Théâtre de la Ville avec le Théâtre des Abbesses)",
+   "citation": "une jauge de 13.000 places avec le théâtre des Abbesses qui en fait l?un des plus grands théâtres de Paris",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121345"
+  },
+  {
+   "seance": "MARS 1996",
+   "montant": "1.200.000 F",
+   "objet": "subvention d'investissement 1996",
+   "citation": "Une subvention d'investissement de 1.200.000 F est attribuée au Théâtre de la Ville, 2, place du Châtelet (4e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82868"
+  },
+  {
+   "seance": "FEVRIER 2009",
+   "montant": "10,4 millions d’euros",
+   "objet": "subvention 2009 à l'association",
+   "citation": "la signature d'une convention relative à l'attribution d'une subvention à l?association \"Théâtre de la Ville\" pour le montant de 10,4 millions d?euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21020"
+  },
+  {
+   "seance": "FEVRIER 2009",
+   "montant": "de 840.000 euros à 600.000 euros",
+   "objet": "évolution de la part consacrée à la coproduction",
+   "citation": "ce qui conduit, avec l'évolution du coût de la vie à ce que la part consacrée à la coproduction passe de 840.000 euros à 600.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21020"
+  },
+  {
+   "seance": "FEVRIER 2009",
+   "montant": "77 %",
+   "objet": "part de la subvention municipale dans les produits selon le rapport de l'Inspection générale (mars 2007)",
+   "citation": "il est indiqué que la subvention municipale représente l'essentiel des produits - 77 % je crois - les recettes des billetteries ne couvrant même pas les coûts directs des spectacles",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21020"
+  },
+  {
+   "seance": "JUILLET 1997",
+   "montant": "1.200.000 F",
+   "objet": "subvention d'investissement 1997",
+   "citation": "Une subvention d'investissement de 1.200.000 F est attribuée au Théâtre de la Ville, 2, place du Châtelet (4e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78752"
+  },
+  {
+   "seance": "JUIN 2024",
+   "montant": "500.000 euros",
+   "objet": "subvention 2024 à l'association",
+   "citation": "2024 DAC 65 - Subvention (500.000 euros) et avenant à convention avec l’association \"Théâtre de la Ville\" (Paris Centre et 18e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176451"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "1997": [
+   {
+    "reference": "1997 DAC 49",
+    "titre": "Subvention d'investissement au Théâtre de la Ville (4e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "seance": "JUILLET 1997",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78752"
+   },
+   {
+    "reference": "1997 DAC 59",
+    "titre": "Subvention d'investissement à l'association \"Théâtre de la Ville\" pour l'équipement du Théâtre des Abbesses (18e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "seance": "NOVEMBRE 1997",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49740"
+   }
+  ],
+  "1998": [
+   {
+    "reference": "1998 DPA 284",
+    "titre": "Approbation du principe de la réalisation des travaux de mises aux normes des installations de sécurité-incendie et du monte-décor au Théâtre de la Ville (4e). - Approbation des modalités d'attribution des marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Hélène MACE de LEPINAY, rapporteur.",
+    "seance": "DECEMBRE 1998",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57338"
+   }
+  ],
+  "1999": [
+   {
+    "reference": "1999 DPA 131",
+    "titre": "Approbation du principe de la réalisation des travaux de restauration de la façade sur le quai de Gesvres du Théâtre de la Ville (4e). - Autorisation à M. le Maire de Paris de déposer la demande de permis de construire pour l'opération susvisée. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "seance": "JUIN 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75816"
+   },
+   {
+    "reference": "1999 DPA 190",
+    "titre": "Approbation des modalités d'attribution du marché de travaux relatif à la restauration de la façade sur quai de Gesvres du Théâtre de la Ville (4e). - Autorisation à M. le Maire de Paris de signer le marché de travaux correspondant. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "seance": "SEPTEMBRE 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83950"
+   }
+  ],
+  "2000": [
+   {
+    "reference": "2000 DPA 51",
+    "titre": "Approbation du principe de la réalisation des travaux de mise aux normes du service machinerie au Théâtre de la Ville (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "seance": "FEVRIER 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51330"
+   },
+   {
+    "reference": "2000 DPA 79",
+    "titre": "Approbation du principe de la réalisation de travaux de rénovation de la sous-station vapeur et de mise en conformité des locaux techniques de production de froid au Théâtre de la Ville (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "seance": "MAI 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43204"
+   }
+  ],
+  "2002": [
+   {
+    "reference": "2002 DAC 106",
+    "titre": "49 - 2002, DAC 106 - Autorisation à M. le Maire de Paris de signer avec l'association \"Théâtre de la Ville\" (4e) une convention relative à l'attribution d'une subvention d'équipement. - Montant : 243.919 euros",
+    "seance": "MARS 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7459"
+   },
+   {
+    "reference": "2002 DAC 41",
+    "titre": "36 - 2002, DAC 41 - Autorisation à M. le Maire de Paris de signer avec l'association \"Théâtre de la ville\" (4e) une convention relative à l'attribution d'une subvention de fonctionnement. - Montant : 9.895.868 euros",
+    "seance": "FEVRIER 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12582"
+   },
+   {
+    "reference": "2002 DPA 35",
+    "titre": "Approbation du principe de réalisation des travaux de restauration de façades au Théâtre de la Ville situé 2, place du Châtelet (4e), et des modalités d'attribution du marché négocié de maîtrise d'œuvre correspondant. Autorisation à M. le Maire de Paris de signer ledit marché. Autorisation à M. le Maire de Paris de déposer la demande de permis de construire pour la réalisation de l'opération susvisée. Mme Sandrine MAZETIER, rapporteur.",
+    "seance": "MARS 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38934"
+   }
+  ],
+  "2003": [
+   {
+    "reference": "2003 DPA 152",
+    "titre": "Approbation des modalités de passation du marché de travaux relatif à la restauration des façades au Théâtre de la Ville situé 2, place du Châtelet (4e). - Autorisation à M. le Maire de Paris de signer ledit marché. M. Christophe GIRARD, rapporteur.",
+    "seance": "AVRIL 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89595"
+   }
+  ],
+  "2004": [
+   {
+    "reference": "2004 DAC 11",
+    "titre": "72 - 2004, DAC 11 - Subvention de fonctionnement de 10.000.000 euros et subvention d'équipement de 200.000 euros à l'association \"Théâtre de la Ville\" (4e)",
+    "seance": "MARS 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11803"
+   },
+   {
+    "reference": "2004 DPA 135",
+    "titre": "Approbation du principe de la réalisation des travaux de mise en sécurité des ouvrages vitrés de la façade principale au Théâtre de la Ville (4e). M. Christophe GIRARD, rapporteur.",
+    "seance": "AVRIL 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51914"
+   },
+   {
+    "reference": "2004 DPA 48",
+    "titre": "Approbation du principe de réalisation des travaux de modernisation du poste haute tension au Théâtre de la Ville situé 2, place du Châtelet (4e), et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Christophe GIRARD, rapporteur.",
+    "seance": "MARS 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57788"
+   }
+  ],
+  "2005": [
+   {
+    "reference": "2005 DPA 93",
+    "titre": "Approbation du principe de réalisation des travaux de restauration de la façade rue Adolphe Adam au Théâtre de la Ville situé 2, place du Châtelet (4e), et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de déposer la demande de permis de construire pour la réalisation de l’opération susvisée. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Christophe GIRARD, rapporteur.",
+    "seance": "AVRIL 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43604"
+   }
+  ],
+  "2006": [
+   {
+    "reference": "2006 DPA 59",
+    "titre": "Approbation du principe de réalisation des travaux de mise aux normes de la gradation de l’éclairage scénique au Théâtre de la Ville sis 2, place du Châtelet (4e) et des modalités de passation du marché de travaux correspondant. M. Christophe GIRARD, rapporteur.",
+    "seance": "FEVRIER 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27798"
+   }
+  ],
+  "2008": [
+   {
+    "reference": "2008 DAC 48",
+    "titre": "2008, DAC 48 - Signature d’une convention et d’un troisième avenant à la convention-cadre 2006-2008, relatifs à l’attribution de deux subventions à l’association “Théâtre de la Ville” pour assurer le fonctionnement et l’équipement du Théâtre de la Ville (4e) et du Théâtre des Abbesses (18e). - Montants : 5.200.000 euros (fonctionnement et 300.000 euros équipement).",
+    "seance": "JUILLET 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13772"
+   }
+  ],
+  "2009": [
+   {
+    "reference": "2009 DAC 62",
+    "titre": "2009, DAC 62 - Signature d'une convention relative à l'attribution d'une subvention à l'association Théâtre de la Ville.",
+    "seance": "FEVRIER 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21020"
+   }
+  ],
+  "2013": [
+   {
+    "reference": "2013 DAC 673",
+    "titre": "2013 DAC 673 - Subvention (300.000 euros) et convention avec l'association Théâtre de la Ville (4e).",
+    "seance": "NOVEMBRE 2013",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116546"
+   }
+  ],
+  "2015": [
+   {
+    "reference": "2015 DAC 200",
+    "titre": "2015 DAC 200 - Subventions (5.825.000 euros) et avenants avec l’association \"Théâtre de la Ville\" (4e et 18e). 2015 DPA 34 - Théâtre de la Ville 2, place du Châtelet (4e) - Rénovation partielle - Autorisation à la Maire de Paris de prendre toute décision concernant l'opération. Vœu déposé par le GEP relatif aux travaux aux théâtres du Châtelet et de la Ville. Vœu déposé par l'Exécutif.",
+    "seance": "MAI 2015",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125471"
+   }
+  ],
+  "2019": [
+   {
+    "reference": "2019 DAC 80",
+    "titre": "2019 DAC 80 - Convention d’occupation du domaine public relative à l’installation et à l’exploitation d’un espace d’affichage sur l’échafaudage de restauration du Théâtre de la Ville (4e).",
+    "seance": "SEPTEMBRE 2019",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152349"
+   },
+   {
+    "reference": "2019 DAC 86",
+    "titre": "2019 DAC 86 - Subvention (11.595.000 euros) et avenant à convention avec l’association Théâtre de la Ville (4e, 8e, 18e).",
+    "seance": "DECEMBRE 2019",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=175620"
+   }
+  ],
+  "2021": [
+   {
+    "reference": "2021 DAC 58",
+    "titre": "2021 DAC 58 - Subvention d’investissement (600.000 euros) et convention avec l’association \"Théâtre de la Ville\" (Paris centre, 8e, 18e).",
+    "seance": "DECEMBRE 2021",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164306"
+   }
+  ],
+  "2022": [
+   {
+    "reference": "2022 DAC 58",
+    "titre": "2022 DAC 58 - Subvention d’investissement (850.000 euros) et avenant avec l’association \"Théâtre de la Ville\" (Paris Centre, 8e, 18e).",
+    "seance": "DECEMBRE 2022",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168024"
+   }
+  ],
+  "2023": [
+   {
+    "reference": "2023 DAC 18",
+    "titre": "2023 DAC 18 - Subventions (13.650. 000 euros) et avenants à convention de fonctionnement et d'investissement avec l'association \"Théâtre de la Ville\".",
+    "seance": "MARS 2023",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168429"
+   },
+   {
+    "reference": "2023 DAC 451",
+    "titre": "2023 DAC 451 - Convention d’occupation du domaine public et bail civil avec l’association \"Théâtre de la Ville\" (Paris Centre).",
+    "seance": "MARS 2023",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168369"
+   },
+   {
+    "reference": "2023 DAC 454",
+    "titre": "2023 DAC 454 - Convention d’occupation du domaine public et bail civil avec l’association \"Théâtre de la Ville\" (Paris Centre).",
+    "seance": "JUIN 2023",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=169808"
+   }
+  ],
+  "2024": [
+   {
+    "reference": "2024 DAC 65",
+    "titre": "2024 DAC 65 - Subvention (500.000 euros) et avenant à convention avec l’association \"Théâtre de la Ville\" (Paris Centre et 18e).",
+    "seance": "JUIN 2024",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176451"
+   },
+   {
+    "reference": "2024 DAC 69",
+    "titre": "2024 DAC 69 - Subventions (13.500.000 euros) et avenants à convention avec l’association \"Théâtre de la Ville\" (Paris Centre, 18e).",
+    "seance": "NOVEMBRE 2024",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178591"
+   }
+  ]
+ },
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20181210001694",
+   "objet": "CSP5 RENOVATION THEATRE DE LA VILLE - LOT 2 : TVX BAT. TCE",
+   "objet_clair": null,
+   "fournisseur": "COLAS FRANCE",
+   "montant_max": 14657894.43,
+   "date_notification": "2018-12-18",
+   "preuve": "Objet nomme le lieu et l'opération : « RENOVATION THEATRE DE LA VILLE - LOT 2 : TVX BAT. TCE » — lot travaux bâtiment du chantier de rénovation acté par 2015 DPA 34."
+  },
+  {
+   "numero_marche": "20181210001697",
+   "objet": "CSP5 RENOVATION THEATRE DE LA VILLE - LOT 3 : SCENOGRAPHIE",
+   "objet_clair": null,
+   "fournisseur": "A M G  FECHOZ",
+   "montant_max": 4832500.0,
+   "date_notification": "2018-12-18",
+   "preuve": "Objet nomme le lieu : « RENOVATION THEATRE DE LA VILLE - LOT 3 : SCENOGRAPHIE » — lot scénographie du même chantier."
+  },
+  {
+   "numero_marche": "20151210001173",
+   "objet": "RÉNOVATION PARTIELLE THÉÂTRE DE LA VILLE 75004   MOE",
+   "objet_clair": null,
+   "fournisseur": "BLOND ET ROUX ARCHITECTES",
+   "montant_max": 3093225.14,
+   "date_notification": "2015-06-30",
+   "preuve": "Objet nomme le lieu et son code postal : « RÉNOVATION PARTIELLE THÉÂTRE DE LA VILLE 75004 » (4e arr. du lieu) — même intitulé que 2015 DPA 34 « Rénovation partielle »."
+  },
+  {
+   "numero_marche": "20181210001036",
+   "objet": "CSP5 TVX DE CURAGE & DEPOLLUTION THEATRE DE LA VILLE 4ÈME",
+   "objet_clair": null,
+   "fournisseur": "SUPRAMIANTE",
+   "montant_max": 1377686.05,
+   "date_notification": "2018-07-16",
+   "preuve": "Objet nomme le lieu et l'arrondissement : « TVX DE CURAGE & DEPOLLUTION THEATRE DE LA VILLE 4ÈME »."
+  },
+  {
+   "numero_marche": "20191210001361",
+   "objet": "SA4 DEPLOMBAGE/RESTAURATION THEATRE DE LA VILLE",
+   "objet_clair": null,
+   "fournisseur": "STE LOUIS GENESTE ET SES FILS",
+   "montant_max": 1080033.02,
+   "date_notification": "2019-11-14",
+   "preuve": "Objet nomme le lieu : « DEPLOMBAGE/RESTAURATION THEATRE DE LA VILLE » — travaux sur le bâtiment pendant le chantier de rénovation en cours en 2019."
+  },
+  {
+   "numero_marche": "20191210020021",
+   "objet": "SA4 TVX RÉNOVATION THÉÂTRE DE LA VILLE LOT4 FAUTEUILS",
+   "objet_clair": null,
+   "fournisseur": "JEZET SEATING SA",
+   "montant_max": 499825.0,
+   "date_notification": "2019-08-29",
+   "preuve": "Objet nomme le lieu : « TVX RÉNOVATION THÉÂTRE DE LA VILLE LOT4 FAUTEUILS » — fauteuils de la salle rénovée."
+  },
+  {
+   "numero_marche": "20151210000972",
+   "objet": "REMPLACEMENT DU MONTE-DÉCOR THÉÂTRE DE LA VILLE 75004",
+   "objet_clair": null,
+   "fournisseur": "SN ERCT CONSTRUCTION",
+   "montant_max": 494514.82,
+   "date_notification": "2015-06-10",
+   "preuve": "Objet nomme le lieu et son code postal : « REMPLACEMENT DU MONTE-DÉCOR THÉÂTRE DE LA VILLE 75004 » — équipement scénique du bâtiment du 4e."
+  },
+  {
+   "numero_marche": "20131210008861",
+   "objet": "REMPLACT DU PROSCENIUM ET DE L'ÉCLAIRAGE THÉÂTRE DE LA VILLE",
+   "objet_clair": null,
+   "fournisseur": "A M G  FECHOZ",
+   "montant_max": 488292.0,
+   "date_notification": "2013-03-29",
+   "preuve": "Objet nomme le lieu : « REMPLACT DU PROSCENIUM ET DE L'ÉCLAIRAGE THÉÂTRE DE LA VILLE » — équipement de scène du théâtre."
+  },
+  {
+   "numero_marche": "20141210011769",
+   "objet": "MODERNISATION LOCAUX ET SSI THÉÂTRE DE LA VILLE",
+   "objet_clair": null,
+   "fournisseur": "AC2P",
+   "montant_max": 483079.65,
+   "date_notification": "2014-07-10",
+   "preuve": "Objet nomme le lieu : « MODERNISATION LOCAUX ET SSI THÉÂTRE DE LA VILLE » (système de sécurité incendie) ; cohérent avec 2013 DAC 673 qui finance équipements et « système de sécurité » du théâtre."
+  },
+  {
+   "numero_marche": "20202020S07442",
+   "objet": "OPC RÉNOVATION THÉÂTRE DE LA VILLE 75004",
+   "objet_clair": null,
+   "fournisseur": "IPCS",
+   "montant_max": 209950.0,
+   "date_notification": "2020-11-20",
+   "preuve": "Objet nomme le lieu et son code postal : « OPC RÉNOVATION THÉÂTRE DE LA VILLE 75004 » — ordonnancement-pilotage du chantier."
+  },
+  {
+   "numero_marche": "20232023T07085",
+   "objet": "FABRICATION GRADIN SPECIFIQUE COUPOLE THEATRE DE LA VILLE",
+   "objet_clair": null,
+   "fournisseur": "GUILLET",
+   "montant_max": 174000.0,
+   "date_notification": "2023-07-31",
+   "preuve": "Objet nomme le lieu : « FABRICATION GRADIN SPECIFIQUE COUPOLE THEATRE DE LA VILLE » — gradin pour une salle (coupole) du théâtre."
+  },
+  {
+   "numero_marche": "20232023F02219",
+   "objet": "FOURNITURE INSTALLATION DRAPERIES THEATRE DE LA VILLE",
+   "objet_clair": null,
+   "fournisseur": "SOCIETE NOUVELLE LEBLANC SCENIQUE",
+   "montant_max": 147943.0,
+   "date_notification": "2023-04-05",
+   "preuve": "Objet nomme le lieu : « FOURNITURE INSTALLATION DRAPERIES THEATRE DE LA VILLE » — draperies scéniques installées au théâtre."
+  },
+  {
+   "numero_marche": "20181210001512",
+   "objet": "MOE RESTAURATION DES FAÇADES THÉÂTRE DE LA VILLE 75004",
+   "objet_clair": null,
+   "fournisseur": "BLOND ET ROUX ARCHITECTES",
+   "montant_max": 137995.0,
+   "date_notification": "2018-11-29",
+   "preuve": "Objet nomme le lieu et son code postal : « RESTAURATION DES FAÇADES THÉÂTRE DE LA VILLE 75004 » ; opération confirmée par 2019 DAC 80 « l'échafaudage de restauration du Théâtre de la Ville (4e) »."
+  },
+  {
+   "numero_marche": "20151210001777",
+   "objet": "CSP5 BCT RENOVATION PARTIELLE THEATRE DE LA VILLE LOT1",
+   "objet_clair": null,
+   "fournisseur": "BTP CONSULTANTS",
+   "montant_max": 98950.0,
+   "date_notification": "2015-11-20",
+   "preuve": "Objet nomme le lieu et l'opération : « BCT RENOVATION PARTIELLE THEATRE DE LA VILLE LOT1 » — contrôle technique du chantier 2015 DPA 34."
+  },
+  {
+   "numero_marche": "20212021S00647",
+   "objet": "MOE SCÉNOGRAPHIE HALL THÉÂTRE DE LA VILLE",
+   "objet_clair": null,
+   "fournisseur": "BLOND ET ROUX ARCHITECTES",
+   "montant_max": 89995.83,
+   "date_notification": "2021-02-12",
+   "preuve": "Objet nomme le lieu : « MOE SCÉNOGRAPHIE HALL THÉÂTRE DE LA VILLE » — hall du théâtre, même maître d'œuvre que la rénovation (Blond et Roux Architectes)."
+  },
+  {
+   "numero_marche": "20141210000160",
+   "objet": "AMO RÉNOVATION PARTIELLE DU THÉÂTRE DE LA VILLE",
+   "objet_clair": null,
+   "fournisseur": "ABCD",
+   "montant_max": 47375.0,
+   "date_notification": "2014-12-01",
+   "preuve": "Objet nomme le lieu et l'opération : « AMO RÉNOVATION PARTIELLE DU THÉÂTRE DE LA VILLE » — assistance à maîtrise d'ouvrage du chantier 2015 DPA 34."
+  },
+  {
+   "numero_marche": "20151210001796",
+   "objet": "CSP5 PI CSPS RENOVATION PARTIELLE THEATRE DE LA VILLE LOT 2",
+   "objet_clair": null,
+   "fournisseur": "QUALICONSULT SECURITE",
+   "montant_max": 45640.01,
+   "date_notification": "2015-11-26",
+   "preuve": "Objet nomme le lieu et l'opération : « CSPS RENOVATION PARTIELLE THEATRE DE LA VILLE LOT 2 » — coordination sécurité-santé du chantier."
+  },
+  {
+   "numero_marche": "20232023T05623",
+   "objet": "MEUBLES SUR MESURE LIBRAIRIE THEATRE DE LA VILLE 4EME",
+   "objet_clair": null,
+   "fournisseur": "ATELIER MOSC",
+   "montant_max": 39999.0,
+   "date_notification": "2023-06-29",
+   "preuve": "Objet nomme le lieu et l'arrondissement : « MEUBLES SUR MESURE LIBRAIRIE THEATRE DE LA VILLE 4EME » — aménagement de la librairie du théâtre."
+  },
+  {
+   "numero_marche": "20201210020001",
+   "objet": "SUBSÉQUENT SPS RÉNOVATION ET FAÇADES THÉÂTRE DE LA VILLE",
+   "objet_clair": null,
+   "fournisseur": "PROJECTIO",
+   "montant_max": 32832.0,
+   "date_notification": "2020-01-28",
+   "preuve": "Objet nomme le lieu et les deux opérations menées sur le bâtiment : « SPS RÉNOVATION ET FAÇADES THÉÂTRE DE LA VILLE »."
+  },
+  {
+   "numero_marche": "20201320000606",
+   "objet": "RESTAURATION MISE A DISPOSITION-MARCHES THEATRE DE LA VILLE",
+   "objet_clair": null,
+   "fournisseur": "SAS 2GUEUDRY CONSTRUCTIONS",
+   "montant_max": 28850.0,
+   "date_notification": "2020-09-29",
+   "preuve": "Objet nomme le lieu comme site de la prestation, sans adresse tierce : « RESTAURATION MISE A DISPOSITION-MARCHES THEATRE DE LA VILLE » (titulaire : entreprise de construction). Libellé abrégé par la source : la nature exacte de la prestation reste moins explicite que celle des autres lots, d'où une confiance moyenne ; aucun élément du contexte ne la rattache nommément au chantier de rénovation."
+  }
+ ],
+ "mandate": {
+  "par_annee": {
+   "2009": 10395.09,
+   "2010": 675.81,
+   "2011": 82369.31,
+   "2012": 252831.31,
+   "2013": 742934.93,
+   "2014": 636451.14,
+   "2015": 1003945.93,
+   "2016": 1054804.97,
+   "2017": 1806281.38,
+   "2018": 695872.45,
+   "2019": 3138242.82,
+   "2020": 2296560.59,
+   "2021": 5505213.76,
+   "2022": 9655229.39
+  },
+  "total_eur": 26881808.88,
+  "operations": [
+   {
+    "ap_cle": "1604553",
+    "ap_texte": "THEATRE DE LA VILLE - RENOVATION",
+    "mandate_par_annee": {
+     "2016": 663467.19,
+     "2017": 1763908.17,
+     "2018": 662285.63,
+     "2019": 2818122.05,
+     "2020": 1900203.24,
+     "2021": 5374354.05,
+     "2022": 9555997.79
+    },
+    "total_mandate": 22738338.12,
+    "preuve": "Libellé nomme ce lieu et l'opération : « THEATRE DE LA VILLE - RENOVATION » (DAC, Affaires culturelles) — chantier de rénovation du bâtiment place du Châtelet acté par 2015 DPA 34.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604553"
+   },
+   {
+    "ap_cle": "1202065",
+    "ap_texte": "THEATRE DE LA VILLE",
+    "mandate_par_annee": {
+     "2014": 636451.14,
+     "2015": 602088.4,
+     "2016": 123150.98
+    },
+    "total_mandate": 1361690.52,
+    "preuve": "Libellé désigne ce lieu : « THEATRE DE LA VILLE » (DAC, Affaires culturelles). Enveloppe au nom du lieu, sans détail d'opération ; l'association exploitante gérant aussi le Théâtre des Abbesses, une part peut concerner l'établissement dans son ensemble.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1202065"
+   },
+   {
+    "ap_cle": "B100/1202065",
+    "ap_texte": "THEATRE DE LA VILLE",
+    "mandate_par_annee": {
+     "2012": 213904.17,
+     "2013": 742235.93
+    },
+    "total_mandate": 956140.1,
+    "preuve": "Libellé désigne ce lieu : « THEATRE DE LA VILLE » (DAC, Affaires culturelles). Enveloppe au nom du lieu, sans détail d'opération ; peut couvrir l'établissement dans son ensemble (site des Abbesses inclus).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1202065"
+   },
+   {
+    "ap_cle": "1704553",
+    "ap_texte": "THEATRE DE LA VILLE - RENOVATION",
+    "mandate_par_annee": {
+     "2019": 320120.77,
+     "2020": 379787.48,
+     "2021": 130859.71,
+     "2022": 99231.6
+    },
+    "total_mandate": 929999.56,
+    "preuve": "Libellé nomme ce lieu et l'opération : « THEATRE DE LA VILLE - RENOVATION » (DAC, Affaires culturelles), signal « nom » — même racine d'opération (4553) que 1404553 et 1604553, mandatée de 2019 à 2022, pour le chantier du bâtiment 2 place du Châtelet (4e) acté par 2015 DPA 34.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1704553"
+   },
+   {
+    "ap_cle": "1404553",
+    "ap_texte": "THEATRE DE LA VILLE - RENOVATION",
+    "mandate_par_annee": {
+     "2015": 401857.53,
+     "2016": 268186.8,
+     "2017": 42373.21,
+     "2018": 33586.82,
+     "2020": 16569.87
+    },
+    "total_mandate": 762574.23,
+    "preuve": "Libellé nomme ce lieu et l'opération : « THEATRE DE LA VILLE - RENOVATION » (DAC) — correspond à la rénovation du bâtiment place du Châtelet (2015 DPA 34, mandats 2015-2017).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1404553"
+   },
+   {
+    "ap_cle": "B100/0702065",
+    "ap_texte": "THEATRE DE LA VILLE",
+    "mandate_par_annee": {
+     "2009": 9321.46,
+     "2010": 252.16,
+     "2011": 82369.31,
+     "2012": 38927.14,
+     "2013": 699.0
+    },
+    "total_mandate": 131569.07,
+    "preuve": "Libellé désigne ce lieu : « THEATRE DE LA VILLE » (DAC, Affaires culturelles). Enveloppe au nom du lieu, sans détail d'opération ; peut couvrir l'établissement dans son ensemble (site des Abbesses inclus).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0702065"
+   },
+   {
+    "ap_cle": "B100/0602065",
+    "ap_texte": "THEATRE DE LA VILLE",
+    "mandate_par_annee": {
+     "2009": 400.32,
+     "2010": 423.65
+    },
+    "total_mandate": 823.97,
+    "preuve": "Libellé désigne ce lieu : « THEATRE DE LA VILLE » (DAC, Affaires culturelles). Enveloppe au nom du lieu, sans détail d'opération ; peut couvrir l'établissement dans son ensemble (site des Abbesses inclus).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0602065"
+   },
+   {
+    "ap_cle": "B100/0602938",
+    "ap_texte": "THEATRE DE LA VILLE FACADES",
+    "mandate_par_annee": {
+     "2009": 673.31
+    },
+    "total_mandate": 673.31,
+    "preuve": "Libellé nomme ce lieu et l'objet des travaux : « THEATRE DE LA VILLE FACADES » (DPA, Patrimoine et architecture) — façades du bâtiment place du Châtelet, dont la restauration est documentée par 2019 DAC 80.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0602938"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2022"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Th%C3%A9%C3%A2tre+AND+Ville+AND+Ch%C3%A2telet"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Th%C3%A9%C3%A2tre+de+la+Ville%22%29"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "From 1996 to 2006, the Conseil de Paris voted recurring investment subsidies (1,200,000 francs in 1996 and 1997, then 200,000 to 300,000 euros) and a series of deliberations on one-off works at the building at 2, place du Châtelet: facades (quai de Gesvres, 1999; all facades, 2002-2005), stage machinery (2000), fire safety (1998), glazed structures (2004), the high-voltage substation (2004), and stage lighting (2006). At the same time, the annual operating subsidy paid to the managing association — presented in session as the City's second-largest cultural subsidy — rose from 9,895,868 euros (2002) to 10 million (2004) and then 10.4 million (2009), amid debates over the Arthur Andersen audit (2002), Emmanuel Demarcy-Mota's succession to Gérard Violette (2008), and the weight of the subsidy in revenues (77%, according to a 2007 Inspection générale report cited in session). In November 2013, the executive acknowledged that a \"comprehensive renovation\" would have to take place in the following term, and the Chambre régionale des comptes report submitted in November 2014 praised the audience policy while pointing to gaps in the statutory and contractual framework. In May 2015, the Council examined the authorization to renovate the site (DPA 34), with an \"off-site\" programme announced over two seasons, from September 2016 to summer 2018; by September 2019, the works were still under way, their phases had been regrouped, and the restoration of the facades, a \"phase not originally budgeted,\" was financed by an advertising banner expected to bring in between 3 and 5 million euros in revenue. The 2021-2024 deliberations — investment subsidies of 600,000 then 850,000 euros, operating subsidies from 11,595,000 to 13,650,000 then 13,500,000 euros, occupancy agreements and a civil lease with the association (2023), a new C.R.C. report (2024) — are known here only by their titles."
 }

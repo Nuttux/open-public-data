@@ -588,6 +588,12 @@ def main() -> int:
         # à part dans {slug}_saillance.json). N'altère pas les faits vérifiés — on
         # ne fait qu'ajouter un drapeau `vedette` que la fiche utilise pour plier
         # le reste. Sans fichier, tous restent vedette (repli chronologique côté UI).
+        # « Cliquer une année » : les délibérations qui ont décidé l'argent de cet
+        # exercice, rattachées mécaniquement (link_delibs_par_annee.py). Le titre
+        # est celui écrit par la Ville, publié verbatim — jamais un motif de nous.
+        dap = CACHE / f"{slug}_delibs_annee.json"
+        delibs_annee = json.load(open(dap)).get("annees") if dap.exists() else None
+
         sp = CACHE / f"{slug}_saillance.json"
         forte = set(json.load(open(sp)).get("forte", [])) if sp.exists() else None
         moments = [{**m, "fait": fr_num(m.get("fait")),
@@ -749,6 +755,7 @@ def main() -> int:
             "montants": montants,
             "bmo_extraits": bmo_extraits,
             "bmo_recit": bmo_recit,
+            "delibs_par_annee": delibs_annee,
             "invest": invest,
             "marches": argent["marches"],
             "mandate": ({"par_annee": argent["mandate_par_annee"],

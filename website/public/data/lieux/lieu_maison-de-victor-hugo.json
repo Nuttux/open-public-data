@@ -1,352 +1,390 @@
 {
-  "generated_at": "2026-09-11T14:25:25.461202+00:00",
-  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
-  "slug": "maison-de-victor-hugo",
-  "name": "Maison de Victor Hugo",
-  "kind_fr": "Musée",
-  "kind_en": "Musée",
-  "famille": "culture",
-  "arrondissement": 4,
-  "lat": 48.85482,
-  "lon": 2.36613,
-  "photo": "/img/lieux/maison-de-victor-hugo.jpg",
-  "photo_credit": {
-    "licence": null,
-    "auteur": null,
-    "url": "https://fr.wikipedia.org/wiki/Maison_de_Victor_Hugo",
-    "source": "Wikipédia"
+ "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "maison-de-victor-hugo",
+ "name": "Maison de Victor Hugo",
+ "kind_fr": "Musée",
+ "kind_en": "Musée",
+ "famille": "culture",
+ "arrondissement": 4,
+ "lat": 48.85482,
+ "lon": 2.36613,
+ "photo": "/img/lieux/maison-de-victor-hugo.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Maison_de_Victor_Hugo",
+  "source": "Wikipédia"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "Maisons de Victor Hugo est un musée monographique parisien, situé au 6, place des Vosges, dans le 4e arrondissement, qui préserve l’ancien hôtel de Rohan-Guémené où Victor Hugo loua l'appartement au deuxième étage pendant seize ans, de 1832 à 1848.",
+  "url": "https://fr.wikipedia.org/wiki/Maison_de_Victor_Hugo",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
   },
-  "seuil_commun": 2010,
-  "wiki": {
-    "extract": "Maisons de Victor Hugo est un musée monographique parisien, situé au 6, place des Vosges, dans le 4e arrondissement, qui préserve l’ancien hôtel de Rohan-Guémené où Victor Hugo loua l'appartement au deuxième étage pendant seize ans, de 1832 à 1848.",
-    "url": "https://fr.wikipedia.org/wiki/Maison_de_Victor_Hugo",
-    "source": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    },
-    "extract_en": "Maisons de Victor Hugo is a Parisian monographic museum, located at 6 place des Vosges in the 4th arrondissement, which preserves the former hôtel de Rohan-Guémené where Victor Hugo rented the second-floor apartment for sixteen years, from 1832 to 1848."
-  },
-  "stats": {
-    "n_delibs": 188,
-    "delibs_span": [
-      1997,
-      2007
-    ],
-    "n_bmo_brut": 2000,
-    "n_bmo_verifies": 15,
-    "invest_total_eur": 0,
-    "invest_annees": [],
-    "lecture_mode": "titre nommant le lieu (16 trouvés)",
-    "lecture_mode_en": "title naming the place (16 found)",
-    "n_lus": 16,
-    "n_lieu": 14
-  },
-  "subventions_exploitant": null,
-  "residents": [],
-  "kpi_montant": null,
-  "synthese_fr": "De 1997 à 2007, la Maison de Victor Hugo revient régulièrement devant le Conseil de Paris, d'abord pour enrichir ses collections : le Conseil autorise l'acquisition de dessins, d'éditions originales et d'autographes de l'écrivain — jusqu'à 320 000 euros pour « Les Travailleurs de la mer » en 2003 — souvent complétée par des dons d'entreprises. En 2000 puis 2001, il approuve le principe d'une restructuration partielle du musée, 6 place des Vosges, puis les modalités d'un marché de travaux destiné à améliorer l'accueil du public. Les délibérations concernent aussi le second site de l'institution, la maison d'exil de Hauteville House à Guernesey, dont le Conseil fixe les tarifs d'entrée et autorise l'acceptation d'un don et d'un legs. À la fin des années 2000, l'attention se porte sur les usages : label d'accessibilité « Tourisme et Handicap » en 2007 et convention de programmation culturelle. En 2003, lors de l'un de ces achats, un conseiller réclame en séance une expertise du prix indépendante du vendeur.",
-  "moments": [
-    {
-      "id": "49346",
-      "seance": "NOVEMBRE 1997",
-      "fait": "Le Conseil autorise le Maire à acquérir, pour la maison de Victor Hugo, un dessin de Victor Hugo « Composition abstraite » (300 000 FF), dans un achat groupé avec le musée Cernuschi.",
-      "pourquoi": "premier achat documenté pour les collections",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49346",
-      "fait_en": "The Council authorized the Mayor to acquire, for the Maison de Victor Hugo, a drawing by Victor Hugo, \"Composition abstraite\" (300,000 francs), as part of a joint purchase with the Musée Cernuschi.",
-      "pourquoi_en": "first documented purchase for the collections"
-    },
-    {
-      "id": "65048",
-      "seance": "OCTOBRE 1998",
-      "fait": "Le Conseil autorise l'acceptation d'un don de 20 000 F de la société AKG Photothèque, destiné à l'achat de photographies d'Olivier Mériel pour le musée.",
-      "pourquoi": "le mécénat d'entreprise entre au musée",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65048",
-      "fait_en": "The Council authorized accepting a donation of 20,000 francs from the AKG Photothèque company, intended for purchasing photographs by Olivier Mériel for the museum.",
-      "pourquoi_en": "corporate patronage enters the museum"
-    },
-    {
-      "id": "84950",
-      "seance": "JANVIER 2001",
-      "fait": "Le Conseil approuve les modalités d'un marché de travaux pour améliorer l'accueil du public, 6 place des Vosges, et autorise le Maire à le signer, après avoir approuvé en 2000 le principe d'une restructuration partielle.",
-      "pourquoi": "le musée réaménage l'accueil du public",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84950",
-      "fait_en": "The Council approved the terms of a works contract to improve public reception at 6 place des Vosges, and authorized the Mayor to sign it, after having approved the principle of a partial restructuring in 2000.",
-      "pourquoi_en": "the museum redesigns public reception"
-    },
-    {
-      "id": "8331",
-      "seance": "JUILLET 2003",
-      "fait": "En séance, le conseiller Yves Pozzo di Borgo demande le nom de l'expert ayant estimé le prix de l'œuvre acquise et conditionne son vote à une expertise indépendante du vendeur.",
-      "pourquoi": "un élu conteste le prix d'un achat",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8331",
-      "fait_en": "In session, councillor Yves Pozzo di Borgo asked for the name of the expert who had appraised the price of the acquired work and made his vote conditional on an appraisal independent of the seller.",
-      "pourquoi_en": "a councillor disputes a purchase price"
-    },
-    {
-      "id": "31801",
-      "seance": "MARS 2007",
-      "fait": "Le Conseil autorise le Maire à accepter le legs de M. Walter Beardmore, une œuvre estimée à 23 000 euros, pour le site de Hauteville House (Guernesey).",
-      "pourquoi": "un legs enrichit la maison d'exil",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31801",
-      "fait_en": "The Council authorized the Mayor to accept the bequest of Mr Walter Beardmore, a work valued at €23,000, for the Hauteville House site (Guernsey).",
-      "pourquoi_en": "a bequest enriches the exile home"
-    },
-    {
-      "id": "53266",
-      "seance": "OCTOBRE 2007",
-      "fait": "Le Conseil autorise le Maire à signer la charte relative à l'attribution au musée du label national « Tourisme et Handicap » (handicap moteur).",
-      "pourquoi": "un label national d'accessibilité pour le musée",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53266",
-      "fait_en": "The Council authorized the Mayor to sign the charter for awarding the museum the national \"Tourisme et Handicap\" label (physical disability).",
-      "pourquoi_en": "a national accessibility label for the museum"
-    },
-    {
-      "id": "54752",
-      "seance": "DECEMBRE 2007",
-      "fait": "Le Conseil fixe de nouveaux tarifs d'entrée à Hauteville House, la maison d'exil de Victor Hugo à Guernesey, applicables au 1er avril 2008.",
-      "pourquoi": "nouveaux tarifs pour le site de Guernesey",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54752",
-      "fait_en": "The Council set new admission prices for Hauteville House, Victor Hugo's exile home in Guernsey, applicable from 1 April 2008.",
-      "pourquoi_en": "new prices for the Guernsey site"
-    },
-    {
-      "id": "54453",
-      "seance": "DECEMBRE 2007",
-      "fait": "Le Conseil autorise le Maire à signer une convention avec la Maison du geste et de l'image pour un programme d'activités culturelles avec le musée.",
-      "pourquoi": "des activités culturelles avec un partenaire",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54453",
-      "fait_en": "The Council authorized the Mayor to sign an agreement with the Maison du geste et de l'image for a programme of cultural activities with the museum.",
-      "pourquoi_en": "cultural activities with a partner"
-    }
+  "extract_en": "Maisons de Victor Hugo is a Parisian monographic museum, located at 6 place des Vosges in the 4th arrondissement, which preserves the former hôtel de Rohan-Guémené where Victor Hugo rented the second-floor apartment for sixteen years, from 1832 to 1848."
+ },
+ "stats": {
+  "n_delibs": 188,
+  "delibs_span": [
+   1997,
+   2007
   ],
-  "montants": [
-    {
-      "seance": "NOVEMBRE 1997",
-      "montant": "300.000 FF",
-      "objet": "acquisition, pour la maison de Victor Hugo, du dessin « Composition abstraite »",
-      "citation": "un dessin de Victor Hugo intitulé \"Composition abstraite\", vers 1853-1855, lavis d'encre brune, 15,7 cm x 24,3 cm, appartenant à la galerie Jan Krugier à Genève pour le prix de 300.000 FF",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49346"
-    },
-    {
-      "seance": "NOVEMBRE 1997",
-      "montant": "680.000 F",
-      "objet": "dépense totale de l'achat groupé (maison de Victor Hugo + musée Cernuschi)",
-      "citation": "La dépense totale correspondante, soit 680.000 F, sera imputée au chapitre 903, sous-chapitre 903-62, article 2141",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49346"
-    },
-    {
-      "seance": "OCTOBRE 1998",
-      "montant": "20.000 F T.T.C.",
-      "objet": "don de la société « AKG Photothèque » pour l'achat de photographies d'Olivier Mériel",
-      "citation": "l'aide financière que la société \"AKG Photothèque\" est disposée à apporter à la Maison de Victor Hugo, soit un don en espèces d'un montant de 20.000 F T.T.C.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65048"
-    },
-    {
-      "seance": "SEPTEMBRE 2000",
-      "montant": "640.000 F",
-      "objet": "acquisition du dessin de Victor Hugo « Château sur une colline »",
-      "citation": "M. le Maire de Paris est autorisé à acquérir un dessin de Victor Hugo \"Château sur une colline\" pour la Maison de Victor Hugo pour un montant de 640.000 F.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28351"
-    },
-    {
-      "seance": "JUILLET 2001",
-      "montant": "389.121,10 F",
-      "objet": "acquisition de divers ouvrages et autographes de Victor Hugo",
-      "citation": "M. le Maire de Paris est autorisé à acquérir divers ouvrages et autographes de Victor Hugo pour la somme de 389.121,10 F.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62700"
-    },
-    {
-      "seance": "DECEMBRE 2002",
-      "montant": "6.148 euros",
-      "objet": "don de la société Rhodia Organique pour l'acquisition d'œuvres d'art",
-      "citation": "Il s'agit d'un don en espèce d'un montant de 6.148 euros et est destiné à l'acquisition d'?uvres d'art pour la Maison de Victor Hugo.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71024"
-    },
-    {
-      "seance": "JUILLET 2003",
-      "montant": "320.000 euros",
-      "objet": "acquisition de l'édition originale « Les Travailleurs de la mer »",
-      "citation": "M. le Maire de Paris est autorisé à acquérir l'édition originale \"Les Travailleurs de la mer\" de Victor Hugo pour un montant de 320.000 euros.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70138"
-    },
-    {
-      "seance": "JUILLET 2003",
-      "montant": "320.000 euros",
-      "objet": "acquisition d'une œuvre d'art pour la Maison de Victor Hugo (2003 DAC 247)",
-      "citation": "Montant : 320.000 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8331"
-    },
-    {
-      "seance": "AVRIL 2005",
-      "montant": "2.500 euros",
-      "objet": "don de l'agence MEDIAPLUS-ETAT DE FETE pour l'acquisition d'œuvres d'art",
-      "citation": "Il s?agit d?un don en espèce d?un montant de 2.500 euros destiné à l?acquisition d??uvres d?art pour la Maison de Victor Hugo.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43535"
-    },
-    {
-      "seance": "AVRIL 2005",
-      "montant": "716 euros",
-      "objet": "don de la Banque Julius Baer pour la restauration d'œuvres d'art à Hauteville House (Guernesey)",
-      "citation": "Il s?agit d?un don en espèces d?un montant de 716 euros destiné à la restauration d??uvres d?art pour la Maison d?exil de Victor Hugo à Guernesey.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43678"
-    },
-    {
-      "seance": "MARS 2007",
-      "montant": "23.000 euros",
-      "objet": "valeur d'immobilisation de l'œuvre léguée par M. Walter Beardmore",
-      "citation": "La valeur d?immobilisation de l??uvre léguée, estimée à 23.000 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31801"
-    },
-    {
-      "seance": "DECEMBRE 2007",
-      "montant": "6 £ / 8,67 €",
-      "objet": "plein tarif de droit d'entrée à Hauteville House (Guernesey)",
-      "citation": "Plein tarif 6 8,67",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54752"
-    },
-    {
-      "seance": "DECEMBRE 2007",
-      "montant": "2.300 euros",
-      "objet": "dépense de personnel du programme d'activités culturelles (2007-2008)",
-      "citation": "La dépense de personnel, soit 2.300 euros, sera imputée, au chapitre 012 du budget de fonctionnement, à concurrence de 760 euros sur l?exercice 2007 et 1.540 euros sur l?exercice 2008",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54453"
-    },
-    {
-      "seance": "DECEMBRE 2007",
-      "montant": "700 euros",
-      "objet": "dépense de fournitures pédagogiques du programme",
-      "citation": "La dépense de fournitures pédagogiques, soit 700 euros, sera imputée sur le budget de fonctionnement au chapitre 011",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54453"
-    }
-  ],
-  "bmo_extraits": [
-    {
-      "date": "1914-02-11",
-      "extrait": "Le Conseil, Vu la délibération, en date du 18 mars 1904, confiant à M. Poilpoi, artiste peintre, l'exécution d'un tableau destiné à la Maison de Victor Hugo et représentant « la Fête du centenaire de Victor Hugo », place des Vosges … Sur le rapport présenté par M. Lampué, au no",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64530541/f12.item",
-      "extrait_en": "The Council, having regard to the deliberation of 18 March 1904 entrusting Mr Poilpoi, painter, with the execution of a painting for the Maison de Victor Hugo depicting \"the Centenary Celebration of Victor Hugo,\" place des Vosges … On the report presented by Mr Lampué, on beha"
-    },
-    {
-      "date": "1919-08-21",
-      "extrait": "414. — Travaux*de remise en état de la maison de Victor Hugo (M. d'Andigné. rapporteur). , Le Conseil, Sur le rapport présenté par M. d'Andigné. ,au nom de la 4e Commission, Délibère : Article premier. — Est … autorisée, dans la limite d'une dépense de 20,000 francs, l'exécutio",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6497986f/f10.item",
-      "extrait_en": "414. — Restoration works at the Maison de Victor Hugo (Mr d'Andigné, rapporteur). The Council, on the report presented by Mr d'Andigné, on behalf of the 4th Commission, Resolves: Article one. — Is … authorized, within an expenditure limit of 20,000 francs, the executio"
-    },
-    {
-      "date": "1927-12-10",
-      "extrait": "faits à la Maison de Victor Hugo M. d'Andigné, au nom de la 4e Commission. - Messieurs, nous vous proposons d'accepter, pour la Maison de Victor Hugo une série d'objets offerts par M. Jacque Devéria qui constitueront un précieux apport aux collections déjà réunies",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6435415c/f11.item",
-      "extrait_en": "made to the Maison de Victor Hugo. Mr d'Andigné, on behalf of the 4th Commission. — Gentlemen, we propose that you accept, for the Maison de Victor Hugo, a series of items offered by Mr Jacque Devéria, which will constitute a valuable addition to the collections already assembled"
-    },
-    {
-      "date": "1928-11-17",
-      "extrait": "15. — Agrandissement de la maison de Victor - Hugo  … M. d'Andigné, au nom de la 4e Commission. — Messieurs, l'Administration nous a saisis d'une demande d'ouverture de crédit pour l'achèvement des travaux d'agrandissements de la maison de Victor - Hugo et l'aménagement des nou",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6414217n/f7.item",
-      "extrait_en": "15. — Expansion of the Maison de Victor Hugo … Mr d'Andigné, on behalf of the 4th Commission. — Gentlemen, the Administration has submitted to us a request to open credit for the completion of the expansion works at the Maison de Victor Hugo and the fitting-out of the new"
-    }
-  ],
-  "bmo_recit": null,
-  "invest": [],
-  "marches": [],
-  "mandate": {
-    "par_annee": {
-      "2016": 27444.78,
-      "2017": 116746.12,
-      "2018": 147415.59,
-      "2019": 1575498.66,
-      "2020": 1350470.32,
-      "2021": 995910.89,
-      "2022": 291069.32
-    },
-    "total_eur": 4504555.68,
-    "operations": [
-      {
-        "ap_cle": "1604812",
-        "ap_texte": "EPM - VICTOR HUGO - REAMENAGEMENT PARTIE",
-        "mandate_par_annee": {
-          "2016": 3326.23,
-          "2017": 114211.76,
-          "2018": 147415.59,
-          "2019": 1542123.7,
-          "2020": 705389.41,
-          "2021": 280217.22,
-          "2022": 136181.39
-        },
-        "total_mandate": 2928865.3,
-        "preuve": "Libelle d'operation \"EPM - VICTOR HUGO - REAMENAGEMENT PARTIE\" (plafonne a 40 caracteres par la source), direction DPA (patrimoine et architecture), mission \"OPERATIONS SOUS MAND\". Le prefixe EPM designe dans ce budget les operations des musees municipaux : les autres operations EPM du meme corpus portent sur Bourdelle, Cognacq-Jay, Carnavalet, Galliera et le musee de la Liberation. \"VICTOR HUGO\" y designe donc le musee de la Ville de ce nom, et non l'avenue ou la rue (l'operation homonyme \"GARAGE IVRY VICTOR HUGO\", direction DPE, a ete ecartee). Le contexte des deliberations atteste que la Ville conduit ce type de chantier sur ce lieu : delib. 2000 DPA 105 \"approuvant le principe de la realisation des travaux de restructuration partielle de la Maison de Victor Hugo\", et 2001 DPA 62 \"amelioration des conditions d'accueil du public a la Maison de Victor Hugo situee 6, place des Vosges (4e)\". Le rattachement repose sur un signal de nom partiel corrobore par le type d'equipement, pas sur une adresse citee dans la source budgetaire.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604812"
-      },
-      {
-        "ap_cle": "1704812",
-        "ap_texte": "EPM - VICTOR HUGO - REAMENAGEMENT PARTIE",
-        "mandate_par_annee": {
-          "2019": 26095.34,
-          "2020": 618179.85,
-          "2021": 710510.88,
-          "2022": 153135.6
-        },
-        "total_mandate": 1507921.67,
-        "preuve": "Meme libelle d'operation \"EPM - VICTOR HUGO - REAMENAGEMENT PARTIE\" (plafonne a 40 caracteres), sous une cle d'AP distincte et rattache a la direction DCPA, mission \"OPERATIONS SOUS MAND\". Comme pour l'AP 1604812, le prefixe EPM identifie une operation de musee municipal (Bourdelle, Cognacq-Jay, Carnavalet, Galliera, musee de la Liberation dans le meme corpus), ce qui rattache \"VICTOR HUGO\" au musee du 6, place des Vosges (4e) plutot qu'a une voie de ce nom. Les deliberations de la Ville documentent des travaux sur ce lieu (2000 DPA 105, restructuration partielle de la Maison de Victor Hugo). Signal de nom partiel corrobore par le type d'equipement ; la source budgetaire ne cite pas l'adresse.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1704812"
-      },
-      {
-        "ap_cle": "1504812",
-        "ap_texte": "EPM VICTOR HUGO - REAMENAGEMENT PARTIEL",
-        "mandate_par_annee": {
-          "2016": 24118.55,
-          "2017": 2534.36,
-          "2019": 7279.62,
-          "2020": 26901.06,
-          "2021": 5182.79,
-          "2022": 1752.33
-        },
-        "total_mandate": 67768.71,
-        "preuve": "Libelle complet, non coupe : \"EPM VICTOR HUGO - REAMENAGEMENT PARTIEL\", direction DPA, mission \"OPERATIONS SOUS MAND\". Meme serie que les AP 1604812 et 1704812 ; le prefixe EPM designe les operations des musees municipaux (autres operations EPM du corpus : Bourdelle, Cognacq-Jay, Carnavalet, Galliera, musee de la Liberation), donc le musee Maison de Victor Hugo. Contexte concordant : delib. 2000 DPA 105 \"travaux de restructuration partielle de la Maison de Victor Hugo\". Signal de nom, sans adresse dans la source budgetaire.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1504812"
-      }
-    ],
-    "periode": [
-      "2016",
-      "2022"
-    ],
-    "source": {
-      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-    }
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": 15,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (16 trouvés)",
+  "lecture_mode_en": "title naming the place (16 found)",
+  "n_lus": 16,
+  "n_lieu": 14
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "De 1997 à 2007, la Maison de Victor Hugo revient régulièrement devant le Conseil de Paris, d'abord pour enrichir ses collections : le Conseil autorise l'acquisition de dessins, d'éditions originales et d'autographes de l'écrivain — jusqu'à 320 000 euros pour « Les Travailleurs de la mer » en 2003 — souvent complétée par des dons d'entreprises. En 2000 puis 2001, il approuve le principe d'une restructuration partielle du musée, 6 place des Vosges, puis les modalités d'un marché de travaux destiné à améliorer l'accueil du public. Les délibérations concernent aussi le second site de l'institution, la maison d'exil de Hauteville House à Guernesey, dont le Conseil fixe les tarifs d'entrée et autorise l'acceptation d'un don et d'un legs. À la fin des années 2000, l'attention se porte sur les usages : label d'accessibilité « Tourisme et Handicap » en 2007 et convention de programmation culturelle. En 2003, lors de l'un de ces achats, un conseiller réclame en séance une expertise du prix indépendante du vendeur.",
+ "moments": [
+  {
+   "id": "49346",
+   "seance": "NOVEMBRE 1997",
+   "fait": "Le Conseil autorise le Maire à acquérir, pour la maison de Victor Hugo, un dessin de Victor Hugo « Composition abstraite » (300 000 FF), dans un achat groupé avec le musée Cernuschi.",
+   "pourquoi": "premier achat documenté pour les collections",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49346",
+   "fait_en": "The Council authorized the Mayor to acquire, for the Maison de Victor Hugo, a drawing by Victor Hugo, \"Composition abstraite\" (300,000 francs), as part of a joint purchase with the Musée Cernuschi.",
+   "pourquoi_en": "first documented purchase for the collections"
   },
-  "sources": {
-    "delibs": {
-      "name": "Débat-Délibs — Conseil de Paris",
-      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Victor+Hugo+AND+maison"
-    },
-    "bmo": {
-      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Maison+de+Victor+Hugo%22%29"
-    },
-    "invest": {
-      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-      "url": "https://opendata.paris.fr/"
-    },
-    "wiki": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
+  {
+   "id": "65048",
+   "seance": "OCTOBRE 1998",
+   "fait": "Le Conseil autorise l'acceptation d'un don de 20 000 F de la société AKG Photothèque, destiné à l'achat de photographies d'Olivier Mériel pour le musée.",
+   "pourquoi": "le mécénat d'entreprise entre au musée",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65048",
+   "fait_en": "The Council authorized accepting a donation of 20,000 francs from the AKG Photothèque company, intended for purchasing photographs by Olivier Mériel for the museum.",
+   "pourquoi_en": "corporate patronage enters the museum"
   },
-  "synthese_en": "From 1997 to 2007, the Maison de Victor Hugo regularly came before Conseil de Paris, first to enrich its collections: the Council authorized the acquisition of drawings, first editions, and autographs by the writer — up to €320,000 for \"Les Travailleurs de la mer\" in 2003 — often supplemented by corporate donations. In 2000 and then 2001, it approved the principle of a partial restructuring of the museum, 6 place des Vosges, then the terms of a works contract intended to improve public reception. The deliberations also concerned the institution's second site, the exile home of Hauteville House in Guernsey, for which the Council set admission prices and authorized accepting a donation and a bequest. At the end of the 2000s, attention turned to usage: the \"Tourisme et Handicap\" accessibility label in 2007 and a cultural programming agreement. In 2003, during one of these purchases, a councillor demanded in session an appraisal of the price independent of the seller.",
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
+  {
+   "id": "84950",
+   "seance": "JANVIER 2001",
+   "fait": "Le Conseil approuve les modalités d'un marché de travaux pour améliorer l'accueil du public, 6 place des Vosges, et autorise le Maire à le signer, après avoir approuvé en 2000 le principe d'une restructuration partielle.",
+   "pourquoi": "le musée réaménage l'accueil du public",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84950",
+   "fait_en": "The Council approved the terms of a works contract to improve public reception at 6 place des Vosges, and authorized the Mayor to sign it, after having approved the principle of a partial restructuring in 2000.",
+   "pourquoi_en": "the museum redesigns public reception"
+  },
+  {
+   "id": "8331",
+   "seance": "JUILLET 2003",
+   "fait": "En séance, le conseiller Yves Pozzo di Borgo demande le nom de l'expert ayant estimé le prix de l'œuvre acquise et conditionne son vote à une expertise indépendante du vendeur.",
+   "pourquoi": "un élu conteste le prix d'un achat",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8331",
+   "fait_en": "In session, councillor Yves Pozzo di Borgo asked for the name of the expert who had appraised the price of the acquired work and made his vote conditional on an appraisal independent of the seller.",
+   "pourquoi_en": "a councillor disputes a purchase price"
+  },
+  {
+   "id": "31801",
+   "seance": "MARS 2007",
+   "fait": "Le Conseil autorise le Maire à accepter le legs de M. Walter Beardmore, une œuvre estimée à 23 000 euros, pour le site de Hauteville House (Guernesey).",
+   "pourquoi": "un legs enrichit la maison d'exil",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31801",
+   "fait_en": "The Council authorized the Mayor to accept the bequest of Mr Walter Beardmore, a work valued at €23,000, for the Hauteville House site (Guernsey).",
+   "pourquoi_en": "a bequest enriches the exile home"
+  },
+  {
+   "id": "53266",
+   "seance": "OCTOBRE 2007",
+   "fait": "Le Conseil autorise le Maire à signer la charte relative à l'attribution au musée du label national « Tourisme et Handicap » (handicap moteur).",
+   "pourquoi": "un label national d'accessibilité pour le musée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53266",
+   "fait_en": "The Council authorized the Mayor to sign the charter for awarding the museum the national \"Tourisme et Handicap\" label (physical disability).",
+   "pourquoi_en": "a national accessibility label for the museum"
+  },
+  {
+   "id": "54752",
+   "seance": "DECEMBRE 2007",
+   "fait": "Le Conseil fixe de nouveaux tarifs d'entrée à Hauteville House, la maison d'exil de Victor Hugo à Guernesey, applicables au 1er avril 2008.",
+   "pourquoi": "nouveaux tarifs pour le site de Guernesey",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54752",
+   "fait_en": "The Council set new admission prices for Hauteville House, Victor Hugo's exile home in Guernsey, applicable from 1 April 2008.",
+   "pourquoi_en": "new prices for the Guernsey site"
+  },
+  {
+   "id": "54453",
+   "seance": "DECEMBRE 2007",
+   "fait": "Le Conseil autorise le Maire à signer une convention avec la Maison du geste et de l'image pour un programme d'activités culturelles avec le musée.",
+   "pourquoi": "des activités culturelles avec un partenaire",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54453",
+   "fait_en": "The Council authorized the Mayor to sign an agreement with the Maison du geste et de l'image for a programme of cultural activities with the museum.",
+   "pourquoi_en": "cultural activities with a partner"
   }
+ ],
+ "montants": [
+  {
+   "seance": "NOVEMBRE 1997",
+   "montant": "300.000 FF",
+   "objet": "acquisition, pour la maison de Victor Hugo, du dessin « Composition abstraite »",
+   "citation": "un dessin de Victor Hugo intitulé \"Composition abstraite\", vers 1853-1855, lavis d'encre brune, 15,7 cm x 24,3 cm, appartenant à la galerie Jan Krugier à Genève pour le prix de 300.000 FF",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49346"
+  },
+  {
+   "seance": "NOVEMBRE 1997",
+   "montant": "680.000 F",
+   "objet": "dépense totale de l'achat groupé (maison de Victor Hugo + musée Cernuschi)",
+   "citation": "La dépense totale correspondante, soit 680.000 F, sera imputée au chapitre 903, sous-chapitre 903-62, article 2141",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49346"
+  },
+  {
+   "seance": "OCTOBRE 1998",
+   "montant": "20.000 F T.T.C.",
+   "objet": "don de la société « AKG Photothèque » pour l'achat de photographies d'Olivier Mériel",
+   "citation": "l'aide financière que la société \"AKG Photothèque\" est disposée à apporter à la Maison de Victor Hugo, soit un don en espèces d'un montant de 20.000 F T.T.C.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65048"
+  },
+  {
+   "seance": "SEPTEMBRE 2000",
+   "montant": "640.000 F",
+   "objet": "acquisition du dessin de Victor Hugo « Château sur une colline »",
+   "citation": "M. le Maire de Paris est autorisé à acquérir un dessin de Victor Hugo \"Château sur une colline\" pour la Maison de Victor Hugo pour un montant de 640.000 F.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28351"
+  },
+  {
+   "seance": "JUILLET 2001",
+   "montant": "389.121,10 F",
+   "objet": "acquisition de divers ouvrages et autographes de Victor Hugo",
+   "citation": "M. le Maire de Paris est autorisé à acquérir divers ouvrages et autographes de Victor Hugo pour la somme de 389.121,10 F.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62700"
+  },
+  {
+   "seance": "DECEMBRE 2002",
+   "montant": "6.148 euros",
+   "objet": "don de la société Rhodia Organique pour l'acquisition d'œuvres d'art",
+   "citation": "Il s'agit d'un don en espèce d'un montant de 6.148 euros et est destiné à l'acquisition d'?uvres d'art pour la Maison de Victor Hugo.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71024"
+  },
+  {
+   "seance": "JUILLET 2003",
+   "montant": "320.000 euros",
+   "objet": "acquisition de l'édition originale « Les Travailleurs de la mer »",
+   "citation": "M. le Maire de Paris est autorisé à acquérir l'édition originale \"Les Travailleurs de la mer\" de Victor Hugo pour un montant de 320.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70138"
+  },
+  {
+   "seance": "JUILLET 2003",
+   "montant": "320.000 euros",
+   "objet": "acquisition d'une œuvre d'art pour la Maison de Victor Hugo (2003 DAC 247)",
+   "citation": "Montant : 320.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8331"
+  },
+  {
+   "seance": "AVRIL 2005",
+   "montant": "2.500 euros",
+   "objet": "don de l'agence MEDIAPLUS-ETAT DE FETE pour l'acquisition d'œuvres d'art",
+   "citation": "Il s?agit d?un don en espèce d?un montant de 2.500 euros destiné à l?acquisition d??uvres d?art pour la Maison de Victor Hugo.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43535"
+  },
+  {
+   "seance": "AVRIL 2005",
+   "montant": "716 euros",
+   "objet": "don de la Banque Julius Baer pour la restauration d'œuvres d'art à Hauteville House (Guernesey)",
+   "citation": "Il s?agit d?un don en espèces d?un montant de 716 euros destiné à la restauration d??uvres d?art pour la Maison d?exil de Victor Hugo à Guernesey.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43678"
+  },
+  {
+   "seance": "MARS 2007",
+   "montant": "23.000 euros",
+   "objet": "valeur d'immobilisation de l'œuvre léguée par M. Walter Beardmore",
+   "citation": "La valeur d?immobilisation de l??uvre léguée, estimée à 23.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31801"
+  },
+  {
+   "seance": "DECEMBRE 2007",
+   "montant": "6 £ / 8,67 €",
+   "objet": "plein tarif de droit d'entrée à Hauteville House (Guernesey)",
+   "citation": "Plein tarif 6 8,67",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54752"
+  },
+  {
+   "seance": "DECEMBRE 2007",
+   "montant": "2.300 euros",
+   "objet": "dépense de personnel du programme d'activités culturelles (2007-2008)",
+   "citation": "La dépense de personnel, soit 2.300 euros, sera imputée, au chapitre 012 du budget de fonctionnement, à concurrence de 760 euros sur l?exercice 2007 et 1.540 euros sur l?exercice 2008",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54453"
+  },
+  {
+   "seance": "DECEMBRE 2007",
+   "montant": "700 euros",
+   "objet": "dépense de fournitures pédagogiques du programme",
+   "citation": "La dépense de fournitures pédagogiques, soit 700 euros, sera imputée sur le budget de fonctionnement au chapitre 011",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54453"
+  }
+ ],
+ "bmo_extraits": [
+  {
+   "date": "1914-02-11",
+   "extrait": "Le Conseil, Vu la délibération, en date du 18 mars 1904, confiant à M. Poilpoi, artiste peintre, l'exécution d'un tableau destiné à la Maison de Victor Hugo et représentant « la Fête du centenaire de Victor Hugo », place des Vosges … Sur le rapport présenté par M. Lampué, au no",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64530541/f12.item",
+   "extrait_en": "The Council, having regard to the deliberation of 18 March 1904 entrusting Mr Poilpoi, painter, with the execution of a painting for the Maison de Victor Hugo depicting \"the Centenary Celebration of Victor Hugo,\" place des Vosges … On the report presented by Mr Lampué, on beha"
+  },
+  {
+   "date": "1919-08-21",
+   "extrait": "414. — Travaux*de remise en état de la maison de Victor Hugo (M. d'Andigné. rapporteur). , Le Conseil, Sur le rapport présenté par M. d'Andigné. ,au nom de la 4e Commission, Délibère : Article premier. — Est … autorisée, dans la limite d'une dépense de 20,000 francs, l'exécutio",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6497986f/f10.item",
+   "extrait_en": "414. — Restoration works at the Maison de Victor Hugo (Mr d'Andigné, rapporteur). The Council, on the report presented by Mr d'Andigné, on behalf of the 4th Commission, Resolves: Article one. — Is … authorized, within an expenditure limit of 20,000 francs, the executio"
+  },
+  {
+   "date": "1927-12-10",
+   "extrait": "faits à la Maison de Victor Hugo M. d'Andigné, au nom de la 4e Commission. - Messieurs, nous vous proposons d'accepter, pour la Maison de Victor Hugo une série d'objets offerts par M. Jacque Devéria qui constitueront un précieux apport aux collections déjà réunies",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6435415c/f11.item",
+   "extrait_en": "made to the Maison de Victor Hugo. Mr d'Andigné, on behalf of the 4th Commission. — Gentlemen, we propose that you accept, for the Maison de Victor Hugo, a series of items offered by Mr Jacque Devéria, which will constitute a valuable addition to the collections already assembled"
+  },
+  {
+   "date": "1928-11-17",
+   "extrait": "15. — Agrandissement de la maison de Victor - Hugo  … M. d'Andigné, au nom de la 4e Commission. — Messieurs, l'Administration nous a saisis d'une demande d'ouverture de crédit pour l'achèvement des travaux d'agrandissements de la maison de Victor - Hugo et l'aménagement des nou",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6414217n/f7.item",
+   "extrait_en": "15. — Expansion of the Maison de Victor Hugo … Mr d'Andigné, on behalf of the 4th Commission. — Gentlemen, the Administration has submitted to us a request to open credit for the completion of the expansion works at the Maison de Victor Hugo and the fitting-out of the new"
+  }
+ ],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "2001": [
+   {
+    "reference": "2001 DPA 62",
+    "titre": "Approbation des modalités d'attribution d'un marché de travaux relatif à l'amélioration des conditions d'accueil du public à la Maison de Victor Hugo (4e). - Autorisation à M. le Maire de Paris de signer ledit marché. M. Claude ROLAND, rapporteur.",
+    "seance": "JANVIER 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84950"
+   }
+  ],
+  "2002": [
+   {
+    "reference": "2002 DAC 17",
+    "titre": "Autorisation à Monsieur le Maire de Paris de signer une convention relative à l'attribution d'une subvention de fonctionnement à l'association \"Compagnie Jean Marie Galey\" et une convention relative à l'attribution d'une subvention de fonctionnement à l'association \"Compagnie 9 et demi\" dans le cadre de l'année \"Victor Hugo\". M. Christophe GIRARD, rapporteur.",
+    "seance": "JUIN 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55968"
+   },
+   {
+    "reference": "2002 DAC 532",
+    "titre": "Dons en espèces d'un montant de 6.148 euros pour l'acquisition d'œuvres d'art pour la Maison de Victor Hugo. - Autorisation à M. le Maire de Paris de signer avec la société Rhodia Organique la convention financière correspondante. Mme Sandrine MAZETIER, rapporteur.",
+    "seance": "DECEMBRE 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71024"
+   }
+  ],
+  "2005": [
+   {
+    "reference": "2005 DAC 78",
+    "titre": "Don en espèces d’un montant de 2.500 euros pour l’acquisition d’œuvres d’art pour la Maison Victor Hugo. - Autorisation à Monsieur le Maire de Paris de signer avec l’Agence Conseil en Communication par l’Evènement MEDIAPLUS-ETAT DE FETE la convention financière correspondante. Mme Moïra GUILMART, rapporteure.",
+    "seance": "AVRIL 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43535"
+   },
+   {
+    "reference": "2005 DAC 90",
+    "titre": "Don en espèces d’un montant de 716 euros pour la restauration d’œuvres d’art pour Hauteville House, la Maison d’exil de Victor Hugo. - Autorisation à M. le Maire de Paris de signer avec la Banque Julius Baer & Co. LTD-Guernsey Branch la convention financière correspondante. Mme Moïra GUILMART, rapporteure.",
+    "seance": "AVRIL 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43678"
+   }
+  ],
+  "2007": [
+   {
+    "reference": "2007 DAC 676",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention avec la Maison du geste et de l’image pour la réalisation d’un programme d’activités culturelles avec la Maison de Victor Hugo. Mme Moïra GUILMART, rapporteure.",
+    "seance": "DECEMBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54453"
+   }
+  ]
+ },
+ "invest": [],
+ "marches": [],
+ "mandate": {
+  "par_annee": {
+   "2016": 27444.78,
+   "2017": 116746.12,
+   "2018": 147415.59,
+   "2019": 1575498.66,
+   "2020": 1350470.32,
+   "2021": 995910.89,
+   "2022": 291069.32
+  },
+  "total_eur": 4504555.68,
+  "operations": [
+   {
+    "ap_cle": "1604812",
+    "ap_texte": "EPM - VICTOR HUGO - REAMENAGEMENT PARTIE",
+    "mandate_par_annee": {
+     "2016": 3326.23,
+     "2017": 114211.76,
+     "2018": 147415.59,
+     "2019": 1542123.7,
+     "2020": 705389.41,
+     "2021": 280217.22,
+     "2022": 136181.39
+    },
+    "total_mandate": 2928865.3,
+    "preuve": "Libelle d'operation \"EPM - VICTOR HUGO - REAMENAGEMENT PARTIE\" (plafonne a 40 caracteres par la source), direction DPA (patrimoine et architecture), mission \"OPERATIONS SOUS MAND\". Le prefixe EPM designe dans ce budget les operations des musees municipaux : les autres operations EPM du meme corpus portent sur Bourdelle, Cognacq-Jay, Carnavalet, Galliera et le musee de la Liberation. \"VICTOR HUGO\" y designe donc le musee de la Ville de ce nom, et non l'avenue ou la rue (l'operation homonyme \"GARAGE IVRY VICTOR HUGO\", direction DPE, a ete ecartee). Le contexte des deliberations atteste que la Ville conduit ce type de chantier sur ce lieu : delib. 2000 DPA 105 \"approuvant le principe de la realisation des travaux de restructuration partielle de la Maison de Victor Hugo\", et 2001 DPA 62 \"amelioration des conditions d'accueil du public a la Maison de Victor Hugo situee 6, place des Vosges (4e)\". Le rattachement repose sur un signal de nom partiel corrobore par le type d'equipement, pas sur une adresse citee dans la source budgetaire.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604812"
+   },
+   {
+    "ap_cle": "1704812",
+    "ap_texte": "EPM - VICTOR HUGO - REAMENAGEMENT PARTIE",
+    "mandate_par_annee": {
+     "2019": 26095.34,
+     "2020": 618179.85,
+     "2021": 710510.88,
+     "2022": 153135.6
+    },
+    "total_mandate": 1507921.67,
+    "preuve": "Meme libelle d'operation \"EPM - VICTOR HUGO - REAMENAGEMENT PARTIE\" (plafonne a 40 caracteres), sous une cle d'AP distincte et rattache a la direction DCPA, mission \"OPERATIONS SOUS MAND\". Comme pour l'AP 1604812, le prefixe EPM identifie une operation de musee municipal (Bourdelle, Cognacq-Jay, Carnavalet, Galliera, musee de la Liberation dans le meme corpus), ce qui rattache \"VICTOR HUGO\" au musee du 6, place des Vosges (4e) plutot qu'a une voie de ce nom. Les deliberations de la Ville documentent des travaux sur ce lieu (2000 DPA 105, restructuration partielle de la Maison de Victor Hugo). Signal de nom partiel corrobore par le type d'equipement ; la source budgetaire ne cite pas l'adresse.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1704812"
+   },
+   {
+    "ap_cle": "1504812",
+    "ap_texte": "EPM VICTOR HUGO - REAMENAGEMENT PARTIEL",
+    "mandate_par_annee": {
+     "2016": 24118.55,
+     "2017": 2534.36,
+     "2019": 7279.62,
+     "2020": 26901.06,
+     "2021": 5182.79,
+     "2022": 1752.33
+    },
+    "total_mandate": 67768.71,
+    "preuve": "Libelle complet, non coupe : \"EPM VICTOR HUGO - REAMENAGEMENT PARTIEL\", direction DPA, mission \"OPERATIONS SOUS MAND\". Meme serie que les AP 1604812 et 1704812 ; le prefixe EPM designe les operations des musees municipaux (autres operations EPM du corpus : Bourdelle, Cognacq-Jay, Carnavalet, Galliera, musee de la Liberation), donc le musee Maison de Victor Hugo. Contexte concordant : delib. 2000 DPA 105 \"travaux de restructuration partielle de la Maison de Victor Hugo\". Signal de nom, sans adresse dans la source budgetaire.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1504812"
+   }
+  ],
+  "periode": [
+   "2016",
+   "2022"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Victor+Hugo+AND+maison"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Maison+de+Victor+Hugo%22%29"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "From 1997 to 2007, the Maison de Victor Hugo regularly came before Conseil de Paris, first to enrich its collections: the Council authorized the acquisition of drawings, first editions, and autographs by the writer — up to €320,000 for \"Les Travailleurs de la mer\" in 2003 — often supplemented by corporate donations. In 2000 and then 2001, it approved the principle of a partial restructuring of the museum, 6 place des Vosges, then the terms of a works contract intended to improve public reception. The deliberations also concerned the institution's second site, the exile home of Hauteville House in Guernsey, for which the Council set admission prices and authorized accepting a donation and a bequest. At the end of the 2000s, attention turned to usage: the \"Tourisme et Handicap\" accessibility label in 2007 and a cultural programming agreement. In 2003, during one of these purchases, a councillor demanded in session an appraisal of the price independent of the seller."
 }

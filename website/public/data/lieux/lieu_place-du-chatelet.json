@@ -1,163 +1,245 @@
 {
-  "generated_at": "2026-09-11T14:25:25.461202+00:00",
-  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
-  "slug": "place-du-chatelet",
-  "name": "Place du Châtelet",
-  "kind_fr": "Place",
-  "kind_en": "Square",
-  "famille": "urbain",
-  "arrondissement": 1,
-  "lat": 48.857346,
-  "lon": 2.34779,
-  "photo": "/img/lieux/place-du-chatelet.jpg",
-  "photo_credit": {
-    "licence": "CC0",
-    "auteur": "Romainbehar",
-    "url": "https://commons.wikimedia.org/wiki/File:Paris_1er_-_Place_du_Ch%C3%A2telet_-_Th%C3%A9%C3%A2tre_du_Ch%C3%A2telet_-_Fa%C3%A7ade_est_-_Paratonnerre_et_angelots_du_toit.jpg",
-    "source": "Wikimedia Commons"
+ "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "place-du-chatelet",
+ "name": "Place du Châtelet",
+ "kind_fr": "Place",
+ "kind_en": "Square",
+ "famille": "urbain",
+ "arrondissement": 1,
+ "lat": 48.857346,
+ "lon": 2.34779,
+ "photo": "/img/lieux/place-du-chatelet.jpg",
+ "photo_credit": {
+  "licence": "CC0",
+  "auteur": "Romainbehar",
+  "url": "https://commons.wikimedia.org/wiki/File:Paris_1er_-_Place_du_Ch%C3%A2telet_-_Th%C3%A9%C3%A2tre_du_Ch%C3%A2telet_-_Fa%C3%A7ade_est_-_Paratonnerre_et_angelots_du_toit.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "La place du Châtelet est située à cheval sur le 1er et le 4e arrondissement de Paris, au bord de la Seine, à l'entrée du pont au Change.",
+  "url": "https://fr.wikipedia.org/wiki/Place_du_Ch%C3%A2telet",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
   },
-  "seuil_commun": 2010,
-  "wiki": {
-    "extract": "La place du Châtelet est située à cheval sur le 1er et le 4e arrondissement de Paris, au bord de la Seine, à l'entrée du pont au Change.",
-    "url": "https://fr.wikipedia.org/wiki/Place_du_Ch%C3%A2telet",
-    "source": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    },
-    "extract_en": "The Place du Châtelet straddles the 1st and 4th arrondissements of Paris, on the banks of the Seine, at the entrance to the Pont au Change."
-  },
-  "stats": {
-    "n_delibs": 1097,
-    "delibs_span": [
-      1998,
-      2023
-    ],
-    "n_bmo_brut": 2000,
-    "n_bmo_verifies": 18,
-    "invest_total_eur": 0,
-    "invest_annees": [],
-    "lecture_mode": "titre nommant le lieu (14 trouvés)",
-    "lecture_mode_en": "title naming the place (14 found)",
-    "n_lus": 13,
-    "n_lieu": 12
-  },
-  "subventions_exploitant": null,
-  "residents": [],
-  "kpi_montant": null,
-  "synthese_fr": "Les délibérations qui nomment la place du Châtelet portent presque toutes sur les deux théâtres qui la bordent — le Théâtre du Châtelet (1, place) et le Théâtre de la Ville (2, place). De 2002 à 2007, le Conseil de Paris approuve une succession de principes de travaux et autorise le Maire à signer les marchés correspondants : restauration des façades du Théâtre de la Ville (maîtrise d'œuvre attribuée en 2002 à Marc Ferauge), parquet de scène et fauteuils du Théâtre du Châtelet, postes et cellules haute tension, éclairage scénique. Le plus ancien document, en 1998, autorise le dépôt de permis pour rénover le hall d'accès principal côté place du Châtelet et améliorer l'accès des personnes handicapées. En janvier 2006, la place est présentée comme le point de départ, débattu en séance, du premier axe d'un « réseau vert » de rues réservées aux vélos, aux piétons et à la desserte locale vers le canal Saint-Martin. Vingt ans plus tard, en 2023, le Conseil attribue au théâtre du 2, place du Châtelet la dénomination « théâtre Sarah Bernhardt » et délibère sur la transformation de la place elle-même.",
-  "moments": [
-    {
-      "id": "44178",
-      "seance": "AVRIL 1998",
-      "fait": "Le Conseil autorise le Maire à déposer les permis pour rénover le hall d'accès principal (façade place du Châtelet) et améliorer l'accès des personnes handicapées au Théâtre musical de Paris.",
-      "pourquoi": "Le plus ancien acte : accessibilité et façade",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44178",
-      "fait_en": "The Council authorized the Mayor to file permits to renovate the main entrance hall (façade on the Place du Châtelet) and improve access for people with disabilities at the Théâtre musical de Paris.",
-      "pourquoi_en": "The oldest act: accessibility and façade"
-    },
-    {
-      "id": "38934",
-      "seance": "MARS 2002",
-      "fait": "Le Conseil approuve le principe de restauration des façades du Théâtre de la Ville et attribue le marché de maîtrise d'œuvre à Marc Ferauge.",
-      "pourquoi": "Un maître d'œuvre nommé pour les façades",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38934",
-      "fait_en": "The Council approved the principle of restoring the Théâtre de la Ville's façades and awarded the project management contract to Marc Ferauge.",
-      "pourquoi_en": "A project manager named for the façades"
-    },
-    {
-      "id": "89595",
-      "seance": "AVRIL 2003",
-      "fait": "Le Conseil approuve la passation du marché de travaux de restauration des façades du Théâtre de la Ville et autorise le Maire à le signer.",
-      "pourquoi": "Du projet de 2002 au marché de travaux",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89595",
-      "fait_en": "The Council approved awarding the works contract for restoring the Théâtre de la Ville's façades and authorized the Mayor to sign it.",
-      "pourquoi_en": "From the 2002 project to the works contract"
-    },
-    {
-      "id": "24809",
-      "seance": "JANVIER 2006",
-      "fait": "La place du Châtelet est présentée en séance comme le point de départ du premier axe du « réseau vert » vers le canal Saint-Martin, dont l'itinéraire est débattu.",
-      "pourquoi": "La place, tête d'un axe vélo débattu",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24809",
-      "fait_en": "The Place du Châtelet is presented in session as the starting point of the first stretch of the \"green network\" toward the Canal Saint-Martin, whose route is debated.",
-      "pourquoi_en": "The square, head of a debated cycling route"
-    },
-    {
-      "id": "72231",
-      "seance": "JUIN 2007",
-      "fait": "Le Conseil approuve le principe de modernisation des cellules haute tension du Théâtre du Châtelet et le lancement du marché de travaux.",
-      "pourquoi": "Une longue série d'entretiens techniques des théâtres",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72231",
-      "fait_en": "The Council approved the principle of modernizing the Théâtre du Châtelet's high-voltage switchgear and the launch of the works contract.",
-      "pourquoi_en": "A long series of technical maintenance works on the theatres"
-    },
-    {
-      "id": "170563",
-      "seance": "JUILLET 2023",
-      "fait": "Le Conseil attribue la dénomination « théâtre Sarah Bernhardt » au théâtre situé 2, place du Châtelet.",
-      "pourquoi": "Le Théâtre de la Ville change de nom",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=170563",
-      "fait_en": "The Council gave the name \"Théâtre Sarah Bernhardt\" to the theatre located at 2, Place du Châtelet.",
-      "pourquoi_en": "The Théâtre de la Ville changes its name"
-    },
-    {
-      "id": "172018",
-      "seance": "OCTOBRE 2023",
-      "fait": "Une délibération d'octobre 2023 porte sur la transformation de la place du Châtelet elle-même.",
-      "pourquoi": "La place elle-même entre en projet",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=172018",
-      "fait_en": "An October 2023 deliberation concerns the transformation of the Place du Châtelet itself.",
-      "pourquoi_en": "The square itself becomes a project"
-    }
+  "extract_en": "The Place du Châtelet straddles the 1st and 4th arrondissements of Paris, on the banks of the Seine, at the entrance to the Pont au Change."
+ },
+ "stats": {
+  "n_delibs": 1097,
+  "delibs_span": [
+   1998,
+   2023
   ],
-  "montants": [],
-  "bmo_extraits": [],
-  "bmo_recit": null,
-  "invest": [],
-  "marches": [
-    {
-      "numero_marche": "20232023S04804",
-      "objet": "MOE RESTAURATION FONTAINE DU PALMIER PLACE DU CHÂTELET 1ER",
-      "objet_clair": null,
-      "fournisseur": "DE BERGEVIN",
-      "montant_max": 85310.0,
-      "date_notification": "2023-06-27",
-      "preuve": "L'objet du marché nomme explicitement le lieu : « MOE RESTAURATION FONTAINE DU PALMIER PLACE DU CHÂTELET 1ER ». La prestation (maîtrise d'œuvre de restauration) porte sur la Fontaine du Palmier, ouvrage de la place elle-même — la place n'est pas ici un simple repère d'adresse, et il ne s'agit pas d'un marché-cadre de toute la Ville. Signal du candidat : « objet ». Fournisseur DE BERGEVIN, SIRET 38125680900058."
-    }
-  ],
-  "mandate": null,
-  "sources": {
-    "delibs": {
-      "name": "Débat-Délibs — Conseil de Paris",
-      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Place+du+Ch%C3%A2telet"
-    },
-    "bmo": {
-      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Place+du+Ch%C3%A2telet%22%29"
-    },
-    "invest": {
-      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-      "url": "https://opendata.paris.fr/"
-    },
-    "wiki": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": 18,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (14 trouvés)",
+  "lecture_mode_en": "title naming the place (14 found)",
+  "n_lus": 13,
+  "n_lieu": 12
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Les délibérations qui nomment la place du Châtelet portent presque toutes sur les deux théâtres qui la bordent — le Théâtre du Châtelet (1, place) et le Théâtre de la Ville (2, place). De 2002 à 2007, le Conseil de Paris approuve une succession de principes de travaux et autorise le Maire à signer les marchés correspondants : restauration des façades du Théâtre de la Ville (maîtrise d'œuvre attribuée en 2002 à Marc Ferauge), parquet de scène et fauteuils du Théâtre du Châtelet, postes et cellules haute tension, éclairage scénique. Le plus ancien document, en 1998, autorise le dépôt de permis pour rénover le hall d'accès principal côté place du Châtelet et améliorer l'accès des personnes handicapées. En janvier 2006, la place est présentée comme le point de départ, débattu en séance, du premier axe d'un « réseau vert » de rues réservées aux vélos, aux piétons et à la desserte locale vers le canal Saint-Martin. Vingt ans plus tard, en 2023, le Conseil attribue au théâtre du 2, place du Châtelet la dénomination « théâtre Sarah Bernhardt » et délibère sur la transformation de la place elle-même.",
+ "moments": [
+  {
+   "id": "44178",
+   "seance": "AVRIL 1998",
+   "fait": "Le Conseil autorise le Maire à déposer les permis pour rénover le hall d'accès principal (façade place du Châtelet) et améliorer l'accès des personnes handicapées au Théâtre musical de Paris.",
+   "pourquoi": "Le plus ancien acte : accessibilité et façade",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44178",
+   "fait_en": "The Council authorized the Mayor to file permits to renovate the main entrance hall (façade on the Place du Châtelet) and improve access for people with disabilities at the Théâtre musical de Paris.",
+   "pourquoi_en": "The oldest act: accessibility and façade"
   },
-  "synthese_en": "The deliberations that name the Place du Châtelet almost all concern the two theatres that line it — the Théâtre du Châtelet (1, place) and the Théâtre de la Ville (2, place). From 2002 to 2007, Conseil de Paris approved a series of work principles and authorized the Mayor to sign the corresponding contracts: restoration of the Théâtre de la Ville's façades (project management awarded in 2002 to Marc Ferauge), the stage floor and seating of the Théâtre du Châtelet, high-voltage substations and switchgear, and stage lighting. The oldest document, from 1998, authorized filing permits to renovate the main entrance hall on the Place du Châtelet side and to improve access for people with disabilities. In January 2006, the square is presented as the starting point — debated in session — of the first stretch of a \"green network\" of streets reserved for cyclists, pedestrians, and local traffic toward the Canal Saint-Martin. Twenty years later, in 2023, the Council gave the theatre at 2, Place du Châtelet the name \"Théâtre Sarah Bernhardt\" and deliberated on the transformation of the square itself.",
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
+  {
+   "id": "38934",
+   "seance": "MARS 2002",
+   "fait": "Le Conseil approuve le principe de restauration des façades du Théâtre de la Ville et attribue le marché de maîtrise d'œuvre à Marc Ferauge.",
+   "pourquoi": "Un maître d'œuvre nommé pour les façades",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38934",
+   "fait_en": "The Council approved the principle of restoring the Théâtre de la Ville's façades and awarded the project management contract to Marc Ferauge.",
+   "pourquoi_en": "A project manager named for the façades"
+  },
+  {
+   "id": "89595",
+   "seance": "AVRIL 2003",
+   "fait": "Le Conseil approuve la passation du marché de travaux de restauration des façades du Théâtre de la Ville et autorise le Maire à le signer.",
+   "pourquoi": "Du projet de 2002 au marché de travaux",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89595",
+   "fait_en": "The Council approved awarding the works contract for restoring the Théâtre de la Ville's façades and authorized the Mayor to sign it.",
+   "pourquoi_en": "From the 2002 project to the works contract"
+  },
+  {
+   "id": "24809",
+   "seance": "JANVIER 2006",
+   "fait": "La place du Châtelet est présentée en séance comme le point de départ du premier axe du « réseau vert » vers le canal Saint-Martin, dont l'itinéraire est débattu.",
+   "pourquoi": "La place, tête d'un axe vélo débattu",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24809",
+   "fait_en": "The Place du Châtelet is presented in session as the starting point of the first stretch of the \"green network\" toward the Canal Saint-Martin, whose route is debated.",
+   "pourquoi_en": "The square, head of a debated cycling route"
+  },
+  {
+   "id": "72231",
+   "seance": "JUIN 2007",
+   "fait": "Le Conseil approuve le principe de modernisation des cellules haute tension du Théâtre du Châtelet et le lancement du marché de travaux.",
+   "pourquoi": "Une longue série d'entretiens techniques des théâtres",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72231",
+   "fait_en": "The Council approved the principle of modernizing the Théâtre du Châtelet's high-voltage switchgear and the launch of the works contract.",
+   "pourquoi_en": "A long series of technical maintenance works on the theatres"
+  },
+  {
+   "id": "170563",
+   "seance": "JUILLET 2023",
+   "fait": "Le Conseil attribue la dénomination « théâtre Sarah Bernhardt » au théâtre situé 2, place du Châtelet.",
+   "pourquoi": "Le Théâtre de la Ville change de nom",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=170563",
+   "fait_en": "The Council gave the name \"Théâtre Sarah Bernhardt\" to the theatre located at 2, Place du Châtelet.",
+   "pourquoi_en": "The Théâtre de la Ville changes its name"
+  },
+  {
+   "id": "172018",
+   "seance": "OCTOBRE 2023",
+   "fait": "Une délibération d'octobre 2023 porte sur la transformation de la place du Châtelet elle-même.",
+   "pourquoi": "La place elle-même entre en projet",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=172018",
+   "fait_en": "An October 2023 deliberation concerns the transformation of the Place du Châtelet itself.",
+   "pourquoi_en": "The square itself becomes a project"
   }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "1998": [
+   {
+    "reference": "1998 DPA 138",
+    "titre": "Autorisation à M. le Maire de Paris de déposer une demande de permis de démolir et de permis de construire en vue de la rénovation du hall d'accès principal, façade place du Châtelet, et de divers travaux d'aménagement destinés notamment à améliorer l'accès des personnes handicapées au Théâtre musical de Paris (1er). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "seance": "AVRIL 1998",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44178"
+   }
+  ],
+  "2002": [
+   {
+    "reference": "2002 DPA 35",
+    "titre": "Approbation du principe de réalisation des travaux de restauration de façades au Théâtre de la Ville situé 2, place du Châtelet (4e), et des modalités d'attribution du marché négocié de maîtrise d'œuvre correspondant. Autorisation à M. le Maire de Paris de signer ledit marché. Autorisation à M. le Maire de Paris de déposer la demande de permis de construire pour la réalisation de l'opération susvisée. Mme Sandrine MAZETIER, rapporteur.",
+    "seance": "MARS 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38934"
+   }
+  ],
+  "2003": [
+   {
+    "reference": "2003 DPA 152",
+    "titre": "Approbation des modalités de passation du marché de travaux relatif à la restauration des façades au Théâtre de la Ville situé 2, place du Châtelet (4e). - Autorisation à M. le Maire de Paris de signer ledit marché. M. Christophe GIRARD, rapporteur.",
+    "seance": "AVRIL 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89595"
+   },
+   {
+    "reference": "2003 DPA 334",
+    "titre": "Approbation du principe de réalisation des travaux de modernisation des fauteuils et parquets (orchestre et corbeille) au Théâtre du Châtelet situé 1, place du Châtelet (1er), et des modalités de passation des marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. M. Christophe GIRARD, rapporteur.",
+    "seance": "DECEMBRE 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69065"
+   },
+   {
+    "reference": "2003 DPA 76",
+    "titre": "Approbation du principe de réalisation de travaux de réfection du parquet de scène au Théâtre du Châtelet situé 1, place du Châtelet - 75001 Paris, et des modalités de passation du marché de travaux correspondant. - Autorisation à Monsieur le Maire de Paris de signer le marché de travaux. M. Christophe GIRARD, rapporteur.",
+    "seance": "MARS 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68884"
+   }
+  ],
+  "2004": [
+   {
+    "reference": "2004 DPA 48",
+    "titre": "Approbation du principe de réalisation des travaux de modernisation du poste haute tension au Théâtre de la Ville situé 2, place du Châtelet (4e), et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Christophe GIRARD, rapporteur.",
+    "seance": "MARS 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57788"
+   }
+  ],
+  "2005": [
+   {
+    "reference": "2005 DPA 93",
+    "titre": "Approbation du principe de réalisation des travaux de restauration de la façade rue Adolphe Adam au Théâtre de la Ville situé 2, place du Châtelet (4e), et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de déposer la demande de permis de construire pour la réalisation de l’opération susvisée. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Christophe GIRARD, rapporteur.",
+    "seance": "AVRIL 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43604"
+   }
+  ],
+  "2006": [
+   {
+    "reference": "2006 DPA 59",
+    "titre": "Approbation du principe de réalisation des travaux de mise aux normes de la gradation de l’éclairage scénique au Théâtre de la Ville sis 2, place du Châtelet (4e) et des modalités de passation du marché de travaux correspondant. M. Christophe GIRARD, rapporteur.",
+    "seance": "FEVRIER 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27798"
+   },
+   {
+    "reference": "2006 DVD 3",
+    "titre": "2006, DVD 3 - Approbation des objectifs de création d’un réseau vert à Paris dont la première phase est située entre la place du Châtelet (1er) et le canal Saint-Martin (10e). - Approbation des modalités de la concertation relative à ce projet. - Approbation du principe et des modalités de passation d’un marché à bons de commande pour la réalisation des travaux de voirie. Vœu déposé par M. Pierre AIDENBAUM, adopté par la majorité municipale du Conseil du 3e arrondissement, relatif au réseau vert",
+    "seance": "JANVIER 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24809"
+   }
+  ],
+  "2007": [
+   {
+    "reference": "2007 DPA 151",
+    "titre": "Approbation du principe de réalisation des travaux de modernisation des cellules haute tension du Théâtre du Châtelet sis 1, place du Châtelet (1er) et des modalités de passation du marché de travaux correspondant. M. Christophe GIRARD, rapporteur.",
+    "seance": "JUIN 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72231"
+   },
+   {
+    "reference": "2007 DPA 51",
+    "titre": "Approbation du principe de réalisation des travaux de modernisation des fauteuils des balcons et des amphithéâtres au théâtre du Châtelet sis 1 place du Châtelet à Paris (1er) et des modalités de passation du marché de travaux correspondant. M. Christophe GIRARD, rapporteur.",
+    "seance": "MARS 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31636"
+   }
+  ],
+  "2015": [
+   {
+    "reference": "2015 DAC 200",
+    "titre": "2015 DAC 200 - Subventions (5.825.000 euros) et avenants avec l’association \"Théâtre de la Ville\" (4e et 18e). 2015 DPA 34 - Théâtre de la Ville 2, place du Châtelet (4e) - Rénovation partielle - Autorisation à la Maire de Paris de prendre toute décision concernant l'opération. Vœu déposé par le GEP relatif aux travaux aux théâtres du Châtelet et de la Ville. Vœu déposé par l'Exécutif.",
+    "seance": "MAI 2015",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125471"
+   }
+  ]
+ },
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20232023S04804",
+   "objet": "MOE RESTAURATION FONTAINE DU PALMIER PLACE DU CHÂTELET 1ER",
+   "objet_clair": null,
+   "fournisseur": "DE BERGEVIN",
+   "montant_max": 85310.0,
+   "date_notification": "2023-06-27",
+   "preuve": "L'objet du marché nomme explicitement le lieu : « MOE RESTAURATION FONTAINE DU PALMIER PLACE DU CHÂTELET 1ER ». La prestation (maîtrise d'œuvre de restauration) porte sur la Fontaine du Palmier, ouvrage de la place elle-même — la place n'est pas ici un simple repère d'adresse, et il ne s'agit pas d'un marché-cadre de toute la Ville. Signal du candidat : « objet ». Fournisseur DE BERGEVIN, SIRET 38125680900058."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Place+du+Ch%C3%A2telet"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Place+du+Ch%C3%A2telet%22%29"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "The deliberations that name the Place du Châtelet almost all concern the two theatres that line it — the Théâtre du Châtelet (1, place) and the Théâtre de la Ville (2, place). From 2002 to 2007, Conseil de Paris approved a series of work principles and authorized the Mayor to sign the corresponding contracts: restoration of the Théâtre de la Ville's façades (project management awarded in 2002 to Marc Ferauge), the stage floor and seating of the Théâtre du Châtelet, high-voltage substations and switchgear, and stage lighting. The oldest document, from 1998, authorized filing permits to renovate the main entrance hall on the Place du Châtelet side and to improve access for people with disabilities. In January 2006, the square is presented as the starting point — debated in session — of the first stretch of a \"green network\" of streets reserved for cyclists, pedestrians, and local traffic toward the Canal Saint-Martin. Twenty years later, in 2023, the Council gave the theatre at 2, Place du Châtelet the name \"Théâtre Sarah Bernhardt\" and deliberated on the transformation of the square itself."
 }
