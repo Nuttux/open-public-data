@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-andre-citroen",
  "name": "Parc André-Citroën",
@@ -187,6 +187,9 @@
    {
     "reference": "1995 D 1435",
     "titre": "33 - 1995, D. 1435- Autorisation à M. le Maire de Paris de souscrire un avenant au marché signé avec MM. PROVOST, VIGUIER, CLEMENT, BERGER, S.G.T.E. et M. LLORCA pour la maîtrise d'oeuvre de l'aménagement du parc André-Citroën (15e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 1995",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138"
    }
@@ -195,6 +198,9 @@
    {
     "reference": "2001 DFAE 37",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention d'occupation avec la société \"AEROPARIS\" pour l'exploitation du ballon \"Fortis\" installé dans le parc André-Citroën (15e). M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JANVIER 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85241"
    }
@@ -203,18 +209,27 @@
    {
     "reference": "2002 DFAE 152",
     "titre": "Convention d'occupation entre la Ville de Paris et la société \"Aéroparis\" pour l'exploitation du ballon captif installé dans le Parc André-Citroën (15e). M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71086"
    },
    {
     "reference": "2002 DFAE 32",
     "titre": "27 - 2002, DFAE 32 - Convention entre la Ville de Paris et la société \"AEROPARIS\" pour l'exploitation du ballon captif installé dans le parc André-Citroën (15e)",
+    "genres": [
+     "autre"
+    ],
     "seance": "MARS 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7341"
    },
    {
     "reference": "2002 DFAE 32",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention avec la société \"Aeroparis\" pour l'exploitation du ballon captif installé dans le parc André-Citroën (15e). M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "MARS 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38830"
    }
@@ -223,18 +238,27 @@
    {
     "reference": "2007 DEVE 180",
     "titre": "Autorisation à Monsieur le Maire de Paris de signer avec la Compagnie Parisienne de Chauffage Urbain (CPCU), la convention l’autorisant à occuper le sous-sol du parc André Citroën à Paris 15ème pour le passage d’une tuyauterie de transport d’eau déminéralisée ou de condensats. M. Yves CONTASSOT, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54543"
    },
    {
     "reference": "2007 DF 75",
     "titre": "2007, DF 75 - Autorisation à M. le Maire de Paris de signer avec la société Aéroparis une nouvelle convention portant sur l’exploitation d’un ballon captif dans le parc André Citroen (15e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4780"
    },
    {
     "reference": "2007 DF 75",
     "titre": "Autorisation à M. le Maire de Paris de signer, avec la société Aéroparis, une nouvelle convention portant sur l’exploitation d’un ballon captif dans le Parc André Citroën (15e). M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54104"
    }
@@ -243,12 +267,18 @@
    {
     "reference": "2009 DEVE 100",
     "titre": "Approbation et signature d’un avenant au marché de maîtrise d’œuvre pour la remise en état des fontaines Lisière et Nymphées au Parc André Citroën (15e). Mme Fabienne GIBOUDEAUX, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75123"
    },
    {
     "reference": "2009 DEVE 76",
     "titre": "Approbation des modalités de lancement d’un appel d’offres pour les travaux de remise en état des fontaines Lisière et Nymphées du Parc André Citroën (15e). Mme Fabienne GIBOUDEAUX, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74973"
    }
@@ -257,12 +287,18 @@
    {
     "reference": "2011 DEVE 7",
     "titre": "Approbation du principe d’aménagement de l’extension du parc André Citroën (15e), autorisation de déposer un permis de construire et autorisation de lancer les marchés de travaux. Mme Fabienne GIBOUDEAUX, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97278"
    },
    {
     "reference": "2011 DEVE 7",
     "titre": "46 - 2011, DEVE 7 - Approbation du principe d’aménagement de l’extension du parc André Citroën (15e), autorisation de déposer un permis de construire et autorisation de lancer les marchés de travaux.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96052"
    }
@@ -271,6 +307,9 @@
    {
     "reference": "2018 DEVE 5",
     "titre": "2018 DEVE 5 - Réaménagement du jardin Eugénie-Djendi au sein du parc André-Citroën en vue de l'installation d'un mémorial OPEX (15e). - Convention de transfert de maîtrise d’ouvrage entre la Mairie de Paris et Etat.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2018",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=143942"
    }
@@ -279,6 +318,9 @@
    {
     "reference": "2023 DFA 19",
     "titre": "2023 DFA 19 - Résiliation de la CODP. - Concession de travaux du 28 avril 2015 pour l’aménagement et l’exploitation d’un établissement de restauration dans le Parc André Citroën (15e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2023",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=169949"
    }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "carreau-du-temple",
  "name": "Carreau du Temple",
@@ -307,6 +307,9 @@
    {
     "reference": "2003 DPA 75",
     "titre": "Approbation du principe de réalisation d'un diagnostic archéologique au marché couvert du Carreau du Temple, situé 1, rue Dupetit Thouars (3e). - Autorisation à M. le Maire de Paris de signer la convention correspondante. Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89448"
    }
@@ -315,6 +318,9 @@
    {
     "reference": "2004 DPA 187",
     "titre": "Approbation du principe de réalisation des travaux de réhabilitation du Carreau du Temple afin de constituer un grand équipement de proximité à usage sportif et culturel situé au 4, rue Eugène Spuller, 3x rue Dupetit-Thouars, 2 rue Perrée, 25 rue de Picardie - 75003 Paris.- Autorisation à Monsieur le Maire de Paris de signer les deux marchés de prestations intellectuelles préalables. M. Pascal CHERKI et M. Christophe GIRARD, rapporteurs.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=60033"
    }
@@ -323,12 +329,18 @@
    {
     "reference": "2005 DDEE 68",
     "titre": "2005, DDEE 68 - Autorisation à M. le Maire de Paris de signer avec le gouvernement de la république du Brésil une convention pour la mise à disposition du Carreau du Temple dans le cadre de l’année du Brésil en France.",
+    "genres": [
+     "autre"
+    ],
     "seance": "AVRIL 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15657"
    },
    {
     "reference": "2005 DDEE 68",
     "titre": "Autorisation à M. le Maire de Paris de signer avec le gouvernement de la république du Brésil une convention pour la mise à disposition du Carreau du Temple dans le cadre de l’année du Brésil en France. Mme Lyne COHEN-SOLAL, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "AVRIL 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43880"
    }
@@ -337,6 +349,9 @@
    {
     "reference": "2006 DDEE 51",
     "titre": "Conversion en euro des tarifs des droits de place et des redevances perçus sur le marché couvert Secrétan, le marché du Carreau du Temple, le marché aux timbres, le marché aux fleurs de la Cité, le marché aux oiseaux et autres petits animaux d’agrément de la Cité, les marchés aux fleurs et aux couronnes de la Toussaint se tenant aux abords des cimetières. Mme Lyne COHEN-SOLAL, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88833"
    }
@@ -345,18 +360,27 @@
    {
     "reference": "2007 DPA 331",
     "titre": "Approbation du principe de réalisation des travaux de réhabilitation avec extension en sous sol du Carreau du Temple - 4 rue Eugène Spuller, 1 rue Dupetit Thouars (3e) et des modalités de passation du marché de maîtrise d’oeuvre correspondant. Autorisation à M. le Maire de Paris de signer ledit marché. Autorisation à M. le Maire de Paris de déposer les demandes de permis de démolir et de construire pour la réalisation de l’opération susvisée. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54449"
    },
    {
     "reference": "2007 DPA 9",
     "titre": "Approbation du principe de réhabilitation du Carreau du Temple, 4, rue Eugène-Spuller (3e), et des modalités de passation de quatre marchés de prestations intellectuelles. MM. Pascal CHERKI et Christophe GIRARD, rapporteurs.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26890"
    },
    {
     "reference": "2007 DPA 90",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 de transfert et de prestations complémentaires au marché d’assistance à maîtrise d’ouvrage n° 04/26508 concernant la réhabilitation du Carreau du Temple 1, rue du Petit-Thouars et 4, rue Eugène-Spuller (3e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31706"
    }
@@ -365,12 +389,18 @@
    {
     "reference": "2008 DPA 294",
     "titre": "Approbation des modalités de passation d’un marché de conseils et de représentation juridiques dans le cadre de la réalisation des grands projets culturels et sportifs : théâtre de la Gaîté Lyrique (3e) ; Carreau du Temple (3e) ; Cinéma le Louxor (10e). MM. Jean VUILLERMOZ et Christophe GIRARD, rapporteurs.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61428"
    },
    {
     "reference": "2008 DPA 54",
     "titre": "Approbation des modalités de passation de trois marchés de prestations intellectuelles relatifs à la réhabilitation du Carreau du temple (3ème). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77142"
    }
@@ -379,36 +409,54 @@
    {
     "reference": "2009 DDEE 188",
     "titre": "Autorisation à M. le Maire de Paris de signer les contrats de transaction entre la ville de Paris et les commerçants du Carreau du Temple (3ème arrondissement) en vue de leur indemnisation suite à la fermeture du marché. Mme Lyne COHEN-SOLAL, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75089"
    },
    {
     "reference": "2009 DDEE 188",
     "titre": "Délibération modificative de la délibération 2009 DDEE 188 des 6, 7 et 8 juillet 2009 autorisant monsieur le Maire de Paris à signer les contrats de transaction entre la ville de Paris et les commerçants du Carreau du Temple (3e) en vue de leur indemnisation suite à la fermeture du marché. Modification du montant de l’indemnité compensatrice versée à monsieur Daniel Tordjman. Mme Lyne COHEN-SOLAL, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36601"
    },
    {
     "reference": "2009 DPA 176",
     "titre": "2009, DPA 176 - Approbation du principe et des modalités de consultation en marchés séparés de travaux et de fouilles archéologiques dans le cadre de l'opération de réhabilitation du Carreau du Temple (3e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5669"
    },
    {
     "reference": "2009 DPA 176",
     "titre": "Approbation du principe et des modalités de consultation en marchés séparés de travaux et de fouilles archéologiques dans le cadre de l’opération de réhabilitation du Carreau du Temple (3e). M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77412"
    },
    {
     "reference": "2009 DPA 56",
     "titre": "Signature d’un avenant au marché de maîtrise d’œuvre de l’opération de réhabilitation du Carreau du Temple (3e). M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50055"
    },
    {
     "reference": "2009 DPA 57",
     "titre": "Résiliation et approbation des modalités de passation de marchés d’assistance à maîtrise d’ouvrage dans le cadre de l’opération de réhabilitation du Carreau du Temple (3e). M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50062"
    }
@@ -417,6 +465,9 @@
    {
     "reference": "2016 DAC 43",
     "titre": "2016 DAC 43 - Subventions d’équipement (260.000 euros), avenant à la délégation de service public dans le cadre du programme d’investissement 2016-2017 de la société publique locale \"Le Carreau du Temple\" (3e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MARS 2016",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129289"
    }
@@ -425,6 +476,9 @@
    {
     "reference": "2021 DAC 57",
     "titre": "2021 DAC 57 - Avenant à la délégation de service public relative à la gestion et l’exploitation du Carreau du Temple et subventions d’investissement (50.000 euros) à la Société publique locale du Carreau du Temple.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2021",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164061"
    }

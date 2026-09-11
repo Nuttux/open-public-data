@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-du-soleil",
  "name": "Théâtre du Soleil",
@@ -297,6 +297,9 @@
    {
     "reference": "2002 DAC 311",
     "titre": "Attribution d'une subvention de fonctionnement au Théâtre de l'Aquarium, au Théâtre du Chaudron, au Théâtre de l'Epée de Bois et à l'Association de recherche et de Traditions de l'Acteur (ARTA). - Autorisation à M. le Maire de Paris de signer avec la SCOP \"Le Théâtre du Soleil\" une convention relative à l'attribution d'une subvention de fonctionnement. - Autorisation à M. le Maire de Paris de signer avec l'association \"Ateliers de Paris - Carolyn Carlson\", un avenant à la convention du 15 avril",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71459"
    }
@@ -305,6 +308,9 @@
    {
     "reference": "2003 DAC 422",
     "titre": "Attribution d'une subvention de fonctionnement à l'association \"Théâtre de l'Aquarium\", à l'association \"Théâtre du Chaudron,\" à la SARL Théâtre de l'Epée-de-Bois, à la SARL \"Théâtre de la Tempête\" et à l'Association de recherche des Traditions de l'Acteur (ARTA) - l'Ecole de la Cartoucherie. - Autorisation à M. le Maire de Paris de signer avec la SCOP \"Théâtre du soleil\" une convention relative à l'attribution d'une subvention de fonctionnement. - Autorisation à M. le Maire de Paris de signer a",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94364"
    }
@@ -313,6 +319,9 @@
    {
     "reference": "2008 DAC 323",
     "titre": "Subvention à l’association “L’Instant d’une Résonance” pour le spectacle Peines d’amour perdues présenté au Théâtre du Soleil à la Cartoucherie (12e) en 2008. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67454"
    }
@@ -321,6 +330,9 @@
    {
     "reference": "2009 DAC 262",
     "titre": "SGRI 34 - Subvention au Théâtre du Soleil (12e) au titre de ses actions dans le domaine du développement culturel. M. Christophe GIRARD et M. Pierre SCHAPIRA, rapporteurs.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74724"
    }
@@ -329,6 +341,9 @@
    {
     "reference": "2010 DAC 159",
     "titre": "Signature avec la SCOP Théâtre du Soleil d’une convention relative à l’attribution d’une subvention d’équipement. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MARS 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44802"
    }
@@ -337,6 +352,9 @@
    {
     "reference": "2023 DGRI 49",
     "titre": "2023 DGRI 49 - Subvention (32.200 euros) au Théâtre du Soleil et convention pour l’organisation d’une école nomade à Kyiv.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2023",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=170393"
    }
@@ -345,6 +363,9 @@
    {
     "reference": "2025 DAC 67",
     "titre": "2025 DAC 67 Subvention de fonctionnement (75.000 euros) et convention avec le Théâtre du Soleil (12e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2025",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184676"
    }

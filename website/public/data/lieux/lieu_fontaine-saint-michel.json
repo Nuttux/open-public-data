@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "fontaine-saint-michel",
  "name": "Fontaine Saint-Michel",
@@ -112,6 +112,9 @@
    {
     "reference": "1998 DPA 183",
     "titre": "Approbation du principe de la réalisation des travaux de restauration de la fontaine Saint-Michel (6e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACE de LEPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 1998",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92631"
    }
@@ -120,6 +123,9 @@
    {
     "reference": "2024 DCPA 12",
     "titre": "2024 DCPA 12 - Convention d’occupation du domaine public relative à l’installation et à l’exploitation d’un espace d’affichage sur l’échafaudage des travaux de restauration de la fontaine Saint-Michel (6e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2024",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178355"
    }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "tour-saint-jacques",
  "name": "Tour Saint-Jacques",
@@ -152,6 +152,9 @@
    {
     "reference": "1999 DAC 267",
     "titre": "Approbation du principe de la réalisation des travaux de fourniture et de mise en place d'un échafaudage sur la tour Saint-Jacques (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42556"
    }
@@ -160,6 +163,9 @@
    {
     "reference": "2004 DAC 40",
     "titre": "Approbation du principe de réalisation de l'opération de restauration des façades de la Tour-Saint-Jacques (4e) et des modalités de passation du marché de maîtrise d'œuvre correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57691"
    }
@@ -168,6 +174,9 @@
    {
     "reference": "2005 DAC 39",
     "titre": "Approbation des modalités de passation du marché de travaux relatif à la restauration des façades de la Tour Saint-Jacques de la Boucherie (4e) - Lot n° 1 : “pierre de taille ; sculpture ; restauration de sculpture”. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82386"
    }
@@ -176,6 +185,9 @@
    {
     "reference": "2008 DAC 338",
     "titre": "Autorisation à M. le Maire de Paris de signer le marché de travaux relatif à la restauration des façades de la Tour Saint-Jacques de la Boucherie (4e) remise en état du square lot n° 5 : “espaces verts” avec l’attributaire proposé par la commission interne des marchés du 21 mai 2008. Mme Colombe BROSSEL, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91566"
    }
@@ -184,6 +196,9 @@
    {
     "reference": "2014 DAC 1253",
     "titre": "2014 DAC 1253 - Tour Saint-Jacques (4e) - Convention d’occupation temporaire du domaine public.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUIN 2014",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=118841"
    }

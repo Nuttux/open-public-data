@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "porte-de-montreuil",
  "name": "Porte de Montreuil",
@@ -262,6 +262,9 @@
    {
     "reference": "1996 D 995",
     "titre": "56 - 1996, D. 995- Autorisation à M. le Maire de Paris de signer avec la société \"Lombard et Guérin\" une convention d'affermage pour l'exploitation du marché aux puces de la porte de Montreuil (20e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 1996",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4156"
    }
@@ -270,12 +273,18 @@
    {
     "reference": "1997 DVD 46",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant au contrat d'occupation du domaine public signé avec la société \"Total\" pour l'exploitation d'une station-service porte de Montreuil (20e). M. Bernard PLASAIT, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "SEPTEMBRE 1997",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75168"
    },
    {
     "reference": "1997 DVD 46",
     "titre": "44- 1997, DVD 46 - Autorisation à M. le Maire de Paris de souscrire un avenant au contrat d'occupation du domaine public signé avec la société \" Total \" pour l'exploitation d'une station-service porte de Montreuil (20e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "SEPTEMBRE 1997",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19684"
    }
@@ -284,6 +293,9 @@
    {
     "reference": "2001 DVD 76",
     "titre": "Approbation des modalités d'attribution d'un marché sur appel d'offres pour la réalisation des travaux de reconstruction de clôtures en barreaudage autour du boulevard périphérique au niveau de la Porte de Montreuil (Marché aux puces) et de la Porte de Saint-Ouen. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Denis BAUPIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89761"
    }
@@ -292,24 +304,36 @@
    {
     "reference": "2003 DAUC 149",
     "titre": "96 - 2003, DAUC 149 - DPVI 53 - GPRU de la porte de Montreuil (20e). - Approbation des objectifs poursuivis et des modalités de la concertation dans le cadre du projet de renouvellement urbain du GPRU de la porte de Montreuil (20e). - Prise en considération de l'opération. - Projet de territoire. - Approbation du principe et des modalités de la réalisation de 3 marchés de définition simultanés sur appel d'offres ouvert et autorisation à M. le Maire de Paris de signer les marchés correspondants",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3546"
    },
    {
     "reference": "2003 DAUC 149",
     "titre": "DPVI 53 - GPRU de la porte de Montreuil (20e). - Approbation du principe et des modalités de la réalisation de trois marchés de définition sur appel d'offres ouvert et autorisation à M. le Maire de Paris de signer les marchés correspondants. Mme Martine DURLACH et M. Jean-Pierre CAFFET, rapporteurs.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47499"
    },
    {
     "reference": "2003 DPVI 41",
     "titre": "74 - 2003, DPVI 41 - Politique de la ville. - Autorisation à M. le Maire de Paris de souscrire un avenant à la convention signée avec l'association \"Jean-Cotxet\", support de l'Equipe de développement local du quartier \"Saint-Blaise\", Porte de Montreuil (20e)",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8312"
    },
    {
     "reference": "2003 DPVI 41",
     "titre": "Politique de la Ville. - Autorisation à M. le Maire de Paris de souscrire un avenant à la convention signée avec l'association Jean Cotxet, support de l'Équipe de Développement Local du quartier Saint-Blaise - Porte de Montreuil (20ème arrondissement). Mme Martine DURLACH, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70540"
    }
@@ -318,24 +342,36 @@
    {
     "reference": "2004 DDEE 122",
     "titre": "Autorisation à M. le Maire de Paris de procéder à une consultation et aux actes préparatoires en vue du renouvellement de la délégation de service public relative à la gestion du marché aux puces de la Porte de Montreuil. Mme Lyne COHEN-SOLAL, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46962"
    },
    {
     "reference": "2004 DPVI 13",
     "titre": "Attribution de subventions à des associations menant des actions au titre de la Politique de la ville sur le quartier Saint-Blaise Porte de Montreuil (20e). Mme Martine DURLACH, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=60168"
    },
    {
     "reference": "2004 DPVI 13",
     "titre": "108 - 2004, DPVI 13 - Subventions à des associations menant des actions au titre de la politique de la ville sur le quartier Saint-Blaise - Porte de Montreuil (20e). - Montant total : 68.050 euros",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10911"
    },
    {
     "reference": "2004 DPVI 88",
     "titre": "Politique de la Ville.- Subvention de fonctionnement à l'association Espace Mouraud - Quartier Saint-Blaise-Porte de Montreuil (20e). Mme Martine DURLACH, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46418"
    }
@@ -344,54 +380,81 @@
    {
     "reference": "2005 DASES 128",
     "titre": "G - Attribution d’une subvention de fonctionnement d’un montant de 5.000 euros à l’association “Amicale du Bouffadou” située chez Monsieur Bourneuf, 5 avenue de la Porte de Montreuil (20ème) au titre de l’année 2005, pour le financement des frais liés aux transports et à l’hébergement pour le tournage du film intitulé “l’Enigme du Bouffadoï”. Mme Pénélope KOMITÈS, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82996"
    },
    {
     "reference": "2005 DDEE 98",
     "titre": "Signature d’une convention de délégation de service public pour la gestion du marché aux puces de la Porte de Montreuil. Mme Lyne COHEN-SOLAL, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87052"
    },
    {
     "reference": "2005 DDEE 98",
     "titre": "2005, DDEE 98 - Autorisation à M. le Maire de Paris de signer une convention de délégation de service public pour la gestion du marché aux puces de la Porte de Montreuil.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9300"
    },
    {
     "reference": "2005 DPVI 115",
     "titre": "Participation financière de la Ville de Paris en vue du financement d’un programme d’aménage-ment d’un local associatif destiné à l’EDL Saint-Blaise - Porte de Montreuil (20e). MmeMartine DURLACH, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33010"
    },
    {
     "reference": "2005 DPVI 116",
     "titre": "Attribution à M. le Maire de Paris de signer avec l’association Jean Cotxet pour l’EDL du quartier Saint-Blaise - Porte de Montreuil (20e), une convention. - Attribution de la subvention correspondante. Mme Martine DURLACH, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90800"
    },
    {
     "reference": "2005 DPVI 118",
     "titre": "Subventions de fonctionnement à trois associations du quartier Saint-Blaise - Porte de Montreuil. Mme Martine DURLACH, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90605"
    },
    {
     "reference": "2005 DPVI 32",
     "titre": "Politique de la Ville. - Subventions à des associations menant des actions au titre de la Politique de la Ville sur le quartier Saint Blaise Porte de Montreuil (20e). Mme Martine DURLACH, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUIN 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83405"
    },
    {
     "reference": "2005 DPVI 47",
     "titre": "Subvention d’équipement à l’association un Poumon Pour Saint Blaise du quartier Saint Blaise-Porte de Montreuil (20e). Mme Martine DURLACH, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUIN 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83290"
    },
    {
     "reference": "2005 DU 180",
     "titre": "Aménagement du site de GPRU “Porte de Montreuil”, (20e). - Autorisation à M. le Maire de Paris de signer un avenant n°1 au marché de définition n° 04.60.021, ayant pour objet le transfert des droits et obligations de la société GAUDRIOT S.A., cotraitante à ce marché, vers la société SAUNIER et ASSOCIÉS, repreneur des principaux actifs de la société GAUDRIOT S.A. M. Jean-Pierre CAFFET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63739"
    }
@@ -400,42 +463,63 @@
    {
     "reference": "2006 DASES 448",
     "titre": "G - Attribution d’une subvention de fonctionnement d’un montant 3.283 euros à l’Amicale du Bouffadou située chez M. Daniel Bourneuf, 5, avenue de la Porte de Montreuil (20e), pour contribuer au financement de la conception d’un calendrier photos des activités de l’association. Mme Pénélope KOMITÈS, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41276"
    },
    {
     "reference": "2006 DPVI 100",
     "titre": "Subventions à des associations menant des actions au titre de la Politique de la Ville sur les quartiers Politique de la Ville du 20e Belleville-Amandiers et Saint-Blaise - Porte-de-Montreuil. Mme Martine DURLACH, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52317"
    },
    {
     "reference": "2006 DPVI 118",
     "titre": "Participation financière de la Ville de Paris en vue du financement d’un programme d’aménagement d’un local inter associatif, 4, rue Fougères (20e). Quartier Politique de la Ville Saint-Blaise - Porte de Montreuil (20e). Mme Martine DURLACH, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52550"
    },
    {
     "reference": "2006 DPVI 28",
     "titre": "Politique de la Ville. - Subventions à des associations menant des actions au titre de la Politique de la Ville sur le quartier Saint Blaise Porte de Montreuil (20e). Mme Martine DURLACH, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MAI 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89117"
    },
    {
     "reference": "2006 DPVI 64",
     "titre": "Subventions régionales pour 2006 à des associations, au titre de la Politique de la Ville, situées dans les quartiers “Belleville-Amandiers” et “Saint-Blaise - Porte-de-Montreuil” (20e). Mme Martine DURLACH, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74306"
    },
    {
     "reference": "2006 DU 128",
     "titre": "2006, DU 128 - GPRU “Porte de Montreuil” (20e) - Tour du Pin. - Autorisation à M. le Maire de Paris de signer un marché subséquent de maîtrise d’oeuvre urbaine et de coordination du projet urbain passé à l’issue de marchés d’études de définition simultanés.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7713"
    },
    {
     "reference": "2006 DU 128",
     "titre": "GPRU “Porte de Montreuil - Tour du Pin” (20e) -Autorisation à M. le Maire de Paris de signer un marché subséquent de maîtrise d’œuvre urbaine et de coordination du projet urbain passé à l’issue de marchés d’études de définition simultanés. M. Jean-Pierre CAFFET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81219"
    }
@@ -444,60 +528,91 @@
    {
     "reference": "2007 DASES 372",
     "titre": "G - Attribution d’une subvention de 5.000 euros à l’ “Association Jeunesse Education” pour son action d’évaluation, de remise à niveau et d’orientation de jeunes déscolarisés âgés de 18 à 25 ans, dans les quartiers du 20ème arrondissement “Saint Blaise, Porte de Montreuil”, sites labellisés dans le Contrat Urbain de Cohésion Sociale. Mme Gisèle STIEVENARD, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "OCTOBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=76155"
    },
    {
     "reference": "2007 DDEE 265",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention de délégation de service public pour la gestion du marché aux puces de la porte de Montreuil (20e). Mme Lyne COHEN-SOLAL, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65522"
    },
    {
     "reference": "2007 DDEE 265",
     "titre": "2007, DDEE 265 - Autorisation à M. le Maire de Paris de signer une convention de délégation de service public pour la gestion du marché aux puces de la porte de Montreuil (20e). Voeu déposé par le groupe communiste.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25026"
    },
    {
     "reference": "2007 DDEE 62",
     "titre": "Autorisation à Monsieur le Maire de Paris de relancer une consultation en vue du renouvellement de la convention de délégation de service public relative à la gestion du marché aux puces de la Porte de Montreuil (Paris 20ème). Mme Lyne COHEN-SOLAL, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31317"
    },
    {
     "reference": "2007 DPVI 111",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention avec l’OPAC de Paris pour la réalisation de travaux d’adaptation d’un local situé 39, boulevard Davout (20e) pour accueillir l’Espace public numérique dans le quartier politique de la ville porte de Montreuil. - Attribution de la subvention correspondante. Mme Martine DURLACH, rapporteure.",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66368"
    },
    {
     "reference": "2007 DPVI 95",
     "titre": "Subventions à des associations menant des actions au titre de la Politique de la Ville sur le quartier du “20e Saint-Blaise - Porte de Montreuil”. Mme Marti-ne DURLACH, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "OCTOBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53728"
    },
    {
     "reference": "2007 DU 23",
     "titre": "GPRU “Porte de Montreuil - Tour du Pin” (20e). -Autorisation à M. le Maire de Paris de signer un avenant au marché subséquent de maîtrise d’œuvre urbaine et de coordination du projet urbain. M. Jean-Pierre CAFFET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90038"
    },
    {
     "reference": "2007 DU 23",
     "titre": "2007, DU 23 - GPRU “Porte de Montreuil - Tour du Pin” (20e). - Autorisation à M. le Maire de Paris de signer un avenant au marché de maîtrise d’oeuvre urbaine et de coordination du projet urbain. Vœu déposé par l’Exécutif.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14149"
    },
    {
     "reference": "2007 DVD 177",
     "titre": "GPRU “Porte de Montreuil” (20e). Autorisation à M. le Maire de Paris de signer une convention avec la RATP pour la réalisation d’une étude de faisabilité d’un accès supplémentaire à la station de métro “Porte de Montreuil” (ligne 9). M. Denis BAUPIN, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90457"
    },
    {
     "reference": "2007 DVD 248",
     "titre": "GPRU “Porte de Montreuil” à Paris 20e arrondissement : Approbation de la convention avec les communes de Montreuil et de Bagnolet pour le financement d’une étude de faisabilité relative à la création d’un accès supplémentaire à la station de métro “Porte de Montreuil” (ligne 9).- Autorisation à M. le Maire de Paris de signer ladite convention. M. Denis BAUPIN, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54465"
    }
@@ -506,12 +621,18 @@
    {
     "reference": "2008 DASES 309",
     "titre": "G - Subvention à l’”Association Jeunesse Education” pour son action en direction des jeunes déscolarisés du quartier CUCS “Saint Blaise, Porte de Montreuil” (20e). Mme Olga TROSTIANSKY, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37732"
    },
    {
     "reference": "2008 DU 182",
     "titre": "GPRU “Porte de Montreuil - Tour du Pin” (20e). - Autorisation à M. le Maire de Paris de signer un avenant n° 2 au marché subséquent de maîtrise d’œuvre urbaine et de coordination du projet urbain. Mmes Anne HIDALGO et Gisèle STIEVENARD, rapporteures.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61408"
    }
@@ -520,6 +641,9 @@
    {
     "reference": "2009 DDEE 160",
     "titre": "Autorisation donnée à M. le Maire de Paris de signer la convention biannuelle 2009-2010 entre la Ville de Paris et l’association ASTS animant les Espaces Numériques Publics (EPN) des Olympiades (13ème arrondissement) et de la Porte de Montreuil (20ème arrondissement). Attribution d’une subvention de fonctionnement à cette association pour l’exercice 2009. M. Jean-Louis MISSIKA, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74745"
    }
@@ -528,24 +652,36 @@
    {
     "reference": "2010 DPVI 11",
     "titre": "Subventions à six associations dans le quartier Politique de la Ville de La Chapelle Porte de Montreuil(18e). Mme Gisèle STIEVENARD, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "FEVRIER 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79202"
    },
    {
     "reference": "2010 DPVI 140",
     "titre": "DEVE 91 Quartiers Saint-Blaise et Porte de Montreuil/Python-Duvernois/Fougères du 20e arrondissement. Subventions à des associations menant des actions au titre de la Politique de la ville et de l’environnement. Deuxième enveloppe 2010. Mme Gisèle STIEVENARD et Mme Fabienne GIBOUDEAUX, rapporteures.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39194"
    },
    {
     "reference": "2010 DPVI 16",
     "titre": "2010, DPVI 16 - Association \"Bruit du Frigo\" - Participation financière de la Ville de Paris pour la création d'un jardin intergénérationnel dans le quartier Porte de Montreuil (20e). - Montant : 15.051 euros. 2010, DPVI 21 - Association \"Bruit du Frigo\" Participation financière de la Ville de Paris pour la création d'un jardin collectif à la Tour du Pin dans le quartier Porte de Montreuil (20e). - Montant : 16.690 euros.",
+    "genres": [
+     "autre"
+    ],
     "seance": "MARS 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8715"
    },
    {
     "reference": "2010 DPVI 20",
     "titre": "Quartiers Saint-Blaise et Porte de Montreuil/Python-Duvernois/Fougères(20e). Subventions à 3 associations menant des actions au titre de la Politique de la ville. Première enveloppe 2010. Mme Gisèle STIEVENARD, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "FEVRIER 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79254"
    }
@@ -554,6 +690,9 @@
    {
     "reference": "2014 DDEEES 1119",
     "titre": "2014 DDEEES 1119 - Marché aux puces de la porte de Montreuil (20e) - Attribution de la délégation de service public.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2014",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=122386"
    }
@@ -562,6 +701,9 @@
    {
     "reference": "2016 DAE 28",
     "titre": "2016 DAE 28 - Marché aux puces de la porte de Montreuil (20e). - Approbation du principe de renouvellement de la délégation de service public.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2016",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134547"
    }
@@ -570,6 +712,9 @@
    {
     "reference": "2017 DAE 8",
     "titre": "2017 DAE 8 - Marché aux puces de la Porte de Montreuil (20e) - Règlement. 2017 DAE 186 - Marché aux puces de la Porte de Montreuil (20e) - Attribution de délégation de service public.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2017",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140177"
    }
@@ -578,12 +723,18 @@
    {
     "reference": "2022 DAE 22",
     "titre": "2022 DAE 22 - Marché aux puces de la Porte de Montreuil. - Approbation du principe de renouvellement de la délégation de service public. Vœu déposé par Mme SIMONNET relatif à plusieurs dispositions de la D.S.P. Vœu déposé par l'Exécutif.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2022",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164469"
    },
    {
     "reference": "2022 DU 31",
     "titre": "2022 DU 31 - Porte de Montreuil (20e). - Acquisition du volume devant accueillir le marché aux Puces reconstitué et prorogation du délai de désaffectation de l’emprise E2a. Vœu déposé par Mme SIMONNET relatif à différentes dispositions du projet.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2022",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164632"
    }
@@ -592,6 +743,9 @@
    {
     "reference": "2023 DAE 23",
     "titre": "2023 DAE 23 - Marché aux puces de la porte de Montreuil (20e). - Procédure délégation de service public. - Déclaration sans suite. 2023 DAE 165 - Marché aux puces de la porte de Montreuil (20e). - Prolongation du contrat de délégation de service public.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2023",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174161"
    }
@@ -600,12 +754,18 @@
    {
     "reference": "2024 DAE 32",
     "titre": "2024 DAE 32 - Marché aux puces de la porte de Montreuil (20e). - Principe de renouvellement de la délégation de service public.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2024",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174369"
    },
    {
     "reference": "2024 DU 21",
     "titre": "2024 DU 21 - Opération Porte de Montreuil (20e). - Avenant au traité de concession conclu avec la SEMAPA. - Rétrocession du volume E3. Vœu déposé par le groupe Communiste et Citoyen relatif à la création d’un centre municipal de santé d’innovation Porte de Montreuil.",
+    "genres": [
+     "autre"
+    ],
     "seance": "FEVRIER 2024",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174503"
    }
@@ -614,6 +774,9 @@
    {
     "reference": "2025 DAE 52",
     "titre": "2025 DAE 52 - Marché aux puces de la Porte de Montreuil (20e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2025",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179718"
    }

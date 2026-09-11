@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-georges-brassens",
  "name": "Parc Georges-Brassens",
@@ -199,12 +199,18 @@
    {
     "reference": "2005 DPJEV 117",
     "titre": "2005, DPJEV 117 - Autorisation à M. le Maire de Paris de signer avec la Société Centrale d’Apiculture une convention autorisant la société à occuper une partie du parc Georges Brassens (15e) et à y exploiter un rucher.",
+    "genres": [
+     "autre"
+    ],
     "seance": "SEPTEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10420"
    },
    {
     "reference": "2005 DPJEV 117",
     "titre": "Autorisation à M. le Maire de Paris de signer avec la Société centrale d’apiculture une convention en vue de l’autoriser à occuper une partie du parc Georges Brassens (15e) et y exploiter un rucher. M. Yves CONTASSOT, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "SEPTEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63126"
    }
@@ -213,6 +219,9 @@
    {
     "reference": "2010 DEVE 38",
     "titre": "Signature d’une convention avec l’association “Le Club Vaugirard” pour l’attribution d’une subvention en nature, soit 800 bouteilles de vin issues des vignes du Parc Georges Brassens (15e), afin que ladite association les vende au profit des oeuvres sociales de l’arrondissement. Mme Fabienne GIBOUDEAUX, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85962"
    }
@@ -221,6 +230,9 @@
    {
     "reference": "2012 DASES 558",
     "titre": "2012 DASES 558 G - Subvention et convention (72.000 euros) avec l'association du Parc Georges Brassens (15e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2012",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109734"
    }

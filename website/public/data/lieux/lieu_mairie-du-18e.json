@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "mairie-du-18e",
  "name": "Mairie du 18e",
@@ -152,6 +152,9 @@
    {
     "reference": "2001 DPA 189",
     "titre": "Approbation du principe de l'amélioration des conditions d'accueil et d'accessibilité du public à la mairie du 18e arrondissement. - Approbation des modalités d'attribution du marché de maîtrise d'œuvre correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché ainsi que les éventuels avenants de substitution ou de transfert s'y rapportant. - Autorisation à M. le Maire de Paris de déposer les demandes de permis de démolir et de construire relatives à cette opération. Mme Mireill",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84611"
    }
@@ -160,6 +163,9 @@
    {
     "reference": "2002 DPA 256",
     "titre": "Approbation du principe de réalisation d'une première phase de modernisation des installations électriques.- Approbation des modalités de passation des marchés de travaux d'amélioration des conditions d'accueil et d'accessibilité du public ainsi que de la première phase de modernisation des installations électriques à la Mairie du 18e arrondissement sise 1, place Jules Joffrin (18e).- Autorisation à M. le Maire de Paris de signer les dits marchés. Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88382"
    }
@@ -168,18 +174,27 @@
    {
     "reference": "2004 DPA 148",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché de travaux signé avec la SNC Sachet et Brulet relatif à l'amélioration des conditions d'accueil et d'accessibilité du public à la Mairie du 18e arrondissement (phase 2 restructuration). Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46449"
    },
    {
     "reference": "2004 DPA 158",
     "titre": "Autorisation à Monsieur le Maire de Paris de souscrire un avenant n° 1 au marché de travaux signé avec la SNC Sachet et Brulet relatif à l'amélioration des conditions d'accueil et d'accessibilité du public à la Mairie du 18ème arrondissement. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94829"
    },
    {
     "reference": "2004 DPA 42",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 2 au marché de maîtrise d'œuvre signé avec la SARL B+M Architecture relatif à l'amélioration des conditions d'accueil et d'accessibilité du public à la Mairie du 18e arrondissement sise 1, place Jules-Joffrin (18e). Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34012"
    }
@@ -188,12 +203,18 @@
    {
     "reference": "2006 DPA 191",
     "titre": "Approbation du principe de réalisation des travaux d’aménagement et de modernisation de la salle Poulbot dans la Mairie du 18e sise 1, place Jules-Joffrin (18e), et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74488"
    },
    {
     "reference": "2006 DPA 70",
     "titre": "Approbation du principe de réalisation des travaux de remplacement de l’alarme incendie et asservissement de la Mairie du 18e arrondissement, et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38600"
    }
@@ -202,18 +223,27 @@
    {
     "reference": "2007 DPA 245",
     "titre": "Approbation de principe de réalisation des travaux d’amélioration des conditions d’accueil du public dans le hall de la mairie du 18ème arrondissement et des modalités de passation du marché de travaux correspondant. Mmes Mireille FLAM et Pénélope KOMITÈS, rapporteures.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66147"
    },
    {
     "reference": "2007 DPA 246",
     "titre": "Approbation du principe de réalisation des travaux de mise aux normes des installations électriques à la mairie du 18ème arrondissement et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65508"
    },
    {
     "reference": "2007 DPA 256",
     "titre": "Approbation du principe de réalisation des travaux de modernisation de la verrière du hall de la Mairie du 18ème arrondissement et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66347"
    }
@@ -222,6 +252,9 @@
    {
     "reference": "2009 DPA 72",
     "titre": "Approbation du principe de réalisation des travaux de sécurité, suite à la Commission de Sécurité à la Mairie du 18e arrondissement et des modalités de passation du marché de travaux correspondant. Mme Maïté ERRECART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49940"
    }

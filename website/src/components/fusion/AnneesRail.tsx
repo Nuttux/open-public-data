@@ -6,7 +6,7 @@ import { useT, useLocale } from "@/lib/localeContext";
 import { fill } from "@/lib/fmt";
 
 export type RailRow = { year: number; amount: number };
-export type RailDelib = { reference: string; titre: string; seance?: string | null; source_url?: string | null };
+export type RailDelib = { reference: string; titre: string; genres?: string[]; seance?: string | null; source_url?: string | null };
 
 /**
  * Le rail des années — la forme d'une série entière d'un coup d'œil.
@@ -43,15 +43,18 @@ export default function AnneesRail({ rows, tone = "x", delibs = null }: {
   const annees: number[] = [];
   for (let y = de; y <= a; y++) annees.push(y);
   const eur = (n: number) => { const { v, u } = fmtEur(n); return `${v} ${u}`; };
-  const aDesDelibs = annees.some((y) => (delibs?.[String(y)] || []).length > 0);
-  const lignes = sel !== null ? (delibs?.[String(sel)] || []) : [];
+  /* Une fiche d'association montre ce que la Ville lui VERSE : on ne garde que
+   * les décisions de subvention. Les conventions d'occupation et les marchés
+   * rattachés au même lieu relèvent d'une autre ligne. */
+  const delibsDe = (y: number) => (delibs?.[String(y)] || []).filter((d) => !d.genres || d.genres.includes("subvention"));
+  const aDesDelibs = annees.some((y) => delibsDe(y).length > 0);
+  const lignes = sel !== null ? delibsDe(sel) : [];
   return (
     <>
-      <div className={`fx-v3-years ${tone}${aDesDelibs ? " clic" : ""}`}
-           aria-hidden={aDesDelibs ? undefined : "true"} style={{ marginTop: 4 }}>
+      <div className={`fx-v3-years ${tone} clic`} style={{ marginTop: 4 }}>
         {annees.map((y, i) => {
           const v = parAn.get(y);
-          const n = (delibs?.[String(y)] || []).length;
+          const n = delibsDe(y).length;
           const titre = v === undefined ? `${y} · ${t("fx.lieu.years.non_publie")}` : `${y} · ${eur(v)}`;
           const corps = (
             <>
@@ -60,23 +63,28 @@ export default function AnneesRail({ rows, tone = "x", delibs = null }: {
               {(i === 0 || i === annees.length - 1) && <span className={i === 0 ? "yr" : "yr end"}>{y}</span>}
             </>
           );
-          if (!n) return <div key={y} className={v === undefined ? "hors" : undefined} title={titre}>{corps}</div>;
+          // Toute année porte le clic : le panneau donne d'abord son montant.
+          // Un survol n'existe pas sur un téléphone.
+          if (v === undefined) return <div key={y} className="hors" title={titre}>{corps}</div>;
           return (
-            <button key={y} type="button"
-                    className={`${v === undefined ? "hors " : ""}${sel === y ? "on" : ""}`}
-                    aria-expanded={sel === y}
-                    title={`${titre} · ${fill(t("fx.lieu.delib.n"), { n })}`}
+            <button key={y} type="button" className={sel === y ? "on" : ""}
+                    aria-expanded={sel === y} aria-label={titre}
+                    title={n ? `${titre} · ${fill(t("fx.lieu.delib.n"), { n })}` : titre}
                     onClick={() => setSel(sel === y ? null : y)}>
               {corps}
             </button>
           );
         })}
       </div>
-      {sel !== null && lignes.length > 0 && (
+      {aDesDelibs && sel === null && <p className="fx-v3-aide">{t("fx.lieu.delib.aide")}</p>}
+      {sel !== null && (
         <div className="fx-v3-delib">
           <p className="hd">
             <span className="an mono">{sel}</span>
-            {fill(t("fx.lieu.delib.titre"), { n: lignes.length })}
+            <span className="mt">{eur(parAn.get(sel) ?? 0)}</span>
+            {lignes.length > 0
+              ? fill(t("fx.lieu.delib.titre"), { n: lignes.length })
+              : t("fx.lieu.delib.aucune")}
           </p>
           {lignes.map((d) => (
             <a key={d.reference + d.titre.slice(0, 20)} className="dl"
@@ -86,7 +94,9 @@ export default function AnneesRail({ rows, tone = "x", delibs = null }: {
               <span className="ti">{d.titre}</span>
             </a>
           ))}
-          <p className="fx-v3-foot" style={{ marginTop: 10 }}>{t("fx.lieu.delib.note")}</p>
+          {lignes.length > 0 && (
+            <p className="fx-v3-foot" style={{ marginTop: 10 }}>{t("fx.lieu.delib.note")}</p>
+          )}
         </div>
       )}
     </>

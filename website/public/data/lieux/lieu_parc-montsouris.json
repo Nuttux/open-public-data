@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-montsouris",
  "name": "Parc Montsouris",
@@ -160,6 +160,9 @@
    {
     "reference": "1999 DAC 239",
     "titre": "Autorisation à M. le Maire de Paris de signer avec l'Etat une convention pour le dépôt et l'entretien de la sculpture \"Le Défi du soleil\" de Gérard Garouste au parc Montsouris (14e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "OCTOBRE 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42378"
    }
@@ -168,6 +171,9 @@
    {
     "reference": "2003 DPP 4",
     "titre": "Dispositif \"Ville Vie Vacances\" Année 2003. - Subvention à l'Association CEREP (Centre de réadaptation psychotérapique) Hôpital de jour du parc Montsouris Chantier de Solidarité Internationale au Mali. M. Christophe CARESCHE, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "OCTOBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47377"
    }
@@ -176,6 +182,9 @@
    {
     "reference": "2004 DPJEV 85",
     "titre": "Approbation du principe et des modalités de la réalisation des travaux de rénovation des locaux sociaux du Parc Montsouris (14e). M. Yves CONTASSOT, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37424"
    }
@@ -184,6 +193,9 @@
    {
     "reference": "2005 DF 44",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant à la convention datée du 1er février 2002 concédant à la SARL “Restaurant du Pavillon du Lac du Parc Montsouris” le droit à l’occupation de l’établissement dénommé “Le Pavillon du Lac du Parc Montsouris” (14e), pour y exploiter un bar-restaurant. M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87135"
    }
@@ -192,18 +204,27 @@
    {
     "reference": "2006 DASES 6",
     "titre": "G - Autorisation donnée à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer une convention avec l’“Association des Surintendantes d’Usine et de Services Sociaux” située 8, Villa du Parc Montsouris (14e), pour l’attribution d’une subvention d’investissement de 40.000 euros. Mme Gisèle STIEVENARD, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JANVIER 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=98115"
    },
    {
     "reference": "2006 DF 58",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention donnant droit à l’occupation des locaux de l’ancien Observatoire du Parc Montsouris situés 17, rue Emile-Deutsch-de-la-Meurthe (14e). M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "OCTOBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35261"
    },
    {
     "reference": "2006 DF 86",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention donnant droit à l’occupation d’emprises et de la tour radio-anémométrique sises principalement dans le Parc Montsouris (14e) et une convention donnant droit à l’occupation du bâtiment administratif de la station météorologique sis 26, boulevard Jourdan (14e). M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92014"
    }
@@ -212,6 +233,9 @@
    {
     "reference": "2007 DEVE 100",
     "titre": "Approbation du principe et des modalités de réalisation des travaux de reconstruction des voiries du Parc Montsouris. - Autorisation à M. le Maire de Paris de signer le marché négocié correspondant. M. Yves CONTASSOT, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53253"
    }
@@ -220,6 +244,9 @@
    {
     "reference": "2009 DEVE 80",
     "titre": "Approbation des modalités de lancement d’un appel d’offres pour les travaux de reconstruction des voiries du Parc Montsouris (14e). Mme Fabienne GIBOUDEAUX, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75117"
    }

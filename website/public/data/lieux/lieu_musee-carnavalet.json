@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "musee-carnavalet",
  "name": "Musée Carnavalet",
@@ -393,6 +393,9 @@
    {
     "reference": "1997 DPA 116",
     "titre": "Approbation du principe de la réalisation des travaux de grosses réparations sur les réseaux d'assainissement et les maçonneries des caves au musée Carnavalet (3e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 1997",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39983"
    }
@@ -401,24 +404,36 @@
    {
     "reference": "1999 DAC 279",
     "titre": "Approbation des modalités d'attribution d'un marché pour le déménagement et l'installation dans le dépôt archéologique, situé sous la grande terrasse du parc de Bercy \"Les jardins de la mémoire\" (12e) d'objets archéologiques entreposés au musée Carnavalet (3e) à l'Hôtel de Saint-Aignan (3e) et au 11 bis, rue Claude-Terrasse (16e). - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42458"
    },
    {
     "reference": "1999 DAC 65",
     "titre": "Autorisation à M. le Maire de Paris de signer avec l'association des \"Amis du musée Carnavalet\" (3e) une convention d'objectifs. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "AVRIL 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27405"
    },
    {
     "reference": "1999 DPA 111",
     "titre": "Approbation du principe de la réalisation de travaux, d'une part, de consolidation de l'escalier Mansart et de souches de cheminée, de mise en sécurité de la façade sud de la cour Louis XIV, et, d'autre part, de mise aux normes des installations de sécurité anti-intrusion et incendie, et de remplacement de parquets, au musée Carnavalet, 23, rue de Sévigné (3e). - Approbation des modalités d'attribution des marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75791"
    },
    {
     "reference": "1999 DPA 98",
     "titre": "Approbation du principe de la réalisation des travaux de restauration et d'aménagement intérieur de l'Orangerie de l'hôtel \"Le Peletier-de-Saint-Fargeau\" - Musée Carnavalet (3e). - Autorisation à M. le Maire de Paris de signer les 2 marchés de maîtrise d'oeuvre correspondants - Autorisation à M. le Maire de Paris de déposer les dossiers de permis de démolir et de construire correspondant à ces travaux. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27459"
    }
@@ -427,6 +442,9 @@
    {
     "reference": "2000 DAC 93",
     "titre": "Approbation des modalités d'attribution de 2 marchés pour le déménagement, l'installation et le montage des objets qui doivent être présentés dans l'Orangerie du musée Carnavalet (3e). - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51087"
    }
@@ -435,6 +453,9 @@
    {
     "reference": "2004 DAC 296",
     "titre": "Approbation des modalités de passation de 3 marchés pour la restauration des boiseries, dorures et peintures du cabinet doré des salons La Rivière du musée Carnavalet, en application de l'article 30 du Code des Marchés Publics et du décret N°2004-15 du 7 janvier 2004.- Autorisation à M. le Maire de Paris de signer les 3 marchés correspondants. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46049"
    }
@@ -443,6 +464,9 @@
    {
     "reference": "2005 DAC 591",
     "titre": "Autorisation à M. le Maire de Paris de signer deux avenants aux deux marchés de prestations de services conclus en application de l’article 30 du code des marchés publics pour la restauration des boiseries et peintures du cabinet doré des salons “La Rivière” appartenant aux collections du musée Carnavalet, musée de l’histoire de Paris. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90830"
    }
@@ -451,6 +475,9 @@
    {
     "reference": "2007 DAC 357",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention d’objectifs entre la Ville de Paris et l’association “Les Amis du musée Carnavalet”. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "OCTOBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53669"
    }
@@ -459,18 +486,27 @@
    {
     "reference": "2008 DAC 560",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention de partenariat avec la Getty Foundation visant à soutenir un programme de restauration et de recherche portant sur les boiseries de l’ancien hôtel du duc de Richelieu, appartenant aux collections du musée Carnavalet. Mme Colombe BROSSEL, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42905"
    },
    {
     "reference": "2008 DAC 664",
     "titre": "Convention d’occupation du domaine public concernant l’établissement “La Librairie du Musée Carnavalet” situé 23 rue de Sévigné (3e). Mme Colombe BROSSEL, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78064"
    },
    {
     "reference": "2008 DAC 86",
     "titre": "Autorisation à Monsieur le Maire de signer une convention d’occupation du domaine public avec Art Zones pour la gestion de la librairie du musée Carnavalet. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "FEVRIER 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=76986"
    }
@@ -479,6 +515,9 @@
    {
     "reference": "2009 DAC 519",
     "titre": "Signature d'une convention de partenariat liant le musée Carnavalet et le musée d’Art et d’Histoire du Judaïsme (MAHJ) à l’occasion de l’exposition \"La splendeur des Camondo, de Constantinople à Paris (1806-1944)\" présentée au MAHJ. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "OCTOBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93180"
    }
@@ -487,12 +526,18 @@
    {
     "reference": "2010 DAC 124",
     "titre": "Convention d’occupation du domaine public concernant les établissements dénommés La Librairie du Petit Palais, situé au musée des Beaux-Arts de la Ville de Paris, 1 avenue Dutuit(8e) et La Librairie du Musée Carnavalet situé au 23 rue de Sévigné(3e). Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "FEVRIER 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79257"
    },
    {
     "reference": "2010 DAC 124",
     "titre": "2010, DAC 124 - Signature de conventions d'occupation du domaine public concernant les établissements dénommés La Librairie du Petit Palais, situé au musée des Beaux-Arts de la Ville de Paris, 1 avenue Dutuit (8e) et La Librairie du Musée Carnavalet, 23 rue de Sévigné (3e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "FEVRIER 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3972"
    }
@@ -501,6 +546,9 @@
    {
     "reference": "2011 DAC 19",
     "titre": "Signature d’une convention d’objectifs liant la Ville de Paris à l’association Les Amis du Musée Carnavalet pour l’attribution d’une subvention. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MARS 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96708"
    }
@@ -509,6 +557,9 @@
    {
     "reference": "2013 DPA 3",
     "titre": "2013 DPA 3 - Lancement d'un marché d'assistance à maîtrise d'ouvrage pour l'étude de programmation pour la rénovation globale du musée Carnavalet (3e) et modalités de passation du marché d'assistance à maîtrise d'ouvrage.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2013",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=111201"
    }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "cirque-d-hiver",
  "name": "Cirque d'Hiver",
@@ -84,12 +84,18 @@
    {
     "reference": "2001 DAC 169",
     "titre": "Subvention d'aide à la création et à la diffusion à l'association \"Tem Prod\" (4e), pour la réalisation d'un spectacle musical et dansé intitulé \"Omkara\" au Cirque d'Hiver en mai 2001. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84626"
    },
    {
     "reference": "2001 DAC 188",
     "titre": "Subvention d'aide au projet à la S.A.R.L. \"Arts et spectacles productions\" (17e), au titre d'un spectacle autour des \"Danses hongroises\" de Johannes Brahms donné au \"Cirque d'hiver\" en juin-juillet 2001. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62831"
    }
@@ -98,12 +104,20 @@
    {
     "reference": "2003 DAC 251",
     "titre": "215 - 2003, DAC 251 - Subvention exceptionnelle d'équipement à la Société d'exploitation de spectacles des Frères-Bouglione (11e) en vue de la restauration de la façade du Cirque d'hiver",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21337"
    },
    {
     "reference": "2003 DAC 251",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention pluriannuelle relative à l'attribution d'une subvention exceptionnelle d'équipement à la Société d'Exploitation de Spectacles des Frères Bouglione (11e), en vue de la restauration de la façade du Cirque d'Hiver qu'elle gère à la même adresse. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94039"
    }
@@ -112,6 +126,10 @@
    {
     "reference": "2004 DAC 220",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l'attribution d'une subvention d'équipement à la Société d'Exploitation de Spectacles des Frères Bouglione, 110, rue Amelot (11e), en vue de la restauration de la façade du Cirque d'Hiver qu'elle gère à la même adresse. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46262"
    }
@@ -120,6 +138,9 @@
    {
     "reference": "2008 DAC 537",
     "titre": "DASCO 173 - Subvention à l’”Association Académie de musique des grandes écoles et universités (16e) pour l’organisation d’un concert au Cirque d’Hiver en avril 2008. M. Christophe GIRARD et M. Didier GUILLOT, rapporteurs.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62009"
    }

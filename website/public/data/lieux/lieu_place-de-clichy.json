@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-de-clichy",
  "name": "Place de Clichy",
@@ -143,6 +143,9 @@
    {
     "reference": "2005 DVD 166",
     "titre": "Approbation du principe et des modalités de passation du marché de maîtrise d’oeuvre pour l’aménagement de la place de Clichy (8e, 9e, 17e et 18e). Approbation du principe d’aménagement. M. Denis BAUPIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63450"
    }
@@ -151,12 +154,18 @@
    {
     "reference": "2009 DVD 179",
     "titre": "2009, DVD 179 - Approbation du principe et des modalités de passation d'un marché de travaux de voirie et d'un marché de travaux d'éclairage public relatifs à l'aménagement de la place de Clichy (8e, 9e, 17e et 18e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20657"
    },
    {
     "reference": "2009 DVD 179",
     "titre": "Approbation, d’une part, du principe d’aménagement de la place de Clichy à Paris (8e, 9e, 17e et 18e) et, d’autre part, du principe et des modalités de passation d’un marché de travaux de voirie et d’un marché de travaux d’éclairage public. Mme Annick LEPETIT, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74770"
    }
@@ -165,18 +174,27 @@
    {
     "reference": "2010 DVD 237",
     "titre": "Signature d’un avenant n° 1 au marché de travaux de voirie pour l’aménagement de la place de Clichy (8e, 9e, 17e et 18e), passé avec le groupement COLAS Ile de France Normandie (mandataire) / SCREG Ile de France Normandie. Mme Annick LEPETIT, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=86022"
    },
    {
     "reference": "2010 DVD 29",
     "titre": "2010, DVD 29 - Signature de l'avenant n° 1 au marché de maîtrise d'oeuvre pour l'aménagement de la place de Clichy à Paris (8e), (9e), (17e) et (18e) avec le groupement Agence Laverne (mandataire)/Urbatec Ingénierie/charré Conseils.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4075"
    },
    {
     "reference": "2010 DVD 29",
     "titre": "Signature d’un avenant n° 1 au marché de maîtrise d’œuvre pour l’aménagement de la place de Clichy à Paris(8e),(9e),(17e) et(18e), passé avec le groupement Agence Laverne(mandataire)/Urbatec Ingénierie/Charré conseils. Mme Annick LEPETIT, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79163"
    }

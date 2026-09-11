@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "kiosque-fleurs-cite",
  "name": "Marché aux fleurs de la Cité",
@@ -116,6 +116,9 @@
    {
     "reference": "2003 DFAE 90",
     "titre": "32 - 2003, DFAE 90 - Autorisation à M. le Maire de Paris de signer avec la R.A.T.P. une convention relative aux travaux d'étanchéité de la station de métro Cité.Vœu déposé par M. Jean-François LEGARET, Mme Florence BERTHOUT, MM. Christophe LEKIEFFRE, Jack-Yves BOHBOT, Laurent DOMINATI, Jean TIBERI, Mme Marie-Chantal BACH, M. Jean-Charles BARDON, Mme Geneviève BERTRAND, M. Jean-Pierre LECOQ et les membres des groupes Union pour la démocratie française et U.M.P. relatif au marché aux Fleurs.Vœu dé",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8368"
    }
@@ -124,6 +127,9 @@
    {
     "reference": "2006 DDEE 51",
     "titre": "Conversion en euro des tarifs des droits de place et des redevances perçus sur le marché couvert Secrétan, le marché du Carreau du Temple, le marché aux timbres, le marché aux fleurs de la Cité, le marché aux oiseaux et autres petits animaux d’agrément de la Cité, les marchés aux fleurs et aux couronnes de la Toussaint se tenant aux abords des cimetières. Mme Lyne COHEN-SOLAL, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88833"
    }
@@ -132,6 +138,9 @@
    {
     "reference": "2020 DCPA 24",
     "titre": "2020 DCPA 24 - Rénovation du marché aux Fleurs place Louis-Lépine (4e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2020",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157263"
    }

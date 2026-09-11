@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-de-la-ville",
  "name": "Théâtre de la Ville",
@@ -466,12 +466,18 @@
    {
     "reference": "1997 DAC 49",
     "titre": "Subvention d'investissement au Théâtre de la Ville (4e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 1997",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78752"
    },
    {
     "reference": "1997 DAC 59",
     "titre": "Subvention d'investissement à l'association \"Théâtre de la Ville\" pour l'équipement du Théâtre des Abbesses (18e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 1997",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49740"
    }
@@ -480,6 +486,9 @@
    {
     "reference": "1998 DPA 284",
     "titre": "Approbation du principe de la réalisation des travaux de mises aux normes des installations de sécurité-incendie et du monte-décor au Théâtre de la Ville (4e). - Approbation des modalités d'attribution des marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Hélène MACE de LEPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 1998",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57338"
    }
@@ -488,12 +497,18 @@
    {
     "reference": "1999 DPA 131",
     "titre": "Approbation du principe de la réalisation des travaux de restauration de la façade sur le quai de Gesvres du Théâtre de la Ville (4e). - Autorisation à M. le Maire de Paris de déposer la demande de permis de construire pour l'opération susvisée. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75816"
    },
    {
     "reference": "1999 DPA 190",
     "titre": "Approbation des modalités d'attribution du marché de travaux relatif à la restauration de la façade sur quai de Gesvres du Théâtre de la Ville (4e). - Autorisation à M. le Maire de Paris de signer le marché de travaux correspondant. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83950"
    }
@@ -502,12 +517,18 @@
    {
     "reference": "2000 DPA 51",
     "titre": "Approbation du principe de la réalisation des travaux de mise aux normes du service machinerie au Théâtre de la Ville (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51330"
    },
    {
     "reference": "2000 DPA 79",
     "titre": "Approbation du principe de la réalisation de travaux de rénovation de la sous-station vapeur et de mise en conformité des locaux techniques de production de froid au Théâtre de la Ville (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43204"
    }
@@ -516,18 +537,27 @@
    {
     "reference": "2002 DAC 106",
     "titre": "49 - 2002, DAC 106 - Autorisation à M. le Maire de Paris de signer avec l'association \"Théâtre de la Ville\" (4e) une convention relative à l'attribution d'une subvention d'équipement. - Montant : 243.919 euros",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MARS 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7459"
    },
    {
     "reference": "2002 DAC 41",
     "titre": "36 - 2002, DAC 41 - Autorisation à M. le Maire de Paris de signer avec l'association \"Théâtre de la ville\" (4e) une convention relative à l'attribution d'une subvention de fonctionnement. - Montant : 9.895.868 euros",
+    "genres": [
+     "subvention"
+    ],
     "seance": "FEVRIER 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12582"
    },
    {
     "reference": "2002 DPA 35",
     "titre": "Approbation du principe de réalisation des travaux de restauration de façades au Théâtre de la Ville situé 2, place du Châtelet (4e), et des modalités d'attribution du marché négocié de maîtrise d'œuvre correspondant. Autorisation à M. le Maire de Paris de signer ledit marché. Autorisation à M. le Maire de Paris de déposer la demande de permis de construire pour la réalisation de l'opération susvisée. Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38934"
    }
@@ -536,6 +566,9 @@
    {
     "reference": "2003 DPA 152",
     "titre": "Approbation des modalités de passation du marché de travaux relatif à la restauration des façades au Théâtre de la Ville situé 2, place du Châtelet (4e). - Autorisation à M. le Maire de Paris de signer ledit marché. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89595"
    }
@@ -544,18 +577,27 @@
    {
     "reference": "2004 DAC 11",
     "titre": "72 - 2004, DAC 11 - Subvention de fonctionnement de 10.000.000 euros et subvention d'équipement de 200.000 euros à l'association \"Théâtre de la Ville\" (4e)",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MARS 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11803"
    },
    {
     "reference": "2004 DPA 135",
     "titre": "Approbation du principe de la réalisation des travaux de mise en sécurité des ouvrages vitrés de la façade principale au Théâtre de la Ville (4e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51914"
    },
    {
     "reference": "2004 DPA 48",
     "titre": "Approbation du principe de réalisation des travaux de modernisation du poste haute tension au Théâtre de la Ville situé 2, place du Châtelet (4e), et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57788"
    }
@@ -564,6 +606,9 @@
    {
     "reference": "2005 DPA 93",
     "titre": "Approbation du principe de réalisation des travaux de restauration de la façade rue Adolphe Adam au Théâtre de la Ville situé 2, place du Châtelet (4e), et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de déposer la demande de permis de construire pour la réalisation de l’opération susvisée. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43604"
    }
@@ -572,6 +617,9 @@
    {
     "reference": "2006 DPA 59",
     "titre": "Approbation du principe de réalisation des travaux de mise aux normes de la gradation de l’éclairage scénique au Théâtre de la Ville sis 2, place du Châtelet (4e) et des modalités de passation du marché de travaux correspondant. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27798"
    }
@@ -580,6 +628,9 @@
    {
     "reference": "2008 DAC 48",
     "titre": "2008, DAC 48 - Signature d’une convention et d’un troisième avenant à la convention-cadre 2006-2008, relatifs à l’attribution de deux subventions à l’association “Théâtre de la Ville” pour assurer le fonctionnement et l’équipement du Théâtre de la Ville (4e) et du Théâtre des Abbesses (18e). - Montants : 5.200.000 euros (fonctionnement et 300.000 euros équipement).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13772"
    }
@@ -588,6 +639,9 @@
    {
     "reference": "2009 DAC 62",
     "titre": "2009, DAC 62 - Signature d'une convention relative à l'attribution d'une subvention à l'association Théâtre de la Ville.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "FEVRIER 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21020"
    }
@@ -596,6 +650,9 @@
    {
     "reference": "2013 DAC 673",
     "titre": "2013 DAC 673 - Subvention (300.000 euros) et convention avec l'association Théâtre de la Ville (4e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2013",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116546"
    }
@@ -604,6 +661,10 @@
    {
     "reference": "2015 DAC 200",
     "titre": "2015 DAC 200 - Subventions (5.825.000 euros) et avenants avec l’association \"Théâtre de la Ville\" (4e et 18e). 2015 DPA 34 - Théâtre de la Ville 2, place du Châtelet (4e) - Rénovation partielle - Autorisation à la Maire de Paris de prendre toute décision concernant l'opération. Vœu déposé par le GEP relatif aux travaux aux théâtres du Châtelet et de la Ville. Vœu déposé par l'Exécutif.",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
     "seance": "MAI 2015",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125471"
    }
@@ -612,12 +673,18 @@
    {
     "reference": "2019 DAC 80",
     "titre": "2019 DAC 80 - Convention d’occupation du domaine public relative à l’installation et à l’exploitation d’un espace d’affichage sur l’échafaudage de restauration du Théâtre de la Ville (4e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2019",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152349"
    },
    {
     "reference": "2019 DAC 86",
     "titre": "2019 DAC 86 - Subvention (11.595.000 euros) et avenant à convention avec l’association Théâtre de la Ville (4e, 8e, 18e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2019",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=175620"
    }
@@ -626,6 +693,9 @@
    {
     "reference": "2021 DAC 58",
     "titre": "2021 DAC 58 - Subvention d’investissement (600.000 euros) et convention avec l’association \"Théâtre de la Ville\" (Paris centre, 8e, 18e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2021",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164306"
    }
@@ -634,6 +704,9 @@
    {
     "reference": "2022 DAC 58",
     "titre": "2022 DAC 58 - Subvention d’investissement (850.000 euros) et avenant avec l’association \"Théâtre de la Ville\" (Paris Centre, 8e, 18e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2022",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168024"
    }
@@ -642,18 +715,27 @@
    {
     "reference": "2023 DAC 18",
     "titre": "2023 DAC 18 - Subventions (13.650. 000 euros) et avenants à convention de fonctionnement et d'investissement avec l'association \"Théâtre de la Ville\".",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MARS 2023",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168429"
    },
    {
     "reference": "2023 DAC 451",
     "titre": "2023 DAC 451 - Convention d’occupation du domaine public et bail civil avec l’association \"Théâtre de la Ville\" (Paris Centre).",
+    "genres": [
+     "autre"
+    ],
     "seance": "MARS 2023",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168369"
    },
    {
     "reference": "2023 DAC 454",
     "titre": "2023 DAC 454 - Convention d’occupation du domaine public et bail civil avec l’association \"Théâtre de la Ville\" (Paris Centre).",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUIN 2023",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=169808"
    }
@@ -662,12 +744,18 @@
    {
     "reference": "2024 DAC 65",
     "titre": "2024 DAC 65 - Subvention (500.000 euros) et avenant à convention avec l’association \"Théâtre de la Ville\" (Paris Centre et 18e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUIN 2024",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176451"
    },
    {
     "reference": "2024 DAC 69",
     "titre": "2024 DAC 69 - Subventions (13.500.000 euros) et avenants à convention avec l’association \"Théâtre de la Ville\" (Paris Centre, 18e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2024",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178591"
    }

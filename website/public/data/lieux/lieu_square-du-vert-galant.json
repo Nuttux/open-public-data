@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "square-du-vert-galant",
  "name": "Square du Vert-Galant",
@@ -79,6 +79,9 @@
    {
     "reference": "1995 D 1100",
     "titre": "29 - 1995, D. 1100- Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres pour l'illumination du pont Neuf et du square du Vert-Galant (1er et 6e). 1995, D. 1101- Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres pour l'illumination des ponts d'Arcole et Louis-Philippe (4e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 1995",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=397"
    }

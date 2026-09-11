@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "cimetiere-d-auteuil",
  "name": "Cimetière d'Auteuil",
@@ -65,6 +65,9 @@
    {
     "reference": "2008 DEVE 27",
     "titre": "Lancement d’un marché négocié relatif à la restructuration de la conservation, d’un logement, des locaux sociaux et des sanitaires publics du cimetière d’Auteuil (16e). Mme Fabienne GIBOUDEAUX, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78243"
    }

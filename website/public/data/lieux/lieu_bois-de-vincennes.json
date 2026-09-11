@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "bois-de-vincennes",
  "name": "Bois de Vincennes",
@@ -185,24 +185,36 @@
    {
     "reference": "1997 DAUC 170",
     "titre": "Opération \"promenade plantée Bastille - bois de Vincennes\" section Bastille - Reuilly (12e). - Autorisation à M. le Maire de Paris de souscrire un avenant au traité de concession signé avec la S.E.M.A.-EST. Mme Anne-Marie COUDERC, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "SEPTEMBRE 1997",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75705"
    },
    {
     "reference": "1997 DFAECG 26",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant à la convention signée le 7 décembre 1984 avec le Département de Paris pour la construction d'une école de chiens-guides d'aveugles dans le bois de Vincennes (12e) en vue de l'extension de ladite école. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 1997",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40074"
    },
    {
     "reference": "1997 DFAECG 7",
     "titre": "G - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de souscrire 2 avenants, l'un à la convention signée le 7 décembre 1984 avec la Ville de Paris pour la construction d'une école de chiens-guides d'aveugles dans le bois de Vincennes (12e), l'autre à la convention signée le 2 octobre 1987 avec M. le docteur Michel KLEIN, Président de l'association \"Ecole de chiens-guides d'aveugles de Paris et de la région parisienne\" en vue de l'extension de ladite",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 1997",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=60356"
    },
    {
     "reference": "1997 DPE 113",
     "titre": "Approbation des modalités d'attribution d'un marché sur appel d'offres pour la réhabilitation des ouvrages d'assainissement de la Chaussée de l'Etang à Saint-Mandé (Val-de-Marne) en bordure du bois de Vincennes (12e). - Autorisation à M. le Maire de Paris de signer ledit marché. M. Lucien FINEL, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 1997",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39973"
    }
@@ -211,6 +223,9 @@
    {
     "reference": "1999 DFAECG 26",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant à la convention signée le 1er octobre 1990 pour l'exploitation du café-restaurant \"Le Chalet de la Porte-Jaune\" au bois de Vincennes (12e). M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "MARS 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34123"
    }
@@ -219,24 +234,36 @@
    {
     "reference": "2000 DASCO 55",
     "titre": "Approbation des modalités d'un marché sur appel d'offres pour le démontage, le montage, le transport et le stockage des structures des espaces de plein air des centres de loisirs d'été dans les bois de Vincennes, de Boulogne, et le domaine de Beauregard à La Celle-Saint-Cloud (Yvelines). - Autorisation à M. le Maire de Paris de signer ledit marché. M. Vincent REINA, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50948"
    },
    {
     "reference": "2000 DFAE 17",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention portant droit à l'occupation du Théâtre du Chaudron situé dans l'ancienne Cartoucherie du bois de Vincennes (12e). M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JANVIER 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48486"
    },
    {
     "reference": "2000 DVLR 41",
     "titre": "Subvention au Comité d'animation du 12e arrondissement de Paris Bel-Air, Bercy, Picpus, Quinze-Vingts et bois de Vincennes. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MARS 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31137"
    },
    {
     "reference": "2000 DVLR 41",
     "titre": "20 - 2000, DVLR 41 - Subvention au Comité d'animation de Paris, Bel-Air, Picpus, Quinze-Vingts et bois de Vincennes, 130, avenue Daumesnil (12e). - Montant : 80.525 F",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MARS 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16405"
    }
@@ -245,12 +272,18 @@
    {
     "reference": "2001 DASCO 250",
     "titre": "Approbation des modalités d'attribution d'un marché sur appel d'offres ouvert en deux lots pour le démontage, le montage, le transport et le stockage des structures cuisines et sanitaires des espaces de plein air des centres de loisirs d'été dans le bois de Vincennes, le bois de Boulogne et le domaine de Beauregard à La-Celle- Saint-Cloud (Yvelines) principalement et en région Ile-de-France. M. Eric FERRAND, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71719"
    },
    {
     "reference": "2001 DFAE 67",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention portant droit à l'occupation de locaux domaniaux à usage de salons de réception et de café-restaurant dénommés \"La Chesnaie du Roy\" sis route de la Pyramide au bois de Vincennes (12e). M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62708"
    }
@@ -259,24 +292,36 @@
    {
     "reference": "2002 DASCO 293",
     "titre": "Approbation des modalités d'attribution d'un appel d'offres ouvert en deux lots pour le démontage, le montage, le transport et le stockage des structures cuisines et sanitaires des espaces de plein air des centres de loisirs d'été dans le bois de Vincennes, le bois de Boulogne et le domaine de Beauregard à la Celle Saint Cloud (78). - Autorisation à M. le Maire de Paris de signer les marchés correspondants. M. Eric FERRAND, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45341"
    },
    {
     "reference": "2002 DFAE 115",
     "titre": "Convention donnant droit à l'occupation d'une propriété domaniale dénommée Chalet du Lac de Saint-Mandé à usage de café-restaurant et réceptions, route du Bel Air, Bois de Vincennes, à Paris 12ème. M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "SEPTEMBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29590"
    },
    {
     "reference": "2002 DFAE 115",
     "titre": "10 - 2002, DFAE 115 - Autorisation à M. le Maire de Paris de signer une convention donnant droit à l'occupation d'une propriété domaniale dénommée Chalet du Lac de Saint-Mandé à usage de café-restaurant et réceptions, route du Bel-Air, bois de Vincennes (12e)",
+    "genres": [
+     "autre"
+    ],
     "seance": "SEPTEMBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5935"
    },
    {
     "reference": "2002 DPE 74",
     "titre": "Approbation des modalités d'attribution d'un marché sur appel d'offres pour l'étude du projet de réhabilitation du réseau d'assainissement du secteur du lac Daumesnil, dans le bois de Vincennes (12e). - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Myriam CONSTANTIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55902"
    }
@@ -285,12 +330,18 @@
    {
     "reference": "2003 DAC 430",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l'attribution d'une subvention d'équipement exceptionnelle à la SARL \"Théâtre de la Tempête\", Cartoucherie du bois de Vincennes, route du Champ-de-Manœuvre (12e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93703"
    },
    {
     "reference": "2003 DAC 434",
     "titre": "Autorisation à M. le Maire de Paris de signer avec les établissements installés à la Cartoucherie du Bois de Vincennes (12e) des conventions d'occupation du domaine public. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69131"
    }
@@ -299,30 +350,46 @@
    {
     "reference": "2004 DAC 230",
     "titre": "Autorisation à M. le Maire de Paris de signer avec l'Union Bouddhiste de France, 4 rue Barbette (3e), une convention relative à l'occupation d'un emplacement situé dans le Bois de Vincennes. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "MAI 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45821"
    },
    {
     "reference": "2004 DPJEV 10",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention d’occupation d’une parcelle du bois de Vincennes au profit de l’association “Nocrhome” en vue de la promotion de l’activité du BMX. M. Yves CONTASSOT, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87712"
    },
    {
     "reference": "2004 DPJEV 99",
     "titre": "Subvention à l’Association pour la rénovation du bois de Vincennes et de ses environs. M. Yves CONTASSOT, rapporteur.",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
     "seance": "DECEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87711"
    },
    {
     "reference": "2004 DVD 138",
     "titre": "134 - 2004, DVD 138 - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres pour la fourniture et la pose de matériels de barrage et d'information pour la fermeture de certaines voies dans Paris intra-muros et dans le bois de Vincennes, dans le cadre des opérations \"Paris - Respire\"",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9108"
    },
    {
     "reference": "2004 DVD 138",
     "titre": "Autorisation à M. le Maire de Paris de lancer une consultation par voie d'appel d'offres ouvert concernant la fourniture et pose de matériels de barrage et d'information pour la fermeture de certaines voies dans Paris intra-muros et dans le bois de Vincennes, dans le cadre des opérations \"Paris-Respire\", et de souscrire le marché en résultant. M. Denis BAUPIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94954"
    }
@@ -331,36 +398,54 @@
    {
     "reference": "2005 DAC 510",
     "titre": "Autorisation à M. le Maire de Paris de signer avec l’association des théâtres de la Cartoucherie, Cartoucherie du Bois de Vincennes (12e), une convention pour la gestion des parties communes, l’exploitation du pavillon du gardien et de l’entrepôt “Jean-Louis Barrault”. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "OCTOBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25826"
    },
    {
     "reference": "2005 DF 11",
     "titre": "2005, DF 11 - Autorisation à M. le Maire de Paris de signer une convention donnant droit à l’occupation privative du Chalet des îles Daumesnil à usage de café-restaurant et réceptions, propriété de la Ville de Paris relevant de son domaine public, situé sur l’île de Reuilly, bois de Vincennes (12e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9274"
    },
    {
     "reference": "2005 DF 11",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention donnant droit à l’occupation privative du Chalet des îles Daumesnil à usage de café-restaurant et réceptions, propriété de la Ville de Paris relevant de son domaine public, situé sur l’île de Reuilly, Bois de Vincennes, à Paris 12e. M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87303"
    },
    {
     "reference": "2005 DPJEV 11",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention avec l’Association Colombophile Locale de la Région d’Ile de France “Le Rapide du Parc Floral” en vue de l’autoriser à occuper des locaux appartenant à la Ville de Paris et situés dans le Bois de Vincennes, rond point de la Pyramide et route des Batteries. M. Yves CONTASSOT, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "FEVRIER 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82497"
    },
    {
     "reference": "2005 DPJEV 20",
     "titre": "Autorisation à M. le Maire de Paris de signer avec l’Association des pêcheurs de Neuilly-Levallois et des Environs, avec l’Amicale des Pêcheurs du Bois de Vincennes et avec l’Association des Bon Amis de la Butte des conventions d’occupation du domaine public permettant l’exercice de la pêche dans les eaux des bois de Boulogne et de Vincennes et du parc des Buttes Chaumont. M. Yves CONTASSOT, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "MAI 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80420"
    },
    {
     "reference": "2005 DVD 209",
     "titre": "Autorisation à M. le Maire de Paris de signer avec la ville de Charenton-le-Pont une convention pour le comblement de la carrière dite “de Gravelle” dans sa partie située sous l’avenue de Gravelle dans le bois de Vincennes à Paris et à Charenton-le-Pont. M. Denis BAUPIN, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "SEPTEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63190"
    }
@@ -369,36 +454,54 @@
    {
     "reference": "2006 DDATC 149",
     "titre": "2006, DDATC 149 - Autorisation à M. le Maire de Paris de signer une convention de superposition de gestion entre le Département du Val-de-Marne et les villes de Joinville-Le-Pont et de Saint-Maurice (bénéficiaires) et une convention d’équipement pour la réhabilitation/sécurisation du passage des Canadiens entre Paris et Saint-Maurice. Voeu déposé par M. Christophe NAJDOVSKI et les membres du groupe “Les Verts” concernant les liaisons cyclables en bordure du bois de Vincennes.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7725"
    },
    {
     "reference": "2006 DF 23",
     "titre": "Convention donnant droit à l’occupation d’une propriété domaniale dénommée “Le Restaurant du Plateau de Gravelle”, située route du pesage au Bois de Vincennes à Paris 12ème arrondissement, afin d’y exploiter un restaurant et des salons de réception. M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "MAI 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88948"
    },
    {
     "reference": "2006 DJS 468",
     "titre": "Approbation de la convention d’occupation du domaine public du centre équestre de la Cartoucherie, route du Champ-de-Manœuvre (bois de Vincennes, 12e), à conclure avec la société Cheval-Loisirs-Campagne. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92335"
    },
    {
     "reference": "2006 DPJEV 60",
     "titre": "Approbation du principe et des modalités de la vérification des installations électriques et travaux d’électricité sur la pelouse de Reuilly au Bois de Vincennes (12e). M. Yves CONTASSOT, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89248"
    },
    {
     "reference": "2006 DPJEV 60",
     "titre": "2006, DPJEV 60 - Autorisation à M. le Maire de Paris de signer un marché négocié pour la vérification des installations électriques et travaux d’électricité sur la pelouse de Reuilly au bois de Vincennes (12e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10593"
    },
    {
     "reference": "2006 DVD 183",
     "titre": "Autorisation à M. le Maire de Paris de signer des avenants aux marchés de travaux d’éclairage public et d’illuminations des 8e, 17e et 18e arrondissements (lot 5), des 11e et 20e arrondissements (lot 7) et des 12e et 13e arrondissements et du bois de Vincennes (lot 8). M. Denis BAUPIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81552"
    }
@@ -407,48 +510,72 @@
    {
     "reference": "2007 DAC 44",
     "titre": "Autorisation à M. le Maire de Paris de signer avec l’Union Bouddhiste de France, une convention d’occupation du domaine public concernant une emprise et des locaux situés dans le bois de Vincennes. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "FEVRIER 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26682"
    },
    {
     "reference": "2007 DAC 44",
     "titre": "2007, DAC 44 - Autorisation à M. le Maire de Paris de signer avec l’Union bouddhiste de France une convention d’occupation du domaine public concernant une emprise et des locaux situés dans le bois de Vincennes. Voeu déposé par M. Christophe NAJDOVSKI et les membres du groupe “Les Verts” relatif au jalonnement piétonnier depuis les transports collectifs vers le temple bouddhique.",
+    "genres": [
+     "autre"
+    ],
     "seance": "FEVRIER 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9761"
    },
    {
     "reference": "2007 DDEE 329",
     "titre": "2007, DDEE 329 - DVD 256 - Autorisation à M. le Maire de Paris de signer avec la Société Vinci Park CGSt une convention relative aux conditions techniques et financières de mise à disposition pendant la Foire du Trône 2008 de place de stationnement dans des parcs situés dans le 12e arrondissement. Vœu déposé par le groupe “Les Verts” relatif à la préservation de l’environnement du bois de Vincennes en période de Foire du Trône.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4635"
    },
    {
     "reference": "2007 DF 52",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention donnant droit à l’occupation d’une propriété domaniale dénommée “Le Chalet de la Porte Jaune”, située avenue de Nogent au bois de Vincennes (12e) afin d’y exploiter un café-restaurant. M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89982"
    },
    {
     "reference": "2007 DF 52",
     "titre": "2007, DF 52 - Autorisation à M. le Maire de Paris de signer une convention donnant droit à l’occupation d’une propriété domaniale dénommée “Le Chalet de la Porte Jaune”, située avenue de Nogent au bois de Vincennes (12e) afin d’y exploiter un café-restaurant. Vœu déposé par le groupe “Les Verts”.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14120"
    },
    {
     "reference": "2007 DPA 327",
     "titre": "Approbation du principe de la réalisation des travaux de confortation des structures métalliques et de modernisation de la couverture du Hall de la Pinède situé dans le Parc floral de Paris, au Bois de Vincennes, à Paris (12ème).- Approbation des modalités de passation du marché de travaux correspondant. M. Yves CONTASSOT, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54262"
    },
    {
     "reference": "2007 DPJEV 18",
     "titre": "Autorisation à M. le Maire de Paris de signer avec l’association “Escapade” une convention l’autorisant à faire circuler cinq véhicules dénommés “Modul’évasion” dans le Bois de Vincennes. M. Yves CONTASSOT et Mme Pénélope KOMITÈS, rapporteurs.",
+    "genres": [
+     "autre"
+    ],
     "seance": "MARS 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31510"
    },
    {
     "reference": "2007 DVD 5",
     "titre": "Approbation du principe d’aménagement du Carrefour de Beauté (12e) (bois de Vincennes) et la ville de Nogent-sur-Marne. - Autorisation à M. le Maire de Paris de signer une convention de financement et d’organisation de la maîtrise d’ouvrage avec la ville de Nogent-sur-Marne. - Approbation du principe et des modalités de passation du marché de travaux de voirie, relatif à cet aménagement. M. Denis BAUPIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26929"
    }
@@ -457,24 +584,36 @@
    {
     "reference": "2008 DASES 583",
     "titre": "G - Signature d’une convention avec l’association “Emmaüs” (1er) pour le financement de son action réalisée en direction des personnes sans domicile fixe du Bois de Vincennes dans le cadre d’une maîtrise d’ouvrage urbaine et sociale (MOUS), fixant le montant de la participation du Département à son budget. Mme Olga TROSTIANSKY, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44685"
    },
    {
     "reference": "2008 DEVE 104",
     "titre": "Autorisation à M. le Maire de Paris de signer avec l’association “Le Rapide du Parc Floral” un avenant à la convention du 20 février 2005, l’autorisant à occuper un local supplémentaire dans le Bois de Vincennes (12e). Mme Fabienne GIBOUDEAUX, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "OCTOBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42795"
    },
    {
     "reference": "2008 DEVE 54",
     "titre": "Lancement d’un appel d’offres ouvert pour le curage partiel et travaux du lac des Minimes dans le bois de Vincennes (12e). Mme Fabienne GIBOUDEAUX, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61935"
    },
    {
     "reference": "2008 DF 95",
     "titre": "Convention donnant droit à l’occupation d’une propriété domaniale dénommée “Les Magnolias”, située au Parc Floral, bois de Vincennes (12e), afin d’y exploiter un café, restaurant, salon de thé. M. Bernard GAUDILLÈRE, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77858"
    }
@@ -483,48 +622,72 @@
    {
     "reference": "2009 DEVE 149",
     "titre": "Subvention sollicitée auprès du fonds Eperon pour l’équipement en matériel de l’atelier des chevaux de trait du Bois de Vincennes (12e) au titre de l’année 2009. Mme Fabienne GIBOUDEAUX, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36756"
    },
    {
     "reference": "2009 DEVE 173",
     "titre": "Lancement et signature de deux marchés en appel d’offres ouvert relatifs au montage et démontage des espaces Nature et Découvertes dans les bois de Vincennes (12e), de Boulogne (16e) et dans le domaine de Beauregard (78170 La Celle Saint-Cloud). Mme Fabienne GIBOUDEAUX, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32597"
    },
    {
     "reference": "2009 DF 66",
     "titre": "Avenant à la convention d’occupation temporaire du domaine public en date du 12 février 2009 modifiant l’article 3.3 de ladite convention relatif au nom de domaine attaché à la propriété domaniale dénommée “Le Bosquet”, établissement de restauration libre service et de vente à emporter, situé au Parc Floral, Bois de Vincennes, à Paris 12ème arrondissement. M. Bernard GAUDILLÈRE, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74921"
    },
    {
     "reference": "2009 DF 7",
     "titre": "Convention donnant droit à l’occupation d’une propriété domaniale dénommée “Le Bosquet”, située au Parc Floral, Bois de Vincennes, à Paris 12ème arrondissement, afin d’y exploiter un établissement de restauration libre service et de vente à emporter. M. Bernard GAUDILLIERE, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49971"
    },
    {
     "reference": "2009 DJS 210",
     "titre": "Signature de la convention d’occupation du domaine public relative à l’exploitation du chalet-restaurant “la Cipale” situé au Vélodrome Jacques Anquetil - Bois de Vincennes (12ème). M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "SEPTEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34419"
    },
    {
     "reference": "2009 DJS 414",
     "titre": "Signature de la convention d’occupation temporaire du domaine public relative à l’exploitation de la parcelle du domaine public de la Ville de Paris, constituée de l’emprise de l’ancien camp de Saint Maur, située entre l’avenue du Tremblay et la route de la Pyramide - Bois de Vincennes - (12ème). M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81734"
    },
    {
     "reference": "2009 DPA 32",
     "titre": "Approbation du principe de création de 3 aires d’accueil pour les gens du voyage [rue Lucien Bossoutrot (15e) ; bois de Vincennes (12e) ; bois de Boulogne (16e)], des modalités de passation du marché de maîtrise d’œuvre, et du dépôt des demandes de permis de construire. Mmes Olga TROSTIANSKY et Fabienne GIBOUDEAUX, rapporteures.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77367"
    },
    {
     "reference": "2009 DPA 32",
     "titre": "2009, DPA 32 - Approbation du principe de création de 3 aires d'accueil pour les gens du voyage, rue Lucien Bossoutrot (15e) au bois de Vincennes (12e) et au bois de Boulogne (16e) et des modalités de passation du marché de maîtrise d'oeuvre, et du dépôt des demandes de permis de construire.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5684"
    }
@@ -533,12 +696,18 @@
    {
     "reference": "2010 DEVE 90",
     "titre": "Subvention à l’association Grumpy Nature pour son étude ornithologique sur le Fuligule Milouin au lac du Bois de Vincennes. Mme Fabienne GIBOUDEAUX, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79431"
    },
    {
     "reference": "2010 DPE 1",
     "titre": "Approbation des modalités d’attribution d’un marché pour l’inspection télévisée et l’assistance à la réhabilitation des réseaux canalisés d’assainissement des bois de Vincennes et Boulogne. Mme Anne LE STRAT, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79151"
    }
@@ -547,24 +716,38 @@
    {
     "reference": "2011 DDEEES 94",
     "titre": "62 - 2011, DDEEES 94 - DVD 88 - Signature d'une convention avec la Régie Autonome des Transports Parisiens (RATP) relative aux conditions techniques et financières de mise en place, pendant la foire du Trône 2011, de renforts d'offre sur les lignes de bus 87 et PC2. Vœu déposé par le groupe E.E.L.V.A. relatif au maintien du statut piétonnier des voies du bois de Vincennes pendant la Foire du Trône. Vœu déposé par le groupe U.M.P.P.A. relatif à la fermeture des rues aux alentours de la Foire du T",
+    "genres": [
+     "autre"
+    ],
     "seance": "MARS 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95835"
    },
    {
     "reference": "2011 DEVE 45",
     "titre": "Demande de subvention auprès de l’Agence de l’Eau Seine Normandie pour les travaux de réalisation d’un assainissement autonome à la Ferme de Paris, 1 route du Pesage dans le bois de Vincennes (12e). Mme Fabienne GIBOUDEAUX, rapporteure.",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
     "seance": "MAI 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=98063"
    },
    {
     "reference": "2011 DVD 105",
     "titre": "65 - 2011, DVD 105 - Approbation du programme 2011 d’aménagements cyclables et autorisation de solliciter les subventions correspondantes auprès de la Région d’Ile de France dans le cadre du 4e contrat “Réseau Vert” et de prendre toute décision en résultant. Vœu déposé par le groupe E.E.L.V.A. relatif au réaménagement global de la voirie rue Eugène Varlin (10e). Vœu déposé par le groupe E.E.L.V.A. relatif à la réalisation d’une liaison cyclable Canal Saint-Martin - Bois de Vincennes. Vœu déposé",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
     "seance": "MAI 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95738"
    },
    {
     "reference": "2011 DVD 106",
     "titre": "87 - 2011, DVD 106 - Signature avec le Syndicat Mixte Autolib' d'une convention portant superposition d'affectations sur partie du domaine public de voirie en surface de la Ville pour l'implantation de stations et d'espaces Autolib'. Vœu déposé par le groupe UMPPA relatif à l'étude de l'implantation de stations Autolib' au sein du bois de Vincennes. Vœu déposé par le groupe UMPPA relatif à l'implantation dans les parcs de stationnements souterrains des stations Autolib'. Vœu déposé par M. SARRE",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUIN 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=100599"
    }
@@ -573,6 +756,9 @@
    {
     "reference": "2012 DEVE 44",
     "titre": "2012, DEVE 44 - Convention avec le Centre de Coopération Internationale en Recherche Agronomique pour le Développement (CIRAD) pour l'occupation du Pavillon de Tunisie situé dans le Jardin d'Agronomie Tropicale au sein du bois de Vincennes (12e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 2012",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=107215"
    }
@@ -581,6 +767,9 @@
    {
     "reference": "2013 DEVE 93",
     "titre": "2013 DEVE 93 et DEVE 77-G : Convention d'offre de concours pour la réalisation de deux aires d'accueil des gens du voyage, bois de Boulogne (16e) et bois de Vincennes (12e), au titre du contrat particulier signé entre la Région Ile de France et le Département de Paris pour la période 2009-2013. 2013 DLH 107 - Approbation du principe et des modalités de lancement de la consultation relative au marché de gestion, maintenance et nettoyage de deux aires d'accueil des gens du voyage situées dans les",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2013",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=114923"
    }
@@ -589,6 +778,9 @@
    {
     "reference": "2014 DEVE 1084",
     "titre": "2014 DEVE 1084 - Occupation précaire d'une parcelle de terrain dans le Bois de Vincennes (12e) par l'association l'Abeille Parisienne - Convention de mise à disposition du domaine public.",
+    "genres": [
+     "autre"
+    ],
     "seance": "OCTOBRE 2014",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121173"
    }
@@ -597,6 +789,9 @@
    {
     "reference": "2017 DEVE 47",
     "titre": "2017 DEVE 47 - Convention de partenariat entre la Ville de Paris et les Brasseurs de France pour la production de bière à partir de l'orge et du houblon cultivés au bois de Vincennes.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JANVIER 2017",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134713"
    }
@@ -605,6 +800,9 @@
    {
     "reference": "2020 DAC 150",
     "titre": "2020 DAC 150 - Convention d’occupation du domaine public avec l’association \"We Love Green\" pour l’organisation annuelle d’un festival de musiques actuelles écoresponsable dans le bois de Vincennes. Vœu déposé par le groupe Communiste et Citoyen relatif à l'implantation du festival \"We Love Green\".",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2020",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156516"
    }
@@ -613,18 +811,27 @@
    {
     "reference": "2021 DEVE 12",
     "titre": "2021 DEVE 12 - Convention d’occupation précaire du domaine public de la Ville de Paris situé cours des Maréchaux, dans le bois de Vincennes (12e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "MARS 2021",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157904"
    },
    {
     "reference": "2021 DEVE 21",
     "titre": "2021 DEVE 21 - Renouvellement de la convention avec l'association \"Cirque Ici\" pour l'occupation du bâtiment n° 6 situé dans le Jardin d'Agronomie tropicale au sein du bois de Vincennes (12e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "AVRIL 2021",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=158518"
    },
    {
     "reference": "2021 DEVE 75",
     "titre": "2021 DEVE 75 - Convention d’occupation précaire entre l’association Erinaceus et la Ville de Paris en vue de l’ouverture d’un refuge de soins pour les hérissons d’Europe dans le bois de Vincennes.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 2021",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163807"
    }
@@ -633,12 +840,18 @@
    {
     "reference": "2023 DAC 453",
     "titre": "2023 DAC 453 - Cartoucherie - Route du Champ de Manœuvre dans le bois de Vincennes (12e). - Conventions d’occupation du domaine public.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 2023",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=170544"
    },
    {
     "reference": "2023 DAC 91",
     "titre": "2023 DAC 91 - Avenant à la convention d’occupation du domaine public avec l’association \"We Love Green\" pour l’organisation annuelle d’un festival de musiques actuelles écoresponsable dans le bois de Vincennes. Vœu déposé par le groupe Changer Paris relatif à la protection du bois de Vincennes.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUIN 2023",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=169806"
    }
@@ -647,6 +860,9 @@
    {
     "reference": "2024 DAC 115",
     "titre": "2024 DAC 115 - Attribution d'une convention d'occupation du domaine public pour l'organisation d'un festival de musiques actuelles au bois de Vincennes. Vœu déposé par le groupe \"Les Républicains, Les Centristes - Demain Paris !\" relatif à la M.I.E. bois.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUIN 2024",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176625"
    }
@@ -655,12 +871,18 @@
    {
     "reference": "2025 DAC 430",
     "titre": "2025 DAC 430 - Convention d’occupation du domaine public avec l’Union Bouddhiste de France et bail emphytéotique administratif avec l’association \"Kagyu Dzong\" dans l’enclos bouddhique du bois de Vincennes (12e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2025",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183928"
    },
    {
     "reference": "2025 DJS 110",
     "titre": "2025 DJS 110 Convention de mise à disposition des stades Léo Lagrange, et Léon Bonvoisin situés route de la Pyramide Bois de Vincennes à Paris (12e) entre la Ville de Paris et la commune de Vincennes.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2025",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183697"
    }

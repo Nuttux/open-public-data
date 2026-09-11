@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-du-tertre",
  "name": "Place du Tertre",
@@ -190,6 +190,9 @@
    {
     "reference": "2002 DAEE 23",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant à la convention d'objectifs avec le Syndicat d'Initiative de Montmartre - domicilié 21 place du Tertre (18e) - prévoyant l'attribution d'une subvention compensatrice de loyer de 33.539 euros au titre de l'exercice 2002. M. Jean-Bernard BROS, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29505"
    }
@@ -198,6 +201,9 @@
    {
     "reference": "2005 DJS 39",
     "titre": "Subvention à l’association “Les p’tits poulbots oeuvre des gosses de la Butte Montmartre”3, place du Tertre (18e). Mme Clémentine AUTAIN, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "FEVRIER 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82464"
    }

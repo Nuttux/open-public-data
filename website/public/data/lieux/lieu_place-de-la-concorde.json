@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-de-la-concorde",
  "name": "Place de la Concorde",
@@ -251,6 +251,9 @@
    {
     "reference": "2001 DPA 217",
     "titre": "Approbation du principe de la réalisation des travaux d'entretien périodique, de maintenance et de réparations urgentes des fontaines de la place de la Concorde (8e). - Approbation des modalités d'attribution des marchés de travaux sur appel d'offres correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33684"
    }
@@ -259,6 +262,9 @@
    {
     "reference": "2002 DPA 230",
     "titre": "Autorisation à M. le Maire de Paris de souscrire des avenants aux marchés de travaux signés avec les sociétés CHEVALIER, Atelier d'œuvres de Forge, SOCRA et BORNHAUSER MOLINARI Melun, relatifs à la restructuration de la fontaine des Fleuves sise Place de la Concorde (8e). Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55880"
    }
@@ -267,12 +273,18 @@
    {
     "reference": "2003 DVD 264",
     "titre": "Approbation du principe de délégation de service public pour l'entretien et l'exploitation du parc de stationnement \"Concorde\", situé sous la place de la Concorde (8e), pour une durée de 2 ans. - Autorisation à M. le Maire de Paris de lancer la consultation et d'accomplir tous les actes préparatoires à la passation du contrat de délégation sous forme d'affermage. M. Denis BAUPIN, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "OCTOBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47217"
    },
    {
     "reference": "2003 DVD 264",
     "titre": "168 - 2003, DVD 264 - Approbation du principe de délégation de service public pour l'entretien et l'exploitation du parc de stationnement \"Concorde\" situé sous la place de la Concorde (8e) pour une durée de 2 ans. - Autorisation à M. le Maire de Paris de lancer la consultation, et d'accomplir tous les actes préparatoires à la passation du contrat de délégation sous forme d'affermage",
+    "genres": [
+     "autre"
+    ],
     "seance": "OCTOBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20735"
    }
@@ -281,6 +293,9 @@
    {
     "reference": "2006 DVD 211",
     "titre": "Approbation du principe de délégation de service public pour l’entretien et l’exploitation du parc de stationnement “CONCORDE”, situé sous la place de la Concorde (8e), pour une durée de 2 ans. Autorisation à M. le Maire de Paris de lancer la consultation et d’accomplir tous les actes préparatoires à la passation du contrat de délégation sous forme d’affer-mage. M. Denis BAUPIN, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80902"
    }
@@ -289,24 +304,36 @@
    {
     "reference": "2010 DDEEES 174",
     "titre": "2010, DDEEES 174 - Signature d'une convention fixant les conditions d'installation et d'exploitation de la grande roue place de la Concorde (8e) et des points de vente au pied de la grande roue.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13639"
    },
    {
     "reference": "2010 DDEEES 174",
     "titre": "Signature d’une convention fixant les conditions d’installation et d’exploitation d’une grande roue place de la Concorde (8e) et des points de vente au pied de celle-ci. Mme Lyne COHEN-SOLAL, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79596"
    },
    {
     "reference": "2010 DDEEES 250",
     "titre": ": Signature d’un avenant à la convention fixant les conditions d’installation et d’exploitation d’une grande roue fin 2010 place de la Concorde (8e) autorisant l’installation d’un distributeur automatique de billets. Mme Lyne COHEN-SOLAL, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23406"
    },
    {
     "reference": "2010 DDEEES 262",
     "titre": ": Signature d’un avenant numéro 2 modifiant les dates d’installation et d’exploitation de la grande roue 2010, place de la concorde (8ème) et instaurant une redevance complémentaire. Mme Lyne COHEN-SOLAL, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85917"
    }
@@ -315,6 +342,9 @@
    {
     "reference": "2011 DDEEES 71",
     "titre": "41 - 2011, DDEEES 71 - Signature d'une convention d'occupation du domaine public pour l'organisation d'un salon d'antiquaires et galeristes sur la contre allée de l'avenue des Champs Elysées (8e). Vœu déposé par le groupe UMPPA relatif à la création d'une charte pour la programmation des manifestations l'avenue des Champs-Elysées et la place de la Concorde.",
+    "genres": [
+     "autre"
+    ],
     "seance": "MARS 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95889"
    }
@@ -323,12 +353,18 @@
    {
     "reference": "2024 DICOM 6",
     "titre": "2024 DICOM 6 - Conventions de partenariat relatives à l’opération \"Village de Noël\" installée sur la place de la Concorde dans le cadre des \"Fêtes de fin d’année\".",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2024",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179118"
    },
    {
     "reference": "2024 DICOM 9",
     "titre": "2024 DICOM 9 - Conventions de partenariat relatives à l’opération du \"Concorde Park\" installé sur la place de la Concorde de la Ville de Paris.",
+    "genres": [
+     "autre"
+    ],
     "seance": "FEVRIER 2024",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174449"
    }
@@ -337,6 +373,9 @@
    {
     "reference": "2026 DVD 30",
     "titre": "2026 DVD 30 - Projet d'aménagement de la place de la Concorde (8e). - Approbation de la signature de la convention de transfert de gestion des fossés Est entre l'Etat et la Ville de Paris.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2026",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184353"
    }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "maison-des-metallos",
  "name": "Maison des Métallos",
@@ -501,24 +501,36 @@
    {
     "reference": "2002 DAC 213",
     "titre": "96 - 2002, DAC 213 - Autorisation à M. le Maire de Paris de signer un marché d'études sur appel d'offres pour la restructuration de la \"Maison des Métallos\" (11e)",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7996"
    },
    {
     "reference": "2002 DAC 213",
     "titre": "Approbation du principe de la restructuration de la \"Maison des Métallos, 94, rue Jean-Pierre-Timbaud (11e). - Consultation d'un programmiste. - Approbation du règlement de consultation, du cadre d'acte d'engagement, du C.C.A.P. relatifs au marché d'études de programmation et d'assistance au maître d'ouvrage. - Autorisation à Monsieur le Maire de Paris de signer le marché d'études auprès du prestataire désigné dans le cadre de la procédure d'appels d'offres. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88113"
    },
    {
     "reference": "2002 DVLR 184",
     "titre": "Approbation des modalités de lancement de deux appels d'offres ouvert concernant d'une part le nettoyage, et d'autre part la gestion du bâtiment dénommé \"La Maison des Métallos\" 94, rue Jean-Pierre Timbaud (11ème). - Autorisation à Monsieur le Maire de Paris à signer lesdits marchés auprès des attributaires désignés dans le cadre de la procédure de la commission d'appels d'offres. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45491"
    },
    {
     "reference": "2002 DVLR 184",
     "titre": "86 - 2002, DVLR 184 - Approbation des modalités de lancement de 2 appels d'offres ouverts concernant d'une part le nettoyage, et d'autre part, la gestion du bâtiment dénommé \"La Maison des Métallos\", 94, rue Jean-Pierre-Timbaud (11e). - Autorisation à M. le Maire de Paris de signer lesdits marchés auprès des attributaires désignés dans le cadre de la procédure de la Commission d'appels d'offres",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16028"
    }
@@ -527,18 +539,27 @@
    {
     "reference": "2003 DAC 488",
     "titre": "Approbation du principe de recours à un mandataire pour la réalisation des travaux de restructuration de la \"Maison des Métallos\", 94, rue Jean-Pierre-Timbaud (11e). - Approbation du règlement de consultation, du cadre d'acte d'engagement, du C.C.A.P. relatifs à la convention de mandat maître d'ouvrage. - Autorisation à M. le Maire de Paris de signer la convention auprès du prestataire désigné dans le cadre de la procédure d'appels d'offres. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47866"
    },
    {
     "reference": "2003 DAC 489",
     "titre": "Approbation des modalités de passation du marché de maîtrise d'œuvre pour la restructuration de la \"Maison des Métallos\" (11e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47952"
    },
    {
     "reference": "2003 DAC 489",
     "titre": "35 - 2003, DAC 489 - Autorisation à M. le Maire de Paris de signer un marché de maîtrise d'œuvre pour la restructuration de la \"Maison des Métallos\" (11e)",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3490"
    }
@@ -547,18 +568,27 @@
    {
     "reference": "2004 DAC 145",
     "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Comité pour une maison des savoirs et des cultures de l'est parisien dans la Maison des Métallos, dit Comité Métallos\" (11e) une convention relative à l'attribution d'une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MAI 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45665"
    },
    {
     "reference": "2004 DAC 334",
     "titre": "70 - 2004, DAC 334 - Restructuration de la \"Maison des Métallos\" (11e). - Approbation du marché de maîtrise d'oeuvre. - Autorisation au mandataire de la Ville de Paris de signer ledit marché.Vœu déposé par Mme Isabelle GUIROUS-MORIN, MM. Jacques DAGUENET et Patrick BLOCHE, adopté à l'unanimité par le Conseil du 11e arrondissement, relatif au projet de restructuration de la Maison des métallos",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10946"
    },
    {
     "reference": "2004 DAC 334",
     "titre": "Restructuration de la \"Maison des Métallos\", 94 rue Jean Pierre Timbaud (11e). - Approbation du marché de maîtrise d'œuvre. - Autorisation au mandataire de la Ville de Paris de signer ledit marché. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59819"
    }
@@ -567,6 +597,9 @@
    {
     "reference": "2005 DAC 96",
     "titre": "Attribution d’une subvention de fonctionnement à l’association “Comité pour une maison des savoirs et des cultures de l’est parisien dans la Maison des Métallos, dit Comité Métallos”, 94, rue Jean-Pierre-Timbaud (11e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MAI 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80698"
    }
@@ -575,30 +608,45 @@
    {
     "reference": "2006 DAC 116",
     "titre": "Autorisation à M. le Maire de Paris de signer, avec l’établissement public de “la Maison des métallos”, qui a son siège social 94 rue Jean-Pierre Timbaud (11e), l’avenant n° 1 à la convention pluriannuelle d’objectifs relative à l’attribution d’une subvention de fonctionnement de 840.000 euros. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MARS 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31258"
    },
    {
     "reference": "2006 DAC 329",
     "titre": "Restructuration de la Maison des Métallos, 94 rue Jean Pierre Timbaud (11e).- Avenant au marché de maîtrise d’oeuvre. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81247"
    },
    {
     "reference": "2006 DAC 583",
     "titre": "Autorisation à M. le Maire de Paris de signer, avec la régie personnalisée “établissement public de la Maison des métallos”, qui a son siège social 94 rue Jean-Pierre Timbaud, 75011 Paris, une convention pluriannuelle d’objectifs relative à l’attribution d’une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74474"
    },
    {
     "reference": "2006 DAC 583",
     "titre": "2006, DAC 583 - Autorisation à M. le Maire de Paris de signer avec la régie personnalisée “Etablissement public de la Maison des Métallos”, qui a son siège social 94, rue Jean-Pierre-Timbaud (11e), une convention pluriannuelle d’objectifs relative à l’attribution d’une subvention de fonctionnement. - Montant : 250.000 euros.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10759"
    },
    {
     "reference": "2006 DAC 666",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention annuelle d’objectifs, relative à l’attribution d’une subvention de fonctionnement à l’association “Comité pour une maison des savoirs et des cultures de l’est parisien dans la Maison des métallos” dit “Comité Métallos”, domiciliée à l’Union Fraternelle des Métallurgistes, 94, rue Jean-Pierre-Timbaud (11e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92411"
    }
@@ -607,36 +655,54 @@
    {
     "reference": "2007 DAC 116",
     "titre": "2007, DAC 116 - Autorisation à M. le Maire de Paris de signer avec l’établissement public “la Maison des Métallos” qui a son siège 94, rue Jean-Pierre-Timbaud (11e), l’avenant n° 1 à la convention pluriannuelle d’objectifs relative à l’attribution d’une subvention de fonctionnement. - Montant : 840.000 euros.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MARS 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22366"
    },
    {
     "reference": "2007 DAC 330",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention avec l’établissement public de la Maison des Métallos relative à l’attribution d’une subvention d’équipement à la Régie personnalisée chargée de l’exploitation de la Maison des Métallos, 94 rue Jean-Pierre Timbaud (11e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUIN 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72322"
    },
    {
     "reference": "2007 DAC 330",
     "titre": "2007, DAC 330 - Autorisation à M. le Maire de Paris de signer une convention avec l’établissement public de la Maison des Métallos relative à l’attribution d’une subvention d’équipement à la Régie personnalisée chargée de l’exploitation de la Maison des Métallos, 94, rue Jean-Pierre Timbaud (11e). - Montant : 300.000 euros.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUIN 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21108"
    },
    {
     "reference": "2007 DAC 335",
     "titre": "Restructuration de la Maison des Métallos, 94 rue Jean Pierre Timbaud (11e). - Avenants aux marchés de travaux. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72728"
    },
    {
     "reference": "2007 DAC 396",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention temporaire d’occupation du domaine public avec l’établissement public de la Maison des Métallos en vue de la mise à disposition de l’équipement culturel situé 94, rue Jean-Pierre Timbaud (11e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90575"
    },
    {
     "reference": "2007 DAC 682",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention annuelle d’objectifs, relative à l’attribution d’une subvention de fonctionnement à l’association “Comité pour une maison des savoirs et des cultures de l’est parisien dans la Maison des métallos” dit “Comité Métallos”, domiciliée à l’Union Fraternelle des Métallurgistes, 94, rue Jean-Pierre Timbaud (11e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54757"
    }
@@ -645,18 +711,27 @@
    {
     "reference": "2008 DAC 245",
     "titre": "2008, DAC 245 - SGRI 36 - Signature d’un avenant à la convention pluriannuelle d’objectifs passée avec l’établissement public “La Maison des métallos”.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MAI 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6777"
    },
    {
     "reference": "2008 DAC 245",
     "titre": "SGRI 36 - Signature d’un avenant à la convention pluriannuelle d’objectifs passée avec l’établissement public “la Maison des métallos”. - Attribution d’une subvention sur projet. MM. Pierre SCHAPIRA et Christophe GIRARD, rapporteurs.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MAI 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69776"
    },
    {
     "reference": "2008 DAC 614",
     "titre": "Subvention à l’association “Comité pour une maison des savoirs et des cultures de l’Est parisien dans la Maison des métallos” dit “Comité Métallos (11e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78163"
    }
@@ -665,24 +740,36 @@
    {
     "reference": "2009 DAC 448",
     "titre": "Signature d’un avenant et d’une convention avec l’établissement public “la Maison des métallos” pour l’attribution d’une subvention de fonctionnement et d’une subvention d’équipement. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74849"
    },
    {
     "reference": "2009 DAC 448",
     "titre": "2009, DAC 448 - Signature d'un avenant et d'une convention avec l'établissement public \"La Maison des Métallos\" pour l'attribution d'une subvention de fonctionnement et d'une subvention d'équipement. - Montant : 1.100.000 euros.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20549"
    },
    {
     "reference": "2009 DAC 549",
     "titre": "2009 DAC 549 Signature d’une convention avec l’association \"L’Etrange Festival\" (95), pour l’attribution d’une subvention destinée à l’organisation de la 15e édition de \"l’Etrange Festival\" au Forum des Images du 4 au 13 septembre 2009 et de la 5e édition de \"l’Etrange Musique\" les 16 et 17 octobre 2009 à la Maison des Métallos. - Montant : 33.000 euros. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37321"
    },
    {
     "reference": "2009 DAC 752",
     "titre": "Subvention à l’association Comité pour une maison des savoirs et des cultures de l’Est parisien dans la Maison des métallos dit Comité Métallos (11e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32699"
    }
@@ -691,24 +778,36 @@
    {
     "reference": "2010 DAC 494",
     "titre": "SG 142 Subvention à l’association Compagnie Orten pour le spectacle A mon âge je me cache encore pour fumer diffusé à La Maison des métallos (11e) et au Théâtre de l’épée de bois (12e) en 2010. M. Christophe GIRARD et Mme Fatima LALEM, rapporteurs.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39755"
    },
    {
     "reference": "2010 DAC 496",
     "titre": "Subvention à l’association Comité pour une maison des savoirs et des cultures de l’Est parisien dans la Maison des métallos dit Comité Métallos (11e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85742"
    },
    {
     "reference": "2010 DAC 94",
     "titre": "Signature d’un avenant à la convention pluriannuelle avec l’établissement public “La Maison des métallos” pour l’attribution d’une subvention. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79479"
    },
    {
     "reference": "2010 DAC 95",
     "titre": "Signature d’une convention avec l’établissement public local de la Maison des Métallos pour l’attribution d’une subvention. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39442"
    }
@@ -717,12 +816,18 @@
    {
     "reference": "2011 DAC 130",
     "titre": "72 - 2011, DAC 130 - Signature avec l’établissement public local de la Maison des Métallos d’un avenant à la convention pluriannuelle d’objectifs et d’un avenant à la convention d’équipement pour l’attribution de deux subventions. Montant : 1.112.000 euros.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=100773"
    },
    {
     "reference": "2011 DAC 132",
     "titre": "Subvention à l’association Comité pour une maison des savoirs et des cultures de l’Est parisien dans la Maison des métallos dit Comité Métallos (11e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MAI 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97751"
    }
@@ -731,6 +836,9 @@
    {
     "reference": "2017 DAC 21",
     "titre": "2017 DAC 21 - Contribution et subvention d'équipement (1.552.500 euros), avenant à convention et convention avec l’établissement public de coopération culturelle \"Maison des métallos\" (11e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MAI 2017",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=135820"
    }
@@ -739,6 +847,9 @@
    {
     "reference": "2018 DAC 20",
     "titre": "2018 DAC 20 - Contribution (1.500.000 euros) et avenant à convention avec l’établissement public de coopération culturelle \"Maison des Métallos\" (11e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "MAI 2018",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=142454"
    }
@@ -747,6 +858,9 @@
    {
     "reference": "2020 DAC 8",
     "titre": "2020 DAC 8 - Contributions (11.050.000 euros) et avenants à conventions avec les établissements publics de coopération culturelle Maison des métallos (11e), CENTQUATRE (19e) et Ateliers Médicis.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 2020",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156182"
    }
@@ -755,6 +869,9 @@
    {
     "reference": "2021 DAC 306",
     "titre": "2021 DAC 306 - Subvention (13.000 euros) au Comité pour une maison des savoirs et des cultures de l'Est parisien dans la Maison des métallos (11e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "OCTOBRE 2021",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=160931"
    }
@@ -763,6 +880,9 @@
    {
     "reference": "2022 DAC 36",
     "titre": "2022 DAC 36 - Contribution (2.000.000 euros) et avenant à convention avec l’établissement public de coopération culturelle Maison des Métallos (11e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "OCTOBRE 2022",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=167222"
    }
@@ -771,6 +891,9 @@
    {
     "reference": "2023 DAC 36",
     "titre": "2023 DAC 36 - Contribution (2.000.000 euros) et avenant à convention avec l’établissement public de coopération culturelle Maison des métallos (11e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUIN 2023",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=169733"
    }
@@ -779,12 +902,18 @@
    {
     "reference": "2024 DAC 390",
     "titre": "2024 DAC 390 - Contribution (2.235.000 euros) et avenant à convention avec l’établissement public de coopération culturelle \"La Maison des Métallos\" (11e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2024",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178698"
    },
    {
     "reference": "2024 DAC 4",
     "titre": "2024 DAC 4 - Contribution (2.000.000 euros) et avenant à convention avec l’établissement public de coopération culturelle \"La Maison des Métallos\" (11e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "MAI 2024",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176269"
    }

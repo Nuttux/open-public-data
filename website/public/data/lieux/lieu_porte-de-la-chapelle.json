@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "porte-de-la-chapelle",
  "name": "Porte de la Chapelle",
@@ -268,6 +268,9 @@
    {
     "reference": "1996 D 641",
     "titre": "6 - 1996, D. 641- Autorisation à M. le Maire de Paris de souscrire un avenant n° 5 à la convention de concession signée avec la Société du parc de la porte de la Chapelle et la société \"Les chantiers modernes\" pour la construction et l'exploitation du parc de stationnement de la porte de la Chapelle (18e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 1996",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22944"
    }
@@ -276,12 +279,18 @@
    {
     "reference": "2004 DPVI 69",
     "titre": "Subvention d'équipement à l'association Service 18 du quartier Porte La Chapelle-Porte d'Aubervilliers (18e). Mme Martine DURLACH, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46071"
    },
    {
     "reference": "2004 DVD 283",
     "titre": "Approbation du principe et des modalités de réalisation des travaux de modernisation de l’éclairage boulevard Ney entre la porte des Poissonniers et la porte de la Chapelle (18e). M. Denis BAUPIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37651"
    }
@@ -290,6 +299,9 @@
    {
     "reference": "2005 DVD 109",
     "titre": "Modification de l’échangeur de la Porte de la Chapelle et réalisation d’une passerelle au-dessus du boulevard périphérique (18e) en vue de l’accueil des Jeux Olympiques à Paris, en 2012. - Approbation du principe et des modalités de passation : d’un marché de Maîtrise d’Oeuvre (MOE) ; d’un marché d’Assistance à Maîtrise d’Ouvrage (AMO) ; d’un marché d’Ordonnancement, Pilotage et Coordination (OPC) ; d’un marché de Contrôle Technique (CT) ; d’un marché de Sécurité et Protection de la Santé (SPS).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26462"
    }
@@ -298,24 +310,36 @@
    {
     "reference": "2007 DVD 214",
     "titre": "Approbation du principe et des modalités de passation d’un marché de maîtrise d’oeuvre pour la mise en place de la priorité du tramway T3 aux carrefours à feux, dans le cadre de son extension entre la Porte d’Ivry et la Porte de la Chapelle à Paris. M. Denis BAUPIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54767"
    },
    {
     "reference": "2007 DVD 214",
     "titre": "2007, DVD 214 - Approbation du principe et des modalités de passation d’un marché de maîtrise d’oeuvre pour la mise en place de la priorité du tramway T3 aux carrefours à feux, dans le cadre de son extension entre la Porte d’Ivry et la Porte de la Chapelle (12e, 13e, 18e, 19e et 20e). 2007, DVD 228 - Approbation du principe et des modalités de passation d’un marché de coordination pour la sécurité et la protection de la santé des travailleurs sur le chantier dans le cadre de l’extension du tramw",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4680"
    },
    {
     "reference": "2007 DVD 81",
     "titre": "Attribution de cinq marchés de maîtrise d’œu-vre pour le projet d’extension du tramway T3 de la Porte d’Ivry à la Porte de la Chapelle et autorisation à M. le Maire de Paris de les signer. M. Denis BAUPIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31526"
    },
    {
     "reference": "2007 DVD 81",
     "titre": "2007, DVD 81 - Attribution de cinq marchés de maîtrise d’oeuvre pour le projet d’extension du tramway T3 de la Porte d’Ivry à la Porte de la Chapelle. - Autorisation à M. le Maire de Paris de les signer. 2006, DVD 275 - Autorisation à M. le Maire de Paris de signer avec le Syndicat des Transports d’Ile-de-France (STIF) et la Région Ile-de-France une convention relative aux études et expertises nécessaires en vue de l’établissement par le STIF du schéma de principe et du dossier d’enquête publiqu",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22395"
    }
@@ -324,54 +348,81 @@
    {
     "reference": "2008 DU 216",
     "titre": "2008, DU 216 - Approbation de la mise en compatibilité du Plan Local d'Urbanisme de Paris avec le projet d'extension Est du tramway des Maréchaux (T3) de la Porte d'Ivry à la Porte de la Chapelle (12e, 13e, 18e, 19e et 20e). 2008, DVD 258 - Réalisation de la ligne de l'extension du tramway T3 de la Porte d'Ivry à la Porte de La Chapelle (12e, 13e, 18e, 19e et 20e). - Avis sur le projet de travaux du système de transport relevant de la maîtrise d'ouvrage STIF concourant à l'opération. 2008, DVD 2",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5059"
    },
    {
     "reference": "2008 DVD 126",
     "titre": "Autorisation à M. le Maire de Paris de signer l’avenant n° 6 à la convention de concession du 13 décembre 1973 avec la Société du Parc de la Porte de la Chapelle, pour proroger d’un an la concession pour la construction et l’exploitation du parc de stationnement “Porte de la Chapelle” (18e). Mme Annick LEPETIT, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61929"
    },
    {
     "reference": "2008 DVD 257",
     "titre": "Réalisation de la ligne de l’extension du tramway T3, de la Porte d’Ivry (13e), à la Porte de la Chapelle (18e) et desservant les 12e, 13e, 18e, 19e et 20e arrondissements. - Déclaration de projet relative aux travaux relevant de la maîtrise d’ouvrage de la Ville de Paris concourant à l’opération. Mme Annick LEPETIT, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77865"
    },
    {
     "reference": "2008 DVD 258",
     "titre": "Réalisation de la ligne de l’extension du tramway T3, de la porte d’Ivry (13e), à la Porte de la Chapelle (18e) et desservant les 12e, 13e, 18e, 19e, et 20e arrondissements. - Avis sur le projet de travaux du système de transport relevant de la maîtrise d’ouvrage STIF concourant à l’opération. Mme Annick LEPETIT, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78193"
    },
    {
     "reference": "2008 DVD 32",
     "titre": "2008, DVD 32 - Approbation du principe de délégation de service public pour l’entretien et l’exploitation du parc de stationnement en superstructure “Porte de la Chapelle” (18e) pour une durée de 3 ans. - Autorisation à M. le Maire de Paris de lancer la consultation et d’accomplir tous les actes préparatoires à la passation du contrat de délégation sous forme d’affermage.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13765"
    },
    {
     "reference": "2008 DVD 32",
     "titre": "Approbation du principe de délégation de service public pour l’entretien et l’exploitation du parc de stationnement en superstructure “PORTE DE LA CHAPELLE” (18e), pour une durée de 3 ans. - Autorisation à M. le Maire de Paris de lancer la consultation et d’accomplir tous les actes préparatoires à la passation du contrat de délégation sous forme d’affermage. Mme Annick LEPETIT, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91412"
    },
    {
     "reference": "2008 DVD 55",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention avec la RATP pour des études approfondies pour le système de transport nécessaires à l’extension du tramway T3 de la Porte d’Ivry à la porte de la Chapelle à Paris. Mme Annick LEPETIT, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70030"
    },
    {
     "reference": "2008 DVD 55",
     "titre": "2008, DVD 55 - Signature d’une convention avec la RATP pour des études approfondies pour le système de transport nécessaires à l’extension du tramway T3 de la porte d’Ivry à la porte de la chapelle. Voeu déposé par les élus du groupe Mouvement républicain et citoyen relatif au projet de délibération DVD 55. Voeu déposé par les élus du groupe socialiste, radical de gauche et apparentés relatif à l’extension du tramway T3 à la porte d’Asnières. Voeu déposé par Mme CALANDRA relatif aux conditions d",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6775"
    },
    {
     "reference": "2008 DVD 85",
     "titre": "Autorisation à M. le Maire de Paris de signer un marché de coordination en matière de Sécurité et de Protection de la Santé des travailleurs sur les chantiers pour l’extension du tramway T3 de Porte d’Ivry à Porte de la Chapelle. Mme Annick LEPETIT, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69771"
    }
@@ -380,30 +431,45 @@
    {
     "reference": "2009 DVD 145",
     "titre": "Réalisation de l’extension du tramway T3, de la porte d’Ivry (13e), à la Porte de la Chapelle (18e) et desservant les 12e, 13e, 18e, 19e et 20e arrondissements. - Approbation du principe et des modalités de la convention de financement entre la Ville de Paris et Réseau Ferré de France, pour la réalisation d’études nécessaires à l’extension du tramway T3. Autorisation à M. le Maire de Paris de signer la convention correspondante. Mme Annick LEPETIT, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77624"
    },
    {
     "reference": "2009 DVD 147",
     "titre": "Approbation du principe des travaux de Signalisation Lumineuse Tricolore (SLT) dans le cadre de l’opération d’extension du Tramway des Maréchaux (T3) entre la porte d’Ivry (13e) et la porte de la Chapelle (18e). Mme Annick LEPETIT, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36668"
    },
    {
     "reference": "2009 DVD 155",
     "titre": "Approbation du principe réalisation des travaux d’ouvrages d’art à Porte de la Chapelle dans le cadre de l’extension du tramway T3 à Paris. Mme Annick LEPETIT, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74861"
    },
    {
     "reference": "2009 DVD 275",
     "titre": "Signature avec le Réseau Ferré de France de deux conventions de transfert de maîtrise d’ouvrage, l’une pour les travaux de la reconstruction d’un nouveau mur de soutènement rue de la Clôture (19e), l’autre pour les travaux de la réalisation d’une clôture Porte de La Chapelle (18e) et signature d’une convention de financement des travaux connexes et prestations à réaliser par RFF nécessaires à l’extension du tramway T3 (12e, 13e, 18e et 19e). Mme Annick LEPETIT, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81707"
    },
    {
     "reference": "2009 DVD 79",
     "titre": "Approbation par le Conseil de Paris de l’avant projet relatif à l’extension du tramway T3. Autorisation à M. le Maire de Paris de signer une convention d’occupation du domaine public par le STIF pour le projet d’extension du tramway T3 de la porte d’Ivry à la porte de la Chapelle. - Autorisation au STIF ou à toute personne dûment désignée par lui de déposer des demandes de permis de construire pour la construction du site de maintenance et de remisage sur le site Jules Ladoumègue (19e) et pour t",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50063"
    }
@@ -412,12 +478,18 @@
    {
     "reference": "2010 DVD 64",
     "titre": "G Signature de la convention régissant les rapports entre la Ville de Paris, le Conseil Régional d’Ile de France et le STIF pour la réalisation des études préalables au Dossier d’Objectifs et de caractéristiques Principales (DOCP) et pour la concertation préalable pour le projet d’extension du tramway T3 de la Porte de la Chapelle à la Porte d’Asnières. Mme Annick LEPETIT, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67691"
    },
    {
     "reference": "2010 DVD 64",
     "titre": "2010, DVD 64 G - Signature de la convention régissant les rapports entre la Ville de Paris, le Conseil Régional d'Ile de France et le STIF pour la réalisation des études préalables au Dossier d'Objectifs et de Caractéristiques Principales (DOCP) et pour la concertation préalable au projet d'extension du Tramway T3 de la Porte de La Chapelle à la Porte d'Asnières.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9433"
    }
@@ -426,24 +498,36 @@
    {
     "reference": "2011 DVD 107",
     "titre": "Signature avec le Conseil Régional d’Ile de France et le STIF d’une convention pour le financement des études relatives à l’élaboration du Schéma de Principe et du dossier d’Enquête Publique pour le projet d’extension T3 de la Porte de la Chapelle à la Porte d’Asnières (17e) et (18e). Mme Annick LEPETIT, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96236"
    },
    {
     "reference": "2011 DVD 134",
     "titre": "9 - 2011, DVD 134 G - Signature d’une convention avec M. le Maire de Paris pour l’extension du tramway T3 de la Porte de la Chapelle à la Porte d’Asnières au titre du contrat particulier avec la Région d’Ile-de-France (2009-2013).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=101094"
    },
    {
     "reference": "2011 DVD 134",
     "titre": "Signature d’une convention avec M. le Maire de Paris pour l’extension du tramway T3 de la Porte de la Chapelle à la Porte d’Asnières, au titre du contrat particulier avec la Région d’Ile de France pour la période 2009-2013. Mme Annick LEPETIT, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97505"
    },
    {
     "reference": "2011 DVD 39",
     "titre": "Signature avec Réseau Ferré de France d’une convention désignant la Ville de Paris maître d’ouvrage unique des études et travaux relatifs à la démolition - reconstruction du pont rail de la rue de Patay nécessaire à l’extension du tramway T3 entre la porte d’Ivry et la porte de la Chapelle. Mme Annick LEPETIT, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97962"
    }
@@ -452,12 +536,18 @@
    {
     "reference": "2019 DASES 238",
     "titre": "2019 DASES 238 - DLH - Conventions avec l’association AURORE - Mise à disposition par la Ville de Paris de l’espace de repos et de répit Porte de la Chapelle (18e) et subventions de fonctionnement et d'équipements (145.000 euros).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2019",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152432"
    },
    {
     "reference": "2019 DASES 293",
     "titre": "2019 DASES 293 - DLH - Prolongation de la Halte humanitaire de jour avenue de la Porte de la Chapelle jusqu'au 31 mars 2020 - Avenants aux conventions de mise à disposition du site.",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2019",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152752"
    }
@@ -466,6 +556,9 @@
    {
     "reference": "2022 DAE 213",
     "titre": "2022 DAE 213 - Campus Condorcet (site Porte de la Chapelle, 18e) : prolongation de la convention de financement.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2022",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=167935"
    }
@@ -474,6 +567,9 @@
    {
     "reference": "2023 DGGP 8",
     "titre": "2023 DGGP 8 - Signature de deux conventions de cofinancement avec la Métropole du Grand Paris pour l'aménagement de la Porte de la Chapelle et des rues Chapelle/Marx Dormoy (13.000.000 euros).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2023",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=169773"
    }

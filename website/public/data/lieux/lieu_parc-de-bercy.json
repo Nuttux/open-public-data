@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-de-bercy",
  "name": "Parc de Bercy",
@@ -259,18 +259,27 @@
    {
     "reference": "1996 D 1094",
     "titre": "22 - 1996, D. 1094 - Autorisation à M. le Maire de Paris de souscrire un avenant au marché de maîtrise d'oeuvre, ainsi que des avenants aux marchés de travaux signés pour l'aménagement du parc de Bercy (12e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 1996",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4368"
    },
    {
     "reference": "1996 D 1647",
     "titre": "43- 1996, D. 1647 - Autorisation à M. le Maire de Paris de souscrire un avenant de substitution au marché signé avec la société \"Falleau S.A.\" pour l'aménagement du parc de Bercy (12e) (lot n° I.15 : mise en place de végétaux, engazonnement).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 1996",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17618"
    },
    {
     "reference": "1996 D 841",
     "titre": "54 - 1996, D. 841- Autorisation à M. le Maire de Paris de signer un contrat de transaction suite à l'annulation du marché signé avec les sociétés \"Urbaine de travaux\" et \"Meneguzzo\" pour la construction de l'Orangerie du parc de Bercy (12e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 1996",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4122"
    }
@@ -279,30 +288,45 @@
    {
     "reference": "1999 DAC 279",
     "titre": "Approbation des modalités d'attribution d'un marché pour le déménagement et l'installation dans le dépôt archéologique, situé sous la grande terrasse du parc de Bercy \"Les jardins de la mémoire\" (12e) d'objets archéologiques entreposés au musée Carnavalet (3e) à l'Hôtel de Saint-Aignan (3e) et au 11 bis, rue Claude-Terrasse (16e). - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42458"
    },
    {
     "reference": "1999 DAC 48",
     "titre": "46 - 1999, DAC 48 - Autorisation à M. le Maire de Paris de signer 2 marchés sur appel d'offres pour l'aménagement intérieur complémentaire du dépôt archéologique situé sous la grande terrasse du parc de Bercy \"Les jardins de la Mémoire\" (12e)",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5328"
    },
    {
     "reference": "1999 DAC 48",
     "titre": "Approbation des modalités d'attribution de 2 marchés sur appel d'offres pour l'aménagement intérieur complémentaire du dépôt archéologique situé sous la grande terrasse du parc de Bercy \"Les jardins de la Mémoire\" (12e). - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75801"
    },
    {
     "reference": "1999 DVD 113",
     "titre": "32 - 1999, DVD 113 - Autorisation à M. le Maire de Paris de signer avec M. FEICHTINGER, architecte, et le cabinet d'ingénieurs \"RFR\" un marché de maîtrise d'oeuvre pour la construction de la passerelle reliant la \"terrasse au bord de l'eau\" du parc de Bercy au quai François-Mauriac (12e et 13e)",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24583"
    },
    {
     "reference": "1999 DVD 113",
     "titre": "Attribution du marché de maîtrise d'oeuvre pour la construction de la passerelle reliant la \"terrasse au bord de l'eau\" du parc de Bercy au quai François-Mauriac (12e et 13e). - Autorisation à M. le Maire de Paris de signer avec M. FEICHTINGER et le Cabinet d'ingénieurs R.F.R. ledit marché. M. Bernard PLASAIT, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85683"
    }
@@ -311,18 +335,27 @@
    {
     "reference": "2000 DVD 15",
     "titre": "Autorisation à M. le Maire de Paris de signer avec le SETRA une convention relative à la mission de conseil et d'assistance au maître d'ouvrage pendant les études nécessaires à la réalisation de la passerelle reliant la \"terrasse au bord de l'eau\" du parc de Bercy au quai François-Mauriac (12 et 13e). M. Bernard PLASAIT, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "FEVRIER 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51222"
    },
    {
     "reference": "2000 DVD 99",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant au marché de maîtrise d'oeuvre signé avec le groupement \"Feichtinger-R.F.R.\" pour la construction de la passerelle reliant la \"terrasse au bord de l'eau\" du parc de Bercy au quai François-Mauriac (12e et 13e). M. Bernard PLASAIT, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28228"
    },
    {
     "reference": "2000 DVD 99",
     "titre": "23 - 2000, DVD 99 - Autorisation à M. le Maire de Paris de souscrire un avenant au marché de maîtrise d'oeuvre signé avec le groupement \"Feichtinger-R.F.R.\" pour la construction de la passerelle reliant la \"terrasse au bord de l'eau\" du parc de Bercy au quai François-Mauriac (12e et 13e)",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10143"
    }
@@ -331,12 +364,18 @@
    {
     "reference": "2002 DPE 99",
     "titre": "Approbation du principe et des modalités d'attribution d'un marché sur appel d'offres, ou négocié après appel d'offres infructueux, pour le passage en siphon de l'égout rue Joseph Kessel à Paris 12ème, dans le cadre de la création de la liaison souterraine entre les parties Ouest et Est du parc de Bercy.- Autorisation à M. le Maire de Paris de signer ledit marché. Mme Myriam CONSTANTIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95301"
    },
    {
     "reference": "2002 DVD 101",
     "titre": "Réalisation de la passerelle \"Bercy-Tolbiac\" (12e et 13e). - Bilan de l'enquête publique et approbation de l'opération. - Autorisation à M. le Maire de Paris de souscrire un avenant n° 2 au marché de maîtrise d'œuvre pour la construction de la passerelle reliant la \"terrasse au bord de l'eau\" du parc de Bercy au quai François-Mauriac (12e et 13e). M. Denis BAUPIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55669"
    }
@@ -345,24 +384,36 @@
    {
     "reference": "2003 DVD 219",
     "titre": "Autorisation à M. le Maire de Paris de signer 3 conventions pour la mise à disposition d'emplacements de stationnement pour autocars dans les parcs \"Carrousel-Louvre\", \"Georges-Pompidou\" et \"Saint-Emilion\" dans le cadre de la création d'un forfait de stationnement pour autocars. - Autorisation à M. le Maire de Paris de signer l'avenant n° 2 à la convention de concession du parc de stationnement \"Parc de Bercy\" dans le cadre de la création d'un forfait de stationnement pour autocars. M. Denis BAU",
+    "genres": [
+     "autre"
+    ],
     "seance": "MAI 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56999"
    },
    {
     "reference": "2003 DVD 219",
     "titre": "148 - 2003, DVD 219 - Autorisation à M. le Maire de Paris de signer 3 conventions pour la mise à disposition d'emplacements de stationnement pour autocars dans les parcs \"Carrousel-Louvre\", \"Georges-Pompidou\" et \"Saint-Emilion\" dans le cadre de la création d'un forfait de stationnement pour autocars. - Autorisation à M. le Maire de Paris de souscrire un avenant n° 2 à la convention de concession du parc de stationnement \"Parc de Bercy\" dans le cadre de la création d'un forfait de stationnement p",
+    "genres": [
+     "autre"
+    ],
     "seance": "MAI 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14596"
    },
    {
     "reference": "2003 DVD 37",
     "titre": "Réalisation de la passerelle \"Bercy-Tolbiac\" (12e et 13e). - Autorisation à M. le Maire de Paris de souscrire un avenant n° 3 au marché de maîtrise d'œuvre pour la construction de la passerelle reliant la \"terrasse au bord de l'eau\" du parc de Bercy au quai François-Mauriac (12e et 13e). M. Denis BAUPIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56916"
    },
    {
     "reference": "2003 DVD 37",
     "titre": "145 - 2003, DVD 37 - Réalisation de la passerelle \"Bercy-Tolbiac\" (12e et 13e). - Autorisation à M. le Maire de Paris de souscrire un avenant n° 3 au marché de maîtrise d'oeuvre pour la construction de la passerelle reliant la \"terrasse au bord de l'eau\" du parc de Bercy au quai François-Mauriac (12e et 13e)",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14593"
    }
@@ -371,12 +422,18 @@
    {
     "reference": "2007 DJS 231",
     "titre": "2007, DJS 231 - Autorisation à M. le Maire de Paris de lancer la procédure de marché négocié suivant l’article 35-1-5° et de déposer une demande de permis de construire pour la création de la couverture du roller park du parc de Bercy (12e). Vœu déposé par le groupe “Les Verts” relatif à la création d’une aire de jeux de ballons dans le parc de Bercy.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22434"
    },
    {
     "reference": "2007 DJS 231",
     "titre": "Autorisation à M. le Maire de Paris de lancer la procédure de marché négocié suivant l’article 35-I-5° et de déposer une demande de permis de construire pour la création de la couverture du roller park du Parc de Bercy (12e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31470"
    }
@@ -385,12 +442,18 @@
    {
     "reference": "2008 DJS 339",
     "titre": "Signature d’un contrat de transaction avec la société SMC2 SARL visant à l’indemniser des travaux supplémentaires réalisés dans le cadre des travaux de création de la couverture du roller park du Parc de Bercy (12e). M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91131"
    },
    {
     "reference": "2008 DJS 446",
     "titre": "Approbation de l’opération et demande de subvention auprès du Centre National pour le Développement du Sport concernant la mise en conformité de modules de roller au skate parc de Bercy (12e). M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61895"
    }
@@ -399,6 +462,9 @@
    {
     "reference": "2013 DDEEES 190",
     "titre": "2013 DDEEES 190 - Convention d'occupation du domaine public pour l'exploitation d'une buvette-restauration sur place et à emporter située dans le parc de Bercy (12e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2013",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116121"
    }
@@ -407,6 +473,9 @@
    {
     "reference": "2018 DEVE 85",
     "titre": "2018 DEVE 85 - Installation d’un container maritime à usage de production agricole dans le parc de Bercy (12e). - Renouvellement de la convention avec la société \"Agricool\".",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2018",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144116"
    }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "piscine-keller",
  "name": "Piscine Keller",
@@ -304,6 +304,9 @@
    {
     "reference": "2004 DJS 510",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un marché pour l’exploitation de la piscine Keller située 14, rue de l’Ingénieur-Robert-Keller (15e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37377"
    }
@@ -312,12 +315,18 @@
    {
     "reference": "2005 DJS 391",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 à la convention de mandat de maîtrise d’ouvrage signée avec la Société d’Economie Mixte d’Equipement et d’Aménagement du XVème arrondissement concernant les études et les travaux de restructuration de la piscine Keller - 14, rue de l’Ingénieur Keller (15e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63188"
    },
    {
     "reference": "2005 DJS 391",
     "titre": "2005, DJS 391 - Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 à la convention de mandat de maîtrise d’ouvrage signée avec la Société d’économie mixte d’équipement et d’aménagement du XVe arrondissement concernant les études et les travaux de restructuration de la piscine Keller (15e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10316"
    }
@@ -326,24 +335,36 @@
    {
     "reference": "2006 DJS 307",
     "titre": "Autorisation à la Société d’économie mixte d’équipement et d’aménagement du XVe arrondissement de souscrire un avenant n° 1 au marché de filtration et traitement de l’eau, lot 3.2, relatif aux travaux de restructuration de la piscine Keller (15e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38713"
    },
    {
     "reference": "2006 DJS 484",
     "titre": "Autorisation à M. le Maire de Paris de souscrire l’avenant n° 2 à la convention de maîtrise d’ouvrage entre la Ville de Paris et la SEMEA XV et autorisation à la SEMEA XV de souscrire l’avenant n° 1 au marché de travaux lot 2 - Charpentes métalliques, concernant la rénovation de la piscine Keller (15e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74425"
    },
    {
     "reference": "2006 DJS 538",
     "titre": "2006, DJS 538 - Autorisation à la SEMEA XV de souscrire l’avenant n° 1 au marché de travaux “désamiantagedémolition-gros oeuvre-maçonnerie” lot 1.1 concernant la rénovation de la piscine Keller (15e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17970"
    },
    {
     "reference": "2006 DJS 538",
     "titre": "Autorisation à la SEMEA XV de souscrire l’avenant n° 1 au marché de travaux “désamiantage démolitions - gros œuvre - maçonnerie” lot 1.1, concernant la rénovation de la piscine Keller (15e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92212"
    }
@@ -352,36 +373,54 @@
    {
     "reference": "2007 DJS 220",
     "titre": "2007, DJS 220 - Autorisation à la SEMEA XV de souscrire l’avenant n° 1 au marché de travaux “chauffage/ventilation - plomberie/sanitaire” (lot 3.1), concernant la rénovation de la piscine Keller (15e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22408"
    },
    {
     "reference": "2007 DJS 220",
     "titre": "Autorisation à la SEMEA XV de souscrire l’avenant n° 1 au marché de travaux “chauffage/venti-lation-plomberie/sanitaire” lot 3.1, concernant la rénovation de la piscine Keller (15e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31293"
    },
    {
     "reference": "2007 DJS 360",
     "titre": "Autorisation à la SEMEA XV de signer l’avenant n° 1 au marché de travaux “carrelages” lot 1.2, l’avenant n° 2 au marché de travaux “”désamiantage-démolitions-gros-œuvre-maçonnerie” lot 1.1 et l’avenant n° 1 au marché de maîtrise d’œuvre, concernant la rénovation de la piscine Keller (15e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53755"
    },
    {
     "reference": "2007 DJS 394",
     "titre": "Autorisation à M. le Maire de Paris de lancer un marché de prestation de services pour l’exploitation de la piscine Keller (15e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72260"
    },
    {
     "reference": "2007 DJS 433",
     "titre": "Autorisation à la SEMEA XV de signer les avenants n° 1 au marché de travaux lot 1.3 “menuiseries bois, isolation et traitement acoustique”, lot 1.4 “métallerie”, lot 1.6 “peinture”, lot 4 “électricité”, lot 6 “système de surveillance d’aide à la prévention des noyades”, lot 8 “cabines et casiers vestiaires” et lot 9 “cabines saunas” au marché, concernant la rénovation de la piscine Keller (15e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53542"
    },
    {
     "reference": "2007 DJS 464",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 3 à la convention de mandat de maîtrise d’ouvrage signée avec la Société d’Economie Mixte Paris Seine et autorisation à la SEMPARISEINE de signer l’avenant n° 2, au marché de travaux “carrelages” lot 1.2, l’avenant n° 1 au marché de travaux “plafonds suspendus” lot 1.5 et l’avenant n° 2 au marché de travaux “peinture” lot 1.6, concernant la rénovation de la piscine Keller (15e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53869"
    }

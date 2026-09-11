@@ -226,6 +226,12 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
    * souvent d'un exercice. La légende le dit, elle ne le masque pas. */
   const delibs = lieu.delibs_par_annee || null;
   const [ouvert, setOuvert] = useState<{ annee: number; tone: string } | null>(null);
+  /* Les délibérations sont rattachées au LIEU, pas au type d'argent. Chaque
+   * ligne ne montre donc que celles de son genre : sans ce tri, une subvention
+   * de fonctionnement s'affichait sous « Travaux et rénovation ». */
+  const genrePour = (tone: "x" | "w") => (tone === "x" ? "subvention" : "travaux");
+  const delibsDe = (y: number, tone: "x" | "w") =>
+    (delibs?.[String(y)] || []).filter((d) => (d.genres || []).includes(genrePour(tone)));
 
   const Years = ({ series, tone }: { series: { year: number; value: number }[]; tone: "x" | "w" }) => {
     const dans = series.filter((r) => !axe || r.year >= axe.de);
@@ -234,15 +240,14 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
     const parAn = new Map(dans.map((r) => [r.year, r.value]));
     const annees: number[] = [];
     for (let y = axe.de; y <= axe.a; y++) annees.push(y);
-    const aDesDelibs = annees.some((y) => (delibs?.[String(y)] || []).length > 0);
     const sel = ouvert && ouvert.tone === tone ? ouvert.annee : null;
-    const lignes = sel ? (delibs?.[String(sel)] || []) : [];
+    const lignes = sel !== null ? delibsDe(sel, tone) : [];
     return (
       <>
-        <div className={`fx-v3-years ${tone}${aDesDelibs ? " clic" : ""}`} aria-hidden={aDesDelibs ? undefined : "true"}>
+        <div className={`fx-v3-years ${tone} clic`}>
           {annees.map((y, i) => {
             const v = parAn.get(y);
-            const n = (delibs?.[String(y)] || []).length;
+            const n = delibsDe(y, tone).length;
             const corps = (
               <>
                 {v === undefined ? <em /> : <i style={{ height: Math.max(2, Math.round((v / max) * 40)) }} />}
@@ -253,25 +258,33 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
             const titre = v === undefined
               ? `${y} · ${t("fx.lieu.years.non_publie")}`
               : `${y} · ${eurTxt(v)}`;
-            if (!n) {
-              return <div key={y} className={v === undefined ? "hors" : undefined} title={titre}>{corps}</div>;
+            // TOUTE année porte le clic, pas seulement celles qui ont une
+            // décision : le panneau donne d'abord le montant de l'exercice.
+            // Un survol ne sert à rien sur un téléphone, et obliger à déplier
+            // une liste de quinze lignes pour lire un chiffre était du travail
+            // demandé au lecteur pour rien.
+            if (v === undefined) {
+              return <div key={y} className="hors" title={titre}>{corps}</div>;
             }
             return (
-              <button key={y} type="button"
-                      className={`${v === undefined ? "hors " : ""}${sel === y ? "on" : ""}`}
-                      aria-expanded={sel === y}
-                      title={`${titre} · ${fill(t("fx.lieu.delib.n"), { n })}`}
+              <button key={y} type="button" className={sel === y ? "on" : ""}
+                      aria-expanded={sel === y} aria-label={titre}
+                      title={n ? `${titre} · ${fill(t("fx.lieu.delib.n"), { n })}` : titre}
                       onClick={() => setOuvert(sel === y ? null : { annee: y, tone })}>
                 {corps}
               </button>
             );
           })}
         </div>
-        {sel !== null && lignes.length > 0 && (
+        {sel === null && <p className="fx-v3-aide">{t("fx.lieu.delib.aide")}</p>}
+        {sel !== null && (
           <div className="fx-v3-delib">
             <p className="hd">
               <span className="an mono">{sel}</span>
-              {fill(t("fx.lieu.delib.titre"), { n: lignes.length })}
+              <span className="mt">{eurTxt(parAn.get(sel) ?? 0)}</span>
+              {lignes.length > 0
+                ? fill(t("fx.lieu.delib.titre"), { n: lignes.length })
+                : t("fx.lieu.delib.aucune")}
             </p>
             {lignes.map((d) => (
               <a key={d.reference + d.titre.slice(0, 20)} className="dl"
@@ -280,7 +293,9 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
                 <span className="ti">{d.titre}</span>
               </a>
             ))}
-            <p className="fx-v3-foot" style={{ marginTop: 10 }}>{t("fx.lieu.delib.note")}</p>
+            {lignes.length > 0 && (
+              <p className="fx-v3-foot" style={{ marginTop: 10 }}>{t("fx.lieu.delib.note")}</p>
+            )}
           </div>
         )}
       </>
@@ -596,3 +611,9 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
     </div>
   );
 }
+
+// nudge 1789140718
+
+// nudge 1789140752
+
+// nudge 1789140932

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "palais-galliera",
  "name": "Palais Galliera",
@@ -190,6 +190,9 @@
    {
     "reference": "1997 DPA 153",
     "titre": "Approbation du principe de la réalisation des travaux d'aménagement de la bibliothèque du Musée de la mode et du costume au Palais Galliéra (16e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 1997",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75471"
    }
@@ -198,6 +201,9 @@
    {
     "reference": "2017 DPA 9",
     "titre": "2017 DPA 9 - \"Paris fait Paris\". - Palais Galliera, 10, avenue Pierre-Ier-de-Serbie (16e). - Restructuration partielle. - Objectifs, programme des travaux, modalités de réalisation.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JANVIER 2017",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134700"
    }
@@ -206,6 +212,9 @@
    {
     "reference": "2024 DAC 371",
     "titre": "2024 DAC 371 - Subvention de fonctionnement (56.200.000 euros) à l’établissement public \"Paris Musées\". Vœu déposé par le groupe Communiste et Citoyen relatif au cas de racisme à \"Paris Musées\". Vœu déposé par M. Laurent SOREL relatif à la suspension de 2 veilleurs de nuit des réserves du Palais Galliera. Vœu déposé par l'Exécutif relatif à la lutte contre toutes formes de violences et de discriminations dans les équipements culturels liés à la Ville de Paris.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "OCTOBRE 2024",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178357"
    }

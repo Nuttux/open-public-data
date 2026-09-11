@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-martin-luther-king",
  "name": "Parc Martin Luther King",
@@ -134,6 +134,9 @@
    {
     "reference": "2017 DASES 3",
     "titre": "2017 DASES 3 G - Subvention (30.000 euros) et convention avec la S.C.M. \"Cabinet médical et paramédical du parc Martin Luther King\" (17e) dans le cadre du dispositif \"Paris Med’\".",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JANVIER 2017",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134780"
    }

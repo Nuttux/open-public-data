@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "mairie-du-13e",
  "name": "Mairie du 13e",
@@ -56,6 +56,9 @@
    {
     "reference": "1998 DPA 96",
     "titre": "Approbation du principe de la réfection des installations électriques à la mairie du 13e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 1998",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44060"
    }
@@ -64,6 +67,9 @@
    {
     "reference": "1999 DVLR 40",
     "titre": "Subvention à l'association \"Comité municipal d'action sociale et culturelle du 13e arrondissement\", mairie du 13e arrondissement. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUIN 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55420"
    }
@@ -72,12 +78,18 @@
    {
     "reference": "2000 DPA 277",
     "titre": "Approbation du principe de la réalisation des travaux de modernisation de la sous-station vapeur à la crèche, 101, rue de la Glacière (13e) et de modernisation de la climatisation des locaux sous combles à la mairie du 13e arrondissement, 1, place d'Italie (13e). - Approbation des modalités d'attribution des marchés de travaux sur appel d'offres correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Marie-Thérèse HERMANGE, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58847"
    },
    {
     "reference": "2000 DPA 323",
     "titre": "Approbation du principe de la réalisation de travaux de sécurité à la Mairie du 13e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JANVIER 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85017"
    }
@@ -86,12 +98,18 @@
    {
     "reference": "2002 DAC 304",
     "titre": "Attribution d'une subvention de fonctionnement à la Société d'Histoire et d'Archéologie du XIIIème arrondissement située à la Mairie du 13e arrondissement 1, place d'Italie (13e). Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70917"
    },
    {
     "reference": "2002 DPA 516",
     "titre": "Approbation du principe de réalisation des travaux de modernisation des menuiseries extérieures à la mairie du 13e arrondissement; 1, place d'Italie (13e) et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JANVIER 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41692"
    }
@@ -100,12 +118,18 @@
    {
     "reference": "2004 DAC 506",
     "titre": "Attribution d'une subvention de fonctionnement à l'association \"Le Cercle Municipal des Gobelins et des Beaux Arts\", Mairie du 13e, 1, place d'Italie (13e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "OCTOBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64254"
    },
    {
     "reference": "2004 DPA 385",
     "titre": "Approbation du principe de réalisation des travaux de modernisation du sol de cour à la Mairie du 13e arrondissement (13e), et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87696"
    }
@@ -114,12 +138,18 @@
    {
     "reference": "2005 DAC 223",
     "titre": "Attribution d’une subvention de fonctionnement à l’association “Le Cercle Municipal des Gobelins et des Beaux Arts”, Mairie du 13e, 1, place d’Italie (13e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MAI 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80712"
    },
    {
     "reference": "2005 DASES 106",
     "titre": "G - Subvention de fonctionnement d’un montant de 3.500 euros attribuée à l’association “Femmes pour le dire, femmes pour agir” (F.D.F.A) située 16 rue Emile Duclaux (15e) pour financer la poursuite de ses activités et notamment, l’organisation de son deuxième forum intitulé “Femmes handicapées : la vie devant elles” du 16 novembre 2005 à la mairie du 13e arrondissement. Mme Pénélope KOMITES, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "OCTOBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93059"
    }
@@ -128,6 +158,9 @@
    {
     "reference": "2006 DAC 317",
     "titre": "2006, DAC 317 - Attribution d’une subvention de fonctionnement à l’association “Le Cercle municipal des Gobelins et des Beaux Arts” située à la Mairie du 13e arrondissement, 1, place d’Italie (13e). - Montant : 1.500 euros. Voeu déposé par MM. Serge BLISKO et Jérôme COUMET, adopté par le Conseil du 13e arrondissement.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10844"
    }
@@ -136,6 +169,9 @@
    {
     "reference": "2007 DPA 93",
     "titre": "Approbation du principe de réalisation des travaux de restructuration et d’accessibilité pour tous à la Mairie du 13e arrondissement. - Autorisation à M. le Maire de Paris de signer le marché de maîtrise d’œuvre correspondant. - Autorisation à M. le Maire de Paris de déposer les demandes de permis de démolir et de construire pour la réalisation de l’opération susvisée. Mme Mireille FLAM et Mme Pénélope KOMITÈS, rapporteures.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31365"
    }
@@ -144,6 +180,9 @@
    {
     "reference": "2009 DPA 122",
     "titre": "Approbation du principe de réalisation des travaux de restructuration des services et accessibilité pour tous à la Mairie du 13e arrondissement, 1 place d’Italie et des modalités de passation du marché de travaux correspondant. Mmes Maïté ERRECART et Véronique DUBARRY, rapporteures.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77346"
    }

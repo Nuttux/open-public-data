@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "mairie-du-8e",
  "name": "Mairie du 8e",
@@ -50,6 +50,9 @@
    {
     "reference": "1998 DPA 186",
     "titre": "Approbation du principe de l'amélioration des conditions de sécurité dans les locaux de la mairie du 8e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 1998",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92678"
    }
@@ -58,6 +61,9 @@
    {
     "reference": "2004 DPA 286",
     "titre": "Approbation du principe de réalisation des travaux de ravalement des courettes intérieures aile Malesherbes à la mairie du 8e et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64340"
    }
@@ -66,6 +72,9 @@
    {
     "reference": "2007 DPA 241",
     "titre": "Approbation du principe de réalisation des travaux de ravalement des façades sur rue à la mairie du 8ème arrondissement sise 3, rue de Lisbonne à Paris (8ème) et des modalités de passation du marché de travaux correspondant.- Autorisation à Monsieur le Maire de Paris, de déposer la demande de permis de construire pour la réalisation de l’opération susvisée. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65871"
    }

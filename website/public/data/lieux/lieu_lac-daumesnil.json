@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "lac-daumesnil",
  "name": "Lac Daumesnil",
@@ -143,6 +143,9 @@
    {
     "reference": "2002 DPE 74",
     "titre": "Approbation des modalités d'attribution d'un marché sur appel d'offres pour l'étude du projet de réhabilitation du réseau d'assainissement du secteur du lac Daumesnil, dans le bois de Vincennes (12e). - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Myriam CONSTANTIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55902"
    }
@@ -151,6 +154,9 @@
    {
     "reference": "2024 DEVE 57",
     "titre": "2024 DEVE 57 - Convention entre la Ville de Paris et l'AESN pour le financement de la renaturation de la ceinture du lac Daumesnil (12e) par le Fonds Vert.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUIN 2024",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176660"
    }

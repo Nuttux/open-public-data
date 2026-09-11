@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "petit-palais",
  "name": "Petit Palais",
@@ -241,12 +241,18 @@
    {
     "reference": "1997 DPA 137",
     "titre": "Autorisation à M. le Maire de Paris de déposer une demande de permis de construire relatif à la réalisation des travaux de couverture du musée du Petit-Palais (8e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 1997",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39996"
    },
    {
     "reference": "1997 DPA 175",
     "titre": "Approbation du principe de la réalisation des travaux de couverture au Musée du Petit Palais (8e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 1997",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52763"
    }
@@ -255,12 +261,18 @@
    {
     "reference": "1999 DPA 148",
     "titre": "Approbation du principe de la réalisation des travaux de couverture au musée du Petit-Palais (8e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85548"
    },
    {
     "reference": "1999 DPA 170",
     "titre": "Approbation du principe de la réalisation des travaux de modernisation et de restauration du musée du Petit Palais (8e). - Autorisation à M. le Maire de Paris de signer le marché de maîtrise d'oeuvre et les marchés de contrôle technique, d'ordonnancement, pilotage et coordination, de coordination, santé et sécurité, d'assistance technique au maître d'ouvrage, coordination en matière de systèmes de sécurité incendie et de déposer les demandes de permis de démolir et de permis de construire corres",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55365"
    }
@@ -269,60 +281,90 @@
    {
     "reference": "2000 DAC 107",
     "titre": "Approbation des modalités d'attribution de 4 marchés sur appel d'offres ouvert européen pour le déménagement et l'installation au 141, boulevard Macdonald (19e) et dans divers locaux de stockage, de l'ensemble des collections du musée du Petit-Palais. Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51067"
    },
    {
     "reference": "2000 DAC 119",
     "titre": "Don en espèces d'une somme de 750.000 F de Cartier pour l'acquisition d'oeuvres d'art ainsi que la restauration des décors et / ou des oeuvres appartenant aux collections permanentes du Petit Palais, musée des Beaux-arts de la Ville de Paris. - Autorisation à M. le Maire de Paris de signer avec Cartier la convention financière correspondante. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28151"
    },
    {
     "reference": "2000 DAC 23",
     "titre": "Approbation des modalités d'attribution de 2 marchés sur appel d'offres pour le réaménagement de locaux et de réserves provisoires, 141, boulevard Macdonald (19e), pour accueillir le personnel et les collections du musée du Petit-Palais pendant la durée des travaux de rénovation de ce musée. - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JANVIER 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48543"
    },
    {
     "reference": "2000 DAC 312",
     "titre": "Don en espèces d'une somme de 150.000 F de Jeanne LANVIN pour la restauration des décors et/ou des œuvres appartenant aux collections permanentes du Petit-Palais, musée des Beaux-Arts de la Ville de Paris. - Autorisation à M. le Maire de Paris de signer avec Jeanne LANVIN la convention financière correspondante. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28508"
    },
    {
     "reference": "2000 DAC 313",
     "titre": "Don en espèces d'une somme de 150.000 F de Chloé International pour la restauration des décors et/ou des œuvres appartenant aux collections permanentes du Petit-Palais, musée des Beaux-Arts de la Ville de Paris. - Autorisation à M. le Maire de Paris de signer avec Chloé International la convention financière correspondante. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28443"
    },
    {
     "reference": "2000 DAC 314",
     "titre": "Don en espèces d'une somme de 150.000 F de Nina RICCI pour la restauration des décors et/ou des œuvres appartenant aux collections permanentes du Petit-Palais, musée des Beaux-Arts de la Ville de Paris. - Autorisation à M. le Maire de Paris de signer avec Nina RICCI la convention financière correspondante. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28589"
    },
    {
     "reference": "2000 DAC 333",
     "titre": "Approbation du principe et des modalités d'attribution d'un marché à bons de commandes sur appel d'offres ouvert européen pour la réalisation d'une prestation de surveillance et de protection du chantier pendant les travaux de modernisation et de restauration du musée du Petit-Palais (8e) - Autorisation à M. le Maire de Paris de signer le marché correspondant. Mme l'Adjoint au Maire de Paris, chargée de la Culture, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40817"
    },
    {
     "reference": "2000 DPA 196",
     "titre": "Modernisation et restauration du musée du Petit-Palais (8e). - Autorisation à M. le Maire de Paris de souscrire un avenant au marché de maîtrise d'œuvre signé avec l'\"Atelier d'architecture CHAIX et MOREL et associés\" et ses co-traitants. - Autorisation à M. le Maire de Paris de souscrire un avenant au marché d'assistance technique au maître d'ouvrage signé avec la société \"MAZET et associés\" et son co-traitant. - Approbation des modalités d'attribution de 3 marchés relatifs aux travaux prélimin",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50573"
    },
    {
     "reference": "2000 DPA 291",
     "titre": "34 - 2000, DPA 291 - Modernisation et restauration du Petit-Palais - musée des Beaux-Arts de la Ville de Paris (8e). - Autorisation à M. le Maire de Paris de signer des marchés de travaux (19 lots séparés de travaux correspondants aux lots techniques indissociables) et 2 marchés de prestations intellectuelles relatifs au diagnostic des peintures, polychromies, décors et toiles peintes du musée et au soclage des œuvres",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17124"
    },
    {
     "reference": "2000 DPA 291",
     "titre": "Modernisation et restauration du Petit-Palais - Musée des Beaux-Arts de la Ville de Paris (8e). - Approbation des modalités d'attribution d'un marché de travaux en 19 lots séparés correspondants aux lots techniques indissociables et de 2 marchés de prestations intellectuelles relatifs au diagnostic des peintures, polychromies, décors et toiles peintes du musée ainsi qu'au soclage des œuvres. - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88459"
    }
@@ -331,12 +373,18 @@
    {
     "reference": "2001 DAC 264",
     "titre": "Approbation du principe et des modalités d'attribution d'un marché à bons de commandes sur appel d'offres ouvert européen pour la réalisation d'une prestation de surveillance et de protection du chantier pendant les travaux de rénovation du musée du Petit Palais (8e). - Autorisation à M. le Maire de Paris de signer le marché correspondant. Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84421"
    },
    {
     "reference": "2001 DPA 178",
     "titre": "Modernisation et restauration du Musée du Petit Palais (8e). - Autorisation à M. le Maire de Paris de souscrire un avenant au marché de travaux n° 00/ 26.645 signé avec l'entreprise \"DUNOYER S.A.\". - Autorisation à M. le Maire de Paris de souscrire un avenant au marché de travaux n° 00/ 26.646 signé avec l'entreprise \"AZUR A\". - Approbation des modalités d'attribution de deux marchés sur appel d'offres de prestations intellectuelles concernant respectivement l'ordonnancement, le pilotage et la c",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33786"
    }
@@ -345,24 +393,37 @@
    {
     "reference": "2002 DAC 131",
     "titre": "Dons en espèces d'un montant de 144.826,56 euros pour la restauration d'œuvres d'art appartenant aux collections du Petit Palais, musée des Beaux-Arts de la Ville de Paris - Autorisation à M. le Maire de Paris de signer avec les sociétés Saatchi & Saatchi, Yohji Yamamoto, Loewe, Marine Sitbon, Chloe International et Sabatoun les conventions financières correspondantes. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56055"
    },
    {
     "reference": "2002 DAC 259",
     "titre": "97 - 2002, DAC 259 - Autorisation à M. le Maire de Paris de souscrire un avenant à la convention signée avec la S.A.R.L. \"Théâtre du Rond-Point\" (8e) pour l'attribution d'une subvention. - Montant : 225.000 euros.2002, DPA 295 - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres pour la modernisation et la restauration du Petit Palais - musée des Beaux-Arts de la Ville de Paris (8e)",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
     "seance": "JUILLET 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7935"
    },
    {
     "reference": "2002 DPA 295",
     "titre": "Modernisation et restauration du Petit Palais- Musée des Beaux-Arts de la Ville de Paris 1, avenue Dutuit (8e). - Autorisation à M. le Maire de Paris de souscrire un avenant n° 2 au marché d'assistance technique au maître d'ouvrage n° 99/26.788 signé avec la société MAZET & Associés et BETIBA. - Approbation du principe et des modalités de consultation de 14 marchés séparés de travaux correspondants aux lots de muséographie et d'agencements, et de deux marchés de prestations intellectuelles conce",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88372"
    },
    {
     "reference": "2002 DPA 339",
     "titre": "Modernisation et restauration du Petit Palais- Musée des Beaux-Arts de la Ville de Paris 1, Avenue DUTUIT 75008 PARIS. - Approbation du principe et des modalités de consultation d'un marché en lot séparé de travaux portant sur le chauffage, la ventilation, la climatisation et le désenfumage. - Autorisation à Monsieur le Maire de Paris de signer le marché correspondant. Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29433"
    }
@@ -371,48 +432,72 @@
    {
     "reference": "2004 DAC 482",
     "titre": "Approbation du principe et des modalités de passation d'un marché d'ordonnancement, de pilotage et de coordination pour la réinstallation du Petit Palais, musée des Beaux-Arts de la Ville de Paris, 1, avenue Dutuit (8e). Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46526"
    },
    {
     "reference": "2004 DAC 483",
     "titre": "Approbation du principe de réalisation des prestations de déménagement et de réinstallation des collections d’œuvres d’art appartenant au Petit Palais et des modalités de passation des marchés correspondants. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37431"
    },
    {
     "reference": "2004 DAC 524",
     "titre": "Attribution d’une subvention de fonctionnement à l’association “Compagnie Corinne Boijols”, dont le siège est situé 31, rue du Petit-Palais 77640 Jouarre. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87792"
    },
    {
     "reference": "2004 DPA 132",
     "titre": "Autorisation à M. le Maire de Paris de souscrire des avenants à 32 marchés de travaux concernant la modernisation et la restauration du Petit Palais- Musée des Beaux Arts de la Ville de Paris 1 (8e). - Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché de coordination SPS signé avec la société BUREAU VERITAS. - Approbation du principe et des modalités de consultation d'un marché de prestations intellectuelles concernant l'étude pour l'éclairage des façades sur jardin inté",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52133"
    },
    {
     "reference": "2004 DPA 189",
     "titre": "Modernisation et restauration du Petit Palais - Musée des Beaux Arts de la Ville de Paris 1, avenue Dutuit (8e). - Approbation du principe et des modalités de consultation d'un marché de prestations intellectuelles concernant l'étude pour la signalétique extérieure au bâtiment. - Autorisation à M. le Maire de Paris de signer le marché correspondant. - Autorisation à M. le Maire de Paris de souscrire des avenants aux marchés de travaux suivants : avenant n° 3 au marché 02/26.037 signé avec la soc",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94917"
    },
    {
     "reference": "2004 DPA 207",
     "titre": "Modernisation et restauration du Petit Palais- Musée des Beaux Arts de la Ville de Paris 1, Avenue DUTUIT 75008 Paris. - Autorisation à M. le Maire de Paris de souscrire des avenants aux marchés de travaux suivants : - avenant n° 2 au marché 03/26.025 signé avec le groupement LAINE-DELAU/PRADEAU&MORIN/GTM ; - avenant n°2 au marché 03/26.525 signé avec la société Atelier JEAN-LOUIS BOUVIER. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59906"
    },
    {
     "reference": "2004 DPA 267",
     "titre": "Modernisation et restauration du Petit Palais - Musée des Beaux Arts de la Ville de Paris (8e). Approbation du principe et des modalités de consultation de 3 marchés de travaux relatifs à la muséographie détaillée et au soclage des œuvres. - Approbation du principe et des modalités de consultation d’un marché de travaux relatifs à l’aménagement de l’atelier de menuiserie. - Approbation du principe et des modalités de consultation d’un marché de travaux relatifs à la dépose de la palissade de cha",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37716"
    },
    {
     "reference": "2004 DPA 71",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 2 au marché de maîtrise d'œuvre relatif à la modernisation et la restauration du Petit Palais - Musée des Beaux-Arts de la Ville de Paris, 1, avenue Dutuit (8e). Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57749"
    }
@@ -421,48 +506,72 @@
    {
     "reference": "2005 DAC 341",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention portant droit à l’occupation et à l’exploitation d’un espace concédé dénommé “LE JARDIN DU PETIT PALAIS” situé au Petit Palais Musée des Beaux Arts de la Ville de Paris 1, avenue Dutuit à Paris 8ème, afin d’y exploiter un café - espace de restauration légère. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87212"
    },
    {
     "reference": "2005 DAC 373",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention d’occupation du domaine public concernant l’établissement dénommé “La librairie du Petit Palais”, situé au musée des Beaux - Arts de la Ville de Paris, 1, avenue Dutuit (8e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "OCTOBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26108"
    },
    {
     "reference": "2005 DPA 115",
     "titre": "Approbation du principe et des modalités de passation en appel d’offres ouvert de quatre marchés de services relatifs à l’exploitation et à la maintenance du Petit Palais - Musée des Beaux Arts de la Ville de Paris 1, avenue Dutuit (8e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80753"
    },
    {
     "reference": "2005 DPA 169",
     "titre": "Autorisation à M. le Maire de Paris de souscrire 5 avenants à 5 marchés de travaux relatifs à la modernisation et restauration du Petit Palais - Musée des Beaux Arts de la Ville de Paris, 1, Avenue DUTUIT 75008 PARIS. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87281"
    },
    {
     "reference": "2005 DPA 196",
     "titre": "Modernisation et restauration du Petit Palais - Musée des Beaux-Arts de la Ville de Paris, 1, avenue Dutuit (8e). - Approbation du principe et des modalités de consultation d’un marché de travaux relatif à l’éclairage des façades sur jardin intérieur. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63518"
    },
    {
     "reference": "2005 DPA 242",
     "titre": "Autorisation à M. le Maire de Paris de souscrire 9 avenants aux marchés de travaux de modernisation et restauration du Petit Palais - Musée des Beaux-Arts de la Ville de Paris 1, avenue Dutuit (8e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63702"
    },
    {
     "reference": "2005 DPA 53",
     "titre": "Autorisation à M. le Maire de Paris de souscrire dix avenants aux marchés de travaux en vue de la modernisation et restauration du Petit Palais- Musée des Beaux Arts de la Ville de Paris sis 1, Avenue DUTUIT à Paris 8ème.- Autorisation à Monsieur le Maire de Paris de souscrire un avenant n°2 au marché de coordination SPS n° 02/26-065 signé avec la société BUREAU VERITAS SA à Directoire et Conseil de Surveillance. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82469"
    },
    {
     "reference": "2005 DPA 58",
     "titre": "Approbation du principe et des modalités de passation d’un marché de travaux relatif à la fourniture et à l’installation d’extincteurs dans le cadre de la modernisation et la restauration du Petit Palais Musée des Beaux Arts de la Ville de Paris 1, avenue Dutuit à Paris 8ème. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82525"
    }
@@ -471,18 +580,27 @@
    {
     "reference": "2006 DAC 690",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention pour obtenir l’aide financière de la Fondation du Patrimoine permettant la restauration et la réintégration des guirlandes du péristyle du musée du Petit Palais sis 5 avenue Dutuit (8e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91903"
    },
    {
     "reference": "2006 DPA 256",
     "titre": "Approbation du principe d’indemnisation des sociétés SCOP UTB et Crystal en raison des préjudices subis par elles lors des travaux de réhabilitation du Petit Palais sis 1, avenue Dutuit (8e). - Autorisation à M. le Maire de Paris de signer les contrats de transaction correspondants. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35186"
    },
    {
     "reference": "2006 DPA 85",
     "titre": "Approbation du principe et des modalités de passation en appel d’offres ouvert d’un marché de prestations intellectuelles relatif aux contrôles périodiques réglementaires pour les installations techniques du Petit Palais - Musée des Beaux Arts de la Ville de Paris, 1, avenue Dutuit (8e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27602"
    }
@@ -491,48 +609,72 @@
    {
     "reference": "2007 DAC 112",
     "titre": "Autorisation à M. le Maire de Paris, de signer une convention de parrainage avec la société Epson en faveur du Petit Palais - Musée des Beaux-Arts de la Ville de Paris situé 1 avenue Dutuit (8e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "MARS 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31674"
    },
    {
     "reference": "2007 DAC 220",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention de partenariat avec l’association DAÏKA, pour la réalisation de l’exposition “Petit Palais intime ou l’étoffe des héroïnes” au Petit Palais. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUIN 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72489"
    },
    {
     "reference": "2007 DAC 373",
     "titre": "Approbation des modalités de passation d’un avenant au marché relatif aux prestations de surveillance - gardiennage et de sécurité du Petit Palais, musée des Beaux Arts de la Ville de Paris 1, avenue Dutuit (8e) géré par le bureau des musées de la Ville de Paris. - Autorisation à M. le Maire de Paris de signer ledit avenant. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54350"
    },
    {
     "reference": "2007 DAC 379",
     "titre": "Autorisation à M. le Maire de Paris de signer un avenant de transfert au marché n° 05-26-111 passé avec la société EVIN Ascenseurs relatif à la maintenance des appareils élévateurs du musée du Petit Palais de la Ville de Paris (lot n° 2) au bénéfice de la société KONE. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90249"
    },
    {
     "reference": "2007 DAC 609",
     "titre": "Autorisation à M. le Maire de Paris de signer un avenant à la convention d’occupation du domaine public concernant l’établissement dénommé “La Librairie du Petit Palais”, situé au musée des Beaux-Arts de la Ville de Paris, 1 avenue Dutuit (8e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65875"
    },
    {
     "reference": "2007 DPA 131",
     "titre": "Approbation du principe d’indemnisation de la société MAES en raison des préjudices subis par elle lors des travaux de réhabilitation du Petit Palais sis 1, avenue Dutuit (8e). - Autorisation à M. le Maire de Paris de signer le contrat de transaction correspondant. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72548"
    },
    {
     "reference": "2007 DPA 269",
     "titre": "Approbation du principe d’indemnisation de la société SAS VULCAIN en raison des préjudices subis par elle lors des travaux de réhabilitation du Petit Palais sis 1, avenue Dutuit à Paris (8eme). Autorisation à Monsieur le Maire de Paris de signer le contrat de transaction correspondant. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65987"
    },
    {
     "reference": "2007 DPVI 44",
     "titre": "SG 106 - Subvention à l’association Daïka pour la réalisation d’un projet de redynamisation sociale par la culture et d’une exposition réalisés au Petit Palais Musée des Beaux-arts de Paris et intitulés “L’étoffe des Héroïnes”. Mmes Martine DURLACH et Khédija BOURCART, rapporteures.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUIN 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72315"
    }
@@ -541,24 +683,36 @@
    {
     "reference": "2008 DAC 630",
     "titre": "Convention d’occupation du domaine public concernant l’établissements dénommé “La Librairie du Petit Palais”, situé au musée des Beaux-Arts de la Ville de Paris, 1 avenue Dutuit (8e). Mme Colombe BROSSEL, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77845"
    },
    {
     "reference": "2008 DPA 227",
     "titre": "Approbation du principe d’indemnisation de la société SAS VULCAIN en raison des préjudices subis par elle lors des travaux de réhabilitation du Musée du Petit Palais (8e). Mme Colombe BROSSEL, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67522"
    },
    {
     "reference": "2008 DPA 293",
     "titre": "Approbation des modalités de passation d’un marché de conseils et de représentation juridiques dans le cadre de la réalisation des grands projets culturels et sportifs : Complexe sportif Belleville (20e) ; Complexe culturel du 104 Aubervilliers (19e) ; Musée du Petit Palais (8e). MM. Jean VUILLERMOZ, Christophe GIRARD et Mme Colombe BROSSEL, rapporteurs.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61637"
    },
    {
     "reference": "2008 DPA 55",
     "titre": "Souscription d’un avenant n° 3 au marché de maîtrise d’oeuvre conclu avec la société CHAIX&MO-REL et Associés (mandataire) relatif à la modernisation et à la restauration du Musée du Petit Palais 1, avenue Dutuit (8e). Mme Colombe BROSSEL, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68536"
    }
@@ -567,18 +721,27 @@
    {
     "reference": "2009 DAC 7",
     "titre": "Approbation du principe et des modalités de passation d’un marché de prestations de services pour assurer l’exploitation et la maintenance des ouvrages du Musée des Beaux Arts de la Ville de Paris, Petit Palais (8e). Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34554"
    },
    {
     "reference": "2009 DPA 199",
     "titre": "Indemnisation de la société INEO VD en raison des préjudices subis par elle lors des travaux de réhabilitation du Musée du Petit Palais, 1, avenue Dutuit (8e) - lot 216 : électricité courants forts. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36676"
    },
    {
     "reference": "2009 DPA 200",
     "titre": "Indemnisation de la société INEO VD en raison des préjudices subis par elle lors des travaux de réhabilitation du Musée du Petit Palais, 1, avenue Dutuit (8e) - lot 218 : \"électricité courants faibles\". Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36605"
    }
@@ -587,18 +750,27 @@
    {
     "reference": "2010 DAC 124",
     "titre": "Convention d’occupation du domaine public concernant les établissements dénommés La Librairie du Petit Palais, situé au musée des Beaux-Arts de la Ville de Paris, 1 avenue Dutuit(8e) et La Librairie du Musée Carnavalet situé au 23 rue de Sévigné(3e). Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "FEVRIER 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79257"
    },
    {
     "reference": "2010 DAC 124",
     "titre": "2010, DAC 124 - Signature de conventions d'occupation du domaine public concernant les établissements dénommés La Librairie du Petit Palais, situé au musée des Beaux-Arts de la Ville de Paris, 1 avenue Dutuit (8e) et La Librairie du Musée Carnavalet, 23 rue de Sévigné (3e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "FEVRIER 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3972"
    },
    {
     "reference": "2010 DAC 588",
     "titre": "Signature des conventions de mécénat liant la société SAMSUNG au Petit Palais, musée des Beaux-Arts de la Ville de Paris. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "SEPTEMBRE 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39739"
    }
@@ -607,12 +779,18 @@
    {
     "reference": "2011 DAC 55",
     "titre": "Signature d’une convention de mécénat liant la société Studio Philippe Apeloig au Petit Palais, Musée des Beaux-Arts de la Ville de Paris. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "MARS 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96833"
    },
    {
     "reference": "2011 DAC 69",
     "titre": "Autorisation à Monsieur le Maire de Paris de signer une convention de mécénat liant la Fondation d’entreprise Hermès au Petit Palais, Musée des Beaux-Arts de la Ville de Paris et à la Parisienne de Photographie. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUIN 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96350"
    }

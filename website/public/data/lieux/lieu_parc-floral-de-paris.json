@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-floral-de-paris",
  "name": "Parc floral de Paris",
@@ -272,6 +272,9 @@
    {
     "reference": "2002 DAC 514",
     "titre": "Attribution d'une subvention de fonctionnement à l'association \"Théâtre Astral\", Parc Floral de Paris, 75012 Paris (D 01928).- Budget de fonctionnement de la Ville de Paris de 2002, nature 6574, rubrique 33, Ligne P003 Provision pour subventions de fonctionnement au titre de la culture : 7.500 euros. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71052"
    }
@@ -280,6 +283,9 @@
    {
     "reference": "2004 DPJEV 60",
     "titre": "Autorisation à M. le Maire de Paris de signer des marchés négociés sans publicité préalable et sans mise en concurrence d'une part, avec la société CITEC ENVIRONNEMENT pour l'extension d'un jeu et, d'autre part, avec la société PRO URBA pour la pose de cordage sur le jeu Pyracorde dans le cadre de l'opération d'aménagement de l'aire de jeux du parc Floral de Paris (12e) (tranche 5/5). M. Yves CONTASSOT, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46844"
    }
@@ -288,6 +294,9 @@
    {
     "reference": "2007 DPA 327",
     "titre": "Approbation du principe de la réalisation des travaux de confortation des structures métalliques et de modernisation de la couverture du Hall de la Pinède situé dans le Parc floral de Paris, au Bois de Vincennes, à Paris (12ème).- Approbation des modalités de passation du marché de travaux correspondant. M. Yves CONTASSOT, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54262"
    }
@@ -296,6 +305,9 @@
    {
     "reference": "2008 DEVE 159",
     "titre": "Autorisation à M. le Maire de Paris de signer des marchés pour l’organisation au Parc Floral de Paris des festivals “Paris Jazz Festival”, “Classique au Vert” et “Pestacles”. - Marché type article 30 du CMP. Mme Fabienne GIBOUDEAUX, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78207"
    }
@@ -304,6 +316,9 @@
    {
     "reference": "2011 DEVE 39",
     "titre": "Avenant à la convention du 7 février 2003 avec la Société d’Exploitation des Parcs d’Exposition (SEPE) portant sur le renouvellement de certains jeux dans le Parc Floral de Paris (12e). Mme Fabienne GIBOUDEAUX, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "MARS 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96867"
    }

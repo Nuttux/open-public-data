@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "musee-cernuschi",
  "name": "Musée Cernuschi",
@@ -425,6 +425,9 @@
    {
     "reference": "1998 DAC 141",
     "titre": "Acquisition d'une oeuvre d'art pour le musée Cernuschi. - Autorisation à M. le Maire de Paris de signer avec la Société des amis du musée Cernuschi une convention de mécénat. Mme Hélène MACE de LEPINAY, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "SEPTEMBRE 1998",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92607"
    }
@@ -433,6 +436,9 @@
    {
     "reference": "1999 DPA 52",
     "titre": "Approbation du principe de la réalisation des travaux de réaménagement du musée Cernuschi (8e). - Autorisation à M. le Maire de Paris de signer le marché de maîtrise d'oeuvre et de déposer les demandes de permis de démolir et de permis de construire correspondantes. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83817"
    }
@@ -441,18 +447,27 @@
    {
     "reference": "2001 DAC 3",
     "titre": "43 - 2001, DAC 3 - Autorisation à M. le Maire de Paris de signer avec l'association \"Société des amis du musée Cernuschi\" (8e) une convention d'objectifs",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JANVIER 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13428"
    },
    {
     "reference": "2001 DAC 3",
     "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Société des amis du musée Cernuschi\" (8e) une convention d'objectifs. M. Claude ROLAND, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JANVIER 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84973"
    },
    {
     "reference": "2001 DAC 423",
     "titre": "Approbation des modalités d'attribution d'un marché sur appel d'offres pour le déménagement et l'installation dans des réserves provisoires de l'ensemble des collections du musée Cernuschi, musée des Arts de l'Asie de la Ville de Paris, 7, avenue Vélasquez (8e). - Autorisation à M. le Maire de Paris de signer le marché correspondant. Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30277"
    }
@@ -461,12 +476,18 @@
    {
     "reference": "2002 DAC 118",
     "titre": "Approbation du principe et des modalités d'attribution d'un marché sur appel d'offres pour la restauration de la statue de buddha Amida appartenant aux collections du Musée Cernuschi - Musée des Arts de l'Asie de la Ville de Paris (8e) - Autorisation à M. le Maire de Paris de signer le marché correspondant. Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55743"
    },
    {
     "reference": "2002 DAC 3",
     "titre": "Approbation du principe de réalisation d'une prestation de surveillance et de protection du chantier pendant les travaux de rénovation du musée Cernuschi (musée des Arts de l'Asie de la Ville de Paris) (8e). - Approbation des modalités d'attribution de marché sur appel d'offres correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38974"
    }
@@ -475,24 +496,36 @@
    {
     "reference": "2004 DAC 190",
     "titre": "Approbation du principe et des modalités d'attribution d'un marché conclu après appel d'offres ouvert pour la fourniture, la livraison et l'installation d'un mobilier destiné aux réserves du musée Cernuschi, 7, avenue Vélasquez (8e). - Autorisation à M. le Maire de Paris de signer le marché le marché correspondant. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45818"
    },
    {
     "reference": "2004 DAC 301",
     "titre": "Approbation du principe et des modalités d'attribution d'un marché de déménagement conclu après appel d'offres ouvert pour le rapatriement des collections d'œuvres d'art appartenant au musée Cernuschi, 7, avenue Vélasquez (8e). - Autorisation à M. le Maire de Paris de signer le marché correspondant. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59976"
    },
    {
     "reference": "2004 DPA 206",
     "titre": "Autorisation à M. le Maire de Paris de souscrire six avenants n°1 aux marchés de travaux signé avec les entreprises H. Chevalier, Prodesign, Dumanois, Meurant, Cogeef Industrie et SPR Bâtiment relatifs au réaménagement du musée Cernuschi, 7 avenue Vélasquez (8ème). Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=60128"
    },
    {
     "reference": "2004 DPA 78",
     "titre": "Approbation des modalités de passation des marchés de travaux sur appel d'offres ou passation de marchés négociés en vue de la réalisation des travaux de réaménagement du musée Cernuschi, 7 avenue Vélasquez (8e). - Autorisation à M. le Maire de Paris de signer les marchés de travaux correspondants. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34022"
    }
@@ -501,6 +534,9 @@
    {
     "reference": "2005 DPA 99",
     "titre": "Autorisation à M. le Maire de Paris de souscrire cinq avenants n° 2 aux marchés de travaux n° 02/26-533, 03/26-180, 03/26-204, 03/26-172, 03/26-141 signés avec les entreprises H. Chevalier, Prodesign, Dumanois, Cogeef Industrie et SPR Bâtiment et un avenant n° 1 au marché de travaux n° 04/26-234 signé avec l’entreprise Goppion relatifs au réaménagement du musée Cernuschi 7,avenue Vélasquez (8e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80727"
    }
@@ -509,6 +545,9 @@
    {
     "reference": "2006 DAC 95",
     "titre": "Autorisation à M. le Maire de Paris, de signer une convention de mécénat avec la société Daum en faveur du musée Cernuschi, situé 7 avenue Vélasquez (8e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "AVRIL 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38689"
    }
@@ -517,6 +556,9 @@
    {
     "reference": "2007 DAC 364",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention d’objectifs entre la Ville de Paris et l’association “Société des amis du musée Cernuschi”. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "OCTOBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53150"
    }
@@ -525,18 +567,27 @@
    {
     "reference": "2008 DAC 485",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention de mécénat avec la société Daum en faveur du musée Cernuschi, situé 7 avenue Velasquez (8e). Mme Colombe BROSSEL, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78187"
    },
    {
     "reference": "2008 DPA 150",
     "titre": "Approbation du principe d’indemnisation de l’Entreprise CHEVALIER, en raison des préjudices subis lors des travaux de réaménagement réalisés au Musée Cernuschi, 7, avenue Vélasquez (8ème). Mme Colombe BROSSEL, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91337"
    },
    {
     "reference": "2008 DPA 151",
     "titre": "Approbation du principe d’indemnisation de la Société DUMANOIS, en raison des préjudices subis lors des travaux réalisés au Musée Cernuschi, 7, avenue Vélasquez (8ème). Mme Colombe BROSSEL, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91585"
    }
@@ -545,6 +596,10 @@
    {
     "reference": "2009 DAC 146",
     "titre": "Subvention à l’Institut National du Patrimoine (2e) pour l’organisation du colloque “Peinture chinoise : la restauration et la recherche en Europe et en Chine” les 19 et 20 mars 2009 en partenariat avec le Musée Cernuschi. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
     "seance": "MAI 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59515"
    }
@@ -553,6 +608,9 @@
    {
     "reference": "2011 DAC 18",
     "titre": "Signature d’une convention d’objectifs liant la Ville de Paris à l’association Société des Amis du Musée Cernuschi pour l’attribution d’une subvention. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MARS 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96985"
    }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-du-trocadero",
  "name": "Place du Trocadéro",
@@ -135,6 +135,9 @@
    {
     "reference": "1999 DPE 107",
     "titre": "Approbation des modalités d'attribution d'un marché sur appel d'offres pour la restructuration du lieu d'appel \"Trocadéro\" situé place du Trocadéro (16e). - Autorisation à M. le Maire de Paris de signer ledit marché. M. Lucien FINEL, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27528"
    }
@@ -143,6 +146,9 @@
    {
     "reference": "2006 DVD 85",
     "titre": "Approbation du principe et des modalités de réalisation des travaux de réfection du pavage de la place du Trocadéro (16e). M. Denis BAUPIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88918"
    }

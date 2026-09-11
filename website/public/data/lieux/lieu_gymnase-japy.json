@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "gymnase-japy",
  "name": "Gymnase Japy",
@@ -134,6 +134,9 @@
    {
     "reference": "1996 D 1244",
     "titre": "8 - 1996, D. 1244 - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres ou un marché négocié, en cas d'appel d'offres infructueux, pour la réfection du parquet sportif de la salle du gymnase Japy (11e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 1996",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4454"
    }
@@ -142,6 +145,9 @@
    {
     "reference": "1999 DPA 184",
     "titre": "Approbation du principe de la réalisation de travaux de renforcement de structure des planchers et des tribunes au gymnase Japy, 2, rue Japy (11e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Dominique CANE, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84073"
    }
@@ -150,6 +156,9 @@
    {
     "reference": "2001 DPA 405",
     "titre": "Approbation du principe de réalisation des travaux de mise aux normes de la verrière du gymnase Japy (11e) et des modalités de passation des marchés de travaux et d'études correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JANVIER 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27101"
    }

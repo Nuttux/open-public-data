@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "jardin-atlantique",
  "name": "Jardin Atlantique",
@@ -156,6 +156,9 @@
    {
     "reference": "2001 DVD 32",
     "titre": "Autorisation à M. le Maire de Paris de signer avec le Groupement foncier français - Institutionnels une convention relative à la gestion technique et financière des accès au jardin Atlantique réalisé dans le cadre de la Z.A.C. \"Pasteur - Montparnasse\" (14e et 15e). M. Jacques DOMINATI, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JANVIER 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85031"
    }
@@ -164,6 +167,9 @@
    {
     "reference": "2003 DPA 251",
     "titre": "Approbation du principe de réalisation des travaux d'extension des locaux du Mémorial Leclerc et Musée Jean Moulin sis Jardin Atlantique - 23, allée de la deuxième D.B. - 75015 PARIS, et des modalités de passation du marché de travaux correspondant. - Autorisation à Monsieur le Maire de Paris, de signer ledit marché. Mme Odette CHRISTIENNE, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47346"
    }
@@ -172,6 +178,9 @@
    {
     "reference": "2005 DAC 381",
     "titre": "Attribution d’une subvention de fonctionnement à l’association “Maison des Anciens Combattants de la 2e D.B.”, Jardin Atlantique, 26, allée du Chef-d’Escadron-de-Guillebon (14e). Mme Odette CHRISTIENNE, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87256"
    }
@@ -180,12 +189,18 @@
    {
     "reference": "2006 DJS 416",
     "titre": "Autorisation à M. le Maire de Paris de conclure un marché passé conformément aux dispositions de l’article 30 du code des marchés publics, avec l’association “GAREF Paris - Club scientifique de jeunes”, pour la gestion du centre d’animation GAREF Océanographique, 26, allée du Chef d’Escadron de Guillebon, Dalle Jardin Atlantique (14e). Mme Clémentine AUTAIN, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80994"
    },
    {
     "reference": "2006 DVD 99",
     "titre": "Autorisation à M. le Maire de Paris de signer l’avenant n° 1 relatif à la convention pour la gestion technique et financière des accès à la dalle du Jardin Atlantique substituant la société ICADE Gestion Tertiaire à la société GFF Institutionnels. M. Denis BAUPIN, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUIN 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44402"
    }
@@ -194,6 +209,9 @@
    {
     "reference": "2007 DAC 111",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention de mise à disposition de locaux, implantés dans le bâtiment Nord Parc Jardin Atlantique, 26 allée du Chef d’escadron de Guillebon 75014 -Paris et une convention d’objectifs avec l’association“Maison des Anciens Combattants de la 2ème D.B”. Mme Odette CHRISTIENNE, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "OCTOBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53852"
    }

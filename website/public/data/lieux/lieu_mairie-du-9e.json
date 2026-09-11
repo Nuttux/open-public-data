@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "mairie-du-9e",
  "name": "Mairie du 9e",
@@ -58,6 +58,9 @@
    {
     "reference": "1998 DPA 199",
     "titre": "Autorisation à M. le Maire de Paris de signer avec la Compagnie d'assurances G.A.N. un protocole d'accord portant sur des travaux de peinture effectués dans l'appartement occupé par M. COHEN-SABBAN, 4, rue Drouot (9e), consécutifs à des infiltrations provenant d'un appartement de la mairie du 9e arrondissement. Mme Claude-Annick TISSOT, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 1998",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62370"
    }
@@ -66,6 +69,9 @@
    {
     "reference": "2001 DPA 170",
     "titre": "Approbation du principe de réalisation des travaux de modernisation de menuiseries extérieures à la Mairie du 9e arrondissement, 6, rue Drouot (9e). - Autorisation à M. le Maire de Paris de déposer la demande de permis de construire relative à cette opération. Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57982"
    }
@@ -74,36 +80,54 @@
    {
     "reference": "2002 DAC 174",
     "titre": "Autorisation à M. le Maire de Paris d'attribuer à l'Association des Amis de Nadia et Lili Boulanger, dont le siège social est situé Mairie du 9e arrondissement, 6, rue Drouot (9e), une subvention de fonctionnement (D07200). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "OCTOBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95456"
    },
    {
     "reference": "2002 DPA 112",
     "titre": "Approbation du principe de la réalisation des travaux de ravalement de la façade sur rue, de mise aux normes de la porte cochère et de modification du réseau d'évacuation d'eau à la Mairie du 9e arrondissement, 6, rue Drouot (9e), et des modalités d'attribution des marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58135"
    },
    {
     "reference": "2002 DPA 24",
     "titre": "Approbation du principe de la réalisation des travaux de réfection des salons 1-2-3 et de la salle du Conseil à la Mairie du 9e arrondissement (9e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38854"
    },
    {
     "reference": "2002 DPA 405",
     "titre": "Approbation du principe de la réalisation des travaux de rénovation des ascenseurs principaux à la mairie du 9ème arrondissement 6,rue Drouot à Paris 9ème et des modalités de passation du marché de travaux correspondant. - Autorisation à Monsieur le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29326"
    },
    {
     "reference": "2002 DPA 406",
     "titre": "Approbation du principe de la réalisation des travaux de modernisation des menuiseries extérieures phase 2 à la Mairie du 9ème arrondissement 6 rue Drouot à Paris 9ème et des modalités de passation du marché de travaux correspondant. - Autorisation à Monsieur le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29301"
    },
    {
     "reference": "2002 DPA 74",
     "titre": "Approbation du principe de la réalisation des travaux de modernisation de menuiseries extérieures à la mairie du 9e arrondissement. - Approbation des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39101"
    }
@@ -112,12 +136,18 @@
    {
     "reference": "2003 DPA 365",
     "titre": "Approbation du principe de réalisation des travaux de modernisation du centre thermique à la Mairie du 9e arrondissement, 6, rue Drouot (9e), et des modalités de passation du marché de travaux. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94050"
    },
    {
     "reference": "2003 DPA 50",
     "titre": "Approbation du principe de la réalisation des travaux de restructuration du service des affaires générales à la mairie du 9e arrondissement, 6, rue Drouot (9e) et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68982"
    }
@@ -126,6 +156,9 @@
    {
     "reference": "2004 DPA 66",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché de travaux signé avec la société UTB relatif à la restructuration du Service des affaires générales à la mairie du 9e arrondissement. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51929"
    }

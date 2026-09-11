@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-saint-sulpice",
  "name": "Place Saint-Sulpice",
@@ -85,6 +85,9 @@
    {
     "reference": "2004 DVD 288",
     "titre": "Approbation du principe de délégation de service public en vue de l’exploitation et de l’entretien de la partie “garage” du parc de stationnement “SAINT SULPICE”, situé sous la place Saint-Sulpice (6e), pour une durée fixée à 6 ans. - Autorisation à M. le Maire de Paris de lancer la consultation et d’accomplir tous les actes préparatoires à la passation du contrat de délégation. M. Denis BAUPIN, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37700"
    }
@@ -93,12 +96,18 @@
    {
     "reference": "2006 DPA 165",
     "titre": "Autorisation à Monsieur le Maire de Paris de déposer la demande de permis de construire relative à la réalisation des travaux de restauration de la fontaine des “Orateurs Sacrés” sise place Saint- Sulpice (6e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44378"
    },
    {
     "reference": "2006 DPA 232",
     "titre": "Approbation du principe de réalisation des travaux de restauration de la fontaine des Orateurs Sacrés sise place Saint Sulpice à Paris 6ème et des modalités de passation du marché de travaux correspondant. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74006"
    }

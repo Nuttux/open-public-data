@@ -74,6 +74,11 @@ export type LieuDelib = {
   reference: string;
   /** Titre intégral tel que la Ville l'a écrit — jamais reformulé. */
   titre: string;
+  /** Ce que la décision engage : « subvention », « travaux », ou les deux. Une
+   *  décision qui n'engage ni l'un ni l'autre (convention d'occupation,
+   *  délégation de service public) sort « autre » et n'apparaît sous aucune des
+   *  deux lignes d'argent de la fiche. */
+  genres?: string[];
   seance?: string | null;
   source_url?: string | null;
 };

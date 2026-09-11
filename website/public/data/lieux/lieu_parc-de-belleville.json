@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-de-belleville",
  "name": "Parc de Belleville",
@@ -160,6 +160,9 @@
    {
     "reference": "2007 DEVE 185",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant de transfert dans le cadre du marché de rénovation de la grande aire de jeux du parc de Belleville (20e). M. Yves CONTASSOT, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54882"
    }
@@ -168,6 +171,9 @@
    {
     "reference": "2015 DEVE 50",
     "titre": "2015 DEVE 50 - Convention d’occupation temporaire avec l’association \"OuiShare\" pour la mise à sa disposition de locaux situés dans la Maison de l’Air, parc de Belleville à Paris 20e.",
+    "genres": [
+     "autre"
+    ],
     "seance": "MAI 2015",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125264"
    }
@@ -176,6 +182,9 @@
    {
     "reference": "2022 DDCT 22",
     "titre": "2022 DDCT 22 - Approbation de la convention de mise à disposition temporaire du pavillon \"Maison de l’air\" du Parc de Belleville 27, rue Piat (20e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "FEVRIER 2022",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164512"
    }
@@ -184,12 +193,18 @@
    {
     "reference": "2023 DDCT 123",
     "titre": "2023 DDCT 123 - Approbation de la convention de mise à disposition temporaire du pavillon \"Maison de l’air\" du parc de Belleville 27, rue Piat (20e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2023",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174123"
    },
    {
     "reference": "2023 DDCT 27",
     "titre": "2023 DDCT 27 - Approbation de la convention de mise à disposition temporaire du pavillon \"Maison de l’air\" dans le parc de Belleville 27, rue Piat (20e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "MARS 2023",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168281"
    }

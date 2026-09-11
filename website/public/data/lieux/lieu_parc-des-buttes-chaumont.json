@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-des-buttes-chaumont",
  "name": "Parc des Buttes-Chaumont",
@@ -207,6 +207,9 @@
    {
     "reference": "1996 D 682",
     "titre": "9 - 1996, D. 682- Autorisation à M. le Maire de Paris de signer avec la société anonyme \"Weber café\" une convention en vue de l'exploitation en café-restaurant de la propriété domaniale anciennement dénommée \"Pavillon du Chemin de fer\" sise dans le parc des Buttes-Chaumont (19e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUIN 1996",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22959"
    }
@@ -215,24 +218,36 @@
    {
     "reference": "1998 DLH 283",
     "titre": "Réalisation par la R.I.V.P. d'un programme de construction comprenant 102 logements locatifs aidés et 100 emplacements de stationnement situé 49 à 51, rue de la Villette et 22 à 50, rue des Alouettes (terrains S.F.P. Buttes-Chaumont - lots C1-A2-A3) (19e). - Participation de la Ville de Paris au financement de cette opération. M. Michel BULTE, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 1998",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65008"
    },
    {
     "reference": "1998 DLH 283",
     "titre": "Octroi de la garantie de la Ville de Paris pour le service des intérêts et l'amortissement d'un emprunt à contracter par la R.I.V.P. en vue du financement d'un programme de construction comprenant 102 logements locatifs aidés et 100 emplacements de stationnement situé 49 à 51, rue de la Villette et 22 à 50, rue des Alouettes (terrains S.F.P. Buttes-Chaumont - lots C1-A2-A3) (19e). M. Michel BULTE, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 1998",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65073"
    },
    {
     "reference": "1998 DLH 285",
     "titre": "DAUC 208 - Réalisation par la R.I.V.P. dans le cadre d'une convention spécifique d'un programme de 94 logements locatifs intermédiaires, et 91 places de stationnement situé dans le lotissement des Buttes-Chaumont, lots A4, B4 et B5, 22 à 50, rue des Alouettes, 6 à 20, rue Carducci, 49 à 55, rue de la Villette (19e). - Participation de la Ville de Paris au financement du programme de construction. M. Michel BULTÉ, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 1998",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62266"
    },
    {
     "reference": "1998 DLH 285",
     "titre": "DAUC 208 - Octroi de la garantie de la Ville de Paris pour le service des intérêts et l'amortissement d'un emprunt à contracter par la R.I.V.P. en vue du financement principal du programme de construction comprenant 94 logements P.L.I. et 91 places de stationnement situé dans le lotissement des Buttes-Chaumont, 22 à 50, rue des Alouettes, 6 à 20, rue Carducci, 49 à 55, rue de la Villette (19e) (lots A4, B4 et B5). M. Michel BULTÉ, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 1998",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62419"
    }
@@ -241,18 +256,27 @@
    {
     "reference": "2000 DAC 236",
     "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Théâtre Guignol Anatole des Buttes-Chaumont\", Saint-Mandé (Val-de-Marne) une convention. Subvention exceptionnelle d'équipement. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50520"
    },
    {
     "reference": "2000 DFAE 21",
     "titre": "37 - 2000, DFAE 21 - Autorisation à M. le Maire de Paris de signer une convention pour l'occupation du \"Pavillon du lac\" au parc des Buttes-Chaumont (19e)",
+    "genres": [
+     "autre"
+    ],
     "seance": "FEVRIER 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2890"
    },
    {
     "reference": "2000 DFAE 21",
     "titre": "Autorisation à M. le Maire de Paris de signer avec la Société d'exploitation de concessions européennes une convention en vue de l'occupation du \"Pavillon du Lac\" situé dans le parc des Buttes-Chaumont (19e). Mme Françoise de PANAFIEU et M. Jean-François LEGARET, rapporteurs.",
+    "genres": [
+     "autre"
+    ],
     "seance": "FEVRIER 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51296"
    }
@@ -261,6 +285,9 @@
    {
     "reference": "2001 DAUC 174",
     "titre": "DPA 314 - Approbation du principe de la réalisation des travaux de création d'une crèche de 45 berceaux dans le lotissement \"Les Buttes-Chaumont\" (19e). - Désignation du maître d'oeuvre. - Approbation des modalités d'attribution du marché négocié de maîtrise d'oeuvre correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché et de déposer les demandes d'autorisation de construire et les déclarations de travaux correspondantes. Mme Olga TROSTIANSKY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33754"
    }
@@ -269,12 +296,18 @@
    {
     "reference": "2002 DPA 225",
     "titre": "Approbation des modalités d'attribution d'un marché de travaux sur appel d'offres relatif à la création d'une crèche de 45 berceaux, lotissement des Buttes-Chaumont (19e). - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Olga TROSTIANSKY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73758"
    },
    {
     "reference": "2002 DPA 225",
     "titre": "177 - 2002, ASES 12 - Autorisation à M. le Maire de Paris de signer avec la Société anonyme de gestion immobilière une convention pour les études et la réalisation d'une halte-garderie de 20 places, passage Goix (19e).2002, DPA 225 - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres pour la création d'une crèche de 45 berceaux, lotissement des Buttes-Chaumont (19e)",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2491"
    }
@@ -283,6 +316,9 @@
    {
     "reference": "2004 DPA 98",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché de maîtrise d'œuvre n° 01/25-722 signé avec la SARL CANALE 3 et un avenant n° 1 au marché de travaux n° 02/25-292 signé avec la société GENERE SA, relatif à la création d'une crèche de 45 berceaux au sein du lotissement des Buttes-Chaumont - cours du 7ème Art (19e). Mme Olga TROSTIANSKY, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94807"
    }
@@ -291,24 +327,36 @@
    {
     "reference": "2005 DF 19",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention donnant droit à l’occupation d’une propriété domaniale dénommée le “Pavillon Puebla”, parc des Buttes Chaumont, à Paris 19ème arrondissement, afin d’y exploiter un café - restaurant - salon de thé. M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "MAI 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80462"
    },
    {
     "reference": "2005 DF 26",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention donnant droit à l’occupation d’une propriété domaniale dénommée le “Pavillon du Lac des Buttes Chaumont” sise avenue Alphand dans le parc des Buttes-Chaumont (19e), afin d’y exploiter un café - restaurant - salon de thé. M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "AVRIL 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43810"
    },
    {
     "reference": "2005 DJS 97",
     "titre": "Subvention compensatrice de loyer au “Club des Joyeux Boulomanes des Buttes Chaumont” (19e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "AVRIL 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43522"
    },
    {
     "reference": "2005 DPJEV 20",
     "titre": "Autorisation à M. le Maire de Paris de signer avec l’Association des pêcheurs de Neuilly-Levallois et des Environs, avec l’Amicale des Pêcheurs du Bois de Vincennes et avec l’Association des Bon Amis de la Butte des conventions d’occupation du domaine public permettant l’exercice de la pêche dans les eaux des bois de Boulogne et de Vincennes et du parc des Buttes Chaumont. M. Yves CONTASSOT, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "MAI 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80420"
    }
@@ -317,36 +365,54 @@
    {
     "reference": "2007 DF 88",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant à la convention du 30 avril 2005 concédant à la société à responsabilité limitée “Ça fait rêver” le droit à l’occupation du “Pavillon du Lac”, établissement situé avenue Alphand au parc des Buttes Chaumont (19e), afin d’y exploiter un café-restaurant-salon de thé. M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54513"
    },
    {
     "reference": "2007 DJS 64",
     "titre": "Subvention compensatrice de loyer au “Club des Joyeux Boulomanes des Buttes Chaumont” (19e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "FEVRIER 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26716"
    },
    {
     "reference": "2007 DLH 162",
     "titre": "2007, DLH 162 - Réalisation par la RIVP d’un programme d’acquisition-conventionnement comportant 42 logements PLS et un local commercial situé 7 et 16, villa des Buttes-Chaumont (19e). - Participation de la Ville de Paris au financement de l’opération. Voeu n° 45 déposé par le groupe communiste.",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24906"
    },
    {
     "reference": "2007 DLH 162",
     "titre": "Réalisation par la RIVP d’un programme d’acquisition conventionnement comportant 42 logements PLS et un local commercial, situé 7 et 16, villa des Buttes Chaumont (19e). - Participation de la Ville de Paris au financement de l’opération. M. Jean-Yves MANO, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65877"
    },
    {
     "reference": "2007 DLH 162",
     "titre": "Octroi de la garantie de la Ville de Paris pour le service des intérêts et l’amortissement d’un emprunt PLS à contracter par la RIVP en vue du financement principal d’un programme d’acquisition conventionnement comportant 42 logements PLS situé 7 et 16, villa des Buttes Chaumont (19e). M. Jean-Yves MANO, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65557"
    },
    {
     "reference": "2007 DLH 162",
     "titre": "Octroi de la garantie de la Ville de Paris, à hauteur de 50 %, pour le service des intérêts et l’amortissement d’un emprunt bancaire à contracter par la RIVP en vue du financement du local commercial du programme d’acquisition conventionnement comportant 42 logements PLS situé 7 et 16, villa des Buttes Chaumont (19e). M. Jean-Yves MANO, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65971"
    }
@@ -355,30 +421,45 @@
    {
     "reference": "2008 DEVE 33",
     "titre": "Lancement d’un appel d’offre relatif aux travaux de consolidation des sols sous la voie circulaire du lac et sous certains pavillons, parc des Buttes Chaumont (19e). Mme Fabienne GIBOUDEAUX, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61514"
    },
    {
     "reference": "2008 DEVE 35",
     "titre": "2008, DEVE 35 - Lancement d’un marché négocié de travaux pour la réhabilitation de la passerelle suspendue au parc des Buttes Chaumont (19e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14749"
    },
    {
     "reference": "2008 DEVE 35",
     "titre": "Lancement d’un marché négocié de travaux pour la réhabilitation de la passerelle suspendue au parc des Buttes Chaumont (19e). Mme Fabienne GIBOUDEAUX, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68583"
    },
    {
     "reference": "2008 DF 50",
     "titre": "Convention donnant droit à l’occupation d’une propriété domaniale dénommée “Le Pavillon du Chemin de Fer”, sise avenue de la Cascade, Parc des Buttes Chaumont (19e), afin d’y exploiter un café restaurant salon de thé. M. Bernard GAUDILLÈRE, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91322"
    },
    {
     "reference": "2008 DJS 4",
     "titre": "Subvention compensatrice de loyer au “Club des Joyeux Boulomanes des Buttes Chaumont” (19e). M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MAI 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69732"
    }
@@ -387,6 +468,9 @@
    {
     "reference": "2009 DJS 60",
     "titre": "Subvention à l’association “Club des Joyeux Boulomanes des Buttes-Chaumont” (19e). M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "FEVRIER 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50024"
    }
@@ -395,18 +479,27 @@
    {
     "reference": "2010 DEVE 11",
     "titre": "2010, DEVE 11 - Opération de remise en état des réseaux hydrauliques et des voiries dans le parc des Buttes Chaumont (19e) et modalités de passation du marché de maîtrise d'oeuvre technique.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13635"
    },
    {
     "reference": "2010 DEVE 11",
     "titre": "Opération de remise en état des réseaux hydrauliques et des voiries dans le parc des Buttes Chaumont (19e) et modalités de passation du marché de maîtrise d’œuvre technique. Mme Fabienne GIBOUDEAUX, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79514"
    },
    {
     "reference": "2010 DJS 32",
     "titre": "Subvention à l’association Club des Joyeux Boulomanes des Buttes-Chaumont(19e). M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "FEVRIER 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79172"
    }
@@ -415,18 +508,27 @@
    {
     "reference": "2011 DEVE 38",
     "titre": "Attribution du marché de maîtrise d’œuvre technique pour l’opération de remise en état des réseaux hydrauliques et des voiries dans le parc des Buttes Chaumont (19e) et autorisation de signer le marché correspondant. Mme Fabienne GIBOUDEAUX, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97694"
    },
    {
     "reference": "2011 DJS 65",
     "titre": "Subvention au Club des Joyeux Boulomanes des Buttes-Chaumont (19e). M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "FEVRIER 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97387"
    },
    {
     "reference": "2011 DLH 187",
     "titre": "43 - 2011, DLH 187 - Réalisation par la RIVP d'un programme d'acquisition-conventionnement comportant 36 logements PLS, 2-4 villa des Buttes Chaumont (19e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "SEPTEMBRE 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=102122"
    }
@@ -435,6 +537,9 @@
    {
     "reference": "2012 DEVE 163",
     "titre": "2012 DEVE 163 - Approbation des modalités de passation du marché de travaux pour la remise en état des voiries du parc des Buttes Chaumont (19e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2012",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109561"
    }

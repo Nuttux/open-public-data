@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "grande-halle-de-la-villette",
  "name": "Grande Halle de la Villette",
@@ -248,6 +248,9 @@
    {
     "reference": "2000 DAC 306",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 2 à la convention signée entre la Ville de Paris et l'Etablissement public du parc et de la grande Halle de la Villette pour l'occupation du Pavillon de la Bourse (19e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88618"
    }
@@ -256,6 +259,9 @@
    {
     "reference": "2002 DAC 316",
     "titre": "Autorisation à M. le Maire de Paris de signer les deux conventions relatives à l'attribution d'une subvention de fonctionnement à l'Établissement public du Parc et de la Grande Halle de la Villette, situé 211, avenue Jean-Jaurès (19e), pour le fonctionnement d'un nouvel \"Espace de création\" pour les arts du cirque et les arts de la rue sur l'ancien site de l'École Annie Fratellini, 2, rue de la Clôture (19e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29532"
    }
@@ -264,12 +270,18 @@
    {
     "reference": "2003 DAC 104",
     "titre": "Autorisation à M. le Maire de Paris de signer avec l'Etablissement public du parc et de la grande halle de la Villette, une convention relative à l'attribution d'une subvention exceptionnelle d'équipement. M. Christophe CARESCHE, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70600"
    },
    {
     "reference": "2003 DAC 381",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l'attribution d'une subvention de fonctionnement à l'Etablissement public du parc et de la grande halle de la Villette, situé 211, avenue Jean-Jaurès (19e) pour le fonctionnement de l'Espace périphérique, espace de résidence de création pour les arts du cirque, de la rue et de la marionnette. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47966"
    }
@@ -278,12 +290,18 @@
    {
     "reference": "2004 DAC 23",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l'attribution d'une subvention de fonctionnement à l'Etablissement Public du Parc et de la Grande Halle de la Villette situé 211, avenue Jean Jaurès (19e) pour le fonctionnement en 2004 de l'Espace Périphérique. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "FEVRIER 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33938"
    },
    {
     "reference": "2004 DAC 328",
     "titre": "Attribution d'une subvention de fonctionnement à l'association \"Jeune Création\", 6, villa Guelma (18e), pour l'organisation de son Salon dans la Grande Halle de la Villette (19e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46431"
    }
@@ -292,6 +310,9 @@
    {
     "reference": "2005 DAC 35",
     "titre": "Autorisation à Monsieur le Maire de Paris de signer une convention annuelle sur projet relative à l’attribution d’une subvention de fonctionnement à l’Etablissement Public du Parc et de la Grande Halle de la Villette, situé au 211, avenue Jean Jaurès 75019 Paris. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "AVRIL 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43682"
    }
@@ -300,12 +321,18 @@
    {
     "reference": "2006 DAC 144",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention annuelle sur projet relative à l’attribution d’une subvention de fonctionnement à l’Etablissement public du Parc et de la Grande Halle de la Villette, situé au 211, avenue Jean-Jaurès (19e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUIN 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44441"
    },
    {
     "reference": "2006 DVD 180",
     "titre": "Approbation du projet d’implantation par le département de la Seine Saint Denis de bornes d’information touristique sur le domaine public fluvial. Autorisation à M. le Maire de Paris de signer 4 conventions tripartites avec le département de Seine Saint Denis, et chaque entité dont le territoire est concerné (Etablissement public du Parc et de la grande Halle de la Villette, Ville de Pantin, Ville de Bobigny, communauté de commune Plaine Commune). Mme Myriam CONSTANTIN, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "OCTOBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35269"
    }
@@ -314,12 +341,18 @@
    {
     "reference": "2007 DAC 156",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention annuelle sur projet relative à l’attribution d’une subvention de fonctionnement à l’Etablissement Public du Parc et de la Grande Halle de la Villette situé 211, avenue Jean-Jaurès (19e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MARS 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31754"
    },
    {
     "reference": "2007 DAC 156",
     "titre": "2007, DAC 156 - Autorisation à M. le Maire de Paris de signer une convention annuelle sur projet relative à l’attribution d’une subvention de fonctionnement à l’Etablissement public du parc et de la Grande Halle de la Villette situé 211, avenue Jean-Jaurès (19e). Montant : 165.000 euros.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MARS 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22457"
    }
@@ -328,18 +361,27 @@
    {
     "reference": "2008 DAC 344",
     "titre": "Signature d’un avenant à la convention annuelle avec l’Etablissement Public du Parc et de la Grande Halle de la Villette (19e), pour l’attribution d’une subvention. - Montant : 82.500 euros. - Signature d’une convention relative à l’attribution d’une subvention d’équipement. - Montant : 21.500 euros. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67633"
    },
    {
     "reference": "2008 DPA 277",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention avec l’Etablissement Public du Parc et de la Grande Halle de la Villette (EPPGHV) en vue du raccordement au réseau de chaleur sur le domaine public du Parc de la Villette, afin d’alimenter le bâtiment municipal dit “de la darse du fond de Rouvray” 60, quai de la Marne (19e). Mme Anne LE STRAT, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78060"
    },
    {
     "reference": "2008 DVD 81",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention d’occupation du domaine public de l’Etablissement Public du Parc et de la Grande Halle de la Villette par la Ville de Paris pour l’installation de vélos en libre service. Mme Annick LEPETIT, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61438"
    }
@@ -348,12 +390,18 @@
    {
     "reference": "2009 DAC 51",
     "titre": "Signature du renouvellement de la convention cadre pour 2009-2014 et de l’avenant à la convention annuelle avec l’Etablissement Public du Parc et de la Grande Halle de la Villette (19e), pour l’attribution d’une subvention. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "AVRIL 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64532"
    },
    {
     "reference": "2009 DAC 51",
     "titre": "2009, DAC 51 - Signature du renouvellement de la convention cadre pour 2009-2014 et de l'avenant à la convention annuelle avec l'Etablissement Public du Parc et de la Grande Halle de la Villette (19e), pour l'attribution d'une subvention à l'Espace Périphérique. - Montant : 82.500 euros.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "AVRIL 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10626"
    }
@@ -362,6 +410,9 @@
    {
     "reference": "2010 DAC 115",
     "titre": "Signature d’un avenant n°1 et d’une convention pour l’attribution de subvention à l’Etablissement Public du Parc et de la Grande Halle de la Villette. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39608"
    }

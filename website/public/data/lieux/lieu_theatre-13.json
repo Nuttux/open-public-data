@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-13",
  "name": "Théâtre 13",
@@ -329,6 +329,9 @@
    {
     "reference": "1997 DAC 30",
     "titre": "Subvention au \"Naïf Théâtre\" (13e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 1997",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75560"
    }
@@ -337,6 +340,9 @@
    {
     "reference": "1998 DAC 240",
     "titre": "Subvention à l'association \"Einsentrope Théâtre\" (13e). Mme Hélène MACE de LEPINAY, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 1998",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57490"
    }
@@ -345,24 +351,36 @@
    {
     "reference": "2002 DAC 283",
     "titre": "85 - 2002, DAC 283 - Autorisation à M. le Maire de Paris de souscrire un avenant à la convention relative à l'attribution d'une subvention complémentaire à l'Association pour l'animation sportive et culturelle du Sud parisien (13e) qui gère le \"Théâtre 13\" situé 103 A, boulevard Auguste-Blanqui (13e). - Montant : 61.000 euros",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5989"
    },
    {
     "reference": "2002 DAC 283",
     "titre": "Autorisation à M. le Maire de Paris de signer un avenant à la convention du 26 février 2002 relatif à l'attribution d'une subvention complémentaire de fonctionnement à l'Association pour l'animation sportive et culturelle du Sud Parisien, dont le siège social est situé 24, rue Daviel (13e), qui gère le Théâtre 13, établissement situé 103 A, boulevard Auguste-Blanqui (13e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29656"
    },
    {
     "reference": "2002 DAC 33",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention avec l'association \"La Compagnie du Lierre\" pour le fonctionnement du Lierre théâtre (13e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "FEVRIER 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58088"
    },
    {
     "reference": "2002 DAC 40",
     "titre": "Autorisation à M. le Maire de Paris de signer avec l'Association pour l'animation sportive et culturelle du Sud Parisien une convention relative au fonctionnement du Théâtre 13 situé 103A, boulevard Auguste Blanqui (13e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "FEVRIER 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58004"
    }
@@ -371,12 +389,18 @@
    {
     "reference": "2003 DAC 11",
     "titre": "182 - 2003, DAC 11 - Autorisation à M. le Maire de Paris de signer une convention relative à l'attribution d'une subvention de fonctionnement avec \"l'Association pour l'animation sportive et culturelle du sud parisien\" (13e) qui gère le Théâtre 13 (13e). - Montant : 561.000 euros",
+    "genres": [
+     "subvention"
+    ],
     "seance": "AVRIL 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18544"
    },
    {
     "reference": "2003 DAC 11",
     "titre": "Autorisation à M. le Maire de Paris de signer avec l'Association pour l'animation sportive et culturelle du sud parisien, dont le siège social est situé 24, rue Daviel (13e), qui gère le \"Théâtre 13\", établissement situé 103A, boulevard Auguste-Blanqui (13e), une convention relative à l'attribution d'une subvention de fonctionnement (D01478). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "AVRIL 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89657"
    }
@@ -385,12 +409,18 @@
    {
     "reference": "2004 DAC 453",
     "titre": "Autorisation à M. le Maire de Paris de signer avec l'Association pour l'animation sportive et culturelle du sud parisien qui gère le Théâtre 13 - 103A, avenue Auguste Blanqui 750013 PARIS (D01478/2003_04609) une convention relative à l'attribution d'une subvention d'équipement. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46808"
    },
    {
     "reference": "2004 DAC 7",
     "titre": "Autorisation à M. le Maire de Paris de signer avec l'Association pour l'animation sportive et culturelle du Sud parisien, qui gère le Théâtre 13, une convention relative à l'attribution d'une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "AVRIL 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52018"
    }
@@ -399,6 +429,9 @@
    {
     "reference": "2005 DAC 11",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l’attribution d’une subvention de fonctionnement, à l’association A.A.S.C.S.P. / Théâtre 13, 103A, boulevard Auguste-Blanqui (13e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MARS 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26512"
    }
@@ -407,18 +440,27 @@
    {
     "reference": "2006 DAC 58",
     "titre": "2006, DAC 58 - Autorisation à M. le Maire de Paris de signer des conventions relatives à l’occupation du domaine public avec les théâtre Molières - Maison de la Poésie, théâtre Mouffetard, théâtre 13, théâtre 14, théâtre Sylvia-Monfort, théâtre de la Ville, théâtre Paris-Villette et 20e théâtre.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JANVIER 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24846"
    },
    {
     "reference": "2006 DAC 61",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l’attribution d’une subvention de fonctionnement et une convention relative à l’attribution d’une subvention d’équipement, à l’association “A.A.S.C.S.P. / Théâtre 13”, 103A, boulevard Auguste-Blanqui (13e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MAI 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89122"
    },
    {
     "reference": "2006 DAC 61",
     "titre": "2006, DAC 61 - Autorisation à M. le Maire de Paris de signer avec l’association “A.A.S.C.S.P. / Théâtre 13” une convention relative à l’attribution d’une subvention de fonctionnement de 561.000 euros ainsi qu’une convention relative à l’attribution d’une subvention d’équipement de 20.000 euros.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MAI 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10561"
    }
@@ -427,18 +469,27 @@
    {
     "reference": "2007 DAC 30",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l’attribution d’une subvention de fonctionnement de 561.000 euros à l’association A.A.S.C.S.P./Théâtre 13, 103A, boulevard Auguste-Blanqui (13e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MARS 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31343"
    },
    {
     "reference": "2007 DAC 329",
     "titre": "Autorisation à M. le Maire de Paris de signer des conventions relatives à l’attribution de subventions d’équipement avec les associations et la SARL suivantes : “Maison de la Poésie” 161, rue Saint-Martin (3e) ; “Paris Mouff’Théâtre” 73, rue Mouffetard (5e) ; “A.A.S.C.S.P/Théâtre” 13 103A, bd A. Blanqui (13e) ; “Théâtre Paris 14” 20, Av. Marc Sangnier (14e) ; “Nouveau Théâtre de Novembre/20e Théâtre” 7, rue des Platrières (20e) ; “SARL S.P.G.T/Théâtre Paris-Villette” 211, Av. Jean Jaurès (19e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66078"
    },
    {
     "reference": "2007 DAC 612",
     "titre": "Autorisation à M. le Maire de Paris de signer des conventions relatives à l’occupation des théâtres suivants : Théâtre Molière-Maison de la poésie situé 161, rue Saint-Martin (3e) ; Théâtre Mouffetard situé 73, rue Mouffetard (5e) ; Théâtre 13 situé 103A, boulevard Auguste Blanqui (13e) ; Théâtre 14 situé 20, avenue Marc Sangnier (14e) ; Théâtre Silvia Monfort situé 106, rue Brancion (15e) ; Théâtre Paris-Villette situé 211, avenue Jean Jaurès (19e) ; 20e Théâtre situé 7, rue des Platrières (20e",
+    "genres": [
+     "autre"
+    ],
     "seance": "OCTOBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53115"
    }
@@ -447,30 +498,45 @@
    {
     "reference": "2008 DAC 158",
     "titre": "Signature d’un avenant à la convention passée avec l’association A.A.S.C.S.P. / Théâtre 13 (13e) pour l’attribution du solde de la subvention de fonctionnement de 280.500 euros, et signature d’une convention relative à l’attribution d’une subvention d’équipement et 20.000 euros. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66886"
    },
    {
     "reference": "2008 DAC 314",
     "titre": "Subvention à l’association “La Jolie Pourpoise” pour le spectacle Le Suicidé présenté au Théâtre 13 (13e) en 2008. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67048"
    },
    {
     "reference": "2008 DAC 318",
     "titre": "Subvention à l’association “Depuis Depuis” pour le spectacle Le vol de Kitty Hawk présenté au Théâtre 13 (13e) en 2008. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67234"
    },
    {
     "reference": "2008 DAC 539",
     "titre": "Subvention à l’association La Compagnie du Catogan pour le spectacle Le Timide au Palais présenté au Théâtre 13 (13e) en 2008. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61594"
    },
    {
     "reference": "2008 DAC 95",
     "titre": "Subvention à l’association “Compagnie Orten” pour le spectacle “Marie Stuart” diffusé au Théâtre 13 (13e) en 2008. - Montant : 11.000 euros. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "AVRIL 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50712"
    }
@@ -479,24 +545,36 @@
    {
     "reference": "2009 DAC 165",
     "titre": "Signature d’un avenant à la convention passée avec l’association A.A.S.C.S.P./Théâtre 13 (13e), pour l’attribution du solde de la subvention de fonctionnement, et signature d’une convention relative à l’attribution d’une subvention d’équipement. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37246"
    },
    {
     "reference": "2009 DAC 169",
     "titre": "Autorisation à M. le Maire de Paris de signer des conventions relatives à l’occupation des théâtres suivants : Maison de la poésie située 161, rue Saint-Martin (3e) ; Théâtre Mouffetard (5e) ; Théâtre 13 situé 103A, boulevard Auguste Blanqui (13e) ; Théâtre 14 situé 20, avenue Marc Sangnier (14e) ; Théâtre Silvia Monfort situé 106, rue Brancion (15e) ; Théâtre Paris-Villette situé 211, avenue Jean Jaurès (19e) ; 20ème Théâtre situé 7, rue des Platrières (20e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61769"
    },
    {
     "reference": "2009 DAC 423",
     "titre": "Subvention à l’association Compagnie Eulalie pour le spectacle Le jour de l’italienne présenté au Théâtre 13 (13e) en 2009. Montant : 10.000 euros. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "OCTOBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93470"
    },
    {
     "reference": "2009 DAC 91",
     "titre": "Subvention à l’association “TPL Les Tréteaux de la Pleine Lune” pour le spectacle Sa Majesté des Mouches présenté au Théâtre 13 (13e) en 2009. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34586"
    }
@@ -505,6 +583,9 @@
    {
     "reference": "2010 DAC 228",
     "titre": "Signature d’un avenant avec l’association A.A.S.C.S.P./Théâtre 13 (13e) pour l’attribution d’une subvention. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39542"
    }
@@ -513,12 +594,18 @@
    {
     "reference": "2011 DAC 192",
     "titre": "Signature d’un avenant avec l’association A.A.S.C.S.P./Théâtre 13 (13e) pour l’attribution d’une subvention. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MARS 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96535"
    },
    {
     "reference": "2011 DAC 696",
     "titre": "57 - 2011, DAC 696 - Subventions (430.000 euros), avenant et convention avec l'association A.A.S.C.S.P./Théâtre 13 (13e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=102037"
    }

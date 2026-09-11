@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "maison-de-victor-hugo",
  "name": "Maison de Victor Hugo",
@@ -259,6 +259,9 @@
    {
     "reference": "2001 DPA 62",
     "titre": "Approbation des modalités d'attribution d'un marché de travaux relatif à l'amélioration des conditions d'accueil du public à la Maison de Victor Hugo (4e). - Autorisation à M. le Maire de Paris de signer ledit marché. M. Claude ROLAND, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JANVIER 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84950"
    }
@@ -267,12 +270,18 @@
    {
     "reference": "2002 DAC 17",
     "titre": "Autorisation à Monsieur le Maire de Paris de signer une convention relative à l'attribution d'une subvention de fonctionnement à l'association \"Compagnie Jean Marie Galey\" et une convention relative à l'attribution d'une subvention de fonctionnement à l'association \"Compagnie 9 et demi\" dans le cadre de l'année \"Victor Hugo\". M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUIN 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55968"
    },
    {
     "reference": "2002 DAC 532",
     "titre": "Dons en espèces d'un montant de 6.148 euros pour l'acquisition d'œuvres d'art pour la Maison de Victor Hugo. - Autorisation à M. le Maire de Paris de signer avec la société Rhodia Organique la convention financière correspondante. Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71024"
    }
@@ -281,12 +290,18 @@
    {
     "reference": "2005 DAC 78",
     "titre": "Don en espèces d’un montant de 2.500 euros pour l’acquisition d’œuvres d’art pour la Maison Victor Hugo. - Autorisation à Monsieur le Maire de Paris de signer avec l’Agence Conseil en Communication par l’Evènement MEDIAPLUS-ETAT DE FETE la convention financière correspondante. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "AVRIL 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43535"
    },
    {
     "reference": "2005 DAC 90",
     "titre": "Don en espèces d’un montant de 716 euros pour la restauration d’œuvres d’art pour Hauteville House, la Maison d’exil de Victor Hugo. - Autorisation à M. le Maire de Paris de signer avec la Banque Julius Baer & Co. LTD-Guernsey Branch la convention financière correspondante. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43678"
    }
@@ -295,6 +310,9 @@
    {
     "reference": "2007 DAC 676",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention avec la Maison du geste et de l’image pour la réalisation d’un programme d’activités culturelles avec la Maison de Victor Hugo. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54453"
    }

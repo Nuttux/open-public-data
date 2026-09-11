@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-de-la-republique",
  "name": "Place de la République",
@@ -166,12 +166,18 @@
    {
     "reference": "2001 DVD 66",
     "titre": "23 - 2001, DVD 66 - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres pour l'aménagement des trottoirs : - du boulevard de la Madeleine et du boulevard des Capucines (tronçon de la place de la Madeleine à la place de l'Opéra) ; - du boulevard des Italiens (tronçon de la rue Favart au carrefour Richelieu-Drouot) ; - du boulevard Saint-Denis et du boulevard Saint-Martin (tronçon du boulevard Sébastopol à la place de la République)",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8080"
    },
    {
     "reference": "2001 DVD 66",
     "titre": "Projet de revalorisation des Grands Boulevards (1er, 2e, 3e, 8e, 9e et 10e arrondissements) - Approbation des modalités d'attribution d'un marché sur appel d'offres pour l'aménagement des trottoirs des boulevards de la Madeleine et des Capucines (tronçon de la place de la Madeleine à la place de l'Opéra), des Italiens (tronçon de la rue Favart au carrefour Richelieu-Drouot), Saint-Denis et Saint-Martin (tronçon du boulevard Sébastopol à la place de la République). - Autorisation à M. le Maire de",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28849"
    }
@@ -180,12 +186,18 @@
    {
     "reference": "2003 DAC 169",
     "titre": "42 - 2003, DAC 169 - Autorisation à M. le Maire de Paris de signer un marché de travaux sur appel d'offres en vue de la restauration du monument à la gloire de la République, place de la République (10e).Vœu déposé par M. DREYFUS et les membres du groupe socialiste et radical de gauche relatif à la restauration du monument à la gloire de la République, place de la République.Vœu déposé par Melle NENNER relatif à la restauration du monument place de la République",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3359"
    },
    {
     "reference": "2003 DAC 169",
     "titre": "Approbation du principe et des modalités d'attribution d'un marché de travaux sur appel d'offres ouvert en vue de la restauration du monument à la gloire de la République, place de la République (10e). - Autorisation à M. le Maire de Paris de signer le marché correspondant. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48197"
    }
@@ -194,6 +206,9 @@
    {
     "reference": "2009 DVD 178",
     "titre": "Approbation du principe d’aménagement de la place de la République (3e, 10e et 11e) et des modalités de passation du marché de maîtrise d’œuvre correspondant suite à concours. - Approbation des objectifs du programme résultant de la première phase de concertation menée du 15 décembre 2008 au 15 mars 2009 sur l’aménagement de la place de la République (3e, 10e et 11e). Mme Annick LEPETIT, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74876"
    }
@@ -202,12 +217,18 @@
    {
     "reference": "2010 DVD 112",
     "titre": "Signature du marché de maîtrise d’œuvre pour l’aménagement de la place de la République (3e, 10e et 11e arrondissements) avec le groupement TREVELO ET VIGER-KOHLER (mandataire) , Martha Schwartz Partners, AREAL, ATEC, AIK Yann Kersalé. Mme Annick LEPETIT, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45031"
    },
    {
     "reference": "2010 DVD 112",
     "titre": "2010, DVD 112 - Signature du marché de maîtrise d'oeuvre pour l'aménagement de la place de la République à Paris (3e, 10e et 11e) avec le groupement Treveloet Viger-Kohler (mandataire), Martha Schwartz Partners, AREAL, ATEC AIK YannKersalé. Vœu déposé par le groupe \"Les Verts\". Vœu déposé par le groupe U.M.P.P.A. Vœu déposé par l'Exécutif.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8614"
    }
@@ -216,6 +237,9 @@
    {
     "reference": "2012 DLH 61",
     "titre": "117 - 2012, DLH 61 - Approbation des modalités de lancement des marchés publics relatifs à la conduite de l’opération programmée d’amélioration de l’habitat développement durable et économie d’énergie (OPAH 2D2E) dans le secteur de la place de la République.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2012",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104691"
    }
@@ -224,6 +248,9 @@
    {
     "reference": "2013 DDEEES 41",
     "titre": "2013 DDEEES 41 - DVD 19 - Convention d'occupation du domaine public pour l'occupation du Café Monde et Médias, situé place de la République (3e, 10e et 11e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "FEVRIER 2013",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=111210"
    }
@@ -232,6 +259,9 @@
    {
     "reference": "2022 DAE 9",
     "titre": "2022 DAE 9 - Convention d'occupation du domaine public pour l'occupation du café-restaurant \"Fluctuat Nec Mergitur\", situé place de la République (Centre, 10e, 11e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "FEVRIER 2022",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164554"
    }
@@ -240,6 +270,9 @@
    {
     "reference": "2025 DAE 151",
     "titre": "2025 DAE 151 - Avenant de prolongation de la convention d'occupation du domaine public pour l'occupation du café-restaurant Fluctuat Nec Mergitur, situé place de la République (Paris Centre, 10e, 11e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 2025",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=182318"
    }

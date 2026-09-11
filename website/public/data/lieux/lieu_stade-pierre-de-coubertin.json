@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "stade-pierre-de-coubertin",
  "name": "Stade Pierre-de-Coubertin",
@@ -94,6 +94,9 @@
    {
     "reference": "1996 D 773",
     "titre": "27- 1996, D. 773 - Autorisation à M. le Maire de Paris de souscrire un avenant n° 8 à la convention signée avec le \"Tennis Club de Paris\" en vue de la mise à disposition dudit club d'une parcelle de terrain contiguë au stade Pierre-de-Coubertin (16e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUIN 1996",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7277"
    }
@@ -102,6 +105,9 @@
    {
     "reference": "1997 DPA 39",
     "titre": "Approbation du principe de la réalisation des travaux de réfection de couverture du stade Pierre de Coubertin (16e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Dominique CANE, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 1997",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40338"
    }
@@ -110,6 +116,9 @@
    {
     "reference": "2000 DPA 3",
     "titre": "Approbation du principe de la rénovation de la chaufferie de la mairie du 16e arrondissement et de la ventilation du stade Pierre-de-Coubertin (16e). - Approbation des modalités d'attribution des marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. M. Jean-François LEGARET et M. Dominique CANE, rapporteurs.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JANVIER 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48498"
    }
@@ -118,6 +127,9 @@
    {
     "reference": "2005 DJS 185",
     "titre": "Attribution d’une subvention de fonctionnement à la S.A.S.P. Paris Basket Racing, dont le siège social est situé au stade Pierre de Coubertin sis 82, rue Georges Lafont (16e) au titre de l’année 2005. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "FEVRIER 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82335"
    }
@@ -126,6 +138,9 @@
    {
     "reference": "2006 DJS 354",
     "titre": "Subvention exceptionnelle à la Ligue Nationale de Handball pour l’organisation de la Coupe de la Ligue les 26 et 27 mai 2006 au stade Pierre de Coubertin. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81033"
    }
@@ -134,6 +149,9 @@
    {
     "reference": "2007 DJS 476",
     "titre": "Autorisation à M. le Maire de Paris de lancer la procédure de marché négocié, suivant les articles 35-I-5, 65 et 66, pour réaliser la mise aux normes de la détection et la mise aux normes de l’alarme incendie, la rénovation de la sonorisation et l’amélioration de l’éclairage sportif du court central au stade Pierre de Coubertin (16ème). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66119"
    }

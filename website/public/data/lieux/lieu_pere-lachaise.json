@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "pere-lachaise",
  "name": "Cimetière du Père-Lachaise",
@@ -250,6 +250,9 @@
    {
     "reference": "1997 DFAECG 54",
     "titre": "Approbation du principe de la passation d'une convention de délégation de service public pour la gestion du crématorium du cimetière du Père-Lachaise situé 16, rue du Repos (20e). M. Jean-François LEGARET, au lieu et place de l'Adjoint au Maire chargé du Domaine et des Concessions, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 1997",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78776"
    }
@@ -258,12 +261,18 @@
    {
     "reference": "1998 DFAECG 22",
     "titre": "Prolongation de la convention portant concession du service de crémation funéraire du cimetière du Père-Lachaise en date du 26 février 1986. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JANVIER 1998",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48392"
    },
    {
     "reference": "1998 DLTI 86",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant à la délégation de service public du crématorium du Père-Lachaise. M. Paul AURELLI, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 1998",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57536"
    }
@@ -272,12 +281,18 @@
    {
     "reference": "1999 DAC 77",
     "titre": "Subvention à l'association \"Les ateliers du Père-Lachaise associés\" (20e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUIN 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55348"
    },
    {
     "reference": "1999 DLTI 79",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant à la convention de délégation de service public pour la gestion du crématorium du Père Lachaise visant à fixer le taux de redevance due par la société délégataire pour l'année 1999 au taux de 3 % des produits d'exploitation. M. Paul AURELLI, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51766"
    }
@@ -286,6 +301,9 @@
    {
     "reference": "2000 DAC 246",
     "titre": "Subvention à l'association \"Les ateliers du Père-Lachaise associés\" (20e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "OCTOBRE 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58848"
    }
@@ -294,18 +312,27 @@
    {
     "reference": "2001 DAC 336",
     "titre": "21 - 2001, DAC 336 - Approbation de l'hommage aux combattants parisiens tombés lors de la guerre d'Algérie et des combats du Maroc et de la Tunisie. - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres pour la réalisation d'un monument dans le cimetière du Père-Lachaise (20e)",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3799"
    },
    {
     "reference": "2001 DLTI 12",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 3 à la convention de délégation pour la gestion du crématorium du Père-Lachaise (20e). - Tarifs pour 2001. M. Jean-Antoine GIANSILY, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JANVIER 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85073"
    },
    {
     "reference": "2001 DPE 71",
     "titre": "Approbation des modalités d'attribution d'un marché sur appel d'offres pour la réhabilitation des ouvrages d'assainissement du secteur \"Gambetta - Père Lachaise\" (20e). - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Myriam CONSTANTIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62688"
    }
@@ -314,12 +341,18 @@
    {
     "reference": "2002 DAC 328",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant au marché passé avec l'entreprise Charpentier PM pour l'exécution d'une prestation complémentaire pour la réalisation et l'implantation d'un mémorial en hommage aux combattants parisiens tombés lors de la guerre d'Algérie et des combats du Maroc et de la Tunisie, dans le cimetière du Père-Lachaise (20e). Mme Odette CHRISTIENNE, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29306"
    },
    {
     "reference": "2002 DAC 359",
     "titre": "Attribution d'une subvention de fonctionnement à l'Association Les Ateliers du Père-Lachaise Associés, 78, rue des Grands-Champs (20e) (D06362). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45273"
    }
@@ -328,18 +361,27 @@
    {
     "reference": "2005 DAC 240",
     "titre": "Attribution d’une subvention de fonctionnement à l’association “Les Ateliers du Père Lachaise Associés” 79, rue de Bagnolet - 75020 Paris. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63416"
    },
    {
     "reference": "2005 DMG 34",
     "titre": "Autorisation à M. le Maire de Paris de signer un avenant n° 4 portant modification de la formule de révision annuelle des tarifs des prestations proposées aux familles parisiennes inscrite à l’article 17 du contrat de concession relatif à la gestion du crématorium du Père Lachaise située à Paris 20ème, souscrit avec la Société Anonyme d’Économie Mixte des Pompes Funèbres. M. François DAGNAUD, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87362"
    },
    {
     "reference": "2005 DPJEV 44",
     "titre": "Approbation du principe et des modalités de réalisation des travaux d’aménagement et de mise aux normes des locaux sociaux des cimetières parisiens d’Ivry et du Père-Lachaise (20e). M. Yves CONTASSOT, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83053"
    }
@@ -348,36 +390,54 @@
    {
     "reference": "2006 DAC 341",
     "titre": "Attribution d’une subvention de fonctionnement à l’association “Les Ateliers du Père Lachaise Associés”, 77, rue de Bagnolet (20e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81003"
    },
    {
     "reference": "2006 DALIAT 43",
     "titre": "Autorisation à M. le Maire de Paris de signer l’avenant n° 6 à la convention de délégation de service public pour la gestion du crématorium du Père Lachaise (20e). M. François DAGNAUD, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "OCTOBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35339"
    },
    {
     "reference": "2006 DFPE 126",
     "titre": "Autorisation donnée à M. le Maire de Paris de signer une convention de fonctionnement avec l’association “Marie de Miribel pour la Petite Enfance” gestionnaire d’une crèche collective “Crèche Laïque du Quartier du Père Lachaise” située 3, Place Martin Nadaud (20e). - Attribution d’une subvention de fonctionnement au titre de 2006 au dit établissement pour un montant total de 400.201 euros. Mme Olga TROSTIANSKY, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MAI 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88936"
    },
    {
     "reference": "2006 DMG 13",
     "titre": "2006, DMG 13 - Autorisation à M. le Maire de Paris de souscrire un avenant n° 5 à la convention pour la gestion du crématorium du Père Lachaise (20e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "AVRIL 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16943"
    },
    {
     "reference": "2006 DMG 13",
     "titre": "Autorisation à M. le Maire de Paris de signer l’avenant n° 5 à la convention pour la gestion du crématorium du Père Lachaise (20e). M. François DAGNAUD, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "AVRIL 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38529"
    },
    {
     "reference": "2006 DMG 33",
     "titre": "Autorisation à M. le Maire de Paris de signer la convention relative à la garantie d’emprunt accordée à la Société anonyme d’économie mixte des pompes funèbres (S.A.E.M.P.F.) pour financer des travaux d’installation de filtres en amont des cheminées du crématorium du Père Lachaise (20e). M. François DAGNAUD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81169"
    }
@@ -386,24 +446,36 @@
    {
     "reference": "2007 DAC 654",
     "titre": "Attribution d’une subvention de fonctionnement à l’association “Les Ateliers du Père Lachaise Associés” 77, rue de Bagnolet (20e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54370"
    },
    {
     "reference": "2007 DALIAT 31",
     "titre": "Autorisation à M. le Maire de Paris de signer l’avenant n° 7 à la convention pour la gestion du crématorium du Père Lachaise (20e). M. François DAGNAUD, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54905"
    },
    {
     "reference": "2007 DALIAT 32",
     "titre": "Autorisation à M. le Maire de Paris de signer la convention relative à la garantie d’empruntaccordée à la Société Anonyme d’Économie Mixte des Pompes Funèbres (S.A.E.M.P.F.) pour financer des travaux d’installation de filtres en amont des cheminées du crématorium du Père Lachaise (20e). M. François DAGNAUD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54401"
    },
    {
     "reference": "2007 DFPE 164",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention de fonctionnement avec la Fondation “Œuvre de la Croix Saint Simon” gestionnaire d’une crèche collective “Crèche Laïque du Quartier du Père Lachaise” située 3, place Martin Nadaud (20e). - Attribution d’une subvention de fonctionnement au titre de 2007 au dit établissement pour un montant total de 413.992 euros. Mme Olga TROSTIANSKY, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "OCTOBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53623"
    }
@@ -412,12 +484,18 @@
    {
     "reference": "2008 DAC 518",
     "titre": "Subvention à l’association “Les Ateliers du Père Lachaise Associés” (20e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77931"
    },
    {
     "reference": "2008 DFPE 33",
     "titre": "Signature d’un avenant n° 1 à la convention passée avec la Fondation “Œuvre de la Croix Saint-Simon” pour l’attribution d’une subvention pour le fonctionnement de la crèche collective “Crèche Laïque du Quartier du Père Lachaise” (20e). M. Christophe NAJDOVSKI, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67650"
    }
@@ -426,18 +504,27 @@
    {
     "reference": "2009 DAC 708",
     "titre": "Subvention à l’association Les Ateliers du Père Lachaise Associés (20e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32311"
    },
    {
     "reference": "2009 DEVE 82",
     "titre": "Signature d’une convention avec l’association de défense des familles des victimes de la catastrophe de Charm El Cheikh pour la mise à disposition d’un terrain au cimetière du Père Lachaise afin d’y inhumer les restes, identifiés ou non, des victimes. Mme Fabienne GIBOUDEAUX, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32452"
    },
    {
     "reference": "2009 DFPE 63",
     "titre": "Signature d'un avenant n° 2 à la convention passée avec la Fondation Œuvre de la Croix Saint Simon pour l'attribution d'une subvention pour le fonctionnement de la crèche collective Crèche Laïque du Quartier du Père Lachaise (20e). M. Christophe NAJDOVSKI, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37352"
    }
@@ -446,18 +533,28 @@
    {
     "reference": "2010 DAC 675",
     "titre": "Subvention à l’association Les Ateliers du Père Lachaise Associés (20e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=86231"
    },
    {
     "reference": "2010 DFPE 379",
     "titre": "DLH 277 Autorisation de réaliser des travaux de réhabilitation d’un établissement d’accueil de la petite enfance “Père Lachaise” par la fondation “ŒUVRE DE LA CROIX SAINT SIMON” sur la parcelle 3, place Martin Nadaud (20e) et signature d’une convention avec cette fondation pour l’attribution d’une subvention pour ces travaux. M. Christophe NAJDOVSKI, rapporteur.",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
     "seance": "OCTOBRE 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23462"
    },
    {
     "reference": "2010 DFPE 72",
     "titre": "Signature d’un avenant n° 1 à la convention passée avec la Fondation “Œuvre de la Croix Saint Simon” pour l’attribution d’une subvention pour le fonctionnement de la crèche collective “Crèche du Père Lachaise” (20e). M. Christophe NAJDOVSKI, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39206"
    }
@@ -466,6 +563,9 @@
    {
     "reference": "2011 DAC 321",
     "titre": "Subvention à l’association Les Ateliers du Père Lachaise Associés (20e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MAI 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97809"
    }
@@ -474,6 +574,9 @@
    {
     "reference": "2015 DEVE 25",
     "titre": "2015 DEVE 25 - Exploitation du crématorium du Père Lachaise, 71, rue des Rondeaux (20e) - Convention avec la Société anonyme d’économie Mixte des Pompes Funèbres pour la gestion de cet équipement.",
+    "genres": [
+     "autre"
+    ],
     "seance": "MAI 2015",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125254"
    }
@@ -482,6 +585,9 @@
    {
     "reference": "2017 DEVE 2",
     "titre": "2017 DEVE 2 - Etude et conception d'un mémorial cinéraire au cimetière du Père-Lachaise - Convention de partenariat pédagogique avec l'Ecole Boulle. Vœu déposé par le groupe Communiste - Front de Gauche relatif au jardin du souvenir du cimetière Père Lachaise.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JANVIER 2017",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134743"
    }
@@ -490,6 +596,9 @@
    {
     "reference": "2018 DEVE 30",
     "titre": "2018 DEVE 30 - Avenant n° 1 à la convention du 28 mai 2015 portant sur la gestion du crématorium du Père-Lachaise (20e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2018",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146739"
    }
@@ -498,30 +607,45 @@
    {
     "reference": "2025 DAE 128",
     "titre": "2025 DAE 128 - Subvention de fonctionnement (20.915 euros) à l'association \"La Compagnie du 20e\" pour son projet d'accueil des visiteurs au Père Lachaise et à la Maison du 20e.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUIN 2025",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=181334"
    },
    {
     "reference": "2025 DEVE 100",
     "titre": "2025 DEVE 100 Cimetière du Père Lachaise - Acceptation de la convention de financement avec la ville du Touquet.",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2025",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184616"
    },
    {
     "reference": "2025 DEVE 103",
     "titre": "2025 DEVE 103 - Approbation d’un contrat de délégation de service public relatif à la rénovation et à la gestion du crématorium du Père-Lachaise à la société publique locale funéraire de Paris (S.P.L.F.P.).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2025",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183647"
    },
    {
     "reference": "2025 DEVE 34",
     "titre": "2025 DEVE 34 - Cimetière du Père Lachaise. - Mémorial du génocide de Srebrenica. - Convention d'occupation du domaine public à titre gratuit avec l'association \"Solidarité internationale Bosnie-Herzégovine-France\".",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 2025",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=182447"
    },
    {
     "reference": "2025 DEVE 70",
     "titre": "2025 DEVE 70 - Lancement de la procédure de délégation de service public à la Société publique locale funéraire de Paris pour la rénovation et l’exploitation du crématorium du Père-Lachaise.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2025",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=182394"
    }

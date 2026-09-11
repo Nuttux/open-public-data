@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "mairie-du-11e",
  "name": "Mairie du 11e",
@@ -166,18 +166,27 @@
    {
     "reference": "1998 DPA 169",
     "titre": "14 - 1998, DPA 169 - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres pour la réfection de pierres de taille sur la façade Voltaire à la mairie du 11e arrondissement",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 1998",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24332"
    },
    {
     "reference": "1998 DPA 169",
     "titre": "Approbation du principe de la réfection de pierres de taille sur la façade Voltaire à la mairie du 11e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 1998",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82764"
    },
    {
     "reference": "1998 DPA 239",
     "titre": "Approbation du principe de la séparation de réseaux de chauffage à la mairie du 11e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 1998",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62392"
    }
@@ -186,12 +195,18 @@
    {
     "reference": "1999 DPA 123",
     "titre": "Approbation du principe de la remise en état de locaux à la mairie du 11e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55382"
    },
    {
     "reference": "1999 DPA 223",
     "titre": "Approbation du principe de la rénovation de bureaux à la mairie du 11e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42631"
    }
@@ -200,18 +215,27 @@
    {
     "reference": "2000 DPA 143",
     "titre": "Approbation du principe de la mise aux normes de sécurité contre les risques d'incendie des cages d'escalier à la mairie du 11e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50974"
    },
    {
     "reference": "2000 DPA 260",
     "titre": "Approbation du principe de la réalisation des travaux de modernisation des 2 ascenseurs et de mise en conformité d'installations électriques à la mairie du 11e arrondissement. - Approbation des modalités d'attribution des marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28532"
    },
    {
     "reference": "2000 DPA 75",
     "titre": "Approbation du principe de l'aménagement des services des élections et de l'état civil à la Mairie du 11e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51182"
    }
@@ -220,18 +244,27 @@
    {
     "reference": "2001 DAEE 35",
     "titre": "Attribution d'une subvention de 12 200 euros à \"l'Association des Artistes et Artisans d'Art du 11ème (4A)\", domiciliée à la Mairie du 11e arrondissement. Mme Lyne COHEN-SOLAL, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JANVIER 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27136"
    },
    {
     "reference": "2001 DPA 122",
     "titre": "Approbation du principe de l'installation de portes monumentales pare-flammes 1/2 heure au 2e étage de la Mairie du 11e arrondissement (11e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28798"
    },
    {
     "reference": "2001 DPA 414",
     "titre": "Approbation du principe de réalisation de travaux de climatisation de l'Etat Civil à la Mairie du 11e arrondissement, place Léon-Blum (11e) et des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71797"
    }
@@ -240,12 +273,18 @@
    {
     "reference": "2002 DAC 199",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l'attribution d'une subvention de fonctionnement à l'association \"11ème Evénements\", située à la mairie du 11e arrondissement, place Léon-Blum (11e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88362"
    },
    {
     "reference": "2002 DPA 101",
     "titre": "Approbation du principe et des modalités d'attribution d'un marché de maîtrise d'œuvre en vue de la réalisation des travaux de restauration de façades à la mairie du 11e arrondissement. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57981"
    }
@@ -254,18 +293,27 @@
    {
     "reference": "2003 DPA 101",
     "titre": "Approbation des modalités de passation du marché de travaux de restructuration des sanitaires à la Mairie du 11ème arrondissement, Place Léon Blum (11e). - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56915"
    },
    {
     "reference": "2003 DPA 207",
     "titre": "Approbation du principe de réalisation des travaux de ravalement des façades intérieures à la Mairie du 11ème arrondissement, place Léon Blum - 75011 PARIS et des modalités de passation du marché de travaux correspondant. - Autorisation à Monsieur le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47839"
    },
    {
     "reference": "2003 DPA 255",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché de travaux signé avec l'entreprise ANSINELLI Industries, relatif à l'installation de portes monumentales pare-flammes 1/2 heure, au 2e étage de la mairie du 11e arrondissement, place Léon Blum (11e). Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48114"
    }
@@ -274,6 +322,9 @@
    {
     "reference": "2004 DPA 100",
     "titre": "Autorisation à M. le Maire de Paris de souscrire et de signer un avenant n° 1 au marché de maîtrise d'œuvre n° 02/25113 passé avec le groupement solidaire constitué par MM. Luc JOUDINAUD et Jean-Etienne GACHET, architectes, concernant la restauration des façades de la Mairie du 11e arrondissement. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45596"
    }
@@ -282,6 +333,9 @@
    {
     "reference": "2006 DPA 6",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché de travaux signé avec la société FABER, relatif aux travaux de ravalement des façades intérieures de la mairie du 11e arrondissement,. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27925"
    }
@@ -290,36 +344,54 @@
    {
     "reference": "2007 DPA 136",
     "titre": "Approbation du principe de réalisation des travaux de mise aux normes des installations électriques à la Mairie du 11e arrondissement et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72440"
    },
    {
     "reference": "2007 DPA 138",
     "titre": "Approbation du principe de réalisation des travaux de modernisation du réseau incendie de la Mairie du 11e arrondissement et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72660"
    },
    {
     "reference": "2007 DPA 143",
     "titre": "Approbation du principe de réalisation des travaux de restructuration d’une première salle de réunion en sous sol à la Mairie du 11e arrondissement et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72541"
    },
    {
     "reference": "2007 DPA 160",
     "titre": "Approbation du principe de réalisation des travaux de restructuration du pôle d’accueil, du Bureau des Affaires générales ainsi que du traitement de l’accessibilité tous handicaps à la Mairie du 11e arrondissement, place Léon Blum (11e) et des modalités de passation du marché de travaux correspondant.Mmes Mireille FLAM et Pénélope KOMITÈS, rapporteures.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90439"
    },
    {
     "reference": "2007 DPA 300",
     "titre": "Approbation du principe et des modalités de passation du marché de travaux relatif à la modernisation des menuiseries sur cour intérieure de la Mairie du 11e arrondissement, place Léon Blum (11e). Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54173"
    },
    {
     "reference": "2007 DPA 307",
     "titre": "Approbation du principe et des modalités de passation du marché de travaux relatif à la l’aménagement des locaux du 1er étage de l’aile Blum / Voltaire à la Mairie du 11e arrondissement de Paris. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54373"
    }
@@ -328,12 +400,18 @@
    {
     "reference": "2008 DPA 133",
     "titre": "Approbation du principe et des modalités de passation d’un marché de travaux relatif à la restauration d’une lucarne, aile Parmentier à la Mairie du 11e arrondissement. Mme Maïté ERRECART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91470"
    },
    {
     "reference": "2008 DPA 31",
     "titre": "Approbation du principe de réalisation des travaux relatif à la restructuration d’une deuxième salle de réunion en sous-sol à la Mairie du 11e arrondissement et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=76906"
    }
@@ -342,6 +420,9 @@
    {
     "reference": "2009 DPA 43",
     "titre": "Approbation du principe de réalisation des travaux de remplacement, mise en conformité et adaptation aux handicapés du Système de Sécurité Incendie à la Mairie du 11e arrondissement et des modalités de passation du marché de travaux correspondant. Mme Maïté ERRECART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50015"
    }
@@ -350,6 +431,9 @@
    {
     "reference": "2011 DDEEES 10",
     "titre": "Signature d’une convention avec l’association France Energie Emploi (FEE) pour l’attribution d’une subvention dans le cadre du transfert de l’activité de la permanence emploi de la mairie du 11e à la Maison des Entreprises et de l’Emploi du 20e arrondissement. M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MAI 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=98224"
    }

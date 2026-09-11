@@ -6169,6 +6169,8 @@ const fr: Record<string, string> = {
   'fx.lieu.sources': 'Sources ·',
   'fx.lieu.hero.verse': 'versés par la Ville pour ce lieu depuis {y}',
   'fx.lieu.hero.verse_one': 'versés par la Ville pour ce lieu en {y}',
+  'fx.lieu.delib.aucune': 'Aucune décision correspondante dans l’archive du Conseil de Paris.',
+  'fx.lieu.delib.aide': 'Cliquer une année pour voir son montant et la décision du Conseil de Paris.',
   'fx.lieu.delib.titre': 'Ce que le Conseil de Paris a voté cette année-là ({n})',
   'fx.lieu.delib.n': '{n} délibération(s) — cliquer',
   'fx.lieu.delib.note': 'Titres des délibérations tels que la Ville les a écrits. L’année est celle du vote : le paiement tombe souvent l’exercice suivant.',

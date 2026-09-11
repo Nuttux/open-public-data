@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-des-vosges",
  "name": "Place des Vosges",
@@ -242,6 +242,9 @@
    {
     "reference": "1998 DAC 19",
     "titre": "Autorisation à M. le Maire de Paris de signer avec le Syndic de copropriété de l'immeuble, 15, place des Vosges (4e) une convention en vue de la restauration de la façade et des couvertures dudit immeuble. Mme Hélène MACE de LEPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 1998",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57488"
    }
@@ -250,6 +253,9 @@
    {
     "reference": "2000 DPA 60",
     "titre": "Approbation du principe de la réalisation des travaux de restauration de la couverture à l'école maternelle, 12, place des Vosges (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Vincent REINA, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JANVIER 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48473"
    }
@@ -258,18 +264,27 @@
    {
     "reference": "2001 DAC 78",
     "titre": "Autorisation à M. le Maire de Paris de signer avec le syndic de copropriété de l'immeuble, 20, place des Vosges (4e), une convention en vue de la restauration de la façade et des couvertures dudit immeuble. Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28786"
    },
    {
     "reference": "2001 DPA 65",
     "titre": "Approbation du principe de la réalisation des travaux de mise en conformité de canalisations à l'école maternelle, 12, place des Vosges, à l'école élémentaire, 15, rue Neuve-Saint-Pierre et au groupe scolaire Ave-Maria-Fauconnier, 22, rue de l'Ave-Maria (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Éric FERRAND, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89755"
    },
    {
     "reference": "2001 DPA 78",
     "titre": "Approbation du principe de la réalisation des travaux de consolidation de la structure au lycée d'enseignement commercial Théophile-Gautier, 6 bis, place des Vosges (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Eric FERRAND, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89820"
    }
@@ -278,6 +293,9 @@
    {
     "reference": "2002 DPA 396",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché de travaux n° 01/26.549 signé avec la société \"Sachet et Brulet SNC\" relatif à l'amélioration des conditions d'accueil du public au Musée Victor-Hugo situé 6, place des Vosges (4e). Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95345"
    }
@@ -286,6 +304,9 @@
    {
     "reference": "2025 DLH 303",
     "titre": "2025 DLH 303 Location de l’Hôtel de Fourcy situé 8, place des Vosges (Paris Centre) à CDC Habitat social - Bail emphytéotique. 2025 DLH 361 Réalisation, 8 place des Vosges d’un programme d'acquisition-amélioration de 17 logements sociaux (6 PLA-I, 3 PLUS, 8 PLS) par CDC Habitat social - Subvention (2.300.101 euros).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2025",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184653"
    }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "piscine-georges-vallerey",
  "name": "Piscine Georges-Vallerey",
@@ -199,6 +199,9 @@
    {
     "reference": "2006 DJS 285",
     "titre": "Autorisation à M. le Maire de Paris de souscrire l’avenant n° 1 au marché de prestations de service pour l’exploitation de la piscine Georges-Vallerey (20e) aménageant techniquement les conditions d’exécution du marché. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81025"
    }
@@ -207,6 +210,9 @@
    {
     "reference": "2008 DJS 243",
     "titre": "Subvention à la Fédération Française de Natation pour l’organisation du Tournoi Multinations Junior de natation à la piscine Georges Vallerey (20ème). M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61435"
    }
@@ -215,6 +221,9 @@
    {
     "reference": "2011 DJS 231",
     "titre": "Signature d’un avenant de prolongation du marché d’exploitation de la piscine Georges-Vallerey (20e) passé avec la société Carilis. M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97987"
    }
@@ -223,6 +232,9 @@
    {
     "reference": "2022 DJS 163",
     "titre": "2022 DJS 163 - Convention de cession à titre gratuit d’éléments en bois issus de la charpente de la piscine Georges Vallerey (20e) à l’association \"Extramuros\". Vœu déposé par le groupe Changer Paris relatif au contrôle des systèmes de ventilation et d’aération des piscines municipales parisiennes.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2022",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168035"
    }

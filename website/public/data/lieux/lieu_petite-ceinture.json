@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "petite-ceinture",
  "name": "Petite Ceinture",
@@ -233,6 +233,9 @@
    {
     "reference": "1995 D 1363",
     "titre": "28 - 1995, D. 1363- Subvention au Groupement d'études de la Petite ceinture, 21, rue du Repos (20e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "OCTOBRE 1995",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=143"
    }
@@ -241,6 +244,9 @@
    {
     "reference": "2001 DVD 178",
     "titre": "Approbation du principe de la réalisation de l'aménagement du quai de l'Oise, entre la rue de Crimée et le pont rail de la Petite Ceinture, à Paris 19e arrondissement - Approbation des modalités d'attribution des marchés de travaux de voirie, de fourniture de matériaux et de matériel d'éclairage correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. M. Denis BAUPIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30408"
    }
@@ -249,30 +255,45 @@
    {
     "reference": "2006 DPJEV 146",
     "titre": "Autorisation à M. le Maire de Paris de signer avec Réseau Ferré de France (R.F.F.) une convention pour le financement des études d’aménagement de la petite ceinture dans le 15e arrondissement. M. Yves CONTASSOT, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73791"
    },
    {
     "reference": "2006 DPJEV 146",
     "titre": "2006, DPJEV 146 - Autorisation à M. le Maire de Paris de signer une convention avec Réseau Ferré de France (R.F.F.) pour le financement des études d’aménage-ment de la Petite ceinture dans le 15e arrondissement. Voeu déposé par les membres du groupe U.M.P.",
+    "genres": [
+     "autre"
+    ],
     "seance": "SEPTEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10767"
    },
    {
     "reference": "2006 DPJEV 38",
     "titre": "Autorisation à M. le Maire de Paris de signer avec Réseau Ferré de France (R.F.F.) et la Société Nationale des Chemins de fer Français (S.N.C.F.) une convention autorisant l’occupation de l’ancienne emprise de la petite ceinture ferroviaire située entre la gare d’Auteuil et la gare de la Muette (16e). M. Yves CONTASSOT, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52270"
    },
    {
     "reference": "2006 DPJEV 38",
     "titre": "2006, DPJEV 38 - Autorisation à M. le Maire de Paris de signer une convention avec Réseau Ferré de France (R.F.F.), la Société Nationale des Chemins de fer Français (S.N.C.F.) en vue de l’occupation de l’ancienne emprise de la petite ceinture ferroviaire située entre la gare d’Auteuil et la gare de la Muette (16e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12277"
    },
    {
     "reference": "2006 DU 36",
     "titre": "2006, DU 36 - Z.A.C. de la Gare de Rungis (13e). Conclusion avec R.F.F. d’un protocole d’accord relatif aux travaux et aménagements nécessaires à la remise en service de l’exploitation ferroviaire de la ligne dite “petite ceinture” au droit de la rue des Longues-Raies. Vœu déposé par le groupe U.M.P. relatif à l’aménagement des matériaux et à l’évacuation des déchets de l’”éco Z.A.C. gare de Rungis”.Vœu déposé par l’Exécutif.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JANVIER 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24837"
    }
@@ -281,18 +302,27 @@
    {
     "reference": "2007 DEVE 94",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention avec Réseau Ferré de France (RFF) représenté par la société ADYAL Grands Comptes pour l’occupation d’une surlargeur située le long de la petite ceinture à Paris (12e), en vue de l’aménagement de l’extension du square Charles Péguy. M. Yves CONTASSOT, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53861"
    },
    {
     "reference": "2007 DEVE 95",
     "titre": "2007, DEVE 95 - Autorisation à M. le Maire de Paris de signer une convention avec Réseau Ferré de France (RFF) représenté par la société ADYAL Grands Comptes en vue d’autoriser l’occupation d’une sur-largeur de la petite ceinture située le long de la rue Coulmiers, entre la rue Friant et l’avenue Jean Moulin (14e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24904"
    },
    {
     "reference": "2007 DEVE 95",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention avec Réseau Ferré de France (RFF) représenté par la société ADYAL Grands comptes en vue d’autoriser l’occupation de la surlargeur de la petite ceinture située le long de la rue de Coulmiers entre la rue Friant et l’avenue Jean moulin (14e). M. Yves CONTASSOT, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66279"
    }
@@ -301,6 +331,9 @@
    {
     "reference": "2008 DEVE 70",
     "titre": "Signature d’une convention d’occupation et d’usage avec l’association “Graine de Partage” mettant à sa disposition deux parcelles de terrain d’une superficie totale de 340 mètres carrés, en bordure de l’ancien chemin de fer de la petite ceinture, rue Rottembourg (12e) afin d’y établir un jardin partagé. Mme Fabienne GIBOUDEAUX, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "MAI 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70023"
    }
@@ -309,36 +342,54 @@
    {
     "reference": "2010 DEVE 6",
     "titre": "Signature d’une convention avec Réseau Ferré de France (RFF) , représenté par la Société Adyal Grands Comptes autorisant la Ville de Paris à occuper un terrain situé rue Claude Decaen en contrebas de la Petite Ceinture (12e). Mme Fabienne GIBOUDEAUX, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "MARS 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44936"
    },
    {
     "reference": "2010 DPA 7",
     "titre": "G Approbation du principe de construction neuve d’un centre social associatif sur la dalle de couverture de la petite ceinture dans la ZAC de la Gare de Rungis (13e), des modalités de passation du marché de maîtrise d’œuvre et du dépôt de la demande de permis de construire. Mme Myriam EL KHOMRI, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=60332"
    },
    {
     "reference": "2010 DVD 164",
     "titre": "Approbation du principe des travaux de démolition et reconstruction de l’ouvrage de la petite ceinture ferroviaire (PCF) en vue de l’élargissement du passage sous l’ouvrage rue Patay (ouvrage d’art OA02) (13e) dans le cadre de l’extension du tramway T3. Mme Annick LEPETIT, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79848"
    },
    {
     "reference": "2010 DVD 164",
     "titre": "2010, DVD 164 - Approbation du principe des travaux de démolition et de reconstruction de l'ouvrage de la petite ceinture ferroviaire (PCF) en vue de l'élargissement du passage sous l'ouvrage rue de Patay (ouvrage d'art OAO2) (13e) dans le cadre de l'extension du tramway T3.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13602"
    },
    {
     "reference": "2010 DVD 55",
     "titre": "Approbation du principe et des modalités de passation d’un marché de maîtrise d’œuvre d’infrastructure pour la réalisation de quatre ouvrages de franchissement de la tranchée Pereire de la petite ceinture dans le secteur Saussure (17e). Mme Annick LEPETIT et Mme Anne HIDALGO, rapporteures.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44733"
    },
    {
     "reference": "2010 DVD 55",
     "titre": "Signature de la convention tripartite Réseau Ferré de France (RFF) - Ville de Paris - Société Nationale d’Espaces Ferroviaires (SNEF) , fixant les modalités et le financement des études et des travaux préliminaires de la tranchée Pereire de la petite ceinture. Mme Annick LEPETIT et Mme Anne HIDALGO, rapporteures.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44860"
    }
@@ -347,6 +398,9 @@
    {
     "reference": "2011 DU 111",
     "titre": "64 - 2011, DU 111 - Signature avec Réseau Ferré de France d’une convention d’occupation temporaire du domaine public sur un tronçon de la Petite Ceinture situé entre la place Balard et la rue Olivier de Serres (15e). Prorogation de la convention-cadre avec RFF sur la Petite Ceinture. 2011, DEVE 85 - Signature d’une convention avec Réseau Ferré de France et demandes d’autorisations administratives de travaux pour l’aménagement d’une promenade sur un tronçon de la Petite Ceinture (15e). Vœu déposé",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=100826"
    }
@@ -355,6 +409,9 @@
    {
     "reference": "2013 DEVE 180",
     "titre": "2013 DEVE 180 - Avenant n° 1 au marché de travaux lot n° 2 d'aménagement d'une promenade sur la petite ceinture entre la place Balard et la rue Olivier de Serres (15e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2013",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116504"
    }
@@ -363,12 +420,18 @@
    {
     "reference": "2016 DEVE 10",
     "titre": "2016 DEVE 10 - DAE G - Subvention (18.635 euros) et avenant à convention avec l’association \"Espaces\" pour la réalisation d’un projet d’insertion professionnelle par l’entretien d’espaces de la Petite Ceinture ferroviaire (15e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2016",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=132300"
    },
    {
     "reference": "2016 DEVE 62",
     "titre": "2016 DEVE 62 - DU - Convention de superposition d’affectation avec la S.N.C.F.-Réseau pour les espaces de la Petite Ceinture ferroviaire (13e, 14e et 15e) et convention de transfert de gestion avec la S.N.C.F.-Réseau (16e). Vœu déposé par le groupe Ecologiste de Paris relatif aux axes structurants et au calendrier de mise en œuvre du plan-programme.",
+    "genres": [
+     "autre"
+    ],
     "seance": "MARS 2016",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129281"
    }
@@ -377,6 +440,9 @@
    {
     "reference": "2017 DFA 5",
     "titre": "2017 DFA 5 - DEVE - Convention de financement avec la Région Ile de France pour la mise en place de 3 chantiers participatifs sur la petite ceinture (12e, 19e et 20e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "JANVIER 2017",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134718"
    }
@@ -385,6 +451,9 @@
    {
     "reference": "2019 DEVE 104",
     "titre": "2019 DEVE 104 - B.P. 2015 \"Reconquête de la Petite Ceinture\". - Subventions (31.217 euros) à deux associations pour des projets d'insertion professionnelle par l'entretien de la P.C. ferroviaire (12e, 14e, 15e et 20e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2019",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152362"
    }
@@ -393,6 +462,9 @@
    {
     "reference": "2021 DU 150",
     "titre": "2021 DU 150 - Petite Ceinture (18e). Extension du périmètre. - Avenant n° 2 à la convention de superposition d'affectation Est conclue avec la S.N.C.F. Réseau.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2021",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164228"
    }
@@ -401,12 +473,18 @@
    {
     "reference": "2023 DEVE 20",
     "titre": "2023 DEVE 20 - Subventions (410.676 euros) à 5 associations pour des projets d’insertion professionnelle par l’entretien de la petite ceinture ferroviaire (12e, 13e, 14e, 15e, 16e, 17e, 18e, 19e et 20e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUIN 2023",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=169763"
    },
    {
     "reference": "2023 DGGP 9",
     "titre": "2023 DGGP 9 - Signature d'une convention de financement avec la Métropole du Grand Paris et le Fonds Nature 2050 pour la création d'un nouvel espace de biodiversité le long de la petite ceinture 20e (500.000 euros).",
+    "genres": [
+     "autre"
+    ],
     "seance": "MARS 2023",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168473"
    }
@@ -415,18 +493,28 @@
    {
     "reference": "2024 DEVE 10",
     "titre": "2024 DEVE 10 - Budget participatif. - Subvention (250.000 euros) à l'association \"Jardin des Traverses\" pour l'installation du projet \"ParisCulteurs\" sur la Petite Ceinture (18e).",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
     "seance": "FEVRIER 2024",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174434"
    },
    {
     "reference": "2024 DEVE 105",
     "titre": "2024 DEVE 105 - Fonds Vert. - Convention entre la Ville de Paris et l'Agence de l’Eau Seine Normandie (AESN) pour le financement de l’aménagement d’un sentier ferroviaire sur la Petite Ceinture (15e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2024",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179045"
    },
    {
     "reference": "2024 DU 42",
     "titre": "2024 DU 42 - Petite Ceinture (13e). - Avenant n° 1 à la convention de superposition d'affectations Sud avec SNCF-Réseau. - Extension du périmètre.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2024",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178393"
    }
@@ -435,12 +523,18 @@
    {
     "reference": "2025 DEVE 26",
     "titre": "2025 DEVE 26 - Subventions versées à 5 associations pour des projets d'insertion professionnelle par l'entretien de la P.C. ferroviaire (12e, 13e, 14e, 15e, 16e, 17e, 18e, 19e et 20e) et d'équipements sportifs (13e). Vœu déposé par le groupe Communiste et Citoyen relatif au renouvellement de la convention-cadre de la Petite ceinture ferroviaire.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "AVRIL 2025",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179740"
    },
    {
     "reference": "2025 DEVE 88",
     "titre": "2025 DEVE 88 Conventions pluriannuelles avec 5 associations pour des projets d'insertion professionnelle par l'entretien de la Petite Ceinture ferroviaire (12e au 20e) et d'équipements sportifs (13e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "OCTOBRE 2025",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183521"
    }
@@ -449,6 +543,9 @@
    {
     "reference": "2026 DEVE 16",
     "titre": "2026 DEVE 16 - Conventions de financement de travaux de mise en sécurité sur la Petite Ceinture du 15e avec S.N.C.F. Réseau.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2026",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184335"
    }

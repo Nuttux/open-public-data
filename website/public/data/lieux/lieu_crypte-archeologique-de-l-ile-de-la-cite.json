@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "crypte-archeologique-de-l-ile-de-la-cite",
  "name": "Crypte archéologique de l'île de la Cité",
@@ -138,12 +138,18 @@
    {
     "reference": "1998 DAC 197",
     "titre": "43 - 1998, DAC 197 - Crypte archéologique du parvis de Notre-Dame (4e). - Approbation du principe de la délégation de service public pour la gestion de la crypte",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 1998",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15973"
    },
    {
     "reference": "1998 DAC 197",
     "titre": "Crypte archéologique du parvis de Notre-Dame (4e). - Approbation du principe de la délégation de service public pour la gestion de la crypte. Mme Hélène MACE de LEPINAY, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 1998",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62381"
    }
@@ -152,6 +158,9 @@
    {
     "reference": "2000 DAC 225",
     "titre": "Crypte archéologique du parvis de Notre-Dame (4e). - Abandon de la procédure de délégation de service public. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50462"
    }

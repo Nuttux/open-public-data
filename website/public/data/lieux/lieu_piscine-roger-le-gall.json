@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "piscine-roger-le-gall",
  "name": "Piscine Roger-Le-Gall",
@@ -75,12 +75,18 @@
    {
     "reference": "2005 DJS 422",
     "titre": "Report de l’échéance du contrat de délégation de service public pour la gestion de la piscine Roger-Le Gall (12e) et autorisation à M. le Maire de Paris de signer l’avenant de prolongation avec le délégataire. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "OCTOBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25925"
    },
    {
     "reference": "2005 DJS 471",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un marché pour l’exploitation de la piscine Roger-Le-Gall située 34, boulevard Carnot (12e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33068"
    }

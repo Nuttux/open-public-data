@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-des-fetes",
  "name": "Place des Fêtes",
@@ -185,18 +185,27 @@
    {
     "reference": "2005 DASES 36",
     "titre": "G - Attribution d’une subvention de fonctionnement de 20.000 euros à l’association “AdvocacyParis Île-de-France”, 19, rue de Nantes, 75019 Paris pour l’animation et le développement de son Espace Convivial Citoyen situé 5 place des Fêtes (Paris19ème). Mme Pénélope KOMITÈS, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83004"
    },
    {
     "reference": "2005 DDATC 28",
     "titre": "Subvention à l’association “La maison de la Place des Fêtes.” Mme Marie-Pierre de LA GONTRIE, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MARS 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26515"
    },
    {
     "reference": "2005 DPA 270",
     "titre": "Approbation du principe de réalisation des travaux de modernisation des locaux de la bibliothèque “Place des Fêtes” sise 18 rue Janssen (19e), et des modalités de passation du marché de travaux correspondant. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26002"
    }
@@ -205,24 +214,36 @@
    {
     "reference": "2006 DASES 181",
     "titre": "G - Subvention de fonctionnement de 4.000 euros attribuée à l’association “Advocacy Paris Ile-de-France”, 5 place des Fêtes, 75 019 Paris pour le fonctionnement et le développement de l’Espace Convivial Citoyen, Groupe d’Entraide Mutuelle (GEM).Mme Pénélope KOMITÈS, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48720"
    },
    {
     "reference": "2006 DASES 405",
     "titre": "G - Autorisation donnée à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer une convention annuelle avec l’association “Mouvement pour un Développement Social Local - Intervention - MDSL” (X00270) sise 5, place des Fêtes (19e).- Attribution d’une subvention de fonctionnement d’un montant de 15.000 euros pour l’exercice 2006 à la dite association. M. Alain LHOSTIS, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41245"
    },
    {
     "reference": "2006 DASES 500",
     "titre": "G - Subvention de fonctionnement de 10.000 euros attribuée à l’association “Advocacy Paris Ile-de-France”, 5 place des Fêtes (19e) pour l’ensemble de ses activités dont l’animation d’un Groupe d’Entraide Mutuelle (GEM), en complément de la subvention de 4.000 euros d’ores et déjà attribuée au titrede 2006. Mme Pénélope KOMITÈS, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41257"
    },
    {
     "reference": "2006 DDATC 127",
     "titre": "Subvention de fonctionnement à l’asso-ciation “La Maison de la place des Fêtes” (19e). Mme Marie-Pierre de LA GONTRIE, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92048"
    }
@@ -231,12 +252,18 @@
    {
     "reference": "2007 DASES 191",
     "titre": "G - Subvention de fonctionnement de 20.000 euros attribuée à l’association “Advocacy Paris Ile-de-France”, située 5, place des Fêtes (19e), pour le développement de ses activités en faveur des personnes handicapées psychiques. Mme Pénélope KOMITÈS, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "OCTOBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=76238"
    },
    {
     "reference": "2007 DASES 191",
     "titre": "G - Annulation et remplacement de la délibération 2007 DASES 191 G votée par le Conseil de Paris du 1er octobre 2007. - Attribution d’une subvention de fonctionnement de 20.000 euros à l’association “Advocacy Paris Ile-de-France” située 5, place des Fêtes (19e) pour le développement de ses activités en faveur des personnes handicapées psychiques. Mme Pénélope KOMITÈS, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73286"
    }
@@ -245,18 +272,27 @@
    {
     "reference": "2008 DDEE 117",
     "titre": "Subvention à l’”Association des commerçants pour l’animation de la place des Fêtes” (19e) pour les illuminations à l’occasion des fêtes de fin d’année 2007. Mme Lyne COHEN-SOLAL, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "OCTOBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42792"
    },
    {
     "reference": "2008 DJS 403",
     "titre": "Subvention à l’association “Place des Fêtes H.B” (18e). M. Bruno JULLIARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77758"
    },
    {
     "reference": "2008 DPVI 90",
     "titre": "Subvention à l’association Place des Fêtes. HB. Mme Gisèle STIEVENARD, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78446"
    }
@@ -265,6 +301,9 @@
    {
     "reference": "2009 DDEE 102",
     "titre": "Subvention à l’ASSOCIATION DES COMMERCANTS POUR L’ANIMATION DE LA PLACE DES FETES (ACPF) (19ème) pour les illuminations de fin d’année 2008. Mme Lyne COHEN-SOLAL, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MAI 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59384"
    }
@@ -273,12 +312,18 @@
    {
     "reference": "2010 DDATC 61",
     "titre": "Subvention - Fonds du Maire - à l’association La maison de la place des fêtes du 19e. M. Hamou BOUAKKAZ, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79484"
    },
    {
     "reference": "2010 DDEE 38",
     "titre": "Subvention à l’association des commerçants pour l’animation de la place des fêtes(19e) pour les illuminations de fin d’année 2009. Mme Lyne COHENSOLAL, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "FEVRIER 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79150"
    }
@@ -287,6 +332,9 @@
    {
     "reference": "2011 DJS 399",
     "titre": "22 - 2011, DJS 399 - Signature de l'avenant n° 1 à la convention de délégation de service public du 20 juillet 2007 pour la gestion des centres d'animation Clavel, Curial, Mathis, Rébeval et Place des Fêtes (19e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "SEPTEMBRE 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=102077"
    }

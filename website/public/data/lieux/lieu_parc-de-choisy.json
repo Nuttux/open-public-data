@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-de-choisy",
  "name": "Parc de Choisy",
@@ -107,6 +107,9 @@
    {
     "reference": "2011 DEVE 5",
     "titre": "Signature d’une convention avec l’association “Jardin Partagé Choisi” mettant à sa disposition une parcelle de terrain située dans le parc de Choisy, 1-3 rue Georges Eastman (13e), pour un usage de jardin partagé. Mme Fabienne GIBOUDEAUX, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "FEVRIER 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97209"
    }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "stade-charlety",
  "name": "Stade Charléty",
@@ -242,6 +242,9 @@
    {
     "reference": "2004 DJS 407",
     "titre": "Autorisation à M. le Maire de Paris de lancer un marché sur appel d'offres ouvert pour la mise aux normes du terrain annexe du stade Charléty, 99 boulevard Kellermann (13e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64235"
    }
@@ -250,36 +253,55 @@
    {
     "reference": "2005 DJS 114",
     "titre": "2005, DJS 114 - Prolongation d’un an de la convention de délégation de service public pour l’animation et la gestion du stade Sébastien Charléty (13e). - Autorisation à M. le Maire de Paris de signer l’avenant de prolongation avec le délégataire (Société d’exploitation du Stade Charléty).",
+    "genres": [
+     "autre"
+    ],
     "seance": "FEVRIER 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14334"
    },
    {
     "reference": "2005 DJS 114",
     "titre": "Prolongation d’un an de la convention de délégation de service public pour l’animation et la gestion du stade Sébastien-Charléty (13e). - Autorisation à M. le Maire de Paris de signer l’avenant de prolongation avec le délégataire (Société d’exploitation du Stade Charléty). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "FEVRIER 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82496"
    },
    {
     "reference": "2005 DJS 378",
     "titre": "Autorisation à M. le Maire de Paris de solliciter une subvention auprès de la Fédération Française de Football dans le cadre des travaux pour la mise aux normes du terrain annexe du stade Charléty, 99 boulevard Kellermann (13ème). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
     "seance": "JUILLET 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87056"
    },
    {
     "reference": "2005 DJS 414",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant au marché d’appel d’offres ouvert à lot unique pour la mise aux normes du terrain annexe du stade Charléty, 99 boulevard Kellermann (13e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63716"
    },
    {
     "reference": "2005 DJS 426",
     "titre": "2005, DJS 426 - Autorisation à M. le Maire de Paris de lancer un marché selon la procédure du dialogue compétitif pour assurer la gestion technique globale du stade Charléty (13e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10320"
    },
    {
     "reference": "2005 DJS 426",
     "titre": "Autorisation à M. le Maire de Paris de lancer un marché selon la procédure du dialogue compétitif pour assurer la gestion technique globale du Stade Charléty, 99 boulevard Kellermann (13e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63764"
    }
@@ -288,30 +310,45 @@
    {
     "reference": "2006 DJS 123",
     "titre": "Subvention à la Fédération Française de Rugby pour l’organisation du tournoi international de rugby à sept “GMF Paris Sevens” qui a eu lieu les 27 et 28 mai 2006 au stade Charléty. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74408"
    },
    {
     "reference": "2006 DJS 135",
     "titre": "Subvention d’aide au projet à la Fédération Française d’Athlétisme pour l’organisation du Décanation qui a eu lieu le 26 août 2006 au stade Charléty. Autorisation à M. le Maire de Paris de signer la convention afférente. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74088"
    },
    {
     "reference": "2006 DJS 193",
     "titre": "2006, DJS 193 - Autorisation à M. le Maire de Paris de signer le marché passé selon la procédure du dialogue compétitif pour assurer la gestion technique globale du stade Charléty (13e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JANVIER 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24854"
    },
    {
     "reference": "2006 DJS 513",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché de gestion technique globale du Stade Charléty (13e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73780"
    },
    {
     "reference": "2006 DPA 334",
     "titre": "Approbation du principe d’indemnisation de la Ville de Paris en raison des préjudices subis par elle lors des travaux de reconstruction du stade Charléty 99, boulevard Kellerman (13ème) ; autorisation à M. le Maire de Paris de signer le contrat de transaction correspondant. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92133"
    }
@@ -320,18 +357,27 @@
    {
     "reference": "2007 DJS 136",
     "titre": "Subvention d’aide au projet à la Fédération Française d’Athlétisme pour l’organisation du Meeting SEAT le 23 février 2007 au POPB et du Décanation le 8 septembre 2007 au stade Charléty. - Approbation de la convention afférente. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65842"
    },
    {
     "reference": "2007 DPA 375",
     "titre": "Approbation du principe de réalisation des travaux de création d’un espace de réception et de convivialité dans l’enceinte du Stade Charléty - 99, boulevard Kellermann (13e) et des modalités de passation du marché de maîtrise d’œuvre correspondant. Autorisation à M. le Maire de Paris de signer ledit marché. Autorisation à M. le Maire de Paris de déposer les demandes de permis de démolir et de construire pour la réalisation de l’opération susvisée. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54923"
    },
    {
     "reference": "2007 DPA 58",
     "titre": "Approbation du principe de réalisation des travaux de mise en conformité de la vidéo surveillance au stade Charléty 99, boulevard Kellermann (13e), et des modalités de passation du marché de travaux correspondant. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26812"
    }
@@ -340,36 +386,54 @@
    {
     "reference": "2008 DJS 232",
     "titre": "Signature d’une convention avec la Fédération Française d’Athlétisme pour l’attribution d’une subvention. M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66977"
    },
    {
     "reference": "2008 DJS 319",
     "titre": "2008, DJS 319 - Lancement d’un marché selon la procédure de l’appel d’offres pour assurer la gestion technique globale du Stade Charléty (13e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6746"
    },
    {
     "reference": "2008 DJS 319",
     "titre": "Lancement d’un marché selon la procédure de l’appel d’offres pour assurer la gestion technique globale du Stade Charléty (13e). M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70011"
    },
    {
     "reference": "2008 DJS 341",
     "titre": "2008, DJS 341 - Approbation du principe des travaux de réfection de la pelouse du terrain d'honneur du stade Charléty (13e) et des modalités de passation du marché de travaux.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18119"
    },
    {
     "reference": "2008 DJS 341",
     "titre": "Approbation du principe des travaux de réfection de la pelouse du terrain d’honneur du stade Charléty (13e) et des modalités de passation du marché de travaux. M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61948"
    },
    {
     "reference": "2008 DPA 136",
     "titre": "Approbation des modalités de passation du marché de travaux concernant la mise en sécurité des drisses et sandows des tennis couverts au stade Charléty (13e). M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68575"
    }
@@ -378,6 +442,9 @@
    {
     "reference": "2009 DJS 181",
     "titre": "Signature d’une convention avec la Fédération Française d’Athlétisme pour l’attribution d’une subvention. M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36961"
    }
@@ -386,6 +453,9 @@
    {
     "reference": "2022 DJS 61",
     "titre": "2022 DJS 61 - Subvention (500.000 euros) pour le Paris Football Club au titre de l’année 2022. Vœu déposé par le groupe Changer Paris relatif à l’état récent de la pelouse du stade Charléty et des équipements sportifs parisiens.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MAI 2022",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164861"
    }
@@ -394,6 +464,9 @@
    {
     "reference": "2023 DJS 62",
     "titre": "2023 DJS 62 - Convention d'occupation du domaine public de gré à gré. - PUC Social Club, Stade Charléty (13e). Vœu déposé par le groupe Changer Paris relatif à l’état récent de la pelouse du stade Charléty et des équipements sportifs parisiens.",
+    "genres": [
+     "autre"
+    ],
     "seance": "MARS 2023",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168336"
    }

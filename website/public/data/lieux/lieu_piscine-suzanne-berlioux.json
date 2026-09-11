@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "piscine-suzanne-berlioux",
  "name": "Piscine Suzanne-Berlioux",
@@ -166,6 +166,9 @@
    {
     "reference": "2004 DJS 513",
     "titre": "Autorisation à M. le Maire de Paris de lancer la procédure d’appel d’offres ouvert, pour réaliser les travaux d’amélioration des installations de filtration et la rénovation des locaux vestiaires et du hall d’accueil à la piscine Suzanne Berlioux 10, place de la Rotonde Forum des Halles (1er). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87605"
    }
@@ -174,18 +177,27 @@
    {
     "reference": "2005 DJS 337",
     "titre": "Autorisation à M. le Maire de Paris de signer le marché négocié suivant l’art 35-I-5°, relatif aux travaux d’amélioration des installations de filtration à la piscine Suzanne Berlioux 10, place de la Rotonde Forum des Halles (1er). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63604"
    },
    {
     "reference": "2005 DJS 353",
     "titre": "Autorisation à M. le Maire de Paris de signer le marché relatif à l’étude et aux travaux de rénovation de traitement d’air à la piscine Suzanne Berlioux Forum des Halles (1er). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87394"
    },
    {
     "reference": "2005 DJS 466",
     "titre": "Autorisation à M. le Maire de Paris de signer le marché négocié relatif aux travaux de rénovation des locaux vestiaires à la piscine Suzanne Berlioux (1er). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32787"
    }
@@ -194,24 +206,36 @@
    {
     "reference": "2006 DJS 265",
     "titre": "Autorisation à M. le Maire de Paris de souscrire l’avenant n° 2 à la convention de délégation de service public pour la gestion de la piscine Suzanne-Berlioux (1er). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "AVRIL 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38551"
    },
    {
     "reference": "2006 DJS 300",
     "titre": "Prolongation de la convention de délégation de service public pour la gestion de la piscine Suzanne Berlioux (1er). - Autorisation à M. le Maire de Paris de souscrire l’avenant de prolongation avec le délégataire. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUIN 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44451"
    },
    {
     "reference": "2006 DJS 302",
     "titre": "2006, DJS 302 - Approbation du principe de passation d’un contrat de délégation de service public pour la gestion de la piscine Suzanne Berlioux (1er).",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7837"
    },
    {
     "reference": "2006 DJS 302",
     "titre": "Approbation du principe de passation d’un contrat de délégation de service public pour la gestion de la piscine Suzanne-Berlioux située 10, place de la Rotonde - Forum des Halles (1er) conformément aux dispositions de la loi n° 93-122 du 29 janvier 1993 modifiée, codifiée au Code général des collectivités territoriales dans ses articles L. 1411-1 à L. 1411-18. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80846"
    }
@@ -220,6 +244,9 @@
    {
     "reference": "2007 DJS 392",
     "titre": "Approbation de la convention de délégation de service public pour la gestion de la piscine Suzanne-Berlioux (Forum des Halles, zone Bourse-Saint-Eustache - 1er) ; Autorisation à M. le Maire de Paris de signer ladite convention avec la société Carilis. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUIN 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72376"
    }
@@ -228,6 +255,9 @@
    {
     "reference": "2008 DJS 394",
     "titre": "Lancement d’un marché négocié relatif à la réfection de l’étanchéité et du carrelage du fond de bassin à la piscine Suzanne BERLIOUX (1e). M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66913"
    }
@@ -236,6 +266,9 @@
    {
     "reference": "2012 DJS 289",
     "titre": "2012, DJS 289 - Approbation du principe de passation d'un contrat de délégation de service public pour la gestion de la piscine Suzanne-Berlioux (1er).",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 2012",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=107309"
    }
@@ -244,6 +277,9 @@
    {
     "reference": "2024 DJS 126",
     "titre": "2024 DJS 126 - Piscine Suzanne Berlioux (Paris centre). - Délégation de service public pour la gestion. - Principe et modalités de passation. Vœu déposé par le groupe Union Capitale relatif à la sécurité sanitaire des agents et usagers des piscines municipales parisiennes.",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2024",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178485"
    }

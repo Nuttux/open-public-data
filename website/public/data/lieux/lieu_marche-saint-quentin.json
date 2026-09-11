@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "marche-saint-quentin",
  "name": "Marché Saint-Quentin",
@@ -123,12 +123,19 @@
    {
     "reference": "2000 DFAE 102",
     "titre": "Subvention à l'Association des commerçants du quartier du marché Saint-Quentin (10e). M. Jean-Pierre PIERRE-BLOCH, rapporteur.",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28624"
    },
    {
     "reference": "2000 DFAE 41",
     "titre": "Approbation des modalités d'attribution de 2 marchés sur appel d'offres pour la réalisation de campagnes d'animations sur 2 marchés couverts de Paris [Saint-Quentin (10e) et Ternes (17e)]. - Autorisation à M. le Maire de Paris de signer lesdits marchés. M. Jean-Pierre PIERRE-BLOCH, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50983"
    }
@@ -137,6 +144,9 @@
    {
     "reference": "2001 DPA 87",
     "titre": "Approbation du principe de la réalisation des travaux de réfection des peintures intérieures du marché Saint-Quentin, 85, boulevard Magenta (10e) et des modalités d'attribution des marchés de travaux, de contrôle technique et de coordination santé/sécurité correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Lyne COHEN-SOLAL, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33529"
    }
@@ -145,6 +155,9 @@
    {
     "reference": "2002 DPA 31",
     "titre": "Approbation du principe de la réalisation des travaux de restauration des façades du marché Saint Quentin 85 bis boulevard Magenta (10e). - Approbation des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Lyne COHEN-SOLAL, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38967"
    }
@@ -153,6 +166,9 @@
    {
     "reference": "2006 DDEE 184",
     "titre": "Indemnisation des commerçants du marché couvert Saint Quentin (Paris 10ème), en raison des difficultés d’exploitation rencontrées du fait des travaux réalisés sur le boulevard Magenta. Mme Lyne COHEN-SOLAL, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81434"
    }

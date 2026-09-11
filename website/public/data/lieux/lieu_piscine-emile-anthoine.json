@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "piscine-emile-anthoine",
  "name": "Piscine Émile-Anthoine",
@@ -69,6 +69,9 @@
    {
     "reference": "2012 DJS 225",
     "titre": "65 - 2012, DJS 225 - Subventions (5.126,52 euros) pour la fourniture de matériels aux associations du centre sportif Emile Anthoine (15e) en remplacement de leurs équipements pollués. Vœu déposé par le groupe UMPPA relatif au devenir de la piscine Émile Anthoine (15e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "FEVRIER 2012",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=103927"
    }

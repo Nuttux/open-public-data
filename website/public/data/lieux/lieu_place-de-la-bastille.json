@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-de-la-bastille",
  "name": "Place de la Bastille",
@@ -210,6 +210,9 @@
    {
     "reference": "2009 DVD 117",
     "titre": "Convention d’entretien de l’ouvrage de couverture du canal Saint-Martin, place de la Bastille, à Paris 4e et 12e, avec la Régie Autonome des Transports Parisiens (RATP). Mme Anne LE STRAT, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "SEPTEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36632"
    }

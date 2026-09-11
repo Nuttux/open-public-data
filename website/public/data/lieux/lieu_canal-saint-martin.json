@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "canal-saint-martin",
  "name": "Canal Saint-Martin",
@@ -168,36 +168,54 @@
    {
     "reference": "2000 DAC 6",
     "titre": "Approbation du principe de l'opération relative à l'illumination de la voûte du canal Saint-Martin, conformément au projet artistique de Keiichi Tahara intitulé \"Echos de lumière\" (11e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51239"
    },
    {
     "reference": "2000 DAC 6",
     "titre": "31 - 2000, DAC 6 - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres ou un marché négocié, dans l'hypothèse où l'appel d'offres serait déclaré infructueux, pour la réalisation de l'illumination de la voûte du canal Saint-Martin, conformément au projet artistique de Keiichi Tahara intitulé \"Echos de lumière\" (11e)",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2886"
    },
    {
     "reference": "2000 DVD 114",
     "titre": "Approbation des modalités d'attribution de marchés sur appel d'offres pour la réalisation des travaux de fabrication, la livraison et la pose de 5 portes d'écluses et la création d'un batardeau pour le canal Saint-Martin. - Autorisation à M. le Maire de Paris de signer lesdits marchés. M. Lucien FINEL, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28311"
    },
    {
     "reference": "2000 DVD 144",
     "titre": "Approbation du principe d'exécution des travaux de reconstruction des bassins Louis-Blanc et Récollets du canal Saint-Martin (10e). - Approbation des modalités d'attribution du marché correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Lucien FINEL, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40617"
    },
    {
     "reference": "2000 DVD 151",
     "titre": "Approbation du principe de l'exécution des travaux d'entretien et d'amélioration du canal Saint-Martin (10e, 11e et 19e). - Approbation des modalités d'attribution des marchés correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. M. Lucien FINEL, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40686"
    },
    {
     "reference": "2000 DVD 32",
     "titre": "Approbation du principe de l'exécution des travaux de reconstruction des bassins Louis-Blanc et Récollets du canal Saint-Martin (10e). - Autorisation à M. le Maire de Paris de signer les marchés de maîtrise d'oeuvre et de reconnaissance de sols correspondants. M. Lucien FINEL, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50877"
    }
@@ -206,24 +224,36 @@
    {
     "reference": "2001 DAC 72",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant au marché n° 00/41049 signé avec la société \"E.I. Ile-de-France\" pour les travaux d'illumination de la voûte du canal Saint-Martin (11e), conformément au projet artistique de Keiichi TAHARA. M. Claude ROLAND, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JANVIER 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85044"
    },
    {
     "reference": "2001 DVD 127",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant au marché signé avec le groupement d'entreprises \"Soletanche Bachy France\" (mandataire du groupement), \"SEFI\", \"Botte Sade Fondations\" et \"Darras et Jouanin\" pour la reconstruction des bassins Louis-Blanc et Récollets du canal Saint-Martin (10e). Mme Myriam CONSTANTIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84632"
    },
    {
     "reference": "2001 DVD 138",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 2 au marché de reconstruction des bassins Louis-Blanc et des Récollets du canal Saint-Martin (10e). Mme Myriam CONSTANTIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84308"
    },
    {
     "reference": "2001 DVD 65",
     "titre": "Autorisation à M. le Maire de Paris de signer un avenant de transfert pour le marché de travaux de maçonnerie et de consolidation des ouvrages du canal Saint Martin. M. Denis BAUPIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89871"
    }
@@ -232,6 +262,9 @@
    {
     "reference": "2002 DVD 28",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 3 au marché de reconstruction des bassins Louis-Blanc et des Récollets du canal Saint-Martin (10e). Mme Myriam CONSTANTIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39064"
    }
@@ -240,18 +273,27 @@
    {
     "reference": "2003 DVD 347",
     "titre": "257 - 2003, DVD 347 - Autorisation à M. le Maire de Paris de signer deux conventions afin d'autoriser des occupations provisoires de certaines parties nues et couvertes du domaine public fluvial de la Ville de Paris, dans un bâtiment et ses abords, dont elle est propriétaire (10e), sur les dépendances du canal Saint-Martin, en rive droite du 1er bief, en bordure du bassin Louis-Blanc, et d'autoriser les dépôts des permis de démolir et de construire permettant de procéder aux aménagements indispe",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21262"
    },
    {
     "reference": "2003 DVD 347",
     "titre": "Autorisation à M. le Maire de Paris, d'une part, de signer avec l'association \"La Caserne Ephémère\", une convention fixant les conditions techniques, domaniales, administratives et financières, de l'occupation provisoire d'un ensemble de locaux, compris dans un bâtiment sis 186-206 quai de Valmy (10e) faisant partie du domaine public fluvial de la Ville de Paris, sur les dépendances du canal Saint-Martin, en bordure du bassin Louis-Blanc, en rive droite du 1er bief et, d'autre part, de consentir",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94460"
    },
    {
     "reference": "2003 DVD 347",
     "titre": "Autorisation à M. le Maire de Paris, d'une part, de signer avec M. le Préfet de police, agissant pour le compte de la Brigade des Sapeurs Pompiers de Paris \"Château-Landon\", une convention fixant les conditions techniques, domaniales, administratives et financières, de l'occupation provisoire d'un ensemble constitué de terrains nus et pour parties des locaux d'un bâtiment compris dans le domaine public fluvial de la Ville de Paris, sur les dépendances du canal Saint-Martin, en bordure du bassin",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94094"
    }
@@ -260,6 +302,9 @@
    {
     "reference": "2004 DVD 83",
     "titre": "Approbation du principe et des modalités de la réalisation des travaux de purge et de rénovation locale des parements de la voûte du Temple du canal Saint-Martin (11e). - Autorisation à M. le Maire de Paris de signer le marché correspondant. Mme Myriam CONSTANTIN, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33848"
    }
@@ -268,6 +313,9 @@
    {
     "reference": "2005 DAC 393",
     "titre": "Attribution d’une subvention de fonctionnement à l’association Canal - coordination des animations du canal Saint martin, dont le siège est situé 71, rue Bichat dans le 10è arrondissement, pour l’organisation des “Voix sur Berges” au titre de l’année 2005. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63253"
    }
@@ -276,6 +324,9 @@
    {
     "reference": "2006 DVD 3",
     "titre": "2006, DVD 3 - Approbation des objectifs de création d’un réseau vert à Paris dont la première phase est située entre la place du Châtelet (1er) et le canal Saint-Martin (10e). - Approbation des modalités de la concertation relative à ce projet. - Approbation du principe et des modalités de passation d’un marché à bons de commande pour la réalisation des travaux de voirie. Vœu déposé par M. Pierre AIDENBAUM, adopté par la majorité municipale du Conseil du 3e arrondissement, relatif au réseau vert",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JANVIER 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24809"
    }
@@ -284,6 +335,9 @@
    {
     "reference": "2007 DVD 94",
     "titre": "Approbation du principe de la réalisation de travaux sur les canaux Saint-Denis et Saint-Martin dans le cadre de la mise en chômage du canal Saint-Denis. Approbation des modalités de passation des deux marchés de travaux : réhabilitation, réfection et amélioration des installations des écluses du canal Saint-Denis et, régulation et télésurveillance des plans d’eau sur le canal Saint-Martin. Mme Myriam CONSTANTIN, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90116"
    }
@@ -292,12 +346,18 @@
    {
     "reference": "2008 DVD 185",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention d’occupation temporaire de locaux situés sur le domaine public fluvial de la Ville de Paris, Bassin Louis Blanc (canal Saint-Martin) (10e), avec le Préfet de police de Paris agissant pour le compte de la Brigade des sapeurs-pompiers de Paris. Mme Anne LE STRAT et Mme Annick LEPETIT, rapporteures.",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61940"
    },
    {
     "reference": "2008 DVD 9",
     "titre": "Signature d’une convention d’occupation de locaux situés sur le domaine public fluvial, au Bassin Louis Blanc (canal Saint Martin) à Paris 10ème avec l’association La Caserne Ephémère pour la poursuite de ses activités privées de nature culturelle, et pour lui accorder une aide en nature de 65 652,04 euros sous la forme d’une réduction de la redevance d’oc-cupation. M. Christophe GIRARD et Mme Myriam CONSTANTIN, rapporteurs.",
+    "genres": [
+     "autre"
+    ],
     "seance": "FEVRIER 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=76902"
    }
@@ -306,6 +366,9 @@
    {
     "reference": "2009 DVD 117",
     "titre": "Convention d’entretien de l’ouvrage de couverture du canal Saint-Martin, place de la Bastille, à Paris 4e et 12e, avec la Régie Autonome des Transports Parisiens (RATP). Mme Anne LE STRAT, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "SEPTEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36632"
    }
@@ -314,12 +377,19 @@
    {
     "reference": "2011 DVD 105",
     "titre": "65 - 2011, DVD 105 - Approbation du programme 2011 d’aménagements cyclables et autorisation de solliciter les subventions correspondantes auprès de la Région d’Ile de France dans le cadre du 4e contrat “Réseau Vert” et de prendre toute décision en résultant. Vœu déposé par le groupe E.E.L.V.A. relatif au réaménagement global de la voirie rue Eugène Varlin (10e). Vœu déposé par le groupe E.E.L.V.A. relatif à la réalisation d’une liaison cyclable Canal Saint-Martin - Bois de Vincennes. Vœu déposé",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
     "seance": "MAI 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95738"
    },
    {
     "reference": "2011 DVD 113",
     "titre": "59 - 2011, DVD 113 - Signature avec l’association La Caserne Ephémère d’une convention d’occupation du domaine public fluvial au Bassin Louis Blanc, canal Saint-Martin (10e). 2011, DVD 114 - Signature avec la Préfecture de police d’une convention d’occupation du domaine public par la Brigade des sapeurs pompiers de Paris au bassin Louis Blanc, canal Saint Martin (10e). Vœu déposé par le groupe Communiste et élus du Parti de Gauche relatif à l’avenir de la caserne Château-Landon et du Point Éphém",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=103092"
    }
@@ -328,6 +398,9 @@
    {
     "reference": "2023 DVD 40",
     "titre": "2023 DVD 40 - Canaux parisiens. - Convention d’occupation du domaine public fluvial pour l’exploitation des locaux situés 200 à 206, quai de Valmy, sur le canal Saint-Martin (10e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "MARS 2023",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168496"
    }

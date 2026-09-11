@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "mairie-du-7e",
  "name": "Mairie du 7e",
@@ -54,6 +54,9 @@
    {
     "reference": "2000 DPA 206",
     "titre": "Approbation du principe de la réhabilitation du hall d'accueil, de l'escalier d'honneur et du palier du 1er étage de la mairie du 7e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50567"
    }
@@ -62,6 +65,9 @@
    {
     "reference": "2001 DPA 225",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché de travaux signé avec l'entreprise S.A GAR \"Rénovation vieux édifices\" relatif aux travaux de réhabilitation du hall d'accueil, de l'escalier d'honneur et du palier du premier étage de la Mairie du 7e arrondissement, 116, rue de Grenelle (7e). Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57975"
    }
@@ -70,6 +76,9 @@
    {
     "reference": "2006 DPA 313",
     "titre": "Approbation du principe de réalisation des travaux de rénovation du parquet de la salle des mariages de la Mairie du 7e arrondissement et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92106"
    }
@@ -78,12 +87,18 @@
    {
     "reference": "2007 DAC 61",
     "titre": "Attribution d’une subvention de fonctionnement de 2.000 euros à la Société d’Histoire et d’Archéologie du VIIe arrondissement de Paris, Mairie du 7e, 116, rue de Grenelle (7e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MARS 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31725"
    },
    {
     "reference": "2007 DPA 181",
     "titre": "Approbation du principe de réalisation des travaux de restauration des façades et d’amélioration de l’accessibilité aux handicapés à la Mairie du 7e arrondissement et des modalités de passation du marché de travaux correspondant. Mmes Mireille FLAM etPénélope KOMITÈS, rapporteures.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90125"
    }
@@ -92,6 +107,9 @@
    {
     "reference": "2009 DPA 31",
     "titre": "Signature d’un avenant n° 1 au marché de travaux signé avec le groupement conjoint Pierrenoël / Lagrange, relatif à la restauration des façades et l’amélioration de l’accessibilité aux personnes en situation de handicap à la Mairie du 7e arrondissement. Mme Maïté ERRECART et Mme Véronique DUBARRY, rapporteures.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49942"
    }

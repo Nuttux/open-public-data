@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "stade-jean-bouin",
  "name": "Stade Jean-Bouin",
@@ -250,6 +250,9 @@
    {
     "reference": "1996 D 46",
     "titre": "43- 1996, D. 46 - Autorisation à M. le Maire de Paris de souscrire un avenant à la convention signée avec le Club athlétique des sports généraux pour l'occupation du stade Jean-Bouin (16e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "JANVIER 1996",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4289"
    }
@@ -258,6 +261,9 @@
    {
     "reference": "2004 DJS 121",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention d'objectifs et attribution d'une subvention à l'association \"Paris Jean Bouin Casg\" dont le siège social est situé 26, rue du Général-Sarrail (16e), au titre de ses activités sportives parisiennes en 2004. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46424"
    }
@@ -266,6 +272,9 @@
    {
     "reference": "2005 DJS 196",
     "titre": "Approbation d’une convention d’objectifs entre la Mairie de Paris et l’association Paris Jean-Bouin CASG dont le siège social est situé 26, rue du Général-Sarrail à Paris (16e) et attribution d’une subvention de fonctionnement à ladite association, au titre de ses activités sportives parisiennes pour l’année 2005. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87179"
    }
@@ -274,12 +283,18 @@
    {
     "reference": "2006 DJS 125",
     "titre": "Subvention de fonctionnement à l’association Paris Jean-Bouin C.A.S.G.- Autorisation à M. le Maire de Paris de signer la convention d’objectifs afférente. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "OCTOBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35394"
    },
    {
     "reference": "2006 DJS 517",
     "titre": "Autorisation à M. le Maire de Paris de consentir au dépôt d’une demande de permis de construire présentée par l’association “Paris Jean-Bouin” pour effectuer des travaux pour la rénovation des courts de tennis A et B du stade Jean-Bouin (16e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35265"
    }
@@ -288,42 +303,63 @@
    {
     "reference": "2007 DJS 131",
     "titre": "Subvention de fonctionnement à l’association “Paris Jean-Bouin C.A.S.G.”. - Approbation de la convention d’objectifs afférente. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66083"
    },
    {
     "reference": "2007 DJS 244",
     "titre": "2007, DJS 244 - Autorisation à M. le Maire de Paris de signer une convention de mise à disposition du Stade Géo André, 2, rue du Commandant-Guilbaud (16e) dans le cadre de la Coupe du Monde de rugby 2007. 2007, DJS 245 - Autorisation à M. le Maire de Paris de signer une convention avec l’association Paris Jean-Bouin - CASG pour la mise à disposition du gymnase du stade Jean-Bouin dans le cadre de la Coupe du Monde de rugby 2007.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUIN 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21073"
    },
    {
     "reference": "2007 DJS 245",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention avec l’association “Paris Jean-Bouin CASG” pour la mise à disposition du gymnase du stade Jean-Bouin dans le cadre de la Coupe du monde de rugby 2007. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUIN 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72343"
    },
    {
     "reference": "2007 DPA 197",
     "titre": "Approbation du principe et des modalités de passation de quatre marchés de prestations intellectuelles pour l’opération du Stade Jean Bouin 24, avenue du Général Sarrail (16ème). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53170"
    },
    {
     "reference": "2007 DPA 376",
     "titre": "Approbation des modalités de passation d’un marché d’assistance juridique à maîtrise d’ouvrage en vue de la démolition partielle puis de la reconstruction du stade Jean Bouin, avec création d’un parc de stationnement et de locaux d’activités économiques - 20 à 40, avenue du général Sarrail (16e). Autorisation à M. le Maire de Paris de signer ledit marché. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54116"
    },
    {
     "reference": "2007 DPA 376",
     "titre": "Approbation des modalités de passation d’un marché de maîtrise d’œuvre en vue de la démolition partielle puis de la reconstruction du stade Jean Bouin, avec création d’un parc de stationnement et de locaux d’activités économiques - 20 à 40, avenue du général Sarrail (16e). Autorisation à M. le Maire de Paris de signer ledit marché. Autorisation à M. le Maire de Paris de déposer les demandes d’autorisation d’urbanisme pour la réalisation de l’opération susvisée. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54461"
    },
    {
     "reference": "2007 DPA 376",
     "titre": "2007, DPA 376 - Approbation des modalités de passation du marché de maîtrise d’oeuvre et du marché d’assistance juridique à maîtrise d’ouvrage, en vue de la démolition partielle puis de la reconstruction du stade Jean Bouin, avec création d’un parc de stationnement et de locaux d’activités économiques, 20 à 40 avenue du général Sarrail (16e). - Autorisation à M. le Maire de Paris de signer lesdits marchés. - Autorisation à M. le Maire de Paris de déposer les demandes d’autorisation d’urbanisme p",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4681"
    }
@@ -332,18 +368,27 @@
    {
     "reference": "2008 DJS 238",
     "titre": "Signature d’une convention avec l’association Paris Jean Bouin C.A.S.G. pour l’attribution d’une subvention. M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61762"
    },
    {
     "reference": "2008 DJS 458",
     "titre": "2008, DJS 458 - Résiliation de la convention d'occupation du domaine public du stade Jean-Bouin du 11 août 2004.",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18134"
    },
    {
     "reference": "2008 DJS 458",
     "titre": "Résiliation de la convention d’occupation du domaine public du stade Jean-Bouin du 11 août 2004. M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61916"
    }
@@ -352,42 +397,63 @@
    {
     "reference": "2009 DJS 183",
     "titre": "Signature d’une convention avec l’association Paris Jean Bouin CASG pour l’attribution d’une subvention pour l’année 2009. M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32361"
    },
    {
     "reference": "2009 DJS 294",
     "titre": "Création d’une commission spéciale d’élus pour l’audition des candidats à l’attribution des conventions d’occupation temporaire du domaine public de la Ville de Paris constituées des centres sportifs Jean-Bouin et Géo-André (16ème). M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "AVRIL 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64365"
    },
    {
     "reference": "2009 DJS 406",
     "titre": "Délibération rectificative relative à la création d’une commission spéciale d’élus pour l’audition des candidats à l’attribution des conventions d’occupation temporaire du domaine public de la Ville de Paris pour les centres sportifs Jean-Bouin et Géo-André (16e). M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75158"
    },
    {
     "reference": "2009 DPA 105",
     "titre": "2009, DPA 105 - Avenant n° 1 au marché de maîtrise d'oeuvre, approbation du principe et des modalités de consultation en marchés séparés de travaux ainsi que du marché d'ordonnancement, de pilotage et de coordination du chantier, relatif à la reconstruction du Stade Jean Bouin (16e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20939"
    },
    {
     "reference": "2009 DPA 105",
     "titre": "Avenant n°1 au marché de maîtrise d’œuvre, approbation du principe et des modalités de consultation en marchés séparés de travaux ainsi que du marché d’ordonnancement, de pilotage et de coordination du chantier, relatif à la reconstruction du Stade Jean Bouin, 20 à 40 avenue du général Sarrail (16e). M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49903"
    },
    {
     "reference": "2009 DVD 38",
     "titre": "2009, DVD 38 - Signature du marché complémentaire au marché de maîtrise d'oeuvre relatif à la mise en conformité du passage souterrain du boulevard périphérique Parc des Princes en vue de la coordination technique avec l'opération de reconstruction du stade Jean Bouin (16e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17418"
    },
    {
     "reference": "2009 DVD 38",
     "titre": "Attribution et autorisation à M. le Maire de Paris de signer un marché de prestations complémentaires au marché de maîtrise d’œuvre relatif à la mise aux normes du passage souterrain “Parc des Princes” du boulevard du périphérique en vertu de l’article 35-II5 du Code des marchés publics en vue de la coordination technique avec l’opération de démolition et reconstruction du Stade Jean Bouin (16e). Mme Annick LEPETIT, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34399"
    }
@@ -396,36 +462,54 @@
    {
     "reference": "2010 DJS 225",
     "titre": "Autorisation à M. le Maire de Paris de déclarer sans suite la consultation relative à l’attribution d’une convention d’occupation temporaire du domaine public en vue de l’exploitation du centre sportif Jean-Bouin, de procéder à une reprise en régie de ce site et d’approuver les autorisations d’occupations temporaires délivrées par la Ville de Paris aux occupants. M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "FEVRIER 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79323"
    },
    {
     "reference": "2010 DJS 225",
     "titre": "2010, DJS 225 - Autorisation à M. le Maire de Paris de déclarer sans suite la consultation relative à l'attribution d'une convention d'occupation temporaire du domaine public en vue de l'exploitation du centre sportif Jean Bouin, de procéder à une reprise en régie du site et d'approuver les autorisations d'occupations temporaires délivrées par la Ville de Paris aux occupants.",
+    "genres": [
+     "autre"
+    ],
     "seance": "FEVRIER 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3990"
    },
    {
     "reference": "2010 DJS 366",
     "titre": "Signature d’une convention avec Paris Jean-Bouin C.A.S.G. pour l’attribution d’une subvention au titre de l’année 2010. M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=86298"
    },
    {
     "reference": "2010 DJS 394",
     "titre": "Signature d’une convention d’occupation temporaire du domaine public - concession de travaux pour la rénovation et l’exploitation, à des fins privatives, du centre sportif Jean-Bouin situé 20 à 40, avenue du Général Sarrail et du site des t”ennis du bois de Boulogne” situé, allée Fortunée - bois de Boulogne (16e). M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39506"
    },
    {
     "reference": "2010 DJS 394",
     "titre": "2010, DJS 394 - Signature d'une convention d'occupation temporaire du domaine public - concession de travaux pour la rénovation et l'exploitation, à des fins privatives, du centre sportif Jean-Bouin, situé 20 à 40, avenue du Général Sarrail et du site des \"Tennis du Bois de Boulogne\" situé, allée Fortunée - Bois de Boulogne (16e). Vœu déposé par le groupe U.M.P.P.A. relatif au maintien de la pratique sportive de loisir et scolaire.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11100"
    },
    {
     "reference": "2010 DJS 413",
     "titre": "Création d’une Commission spéciale d’élus pour l’audition des candidats à l’attribution d’une convention d’occupation temporaire du domaine public de la Ville de Paris constituée du centre sportif Jean Bouin (16e). M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUILLET 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79834"
    }
@@ -434,6 +518,9 @@
    {
     "reference": "2012 DJS 383",
     "titre": "2012, DJS 383 - Lancement de marchés, selon la procédure de l'appel d'offres, pour assurer la gestion technique globale du stade Jean Bouin (16e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2012",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=107296"
    }
@@ -442,12 +529,18 @@
    {
     "reference": "2014 DDEEES 1061",
     "titre": "2014 DDEEES 1061 - Stade Jean Bouin (16e). Conclusion d'une promesse de baux emphytéotiques contenant une convention de mise à disposition anticipée avec la RIVP et des baux emphytéotiques corrélatifs. Vœu déposé par le groupe UMP relatif à la conclusion d'une promesse de baux emphytéotiques.",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUIN 2014",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=118856"
    },
    {
     "reference": "2014 DJS 194",
     "titre": "2014 DJS 194 - Subvention (50.000 euros) et convention avec l'association Paris Jean-Bouin CASG 2014-2015.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2014",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121411"
    }
@@ -456,6 +549,9 @@
    {
     "reference": "2017 DPA 12",
     "titre": "2017 DPA 12 - Stade Jean Bouin 24, avenue du Général Sarrail (16e) - Marché de travaux - Indemnisation de la société entreprise générale Léon Grosse.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JANVIER 2017",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134710"
    }
@@ -464,6 +560,9 @@
    {
     "reference": "2019 DJS 155",
     "titre": "2019 DJS 155 - Stade Jean Bouin (16e). - Convention d’occupation du domaine public avec la S.A.S. \"SFP Gestion\".",
+    "genres": [
+     "autre"
+    ],
     "seance": "JUIN 2019",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=149867"
    }
@@ -472,6 +571,9 @@
    {
     "reference": "2024 DJS 67",
     "titre": "2024 DJS 67 - Subvention (30.000 euros) au Paris Jean Bouin au titre de l’année 2024.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MAI 2024",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176041"
    }

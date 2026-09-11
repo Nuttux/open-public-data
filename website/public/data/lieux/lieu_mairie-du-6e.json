@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "mairie-du-6e",
  "name": "Mairie du 6e",
@@ -50,12 +50,18 @@
    {
     "reference": "2000 DPA 61",
     "titre": "Approbation du principe de la restructuration des locaux administratifs à la mairie du 6e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51301"
    },
    {
     "reference": "2000 DVLR 91",
     "titre": "Subvention au Comité des fêtes et d'action sociale \"Les amis du 6e\", mairie du 6e arrondissement. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88527"
    }
@@ -64,6 +70,9 @@
    {
     "reference": "2003 DPA 139",
     "titre": "Approbation du principe de réalisation des travaux de réfection des peintures de la salle des fêtes à la mairie du 6e arrondissement et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78842"
    }
@@ -72,6 +81,9 @@
    {
     "reference": "2005 DAC 652",
     "titre": "Attribution d’une subvention de fonctionnement à l’association Société Historique du 6e arrondissement dont le siège social est situé à la mairie du 6e arrondissement, 78, rue Bonaparte (6e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33048"
    }
@@ -80,6 +92,9 @@
    {
     "reference": "2006 DAC 96",
     "titre": "Attribution d’une subvention de fonctionnement à l’association Société Historique du VIe arrondissement dont le siège social est situé à la Mairie du 6e, 78, rue Bonaparte (6e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "AVRIL 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38476"
    }
@@ -88,6 +103,9 @@
    {
     "reference": "2007 DAC 159",
     "titre": "Attribution d’une subvention de fonctionnement à l’association Société Historique du VIe arrondissement dont le siège social est situé à la Mairie du 6e, 78, rue Bonaparte (6e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MARS 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31515"
    }

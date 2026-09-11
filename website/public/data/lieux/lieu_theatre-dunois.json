@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-dunois",
  "name": "Théâtre Dunois",
@@ -333,6 +333,9 @@
    {
     "reference": "1998 DAC 35",
     "titre": "Subvention à l'association \"La Maison ouverte\" (théâtre Dunois) (13e). Mme Hélène MACE de LEPINAY, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 1998",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57328"
    }
@@ -341,12 +344,18 @@
    {
     "reference": "2002 DAC 189",
     "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"La Maison Ouverte\", 108, rue du Chevaleret (13e) une convention relative à l'attribution d'une subvention d'équipement. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71389"
    },
    {
     "reference": "2002 DAC 430",
     "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"La Maison ouverte\", 108, rue du Chevaleret (13e) une convention relative à l'attribution d'une subvention de fonctionnement (D02628). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71598"
    }
@@ -355,6 +364,9 @@
    {
     "reference": "2003 DAC 289",
     "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"La Maison Ouverte\", 108, rue du Chevaleret (13e), une convention relative à l'attribution d'une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47638"
    }
@@ -363,12 +375,18 @@
    {
     "reference": "2006 DAC 130",
     "titre": "Attribution d’une subvention de fonctionnement à l’association “Ensemble Aleph”, située 121, avenue La Bruyère (94400 Vitry-sur-Seine), au titre de sa résidence au théâtre Dunois en 2006. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73968"
    },
    {
     "reference": "2006 DAC 75",
     "titre": "Autorisation à M. le Maire de Paris de signer avec l’association “La Maison Ouverte”, 108, rue du Chevaleret (13e), une convention relative à l’attribution d’une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81457"
    }
@@ -377,12 +395,18 @@
    {
     "reference": "2007 DAC 21",
     "titre": "Autorisation à M. le Maire de Paris de signer avec l’association “La Maison Ouverte” 108, rue du Chevaleret (13e) une convention relative à l’attribution d’une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUIN 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72324"
    },
    {
     "reference": "2007 DAC 603",
     "titre": "Attribution d’une subvention de fonctionnement à l’association Ensemble Aleph située 121, avenue La Bruyère (94400 Vitry-sur-Seine), pour une série de concerts au théâtre Dunois en 2007. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54758"
    }
@@ -391,12 +415,18 @@
    {
     "reference": "2008 DAC 107",
     "titre": "Subvention à l’association “La Métonymie” pour le spectacle jeune public Déguisé en homme diffusé au Théâtre Dunois (13e) en 2008. - Montant : 6.000 euros. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUIN 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68658"
    },
    {
     "reference": "2008 DAC 330",
     "titre": "Subvention à l’association “Centre d’Action Culturelle Georges Brassens” pour le spectacle jeune public Debout présenté au Théâtre Dunois (13e) en 2008. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61832"
    }
@@ -405,12 +435,18 @@
    {
     "reference": "2009 DAC 101",
     "titre": "Subvention à l’association Agitez le Bestiaire pour le spectacle jeune public A mi-chemin présenté au Théâtre Dunois (13e) en 2009. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MAI 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59558"
    },
    {
     "reference": "2009 DAC 256",
     "titre": "Subvention à l’association “Atelier Anna Weill” pour le spectacle Pour une alouette présenté au Théâtre Dunois (13e) en 2009. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74628"
    }
@@ -419,6 +455,9 @@
    {
     "reference": "2022 DAC 46",
     "titre": "2022 DAC 46 - Subvention (129.000 euros) et avenant à convention avec l’association \"La Maison ouverte\" pour le théâtre Dunois (13e) et le théâtre Astral (12e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MAI 2022",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164862"
    }

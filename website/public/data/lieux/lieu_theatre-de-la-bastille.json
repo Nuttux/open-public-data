@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-de-la-bastille",
  "name": "Théâtre de la Bastille",
@@ -346,6 +346,9 @@
    {
     "reference": "1997 DAC 154",
     "titre": "Subvention au Théâtre de la Bastille - S.A.R.L. \"La Manufacture\" (11e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 1997",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49812"
    }
@@ -354,12 +357,18 @@
    {
     "reference": "2002 DAC 218",
     "titre": "Autorisation à M. le Maire de Paris de signer avec la SARL La Manufacture, 76, rue de la Roquette (11e), une convention relative à l'attribution d'une subvention d'équipement pour le Théâtre de la Bastille. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29136"
    },
    {
     "reference": "2002 DAC 67",
     "titre": "Autorisation à M. le Maire de Paris de signer avec la S.A.R.L. \"La Manufacture\" une convention relative à l'attribution d'une subvention pour le fonctionnement du théâtre de la Bastille. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "AVRIL 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73562"
    }
@@ -368,12 +377,18 @@
    {
     "reference": "2003 DAC 19",
     "titre": "Autorisation à M. le Maire de Paris de signer avec la S.A.R.L. \"La Manufacture\", 76, rue de la Roquette (11e), une convention relative à l'attribution d'une subvention pour le fonctionnement du Théâtre de la Bastille. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "AVRIL 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89465"
    },
    {
     "reference": "2003 DAC 256",
     "titre": "Autorisation à M. le Maire de Paris de signer avec la SARL \"La Manufacture\" une convention relative à l'attribution d'une subvention d'équipement pour le Théâtre de la Bastille. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70269"
    }
@@ -382,6 +397,9 @@
    {
     "reference": "2004 DAC 16",
     "titre": "Autorisation à M. le Maire de Paris de signer avec la SARL \"La Manufacture\" (11e) une convention relative à l'attribution d'une subvention pour le fonctionnement du Théâtre de la Bastille. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "AVRIL 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52201"
    }
@@ -390,12 +408,18 @@
    {
     "reference": "2005 DAC 38",
     "titre": "2005, DAC 38 - Autorisation à M. le Maire de Paris de signer avec la SARL “La Manufacture” (11e), une convention relative à l’attribution d’une subvention pour le fonctionnement du théâtre de la Bastille. Montant : 500.000 euros.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "AVRIL 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15576"
    },
    {
     "reference": "2005 DAC 38",
     "titre": "Autorisation à M. le Maire de Paris de signer avec la SARL “La Manufacture”, 76, rue de la Roquette (11e), une convention relative à l’attribution d’une subvention pour le fonctionnement du Théâtre de la Bastille. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "AVRIL 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43773"
    }
@@ -404,6 +428,9 @@
    {
     "reference": "2006 DAC 70",
     "titre": "Autorisation à M. le Maire de Paris de signer avec la SARL “La Manufacture” (11e) une convention relative à l’attribution d’une subvention pour le fonctionnement du Théâtre de la Bastille. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MAI 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88908"
    }
@@ -412,6 +439,9 @@
    {
     "reference": "2007 DAC 12",
     "titre": "Autorisation à M. le Maire de Paris de signer avec la SARL “La Manufacture” 76, rue de la Roquette (11e) une convention relative à l’attribution d’une subvention pour le fonctionnement du Théâtre de la Bastille. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUIN 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72694"
    }
@@ -420,18 +450,27 @@
    {
     "reference": "2008 DAC 113",
     "titre": "Signature d’un avenant à la convention du 10 janvier 2008 avec la SARL “La Manufacture” (11e) pour l’attribution d’une subvention au Théâtre de la Bastille situé à la même adresse. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUIN 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68597"
    },
    {
     "reference": "2008 DAC 113",
     "titre": "2008, DAC 113 - Signature d’un avenant à la convention du 10 janvier 2008, avec la SARL “La Manufacture” (11e) pour l’attribution d’une subvention au Théâtre de la Bastille situé à la même adresse. - Montant : 320.000 euros.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUIN 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14751"
    },
    {
     "reference": "2008 DAC 219",
     "titre": "Subvention à l’association “De l’Autre Côté du Miroir” pour le spectacle Kindertotenlieder diffusé au Théâtre de la Bastille (11e) au cours de la saison 2007-2008. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "OCTOBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42793"
    }
@@ -440,6 +479,9 @@
    {
     "reference": "2009 DAC 45",
     "titre": "Signature d’un avenant à la convention du 12 février 2009 avec la SARL La Manufacture (11e) pour l’attribution d’une subvention au Théâtre de la Bastille. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36762"
    }
@@ -448,12 +490,18 @@
    {
     "reference": "2010 DAC 41",
     "titre": "Signature d’un avenant à convention avec la SARL La Manufacture (11e) pour l’attribution d’une subvention au Théâtre de la Bastille. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39703"
    },
    {
     "reference": "2010 DAC 41",
     "titre": "2010, DAC 41 - Signature d'un avenant à convention avec la SARL La Manufacture (11e) pour l'attribution d'une subvention au Théâtre de la Bastille. Montant : 355.000 euros.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11142"
    }
@@ -462,6 +510,9 @@
    {
     "reference": "2011 DAC 40",
     "titre": "Signature d’un avenant à la convention du 13 janvier 2011 avec la SARL La Manufacture (11e) pour l’attribution d’une subvention au Théâtre de la Bastille. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUIN 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96125"
    }
@@ -470,6 +521,9 @@
    {
     "reference": "2020 DAC 24",
     "titre": "2020 DAC 24 - Subventions (900.000 euros) et avenants à conventions avec le Théâtre de la Bastille (SAS La Manufacture) (11e), la Ménagerie de Verre (SARL les Ateliers de la danse) (11e) et le théâtre des Bouffes.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2020",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156063"
    }
@@ -478,6 +532,9 @@
    {
     "reference": "2021 DAC 33",
     "titre": "2021 DAC 33 - Subvention (620.000 euros) et avenant à convention avec le théâtre de la Bastille. - SAS La Manufacture (11e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUIN 2021",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=159161"
    }

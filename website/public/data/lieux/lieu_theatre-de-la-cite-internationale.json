@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-de-la-cite-internationale",
  "name": "Théâtre de la Cité internationale",
@@ -269,6 +269,9 @@
    {
     "reference": "2002 DAC 327",
     "titre": "Attribution d'une subvention de fonctionnement aux activités culturelles de la Fondation Nationale \"Cité Internationale Universitaire de Paris\", 19, boulevard Jourdan, 75690 Paris Cedex 14, pour le fonctionnement du Théâtre de la Cité internationale. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "OCTOBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95334"
    }
@@ -277,12 +280,18 @@
    {
     "reference": "2003 DAC 250",
     "titre": "172 - 2003, DAC 250 - Subvention annuelle à la Fondation nationale dite \"Cité internationale universitaire de Paris\" (14e) pour le fonctionnement du \"Théâtre de la cité internationale\". - Montant : 100.000 euros",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21315"
    },
    {
     "reference": "2003 DAC 250",
     "titre": "Autorisation à M. le Maire de Paris de signer avec la Fondation Nationale dite \"Cité Internationale Universitaire de Paris\" (19, boulevard Jourdan - 75690 Paris Cedex 14) une convention triennale d'objectifs relative à l'attribution d'une subvention annuelle pour le fonctionnement du Théâtre de la Cité internationale. MM. David ASSOULINE et Christophe GIRARD, rapporteurs.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93695"
    }
@@ -291,12 +300,18 @@
    {
     "reference": "2004 DAC 343",
     "titre": "Autorisation à M. le Maire de Paris de signer avec la Fondation Nationale dite \"Cité Internationale Universitaire de Paris\", 19 boulevard Jourdan (14e), un avenant à la convention triennale d'objectifs du 22 décembre 2003 relative à l'attribution d'une subvention de fonctionnement pour le \"Théâtre de la Cité internationale\". M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "OCTOBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64040"
    },
    {
     "reference": "2004 DAC 356",
     "titre": "Autorisation à M. le Maire de Paris de signer 4 avenants aux conventions relatives à l'attribution de subventions de fonctionnement pour les associations et la fondation suivantes : Maison de la Poésie (3e), Les Athévains (4e), Fondation nationale dite Cité internationale universitaire de Paris pour le Théâtre de la Cité internationale (14e) ; Théâtre Silvia Monfort (15e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "OCTOBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64268"
    }
@@ -305,6 +320,9 @@
    {
     "reference": "2005 DAC 29",
     "titre": "Autorisation à M. le Maire de Paris de signer avec la Fondation Nationale “Cité internationale universitaire de Paris”, 19, boulevard Jourdan (14e), un avenant à la convention triennale d’objectifs du 22 décembre 2003 relative à l’attribution d’une subvention de fonctionnement pour le “Théâtre de la Cité internationale”. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MARS 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26400"
    }
@@ -313,6 +331,9 @@
    {
     "reference": "2006 DAC 79",
     "titre": "Autorisation à M. le Maire de Paris de signer avec la Fondation Nationale “Cité internationale universitaire de Paris” (14e) un avenant à la convention triennale d’objectifs du 22 décembre 2003 relative à l’attribution d’une subvention de fonctionnement pour le “Théâtre de la Cité internationale”. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MAI 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88828"
    }
@@ -321,12 +342,18 @@
    {
     "reference": "2007 DAC 18",
     "titre": "Autorisation à M. le Maire de Paris de signer avec la Fondation Nationale “Cité Internationale Universitaire de Paris”, 19, boulevard Jourdan (14e), une convention triennale d’objectifs 2007-2009 relative à l’attribution d’une subvention de fonctionnement pour le “Théâtre de la Cité Internationale”. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MARS 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31583"
    },
    {
     "reference": "2007 DAC 318",
     "titre": "Autorisation à M. le Maire de Paris de signer avec la Fondation Nationale “Cité Internationale Universitaire de Paris” (14e) un avenant à la convention triennale d’objectifs 2007-2009 relatif à l’attribution d’une subvention de fonctionnement pour le “Théâtre de la Cité Internationale” dans le cadre de la politique de la ville. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "OCTOBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53803"
    }
@@ -335,6 +362,9 @@
    {
     "reference": "2008 DAC 188",
     "titre": "Subvention à l’association “Compagnie Air de Lune” pour le spectacle l’Opérette diffusé au Théâtre de la Cité Internationale (14e) en 2008. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUIN 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68562"
    }

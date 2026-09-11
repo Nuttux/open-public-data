@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "musee-de-la-vie-romantique",
  "name": "Musée de la Vie romantique",
@@ -171,6 +171,9 @@
    {
     "reference": "1999 DAC 149",
     "titre": "Autorisation à M. le Marie de Paris de signer avec l'Association des amis du musée de la Vie romantique (9e) une convention d'objectifs. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "OCTOBRE 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42611"
    }
@@ -179,6 +182,9 @@
    {
     "reference": "2005 DPA 290",
     "titre": "Approbation du principe de réalisation des travaux de ravalement des bâtiments annexes du musée de la Vie Romantique 16 rue Chaptal (9e).-Autorisation à M. le Maire de Paris de déposer la demande de permis de construire en vue de la réalisation des travaux de ravalement des bâtiments annexes du musée de la Vie Romantique 16 rue Chaptal (9e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32765"
    }
@@ -187,24 +193,36 @@
    {
     "reference": "2006 DAC 350",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention d’occupation du domaine public concernant l’établissement dénommé “Un Thé dans le Jardin”, situé au musée de la Vie Romantique, 16 rue Chaptal 75009 Paris. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "SEPTEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73843"
    },
    {
     "reference": "2006 DAC 678",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention transférant à la Ville la propriété de l’Hôtel Renan-Scheffer (musée de la Vie romantique), 16, rue Chaptal (9e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52412"
    },
    {
     "reference": "2006 DPA 250",
     "titre": "Approbation des modalités de passation des marchés de travaux pour le ravalement des façades des bâtiments annexes et la rénovation de la verrière du jardin d’hiver du Musée de la Vie Romantique sis 16 rue Chaptal (9e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74124"
    },
    {
     "reference": "2006 DPA 250",
     "titre": "2006, DPA 250 - Approbation des modalités de passation des marchés de travaux pour le ravalement des façades des bâtiments annexes et la rénovation de la verrière du jardin d’hiver du Musée de la vie romantique sis 16, rue Chaptal (9e). Voeu déposé par M. Jacques BRAVO, adopté par le Conseil du 9e arrondissement.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10807"
    }
@@ -213,6 +231,9 @@
    {
     "reference": "2007 DAC 365",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention d’objectifs avec l’association Société des amis du musée de la vie romantique située 16, rue Chaptal (9e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54136"
    }
@@ -221,6 +242,9 @@
    {
     "reference": "2010 DAC 652",
     "titre": "Autorisation à M. le Maire de Paris de signer la convention de mécénat liant le cabinet d’avocats SALANS au Musée de la Vie Romantique, musée de la Ville de Paris. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "SEPTEMBRE 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39344"
    }
@@ -229,6 +253,9 @@
    {
     "reference": "2011 DAC 20",
     "titre": "Signature d’une convention d’objectifs liant la Ville de Paris à l’association Société des Amis du Musée de la Vie Romantique pour l’attribution d’une subvention. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MARS 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96759"
    }

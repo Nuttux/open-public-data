@@ -5,6 +5,9 @@
     {
      "reference": "2019 DASES 238",
      "titre": "2019 DASES 238 - DLH - Conventions avec l’association AURORE - Mise à disposition par la Ville de Paris de l’espace de repos et de répit Porte de la Chapelle (18e) et subventions de fonctionnement et d'équipements (145.000 euros).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2019",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152432"
     }
@@ -15,6 +18,9 @@
     {
      "reference": "2001 DAC 150",
      "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Halle Saint-Pierre\" (18e) une convention d'objectifs et une convention d'occupation du domaine public. M. Christophe GIRAD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "OCTOBRE 2001",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33683"
     }
@@ -23,12 +29,18 @@
     {
      "reference": "2002 DAC 132",
      "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant à la convention d'objectifs signé avec l'association Halle Saint-Pierre (18e), relatif à l'attribution d'une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MARS 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39076"
     },
     {
      "reference": "2002 DAC 477",
      "titre": "Autorisation à M. le Maire de Paris de signer un second avenant à la convention d'objectifs relatif à l'attribution d'une subvention de fonctionnement à l'association Halle Saint-Pierre - 2, rue Ronsard - 75018 Paris (D04953). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71412"
     }
@@ -37,6 +49,9 @@
     {
      "reference": "2003 DAC 244",
      "titre": "Autorisation à M. le Maire de Paris de signer un troisième avenant à la convention d'objectifs relatif à l'attribution d'une subvention de fonctionnement à l'association Halle Saint-Pierre. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUILLET 2003",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70615"
     }
@@ -45,6 +60,9 @@
     {
      "reference": "2004 DAC 154",
      "titre": "Autorisation à M. le Maire de Paris de signer l'avenant n°4 à la convention d'objectifs relative à l'attribution d'une subvention de fonctionnement à l'association Halle Saint-Pierre - 2, rue Ronsard - 75018 Paris (D04953 - 2004_00342). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUILLET 2004",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59924"
     }
@@ -53,18 +71,27 @@
     {
      "reference": "2005 DAC 105",
      "titre": "Autorisation à M. le Maire de Paris de signer l’avenant n° 3 à la convention d’objectifs relative à l’attribution d’une subvention de fonctionnement à l’association Halle Saint-Pierre, 2, rue Ronsard (18e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "FEVRIER 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27866"
     },
     {
      "reference": "2005 DAC 549",
      "titre": "Autorisation à M. le Maire de Paris de signer l’avenant n° 2 à la convention d’objectifs relative à l’attribution d’une subvention de fonctionnement à l’association “Halle Saint-Pierre”, 2, rue Ronsard (18e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2005",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63521"
     },
     {
      "reference": "2005 DAC 64",
      "titre": "Autorisation à M. le Maire de Paris de signer la convention triennale d’objectifs, la convention d’occupation du domaine public et l’avenant n° 1 à la convention d’objectifs relative à l’attribution d’une subvention de fonctionnement à l’association Halle Saint-Pierre, 2, rue Ronsard (18e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "AVRIL 2005",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43531"
     }
@@ -73,6 +100,9 @@
     {
      "reference": "2006 DAC 105",
      "titre": "2006, DAC 105 - Autorisation à M. le Maire de Paris de souscrire un avenant n° 3 à la convention d’objectifs relative à l’attribution d’une subvention de fonctionnement à l’association “Halle Saint-Pierre”, 2, rue Ronsard (18e). - Montant : 680.000 euros.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "FEVRIER 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25372"
     }
@@ -81,12 +111,18 @@
     {
      "reference": "2007 DAC 109",
      "titre": "Autorisation à M. le Maire de Paris de signer l’avenant n° 4 à la convention d’objectifs relative à l’attribution d’une subvention de fonctionnement à l’association Halle Saint-Pierre, 2, rue Ronsard (18e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MAI 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80226"
     },
     {
      "reference": "2007 DAC 109",
      "titre": "2007, DAC 109 - Autorisation à M. le Maire de Paris de signer l’avenant n° 4 à la convention pluriannuelle d’objectifs relative à l’attribution d’une subvention de fonctionnement à l’association “Halle Saint-Pierre” située 2, rue Ronsard (18e). - Montant : 680.000 euros. Voeu déposé par M. Sylvain GAREL et les membres du groupe “Les Verts”, adopté par le Conseil du 18e arrondissement.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MAI 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12228"
     }
@@ -95,12 +131,18 @@
     {
      "reference": "2008 DAC 194",
      "titre": "Signature d’un avenant à la convention signée avec l’association “La Halle Saint-Pierre” (18e) pour l’attribution d’une subvention. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67635"
     },
     {
      "reference": "2008 DAC 194",
      "titre": "2008, DAC 194 - Signature d'un avenant à la convention signée avec l'association \"Halle Saint-Pierre\" (18e) pour l'attribution d'une subvention. - Montant : 340.000 euros.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6835"
     }
@@ -109,12 +151,18 @@
     {
      "reference": "2009 DAC 88",
      "titre": "Signature d’un avenant à la convention signée avec l’association Halle Saint-Pierre (18e) pour l’attribution d’une subvention. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUILLET 2009",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75023"
     },
     {
      "reference": "2009 DAC 88",
      "titre": "2009, DAC 88 - Signature d'un avenant à la convention signée avec l'association \"Halle Saint-Pierre\" (18e) pour l'attribution d'une subvention. - Montant : 340.000 euros.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUILLET 2009",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20577"
     }
@@ -123,12 +171,18 @@
     {
      "reference": "2010 DAC 502",
      "titre": "Signature d’un avenant à la convention signée avec l’association Halle Saint-Pierre (18e) pour l’attribution d’une subvention. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "NOVEMBRE 2010",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=86133"
     },
     {
      "reference": "2010 DAC 502",
      "titre": "2010, DAC 502 - Signature d’un avenant à la convention signée avec l’association “Halle Saint-Pierre” (18e) pour l’attribution d’une subvention. Montant : 310.000 euros.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "NOVEMBRE 2010",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21508"
     }
@@ -137,6 +191,9 @@
     {
      "reference": "2016 DAC 413",
      "titre": "2016 DAC 413 - Subvention (235.000 euros) et avenant à convention avec l'association \"Halle Saint-Pierre\" (18e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MARS 2016",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129254"
     }
@@ -145,6 +202,9 @@
     {
      "reference": "2017 DAC 570",
      "titre": "2017 DAC 570 - Subvention (470.000 euros) et avenant à convention avec l'association \"Halle Saint-Pierre\" (18e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "NOVEMBRE 2017",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140032"
     }
@@ -153,6 +213,9 @@
     {
      "reference": "2019 DAC 222",
      "titre": "2019 DAC 222 - Subvention (450.000 euros) et convention avec l'association \"Halle Saint-Pierre\" (18e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUIN 2019",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=150078"
     }
@@ -161,6 +224,9 @@
     {
      "reference": "2023 DAC 143",
      "titre": "2023 DAC 143 - Subvention (380.000 euros) et avenant à convention avec l'association \"Halle Saint-Pierre\" (18e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUILLET 2023",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=170541"
     }
@@ -171,6 +237,9 @@
     {
      "reference": "2009 DAC 423",
      "titre": "Subvention à l’association Compagnie Eulalie pour le spectacle Le jour de l’italienne présenté au Théâtre 13 (13e) en 2009. Montant : 10.000 euros. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "OCTOBRE 2009",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93470"
     }
@@ -181,6 +250,9 @@
     {
      "reference": "2006 DJS 135",
      "titre": "Subvention d’aide au projet à la Fédération Française d’Athlétisme pour l’organisation du Décanation qui a eu lieu le 26 août 2006 au stade Charléty. Autorisation à M. le Maire de Paris de signer la convention afférente. M. Pascal CHERKI, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74088"
     }
@@ -189,6 +261,9 @@
     {
      "reference": "2007 DJS 136",
      "titre": "Subvention d’aide au projet à la Fédération Française d’Athlétisme pour l’organisation du Meeting SEAT le 23 février 2007 au POPB et du Décanation le 8 septembre 2007 au stade Charléty. - Approbation de la convention afférente. M. Pascal CHERKI, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "NOVEMBRE 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65842"
     }
@@ -197,6 +272,9 @@
     {
      "reference": "2008 DJS 232",
      "titre": "Signature d’une convention avec la Fédération Française d’Athlétisme pour l’attribution d’une subvention. M. Jean VUILLERMOZ, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66977"
     }
@@ -205,6 +283,9 @@
     {
      "reference": "2009 DJS 181",
      "titre": "Signature d’une convention avec la Fédération Française d’Athlétisme pour l’attribution d’une subvention. M. Jean VUILLERMOZ, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2009",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36961"
     }
@@ -215,6 +296,9 @@
     {
      "reference": "2010 DEVE 90",
      "titre": "Subvention à l’association Grumpy Nature pour son étude ornithologique sur le Fuligule Milouin au lac du Bois de Vincennes. Mme Fabienne GIBOUDEAUX, rapporteure.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUILLET 2010",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79431"
     }
@@ -225,6 +309,9 @@
     {
      "reference": "2015 DAC 602",
      "titre": "2015 DAC 602 Subventions de fonctionnement et d’équipement (15.658.233 euros) et convention avec l'établissement public Cité de la musique - Philharmonie de Paris (19e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2015",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=128267"
     }
@@ -233,6 +320,9 @@
     {
      "reference": "2016 DFA 139",
      "titre": "2016 DFA 139 - Réaménagement d’un prêt obligataire au profit de l’EP Cité de la Musique - Philharmonie de Paris souscrit auprès de Société Générale SCF. Maintien garantie Ville de Paris et convention de financement. Vœu déposé par le groupe Ecologiste de Paris relatif au réaménagement du prêt de la Philharmonie. 2016 SG 33 - Rapport d’observations définitives de la Chambre régionale des comptes relatif à l’examen de la gestion de l’opération de construction de la Philharmonie de Paris.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "SEPTEMBRE 2016",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=132294"
     }
@@ -241,6 +331,9 @@
     {
      "reference": "2017 DAC 176",
      "titre": "2017 DAC 176 - Subventions (15.295.752 euros) et convention avec l'établissement public Cité de la musique - Philharmonie de Paris (19e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2017",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140571"
     }
@@ -249,6 +342,9 @@
     {
      "reference": "2018 DAC 94",
      "titre": "2018 DAC 94 - Subvention (6.000.000 euros) et avenant à convention avec l’établissement public \"Cité de la musique - Philharmonie de Paris\" (19e). Vœu déposé par le groupe PPCI relatif à une exposition sur l’œuvre de Pierre Henry.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MAI 2018",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=142377"
     }
@@ -257,6 +353,9 @@
     {
      "reference": "2020 DAC 120",
      "titre": "2020 DAC 120 - Subventions pour la Philharmonie de Paris et pour l'Orchestre de Paris, convention et avenants à convention avec l’établissement public Cité de la musique Philharmonie de Paris (19e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUILLET 2020",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156179"
     }
@@ -265,6 +364,9 @@
     {
      "reference": "2021 DAC 150",
      "titre": "2021 DAC 150 - Subventions de fonctionnement et d’équipement (15.295.751,69 euros) et convention avec l'établissement public Cité de la musique. - Philharmonie de Paris (19e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2021",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164316"
     }
@@ -273,12 +375,18 @@
     {
      "reference": "2022 DAC 105",
      "titre": "2022 DAC 105 - Subvention d’équipement (7.000.000 euros) et convention avec l'établissement public Cité de la Musique - Philharmonie de Paris (19e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MARS 2022",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164670"
     },
     {
      "reference": "2022 DAC 157",
      "titre": "2022 DAC 157 - Subvention de fonctionnement (6.793.200 euros) et avenant à la convention avec l'établissement public \"Cité de la Musique - Philharmonie de Paris\" (19e). 2022 DAC 158 - Subventions de fonctionnement et d’équipement (15.295.751,69 euros) et convention avec l'établissement public \"Cité de la musique - Philharmonie de Paris \"(19e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2022",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=167873"
     }
@@ -287,6 +395,9 @@
     {
      "reference": "2023 DAC 109",
      "titre": "2023 DAC 109 - Subventions de fonctionnement et d’équipement (15.295.751,69 euros) et convention avec l'établissement public Cité de la musique - Philharmonie de Paris (19e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2023",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174216"
     }
@@ -295,6 +406,9 @@
     {
      "reference": "2024 DAC 99",
      "titre": "2024 DAC 99 - Subventions de fonctionnement et d’équipement (15.295.751,69 euros) et convention avec l'établissement public Cité de la musique - Philharmonie de Paris (19e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2024",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179020"
     }
@@ -303,12 +417,18 @@
     {
      "reference": "2025 DAC 107",
      "titre": "2025 DAC 107 - Subventions de fonctionnement et d’équipement (15.295.751,69 euros), convention et avenant à convention d'investissement, avec l'établissement public \"Cité de la musique - Philharmonie de Paris\" (19e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2025",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183673"
     },
     {
      "reference": "2025 DAC 83",
      "titre": "2025 DAC 83 - Avenant à convention avec l'établissement public Cité de la Musique - Philharmonie de Paris (19e).",
+     "genres": [
+      "autre"
+     ],
      "seance": "AVRIL 2025",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179777"
     }
@@ -319,6 +439,9 @@
     {
      "reference": "1998 DAC 35",
      "titre": "Subvention à l'association \"La Maison ouverte\" (théâtre Dunois) (13e). Mme Hélène MACE de LEPINAY, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 1998",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57328"
     }
@@ -327,12 +450,18 @@
     {
      "reference": "2002 DAC 189",
      "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"La Maison Ouverte\", 108, rue du Chevaleret (13e) une convention relative à l'attribution d'une subvention d'équipement. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71389"
     },
     {
      "reference": "2002 DAC 430",
      "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"La Maison ouverte\", 108, rue du Chevaleret (13e) une convention relative à l'attribution d'une subvention de fonctionnement (D02628). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71598"
     }
@@ -341,6 +470,9 @@
     {
      "reference": "2003 DAC 289",
      "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"La Maison Ouverte\", 108, rue du Chevaleret (13e), une convention relative à l'attribution d'une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2003",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47638"
     }
@@ -349,6 +481,9 @@
     {
      "reference": "2006 DAC 75",
      "titre": "Autorisation à M. le Maire de Paris de signer avec l’association “La Maison Ouverte”, 108, rue du Chevaleret (13e), une convention relative à l’attribution d’une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUILLET 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81457"
     }
@@ -357,6 +492,9 @@
     {
      "reference": "2007 DAC 21",
      "titre": "Autorisation à M. le Maire de Paris de signer avec l’association “La Maison Ouverte” 108, rue du Chevaleret (13e) une convention relative à l’attribution d’une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUIN 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72324"
     }
@@ -365,6 +503,9 @@
     {
      "reference": "2022 DAC 46",
      "titre": "2022 DAC 46 - Subvention (129.000 euros) et avenant à convention avec l’association \"La Maison ouverte\" pour le théâtre Dunois (13e) et le théâtre Astral (12e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MAI 2022",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164862"
     }
@@ -375,6 +516,9 @@
     {
      "reference": "1999 DAC 3",
      "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Maison de la poésie\" une convention de mise à disposition d'un fonctionnaire titulaire de la Commune de Paris. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+     "genres": [
+      "autre"
+     ],
      "seance": "JUILLET 1999",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85479"
     }
@@ -383,12 +527,18 @@
     {
      "reference": "2002 DAC 20",
      "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Maison de la poésie\" une convention relative à son action visant à faire connaître et diffuser la poésie. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "autre"
+     ],
      "seance": "FEVRIER 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58056"
     },
     {
      "reference": "2002 DAC 350",
      "titre": "Attribution d'une subvention de fonctionnement à des compagnies théâtrales programmées à la Maison de la poésie, \"La compagnie du samovar\", 5, rue Pernety (14e), \"Le petit vivant\", 87, rue Noisy le Sec, 93260 Les Lilas. - Autorisation à M. le Maire de Paris de signer avec l'association \"l'Athanor\", 16, rue Edouard Vaillant, 93230 Romainville, une convention relative à l'attribution d'une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71606"
     }
@@ -397,6 +547,9 @@
     {
      "reference": "2003 DAC 13",
      "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Maison de la Poésie\", 161 bis, rue Saint-Martin (3e), une convention relative à l'attribution d'une subvention de fonctionnement (dossier D03085). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "AVRIL 2003",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89439"
     }
@@ -405,24 +558,36 @@
     {
      "reference": "2004 DAC 356",
      "titre": "Autorisation à M. le Maire de Paris de signer 4 avenants aux conventions relatives à l'attribution de subventions de fonctionnement pour les associations et la fondation suivantes : Maison de la Poésie (3e), Les Athévains (4e), Fondation nationale dite Cité internationale universitaire de Paris pour le Théâtre de la Cité internationale (14e) ; Théâtre Silvia Monfort (15e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "OCTOBRE 2004",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64268"
     },
     {
      "reference": "2004 DAC 429",
      "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Maison de la Poésie\" (8e) une convention relative à l'attribution d'une subvention d'équipement. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "OCTOBRE 2004",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64132"
     },
     {
      "reference": "2004 DAC 6",
      "titre": "31 - 2004, DAC 6 - Subvention de fonctionnement à l'association \"Maison de la poésie\". - Montant : 920.000 euros.Vœu déposé par M. Pierre AIDENBAUM et les membres du groupe socialiste et radical de gauche",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MAI 2004",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9016"
     },
     {
      "reference": "2004 DAC 6",
      "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Maison de la Poésie\", 161 bis, rue Saint-Martin (3e), une convention relative à l'attribution d'une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MAI 2004",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45718"
     }
@@ -431,12 +596,18 @@
     {
      "reference": "2005 DAC 9",
      "titre": "2005, DAC 9 - Autorisation à M. le Maire de Paris de signer une convention relative à l’attribution d’une subvention de fonctionnement à l’association “Maison de la Poésie” (3e). - Montant : 920.000 euros.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "AVRIL 2005",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15694"
     },
     {
      "reference": "2005 DAC 9",
      "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l’attribution d’une subvention de fonctionnement à l’association Maison de la Poésie (161, rue Saint-Martin 75003 Paris). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "AVRIL 2005",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43892"
     }
@@ -445,18 +616,27 @@
     {
      "reference": "2006 DAC 58",
      "titre": "2006, DAC 58 - Autorisation à M. le Maire de Paris de signer des conventions relatives à l’occupation du domaine public avec les théâtre Molières - Maison de la Poésie, théâtre Mouffetard, théâtre 13, théâtre 14, théâtre Sylvia-Monfort, théâtre de la Ville, théâtre Paris-Villette et 20e théâtre.",
+     "genres": [
+      "autre"
+     ],
      "seance": "JANVIER 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24846"
     },
     {
      "reference": "2006 DAC 60",
      "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l’attribution d’une subvention de fonctionnement à l’association “Maison de la Poésie”, 161, rue Saint-Martin (3e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MAI 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88931"
     },
     {
      "reference": "2006 DAC 60",
      "titre": "2006, DAC 60 - Autorisation à M. le Maire de Paris de signer une convention relative à l’attribution d’une subvention de fonctionnement à l’association “Maison de la Poésie”, 161, rue Saint-Martin (3e). - Montant : 920.000 euros.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MAI 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10505"
     }
@@ -465,18 +645,27 @@
     {
      "reference": "2007 DAC 28",
      "titre": "Autorisation à M. le Maire de Paris de signer avec l’association “Maison de la Poésie”, 161, rue Saint-Martin (3e), une convention relative à l’attribution d’une subvention de fonctionnement de 920.000 euros. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MARS 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31310"
     },
     {
      "reference": "2007 DAC 329",
      "titre": "Autorisation à M. le Maire de Paris de signer des conventions relatives à l’attribution de subventions d’équipement avec les associations et la SARL suivantes : “Maison de la Poésie” 161, rue Saint-Martin (3e) ; “Paris Mouff’Théâtre” 73, rue Mouffetard (5e) ; “A.A.S.C.S.P/Théâtre” 13 103A, bd A. Blanqui (13e) ; “Théâtre Paris 14” 20, Av. Marc Sangnier (14e) ; “Nouveau Théâtre de Novembre/20e Théâtre” 7, rue des Platrières (20e) ; “SARL S.P.G.T/Théâtre Paris-Villette” 211, Av. Jean Jaurès (19e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "NOVEMBRE 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66078"
     },
     {
      "reference": "2007 DAC 612",
      "titre": "Autorisation à M. le Maire de Paris de signer des conventions relatives à l’occupation des théâtres suivants : Théâtre Molière-Maison de la poésie situé 161, rue Saint-Martin (3e) ; Théâtre Mouffetard situé 73, rue Mouffetard (5e) ; Théâtre 13 situé 103A, boulevard Auguste Blanqui (13e) ; Théâtre 14 situé 20, avenue Marc Sangnier (14e) ; Théâtre Silvia Monfort situé 106, rue Brancion (15e) ; Théâtre Paris-Villette situé 211, avenue Jean Jaurès (19e) ; 20e Théâtre situé 7, rue des Platrières (20e",
+     "genres": [
+      "autre"
+     ],
      "seance": "OCTOBRE 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53115"
     }
@@ -485,12 +674,18 @@
     {
      "reference": "2008 DAC 156",
      "titre": "Signature d’un avenant à la convention passée avec l’association “Maison de la poésie” (3e), pour l’attribution du solde de la subvention de fonctionnement de 460.000 euros. - Signature d’une convention relative à l’attribution d’une subvention d’équipement de 20.000 euros. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67664"
     },
     {
      "reference": "2008 DAC 556",
      "titre": "Subvention à l’association Mugiscué pour le spectacle Le Repas présenté à la Maison de la Poésie (3e) en 2008. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78497"
     }
@@ -499,12 +694,18 @@
     {
      "reference": "2009 DAC 163",
      "titre": "Signature d’un avenant à la convention passée avec l'association Maison de la poésie (3e), pour l’attribution du solde de la subvention de fonctionnement; signature d’une convention relative à l’attribution d’une subvention d’équipement. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2009",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37281"
     },
     {
      "reference": "2009 DAC 169",
      "titre": "Autorisation à M. le Maire de Paris de signer des conventions relatives à l’occupation des théâtres suivants : Maison de la poésie située 161, rue Saint-Martin (3e) ; Théâtre Mouffetard (5e) ; Théâtre 13 situé 103A, boulevard Auguste Blanqui (13e) ; Théâtre 14 situé 20, avenue Marc Sangnier (14e) ; Théâtre Silvia Monfort situé 106, rue Brancion (15e) ; Théâtre Paris-Villette situé 211, avenue Jean Jaurès (19e) ; 20ème Théâtre situé 7, rue des Platrières (20e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "autre"
+     ],
      "seance": "NOVEMBRE 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61769"
     }
@@ -513,6 +714,9 @@
     {
      "reference": "2010 DAC 226",
      "titre": "Signature d’un avenant à convention pour l’attribution d’une subvention à l’association Maison de la poésie (3e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2010",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39906"
     }
@@ -521,6 +725,9 @@
     {
      "reference": "2021 DAC 62",
      "titre": "2021 DAC 62 - Subvention d’investissement (150.000 euros) et convention avec l’association \"La Maison de la Poésie\" (Paris Centre).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "NOVEMBRE 2021",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163968"
     }
@@ -529,6 +736,9 @@
     {
      "reference": "2026 DAC 8",
      "titre": "2026 DAC 8 - Subvention (776.000 euros) et avenant n° 1 à convention avec l'association \"Maison de la Poésie\" (Paris Centre).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "FEVRIER 2026",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184371"
     }
@@ -539,24 +749,36 @@
     {
      "reference": "2002 DAC 213",
      "titre": "96 - 2002, DAC 213 - Autorisation à M. le Maire de Paris de signer un marché d'études sur appel d'offres pour la restructuration de la \"Maison des Métallos\" (11e)",
+     "genres": [
+      "travaux"
+     ],
      "seance": "JUILLET 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7996"
     },
     {
      "reference": "2002 DAC 213",
      "titre": "Approbation du principe de la restructuration de la \"Maison des Métallos, 94, rue Jean-Pierre-Timbaud (11e). - Consultation d'un programmiste. - Approbation du règlement de consultation, du cadre d'acte d'engagement, du C.C.A.P. relatifs au marché d'études de programmation et d'assistance au maître d'ouvrage. - Autorisation à Monsieur le Maire de Paris de signer le marché d'études auprès du prestataire désigné dans le cadre de la procédure d'appels d'offres. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "JUILLET 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88113"
     },
     {
      "reference": "2002 DVLR 184",
      "titre": "Approbation des modalités de lancement de deux appels d'offres ouvert concernant d'une part le nettoyage, et d'autre part la gestion du bâtiment dénommé \"La Maison des Métallos\" 94, rue Jean-Pierre Timbaud (11ème). - Autorisation à Monsieur le Maire de Paris à signer lesdits marchés auprès des attributaires désignés dans le cadre de la procédure de la commission d'appels d'offres. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "NOVEMBRE 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45491"
     },
     {
      "reference": "2002 DVLR 184",
      "titre": "86 - 2002, DVLR 184 - Approbation des modalités de lancement de 2 appels d'offres ouverts concernant d'une part le nettoyage, et d'autre part, la gestion du bâtiment dénommé \"La Maison des Métallos\", 94, rue Jean-Pierre-Timbaud (11e). - Autorisation à M. le Maire de Paris de signer lesdits marchés auprès des attributaires désignés dans le cadre de la procédure de la Commission d'appels d'offres",
+     "genres": [
+      "travaux"
+     ],
      "seance": "NOVEMBRE 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16028"
     }
@@ -565,18 +787,27 @@
     {
      "reference": "2003 DAC 488",
      "titre": "Approbation du principe de recours à un mandataire pour la réalisation des travaux de restructuration de la \"Maison des Métallos\", 94, rue Jean-Pierre-Timbaud (11e). - Approbation du règlement de consultation, du cadre d'acte d'engagement, du C.C.A.P. relatifs à la convention de mandat maître d'ouvrage. - Autorisation à M. le Maire de Paris de signer la convention auprès du prestataire désigné dans le cadre de la procédure d'appels d'offres. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "SEPTEMBRE 2003",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47866"
     },
     {
      "reference": "2003 DAC 489",
      "titre": "Approbation des modalités de passation du marché de maîtrise d'œuvre pour la restructuration de la \"Maison des Métallos\" (11e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "SEPTEMBRE 2003",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47952"
     },
     {
      "reference": "2003 DAC 489",
      "titre": "35 - 2003, DAC 489 - Autorisation à M. le Maire de Paris de signer un marché de maîtrise d'œuvre pour la restructuration de la \"Maison des Métallos\" (11e)",
+     "genres": [
+      "travaux"
+     ],
      "seance": "SEPTEMBRE 2003",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3490"
     }
@@ -585,18 +816,27 @@
     {
      "reference": "2004 DAC 145",
      "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Comité pour une maison des savoirs et des cultures de l'est parisien dans la Maison des Métallos, dit Comité Métallos\" (11e) une convention relative à l'attribution d'une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MAI 2004",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45665"
     },
     {
      "reference": "2004 DAC 334",
      "titre": "70 - 2004, DAC 334 - Restructuration de la \"Maison des Métallos\" (11e). - Approbation du marché de maîtrise d'oeuvre. - Autorisation au mandataire de la Ville de Paris de signer ledit marché.Vœu déposé par Mme Isabelle GUIROUS-MORIN, MM. Jacques DAGUENET et Patrick BLOCHE, adopté à l'unanimité par le Conseil du 11e arrondissement, relatif au projet de restructuration de la Maison des métallos",
+     "genres": [
+      "travaux"
+     ],
      "seance": "JUILLET 2004",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10946"
     },
     {
      "reference": "2004 DAC 334",
      "titre": "Restructuration de la \"Maison des Métallos\", 94 rue Jean Pierre Timbaud (11e). - Approbation du marché de maîtrise d'œuvre. - Autorisation au mandataire de la Ville de Paris de signer ledit marché. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "JUILLET 2004",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59819"
     }
@@ -605,6 +845,9 @@
     {
      "reference": "2005 DAC 96",
      "titre": "Attribution d’une subvention de fonctionnement à l’association “Comité pour une maison des savoirs et des cultures de l’est parisien dans la Maison des Métallos, dit Comité Métallos”, 94, rue Jean-Pierre-Timbaud (11e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MAI 2005",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80698"
     }
@@ -613,30 +856,45 @@
     {
      "reference": "2006 DAC 116",
      "titre": "Autorisation à M. le Maire de Paris de signer, avec l’établissement public de “la Maison des métallos”, qui a son siège social 94 rue Jean-Pierre Timbaud (11e), l’avenant n° 1 à la convention pluriannuelle d’objectifs relative à l’attribution d’une subvention de fonctionnement de 840.000 euros. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MARS 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31258"
     },
     {
      "reference": "2006 DAC 329",
      "titre": "Restructuration de la Maison des Métallos, 94 rue Jean Pierre Timbaud (11e).- Avenant au marché de maîtrise d’oeuvre. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "JUILLET 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81247"
     },
     {
      "reference": "2006 DAC 583",
      "titre": "Autorisation à M. le Maire de Paris de signer, avec la régie personnalisée “établissement public de la Maison des métallos”, qui a son siège social 94 rue Jean-Pierre Timbaud, 75011 Paris, une convention pluriannuelle d’objectifs relative à l’attribution d’une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74474"
     },
     {
      "reference": "2006 DAC 583",
      "titre": "2006, DAC 583 - Autorisation à M. le Maire de Paris de signer avec la régie personnalisée “Etablissement public de la Maison des Métallos”, qui a son siège social 94, rue Jean-Pierre-Timbaud (11e), une convention pluriannuelle d’objectifs relative à l’attribution d’une subvention de fonctionnement. - Montant : 250.000 euros.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10759"
     },
     {
      "reference": "2006 DAC 666",
      "titre": "Autorisation à M. le Maire de Paris de signer une convention annuelle d’objectifs, relative à l’attribution d’une subvention de fonctionnement à l’association “Comité pour une maison des savoirs et des cultures de l’est parisien dans la Maison des métallos” dit “Comité Métallos”, domiciliée à l’Union Fraternelle des Métallurgistes, 94, rue Jean-Pierre-Timbaud (11e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92411"
     }
@@ -645,36 +903,54 @@
     {
      "reference": "2007 DAC 116",
      "titre": "2007, DAC 116 - Autorisation à M. le Maire de Paris de signer avec l’établissement public “la Maison des Métallos” qui a son siège 94, rue Jean-Pierre-Timbaud (11e), l’avenant n° 1 à la convention pluriannuelle d’objectifs relative à l’attribution d’une subvention de fonctionnement. - Montant : 840.000 euros.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MARS 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22366"
     },
     {
      "reference": "2007 DAC 330",
      "titre": "Autorisation à M. le Maire de Paris de signer une convention avec l’établissement public de la Maison des Métallos relative à l’attribution d’une subvention d’équipement à la Régie personnalisée chargée de l’exploitation de la Maison des Métallos, 94 rue Jean-Pierre Timbaud (11e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUIN 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72322"
     },
     {
      "reference": "2007 DAC 330",
      "titre": "2007, DAC 330 - Autorisation à M. le Maire de Paris de signer une convention avec l’établissement public de la Maison des Métallos relative à l’attribution d’une subvention d’équipement à la Régie personnalisée chargée de l’exploitation de la Maison des Métallos, 94, rue Jean-Pierre Timbaud (11e). - Montant : 300.000 euros.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUIN 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21108"
     },
     {
      "reference": "2007 DAC 335",
      "titre": "Restructuration de la Maison des Métallos, 94 rue Jean Pierre Timbaud (11e). - Avenants aux marchés de travaux. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "JUIN 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72728"
     },
     {
      "reference": "2007 DAC 396",
      "titre": "Autorisation à M. le Maire de Paris de signer une convention temporaire d’occupation du domaine public avec l’établissement public de la Maison des Métallos en vue de la mise à disposition de l’équipement culturel situé 94, rue Jean-Pierre Timbaud (11e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "autre"
+     ],
      "seance": "JUILLET 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90575"
     },
     {
      "reference": "2007 DAC 682",
      "titre": "Autorisation à M. le Maire de Paris de signer une convention annuelle d’objectifs, relative à l’attribution d’une subvention de fonctionnement à l’association “Comité pour une maison des savoirs et des cultures de l’est parisien dans la Maison des métallos” dit “Comité Métallos”, domiciliée à l’Union Fraternelle des Métallurgistes, 94, rue Jean-Pierre Timbaud (11e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54757"
     }
@@ -683,18 +959,27 @@
     {
      "reference": "2008 DAC 245",
      "titre": "2008, DAC 245 - SGRI 36 - Signature d’un avenant à la convention pluriannuelle d’objectifs passée avec l’établissement public “La Maison des métallos”.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MAI 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6777"
     },
     {
      "reference": "2008 DAC 245",
      "titre": "SGRI 36 - Signature d’un avenant à la convention pluriannuelle d’objectifs passée avec l’établissement public “la Maison des métallos”. - Attribution d’une subvention sur projet. MM. Pierre SCHAPIRA et Christophe GIRARD, rapporteurs.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MAI 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69776"
     },
     {
      "reference": "2008 DAC 614",
      "titre": "Subvention à l’association “Comité pour une maison des savoirs et des cultures de l’Est parisien dans la Maison des métallos” dit “Comité Métallos (11e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78163"
     }
@@ -703,24 +988,36 @@
     {
      "reference": "2009 DAC 448",
      "titre": "Signature d’un avenant et d’une convention avec l’établissement public “la Maison des métallos” pour l’attribution d’une subvention de fonctionnement et d’une subvention d’équipement. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUILLET 2009",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74849"
     },
     {
      "reference": "2009 DAC 448",
      "titre": "2009, DAC 448 - Signature d'un avenant et d'une convention avec l'établissement public \"La Maison des Métallos\" pour l'attribution d'une subvention de fonctionnement et d'une subvention d'équipement. - Montant : 1.100.000 euros.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUILLET 2009",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20549"
     },
     {
      "reference": "2009 DAC 549",
      "titre": "2009 DAC 549 Signature d’une convention avec l’association \"L’Etrange Festival\" (95), pour l’attribution d’une subvention destinée à l’organisation de la 15e édition de \"l’Etrange Festival\" au Forum des Images du 4 au 13 septembre 2009 et de la 5e édition de \"l’Etrange Musique\" les 16 et 17 octobre 2009 à la Maison des Métallos. - Montant : 33.000 euros. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2009",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37321"
     },
     {
      "reference": "2009 DAC 752",
      "titre": "Subvention à l’association Comité pour une maison des savoirs et des cultures de l’Est parisien dans la Maison des métallos dit Comité Métallos (11e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2009",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32699"
     }
@@ -729,24 +1026,36 @@
     {
      "reference": "2010 DAC 494",
      "titre": "SG 142 Subvention à l’association Compagnie Orten pour le spectacle A mon âge je me cache encore pour fumer diffusé à La Maison des métallos (11e) et au Théâtre de l’épée de bois (12e) en 2010. M. Christophe GIRARD et Mme Fatima LALEM, rapporteurs.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2010",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39755"
     },
     {
      "reference": "2010 DAC 496",
      "titre": "Subvention à l’association Comité pour une maison des savoirs et des cultures de l’Est parisien dans la Maison des métallos dit Comité Métallos (11e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "NOVEMBRE 2010",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85742"
     },
     {
      "reference": "2010 DAC 94",
      "titre": "Signature d’un avenant à la convention pluriannuelle avec l’établissement public “La Maison des métallos” pour l’attribution d’une subvention. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUILLET 2010",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79479"
     },
     {
      "reference": "2010 DAC 95",
      "titre": "Signature d’une convention avec l’établissement public local de la Maison des Métallos pour l’attribution d’une subvention. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2010",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39442"
     }
@@ -755,12 +1064,18 @@
     {
      "reference": "2011 DAC 130",
      "titre": "72 - 2011, DAC 130 - Signature avec l’établissement public local de la Maison des Métallos d’un avenant à la convention pluriannuelle d’objectifs et d’un avenant à la convention d’équipement pour l’attribution de deux subventions. Montant : 1.112.000 euros.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUILLET 2011",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=100773"
     },
     {
      "reference": "2011 DAC 132",
      "titre": "Subvention à l’association Comité pour une maison des savoirs et des cultures de l’Est parisien dans la Maison des métallos dit Comité Métallos (11e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MAI 2011",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97751"
     }
@@ -769,6 +1084,9 @@
     {
      "reference": "2017 DAC 21",
      "titre": "2017 DAC 21 - Contribution et subvention d'équipement (1.552.500 euros), avenant à convention et convention avec l’établissement public de coopération culturelle \"Maison des métallos\" (11e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MAI 2017",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=135820"
     }
@@ -777,6 +1095,9 @@
     {
      "reference": "2018 DAC 20",
      "titre": "2018 DAC 20 - Contribution (1.500.000 euros) et avenant à convention avec l’établissement public de coopération culturelle \"Maison des Métallos\" (11e).",
+     "genres": [
+      "autre"
+     ],
      "seance": "MAI 2018",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=142454"
     }
@@ -785,6 +1106,9 @@
     {
      "reference": "2020 DAC 8",
      "titre": "2020 DAC 8 - Contributions (11.050.000 euros) et avenants à conventions avec les établissements publics de coopération culturelle Maison des métallos (11e), CENTQUATRE (19e) et Ateliers Médicis.",
+     "genres": [
+      "autre"
+     ],
      "seance": "JUILLET 2020",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156182"
     }
@@ -793,6 +1117,9 @@
     {
      "reference": "2021 DAC 306",
      "titre": "2021 DAC 306 - Subvention (13.000 euros) au Comité pour une maison des savoirs et des cultures de l'Est parisien dans la Maison des métallos (11e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "OCTOBRE 2021",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=160931"
     }
@@ -801,6 +1128,9 @@
     {
      "reference": "2022 DAC 36",
      "titre": "2022 DAC 36 - Contribution (2.000.000 euros) et avenant à convention avec l’établissement public de coopération culturelle Maison des Métallos (11e).",
+     "genres": [
+      "autre"
+     ],
      "seance": "OCTOBRE 2022",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=167222"
     }
@@ -809,6 +1139,9 @@
     {
      "reference": "2023 DAC 36",
      "titre": "2023 DAC 36 - Contribution (2.000.000 euros) et avenant à convention avec l’établissement public de coopération culturelle Maison des métallos (11e).",
+     "genres": [
+      "autre"
+     ],
      "seance": "JUIN 2023",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=169733"
     }
@@ -817,12 +1150,18 @@
     {
      "reference": "2024 DAC 390",
      "titre": "2024 DAC 390 - Contribution (2.235.000 euros) et avenant à convention avec l’établissement public de coopération culturelle \"La Maison des Métallos\" (11e).",
+     "genres": [
+      "autre"
+     ],
      "seance": "NOVEMBRE 2024",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178698"
     },
     {
      "reference": "2024 DAC 4",
      "titre": "2024 DAC 4 - Contribution (2.000.000 euros) et avenant à convention avec l’établissement public de coopération culturelle \"La Maison des Métallos\" (11e).",
+     "genres": [
+      "autre"
+     ],
      "seance": "MAI 2024",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176269"
     }
@@ -833,6 +1172,9 @@
     {
      "reference": "1998 DAUC 213",
      "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Le Pavillon de l'Arsenal\" 3 conventions relatives respectivement : aux objectifs et missions de l'association et au versement d'une subvention par la Ville de Paris ; à la mise à disposition par la Ville de Paris de personnel au profit de l'association ; à la mise à disposition par la Ville de Paris de locaux municipaux au profit de l'association. M. Michel BULTE, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 1998",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92506"
     }
@@ -841,18 +1183,27 @@
     {
      "reference": "2000 DLTI 50",
      "titre": "Autorisation à M. le Maire de Paris de signer un marché négocié avec mise en concurrence et sans publicité pour la surveillance et la protection des locaux de l'association du \"Pavillon de l'Arsenal\" (4e). M. Paul AURELLI, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "JUILLET 2000",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50530"
     },
     {
      "reference": "2000 DPA 168",
      "titre": "Approbation du principe de la réalisation des travaux de dépose d'éléments de couverture et de mise en place de nouveaux revêtements sur le bâtiment administratif du Pavillon de l'Arsenal, 7-9, rue Agrippa-d'Aubigné (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "MAI 2000",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43243"
     },
     {
      "reference": "2000 DPA 306",
      "titre": "Approbation du principe de la maintenance des installations techniques et de sécurité dans le Pavillon de l'Arsenal (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "DECEMBRE 2000",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40882"
     }
@@ -861,6 +1212,9 @@
     {
      "reference": "2001 DPA 5",
      "titre": "Approbation du principe de la modernisation des verrières au Pavillon de l'Arsenal, 21, boulevard Morland (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Christian SAUTTER, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "AVRIL 2001",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=76403"
     }
@@ -869,12 +1223,18 @@
     {
      "reference": "2002 DAUC 209",
      "titre": "Subvention de fonctionnement au Pavillon de l'Arsenal 21, boulevard Morland (4e). M. Jean-Pierre CAFFET, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71131"
     },
     {
      "reference": "2002 DAUC 3",
      "titre": "Subvention de fonctionnement à l'association \"Pavillon de l'Arsenal\", 21, boulevard Morland (4e). MM. Christian SAUTTER et Jean-Pierre CAFFET, rapporteurs.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "FEVRIER 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58122"
     }
@@ -883,6 +1243,9 @@
     {
      "reference": "2003 DPA 332",
      "titre": "Autorisation à M. le Maire de Paris de souscrire 4 avenants de substitution relatifs aux marchés signés avec la Société SPIE TRINDEL, relatifs : - aux travaux de maintenance des installations techniques et de sécurité incendie au Pavillon de l'Arsenal (4e) ; - aux travaux de maintenance des installations relatives à la sécurité incendie dans divers bâtiments de la Ville de Paris ; - aux travaux de maintenance des installations techniques et de sécurité incendie du bâtiment administratif 17, boul",
+     "genres": [
+      "travaux"
+     ],
      "seance": "NOVEMBRE 2003",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94321"
     }
@@ -891,24 +1254,36 @@
     {
      "reference": "2004 DAC 543",
      "titre": "Autorisation à M. le Maire de Paris de signer avec l’Association Pavillon de l’Arsenal, dont le siège social est situé 21 boulevard Morland (4e) (D00055), une convention relative à l’attribution d’une subvention d’équipement d’un montant de 30.000 euros ainsi qu’un avenant à la convention du 27 janvier 1999 relatif à l’attribution d’une subvention complémentaire de fonctionnement d’un montant de 70.000 euros. Mme Sandrine MAZETIER, rapporteure.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2004",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87664"
     },
     {
      "reference": "2004 DU 15",
      "titre": "Subvention de fonctionnement au Pavillon de l'Arsenal (4e). M. Christian SAUTTER, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "FEVRIER 2004",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33981"
     },
     {
      "reference": "2004 DU 216",
      "titre": "Approbation d’un projet de convention entre la ville de Paris et l’association “Pavillon de l’Arsenal”, relatif au cadre des décisions annuelles d’attribution des subventions de la Ville de Paris au Pavillon de l’Arsenal, au regard de son programme annuel d’acti-vité. M. Christian SAUTTER, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2004",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87598"
     },
     {
      "reference": "2004 DU 217",
      "titre": "Subvention de fonctionnement au Pavillon de l’Arsenal (4e). M. Christian SAUTTER, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2004",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87752"
     }
@@ -917,6 +1292,9 @@
     {
      "reference": "2005 DU 231",
      "titre": "Subvention de fonctionnement au Pavillon de l’Arsenal, 21, boulevard Morland (4e). M. Christian SAUTTER, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2005",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32897"
     }
@@ -925,24 +1303,36 @@
     {
      "reference": "2006 DPA 298",
      "titre": "Autorisation à M. le Maire de Paris de signer avec l’association “Pavillon de l’Arsenal” une convention de prestations de services relative à l’installation d’expositions et la sonorisation de conférences. M. Christian SAUTTER, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "DECEMBRE 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91853"
     },
     {
      "reference": "2006 DU 196",
      "titre": "Subvention de fonctionnement pour 2007 au Pavillon de l’Arsenal 21, boulevard Morland (4e). M. Christian SAUTTER, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92340"
     },
     {
      "reference": "2006 DU 26",
      "titre": "2006, DU 26 - Modification de la convention pluriannuelle d’objectifs avec l’association “Pavillon de l’Arsenal”, relative au cadre des décisions annuelles d’attribution des subventions de la Ville de Paris au Pavillon de l’Arsenal, au regard de son programme annuel d’acti-vité.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "AVRIL 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16916"
     },
     {
      "reference": "2006 DU 26",
      "titre": "Modification de la convention pluriannuelle d’objectifs conclue entre la Ville de Paris et l’association “Pavillon de l’Arsenal”, relative au cadre des décisions annuelles d’attribution des subventions de la Ville de Paris au Pavillon de l’Arsenal, au regard de son programme annuel d’activité. M. Christian SAUTTER, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "AVRIL 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38650"
     }
@@ -951,12 +1341,18 @@
     {
      "reference": "2007 DALIAT 48",
      "titre": "Autorisation à M. le Maire de Paris de signer un avenant à la convention du 27 janvier 1999 avec l’association Pavillon de l’Arsenal situé 21 boulevard Morland et 7/9 rue Agrippa d’Aubigné (4e). M. François DAGNAUD, rapporteur.",
+     "genres": [
+      "autre"
+     ],
      "seance": "NOVEMBRE 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66034"
     },
     {
      "reference": "2007 DU 161",
      "titre": "Attribution d’une subvention de fonctionnement au Pavillon de l’Arsenal 21, boulevard Morland (4e). M. Christian SAUTTER, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54742"
     }
@@ -965,12 +1361,18 @@
     {
      "reference": "2008 DALIAT 30",
      "titre": "Autorisation à M. le Maire de Paris de signer une nouvelle convention avec le Pavillon de l’Arsenal, faisant suite à celle du 27 janvier 1999 et permettant la prise en compte des modèle types de conventions en vigueur au sein de la Ville, de faire supporter par l’association les charges nées de son occupation des locaux et de mettre à jour les surfaces occupées par le Pavillon de l’Arsenal sur les sites du 21 Bd Morland et 7/9 rue Agrippa d’Aubigné (4e). Mme Maïté ERRECART, rapporteure.",
+     "genres": [
+      "autre"
+     ],
      "seance": "NOVEMBRE 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61977"
     },
     {
      "reference": "2008 DU 149",
      "titre": "Subvention de fonctionnement pour 2009 au Pavillon de l’Arsenal 21, boulevard Morland (4e) et approbation du texte de la convention pluriannuelle d’objectifs. M. Bernard GAUDILLERE, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78172"
     }
@@ -979,12 +1381,18 @@
     {
      "reference": "2009 DU 150",
      "titre": "Signature d'un avenant à la convention avec l'association Pavillon de l'Arsenal pour l'attribution d'une subvention complémentaire. M. Bernard GAUDILLÈRE, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2009",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37041"
     },
     {
      "reference": "2009 DU 185",
      "titre": "Signature d’un avenant n°1 à la convention passée avec l’association Pavillon de l’Arsenal (4e) pour l’attribution d’une subvention. M. Bernard GAUDILLÈRE, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2009",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32235"
     }
@@ -993,6 +1401,9 @@
     {
      "reference": "2024 DU 60",
      "titre": "2024 DU 60 - Subvention au Pavillon de l’Arsenal au titre de l'année 2025. - Aide en nature dans le cadre de la mise à disposition temporaire de locaux communaux 21-27, rue des Blancs-Manteaux (Paris Centre).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "NOVEMBRE 2024",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178584"
     }
@@ -1001,12 +1412,18 @@
     {
      "reference": "2025 DICOM 5",
      "titre": "2025 DICOM 5 Convention de co-édition d'ouvrage avec le Pavillon de l'Arsenal relatif au Jardin du 13 novembre 2015.",
+     "genres": [
+      "autre"
+     ],
      "seance": "NOVEMBRE 2025",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184692"
     },
     {
      "reference": "2025 DU 105",
      "titre": "2025 DU 105 - Subvention à l’association \"Le Pavillon de l’Arsenal\" au titre de l’année 2026.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2025",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183748"
     }
@@ -1017,6 +1434,9 @@
     {
      "reference": "2016 DAC 43",
      "titre": "2016 DAC 43 - Subventions d’équipement (260.000 euros), avenant à la délégation de service public dans le cadre du programme d’investissement 2016-2017 de la société publique locale \"Le Carreau du Temple\" (3e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MARS 2016",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129289"
     }
@@ -1025,6 +1445,9 @@
     {
      "reference": "2021 DAC 57",
      "titre": "2021 DAC 57 - Avenant à la délégation de service public relative à la gestion et l’exploitation du Carreau du Temple et subventions d’investissement (50.000 euros) à la Société publique locale du Carreau du Temple.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "NOVEMBRE 2021",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164061"
     }
@@ -1035,6 +1458,9 @@
     {
      "reference": "2002 DAC 327",
      "titre": "Attribution d'une subvention de fonctionnement aux activités culturelles de la Fondation Nationale \"Cité Internationale Universitaire de Paris\", 19, boulevard Jourdan, 75690 Paris Cedex 14, pour le fonctionnement du Théâtre de la Cité internationale. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "OCTOBRE 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95334"
     }
@@ -1043,12 +1469,18 @@
     {
      "reference": "2003 DAC 250",
      "titre": "172 - 2003, DAC 250 - Subvention annuelle à la Fondation nationale dite \"Cité internationale universitaire de Paris\" (14e) pour le fonctionnement du \"Théâtre de la cité internationale\". - Montant : 100.000 euros",
+     "genres": [
+      "subvention"
+     ],
      "seance": "NOVEMBRE 2003",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21315"
     },
     {
      "reference": "2003 DAC 250",
      "titre": "Autorisation à M. le Maire de Paris de signer avec la Fondation Nationale dite \"Cité Internationale Universitaire de Paris\" (19, boulevard Jourdan - 75690 Paris Cedex 14) une convention triennale d'objectifs relative à l'attribution d'une subvention annuelle pour le fonctionnement du Théâtre de la Cité internationale. MM. David ASSOULINE et Christophe GIRARD, rapporteurs.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "NOVEMBRE 2003",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93695"
     }
@@ -1057,12 +1489,18 @@
     {
      "reference": "2004 DAC 343",
      "titre": "Autorisation à M. le Maire de Paris de signer avec la Fondation Nationale dite \"Cité Internationale Universitaire de Paris\", 19 boulevard Jourdan (14e), un avenant à la convention triennale d'objectifs du 22 décembre 2003 relative à l'attribution d'une subvention de fonctionnement pour le \"Théâtre de la Cité internationale\". M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "OCTOBRE 2004",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64040"
     },
     {
      "reference": "2004 DAC 356",
      "titre": "Autorisation à M. le Maire de Paris de signer 4 avenants aux conventions relatives à l'attribution de subventions de fonctionnement pour les associations et la fondation suivantes : Maison de la Poésie (3e), Les Athévains (4e), Fondation nationale dite Cité internationale universitaire de Paris pour le Théâtre de la Cité internationale (14e) ; Théâtre Silvia Monfort (15e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "OCTOBRE 2004",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64268"
     }
@@ -1071,6 +1509,9 @@
     {
      "reference": "2005 DAC 29",
      "titre": "Autorisation à M. le Maire de Paris de signer avec la Fondation Nationale “Cité internationale universitaire de Paris”, 19, boulevard Jourdan (14e), un avenant à la convention triennale d’objectifs du 22 décembre 2003 relative à l’attribution d’une subvention de fonctionnement pour le “Théâtre de la Cité internationale”. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MARS 2005",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26400"
     }
@@ -1079,6 +1520,9 @@
     {
      "reference": "2006 DAC 79",
      "titre": "Autorisation à M. le Maire de Paris de signer avec la Fondation Nationale “Cité internationale universitaire de Paris” (14e) un avenant à la convention triennale d’objectifs du 22 décembre 2003 relative à l’attribution d’une subvention de fonctionnement pour le “Théâtre de la Cité internationale”. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MAI 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88828"
     }
@@ -1087,12 +1531,18 @@
     {
      "reference": "2007 DAC 18",
      "titre": "Autorisation à M. le Maire de Paris de signer avec la Fondation Nationale “Cité Internationale Universitaire de Paris”, 19, boulevard Jourdan (14e), une convention triennale d’objectifs 2007-2009 relative à l’attribution d’une subvention de fonctionnement pour le “Théâtre de la Cité Internationale”. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MARS 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31583"
     },
     {
      "reference": "2007 DAC 318",
      "titre": "Autorisation à M. le Maire de Paris de signer avec la Fondation Nationale “Cité Internationale Universitaire de Paris” (14e) un avenant à la convention triennale d’objectifs 2007-2009 relatif à l’attribution d’une subvention de fonctionnement pour le “Théâtre de la Cité Internationale” dans le cadre de la politique de la ville. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "OCTOBRE 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53803"
     }
@@ -1101,6 +1551,9 @@
     {
      "reference": "2008 DAC 188",
      "titre": "Subvention à l’association “Compagnie Air de Lune” pour le spectacle l’Opérette diffusé au Théâtre de la Cité Internationale (14e) en 2008. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUIN 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68562"
     }
@@ -1111,12 +1564,18 @@
     {
      "reference": "1997 DAC 49",
      "titre": "Subvention d'investissement au Théâtre de la Ville (4e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUILLET 1997",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78752"
     },
     {
      "reference": "1997 DAC 59",
      "titre": "Subvention d'investissement à l'association \"Théâtre de la Ville\" pour l'équipement du Théâtre des Abbesses (18e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "NOVEMBRE 1997",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49740"
     }
@@ -1125,6 +1584,9 @@
     {
      "reference": "1998 DPA 284",
      "titre": "Approbation du principe de la réalisation des travaux de mises aux normes des installations de sécurité-incendie et du monte-décor au Théâtre de la Ville (4e). - Approbation des modalités d'attribution des marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Hélène MACE de LEPINAY, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "DECEMBRE 1998",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57338"
     }
@@ -1133,12 +1595,18 @@
     {
      "reference": "1999 DPA 131",
      "titre": "Approbation du principe de la réalisation des travaux de restauration de la façade sur le quai de Gesvres du Théâtre de la Ville (4e). - Autorisation à M. le Maire de Paris de déposer la demande de permis de construire pour l'opération susvisée. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "JUIN 1999",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75816"
     },
     {
      "reference": "1999 DPA 190",
      "titre": "Approbation des modalités d'attribution du marché de travaux relatif à la restauration de la façade sur quai de Gesvres du Théâtre de la Ville (4e). - Autorisation à M. le Maire de Paris de signer le marché de travaux correspondant. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "SEPTEMBRE 1999",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83950"
     }
@@ -1147,12 +1615,18 @@
     {
      "reference": "2000 DPA 51",
      "titre": "Approbation du principe de la réalisation des travaux de mise aux normes du service machinerie au Théâtre de la Ville (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "FEVRIER 2000",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51330"
     },
     {
      "reference": "2000 DPA 79",
      "titre": "Approbation du principe de la réalisation de travaux de rénovation de la sous-station vapeur et de mise en conformité des locaux techniques de production de froid au Théâtre de la Ville (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "MAI 2000",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43204"
     }
@@ -1161,18 +1635,27 @@
     {
      "reference": "2002 DAC 106",
      "titre": "49 - 2002, DAC 106 - Autorisation à M. le Maire de Paris de signer avec l'association \"Théâtre de la Ville\" (4e) une convention relative à l'attribution d'une subvention d'équipement. - Montant : 243.919 euros",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MARS 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7459"
     },
     {
      "reference": "2002 DAC 41",
      "titre": "36 - 2002, DAC 41 - Autorisation à M. le Maire de Paris de signer avec l'association \"Théâtre de la ville\" (4e) une convention relative à l'attribution d'une subvention de fonctionnement. - Montant : 9.895.868 euros",
+     "genres": [
+      "subvention"
+     ],
      "seance": "FEVRIER 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12582"
     },
     {
      "reference": "2002 DPA 35",
      "titre": "Approbation du principe de réalisation des travaux de restauration de façades au Théâtre de la Ville situé 2, place du Châtelet (4e), et des modalités d'attribution du marché négocié de maîtrise d'œuvre correspondant. Autorisation à M. le Maire de Paris de signer ledit marché. Autorisation à M. le Maire de Paris de déposer la demande de permis de construire pour la réalisation de l'opération susvisée. Mme Sandrine MAZETIER, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "MARS 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38934"
     }
@@ -1181,6 +1664,9 @@
     {
      "reference": "2003 DPA 152",
      "titre": "Approbation des modalités de passation du marché de travaux relatif à la restauration des façades au Théâtre de la Ville situé 2, place du Châtelet (4e). - Autorisation à M. le Maire de Paris de signer ledit marché. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "AVRIL 2003",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89595"
     }
@@ -1189,18 +1675,27 @@
     {
      "reference": "2004 DAC 11",
      "titre": "72 - 2004, DAC 11 - Subvention de fonctionnement de 10.000.000 euros et subvention d'équipement de 200.000 euros à l'association \"Théâtre de la Ville\" (4e)",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MARS 2004",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11803"
     },
     {
      "reference": "2004 DPA 135",
      "titre": "Approbation du principe de la réalisation des travaux de mise en sécurité des ouvrages vitrés de la façade principale au Théâtre de la Ville (4e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "AVRIL 2004",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51914"
     },
     {
      "reference": "2004 DPA 48",
      "titre": "Approbation du principe de réalisation des travaux de modernisation du poste haute tension au Théâtre de la Ville situé 2, place du Châtelet (4e), et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "MARS 2004",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57788"
     }
@@ -1209,6 +1704,9 @@
     {
      "reference": "2005 DPA 93",
      "titre": "Approbation du principe de réalisation des travaux de restauration de la façade rue Adolphe Adam au Théâtre de la Ville situé 2, place du Châtelet (4e), et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de déposer la demande de permis de construire pour la réalisation de l’opération susvisée. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "AVRIL 2005",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43604"
     }
@@ -1217,6 +1715,9 @@
     {
      "reference": "2006 DPA 59",
      "titre": "Approbation du principe de réalisation des travaux de mise aux normes de la gradation de l’éclairage scénique au Théâtre de la Ville sis 2, place du Châtelet (4e) et des modalités de passation du marché de travaux correspondant. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "FEVRIER 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27798"
     }
@@ -1225,6 +1726,9 @@
     {
      "reference": "2008 DAC 48",
      "titre": "2008, DAC 48 - Signature d’une convention et d’un troisième avenant à la convention-cadre 2006-2008, relatifs à l’attribution de deux subventions à l’association “Théâtre de la Ville” pour assurer le fonctionnement et l’équipement du Théâtre de la Ville (4e) et du Théâtre des Abbesses (18e). - Montants : 5.200.000 euros (fonctionnement et 300.000 euros équipement).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUILLET 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13772"
     }
@@ -1233,6 +1737,9 @@
     {
      "reference": "2009 DAC 62",
      "titre": "2009, DAC 62 - Signature d'une convention relative à l'attribution d'une subvention à l'association Théâtre de la Ville.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "FEVRIER 2009",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21020"
     }
@@ -1241,6 +1748,9 @@
     {
      "reference": "2013 DAC 673",
      "titre": "2013 DAC 673 - Subvention (300.000 euros) et convention avec l'association Théâtre de la Ville (4e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "NOVEMBRE 2013",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116546"
     }
@@ -1249,6 +1759,10 @@
     {
      "reference": "2015 DAC 200",
      "titre": "2015 DAC 200 - Subventions (5.825.000 euros) et avenants avec l’association \"Théâtre de la Ville\" (4e et 18e). 2015 DPA 34 - Théâtre de la Ville 2, place du Châtelet (4e) - Rénovation partielle - Autorisation à la Maire de Paris de prendre toute décision concernant l'opération. Vœu déposé par le GEP relatif aux travaux aux théâtres du Châtelet et de la Ville. Vœu déposé par l'Exécutif.",
+     "genres": [
+      "subvention",
+      "travaux"
+     ],
      "seance": "MAI 2015",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125471"
     }
@@ -1257,12 +1771,18 @@
     {
      "reference": "2019 DAC 80",
      "titre": "2019 DAC 80 - Convention d’occupation du domaine public relative à l’installation et à l’exploitation d’un espace d’affichage sur l’échafaudage de restauration du Théâtre de la Ville (4e).",
+     "genres": [
+      "travaux"
+     ],
      "seance": "SEPTEMBRE 2019",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152349"
     },
     {
      "reference": "2019 DAC 86",
      "titre": "2019 DAC 86 - Subvention (11.595.000 euros) et avenant à convention avec l’association Théâtre de la Ville (4e, 8e, 18e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2019",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=175620"
     }
@@ -1271,6 +1791,9 @@
     {
      "reference": "2021 DAC 58",
      "titre": "2021 DAC 58 - Subvention d’investissement (600.000 euros) et convention avec l’association \"Théâtre de la Ville\" (Paris centre, 8e, 18e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2021",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164306"
     }
@@ -1279,6 +1802,9 @@
     {
      "reference": "2022 DAC 58",
      "titre": "2022 DAC 58 - Subvention d’investissement (850.000 euros) et avenant avec l’association \"Théâtre de la Ville\" (Paris Centre, 8e, 18e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2022",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168024"
     }
@@ -1287,18 +1813,27 @@
     {
      "reference": "2023 DAC 18",
      "titre": "2023 DAC 18 - Subventions (13.650. 000 euros) et avenants à convention de fonctionnement et d'investissement avec l'association \"Théâtre de la Ville\".",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MARS 2023",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168429"
     },
     {
      "reference": "2023 DAC 451",
      "titre": "2023 DAC 451 - Convention d’occupation du domaine public et bail civil avec l’association \"Théâtre de la Ville\" (Paris Centre).",
+     "genres": [
+      "autre"
+     ],
      "seance": "MARS 2023",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168369"
     },
     {
      "reference": "2023 DAC 454",
      "titre": "2023 DAC 454 - Convention d’occupation du domaine public et bail civil avec l’association \"Théâtre de la Ville\" (Paris Centre).",
+     "genres": [
+      "autre"
+     ],
      "seance": "JUIN 2023",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=169808"
     }
@@ -1307,12 +1842,18 @@
     {
      "reference": "2024 DAC 65",
      "titre": "2024 DAC 65 - Subvention (500.000 euros) et avenant à convention avec l’association \"Théâtre de la Ville\" (Paris Centre et 18e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUIN 2024",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176451"
     },
     {
      "reference": "2024 DAC 69",
      "titre": "2024 DAC 69 - Subventions (13.500.000 euros) et avenants à convention avec l’association \"Théâtre de la Ville\" (Paris Centre, 18e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "NOVEMBRE 2024",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178591"
     }
@@ -1323,12 +1864,18 @@
     {
      "reference": "1999 DAC 27",
      "titre": "Subvention au Théâtre du Rond-Point - Compagnie Marcel-Maréchal (8e). Mme Hélène MACE de LEPINAY, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "FEVRIER 1999",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59148"
     },
     {
      "reference": "1999 DFAE 153",
      "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant à la convention signée le 2 juin 1980 avec l'Etat (Ministère de la Culture et de la Communication) portant attribution du droit à l'occupation du Théâtre du Rond-Point (8e). M. Jean-François LEGARET, rapporteur.",
+     "genres": [
+      "autre"
+     ],
      "seance": "DECEMBRE 1999",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51870"
     }
@@ -1337,6 +1884,9 @@
     {
      "reference": "2000 DFAE 96",
      "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant à la convention d'occupation du Théâtre du Rond-Point (8e) en vue de proroger sa durée. M. Jean-François LEGARET, rapporteur.",
+     "genres": [
+      "autre"
+     ],
      "seance": "NOVEMBRE 2000",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88408"
     }
@@ -1345,24 +1895,37 @@
     {
      "reference": "2002 DAC 179",
      "titre": "Autorisation à M. le Maire de Paris de signer avec la S.A.R.L. \"Théâtre du Rond-Point\" une convention relative à l'attribution d'une subvention d'équipement. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "AVRIL 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73713"
     },
     {
      "reference": "2002 DAC 259",
      "titre": "Autorisation à M. le Maire de Paris de signer un avenant à la convention du 10 avril 2002 relative à l'attribution d'une subvention de fonctionnement à la SARL \"Théâtre du Rond-Point\", 2 bis, avenue Franklin D. Roosevelt (8e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUILLET 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87949"
     },
     {
      "reference": "2002 DAC 259",
      "titre": "97 - 2002, DAC 259 - Autorisation à M. le Maire de Paris de souscrire un avenant à la convention signée avec la S.A.R.L. \"Théâtre du Rond-Point\" (8e) pour l'attribution d'une subvention. - Montant : 225.000 euros.2002, DPA 295 - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres pour la modernisation et la restauration du Petit Palais - musée des Beaux-Arts de la Ville de Paris (8e)",
+     "genres": [
+      "subvention",
+      "travaux"
+     ],
      "seance": "JUILLET 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7935"
     },
     {
      "reference": "2002 DAC 29",
      "titre": "Autorisation à M. le Maire de Paris de signer avec la S.A.R.L. \"Théâtre du Rond-Point\" (8e) une convention relative à l'attribution d'une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MARS 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39032"
     }
@@ -1371,6 +1934,9 @@
     {
      "reference": "2003 DAC 20",
      "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l'attribution d'une subvention de fonctionnement à la S.A.R.L. \"Théâtre du Rond-Point\", 2 bis, avenue Franklin-D.-Roosevelt (8e) (D03295). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MARS 2003",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68802"
     }
@@ -1379,6 +1945,9 @@
     {
      "reference": "2004 DAC 3",
      "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l'attribution d'une subvention de fonctionnement à la SARL \"Théâtre du Rond-Point\", 2 bis, avenue Franklin-D.-Roosevelt (8e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MARS 2004",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57864"
     }
@@ -1387,24 +1956,37 @@
     {
      "reference": "2005 DAC 208",
      "titre": "Autorisation à M. le Maire de Paris de solliciter auprès de l’Etat une subvention pour la réalisation de travaux de mise aux normes au Théâtre du Rond-Point, 2 bis avenue Franklin D. Roosevelt (8e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention",
+      "travaux"
+     ],
      "seance": "OCTOBRE 2005",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26054"
     },
     {
      "reference": "2005 DAC 236",
      "titre": "Autorisation à M. le Maire de Paris de signer une convention pour l’occupation du Théâtre du Rond-Point, 2bis, avenue Franklin D. Roosevelt à Paris 8ème avec la SARL “Théâtre du Rond-Point” et une convention d’exploitation du Théâtre du Rond-Point avec la SARL “Théâtre du Rond-Point” et l’Etat - Ministère de la culture et de la communication. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "autre"
+     ],
      "seance": "AVRIL 2005",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43876"
     },
     {
      "reference": "2005 DAC 56",
      "titre": "Autorisation à M. le Maire de Paris de signer deux conventions relatives à l’attribution d’une subvention de fonctionnement et d’une subvention d’équipement exceptionnelle à la SARL “Théâtre du Rond-Point”, 2 bis, avenue Franklin-D. Roosevelt (8e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "AVRIL 2005",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43779"
     },
     {
      "reference": "2005 DAC 649",
      "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l’attribution d’une subvention d’équipement exceptionnelle à la SARL “Théâtre du Rond-Point”, 2 bis, avenue Franklin D. Roosevelt (8e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "NOVEMBRE 2005",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90920"
     }
@@ -1413,18 +1995,27 @@
     {
      "reference": "2006 DAC 69",
      "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l’attribution d’une subvention de fonctionnement à la SARL “Théâtre du Rond-Point” (8e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "AVRIL 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38721"
     },
     {
      "reference": "2006 DAC 720",
      "titre": "SGRI 89 - Autorisation à M. le Maire de Paris de signer une convention relative à l’attribution d’une subvention de fonctionnement à la SARL “Théâtre du Rond-Point”, 2 bis, avenue Franklin D. Roosevelt (8e). MM. Christophe GIRARD et Pierre SCHAPIRA, rapporteurs.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92228"
     },
     {
      "reference": "2006 DPA 138",
      "titre": "Approbation du principe de réalisation des travaux de modernisation du théâtre du Rond Point sis 2 bis avenue Franklin Roosevelt (8ème) et des modalités de passation du marché de maîtrise d’œuvre correspondant.- Autorisation à M. le Maire de Paris de déposer les demandes de permis de démolir et de construire pour la réalisation de l’opération susvisée. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "JUIN 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44331"
     }
@@ -1433,18 +2024,27 @@
     {
      "reference": "2007 DAC 538",
      "titre": "Autorisation à M. le Maire de Paris de signer une convention pour l’occupation du Théâtre du Rond-Point, 2 bis avenue Franklin D. Roosevelt (8e) avec la SARL “Théâtre du Rond-Point”. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "autre"
+     ],
      "seance": "OCTOBRE 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53300"
     },
     {
      "reference": "2007 DAC 64",
      "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l’attribution d’une subvention de fonctionnement de 1.775.000 euros à la SARL “Théâtre du Rond-Point”, 2 bis avenue Franklin D. Roosevelt (8e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MARS 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31653"
     },
     {
      "reference": "2007 DPA 302",
      "titre": "Approbation des modalités de passation de deux marchés de travaux relatifs à la modernisation du théâtre du Rond Point sis 2 bis, avenue Franklin D. Roosevelt (8e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "DECEMBRE 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54552"
     }
@@ -1453,24 +2053,38 @@
     {
      "reference": "2008 DAC 112",
      "titre": "Signature d’un avenant à la convention du 4 janvier 2008 avec la SARL “Théâtre du Rond-Point” (8e) pour l’attribution d’une subvention de 997.500 euros et signature d’une convention relative à l’attribution d’une subvention d’équipement de 68.900 euros. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67140"
     },
     {
      "reference": "2008 DAC 352",
      "titre": "Demande de subvention à l’Etat pour la réalisation de travaux de rénovation au “Théâtre du Rond-Point” (8é). Montant 1.154.477 euros. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention",
+      "travaux"
+     ],
      "seance": "JUIN 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68748"
     },
     {
      "reference": "2008 DAC 352",
      "titre": "2008, DAC 352 - Demande de subvention à l’Etat pour la réalisation de travaux de rénovation au “Théâtre du Rond-Point” (8e). - Montant : 1.134.238 euros. Vœu déposé par M. François LEBEL.",
+     "genres": [
+      "subvention",
+      "travaux"
+     ],
      "seance": "JUIN 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14766"
     },
     {
      "reference": "2008 DAC 410",
      "titre": "Subvention à l’association “BCDV Théâtre” pour le spectacle Perthus présenté au Théâtre du Rond-Point (8e) en 2008. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "OCTOBRE 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42692"
     }
@@ -1479,12 +2093,19 @@
     {
      "reference": "2009 DAC 304",
      "titre": "Demande de subvention à l’Etat pour la réalisation de travaux de rénovation au “Théâtre du Rond-Point” (8e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention",
+      "travaux"
+     ],
      "seance": "JUIN 2009",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77563"
     },
     {
      "reference": "2009 DAC 46",
      "titre": "Signature d’un avenant à la convention du 27 février 2009 avec la SARL “Théâtre du Rond-Point” (8e) pour l’attribution d’une subvention. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "AVRIL 2009",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64628"
     }
@@ -1493,6 +2114,9 @@
     {
      "reference": "2010 DAC 40",
      "titre": "Signature d’un avenant à la convention du 4 janvier 2010 avec la SARL Théâtre du Rond-Point (8e) pour l’attribution d’une subvention. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MAI 2010",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35570"
     }
@@ -1501,6 +2125,9 @@
     {
      "reference": "2020 DAC 40",
      "titre": "2020 DAC 40 - Subvention (2.350.000 euros) et avenant à convention avec la SARL Théâtre du Rond-Point (8e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUILLET 2020",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156121"
     }
@@ -1509,6 +2136,9 @@
     {
      "reference": "2024 DAC 9",
      "titre": "2024 DAC 9 - Subvention (2.190.000 euros) et avenant à convention avec la S.A.R.L. théâtre du Rond-Point (8e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MAI 2024",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176056"
     }
@@ -1519,6 +2149,9 @@
     {
      "reference": "2002 DAC 311",
      "titre": "Attribution d'une subvention de fonctionnement au Théâtre de l'Aquarium, au Théâtre du Chaudron, au Théâtre de l'Epée de Bois et à l'Association de recherche et de Traditions de l'Acteur (ARTA). - Autorisation à M. le Maire de Paris de signer avec la SCOP \"Le Théâtre du Soleil\" une convention relative à l'attribution d'une subvention de fonctionnement. - Autorisation à M. le Maire de Paris de signer avec l'association \"Ateliers de Paris - Carolyn Carlson\", un avenant à la convention du 15 avril",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71459"
     }
@@ -1527,6 +2160,9 @@
     {
      "reference": "2003 DAC 422",
      "titre": "Attribution d'une subvention de fonctionnement à l'association \"Théâtre de l'Aquarium\", à l'association \"Théâtre du Chaudron,\" à la SARL Théâtre de l'Epée-de-Bois, à la SARL \"Théâtre de la Tempête\" et à l'Association de recherche des Traditions de l'Acteur (ARTA) - l'Ecole de la Cartoucherie. - Autorisation à M. le Maire de Paris de signer avec la SCOP \"Théâtre du soleil\" une convention relative à l'attribution d'une subvention de fonctionnement. - Autorisation à M. le Maire de Paris de signer a",
+     "genres": [
+      "subvention"
+     ],
      "seance": "NOVEMBRE 2003",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94364"
     }
@@ -1535,6 +2171,9 @@
     {
      "reference": "2008 DAC 323",
      "titre": "Subvention à l’association “L’Instant d’une Résonance” pour le spectacle Peines d’amour perdues présenté au Théâtre du Soleil à la Cartoucherie (12e) en 2008. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67454"
     }
@@ -1543,6 +2182,9 @@
     {
      "reference": "2009 DAC 262",
      "titre": "SGRI 34 - Subvention au Théâtre du Soleil (12e) au titre de ses actions dans le domaine du développement culturel. M. Christophe GIRARD et M. Pierre SCHAPIRA, rapporteurs.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUILLET 2009",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74724"
     }
@@ -1551,6 +2193,9 @@
     {
      "reference": "2010 DAC 159",
      "titre": "Signature avec la SCOP Théâtre du Soleil d’une convention relative à l’attribution d’une subvention d’équipement. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MARS 2010",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44802"
     }
@@ -1559,6 +2204,9 @@
     {
      "reference": "2023 DGRI 49",
      "titre": "2023 DGRI 49 - Subvention (32.200 euros) au Théâtre du Soleil et convention pour l’organisation d’une école nomade à Kyiv.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUILLET 2023",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=170393"
     }
@@ -1567,6 +2215,9 @@
     {
      "reference": "2025 DAC 67",
      "titre": "2025 DAC 67 Subvention de fonctionnement (75.000 euros) et convention avec le Théâtre du Soleil (12e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "NOVEMBRE 2025",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184676"
     }
@@ -1577,6 +2228,10 @@
     {
      "reference": "1996 D 467",
      "titre": "96 - 1996, D. 467- Subvention d'investissement au Théâtre musical de Paris-Châtelet (1er). 1996, D. 537- Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres ou un marché négocié, dans l'hypothèse où l'appel d'offres serait déclaré infructueux, en vue de la réalisation des travaux de sécurité incendie au Théâtre du Châtelet (1er).",
+     "genres": [
+      "subvention",
+      "travaux"
+     ],
      "seance": "MAI 1996",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8506"
     }
@@ -1585,6 +2240,9 @@
     {
      "reference": "1997 DAC 52",
      "titre": "Subvention d'investissement au Théâtre musical de Paris-Châtelet (1er). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "OCTOBRE 1997",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52935"
     }
@@ -1593,24 +2251,36 @@
     {
      "reference": "1998 DPA 138",
      "titre": "Autorisation à M. le Maire de Paris de déposer une demande de permis de démolir et de permis de construire en vue de la rénovation du hall d'accès principal, façade place du Châtelet, et de divers travaux d'aménagement destinés notamment à améliorer l'accès des personnes handicapées au Théâtre musical de Paris (1er). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "AVRIL 1998",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44178"
     },
     {
      "reference": "1998 DPA 165",
      "titre": "Approbation du principe de la réalisation des travaux de réfection des cages d'escalier, des sanitaires et divers travaux d'aménagement au Théâtre musical de Paris (1er). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACE de LEPINAY, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "SEPTEMBRE 1998",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92606"
     },
     {
      "reference": "1998 DPA 166",
      "titre": "Approbation du principe de la réalisation des travaux de réfection des circulations d'accès à la salle et de la remise en état de la terrasse du foyer public au Théâtre musical de Paris (1er). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACE de LEPINAY, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "SEPTEMBRE 1998",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92760"
     },
     {
      "reference": "1998 DPA 190",
      "titre": "Approbation du principe de la réalisation de différents travaux d'appropriation et de remise en état dans l'enceinte du théâtre et de restauration de façades au Théâtre musical de Paris (1er). - Approbation des modalités d'attribution des 3 marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. - Autorisation à M. le Maire de Paris de déposer une demande de permis de construire relatif aux travaux de restauration de façades. Mme Hélène MACE de LEPINAY",
+     "genres": [
+      "travaux"
+     ],
      "seance": "SEPTEMBRE 1998",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92472"
     }
@@ -1619,18 +2289,27 @@
     {
      "reference": "1999 DAC 121",
      "titre": "42 - 1999, DAC 121 - Autorisation à M. le Maire de Paris de signer une convention de mise à disposition de personnel municipal à l'association \"Théâtre musical de Paris-Châtelet\" (1er)",
+     "genres": [
+      "autre"
+     ],
      "seance": "JUILLET 1999",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24560"
     },
     {
      "reference": "1999 DAC 121",
      "titre": "Autorisation à M. le Maire de Paris de signer une convention de mise à disposition de personnel municipal à l'association \"Théâtre musical de Paris-Châtelet\" (1er). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+     "genres": [
+      "autre"
+     ],
      "seance": "JUILLET 1999",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85603"
     },
     {
      "reference": "1999 DPA 130",
      "titre": "Approbation du principe de la réalisation des travaux de restauration des façades situées avenue Victoria et rue Edouard-Colonne au Théâtre musical de Paris (1er). - Autorisation à M. le Maire de Paris de déposer la demande de permis de construire pour l'opération susvisée. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+     "genres": [
+      "travaux"
+     ],
      "seance": "JUIN 1999",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75896"
     }
@@ -1639,6 +2318,9 @@
     {
      "reference": "2001 DASCO 30",
      "titre": "G - Subvention au Théâtre Musical de Paris/Châtelet. - Signature d'une convention en vue de financer la production en mai 2002 du spectacle \"l'Enfant et les sortilèges\" de Ravel réalisé en collaboration avec le Rectorat de Paris. M. Eric FERRAND, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "NOVEMBRE 2001",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57114"
     }
@@ -1647,12 +2329,18 @@
     {
      "reference": "2002 DAC 64",
      "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Théâtre musical de Paris-Châtelet (1er) 2 conventions relatives respectivement à la réalisation de son projet artistique 2002 et au renouvellement de l'équipement de certains matériels au Théâtre du Châtelet, 22, rue Edouard-Colonne (1er). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "autre"
+     ],
      "seance": "FEVRIER 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58005"
     },
     {
      "reference": "2002 DAC 64",
      "titre": "31 - 2002, DAC 64 - Autorisation à M. le Maire de Paris de signer avec l'association \"Théâtre musical Paris - Châtelet\" (1er) 2 conventions, l'une relative à l'attribution d'une subvention de fonctionnement, l'autre relative à l'attribution d'une subvention d'équipement. - Montant :16.536.225 euros",
+     "genres": [
+      "subvention"
+     ],
      "seance": "FEVRIER 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12527"
     }
@@ -1661,6 +2349,9 @@
     {
      "reference": "2003 DAC 54",
      "titre": "183 - 2003, DAC 54 - Autorisation à M. le Maire de Paris de signer avec l'association \"Théâtre musical de Paris\" (1er) 2 conventions, l'une relative à l'attribution d'une subvention de fonctionnement de 17.046.200 euros, l'autre relative à l'attribution d'une subvention d'équipement de 219.500 euros",
+     "genres": [
+      "subvention"
+     ],
      "seance": "AVRIL 2003",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18526"
     }
@@ -1669,6 +2360,9 @@
     {
      "reference": "2006 DAC 356",
      "titre": "2006, DAC 356 - Autorisation à M. le Maire de Paris de souscrire un avenant à la convention signée avec l’association “Théâtre Musical de Paris” située 2, rue Edouard-Colonne (1er), relative à l’attribution d’une subvention exceptionnelle de fonctionnement. Montant : 410.000 euros.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "OCTOBRE 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19144"
     }
@@ -1677,6 +2371,9 @@
     {
      "reference": "2007 DAC 86",
      "titre": "2007, DAC 86 - Autorisation à M. le Maire de Paris de signer avec l’association “Théâtre musical de Paris”, dont le siège social est situé 2, rue Edouard-Colonne (1er), deux conventions annuelles, l’une relative à l’attribution d’une subvention de fonctionnement de 17.446.000 euros, l’autre relative à l’attribution d’une subvention d’équipement de 200.000 euros.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MARS 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22470"
     }
@@ -1685,6 +2382,9 @@
     {
      "reference": "2008 DAC 289",
      "titre": "2008, DAC 289 - Signature avec l'association \"Théâtre musical de Paris\" (1er) d'un avenant à la convention annuelle relative à l'attribution d'une subvention de fonctionnement de 9.023.000 euros et d'une convention annuelle relative à l'attribution d'une subvention d'équipement de 400.000 euros.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "OCTOBRE 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16702"
     }
@@ -1693,12 +2393,18 @@
     {
      "reference": "2009 DAC 53",
      "titre": "Signature avec l’association “Théâtre Musical de Paris” (Théâtre du Châtelet) du 1er avenant à la convention annuelle d’objectifs relative à l’attribution d’une subvention de fonctionnement au titre de 2009 et d’une convention relative à une subvention d’équipement. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUIN 2009",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77441"
     },
     {
      "reference": "2009 DAC 53",
      "titre": "2009, DAC 53 - Signature avec l'association \"Théâtre Musical de Paris\" (Théâtre du Châtelet) (1er) d'un avenant à la convention annuelle d'objectifs relative à l'attribution d'une subvention de fonctionnement au titre de 2009 et d'une convention relative à une subvention d'équipement. - Montant total : 9.273.000 euros.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUIN 2009",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5727"
     }
@@ -1707,6 +2413,9 @@
     {
      "reference": "2010 DAC 12",
      "titre": "Signature avec l’association Théâtre Musical de Paris - Théâtre du Châtelet d’un avenant et d’une convention pour l’attribution de subventions au titre de 2010. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2010",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39258"
     }
@@ -1715,6 +2424,9 @@
     {
      "reference": "2013 DAC 192",
      "titre": "2013 DAC 192 - Subventions (8.573.000 euros), avenant et convention avec l'association \"Théâtre Musical de Paris-Châtelet\" (1er).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUILLET 2013",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=114842"
     }
@@ -1723,6 +2435,9 @@
     {
      "reference": "2016 DAC 127",
      "titre": "2016 DAC 127 - Subvention (7.123.000 euros) et avenant avec l’association \"Théâtre musical de Paris Châtelet\" (1er).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2016",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=132424"
     }
@@ -1731,12 +2446,18 @@
     {
      "reference": "2018 DAC 190",
      "titre": "2018 DAC 190 - Convention d’occupation du domaine public avec l’association \"Théâtre musical de Paris-Châtelet\" pour l’organisation d’un événement culturel à l’hiver 2019.",
+     "genres": [
+      "autre"
+     ],
      "seance": "DECEMBRE 2018",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=147046"
     },
     {
      "reference": "2018 DAC 74",
      "titre": "2018 DAC 74 - Convention tripartite de mécénat avec la Fondation du Patrimoine et l’association Théâtre Musical de Paris pour le financement des travaux du Théâtre du Châtelet (1er).",
+     "genres": [
+      "travaux"
+     ],
      "seance": "NOVEMBRE 2018",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146544"
     }
@@ -1745,6 +2466,9 @@
     {
      "reference": "2019 DAC 183",
      "titre": "2019 DAC 183 - Convention avec l'association Théâtre musical de Paris relative à la participation d'amateurs à des représentations de spectacles. Vœu déposé par le groupe Démocrates et Progressistes relatif au projet artistique du Théâtre du Châtelet.",
+     "genres": [
+      "autre"
+     ],
      "seance": "SEPTEMBRE 2019",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152290"
     }
@@ -1753,6 +2477,9 @@
     {
      "reference": "2020 DAC 105",
      "titre": "2020 DAC 105 - Subvention (15.800.000 euros) et 2e avenant avec l’association Théâtre Musical de Paris (1er). Vœu déposé par le groupe Changer Paris relatif à la publication de l'audit sur la gestion du Théâtre du Châtelet. Vœu déposé par le groupe Changer Paris relatif à l’avenir du théâtre du Châtelet.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "OCTOBRE 2020",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156363"
     }
@@ -1761,12 +2488,18 @@
     {
      "reference": "2022 DAC 110",
      "titre": "2022 DAC 110 - Convention d'occupation du domaine public avec l'association \"Théâtre musical de Paris\" (Paris centre).",
+     "genres": [
+      "autre"
+     ],
      "seance": "OCTOBRE 2022",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=167278"
     },
     {
      "reference": "2022 DAC 115",
      "titre": "2022 DAC 115 - Subvention (14.192.000 euros) et avenant avec l’association \"Théâtre musical de Paris\" (Paris Centre). Vœu déposé par le groupe Changer Paris relatif à la direction artistique du théâtre du Châtelet.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUILLET 2022",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=165192"
     }
@@ -1775,6 +2508,9 @@
     {
      "reference": "2023 DAC 92",
      "titre": "2023 DAC 92 - Subvention (15.320.000 euros) et avenant avec l’association \"Théâtre Musical de Paris\" (Paris Centre).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUILLET 2023",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=170495"
     }
@@ -1785,6 +2521,9 @@
     {
      "reference": "2001 DAC 47",
      "titre": "Subvention à l'association \"Théâtre en Seine\", Morey (Saône-et-Loire) pour la présentation d'une pièce au \"Théâtre Paris-Villette\" (19e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "AVRIL 2001",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=76312"
     }
@@ -1793,12 +2532,18 @@
     {
      "reference": "2002 DAC 289",
      "titre": "Autorisation à M. le Maire de Paris de signer un avenant à la convention du 9 avril 2002 relative à l'attribution d'une subvention de fonctionnement à la SARL Société de Production et de Gestion Théâtrales, 211, Avenue Jean-Jaurès - 75019 Paris, pour le fonctionnement du Théâtre Paris-Villette (D 02105). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29676"
     },
     {
      "reference": "2002 DAC 45",
      "titre": "Autorisation à M. le Maire de Paris de signer une convention avec la S.A.R.L. \"Société de Production et de Gestion Théâtrales\" pour le Théâtre Paris-Villette (19e) relative à l'attribution d'une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MARS 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39050"
     }
@@ -1807,6 +2552,9 @@
     {
      "reference": "2003 DAC 25",
      "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l'attribution d'une subvention de fonctionnement à la S.A.R.L. \"Société de production et de gestion théâtrales\", 211, avenue Jean-Jaurès (19e), pour le fonctionnement du Théâtre Paris-Villette (D02015). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MARS 2003",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78897"
     }
@@ -1815,6 +2563,9 @@
     {
      "reference": "2004 DAC 8",
      "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l'attribution d'une subvention de fonctionnement à la SARL Société de Production et de Gestion Théâtrales, 211, avenue Jean-Jaurès (19e) pour le fonctionnement du Théâtre Paris-Villette. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "FEVRIER 2004",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33985"
     }
@@ -1823,6 +2574,9 @@
     {
      "reference": "2005 DAC 14",
      "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l’attribution d’une subvention de fonctionnement à la S.A.R.L. Société de Production et de Gestion Théâtrales, 211, avenue Jean-Jaurès (19e), pour le fonctionnement du Théâtre Paris-Villette. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MARS 2005",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26284"
     }
@@ -1831,18 +2585,27 @@
     {
      "reference": "2006 DAC 58",
      "titre": "2006, DAC 58 - Autorisation à M. le Maire de Paris de signer des conventions relatives à l’occupation du domaine public avec les théâtre Molières - Maison de la Poésie, théâtre Mouffetard, théâtre 13, théâtre 14, théâtre Sylvia-Monfort, théâtre de la Ville, théâtre Paris-Villette et 20e théâtre.",
+     "genres": [
+      "autre"
+     ],
      "seance": "JANVIER 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24846"
     },
     {
      "reference": "2006 DAC 64",
      "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l’attribution d’une subvention de fonctionnement et une convention relative à l’attribution d’une subvention d’équipement à la S.A.R.L. Société de production et de gestion théâtrales, 211, avenue Jean-Jaurès (19e) pour le Théâtre Paris - Villette. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MAI 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89239"
     },
     {
      "reference": "2006 DAC 64",
      "titre": "2006, DAC 64 - Autorisation à M. le Maire de Paris de signer une convention relative à l’attribution d’une subvention de fonctionnement d’un montant de 795.000 euros et une convention relative à l’attribution d’une subvention d’équipement d’un montant de 20.000 euros à la S.A.R.L. “Société de production et de gestion théâtrales”, 211, avenue Jean-Jaurès (19e), pour le Théâtre Paris-Villette.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MAI 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10508"
     }
@@ -1851,18 +2614,27 @@
     {
      "reference": "2007 DAC 329",
      "titre": "Autorisation à M. le Maire de Paris de signer des conventions relatives à l’attribution de subventions d’équipement avec les associations et la SARL suivantes : “Maison de la Poésie” 161, rue Saint-Martin (3e) ; “Paris Mouff’Théâtre” 73, rue Mouffetard (5e) ; “A.A.S.C.S.P/Théâtre” 13 103A, bd A. Blanqui (13e) ; “Théâtre Paris 14” 20, Av. Marc Sangnier (14e) ; “Nouveau Théâtre de Novembre/20e Théâtre” 7, rue des Platrières (20e) ; “SARL S.P.G.T/Théâtre Paris-Villette” 211, Av. Jean Jaurès (19e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "NOVEMBRE 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66078"
     },
     {
      "reference": "2007 DAC 33",
      "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l’attribution d’une subvention de fonctionnement de 820.000 euros à la S.A.R.L. Société de Production et de Gestion Théâtrales 211, avenue Jean-Jaurès (19e) pour le Théâtre Paris-Villette. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MARS 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31466"
     },
     {
      "reference": "2007 DAC 612",
      "titre": "Autorisation à M. le Maire de Paris de signer des conventions relatives à l’occupation des théâtres suivants : Théâtre Molière-Maison de la poésie situé 161, rue Saint-Martin (3e) ; Théâtre Mouffetard situé 73, rue Mouffetard (5e) ; Théâtre 13 situé 103A, boulevard Auguste Blanqui (13e) ; Théâtre 14 situé 20, avenue Marc Sangnier (14e) ; Théâtre Silvia Monfort situé 106, rue Brancion (15e) ; Théâtre Paris-Villette situé 211, avenue Jean Jaurès (19e) ; 20e Théâtre situé 7, rue des Platrières (20e",
+     "genres": [
+      "autre"
+     ],
      "seance": "OCTOBRE 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53115"
     }
@@ -1871,24 +2643,36 @@
     {
      "reference": "2008 DAC 161",
      "titre": "Signature d’un avenant à la convention passée avec la S.A.R.L. “Société de Production et de Gestion Théâtrales” pour le “Théâtre Paris-Villette” (19e), pour l’attribution du solde de la subvention de fonctionnement et signature d’une convention relative à l’attribution d’une subvention d’équipement. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66842"
     },
     {
      "reference": "2008 DAC 324",
      "titre": "Subvention à l’association “Les Merveilleuses” pour le spectacle Journal d’une autre présenté au Théâtre Paris-Villette (19e) en 2008. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67372"
     },
     {
      "reference": "2008 DAC 386",
      "titre": "Subvention à l’association “Mi-Octobre” pour le spectacle Par dessus bord présenté au Théâtre Paris-Villette (19e) en 2008. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "NOVEMBRE 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61539"
     },
     {
      "reference": "2008 DAC 412",
      "titre": "Subvention à l’association Théâtre et Territoires associés pour le spectacle “Le baiser de la matrice, Proust lu” présenté au Théâtre Paris-Villette dans le cadre du projet x-réseau (19e) en 2008. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "OCTOBRE 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43042"
     }
@@ -1897,30 +2681,45 @@
     {
      "reference": "2009 DAC 168",
      "titre": "Signature d’un avenant à la convention avec la S.A.R.L. Société de Production et de Gestion Théâtrales pour le Théâtre Paris-Villette (19e), pour l’attribution du solde de la subvention de fonctionnement et signature d’une convention relative à l’attribution d’une subvention d’équipement. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2009",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37042"
     },
     {
      "reference": "2009 DAC 169",
      "titre": "Autorisation à M. le Maire de Paris de signer des conventions relatives à l’occupation des théâtres suivants : Maison de la poésie située 161, rue Saint-Martin (3e) ; Théâtre Mouffetard (5e) ; Théâtre 13 situé 103A, boulevard Auguste Blanqui (13e) ; Théâtre 14 situé 20, avenue Marc Sangnier (14e) ; Théâtre Silvia Monfort situé 106, rue Brancion (15e) ; Théâtre Paris-Villette situé 211, avenue Jean Jaurès (19e) ; 20ème Théâtre situé 7, rue des Platrières (20e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "autre"
+     ],
      "seance": "NOVEMBRE 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61769"
     },
     {
      "reference": "2009 DAC 757",
      "titre": "Signature d’un second avenant à la convention avec la S.A.R.L. Société de Production et de Gestion Théâtrales pour le Théâtre Paris-Villette (19e), pour l’attribution d’une subvention exceptionnelle de fonctionnement. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2009",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32606"
     },
     {
      "reference": "2009 DAC 95",
      "titre": "Subvention à l’association Deus ex Machina pour le spectacle “Les névroses sexuelles de nos parents” diffusé au Théâtre Paris-Villette (19e) en 2009. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "AVRIL 2009",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64410"
     },
     {
      "reference": "2009 DAC 96",
      "titre": "Subvention à l’association “Réseau Lilas” pour le spectacle Edouard II présenté au Théâtre Paris-Villette (19e) en 2009. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MAI 2009",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59335"
     }
@@ -1929,6 +2728,9 @@
     {
      "reference": "2010 DAC 231",
      "titre": "Signature d’un avenant à convention avec la S.A.R.L. Société de Production et de Gestion Théâtrales/Théâtre Paris-Villette (19e), pour l’attribution d’une subvention. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUIN 2010",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49229"
     }
@@ -1937,6 +2739,9 @@
     {
      "reference": "2011 DAC 195",
      "titre": "Signature d’un avenant à convention avec la S.A.R.L. Société de Production et de Gestion Théâtrales/Théâtre Paris-Villette (19e), pour l’attribution d’une subvention. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MAI 2011",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97805"
     }
@@ -1945,6 +2750,9 @@
     {
      "reference": "2015 DAC 664",
      "titre": "2015 DAC 664 - Convention d’occupation du domaine public avec l’association Le Théâtre Paris-Villette pour le Grand Parquet (18e).",
+     "genres": [
+      "autre"
+     ],
      "seance": "DECEMBRE 2015",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=128357"
     }
@@ -1953,6 +2761,9 @@
     {
      "reference": "2016 DAC 35",
      "titre": "2016 DAC 35 - Subventions (582.500 euros), convention et avenant avec l’association \"Théâtre Paris Villette\" (19e).",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MARS 2016",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129306"
     }
@@ -1961,6 +2772,9 @@
     {
      "reference": "2019 DAC 9",
      "titre": "2019 DAC 9 - Convention d'occupation du domaine public avec l'association Le Théâtre-Paris Villette pour le Grand Parquet (18e).",
+     "genres": [
+      "autre"
+     ],
      "seance": "FEVRIER 2019",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=147425"
     }
@@ -1969,6 +2783,9 @@
     {
      "reference": "2022 DAC 64",
      "titre": "2022 DAC 64 - Avenant à la C.O.D.P. Ville. - E.P.P.G.H.V. et convention d’occupation du domaine public avec l’association \"Le Théâtre Paris-Villette\", 211, avenue Jean-Jaurès (19e).",
+     "genres": [
+      "autre"
+     ],
      "seance": "DECEMBRE 2022",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=167864"
     }
@@ -1979,24 +2796,36 @@
     {
      "reference": "2002 DAC 223",
      "titre": "Autorisation à Monsieur le Maire de Paris de signer avec l'association Théâtre Silvia Monfort dont le siège social se situe 106, rue Brancion - 75015 Paris, une convention relative à l'attribution d'une subvention d'équipement (D01406). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29106"
     },
     {
      "reference": "2002 DAC 282",
      "titre": "Autorisation à M. le Maire de Paris de signer un avenant à la convention du 9 avril 2002 relative à l'attribution d'une subvention de fonctionnement à l'association Théâtre Silvia Monfort, 106, rue Brancion (15e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29250"
     },
     {
      "reference": "2002 DAC 44",
      "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Théâtre Silvia Monfort\" (15e) une convention relative à l'attribution d'une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MARS 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38929"
     },
     {
      "reference": "2002 DAC 44",
      "titre": "43 - 2002, DAC 44 - Autorisation à M. le Maire de Paris de signer avec l'association \"Théâtre Silvia Monfort\" une convention relative à l'attribution d'une subvention de fonctionnement. - Montant : 750.000 euros",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MARS 2002",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7470"
     }
@@ -2005,12 +2834,18 @@
     {
      "reference": "2003 DAC 8",
      "titre": "181 - 2003, DAC 8 - Autorisation à M. le Maire de Paris de signer une convention relative à l'attribution d'une subvention de fonctionnement avec l'association \"Théâtre Silvia Monfort\" (15e). - Montant : 850.000 euros",
+     "genres": [
+      "subvention"
+     ],
      "seance": "AVRIL 2003",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18521"
     },
     {
      "reference": "2003 DAC 8",
      "titre": "Autorisation à M. le Maire de Paris de signer avec l'association Théâtre Silvia Monfort (106, rue Brancion 15e) une convention relative à l'attribution d'une subvention de fonctionnement (D 01406) Montant : 850.000 euros. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "AVRIL 2003",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89740"
     }
@@ -2019,24 +2854,36 @@
     {
      "reference": "2004 DAC 152",
      "titre": "Attribution d'une subvention de fonctionnement à l'association \"Compagnie Ecuador\" dont le siège social est situé 25, rue Chazière, Lyon (69004), au titre de ses activités au Théâtre Silvia Monfort (15e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MAI 2004",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45567"
     },
     {
      "reference": "2004 DAC 31",
      "titre": "Subvention de fonctionnement à l'association \"Opéra Eclaté\" pour l'organisation de son festival \"Pari(s) d'Opéra\" au Théâtre Silvia Monfort. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "AVRIL 2004",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52017"
     },
     {
      "reference": "2004 DAC 356",
      "titre": "Autorisation à M. le Maire de Paris de signer 4 avenants aux conventions relatives à l'attribution de subventions de fonctionnement pour les associations et la fondation suivantes : Maison de la Poésie (3e), Les Athévains (4e), Fondation nationale dite Cité internationale universitaire de Paris pour le Théâtre de la Cité internationale (14e) ; Théâtre Silvia Monfort (15e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "OCTOBRE 2004",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64268"
     },
     {
      "reference": "2004 DAC 9",
      "titre": "Autorisation à M. le Maire de Paris de signer avec l'association Théâtre Silvia Monfort (15e) une convention relative à l'attribution d'une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "AVRIL 2004",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52013"
     }
@@ -2045,12 +2892,18 @@
     {
      "reference": "2005 DAC 13",
      "titre": "Autorisation à M. le Maire de Paris de signer avec l’association Théâtre Silvia Monfort, 106, rue Brancion (15e), une convention relative à l’attribution d’une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MARS 2005",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26505"
     },
     {
      "reference": "2005 DAC 215",
      "titre": "Attribution d’une subvention de fonctionnement à l’association Opéra Eclaté dont le siège social est situé 18, rue du docteur Roux, à Saint-Céré (46400), pour l’organisation de l’opéra de Jacques Offenbach “la Vie parisienne” au Théâtre Silvia Monfort. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "MAI 2005",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80787"
     }
@@ -2059,24 +2912,36 @@
     {
      "reference": "2006 DAC 63",
      "titre": "Autorisation à M. le Maire de Paris de signer avec l’association Théâtre Silvia Monfort, 106, rue Brancion - (15e), une convention relative à l’attribution d’une subvention de fonctionnement et une convention relative à l’attribution d’une subvention d’équipe-ment. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "AVRIL 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38467"
     },
     {
      "reference": "2006 DAC 63",
      "titre": "2006, DAC 63 - Autorisation à M. le Maire de Paris de signer avec l’association “Théâtre Silvia Monfort”, 106, rue Brancion (15e), une convention relative à l’attribution d’une subvention de fonctionnement d’un montant de 850.000 euros et une convention relative à l’attribution d’une subvention d’équipement de 20.000 euros.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "AVRIL 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16897"
     },
     {
      "reference": "2006 DAC 659",
      "titre": "Autorisation à M. le Maire de Paris de signer un avenant à la convention du 13 avril 2006 relative à l’attribution d’une subvention de fonctionnement à l’association “Théâtre Silvia Monfort”, 106, rue Brancion (15e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91890"
     },
     {
      "reference": "2006 DAC 659",
      "titre": "2006, DAC 659 - Autorisation à M. le Maire de Paris de signer un avenant à la convention du 13 avril 2006 relative à l’attribution d’une subvention de fonctionnement à l’association “Théâtre Silvia Monfort”, 106, rue Brancion (15e). - Montant : 90.000 euros.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2006",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17913"
     }
@@ -2085,18 +2950,27 @@
     {
      "reference": "2007 DAC 32",
      "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l’attribution d’une subvention de fonctionnement à l’association Théâtre Silvia Monfort, 106, rue Brancion (15e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUILLET 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90349"
     },
     {
      "reference": "2007 DAC 32",
      "titre": "2007, DAC 32 - Autorisation à M. le Maire de Paris de signer avec l’association “Théâtre Silvia Monfort” une convention relative à l’attribution d’une subvention de fonctionnement, 106, rue Brancion (15e). - Montant : 900.000 euros. Vœu déposé par le groupe U.M.P. relatif à la situation du théâtre Silvia Montfort.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUILLET 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14090"
     },
     {
      "reference": "2007 DAC 612",
      "titre": "Autorisation à M. le Maire de Paris de signer des conventions relatives à l’occupation des théâtres suivants : Théâtre Molière-Maison de la poésie situé 161, rue Saint-Martin (3e) ; Théâtre Mouffetard situé 73, rue Mouffetard (5e) ; Théâtre 13 situé 103A, boulevard Auguste Blanqui (13e) ; Théâtre 14 situé 20, avenue Marc Sangnier (14e) ; Théâtre Silvia Monfort situé 106, rue Brancion (15e) ; Théâtre Paris-Villette situé 211, avenue Jean Jaurès (19e) ; 20e Théâtre situé 7, rue des Platrières (20e",
+     "genres": [
+      "autre"
+     ],
      "seance": "OCTOBRE 2007",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53115"
     }
@@ -2105,30 +2979,45 @@
     {
      "reference": "2008 DAC 160",
      "titre": "Signature d’un avenant à la convention passée avec l’association “Théâtre Silvia Monfort” (15e), pour l’attribution du solde de la subvention de fonctionnement et signature d’une convention relative à l’attribution d’une subvention d’équipement. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67388"
     },
     {
      "reference": "2008 DAC 160",
      "titre": "2008, DAC 160 - Signature d'un avenant à la convention passée avec l'association \"Théâtre Silvia Monfort\" (15e), pour l'attribution du solde de la subvention de fonctionnement. - Montant : 450.000 euros. - Signature d'une convention pour l'attribution d'une subvention d'équipement. - Montant : 20.000 euros.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6862"
     },
     {
      "reference": "2008 DAC 233",
      "titre": "Subvention à l’association La Chouette en Liesse, (20e) pour un projet de spectacle musical au théâtre Silvia Monfort en 2008. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "NOVEMBRE 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61765"
     },
     {
      "reference": "2008 DAC 241",
      "titre": "Subvention à l’association “Arts scène” pour les spectacles Clair de Lune et Correspondances présentés au Théâtre Silvia Monfort (15e) au cours de la saison 2007/2008. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "NOVEMBRE 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61610"
     },
     {
      "reference": "2008 DAC 544",
      "titre": "Subvention à l’association “Centre International d’échanges musicaux - Festival de Saint Céré” (46400) pour l’organisation d’une série de spectacles lyriques au théâtre Silvia Monfort en 2008. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "DECEMBRE 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77899"
     }
@@ -2137,24 +3026,36 @@
     {
      "reference": "2009 DAC 167",
      "titre": "Signature d’un avenant à la convention passée avec l’association Théâtre Silvia Monfort (15e), pour l’attribution du solde de la subvention de fonctionnement et signature d’une convention relative à l’attribution d’une subvention d’équipement. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUILLET 2009",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74974"
     },
     {
      "reference": "2009 DAC 167",
      "titre": "2009, DAC 167 - Signature d'un avenant à la convention passée avec l'association \"Théâtre Silvia Monfort\" (15e) pour l'attribution du solde de la subvention de fonctionnement. - Montant : 772.000 euros. - Signature d'une convention relative à l'attribution d'une subvention d'équipement. - Montant : 20.000 euros.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUILLET 2009",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20604"
     },
     {
      "reference": "2009 DAC 169",
      "titre": "Autorisation à M. le Maire de Paris de signer des conventions relatives à l’occupation des théâtres suivants : Maison de la poésie située 161, rue Saint-Martin (3e) ; Théâtre Mouffetard (5e) ; Théâtre 13 situé 103A, boulevard Auguste Blanqui (13e) ; Théâtre 14 situé 20, avenue Marc Sangnier (14e) ; Théâtre Silvia Monfort situé 106, rue Brancion (15e) ; Théâtre Paris-Villette situé 211, avenue Jean Jaurès (19e) ; 20ème Théâtre situé 7, rue des Platrières (20e). M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "autre"
+     ],
      "seance": "NOVEMBRE 2008",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61769"
     },
     {
      "reference": "2009 DAC 99",
      "titre": "Subvention à l’association Star Théâtre pour le spectacle Monsieur de Pourceaugnac présenté au Théâtre Silvia Monfort (15e) en 2009. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUIN 2009",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77571"
     }
@@ -2163,12 +3064,18 @@
     {
      "reference": "2010 DAC 230",
      "titre": "Signature d’un avenant à convention avec l’association Théâtre Silvia Monfort (15e) pour l’attribution d’une subvention. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "JUILLET 2010",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79425"
     },
     {
      "reference": "2010 DAC 668",
      "titre": "Signature d’un second avenant et d’une convention avec l’association Théâtre Silvia Monfort (15e) pour l’attribution de deux subventions. M. Christophe GIRARD, rapporteur.",
+     "genres": [
+      "subvention"
+     ],
      "seance": "SEPTEMBRE 2010",
      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39467"
     }

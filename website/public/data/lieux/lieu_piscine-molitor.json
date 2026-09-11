@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "piscine-molitor",
  "name": "Piscine Molitor",
@@ -262,12 +262,18 @@
    {
     "reference": "1997 DPA 135",
     "titre": "17- 1997, DPA 135 - Autorisation à M. le Maire de Paris de signer avec les architectes REICHEN et ROBERT et l'architecte MIMRAM des marchés de maîtrise d'oeuvre en vue de la restructuration du site occupé par l'ancienne piscine Molitor (16e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 1997",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11509"
    },
    {
     "reference": "1997 DPA 135",
     "titre": "Approbation du principe de la réalisation d'études en vue de la restructuration du site occupé par l'ancienne piscine Molitor (16e). - Autorisation à M. le Maire de Paris de signer avec les architectes \"REICHEN et ROBERT\" et l'architecte \"MIMRAM\" les marchés de maîtrise d'oeuvre correspondants. M. Michel BULTÉ, au lieu et place de M. Dominique CANE, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 1997",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78659"
    }
@@ -276,12 +282,18 @@
    {
     "reference": "2002 DPA 316",
     "titre": "51 - 2002, DPA 316 - Autorisation à M. le Maire de Paris de signer les protocoles d'accord avec le cabinet d'architectes \"REICHEN et ROBERT\", d'une part, et la société \"Marc MIMRAM\", d'autre part, relatifs à la résolution de leurs marchés et à leur indemnisation dans le cadre de l'opération concernant la réhabilitation de la piscine Molitor (16e)",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6406"
    },
    {
     "reference": "2002 DPA 316",
     "titre": "Approbation des protocoles d'accord avec le cabinet d'architectes REICHEN et ROBERT, d'une part, et la société Marc MIMRAM, d'autre part, relatifs à la résolution de leurs marchés et à leur indemnisation dans le cadre de l'opération concernant la réhabilitation de la piscine Molitor (16e). - Autorisation à M. le Maire de Paris de signer les protocoles d'accord correspondants. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95283"
    }
@@ -290,12 +302,18 @@
    {
     "reference": "2003 DPA 115",
     "titre": "Approbation du principe de réalisation d'un programme de travaux sur la piscine Molitor (16e) et des modalités de passation du marché de définition correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JANVIER 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41552"
    },
    {
     "reference": "2003 DPA 115",
     "titre": "67 - 2003, DPA 115 - Approbation du principe de réalisation d'un programme de travaux à la piscine Molitor (16e) et des modalités de passation du marché de définition correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JANVIER 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7010"
    }
@@ -304,12 +322,18 @@
    {
     "reference": "2005 DAJ 5",
     "titre": "2005, DAJ 5 - Autorisation à M. le Maire de Paris de signer les marchés à conclure avec les attributaires désignés par la Commission d’appel d’offres des 28 février, 14 mars, 21 mars et 4 avril 2005 et de signer le marché à conclure pour la réalisation d’une étude de définition portant sur la réhabilitation du site de la piscine Molitor avec le candidat classé au 2e rang par la Commission d’appel d’offres du 22 novembre 2004. Vœu déposé par MM. Jean-François BLET, François FLORES et les membres",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15654"
    },
    {
     "reference": "2005 DAJ 5",
     "titre": "Autorisation à M. le Maire de Paris de signer les marchés à conclure avec les attributaires désignés par la commission d’appel d’offres des 28 février, 14 mars, 21 mars et 4 avril 2005 et de signer le marché à conclure pour la réalisation d’une étude de définition portant sur la réhabilitation du site de la piscine Molitor avec le candidat classé au deuxième rang par la Commission d’appel d’offres du 22 novembre 2004. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43738"
    }
@@ -318,12 +342,18 @@
    {
     "reference": "2010 DJS 347",
     "titre": "Signature d’un avenant au bail emphytéotique administratif avec la société Colspa SAS pour la rénovation et l’exploitation du site de la piscine Molitor (16e). M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79905"
    },
    {
     "reference": "2010 DJS 347",
     "titre": "2010, DJS 347 - Signature d'un avenant au bail emphytéotique administratif avec la société Colspa SAS pour la rénovation et l'exploitation du site de la piscine Molitor (16e). Vœu déposé par le groupe U.M.P.P.A.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13598"
    }

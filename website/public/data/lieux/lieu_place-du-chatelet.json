@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-du-chatelet",
  "name": "Place du Châtelet",
@@ -125,6 +125,9 @@
    {
     "reference": "1998 DPA 138",
     "titre": "Autorisation à M. le Maire de Paris de déposer une demande de permis de démolir et de permis de construire en vue de la rénovation du hall d'accès principal, façade place du Châtelet, et de divers travaux d'aménagement destinés notamment à améliorer l'accès des personnes handicapées au Théâtre musical de Paris (1er). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 1998",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44178"
    }
@@ -133,6 +136,9 @@
    {
     "reference": "2002 DPA 35",
     "titre": "Approbation du principe de réalisation des travaux de restauration de façades au Théâtre de la Ville situé 2, place du Châtelet (4e), et des modalités d'attribution du marché négocié de maîtrise d'œuvre correspondant. Autorisation à M. le Maire de Paris de signer ledit marché. Autorisation à M. le Maire de Paris de déposer la demande de permis de construire pour la réalisation de l'opération susvisée. Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38934"
    }
@@ -141,18 +147,27 @@
    {
     "reference": "2003 DPA 152",
     "titre": "Approbation des modalités de passation du marché de travaux relatif à la restauration des façades au Théâtre de la Ville situé 2, place du Châtelet (4e). - Autorisation à M. le Maire de Paris de signer ledit marché. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89595"
    },
    {
     "reference": "2003 DPA 334",
     "titre": "Approbation du principe de réalisation des travaux de modernisation des fauteuils et parquets (orchestre et corbeille) au Théâtre du Châtelet situé 1, place du Châtelet (1er), et des modalités de passation des marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69065"
    },
    {
     "reference": "2003 DPA 76",
     "titre": "Approbation du principe de réalisation de travaux de réfection du parquet de scène au Théâtre du Châtelet situé 1, place du Châtelet - 75001 Paris, et des modalités de passation du marché de travaux correspondant. - Autorisation à Monsieur le Maire de Paris de signer le marché de travaux. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68884"
    }
@@ -161,6 +176,9 @@
    {
     "reference": "2004 DPA 48",
     "titre": "Approbation du principe de réalisation des travaux de modernisation du poste haute tension au Théâtre de la Ville situé 2, place du Châtelet (4e), et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57788"
    }
@@ -169,6 +187,9 @@
    {
     "reference": "2005 DPA 93",
     "titre": "Approbation du principe de réalisation des travaux de restauration de la façade rue Adolphe Adam au Théâtre de la Ville situé 2, place du Châtelet (4e), et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de déposer la demande de permis de construire pour la réalisation de l’opération susvisée. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43604"
    }
@@ -177,12 +198,18 @@
    {
     "reference": "2006 DPA 59",
     "titre": "Approbation du principe de réalisation des travaux de mise aux normes de la gradation de l’éclairage scénique au Théâtre de la Ville sis 2, place du Châtelet (4e) et des modalités de passation du marché de travaux correspondant. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27798"
    },
    {
     "reference": "2006 DVD 3",
     "titre": "2006, DVD 3 - Approbation des objectifs de création d’un réseau vert à Paris dont la première phase est située entre la place du Châtelet (1er) et le canal Saint-Martin (10e). - Approbation des modalités de la concertation relative à ce projet. - Approbation du principe et des modalités de passation d’un marché à bons de commande pour la réalisation des travaux de voirie. Vœu déposé par M. Pierre AIDENBAUM, adopté par la majorité municipale du Conseil du 3e arrondissement, relatif au réseau vert",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JANVIER 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24809"
    }
@@ -191,12 +218,18 @@
    {
     "reference": "2007 DPA 151",
     "titre": "Approbation du principe de réalisation des travaux de modernisation des cellules haute tension du Théâtre du Châtelet sis 1, place du Châtelet (1er) et des modalités de passation du marché de travaux correspondant. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72231"
    },
    {
     "reference": "2007 DPA 51",
     "titre": "Approbation du principe de réalisation des travaux de modernisation des fauteuils des balcons et des amphithéâtres au théâtre du Châtelet sis 1 place du Châtelet à Paris (1er) et des modalités de passation du marché de travaux correspondant. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31636"
    }
@@ -205,6 +238,10 @@
    {
     "reference": "2015 DAC 200",
     "titre": "2015 DAC 200 - Subventions (5.825.000 euros) et avenants avec l’association \"Théâtre de la Ville\" (4e et 18e). 2015 DPA 34 - Théâtre de la Ville 2, place du Châtelet (4e) - Rénovation partielle - Autorisation à la Maire de Paris de prendre toute décision concernant l'opération. Vœu déposé par le GEP relatif aux travaux aux théâtres du Châtelet et de la Ville. Vœu déposé par l'Exécutif.",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
     "seance": "MAI 2015",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125471"
    }

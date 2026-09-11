@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "mairie-du-20e",
  "name": "Mairie du 20e",
@@ -186,6 +186,9 @@
    {
     "reference": "1996 D 970",
     "titre": "51 - 1996, P. 1152- Subvention au Comité des fêtes et des oeuvres de solidarité du 5e arrondissement, mairie du 5e arrondissement. 1996, P. 1370- Subvention au Comité des fêtes et d'animations sociales du 20e arrondissement, mairie du 20e arrondissement. 1996, D. 970- Subvention à l'association \"Comité des fêtes et d'action sociale et culturelle du 16e arrondissement\" (16e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 1996",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4153"
    }
@@ -194,6 +197,9 @@
    {
     "reference": "1999 DPA 40",
     "titre": "Approbation du principe de la réalisation de divers travaux de mise en conformité des locaux situés en sous-sol de la mairie du 20e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59091"
    }
@@ -202,12 +208,18 @@
    {
     "reference": "2000 DPA 256",
     "titre": "Approbation du principe de la mise en conformité des installations électriques et incendie à la Mairie du 20e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59009"
    },
    {
     "reference": "2000 DPA 91",
     "titre": "Approbation du principe de la réalisation de travaux de sécurité dans divers locaux et de la remise en état du Bureau des Elections ainsi que de la verrière du Salon d'honneur à la mairie du 20e arrondissement. - Approbation des modalités d'attribution des marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50961"
    }
@@ -216,18 +228,27 @@
    {
     "reference": "2001 DPA 124",
     "titre": "Approbation du principe de la rénovation des menuiseries et des peintures de la salle des fêtes à la mairie du 20e arrondissement (20e). - Approbation des modalités d'attribution du marché correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62786"
    },
    {
     "reference": "2001 DPA 163",
     "titre": "Approbation du principe de la réalisation des travaux d'amélioration des conditions d'accessibilité des personnes handicapées à la mairie du 20e arrondissement, 6, place Gambetta (20e). - Autorisation à M. le Maire de Paris de déposer les demandes de permis de démolir et de construire correspondantes. Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84335"
    },
    {
     "reference": "2001 DPA 311",
     "titre": "Approbation des modalités d'attribution du marché de travaux relatif à la mise en conformité des installations électriques et incendie à la mairie du 20e arrondissement 6, place Gambetta (20e). - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30556"
    }
@@ -236,12 +257,18 @@
    {
     "reference": "2002 DPA 5",
     "titre": "Approbation du principe de la réalisation de diverses opérations à la Mairie du 20e arrondissement, 6, place Gambetta (20e). - Approbation des modalités d'attribution des marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73765"
    },
    {
     "reference": "2002 DPA 6",
     "titre": "Approbation des modalités d'attribution du marché de travaux relatif à l'amélioration des conditions d'accessibilité des personnes handicapées à la mairie du 20e arrondissement. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58075"
    }
@@ -250,6 +277,9 @@
    {
     "reference": "2004 DAC 61",
     "titre": "Attribution d'une subvention de fonctionnement à l'association Culture 20/21, dont le siège social est situé mairie du 20e, au titre de ses activités en 2004. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MAI 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45796"
    }
@@ -258,6 +288,9 @@
    {
     "reference": "2005 DAC 89",
     "titre": "Attribution d’une subvention de fonctionnement à l’association “Culture 20/21”, dont le siège social est situé Mairie du 20e, 6, place Gambetta (20e), au titre de ses activités en 2005. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MAI 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80407"
    }
@@ -266,6 +299,9 @@
    {
     "reference": "2006 DPA 63",
     "titre": "Approbation du principe de réalisation des travaux de réhabilitation/restructuration de la Mairie du 20e Arrondissement dans le cadre de la mise en œuvre du “schéma directeur d’accessibilité des bâtiments publics - prise en compte des besoins des personnes handicapées dans la construction ou la réhabilitation des bâtiments de la ville de Paris”. - Autorisation à Monsieur le Maire de Paris de déposer les demandes de permis de démolir et de permis de construire pour la réalisation de cette opérati",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89128"
    }
@@ -274,18 +310,27 @@
    {
     "reference": "2008 DPA 13",
     "titre": "Marché de travaux relatif à la réhabili-tation/restructuration de la Mairie du 20ème dans le cadre de la mise en œuvre du schéma directeur d’accessibilité des bâtiments publics, prise en compte des besoins des personnes handicapées dans la construction ou la réhabilitation des bâtiments de la Ville. Mmes Maïté ERRECART et Véronique DUBARRY, rapporteures.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70000"
    },
    {
     "reference": "2008 DPA 210",
     "titre": "2008, DPA 210 - Signature d'un avenant n° 1 au marché de maîtrise d'oeuvre passé avec la S.A.R.L. d'Architecture Denis BERNARD et Laurent HUDON 8, rue des Canettes (6e), relatif à l'opération de réhabilitation-restructuration de la mairie du 20e arrondissement. Vœu déposé par M. Denis BAUPIN, Mme Fabienne GIBOUDEAUX et le groupe des éluEs Verts relatif à l'application du Plan Climat de Paris et à la rénovation pilote de la mairie du 20e. Vœu déposé par l'Exécutif.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5015"
    },
    {
     "reference": "2008 DPA 210",
     "titre": "Signature d’un avenant n° 1 au marché de Maîtrise d’œuvre passé avec la S.A.R.L. d’Architecture Denis BERNARD et Laurent HUDON 8, rue des Canettes (6e) relatif à l’opération de réhabilitation /restructuration de la mairie du 20e arrondissement 6, place Gambetta (20e). Mme Maïté ERRECART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77911"
    }
@@ -294,12 +339,18 @@
    {
     "reference": "2025 DAE 197",
     "titre": "2025 DAE 197 Subvention (50.000 euros) et conventions, dont convention pour l’occupation de locaux au sein de la Mairie du 20e arrondissement à l’association Sensecube.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2025",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184569"
    },
    {
     "reference": "2025 DGRI 57",
     "titre": "2025 DGRI 57 Convention de co-organisation et co-production de l'exposition \"Regards de Gaza\" en partenariat avec l'UNRWA, du 08/09 au 20/10/2025 au 104 (19e) et du 21/10 au 02/11/2025 à la Mairie du 20e.",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2025",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184499"
    }

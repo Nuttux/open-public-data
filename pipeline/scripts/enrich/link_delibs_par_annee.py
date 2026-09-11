@@ -56,6 +56,32 @@ ARGENT = re.compile(
     r"subvention|avenant|convention|march[ée]|travaux|autorisation de programme"
     r"|financement|participation financi|d[ée]l[ée]gation de service", re.I)
 
+# GENRE de la décision. Une fiche lieu a deux lignes d'argent — ce que la Ville
+# verse pour faire tourner l'équipement, et ce qu'elle paye pour le bâtir ou le
+# réparer. Les délibérations sont rattachées au LIEU, pas au type d'argent :
+# sans ce tri, une subvention de fonctionnement s'affichait sous « Travaux et
+# rénovation » (vérifié sur le Châtelet 2016, « 2016 DAC 127 - Subvention
+# (7.123.000 euros) » sous la ligne des chantiers).
+G_SUBV = re.compile(r"subvention|convention (annuelle|d.objectifs|pluriannuelle)|dotation"
+                    r"|convention .{0,30}(fonctionnement|objectifs)", re.I)
+G_TRAV = re.compile(r"travaux|march[ée]|ma[îi]trise d.{0,2}oeuvre|ma[îi]trise d.{0,2}œuvre"
+                    r"|restauration|r[ée]fection|ravalement|construction|r[ée]habilitation"
+                    r"|extension|am[ée]nagement|permis de (construire|d[ée]molir)"
+                    r"|autorisation de programme|mise aux normes|r[ée]novation|installation", re.I)
+
+
+def genres(titre: str) -> list[str]:
+    """Ce que la décision engage : du fonctionnement, du bâtiment, ou les deux.
+    Un titre qui ne dit ni l'un ni l'autre sort « autre » et n'est rangé sous
+    aucune des deux lignes de la fiche — mieux vaut un trou qu'un faux
+    rattachement, la règle de toute cette chaîne."""
+    g = []
+    if G_SUBV.search(titre):
+        g.append("subvention")
+    if G_TRAV.search(titre):
+        g.append("travaux")
+    return g or ["autre"]
+
 # Référence officielle : « 2020 DAC 105 », « 2009, DAC 53 », « 1996, D. 467 ».
 REF = re.compile(r"\b((?:19|20)\d{2}),?\s+(D[A-Z]{1,6}|D)\.?\s+(\d{1,4})\b")
 
@@ -127,7 +153,7 @@ def annees_pour(delibs: list[dict], phrases: set[str]) -> dict[str, list[dict]]:
             continue
         vus.add(cle)
         annees.setdefault(m.group(1), []).append({
-            "reference": ref, "titre": titre,
+            "reference": ref, "titre": titre, "genres": genres(titre),
             "seance": d.get("seance"), "source_url": d.get("source_url"),
         })
     for an in annees:

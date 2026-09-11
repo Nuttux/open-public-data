@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "port-de-l-arsenal",
  "name": "Port de l'Arsenal",
@@ -95,6 +95,9 @@
    {
     "reference": "2001 DAC 146",
     "titre": "Subvention à l'association Evénement Scène (19e) pour la réalisation de la troisième édition du festival \"Musique sur Seine\" au port de l'Arsenal les 7, 8, 9 septembre 2001. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "OCTOBRE 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33555"
    }
@@ -103,12 +106,18 @@
    {
     "reference": "2007 DVD 191",
     "titre": "Autorisation à M. le Maire de Paris de signer avec l’entreprise J.FAYOLLE ET FILS mandataire du groupement d’entreprises solidaires avec HYDRATEC, SOECO et C.ASSEMAT le contrat de délégation de service public pour la modernisation du port de l’Arsenal, la création d’une halte nautique sur le bassin de la Villette et la gestion et l’exploitation des deux sites, pour une durée de 15 ans et de signer l’avenant lié à la création d’une société dédiée. Mme Myriam CONSTANTIN, rapporteure.",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66193"
    },
    {
     "reference": "2007 DVD 191",
     "titre": "2007, DVD 191 - Autorisation à M. le Maire de Paris de signer avec l’entreprise J. Fayolle et Fils, mandataire du groupement d’entreprises solidaires avec Hydratec, SOECO et C. Assemat le contrat de délégation de service public pour la modernisation du port de l’Arsenal, la création d’une halte nautique sur le bassin de La Villette et la gestion et l’exploitation des deux sites pour une durée de 15 ans et de signer l’avenant lié à la création d’une société dédiée. Voeu déposé par le Conseil du 1",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24993"
    }
@@ -117,6 +126,9 @@
    {
     "reference": "2025 DVD 114",
     "titre": "2025 DVD 114 Canaux parisiens - Exploitation et modernisation du port de l'Arsenal (Paris Centre et 12e) et de la halte nautique de la Villette (19e) - Principe de renouvellement de la délégation de service public.",
+    "genres": [
+     "autre"
+    ],
     "seance": "OCTOBRE 2025",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183568"
    }

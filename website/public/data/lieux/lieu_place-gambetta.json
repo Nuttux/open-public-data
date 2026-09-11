@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-gambetta",
  "name": "Place Gambetta",
@@ -118,12 +118,18 @@
    {
     "reference": "2001 DPA 163",
     "titre": "Approbation du principe de la réalisation des travaux d'amélioration des conditions d'accessibilité des personnes handicapées à la mairie du 20e arrondissement, 6, place Gambetta (20e). - Autorisation à M. le Maire de Paris de déposer les demandes de permis de démolir et de construire correspondantes. Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84335"
    },
    {
     "reference": "2001 DPA 311",
     "titre": "Approbation des modalités d'attribution du marché de travaux relatif à la mise en conformité des installations électriques et incendie à la mairie du 20e arrondissement 6, place Gambetta (20e). - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30556"
    }
@@ -132,6 +138,9 @@
    {
     "reference": "2002 DPA 5",
     "titre": "Approbation du principe de la réalisation de diverses opérations à la Mairie du 20e arrondissement, 6, place Gambetta (20e). - Approbation des modalités d'attribution des marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73765"
    }
@@ -140,6 +149,9 @@
    {
     "reference": "2005 DAC 89",
     "titre": "Attribution d’une subvention de fonctionnement à l’association “Culture 20/21”, dont le siège social est situé Mairie du 20e, 6, place Gambetta (20e), au titre de ses activités en 2005. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MAI 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80407"
    }
@@ -148,6 +160,9 @@
    {
     "reference": "2008 DPA 210",
     "titre": "Signature d’un avenant n° 1 au marché de Maîtrise d’œuvre passé avec la S.A.R.L. d’Architecture Denis BERNARD et Laurent HUDON 8, rue des Canettes (6e) relatif à l’opération de réhabilitation /restructuration de la mairie du 20e arrondissement 6, place Gambetta (20e). Mme Maïté ERRECART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77911"
    }

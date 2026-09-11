@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "musee-d-art-moderne-de-paris",
  "name": "Musée d'Art moderne de Paris",
@@ -395,6 +395,9 @@
    {
     "reference": "1997 DPA 156",
     "titre": "Approbation du principe et des modalités d'attribution d'un marché en vue de l'exploitation des installations de génie climatique du Musée d'Art moderne de la Ville de Paris (16e). - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 1997",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52991"
    }
@@ -403,6 +406,9 @@
    {
     "reference": "1998 DAC 138",
     "titre": "Don en espèces du Musée d'art moderne de Sao Paulo (Brésil) pour l'acquisition d'oeuvres d'art en faveur du Musée d'art moderne de la Ville de Paris. - Autorisation à M. le Maire de Paris de signer avec le Musée d'art moderne de Sao Paulo une convention. Mme Hélène MACE de LEPINAY, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "SEPTEMBRE 1998",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92491"
    }
@@ -411,24 +417,36 @@
    {
     "reference": "1999 DAC 148",
     "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Société des amis du musée d'art moderne de la Ville de Paris\" une convention d'objectifs. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51876"
    },
    {
     "reference": "1999 DAC 280",
     "titre": "Don en espèces du Musée d'art moderne de Sao Paulo (Brésil) pour l'acquisition d'oeuvres d'art en faveur du Musée d'art moderne de la Ville de Paris. - Autorisation à M. le Maire de Paris de signer avec le Musée d'art moderne de Sao Paulo une convention. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51878"
    },
    {
     "reference": "1999 DAC 292",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention de concession d'occupation du domaine public en vue de l'exploitation du \"Café du musée\" au Musée d'art moderne de la Ville de Paris (16e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "OCTOBRE 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42446"
    },
    {
     "reference": "1999 DAC 31",
     "titre": "Don en espèces du Sankei Shimbun (Japon) pour l'acquisition d'oeuvres d'art en faveur du Musée d'art moderne de la Ville de Paris. - Autorisation à M. le Maire de Paris de signer une convention. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "MARS 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34094"
    }
@@ -437,12 +455,18 @@
    {
     "reference": "2000 DPA 227",
     "titre": "Approbation du principe du schéma directeur de mise en sécurité du musée d'Art Moderne (16e). - Autorisation à M. le Maire de Paris de signer le marché de maîtrise d'œuvre et de déposer les demandes de permis de démolir et de construire correspondantes. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28131"
    },
    {
     "reference": "2000 DPA 92",
     "titre": "Approbation du principe de la réalisation d'un système de sécurité incendie, de travaux de désamiantage et de relevés de géomètre au Musée d'art moderne (16e). - Approbation des modalités d'attribution des 3 marchés de prestations intellectuelles correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31185"
    }
@@ -451,12 +475,18 @@
    {
     "reference": "2001 DPA 162",
     "titre": "Approbation des modalités d'attribution du marché de travaux pour le désamiantage de la salle \"Dufy\" au Musée d'Art Moderne (16e). - Autorisation à M. le Maire de Paris de signer le marché de travaux correspondant. Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62795"
    },
    {
     "reference": "2001 DPA 387",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant de substitution de la société \"Conduite d'Installations - Energétique - Climatisation\" (C.I.E.C.), nouvellement dénommée CIEC HOLDING, par sa filiale la société CIEC pour le marché n° 98-25010 d'exploitation des installations de génie climatique du Musée d'art moderne, 11, avenue du Président-Wilson (16e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71834"
    }
@@ -465,30 +495,45 @@
    {
     "reference": "2002 DPA 162",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant au marché n° 00/26.543 signé avec la société SETEC Equipements en vue de remplacer celle-ci par la société SETEC Bâtiment dans le cadre de la mission de maîtrise d'œuvre hors loi MOP relative aux travaux de désamiantage de la salle \"Dufy\" au Musée d'Art Moderne, 11, avenue du Président Wilson (16e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39034"
    },
    {
     "reference": "2002 DPA 171",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant au marché de maîtrise d'œuvre n° 00-26630 signé avec M. Patrick RUBIN, architecte, relatif à la mise en sécurité de l'ensemble du Musée d'art moderne, 11, avenue du Président-Wilson (16e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73483"
    },
    {
     "reference": "2002 DPA 220",
     "titre": "Approbation du principe et des modalités de la réalisation sur un marché d'appel d'offres concernant des travaux de restauration et de mise en sécurité de la salle Dufy au Musée d'Art Moderne de la Ville de Paris sis 11 avenue du Président Wilson (16e). - Autorisation à M. le Maire de Paris de signer le dit marché. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55868"
    },
    {
     "reference": "2002 DPA 221",
     "titre": "Approbation du principe et des modalités d'attribution d'un marché sur appel d'offres en vue de l'exploitation et de la maintenance des installations de génie climatique du Musée d'art moderne de la Ville de Paris, 11, avenue du Président-Wilson (16e). - Autorisation à M. le Maire de Paris de signer le marché correspondant. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73757"
    },
    {
     "reference": "2002 DPA 417",
     "titre": "Approbation du principe de réalisation de travaux de mise en sécurité au Musée d'Art Moderne, 11, avenue du Président Wilson (16e), et des modalités de passation des marchés d'assistance à maîtrise d'ouvrage, de bureau de contrôle technique, de coordination sécurité incendie et de coordination santé sécurité correspondants. - Autorisation à M. le Maire de Paris de signer les dits marchés. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95342"
    }
@@ -497,18 +542,27 @@
    {
     "reference": "2003 DAC 311",
     "titre": "Approbation du principe et des modalités d'attribution d'un marché conclu après appel d'offres ouvert pour le déménagement, l'installation et le stockage, dans des réserves, d'œuvres appartenant aux collections du Musée d'art moderne de la Ville de Paris, 11, avenue du Président-Wilson (16e). - Autorisation à M. le Maire de Paris de signer le marché correspondant. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70375"
    },
    {
     "reference": "2003 DPA 166",
     "titre": "Approbation du principe de l'indemnisation de la société Setec Bâtiment, titulaire du marché n° 00/26-543 relatif à la réalisation d'une mission de maîtrise d'œuvre hors loi MOP en vue des travaux de désamiantage de la salle \"Dufy\" au Musée d'art moderne de la Ville de Paris, sis 11, avenue du Président-Wilson (16e). - Autorisation à M. le Maire de Paris de signer le contrat de transaction correspondant. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48092"
    },
    {
     "reference": "2003 DPA 283",
     "titre": "Approbation du principe et des modalités de passation du marché de travaux de mise en sécurité du Musée d'art moderne. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48173"
    }
@@ -517,18 +571,27 @@
    {
     "reference": "2004 DPA 284",
     "titre": "Travaux de mise en sécurité du Musée d’Art Moderne, 11 avenue du Président Wilson (16e). Autorisation à M. le Maire de Paris de signer un avenant n° 2 au marché de maîtrise d’œuvre. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37382"
    },
    {
     "reference": "2004 DPA 404",
     "titre": "Travaux de mise en sécurité du Musée d’Art Moderne, 11 avenue du Président Wilson (16e). Autorisation à M. le Maire de Paris de signer un avenant n° 1 au marché d’assistance technique au maître d’ouvrage. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87562"
    },
    {
     "reference": "2004 DPA 6",
     "titre": "Autorisation à M. le Maire de Paris de souscrire deux avenants de transfert des marchés d'exploitation et de maintenance de centres thermiques municipaux n° 02 25516 (lot n° 8) et 02 25691 (Musée d'art moderne) de la société Cegelec Missenard Quint à la société Cegelec Paris, agence de Vitry sur Seine. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33927"
    }
@@ -537,24 +600,36 @@
    {
     "reference": "2005 DAC 582",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention donnant droit à l’occupation d’un espace concédé dénommé “Le Café” situé au Musée d’Art Moderne, 11, avenue du Président Wilson (16e), afin d’y exploiter un café-espace de restauration légère. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90935"
    },
    {
     "reference": "2005 DAC 586",
     "titre": "Travaux d’aménagement du parcours muséographique de présentation des collections permanentes du Musée d’art moderne de la Ville de Paris (16e). - Autorisation à M. le Maire de Paris de signer le marché négocié de travaux correspondant avec l’attributaire désigné par la Commission d’appel d’offres de la Ville de Paris. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63652"
    },
    {
     "reference": "2005 DPA 265",
     "titre": "Travaux de mise en sécurité du Musée d’Art Moderne, 11 avenue du Président Wilson (16e). Autorisation à M. le Maire de Paris de signer un avenant n° 1 au marché de travaux et un avenant n° 3 au marché de maîtrise d’œuvre. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63428"
    },
    {
     "reference": "2005 DPA 34",
     "titre": "Approbation du principe et des modalités de passation d’un appel d’offres ouvert pour un marché d’exploitation et de maintenance des installations de génie climatique du Musée d’Art Moderne sis 11 bis avenue du Président Wilson (16e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82518"
    }
@@ -563,6 +638,9 @@
    {
     "reference": "2006 DAC 351",
     "titre": "Avenant à la convention relative à l’occupation d’un espace concédé dénommé “Le Café” situé au Musée d’Art Moderne au 11 de l’avenue du Président-Wilson (16e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "SEPTEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73981"
    }
@@ -571,12 +649,18 @@
    {
     "reference": "2008 DAC 488",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention de mécénat avec la société “L’Oréal” en faveur du Musée d’Art Moderne de la Ville de Paris (16e). Mme Colombe BROSSEL et M. Christophe GIRARD, rapporteurs.",
+    "genres": [
+     "autre"
+    ],
     "seance": "SEPTEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67572"
    },
    {
     "reference": "2008 DAC 646",
     "titre": "Signature d’une convention associant le Musée d’Art Moderne de la Ville de Paris à la création du “Pass la colline des musées” en partenariat avec le musée du quai Branly, le Palais de Tokyo, la Cité de l’Architecture et du Patrimoine et le Comité Régional du Tourisme. Mme Colombe BROSSEL et M. Christophe GIRARD, rapporteurs.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78287"
    }
@@ -585,18 +669,27 @@
    {
     "reference": "2009 DAC 593",
     "titre": "Signature d’une convention de partenariat passée avec le Musée d’Art Moderne de la Ville de Paris, le Comité Régional du Tourisme et Eurostar. M. Christophe GIRARD et Mme Danièle POURTAUD, rapporteurs.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32627"
    },
    {
     "reference": "2009 DAC 745",
     "titre": "Convention de mécénat avec la Société “L’Oréal” en faveur du Musée d’Art Moderne de la Ville de Paris : Modification de l’article 2 de la délibération DAC 2008-488 des 29 et 30 septembre 2008. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "NOVEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81684"
    },
    {
     "reference": "2009 DPA 140",
     "titre": "Approbation du principe et des modalités de passation d’un marché pour l’exploitation et la maintenance des installations de génie climatique du Musée d’Art Moderne 11, avenue du Président Wilson (16e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34457"
    }
@@ -605,6 +698,9 @@
    {
     "reference": "2010 DAC 636",
     "titre": "Autorisation à M. le Maire de Paris de signer la convention de partenariat liant la société Vedettes de Paris au Musée d’Art Moderne de la Ville de Paris. Mme Danièle POURTAUD et M. Christophe GIRARD, rapporteurs.",
+    "genres": [
+     "autre"
+    ],
     "seance": "SEPTEMBRE 2010",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39198"
    }
@@ -613,12 +709,18 @@
    {
     "reference": "2011 DAC 182",
     "titre": "Convention d’occupation du domaine public concernant l’établissement dénommé La Librairie du Musée d’Art Moderne de la Ville de Paris - Musée d’Art Moderne de la Ville de Paris (16e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "MARS 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96848"
    },
    {
     "reference": "2011 DAC 54",
     "titre": "Signature d’une convention de mécénat liant la société CB’a Design Solutions au Musée d’Art Moderne de la Ville de Paris. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "MARS 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96556"
    }

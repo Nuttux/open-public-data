@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "bibliotheque-forney",
  "name": "Bibliothèque Forney",
@@ -158,6 +158,9 @@
    {
     "reference": "2000 DPA 156",
     "titre": "Approbation du principe de la réalisation des travaux de remplacement d'un ascenseur à la bibliothèque Forney (4e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51052"
    }
@@ -166,18 +169,28 @@
    {
     "reference": "2006 DAC 98",
     "titre": "Autorisation à M. le Maire de Paris de demander à l’Etat une subvention d’investissement au titre des monuments historiques en vue de la réfection des chéneaux de l’Hôtel de Sens (bibliothèque Forney, 1, rue du Figuier (4e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
     "seance": "FEVRIER 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27794"
    },
    {
     "reference": "2006 DPA 221",
     "titre": "Approbation du principe de réalisation des travaux de restauration des chêneaux, des corniches et des façades à la Bibliothèque Forney (Hôtel de Sens) sise 3, rue du Figuier (4e) et des modalités de passation du marché de travaux correspondant. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52553"
    },
    {
     "reference": "2006 DPA 29",
     "titre": "Approbation du principe de réalisation des travaux de mise aux normes des monte-dossiers à la Bibliothèque Forney, 3, rue du Figuier (4e), et des modalités de passation du marché de travaux correspondant. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38783"
    }
@@ -186,6 +199,9 @@
    {
     "reference": "2007 DPA 96",
     "titre": "Approbation du principe de réalisation des travaux de restructuration des salles d’exposition à la Bibliothèque Forney (Hôtel de Sens) sise 3, rue du Figuier (4e) et des modalités de passation du marché de travaux correspondant. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80301"
    }

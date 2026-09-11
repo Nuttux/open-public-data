@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "mairie-du-17e",
  "name": "Mairie du 17e",
@@ -55,6 +55,9 @@
    {
     "reference": "1996 D 1474",
     "titre": "26 - 1996, D. 1474 - Autorisation à M. le Maire de Paris de souscrire un avenant à la convention de concession signée avec la S.A.E.M.E.S. pour l'exploitation du parc de stationnement \"Mairie du 17e\"",
+    "genres": [
+     "autre"
+    ],
     "seance": "OCTOBRE 1996",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13121"
    }
@@ -63,18 +66,27 @@
    {
     "reference": "1998 DPA 223",
     "titre": "Approbation du principe de la réfection des menuiseries extérieures sur cour à la mairie du 17e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 1998",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92634"
    },
    {
     "reference": "1998 DPA 244",
     "titre": "Approbation du principe de la rénovation de réseaux de chauffage à la mairie du 17e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 1998",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62280"
    },
    {
     "reference": "1998 DVLR 15",
     "titre": "10 - 1998, DVLR 15 - Subvention à l'association \" Initiatives 17e \" (17e). - Montant : 139.218 F 1998, JS 295 - Subvention exceptionnelle à l'association \" Initiatives 17e \" (17e). - Montant : 20.000 F. 1998, P 1474 - Subvention à l'association \" Initiatives 17e \", mairie du 17e arrondissement. - Montant : 80.000 F.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 1998",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15936"
    }
@@ -83,18 +95,27 @@
    {
     "reference": "2000 DPA 101",
     "titre": "Approbation du principe de la mise en conformité des installations électriques à la Mairie du 17e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31032"
    },
    {
     "reference": "2000 DPA 150",
     "titre": "Approbation du principe de la modernisation de l'antenne de police de la mairie du 17e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43150"
    },
    {
     "reference": "2000 DPA 253",
     "titre": "Approbation du principe de la réalisation de travaux de mise en conformité des ascenseurs à la mairie du 17e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28225"
    }
@@ -103,18 +124,27 @@
    {
     "reference": "2001 DPA 260",
     "titre": "21 - 2001, DPA 260 - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres pour les travaux de rénovation des installations électriques à la mairie du 17e arrondissement.2001, DPA 261 - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres pour la restructuration de locaux à la mairie du 17e arrondissement",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21798"
    },
    {
     "reference": "2001 DPA 260",
     "titre": "Approbation du principe de la poursuite des travaux de rénovation des installations électriques à la Mairie du 17e arrondissement, 16-20, rue des Batignolles (17e), et des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33616"
    },
    {
     "reference": "2001 DPA 261",
     "titre": "Approbation du principe de la réalisation des travaux de restructuration des locaux libérés par le CIO à la Mairie du 17e arrondissement, 16-20, rue des Batignolles (17e), et des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33512"
    }
@@ -123,24 +153,36 @@
    {
     "reference": "2004 DPA 289",
     "titre": "Approbation du principe de réalisation de la mise aux normes du système de sécurité-incendie de la Mairie du 17e arrondissement et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37436"
    },
    {
     "reference": "2004 DPA 296",
     "titre": "Approbation du principe de réalisation des travaux de rénovation des sols dans trois escaliers à la mairie du 17e arrondissement, 16-20, rue des Batignolles (17e) et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37406"
    },
    {
     "reference": "2004 DPA 310",
     "titre": "Approbation du principe et des modalités de passation d’un marché de travaux en vue de la restructuration du hall et de la salle aux colonnes et de l’amélioration de l’accessibilité aux handicapés de la mairie du 17e arrondissement, 16-20, rue des Batignolles (17e). - Autorisation à M. le Maire de Paris de déposer les demandes de permis de démolir et de construire pour la réalisation de l’opération susvisée. MmesMireille FLAM et Pénélope KOMITÈS, rapporteures.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87577"
    },
    {
     "reference": "2004 DPA 343",
     "titre": "Approbation du principe de réalisation des travaux et des modalités de passation du marché de travaux de modernisation partielle des réseaux de chauffage à la Mairie du 17e. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37710"
    }
@@ -149,18 +191,27 @@
    {
     "reference": "2006 DASES 451",
     "titre": "G - Attribution d’une subvention de fonctionnement d’un montant de 500 euros à l’association GAIF (Groupe des aphasiques d’Ile de France) située 18, rue des Batignolles, mairie du 17e arrondissement (17e) pour financer la poursuite des actions d’informa-tion, de soutien aux aphasiques dans leurs réadaptations familiales, sociales et dans leur rééducation du langage. Mme Pénélope KOMITÈS, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41164"
    },
    {
     "reference": "2006 DPA 143",
     "titre": "Approbation du principe et des modalités de passation d’un marché de travaux en vue de l’extension du hall d’entrée et de l’amélioration de l’accessibilité aux handicapés de la Mairie du 17e arrondissement, 16-20, rue des Batignolles (17e). Mme Mireille FLAM et Mme Pénélope KOMITÈS, rapporteures.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92306"
    },
    {
     "reference": "2006 DPA 43",
     "titre": "Approbation du principe de réalisation des travaux suivants à la Mairie du 17e arrondissement, création de deux ascenseurs accessibles aux handicapés mise en place de garde-corps en toiture et des modalités de passation des deux marchés de travaux correspondants. Mmes Mireille FLAM et PénélopeKOMITÈS, rapporteures.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38636"
    }
@@ -169,12 +220,18 @@
    {
     "reference": "2007 DASES 66",
     "titre": "G - Attribution d’une subvention de fonctionnement d’un montant de 1.500 euros à l’association GAIF (Groupe des aphasiques d’Ile-de-France) située 18, rue des Batignolles Mairie du 17e arrondissement (17e), pour financer la poursuite des actions d’information, de soutien aux aphasiques dans leurs réadaptations familiales, sociales et dans leur rééducation du langage et participer au financement des costumes de leur nouveau spectacle. Mme Pénélope KOMITÈS, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUIN 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50359"
    },
    {
     "reference": "2007 DPA 63",
     "titre": "Approbation du principe de réalisation des travaux de végétalisation de la toiture-terrasse de la Mairie du 17e arrondissement, 16-20, rue des Batignolles (17e), et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80401"
    }
@@ -183,12 +240,18 @@
    {
     "reference": "2008 DPA 130",
     "titre": "Approbation du principe d’indemnisation de la Société INEO SOLUTIONS, en raison des préjudices subis par elle lors des travaux de restructuration de la salle aux colonnes de la Mairie du 17ème, 16-20, rue des Batignolles (17ème). Mme Maïté ERRECART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69672"
    },
    {
     "reference": "2008 DPA 89",
     "titre": "Approbation du principe de réalisation des travaux de restructuration et de mise en accessibilité du hall, ainsi que du compartimentage et du désenfumage de la Mairie du 17e et des modalités de passation des deux marchés de maîtrise d’œuvre. - Dépôt des demandes de permis de démolir et de permis de construire. Mmes Maïté ERRECART et Véronique DUBARRY, rapporteures.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91490"
    }
@@ -197,6 +260,9 @@
    {
     "reference": "2009 DPA 269",
     "titre": "Indemnisation de la Société ERIS pour préjudice dans le cadre du marché de mise en conformité du SSI de la mairie du 17e arrondissement. Mme Maïté ERRECART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37202"
    }

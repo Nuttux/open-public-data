@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "mairie-du-3e",
  "name": "Mairie du 3e",
@@ -48,6 +48,9 @@
    {
     "reference": "1999 DVLR 71",
     "titre": "Subvention à l'association \"Comité des fêtes et d'animation du 3e arrondissement\", mairie du 3e arrondissement. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "OCTOBRE 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42430"
    }
@@ -56,6 +59,9 @@
    {
     "reference": "2001 DPA 201",
     "titre": "Approbation du principe de la modernisation et de la mise aux normes des locaux ainsi que de la restauration des façades à la mairie du 3e arrondissement située 2, rue Eugène-Spuller (3e). - Approbation des modalités de passation des trois marchés de travaux correspondants.- Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84222"
    }
@@ -64,12 +70,18 @@
    {
     "reference": "2003 DPA 178",
     "titre": "Approbation du principe de réalisation des travaux d'aménagement de la Maison des associations du 3e arrondissement à la Mairie du 3e arrondissement, située 2, rue Eugène-Spuller (3e), et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Marie-Pierre de LA GONTRIE, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48118"
    },
    {
     "reference": "2003 DPA 340",
     "titre": "Approbation du principe de réalisation des travaux de modernisation du centre thermique à la Mairie du 3e arrondissement, 2, rue Eugène-Spuller (3e), et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94555"
    }
@@ -78,12 +90,18 @@
    {
     "reference": "2004 DAC 216",
     "titre": "Attribution d’une subvention de fonctionnement à l’association “Histoire du Troisième” dont le siège social est situé à la Mairie du 3e, 2, rue EugèneSpuller (3e), au titre de ses activités. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37648"
    },
    {
     "reference": "2004 DPA 33",
     "titre": "Approbation du principe de réalisation des travaux de mise en conformité des installations électriques à la mairie du 3e arrondissement (3e) et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MARS 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57855"
    }
@@ -92,18 +110,27 @@
    {
     "reference": "2005 DAC 242",
     "titre": "Attribution d’une subvention de fonctionnement à l’association “Histoire du Troisième”, dont le siège social est situé à la Mairie du 3e, 2, rue EugèneSpuller (3e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUIN 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83046"
    },
    {
     "reference": "2005 DPA 161",
     "titre": "Approbation du principe de réalisation des travaux d’amélioration de l’accès et de l’accueil des handicapés à la Mairie du 3e arrondissement et des modalités de passation des deux marchés de travaux correspondants. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90894"
    },
    {
     "reference": "2005 DPA 243",
     "titre": "Approbation du principe de réalisation des travaux de redéploiement des bureaux de la direction générale des services à la Mairie du 3e arrondissement et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90803"
    }
@@ -112,12 +139,18 @@
    {
     "reference": "2006 DPA 73",
     "titre": "Approbation du principe de réalisation des travaux de restauration des façades rue Caffarelli et rue Perrée à la Mairie du 3e arrondissement et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81470"
    },
    {
     "reference": "2006 DPA 74",
     "titre": "Approbation du principe de réalisation des travaux de modernisation des menuiseries extérieures rue Eugène Spüller et rue de Bretagne à la mairie du 3e arrondissement et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92087"
    }
@@ -126,6 +159,9 @@
    {
     "reference": "2009 DPA 160",
     "titre": "Avenant n°1 au marché de travaux signé avec la société Pierre Noël SAS dans le cadre de l’opération d’amélioration de l’accès et de l’accueil des personnes en situation de handicap à la Mairie du 3e arrondissement. Mme Maïté ERRECART et Mme Véronique DUBARRY, rapporteures.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34434"
    }

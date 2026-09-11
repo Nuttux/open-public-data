@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "gaite-lyrique",
  "name": "Gaîté-Lyrique",
@@ -280,6 +280,9 @@
    {
     "reference": "1996 D 1640",
     "titre": "41- 1996, D. 1640 - Subvention à l'association de préfiguration \"Gaîté Lyrique - Le théâtre des arts et métiers du spectacle\" (3e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 1996",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17623"
    }
@@ -288,30 +291,45 @@
    {
     "reference": "2002 DAC 374",
     "titre": "91 - 2002, DAC 374 - Autorisation à M. le Maire de Paris de signer avec la S.A.R.L. \"Stream-Tease.TV\" une convention d'occupation du domaine public portant sur une partie des locaux de l'ancien théâtre de la Gaîté lyrique (3e) ainsi qu'une convention pour l'attribution d'une subvention",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6016"
    },
    {
     "reference": "2002 DAC 374",
     "titre": "Autorisation à M. le Maire de Paris de signer avec la S.A.R.L. \"Stream-Tease.TV\", 31, rue Viette à Blamont (Doubs), une convention d'occupation du domaine public portant sur une partie des locaux de l'ancien théâtre de la Gaîté Lyrique, 3 bis, rue Papin (3e), ainsi qu'une convention relative à l'attribution d'une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29388"
    },
    {
     "reference": "2002 DPA 226",
     "titre": "143 - 2002, DPA 226 - Autorisation à M. le Maire de Paris de signer des marchés de définition sur appel d'offres en vue de la réalisation des travaux d'aménagement d'un centre dédié aux musiques actuelles et à l'art interactif dans l'ancien théâtre de la Gaîté Lyrique (3e)",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2550"
    },
    {
     "reference": "2002 DPA 226",
     "titre": "Approbation du principe de réalisation des travaux d'aménagement d'un centre dédié aux musiques actuelles et à l'art interactif dans l'ancien théâtre de la Gaîté lyrique, 3, rue Papin (3e), et des modalités d'attribution des marchés de définition simultanés correspondants. - Autorisation à M. le Maire de Partis de signer les marchés de définition correspondants. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73503"
    },
    {
     "reference": "2002 DPA 293",
     "titre": "Création d'un centre dédié aux musiques actuelles et à l'art interactif dans l'ancien théâtre de la Gaîté lyrique, 3, rue Papin (3e). - Approbation des modalités de consultation de quatre marchés de prestations intellectuelles concernant respectivement : - la recherche et le diagnostic de matériaux dangereux (amiante, plomb,..) ; - la mission de contrôleur technique ; - la mission de coordonnateur SPS ; - l'étude de déshabillage, enlèvement des matériaux dangereux et travaux préparatoires. - Aut",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88231"
    }
@@ -320,24 +338,36 @@
    {
     "reference": "2003 DAC 465",
     "titre": "Autorisation à M. le Maire de Paris de signer avec la Sarl \"Stream-tease.tv\", 32, boulevard de Strasbourg (10e), un 2e avenant à la convention d'objectifs relative à l'attribution d'une subvention de fonctionnement complémentaire pour des actions d'animation à la Gaîté Lyrique, 3 bis, rue Denis-Papin (3e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94133"
    },
    {
     "reference": "2003 DPA 147",
     "titre": "Création d'un centre dédié aux musiques actuelles et à l'art interactif dans l'ancien théâtre de la Gaîté lyrique 3, rue Papin (3e). - Approbation des modalités de passation de deux marchés de prestations intellectuelles concernant respectivement : la mission de coordination en matière de systèmes de sécurité incendie, une mission d'assistance au maître d'ouvrage. - Autorisation à M. le Maire de Paris de signer les marchés correspondants. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56820"
    },
    {
     "reference": "2003 DPA 295",
     "titre": "148 - 2003, DPA 295 - Création d'un centre dédié aux musiques actuelles et à l'art interactif dans l'ancien théâtre de la Gaîté lyrique, 3, rue Papin (3e). - Approbation des modalités de consultation d'un marché d'étude relatif à la recherche de polychromies au diagnostic et tests sur décors",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20906"
    },
    {
     "reference": "2003 DPA 295",
     "titre": "Création d'un centre dédié aux musiques actuelles et à l'art interactif dans l'ancien théâtre de la Gaîté lyrique 3, rue Papin (3e). - Approbation des modalités de consultation d'un marché d'étude relatif à la recherche de polychromies, au diagnostic et tests sur décors. - Autorisation à M. le Maire de Paris de signer le marché correspondant. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47390"
    }
@@ -346,48 +376,72 @@
    {
     "reference": "2004 DAC 419",
     "titre": "Gaîté Lyrique, 3 bis, rue Papin (3e). - Autorisation à M. le Maire de Paris de solliciter des subventions auprès de la Région Ile-de-France. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45966"
    },
    {
     "reference": "2004 DAC 73",
     "titre": "73 - 2004, DAC 73 - Approbation du principe de passation d'une convention de délégation de service public pour l'exploitation de la Gaîté Lyrique (3e)",
+    "genres": [
+     "autre"
+    ],
     "seance": "MARS 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11770"
    },
    {
     "reference": "2004 DAC 73",
     "titre": "Approbation du principe de passation d'une convention de délégation de service public pour l'exploitation de la Gaîté Lyrique, 3 bis, rue Papin (3e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "MARS 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57690"
    },
    {
     "reference": "2004 DPA 151",
     "titre": "36 - 2004, DPA 151 - Création d'un centre dédié aux musiques actuelles et aux arts numériques dans l'ancien théâtre de la Gaîté lyrique (3e). - Approbation des modalités de consultation d'un marché de prestations intellectuelles concernant une mission d'organisation pilotage coordination",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8958"
    },
    {
     "reference": "2004 DPA 151",
     "titre": "Approbation des modalités de consultation d'un marché de prestations intellectuelles concernant une mission d'organisation pilotage coordination (OPC) en vue de la création d'un centre dédié aux musiques actuelles et aux arts numériques dans l'ancien théâtre de la Gaîté lyrique, 3, rue Papin (3e). - Autorisation à M. le Maire de signer le marché correspondant. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45850"
    },
    {
     "reference": "2004 DPA 182",
     "titre": "Création d'un centre dédié aux musiques actuelles et aux arts numériques dans l'ancien théâtre de la Gaîté lyrique 3, rue Papin (3e). - Approbation des modalités de consultation d'un marché de travaux anticipés de démolitions non structurelles. - Autorisation à M. le Maire de Paris de signer le marché correspondant. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95051"
    },
    {
     "reference": "2004 DPA 203",
     "titre": "Création d'un centre dédié aux musiques actuelles et aux arts numériques dans l'ancien théâtre de la Gaîté lyrique, 3, rue Papin (3e). - Approbation des modalités de consultation d'un marché de travaux anticipés de démolitions structurelles. - Autorisation à M. le Maire de Paris de signer le marché correspondant. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59849"
    },
    {
     "reference": "2004 DPA 79",
     "titre": "Autorisation à M. le Maire de Paris de signer le marché de maîtrise d'œuvre et de déposer les demandes de permis de construire et de démolir en vue de la création d'un centre dédié aux musiques actuelles et aux arts numériques dans l'ancien théâtre de la Gaîté lyrique 3, rue Papin (3e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33851"
    }
@@ -396,24 +450,36 @@
    {
     "reference": "2005 DPA 141",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant au marché de travaux n° 04/26-396 signé avec l’entreprise PICHETA, relatif à la création d’un centre dédié aux musiques actuelles et aux arts numériques dans l’ancien théâtre de la Gaîté lyrique 3, rue Papin (3e). - Approbation du principe et des modalités de consultation d’un marché de travaux complémentaires correspondant, de dépose d’amiante et de matériaux connexes. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80414"
    },
    {
     "reference": "2005 DPA 164",
     "titre": "Création d’un centre dédié aux musiques actuelles et aux arts numériques dans l’ancien théâtre de la Gaîté lyrique 3, rue Papin (3e). - Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché de maîtrise d’œuvre n° 04/26057 signé avec l’équipe de concepteurs Manuelle Gautrand architecte mandataire d’un groupement conjoint, associée à Jean-Paul Chabert, OTH Bâtiments, Acoustique Tisseyre, Lucigny-Talhouet et associés, Cabinet Casso et Pro-développement. M. Christophe GIRARD, ra",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63338"
    },
    {
     "reference": "2005 DPA 215",
     "titre": "Gaîté lyrique 3 bis, rue Papin (3e). - Création d’un centre dédié aux musiques actuelles et aux arts numériques. - Approbation du principe de réalisation des travaux principaux et des modalités de consultation des 11 marchés de travaux correspondants. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63255"
    },
    {
     "reference": "2005 DPA 284",
     "titre": "Gaîté lyrique 3bis, rue Papin (3e).- Création d’un centre dédié aux musiques actuelles et aux arts numériques.- Autorisation à M. le Maire de Paris de souscrire un avenant n°1 au marché de travaux de démolitions structurelles anticipées n° 04/26667 signé avec l’entreprise ILE DE FRANCE DEMOLITIONS.-Autorisation à M. le Maire de Paris de souscrire un avenant n°1 au marché de coordination de la sécurité et de la protection de la santé n° 04/26-050 signé avec la société ARIA. M. Christophe GIRARD,",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33117"
    }
@@ -422,18 +488,27 @@
    {
     "reference": "2006 DPA 124",
     "titre": "Gaîté lyrique 3 bis, rue Papin (3e). - Création d’un centre dédié aux musiques actuelles et aux arts numériques. - Autorisation à M. le Maire de Paris de souscrire un avenant n° 2 au marché de maîtrise d’œuvre n° 04/26057 signé avec l’équipe de concepteurs Manuelle GAUTRAND architecte mandataire d’un groupement conjoint, associée à Jean-Paul CHABERT, OTH Bâtiments, Acoustique TISSEYRE, Lucigny-Talhouet et associés, Cabinet CASSO et Pro-développement pour le transfert au profit de la société LAMO",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38513"
    },
    {
     "reference": "2006 DPA 251",
     "titre": "Gaîté lyrique, 3 bis, rue Papin (3e). - Création d’un centre dédié aux musiques actuelles et aux arts numériques. - Autorisation à M. le Maire de Paris de souscrire un avenant n° 2 au marché d’assistance technique au maître d’ouvrage n° 03/26-620 signé avec le groupement Setec Organisation (mandataire) / Acoustique Vivier & Associés. - Autorisation à M. le Maire de Paris d’approuver le principe et les modalités de passation d’un nouveau marché d’assistance à maîtrise d’ouvrage permettant d’assur",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74025"
    },
    {
     "reference": "2006 DPA 30",
     "titre": "Gaîté lyrique, 3 bis, rue Papin (3e). Création d’un centre dédié aux musiques actuelles et aux arts numériques. - Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché de d’assistance technique au Maître d’Ouvrage n° 03/26-620 signé avec le groupement d’entreprises SETEC Organisation (mandataire) / Acoustique Vivier & Associés. - Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché de contrôle technique n° 03/26345 signé avec l’entreprise Veritas. M. Ch",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38418"
    }
@@ -442,36 +517,54 @@
    {
     "reference": "2007 DAC 698",
     "titre": "2007, DAC 698 - Autorisation à M. le Maire de Paris de signer avec la Société de Gestion de la Gaîté Lyrique SAS (S.G.G.L.) une convention de délégation de service public pour l’exploitation de la Gaîté Lyrique, 3, rue Papin (3e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4638"
    },
    {
     "reference": "2007 DAC 698",
     "titre": "Autorisation à M. le Maire de Paris de signer avec la Société de Gestion de la Gaîté Lyrique SAS (S.G.G.L) une convention de délégation de servicepublic pour l’exploitation de la Gaîté Lyrique, 3bis rue Papin (3e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54389"
    },
    {
     "reference": "2007 DPA 105",
     "titre": "2007, DPA 105 - Création d’un centre dédié aux musiques actuelles et aux arts numériques dans l’ancien théâtre de la Gaîté lyrique, 3 bis, rue Papin (3e). - Autorisation de résilier le marché relatif à la mission d’OPC. Approbation du principe et des modalités de consultation d’un marché complémentaire d’OPC. Autorisation de souscrire un avenant n° 2 au marché de coordination de la sécurité et de la protection de la santé.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12206"
    },
    {
     "reference": "2007 DPA 105",
     "titre": "Création d’un centre dédié aux musiques actuelles et aux arts numériques dans l’ancien théâtre de la Gaîté lyrique 3 bis, rue Papin (3e). - Autorisation de résilier le marché relatif à la mission d’OPC n° 04/26-322 signé avec la société CICAD. - Approbation du principe et des modalités de consultation d’un marché complémentaire d’OPC. - Autorisation de souscrire un avenant n° 2 au marché de coordination de la sécurité et de la protection de la santé n° 04/26-050 signé avec la société ARIA. M. Ch",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80257"
    },
    {
     "reference": "2007 DPA 251",
     "titre": "2007, DPA 251 - Gaîté lyrique 3 bis, rue Papin (3e). Création d’un centre dédié aux musiques actuelles et aux arts numériques. - Autorisation de résilier le marché relatif à la mission de SPS signé avec la société Aria. - Approbation du principe et des modalités de consultation d’un marché complémentaire de SPS.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19829"
    },
    {
     "reference": "2007 DPA 251",
     "titre": "Gaîté lyrique 3 bis, rue Papin (3ème ).- Création d’un centre dédié aux musiques actuelles et aux arts numériques.- Autorisation à M. le Maire de Paris de résilier le marché relatif à la mission de SPS n° 04/26-050 signé avec la société ARIA.- Approbation du principe et des modalités de consultation d’un marché complémentaire de SPS . M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53165"
    }
@@ -480,18 +573,27 @@
    {
     "reference": "2008 DPA 200",
     "titre": "Gaîté Lyrique (3e) : création d’un centre dédié aux musiques actuelles et à l’art interactif. Avenant n° 3 au marché de maîtrise d’œuvre conclu avec le groupement conjoint, représenté par Madame Manuelle GAUTRAND, architecte mandataire ; Approbation des modalités de consultation d’un marché de fournitures de mobiliers manufacturés. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91492"
    },
    {
     "reference": "2008 DPA 253",
     "titre": "Signature d’un avenant n° 1 au marché de travaux conclu avec la société Eiffage Construction Val-de-Seine, et approbation des modalités de passation de deux marchés de travaux relatifs à la fourniture et pose de mobiliers spécifiques relatifs à la Gaîté Lyrique. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67663"
    },
    {
     "reference": "2008 DPA 294",
     "titre": "Approbation des modalités de passation d’un marché de conseils et de représentation juridiques dans le cadre de la réalisation des grands projets culturels et sportifs : théâtre de la Gaîté Lyrique (3e) ; Carreau du Temple (3e) ; Cinéma le Louxor (10e). MM. Jean VUILLERMOZ et Christophe GIRARD, rapporteurs.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61428"
    }
@@ -500,6 +602,9 @@
    {
     "reference": "2009 DPA 209",
     "titre": "Signature des marchés de travaux relatifs à la fourniture et pose de mobiliers spécifiques attribués dans le cadre de l’opération de création d’un centre des arts numériques et des musiques actuelles dans l’ancien théâtre de la Gaîté Lyrique (3e) : lot 10 A “Eclaireuses” et lot 10 B “Ruban Numérique”. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59394"
    }
@@ -508,12 +613,18 @@
    {
     "reference": "2011 DASCO 7",
     "titre": "Subvention à l’association “Les Inconditionnels de la Gaîté Lyrique”” implantée en résidence d’artiste au collège Montgolfier (3e). Mme Colombe BROSSEL, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "FEVRIER 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97564"
    },
    {
     "reference": "2011 DPA 14",
     "titre": "Autorisation à Monsieur le Maire de Paris de souscrire un avenant n° 1 au marché n° 07-26110 d’assistance technique au maître d’ouvrage pour la phase Travaux et la mise en service de l’équipement signé avec le groupement EPOC INGENIERIE (mandataire) / NOBLE INGENIERIE dans le cadre de la création d’un centre dédié aux musiques actuelles et aux arts numériques dans l’ancien théâtre de la Gaîté Lyrique - 3bis, rue Papin (3e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97994"
    }
@@ -522,6 +633,9 @@
    {
     "reference": "2023 DAC 93",
     "titre": "2023 DAC 93 - Avenant au contrat de concession de service portant sur la gestion et l’exploitation de l’établissement culturel \"La Gaîté Lyrique\", contrat de transaction avec la SEGL, mise au rebut et réforme.",
+    "genres": [
+     "autre"
+    ],
     "seance": "OCTOBRE 2023",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=172001"
    }

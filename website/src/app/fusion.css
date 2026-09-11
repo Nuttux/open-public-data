@@ -19430,8 +19430,26 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   flex: 1 1 0; position: relative; display: flex; flex-direction: column; justify-content: flex-end;
   height: 100%; padding: 0; border: 0; background: none; cursor: pointer; -webkit-appearance: none;
 }
-.theme-fusion .fx-v3-years > button b { display: block; width: 3px; height: 3px; border-radius: 50%; background: var(--muted); margin: 4px auto 0; opacity: .55; }
+/* Le repère « il y a une décision à ouvrir » est HORS FLUX. Vérifié en
+ * production le 2026-09-11 : en display:block avec une marge, il poussait la
+ * barre de sept pixels vers le haut, si bien que les années munies d'une
+ * délibération ne partaient plus de la même ligne que les autres — le graphe
+ * montrait un écart qui n'existait pas. Un repère ne doit jamais déplacer la
+ * donnée qu'il annote. */
+.theme-fusion .fx-v3-years > button b {
+  position: absolute; left: 22%; right: 22%; bottom: -5px; height: 2px;
+  background: var(--muted); opacity: .28;
+}
 .theme-fusion .fx-v3-years > button:hover b, .theme-fusion .fx-v3-years > button.on b { opacity: 1; background: var(--ink); }
+/* Place sous la ligne de base pour le repère, sans coller aux années. */
+.theme-fusion .fx-v3-years.clic { margin-bottom: 26px; }
+.theme-fusion .fx-v3-years.clic .yr { margin-top: 11px; }
+/* L'invitation remplace le panneau tant qu'aucune année n'est ouverte : un
+ * repère seul n'apprend à personne qu'il y a quelque chose à cliquer. */
+.theme-fusion .fx-v3-aide {
+  grid-column: 1 / -1; max-width: 640px; margin: 2px 0 18px;
+  font-size: 12.5px; color: var(--muted);
+}
 .theme-fusion .fx-v3-years > button:hover i { filter: brightness(.85); }
 .theme-fusion .fx-v3-years > button.on i { box-shadow: inset 0 0 0 1px var(--ink); }
 .theme-fusion .fx-v3-years > button:focus-visible { outline: 2px solid var(--bleu); outline-offset: 2px; }
@@ -19441,6 +19459,9 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-v3-delib { grid-column: 1 / -1; max-width: 640px; margin: -8px 0 22px; border-top: 1px solid var(--rule); }
 .theme-fusion .fx-v3-delib .hd { display: flex; align-items: baseline; gap: 10px; margin: 12px 0 2px; font-size: 12.5px; color: var(--muted); }
 .theme-fusion .fx-v3-delib .hd .an { font-size: 15px; font-weight: 600; color: var(--ink); letter-spacing: .02em; }
+/* Le montant de l'exercice, dans l'en-tête du panneau : c'est lui qui rend la
+ * liste dépliable inutile sur un téléphone, où il n'y a pas de survol. */
+.theme-fusion .fx-v3-delib .hd .mt { font-family: var(--f-disp); font-size: 15px; font-weight: 700; color: var(--ink); }
 .theme-fusion .fx-v3-delib .dl {
   display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 4px 14px; align-items: baseline;
   padding: 10px 0; border-bottom: 1px solid var(--rule); text-decoration: none; color: inherit;

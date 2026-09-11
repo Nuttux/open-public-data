@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-leon-blum",
  "name": "Place Léon-Blum",
@@ -115,6 +115,9 @@
    {
     "reference": "2001 DPA 414",
     "titre": "Approbation du principe de réalisation de travaux de climatisation de l'Etat Civil à la Mairie du 11e arrondissement, place Léon-Blum (11e) et des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71797"
    }
@@ -123,6 +126,9 @@
    {
     "reference": "2002 DAC 199",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l'attribution d'une subvention de fonctionnement à l'association \"11ème Evénements\", située à la mairie du 11e arrondissement, place Léon-Blum (11e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88362"
    }
@@ -131,18 +137,27 @@
    {
     "reference": "2003 DPA 101",
     "titre": "Approbation des modalités de passation du marché de travaux de restructuration des sanitaires à la Mairie du 11ème arrondissement, Place Léon Blum (11e). - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56915"
    },
    {
     "reference": "2003 DPA 207",
     "titre": "Approbation du principe de réalisation des travaux de ravalement des façades intérieures à la Mairie du 11ème arrondissement, place Léon Blum - 75011 PARIS et des modalités de passation du marché de travaux correspondant. - Autorisation à Monsieur le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47839"
    },
    {
     "reference": "2003 DPA 255",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché de travaux signé avec l'entreprise ANSINELLI Industries, relatif à l'installation de portes monumentales pare-flammes 1/2 heure, au 2e étage de la mairie du 11e arrondissement, place Léon Blum (11e). Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2003",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48114"
    }
@@ -151,6 +166,9 @@
    {
     "reference": "2004 DDATC 92",
     "titre": "Autorisation à M. le Maire de Paris à signer une convention annuelle avec le \"Comité Municipal des Fêtes du 11e arrondissement\", place Léon-Blum (11e). - Attribution de la subvention correspondante. Mme Marie-Pierre de LA GONTRIE, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2004",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59955"
    }
@@ -159,18 +177,27 @@
    {
     "reference": "2005 DDATC 86",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention annuelle avec le “Comité municipal des fêtes du 11e arrondissement”, place Léon-Blum (11e), en vue de l’attribution d’une subvention de fonctionnement. Mme Marie-Pierre de LA GONTRIE, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUIN 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83264"
    },
    {
     "reference": "2005 DVD 242",
     "titre": "2005, DVD 242 - Approbation du principe d’aménagement et des modalités de passation des marchés de travaux de voirie et d’éclairage relatifs à l’aménagement de la place Léon-Blum (11e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19260"
    },
    {
     "reference": "2005 DVD 242",
     "titre": "Approbation du principe et des modalités de passation des marchés de travaux de voirie et d’éclairage relatifs à l’aménagement de la place Léon Blum (11e). M. Denis BAUPIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "NOVEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90851"
    }
@@ -179,6 +206,9 @@
    {
     "reference": "2006 DPJEV 44",
     "titre": "Approbation du principe d’aménagement et des modalités de passation du marché de travaux de réalisation des clôtures des espaces jardinés de la place Léon Blum (11e). M. Yves CONTASSOT, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89350"
    }
@@ -187,12 +217,18 @@
    {
     "reference": "2007 DPA 160",
     "titre": "Approbation du principe de réalisation des travaux de restructuration du pôle d’accueil, du Bureau des Affaires générales ainsi que du traitement de l’accessibilité tous handicaps à la Mairie du 11e arrondissement, place Léon Blum (11e) et des modalités de passation du marché de travaux correspondant.Mmes Mireille FLAM et Pénélope KOMITÈS, rapporteures.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUILLET 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90439"
    },
    {
     "reference": "2007 DPA 300",
     "titre": "Approbation du principe et des modalités de passation du marché de travaux relatif à la modernisation des menuiseries sur cour intérieure de la Mairie du 11e arrondissement, place Léon Blum (11e). Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54173"
    }

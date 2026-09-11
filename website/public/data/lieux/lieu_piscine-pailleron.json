@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "piscine-pailleron",
  "name": "Piscine Pailleron",
@@ -234,12 +234,18 @@
    {
     "reference": "2005 DJS 225",
     "titre": "Autorisation à la SEMAVIP de signer le marché de carrelages concernant l’étude et la rénovation de la piscine Pailleron, l’étude et la reconstruction d’une patinoire de quartier et de loisir ainsi que la réalisation d’un bassin d’initiation dans l’enceinte du centre sportif Edouard Pailleron (19e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43910"
    },
    {
     "reference": "2005 DJS 238",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 4 à la convention de maîtrise d’ouvrage passée avec la SEMAVIP et d’autoriser la SEMAVIP à signer l’avenant n° 1 au marché de travaux, lot 1 et l’avenant n° 2 au marché de maîtrise d’œuvre, concernant l’étude et la rénovation de la piscine Pailleron, l’étude et la reconstruction d’une patinoire de quartier et de loisir ainsi que la réalisation d’un bassin d’initiation dans l’enceinte du centre sportif Edouard Pailleron (19e). M. Pasc",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80809"
    }

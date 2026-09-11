@@ -6163,6 +6163,8 @@ const en: Record<string, string> = {
   'fx.lieu.sources': 'Sources ·',
   'fx.lieu.hero.verse': 'paid by the City for this place since {y}',
   'fx.lieu.hero.verse_one': 'paid by the City for this place in {y}',
+  'fx.lieu.delib.aucune': 'No matching decision in the Conseil de Paris archive.',
+  'fx.lieu.delib.aide': 'Click a year for its amount and the Conseil de Paris decision.',
   'fx.lieu.delib.titre': 'What the Conseil de Paris voted that year ({n})',
   'fx.lieu.delib.n': '{n} decision(s) — click',
   'fx.lieu.delib.note': 'Decision titles exactly as the City wrote them. The year is the year of the vote: payment often falls in the following year.',

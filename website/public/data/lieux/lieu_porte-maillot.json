@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "porte-maillot",
  "name": "Porte Maillot",
@@ -221,6 +221,9 @@
    {
     "reference": "1996 D 762",
     "titre": "29- 1996, D. 762 - Déclassement d'emprises dépendant du domaine public de voirie aux abords du Palais des Congrès (17e). -Autorisation à M. le Maire de Paris de souscrire, d'une part, un avenant à la convention Ville-Chambre de commerce et d'industrie de Paris du 19 janvier 1970 et, d'autre part, un avenant à la convention de concession du 16 juin 1970 relatif à l'extension et à la modernisation du parc de stationnement \"Porte Maillot - Palais des Congrès\" (17e).",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JUIN 1996",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7223"
    }
@@ -229,30 +232,45 @@
    {
     "reference": "1999 DAC 337",
     "titre": "28 - 1999, DAC 337 - Autorisation à M. le Maire de Paris de signer des marchés de définition pour la conception d'une oeuvre d'art, de son environnement végétal et de la mise en lumière du jardin au centre de la place de la Porte-Maillot (16e et 17e)",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3703"
    },
    {
     "reference": "1999 DAC 337",
     "titre": "Approbation du principe de la conception d'une oeuvre d'art, de son environnement végétal et de la mise en lumière du jardin au centre de la place de la Porte-Maillot (16 et 17e). - Approbation des modalités d'attribution des marchés de définition correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50894"
    },
    {
     "reference": "1999 DVD 154",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 2 à la convention de concession signée avec la Chambre de commerce et d'industrie de Paris en vue de l'exploitation du parc de stationnement \"Palais des congrès - Porte Maillot\" (17e). M. Bernard PLASAIT, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "FEVRIER 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51344"
    },
    {
     "reference": "1999 DVD 30",
     "titre": "Approbation des modalités d'attribution d'un marché sur appel d'offres pour la réalisation des travaux de voirie nécessaires à l'aménagement de la place de la porte Maillot (16e et 17e). - Autorisation à M. le Maire de Paris de signer ledit marché. M. Bernard PLASAIT, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59094"
    },
    {
     "reference": "1999 DVD 30",
     "titre": "30 - 1999, DVD 30 - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres ou un marché négocié, en cas d'appel d'offres infructueux, pour la réalisation des travaux de voirie nécessaires à l'aménagement de la place de la Porte-Maillot aux abords du Palais des Congrès (16e et 17e)",
+    "genres": [
+     "travaux"
+    ],
     "seance": "FEVRIER 1999",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23225"
    }
@@ -261,12 +279,18 @@
    {
     "reference": "2000 DVD 35",
     "titre": "22 - 2000, DVD 35 - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres pour l'aménagement d'un cheminement piétonnier de surface au sud de la place de la Porte-Maillot (16e)",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3650"
    },
    {
     "reference": "2000 DVD 35",
     "titre": "Approbation des modalités d'attribution d'un marché sur appel d'offres pour l'aménagement d'un cheminement piétonnier de surface au sud de la place de la Porte-Maillot (16e). - Autorisation à M. le Maire de Paris de signer ledit marché. M. Bernard PLASAIT, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "AVRIL 2000",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50944"
    }
@@ -275,6 +299,9 @@
    {
     "reference": "2001 DFAE 65",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention donnant droit à l'occupation de locaux domaniaux à usage de restaurant dénommé \"L'Orée du Bois\" sis route de la Porte de Sablons à la Porte Maillot (16e). M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "SEPTEMBRE 2001",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84820"
    }
@@ -283,6 +310,9 @@
    {
     "reference": "2002 DVD 17",
     "titre": "Approbation du principe et des modalités de travaux de mise en place d'armoires électriques pour équiper cinq stations de relevage dans les passages souterrains de la porte Maillot et de la porte de Champerret. - Autorisation à M. le Maire de Paris de signer le marché de travaux correspondant. M. Denis BAUPIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "JANVIER 2002",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27164"
    }
@@ -291,18 +321,27 @@
    {
     "reference": "2005 DF 30",
     "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant à la convention datée du 15 octobre 2001 concédant à la SA “Boulogne Restauration” le droit à l’occupation de l’établissement dénommé “L’Orée du Bois” situé route de la Porte des Sablons à la Porte Maillot au Bois de Boulogne à Paris (16e arrondissement), pour y exploiter un bar-restaurant. M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "MAI 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80677"
    },
    {
     "reference": "2005 DF 84",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention portant sur le droit d’exploiter de la publicité sur les murs du couloir souterrain reliant la station de métro “Porte Maillot” au Palais des Congrès (17e). M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33018"
    },
    {
     "reference": "2005 DF 84",
     "titre": "2005, DF 84 - Autorisation à M. le Maire de Paris de signer une convention portant sur le droit d’exploiter de la publicité sur les murs du couloir souterrain reliant la station de métro “Porte Maillot” au Palais des Congrès (17e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "DECEMBRE 2005",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22059"
    }
@@ -311,6 +350,9 @@
    {
     "reference": "2016 DVD 12",
     "titre": "2016 DVD 12 G - Extension T3 à Porte Maillot. Avenant à la convention avec le S.T.I.F. pour la concertation préalable, le schéma de principe et le dossier d'enquête publique.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2016",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=132520"
    }
@@ -319,6 +361,9 @@
    {
     "reference": "2017 DVD 100",
     "titre": "2017 DVD 100 - DEVE - DU - Réaménagement de la porte Maillot. - Approbation du bilan de la concertation préalable. Vœu déposé par le groupe LR relatif à la désignation d'un coordinateur général. Vœu déposé par le groupe LR relatif aux commerces impactés par les travaux. Vœu déposé par les groupes LR et UDI-MODEM relatif aux points de vigilance soulevés par le projet.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2017",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138065"
    }
@@ -327,6 +372,9 @@
    {
     "reference": "2018 DVD 103",
     "titre": "2018 DVD 103 - Parc de stationnement porte Maillot (17e). - Avenant n° 3 à la convention de concession du parc public. - Convention relative aux travaux préparatoires à la construction de la gare EOLE.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "DECEMBRE 2018",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146902"
    }
@@ -335,6 +383,9 @@
    {
     "reference": "2021 DVD 55",
     "titre": "2021 DVD 55 - Prolongement du RER E Eole à l'Ouest et aménagement de la place Porte Maillot (17e). - Exonération de S.N.C.F. Réseau et la S.P.L. PariSeine des redevances d'occupation du domaine public pour les travaux. Vœu déposé par le groupe Changer Paris relatif à la convocation en urgence d’une réunion du comité Porte Maillot.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "OCTOBRE 2021",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=161021"
    }

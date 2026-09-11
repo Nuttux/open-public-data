@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:08:47.586034+00:00",
+ "generated_at": "2026-09-11T15:36:20.273223+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "philharmonie-de-paris",
  "name": "Philharmonie de Paris",
@@ -713,6 +713,10 @@
    {
     "reference": "2006 DAC 726",
     "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l’attribution d’une subvention à l’association “Philharmonie de Paris” dont l’objet est d’assurer transitoirement la maîtrise d’ouvrage de la construction d’un grand auditorium sur le site du Parc de la Villette (19e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
     "seance": "DECEMBRE 2006",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92379"
    }
@@ -721,6 +725,10 @@
    {
     "reference": "2007 DAC 221",
     "titre": "Autorisation à Monsieur le Maire de Paris de signer une convention relative à l’attribution d’une subvention de fonctionnement de 1.888.906 euros et d’une subvention d’équipement de 1.685.502 euros, avec l’association “Philharmonie de Paris” dont l’objet est d’assurer transitoirement la maîtrise d’ouvrage de la construction d’un grand auditorium sur le site du Parc de la Villette (75019 Paris). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
     "seance": "MAI 2007",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80322"
    }
@@ -729,6 +737,9 @@
    {
     "reference": "2008 DAC 189",
     "titre": "Signature d’un avenant à la convention relative à l’attribution d’une subvention de fonctionnement et d’une subvention d’équipement, avec l’association “Philharmonie de Paris”. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2008",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67233"
    }
@@ -737,24 +748,36 @@
    {
     "reference": "2009 DAC 82",
     "titre": "Signature d’un avenant à la convention avec l’association “Philharmonie de Paris” pour l’attribution d’une subvention (19e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82256"
    },
    {
     "reference": "2009 DAC 82",
     "titre": "2009, DAC 82 - Signature d'un avenant à la convention avec l'association \"Philharmonie de Paris\" pour l'attribution d'une subvention (19e). Montant : 904.148 euros.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15360"
    },
    {
     "reference": "2009 DAC 89",
     "titre": "2009, DAC 89 - Octroi d'une garantie d'emprunt au profit de l'association \"Philharmonie de Paris\" (19e) pour la réalisation d'une salle philharmonique. - Signature du ou des contrats de prêts et la convention fixant les modalités de fonctionnement de la garantie avec l'association \"Philharmonie de Paris\".",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20676"
    },
    {
     "reference": "2009 DAC 89",
     "titre": "Octroi d’une garantie d’emprunts au profit de l’association “Philharmonie de Paris”, 211 avenue Jean Jaurès (19e) pour la réalisation d’une salle philharmonique. - Autorisation à M. le Maire de Paris de signer le ou les contrats de prêts et la convention fixant les modalités de fonctionnement de la garantie avec l’association “Philharmonie de Paris”, 211 avenue Jean Jaurès (19e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2009",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74657"
    }
@@ -763,18 +786,27 @@
    {
     "reference": "2011 DAC 681",
     "titre": "56 - 2011, DAC 681 - Subvention (626.407 euros) et avenant à la convention avec l'association Philharmonie de Paris (19e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "SEPTEMBRE 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=102116"
    },
    {
     "reference": "2011 DAC 92",
     "titre": "Signature d’une convention avec l’association Philharmonie de Paris pour l’attribution d’un acompte sur la subvention 2011 (19e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MAI 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97970"
    },
    {
     "reference": "2011 DAC 92",
     "titre": "38 - 2011, DAC 92 - Signature d’une convention avec l’association Philharmonie de Paris (19e) pour l’attribution d’un acompte sur la subvention 2011. - Montant : 700.000 euros.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MAI 2011",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95701"
    }
@@ -783,6 +815,9 @@
    {
     "reference": "2012 DAC 527",
     "titre": "2012 DAC 527 - Subvention (936.800 euros) et avenant à la convention avec l'association Philharmonie de Paris (19e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2012",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109669"
    }
@@ -791,6 +826,9 @@
    {
     "reference": "2013 DAC 633",
     "titre": "2013 DAC 633 - Subvention (1.700.000 euros) et avenant à la convention avec l'association \"Philharmonie de Paris\" (19e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2013",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116447"
    }
@@ -799,12 +837,18 @@
    {
     "reference": "2014 DAC 1493",
     "titre": "2014 DAC 1493 - Subvention (1.250.000 euros) et avenant à convention avec l'association \"Philharmonie de Paris\" (19e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "NOVEMBRE 2014",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121312"
    },
    {
     "reference": "2014 DFA 33",
     "titre": "2014 DFA 33 - Convention avec la Philharmonie de Paris pour le remboursement de l'emprunt contracté par l'association et garanti par la Ville. Vœu déposé par le Groupe Ecologiste de Paris relatif à la gouvernance de l'association Philharmonie de Paris. Vœu déposé par le Groupe Ecologiste de Paris relatif à la création d'un comité de pilotage. Vœu déposé par le groupe UMP relatif au financement de la Philharmonie. Vœu déposé par les groupes UMP et UDI-MODEM relatif à la mise en place d'un groupe",
+    "genres": [
+     "autre"
+    ],
     "seance": "OCTOBRE 2014",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121130"
    }
@@ -813,6 +857,9 @@
    {
     "reference": "2015 DAC 602",
     "titre": "2015 DAC 602 Subventions de fonctionnement et d’équipement (15.658.233 euros) et convention avec l'établissement public Cité de la musique - Philharmonie de Paris (19e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2015",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=128267"
    }
@@ -821,6 +868,9 @@
    {
     "reference": "2016 DFA 139",
     "titre": "2016 DFA 139 - Réaménagement d’un prêt obligataire au profit de l’EP Cité de la Musique - Philharmonie de Paris souscrit auprès de Société Générale SCF. Maintien garantie Ville de Paris et convention de financement. Vœu déposé par le groupe Ecologiste de Paris relatif au réaménagement du prêt de la Philharmonie. 2016 SG 33 - Rapport d’observations définitives de la Chambre régionale des comptes relatif à l’examen de la gestion de l’opération de construction de la Philharmonie de Paris.",
+    "genres": [
+     "travaux"
+    ],
     "seance": "SEPTEMBRE 2016",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=132294"
    }
@@ -829,6 +879,9 @@
    {
     "reference": "2017 DAC 176",
     "titre": "2017 DAC 176 - Subventions (15.295.752 euros) et convention avec l'établissement public Cité de la musique - Philharmonie de Paris (19e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2017",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140571"
    }
@@ -837,6 +890,9 @@
    {
     "reference": "2018 DAC 94",
     "titre": "2018 DAC 94 - Subvention (6.000.000 euros) et avenant à convention avec l’établissement public \"Cité de la musique - Philharmonie de Paris\" (19e). Vœu déposé par le groupe PPCI relatif à une exposition sur l’œuvre de Pierre Henry.",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MAI 2018",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=142377"
    }
@@ -845,6 +901,9 @@
    {
     "reference": "2020 DAC 120",
     "titre": "2020 DAC 120 - Subventions pour la Philharmonie de Paris et pour l'Orchestre de Paris, convention et avenants à convention avec l’établissement public Cité de la musique Philharmonie de Paris (19e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "JUILLET 2020",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156179"
    }
@@ -853,6 +912,9 @@
    {
     "reference": "2021 DAC 150",
     "titre": "2021 DAC 150 - Subventions de fonctionnement et d’équipement (15.295.751,69 euros) et convention avec l'établissement public Cité de la musique. - Philharmonie de Paris (19e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2021",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164316"
    }
@@ -861,12 +923,18 @@
    {
     "reference": "2022 DAC 105",
     "titre": "2022 DAC 105 - Subvention d’équipement (7.000.000 euros) et convention avec l'établissement public Cité de la Musique - Philharmonie de Paris (19e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "MARS 2022",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164670"
    },
    {
     "reference": "2022 DAC 157",
     "titre": "2022 DAC 157 - Subvention de fonctionnement (6.793.200 euros) et avenant à la convention avec l'établissement public \"Cité de la Musique - Philharmonie de Paris\" (19e). 2022 DAC 158 - Subventions de fonctionnement et d’équipement (15.295.751,69 euros) et convention avec l'établissement public \"Cité de la musique - Philharmonie de Paris \"(19e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2022",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=167873"
    }
@@ -875,6 +943,9 @@
    {
     "reference": "2023 DAC 109",
     "titre": "2023 DAC 109 - Subventions de fonctionnement et d’équipement (15.295.751,69 euros) et convention avec l'établissement public Cité de la musique - Philharmonie de Paris (19e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2023",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174216"
    }
@@ -883,6 +954,9 @@
    {
     "reference": "2024 DAC 99",
     "titre": "2024 DAC 99 - Subventions de fonctionnement et d’équipement (15.295.751,69 euros) et convention avec l'établissement public Cité de la musique - Philharmonie de Paris (19e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2024",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179020"
    }
@@ -891,12 +965,18 @@
    {
     "reference": "2025 DAC 107",
     "titre": "2025 DAC 107 - Subventions de fonctionnement et d’équipement (15.295.751,69 euros), convention et avenant à convention d'investissement, avec l'établissement public \"Cité de la musique - Philharmonie de Paris\" (19e).",
+    "genres": [
+     "subvention"
+    ],
     "seance": "DECEMBRE 2025",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183673"
    },
    {
     "reference": "2025 DAC 83",
     "titre": "2025 DAC 83 - Avenant à convention avec l'établissement public Cité de la Musique - Philharmonie de Paris (19e).",
+    "genres": [
+     "autre"
+    ],
     "seance": "AVRIL 2025",
     "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179777"
    }
