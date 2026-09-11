@@ -19,6 +19,10 @@ SELECT
     commune_nom,
     population,
     annee,
+    -- La DATE, pas seulement l'année : sans elle, impossible de savoir ce qui est
+    -- nouveau depuis la dernière visite, et donc impossible de notifier. Le core
+    -- la portait déjà ; c'est ce mart qui la jetait.
+    date_notification,
     montant,
     categorie_cpv,
     cpv_division,

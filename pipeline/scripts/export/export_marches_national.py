@@ -62,7 +62,7 @@ def fetch(client, insees):
     where = "WHERE code_insee IN UNNEST(@insees)" if insees else ""
     params = [bigquery.ArrayQueryParameter("insees", "STRING", insees)] if insees else []
     sql = f"""
-        SELECT code_insee, commune_nom, population, annee, montant, categorie_cpv,
+        SELECT code_insee, commune_nom, population, annee, date_notification, montant, categorie_cpv,
                type_procedure, objet, titulaire_nom, titulaire_siren,
                titulaire_personne_physique, montant_invraisemblable, depenses_totales_commune, marche_id, duree_mois
         FROM `{MART}` {where}
@@ -345,9 +345,14 @@ def build(insee: str, meta: dict, rows: list[dict], now: str) -> dict | None:
     lots: dict[tuple, dict] = {}
     for r in rows:
         k = _lot_key(r)
-        g = lots.setdefault(k, {"row": r, "montant": 0.0, "nb_lots": 0})
+        g = lots.setdefault(k, {"row": r, "montant": 0.0, "nb_lots": 0, "date": None})
         g["montant"] += r["montant"] or 0
         g["nb_lots"] += 1
+        # Un marché alloti a une date par lot : on retient la plus récente, celle
+        # qui dit quand l'affaire est devenue publique.
+        d = r.get("date_notification")
+        if d and (g["date"] is None or str(d) > str(g["date"])):
+            g["date"] = str(d)[:10]
     top_marches = sorted(lots.values(), key=lambda g: -g["montant"])[:15]
     # Dernière année publiée, à part : la page ville parle de l'année, pas du
     # cumul depuis 2018 (domaines et fournisseurs de cette année-là).
@@ -442,6 +447,9 @@ def build(insee: str, meta: dict, rows: list[dict], now: str) -> dict | None:
                 ),
                 "siren": None if g["row"].get("titulaire_personne_physique") else g["row"].get("titulaire_siren"),
                 "annee": g["row"]["annee"],
+                # La date de notification : sans elle, impossible de dire ce qui
+                # est nouveau depuis la dernière visite, donc impossible de notifier.
+                "date": g["date"],
                 "procedure": g["row"]["type_procedure"],
                 "categorie": g["row"]["categorie_cpv"],
             }

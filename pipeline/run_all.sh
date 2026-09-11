@@ -100,11 +100,21 @@ if should_run sync; then
     # Chemin direct OpenData → JSON (ne dépend pas de BQ). Rapide, gratuit.
     run_step "Subventions JSON (OpenData Paris)" \
         $PYTHON "$PIPELINE_DIR/scripts/sync/fetch_subventions_opendata.py"
-    # DECP marchés publics
+    # DECP marchés publics — Paris
     if [[ -f "$PIPELINE_DIR/scripts/sync/fetch_decp_paris.py" ]]; then
-        run_step "Marchés publics DECP" \
+        run_step "Marchés publics DECP (Paris)" \
             $PYTHON "$PIPELINE_DIR/scripts/sync/fetch_decp_paris.py" || \
             echo "  ⚠ fetch_decp_paris a échoué — on continue"
+    fi
+    # DECP marchés publics — NATIONAL. Manquait ici : le cron hebdomadaire
+    # tournait depuis des mois sans jamais recharger la table nationale, qui
+    # restait au dernier chargement manuel (22 juillet 2026, soit sept semaines
+    # de retard au 11 septembre). C'est la seule source du site à cadence
+    # infra-annuelle : si elle dort, la page ville annonce l'an dernier.
+    if [[ -f "$PIPELINE_DIR/scripts/sync/sync_national.py" ]]; then
+        run_step "Marchés publics DECP (national → BQ raw)" \
+            $PYTHON "$PIPELINE_DIR/scripts/sync/sync_national.py" --source decp_marches || \
+            echo "  ⚠ sync_national --source decp_marches a échoué — on continue"
     fi
 fi
 

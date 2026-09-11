@@ -53,7 +53,14 @@ WITH raw AS (
     FROM {{ source('national_raw', 'decp_marches') }}
     WHERE montant > 0
       AND dateNotification IS NOT NULL
-      AND EXTRACT(YEAR FROM dateNotification) BETWEEN 2018 AND 2025
+      -- Plancher 2018 : avant, la DECP est trop lacunaire pour être publiable.
+      -- PAS DE PLAFOND. Le « BETWEEN 2018 AND 2025 » qui était écrit ici jetait
+      -- silencieusement l'année en cours : au 2026-09-11, 256 872 marchés notifiés
+      -- en 2026 étaient dans la table brute et aucun n'atteignait le site, qui
+      -- affichait donc 2025 comme dernière année. Un plafond en dur sur une année
+      -- se périme le 1er janvier ; on borne au présent, pas à un millésime.
+      AND EXTRACT(YEAR FROM dateNotification) >= 2018
+      AND dateNotification <= CURRENT_DATE()
 ),
 
 -- Une ligne par marché (acheteur × id) : version en cours, puis dernière
