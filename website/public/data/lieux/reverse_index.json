@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:58:09.539515+00:00",
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
  "beneficiaires": {
   "la cite de la musique": {
    "slug": "philharmonie-de-paris",
@@ -420,6 +420,11 @@
    "slug": "musee-en-herbe",
    "lieu": "Musée en Herbe",
    "role": "exploitant"
+  },
+  "conservatoire du 17eme": {
+   "slug": "conservatoire-claude-debussy",
+   "lieu": "Conservatoire Claude-Debussy",
+   "role": "resident"
   },
   "cite internation universitaire de p": {
    "slug": "cite-internationale-universitaire",
@@ -1034,9 +1039,29 @@
    "slug": "halle-pajol",
    "lieu": "Halle Pajol"
   },
+  "bibliotheque saint lazare": {
+   "slug": "mediatheque-francoise-sagan",
+   "lieu": "Médiathèque Françoise-Sagan"
+  },
+  "sorbonne bibliotheque": {
+   "slug": "bibliotheque-de-la-sorbonne",
+   "lieu": "Bibliothèque de la Sorbonne"
+  },
+  "conservatoire du 17eme": {
+   "slug": "conservatoire-claude-debussy",
+   "lieu": "Conservatoire Claude-Debussy"
+  },
   "enseignement artistique conservatoire paul dukas divers travaux de construction": {
    "slug": "conservatoire-paul-dukas",
    "lieu": "Conservatoire Paul-Dukas"
+  },
+  "conservatoire rue du charolais": {
+   "slug": "conservatoire-paul-dukas",
+   "lieu": "Conservatoire Paul-Dukas"
+  },
+  "conservatoire boulevard blanqui": {
+   "slug": "conservatoire-maurice-ravel",
+   "lieu": "Conservatoire Maurice-Ravel"
   },
   "enseignement artistique conservatoire darius milhaud construction": {
    "slug": "conservatoire-darius-milhaud",

@@ -1,0 +1,206 @@
+{
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "conservatoire-claude-debussy",
+ "name": "Conservatoire Claude-Debussy",
+ "kind_fr": "Conservatoire",
+ "kind_en": "Conservatoire",
+ "famille": "culture",
+ "arrondissement": 17,
+ "lat": 48.888419,
+ "lon": 2.29444,
+ "photo": "/img/lieux/conservatoire-claude-debussy.jpg",
+ "photo_credit": {
+  "licence": "Public domain",
+  "auteur": "Claude Debussy (1862-1918) - extrait des \"Trois Chansons de France\" (manuscrit a",
+  "url": "https://commons.wikimedia.org/wiki/File:Claude_Debussy_-_extrait_du_Promenoir_des_deux_amants.png",
+  "source": "Wikimedia Commons"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1802,
+  "delibs_span": [
+   1995,
+   2025
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "tête du classement Solr (1802 documents au total)",
+  "lecture_mode_en": "top of the Solr ranking (1802 documents total)",
+  "n_lus": 45,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [
+  {
+   "beneficiaire": "CONSERVATOIRE DU 17EME",
+   "montant_total": 11870.89,
+   "preuve": "Le nom du bénéficiaire est la désignation que la Ville emploie pour ce conservatoire : « 2007, DAC 189 - Attribution d'une subvention de fonctionnement à l'Association du Conservatoire municipal du 17e arrondissement, \"conservatoire Claude Debussy\" ayant son siège social 29, avenue de Villiers (17e) » et « 2010 DAC 585 - Signature d'une convention avec l'Association du Conservatoire Municipal du 17e arrondissement - Claude Debussy (17e) pour l'attribution d'une subvention ». En revanche rien ne montre que ce bénéficiaire exploite le bâtiment : le candidat n'a ni SIRET ni objet, il ne porte qu'une seule ligne, dans les subventions de 2011, et la délibération de novembre 2018 montre la Ville gérant les conservatoires en direct (« le travail des services de la Direction des Affaires culturelles avec les conservatoires », recrutement d'un agent d'accueil pour le conservatoire Claude-Debussy). Requalifié d'exploitant en résident : argent lié au lieu, gestion du lieu non prouvée."
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "2007": [
+   {
+    "reference": "2007 DAC 189",
+    "titre": "2007, DAC 189 - Attribution d’une subvention de fonctionnement à l’Association du Conservatoire municipal du 17e arrondissement, “conservatoire Claude Debussy” ayant son siège social 29, avenue de Villiers (17e). - Montant : 26.512 euros. 2007, DAC 645 - Attribution d’une subvention de fonctionnement à l’Association du Conservatoire municipal du 7e arrondissement “Erik Satie”, ayant son siège social 116, rue de Grenelle. - Montant : 51.432 euros. 2007, DAC 646 - Attribution d’une subvention de f",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "DECEMBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4735"
+   }
+  ],
+  "2011": [
+   {
+    "reference": "2011 DPA 17",
+    "titre": "43 - 2011, DPA 17 - Approbation des modalités de passation des marchés de travaux relatifs à la construction du Conservatoire du 17e arrondissement, 220-222 rue de Courcelles (17e).",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2011",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95758"
+   },
+   {
+    "reference": "2011 DPA 17",
+    "titre": "Approbation des modalités de passation des marchés de travaux relatifs à la construction du Conservatoire du 17e arrondissement, 220-222 rue de Courcelles (17e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2011",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97863"
+   }
+  ]
+ },
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20131210012203",
+   "objet": "ASSURANCE CCRD CONSTRUCTION CONSERVATOIRE DU 17ÈME",
+   "objet_clair": null,
+   "fournisseur": "SOC MUTUELLE D ASSURANCE DU BTP",
+   "montant_max": 41804.96,
+   "date_notification": "2013-08-14",
+   "preuve": "L'objet du marché nomme le lieu et porte sur sa construction : « ASSURANCE CCRD CONSTRUCTION CONSERVATOIRE DU 17ÈME » (catégorie « Assurances construction », titulaire unique, notifié le 2013-08-14). Ce n'est ni un repère d'adresse ni un marché-cadre de toute la Ville : l'objet ne désigne que cet équipement. Il coïncide avec le chantier que montrent les opérations budgétaires DAC « CONSERVATOIRE DU 17EME » mandatées de 2009 à 2013, et le bâtiment neuf est évoqué en Conseil de Paris en novembre 2018 (« le nouveau bâtiment est plus grand »)."
+  }
+ ],
+ "mandate": {
+  "par_annee": {
+   "2009": 177760.84,
+   "2010": 525614.66,
+   "2011": 1552870.52,
+   "2012": 6541563.82,
+   "2013": 10880300.16,
+   "2014": 1113492.3,
+   "2015": 168593.09,
+   "2016": 43255.59,
+   "2017": 671466.93,
+   "2018": 261201.95,
+   "2019": 111903.04,
+   "2020": 36829.81,
+   "2021": 168726.09,
+   "2022": 198363.39
+  },
+  "total_eur": 22451942.19,
+  "operations": [
+   {
+    "ap_cle": "B100/0803772",
+    "ap_texte": "CONSERVATOIRE DU 17EME",
+    "mandate_par_annee": {
+     "2009": 177760.84,
+     "2010": 525614.66,
+     "2011": 1190932.02,
+     "2012": 6406892.64,
+     "2013": 8717904.8
+    },
+    "total_mandate": 17019104.96,
+    "preuve": "Le libellé de l'opération est la désignation de ce lieu par la Ville : « CONSERVATOIRE DU 17EME » (mission « AFFAIRES CULTURELLES », direction DAC). Les délibérations lient ce nom au lieu : « Association du Conservatoire municipal du 17e arrondissement, \"conservatoire Claude Debussy\" » (2007 DAC 189) et « Conservatoire Municipal du 17e arrondissement - Claude Debussy (17e) » (2010 DAC 585). Ce n'est pas une enveloppe générique de direction : l'opération est nommée par l'équipement lui-même. Les mandatements 2009-2013 (17 019 104,96 €) correspondent au chantier attesté par le marché « ASSURANCE CCRD CONSTRUCTION CONSERVATOIRE DU 17ÈME » notifié en 2013 et par la délibération de novembre 2018 (« le nouveau bâtiment est plus grand »).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0803772"
+   },
+   {
+    "ap_cle": "B100/0903772",
+    "ap_texte": "CONSERVATOIRE DU 17EME",
+    "mandate_par_annee": {
+     "2011": 361938.5,
+     "2012": 134671.18,
+     "2013": 2162395.36
+    },
+    "total_mandate": 2659005.04,
+    "preuve": "Même libellé nommant l'équipement : « CONSERVATOIRE DU 17EME », mission « AFFAIRES CULTURELLES », direction DAC — nom que les délibérations rattachent au conservatoire Claude-Debussy (2007 DAC 189, 2010 DAC 585). Opération distincte de B100/0803772 (numéro 0903772), mandatée 2011-2013 sur la même période de chantier que le marché d'assurance construction du conservatoire du 17e.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903772"
+   },
+   {
+    "ap_cle": "0903772",
+    "ap_texte": "CONSERVATOIRE DU 17EME",
+    "mandate_par_annee": {
+     "2014": 934421.97,
+     "2015": 99069.05,
+     "2016": 40800.85,
+     "2017": 671466.93,
+     "2018": 260295.5,
+     "2019": 111903.04,
+     "2020": 36829.81,
+     "2021": 168726.09,
+     "2022": 198363.39
+    },
+    "total_mandate": 2521876.63,
+    "preuve": "Même libellé « CONSERVATOIRE DU 17EME » et même numéro d'opération (0903772) que la ligne B100/0903772, repris dans la série postérieure des comptes administratifs (autorisations de programme M57). Exercices disjoints — 2011-2013 pour B100/0903772, 2014-2022 ici — donc la suite de la même opération, sans double compte.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=0903772"
+   },
+   {
+    "ap_cle": "0803772",
+    "ap_texte": "CONSERVATOIRE DU 17EME",
+    "mandate_par_annee": {
+     "2014": 179070.33,
+     "2015": 69524.04,
+     "2016": 2454.74,
+     "2018": 906.45
+    },
+    "total_mandate": 251955.56,
+    "preuve": "Même libellé « CONSERVATOIRE DU 17EME » et même numéro d'opération (0803772) que la ligne B100/0803772, repris dans la série postérieure des comptes administratifs (autorisations de programme M57). Exercices disjoints — 2009-2013 pour B100/0803772, 2014-2018 ici — donc la suite de la même opération, sans double compte.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=0803772"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2022"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Conservatoire+Claude-Debussy"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

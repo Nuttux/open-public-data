@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:58:09.539515+00:00",
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "bibliotheque-de-la-sorbonne",
  "name": "Bibliothèque de la Sorbonne",
@@ -140,7 +140,7 @@
      "2013": 3629509.72
     },
     "total_mandate": 13651016.86,
-    "preuve": "Libellé d'opération « SORBONNE - BIBLIOTHEQUE » (mission AFFAIRES SCOLAIRES, DASCO) : le libellé nomme la bibliothèque elle-même. Corroboré par la délibération 2009 DPA 6 « Approbation des modalités de passation du marché de travaux relatif à la restructuration et à la mise aux normes de la bibliothèque de la Sorbonne 46-48 rue Saint Jacques (5e) » (séance de juillet 2009). Mandatements 2010-2013.",
+    "preuve": "Libellé d'opération verbatim « SORBONNE - BIBLIOTHEQUE » : il désigne ce lieu. Mandatements 2010-2013 concomitants du chantier de la Ville sur ce bâtiment (2004 DPA 363 approuve le principe des travaux de restructuration et mise aux normes « de la bibliothèque de la Sorbonne à la faculté de la Sorbonne, 46-48, rue Saint-Jacques (5e) » ; 2009 DPA 6 approuve la passation du marché de travaux).",
     "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903851"
    },
    {
@@ -154,7 +154,7 @@
      "2013": 184635.64
     },
     "total_mandate": 11096162.44,
-    "preuve": "Libellé d'opération « SORBONNE - BIBLIOTHEQUE » (mission AFFAIRES SCOLAIRES, DASCO) : le libellé nomme la bibliothèque elle-même. Corroboré par la délibération 2004 DPA 363 « Approbation du principe de réalisation des travaux de restructuration et mise aux normes de la bibliothèque de la Sorbonne à la faculté de la Sorbonne, 46-48, rue Saint-Jacques (5e) » (séance de décembre 2004). Mandatements 2009-2013.",
+    "preuve": "Libellé d'opération verbatim « SORBONNE - BIBLIOTHEQUE » : il désigne ce lieu. Mandatements 2009-2013 concomitants des délibérations sur « la restructuration et mises aux normes de la bibliothèque de la Sorbonne, 46-48 rue Saint Jacques (5ème) » (2008 DPA 51, 2009 DPA 6, 2009 DPA 189).",
     "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0803851"
    },
    {
@@ -167,7 +167,7 @@
      "2017": 610296.67
     },
     "total_mandate": 1159327.89,
-    "preuve": "Libellé d'opération « SORBONNE - BIBLIOTHEQUE » (mission AFFAIRES SCOLAIRES, DASCO) : le libellé nomme la bibliothèque elle-même. Même code d'opération et même libellé que B100/0903851, sur les exercices 2014-2017 (dans les candidats, les clés préfixées « B100/ » ne portent que des mandatements 2009-2013).",
+    "preuve": "Libellé d'opération verbatim « SORBONNE - BIBLIOTHEQUE » : il désigne ce lieu. Opération distincte de B100/0903851 dans la source, sur des années sans recouvrement (2014-2017) : pas de double compte sur une même année.",
     "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903851"
    },
    {
@@ -180,7 +180,7 @@
      "2017": 6868.37
     },
     "total_mandate": 135698.75,
-    "preuve": "Libellé d'opération « SORBONNE - BIBLIOTHEQUE » (mission AFFAIRES SCOLAIRES, DASCO) : le libellé nomme la bibliothèque elle-même. Même code d'opération et même libellé que B100/0803851, sur les exercices 2014-2017 (dans les candidats, les clés préfixées « B100/ » ne portent que des mandatements 2009-2013).",
+    "preuve": "Libellé d'opération verbatim « SORBONNE - BIBLIOTHEQUE » : il désigne ce lieu. Opération distincte de B100/0803851 dans la source, sur des années sans recouvrement (2014-2017) : pas de double compte sur une même année.",
     "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0803851"
    },
    {
@@ -191,7 +191,7 @@
      "2019": 32730.82
     },
     "total_mandate": 108207.84,
-    "preuve": "Libellé d'opération « SORBONNE BIBLIOTHEQUE » (mission ATTRACTIVITE ET EMPL, DAE) : le libellé nomme la bibliothèque elle-même. Mandatements 2018-2019.",
+    "preuve": "Libellé d'opération verbatim « SORBONNE BIBLIOTHEQUE » : il désigne ce lieu. Portée par la direction DAE, mission « ATTRACTIVITE ET EMPL » dans la source ; mandatements 2018-2019.",
     "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604201"
    }
   ],

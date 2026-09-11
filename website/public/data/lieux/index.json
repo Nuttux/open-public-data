@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:58:09.539515+00:00",
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
  "lieux": [
   {
    "slug": "piscine-des-amiraux",
@@ -3485,9 +3485,9 @@
    "lon": 2.353757,
    "n_lieu": null,
    "n_moments": 0,
-   "argent_total_eur": 0,
+   "argent_total_eur": 18624777,
    "seuil_commun": 2010,
-   "depense_reelle_eur": 0,
+   "depense_reelle_eur": 18624777,
    "depense_reelle_avant_seuil_eur": 0,
    "engage_eur": 0,
    "depuis": 1995,
@@ -3548,6 +3548,24 @@
    "photo": "/img/lieux/musee-en-herbe.jpg"
   },
   {
+   "slug": "conservatoire-claude-debussy",
+   "name": "Conservatoire Claude-Debussy",
+   "kind_fr": "Conservatoire",
+   "famille": "culture",
+   "arrondissement": 17,
+   "lat": 48.888419,
+   "lon": 2.29444,
+   "n_lieu": null,
+   "n_moments": 0,
+   "argent_total_eur": 22274181,
+   "seuil_commun": 2010,
+   "depense_reelle_eur": 22274181,
+   "depense_reelle_avant_seuil_eur": 177761,
+   "engage_eur": 41805,
+   "depuis": 1995,
+   "photo": "/img/lieux/conservatoire-claude-debussy.jpg"
+  },
+  {
    "slug": "conservatoire-paul-dukas",
    "name": "Conservatoire Paul-Dukas",
    "kind_fr": "Conservatoire",
@@ -3557,13 +3575,31 @@
    "lon": 2.384129,
    "n_lieu": null,
    "n_moments": 0,
-   "argent_total_eur": 100439,
+   "argent_total_eur": 17726687,
    "seuil_commun": 2010,
-   "depense_reelle_eur": 100439,
+   "depense_reelle_eur": 17726687,
    "depense_reelle_avant_seuil_eur": 0,
    "engage_eur": 37668,
    "depuis": 1995,
    "photo": "/img/lieux/conservatoire-paul-dukas.jpg"
+  },
+  {
+   "slug": "conservatoire-maurice-ravel",
+   "name": "Conservatoire Maurice-Ravel",
+   "kind_fr": "Conservatoire",
+   "famille": "culture",
+   "arrondissement": 13,
+   "lat": 48.829692,
+   "lon": 2.358481,
+   "n_lieu": null,
+   "n_moments": 0,
+   "argent_total_eur": 21234502,
+   "seuil_commun": 2010,
+   "depense_reelle_eur": 21234502,
+   "depense_reelle_avant_seuil_eur": 0,
+   "engage_eur": 41631,
+   "depuis": 1995,
+   "photo": "/img/lieux/conservatoire-maurice-ravel.jpg"
   },
   {
    "slug": "conservatoire-darius-milhaud",

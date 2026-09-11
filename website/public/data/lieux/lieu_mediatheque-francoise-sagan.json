@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:58:09.539515+00:00",
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "mediatheque-francoise-sagan",
  "name": "Médiathèque Françoise-Sagan",
@@ -51,7 +51,97 @@
  "delibs_par_annee": null,
  "invest": [],
  "marches": [],
- "mandate": null,
+ "mandate": {
+  "par_annee": {
+   "2011": 418110.44,
+   "2012": 2693539.18,
+   "2013": 4273838.32,
+   "2014": 8161030.73,
+   "2015": 2585755.47,
+   "2016": 156470.86,
+   "2017": 309322.8,
+   "2018": 11212.49,
+   "2019": 4684.42,
+   "2020": 10812.4
+  },
+  "total_eur": 18624777.11,
+  "operations": [
+   {
+    "ap_cle": "1003453",
+    "ap_texte": "BIBLIOTHEQUE SAINT LAZARE",
+    "mandate_par_annee": {
+     "2014": 7892730.48,
+     "2015": 2418901.09,
+     "2016": 118186.43,
+     "2017": 28385.14
+    },
+    "total_mandate": 10458203.14,
+    "preuve": "Libellé d'opération verbatim « BIBLIOTHEQUE SAINT LAZARE » (direction DAC, mission « AFFAIRES CULTURELLES ») — signal « nom », pas une proximité : « Bibliothèque Saint-Lazare » est un alias déclaré de ce lieu (10e) et délibération 2011 DAC 328 (MAI 2011) « Sollicitation de l'octroi d'une subvention auprès de la Région Ile-de-France pour la construction de la médiathèque Saint Lazare (10e) » nomme le même projet dans le même arrondissement. Mandatements 2014, 2015, 2016, 2017 repris à l'identique du candidat (10 458 203,14 € au total). Les autres opérations « Saint-Lazare » du même secteur (GYMNASE SAINT-LAZARE / DJS, CENTRE SOCIAL SAINT-LAZARE / DASES) désignent d'autres équipements et ne sont pas rattachées.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1003453"
+   },
+   {
+    "ap_cle": "B100/1003453",
+    "ap_texte": "BIBLIOTHEQUE SAINT LAZARE",
+    "mandate_par_annee": {
+     "2011": 171043.08,
+     "2012": 2566636.08,
+     "2013": 4197071.74
+    },
+    "total_mandate": 6934750.9,
+    "preuve": "Libellé d'opération verbatim « BIBLIOTHEQUE SAINT LAZARE » (direction DAC, mission « AFFAIRES CULTURELLES ») — signal « nom », pas une proximité : « Bibliothèque Saint-Lazare » est un alias déclaré de ce lieu (10e) et délibération 2011 DAC 328 (MAI 2011) « Sollicitation de l'octroi d'une subvention auprès de la Région Ile-de-France pour la construction de la médiathèque Saint Lazare (10e) » nomme le même projet dans le même arrondissement. Mandatements 2011, 2012, 2013 repris à l'identique du candidat (6 934 750,90 € au total). Les autres opérations « Saint-Lazare » du même secteur (GYMNASE SAINT-LAZARE / DJS, CENTRE SOCIAL SAINT-LAZARE / DASES) désignent d'autres équipements et ne sont pas rattachées.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1003453"
+   },
+   {
+    "ap_cle": "1403453",
+    "ap_texte": "BIBLIOTHEQUE SAINT LAZARE",
+    "mandate_par_annee": {
+     "2014": 6000.0,
+     "2015": 128041.56,
+     "2016": 38284.43,
+     "2017": 272884.06,
+     "2018": 5848.01,
+     "2019": 4684.42,
+     "2020": 10812.4
+    },
+    "total_mandate": 466554.88,
+    "preuve": "Libellé d'opération verbatim « BIBLIOTHEQUE SAINT LAZARE » (direction DAC, mission « AFFAIRES CULTURELLES ») — signal « nom », pas une proximité : « Bibliothèque Saint-Lazare » est un alias déclaré de ce lieu (10e) et délibération 2011 DAC 328 (MAI 2011) « Sollicitation de l'octroi d'une subvention auprès de la Région Ile-de-France pour la construction de la médiathèque Saint Lazare (10e) » nomme le même projet dans le même arrondissement. Mandatements 2014, 2015, 2016, 2017, 2018, 2019, 2020 repris à l'identique du candidat (466 554,88 € au total). Les autres opérations « Saint-Lazare » du même secteur (GYMNASE SAINT-LAZARE / DJS, CENTRE SOCIAL SAINT-LAZARE / DASES) désignent d'autres équipements et ne sont pas rattachées.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1403453"
+   },
+   {
+    "ap_cle": "B100/0903453",
+    "ap_texte": "BIBLIOTHEQUE SAINT LAZARE",
+    "mandate_par_annee": {
+     "2011": 247067.36,
+     "2012": 126903.1,
+     "2013": 76766.58
+    },
+    "total_mandate": 450737.04,
+    "preuve": "Libellé d'opération verbatim « BIBLIOTHEQUE SAINT LAZARE » (direction DAC, mission « AFFAIRES CULTURELLES ») — signal « nom », pas une proximité : « Bibliothèque Saint-Lazare » est un alias déclaré de ce lieu (10e) et délibération 2011 DAC 328 (MAI 2011) « Sollicitation de l'octroi d'une subvention auprès de la Région Ile-de-France pour la construction de la médiathèque Saint Lazare (10e) » nomme le même projet dans le même arrondissement. Mandatements 2011, 2012, 2013 repris à l'identique du candidat (450 737,04 € au total). Les autres opérations « Saint-Lazare » du même secteur (GYMNASE SAINT-LAZARE / DJS, CENTRE SOCIAL SAINT-LAZARE / DASES) désignent d'autres équipements et ne sont pas rattachées.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903453"
+   },
+   {
+    "ap_cle": "1303453",
+    "ap_texte": "BIBLIOTHEQUE SAINT LAZARE",
+    "mandate_par_annee": {
+     "2014": 262300.25,
+     "2015": 38812.82,
+     "2017": 8053.6,
+     "2018": 5364.48
+    },
+    "total_mandate": 314531.15,
+    "preuve": "Libellé d'opération verbatim « BIBLIOTHEQUE SAINT LAZARE » (direction DAC, mission « AFFAIRES CULTURELLES ») — signal « nom », pas une proximité : « Bibliothèque Saint-Lazare » est un alias déclaré de ce lieu (10e) et délibération 2011 DAC 328 (MAI 2011) « Sollicitation de l'octroi d'une subvention auprès de la Région Ile-de-France pour la construction de la médiathèque Saint Lazare (10e) » nomme le même projet dans le même arrondissement. Mandatements 2014, 2015, 2017, 2018 repris à l'identique du candidat (314 531,15 € au total). Les autres opérations « Saint-Lazare » du même secteur (GYMNASE SAINT-LAZARE / DJS, CENTRE SOCIAL SAINT-LAZARE / DASES) désignent d'autres équipements et ne sont pas rattachées.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1303453"
+   }
+  ],
+  "periode": [
+   "2011",
+   "2020"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",
