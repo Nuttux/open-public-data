@@ -93,6 +93,53 @@ jobs:
       - name: Run frontend fetch audit
         run: python pipeline/scripts/audit/check_frontend_fetches.py --strict
 
+  publication-coverage:
+    # Le crible qui manquait le 2026-09-10 : l'audit qualité tourne DANS
+    # l'entrepôt et ne peut pas voir ce qui n'y est jamais entré. Celui-ci part
+    # du catalogue de la Ville et de ce que le site sert vraiment — pas besoin
+    # de BigQuery, donc il tourne sur chaque PR, même sans ENABLE_BQ_CI.
+    #   - série coupée : un morceau de série publié par la Ville qu'on n'ingère pas
+    #   - exercices manquants : la Ville publie 2009→2024, le site sert 2019→2024
+    #   - écart de total, à filtre égal, sur les séries où le filtre est déclaré
+    # Un écart examiné et décidé porte sa raison dans le registre et sort en
+    # info, pas en erreur. Le code de sortie 3 veut dire « portail injoignable » :
+    # ce n'est pas une erreur de données, on l'affiche en avertissement.
+    name: Couverture de publication (Ville × entrepôt × site)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Crible de couverture
+        run: |
+          set +e
+          python pipeline/scripts/audit/audit_publication_coverage.py --no-totaux --dry-run
+          rc=$?
+          set -e
+          case "$rc" in
+            0) echo "✅ couverture : chaque écart restant porte sa raison" ;;
+            3) echo "::warning title=Couverture non vérifiée::le portail opendata.paris.fr n'a pas répondu ou a rendu un catalogue partiel — relancer le job" ;;
+            *) echo "::error title=Couverture::une série publiée par la Ville manque au site, ou un morceau de série n'est pas ingéré — voir le rapport ci-dessus"; exit "$rc" ;;
+          esac
+
+      - name: Sondage ligne à ligne
+        # 20 lignes par série tirées au hasard, chacune recherchée au portail.
+        # Une somme juste ne prouve pas qu'une ligne est juste ; ceci le prouve.
+        run: |
+          set +e
+          python pipeline/scripts/audit/audit_echantillon.py --n 20
+          rc=$?
+          set -e
+          case "$rc" in
+            0) echo "✅ sondage : toutes les lignes tirées sont identiques à la source" ;;
+            3) echo "::warning title=Sondage non concluant::des requêtes au portail ont échoué, aucune ligne fausse trouvée — relancer le job" ;;
+            *) echo "::error title=Sondage::une ligne publiée ne correspond pas à sa source"; exit "$rc" ;;
+          esac
+
   dbt-parse:
     name: dbt parse + compile (no BQ access required)
     runs-on: ubuntu-latest

@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-09-10T20:37:45.992581+00:00",
-  "graine": 405258631,
+  "generated_at": "2026-09-11T14:02:19.907115+00:00",
+  "graine": 795315148,
   "portail": "opendata.paris.fr",
   "note": "Sondage ligne à ligne. Les données reconstruites depuis les PDF (subventions 2020-2021, investissements localisés) sont hors portée : elles n'ont pas d'équivalent interrogeable au portail.",
   "series": [
     {
       "serie": "subventions",
-      "tirees": 60,
-      "identiques": 60,
+      "tirees": 5,
+      "identiques": 5,
       "ecarts": 0,
       "introuvables": 0,
       "erreurs": 0,
@@ -15,8 +15,8 @@
     },
     {
       "serie": "ap",
-      "tirees": 60,
-      "identiques": 60,
+      "tirees": 5,
+      "identiques": 5,
       "ecarts": 0,
       "introuvables": 0,
       "erreurs": 0,
@@ -24,8 +24,8 @@
     },
     {
       "serie": "logements",
-      "tirees": 60,
-      "identiques": 60,
+      "tirees": 5,
+      "identiques": 5,
       "ecarts": 0,
       "introuvables": 0,
       "erreurs": 0,

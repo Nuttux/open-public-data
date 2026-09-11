@@ -18,6 +18,9 @@ Usage
 -----
   python pipeline/scripts/audit/audit_echantillon.py --n 40
   python pipeline/scripts/audit/audit_echantillon.py --serie subventions --n 100
+
+Codes de sortie : 0 tout identique · 1 au moins une ligne fausse ·
+3 impossible de conclure (requêtes en erreur, aucune ligne fausse).
 """
 from __future__ import annotations
 
@@ -219,8 +222,16 @@ def main() -> int:
         "series": resultats,
     }, ensure_ascii=False, indent=1))
     print(f"→ {OUT.relative_to(ROOT)}")
+    # 1 = au moins une ligne publiée ne correspond pas à la source. 3 = aucune
+    # ligne fausse mais des requêtes en erreur : on n'a pas pu conclure, et un
+    # sondage dont toutes les requêtes ont échoué ne doit surtout pas sortir en
+    # vert. 0 = tout tiré, tout vérifié, tout identique.
     faux = sum(r["ecarts"] + r["introuvables"] for r in resultats)
-    return 1 if faux else 0
+    if faux:
+        return 1
+    if sum(r["erreurs"] for r in resultats):
+        return 3
+    return 0
 
 
 if __name__ == "__main__":

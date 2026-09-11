@@ -45,6 +45,9 @@ Usage
   python pipeline/scripts/audit/audit_publication_coverage.py
   python pipeline/scripts/audit/audit_publication_coverage.py --famille budget
   python pipeline/scripts/audit/audit_publication_coverage.py --no-totaux   # rapide
+
+Codes de sortie : 0 rien à signaler · 1 au moins une erreur chez nous ·
+3 impossible de vérifier (portail injoignable ou catalogue partiel).
 """
 from __future__ import annotations
 
@@ -822,7 +825,18 @@ def main() -> int:
         print(f"famille inconnue : {a.famille}", file=sys.stderr)
         return 2
 
-    rapport = auditer(familles, avec_totaux=not a.no_totaux, refresh=a.refresh)
+    # Trois sorties, et il faut les distinguer : 0 rien à signaler, 1 une erreur
+    # réelle chez nous, 3 « je n'ai pas pu vérifier » (portail injoignable,
+    # catalogue tronqué). Confondre 3 et 1 ferait rougir l'intégration continue
+    # les jours où la Ville est en panne, et c'est ainsi qu'une porte perd son
+    # autorité — la même leçon que le gate de parité pre-push.
+    try:
+        rapport = auditer(familles, avec_totaux=not a.no_totaux, refresh=a.refresh)
+    except (CatalogueIncomplet, urllib.error.URLError, TimeoutError, OSError) as exc:
+        print(f"IMPOSSIBLE DE VÉRIFIER — {type(exc).__name__}: {exc}", file=sys.stderr)
+        print("Ce n'est pas une erreur de données : le portail n'a pas répondu ou a "
+              "rendu un catalogue partiel. Relancer.", file=sys.stderr)
+        return 3
     md = markdown(rapport)
     if not a.dry_run:
         OUT_JSON.parent.mkdir(parents=True, exist_ok=True)

@@ -177,3 +177,27 @@ Deux pièges de comparaison sont encodés dans le script : les noms de projet
 sont tronqués à 90 caractères par la collecte (comparer par préfixe), et le
 montant d'une subvention affiché sur une fiche n'est pas celui du résolu mais
 un recalcul exercice par exercice fait à l'export.
+
+## Ce qui tourne à chaque PR, sans BigQuery
+
+Depuis le 2026-09-11, `.github/workflows/data-platform-audit.yml` lance sur
+chaque PR touchant `pipeline/` ou `website/public/` :
+
+- `audit_publication_coverage.py --no-totaux` — série coupée, exercices
+  manquants, jeu abandonné côté Ville ;
+- `audit_echantillon.py --n 20` — vingt lignes par série tirées au hasard et
+  recherchées au portail.
+
+Les deux distinguent trois sorties : 0 rien à signaler, 1 une erreur réelle
+chez nous, 3 « impossible de vérifier » (portail injoignable ou catalogue
+partiel). Le 3 sort en avertissement, jamais en échec : rougir les jours où la
+Ville est en panne, c'est ainsi qu'une porte perd son autorité.
+
+Et `export_lieux.py` refuse d'exporter tant que `check_lieu_money_resolved.py`
+trouve une ligne jugée sans contrepartie dans la source. Ce contrôle est
+appelé par l'export lui-même : on ne peut pas l'oublier.
+
+Règle de travail : dès qu'une PR touche une donnée publiée, on relance les
+deux audits en local avant de pousser, et on ajoute la série au registre
+`FAMILLES` si elle n'y est pas encore (avec son `filtre_source` si l'export
+filtre, sinon la comparaison de totaux reste indicative).

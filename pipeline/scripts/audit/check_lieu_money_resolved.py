@@ -29,8 +29,9 @@ import shutil
 import sys
 from pathlib import Path
 
-CACHE = Path("/Users/daniel/code/open-public-data/pipeline/cache/lieux")
-DATA = Path(__file__).resolve().parents[3] / "website" / "public" / "data"
+ROOT = Path(__file__).resolve().parents[3]
+CACHE = ROOT / "pipeline" / "cache" / "lieux"
+DATA = ROOT / "website" / "public" / "data"
 CENT = 0.011   # tolérance : un centime d'arrondi, pas plus
 
 

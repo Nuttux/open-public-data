@@ -22,6 +22,7 @@ import glob
 import json
 import re
 import shutil
+import sys
 import urllib.parse
 from datetime import datetime, timezone
 from pathlib import Path
@@ -519,7 +520,32 @@ def invest_rows(pat: str, kind_fr: str) -> list[dict]:
     return out
 
 
+def garde_fou_resolus() -> int:
+    """Refuse d'exporter tant qu'une ligne jugée n'a pas sa contrepartie exacte
+    dans les données publiées. Le juge et sa vérification adverse sont des
+    modèles ; le 2026-09-10 ils avaient laissé passer quatre montants sans
+    source (les Halles à 11 230 € près, trois exercices inventés sur la
+    Philharmonie, une clé d'opération inconnue sur le Théâtre 13). Ce contrôle
+    est mécanique et tourne à chaque export, on ne peut pas l'oublier."""
+    sys.path.insert(0, str(ROOT / "pipeline" / "scripts" / "audit"))
+    from check_lieu_money_resolved import anomalies_du_lieu  # noqa: E402
+    anomalies = []
+    for p in sorted(CACHE.glob("*_money_resolved.json")):
+        anos, _ = anomalies_du_lieu(p.name[: -len("_money_resolved.json")])
+        anomalies.extend(anos)
+    if not anomalies:
+        return 0
+    print(f"EXPORT REFUSÉ : {len(anomalies)} ligne(s) jugée(s) sans contrepartie dans la "
+          f"source ({sum(a['montant'] for a in anomalies)/1e6:.2f} M€).", file=sys.stderr)
+    for a in anomalies[:10]:
+        print(f"   {a['slug']:<30} {a['type']:<12} {str(a['cle'])[:34]:<36} {a['faute']}", file=sys.stderr)
+    print("→ python pipeline/scripts/audit/check_lieu_money_resolved.py --fix", file=sys.stderr)
+    return 1
+
+
 def main() -> int:
+    if garde_fou_resolus():
+        return 1
     OUT.mkdir(parents=True, exist_ok=True)
     IMG.mkdir(parents=True, exist_ok=True)
     wiki = json.load(open(CACHE / "wiki_summaries.json")) if (CACHE / "wiki_summaries.json").exists() else {}
