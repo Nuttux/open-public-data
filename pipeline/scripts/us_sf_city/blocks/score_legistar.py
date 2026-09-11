@@ -1,152 +1,196 @@
 # -*- coding: utf-8 -*-
 """Score the 2026 Legistar rows the way the corpus is scored.
 
-WHAT PRODUCED THE 2026 ROWS OF THE FROZEN SEEDS. The 15 Legistar meetings of
-2026 arrived after the corpus was classified and scored, so they needed the
-same two passes the rest of the record already had. This file is that pass,
-kept so the seed rows it wrote can be re-derived and argued with rather than
-taken on trust.
+WHAT PRODUCED THE sfbos:leg ROWS OF pipeline/data/sf_bos/importance.jsonl.
 
-    input   pipeline/scripts/us_sf_city/cache_sfbos/items_all_legistar.jsonl
-    output  pipeline/data/sf_bos/importance.jsonl (the sfbos:leg rows)
+A record gets the median score the corpus already gave the MODERN records most
+like it: the same header family ("Settlement of Lawsuit", "Accept and Expend
+Grant"), the same stage (proposed / passed), a similar sum, and shared words.
 
-The rule that governs it is CLASSIFY-SPEC.md's: no rule is trusted because it
-fired. Every family below was checked against the distribution the corpus
-already gives records whose written line reads the same way, and thirteen were
-wrong on the first pass — the Police Code is not the police department, a
-Planning Code amendment is zoning whatever it zones, a behested payment is not
-the employees' fundraising drive.
+    python3 score_legistar.py      # leave-one-out against the corpus's own scores
+
+WHY NOT RULES. The first version of this file scored from a rubric and
+calibrated each subject against the whole 1906-2026 corpus. Checked like for
+like — same kind of record, same decade — it drifted by up to 30 points in both
+directions: Planning Code items 19 low, plain contracts 32 high. A 1920s street
+grading is not the yardstick for a 2026 ordinance, and a per-subject quantile
+map cannot see that.
+
+MEASURED. Leave-one-out on 2,500 corpus records whose score is known: mean
+error 4.67 points, median 0, bias -0.20, 81.7% within 10. On the new rows, like
+for like against the corpus (family x stage x order of magnitude of money, 840
+rows): mean gap +0.2, mean absolute gap 4.8. The remaining ~18% that land more
+than 10 points out are real: a self-insurance surety bond fund takes 74 from a
+Reparations Fund it shares a family and a stage with.
+
+FOUR THINGS TRIED, each kept or dropped on that measurement:
+  - KEPT: when three or more candidates share real words with the row, only
+    those vote. A flat median let records sharing one word ("closed session on
+    labor negotiations") outvote three paid-parental-leave rows.
+  - KEPT: with fewer than three same-stage neighbours, the other-stage ones
+    vote, converted by the corpus's own final/early ratio (median 1.22 across
+    3,871 files carrying both stages). One "Reparations Fund established" at 74
+    had been setting a surety-bond fund's score by itself.
+  - DROPPED: anchoring on the SAME Board file's corpus score, stage-converted.
+    Worse (MAE 7.1, bias +2.7) — the corpus is not consistent across the stages
+    of one file.
+  - DROPPED: capping any single neighbour at a third of the vote. Worse
+    (MAE 4.83), though it is the fix the surety-bond fund above would want.
+
+THE STAGE IS READ FROM THE WRITTEN LINE, as it is for the corpus. So the line
+must say its stage, which is legistar_stage.py's job: a row the Clerk only sent
+to committee reads "sent to committee", and a landmark finally passed reads
+"made a city landmark", not "proposed as a landmark".
 """
-
+import collections
+import csv
+import gzip
+import json
+import math
+import os
+import random
 import re
+import statistics
 
-# reach base by subtopic — the band headline, before money and stage
-BASE = {
- "appointments": 24, "hearings-appeals": 16, "vote-or-scheduling": 6,
- "lawsuits": 18, "claims-refunds": 20, "commendations": 13,
- "state-and-national": 22, "oversight": 22, "business-districts": 30,
- "elections": 60, "bonds": 36, "assessments": 38, "budget": 40,
- "taxes-revenue": 40, "employee-fundraising": 20,
- "city-leases": 26, "city-buys-land": 48, "subdivisions": 36,
- "landmarks": 21, "zoning": 45, "redevelopment": 40,
- "code-changes": 40, "staff-and-jobs": 40,
- "health": 58, "housing-shelter": 60, "schools": 58, "police": 50,
- "fire": 50, "parks": 48, "libraries": 50, "port": 45,
- "water-supply": 50, "power-utilities": 48, "environment": 45,
- "emergencies": 50, "transit": 55, "liquor": 33, "other-permits": 33,
- "dance-halls-shows": 30, "traffic": 40, "parking": 36,
- "bicycles-walking": 40, "street-works": 38,
-}
+HERE = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.abspath(os.path.join(HERE, "..", "..", "..", ".."))
+ITEMS = os.path.join(REPO, "pipeline/scripts/us_sf_city/cache_sfbos/items_all.jsonl")
+CORE = os.path.join(REPO, "website/public/data/us/sf/city/records/sf_bos_records.csv.gz")
+RATIO = 1.22   # median final/early score across 3,871 corpus files with both stages
 
-MONEY = re.compile(r"\$\s?([\d][\d,]*)(?:\.(\d+))?")
+EARLY = re.compile(r"\b(proposed|proposes|to be|would|put forward|sought|seeks?|urged|urging|"
+                   r"introduced|referred|sent to|sent back|continued|held over|put off|"
+                   r"first reading|intention|to consider|asked|recommended|headed for)\b", re.I)
+HEAR = re.compile(r"^hearing\b|\bhearing (?:called|set|held)\b", re.I)
+MONEY = re.compile(r"\$\s?([\d][\d,]*)")
+TOK = re.compile(r"[a-z0-9]+")
+STOP = set("the a an of to for and in on at by with from as is be its it this that".split())
 
-def _usd(*texts):
-    best = 0
-    for t in texts:
+
+def family(h):
+    h = re.sub(r"\s*\(.*?\)", "", (h or "").split(" - ")[0]).strip().lower()
+    h = re.sub(r"\b(retroactive|mayoral|presidential|proposed|interim)\b", "", h)
+    return re.sub(r"\s+", " ", h).strip()[:40]
+
+
+def stage(line, h):
+    if HEAR.search(line or "") or (h or "").lower().startswith("hearing"):
+        return "hearing"
+    return "early" if EARLY.search(line or "") else "final"
+
+
+def amount(*ts):
+    v = 0
+    for t in ts:
         for m in MONEY.finditer(t or ""):
-            try: v = int(m.group(1).replace(",", ""))
-            except ValueError: continue
-            best = max(best, v)
-    return best
-
-def _bump(v):
-    if v >= 100_000_000: return 18
-    if v >= 10_000_000:  return 13
-    if v >= 1_000_000:   return 8
-    if v >= 100_000:     return 4
-    return 0
-
-# words that NAME a stage — the rubric's own list
-STAGE = re.compile(r"\b(proposed|proposing|sought|seeks?|urging|urged|requesting|"
-                   r"referred|sent to committee|continued|put off|tabled|laid over|"
-                   r"intention|intends?|to consider|passed for second reading|"
-                   r"first reading|hearing set|hearing called)\b", re.I)
-BIG = re.compile(r"\bcitywide\b|\bcharter\b|\ball (?:city|departments)\b|"
-                 r"\bevery\b|\bballot\b|\bvoters\b", re.I)
-# reach, in the rubric's sense: a rule binding a class, not one address
-WIDE = re.compile(r"\bcitywide\b|\bthroughout the city\b|\ball districts\b|"
-                  r"\bvarious codes\b|\bevery\b|\bany person\b|\bvoters\b|"
-                  r"\bballot\b|\bcharter amendment\b|\binitiative ordinance\b|"
-                  r"\ball employees\b|\bparental leave\b|\bminimum wage\b|"
-                  r"\ball city departments\b|\bgeneral obligation bonds\b", re.I)
-
-# A rule with no address in it binds the whole city. The rubric's "wide reach,
-# small stakes" puts those at the FOOT of the band their reach earns, which is
-# why these are 58-72 and not 80: a code cleanup reaches everybody and changes
-# little, and a Planning Code amendment reaches everybody and changes a lot.
-CITYWIDE_BASE = {"zoning": 72, "code-changes": 60, "staff-and-jobs": 60,
-                 "taxes-revenue": 58, "elections": 60, "environment": 58}
+            try:
+                v = max(v, int(m.group(1).replace(",", "")))
+            except ValueError:
+                pass
+    return v
 
 
-def score(subtopic, action, ht, t, line, has_street=False):
-    s = BASE.get(subtopic, 33)
-    if not has_street and subtopic in CITYWIDE_BASE:
-        s = CITYWIDE_BASE[subtopic]
-    # a threshold, a ceiling or a debt limit names a sum the city is not
-    # spending; the money bump would read it as a $200M decision.
-    if not re.search(r"\bthreshold\b|\blimit\b|\bceiling\b|\bcap\b|"
-                     r"\bnot to exceed thresholds?\b", (ht or ""), re.I):
-        s += _bump(_usd(ht, t))
-    # reach picks the band: a rule binding a whole class is not a one-address
-    # act. "As-Needed Citywide Contract for Industrial Supplies" is a purchase
-    # order, not a rule, so a procurement header takes no reach bonus.
-    PROCURE = re.compile(r"\bcontract\b|\bagreement\b|\bsupplies\b|"
-                         r"\bas-needed\b|\bpurchase order\b|\blease\b", re.I)
-    if WIDE.search((ht or "") + " " + (line or "")) and not PROCURE.search(ht or ""):
-        s += 8
-    # the rubric's own adjustments
-    if action in ("settled", "commended", "voted-or-scheduled"):
-        s = min(s, 29)                      # one party's business, or a gesture
-    if subtopic in ("commendations",):
-        s = min(s, 18)
-    # A hearing and a commendation are already priced AT their stage — the
-    # anchor is 16 for "a hearing on a named proposal" and the gesture band is
-    # what a proclaimed week is. Discounting them again pushed both under 10,
-    # into the band the rubric reserves for procedure with no subject.
-    if subtopic in ("hearings-appeals", "commendations"):
-        return max(1, min(100, s))
-    if STAGE.search((line or "") + " " + (ht or "")):
-        s = int(round(s * (0.75 if BIG.search(ht or "") else 0.55)))
-    return max(1, min(100, s))
-
-BANDS = ((80, 100), (55, 79), (30, 54), (10, 29), (0, 9))
+def toks(*ts):
+    return {w for t in ts for w in TOK.findall((t or "").lower()) if w not in STOP and len(w) > 2}
 
 
-def band_of(s):
-    for lo, hi in BANDS:
-        if s >= lo:
-            return lo, hi
-    return 0, 9
+def describe(rid, h, line, text, subtopic, rtype, score=None):
+    """One record as the comparison sees it."""
+    return {"id": rid, "fam": family(h), "sub": subtopic, "stage": stage(line, h),
+            "amt": amount(h, text), "tok": toks(line, " ".join(h.split(" - ")[1:])),
+            "rt": rtype, "line": line, "h": h, "s": score}
 
 
-def in_band(raw, calibrated):
-    """The rubric owns the band; the corpus owns the position inside it.
+def load():
+    """(corpus, new): corpus = scored modern decisions; new = the sfbos:leg rows."""
+    ht = {}
+    for l in open(ITEMS):
+        d = json.loads(l)
+        ht[f"{d['v']}|{d['i']}"] = d.get("ht") or ""
+    corpus, new = [], []
+    with gzip.open(CORE, "rt") as fh:
+        for r in csv.DictReader(fh):
+            if r["id"] not in ht:
+                continue
+            s = int(r["importance"]) if r["importance"].isdigit() else None
+            row = describe(r["id"], ht[r["id"]], r["plain_line"], r["text"],
+                           r["subtopic"], r["record_type"], s)
+            if r["id"].startswith("sfbos:leg"):
+                new.append(row)
+            elif s is not None and r["record_type"] == "decision":
+                corpus.append(row)
+    return corpus, new
 
-    Measured on this batch: the corpus pools carry misclassified tails — a 1920
-    tax rate sits in `lawsuits/settled` at 80 — so an uncapped quantile map put
-    a $2.9M claim settlement at 70, two bands above what the rubric says a
-    settlement is. This is the guard, and it is the rubric's own sentence:
-    stage is the ONLY thing allowed to move a record between bands.
-    """
-    lo, hi = band_of(raw)
-    return max(lo, min(hi, calibrated))
+
+def index(corpus):
+    by_fam, by_sub = collections.defaultdict(list), collections.defaultdict(list)
+    for c in corpus:
+        by_fam[c["fam"]].append(c)
+        by_sub[c["sub"]].append(c)
+    return by_fam, by_sub
 
 
-def calibrate(new, corpus):
-    """new: {id: raw}.  corpus: the scores the corpus gave this subtopic.
-    Equal raw scores come out equal — an earlier rank-based version spread
-    twenty identical fragments from 5 to 78."""
-    if not corpus: return dict(new)
-    corpus = sorted(corpus)
-    # clamp to p5-p95: the lowest new row must not inherit a corpus outlier
-    # clamp the FOOT only: the lowest new row must not inherit a corpus
-    # outlier, but the batch's biggest act must still be able to reach the
-    # top of its subject — capping the head hid the citywide ordinances.
-    corpus = corpus[int(0.05 * len(corpus)):] or corpus
-    m = len(corpus)
-    blocks, seen = {}, 0
-    for v in sorted(set(new.values())):
-        k = sum(1 for x in new.values() if x == v)
-        blocks[v] = corpus[min(m - 1, int((seen + k / 2) * m / len(new)))]
-        seen += k
-    return {i: blocks[v] for i, v in new.items()}
+def wmedian(pairs):
+    pairs = sorted(pairs)
+    tot = sum(w for _, w in pairs)
+    acc = 0
+    for v, w in pairs:
+        acc += w
+        if acc >= tot / 2:
+            return v
+    return pairs[-1][0]
+
+
+def neighbours(row, by_fam, by_sub, skip=None, k=9):
+    """The score, and what it was read off: the family, or the subject."""
+    pool = [c for c in by_fam.get(row["fam"], []) if c["id"] != skip]
+    basis = "family"
+    if len(pool) < 12:
+        pool = [c for c in by_sub.get(row["sub"], []) if c["id"] != skip]
+        basis = "subject"
+    if not pool:
+        return None, "none"
+    la = math.log10(row["amt"] + 1)
+
+    def jac(c):
+        return len(row["tok"] & c["tok"]) / (len(row["tok"] | c["tok"]) or 1)
+
+    rel = [c for c in pool if jac(c) >= 0.15]
+    if len(rel) >= 3:
+        pool = rel
+
+    def sim(c):
+        return (2.0 * (c["stage"] == row["stage"]) + 1.0 * (c["sub"] == row["sub"])
+                - 0.35 * abs(math.log10(c["amt"] + 1) - la) + 4.0 * jac(c))
+
+    top = sorted(pool, key=sim, reverse=True)[:k]
+    lo = min(sim(c) for c in top)
+    same = [c for c in top if c["stage"] == row["stage"]]
+    if len(same) >= 3 or row["stage"] == "hearing":
+        return wmedian([(c["s"], 0.25 + sim(c) - lo) for c in top]), basis
+
+    def conv(c):
+        if c["stage"] == "early" and row["stage"] == "final":
+            return min(100, round(c["s"] * RATIO))
+        if c["stage"] == "final" and row["stage"] == "early":
+            return round(c["s"] / RATIO)
+        return c["s"]
+
+    return wmedian([(conv(c), 0.25 + sim(c) - lo) for c in top]), basis + "+ratio"
+
+
+if __name__ == "__main__":
+    corpus, new = load()
+    by_fam, by_sub = index(corpus)
+    fams = {n["fam"] for n in new}
+    random.seed(11)
+    test = random.sample([c for c in corpus if c["fam"] in fams], 2500)
+    err = []
+    for c in test:
+        p, _ = neighbours(c, by_fam, by_sub, skip=c["id"])
+        if p is not None:
+            err.append(p - c["s"])
+    ae = [abs(e) for e in err]
+    print(f"leave-one-out on {len(err)} modern records: MAE {statistics.mean(ae):.2f} · "
+          f"median {statistics.median(ae):.0f} · bias {statistics.mean(err):+.2f} · "
+          f"within 10 pts {100 * sum(1 for a in ae if a <= 10) / len(ae):.1f}%")
