@@ -30,6 +30,23 @@ UA = {"User-Agent": "qipu/0.1 (recherche civique; qipu.org)"}
 
 # Titres d'article quand le nom du seed ne suffit pas (vérifiés à la main).
 TITRES = {
+    # Lieux ajoutés le 2026-09-11 : l'article existe mais son titre ne contient
+    # pas le nom du seed, donc le garde-fou le rejetait. Titres relevés dans la
+    # recherche Wikipédia et vérifiés un par un.
+    "ecole-boulle": "École Boulle",
+    "ecole-du-breuil": "École Du Breuil",
+    "espci-paris": "École supérieure de physique et de chimie industrielles de la ville de Paris",
+    "halle-pajol": "ZAC Pajol",
+    "conservatoire-maurice-ravel": "Conservatoire Maurice-Ravel",
+    "parc-des-expositions-de-la-porte-de-versailles": "Paris Expo Porte de Versailles",
+    "eglise-sainte-anne-de-la-butte-aux-cailles": "Église Sainte-Anne de la Butte-aux-Cailles",
+    "eglise-saint-germain-des-pres": "Abbaye de Saint-Germain-des-Prés",
+    "eglise-notre-dame-du-perpetuel-secours": "Basilique Notre-Dame-du-Perpétuel-Secours de Paris",
+    "eglise-saint-pierre-de-montrouge": "Église Saint-Pierre de Montrouge",
+    "eglise-saint-martin-des-champs": "Église Saint-Martin-des-Champs de Paris",
+    "eglise-notre-dame-d-auteuil": "Église Notre-Dame-d'Auteuil",
+    "eglise-saint-gervais-saint-protais": "Église Saint-Gervais-Saint-Protais de Paris",
+    "temple-de-l-oratoire-du-louvre": "Temple protestant de l'Oratoire du Louvre",
     "theatre-de-la-ville": "Théâtre de la Ville",
     "les-halles": "Forum des Halles",
     "centquatre": "Centquatre-Paris",
@@ -94,14 +111,29 @@ def get(url: str, timeout: int = 40) -> bytes:
 
 
 def summary(title: str) -> dict | None:
+    """Le résumé d'un article, ou None s'il n'existe pas.
+
+    Wikipédia limite le débit et répond 429. Sans réessai, cette réponse est
+    indiscernable d'un « article inexistant » : le titre vérifié à la main est
+    alors abandonné au profit du nom du seed, dont l'article est ensuite rejeté
+    par le garde-fou. Résultat vérifié le 2026-09-11 : onze lieux sans
+    description alors que leur article existait. On réessaie donc, et une
+    limitation ne se déguise plus en absence."""
     url = "https://fr.wikipedia.org/api/rest_v1/page/summary/" + urllib.parse.quote(title.replace(" ", "_"))
-    try:
-        j = json.loads(get(url))
-    except Exception:
-        return None
-    if j.get("type") == "disambiguation" or not j.get("extract"):
-        return None
-    return j
+    for essai in range(4):
+        try:
+            j = json.loads(get(url))
+        except urllib.error.HTTPError as e:
+            if e.code == 429 and essai < 3:
+                time.sleep(4 * (essai + 1))
+                continue
+            return None
+        except Exception:
+            return None
+        if j.get("type") == "disambiguation" or not j.get("extract"):
+            return None
+        return j
+    return None
 
 
 def main() -> int:
@@ -134,7 +166,15 @@ def main() -> int:
         # générique ne doit pas capturer un article voisin. Sauf quand le titre
         # vient de TITRES : il a déjà été vérifié (« Les Halles » → « Forum des
         # Halles » est correct et serait rejeté ici).
-        key = norm(re.sub(r"^(Piscine|Parc|Jardin|Square|Place|Théâtre|Marché|Tour) ", "", name))
+        # On compare sur la partie DISTINCTIVE du nom : l'encyclopédie nomme
+        # souvent l'édifice autrement que la Ville (« Temple de l'Oratoire du
+        # Louvre » → « Temple protestant de l'Oratoire du Louvre »). Le mot de
+        # type en tête ne distingue rien et faisait rejeter l'article juste.
+        key = norm(re.sub(
+            r"^(Piscine|Parc|Jardin|Square|Place|Théâtre|Marché|Tour|Temple|Église|Eglise"
+            r"|Conservatoire|École|Ecole|Halle|Musée|Musee|Bibliothèque|Bibliotheque"
+            r"|Médiathèque|Mediatheque|Cité|Cite|Institut|Stade|Hippodrome|Centre sportif"
+            r"|Basilique|Chapelle) ", "", name))
         if not verifie and key and key not in norm(j["title"]) and norm(name) not in norm(j["title"]):
             print(f"--  {slug}: « {j['title']} » ne nomme pas le lieu, rejeté", file=sys.stderr)
             continue
