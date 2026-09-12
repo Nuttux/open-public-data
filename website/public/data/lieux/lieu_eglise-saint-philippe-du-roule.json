@@ -1,0 +1,135 @@
+{
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "eglise-saint-philippe-du-roule",
+ "name": "Église Saint-Philippe-du-Roule",
+ "kind_fr": "Église",
+ "kind_en": "Église",
+ "famille": "culture",
+ "arrondissement": 8,
+ "lat": 48.873334,
+ "lon": 2.310558,
+ "photo": "/img/lieux/eglise-saint-philippe-du-roule.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Saint-Philippe-du-Roule",
+  "source": "Wikipédia"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "L'église Saint-Philippe-du-Roule a été construite à la fin du XVIIIe siècle et remaniée deux fois au cours du XIXe. Son histoire est liée aux différentes étapes de l'édification de ce quartier auquel elle a donné son nom.",
+  "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Saint-Philippe-du-Roule",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 652,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 5610876.35,
+  "invest_annees": [
+   "2019",
+   "2020",
+   "2021",
+   "2022",
+   "2023",
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (1 trouvés)",
+  "lecture_mode_en": "title naming the place (1 found)",
+  "n_lus": 1,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "2002": [
+   {
+    "reference": "2002 DAC 122",
+    "titre": "Approbation du principe et des modalités d'attribution d'un marché de travaux sur appel d'offres en vue de la réalisation des travaux de restauration des couvertures et des charpentes à l'église Saint-Philippe-du-Roule (8e). - Autorisation à M. le Maire de Paris de signer le marché correspondant. Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55723"
+   }
+  ]
+ },
+ "invest": [
+  {
+   "annee": 2019,
+   "montant_eur": 2012484.0,
+   "nom_projet": "Eglise Saint-Philippe-du-Roule - Restauration des toitures",
+   "preuve": "Signal exact : le nom de l'opération nomme ce lieu : « Eglise Saint-Philippe-du-Roule - Restauration des toitures » (distance 145 m). Pointeur de contexte : en 2002, la Ville a approuvé un marché de travaux de restauration des couvertures et des charpentes à cette église (délibération 2002 DAC 122) ; le lien avec l'opération 2019-2024 n'est pas établi.",
+   "id": "2019_08_il_012"
+  },
+  {
+   "annee": 2020,
+   "montant_eur": 36580.0,
+   "nom_projet": "Edifices cultuels Eglise Saint-Philippe-Du-Roule - Restauration des toitures",
+   "preuve": "Signal exact : le nom de l'opération nomme ce lieu : « Edifices cultuels Eglise Saint-Philippe-Du-Roule - Restauration des toitures » (distance 145 m) ; « Edifices cultuels » est le programme budgétaire, l'opération nomme explicitement cette église.",
+   "id": "2020_08_il_000"
+  },
+  {
+   "annee": 2021,
+   "montant_eur": 2178439.0,
+   "nom_projet": "Eglise Saint-Philippe-du-Roule - Restauration des toitures",
+   "preuve": "Signal exact : le nom de l'opération nomme ce lieu : « Eglise Saint-Philippe-du-Roule - Restauration des toitures » (distance 145 m). Pointeur de contexte : en 2002, la Ville a approuvé un marché de travaux de restauration des couvertures et des charpentes à cette église (délibération 2002 DAC 122) ; le lien avec l'opération 2019-2024 n'est pas établi.",
+   "id": "2021_08_il_014"
+  },
+  {
+   "annee": 2022,
+   "montant_eur": 748751.0,
+   "nom_projet": "Eglise Saint-Philippe du Roule - Restauration des toitures",
+   "preuve": "Signal exact : le nom de l'opération nomme ce lieu : « Eglise Saint-Philippe du Roule - Restauration des toitures » (distance 145 m).",
+   "id": "2022_08_21_016"
+  },
+  {
+   "annee": 2023,
+   "montant_eur": 551034.75,
+   "nom_projet": "Eglise Saint-Philippe du Roule - Restauration des toitures",
+   "preuve": "Signal exact : le nom de l'opération nomme ce lieu : « Eglise Saint-Philippe du Roule - Restauration des toitures » (distance 145 m).",
+   "id": "2023_08_21_014"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 83587.6,
+   "nom_projet": "Eglise Saint-Philippe du Roule - Restauration des toitures",
+   "preuve": "Signal exact : le nom de l'opération nomme ce lieu : « Eglise Saint-Philippe du Roule - Restauration des toitures » (distance 145 m).",
+   "id": "2024_08_21_012"
+  }
+ ],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89glise+Saint-Philippe-du-Roule"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

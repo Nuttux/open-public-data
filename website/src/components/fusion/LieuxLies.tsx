@@ -48,6 +48,16 @@ export default function LieuxLies({
               {l.photo ? <img src={l.photo} alt="" loading="lazy" /> : <span className="fx-voisin-noimg" />}
               <span className="fx-voisin-name">{l.name}</span>
               {m && <span className="fx-voisin-meta">{m}</span>}
+              {/* Même règle que la vignette « Même famille » : le montant
+                  couvre la fenêtre commune, donc un lieu dont l'essentiel est
+                  antérieur doit le dire ici aussi, sinon la liste ment. */}
+              {(l.depense_reelle_avant_seuil_eur ?? 0) >= 1e6 && (
+                <span className="fx-voisin-avant">
+                  + {(l.depense_reelle_avant_seuil_eur! / 1e6).toLocaleString(
+                        locale === "en" ? "en-GB" : "fr-FR", { maximumFractionDigits: 0 })} M€{" "}
+                  {locale === "en" ? `before ${l.seuil_commun ?? ""}` : `avant ${l.seuil_commun ?? ""}`}
+                </span>
+              )}
             </Link>
           );
         })}

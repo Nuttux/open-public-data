@@ -1,6 +1,6 @@
 {
   "year": 2024,
-  "generated_at": "2026-08-26T20:49:22.167754",
+  "generated_at": "2026-09-11T16:24:25.613714",
   "total_montant": 1353488225.0,
   "nb_beneficiaires": 5948,
   "data": [
@@ -811,7 +811,7 @@
       "source_thematique": "direction",
       "montant_total": 3690072.0,
       "nb_subventions": 1,
-      "objet_principal": "Acompte 2024 DAC",
+      "objet_principal": "Paris Ateliers - Subvention de fonctionnement 2024",
       "siret": "31293687500094"
     },
     {
@@ -4546,7 +4546,7 @@
       "source_thematique": "direction",
       "montant_total": 181000.0,
       "nb_subventions": 1,
-      "objet_principal": "Subvention de fonctionnement pour le financement des opérations Ecole et Cinéma et Mon 1er Cinéma",
+      "objet_principal": "Acompte 2024 DAC",
       "siret": "48154244700018"
     },
     {
@@ -5971,7 +5971,7 @@
       "source_thematique": "direction",
       "montant_total": 123389.0,
       "nb_subventions": 1,
-      "objet_principal": "Formation certifiante : Développement Web et Mobile",
+      "objet_principal": "Formation certifiante : Technicien Supérieur Système et Réseaux",
       "siret": "82424482600064"
     },
     {
@@ -9556,7 +9556,7 @@
       "source_thematique": "direction",
       "montant_total": 64500.0,
       "nb_subventions": 1,
-      "objet_principal": "Alimentation durable",
+      "objet_principal": "DAE Moulin à café, subvention annuelle fonctionnement 2024",
       "siret": "48332094100022"
     },
     {
@@ -10081,7 +10081,7 @@
       "source_thematique": "direction",
       "montant_total": 60000.0,
       "nb_subventions": 1,
-      "objet_principal": "Handisport Open Paris 2024",
+      "objet_principal": "Championnat d'Europe d'Escrime Fauteuil",
       "siret": "78530731500032"
     },
     {
@@ -10321,7 +10321,7 @@
       "source_thematique": "direction",
       "montant_total": 57500.0,
       "nb_subventions": 1,
-      "objet_principal": "PERMANENCE DROITS SOCIAUX ACT UP-PARIS",
+      "objet_principal": "PREVENTION SANTE SEXUELLE ACT UP-PARIS",
       "siret": "39489556900033"
     },
     {
@@ -15466,7 +15466,7 @@
       "source_thematique": "default",
       "montant_total": 32500.0,
       "nb_subventions": 1,
-      "objet_principal": "Complément de financement poste Adulte-relais AR075 23 R0036 00",
+      "objet_principal": "Complément de financement poste Adulte-relais AR075 16 R0012 02",
       "siret": "42894726100023"
     },
     {
@@ -16561,7 +16561,7 @@
       "source_thematique": "direction",
       "montant_total": 30000.0,
       "nb_subventions": 1,
-      "objet_principal": "Projet Formation - Adminsitrateur Cybersécurité",
+      "objet_principal": "Projet Formation - DEVOPS",
       "siret": "88311529700011"
     },
     {
@@ -23296,7 +23296,7 @@
       "source_thematique": "llm",
       "montant_total": 16000.0,
       "nb_subventions": 1,
-      "objet_principal": "Le Parlement des Voix Nouvelles",
+      "objet_principal": "IMPACT 2024 - Parcours de femmes",
       "siret": "89203455400014"
     },
     {
@@ -37876,7 +37876,7 @@
       "source_thematique": "llm",
       "montant_total": 6000.0,
       "nb_subventions": 1,
-      "objet_principal": "Paris-Saigon Aller Simple",
+      "objet_principal": "Paroles de femmes en pied d'immeuble",
       "siret": "39408295200034"
     },
     {
@@ -43666,7 +43666,7 @@
       "source_thematique": "llm",
       "montant_total": 5000.0,
       "nb_subventions": 1,
-      "objet_principal": "Les stéréotypes de genre entretiennent-ils les inégalités filles-garçons?",
+      "objet_principal": "Est-ce que j'ai ma place dans l'espace public ?",
       "siret": "79888637000013"
     },
     {
@@ -48151,7 +48151,7 @@
       "source_thematique": "direction",
       "montant_total": 4000.0,
       "nb_subventions": 1,
-      "objet_principal": "Fonctionnement Asso Art'Sign 2024",
+      "objet_principal": "L'info c'est clair",
       "siret": "49008480300025"
     },
     {
@@ -64876,7 +64876,7 @@
       "source_thematique": "llm",
       "montant_total": 1000.0,
       "nb_subventions": 1,
-      "objet_principal": "FSF18 :  Comme des étourneaux",
+      "objet_principal": "FSF18 : « Rolling tango »",
       "siret": "43308307800025"
     },
     {

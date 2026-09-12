@@ -1,0 +1,215 @@
+{
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "eglise-saint-germain-des-pres",
+ "name": "Église Saint-Germain-des-Prés",
+ "kind_fr": "Église",
+ "kind_en": "Église",
+ "famille": "culture",
+ "arrondissement": 6,
+ "lat": 48.853968,
+ "lon": 2.334518,
+ "photo": "/img/lieux/eglise-saint-germain-des-pres.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Diego Delso",
+  "url": "https://commons.wikimedia.org/wiki/File:Abad%C3%ADa_de_Saint-Germain-des-Pr%C3%A9s,_Par%C3%ADs,_Francia,_2022-11-01,_DD_20-22_HDR.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 771,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 3993236.77,
+  "invest_annees": [
+   "2018",
+   "2019",
+   "2020",
+   "2023",
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (5 trouvés)",
+  "lecture_mode_en": "title naming the place (5 found)",
+  "n_lus": 5,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "1997": [
+   {
+    "reference": "1997 DAC 123",
+    "titre": "Approbation du principe de la réalisation des travaux de réfection des installations électriques de l'église Saint-Germain-des-Prés (6e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 1997",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75354"
+   }
+  ],
+  "2000": [
+   {
+    "reference": "2000 DAC 121",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec la Société Giorgio Armani France une convention de parrainage d'un montant de 1.000.000 F pour la restauration de vitraux de l'église Saint-Germain-des-Prés (6e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43220"
+   },
+   {
+    "reference": "2000 DAC 244",
+    "titre": "Approbation du principe de la réalisation des travaux de restauration des baies 13, 111 et 113 de l'église Saint-Germain-des-Prés (6e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28572"
+   }
+  ],
+  "2012": [
+   {
+    "reference": "2012 DAC 640",
+    "titre": "2012 DAC 640 - Subvention auprès de l'Etat au titre de sa participation au financement d'une mission de diagnostic et d'évaluation financière du programme de restauration intérieure de l'église Saint Germain des Prés (6e).",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2012",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=108517"
+   }
+  ],
+  "2015": [
+   {
+    "reference": "2015 DAC 331",
+    "titre": "2015 DAC 331 - Convention de mécénat avec le Fonds de dotation pour le rayonnement de l’église Saint-Germain-des-Prés en vue de la restauration intérieure de l’église (6e).",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
+    "seance": "MAI 2015",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125365"
+   }
+  ]
+ },
+ "invest": [
+  {
+   "annee": 2018,
+   "montant_eur": 1476618.49,
+   "nom_projet": "EGLISE ST GERMAIN DES PRES",
+   "preuve": "Le libellé « EGLISE ST GERMAIN DES PRES » nomme l'église elle-même (et non le quartier, le boulevard ou la place), à 39 m du point du lieu. Les candidats 2018 libellés « ST GERMAIN DES PRES » sans le mot « EGLISE » sont écartés : le libellé seul ne dit pas s'il s'agit du bâtiment.",
+   "id": "2018-1504495-23168"
+  },
+  {
+   "annee": 2019,
+   "montant_eur": 1554939.0,
+   "nom_projet": "Edifices cultuels Eglise Saint-Germain-des-Prés - Travaux de restauration",
+   "preuve": "Le nom du projet nomme le lieu verbatim : « Edifices cultuels Eglise Saint-Germain-des-Prés - Travaux de restauration », à 39 m du point du lieu. Délibération 2015 DAC 331 (séance de mai 2015) : « Convention de mécénat avec le Fonds de dotation pour le rayonnement de l’église Saint-Germain-des-Prés en vue de la restauration intérieure de l’église (6e). »",
+   "id": "2019_06_il_012"
+  },
+  {
+   "annee": 2020,
+   "montant_eur": 228340.0,
+   "nom_projet": "Eglise Saint-Germain-des-Prés - Travaux de restauration",
+   "preuve": "Nom du projet verbatim « Eglise Saint-Germain-des-Prés - Travaux de restauration », à 39 m du lieu.",
+   "id": "2020_06_il_010"
+  },
+  {
+   "annee": 2023,
+   "montant_eur": 384935.5,
+   "nom_projet": "Eglise Saint-Germain des Prés - Travaux de restauration",
+   "preuve": "Nom du projet verbatim « Eglise Saint-Germain des Prés - Travaux de restauration », à 39 m du lieu.",
+   "id": "2023_06_15_009"
+  },
+  {
+   "annee": 2023,
+   "montant_eur": 153345.61,
+   "nom_projet": "Mise en valeur du porche de l'église Saint-Germain-des-Prés",
+   "preuve": "Le nom du projet désigne une partie de ce bâtiment : « Mise en valeur du porche de l'église Saint-Germain-des-Prés ». Signal « nom » seul : le point géocodé du candidat est à 534 m du lieu, donc la position ne corrobore pas le libellé.",
+   "id": "2023_06_15_012"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 195058.17,
+   "nom_projet": "Eglise Saint-Germain Des Prés - Restauration",
+   "preuve": "Nom du projet verbatim « Eglise Saint-Germain Des Prés - Restauration », à 39 m du lieu.",
+   "id": "2024_06_15_011"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20151320001972",
+   "objet": "CSP5 TX DE RESTAURATION EGLISE SAINT GERMAIN DES PRES LOT 5",
+   "objet_clair": null,
+   "fournisseur": "VITRAILFRANCE",
+   "montant_max": 367405.0,
+   "date_notification": "2016-02-11",
+   "preuve": "L'objet du marché porte sur des travaux sur ce bâtiment : « CSP5 TX DE RESTAURATION EGLISE SAINT GERMAIN DES PRES LOT 5 » (titulaire SIRET 31703045000132), notifié le 2016-02-11."
+  },
+  {
+   "numero_marche": "20141320011001",
+   "objet": "CSP5 MOE RESTAURATION EGLISE SAINT-GERMAIN DES PRES 6E",
+   "objet_clair": null,
+   "fournisseur": "GATIER",
+   "montant_max": 328960.64,
+   "date_notification": "2014-03-20",
+   "preuve": "Maîtrise d'œuvre de la restauration de ce bâtiment : objet verbatim « CSP5 MOE RESTAURATION EGLISE SAINT-GERMAIN DES PRES 6E », arrondissement 6e conforme au lieu (SIRET 33339960800046)."
+  },
+  {
+   "numero_marche": "20151320001973",
+   "objet": "CSP5 TX RESTAURATION EGLISE SAINT GERMAIN DES PRES LOT 6",
+   "objet_clair": null,
+   "fournisseur": "FONDATION DE COUBERTIN",
+   "montant_max": 162453.0,
+   "date_notification": "2016-02-11",
+   "preuve": "Objet verbatim « CSP5 TX RESTAURATION EGLISE SAINT GERMAIN DES PRES LOT 6 » : travaux sur ce bâtiment (SIRET 78512680600013)."
+  },
+  {
+   "numero_marche": "20151320001971",
+   "objet": "CSP5 TX DE RESTAURATION EGLISE SAINT GERMAIN DES PRES LOT 4",
+   "objet_clair": null,
+   "fournisseur": "DARDE",
+   "montant_max": 98126.0,
+   "date_notification": "2016-02-11",
+   "preuve": "Objet verbatim « CSP5 TX DE RESTAURATION EGLISE SAINT GERMAIN DES PRES LOT 4 » : travaux sur ce bâtiment (SIRET 35380338000032)."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89glise+Saint-Germain-des-Pr%C3%A9s"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

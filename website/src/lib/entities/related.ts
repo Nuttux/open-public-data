@@ -9,6 +9,7 @@ import { readDataJsonOrNull } from "@/lib/data/read";
 import { fmtCompactEur } from "@/lib/fmt";
 import { canonicalBailleurSlug, loadFournisseur, loadThemeSubventions } from "@/lib/fusion-data";
 import { trLabel } from "@/lib/label-translate";
+import { normalizeObjet } from "@/lib/objet-normalizer";
 import { slugifyChapitre, slugifyLabel } from "@/lib/projet-utils";
 import type { RelatedBlock, RelatedRow } from "@/components/fiche/RelatedLinks";
 import { assocSlug } from "@/lib/assoc-slug";
@@ -154,7 +155,11 @@ export function contratRelated(
       for (const k of f.contrats.filter((x) => x.numero !== c.numero).sort((a, b) => b.montant - a.montant).slice(0, 4)) {
         rows.push({
           href: `${base}/contrat/${encodeURIComponent(k.numero)}`,
-          label: (locale === "en" ? k.objetClairEn || k.objetClair : k.objetClair) || k.objet,
+          // Sans texte clair, le libellé brut de la source arrive tel quel à
+          // l'écran : « SA4 ACBC TVX ETANCHEITE/VEGETAL.BAT.ADM./LOCAUX
+          // PROF.LOT1 ». Toutes les autres fiches passent par normalizeObjet ;
+          // ce repli-ci l'avait oublié.
+          label: (locale === "en" ? k.objetClairEn || k.objetClair : k.objetClair) || normalizeObjet(k.objet),
           sub: locale === "en" ? `Same supplier, ${k.year}` : `Même titulaire, ${k.year}`,
           amount: eur(k.montant),
         });

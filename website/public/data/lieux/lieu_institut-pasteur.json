@@ -1,0 +1,424 @@
+{
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "institut-pasteur",
+ "name": "Institut Pasteur",
+ "kind_fr": "Institut",
+ "kind_en": "Institut",
+ "famille": "services",
+ "arrondissement": 15,
+ "lat": 48.840965,
+ "lon": 2.310278,
+ "photo": "/img/lieux/institut-pasteur.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Institut_Pasteur",
+  "source": "Wikipédia"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "L'institut Pasteur est une fondation française privée à but non lucratif, sise à Paris, qui se consacre à l'étude de la biologie, des micro-organismes, des maladies et des vaccins.",
+  "url": "https://fr.wikipedia.org/wiki/Institut_Pasteur",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1051,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (26 trouvés)",
+  "lecture_mode_en": "title naming the place (26 found)",
+  "n_lus": 26,
+  "n_lieu": null
+ },
+ "subventions_exploitant": {
+  "nom_fiche": "INSTITUT PASTEUR",
+  "total_eur": 5006000.0,
+  "annees": [
+   "2010",
+   "2024"
+  ],
+  "rows": [
+   {
+    "annee": "2024",
+    "montant_eur": 100000.0,
+    "beneficiaire": "INSTITUT PASTEUR",
+    "thematique": "Santé"
+   },
+   {
+    "annee": "2023",
+    "montant_eur": 160000.0,
+    "beneficiaire": "INSTITUT PASTEUR",
+    "thematique": "Santé"
+   },
+   {
+    "annee": "2022",
+    "montant_eur": 150000.0,
+    "beneficiaire": "INSTITUT PASTEUR",
+    "thematique": "Santé"
+   },
+   {
+    "annee": "2021",
+    "montant_eur": 160000.0,
+    "beneficiaire": "INSTITUT PASTEUR",
+    "thematique": "Santé"
+   },
+   {
+    "annee": "2020",
+    "montant_eur": 50000.0,
+    "beneficiaire": "INSTITUT PASTEUR",
+    "thematique": "Santé"
+   },
+   {
+    "annee": "2019",
+    "montant_eur": 2564000.0,
+    "beneficiaire": "INSTITUT PASTEUR",
+    "thematique": "Santé"
+   },
+   {
+    "annee": "2018",
+    "montant_eur": 130000.0,
+    "beneficiaire": "INSTITUT PASTEUR",
+    "thematique": "Santé"
+   },
+   {
+    "annee": "2017",
+    "montant_eur": 125000.0,
+    "beneficiaire": "INSTITUT PASTEUR",
+    "thematique": "Santé"
+   },
+   {
+    "annee": "2016",
+    "montant_eur": 265000.0,
+    "beneficiaire": "INSTITUT PASTEUR",
+    "thematique": "Santé"
+   },
+   {
+    "annee": "2015",
+    "montant_eur": 278000.0,
+    "beneficiaire": "INSTITUT PASTEUR",
+    "thematique": "Santé"
+   },
+   {
+    "annee": "2014",
+    "montant_eur": 244000.0,
+    "beneficiaire": "INSTITUT PASTEUR",
+    "thematique": "Santé"
+   },
+   {
+    "annee": "2013",
+    "montant_eur": 235000.0,
+    "beneficiaire": "INSTITUT PASTEUR",
+    "thematique": "Santé"
+   },
+   {
+    "annee": "2012",
+    "montant_eur": 262000.0,
+    "beneficiaire": "INSTITUT PASTEUR",
+    "thematique": "Santé"
+   },
+   {
+    "annee": "2011",
+    "montant_eur": 148000.0,
+    "beneficiaire": "INSTITUT PASTEUR",
+    "thematique": "Santé"
+   },
+   {
+    "annee": "2010",
+    "montant_eur": 135000.0,
+    "beneficiaire": "INSTITUT PASTEUR",
+    "thematique": "Santé"
+   }
+  ]
+ },
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "2003": [
+   {
+    "reference": "2003 DASCO 70",
+    "titre": "Soutien au projet de réseau d'excellence de l'Institut Pasteur. - Autorisation à M. le Maire de Paris de signer la convention correspondante. Mme Danièle AUFFRAY, rapporteure.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "JUILLET 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70224"
+   }
+  ],
+  "2004": [
+   {
+    "reference": "2004 DASES 272",
+    "titre": "17 - 2004, DASES 272 - Subvention contractuelle de 95.000 euros à l'Institut Pasteur pour la réalisation de \"l'étude génétique des troubles du langage et de la communication : autisme, dysphasie et dyslexie\"",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11277"
+   },
+   {
+    "reference": "2004 DASES 272",
+    "titre": "Attribution d'une subvention contractuelle de 95.000 euros à l'Institut Pasteur pour la réalisation de \"l'étude génétique des troubles du langage et de la communication : autisme, dysphasie et dyslexie\". M. Alain LHOSTIS, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46960"
+   }
+  ],
+  "2005": [
+   {
+    "reference": "2005 DASES 111",
+    "titre": "Attribution d’une subvention conventionnelle initiale de 93.750 euros à l’Institut Pasteur au titre du soutien municipal à une jeune équipe de recherche sélectionnée en vue de réaliser une recherche pluriannuelle sur les “Dynamiques de l’activation lymphocytaire T et de la réponse T intratumorale in vivo”-Annuité 2005 de la Promotion 2005 (Philippe Bousso : Chef de l’équipe lauréate 2005). M. Alain LHOSTIS, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63422"
+   },
+   {
+    "reference": "2005 DASES 69",
+    "titre": "Attribution d’une subvention contractuelle de 65.000 euros à l’Institut Pasteur au titre du soutien municipal 2005 à une équipe de recherche en vue de mener à bien la réalisation de “l’étude génétique des troubles du langage et de la communication : autisme, dysphasie et dyslexie”. M. Alain LHOSTIS, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63478"
+   }
+  ],
+  "2006": [
+   {
+    "reference": "2006 DASES 100",
+    "titre": "Subvention contractuelle de 65.625 euros à l’Institut PASTEUR au titre de la 2e annuité du soutien municipal à une jeune équipe de recherche en vue de poursuivre la recherche pluriannuelle sur les “Dynamiques de l’activation lymphocytaire T et de la réponse T intratumorale in vivo”- Annuité 2006 de la Promotion 2005 (Philippe BOUSSO : Chef de l’équipe lauréate 2005). M. Alain LHOSTIS, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "OCTOBRE 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35449"
+   },
+   {
+    "reference": "2006 DASES 103",
+    "titre": "Subvention conventionnelle initiale de 90.625 euros à l’Institut Pasteur au titre du soutien municipal à une jeune équipe de recherche en vue de réaliser la recherche pluriannuelle : “Développement et fonction des tissus lymphoïdes secondaires et tertiaires” - Annuité 2006 de la Promotion 2006 (Gérard EBERL : Chef de l’équipe lauréate 2006). M. Alain LHOSTIS, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "OCTOBRE 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35477"
+   },
+   {
+    "reference": "2006 DASES 96",
+    "titre": "Subvention contractuelle de 65.000 euros à l’Institut Pasteur au titre de la 3e annuité du soutien municipal à une équipe de recherche en vue de poursuivre la réalisation de “l’étude génétique des troubles du langage et de la communication : autisme, dysphasie et dyslexie” - Annuité 2006 de la Promotion 2004 (équipe Thomas Bourgeron). M. Alain LHOSTIS, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "DECEMBRE 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91981"
+   }
+  ],
+  "2007": [
+   {
+    "reference": "2007 DASES 130",
+    "titre": "Subvention conventionnelle de 65.625 euros à l’Institut Pasteur au titre de la 3e annuité du soutien municipal à une jeune équipe de recherche en vue de poursuivre la recherche pluriannuelle sur les “Dynamiques de l’activation lymphocytaire T et de la réponse T intratumorale in vivo” - Annuité 2007 de la Promotion 2005 (Philippe BOUSSO, Chef de l’équipe lauréate 2005). M. Alain LHOSTIS, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65707"
+   },
+   {
+    "reference": "2007 DASES 139",
+    "titre": "Subvention contractuelle de 65.000 euros à l’Institut Pasteur au titre de la 4ème annuité du soutien municipal à une jeune équipe de recherche en vue de réaliser l’achèvement de “l’étude génétique des troubles du langage et de la communication : autisme, dysphasie et dyslexie” - Annuité 2007 de la Promotion 2004 (équipe Thomas Bourgeron). M. Alain LHOSTIS, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66007"
+   },
+   {
+    "reference": "2007 DASES 91",
+    "titre": "Subvention contractuelle de 62.000 euros à l’Institut Pasteur au titre de la 2e annuité du soutien municipal à une jeune équipe de recherche en vue de poursuivre la recherche pluriannuelle sur le “Développement et fonction des tissus lymphoïdes secondaires et tertiaires” - Annuité 2007 de la Promotion 2006 (Gérard EBERL, Chef de l’équipe lauréate 2006). M. Alain LHOSTIS, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90104"
+   }
+  ],
+  "2008": [
+   {
+    "reference": "2008 DASCO 65",
+    "titre": "G - Signature d’une convention avec l’Institut Pasteur pour l’attribution d’une subvention pour la construction d’un nouveau centre de recherche sur la biologie intégrative des maladies émergentes. M. Jean-Louis MISSIKA, rapporteur.",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37812"
+   },
+   {
+    "reference": "2008 DASES 104",
+    "titre": "Signature d’un avenant n°3 à la convention passée avec l’Institut PASTEUR pour l’attribution d’une subvention à l’équipe de recherche médicale dirigée par Philippe Bousso, lauréat 2005. M. Jean-Marie LE GUEN, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "OCTOBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42708"
+   },
+   {
+    "reference": "2008 DASES 117",
+    "titre": "Signature d’une convention avec l’Institut PASTEUR pour l’attribution d’une subvention en faveur de l’équipe de recherche médicale dirigée par Marco VIGNUZZI, lauréat 2008 - Thème de recherche : “Le rôle de la diversité génétique des virus à ARN dans la pathogénèse et l’atténuation”. M. Jean-Marie LE GUEN, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66999"
+   },
+   {
+    "reference": "2008 DASES 140",
+    "titre": "Signature d’un avenant n° 2 à la convention passée avec l’Institut Pasteur pour l’attribution d’une subvention à l’équipe de recherche médicale dirigée par Gérard EBERL, lauréat 2006 - Thème de recherche : “Développement et fonction des tissus lymphoïdes secondaires et tertiaires” - Annuité 2008. M. Jean-Marie LE GUEN, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61708"
+   }
+  ],
+  "2009": [
+   {
+    "reference": "2009 DASES 16",
+    "titre": "Signature d’un avenant (n°3) à la convention passée avec l’Institut Pasteur pour l’attribution d’une subvention à l’équipe de recherche médicale dirigée par Gérard EBERL, lauréat 2006 - Thème de recherche : “Développement et fonction des tissus lymphoïdes secondaires et tertiaires” - Annuité 2009. M. Jean-Marie LE GUEN, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74653"
+   },
+   {
+    "reference": "2009 DASES 32",
+    "titre": "Signature d’une convention avec l’Institut PASTEUR pour l’attribution d’une subvention en faveur de l’équipe de recherche médicale dirigée par Marc LECUIT, lauréat 2009. Thème de recherche : “Traversée des barrières de l’hôte par les microorganismes pathogènes humains”. Annuité 2009. M. Jean-Marie LE GUEN, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81843"
+   },
+   {
+    "reference": "2009 DASES 43",
+    "titre": "Signature d’un avenant n°1 à la convention passée avec l'Institut PASTEUR (15e), pour l’attribution d’une subvention en faveur de l’équipe de recherche médicale dirigée par Marco VIGNUZZI. Annuité 2009. Montant : 70.000 euros. M. Jean-Marie LE GUEN, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "OCTOBRE 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93449"
+   }
+  ],
+  "2010": [
+   {
+    "reference": "2010 DASES 19",
+    "titre": "Signature d’un avenant (n° 2) à la convention passée avec l’Institut Pasteur pour l’attribution d’une subvention en faveur de l’équipe de recherche médicale dirigée par Marco VIGNUZZI, lauréat 2008. Annuité 2010. M. Jean-Marie LE GUEN, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39587"
+   },
+   {
+    "reference": "2010 DASES 36",
+    "titre": "Signature d’un avenant n° 1 à la convention passée avec l’Institut Pasteur pour l’attribution d’une subvention en faveur de l’équipe de recherche médicale dirigée par Marc LECUIT, lauréat 2009 - Thème de recherche : “Traversée des barrières de l’hôte par les microorganismes pathogènes humains” - Annuité 2010. M. Jean-Marie LE GUEN, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "OCTOBRE 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23362"
+   },
+   {
+    "reference": "2010 DDEEES 123",
+    "titre": "Subvention à l’Institut Pasteur pour l’organisation du 2e congrès joint des Sociétés française et japonaise de Biologie du Développement. M. Jean-Louis MISSIKA, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MAI 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35694"
+   }
+  ],
+  "2011": [
+   {
+    "reference": "2011 DDEEES 85",
+    "titre": "Subvention à l’Institut Pasteur pour l’organisation de la 11e édition de la conférence JOBIM (Journées Ouvertes en Biologie, Informatique et Mathématiques). M. Jean-Louis MISSIKA, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MARS 2011",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97014"
+   },
+   {
+    "reference": "2011 DDEEES 90",
+    "titre": "Subvention à l’Institut Pasteur pour l’organisation de la 3e Conférence internationale sur les progrès de la recherche sur les cellules souches. M. Jean-Louis MISSIKA, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MARS 2011",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96565"
+   }
+  ]
+ },
+ "invest": [],
+ "marches": [],
+ "mandate": {
+  "par_annee": {
+   "2012": 1500000.0
+  },
+  "total_eur": 1500000.0,
+  "operations": [
+   {
+    "ap_cle": "B400/1204096",
+    "ap_texte": "FONDS SOUTIEN INSTITUT PASTEUR",
+    "mandate_par_annee": {
+     "2012": 1500000.0
+    },
+    "total_mandate": 1500000.0,
+    "preuve": "Le libellé de l’opération nomme le lieu : « FONDS SOUTIEN INSTITUT PASTEUR » (clé B400/1204096, direction DDEEES) — ce n’est pas une enveloppe générique de direction, l’opération est nommée pour ce seul bénéficiaire, et l’institution ainsi nommée est bien celle du lieu : « l’Institut Pasteur sis 25-28, rue du Docteur Roux (15e) (Tiers : W00156) » (2010 DASES 19). Montant repris tel quel du candidat : 1 500 000 € mandatés en 2012. Réserve : la mission de rattachement est « SUBVENTIONS D'EQUIPE » (libellé tronqué par la source) — il s’agit d’un soutien en investissement versé à l’institution, et aucune source consultée ne précise les travaux financés sur le site ; d’où une confiance moyenne. À ne pas confondre avec la subvention d’investissement de 2008 (2008 DASCO 65 : « Une subvention de 3 millions d’euros (3.000.000 euros) TTC est attribuée à l’Institut Pasteur sis 25, rue du docteur Roux (15e), pour la construction d’un nouveau centre de recherche »), que la délibération impute sur « APDF 0803788 » — une autre opération, non proposée parmi les candidats.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B400/1204096"
+   }
+  ],
+  "periode": [
+   "2012",
+   "2012"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Institut+Pasteur"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

@@ -1,0 +1,156 @@
+{
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "conservatoire-maurice-ravel",
+ "name": "Conservatoire Maurice-Ravel",
+ "kind_fr": "Conservatoire",
+ "kind_en": "Conservatoire",
+ "famille": "culture",
+ "arrondissement": 13,
+ "lat": 48.829692,
+ "lon": 2.358481,
+ "photo": "/img/lieux/conservatoire-maurice-ravel.jpg",
+ "photo_credit": {
+  "licence": "CC BY 2.0",
+  "auteur": "Guilhem Vellut from Paris, France",
+  "url": "https://commons.wikimedia.org/wiki/File:Conservatoire_Maurice_Ravel,_Paris_31_December_2016_001.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1309,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "tête du classement Solr (1309 documents au total)",
+  "lecture_mode_en": "top of the Solr ranking (1309 documents total)",
+  "n_lus": 43,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "2009": [
+   {
+    "reference": "2009 DPA 96",
+    "titre": "Approbation du principe de relogement du conservatoire du 13e arrondissement dans l’Ecole Nationale de la Meunerie 16-18 rue Nicolas Fortin (13e), des modalités de passation du marché de maîtrise d’œuvre et dépôt des demandes de permis de démolir et de construire. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34533"
+   }
+  ]
+ },
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20131210012202",
+   "objet": "ASSURANCE CCRD RELOGEMENT DU CONSERVATOIRE DU 13ÈME ARRT",
+   "objet_clair": null,
+   "fournisseur": "SOC MUTUELLE D ASSURANCE DU BTP",
+   "montant_max": 41631.41,
+   "date_notification": "2013-08-14",
+   "preuve": "L'objet du marché nomme le lieu : « ASSURANCE CCRD RELOGEMENT DU CONSERVATOIRE DU 13ÈME ARRT », notifié le 14 août 2013. Le « relogement du conservatoire du 13e » est l'opération approuvée par le Conseil de Paris en septembre 2009 (délibération du Conseil de Paris de septembre 2009, « Approbation du principe de relogement du conservatoire du 13e arrondissement dans l'Ecole Nationale de la Meunerie 16-18 rue Nicolas Fortin (13e), des modalités de passation du marché de maîtrise d'œuvre et dépôt des demandes de permis de démolir et de construire ») : le bâtiment de l'ancienne École nationale supérieure de la meunerie où le conservatoire s'est installé en novembre 2013, c'est-à-dire ce lieu. Le montant affiché (41 631,41 €) est le montant maximum du marché, pas une dépense constatée."
+  }
+ ],
+ "mandate": {
+  "par_annee": {
+   "2010": 938329.51,
+   "2011": 680035.42,
+   "2012": 5548774.36,
+   "2013": 11930145.9,
+   "2014": 800734.24,
+   "2015": 131793.94,
+   "2016": 929151.85,
+   "2017": 256158.62,
+   "2018": 19378.23
+  },
+  "total_eur": 21234502.07,
+  "operations": [
+   {
+    "ap_cle": "B100/0703383",
+    "ap_texte": "CONSERVATOIRE DU 13EME",
+    "mandate_par_annee": {
+     "2012": 4328968.44,
+     "2013": 7584305.9
+    },
+    "total_mandate": 11913274.34,
+    "preuve": "Libellé de l'opération : « CONSERVATOIRE DU 13EME » (direction DAC, mission AFFAIRES CULTURELLES). Le 13e arrondissement ne compte qu'un conservatoire municipal, Maurice-Ravel : ce lieu. Les mandatements 2012 (4 328 968,44 €) et 2013 (7 584 305,90 €) correspondent au chantier de relogement approuvé par le Conseil de Paris en septembre 2009 (délibération du Conseil de Paris de septembre 2009, « Approbation du principe de relogement du conservatoire du 13e arrondissement dans l'Ecole Nationale de la Meunerie 16-18 rue Nicolas Fortin (13e), des modalités de passation du marché de maîtrise d'œuvre et dépôt des demandes de permis de démolir et de construire »), bâtiment ouvert en novembre 2013, et au marché d'assurance construction 20131210012202 « ASSURANCE CCRD RELOGEMENT DU CONSERVATOIRE DU 13ÈME ARRT » notifié le 14 août 2013.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0703383"
+   },
+   {
+    "ap_cle": "B100/1003383",
+    "ap_texte": "CONSERVATOIRE BOULEVARD BLANQUI",
+    "mandate_par_annee": {
+     "2010": 938329.51,
+     "2011": 680035.42,
+     "2012": 1219805.92,
+     "2013": 4345840.0
+    },
+    "total_mandate": 7184010.85,
+    "preuve": "Libellé « CONSERVATOIRE BOULEVARD BLANQUI » (direction DAC, mission AFFAIRES CULTURELLES). La Ville désigne ainsi le conservatoire du 13e : rapport budgétaire du budget primitif 2014 de la Ville de Paris, https://cdn.paris.fr/paris/2024/07/04/bp-2014-rapport-budgetaire-bp-ville-Sg4z.pdf : « S'y ajoutent 14,82 M€ au titre des conservatoires et de l'enseignement artistique, dont 4,99 M€ pour le conservatoire de la rue de Charolais (12e), 4,10 M€ pour celui du boulevard Blanqui (13e), et 3,49 M€ pour celui du boulevard de Reims (17e) ». Même numéro d'opération (03383) que « CONSERVATOIRE DU 13EME » (clé B100/0703383), et mandatements 2010 à 2013 qui encadrent l'ouverture du bâtiment en novembre 2013. Réserve assumée : la voie citée dans le libellé n'est pas l'adresse du lieu (67 avenue Edison depuis novembre 2013, auparavant 21 rue Albert-Bayet) et le boulevard Auguste-Blanqui est à environ 800 m ; aucune des 1 309 délibérations du corpus de ce lieu ne mentionne Blanqui. D'où une confiance moyenne.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1003383"
+   },
+   {
+    "ap_cle": "1003383",
+    "ap_texte": "CONSERVATOIRE BOULEVARD BLANQUI",
+    "mandate_par_annee": {
+     "2014": 800734.24,
+     "2015": 131793.94,
+     "2016": 929151.85,
+     "2017": 256158.62,
+     "2018": 19378.23
+    },
+    "total_mandate": 2137216.88,
+    "preuve": "Même libellé verbatim « CONSERVATOIRE BOULEVARD BLANQUI » (DAC) et même numéro d'opération 03383 que la clé B100/1003383 : la suite de la même opération, sur des exercices qui ne se recoupent pas (2014 à 2018 après 2010 à 2013). Rattachement et réserve identiques : la Ville désigne cette opération comme « celui du boulevard Blanqui (13e) » dans le rapport budgétaire du budget primitif 2014, alors que l'adresse du lieu est le 67 avenue Edison (auparavant 21 rue Albert-Bayet) et que le boulevard Auguste-Blanqui est à environ 800 m. D'où une confiance moyenne.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1003383"
+   }
+  ],
+  "periode": [
+   "2010",
+   "2018"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Conservatoire+Maurice-Ravel"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

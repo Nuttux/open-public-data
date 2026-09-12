@@ -1,320 +1,575 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
-  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
-  "slug": "canal-saint-martin",
-  "name": "Canal Saint-Martin",
-  "kind_fr": "Infrastructure",
-  "kind_en": "Infrastructure",
-  "famille": "services",
-  "arrondissement": 10,
-  "lat": 48.8712,
-  "lon": 2.366,
-  "photo": "/img/lieux/canal-saint-martin.jpg",
-  "photo_credit": {
-    "licence": null,
-    "auteur": null,
-    "url": "https://fr.wikipedia.org/wiki/Canal_Saint-Martin",
-    "source": "Wikipédia"
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "canal-saint-martin",
+ "name": "Canal Saint-Martin",
+ "kind_fr": "Infrastructure",
+ "kind_en": "Infrastructure",
+ "famille": "services",
+ "arrondissement": 10,
+ "lat": 48.8712,
+ "lon": 2.366,
+ "photo": "/img/lieux/canal-saint-martin.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Canal_Saint-Martin",
+  "source": "Wikipédia"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "Le canal Saint-Martin, long de 4,55 km, est situé pour l'essentiel dans les 10e et 11e arrondissements de Paris. Il relie le bassin de la Villette — et au-delà le canal de l'Ourcq — au port de l'Arsenal qui communique avec la Seine. C'est un canal de petit gabarit destiné, à l'origine, à l'adduction d'eau potable dans la capitale. Inauguré en 1825, il comporte neuf écluses et deux ponts tournants pour une dénivellation totale de 25 m.",
+  "url": "https://fr.wikipedia.org/wiki/Canal_Saint-Martin",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The canal Saint-Martin, 4.55 km long, is located mainly in the 10th and 11th arrondissements of Paris. It links the bassin de la Villette — and beyond it the canal de l'Ourcq — to the port de l'Arsenal, which connects to the Seine. It is a small-gauge canal originally intended to supply the capital with drinking water. Inaugurated in 1825, it has nine locks and two swing bridges for a total elevation change of 25 m."
+ },
+ "stats": {
+  "n_delibs": 746,
+  "delibs_span": [
+   2000,
+   2024
+  ],
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": 8,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (37 trouvés)",
+  "lecture_mode_en": "title naming the place (37 found)",
+  "n_lus": 37,
+  "n_lieu": 25
+ },
+ "subventions_exploitant": null,
+ "residents": [
+  {
+   "beneficiaire": "F.N.M WALLS",
+   "montant_total": 5000.0,
+   "preuve": "L'objet de la subvention nomme le lieu, verbatim : « ré-interprétation du mur \"fluctuat nec mergitur\" canal saint martin. » (SIRET 81950170100018). Il s'agit d'une aide à une intervention artistique sur un mur au bord du canal, pas à la gestion du canal : celui-ci relève du domaine public fluvial de la Ville, qui en délivre les autorisations d'occupation (délibération 2023 DVD 40, mars 2023 : « Canaux parisiens. - Convention d'occupation du domaine public fluvial pour l'exploitation des locaux situés 200 à 206, quai de Valmy, sur le canal Saint-Martin (10e). »), d'où le rôle résident. Le montant est le total versé au bénéficiaire, dont l'objet principal est cette intervention."
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": "Dans les délibérations du Conseil de Paris, le canal Saint-Martin apparaît d'abord comme un chantier : au tournant des années 2000, la Ville engage la reconstruction des bassins Louis-Blanc et des Récollets, la fabrication de portes d'écluses et l'illumination artistique de sa voûte couverte, cette dernière dépense étant contestée en séance par une élue du 11e. Le domaine public fluvial devient ensuite un support d'occupations — Point Éphémère et pompiers au bassin Louis-Blanc, Maison des associations du 10e — tandis que les berges concentrent des tensions d'usage : nuisances sonores et propreté dénoncées par des riverains, campements de personnes sans abri et grévistes de la faim en 2007. Des questions récurrentes portent aussi sur la piétonnisation dominicale des quais et sur les liaisons cyclables. À plusieurs reprises, la Ville approuve la mise en chômage (mise à sec) du canal pour l'entretenir — pour un chômage prévu fin 2001, puis une mission de maîtrise d'œuvre approuvée en 2008 — et la question des algues revient en 2019. Plus récemment, le canal est présenté comme le cadre d'un projet de réaménagement annoncé pour une livraison en 2026 et de baignades estivales rendues gratuites pendant l'été des Jeux de 2024.",
+ "moments": [
+  {
+   "id": "2886",
+   "seance": "FEVRIER 2000",
+   "fait": "Le Conseil autorise le marché d'illumination de la voûte couverte du canal ; une élue du 11e conteste des « travaux de prestige » chiffrés à « plus de deux millions ».",
+   "pourquoi": "mettre le canal en lumière, à quel prix",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2886",
+   "fait_en": "The Council authorized the contract for illuminating the canal's covered vault; a councillor from the 11th arrondissement disputed \"prestige works\" costed at \"more than two million\".",
+   "pourquoi_en": "Lighting up the canal, at what price"
+  },
+  {
+   "id": "50877",
+   "seance": "AVRIL 2000",
+   "fait": "Le Conseil approuve le principe de la reconstruction des bassins Louis-Blanc et Récollets et autorise la signature des marchés de maîtrise d'œuvre.",
+   "pourquoi": "reconstruire les bassins historiques du canal",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50877",
+   "fait_en": "The Council approved the principle of rebuilding the Louis-Blanc and Récollets basins and authorized signing the project management contracts.",
+   "pourquoi_en": "Rebuilding the canal's historic basins"
+  },
+  {
+   "id": "94460",
+   "seance": "NOVEMBRE 2003",
+   "fait": "Le Conseil autorise une convention d'occupation avec l'association La Caserne Ephémère sur le domaine public fluvial du canal, au bassin Louis-Blanc.",
+   "pourquoi": "un lieu culturel s'installe au bord du canal",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94460",
+   "fait_en": "The Council authorized an occupancy agreement with the association La Caserne Éphémère on the canal's public waterway domain, at the Louis-Blanc basin.",
+   "pourquoi_en": "A cultural venue sets up along the canal"
+  },
+  {
+   "id": "11636",
+   "seance": "OCTOBRE 2005",
+   "fait": "Une question U.M.P. dénonce les nuisances des riverains ; l'adjoint détaille le nettoiement renforcé et renvoie bruit et alcool à la Préfecture.",
+   "pourquoi": "riverains contre la rançon de l'attractivité festive",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11636",
+   "fait_en": "A question from the U.M.P. group denounced nuisances affecting local residents; the deputy mayor detailed enhanced street cleaning and referred noise and alcohol issues to the Prefecture.",
+   "pourquoi_en": "Local residents against the price of festive appeal"
+  },
+  {
+   "id": "9744",
+   "seance": "FEVRIER 2007",
+   "fait": "Un vœu des Verts réclame l'assurance qu'aucune évacuation du campement le long du canal n'aura lieu sans hébergement ; le préfet dit n'en pas envisager.",
+   "pourquoi": "le canal, refuge d'un campement de sans-abri",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9744",
+   "fait_en": "A motion from the Greens demanded assurance that no eviction of the encampment along the canal would take place without providing shelter; the prefect said he was not planning one.",
+   "pourquoi_en": "The canal, a refuge for a homeless encampment"
+  },
+  {
+   "id": "67618",
+   "seance": "SEPTEMBRE 2008",
+   "fait": "Le Conseil approuve le principe d'une mission de maîtrise d'œuvre pour la mise en chômage (mise à sec) du canal.",
+   "pourquoi": "vider le canal pour l'entretenir",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67618",
+   "fait_en": "The Council approved the principle of a project management assignment for dewatering (draining) the canal.",
+   "pourquoi_en": "Draining the canal to maintain it"
+  },
+  {
+   "id": "174185",
+   "seance": "DECEMBRE 2023",
+   "fait": "Un vœu demande la candidature au label Quiet ; l'adjoint détaille les mesures anti-bruit d'un réaménagement du canal annoncé pour 2026.",
+   "pourquoi": "le grand réaménagement annoncé pour 2026",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174185",
+   "fait_en": "A motion called for applying for the Quiet label; the deputy mayor detailed the noise-reduction measures of a redevelopment of the canal announced for 2026.",
+   "pourquoi_en": "The major redevelopment announced for 2026"
+  },
+  {
+   "id": "176215",
+   "seance": "MAI 2024",
+   "fait": "Le Conseil approuve à l'unanimité la gratuité des baignades de l'été 2024, dont celles de l'espace délimité du canal Saint-Martin.",
+   "pourquoi": "se baigner dans le canal, l'été des Jeux",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176215",
+   "fait_en": "The Council unanimously approved free access to summer 2024 swimming spots, including those in the designated area of the canal Saint-Martin.",
+   "pourquoi_en": "Swimming in the canal, in the summer of the Games"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "FEVRIER 2000",
+   "montant": "plus de deux millions",
+   "objet": "illumination de la voûte du canal Saint-Martin, montant avancé et contesté par l'élue du 11e Cécile SILHOUETTE (unité de compte non précisée ; francs en 2000)",
+   "citation": "Vous avez demandé l'avis des élus du 11e sur ce projet qui accorde plus de deux millions pour l'illumination de la voûte du canal Saint-Martin sous le boulevard Richard-Lenoir.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2886"
+  }
+ ],
+ "bmo_extraits": [
+  {
+   "date": "1883-07-07",
+   "extrait": "Canal Saint - Martin . — 10 jours de chômage, du 1er juillet au 11 juillet …  Canal Saint - Martin . —",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6247490r/f2.item",
+   "extrait_en": "Canal Saint-Martin. — 10 days of closure, from 1 July to 11 July … Canal Saint-Martin. —"
+  },
+  {
+   "date": "1894-06-24",
+   "extrait": "1376. — Mise en adjudication de la concession du touage dans le quatrième bief du canal Saint - Martin (M. Paris, rapporteur … juin 1905, par lequel M. le Préfet de la Seine propose la mise e",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6334659p/f14.item",
+   "extrait_en": "1376. — Putting the towage concession in the fourth reach of the canal Saint-Martin out to tender (Mr Paris, rapporteur) … June 1905, by which the Prefect of the Seine proposes the"
+  },
+  {
+   "date": "1962-11-18",
+   "extrait": "Préfet de la Seine sur les raisons pour lesquelles le service de batellerie a été si longtemps interrompu sur le canal Saint - Martin et sur les mesures que l'Administration a prises pour &",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6433647d/f2.item",
+   "extrait_en": "Prefect of the Seine on the reasons why the barge-towing service was interrupted for so long on the canal Saint-Martin, and on the measures the Administration has taken to &"
+  }
+ ],
+ "bmo_recit": "Au Bulletin municipal officiel, le canal Saint-Martin apparaît d'abord comme un ouvrage à exploiter et à entretenir. En juillet 1883, le Bulletin annonce dix jours de chômage du canal, du 1er au 11 juillet. En juin 1894, il enregistre la mise en adjudication de la concession du touage dans le quatrième bief, sur rapport de M. Paris : la concession est alors ouverte à la concurrence, et non encore attribuée. Le canal ne reparaît qu'en novembre 1962, lorsque le Préfet de la Seine est interrogé sur les raisons pour lesquelles le service de batellerie a été si longtemps interrompu et sur les mesures prises par l'Administration. Trois passages seulement, mais qui suivent tous la même ligne : celle d'une voie d'eau dont on règle l'arrêt, l'exploitation, puis le trafic interrompu.",
+ "delibs_par_annee": {
+  "2000": [
+   {
+    "reference": "2000 DAC 6",
+    "titre": "Approbation du principe de l'opération relative à l'illumination de la voûte du canal Saint-Martin, conformément au projet artistique de Keiichi Tahara intitulé \"Echos de lumière\" (11e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51239"
+   },
+   {
+    "reference": "2000 DAC 6",
+    "titre": "31 - 2000, DAC 6 - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres ou un marché négocié, dans l'hypothèse où l'appel d'offres serait déclaré infructueux, pour la réalisation de l'illumination de la voûte du canal Saint-Martin, conformément au projet artistique de Keiichi Tahara intitulé \"Echos de lumière\" (11e)",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2886"
+   },
+   {
+    "reference": "2000 DVD 114",
+    "titre": "Approbation des modalités d'attribution de marchés sur appel d'offres pour la réalisation des travaux de fabrication, la livraison et la pose de 5 portes d'écluses et la création d'un batardeau pour le canal Saint-Martin. - Autorisation à M. le Maire de Paris de signer lesdits marchés. M. Lucien FINEL, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28311"
+   },
+   {
+    "reference": "2000 DVD 144",
+    "titre": "Approbation du principe d'exécution des travaux de reconstruction des bassins Louis-Blanc et Récollets du canal Saint-Martin (10e). - Approbation des modalités d'attribution du marché correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Lucien FINEL, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40617"
+   },
+   {
+    "reference": "2000 DVD 151",
+    "titre": "Approbation du principe de l'exécution des travaux d'entretien et d'amélioration du canal Saint-Martin (10e, 11e et 19e). - Approbation des modalités d'attribution des marchés correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. M. Lucien FINEL, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40686"
+   },
+   {
+    "reference": "2000 DVD 32",
+    "titre": "Approbation du principe de l'exécution des travaux de reconstruction des bassins Louis-Blanc et Récollets du canal Saint-Martin (10e). - Autorisation à M. le Maire de Paris de signer les marchés de maîtrise d'oeuvre et de reconnaissance de sols correspondants. M. Lucien FINEL, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "AVRIL 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50877"
+   }
+  ],
+  "2001": [
+   {
+    "reference": "2001 DAC 72",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant au marché n° 00/41049 signé avec la société \"E.I. Ile-de-France\" pour les travaux d'illumination de la voûte du canal Saint-Martin (11e), conformément au projet artistique de Keiichi TAHARA. M. Claude ROLAND, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JANVIER 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85044"
+   },
+   {
+    "reference": "2001 DVD 127",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant au marché signé avec le groupement d'entreprises \"Soletanche Bachy France\" (mandataire du groupement), \"SEFI\", \"Botte Sade Fondations\" et \"Darras et Jouanin\" pour la reconstruction des bassins Louis-Blanc et Récollets du canal Saint-Martin (10e). Mme Myriam CONSTANTIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84632"
+   },
+   {
+    "reference": "2001 DVD 138",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 2 au marché de reconstruction des bassins Louis-Blanc et des Récollets du canal Saint-Martin (10e). Mme Myriam CONSTANTIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84308"
+   },
+   {
+    "reference": "2001 DVD 65",
+    "titre": "Autorisation à M. le Maire de Paris de signer un avenant de transfert pour le marché de travaux de maçonnerie et de consolidation des ouvrages du canal Saint Martin. M. Denis BAUPIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89871"
+   }
+  ],
+  "2002": [
+   {
+    "reference": "2002 DVD 28",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 3 au marché de reconstruction des bassins Louis-Blanc et des Récollets du canal Saint-Martin (10e). Mme Myriam CONSTANTIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39064"
+   }
+  ],
+  "2003": [
+   {
+    "reference": "2003 DVD 347",
+    "titre": "257 - 2003, DVD 347 - Autorisation à M. le Maire de Paris de signer deux conventions afin d'autoriser des occupations provisoires de certaines parties nues et couvertes du domaine public fluvial de la Ville de Paris, dans un bâtiment et ses abords, dont elle est propriétaire (10e), sur les dépendances du canal Saint-Martin, en rive droite du 1er bief, en bordure du bassin Louis-Blanc, et d'autoriser les dépôts des permis de démolir et de construire permettant de procéder aux aménagements indispe",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "NOVEMBRE 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21262"
+   },
+   {
+    "reference": "2003 DVD 347",
+    "titre": "Autorisation à M. le Maire de Paris, d'une part, de signer avec l'association \"La Caserne Ephémère\", une convention fixant les conditions techniques, domaniales, administratives et financières, de l'occupation provisoire d'un ensemble de locaux, compris dans un bâtiment sis 186-206 quai de Valmy (10e) faisant partie du domaine public fluvial de la Ville de Paris, sur les dépendances du canal Saint-Martin, en bordure du bassin Louis-Blanc, en rive droite du 1er bief et, d'autre part, de consentir",
+    "genres": [
+     "autre"
+    ],
+    "seance": "NOVEMBRE 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94460"
+   },
+   {
+    "reference": "2003 DVD 347",
+    "titre": "Autorisation à M. le Maire de Paris, d'une part, de signer avec M. le Préfet de police, agissant pour le compte de la Brigade des Sapeurs Pompiers de Paris \"Château-Landon\", une convention fixant les conditions techniques, domaniales, administratives et financières, de l'occupation provisoire d'un ensemble constitué de terrains nus et pour parties des locaux d'un bâtiment compris dans le domaine public fluvial de la Ville de Paris, sur les dépendances du canal Saint-Martin, en bordure du bassin",
+    "genres": [
+     "autre"
+    ],
+    "seance": "NOVEMBRE 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94094"
+   }
+  ],
+  "2004": [
+   {
+    "reference": "2004 DVD 83",
+    "titre": "Approbation du principe et des modalités de la réalisation des travaux de purge et de rénovation locale des parements de la voûte du Temple du canal Saint-Martin (11e). - Autorisation à M. le Maire de Paris de signer le marché correspondant. Mme Myriam CONSTANTIN, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33848"
+   }
+  ],
+  "2005": [
+   {
+    "reference": "2005 DAC 393",
+    "titre": "Attribution d’une subvention de fonctionnement à l’association Canal - coordination des animations du canal Saint martin, dont le siège est situé 71, rue Bichat dans le 10è arrondissement, pour l’organisation des “Voix sur Berges” au titre de l’année 2005. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63253"
+   }
+  ],
+  "2006": [
+   {
+    "reference": "2006 DVD 3",
+    "titre": "2006, DVD 3 - Approbation des objectifs de création d’un réseau vert à Paris dont la première phase est située entre la place du Châtelet (1er) et le canal Saint-Martin (10e). - Approbation des modalités de la concertation relative à ce projet. - Approbation du principe et des modalités de passation d’un marché à bons de commande pour la réalisation des travaux de voirie. Vœu déposé par M. Pierre AIDENBAUM, adopté par la majorité municipale du Conseil du 3e arrondissement, relatif au réseau vert",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JANVIER 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24809"
+   }
+  ],
+  "2007": [
+   {
+    "reference": "2007 DVD 94",
+    "titre": "Approbation du principe de la réalisation de travaux sur les canaux Saint-Denis et Saint-Martin dans le cadre de la mise en chômage du canal Saint-Denis. Approbation des modalités de passation des deux marchés de travaux : réhabilitation, réfection et amélioration des installations des écluses du canal Saint-Denis et, régulation et télésurveillance des plans d’eau sur le canal Saint-Martin. Mme Myriam CONSTANTIN, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90116"
+   }
+  ],
+  "2008": [
+   {
+    "reference": "2008 DVD 185",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention d’occupation temporaire de locaux situés sur le domaine public fluvial de la Ville de Paris, Bassin Louis Blanc (canal Saint-Martin) (10e), avec le Préfet de police de Paris agissant pour le compte de la Brigade des sapeurs-pompiers de Paris. Mme Anne LE STRAT et Mme Annick LEPETIT, rapporteures.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "NOVEMBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61940"
+   },
+   {
+    "reference": "2008 DVD 9",
+    "titre": "Signature d’une convention d’occupation de locaux situés sur le domaine public fluvial, au Bassin Louis Blanc (canal Saint Martin) à Paris 10ème avec l’association La Caserne Ephémère pour la poursuite de ses activités privées de nature culturelle, et pour lui accorder une aide en nature de 65 652,04 euros sous la forme d’une réduction de la redevance d’oc-cupation. M. Christophe GIRARD et Mme Myriam CONSTANTIN, rapporteurs.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "FEVRIER 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=76902"
+   }
+  ],
+  "2009": [
+   {
+    "reference": "2009 DVD 117",
+    "titre": "Convention d’entretien de l’ouvrage de couverture du canal Saint-Martin, place de la Bastille, à Paris 4e et 12e, avec la Régie Autonome des Transports Parisiens (RATP). Mme Anne LE STRAT, rapporteure.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "SEPTEMBRE 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36632"
+   }
+  ],
+  "2011": [
+   {
+    "reference": "2011 DVD 105",
+    "titre": "65 - 2011, DVD 105 - Approbation du programme 2011 d’aménagements cyclables et autorisation de solliciter les subventions correspondantes auprès de la Région d’Ile de France dans le cadre du 4e contrat “Réseau Vert” et de prendre toute décision en résultant. Vœu déposé par le groupe E.E.L.V.A. relatif au réaménagement global de la voirie rue Eugène Varlin (10e). Vœu déposé par le groupe E.E.L.V.A. relatif à la réalisation d’une liaison cyclable Canal Saint-Martin - Bois de Vincennes. Vœu déposé",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
+    "seance": "MAI 2011",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95738"
+   },
+   {
+    "reference": "2011 DVD 113",
+    "titre": "59 - 2011, DVD 113 - Signature avec l’association La Caserne Ephémère d’une convention d’occupation du domaine public fluvial au Bassin Louis Blanc, canal Saint-Martin (10e). 2011, DVD 114 - Signature avec la Préfecture de police d’une convention d’occupation du domaine public par la Brigade des sapeurs pompiers de Paris au bassin Louis Blanc, canal Saint Martin (10e). Vœu déposé par le groupe Communiste et élus du Parti de Gauche relatif à l’avenir de la caserne Château-Landon et du Point Éphém",
+    "genres": [
+     "autre"
+    ],
+    "seance": "DECEMBRE 2011",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=103092"
+   }
+  ],
+  "2023": [
+   {
+    "reference": "2023 DVD 40",
+    "titre": "2023 DVD 40 - Canaux parisiens. - Convention d’occupation du domaine public fluvial pour l’exploitation des locaux situés 200 à 206, quai de Valmy, sur le canal Saint-Martin (10e).",
+    "genres": [
+     "autre"
+    ],
+    "seance": "MARS 2023",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168496"
+   }
+  ]
+ },
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20242024S09979",
+   "objet": "SA3.ACBC.TRANSPORT VOIE FLUVIAL MATÉRIAUX CANAL SAINT MARTIN",
+   "objet_clair": "Transport de matériaux par bateau sur le canal Saint-Martin",
+   "fournisseur": "BATAIL-LOG",
+   "montant_max": 500000.0,
+   "date_notification": "2024-11-05",
+   "preuve": "L'objet du marché nomme le lieu et porte sur une prestation qui s'y déroule : « SA3.ACBC.TRANSPORT VOIE FLUVIAL MATÉRIAUX CANAL SAINT MARTIN » — transport de matériaux par la voie d'eau sur le canal Saint-Martin lui-même (SIRET fournisseur 84770940900019)."
+  },
+  {
+   "numero_marche": "20242024S00824",
+   "objet": "BAIGNADE CANAL SAINT MARTIN",
+   "objet_clair": "Organisation et surveillance de la baignade estivale dans le canal Saint-Martin.",
+   "fournisseur": "SSO ACTIVE",
+   "montant_max": 38400.0,
+   "date_notification": "2024-02-14",
+   "preuve": "L'objet du marché nomme le lieu et porte sur une prestation qui s'y déroule : « BAIGNADE CANAL SAINT MARTIN » (SIRET fournisseur 81096330600016). Contexte corroborant l'existence d'une baignade au canal Saint-Martin à cette période, sans lien établi avec ce marché : délibération 2024 DJS 94 (Conseil de Paris, mai 2024), « Gratuité d'utilisation pendant l'été 2024 des bassins éphémères implantés dans les centres sportifs et les baignades dans l'espace naturel délimité du canal Saint-Martin et de La Villette »."
+  }
+ ],
+ "mandate": {
+  "par_annee": {
+   "2010": 40837.76,
+   "2011": 1926299.66,
+   "2012": 901352.66,
+   "2013": 230679.96,
+   "2014": 146819.36,
+   "2015": 1103645.61,
+   "2016": 6972920.39,
+   "2017": 598746.75,
+   "2018": 1244997.36,
+   "2019": 1262092.52,
+   "2020": 1012171.74,
+   "2021": 2083.32
+  },
+  "total_eur": 15442647.09,
+  "operations": [
+   {
+    "ap_cle": "1404078",
+    "ap_texte": "CHOMAGE CANAL SAINT MARTIN",
+    "mandate_par_annee": {
+     "2015": 1014517.16,
+     "2016": 6808003.0,
+     "2017": 434428.17,
+     "2018": 447948.13,
+     "2019": 479223.43,
+     "2020": 229033.95
+    },
+    "total_mandate": 9413153.84,
+    "preuve": "Libellé verbatim « CHOMAGE CANAL SAINT MARTIN » (direction DVD, mission « VOIRIE ET DEPLACEMEN ») : mise en chômage (vidange pour entretien) de ce canal. Corroboré au Conseil de Paris (vœu septembre 2019, algues) : « l'opération importante de chômage qu'on a eue il y a quelques années et qui nous a permis d'évacuer les vases » — cohérent avec le mandaté 2015-2017.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1404078"
+   },
+   {
+    "ap_cle": "B100/1004080",
+    "ap_texte": "TELECOMMANDE DU CANAL SAINT MARTIN",
+    "mandate_par_annee": {
+     "2011": 1898603.69,
+     "2012": 810821.7,
+     "2013": 185616.06
+    },
+    "total_mandate": 2895041.45,
+    "preuve": "Libellé verbatim « TELECOMMANDE DU CANAL SAINT MARTIN » (direction DVD, gestionnaire des canaux parisiens) : équipement de télécommande des ouvrages de ce canal.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1004080"
+   },
+   {
+    "ap_cle": "1604184",
+    "ap_texte": "VOUTE DU CANAL SAINT MARTIN",
+    "mandate_par_annee": {
+     "2017": 164318.58,
+     "2018": 589400.01,
+     "2019": 673320.24,
+     "2020": 783137.79,
+     "2021": 2083.32
+    },
+    "total_mandate": 2212259.94,
+    "preuve": "Libellé verbatim « VOUTE DU CANAL SAINT MARTIN » (direction DVD) : travaux sur la voûte (partie couverte) de ce canal.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604184"
+   },
+   {
+    "ap_cle": "1104184",
+    "ap_texte": "VOUTE CANAL SAINT MARTIN",
+    "mandate_par_annee": {
+     "2014": 126479.71,
+     "2018": 207649.22,
+     "2019": 109548.85
+    },
+    "total_mandate": 443677.78,
+    "preuve": "Libellé verbatim « VOUTE CANAL SAINT MARTIN » (direction DVD) : travaux sur la voûte (partie couverte) de ce canal.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1104184"
+   },
+   {
+    "ap_cle": "1004078",
+    "ap_texte": "CHOMAGE CANAL SAINT MARTIN",
+    "mandate_par_annee": {
+     "2014": 20299.68,
+     "2015": 89128.45,
+     "2016": 164917.39
+    },
+    "total_mandate": 274345.52,
+    "preuve": "Libellé verbatim « CHOMAGE CANAL SAINT MARTIN » (direction DVD) : opération d'entretien par mise en chômage de ce canal.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1004078"
+   },
+   {
+    "ap_cle": "B100/1004078",
+    "ap_texte": "CHOMAGE CANAL SAINT MARTIN",
+    "mandate_par_annee": {
+     "2010": 40837.76,
+     "2011": 27695.97,
+     "2012": 65008.32,
+     "2013": 45063.9
+    },
+    "total_mandate": 178605.95,
+    "preuve": "Libellé verbatim « CHOMAGE CANAL SAINT MARTIN » (direction DVD) : opération d'entretien par mise en chômage de ce canal.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1004078"
+   },
+   {
+    "ap_cle": "B100/1104184",
+    "ap_texte": "VOUTE CANAL SAINT MARTIN",
+    "mandate_par_annee": {
+     "2012": 25522.64
+    },
+    "total_mandate": 25522.64,
+    "preuve": "Libellé verbatim « VOUTE CANAL SAINT MARTIN » (direction DVD) : travaux sur la voûte (partie couverte) de ce canal.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1104184"
+   },
+   {
+    "ap_cle": "1004080",
+    "ap_texte": "TELECOMMANDE DU CANAL SAINT MARTIN",
+    "mandate_par_annee": {
+     "2014": 39.97
+    },
+    "total_mandate": 39.97,
+    "preuve": "Libellé verbatim « TELECOMMANDE DU CANAL SAINT MARTIN » (direction DVD) : équipement de télécommande des ouvrages de ce canal.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1004080"
+   }
+  ],
+  "periode": [
+   "2010",
+   "2021"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=canal+AND+Saint-Martin"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22canal+Saint-Martin%22%29"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
   },
   "wiki": {
-    "extract": "Le canal Saint-Martin, long de 4,55 km, est situé pour l'essentiel dans les 10e et 11e arrondissements de Paris. Il relie le bassin de la Villette — et au-delà le canal de l'Ourcq — au port de l'Arsenal qui communique avec la Seine. C'est un canal de petit gabarit destiné, à l'origine, à l'adduction d'eau potable dans la capitale. Inauguré en 1825, il comporte neuf écluses et deux ponts tournants pour une dénivellation totale de 25 m.",
-    "url": "https://fr.wikipedia.org/wiki/Canal_Saint-Martin",
-    "source": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    },
-    "extract_en": "The canal Saint-Martin, 4.55 km long, is located mainly in the 10th and 11th arrondissements of Paris. It links the bassin de la Villette — and beyond it the canal de l'Ourcq — to the port de l'Arsenal, which connects to the Seine. It is a small-gauge canal originally intended to supply the capital with drinking water. Inaugurated in 1825, it has nine locks and two swing bridges for a total elevation change of 25 m."
-  },
-  "stats": {
-    "n_delibs": 746,
-    "delibs_span": [
-      2000,
-      2024
-    ],
-    "n_bmo_brut": 2000,
-    "n_bmo_verifies": 8,
-    "invest_total_eur": 0,
-    "invest_annees": [],
-    "lecture_mode": "titre nommant le lieu (37 trouvés)",
-    "lecture_mode_en": "title naming the place (37 found)",
-    "n_lus": 37,
-    "n_lieu": 25
-  },
-  "subventions_exploitant": null,
-  "residents": [],
-  "kpi_montant": null,
-  "synthese_fr": "Dans les délibérations du Conseil de Paris, le canal Saint-Martin apparaît d'abord comme un chantier : au tournant des années 2000, la Ville engage la reconstruction des bassins Louis-Blanc et des Récollets, la fabrication de portes d'écluses et l'illumination artistique de sa voûte couverte, cette dernière dépense étant contestée en séance par une élue du 11e. Le domaine public fluvial devient ensuite un support d'occupations — Point Éphémère et pompiers au bassin Louis-Blanc, Maison des associations du 10e — tandis que les berges concentrent des tensions d'usage : nuisances sonores et propreté dénoncées par des riverains, campements de personnes sans abri et grévistes de la faim en 2007. Des questions récurrentes portent aussi sur la piétonnisation dominicale des quais et sur les liaisons cyclables. À plusieurs reprises, la Ville approuve la mise en chômage (mise à sec) du canal pour l'entretenir — pour un chômage prévu fin 2001, puis une mission de maîtrise d'œuvre approuvée en 2008 — et la question des algues revient en 2019. Plus récemment, le canal est présenté comme le cadre d'un projet de réaménagement annoncé pour une livraison en 2026 et de baignades estivales rendues gratuites pendant l'été des Jeux de 2024.",
-  "moments": [
-    {
-      "id": "2886",
-      "seance": "FEVRIER 2000",
-      "fait": "Le Conseil autorise le marché d'illumination de la voûte couverte du canal ; une élue du 11e conteste des « travaux de prestige » chiffrés à « plus de deux millions ».",
-      "pourquoi": "mettre le canal en lumière, à quel prix",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2886",
-      "fait_en": "The Council authorized the contract for illuminating the canal's covered vault; a councillor from the 11th arrondissement disputed \"prestige works\" costed at \"more than two million\".",
-      "pourquoi_en": "Lighting up the canal, at what price"
-    },
-    {
-      "id": "50877",
-      "seance": "AVRIL 2000",
-      "fait": "Le Conseil approuve le principe de la reconstruction des bassins Louis-Blanc et Récollets et autorise la signature des marchés de maîtrise d'œuvre.",
-      "pourquoi": "reconstruire les bassins historiques du canal",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50877",
-      "fait_en": "The Council approved the principle of rebuilding the Louis-Blanc and Récollets basins and authorized signing the project management contracts.",
-      "pourquoi_en": "Rebuilding the canal's historic basins"
-    },
-    {
-      "id": "94460",
-      "seance": "NOVEMBRE 2003",
-      "fait": "Le Conseil autorise une convention d'occupation avec l'association La Caserne Ephémère sur le domaine public fluvial du canal, au bassin Louis-Blanc.",
-      "pourquoi": "un lieu culturel s'installe au bord du canal",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94460",
-      "fait_en": "The Council authorized an occupancy agreement with the association La Caserne Éphémère on the canal's public waterway domain, at the Louis-Blanc basin.",
-      "pourquoi_en": "A cultural venue sets up along the canal"
-    },
-    {
-      "id": "11636",
-      "seance": "OCTOBRE 2005",
-      "fait": "Une question U.M.P. dénonce les nuisances des riverains ; l'adjoint détaille le nettoiement renforcé et renvoie bruit et alcool à la Préfecture.",
-      "pourquoi": "riverains contre la rançon de l'attractivité festive",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11636",
-      "fait_en": "A question from the U.M.P. group denounced nuisances affecting local residents; the deputy mayor detailed enhanced street cleaning and referred noise and alcohol issues to the Prefecture.",
-      "pourquoi_en": "Local residents against the price of festive appeal"
-    },
-    {
-      "id": "9744",
-      "seance": "FEVRIER 2007",
-      "fait": "Un vœu des Verts réclame l'assurance qu'aucune évacuation du campement le long du canal n'aura lieu sans hébergement ; le préfet dit n'en pas envisager.",
-      "pourquoi": "le canal, refuge d'un campement de sans-abri",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9744",
-      "fait_en": "A motion from the Greens demanded assurance that no eviction of the encampment along the canal would take place without providing shelter; the prefect said he was not planning one.",
-      "pourquoi_en": "The canal, a refuge for a homeless encampment"
-    },
-    {
-      "id": "67618",
-      "seance": "SEPTEMBRE 2008",
-      "fait": "Le Conseil approuve le principe d'une mission de maîtrise d'œuvre pour la mise en chômage (mise à sec) du canal.",
-      "pourquoi": "vider le canal pour l'entretenir",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67618",
-      "fait_en": "The Council approved the principle of a project management assignment for dewatering (draining) the canal.",
-      "pourquoi_en": "Draining the canal to maintain it"
-    },
-    {
-      "id": "174185",
-      "seance": "DECEMBRE 2023",
-      "fait": "Un vœu demande la candidature au label Quiet ; l'adjoint détaille les mesures anti-bruit d'un réaménagement du canal annoncé pour 2026.",
-      "pourquoi": "le grand réaménagement annoncé pour 2026",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174185",
-      "fait_en": "A motion called for applying for the Quiet label; the deputy mayor detailed the noise-reduction measures of a redevelopment of the canal announced for 2026.",
-      "pourquoi_en": "The major redevelopment announced for 2026"
-    },
-    {
-      "id": "176215",
-      "seance": "MAI 2024",
-      "fait": "Le Conseil approuve à l'unanimité la gratuité des baignades de l'été 2024, dont celles de l'espace délimité du canal Saint-Martin.",
-      "pourquoi": "se baigner dans le canal, l'été des Jeux",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176215",
-      "fait_en": "The Council unanimously approved free access to summer 2024 swimming spots, including those in the designated area of the canal Saint-Martin.",
-      "pourquoi_en": "Swimming in the canal, in the summer of the Games"
-    }
-  ],
-  "montants": [
-    {
-      "seance": "FEVRIER 2000",
-      "montant": "plus de deux millions",
-      "objet": "illumination de la voûte du canal Saint-Martin, montant avancé et contesté par l'élue du 11e Cécile SILHOUETTE (unité de compte non précisée ; francs en 2000)",
-      "citation": "Vous avez demandé l'avis des élus du 11e sur ce projet qui accorde plus de deux millions pour l'illumination de la voûte du canal Saint-Martin sous le boulevard Richard-Lenoir.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2886"
-    }
-  ],
-  "bmo_extraits": [
-    {
-      "date": "1883-07-07",
-      "extrait": "Canal Saint - Martin . — 10 jours de chômage, du 1er juillet au 11 juillet …  Canal Saint - Martin . —",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6247490r/f2.item",
-      "extrait_en": "Canal Saint-Martin. — 10 days of closure, from 1 July to 11 July … Canal Saint-Martin. —"
-    },
-    {
-      "date": "1894-06-24",
-      "extrait": "1376. — Mise en adjudication de la concession du touage dans le quatrième bief du canal Saint - Martin (M. Paris, rapporteur … juin 1905, par lequel M. le Préfet de la Seine propose la mise e",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6334659p/f14.item",
-      "extrait_en": "1376. — Putting the towage concession in the fourth reach of the canal Saint-Martin out to tender (Mr Paris, rapporteur) … June 1905, by which the Prefect of the Seine proposes the"
-    },
-    {
-      "date": "1962-11-18",
-      "extrait": "Préfet de la Seine sur les raisons pour lesquelles le service de batellerie a été si longtemps interrompu sur le canal Saint - Martin et sur les mesures que l'Administration a prises pour &",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6433647d/f2.item",
-      "extrait_en": "Prefect of the Seine on the reasons why the barge-towing service was interrupted for so long on the canal Saint-Martin, and on the measures the Administration has taken to &"
-    }
-  ],
-  "bmo_recit": "Au Bulletin municipal officiel, le canal Saint-Martin apparaît d'abord comme un ouvrage à exploiter et à entretenir. En juillet 1883, le Bulletin annonce dix jours de chômage du canal, du 1er au 11 juillet. En juin 1894, il enregistre la mise en adjudication de la concession du touage dans le quatrième bief, sur rapport de M. Paris : la concession est alors ouverte à la concurrence, et non encore attribuée. Le canal ne reparaît qu'en novembre 1962, lorsque le Préfet de la Seine est interrogé sur les raisons pour lesquelles le service de batellerie a été si longtemps interrompu et sur les mesures prises par l'Administration. Trois passages seulement, mais qui suivent tous la même ligne : celle d'une voie d'eau dont on règle l'arrêt, l'exploitation, puis le trafic interrompu.",
-  "invest": [],
-  "marches": [
-    {
-      "numero_marche": "20242024S09979",
-      "objet": "SA3.ACBC.TRANSPORT VOIE FLUVIAL MATÉRIAUX CANAL SAINT MARTIN",
-      "objet_clair": "Transport de matériaux par bateau sur le canal Saint-Martin",
-      "fournisseur": "BATAIL-LOG",
-      "montant_max": 500000.0,
-      "date_notification": "2024-11-05",
-      "preuve": "L'objet du marché nomme le lieu et porte sur une prestation qui s'y déroule : « SA3.ACBC.TRANSPORT VOIE FLUVIAL MATÉRIAUX CANAL SAINT MARTIN » — transport de matériaux par la voie d'eau sur le canal Saint-Martin lui-même (SIRET fournisseur 84770940900019)."
-    },
-    {
-      "numero_marche": "20242024S00824",
-      "objet": "BAIGNADE CANAL SAINT MARTIN",
-      "objet_clair": "Organisation et surveillance de la baignade estivale dans le canal Saint-Martin.",
-      "fournisseur": "SSO ACTIVE",
-      "montant_max": 38400.0,
-      "date_notification": "2024-02-14",
-      "preuve": "L'objet du marché nomme le lieu et porte sur une prestation qui s'y déroule : « BAIGNADE CANAL SAINT MARTIN » (SIRET fournisseur 81096330600016). Contexte corroborant l'existence d'une baignade au canal Saint-Martin à cette période, sans lien établi avec ce marché : délibération 2024 DJS 94 (Conseil de Paris, mai 2024), « Gratuité d'utilisation pendant l'été 2024 des bassins éphémères implantés dans les centres sportifs et les baignades dans l'espace naturel délimité du canal Saint-Martin et de La Villette »."
-    }
-  ],
-  "mandate": {
-    "par_annee": {
-      "2010": 40837.76,
-      "2011": 1926299.66,
-      "2012": 901352.66,
-      "2013": 230679.96,
-      "2014": 146819.36,
-      "2015": 1103645.61,
-      "2016": 6972920.39,
-      "2017": 598746.75
-    },
-    "total_eur": 11921302.15,
-    "operations": [
-      {
-        "ap_cle": "1404078",
-        "ap_texte": "CHOMAGE CANAL SAINT MARTIN",
-        "mandate_par_annee": {
-          "2015": 1014517.16,
-          "2016": 6808003.0,
-          "2017": 434428.17
-        },
-        "total_mandate": 8256948.33,
-        "preuve": "Libellé verbatim « CHOMAGE CANAL SAINT MARTIN » (direction DVD, mission « VOIRIE ET DEPLACEMEN ») : mise en chômage (vidange pour entretien) de ce canal. Corroboré au Conseil de Paris (vœu septembre 2019, algues) : « l'opération importante de chômage qu'on a eue il y a quelques années et qui nous a permis d'évacuer les vases » — cohérent avec le mandaté 2015-2017.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1404078"
-      },
-      {
-        "ap_cle": "B100/1004080",
-        "ap_texte": "TELECOMMANDE DU CANAL SAINT MARTIN",
-        "mandate_par_annee": {
-          "2011": 1898603.69,
-          "2012": 810821.7,
-          "2013": 185616.06
-        },
-        "total_mandate": 2895041.45,
-        "preuve": "Libellé verbatim « TELECOMMANDE DU CANAL SAINT MARTIN » (direction DVD, gestionnaire des canaux parisiens) : équipement de télécommande des ouvrages de ce canal.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1004080"
-      },
-      {
-        "ap_cle": "1004078",
-        "ap_texte": "CHOMAGE CANAL SAINT MARTIN",
-        "mandate_par_annee": {
-          "2014": 20299.68,
-          "2015": 89128.45,
-          "2016": 164917.39
-        },
-        "total_mandate": 274345.52,
-        "preuve": "Libellé verbatim « CHOMAGE CANAL SAINT MARTIN » (direction DVD) : opération d'entretien par mise en chômage de ce canal.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1004078"
-      },
-      {
-        "ap_cle": "B100/1004078",
-        "ap_texte": "CHOMAGE CANAL SAINT MARTIN",
-        "mandate_par_annee": {
-          "2010": 40837.76,
-          "2011": 27695.97,
-          "2012": 65008.32,
-          "2013": 45063.9
-        },
-        "total_mandate": 178605.95,
-        "preuve": "Libellé verbatim « CHOMAGE CANAL SAINT MARTIN » (direction DVD) : opération d'entretien par mise en chômage de ce canal.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1004078"
-      },
-      {
-        "ap_cle": "1604184",
-        "ap_texte": "VOUTE DU CANAL SAINT MARTIN",
-        "mandate_par_annee": {
-          "2017": 164318.58
-        },
-        "total_mandate": 164318.58,
-        "preuve": "Libellé verbatim « VOUTE DU CANAL SAINT MARTIN » (direction DVD) : travaux sur la voûte (partie couverte) de ce canal.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1604184"
-      },
-      {
-        "ap_cle": "1104184",
-        "ap_texte": "VOUTE CANAL SAINT MARTIN",
-        "mandate_par_annee": {
-          "2014": 126479.71
-        },
-        "total_mandate": 126479.71,
-        "preuve": "Libellé verbatim « VOUTE CANAL SAINT MARTIN » (direction DVD) : travaux sur la voûte (partie couverte) de ce canal.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1104184"
-      },
-      {
-        "ap_cle": "B100/1104184",
-        "ap_texte": "VOUTE CANAL SAINT MARTIN",
-        "mandate_par_annee": {
-          "2012": 25522.64
-        },
-        "total_mandate": 25522.64,
-        "preuve": "Libellé verbatim « VOUTE CANAL SAINT MARTIN » (direction DVD) : travaux sur la voûte (partie couverte) de ce canal.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1104184"
-      },
-      {
-        "ap_cle": "1004080",
-        "ap_texte": "TELECOMMANDE DU CANAL SAINT MARTIN",
-        "mandate_par_annee": {
-          "2014": 39.97
-        },
-        "total_mandate": 39.97,
-        "preuve": "Libellé verbatim « TELECOMMANDE DU CANAL SAINT MARTIN » (direction DVD) : équipement de télécommande des ouvrages de ce canal.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1004080"
-      }
-    ],
-    "periode": [
-      "2010",
-      "2017"
-    ],
-    "source": {
-      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-    }
-  },
-  "sources": {
-    "delibs": {
-      "name": "Débat-Délibs — Conseil de Paris",
-      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=canal+AND+Saint-Martin"
-    },
-    "bmo": {
-      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22canal+Saint-Martin%22%29"
-    },
-    "invest": {
-      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-      "url": "https://opendata.paris.fr/"
-    },
-    "wiki": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
-  },
-  "synthese_en": "In the deliberations of the Conseil de Paris, the canal Saint-Martin first appears as a construction site: at the turn of the 2000s, the City undertook the reconstruction of the Louis-Blanc and Récollets basins, the manufacture of lock gates, and the artistic illumination of its covered vault, this last expense being disputed in session by a councillor from the 11th arrondissement. The public waterway domain then became a platform for occupations — Point Éphémère and firefighters at the Louis-Blanc basin, the 10th arrondissement's association hall — while the banks concentrated tensions over use: noise nuisance and cleanliness denounced by local residents, homeless encampments and hunger strikers in 2007. Recurring questions also concern Sunday pedestrianization of the quays and cycling links. On several occasions, the City approved dewatering the canal (draining it dry) for maintenance — a dewatering planned for late 2001, then a project management assignment approved in 2008 — and the question of algae came back up in 2019. More recently, the canal has been presented as the setting for a redevelopment project announced for delivery in 2026, and for summer swimming made free during the summer of the 2024 Games.",
-  "bmo_recit_en": "In the Bulletin municipal officiel, the canal Saint-Martin first appears as a waterway to be operated and maintained. As early as July 1883, the Bulletin announced ten days of closure (dewatering) of the canal, from 1 to 11 July. In June 1894, it recorded the canal's towage concession in the fourth reach being put out to tender, on the report of Mr Paris: the concession was then open to competition, and not yet awarded. The canal does not reappear until November 1962, when the Prefect of the Seine was questioned about the reasons why the barge-towing service had been interrupted for so long, and about the measures taken by the Administration. Only three passages, but all following the same line: that of a waterway whose closure, operation, and then interrupted traffic are being regulated.",
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
   }
+ },
+ "synthese_en": "In the deliberations of the Conseil de Paris, the canal Saint-Martin first appears as a construction site: at the turn of the 2000s, the City undertook the reconstruction of the Louis-Blanc and Récollets basins, the manufacture of lock gates, and the artistic illumination of its covered vault, this last expense being disputed in session by a councillor from the 11th arrondissement. The public waterway domain then became a platform for occupations — Point Éphémère and firefighters at the Louis-Blanc basin, the 10th arrondissement's association hall — while the banks concentrated tensions over use: noise nuisance and cleanliness denounced by local residents, homeless encampments and hunger strikers in 2007. Recurring questions also concern Sunday pedestrianization of the quays and cycling links. On several occasions, the City approved dewatering the canal (draining it dry) for maintenance — a dewatering planned for late 2001, then a project management assignment approved in 2008 — and the question of algae came back up in 2019. More recently, the canal has been presented as the setting for a redevelopment project announced for delivery in 2026, and for summer swimming made free during the summer of the 2024 Games.",
+ "bmo_recit_en": "In the Bulletin municipal officiel, the canal Saint-Martin first appears as a waterway to be operated and maintained. As early as July 1883, the Bulletin announced ten days of closure (dewatering) of the canal, from 1 to 11 July. In June 1894, it recorded the canal's towage concession in the fourth reach being put out to tender, on the report of Mr Paris: the concession was then open to competition, and not yet awarded. The canal does not reappear until November 1962, when the Prefect of the Seine was questioned about the reasons why the barge-towing service had been interrupted for so long, and about the measures taken by the Administration. Only three passages, but all following the same line: that of a waterway whose closure, operation, and then interrupted traffic are being regulated."
 }

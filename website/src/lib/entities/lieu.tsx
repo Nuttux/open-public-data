@@ -12,22 +12,60 @@ export function lieuStaticParams(): { slug: string }[] {
   return loadLieuxIndex().map((l) => ({ slug: l.slug }));
 }
 
+/**
+ * La phrase d'accroche ne promet que ce que la fiche contient.
+ *
+ * Elle annonçait à toutes les fiches « N délibérations du Conseil de Paris, les
+ * extraits du Bulletin municipal depuis 1882 et les investissements de la
+ * Ville ». Sur les lieux ajoutés le 2026-09-11, cela donnait « 0 délibération »
+ * et promettait une archive absente. Un lecteur arrivé par un moteur de
+ * recherche sur cette promesse repart : on n'énumère donc que les registres
+ * réellement présents, et l'argent d'abord quand il y en a.
+ */
 function lieuAnswer(lieu: D["lieu"], locale: "fr" | "en"): SeoAnswer {
   const n = lieu.stats.n_lieu ?? 0;
   const kind = (locale === "en" ? lieu.kind_en : lieu.kind_fr) || "";
   const where = lieu.arrondissement > 0 ? `, ${locale === "en" ? ordEn(lieu.arrondissement) : ordFr(lieu.arrondissement)} arrondissement` : "";
   const date = dataDate("lieux/index.json", locale);
   const src = "Conseil de Paris, Bulletin municipal officiel, opendata.paris.fr";
+  // Le total d'argent fait autorité dans l'index (l'export y dédoublonne les
+  // chantiers publiés deux fois) — on ne le recalcule pas depuis la fiche.
+  const euros = loadLieuxIndex().find((l) => l.slug === lieu.slug)?.argent_total_eur ?? 0;
+  const nBmo = lieu.bmo_extraits?.length ?? 0;
+  const depuis = lieu.seuil_commun;
+  const bits: string[] = [];
   if (locale === "en") {
+    if (euros > 0) bits.push(`${money(euros, "en")} of City money${depuis ? ` since ${depuis}` : ""}`);
+    if (n > 0) bits.push(`${int(n, "en")} Paris Council deliberation${n > 1 ? "s" : ""}`);
+    if (nBmo > 0) bits.push("municipal bulletin extracts");
     return {
       title: `${lieu.name}: what the City of Paris decided and invested there`,
-      answer: `${lieu.name} (${kind.toLowerCase()}${where}): ${int(n, "en")} Paris Council deliberation${n > 1 ? "s" : ""}, municipal bulletin extracts back to 1882 and the City's investments, every fact linked to its source. ${sourceLine("en", src, date)}`,
+      answer: `${lieu.name} (${kind.toLowerCase()}${where}): ${liste(bits, "en")}, every fact linked to its source. ${sourceLine("en", src, date)}`,
     };
   }
+  if (euros > 0) bits.push(`${money(euros, "fr")} d’argent public${depuis ? ` depuis ${depuis}` : ""}`);
+  if (n > 0) bits.push(`${int(n, "fr")} délibération${n > 1 ? "s" : ""} du Conseil de Paris`);
+  if (nBmo > 0) bits.push("des extraits du Bulletin municipal officiel");
   return {
     title: `${lieu.name} : ce que la Ville de Paris y a décidé et investi`,
-    answer: `${lieu.name} (${kind.toLowerCase()}${where}) : ${int(n, "fr")} délibération${n > 1 ? "s" : ""} du Conseil de Paris, les extraits du Bulletin municipal depuis 1882 et les investissements de la Ville, chaque fait relié à sa source. ${sourceLine("fr", src, date)}`,
+    answer: `${lieu.name} (${kind.toLowerCase()}${where}) : ${liste(bits, "fr")}, chaque fait relié à sa source. ${sourceLine("fr", src, date)}`,
   };
+}
+
+/** « a, b et c » — une énumération lisible, vide si rien à annoncer. */
+function liste(bits: string[], locale: "fr" | "en"): string {
+  if (!bits.length) return locale === "en" ? "what the City publishes about it" : "ce que la Ville en publie";
+  if (bits.length === 1) return bits[0];
+  const et = locale === "en" ? " and " : " et ";
+  return bits.slice(0, -1).join(", ") + et + bits[bits.length - 1];
+}
+
+/** Un montant arrondi, lisible dans une phrase. */
+function money(n: number, locale: "fr" | "en"): string {
+  const l = locale === "en" ? "en-GB" : "fr-FR";
+  if (n >= 1e9) return `${new Intl.NumberFormat(l, { maximumFractionDigits: 1 }).format(n / 1e9)} ${locale === "en" ? "bn €" : "Md €"}`;
+  if (n >= 1e6) return `${new Intl.NumberFormat(l, { maximumFractionDigits: 1 }).format(n / 1e6)} M €`;
+  return `${new Intl.NumberFormat(l, { maximumFractionDigits: 0 }).format(n / 1000)} k €`;
 }
 
 export const lieuConfig: EntityPageConfig<D> = {
@@ -71,7 +109,20 @@ export const lieuConfig: EntityPageConfig<D> = {
           <h1 className="fx-page-title" style={{ fontSize: "clamp(26px, 3.4vw, 40px)", margin: "4px 0 24px" }}>
             {lieu.name}
           </h1>
-          <p className="fx-page-lede fx-answer">{lieuAnswer(lieu, locale).answer}</p>
+          {(() => {
+            // La réponse SEO reste entière dans le DOM ; à l'écran, la phrase
+            // « Source : … » passe en petit sous la phrase de réponse.
+            const answer = lieuAnswer(lieu, locale).answer;
+            const cut = answer.search(/\sSource\s?:/);
+            const main = cut > 0 ? answer.slice(0, cut) : answer;
+            const src = cut > 0 ? answer.slice(cut + 1) : "";
+            return (
+              <>
+                <p className="fx-page-lede fx-answer fx-lieu-lede">{main}</p>
+                {src && <p className="fx-v3-lead-src">{src}</p>}
+              </>
+            );
+          })()}
           <LieuFiche lieu={lieu} />
           <LieuxVoisins slug={lieu.slug} famille={lieu.famille} arrondissement={lieu.arrondissement} />
         </>

@@ -1,476 +1,783 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
-  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
-  "slug": "stade-charlety",
-  "name": "Stade Charléty",
-  "kind_fr": "Stade",
-  "kind_en": "Stadium",
-  "famille": "sport",
-  "arrondissement": 13,
-  "lat": 48.81922,
-  "lon": 2.34555,
-  "photo": "/img/lieux/stade-charlety.jpg",
-  "photo_credit": {
-    "licence": null,
-    "auteur": null,
-    "url": "https://fr.wikipedia.org/wiki/Stade_Charl%C3%A9ty",
-    "source": "Wikipédia"
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "stade-charlety",
+ "name": "Stade Charléty",
+ "kind_fr": "Stade",
+ "kind_en": "Stadium",
+ "famille": "sport",
+ "arrondissement": 13,
+ "lat": 48.81922,
+ "lon": 2.34555,
+ "photo": "/img/lieux/stade-charlety.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Stade_Charl%C3%A9ty",
+  "source": "Wikipédia"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "Le stade Charléty, officiellement stade Sébastien-Charléty, est un complexe sportif omnisports de Paris, comprenant un stade d'une capacité de 19 151 places assises, un terrain d'entraînement, la salle omnisports Pierre Charpy, des salles spécialisées et des courts de tennis et de squash. Il abrite également la Maison du sport français, avec les bureaux du Comité national olympique et sportif français et la Fédération française d'athlétisme.",
+  "url": "https://fr.wikipedia.org/wiki/Stade_Charl%C3%A9ty",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "Stade Charléty, officially Stade Sébastien-Charléty, is a multi-sport complex in Paris, comprising a stadium with a seating capacity of 19,151, a training pitch, the Pierre Charpy multi-sport hall, specialized rooms, and tennis and squash courts. It also houses the Maison du sport français, with the offices of the French National Olympic and Sports Committee and the French Athletics Federation."
+ },
+ "stats": {
+  "n_delibs": 267,
+  "delibs_span": [
+   2000,
+   2024
+  ],
+  "n_bmo_brut": 145,
+  "n_bmo_verifies": 18,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (76 trouvés)",
+  "lecture_mode_en": "title naming the place (76 found)",
+  "n_lus": 44,
+  "n_lieu": 42
+ },
+ "subventions_exploitant": null,
+ "residents": [
+  {
+   "beneficiaire": "FEDERATION FRANCAISE D'ATHLETISME",
+   "montant_total": 125000.0,
+   "preuve": "Objet de la subvention (candidat) : « Championnats de France élite sur piste au stade Charléty » — l'objet nomme le lieu, mais la FFA (SIRET 78444873000027) y organise une compétition sans gérer l'équipement : résident, pas exploitant. Aide du même type votée par le Conseil de Paris à la même fédération : 2006 DJS 135 (séance de septembre 2006), « Subvention d'aide au projet à la Fédération Française d'Athlétisme pour l'organisation du Décanation qui a eu lieu le 26 août 2006 au stade Charléty ». La gestion du stade fait l'objet de marchés distincts de la Ville (2008 DJS 319, « gestion technique globale du Stade Charléty (13e) »)."
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": "En février 2000, le Conseil de Paris approuve une convention de délégation de service public pour la gestion du stade et autorise le Maire à la signer avec la Société d'exploitation du stade Charléty, délégation prolongée d'un an en 2005. À partir de 2005-2006, la Ville remplace cette délégation par des marchés de gestion technique globale et fixe une grille de tarifs d'utilisation, tandis que plusieurs élus décrivent en séance un grand stade sous-utilisé depuis le départ de l'athlétisme vers le Stade de France. La même période ouvre un débat récurrent sur la vocation du site : un vœu des Verts (2005) demande que Charléty devienne le stade résidant du Stade français, et l'Exécutif y répond par un vœu proposant un groupe de travail sur la complémentarité avec Jean-Bouin. De 2004 à 2011, le Conseil approuve une longue série de principes de travaux et de marchés (mise aux normes du terrain annexe, réfection de la pelouse, vestiaires, garde-corps, sécurité incendie, contrôle des structures) et subventionne des fédérations pour des événements tenus sur place, comme le DecaNation d'athlétisme et un tournoi de rugby à sept. Le stade accueille aussi une retransmission de la Coupe du monde 2010, à l'origine d'un litige réglé par transaction en 2011, et reste en 2022-2024 l'objet de vœux sur l'état de sa pelouse et sur les nuisances sonores.",
+ "moments": [
+  {
+   "id": "51253",
+   "seance": "FEVRIER 2000",
+   "fait": "Le Conseil de Paris autorise le Maire à signer avec la Société d'exploitation du stade Charléty une convention de délégation de service public pour la gestion du stade.",
+   "pourquoi": "Le point de départ de la gestion déléguée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51253",
+   "fait_en": "The Conseil de Paris authorized the Mayor to sign a public service delegation agreement with the Société d'exploitation du stade Charléty for managing the stadium.",
+   "pourquoi_en": "The starting point of delegated management"
+  },
+  {
+   "id": "10320",
+   "seance": "SEPTEMBRE 2005",
+   "fait": "En séance, M. Najdovski dénonce la sous-utilisation chronique du stade et interroge le million d'euros dépensé chaque année par la Ville.",
+   "pourquoi": "Le coût du stade, questionné en séance",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10320",
+   "fait_en": "In session, Mr Najdovski denounced the stadium's chronic underuse and questioned the one million euros spent each year by the City.",
+   "pourquoi_en": "The stadium's cost, questioned in session"
+  },
+  {
+   "id": "19344",
+   "seance": "NOVEMBRE 2005",
+   "fait": "Un vœu des Verts demande que Charléty devienne le stade résidant du Stade français ; l'Exécutif y répond par un vœu proposant un groupe de travail sur la complémentarité avec Jean-Bouin.",
+   "pourquoi": "La bataille sur la vocation du stade",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19344",
+   "fait_en": "A motion from the Greens asked that Charléty become the resident stadium of the Stade Français; the executive responded with a motion proposing a working group on complementarity with Jean-Bouin.",
+   "pourquoi_en": "The battle over the stadium's purpose"
+  },
+  {
+   "id": "25380",
+   "seance": "FEVRIER 2006",
+   "fait": "Le Conseil approuve un contrat d'occupation avec le Paris Université Club (bureaux, club house, tennis) pour une redevance annuelle de 20 000 euros.",
+   "pourquoi": "Le PUC ancré durablement dans le stade",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25380",
+   "fait_en": "The Council approved an occupancy contract with the Paris Université Club (offices, clubhouse, tennis) for an annual fee of 20,000 euros.",
+   "pourquoi_en": "The PUC durably anchored in the stadium"
+  },
+  {
+   "id": "74088",
+   "seance": "SEPTEMBRE 2006",
+   "fait": "La Ville attribue 115 000 euros à la Fédération française d'athlétisme pour le DecaNation tenu au stade le 26 août 2006.",
+   "pourquoi": "Le retour de l'athlétisme au grand stade, le temps d'un meeting",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74088",
+   "fait_en": "The City granted 115,000 euros to the French Athletics Federation for the DecaNation meeting held at the stadium on 26 August 2006.",
+   "pourquoi_en": "Athletics returns to the big stadium, for the length of a meeting"
+  },
+  {
+   "id": "18119",
+   "seance": "NOVEMBRE 2008",
+   "fait": "Le Conseil approuve le principe de la réfection de la pelouse ; M. Vuillermoz indique en séance qu'elle date de 1994 et n'a pas été rénovée depuis.",
+   "pourquoi": "Refaire la pelouse, sur fond de polémique",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18119",
+   "fait_en": "The Council approved the principle of resurfacing the lawn; Mr Vuillermoz noted in session that it dated from 1994 and had not been renovated since.",
+   "pourquoi_en": "Resurfacing the lawn, against a backdrop of controversy"
+  },
+  {
+   "id": "96512",
+   "seance": "JUIN 2011",
+   "fait": "Le Conseil approuve une transaction avec la société Reflex pour régler un litige sur le dispositif de stadiers de la retransmission de la Coupe du monde 2010 au stade.",
+   "pourquoi": "Quand le stade devient écran géant",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96512",
+   "fait_en": "The Council approved a settlement with the company Reflex to resolve a dispute over the stewarding arrangements for the broadcast of the 2010 World Cup at the stadium.",
+   "pourquoi_en": "When the stadium becomes a giant screen"
+  },
+  {
+   "id": "176505",
+   "seance": "JUIN 2024",
+   "fait": "Le groupe Paris en commun dépose un vœu relatif au fonctionnement du stade et aux nuisances sonores.",
+   "pourquoi": "Le stade face à son voisinage, en 2024",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176505",
+   "fait_en": "The Paris en commun group filed a motion on the stadium's operation and noise nuisance.",
+   "pourquoi_en": "The stadium facing its neighbors, in 2024"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "MAI 2022",
+   "montant": "500 000 euros",
+   "objet": "Subvention au Paris Football Club au titre de l'année 2022 (versée au club)",
+   "citation": "Subvention (500.000 euros) pour le Paris Football Club au titre de l’année 2022",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164861"
+  },
+  {
+   "seance": "FEVRIER 2006",
+   "montant": "3,50 €/m²/jour",
+   "objet": "Tarif d'utilisation des coursives et de l'esplanade pour une manifestation sportive",
+   "citation": "Le tarif est de 3,50 euros par mètre carré occupé par jour.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27779"
+  },
+  {
+   "seance": "FEVRIER 2006",
+   "montant": "30 €/heure",
+   "objet": "Tarif horaire pour l'entraînement de sportifs préparant une compétition sur le terrain d'honneur",
+   "citation": "Pour les entraînements de sportifs préparant une compétition, un tarif horaire de 30 euros s?applique.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27779"
+  },
+  {
+   "seance": "NOVEMBRE 2008",
+   "montant": "2,5 millions d'euros",
+   "objet": "Coût, selon M. Goasguen, de la salle de réception votée en juin pour le stade (propos en séance)",
+   "citation": "Effectivement, une salle de réception est importante pour le rugby, c?est clair. Cela fait 2,5 millions d?euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18119"
+  },
+  {
+   "seance": "SEPTEMBRE 2005",
+   "montant": "1 million d'euros / an",
+   "objet": "Dépense annuelle de la Ville pour Charléty, chiffre avancé par M. Najdovski en séance",
+   "citation": "La Ville de Paris a-t-elle un projet pour Charléty pour lequel elle débourse aujourd?hui chaque année un million d?euros ?",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10320"
+  },
+  {
+   "seance": "FEVRIER 2006",
+   "montant": "20 000 euros / an",
+   "objet": "Redevance forfaitaire annuelle proposée au PUC pour l'occupation de locaux au stade",
+   "citation": "Vous nous proposez une redevance forfaitaire annuelle de 20.000 euros pour la mise à disposition de locaux comprenant des bureaux, un logement de fonction, un club house",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25380"
+  },
+  {
+   "seance": "SEPTEMBRE 2006",
+   "montant": "20 000 euros",
+   "objet": "Subvention à la Fédération Française de Rugby pour le tournoi GMF Paris Sevens au stade",
+   "citation": "Une subvention d?un montant de 20.000 euros est attribuée à la Fédération Française de Rugby",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74408"
+  },
+  {
+   "seance": "NOVEMBRE 2007",
+   "montant": "150 000 euros",
+   "objet": "Subvention à la FFA couvrant le Meeting SEAT (au POPB) et le DecaNation (au stade Charléty)",
+   "citation": "Une subvention d?un montant de 150.000 euros est attribuée à la Fédération Française d?Athlétisme",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65842"
+  },
+  {
+   "seance": "SEPTEMBRE 2006",
+   "montant": "115 000 euros",
+   "objet": "Subvention à la Fédération Française d'Athlétisme pour le DecaNation au stade Charléty",
+   "citation": "Une subvention d?un montant de 115.000 euros est attribuée à la Fédération Française d?Athlétisme",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74088"
+  }
+ ],
+ "bmo_extraits": [
+  {
+   "date": "1948-01-10",
+   "extrait": "Sur une partie des terrains expropriés a été édifié le stade « Sébastien- Charléty  … Le stade , bien entretenu, est géré pour le compte de cette dernière par le « Paris-Universitaire Club » Les emplacements contigus au stade ont été débarrassés des ferrailles et des ordures(..",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9635246b/f3.item",
+   "extrait_en": "On part of the expropriated land was built the \"Sébastien-Charléty\" stadium … The stadium, well maintained, is managed on behalf of the latter by the \"Paris-Universitaire Club.\" The plots adjoining the stadium have been cleared of scrap metal and rubbish (.."
+  },
+  {
+   "date": "1954-07-01",
+   "extrait": "D’autre part, il avait été proposé qu’une partie du parc de Sceaux, qui est pratiquement inemployée, pourrait être utilisée pour l’édification d’un très vaste ensemble sportif réservé à l’Université de Paris, où pourrait être transféré l’actuel stade Charléty  … emplacement de ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32013205/f1038.item",
+   "extrait_en": "Moreover, it had been proposed that part of the Parc de Sceaux, which is practically unused, could be used for building a very large sports complex reserved for the University of Paris, to which the current Stade Charléty could be transferred … location of"
+  },
+  {
+   "date": "1955-07-01",
+   "extrait": "N° 772. — Le stade Charléty , boulevard Kellermann, dont la réalisation est très avancée, s’avère une réussite certaine … afin de lui faire préciser ses intentions quant à une éventuelle piscine Charléty . ( Question du 21 mai 1955.) Deuxième réponse de M. le Préfet de la Seine",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32013257/f95.item",
+   "extrait_en": "No. 772. — Stade Charléty, boulevard Kellermann, whose construction is very advanced, is proving to be a definite success … in order to have him clarify his intentions regarding a possible Charléty swimming pool. (Question of 21 May 1955.) Second reply from the Prefect of the Seine"
+  },
+  {
+   "date": "1963-12-23",
+   "extrait": "c'est celui du stade Charlety  … Le stade Charlety , à l'heure actuelle, risque de se dégrader et le Ministère ne délègue pas les crédits suffisants pour son entretien … Malheureusement nous avons appris, lors de la dernière réunion du conseil d'administration du stade Charle",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97106159/f34.item",
+   "extrait_en": "it is that of Stade Charléty … Stade Charléty, at present, risks deteriorating and the Ministry is not allocating sufficient funds for its upkeep … Unfortunately we learned, at the last meeting of the board of Stade Charlé"
+  },
+  {
+   "date": "1967-01-01",
+   "extrait": "13° arr. — 83, boulevard Kellermann. — Pét., stade Charléty , Université de Paris, même adresse (Por. 58-12). — Couverture de la tribune d'honneur du stade Charléty (bâtiment public … ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9721812b/f846.item",
+   "extrait_en": "13th arr. — 83, boulevard Kellermann. — Applicant, Stade Charléty, University of Paris, same address (Por. 58-12). — Covering of the main grandstand of Stade Charléty (public building) … "
+  },
+  {
+   "date": "1968-07-24",
+   "extrait": "Beaucoup plus tard, lors de la manifestation en direction du stade Charléty ou lors du cortège de Montparnasse à Austerlitz, il n'y a pas eu de heurts parce qu'il n'y avait pas de police",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9713272w/f22.item",
+   "extrait_en": "Much later, during the demonstration heading toward Stade Charléty or during the procession from Montparnasse to Austerlitz, there were no clashes because there was no police presence"
+  }
+ ],
+ "bmo_recit": "Le stade Sébastien-Charléty apparaît dans le Bulletin municipal dès 1948 : édifié sur une partie de terrains expropriés, boulevard Kellermann, il est alors décrit comme bien entretenu et géré, pour le compte de l'Université de Paris, par le Paris-Universitaire Club. Dans les années 1950, son sort fait débat : une proposition de 1954 suggère de le transférer au parc de Sceaux, dans un vaste ensemble sportif réservé à l'Université, afin de libérer son emplacement, tandis qu'en 1955 une question au Conseil décrit sa réalisation comme « très avancée » et « une réussite certaine », tout en demandant au Ministre de l'Éducation nationale de préciser ses intentions sur une éventuelle piscine Charléty. En 1963, un intervenant alerte le Conseil : le stade risque de se dégrader, le Ministère ne déléguant pas les crédits suffisants pour son entretien. L'archive garde ensuite la trace, en 1967, d'une demande de permis de l'Université de Paris pour couvrir la tribune d'honneur, puis, en 1968, d'un débat où un orateur évoque la manifestation en direction du stade Charléty, restée selon lui sans heurts parce qu'il n'y avait pas de police.",
+ "delibs_par_annee": {
+  "2004": [
+   {
+    "reference": "2004 DJS 407",
+    "titre": "Autorisation à M. le Maire de Paris de lancer un marché sur appel d'offres ouvert pour la mise aux normes du terrain annexe du stade Charléty, 99 boulevard Kellermann (13e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "OCTOBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64235"
+   }
+  ],
+  "2005": [
+   {
+    "reference": "2005 DJS 114",
+    "titre": "2005, DJS 114 - Prolongation d’un an de la convention de délégation de service public pour l’animation et la gestion du stade Sébastien Charléty (13e). - Autorisation à M. le Maire de Paris de signer l’avenant de prolongation avec le délégataire (Société d’exploitation du Stade Charléty).",
+    "genres": [
+     "autre"
+    ],
+    "seance": "FEVRIER 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14334"
+   },
+   {
+    "reference": "2005 DJS 114",
+    "titre": "Prolongation d’un an de la convention de délégation de service public pour l’animation et la gestion du stade Sébastien-Charléty (13e). - Autorisation à M. le Maire de Paris de signer l’avenant de prolongation avec le délégataire (Société d’exploitation du Stade Charléty). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "FEVRIER 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82496"
+   },
+   {
+    "reference": "2005 DJS 378",
+    "titre": "Autorisation à M. le Maire de Paris de solliciter une subvention auprès de la Fédération Française de Football dans le cadre des travaux pour la mise aux normes du terrain annexe du stade Charléty, 99 boulevard Kellermann (13ème). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
+    "seance": "JUILLET 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87056"
+   },
+   {
+    "reference": "2005 DJS 414",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant au marché d’appel d’offres ouvert à lot unique pour la mise aux normes du terrain annexe du stade Charléty, 99 boulevard Kellermann (13e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63716"
+   },
+   {
+    "reference": "2005 DJS 426",
+    "titre": "2005, DJS 426 - Autorisation à M. le Maire de Paris de lancer un marché selon la procédure du dialogue compétitif pour assurer la gestion technique globale du stade Charléty (13e).",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10320"
+   },
+   {
+    "reference": "2005 DJS 426",
+    "titre": "Autorisation à M. le Maire de Paris de lancer un marché selon la procédure du dialogue compétitif pour assurer la gestion technique globale du Stade Charléty, 99 boulevard Kellermann (13e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63764"
+   }
+  ],
+  "2006": [
+   {
+    "reference": "2006 DJS 123",
+    "titre": "Subvention à la Fédération Française de Rugby pour l’organisation du tournoi international de rugby à sept “GMF Paris Sevens” qui a eu lieu les 27 et 28 mai 2006 au stade Charléty. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74408"
+   },
+   {
+    "reference": "2006 DJS 135",
+    "titre": "Subvention d’aide au projet à la Fédération Française d’Athlétisme pour l’organisation du Décanation qui a eu lieu le 26 août 2006 au stade Charléty. Autorisation à M. le Maire de Paris de signer la convention afférente. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74088"
+   },
+   {
+    "reference": "2006 DJS 193",
+    "titre": "2006, DJS 193 - Autorisation à M. le Maire de Paris de signer le marché passé selon la procédure du dialogue compétitif pour assurer la gestion technique globale du stade Charléty (13e).",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JANVIER 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24854"
+   },
+   {
+    "reference": "2006 DJS 513",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché de gestion technique globale du Stade Charléty (13e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73780"
+   },
+   {
+    "reference": "2006 DPA 334",
+    "titre": "Approbation du principe d’indemnisation de la Ville de Paris en raison des préjudices subis par elle lors des travaux de reconstruction du stade Charléty 99, boulevard Kellerman (13ème) ; autorisation à M. le Maire de Paris de signer le contrat de transaction correspondant. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92133"
+   }
+  ],
+  "2007": [
+   {
+    "reference": "2007 DJS 136",
+    "titre": "Subvention d’aide au projet à la Fédération Française d’Athlétisme pour l’organisation du Meeting SEAT le 23 février 2007 au POPB et du Décanation le 8 septembre 2007 au stade Charléty. - Approbation de la convention afférente. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65842"
+   },
+   {
+    "reference": "2007 DPA 375",
+    "titre": "Approbation du principe de réalisation des travaux de création d’un espace de réception et de convivialité dans l’enceinte du Stade Charléty - 99, boulevard Kellermann (13e) et des modalités de passation du marché de maîtrise d’œuvre correspondant. Autorisation à M. le Maire de Paris de signer ledit marché. Autorisation à M. le Maire de Paris de déposer les demandes de permis de démolir et de construire pour la réalisation de l’opération susvisée. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54923"
+   },
+   {
+    "reference": "2007 DPA 58",
+    "titre": "Approbation du principe de réalisation des travaux de mise en conformité de la vidéo surveillance au stade Charléty 99, boulevard Kellermann (13e), et des modalités de passation du marché de travaux correspondant. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26812"
+   }
+  ],
+  "2008": [
+   {
+    "reference": "2008 DJS 232",
+    "titre": "Signature d’une convention avec la Fédération Française d’Athlétisme pour l’attribution d’une subvention. M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66977"
+   },
+   {
+    "reference": "2008 DJS 319",
+    "titre": "2008, DJS 319 - Lancement d’un marché selon la procédure de l’appel d’offres pour assurer la gestion technique globale du Stade Charléty (13e).",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6746"
+   },
+   {
+    "reference": "2008 DJS 319",
+    "titre": "Lancement d’un marché selon la procédure de l’appel d’offres pour assurer la gestion technique globale du Stade Charléty (13e). M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70011"
+   },
+   {
+    "reference": "2008 DJS 341",
+    "titre": "2008, DJS 341 - Approbation du principe des travaux de réfection de la pelouse du terrain d'honneur du stade Charléty (13e) et des modalités de passation du marché de travaux.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "NOVEMBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18119"
+   },
+   {
+    "reference": "2008 DJS 341",
+    "titre": "Approbation du principe des travaux de réfection de la pelouse du terrain d’honneur du stade Charléty (13e) et des modalités de passation du marché de travaux. M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "NOVEMBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61948"
+   },
+   {
+    "reference": "2008 DPA 136",
+    "titre": "Approbation des modalités de passation du marché de travaux concernant la mise en sécurité des drisses et sandows des tennis couverts au stade Charléty (13e). M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68575"
+   }
+  ],
+  "2009": [
+   {
+    "reference": "2009 DJS 181",
+    "titre": "Signature d’une convention avec la Fédération Française d’Athlétisme pour l’attribution d’une subvention. M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36961"
+   }
+  ],
+  "2022": [
+   {
+    "reference": "2022 DJS 61",
+    "titre": "2022 DJS 61 - Subvention (500.000 euros) pour le Paris Football Club au titre de l’année 2022. Vœu déposé par le groupe Changer Paris relatif à l’état récent de la pelouse du stade Charléty et des équipements sportifs parisiens.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MAI 2022",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164861"
+   }
+  ],
+  "2023": [
+   {
+    "reference": "2023 DJS 62",
+    "titre": "2023 DJS 62 - Convention d'occupation du domaine public de gré à gré. - PUC Social Club, Stade Charléty (13e). Vœu déposé par le groupe Changer Paris relatif à l’état récent de la pelouse du stade Charléty et des équipements sportifs parisiens.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "MARS 2023",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168336"
+   }
+  ]
+ },
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20201410000412",
+   "objet": "SA4.MAINTENANCE MULTI TECHNIQUE,COORDINAT°STADE CHARLETY V.P",
+   "objet_clair": null,
+   "fournisseur": "ENGIE ENERGIE SERVICES",
+   "montant_max": 5112609.99,
+   "date_notification": "2020-06-15",
+   "preuve": "Objet nomme le lieu : « MAINTENANCE MULTI TECHNIQUE,COORDINAT°STADE CHARLETY » — prestation de maintenance du stade lui-même."
+  },
+  {
+   "numero_marche": "20242024S10144",
+   "objet": "SA4_ACBC_MAINTENANCE MULTI-TECHNIQUE DU STADE CHARLÉTY 75013",
+   "objet_clair": "Entretien technique complet des installations du stade Charléty dans le 13e arrondissement.",
+   "fournisseur": "EIFFAGE ENERGIE SYSTEMES",
+   "montant_max": 4530785.0,
+   "date_notification": "2024-10-04",
+   "preuve": "Objet nomme le lieu et son arrondissement : « MAINTENANCE MULTI-TECHNIQUE DU STADE CHARLÉTY 75013 »."
+  },
+  {
+   "numero_marche": "20161410000951",
+   "objet": "CSP5 MAINTENANCE MULTITECHNIQUE ET COORD STADE CHARLETY LOT1",
+   "objet_clair": null,
+   "fournisseur": "ENGIE ENERGIE SERVICES",
+   "montant_max": 3116568.0,
+   "date_notification": "2016-07-11",
+   "preuve": "Objet nomme le lieu : « MAINTENANCE MULTITECHNIQUE ET COORD STADE CHARLETY LOT1 »."
+  },
+  {
+   "numero_marche": "20161410000975",
+   "objet": "CSP1 LOT 3 SECURITE INCENDIE ET ACCUEIL DU STADE CHARLETY",
+   "objet_clair": null,
+   "fournisseur": "CHALLANCIN PREVENTION ET SECURITE",
+   "montant_max": 3081210.4,
+   "date_notification": "2016-07-11",
+   "preuve": "Objet nomme le lieu : « SECURITE INCENDIE ET ACCUEIL DU STADE CHARLETY » — prestation exécutée dans le stade."
+  },
+  {
+   "numero_marche": "20242024F11836",
+   "objet": "SA1_SECURITE INCENDIE ACCEUIL STADE CHARLETY_LOT 1",
+   "objet_clair": "Sécurité incendie et accueil au stade Charléty",
+   "fournisseur": "FRANCE SECURITY PRIVEE",
+   "montant_max": 3013824.82,
+   "date_notification": "2024-12-03",
+   "preuve": "Objet nomme le lieu : « SECURITE INCENDIE ACCEUIL STADE CHARLETY_LOT 1 ». Doublon possible avec l'entrée DECP decp-2024S11836 (même identifiant de lot 11836, même date de notification 2024-12-03) : les deux montants ne s'additionnent pas."
+  },
+  {
+   "numero_marche": "20202020S08283",
+   "objet": "SA1 ACBC SECURITE INCENDIE ACCUEIL STADE CHARLETY LOT 1",
+   "objet_clair": null,
+   "fournisseur": "VIGI-SECURITE",
+   "montant_max": 2481469.99,
+   "date_notification": "2021-01-15",
+   "preuve": "Objet nomme le lieu : « SECURITE INCENDIE ACCUEIL STADE CHARLETY LOT 1 »."
+  },
+  {
+   "numero_marche": "20242024F11837",
+   "objet": "SA1_NETTOYAGE STADE CHARLETY_LOT2",
+   "objet_clair": "Nettoyage et entretien du stade Charléty.",
+   "fournisseur": "REKEEP FACILITY SAS",
+   "montant_max": 1847694.68,
+   "date_notification": "2024-12-03",
+   "preuve": "Objet nomme le lieu : « NETTOYAGE STADE CHARLETY_LOT2 ». Doublon possible avec l'entrée DECP decp-2024S11837 (même fournisseur REKEEP FACILITY SAS, SIRET 83991160900015, même date 2024-12-03) : les deux montants ne s'additionnent pas."
+  },
+  {
+   "numero_marche": "20201410000480",
+   "objet": "SA4 ENTRETIEN PELOUSE TERRAIN D'HONNEUR STADE CHARLETY -LOT2",
+   "objet_clair": null,
+   "fournisseur": "BOTANICA JARDINS SERVICES",
+   "montant_max": 1400009.99,
+   "date_notification": "2020-07-03",
+   "preuve": "Objet nomme le lieu : « ENTRETIEN PELOUSE TERRAIN D'HONNEUR STADE CHARLETY » — entretien d'un équipement du stade."
+  },
+  {
+   "numero_marche": "20161410000974",
+   "objet": "CSP1 LOT 2 NETTOYAGE DU STADE CHARLETY",
+   "objet_clair": null,
+   "fournisseur": "ELIOR SERVICES PROPRETE ET SANTE",
+   "montant_max": 1379461.08,
+   "date_notification": "2016-07-12",
+   "preuve": "Objet nomme le lieu : « NETTOYAGE DU STADE CHARLETY »."
+  },
+  {
+   "numero_marche": "decp-2024S11836",
+   "objet": "Marchés publics pour la sécurité incendie-accueil, et pour le nettoyage du stade CHARLETY en 2 lots séparés - Sécurité incendie accueil du stade CHARLETY",
+   "objet_clair": null,
+   "fournisseur": null,
+   "montant_max": 1356912.41,
+   "date_notification": "2024-12-03",
+   "preuve": "Objet DECP nomme le lieu : « Sécurité incendie accueil du stade CHARLETY » ; le lieu_execution « Paris » est large mais l'objet est explicite. Doublon possible avec le marché Ville 20242024F11836 (même identifiant de lot 11836, même date de notification 2024-12-03) : les deux montants ne s'additionnent pas."
+  },
+  {
+   "numero_marche": "20202020S08284",
+   "objet": "SA1 ACBC NETTOYAGE DU STADE CHARLETY - LOT2",
+   "objet_clair": null,
+   "fournisseur": "ELIOR SERVICES PROPRETE ET SANTE",
+   "montant_max": 1252459.99,
+   "date_notification": "2021-01-07",
+   "preuve": "Objet nomme le lieu : « NETTOYAGE DU STADE CHARLETY - LOT2 »."
+  },
+  {
+   "numero_marche": "20232023T04176",
+   "objet": "SA4 REFECTION DU GAZON DU STADE CHARLETY",
+   "objet_clair": null,
+   "fournisseur": "TERIDEAL SPARFEL NORMANDIE",
+   "montant_max": 1145308.85,
+   "date_notification": "2023-06-05",
+   "preuve": "Objet nomme le lieu : « REFECTION DU GAZON DU STADE CHARLETY » — travaux sur la pelouse du stade (cohérent avec le vœu du Conseil de Paris de mars 2023 sur « l'état récent de la pelouse du stade Charléty »)."
+  },
+  {
+   "numero_marche": "20191070000122",
+   "objet": "CSP5 STADE CHARLETY - LOT1 : RENOV INSFRASTRUCTURES PISTES",
+   "objet_clair": null,
+   "fournisseur": "IDVERDE",
+   "montant_max": 1086404.5,
+   "date_notification": "2019-01-30",
+   "preuve": "Objet nomme le lieu : « STADE CHARLETY - LOT1 : RENOV INSFRASTRUCTURES PISTES » — rénovation des pistes d'athlétisme du stade."
+  },
+  {
+   "numero_marche": "20191070000123",
+   "objet": "CSP5 STADE CHARLETY LOT2 : RENOVATION REVETEMENT DES PISTES",
+   "objet_clair": null,
+   "fournisseur": "ART-DAN ILE-DE-FRANCE",
+   "montant_max": 889289.46,
+   "date_notification": "2019-01-31",
+   "preuve": "Objet nomme le lieu : « STADE CHARLETY LOT2 : RENOVATION REVETEMENT DES PISTES »."
+  },
+  {
+   "numero_marche": "decp-2024S11837",
+   "objet": "Marchés publics pour la sécurité incendie-accueil, et pour le nettoyage du stade CHARLETY en 2 lots séparés - Nettoyage du stade CHARLETY",
+   "objet_clair": null,
+   "fournisseur": "REKEEP FACILITY SAS",
+   "montant_max": 623847.34,
+   "date_notification": "2024-12-03",
+   "preuve": "Objet DECP nomme le lieu : « Nettoyage du stade CHARLETY » ; même consultation que le lot notifié 20242024F11837 (même fournisseur REKEEP FACILITY SAS, SIRET 83991160900015, même date 2024-12-03). Doublon possible avec le marché Ville 20242024F11837 (même fournisseur, même SIRET, même date) : les deux montants ne s'additionnent pas."
+  },
+  {
+   "numero_marche": "20161410000690",
+   "objet": "CSP5 TRAVAUX TERRAIN DE FOOT ANNEXE STADE CHARLETY EN GAZON",
+   "objet_clair": null,
+   "fournisseur": "ART-DAN ILE-DE-FRANCE",
+   "montant_max": 287130.97,
+   "date_notification": "2016-06-10",
+   "preuve": "Objet nomme le lieu : « TRAVAUX TERRAIN DE FOOT ANNEXE STADE CHARLETY EN GAZON » — terrain annexe du complexe Charléty."
+  },
+  {
+   "numero_marche": "20232023T01624",
+   "objet": "MISE EN ACCESSIBILITÉ PMR DE TRIBUNES DU STADE CHARLÉTY",
+   "objet_clair": null,
+   "fournisseur": "ENTREPRISE CONSTRUCTION BATIMENT",
+   "montant_max": 108511.8,
+   "date_notification": "2023-02-20",
+   "preuve": "Objet nomme le lieu : « MISE EN ACCESSIBILITÉ PMR DE TRIBUNES DU STADE CHARLÉTY » — travaux sur les tribunes du stade."
+  },
+  {
+   "numero_marche": "20171410001564",
+   "objet": "AC À BC ENTRETIEN GAZON SYNTHÉTIQUE STADE CHARLETY 75013",
+   "objet_clair": null,
+   "fournisseur": "PARC ET JARDINS FRASNIER",
+   "montant_max": 90000.0,
+   "date_notification": "2017-10-03",
+   "preuve": "Objet nomme le lieu et son arrondissement : « ENTRETIEN GAZON SYNTHÉTIQUE STADE CHARLETY 75013 »."
+  },
+  {
+   "numero_marche": "20222022T05601",
+   "objet": "TRAVAUX GRILLES STADE CHARLETY 75013",
+   "objet_clair": null,
+   "fournisseur": "FELIX & CO",
+   "montant_max": 85859.0,
+   "date_notification": "2022-07-19",
+   "preuve": "Objet nomme le lieu et son arrondissement : « TRAVAUX GRILLES STADE CHARLETY 75013 »."
+  },
+  {
+   "numero_marche": "20181410001348",
+   "objet": "MAINTEN. CONSTRUCT. MOTEUR GROUPE ÉLECTROGENE STADE CHARLETY",
+   "objet_clair": null,
+   "fournisseur": "ENGIE ENERGIE SERVICES",
+   "montant_max": 67390.02,
+   "date_notification": "2018-10-08",
+   "preuve": "Objet nomme le lieu : « MOTEUR GROUPE ÉLECTROGENE STADE CHARLETY » — maintenance d'un équipement technique du stade."
+  }
+ ],
+ "mandate": {
+  "par_annee": {
+   "2009": 5074925.23,
+   "2010": 1693901.77,
+   "2011": 1382696.64,
+   "2012": 627309.09,
+   "2013": 80967.07,
+   "2014": 32090.97
+  },
+  "total_eur": 8891890.77,
+  "operations": [
+   {
+    "ap_cle": "B100/0803636",
+    "ap_texte": "CHARLETY",
+    "mandate_par_annee": {
+     "2009": 2663448.71,
+     "2010": 900732.77,
+     "2011": 578992.87,
+     "2012": 89064.55
+    },
+    "total_mandate": 4232238.9,
+    "preuve": "Libellé complet « CHARLETY » (signal candidat : partie distinctive — le libellé ne contient pas le mot « stade »), mission « JEUNESSE ET SPORTS », direction DJS. Deux éléments de confirmation : le numéro d'opération 03636 est celui de l'opération B100/0703636 libellée « STADE CHARLETY », et les mandatements 2009-2012 sont concomitants des travaux votés sur le site (2008 DJS 341, séance de novembre 2008, « travaux de réfection de la pelouse du terrain d'honneur du stade Charléty (13e) » ; 2008 DPA 111, séance de septembre 2008, « travaux d'aménagement de locaux en vestiaires au stade Sébastien Charléty »). Opération couvrant l'ensemble du site ; confiance moyenne, le libellé seul ne dit pas « stade ».",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0803636"
+   },
+   {
+    "ap_cle": "B100/0703636",
+    "ap_texte": "STADE CHARLETY",
+    "mandate_par_annee": {
+     "2009": 2304080.69,
+     "2010": 652006.12,
+     "2011": 441512.06,
+     "2012": 3047.46
+    },
+    "total_mandate": 3400646.33,
+    "preuve": "Libellé complet de l'opération = « STADE CHARLETY » (signal candidat : nom), mission « JEUNESSE ET SPORTS », direction DJS — l'opération nomme ce stade. Libellé large : l'opération couvre l'ensemble du complexe sportif. Mandatée 2009-2012.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0703636"
+   },
+   {
+    "ap_cle": "B100/0903636",
+    "ap_texte": "CHARLETY",
+    "mandate_par_annee": {
+     "2009": 107395.83,
+     "2010": 52628.36,
+     "2011": 172618.63,
+     "2012": 326131.61,
+     "2013": 76034.15
+    },
+    "total_mandate": 734808.58,
+    "preuve": "Libellé complet « CHARLETY » (signal candidat : partie distinctive), mission « JEUNESSE ET SPORTS », direction DJS. Confirmation : numéro d'opération 03636, celui de l'opération B100/0703636 libellée « STADE CHARLETY » ; mandatements 2009-2013 concomitants des travaux votés sur le site (2009 DPA 253, séance de septembre 2009, « démolition d'une tribune et la mise en place de vestiaires provisoires au Stade Sébastien Charléty » ; 2009 DPA 153, séance d'avril 2009, « rehaussement articulé des garde-corps séparant piste et tribune au stade Sébastien Charléty (13e) »). Opération couvrant l'ensemble du site ; confiance moyenne, le libellé seul ne dit pas « stade ».",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903636"
+   },
+   {
+    "ap_cle": "B100/1004105",
+    "ap_texte": "CHARLETY TRAVAUX GR",
+    "mandate_par_annee": {
+     "2010": 88534.52,
+     "2011": 119533.72,
+     "2012": 205843.14
+    },
+    "total_mandate": 413911.38,
+    "preuve": "Libellé complet « CHARLETY TRAVAUX GR » (signal candidat : partie distinctive ; libellé non tronqué, mais il ne dit pas « stade » et ne partage pas le numéro d'opération des lignes libellées « STADE CHARLETY »), mission « JEUNESSE ET SPORTS », direction DJS : travaux de grosses réparations rattachés au site sportif Charléty (13e), seul équipement de ce nom relevant de cette direction dans les délibérations DJS lues (marchés de gestion technique globale du stade Charléty, 2005 DJS 426, 2008 DJS 319). Rattachement fondé sur le nom du site et la direction gestionnaire, sans pièce nommant explicitement l'opération : confiance moyenne. Mandatée 2010-2012.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1004105"
+   },
+   {
+    "ap_cle": "B100/1104105",
+    "ap_texte": "CHARLETY TRAVAUX GR",
+    "mandate_par_annee": {
+     "2011": 70039.36,
+     "2012": 3222.33,
+     "2013": 4932.92
+    },
+    "total_mandate": 78194.61,
+    "preuve": "Libellé complet « CHARLETY TRAVAUX GR », mission « JEUNESSE ET SPORTS », direction DJS — même numéro d'opération (04105) que B100/1004105, exercice suivant, mandaté 2011-2013. Même base de rattachement (nom du site + direction gestionnaire), sans pièce nommant explicitement l'opération : confiance moyenne.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1104105"
+   },
+   {
+    "ap_cle": "0803636",
+    "ap_texte": "CHARLETY",
+    "mandate_par_annee": {
+     "2014": 20892.12
+    },
+    "total_mandate": 20892.12,
+    "preuve": "Libellé complet « CHARLETY » (signal candidat : partie distinctive), mission « JEUNESSE ET SPORTS », direction DJS ; même numéro d'opération (0803636) que B100/0803636 — reliquat mandaté en 2014. Confiance moyenne, le libellé seul ne dit pas « stade ».",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0803636"
+   },
+   {
+    "ap_cle": "0903636",
+    "ap_texte": "CHARLETY",
+    "mandate_par_annee": {
+     "2014": 11198.85
+    },
+    "total_mandate": 11198.85,
+    "preuve": "Libellé complet « CHARLETY » (signal candidat : partie distinctive), mission « JEUNESSE ET SPORTS », direction DJS ; même numéro d'opération (0903636) que B100/0903636 — reliquat mandaté en 2014. Confiance moyenne, le libellé seul ne dit pas « stade ».",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903636"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2014"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Charl%C3%A9ty"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Stade+Charl%C3%A9ty%22%29"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
   },
   "wiki": {
-    "extract": "Le stade Charléty, officiellement stade Sébastien-Charléty, est un complexe sportif omnisports de Paris, comprenant un stade d'une capacité de 19 151 places assises, un terrain d'entraînement, la salle omnisports Pierre Charpy, des salles spécialisées et des courts de tennis et de squash. Il abrite également la Maison du sport français, avec les bureaux du Comité national olympique et sportif français et la Fédération française d'athlétisme.",
-    "url": "https://fr.wikipedia.org/wiki/Stade_Charl%C3%A9ty",
-    "source": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    },
-    "extract_en": "Stade Charléty, officially Stade Sébastien-Charléty, is a multi-sport complex in Paris, comprising a stadium with a seating capacity of 19,151, a training pitch, the Pierre Charpy multi-sport hall, specialized rooms, and tennis and squash courts. It also houses the Maison du sport français, with the offices of the French National Olympic and Sports Committee and the French Athletics Federation."
-  },
-  "stats": {
-    "n_delibs": 267,
-    "delibs_span": [
-      2000,
-      2024
-    ],
-    "n_bmo_brut": 145,
-    "n_bmo_verifies": 18,
-    "invest_total_eur": 0,
-    "invest_annees": [],
-    "lecture_mode": "titre nommant le lieu (76 trouvés)",
-    "lecture_mode_en": "title naming the place (76 found)",
-    "n_lus": 44,
-    "n_lieu": 42
-  },
-  "subventions_exploitant": null,
-  "residents": [],
-  "kpi_montant": null,
-  "synthese_fr": "En février 2000, le Conseil de Paris approuve une convention de délégation de service public pour la gestion du stade et autorise le Maire à la signer avec la Société d'exploitation du stade Charléty, délégation prolongée d'un an en 2005. À partir de 2005-2006, la Ville remplace cette délégation par des marchés de gestion technique globale et fixe une grille de tarifs d'utilisation, tandis que plusieurs élus décrivent en séance un grand stade sous-utilisé depuis le départ de l'athlétisme vers le Stade de France. La même période ouvre un débat récurrent sur la vocation du site : un vœu des Verts (2005) demande que Charléty devienne le stade résidant du Stade français, et l'Exécutif y répond par un vœu proposant un groupe de travail sur la complémentarité avec Jean-Bouin. De 2004 à 2011, le Conseil approuve une longue série de principes de travaux et de marchés (mise aux normes du terrain annexe, réfection de la pelouse, vestiaires, garde-corps, sécurité incendie, contrôle des structures) et subventionne des fédérations pour des événements tenus sur place, comme le DecaNation d'athlétisme et un tournoi de rugby à sept. Le stade accueille aussi une retransmission de la Coupe du monde 2010, à l'origine d'un litige réglé par transaction en 2011, et reste en 2022-2024 l'objet de vœux sur l'état de sa pelouse et sur les nuisances sonores.",
-  "moments": [
-    {
-      "id": "51253",
-      "seance": "FEVRIER 2000",
-      "fait": "Le Conseil de Paris autorise le Maire à signer avec la Société d'exploitation du stade Charléty une convention de délégation de service public pour la gestion du stade.",
-      "pourquoi": "Le point de départ de la gestion déléguée",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51253",
-      "fait_en": "The Conseil de Paris authorized the Mayor to sign a public service delegation agreement with the Société d'exploitation du stade Charléty for managing the stadium.",
-      "pourquoi_en": "The starting point of delegated management"
-    },
-    {
-      "id": "10320",
-      "seance": "SEPTEMBRE 2005",
-      "fait": "En séance, M. Najdovski dénonce la sous-utilisation chronique du stade et interroge le million d'euros dépensé chaque année par la Ville.",
-      "pourquoi": "Le coût du stade, questionné en séance",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10320",
-      "fait_en": "In session, Mr Najdovski denounced the stadium's chronic underuse and questioned the one million euros spent each year by the City.",
-      "pourquoi_en": "The stadium's cost, questioned in session"
-    },
-    {
-      "id": "19344",
-      "seance": "NOVEMBRE 2005",
-      "fait": "Un vœu des Verts demande que Charléty devienne le stade résidant du Stade français ; l'Exécutif y répond par un vœu proposant un groupe de travail sur la complémentarité avec Jean-Bouin.",
-      "pourquoi": "La bataille sur la vocation du stade",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19344",
-      "fait_en": "A motion from the Greens asked that Charléty become the resident stadium of the Stade Français; the executive responded with a motion proposing a working group on complementarity with Jean-Bouin.",
-      "pourquoi_en": "The battle over the stadium's purpose"
-    },
-    {
-      "id": "25380",
-      "seance": "FEVRIER 2006",
-      "fait": "Le Conseil approuve un contrat d'occupation avec le Paris Université Club (bureaux, club house, tennis) pour une redevance annuelle de 20 000 euros.",
-      "pourquoi": "Le PUC ancré durablement dans le stade",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25380",
-      "fait_en": "The Council approved an occupancy contract with the Paris Université Club (offices, clubhouse, tennis) for an annual fee of 20,000 euros.",
-      "pourquoi_en": "The PUC durably anchored in the stadium"
-    },
-    {
-      "id": "74088",
-      "seance": "SEPTEMBRE 2006",
-      "fait": "La Ville attribue 115 000 euros à la Fédération française d'athlétisme pour le DecaNation tenu au stade le 26 août 2006.",
-      "pourquoi": "Le retour de l'athlétisme au grand stade, le temps d'un meeting",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74088",
-      "fait_en": "The City granted 115,000 euros to the French Athletics Federation for the DecaNation meeting held at the stadium on 26 August 2006.",
-      "pourquoi_en": "Athletics returns to the big stadium, for the length of a meeting"
-    },
-    {
-      "id": "18119",
-      "seance": "NOVEMBRE 2008",
-      "fait": "Le Conseil approuve le principe de la réfection de la pelouse ; M. Vuillermoz indique en séance qu'elle date de 1994 et n'a pas été rénovée depuis.",
-      "pourquoi": "Refaire la pelouse, sur fond de polémique",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18119",
-      "fait_en": "The Council approved the principle of resurfacing the lawn; Mr Vuillermoz noted in session that it dated from 1994 and had not been renovated since.",
-      "pourquoi_en": "Resurfacing the lawn, against a backdrop of controversy"
-    },
-    {
-      "id": "96512",
-      "seance": "JUIN 2011",
-      "fait": "Le Conseil approuve une transaction avec la société Reflex pour régler un litige sur le dispositif de stadiers de la retransmission de la Coupe du monde 2010 au stade.",
-      "pourquoi": "Quand le stade devient écran géant",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96512",
-      "fait_en": "The Council approved a settlement with the company Reflex to resolve a dispute over the stewarding arrangements for the broadcast of the 2010 World Cup at the stadium.",
-      "pourquoi_en": "When the stadium becomes a giant screen"
-    },
-    {
-      "id": "176505",
-      "seance": "JUIN 2024",
-      "fait": "Le groupe Paris en commun dépose un vœu relatif au fonctionnement du stade et aux nuisances sonores.",
-      "pourquoi": "Le stade face à son voisinage, en 2024",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176505",
-      "fait_en": "The Paris en commun group filed a motion on the stadium's operation and noise nuisance.",
-      "pourquoi_en": "The stadium facing its neighbors, in 2024"
-    }
-  ],
-  "montants": [
-    {
-      "seance": "MAI 2022",
-      "montant": "500 000 euros",
-      "objet": "Subvention au Paris Football Club au titre de l'année 2022 (versée au club)",
-      "citation": "Subvention (500.000 euros) pour le Paris Football Club au titre de l’année 2022",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164861"
-    },
-    {
-      "seance": "FEVRIER 2006",
-      "montant": "3,50 €/m²/jour",
-      "objet": "Tarif d'utilisation des coursives et de l'esplanade pour une manifestation sportive",
-      "citation": "Le tarif est de 3,50 euros par mètre carré occupé par jour.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27779"
-    },
-    {
-      "seance": "FEVRIER 2006",
-      "montant": "30 €/heure",
-      "objet": "Tarif horaire pour l'entraînement de sportifs préparant une compétition sur le terrain d'honneur",
-      "citation": "Pour les entraînements de sportifs préparant une compétition, un tarif horaire de 30 euros s?applique.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27779"
-    },
-    {
-      "seance": "NOVEMBRE 2008",
-      "montant": "2,5 millions d'euros",
-      "objet": "Coût, selon M. Goasguen, de la salle de réception votée en juin pour le stade (propos en séance)",
-      "citation": "Effectivement, une salle de réception est importante pour le rugby, c?est clair. Cela fait 2,5 millions d?euros.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18119"
-    },
-    {
-      "seance": "SEPTEMBRE 2005",
-      "montant": "1 million d'euros / an",
-      "objet": "Dépense annuelle de la Ville pour Charléty, chiffre avancé par M. Najdovski en séance",
-      "citation": "La Ville de Paris a-t-elle un projet pour Charléty pour lequel elle débourse aujourd?hui chaque année un million d?euros ?",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10320"
-    },
-    {
-      "seance": "FEVRIER 2006",
-      "montant": "20 000 euros / an",
-      "objet": "Redevance forfaitaire annuelle proposée au PUC pour l'occupation de locaux au stade",
-      "citation": "Vous nous proposez une redevance forfaitaire annuelle de 20.000 euros pour la mise à disposition de locaux comprenant des bureaux, un logement de fonction, un club house",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25380"
-    },
-    {
-      "seance": "SEPTEMBRE 2006",
-      "montant": "20 000 euros",
-      "objet": "Subvention à la Fédération Française de Rugby pour le tournoi GMF Paris Sevens au stade",
-      "citation": "Une subvention d?un montant de 20.000 euros est attribuée à la Fédération Française de Rugby",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74408"
-    },
-    {
-      "seance": "NOVEMBRE 2007",
-      "montant": "150 000 euros",
-      "objet": "Subvention à la FFA couvrant le Meeting SEAT (au POPB) et le DecaNation (au stade Charléty)",
-      "citation": "Une subvention d?un montant de 150.000 euros est attribuée à la Fédération Française d?Athlétisme",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65842"
-    },
-    {
-      "seance": "SEPTEMBRE 2006",
-      "montant": "115 000 euros",
-      "objet": "Subvention à la Fédération Française d'Athlétisme pour le DecaNation au stade Charléty",
-      "citation": "Une subvention d?un montant de 115.000 euros est attribuée à la Fédération Française d?Athlétisme",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74088"
-    }
-  ],
-  "bmo_extraits": [
-    {
-      "date": "1948-01-10",
-      "extrait": "Sur une partie des terrains expropriés a été édifié le stade « Sébastien- Charléty  … Le stade , bien entretenu, est géré pour le compte de cette dernière par le « Paris-Universitaire Club » Les emplacements contigus au stade ont été débarrassés des ferrailles et des ordures(..",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9635246b/f3.item",
-      "extrait_en": "On part of the expropriated land was built the \"Sébastien-Charléty\" stadium … The stadium, well maintained, is managed on behalf of the latter by the \"Paris-Universitaire Club.\" The plots adjoining the stadium have been cleared of scrap metal and rubbish (.."
-    },
-    {
-      "date": "1954-07-01",
-      "extrait": "D’autre part, il avait été proposé qu’une partie du parc de Sceaux, qui est pratiquement inemployée, pourrait être utilisée pour l’édification d’un très vaste ensemble sportif réservé à l’Université de Paris, où pourrait être transféré l’actuel stade Charléty  … emplacement de ",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32013205/f1038.item",
-      "extrait_en": "Moreover, it had been proposed that part of the Parc de Sceaux, which is practically unused, could be used for building a very large sports complex reserved for the University of Paris, to which the current Stade Charléty could be transferred … location of"
-    },
-    {
-      "date": "1955-07-01",
-      "extrait": "N° 772. — Le stade Charléty , boulevard Kellermann, dont la réalisation est très avancée, s’avère une réussite certaine … afin de lui faire préciser ses intentions quant à une éventuelle piscine Charléty . ( Question du 21 mai 1955.) Deuxième réponse de M. le Préfet de la Seine",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32013257/f95.item",
-      "extrait_en": "No. 772. — Stade Charléty, boulevard Kellermann, whose construction is very advanced, is proving to be a definite success … in order to have him clarify his intentions regarding a possible Charléty swimming pool. (Question of 21 May 1955.) Second reply from the Prefect of the Seine"
-    },
-    {
-      "date": "1963-12-23",
-      "extrait": "c'est celui du stade Charlety  … Le stade Charlety , à l'heure actuelle, risque de se dégrader et le Ministère ne délègue pas les crédits suffisants pour son entretien … Malheureusement nous avons appris, lors de la dernière réunion du conseil d'administration du stade Charle",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97106159/f34.item",
-      "extrait_en": "it is that of Stade Charléty … Stade Charléty, at present, risks deteriorating and the Ministry is not allocating sufficient funds for its upkeep … Unfortunately we learned, at the last meeting of the board of Stade Charlé"
-    },
-    {
-      "date": "1967-01-01",
-      "extrait": "13° arr. — 83, boulevard Kellermann. — Pét., stade Charléty , Université de Paris, même adresse (Por. 58-12). — Couverture de la tribune d'honneur du stade Charléty (bâtiment public … ",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9721812b/f846.item",
-      "extrait_en": "13th arr. — 83, boulevard Kellermann. — Applicant, Stade Charléty, University of Paris, same address (Por. 58-12). — Covering of the main grandstand of Stade Charléty (public building) … "
-    },
-    {
-      "date": "1968-07-24",
-      "extrait": "Beaucoup plus tard, lors de la manifestation en direction du stade Charléty ou lors du cortège de Montparnasse à Austerlitz, il n'y a pas eu de heurts parce qu'il n'y avait pas de police",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9713272w/f22.item",
-      "extrait_en": "Much later, during the demonstration heading toward Stade Charléty or during the procession from Montparnasse to Austerlitz, there were no clashes because there was no police presence"
-    }
-  ],
-  "bmo_recit": "Le stade Sébastien-Charléty apparaît dans le Bulletin municipal dès 1948 : édifié sur une partie de terrains expropriés, boulevard Kellermann, il est alors décrit comme bien entretenu et géré, pour le compte de l'Université de Paris, par le Paris-Universitaire Club. Dans les années 1950, son sort fait débat : une proposition de 1954 suggère de le transférer au parc de Sceaux, dans un vaste ensemble sportif réservé à l'Université, afin de libérer son emplacement, tandis qu'en 1955 une question au Conseil décrit sa réalisation comme « très avancée » et « une réussite certaine », tout en demandant au Ministre de l'Éducation nationale de préciser ses intentions sur une éventuelle piscine Charléty. En 1963, un intervenant alerte le Conseil : le stade risque de se dégrader, le Ministère ne déléguant pas les crédits suffisants pour son entretien. L'archive garde ensuite la trace, en 1967, d'une demande de permis de l'Université de Paris pour couvrir la tribune d'honneur, puis, en 1968, d'un débat où un orateur évoque la manifestation en direction du stade Charléty, restée selon lui sans heurts parce qu'il n'y avait pas de police.",
-  "invest": [],
-  "marches": [
-    {
-      "numero_marche": "20201410000412",
-      "objet": "SA4.MAINTENANCE MULTI TECHNIQUE,COORDINAT°STADE CHARLETY V.P",
-      "objet_clair": null,
-      "fournisseur": "ENGIE ENERGIE SERVICES",
-      "montant_max": 5112609.99,
-      "date_notification": "2020-06-15",
-      "preuve": "Objet nomme le lieu : « MAINTENANCE MULTI TECHNIQUE,COORDINAT°STADE CHARLETY » — prestation de maintenance du stade lui-même."
-    },
-    {
-      "numero_marche": "20242024S10144",
-      "objet": "SA4_ACBC_MAINTENANCE MULTI-TECHNIQUE DU STADE CHARLÉTY 75013",
-      "objet_clair": "Entretien technique complet des installations du stade Charléty dans le 13e arrondissement.",
-      "fournisseur": "EIFFAGE ENERGIE SYSTEMES",
-      "montant_max": 4530785.0,
-      "date_notification": "2024-10-04",
-      "preuve": "Objet nomme le lieu et son arrondissement : « MAINTENANCE MULTI-TECHNIQUE DU STADE CHARLÉTY 75013 »."
-    },
-    {
-      "numero_marche": "20161410000951",
-      "objet": "CSP5 MAINTENANCE MULTITECHNIQUE ET COORD STADE CHARLETY LOT1",
-      "objet_clair": null,
-      "fournisseur": "ENGIE ENERGIE SERVICES",
-      "montant_max": 3116568.0,
-      "date_notification": "2016-07-11",
-      "preuve": "Objet nomme le lieu : « MAINTENANCE MULTITECHNIQUE ET COORD STADE CHARLETY LOT1 »."
-    },
-    {
-      "numero_marche": "20161410000975",
-      "objet": "CSP1 LOT 3 SECURITE INCENDIE ET ACCUEIL DU STADE CHARLETY",
-      "objet_clair": null,
-      "fournisseur": "CHALLANCIN PREVENTION ET SECURITE",
-      "montant_max": 3081210.4,
-      "date_notification": "2016-07-11",
-      "preuve": "Objet nomme le lieu : « SECURITE INCENDIE ET ACCUEIL DU STADE CHARLETY » — prestation exécutée dans le stade."
-    },
-    {
-      "numero_marche": "20242024F11836",
-      "objet": "SA1_SECURITE INCENDIE ACCEUIL STADE CHARLETY_LOT 1",
-      "objet_clair": "Sécurité incendie et accueil au stade Charléty",
-      "fournisseur": "FRANCE SECURITY PRIVEE",
-      "montant_max": 3013824.82,
-      "date_notification": "2024-12-03",
-      "preuve": "Objet nomme le lieu : « SECURITE INCENDIE ACCEUIL STADE CHARLETY_LOT 1 »."
-    },
-    {
-      "numero_marche": "20202020S08283",
-      "objet": "SA1 ACBC SECURITE INCENDIE ACCUEIL STADE CHARLETY LOT 1",
-      "objet_clair": null,
-      "fournisseur": "VIGI-SECURITE",
-      "montant_max": 2481469.99,
-      "date_notification": "2021-01-15",
-      "preuve": "Objet nomme le lieu : « SECURITE INCENDIE ACCUEIL STADE CHARLETY LOT 1 »."
-    },
-    {
-      "numero_marche": "20242024F11837",
-      "objet": "SA1_NETTOYAGE STADE CHARLETY_LOT2",
-      "objet_clair": "Nettoyage et entretien du stade Charléty.",
-      "fournisseur": "REKEEP FACILITY SAS",
-      "montant_max": 1847694.68,
-      "date_notification": "2024-12-03",
-      "preuve": "Objet nomme le lieu : « NETTOYAGE STADE CHARLETY_LOT2 »."
-    },
-    {
-      "numero_marche": "20201410000480",
-      "objet": "SA4 ENTRETIEN PELOUSE TERRAIN D'HONNEUR STADE CHARLETY -LOT2",
-      "objet_clair": null,
-      "fournisseur": "BOTANICA JARDINS SERVICES",
-      "montant_max": 1400009.99,
-      "date_notification": "2020-07-03",
-      "preuve": "Objet nomme le lieu : « ENTRETIEN PELOUSE TERRAIN D'HONNEUR STADE CHARLETY » — entretien d'un équipement du stade."
-    },
-    {
-      "numero_marche": "20161410000974",
-      "objet": "CSP1 LOT 2 NETTOYAGE DU STADE CHARLETY",
-      "objet_clair": null,
-      "fournisseur": "ELIOR SERVICES PROPRETE ET SANTE",
-      "montant_max": 1379461.08,
-      "date_notification": "2016-07-12",
-      "preuve": "Objet nomme le lieu : « NETTOYAGE DU STADE CHARLETY »."
-    },
-    {
-      "numero_marche": "decp-2024S11836",
-      "objet": "Marchés publics pour la sécurité incendie-accueil, et pour le nettoyage du stade CHARLETY en 2 lots séparés - Sécurité incendie accueil du stade CHARLETY",
-      "objet_clair": null,
-      "fournisseur": null,
-      "montant_max": 1356912.41,
-      "date_notification": "2024-12-03",
-      "preuve": "Objet DECP nomme le lieu : « Sécurité incendie accueil du stade CHARLETY » ; le lieu_execution « Paris » est large mais l'objet est explicite."
-    },
-    {
-      "numero_marche": "20202020S08284",
-      "objet": "SA1 ACBC NETTOYAGE DU STADE CHARLETY - LOT2",
-      "objet_clair": null,
-      "fournisseur": "ELIOR SERVICES PROPRETE ET SANTE",
-      "montant_max": 1252459.99,
-      "date_notification": "2021-01-07",
-      "preuve": "Objet nomme le lieu : « NETTOYAGE DU STADE CHARLETY - LOT2 »."
-    },
-    {
-      "numero_marche": "20232023T04176",
-      "objet": "SA4 REFECTION DU GAZON DU STADE CHARLETY",
-      "objet_clair": null,
-      "fournisseur": "TERIDEAL SPARFEL NORMANDIE",
-      "montant_max": 1145308.85,
-      "date_notification": "2023-06-05",
-      "preuve": "Objet nomme le lieu : « REFECTION DU GAZON DU STADE CHARLETY » — travaux sur la pelouse du stade (cohérent avec le vœu du Conseil de Paris de mars 2023 sur « l'état récent de la pelouse du stade Charléty »)."
-    },
-    {
-      "numero_marche": "20191070000122",
-      "objet": "CSP5 STADE CHARLETY - LOT1 : RENOV INSFRASTRUCTURES PISTES",
-      "objet_clair": null,
-      "fournisseur": "IDVERDE",
-      "montant_max": 1086404.5,
-      "date_notification": "2019-01-30",
-      "preuve": "Objet nomme le lieu : « STADE CHARLETY - LOT1 : RENOV INSFRASTRUCTURES PISTES » — rénovation des pistes d'athlétisme du stade."
-    },
-    {
-      "numero_marche": "20191070000123",
-      "objet": "CSP5 STADE CHARLETY LOT2 : RENOVATION REVETEMENT DES PISTES",
-      "objet_clair": null,
-      "fournisseur": "ART-DAN ILE-DE-FRANCE",
-      "montant_max": 889289.46,
-      "date_notification": "2019-01-31",
-      "preuve": "Objet nomme le lieu : « STADE CHARLETY LOT2 : RENOVATION REVETEMENT DES PISTES »."
-    },
-    {
-      "numero_marche": "decp-2024S11837",
-      "objet": "Marchés publics pour la sécurité incendie-accueil, et pour le nettoyage du stade CHARLETY en 2 lots séparés - Nettoyage du stade CHARLETY",
-      "objet_clair": null,
-      "fournisseur": "REKEEP FACILITY SAS",
-      "montant_max": 623847.34,
-      "date_notification": "2024-12-03",
-      "preuve": "Objet DECP nomme le lieu : « Nettoyage du stade CHARLETY » ; même consultation que le lot notifié 20242024F11837 (même fournisseur REKEEP FACILITY SAS, SIRET 83991160900015, même date 2024-12-03)."
-    },
-    {
-      "numero_marche": "20161410000690",
-      "objet": "CSP5 TRAVAUX TERRAIN DE FOOT ANNEXE STADE CHARLETY EN GAZON",
-      "objet_clair": null,
-      "fournisseur": "ART-DAN ILE-DE-FRANCE",
-      "montant_max": 287130.97,
-      "date_notification": "2016-06-10",
-      "preuve": "Objet nomme le lieu : « TRAVAUX TERRAIN DE FOOT ANNEXE STADE CHARLETY EN GAZON » — terrain annexe du complexe Charléty."
-    },
-    {
-      "numero_marche": "20232023T01624",
-      "objet": "MISE EN ACCESSIBILITÉ PMR DE TRIBUNES DU STADE CHARLÉTY",
-      "objet_clair": null,
-      "fournisseur": "ENTREPRISE CONSTRUCTION BATIMENT",
-      "montant_max": 108511.8,
-      "date_notification": "2023-02-20",
-      "preuve": "Objet nomme le lieu : « MISE EN ACCESSIBILITÉ PMR DE TRIBUNES DU STADE CHARLÉTY » — travaux sur les tribunes du stade."
-    },
-    {
-      "numero_marche": "20171410001564",
-      "objet": "AC À BC ENTRETIEN GAZON SYNTHÉTIQUE STADE CHARLETY 75013",
-      "objet_clair": null,
-      "fournisseur": "PARC ET JARDINS FRASNIER",
-      "montant_max": 90000.0,
-      "date_notification": "2017-10-03",
-      "preuve": "Objet nomme le lieu et son arrondissement : « ENTRETIEN GAZON SYNTHÉTIQUE STADE CHARLETY 75013 »."
-    },
-    {
-      "numero_marche": "20222022T05601",
-      "objet": "TRAVAUX GRILLES STADE CHARLETY 75013",
-      "objet_clair": null,
-      "fournisseur": "FELIX & CO",
-      "montant_max": 85859.0,
-      "date_notification": "2022-07-19",
-      "preuve": "Objet nomme le lieu et son arrondissement : « TRAVAUX GRILLES STADE CHARLETY 75013 »."
-    },
-    {
-      "numero_marche": "20181410001348",
-      "objet": "MAINTEN. CONSTRUCT. MOTEUR GROUPE ÉLECTROGENE STADE CHARLETY",
-      "objet_clair": null,
-      "fournisseur": "ENGIE ENERGIE SERVICES",
-      "montant_max": 67390.02,
-      "date_notification": "2018-10-08",
-      "preuve": "Objet nomme le lieu : « MOTEUR GROUPE ÉLECTROGENE STADE CHARLETY » — maintenance d'un équipement technique du stade."
-    }
-  ],
-  "mandate": {
-    "par_annee": {
-      "2009": 2304080.69,
-      "2010": 652006.12,
-      "2011": 441512.06,
-      "2012": 3047.46
-    },
-    "total_eur": 3400646.33,
-    "operations": [
-      {
-        "ap_cle": "B100/0703636",
-        "ap_texte": "STADE CHARLETY",
-        "mandate_par_annee": {
-          "2009": 2304080.69,
-          "2010": 652006.12,
-          "2011": 441512.06,
-          "2012": 3047.46
-        },
-        "total_mandate": 3400646.33,
-        "preuve": "Libellé de l'opération = « STADE CHARLETY », mission « JEUNESSE ET SPORTS », direction DJS — l'opération désigne nommément ce stade, équipement sportif municipal du 13e géré par la DJS (cf. délibérations DJS du Conseil de Paris, ex. 2023 DJS 62 « PUC Social Club, Stade Charléty (13e) »).",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0703636"
-      }
-    ],
-    "periode": [
-      "2009",
-      "2012"
-    ],
-    "source": {
-      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-    }
-  },
-  "sources": {
-    "delibs": {
-      "name": "Débat-Délibs — Conseil de Paris",
-      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Charl%C3%A9ty"
-    },
-    "bmo": {
-      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Stade+Charl%C3%A9ty%22%29"
-    },
-    "invest": {
-      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-      "url": "https://opendata.paris.fr/"
-    },
-    "wiki": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
-  },
-  "synthese_en": "In February 2000, the Conseil de Paris approved a public service delegation agreement for managing the stadium and authorized the Mayor to sign it with the Société d'exploitation du stade Charléty, a delegation extended by one year in 2005. From 2005-2006, the City replaced this delegation with comprehensive technical management contracts and set a schedule of usage fees, while several councillors described in session a large stadium underused since athletics moved to the Stade de France. The same period opened a recurring debate on the site's purpose: a motion from the Greens (2005) asked that Charléty become the resident stadium of the Stade Français, to which the executive responded with a motion proposing a working group on complementarity with Jean-Bouin. From 2004 to 2011, the Council approved a long series of works principles and contracts (bringing the annex pitch up to standard, resurfacing the lawn, changing rooms, guardrails, fire safety, structural inspections) and granted subsidies to federations for events held on site, such as the DecaNation athletics meeting and a rugby sevens tournament. The stadium also hosted a broadcast of the 2010 World Cup, which gave rise to a dispute settled by a transaction in 2011, and in 2022-2024 remained the subject of motions on the state of its lawn and on noise nuisance.",
-  "bmo_recit_en": "Stade Sébastien-Charléty appears in the municipal bulletin as early as 1948: built on part of expropriated land, boulevard Kellermann, it was then described as well maintained and managed, on behalf of the University of Paris, by the Paris-Universitaire Club. In the 1950s, its fate was debated: a 1954 proposal suggested transferring it to the Parc de Sceaux, as part of a vast sports complex reserved for the University, in order to free up its location, while a 1955 question to the Council described its construction as \"very advanced\" and \"a definite success,\" while asking the Minister of National Education to clarify his intentions regarding a possible Charléty swimming pool. In 1963, a speaker alerted the Council: the stadium risked deteriorating, as the Ministry was not allocating sufficient funds for its upkeep. The archive then records, in 1967, a permit application from the University of Paris to cover the grandstand, and then, in 1968, a debate in which a speaker referred to the demonstration heading toward Stade Charléty, which he said remained without clashes because there was no police presence.",
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
   }
+ },
+ "synthese_en": "In February 2000, the Conseil de Paris approved a public service delegation agreement for managing the stadium and authorized the Mayor to sign it with the Société d'exploitation du stade Charléty, a delegation extended by one year in 2005. From 2005-2006, the City replaced this delegation with comprehensive technical management contracts and set a schedule of usage fees, while several councillors described in session a large stadium underused since athletics moved to the Stade de France. The same period opened a recurring debate on the site's purpose: a motion from the Greens (2005) asked that Charléty become the resident stadium of the Stade Français, to which the executive responded with a motion proposing a working group on complementarity with Jean-Bouin. From 2004 to 2011, the Council approved a long series of works principles and contracts (bringing the annex pitch up to standard, resurfacing the lawn, changing rooms, guardrails, fire safety, structural inspections) and granted subsidies to federations for events held on site, such as the DecaNation athletics meeting and a rugby sevens tournament. The stadium also hosted a broadcast of the 2010 World Cup, which gave rise to a dispute settled by a transaction in 2011, and in 2022-2024 remained the subject of motions on the state of its lawn and on noise nuisance.",
+ "bmo_recit_en": "Stade Sébastien-Charléty appears in the municipal bulletin as early as 1948: built on part of expropriated land, boulevard Kellermann, it was then described as well maintained and managed, on behalf of the University of Paris, by the Paris-Universitaire Club. In the 1950s, its fate was debated: a 1954 proposal suggested transferring it to the Parc de Sceaux, as part of a vast sports complex reserved for the University, in order to free up its location, while a 1955 question to the Council described its construction as \"very advanced\" and \"a definite success,\" while asking the Minister of National Education to clarify his intentions regarding a possible Charléty swimming pool. In 1963, a speaker alerted the Council: the stadium risked deteriorating, as the Ministry was not allocating sufficient funds for its upkeep. The archive then records, in 1967, a permit application from the University of Paris to cover the grandstand, and then, in 1968, a debate in which a speaker referred to the demonstration heading toward Stade Charléty, which he said remained without clashes because there was no police presence."
 }

@@ -1,197 +1,235 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
-  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
-  "slug": "place-du-pantheon",
-  "name": "Place du Panthéon",
-  "kind_fr": "Place",
-  "kind_en": "Square",
-  "famille": "urbain",
-  "arrondissement": 5,
-  "lat": 48.845939,
-  "lon": 2.34571,
-  "photo": "/img/lieux/place-du-pantheon.jpg",
-  "photo_credit": {
-    "licence": "CC BY 2.0",
-    "auteur": "Jason Riedy from East Point, GA, USA",
-    "url": "https://commons.wikimedia.org/wiki/File:Paris_75005_Place_du_Panth%C3%A9on_20160417_(3).jpg",
-    "source": "Wikimedia Commons"
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "place-du-pantheon",
+ "name": "Place du Panthéon",
+ "kind_fr": "Place",
+ "kind_en": "Square",
+ "famille": "urbain",
+ "arrondissement": 5,
+ "lat": 48.845939,
+ "lon": 2.34571,
+ "photo": "/img/lieux/place-du-pantheon.jpg",
+ "photo_credit": {
+  "licence": "CC BY 2.0",
+  "auteur": "Jason Riedy from East Point, GA, USA",
+  "url": "https://commons.wikimedia.org/wiki/File:Paris_75005_Place_du_Panth%C3%A9on_20160417_(3).jpg",
+  "source": "Wikimedia Commons"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1102,
+  "delibs_span": [
+   2016,
+   2024
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 346425.0,
+  "invest_annees": [
+   "2019"
+  ],
+  "lecture_mode": "titre nommant le lieu (11 trouvés)",
+  "lecture_mode_en": "title naming the place (11 found)",
+  "n_lus": 11,
+  "n_lieu": 5
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Entre 1997 et 2003, la place du Panthéon apparaît au Conseil de Paris surtout comme adresse d'institutions qui y sont domiciliées — subventions à l'association Henri Capitant, adhésion au GRIDAUH — et par des travaux ponctuels sur les bâtiments riverains, comme une demande de permis pour un ascenseur handicapés à l'Université Paris I en 2000 ou l'approbation du principe de travaux de réparation à la Mairie du 5e arrondissement en 2001. À partir de 2016, la place elle-même devient l'objet direct des débats : un vœu des Républicains dénonce l'installation d'un conteneur de chantier lié à l'association « Dédale », que l'exécutif défend comme un outil de test de nouveaux usages du site. Le bilan présenté en novembre 2017 sur le programme « Réinventons nos places » fait état d'un budget global des sept places passé de 30 à 44 millions d'euros, avec des phases de concertation propres à la place du Panthéon chiffrées par l'opposition à plus de 327 000 €, tandis que le projet initial de piétonnisation est abandonné au profit d'une zone de rencontre. En 2018, un nouveau vœu oppose la maire du 5e arrondissement, qui conteste l'accessibilité du mobilier installé pour les personnes à mobilité réduite, à l'exécutif, qui affirme avoir respecté la réglementation ; le vœu est repoussé. Un nouveau vœu déposé en février 2024, dont seul le titre est disponible, revient sur l'état de la place pour les piétons — signe que le sujet n'a pas disparu près d'une décennie après le réaménagement.",
+ "moments": [
+  {
+   "id": "16646",
+   "seance": "NOVEMBRE 1997",
+   "fait": "Subvention de 15 000 F à une association domiciliée place du Panthéon, débattue pour son manque de justificatifs.",
+   "pourquoi": "premier débat de gouvernance visible sur l'adresse",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16646",
+   "fait_en": "A grant of 15,000 francs to an association based on Place du Panthéon, debated over its lack of supporting documents.",
+   "pourquoi_en": "first visible governance debate concerning the address"
+  },
+  {
+   "id": "68824",
+   "seance": "MARS 2003",
+   "fait": "La Ville adhère au GRIDAUH, groupement de recherche installé 12, place du Panthéon.",
+   "pourquoi": "institution universitaire domiciliée sur la place",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68824",
+   "fait_en": "The City joins GRIDAUH, a research group based at 12, place du Panthéon.",
+   "pourquoi_en": "academic institution based on the square"
+  },
+  {
+   "id": "28447",
+   "seance": "SEPTEMBRE 2000",
+   "fait": "Autorisation de déposer un permis pour un ascenseur handicapés dans le bâtiment universitaire.",
+   "pourquoi": "premiers travaux d'accessibilité aux abords",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28447",
+   "fait_en": "Authorization to file a building permit for a disabled-access elevator in the university building.",
+   "pourquoi_en": "first accessibility works in the surrounding area"
+  },
+  {
+   "id": "84419",
+   "seance": "SEPTEMBRE 2001",
+   "fait": "Principe de travaux de réparation approuvé pour la Mairie du 5e arrondissement, sise sur la place.",
+   "pourquoi": "travaux sur un bâtiment public riverain",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84419",
+   "fait_en": "Principle of repair works approved for the 5th arrondissement town hall, located on the square.",
+   "pourquoi_en": "works on a neighboring public building"
+  },
+  {
+   "id": "134654",
+   "seance": "DECEMBRE 2016",
+   "fait": "Vœu contre les installations de l'association « Dédale », que l'exécutif défend comme test d'usages.",
+   "pourquoi": "premier conflit direct sur l'usage de la place",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134654",
+   "fait_en": "Motion against the installations of the association \"Dédale,\" which the executive defends as a test of new uses.",
+   "pourquoi_en": "first direct conflict over the use of the square"
+  },
+  {
+   "id": "140158",
+   "seance": "NOVEMBRE 2017",
+   "fait": "Bilan financier contesté du réaménagement, piétonnisation abandonnée pour une zone de rencontre.",
+   "pourquoi": "l'argent et le projet basculent en séance",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140158",
+   "fait_en": "Contested financial report on the redevelopment; the pedestrianization plan is abandoned in favor of a shared traffic zone.",
+   "pourquoi_en": "both the money and the project shift during the session"
+  },
+  {
+   "id": "145003",
+   "seance": "SEPTEMBRE 2018",
+   "fait": "Vœu sur l'accessibilité du nouveau mobilier urbain repoussé par le Conseil.",
+   "pourquoi": "le conflit sur l'aménagement se prolonge",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=145003",
+   "fait_en": "Motion on the accessibility of the new street furniture rejected by the Council.",
+   "pourquoi_en": "the conflict over the redevelopment continues"
+  },
+  {
+   "id": "174297",
+   "seance": "FEVRIER 2024",
+   "fait": "Nouveau vœu sur l'état de la place pour les piétons, sans trace du débat.",
+   "pourquoi": "la question resurgit près d'une décennie après",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174297",
+   "fait_en": "New motion on the state of the square for pedestrians, with no record of the debate.",
+   "pourquoi_en": "the issue resurfaces nearly a decade later"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "NOVEMBRE 2017",
+   "montant": "30 M€ → 44 M€",
+   "objet": "coût révisé, selon Mme Berthout, du programme global des 7 places parisiennes (dont la place du Panthéon)",
+   "citation": "un nouveau montant annoncé, passé de 30 millions d'euros à 44 millions d'euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140158"
+  },
+  {
+   "seance": "NOVEMBRE 2017",
+   "montant": "+3 à 4 M€",
+   "objet": "montant que Mme Berthout dit devoir être ajouté au programme des 7 places via les budgets participatifs",
+   "citation": "il faudrait ajouter 3 ou 4 millions supplémentaires par le biais des budgets participatifs",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140158"
+  },
+  {
+   "seance": "NOVEMBRE 2017",
+   "montant": "plus de 327 000 €",
+   "objet": "coût des phases de concertation/co-conception pour la place du Panthéon, selon Mme Berthout",
+   "citation": "ces phases pour la place du Panthéon ont coûté plus de 327.000 euros, mais qu'à cela ne tienne !",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140158"
+  },
+  {
+   "seance": "NOVEMBRE 2017",
+   "montant": "plus de 531 000 €",
+   "objet": "dépense envisagée par la Ville pour la place du Panthéon, selon la communication citée par Mme Berthout",
+   "citation": "la Ville envisage de dépenser jusqu'à plus de 531.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140158"
+  },
+  {
+   "seance": "NOVEMBRE 2017",
+   "montant": "6,2 M€/place en moyenne",
+   "objet": "coût moyen par place sur les 7 aménagées, cité par M. Julien à titre de comparaison (non spécifique au Panthéon)",
+   "citation": "cela fait 6,2 millions par place en moyenne",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140158"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "2001": [
+   {
+    "reference": "2001 DPA 191",
+    "titre": "Approbation du principe de la réalisation de divers travaux de grosses réparations à la Mairie du 5e arrondissement sise 21, place du Panthéon (5e). - Approbation des modalités d'attribution des marchés correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés ainsi que les éventuels avenants de substitution ou de transfert s'y rapportant. Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84419"
+   }
+  ],
+  "2002": [
+   {
+    "reference": "2002 DASCO 229",
+    "titre": "Subvention de fonctionnement à l'Université Paris I Panthéon-Sorbonne (12, place du Panthéon à Paris 5e), U.F.R. d'Histoire, pour l'organisation d'un colloque sur l'histoire de Paris intitulé \"Etre parisien, des origines à nos jours\". Mme Danièle POURTAUD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87922"
+   }
+  ],
+  "2007": [
+   {
+    "reference": "2007 DASCO 92",
+    "titre": "Subvention de fonctionnement à l’Université Panthéon-Assas (Paris II) 12, place du Panthéon (5e), destinée à financer des actions d’information pour favoriser la démocratisation de l’accès à l’enseignement supérieur. - Autorisation à M. le Maire de Paris de signer la convention correspondante “Cap en Fac”. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90451"
+   }
+  ]
+ },
+ "invest": [
+  {
+   "annee": 2019,
+   "montant_eur": 346425.0,
+   "nom_projet": "Opérations d'aménagement Place du Panthéon - Aménagement",
+   "preuve": "Le nom du projet nomme le lieu lui-même : « Opérations d'aménagement Place du Panthéon - Aménagement », localisé à 0 m de la place (signal « nom+proximite »). Le réaménagement de la place est confirmé par le Conseil de Paris (vœu de décembre 2016 : « Considérant le projet de réaménagement de la place, qui a été voté en mars 2016 au Conseil de Paris […] consistant à piétonniser le tronçon de la place reliant les rues Cujas et Valette et à élargir les trottoirs »).",
+   "id": "2019_05_il_019"
+  }
+ ],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Place+du+Panth%C3%A9on"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
   },
   "wiki": {
-    "extract": null,
-    "url": null,
-    "source": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
-  },
-  "stats": {
-    "n_delibs": 1102,
-    "delibs_span": [
-      2016,
-      2024
-    ],
-    "n_bmo_brut": 0,
-    "n_bmo_verifies": null,
-    "invest_total_eur": 0,
-    "invest_annees": [],
-    "lecture_mode": "titre nommant le lieu (11 trouvés)",
-    "lecture_mode_en": "title naming the place (11 found)",
-    "n_lus": 11,
-    "n_lieu": 5
-  },
-  "subventions_exploitant": null,
-  "residents": [],
-  "kpi_montant": null,
-  "synthese_fr": "Entre 1997 et 2003, la place du Panthéon apparaît au Conseil de Paris surtout comme adresse d'institutions qui y sont domiciliées — subventions à l'association Henri Capitant, adhésion au GRIDAUH — et par des travaux ponctuels sur les bâtiments riverains, comme une demande de permis pour un ascenseur handicapés à l'Université Paris I en 2000 ou l'approbation du principe de travaux de réparation à la Mairie du 5e arrondissement en 2001. À partir de 2016, la place elle-même devient l'objet direct des débats : un vœu des Républicains dénonce l'installation d'un conteneur de chantier lié à l'association « Dédale », que l'exécutif défend comme un outil de test de nouveaux usages du site. Le bilan présenté en novembre 2017 sur le programme « Réinventons nos places » fait état d'un budget global des sept places passé de 30 à 44 millions d'euros, avec des phases de concertation propres à la place du Panthéon chiffrées par l'opposition à plus de 327 000 €, tandis que le projet initial de piétonnisation est abandonné au profit d'une zone de rencontre. En 2018, un nouveau vœu oppose la maire du 5e arrondissement, qui conteste l'accessibilité du mobilier installé pour les personnes à mobilité réduite, à l'exécutif, qui affirme avoir respecté la réglementation ; le vœu est repoussé. Un nouveau vœu déposé en février 2024, dont seul le titre est disponible, revient sur l'état de la place pour les piétons — signe que le sujet n'a pas disparu près d'une décennie après le réaménagement.",
-  "moments": [
-    {
-      "id": "16646",
-      "seance": "NOVEMBRE 1997",
-      "fait": "Subvention de 15 000 F à une association domiciliée place du Panthéon, débattue pour son manque de justificatifs.",
-      "pourquoi": "premier débat de gouvernance visible sur l'adresse",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16646",
-      "fait_en": "A grant of 15,000 francs to an association based on Place du Panthéon, debated over its lack of supporting documents.",
-      "pourquoi_en": "first visible governance debate concerning the address"
-    },
-    {
-      "id": "68824",
-      "seance": "MARS 2003",
-      "fait": "La Ville adhère au GRIDAUH, groupement de recherche installé 12, place du Panthéon.",
-      "pourquoi": "institution universitaire domiciliée sur la place",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68824",
-      "fait_en": "The City joins GRIDAUH, a research group based at 12, place du Panthéon.",
-      "pourquoi_en": "academic institution based on the square"
-    },
-    {
-      "id": "28447",
-      "seance": "SEPTEMBRE 2000",
-      "fait": "Autorisation de déposer un permis pour un ascenseur handicapés dans le bâtiment universitaire.",
-      "pourquoi": "premiers travaux d'accessibilité aux abords",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28447",
-      "fait_en": "Authorization to file a building permit for a disabled-access elevator in the university building.",
-      "pourquoi_en": "first accessibility works in the surrounding area"
-    },
-    {
-      "id": "84419",
-      "seance": "SEPTEMBRE 2001",
-      "fait": "Principe de travaux de réparation approuvé pour la Mairie du 5e arrondissement, sise sur la place.",
-      "pourquoi": "travaux sur un bâtiment public riverain",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84419",
-      "fait_en": "Principle of repair works approved for the 5th arrondissement town hall, located on the square.",
-      "pourquoi_en": "works on a neighboring public building"
-    },
-    {
-      "id": "134654",
-      "seance": "DECEMBRE 2016",
-      "fait": "Vœu contre les installations de l'association « Dédale », que l'exécutif défend comme test d'usages.",
-      "pourquoi": "premier conflit direct sur l'usage de la place",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134654",
-      "fait_en": "Motion against the installations of the association \"Dédale,\" which the executive defends as a test of new uses.",
-      "pourquoi_en": "first direct conflict over the use of the square"
-    },
-    {
-      "id": "140158",
-      "seance": "NOVEMBRE 2017",
-      "fait": "Bilan financier contesté du réaménagement, piétonnisation abandonnée pour une zone de rencontre.",
-      "pourquoi": "l'argent et le projet basculent en séance",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140158",
-      "fait_en": "Contested financial report on the redevelopment; the pedestrianization plan is abandoned in favor of a shared traffic zone.",
-      "pourquoi_en": "both the money and the project shift during the session"
-    },
-    {
-      "id": "145003",
-      "seance": "SEPTEMBRE 2018",
-      "fait": "Vœu sur l'accessibilité du nouveau mobilier urbain repoussé par le Conseil.",
-      "pourquoi": "le conflit sur l'aménagement se prolonge",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=145003",
-      "fait_en": "Motion on the accessibility of the new street furniture rejected by the Council.",
-      "pourquoi_en": "the conflict over the redevelopment continues"
-    },
-    {
-      "id": "174297",
-      "seance": "FEVRIER 2024",
-      "fait": "Nouveau vœu sur l'état de la place pour les piétons, sans trace du débat.",
-      "pourquoi": "la question resurgit près d'une décennie après",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174297",
-      "fait_en": "New motion on the state of the square for pedestrians, with no record of the debate.",
-      "pourquoi_en": "the issue resurfaces nearly a decade later"
-    }
-  ],
-  "montants": [
-    {
-      "seance": "NOVEMBRE 2017",
-      "montant": "30 M€ → 44 M€",
-      "objet": "coût révisé, selon Mme Berthout, du programme global des 7 places parisiennes (dont la place du Panthéon)",
-      "citation": "un nouveau montant annoncé, passé de 30 millions d'euros à 44 millions d'euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140158"
-    },
-    {
-      "seance": "NOVEMBRE 2017",
-      "montant": "+3 à 4 M€",
-      "objet": "montant que Mme Berthout dit devoir être ajouté au programme des 7 places via les budgets participatifs",
-      "citation": "il faudrait ajouter 3 ou 4 millions supplémentaires par le biais des budgets participatifs",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140158"
-    },
-    {
-      "seance": "NOVEMBRE 2017",
-      "montant": "plus de 327 000 €",
-      "objet": "coût des phases de concertation/co-conception pour la place du Panthéon, selon Mme Berthout",
-      "citation": "ces phases pour la place du Panthéon ont coûté plus de 327.000 euros, mais qu'à cela ne tienne !",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140158"
-    },
-    {
-      "seance": "NOVEMBRE 2017",
-      "montant": "plus de 531 000 €",
-      "objet": "dépense envisagée par la Ville pour la place du Panthéon, selon la communication citée par Mme Berthout",
-      "citation": "la Ville envisage de dépenser jusqu'à plus de 531.000 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140158"
-    },
-    {
-      "seance": "NOVEMBRE 2017",
-      "montant": "6,2 M€/place en moyenne",
-      "objet": "coût moyen par place sur les 7 aménagées, cité par M. Julien à titre de comparaison (non spécifique au Panthéon)",
-      "citation": "cela fait 6,2 millions par place en moyenne",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140158"
-    }
-  ],
-  "bmo_extraits": [],
-  "bmo_recit": null,
-  "invest": [],
-  "marches": [],
-  "mandate": null,
-  "sources": {
-    "delibs": {
-      "name": "Débat-Délibs — Conseil de Paris",
-      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Place+du+Panth%C3%A9on"
-    },
-    "bmo": {
-      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-    },
-    "invest": {
-      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-      "url": "https://opendata.paris.fr/"
-    },
-    "wiki": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
-  },
-  "synthese_en": "Between 1997 and 2003, the Place du Panthéon appears before the Council of Paris mainly as the address of institutions based there — grants to the Association Henri Capitant, membership in GRIDAUH — and through one-off works on the surrounding buildings, such as a 2000 request for a building permit for a disabled-access elevator at Université Paris I or the 2001 approval of the principle of repair works at the 5th arrondissement town hall. From 2016 onward, the square itself becomes the direct subject of debate: a motion (vœu) from the Republicans group denounces the installation of a construction container linked to the association \"Dédale,\" which the executive defends as a tool for testing new uses of the site. The report presented in November 2017 on the \"Réinventons nos places\" program states that the overall budget for the seven squares rose from 30 to 44 million euros, with consultation phases specific to the Place du Panthéon put by the opposition at more than €327,000, while the initial pedestrianization project is abandoned in favor of a \"zone de rencontre\" (shared traffic zone). In 2018, a new motion pits the mayor of the 5th arrondissement, who disputes the accessibility of the newly installed street furniture, against the executive, which states it complied with the regulations; the motion is rejected. A new motion filed in February 2024, of which only the title is available, returns to the state of the square for pedestrians — a sign that the issue has not disappeared nearly a decade after the redevelopment.",
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
   }
+ },
+ "synthese_en": "Between 1997 and 2003, the Place du Panthéon appears before the Council of Paris mainly as the address of institutions based there — grants to the Association Henri Capitant, membership in GRIDAUH — and through one-off works on the surrounding buildings, such as a 2000 request for a building permit for a disabled-access elevator at Université Paris I or the 2001 approval of the principle of repair works at the 5th arrondissement town hall. From 2016 onward, the square itself becomes the direct subject of debate: a motion (vœu) from the Republicans group denounces the installation of a construction container linked to the association \"Dédale,\" which the executive defends as a tool for testing new uses of the site. The report presented in November 2017 on the \"Réinventons nos places\" program states that the overall budget for the seven squares rose from 30 to 44 million euros, with consultation phases specific to the Place du Panthéon put by the opposition at more than €327,000, while the initial pedestrianization project is abandoned in favor of a \"zone de rencontre\" (shared traffic zone). In 2018, a new motion pits the mayor of the 5th arrondissement, who disputes the accessibility of the newly installed street furniture, against the executive, which states it complied with the regulations; the motion is rejected. A new motion filed in February 2024, of which only the title is available, returns to the state of the square for pedestrians — a sign that the issue has not disappeared nearly a decade after the redevelopment."
 }

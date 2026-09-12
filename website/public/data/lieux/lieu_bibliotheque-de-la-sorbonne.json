@@ -1,0 +1,225 @@
+{
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "bibliotheque-de-la-sorbonne",
+ "name": "Bibliothèque de la Sorbonne",
+ "kind_fr": "Bibliothèque",
+ "kind_en": "Library",
+ "famille": "culture",
+ "arrondissement": 5,
+ "lat": 48.849205,
+ "lon": 2.343952,
+ "photo": "/img/lieux/bibliotheque-de-la-sorbonne.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Biblioth%C3%A8que_de_la_Sorbonne",
+  "source": "Wikipédia"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "La bibliothèque de la Sorbonne est une bibliothèque interuniversitaire rattachée pour sa gestion à l'université Paris 1 Panthéon-Sorbonne, et située au 17 rue de la Sorbonne, dans le 5e arrondissement de Paris.",
+  "url": "https://fr.wikipedia.org/wiki/Biblioth%C3%A8que_de_la_Sorbonne",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 899,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (7 trouvés)",
+  "lecture_mode_en": "title naming the place (7 found)",
+  "n_lus": 7,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "2004": [
+   {
+    "reference": "2004 DPA 363",
+    "titre": "2004, DPA 363 - Approbation du principe de réalisation des travaux de restructuration et mises aux normes de la bibliothèque de la Sorbonne à la faculté de la Sorbonne 46-48, rue Saint-Jacques (5e) et des modalités de passation des marchés d’études correspondants : maîtrise d’oeuvre, assistance à maître d’ouvrage, sécurité et protection de la santé des travailleurs sur le chantier, contrôle technique, système de sécurité incendie. - Autorisation à M. le Maire de Paris de déposer les demandes de",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10273"
+   },
+   {
+    "reference": "2004 DPA 363",
+    "titre": "Approbation du principe de réalisation des travaux de restructuration et mise aux normes de la bibliothèque de la Sorbonne à la faculté de la Sorbonne, 46-48, rue Saint-Jacques (5e), et des marchés d’études correspondants : maîtrise d’œuvre, Assistance à maître d’ouvrage, Sécurité et Protection de la Santé des travailleurs sur le chantier, Contrôle technique, Système de sécurité incendie. Autorisation à M. le Maire de Paris de déposer les dossiers de permis de démolir et de construire correspond",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87560"
+   }
+  ],
+  "2006": [
+   {
+    "reference": "2006 DPA 105",
+    "titre": "Autorisation à M. le Maire de Paris de déposer des demandes de permis de démolir et de construire relatives à la réalisation des travaux de restructuration et de mise aux normes de la bibliothèque de la Sorbonne (5e). Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "AVRIL 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38521"
+   }
+  ],
+  "2008": [
+   {
+    "reference": "2008 DPA 51",
+    "titre": "Signature d’un avenant n°1 au marché de maîtrise d’oeuvre relatif à la restructuration et à la mise aux normes de la bibliothèque de la Sorbonne (5e). Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=76979"
+   }
+  ],
+  "2009": [
+   {
+    "reference": "2009 DPA 189",
+    "titre": "Avenant n°2 au marché de maîtrise d’oeuvre relatif à la restructuration et mises aux normes de la bibliothèque de la Sorbonne, 46-48 rue Saint Jacques (5ème). M. Jean-Louis MISSIKA, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75007"
+   },
+   {
+    "reference": "2009 DPA 6",
+    "titre": "Approbation des modalités de passation du marché de travaux relatif à la restructuration et à la mise aux normes de la bibliothèque de la Sorbonne 4648 rue Saint Jacques (5e). M. Jean-Louis MISSIKA, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75027"
+   }
+  ]
+ },
+ "invest": [],
+ "marches": [],
+ "mandate": {
+  "par_annee": {
+   "2009": 619.43,
+   "2010": 3120270.92,
+   "2011": 8334014.54,
+   "2012": 9478129.05,
+   "2013": 3814145.36,
+   "2014": 265018.63,
+   "2015": 328100.05,
+   "2016": 84742.92,
+   "2017": 617165.04,
+   "2018": 75477.02,
+   "2019": 32730.82
+  },
+  "total_eur": 26150413.78,
+  "operations": [
+   {
+    "ap_cle": "B100/0903851",
+    "ap_texte": "SORBONNE - BIBLIOTHEQUE",
+    "mandate_par_annee": {
+     "2010": 1897796.34,
+     "2011": 322779.2,
+     "2012": 7800931.6,
+     "2013": 3629509.72
+    },
+    "total_mandate": 13651016.86,
+    "preuve": "Libellé d'opération verbatim « SORBONNE - BIBLIOTHEQUE » : il désigne ce lieu. Mandatements 2010-2013 concomitants du chantier de la Ville sur ce bâtiment (2004 DPA 363 approuve le principe des travaux de restructuration et mise aux normes « de la bibliothèque de la Sorbonne à la faculté de la Sorbonne, 46-48, rue Saint-Jacques (5e) » ; 2009 DPA 6 approuve la passation du marché de travaux).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903851"
+   },
+   {
+    "ap_cle": "B100/0803851",
+    "ap_texte": "SORBONNE - BIBLIOTHEQUE",
+    "mandate_par_annee": {
+     "2009": 619.43,
+     "2010": 1222474.58,
+     "2011": 8011235.34,
+     "2012": 1677197.45,
+     "2013": 184635.64
+    },
+    "total_mandate": 11096162.44,
+    "preuve": "Libellé d'opération verbatim « SORBONNE - BIBLIOTHEQUE » : il désigne ce lieu. Mandatements 2009-2013 concomitants des délibérations sur « la restructuration et mises aux normes de la bibliothèque de la Sorbonne, 46-48 rue Saint Jacques (5ème) » (2008 DPA 51, 2009 DPA 6, 2009 DPA 189).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0803851"
+   },
+   {
+    "ap_cle": "0903851",
+    "ap_texte": "SORBONNE - BIBLIOTHEQUE",
+    "mandate_par_annee": {
+     "2014": 170876.54,
+     "2015": 302797.82,
+     "2016": 75356.86,
+     "2017": 610296.67
+    },
+    "total_mandate": 1159327.89,
+    "preuve": "Libellé d'opération verbatim « SORBONNE - BIBLIOTHEQUE » : il désigne ce lieu. Opération distincte de B100/0903851 dans la source, sur des années sans recouvrement (2014-2017) : pas de double compte sur une même année.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903851"
+   },
+   {
+    "ap_cle": "0803851",
+    "ap_texte": "SORBONNE - BIBLIOTHEQUE",
+    "mandate_par_annee": {
+     "2014": 94142.09,
+     "2015": 25302.23,
+     "2016": 9386.06,
+     "2017": 6868.37
+    },
+    "total_mandate": 135698.75,
+    "preuve": "Libellé d'opération verbatim « SORBONNE - BIBLIOTHEQUE » : il désigne ce lieu. Opération distincte de B100/0803851 dans la source, sur des années sans recouvrement (2014-2017) : pas de double compte sur une même année.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0803851"
+   },
+   {
+    "ap_cle": "1604201",
+    "ap_texte": "SORBONNE BIBLIOTHEQUE",
+    "mandate_par_annee": {
+     "2018": 75477.02,
+     "2019": 32730.82
+    },
+    "total_mandate": 108207.84,
+    "preuve": "Libellé d'opération verbatim « SORBONNE BIBLIOTHEQUE » : il désigne ce lieu. Portée par la direction DAE, mission « ATTRACTIVITE ET EMPL » dans la source ; mandatements 2018-2019.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1604201"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2019"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Biblioth%C3%A8que+de+la+Sorbonne"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

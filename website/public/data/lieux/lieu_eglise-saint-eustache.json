@@ -1,0 +1,360 @@
+{
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "eglise-saint-eustache",
+ "name": "Église Saint-Eustache",
+ "kind_fr": "Église",
+ "kind_en": "Église",
+ "famille": "culture",
+ "arrondissement": 1,
+ "lat": 48.8634,
+ "lon": 2.345128,
+ "photo": "/img/lieux/eglise-saint-eustache.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Saint-Eustache_de_Paris",
+  "source": "Wikipédia"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "L’église Saint-Eustache est une église paroissiale catholique située 146, rue Rambuteau dans le 1er arrondissement de Paris, au cœur du quartier des Halles. Elle est la troisième plus grande église de Paris derrière Notre-Dame et Saint-Sulpice.",
+  "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Saint-Eustache_de_Paris",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 638,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 6651178.73,
+  "invest_annees": [
+   "2019",
+   "2023",
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (19 trouvés)",
+  "lecture_mode_en": "title naming the place (19 found)",
+  "n_lus": 18,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "1998": [
+   {
+    "reference": "1998 DAC 82",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec l'Etat (Ministère de la Culture et de la Communication) une convention de versement de fonds de concours en vue de la réalisation des travaux de restauration de la façade sud (tour et travée n° 1) de l'église Saint-Eustache (1er). Mme Hélène MACE de LEPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 1998",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92769"
+   }
+  ],
+  "1999": [
+   {
+    "reference": "1999 DAC 43",
+    "titre": "Approbation du principe de la réalisation des travaux de mise en place d'une couverture provisoire au droit des chapelles latérales et d'assainissement des voûtes de l'église Saint-Eustache (1er).- Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "AVRIL 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27463"
+   },
+   {
+    "reference": "1999 DAC 43",
+    "titre": "34 - 1999, DAC 43 - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres ou un marché négocié, dans l'hypothèse où l'appel d'offres serait déclaré infructueux, en vue de la réalisation des travaux de mise en place d'une couverture provisoire au droit des chapelles latérales et de l'assainissement des voûtes de l'église Saint-Eustache (1er)",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "AVRIL 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15046"
+   }
+  ],
+  "2000": [
+   {
+    "reference": "2000 DAC 118",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec l'Etat (Ministère de la Culture) une convention de versement de fonds de concours en vue de la restauration de la façade sud de l'église Saint-Eustache (1er) (tour et travée n° 1 TC). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43282"
+   },
+   {
+    "reference": "2000 DAC 372",
+    "titre": "Autorisation à M. le Maire de Paris de signer un marché négocié relatif à une mission de maîtrise d'œuvre en vue de la restauration de la façade sud (2e travée jusqu'au croisillon sud) de l'église Saint-Eustache (1er). M. Claude ROLAND, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JANVIER 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85272"
+   }
+  ],
+  "2001": [
+   {
+    "reference": "2001 DAC 153",
+    "titre": "Subvention d'aide à la création et à la diffusion à l'association \"Choeur régional Vittoria d'Ile-de-France\" (2e), pour la réalisation de 2 concerts parisiens, le premier au Théâtre des Champs-Elysées le 5 avril 2001, le second en l'église Saint-Eustache le 3 décembre 2001, dans le cadre de \"l'année de la culture hongroise en France\". M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84654"
+   },
+   {
+    "reference": "2001 DAC 181",
+    "titre": "Autorisation à M. le Maire de Paris de lancer un appel d'offres ouvert en vue de réaliser des travaux de restauration des maçonneries de la deuxième travée de la façade Sud jusqu'au retour Ouest du croisillon Sud de l'église Saint-Eustache (1er). Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84734"
+   }
+  ],
+  "2002": [
+   {
+    "reference": "2002 DAC 102",
+    "titre": "Autorisation à M. le Maire de Paris d'accepter le don offert par l'association \"Le Souvenir de la Charcuterie française\" de l'œuvre créée par John Armleder pour la chapelle du Souvenir à l'église Saint-Eustache (1er), et de signer la convention de donation s'y rapportant. Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "JUIN 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55975"
+   },
+   {
+    "reference": "2002 DAC 198",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec l'Etat (Ministère de la Culture) une convention de versement de fonds de concours en vue de la restauration de la façade sud de l'église Saint-Eustache (1er). Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29616"
+   }
+  ],
+  "2003": [
+   {
+    "reference": "2003 DAC 238",
+    "titre": "Approbation du principe et des modalités d'attribution d'un marché de travaux sur appel d'offres ouvert en vue de la mise en conformité des installations électriques de l'église Saint-Eustache (1er). - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70385"
+   },
+   {
+    "reference": "2003 DAC 294",
+    "titre": "Approbation du principe et des modalités d'attribution de marchés de travaux sur appel d'offres ouvert en vue de la restauration des 3 premières chapelles du bas-côté Sud de la nef de l'église Saint Eustache (1er). - Autorisation à Monsieur le Maire de Paris de signer le marché correspondant. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70212"
+   },
+   {
+    "reference": "2003 DAC 521",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché n° 01/41.106 signé avec la SARL Atelier Jean Loup Bouvier (lot n° 2 : restauration des sculptures) et un avenant n° 1 au marché n° 01/41.108 signé avec la SA Ateliers Avice (lot n° 4 : restauration des vitraux) dans le cadre des travaux de restauration des maçonneries de la deuxième travée de la façade sud jusqu'au retour ouest du croisillon sud à l'église Saint-Eustache (1er). Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "NOVEMBRE 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94079"
+   }
+  ],
+  "2004": [
+   {
+    "reference": "2004 DAC 85",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec l'Etat (Ministère de la Culture et de la Communication) une convention de versement de fonds de concours en vue de la restauration du chevet sud de l'église Saint-Eustache (1er) (tranche conditionnelle). Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "AVRIL 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52198"
+   }
+  ],
+  "2007": [
+   {
+    "reference": "2007 DAC 265",
+    "titre": "Autorisation à M. le Maire de Paris d’approuver le principe de réalisation des travaux de restauration des quatrième et cinquième chapelles du bas-côté sud de la nef de l’église Saint Eustache à Paris (1er) et les modalités de passation du marché de travaux relatif au lot 1. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80352"
+   }
+  ],
+  "2008": [
+   {
+    "reference": "2008 DAC 404",
+    "titre": "Subvention à l’Association pour le Rayonnement des Grandes Orgues de l’église Saint-Eustache (ARGOS) (1er), pour ses activités en 2008. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61845"
+   }
+  ],
+  "2009": [
+   {
+    "reference": "2009 DAC 39",
+    "titre": "Subvention à l’Association pour le Rayonnement des Grandes Orgues de l’église Saint Eustache (ARGOS) (1er) pour ses activités en 2009. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MAI 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59473"
+   }
+  ],
+  "2010": [
+   {
+    "reference": "2010 DAC 346",
+    "titre": "Subvention à l’Association pour le Rayonnement des Grandes Orgues de l’église Saint-Eustache (ARGOS) (1er). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79816"
+   }
+  ],
+  "2013": [
+   {
+    "reference": "2013 DAC 518",
+    "titre": "2013 DAC 518 - Subvention (10.000 euros) à l'Association pour le Rayonnement des Grandes Orgues de l'église Saint-Eustache, ARGOS (1er). Vœu déposé par le groupe U.M.P.P.A. relatif à l'augmentation de la subvention.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2013",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=114931"
+   }
+  ]
+ },
+ "invest": [
+  {
+   "annee": 2019,
+   "montant_eur": 309810.0,
+   "nom_projet": "Edifices cultuels Eglise Saint-Eustache - Restauration de la façade sud du transept",
+   "preuve": "Nom du projet nommant le lieu, à 65 m : « Edifices cultuels Eglise Saint-Eustache - Restauration de la façade sud du transept ». La façade sud de cette église a déjà fait l'objet de travaux votés par la Ville en 1998 (1998 DAC 82 : « travaux de restauration de la façade sud (tour et travée n° 1) de l'église Saint-Eustache, place du Jour (1er) »).",
+   "id": "2019_01_il_012"
+  },
+  {
+   "annee": 2019,
+   "montant_eur": 292080.0,
+   "nom_projet": "Edition 2018 Ouvrir l’église Saint-Eustache sur le jardin des Halles",
+   "preuve": "Le nom du projet nomme le lieu et en fait l'objet de l'opération : « Edition 2018 Ouvrir l’église Saint-Eustache sur le jardin des Halles ». Confiance moyenne : le point du projet est à 377 m du point du lieu, côté jardin des Halles — l'opération porte donc aussi sur les abords et pas seulement sur l'édifice ; aucune des délibérations lues ne mentionne cette opération.",
+   "id": "2019_01_il_019"
+  },
+  {
+   "annee": 2019,
+   "montant_eur": 69573.0,
+   "nom_projet": "Edifices cultuels Eglise Saint-Eustache - Remplacement de filets",
+   "preuve": "Nom du projet nommant le lieu, à 65 m : « Edifices cultuels Eglise Saint-Eustache - Remplacement de filets ». Aucun autre édifice n'est nommé dans le libellé.",
+   "id": "2019_01_il_004"
+  },
+  {
+   "annee": 2023,
+   "montant_eur": 4263319.04,
+   "nom_projet": "Eglise Saint EustacheRestauration du massif d'entrée",
+   "preuve": "Le nom du projet nomme le lieu : « Eglise Saint EustacheRestauration du massif d'entrée » — travaux sur l'édifice ; l'édifice appartient à la Ville de Paris (2004 DAC 85 : « l'église Saint-Eustache (1er), édifice appartenant à la Ville de Paris et classé parmi les Monuments Historiques »). La ligne est sans géolocalisation dans la source (distance non calculable) : le rattachement repose sur le seul nom, exact.",
+   "id": "2023_00_9_031"
+  },
+  {
+   "annee": 2023,
+   "montant_eur": 344098.42,
+   "nom_projet": "Eglise Saint-Eustache -Restauration du massif d'entrée",
+   "preuve": "Nom du projet nommant le lieu, à 65 m : « Eglise Saint-Eustache -Restauration du massif d'entrée ». Aucun autre édifice n'est nommé dans le libellé.",
+   "id": "2023_00_9_032"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 880175.48,
+   "nom_projet": "Eglise Saint-Eustache - Restauration du massif d'entrée",
+   "preuve": "Nom du projet nommant le lieu, à 65 m du point du lieu : « Eglise Saint-Eustache - Restauration du massif d'entrée ». Aucun autre édifice n'est nommé dans le libellé.",
+   "id": "2024_00_9_016"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 288712.83,
+   "nom_projet": "Eglise Saint-Eustache - Restauration de la chapelle des charcutiers",
+   "preuve": "Nom du projet nommant le lieu, à 65 m : « Eglise Saint-Eustache - Restauration de la chapelle des charcutiers » — la partie restaurée est désignée comme étant dans cette église. Une délibération de 2002 atteste le lien entre l'association « Le Souvenir de la Charcuterie française » et une chapelle de l'édifice (2002 DAC 102 : don de « l'œuvre créée par John Armleder pour la chapelle du Souvenir à l'église Saint-Eustache (1er) ») ; les deux appellations ne sont pas formellement identifiées l'une à l'autre par les sources lues.",
+   "id": "2024_00_9_018"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 203409.96,
+   "nom_projet": "Eglise Saint-Eustache - Tour du cœur et vitraux",
+   "preuve": "Nom du projet nommant le lieu, à 65 m : « Eglise Saint-Eustache - Tour du cœur et vitraux ». Aucun autre édifice n'est nommé dans le libellé.",
+   "id": "2024_00_9_017"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "decp-2025T09992",
+   "objet": "Église Saint-Eustache (Paris 1er) - Travaux de reconstruction de l'orgue de chœur ",
+   "objet_clair": null,
+   "fournisseur": null,
+   "montant_max": 525880.0,
+   "date_notification": "2025-09-30",
+   "preuve": "L'objet du marché porte sur ce lieu et sur un équipement de l'édifice : « Église Saint-Eustache (Paris 1er) - Travaux de reconstruction de l'orgue de chœur ». Le lieu n'est pas un simple repère d'adresse et l'objet ne vise pas un marché-cadre de toute la Ville. Le champ lieu_execution DECP (« Paris ») est trop large pour prouver quoi que ce soit, mais l'objet est explicite ; l'édifice appartient à la Ville de Paris (2004 DAC 85 : « l'église Saint-Eustache (1er), édifice appartenant à la Ville de Paris et classé parmi les Monuments Historiques »)."
+  }
+ ],
+ "mandate": {
+  "par_annee": {
+   "2020": 110923.58,
+   "2021": 128100.27,
+   "2022": 267464.01
+  },
+  "total_eur": 506487.86,
+  "operations": [
+   {
+    "ap_cle": "1705044",
+    "ap_texte": "EGLISE SAINT-EUSTACHE - PERISTYLE (1er)",
+    "mandate_par_annee": {
+     "2020": 110923.58,
+     "2021": 128100.27,
+     "2022": 267464.01
+    },
+    "total_mandate": 506487.86,
+    "preuve": "Le libellé de l'opération désigne ce lieu et une de ses parties bâties : « EGLISE SAINT-EUSTACHE - PERISTYLE (1er) ». Ce n'est ni une enveloppe générique de direction ni un autre équipement du quartier ; l'opération est portée par la mission « AFFAIRES CULTURELLES » (direction DAC), cohérente avec la propriété de l'édifice par la Ville (2002 DAC 198 : « édifice cultuel appartenant à la Ville de Paris et classé parmi les Monuments Historiques »).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1705044"
+   }
+  ],
+  "periode": [
+   "2020",
+   "2022"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89glise+Saint-Eustache"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

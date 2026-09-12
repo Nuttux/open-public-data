@@ -1,0 +1,304 @@
+{
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "institut-des-cultures-d-islam",
+ "name": "Institut des cultures d'Islam",
+ "kind_fr": "Équipement culturel",
+ "kind_en": "Cultural venue",
+ "famille": "culture",
+ "arrondissement": 18,
+ "lat": 48.888473,
+ "lon": 2.356213,
+ "photo": "/img/lieux/institut-des-cultures-d-islam.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Institut_des_cultures_d'Islam",
+  "source": "Wikipédia"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "L’Institut des Cultures d’Islam (ICI) est un établissement culturel de la Ville de Paris et centre d'art contemporain installé au cœur du quartier de la Goutte-d'Or. Membre du réseau art contemporain Paris / Île-de-France, l'ICI et voué à la création et la diffusion des cultures contemporaines en lien avec le monde musulman. Il est à la fois un centre d'art contemporain, une scène musicale, un lieu de dialogue et d’apprentissage, et un lieu destiné à « l'exercice du culte musulman »",
+  "url": "https://fr.wikipedia.org/wiki/Institut_des_cultures_d'Islam",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 726,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (5 trouvés)",
+  "lecture_mode_en": "title naming the place (5 found)",
+  "n_lus": 4,
+  "n_lieu": null
+ },
+ "subventions_exploitant": {
+  "nom_fiche": "INSTITUT DES CULTURES D ISLAM",
+  "total_eur": 18356098.07,
+  "annees": [
+   "2010",
+   "2024"
+  ],
+  "rows": [
+   {
+    "annee": "2024",
+    "montant_eur": 1509485.0,
+    "beneficiaire": "INSTITUT DES CULTURES D ISLAM",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2023",
+    "montant_eur": 1429686.0,
+    "beneficiaire": "INSTITUT DES CULTURES D'ISLAM",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2022",
+    "montant_eur": 1355000.0,
+    "beneficiaire": "INSTITUT DES CULTURES D ISLAM",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2021",
+    "montant_eur": 1304500.0,
+    "beneficiaire": "INSTITUT DES CULTURES D ISLAM",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2020",
+    "montant_eur": 1410500.0,
+    "beneficiaire": "INSTITUT DES CULTURES D ISLAM",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2019",
+    "montant_eur": 1413004.0,
+    "beneficiaire": "INSTITUT DES CULTURES D ISLAM",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2018",
+    "montant_eur": 1332996.0,
+    "beneficiaire": "INSTITUT DES CULTURES D ISLAM",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2017",
+    "montant_eur": 1365000.0,
+    "beneficiaire": "INSTITUT DES CULTURES D ISLAM",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2016",
+    "montant_eur": 1355000.0,
+    "beneficiaire": "INSTITUT DES CULTURES D ISLAM",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2015",
+    "montant_eur": 1300000.0,
+    "beneficiaire": "INSTITUT DES CULTURES D ISLAM",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2014",
+    "montant_eur": 1300000.0,
+    "beneficiaire": "INSTITUT DES CULTURES D ISLAM",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2013",
+    "montant_eur": 1184927.07,
+    "beneficiaire": "INSTITUT DES CULTURES D ISLAM",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2012",
+    "montant_eur": 750000.0,
+    "beneficiaire": "INSTITUT DES CULTURES D ISLAM",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2011",
+    "montant_eur": 682200.0,
+    "beneficiaire": "INSTITUT DES CULTURES D ISLAM",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2010",
+    "montant_eur": 663800.0,
+    "beneficiaire": "INSTITUT DES CULTURES D ISLAM",
+    "thematique": "Culture"
+   }
+  ],
+  "perimetre": "multi",
+  "note_publique": "L'Institut des cultures d'Islam fonctionne sur deux bâtiments voisins de la Goutte d'Or, rue Polonceau et rue Stephenson : les subventions versées à l'association couvrent l'ensemble de l'institut, et pas ce seul bâtiment.",
+  "autres_sites": [
+   "55 rue Polonceau (18e)",
+   "56 rue Stephenson (18e)"
+  ]
+ },
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "2008": [
+   {
+    "reference": "2008 DPA 289",
+    "titre": "Approbation du principe et des modalités de passation de quatre marchés de prestations intellectuelles pour la construction de l’Institut des Cultures d’Islam, 53-55, rue Polonceau et 56, rue Stephenson (18e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77840"
+   }
+  ],
+  "2009": [
+   {
+    "reference": "2009 DPA 174",
+    "titre": "2009, DPA 174 - Modalités de passation et attribution du marché de maîtrise d'oeuvre, demandes de permis de démolir et de construire pour la construction d'un institut des cultures d'Islam sur deux sites, 53-55 rue Polonceau et 56 rue Stephenson (18e).",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17407"
+   },
+   {
+    "reference": "2009 DPA 174",
+    "titre": "Modalités de passation et attribution du marché de maîtrise d’œuvre, demandes de permis de démolir et de construire pour la construction d’un institut des cultures d’Islam sur deux sites, 53-55, rue Polonceau et 56 rue Stephenson (18e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34659"
+   },
+   {
+    "reference": "2009 DPA 208",
+    "titre": "Approbation des modalités de passation et autorisation de signer un marché de conseils et de représentation juridiques dans le cadre de la réalisation des grands projets culturels et sportifs : Institut des Cultures d’Islam (18e) ; Stade Jules Ladoumègue (19e) ; Complexe multi-équipements sur le site des anciens entrepôts Mac Donald (19e). Mme Camille MONTACIÉ, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77438"
+   }
+  ],
+  "2010": [
+   {
+    "reference": "2010 DAC 281",
+    "titre": "2010, DAC 281 - Signature de conventions avec l'Institut des Cultures d'Islam pour l'attribution de subventions (18e). - Montant total : 696.000 euros.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MAI 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20313"
+   },
+   {
+    "reference": "2010 DAC 281",
+    "titre": "Signature de conventions avec l’Institut des cultures d’islam et attribution d’une subvention de fonctionnement et d’une subvention d’équipement (18e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MAI 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35641"
+   }
+  ],
+  "2012": [
+   {
+    "reference": "2012 DAC 545",
+    "titre": "2012, DAC 545 - Subvention (425.000 euros) et avenant à la convention avec l'association Institut des Cultures d'Islam (18e).",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2012",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=107204"
+   }
+  ],
+  "2013": [
+   {
+    "reference": "2013 DAC 538",
+    "titre": "2013 DAC 538 - Subventions (825.000 euros), avenants et convention avec l'association Institut des Cultures d'Islam (18e).",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2013",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=114919"
+   }
+  ],
+  "2018": [
+   {
+    "reference": "2018 DAC 770",
+    "titre": "2018 DAC 770 - DU - DAJ - Avenant au B.E.A. sur locaux cultuels de l’Institut des cultures d’islam 56, rue Stephenson (18e), au profit de l'association \"Société des habous et des lieux saints de l'islam\".",
+    "genres": [
+     "autre"
+    ],
+    "seance": "SEPTEMBRE 2018",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144931"
+   }
+  ],
+  "2019": [
+   {
+    "reference": "2019 DAC 233",
+    "titre": "2019 DAC 233 - Convention d’occupation du domaine public avec l’association Institut des Cultures d’Islam pour les locaux situés 19-23 rue Léon (18e).",
+    "genres": [
+     "autre"
+    ],
+    "seance": "AVRIL 2019",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=148399"
+   }
+  ],
+  "2023": [
+   {
+    "reference": "2023 DAC 135",
+    "titre": "2023 DAC 135 - Subvention (1.350.000 euros) et avenant à convention avec l’association \"Institut des cultures d’islam\" (18e).",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUIN 2023",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=169879"
+   }
+  ]
+ },
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20232023S02702",
+   "objet": "MOE AMÉNAGEMENT EN CONFORMITÉ INSTITUT DES CULTURES D'ISLAM",
+   "objet_clair": null,
+   "fournisseur": "IN3 TCE",
+   "montant_max": 73640.0,
+   "date_notification": "2023-04-11",
+   "preuve": "L'objet du marché nomme le lieu verbatim : « MOE AMÉNAGEMENT EN CONFORMITÉ INSTITUT DES CULTURES D'ISLAM » — maîtrise d'œuvre pour la mise en conformité du bâtiment lui-même, pas un marché-cadre de la Ville. Titulaire IN3 TCE, SIRET 79862563800027, notifié le 2023-04-11. lieu_execution non renseigné dans la source, mais l'objet suffit à rattacher."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Institut+des+cultures+d%27Islam"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

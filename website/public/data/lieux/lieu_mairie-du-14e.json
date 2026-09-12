@@ -1,114 +1,251 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
-  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
-  "slug": "mairie-du-14e",
-  "name": "Mairie du 14e",
-  "kind_fr": "Mairie",
-  "kind_en": "Town hall",
-  "famille": "services",
-  "arrondissement": 14,
-  "lat": 48.8332,
-  "lon": 2.3255,
-  "photo": "/img/lieux/mairie-du-14e.jpg",
-  "photo_credit": {
-    "licence": "CC BY-SA 4.0",
-    "auteur": "Chabe01",
-    "url": "https://commons.wikimedia.org/wiki/File:Arr%C3%AAt_Bus_Mairie_14e_Avenue_Maine_-_Paris_XIV_(FR75)_-_2025-01-18_-_6.jpg",
-    "source": "Wikimedia Commons"
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "mairie-du-14e",
+ "name": "Mairie du 14e",
+ "kind_fr": "Mairie",
+ "kind_en": "Town hall",
+ "famille": "services",
+ "arrondissement": 14,
+ "lat": 48.8332,
+ "lon": 2.3255,
+ "photo": "/img/lieux/mairie-du-14e.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Chabe01",
+  "url": "https://commons.wikimedia.org/wiki/File:Arr%C3%AAt_Bus_Mairie_14e_Avenue_Maine_-_Paris_XIV_(FR75)_-_2025-01-18_-_6.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 831,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 319645.41,
+  "invest_annees": [
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (18 trouvés)",
+  "lecture_mode_en": "title naming the place (18 found)",
+  "n_lus": 0,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [
+  {
+   "beneficiaire": "C14-PARIS",
+   "montant_total": 13000.0,
+   "preuve": "objet_principal: \"C14-PARISSalon de céramique ContemporaineMairie du 14ème arrondissement de Paris\" — l'objet nomme explicitement la Mairie du 14ème arrondissement de Paris comme lieu de l'activité subventionnée (salon de céramique), sans indiquer que l'association gère le bâtiment."
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "1997": [
+   {
+    "reference": "1997 DPA 123",
+    "titre": "Approbation du principe de la réfection de la circulation du 1er étage et de la mise en conformité électrique à la mairie du 14e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 1997",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75387"
+   }
+  ],
+  "2000": [
+   {
+    "reference": "2000 DPA 20",
+    "titre": "Approbation du principe de la rénovation de la chaufferie de la Mairie du 14e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51240"
+   },
+   {
+    "reference": "2000 DPA 222",
+    "titre": "Approbation du principe de la réfection de la couverture, de la modernisation et de la révision des menuiseries extérieures avec remplacement de stores à la mairie du 14e arrondissement. - Approbation des modalités d'attribution des marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40822"
+   },
+   {
+    "reference": "2000 DPA 80",
+    "titre": "Approbation du principe de la restructuration de locaux dans la Mairie du 14e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51201"
+   }
+  ],
+  "2002": [
+   {
+    "reference": "2002 DPA 385",
+    "titre": "Approbation du principe de réalisation des travaux de modernisation des cages d'escaliers à l'annexe de la Mairie du 14ème arrondissement 26, rue Mouton Duvernet - 75014 Paris et des modalités de passation du marché de travaux correspondant. - Autorisation à Monsieur le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29107"
+   }
+  ],
+  "2004": [
+   {
+    "reference": "2004 DPA 386",
+    "titre": "Approbation du principe de réalisation des travaux de mise aux normes des circulations des 2e et 3e étages avec réfection et mise en conformité des installations électriques à la Mairie du 14e arrondissement. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87766"
+   }
+  ],
+  "2005": [
+   {
+    "reference": "2005 DPA 4",
+    "titre": "Approbation du principe de réalisation des travaux de reprise de pierre de taille et de ravalement à la Mairie du 14e arrondissement et des modalités de passation du marché de travaux. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "AVRIL 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43722"
+   }
+  ],
+  "2006": [
+   {
+    "reference": "2006 DPA 15",
+    "titre": "Approbation du principe de réalisation des travaux de modernisation des cages d’escaliers sur les deux ailes de la Mairie et de la fermeture du péristyle à la Mairie du 14e arrondissement, et des modalités de passation des marchés de travaux correspondants. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "AVRIL 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38634"
+   },
+   {
+    "reference": "2006 DPA 307",
+    "titre": "Approbation du principe de réalisation des travaux de mise aux normes de la couverture du campanile, de la mise en conformité des marches du parvis à la Mairie du 14e arrondissement et des modalités de passation des marchés de travaux correspondants. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92099"
+   }
+  ],
+  "2007": [
+   {
+    "reference": "2007 DDEE 317",
+    "titre": "Subvention à l’association pour la promotion de la lecture, de l’écriture dans le 14e (APLE 14), au titre du soutien à la première édition du Salon des Métiers du Livre des 13 et 14 octobre 2007 tenue à la Mairie du 14e arrondissement. Mme Lyne COHENSOLAL, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "DECEMBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54634"
+   },
+   {
+    "reference": "2007 DPA 172",
+    "titre": "Approbation du principe de réalisation des travaux de création d’un deuxième ascenseur à la Mairie du 14ème arrondissement.- Autorisation à M. le Maire de Paris de déposer les demandes de permis de démolir et de construire pour la réalisation de l’opération susvisée. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "NOVEMBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66236"
+   },
+   {
+    "reference": "2007 DPA 215",
+    "titre": "Autorisation à Monsieur le Maire de Paris de souscrire un avenant n° 1 au marché de travaux prenant en compte la substitution de la SNC SACHET et BRULET par la SNC PRADEAU et MORIN, en vue de travaux de reprise de pierre de taille et de ravalement à la Mairie du 14ème arrondissement 2, place Ferdinand Brunot à Paris (14ème). Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "OCTOBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53492"
+   },
+   {
+    "reference": "2007 DPA 350",
+    "titre": "Autorisation à M. le Maire de Paris de signer un avenant au marché de travaux relatif à la mise en conformité des marches du parvis de la Mairie du 14e arrondissement prenant en compte la substitution de la SNC PRADEAU et MORIN par la SNC EIFFAGE CONSTRUCTION PARIS PATRIMOINE Etablissement secondaire PRADEAU et MORIN. Mme Mireille FLAM, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77046"
+   }
+  ],
+  "2009": [
+   {
+    "reference": "2009 DPA 194",
+    "titre": "Approbation du principe de réalisation des travaux de mise en conformité des locaux suite au départ de la Section Locale du 14ème arrondissement à la Mairie du 14ème arrondissement, et des modalités de passation du marché de travaux correspondant. Mme Maïté ERRECART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77557"
+   }
+  ]
+ },
+ "invest": [
+  {
+   "annee": 2024,
+   "montant_eur": 319645.41,
+   "nom_projet": "Mairie Du 14e arrondissement - Réaménagement de l'accueil du RDC",
+   "preuve": "nom_projet: \"Mairie Du 14e arrondissement - Réaménagement de l'accueil du RDC\" (distance 112 m) — le nom du projet nomme explicitement la Mairie du 14e.",
+   "id": "2024_14_39_003"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20131640009317",
+   "objet": "PRESTATIONS TRAITEUR POUR LA MAIRIE DU 14ÈME",
+   "objet_clair": null,
+   "fournisseur": "MAISON THIELEN",
+   "montant_max": 280000.0,
+   "date_notification": "2013-05-17",
+   "preuve": "objet: \"PRESTATIONS TRAITEUR POUR LA MAIRIE DU 14ÈME\" — l'objet du marché nomme explicitement la Mairie du 14ème."
+  },
+  {
+   "numero_marche": "20222022T00410",
+   "objet": "TVX MENUISERIES EXTÉRIEURES MAIRIE DU 14ÈME LOT 2",
+   "objet_clair": null,
+   "fournisseur": "SOC COOP PRODUCT",
+   "montant_max": 155691.72,
+   "date_notification": "2022-01-26",
+   "preuve": "objet: \"TVX MENUISERIES EXTÉRIEURES MAIRIE DU 14ÈME LOT 2\" — travaux de menuiseries extérieures dont l'objet nomme explicitement la Mairie du 14ème."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+14e"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
   },
   "wiki": {
-    "extract": null,
-    "url": null,
-    "source": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
-  },
-  "stats": {
-    "n_delibs": 831,
-    "delibs_span": [
-      1995,
-      2026
-    ],
-    "n_bmo_brut": 0,
-    "n_bmo_verifies": null,
-    "invest_total_eur": 319645.41,
-    "invest_annees": [
-      "2024"
-    ],
-    "lecture_mode": "titre nommant le lieu (18 trouvés)",
-    "lecture_mode_en": "title naming the place (18 found)",
-    "n_lus": 0,
-    "n_lieu": null
-  },
-  "subventions_exploitant": null,
-  "residents": [
-    {
-      "beneficiaire": "C14-PARIS",
-      "montant_total": 13000.0,
-      "preuve": "objet_principal: \"C14-PARISSalon de céramique ContemporaineMairie du 14ème arrondissement de Paris\" — l'objet nomme explicitement la Mairie du 14ème arrondissement de Paris comme lieu de l'activité subventionnée (salon de céramique), sans indiquer que l'association gère le bâtiment."
-    }
-  ],
-  "kpi_montant": null,
-  "synthese_fr": null,
-  "moments": [],
-  "montants": [],
-  "bmo_extraits": [],
-  "bmo_recit": null,
-  "invest": [
-    {
-      "annee": 2024,
-      "montant_eur": 319645.41,
-      "nom_projet": "Mairie Du 14e arrondissement - Réaménagement de l'accueil du RDC",
-      "preuve": "nom_projet: \"Mairie Du 14e arrondissement - Réaménagement de l'accueil du RDC\" (distance 112 m) — le nom du projet nomme explicitement la Mairie du 14e.",
-      "id": "2024_14_39_003"
-    }
-  ],
-  "marches": [
-    {
-      "numero_marche": "20131640009317",
-      "objet": "PRESTATIONS TRAITEUR POUR LA MAIRIE DU 14ÈME",
-      "objet_clair": null,
-      "fournisseur": "MAISON THIELEN",
-      "montant_max": 280000.0,
-      "date_notification": "2013-05-17",
-      "preuve": "objet: \"PRESTATIONS TRAITEUR POUR LA MAIRIE DU 14ÈME\" — l'objet du marché nomme explicitement la Mairie du 14ème."
-    },
-    {
-      "numero_marche": "20222022T00410",
-      "objet": "TVX MENUISERIES EXTÉRIEURES MAIRIE DU 14ÈME LOT 2",
-      "objet_clair": null,
-      "fournisseur": "SOC COOP PRODUCT",
-      "montant_max": 155691.72,
-      "date_notification": "2022-01-26",
-      "preuve": "objet: \"TVX MENUISERIES EXTÉRIEURES MAIRIE DU 14ÈME LOT 2\" — travaux de menuiseries extérieures dont l'objet nomme explicitement la Mairie du 14ème."
-    }
-  ],
-  "mandate": null,
-  "sources": {
-    "delibs": {
-      "name": "Débat-Délibs — Conseil de Paris",
-      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+14e"
-    },
-    "bmo": {
-      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-    },
-    "invest": {
-      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-      "url": "https://opendata.paris.fr/"
-    },
-    "wiki": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
-  },
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
   }
+ }
 }

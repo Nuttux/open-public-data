@@ -1,511 +1,1169 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
-  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
-  "slug": "bois-de-boulogne",
-  "name": "Bois de Boulogne",
-  "kind_fr": "Bois",
-  "kind_en": "Bois",
-  "famille": "vert",
-  "arrondissement": 16,
-  "lat": 48.87511,
-  "lon": 2.286939,
-  "photo": "/img/lieux/bois-de-boulogne.jpg",
-  "photo_credit": {
-    "licence": null,
-    "auteur": null,
-    "url": "https://fr.wikipedia.org/wiki/Bois_de_Boulogne",
-    "source": "Wikipédia"
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "bois-de-boulogne",
+ "name": "Bois de Boulogne",
+ "kind_fr": "Bois",
+ "kind_en": "Bois",
+ "famille": "vert",
+ "arrondissement": 16,
+ "lat": 48.87511,
+ "lon": 2.286939,
+ "photo": "/img/lieux/bois-de-boulogne.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Bois_de_Boulogne",
+  "source": "Wikipédia"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "Le bois de Boulogne est une étendue boisée, située dans le 16e arrondissement de Paris.",
+  "url": "https://fr.wikipedia.org/wiki/Bois_de_Boulogne",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Bois de Boulogne is a wooded area located in the 16th arrondissement of Paris."
+ },
+ "stats": {
+  "n_delibs": 828,
+  "delibs_span": [
+   2005,
+   2025
+  ],
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": 18,
+  "invest_total_eur": 57153.59,
+  "invest_annees": [
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (203 trouvés)",
+  "lecture_mode_en": "title naming the place (203 found)",
+  "n_lus": 45,
+  "n_lieu": 44
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Depuis 2005, le bois de Boulogne revient régulièrement devant le Conseil de Paris, d'abord au fil de dossiers ponctuels : un vœu demandant l'abandon de l'extension de Roland-Garros, qui aurait pris environ un hectare du bois (2005), les concessions et leur desserte, la charte d'aménagement durable signée en 2003, ou l'arrêté préfectoral de 2012 et les travailleuses du sexe du bois. En 2017, un rapport de la Chambre régionale des comptes sur la gestion des deux bois nourrit un débat où des élus dénoncent un contrôle trop faible des concessions privées. À partir de 2023, le Conseil crée une Mission d'information et d'évaluation sur les deux bois, dont le rapport de mai 2024 formule plus de 68 recommandations. Le meurtre de Philippine en septembre 2024 fait de la sécurité le sujet dominant — vœux sur les effectifs, demande d'une brigade dédiée, puis, fin 2025, une délibération permettant à la Garde républicaine de regrouper et d'étendre ses locaux dans le bois — tandis que se poursuivent des dossiers plus quotidiens : entretien des lacs, stationnement payant, dénomination d'une allée, prolongation du contrat du centre hippique.",
+ "moments": [
+  {
+   "id": "87249",
+   "seance": "JUILLET 2005",
+   "fait": "Le Conseil examine un vœu demandant l'abandon du projet d'extension de Roland-Garros, qui aurait pris environ un hectare du bois.",
+   "pourquoi": "Les Verts contre l'extension de Roland-Garros",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87249",
+   "fait_en": "The Council examined a motion calling for the abandonment of the Roland-Garros extension project, which would have taken about one hectare of the woodland.",
+   "pourquoi_en": "Les Verts oppose the Roland-Garros extension"
+  },
+  {
+   "id": "106208",
+   "seance": "JUIN 2012",
+   "fait": "Après un arrêté préfectoral du 1er mars, l'Exécutif demande au Préfet que la réglementation ne serve pas à réprimer les travailleuses et travailleurs du sexe du bois.",
+   "pourquoi": "Ville et police s'opposent sur la prostitution",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=106208",
+   "fait_en": "Following a prefectural order of 1 March, the executive asked the Prefect that the regulation not be used to crack down on the sex workers of the woodland.",
+   "pourquoi_en": "City and police clash over prostitution"
+  },
+  {
+   "id": "138151",
+   "seance": "SEPTEMBRE 2017",
+   "fait": "Le Conseil débat du rapport de la Chambre régionale des comptes sur la gestion des deux bois, où des élus dénoncent un contrôle trop faible des concessions privées.",
+   "pourquoi": "Le rapport de la Chambre des comptes en débat",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138151",
+   "fait_en": "The Council debated the report by the Chambre régionale des comptes on the management of the two bois, in which councillors denounced overly weak oversight of private concessions.",
+   "pourquoi_en": "The Court of Auditors' report under debate"
+  },
+  {
+   "id": "163913",
+   "seance": "JUILLET 2021",
+   "fait": "Un vœu réclame l'entretien régulier des lacs et la protection de leur biodiversité, après des morts d'animaux attribuées au botulisme.",
+   "pourquoi": "Cygnes morts, lac jamais curé depuis 1941",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163913",
+   "fait_en": "A motion called for regular maintenance of the lakes and protection of their biodiversity, after animal deaths attributed to botulism.",
+   "pourquoi_en": "Dead swans, a lake never dredged since 1941"
+  },
+  {
+   "id": "176209",
+   "seance": "MAI 2024",
+   "fait": "Le Conseil débat du rapport de la Mission d'information et d'évaluation sur les deux bois, présenté comme une mission record aux 68 recommandations.",
+   "pourquoi": "Le grand bilan des deux bois parisiens",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176209",
+   "fait_en": "The Council debated the report of the fact-finding and evaluation mission on the two bois, presented as a record mission with 68 recommendations.",
+   "pourquoi_en": "The big review of Paris's two woodlands"
+  },
+  {
+   "id": "178369",
+   "seance": "OCTOBRE 2024",
+   "fait": "Après le meurtre de Philippine, des vœux demandent d'appliquer les préconisations de sécurité et de créer une brigade de police municipale dédiée au bois.",
+   "pourquoi": "Après le meurtre de Philippine, la sécurité",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178369",
+   "fait_en": "Following the murder of Philippine, motions called for implementing the security recommendations and creating a dedicated municipal police brigade for the woodland.",
+   "pourquoi_en": "After the murder of Philippine, security"
+  },
+  {
+   "id": "181370",
+   "seance": "JUIN 2025",
+   "fait": "Le Conseil donne à une partie du chemin des Réservoirs le nom d'allée Albert Ouzoulias, résistant communiste, près du monument aux fusillés de la cascade.",
+   "pourquoi": "Un résistant honoré au cœur du bois",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=181370",
+   "fait_en": "The Council gave part of the Chemin des Réservoirs the name allée Albert Ouzoulias, after the Communist Resistance fighter, near the monument to those executed at the cascade.",
+   "pourquoi_en": "A Resistance fighter honored at the heart of the woodland"
+  },
+  {
+   "id": "182210",
+   "seance": "JUILLET 2025",
+   "fait": "Le Conseil prolonge de deux ans le contrat du centre hippique, les clubs s'engageant à 226 000 € de travaux, le temps d'études sur le bien-être animal et le bâti napoléonien.",
+   "pourquoi": "Le centre équestre prolongé pour deux ans",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=182210",
+   "fait_en": "The Council extended the equestrian center's contract by two years, with the clubs committing to €226,000 in works, while studies were carried out on animal welfare and the Napoleonic-era buildings.",
+   "pourquoi_en": "The equestrian center extended for two years"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "JUILLET 2025",
+   "montant": "226 000 €",
+   "objet": "travaux que les clubs s'engagent à réaliser pendant la prolongation de deux ans",
+   "citation": "programme de travaux pour un montant de 226.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=182210"
+  },
+  {
+   "seance": "JUILLET 2025",
+   "montant": "2 100 à 2 700 € / an",
+   "objet": "tarifs annuels du centre équestre cités par Mme Markovic (droits, cotisations, forfaits)",
+   "citation": "des tarifs entre 2.100 et 2.700 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=182210"
+  },
+  {
+   "seance": "OCTOBRE 2024",
+   "montant": "3 € / 3 h",
+   "objet": "ticket de stationnement « de bois » créé par la Ville pour les loisirs, selon M. Belliard",
+   "citation": "un ticket de bois Ã 3 euros pour 3 heures, les mercredis et samedis",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178301"
+  },
+  {
+   "seance": "SEPTEMBRE 2011",
+   "montant": "2 millions (évoqués)",
+   "objet": "somme évoquée de façon rhétorique par M. Contassot au sujet de la dépollution du plomb du site",
+   "citation": "Pourquoi dépenser 2 millions alors que la Ville peut les prendre en charge",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=102078"
+  },
+  {
+   "seance": "JUILLET 2005",
+   "montant": "227 M€ (total estimé)",
+   "objet": "coût estimé du projet (87 M€) et de la couverture du périphérique (140 M€), selon l'exposé du vœu",
+   "citation": "Le coût de ce projet a été estimé à 87 millions d?euros et le coût de la couverture à 140 millions d?euros, soit un total de 227 millions d?euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87249"
+  },
+  {
+   "seance": "JUILLET 2005",
+   "montant": "75,66 M€ (Ville, conditionnel)",
+   "objet": "participation prévisionnelle de la Ville, « participerait à hauteur de 33,33 % », selon l'exposé du vœu",
+   "citation": "La Ville de Paris participerait à hauteur de 33,33% du coût total, soit un montant de 75,66 millions d?euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87249"
+  },
+  {
+   "seance": "JUILLET 2005",
+   "montant": "62 M€ (FFT)",
+   "objet": "enveloppe déjà dégagée par la Fédération française de tennis, selon l'exposé du vœu",
+   "citation": "La Fédération Française de Tennis a quant à elle d?ores et déjà dégagé une enveloppe de 62 millions d?euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87249"
+  },
+  {
+   "seance": "JUILLET 2005",
+   "montant": "137 M€ (reste, conditionnel)",
+   "objet": "montant restant à répartir entre l'État et l'Île-de-France, selon l'exposé du vœu",
+   "citation": "Les 137 millions d?euros restant seraient répartis entre l?Etat et l?Ile de France",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87249"
+  },
+  {
+   "seance": "MARS 2012",
+   "montant": "207 000 € + redevance +13 %",
+   "objet": "travaux du concessionnaire et hausse de redevance pendant la prolongation de 18 mois, selon M. Gaudillère",
+   "citation": "la redevance sera augmentée de 13 % et le concessionnaire s?est engagé à faire 207.000 euros de travaux",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104659"
+  },
+  {
+   "seance": "JUILLET 2009",
+   "montant": "239 000 € (refusés)",
+   "objet": "somme que les forains auraient dû payer pour les dégradations et qu'ils ont refusée, selon M. Contassot",
+   "citation": "ils auraient dû payer au total 239.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20641"
+  },
+  {
+   "seance": "JUILLET 2009",
+   "montant": "150 000 €",
+   "objet": "redevance forfaitaire versée à la Ville pour l'occupation du domaine public par la Fête au Bois 2009",
+   "citation": "La redevance perçue par la Ville de Paris au titre de l?occupation du domaine public est fixée forfaitairement à 150.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74951"
+  },
+  {
+   "seance": "MAI 2011",
+   "montant": "25 000 € minimum (≥10 % du CA)",
+   "objet": "redevance minimale garantie imposée aux repreneurs des chalets de vente du bois",
+   "citation": "taux minimum de la redevance due par le concessionnaire à 10% minimum du chiffre d?affaires hors taxes généré par son activité sur le site et un montant de redevance garanti de 25 000 euros minimum",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97785"
+  }
+ ],
+ "bmo_extraits": [
+  {
+   "date": "1899-02-06",
+   "extrait": "pompes pour élever 780 litres d'eau de Seine par seconde, soit sur le réservoir de Passy, soit sur le bois de Boulogne",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6492545k/f3.item",
+   "extrait_en": "pumps to raise 780 liters of Seine water per second, either to the Passy reservoir or to the Bois de Boulogne"
+  },
+  {
+   "date": "1936-02-14",
+   "extrait": "Terrains de jeux du champ d'entraînement de Bagatelle au bois de Boulogne , Paris (16e … Emplacements libres pour le tennis : au bois de Vincennes, au bois de Boulogne et au Champs-de-Mars … 5° Stades, vélodromes, piscines et autres établissements sportifs appartenant à des s",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k62836583/f4.item",
+   "extrait_en": "Playing fields of the Bagatelle training ground in the Bois de Boulogne, Paris (16th arrondissement) … Free spaces for tennis: at the Bois de Vincennes, the Bois de Boulogne and the Champ-de-Mars … 5° Stadiums, velodromes, swimming pools and other sports facilities belonging to s"
+  },
+  {
+   "date": "1941-07-25",
+   "extrait": "AVIS La Préfecture de police communique : Il est porté à la connaissance du public que les présentations de véhicules qui devaient avoir lieu à Saint-Denis (parc des Sports), au bois de Boulogne (allée de Longchamp) ou à Vincennes (avenue de Nogent) auront lieu uniquement sur l'e",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64493715/f1.item",
+   "extrait_en": "NOTICE The Préfecture de police announces: the public is informed that the vehicle displays that were to take place at Saint-Denis (parc des Sports), at the Bois de Boulogne (allée de Longchamp) or at Vincennes (avenue de Nogent) will take place only on the e"
+  },
+  {
+   "date": "1962-06-10",
+   "extrait": "Entreprises de locations de chaises dans les jardins publics et les bois de Boulogne et de Vincennes, du l*r avril au 30 octobre",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97319794/f3.item",
+   "extrait_en": "Chair-rental businesses in the public gardens and the Bois de Boulogne and Bois de Vincennes, from 1 April to 30 October"
+  },
+  {
+   "date": "1962-11-22",
+   "extrait": "N° 1805. — Dans le bois de Boulogne , le maximum de la vitesse de tous les … mais, néanmoins, M, René Fayssat, conseiller municipal, a constaté, en bien des cas, que certains conducteurs n'hésitaient pas à considérer les allées du bois comme des autoroutes et à y lancer leurs v",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9700114w/f1.item",
+   "extrait_en": "No. 1805. — In the Bois de Boulogne, the maximum speed of all … but, nevertheless, Mr René Fayssat, municipal councillor, observed that in many cases certain drivers did not hesitate to treat the woodland's lanes as highways and to drive their v"
+  },
+  {
+   "date": "1963-12-05",
+   "extrait": "Les bois de Boulogne et de Vincennes sont inclus dans cette agglomération et, par conséquent, les règles de la circulation urbaine y sont applicables, particulièrement au sujet de la priorité, à droite … N° 1682. — Le bois de Boulogne , qui offre aux promeneurs un air purifié, ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97134322/f4.item",
+   "extrait_en": "The Bois de Boulogne and Bois de Vincennes are included within this urban area and, consequently, urban traffic rules apply there, particularly regarding right-of-way … No. 1682. — The Bois de Boulogne, which offers strollers purified air, "
+  }
+ ],
+ "bmo_recit": "Le bois de Boulogne apparaît dès 1899 dans le Bulletin municipal, à propos de pompes destinées à élever 780 litres d'eau de Seine par seconde, vers le réservoir de Passy ou vers le bois. Dans l'entre-deux-guerres, l'archive le montre en terrain de sport : en 1936, le Bulletin mentionne les terrains de jeux du champ d'entraînement de Bagatelle et des emplacements libres pour le tennis. En juillet 1941, un avis de la Préfecture de police annonce que des présentations de véhicules prévues allée de Longchamp sont déplacées vers l'esplanade des Invalides. Au début des années 1960, le bois revient par ses usages quotidiens : la location de chaises y est organisée du 1er avril au 30 octobre, tandis que le conseiller municipal René Fayssat affirme en 1962 que certains conducteurs traitent les allées du bois comme des autoroutes. En 1963, le Bulletin rappelle que le bois, inclus dans l'agglomération, relève des règles de la circulation urbaine, notamment la priorité à droite.",
+ "delibs_par_annee": {
+  "1997": [
+   {
+    "reference": "1997 DFAECG 60",
+    "titre": "56- 1997, DFAECG 60 - Approbation de la conclusion avec la société \" France galop \" d'un avenant à la convention d'occupation domaniale du 13 novembre 1947 de l'hippodrome de Longchamp situé au bois de Boulogne (16e).",
+    "genres": [
+     "autre"
+    ],
+    "seance": "OCTOBRE 1997",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24451"
+   },
+   {
+    "reference": "1997 DFAECG 60",
+    "titre": "Approbation de la conclusion d'un avenant à la convention d'occupation domaniale du 13 novembre 1947 de l'hippodrome de Longchamp situé au bois de Boulogne (16e). M. Jean-François LEGARET, au lieu et place de l'Adjoint au Maire chargé du Domaine et des Concessions, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "OCTOBRE 1997",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52800"
+   }
+  ],
+  "1998": [
+   {
+    "reference": "1998 DFAECG 119",
+    "titre": "Subvention exceptionnelle à l'Association du théâtre du Jardin pour l'Enfance et la Jeunesse, sous-concessionnaire de la S.A. \"Le Jardin d'Acclimation\" au Jardin d'Acclimatation sis au bois de Boulogne (16e). M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "OCTOBRE 1998",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65049"
+   },
+   {
+    "reference": "1998 DFAECG 119",
+    "titre": "21 - 1998, DFAECG 119 - Subvention exceptionnelle à l'association \" Le théâtre du jardin pour l'enfance et la jeunesse \", sous-concessionnaire de la S.A. \" Le jardin d'acclimatation \", au Jardin d'acclimatation sis au bois de Boulogne (16e). - Montant : 400.000 F",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "OCTOBRE 1998",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19570"
+   },
+   {
+    "reference": "1998 DFAECG 21",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant à la convention signée le 30 décembre 1993 portant droit à l'exploitation du café-restaurant \"Le Chalet des îles\" au bois de Boulogne (16e). M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "JANVIER 1998",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48290"
+   }
+  ],
+  "2001": [
+   {
+    "reference": "2001 DAC 485",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention avec l'association \"Le Musée en Herbe\" situé dans le Jardin d'Acclimatation, Bois de Boulogne (16e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "DECEMBRE 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29820"
+   },
+   {
+    "reference": "2001 DASCO 1",
+    "titre": "Approbation des modalités d'attribution d'un marché pour la surveillance des centres d'été de la Ville de Paris situés dans les bois de Boulogne, Vincennes et en région d'Ile-de-France (environ 24 centres) pour l'été 2001. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Vincent REINA, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JANVIER 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85267"
+   },
+   {
+    "reference": "2001 DASCO 250",
+    "titre": "Approbation des modalités d'attribution d'un marché sur appel d'offres ouvert en deux lots pour le démontage, le montage, le transport et le stockage des structures cuisines et sanitaires des espaces de plein air des centres de loisirs d'été dans le bois de Vincennes, le bois de Boulogne et le domaine de Beauregard à La-Celle- Saint-Cloud (Yvelines) principalement et en région Ile-de-France. M. Eric FERRAND, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71719"
+   },
+   {
+    "reference": "2001 DFAE 58",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention donnant droit à l'occupation de locaux domaniaux à usage de café-restaurant dénommé \"Le Pavillon de la Grande Cascade\" et de son annexe dite \"Auberge du Bonheur\" sis carrefour de Longchamp au bois de Boulogne (16e). M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "JUILLET 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62638"
+   },
+   {
+    "reference": "2001 DPA 37",
+    "titre": "Approbation du principe de la modernisation de la couverture de la cantine d'entreprise du dépôt du bois de Boulogne, avenue de l'Hippodrome (16e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28723"
+   },
+   {
+    "reference": "2001 DPE 91",
+    "titre": "Approbation des modalités d'attribution d'un marché sur appel d'offres ouvert pour l'extension du réseau canalisé du bois de Boulogne (16e). - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Myriam CONSTANTIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29818"
+   }
+  ],
+  "2002": [
+   {
+    "reference": "2002 DAC 301",
+    "titre": "Autorisation à M. le Maire de Paris de signer un avenant à la convention d'objectifs établie entre la Ville de Paris et l'association \"Le Musée en Herbe\"situé dans le Jardin d'Acclimatation, Bois de Boulogne 75116 Paris pour le versement d'une subvention de fonctionnement complémentaire de 146.632 euros. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "OCTOBRE 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95388"
+   },
+   {
+    "reference": "2002 DASCO 293",
+    "titre": "Approbation des modalités d'attribution d'un appel d'offres ouvert en deux lots pour le démontage, le montage, le transport et le stockage des structures cuisines et sanitaires des espaces de plein air des centres de loisirs d'été dans le bois de Vincennes, le bois de Boulogne et le domaine de Beauregard à la Celle Saint Cloud (78). - Autorisation à M. le Maire de Paris de signer les marchés correspondants. M. Eric FERRAND, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "NOVEMBRE 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45341"
+   },
+   {
+    "reference": "2002 DFAE 29",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention portant droit à l'occupation des locaux domaniaux à usage de restaurant - salons de réception dénommé \"Le Pavillon royal\" sis route de Suresnes face au grand lac au bois de Boulogne (16e). M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "AVRIL 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73463"
+   },
+   {
+    "reference": "2002 DJS 485",
+    "titre": "Subvention à l'association \"Savoir Apprendre\" à Exploradome du Jardin d'Acclimatation du Bois de Boulogne (16e). Mme Clémentine AUTAIN, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45248"
+   },
+   {
+    "reference": "2002 DPE 73",
+    "titre": "Approbation des modalités d'attribution d'un marché sur appel d'offres pour la réhabilitation des ouvrages d'assainissement de la route de la porte Dauphine à la porte des Sablons, dans le bois de Boulogne à Paris 16ème. Autorisation à Monsieur le Maire de Paris de signer le marché. Mme Myriam CONSTANTIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88324"
+   }
+  ],
+  "2003": [
+   {
+    "reference": "2003 DASCO 142",
+    "titre": "Approbation des modalités d'attribution d'un appel d'offres ouvert en 2 lots relatif à la surveillance des centres d'été de la Ville de Paris situés dans les bois de Boulogne, Vincennes et en région Ile-de-France (environ 26 centres). - Autorisation à M. le Maire de Paris de signer les marchés correspondants. M. Eric FERRAND, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47760"
+   },
+   {
+    "reference": "2003 DF 93",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention donnant droit à l'occupation de locaux domaniaux, sis 10 route du Champ d'Entraînement au bois de Boulogne (16e), afin d'y exploiter une activité viti-vinicole associée à un hébergement de type chambre d'hôte. M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "OCTOBRE 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47372"
+   },
+   {
+    "reference": "2003 DF 93",
+    "titre": "8 - 2003, DF 93 - Autorisation à M. le Maire de Paris de signer une convention donnant droit à l'occupation de locaux domaniaux sis 10, route du Champ d'Entraînement au bois de Boulogne (16e) afin d'y exploiter une activité viti-vinicole associée à un hébergement de type chambre d'hôte",
+    "genres": [
+     "autre"
+    ],
+    "seance": "OCTOBRE 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20747"
+   }
+  ],
+  "2004": [
+   {
+    "reference": "2004 DF 1",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention donnant droit à l'occupation de locaux domaniaux du Château de Longchamp au bois de Boulogne (16e) afin d'y exploiter un espace emblématique du développement durable. M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "MAI 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45582"
+   },
+   {
+    "reference": "2004 DF 1",
+    "titre": "11 - 2004, DF 1 - Autorisation à M. le Maire de Paris de signer une convention donnant droit à l'occupation de locaux domaniaux du château de Longchamp au bois de Boulogne (16e) afin d'y exploiter un espace emblématique du développement durable",
+    "genres": [
+     "autre"
+    ],
+    "seance": "MAI 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9001"
+   }
+  ],
+  "2005": [
+   {
+    "reference": "2005 DAC 7",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention d’objectifs relative à l’attribution d’une subvention de fonctionnement de 315.000 euros à l’association “Le Musée en Herbe”situé dans le Jardin d’Acclimatation, Bois de Boulogne (16e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "AVRIL 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43572"
+   },
+   {
+    "reference": "2005 DASES 175",
+    "titre": "G - Subvention de fonctionnement d’un montant de 5.510 euros à l’association “Cité 16” située 146 boulevard Murat (16e) pour financer les frais liés à l’activité de sa base d’accès aux activités en milieu naturel pour les Personnes à mobilité réduite dans le Bois de Boulogne au titre de l’année 2005. Pénélope KOMITÈS, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83028"
+   },
+   {
+    "reference": "2005 DF 30",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant à la convention datée du 15 octobre 2001 concédant à la SA “Boulogne Restauration” le droit à l’occupation de l’établissement dénommé “L’Orée du Bois” situé route de la Porte des Sablons à la Porte Maillot au Bois de Boulogne à Paris (16e arrondissement), pour y exploiter un bar-restaurant. M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80677"
+   },
+   {
+    "reference": "2005 DF 81",
+    "titre": "Convention donnant droit à l’occupation d’une propriété domaniale dénommée “Le Pré Catelan”, située route de Suresnes au bois de Boulogne (16e), afin d’y exploiter un restaurant gastronomique et des salons de réception. M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "NOVEMBRE 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90801"
+   },
+   {
+    "reference": "2005 DF 90",
+    "titre": "Convention donnant droit à l’occupation d’une propriété domaniale dénommée “Le Chalet des Iles”, située sur le lac inférieur du bois de Boulogne (16e), afin d’y exploiter un café-restaurant. M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "DECEMBRE 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32866"
+   },
+   {
+    "reference": "2005 DJS 223",
+    "titre": "Prolongation d’un an du contrat d’occupation du domaine public du centre sportif de la Croix Catelan, bois de Boulogne (16e), et autorisant donnée à M. le Maire de Paris de signer l’avenant de prolongation avec l’occupant (“Racing Club de France”). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "MARS 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26591"
+   },
+   {
+    "reference": "2005 DPJEV 20",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec l’Association des pêcheurs de Neuilly-Levallois et des Environs, avec l’Amicale des Pêcheurs du Bois de Vincennes et avec l’Association des Bon Amis de la Butte des conventions d’occupation du domaine public permettant l’exercice de la pêche dans les eaux des bois de Boulogne et de Vincennes et du parc des Buttes Chaumont. M. Yves CONTASSOT, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "MAI 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80420"
+   }
+  ],
+  "2006": [
+   {
+    "reference": "2006 DAC 112",
+    "titre": "2006, DAC 112 - Autorisation à M. le Maire de Paris de signer une convention d’objectifs relative à l’attribution d’une subvention de fonctionnement de 315.000 euros avec l’association “Le Musée en Herbe” situé dans le Jardin d’acclimatation, bois de Boulogne.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "AVRIL 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16936"
+   },
+   {
+    "reference": "2006 DAC 112",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention d’objectifs relative à l’attribution d’une subvention de fonctionnement de 315.000 euros entre la Ville de Paris et l’association “Le Musée en Herbe”situé dans le Jardin d’Acclimatation, bois de Boulogne (16e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "AVRIL 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38495"
+   },
+   {
+    "reference": "2006 DASES 178",
+    "titre": "G - Subvention de fonctionnement de 20.000 euros attribuée à l’association “Fédération nationale des associations Escapade, Liberté et Mobilité”, située 242, boulevard Voltaire (11e), pour le développement du projet “Clé des Champs” dans les bois de Boulogne et de Vincennes. Mme Pénélope KOMITÈS, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71998"
+   },
+   {
+    "reference": "2006 DF 17",
+    "titre": "Convention donnant droit à l’occupation d’une propriété domaniale dénommée “Les Jardins de Bagatelle”, située route de Sèvres à Neuilly au Bois de Boulogne (16e) afin d’y exploiter un café-restaurant. M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "AVRIL 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38729"
+   },
+   {
+    "reference": "2006 DF 43",
+    "titre": "Convention donnant droit à l’occupation des hippodromes d’Auteuil et de Longchamp au bois de Boulogne à Paris (16e). M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "OCTOBRE 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35319"
+   },
+   {
+    "reference": "2006 DF 43",
+    "titre": "2006, DF 43 - Autorisation à M. le Maire de Paris de signer une convention donnant droit à l’occupation des hippodromes d’Auteuil et de Longchamp au bois de Boulogne (16e).",
+    "genres": [
+     "autre"
+    ],
+    "seance": "OCTOBRE 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19105"
+   },
+   {
+    "reference": "2006 DF 50",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention donnant droit à l’occupation d’une propriété domaniale dénommée “Le Chalet de la Croix Catelan”, située route de Suresnes, carrefour de la Croix Catelan, au bois de Boulogne à Paris (16e), afin d’y exploiter un café-restaurant et des espaces de réception. M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "OCTOBRE 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35425"
+   },
+   {
+    "reference": "2006 DF 77",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant à la convention de concession datée du 6 décembre 1995 modifiant le périmètre de la délégation de service public du Jardin d’Acclimatation, au Bois de Boulogne (16e). M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "DECEMBRE 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91914"
+   },
+   {
+    "reference": "2006 DJS 458",
+    "titre": "Approbation de la convention d’occupation du domaine public du centre sportif de la Croix-Catelan, Bois de Boulogne (16e). - Autorisation à M. le Maire de Paris de signer ladite convention. Mme Mireille FLAM et M. Pascal CHERKI, rapporteurs.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "JUILLET 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80983"
+   },
+   {
+    "reference": "2006 DJS 458",
+    "titre": "2006, DJS 458 - Approbation de la convention d’occupation du domaine public du centre sportif de la Croix Catelan, bois de Boulogne (16e). - Autorisation à M. le Maire de Paris de signer ladite convention. Vœu déposé par le groupe U.D.F. Vœu déposé par le groupe U.M.P. Vœu déposé par l’Exécutif.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "JUILLET 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7720"
+   },
+   {
+    "reference": "2006 DPJEV 181",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec l’association “Escapade” une convention l’autorisant à faire circuler six véhicules dénommés “Modules Evasion” sur trois circuits aménagés à cet effet et sur les allées non ouvertes à la circulation automobile d’une largeur supérieure à trois mètres, dans le bois de Boulogne. M. Yves CONTASSOT et Mme Pénélope KOMITÈS, rapporteurs.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "DECEMBRE 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91939"
+   }
+  ],
+  "2007": [
+   {
+    "reference": "2007 DAC 219",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention d’objectifs relative à l’attribution d’une subvention de fonctionnement de 315.000 euros entre la Ville de Paris et l’association “Le Musée en Herbe” situé dans le Jardin d’Acclimatation, Bois de Boulogne 75116 Paris. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUIN 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72421"
+   },
+   {
+    "reference": "2007 DASES 215",
+    "titre": "G - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer une convention annuelle fixant les conditions d’attribution d’une subvention de fonctionnement de 30.000 euros à l’association “Fédération nationale des associations Escapade, Liberté et Mobilité” située 242 boulevard Voltaire (11e), pour le développement du projet “Clé des Champs” dans les bois de Boulogne et de Vincennes. Mme Pénélope KOMITÈS, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUIN 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50308"
+   },
+   {
+    "reference": "2007 DASES 336",
+    "titre": "G - Subventions de fonctionnement à l’association “Savoir Apprendre” sis Jardin d’Ac-climatation, bois de Boulogne (16e). M. Alain LHOSTIS, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "OCTOBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=76167"
+   },
+   {
+    "reference": "2007 DJS 337",
+    "titre": "2007, DJS 337 - DEVE 83 - Approbation du principe de l’opération d’aménagement des pelouses centrales de l’hippodrome d’Auteuil, Bois de Boulogne (16e). Autorisation à M. le Maire de Paris de lancer quatre marchés sur appels d’offres ouverts pour la mission de maîtrise d’oeuvre, les prestations intellectuelles d’ordonnancement pilotage et coordination, de coordination en matière de sécurité et de protection de la santé et de contrôle technique et de déposer les demandes de permis de démolir et d",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4709"
+   },
+   {
+    "reference": "2007 DJS 337",
+    "titre": "DEVE 83 - Approbation du principe de l’opération d’aménagement des pelouses centrales de l’hippodrome d’Auteuil, Bois de Boulogne (16e). Autorisation à M. le Maire de Paris de lancer quatre marchés sur appels d’offres ouverts pour la mission de maîtrise d’œuvre, les prestations intellectuelles d’ordonnancement pilotage et coordination (OPC), de coordination en matière de sécurité et de protection de la santé (SPS) et de contrôle technique. - Autorisation à M. le Maire de Paris de déposer les dem",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54462"
+   },
+   {
+    "reference": "2007 DVD 211",
+    "titre": "Approbation du principe et des modalités de la réalisation de travaux de chaussées et trottoirs parisiens pour le 16e arrondissement et le bois de Boulogne. M. Denis BAUPIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "OCTOBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53413"
+   }
+  ],
+  "2008": [
+   {
+    "reference": "2008 DEVE 124",
+    "titre": "2008, DEVE 124 - DJS 386 - Approbation des modalités d'attribution du marché de maîtrise d'oeuvre des pelouses centrales de l'hippodrome d'Auteuil, Bois de Boulogne (16e).",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6958"
+   },
+   {
+    "reference": "2008 DEVE 124",
+    "titre": "DJS 386 - Approbation des modalités d’attribution du marché de maîtrise d’oeuvre des pelouses centrales de l’hippodrome d’Auteuil, bois de Boulogne (16e). Mme Fabienne GIBOUDEAUX et M. Jean VUILLERMOZ, rapporteurs.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67394"
+   },
+   {
+    "reference": "2008 DEVE 75",
+    "titre": "Approbation du principe et des modalités de réalisation du marché négocié de travaux relatif à l’aménagement des rivières et plans d’eau du bois de Boulogne (16e). Mme Fabienne GIBOUDEAUX, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67590"
+   }
+  ],
+  "2009": [
+   {
+    "reference": "2009 DF 73",
+    "titre": "Avenant de prolongation d’un an de la délégation de service public du camping du bois de Boulogne (16e). M. Bernard GAUDILLÈRE, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "NOVEMBRE 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81862"
+   },
+   {
+    "reference": "2009 DPA 32",
+    "titre": "Approbation du principe de création de 3 aires d’accueil pour les gens du voyage [rue Lucien Bossoutrot (15e) ; bois de Vincennes (12e) ; bois de Boulogne (16e)], des modalités de passation du marché de maîtrise d’œuvre, et du dépôt des demandes de permis de construire. Mmes Olga TROSTIANSKY et Fabienne GIBOUDEAUX, rapporteures.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77367"
+   },
+   {
+    "reference": "2009 DPA 32",
+    "titre": "2009, DPA 32 - Approbation du principe de création de 3 aires d'accueil pour les gens du voyage, rue Lucien Bossoutrot (15e) au bois de Vincennes (12e) et au bois de Boulogne (16e) et des modalités de passation du marché de maîtrise d'oeuvre, et du dépôt des demandes de permis de construire.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5684"
+   }
+  ],
+  "2010": [
+   {
+    "reference": "2010 DASES 603",
+    "titre": "2010, DASES 603 G - Signature d’un avenant n° 1 à la convention passée avec l’association “Aurore” (15e), relative à la mise en place de maraudes dans le sud-ouest de Paris et le Bois de Boulogne. Montant : 171.000 euros.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "DECEMBRE 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5461"
+   },
+   {
+    "reference": "2010 DF 1",
+    "titre": "Délégation de service public pour l’exploitation du camping du bois de Boulogne(16e) afin d’y exploiter un établissement d’hébergement de plein air. Approbation du lancement d’une procédure de délégation de service public, conformément aux dispositions des articles L 1411-1 et suivants du code général des collectivités territoriales. M. Bernard GAUDILLÈRE et Mme Fabienne GIBOUDEAUX, rapporteurs.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "FEVRIER 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79075"
+   },
+   {
+    "reference": "2010 DF 83",
+    "titre": "2010, DF 83 - Délégation de service public pour l’exploitation du camping de Paris, bois de Boulogne (16e). Autorisation de signer le contrat de délégation de service public, passé conformément aux dispositions des articles L 1411-1 et suivants du code général des collectivités territoriales.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "NOVEMBRE 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21533"
+   },
+   {
+    "reference": "2010 DF 83",
+    "titre": "Délégation de service public pour l’exploitation du camping de Paris - Bois de Boulogne, Paris (16e). Autorisation de signer le contrat de délégation de service public, passé conformément aux dispositions des articles L 1411-1 et suivants du code général des collectivités territoriales. M. Bernard GAUDILLÈRE et Mme Fabienne GIBOUDEAUX, rapporteurs",
+    "genres": [
+     "autre"
+    ],
+    "seance": "NOVEMBRE 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85817"
+   },
+   {
+    "reference": "2010 DF 91",
+    "titre": "Signature d’une convention d’occupation du domaine public avec Voies Navigables de France, portant droit à l’occupation d’un terrain constituant l’ancien bras de Seine dit “de la Folie”, à Paris 16ème arrondissement (Camping de Paris - Bois de Boulogne). M. Bernard GAUDILLÈRE, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "NOVEMBRE 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85965"
+   },
+   {
+    "reference": "2010 DJS 368",
+    "titre": "Signature d’une convention d’occupation temporaire du domaine public avec le groupement solidaire constitué par les associations du Centre Hippique du Touring Club de France, mandataire, et de la Société d’Equitation de Paris en vue de l’exploitation, à des fins sportives, du Centre Hippique du bois de Boulogne situé route de la Muette (16e). M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "JUILLET 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79677"
+   },
+   {
+    "reference": "2010 DJS 394",
+    "titre": "Signature d’une convention d’occupation temporaire du domaine public - concession de travaux pour la rénovation et l’exploitation, à des fins privatives, du centre sportif Jean-Bouin situé 20 à 40, avenue du Général Sarrail et du site des t”ennis du bois de Boulogne” situé, allée Fortunée - bois de Boulogne (16e). M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39506"
+   },
+   {
+    "reference": "2010 DJS 394",
+    "titre": "2010, DJS 394 - Signature d'une convention d'occupation temporaire du domaine public - concession de travaux pour la rénovation et l'exploitation, à des fins privatives, du centre sportif Jean-Bouin, situé 20 à 40, avenue du Général Sarrail et du site des \"Tennis du Bois de Boulogne\" situé, allée Fortunée - Bois de Boulogne (16e). Vœu déposé par le groupe U.M.P.P.A. relatif au maintien de la pratique sportive de loisir et scolaire.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11100"
+   }
+  ],
+  "2011": [
+   {
+    "reference": "2011 DEVE 127",
+    "titre": "102 - 2011, DEVE 127 - Approbation du principe d'aménagement du site du Tir aux pigeons dans le bois de Boulogne (16e) et des modalités de passation des marchés de prestations intellectuelles. Vœu déposé par le groupe UMPPA relatif à l'approbation du principe d'aménagement du site du Tir aux pigeons dans le bois de Boulogne.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2011",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=102078"
+   }
+  ],
+  "2012": [
+   {
+    "reference": "2012 DEVE 42",
+    "titre": "77 - 2012, DEVE 42 - Déclaration préalable pour la réalisation des travaux d’aménagement du site du tir aux pigeons dans le bois de Boulogne (16e) et déclaration au titre de la loi sur l’eau. Vœu déposé par le groupe U.M.P.P.A. relatif à l’impact des travaux d’aménagement du site du Tir aux pigeons sur l’activité.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 2012",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104716"
+   },
+   {
+    "reference": "2012 DF 32",
+    "titre": "41 - 2012, DF 32 - Avenant à la convention d’occupation du domaine public du 1er juillet 2002 relative au Pavillon Royal au bois de Boulogne (16e).",
+    "genres": [
+     "autre"
+    ],
+    "seance": "MARS 2012",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104659"
+   }
+  ],
+  "2013": [
+   {
+    "reference": "2013 DEVE 93",
+    "titre": "2013 DEVE 93 et DEVE 77-G : Convention d'offre de concours pour la réalisation de deux aires d'accueil des gens du voyage, bois de Boulogne (16e) et bois de Vincennes (12e), au titre du contrat particulier signé entre la Région Ile de France et le Département de Paris pour la période 2009-2013. 2013 DLH 107 - Approbation du principe et des modalités de lancement de la consultation relative au marché de gestion, maintenance et nettoyage de deux aires d'accueil des gens du voyage situées dans les",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2013",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=114923"
+   }
+  ],
+  "2019": [
+   {
+    "reference": "2019 DFA 82",
+    "titre": "2019 DFA 82 - Lancement d’une procédure de délégation de service public portant sur l’exploitation du Camping de Paris situé dans le Bois de Boulogne (16e). Vœu déposé par le groupe Ecologiste de Paris relatif à une tarification sociale et à l'artificialisation des sols.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "SEPTEMBRE 2019",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152459"
+   }
+  ],
+  "2024": [
+   {
+    "reference": "2024 DFA 53",
+    "titre": "2024 DFA 53 - Avenant n° 1 à la convention d’occupation du domaine public pour l’occupation et l’exploitation des résidences sises 4-6 et 10, route du Champ d’Entrainement, bois de Boulogne (16e).",
+    "genres": [
+     "autre"
+    ],
+    "seance": "OCTOBRE 2024",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178353"
+   }
+  ],
+  "2025": [
+   {
+    "reference": "2025 DJS 100",
+    "titre": "2025 DJS 100 - Avenant n° 2 au contrat d'occupation du domaine public du centre hippique du bois de Boulogne.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "JUILLET 2025",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=182210"
+   }
+  ]
+ },
+ "invest": [
+  {
+   "annee": 2024,
+   "montant_eur": 57153.59,
+   "nom_projet": "Améliorer le cadre de vie Bois de Boulogne",
+   "preuve": "Le nom du projet d'investissement nomme explicitement le lieu : « Améliorer le cadre de vie Bois de Boulogne ». La distance au point de référence (2 132 m dans le candidat) n'est pas disqualifiante : ce point est un centroïde d'adresse, pas le périmètre du bois.",
+   "id": "2024_16_45_021"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "decp-2026T01251",
+   "objet": "Travaux de fontainerie, d’entretien, de réparation et d’extension des réseaux d’adduction d’eau dans les bois, espaces verts et cimetières de la ville de Paris.\n\n - Travaux de fontainerie, d’entretien",
+   "objet_clair": null,
+   "fournisseur": "EIFFAGE GENIE CIVIL RESEAUX",
+   "montant_max": 6000000.0,
+   "date_notification": "2026-03-10",
+   "preuve": "Objet complet du marché (DECP) : « Travaux de fontainerie, d'entretien, de réparation et d'extension des réseaux d'adduction d'eau dans les bois, espaces verts et cimetières de la ville de Paris. - Travaux de fontainerie, d'entretien, de réparation et d'extension des réseaux d'adduction d'eau dans les bois de Boulogne (16ème) et de Vincennes (12ème) et de l'École du Breuil. » — le lot nomme le bois comme périmètre ; le montant maximum couvre aussi le bois de Vincennes et l'École du Breuil."
+  },
+  {
+   "numero_marche": "decp-2025T02922",
+   "objet": "Accords-cadres à bons de commande pour les travaux de fouilles et plantations d'arbres pour la Ville de Paris et le Centre d'Action Sociale de la Ville de Paris. - Travaux de fouilles et de plantation",
+   "objet_clair": null,
+   "fournisseur": "UNIVERSAL PAYSAGE",
+   "montant_max": 2010000.0,
+   "date_notification": "2025-06-05",
+   "preuve": "Objet complet du marché (DECP) : « … Travaux de fouilles et de plantations d'arbres pour le bois de Boulogne, le bois de Vincennes et le domaine de Beauregard (78) de la Ville de Paris et le parc de la résidence de Saint-Vrain (91) du CAS-VP. » — le bois est nommé en tête du périmètre ; montant maximum partagé avec trois autres sites."
+  },
+  {
+   "numero_marche": "20212021T00511",
+   "objet": "SA3 AC BC LOT4 TRAVAVAUX DE FOUILLES - BOIS DE BOULOGNE",
+   "objet_clair": null,
+   "fournisseur": "UNIVERSAL PAYSAGE",
+   "montant_max": 1920009.99,
+   "date_notification": "2021-03-17",
+   "preuve": "Objet verbatim : « SA3 AC BC LOT4 TRAVAVAUX DE FOUILLES - BOIS DE BOULOGNE » — le lot nomme ce lieu comme seul périmètre."
+  },
+  {
+   "numero_marche": "decp-2025T05384",
+   "objet": "Travaux d’entretien des sols (voirie, réseaux et travaux divers) dans les espaces verts, bois et cimetières parisiens. - Travaux d’entretien des sols (voirie, réseaux et travaux divers) dans les espac",
+   "objet_clair": null,
+   "fournisseur": "ACTIV TP",
+   "montant_max": 999637.0,
+   "date_notification": "2025-07-01",
+   "preuve": "Objet complet du marché (DECP) : « … Travaux d'entretien des sols (voirie, réseaux et travaux divers) dans les espaces verts du bois de Boulogne, le Domaine de Beauregard (78) et les centres horticoles de Rungis (94) et d'Achères (78). » — le bois est le premier périmètre nommé ; montant maximum partagé avec les sites extérieurs."
+  },
+  {
+   "numero_marche": "20161230001022",
+   "objet": "CSP5 - VRD ET ESPACES VERTS - AAGV BOIS DE BOULOGNE LOT 2",
+   "objet_clair": null,
+   "fournisseur": "TERIDEAL SEGEX",
+   "montant_max": 996122.96,
+   "date_notification": "2016-07-25",
+   "preuve": "Objet verbatim : « CSP5 - VRD ET ESPACES VERTS - AAGV BOIS DE BOULOGNE LOT 2 » — travaux de voirie/réseaux et d'espaces verts dont l'objet nomme le bois comme périmètre. Le sigle « AAGV » n'est pas explicité par la source."
+  },
+  {
+   "numero_marche": "20151400000758",
+   "objet": "CSP2-BUNGALOWS-CELLES-ST-CLOUD/BOIS DE BOULOGNE-LOT 1",
+   "objet_clair": null,
+   "fournisseur": "TRANSPORTS PIERRE ROSSION",
+   "montant_max": 800000.0,
+   "date_notification": "2015-07-06",
+   "preuve": "Objet verbatim : « CSP2-BUNGALOWS-CELLES-ST-CLOUD/BOIS DE BOULOGNE-LOT 1 » — le lieu est nommé dans l'objet ; libellé abrégé par la source et périmètre partagé avec un second site (« CELLES-ST-CLOUD »)."
+  },
+  {
+   "numero_marche": "decp-2025S07121",
+   "objet": "Entretien des jeunes peuplements forestiers dans le bois de Boulogne\n(16ème) et le Domaine de Beauregard (78).",
+   "objet_clair": null,
+   "fournisseur": "ESPACE DECO",
+   "montant_max": 400000.0,
+   "date_notification": "2025-08-19",
+   "preuve": "Objet verbatim : « Entretien des jeunes peuplements forestiers dans le bois de Boulogne (16ème) et le Domaine de Beauregard (78). » — prestation forestière dans le bois ; montant maximum partagé avec Beauregard (78)."
+  },
+  {
+   "numero_marche": "20212021T02137",
+   "objet": "BAT DEVE 93W AVENUE DE L'HIPPODROME BOIS DE BOULOGNE",
+   "objet_clair": null,
+   "fournisseur": "PROCHALOR",
+   "montant_max": 338189.48,
+   "date_notification": "2021-04-26",
+   "preuve": "Objet verbatim : « BAT DEVE 93W AVENUE DE L'HIPPODROME BOIS DE BOULOGNE » — travaux sur un bâtiment de la direction DEVE à une adresse dont l'objet précise qu'elle se situe dans le bois. L'objet ne dit pas quelle fonction ce bâtiment remplit."
+  },
+  {
+   "numero_marche": "decp-2026S01626",
+   "objet": "Prestations de fauchage de prairies et pelouses, de débroussaillage de bords de voies et de taillage de haies pour les bois de Vincennes (12ème arrondissement) et Boulogne (16ème arrondissement), ains",
+   "objet_clair": null,
+   "fournisseur": "ROBERT PAYSAGE",
+   "montant_max": 120000.0,
+   "date_notification": "2026-03-27",
+   "preuve": "Objet complet du marché (DECP) : « … pour les bois de Vincennes (12ème arrondissement) et Boulogne (16ème arrondissement), ainsi que pour le domaine de Beauregard (78). - Lot 2 : Bois de Boulogne (16ème arrondissement) et domaine de Beauregard (78) » — le lot retenu porte sur le bois ; montant maximum partagé avec Beauregard (78)."
+  },
+  {
+   "numero_marche": "decp-2025S03215",
+   "objet": "Marché de location d’une barge motorisée pour accessibilité et transport de matériaux vers le Kiosque de l’Empereur situé sur l’ile du lac intérieur du Bois de Boulogne, 75016 Paris",
+   "objet_clair": null,
+   "fournisseur": "CONTRASTE PRO",
+   "montant_max": 32569.0,
+   "date_notification": "2025-03-28",
+   "preuve": "Objet verbatim : « Marché de location d'une barge motorisée pour accessibilité et transport de matériaux vers le Kiosque de l'Empereur situé sur l'ile du lac intérieur du Bois de Boulogne, 75016 Paris » — prestation se déroulant dans le bois."
+  }
+ ],
+ "mandate": {
+  "par_annee": {
+   "2009": 1839600.44,
+   "2010": 2699900.08,
+   "2011": 1925188.78,
+   "2012": 912612.78,
+   "2013": 2934271.79,
+   "2014": 719046.49,
+   "2015": 721714.86,
+   "2016": 499869.28,
+   "2017": 624893.84,
+   "2018": 20909.77,
+   "2019": 217051.86,
+   "2020": 37284.7,
+   "2021": 8913.56
+  },
+  "total_eur": 13161258.23,
+  "operations": [
+   {
+    "ap_cle": "B100/0700658",
+    "ap_texte": "BOIS DE BOULOGNE",
+    "mandate_par_annee": {
+     "2009": 1839600.44,
+     "2010": 1018539.29,
+     "2011": 445353.06,
+     "2012": 1927.1
+    },
+    "total_mandate": 3305419.89,
+    "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE). Le libellé désigne le site lui-même : opération couvrant l'ensemble du bois, sans autre équipement nommé.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0700658"
+   },
+   {
+    "ap_cle": "B100/1000658",
+    "ap_texte": "BOIS DE BOULOGNE",
+    "mandate_par_annee": {
+     "2010": 931122.98,
+     "2011": 1052474.06,
+     "2012": 289142.16,
+     "2013": 304266.49
+    },
+    "total_mandate": 2577005.69,
+    "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE). Le libellé désigne le site lui-même : opération couvrant l'ensemble du bois, sans autre équipement nommé.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1000658"
+   },
+   {
+    "ap_cle": "B100/1200658",
+    "ap_texte": "BOIS DE BOULOGNE",
+    "mandate_par_annee": {
+     "2012": 91428.34,
+     "2013": 1956349.1
+    },
+    "total_mandate": 2047777.44,
+    "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE). Le libellé désigne le site lui-même : opération couvrant l'ensemble du bois, sans autre équipement nommé.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1200658"
+   },
+   {
+    "ap_cle": "B100/0800658",
+    "ap_texte": "BOIS DE BOULOGNE",
+    "mandate_par_annee": {
+     "2010": 750237.81,
+     "2011": 427361.66,
+     "2012": 32521.96
+    },
+    "total_mandate": 1210121.43,
+    "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE). Le libellé désigne le site lui-même : opération couvrant l'ensemble du bois, sans autre équipement nommé.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0800658"
+   },
+   {
+    "ap_cle": "B100/0900658",
+    "ap_texte": "BOIS DE BOULOGNE",
+    "mandate_par_annee": {
+     "2012": 497593.22,
+     "2013": 673656.2
+    },
+    "total_mandate": 1171249.42,
+    "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE). Le libellé désigne le site lui-même : opération couvrant l'ensemble du bois, sans autre équipement nommé.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0900658"
+   },
+   {
+    "ap_cle": "1500658",
+    "ap_texte": "BOIS DE BOULOGNE",
+    "mandate_par_annee": {
+     "2015": 531628.76,
+     "2016": 170833.57,
+     "2017": 20061.6,
+     "2019": 9360.58
+    },
+    "total_mandate": 731884.51,
+    "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE). Le libellé désigne le site lui-même : opération couvrant l'ensemble du bois, sans autre équipement nommé.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1500658"
+   },
+   {
+    "ap_cle": "1400658",
+    "ap_texte": "BOIS DE BOULOGNE",
+    "mandate_par_annee": {
+     "2014": 562891.09,
+     "2015": 14457.6,
+     "2016": 271.47
+    },
+    "total_mandate": 577620.16,
+    "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE). Le libellé désigne le site lui-même : opération couvrant l'ensemble du bois, sans autre équipement nommé.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1400658"
+   },
+   {
+    "ap_cle": "1700658",
+    "ap_texte": "BOIS DE BOULOGNE",
+    "mandate_par_annee": {
+     "2017": 550048.47,
+     "2018": 19828.53
+    },
+    "total_mandate": 569877.0,
+    "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE). Le libellé désigne le site lui-même : opération couvrant l'ensemble du bois, sans autre équipement nommé.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1700658"
+   },
+   {
+    "ap_cle": "1600658",
+    "ap_texte": "BOIS DE BOULOGNE",
+    "mandate_par_annee": {
+     "2016": 328764.24,
+     "2017": 54783.77,
+     "2018": 1081.24
+    },
+    "total_mandate": 384629.25,
+    "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE). Le libellé désigne le site lui-même : opération couvrant l'ensemble du bois, sans autre équipement nommé.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1600658"
+   },
+   {
+    "ap_cle": "1300658",
+    "ap_texte": "BOIS DE BOULOGNE",
+    "mandate_par_annee": {
+     "2014": 156155.4,
+     "2015": 175628.5
+    },
+    "total_mandate": 331783.9,
+    "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE). Le libellé désigne le site lui-même : opération couvrant l'ensemble du bois, sans autre équipement nommé.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1300658"
+   },
+   {
+    "ap_cle": "1705065",
+    "ap_texte": "BOIS DE BOULOGNE - CARREFOUR DU BOUT DES",
+    "mandate_par_annee": {
+     "2019": 207691.28,
+     "2020": 37284.7,
+     "2021": 8913.56
+    },
+    "total_mandate": 253889.54,
+    "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE - CARREFOUR DU BOUT DES » (libellé plafonné à 40 caractères par la source ; mission VOIRIE ET DEPLACEMEN, direction DVD). Le libellé commence par le nom du lieu et désigne un aménagement de voirie du bois ; recoupé par le projet d'investissement 2020 « Opérations Bois de Boulogne - Travaux d'aménagement du carrefour du bout des lacs » (37 285 €), à ne pas additionner avec les 37 284,70 € mandatés ici en 2020.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1705065"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2021"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Bois+de+Boulogne"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Bois+de+Boulogne%22%29"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
   },
   "wiki": {
-    "extract": "Le bois de Boulogne est une étendue boisée, située dans le 16e arrondissement de Paris.",
-    "url": "https://fr.wikipedia.org/wiki/Bois_de_Boulogne",
-    "source": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    },
-    "extract_en": "The Bois de Boulogne is a wooded area located in the 16th arrondissement of Paris."
-  },
-  "stats": {
-    "n_delibs": 828,
-    "delibs_span": [
-      2005,
-      2025
-    ],
-    "n_bmo_brut": 2000,
-    "n_bmo_verifies": 18,
-    "invest_total_eur": 57153.59,
-    "invest_annees": [
-      "2024"
-    ],
-    "lecture_mode": "titre nommant le lieu (203 trouvés)",
-    "lecture_mode_en": "title naming the place (203 found)",
-    "n_lus": 45,
-    "n_lieu": 44
-  },
-  "subventions_exploitant": null,
-  "residents": [],
-  "kpi_montant": null,
-  "synthese_fr": "Depuis 2005, le bois de Boulogne revient régulièrement devant le Conseil de Paris, d'abord au fil de dossiers ponctuels : un vœu demandant l'abandon de l'extension de Roland-Garros, qui aurait pris environ un hectare du bois (2005), les concessions et leur desserte, la charte d'aménagement durable signée en 2003, ou l'arrêté préfectoral de 2012 et les travailleuses du sexe du bois. En 2017, un rapport de la Chambre régionale des comptes sur la gestion des deux bois nourrit un débat où des élus dénoncent un contrôle trop faible des concessions privées. À partir de 2023, le Conseil crée une Mission d'information et d'évaluation sur les deux bois, dont le rapport de mai 2024 formule plus de 68 recommandations. Le meurtre de Philippine en septembre 2024 fait de la sécurité le sujet dominant — vœux sur les effectifs, demande d'une brigade dédiée, puis, fin 2025, une délibération permettant à la Garde républicaine de regrouper et d'étendre ses locaux dans le bois — tandis que se poursuivent des dossiers plus quotidiens : entretien des lacs, stationnement payant, dénomination d'une allée, prolongation du contrat du centre hippique.",
-  "moments": [
-    {
-      "id": "87249",
-      "seance": "JUILLET 2005",
-      "fait": "Le Conseil examine un vœu demandant l'abandon du projet d'extension de Roland-Garros, qui aurait pris environ un hectare du bois.",
-      "pourquoi": "Les Verts contre l'extension de Roland-Garros",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87249",
-      "fait_en": "The Council examined a motion calling for the abandonment of the Roland-Garros extension project, which would have taken about one hectare of the woodland.",
-      "pourquoi_en": "Les Verts oppose the Roland-Garros extension"
-    },
-    {
-      "id": "106208",
-      "seance": "JUIN 2012",
-      "fait": "Après un arrêté préfectoral du 1er mars, l'Exécutif demande au Préfet que la réglementation ne serve pas à réprimer les travailleuses et travailleurs du sexe du bois.",
-      "pourquoi": "Ville et police s'opposent sur la prostitution",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=106208",
-      "fait_en": "Following a prefectural order of 1 March, the executive asked the Prefect that the regulation not be used to crack down on the sex workers of the woodland.",
-      "pourquoi_en": "City and police clash over prostitution"
-    },
-    {
-      "id": "138151",
-      "seance": "SEPTEMBRE 2017",
-      "fait": "Le Conseil débat du rapport de la Chambre régionale des comptes sur la gestion des deux bois, où des élus dénoncent un contrôle trop faible des concessions privées.",
-      "pourquoi": "Le rapport de la Chambre des comptes en débat",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138151",
-      "fait_en": "The Council debated the report by the Chambre régionale des comptes on the management of the two bois, in which councillors denounced overly weak oversight of private concessions.",
-      "pourquoi_en": "The Court of Auditors' report under debate"
-    },
-    {
-      "id": "163913",
-      "seance": "JUILLET 2021",
-      "fait": "Un vœu réclame l'entretien régulier des lacs et la protection de leur biodiversité, après des morts d'animaux attribuées au botulisme.",
-      "pourquoi": "Cygnes morts, lac jamais curé depuis 1941",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163913",
-      "fait_en": "A motion called for regular maintenance of the lakes and protection of their biodiversity, after animal deaths attributed to botulism.",
-      "pourquoi_en": "Dead swans, a lake never dredged since 1941"
-    },
-    {
-      "id": "176209",
-      "seance": "MAI 2024",
-      "fait": "Le Conseil débat du rapport de la Mission d'information et d'évaluation sur les deux bois, présenté comme une mission record aux 68 recommandations.",
-      "pourquoi": "Le grand bilan des deux bois parisiens",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176209",
-      "fait_en": "The Council debated the report of the fact-finding and evaluation mission on the two bois, presented as a record mission with 68 recommendations.",
-      "pourquoi_en": "The big review of Paris's two woodlands"
-    },
-    {
-      "id": "178369",
-      "seance": "OCTOBRE 2024",
-      "fait": "Après le meurtre de Philippine, des vœux demandent d'appliquer les préconisations de sécurité et de créer une brigade de police municipale dédiée au bois.",
-      "pourquoi": "Après le meurtre de Philippine, la sécurité",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178369",
-      "fait_en": "Following the murder of Philippine, motions called for implementing the security recommendations and creating a dedicated municipal police brigade for the woodland.",
-      "pourquoi_en": "After the murder of Philippine, security"
-    },
-    {
-      "id": "181370",
-      "seance": "JUIN 2025",
-      "fait": "Le Conseil donne à une partie du chemin des Réservoirs le nom d'allée Albert Ouzoulias, résistant communiste, près du monument aux fusillés de la cascade.",
-      "pourquoi": "Un résistant honoré au cœur du bois",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=181370",
-      "fait_en": "The Council gave part of the Chemin des Réservoirs the name allée Albert Ouzoulias, after the Communist Resistance fighter, near the monument to those executed at the cascade.",
-      "pourquoi_en": "A Resistance fighter honored at the heart of the woodland"
-    },
-    {
-      "id": "182210",
-      "seance": "JUILLET 2025",
-      "fait": "Le Conseil prolonge de deux ans le contrat du centre hippique, les clubs s'engageant à 226 000 € de travaux, le temps d'études sur le bien-être animal et le bâti napoléonien.",
-      "pourquoi": "Le centre équestre prolongé pour deux ans",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=182210",
-      "fait_en": "The Council extended the equestrian center's contract by two years, with the clubs committing to €226,000 in works, while studies were carried out on animal welfare and the Napoleonic-era buildings.",
-      "pourquoi_en": "The equestrian center extended for two years"
-    }
-  ],
-  "montants": [
-    {
-      "seance": "JUILLET 2025",
-      "montant": "226 000 €",
-      "objet": "travaux que les clubs s'engagent à réaliser pendant la prolongation de deux ans",
-      "citation": "programme de travaux pour un montant de 226.000 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=182210"
-    },
-    {
-      "seance": "JUILLET 2025",
-      "montant": "2 100 à 2 700 € / an",
-      "objet": "tarifs annuels du centre équestre cités par Mme Markovic (droits, cotisations, forfaits)",
-      "citation": "des tarifs entre 2.100 et 2.700 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=182210"
-    },
-    {
-      "seance": "OCTOBRE 2024",
-      "montant": "3 € / 3 h",
-      "objet": "ticket de stationnement « de bois » créé par la Ville pour les loisirs, selon M. Belliard",
-      "citation": "un ticket de bois Ã 3 euros pour 3 heures, les mercredis et samedis",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178301"
-    },
-    {
-      "seance": "SEPTEMBRE 2011",
-      "montant": "2 millions (évoqués)",
-      "objet": "somme évoquée de façon rhétorique par M. Contassot au sujet de la dépollution du plomb du site",
-      "citation": "Pourquoi dépenser 2 millions alors que la Ville peut les prendre en charge",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=102078"
-    },
-    {
-      "seance": "JUILLET 2005",
-      "montant": "227 M€ (total estimé)",
-      "objet": "coût estimé du projet (87 M€) et de la couverture du périphérique (140 M€), selon l'exposé du vœu",
-      "citation": "Le coût de ce projet a été estimé à 87 millions d?euros et le coût de la couverture à 140 millions d?euros, soit un total de 227 millions d?euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87249"
-    },
-    {
-      "seance": "JUILLET 2005",
-      "montant": "75,66 M€ (Ville, conditionnel)",
-      "objet": "participation prévisionnelle de la Ville, « participerait à hauteur de 33,33 % », selon l'exposé du vœu",
-      "citation": "La Ville de Paris participerait à hauteur de 33,33% du coût total, soit un montant de 75,66 millions d?euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87249"
-    },
-    {
-      "seance": "JUILLET 2005",
-      "montant": "62 M€ (FFT)",
-      "objet": "enveloppe déjà dégagée par la Fédération française de tennis, selon l'exposé du vœu",
-      "citation": "La Fédération Française de Tennis a quant à elle d?ores et déjà dégagé une enveloppe de 62 millions d?euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87249"
-    },
-    {
-      "seance": "JUILLET 2005",
-      "montant": "137 M€ (reste, conditionnel)",
-      "objet": "montant restant à répartir entre l'État et l'Île-de-France, selon l'exposé du vœu",
-      "citation": "Les 137 millions d?euros restant seraient répartis entre l?Etat et l?Ile de France",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87249"
-    },
-    {
-      "seance": "MARS 2012",
-      "montant": "207 000 € + redevance +13 %",
-      "objet": "travaux du concessionnaire et hausse de redevance pendant la prolongation de 18 mois, selon M. Gaudillère",
-      "citation": "la redevance sera augmentée de 13 % et le concessionnaire s?est engagé à faire 207.000 euros de travaux",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104659"
-    },
-    {
-      "seance": "JUILLET 2009",
-      "montant": "239 000 € (refusés)",
-      "objet": "somme que les forains auraient dû payer pour les dégradations et qu'ils ont refusée, selon M. Contassot",
-      "citation": "ils auraient dû payer au total 239.000 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20641"
-    },
-    {
-      "seance": "JUILLET 2009",
-      "montant": "150 000 €",
-      "objet": "redevance forfaitaire versée à la Ville pour l'occupation du domaine public par la Fête au Bois 2009",
-      "citation": "La redevance perçue par la Ville de Paris au titre de l?occupation du domaine public est fixée forfaitairement à 150.000 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74951"
-    },
-    {
-      "seance": "MAI 2011",
-      "montant": "25 000 € minimum (≥10 % du CA)",
-      "objet": "redevance minimale garantie imposée aux repreneurs des chalets de vente du bois",
-      "citation": "taux minimum de la redevance due par le concessionnaire à 10% minimum du chiffre d?affaires hors taxes généré par son activité sur le site et un montant de redevance garanti de 25 000 euros minimum",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97785"
-    }
-  ],
-  "bmo_extraits": [
-    {
-      "date": "1899-02-06",
-      "extrait": "pompes pour élever 780 litres d'eau de Seine par seconde, soit sur le réservoir de Passy, soit sur le bois de Boulogne",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6492545k/f3.item",
-      "extrait_en": "pumps to raise 780 liters of Seine water per second, either to the Passy reservoir or to the Bois de Boulogne"
-    },
-    {
-      "date": "1936-02-14",
-      "extrait": "Terrains de jeux du champ d'entraînement de Bagatelle au bois de Boulogne , Paris (16e … Emplacements libres pour le tennis : au bois de Vincennes, au bois de Boulogne et au Champs-de-Mars … 5° Stades, vélodromes, piscines et autres établissements sportifs appartenant à des s",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k62836583/f4.item",
-      "extrait_en": "Playing fields of the Bagatelle training ground in the Bois de Boulogne, Paris (16th arrondissement) … Free spaces for tennis: at the Bois de Vincennes, the Bois de Boulogne and the Champ-de-Mars … 5° Stadiums, velodromes, swimming pools and other sports facilities belonging to s"
-    },
-    {
-      "date": "1941-07-25",
-      "extrait": "AVIS La Préfecture de police communique : Il est porté à la connaissance du public que les présentations de véhicules qui devaient avoir lieu à Saint-Denis (parc des Sports), au bois de Boulogne (allée de Longchamp) ou à Vincennes (avenue de Nogent) auront lieu uniquement sur l'e",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64493715/f1.item",
-      "extrait_en": "NOTICE The Préfecture de police announces: the public is informed that the vehicle displays that were to take place at Saint-Denis (parc des Sports), at the Bois de Boulogne (allée de Longchamp) or at Vincennes (avenue de Nogent) will take place only on the e"
-    },
-    {
-      "date": "1962-06-10",
-      "extrait": "Entreprises de locations de chaises dans les jardins publics et les bois de Boulogne et de Vincennes, du l*r avril au 30 octobre",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97319794/f3.item",
-      "extrait_en": "Chair-rental businesses in the public gardens and the Bois de Boulogne and Bois de Vincennes, from 1 April to 30 October"
-    },
-    {
-      "date": "1962-11-22",
-      "extrait": "N° 1805. — Dans le bois de Boulogne , le maximum de la vitesse de tous les … mais, néanmoins, M, René Fayssat, conseiller municipal, a constaté, en bien des cas, que certains conducteurs n'hésitaient pas à considérer les allées du bois comme des autoroutes et à y lancer leurs v",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9700114w/f1.item",
-      "extrait_en": "No. 1805. — In the Bois de Boulogne, the maximum speed of all … but, nevertheless, Mr René Fayssat, municipal councillor, observed that in many cases certain drivers did not hesitate to treat the woodland's lanes as highways and to drive their v"
-    },
-    {
-      "date": "1963-12-05",
-      "extrait": "Les bois de Boulogne et de Vincennes sont inclus dans cette agglomération et, par conséquent, les règles de la circulation urbaine y sont applicables, particulièrement au sujet de la priorité, à droite … N° 1682. — Le bois de Boulogne , qui offre aux promeneurs un air purifié, ",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97134322/f4.item",
-      "extrait_en": "The Bois de Boulogne and Bois de Vincennes are included within this urban area and, consequently, urban traffic rules apply there, particularly regarding right-of-way … No. 1682. — The Bois de Boulogne, which offers strollers purified air, "
-    }
-  ],
-  "bmo_recit": "Le bois de Boulogne apparaît dès 1899 dans le Bulletin municipal, à propos de pompes destinées à élever 780 litres d'eau de Seine par seconde, vers le réservoir de Passy ou vers le bois. Dans l'entre-deux-guerres, l'archive le montre en terrain de sport : en 1936, le Bulletin mentionne les terrains de jeux du champ d'entraînement de Bagatelle et des emplacements libres pour le tennis. En juillet 1941, un avis de la Préfecture de police annonce que des présentations de véhicules prévues allée de Longchamp sont déplacées vers l'esplanade des Invalides. Au début des années 1960, le bois revient par ses usages quotidiens : la location de chaises y est organisée du 1er avril au 30 octobre, tandis que le conseiller municipal René Fayssat affirme en 1962 que certains conducteurs traitent les allées du bois comme des autoroutes. En 1963, le Bulletin rappelle que le bois, inclus dans l'agglomération, relève des règles de la circulation urbaine, notamment la priorité à droite.",
-  "invest": [
-    {
-      "annee": 2024,
-      "montant_eur": 57153.59,
-      "nom_projet": "Améliorer le cadre de vie Bois de Boulogne",
-      "preuve": "Le nom du projet nomme explicitement le lieu : « Améliorer le cadre de vie Bois de Boulogne ». La distance au point de référence (2 132 m) n'est pas disqualifiante : le bois couvre ~846 ha.",
-      "id": "2024_16_45_021"
-    }
-  ],
-  "marches": [
-    {
-      "numero_marche": "20212021T00511",
-      "objet": "SA3 AC BC LOT4 TRAVAVAUX DE FOUILLES - BOIS DE BOULOGNE",
-      "objet_clair": null,
-      "fournisseur": "UNIVERSAL PAYSAGE",
-      "montant_max": 1920009.99,
-      "date_notification": "2021-03-17",
-      "preuve": "Objet verbatim : « SA3 AC BC LOT4 TRAVAVAUX DE FOUILLES - BOIS DE BOULOGNE » — lot nommant ce lieu comme seul périmètre."
-    },
-    {
-      "numero_marche": "20161230001022",
-      "objet": "CSP5 - VRD ET ESPACES VERTS - AAGV BOIS DE BOULOGNE LOT 2",
-      "objet_clair": null,
-      "fournisseur": "TERIDEAL SEGEX",
-      "montant_max": 996122.96,
-      "date_notification": "2016-07-25",
-      "preuve": "Objet verbatim : « AAGV BOIS DE BOULOGNE LOT 2 » — travaux VRD/espaces verts pour l’aire d’accueil des gens du voyage située dans le bois, nommé en toutes lettres."
-    },
-    {
-      "numero_marche": "20151400000758",
-      "objet": "CSP2-BUNGALOWS-CELLES-ST-CLOUD/BOIS DE BOULOGNE-LOT 1",
-      "objet_clair": null,
-      "fournisseur": "TRANSPORTS PIERRE ROSSION",
-      "montant_max": 800000.0,
-      "date_notification": "2015-07-06",
-      "preuve": "Objet verbatim : « CSP2-BUNGALOWS-CELLES-ST-CLOUD/BOIS DE BOULOGNE-LOT 1 » — le lieu est nommé dans l’objet ; libellé abrégé et périmètre partagé avec La Celle-Saint-Cloud (78)."
-    },
-    {
-      "numero_marche": "decp-2025S07121",
-      "objet": "Entretien des jeunes peuplements forestiers dans le bois de Boulogne\n(16ème) et le Domaine de Beauregard (78).",
-      "objet_clair": null,
-      "fournisseur": "ESPACE DECO",
-      "montant_max": 400000.0,
-      "date_notification": "2025-08-19",
-      "preuve": "Objet verbatim : « Entretien des jeunes peuplements forestiers dans le bois de Boulogne (16ème) et le Domaine de Beauregard (78) » — prestation forestière dans le bois ; montant max partagé avec Beauregard (78)."
-    },
-    {
-      "numero_marche": "20212021T02137",
-      "objet": "BAT DEVE 93W AVENUE DE L'HIPPODROME BOIS DE BOULOGNE",
-      "objet_clair": null,
-      "fournisseur": "PROCHALOR",
-      "montant_max": 338189.48,
-      "date_notification": "2021-04-26",
-      "preuve": "Objet verbatim : « BAT DEVE 93W AVENUE DE L'HIPPODROME BOIS DE BOULOGNE » — travaux sur un bâtiment de la DEVE (direction gestionnaire du bois) à une adresse située dans le bois (avenue de l’Hippodrome)."
-    },
-    {
-      "numero_marche": "decp-2025S03215",
-      "objet": "Marché de location d’une barge motorisée pour accessibilité et transport de matériaux vers le Kiosque de l’Empereur situé sur l’ile du lac intérieur du Bois de Boulogne, 75016 Paris",
-      "objet_clair": null,
-      "fournisseur": "CONTRASTE PRO",
-      "montant_max": 32569.0,
-      "date_notification": "2025-03-28",
-      "preuve": "Objet verbatim : « … vers le Kiosque de l’Empereur situé sur l’ile du lac intérieur du Bois de Boulogne, 75016 Paris » — prestation se déroulant dans le bois."
-    }
-  ],
-  "mandate": {
-    "par_annee": {
-      "2009": 1839600.44,
-      "2010": 2699900.08,
-      "2011": 1925188.78,
-      "2012": 912612.78,
-      "2013": 2934271.79,
-      "2014": 764312.63,
-      "2015": 744027.95,
-      "2016": 499869.28,
-      "2017": 624893.84
-    },
-    "total_eur": 12944677.57,
-    "operations": [
-      {
-        "ap_cle": "B100/0700658",
-        "ap_texte": "BOIS DE BOULOGNE",
-        "mandate_par_annee": {
-          "2009": 1839600.44,
-          "2010": 1018539.29,
-          "2011": 445353.06,
-          "2012": 1927.1
-        },
-        "total_mandate": 3305419.89,
-        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE, gestionnaire du bois). Opération couvrant l'ensemble du site.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0700658"
-      },
-      {
-        "ap_cle": "B100/1000658",
-        "ap_texte": "BOIS DE BOULOGNE",
-        "mandate_par_annee": {
-          "2010": 931122.98,
-          "2011": 1052474.06,
-          "2012": 289142.16,
-          "2013": 304266.49
-        },
-        "total_mandate": 2577005.69,
-        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE, gestionnaire du bois). Opération couvrant l'ensemble du site.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1000658"
-      },
-      {
-        "ap_cle": "B100/1200658",
-        "ap_texte": "BOIS DE BOULOGNE",
-        "mandate_par_annee": {
-          "2012": 91428.34,
-          "2013": 1956349.1
-        },
-        "total_mandate": 2047777.44,
-        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE, gestionnaire du bois). Opération couvrant l'ensemble du site.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1200658"
-      },
-      {
-        "ap_cle": "B100/0800658",
-        "ap_texte": "BOIS DE BOULOGNE",
-        "mandate_par_annee": {
-          "2010": 750237.81,
-          "2011": 427361.66,
-          "2012": 32521.96
-        },
-        "total_mandate": 1210121.43,
-        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE, gestionnaire du bois). Opération couvrant l'ensemble du site.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0800658"
-      },
-      {
-        "ap_cle": "B100/0900658",
-        "ap_texte": "BOIS DE BOULOGNE",
-        "mandate_par_annee": {
-          "2012": 497593.22,
-          "2013": 673656.2
-        },
-        "total_mandate": 1171249.42,
-        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE, gestionnaire du bois). Opération couvrant l'ensemble du site.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0900658"
-      },
-      {
-        "ap_cle": "1500658",
-        "ap_texte": "BOIS DE BOULOGNE",
-        "mandate_par_annee": {
-          "2015": 531628.76,
-          "2016": 170833.57,
-          "2017": 20061.6
-        },
-        "total_mandate": 722523.93,
-        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE, gestionnaire du bois). Opération couvrant l'ensemble du site.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1500658"
-      },
-      {
-        "ap_cle": "1400658",
-        "ap_texte": "BOIS DE BOULOGNE",
-        "mandate_par_annee": {
-          "2014": 562891.09,
-          "2015": 14457.6,
-          "2016": 271.47
-        },
-        "total_mandate": 577620.16,
-        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE, gestionnaire du bois). Opération couvrant l'ensemble du site.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1400658"
-      },
-      {
-        "ap_cle": "1700658",
-        "ap_texte": "BOIS DE BOULOGNE",
-        "mandate_par_annee": {
-          "2017": 550048.47
-        },
-        "total_mandate": 550048.47,
-        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE, gestionnaire du bois). Opération couvrant l'ensemble du site.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1700658"
-      },
-      {
-        "ap_cle": "1600658",
-        "ap_texte": "BOIS DE BOULOGNE",
-        "mandate_par_annee": {
-          "2016": 328764.24,
-          "2017": 54783.77
-        },
-        "total_mandate": 383548.01,
-        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE, gestionnaire du bois). Opération couvrant l'ensemble du site.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1600658"
-      },
-      {
-        "ap_cle": "1300658",
-        "ap_texte": "BOIS DE BOULOGNE",
-        "mandate_par_annee": {
-          "2014": 156155.4,
-          "2015": 175628.5
-        },
-        "total_mandate": 331783.9,
-        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE, gestionnaire du bois). Opération couvrant l'ensemble du site.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1300658"
-      },
-      {
-        "ap_cle": "1200658",
-        "ap_texte": "BOIS DE BOULOGNE",
-        "mandate_par_annee": {
-          "2014": 42705.85,
-          "2015": 11675.87
-        },
-        "total_mandate": 54381.72,
-        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE, gestionnaire du bois). Opération couvrant l'ensemble du site.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1200658"
-      },
-      {
-        "ap_cle": "0900658",
-        "ap_texte": "BOIS DE BOULOGNE",
-        "mandate_par_annee": {
-          "2014": 2560.29,
-          "2015": 10637.22
-        },
-        "total_mandate": 13197.51,
-        "preuve": "Libellé de l'opération : « BOIS DE BOULOGNE » (mission ESPACES VERTS ET ENV, direction DEVE, gestionnaire du bois). Opération couvrant l'ensemble du site.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0900658"
-      }
-    ],
-    "periode": [
-      "2009",
-      "2017"
-    ],
-    "source": {
-      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-    }
-  },
-  "sources": {
-    "delibs": {
-      "name": "Débat-Délibs — Conseil de Paris",
-      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Bois+de+Boulogne"
-    },
-    "bmo": {
-      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Bois+de+Boulogne%22%29"
-    },
-    "invest": {
-      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-      "url": "https://opendata.paris.fr/"
-    },
-    "wiki": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
-  },
-  "synthese_en": "Since 2005, the Bois de Boulogne has regularly come before Conseil de Paris, first through one-off matters: a motion calling for the abandonment of the Roland-Garros extension, which would have taken about one hectare of the woodland (2005), concessions and their access, the sustainable development charter signed in 2003, or the 2012 prefectural order and the sex workers of the woodland. In 2017, a report by the Chambre régionale des comptes on the management of the two bois fueled a debate in which councillors denounced overly weak oversight of private concessions. Starting in 2023, the Council created a fact-finding and evaluation mission on the two bois, whose May 2024 report set out more than 68 recommendations. The murder of Philippine in September 2024 made security the dominant topic — motions on staffing levels, a request for a dedicated brigade, then, at the end of 2025, a deliberation allowing the Garde républicaine to consolidate and expand its premises in the woodland — while more routine matters continued: maintenance of the lakes, paid parking, the naming of a lane, and the extension of the equestrian center's contract.",
-  "bmo_recit_en": "The Bois de Boulogne appears as early as 1899 in the municipal bulletin, in connection with pumps intended to raise 780 liters of Seine water per second, toward the Passy reservoir or toward the woodland. In the interwar period, the archive shows it as a sports ground: in 1936, the bulletin mentions the playing fields of the Bagatelle training ground and free spaces for tennis. In July 1941, a notice from the Préfecture de police announces that vehicle displays planned for the allée de Longchamp are moved to the esplanade des Invalides. In the early 1960s, the woodland comes back through its everyday uses: chair rental is organized there from 1 April to 30 October, while municipal councillor René Fayssat states in 1962 that certain drivers treat the woodland's lanes as highways. In 1963, the bulletin recalls that the woodland, included within the urban area, is subject to urban traffic rules, particularly the right-of-way rule.",
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
   }
+ },
+ "synthese_en": "Since 2005, the Bois de Boulogne has regularly come before Conseil de Paris, first through one-off matters: a motion calling for the abandonment of the Roland-Garros extension, which would have taken about one hectare of the woodland (2005), concessions and their access, the sustainable development charter signed in 2003, or the 2012 prefectural order and the sex workers of the woodland. In 2017, a report by the Chambre régionale des comptes on the management of the two bois fueled a debate in which councillors denounced overly weak oversight of private concessions. Starting in 2023, the Council created a fact-finding and evaluation mission on the two bois, whose May 2024 report set out more than 68 recommendations. The murder of Philippine in September 2024 made security the dominant topic — motions on staffing levels, a request for a dedicated brigade, then, at the end of 2025, a deliberation allowing the Garde républicaine to consolidate and expand its premises in the woodland — while more routine matters continued: maintenance of the lakes, paid parking, the naming of a lane, and the extension of the equestrian center's contract.",
+ "bmo_recit_en": "The Bois de Boulogne appears as early as 1899 in the municipal bulletin, in connection with pumps intended to raise 780 liters of Seine water per second, toward the Passy reservoir or toward the woodland. In the interwar period, the archive shows it as a sports ground: in 1936, the bulletin mentions the playing fields of the Bagatelle training ground and free spaces for tennis. In July 1941, a notice from the Préfecture de police announces that vehicle displays planned for the allée de Longchamp are moved to the esplanade des Invalides. In the early 1960s, the woodland comes back through its everyday uses: chair rental is organized there from 1 April to 30 October, while municipal councillor René Fayssat states in 1962 that certain drivers treat the woodland's lanes as highways. In 1963, the bulletin recalls that the woodland, included within the urban area, is subject to urban traffic rules, particularly the right-of-way rule."
 }

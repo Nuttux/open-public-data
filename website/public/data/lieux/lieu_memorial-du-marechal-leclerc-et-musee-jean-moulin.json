@@ -1,197 +1,410 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
-  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
-  "slug": "memorial-du-marechal-leclerc-et-musee-jean-moulin",
-  "name": "Mémorial du Maréchal Leclerc et musée Jean Moulin",
-  "kind_fr": "Musée",
-  "kind_en": "Musée",
-  "famille": "culture",
-  "arrondissement": 15,
-  "lat": 48.84066,
-  "lon": 2.31967,
-  "photo": "/img/lieux/memorial-du-marechal-leclerc-et-musee-jean-moulin.jpg",
-  "photo_credit": {
-    "licence": "CC BY-SA 3.0",
-    "auteur": "Besopha",
-    "url": "https://commons.wikimedia.org/wiki/File:L%27entr%C3%A9e_du_mus%C3%A9e_Jean_Moulin,_Paris.jpg",
-    "source": "Wikimedia Commons"
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "memorial-du-marechal-leclerc-et-musee-jean-moulin",
+ "name": "Mémorial du Maréchal Leclerc et musée Jean Moulin",
+ "kind_fr": "Musée",
+ "kind_en": "Musée",
+ "famille": "culture",
+ "arrondissement": 15,
+ "lat": 48.84066,
+ "lon": 2.31967,
+ "photo": "/img/lieux/memorial-du-marechal-leclerc-et-musee-jean-moulin.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 3.0",
+  "auteur": "Besopha",
+  "url": "https://commons.wikimedia.org/wiki/File:L%27entr%C3%A9e_du_mus%C3%A9e_Jean_Moulin,_Paris.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1534,
+  "delibs_span": [
+   1995,
+   2015
+  ],
+  "n_bmo_brut": 32,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (21 trouvés)",
+  "lecture_mode_en": "title naming the place (21 found)",
+  "n_lus": 21,
+  "n_lieu": 10
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En 1995, le Conseil de Paris autorise le Maire à défendre en justice le droit de la Ville de créer, à partir du legs d'Antoinette Sasse, un musée dédié à Jean Moulin dans des locaux distincts de ceux prévus au testament. Installé au-dessus de la gare Montparnasse, dans le 15e, le Mémorial Leclerc - Musée Jean Moulin revient ensuite régulièrement devant le Conseil pour sa gestion : maintenance des équipements audiovisuels (2002), principe de travaux d'extension (2003), et subventions demandées à l'État au titre de la réserve parlementaire (31.490 euros en 2009 pour numériser ses archives, 9.155 euros en 2010 pour déplacer son comptoir de vente). En 2012, le Conseil accepte le legs Escoffier, décrit en séance comme sept mètres linéaires d'archives dont les fonds de Jean Moulin et des siens. À partir de 2014-2015, le projet de transfert du musée vers Denfert-Rochereau (14e) suscite des vœux d'opposition demandant son maintien à Montparnasse : le premier adjoint Bruno Julliard y répond en parlant d'un déplacement, non d'une fermeture, le vœu de 2014 reçoit un avis défavorable et celui de 2015 est repoussé. Plusieurs délibérations mentionnant « Jean Moulin » concernent en réalité d'autres lieux du 14e — un collège, une avenue, un centre d'aide par le travail — sans rapport avec le musée.",
+ "moments": [
+  {
+   "id": "548",
+   "seance": "JUILLET 1995",
+   "fait": "Le Conseil autorise le Maire à défendre en appel le droit de la Ville de créer le musée Jean-Moulin, issu du legs Sasse, dans des locaux distincts de ceux du testament.",
+   "pourquoi": "la bataille judiciaire qui fonde le musée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=548",
+   "fait_en": "The Council authorized the Mayor to defend on appeal the City's right to create the Musée Jean-Moulin, arising from the Sasse bequest, in premises other than those specified in the will.",
+   "pourquoi_en": "The legal battle that founded the museum"
+  },
+  {
+   "id": "47346",
+   "seance": "OCTOBRE 2003",
+   "fait": "Le Conseil approuve le principe de travaux d'extension des locaux du Mémorial Leclerc et Musée Jean Moulin, au Jardin Atlantique (15e), et autorise le Maire à signer le marché.",
+   "pourquoi": "agrandir le musée au Jardin Atlantique",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47346",
+   "fait_en": "The Council approved the principle of extension works to the premises of the Mémorial Leclerc et Musée Jean Moulin, at the Jardin Atlantique (15th arrondissement), and authorized the Mayor to sign the contract.",
+   "pourquoi_en": "Expanding the museum at the Jardin Atlantique"
+  },
+  {
+   "id": "17312",
+   "seance": "SEPTEMBRE 2009",
+   "fait": "Le Conseil adopte la demande d'une subvention de 31 490 euros de la réserve parlementaire du sénateur David Assouline pour numériser le fonds d'archives audiovisuelles du musée.",
+   "pourquoi": "un sénateur finance le sauvetage des archives",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17312",
+   "fait_en": "The Council adopted the request for a 31,490-euro grant from Senator David Assouline's parliamentary reserve to digitize the museum's audiovisual archive collection.",
+   "pourquoi_en": "A senator funds the rescue of the archives"
+  },
+  {
+   "id": "39519",
+   "seance": "SEPTEMBRE 2010",
+   "fait": "Le Conseil autorise le Maire à demander 9 155 euros à l'État (réserve parlementaire) pour déplacer le comptoir de vente et la caisse du musée.",
+   "pourquoi": "réaménager l'accueil et la boutique du musée",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39519",
+   "fait_en": "The Council authorized the Mayor to request 9,155 euros from the State (parliamentary reserve) to relocate the museum's sales counter and till.",
+   "pourquoi_en": "Refitting the museum's reception area and shop"
+  },
+  {
+   "id": "109475",
+   "seance": "OCTOBRE 2012",
+   "fait": "Le Conseil accepte le legs particulier de Mme Escoffier, décrit en séance comme sept mètres linéaires d'archives dont les fonds Jean Moulin.",
+   "pourquoi": "sept mètres d'archives Jean Moulin entrent au musée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109475",
+   "fait_en": "The Council accepted the specific bequest of Ms Escoffier, described in session as seven linear meters of archives including the Jean Moulin papers.",
+   "pourquoi_en": "Seven meters of Jean Moulin archives enter the museum"
+  },
+  {
+   "id": "118689",
+   "seance": "FEVRIER 2014",
+   "fait": "Un vœu du groupe UMPPA demande le maintien du musée à la gare Montparnasse ; il reçoit un avis défavorable de l'Exécutif.",
+   "pourquoi": "premier vœu contre le départ de Montparnasse",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=118689",
+   "fait_en": "A motion from the UMPPA group called for the museum to remain at the Gare Montparnasse; it received an unfavorable opinion from the executive.",
+   "pourquoi_en": "First motion against leaving Montparnasse"
+  },
+  {
+   "id": "123715",
+   "seance": "MARS 2015",
+   "fait": "Le vœu UMP demandant de garder le musée à Montparnasse est repoussé ; Bruno Julliard défend un déplacement face aux catacombes, non une fermeture.",
+   "pourquoi": "déplacement ou fermeture, le vœu repoussé",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=123715",
+   "fait_en": "The UMP motion calling for the museum to stay at Montparnasse was rejected; Bruno Julliard defended a relocation facing the Catacombs, not a closure.",
+   "pourquoi_en": "Relocation or closure, the motion is rejected"
+  },
+  {
+   "id": "125443",
+   "seance": "MAI 2015",
+   "fait": "Le Conseil examine l'apposition au musée d'une plaque en hommage aux résistants du lycée Buffon et de la Rose Blanche de Munich ; selon Mme Vieu-Charier, elle suivra le déménagement.",
+   "pourquoi": "une plaque franco-allemande de la Résistance",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125443",
+   "fait_en": "The Council examined installing a plaque at the museum honoring the Resistance fighters of the Lycée Buffon and of the White Rose group in Munich; according to Ms Vieu-Charier, it would follow the move.",
+   "pourquoi_en": "A Franco-German Resistance plaque"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "SEPTEMBRE 2009",
+   "montant": "31.490 euros HT",
+   "objet": "subvention d'investissement demandée à l'État (réserve parlementaire) pour la conservation du fonds d'archives audiovisuelles",
+   "citation": "une subvention d?investissement de 31.490 euros HT, du Ministère de l?Intérieur, au titre de la réserve parlementaire, au profit de la Ville de Paris pour la conservation du fonds d?archives audiovisuelles",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36504"
+  },
+  {
+   "seance": "SEPTEMBRE 2009",
+   "montant": "31.490 euros",
+   "objet": "somme de la réserve parlementaire du sénateur David Assouline pour transposer les interviews audiovisuelles sur support pérenne",
+   "citation": "a pris l'initiative de proposer pour leur préservation une somme de 31.490 euros sur la réserve parlementaire afin de transposer ces interviews sur un support pérenne",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17312"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "9.155 euros",
+   "objet": "subvention d'investissement demandée à l'État (réserve parlementaire) pour déplacer le comptoir de vente et la caisse",
+   "citation": "une subvention d?investissement de 9.155 euros, auprès du Ministère de l?Intérieur, au titre de la réserve parlementaire pour le déplacement du comptoir de vente et de la caisse du Mémorial Leclerc - Musée Jean Moulin",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39519"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "21.900 euros",
+   "objet": "dépense estimée de l'opération de déplacement",
+   "citation": "La dépense estimée à 21.900 euros sera imputée au chapitre 23, nature 2313, rubrique V322",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39519"
+  },
+  {
+   "seance": "FEVRIER 2014",
+   "montant": "40 millions d'euros",
+   "objet": "budget du transfert place Denfert-Rochereau cité par Mme Fonlladosa d'après la presse",
+   "citation": "le transfert de ce musée municipal place Denfert-Rochereau est récemment réapparu dans la presse, assorti d'un budget d'une exceptionnelle hauteur, soit 40 millions d'euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=118689"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "1999": [
+   {
+    "reference": "1999 DAC 92",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec le Ministère de l'Intérieur une convention pour la réalisation d'un documentaire sur Jean Moulin. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "OCTOBRE 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42490"
+   },
+   {
+    "reference": "1999 DPA 148",
+    "titre": "G - Approbation du principe de la réalisation des travaux de reprise des fondations du terrain de sports au collège départemental Jean-Moulin, 75, rue d'Alésia (14e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer ledit marché. M. Jean-Michel MICHAUX, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "NOVEMBRE 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=76707"
+   }
+  ],
+  "2001": [
+   {
+    "reference": "2001 DPA 113",
+    "titre": "G - Approbation du principe de la réalisation des travaux de restructuration et d'extension du collège départemental Jean-Moulin, 75, rue d'Alésia (14e) et des modalités de passation du marché de maîtrise d'œuvre et des marchés de prestations intellectuelles relatifs à la coordination en matière de sécurité et de protection de la santé des travailleurs, à la coordination des systèmes de sécurité incendie, à des relevés de géomètre et au contrôle technique correspondants. - Autorisation à M. le P",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53936"
+   }
+  ],
+  "2002": [
+   {
+    "reference": "2002 DAC 336",
+    "titre": "Approbation du principe et des modalités d'attribution d'un marché conclu après appel d'offres ouvert pour la maintenance des équipements audiovisuels du Mémorial du Maréchal Leclerc de Hautecloque et de la libération de Paris et Musée Jean Moulin (15ème). - Autorisation à Monsieur le Maire de Paris de signer le marché correspondant. Mme Odette CHRISTIENNE, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "OCTOBRE 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95247"
+   },
+   {
+    "reference": "2002 DPA 57",
+    "titre": "G - Approbation du principe de la réalisation des travaux de révision des menuiseries des classes des 1er et 2e étages au collège départemental Jean-Moulin, 75, rue d'Alésia et d'isolation phonique des fenêtres et de réfection des peintures au collège Saint-Exupéry, 89, boulevard Arago (14e) et des modalités d'attribution des marchés de travaux correspondants. - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général de signer les marchés de travaux correspon",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45119"
+   }
+  ],
+  "2003": [
+   {
+    "reference": "2003 DPA 251",
+    "titre": "Approbation du principe de réalisation des travaux d'extension des locaux du Mémorial Leclerc et Musée Jean Moulin sis Jardin Atlantique - 23, allée de la deuxième D.B. - 75015 PARIS, et des modalités de passation du marché de travaux correspondant. - Autorisation à Monsieur le Maire de Paris, de signer ledit marché. Mme Odette CHRISTIENNE, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "OCTOBRE 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47346"
+   },
+   {
+    "reference": "2003 DPA 58",
+    "titre": "G - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de souscrire un avenant n° 1 au marché de maîtrise d'œuvre n° 01/42531, signé avec l'agence d'architecture Jean-Baptiste Lacoudre, et approbation des modalités de passation du marché de travaux en vue de la restructuration du collège Jean-Moulin, 75, rue d'Alésia (14e). - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer ledit marché. M. Eric FER",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51388"
+   },
+   {
+    "reference": "2003 DPA 82",
+    "titre": "G - Approbation des modalités de passation du marché de travaux, des marchés d'assistance à maîtrise d'ouvrage, de contrôle technique et de coordonnateur SPS en vue de la restructuration du bâtiment \"collège\" au collège départemental Jean-Moulin, 75, rue d'Alésia (14e). - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer lesdits marchés. M. Eric FERRAND, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33484"
+   }
+  ],
+  "2004": [
+   {
+    "reference": "2004 DASES 195",
+    "titre": "G - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer une convention fixant les conditions d'attribution d'une subvention d'investissement de 13.897 euros à l'Entraide universitaire au bénéfice de son centre d'aide par le travail \"Jean Moulin\", 40, avenue Jean-Moulin (14e), pour équiper son \"café signes\" de deux écrans plasma. Mme Pénélope KOMITÈS, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42151"
+   },
+   {
+    "reference": "2004 DPA 46",
+    "titre": "G - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de souscrire un avenant n° 2 au marché de maîtrise d'œuvre 01/42-531, signé avec l'agence d'architecture Jean-Baptiste LACOUDRE, relatif à la restructuration du collège départemental Jean Moulin 75, rue d'Alésia (14e). M. Eric FERRAND, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28044"
+   },
+   {
+    "reference": "2004 DPA 52",
+    "titre": "G - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de souscrire un avenant n° 1 au marché de travaux n° 03/27-115 signé avec la société RENOVER SAS, en vue de la restructuration du collège départemental Jean Moulin 75, rue d'Alésia (14e). M. Eric FERRAND, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40408"
+   },
+   {
+    "reference": "2004 DPA 77",
+    "titre": "G - Approbation du principe de réalisation des travaux de ravalement des façades au collège départemental Jean Moulin 75, rue d’Alésia (14e), et des modalités de passation du marché de travaux correspondant. M. Eric FERRAND, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57598"
+   },
+   {
+    "reference": "2004 DVD 10",
+    "titre": "13 - 2004, DVD 10 - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres pour la réalisation des travaux d'aménagement de voirie de l'avenue Jean-Moulin (14e)",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11903"
+   },
+   {
+    "reference": "2004 DVD 10",
+    "titre": "Approbation du principe d'aménagement de l'avenue Jean Moulin (14ème). - Approbation des modalités d'attribution du marché correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Denis BAUPIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57858"
+   }
+  ],
+  "2005": [
+   {
+    "reference": "2005 DPA 82",
+    "titre": "G - Approbation du principe de réalisation des travaux de modernisation du sol de cour au collège départemental Jean Moulin (14e), et des modalités de passation du marché de travaux correspondant. M. Eric FERRAND, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41028"
+   }
+  ],
+  "2007": [
+   {
+    "reference": "2007 DASCO 20",
+    "titre": "G - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, d’attribuer une subvention d’investissement au collège public parisien Jean Moulin (14e). M. Eric FERRAND, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43451"
+   },
+   {
+    "reference": "2007 DEVE 95",
+    "titre": "2007, DEVE 95 - Autorisation à M. le Maire de Paris de signer une convention avec Réseau Ferré de France (RFF) représenté par la société ADYAL Grands Comptes en vue d’autoriser l’occupation d’une sur-largeur de la petite ceinture située le long de la rue Coulmiers, entre la rue Friant et l’avenue Jean Moulin (14e).",
+    "genres": [
+     "autre"
+    ],
+    "seance": "NOVEMBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24904"
+   },
+   {
+    "reference": "2007 DEVE 95",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention avec Réseau Ferré de France (RFF) représenté par la société ADYAL Grands comptes en vue d’autoriser l’occupation de la surlargeur de la petite ceinture située le long de la rue de Coulmiers entre la rue Friant et l’avenue Jean moulin (14e). M. Yves CONTASSOT, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "NOVEMBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66279"
+   }
+  ],
+  "2008": [
+   {
+    "reference": "2008 DPA 18",
+    "titre": "G - Approbation du principe de réalisation des travaux de modernisation des portes-fenêtres et des fenêtres au collège départemental Jean Moulin (14ème) et des modalités de passation du marché de travaux. M. Eric FERRAND, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48788"
+   }
+  ],
+  "2009": [
+   {
+    "reference": "2009 DAC 606",
+    "titre": "Subvention d’investissement exceptionnelle auprès du Ministère de l’Intérieur, au titre de la réserve parlementaire, pour la conservation du fonds d’archives audiovisuelles du Mémorial Leclerc - Musée Jean Moulin. Mme Catherine VIEU-CHARIER, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36504"
+   },
+   {
+    "reference": "2009 DAC 606",
+    "titre": "2009, DAC 606 - Subvention auprès du Ministère de l'Intérieur, au titre de la réserve parlementaire, pour la conservation du fonds d'archives audiovisuelles du Mémorial Leclerc - Musée Jean Moulin, et de signer tous documents nécessaires à sa perception.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17312"
+   }
+  ],
+  "2010": [
+   {
+    "reference": "2010 DAC 671",
+    "titre": "Autorisation à M. le Maire de Paris de demander une subvention d’investissement auprès du Ministère de l’Intérieur au titre de la réserve parlementaire, pour le déplacement du comptoir de vente et de la caisse du Mémorial Leclerc - Musée Jean Moulin. Mme Catherine VIEU-CHARIER, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39519"
+   }
+  ]
+ },
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Jean+Moulin"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22M%C3%A9morial+du+Mar%C3%A9chal+Leclerc+et+mus%C3%A9e+Jean+Moulin%22%29"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
   },
   "wiki": {
-    "extract": null,
-    "url": null,
-    "source": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
-  },
-  "stats": {
-    "n_delibs": 1534,
-    "delibs_span": [
-      1995,
-      2015
-    ],
-    "n_bmo_brut": 32,
-    "n_bmo_verifies": null,
-    "invest_total_eur": 0,
-    "invest_annees": [],
-    "lecture_mode": "titre nommant le lieu (21 trouvés)",
-    "lecture_mode_en": "title naming the place (21 found)",
-    "n_lus": 21,
-    "n_lieu": 10
-  },
-  "subventions_exploitant": null,
-  "residents": [],
-  "kpi_montant": null,
-  "synthese_fr": "En 1995, le Conseil de Paris autorise le Maire à défendre en justice le droit de la Ville de créer, à partir du legs d'Antoinette Sasse, un musée dédié à Jean Moulin dans des locaux distincts de ceux prévus au testament. Installé au-dessus de la gare Montparnasse, dans le 15e, le Mémorial Leclerc - Musée Jean Moulin revient ensuite régulièrement devant le Conseil pour sa gestion : maintenance des équipements audiovisuels (2002), principe de travaux d'extension (2003), et subventions demandées à l'État au titre de la réserve parlementaire (31.490 euros en 2009 pour numériser ses archives, 9.155 euros en 2010 pour déplacer son comptoir de vente). En 2012, le Conseil accepte le legs Escoffier, décrit en séance comme sept mètres linéaires d'archives dont les fonds de Jean Moulin et des siens. À partir de 2014-2015, le projet de transfert du musée vers Denfert-Rochereau (14e) suscite des vœux d'opposition demandant son maintien à Montparnasse : le premier adjoint Bruno Julliard y répond en parlant d'un déplacement, non d'une fermeture, le vœu de 2014 reçoit un avis défavorable et celui de 2015 est repoussé. Plusieurs délibérations mentionnant « Jean Moulin » concernent en réalité d'autres lieux du 14e — un collège, une avenue, un centre d'aide par le travail — sans rapport avec le musée.",
-  "moments": [
-    {
-      "id": "548",
-      "seance": "JUILLET 1995",
-      "fait": "Le Conseil autorise le Maire à défendre en appel le droit de la Ville de créer le musée Jean-Moulin, issu du legs Sasse, dans des locaux distincts de ceux du testament.",
-      "pourquoi": "la bataille judiciaire qui fonde le musée",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=548",
-      "fait_en": "The Council authorized the Mayor to defend on appeal the City's right to create the Musée Jean-Moulin, arising from the Sasse bequest, in premises other than those specified in the will.",
-      "pourquoi_en": "The legal battle that founded the museum"
-    },
-    {
-      "id": "47346",
-      "seance": "OCTOBRE 2003",
-      "fait": "Le Conseil approuve le principe de travaux d'extension des locaux du Mémorial Leclerc et Musée Jean Moulin, au Jardin Atlantique (15e), et autorise le Maire à signer le marché.",
-      "pourquoi": "agrandir le musée au Jardin Atlantique",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47346",
-      "fait_en": "The Council approved the principle of extension works to the premises of the Mémorial Leclerc et Musée Jean Moulin, at the Jardin Atlantique (15th arrondissement), and authorized the Mayor to sign the contract.",
-      "pourquoi_en": "Expanding the museum at the Jardin Atlantique"
-    },
-    {
-      "id": "17312",
-      "seance": "SEPTEMBRE 2009",
-      "fait": "Le Conseil adopte la demande d'une subvention de 31 490 euros de la réserve parlementaire du sénateur David Assouline pour numériser le fonds d'archives audiovisuelles du musée.",
-      "pourquoi": "un sénateur finance le sauvetage des archives",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17312",
-      "fait_en": "The Council adopted the request for a 31,490-euro grant from Senator David Assouline's parliamentary reserve to digitize the museum's audiovisual archive collection.",
-      "pourquoi_en": "A senator funds the rescue of the archives"
-    },
-    {
-      "id": "39519",
-      "seance": "SEPTEMBRE 2010",
-      "fait": "Le Conseil autorise le Maire à demander 9 155 euros à l'État (réserve parlementaire) pour déplacer le comptoir de vente et la caisse du musée.",
-      "pourquoi": "réaménager l'accueil et la boutique du musée",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39519",
-      "fait_en": "The Council authorized the Mayor to request 9,155 euros from the State (parliamentary reserve) to relocate the museum's sales counter and till.",
-      "pourquoi_en": "Refitting the museum's reception area and shop"
-    },
-    {
-      "id": "109475",
-      "seance": "OCTOBRE 2012",
-      "fait": "Le Conseil accepte le legs particulier de Mme Escoffier, décrit en séance comme sept mètres linéaires d'archives dont les fonds Jean Moulin.",
-      "pourquoi": "sept mètres d'archives Jean Moulin entrent au musée",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109475",
-      "fait_en": "The Council accepted the specific bequest of Ms Escoffier, described in session as seven linear meters of archives including the Jean Moulin papers.",
-      "pourquoi_en": "Seven meters of Jean Moulin archives enter the museum"
-    },
-    {
-      "id": "118689",
-      "seance": "FEVRIER 2014",
-      "fait": "Un vœu du groupe UMPPA demande le maintien du musée à la gare Montparnasse ; il reçoit un avis défavorable de l'Exécutif.",
-      "pourquoi": "premier vœu contre le départ de Montparnasse",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=118689",
-      "fait_en": "A motion from the UMPPA group called for the museum to remain at the Gare Montparnasse; it received an unfavorable opinion from the executive.",
-      "pourquoi_en": "First motion against leaving Montparnasse"
-    },
-    {
-      "id": "123715",
-      "seance": "MARS 2015",
-      "fait": "Le vœu UMP demandant de garder le musée à Montparnasse est repoussé ; Bruno Julliard défend un déplacement face aux catacombes, non une fermeture.",
-      "pourquoi": "déplacement ou fermeture, le vœu repoussé",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=123715",
-      "fait_en": "The UMP motion calling for the museum to stay at Montparnasse was rejected; Bruno Julliard defended a relocation facing the Catacombs, not a closure.",
-      "pourquoi_en": "Relocation or closure, the motion is rejected"
-    },
-    {
-      "id": "125443",
-      "seance": "MAI 2015",
-      "fait": "Le Conseil examine l'apposition au musée d'une plaque en hommage aux résistants du lycée Buffon et de la Rose Blanche de Munich ; selon Mme Vieu-Charier, elle suivra le déménagement.",
-      "pourquoi": "une plaque franco-allemande de la Résistance",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125443",
-      "fait_en": "The Council examined installing a plaque at the museum honoring the Resistance fighters of the Lycée Buffon and of the White Rose group in Munich; according to Ms Vieu-Charier, it would follow the move.",
-      "pourquoi_en": "A Franco-German Resistance plaque"
-    }
-  ],
-  "montants": [
-    {
-      "seance": "SEPTEMBRE 2009",
-      "montant": "31.490 euros HT",
-      "objet": "subvention d'investissement demandée à l'État (réserve parlementaire) pour la conservation du fonds d'archives audiovisuelles",
-      "citation": "une subvention d?investissement de 31.490 euros HT, du Ministère de l?Intérieur, au titre de la réserve parlementaire, au profit de la Ville de Paris pour la conservation du fonds d?archives audiovisuelles",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36504"
-    },
-    {
-      "seance": "SEPTEMBRE 2009",
-      "montant": "31.490 euros",
-      "objet": "somme de la réserve parlementaire du sénateur David Assouline pour transposer les interviews audiovisuelles sur support pérenne",
-      "citation": "a pris l'initiative de proposer pour leur préservation une somme de 31.490 euros sur la réserve parlementaire afin de transposer ces interviews sur un support pérenne",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17312"
-    },
-    {
-      "seance": "SEPTEMBRE 2010",
-      "montant": "9.155 euros",
-      "objet": "subvention d'investissement demandée à l'État (réserve parlementaire) pour déplacer le comptoir de vente et la caisse",
-      "citation": "une subvention d?investissement de 9.155 euros, auprès du Ministère de l?Intérieur, au titre de la réserve parlementaire pour le déplacement du comptoir de vente et de la caisse du Mémorial Leclerc - Musée Jean Moulin",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39519"
-    },
-    {
-      "seance": "SEPTEMBRE 2010",
-      "montant": "21.900 euros",
-      "objet": "dépense estimée de l'opération de déplacement",
-      "citation": "La dépense estimée à 21.900 euros sera imputée au chapitre 23, nature 2313, rubrique V322",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39519"
-    },
-    {
-      "seance": "FEVRIER 2014",
-      "montant": "40 millions d'euros",
-      "objet": "budget du transfert place Denfert-Rochereau cité par Mme Fonlladosa d'après la presse",
-      "citation": "le transfert de ce musée municipal place Denfert-Rochereau est récemment réapparu dans la presse, assorti d'un budget d'une exceptionnelle hauteur, soit 40 millions d'euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=118689"
-    }
-  ],
-  "bmo_extraits": [],
-  "bmo_recit": null,
-  "invest": [],
-  "marches": [],
-  "mandate": null,
-  "sources": {
-    "delibs": {
-      "name": "Débat-Délibs — Conseil de Paris",
-      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Jean+Moulin"
-    },
-    "bmo": {
-      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22M%C3%A9morial+du+Mar%C3%A9chal+Leclerc+et+mus%C3%A9e+Jean+Moulin%22%29"
-    },
-    "invest": {
-      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-      "url": "https://opendata.paris.fr/"
-    },
-    "wiki": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
-  },
-  "synthese_en": "In 1995, Conseil de Paris authorized the Mayor to defend in court the City's right to create, from the Antoinette Sasse bequest, a museum devoted to Jean Moulin in premises other than those specified in the will. Located above the Gare Montparnasse, in the 15th arrondissement, the Mémorial Leclerc - Musée Jean Moulin subsequently came before the Council regularly for its management: maintenance of audiovisual equipment (2002), the principle of extension works (2003), and grants requested from the State under the parliamentary reserve (31,490 euros in 2009 to digitize its archives, 9,155 euros in 2010 to relocate its sales counter). In 2012, the Council accepted the Escoffier bequest, described in session as seven linear meters of archives including the papers of Jean Moulin and his family. From 2014-2015, the project to transfer the museum to Denfert-Rochereau (14th arrondissement) prompted opposition motions calling for it to remain at Montparnasse: deputy mayor Bruno Julliard replied by describing it as a relocation, not a closure; the 2014 motion received an unfavorable opinion and the 2015 one was rejected. Several deliberations mentioning \"Jean Moulin\" actually concern other locations in the 14th arrondissement — a secondary school, an avenue, a sheltered workshop — unrelated to the museum.",
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
   }
+ },
+ "synthese_en": "In 1995, Conseil de Paris authorized the Mayor to defend in court the City's right to create, from the Antoinette Sasse bequest, a museum devoted to Jean Moulin in premises other than those specified in the will. Located above the Gare Montparnasse, in the 15th arrondissement, the Mémorial Leclerc - Musée Jean Moulin subsequently came before the Council regularly for its management: maintenance of audiovisual equipment (2002), the principle of extension works (2003), and grants requested from the State under the parliamentary reserve (31,490 euros in 2009 to digitize its archives, 9,155 euros in 2010 to relocate its sales counter). In 2012, the Council accepted the Escoffier bequest, described in session as seven linear meters of archives including the papers of Jean Moulin and his family. From 2014-2015, the project to transfer the museum to Denfert-Rochereau (14th arrondissement) prompted opposition motions calling for it to remain at Montparnasse: deputy mayor Bruno Julliard replied by describing it as a relocation, not a closure; the 2014 motion received an unfavorable opinion and the 2015 one was rejected. Several deliberations mentioning \"Jean Moulin\" actually concern other locations in the 14th arrondissement — a secondary school, an avenue, a sheltered workshop — unrelated to the museum."
 }

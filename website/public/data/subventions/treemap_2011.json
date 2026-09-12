@@ -1,0 +1,144 @@
+{
+  "year": 2011,
+  "generated_at": "2026-09-11T16:24:53.450639",
+  "total_montant": 949956726.6,
+  "nb_thematiques": 16,
+  "data": [
+    {
+      "annee": 2011,
+      "thematique": "Administration",
+      "nb_beneficiaires": 70,
+      "nb_subventions": 70,
+      "montant_total": 392234449.51,
+      "pct_total": 41.29
+    },
+    {
+      "annee": 2011,
+      "thematique": "Logement",
+      "nb_beneficiaires": 21,
+      "nb_subventions": 21,
+      "montant_total": 149459486.57,
+      "pct_total": 15.73
+    },
+    {
+      "annee": 2011,
+      "thematique": "Économie",
+      "nb_beneficiaires": 129,
+      "nb_subventions": 129,
+      "montant_total": 102218874.4,
+      "pct_total": 10.76
+    },
+    {
+      "annee": 2011,
+      "thematique": "Éducation",
+      "nb_beneficiaires": 179,
+      "nb_subventions": 179,
+      "montant_total": 86330416.38,
+      "pct_total": 9.09
+    },
+    {
+      "annee": 2011,
+      "thematique": "Culture",
+      "nb_beneficiaires": 330,
+      "nb_subventions": 330,
+      "montant_total": 84075808.82000001,
+      "pct_total": 8.85
+    },
+    {
+      "annee": 2011,
+      "thematique": "Non classifié",
+      "nb_beneficiaires": 1096,
+      "nb_subventions": 1096,
+      "montant_total": 69392914.57000001,
+      "pct_total": 7.3
+    },
+    {
+      "annee": 2011,
+      "thematique": "Social - Petite enfance",
+      "nb_beneficiaires": 71,
+      "nb_subventions": 71,
+      "montant_total": 25091471.450000003,
+      "pct_total": 2.64
+    },
+    {
+      "annee": 2011,
+      "thematique": "Social - Solidarité",
+      "nb_beneficiaires": 197,
+      "nb_subventions": 197,
+      "montant_total": 18233624.83,
+      "pct_total": 1.92
+    },
+    {
+      "annee": 2011,
+      "thematique": "Sécurité",
+      "nb_beneficiaires": 4,
+      "nb_subventions": 4,
+      "montant_total": 9074362.74,
+      "pct_total": 0.96
+    },
+    {
+      "annee": 2011,
+      "thematique": "Sport",
+      "nb_beneficiaires": 219,
+      "nb_subventions": 219,
+      "montant_total": 7760654.0,
+      "pct_total": 0.82
+    },
+    {
+      "annee": 2011,
+      "thematique": "Santé",
+      "nb_beneficiaires": 25,
+      "nb_subventions": 25,
+      "montant_total": 2382287.0,
+      "pct_total": 0.25
+    },
+    {
+      "annee": 2011,
+      "thematique": "International",
+      "nb_beneficiaires": 34,
+      "nb_subventions": 34,
+      "montant_total": 1216133.0,
+      "pct_total": 0.13
+    },
+    {
+      "annee": 2011,
+      "thematique": "Autre",
+      "nb_beneficiaires": 42,
+      "nb_subventions": 42,
+      "montant_total": 1168838.33,
+      "pct_total": 0.12
+    },
+    {
+      "annee": 2011,
+      "thematique": "Environnement",
+      "nb_beneficiaires": 29,
+      "nb_subventions": 29,
+      "montant_total": 1095529.0,
+      "pct_total": 0.12
+    },
+    {
+      "annee": 2011,
+      "thematique": "Social",
+      "nb_beneficiaires": 10,
+      "nb_subventions": 10,
+      "montant_total": 194619.0,
+      "pct_total": 0.02
+    },
+    {
+      "annee": 2011,
+      "thematique": "Transport",
+      "nb_beneficiaires": 3,
+      "nb_subventions": 3,
+      "montant_total": 27257.0,
+      "pct_total": 0
+    }
+  ],
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
+  }
+}

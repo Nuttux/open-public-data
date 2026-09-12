@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-26T20:49:19.674630",
+  "generated_at": "2026-09-11T16:24:23.125531",
   "source": "dbt marts (mart_subventions_treemap, mart_subventions_beneficiaires)",
   "availableYears": [
     2024,
@@ -8,7 +8,15 @@
     2021,
     2020,
     2019,
-    2018
+    2018,
+    2017,
+    2016,
+    2015,
+    2014,
+    2013,
+    2012,
+    2011,
+    2010
   ],
   "totalsByYear": {
     "2024": {
@@ -38,6 +46,38 @@
     "2018": {
       "montant_total": 1241346409.0,
       "nb_subventions": 10266
+    },
+    "2017": {
+      "montant_total": 1150092852.03,
+      "nb_subventions": 3640
+    },
+    "2016": {
+      "montant_total": 1260982793.39,
+      "nb_subventions": 3648
+    },
+    "2015": {
+      "montant_total": 1149891407.5600002,
+      "nb_subventions": 3504
+    },
+    "2014": {
+      "montant_total": 1362113353.9600003,
+      "nb_subventions": 3501
+    },
+    "2013": {
+      "montant_total": 1265816522.23,
+      "nb_subventions": 3638
+    },
+    "2012": {
+      "montant_total": 1051562457.15,
+      "nb_subventions": 2425
+    },
+    "2011": {
+      "montant_total": 949956726.6000001,
+      "nb_subventions": 2459
+    },
+    "2010": {
+      "montant_total": 964726146.8000001,
+      "nb_subventions": 2557
     }
   },
   "filters": {
@@ -46,14 +86,14 @@
       "Logement",
       "Culture",
       "Éducation",
-      "Transport",
+      "Non classifié",
       "Économie",
+      "Administration",
+      "Transport",
       "Social - Petite enfance",
       "Sport",
       "Sécurité",
-      "Administration",
       "Santé",
-      "Non classifié",
       "International",
       "Environnement",
       "Autre",
@@ -64,13 +104,19 @@
       "Autres",
       "Autres personnes de droit privé",
       "Autres personnes de droit public",
+      "Commune",
       "Communes",
+      "Departement",
       "Département",
       "Départements",
+      "Entreprise",
       "Entreprises",
       "Etablissements publics",
       "Etat",
+      "Fondations",
       "Personnes physiques",
+      "Region",
+      "Région",
       "Régions",
       "Établissements publics",
       "État"
@@ -81,23 +127,26 @@
       "DJS",
       "DAE",
       "DASES",
-      "DSOL",
       "DFPE",
       "DASCO",
+      "DSOL",
       "DGRI",
       "DEVE",
+      "DPVI",
       "DSP",
       "DPE",
       "DVD",
-      "DPMP",
-      "DPSP",
       "DGOM",
-      "DTEC",
+      "DPSP",
       "SG",
+      "DPMP",
+      "DUCT",
+      "SG-MI-CINEMA",
+      "DTEC",
+      "DU",
       "DILT",
       "DLH",
-      "DU",
-      "DAJ"
+      "DFA"
     ]
   },
   "license": {

@@ -1,160 +1,184 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
-  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
-  "slug": "piscine-josephine-baker",
-  "name": "Piscine Joséphine-Baker",
-  "kind_fr": "Piscine",
-  "kind_en": "Swimming pool",
-  "famille": "sport",
-  "arrondissement": 13,
-  "lat": 48.8367,
-  "lon": 2.3762,
-  "photo": "/img/lieux/piscine-josephine-baker.jpg",
-  "photo_credit": {
-    "licence": null,
-    "auteur": null,
-    "url": "https://fr.wikipedia.org/wiki/Piscine_Jos%C3%A9phine-Baker",
-    "source": "Wikipédia"
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-josephine-baker",
+ "name": "Piscine Joséphine-Baker",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 13,
+ "lat": 48.8367,
+ "lon": 2.3762,
+ "photo": "/img/lieux/piscine-josephine-baker.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Piscine_Jos%C3%A9phine-Baker",
+  "source": "Wikipédia"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "La piscine Joséphine-Baker ou piscine de Paris 13 : Joséphine Baker est une piscine flottante amarrée au bord de la Seine à Paris, au niveau du quai François-Mauriac dans le 13e arrondissement. Elle est inaugurée en juillet 2006, et baptisée en hommage au centenaire de la naissance de la chanteuse parisienne franco-américaine Joséphine Baker.",
+  "url": "https://fr.wikipedia.org/wiki/Piscine_Jos%C3%A9phine-Baker",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Piscine Joséphine-Baker, or Paris 13 pool: Joséphine Baker, is a floating swimming pool moored on the banks of the Seine in Paris, at the Quai François-Mauriac in the 13th arrondissement. It was inaugurated in July 2006, and named in tribute to the centenary of the birth of the Franco-American Parisian singer Joséphine Baker."
+ },
+ "stats": {
+  "n_delibs": 36,
+  "delibs_span": [
+   2006,
+   2015
+  ],
+  "n_bmo_brut": 16,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (6 trouvés)",
+  "lecture_mode_en": "title naming the place (6 found)",
+  "n_lus": 6,
+  "n_lieu": 5
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En juillet 2006, le Conseil de Paris attribue la dénomination « Piscine Joséphine Baker » au nouvel équipement balnéaire situé quai François Mauriac (13e), dont l'exploitation avait été confiée à la société Vert Marine par un marché autorisé les 27 et 28 février 2006 (2006 DJS 237) et entré en vigueur le 7 mars 2006. En mars 2007, après un incendie survenu dans l'un des saunas « le 25 novembre dernier », il apparaît en séance que l'exploitant ne disposait pas des couvertures d'assurance nécessaires : le Conseil approuve l'avenant n° 1 de résiliation amiable de ce marché (2007 DJS 295). Le même jour, il approuve le principe d'un nouveau marché de prestation de services pour l'exploitation de la piscine amarrée au port de la Gare (2007 DJS 312), avec deux changements annoncés en débat — la Ville assurera elle-même l'équipement et un contrôle technique a été conclu — ; les deux délibérations sont adoptées, des conseillers ayant annoncé leur vote contre le recours à un nouvel exploitant privé. En décembre 2015, un vœu demandant l'alignement des tarifs sur ceux des piscines à gestion municipale et la mise à l'étude de la municipalisation de la gestion est rejeté avec un avis défavorable de l'Exécutif, le débat sur le mode de gestion étant qualifié en séance de « connu ». Aucun des six documents lus ne comporte de montant chiffré relatif à l'équipement.",
+ "moments": [
+  {
+   "id": "81170",
+   "seance": "JUILLET 2006",
+   "fait": "Le Conseil attribue la dénomination « Piscine Joséphine Baker » au nouvel équipement balnéaire du quai François Mauriac (13e).",
+   "pourquoi": "Acte de nommage officiel du lieu",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81170",
+   "fait_en": "The Council named the new bathing facility on Quai François Mauriac (13th arrondissement) the 'Piscine Joséphine Baker'.",
+   "pourquoi_en": "The official naming of the place"
+  },
+  {
+   "id": "22450",
+   "seance": "MARS 2007",
+   "fait": "En débat, il est indiqué qu'après un incendie dans un sauna l'exploitant n'avait pas les assurances nécessaires ; l'équipement est décrit comme « d'abord un bateau » et comme la seule piscine de Paris ouverte deux soirs jusqu'à minuit.",
+   "pourquoi": "Incident révélant un défaut de couverture d'assurance",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22450",
+   "fait_en": "During the debate, it was stated that after a fire in a sauna the operator did not have the necessary insurance; the facility was described as 'first and foremost a boat' and as the only pool in Paris open two evenings a week until midnight.",
+   "pourquoi_en": "An incident reveals a gap in insurance coverage"
+  },
+  {
+   "id": "31838",
+   "seance": "MARS 2007",
+   "fait": "Approbation de l'avenant n° 1 de résiliation amiable du marché d'exploitation passé avec Vert Marine un an plus tôt.",
+   "pourquoi": "Le premier exploitant quitte l'équipement",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31838",
+   "fait_en": "Approval of amendment No. 1 for the amicable termination of the operating contract signed with Vert Marine a year earlier.",
+   "pourquoi_en": "The first operator leaves the facility"
+  },
+  {
+   "id": "31509",
+   "seance": "MARS 2007",
+   "fait": "Approbation du principe d'un nouveau marché de prestation de services pour l'exploitation de la piscine amarrée au port de la Gare.",
+   "pourquoi": "La Ville reconduit une exploitation externalisée",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31509",
+   "fait_en": "Approval of the principle of a new services contract for operating the pool moored at the Port de la Gare.",
+   "pourquoi_en": "The City renews an outsourced operating arrangement"
+  },
+  {
+   "id": "128423",
+   "seance": "DECEMBRE 2015",
+   "fait": "Rejet du vœu n° 163 demandant l'alignement tarifaire sur les piscines en gestion municipale et l'étude d'une municipalisation.",
+   "pourquoi": "Le mode de gestion reste contesté neuf ans après",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=128423",
+   "fait_en": "Rejection of motion No. 163 requesting rate alignment with municipally managed pools and a study into bringing management under municipal control.",
+   "pourquoi_en": "The management arrangement remains contested nine years on"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "2007": [
+   {
+    "reference": "2007 DJS 295",
+    "titre": "2007, DJS 295 - Autorisation à M. le Maire de Paris de souscrire l’avenant n° 1 au marché de prestations de service pour l’exploitation de la piscine Joséphine Baker (13e) relatif à la résiliation amiable dudit marché d’exploitation. 2007, DJS 312 - Autorisation à M. le Maire de Paris de lancer un marché de prestation de services pour l’exploitation de la piscine Joséphine Baker amarée au Port de la Gare (13e).",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22450"
+   },
+   {
+    "reference": "2007 DJS 295",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire l’avenant n° 1 au marché de prestations de service pour l’exploitation de la piscine Joséphine-Baker (13e) relatif à la résiliation amiable dudit marché d’ex-ploitation. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31838"
+   },
+   {
+    "reference": "2007 DJS 312",
+    "titre": "Autorisation à M. le Maire de Paris de lancer un marché de prestation de services pour l’exploitation de la piscine “Joséphine-Baker” amarrée au Port de la Gare (13e). M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31509"
+   }
+  ]
+ },
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20222022S01763",
+   "objet": "SA2 EXPLOITATION DE LA PISCINE JOSEPHINE BAKER",
+   "objet_clair": null,
+   "fournisseur": "SNC JOSEPHINE",
+   "montant_max": 9853607.4,
+   "date_notification": "2022-04-11",
+   "preuve": "L'objet du marché nomme explicitement le lieu : « SA2 EXPLOITATION DE LA PISCINE JOSEPHINE BAKER ». Il porte sur l'exploitation de l'équipement lui-même, conforme au mode de gestion documenté en Conseil de Paris (2007 DJS 312 : « marché de prestation de services pour l'exploitation de la piscine Joséphine-Baker amarrée au port de la Gare (13e) »). Fournisseur SIRET 91303185200019."
+  },
+  {
+   "numero_marche": "20222022S06717",
+   "objet": "SA2.PRESTAT° CARENAGE DES FLOTTEURS PISCINE JOSEPHINE BAKER",
+   "objet_clair": null,
+   "fournisseur": "B SERTS",
+   "montant_max": 4000000.0,
+   "date_notification": "2022-09-06",
+   "preuve": "L'objet nomme le lieu et porte sur son entretien physique : « PRESTAT° CARENAGE DES FLOTTEURS PISCINE JOSEPHINE BAKER ». Le carénage des flotteurs concerne la structure flottante de cet équipement, décrit en Conseil de Paris comme « d'abord un bateau, avant d'être une piscine », amarré au Port de la Gare (13e). Fournisseur SIRET 83804283600018."
+  },
+  {
+   "numero_marche": "20141410011518",
+   "objet": "CSP2 - L'EXPLOITATION DE LA PISCINE JOSEPHINE BAKER 13ÈME",
+   "objet_clair": null,
+   "fournisseur": "ARTEIS",
+   "montant_max": 2137976.78,
+   "date_notification": "2014-06-27",
+   "preuve": "L'objet nomme le lieu et son arrondissement : « CSP2 - L'EXPLOITATION DE LA PISCINE JOSEPHINE BAKER 13ÈME ». Marché d'exploitation de cet équipement précis, dans la continuité des marchés d'exploitation déléguée successifs (Vert Marine à partir de 2006, relance après résiliation amiable : 2007 DJS 295 / DJS 312). Fournisseur SIRET 43368104600036."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=piscine+AND+Jos%C3%A9phine+AND+Baker"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Piscine+Jos%C3%A9phine-Baker%22%29"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
   },
   "wiki": {
-    "extract": "La piscine Joséphine-Baker ou piscine de Paris 13 : Joséphine Baker est une piscine flottante amarrée au bord de la Seine à Paris, au niveau du quai François-Mauriac dans le 13e arrondissement. Elle est inaugurée en juillet 2006, et baptisée en hommage au centenaire de la naissance de la chanteuse parisienne franco-américaine Joséphine Baker.",
-    "url": "https://fr.wikipedia.org/wiki/Piscine_Jos%C3%A9phine-Baker",
-    "source": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    },
-    "extract_en": "The Piscine Joséphine-Baker, or Paris 13 pool: Joséphine Baker, is a floating swimming pool moored on the banks of the Seine in Paris, at the Quai François-Mauriac in the 13th arrondissement. It was inaugurated in July 2006, and named in tribute to the centenary of the birth of the Franco-American Parisian singer Joséphine Baker."
-  },
-  "stats": {
-    "n_delibs": 36,
-    "delibs_span": [
-      2006,
-      2015
-    ],
-    "n_bmo_brut": 16,
-    "n_bmo_verifies": null,
-    "invest_total_eur": 0,
-    "invest_annees": [],
-    "lecture_mode": "titre nommant le lieu (6 trouvés)",
-    "lecture_mode_en": "title naming the place (6 found)",
-    "n_lus": 6,
-    "n_lieu": 5
-  },
-  "subventions_exploitant": null,
-  "residents": [],
-  "kpi_montant": null,
-  "synthese_fr": "En juillet 2006, le Conseil de Paris attribue la dénomination « Piscine Joséphine Baker » au nouvel équipement balnéaire situé quai François Mauriac (13e), dont l'exploitation avait été confiée à la société Vert Marine par un marché autorisé les 27 et 28 février 2006 (2006 DJS 237) et entré en vigueur le 7 mars 2006. En mars 2007, après un incendie survenu dans l'un des saunas « le 25 novembre dernier », il apparaît en séance que l'exploitant ne disposait pas des couvertures d'assurance nécessaires : le Conseil approuve l'avenant n° 1 de résiliation amiable de ce marché (2007 DJS 295). Le même jour, il approuve le principe d'un nouveau marché de prestation de services pour l'exploitation de la piscine amarrée au port de la Gare (2007 DJS 312), avec deux changements annoncés en débat — la Ville assurera elle-même l'équipement et un contrôle technique a été conclu — ; les deux délibérations sont adoptées, des conseillers ayant annoncé leur vote contre le recours à un nouvel exploitant privé. En décembre 2015, un vœu demandant l'alignement des tarifs sur ceux des piscines à gestion municipale et la mise à l'étude de la municipalisation de la gestion est rejeté avec un avis défavorable de l'Exécutif, le débat sur le mode de gestion étant qualifié en séance de « connu ». Aucun des six documents lus ne comporte de montant chiffré relatif à l'équipement.",
-  "moments": [
-    {
-      "id": "81170",
-      "seance": "JUILLET 2006",
-      "fait": "Le Conseil attribue la dénomination « Piscine Joséphine Baker » au nouvel équipement balnéaire du quai François Mauriac (13e).",
-      "pourquoi": "Acte de nommage officiel du lieu",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81170",
-      "fait_en": "The Council named the new bathing facility on Quai François Mauriac (13th arrondissement) the 'Piscine Joséphine Baker'.",
-      "pourquoi_en": "The official naming of the place"
-    },
-    {
-      "id": "22450",
-      "seance": "MARS 2007",
-      "fait": "En débat, il est indiqué qu'après un incendie dans un sauna l'exploitant n'avait pas les assurances nécessaires ; l'équipement est décrit comme « d'abord un bateau » et comme la seule piscine de Paris ouverte deux soirs jusqu'à minuit.",
-      "pourquoi": "Incident révélant un défaut de couverture d'assurance",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22450",
-      "fait_en": "During the debate, it was stated that after a fire in a sauna the operator did not have the necessary insurance; the facility was described as 'first and foremost a boat' and as the only pool in Paris open two evenings a week until midnight.",
-      "pourquoi_en": "An incident reveals a gap in insurance coverage"
-    },
-    {
-      "id": "31838",
-      "seance": "MARS 2007",
-      "fait": "Approbation de l'avenant n° 1 de résiliation amiable du marché d'exploitation passé avec Vert Marine un an plus tôt.",
-      "pourquoi": "Le premier exploitant quitte l'équipement",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31838",
-      "fait_en": "Approval of amendment No. 1 for the amicable termination of the operating contract signed with Vert Marine a year earlier.",
-      "pourquoi_en": "The first operator leaves the facility"
-    },
-    {
-      "id": "31509",
-      "seance": "MARS 2007",
-      "fait": "Approbation du principe d'un nouveau marché de prestation de services pour l'exploitation de la piscine amarrée au port de la Gare.",
-      "pourquoi": "La Ville reconduit une exploitation externalisée",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31509",
-      "fait_en": "Approval of the principle of a new services contract for operating the pool moored at the Port de la Gare.",
-      "pourquoi_en": "The City renews an outsourced operating arrangement"
-    },
-    {
-      "id": "128423",
-      "seance": "DECEMBRE 2015",
-      "fait": "Rejet du vœu n° 163 demandant l'alignement tarifaire sur les piscines en gestion municipale et l'étude d'une municipalisation.",
-      "pourquoi": "Le mode de gestion reste contesté neuf ans après",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=128423",
-      "fait_en": "Rejection of motion No. 163 requesting rate alignment with municipally managed pools and a study into bringing management under municipal control.",
-      "pourquoi_en": "The management arrangement remains contested nine years on"
-    }
-  ],
-  "montants": [],
-  "bmo_extraits": [],
-  "bmo_recit": null,
-  "invest": [],
-  "marches": [
-    {
-      "numero_marche": "20222022S01763",
-      "objet": "SA2 EXPLOITATION DE LA PISCINE JOSEPHINE BAKER",
-      "objet_clair": null,
-      "fournisseur": "SNC JOSEPHINE",
-      "montant_max": 9853607.4,
-      "date_notification": "2022-04-11",
-      "preuve": "L'objet du marché nomme explicitement le lieu : « SA2 EXPLOITATION DE LA PISCINE JOSEPHINE BAKER ». Il porte sur l'exploitation de l'équipement lui-même, conforme au mode de gestion documenté en Conseil de Paris (2007 DJS 312 : « marché de prestation de services pour l'exploitation de la piscine Joséphine-Baker amarrée au port de la Gare (13e) »). Fournisseur SIRET 91303185200019."
-    },
-    {
-      "numero_marche": "20222022S06717",
-      "objet": "SA2.PRESTAT° CARENAGE DES FLOTTEURS PISCINE JOSEPHINE BAKER",
-      "objet_clair": null,
-      "fournisseur": "B SERTS",
-      "montant_max": 4000000.0,
-      "date_notification": "2022-09-06",
-      "preuve": "L'objet nomme le lieu et porte sur son entretien physique : « PRESTAT° CARENAGE DES FLOTTEURS PISCINE JOSEPHINE BAKER ». Le carénage des flotteurs concerne la structure flottante de cet équipement, décrit en Conseil de Paris comme « d'abord un bateau, avant d'être une piscine », amarré au Port de la Gare (13e). Fournisseur SIRET 83804283600018."
-    },
-    {
-      "numero_marche": "20141410011518",
-      "objet": "CSP2 - L'EXPLOITATION DE LA PISCINE JOSEPHINE BAKER 13ÈME",
-      "objet_clair": null,
-      "fournisseur": "ARTEIS",
-      "montant_max": 2137976.78,
-      "date_notification": "2014-06-27",
-      "preuve": "L'objet nomme le lieu et son arrondissement : « CSP2 - L'EXPLOITATION DE LA PISCINE JOSEPHINE BAKER 13ÈME ». Marché d'exploitation de cet équipement précis, dans la continuité des marchés d'exploitation déléguée successifs (Vert Marine à partir de 2006, relance après résiliation amiable : 2007 DJS 295 / DJS 312). Fournisseur SIRET 43368104600036."
-    }
-  ],
-  "mandate": null,
-  "sources": {
-    "delibs": {
-      "name": "Débat-Délibs — Conseil de Paris",
-      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=piscine+AND+Jos%C3%A9phine+AND+Baker"
-    },
-    "bmo": {
-      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Piscine+Jos%C3%A9phine-Baker%22%29"
-    },
-    "invest": {
-      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-      "url": "https://opendata.paris.fr/"
-    },
-    "wiki": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
-  },
-  "synthese_en": "In July 2006, Conseil de Paris named the new bathing facility located on Quai François Mauriac (13th arrondissement) the 'Piscine Joséphine Baker'; its operation had been entrusted to the company Vert Marine through a contract authorized on 27 and 28 February 2006 (2006 DJS 237) and which took effect on 7 March 2006. In March 2007, following a fire that had broken out in one of the saunas 'on 25 November last,' it emerged in session that the operator did not have the necessary insurance coverage: the Council approved amendment No. 1 for the amicable termination of that contract (2007 DJS 295). On the same day, it approved the principle of a new services contract for operating the pool moored at the Port de la Gare (2007 DJS 312), with two changes announced during the debate — the City would insure the facility itself, and a technical inspection agreement had been concluded — ; both deliberations were adopted, with some councillors announcing they would vote against turning to a new private operator. In December 2015, a motion requesting that rates be aligned with those of municipally managed pools, and that a study be launched into bringing management under municipal control, was rejected with an unfavorable opinion from the executive, the debate on the management arrangement being described in session as 'well known.' None of the six documents read contains any figure relating to the facility.",
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
   }
+ },
+ "synthese_en": "In July 2006, Conseil de Paris named the new bathing facility located on Quai François Mauriac (13th arrondissement) the 'Piscine Joséphine Baker'; its operation had been entrusted to the company Vert Marine through a contract authorized on 27 and 28 February 2006 (2006 DJS 237) and which took effect on 7 March 2006. In March 2007, following a fire that had broken out in one of the saunas 'on 25 November last,' it emerged in session that the operator did not have the necessary insurance coverage: the Council approved amendment No. 1 for the amicable termination of that contract (2007 DJS 295). On the same day, it approved the principle of a new services contract for operating the pool moored at the Port de la Gare (2007 DJS 312), with two changes announced during the debate — the City would insure the facility itself, and a technical inspection agreement had been concluded — ; both deliberations were adopted, with some councillors announcing they would vote against turning to a new private operator. In December 2015, a motion requesting that rates be aligned with those of municipally managed pools, and that a study be launched into bringing management under municipal control, was rejected with an unfavorable opinion from the executive, the debate on the management arrangement being described in session as 'well known.' None of the six documents read contains any figure relating to the facility."
 }

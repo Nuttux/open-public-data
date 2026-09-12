@@ -1,6 +1,6 @@
 {
   "year": 2024,
-  "generated_at": "2026-09-10T12:17:30.192554+00:00",
+  "generated_at": "2026-09-10T17:39:41.314892+00:00",
   "totals": {
     "capital_restant": 12280381570,
     "montant_initial": 15446260487,
@@ -6810,10 +6810,10 @@
           "annee_mobilisation": 2024,
           "montant_initial": 2495907,
           "capital_restant": 2495907,
-          "duree_residuelle": 41.58,
+          "duree_residuelle": 81.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 4.1101,
+          "taux_actuariel": 3.62,
           "programme": {
             "adresse": "18, AVENUE DE LA PORTE DE LA VILLETTE",
             "nb_logements": 112,
@@ -6827,10 +6827,10 @@
           "annee_mobilisation": 2024,
           "montant_initial": 2495907,
           "capital_restant": 2495907,
-          "duree_residuelle": 81.58,
+          "duree_residuelle": 41.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 3.62,
+          "taux_actuariel": 4.1101,
           "programme": {
             "adresse": "18, AVENUE DE LA PORTE DE LA VILLETTE",
             "nb_logements": 112,

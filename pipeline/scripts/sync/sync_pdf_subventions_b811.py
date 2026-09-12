@@ -45,7 +45,12 @@ JSON_DIR = ROOT / "pipeline" / "raw_extracts" / "subventions_b811"
 def load_files(logger: Logger) -> pd.DataFrame:
     """Lit les subv_b811_<year>.json existants et aplatit."""
     rows: list[dict] = []
-    for path in sorted(JSON_DIR.glob("subv_b811_*.json")):
+    # Deux annexes, un seul tableau : la B8.1.1 sous M57 (2020-2021) et son
+    # ancêtre B1.6/B1.7 sous M14 (2010-2012), retrouvée le 2026-09-11 dans
+    # l'archive du mini-site de la Ville. Mêmes colonnes, même gabarit.
+    fichiers = sorted(JSON_DIR.glob("subv_b811_*.json")) + \
+        sorted((JSON_DIR.parent / "subventions_b16").glob("subv_b16_*.json"))
+    for path in fichiers:
         d = json.loads(path.read_text(encoding="utf-8"))
         year = int(d["year"])
         per_year_meta = {

@@ -1,6 +1,6 @@
 {
   "year": 2023,
-  "generated_at": "2026-08-26T20:49:24.877701",
+  "generated_at": "2026-09-11T16:24:28.031669",
   "total_montant": 1201008578.0,
   "nb_beneficiaires": 5167,
   "data": [
@@ -121,7 +121,7 @@
       "source_thematique": "direction",
       "montant_total": 15395000.0,
       "nb_subventions": 1,
-      "objet_principal": "Acompte 2023 DAC",
+      "objet_principal": "Fonctionnement 2023",
       "siret": "31669616000019"
     },
     {
@@ -1711,7 +1711,7 @@
       "source_thematique": "direction",
       "montant_total": 800000.0,
       "nb_subventions": 1,
-      "objet_principal": "Acompte 2023 DAC",
+      "objet_principal": "SUBVENTION DE FONCTIONNEMENT",
       "siret": "37978422600050"
     },
     {
@@ -4051,7 +4051,7 @@
       "source_thematique": "direction",
       "montant_total": 181000.0,
       "nb_subventions": 1,
-      "objet_principal": "Subvention de fonctionnement pourfinancement des opérations Ecole et Cinémaet Mon 1er Cinéma",
+      "objet_principal": "Acompte 2023 DAC",
       "siret": "48154244700018"
     },
     {
@@ -4726,7 +4726,7 @@
       "source_thematique": "direction",
       "montant_total": 147000.0,
       "nb_subventions": 1,
-      "objet_principal": "subvention de fonctionnement",
+      "objet_principal": "Acompte 2023 DAC",
       "siret": "30666486300033"
     },
     {
@@ -7666,7 +7666,7 @@
       "source_thematique": "direction",
       "montant_total": 79000.0,
       "nb_subventions": 1,
-      "objet_principal": "POLYNOTES, École de musiquesSubvention de fonctionnement 2023",
+      "objet_principal": "Acompte 2023 DAC",
       "siret": "39187280100041"
     },
     {
@@ -9631,7 +9631,7 @@
       "source_thematique": "direction",
       "montant_total": 54500.0,
       "nb_subventions": 1,
-      "objet_principal": "Rencontres photographiques du 10e - édition 2023",
+      "objet_principal": "Soutien au festival Circulation(s) 2023",
       "siret": "48534098800032"
     },
     {
@@ -9661,7 +9661,7 @@
       "source_thematique": "direction",
       "montant_total": 54000.0,
       "nb_subventions": 1,
-      "objet_principal": "PCODE8 - Cloud CRM",
+      "objet_principal": "PCODE8 - Cybersécurité",
       "siret": "84103338400022"
     },
     {
@@ -10921,7 +10921,7 @@
       "source_thematique": "direction",
       "montant_total": 45700.0,
       "nb_subventions": 1,
-      "objet_principal": "JEux fleuris/PTEJ23",
+      "objet_principal": "Paris Fertile - formation fleurir l¿avenir des femmes et de la planète",
       "siret": "82971051600024"
     },
     {
@@ -10966,7 +10966,7 @@
       "source_thematique": "direction",
       "montant_total": 45000.0,
       "nb_subventions": 1,
-      "objet_principal": "PREVENTION VIH-SIDA, HEPATITES, IST",
+      "objet_principal": "PERMANENCE DROITS SOCIAUX",
       "siret": "39489556900033"
     },
     {
@@ -11146,7 +11146,7 @@
       "source_thematique": "direction",
       "montant_total": 44500.0,
       "nb_subventions": 1,
-      "objet_principal": "Acompte 2023 DAC",
+      "objet_principal": "24ème édition du festival des Arts de la rue Coulée Douce",
       "siret": "38943016600030"
     },
     {
@@ -14686,7 +14686,7 @@
       "source_thematique": "direction",
       "montant_total": 30000.0,
       "nb_subventions": 1,
-      "objet_principal": "Développement d¿une permanence de prévention et de promotion de la santé sexuelle et du dépistage au",
+      "objet_principal": "Prévention, dépistage du VIH, VHB, VHC. Accompagnement des PVVIH et/ou une hépatite",
       "siret": "48249488700037"
     },
     {
@@ -16366,7 +16366,7 @@
       "source_thematique": "default",
       "montant_total": 26000.0,
       "nb_subventions": 1,
-      "objet_principal": "Projet Découverte positive des métiers - Collège Lucie et Raymond Aubrac",
+      "objet_principal": "Découverte positive des métiers - Collèges Georges Rouault et Suzanne Lacore",
       "siret": "84162962900020"
     },
     {
@@ -17191,7 +17191,7 @@
       "source_thematique": "direction",
       "montant_total": 24000.0,
       "nb_subventions": 1,
-      "objet_principal": "Investissement - Paris Fabrik 6",
+      "objet_principal": "Fonctionnement - Paris Fabrik 6/PFABRIK23",
       "siret": "82905339600067"
     },
     {
@@ -18136,7 +18136,7 @@
       "source_thematique": "direction",
       "montant_total": 21500.0,
       "nb_subventions": 1,
-      "objet_principal": "RESIDENCE EN COLLEGE : ART POUR GRANDIR 2023/RAC2023",
+      "objet_principal": "Festival Jerk Off 2023",
       "siret": "49448747300022"
     },
     {
@@ -21406,7 +21406,7 @@
       "source_thematique": "llm",
       "montant_total": 16000.0,
       "nb_subventions": 1,
-      "objet_principal": "L'illusion du choix 20ème",
+      "objet_principal": "L'illusion du choix 11ème",
       "siret": "43998280200035"
     },
     {
@@ -29146,7 +29146,7 @@
       "source_thematique": "default",
       "montant_total": 8700.0,
       "nb_subventions": 1,
-      "objet_principal": "SALON DU LIVRE JEUNESSE SOLIDAIRE DU 18E",
+      "objet_principal": "LA CARAVANE QUI PARLE 2023",
       "siret": "79311882900019"
     },
     {
@@ -31786,7 +31786,7 @@
       "source_thematique": "direction",
       "montant_total": 8000.0,
       "nb_subventions": 1,
-      "objet_principal": "Financement de nos actions en direction des publics empêchés - Culture et éducation",
+      "objet_principal": "Aide à la résidence artistique et culturelle",
       "siret": "83213506500023"
     },
     {
@@ -32161,7 +32161,7 @@
       "source_thematique": "llm",
       "montant_total": 8000.0,
       "nb_subventions": 1,
-      "objet_principal": "2- Fêtes de quartier Moskova - Fête de la musique",
+      "objet_principal": "4 - Fêtes de quartier Moskova -  Printemps des poètes",
       "siret": "43035574300021"
     },
     {
@@ -37096,7 +37096,7 @@
       "source_thematique": "direction",
       "montant_total": 6000.0,
       "nb_subventions": 1,
-      "objet_principal": "La Piste Au Féminin",
+      "objet_principal": "Accompagnement d¿athlètes de haut niveau dans la perspective des Jeux Olympiques de Paris 2024",
       "siret": "83966546000011"
     },
     {
@@ -37486,7 +37486,7 @@
       "source_thematique": "llm",
       "montant_total": 5800.0,
       "nb_subventions": 1,
-      "objet_principal": "L¿imaginaire au service du récit migratoire, une autre façon de prendre la parole",
+      "objet_principal": "Un projet pour mon quartier - \"Parole de femme au pied de mon immeuble\"",
       "siret": "39408295200034"
     },
     {
@@ -42721,7 +42721,7 @@
       "source_thematique": "llm",
       "montant_total": 4000.0,
       "nb_subventions": 1,
-      "objet_principal": "CPO - COMPAGNIE VARSORIO - THÉÂTRE, MASQUES ET LIEN SOCIAL",
+      "objet_principal": "CPO - COMPAGNIE VARSORIO - PAROLES DE FEMMES",
       "siret": "44116591700069"
     },
     {
@@ -43471,7 +43471,7 @@
       "source_thematique": "direction",
       "montant_total": 4000.0,
       "nb_subventions": 1,
-      "objet_principal": "CARNAVAL Ô LES MASQUES 19ème",
+      "objet_principal": "CARNAVAL Ô LES MASQUES",
       "siret": "85181147100016"
     },
     {
@@ -48916,7 +48916,7 @@
       "source_thematique": "direction",
       "montant_total": 2000.0,
       "nb_subventions": 1,
-      "objet_principal": "Handicap et accessibilité universellePrésence: ateliers photo, exposition photo et multimedia",
+      "objet_principal": "A notre chair-Mois Parisien du Handicap 2023",
       "siret": "53093975000010"
     },
     {

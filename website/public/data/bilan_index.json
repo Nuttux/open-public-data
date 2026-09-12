@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-26T20:50:16.243631",
+  "generated_at": "2026-09-10T19:38:54.522980",
   "source": "dbt core (core_bilan_comptable)",
   "description": "Bilan comptable de la Ville de Paris - État patrimonial Actif/Passif",
   "availableYears": [
@@ -8,7 +8,9 @@
     2022,
     2021,
     2020,
-    2019
+    2019,
+    2018,
+    2016
   ],
   "latestYear": 2024,
   "totalsByYear": {
@@ -35,6 +37,14 @@
     "2019": {
       "actif_net": 39567299468.81,
       "passif_net": 39567299468.78
+    },
+    "2018": {
+      "actif_net": 30255733820.7,
+      "passif_net": 30255733820.72
+    },
+    "2016": {
+      "actif_net": 28049545134.83,
+      "passif_net": 28050486255.51
     }
   },
   "license": {

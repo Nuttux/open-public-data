@@ -1,0 +1,74 @@
+{
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "cimetiere-de-grenelle",
+ "name": "Cimetière de Grenelle",
+ "kind_fr": "Cimetière",
+ "kind_en": "Cemetery",
+ "famille": "vert",
+ "arrondissement": 15,
+ "lat": 48.856278,
+ "lon": 2.317069,
+ "photo": "/img/lieux/cimetiere-de-grenelle.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Djiril5c",
+  "url": "https://commons.wikimedia.org/wiki/File:Cimetiere_de_Grenelle_-_Paris_15_-_Septembre_2022.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "Le cimetière de Grenelle est l'ancien cimetière de la commune de Grenelle, actuellement dans le 15e arrondissement de Paris.",
+  "url": "https://fr.wikipedia.org/wiki/Cimeti%C3%A8re_de_Grenelle",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 259,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "tête du classement Solr (259 documents au total)",
+  "lecture_mode_en": "top of the Solr ranking (259 documents total)",
+  "n_lus": 42,
+  "n_lieu": 0
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Les 42 délibérations examinées à propos du \"Cimetière de Grenelle\" ne comportent, pour aucune d'entre elles, de mention effective de cette expression : le rapprochement par mots-clés a réuni des textes portant sur des sujets homonymes distincts. D'un côté des dossiers concernant le quartier, le boulevard, le quai ou le pont de Grenelle (15e) — logements sociaux, éclairage public, subventions à des associations locales, cession immobilière, réservoir d'eau non potable, chaufferie. De l'autre des délibérations sur d'autres cimetières parisiens ou franciliens — Montmartre, Père Lachaise, Montparnasse, Batignolles, Thiais, Bagneux, Charonne, ainsi qu'un cimetière communal hors Paris (Ile des Pins, Villedieu-sur-Indre). Aucun des documents consultés ne traite d'un cimetière situé à Grenelle ou portant ce nom.",
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": null,
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Cimeti%C3%A8re+de+Grenelle"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "Of the 42 council resolutions examined regarding the \"Cimetière de Grenelle,\" none actually contains this expression: the keyword-based matching brought together texts on distinct, homonymous subjects. On one hand, files concerning the Grenelle neighborhood, boulevard, quay, or bridge (15th arrondissement) — social housing, public lighting, grants to local associations, a property sale, a non-potable water reservoir, a heating plant. On the other hand, resolutions about other Parisian or Île-de-France cemeteries — Montmartre, Père Lachaise, Montparnasse, Batignolles, Thiais, Bagneux, Charonne, as well as a municipal cemetery outside Paris (Île des Pins, Villedieu-sur-Indre). None of the documents reviewed deals with a cemetery located in Grenelle or bearing that name."
+}

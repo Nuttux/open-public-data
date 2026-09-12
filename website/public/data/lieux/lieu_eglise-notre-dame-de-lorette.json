@@ -1,0 +1,182 @@
+{
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "eglise-notre-dame-de-lorette",
+ "name": "Église Notre-Dame-de-Lorette",
+ "kind_fr": "Église",
+ "kind_en": "Église",
+ "famille": "culture",
+ "arrondissement": 9,
+ "lat": 48.87644,
+ "lon": 2.338935,
+ "photo": "/img/lieux/eglise-notre-dame-de-lorette.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Notre-Dame-de-Lorette_de_Paris",
+  "source": "Wikipédia"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "L’église Notre-Dame-de-Lorette de Paris est une église située dans le 9e arrondissement de Paris. Datant du XIXe siècle, d'architecture néoclassique, elle est dédiée à Notre-Dame de Lorette et classée comme monument historique.",
+  "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Notre-Dame-de-Lorette_de_Paris",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 798,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 864960.7,
+  "invest_annees": [
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (2 trouvés)",
+  "lecture_mode_en": "title naming the place (2 found)",
+  "n_lus": 2,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "2003": [
+   {
+    "reference": "2003 DAC 409",
+    "titre": "Approbation du principe de réalisation des travaux de restauration et de protection des arases des bas-côtés de l'église Notre-Dame-de-Lorette (9e) et des modalités de passation du marché de maîtrise d'œuvre, sans mise en concurrence, correspondant. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "NOVEMBRE 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94358"
+   }
+  ],
+  "2023": [
+   {
+    "reference": "2023 DAC 342",
+    "titre": "2023 DAC 342 - Convention d’occupation du domaine public relative à l’installation et à l’exploitation d’un espace d’affichage publicitaire sur l’échafaudage de l’église Notre-Dame de Lorette (9e).",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2023",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=170574"
+   }
+  ]
+ },
+ "invest": [
+  {
+   "annee": 2024,
+   "montant_eur": 864960.7,
+   "nom_projet": "Notre Dame De Lorette - Restauration et consolisdation des maçonneries et de la structure",
+   "preuve": "Le nom du projet nomme le lieu et des travaux sur l'édifice : « Notre Dame De Lorette - Restauration et consolisdation [sic] des maçonneries et de la structure ».",
+   "id": "2024_09_24_014"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20191320000948",
+   "objet": "CSP5 TRAVAUX EGLISE NOTRE DAME DE LORETTE - LOT1: MACONNERIE",
+   "objet_clair": null,
+   "fournisseur": "SOCIETE ENTREPRISE DEGAINE",
+   "montant_max": 330433.47,
+   "date_notification": "2019-07-02",
+   "preuve": "L'objet du marché porte sur des travaux dans ce lieu : « CSP5 TRAVAUX EGLISE NOTRE DAME DE LORETTE - LOT1: MACONNERIE » (titulaire SIRET 56206287700021, notifié le 2019-07-02)."
+  },
+  {
+   "numero_marche": "20232023T05630",
+   "objet": "RESTAURATION CHAPELLE EGLISE NOTRE DAME DE LORETTE 9EME",
+   "objet_clair": null,
+   "fournisseur": "SOCIETE ENTREPRISE DEGAINE",
+   "montant_max": 283042.51,
+   "date_notification": "2023-07-19",
+   "preuve": "L'objet nomme le lieu et l'arrondissement : « RESTAURATION CHAPELLE EGLISE NOTRE DAME DE LORETTE 9EME » (SIRET titulaire 56206287700021)."
+  },
+  {
+   "numero_marche": "20161320001361",
+   "objet": "CSP5 MOE EGLISE NOTRE DAME DE LORETTE 9ÈME",
+   "objet_clair": null,
+   "fournisseur": "LAGNEAU ARCHITECTES",
+   "montant_max": 140765.0,
+   "date_notification": "2016-11-30",
+   "preuve": "Marché de maîtrise d'œuvre pour ce lieu : « CSP5 MOE EGLISE NOTRE DAME DE LORETTE 9ÈME » (SIRET titulaire 80039762200013)."
+  },
+  {
+   "numero_marche": "20191320000949",
+   "objet": "CSP5 TVX EGLISE NOTRE DAME DE LORETTE - LOT2:INSTRUMENTATION",
+   "objet_clair": null,
+   "fournisseur": "1STRUMESURE",
+   "montant_max": 49500.0,
+   "date_notification": "2019-07-02",
+   "preuve": "Lot 2 du même chantier : « CSP5 TVX EGLISE NOTRE DAME DE LORETTE - LOT2:INSTRUMENTATION » (SIRET titulaire 81784825200018), notifié le même jour que le lot maçonnerie."
+  }
+ ],
+ "mandate": {
+  "par_annee": {
+   "2015": 66066.89,
+   "2016": 433089.94,
+   "2017": 184048.13,
+   "2018": 19635.43,
+   "2019": 165135.47,
+   "2020": 547057.09,
+   "2021": 93488.22,
+   "2022": 105297.51
+  },
+  "total_eur": 1613818.68,
+  "operations": [
+   {
+    "ap_cle": "1504627",
+    "ap_texte": "EGLISE NOTRE DAME DE LORETTE 9E",
+    "mandate_par_annee": {
+     "2015": 66066.89,
+     "2016": 433089.94,
+     "2017": 184048.13,
+     "2018": 19635.43,
+     "2019": 165135.47,
+     "2020": 547057.09,
+     "2021": 93488.22,
+     "2022": 105297.51
+    },
+    "total_mandate": 1613818.68,
+    "preuve": "Le libellé de l'opération est le nom du lieu avec son arrondissement : « EGLISE NOTRE DAME DE LORETTE 9E » (direction DAC, mission « AFFAIRES CULTURELLES »). Opération propre à cet édifice, mandatée de 2015 à 2022 ; ce n'est pas une enveloppe générique de direction.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1504627"
+   }
+  ],
+  "periode": [
+   "2015",
+   "2022"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89glise+Notre-Dame-de-Lorette"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

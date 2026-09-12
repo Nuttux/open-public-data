@@ -1,0 +1,101 @@
+{
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "eglise-du-saint-esprit",
+ "name": "Église du Saint-Esprit",
+ "kind_fr": "Église",
+ "kind_en": "Église",
+ "famille": "culture",
+ "arrondissement": 12,
+ "lat": 48.838211,
+ "lon": 2.397626,
+ "photo": "/img/lieux/eglise-du-saint-esprit.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Dr Dobeaucoup",
+  "url": "https://commons.wikimedia.org/wiki/File:%C3%89glise_du_Saint_Esprit_Paris_int%C3%A9rieur_avec_b%C3%A9ton_brut.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 622,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 866126.0,
+  "invest_annees": [
+   "2019",
+   "2021"
+  ],
+  "lecture_mode": "titre nommant le lieu (5 trouvés)",
+  "lecture_mode_en": "title naming the place (5 found)",
+  "n_lus": 5,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": null,
+ "invest": [
+  {
+   "annee": 2019,
+   "montant_eur": 550808.0,
+   "nom_projet": "Edifices cultuels Eglise du Saint-Esprit - Rénovation des chaufferies et travaux de maçonn",
+   "preuve": "Le libellé de l'opération nomme le lieu verbatim : « Edifices cultuels Eglise du Saint-Esprit - Rénovation des chaufferies et travaux de maçonn[erie divers] » (signal « nom » ; le candidat tronque le libellé à 90 caractères, la fin est lue dans la source citée ci-dessous). La ligne source (CA 2019, investissements localisés, id 2019_12_il_000, https://cdn.paris.fr/paris/2020/07/24/a553a4550362175f3d609b65a5998072.pdf) est rattachée à l'arrondissement 12, celui de l'église (1, rue Cannebière / 186, avenue Daumesnil). Antécédent distinct, cité comme contexte et non comme la même opération : le Conseil de Paris a déjà financé des travaux thermiques sur ce bâtiment — « travaux de rénovation des installations thermiques de l'église du Saint-Esprit, 1, rue Cannebière (12e) » (octobre 1996).",
+   "id": null
+  },
+  {
+   "annee": 2021,
+   "montant_eur": 315318.0,
+   "nom_projet": "tisanerie Edifices cultuels Eglise du Saint-Esprit - Restauration des couvertures et mise ",
+   "preuve": "Le libellé de l'opération nomme le lieu : « […] Edifices cultuels Eglise du Saint-Esprit - Restauration des couvertures et mise en conformité de l'ascenseur » (signal « nom »). La ligne source (CA 2021, investissements localisés, id 2021_12_il_001, https://cdn.paris.fr/paris/2022/06/28/0d712de76bf95015e948204164b17823.pdf) est rattachée à l'arrondissement 12, celui de l'église. Réserve : le préfixe « tisanerie » du libellé candidat n'appartient pas à l'opération — le même export laisse des fragments de catégorie en tête d'autres lignes (« premier degré EE 32, rue Buffault », « Etablissements de petite HG 8, rue des Prouvaires ») — d'où une confiance moyenne.",
+   "id": null
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "decp-2026T02790",
+   "objet": "Démontage, restauration et réimplantation de l'orgue de tribune, classé au titre des monuments historiques, de l'église Saint-Nicaise de Rouen à l'église du Saint-Esprit à Paris 12ème (relance de la c",
+   "objet_clair": null,
+   "fournisseur": null,
+   "montant_max": 1035524.0,
+   "date_notification": "2026-03-12",
+   "preuve": "L'objet du marché désigne le lieu comme destination des travaux : « Démontage, restauration et réimplantation de l'orgue de tribune […] de l'église Saint-Nicaise de Rouen à l'église du Saint-Esprit à Paris 12ème ». Confirmé par la délibération 2023 DAC 341 (mars 2023) : « Cession à titre gratuit de l'orgue de tribune de l'église Saint-Nicaise de Rouen en vue de son implantation dans l'église du Saint-Esprit (12e) ». Le lieu d'exécution DECP (« Paris ») ne prouve rien à lui seul : le signal est l'objet. Montant = montant maximum du marché, notifié le 12 mars 2026."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89glise+du+Saint-Esprit"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

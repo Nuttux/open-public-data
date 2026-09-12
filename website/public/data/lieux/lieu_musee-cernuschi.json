@@ -1,478 +1,667 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
-  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
-  "slug": "musee-cernuschi",
-  "name": "Musée Cernuschi",
-  "kind_fr": "Musée",
-  "kind_en": "Musée",
-  "famille": "culture",
-  "arrondissement": 8,
-  "lat": 48.87964,
-  "lon": 2.31246,
-  "photo": "/img/lieux/musee-cernuschi.jpg",
-  "photo_credit": {
-    "licence": "CC BY-SA 4.0",
-    "auteur": "Vlaemynck Célia",
-    "url": "https://commons.wikimedia.org/wiki/File:Int%C3%A9rieur_du_mus%C3%A9e_Cernuschi.jpg",
-    "source": "Wikimedia Commons"
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "musee-cernuschi",
+ "name": "Musée Cernuschi",
+ "kind_fr": "Musée",
+ "kind_en": "Musée",
+ "famille": "culture",
+ "arrondissement": 8,
+ "lat": 48.87964,
+ "lon": 2.31246,
+ "photo": "/img/lieux/musee-cernuschi.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Vlaemynck Célia",
+  "url": "https://commons.wikimedia.org/wiki/File:Int%C3%A9rieur_du_mus%C3%A9e_Cernuschi.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "Le musée Cernuschi est un musée de la ville de Paris consacré aux arts asiatiques, et plus spécifiquement à ceux de l'Extrême-Orient : Chine, Japon, Corée et Vietnam. C'est le deuxième musée consacré aux arts asiatiques en France et le cinquième consacré à l’art chinois en Europe.",
+  "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_Cernuschi",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Musée Cernuschi is a City of Paris museum devoted to Asian arts, and more specifically to those of the Far East: China, Japan, Korea, and Vietnam. It is the second museum devoted to Asian arts in France and the fifth devoted to Chinese art in Europe."
+ },
+ "stats": {
+  "n_delibs": 120,
+  "delibs_span": [
+   1995,
+   2011
+  ],
+  "n_bmo_brut": 408,
+  "n_bmo_verifies": 18,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (35 trouvés)",
+  "lecture_mode_en": "title naming the place (35 found)",
+  "n_lus": 34,
+  "n_lieu": 34
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Entre 1995 et 2011, le Conseil de Paris délibère à de nombreuses reprises sur le musée Cernuschi, musée des arts de l'Asie de la Ville, situé 7 avenue Vélasquez (8e). La plupart de ces délibérations autorisent le Maire à enrichir les collections : acquisitions d'œuvres asiatiques, acceptation de legs et de donations, conventions de mécénat avec la société Daum et conventions d'objectifs avec la Société des amis du musée. À partir de 1999, le Conseil approuve le principe d'un réaménagement du bâtiment et attribue le marché de maîtrise d'œuvre, puis approuve le principe et les modalités des marchés pour déménager les collections en réserves provisoires (2001) puis les rapatrier (2004). Ce chantier se prolonge en avenants qui relèvent le montant des marchés de travaux, et conduit le Conseil, en 2008, à approuver le principe d'indemniser des entreprises pour les préjudices subis pendant les travaux. Lors du débat de 2001 sur la convention d'objectifs avec la Société des amis, l'élue Soizik MOREAU décrit un bâtiment plus que centenaire ne répondant plus aux exigences de conservation et appelle à une rénovation d'envergure.",
+ "moments": [
+  {
+   "id": "83817",
+   "seance": "SEPTEMBRE 1999",
+   "fait": "Le Conseil approuve le principe du réaménagement du musée et attribue la maîtrise d'œuvre.",
+   "pourquoi": "le grand chantier de rénovation est lancé",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83817",
+   "fait_en": "The Council approved the principle of refurbishing the museum and awarded the project management contract.",
+   "pourquoi_en": "The major renovation project is launched"
+  },
+  {
+   "id": "30642",
+   "seance": "NOVEMBRE 2001",
+   "fait": "Le Conseil autorise l'acquisition d'un grand chameau Tang en terre cuite pour 1 200 000 F.",
+   "pourquoi": "l'une des acquisitions les plus coûteuses de la période",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30642",
+   "fait_en": "The Council authorized the acquisition of a large Tang-dynasty terracotta camel for 1,200,000 francs.",
+   "pourquoi_en": "One of the most expensive acquisitions of the period"
+  },
+  {
+   "id": "13428",
+   "seance": "JANVIER 2001",
+   "fait": "En séance, l'élue Soizik MOREAU juge le bâtiment plus que centenaire inadapté et appelle à une rénovation d'envergure.",
+   "pourquoi": "un élu alerte sur l'état du bâtiment",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13428",
+   "fait_en": "In session, councillor Soizik MOREAU judged the more-than-century-old building unfit for purpose and called for a major renovation.",
+   "pourquoi_en": "A councillor raises the alarm over the building's condition"
+  },
+  {
+   "id": "30277",
+   "seance": "NOVEMBRE 2001",
+   "fait": "Le Conseil approuve le principe et les modalités d'un marché pour déménager l'ensemble des collections vers des réserves provisoires.",
+   "pourquoi": "les collections quittent le musée pour le chantier",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30277",
+   "fait_en": "The Council approved the principle and terms of a contract to move the entire collection to temporary storage.",
+   "pourquoi_en": "The collections leave the museum for the works"
+  },
+  {
+   "id": "63222",
+   "seance": "SEPTEMBRE 2005",
+   "fait": "La Société des Amis du musée donne un récipient en bronze Zun estimé à 1 500 000 euros.",
+   "pourquoi": "les Amis offrent un bronze majeur",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63222",
+   "fait_en": "The Société des Amis du musée donated a bronze Zun vessel valued at 1,500,000 euros.",
+   "pourquoi_en": "The Friends association gives a major bronze"
+  },
+  {
+   "id": "80727",
+   "seance": "MAI 2005",
+   "fait": "Le Conseil autorise cinq avenants n°2 relevant le montant des marchés de travaux de réaménagement.",
+   "pourquoi": "les marchés de travaux augmentent par avenants successifs",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80727",
+   "fait_en": "The Council authorized five amendment no. 2's raising the amount of the refurbishment works contracts.",
+   "pourquoi_en": "The works contracts increase through successive amendments"
+  },
+  {
+   "id": "91337",
+   "seance": "JUILLET 2008",
+   "fait": "Le Conseil approuve le principe d'indemniser l'Entreprise CHEVALIER pour des préjudices subis pendant le chantier.",
+   "pourquoi": "le chantier laisse des litiges à indemniser",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91337",
+   "fait_en": "The Council approved the principle of compensating the company CHEVALIER for damages sustained during the works.",
+   "pourquoi_en": "The works leave disputes to be settled"
+  },
+  {
+   "id": "59515",
+   "seance": "MAI 2009",
+   "fait": "Le Conseil subventionne un colloque sur la peinture chinoise organisé en partenariat avec le musée.",
+   "pourquoi": "le musée porte une programmation scientifique",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59515",
+   "fait_en": "The Council granted funding for a symposium on Chinese painting organized in partnership with the museum.",
+   "pourquoi_en": "The museum carries out scholarly programming"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "OCTOBRE 2009",
+   "montant": "100.000 euros",
+   "objet": "acquisition d'un pupitre en laque pour les collections",
+   "citation": "M. le Maire de Paris est autorisé à acquérir un pupitre en laque en faveur du musée Cernuschi pour un montant de 100.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93293"
+  },
+  {
+   "seance": "MAI 2008",
+   "montant": "110.000 euros",
+   "objet": "acquisition d'une tête de bodhisattva",
+   "citation": "M. le Maire de Paris est autorisé à acquérir une tête de bodhisattva en faveur du musée Cernuschi pour un montant de 110.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69956"
+  },
+  {
+   "seance": "MAI 2007",
+   "montant": "91.000 euros",
+   "objet": "acquisition d'un ensemble de peintures chinoises",
+   "citation": "M. le Maire de Paris est autorisé à acquérir un ensemble de peintures chinoises pour le Musée Cernuschi, pour un montant total de 91.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80347"
+  },
+  {
+   "seance": "MARS 2011",
+   "montant": "4.200 euros",
+   "objet": "recettes estimées des frais de mise à disposition du personnel d'accueil et de sécurité",
+   "citation": "Les recettes correspondant aux frais de mise à disposition du personnel d?accueil et de sécurité (article 3.4 de la convention) estimées à 4.200 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96985"
+  },
+  {
+   "seance": "JUIN 2006",
+   "montant": "31.800 euros",
+   "objet": "valeur d'immobilisation des œuvres léguées par M. Pierre LEDOUX",
+   "citation": "La valeur d?immobilisation des ?uvres léguées, estimée à 31.800 euros sera inscrite au chapitre 10, compte 1025, sous-fonction 01, du budget d?investissement de la Ville de Paris de l?exercice 2006",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44521"
+  },
+  {
+   "seance": "AVRIL 2005",
+   "montant": "100.000 euros",
+   "objet": "acquisition d'un fragment de soubassement de cercueil en marbre blanc",
+   "citation": "Monsieur le Maire de Paris est autorisé à acquérir un fragment de soubassement de cercueil en marbre blanc pour le Musée Cernuschi, pour une somme de 100.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43757"
+  },
+  {
+   "seance": "MARS 2002",
+   "montant": "129.580 euros",
+   "objet": "acquisition d'une statuette bouddhique en bronze doré Jiuku Guanyin (dynastie Tang)",
+   "citation": "M. le Maire de Paris est autorisé à acquérir une statuette bouddhique en bronze doré de 25cm représentant Jiuku Guanyin datant du VIIIe siècle (dynastie des Tang 618-907) pour la somme de 129.580 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38984"
+  },
+  {
+   "seance": "NOVEMBRE 2001",
+   "montant": "1.200.000 F",
+   "objet": "acquisition d'un grand chameau en terre cuite (dynastie des Tang)",
+   "citation": "M. le Maire de Paris est autorisé à acquérir un grand chameau en terre cuite datant de la première moitié du 8e siècle - dynastie des Tangs, pour la somme de 1.200.000 F.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30642"
+  },
+  {
+   "seance": "DECEMBRE 2008",
+   "montant": "30.000 euros (7.500 euros par an)",
+   "objet": "recette de mécénat (société Daum) inscrite au budget de fonctionnement 2010-2013",
+   "citation": "Une recette de 30.000 euros (7.500 euros par an), sera inscrite au budget de fonctionnement de la Ville de Paris des exercices 2010, 2011, 2012 et 2013, au chapitre 70, nature 7088, rubrique 322.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78187"
+  },
+  {
+   "seance": "OCTOBRE 2007",
+   "montant": "3.500 euros",
+   "objet": "recettes estimées des frais de mise à disposition du personnel d'accueil et de sécurité",
+   "citation": "Les recettes correspondant aux frais de mise à disposition du personnel d?accueil et de sécurité (article 3-4 de la convention), estimées à 3.500 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53150"
+  },
+  {
+   "seance": "SEPTEMBRE 2000",
+   "montant": "570.000 F",
+   "objet": "acquisition d'une paire d'ornements (galerie Oriental Bronzes)",
+   "citation": "M. le Maire de Paris est autorisé à acquérir pour le musée Cernuschi une paire d'ornements proposée par la galerie Oriental Bronzes pour un montant de 570.000 F.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28107"
+  },
+  {
+   "seance": "MARS 2003",
+   "montant": "352.000 euros",
+   "objet": "acquisition d'une tête de bodhisattva en grès et d'un vase de type hu (total; 220.000 + 132.000 euros)",
+   "citation": "pour un montant s'élevant respectivement à 220.000 euros et 132.000 euros soit au total une somme de 352.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78954"
+  },
+  {
+   "seance": "SEPTEMBRE 1998",
+   "montant": "110.000 F",
+   "objet": "participation de la Ville à l'acquisition du bas-relief 'Musicien céleste'",
+   "citation": "M. le Maire de Paris est autorisé à participer à l'acquisition pour le musée Cernuschi, à concurrence de la somme de 110.000 F, d'un bas-relief en pierre représentant un \"Musicien céleste\"",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92607"
+  },
+  {
+   "seance": "SEPTEMBRE 1998",
+   "montant": "720.000 F",
+   "objet": "prix de vente total du bas-relief 'Musicien céleste' (M. Michel Beurdeley)",
+   "citation": "d'un bas-relief en pierre représentant un \"Musicien céleste\" vendu par M. Michel Beurdeley pour le prix de 720.000 F.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92607"
+  },
+  {
+   "seance": "OCTOBRE 1999",
+   "montant": "320.000 F",
+   "objet": "acquisition de 2 ornements de char (époque des Royaumes combattants)",
+   "citation": "2 ornements de char de l'époque des Royaumes combattants (453-222 avant J.C.), proposés pour la somme de 320.000 F T.T.C. par la galerie Christian Deydier Oriental Bronzes.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42442"
+  },
+  {
+   "seance": "AVRIL 2006",
+   "montant": "80.000 euros (20.000 euros par an)",
+   "objet": "recette de mécénat (société Daum) au budget de fonctionnement 2006-2009",
+   "citation": "Une recette de 80.000 euros (20.000 euros par an), sera inscrite au budget de fonctionnement de la Ville de Paris des exercices 2006, 2007, 2008 et 2009, au chapitre 70, nature 7088, rubrique 322.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38689"
+  },
+  {
+   "seance": "AVRIL 2006",
+   "montant": "40.000 euros (10.000 euros par an)",
+   "objet": "recette de mécénat (société Daum) au budget d'investissement 2006-2009",
+   "citation": "Une recette de 40.000 euros (10.000 euros par an), sera inscrite sur la nature 10251, rubrique 01, mission 90000-99-010 du budget d?investissement de la Ville de Paris des exercices 2006, 2007, 2008 et 2009.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38689"
+  },
+  {
+   "seance": "SEPTEMBRE 2005",
+   "montant": "1.500.000,00 euros",
+   "objet": "récipient chinois en bronze de type Zun donné par les Amis du Musée Cernuschi",
+   "citation": "Amis du Musée Cernuschi Un récipient chinois en bronze de type Zun, datant de la période de Anyang (vers 1330 - vers 1050 Avant JC), dynastie des Shang (vers 1550-vers 1050 avant JC) => 1.500.000,00 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63222"
+  },
+  {
+   "seance": "SEPTEMBRE 2005",
+   "montant": "1.536.130 euros",
+   "objet": "dépense totale de la délibération, tous dons confondus (Galliera, Cernuschi, Zadkine)",
+   "citation": "La dépense estimée à 1.536.130 euros, sera inscrite sur le chapitre 21, nature 2162, du budget d?investissement de la Ville de Paris.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63222"
+  },
+  {
+   "seance": "MAI 2009",
+   "montant": "6.000 euros",
+   "objet": "subvention à l'Institut National du Patrimoine pour un colloque en partenariat avec le musée",
+   "citation": "Une subvention de 6.000 euros est attribuée à l?Institut National du Patrimoine ayant son siège social 2, rue Vivienne (2e)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59515"
+  },
+  {
+   "seance": "NOVEMBRE 1995",
+   "montant": "400.000 F",
+   "objet": "participation de la Ville à l'acquisition d'une boucle de ceinture en or antique",
+   "citation": "M. le Maire de Paris est autorisé à participer, à concurrence de la somme de 400.000 F, à l'acquisition, pour le musée Cernuschi, d'une boucle de ceinture en or martelé et incrusté",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=1473"
+  },
+  {
+   "seance": "NOVEMBRE 1995",
+   "montant": "580.000 F",
+   "objet": "prix de vente de la boucle de ceinture (galerie Gisèle CROES, Bruxelles)",
+   "citation": "vendue par la galerie Gisèle CROES à Bruxelles au prix de 580.000 F.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=1473"
+  },
+  {
+   "seance": "JANVIER 2001",
+   "montant": "30 millions",
+   "objet": "coût des travaux de rénovation évoqué en séance par Mme Soizik MOREAU (opposition)",
+   "citation": "Le coût de ces travaux, estimé à 30 millions, a été repoussé par la majorité sortante d'année en année.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13428"
+  },
+  {
+   "seance": "NOVEMBRE 1997",
+   "montant": "380.000 FF",
+   "objet": "acquisition pour Cernuschi de 3 plaques en pierre gravée d'une tombe chinoise (galerie Beurdeley)",
+   "citation": "3 grandes plaques en pierre gravée provenant d'une tombe chinoise du début du VIIIe siècle, appartenant à la galerie Beurdeley et Cie à Paris pour le prix de 380.000 FF.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49346"
+  },
+  {
+   "seance": "NOVEMBRE 1997",
+   "montant": "680.000 F",
+   "objet": "dépense totale pour les deux œuvres (maison de Victor Hugo et musée Cernuschi)",
+   "citation": "La dépense totale correspondante, soit 680.000 F, sera imputée au chapitre 903",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49346"
+  },
+  {
+   "seance": "DECEMBRE 2003",
+   "montant": "4.650 euros",
+   "objet": "valeur d'immobilisation du bien légué par M. Albert DOLLINGER (3 000 francs suisses)",
+   "citation": "La valeur d'immobilisation du bien légué, estimée à 3.000 francs suisses soit 4.650 euros sera inscrite au chapitre 10, compte 1025, sous-fonction 01, du budget d'investissement de la Ville de Paris.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69094"
+  },
+  {
+   "seance": "JUILLET 2004",
+   "montant": "183.753,60 euros TTC",
+   "objet": "avenant n°1 au marché de travaux n° 02/26-533 (H. Chevalier), valeur mai 2004",
+   "citation": "un avenant n°1 au marché de travaux n° 02/26-533, signé par l'entreprise H. Chevalier pour un montant de 171.172,42 euros TTC valeur août 2002, soit 183.753,60 euros TTC en valeur mai 2004.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=60128"
+  },
+  {
+   "seance": "JUILLET 2004",
+   "montant": "29.654,54 euros TTC",
+   "objet": "avenant n°1 au marché n° 03/26-180 (Prodesign), valeur mai 2004",
+   "citation": "un avenant n°1 au marché de travaux n° 03/26-180, signé par l'entreprise Prodesign pour un montant de 27.789,19 euros TTC valeur décembre 2002, soit 29.654,54 euros TTC en valeur mai 2004 ;",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=60128"
+  },
+  {
+   "seance": "JUILLET 2004",
+   "montant": "34.369,05 euros TTC",
+   "objet": "avenant n°1 au marché n° 03/26-204 (H. Dumanois), valeur mai 2004",
+   "citation": "un avenant n°1 au marché de travaux n° 03/26-204, signé par l'entreprise H. Dumanois pour un montant de 32.438,93 euros TTC valeur décembre 2002, soit 34.369,05 euros TTC en valeur mai 2004 ;",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=60128"
+  },
+  {
+   "seance": "JUILLET 2004",
+   "montant": "61.639,67 euros TTC",
+   "objet": "avenant n°1 au marché n° 03/26-080 (Meurant), valeur mai 2004",
+   "citation": "un avenant n°1 au marché de travaux n° 03/26-080, signé par l'entreprise Meurant pour un montant de 57.419,35 euros TTC valeur août 2002, soit 61.639,67 euros TTC en valeur mai 2004 ;",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=60128"
+  },
+  {
+   "seance": "JUILLET 2004",
+   "montant": "45.577,28 euros TTC",
+   "objet": "avenant n°1 au marché n° 03/26-172 (Cogeef Industrie), valeur mai 2004",
+   "citation": "un avenant n°1 au marché de travaux n° 03/26-172, signé par l'entreprise Cogeef Industrie pour un montant de 43.017,73 euros TTC valeur décembre 2002, soit 45.577,28 euros TTC en valeur mai 2004 ;",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=60128"
+  },
+  {
+   "seance": "MAI 2005",
+   "montant": "98.029,66 euros TTC",
+   "objet": "avenant n°2 au marché n° 02/26-533 (H. Chevalier), valeur avril 2005",
+   "citation": "un avenant n°2 au marché de travaux n° 02/26-533, signé par l?entreprise H. Chevalier pour un montant de 88.968,07 euros TTC valeur août 2002, soit 98.029,66 euros TTC en valeur avril 2005 ;",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80727"
+  },
+  {
+   "seance": "MAI 2005",
+   "montant": "72.368,16 euros TTC",
+   "objet": "avenant n°2 au marché n° 03/26-180 (Prodesign), valeur avril 2005",
+   "citation": "un avenant n°2 au marché de travaux n° 03/26-180, signé par l?entreprise Prodesign pour un montant de 66.689,56 euros TTC valeur décembre 2002, soit 72.368,16 euros TTC en valeur avril 2005 ;",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80727"
+  },
+  {
+   "seance": "MAI 2005",
+   "montant": "40.674,06 euros TTC",
+   "objet": "avenant n°2 au marché n° 03/26-204 (H. Dumanois), valeur avril 2005",
+   "citation": "un avenant n°2 au marché de travaux n° 03/26-204, signé par l?entreprise H. Dumanois pour un montant de 35.187,01 euros TTC valeur décembre 2002, soit 40.674,06 euros TTC en valeur avril 2005 ;",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80727"
+  },
+  {
+   "seance": "MAI 2005",
+   "montant": "39.548,16 euros TTC",
+   "objet": "avenant n°2 au marché n° 03/26-172 (Cogeef Industrie), valeur avril 2005",
+   "citation": "un avenant n°2 au marché de travaux n° 03/26-172, signé par l?entreprise Cogeef Industrie pour un montant de 34.495,03 euros TTC valeur décembre 2002, soit 39.548,16 euros TTC en valeur avril 2005 ;",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80727"
+  },
+  {
+   "seance": "MAI 2005",
+   "montant": "28.591,16 euros TTC",
+   "objet": "avenant n°2 au marché n° 03/26-141 (SPR Batiment), valeur avril 2005",
+   "citation": "un avenant n°2 au marché de travaux n° 03/26-141, signé par l?entreprise SPR Batiment pour un montant de 26.482,19 euros TTC valeur septembre 2002, soit 28.591,16 euros TTC en valeur avril 2005 ;",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80727"
+  }
+ ],
+ "bmo_extraits": [
+  {
+   "date": "1899-02-17",
+   "extrait": "42 c. pour faire face aux dépenses occasionnées par l'inauguration du musée Cernuschi",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6492556c/f5.item",
+   "extrait_en": "42 c. to cover the expenses incurred by the inauguration of the Musée Cernuschi"
+  },
+  {
+   "date": "1905-08-08",
+   "extrait": "service du Matériel d'objets mobiliers à fournir par l'école Boulle pour le musée Cernuschi (M. Chautard, rapporteur … Le Conseil, Vu deux états de meubles et objets mobiliers à fournir par l'école Boulle et à prendre en charge par le service du Matériel pour le musée Cernuschi",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6334659p/f6.item",
+   "extrait_en": "the Furnishings Department for movable objects to be supplied by the École Boulle for the Musée Cernuschi (Mr Chautard, rapporteur … The Council, having examined two inventories of furniture and movable objects to be supplied by the École Boulle and taken in charge by the Furnishings Department for the Musée Cernuschi"
+  },
+  {
+   "date": "1906-12-31",
+   "extrait": "45. — Musées d'art de la ville de Paris … 2° Pour l'avancement de classe (1,000 fr.) du conservateur du musée Cernuschi  … si Cernuschi prépare un catalogue, lequel prouvera que ce musée possède des trésors de l'art de l'Extrême-Orient uniques au monde",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6453279j/f5.item",
+   "extrait_en": "45. — Art museums of the city of Paris … 2° For the grade advancement (1,000 francs) of the curator of the Musée Cernuschi … if Cernuschi is preparing a catalogue, which will prove that this museum possesses treasures of Far Eastern art unique in the world"
+  },
+  {
+   "date": "1926-04-11",
+   "extrait": "1506. — Organisation d'une exposition de pierres dures chinoises au musée Cernuschi (M* d'Andigné, rapporteur … Sur le rapport présenté par M. d'Andigné, au nom de la 4e Commission, Délibère : Article premier. — Le musée Cernuschi organisera, en 1926, une exposition de pierres ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6290514x/f18.item",
+   "extrait_en": "1506. — Organizing an exhibition of Chinese hardstones at the Musée Cernuschi (Mr d'Andigné, rapporteur … On the report presented by Mr d'Andigné, on behalf of the 4th Commission, Resolves: Article one. — The Musée Cernuschi will organize, in 1926, an exhibition of ha"
+  },
+  {
+   "date": "1960-07-21",
+   "extrait": "A la demande du conservateur du musée Cernuschi , il a été procédé à l'acquisition d'une grande statuette funéraire dont l'origine remonte au se siècle de notre ère, œuvre 'exceptionnelle par ses dimensions, son style et son état de conservation … Le musée Galliera a continué à",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9713224t/f4.item",
+   "extrait_en": "At the request of the curator of the Musée Cernuschi, the acquisition was made of a large funerary statuette dating back to the [xx]th century of our era, a work exceptional for its dimensions, its style, and its state of preservation … The Musée Galliera continued to"
+  },
+  {
+   "date": "1976-10-23",
+   "extrait": "Musée Bourdelle, 16, rue Antoine-Bourdelle, à Paris (15*) (tél. 548-67-27 …  Musée Cernuschi ( Musée d’art chinois de la Ville de Paris), 7, avenue Velasquez, à Paris (8*) (tél. 522-23-31) (entrée par le 111, boulevard Malesherbes …  Musée d’art moderne : Pomodoro, jusqu’au 3",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32113154/f6.item",
+   "extrait_en": "Musée Bourdelle, 16 rue Antoine-Bourdelle, Paris (15th) (tel. 548-67-27) … Musée Cernuschi (Musée d'art chinois de la Ville de Paris), 7 avenue Velasquez, Paris (8th) (tel. 522-23-31) (entrance at 111 boulevard Malesherbes) … Musée d'Art moderne: Pomodoro, until the 3"
+  }
+ ],
+ "bmo_recit": "Le musée Cernuschi apparaît dans le Bulletin municipal dès février 1899, à propos des dépenses occasionnées par son inauguration. Les premières années sont celles de l'installation : en 1905, le Conseil examine les meubles et objets mobiliers que l'école Boulle doit fournir au musée, et fin 1906, à l'occasion d'un avancement de classe (1.000 fr.) pour son conservateur, il est affirmé en séance qu'un catalogue en préparation prouvera que le musée possède des trésors de l'art de l'Extrême-Orient uniques au monde. En 1926, le Conseil décide que le musée organisera cette année-là une exposition de pierres dures chinoises. En 1960, l'archive rend compte de l'acquisition, à la demande du conservateur, d'une grande statuette funéraire ancienne, présentée comme exceptionnelle par ses dimensions, son style et son état de conservation. En 1976 encore, le Bulletin recense l'établissement comme « Musée d'art chinois de la Ville de Paris », au 7, avenue Velasquez (8e).",
+ "delibs_par_annee": {
+  "1998": [
+   {
+    "reference": "1998 DAC 141",
+    "titre": "Acquisition d'une oeuvre d'art pour le musée Cernuschi. - Autorisation à M. le Maire de Paris de signer avec la Société des amis du musée Cernuschi une convention de mécénat. Mme Hélène MACE de LEPINAY, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "SEPTEMBRE 1998",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92607"
+   }
+  ],
+  "1999": [
+   {
+    "reference": "1999 DPA 52",
+    "titre": "Approbation du principe de la réalisation des travaux de réaménagement du musée Cernuschi (8e). - Autorisation à M. le Maire de Paris de signer le marché de maîtrise d'oeuvre et de déposer les demandes de permis de démolir et de permis de construire correspondantes. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83817"
+   }
+  ],
+  "2001": [
+   {
+    "reference": "2001 DAC 3",
+    "titre": "43 - 2001, DAC 3 - Autorisation à M. le Maire de Paris de signer avec l'association \"Société des amis du musée Cernuschi\" (8e) une convention d'objectifs",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JANVIER 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13428"
+   },
+   {
+    "reference": "2001 DAC 3",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Société des amis du musée Cernuschi\" (8e) une convention d'objectifs. M. Claude ROLAND, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JANVIER 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84973"
+   },
+   {
+    "reference": "2001 DAC 423",
+    "titre": "Approbation des modalités d'attribution d'un marché sur appel d'offres pour le déménagement et l'installation dans des réserves provisoires de l'ensemble des collections du musée Cernuschi, musée des Arts de l'Asie de la Ville de Paris, 7, avenue Vélasquez (8e). - Autorisation à M. le Maire de Paris de signer le marché correspondant. Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "NOVEMBRE 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30277"
+   }
+  ],
+  "2002": [
+   {
+    "reference": "2002 DAC 118",
+    "titre": "Approbation du principe et des modalités d'attribution d'un marché sur appel d'offres pour la restauration de la statue de buddha Amida appartenant aux collections du Musée Cernuschi - Musée des Arts de l'Asie de la Ville de Paris (8e) - Autorisation à M. le Maire de Paris de signer le marché correspondant. Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55743"
+   },
+   {
+    "reference": "2002 DAC 3",
+    "titre": "Approbation du principe de réalisation d'une prestation de surveillance et de protection du chantier pendant les travaux de rénovation du musée Cernuschi (musée des Arts de l'Asie de la Ville de Paris) (8e). - Approbation des modalités d'attribution de marché sur appel d'offres correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38974"
+   }
+  ],
+  "2004": [
+   {
+    "reference": "2004 DAC 190",
+    "titre": "Approbation du principe et des modalités d'attribution d'un marché conclu après appel d'offres ouvert pour la fourniture, la livraison et l'installation d'un mobilier destiné aux réserves du musée Cernuschi, 7, avenue Vélasquez (8e). - Autorisation à M. le Maire de Paris de signer le marché le marché correspondant. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45818"
+   },
+   {
+    "reference": "2004 DAC 301",
+    "titre": "Approbation du principe et des modalités d'attribution d'un marché de déménagement conclu après appel d'offres ouvert pour le rapatriement des collections d'œuvres d'art appartenant au musée Cernuschi, 7, avenue Vélasquez (8e). - Autorisation à M. le Maire de Paris de signer le marché correspondant. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59976"
+   },
+   {
+    "reference": "2004 DPA 206",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire six avenants n°1 aux marchés de travaux signé avec les entreprises H. Chevalier, Prodesign, Dumanois, Meurant, Cogeef Industrie et SPR Bâtiment relatifs au réaménagement du musée Cernuschi, 7 avenue Vélasquez (8ème). Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=60128"
+   },
+   {
+    "reference": "2004 DPA 78",
+    "titre": "Approbation des modalités de passation des marchés de travaux sur appel d'offres ou passation de marchés négociés en vue de la réalisation des travaux de réaménagement du musée Cernuschi, 7 avenue Vélasquez (8e). - Autorisation à M. le Maire de Paris de signer les marchés de travaux correspondants. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34022"
+   }
+  ],
+  "2005": [
+   {
+    "reference": "2005 DPA 99",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire cinq avenants n° 2 aux marchés de travaux n° 02/26-533, 03/26-180, 03/26-204, 03/26-172, 03/26-141 signés avec les entreprises H. Chevalier, Prodesign, Dumanois, Cogeef Industrie et SPR Bâtiment et un avenant n° 1 au marché de travaux n° 04/26-234 signé avec l’entreprise Goppion relatifs au réaménagement du musée Cernuschi 7,avenue Vélasquez (8e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80727"
+   }
+  ],
+  "2006": [
+   {
+    "reference": "2006 DAC 95",
+    "titre": "Autorisation à M. le Maire de Paris, de signer une convention de mécénat avec la société Daum en faveur du musée Cernuschi, situé 7 avenue Vélasquez (8e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "AVRIL 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38689"
+   }
+  ],
+  "2007": [
+   {
+    "reference": "2007 DAC 364",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention d’objectifs entre la Ville de Paris et l’association “Société des amis du musée Cernuschi”. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "OCTOBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53150"
+   }
+  ],
+  "2008": [
+   {
+    "reference": "2008 DAC 485",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention de mécénat avec la société Daum en faveur du musée Cernuschi, situé 7 avenue Velasquez (8e). Mme Colombe BROSSEL, rapporteure.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "DECEMBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78187"
+   },
+   {
+    "reference": "2008 DPA 150",
+    "titre": "Approbation du principe d’indemnisation de l’Entreprise CHEVALIER, en raison des préjudices subis lors des travaux de réaménagement réalisés au Musée Cernuschi, 7, avenue Vélasquez (8ème). Mme Colombe BROSSEL, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91337"
+   },
+   {
+    "reference": "2008 DPA 151",
+    "titre": "Approbation du principe d’indemnisation de la Société DUMANOIS, en raison des préjudices subis lors des travaux réalisés au Musée Cernuschi, 7, avenue Vélasquez (8ème). Mme Colombe BROSSEL, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91585"
+   }
+  ],
+  "2009": [
+   {
+    "reference": "2009 DAC 146",
+    "titre": "Subvention à l’Institut National du Patrimoine (2e) pour l’organisation du colloque “Peinture chinoise : la restauration et la recherche en Europe et en Chine” les 19 et 20 mars 2009 en partenariat avec le Musée Cernuschi. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
+    "seance": "MAI 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59515"
+   }
+  ],
+  "2011": [
+   {
+    "reference": "2011 DAC 18",
+    "titre": "Signature d’une convention d’objectifs liant la Ville de Paris à l’association Société des Amis du Musée Cernuschi pour l’attribution d’une subvention. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MARS 2011",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96985"
+   }
+  ]
+ },
+ "invest": [],
+ "marches": [],
+ "mandate": {
+  "par_annee": {
+   "2009": 90780.48
+  },
+  "total_eur": 90780.48,
+  "operations": [
+   {
+    "ap_cle": "B100/0500134",
+    "ap_texte": "MUSEE CERNUSCHI",
+    "mandate_par_annee": {
+     "2009": 90780.48
+    },
+    "total_mandate": 90780.48,
+    "preuve": "Libellé de l'opération « MUSEE CERNUSCHI » (direction DAC, mission AFFAIRES CULTURELLES) désigne nommément ce lieu ; identité et adresse confirmées par les délibérations du Conseil de Paris (ex. 2008 DPA 150/151 : « travaux de réaménagement réalisés au Musée Cernuschi, 7, avenue Vélasquez (8ème) », période cohérente avec le mandaté 2009).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0500134"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2009"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Cernuschi"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Mus%C3%A9e+Cernuschi%22%29"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
   },
   "wiki": {
-    "extract": "Le musée Cernuschi est un musée de la ville de Paris consacré aux arts asiatiques, et plus spécifiquement à ceux de l'Extrême-Orient : Chine, Japon, Corée et Vietnam. C'est le deuxième musée consacré aux arts asiatiques en France et le cinquième consacré à l’art chinois en Europe.",
-    "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_Cernuschi",
-    "source": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    },
-    "extract_en": "The Musée Cernuschi is a City of Paris museum devoted to Asian arts, and more specifically to those of the Far East: China, Japan, Korea, and Vietnam. It is the second museum devoted to Asian arts in France and the fifth devoted to Chinese art in Europe."
-  },
-  "stats": {
-    "n_delibs": 120,
-    "delibs_span": [
-      1995,
-      2011
-    ],
-    "n_bmo_brut": 408,
-    "n_bmo_verifies": 18,
-    "invest_total_eur": 0,
-    "invest_annees": [],
-    "lecture_mode": "titre nommant le lieu (35 trouvés)",
-    "lecture_mode_en": "title naming the place (35 found)",
-    "n_lus": 34,
-    "n_lieu": 34
-  },
-  "subventions_exploitant": null,
-  "residents": [],
-  "kpi_montant": null,
-  "synthese_fr": "Entre 1995 et 2011, le Conseil de Paris délibère à de nombreuses reprises sur le musée Cernuschi, musée des arts de l'Asie de la Ville, situé 7 avenue Vélasquez (8e). La plupart de ces délibérations autorisent le Maire à enrichir les collections : acquisitions d'œuvres asiatiques, acceptation de legs et de donations, conventions de mécénat avec la société Daum et conventions d'objectifs avec la Société des amis du musée. À partir de 1999, le Conseil approuve le principe d'un réaménagement du bâtiment et attribue le marché de maîtrise d'œuvre, puis approuve le principe et les modalités des marchés pour déménager les collections en réserves provisoires (2001) puis les rapatrier (2004). Ce chantier se prolonge en avenants qui relèvent le montant des marchés de travaux, et conduit le Conseil, en 2008, à approuver le principe d'indemniser des entreprises pour les préjudices subis pendant les travaux. Lors du débat de 2001 sur la convention d'objectifs avec la Société des amis, l'élue Soizik MOREAU décrit un bâtiment plus que centenaire ne répondant plus aux exigences de conservation et appelle à une rénovation d'envergure.",
-  "moments": [
-    {
-      "id": "83817",
-      "seance": "SEPTEMBRE 1999",
-      "fait": "Le Conseil approuve le principe du réaménagement du musée et attribue la maîtrise d'œuvre.",
-      "pourquoi": "le grand chantier de rénovation est lancé",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83817",
-      "fait_en": "The Council approved the principle of refurbishing the museum and awarded the project management contract.",
-      "pourquoi_en": "The major renovation project is launched"
-    },
-    {
-      "id": "30642",
-      "seance": "NOVEMBRE 2001",
-      "fait": "Le Conseil autorise l'acquisition d'un grand chameau Tang en terre cuite pour 1 200 000 F.",
-      "pourquoi": "l'une des acquisitions les plus coûteuses de la période",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30642",
-      "fait_en": "The Council authorized the acquisition of a large Tang-dynasty terracotta camel for 1,200,000 francs.",
-      "pourquoi_en": "One of the most expensive acquisitions of the period"
-    },
-    {
-      "id": "13428",
-      "seance": "JANVIER 2001",
-      "fait": "En séance, l'élue Soizik MOREAU juge le bâtiment plus que centenaire inadapté et appelle à une rénovation d'envergure.",
-      "pourquoi": "un élu alerte sur l'état du bâtiment",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13428",
-      "fait_en": "In session, councillor Soizik MOREAU judged the more-than-century-old building unfit for purpose and called for a major renovation.",
-      "pourquoi_en": "A councillor raises the alarm over the building's condition"
-    },
-    {
-      "id": "30277",
-      "seance": "NOVEMBRE 2001",
-      "fait": "Le Conseil approuve le principe et les modalités d'un marché pour déménager l'ensemble des collections vers des réserves provisoires.",
-      "pourquoi": "les collections quittent le musée pour le chantier",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30277",
-      "fait_en": "The Council approved the principle and terms of a contract to move the entire collection to temporary storage.",
-      "pourquoi_en": "The collections leave the museum for the works"
-    },
-    {
-      "id": "63222",
-      "seance": "SEPTEMBRE 2005",
-      "fait": "La Société des Amis du musée donne un récipient en bronze Zun estimé à 1 500 000 euros.",
-      "pourquoi": "les Amis offrent un bronze majeur",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63222",
-      "fait_en": "The Société des Amis du musée donated a bronze Zun vessel valued at 1,500,000 euros.",
-      "pourquoi_en": "The Friends association gives a major bronze"
-    },
-    {
-      "id": "80727",
-      "seance": "MAI 2005",
-      "fait": "Le Conseil autorise cinq avenants n°2 relevant le montant des marchés de travaux de réaménagement.",
-      "pourquoi": "les marchés de travaux augmentent par avenants successifs",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80727",
-      "fait_en": "The Council authorized five amendment no. 2's raising the amount of the refurbishment works contracts.",
-      "pourquoi_en": "The works contracts increase through successive amendments"
-    },
-    {
-      "id": "91337",
-      "seance": "JUILLET 2008",
-      "fait": "Le Conseil approuve le principe d'indemniser l'Entreprise CHEVALIER pour des préjudices subis pendant le chantier.",
-      "pourquoi": "le chantier laisse des litiges à indemniser",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91337",
-      "fait_en": "The Council approved the principle of compensating the company CHEVALIER for damages sustained during the works.",
-      "pourquoi_en": "The works leave disputes to be settled"
-    },
-    {
-      "id": "59515",
-      "seance": "MAI 2009",
-      "fait": "Le Conseil subventionne un colloque sur la peinture chinoise organisé en partenariat avec le musée.",
-      "pourquoi": "le musée porte une programmation scientifique",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59515",
-      "fait_en": "The Council granted funding for a symposium on Chinese painting organized in partnership with the museum.",
-      "pourquoi_en": "The museum carries out scholarly programming"
-    }
-  ],
-  "montants": [
-    {
-      "seance": "OCTOBRE 2009",
-      "montant": "100.000 euros",
-      "objet": "acquisition d'un pupitre en laque pour les collections",
-      "citation": "M. le Maire de Paris est autorisé à acquérir un pupitre en laque en faveur du musée Cernuschi pour un montant de 100.000 euros.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93293"
-    },
-    {
-      "seance": "MAI 2008",
-      "montant": "110.000 euros",
-      "objet": "acquisition d'une tête de bodhisattva",
-      "citation": "M. le Maire de Paris est autorisé à acquérir une tête de bodhisattva en faveur du musée Cernuschi pour un montant de 110.000 euros.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69956"
-    },
-    {
-      "seance": "MAI 2007",
-      "montant": "91.000 euros",
-      "objet": "acquisition d'un ensemble de peintures chinoises",
-      "citation": "M. le Maire de Paris est autorisé à acquérir un ensemble de peintures chinoises pour le Musée Cernuschi, pour un montant total de 91.000 euros.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80347"
-    },
-    {
-      "seance": "MARS 2011",
-      "montant": "4.200 euros",
-      "objet": "recettes estimées des frais de mise à disposition du personnel d'accueil et de sécurité",
-      "citation": "Les recettes correspondant aux frais de mise à disposition du personnel d?accueil et de sécurité (article 3.4 de la convention) estimées à 4.200 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96985"
-    },
-    {
-      "seance": "JUIN 2006",
-      "montant": "31.800 euros",
-      "objet": "valeur d'immobilisation des œuvres léguées par M. Pierre LEDOUX",
-      "citation": "La valeur d?immobilisation des ?uvres léguées, estimée à 31.800 euros sera inscrite au chapitre 10, compte 1025, sous-fonction 01, du budget d?investissement de la Ville de Paris de l?exercice 2006",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44521"
-    },
-    {
-      "seance": "AVRIL 2005",
-      "montant": "100.000 euros",
-      "objet": "acquisition d'un fragment de soubassement de cercueil en marbre blanc",
-      "citation": "Monsieur le Maire de Paris est autorisé à acquérir un fragment de soubassement de cercueil en marbre blanc pour le Musée Cernuschi, pour une somme de 100.000 euros.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43757"
-    },
-    {
-      "seance": "MARS 2002",
-      "montant": "129.580 euros",
-      "objet": "acquisition d'une statuette bouddhique en bronze doré Jiuku Guanyin (dynastie Tang)",
-      "citation": "M. le Maire de Paris est autorisé à acquérir une statuette bouddhique en bronze doré de 25cm représentant Jiuku Guanyin datant du VIIIe siècle (dynastie des Tang 618-907) pour la somme de 129.580 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38984"
-    },
-    {
-      "seance": "NOVEMBRE 2001",
-      "montant": "1.200.000 F",
-      "objet": "acquisition d'un grand chameau en terre cuite (dynastie des Tang)",
-      "citation": "M. le Maire de Paris est autorisé à acquérir un grand chameau en terre cuite datant de la première moitié du 8e siècle - dynastie des Tangs, pour la somme de 1.200.000 F.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30642"
-    },
-    {
-      "seance": "DECEMBRE 2008",
-      "montant": "30.000 euros (7.500 euros par an)",
-      "objet": "recette de mécénat (société Daum) inscrite au budget de fonctionnement 2010-2013",
-      "citation": "Une recette de 30.000 euros (7.500 euros par an), sera inscrite au budget de fonctionnement de la Ville de Paris des exercices 2010, 2011, 2012 et 2013, au chapitre 70, nature 7088, rubrique 322.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78187"
-    },
-    {
-      "seance": "OCTOBRE 2007",
-      "montant": "3.500 euros",
-      "objet": "recettes estimées des frais de mise à disposition du personnel d'accueil et de sécurité",
-      "citation": "Les recettes correspondant aux frais de mise à disposition du personnel d?accueil et de sécurité (article 3-4 de la convention), estimées à 3.500 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53150"
-    },
-    {
-      "seance": "SEPTEMBRE 2000",
-      "montant": "570.000 F",
-      "objet": "acquisition d'une paire d'ornements (galerie Oriental Bronzes)",
-      "citation": "M. le Maire de Paris est autorisé à acquérir pour le musée Cernuschi une paire d'ornements proposée par la galerie Oriental Bronzes pour un montant de 570.000 F.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28107"
-    },
-    {
-      "seance": "MARS 2003",
-      "montant": "352.000 euros",
-      "objet": "acquisition d'une tête de bodhisattva en grès et d'un vase de type hu (total; 220.000 + 132.000 euros)",
-      "citation": "pour un montant s'élevant respectivement à 220.000 euros et 132.000 euros soit au total une somme de 352.000 euros.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78954"
-    },
-    {
-      "seance": "SEPTEMBRE 1998",
-      "montant": "110.000 F",
-      "objet": "participation de la Ville à l'acquisition du bas-relief 'Musicien céleste'",
-      "citation": "M. le Maire de Paris est autorisé à participer à l'acquisition pour le musée Cernuschi, à concurrence de la somme de 110.000 F, d'un bas-relief en pierre représentant un \"Musicien céleste\"",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92607"
-    },
-    {
-      "seance": "SEPTEMBRE 1998",
-      "montant": "720.000 F",
-      "objet": "prix de vente total du bas-relief 'Musicien céleste' (M. Michel Beurdeley)",
-      "citation": "d'un bas-relief en pierre représentant un \"Musicien céleste\" vendu par M. Michel Beurdeley pour le prix de 720.000 F.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92607"
-    },
-    {
-      "seance": "OCTOBRE 1999",
-      "montant": "320.000 F",
-      "objet": "acquisition de 2 ornements de char (époque des Royaumes combattants)",
-      "citation": "2 ornements de char de l'époque des Royaumes combattants (453-222 avant J.C.), proposés pour la somme de 320.000 F T.T.C. par la galerie Christian Deydier Oriental Bronzes.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42442"
-    },
-    {
-      "seance": "AVRIL 2006",
-      "montant": "80.000 euros (20.000 euros par an)",
-      "objet": "recette de mécénat (société Daum) au budget de fonctionnement 2006-2009",
-      "citation": "Une recette de 80.000 euros (20.000 euros par an), sera inscrite au budget de fonctionnement de la Ville de Paris des exercices 2006, 2007, 2008 et 2009, au chapitre 70, nature 7088, rubrique 322.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38689"
-    },
-    {
-      "seance": "AVRIL 2006",
-      "montant": "40.000 euros (10.000 euros par an)",
-      "objet": "recette de mécénat (société Daum) au budget d'investissement 2006-2009",
-      "citation": "Une recette de 40.000 euros (10.000 euros par an), sera inscrite sur la nature 10251, rubrique 01, mission 90000-99-010 du budget d?investissement de la Ville de Paris des exercices 2006, 2007, 2008 et 2009.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38689"
-    },
-    {
-      "seance": "SEPTEMBRE 2005",
-      "montant": "1.500.000,00 euros",
-      "objet": "récipient chinois en bronze de type Zun donné par les Amis du Musée Cernuschi",
-      "citation": "Amis du Musée Cernuschi Un récipient chinois en bronze de type Zun, datant de la période de Anyang (vers 1330 - vers 1050 Avant JC), dynastie des Shang (vers 1550-vers 1050 avant JC) => 1.500.000,00 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63222"
-    },
-    {
-      "seance": "SEPTEMBRE 2005",
-      "montant": "1.536.130 euros",
-      "objet": "dépense totale de la délibération, tous dons confondus (Galliera, Cernuschi, Zadkine)",
-      "citation": "La dépense estimée à 1.536.130 euros, sera inscrite sur le chapitre 21, nature 2162, du budget d?investissement de la Ville de Paris.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63222"
-    },
-    {
-      "seance": "MAI 2009",
-      "montant": "6.000 euros",
-      "objet": "subvention à l'Institut National du Patrimoine pour un colloque en partenariat avec le musée",
-      "citation": "Une subvention de 6.000 euros est attribuée à l?Institut National du Patrimoine ayant son siège social 2, rue Vivienne (2e)",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59515"
-    },
-    {
-      "seance": "NOVEMBRE 1995",
-      "montant": "400.000 F",
-      "objet": "participation de la Ville à l'acquisition d'une boucle de ceinture en or antique",
-      "citation": "M. le Maire de Paris est autorisé à participer, à concurrence de la somme de 400.000 F, à l'acquisition, pour le musée Cernuschi, d'une boucle de ceinture en or martelé et incrusté",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=1473"
-    },
-    {
-      "seance": "NOVEMBRE 1995",
-      "montant": "580.000 F",
-      "objet": "prix de vente de la boucle de ceinture (galerie Gisèle CROES, Bruxelles)",
-      "citation": "vendue par la galerie Gisèle CROES à Bruxelles au prix de 580.000 F.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=1473"
-    },
-    {
-      "seance": "JANVIER 2001",
-      "montant": "30 millions",
-      "objet": "coût des travaux de rénovation évoqué en séance par Mme Soizik MOREAU (opposition)",
-      "citation": "Le coût de ces travaux, estimé à 30 millions, a été repoussé par la majorité sortante d'année en année.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13428"
-    },
-    {
-      "seance": "NOVEMBRE 1997",
-      "montant": "380.000 FF",
-      "objet": "acquisition pour Cernuschi de 3 plaques en pierre gravée d'une tombe chinoise (galerie Beurdeley)",
-      "citation": "3 grandes plaques en pierre gravée provenant d'une tombe chinoise du début du VIIIe siècle, appartenant à la galerie Beurdeley et Cie à Paris pour le prix de 380.000 FF.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49346"
-    },
-    {
-      "seance": "NOVEMBRE 1997",
-      "montant": "680.000 F",
-      "objet": "dépense totale pour les deux œuvres (maison de Victor Hugo et musée Cernuschi)",
-      "citation": "La dépense totale correspondante, soit 680.000 F, sera imputée au chapitre 903",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49346"
-    },
-    {
-      "seance": "DECEMBRE 2003",
-      "montant": "4.650 euros",
-      "objet": "valeur d'immobilisation du bien légué par M. Albert DOLLINGER (3 000 francs suisses)",
-      "citation": "La valeur d'immobilisation du bien légué, estimée à 3.000 francs suisses soit 4.650 euros sera inscrite au chapitre 10, compte 1025, sous-fonction 01, du budget d'investissement de la Ville de Paris.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69094"
-    },
-    {
-      "seance": "JUILLET 2004",
-      "montant": "183.753,60 euros TTC",
-      "objet": "avenant n°1 au marché de travaux n° 02/26-533 (H. Chevalier), valeur mai 2004",
-      "citation": "un avenant n°1 au marché de travaux n° 02/26-533, signé par l'entreprise H. Chevalier pour un montant de 171.172,42 euros TTC valeur août 2002, soit 183.753,60 euros TTC en valeur mai 2004.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=60128"
-    },
-    {
-      "seance": "JUILLET 2004",
-      "montant": "29.654,54 euros TTC",
-      "objet": "avenant n°1 au marché n° 03/26-180 (Prodesign), valeur mai 2004",
-      "citation": "un avenant n°1 au marché de travaux n° 03/26-180, signé par l'entreprise Prodesign pour un montant de 27.789,19 euros TTC valeur décembre 2002, soit 29.654,54 euros TTC en valeur mai 2004 ;",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=60128"
-    },
-    {
-      "seance": "JUILLET 2004",
-      "montant": "34.369,05 euros TTC",
-      "objet": "avenant n°1 au marché n° 03/26-204 (H. Dumanois), valeur mai 2004",
-      "citation": "un avenant n°1 au marché de travaux n° 03/26-204, signé par l'entreprise H. Dumanois pour un montant de 32.438,93 euros TTC valeur décembre 2002, soit 34.369,05 euros TTC en valeur mai 2004 ;",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=60128"
-    },
-    {
-      "seance": "JUILLET 2004",
-      "montant": "61.639,67 euros TTC",
-      "objet": "avenant n°1 au marché n° 03/26-080 (Meurant), valeur mai 2004",
-      "citation": "un avenant n°1 au marché de travaux n° 03/26-080, signé par l'entreprise Meurant pour un montant de 57.419,35 euros TTC valeur août 2002, soit 61.639,67 euros TTC en valeur mai 2004 ;",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=60128"
-    },
-    {
-      "seance": "JUILLET 2004",
-      "montant": "45.577,28 euros TTC",
-      "objet": "avenant n°1 au marché n° 03/26-172 (Cogeef Industrie), valeur mai 2004",
-      "citation": "un avenant n°1 au marché de travaux n° 03/26-172, signé par l'entreprise Cogeef Industrie pour un montant de 43.017,73 euros TTC valeur décembre 2002, soit 45.577,28 euros TTC en valeur mai 2004 ;",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=60128"
-    },
-    {
-      "seance": "MAI 2005",
-      "montant": "98.029,66 euros TTC",
-      "objet": "avenant n°2 au marché n° 02/26-533 (H. Chevalier), valeur avril 2005",
-      "citation": "un avenant n°2 au marché de travaux n° 02/26-533, signé par l?entreprise H. Chevalier pour un montant de 88.968,07 euros TTC valeur août 2002, soit 98.029,66 euros TTC en valeur avril 2005 ;",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80727"
-    },
-    {
-      "seance": "MAI 2005",
-      "montant": "72.368,16 euros TTC",
-      "objet": "avenant n°2 au marché n° 03/26-180 (Prodesign), valeur avril 2005",
-      "citation": "un avenant n°2 au marché de travaux n° 03/26-180, signé par l?entreprise Prodesign pour un montant de 66.689,56 euros TTC valeur décembre 2002, soit 72.368,16 euros TTC en valeur avril 2005 ;",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80727"
-    },
-    {
-      "seance": "MAI 2005",
-      "montant": "40.674,06 euros TTC",
-      "objet": "avenant n°2 au marché n° 03/26-204 (H. Dumanois), valeur avril 2005",
-      "citation": "un avenant n°2 au marché de travaux n° 03/26-204, signé par l?entreprise H. Dumanois pour un montant de 35.187,01 euros TTC valeur décembre 2002, soit 40.674,06 euros TTC en valeur avril 2005 ;",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80727"
-    },
-    {
-      "seance": "MAI 2005",
-      "montant": "39.548,16 euros TTC",
-      "objet": "avenant n°2 au marché n° 03/26-172 (Cogeef Industrie), valeur avril 2005",
-      "citation": "un avenant n°2 au marché de travaux n° 03/26-172, signé par l?entreprise Cogeef Industrie pour un montant de 34.495,03 euros TTC valeur décembre 2002, soit 39.548,16 euros TTC en valeur avril 2005 ;",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80727"
-    },
-    {
-      "seance": "MAI 2005",
-      "montant": "28.591,16 euros TTC",
-      "objet": "avenant n°2 au marché n° 03/26-141 (SPR Batiment), valeur avril 2005",
-      "citation": "un avenant n°2 au marché de travaux n° 03/26-141, signé par l?entreprise SPR Batiment pour un montant de 26.482,19 euros TTC valeur septembre 2002, soit 28.591,16 euros TTC en valeur avril 2005 ;",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80727"
-    }
-  ],
-  "bmo_extraits": [
-    {
-      "date": "1899-02-17",
-      "extrait": "42 c. pour faire face aux dépenses occasionnées par l'inauguration du musée Cernuschi",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6492556c/f5.item",
-      "extrait_en": "42 c. to cover the expenses incurred by the inauguration of the Musée Cernuschi"
-    },
-    {
-      "date": "1905-08-08",
-      "extrait": "service du Matériel d'objets mobiliers à fournir par l'école Boulle pour le musée Cernuschi (M. Chautard, rapporteur … Le Conseil, Vu deux états de meubles et objets mobiliers à fournir par l'école Boulle et à prendre en charge par le service du Matériel pour le musée Cernuschi",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6334659p/f6.item",
-      "extrait_en": "the Furnishings Department for movable objects to be supplied by the École Boulle for the Musée Cernuschi (Mr Chautard, rapporteur … The Council, having examined two inventories of furniture and movable objects to be supplied by the École Boulle and taken in charge by the Furnishings Department for the Musée Cernuschi"
-    },
-    {
-      "date": "1906-12-31",
-      "extrait": "45. — Musées d'art de la ville de Paris … 2° Pour l'avancement de classe (1,000 fr.) du conservateur du musée Cernuschi  … si Cernuschi prépare un catalogue, lequel prouvera que ce musée possède des trésors de l'art de l'Extrême-Orient uniques au monde",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6453279j/f5.item",
-      "extrait_en": "45. — Art museums of the city of Paris … 2° For the grade advancement (1,000 francs) of the curator of the Musée Cernuschi … if Cernuschi is preparing a catalogue, which will prove that this museum possesses treasures of Far Eastern art unique in the world"
-    },
-    {
-      "date": "1926-04-11",
-      "extrait": "1506. — Organisation d'une exposition de pierres dures chinoises au musée Cernuschi (M* d'Andigné, rapporteur … Sur le rapport présenté par M. d'Andigné, au nom de la 4e Commission, Délibère : Article premier. — Le musée Cernuschi organisera, en 1926, une exposition de pierres ",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6290514x/f18.item",
-      "extrait_en": "1506. — Organizing an exhibition of Chinese hardstones at the Musée Cernuschi (Mr d'Andigné, rapporteur … On the report presented by Mr d'Andigné, on behalf of the 4th Commission, Resolves: Article one. — The Musée Cernuschi will organize, in 1926, an exhibition of ha"
-    },
-    {
-      "date": "1960-07-21",
-      "extrait": "A la demande du conservateur du musée Cernuschi , il a été procédé à l'acquisition d'une grande statuette funéraire dont l'origine remonte au se siècle de notre ère, œuvre 'exceptionnelle par ses dimensions, son style et son état de conservation … Le musée Galliera a continué à",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9713224t/f4.item",
-      "extrait_en": "At the request of the curator of the Musée Cernuschi, the acquisition was made of a large funerary statuette dating back to the [xx]th century of our era, a work exceptional for its dimensions, its style, and its state of preservation … The Musée Galliera continued to"
-    },
-    {
-      "date": "1976-10-23",
-      "extrait": "Musée Bourdelle, 16, rue Antoine-Bourdelle, à Paris (15*) (tél. 548-67-27 …  Musée Cernuschi ( Musée d’art chinois de la Ville de Paris), 7, avenue Velasquez, à Paris (8*) (tél. 522-23-31) (entrée par le 111, boulevard Malesherbes …  Musée d’art moderne : Pomodoro, jusqu’au 3",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32113154/f6.item",
-      "extrait_en": "Musée Bourdelle, 16 rue Antoine-Bourdelle, Paris (15th) (tel. 548-67-27) … Musée Cernuschi (Musée d'art chinois de la Ville de Paris), 7 avenue Velasquez, Paris (8th) (tel. 522-23-31) (entrance at 111 boulevard Malesherbes) … Musée d'Art moderne: Pomodoro, until the 3"
-    }
-  ],
-  "bmo_recit": "Le musée Cernuschi apparaît dans le Bulletin municipal dès février 1899, à propos des dépenses occasionnées par son inauguration. Les premières années sont celles de l'installation : en 1905, le Conseil examine les meubles et objets mobiliers que l'école Boulle doit fournir au musée, et fin 1906, à l'occasion d'un avancement de classe (1.000 fr.) pour son conservateur, il est affirmé en séance qu'un catalogue en préparation prouvera que le musée possède des trésors de l'art de l'Extrême-Orient uniques au monde. En 1926, le Conseil décide que le musée organisera cette année-là une exposition de pierres dures chinoises. En 1960, l'archive rend compte de l'acquisition, à la demande du conservateur, d'une grande statuette funéraire ancienne, présentée comme exceptionnelle par ses dimensions, son style et son état de conservation. En 1976 encore, le Bulletin recense l'établissement comme « Musée d'art chinois de la Ville de Paris », au 7, avenue Velasquez (8e).",
-  "invest": [],
-  "marches": [],
-  "mandate": {
-    "par_annee": {
-      "2009": 90780.48
-    },
-    "total_eur": 90780.48,
-    "operations": [
-      {
-        "ap_cle": "B100/0500134",
-        "ap_texte": "MUSEE CERNUSCHI",
-        "mandate_par_annee": {
-          "2009": 90780.48
-        },
-        "total_mandate": 90780.48,
-        "preuve": "Libellé de l'opération « MUSEE CERNUSCHI » (direction DAC, mission AFFAIRES CULTURELLES) désigne nommément ce lieu ; identité et adresse confirmées par les délibérations du Conseil de Paris (ex. 2008 DPA 150/151 : « travaux de réaménagement réalisés au Musée Cernuschi, 7, avenue Vélasquez (8ème) », période cohérente avec le mandaté 2009).",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0500134"
-      }
-    ],
-    "periode": [
-      "2009",
-      "2009"
-    ],
-    "source": {
-      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-    }
-  },
-  "sources": {
-    "delibs": {
-      "name": "Débat-Délibs — Conseil de Paris",
-      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Cernuschi"
-    },
-    "bmo": {
-      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Mus%C3%A9e+Cernuschi%22%29"
-    },
-    "invest": {
-      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-      "url": "https://opendata.paris.fr/"
-    },
-    "wiki": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
-  },
-  "synthese_en": "Between 1995 and 2011, Conseil de Paris deliberated on numerous occasions about the Musée Cernuschi, the City's museum of Asian arts, located at 7 avenue Vélasquez (8th arrondissement). Most of these deliberations authorized the Mayor to enrich the collections: acquisitions of Asian artworks, acceptance of bequests and donations, sponsorship agreements with the Daum company, and objectives agreements with the Société des amis du musée. From 1999, the Council approved the principle of refurbishing the building and awarded the project management contract, then approved the principle and terms of the contracts to move the collections into temporary storage (2001) and later bring them back (2004). This project continued through amendments that raised the amount of the works contracts, leading the Council, in 2008, to approve the principle of compensating companies for damages sustained during the works. During the 2001 debate on the objectives agreement with the Société des amis, councillor Soizik MOREAU described a building more than a century old that no longer met conservation requirements and called for a major renovation.",
-  "bmo_recit_en": "The Musée Cernuschi appears in the municipal bulletin as early as February 1899, in connection with the expenses incurred by its inauguration. The early years were those of setting up the museum: in 1905, the Council examined the furniture and movable objects that the École Boulle was to supply to the museum, and at the end of 1906, on the occasion of a grade advancement (1,000 francs) for its curator, it was stated in session that a catalogue in preparation would prove that the museum possessed treasures of Far Eastern art unique in the world. In 1926, the Council decided that the museum would organize, that year, an exhibition of Chinese hardstones. In 1960, the archive records the acquisition, at the curator's request, of a large ancient funerary statuette, presented as exceptional for its dimensions, its style, and its state of preservation. As late as 1976, the bulletin still lists the establishment as the \"Musée d'art chinois de la Ville de Paris,\" at 7 avenue Velasquez (8th arrondissement).",
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
   }
+ },
+ "synthese_en": "Between 1995 and 2011, Conseil de Paris deliberated on numerous occasions about the Musée Cernuschi, the City's museum of Asian arts, located at 7 avenue Vélasquez (8th arrondissement). Most of these deliberations authorized the Mayor to enrich the collections: acquisitions of Asian artworks, acceptance of bequests and donations, sponsorship agreements with the Daum company, and objectives agreements with the Société des amis du musée. From 1999, the Council approved the principle of refurbishing the building and awarded the project management contract, then approved the principle and terms of the contracts to move the collections into temporary storage (2001) and later bring them back (2004). This project continued through amendments that raised the amount of the works contracts, leading the Council, in 2008, to approve the principle of compensating companies for damages sustained during the works. During the 2001 debate on the objectives agreement with the Société des amis, councillor Soizik MOREAU described a building more than a century old that no longer met conservation requirements and called for a major renovation.",
+ "bmo_recit_en": "The Musée Cernuschi appears in the municipal bulletin as early as February 1899, in connection with the expenses incurred by its inauguration. The early years were those of setting up the museum: in 1905, the Council examined the furniture and movable objects that the École Boulle was to supply to the museum, and at the end of 1906, on the occasion of a grade advancement (1,000 francs) for its curator, it was stated in session that a catalogue in preparation would prove that the museum possessed treasures of Far Eastern art unique in the world. In 1926, the Council decided that the museum would organize, that year, an exhibition of Chinese hardstones. In 1960, the archive records the acquisition, at the curator's request, of a large ancient funerary statuette, presented as exceptional for its dimensions, its style, and its state of preservation. As late as 1976, the bulletin still lists the establishment as the \"Musée d'art chinois de la Ville de Paris,\" at 7 avenue Velasquez (8th arrondissement)."
 }

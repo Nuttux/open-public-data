@@ -1,0 +1,6912 @@
+{
+  "PISCINE DAVOUT|20": {
+    "lat": 48.855545,
+    "lon": 2.410207,
+    "score": 0.5078296256684491,
+    "label": "Boulevard Davout 75020 Paris"
+  },
+  "PISCINE SAINT MERRI|4": {
+    "lat": 48.861148,
+    "lon": 2.348782,
+    "score": 0.4808437837837838,
+    "label": "Rue Saint-Denis 75001 Paris"
+  },
+  "27 RUE DE L EVANGILE|11": {
+    "lat": 48.893678,
+    "lon": 2.36419,
+    "score": 0.7907037190082643,
+    "label": "27 Rue de l'Évangile 75018 Paris"
+  },
+  "PISCINE VALLEREY BLD DES TOURNELLES|4": {
+    "lat": 48.85976,
+    "lon": 2.346704,
+    "score": 0.3970172727272727,
+    "label": "Rue des Halles 75001 Paris"
+  },
+  "10 RUE INGENIEUR ROBERT KELLER|10": {
+    "lat": 48.847953,
+    "lon": 2.281896,
+    "score": 0.7325436363636363,
+    "label": "10 Rue de l'Ingénieur Robert Keller 75015 Paris"
+  },
+  "GYMNASE MAX ROUSSIE|0": {
+    "lat": 48.86634,
+    "lon": 2.388445,
+    "score": 0.3200718181818182,
+    "label": "Rue Max Ernst 75020 Paris"
+  },
+  "82 RUE PERNETY|14": {
+    "lat": 48.835546,
+    "lon": 2.31589,
+    "score": 0.9784445454545454,
+    "label": "82 Rue Pernety 75014 Paris"
+  },
+  "17 RUE LAMBLARDIE|0": {
+    "lat": 48.840681,
+    "lon": 2.397886,
+    "score": 0.9737863636363635,
+    "label": "17 Rue Lamblardie 75012 Paris"
+  },
+  "1 SQUARE ALBAN SATRAGN|16": {
+    "lat": 48.875332,
+    "lon": 2.355545,
+    "score": 0.7212242997542998,
+    "label": "1 Square Alban Satragne 75010 Paris"
+  },
+  "RUE DE LAGNY|20": {
+    "lat": 48.849002,
+    "lon": 2.407578,
+    "score": 0.9806354545454545,
+    "label": "Rue de Lagny 75020 Paris"
+  },
+  "11 RUE DU PRE|18": {
+    "lat": 48.897139,
+    "lon": 2.360411,
+    "score": 0.9708372727272726,
+    "label": "11 Rue du Pré 75018 Paris"
+  },
+  "GYMNASE ZAC CLICHY|17": {
+    "lat": 48.883762,
+    "lon": 2.326854,
+    "score": 0.5242997402597401,
+    "label": "Place de Clichy 75017 Paris"
+  },
+  "RUE DENOYEZ|13": {
+    "lat": 48.871704,
+    "lon": 2.378505,
+    "score": 0.6871018181818181,
+    "label": "Rue Dénoyez 75020 Paris"
+  },
+  "PLACE DE VENETI|16": {
+    "lat": 48.821528,
+    "lon": 2.364719,
+    "score": 0.6899172727272728,
+    "label": "Place de Vénétie 75013 Paris"
+  },
+  "103 AVENUE GAMBETTA|20": {
+    "lat": 48.866829,
+    "lon": 2.399971,
+    "score": 0.9831736363636363,
+    "label": "103 Avenue Gambetta 75020 Paris"
+  },
+  "9 RUE SERVAN|16": {
+    "lat": 48.85943,
+    "lon": 2.383781,
+    "score": 0.7556445454545454,
+    "label": "9 Rue Servan 75011 Paris"
+  },
+  "PISCINE MOURLON|10": {
+    "lat": 48.879943,
+    "lon": 2.399915,
+    "score": 0.4370505594405594,
+    "label": "Rue Frédéric Mourlon 75019 Paris"
+  },
+  "8 RUE GANNERON|15": {
+    "lat": 48.886111,
+    "lon": 2.326915,
+    "score": 0.7646542424242424,
+    "label": "8 Rue Ganneron 75018 Paris"
+  },
+  "157 RUE DE TOLBIAC|14": {
+    "lat": 48.826034,
+    "lon": 2.356265,
+    "score": 0.7881154252199414,
+    "label": "157 Rue de Tolbiac 75013 Paris"
+  },
+  "STADE BOUTROUX|13": {
+    "lat": 48.822075,
+    "lon": 2.375246,
+    "score": 0.6391818181818182,
+    "label": "Avenue Boutroux 75013 Paris"
+  },
+  "29 RUE LA JUSTICE|0": {
+    "lat": 48.868989,
+    "lon": 2.408515,
+    "score": 0.7878272727272727,
+    "label": "29 Rue de la Justice 75020 Paris"
+  },
+  "RUE FREMICOURT|15": {
+    "lat": 48.84749,
+    "lon": 2.298698,
+    "score": 0.9785863636363636,
+    "label": "Rue Frémicourt 75015 Paris"
+  },
+  "CENTRE D'ANIMATION HEBERT|18": {
+    "lat": 48.89318,
+    "lon": 2.363446,
+    "score": 0.4791204195804195,
+    "label": "Place Hébert 75018 Paris"
+  },
+  "PISCINE MOURLON|13": {
+    "lat": 48.82295,
+    "lon": 2.356489,
+    "score": 0.47566727272727266,
+    "label": "Rue Bourgon 75013 Paris"
+  },
+  "RUE DES POISSONNIERS|18": {
+    "lat": 48.892895,
+    "lon": 2.352513,
+    "score": 0.9839363636363636,
+    "label": "Rue des Poissonniers 75018 Paris"
+  },
+  "GYMNASE BARON LE ROY|12": {
+    "lat": 48.834133,
+    "lon": 2.388749,
+    "score": 0.6896601652892562,
+    "label": "Rue Baron Le Roy 75012 Paris"
+  },
+  "4 RUE LOBAU|4": {
+    "lat": 48.856463,
+    "lon": 2.353744,
+    "score": 0.6579687878787878,
+    "label": "4 Rue de Lobau 75004 Paris"
+  },
+  "Médiathèque Jean Quarré|17": {
+    "lat": 48.895499,
+    "lon": 2.326542,
+    "score": 0.4562631168831169,
+    "label": "Rue Jean Leclaire 75017 Paris"
+  },
+  "45 RUE DE PICPUS|12": {
+    "lat": 48.843465,
+    "lon": 2.39697,
+    "score": 0.982241818181818,
+    "label": "45 Rue de Picpus 75012 Paris"
+  },
+  "Piscine des Amiraux|18": {
+    "lat": 48.894554,
+    "lon": 2.351096,
+    "score": 0.6788709090909091,
+    "label": "Rue des Amiraux 75018 Paris"
+  },
+  "RUE DU CHAROLAIS|10": {
+    "lat": 48.87366,
+    "lon": 2.373562,
+    "score": 0.5895437829912024,
+    "label": "Rue du Chalet 75010 Paris"
+  },
+  "RUE AUB|0": null,
+  "RUE VERTE|0": {
+    "lat": 48.859385,
+    "lon": 2.370352,
+    "score": 0.6095681818181818,
+    "label": "Allée Verte 75011 Paris"
+  },
+  "6 PLACE POSSOZ|0": {
+    "lat": 48.859403,
+    "lon": 2.27702,
+    "score": 0.9666918181818182,
+    "label": "6 Place Possoz 75116 Paris"
+  },
+  "RUE DE LA CHAPELLE|18": {
+    "lat": 48.894392,
+    "lon": 2.359243,
+    "score": 0.9819545454545453,
+    "label": "Rue de la Chapelle 75018 Paris"
+  },
+  "RUE DU FAUBOURG SAINT ANTOINE|11": {
+    "lat": 48.850899,
+    "lon": 2.380362,
+    "score": 0.9809954545454543,
+    "label": "Rue du Faubourg Saint-Antoine 75011 Paris"
+  },
+  "RUE LOUNES MATOUB|19": {
+    "lat": 48.899373,
+    "lon": 2.376284,
+    "score": 0.9707263636363636,
+    "label": "Rue Lounès Matoub 75019 Paris"
+  },
+  "37 RUE FALGUIERE|15": {
+    "lat": 48.842425,
+    "lon": 2.315902,
+    "score": 0.9826054545454546,
+    "label": "37 Rue Falguière 75015 Paris"
+  },
+  "66 RUE PASCAL|5": {
+    "lat": 48.83811,
+    "lon": 2.349459,
+    "score": 0.7755318181818182,
+    "label": "Rue Pascal 75005 Paris"
+  },
+  "RUE DE LAFAYETTE|10": {
+    "lat": 48.87994,
+    "lon": 2.359425,
+    "score": 0.7183364576802508,
+    "label": "Rue la Fayette 75010 Paris"
+  },
+  "4 RUE LOBAU|0": {
+    "lat": 48.856463,
+    "lon": 2.353744,
+    "score": 0.7409033971291866,
+    "label": "4 Rue de Lobau 75004 Paris"
+  },
+  "99 RUE OLIVIER DE SERRES|15": {
+    "lat": 48.831809,
+    "lon": 2.293222,
+    "score": 0.9817372727272727,
+    "label": "99 Rue Olivier de Serres 75015 Paris"
+  },
+  "11 RUE DU PRE|0": {
+    "lat": 48.897139,
+    "lon": 2.360411,
+    "score": 0.9708372727272726,
+    "label": "11 Rue du Pré 75018 Paris"
+  },
+  "CENTRE SPORTIF AMANDIERS|20": {
+    "lat": 48.865731,
+    "lon": 2.389286,
+    "score": 0.5105280266075387,
+    "label": "Rue des Amandiers 75020 Paris"
+  },
+  "PISCINE SAINT|4": {
+    "lat": 48.861148,
+    "lon": 2.348782,
+    "score": 0.5621626392961877,
+    "label": "Rue Saint-Denis 75001 Paris"
+  },
+  "16 RUE JULIEN LACROIX|10": {
+    "lat": 48.871949,
+    "lon": 2.360738,
+    "score": 0.5237336807095344,
+    "label": "16 Rue Lucien Sampaix 75010 Paris"
+  },
+  "RUE MARX DORMOY|18": {
+    "lat": 48.887245,
+    "lon": 2.359658,
+    "score": 0.9797327272727272,
+    "label": "Rue Marx Dormoy 75018 Paris"
+  },
+  "GYMNASE CHARLES V|0": {
+    "lat": 48.852932,
+    "lon": 2.36274,
+    "score": 0.6013427272727272,
+    "label": "Rue Charles V 75004 Paris"
+  },
+  "Crèche collective Luxembourg|6": {
+    "lat": 48.853764,
+    "lon": 2.342692,
+    "score": 0.3634190909090909,
+    "label": "Rue Gît-Le-Coeur 75006 Paris"
+  },
+  "8 RUE PIERRE FONCIN|0": {
+    "lat": 48.871359,
+    "lon": 2.409709,
+    "score": 0.971830909090909,
+    "label": "8 Rue Pierre Foncin 75020 Paris"
+  },
+  "RUE AUX ENFANTS|0": {
+    "lat": 48.863091,
+    "lon": 2.338434,
+    "score": 0.5039988401253918,
+    "label": "Rue des Bons Enfants 75001 Paris"
+  },
+  "RUE DE CITEAUX|0": {
+    "lat": 48.848615,
+    "lon": 2.380732,
+    "score": 0.9759399999999999,
+    "label": "Rue de Citeaux 75012 Paris"
+  },
+  "RUE GASTON TESSIER ET CURIAL|0": {
+    "lat": 48.895934,
+    "lon": 2.373725,
+    "score": 0.6379142975206611,
+    "label": "Rue Gaston Tessier 75019 Paris"
+  },
+  "PISCINE ROGER LE GALL|0": {
+    "lat": 48.835659,
+    "lon": 2.326843,
+    "score": 0.41278389610389604,
+    "label": "Rue Roger 75014 Paris"
+  },
+  "133 RUE BELLIARD|18": {
+    "lat": 48.896235,
+    "lon": 2.334725,
+    "score": 0.9817690909090909,
+    "label": "133 Rue Belliard 75018 Paris"
+  },
+  "11 RUE DU PRE|15": {
+    "lat": 48.850084,
+    "lon": 2.285286,
+    "score": 0.6738636363636363,
+    "label": "11 Rue du Théâtre 75015 Paris"
+  },
+  "RUE LEON SCHWARTZENBERG|15": {
+    "lat": 48.875654,
+    "lon": 2.353826,
+    "score": 0.7851063636363635,
+    "label": "Rue Léon Schwartzenberg 75010 Paris"
+  },
+  "BOULEVARD DE BELLEVILLE|11": {
+    "lat": 48.869197,
+    "lon": 2.380004,
+    "score": 0.9748881818181817,
+    "label": "Boulevard de Belleville 75011 Paris"
+  },
+  "RUE DAGUERRE|14": {
+    "lat": 48.834756,
+    "lon": 2.327455,
+    "score": 0.9787281818181817,
+    "label": "Rue Daguerre 75014 Paris"
+  },
+  "BOULEVARD BLANQUI|0": {
+    "lat": 48.830548,
+    "lon": 2.3476,
+    "score": 0.6729663636363635,
+    "label": "Boulevard Auguste Blanqui 75013 Paris"
+  },
+  "RUE BLANCHE|9": {
+    "lat": 48.880445,
+    "lon": 2.331742,
+    "score": 0.9745463636363635,
+    "label": "Rue Blanche 75009 Paris"
+  },
+  "STADE COUBERTIN|16": {
+    "lat": 48.848685,
+    "lon": 2.263117,
+    "score": 0.43913991735537183,
+    "label": "Rue Poussin 75016 Paris"
+  },
+  "BD MAC DONALD|0": null,
+  "3 RUE VICTOR DEJEANTE|20": {
+    "lat": 48.867191,
+    "lon": 2.409473,
+    "score": 0.9696945454545455,
+    "label": "3 Rue Victor Dejeante 75020 Paris"
+  },
+  "GYMNASE SAUSSURE|0": {
+    "lat": 48.887141,
+    "lon": 2.311953,
+    "score": 0.5455406993006993,
+    "label": "Rue de Saussure 75017 Paris"
+  },
+  "RUE DE PICARDIE|3": {
+    "lat": 48.866155,
+    "lon": 2.332381,
+    "score": 0.5463118181818182,
+    "label": "Rue de la Sourdière 75001 Paris"
+  },
+  "28 RUE D D'ANGERS|0": {
+    "lat": 48.882112,
+    "lon": 2.392191,
+    "score": 0.7616595104895104,
+    "label": "28 Rue David d'Angers 75019 Paris"
+  },
+  "QUAI DE VALMY|10": {
+    "lat": 48.876098,
+    "lon": 2.365589,
+    "score": 0.976561818181818,
+    "label": "Quai de Valmy 75010 Paris"
+  },
+  "35 RUE BREGUET|11": {
+    "lat": 48.858297,
+    "lon": 2.375571,
+    "score": 0.9758581818181818,
+    "label": "35 Rue Bréguet 75011 Paris"
+  },
+  "Piscine des Amiraux|0": {
+    "lat": 48.894554,
+    "lon": 2.351096,
+    "score": 0.6316681118881118,
+    "label": "Rue des Amiraux 75018 Paris"
+  },
+  "RUE DE STEINKERQUE|18": {
+    "lat": 48.88372,
+    "lon": 2.343558,
+    "score": 0.9727954545454546,
+    "label": "Rue de Steinkerque 75018 Paris"
+  },
+  "10 RUE GUIGNIER|0": {
+    "lat": 48.8717,
+    "lon": 2.39368,
+    "score": 0.773258814229249,
+    "label": "10 Rue du Guignier 75020 Paris"
+  },
+  "14 RUE SIMPLON|0": {
+    "lat": 48.893573,
+    "lon": 2.351457,
+    "score": 0.7752333884297521,
+    "label": "14 Rue du Simplon 75018 Paris"
+  },
+  "RUE DE RICHELIEU|2": {
+    "lat": 48.865238,
+    "lon": 2.336634,
+    "score": 0.965800909090909,
+    "label": "Rue de Richelieu 75001 Paris"
+  },
+  "37 RUE FALGUIERE|0": {
+    "lat": 48.842425,
+    "lon": 2.315902,
+    "score": 0.9826054545454546,
+    "label": "37 Rue Falguière 75015 Paris"
+  },
+  "PISCINE ROGER LE GALL|12": {
+    "lat": 48.848152,
+    "lon": 2.371613,
+    "score": 0.40386528925619836,
+    "label": "Avenue Ledru-Rollin 75012 Paris"
+  },
+  "Boulevard Murat|16": {
+    "lat": 48.841065,
+    "lon": 2.259586,
+    "score": 0.9816727272727271,
+    "label": "Boulevard Murat 75016 Paris"
+  },
+  "Place de la Bastille|4": {
+    "lat": 48.853711,
+    "lon": 2.370213,
+    "score": 0.8231681818181817,
+    "label": "Place de la Bastille 75011 Paris"
+  },
+  "Boulevard Beaumarchais|3": {
+    "lat": 48.857333,
+    "lon": 2.368391,
+    "score": 0.8368207486631015,
+    "label": "Boulevard Beaumarchais 75011 Paris"
+  },
+  "école Elisabeth|14": {
+    "lat": 48.838959,
+    "lon": 2.310587,
+    "score": 0.46431262156448205,
+    "label": "Rue Élisabeth Vigée Le Brun 75015 Paris"
+  },
+  "Piscine Davout|20": {
+    "lat": 48.855545,
+    "lon": 2.410207,
+    "score": 0.5078296256684491,
+    "label": "Boulevard Davout 75020 Paris"
+  },
+  "rue Cardinet|17": {
+    "lat": 48.88632,
+    "lon": 2.310888,
+    "score": 0.9832018181818182,
+    "label": "Rue Cardinet 75017 Paris"
+  },
+  "rue Jules Simon|15": {
+    "lat": 48.840652,
+    "lon": 2.292548,
+    "score": 0.9718681818181818,
+    "label": "Rue Jules Simon 75015 Paris"
+  },
+  "Gymnase Madeleine Reberioux|18": {
+    "lat": 48.894563,
+    "lon": 2.353712,
+    "score": 0.7169427272727272,
+    "label": "Rue Madeleine Rebérioux 75018 Paris"
+  },
+  "rue du Bastion|17": {
+    "lat": 48.893474,
+    "lon": 2.308917,
+    "score": 0.9760436363636362,
+    "label": "Rue du Bastion 75017 Paris"
+  },
+  "Avenue des Champs Elysées|8": {
+    "lat": 48.871049,
+    "lon": 2.30373,
+    "score": 0.9732263636363635,
+    "label": "Avenue des Champs Élysées 75008 Paris"
+  },
+  "Place de la Nation|11": {
+    "lat": 48.849112,
+    "lon": 2.396358,
+    "score": 0.9698945454545453,
+    "label": "Place de la Nation 75011 Paris"
+  },
+  "rue Saint|17": {
+    "lat": 48.888737,
+    "lon": 2.324351,
+    "score": 0.7173809090909091,
+    "label": "Rue Saint-Jean 75017 Paris"
+  },
+  "Boulevard de La Chapelle|10": {
+    "lat": 48.884028,
+    "lon": 2.358731,
+    "score": 0.9716581818181818,
+    "label": "Boulevard de la Chapelle 75010 Paris"
+  },
+  "Rue de Rivoli|1": {
+    "lat": 48.862442,
+    "lon": 2.3362,
+    "score": 0.970430909090909,
+    "label": "Rue de Rivoli 75001 Paris"
+  },
+  "rue de la Justice|20": {
+    "lat": 48.869154,
+    "lon": 2.407845,
+    "score": 0.9769181818181818,
+    "label": "Rue de la Justice 75020 Paris"
+  },
+  "rue de la Chapelle|18": {
+    "lat": 48.894392,
+    "lon": 2.359243,
+    "score": 0.9819545454545453,
+    "label": "Rue de la Chapelle 75018 Paris"
+  },
+  "Boulevard périphérique|18": {
+    "lat": 48.898088,
+    "lon": 2.347443,
+    "score": 0.5163858968058967,
+    "label": "Boulevard Ney 75018 Paris"
+  },
+  "Avenue du Général Leclerc|14": {
+    "lat": 48.828472,
+    "lon": 2.328017,
+    "score": 0.9805872727272726,
+    "label": "Avenue du Général Leclerc 75014 Paris"
+  },
+  "rue Kuss|13": {
+    "lat": 48.822151,
+    "lon": 2.351698,
+    "score": 0.9717354545454545,
+    "label": "Rue Küss 75013 Paris"
+  },
+  "rue du Chevaleret|13": {
+    "lat": 48.830135,
+    "lon": 2.374088,
+    "score": 0.9832836363636362,
+    "label": "Rue du Chevaleret 75013 Paris"
+  },
+  "Place de la Madeleine|8": {
+    "lat": 48.870275,
+    "lon": 2.324628,
+    "score": 0.9677272727272727,
+    "label": "Place de la Madeleine 75008 Paris"
+  },
+  "Boulevard Voltaire|11": {
+    "lat": 48.856892,
+    "lon": 2.381633,
+    "score": 0.9838999999999999,
+    "label": "Boulevard Voltaire 75011 Paris"
+  },
+  "3 rue Oudinet|13": {
+    "lat": 48.827261,
+    "lon": 2.356371,
+    "score": 0.6228276539589441,
+    "label": "3 Rue du Moulinet 75013 Paris"
+  },
+  "Boulevard Macdonald|19": {
+    "lat": 48.898148,
+    "lon": 2.38251,
+    "score": 0.9838054545454545,
+    "label": "Boulevard Macdonald 75019 Paris"
+  },
+  "Place des Fêtes|19": {
+    "lat": 48.877435,
+    "lon": 2.393049,
+    "score": 0.9690545454545454,
+    "label": "Place des Fêtes 75019 Paris"
+  },
+  "Gymnase Charcot|13": {
+    "lat": 48.830757,
+    "lon": 2.371185,
+    "score": 0.6515537662337663,
+    "label": "Rue Charcot 75013 Paris"
+  },
+  "Quai d'Orsay|7": {
+    "lat": 48.862359,
+    "lon": 2.307987,
+    "score": 0.970190909090909,
+    "label": "Quai d'Orsay 75007 Paris"
+  },
+  "rue d'Aubervilliers|19": {
+    "lat": 48.892436,
+    "lon": 2.369711,
+    "score": 0.9825436363636362,
+    "label": "Rue d'Aubervilliers 75019 Paris"
+  },
+  "rue de la Croix Nivert|15": {
+    "lat": 48.841482,
+    "lon": 2.293787,
+    "score": 0.9852145454545455,
+    "label": "Rue de la Croix Nivert 75015 Paris"
+  },
+  "rue des Poissonniers|18": {
+    "lat": 48.892895,
+    "lon": 2.352513,
+    "score": 0.9839363636363636,
+    "label": "Rue des Poissonniers 75018 Paris"
+  },
+  "rue Guynemer|6": {
+    "lat": 48.847273,
+    "lon": 2.332435,
+    "score": 0.968061818181818,
+    "label": "Rue Guynemer 75006 Paris"
+  },
+  "Piscine Georges Drigny|9": {
+    "lat": 48.87622,
+    "lon": 2.337204,
+    "score": 0.49256545454545453,
+    "label": "Rue Saint-Georges 75009 Paris"
+  },
+  "Rue Lecourbe|15": {
+    "lat": 48.840818,
+    "lon": 2.296819,
+    "score": 0.9865681818181816,
+    "label": "Rue Lecourbe 75015 Paris"
+  },
+  "46 bis rue Saint Maur|11": {
+    "lat": 48.862174,
+    "lon": 2.380231,
+    "score": 0.7224380748663102,
+    "label": "46B Rue Saint-Maur 75011 Paris"
+  },
+  "place de la Nation|11": {
+    "lat": 48.849112,
+    "lon": 2.396358,
+    "score": 0.9698945454545453,
+    "label": "Place de la Nation 75011 Paris"
+  },
+  "Quai de Grenelle|15": {
+    "lat": 48.852273,
+    "lon": 2.285858,
+    "score": 0.97952,
+    "label": "Quai de Grenelle 75015 Paris"
+  },
+  "rue Monceau|8": {
+    "lat": 48.877918,
+    "lon": 2.311222,
+    "score": 0.7833545454545454,
+    "label": "Rue de Monceau 75008 Paris"
+  },
+  "rue Georgette Agutte|18": {
+    "lat": 48.895273,
+    "lon": 2.332854,
+    "score": 0.9743254545454545,
+    "label": "Rue Georgette Agutte 75018 Paris"
+  },
+  "Piscine Piscine Saint Merri|4": {
+    "lat": 48.866022,
+    "lon": 2.33172,
+    "score": 0.4156151450676982,
+    "label": "Rue Saint-Hyacinthe 75001 Paris"
+  },
+  "27 rue de Constantinople|8": {
+    "lat": 48.880352,
+    "lon": 2.318998,
+    "score": 0.9687945454545454,
+    "label": "27 Rue de Constantinople 75008 Paris"
+  },
+  "Place d'Italie|13": {
+    "lat": 48.831342,
+    "lon": 2.355345,
+    "score": 0.972970909090909,
+    "label": "Place d'Italie 75013 Paris"
+  },
+  "Médiathèque Jean|13": {
+    "lat": 48.833363,
+    "lon": 2.363609,
+    "score": 0.4481231941031941,
+    "label": "Rue Jeanne d'Arc 75013 Paris"
+  },
+  "rue Domrémy|13": {
+    "lat": 48.829648,
+    "lon": 2.371778,
+    "score": 0.7891536363636363,
+    "label": "Rue de Domrémy 75013 Paris"
+  },
+  "rue Villiot|12": {
+    "lat": 48.841495,
+    "lon": 2.375102,
+    "score": 0.9745463636363635,
+    "label": "Rue Villiot 75012 Paris"
+  },
+  "boulevard périphérique|20": {
+    "lat": 48.870644,
+    "lon": 2.408464,
+    "score": 0.5020463636363637,
+    "label": "Boulevard Mortier 75020 Paris"
+  },
+  "rue Max Jacob|13": {
+    "lat": 48.820078,
+    "lon": 2.354242,
+    "score": 0.9725163636363636,
+    "label": "Rue Max Jacob 75013 Paris"
+  },
+  "Place Gambetta|20": {
+    "lat": 48.864886,
+    "lon": 2.398429,
+    "score": 0.9705236363636364,
+    "label": "Place Gambetta 75020 Paris"
+  },
+  "rue du Chemin Vert|11": {
+    "lat": 48.86036,
+    "lon": 2.37887,
+    "score": 0.9811072727272726,
+    "label": "Rue du Chemin Vert 75011 Paris"
+  },
+  "Gymnase Huyghens|14": {
+    "lat": 48.834487,
+    "lon": 2.326485,
+    "score": 0.4177775324675324,
+    "label": "Rue Gassendi 75014 Paris"
+  },
+  "Avenue de Flandre|19": {
+    "lat": 48.889742,
+    "lon": 2.375641,
+    "score": 0.9830354545454545,
+    "label": "Avenue de Flandre 75019 Paris"
+  },
+  "crèche collective|12": {
+    "lat": 48.843283,
+    "lon": 2.383311,
+    "score": 0.41139524475524475,
+    "label": "Rue de Charenton 75012 Paris"
+  },
+  "boulevard Victor|15": {
+    "lat": 48.8344,
+    "lon": 2.28349,
+    "score": 0.9800699999999999,
+    "label": "Boulevard Victor 75015 Paris"
+  },
+  "rue Carrière Main|11": {
+    "lat": 48.856619,
+    "lon": 2.387185,
+    "score": 0.7320678512396694,
+    "label": "Rue Carrière-Mainguet 75011 Paris"
+  },
+  "86 rue de la Villette|19": {
+    "lat": 48.878732,
+    "lon": 2.388302,
+    "score": 0.9796209090909089,
+    "label": "86 Rue de la Villette 75019 Paris"
+  },
+  "Quai Anatole France|7": {
+    "lat": 48.86156,
+    "lon": 2.322413,
+    "score": 0.9659727272727272,
+    "label": "Quai Anatole France 75007 Paris"
+  },
+  "rue Pelleport|20": {
+    "lat": 48.869245,
+    "lon": 2.400687,
+    "score": 0.9834899999999999,
+    "label": "Rue Pelleport 75020 Paris"
+  },
+  "rue Petit|19": {
+    "lat": 48.885502,
+    "lon": 2.38634,
+    "score": 0.9815936363636363,
+    "label": "Rue Petit 75019 Paris"
+  },
+  "rue Trousseau|12": {
+    "lat": 48.852005,
+    "lon": 2.378959,
+    "score": 0.7582113286713287,
+    "label": "Rue Trousseau 75011 Paris"
+  },
+  "22 bis rue de l'Ourcq|19": {
+    "lat": 48.889318,
+    "lon": 2.383894,
+    "score": 0.7229726203208555,
+    "label": "22B Rue de l'Ourcq 75019 Paris"
+  },
+  "rue de Picpus|12": {
+    "lat": 48.841428,
+    "lon": 2.398579,
+    "score": 0.982241818181818,
+    "label": "Rue de Picpus 75012 Paris"
+  },
+  "Quai de Conti|6": {
+    "lat": 48.856627,
+    "lon": 2.338725,
+    "score": 0.9646172727272727,
+    "label": "Quai de Conti 75006 Paris"
+  },
+  "boulevard Massena|13": {
+    "lat": 48.821412,
+    "lon": 2.368543,
+    "score": 0.9816590909090909,
+    "label": "Boulevard Masséna 75013 Paris"
+  },
+  "rue de la Tombe Issoire|14": {
+    "lat": 48.827813,
+    "lon": 2.332932,
+    "score": 0.9813954545454544,
+    "label": "Rue de la Tombe Issoire 75014 Paris"
+  },
+  "rue Borrego|20": {
+    "lat": 48.873141,
+    "lon": 2.400675,
+    "score": 0.78925,
+    "label": "Rue du Borrégo 75020 Paris"
+  },
+  "rue Louis Blanc|10": {
+    "lat": 48.881355,
+    "lon": 2.364637,
+    "score": 0.9755481818181817,
+    "label": "Rue Louis Blanc 75010 Paris"
+  },
+  "rue de Valenciennes|10": {
+    "lat": 48.878213,
+    "lon": 2.35533,
+    "score": 0.9679390909090908,
+    "label": "Rue de Valenciennes 75010 Paris"
+  },
+  "Lycée municipal Lucas de Nehou|5": {
+    "lat": 48.83811,
+    "lon": 2.349459,
+    "score": 0.36871363636363635,
+    "label": "Rue Pascal 75005 Paris"
+  },
+  "rue Modigliani|15": {
+    "lat": 48.838417,
+    "lon": 2.279393,
+    "score": 0.973592727272727,
+    "label": "Rue Modigliani 75015 Paris"
+  },
+  "place Félix Eboué|12": {
+    "lat": 48.83951,
+    "lon": 2.3959,
+    "score": 0.9704963636363636,
+    "label": "Place Félix Éboué 75012 Paris"
+  },
+  "stade Max Rousié|17": {
+    "lat": 48.884552,
+    "lon": 2.31783,
+    "score": 0.4658314876033058,
+    "label": "Rue de Rome 75017 Paris"
+  },
+  "Rue Saint|4": {
+    "lat": 48.865681,
+    "lon": 2.332449,
+    "score": 0.7112554545454546,
+    "label": "Rue Saint-Roch 75001 Paris"
+  },
+  "Place de la Résistance Sud et Nord|7": {
+    "lat": 48.861929,
+    "lon": 2.302019,
+    "score": 0.6489972727272726,
+    "label": "Place de la Résistance 75007 Paris"
+  },
+  "Boulevard de Strasbourg|10": {
+    "lat": 48.872517,
+    "lon": 2.356007,
+    "score": 0.97647,
+    "label": "Boulevard de Strasbourg 75010 Paris"
+  },
+  "rue de Tocqueville|17": {
+    "lat": 48.885967,
+    "lon": 2.309435,
+    "score": 0.9810045454545454,
+    "label": "Rue de Tocqueville 75017 Paris"
+  },
+  "Piscine Jean Boiteux|12": {
+    "lat": 48.848615,
+    "lon": 2.380732,
+    "score": 0.4544088995215311,
+    "label": "Rue de Citeaux 75012 Paris"
+  },
+  "Rue du Faubourg Saint|10": {
+    "lat": 48.876048,
+    "lon": 2.355794,
+    "score": 0.7603497607655503,
+    "label": "Rue du Faubourg Saint-Denis 75010 Paris"
+  },
+  "rue Victor Dejeante|20": {
+    "lat": 48.867172,
+    "lon": 2.410124,
+    "score": 0.9696945454545455,
+    "label": "Rue Victor Dejeante 75020 Paris"
+  },
+  "rue Baudricourt|13": {
+    "lat": 48.82626,
+    "lon": 2.363474,
+    "score": 0.9791072727272727,
+    "label": "Rue Baudricourt 75013 Paris"
+  },
+  "Bibliothèque Robert Sabatier|18": {
+    "lat": 48.891191,
+    "lon": 2.339682,
+    "score": 0.4339327272727272,
+    "label": "Place Robert Verdier 75018 Paris"
+  },
+  "médiathèque Jean Quarré|19": {
+    "lat": 48.876823,
+    "lon": 2.396494,
+    "score": 0.6475301298701298,
+    "label": "Rue Jean Quarré 75019 Paris"
+  },
+  "place de la Chapelle|18": {
+    "lat": 48.884835,
+    "lon": 2.359586,
+    "score": 0.9736245454545452,
+    "label": "Place de la Chapelle 75018 Paris"
+  },
+  "Rue Turbigo|3": {
+    "lat": 48.863638,
+    "lon": 2.347929,
+    "score": 0.7700445454545455,
+    "label": "Rue de Turbigo 75001 Paris"
+  },
+  "rue de la Bienfaisance|8": {
+    "lat": 48.876644,
+    "lon": 2.317174,
+    "score": 0.9700754545454545,
+    "label": "Rue de la Bienfaisance 75008 Paris"
+  },
+  "Rue Blanche|9": {
+    "lat": 48.880445,
+    "lon": 2.331742,
+    "score": 0.9745463636363635,
+    "label": "Rue Blanche 75009 Paris"
+  },
+  "Place Cambronne|15": {
+    "lat": 48.847595,
+    "lon": 2.301475,
+    "score": 0.969660909090909,
+    "label": "Place Cambronne 75015 Paris"
+  },
+  "Centre Sportif Bréguet|11": {
+    "lat": 48.857548,
+    "lon": 2.373789,
+    "score": 0.5342997402597401,
+    "label": "Rue Bréguet 75011 Paris"
+  },
+  "Gymnase Tristan Tzara|18": {
+    "lat": 48.895032,
+    "lon": 2.364414,
+    "score": 0.6919166310160427,
+    "label": "Rue Tristan Tzara 75018 Paris"
+  },
+  "boulevard Murat|16": {
+    "lat": 48.841065,
+    "lon": 2.259586,
+    "score": 0.9816727272727271,
+    "label": "Boulevard Murat 75016 Paris"
+  },
+  "rue de l'Asile Popincourt|11": {
+    "lat": 48.859851,
+    "lon": 2.374528,
+    "score": 0.9712818181818181,
+    "label": "Rue de l'Asile Popincourt 75011 Paris"
+  },
+  "rue de Palestine|19": {
+    "lat": 48.876264,
+    "lon": 2.3896,
+    "score": 0.9710627272727271,
+    "label": "Rue de Palestine 75019 Paris"
+  },
+  "rue Pierre Bourdan|12": {
+    "lat": 48.847008,
+    "lon": 2.391396,
+    "score": 0.9728745454545454,
+    "label": "Rue Pierre Bourdan 75012 Paris"
+  },
+  "rue Paul Bourget|13": {
+    "lat": 48.817466,
+    "lon": 2.357474,
+    "score": 0.9778181818181818,
+    "label": "Rue Paul Bourget 75013 Paris"
+  },
+  "Piscine Champerret|17": {
+    "lat": 48.88587,
+    "lon": 2.290556,
+    "score": 0.45315636363636363,
+    "label": "Place de la Porte de Champerret 75017 Paris"
+  },
+  "rue de Charonne|11": {
+    "lat": 48.854371,
+    "lon": 2.38358,
+    "score": 0.9819818181818181,
+    "label": "Rue de Charonne 75011 Paris"
+  },
+  "rue de Reuilly|12": {
+    "lat": 48.844758,
+    "lon": 2.389814,
+    "score": 0.9807290909090909,
+    "label": "Rue de Reuilly 75012 Paris"
+  },
+  "Centre sportif La Plaine|15": {
+    "lat": 48.829217,
+    "lon": 2.292299,
+    "score": 0.4836904812834224,
+    "label": "Avenue de la Porte de la Plaine 75015 Paris"
+  },
+  "rue de Tourtille|20": {
+    "lat": 48.871606,
+    "lon": 2.380916,
+    "score": 0.9769181818181818,
+    "label": "Rue de Tourtille 75020 Paris"
+  },
+  "rue des Meuniers|12": {
+    "lat": 48.834909,
+    "lon": 2.396137,
+    "score": 0.9768681818181817,
+    "label": "Rue des Meuniers 75012 Paris"
+  },
+  "avenue Boutroux|13": {
+    "lat": 48.822075,
+    "lon": 2.375246,
+    "score": 0.9755454545454544,
+    "label": "Avenue Boutroux 75013 Paris"
+  },
+  "rue Pascal|13": {
+    "lat": 48.834824,
+    "lon": 2.347946,
+    "score": 0.9774299999999999,
+    "label": "Rue Pascal 75013 Paris"
+  },
+  "Rue Marcadet|18": {
+    "lat": 48.891217,
+    "lon": 2.341752,
+    "score": 0.9846927272727272,
+    "label": "Rue Marcadet 75018 Paris"
+  },
+  "place du Cardinal Amette|15": {
+    "lat": 48.850824,
+    "lon": 2.29684,
+    "score": 0.9718681818181818,
+    "label": "Place du Cardinal Amette 75015 Paris"
+  },
+  "Centre sportif Max Rousié|17": {
+    "lat": 48.887141,
+    "lon": 2.311953,
+    "score": 0.3580977075098814,
+    "label": "Rue de Saussure 75017 Paris"
+  },
+  "rue Planchat|20": {
+    "lat": 48.854211,
+    "lon": 2.397786,
+    "score": 0.9791463636363636,
+    "label": "Rue Planchat 75020 Paris"
+  },
+  "12 rue Alquier|20": {
+    "lat": 48.861266,
+    "lon": 2.408376,
+    "score": 0.5121336363636364,
+    "label": "12 Allée Alquier-Debrousse 75020 Paris"
+  },
+  "Rue Froidevaux|14": {
+    "lat": 48.8358,
+    "lon": 2.327765,
+    "score": 0.9753427272727273,
+    "label": "Rue Froidevaux 75014 Paris"
+  },
+  "rue des Orteaux|20": {
+    "lat": 48.856349,
+    "lon": 2.403742,
+    "score": 0.9814227272727273,
+    "label": "Rue des Orteaux 75020 Paris"
+  },
+  "Place de la Bataille de Stalingrad|10": {
+    "lat": 48.883231,
+    "lon": 2.368976,
+    "score": 0.9644745454545453,
+    "label": "Place de la Bataille de Stalingrad 75010 Paris"
+  },
+  "Avenue Jean Jaurès|19": {
+    "lat": 48.886099,
+    "lon": 2.382839,
+    "score": 0.9843954545454544,
+    "label": "Avenue Jean Jaurès 75019 Paris"
+  },
+  "rue de l'Hôtel de Ville|4": {
+    "lat": 48.86398,
+    "lon": 2.334349,
+    "score": 0.5462744019138756,
+    "label": "Rue de l'Échelle 75001 Paris"
+  },
+  "avenue Vellefaux|10": {
+    "lat": 48.875068,
+    "lon": 2.370275,
+    "score": 0.714957165775401,
+    "label": "Avenue Claude Vellefaux 75010 Paris"
+  },
+  "rue Gutenberg|15": {
+    "lat": 48.843207,
+    "lon": 2.280394,
+    "score": 0.9805081818181818,
+    "label": "Rue Gutenberg 75015 Paris"
+  },
+  "place du Plan Climat|12": {
+    "lat": 48.84152,
+    "lon": 2.385112,
+    "score": 0.4090715742793791,
+    "label": "Rue du Charolais 75012 Paris"
+  },
+  "rue d'Enghein|10": {
+    "lat": 48.872035,
+    "lon": 2.350669,
+    "score": 0.7010336363636364,
+    "label": "Rue d'Enghien 75010 Paris"
+  },
+  "Place du Père|4": {
+    "lat": 48.856616,
+    "lon": 2.342374,
+    "score": 0.5282687683284457,
+    "label": "Place Dauphine 75001 Paris"
+  },
+  "rue Damesme|13": {
+    "lat": 48.823354,
+    "lon": 2.355378,
+    "score": 0.9793263636363635,
+    "label": "Rue Damesme 75013 Paris"
+  },
+  "rue du Maroc|19": {
+    "lat": 48.886613,
+    "lon": 2.369003,
+    "score": 0.9760563636363636,
+    "label": "Rue du Maroc 75019 Paris"
+  },
+  "boulevard Vincent Auriol|13": {
+    "lat": 48.833974,
+    "lon": 2.365265,
+    "score": 0.98317,
+    "label": "Boulevard Vincent Auriol 75013 Paris"
+  },
+  "rue Gassendi|14": {
+    "lat": 48.834487,
+    "lon": 2.326485,
+    "score": 0.9762190909090909,
+    "label": "Rue Gassendi 75014 Paris"
+  },
+  "boulevard Ney|18": {
+    "lat": 48.898088,
+    "lon": 2.347443,
+    "score": 0.9832163636363637,
+    "label": "Boulevard Ney 75018 Paris"
+  },
+  "Centre Sportif de la Grange|10": {
+    "lat": 48.875483,
+    "lon": 2.367366,
+    "score": 0.46678770053475926,
+    "label": "Rue de la Grange aux Belles 75010 Paris"
+  },
+  "avenue du Maine|14": {
+    "lat": 48.834522,
+    "lon": 2.324126,
+    "score": 0.9812127272727272,
+    "label": "Avenue du Maine 75014 Paris"
+  },
+  "rue Madame|6": {
+    "lat": 48.848929,
+    "lon": 2.331726,
+    "score": 0.9724481818181817,
+    "label": "Rue Madame 75006 Paris"
+  },
+  "place Cambronne et de ses abords|15": {
+    "lat": 48.847595,
+    "lon": 2.301475,
+    "score": 0.5552845877378435,
+    "label": "Place Cambronne 75015 Paris"
+  },
+  "Rue de Clignancourt|18": {
+    "lat": 48.889362,
+    "lon": 2.348213,
+    "score": 0.9823318181818181,
+    "label": "Rue de Clignancourt 75018 Paris"
+  },
+  "Rue de Bellevue|19": {
+    "lat": 48.879461,
+    "lon": 2.394251,
+    "score": 0.9759472727272727,
+    "label": "Rue de Bellevue 75019 Paris"
+  },
+  "rue Neuve Saint|4": {
+    "lat": 48.866106,
+    "lon": 2.33545,
+    "score": 0.6086112903225805,
+    "label": "Rue Sainte-Anne 75001 Paris"
+  },
+  "rue Cavé|18": {
+    "lat": 48.886765,
+    "lon": 2.354806,
+    "score": 0.9752072727272726,
+    "label": "Rue Cavé 75018 Paris"
+  },
+  "rue Richer|9": {
+    "lat": 48.874039,
+    "lon": 2.344995,
+    "score": 0.9718554545454544,
+    "label": "Rue Richer 75009 Paris"
+  },
+  "Boulevard périphérique|17": {
+    "lat": 48.883789,
+    "lon": 2.296433,
+    "score": 0.6056616216216215,
+    "label": "Boulevard Pereire 75017 Paris"
+  },
+  "rue Eugène Jumin|19": {
+    "lat": 48.887313,
+    "lon": 2.392429,
+    "score": 0.9746763636363636,
+    "label": "Rue Eugène Jumin 75019 Paris"
+  },
+  "rue Robert Estienne|8": {
+    "lat": 48.868785,
+    "lon": 2.304973,
+    "score": 0.9616854545454545,
+    "label": "Rue Robert Estienne 75008 Paris"
+  },
+  "Gymnase Îlot Saint|7": {
+    "lat": 48.858909,
+    "lon": 2.30165,
+    "score": 0.4902959893048129,
+    "label": "Rue Sédillot 75007 Paris"
+  },
+  "12 rue Fondary|15": {
+    "lat": 48.848406,
+    "lon": 2.292248,
+    "score": 0.9809563636363635,
+    "label": "12 Rue Fondary 75015 Paris"
+  },
+  "rue Saint|15": {
+    "lat": 48.835096,
+    "lon": 2.307897,
+    "score": 0.6969024475524476,
+    "label": "Rue Saint-Amand 75015 Paris"
+  },
+  "rue Miromesnil|8": {
+    "lat": 48.875749,
+    "lon": 2.315758,
+    "score": 0.794534025974026,
+    "label": "Rue de Miromesnil 75008 Paris"
+  },
+  "Rue Marbeuf|8": {
+    "lat": 48.868651,
+    "lon": 2.303879,
+    "score": 0.9691009090909091,
+    "label": "Rue Marbeuf 75008 Paris"
+  },
+  "Centre Sportif Courcelles|17": {
+    "lat": 48.883832,
+    "lon": 2.298436,
+    "score": 0.5301927716186253,
+    "label": "Rue de Courcelles 75017 Paris"
+  },
+  "place des Petits Pères|2": {
+    "lat": 48.86673,
+    "lon": 2.336731,
+    "score": 0.5334384257206208,
+    "label": "Rue des Petits Champs 75001 Paris"
+  },
+  "rue des Pyrénées|20": {
+    "lat": 48.862458,
+    "lon": 2.39913,
+    "score": 0.9864854545454546,
+    "label": "Rue des Pyrénées 75020 Paris"
+  },
+  "Rue du Renard|4": {
+    "lat": 48.860647,
+    "lon": 2.34371,
+    "score": 0.5612178996865204,
+    "label": "Rue du Roule 75001 Paris"
+  },
+  "rue de Tilsitt|8": {
+    "lat": 48.874349,
+    "lon": 2.296972,
+    "score": 0.9625972727272726,
+    "label": "Rue de Tilsitt 75008 Paris"
+  },
+  "stade Championnet|18": {
+    "lat": 48.895059,
+    "lon": 2.340214,
+    "score": 0.729469090909091,
+    "label": "Rue Championnet 75018 Paris"
+  },
+  "rue d' Alésia|14": {
+    "lat": 48.829184,
+    "lon": 2.324935,
+    "score": 0.9830472727272728,
+    "label": "Rue d'Alésia 75014 Paris"
+  },
+  "rue de l'Abbé Grégoire|6": {
+    "lat": 48.848372,
+    "lon": 2.324731,
+    "score": 0.9696109090909091,
+    "label": "Rue de l'Abbé Grégoire 75006 Paris"
+  },
+  "avenue de la Porte de Choisy|13": {
+    "lat": 48.818757,
+    "lon": 2.365707,
+    "score": 0.9731827272727271,
+    "label": "Avenue de la Porte de Choisy 75013 Paris"
+  },
+  "Rue Didot|14": {
+    "lat": 48.830064,
+    "lon": 2.317899,
+    "score": 0.9801381818181817,
+    "label": "Rue Didot 75014 Paris"
+  },
+  "rue de Belleville|20": {
+    "lat": 48.874663,
+    "lon": 2.391208,
+    "score": 0.9820645454545454,
+    "label": "Rue de Belleville 75020 Paris"
+  },
+  "Gymnase Doudeauville|18": {
+    "lat": 48.888585,
+    "lon": 2.35395,
+    "score": 0.6909456198347107,
+    "label": "Rue Doudeauville 75018 Paris"
+  },
+  "boulevard Malesherbes|8": {
+    "lat": 48.87578,
+    "lon": 2.318171,
+    "score": 0.9731454545454544,
+    "label": "Boulevard Malesherbes 75008 Paris"
+  },
+  "Stade Suzanne Lenglen|15": {
+    "lat": 48.846996,
+    "lon": 2.248322,
+    "score": 0.6520245454545455,
+    "label": "Rue Suzanne Lenglen 75016 Paris"
+  },
+  "place située au carrefour des rues Louis Blanc|10": {
+    "lat": 48.881355,
+    "lon": 2.364637,
+    "score": 0.4396630143540669,
+    "label": "Rue Louis Blanc 75010 Paris"
+  },
+  "41 rue de Chabrol|10": {
+    "lat": 48.876814,
+    "lon": 2.353019,
+    "score": 0.9748754545454544,
+    "label": "41 Rue de Chabrol 75010 Paris"
+  },
+  "Rue de Maubeuge|9": {
+    "lat": 48.878013,
+    "lon": 2.344634,
+    "score": 0.9736981818181817,
+    "label": "Rue de Maubeuge 75009 Paris"
+  },
+  "rue du Faubourg Saint Honoré|8": {
+    "lat": 48.872667,
+    "lon": 2.311581,
+    "score": 0.9761936363636362,
+    "label": "Rue du Faubourg Saint-Honoré 75008 Paris"
+  },
+  "place Paul Verlaine|13": {
+    "lat": 48.827612,
+    "lon": 2.352142,
+    "score": 0.970031818181818,
+    "label": "Place Paul Verlaine 75013 Paris"
+  },
+  "Quai Branly|7": {
+    "lat": 48.861841,
+    "lon": 2.299169,
+    "score": 0.9669327272727272,
+    "label": "Quai Branly 75007 Paris"
+  },
+  "rue Paul Dubois|3": {
+    "lat": 48.863598,
+    "lon": 2.34078,
+    "score": 0.5540544574780059,
+    "label": "Rue du Bouloi 75001 Paris"
+  },
+  "Place du Panthéon|5": {
+    "lat": 48.845939,
+    "lon": 2.34571,
+    "score": 0.966610909090909,
+    "label": "Place du Panthéon 75005 Paris"
+  },
+  "rue Bourdaloue|9": {
+    "lat": 48.87643,
+    "lon": 2.338613,
+    "score": 0.9638827272727272,
+    "label": "Rue Bourdaloue 75009 Paris"
+  },
+  "école des Tournelles|4": {
+    "lat": 48.85976,
+    "lon": 2.346704,
+    "score": 0.5079263636363636,
+    "label": "Rue des Halles 75001 Paris"
+  },
+  "rue Beauregard|2": {
+    "lat": 48.861413,
+    "lon": 2.345923,
+    "score": 0.4915263636363636,
+    "label": "Rue Berger 75001 Paris"
+  },
+  "rue Vigée|15": {
+    "lat": 48.838959,
+    "lon": 2.310587,
+    "score": 0.4953574641148325,
+    "label": "Rue Élisabeth Vigée Le Brun 75015 Paris"
+  },
+  "Place du Tertre|18": {
+    "lat": 48.886518,
+    "lon": 2.340671,
+    "score": 0.9720572727272727,
+    "label": "Place du Tertre 75018 Paris"
+  },
+  "rue Bruxelles|9": {
+    "lat": 48.883167,
+    "lon": 2.329825,
+    "score": 0.7887299999999998,
+    "label": "Rue de Bruxelles 75009 Paris"
+  },
+  "école des Épinettes|17": {
+    "lat": 48.895446,
+    "lon": 2.322646,
+    "score": 0.7315272727272727,
+    "label": "Rue des Épinettes 75017 Paris"
+  },
+  "rue Gandon|13": {
+    "lat": 48.820899,
+    "lon": 2.361133,
+    "score": 0.9775890909090909,
+    "label": "Rue Gandon 75013 Paris"
+  },
+  "Piscine Emile Anthoine|15": {
+    "lat": 48.846048,
+    "lon": 2.285527,
+    "score": 0.4596830820399113,
+    "label": "Rue Antoine Hajje 75015 Paris"
+  },
+  "rue Erard|12": {
+    "lat": 48.845868,
+    "lon": 2.385325,
+    "score": 0.9744281818181818,
+    "label": "Rue Érard 75012 Paris"
+  },
+  "Piscine Herbert|18": {
+    "lat": 48.885746,
+    "lon": 2.339299,
+    "score": 0.4891428445747801,
+    "label": "Rue Berthe 75018 Paris"
+  },
+  "avenue Maurice d'Ocagne|14": {
+    "lat": 48.824572,
+    "lon": 2.312946,
+    "score": 0.9678290909090908,
+    "label": "Avenue Maurice d'Ocagne 75014 Paris"
+  },
+  "rue des Dames|17": {
+    "lat": 48.883727,
+    "lon": 2.320925,
+    "score": 0.9805972727272726,
+    "label": "Rue des Dames 75017 Paris"
+  },
+  "10 rue de la Perle|3": {
+    "lat": 48.859586,
+    "lon": 2.361714,
+    "score": 0.7690463343108505,
+    "label": "10 Rue de la Perle 75003 Paris"
+  },
+  "Stade Parc des Princes|16": {
+    "lat": 48.840562,
+    "lon": 2.254107,
+    "score": 0.6437794235033258,
+    "label": "Avenue du Parc des Princes 75016 Paris"
+  },
+  "rue Hermel|18": {
+    "lat": 48.892531,
+    "lon": 2.345143,
+    "score": 0.9784245454545455,
+    "label": "Rue Hermel 75018 Paris"
+  },
+  "rue Laffitte|9": {
+    "lat": 48.873951,
+    "lon": 2.338008,
+    "score": 0.9714918181818181,
+    "label": "Rue Laffitte 75009 Paris"
+  },
+  "rue de Moussy|4": {
+    "lat": 48.866768,
+    "lon": 2.335063,
+    "score": 0.5518753665689149,
+    "label": "Rue des Moulins 75001 Paris"
+  },
+  "Avenue de Clichy|17": {
+    "lat": 48.890105,
+    "lon": 2.319866,
+    "score": 0.9826709090909089,
+    "label": "Avenue de Clichy 75017 Paris"
+  },
+  "Piscine Château Landon|10": {
+    "lat": 48.881813,
+    "lon": 2.363189,
+    "score": 0.6457506220095693,
+    "label": "Rue du Château Landon 75010 Paris"
+  },
+  "rue Saint|4": {
+    "lat": 48.865681,
+    "lon": 2.332449,
+    "score": 0.7112554545454546,
+    "label": "Rue Saint-Roch 75001 Paris"
+  },
+  "rue Championnet|18": {
+    "lat": 48.895059,
+    "lon": 2.340214,
+    "score": 0.9840145454545454,
+    "label": "Rue Championnet 75018 Paris"
+  },
+  "rue de la Condamine|17": {
+    "lat": 48.885922,
+    "lon": 2.321662,
+    "score": 0.8069700000000001,
+    "label": "Rue la Condamine 75017 Paris"
+  },
+  "Rue Poterne des Peupliers|13": {
+    "lat": 48.819748,
+    "lon": 2.352978,
+    "score": 0.7651787012987011,
+    "label": "Rue de la Poterne des Peupliers 75013 Paris"
+  },
+  "rue de l'Arbre Sec|1": {
+    "lat": 48.860325,
+    "lon": 2.342266,
+    "score": 0.965800909090909,
+    "label": "Rue de l'Arbre Sec 75001 Paris"
+  },
+  "rue de Lancry|10": {
+    "lat": 48.870848,
+    "lon": 2.361604,
+    "score": 0.9744618181818182,
+    "label": "Rue de Lancry 75010 Paris"
+  },
+  "Gymnase de la Cour des Lions|11": {
+    "lat": 48.864732,
+    "lon": 2.371469,
+    "score": 0.4098780960548885,
+    "label": "Rue de la Folie-Méricourt 75011 Paris"
+  },
+  "rue Saint|6": {
+    "lat": 48.854815,
+    "lon": 2.333011,
+    "score": 0.6637233333333332,
+    "label": "Rue Saint-Benoît 75006 Paris"
+  },
+  "16 cité Beauharnais|11": {
+    "lat": 48.853713,
+    "lon": 2.390251,
+    "score": 0.9765845454545454,
+    "label": "16 Cité Beauharnais 75011 Paris"
+  },
+  "rue Bréguet|11": {
+    "lat": 48.857548,
+    "lon": 2.373789,
+    "score": 0.9758581818181818,
+    "label": "Rue Bréguet 75011 Paris"
+  },
+  "rue Dautancourt|17": {
+    "lat": 48.889817,
+    "lon": 2.324696,
+    "score": 0.9756390909090907,
+    "label": "Rue Dautancourt 75017 Paris"
+  },
+  "188 rue d'Alésia|14": {
+    "lat": 48.832507,
+    "lon": 2.31281,
+    "score": 0.9830472727272728,
+    "label": "188 Rue d'Alésia 75014 Paris"
+  },
+  "rue Fessart|19": {
+    "lat": 48.876725,
+    "lon": 2.385265,
+    "score": 0.9783790909090908,
+    "label": "Rue Fessart 75019 Paris"
+  },
+  "rue du Colonel Moll|17": {
+    "lat": 48.87753,
+    "lon": 2.290387,
+    "score": 0.9725927272727272,
+    "label": "Rue du Colonel Moll 75017 Paris"
+  },
+  "rue Arthur Groussier|10": {
+    "lat": 48.871982,
+    "lon": 2.37069,
+    "score": 0.9694681818181818,
+    "label": "Rue Arthur Groussier 75010 Paris"
+  },
+  "place Jules Joffrin|18": {
+    "lat": 48.892437,
+    "lon": 2.344636,
+    "score": 0.9664945454545455,
+    "label": "Place Jules Joffrin 75018 Paris"
+  },
+  "rue des jardins Saint|4": {
+    "lat": 48.861148,
+    "lon": 2.348782,
+    "score": 0.5983587012987013,
+    "label": "Rue Saint-Denis 75001 Paris"
+  },
+  "Bibliothèque Forney|4": {
+    "lat": 48.866122,
+    "lon": 2.33559,
+    "score": 0.3852544226044226,
+    "label": "Rue Thérèse 75001 Paris"
+  },
+  "Gymnase Saint|4": {
+    "lat": 48.865681,
+    "lon": 2.332449,
+    "score": 0.5317833137829912,
+    "label": "Rue Saint-Roch 75001 Paris"
+  },
+  "Gymnase de la Grange|10": {
+    "lat": 48.875483,
+    "lon": 2.367366,
+    "score": 0.5305942148760331,
+    "label": "Rue de la Grange aux Belles 75010 Paris"
+  },
+  "Bibliothèque de l'Hôtel de Ville|4": {
+    "lat": 48.86398,
+    "lon": 2.334349,
+    "score": 0.4514459381044487,
+    "label": "Rue de l'Échelle 75001 Paris"
+  },
+  "rue Edgar Faure|15": {
+    "lat": 48.85259,
+    "lon": 2.29495,
+    "score": 0.9767436363636364,
+    "label": "Rue Edgar Faure 75015 Paris"
+  },
+  "Rue de la Sablière|14": {
+    "lat": 48.832017,
+    "lon": 2.322553,
+    "score": 0.9762981818181817,
+    "label": "Rue de la Sablière 75014 Paris"
+  },
+  "Rue des Acacias|17": {
+    "lat": 48.87712,
+    "lon": 2.291963,
+    "score": 0.9769990909090909,
+    "label": "Rue des Acacias 75017 Paris"
+  },
+  "Centre d'animation Nouvelle Athènes|9": {
+    "lat": 48.878015,
+    "lon": 2.328558,
+    "score": 0.43510999999999994,
+    "label": "Rue d'Athènes 75009 Paris"
+  },
+  "rue de la Glacière|13": {
+    "lat": 48.831679,
+    "lon": 2.344,
+    "score": 0.9818472727272728,
+    "label": "Rue de la Glacière 75013 Paris"
+  },
+  "rue Fondary|15": {
+    "lat": 48.847439,
+    "lon": 2.294922,
+    "score": 0.9809563636363635,
+    "label": "Rue Fondary 75015 Paris"
+  },
+  "avenue du Docteur Arnold Netter|12": {
+    "lat": 48.843999,
+    "lon": 2.405484,
+    "score": 0.9788263636363634,
+    "label": "Avenue du Docteur Arnold Netter 75012 Paris"
+  },
+  "Piscine Piscine Dunois|13": {
+    "lat": 48.831667,
+    "lon": 2.368401,
+    "score": 0.5144440259740258,
+    "label": "Rue Dunois 75013 Paris"
+  },
+  "rue Buffault|9": {
+    "lat": 48.875655,
+    "lon": 2.341939,
+    "score": 0.968340909090909,
+    "label": "Rue Buffault 75009 Paris"
+  },
+  "Lycée Théophile Gautier|4": {
+    "lat": 48.849655,
+    "lon": 2.272101,
+    "score": 0.6273946784922395,
+    "label": "Avenue Théophile Gautier 75016 Paris"
+  },
+  "rue Popincourt|11": {
+    "lat": 48.858471,
+    "lon": 2.37664,
+    "score": 0.9769427272727272,
+    "label": "Rue Popincourt 75011 Paris"
+  },
+  "4 rue Keller|11": {
+    "lat": 48.85362,
+    "lon": 2.376856,
+    "score": 0.9744327272727272,
+    "label": "4 Rue Keller 75011 Paris"
+  },
+  "rue de Ponthieu|8": {
+    "lat": 48.871239,
+    "lon": 2.307826,
+    "score": 0.9709436363636363,
+    "label": "Rue de Ponthieu 75008 Paris"
+  },
+  "Place de la République|3": {
+    "lat": 48.866155,
+    "lon": 2.332381,
+    "score": 0.4644936363636364,
+    "label": "Rue de la Sourdière 75001 Paris"
+  },
+  "rue de Marseille|10": {
+    "lat": 48.871545,
+    "lon": 2.36344,
+    "score": 0.9690136363636362,
+    "label": "Rue de Marseille 75010 Paris"
+  },
+  "rue Jean Bart|6": {
+    "lat": 48.847669,
+    "lon": 2.330996,
+    "score": 0.9654463636363635,
+    "label": "Rue Jean Bart 75006 Paris"
+  },
+  "Stade Charles Moureu|13": {
+    "lat": 48.827943,
+    "lon": 2.361981,
+    "score": 0.7365596694214877,
+    "label": "Rue Charles Moureu 75013 Paris"
+  },
+  "Médiathèque Edmond Rostand|17": {
+    "lat": 48.847715,
+    "lon": 2.340443,
+    "score": 0.49579917355371894,
+    "label": "Place Edmond Rostand 75006 Paris"
+  },
+  "rue des Blancs Manteaux|4": {
+    "lat": 48.859207,
+    "lon": 2.356372,
+    "score": 0.7861181818181816,
+    "label": "Rue des Blancs Manteaux 75004 Paris"
+  },
+  "rue de Sèvres|6": {
+    "lat": 48.849713,
+    "lon": 2.323592,
+    "score": 0.9720527272727272,
+    "label": "Rue de Sèvres 75006 Paris"
+  },
+  "rue Gerty Archimède|12": {
+    "lat": 48.835682,
+    "lon": 2.388097,
+    "score": 0.9707718181818181,
+    "label": "Rue Gerty Archimède 75012 Paris"
+  },
+  "rue de Bercy|12": {
+    "lat": 48.841285,
+    "lon": 2.377448,
+    "score": 0.9831518181818181,
+    "label": "Rue de Bercy 75012 Paris"
+  },
+  "8 rue François Mulard|13": {
+    "lat": 48.823546,
+    "lon": 2.349599,
+    "score": 0.4755454545454545,
+    "label": "8 Rue de la Fontaine à Mulard 75013 Paris"
+  },
+  "rue de Rochechouart|9": {
+    "lat": 48.879852,
+    "lon": 2.345809,
+    "score": 0.6642214412416851,
+    "label": "Rue Marguerite de Rochechouart 75009 Paris"
+  },
+  "Centre sportif Alfred Nakache|20": null,
+  "école Chernoviz|16": {
+    "lat": 48.857348,
+    "lon": 2.281775,
+    "score": 0.7049162337662338,
+    "label": "Rue Chernoviz 75016 Paris"
+  },
+  "Rue de l'Ermitage|20": {
+    "lat": 48.870931,
+    "lon": 2.392124,
+    "score": 0.9787309090909091,
+    "label": "Rue de l'Ermitage 75020 Paris"
+  },
+  "place Pierre Mac Orlan|18": {
+    "lat": 48.895415,
+    "lon": 2.362365,
+    "score": 0.9680236363636363,
+    "label": "Place Pierre Mac Orlan 75018 Paris"
+  },
+  "47 rue de l'Ermitage|20": {
+    "lat": 48.871105,
+    "lon": 2.39169,
+    "score": 0.9787309090909091,
+    "label": "47 Rue de l'Ermitage 75020 Paris"
+  },
+  "rue de Sully|4": {
+    "lat": 48.860647,
+    "lon": 2.34371,
+    "score": 0.5330047335423196,
+    "label": "Rue du Roule 75001 Paris"
+  },
+  "Rue Château|10": {
+    "lat": 48.871041,
+    "lon": 2.358422,
+    "score": 0.6472142521994135,
+    "label": "Rue du Château d'Eau 75010 Paris"
+  },
+  "rue Saint|2": {
+    "lat": 48.865681,
+    "lon": 2.332449,
+    "score": 0.7112554545454546,
+    "label": "Rue Saint-Roch 75001 Paris"
+  },
+  "Avenue Victor Hugo|16": {
+    "lat": 48.853882,
+    "lon": 2.269507,
+    "score": 0.4581836363636363,
+    "label": "Avenue Mozart 75016 Paris"
+  },
+  "rue Lancry|10": {
+    "lat": 48.870848,
+    "lon": 2.361604,
+    "score": 0.7812799999999999,
+    "label": "Rue de Lancry 75010 Paris"
+  },
+  "Rue Mazarine|6": {
+    "lat": 48.855167,
+    "lon": 2.33777,
+    "score": 0.9715536363636362,
+    "label": "Rue Mazarine 75006 Paris"
+  },
+  "école Grange|10": {
+    "lat": 48.875483,
+    "lon": 2.367366,
+    "score": 0.4648312638580931,
+    "label": "Rue de la Grange aux Belles 75010 Paris"
+  },
+  "Gymnase Georges Rigal|11": {
+    "lat": 48.852375,
+    "lon": 2.39146,
+    "score": 0.36277390243902435,
+    "label": "Passage Dumas 75011 Paris"
+  },
+  "rue Sextius Michel|15": {
+    "lat": 48.851103,
+    "lon": 2.288694,
+    "score": 0.9740481818181818,
+    "label": "Rue Sextius Michel 75015 Paris"
+  },
+  "place Françoise Dorléac|18": {
+    "lat": 48.900062,
+    "lon": 2.337333,
+    "score": 0.9700781818181817,
+    "label": "Place Françoise Dorléac 75018 Paris"
+  },
+  "Bibliothèque Marguerite Yourcenar|15": {
+    "lat": 48.852563,
+    "lon": 2.294426,
+    "score": 0.6256136363636363,
+    "label": "Allée Marguerite Yourcenar 75015 Paris"
+  },
+  "gymnase Jemmapes|10": {
+    "lat": 48.875883,
+    "lon": 2.366706,
+    "score": 0.5888066115702479,
+    "label": "Quai de Jemmapes 75010 Paris"
+  },
+  "Bibliothèque Paul Bourget|13": {
+    "lat": 48.817466,
+    "lon": 2.357474,
+    "score": 0.6436658476658477,
+    "label": "Rue Paul Bourget 75013 Paris"
+  },
+  "médiathèque Marguerite Yourcenar|15": {
+    "lat": 48.852563,
+    "lon": 2.294426,
+    "score": 0.6375817214700193,
+    "label": "Allée Marguerite Yourcenar 75015 Paris"
+  },
+  "Quai d'Austerlitz|13": {
+    "lat": 48.840839,
+    "lon": 2.369303,
+    "score": 0.9797836363636362,
+    "label": "Quai d'Austerlitz 75013 Paris"
+  },
+  "rue des Archives|4": {
+    "lat": 48.862299,
+    "lon": 2.359435,
+    "score": 0.7651100626959247,
+    "label": "Rue des Archives 75003 Paris"
+  },
+  "rue Dussoubs|2": {
+    "lat": 48.866068,
+    "lon": 2.349056,
+    "score": 0.7440281818181818,
+    "label": "Rue Dussoubs 75002 Paris"
+  },
+  "Piscine Alfred Nakache|20": null,
+  "rue du Commandant Schloesing|16": {
+    "lat": 48.861771,
+    "lon": 2.284323,
+    "score": 0.799111019955654,
+    "label": "Rue du Commandant Schloesing 75116 Paris"
+  },
+  "rue Boulard|14": {
+    "lat": 48.833409,
+    "lon": 2.328568,
+    "score": 0.9765272727272726,
+    "label": "Rue Boulard 75014 Paris"
+  },
+  "Rue de Trévise|9": {
+    "lat": 48.874277,
+    "lon": 2.345313,
+    "score": 0.9713963636363635,
+    "label": "Rue de Trévise 75009 Paris"
+  },
+  "rue Servan|11": {
+    "lat": 48.861403,
+    "lon": 2.382677,
+    "score": 0.9774627272727273,
+    "label": "Rue Servan 75011 Paris"
+  },
+  "rue Miollis|15": {
+    "lat": 48.845882,
+    "lon": 2.304062,
+    "score": 0.9771981818181817,
+    "label": "Rue Miollis 75015 Paris"
+  },
+  "bibliothèque Faidherbe|11": {
+    "lat": 48.852213,
+    "lon": 2.383385,
+    "score": 0.6199732085561497,
+    "label": "Rue Faidherbe 75011 Paris"
+  },
+  "15 rue des Bauches|16": {
+    "lat": 48.85598,
+    "lon": 2.273565,
+    "score": 0.9719318181818182,
+    "label": "15 Rue des Bauches 75016 Paris"
+  },
+  "mairie et mise en accessibilité|9": {
+    "lat": 48.878843,
+    "lon": 2.328227,
+    "score": 0.3726927272727273,
+    "label": "Rue de Milan 75009 Paris"
+  },
+  "Rue des Archives|3": {
+    "lat": 48.862299,
+    "lon": 2.359435,
+    "score": 0.7651100626959247,
+    "label": "Rue des Archives 75003 Paris"
+  },
+  "rue du Caporal Peugeot|17": {
+    "lat": 48.887435,
+    "lon": 2.289264,
+    "score": 0.971420909090909,
+    "label": "Rue du Caporal Peugeot 75017 Paris"
+  },
+  "Rue Saint Martin|3": {
+    "lat": 48.865681,
+    "lon": 2.332449,
+    "score": 0.5680736363636363,
+    "label": "Rue Saint-Roch 75001 Paris"
+  },
+  "rue Beccaria pour un accès embelli à Aligre|12": {
+    "lat": 48.847472,
+    "lon": 2.378972,
+    "score": 0.4124339393939394,
+    "label": "Rue Beccaria 75012 Paris"
+  },
+  "Médiathèque Musicale de Paris|1": {
+    "lat": 48.862916,
+    "lon": 2.34244,
+    "score": 0.41498909090909086,
+    "label": "Rue de Viarmes 75001 Paris"
+  },
+  "rue de Pontoise|5": {
+    "lat": 48.849576,
+    "lon": 2.351754,
+    "score": 0.9690381818181817,
+    "label": "Rue de Pontoise 75005 Paris"
+  },
+  "rue Ballu|9": {
+    "lat": 48.881939,
+    "lon": 2.32986,
+    "score": 0.9711981818181818,
+    "label": "Rue Ballu 75009 Paris"
+  },
+  "rue d'Estrées|7": {
+    "lat": 48.851462,
+    "lon": 2.310774,
+    "score": 0.96754,
+    "label": "Rue d'Estrées 75007 Paris"
+  },
+  "rue de la Perle|3": {
+    "lat": 48.859544,
+    "lon": 2.361627,
+    "score": 0.7577350649350648,
+    "label": "Rue de la Perle 75003 Paris"
+  },
+  "rue Claude Vellefaux|10": {
+    "lat": 48.875068,
+    "lon": 2.370275,
+    "score": 0.7665232467532467,
+    "label": "Avenue Claude Vellefaux 75010 Paris"
+  },
+  "rue de Grenelle|7": {
+    "lat": 48.856278,
+    "lon": 2.317069,
+    "score": 0.9774636363636363,
+    "label": "Rue de Grenelle 75007 Paris"
+  },
+  "Bibliothèque Buffon|5": {
+    "lat": 48.842214,
+    "lon": 2.360209,
+    "score": 0.5908783284457477,
+    "label": "Rue Buffon 75005 Paris"
+  },
+  "rue du Bac|7": {
+    "lat": 48.854898,
+    "lon": 2.325443,
+    "score": 0.9754572727272726,
+    "label": "Rue du Bac 75007 Paris"
+  },
+  "rue Mirbel|5": {
+    "lat": 48.840872,
+    "lon": 2.351627,
+    "score": 0.7736881818181817,
+    "label": "Rue de Mirbel 75005 Paris"
+  },
+  "rue du Grenier Saint|3": {
+    "lat": 48.861148,
+    "lon": 2.348782,
+    "score": 0.6141722994652407,
+    "label": "Rue Saint-Denis 75001 Paris"
+  },
+  "Rue des Martyrs|9": {
+    "lat": 48.879163,
+    "lon": 2.339856,
+    "score": 0.9737563636363635,
+    "label": "Rue des Martyrs 75009 Paris"
+  },
+  "rue du Val de Grâce|5": {
+    "lat": 48.841289,
+    "lon": 2.339404,
+    "score": 0.9677827272727273,
+    "label": "Rue du Val de Grâce 75005 Paris"
+  },
+  "rue Saint|1": {
+    "lat": 48.865681,
+    "lon": 2.332449,
+    "score": 0.7112554545454546,
+    "label": "Rue Saint-Roch 75001 Paris"
+  },
+  "rue Turgot|9": {
+    "lat": 48.880584,
+    "lon": 2.345205,
+    "score": 0.9693554545454546,
+    "label": "Rue Turgot 75009 Paris"
+  },
+  "rue Cambon|1": {
+    "lat": 48.86805,
+    "lon": 2.326727,
+    "score": 0.9654372727272728,
+    "label": "Rue Cambon 75001 Paris"
+  },
+  "rue Clausel|9": {
+    "lat": 48.879132,
+    "lon": 2.338466,
+    "score": 0.7420827272727272,
+    "label": "Rue Clauzel 75009 Paris"
+  },
+  "Piscine Jacqueline Auriol|8": {
+    "lat": 48.873328,
+    "lon": 2.319048,
+    "score": 0.4078875324675324,
+    "label": "Rue Roquépine 75008 Paris"
+  },
+  "Bibliothèque du Cinéma François Truffaut|1": {
+    "lat": 48.833628,
+    "lon": 2.386469,
+    "score": 0.5056975757575758,
+    "label": "Rue François Truffaut 75012 Paris"
+  },
+  "Rue de Montmartre|2": {
+    "lat": 48.864047,
+    "lon": 2.345564,
+    "score": 0.7847294805194804,
+    "label": "Rue Montmartre 75001 Paris"
+  },
+  "Piscine Saint|6": {
+    "lat": 48.847552,
+    "lon": 2.320854,
+    "score": 0.5421509090909091,
+    "label": "Rue Saint-Romain 75006 Paris"
+  },
+  "rue Lauriston|16": {
+    "lat": 48.869065,
+    "lon": 2.289667,
+    "score": 0.7638895104895104,
+    "label": "Rue Lauriston 75116 Paris"
+  },
+  "Piscine d'Auteuil|16": {
+    "lat": 48.847744,
+    "lon": 2.264724,
+    "score": 0.6702972727272727,
+    "label": "Rue d'Auteuil 75016 Paris"
+  },
+  "boulevard Voltaire|11": {
+    "lat": 48.856892,
+    "lon": 2.381633,
+    "score": 0.9838999999999999,
+    "label": "Boulevard Voltaire 75011 Paris"
+  },
+  "rue Mouffetard|5": {
+    "lat": 48.842202,
+    "lon": 2.349573,
+    "score": 0.9763227272727272,
+    "label": "Rue Mouffetard 75005 Paris"
+  },
+  "rue Gaston Rebuffat|19": {
+    "lat": 48.884788,
+    "lon": 2.36832,
+    "score": 0.9736981818181817,
+    "label": "Rue Gaston Rébuffat 75019 Paris"
+  },
+  "rue Emilie|19": {
+    "lat": 48.877246,
+    "lon": 2.398757,
+    "score": 0.5862054545454544,
+    "label": "Rue Émile Desvaux 75019 Paris"
+  },
+  "Médiathèque Vandamme|14": {
+    "lat": 48.839554,
+    "lon": 2.322872,
+    "score": 0.6243890909090909,
+    "label": "Rue Vandamme 75014 Paris"
+  },
+  "boulevard de Sébastopol|1": {
+    "lat": 48.860766,
+    "lon": 2.349244,
+    "score": 0.9641290909090909,
+    "label": "Boulevard de Sébastopol 75001 Paris"
+  },
+  "rue Montgallet|12": {
+    "lat": 48.843464,
+    "lon": 2.387671,
+    "score": 0.9752963636363636,
+    "label": "Rue Montgallet 75012 Paris"
+  },
+  "Piscine Roger Le Gall|12": {
+    "lat": 48.848152,
+    "lon": 2.371613,
+    "score": 0.40386528925619836,
+    "label": "Avenue Ledru-Rollin 75012 Paris"
+  },
+  "passage Goix|19": {
+    "lat": 48.884993,
+    "lon": 2.366213,
+    "score": 0.9726845454545453,
+    "label": "Passage Goix 75019 Paris"
+  },
+  "rue Jean Dolent|14": {
+    "lat": 48.833591,
+    "lon": 2.338737,
+    "score": 0.973450909090909,
+    "label": "Rue Jean Dolent 75014 Paris"
+  },
+  "avenue de l'Opéra|2": {
+    "lat": 48.865563,
+    "lon": 2.33447,
+    "score": 0.963300909090909,
+    "label": "Avenue de l'Opéra 75001 Paris"
+  },
+  "rue Drouot|9": {
+    "lat": 48.873605,
+    "lon": 2.340601,
+    "score": 0.9700563636363635,
+    "label": "Rue Drouot 75009 Paris"
+  },
+  "rue de Poissy|5": {
+    "lat": 48.849042,
+    "lon": 2.352524,
+    "score": 0.9693409090909091,
+    "label": "Rue de Poissy 75005 Paris"
+  },
+  "rue du Faubourg Saint|10": {
+    "lat": 48.876048,
+    "lon": 2.355794,
+    "score": 0.7603497607655503,
+    "label": "Rue du Faubourg Saint-Denis 75010 Paris"
+  },
+  "Médiathèque de la Canopée La Fontaine|1": {
+    "lat": 48.861693,
+    "lon": 2.34771,
+    "score": 0.44315575757575754,
+    "label": "Passage de la Canopée 75001 Paris"
+  },
+  "rue Poliveau|5": {
+    "lat": 48.840182,
+    "lon": 2.359085,
+    "score": 0.9727063636363635,
+    "label": "Rue Poliveau 75005 Paris"
+  },
+  "avenue de Versailles|16": {
+    "lat": 48.843794,
+    "lon": 2.268663,
+    "score": 0.9831463636363635,
+    "label": "Avenue de Versailles 75016 Paris"
+  },
+  "école Saint|3": {
+    "lat": 48.865681,
+    "lon": 2.332449,
+    "score": 0.5645469905956113,
+    "label": "Rue Saint-Roch 75001 Paris"
+  },
+  "centre sportif Suchet|16": {
+    "lat": 48.854746,
+    "lon": 2.263033,
+    "score": 0.430419955654102,
+    "label": "Boulevard Suchet 75016 Paris"
+  },
+  "Gymnase Saint|6": {
+    "lat": 48.854815,
+    "lon": 2.333011,
+    "score": 0.5039437190082644,
+    "label": "Rue Saint-Benoît 75006 Paris"
+  },
+  "rue des Arènes|5": {
+    "lat": 48.844952,
+    "lon": 2.354061,
+    "score": 0.9637199999999999,
+    "label": "Rue des Arènes 75005 Paris"
+  },
+  "rue Saint|7": {
+    "lat": 48.856218,
+    "lon": 2.323915,
+    "score": 0.6216505956112852,
+    "label": "Rue de Saint-Simon 75007 Paris"
+  },
+  "école des Amandiers et au collège Doisneau|20": {
+    "lat": 48.865731,
+    "lon": 2.389286,
+    "score": 0.45828049586776864,
+    "label": "Rue des Amandiers 75020 Paris"
+  },
+  "Centre sportif Jean Dame|2": {
+    "lat": 48.858638,
+    "lon": 2.346041,
+    "score": 0.41452401691331925,
+    "label": "Rue Jean Lantier 75001 Paris"
+  },
+  "41 avenue de Clichy|17": {
+    "lat": 48.88656,
+    "lon": 2.325838,
+    "score": 0.9826709090909089,
+    "label": "41 Avenue de Clichy 75017 Paris"
+  },
+  "Boulevard de la Somme|17": {
+    "lat": 48.887273,
+    "lon": 2.291802,
+    "score": 0.9702018181818182,
+    "label": "Boulevard de la Somme 75017 Paris"
+  },
+  "rue de l'Evangile|18": {
+    "lat": 48.894235,
+    "lon": 2.36664,
+    "score": 0.9807863636363635,
+    "label": "Rue de l'Évangile 75018 Paris"
+  },
+  "rue de l'ingénieur Robert Keller|15": {
+    "lat": 48.847753,
+    "lon": 2.282566,
+    "score": 0.9768618181818182,
+    "label": "Rue de l'Ingénieur Robert Keller 75015 Paris"
+  },
+  "Avenue de Saint|12": {
+    "lat": 48.844877,
+    "lon": 2.402696,
+    "score": 0.7364709090909092,
+    "label": "Avenue de Saint-Mandé 75012 Paris"
+  },
+  "Rue Van Gogh|12": {
+    "lat": 48.843941,
+    "lon": 2.371596,
+    "score": 0.9707718181818181,
+    "label": "Rue Van Gogh 75012 Paris"
+  },
+  "Rue de Viarmes|1": {
+    "lat": 48.862916,
+    "lon": 2.34244,
+    "score": 0.9604436363636364,
+    "label": "Rue de Viarmes 75001 Paris"
+  },
+  "Gymnase Chapelle International|18": {
+    "lat": 48.894392,
+    "lon": 2.359243,
+    "score": 0.42351298701298695,
+    "label": "Rue de la Chapelle 75018 Paris"
+  },
+  "centre sportif Charles Moureu|13": {
+    "lat": 48.827943,
+    "lon": 2.361981,
+    "score": 0.5931122077922079,
+    "label": "Rue Charles Moureu 75013 Paris"
+  },
+  "84 Boulevard Voltaire|11": {
+    "lat": 48.860711,
+    "lon": 2.374913,
+    "score": 0.9838999999999999,
+    "label": "84 Boulevard Voltaire 75011 Paris"
+  },
+  "Passage Boris Vian et des arcades de la rue de la Goutte d'Or|18": {
+    "lat": 48.885041,
+    "lon": 2.352689,
+    "score": 0.435608128342246,
+    "label": "Rue de la Goutte d'Or 75018 Paris"
+  },
+  "Rue du Faubourg Saint|11": {
+    "lat": 48.850899,
+    "lon": 2.380362,
+    "score": 0.72645,
+    "label": "Rue du Faubourg Saint-Antoine 75011 Paris"
+  },
+  "boulevard de Charonne|11": {
+    "lat": 48.853654,
+    "lon": 2.395785,
+    "score": 0.9780927272727271,
+    "label": "Boulevard de Charonne 75011 Paris"
+  },
+  "avenue Simon Bolivar|19": {
+    "lat": 48.876789,
+    "lon": 2.37789,
+    "score": 0.9816254545454545,
+    "label": "Avenue Simon Bolivar 75019 Paris"
+  },
+  "gymnase Glacière|13": {
+    "lat": 48.831679,
+    "lon": 2.344,
+    "score": 0.5636654545454545,
+    "label": "Rue de la Glacière 75013 Paris"
+  },
+  "Quai Aimé Cesaire|1": {
+    "lat": 48.861822,
+    "lon": 2.327641,
+    "score": 0.9594999999999999,
+    "label": "Quai Aimé Césaire 75001 Paris"
+  },
+  "Piscine Belliard|18": {
+    "lat": 48.896881,
+    "lon": 2.340048,
+    "score": 0.6651546708463949,
+    "label": "Rue Belliard 75018 Paris"
+  },
+  "Rue d'Aubervilliers|19": {
+    "lat": 48.892436,
+    "lon": 2.369711,
+    "score": 0.9825436363636362,
+    "label": "Rue d'Aubervilliers 75019 Paris"
+  },
+  "rue Surmelin|20": {
+    "lat": 48.868872,
+    "lon": 2.404689,
+    "score": 0.7931598601398601,
+    "label": "Rue du Surmelin 75020 Paris"
+  },
+  "rue Serpollet|20": {
+    "lat": 48.860841,
+    "lon": 2.411754,
+    "score": 0.9749818181818182,
+    "label": "Rue Serpollet 75020 Paris"
+  },
+  "rue Paradis|10": {
+    "lat": 48.875118,
+    "lon": 2.351868,
+    "score": 0.7861636363636363,
+    "label": "Rue de Paradis 75010 Paris"
+  },
+  "boulevard Berthier|17": {
+    "lat": 48.889637,
+    "lon": 2.302663,
+    "score": 0.9817518181818182,
+    "label": "Boulevard Berthier 75017 Paris"
+  },
+  "place Gilbert|14": {
+    "lat": 48.828914,
+    "lon": 2.330856,
+    "score": 0.4360341935483871,
+    "label": "Rue Bezout 75014 Paris"
+  },
+  "boulevard de Magenta|10": {
+    "lat": 48.876038,
+    "lon": 2.356278,
+    "score": 0.97892,
+    "label": "Boulevard de Magenta 75010 Paris"
+  },
+  "Médiathèque Beaugrenelle|15": {
+    "lat": 48.847718,
+    "lon": 2.285305,
+    "score": 0.6549054545454546,
+    "label": "Rue Beaugrenelle 75015 Paris"
+  },
+  "rue Maryse Hilsz|20": {
+    "lat": 48.850669,
+    "lon": 2.412791,
+    "score": 0.9751218181818182,
+    "label": "Rue Maryse Hilsz 75020 Paris"
+  },
+  "Stade Leon Biancotto|17": {
+    "lat": 48.880615,
+    "lon": 2.302546,
+    "score": 0.46294621621621623,
+    "label": "Rue Léon Jost 75017 Paris"
+  },
+  "rue Saint|11": {
+    "lat": 48.86447,
+    "lon": 2.378265,
+    "score": 0.7272509090909092,
+    "label": "Rue Saint-Maur 75011 Paris"
+  },
+  "Stade Elisabeth|14": {
+    "lat": 48.865932,
+    "lon": 2.359558,
+    "score": 0.4621745454545454,
+    "label": "Rue Sainte-Élisabeth 75003 Paris"
+  },
+  "avenue Parmentier|10": {
+    "lat": 48.871085,
+    "lon": 2.37023,
+    "score": 0.9704390909090908,
+    "label": "Avenue Parmentier 75010 Paris"
+  },
+  "stade de la Porte d'Asnières rénové|17": {
+    "lat": 48.891251,
+    "lon": 2.302401,
+    "score": 0.6822434879406306,
+    "label": "Avenue de la Porte d'Asnières 75017 Paris"
+  },
+  "gymnase sportif Rigoulot|15": {
+    "lat": 48.837985,
+    "lon": 2.308158,
+    "score": 0.3487946119733925,
+    "label": "Rue Dutot 75015 Paris"
+  },
+  "rue du Renard|4": {
+    "lat": 48.860647,
+    "lon": 2.34371,
+    "score": 0.5612178996865204,
+    "label": "Rue du Roule 75001 Paris"
+  },
+  "Boulevard de Sébastopol|1": {
+    "lat": 48.860766,
+    "lon": 2.349244,
+    "score": 0.9641290909090909,
+    "label": "Boulevard de Sébastopol 75001 Paris"
+  },
+  "rue Emile Levassor|13": {
+    "lat": 48.820608,
+    "lon": 2.368849,
+    "score": 0.9707918181818181,
+    "label": "Rue Émile Levassor 75013 Paris"
+  },
+  "rue de Mazagran et le parvis de La Poste Bonne Nouvelle|10": {
+    "lat": 48.870658,
+    "lon": 2.351677,
+    "score": 0.3829031404958677,
+    "label": "Rue de Mazagran 75010 Paris"
+  },
+  "avenue de la République|11": {
+    "lat": 48.864841,
+    "lon": 2.376682,
+    "score": 0.9799527272727271,
+    "label": "Avenue de la République 75011 Paris"
+  },
+  "rue Serge Prolokiev|16": {
+    "lat": 48.854149,
+    "lon": 2.268382,
+    "score": 0.7305369421487604,
+    "label": "Rue Serge Prokofiev 75016 Paris"
+  },
+  "155 boulevard Mac Donald|19": {
+    "lat": 48.898597,
+    "lon": 2.378321,
+    "score": 0.8247145454545454,
+    "label": "155 Boulevard Macdonald 75019 Paris"
+  },
+  "Rue du Ranelagh|16": {
+    "lat": 48.854803,
+    "lon": 2.273115,
+    "score": 0.9804945454545453,
+    "label": "Rue du Ranelagh 75016 Paris"
+  },
+  "avenue René Coty|14": {
+    "lat": 48.828987,
+    "lon": 2.334393,
+    "score": 0.9778163636363636,
+    "label": "Avenue René Coty 75014 Paris"
+  },
+  "Lycée Théophile Gaultier|4": {
+    "lat": 48.866122,
+    "lon": 2.33559,
+    "score": 0.4012863636363636,
+    "label": "Rue Thérèse 75001 Paris"
+  },
+  "passage des Recollets|10": {
+    "lat": 48.874145,
+    "lon": 2.359844,
+    "score": 0.9709354545454544,
+    "label": "Passage des Récollets 75010 Paris"
+  },
+  "Rue Léon Giraud|19": {
+    "lat": 48.887699,
+    "lon": 2.3824,
+    "score": 0.975480909090909,
+    "label": "Rue Léon Giraud 75019 Paris"
+  },
+  "Rue de Vaugirard|15": {
+    "lat": 48.839563,
+    "lon": 2.303163,
+    "score": 0.9863572727272727,
+    "label": "Rue de Vaugirard 75015 Paris"
+  },
+  "rue Paul Baudry|8": {
+    "lat": 48.872305,
+    "lon": 2.307168,
+    "score": 0.964300909090909,
+    "label": "Rue Paul Baudry 75008 Paris"
+  },
+  "rue Alleray|15": {
+    "lat": 48.837018,
+    "lon": 2.304701,
+    "score": 0.8222290909090908,
+    "label": "Rue d'Alleray 75015 Paris"
+  },
+  "Rue Mouzaia|19": {
+    "lat": 48.880225,
+    "lon": 2.394513,
+    "score": 0.7906754545454545,
+    "label": "Rue de Mouzaïa 75019 Paris"
+  },
+  "rue de l'Ourcq|19": {
+    "lat": 48.891605,
+    "lon": 2.378842,
+    "score": 0.982330909090909,
+    "label": "Rue de l'Ourcq 75019 Paris"
+  },
+  "Rue de Picardie|3": {
+    "lat": 48.866155,
+    "lon": 2.332381,
+    "score": 0.5463118181818182,
+    "label": "Rue de la Sourdière 75001 Paris"
+  },
+  "piscine Bernard Lafay|17": {
+    "lat": 48.87932,
+    "lon": 2.291132,
+    "score": 0.48747506493506493,
+    "label": "Place Tristan Bernard 75017 Paris"
+  },
+  "Place Saint|8": {
+    "lat": 48.875175,
+    "lon": 2.319722,
+    "score": 0.6363906158357772,
+    "label": "Place Saint-Augustin 75008 Paris"
+  },
+  "quai de l'Arsenal depuis la place de la Bastille|12": {
+    "lat": 48.852769,
+    "lon": 2.369945,
+    "score": 0.49401830985915485,
+    "label": "Place de la Bastille 75012 Paris"
+  },
+  "Piscine Bernard Lafay|17": {
+    "lat": 48.87932,
+    "lon": 2.291132,
+    "score": 0.48747506493506493,
+    "label": "Place Tristan Bernard 75017 Paris"
+  },
+  "Piscine Piscine Saint|6": {
+    "lat": 48.848644,
+    "lon": 2.325515,
+    "score": 0.5023112587412587,
+    "label": "Rue Saint-Placide 75006 Paris"
+  },
+  "Boulevard Saint Martin|3": {
+    "lat": 48.869488,
+    "lon": 2.326501,
+    "score": 0.4594999999999999,
+    "label": "Boulevard de la Madeleine 75001 Paris"
+  },
+  "rue du Général Lasalle|19": {
+    "lat": 48.87413,
+    "lon": 2.380481,
+    "score": 0.9703627272727272,
+    "label": "Rue du Général Lasalle 75019 Paris"
+  },
+  "rue Grange Bateliere|9": {
+    "lat": 48.873106,
+    "lon": 2.34183,
+    "score": 0.7443582309582308,
+    "label": "Rue de la Grange Batelière 75009 Paris"
+  },
+  "Bibliothèque des Francs Bourgeois|4": {
+    "lat": 48.857933,
+    "lon": 2.360719,
+    "score": 0.6155326885880077,
+    "label": "Rue des Francs Bourgeois 75003 Paris"
+  },
+  "rue Thouin|5": {
+    "lat": 48.844913,
+    "lon": 2.348883,
+    "score": 0.96687,
+    "label": "Rue Thouin 75005 Paris"
+  },
+  "rue d'Hauteville|10": {
+    "lat": 48.874085,
+    "lon": 2.350599,
+    "score": 0.9764236363636363,
+    "label": "Rue d'Hauteville 75010 Paris"
+  },
+  "avenue Emile Zola|15": {
+    "lat": 48.846571,
+    "lon": 2.286299,
+    "score": 0.9826381818181817,
+    "label": "Avenue Émile Zola 75015 Paris"
+  },
+  "rue Emelie|19": {
+    "lat": 48.889914,
+    "lon": 2.378735,
+    "score": 0.9695336363636362,
+    "label": "Rue Émélie 75019 Paris"
+  },
+  "Gymnase Hautpoul|19": {
+    "lat": 48.883946,
+    "lon": 2.387519,
+    "score": 0.6248312903225806,
+    "label": "Rue d'Hautpoul 75019 Paris"
+  },
+  "rue Emeriau|15": {
+    "lat": 48.849714,
+    "lon": 2.28626,
+    "score": 0.9795845454545453,
+    "label": "Rue Émeriau 75015 Paris"
+  },
+  "Avenue de Suffren|7": {
+    "lat": 48.852316,
+    "lon": 2.299485,
+    "score": 0.9724054545454546,
+    "label": "Avenue de Suffren 75007 Paris"
+  },
+  "Bibliothèque Germaine Tillion|16": {
+    "lat": 48.85373,
+    "lon": 2.280076,
+    "score": 0.39218909090909093,
+    "label": "Rue du Docteur Germain Sée 75016 Paris"
+  },
+  "Boulevard Pereire|17": {
+    "lat": 48.883789,
+    "lon": 2.296433,
+    "score": 0.9840399999999999,
+    "label": "Boulevard Pereire 75017 Paris"
+  },
+  "rue Pernety|14": {
+    "lat": 48.833937,
+    "lon": 2.318126,
+    "score": 0.9784445454545454,
+    "label": "Rue Pernety 75014 Paris"
+  },
+  "place de la visiophonie|13": {
+    "lat": 48.821528,
+    "lon": 2.364719,
+    "score": 0.5241830069930069,
+    "label": "Place de Vénétie 75013 Paris"
+  },
+  "rue Maurice Ripoche|14": {
+    "lat": 48.833269,
+    "lon": 2.323155,
+    "score": 0.9759736363636363,
+    "label": "Rue Maurice Ripoche 75014 Paris"
+  },
+  "place de pistes cyclables dans le cadre du plan la lutte contre la crise sanitaire|11": null,
+  "1 place Suzanne Valadon|18": {
+    "lat": 48.884669,
+    "lon": 2.342391,
+    "score": 0.9654799999999999,
+    "label": "1 Place Suzanne Valadon 75018 Paris"
+  },
+  "rue de Brantôme|3": {
+    "lat": 48.862916,
+    "lon": 2.34244,
+    "score": 0.4976337190082645,
+    "label": "Rue de Viarmes 75001 Paris"
+  },
+  "Piscine Piscine Saint|4": {
+    "lat": 48.866022,
+    "lon": 2.33172,
+    "score": 0.46911328159645227,
+    "label": "Rue Saint-Hyacinthe 75001 Paris"
+  },
+  "rue des Mariniers|14": {
+    "lat": 48.827026,
+    "lon": 2.312115,
+    "score": 0.9735945454545454,
+    "label": "Rue des Mariniers 75014 Paris"
+  },
+  "Passage de Thionville|19": {
+    "lat": 48.888082,
+    "lon": 2.382028,
+    "score": 0.9713763636363635,
+    "label": "Passage de Thionville 75019 Paris"
+  },
+  "Piscine Mathis|19": {
+    "lat": 48.890926,
+    "lon": 2.374429,
+    "score": 0.642830303030303,
+    "label": "Rue Mathis 75019 Paris"
+  },
+  "Avenue Marcel Proust|16": {
+    "lat": 48.856289,
+    "lon": 2.282807,
+    "score": 0.9731790909090908,
+    "label": "Avenue Marcel Proust 75016 Paris"
+  },
+  "Rue Gabrielle|18": {
+    "lat": 48.885826,
+    "lon": 2.340448,
+    "score": 0.9766790909090908,
+    "label": "Rue Gabrielle 75018 Paris"
+  },
+  "école Lagache|17": {
+    "lat": 48.892176,
+    "lon": 2.325394,
+    "score": 0.4799313286713286,
+    "label": "Rue du Capitaine Lagache 75017 Paris"
+  },
+  "rue aux enfants|20": {
+    "lat": 48.874293,
+    "lon": 2.39753,
+    "score": 0.4044372727272727,
+    "label": "Villa des Enfants Terribles 75020 Paris"
+  },
+  "Médiathèque Yourcenar|15": {
+    "lat": 48.852563,
+    "lon": 2.294426,
+    "score": 0.47220454545454543,
+    "label": "Allée Marguerite Yourcenar 75015 Paris"
+  },
+  "Rue des frères Flavien|20": {
+    "lat": 48.876173,
+    "lon": 2.412031,
+    "score": 0.9748372727272727,
+    "label": "Rue des Frères Flavien 75020 Paris"
+  },
+  "rue Blanche|9": {
+    "lat": 48.880445,
+    "lon": 2.331742,
+    "score": 0.9745463636363635,
+    "label": "Rue Blanche 75009 Paris"
+  },
+  "rue Saint Médard|5": {
+    "lat": 48.843638,
+    "lon": 2.350331,
+    "score": 0.9675709090909089,
+    "label": "Rue Saint-Médard 75005 Paris"
+  },
+  "Rue des Petits Champs|2": {
+    "lat": 48.86673,
+    "lon": 2.336731,
+    "score": 0.9635936363636363,
+    "label": "Rue des Petits Champs 75001 Paris"
+  },
+  "Rue Lantiez|17": {
+    "lat": 48.895289,
+    "lon": 2.324114,
+    "score": 0.9771536363636364,
+    "label": "Rue Lantiez 75017 Paris"
+  },
+  "rue Marsoulan|12": {
+    "lat": 48.846247,
+    "lon": 2.403137,
+    "score": 0.9735027272727272,
+    "label": "Rue Marsoulan 75012 Paris"
+  },
+  "Boulevard Saint Germain|6": {
+    "lat": 48.852969,
+    "lon": 2.336569,
+    "score": 0.9731490909090909,
+    "label": "Boulevard Saint-Germain 75006 Paris"
+  },
+  "rue Titon|11": {
+    "lat": 48.851782,
+    "lon": 2.386399,
+    "score": 0.9739272727272726,
+    "label": "Rue Titon 75011 Paris"
+  },
+  "rue de Rochechouard|9": {
+    "lat": 48.879852,
+    "lon": 2.345809,
+    "score": 0.5983213742071881,
+    "label": "Rue Marguerite de Rochechouart 75009 Paris"
+  },
+  "Médiathèque Marguerite Duras|20": {
+    "lat": 48.829329,
+    "lon": 2.380652,
+    "score": 0.5789302536997886,
+    "label": "Rue Marguerite Duras 75013 Paris"
+  },
+  "rue de Suresne|8": {
+    "lat": 48.871065,
+    "lon": 2.320386,
+    "score": 0.7831507692307692,
+    "label": "Rue de Surène 75008 Paris"
+  },
+  "rue des Boulangers|5": {
+    "lat": 48.846001,
+    "lon": 2.353247,
+    "score": 0.9706118181818182,
+    "label": "Rue des Boulangers 75005 Paris"
+  },
+  "Rue La Fayette|9": {
+    "lat": 48.87519,
+    "lon": 2.341288,
+    "score": 0.9743490909090909,
+    "label": "Rue la Fayette 75009 Paris"
+  },
+  "place Stalingrad avec des luminaires|19": {
+    "lat": 48.883205,
+    "lon": 2.370108,
+    "score": 0.4746191356184799,
+    "label": "Place de la Bataille de Stalingrad 75019 Paris"
+  },
+  "passage Dareau|14": {
+    "lat": 48.830786,
+    "lon": 2.335356,
+    "score": 0.9701509090909091,
+    "label": "Passage Dareau 75014 Paris"
+  },
+  "Médiathèque Saint|12": {
+    "lat": 48.844877,
+    "lon": 2.402696,
+    "score": 0.45085560975609756,
+    "label": "Avenue de Saint-Mandé 75012 Paris"
+  },
+  "rue Dunois|13": {
+    "lat": 48.831667,
+    "lon": 2.368401,
+    "score": 0.9793790909090909,
+    "label": "Rue Dunois 75013 Paris"
+  },
+  "piscine Mathis|19": {
+    "lat": 48.890926,
+    "lon": 2.374429,
+    "score": 0.642830303030303,
+    "label": "Rue Mathis 75019 Paris"
+  },
+  "Piscine Saint|4": {
+    "lat": 48.861148,
+    "lon": 2.348782,
+    "score": 0.5621626392961877,
+    "label": "Rue Saint-Denis 75001 Paris"
+  },
+  "passage Bullourde|11": {
+    "lat": 48.854743,
+    "lon": 2.377108,
+    "score": 0.9705009090909089,
+    "label": "Passage Bullourde 75011 Paris"
+  },
+  "Boulevard de la Chapelle|18": {
+    "lat": 48.884363,
+    "lon": 2.356763,
+    "score": 0.9784245454545455,
+    "label": "Boulevard de la Chapelle 75018 Paris"
+  },
+  "Rue Balard|15": {
+    "lat": 48.841425,
+    "lon": 2.277774,
+    "score": 0.9818163636363636,
+    "label": "Rue Balard 75015 Paris"
+  },
+  "rue Cambronne|15": {
+    "lat": 48.844067,
+    "lon": 2.302468,
+    "score": 0.9814490909090908,
+    "label": "Rue Cambronne 75015 Paris"
+  },
+  "Centre sportif Armand Massard|15": {
+    "lat": 48.842306,
+    "lon": 2.317492,
+    "score": 0.44669963249516437,
+    "label": "Rue Armand Moisant 75015 Paris"
+  },
+  "rue des Ecluses Saint|10": {
+    "lat": 48.876755,
+    "lon": 2.366965,
+    "score": 0.7330132167832167,
+    "label": "Rue des Écluses Saint-Martin 75010 Paris"
+  },
+  "Rue Auger|20": {
+    "lat": 48.851159,
+    "lon": 2.399449,
+    "score": 0.9726127272727272,
+    "label": "Rue Auger 75020 Paris"
+  },
+  "rue de l'Etoile|17": {
+    "lat": 48.877148,
+    "lon": 2.295654,
+    "score": 0.9738481818181818,
+    "label": "Rue de l'Étoile 75017 Paris"
+  },
+  "Rue Charles Leroy|13": {
+    "lat": 48.824879,
+    "lon": 2.351713,
+    "score": 0.6039923376623376,
+    "label": "Rue Charles Fourier 75013 Paris"
+  },
+  "Rue de la goutte d'Or|18": {
+    "lat": 48.885041,
+    "lon": 2.352689,
+    "score": 0.9789236363636363,
+    "label": "Rue de la Goutte d'Or 75018 Paris"
+  },
+  "Rue de Vaucouleurs|11": {
+    "lat": 48.869183,
+    "lon": 2.377523,
+    "score": 0.9739272727272726,
+    "label": "Rue de Vaucouleurs 75011 Paris"
+  },
+  "rue Caporal Peugeot|17": {
+    "lat": 48.887435,
+    "lon": 2.289264,
+    "score": 0.806131652892562,
+    "label": "Rue du Caporal Peugeot 75017 Paris"
+  },
+  "rue des Rigoles|20": {
+    "lat": 48.872543,
+    "lon": 2.392616,
+    "score": 0.97958,
+    "label": "Rue des Rigoles 75020 Paris"
+  },
+  "rue Saint|5": {
+    "lat": 48.843638,
+    "lon": 2.350331,
+    "score": 0.664540606060606,
+    "label": "Rue Saint-Médard 75005 Paris"
+  },
+  "Rue Saint|20": {
+    "lat": 48.858352,
+    "lon": 2.406735,
+    "score": 0.6768978787878788,
+    "label": "Rue Saint-Blaise 75020 Paris"
+  },
+  "rue Cugnot|18": {
+    "lat": 48.89231,
+    "lon": 2.365294,
+    "score": 0.9760590909090909,
+    "label": "Rue Cugnot 75018 Paris"
+  },
+  "rue Marcadet|18": {
+    "lat": 48.891217,
+    "lon": 2.341752,
+    "score": 0.9846927272727272,
+    "label": "Rue Marcadet 75018 Paris"
+  },
+  "Centre d'animation CPA Espace Beaujon|8": {
+    "lat": 48.875174,
+    "lon": 2.298847,
+    "score": 0.3859090909090909,
+    "label": "Rue Beaujon 75008 Paris"
+  },
+  "rue Saint Merri|4": {
+    "lat": 48.865681,
+    "lon": 2.332449,
+    "score": 0.5845692375366569,
+    "label": "Rue Saint-Roch 75001 Paris"
+  },
+  "rue des Francs Bourgeois|3": {
+    "lat": 48.857933,
+    "lon": 2.360719,
+    "score": 0.788202457002457,
+    "label": "Rue des Francs Bourgeois 75003 Paris"
+  },
+  "rue Bayen|17": {
+    "lat": 48.881332,
+    "lon": 2.292661,
+    "score": 0.9782281818181818,
+    "label": "Rue Bayen 75017 Paris"
+  },
+  "Médiathèque Edmond de Rostand|17": {
+    "lat": 48.847715,
+    "lon": 2.340443,
+    "score": 0.46731315280464214,
+    "label": "Place Edmond Rostand 75006 Paris"
+  },
+  "rue Victor Cousin|5": {
+    "lat": 48.847746,
+    "lon": 2.342356,
+    "score": 0.9660418181818181,
+    "label": "Rue Victor Cousin 75005 Paris"
+  },
+  "Médiathèque Buffon|5": {
+    "lat": 48.842214,
+    "lon": 2.360209,
+    "score": 0.6084736363636363,
+    "label": "Rue Buffon 75005 Paris"
+  },
+  "place Maréchal Achard|19": {
+    "lat": 48.873905,
+    "lon": 2.376306,
+    "score": 0.6911324675324675,
+    "label": "Place Marcel Achard 75019 Paris"
+  },
+  "rue de Tanger|19": {
+    "lat": 48.886783,
+    "lon": 2.369312,
+    "score": 0.9779,
+    "label": "Rue de Tanger 75019 Paris"
+  },
+  "Bibliothèque Chaptal|9": {
+    "lat": 48.880866,
+    "lon": 2.333135,
+    "score": 0.5978972727272727,
+    "label": "Rue Chaptal 75009 Paris"
+  },
+  "rue des Prouvaires|1": {
+    "lat": 48.861472,
+    "lon": 2.34416,
+    "score": 0.9587399999999998,
+    "label": "Rue des Prouvaires 75001 Paris"
+  },
+  "Rue Rodier|9": {
+    "lat": 48.87935,
+    "lon": 2.34331,
+    "score": 0.6779427272727273,
+    "label": "Rue Claude Rodier 75009 Paris"
+  },
+  "rue Charles Hermite|18": {
+    "lat": 48.899573,
+    "lon": 2.366711,
+    "score": 0.9759463636363637,
+    "label": "Rue Charles Hermite 75018 Paris"
+  },
+  "Gymnase Lavoisier|5": {
+    "lat": 48.840403,
+    "lon": 2.353175,
+    "score": 0.44745037433155077,
+    "label": "Rue Censier 75005 Paris"
+  },
+  "Rue de la Verrière|4": {
+    "lat": 48.860241,
+    "lon": 2.347369,
+    "score": 0.6616885714285714,
+    "label": "Rue de la Ferronnerie 75001 Paris"
+  },
+  "école Saint|17": {
+    "lat": 48.88708,
+    "lon": 2.321112,
+    "score": 0.5095998701298701,
+    "label": "Rue Nollet 75017 Paris"
+  },
+  "Bibliothèque Georges Brassens|14": {
+    "lat": 48.834487,
+    "lon": 2.326485,
+    "score": 0.3944009090909091,
+    "label": "Rue Gassendi 75014 Paris"
+  },
+  "rue Poissy|5": {
+    "lat": 48.849042,
+    "lon": 2.352524,
+    "score": 0.7761590909090909,
+    "label": "Rue de Poissy 75005 Paris"
+  },
+  "Bibliothèque Marguerite Audoux|3": null,
+  "rue Cognacq|7": {
+    "lat": 48.861813,
+    "lon": 2.303746,
+    "score": 0.7507567832167831,
+    "label": "Rue Cognacq-Jay 75007 Paris"
+  },
+  "place de pistes cyclables dans le cadre du plan la lutte contre la Opérations d'aménagement|9": {
+    "lat": 48.878714,
+    "lon": 2.337108,
+    "score": 0.3178081207028266,
+    "label": "Rue Notre-Dame de Lorette 75009 Paris"
+  },
+  "rue Thorel|2": {
+    "lat": 48.866122,
+    "lon": 2.33559,
+    "score": 0.5885241258741258,
+    "label": "Rue Thérèse 75001 Paris"
+  },
+  "rue Lobineau|6": {
+    "lat": 48.85173,
+    "lon": 2.336145,
+    "score": 0.9659254545454545,
+    "label": "Rue Lobineau 75006 Paris"
+  },
+  "rue des Pyrenées|20": {
+    "lat": 48.862458,
+    "lon": 2.39913,
+    "score": 0.9864854545454546,
+    "label": "Rue des Pyrénées 75020 Paris"
+  },
+  "Bibliothèque Amélie|7": {
+    "lat": 48.858849,
+    "lon": 2.307535,
+    "score": 0.5874719648093841,
+    "label": "Rue Amélie 75007 Paris"
+  },
+  "rue de Vitruve|20": {
+    "lat": 48.858456,
+    "lon": 2.405379,
+    "score": 0.7909781818181818,
+    "label": "Rue Vitruve 75020 Paris"
+  },
+  "Rue Montmartre|2": {
+    "lat": 48.864047,
+    "lon": 2.345564,
+    "score": 0.963300909090909,
+    "label": "Rue Montmartre 75001 Paris"
+  },
+  "Piscine Roger le Gall|12": {
+    "lat": 48.848152,
+    "lon": 2.371613,
+    "score": 0.40386528925619836,
+    "label": "Avenue Ledru-Rollin 75012 Paris"
+  },
+  "rue de Louvois|2": {
+    "lat": 48.868294,
+    "lon": 2.337199,
+    "score": 0.7478569696969697,
+    "label": "Rue de Louvois 75002 Paris"
+  },
+  "rue de Moscou|8": {
+    "lat": 48.880921,
+    "lon": 2.324313,
+    "score": 0.9696581818181818,
+    "label": "Rue de Moscou 75008 Paris"
+  },
+  "rue de la Jussienne|2": {
+    "lat": 48.865355,
+    "lon": 2.344318,
+    "score": 0.7675554545454545,
+    "label": "Rue de la Jussienne 75002 Paris"
+  },
+  "Bibliothèque Walser|9": {
+    "lat": 48.874039,
+    "lon": 2.344995,
+    "score": 0.43679051948051945,
+    "label": "Rue Richer 75009 Paris"
+  },
+  "avenue du docteur Arnold Netter|12": {
+    "lat": 48.843999,
+    "lon": 2.405484,
+    "score": 0.9788263636363634,
+    "label": "Avenue du Docteur Arnold Netter 75012 Paris"
+  },
+  "rue des Martyrs|9": {
+    "lat": 48.879163,
+    "lon": 2.339856,
+    "score": 0.9737563636363635,
+    "label": "Rue des Martyrs 75009 Paris"
+  },
+  "rue Eginhard|4": {
+    "lat": 48.854029,
+    "lon": 2.361764,
+    "score": 0.7387027272727272,
+    "label": "Rue Eginhard 75004 Paris"
+  },
+  "rue Marie Laurencin|12": {
+    "lat": 48.840181,
+    "lon": 2.40636,
+    "score": 0.9712772727272727,
+    "label": "Rue Marie Laurencin 75012 Paris"
+  },
+  "Bibliothèque Bibliothèque Charlotte Delbo|2": null,
+  "Gymnase Vaugirad Littré|6": {
+    "lat": 48.845327,
+    "lon": 2.324023,
+    "score": 0.4894809090909091,
+    "label": "Rue Littré 75006 Paris"
+  },
+  "rue Littré|6": {
+    "lat": 48.845327,
+    "lon": 2.324023,
+    "score": 0.9667536363636362,
+    "label": "Rue Littré 75006 Paris"
+  },
+  "école des Hospitalières Saint|4": {
+    "lat": 48.858019,
+    "lon": 2.358893,
+    "score": 0.5852523076923077,
+    "label": "Rue des Hospitalières Saint-Gervais 75004 Paris"
+  },
+  "Boulevard Sébastopol|2": {
+    "lat": 48.860766,
+    "lon": 2.349244,
+    "score": 0.801027486631016,
+    "label": "Boulevard de Sébastopol 75001 Paris"
+  },
+  "Médiathèque Jean Quarre|19": {
+    "lat": 48.876823,
+    "lon": 2.396494,
+    "score": 0.6475301298701298,
+    "label": "Rue Jean Quarré 75019 Paris"
+  },
+  "boulevard Davout|20": {
+    "lat": 48.855545,
+    "lon": 2.410207,
+    "score": 0.9837654545454544,
+    "label": "Boulevard Davout 75020 Paris"
+  },
+  "rue de la Sorbonne|5": {
+    "lat": 48.849307,
+    "lon": 2.343265,
+    "score": 0.9673490909090908,
+    "label": "Rue de la Sorbonne 75005 Paris"
+  },
+  "Rue d'Alsace|10": {
+    "lat": 48.878226,
+    "lon": 2.358332,
+    "score": 0.97283,
+    "label": "Rue d'Alsace 75010 Paris"
+  },
+  "Lycée Gautier|1": {
+    "lat": 48.858638,
+    "lon": 2.346041,
+    "score": 0.4270277922077922,
+    "label": "Rue Jean Lantier 75001 Paris"
+  },
+  "Place de la Bastille|11": {
+    "lat": 48.853711,
+    "lon": 2.370213,
+    "score": 0.9652136363636363,
+    "label": "Place de la Bastille 75011 Paris"
+  },
+  "Rue Royale|8": {
+    "lat": 48.868125,
+    "lon": 2.323074,
+    "score": 0.9666790909090909,
+    "label": "Rue Royale 75008 Paris"
+  },
+  "rue de la Guadeloupe|18": {
+    "lat": 48.890674,
+    "lon": 2.362116,
+    "score": 0.9711745454545454,
+    "label": "Rue de la Guadeloupe 75018 Paris"
+  },
+  "avenue Daumesnil|12": {
+    "lat": 48.841862,
+    "lon": 2.389319,
+    "score": 0.9844154545454544,
+    "label": "Avenue Daumesnil 75012 Paris"
+  },
+  "Rue Châteaudun|9": {
+    "lat": 48.876072,
+    "lon": 2.337153,
+    "score": 0.7945694805194805,
+    "label": "Rue de Châteaudun 75009 Paris"
+  },
+  "31 rue des Renaudes|17": {
+    "lat": 48.880699,
+    "lon": 2.297721,
+    "score": 0.9764145454545453,
+    "label": "31 Rue des Renaudes 75017 Paris"
+  },
+  "Boulevard Pasteur|15": {
+    "lat": 48.841918,
+    "lon": 2.313634,
+    "score": 0.9806118181818181,
+    "label": "Boulevard Pasteur 75015 Paris"
+  },
+  "Rue Ferdinand Flocon|18": {
+    "lat": 48.891497,
+    "lon": 2.345913,
+    "score": 0.971781818181818,
+    "label": "Rue Ferdinand Flocon 75018 Paris"
+  },
+  "Rue de la Bienfaisance|8": {
+    "lat": 48.876644,
+    "lon": 2.317174,
+    "score": 0.9700754545454545,
+    "label": "Rue de la Bienfaisance 75008 Paris"
+  },
+  "école Leon Biancotto|17": {
+    "lat": 48.880615,
+    "lon": 2.302546,
+    "score": 0.43094052631578944,
+    "label": "Rue Léon Jost 75017 Paris"
+  },
+  "Centre Sportif Docteurs Dejerine|20": {
+    "lat": 48.855618,
+    "lon": 2.411959,
+    "score": 0.436290826446281,
+    "label": "Rue des Docteurs Augusta et Jules Dejerine 75020 Paris"
+  },
+  "rue Chaptal|9": {
+    "lat": 48.880866,
+    "lon": 2.333135,
+    "score": 0.9700563636363635,
+    "label": "Rue Chaptal 75009 Paris"
+  },
+  "Rue Pierre Foncin|20": {
+    "lat": 48.871445,
+    "lon": 2.40976,
+    "score": 0.971830909090909,
+    "label": "Rue Pierre Foncin 75020 Paris"
+  },
+  "rue Colette Magny|19": {
+    "lat": 48.894901,
+    "lon": 2.376402,
+    "score": 0.9742136363636363,
+    "label": "Rue Colette Magny 75019 Paris"
+  },
+  "place Mairies|5": {
+    "lat": 48.847323,
+    "lon": 2.347447,
+    "score": 0.4952572727272727,
+    "label": "Rue Laplace 75005 Paris"
+  },
+  "Médiathèque François Villon|10": {
+    "lat": 48.881355,
+    "lon": 2.364637,
+    "score": 0.3866153754940711,
+    "label": "Rue Louis Blanc 75010 Paris"
+  },
+  "rue Clisson|13": {
+    "lat": 48.831538,
+    "lon": 2.367134,
+    "score": 0.9789936363636363,
+    "label": "Rue Clisson 75013 Paris"
+  },
+  "place Jeanne d'Arc|13": {
+    "lat": 48.829823,
+    "lon": 2.368288,
+    "score": 0.9741136363636363,
+    "label": "Place Jeanne d'Arc 75013 Paris"
+  },
+  "rue Alphonse Baudin|11": {
+    "lat": 48.860672,
+    "lon": 2.370483,
+    "score": 0.9717372727272726,
+    "label": "Rue Alphonse Baudin 75011 Paris"
+  },
+  "Stade Jean|16": {
+    "lat": 48.850533,
+    "lon": 2.270553,
+    "score": 0.5028427272727273,
+    "label": "Rue Jean de la Fontaine 75016 Paris"
+  },
+  "rue d'Orsel|18": {
+    "lat": 48.88375,
+    "lon": 2.343415,
+    "score": 0.978010909090909,
+    "label": "Rue d'Orsel 75018 Paris"
+  },
+  "10 rue Rollin|5": {
+    "lat": 48.844749,
+    "lon": 2.350854,
+    "score": 0.9677827272727273,
+    "label": "10 Rue Rollin 75005 Paris"
+  },
+  "rue Vigee|15": {
+    "lat": 48.838959,
+    "lon": 2.310587,
+    "score": 0.4953574641148325,
+    "label": "Rue Élisabeth Vigée Le Brun 75015 Paris"
+  },
+  "rue Riblette|20": {
+    "lat": 48.859951,
+    "lon": 2.405636,
+    "score": 0.9732790909090909,
+    "label": "Rue Riblette 75020 Paris"
+  },
+  "Rue Dominique|7": {
+    "lat": 48.85924,
+    "lon": 2.311019,
+    "score": 0.7214436363636364,
+    "label": "Rue Saint-Dominique 75007 Paris"
+  },
+  "Piscine Gymnase Garancière|6": {
+    "lat": 48.85012,
+    "lon": 2.335841,
+    "score": 0.5401802097902098,
+    "label": "Rue Garancière 75006 Paris"
+  },
+  "Boulevard Malesherbes|17": {
+    "lat": 48.885772,
+    "lon": 2.306978,
+    "score": 0.9793836363636363,
+    "label": "Boulevard Malesherbes 75017 Paris"
+  },
+  "rue Gustave Dore|17": {
+    "lat": 48.886375,
+    "lon": 2.302934,
+    "score": 0.970851818181818,
+    "label": "Rue Gustave Doré 75017 Paris"
+  },
+  "place de Rungis|13": {
+    "lat": 48.822208,
+    "lon": 2.346774,
+    "score": 0.9725163636363636,
+    "label": "Place de Rungis 75013 Paris"
+  },
+  "Rue de Reuilly|12": {
+    "lat": 48.844758,
+    "lon": 2.389814,
+    "score": 0.9807290909090909,
+    "label": "Rue de Reuilly 75012 Paris"
+  },
+  "école aux sportifs les week|18": {
+    "lat": 48.889192,
+    "lon": 2.340082,
+    "score": 0.39612,
+    "label": "Rue des Saules 75018 Paris"
+  },
+  "rue Eugène Reisz|20": {
+    "lat": 48.856842,
+    "lon": 2.410914,
+    "score": 0.9701281818181816,
+    "label": "Rue Eugène Reisz 75020 Paris"
+  },
+  "Rue du Delta|9": {
+    "lat": 48.882438,
+    "lon": 2.348162,
+    "score": 0.9688763636363635,
+    "label": "Rue du Delta 75009 Paris"
+  },
+  "8 rue Henri Ribière|19": {
+    "lat": 48.876384,
+    "lon": 2.395499,
+    "score": 0.9736981818181817,
+    "label": "8 Rue Henri Ribière 75019 Paris"
+  },
+  "Gymnase des Lilas|19": {
+    "lat": 48.879207,
+    "lon": 2.396209,
+    "score": 0.6672790909090909,
+    "label": "Rue des Lilas 75019 Paris"
+  },
+  "rue Ricaut|13": {
+    "lat": 48.829762,
+    "lon": 2.361493,
+    "score": 0.9722709090909091,
+    "label": "Rue Ricaut 75013 Paris"
+  },
+  "Rue de Rennes|6": {
+    "lat": 48.848741,
+    "lon": 2.328502,
+    "score": 0.974290909090909,
+    "label": "Rue de Rennes 75006 Paris"
+  },
+  "rue Henri Noguères|19": {
+    "lat": 48.88467,
+    "lon": 2.374662,
+    "score": 0.9690545454545454,
+    "label": "Rue Henri Noguères 75019 Paris"
+  },
+  "Médiathèque André Malraux|6": {
+    "lat": 48.853905,
+    "lon": 2.339077,
+    "score": 0.4745950997782705,
+    "label": "Rue André Mazet 75006 Paris"
+  },
+  "rue Barbanegre|19": {
+    "lat": 48.892644,
+    "lon": 2.383619,
+    "score": 0.9743736363636364,
+    "label": "Rue Barbanègre 75019 Paris"
+  },
+  "Gymnase de la Goutte d'Or|18": {
+    "lat": 48.885041,
+    "lon": 2.352689,
+    "score": 0.7157657416267942,
+    "label": "Rue de la Goutte d'Or 75018 Paris"
+  },
+  "rue de la pointe d'Ivry|13": {
+    "lat": 48.822703,
+    "lon": 2.364449,
+    "score": 0.9750254545454544,
+    "label": "Rue de la Pointe d'Ivry 75013 Paris"
+  },
+  "Mairie d'arrondissement|1": {
+    "lat": 48.868296,
+    "lon": 2.325602,
+    "score": 0.5512191699604743,
+    "label": "Rue Duphot 75001 Paris"
+  },
+  "rue Las Cases|7": {
+    "lat": 48.858432,
+    "lon": 2.320472,
+    "score": 0.9693827272727272,
+    "label": "Rue Las Cases 75007 Paris"
+  },
+  "Avenue Bugeaud|16": {
+    "lat": 48.844132,
+    "lon": 2.262335,
+    "score": 0.5358371074380165,
+    "label": "Avenue Despréaux 75016 Paris"
+  },
+  "rue soeur Catherine Marie|13": {
+    "lat": 48.829786,
+    "lon": 2.343086,
+    "score": 0.9717354545454545,
+    "label": "Rue Soeur Catherine Marie 75013 Paris"
+  },
+  "Bibliothèque Saint|12": {
+    "lat": 48.841495,
+    "lon": 2.375102,
+    "score": 0.47454636363636366,
+    "label": "Rue Villiot 75012 Paris"
+  },
+  "Gymnase Raymond Burgard|15": null,
+  "avenue Bugeaud|16": {
+    "lat": 48.844132,
+    "lon": 2.262335,
+    "score": 0.5358371074380165,
+    "label": "Avenue Despréaux 75016 Paris"
+  },
+  "rue Tchaikovski|18": {
+    "lat": 48.895106,
+    "lon": 2.365009,
+    "score": 0.9762754545454545,
+    "label": "Rue Tchaïkovski 75018 Paris"
+  },
+  "Rue Saint|17": {
+    "lat": 48.888737,
+    "lon": 2.324351,
+    "score": 0.7173809090909091,
+    "label": "Rue Saint-Jean 75017 Paris"
+  },
+  "avenue de la porte d'Ivry|13": {
+    "lat": 48.820611,
+    "lon": 2.371205,
+    "score": 0.9748854545454544,
+    "label": "Avenue de la Porte d'Ivry 75013 Paris"
+  },
+  "Lycée Pierre|1": {
+    "lat": 48.862392,
+    "lon": 2.348436,
+    "score": 0.539850909090909,
+    "label": "Rue Pierre Lescot 75001 Paris"
+  },
+  "rue de la Brèche aux Loups|12": {
+    "lat": 48.837549,
+    "lon": 2.39431,
+    "score": 0.9755836363636363,
+    "label": "Rue de la Brèche aux Loups 75012 Paris"
+  },
+  "Place Jussieu|5": {
+    "lat": 48.845961,
+    "lon": 2.354993,
+    "score": 0.9637199999999999,
+    "label": "Place Jussieu 75005 Paris"
+  },
+  "Rue Cino Del Duca|17": {
+    "lat": 48.884836,
+    "lon": 2.283772,
+    "score": 0.9729881818181817,
+    "label": "Rue Cino Del Duca 75017 Paris"
+  },
+  "rue Falguiere|15": {
+    "lat": 48.840208,
+    "lon": 2.31336,
+    "score": 0.9826054545454546,
+    "label": "Rue Falguière 75015 Paris"
+  },
+  "place Sainte|5": {
+    "lat": 48.846727,
+    "lon": 2.347451,
+    "score": 0.6211906611570248,
+    "label": "Place Sainte-Geneviève 75005 Paris"
+  },
+  "Place René Char|7": {
+    "lat": 48.856044,
+    "lon": 2.325543,
+    "score": 0.9612381818181817,
+    "label": "Place René Char 75007 Paris"
+  },
+  "Rue d'Alésia|14": {
+    "lat": 48.829184,
+    "lon": 2.324935,
+    "score": 0.9830472727272728,
+    "label": "Rue d'Alésia 75014 Paris"
+  },
+  "Passage Monplaisir|20": {
+    "lat": 48.865627,
+    "lon": 2.385686,
+    "score": 0.9705236363636364,
+    "label": "Passage Monplaisir 75020 Paris"
+  },
+  "rue de l'Aqueduc|10": {
+    "lat": 48.881939,
+    "lon": 2.362952,
+    "score": 0.9757154545454546,
+    "label": "Rue de l'Aqueduc 75010 Paris"
+  },
+  "rue Blomet|15": {
+    "lat": 48.841024,
+    "lon": 2.301268,
+    "score": 0.9840109090909089,
+    "label": "Rue Blomet 75015 Paris"
+  },
+  "Gymnase Commandant Mouchotte|14": {
+    "lat": 48.838728,
+    "lon": 2.32011,
+    "score": 0.6163058627087198,
+    "label": "Rue du Commandant René Mouchotte 75014 Paris"
+  },
+  "Rue de l'Arbalète|5": {
+    "lat": 48.840062,
+    "lon": 2.348162,
+    "score": 0.9703845454545453,
+    "label": "Rue de l'Arbalète 75005 Paris"
+  },
+  "Rue Ledion|14": {
+    "lat": 48.827267,
+    "lon": 2.316048,
+    "score": 0.9742545454545454,
+    "label": "Rue Ledion 75014 Paris"
+  },
+  "Rue du Faubourg|10": {
+    "lat": 48.870012,
+    "lon": 2.370774,
+    "score": 0.6571327272727272,
+    "label": "Rue du Faubourg du Temple 75010 Paris"
+  },
+  "Place de la Concorde|8": {
+    "lat": 48.867063,
+    "lon": 2.321554,
+    "score": 0.9605436363636363,
+    "label": "Place de la Concorde 75008 Paris"
+  },
+  "Centre Sportif Carpentier|13": {
+    "lat": 48.831958,
+    "lon": 2.347611,
+    "score": 0.36639429752066116,
+    "label": "Rue Corvisart 75013 Paris"
+  },
+  "Rue Clisson|13": {
+    "lat": 48.831538,
+    "lon": 2.367134,
+    "score": 0.9789936363636363,
+    "label": "Rue Clisson 75013 Paris"
+  },
+  "boulevard Lefebre|15": {
+    "lat": 48.830153,
+    "lon": 2.295753,
+    "score": 0.8100718181818182,
+    "label": "Boulevard Lefebvre 75015 Paris"
+  },
+  "rue Moussy|1": {
+    "lat": 48.862892,
+    "lon": 2.34803,
+    "score": 0.5471623376623376,
+    "label": "Rue Mondétour 75001 Paris"
+  },
+  "Rue Gustave Zede|16": {
+    "lat": 48.855679,
+    "lon": 2.272618,
+    "score": 0.9714263636363637,
+    "label": "Rue Gustave Zédé 75016 Paris"
+  },
+  "rue Olivier Metra|20": {
+    "lat": 48.87324,
+    "lon": 2.393913,
+    "score": 0.9786045454545453,
+    "label": "Rue Olivier Métra 75020 Paris"
+  },
+  "rue des Tournelles|1": {
+    "lat": 48.85976,
+    "lon": 2.346704,
+    "score": 0.615880909090909,
+    "label": "Rue des Halles 75001 Paris"
+  },
+  "Rue de Picpus|12": {
+    "lat": 48.841428,
+    "lon": 2.398579,
+    "score": 0.982241818181818,
+    "label": "Rue de Picpus 75012 Paris"
+  },
+  "rue Vicq d'Azir|10": {
+    "lat": 48.876121,
+    "lon": 2.370393,
+    "score": 0.9715227272727273,
+    "label": "Rue Vicq d'Azir 75010 Paris"
+  },
+  "rue du Faubourg|10": {
+    "lat": 48.870012,
+    "lon": 2.370774,
+    "score": 0.6571327272727272,
+    "label": "Rue du Faubourg du Temple 75010 Paris"
+  },
+  "Avenue du Maine|14": {
+    "lat": 48.834522,
+    "lon": 2.324126,
+    "score": 0.9812127272727272,
+    "label": "Avenue du Maine 75014 Paris"
+  },
+  "Rue Germain Pilon|18": {
+    "lat": 48.883888,
+    "lon": 2.336723,
+    "score": 0.9753390909090908,
+    "label": "Rue Germain Pilon 75018 Paris"
+  },
+  "62 rue Cambronne|15": {
+    "lat": 48.843953,
+    "lon": 2.30205,
+    "score": 0.9814490909090908,
+    "label": "62 Rue Cambronne 75015 Paris"
+  },
+  "rue Fernand Widal|13": {
+    "lat": 48.818423,
+    "lon": 2.360635,
+    "score": 0.9685845454545453,
+    "label": "Rue Fernand Widal 75013 Paris"
+  },
+  "boulevard des Frères Voisin|15": {
+    "lat": 48.828008,
+    "lon": 2.270728,
+    "score": 0.9718681818181818,
+    "label": "Boulevard des Frères Voisin 75015 Paris"
+  },
+  "rue Boissière|16": {
+    "lat": 48.857619,
+    "lon": 2.275647,
+    "score": 0.551540909090909,
+    "label": "Rue Bois Le Vent 75016 Paris"
+  },
+  "Rue Sorbier|20": {
+    "lat": 48.866808,
+    "lon": 2.391571,
+    "score": 0.9767290909090909,
+    "label": "Rue Sorbier 75020 Paris"
+  },
+  "rue d' Estrées|7": {
+    "lat": 48.851462,
+    "lon": 2.310774,
+    "score": 0.96754,
+    "label": "Rue d'Estrées 75007 Paris"
+  },
+  "Boulevard Sébastopol|1": {
+    "lat": 48.860766,
+    "lon": 2.349244,
+    "score": 0.801027486631016,
+    "label": "Boulevard de Sébastopol 75001 Paris"
+  },
+  "Rue du Vieux Colombier|6": {
+    "lat": 48.851571,
+    "lon": 2.331322,
+    "score": 0.9669390909090909,
+    "label": "Rue du Vieux Colombier 75006 Paris"
+  },
+  "Avenue Victoria|1": {
+    "lat": 48.8581,
+    "lon": 2.346455,
+    "score": 0.9594999999999999,
+    "label": "Avenue Victoria 75001 Paris"
+  },
+  "Rue des Couronnes|20": {
+    "lat": 48.870505,
+    "lon": 2.385752,
+    "score": 0.9808354545454544,
+    "label": "Rue des Couronnes 75020 Paris"
+  },
+  "Gymnase Jean Verdier|10": {
+    "lat": 48.876478,
+    "lon": 2.362312,
+    "score": 0.4005943015521064,
+    "label": "Avenue de Verdun 75010 Paris"
+  },
+  "Boulevard Montparnasse|6": {
+    "lat": 48.843273,
+    "lon": 2.326486,
+    "score": 0.8138199999999999,
+    "label": "Boulevard du Montparnasse 75006 Paris"
+  },
+  "rue de la Perle|1": {
+    "lat": 48.859544,
+    "lon": 2.361627,
+    "score": 0.7577350649350648,
+    "label": "Rue de la Perle 75003 Paris"
+  },
+  "rue Eble|7": {
+    "lat": 48.849091,
+    "lon": 2.31367,
+    "score": 0.9656972727272727,
+    "label": "Rue Éblé 75007 Paris"
+  },
+  "rue de Passy|16": {
+    "lat": 48.858035,
+    "lon": 2.279779,
+    "score": 0.9794345454545453,
+    "label": "Rue de Passy 75016 Paris"
+  },
+  "rue Choderlos de Laclos|13": {
+    "lat": 48.832333,
+    "lon": 2.378724,
+    "score": 0.972010909090909,
+    "label": "Rue Choderlos de Laclos 75013 Paris"
+  },
+  "rue aux enfants|10": {
+    "lat": 48.870373,
+    "lon": 2.369577,
+    "score": 0.49604,
+    "label": "Rue d'Aix 75010 Paris"
+  },
+  "Piscine Dunois|13": {
+    "lat": 48.831667,
+    "lon": 2.368401,
+    "score": 0.6460457575757576,
+    "label": "Rue Dunois 75013 Paris"
+  },
+  "rue du Général Camou|7": {
+    "lat": 48.858964,
+    "lon": 2.299663,
+    "score": 0.9625463636363637,
+    "label": "Rue du Général Camou 75007 Paris"
+  },
+  "rue Falguière|15": {
+    "lat": 48.840208,
+    "lon": 2.31336,
+    "score": 0.9826054545454546,
+    "label": "Rue Falguière 75015 Paris"
+  },
+  "Rue des Frères Flavien|20": {
+    "lat": 48.876173,
+    "lon": 2.412031,
+    "score": 0.9748372727272727,
+    "label": "Rue des Frères Flavien 75020 Paris"
+  },
+  "Rue Auguste Comte|6": {
+    "lat": 48.844156,
+    "lon": 2.336925,
+    "score": 0.9639672727272727,
+    "label": "Rue Auguste Comte 75006 Paris"
+  },
+  "Gymnase Cevennes|15": {
+    "lat": 48.842762,
+    "lon": 2.279907,
+    "score": 0.5927120661157025,
+    "label": "Rue des Cévennes 75015 Paris"
+  },
+  "rue de l'Avé Maria|1": {
+    "lat": 48.860325,
+    "lon": 2.342266,
+    "score": 0.55671,
+    "label": "Rue de l'Arbre Sec 75001 Paris"
+  },
+  "Rue Perchamps|16": {
+    "lat": 48.848618,
+    "lon": 2.267557,
+    "score": 0.7666487012987011,
+    "label": "Rue des Perchamps 75016 Paris"
+  },
+  "boulevard Saint|7": {
+    "lat": 48.857136,
+    "lon": 2.325358,
+    "score": 0.6905584491978609,
+    "label": "Boulevard Saint-Germain 75007 Paris"
+  },
+  "rue de Belleville|19": {
+    "lat": 48.875062,
+    "lon": 2.392401,
+    "score": 0.9824118181818182,
+    "label": "Rue de Belleville 75019 Paris"
+  },
+  "Bibliothèque Couronnes|20": {
+    "lat": 48.870505,
+    "lon": 2.385752,
+    "score": 0.5669598564593301,
+    "label": "Rue des Couronnes 75020 Paris"
+  },
+  "rue des Lyonnais|5": {
+    "lat": 48.838361,
+    "lon": 2.34668,
+    "score": 0.9696254545454546,
+    "label": "Rue des Lyonnais 75005 Paris"
+  },
+  "rue du Faubourg|8": {
+    "lat": 48.872667,
+    "lon": 2.311581,
+    "score": 0.6125572727272727,
+    "label": "Rue du Faubourg Saint-Honoré 75008 Paris"
+  },
+  "Piscine Armand Massard|15": {
+    "lat": 48.842306,
+    "lon": 2.317492,
+    "score": 0.5137209090909091,
+    "label": "Rue Armand Moisant 75015 Paris"
+  },
+  "Rue faubourg Saint|11": {
+    "lat": 48.850899,
+    "lon": 2.380362,
+    "score": 0.6650863636363635,
+    "label": "Rue du Faubourg Saint-Antoine 75011 Paris"
+  },
+  "rue René Binet|18": {
+    "lat": 48.899342,
+    "lon": 2.340003,
+    "score": 0.9773936363636364,
+    "label": "Rue René Binet 75018 Paris"
+  },
+  "Gymnase Bernard Lafay|17": {
+    "lat": 48.891978,
+    "lon": 2.315156,
+    "score": 0.4673249002217295,
+    "label": "Rue Bernard Buffet 75017 Paris"
+  },
+  "passage Léon|18": {
+    "lat": 48.888552,
+    "lon": 2.353474,
+    "score": 0.6252836363636364,
+    "label": "Rue Léon 75018 Paris"
+  },
+  "Piscine Valeyre|9": {
+    "lat": 48.874952,
+    "lon": 2.34687,
+    "score": 0.42358727272727265,
+    "label": "Cité de Trévise 75009 Paris"
+  },
+  "Rue Littré|6": {
+    "lat": 48.845327,
+    "lon": 2.324023,
+    "score": 0.9667536363636362,
+    "label": "Rue Littré 75006 Paris"
+  },
+  "rue des Jardins Saint|1": {
+    "lat": 48.861148,
+    "lon": 2.348782,
+    "score": 0.5983587012987013,
+    "label": "Rue Saint-Denis 75001 Paris"
+  },
+  "Rue de Mogador|9": {
+    "lat": 48.874619,
+    "lon": 2.33128,
+    "score": 0.9700563636363635,
+    "label": "Rue de Mogador 75009 Paris"
+  },
+  "place des Petits Pères|1": {
+    "lat": 48.86673,
+    "lon": 2.336731,
+    "score": 0.5334384257206208,
+    "label": "Rue des Petits Champs 75001 Paris"
+  },
+  "Avenue de la porte d'Orléans|14": {
+    "lat": 48.820946,
+    "lon": 2.325587,
+    "score": 0.9659863636363635,
+    "label": "Avenue de la Porte d'Orléans 75014 Paris"
+  },
+  "rue de Monceau|8": {
+    "lat": 48.877918,
+    "lon": 2.311222,
+    "score": 0.9724454545454545,
+    "label": "Rue de Monceau 75008 Paris"
+  },
+  "Gymnase Valeyre|9": {
+    "lat": 48.878165,
+    "lon": 2.335972,
+    "score": 0.42137620320855607,
+    "label": "Rue d'Aumale 75009 Paris"
+  },
+  "Rue Lacharrière|11": {
+    "lat": 48.861892,
+    "lon": 2.377871,
+    "score": 0.9735072727272728,
+    "label": "Rue Lacharrière 75011 Paris"
+  },
+  "rue Buffaut|9": {
+    "lat": 48.875655,
+    "lon": 2.341939,
+    "score": 0.7751590909090909,
+    "label": "Rue Buffault 75009 Paris"
+  },
+  "rue de la Folie Régnault|11": {
+    "lat": 48.859336,
+    "lon": 2.386459,
+    "score": 0.9782499999999998,
+    "label": "Rue de la Folie-Regnault 75011 Paris"
+  },
+  "rue de Saussure|17": {
+    "lat": 48.887141,
+    "lon": 2.311953,
+    "score": 0.9826036363636363,
+    "label": "Rue de Saussure 75017 Paris"
+  },
+  "rue Antoine Chantin|14": {
+    "lat": 48.827209,
+    "lon": 2.322508,
+    "score": 0.9746090909090909,
+    "label": "Rue Antoine Chantin 75014 Paris"
+  },
+  "place de Budapest|9": {
+    "lat": 48.877244,
+    "lon": 2.327318,
+    "score": 0.9633472727272726,
+    "label": "Place de Budapest 75009 Paris"
+  },
+  "Rue Jules Joffrin|18": {
+    "lat": 48.892437,
+    "lon": 2.344636,
+    "score": 0.7221763636363636,
+    "label": "Place Jules Joffrin 75018 Paris"
+  },
+  "rue des Amandiers|20": {
+    "lat": 48.865731,
+    "lon": 2.389286,
+    "score": 0.9805945454545454,
+    "label": "Rue des Amandiers 75020 Paris"
+  },
+  "rue Hippolyte Maindron|14": {
+    "lat": 48.831713,
+    "lon": 2.321884,
+    "score": 0.9761390909090908,
+    "label": "Rue Hippolyte Maindron 75014 Paris"
+  },
+  "rue de Lafayette|10": {
+    "lat": 48.87994,
+    "lon": 2.359425,
+    "score": 0.7183364576802508,
+    "label": "Rue la Fayette 75010 Paris"
+  },
+  "Médiathèque Parmentier|11": {
+    "lat": 48.864171,
+    "lon": 2.375455,
+    "score": 0.6024443488943488,
+    "label": "Avenue Parmentier 75011 Paris"
+  },
+  "passage piéton aligné au trottoir|8": {
+    "lat": 48.873072,
+    "lon": 2.323521,
+    "score": 0.3461033766233766,
+    "label": "Rue Pasquier 75008 Paris"
+  },
+  "bibliothèque Charlotte Delbo|1": null,
+  "153 rue Cardinet|17": {
+    "lat": 48.890548,
+    "lon": 2.317129,
+    "score": 0.9832018181818182,
+    "label": "153 Rue Cardinet 75017 Paris"
+  },
+  "Gymnase Ortolan|5": {
+    "lat": 48.84324,
+    "lon": 2.350623,
+    "score": 0.6410528571428572,
+    "label": "Rue Ortolan 75005 Paris"
+  },
+  "Lycée municipal Lucas de Nehou Lycée municipal Lucas de Nehou|5": null,
+  "boulevard Pereire|17": {
+    "lat": 48.883789,
+    "lon": 2.296433,
+    "score": 0.9840399999999999,
+    "label": "Boulevard Pereire 75017 Paris"
+  },
+  "rue Curnonsky|17": {
+    "lat": 48.890152,
+    "lon": 2.295774,
+    "score": 0.97216,
+    "label": "Rue Curnonsky 75017 Paris"
+  },
+  "rue des Recollets|10": {
+    "lat": 48.874645,
+    "lon": 2.361148,
+    "score": 0.9716581818181818,
+    "label": "Rue des Récollets 75010 Paris"
+  },
+  "rue Saint Benoit|6": {
+    "lat": 48.854815,
+    "lon": 2.333011,
+    "score": 0.9667536363636362,
+    "label": "Rue Saint-Benoît 75006 Paris"
+  },
+  "boulevard de Belleville et ses contre|20": {
+    "lat": 48.869666,
+    "lon": 2.38031,
+    "score": 0.6483690909090909,
+    "label": "Boulevard de Belleville 75020 Paris"
+  },
+  "rue Orteaux|20": {
+    "lat": 48.856349,
+    "lon": 2.403742,
+    "score": 0.7646395104895104,
+    "label": "Rue des Orteaux 75020 Paris"
+  },
+  "rue Roquepine|8": {
+    "lat": 48.873328,
+    "lon": 2.319048,
+    "score": 0.9663290909090908,
+    "label": "Rue Roquépine 75008 Paris"
+  },
+  "rue Laure Diebold|8": {
+    "lat": 48.875738,
+    "lon": 2.305161,
+    "score": 0.9678590909090908,
+    "label": "Rue Laure Diebold 75008 Paris"
+  },
+  "rue Bleue|9": {
+    "lat": 48.875873,
+    "lon": 2.3464,
+    "score": 0.9693554545454546,
+    "label": "Rue Bleue 75009 Paris"
+  },
+  "rue de Charenton|12": {
+    "lat": 48.843283,
+    "lon": 2.383311,
+    "score": 0.9848218181818181,
+    "label": "Rue de Charenton 75012 Paris"
+  },
+  "11 rue Cailllaux|13": {
+    "lat": 48.822633,
+    "lon": 2.361318,
+    "score": 0.8548006060606059,
+    "label": "11 Rue Caillaux 75013 Paris"
+  },
+  "place Edmond|6": {
+    "lat": 48.847715,
+    "lon": 2.340443,
+    "score": 0.6565563049853372,
+    "label": "Place Edmond Rostand 75006 Paris"
+  },
+  "place Rodin|16": {
+    "lat": 48.853328,
+    "lon": 2.27097,
+    "score": 0.9673927272727273,
+    "label": "Place Rodin 75016 Paris"
+  },
+  "rue Cabanis|14": {
+    "lat": 48.830361,
+    "lon": 2.338746,
+    "score": 0.973450909090909,
+    "label": "Rue Cabanis 75014 Paris"
+  },
+  "Bibliothèque Charlotte Delbo|0": null,
+  "rue d'Argenteuil|0": {
+    "lat": 48.865459,
+    "lon": 2.333679,
+    "score": 0.9640018181818182,
+    "label": "Rue d'Argenteuil 75001 Paris"
+  },
+  "rue Saint|0": {
+    "lat": 48.886158,
+    "lon": 2.354211,
+    "score": 0.69811,
+    "label": "Rue Saint-Luc 75018 Paris"
+  },
+  "rue de Louvois|0": {
+    "lat": 48.868294,
+    "lon": 2.337199,
+    "score": 0.9599781818181817,
+    "label": "Rue de Louvois 75002 Paris"
+  },
+  "Rue du Temple|0": {
+    "lat": 48.863651,
+    "lon": 2.358599,
+    "score": 0.9736390909090907,
+    "label": "Rue du Temple 75003 Paris"
+  },
+  "Rue de Reaumur|0": {
+    "lat": 48.865362,
+    "lon": 2.356659,
+    "score": 0.7496361244019139,
+    "label": "Rue Réaumur 75003 Paris"
+  },
+  "Place André Malraux|0": {
+    "lat": 48.863916,
+    "lon": 2.335126,
+    "score": 0.9559854545454546,
+    "label": "Place André Malraux 75001 Paris"
+  },
+  "Rue de la Verrerie|0": {
+    "lat": 48.857935,
+    "lon": 2.353061,
+    "score": 0.9703945454545454,
+    "label": "Rue de la Verrerie 75004 Paris"
+  },
+  "rue Rambuteau|0": {
+    "lat": 48.861176,
+    "lon": 2.353619,
+    "score": 0.9670281818181817,
+    "label": "Rue Rambuteau 75003 Paris"
+  },
+  "rue des Barres|0": {
+    "lat": 48.855388,
+    "lon": 2.355384,
+    "score": 0.9645836363636363,
+    "label": "Rue des Barres 75004 Paris"
+  },
+  "rue des Blancs Manteaux|0": {
+    "lat": 48.859207,
+    "lon": 2.356372,
+    "score": 0.9679363636363635,
+    "label": "Rue des Blancs Manteaux 75004 Paris"
+  },
+  "Gymnase Saint|0": null,
+  "Boulevard Bourdon|0": {
+    "lat": 48.850065,
+    "lon": 2.366729,
+    "score": 0.9659936363636362,
+    "label": "Boulevard Bourdon 75004 Paris"
+  },
+  "Piscine Saint|0": null,
+  "rue Saint Roch|0": {
+    "lat": 48.865681,
+    "lon": 2.332449,
+    "score": 0.965800909090909,
+    "label": "Rue Saint-Roch 75001 Paris"
+  },
+  "bibliothèque Charlotte Delbo|0": null,
+  "école des Tournelles|0": {
+    "lat": 48.857346,
+    "lon": 2.367332,
+    "score": 0.6954281818181818,
+    "label": "Rue des Tournelles 75003 Paris"
+  },
+  "Rue Rollin|5": {
+    "lat": 48.844663,
+    "lon": 2.351036,
+    "score": 0.9677827272727273,
+    "label": "Rue Rollin 75005 Paris"
+  },
+  "rue Censier|5": {
+    "lat": 48.840403,
+    "lon": 2.353175,
+    "score": 0.9715145454545453,
+    "label": "Rue Censier 75005 Paris"
+  },
+  "rue Jean Calvin|5": {
+    "lat": 48.841566,
+    "lon": 2.34908,
+    "score": 0.9671163636363636,
+    "label": "Rue Jean Calvin 75005 Paris"
+  },
+  "Boulevard Saint Marcel|5": {
+    "lat": 48.838624,
+    "lon": 2.356958,
+    "score": 0.9716045454545453,
+    "label": "Boulevard Saint-Marcel 75005 Paris"
+  },
+  "Boulevard de Port|5": {
+    "lat": 48.838097,
+    "lon": 2.344768,
+    "score": 0.7364849732620321,
+    "label": "Boulevard de Port-Royal 75005 Paris"
+  },
+  "école Arbalète|5": {
+    "lat": 48.840062,
+    "lon": 2.348162,
+    "score": 0.5982254545454546,
+    "label": "Rue de l'Arbalète 75005 Paris"
+  },
+  "7 rue Jardinet|6": {
+    "lat": 48.852665,
+    "lon": 2.340008,
+    "score": 0.7831885714285713,
+    "label": "7 Rue du Jardinet 75006 Paris"
+  },
+  "42 rue Madame|6": {
+    "lat": 48.848942,
+    "lon": 2.331604,
+    "score": 0.9724481818181817,
+    "label": "42 Rue Madame 75006 Paris"
+  },
+  "rue Visconti|6": {
+    "lat": 48.855786,
+    "lon": 2.335602,
+    "score": 0.9674545454545455,
+    "label": "Rue Visconti 75006 Paris"
+  },
+  "Gymnase Vaugirard Littré|6": {
+    "lat": 48.847488,
+    "lon": 2.329531,
+    "score": 0.5481311188811189,
+    "label": "Rue de Vaugirard 75006 Paris"
+  },
+  "Rue Mabillon|6": {
+    "lat": 48.851975,
+    "lon": 2.335242,
+    "score": 0.9649109090909089,
+    "label": "Rue Mabillon 75006 Paris"
+  },
+  "Rue Saint|6": {
+    "lat": 48.854815,
+    "lon": 2.333011,
+    "score": 0.6637233333333332,
+    "label": "Rue Saint-Benoît 75006 Paris"
+  },
+  "Boulevard Raspail|6": {
+    "lat": 48.846738,
+    "lon": 2.328212,
+    "score": 0.9729590909090908,
+    "label": "Boulevard Raspail 75006 Paris"
+  },
+  "Rue de Grenelle|7": {
+    "lat": 48.856278,
+    "lon": 2.317069,
+    "score": 0.9774636363636363,
+    "label": "Rue de Grenelle 75007 Paris"
+  },
+  "Centre Sportif Cler|7": {
+    "lat": 48.857224,
+    "lon": 2.306193,
+    "score": 0.49742181818181813,
+    "label": "Rue Cler 75007 Paris"
+  },
+  "Boulevard Raspail|7": {
+    "lat": 48.853747,
+    "lon": 2.326163,
+    "score": 0.9699736363636364,
+    "label": "Boulevard Raspail 75007 Paris"
+  },
+  "Rue de l'Université|7": {
+    "lat": 48.859727,
+    "lon": 2.314879,
+    "score": 0.9776518181818181,
+    "label": "Rue de l'Université 75007 Paris"
+  },
+  "Bibliothèque Europe|8": {
+    "lat": 48.879008,
+    "lon": 2.323341,
+    "score": 0.3578864705882353,
+    "label": "Place de l'Europe - Simone Veil 75008 Paris"
+  },
+  "Rue de Ponthieu|8": {
+    "lat": 48.871239,
+    "lon": 2.307826,
+    "score": 0.9709436363636363,
+    "label": "Rue de Ponthieu 75008 Paris"
+  },
+  "Rue de la Ville L'Evèque|8": {
+    "lat": 48.871522,
+    "lon": 2.32044,
+    "score": 0.967590909090909,
+    "label": "Rue de la Ville l'Évêque 75008 Paris"
+  },
+  "Rue Saint Florentin|8": {
+    "lat": 48.867273,
+    "lon": 2.323988,
+    "score": 0.9621645454545454,
+    "label": "Rue Saint-Florentin 75008 Paris"
+  },
+  "Rue Chauveau Lagarde|8": {
+    "lat": 48.871478,
+    "lon": 2.32335,
+    "score": 0.9648363636363636,
+    "label": "Rue Chauveau-Lagarde 75008 Paris"
+  },
+  "École polyvalente Monceau|8": {
+    "lat": 48.877918,
+    "lon": 2.311222,
+    "score": 0.4929,
+    "label": "Rue de Monceau 75008 Paris"
+  },
+  "rue de la Rochefoucauld|9": {
+    "lat": 48.879048,
+    "lon": 2.334847,
+    "score": 0.6960104958677685,
+    "label": "Rue Catherine de la Rochefoucauld 75009 Paris"
+  },
+  "Rue La Bruyère|9": {
+    "lat": 48.87943,
+    "lon": 2.334233,
+    "score": 0.9723518181818182,
+    "label": "Rue la Bruyère 75009 Paris"
+  },
+  "Rue Condorcet|9": {
+    "lat": 48.879957,
+    "lon": 2.344612,
+    "score": 0.9735199999999999,
+    "label": "Rue Condorcet 75009 Paris"
+  },
+  "Rue Louise|9": {
+    "lat": 48.879296,
+    "lon": 2.343007,
+    "score": 0.40720090909090906,
+    "label": "Rue Louise-Émilie de La Tour d'Auvergne 75009 Paris"
+  },
+  "Gymnase Parmentier|10": {
+    "lat": 48.871085,
+    "lon": 2.37023,
+    "score": 0.6148241176470588,
+    "label": "Avenue Parmentier 75010 Paris"
+  },
+  "Rue Saint Vincent de Paul|10": {
+    "lat": 48.880685,
+    "lon": 2.352421,
+    "score": 0.970610909090909,
+    "label": "Rue Saint-Vincent de Paul 75010 Paris"
+  },
+  "Rue du Château d'Eau|10": {
+    "lat": 48.871041,
+    "lon": 2.358422,
+    "score": 0.97566,
+    "label": "Rue du Château d'Eau 75010 Paris"
+  },
+  "Rue des Vinaigrier et Poulmarch|10": {
+    "lat": 48.873211,
+    "lon": 2.360878,
+    "score": 0.5857338842975206,
+    "label": "Rue des Vinaigriers 75010 Paris"
+  },
+  "Rue Boy Zélensky|10": {
+    "lat": 48.877205,
+    "lon": 2.368271,
+    "score": 0.7664991536050156,
+    "label": "Rue Boy-Zelenski 75010 Paris"
+  },
+  "77 boulevard de Belleville|11": {
+    "lat": 48.871275,
+    "lon": 2.377435,
+    "score": 0.9748881818181817,
+    "label": "77 Boulevard de Belleville 75011 Paris"
+  },
+  "avenue Parmentier|11": {
+    "lat": 48.864171,
+    "lon": 2.375455,
+    "score": 0.9808227272727272,
+    "label": "Avenue Parmentier 75011 Paris"
+  },
+  "rue Duranti|11": {
+    "lat": 48.860644,
+    "lon": 2.383919,
+    "score": 0.9717372727272726,
+    "label": "Rue Duranti 75011 Paris"
+  },
+  "Avenue de la République|11": {
+    "lat": 48.864841,
+    "lon": 2.376682,
+    "score": 0.9799527272727271,
+    "label": "Avenue de la République 75011 Paris"
+  },
+  "Boulevard de Ménilmontant|11": {
+    "lat": 48.862914,
+    "lon": 2.386377,
+    "score": 0.9776427272727272,
+    "label": "Boulevard de Ménilmontant 75011 Paris"
+  },
+  "Rue de la Brèche aux Loups|12": {
+    "lat": 48.837549,
+    "lon": 2.39431,
+    "score": 0.9755836363636363,
+    "label": "Rue de la Brèche aux Loups 75012 Paris"
+  },
+  "Rue de Charenton|12": {
+    "lat": 48.843283,
+    "lon": 2.383311,
+    "score": 0.9848218181818181,
+    "label": "Rue de Charenton 75012 Paris"
+  },
+  "Quai de la Rapée|12": {
+    "lat": 48.842889,
+    "lon": 2.371617,
+    "score": 0.9761090909090908,
+    "label": "Quai de la Rapée 75012 Paris"
+  },
+  "Quai de Bercy|12": {
+    "lat": 48.834227,
+    "lon": 2.382079,
+    "score": 0.9780872727272726,
+    "label": "Quai de Bercy 75012 Paris"
+  },
+  "rue Glacière|13": {
+    "lat": 48.831679,
+    "lon": 2.344,
+    "score": 0.7216591849529781,
+    "label": "Rue de la Glacière 75013 Paris"
+  },
+  "31 rue Château des Rentiers|13": {
+    "lat": 48.824315,
+    "lon": 2.370176,
+    "score": 0.8328730376940133,
+    "label": "31 Rue du Château des Rentiers 75013 Paris"
+  },
+  "rue du Javelot|13": {
+    "lat": 48.825474,
+    "lon": 2.365435,
+    "score": 0.9760127272727273,
+    "label": "Rue du Javelot 75013 Paris"
+  },
+  "rue de la Pointe d'Ivry|13": {
+    "lat": 48.822703,
+    "lon": 2.364449,
+    "score": 0.9750254545454544,
+    "label": "Rue de la Pointe d'Ivry 75013 Paris"
+  },
+  "Rue Caillaux|13": {
+    "lat": 48.822567,
+    "lon": 2.360624,
+    "score": 0.9760127272727273,
+    "label": "Rue Caillaux 75013 Paris"
+  },
+  "Rue Jenner|13": {
+    "lat": 48.835168,
+    "lon": 2.362437,
+    "score": 0.9774299999999999,
+    "label": "Rue Jenner 75013 Paris"
+  },
+  "rue Watt|13": {
+    "lat": 48.827458,
+    "lon": 2.381093,
+    "score": 0.9739418181818181,
+    "label": "Rue Watt 75013 Paris"
+  },
+  "rue Bobillot|13": {
+    "lat": 48.826388,
+    "lon": 2.350917,
+    "score": 0.9810427272727272,
+    "label": "Rue Bobillot 75013 Paris"
+  },
+  "Mairie - Réaménagement de l'accueil du RDC et modernisation de l'installation électrique|14": null,
+  "Gymnase Alésia|14": {
+    "lat": 48.829184,
+    "lon": 2.324935,
+    "score": 0.6100065203761754,
+    "label": "Rue d'Alésia 75014 Paris"
+  },
+  "Gymnase Cange|14": {
+    "lat": 48.834356,
+    "lon": 2.31497,
+    "score": 0.5694660815047021,
+    "label": "Rue du Cange 75014 Paris"
+  },
+  "Rue Texel|14": {
+    "lat": 48.836421,
+    "lon": 2.320283,
+    "score": 0.7777142687747035,
+    "label": "Rue du Texel 75014 Paris"
+  },
+  "Rue Gassendi|14": {
+    "lat": 48.834487,
+    "lon": 2.326485,
+    "score": 0.9762190909090909,
+    "label": "Rue Gassendi 75014 Paris"
+  },
+  "boulevard Raspail|14": {
+    "lat": 48.838484,
+    "lon": 2.330925,
+    "score": 0.978540909090909,
+    "label": "Boulevard Raspail 75014 Paris"
+  },
+  "rue Theodore Deck|15": {
+    "lat": 48.837372,
+    "lon": 2.288846,
+    "score": 0.9783409090909091,
+    "label": "Rue Théodore Deck 75015 Paris"
+  },
+  "rue Mademoiselle|15": {
+    "lat": 48.843431,
+    "lon": 2.29813,
+    "score": 0.9808118181818182,
+    "label": "Rue Mademoiselle 75015 Paris"
+  },
+  "Gymnase Montparnasse|15": {
+    "lat": 48.845193,
+    "lon": 2.319667,
+    "score": 0.5238068921775898,
+    "label": "Boulevard du Montparnasse 75015 Paris"
+  },
+  "Rue Brancion|15": {
+    "lat": 48.832345,
+    "lon": 2.303482,
+    "score": 0.9822281818181818,
+    "label": "Rue Brancion 75015 Paris"
+  },
+  "Rue Léon Lhermitte|15": {
+    "lat": 48.842903,
+    "lon": 2.296821,
+    "score": 0.974460909090909,
+    "label": "Rue Léon Lhermitte 75015 Paris"
+  },
+  "Rue du général Castelnau|15": {
+    "lat": 48.850152,
+    "lon": 2.300539,
+    "score": 0.8156057894736842,
+    "label": "Rue du Général de Castelnau 75015 Paris"
+  },
+  "rue Olivier de Serres|15": {
+    "lat": 48.834163,
+    "lon": 2.295406,
+    "score": 0.9817372727272727,
+    "label": "Rue Olivier de Serres 75015 Paris"
+  },
+  "Mairie - Ravalement extérieur|16": {
+    "lat": 48.840591,
+    "lon": 2.260808,
+    "score": 0.3721681818181818,
+    "label": "Villa Émile Meyer 75016 Paris"
+  },
+  "Stade Christophe Dominici|16": null,
+  "Avenue de Versailles|16": {
+    "lat": 48.843794,
+    "lon": 2.268663,
+    "score": 0.9831463636363635,
+    "label": "Avenue de Versailles 75016 Paris"
+  },
+  "Avenue d'Iéna|16": {
+    "lat": 48.868215,
+    "lon": 2.295125,
+    "score": 0.7615086013986013,
+    "label": "Avenue d'Iéna 75116 Paris"
+  },
+  "Place Charles de Gaulle|16": {
+    "lat": 48.872916,
+    "lon": 2.29402,
+    "score": 0.7798799999999999,
+    "label": "Place Charles de Gaulle 75116 Paris"
+  },
+  "Boulevard Anatole France|16": {
+    "lat": 48.841065,
+    "lon": 2.259586,
+    "score": 0.5341202797202796,
+    "label": "Boulevard Murat 75016 Paris"
+  },
+  "Bibliothèque Colette Vivier|17": {
+    "lat": 48.893623,
+    "lon": 2.326573,
+    "score": 0.49187545454545456,
+    "label": "Rue Collette 75017 Paris"
+  },
+  "rue Tapisseries|17": {
+    "lat": 48.888599,
+    "lon": 2.307586,
+    "score": 0.7725927272727272,
+    "label": "Rue des Tapisseries 75017 Paris"
+  },
+  "20 rue Jouffroy d'Abbans|17": {
+    "lat": 48.8865,
+    "lon": 2.310897,
+    "score": 0.9804527272727271,
+    "label": "20 Rue Jouffroy d'Abbans 75017 Paris"
+  },
+  "boulevard Bessieres|17": {
+    "lat": 48.896728,
+    "lon": 2.321287,
+    "score": 0.9805618181818182,
+    "label": "Boulevard Bessières 75017 Paris"
+  },
+  "rue Christine de Pisan|17": {
+    "lat": 48.889919,
+    "lon": 2.308808,
+    "score": 0.9744363636363635,
+    "label": "Rue Christine de Pisan 75017 Paris"
+  },
+  "Rue de Rome|17": {
+    "lat": 48.884552,
+    "lon": 2.31783,
+    "score": 0.9782281818181818,
+    "label": "Rue de Rome 75017 Paris"
+  },
+  "Place Richard Barret|17": {
+    "lat": 48.884189,
+    "lon": 2.321607,
+    "score": 0.8475415835777126,
+    "label": "Place Richard Baret 75017 Paris"
+  },
+  "bibliothèque des Batignolles réaménagée et accessible|17": {
+    "lat": 48.885026,
+    "lon": 2.320797,
+    "score": 0.43331951048951045,
+    "label": "Rue des Batignolles 75017 Paris"
+  },
+  "école Boursault|17": {
+    "lat": 48.884745,
+    "lon": 2.319157,
+    "score": 0.7126607792207792,
+    "label": "Rue Boursault 75017 Paris"
+  },
+  "avenue de Clichy|17": {
+    "lat": 48.890105,
+    "lon": 2.319866,
+    "score": 0.9826709090909089,
+    "label": "Avenue de Clichy 75017 Paris"
+  },
+  "3 rue Maurice Genevoix|18": {
+    "lat": 48.894455,
+    "lon": 2.360465,
+    "score": 0.9708372727272726,
+    "label": "3 Rue Maurice Genevoix 75018 Paris"
+  },
+  "rue Carpeaux|18": {
+    "lat": 48.890944,
+    "lon": 2.331299,
+    "score": 0.9746390909090908,
+    "label": "Rue Carpeaux 75018 Paris"
+  },
+  "Rue des Poissonniers|18": {
+    "lat": 48.892895,
+    "lon": 2.352513,
+    "score": 0.9839363636363636,
+    "label": "Rue des Poissonniers 75018 Paris"
+  },
+  "Rue du Ruisseau|18": {
+    "lat": 48.894338,
+    "lon": 2.340825,
+    "score": 0.9803327272727271,
+    "label": "Rue du Ruisseau 75018 Paris"
+  },
+  "Rue René Binet|18": {
+    "lat": 48.899342,
+    "lon": 2.340003,
+    "score": 0.9773936363636364,
+    "label": "Rue René Binet 75018 Paris"
+  },
+  "Rue Lapeyrère|18": {
+    "lat": 48.891908,
+    "lon": 2.342954,
+    "score": 0.9723172727272728,
+    "label": "Rue Lapeyrère 75018 Paris"
+  },
+  "Rue de Sofia|18": {
+    "lat": 48.884778,
+    "lon": 2.348277,
+    "score": 0.9736245454545452,
+    "label": "Rue de Sofia 75018 Paris"
+  },
+  "Rue Ganneron|18": {
+    "lat": 48.887566,
+    "lon": 2.327754,
+    "score": 0.9767754545454546,
+    "label": "Rue Ganneron 75018 Paris"
+  },
+  "Bibliothèque Crimée|19": {
+    "lat": 48.886526,
+    "lon": 2.381566,
+    "score": 0.5564652406417112,
+    "label": "Rue de Crimée 75019 Paris"
+  },
+  "rue Eugénie Cotton|19": {
+    "lat": 48.878579,
+    "lon": 2.394529,
+    "score": 0.9738772727272725,
+    "label": "Rue Eugénie Cotton 75019 Paris"
+  },
+  "rue Archereau|19": {
+    "lat": 48.891451,
+    "lon": 2.374224,
+    "score": 0.9791527272727271,
+    "label": "Rue Archereau 75019 Paris"
+  },
+  "Rue Rébéval|19": {
+    "lat": 48.87436,
+    "lon": 2.379614,
+    "score": 0.9796209090909089,
+    "label": "Rue Rébeval 75019 Paris"
+  },
+  "Quai de la Charente|19": {
+    "lat": 48.897712,
+    "lon": 2.383317,
+    "score": 0.9722054545454545,
+    "label": "Quai de la Charente 75019 Paris"
+  },
+  "rue des Couronnes|20": {
+    "lat": 48.870505,
+    "lon": 2.385752,
+    "score": 0.9808354545454544,
+    "label": "Rue des Couronnes 75020 Paris"
+  },
+  "rue de Bagnolet|20": {
+    "lat": 48.859367,
+    "lon": 2.401662,
+    "score": 0.9831500000000001,
+    "label": "Rue de Bagnolet 75020 Paris"
+  },
+  "103 rue des Amandiers|20": {
+    "lat": 48.867438,
+    "lon": 2.388824,
+    "score": 0.9805945454545454,
+    "label": "103 Rue des Amandiers 75020 Paris"
+  },
+  "Place de la Réunion|20": {
+    "lat": 48.85562,
+    "lon": 2.400992,
+    "score": 0.9705236363636364,
+    "label": "Place de la Réunion 75020 Paris"
+  },
+  "Centre sportif Maryse Hilsz|20": {
+    "lat": 48.850669,
+    "lon": 2.412791,
+    "score": 0.5773945454545454,
+    "label": "Rue Maryse Hilsz 75020 Paris"
+  },
+  "Gymnase Bretonneau|20": {
+    "lat": 48.867481,
+    "lon": 2.402799,
+    "score": 0.668834486803519,
+    "label": "Rue Bretonneau 75020 Paris"
+  },
+  "Gymnase Le Vau|20": {
+    "lat": 48.868725,
+    "lon": 2.410991,
+    "score": 0.6425475757575758,
+    "label": "Rue Le Vau 75020 Paris"
+  },
+  "Rue du Capitaine Ferber|20": {
+    "lat": 48.866639,
+    "lon": 2.406843,
+    "score": 0.9779881818181818,
+    "label": "Rue du Capitaine Ferber 75020 Paris"
+  },
+  "Rue Charles|20": {
+    "lat": 48.876664,
+    "lon": 2.407971,
+    "score": 0.7301884848484848,
+    "label": "Rue Charles Cros 75020 Paris"
+  },
+  "Rue de Ménilmontant|20": {
+    "lat": 48.868898,
+    "lon": 2.390846,
+    "score": 0.9829572727272726,
+    "label": "Rue de Ménilmontant 75020 Paris"
+  },
+  "Rue du Groupe Manouchian|20": {
+    "lat": 48.869918,
+    "lon": 2.404397,
+    "score": 0.9772754545454544,
+    "label": "Rue du Groupe Manouchian 75020 Paris"
+  },
+  "29 Rue du Télégraphe|20": {
+    "lat": 48.873411,
+    "lon": 2.399106,
+    "score": 0.9771890909090908,
+    "label": "29 Rue du Télégraphe 75020 Paris"
+  },
+  "75 Bd Davout|20": {
+    "lat": 48.854122,
+    "lon": 2.410241,
+    "score": 0.6553197067448681,
+    "label": "75 Boulevard Davout 75020 Paris"
+  },
+  "12 rue du Capitaine Marchal|20": {
+    "lat": 48.866961,
+    "lon": 2.405494,
+    "score": 0.9771890909090908,
+    "label": "12 Rue du Capitaine Marchal 75020 Paris"
+  },
+  "Passage des Petits|0": {
+    "lat": 48.866475,
+    "lon": 2.340381,
+    "score": 0.6962064576802508,
+    "label": "Passage des Petits Pères 75002 Paris"
+  },
+  "rue de la Jussienne|0": {
+    "lat": 48.865355,
+    "lon": 2.344318,
+    "score": 0.9607372727272726,
+    "label": "Rue de la Jussienne 75002 Paris"
+  },
+  "rue de Turenne|0": {
+    "lat": 48.860542,
+    "lon": 2.364575,
+    "score": 0.9728827272727272,
+    "label": "Rue de Turenne 75003 Paris"
+  },
+  "rue Poulletier|0": {
+    "lat": 48.851212,
+    "lon": 2.358046,
+    "score": 0.9631354545454546,
+    "label": "Rue Poulletier 75004 Paris"
+  },
+  "rue Eugène Spuller|0": {
+    "lat": 48.864526,
+    "lon": 2.361965,
+    "score": 0.9594199999999998,
+    "label": "Rue Eugène Spuller 75003 Paris"
+  },
+  "rue Bassompierre|0": {
+    "lat": 48.850982,
+    "lon": 2.366778,
+    "score": 0.9586772727272727,
+    "label": "Rue Bassompierre 75004 Paris"
+  },
+  "9 rue des Barres|0": {
+    "lat": 48.855227,
+    "lon": 2.354911,
+    "score": 0.9645836363636363,
+    "label": "9 Rue des Barres 75004 Paris"
+  },
+  "Place Joachim|0": null,
+  "rue Notre Dame des Victoires et Palais Brogniard|0": {
+    "lat": 48.868409,
+    "lon": 2.341875,
+    "score": 0.5670185077186963,
+    "label": "Rue Notre-Dame des Victoires 75002 Paris"
+  },
+  "Rue de Saintonge|0": {
+    "lat": 48.862563,
+    "lon": 2.363422,
+    "score": 0.9703872727272727,
+    "label": "Rue de Saintonge 75003 Paris"
+  },
+  "rue Simon le Franc à la rue Geoffroy l'Angevin|0": {
+    "lat": 48.860682,
+    "lon": 2.354068,
+    "score": 0.4888496256684492,
+    "label": "Rue Geoffroy l'Angevin 75004 Paris"
+  },
+  "Rue du Pont Louis Philippe|0": {
+    "lat": 48.855308,
+    "lon": 2.35589,
+    "score": 0.9664263636363636,
+    "label": "Rue du Pont Louis-Philippe 75004 Paris"
+  },
+  "Place de la république|0": {
+    "lat": 48.866793,
+    "lon": 2.365428,
+    "score": 0.9667436363636362,
+    "label": "Place de la République 75011 Paris"
+  },
+  "rue des Vertus|0": {
+    "lat": 48.864372,
+    "lon": 2.357908,
+    "score": 0.9662563636363637,
+    "label": "Rue des Vertus 75003 Paris"
+  },
+  "place Louis Lépine|0": {
+    "lat": 48.85519,
+    "lon": 2.347138,
+    "score": 0.9555272727272727,
+    "label": "Place Louis Lépine 75004 Paris"
+  },
+  "Rue de l'Arsenal|0": {
+    "lat": 48.850809,
+    "lon": 2.366204,
+    "score": 0.9639172727272726,
+    "label": "Rue de l'Arsenal 75004 Paris"
+  },
+  "rue du Grenier Saint|0": {
+    "lat": 48.862914,
+    "lon": 2.353405,
+    "score": 0.6966945454545455,
+    "label": "Rue du Grenier Saint-Lazare 75003 Paris"
+  },
+  "rue du Sommenard|5": {
+    "lat": 48.850091,
+    "lon": 2.345587,
+    "score": 0.7661309717868338,
+    "label": "Rue du Sommerard 75005 Paris"
+  },
+  "boulevard de Port|5": {
+    "lat": 48.838097,
+    "lon": 2.344768,
+    "score": 0.7364849732620321,
+    "label": "Boulevard de Port-Royal 75005 Paris"
+  },
+  "rue Pierre Nicole|5": {
+    "lat": 48.84071,
+    "lon": 2.339444,
+    "score": 0.9709327272727272,
+    "label": "Rue Pierre Nicole 75005 Paris"
+  },
+  "rue Buffon|5": {
+    "lat": 48.842214,
+    "lon": 2.360209,
+    "score": 0.9721099999999999,
+    "label": "Rue Buffon 75005 Paris"
+  },
+  "Boulevard Saint|5": {
+    "lat": 48.84653,
+    "lon": 2.340662,
+    "score": 0.7088335537190081,
+    "label": "Boulevard Saint-Michel 75005 Paris"
+  },
+  "Rue Monge|5": {
+    "lat": 48.844085,
+    "lon": 2.351529,
+    "score": 0.9757872727272727,
+    "label": "Rue Monge 75005 Paris"
+  },
+  "Boulevard de l'Hôpital côté pair|5": {
+    "lat": 48.841501,
+    "lon": 2.362608,
+    "score": 0.6868006131078225,
+    "label": "Boulevard de l'Hôpital 75005 Paris"
+  },
+  "rue Mabillon|6": {
+    "lat": 48.851975,
+    "lon": 2.335242,
+    "score": 0.9649109090909089,
+    "label": "Rue Mabillon 75006 Paris"
+  },
+  "rue de Rennes|6": {
+    "lat": 48.848741,
+    "lon": 2.328502,
+    "score": 0.974290909090909,
+    "label": "Rue de Rennes 75006 Paris"
+  },
+  "Avenue de l'observatoire|6": {
+    "lat": 48.842424,
+    "lon": 2.336985,
+    "score": 0.9669390909090909,
+    "label": "Avenue de l'Observatoire 75006 Paris"
+  },
+  "rue de Fleurus|6": {
+    "lat": 48.846942,
+    "lon": 2.329888,
+    "score": 0.9695090909090908,
+    "label": "Rue de Fleurus 75006 Paris"
+  },
+  "Boulevard Saint Michel|6": {
+    "lat": 48.84784,
+    "lon": 2.340933,
+    "score": 0.9702681818181819,
+    "label": "Boulevard Saint-Michel 75006 Paris"
+  },
+  "Rue Auguste|6": {
+    "lat": 48.844156,
+    "lon": 2.336925,
+    "score": 0.6977335064935064,
+    "label": "Rue Auguste Comte 75006 Paris"
+  },
+  "Rue Félibien|6": {
+    "lat": 48.852128,
+    "lon": 2.336608,
+    "score": 0.9604527272727271,
+    "label": "Rue Félibien 75006 Paris"
+  },
+  "rue Chomel|7": {
+    "lat": 48.852127,
+    "lon": 2.325644,
+    "score": 0.9659727272727272,
+    "label": "Rue Chomel 75007 Paris"
+  },
+  "place Vauban|7": {
+    "lat": 48.853219,
+    "lon": 2.312216,
+    "score": 0.9619390909090908,
+    "label": "Place Vauban 75007 Paris"
+  },
+  "Rue de Solférino|7": {
+    "lat": 48.860066,
+    "lon": 2.323423,
+    "score": 0.9662318181818182,
+    "label": "Rue de Solférino 75007 Paris"
+  },
+  "Boulevard de la Tour|7": {
+    "lat": 48.858377,
+    "lon": 2.309966,
+    "score": 0.6979554545454545,
+    "label": "Boulevard de la Tour-Maubourg 75007 Paris"
+  },
+  "Avenue Anatole France|7": {
+    "lat": 48.858627,
+    "lon": 2.294809,
+    "score": 0.9612381818181817,
+    "label": "Avenue Anatole France 75007 Paris"
+  },
+  "Avenue du Général Lambert|7": {
+    "lat": 48.855902,
+    "lon": 2.294541,
+    "score": 0.7604648894348894,
+    "label": "Rue du Général Lambert 75007 Paris"
+  },
+  "Crèche collective|7": {
+    "lat": 48.85527,
+    "lon": 2.308351,
+    "score": 0.44568219251336894,
+    "label": "Rue Chevert 75007 Paris"
+  },
+  "rue de l'Université|7": {
+    "lat": 48.859727,
+    "lon": 2.314879,
+    "score": 0.9776518181818181,
+    "label": "Rue de l'Université 75007 Paris"
+  },
+  "rue de Lisbonne|8": {
+    "lat": 48.87763,
+    "lon": 2.312712,
+    "score": 0.9708781818181818,
+    "label": "Rue de Lisbonne 75008 Paris"
+  },
+  "Rue de Moscou|8": {
+    "lat": 48.880921,
+    "lon": 2.324313,
+    "score": 0.9696581818181818,
+    "label": "Rue de Moscou 75008 Paris"
+  },
+  "Rue de Rome|8": {
+    "lat": 48.877923,
+    "lon": 2.322908,
+    "score": 0.9715590909090909,
+    "label": "Rue de Rome 75008 Paris"
+  },
+  "centre sportif Beaujon|8": {
+    "lat": 48.875174,
+    "lon": 2.298847,
+    "score": 0.5261688311688311,
+    "label": "Rue Beaujon 75008 Paris"
+  },
+  "rue de Clichy|9": {
+    "lat": 48.880316,
+    "lon": 2.328976,
+    "score": 0.9746427272727272,
+    "label": "Rue de Clichy 75009 Paris"
+  },
+  "12 rue Clauzel|9": {
+    "lat": 48.879162,
+    "lon": 2.338668,
+    "score": 0.9693554545454546,
+    "label": "12 Rue Clauzel 75009 Paris"
+  },
+  "32 rue de Bruxelles|9": {
+    "lat": 48.883,
+    "lon": 2.328801,
+    "score": 0.9705481818181818,
+    "label": "32 Rue de Bruxelles 75009 Paris"
+  },
+  "Place Pigalle|9": {
+    "lat": 48.881997,
+    "lon": 2.337318,
+    "score": 0.9633472727272726,
+    "label": "Place Pigalle 75009 Paris"
+  },
+  "Rue Lafayette|9": {
+    "lat": 48.87519,
+    "lon": 2.341288,
+    "score": 0.7890344055944054,
+    "label": "Rue la Fayette 75009 Paris"
+  },
+  "Rue de la Boule Rouge|9": {
+    "lat": 48.873505,
+    "lon": 2.344779,
+    "score": 0.9651899999999999,
+    "label": "Rue de la Boule Rouge 75009 Paris"
+  },
+  "Rue Bergère|9": {
+    "lat": 48.872364,
+    "lon": 2.345322,
+    "score": 0.97043,
+    "label": "Rue Bergère 75009 Paris"
+  },
+  "Boulevard Montmartre|9": {
+    "lat": 48.871876,
+    "lon": 2.341746,
+    "score": 0.9651899999999999,
+    "label": "Boulevard Montmartre 75009 Paris"
+  },
+  "Crèche collective municipale Drouot|9": {
+    "lat": 48.873605,
+    "lon": 2.340601,
+    "score": 0.3848290909090909,
+    "label": "Rue Drouot 75009 Paris"
+  },
+  "rue LEgouve|10": {
+    "lat": 48.872269,
+    "lon": 2.362043,
+    "score": 0.9660954545454544,
+    "label": "Rue Legouvé 75010 Paris"
+  },
+  "rue de Belzunce|10": {
+    "lat": 48.879475,
+    "lon": 2.351256,
+    "score": 0.970610909090909,
+    "label": "Rue de Belzunce 75010 Paris"
+  },
+  "rue la Fayette|10": {
+    "lat": 48.87994,
+    "lon": 2.359425,
+    "score": 0.9785245454545453,
+    "label": "Rue la Fayette 75010 Paris"
+  },
+  "Rue de Dunkerque|10": {
+    "lat": 48.88016,
+    "lon": 2.354118,
+    "score": 0.9731299999999999,
+    "label": "Rue de Dunkerque 75010 Paris"
+  },
+  "Rue Yves Toudic|10": {
+    "lat": 48.870239,
+    "lon": 2.363521,
+    "score": 0.9726190909090909,
+    "label": "Rue Yves Toudic 75010 Paris"
+  },
+  "Rue Ambroise Paré|10": {
+    "lat": 48.881933,
+    "lon": 2.352517,
+    "score": 0.9692463636363635,
+    "label": "Rue Ambroise Paré 75010 Paris"
+  },
+  "Boulevard de la Chapelle|10": {
+    "lat": 48.884028,
+    "lon": 2.358731,
+    "score": 0.9716581818181818,
+    "label": "Boulevard de la Chapelle 75010 Paris"
+  },
+  "Boulevard Magenta|10": {
+    "lat": 48.876038,
+    "lon": 2.356278,
+    "score": 0.8088320234604105,
+    "label": "Boulevard de Magenta 75010 Paris"
+  },
+  "7 rue Duranti|11": {
+    "lat": 48.860888,
+    "lon": 2.384365,
+    "score": 0.9717372727272726,
+    "label": "7 Rue Duranti 75011 Paris"
+  },
+  "109 avenue Parmentier|11": {
+    "lat": 48.867615,
+    "lon": 2.372622,
+    "score": 0.9808227272727272,
+    "label": "109 Avenue Parmentier 75011 Paris"
+  },
+  "24 rue Saint Sébastien|11": {
+    "lat": 48.861117,
+    "lon": 2.369445,
+    "score": 0.9763545454545454,
+    "label": "24 Rue Saint-Sébastien 75011 Paris"
+  },
+  "39 rue Alexandre Dumas|11": {
+    "lat": 48.853749,
+    "lon": 2.393254,
+    "score": 0.9769427272727272,
+    "label": "39 Rue Alexandre Dumas 75011 Paris"
+  },
+  "8 cité VOLTAIRE|11": {
+    "lat": 48.852652,
+    "lon": 2.3905,
+    "score": 0.9728790909090909,
+    "label": "8 Cité Voltaire 75011 Paris"
+  },
+  "144 rue de la Roquette|11": {
+    "lat": 48.858075,
+    "lon": 2.382303,
+    "score": 0.9822463636363635,
+    "label": "144 Rue de la Roquette 75011 Paris"
+  },
+  "4 cité Souzy|11": {
+    "lat": 48.851741,
+    "lon": 2.388693,
+    "score": 0.9667436363636362,
+    "label": "4 Cité Souzy 75011 Paris"
+  },
+  "5 impasse de la Baleine|11": {
+    "lat": 48.867206,
+    "lon": 2.377754,
+    "score": 0.9678854545454544,
+    "label": "5 Impasse de la Baleine 75011 Paris"
+  },
+  "6 cité Voltaire|11": {
+    "lat": 48.852575,
+    "lon": 2.390084,
+    "score": 0.9728790909090909,
+    "label": "6 Cité Voltaire 75011 Paris"
+  },
+  "68 avenue Philippe Auguste|11": {
+    "lat": 48.853937,
+    "lon": 2.392702,
+    "score": 0.9803599999999998,
+    "label": "68 Avenue Philippe-Auguste 75011 Paris"
+  },
+  "11 rue de Candie|11": {
+    "lat": 48.851382,
+    "lon": 2.380032,
+    "score": 0.9702072727272727,
+    "label": "11 Rue de Candie 75011 Paris"
+  },
+  "9 rue Alphonse Baudin|11": {
+    "lat": 48.860545,
+    "lon": 2.37042,
+    "score": 0.9717372727272726,
+    "label": "9 Rue Alphonse Baudin 75011 Paris"
+  },
+  "Rue Amelot|11": {
+    "lat": 48.860438,
+    "lon": 2.367906,
+    "score": 0.9812427272727272,
+    "label": "Rue Amelot 75011 Paris"
+  },
+  "Boulevard Richard Lenoir|11": {
+    "lat": 48.860294,
+    "lon": 2.371197,
+    "score": 0.9806736363636362,
+    "label": "Boulevard Richard Lenoir 75011 Paris"
+  },
+  "Rue Alexandre Dumas|11": {
+    "lat": 48.853545,
+    "lon": 2.392475,
+    "score": 0.9769427272727272,
+    "label": "Rue Alexandre Dumas 75011 Paris"
+  },
+  "Rue du Moulin Joly|11": {
+    "lat": 48.869478,
+    "lon": 2.378541,
+    "score": 0.9750990909090907,
+    "label": "Rue du Moulin Joly 75011 Paris"
+  },
+  "Rue Rochebrune|11": {
+    "lat": 48.861105,
+    "lon": 2.379498,
+    "score": 0.9723445454545454,
+    "label": "Rue Rochebrune 75011 Paris"
+  },
+  "Rue Saint|11": {
+    "lat": 48.86447,
+    "lon": 2.378265,
+    "score": 0.7272509090909092,
+    "label": "Rue Saint-Maur 75011 Paris"
+  },
+  "Passage de la Main d'Or|11": {
+    "lat": 48.85208,
+    "lon": 2.378081,
+    "score": 0.9730445454545453,
+    "label": "Passage de la Main d'Or 75011 Paris"
+  },
+  "Rue Oberkampf|11": {
+    "lat": 48.865189,
+    "lon": 2.375553,
+    "score": 0.9809390909090907,
+    "label": "Rue Oberkampf 75011 Paris"
+  },
+  "Mairie d'arrondissement|11": {
+    "lat": 48.860162,
+    "lon": 2.381844,
+    "score": 0.5870847846889952,
+    "label": "Paris 11e Arrondissement"
+  },
+  "Crèche Breguet Marces|11": {
+    "lat": 48.857548,
+    "lon": 2.373789,
+    "score": 0.5480506951871656,
+    "label": "Rue Bréguet 75011 Paris"
+  },
+  "Centre d'animation Mercoeur|11": {
+    "lat": 48.857239,
+    "lon": 2.383683,
+    "score": 0.4933336363636363,
+    "label": "Rue Mercoeur 75011 Paris"
+  },
+  "Rue Richard Lenoir|11": {
+    "lat": 48.855652,
+    "lon": 2.381711,
+    "score": 0.9766581818181818,
+    "label": "Rue Richard Lenoir 75011 Paris"
+  },
+  "Bibliothèque Municipale Diderot|12": null,
+  "rue Eugenie Eboue|12": {
+    "lat": 48.845683,
+    "lon": 2.386101,
+    "score": 0.9702027272727273,
+    "label": "Rue Eugénie Éboué 75012 Paris"
+  },
+  "Boulevard de bercy|12": {
+    "lat": 48.839421,
+    "lon": 2.383344,
+    "score": 0.9753945454545454,
+    "label": "Boulevard de Bercy 75012 Paris"
+  },
+  "Place Sarah Monod|12": {
+    "lat": 48.84418,
+    "lon": 2.389859,
+    "score": 0.9641945454545453,
+    "label": "Place Sarah Monod 75012 Paris"
+  },
+  "place du Colonel Bourgoin|12": {
+    "lat": 48.844814,
+    "lon": 2.383172,
+    "score": 0.9687927272727271,
+    "label": "Place du Colonel Bourgoin 75012 Paris"
+  },
+  "Rue Montgallet|12": {
+    "lat": 48.843464,
+    "lon": 2.387671,
+    "score": 0.9752963636363636,
+    "label": "Rue Montgallet 75012 Paris"
+  },
+  "12 rue de l'Espérance|13": {
+    "lat": 48.826776,
+    "lon": 2.347942,
+    "score": 0.9766336363636363,
+    "label": "12 Rue de l'Espérance 75013 Paris"
+  },
+  "15 rue de Domremy|13": {
+    "lat": 48.83027,
+    "lon": 2.373004,
+    "score": 0.9782445454545453,
+    "label": "15 Rue de Domrémy 75013 Paris"
+  },
+  "8 rue George Balanchine|13": {
+    "lat": 48.836467,
+    "lon": 2.373645,
+    "score": 0.9741136363636363,
+    "label": "8 Rue George Balanchine 75013 Paris"
+  },
+  "57 avenue de la porte d'Ivry|13": {
+    "lat": 48.820611,
+    "lon": 2.371205,
+    "score": 0.8210393006993008,
+    "label": "Avenue de la Porte d'Ivry 75013 Paris"
+  },
+  "61 rue Dunois|13": {
+    "lat": 48.832514,
+    "lon": 2.366934,
+    "score": 0.9793790909090909,
+    "label": "61 Rue Dunois 75013 Paris"
+  },
+  "115 rue de Tolbiac|13": {
+    "lat": 48.826437,
+    "lon": 2.362926,
+    "score": 0.9845963636363636,
+    "label": "115 Rue de Tolbiac 75013 Paris"
+  },
+  "35 rue des Cordelières|13": {
+    "lat": 48.833351,
+    "lon": 2.348605,
+    "score": 0.9770927272727272,
+    "label": "35 Rue des Cordelières 75013 Paris"
+  },
+  "59 rue Dunois|13": {
+    "lat": 48.8324,
+    "lon": 2.367104,
+    "score": 0.9793790909090909,
+    "label": "59 Rue Dunois 75013 Paris"
+  },
+  "Rue Baptiste Renard|13": {
+    "lat": 48.827924,
+    "lon": 2.366742,
+    "score": 0.9704272727272726,
+    "label": "Rue Baptiste Renard 75013 Paris"
+  },
+  "Avenue d'Ivry|13": {
+    "lat": 48.823725,
+    "lon": 2.364798,
+    "score": 0.9812227272727272,
+    "label": "Avenue d'Ivry 75013 Paris"
+  },
+  "Rue Bobillot|13": {
+    "lat": 48.826388,
+    "lon": 2.350917,
+    "score": 0.9810427272727272,
+    "label": "Rue Bobillot 75013 Paris"
+  },
+  "Rue du château des Rentiers|13": {
+    "lat": 48.827556,
+    "lon": 2.366605,
+    "score": 0.9836490909090908,
+    "label": "Rue du Château des Rentiers 75013 Paris"
+  },
+  "Rue Max Jacob|13": {
+    "lat": 48.820078,
+    "lon": 2.354242,
+    "score": 0.9725163636363636,
+    "label": "Rue Max Jacob 75013 Paris"
+  },
+  "Rue du colonel Dominé|13": {
+    "lat": 48.819916,
+    "lon": 2.357957,
+    "score": 0.9745927272727272,
+    "label": "Rue du Colonel Dominé 75013 Paris"
+  },
+  "Boulevard de l'hôpital|13": {
+    "lat": 48.837383,
+    "lon": 2.360214,
+    "score": 0.9808554545454544,
+    "label": "Boulevard de l'Hôpital 75013 Paris"
+  },
+  "53 rue Baudricourt|13": {
+    "lat": 48.825936,
+    "lon": 2.363261,
+    "score": 0.9791072727272727,
+    "label": "53 Rue Baudricourt 75013 Paris"
+  },
+  "Mairie d'arrondissement|13": {
+    "lat": 48.830193,
+    "lon": 2.365001,
+    "score": 0.5883193301435408,
+    "label": "Paris 13e Arrondissement"
+  },
+  "81 boulevard Massena|13": {
+    "lat": 48.820839,
+    "lon": 2.368248,
+    "score": 0.9816590909090909,
+    "label": "81 Boulevard Masséna 75013 Paris"
+  },
+  "127 rue de Tolbiac|13": {
+    "lat": 48.826225,
+    "lon": 2.36133,
+    "score": 0.9845963636363636,
+    "label": "127 Rue de Tolbiac 75013 Paris"
+  },
+  "centre sportif Georges Carpentier|13": {
+    "lat": 48.827556,
+    "lon": 2.366605,
+    "score": 0.35622733233979126,
+    "label": "Rue du Château des Rentiers 75013 Paris"
+  },
+  "Bibliothèque Municipale Georges Brassens|14": null,
+  "rue de Sarrette|14": {
+    "lat": 48.826189,
+    "lon": 2.329029,
+    "score": 0.7914307692307692,
+    "label": "Rue Sarrette 75014 Paris"
+  },
+  "rue de l'Ouest|14": {
+    "lat": 48.835046,
+    "lon": 2.31751,
+    "score": 0.9803363636363636,
+    "label": "Rue de l'Ouest 75014 Paris"
+  },
+  "rue Bardinet|14": {
+    "lat": 48.830428,
+    "lon": 2.316652,
+    "score": 0.9728227272727272,
+    "label": "Rue Bardinet 75014 Paris"
+  },
+  "Gymnase Didot|14": {
+    "lat": 48.830064,
+    "lon": 2.317899,
+    "score": 0.6374808391608391,
+    "label": "Rue Didot 75014 Paris"
+  },
+  "Place Constantin|14": {
+    "lat": 48.837188,
+    "lon": 2.321075,
+    "score": 0.6723745454545454,
+    "label": "Place Constantin Brancusi 75014 Paris"
+  },
+  "Rue Pernity|14": {
+    "lat": 48.833937,
+    "lon": 2.318126,
+    "score": 0.7511718181818182,
+    "label": "Rue Pernety 75014 Paris"
+  },
+  "stade Elisabeth|14": {
+    "lat": 48.865932,
+    "lon": 2.359558,
+    "score": 0.4621745454545454,
+    "label": "Rue Sainte-Élisabeth 75003 Paris"
+  },
+  "rue des Volontaires|15": {
+    "lat": 48.841508,
+    "lon": 2.307937,
+    "score": 0.9785063636363636,
+    "label": "Rue des Volontaires 75015 Paris"
+  },
+  "rue Théodore Deck|15": {
+    "lat": 48.837372,
+    "lon": 2.288846,
+    "score": 0.9783409090909091,
+    "label": "Rue Théodore Deck 75015 Paris"
+  },
+  "rue de Vaugirard|15": {
+    "lat": 48.839563,
+    "lon": 2.303163,
+    "score": 0.9863572727272727,
+    "label": "Rue de Vaugirard 75015 Paris"
+  },
+  "Rue Dupleix|15": {
+    "lat": 48.851385,
+    "lon": 2.297161,
+    "score": 0.9770890909090908,
+    "label": "Rue Dupleix 75015 Paris"
+  },
+  "Rue Edmond Roger|15": {
+    "lat": 48.84548,
+    "lon": 2.290137,
+    "score": 0.9733472727272726,
+    "label": "Rue Edmond Roger 75015 Paris"
+  },
+  "Rue Fenoux|15": {
+    "lat": 48.839532,
+    "lon": 2.297352,
+    "score": 0.9706754545454546,
+    "label": "Rue Fenoux 75015 Paris"
+  },
+  "Rue Fizeau|15": {
+    "lat": 48.830628,
+    "lon": 2.30372,
+    "score": 0.9755145454545454,
+    "label": "Rue Fizeau 75015 Paris"
+  },
+  "Rue Platon|15": {
+    "lat": 48.837713,
+    "lon": 2.309993,
+    "score": 0.9715036363636362,
+    "label": "Rue Platon 75015 Paris"
+  },
+  "Rue Yvart|15": {
+    "lat": 48.837283,
+    "lon": 2.301698,
+    "score": 0.9742590909090908,
+    "label": "Rue Yvart 75015 Paris"
+  },
+  "Boulevard Lefebvre|15": {
+    "lat": 48.830153,
+    "lon": 2.295753,
+    "score": 0.9827990909090908,
+    "label": "Boulevard Lefebvre 75015 Paris"
+  },
+  "Place Georges Mulot|15": {
+    "lat": 48.84689,
+    "lon": 2.310017,
+    "score": 0.9675245454545452,
+    "label": "Place Georges Mulot 75015 Paris"
+  },
+  "Rue Maublanc|15": {
+    "lat": 48.839902,
+    "lon": 2.299932,
+    "score": 0.9738263636363637,
+    "label": "Rue Maublanc 75015 Paris"
+  },
+  "rue de Longchamp|16": {
+    "lat": 48.848618,
+    "lon": 2.267557,
+    "score": 0.5328824675324674,
+    "label": "Rue des Perchamps 75016 Paris"
+  },
+  "rue Musset|16": {
+    "lat": 48.841889,
+    "lon": 2.264328,
+    "score": 0.7801754545454544,
+    "label": "Rue de Musset 75016 Paris"
+  },
+  "rue Paul Valery|16": {
+    "lat": 48.858035,
+    "lon": 2.279779,
+    "score": 0.5050027272727273,
+    "label": "Rue de Passy 75016 Paris"
+  },
+  "Stade Suchet|16": {
+    "lat": 48.854746,
+    "lon": 2.263033,
+    "score": 0.5314454545454544,
+    "label": "Boulevard Suchet 75016 Paris"
+  },
+  "Stade de la port de la Muette|16": {
+    "lat": 48.858201,
+    "lon": 2.273494,
+    "score": 0.49665582205029013,
+    "label": "Chaussée de la Muette 75016 Paris"
+  },
+  "Rue Massenet|16": {
+    "lat": 48.841889,
+    "lon": 2.264328,
+    "score": 0.6194611688311689,
+    "label": "Rue de Musset 75016 Paris"
+  },
+  "Rue Poussin|16": {
+    "lat": 48.848685,
+    "lon": 2.263117,
+    "score": 0.9763299999999999,
+    "label": "Rue Poussin 75016 Paris"
+  },
+  "Rue de Passy|16": {
+    "lat": 48.858035,
+    "lon": 2.279779,
+    "score": 0.9794345454545453,
+    "label": "Rue de Passy 75016 Paris"
+  },
+  "Rue des vignes|16": {
+    "lat": 48.855863,
+    "lon": 2.275657,
+    "score": 0.97642,
+    "label": "Rue des Vignes 75016 Paris"
+  },
+  "rue Fourneyron|17": {
+    "lat": 48.889657,
+    "lon": 2.319703,
+    "score": 0.9690090909090907,
+    "label": "Rue Fourneyron 75017 Paris"
+  },
+  "rue des Batignolles|17": {
+    "lat": 48.885026,
+    "lon": 2.320797,
+    "score": 0.9773754545454545,
+    "label": "Rue des Batignolles 75017 Paris"
+  },
+  "rue Legendre|17": {
+    "lat": 48.88801,
+    "lon": 2.320525,
+    "score": 0.9823690909090907,
+    "label": "Rue Legendre 75017 Paris"
+  },
+  "rue des Tapisseries|17": {
+    "lat": 48.888599,
+    "lon": 2.307586,
+    "score": 0.9725927272727272,
+    "label": "Rue des Tapisseries 75017 Paris"
+  },
+  "Rue aux écoles Dautancourt|17": {
+    "lat": 48.889817,
+    "lon": 2.324696,
+    "score": 0.6414867567567568,
+    "label": "Rue Dautancourt 75017 Paris"
+  },
+  "Place du général Catroux|17": {
+    "lat": 48.882765,
+    "lon": 2.310329,
+    "score": 0.973351818181818,
+    "label": "Place du Général Catroux 75017 Paris"
+  },
+  "Stade de la porte d'Asnières|17": {
+    "lat": 48.891251,
+    "lon": 2.302401,
+    "score": 0.715259173553719,
+    "label": "Avenue de la Porte d'Asnières 75017 Paris"
+  },
+  "32 boulevard de Reims|17": {
+    "lat": 48.8889,
+    "lon": 2.296435,
+    "score": 0.9754227272727272,
+    "label": "32 Boulevard de Reims 75017 Paris"
+  },
+  "rue de Courcelles|17": {
+    "lat": 48.883832,
+    "lon": 2.298436,
+    "score": 0.9803036363636362,
+    "label": "Rue de Courcelles 75017 Paris"
+  },
+  "Rue Alfred Roll|17": {
+    "lat": 48.887508,
+    "lon": 2.300336,
+    "score": 0.971680909090909,
+    "label": "Rue Alfred Roll 75017 Paris"
+  },
+  "Boulevard des Batignolles|17": {
+    "lat": 48.882549,
+    "lon": 2.321609,
+    "score": 0.9760436363636362,
+    "label": "Boulevard des Batignolles 75017 Paris"
+  },
+  "Rue Curnonsky|17": {
+    "lat": 48.890152,
+    "lon": 2.295774,
+    "score": 0.97216,
+    "label": "Rue Curnonsky 75017 Paris"
+  },
+  "Rue aux écoles|17": {
+    "lat": 48.88708,
+    "lon": 2.321112,
+    "score": 0.507651818181818,
+    "label": "Rue Nollet 75017 Paris"
+  },
+  "Médiathèque Goutte D'Or|18": {
+    "lat": 48.885041,
+    "lon": 2.352689,
+    "score": 0.5687240798226164,
+    "label": "Rue de la Goutte d'Or 75018 Paris"
+  },
+  "rue Ferdinand Flocon|18": {
+    "lat": 48.891497,
+    "lon": 2.345913,
+    "score": 0.971781818181818,
+    "label": "Rue Ferdinand Flocon 75018 Paris"
+  },
+  "rue des Amiraux|18": {
+    "lat": 48.894554,
+    "lon": 2.351096,
+    "score": 0.9743254545454545,
+    "label": "Rue des Amiraux 75018 Paris"
+  },
+  "rue Madeleine Rebérioux|18": {
+    "lat": 48.894563,
+    "lon": 2.353712,
+    "score": 0.9714881818181818,
+    "label": "Rue Madeleine Rebérioux 75018 Paris"
+  },
+  "Rue du Mont|18": {
+    "lat": 48.892184,
+    "lon": 2.344155,
+    "score": 0.7159571428571428,
+    "label": "Rue du Mont Cenis 75018 Paris"
+  },
+  "Rue Lamarck|18": {
+    "lat": 48.88984,
+    "lon": 2.337166,
+    "score": 0.9828081818181817,
+    "label": "Rue Lamarck 75018 Paris"
+  },
+  "rue du Pré|18": {
+    "lat": 48.897124,
+    "lon": 2.360147,
+    "score": 0.9708372727272726,
+    "label": "Rue du Pré 75018 Paris"
+  },
+  "place Mac Orlan|18": {
+    "lat": 48.895415,
+    "lon": 2.362365,
+    "score": 0.7035608264462809,
+    "label": "Place Pierre Mac Orlan 75018 Paris"
+  },
+  "rue de la Goutte d'Or|18": {
+    "lat": 48.885041,
+    "lon": 2.352689,
+    "score": 0.9789236363636363,
+    "label": "Rue de la Goutte d'Or 75018 Paris"
+  },
+  "Centre sportif Poissonniers|18": {
+    "lat": 48.892895,
+    "lon": 2.352513,
+    "score": 0.5397214876033058,
+    "label": "Rue des Poissonniers 75018 Paris"
+  },
+  "Centre sportif Bertrand Dauvin|18": {
+    "lat": 48.886211,
+    "lon": 2.336103,
+    "score": 0.4136745454545454,
+    "label": "Rue Durantin 75018 Paris"
+  },
+  "rue de Romainville|19": {
+    "lat": 48.877032,
+    "lon": 2.401491,
+    "score": 0.9801345454545455,
+    "label": "Rue de Romainville 75019 Paris"
+  },
+  "quai de la Loire|19": {
+    "lat": 48.885678,
+    "lon": 2.375596,
+    "score": 0.9792609090909089,
+    "label": "Quai de la Loire 75019 Paris"
+  },
+  "rue de la Marseillaise|19": {
+    "lat": 48.888436,
+    "lon": 2.39793,
+    "score": 0.9736981818181817,
+    "label": "Rue de la Marseillaise 75019 Paris"
+  },
+  "avenue Jean Jaurès|19": {
+    "lat": 48.886099,
+    "lon": 2.382839,
+    "score": 0.9843954545454544,
+    "label": "Avenue Jean Jaurès 75019 Paris"
+  },
+  "Centre sportif Ladoumègue|19": {
+    "lat": 48.883878,
+    "lon": 2.380512,
+    "score": 0.40408193675889326,
+    "label": "Avenue de Laumière 75019 Paris"
+  },
+  "rue Curial|19": {
+    "lat": 48.893499,
+    "lon": 2.374026,
+    "score": 0.980940909090909,
+    "label": "Rue Curial 75019 Paris"
+  },
+  "Gymnase Simon Bolivar|19": {
+    "lat": 48.876789,
+    "lon": 2.37789,
+    "score": 0.6474731203931204,
+    "label": "Avenue Simon Bolivar 75019 Paris"
+  },
+  "Médiathèque James Baldwin et Maison des Réfugiés Création|19": {
+    "lat": 48.876858,
+    "lon": 2.389899,
+    "score": 0.3164860980592441,
+    "label": "Rue des Solitaires 75019 Paris"
+  },
+  "4 rue Eugène Reisz|20": {
+    "lat": 48.856609,
+    "lon": 2.4109,
+    "score": 0.9701281818181816,
+    "label": "4 Rue Eugène Reisz 75020 Paris"
+  },
+  "20 rue Maryse Hilsz|20": {
+    "lat": 48.850756,
+    "lon": 2.41289,
+    "score": 0.9751218181818182,
+    "label": "20 Rue Maryse Hilsz 75020 Paris"
+  },
+  "rue Leon Frapie|20": {
+    "lat": 48.873708,
+    "lon": 2.411614,
+    "score": 0.9728454545454545,
+    "label": "Rue Léon Frapié 75020 Paris"
+  },
+  "rue Louis Delgres|20": {
+    "lat": 48.865877,
+    "lon": 2.386098,
+    "score": 0.9696945454545455,
+    "label": "Rue Louis Delgrès 75020 Paris"
+  },
+  "Avenue Gambetta|20": {
+    "lat": 48.868814,
+    "lon": 2.400104,
+    "score": 0.9831736363636363,
+    "label": "Avenue Gambetta 75020 Paris"
+  },
+  "rue Devéria|20": {
+    "lat": 48.872235,
+    "lon": 2.398783,
+    "score": 0.9728454545454545,
+    "label": "Rue Devéria 75020 Paris"
+  },
+  "rue Léon Frapié|20": {
+    "lat": 48.873708,
+    "lon": 2.411614,
+    "score": 0.9728454545454545,
+    "label": "Rue Léon Frapié 75020 Paris"
+  },
+  "rue du Télégraphe|20": {
+    "lat": 48.872929,
+    "lon": 2.399443,
+    "score": 0.9771890909090908,
+    "label": "Rue du Télégraphe 75020 Paris"
+  },
+  "rue des Maraichers|20": {
+    "lat": 48.852204,
+    "lon": 2.406835,
+    "score": 0.9811754545454545,
+    "label": "Rue des Maraîchers 75020 Paris"
+  },
+  "11 Rue Argenteuil|0": {
+    "lat": 48.864886,
+    "lon": 2.333823,
+    "score": 0.8049109090909089,
+    "label": "11 Rue d'Argenteuil 75001 Paris"
+  },
+  "15 Rue Neuve Saint|0": {
+    "lat": 48.853791,
+    "lon": 2.363137,
+    "score": 0.6823318181818182,
+    "label": "15 Rue Neuve Saint-Pierre 75004 Paris"
+  },
+  "3 Rue Beranger|0": {
+    "lat": 48.864816,
+    "lon": 2.364383,
+    "score": 0.9664218181818182,
+    "label": "3 Rue Béranger 75003 Paris"
+  },
+  "6 Rue Vaucanson|0": {
+    "lat": 48.867118,
+    "lon": 2.356788,
+    "score": 0.9612627272727271,
+    "label": "6 Rue Vaucanson 75003 Paris"
+  },
+  "Place des Vosges|0": {
+    "lat": 48.855326,
+    "lon": 2.36552,
+    "score": 0.9651645454545454,
+    "label": "Place des Vosges 75004 Paris"
+  },
+  "Rue Turbigo|0": {
+    "lat": 48.865625,
+    "lon": 2.356775,
+    "score": 0.7499388516746411,
+    "label": "Rue de Turbigo 75003 Paris"
+  },
+  "Rue de Turenne|0": {
+    "lat": 48.860542,
+    "lon": 2.364575,
+    "score": 0.9728827272727272,
+    "label": "Rue de Turenne 75003 Paris"
+  },
+  "Rue de l'Echelle|0": {
+    "lat": 48.86398,
+    "lon": 2.334349,
+    "score": 0.96015,
+    "label": "Rue de l'Échelle 75001 Paris"
+  },
+  "Rue de Bretagne|0": {
+    "lat": 48.863006,
+    "lon": 2.362264,
+    "score": 0.9693218181818182,
+    "label": "Rue de Bretagne 75003 Paris"
+  },
+  "66 Rue Vieille Du Temple|0": {
+    "lat": 48.859154,
+    "lon": 2.35956,
+    "score": 0.9707772727272727,
+    "label": "66 Rue Vieille du Temple 75003 Paris"
+  },
+  "place des Vosges|0": {
+    "lat": 48.855326,
+    "lon": 2.36552,
+    "score": 0.9651645454545454,
+    "label": "Place des Vosges 75004 Paris"
+  },
+  "Rue Saint Roch|0": {
+    "lat": 48.865681,
+    "lon": 2.332449,
+    "score": 0.965800909090909,
+    "label": "Rue Saint-Roch 75001 Paris"
+  },
+  "Bibliothèque Marguerite Audoux|0": null,
+  "école élémentaire Vertus|0": {
+    "lat": 48.864372,
+    "lon": 2.357908,
+    "score": 0.36398363636363634,
+    "label": "Rue des Vertus 75003 Paris"
+  },
+  "10 Rue Rollin|5": {
+    "lat": 48.844749,
+    "lon": 2.350854,
+    "score": 0.9677827272727273,
+    "label": "10 Rue Rollin 75005 Paris"
+  },
+  "19 Rue Boulangers|5": {
+    "lat": 48.845859,
+    "lon": 2.352994,
+    "score": 0.77743,
+    "label": "19 Rue des Boulangers 75005 Paris"
+  },
+  "10 Rue Sommerard|5": {
+    "lat": 48.849943,
+    "lon": 2.346872,
+    "score": 0.7971654545454545,
+    "label": "10 Rue du Sommerard 75005 Paris"
+  },
+  "Boulevard de l'Hôpital|5": {
+    "lat": 48.841501,
+    "lon": 2.362608,
+    "score": 0.9679845454545454,
+    "label": "Boulevard de l'Hôpital 75005 Paris"
+  },
+  "rue arbalète|5": {
+    "lat": 48.840062,
+    "lon": 2.348162,
+    "score": 0.7333715584415584,
+    "label": "Rue de l'Arbalète 75005 Paris"
+  },
+  "42 Rue Madame|6": {
+    "lat": 48.848942,
+    "lon": 2.331604,
+    "score": 0.9724481818181817,
+    "label": "42 Rue Madame 75006 Paris"
+  },
+  "6 Rue Littre|6": {
+    "lat": 48.845643,
+    "lon": 2.323773,
+    "score": 0.9667536363636362,
+    "label": "6 Rue Littré 75006 Paris"
+  },
+  "Centre Sportif Saint|6": {
+    "lat": 48.851408,
+    "lon": 2.336445,
+    "score": 0.47989405594405593,
+    "label": "Rue Saint-Sulpice 75006 Paris"
+  },
+  "Gymnase Garanciere|6": {
+    "lat": 48.85012,
+    "lon": 2.335841,
+    "score": 0.6647008504398826,
+    "label": "Rue Garancière 75006 Paris"
+  },
+  "Gymnase Vaugirard Littre|6": {
+    "lat": 48.847488,
+    "lon": 2.329531,
+    "score": 0.5481311188811189,
+    "label": "Rue de Vaugirard 75006 Paris"
+  },
+  "Rue Jean Bart|6": {
+    "lat": 48.847669,
+    "lon": 2.330996,
+    "score": 0.9654463636363635,
+    "label": "Rue Jean Bart 75006 Paris"
+  },
+  "Crèche collective Garancière|6": {
+    "lat": 48.85012,
+    "lon": 2.335841,
+    "score": 0.5166427716186253,
+    "label": "Rue Garancière 75006 Paris"
+  },
+  "14 Rue Eble|7": {
+    "lat": 48.848995,
+    "lon": 2.312922,
+    "score": 0.9656972727272727,
+    "label": "14 Rue Éblé 75007 Paris"
+  },
+  "Rue De Grenelle|7": {
+    "lat": 48.856278,
+    "lon": 2.317069,
+    "score": 0.9774636363636363,
+    "label": "Rue de Grenelle 75007 Paris"
+  },
+  "Place Vauban|7": {
+    "lat": 48.853219,
+    "lon": 2.312216,
+    "score": 0.9619390909090908,
+    "label": "Place Vauban 75007 Paris"
+  },
+  "Rue du Champs de Mars|7": {
+    "lat": 48.856259,
+    "lon": 2.305065,
+    "score": 0.8042180165289256,
+    "label": "Rue du Champ de Mars 75007 Paris"
+  },
+  "Rue de Bourgogne|7": {
+    "lat": 48.857993,
+    "lon": 2.31761,
+    "score": 0.9721381818181818,
+    "label": "Rue de Bourgogne 75007 Paris"
+  },
+  "Place Saint Thomas D'Aquin|7": {
+    "lat": 48.85611,
+    "lon": 2.327352,
+    "score": 0.9619390909090908,
+    "label": "Place Saint-Thomas d'Aquin 75007 Paris"
+  },
+  "7 Rue Moscou|8": {
+    "lat": 48.880035,
+    "lon": 2.325992,
+    "score": 0.7843434965034964,
+    "label": "7 Rue de Moscou 75008 Paris"
+  },
+  "Rue d'Anjou|8": {
+    "lat": 48.872109,
+    "lon": 2.321864,
+    "score": 0.9707418181818182,
+    "label": "Rue d'Anjou 75008 Paris"
+  },
+  "Place de Dublin|8": {
+    "lat": 48.880507,
+    "lon": 2.324764,
+    "score": 0.9579990909090907,
+    "label": "Place de Dublin 75008 Paris"
+  },
+  "Avenue George V|8": {
+    "lat": 48.868084,
+    "lon": 2.301169,
+    "score": 0.9701545454545454,
+    "label": "Avenue George V 75008 Paris"
+  },
+  "Rue de Madrid|8": {
+    "lat": 48.878345,
+    "lon": 2.320347,
+    "score": 0.9674518181818181,
+    "label": "Rue de Madrid 75008 Paris"
+  },
+  "Rue des Mathurins|8": {
+    "lat": 48.87333,
+    "lon": 2.323998,
+    "score": 0.969000909090909,
+    "label": "Rue des Mathurins 75008 Paris"
+  },
+  "Rue Du Faubourg Saint Honoré|8": {
+    "lat": 48.872667,
+    "lon": 2.311581,
+    "score": 0.9761936363636362,
+    "label": "Rue du Faubourg Saint-Honoré 75008 Paris"
+  },
+  "11 Rue Grange Bateliere|9": {
+    "lat": 48.873017,
+    "lon": 2.342064,
+    "score": 0.7543090909090909,
+    "label": "11 Rue de la Grange Batelière 75009 Paris"
+  },
+  "12 Rue Clauzel|9": {
+    "lat": 48.879162,
+    "lon": 2.338668,
+    "score": 0.9693554545454546,
+    "label": "12 Rue Clauzel 75009 Paris"
+  },
+  "15 Ter Rue Louise|9": {
+    "lat": 48.879034,
+    "lon": 2.343868,
+    "score": 0.4434346753246753,
+    "label": "15T Rue Louise-Émilie de La Tour d'Auvergne 75009 Paris"
+  },
+  "Gymnase Paul Gauguin|9": {
+    "lat": 48.8762,
+    "lon": 2.347301,
+    "score": 0.37236804195804196,
+    "label": "Rue Papillon 75009 Paris"
+  },
+  "place Pigalle|9": {
+    "lat": 48.881997,
+    "lon": 2.337318,
+    "score": 0.9633472727272726,
+    "label": "Place Pigalle 75009 Paris"
+  },
+  "12 Rue Chaptal|9": {
+    "lat": 48.880825,
+    "lon": 2.333632,
+    "score": 0.9700563636363635,
+    "label": "12 Rue Chaptal 75009 Paris"
+  },
+  "Rue Drouot|9": {
+    "lat": 48.873605,
+    "lon": 2.340601,
+    "score": 0.9700563636363635,
+    "label": "Rue Drouot 75009 Paris"
+  },
+  "Rue de Clichy|9": {
+    "lat": 48.880316,
+    "lon": 2.328976,
+    "score": 0.9746427272727272,
+    "label": "Rue de Clichy 75009 Paris"
+  },
+  "3 Rue Belzunce|10": {
+    "lat": 48.879191,
+    "lon": 2.352834,
+    "score": 0.7920394805194805,
+    "label": "3 Rue de Belzunce 75010 Paris"
+  },
+  "39 Rue Aqueduc|10": {
+    "lat": 48.882479,
+    "lon": 2.363923,
+    "score": 0.7484427272727272,
+    "label": "39 Rue de l'Aqueduc 75010 Paris"
+  },
+  "15 Rue Lancry|10": {
+    "lat": 48.869568,
+    "lon": 2.360344,
+    "score": 0.7926436363636362,
+    "label": "15 Rue de Lancry 75010 Paris"
+  },
+  "49 Rue Louis Blanc|10": {
+    "lat": 48.88226,
+    "lon": 2.362794,
+    "score": 0.9755481818181817,
+    "label": "49 Rue Louis Blanc 75010 Paris"
+  },
+  "Rue Beaurepaire du Quai de Valmy|10": {
+    "lat": 48.870393,
+    "lon": 2.363851,
+    "score": 0.5576664059196618,
+    "label": "Rue Beaurepaire 75010 Paris"
+  },
+  "Rue du Faubourg St Denis de petites|10": {
+    "lat": 48.876048,
+    "lon": 2.355794,
+    "score": 0.6277181818181818,
+    "label": "Rue du Faubourg Saint-Denis 75010 Paris"
+  },
+  "Rue René Boulanger|10": {
+    "lat": 48.868892,
+    "lon": 2.359108,
+    "score": 0.9738445454545454,
+    "label": "Rue René Boulanger 75010 Paris"
+  },
+  "Rue Bossuet|10": {
+    "lat": 48.878697,
+    "lon": 2.352287,
+    "score": 0.9672881818181818,
+    "label": "Rue Bossuet 75010 Paris"
+  },
+  "Piscine Chateau Landon|10": {
+    "lat": 48.881813,
+    "lon": 2.363189,
+    "score": 0.6457506220095693,
+    "label": "Rue du Château Landon 75010 Paris"
+  },
+  "Place de la bataille de Stalingrad|10": {
+    "lat": 48.883231,
+    "lon": 2.368976,
+    "score": 0.9644745454545453,
+    "label": "Place de la Bataille de Stalingrad 75010 Paris"
+  },
+  "rue Schwarzenberg|10": {
+    "lat": 48.875654,
+    "lon": 2.353826,
+    "score": 0.6890024675324675,
+    "label": "Rue Léon Schwartzenberg 75010 Paris"
+  },
+  "Bd Magenta|10": {
+    "lat": 48.871663,
+    "lon": 2.359583,
+    "score": 0.6098775324675324,
+    "label": "Cité de Magenta 75010 Paris"
+  },
+  "8 Cité Voltaire|11": {
+    "lat": 48.852652,
+    "lon": 2.3905,
+    "score": 0.9728790909090909,
+    "label": "8 Cité Voltaire 75011 Paris"
+  },
+  "19 Rue Alphonse Baudin|11": {
+    "lat": 48.861242,
+    "lon": 2.370051,
+    "score": 0.9717372727272726,
+    "label": "19 Rue Alphonse Baudin 75011 Paris"
+  },
+  "Rue de Nice|11": {
+    "lat": 48.854906,
+    "lon": 2.390523,
+    "score": 0.9719481818181817,
+    "label": "Rue de Nice 75011 Paris"
+  },
+  "Rue Alphone Baudin|11": {
+    "lat": 48.860672,
+    "lon": 2.370483,
+    "score": 0.8016492961876832,
+    "label": "Rue Alphonse Baudin 75011 Paris"
+  },
+  "6 Av Bouvines|11": {
+    "lat": 48.850255,
+    "lon": 2.39658,
+    "score": 0.6497536363636363,
+    "label": "6 Avenue de Bouvines 75011 Paris"
+  },
+  "place Marek Edelman|11": {
+    "lat": 48.858668,
+    "lon": 2.375285,
+    "score": 0.41776199017199017,
+    "label": "Villa Marcès 75011 Paris"
+  },
+  "16 Rue Charles Baudelaire|12": {
+    "lat": 48.849499,
+    "lon": 2.376927,
+    "score": 0.9725245454545454,
+    "label": "16 Rue Charles Baudelaire 75012 Paris"
+  },
+  "41 Rue Traversiere|12": {
+    "lat": 48.847631,
+    "lon": 2.373244,
+    "score": 0.9780872727272726,
+    "label": "41 Rue Traversière 75012 Paris"
+  },
+  "Boulevard de Bercy|12": {
+    "lat": 48.839421,
+    "lon": 2.383344,
+    "score": 0.9753945454545454,
+    "label": "Boulevard de Bercy 75012 Paris"
+  },
+  "Place Henri Frenay|12": {
+    "lat": 48.845229,
+    "lon": 2.376331,
+    "score": 0.9735027272727272,
+    "label": "Place Henri Frenay 75012 Paris"
+  },
+  "167 Rue Bercy|12": {
+    "lat": 48.842607,
+    "lon": 2.375239,
+    "score": 0.8013336363636363,
+    "label": "167 Rue de Bercy 75012 Paris"
+  },
+  "Place Felix Eboué|12": {
+    "lat": 48.83951,
+    "lon": 2.3959,
+    "score": 0.9704963636363636,
+    "label": "Place Félix Éboué 75012 Paris"
+  },
+  "33 Place Jeanne d'Arc|13": {
+    "lat": 48.829784,
+    "lon": 2.367435,
+    "score": 0.9741136363636363,
+    "label": "33 Place Jeanne d'Arc 75013 Paris"
+  },
+  "173 Rue Chateau Des Rentiers|13": {
+    "lat": 48.830387,
+    "lon": 2.361806,
+    "score": 0.8342984415584416,
+    "label": "173 Rue du Château des Rentiers 75013 Paris"
+  },
+  "40 Rue Chateau Des Rentiers|13": {
+    "lat": 48.824957,
+    "lon": 2.369983,
+    "score": 0.8328730376940133,
+    "label": "40 Rue du Château des Rentiers 75013 Paris"
+  },
+  "40 Rue Vandrezanne|13": {
+    "lat": 48.827859,
+    "lon": 2.353154,
+    "score": 0.9763336363636363,
+    "label": "40 Rue Vandrezanne 75013 Paris"
+  },
+  "Rue du Dr Landouzy|13": {
+    "lat": 48.823085,
+    "lon": 2.353684,
+    "score": 0.7140390909090909,
+    "label": "Rue du Docteur Landouzy 75013 Paris"
+  },
+  "Rue du Dr Lecène|13": {
+    "lat": 48.822472,
+    "lon": 2.353595,
+    "score": 0.70412173553719,
+    "label": "Rue du Docteur Lecène 75013 Paris"
+  },
+  "Boulevard de l'Hôpital|13": {
+    "lat": 48.837383,
+    "lon": 2.360214,
+    "score": 0.9808554545454544,
+    "label": "Boulevard de l'Hôpital 75013 Paris"
+  },
+  "Rue Kuss|13": {
+    "lat": 48.822151,
+    "lon": 2.351698,
+    "score": 0.9717354545454545,
+    "label": "Rue Küss 75013 Paris"
+  },
+  "Bibliothèque De La Zac Paul Bourget|13": {
+    "lat": 48.817466,
+    "lon": 2.357474,
+    "score": 0.5213384912959381,
+    "label": "Rue Paul Bourget 75013 Paris"
+  },
+  "College Gustave Flaubert|13": {
+    "lat": 48.881494,
+    "lon": 2.29943,
+    "score": 0.6271808391608391,
+    "label": "Rue Gustave Flaubert 75017 Paris"
+  },
+  "8 Rue Kuss|13": {
+    "lat": 48.822231,
+    "lon": 2.351306,
+    "score": 0.9717354545454545,
+    "label": "8 Rue Küss 75013 Paris"
+  },
+  "Rue De La Glacière|13": {
+    "lat": 48.831679,
+    "lon": 2.344,
+    "score": 0.9818472727272728,
+    "label": "Rue de la Glacière 75013 Paris"
+  },
+  "Centre Sportif Georges Carpentier|13": {
+    "lat": 48.827556,
+    "lon": 2.366605,
+    "score": 0.35622733233979126,
+    "label": "Rue du Château des Rentiers 75013 Paris"
+  },
+  "école aux sportifs les week|13": {
+    "lat": 48.827767,
+    "lon": 2.349606,
+    "score": 0.3603814285714285,
+    "label": "Rue de la Butte aux Cailles 75013 Paris"
+  },
+  "24 Rue Delambre|14": {
+    "lat": 48.841598,
+    "lon": 2.326809,
+    "score": 0.9749381818181818,
+    "label": "24 Rue Delambre 75014 Paris"
+  },
+  "5 Square Alain Fournier|14": {
+    "lat": 48.828142,
+    "lon": 2.307287,
+    "score": 0.9691363636363635,
+    "label": "5 Square Alain-Fournier 75014 Paris"
+  },
+  "69 Rue Ouest|14": {
+    "lat": 48.83565,
+    "lon": 2.31856,
+    "score": 0.7433233766233767,
+    "label": "69 Rue de l'Ouest 75014 Paris"
+  },
+  "Stade Jules Noel|14": {
+    "lat": 48.836679,
+    "lon": 2.32089,
+    "score": 0.5083667532467532,
+    "label": "Rue Jules Guesde 75014 Paris"
+  },
+  "Rue Mouton Duvernet|14": {
+    "lat": 48.83184,
+    "lon": 2.328162,
+    "score": 0.9737345454545453,
+    "label": "Rue Mouton-Duvernet 75014 Paris"
+  },
+  "2 Rue Maurice Rouvier|14": {
+    "lat": 48.8306,
+    "lon": 2.310572,
+    "score": 0.97098,
+    "label": "2 Rue Maurice Rouvier 75014 Paris"
+  },
+  "Rue Auguste Cain|14": {
+    "lat": 48.825947,
+    "lon": 2.320574,
+    "score": 0.97168,
+    "label": "Rue Auguste Cain 75014 Paris"
+  },
+  "rue Mouchotte|14": {
+    "lat": 48.838728,
+    "lon": 2.32011,
+    "score": 0.5219450739957717,
+    "label": "Rue du Commandant René Mouchotte 75014 Paris"
+  },
+  "Place Denfert Rocherau|14": {
+    "lat": 48.833963,
+    "lon": 2.331487,
+    "score": 0.8110546753246752,
+    "label": "Place Denfert-Rochereau 75014 Paris"
+  },
+  "Rue Antoine Chantin|14": {
+    "lat": 48.827209,
+    "lon": 2.322508,
+    "score": 0.9746090909090909,
+    "label": "Rue Antoine Chantin 75014 Paris"
+  },
+  "2 Rue Theodore Deck|15": {
+    "lat": 48.837666,
+    "lon": 2.290723,
+    "score": 0.9783409090909091,
+    "label": "2 Rue Théodore Deck 75015 Paris"
+  },
+  "22 Rue Sextius Michel|15": {
+    "lat": 48.850117,
+    "lon": 2.288411,
+    "score": 0.9740481818181818,
+    "label": "22 Rue Sextius Michel 75015 Paris"
+  },
+  "56 Av Felix Faure|15": {
+    "lat": 48.840699,
+    "lon": 2.286615,
+    "score": 0.7429687603305786,
+    "label": "56 Avenue Félix Faure 75015 Paris"
+  },
+  "Rue Charles Lecocq|15": {
+    "lat": 48.841093,
+    "lon": 2.294328,
+    "score": 0.9751899999999999,
+    "label": "Rue Charles Lecocq 75015 Paris"
+  },
+  "Centre Sportif Sablonniere|15": {
+    "lat": 48.838206,
+    "lon": 2.304674,
+    "score": 0.36455719535783365,
+    "label": "Rue la Quintinie 75015 Paris"
+  },
+  "Av Motte Piquet|15": {
+    "lat": 48.850031,
+    "lon": 2.299313,
+    "score": 0.5702237762237762,
+    "label": "Avenue de la Motte-Picquet 75015 Paris"
+  },
+  "quai de Grenelle|15": {
+    "lat": 48.852273,
+    "lon": 2.285858,
+    "score": 0.97952,
+    "label": "Quai de Grenelle 75015 Paris"
+  },
+  "106 Rue de Brancion|15": {
+    "lat": 48.830303,
+    "lon": 2.301819,
+    "score": 0.8095009090909091,
+    "label": "106 Rue Brancion 75015 Paris"
+  },
+  "20 Rue De La Saida|15": {
+    "lat": 48.831997,
+    "lon": 2.295529,
+    "score": 0.9758181818181817,
+    "label": "20 Rue de la Saïda 75015 Paris"
+  },
+  "5 Av Porte Brancion|15": {
+    "lat": 48.827302,
+    "lon": 2.301234,
+    "score": 0.6444630598669622,
+    "label": "5 Avenue de la Porte Brancion 75015 Paris"
+  },
+  "rue de la Saida|15": {
+    "lat": 48.832246,
+    "lon": 2.295334,
+    "score": 0.9758181818181817,
+    "label": "Rue de la Saïda 75015 Paris"
+  },
+  "Rue Cambronne|15": {
+    "lat": 48.844067,
+    "lon": 2.302468,
+    "score": 0.9814490909090908,
+    "label": "Rue Cambronne 75015 Paris"
+  },
+  "Rue Vaugirard|15": {
+    "lat": 48.839563,
+    "lon": 2.303163,
+    "score": 0.8045390909090908,
+    "label": "Rue de Vaugirard 75015 Paris"
+  },
+  "Rue Mademoiselle|15": {
+    "lat": 48.843431,
+    "lon": 2.29813,
+    "score": 0.9808118181818182,
+    "label": "Rue Mademoiselle 75015 Paris"
+  },
+  "64 Rue Chardon|16": {
+    "lat": 48.842361,
+    "lon": 2.264222,
+    "score": 0.6901319834710744,
+    "label": "64 Rue Chardon-Lagache 75016 Paris"
+  },
+  "15 Rue Bauches|16": {
+    "lat": 48.85598,
+    "lon": 2.273565,
+    "score": 0.7681700626959247,
+    "label": "15 Rue des Bauches 75016 Paris"
+  },
+  "Rue Du Commandant Schloesing|16": {
+    "lat": 48.861771,
+    "lon": 2.284323,
+    "score": 0.799111019955654,
+    "label": "Rue du Commandant Schloesing 75116 Paris"
+  },
+  "Stade de la Porte de la Muette|16": {
+    "lat": 48.858201,
+    "lon": 2.273494,
+    "score": 0.4875890909090909,
+    "label": "Chaussée de la Muette 75016 Paris"
+  },
+  "Avenue Paul Doumer|16": {
+    "lat": 48.860142,
+    "lon": 2.280594,
+    "score": 0.7821526979472141,
+    "label": "Avenue Paul Doumer 75116 Paris"
+  },
+  "Rue de la Pomp|16": {
+    "lat": 48.850882,
+    "lon": 2.267313,
+    "score": 0.5779163636363636,
+    "label": "Rue de la Source 75016 Paris"
+  },
+  "Rue du Général Appert|16": {
+    "lat": 48.868862,
+    "lon": 2.275936,
+    "score": 0.7854324064171122,
+    "label": "Rue du Général Appert 75116 Paris"
+  },
+  "Rue Serge Prokofiev|16": {
+    "lat": 48.854149,
+    "lon": 2.268382,
+    "score": 0.9702063636363635,
+    "label": "Rue Serge Prokofiev 75016 Paris"
+  },
+  "47 Boulevard Exelmans|16": {
+    "lat": 48.841988,
+    "lon": 2.26196,
+    "score": 0.9808781818181819,
+    "label": "47 Boulevard Exelmans 75016 Paris"
+  },
+  "Stade de la Muette|16": {
+    "lat": 48.858201,
+    "lon": 2.273494,
+    "score": 0.6296345454545454,
+    "label": "Chaussée de la Muette 75016 Paris"
+  },
+  "221 Bd Pereire|17": {
+    "lat": 48.880454,
+    "lon": 2.289376,
+    "score": 0.6699904132231405,
+    "label": "221 Boulevard Pereire 75017 Paris"
+  },
+  "23 Av Saint|17": {
+    "lat": 48.889054,
+    "lon": 2.325928,
+    "score": 0.5606081818181818,
+    "label": "23 Avenue de Saint-Ouen 75017 Paris"
+  },
+  "49 Rue Legendre|17": {
+    "lat": 48.885254,
+    "lon": 2.315968,
+    "score": 0.9823690909090907,
+    "label": "49 Rue Legendre 75017 Paris"
+  },
+  "28 Rue Brochant|17": {
+    "lat": 48.889985,
+    "lon": 2.319585,
+    "score": 0.9760436363636362,
+    "label": "28 Rue Brochant 75017 Paris"
+  },
+  "Passage Moncey|17": {
+    "lat": 48.889961,
+    "lon": 2.325641,
+    "score": 0.9702018181818182,
+    "label": "Passage Moncey 75017 Paris"
+  },
+  "Rue Du Caporal Peugeot|17": {
+    "lat": 48.887435,
+    "lon": 2.289264,
+    "score": 0.971420909090909,
+    "label": "Rue du Caporal Peugeot 75017 Paris"
+  },
+  "Avenue de Villiers|17": {
+    "lat": 48.883827,
+    "lon": 2.303558,
+    "score": 0.9809718181818181,
+    "label": "Avenue de Villiers 75017 Paris"
+  },
+  "Rue Jouffroy d'Abbans|17": {
+    "lat": 48.884748,
+    "lon": 2.307013,
+    "score": 0.9804527272727271,
+    "label": "Rue Jouffroy d'Abbans 75017 Paris"
+  },
+  "College Stephane Mallarme|17": {
+    "lat": 48.886588,
+    "lon": 2.293165,
+    "score": 0.661259623059867,
+    "label": "Avenue Stéphane Mallarmé 75017 Paris"
+  },
+  "16 Rue Laugier|17": {
+    "lat": 48.88026,
+    "lon": 2.296832,
+    "score": 0.9792899999999999,
+    "label": "16 Rue Laugier 75017 Paris"
+  },
+  "10 Rue Boursault|17": {
+    "lat": 48.882953,
+    "lon": 2.320797,
+    "score": 0.9788945454545454,
+    "label": "10 Rue Boursault 75017 Paris"
+  },
+  "18 Rue Salneuve|17": {
+    "lat": 48.88548,
+    "lon": 2.314384,
+    "score": 0.9741518181818181,
+    "label": "18 Rue Salneuve 75017 Paris"
+  },
+  "Centre Sportif Max Rousié|17": {
+    "lat": 48.887141,
+    "lon": 2.311953,
+    "score": 0.3580977075098814,
+    "label": "Rue de Saussure 75017 Paris"
+  },
+  "2 Rue Guadeloupe|18": {
+    "lat": 48.890753,
+    "lon": 2.362632,
+    "score": 0.7315051239669422,
+    "label": "2 Rue de la Guadeloupe 75018 Paris"
+  },
+  "7 Rue Doudeauville|18": {
+    "lat": 48.888872,
+    "lon": 2.358736,
+    "score": 0.9802018181818181,
+    "label": "7 Rue Doudeauville 75018 Paris"
+  },
+  "9 Rue Richomme|18": {
+    "lat": 48.886417,
+    "lon": 2.352182,
+    "score": 0.9758318181818181,
+    "label": "9 Rue Richomme 75018 Paris"
+  },
+  "7 Rue Tchaikovski|18": {
+    "lat": 48.894183,
+    "lon": 2.364555,
+    "score": 0.9762754545454545,
+    "label": "7 Rue Tchaïkovski 75018 Paris"
+  },
+  "Rue De L'Abreuvoir|18": {
+    "lat": 48.888244,
+    "lon": 2.338958,
+    "score": 0.9708372727272726,
+    "label": "Rue de l'Abreuvoir 75018 Paris"
+  },
+  "Gymnase Ronsard|18": {
+    "lat": 48.885174,
+    "lon": 2.3444,
+    "score": 0.644491038961039,
+    "label": "Rue Ronsard 75018 Paris"
+  },
+  "Rue Letort|18": {
+    "lat": 48.895632,
+    "lon": 2.343469,
+    "score": 0.9780827272727272,
+    "label": "Rue Letort 75018 Paris"
+  },
+  "Rue Belliard|18": {
+    "lat": 48.896881,
+    "lon": 2.340048,
+    "score": 0.9817690909090909,
+    "label": "Rue Belliard 75018 Paris"
+  },
+  "Rue du Département|18": {
+    "lat": 48.886393,
+    "lon": 2.362485,
+    "score": 0.9761681818181818,
+    "label": "Rue du Département 75018 Paris"
+  },
+  "Rue Ernestine|18": {
+    "lat": 48.889496,
+    "lon": 2.354556,
+    "score": 0.9744845454545454,
+    "label": "Rue Ernestine 75018 Paris"
+  },
+  "19 Rue Léon|18": {
+    "lat": 48.887787,
+    "lon": 2.353435,
+    "score": 0.978010909090909,
+    "label": "19 Rue Léon 75018 Paris"
+  },
+  "College Aimé Césaire|18": {
+    "lat": 48.861822,
+    "lon": 2.327641,
+    "score": 0.5368955773955775,
+    "label": "Quai Aimé Césaire 75001 Paris"
+  },
+  "Centre Sportif Des Poissonniers|18": {
+    "lat": 48.892895,
+    "lon": 2.352513,
+    "score": 0.6141016528925619,
+    "label": "Rue des Poissonniers 75018 Paris"
+  },
+  "rue Doudeauville|18": {
+    "lat": 48.888585,
+    "lon": 2.35395,
+    "score": 0.9802018181818181,
+    "label": "Rue Doudeauville 75018 Paris"
+  },
+  "105 Bis Rue Ourcq|19": {
+    "lat": 48.893558,
+    "lon": 2.375075,
+    "score": 0.6109023376623376,
+    "label": "105B Rue de l'Ourcq 75019 Paris"
+  },
+  "16 Rue Eugenie Cotton|19": {
+    "lat": 48.878742,
+    "lon": 2.394525,
+    "score": 0.9738772727272725,
+    "label": "16 Rue Eugénie Cotton 75019 Paris"
+  },
+  "5 Rue Rampal|19": {
+    "lat": 48.873372,
+    "lon": 2.379683,
+    "score": 0.9733199999999999,
+    "label": "5 Rue Rampal 75019 Paris"
+  },
+  "59 Rue Romainville|19": {
+    "lat": 48.877378,
+    "lon": 2.403232,
+    "score": 0.812520909090909,
+    "label": "59 Rue de Romainville 75019 Paris"
+  },
+  "rue de Meaux|19": {
+    "lat": 48.882211,
+    "lon": 2.37539,
+    "score": 0.981430909090909,
+    "label": "Rue de Meaux 75019 Paris"
+  },
+  "Rue Petit|19": {
+    "lat": 48.885502,
+    "lon": 2.38634,
+    "score": 0.9815936363636363,
+    "label": "Rue Petit 75019 Paris"
+  },
+  "Médiathèque James Baldwin|19": {
+    "lat": 48.886099,
+    "lon": 2.382839,
+    "score": 0.38865077369439066,
+    "label": "Avenue Jean Jaurès 75019 Paris"
+  },
+  "Rue Préault|19": {
+    "lat": 48.877649,
+    "lon": 2.382691,
+    "score": 0.9703627272727272,
+    "label": "Rue Préault 75019 Paris"
+  },
+  "24 Rue Retrait|20": {
+    "lat": 48.868979,
+    "lon": 2.393943,
+    "score": 0.7973094805194805,
+    "label": "24 Rue du Retrait 75020 Paris"
+  },
+  "Stade Maryse Hilsz|20": {
+    "lat": 48.850669,
+    "lon": 2.412791,
+    "score": 0.7258549560117301,
+    "label": "Rue Maryse Hilsz 75020 Paris"
+  },
+  "Rue Dulaure|20": {
+    "lat": 48.866516,
+    "lon": 2.410137,
+    "score": 0.9665445454545454,
+    "label": "Rue Dulaure 75020 Paris"
+  },
+  "Rue Bagnolet|20": {
+    "lat": 48.859367,
+    "lon": 2.401662,
+    "score": 0.7978353146853145,
+    "label": "Rue de Bagnolet 75020 Paris"
+  },
+  "Rue de Buzenval|20": {
+    "lat": 48.852555,
+    "lon": 2.400805,
+    "score": 0.9793145454545453,
+    "label": "Rue de Buzenval 75020 Paris"
+  },
+  "Rue de Belgrade|20": {
+    "lat": 48.85583,
+    "lon": 2.301991,
+    "score": 0.7017510031347962,
+    "label": "Rue de Belgrade 75007 Paris"
+  },
+  "16 Rue Du Capitaine Marchal|20": {
+    "lat": 48.867046,
+    "lon": 2.405337,
+    "score": 0.9771890909090908,
+    "label": "16 Rue du Capitaine Marchal 75020 Paris"
+  },
+  "Centre Sportif Louis Lumiere|20": {
+    "lat": 48.861102,
+    "lon": 2.411285,
+    "score": 0.5893360975609756,
+    "label": "Rue Louis Lumière 75020 Paris"
+  },
+  "rue Télégraphe|20": {
+    "lat": 48.872929,
+    "lon": 2.399443,
+    "score": 0.7986176623376623,
+    "label": "Rue du Télégraphe 75020 Paris"
+  },
+  "Bd Davout|20": {
+    "lat": 48.855545,
+    "lon": 2.410207,
+    "score": 0.6298693506493507,
+    "label": "Boulevard Davout 75020 Paris"
+  },
+  "école Champagne|20": {
+    "lat": 48.853562,
+    "lon": 2.404559,
+    "score": 0.6854587460815047,
+    "label": "Cité Champagne 75020 Paris"
+  },
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
+  }
+}

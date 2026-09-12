@@ -147,7 +147,14 @@ def fetch_beneficiaires_data(client: bigquery.Client, year: int = None, limit: i
     return results
 
 
-MIN_YEAR_EXPORTED = 2018  # Frontend / UI scope starts at 2018 (Loi NOTRe + M57)
+# Plancher d'export. Il valait 2018 au motif que le périmètre du site commence
+# là ; c'était vrai tant que la source elle-même commençait là. Depuis
+# l'ingestion du jeu 2013-2017 (la première moitié de la même annexe, que la
+# Ville a republiée sous un autre identifiant), le plancher jetait cinq
+# exercices et 6,19 Md€ déjà présents dans l'entrepôt. On descend à la première
+# année réellement disponible — 2010 depuis l'annexe M14 retrouvée le
+# 2026-09-11 ; `--min-year` reste là pour un export restreint.
+MIN_YEAR_EXPORTED = 2010
 
 
 def get_available_years(client: bigquery.Client) -> list:

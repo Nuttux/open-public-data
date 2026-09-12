@@ -1,138 +1,132 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
-  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
-  "slug": "fontaine-des-innocents",
-  "name": "Fontaine des Innocents",
-  "kind_fr": "Monument",
-  "kind_en": "Monument",
-  "famille": "urbain",
-  "arrondissement": 1,
-  "lat": 48.860458,
-  "lon": 2.347394,
-  "photo": "/img/lieux/fontaine-des-innocents.jpg",
-  "photo_credit": {
-    "licence": "CC BY-SA 3.0",
-    "auteur": "JLPC\n",
-    "url": "https://commons.wikimedia.org/wiki/File:Paris_Fontaine_Innocents_Nymphe1_2013.jpg",
-    "source": "Wikimedia Commons"
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "fontaine-des-innocents",
+ "name": "Fontaine des Innocents",
+ "kind_fr": "Monument",
+ "kind_en": "Monument",
+ "famille": "urbain",
+ "arrondissement": 1,
+ "lat": 48.860458,
+ "lon": 2.347394,
+ "photo": "/img/lieux/fontaine-des-innocents.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 3.0",
+  "auteur": "JLPC\n",
+  "url": "https://commons.wikimedia.org/wiki/File:Paris_Fontaine_Innocents_Nymphe1_2013.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "La fontaine des Innocents, d'abord appelée fontaine des Nymphes, est une fontaine située dans le 1er arrondissement de Paris, sur l'actuelle place Joachim-du-Bellay dans le quartier des Halles. De style Renaissance, elle a connu diverses modifications et a été déplacée à deux occasions. Elle est classée monument historique depuis 1862.",
+  "url": "https://fr.wikipedia.org/wiki/Fontaine_des_Innocents",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Fontaine des Innocents, originally called the Fontaine des Nymphes, is a fountain located in the 1st arrondissement of Paris, on the present-day place Joachim-du-Bellay in the Les Halles neighborhood. Built in the Renaissance style, it has undergone various alterations and has been relocated twice. It has been listed as a historic monument since 1862."
+ },
+ "stats": {
+  "n_delibs": 681,
+  "delibs_span": [
+   2014,
+   2017
+  ],
+  "n_bmo_brut": 867,
+  "n_bmo_verifies": 4,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (2 trouvés)",
+  "lecture_mode_en": "title naming the place (2 found)",
+  "n_lus": 2,
+  "n_lieu": 2
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En novembre 2014, le Conseil de Paris adopte à l'unanimité un vœu du groupe UMP demandant une opération de sauvegarde de la fontaine des Innocents, que Jean-François LEGARET, maire du 1er arrondissement, décrit comme un monument majeur du centre de Paris en très mauvais état. L'Exécutif émet un avis favorable, et Bruno Julliard indique vouloir proposer à la Maire de Paris d'inscrire la fontaine au plan d'investissement de la mandature. Deux ans et demi plus tard, en mai 2017, le groupe les Républicains dépose un nouveau vœu : LEGARET affirme que rien n'a été entamé et qu'aucun budget n'a été mobilisé pour les études préalables et les travaux, alors que la Direction du Patrimoine et de l'Architecture aurait, selon lui, inscrit 4 millions d'euros d'investissements localisés. Ce second vœu demande à la Maire de préciser son engagement financier, de lancer l'opération de restauration et de modernisation, et de réactualiser le calendrier.",
+ "moments": [
+  {
+   "id": "121333",
+   "seance": "NOVEMBRE 2014",
+   "fait": "Le Conseil de Paris adopte à l'unanimité un vœu du groupe UMP pour la sauvegarde de la fontaine ; l'Exécutif est favorable et Bruno Julliard dit vouloir l'inscrire au plan d'investissement de la mandature.",
+   "pourquoi": "L'engagement de principe qui lance tout",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121333",
+   "fait_en": "Conseil de Paris unanimously adopted a motion from the UMP group for the fountain's rescue; the executive was in favor, and Bruno Julliard said he wanted to include it in the term's investment plan.",
+   "pourquoi_en": "The initial commitment in principle that set everything in motion"
+  },
+  {
+   "id": "135790",
+   "seance": "MAI 2017",
+   "fait": "Le groupe les Républicains redépose un vœu ; Jean-François LEGARET affirme que rien n'a été entamé et qu'aucun budget n'a été mobilisé, malgré 4 M€ qu'aurait inscrits la Direction du Patrimoine et de l'Architecture.",
+   "pourquoi": "Deux ans et demi après, l'opposition affirme que rien n'a avancé",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=135790",
+   "fait_en": "The Les Républicains group filed a new motion; Jean-François LEGARET stated that nothing had begun and that no budget had been committed, despite the 4 million euros the Direction du Patrimoine et de l'Architecture had reportedly allocated.",
+   "pourquoi_en": "Two and a half years later, the opposition claims nothing has moved forward"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "MAI 2017",
+   "montant": "4 millions d'euros",
+   "objet": "Investissements localisés pour la restauration et la modernisation de la fontaine, montant que M. Legaret dit avoir été inscrit par la Direction du Patrimoine et de l'Architecture.",
+   "citation": "la Direction du Patrimoine et de l?Architecture avait inscrit 4 millions d?euros d?investissements localisés pour la restauration et la modernisation de la fontaine des Innocents",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=135790"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20232023T02042",
+   "objet": "SA4 RESTAURATION FONTAINE DES INNOCENTS LOT1:INSTAL CHANTIER",
+   "objet_clair": null,
+   "fournisseur": "H. CHEVALIER",
+   "montant_max": 1019737.15,
+   "date_notification": "2023-04-04",
+   "preuve": "L'objet du marche nomme le lieu et porte sur des travaux le concernant : « SA4 RESTAURATION FONTAINE DES INNOCENTS LOT1:INSTAL CHANTIER » (lot installation de chantier de la restauration). Le contexte des deliberations confirme une operation de restauration de la fontaine des Innocents (1er), monument historique classe en 1862."
+  },
+  {
+   "numero_marche": "20222022T08669",
+   "objet": "SA3 MS/AC AMENAGEMENT DES ABORDS FONTAINE DES INNOCENTS",
+   "objet_clair": null,
+   "fournisseur": "COCHERY ILE DE FRANCE",
+   "montant_max": 432846.28,
+   "date_notification": "2022-11-04",
+   "preuve": "L'objet nomme le lieu et porte sur son amenagement, pas sur un simple repere d'adresse : « SA3 MS/AC AMENAGEMENT DES ABORDS FONTAINE DES INNOCENTS ». Perimetre = les abords immediats du monument (place Joachim-du-Bellay, cf. deliberation MAI 2017), non le monument lui-meme."
+  },
+  {
+   "numero_marche": "20212021S07089",
+   "objet": "SA4 MO RELATIVE A LA RESTAURATION FONTAINE DES INNOCENTS",
+   "objet_clair": null,
+   "fournisseur": "SUNMETRON",
+   "montant_max": 258357.5,
+   "date_notification": "2021-10-18",
+   "preuve": "L'objet nomme le lieu et porte sur la maitrise d'oeuvre de sa restauration : « SA4 MO RELATIVE A LA RESTAURATION FONTAINE DES INNOCENTS ». Anteriorite coherente avec le marche de travaux notifie le 2023-04-04."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Fontaine+des+Innocents"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Fontaine+des+Innocents%22%29"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
   },
   "wiki": {
-    "extract": "La fontaine des Innocents, d'abord appelée fontaine des Nymphes, est une fontaine située dans le 1er arrondissement de Paris, sur l'actuelle place Joachim-du-Bellay dans le quartier des Halles. De style Renaissance, elle a connu diverses modifications et a été déplacée à deux occasions. Elle est classée monument historique depuis 1862.",
-    "url": "https://fr.wikipedia.org/wiki/Fontaine_des_Innocents",
-    "source": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    },
-    "extract_en": "The Fontaine des Innocents, originally called the Fontaine des Nymphes, is a fountain located in the 1st arrondissement of Paris, on the present-day place Joachim-du-Bellay in the Les Halles neighborhood. Built in the Renaissance style, it has undergone various alterations and has been relocated twice. It has been listed as a historic monument since 1862."
-  },
-  "stats": {
-    "n_delibs": 681,
-    "delibs_span": [
-      2014,
-      2017
-    ],
-    "n_bmo_brut": 867,
-    "n_bmo_verifies": 4,
-    "invest_total_eur": 0,
-    "invest_annees": [],
-    "lecture_mode": "titre nommant le lieu (2 trouvés)",
-    "lecture_mode_en": "title naming the place (2 found)",
-    "n_lus": 2,
-    "n_lieu": 2
-  },
-  "subventions_exploitant": null,
-  "residents": [],
-  "kpi_montant": null,
-  "synthese_fr": "En novembre 2014, le Conseil de Paris adopte à l'unanimité un vœu du groupe UMP demandant une opération de sauvegarde de la fontaine des Innocents, que Jean-François LEGARET, maire du 1er arrondissement, décrit comme un monument majeur du centre de Paris en très mauvais état. L'Exécutif émet un avis favorable, et Bruno Julliard indique vouloir proposer à la Maire de Paris d'inscrire la fontaine au plan d'investissement de la mandature. Deux ans et demi plus tard, en mai 2017, le groupe les Républicains dépose un nouveau vœu : LEGARET affirme que rien n'a été entamé et qu'aucun budget n'a été mobilisé pour les études préalables et les travaux, alors que la Direction du Patrimoine et de l'Architecture aurait, selon lui, inscrit 4 millions d'euros d'investissements localisés. Ce second vœu demande à la Maire de préciser son engagement financier, de lancer l'opération de restauration et de modernisation, et de réactualiser le calendrier.",
-  "moments": [
-    {
-      "id": "121333",
-      "seance": "NOVEMBRE 2014",
-      "fait": "Le Conseil de Paris adopte à l'unanimité un vœu du groupe UMP pour la sauvegarde de la fontaine ; l'Exécutif est favorable et Bruno Julliard dit vouloir l'inscrire au plan d'investissement de la mandature.",
-      "pourquoi": "L'engagement de principe qui lance tout",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121333",
-      "fait_en": "Conseil de Paris unanimously adopted a motion from the UMP group for the fountain's rescue; the executive was in favor, and Bruno Julliard said he wanted to include it in the term's investment plan.",
-      "pourquoi_en": "The initial commitment in principle that set everything in motion"
-    },
-    {
-      "id": "135790",
-      "seance": "MAI 2017",
-      "fait": "Le groupe les Républicains redépose un vœu ; Jean-François LEGARET affirme que rien n'a été entamé et qu'aucun budget n'a été mobilisé, malgré 4 M€ qu'aurait inscrits la Direction du Patrimoine et de l'Architecture.",
-      "pourquoi": "Deux ans et demi après, l'opposition affirme que rien n'a avancé",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=135790",
-      "fait_en": "The Les Républicains group filed a new motion; Jean-François LEGARET stated that nothing had begun and that no budget had been committed, despite the 4 million euros the Direction du Patrimoine et de l'Architecture had reportedly allocated.",
-      "pourquoi_en": "Two and a half years later, the opposition claims nothing has moved forward"
-    }
-  ],
-  "montants": [
-    {
-      "seance": "MAI 2017",
-      "montant": "4 millions d'euros",
-      "objet": "Investissements localisés pour la restauration et la modernisation de la fontaine, montant que M. Legaret dit avoir été inscrit par la Direction du Patrimoine et de l'Architecture.",
-      "citation": "la Direction du Patrimoine et de l?Architecture avait inscrit 4 millions d?euros d?investissements localisés pour la restauration et la modernisation de la fontaine des Innocents",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=135790"
-    }
-  ],
-  "bmo_extraits": [],
-  "bmo_recit": null,
-  "invest": [],
-  "marches": [
-    {
-      "numero_marche": "20232023T02042",
-      "objet": "SA4 RESTAURATION FONTAINE DES INNOCENTS LOT1:INSTAL CHANTIER",
-      "objet_clair": null,
-      "fournisseur": "H. CHEVALIER",
-      "montant_max": 1019737.15,
-      "date_notification": "2023-04-04",
-      "preuve": "L'objet du marche nomme le lieu et porte sur des travaux le concernant : « SA4 RESTAURATION FONTAINE DES INNOCENTS LOT1:INSTAL CHANTIER » (lot installation de chantier de la restauration). Le contexte des deliberations confirme une operation de restauration de la fontaine des Innocents (1er), monument historique classe en 1862."
-    },
-    {
-      "numero_marche": "20222022T08669",
-      "objet": "SA3 MS/AC AMENAGEMENT DES ABORDS FONTAINE DES INNOCENTS",
-      "objet_clair": null,
-      "fournisseur": "COCHERY ILE DE FRANCE",
-      "montant_max": 432846.28,
-      "date_notification": "2022-11-04",
-      "preuve": "L'objet nomme le lieu et porte sur son amenagement, pas sur un simple repere d'adresse : « SA3 MS/AC AMENAGEMENT DES ABORDS FONTAINE DES INNOCENTS ». Perimetre = les abords immediats du monument (place Joachim-du-Bellay, cf. deliberation MAI 2017), non le monument lui-meme."
-    },
-    {
-      "numero_marche": "20212021S07089",
-      "objet": "SA4 MO RELATIVE A LA RESTAURATION FONTAINE DES INNOCENTS",
-      "objet_clair": null,
-      "fournisseur": "SUNMETRON",
-      "montant_max": 258357.5,
-      "date_notification": "2021-10-18",
-      "preuve": "L'objet nomme le lieu et porte sur la maitrise d'oeuvre de sa restauration : « SA4 MO RELATIVE A LA RESTAURATION FONTAINE DES INNOCENTS ». Anteriorite coherente avec le marche de travaux notifie le 2023-04-04."
-    }
-  ],
-  "mandate": null,
-  "sources": {
-    "delibs": {
-      "name": "Débat-Délibs — Conseil de Paris",
-      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Fontaine+des+Innocents"
-    },
-    "bmo": {
-      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Fontaine+des+Innocents%22%29"
-    },
-    "invest": {
-      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-      "url": "https://opendata.paris.fr/"
-    },
-    "wiki": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
-  },
-  "synthese_en": "In November 2014, Conseil de Paris unanimously adopted a motion from the UMP group calling for a rescue operation for the Fontaine des Innocents, which Jean-François LEGARET, mayor of the 1st arrondissement, described as a major monument in the center of Paris in very poor condition. The executive issued a favorable opinion, and Bruno Julliard said he intended to propose to the Mayor of Paris that the fountain be included in the term's investment plan. Two and a half years later, in May 2017, the Les Républicains group filed a new motion: LEGARET stated that nothing had begun and that no budget had been committed for preliminary studies and works, even though the Direction du Patrimoine et de l'Architecture had, according to him, allocated 4 million euros in localized investments. This second motion asked the Mayor to clarify her financial commitment, launch the restoration and modernization operation, and update the timetable.",
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
   }
+ },
+ "synthese_en": "In November 2014, Conseil de Paris unanimously adopted a motion from the UMP group calling for a rescue operation for the Fontaine des Innocents, which Jean-François LEGARET, mayor of the 1st arrondissement, described as a major monument in the center of Paris in very poor condition. The executive issued a favorable opinion, and Bruno Julliard said he intended to propose to the Mayor of Paris that the fountain be included in the term's investment plan. Two and a half years later, in May 2017, the Les Républicains group filed a new motion: LEGARET stated that nothing had begun and that no budget had been committed for preliminary studies and works, even though the Direction du Patrimoine et de l'Architecture had, according to him, allocated 4 million euros in localized investments. This second motion asked the Mayor to clarify her financial commitment, launch the restoration and modernization operation, and update the timetable."
 }

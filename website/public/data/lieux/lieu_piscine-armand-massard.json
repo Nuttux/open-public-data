@@ -1,113 +1,168 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
-  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
-  "slug": "piscine-armand-massard",
-  "name": "Piscine Armand-Massard",
-  "kind_fr": "Piscine",
-  "kind_en": "Swimming pool",
-  "famille": "sport",
-  "arrondissement": 15,
-  "lat": 48.888209,
-  "lon": 2.296713,
-  "photo": null,
-  "photo_credit": null,
-  "wiki": {
-    "extract": null,
-    "url": null,
-    "source": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
-  },
-  "stats": {
-    "n_delibs": 1460,
-    "delibs_span": [
-      2002,
-      2002
-    ],
-    "n_bmo_brut": 0,
-    "n_bmo_verifies": null,
-    "invest_total_eur": 0,
-    "invest_annees": [],
-    "lecture_mode": "titre nommant le lieu (1 trouvés)",
-    "lecture_mode_en": "title naming the place (1 found)",
-    "n_lus": 1,
-    "n_lieu": 1
-  },
-  "subventions_exploitant": null,
-  "residents": [],
-  "kpi_montant": null,
-  "synthese_fr": "En février 2002, le Conseil de Paris approuve le principe du versement d'une indemnité de 10 731 euros T.T.C. à Agnès Sztal, en réparation d'un préjudice causé par un accident survenu à la piscine Armand-Massard, 66 boulevard du Montparnasse (15e). La délibération retient la responsabilité de la Ville de Paris dans cet accident. La dépense correspondante est imputée à la fonction 40, nature 678, chapitre 67, du budget de fonctionnement de la Ville de Paris pour 2002.",
-  "moments": [
-    {
-      "id": "58063",
-      "seance": "FEVRIER 2002",
-      "fait": "Principe d'une indemnité de 10 731 euros approuvé pour un accident à la piscine, responsabilité de la Ville retenue",
-      "pourquoi": "seul épisode documenté, révèle un incident et son coût",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58063",
-      "fait_en": "Compensation of 10,731 euros approved in principle for an accident at the pool, with the City's liability upheld",
-      "pourquoi_en": "the only documented episode, revealing an incident and its cost"
-    }
-  ],
-  "montants": [
-    {
-      "seance": "FEVRIER 2002",
-      "montant": "10 731 euros T.T.C.",
-      "objet": "Indemnité à Melle Agnès Sztal pour un accident à la piscine Armand-Massard",
-      "citation": "Est approuvé le principe du versement d'une indemnité de 10.731 euros T.T.C. à Melle Agnès SZTAL en réparation d'un préjudice causé par un accident à la piscine Armand-Massard, 66, boulevard du Montparnasse (15e)",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58063"
-    }
-  ],
-  "bmo_extraits": [],
-  "bmo_recit": null,
-  "invest": [],
-  "marches": [
-    {
-      "numero_marche": "20212021T05619",
-      "objet": "FILTRATION PISCINE ARMAND MASSARD 75015",
-      "objet_clair": null,
-      "fournisseur": "EAUX COLLECTIVES ET TRAITEMENTS",
-      "montant_max": 69508.95,
-      "date_notification": "2021-07-22",
-      "preuve": "Objet du marché : \"FILTRATION PISCINE ARMAND MASSARD 75015\" — nomme explicitement le lieu."
-    },
-    {
-      "numero_marche": "20141410010742",
-      "objet": "TX POSE ONDULEUR DE SÉCURITÉ PISCINE ARMAND MASSARD",
-      "objet_clair": null,
-      "fournisseur": "ECUS",
-      "montant_max": 26980.0,
-      "date_notification": "2014-01-21",
-      "preuve": "Objet du marché : \"TX POSE ONDULEUR DE SÉCURITÉ PISCINE ARMAND MASSARD\" — nomme explicitement le lieu."
-    }
-  ],
-  "mandate": null,
-  "sources": {
-    "delibs": {
-      "name": "Débat-Délibs — Conseil de Paris",
-      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Piscine+Armand-Massard"
-    },
-    "bmo": {
-      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-    },
-    "invest": {
-      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-      "url": "https://opendata.paris.fr/"
-    },
-    "wiki": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
-  },
-  "synthese_en": "In February 2002, the Council of Paris approved the payment of a compensation of 10,731 euros T.T.C. to Agnès Sztal, in reparation for harm caused by an accident at the Armand-Massard swimming pool, 66 boulevard du Montparnasse (15th arrondissement). The resolution finds the City of Paris liable for this accident. The corresponding expense is charged to function 40, nature 678, chapter 67, of the City of Paris's operating budget for 2002.",
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-armand-massard",
+ "name": "Piscine Armand-Massard",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 15,
+ "lat": 48.888209,
+ "lon": 2.296713,
+ "photo": null,
+ "photo_credit": null,
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
   }
+ },
+ "stats": {
+  "n_delibs": 1460,
+  "delibs_span": [
+   2002,
+   2002
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 829015.0,
+  "invest_annees": [
+   "2019",
+   "2020",
+   "2021"
+  ],
+  "lecture_mode": "titre nommant le lieu (1 trouvés)",
+  "lecture_mode_en": "title naming the place (1 found)",
+  "n_lus": 1,
+  "n_lieu": 1
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En février 2002, le Conseil de Paris approuve le principe du versement d'une indemnité de 10 731 euros T.T.C. à Agnès Sztal, en réparation d'un préjudice causé par un accident survenu à la piscine Armand-Massard, 66 boulevard du Montparnasse (15e). La délibération retient la responsabilité de la Ville de Paris dans cet accident. La dépense correspondante est imputée à la fonction 40, nature 678, chapitre 67, du budget de fonctionnement de la Ville de Paris pour 2002.",
+ "moments": [
+  {
+   "id": "58063",
+   "seance": "FEVRIER 2002",
+   "fait": "Principe d'une indemnité de 10 731 euros approuvé pour un accident à la piscine, responsabilité de la Ville retenue",
+   "pourquoi": "seul épisode documenté, révèle un incident et son coût",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58063",
+   "fait_en": "Compensation of 10,731 euros approved in principle for an accident at the pool, with the City's liability upheld",
+   "pourquoi_en": "the only documented episode, revealing an incident and its cost"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "FEVRIER 2002",
+   "montant": "10 731 euros T.T.C.",
+   "objet": "Indemnité à Melle Agnès Sztal pour un accident à la piscine Armand-Massard",
+   "citation": "Est approuvé le principe du versement d'une indemnité de 10.731 euros T.T.C. à Melle Agnès SZTAL en réparation d'un préjudice causé par un accident à la piscine Armand-Massard, 66, boulevard du Montparnasse (15e)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58063"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": null,
+ "invest": [
+  {
+   "annee": 2019,
+   "montant_eur": 252628.0,
+   "nom_projet": "Piscine Armand Massard - Réfection du carrelage, remplacement des pompes de filtration, dé",
+   "preuve": "Nom du projet : \"Piscine Armand Massard - Réfection du carrelage, remplacement des pompes de filtration, dé\" — nomme explicitement le lieu (signal \"nom\"). La distance géocodée (5165 m) ne correspond pas à l'adresse du lieu, mais l'intitulé est sans ambiguïté.",
+   "id": null
+  },
+  {
+   "annee": 2020,
+   "montant_eur": 460192.0,
+   "nom_projet": "Piscine Armand Massard - Rénovation des installations de filtration, fourniture et pose de",
+   "preuve": "Nom du projet : \"Piscine Armand Massard - Rénovation des installations de filtration, fourniture et pose de\" — nomme explicitement le lieu (signal \"nom\"). La distance géocodée (5165 m) ne correspond pas à l'adresse du lieu (66 boulevard du Montparnasse, 15e), mais l'intitulé du projet est sans ambiguïté.",
+   "id": null
+  },
+  {
+   "annee": 2021,
+   "montant_eur": 116195.0,
+   "nom_projet": "Piscines Piscine Armand Massard - Installation de masses filtrantes, pose de porte d'entré",
+   "preuve": "Nom du projet : \"Piscines Piscine Armand Massard - Installation de masses filtrantes, pose de porte d'entré\" — nomme explicitement le lieu (signal \"nom\"). La distance géocodée (5326 m) ne correspond pas à l'adresse du lieu, mais l'intitulé est sans ambiguïté.",
+   "id": null
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20212021T05619",
+   "objet": "FILTRATION PISCINE ARMAND MASSARD 75015",
+   "objet_clair": null,
+   "fournisseur": "EAUX COLLECTIVES ET TRAITEMENTS",
+   "montant_max": 69508.95,
+   "date_notification": "2021-07-22",
+   "preuve": "Objet du marché : \"FILTRATION PISCINE ARMAND MASSARD 75015\" — nomme explicitement le lieu."
+  },
+  {
+   "numero_marche": "20141410010742",
+   "objet": "TX POSE ONDULEUR DE SÉCURITÉ PISCINE ARMAND MASSARD",
+   "objet_clair": null,
+   "fournisseur": "ECUS",
+   "montant_max": 26980.0,
+   "date_notification": "2014-01-21",
+   "preuve": "Objet du marché : \"TX POSE ONDULEUR DE SÉCURITÉ PISCINE ARMAND MASSARD\" — nomme explicitement le lieu."
+  }
+ ],
+ "mandate": {
+  "par_annee": {
+   "2009": 2107.54
+  },
+  "total_eur": 2107.54,
+  "operations": [
+   {
+    "ap_cle": "B100/0503211",
+    "ap_texte": "PISCINE MONTPARNASSE (ARMAND MASSARD)",
+    "mandate_par_annee": {
+     "2009": 1443.93
+    },
+    "total_mandate": 1443.93,
+    "preuve": "Libellé de l'opération : \"PISCINE MONTPARNASSE (ARMAND MASSARD)\" — nomme le lieu entre parenthèses ; la délibération 2002 JS 20 situe \"la piscine Armand-Massard, 66, boulevard du Montparnasse (15e)\", ce qui confirme que \"PISCINE MONTPARNASSE\" désigne bien cet équipement. Direction DJS, mission \"JEUNESSE ET SPORTS\", cohérente avec une piscine.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0503211"
+   },
+   {
+    "ap_cle": "B100/0703211",
+    "ap_texte": "PISCINE MONTPARNASSE (ARMAND MASSARD)",
+    "mandate_par_annee": {
+     "2009": 663.61
+    },
+    "total_mandate": 663.61,
+    "preuve": "Libellé de l'opération : \"PISCINE MONTPARNASSE (ARMAND MASSARD)\" — nomme le lieu entre parenthèses ; la délibération 2002 JS 20 situe \"la piscine Armand-Massard, 66, boulevard du Montparnasse (15e)\", ce qui confirme l'identification. Direction DJS, mission \"JEUNESSE ET SPORTS\".",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0703211"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2009"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Piscine+Armand-Massard"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In February 2002, the Council of Paris approved the payment of a compensation of 10,731 euros T.T.C. to Agnès Sztal, in reparation for harm caused by an accident at the Armand-Massard swimming pool, 66 boulevard du Montparnasse (15th arrondissement). The resolution finds the City of Paris liable for this accident. The corresponding expense is charged to function 40, nature 678, chapter 67, of the City of Paris's operating budget for 2002."
 }

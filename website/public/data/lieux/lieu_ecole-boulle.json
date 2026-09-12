@@ -1,0 +1,537 @@
+{
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "ecole-boulle",
+ "name": "École Boulle",
+ "kind_fr": "École",
+ "kind_en": "École",
+ "famille": "services",
+ "arrondissement": 12,
+ "lat": 48.846526,
+ "lon": 2.390876,
+ "photo": "/img/lieux/ecole-boulle.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 3.0",
+  "auteur": "LPLT",
+  "url": "https://commons.wikimedia.org/wiki/File:%C3%89cole_Boulle_2.JPG",
+  "source": "Wikimedia Commons"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1292,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 29763.0,
+  "invest_annees": [
+   "2021"
+  ],
+  "lecture_mode": "titre nommant le lieu (42 trouvés)",
+  "lecture_mode_en": "title naming the place (42 found)",
+  "n_lus": 40,
+  "n_lieu": null
+ },
+ "subventions_exploitant": {
+  "nom_fiche": "LYCEE DES METIERS BOULLE E.S.A.A.",
+  "total_eur": 24335903.0,
+  "annees": [
+   "2010",
+   "2024"
+  ],
+  "rows": [
+   {
+    "annee": "2024",
+    "montant_eur": 1771800.0,
+    "beneficiaire": "LYCEE DES METIERS BOULLE E.S.A.A.",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2023",
+    "montant_eur": 1846800.0,
+    "beneficiaire": "LYCEE DES METIERS BOULLE E S A A",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2022",
+    "montant_eur": 1611800.0,
+    "beneficiaire": "LYCEE DES METIERS BOULLE E.S.A.A.",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2022",
+    "montant_eur": 33000.0,
+    "beneficiaire": "LYCEE DES METIERS BOULLE E S A A",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2021",
+    "montant_eur": 1783900.0,
+    "beneficiaire": "LYCEE DES METIERS BOULLE E.S.A.A.",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2020",
+    "montant_eur": 1691500.0,
+    "beneficiaire": "LYCEE DES METIERS BOULLE E.S.A.A.",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2019",
+    "montant_eur": 1559800.0,
+    "beneficiaire": "LYCEE DES METIERS BOULLE E.S.A.A.",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2018",
+    "montant_eur": 1829800.0,
+    "beneficiaire": "LYCEE DES METIERS BOULLE E.S.A.A.",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2017",
+    "montant_eur": 1595600.0,
+    "beneficiaire": "LYCEE DES METIERS BOULLE E.S.A.A.",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2016",
+    "montant_eur": 1732140.0,
+    "beneficiaire": "LYCEE DES METIERS BOULLE E.S.A.A.",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2014",
+    "montant_eur": 1452680.0,
+    "beneficiaire": "LYCEE DES METIERS BOULLE E.S.A.A.",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2013",
+    "montant_eur": 2070985.0,
+    "beneficiaire": "LYCEE DES METIERS BOULLE E.S.A.A.",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2012",
+    "montant_eur": 2633079.0,
+    "beneficiaire": "LYCEE DES METIERS BOULLE E.S.A.A.",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2011",
+    "montant_eur": 1432719.0,
+    "beneficiaire": "LYCEE DES METIERS BOULLE E.S.A.A.",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2010",
+    "montant_eur": 1290300.0,
+    "beneficiaire": "LYCEE DES METIERS BOULLE E.S.A.A.",
+    "thematique": "Éducation"
+   }
+  ]
+ },
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "1998": [
+   {
+    "reference": "1998 DPA 201",
+    "titre": "Approbation du principe de la réalisation des travaux de réfection des menuiseries extérieures à l'école Boulle (12e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean de GAULLE, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 1998",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92450"
+   }
+  ],
+  "1999": [
+   {
+    "reference": "1999 DASCO 89",
+    "titre": "51 - 1999, DASCO 89 - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres relatif à la mise en conformité aux normes des machines outils utilisées par l'école Boulle (12e)",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17599"
+   },
+   {
+    "reference": "1999 DASCO 89",
+    "titre": "Approbation des modalités d'attribution d'un marché pour la mise en conformité aux normes des machines outils utilisées par l'école Boulle (12e).- Autorisation à M. le Maire de Paris de signer ledit marché. M. Vincent REINA, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83897"
+   },
+   {
+    "reference": "1999 DPA 90",
+    "titre": "Approbation du principe de la réalisation des travaux de transformation en salles de classe des anciens ateliers maquette à l'école Boulle, 9, rue Pierre-Bourdan (12e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean de GAULLE, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34236"
+   },
+   {
+    "reference": "1999 DPA 90",
+    "titre": "28 - 1999, DPA 90 - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres ou un marché négocié, dans l'hypothèse où l'appel d'offres serait déclaré infructueux, en vue de la réalisation des travaux de transformation en salles de classe des anciens ateliers maquette à l'école Boulle, 9, rue Pierre-Bourdan (12e)",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5525"
+   }
+  ],
+  "2000": [
+   {
+    "reference": "2000 DPA 182",
+    "titre": "Approbation du principe de la réalisation de travaux pour la modernisation du sol de la cour basse de l'école Boulle (12e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Vincent REINA, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34667"
+   },
+   {
+    "reference": "2000 DPA 331",
+    "titre": "Approbation du principe de la réalisation des travaux de modernisation des menuiseries extérieures à l'école Boulle, 9, rue Pierre-Bourdan (12e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Vincent REINA, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40726"
+   }
+  ],
+  "2002": [
+   {
+    "reference": "2002 DASCO 14",
+    "titre": "Subvention à l'Ecole BOULLE (12e). M. Christian SAUTTER et Mme Danièle POURTAUD, rapporteurs.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "FEVRIER 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58117"
+   },
+   {
+    "reference": "2002 DASCO 252",
+    "titre": "Attribution d'une subvention complémentaire de fonctionnement de 50.000 euros à l'Ecole BOULLE (12e). Mme Danièle POURTAUD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29405"
+   }
+  ],
+  "2003": [
+   {
+    "reference": "2003 DASCO 280",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec la Caisse des écoles du 12e arrondissement une convention relative à la fourniture de repas à l'Ecole BOULLE, et de fixer les tarifs applicables aux usagers. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "DECEMBRE 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69003"
+   },
+   {
+    "reference": "2003 DASCO 49",
+    "titre": "Subvention de fonctionnement de l'Ecole BOULLE 9, rue Pierre Bourdan (12e). Mme Danièle POURTAUD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MARS 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79040"
+   }
+  ],
+  "2004": [
+   {
+    "reference": "2004 DASCO 2",
+    "titre": "Subvention de fonctionnement de l'Ecole BOULLE, 9, rue Pierre Bourdan (12e). Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "AVRIL 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52085"
+   },
+   {
+    "reference": "2004 DASCO 209",
+    "titre": "Subvention de fonctionnement 2005 de l’Ecole Boulle, 9, rue Pierre-Bourdan (12e). Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "DECEMBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87889"
+   }
+  ],
+  "2005": [
+   {
+    "reference": "2005 DPA 29",
+    "titre": "Approbation du principe et des modalités de passation d’un marché de maîtrise d’œuvre pour la réalisation des travaux de restructuration de l’immeuble annexe de l’Ecole Boulle, 17-21, rue Pierre Bourdan (12e). - Autorisation à M. le Maire de Paris de signer les demandes de permis de construire et de démolir correspondantes. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26422"
+   }
+  ],
+  "2006": [
+   {
+    "reference": "2006 DASCO 181",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec l’Ecole Boulle (12e) et son agent comptable, une convention relative à la gestion des paiements des usagers du service de restauration de l’établisse-ment. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81133"
+   },
+   {
+    "reference": "2006 DDEE 65",
+    "titre": "Subvention à l’association des “Anciens Elèves de l’Ecole Boulle” (AEEB) (12e). Mme Lyne COHEN-SOLAL, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MAI 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88842"
+   },
+   {
+    "reference": "2006 DPA 148",
+    "titre": "Approbation des modalités de consultation de quatre marchés de prestations intellectuelles concernant respectivement la mission de contrôle technique, la mission de coordonnateur SPS, la mission de coordonnateur SSI, la mission d’assistance à la maîtrise d’ouvrage dans le cadre de la restructuration de l’Ecole Boulle (12e). Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88899"
+   },
+   {
+    "reference": "2006 DPA 182",
+    "titre": "Approbation du principe de réalisation des travaux de restructuration de l’immeuble annexe de l’Ecole BOULLE, 17-21 rue Pierre Bourdan (12e) et des modalités de passation de deux marchés de travaux dans le cadre de ladite opération. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81116"
+   }
+  ],
+  "2007": [
+   {
+    "reference": "2007 DASCO 166",
+    "titre": "Attribution d’une subvention à l’Ecole Boulle (12e) pour le fonctionnement du service annexe d’hébergement. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90331"
+   },
+   {
+    "reference": "2007 DPA 134",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché de maîtrise d’œuvre attribué au groupement composé de Pascal SIRVIN Architecte associé à AR&C sarl, CFERM sas, Michel RAOUST, BATISS sarl, AYDA Ingénieurs Conseils, DELPORTE AUMOND LAIGNEAU sa ainsi qu’à VEGETUDE sa dans le cadre de la restructuration de l’Ecole Boulle sise 5-9, rue Pierre Bourdan (12e). Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80175"
+   },
+   {
+    "reference": "2007 DPA 208",
+    "titre": "Restructuration et extension de l’Ecole Boulle 5-9, rue Pierre Bourdan (12ème) : Approbation du principe et des modalités de consultation d’un marché de travaux correspondant aux travaux préparatoires ; Approbation du principe et des modalités de consultation d’un marché de fournitures courantes et service relatifs aux bâtiments provisoires ; Autorisation de M. le Maire de Paris de signer les 2 marchés correspondants. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "OCTOBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53133"
+   },
+   {
+    "reference": "2007 DPA 41",
+    "titre": "Approbation du principe et des modalités de passation d’un marché de prestations intellectuelles concernant une mission d’étude sur l’exploitation et la maintenance dans le cadre de la restructuration de l’école Boulle 5/9, rue Pierre Bourdan (12e). Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26653"
+   },
+   {
+    "reference": "2007 DPA 78",
+    "titre": "Approbation du principe de réalisation des travaux de restructuration et d’extension du site principal de l’école Boulle 5/9, rue Pierre Bourdan (12ème) et des modalités de passation du marché de Maîtrise d’oeuvre correspondant ; autorisation à M. le Maire de Paris de signer ledit marché ; autorisation à M. le Maire de Paris de déposer les demandes de permis de démolir et de construire pour la réalisation de l’opération susvisée. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26630"
+   }
+  ],
+  "2008": [
+   {
+    "reference": "2008 DPA 143",
+    "titre": "Signature d’un avenant n°1 relatif au marché public de maîtrise d’œuvre passé avec l’”ATELIER J et S TABET D’ARCHITECTURE et D’URBANISME” et d’un avenant n°1 passé avec la Société “GTM Bâtiment SA” relatif au marché public de travaux pour la réalisation des travaux de restructuration de l’immeuble annexe de l’Ecole BOULLE (12è). M. Jean-Louis MISSIKA, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91174"
+   },
+   {
+    "reference": "2008 DPA 162",
+    "titre": "Approbation des modalités de passation des marchés de travaux de restructuration et d’extension de l’Ecole Boulle (12e) et signature d’un avenant n°1 au marché de contrôle technique passé avec la société BTP Consultants. M. Jean-Louis MISSIKA, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68699"
+   },
+   {
+    "reference": "2008 DPA 9",
+    "titre": "Souscription d’un avenant n°1 au marché de coordination de sécurité et de protection de la santé attribué à la société IS SERVICES et d’un avenant n°2 au marché de maîtrise d’œuvre relatif à la restructuration et extension de l’Ecole Boulle (12e). M. Jean-Louis MISSIKA, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69981"
+   }
+  ],
+  "2011": [
+   {
+    "reference": "2011 DPA 27",
+    "titre": "Indemnisation de la société FONCIA FRANCO SUISSE, à raison du préjudice subi lors de la réalisation des travaux de réhabilitation et d’extension de l’école Boulle (12ème). M. Jean-Louis MISSIKA, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2011",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97675"
+   }
+  ],
+  "2017": [
+   {
+    "reference": "2017 DEVE 2",
+    "titre": "2017 DEVE 2 - Etude et conception d'un mémorial cinéraire au cimetière du Père-Lachaise - Convention de partenariat pédagogique avec l'Ecole Boulle. Vœu déposé par le groupe Communiste - Front de Gauche relatif au jardin du souvenir du cimetière Père Lachaise.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "JANVIER 2017",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134743"
+   }
+  ]
+ },
+ "invest": [
+  {
+   "annee": 2021,
+   "montant_eur": 29763.0,
+   "nom_projet": "Ecoles d'art Ecole Boulle - Travaux d'étanchéité de la toiture, de couverture et façades",
+   "preuve": "Le nom du projet nomme le lieu verbatim (« Ecoles d'art Ecole Boulle ») et porte sur le bâti lui-même (« Travaux d'étanchéité de la toiture, de couverture et façades »). La distance affichée (831 m) provient du point de géocodage du projet et ne contredit pas le libellé, qui désigne explicitement l'École Boulle.",
+   "id": "2021_12_il_006"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20222022T04439",
+   "objet": "TVX RESTAURATION LACUNAIRES DES CORNICHES ECOLE BOULLE 75012",
+   "objet_clair": null,
+   "fournisseur": "CHAMPAGNE CONSTRUCTION RENOVATION",
+   "montant_max": 214377.26,
+   "date_notification": "2022-06-16",
+   "preuve": "L'objet nomme le lieu et l'arrondissement verbatim (« ECOLE BOULLE 75012 ») et porte sur le bâti du lieu (« TVX RESTAURATION LACUNAIRES DES CORNICHES »)."
+  },
+  {
+   "numero_marche": "decp-2025T12595",
+   "objet": "Marché de travaux de prolongement du réseau d'air comprimé pour la création d'un atelier bijouterie - annexe Ecole Boulle Go n° 202417093",
+   "objet_clair": null,
+   "fournisseur": "GROUPE FLI",
+   "montant_max": 17639.38,
+   "date_notification": "2025-11-27",
+   "preuve": "L'objet nomme le lieu (« annexe Ecole Boulle ») et porte sur des travaux dans le bâtiment ; il partage le numéro d'opération 202417093 avec le marché de maîtrise d'œuvre decp-2025S01504, dont l'objet donne l'adresse « 9-21 rue Pierre Bourdan 75012 Paris ». L'existence d'un immeuble annexe de l'École Boulle est confirmée par « 2006 DPA 182 - […] travaux de restructuration de l'immeuble annexe de l'Ecole BOULLE, 17-21 rue Pierre Bourdan (12e) »."
+  },
+  {
+   "numero_marche": "decp-2025S01504",
+   "objet": "Marché de maîtrise d’œuvre pour l’aménagement d’un atelier de joaillerie à l’école Boulle 9-21 rue Pierre Bourdan 75012 Paris Opération N° 202417093",
+   "objet_clair": null,
+   "fournisseur": "[NON-DIFFUSIBLE]",
+   "montant_max": 17077.05,
+   "date_notification": "2025-02-11",
+   "preuve": "L'objet donne l'adresse exacte du lieu (« à l'école Boulle 9-21 rue Pierre Bourdan 75012 Paris »), cohérente avec les délibérations qui situent le site principal (« 2007 DPA 208 - Restructuration et extension de l'Ecole Boulle 5-9, rue Pierre Bourdan (12ème) ») et l'immeuble annexe (« 2006 DPA 182 - […] travaux de restructuration de l'immeuble annexe de l'Ecole BOULLE, 17-21 rue Pierre Bourdan (12e) »). Prestation de maîtrise d'œuvre pour un aménagement dans le lieu. Le lieu_execution « Paris » n'a pas été utilisé comme preuve."
+  }
+ ],
+ "mandate": {
+  "par_annee": {
+   "2009": 14686025.77,
+   "2010": 20640544.08,
+   "2011": 14897191.91,
+   "2012": 11240942.06,
+   "2013": 1485066.19,
+   "2014": 1664782.75,
+   "2015": 858878.93,
+   "2016": 143364.82,
+   "2017": 225.44
+  },
+  "total_eur": 65617021.95,
+  "operations": [
+   {
+    "ap_cle": "B100/0703709",
+    "ap_texte": "ECOLE BOULLE",
+    "mandate_par_annee": {
+     "2009": 14686025.77,
+     "2010": 20640544.08,
+     "2011": 14897191.91,
+     "2012": 11240942.06,
+     "2013": 1485066.19
+    },
+    "total_mandate": 62949770.01,
+    "preuve": "Le libellé de l'opération désigne ce lieu et rien d'autre (« ECOLE BOULLE », direction DASCO, mission AFFAIRES SCOLAIRES) : ce n'est pas une enveloppe générique de direction. Les délibérations du Conseil de Paris documentent sur les mêmes années un chantier de restructuration-extension de l'école : « 2007 DPA 78 - […] travaux de restructuration et d'extension du site principal de l'école Boulle 5/9, rue Pierre Bourdan (12ème) », « 2008 DPA 162 - Approbation des modalités de passation des marchés de travaux de restructuration et d'extension de l'Ecole Boulle (12e) », « 2008 DPA 143 - […] marché public de travaux pour la réalisation des travaux de restructuration de l'immeuble annexe de l'Ecole BOULLE (12è) », « 2011 DPA 27 - Indemnisation de la société FONCIA FRANCO SUISSE, à raison du préjudice subi lors de la réalisation des travaux de réhabilitation et d'extension de l'école Boulle (12ème) ». Le libellé ne détaille pas le périmètre de l'opération ; les délibérations de ce chantier portent à la fois sur le site principal (5-9) et sur l'immeuble annexe (17-21 rue Pierre Bourdan), qui forment l'emprise de l'école.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0703709"
+   },
+   {
+    "ap_cle": "0703709",
+    "ap_texte": "ECOLE BOULLE",
+    "mandate_par_annee": {
+     "2014": 1664782.75,
+     "2015": 858878.93,
+     "2016": 143364.82,
+     "2017": 225.44
+    },
+    "total_mandate": 2667251.94,
+    "preuve": "Même numéro d'opération (0703709) et même libellé « ECOLE BOULLE » sous DASCO, sans le préfixe B100 : suite du mandatement de la même opération sur 2014-2017 (soldes décroissants jusqu'à 225,44 € en 2017). Les années mandatées des deux lignes sont disjointes (2009-2013 puis 2014-2017) : les additionner ne double compte pas. Le libellé désigne ce lieu et rien d'autre ; il ne détaille pas le périmètre de l'opération.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0703709"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2017"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89cole+Boulle"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

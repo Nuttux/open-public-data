@@ -1,0 +1,375 @@
+{
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "ecole-des-ingenieurs-de-la-ville-de-paris",
+ "name": "École des ingénieurs de la ville de Paris",
+ "kind_fr": "École",
+ "kind_en": "École",
+ "famille": "services",
+ "arrondissement": 19,
+ "lat": 48.874016,
+ "lon": 2.381805,
+ "photo": "/img/lieux/ecole-des-ingenieurs-de-la-ville-de-paris.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/%C3%89cole_des_ing%C3%A9nieurs_de_la_ville_de_Paris",
+  "source": "Wikipédia"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "L’École des ingénieurs de la ville de Paris (EIVP) est l'une des 204 écoles d'ingénieurs françaises accréditées au 1er septembre 2020 à délivrer un diplôme d'ingénieur. En janvier 2020, l'EIVP est l'un des fondateurs de l'université Gustave-Eiffel qui se classe parmi les premières universités françaises en génie civil et dans les domaines des transports.",
+  "url": "https://fr.wikipedia.org/wiki/%C3%89cole_des_ing%C3%A9nieurs_de_la_ville_de_Paris",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 377,
+  "delibs_span": [
+   2000,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (37 trouvés)",
+  "lecture_mode_en": "title naming the place (37 found)",
+  "n_lus": 36,
+  "n_lieu": null
+ },
+ "subventions_exploitant": {
+  "nom_fiche": "REGIE ECOLE INGENIEURS VILLE PARIS",
+  "total_eur": 66301980.0,
+  "annees": [
+   "2010",
+   "2024"
+  ],
+  "rows": [
+   {
+    "annee": "2024",
+    "montant_eur": 5150000.0,
+    "beneficiaire": "REGIE ECOLE INGENIEURS VILLE PARIS",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2023",
+    "montant_eur": 4598050.0,
+    "beneficiaire": "REGIE ECOLE INGENIEURS VILLE PARIS",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2022",
+    "montant_eur": 4998050.0,
+    "beneficiaire": "REGIE ECOLE INGENIEURS VILLE PARIS",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2021",
+    "montant_eur": 4998050.0,
+    "beneficiaire": "REGIE ECOLE INGENIEURS VILLE PARIS",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2020",
+    "montant_eur": 4968050.0,
+    "beneficiaire": "REGIE ECOLE INGENIEURS VILLE PARIS",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2019",
+    "montant_eur": 4970550.0,
+    "beneficiaire": "REGIE ECOLE INGENIEURS VILLE PARIS",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2018",
+    "montant_eur": 4990550.0,
+    "beneficiaire": "REGIE ECOLE INGENIEURS VILLE PARIS",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2017",
+    "montant_eur": 4993050.0,
+    "beneficiaire": "REGIE ECOLE INGENIEURS VILLE PARIS",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2016",
+    "montant_eur": 4975410.0,
+    "beneficiaire": "REGIE ECOLE INGENIEURS VILLE PARIS",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2014",
+    "montant_eur": 4899800.0,
+    "beneficiaire": "REGIE ECOLE INGENIEURS VILLE PARIS",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2013",
+    "montant_eur": 4591680.0,
+    "beneficiaire": "REGIE ECOLE INGENIEURS VILLE PARIS",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2012",
+    "montant_eur": 5362640.0,
+    "beneficiaire": "REGIE ECOLE INGENIEURS VILLE PARIS",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2011",
+    "montant_eur": 3545760.0,
+    "beneficiaire": "REGIE ECOLE INGENIEURS VILLE PARIS",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2010",
+    "montant_eur": 3260340.0,
+    "beneficiaire": "REGIE ECOLE INGENIEURS VILLE PARIS",
+    "thematique": "Éducation"
+   }
+  ],
+  "perimetre": "mono",
+  "note_publique": "Le total affiché regroupe les subventions versées à la régie qui gère l'École des ingénieurs de la Ville de Paris : ce sont des subventions de fonctionnement et d'équipement à l'école (enseignement, personnel, matériel), pas des dépenses de travaux sur le bâtiment. Le bâtiment du 19e n'accueille par ailleurs l'école qu'à la suite de la restructuration de l'hôtel d'activités Rébeval, financée par un emprunt de la SNI garanti à 50 % par la Ville en 2011 : les années antérieures de la série concernent donc l'école, pas cette adresse.",
+  "autres_sites": []
+ },
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "2000": [
+   {
+    "reference": "2000 DASCO 98",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant à la convention signée avec l'Ecole spéciale des travaux publics, du bâtiment et de l'industrie, afin de verser une avance au titre des locaux de l'Ecole des ingénieurs de la Ville de Paris. M. Vincent REINA, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50607"
+   }
+  ],
+  "2005": [
+   {
+    "reference": "2005 DASCO 146",
+    "titre": "Création d’une Régie à autonomie financière et personnalité morale chargée de la gestion de l’Ecole des Ingénieurs de la Ville de Paris (EIVP). - Autorisation à M. le Maire de Paris de signer une convention relative aux modalités de mise à disposition des moyens de la Ville de paris affectes à la régie EIVP. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "JUILLET 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87130"
+   },
+   {
+    "reference": "2005 DASCO 146",
+    "titre": "2005, DASCO 146 - Création d’une régie à autonomie financière et personnalité morale chargée de la gestion de l’Ecole des Ingénieurs de la Ville de Paris (E.I.V.P.). - Approbation des statuts. - Fixation de la dotation initiale. - Nomination des membres du Conseil d’administration et désignation du Directeur de la Régie. - Autorisation à M. le Maire de Paris de signer une convention relative aux modalités de mise à disposition des moyens de la Ville de Paris affectés à la Régie E.I.V.P. - Autori",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9304"
+   },
+   {
+    "reference": "2005 DASCO 218",
+    "titre": "Création d’une régie à autonomie financière et personnalité morale chargée de la gestion de l’école des ingénieurs de la Ville de Paris, école supérieure du génie urbain (EIVP). - Fixation du montant de la dotation en espèces et de la subvention de fonctionnement et d’équipement. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "DECEMBRE 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32884"
+   },
+   {
+    "reference": "2005 DASCO 229",
+    "titre": "Création d’une Régie à Autonomie Financière et Personnalité Morale chargée de la gestion de l’Ecole des Ingénieurs de la Ville de Paris, Ecole supérieure du Génie Urbain (EIVP) : Transfert par avenants des conventions, contrats et marchés conclus par la Ville de Paris au profit de l’EIVP à la régie EIVP ; Modification par avenants de la convention relative aux modalités de mise à disposition des moyens de la Ville de Paris affectés à la régie EIVP. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32794"
+   },
+   {
+    "reference": "2005 DASCO 229",
+    "titre": "2005, DASCO 229 - Création de 2 régies à autonomie financière et personnalité morale chargées de la gestion de l’Ecole supérieure de physique et de chimie industrielles de la Ville de Paris (ESPCI) et de l’Ecole des ingénieurs de la Ville de Paris (EIVP). - Transfert par avenants des conventions, contrats et marchés conclus par la Ville au profit de l’ESPCI et EIVP aux régies ESPCI et EIVP. - Modification par avenants des conventions relatives aux modalités de mise à disposition des moyens affec",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22116"
+   },
+   {
+    "reference": "2005 DASCO 27",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention de recherche entre l’Université de Marne la Vallée et l’Ecole des ingénieurs de la Ville de Paris, école supérieure du Génie Urbain, portant sur la mise en place d’indicateurs dans le domaine de la construction et de l’environnement. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82452"
+   }
+  ],
+  "2006": [
+   {
+    "reference": "2006 DASCO 209",
+    "titre": "Attribution d’une subvention complémentaire de fonctionnement au titre de l’année 2006 à l’Ecole des Ingénieurs de la Ville de Paris (EIVP). Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "OCTOBRE 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35440"
+   },
+   {
+    "reference": "2006 DASCO 240",
+    "titre": "Fixation au titre de l’exercice 2007 du montant des subventions de fonctionnement et d’équipement attribuées à la régie à autonomie financière et personnalité morale chargée de la gestion de l’école des ingénieurs de la Ville de Paris (EIVP). Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "DECEMBRE 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92039"
+   }
+  ],
+  "2007": [
+   {
+    "reference": "2007 DASCO 213",
+    "titre": "Fixation au titre de l’exercice 2008 du montant des subventions de fonctionnement et d’équipement attribuées à la régie à autonomie financière et personnalité morale chargée de la gestion de l’Ecole des Ingénieurs de la Ville de Paris (EIVP). Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65767"
+   },
+   {
+    "reference": "2007 DSTI 46",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention constitutive d’un groupement de commandes réunissant la Ville de Paris, le Département de Paris, l’Ecole des Ingénieurs de la Ville de Paris (EIVP), l’école supérieure de physique et de chimie industrielles (ESPCI) et le Centre d’Action Sociale de la Ville de Paris (CAS-VP) préalablement au lancement d’une ou plusieurs procédures de mise en concurrence en vue de l’attribution d’un ou plusieurs marché(s) ou accord(s)-cadre(s) concernant",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54697"
+   },
+   {
+    "reference": "2007 DSTI 47",
+    "titre": "G - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer une convention constitutive d’un groupement de commandes réunissant la Ville de Paris, le Département de Paris, l’Ecole des Ingénieurs de la Ville de Paris (EIVP), l’école supérieure de physique et de chimie industrielles (ESPCI) et le Centre d’Action Sociale de la Ville de Paris (CAS-VP) préalablement au lancement d’une ou plusieurs procédures de mise en concurrence en vue de l’attributio",
+    "genres": [
+     "autre"
+    ],
+    "seance": "DECEMBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73339"
+   }
+  ],
+  "2008": [
+   {
+    "reference": "2008 DASCO 174",
+    "titre": "Subventions au titre de l’exercice 2009 à la régie à autonomie financière et personnalité morale chargée de la gestion de l’école des ingénieurs de la ville de Paris (EIVP). M. Jean-Louis MISSIKA, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61407"
+   }
+  ],
+  "2009": [
+   {
+    "reference": "2009 DDEE 271",
+    "titre": ": Subventions au titre de l’exercice 2010 à la régie à autonomie financière et personnalité morale chargée de la gestion de l’Ecole des Ingénieurs de la Ville de Paris (EIVP). M. Jean-Louis MISSIKA, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "DECEMBRE 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32524"
+   },
+   {
+    "reference": "2009 DDEE 293",
+    "titre": "Signature d’une convention avec l’Ecole des Ingénieurs de la Ville de Paris (EIVP) pour l’attribution d’une subvention pour la création d’un Institut des Métropoles Durables. M. Jean-Louis MISSIKA, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81888"
+   },
+   {
+    "reference": "2009 DSTI 25",
+    "titre": "Signature d’une convention constitutive d’un groupement de commandes réunissant la Ville, le Département de Paris et l’Ecole des Ingénieurs de la Ville de Paris, en vue de la passation d’un marché relatif à la fourniture, l’installation, l’exploitation et la maintenance d’équipements de visioconférence. Mme Maïté ERRECART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "AVRIL 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64439"
+   },
+   {
+    "reference": "2009 DSTI 26",
+    "titre": "G - Signature d’une convention constitutive d’un groupement de commandes réunissant la Ville, le Département de Paris et l’Ecole des Ingénieurs de la Ville de Paris, en vue de la passation d’un marché relatif à la fourniture, l’installation, l’exploitation et la maintenance d’équipements de visioconférence. Mme Maïté ERRECART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "AVRIL 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77197"
+   }
+  ],
+  "2010": [
+   {
+    "reference": "2010 DDEEES 167",
+    "titre": "Subvention à la régie à autonomie financière et personnalité morale chargée de la gestion de l’école des ingénieurs de la Ville de Paris (EIVP). M. Jean-Louis MISSIKA, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79534"
+   },
+   {
+    "reference": "2010 DDEEES 227",
+    "titre": "Subvention à la régie à autonomie financière et personnalité morale chargée de la gestion de l’école des ingénieurs de la Ville de Paris (EIVP). M. Jean-Louis MISSIKA, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85776"
+   },
+   {
+    "reference": "2010 DDEEES 287",
+    "titre": "Signature d’une convention avec l’Ecole des Ingénieurs de la Ville de Paris (EIVP) pour l’attribution d’une subvention pour l’organisation d’un colloque “Paris 2030”. M. Jean-Louis MISSIKA, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=86108"
+   }
+  ],
+  "2011": [
+   {
+    "reference": "2011 DDEEES 49",
+    "titre": "Garantie de la Ville de Paris, à hauteur de 50 %, pour le service des intérêts et l’amortissement d’un emprunt à contracter par la SNI en vue de financer les travaux de restructuration de l’hôtel d’activités Rébeval (19e) pour accueillir l’Ecole des Ingénieurs de la Ville de Paris. M. Christian SAUTTER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 2011",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96645"
+   }
+  ]
+ },
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89cole+des+ing%C3%A9nieurs+de+la+ville+de+Paris"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

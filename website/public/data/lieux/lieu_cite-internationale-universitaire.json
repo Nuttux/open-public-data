@@ -1,0 +1,932 @@
+{
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "cite-internationale-universitaire",
+ "name": "Cité internationale universitaire",
+ "kind_fr": "Cité",
+ "kind_en": "Cité",
+ "famille": "urbain",
+ "arrondissement": 14,
+ "lat": 48.818828,
+ "lon": 2.33872,
+ "photo": "/img/lieux/cite-internationale-universitaire.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Cit%C3%A9_internationale_universitaire_de_Paris",
+  "source": "Wikipédia"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "La Cité internationale universitaire de Paris (CiuP) est une fondation qui, au sein de ses 40 maisons parisiennes, accueille près de 6 000 étudiants, chercheurs, artistes et sportifs de haut niveau du monde entier.",
+  "url": "https://fr.wikipedia.org/wiki/Cit%C3%A9_internationale_universitaire_de_Paris",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1283,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (101 trouvés)",
+  "lecture_mode_en": "title naming the place (101 found)",
+  "n_lus": 44,
+  "n_lieu": null
+ },
+ "subventions_exploitant": {
+  "nom_fiche": "CITE INTERNATION UNIVERSITAIRE DE P",
+  "total_eur": 13182198.0,
+  "annees": [
+   "2010",
+   "2018"
+  ],
+  "rows": [
+   {
+    "annee": "2018",
+    "montant_eur": 525000.0,
+    "beneficiaire": "CITE INTERNATION UNIVERSITAIRE DE P",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2017",
+    "montant_eur": 433001.0,
+    "beneficiaire": "CITE INTERNATION UNIVERSITAIRE DE P",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2016",
+    "montant_eur": 621865.0,
+    "beneficiaire": "CITE INTERNATION UNIVERSITAIRE DE P",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2015",
+    "montant_eur": 1312232.0,
+    "beneficiaire": "CITE INTERNATION UNIVERSITAIRE DE P",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2014",
+    "montant_eur": 1846736.19,
+    "beneficiaire": "CITE INTERNATION UNIVERSITAIRE DE P",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2013",
+    "montant_eur": 1830306.04,
+    "beneficiaire": "CITE INTERNATION UNIVERSITAIRE DE P",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2012",
+    "montant_eur": 1917757.77,
+    "beneficiaire": "CITE INTERNATION UNIVERSITAIRE DE P",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2011",
+    "montant_eur": 2519000.0,
+    "beneficiaire": "CITE INTERNATION UNIVERSITAIRE DE P",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2010",
+    "montant_eur": 2176300.0,
+    "beneficiaire": "CITE INTERNATION UNIVERSITAIRE DE P",
+    "thematique": "Éducation"
+   }
+  ],
+  "perimetre": "multi",
+  "note_publique": "La Fondation nationale Cité internationale universitaire de Paris gère l'ensemble du campus du boulevard Jourdan (14e), et non un seul bâtiment. Les interventions de la Ville portent aussi sur des maisons et équipements situés dans l'enceinte (Théâtre de la Cité internationale, Fondation Deutsch de la Meurthe, Collège franco-britannique, Maison du Maroc, Maison de l'Asie du Sud-Est, Maison du Cambodge, Pavillon Laprade, stades Est et Ouest), sous des formes différentes selon les délibérations : subvention de fonctionnement, participation au financement de travaux, garantie d'emprunt ou convention d'occupation. La Ville subventionne par ailleurs, via la même Fondation, des programmes accueillis sur le site (« Research in Paris », accueil de chercheurs étrangers, bourses de recherche de la Ville de Paris), qui ne sont pas des dépenses de bâtiment. Le total enregistré au nom de ce bénéficiaire ne correspond donc pas à un seul immeuble.",
+  "autres_sites": [
+   "Théâtre de la Cité internationale",
+   "Fondation Deutsch de la Meurthe",
+   "Collège franco-britannique",
+   "Maison du Maroc",
+   "Maison de l'Asie du Sud-Est",
+   "Maison du Cambodge",
+   "Pavillon Laprade",
+   "Stades Est et Ouest"
+  ]
+ },
+ "residents": [
+  {
+   "beneficiaire": "A (H)AUTEUR DE MOTS",
+   "montant_total": 23000.0,
+   "preuve": "L'objet de la subvention nomme le lieu verbatim : « Festival A (H)auteur de mots mars 2017-Cité Internationale Universitaire de Paris ». Il s'agit d'une aide à une manifestation accueillie dans l'enceinte, pas d'une subvention de gestion du site : l'association (SIRET 80540638600013) n'est pas la Fondation qui exploite la Cité. Réserve : le montant est le cumul enregistré au nom de l'association et la source ne documente qu'un objet principal ; rien n'établit que la totalité se rapporte à la Cité."
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "1997": [
+   {
+    "reference": "1997 DAC 45",
+    "titre": "Subvention aux activités culturelles de la Cité internationale universitaire de Paris (14e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 1997",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75323"
+   }
+  ],
+  "1998": [
+   {
+    "reference": "1998 DAC 136",
+    "titre": "Subvention à la Fondation nationale dite \"Cité internationale universitaire de Paris\" - activités culturelles de la cité internationale universitaire de Paris (14e). Mme Hélène MACE de LEPINAY, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "DECEMBRE 1998",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57368"
+   }
+  ],
+  "1999": [
+   {
+    "reference": "1999 DAC 58",
+    "titre": "Subvention à la Fondation nationale \"Cité internationale universitaire de Paris\" - Activités culturelles de la Cité internationale universitaire de Paris (14e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=76616"
+   }
+  ],
+  "2000": [
+   {
+    "reference": "2000 DAC 127",
+    "titre": "Subvention à la Fondation nationale \"Cité internationale universitaire de Paris\", activités culturelles de la Cité internationale universitaire de Paris (14e). - Autorisation à M. le Maire de Paris de signer une convention d'objectifs avec la Fondation nationale \"Cité internationale universitaire de Paris\". Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88655"
+   }
+  ],
+  "2001": [
+   {
+    "reference": "2001 DAC 283",
+    "titre": "Subvention aux activités culturelles de la Fondation Nationale \"Cité Internationale Universitaire de Paris\" (14e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30562"
+   },
+   {
+    "reference": "2001 DAC 383",
+    "titre": "Subvention à l'Association de la Cité internationale universitaire de Paris (Orchestre de la Cité internationale) (14e), au titre de ses activités culturelles parisiennes pour l'année 2001. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30584"
+   },
+   {
+    "reference": "2001 DAC 93",
+    "titre": "Subvention exceptionnelle d'équipement à la fondation nationale \"Cité internationale universitaire de Paris\". - Autorisation à M. le Maire de Paris de signer avec la fondation nationale \"Cité Internationale Universitaire de Paris\" une convention relative aux modalités d'attribution de ladite subvention. MM. Christian SAUTTER, David ASSOULINE et Christophe GIRARD, rapporteurs.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "OCTOBRE 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33637"
+   }
+  ],
+  "2002": [
+   {
+    "reference": "2002 DAC 327",
+    "titre": "Attribution d'une subvention de fonctionnement aux activités culturelles de la Fondation Nationale \"Cité Internationale Universitaire de Paris\", 19, boulevard Jourdan, 75690 Paris Cedex 14, pour le fonctionnement du Théâtre de la Cité internationale. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "OCTOBRE 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95334"
+   },
+   {
+    "reference": "2002 DAUC 112",
+    "titre": "DASCO 197 - Autorisation à M. le Maire de Paris de signer avec le Département de Paris et la Cité Internationale Universitaire de Paris une convention-cadre en vue de l'amélioration de la vie étudiante et de la réhabilitation du site de la Cité Universitaire (14e). MM. David ASSOULINE et Jean-Pierre CAFFET, rapporteurs.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71130"
+   },
+   {
+    "reference": "2002 DAUC 3",
+    "titre": "16 - 2002, DAUC 3 G - DASCO 21 G - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer avec la Ville de Paris et la Cité internationale universitaire de Paris une convention-cadre en vue de l'amélioration de la vie étudiante et de la réhabilitation du site de la Cité universitaire",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14474"
+   },
+   {
+    "reference": "2002 DAUC 3",
+    "titre": "G - DASCO 21 G - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer avec la Ville de Paris et la Cité Internationale Universitaire de Paris une convention-cadre en vue de l'amélioration de la vie étudiante et de la réhabilitation du site de la Cité Universitaire. M. David ASSOULINE et M. Jean-Pierre CAFFET, rapporteurs.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69476"
+   },
+   {
+    "reference": "2002 DLH 276",
+    "titre": "Cité Internationale Universitaire de Paris, 19 boulevard Jourdan (14e). - Travaux de rénovation de la Maison des Provinces de France. - Participation de la Ville de Paris au financement de l'opération. M. David ASSOULINE et M. Jean-Yves MANO, rapporteurs.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71439"
+   },
+   {
+    "reference": "2002 DLH 277",
+    "titre": "Cité internationale universitaire de Paris, 19, boulevard Jourdan (14e). - Travaux de rénovation du Collège franco-britannique - Première phase. - Participation de la Ville de Paris au financement de l'opération. MM. David ASSOULINE et Jean-Yves MANO, rapporteurs.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71005"
+   },
+   {
+    "reference": "2002 DLH 278",
+    "titre": "Cité internationale universitaire de Paris, 19, boulevard Jourdan (14e). - Travaux de rénovation de la Maison du Cambodge. - Participation de la Ville de Paris au financement de l'opération. MM. David ASSOULINE et Jean-Yves MANO, rapporteurs.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71485"
+   }
+  ],
+  "2003": [
+   {
+    "reference": "2003 DAC 250",
+    "titre": "172 - 2003, DAC 250 - Subvention annuelle à la Fondation nationale dite \"Cité internationale universitaire de Paris\" (14e) pour le fonctionnement du \"Théâtre de la cité internationale\". - Montant : 100.000 euros",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21315"
+   },
+   {
+    "reference": "2003 DAC 250",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec la Fondation Nationale dite \"Cité Internationale Universitaire de Paris\" (19, boulevard Jourdan - 75690 Paris Cedex 14) une convention triennale d'objectifs relative à l'attribution d'une subvention annuelle pour le fonctionnement du Théâtre de la Cité internationale. MM. David ASSOULINE et Christophe GIRARD, rapporteurs.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93695"
+   },
+   {
+    "reference": "2003 DAC 473",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention relative à l'attribution d'une subvention exceptionnelle d'équipement à la fondation \"Cité Internationale Universitaire de Paris\" située 19, boulevard de Jourdan (14e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93697"
+   },
+   {
+    "reference": "2003 DASCO 51",
+    "titre": "Création du dispositif des bourses de recherche de la Ville de Paris. - Subvention de 500.000 euros à la Cité Internationale Universitaire de Paris. - Autorisation à M. le Maire de Paris de signer la convention correspondante. Mme Danièle AUFFRAY, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MARS 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78843"
+   },
+   {
+    "reference": "2003 DASCO 51",
+    "titre": "64 - 2003, DASCO 51 - Création du dispositif des bourses de recherche de la Ville de Paris. - Subvention de 500.000 euros à la Cité internationale universitaire de Paris pour l'accueil des scientifiques étrangers. - Autorisation à M. le Maire de Paris de signer avec la convention correspondante",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MARS 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22642"
+   },
+   {
+    "reference": "2003 DASCO 95",
+    "titre": "Subvention à la Cité Internationale Universitaire de Paris (CIUP) pour la mise en place d'une cellule d'accueil des étudiants étrangers et autorisation à M. le Maire de Paris de signer la convention correspondante. M. David ASSOULINE, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "AVRIL 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89643"
+   }
+  ],
+  "2004": [
+   {
+    "reference": "2004 DAC 310",
+    "titre": "Attribution à 24 associations et à une SARL de subventions imputées sur la ligne de provision Promotion de la Musique nouvelle pour l’année 2004. Autorisation à M. le Maire de Paris de signer une convention d’objectifs avec l’Association Ensemble Carpe Diem et la Fondation Nationale de la Cité Internationale Universitaire de Paris ainsi que 3 avenants aux conventions passées avec les associations Orchestre des Concerts Lamoureux, Ensemble orchestral de Paris et l’Association Chœur de Chambre Acc",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37713"
+   },
+   {
+    "reference": "2004 DAC 343",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec la Fondation Nationale dite \"Cité Internationale Universitaire de Paris\", 19 boulevard Jourdan (14e), un avenant à la convention triennale d'objectifs du 22 décembre 2003 relative à l'attribution d'une subvention de fonctionnement pour le \"Théâtre de la Cité internationale\". M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "OCTOBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64040"
+   },
+   {
+    "reference": "2004 DAC 356",
+    "titre": "Autorisation à M. le Maire de Paris de signer 4 avenants aux conventions relatives à l'attribution de subventions de fonctionnement pour les associations et la fondation suivantes : Maison de la Poésie (3e), Les Athévains (4e), Fondation nationale dite Cité internationale universitaire de Paris pour le Théâtre de la Cité internationale (14e) ; Théâtre Silvia Monfort (15e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "OCTOBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64268"
+   },
+   {
+    "reference": "2004 DASCO 35",
+    "titre": "Attribution de subventions au Centre Régional des Oeuvres Universitaires et Scolaires (CROUS) et à la Cité Internationale Universitaire de Paris (CIUP) pour la mise en place de cellules d'accueil des étudiants étrangers. - Autorisation à M. le Maire de Paris de signer les conventions correspondantes. M. David ASSOULINE, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=60132"
+   },
+   {
+    "reference": "2004 DASCO 35",
+    "titre": "30 - 2004, DASCO 35 - Subventions au Centre régional des oeuvres universitaires et scolaires (CROUS) et à la Cité internationale universitaire de Paris (CIUP) pour la mise en place de cellules d'accueil des étudiants étrangers. - Autorisation à M. le Maire de Paris de signer les conventions correspondantes. - Montant total : 110.000 euros",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10862"
+   },
+   {
+    "reference": "2004 DASCO 35",
+    "titre": "G - Attribution d'une subvention à la Cité Internationale Universitaire de Paris (CIUP) pour l'aménagement d'un local destiné aux cellules d'accueil des étudiants étrangers et autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer la convention correspondante. M. David ASSOULINE, rapporteur.",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
+    "seance": "JUILLET 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40454"
+   },
+   {
+    "reference": "2004 DASCO 63",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n°1 à la convention signée avec la Cité Internationale Universitaire de Paris (14e) pour contribuer aux bourses de recherche de la Ville de Paris. Mme Danièle AUFFRAY, rapporteure.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "MAI 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45894"
+   },
+   {
+    "reference": "2004 DASCO 63",
+    "titre": "45 - 2004, DASCO 63 - Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 à la convention relative à une subvention à la Cité internationale universitaire de Paris pour contribuer aux bourses de recherche de la Ville de Paris. - Montant : 500.000 euros",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MAI 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9019"
+   },
+   {
+    "reference": "2004 DASCO 68",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention avec la Cité Internationale Universitaire de Paris pour l'accueil de chercheurs étrangers (14e). Mme Danièle AUFFRAY, rapporteure.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "MAI 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45837"
+   },
+   {
+    "reference": "2004 DASCO 68",
+    "titre": "46 - 2004, DASCO 68 - Subvention à la Cité internationale universitaire de Paris pour l'accueil de chercheurs étrangers (14e). - Autorisation à M. le Maire de Paris de signer la convention correspondante. - Montant : 50.000 euros",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MAI 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8907"
+   },
+   {
+    "reference": "2004 DJS 169",
+    "titre": "Autorisation à M. le Maire de Paris de signer l'avenant à la convention du 29 août 1991 modifiée par un avenant du 20 janvier 1995 entre la collectivité parisienne et la Fondation nationale de la Cité Internationale Universitaire de Paris relative aux Stades Est et Ouest situés dans l'enceinte de la Cité Internationale Universitaire de Paris. M. Pascal CHERKI et M. David ASSOULINE, rapporteurs.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "SEPTEMBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46027"
+   },
+   {
+    "reference": "2004 DJS 322",
+    "titre": "Subvention à la Fondation Nationale de la Cité Internationale Universitaire de Paris. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46707"
+   },
+   {
+    "reference": "2004 DLH 235",
+    "titre": "42 - 2004, DLH 235 - Cité internationale universitaire de Paris, 19, boulevard Jourdan (14e). - Travaux de rénovation du collège franco-britannique (2e phase). - Participation de la Ville de Paris au financement de l'opération",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "OCTOBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18951"
+   },
+   {
+    "reference": "2004 DLH 235",
+    "titre": "Cité internationale universitaire de Paris, 19 boulevard Jourdan (14ème). - Travaux de rénovation du Collège franco-britannique - Deuxième phase. - Participation de la Ville de Paris au financement de l'opération. M. David ASSOULINE et M. Jean-Yves MANO, rapporteurs.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "OCTOBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64304"
+   },
+   {
+    "reference": "2004 DPE 173",
+    "titre": "Subvention à la Fondation Nationale Cité Internationale Universitaire de Paris (CIUP), domiciliée 19, boulevard Jourdan (14e). M. Yves CONTASSOT, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "DECEMBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87748"
+   }
+  ],
+  "2005": [
+   {
+    "reference": "2005 DAC 29",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec la Fondation Nationale “Cité internationale universitaire de Paris”, 19, boulevard Jourdan (14e), un avenant à la convention triennale d’objectifs du 22 décembre 2003 relative à l’attribution d’une subvention de fonctionnement pour le “Théâtre de la Cité internationale”. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MARS 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26400"
+   },
+   {
+    "reference": "2005 DASCO 152",
+    "titre": "Attribution de subventions de partenariat au Centre Régional des Œuvres Universitaires et Scolaires (CROUS) et à la Cité Internationale Universitaire de Paris (CIUP) pour la mise en place de relais d’accueil des étudiants étrangers et autorisation à M. le Maire de Paris de signer les conventions correspondantes. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87209"
+   },
+   {
+    "reference": "2005 DASCO 152",
+    "titre": "2005, DASCO 152 - Subventions de partenariat au Centre régional des œuvres universitaires et scolaires (CROUS) et à la Cité internationale universitaire de Paris (CIUP) pour la mise en place de relais d’accueil des étudiants étrangers. - Autorisation à M. le Maire de Paris de signer les conventions correspondantes. Montant total : 110.000 euros.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9346"
+   },
+   {
+    "reference": "2005 DASCO 87",
+    "titre": "Autorisation à M le Maire de Paris de signer une convention avec la Cité Internationale Universitaire de Paris pour contribuer au dispositif des bourses de recherche de la Ville de Paris. Mme Danièle AUFFRAY, rapporteure.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "MAI 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80627"
+   },
+   {
+    "reference": "2005 DASCO 88",
+    "titre": "Subvention à la Cité Internationale Universitaire de Paris pour l’accueil de chercheurs étrangers. - Autorisation à M. le Maire de Paris de signer la convention correspondante. Mme Danièle AUFFRAY, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MAI 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80672"
+   },
+   {
+    "reference": "2005 DJS 349",
+    "titre": "Subvention à la Fondation Nationale de la Cité Internationale Universitaire de Paris. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63248"
+   },
+   {
+    "reference": "2005 DJS 7",
+    "titre": "G - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil général, de signer une convention annuelle sur projet avec la Fondation Nationale de la Cité Internationale Universitaire de Paris pour l’attribution d’une subvention de 122.154 euros en vue de la réalisation d’une salle d’escrime dans l’enceinte de la Cité Internationale Universitaire de Paris. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82941"
+   },
+   {
+    "reference": "2005 DLH 232",
+    "titre": "Cité Internationale Universitaire de Paris (14e). - Octroi de la garantie de la Ville de Paris pour le service des intérêts et l’amortissement d’un emprunt bancaire à contracter par la Cité Internationale Universitaire de Paris en vue du financement des programmes de réhabilitation de la Fondation Deutsch de la Meurthe et du Collège Franco-Britannique (2e tranche), situés au sein de la Cité. Mme Sandrine MAZETIER et M. Jean-Yves MANO, rapporteurs.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32906"
+   },
+   {
+    "reference": "2005 DLH 232",
+    "titre": "2005, DLH 232 - Cité internationale universitaire de Paris, 19, boulevard Jourdan (14e). - Travaux de rénovation de la Fondation Deutsch de la Meurthe. - Participation de la Ville de Paris au financement de l’opération. Octroi de la garantie de la Ville de Paris sur un emprunt à contracter par la Cité en vue du financement de la rénovation de la Fondation Deutsch de la Meurthe et de la 2e tranche des travaux du collège franco-britannique.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22001"
+   },
+   {
+    "reference": "2005 DPVI 79",
+    "titre": "DAC 501 - Subvention à la Fondation pour la Cité internationale universitaire de Paris au titre de la Politique de la ville sur le quartier des Portes du Sud du 13e arrondissement. Mme Martine DURLACH, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63498"
+   }
+  ],
+  "2006": [
+   {
+    "reference": "2006 DAC 79",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec la Fondation Nationale “Cité internationale universitaire de Paris” (14e) un avenant à la convention triennale d’objectifs du 22 décembre 2003 relative à l’attribution d’une subvention de fonctionnement pour le “Théâtre de la Cité internationale”. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MAI 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88828"
+   },
+   {
+    "reference": "2006 DASCO 88",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention prévoyant le versement d’une subvention à la Cité Internationale Universitaire de Paris pour les Bourses de recherche de la Ville de Paris. Mme Danièle AUFFRAY, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MAI 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88839"
+   },
+   {
+    "reference": "2006 DASCO 90",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention prévoyant le versement d’une subvention à la Cité Internationale Universitaire de Paris pour l’accueil de chercheurs étrangers. Mme Danièle AUFFRAY, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MAI 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89040"
+   },
+   {
+    "reference": "2006 DASCO 95",
+    "titre": "Subvention de partenariat au Centre Régional des Œuvres Universitaires et Scolaires (CROUS de Paris) et à la Cité Internationale Universitaire de Paris (CIUP) pour la mise en place de services d’accueil des étudiants étrangers.- Autorisation à M. le Maire de Paris de signer les conventions correspondantes. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81182"
+   },
+   {
+    "reference": "2006 DJS 247",
+    "titre": "Subvention à la Fondation nationale de la Cité internationale universitaire de Paris. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81529"
+   },
+   {
+    "reference": "2006 DLH 223",
+    "titre": "Cité Internationale Universitaire de Paris, 17, boulevard Jourdan (14e). - Octroi de la garantie de la Ville de Paris pour le service des intérêts et l’amortissement d’un emprunt bancaire à contracter par la Cité Internationale Universitaire de Paris en vue du financement du programme de réhabilitation de la Maison de l’Asie du Sud-Est, située au sein de la Cité. Mme Sandrine MAZETIER et M. Jean-Yves MANO, rapporteurs.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "OCTOBRE 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35201"
+   },
+   {
+    "reference": "2006 DLH 223",
+    "titre": "Cité Internationale Universitaire de Paris, 17, boulevard Jourdan (14e). - Participation de la Ville de Paris au financement de l’opération de rénovation de la Maison de l’Asie du Sud-Est située au sein de la Cité. Mme Sandrine MAZETIER et M. Jean-Yves MANO, rapporteurs.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "OCTOBRE 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35279"
+   },
+   {
+    "reference": "2006 DLH 95",
+    "titre": "Cité Internationale Universitaire de Paris 17, boulevard Jourdan (14e). - Octroi de la garantie de la Ville de Paris pour le service des intérêts et l’amortissement d’un emprunt bancaire à contracter par la Cité Internationale Universitaire de Paris en vue du financement du programme de réhabilitation de la Maison du Maroc, située au sein de la Cité. Mme Sandrine MAZETIER et M. Jean-Yves MANO, rapporteurs.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80851"
+   }
+  ],
+  "2007": [
+   {
+    "reference": "2007 DAC 18",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec la Fondation Nationale “Cité Internationale Universitaire de Paris”, 19, boulevard Jourdan (14e), une convention triennale d’objectifs 2007-2009 relative à l’attribution d’une subvention de fonctionnement pour le “Théâtre de la Cité Internationale”. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MARS 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31583"
+   },
+   {
+    "reference": "2007 DAC 318",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec la Fondation Nationale “Cité Internationale Universitaire de Paris” (14e) un avenant à la convention triennale d’objectifs 2007-2009 relatif à l’attribution d’une subvention de fonctionnement pour le “Théâtre de la Cité Internationale” dans le cadre de la politique de la ville. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "OCTOBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53803"
+   },
+   {
+    "reference": "2007 DASCO 76",
+    "titre": "Subventions de partenariat au Centre Régional des Œuvres Universitaires et Scolaires (CROUS) de Paris et à la Cité Internationale Universitaire de Paris (CIUP) pour la mise en place de services d’accueil des étudiants étrangers ; Autorisation à M. le Maire de Paris de signer les conventions correspondantes. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUIN 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72327"
+   },
+   {
+    "reference": "2007 DASCO 79",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention prévoyant l’attribution d’une subvention à la Cité Internationale Universitaire de Paris pour les bourses de recherche de la Ville de Paris. Mme Danièle AUFFRAY, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MAI 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80316"
+   },
+   {
+    "reference": "2007 DASCO 80",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention prévoyant l’attribution d’une subvention à la Cité Internationale Universitaire de Paris pour l’accueil de chercheurs étrangers. Mme Danièle AUFFRAY, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUIN 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72332"
+   },
+   {
+    "reference": "2007 DASCO 80",
+    "titre": "2007, DASCO 80 - Autorisation à M. le Maire de Paris de signer une convention prévoyant l’attribution d’une subvention à la Cité Internationale Universitaire de Paris pour l’accueil de chercheurs étrangers. Montant : 90.000 euros.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUIN 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21148"
+   },
+   {
+    "reference": "2007 DJS 71",
+    "titre": "Subvention à la Fondation Nationale de la Cité Internationale Universitaire de Paris. M. Pascal CHERKI, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90084"
+   }
+  ],
+  "2008": [
+   {
+    "reference": "2008 DAC 119",
+    "titre": "Signature d’un avenant à la convention du 9 mai 2007 avec la Fondation Nationale “Cité Internationale Universitaire de Paris” (14e) pour l’attribution d’une subvention. - Signature d’une convention relative à l’attribution d’une subvention d’équipement. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61525"
+   },
+   {
+    "reference": "2008 DASCO 79",
+    "titre": "Signature d’une convention avec la Cité Internationale Universitaire de Paris pour l’attribution d’une subvention pour le programme de Bourses de recherche de la Ville de Paris. M. Jean-Louis MISSIKA, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66885"
+   },
+   {
+    "reference": "2008 DASCO 79",
+    "titre": "2008, DASCO 79 - Signature d'une convention avec la Cité Internationale Universitaire de Paris (CIUP) pour l'attribution d'une subvention pour le programme de bourses de recherche de la Ville de Paris. - Montant : 1.500.000 euros. Voeu déposé par le groupe Centre et Indépendants.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6905"
+   },
+   {
+    "reference": "2008 DASCO 80",
+    "titre": "Signature d’une convention avec la Cité Internationale Universitaire de Paris pour l’attribution d’une subvention pour l’accueil de chercheurs étrangers. M. Jean-Louis MISSIKA, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91291"
+   },
+   {
+    "reference": "2008 DASCO 95",
+    "titre": "Signature de conventions avec le Centre Régional des Œuvres Universitaires et Scolaires (CROUS) de Paris et avec la Cité Internationale Universitaire de Paris (CIUP) pour l’attribution de subventions pour la mise en place de services d’accueil des étudiants étrangers. M. Didier GUILLOT, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91561"
+   },
+   {
+    "reference": "2008 DJS 54",
+    "titre": "Subvention à la Fondation Nationale de la Cité Internationale Universitaire de Paris (14e). M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "OCTOBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42879"
+   }
+  ],
+  "2009": [
+   {
+    "reference": "2009 DAC 17",
+    "titre": "Signature d’un avenant à la convention du 9 mai 2007 avec la Fondation Nationale Cité Internationale Universitaire de Paris (14e) pour l’attribution d’une subvention. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37210"
+   },
+   {
+    "reference": "2009 DASCO 59",
+    "titre": "Signature d’une convention avec la Cité Internationale Universitaire de Paris pour l’attribution d’une subvention pour l’accueil de chercheurs étrangers. M. Jean-Louis MISSIKA, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75133"
+   },
+   {
+    "reference": "2009 DASCO 77",
+    "titre": "Signature de conventions avec le Centre Régional des Œuvres Universitaires et Scolaires (CROUS) de Paris et avec la Cité Internationale Universitaire de Paris (CIUP) pour l’attribution de subventions pour la mise en place de services d’accueil des étudiants étrangers. M. Didier GUILLOT, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74649"
+   },
+   {
+    "reference": "2009 DDEE 214",
+    "titre": "Signature d’une convention avec la Cité Internationale Universitaire de Paris pour l’attribution d’une subvention pour le programme de Bourses de recherche de la Ville de Paris. M. Jean-Louis MISSIKA, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37047"
+   },
+   {
+    "reference": "2009 DJS 290",
+    "titre": "Signature d’un avenant à la convention du 29 août 1991 avec la Fondation Nationale de la Cité Internationale Universitaire de Paris. M. Jean VUILLERMOZ, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "JUIN 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77474"
+   }
+  ],
+  "2010": [
+   {
+    "reference": "2010 DAC 97",
+    "titre": "Signature d’une convention triennale d’objectifs et d’une convention d’équipement avec la Fondation Nationale Cité Internationale Universitaire de Paris (14e) pour l’attribution de deux subventions. M. Christophe GIRARD,rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=86089"
+   },
+   {
+    "reference": "2010 DDEEES 175",
+    "titre": "Signature d’une convention avec la Cité Internationale Universitaire de Paris pour l’attribution d’une subvention pour le programme “Research in Paris”. M. Jean-Louis MISSIKA, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79358"
+   },
+   {
+    "reference": "2010 DDEEES 175",
+    "titre": "2010, DDEEES 175 - Signature d'une convention avec la Cité Internationale Universitaire de Paris pour l'attribution d'une subvention pour le programme \"Research in Paris\". Montant : 1.750.000 euros.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13566"
+   },
+   {
+    "reference": "2010 DDEEES 185",
+    "titre": "Signature d’une convention avec la Cité Internationale Universitaire de Paris pour l’attribution d’une subvention pour l’accueil de chercheurs étrangers. M. Jean-Louis MISSIKA, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "OCTOBRE 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23608"
+   },
+   {
+    "reference": "2010 DDEEES 68",
+    "titre": "Signature de conventions avec le Centre Régional des Œuvres Universitaires et Scolaires (CROUS) de Paris et avec la Cité Internationale Universitaire de Paris (CIUP) pour l’attribution de subventions pour la mise en place de services d’accueil des étudiants étrangers. M. Didier GUILLOT, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUIN 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49134"
+   }
+  ],
+  "2012": [
+   {
+    "reference": "2012 DDEEES 10",
+    "titre": "2012, DDEEES 10 - Subvention (1.500.000 euros) avec convention avec la Cité Internationale Universitaire de Paris pour le programme \"Research in Paris\". Vœu déposé par l'Exécutif.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2012",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=107209"
+   },
+   {
+    "reference": "2012 DDEEES 143",
+    "titre": "2012, DDEEES 143 - Subventions (110.000 euros) et conventions avec le Centre Régional des Oeuvres Universitaires et Scolaires (CROUS) de Paris et avec la Cité Internationale Universitaire de Paris (CIUP).",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2012",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=107255"
+   }
+  ],
+  "2016": [
+   {
+    "reference": "2016 DAE 319",
+    "titre": "2016 DAE 319 - Subvention (100.000 euros) et convention avec la Cité internationale universitaire de Paris pour l’accueil de chercheurs étrangers.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 2016",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=133220"
+   }
+  ],
+  "2018": [
+   {
+    "reference": "2018 DAE 187",
+    "titre": "2018 DAE 187 - Budget participatif 2017 \"Rénover le Pavillon Laprade\" : subvention (317.000 euros) et convention avec la Cité internationale universitaire de Paris (14e).",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUIN 2018",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=142966"
+   }
+  ],
+  "2022": [
+   {
+    "reference": "2022 DAE 159",
+    "titre": "2022 DAE 159 - Subventions (120.000 euros) et convention avec la Cité internationale universitaire de Paris.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "OCTOBRE 2022",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=167370"
+   }
+  ],
+  "2023": [
+   {
+    "reference": "2023 DAE 132",
+    "titre": "2023 DAE 132 - Subvention (120.000 euros) et convention avec la Cité internationale universitaire de Paris.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2023",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=170600"
+   }
+  ]
+ },
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Cit%C3%A9+internationale+universitaire"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

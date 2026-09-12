@@ -1,311 +1,768 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
-  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
-  "slug": "pere-lachaise",
-  "name": "Cimetière du Père-Lachaise",
-  "kind_fr": "Cimetière",
-  "kind_en": "Cemetery",
-  "famille": "vert",
-  "arrondissement": 20,
-  "lat": 48.861,
-  "lon": 2.3933,
-  "photo": "/img/lieux/pere-lachaise.jpg",
-  "photo_credit": {
-    "licence": null,
-    "auteur": null,
-    "url": "https://fr.wikipedia.org/wiki/Cimeti%C3%A8re_du_P%C3%A8re-Lachaise",
-    "source": "Wikipédia"
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "pere-lachaise",
+ "name": "Cimetière du Père-Lachaise",
+ "kind_fr": "Cimetière",
+ "kind_en": "Cemetery",
+ "famille": "vert",
+ "arrondissement": 20,
+ "lat": 48.861,
+ "lon": 2.3933,
+ "photo": "/img/lieux/pere-lachaise.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Cimeti%C3%A8re_du_P%C3%A8re-Lachaise",
+  "source": "Wikipédia"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "Le cimetière du Père-Lachaise est le plus grand cimetière parisien intra muros et l'un des plus célèbres dans le monde. Situé dans le 20e arrondissement, accueillant 70 000 sépultures, de nombreuses personnes célèbres y sont enterrées. Il accueille chaque année plus de trois millions et demi de visiteurs, ce qui en fait le cimetière le plus visité au monde.",
+  "url": "https://fr.wikipedia.org/wiki/Cimeti%C3%A8re_du_P%C3%A8re-Lachaise",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Père-Lachaise cemetery is the largest cemetery within intramural Paris and one of the most famous in the world. Located in the 20th arrondissement and holding 70,000 graves, it is the burial place of many famous people. It welcomes more than three and a half million visitors each year, making it the most visited cemetery in the world."
+ },
+ "stats": {
+  "n_delibs": 1039,
+  "delibs_span": [
+   1996,
+   2025
+  ],
+  "n_bmo_brut": 3664,
+  "n_bmo_verifies": 18,
+  "invest_total_eur": 3885341.0,
+  "invest_annees": [
+   "2019",
+   "2020",
+   "2021"
+  ],
+  "lecture_mode": "titre nommant le lieu (50 trouvés)",
+  "lecture_mode_en": "title naming the place (50 found)",
+  "n_lus": 45,
+  "n_lieu": 33
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Les décisions du Conseil de Paris sur le Père-Lachaise suivent deux fils constants : le crématorium et l'entretien du cimetière. À partir de 1997, la gestion du crématorium passe en délégation de service public : principe approuvé en 1997, désignation de la société d'économie mixte municipale en 1998 — avec les sommes que la Ville s'engage à verser pour la crémation des personnes sans ressources —, garantie de la Ville sur un emprunt de 11 millions de francs pour sa rénovation en 1999, puis avenants successifs jusqu'à une nouvelle procédure de délégation lancée en 2025. En parallèle, le Conseil approuve le principe de travaux d'entretien du cimetière — reconstruction des locaux du personnel, réfection de murs et de sépultures, mise aux normes du columbarium et des sanitaires —, et indemnise à l'amiable des familles dont la concession avait été reprise par erreur ou détruite illégalement. Il attribue aussi, à titre gratuit, des terrains pour des monuments commémoratifs — aux déportés, aux combattants polonais — et, après des années de demandes, vote en 2001 un marché pour ériger un mémorial aux 670 jeunes Parisiens morts pendant la guerre d'Algérie et les combats du Maroc et de la Tunisie. Plus récemment, il se penche sur la vie publique du site : un vœu sur l'équilibre entre visites historiques et visites biodiversité en 2011, puis une étude pour un mémorial cinéraire au Jardin du Souvenir avec l'École Boulle en 2017.",
+ "moments": [
+  {
+   "id": "78776",
+   "seance": "JUILLET 1997",
+   "fait": "Le Conseil approuve le principe de déléguer la gestion du crématorium à un opérateur via une délégation de service public.",
+   "pourquoi": "Le crématorium bascule en gestion déléguée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78776",
+   "fait_en": "The Council approved the principle of delegating management of the crematorium to an operator through a public service delegation.",
+   "pourquoi_en": "The crematorium shifts to delegated management"
+  },
+  {
+   "id": "38191",
+   "seance": "MAI 1998",
+   "fait": "La S.A.E.M.P.F. est désignée délégataire du crématorium ; la Ville fixe les sommes qu'elle versera pour la crémation des personnes sans ressources.",
+   "pourquoi": "La Ville paie la crémation des indigents",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38191",
+   "fait_en": "The S.A.E.M.P.F. was designated as delegate operator of the crematorium; the City set the sums it would pay for the cremation of people without resources.",
+   "pourquoi_en": "The City pays for the cremation of the destitute"
+  },
+  {
+   "id": "76582",
+   "seance": "NOVEMBRE 1999",
+   "fait": "La Ville garantit à 50 % un emprunt de 11 millions de francs destiné à financer la rénovation des installations du crématorium.",
+   "pourquoi": "11 millions de francs garantis pour rénover",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=76582",
+   "fait_en": "The City guaranteed 50% of a loan of 11 million francs intended to finance the renovation of the crematorium's facilities.",
+   "pourquoi_en": "11 million francs guaranteed for renovation"
+  },
+  {
+   "id": "42188",
+   "seance": "JUIN 1997",
+   "fait": "Le Conseil approuve le principe de reconstruire les locaux sociaux du cimetière et autorise le Maire à signer le marché.",
+   "pourquoi": "Reconstruire les locaux du personnel du cimetière",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42188",
+   "fait_en": "The Council approved the principle of rebuilding the cemetery's staff facilities and authorized the Mayor to sign the contract.",
+   "pourquoi_en": "Rebuilding the cemetery's staff facilities"
+  },
+  {
+   "id": "3799",
+   "seance": "SEPTEMBRE 2001",
+   "fait": "Le Conseil autorise le marché pour un mémorial aux 670 jeunes Parisiens morts en Algérie et lors des combats du Maroc et de la Tunisie.",
+   "pourquoi": "Un mémorial voté après des années de demandes",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3799",
+   "fait_en": "The Council authorized the contract for a memorial to the 670 young Parisians who died in Algeria and during the fighting in Morocco and Tunisia.",
+   "pourquoi_en": "A memorial passed after years of requests"
+  },
+  {
+   "id": "44742",
+   "seance": "MARS 2010",
+   "fait": "Le Conseil approuve un dédommagement amiable de 9 795 € à une famille dont la concession avait été reprise illégalement et détruite en 1984.",
+   "pourquoi": "Réparer une concession reprise et détruite illégalement",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44742",
+   "fait_en": "The Council approved an amicable settlement of €9,795 for a family whose plot had been illegally reclaimed and destroyed in 1984.",
+   "pourquoi_en": "Making amends for a plot illegally reclaimed and destroyed"
+  },
+  {
+   "id": "103157",
+   "seance": "DECEMBRE 2011",
+   "fait": "Un vœu demande de préserver en priorité le caractère historique des visites guidées, ses auteurs redoutant leur remplacement par des visites centrées sur la biodiversité.",
+   "pourquoi": "Préserver le caractère historique des visites guidées",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=103157",
+   "fait_en": "A motion called for prioritizing the preservation of the historical character of guided tours, its authors fearing they would be replaced by tours centered on biodiversity.",
+   "pourquoi_en": "Preserving the historical character of guided tours"
+  },
+  {
+   "id": "134743",
+   "seance": "JANVIER 2017",
+   "fait": "Le Conseil engage, avec l'École Boulle, l'étude d'un mémorial cinéraire pour repenser l'accueil du Jardin du Souvenir.",
+   "pourquoi": "Repenser le Jardin du Souvenir avec l'École Boulle",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134743",
+   "fait_en": "The Council initiated, with the École Boulle, a study for a cinerary memorial to rethink the reception area of the Jardin du Souvenir.",
+   "pourquoi_en": "Rethinking the Jardin du Souvenir with the École Boulle"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "MAI 1998",
+   "montant": "1.680 F H.T.",
+   "objet": "somme versée par la Ville pour la crémation de chaque personne dépourvue de ressources suffisantes",
+   "citation": "la Ville de Paris versera : - une somme de 1.680 F H.T. pour la crémation de chaque personne dépourvue de ressources suffisantes",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38191"
+  },
+  {
+   "seance": "MAI 1998",
+   "montant": "920 F H.T.",
+   "objet": "somme versée par la Ville pour la crémation de chaque personne à faibles ressources signalée par le Centre d'action sociale",
+   "citation": "une somme de 920 F H.T. pour la crémation de chaque personne disposant de faibles ressources et signalées comme telles par le Centre d'action sociale",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38191"
+  },
+  {
+   "seance": "MAI 1998",
+   "montant": "984 F H.T.",
+   "objet": "crémation de chaque cercueil contenant un corps incomplètement réduit (exhumations administratives)",
+   "citation": "une somme de 984 F H.T. pour la crémation de chaque cercueil contenant un corps incomplètement réduit",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38191"
+  },
+  {
+   "seance": "MAI 1998",
+   "montant": "1.140 F H.T.",
+   "objet": "crémation de chaque cercueil contenant des ossements (exhumations administratives)",
+   "citation": "une somme de 1.140 F H.T. pour la crémation de chaque cercueil contenant des ossements",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38191"
+  },
+  {
+   "seance": "MAI 1998",
+   "montant": "384 F H.T.",
+   "objet": "crémation de chaque reliquaire (concessions perpétuelles)",
+   "citation": "une somme de 384 F H.T. pour la crémation de chaque reliquaire (petite boîte à ossements pour concessions perpétuelles)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38191"
+  },
+  {
+   "seance": "NOVEMBRE 1999",
+   "montant": "11.000.000 F",
+   "objet": "emprunt de la S.E.M. de pompes funèbres (Crédit local de France) pour la rénovation du crématorium, garanti à 50 % par la Ville",
+   "citation": "La Ville de Paris garantit à hauteur de 50 % le service des intérêts et l'amortissement d'un emprunt d'un montant de 11.000.000 F. Ce prêt est destiné à financer les travaux de rénovation du crématorium du Père-Lachaise.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=76582"
+  },
+  {
+   "seance": "MARS 2010",
+   "montant": "9.795 euros TTC",
+   "objet": "dédommagement amiable à M. Fabien Savary pour la reconstruction de la sépulture (concession n° 3999 CC 1876 reprise illégalement et détruite en 1984)",
+   "citation": "Le montant global à verser à M. Fabien Savary s?élève à 9.795 euros TTC (neuf mille sept cent quatre vingt quinze euros, toutes taxes comprises)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44742"
+  },
+  {
+   "seance": "MARS 2010",
+   "montant": "1.722,00 euros TTC",
+   "objet": "dédommagement à M. Lionel Faure-Miller pour la réparation des vitraux de la chapelle Faure-Miller endommagés par les fossoyeurs municipaux",
+   "citation": "s?élève à 1.722,00 euros TTC (mille sept cent vingt-deux euros, toutes taxes comprises)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44763"
+  },
+  {
+   "seance": "JUILLET 2006",
+   "montant": "3.366,72 euros TTC",
+   "objet": "dédommagement à Mme Simone Favier (frais de crémation et d'avocat) après reprise par erreur de la concession n° 939 P1866 Dufresne",
+   "citation": "s?élève à 3.366,72 euros TTC répartis entre les frais de crémation et les frais d?avocat",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81454"
+  },
+  {
+   "seance": "OCTOBRE 2007",
+   "montant": "800 euros TTC",
+   "objet": "dédommagement à M. Alain Pianos (remplacement de la plaque et gravure) après reprise illégale de la case n° 24048 du columbarium",
+   "citation": "Le montant global du dédommagement à verser à M. Alain PIANOS est de 800 euros TTC (800 euros)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53453"
+  },
+  {
+   "seance": "OCTOBRE 2007",
+   "montant": "335 euros",
+   "objet": "valeur du renouvellement gratuit de la case n° 24048 pour une durée maximale de dix ans",
+   "citation": "pour une durée maximale de dix ans et pour un montant de 335 euros (trois cent trente cinq euros)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53453"
+  },
+  {
+   "seance": "SEPTEMBRE 2002",
+   "montant": "263.555,65 euros HT à 271.807,25 euros HT",
+   "objet": "avenant au marché Charpentier PM (prestation complémentaire) pour la réalisation et l'implantation du mémorial de la guerre d'Algérie au Père-Lachaise",
+   "citation": "ayant pour objet de porter le montant total du marché de 263.555,65 euros HT à 271.807,25 euros HT (valeur octobre 2001)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29306"
+  },
+  {
+   "seance": "SEPTEMBRE 2003",
+   "montant": "13 euros",
+   "objet": "prix de vente de l'ouvrage \"Le Père Lachaise\" (Découvertes Gallimard)",
+   "citation": "Son prix de vente est fixé à 13 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47488"
+  }
+ ],
+ "bmo_extraits": [
+  {
+   "date": "1888-03-28",
+   "extrait": "Cette pétition est extrêmement intéressante et l'Administration a depuis longtemps manifesté l'intention d'établir des trottoirs en asphalte sur les boulevards qui servent de lieu de passage aux personnes qui se rendent au cimetière du Père - Lachaise",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6440303j/f2.item",
+   "extrait_en": "This petition is extremely interesting and the Administration has for a long time expressed its intention to lay asphalt sidewalks on the boulevards that serve as a thoroughfare for people going to the Père-Lachaise cemetery"
+  },
+  {
+   "date": "1897-07-07",
+   "extrait": "Modification de la délibération du 19 juin 1896 attribuant à M. Gérard, ancien maire du 20e arrondissement, une concession de deux mètres dans le. cimetière du Père - Lachaise . - M. Patenne. — Le Conseil a accordé, le 19 juin 1896, à M. Gérard, ancien maire du 20e arrondissement",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6361952q/f6.item",
+   "extrait_en": "Amendment of the deliberation of June 19, 1896 granting Mr Gérard, former mayor of the 20th arrondissement, a two-meter plot in the Père-Lachaise cemetery. — Mr Patenne. — The Council granted, on June 19, 1896, to Mr Gérard, former mayor of the 20th arrondissement"
+  },
+  {
+   "date": "1911-11-20",
+   "extrait": "Au cimetière du Père - Lachaise , les discours suivants ont été prononcés : Discours de M. César",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64957404/f1.item",
+   "extrait_en": "At the Père-Lachaise cemetery, the following speeches were given: Speech by Mr César"
+  }
+ ],
+ "bmo_recit": "Le cimetière du Père-Lachaise n'apparaît que ponctuellement dans le Bulletin municipal, à travers trois épisodes entre 1888 et 1911. En 1888, une pétition réclame des trottoirs en asphalte sur les boulevards qu'empruntent les personnes se rendant au cimetière ; il est répondu en séance que l'Administration a depuis longtemps manifesté l'intention de les établir, sans que le Bulletin dise si les travaux ont suivi. En 1897, le Conseil revient sur une délibération du 19 juin 1896 par laquelle il avait accordé à M. Gérard, ancien maire du 20e arrondissement, une concession de deux mètres dans le cimetière. En 1911 enfin, le Bulletin consigne les discours prononcés au cimetière lors d'une cérémonie. Trois traces brèves, entre l'entretien des abords, l'hommage à un ancien élu et la prise de parole publique.",
+ "delibs_par_annee": {
+  "1997": [
+   {
+    "reference": "1997 DFAECG 54",
+    "titre": "Approbation du principe de la passation d'une convention de délégation de service public pour la gestion du crématorium du cimetière du Père-Lachaise situé 16, rue du Repos (20e). M. Jean-François LEGARET, au lieu et place de l'Adjoint au Maire chargé du Domaine et des Concessions, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "JUILLET 1997",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78776"
+   }
+  ],
+  "1998": [
+   {
+    "reference": "1998 DFAECG 22",
+    "titre": "Prolongation de la convention portant concession du service de crémation funéraire du cimetière du Père-Lachaise en date du 26 février 1986. M. Jean-François LEGARET, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "JANVIER 1998",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48392"
+   },
+   {
+    "reference": "1998 DLTI 86",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant à la délégation de service public du crématorium du Père-Lachaise. M. Paul AURELLI, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "DECEMBRE 1998",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57536"
+   }
+  ],
+  "1999": [
+   {
+    "reference": "1999 DAC 77",
+    "titre": "Subvention à l'association \"Les ateliers du Père-Lachaise associés\" (20e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUIN 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55348"
+   },
+   {
+    "reference": "1999 DLTI 79",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant à la convention de délégation de service public pour la gestion du crématorium du Père Lachaise visant à fixer le taux de redevance due par la société délégataire pour l'année 1999 au taux de 3 % des produits d'exploitation. M. Paul AURELLI, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "DECEMBRE 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51766"
+   }
+  ],
+  "2000": [
+   {
+    "reference": "2000 DAC 246",
+    "titre": "Subvention à l'association \"Les ateliers du Père-Lachaise associés\" (20e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "OCTOBRE 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58848"
+   }
+  ],
+  "2001": [
+   {
+    "reference": "2001 DAC 336",
+    "titre": "21 - 2001, DAC 336 - Approbation de l'hommage aux combattants parisiens tombés lors de la guerre d'Algérie et des combats du Maroc et de la Tunisie. - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres pour la réalisation d'un monument dans le cimetière du Père-Lachaise (20e)",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3799"
+   },
+   {
+    "reference": "2001 DLTI 12",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 3 à la convention de délégation pour la gestion du crématorium du Père-Lachaise (20e). - Tarifs pour 2001. M. Jean-Antoine GIANSILY, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "JANVIER 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85073"
+   },
+   {
+    "reference": "2001 DPE 71",
+    "titre": "Approbation des modalités d'attribution d'un marché sur appel d'offres pour la réhabilitation des ouvrages d'assainissement du secteur \"Gambetta - Père Lachaise\" (20e). - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Myriam CONSTANTIN, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62688"
+   }
+  ],
+  "2002": [
+   {
+    "reference": "2002 DAC 328",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant au marché passé avec l'entreprise Charpentier PM pour l'exécution d'une prestation complémentaire pour la réalisation et l'implantation d'un mémorial en hommage aux combattants parisiens tombés lors de la guerre d'Algérie et des combats du Maroc et de la Tunisie, dans le cimetière du Père-Lachaise (20e). Mme Odette CHRISTIENNE, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29306"
+   },
+   {
+    "reference": "2002 DAC 359",
+    "titre": "Attribution d'une subvention de fonctionnement à l'Association Les Ateliers du Père-Lachaise Associés, 78, rue des Grands-Champs (20e) (D06362). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45273"
+   }
+  ],
+  "2005": [
+   {
+    "reference": "2005 DAC 240",
+    "titre": "Attribution d’une subvention de fonctionnement à l’association “Les Ateliers du Père Lachaise Associés” 79, rue de Bagnolet - 75020 Paris. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63416"
+   },
+   {
+    "reference": "2005 DMG 34",
+    "titre": "Autorisation à M. le Maire de Paris de signer un avenant n° 4 portant modification de la formule de révision annuelle des tarifs des prestations proposées aux familles parisiennes inscrite à l’article 17 du contrat de concession relatif à la gestion du crématorium du Père Lachaise située à Paris 20ème, souscrit avec la Société Anonyme d’Économie Mixte des Pompes Funèbres. M. François DAGNAUD, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "JUILLET 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87362"
+   },
+   {
+    "reference": "2005 DPJEV 44",
+    "titre": "Approbation du principe et des modalités de réalisation des travaux d’aménagement et de mise aux normes des locaux sociaux des cimetières parisiens d’Ivry et du Père-Lachaise (20e). M. Yves CONTASSOT, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83053"
+   }
+  ],
+  "2006": [
+   {
+    "reference": "2006 DAC 341",
+    "titre": "Attribution d’une subvention de fonctionnement à l’association “Les Ateliers du Père Lachaise Associés”, 77, rue de Bagnolet (20e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81003"
+   },
+   {
+    "reference": "2006 DALIAT 43",
+    "titre": "Autorisation à M. le Maire de Paris de signer l’avenant n° 6 à la convention de délégation de service public pour la gestion du crématorium du Père Lachaise (20e). M. François DAGNAUD, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "OCTOBRE 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35339"
+   },
+   {
+    "reference": "2006 DFPE 126",
+    "titre": "Autorisation donnée à M. le Maire de Paris de signer une convention de fonctionnement avec l’association “Marie de Miribel pour la Petite Enfance” gestionnaire d’une crèche collective “Crèche Laïque du Quartier du Père Lachaise” située 3, Place Martin Nadaud (20e). - Attribution d’une subvention de fonctionnement au titre de 2006 au dit établissement pour un montant total de 400.201 euros. Mme Olga TROSTIANSKY, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MAI 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88936"
+   },
+   {
+    "reference": "2006 DMG 13",
+    "titre": "2006, DMG 13 - Autorisation à M. le Maire de Paris de souscrire un avenant n° 5 à la convention pour la gestion du crématorium du Père Lachaise (20e).",
+    "genres": [
+     "autre"
+    ],
+    "seance": "AVRIL 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16943"
+   },
+   {
+    "reference": "2006 DMG 13",
+    "titre": "Autorisation à M. le Maire de Paris de signer l’avenant n° 5 à la convention pour la gestion du crématorium du Père Lachaise (20e). M. François DAGNAUD, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "AVRIL 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38529"
+   },
+   {
+    "reference": "2006 DMG 33",
+    "titre": "Autorisation à M. le Maire de Paris de signer la convention relative à la garantie d’emprunt accordée à la Société anonyme d’économie mixte des pompes funèbres (S.A.E.M.P.F.) pour financer des travaux d’installation de filtres en amont des cheminées du crématorium du Père Lachaise (20e). M. François DAGNAUD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81169"
+   }
+  ],
+  "2007": [
+   {
+    "reference": "2007 DAC 654",
+    "titre": "Attribution d’une subvention de fonctionnement à l’association “Les Ateliers du Père Lachaise Associés” 77, rue de Bagnolet (20e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "DECEMBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54370"
+   },
+   {
+    "reference": "2007 DALIAT 31",
+    "titre": "Autorisation à M. le Maire de Paris de signer l’avenant n° 7 à la convention pour la gestion du crématorium du Père Lachaise (20e). M. François DAGNAUD, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "DECEMBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54905"
+   },
+   {
+    "reference": "2007 DALIAT 32",
+    "titre": "Autorisation à M. le Maire de Paris de signer la convention relative à la garantie d’empruntaccordée à la Société Anonyme d’Économie Mixte des Pompes Funèbres (S.A.E.M.P.F.) pour financer des travaux d’installation de filtres en amont des cheminées du crématorium du Père Lachaise (20e). M. François DAGNAUD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54401"
+   },
+   {
+    "reference": "2007 DFPE 164",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention de fonctionnement avec la Fondation “Œuvre de la Croix Saint Simon” gestionnaire d’une crèche collective “Crèche Laïque du Quartier du Père Lachaise” située 3, place Martin Nadaud (20e). - Attribution d’une subvention de fonctionnement au titre de 2007 au dit établissement pour un montant total de 413.992 euros. Mme Olga TROSTIANSKY, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "OCTOBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53623"
+   }
+  ],
+  "2008": [
+   {
+    "reference": "2008 DAC 518",
+    "titre": "Subvention à l’association “Les Ateliers du Père Lachaise Associés” (20e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "DECEMBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77931"
+   },
+   {
+    "reference": "2008 DFPE 33",
+    "titre": "Signature d’un avenant n° 1 à la convention passée avec la Fondation “Œuvre de la Croix Saint-Simon” pour l’attribution d’une subvention pour le fonctionnement de la crèche collective “Crèche Laïque du Quartier du Père Lachaise” (20e). M. Christophe NAJDOVSKI, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67650"
+   }
+  ],
+  "2009": [
+   {
+    "reference": "2009 DAC 708",
+    "titre": "Subvention à l’association Les Ateliers du Père Lachaise Associés (20e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "DECEMBRE 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32311"
+   },
+   {
+    "reference": "2009 DEVE 82",
+    "titre": "Signature d’une convention avec l’association de défense des familles des victimes de la catastrophe de Charm El Cheikh pour la mise à disposition d’un terrain au cimetière du Père Lachaise afin d’y inhumer les restes, identifiés ou non, des victimes. Mme Fabienne GIBOUDEAUX, rapporteure.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "DECEMBRE 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32452"
+   },
+   {
+    "reference": "2009 DFPE 63",
+    "titre": "Signature d'un avenant n° 2 à la convention passée avec la Fondation Œuvre de la Croix Saint Simon pour l'attribution d'une subvention pour le fonctionnement de la crèche collective Crèche Laïque du Quartier du Père Lachaise (20e). M. Christophe NAJDOVSKI, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37352"
+   }
+  ],
+  "2010": [
+   {
+    "reference": "2010 DAC 675",
+    "titre": "Subvention à l’association Les Ateliers du Père Lachaise Associés (20e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=86231"
+   },
+   {
+    "reference": "2010 DFPE 379",
+    "titre": "DLH 277 Autorisation de réaliser des travaux de réhabilitation d’un établissement d’accueil de la petite enfance “Père Lachaise” par la fondation “ŒUVRE DE LA CROIX SAINT SIMON” sur la parcelle 3, place Martin Nadaud (20e) et signature d’une convention avec cette fondation pour l’attribution d’une subvention pour ces travaux. M. Christophe NAJDOVSKI, rapporteur.",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
+    "seance": "OCTOBRE 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23462"
+   },
+   {
+    "reference": "2010 DFPE 72",
+    "titre": "Signature d’un avenant n° 1 à la convention passée avec la Fondation “Œuvre de la Croix Saint Simon” pour l’attribution d’une subvention pour le fonctionnement de la crèche collective “Crèche du Père Lachaise” (20e). M. Christophe NAJDOVSKI, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39206"
+   }
+  ],
+  "2011": [
+   {
+    "reference": "2011 DAC 321",
+    "titre": "Subvention à l’association Les Ateliers du Père Lachaise Associés (20e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MAI 2011",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97809"
+   }
+  ],
+  "2015": [
+   {
+    "reference": "2015 DEVE 25",
+    "titre": "2015 DEVE 25 - Exploitation du crématorium du Père Lachaise, 71, rue des Rondeaux (20e) - Convention avec la Société anonyme d’économie Mixte des Pompes Funèbres pour la gestion de cet équipement.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "MAI 2015",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125254"
+   }
+  ],
+  "2017": [
+   {
+    "reference": "2017 DEVE 2",
+    "titre": "2017 DEVE 2 - Etude et conception d'un mémorial cinéraire au cimetière du Père-Lachaise - Convention de partenariat pédagogique avec l'Ecole Boulle. Vœu déposé par le groupe Communiste - Front de Gauche relatif au jardin du souvenir du cimetière Père Lachaise.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "JANVIER 2017",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134743"
+   }
+  ],
+  "2018": [
+   {
+    "reference": "2018 DEVE 30",
+    "titre": "2018 DEVE 30 - Avenant n° 1 à la convention du 28 mai 2015 portant sur la gestion du crématorium du Père-Lachaise (20e).",
+    "genres": [
+     "autre"
+    ],
+    "seance": "NOVEMBRE 2018",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146739"
+   }
+  ],
+  "2025": [
+   {
+    "reference": "2025 DAE 128",
+    "titre": "2025 DAE 128 - Subvention de fonctionnement (20.915 euros) à l'association \"La Compagnie du 20e\" pour son projet d'accueil des visiteurs au Père Lachaise et à la Maison du 20e.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUIN 2025",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=181334"
+   },
+   {
+    "reference": "2025 DEVE 100",
+    "titre": "2025 DEVE 100 Cimetière du Père Lachaise - Acceptation de la convention de financement avec la ville du Touquet.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "NOVEMBRE 2025",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184616"
+   },
+   {
+    "reference": "2025 DEVE 103",
+    "titre": "2025 DEVE 103 - Approbation d’un contrat de délégation de service public relatif à la rénovation et à la gestion du crématorium du Père-Lachaise à la société publique locale funéraire de Paris (S.P.L.F.P.).",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2025",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183647"
+   },
+   {
+    "reference": "2025 DEVE 34",
+    "titre": "2025 DEVE 34 - Cimetière du Père Lachaise. - Mémorial du génocide de Srebrenica. - Convention d'occupation du domaine public à titre gratuit avec l'association \"Solidarité internationale Bosnie-Herzégovine-France\".",
+    "genres": [
+     "autre"
+    ],
+    "seance": "JUILLET 2025",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=182447"
+   },
+   {
+    "reference": "2025 DEVE 70",
+    "titre": "2025 DEVE 70 - Lancement de la procédure de délégation de service public à la Société publique locale funéraire de Paris pour la rénovation et l’exploitation du crématorium du Père-Lachaise.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2025",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=182394"
+   }
+  ]
+ },
+ "invest": [
+  {
+   "annee": 2019,
+   "montant_eur": 598407.0,
+   "nom_projet": "Cimetière du Père Lachaise - Entretien des sols, des cheminements et des escaliers, Cimeti",
+   "preuve": "Le nom du projet commence par « Cimetière du Père Lachaise - Entretien des sols, des cheminements et des escaliers », donc désigne bien ce site ; le libellé est tronqué par la source et repart sur « Cimeti… », ce qui indique que l'opération peut couvrir d'autres cimetières : le montant n'est pas nécessairement dépensé en totalité au Père-Lachaise.",
+   "id": null
+  },
+  {
+   "annee": 2020,
+   "montant_eur": 913946.0,
+   "nom_projet": "Cimetière du Père Lachaise - Travaux sur les murs, fourniture et pose de rambardes, restau",
+   "preuve": "Le nom du projet nomme le lieu : « Cimetière du Père Lachaise - Travaux sur les murs, fourniture et pose de rambardes, restau… » (libellé tronqué par la source). Murs et rambardes sont des ouvrages du cimetière.",
+   "id": null
+  },
+  {
+   "annee": 2021,
+   "montant_eur": 1281419.0,
+   "nom_projet": "Cimetière du Père Lachaise - Réhabilitation, mise en accessibilité et diagnostic structure",
+   "preuve": "Le nom du projet nomme le lieu en toutes lettres : « Cimetière du Père Lachaise - Réhabilitation, mise en accessibilité et diagnostic structure ». Le rattachement repose sur ce signal de nom, pas sur la distance (499 m mesurés de centroïde à centroïde).",
+   "id": null
+  },
+  {
+   "annee": 2021,
+   "montant_eur": 1091569.0,
+   "nom_projet": "Cimetières Cimetière du Père Lachaise - Travaux de confortement et réparation du mur Karch",
+   "preuve": "Le nom du projet nomme le lieu : « Cimetière du Père Lachaise - Travaux de confortement et réparation du mur Karch ». Il s'agit d'un ouvrage du cimetière (mur), donc de travaux sur l'emprise du site.",
+   "id": null
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "decp-2025T02140",
+   "objet": "Travaux prioritaires de conservation du Columbarium aérien et souterrain, dans le cadre de l’opération de restauration du Columbarium du cimetière du Père Lachaise (75020) comprenant 3 lots : \n- Maçon",
+   "objet_clair": null,
+   "fournisseur": "H. CHEVALIER",
+   "montant_max": 602939.87,
+   "date_notification": "2025-03-07",
+   "preuve": "L'objet du marché nomme explicitement le lieu : « restauration du Columbarium du cimetière du Père Lachaise (75020) ». Le columbarium est un équipement interne au cimetière, confirmé par les délibérations du Conseil de Paris qui parlent du « columbarium du cimetière du Père-Lachaise ». Travaux sur le bâtiment lui-même, pas un simple repère d'adresse."
+  },
+  {
+   "numero_marche": "decp-2025T02142",
+   "objet": "Travaux prioritaires de conservation du Columbarium aérien et souterrain, dans le cadre de l’opération de restauration du Columbarium du cimetière du Père Lachaise (75020) comprenant 3 lots : \n- Maçon",
+   "objet_clair": null,
+   "fournisseur": "TRAVAUX BATIMENTS ELECTRICITE SECURITE",
+   "montant_max": 107000.0,
+   "date_notification": "2025-03-07",
+   "preuve": "Même opération, lot distinct notifié le même jour (2025-03-07) : l'objet nomme le lieu verbatim, « restauration du Columbarium du cimetière du Père Lachaise (75020) ». Travaux exécutés sur le site."
+  },
+  {
+   "numero_marche": "decp-2025T02141",
+   "objet": "Travaux prioritaires de conservation du Columbarium aérien et souterrain, dans le cadre de l’opération de restauration du Columbarium du cimetière du Père Lachaise (75020) comprenant 3 lots : \n- Maçon",
+   "objet_clair": null,
+   "fournisseur": "UNION TECHNIQUE DU BATIMENT",
+   "montant_max": 48000.0,
+   "date_notification": "2025-03-07",
+   "preuve": "Même opération, troisième lot notifié le 2025-03-07 : l'objet nomme le lieu verbatim, « restauration du Columbarium du cimetière du Père Lachaise (75020) »."
+  },
+  {
+   "numero_marche": "decp-2025S12014",
+   "objet": "Marché subséquent à l'accord-cadre pour les prestations de sécurité et protection de la santé de catégorie 2 pour le réaménagement des bureaux de la conservation cimetière du Père Lachaise, 16 rue du ",
+   "objet_clair": null,
+   "fournisseur": "4G INGENIERIE & CONSULTING",
+   "montant_max": 6086.0,
+   "date_notification": "2025-11-14",
+   "preuve": "Marché subséquent (donc opération individualisée, pas l'accord-cadre lui-même) dont l'objet porte sur « le réaménagement des bureaux de la conservation cimetière du Père Lachaise, 16 rue du Repos, 75020 Paris ». L'adresse 16 rue du Repos (20e) est celle du cimetière, corroborée par les délibérations du Conseil de Paris citant « rue du Repos (20e) ». La prestation SPS s'exécute sur ce chantier."
+  }
+ ],
+ "mandate": {
+  "par_annee": {
+   "2015": 1550048.0
+  },
+  "total_eur": 1550048.0,
+  "operations": [
+   {
+    "ap_cle": "1504831",
+    "ap_texte": "DSP PERE LACHAISE",
+    "mandate_par_annee": {
+     "2015": 1550048.0
+    },
+    "total_mandate": 1550048.0,
+    "preuve": "Opération « DSP PERE LACHAISE » portée par la DEVE (mission « ESPACES VERTS ET ENV »). Le libellé nomme le lieu mais ne dit pas de quelle délégation de service public il s'agit : le rapprochement passe par les délibérations du Conseil de Paris, qui n'identifient qu'une seule DSP de ce nom, celle du crématorium — « Approbation du principe de la passation d'une convention de délégation de service public pour la gestion du crématorium du cimetière du Père-Lachaise situé 16, rue du Repos (20e) » (1997 DFAECG 54), puis « Avenant n° 1 à la convention du 28 mai 2015 portant sur la gestion du crématorium du Père-Lachaise (20e) » (2018 DEVE 30). La date de cette convention (28 mai 2015) coïncide avec le seul exercice mandaté sur l'opération (2015). Le crématorium est bien sur le site — « ce crématorium est situé au sein du périmètre classé du cimetière du Père-Lachaise » (débat du Conseil de Paris) — mais c'est un équipement distinct, exploité par un délégataire : la somme concerne cet équipement, pas l'ensemble du cimetière.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1504831"
+   }
+  ],
+  "periode": [
+   "2015",
+   "2015"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=P%C3%A8re-Lachaise"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22P%C3%A8re-Lachaise%22%29"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
   },
   "wiki": {
-    "extract": "Le cimetière du Père-Lachaise est le plus grand cimetière parisien intra muros et l'un des plus célèbres dans le monde. Situé dans le 20e arrondissement, accueillant 70 000 sépultures, de nombreuses personnes célèbres y sont enterrées. Il accueille chaque année plus de trois millions et demi de visiteurs, ce qui en fait le cimetière le plus visité au monde.",
-    "url": "https://fr.wikipedia.org/wiki/Cimeti%C3%A8re_du_P%C3%A8re-Lachaise",
-    "source": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    },
-    "extract_en": "The Père-Lachaise cemetery is the largest cemetery within intramural Paris and one of the most famous in the world. Located in the 20th arrondissement and holding 70,000 graves, it is the burial place of many famous people. It welcomes more than three and a half million visitors each year, making it the most visited cemetery in the world."
-  },
-  "stats": {
-    "n_delibs": 1039,
-    "delibs_span": [
-      1996,
-      2025
-    ],
-    "n_bmo_brut": 3664,
-    "n_bmo_verifies": 18,
-    "invest_total_eur": 0,
-    "invest_annees": [],
-    "lecture_mode": "titre nommant le lieu (50 trouvés)",
-    "lecture_mode_en": "title naming the place (50 found)",
-    "n_lus": 45,
-    "n_lieu": 33
-  },
-  "subventions_exploitant": null,
-  "residents": [],
-  "kpi_montant": null,
-  "synthese_fr": "Les décisions du Conseil de Paris sur le Père-Lachaise suivent deux fils constants : le crématorium et l'entretien du cimetière. À partir de 1997, la gestion du crématorium passe en délégation de service public : principe approuvé en 1997, désignation de la société d'économie mixte municipale en 1998 — avec les sommes que la Ville s'engage à verser pour la crémation des personnes sans ressources —, garantie de la Ville sur un emprunt de 11 millions de francs pour sa rénovation en 1999, puis avenants successifs jusqu'à une nouvelle procédure de délégation lancée en 2025. En parallèle, le Conseil approuve le principe de travaux d'entretien du cimetière — reconstruction des locaux du personnel, réfection de murs et de sépultures, mise aux normes du columbarium et des sanitaires —, et indemnise à l'amiable des familles dont la concession avait été reprise par erreur ou détruite illégalement. Il attribue aussi, à titre gratuit, des terrains pour des monuments commémoratifs — aux déportés, aux combattants polonais — et, après des années de demandes, vote en 2001 un marché pour ériger un mémorial aux 670 jeunes Parisiens morts pendant la guerre d'Algérie et les combats du Maroc et de la Tunisie. Plus récemment, il se penche sur la vie publique du site : un vœu sur l'équilibre entre visites historiques et visites biodiversité en 2011, puis une étude pour un mémorial cinéraire au Jardin du Souvenir avec l'École Boulle en 2017.",
-  "moments": [
-    {
-      "id": "78776",
-      "seance": "JUILLET 1997",
-      "fait": "Le Conseil approuve le principe de déléguer la gestion du crématorium à un opérateur via une délégation de service public.",
-      "pourquoi": "Le crématorium bascule en gestion déléguée",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78776",
-      "fait_en": "The Council approved the principle of delegating management of the crematorium to an operator through a public service delegation.",
-      "pourquoi_en": "The crematorium shifts to delegated management"
-    },
-    {
-      "id": "38191",
-      "seance": "MAI 1998",
-      "fait": "La S.A.E.M.P.F. est désignée délégataire du crématorium ; la Ville fixe les sommes qu'elle versera pour la crémation des personnes sans ressources.",
-      "pourquoi": "La Ville paie la crémation des indigents",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38191",
-      "fait_en": "The S.A.E.M.P.F. was designated as delegate operator of the crematorium; the City set the sums it would pay for the cremation of people without resources.",
-      "pourquoi_en": "The City pays for the cremation of the destitute"
-    },
-    {
-      "id": "76582",
-      "seance": "NOVEMBRE 1999",
-      "fait": "La Ville garantit à 50 % un emprunt de 11 millions de francs destiné à financer la rénovation des installations du crématorium.",
-      "pourquoi": "11 millions de francs garantis pour rénover",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=76582",
-      "fait_en": "The City guaranteed 50% of a loan of 11 million francs intended to finance the renovation of the crematorium's facilities.",
-      "pourquoi_en": "11 million francs guaranteed for renovation"
-    },
-    {
-      "id": "42188",
-      "seance": "JUIN 1997",
-      "fait": "Le Conseil approuve le principe de reconstruire les locaux sociaux du cimetière et autorise le Maire à signer le marché.",
-      "pourquoi": "Reconstruire les locaux du personnel du cimetière",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42188",
-      "fait_en": "The Council approved the principle of rebuilding the cemetery's staff facilities and authorized the Mayor to sign the contract.",
-      "pourquoi_en": "Rebuilding the cemetery's staff facilities"
-    },
-    {
-      "id": "3799",
-      "seance": "SEPTEMBRE 2001",
-      "fait": "Le Conseil autorise le marché pour un mémorial aux 670 jeunes Parisiens morts en Algérie et lors des combats du Maroc et de la Tunisie.",
-      "pourquoi": "Un mémorial voté après des années de demandes",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3799",
-      "fait_en": "The Council authorized the contract for a memorial to the 670 young Parisians who died in Algeria and during the fighting in Morocco and Tunisia.",
-      "pourquoi_en": "A memorial passed after years of requests"
-    },
-    {
-      "id": "44742",
-      "seance": "MARS 2010",
-      "fait": "Le Conseil approuve un dédommagement amiable de 9 795 € à une famille dont la concession avait été reprise illégalement et détruite en 1984.",
-      "pourquoi": "Réparer une concession reprise et détruite illégalement",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44742",
-      "fait_en": "The Council approved an amicable settlement of €9,795 for a family whose plot had been illegally reclaimed and destroyed in 1984.",
-      "pourquoi_en": "Making amends for a plot illegally reclaimed and destroyed"
-    },
-    {
-      "id": "103157",
-      "seance": "DECEMBRE 2011",
-      "fait": "Un vœu demande de préserver en priorité le caractère historique des visites guidées, ses auteurs redoutant leur remplacement par des visites centrées sur la biodiversité.",
-      "pourquoi": "Préserver le caractère historique des visites guidées",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=103157",
-      "fait_en": "A motion called for prioritizing the preservation of the historical character of guided tours, its authors fearing they would be replaced by tours centered on biodiversity.",
-      "pourquoi_en": "Preserving the historical character of guided tours"
-    },
-    {
-      "id": "134743",
-      "seance": "JANVIER 2017",
-      "fait": "Le Conseil engage, avec l'École Boulle, l'étude d'un mémorial cinéraire pour repenser l'accueil du Jardin du Souvenir.",
-      "pourquoi": "Repenser le Jardin du Souvenir avec l'École Boulle",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134743",
-      "fait_en": "The Council initiated, with the École Boulle, a study for a cinerary memorial to rethink the reception area of the Jardin du Souvenir.",
-      "pourquoi_en": "Rethinking the Jardin du Souvenir with the École Boulle"
-    }
-  ],
-  "montants": [
-    {
-      "seance": "MAI 1998",
-      "montant": "1.680 F H.T.",
-      "objet": "somme versée par la Ville pour la crémation de chaque personne dépourvue de ressources suffisantes",
-      "citation": "la Ville de Paris versera : - une somme de 1.680 F H.T. pour la crémation de chaque personne dépourvue de ressources suffisantes",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38191"
-    },
-    {
-      "seance": "MAI 1998",
-      "montant": "920 F H.T.",
-      "objet": "somme versée par la Ville pour la crémation de chaque personne à faibles ressources signalée par le Centre d'action sociale",
-      "citation": "une somme de 920 F H.T. pour la crémation de chaque personne disposant de faibles ressources et signalées comme telles par le Centre d'action sociale",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38191"
-    },
-    {
-      "seance": "MAI 1998",
-      "montant": "984 F H.T.",
-      "objet": "crémation de chaque cercueil contenant un corps incomplètement réduit (exhumations administratives)",
-      "citation": "une somme de 984 F H.T. pour la crémation de chaque cercueil contenant un corps incomplètement réduit",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38191"
-    },
-    {
-      "seance": "MAI 1998",
-      "montant": "1.140 F H.T.",
-      "objet": "crémation de chaque cercueil contenant des ossements (exhumations administratives)",
-      "citation": "une somme de 1.140 F H.T. pour la crémation de chaque cercueil contenant des ossements",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38191"
-    },
-    {
-      "seance": "MAI 1998",
-      "montant": "384 F H.T.",
-      "objet": "crémation de chaque reliquaire (concessions perpétuelles)",
-      "citation": "une somme de 384 F H.T. pour la crémation de chaque reliquaire (petite boîte à ossements pour concessions perpétuelles)",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38191"
-    },
-    {
-      "seance": "NOVEMBRE 1999",
-      "montant": "11.000.000 F",
-      "objet": "emprunt de la S.E.M. de pompes funèbres (Crédit local de France) pour la rénovation du crématorium, garanti à 50 % par la Ville",
-      "citation": "La Ville de Paris garantit à hauteur de 50 % le service des intérêts et l'amortissement d'un emprunt d'un montant de 11.000.000 F. Ce prêt est destiné à financer les travaux de rénovation du crématorium du Père-Lachaise.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=76582"
-    },
-    {
-      "seance": "MARS 2010",
-      "montant": "9.795 euros TTC",
-      "objet": "dédommagement amiable à M. Fabien Savary pour la reconstruction de la sépulture (concession n° 3999 CC 1876 reprise illégalement et détruite en 1984)",
-      "citation": "Le montant global à verser à M. Fabien Savary s?élève à 9.795 euros TTC (neuf mille sept cent quatre vingt quinze euros, toutes taxes comprises)",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44742"
-    },
-    {
-      "seance": "MARS 2010",
-      "montant": "1.722,00 euros TTC",
-      "objet": "dédommagement à M. Lionel Faure-Miller pour la réparation des vitraux de la chapelle Faure-Miller endommagés par les fossoyeurs municipaux",
-      "citation": "s?élève à 1.722,00 euros TTC (mille sept cent vingt-deux euros, toutes taxes comprises)",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44763"
-    },
-    {
-      "seance": "JUILLET 2006",
-      "montant": "3.366,72 euros TTC",
-      "objet": "dédommagement à Mme Simone Favier (frais de crémation et d'avocat) après reprise par erreur de la concession n° 939 P1866 Dufresne",
-      "citation": "s?élève à 3.366,72 euros TTC répartis entre les frais de crémation et les frais d?avocat",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81454"
-    },
-    {
-      "seance": "OCTOBRE 2007",
-      "montant": "800 euros TTC",
-      "objet": "dédommagement à M. Alain Pianos (remplacement de la plaque et gravure) après reprise illégale de la case n° 24048 du columbarium",
-      "citation": "Le montant global du dédommagement à verser à M. Alain PIANOS est de 800 euros TTC (800 euros)",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53453"
-    },
-    {
-      "seance": "OCTOBRE 2007",
-      "montant": "335 euros",
-      "objet": "valeur du renouvellement gratuit de la case n° 24048 pour une durée maximale de dix ans",
-      "citation": "pour une durée maximale de dix ans et pour un montant de 335 euros (trois cent trente cinq euros)",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53453"
-    },
-    {
-      "seance": "SEPTEMBRE 2002",
-      "montant": "263.555,65 euros HT à 271.807,25 euros HT",
-      "objet": "avenant au marché Charpentier PM (prestation complémentaire) pour la réalisation et l'implantation du mémorial de la guerre d'Algérie au Père-Lachaise",
-      "citation": "ayant pour objet de porter le montant total du marché de 263.555,65 euros HT à 271.807,25 euros HT (valeur octobre 2001)",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29306"
-    },
-    {
-      "seance": "SEPTEMBRE 2003",
-      "montant": "13 euros",
-      "objet": "prix de vente de l'ouvrage \"Le Père Lachaise\" (Découvertes Gallimard)",
-      "citation": "Son prix de vente est fixé à 13 euros.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47488"
-    }
-  ],
-  "bmo_extraits": [
-    {
-      "date": "1888-03-28",
-      "extrait": "Cette pétition est extrêmement intéressante et l'Administration a depuis longtemps manifesté l'intention d'établir des trottoirs en asphalte sur les boulevards qui servent de lieu de passage aux personnes qui se rendent au cimetière du Père - Lachaise",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6440303j/f2.item",
-      "extrait_en": "This petition is extremely interesting and the Administration has for a long time expressed its intention to lay asphalt sidewalks on the boulevards that serve as a thoroughfare for people going to the Père-Lachaise cemetery"
-    },
-    {
-      "date": "1897-07-07",
-      "extrait": "Modification de la délibération du 19 juin 1896 attribuant à M. Gérard, ancien maire du 20e arrondissement, une concession de deux mètres dans le. cimetière du Père - Lachaise . - M. Patenne. — Le Conseil a accordé, le 19 juin 1896, à M. Gérard, ancien maire du 20e arrondissement",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6361952q/f6.item",
-      "extrait_en": "Amendment of the deliberation of June 19, 1896 granting Mr Gérard, former mayor of the 20th arrondissement, a two-meter plot in the Père-Lachaise cemetery. — Mr Patenne. — The Council granted, on June 19, 1896, to Mr Gérard, former mayor of the 20th arrondissement"
-    },
-    {
-      "date": "1911-11-20",
-      "extrait": "Au cimetière du Père - Lachaise , les discours suivants ont été prononcés : Discours de M. César",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64957404/f1.item",
-      "extrait_en": "At the Père-Lachaise cemetery, the following speeches were given: Speech by Mr César"
-    }
-  ],
-  "bmo_recit": "Le cimetière du Père-Lachaise n'apparaît que ponctuellement dans le Bulletin municipal, à travers trois épisodes entre 1888 et 1911. En 1888, une pétition réclame des trottoirs en asphalte sur les boulevards qu'empruntent les personnes se rendant au cimetière ; il est répondu en séance que l'Administration a depuis longtemps manifesté l'intention de les établir, sans que le Bulletin dise si les travaux ont suivi. En 1897, le Conseil revient sur une délibération du 19 juin 1896 par laquelle il avait accordé à M. Gérard, ancien maire du 20e arrondissement, une concession de deux mètres dans le cimetière. En 1911 enfin, le Bulletin consigne les discours prononcés au cimetière lors d'une cérémonie. Trois traces brèves, entre l'entretien des abords, l'hommage à un ancien élu et la prise de parole publique.",
-  "invest": [],
-  "marches": [
-    {
-      "numero_marche": "decp-2025T02140",
-      "objet": "Travaux prioritaires de conservation du Columbarium aérien et souterrain, dans le cadre de l’opération de restauration du Columbarium du cimetière du Père Lachaise (75020) comprenant 3 lots : \n- Maçon",
-      "objet_clair": null,
-      "fournisseur": "H. CHEVALIER",
-      "montant_max": 602939.87,
-      "date_notification": "2025-03-07",
-      "preuve": "L'objet du marché nomme explicitement le lieu : « restauration du Columbarium du cimetière du Père Lachaise (75020) ». Le columbarium est un équipement interne au cimetière, confirmé par les délibérations du Conseil de Paris qui parlent du « columbarium du cimetière du Père-Lachaise ». Travaux sur le bâtiment lui-même, pas un simple repère d'adresse."
-    },
-    {
-      "numero_marche": "decp-2025T02142",
-      "objet": "Travaux prioritaires de conservation du Columbarium aérien et souterrain, dans le cadre de l’opération de restauration du Columbarium du cimetière du Père Lachaise (75020) comprenant 3 lots : \n- Maçon",
-      "objet_clair": null,
-      "fournisseur": "TRAVAUX BATIMENTS ELECTRICITE SECURITE",
-      "montant_max": 107000.0,
-      "date_notification": "2025-03-07",
-      "preuve": "Même opération, lot distinct notifié le même jour (2025-03-07) : l'objet nomme le lieu verbatim, « restauration du Columbarium du cimetière du Père Lachaise (75020) ». Travaux exécutés sur le site."
-    },
-    {
-      "numero_marche": "decp-2025T02141",
-      "objet": "Travaux prioritaires de conservation du Columbarium aérien et souterrain, dans le cadre de l’opération de restauration du Columbarium du cimetière du Père Lachaise (75020) comprenant 3 lots : \n- Maçon",
-      "objet_clair": null,
-      "fournisseur": "UNION TECHNIQUE DU BATIMENT",
-      "montant_max": 48000.0,
-      "date_notification": "2025-03-07",
-      "preuve": "Même opération, troisième lot notifié le 2025-03-07 : l'objet nomme le lieu verbatim, « restauration du Columbarium du cimetière du Père Lachaise (75020) »."
-    },
-    {
-      "numero_marche": "decp-2025S12014",
-      "objet": "Marché subséquent à l'accord-cadre pour les prestations de sécurité et protection de la santé de catégorie 2 pour le réaménagement des bureaux de la conservation cimetière du Père Lachaise, 16 rue du ",
-      "objet_clair": null,
-      "fournisseur": "4G INGENIERIE & CONSULTING",
-      "montant_max": 6086.0,
-      "date_notification": "2025-11-14",
-      "preuve": "Marché subséquent (donc opération individualisée, pas l'accord-cadre lui-même) dont l'objet porte sur « le réaménagement des bureaux de la conservation cimetière du Père Lachaise, 16 rue du Repos, 75020 Paris ». L'adresse 16 rue du Repos (20e) est celle du cimetière, corroborée par les délibérations du Conseil de Paris citant « rue du Repos (20e) ». La prestation SPS s'exécute sur ce chantier."
-    }
-  ],
-  "mandate": null,
-  "sources": {
-    "delibs": {
-      "name": "Débat-Délibs — Conseil de Paris",
-      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=P%C3%A8re-Lachaise"
-    },
-    "bmo": {
-      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22P%C3%A8re-Lachaise%22%29"
-    },
-    "invest": {
-      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-      "url": "https://opendata.paris.fr/"
-    },
-    "wiki": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
-  },
-  "synthese_en": "The Conseil de Paris's decisions on Père-Lachaise follow two constant threads: the crematorium and the cemetery's maintenance. Starting in 1997, management of the crematorium moved to a public service delegation: the principle was approved in 1997, the municipal semi-public company was designated in 1998 — along with the sums the City committed to pay for the cremation of people without resources —, the City guaranteed a loan of 11 million francs for its renovation in 1999, followed by successive amendments up to a new delegation procedure launched in 2025. In parallel, the Council approved the principle of maintenance works at the cemetery — rebuilding staff premises, repairing walls and graves, bringing the columbarium and restrooms up to code — and compensated, through amicable settlements, families whose plots had been reclaimed by mistake or illegally destroyed. It also granted, free of charge, plots of land for commemorative monuments — to deportees, to Polish combatants — and, after years of requests, voted in 2001 for a contract to erect a memorial to the 670 young Parisians who died during the Algerian War and the fighting in Morocco and Tunisia. More recently, it has turned to the site's public life: a motion on the balance between historical tours and biodiversity tours in 2011, then a study for a cinerary memorial at the Jardin du Souvenir with the École Boulle in 2017.",
-  "bmo_recit_en": "The Père-Lachaise cemetery appears only occasionally in the municipal bulletin, across three episodes between 1888 and 1911. In 1888, a petition demanded asphalt sidewalks on the boulevards used by people going to the cemetery; it was answered in session that the Administration had long expressed its intention to lay them, though the Bulletin does not say whether the works followed. In 1897, the Council revisited a deliberation of June 19, 1896 by which it had granted Mr Gérard, former mayor of the 20th arrondissement, a two-meter plot in the cemetery. Finally, in 1911, the Bulletin recorded the speeches given at the cemetery during a ceremony. Three brief traces, spanning the maintenance of the surroundings, a tribute to a former councillor, and a public address.",
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
   }
+ },
+ "synthese_en": "The Conseil de Paris's decisions on Père-Lachaise follow two constant threads: the crematorium and the cemetery's maintenance. Starting in 1997, management of the crematorium moved to a public service delegation: the principle was approved in 1997, the municipal semi-public company was designated in 1998 — along with the sums the City committed to pay for the cremation of people without resources —, the City guaranteed a loan of 11 million francs for its renovation in 1999, followed by successive amendments up to a new delegation procedure launched in 2025. In parallel, the Council approved the principle of maintenance works at the cemetery — rebuilding staff premises, repairing walls and graves, bringing the columbarium and restrooms up to code — and compensated, through amicable settlements, families whose plots had been reclaimed by mistake or illegally destroyed. It also granted, free of charge, plots of land for commemorative monuments — to deportees, to Polish combatants — and, after years of requests, voted in 2001 for a contract to erect a memorial to the 670 young Parisians who died during the Algerian War and the fighting in Morocco and Tunisia. More recently, it has turned to the site's public life: a motion on the balance between historical tours and biodiversity tours in 2011, then a study for a cinerary memorial at the Jardin du Souvenir with the École Boulle in 2017.",
+ "bmo_recit_en": "The Père-Lachaise cemetery appears only occasionally in the municipal bulletin, across three episodes between 1888 and 1911. In 1888, a petition demanded asphalt sidewalks on the boulevards used by people going to the cemetery; it was answered in session that the Administration had long expressed its intention to lay them, though the Bulletin does not say whether the works followed. In 1897, the Council revisited a deliberation of June 19, 1896 by which it had granted Mr Gérard, former mayor of the 20th arrondissement, a two-meter plot in the cemetery. Finally, in 1911, the Bulletin recorded the speeches given at the cemetery during a ceremony. Three brief traces, spanning the maintenance of the surroundings, a tribute to a former councillor, and a public address."
 }

@@ -208,6 +208,21 @@ sources:
       # SUBVENTIONS - Détail des bénéficiaires
       # =========================================================================
       
+      - name: subventions_versees_2013_2017
+        description: |
+          Annexe Compte Administratif - subventions versées 2013-2017 (M14-M52).
+          Première moitié de la même série que le jeu « à partir de 2018 » :
+          la Ville l'a coupée au changement de plan comptable et republiée sous
+          un autre identifiant (subventions-versees).
+          Particularité : les particuliers y sont présents sous pseudonyme
+          (« Nom 323 »), nature_juridique = « Personnes physiques ». Le staging
+          les agrège en une ligne par exercice (RGPD), comme la branche PDF.
+        columns:
+          - name: publication
+            description: "Exercice au format « CA 2014 »"
+          - name: montant_de_la_subvention
+            description: "Montant versé, en euros"
+
       - name: subventions_versees_annexe_compte_administratif_a_partir_de_2018
         description: |
           Annexe Compte Administratif - TOUTES subventions versées.
@@ -249,12 +264,15 @@ sources:
           Utilisée pour combler le trou OpenData sur 2020 et 2021 où le
           nom du bénéficiaire est NULL côté portail.
 
-          ~29k lignes, années 2020 et 2021 (extensible à d'autres exercices
-          si l'OpenData régresse).
+          ~29k lignes pour 2020 et 2021, plus ~14k lignes pour 2010-2012
+          extraites de l'annexe M14 équivalente (B1.6/B1.7) par
+          `parse_subv_pdf_m14.py` — la Ville ne publie aucune subvention en
+          open data avant 2013, mais ces listes existaient en PDF sur un
+          mini-site archivé (labs.paris.fr, Wayback Machine).
         loaded_at_field: loaded_at
         columns:
           - name: annee
-            description: "Année d'exercice (INTEGER, 2020 ou 2021)"
+            description: "Année d'exercice (INTEGER : 2010-2012 M14, 2020-2021 M57)"
           - name: source_pdf
             description: "URL du PDF source (Tome 3 du CA)"
           - name: source_section

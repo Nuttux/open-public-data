@@ -1,347 +1,900 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
-  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
-  "slug": "petit-palais",
-  "name": "Petit Palais",
-  "kind_fr": "Musée",
-  "kind_en": "Musée",
-  "famille": "culture",
-  "arrondissement": 8,
-  "lat": 48.86608,
-  "lon": 2.31364,
-  "photo": "/img/lieux/petit-palais.jpg",
-  "photo_credit": {
-    "licence": null,
-    "auteur": null,
-    "url": "https://fr.wikipedia.org/wiki/Petit_Palais",
-    "source": "Wikipédia"
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "petit-palais",
+ "name": "Petit Palais",
+ "kind_fr": "Musée",
+ "kind_en": "Musée",
+ "famille": "culture",
+ "arrondissement": 8,
+ "lat": 48.86608,
+ "lon": 2.31364,
+ "photo": "/img/lieux/petit-palais.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Petit_Palais",
+  "source": "Wikipédia"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "Le Petit Palais, construit à l'occasion de l'Exposition universelle de 1900 par l'architecte Charles Girault, abrite le musée des Beaux-Arts de la ville de Paris. Il est situé à Paris 8e, avenue Winston-Churchill, face au Grand Palais et bordé par la Seine et l'avenue des Champs-Élysées. Il est érigé en partie à la place du palais de l'Industrie, démoli en 1896. Le bâtiment est inscrit aux monuments historiques en 1975.",
+  "url": "https://fr.wikipedia.org/wiki/Petit_Palais",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Petit Palais, built for the 1900 Universal Exposition by architect Charles Girault, houses the City of Paris's Museum of Fine Arts. It is located in the 8th arrondissement of Paris, avenue Winston-Churchill, facing the Grand Palais and bordered by the Seine and avenue des Champs-Élysées. It was erected partly on the site of the Palais de l'Industrie, demolished in 1896. The building was listed as a historic monument in 1975."
+ },
+ "stats": {
+  "n_delibs": 1187,
+  "delibs_span": [
+   1996,
+   2011
+  ],
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": 13,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (64 trouvés)",
+  "lecture_mode_en": "title naming the place (64 found)",
+  "n_lus": 43,
+  "n_lieu": 38
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Sur quinze ans, les délibérations du Conseil de Paris suivent le Petit Palais à travers un grand chantier et sa vie quotidienne. À la fin des années 1990, le Conseil autorise l'acquisition d'œuvres pour enrichir les collections du musée, sur les arrérages du legs Dutuit. À partir de 1999, un chantier de modernisation et de restauration structure le dossier : marchés de travaux, avenant portant la maîtrise d'œuvre à près de 6 millions d'euros HT, puis plusieurs délibérations approuvant le principe d'indemniser des entreprises pour les préjudices subis pendant les travaux. La réouverture, autour de 2005-2006, ouvre des débats sur les moyens humains : un vœu communiste s'oppose à l'externalisation du poste de sécurité, un autre réclame plus d'agents titulaires de surveillance, avec des chiffres contestés en séance. Les années suivantes portent l'exploitation courante (librairies, café-jardin, maintenance) et des ressources privées : conventions de mécénat avec SAMSUNG, le Studio Philippe Apeloig et la Fondation Hermès, parrainage Epson, et de nouvelles acquisitions comme un pendentif de René Lalique.",
+ "moments": [
+  {
+   "id": "55737",
+   "seance": "JUIN 2002",
+   "fait": "Un vœu demande le démontage de l'installation publicitaire géante dressée devant le Petit Palais, alors en travaux.",
+   "pourquoi": "une pub géante masque le monument en chantier",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55737",
+   "fait_en": "A motion called for the removal of the giant advertising installation erected in front of the Petit Palais, then under renovation.",
+   "pourquoi_en": "A giant ad hides the monument under renovation"
+  },
+  {
+   "id": "9317",
+   "seance": "JUILLET 2005",
+   "fait": "Le groupe communiste dépose un vœu s'opposant à l'externalisation du poste de sécurité du musée.",
+   "pourquoi": "l'externalisation de la sécurité contestée en séance",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9317",
+   "fait_en": "The Communist group filed a motion opposing the outsourcing of the museum's security post.",
+   "pourquoi_en": "Security outsourcing disputed in session"
+  },
+  {
+   "id": "16875",
+   "seance": "AVRIL 2006",
+   "fait": "En séance, un vœu réclame plus d'agents titulaires de surveillance ; l'adjointe conteste les effectifs avancés.",
+   "pourquoi": "bataille de chiffres sur les gardiens du musée",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16875",
+   "fait_en": "In session, a motion called for more permanent surveillance staff; the deputy mayor disputed the staffing figures put forward.",
+   "pourquoi_en": "A battle of figures over the museum's guards"
+  },
+  {
+   "id": "35186",
+   "seance": "OCTOBRE 2006",
+   "fait": "Le Conseil approuve le principe d'indemniser les sociétés SCOP UTB et Crystal pour préjudices subis pendant le chantier.",
+   "pourquoi": "le chantier de rénovation finit en indemnités",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35186",
+   "fait_en": "The Council approved the principle of compensating the companies SCOP UTB and Crystal for damages suffered during the works.",
+   "pourquoi_en": "The renovation project ends in compensation payments"
+  },
+  {
+   "id": "72489",
+   "seance": "JUIN 2007",
+   "fait": "Le Maire est autorisé à signer une convention avec l'association DAÏKA pour l'exposition « Petit Palais intime ou l'étoffe des héroïnes ».",
+   "pourquoi": "une exposition co-construite avec une association",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72489",
+   "fait_en": "The Mayor was authorized to sign an agreement with the association DAÏKA for the exhibition \"Petit Palais intime ou l'étoffe des héroïnes.\"",
+   "pourquoi_en": "An exhibition co-built with an association"
+  },
+  {
+   "id": "68536",
+   "seance": "JUIN 2008",
+   "fait": "Le Conseil autorise un avenant n°3 portant le marché de maîtrise d'œuvre de la rénovation à 5 951 996,93 € HT.",
+   "pourquoi": "le coût de la maîtrise d'œuvre relevé",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68536",
+   "fait_en": "The Council authorized amendment no. 3 raising the renovation's project management contract to €5,951,996.93 excluding tax.",
+   "pourquoi_en": "The cost of project management is raised"
+  },
+  {
+   "id": "3972",
+   "seance": "FEVRIER 2010",
+   "fait": "En séance, la concession des librairies-boutiques du Petit Palais et de Carnavalet à la RMN est débattue.",
+   "pourquoi": "à qui confier la boutique du musée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3972",
+   "fait_en": "In session, the concession of the Petit Palais's and Carnavalet's bookshop-boutiques to the RMN (Réunion des musées nationaux) was debated.",
+   "pourquoi_en": "Who should run the museum shop"
+  },
+  {
+   "id": "39739",
+   "seance": "SEPTEMBRE 2010",
+   "fait": "Le Maire est autorisé à signer deux conventions de mécénat avec SAMSUNG au profit du musée (valeur estimée 650 000 €).",
+   "pourquoi": "le mécénat privé entre au musée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39739",
+   "fait_en": "The Mayor was authorized to sign two sponsorship agreements with SAMSUNG for the museum's benefit (estimated value €650,000).",
+   "pourquoi_en": "Private sponsorship enters the museum"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "650.000 euros",
+   "objet": "mécénat SAMSUNG (dépense estimée, budget de fonctionnement)",
+   "citation": "La dépense, estimée à 650.000 euros, sera imputée sur la mission 2, chapitre 011, nature 611, rubrique V322 du budget de fonctionnement",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39739"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "77.774 euros",
+   "objet": "mécénat SAMSUNG (dépense estimée, budget d'investissement)",
+   "citation": "La dépense, estimée à 77.774 euros, sera inscrite au chapitre 21, nature 2162, rubrique V322 du budget d?investissement",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39739"
+  },
+  {
+   "seance": "MARS 2011",
+   "montant": "180.000 euros",
+   "objet": "pendentif « Anémones des bois » de René Lalique",
+   "citation": "acquérir un pendentif ?Anémones des bois? de René Lalique en faveur du Petit Palais, Musée des Beaux Arts de la Ville de Paris pour un montant de 180.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96642"
+  },
+  {
+   "seance": "MARS 2011",
+   "montant": "87.000 euros",
+   "objet": "mécénat Studio Philippe Apeloig (dépense estimée)",
+   "citation": "La dépense estimée à 87.000 euros sera inscrite au chapitre 21, nature 2162, rubrique V322 du budget municipal d?investissement",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96833"
+  },
+  {
+   "seance": "OCTOBRE 2008",
+   "montant": "115.000 euros",
+   "objet": "tapisserie",
+   "citation": "acquérir une tapisserie en faveur du Petit Palais, musée des Beaux-Arts de la Ville de Paris pour un montant de 115.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43081"
+  },
+  {
+   "seance": "MAI 2004",
+   "montant": "84.651 euros",
+   "objet": "peinture de Daniel Seghers et Cornelis Schut",
+   "citation": "acquérir une peinture de Daniel Seghers et Cornelis Schut \"Vierge à l'Enfant dans une couronne de fleurs\", pour une somme de 84.651 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45815"
+  },
+  {
+   "seance": "JUILLET 2003",
+   "montant": "100.000 euros",
+   "objet": "émail de Grandhomme d'après Gustave Moreau",
+   "citation": "acquérir un émail de Grandhomme d'après Gustave Moreau, représentant Europe aux pieds de Jupiter, pour une somme 100.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70214"
+  },
+  {
+   "seance": "AVRIL 2005",
+   "montant": "98 507,69 euros",
+   "objet": "sculpture en marbre de Jules Dalou « Eve »",
+   "citation": "acquérir une sculpture en marbre de Jules Dalou intitulée Eve, pour une somme 98 507,69 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43889"
+  },
+  {
+   "seance": "SEPTEMBRE 2008",
+   "montant": "32.866,00 euros",
+   "objet": "don de matériel de vidéoprojection (valeur estimée)",
+   "citation": "La dépense estimée à 32.866,00 euros, sera inscrite au chapitre 21, nature 2162, rubrique 01",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66883"
+  },
+  {
+   "seance": "JUIN 2011",
+   "montant": "4.688,32 euros",
+   "objet": "mécénat Fondation d'entreprise Hermès (recette inscrite)",
+   "citation": "Une recette de 4.688,32 euros sera inscrite au chapitre 10, nature 10251, rubrique V322 du budget d?investissement",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96350"
+  },
+  {
+   "seance": "MAI 2008",
+   "montant": "28.000 euros",
+   "objet": "œuvres léguées par M. André Berne-Joffroy (valeur totale, Petit Palais et Musée d'Art moderne)",
+   "citation": "estimées au total à la somme de 28.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69652"
+  },
+  {
+   "seance": "JUILLET 2003",
+   "montant": "17.500 euros",
+   "objet": "œuvres léguées par Mme Denyse Lion-Comerre (valeur d'immobilisation)",
+   "citation": "La valeur d'immobilisation des ?uvres léguées, estimées à 17.500 euros au total",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70491"
+  },
+  {
+   "seance": "JUIN 2008",
+   "montant": "5.951.996,93 euros HT",
+   "objet": "avenant n°3 au marché de maîtrise d'œuvre (nouveau montant du marché)",
+   "citation": "portant le montant du marché de 5.762.264,68 euros HT à 5.951.996,93 euros HT (valeur MO), soit de 6.891.668,80 euros TTC (valeur MO) à 7.118.588,33 euros TTC",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68536"
+  },
+  {
+   "seance": "OCTOBRE 1999",
+   "montant": "501.000 F",
+   "objet": "gravures de Goya (arrérages du legs Dutuit)",
+   "citation": "proposées par la galerie Paul Prouté au prix total de 501.000 F.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42415"
+  },
+  {
+   "seance": "OCTOBRE 1996",
+   "montant": "3.547.328 F",
+   "objet": "pendule à orgues « Concert des singes » (arrérages du legs Dutuit)",
+   "citation": "adjugée le 26 juin 1996 par Me Binoche, commissaire-priseur, à la somme de 3.547.328 F avec les frais.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55217"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "1997": [
+   {
+    "reference": "1997 DPA 137",
+    "titre": "Autorisation à M. le Maire de Paris de déposer une demande de permis de construire relatif à la réalisation des travaux de couverture du musée du Petit-Palais (8e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 1997",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39996"
+   },
+   {
+    "reference": "1997 DPA 175",
+    "titre": "Approbation du principe de la réalisation des travaux de couverture au Musée du Petit Palais (8e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "OCTOBRE 1997",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52763"
+   }
+  ],
+  "1999": [
+   {
+    "reference": "1999 DPA 148",
+    "titre": "Approbation du principe de la réalisation des travaux de couverture au musée du Petit-Palais (8e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85548"
+   },
+   {
+    "reference": "1999 DPA 170",
+    "titre": "Approbation du principe de la réalisation des travaux de modernisation et de restauration du musée du Petit Palais (8e). - Autorisation à M. le Maire de Paris de signer le marché de maîtrise d'oeuvre et les marchés de contrôle technique, d'ordonnancement, pilotage et coordination, de coordination, santé et sécurité, d'assistance technique au maître d'ouvrage, coordination en matière de systèmes de sécurité incendie et de déposer les demandes de permis de démolir et de permis de construire corres",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55365"
+   }
+  ],
+  "2000": [
+   {
+    "reference": "2000 DAC 107",
+    "titre": "Approbation des modalités d'attribution de 4 marchés sur appel d'offres ouvert européen pour le déménagement et l'installation au 141, boulevard Macdonald (19e) et dans divers locaux de stockage, de l'ensemble des collections du musée du Petit-Palais. Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "AVRIL 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51067"
+   },
+   {
+    "reference": "2000 DAC 119",
+    "titre": "Don en espèces d'une somme de 750.000 F de Cartier pour l'acquisition d'oeuvres d'art ainsi que la restauration des décors et / ou des oeuvres appartenant aux collections permanentes du Petit Palais, musée des Beaux-arts de la Ville de Paris. - Autorisation à M. le Maire de Paris de signer avec Cartier la convention financière correspondante. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28151"
+   },
+   {
+    "reference": "2000 DAC 23",
+    "titre": "Approbation des modalités d'attribution de 2 marchés sur appel d'offres pour le réaménagement de locaux et de réserves provisoires, 141, boulevard Macdonald (19e), pour accueillir le personnel et les collections du musée du Petit-Palais pendant la durée des travaux de rénovation de ce musée. - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JANVIER 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48543"
+   },
+   {
+    "reference": "2000 DAC 312",
+    "titre": "Don en espèces d'une somme de 150.000 F de Jeanne LANVIN pour la restauration des décors et/ou des œuvres appartenant aux collections permanentes du Petit-Palais, musée des Beaux-Arts de la Ville de Paris. - Autorisation à M. le Maire de Paris de signer avec Jeanne LANVIN la convention financière correspondante. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28508"
+   },
+   {
+    "reference": "2000 DAC 313",
+    "titre": "Don en espèces d'une somme de 150.000 F de Chloé International pour la restauration des décors et/ou des œuvres appartenant aux collections permanentes du Petit-Palais, musée des Beaux-Arts de la Ville de Paris. - Autorisation à M. le Maire de Paris de signer avec Chloé International la convention financière correspondante. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28443"
+   },
+   {
+    "reference": "2000 DAC 314",
+    "titre": "Don en espèces d'une somme de 150.000 F de Nina RICCI pour la restauration des décors et/ou des œuvres appartenant aux collections permanentes du Petit-Palais, musée des Beaux-Arts de la Ville de Paris. - Autorisation à M. le Maire de Paris de signer avec Nina RICCI la convention financière correspondante. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28589"
+   },
+   {
+    "reference": "2000 DAC 333",
+    "titre": "Approbation du principe et des modalités d'attribution d'un marché à bons de commandes sur appel d'offres ouvert européen pour la réalisation d'une prestation de surveillance et de protection du chantier pendant les travaux de modernisation et de restauration du musée du Petit-Palais (8e) - Autorisation à M. le Maire de Paris de signer le marché correspondant. Mme l'Adjoint au Maire de Paris, chargée de la Culture, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40817"
+   },
+   {
+    "reference": "2000 DPA 196",
+    "titre": "Modernisation et restauration du musée du Petit-Palais (8e). - Autorisation à M. le Maire de Paris de souscrire un avenant au marché de maîtrise d'œuvre signé avec l'\"Atelier d'architecture CHAIX et MOREL et associés\" et ses co-traitants. - Autorisation à M. le Maire de Paris de souscrire un avenant au marché d'assistance technique au maître d'ouvrage signé avec la société \"MAZET et associés\" et son co-traitant. - Approbation des modalités d'attribution de 3 marchés relatifs aux travaux prélimin",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50573"
+   },
+   {
+    "reference": "2000 DPA 291",
+    "titre": "34 - 2000, DPA 291 - Modernisation et restauration du Petit-Palais - musée des Beaux-Arts de la Ville de Paris (8e). - Autorisation à M. le Maire de Paris de signer des marchés de travaux (19 lots séparés de travaux correspondants aux lots techniques indissociables) et 2 marchés de prestations intellectuelles relatifs au diagnostic des peintures, polychromies, décors et toiles peintes du musée et au soclage des œuvres",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "NOVEMBRE 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17124"
+   },
+   {
+    "reference": "2000 DPA 291",
+    "titre": "Modernisation et restauration du Petit-Palais - Musée des Beaux-Arts de la Ville de Paris (8e). - Approbation des modalités d'attribution d'un marché de travaux en 19 lots séparés correspondants aux lots techniques indissociables et de 2 marchés de prestations intellectuelles relatifs au diagnostic des peintures, polychromies, décors et toiles peintes du musée ainsi qu'au soclage des œuvres. - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "NOVEMBRE 2000",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88459"
+   }
+  ],
+  "2001": [
+   {
+    "reference": "2001 DAC 264",
+    "titre": "Approbation du principe et des modalités d'attribution d'un marché à bons de commandes sur appel d'offres ouvert européen pour la réalisation d'une prestation de surveillance et de protection du chantier pendant les travaux de rénovation du musée du Petit Palais (8e). - Autorisation à M. le Maire de Paris de signer le marché correspondant. Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84421"
+   },
+   {
+    "reference": "2001 DPA 178",
+    "titre": "Modernisation et restauration du Musée du Petit Palais (8e). - Autorisation à M. le Maire de Paris de souscrire un avenant au marché de travaux n° 00/ 26.645 signé avec l'entreprise \"DUNOYER S.A.\". - Autorisation à M. le Maire de Paris de souscrire un avenant au marché de travaux n° 00/ 26.646 signé avec l'entreprise \"AZUR A\". - Approbation des modalités d'attribution de deux marchés sur appel d'offres de prestations intellectuelles concernant respectivement l'ordonnancement, le pilotage et la c",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "OCTOBRE 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33786"
+   }
+  ],
+  "2002": [
+   {
+    "reference": "2002 DAC 131",
+    "titre": "Dons en espèces d'un montant de 144.826,56 euros pour la restauration d'œuvres d'art appartenant aux collections du Petit Palais, musée des Beaux-Arts de la Ville de Paris - Autorisation à M. le Maire de Paris de signer avec les sociétés Saatchi & Saatchi, Yohji Yamamoto, Loewe, Marine Sitbon, Chloe International et Sabatoun les conventions financières correspondantes. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56055"
+   },
+   {
+    "reference": "2002 DAC 259",
+    "titre": "97 - 2002, DAC 259 - Autorisation à M. le Maire de Paris de souscrire un avenant à la convention signée avec la S.A.R.L. \"Théâtre du Rond-Point\" (8e) pour l'attribution d'une subvention. - Montant : 225.000 euros.2002, DPA 295 - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres pour la modernisation et la restauration du Petit Palais - musée des Beaux-Arts de la Ville de Paris (8e)",
+    "genres": [
+     "subvention",
+     "travaux"
+    ],
+    "seance": "JUILLET 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7935"
+   },
+   {
+    "reference": "2002 DPA 295",
+    "titre": "Modernisation et restauration du Petit Palais- Musée des Beaux-Arts de la Ville de Paris 1, avenue Dutuit (8e). - Autorisation à M. le Maire de Paris de souscrire un avenant n° 2 au marché d'assistance technique au maître d'ouvrage n° 99/26.788 signé avec la société MAZET & Associés et BETIBA. - Approbation du principe et des modalités de consultation de 14 marchés séparés de travaux correspondants aux lots de muséographie et d'agencements, et de deux marchés de prestations intellectuelles conce",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88372"
+   },
+   {
+    "reference": "2002 DPA 339",
+    "titre": "Modernisation et restauration du Petit Palais- Musée des Beaux-Arts de la Ville de Paris 1, Avenue DUTUIT 75008 PARIS. - Approbation du principe et des modalités de consultation d'un marché en lot séparé de travaux portant sur le chauffage, la ventilation, la climatisation et le désenfumage. - Autorisation à Monsieur le Maire de Paris de signer le marché correspondant. Mme Sandrine MAZETIER, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29433"
+   }
+  ],
+  "2004": [
+   {
+    "reference": "2004 DAC 482",
+    "titre": "Approbation du principe et des modalités de passation d'un marché d'ordonnancement, de pilotage et de coordination pour la réinstallation du Petit Palais, musée des Beaux-Arts de la Ville de Paris, 1, avenue Dutuit (8e). Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46526"
+   },
+   {
+    "reference": "2004 DAC 483",
+    "titre": "Approbation du principe de réalisation des prestations de déménagement et de réinstallation des collections d’œuvres d’art appartenant au Petit Palais et des modalités de passation des marchés correspondants. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "NOVEMBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37431"
+   },
+   {
+    "reference": "2004 DAC 524",
+    "titre": "Attribution d’une subvention de fonctionnement à l’association “Compagnie Corinne Boijols”, dont le siège est situé 31, rue du Petit-Palais 77640 Jouarre. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "DECEMBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87792"
+   },
+   {
+    "reference": "2004 DPA 132",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire des avenants à 32 marchés de travaux concernant la modernisation et la restauration du Petit Palais- Musée des Beaux Arts de la Ville de Paris 1 (8e). - Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché de coordination SPS signé avec la société BUREAU VERITAS. - Approbation du principe et des modalités de consultation d'un marché de prestations intellectuelles concernant l'étude pour l'éclairage des façades sur jardin inté",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "AVRIL 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52133"
+   },
+   {
+    "reference": "2004 DPA 189",
+    "titre": "Modernisation et restauration du Petit Palais - Musée des Beaux Arts de la Ville de Paris 1, avenue Dutuit (8e). - Approbation du principe et des modalités de consultation d'un marché de prestations intellectuelles concernant l'étude pour la signalétique extérieure au bâtiment. - Autorisation à M. le Maire de Paris de signer le marché correspondant. - Autorisation à M. le Maire de Paris de souscrire des avenants aux marchés de travaux suivants : avenant n° 3 au marché 02/26.037 signé avec la soc",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94917"
+   },
+   {
+    "reference": "2004 DPA 207",
+    "titre": "Modernisation et restauration du Petit Palais- Musée des Beaux Arts de la Ville de Paris 1, Avenue DUTUIT 75008 Paris. - Autorisation à M. le Maire de Paris de souscrire des avenants aux marchés de travaux suivants : - avenant n° 2 au marché 03/26.025 signé avec le groupement LAINE-DELAU/PRADEAU&MORIN/GTM ; - avenant n°2 au marché 03/26.525 signé avec la société Atelier JEAN-LOUIS BOUVIER. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59906"
+   },
+   {
+    "reference": "2004 DPA 267",
+    "titre": "Modernisation et restauration du Petit Palais - Musée des Beaux Arts de la Ville de Paris (8e). Approbation du principe et des modalités de consultation de 3 marchés de travaux relatifs à la muséographie détaillée et au soclage des œuvres. - Approbation du principe et des modalités de consultation d’un marché de travaux relatifs à l’aménagement de l’atelier de menuiserie. - Approbation du principe et des modalités de consultation d’un marché de travaux relatifs à la dépose de la palissade de cha",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "NOVEMBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37716"
+   },
+   {
+    "reference": "2004 DPA 71",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 2 au marché de maîtrise d'œuvre relatif à la modernisation et la restauration du Petit Palais - Musée des Beaux-Arts de la Ville de Paris, 1, avenue Dutuit (8e). Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MARS 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57749"
+   }
+  ],
+  "2005": [
+   {
+    "reference": "2005 DAC 341",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention portant droit à l’occupation et à l’exploitation d’un espace concédé dénommé “LE JARDIN DU PETIT PALAIS” situé au Petit Palais Musée des Beaux Arts de la Ville de Paris 1, avenue Dutuit à Paris 8ème, afin d’y exploiter un café - espace de restauration légère. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87212"
+   },
+   {
+    "reference": "2005 DAC 373",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention d’occupation du domaine public concernant l’établissement dénommé “La librairie du Petit Palais”, situé au musée des Beaux - Arts de la Ville de Paris, 1, avenue Dutuit (8e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "OCTOBRE 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26108"
+   },
+   {
+    "reference": "2005 DPA 115",
+    "titre": "Approbation du principe et des modalités de passation en appel d’offres ouvert de quatre marchés de services relatifs à l’exploitation et à la maintenance du Petit Palais - Musée des Beaux Arts de la Ville de Paris 1, avenue Dutuit (8e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "MAI 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80753"
+   },
+   {
+    "reference": "2005 DPA 169",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire 5 avenants à 5 marchés de travaux relatifs à la modernisation et restauration du Petit Palais - Musée des Beaux Arts de la Ville de Paris, 1, Avenue DUTUIT 75008 PARIS. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87281"
+   },
+   {
+    "reference": "2005 DPA 196",
+    "titre": "Modernisation et restauration du Petit Palais - Musée des Beaux-Arts de la Ville de Paris, 1, avenue Dutuit (8e). - Approbation du principe et des modalités de consultation d’un marché de travaux relatif à l’éclairage des façades sur jardin intérieur. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63518"
+   },
+   {
+    "reference": "2005 DPA 242",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire 9 avenants aux marchés de travaux de modernisation et restauration du Petit Palais - Musée des Beaux-Arts de la Ville de Paris 1, avenue Dutuit (8e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63702"
+   },
+   {
+    "reference": "2005 DPA 53",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire dix avenants aux marchés de travaux en vue de la modernisation et restauration du Petit Palais- Musée des Beaux Arts de la Ville de Paris sis 1, Avenue DUTUIT à Paris 8ème.- Autorisation à Monsieur le Maire de Paris de souscrire un avenant n°2 au marché de coordination SPS n° 02/26-065 signé avec la société BUREAU VERITAS SA à Directoire et Conseil de Surveillance. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82469"
+   },
+   {
+    "reference": "2005 DPA 58",
+    "titre": "Approbation du principe et des modalités de passation d’un marché de travaux relatif à la fourniture et à l’installation d’extincteurs dans le cadre de la modernisation et la restauration du Petit Palais Musée des Beaux Arts de la Ville de Paris 1, avenue Dutuit à Paris 8ème. Mme Sandrine MAZETIER, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82525"
+   }
+  ],
+  "2006": [
+   {
+    "reference": "2006 DAC 690",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention pour obtenir l’aide financière de la Fondation du Patrimoine permettant la restauration et la réintégration des guirlandes du péristyle du musée du Petit Palais sis 5 avenue Dutuit (8e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91903"
+   },
+   {
+    "reference": "2006 DPA 256",
+    "titre": "Approbation du principe d’indemnisation des sociétés SCOP UTB et Crystal en raison des préjudices subis par elles lors des travaux de réhabilitation du Petit Palais sis 1, avenue Dutuit (8e). - Autorisation à M. le Maire de Paris de signer les contrats de transaction correspondants. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "OCTOBRE 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35186"
+   },
+   {
+    "reference": "2006 DPA 85",
+    "titre": "Approbation du principe et des modalités de passation en appel d’offres ouvert d’un marché de prestations intellectuelles relatif aux contrôles périodiques réglementaires pour les installations techniques du Petit Palais - Musée des Beaux Arts de la Ville de Paris, 1, avenue Dutuit (8e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "FEVRIER 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27602"
+   }
+  ],
+  "2007": [
+   {
+    "reference": "2007 DAC 112",
+    "titre": "Autorisation à M. le Maire de Paris, de signer une convention de parrainage avec la société Epson en faveur du Petit Palais - Musée des Beaux-Arts de la Ville de Paris situé 1 avenue Dutuit (8e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "MARS 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31674"
+   },
+   {
+    "reference": "2007 DAC 220",
+    "titre": "Autorisation à M. le Maire de Paris de signer une convention de partenariat avec l’association DAÏKA, pour la réalisation de l’exposition “Petit Palais intime ou l’étoffe des héroïnes” au Petit Palais. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "JUIN 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72489"
+   },
+   {
+    "reference": "2007 DAC 373",
+    "titre": "Approbation des modalités de passation d’un avenant au marché relatif aux prestations de surveillance - gardiennage et de sécurité du Petit Palais, musée des Beaux Arts de la Ville de Paris 1, avenue Dutuit (8e) géré par le bureau des musées de la Ville de Paris. - Autorisation à M. le Maire de Paris de signer ledit avenant. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54350"
+   },
+   {
+    "reference": "2007 DAC 379",
+    "titre": "Autorisation à M. le Maire de Paris de signer un avenant de transfert au marché n° 05-26-111 passé avec la société EVIN Ascenseurs relatif à la maintenance des appareils élévateurs du musée du Petit Palais de la Ville de Paris (lot n° 2) au bénéfice de la société KONE. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUILLET 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90249"
+   },
+   {
+    "reference": "2007 DAC 609",
+    "titre": "Autorisation à M. le Maire de Paris de signer un avenant à la convention d’occupation du domaine public concernant l’établissement dénommé “La Librairie du Petit Palais”, situé au musée des Beaux-Arts de la Ville de Paris, 1 avenue Dutuit (8e). Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "NOVEMBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65875"
+   },
+   {
+    "reference": "2007 DPA 131",
+    "titre": "Approbation du principe d’indemnisation de la société MAES en raison des préjudices subis par elle lors des travaux de réhabilitation du Petit Palais sis 1, avenue Dutuit (8e). - Autorisation à M. le Maire de Paris de signer le contrat de transaction correspondant. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72548"
+   },
+   {
+    "reference": "2007 DPA 269",
+    "titre": "Approbation du principe d’indemnisation de la société SAS VULCAIN en raison des préjudices subis par elle lors des travaux de réhabilitation du Petit Palais sis 1, avenue Dutuit à Paris (8eme). Autorisation à Monsieur le Maire de Paris de signer le contrat de transaction correspondant. Mme Moïra GUILMART, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "NOVEMBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65987"
+   },
+   {
+    "reference": "2007 DPVI 44",
+    "titre": "SG 106 - Subvention à l’association Daïka pour la réalisation d’un projet de redynamisation sociale par la culture et d’une exposition réalisés au Petit Palais Musée des Beaux-arts de Paris et intitulés “L’étoffe des Héroïnes”. Mmes Martine DURLACH et Khédija BOURCART, rapporteures.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUIN 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72315"
+   }
+  ],
+  "2008": [
+   {
+    "reference": "2008 DAC 630",
+    "titre": "Convention d’occupation du domaine public concernant l’établissements dénommé “La Librairie du Petit Palais”, situé au musée des Beaux-Arts de la Ville de Paris, 1 avenue Dutuit (8e). Mme Colombe BROSSEL, rapporteure.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "DECEMBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77845"
+   },
+   {
+    "reference": "2008 DPA 227",
+    "titre": "Approbation du principe d’indemnisation de la société SAS VULCAIN en raison des préjudices subis par elle lors des travaux de réhabilitation du Musée du Petit Palais (8e). Mme Colombe BROSSEL, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67522"
+   },
+   {
+    "reference": "2008 DPA 293",
+    "titre": "Approbation des modalités de passation d’un marché de conseils et de représentation juridiques dans le cadre de la réalisation des grands projets culturels et sportifs : Complexe sportif Belleville (20e) ; Complexe culturel du 104 Aubervilliers (19e) ; Musée du Petit Palais (8e). MM. Jean VUILLERMOZ, Christophe GIRARD et Mme Colombe BROSSEL, rapporteurs.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "NOVEMBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61637"
+   },
+   {
+    "reference": "2008 DPA 55",
+    "titre": "Souscription d’un avenant n° 3 au marché de maîtrise d’oeuvre conclu avec la société CHAIX&MO-REL et Associés (mandataire) relatif à la modernisation et à la restauration du Musée du Petit Palais 1, avenue Dutuit (8e). Mme Colombe BROSSEL, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "JUIN 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68536"
+   }
+  ],
+  "2009": [
+   {
+    "reference": "2009 DAC 7",
+    "titre": "Approbation du principe et des modalités de passation d’un marché de prestations de services pour assurer l’exploitation et la maintenance des ouvrages du Musée des Beaux Arts de la Ville de Paris, Petit Palais (8e). Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34554"
+   },
+   {
+    "reference": "2009 DPA 199",
+    "titre": "Indemnisation de la société INEO VD en raison des préjudices subis par elle lors des travaux de réhabilitation du Musée du Petit Palais, 1, avenue Dutuit (8e) - lot 216 : électricité courants forts. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36676"
+   },
+   {
+    "reference": "2009 DPA 200",
+    "titre": "Indemnisation de la société INEO VD en raison des préjudices subis par elle lors des travaux de réhabilitation du Musée du Petit Palais, 1, avenue Dutuit (8e) - lot 218 : \"électricité courants faibles\". Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36605"
+   }
+  ],
+  "2010": [
+   {
+    "reference": "2010 DAC 124",
+    "titre": "Convention d’occupation du domaine public concernant les établissements dénommés La Librairie du Petit Palais, situé au musée des Beaux-Arts de la Ville de Paris, 1 avenue Dutuit(8e) et La Librairie du Musée Carnavalet situé au 23 rue de Sévigné(3e). Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "FEVRIER 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79257"
+   },
+   {
+    "reference": "2010 DAC 124",
+    "titre": "2010, DAC 124 - Signature de conventions d'occupation du domaine public concernant les établissements dénommés La Librairie du Petit Palais, situé au musée des Beaux-Arts de la Ville de Paris, 1 avenue Dutuit (8e) et La Librairie du Musée Carnavalet, 23 rue de Sévigné (3e).",
+    "genres": [
+     "autre"
+    ],
+    "seance": "FEVRIER 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3972"
+   },
+   {
+    "reference": "2010 DAC 588",
+    "titre": "Signature des conventions de mécénat liant la société SAMSUNG au Petit Palais, musée des Beaux-Arts de la Ville de Paris. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "SEPTEMBRE 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39739"
+   }
+  ],
+  "2011": [
+   {
+    "reference": "2011 DAC 55",
+    "titre": "Signature d’une convention de mécénat liant la société Studio Philippe Apeloig au Petit Palais, Musée des Beaux-Arts de la Ville de Paris. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "MARS 2011",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96833"
+   },
+   {
+    "reference": "2011 DAC 69",
+    "titre": "Autorisation à Monsieur le Maire de Paris de signer une convention de mécénat liant la Fondation d’entreprise Hermès au Petit Palais, Musée des Beaux-Arts de la Ville de Paris et à la Parisienne de Photographie. Mme Danièle POURTAUD, rapporteure.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "JUIN 2011",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96350"
+   }
+  ]
+ },
+ "invest": [],
+ "marches": [],
+ "mandate": {
+  "par_annee": {
+   "2009": 408483.22,
+   "2010": 144507.53,
+   "2011": 212486.02,
+   "2012": 40199.58,
+   "2013": 27129.05
+  },
+  "total_eur": 832805.4,
+  "operations": [
+   {
+    "ap_cle": "B100/0700128",
+    "ap_texte": "MUSEE PETIT PALAIS",
+    "mandate_par_annee": {
+     "2009": 68347.15,
+     "2010": 101105.82,
+     "2011": 137862.1,
+     "2012": 29582.48,
+     "2013": 27129.05
+    },
+    "total_mandate": 364026.6,
+    "preuve": "Libellé AP « MUSEE PETIT PALAIS », mission AFFAIRES CULTURELLES, direction DAC — nomme explicitement le lieu ; les délibérations désignent le Petit Palais comme « musée des Beaux-Arts de la Ville de Paris » et sont instruites par la DAC (2010 DAC 588, 2011 DAC 84).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0700128"
+   },
+   {
+    "ap_cle": "B100/0600128",
+    "ap_texte": "MUSEE PETIT PALAIS",
+    "mandate_par_annee": {
+     "2009": 272062.78,
+     "2010": 40.33,
+     "2011": 6000.0
+    },
+    "total_mandate": 278103.11,
+    "preuve": "Libellé AP « MUSEE PETIT PALAIS », mission AFFAIRES CULTURELLES, direction DAC — nomme explicitement le lieu (musée des Beaux-Arts de la Ville de Paris, 1 avenue Dutuit, 8e, selon 2010 DAC 124).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0600128"
+   },
+   {
+    "ap_cle": "B100/0500128",
+    "ap_texte": "MUSEE PETIT PALAIS",
+    "mandate_par_annee": {
+     "2009": 40245.3,
+     "2010": 5136.58,
+     "2011": 68623.92,
+     "2012": 10617.1
+    },
+    "total_mandate": 124622.9,
+    "preuve": "Libellé AP « MUSEE PETIT PALAIS », mission AFFAIRES CULTURELLES, direction DAC — nomme explicitement le lieu.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0500128"
+   },
+   {
+    "ap_cle": "B100/0400128",
+    "ap_texte": "PETIT PALAIS",
+    "mandate_par_annee": {
+     "2009": 27641.89,
+     "2010": 38224.8
+    },
+    "total_mandate": 65866.69,
+    "preuve": "Libellé AP « PETIT PALAIS », mission AFFAIRES CULTURELLES, direction DAC — nomme explicitement le lieu ; le code d'opération est le même (…0128) que celui des AP « MUSEE PETIT PALAIS ».",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0400128"
+   },
+   {
+    "ap_cle": "B100/0300128",
+    "ap_texte": "PETIT PALAIS",
+    "mandate_par_annee": {
+     "2009": 186.1
+    },
+    "total_mandate": 186.1,
+    "preuve": "Libellé AP « PETIT PALAIS », mission AFFAIRES CULTURELLES, direction DAC — nomme explicitement le lieu ; même code d'opération (…0128) que les AP « MUSEE PETIT PALAIS ».",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0300128"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2013"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Petit+Palais"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Petit+Palais%22%29"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
   },
   "wiki": {
-    "extract": "Le Petit Palais, construit à l'occasion de l'Exposition universelle de 1900 par l'architecte Charles Girault, abrite le musée des Beaux-Arts de la ville de Paris. Il est situé à Paris 8e, avenue Winston-Churchill, face au Grand Palais et bordé par la Seine et l'avenue des Champs-Élysées. Il est érigé en partie à la place du palais de l'Industrie, démoli en 1896. Le bâtiment est inscrit aux monuments historiques en 1975.",
-    "url": "https://fr.wikipedia.org/wiki/Petit_Palais",
-    "source": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    },
-    "extract_en": "The Petit Palais, built for the 1900 Universal Exposition by architect Charles Girault, houses the City of Paris's Museum of Fine Arts. It is located in the 8th arrondissement of Paris, avenue Winston-Churchill, facing the Grand Palais and bordered by the Seine and avenue des Champs-Élysées. It was erected partly on the site of the Palais de l'Industrie, demolished in 1896. The building was listed as a historic monument in 1975."
-  },
-  "stats": {
-    "n_delibs": 1187,
-    "delibs_span": [
-      1996,
-      2011
-    ],
-    "n_bmo_brut": 2000,
-    "n_bmo_verifies": 13,
-    "invest_total_eur": 0,
-    "invest_annees": [],
-    "lecture_mode": "titre nommant le lieu (64 trouvés)",
-    "lecture_mode_en": "title naming the place (64 found)",
-    "n_lus": 43,
-    "n_lieu": 38
-  },
-  "subventions_exploitant": null,
-  "residents": [],
-  "kpi_montant": null,
-  "synthese_fr": "Sur quinze ans, les délibérations du Conseil de Paris suivent le Petit Palais à travers un grand chantier et sa vie quotidienne. À la fin des années 1990, le Conseil autorise l'acquisition d'œuvres pour enrichir les collections du musée, sur les arrérages du legs Dutuit. À partir de 1999, un chantier de modernisation et de restauration structure le dossier : marchés de travaux, avenant portant la maîtrise d'œuvre à près de 6 millions d'euros HT, puis plusieurs délibérations approuvant le principe d'indemniser des entreprises pour les préjudices subis pendant les travaux. La réouverture, autour de 2005-2006, ouvre des débats sur les moyens humains : un vœu communiste s'oppose à l'externalisation du poste de sécurité, un autre réclame plus d'agents titulaires de surveillance, avec des chiffres contestés en séance. Les années suivantes portent l'exploitation courante (librairies, café-jardin, maintenance) et des ressources privées : conventions de mécénat avec SAMSUNG, le Studio Philippe Apeloig et la Fondation Hermès, parrainage Epson, et de nouvelles acquisitions comme un pendentif de René Lalique.",
-  "moments": [
-    {
-      "id": "55737",
-      "seance": "JUIN 2002",
-      "fait": "Un vœu demande le démontage de l'installation publicitaire géante dressée devant le Petit Palais, alors en travaux.",
-      "pourquoi": "une pub géante masque le monument en chantier",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55737",
-      "fait_en": "A motion called for the removal of the giant advertising installation erected in front of the Petit Palais, then under renovation.",
-      "pourquoi_en": "A giant ad hides the monument under renovation"
-    },
-    {
-      "id": "9317",
-      "seance": "JUILLET 2005",
-      "fait": "Le groupe communiste dépose un vœu s'opposant à l'externalisation du poste de sécurité du musée.",
-      "pourquoi": "l'externalisation de la sécurité contestée en séance",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9317",
-      "fait_en": "The Communist group filed a motion opposing the outsourcing of the museum's security post.",
-      "pourquoi_en": "Security outsourcing disputed in session"
-    },
-    {
-      "id": "16875",
-      "seance": "AVRIL 2006",
-      "fait": "En séance, un vœu réclame plus d'agents titulaires de surveillance ; l'adjointe conteste les effectifs avancés.",
-      "pourquoi": "bataille de chiffres sur les gardiens du musée",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16875",
-      "fait_en": "In session, a motion called for more permanent surveillance staff; the deputy mayor disputed the staffing figures put forward.",
-      "pourquoi_en": "A battle of figures over the museum's guards"
-    },
-    {
-      "id": "35186",
-      "seance": "OCTOBRE 2006",
-      "fait": "Le Conseil approuve le principe d'indemniser les sociétés SCOP UTB et Crystal pour préjudices subis pendant le chantier.",
-      "pourquoi": "le chantier de rénovation finit en indemnités",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35186",
-      "fait_en": "The Council approved the principle of compensating the companies SCOP UTB and Crystal for damages suffered during the works.",
-      "pourquoi_en": "The renovation project ends in compensation payments"
-    },
-    {
-      "id": "72489",
-      "seance": "JUIN 2007",
-      "fait": "Le Maire est autorisé à signer une convention avec l'association DAÏKA pour l'exposition « Petit Palais intime ou l'étoffe des héroïnes ».",
-      "pourquoi": "une exposition co-construite avec une association",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72489",
-      "fait_en": "The Mayor was authorized to sign an agreement with the association DAÏKA for the exhibition \"Petit Palais intime ou l'étoffe des héroïnes.\"",
-      "pourquoi_en": "An exhibition co-built with an association"
-    },
-    {
-      "id": "68536",
-      "seance": "JUIN 2008",
-      "fait": "Le Conseil autorise un avenant n°3 portant le marché de maîtrise d'œuvre de la rénovation à 5 951 996,93 € HT.",
-      "pourquoi": "le coût de la maîtrise d'œuvre relevé",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68536",
-      "fait_en": "The Council authorized amendment no. 3 raising the renovation's project management contract to €5,951,996.93 excluding tax.",
-      "pourquoi_en": "The cost of project management is raised"
-    },
-    {
-      "id": "3972",
-      "seance": "FEVRIER 2010",
-      "fait": "En séance, la concession des librairies-boutiques du Petit Palais et de Carnavalet à la RMN est débattue.",
-      "pourquoi": "à qui confier la boutique du musée",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3972",
-      "fait_en": "In session, the concession of the Petit Palais's and Carnavalet's bookshop-boutiques to the RMN (Réunion des musées nationaux) was debated.",
-      "pourquoi_en": "Who should run the museum shop"
-    },
-    {
-      "id": "39739",
-      "seance": "SEPTEMBRE 2010",
-      "fait": "Le Maire est autorisé à signer deux conventions de mécénat avec SAMSUNG au profit du musée (valeur estimée 650 000 €).",
-      "pourquoi": "le mécénat privé entre au musée",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39739",
-      "fait_en": "The Mayor was authorized to sign two sponsorship agreements with SAMSUNG for the museum's benefit (estimated value €650,000).",
-      "pourquoi_en": "Private sponsorship enters the museum"
-    }
-  ],
-  "montants": [
-    {
-      "seance": "SEPTEMBRE 2010",
-      "montant": "650.000 euros",
-      "objet": "mécénat SAMSUNG (dépense estimée, budget de fonctionnement)",
-      "citation": "La dépense, estimée à 650.000 euros, sera imputée sur la mission 2, chapitre 011, nature 611, rubrique V322 du budget de fonctionnement",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39739"
-    },
-    {
-      "seance": "SEPTEMBRE 2010",
-      "montant": "77.774 euros",
-      "objet": "mécénat SAMSUNG (dépense estimée, budget d'investissement)",
-      "citation": "La dépense, estimée à 77.774 euros, sera inscrite au chapitre 21, nature 2162, rubrique V322 du budget d?investissement",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39739"
-    },
-    {
-      "seance": "MARS 2011",
-      "montant": "180.000 euros",
-      "objet": "pendentif « Anémones des bois » de René Lalique",
-      "citation": "acquérir un pendentif ?Anémones des bois? de René Lalique en faveur du Petit Palais, Musée des Beaux Arts de la Ville de Paris pour un montant de 180.000 euros.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96642"
-    },
-    {
-      "seance": "MARS 2011",
-      "montant": "87.000 euros",
-      "objet": "mécénat Studio Philippe Apeloig (dépense estimée)",
-      "citation": "La dépense estimée à 87.000 euros sera inscrite au chapitre 21, nature 2162, rubrique V322 du budget municipal d?investissement",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96833"
-    },
-    {
-      "seance": "OCTOBRE 2008",
-      "montant": "115.000 euros",
-      "objet": "tapisserie",
-      "citation": "acquérir une tapisserie en faveur du Petit Palais, musée des Beaux-Arts de la Ville de Paris pour un montant de 115.000 euros.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43081"
-    },
-    {
-      "seance": "MAI 2004",
-      "montant": "84.651 euros",
-      "objet": "peinture de Daniel Seghers et Cornelis Schut",
-      "citation": "acquérir une peinture de Daniel Seghers et Cornelis Schut \"Vierge à l'Enfant dans une couronne de fleurs\", pour une somme de 84.651 euros.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45815"
-    },
-    {
-      "seance": "JUILLET 2003",
-      "montant": "100.000 euros",
-      "objet": "émail de Grandhomme d'après Gustave Moreau",
-      "citation": "acquérir un émail de Grandhomme d'après Gustave Moreau, représentant Europe aux pieds de Jupiter, pour une somme 100.000 euros.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70214"
-    },
-    {
-      "seance": "AVRIL 2005",
-      "montant": "98 507,69 euros",
-      "objet": "sculpture en marbre de Jules Dalou « Eve »",
-      "citation": "acquérir une sculpture en marbre de Jules Dalou intitulée Eve, pour une somme 98 507,69 euros.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43889"
-    },
-    {
-      "seance": "SEPTEMBRE 2008",
-      "montant": "32.866,00 euros",
-      "objet": "don de matériel de vidéoprojection (valeur estimée)",
-      "citation": "La dépense estimée à 32.866,00 euros, sera inscrite au chapitre 21, nature 2162, rubrique 01",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66883"
-    },
-    {
-      "seance": "JUIN 2011",
-      "montant": "4.688,32 euros",
-      "objet": "mécénat Fondation d'entreprise Hermès (recette inscrite)",
-      "citation": "Une recette de 4.688,32 euros sera inscrite au chapitre 10, nature 10251, rubrique V322 du budget d?investissement",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96350"
-    },
-    {
-      "seance": "MAI 2008",
-      "montant": "28.000 euros",
-      "objet": "œuvres léguées par M. André Berne-Joffroy (valeur totale, Petit Palais et Musée d'Art moderne)",
-      "citation": "estimées au total à la somme de 28.000 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69652"
-    },
-    {
-      "seance": "JUILLET 2003",
-      "montant": "17.500 euros",
-      "objet": "œuvres léguées par Mme Denyse Lion-Comerre (valeur d'immobilisation)",
-      "citation": "La valeur d'immobilisation des ?uvres léguées, estimées à 17.500 euros au total",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70491"
-    },
-    {
-      "seance": "JUIN 2008",
-      "montant": "5.951.996,93 euros HT",
-      "objet": "avenant n°3 au marché de maîtrise d'œuvre (nouveau montant du marché)",
-      "citation": "portant le montant du marché de 5.762.264,68 euros HT à 5.951.996,93 euros HT (valeur MO), soit de 6.891.668,80 euros TTC (valeur MO) à 7.118.588,33 euros TTC",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68536"
-    },
-    {
-      "seance": "OCTOBRE 1999",
-      "montant": "501.000 F",
-      "objet": "gravures de Goya (arrérages du legs Dutuit)",
-      "citation": "proposées par la galerie Paul Prouté au prix total de 501.000 F.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42415"
-    },
-    {
-      "seance": "OCTOBRE 1996",
-      "montant": "3.547.328 F",
-      "objet": "pendule à orgues « Concert des singes » (arrérages du legs Dutuit)",
-      "citation": "adjugée le 26 juin 1996 par Me Binoche, commissaire-priseur, à la somme de 3.547.328 F avec les frais.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55217"
-    }
-  ],
-  "bmo_extraits": [],
-  "bmo_recit": null,
-  "invest": [],
-  "marches": [],
-  "mandate": {
-    "par_annee": {
-      "2009": 408483.22,
-      "2010": 144507.53,
-      "2011": 212486.02,
-      "2012": 40199.58,
-      "2013": 27129.05
-    },
-    "total_eur": 832805.4,
-    "operations": [
-      {
-        "ap_cle": "B100/0700128",
-        "ap_texte": "MUSEE PETIT PALAIS",
-        "mandate_par_annee": {
-          "2009": 68347.15,
-          "2010": 101105.82,
-          "2011": 137862.1,
-          "2012": 29582.48,
-          "2013": 27129.05
-        },
-        "total_mandate": 364026.6,
-        "preuve": "Libellé AP « MUSEE PETIT PALAIS », mission AFFAIRES CULTURELLES, direction DAC — nomme explicitement le lieu ; le contexte des délibérations (ex. 2010 DAC 588, 2011 DAC 84) confirme que le Petit Palais est le musée des Beaux-Arts de la Ville de Paris géré par la DAC.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0700128"
-      },
-      {
-        "ap_cle": "B100/0600128",
-        "ap_texte": "MUSEE PETIT PALAIS",
-        "mandate_par_annee": {
-          "2009": 272062.78,
-          "2010": 40.33,
-          "2011": 6000.0
-        },
-        "total_mandate": 278103.11,
-        "preuve": "Libellé AP « MUSEE PETIT PALAIS », mission AFFAIRES CULTURELLES, direction DAC — nomme explicitement le lieu (musée municipal des Beaux-Arts, 8e, régie directe Ville/DAC confirmée par les délibérations).",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0600128"
-      },
-      {
-        "ap_cle": "B100/0500128",
-        "ap_texte": "MUSEE PETIT PALAIS",
-        "mandate_par_annee": {
-          "2009": 40245.3,
-          "2010": 5136.58,
-          "2011": 68623.92,
-          "2012": 10617.1
-        },
-        "total_mandate": 124622.9,
-        "preuve": "Libellé AP « MUSEE PETIT PALAIS », mission AFFAIRES CULTURELLES, direction DAC — nomme explicitement le lieu.",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0500128"
-      },
-      {
-        "ap_cle": "B100/0400128",
-        "ap_texte": "PETIT PALAIS",
-        "mandate_par_annee": {
-          "2009": 27641.89,
-          "2010": 38224.8
-        },
-        "total_mandate": 65866.69,
-        "preuve": "Libellé AP « PETIT PALAIS », mission AFFAIRES CULTURELLES, direction DAC — nomme explicitement le lieu ; même série d'opérations (…0128) que les AP « MUSEE PETIT PALAIS ».",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0400128"
-      },
-      {
-        "ap_cle": "B100/0300128",
-        "ap_texte": "PETIT PALAIS",
-        "mandate_par_annee": {
-          "2009": 186.1
-        },
-        "total_mandate": 186.1,
-        "preuve": "Libellé AP « PETIT PALAIS », mission AFFAIRES CULTURELLES, direction DAC — nomme explicitement le lieu ; même série d'opérations (…0128).",
-        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0300128"
-      }
-    ],
-    "periode": [
-      "2009",
-      "2013"
-    ],
-    "source": {
-      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-    }
-  },
-  "sources": {
-    "delibs": {
-      "name": "Débat-Délibs — Conseil de Paris",
-      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Petit+Palais"
-    },
-    "bmo": {
-      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Petit+Palais%22%29"
-    },
-    "invest": {
-      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-      "url": "https://opendata.paris.fr/"
-    },
-    "wiki": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
-  },
-  "synthese_en": "Over fifteen years, the Conseil de Paris's deliberations follow the Petit Palais through a major renovation project and its daily life. In the late 1990s, the Council authorized the acquisition of works to enrich the museum's collections, drawn from the income of the Dutuit bequest. Starting in 1999, a modernization and restoration project structured the record: works contracts, an amendment raising the project management contract to nearly 6 million euros excluding tax, then several deliberations approving the principle of compensating companies for damages suffered during the works. The reopening, around 2005-2006, opened debates on staffing: a Communist motion opposed the outsourcing of the security post, another demanded more permanent surveillance staff, with figures disputed in session. The following years covered day-to-day operations (bookshops, the garden café, maintenance) and private resources: sponsorship agreements with SAMSUNG, Studio Philippe Apeloig and the Fondation Hermès, Epson sponsorship, and new acquisitions such as a René Lalique pendant.",
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
   }
+ },
+ "synthese_en": "Over fifteen years, the Conseil de Paris's deliberations follow the Petit Palais through a major renovation project and its daily life. In the late 1990s, the Council authorized the acquisition of works to enrich the museum's collections, drawn from the income of the Dutuit bequest. Starting in 1999, a modernization and restoration project structured the record: works contracts, an amendment raising the project management contract to nearly 6 million euros excluding tax, then several deliberations approving the principle of compensating companies for damages suffered during the works. The reopening, around 2005-2006, opened debates on staffing: a Communist motion opposed the outsourcing of the security post, another demanded more permanent surveillance staff, with figures disputed in session. The following years covered day-to-day operations (bookshops, the garden café, maintenance) and private resources: sponsorship agreements with SAMSUNG, Studio Philippe Apeloig and the Fondation Hermès, Epson sponsorship, and new acquisitions such as a René Lalique pendant."
 }

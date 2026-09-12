@@ -1,0 +1,79 @@
+{
+  "availableYears": [
+    2024,
+    2023,
+    2022,
+    2021,
+    2020,
+    2019,
+    2018
+  ],
+  "source": "Fusion PDF Investissements Localisés + BigQuery",
+  "lastUpdate": "2026-09-10T19:08:59.986134",
+  "yearStats": {
+    "2018": {
+      "pdf_projets": 2457,
+      "pdf_total": 713482986.23,
+      "bq_added": 0,
+      "bq_added_total": 0,
+      "total_projets": 2457,
+      "total_montant": 713482986.23
+    },
+    "2019": {
+      "pdf_projets": 627,
+      "pdf_total": 480140070.0,
+      "bq_added": 89,
+      "bq_added_total": 268190607.54,
+      "total_projets": 716,
+      "total_montant": 748330677.54
+    },
+    "2020": {
+      "pdf_projets": 575,
+      "pdf_total": 264240592.0,
+      "bq_added": 55,
+      "bq_added_total": 113717132.21,
+      "total_projets": 630,
+      "total_montant": 377957724.21
+    },
+    "2021": {
+      "pdf_projets": 534,
+      "pdf_total": 191039212.0,
+      "bq_added": 37,
+      "bq_added_total": 82664298.99,
+      "total_projets": 571,
+      "total_montant": 273703510.99
+    },
+    "2022": {
+      "pdf_projets": 446,
+      "pdf_total": 143575901.0,
+      "bq_added": 19,
+      "bq_added_total": 52018859.32,
+      "total_projets": 465,
+      "total_montant": 195594760.32
+    },
+    "2023": {
+      "pdf_projets": 497,
+      "pdf_total": 209916001.67,
+      "bq_added": 0,
+      "bq_added_total": 0,
+      "total_projets": 497,
+      "total_montant": 209916001.67
+    },
+    "2024": {
+      "pdf_projets": 437,
+      "pdf_total": 234665835.0,
+      "bq_added": 0,
+      "bq_added_total": 0,
+      "total_projets": 437,
+      "total_montant": 234665835.0
+    }
+  },
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
+  }
+}

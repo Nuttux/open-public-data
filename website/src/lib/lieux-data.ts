@@ -33,7 +33,8 @@ export type LieuMontant = {
 export type LieuBmoExtrait = { date: string; extrait: string; extrait_en?: string | null; source_url: string };
 /** Dépense d'investissement RÉELLEMENT mandatée (comptes administratifs).
  *  Série par exercice fusionnant les opérations AP jugées « au-lieu »
- *  (2009-2017 — le niveau opération n'est plus publié après). */
+ *  (série continue depuis 2009 : la Ville la publie en deux jeux, M14 jusqu'en
+ *  2017 puis M57, empilés à l'export sur la clé d'autorisation de programme). */
 export type LieuMandate = {
   par_annee: Record<string, number>;
   total_eur: number;
@@ -68,6 +69,20 @@ export type LieuInvest = {
   id?: string | null;
 };
 
+export type LieuDelib = {
+  /** Référence officielle de la délibération, ex. « 2020 DAC 105 ». */
+  reference: string;
+  /** Titre intégral tel que la Ville l'a écrit — jamais reformulé. */
+  titre: string;
+  /** Ce que la décision engage : « subvention », « travaux », ou les deux. Une
+   *  décision qui n'engage ni l'un ni l'autre (convention d'occupation,
+   *  délégation de service public) sort « autre » et n'apparaît sous aucune des
+   *  deux lignes d'argent de la fiche. */
+  genres?: string[];
+  seance?: string | null;
+  source_url?: string | null;
+};
+
 export type LieuFicheData = {
   generated_at: string;
   source_pipeline: string;
@@ -82,6 +97,10 @@ export type LieuFicheData = {
   /** D'où vient la photo : vignette d'article (Wikipédia) ou repêchage Commons —
    *  licences et auteurs différents. */
   photo_credit: { licence: string | null; auteur: string | null; url: string | null; source: string } | null;
+  /** Premier exercice où tous les flux d'argent existent (la Ville publie
+   *  l'investissement depuis 2009 et les subventions depuis 2013). Le chiffre
+   *  de tête couvre cette fenêtre ; ce qui est avant est montré à part. */
+  seuil_commun?: number;
   wiki: { extract: string | null; extract_en?: string | null; url: string | null; source: { name: string; url: string } };
   famille: string;
   stats: {
@@ -118,6 +137,10 @@ export type LieuFicheData = {
   synthese_fr: string | null;
   synthese_en?: string | null;
   moments: LieuMoment[];
+  /** « Cliquer une année » : les délibérations du Conseil de Paris qui ont
+   *  décidé l'argent de cet exercice, rattachées mécaniquement au lieu. Le
+   *  titre est celui écrit par la Ville, publié verbatim. Clé = année du VOTE. */
+  delibs_par_annee?: Record<string, LieuDelib[]> | null;
   montants: LieuMontant[];
   bmo_extraits: LieuBmoExtrait[];
   bmo_recit?: LieuBmoRecit;
@@ -145,6 +168,10 @@ export type LieuIndexEntry = {
   n_lieu: number | null;
   n_moments: number;
   argent_total_eur?: number;
+  /** Ce que le lieu a reçu AVANT le seuil commun, et qui n'est donc pas dans
+   *  `argent_total_eur`. Publié pour que la vignette puisse le dire. */
+  depense_reelle_avant_seuil_eur?: number;
+  seuil_commun?: number;
   /** Composantes du chiffre : versé (subventions + chantiers réglés) et plafonds de contrats. */
   depense_reelle_eur?: number;
   engage_eur?: number;

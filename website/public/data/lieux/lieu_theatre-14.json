@@ -1,264 +1,421 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
-  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
-  "slug": "theatre-14",
-  "name": "Théâtre 14",
-  "kind_fr": "Théâtre",
-  "kind_en": "Theatre",
-  "famille": "culture",
-  "arrondissement": 14,
-  "lat": 48.8259,
-  "lon": 2.30685,
-  "photo": null,
-  "photo_credit": null,
-  "wiki": {
-    "extract": "Le théâtre 14 Jean-Marie-Serreau est un théâtre municipal, situé 20 avenue Marc-Sangnier dans le 14e arrondissement de Paris.",
-    "url": "https://fr.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_14_Jean-Marie-Serreau",
-    "source": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    },
-    "extract_en": "Théâtre 14 Jean-Marie-Serreau is a municipal theatre located at 20 avenue Marc-Sangnier in the 14th arrondissement of Paris."
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "theatre-14",
+ "name": "Théâtre 14",
+ "kind_fr": "Théâtre",
+ "kind_en": "Theatre",
+ "famille": "culture",
+ "arrondissement": 14,
+ "lat": 48.8259,
+ "lon": 2.30685,
+ "photo": null,
+ "photo_credit": null,
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "Le théâtre 14 Jean-Marie-Serreau est un théâtre municipal, situé 20 avenue Marc-Sangnier dans le 14e arrondissement de Paris.",
+  "url": "https://fr.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_14_Jean-Marie-Serreau",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
   },
-  "stats": {
-    "n_delibs": 348,
-    "delibs_span": [
-      1999,
-      2010
-    ],
-    "n_bmo_brut": 2000,
-    "n_bmo_verifies": 18,
-    "invest_total_eur": 0,
-    "invest_annees": [],
-    "lecture_mode": "titre nommant le lieu (14 trouvés)",
-    "lecture_mode_en": "title naming the place (14 found)",
-    "n_lus": 14,
-    "n_lieu": 13
-  },
-  "subventions_exploitant": null,
-  "residents": [
-    {
-      "beneficiaire": "UNIVERSITES POPULAIRES DU THEATRE",
-      "montant_total": 1000.0,
-      "preuve": "Objet de subvention verbatim : « Université Populaire du Théâtre au Théâtre 14 en mai 2018 » — nomme explicitement le lieu. Activité accueillie DANS le lieu, sans le gérer : les délibérations montrent que le fonctionnement et l'occupation du « Théâtre 14 situé 20, avenue Marc Sangnier (14e) » relèvent de l'association « Théâtre Paris 14 » (2002 DAC 39, 2007 DAC 612, 2009 DAC 169), qui n'est pas ce bénéficiaire (SIRET 79961225400018).",
-      "preuve_en": "Verbatim subsidy purpose: \"Université Populaire du Théâtre at Théâtre 14 in May 2018\" — explicitly names the venue. Activity hosted INSIDE the venue, without managing it: the deliberations show that the operation and occupancy of \"Théâtre 14 located at 20, avenue Marc Sangnier (14th)\" fall to the association \"Théâtre Paris 14\" (2002 DAC 39, 2007 DAC 612, 2009 DAC 169), which is not this beneficiary (SIRET 79961225400018)."
-    }
+  "extract_en": "Théâtre 14 Jean-Marie-Serreau is a municipal theatre located at 20 avenue Marc-Sangnier in the 14th arrondissement of Paris."
+ },
+ "stats": {
+  "n_delibs": 348,
+  "delibs_span": [
+   1999,
+   2010
   ],
-  "kpi_montant": null,
-  "synthese_fr": "En septembre 1999, le Conseil de Paris approuve le principe de travaux de rénovation du Théâtre 14, avenue Marc-Sangnier (14e), et autorise la signature du marché correspondant ; le principe d'un ravalement des façades est approuvé sur le même mode en décembre 2001. En février 2002, la Ville autorise une convention relative au fonctionnement du théâtre avec l'association Théâtre Paris 14, pour une dépense de 500 000 euros, puis, en octobre 2002, un avenant portant le marché de rénovation, signé avec la SNC SNSH, à 397 177,50 euros H.T. À partir de 2006, la Ville autorise, d'année en année, des conventions d'occupation d'un an pour le théâtre — durée jugée « bien court » en séance par Mme Hélène Macé de Lépinay —, assorties d'une valeur locative estimée à 26 500 euros que l'association devra valoriser dans ses comptes. Entre 2006 et 2010, plusieurs subventions financent des spectacles accueillis dans la salle, dont les éditions successives de l'opération estivale « En compagnie(s) d'été » de l'association GRRR (30 000 euros en 2008 comme en 2010).",
-  "moments": [
-    {
-      "id": "83744",
-      "seance": "SEPTEMBRE 1999",
-      "fait": "Le Conseil de Paris approuve le principe de la rénovation du Théâtre 14 et autorise la signature du marché de travaux correspondant.",
-      "pourquoi": "Le point de départ : rénover la salle municipale",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83744",
-      "fait_en": "The Conseil de Paris approved the principle of renovating Théâtre 14 and authorized the signing of the corresponding works contract.",
-      "pourquoi_en": "The starting point: renovating the municipal venue"
-    },
-    {
-      "id": "58038",
-      "seance": "FEVRIER 2002",
-      "fait": "La Ville autorise une convention relative au fonctionnement du théâtre avec l'association Théâtre Paris 14, pour une dépense de 500 000 euros.",
-      "pourquoi": "500 000 euros pour le fonctionnement du théâtre",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58038",
-      "fait_en": "The City authorized an agreement on the theatre's operations with the association Théâtre Paris 14, for an expenditure of 500,000 euros.",
-      "pourquoi_en": "500,000 euros for the theatre's operations"
-    },
-    {
-      "id": "95269",
-      "seance": "OCTOBRE 2002",
-      "fait": "La Ville autorise un avenant portant le marché de rénovation, signé avec la SNC SNSH, à 397 177,50 euros H.T. (475 024,29 euros T.T.C.).",
-      "pourquoi": "Le montant du marché de rénovation porté à 397 177 euros H.T.",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95269",
-      "fait_en": "The City authorized an amendment raising the renovation contract, signed with SNC SNSH, to 397,177.50 euros excluding tax (475,024.29 euros including tax).",
-      "pourquoi_en": "The renovation contract raised to 397,177 euros excluding tax"
-    },
-    {
-      "id": "24846",
-      "seance": "JANVIER 2006",
-      "fait": "Lors du débat sur les conventions d'occupation des théâtres, Mme Hélène Macé de Lépinay juge « bien court » leur renouvellement annuel.",
-      "pourquoi": "Des conventions d'un an jugées trop courtes",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24846",
-      "fait_en": "During the debate on theatre occupancy agreements, Ms Hélène Macé de Lépinay judged their annual renewal \"quite short.\"",
-      "pourquoi_en": "One-year agreements judged too short"
-    },
-    {
-      "id": "53115",
-      "seance": "OCTOBRE 2007",
-      "fait": "La Ville autorise une convention d'un an pour l'occupation du Théâtre 14, dont la valeur locative est estimée à 26 500 euros.",
-      "pourquoi": "L'occupation du lieu formalisée par convention",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53115",
-      "fait_en": "The City authorized a one-year agreement for the occupancy of Théâtre 14, whose rental value was estimated at 26,500 euros.",
-      "pourquoi_en": "The venue's occupancy formalized by agreement"
-    },
-    {
-      "id": "91336",
-      "seance": "JUILLET 2008",
-      "fait": "Une subvention de 30 000 euros est attribuée à l'association GRRR pour la 7e édition d'« En compagnie(s) d'été » au Théâtre 14.",
-      "pourquoi": "Un festival d'été récurrent dans la salle",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91336",
-      "fait_en": "A subsidy of 30,000 euros was granted to the association GRRR for the 7th edition of \"En compagnie(s) d'été\" at Théâtre 14.",
-      "pourquoi_en": "A recurring summer festival at the venue"
-    },
-    {
-      "id": "36500",
-      "seance": "SEPTEMBRE 2009",
-      "fait": "Une subvention de 12 000 euros soutient « Les Femmes savantes » de Molière, présenté au Théâtre 14 Jean-Marie Serreau.",
-      "pourquoi": "Molière à l'affiche, salle Jean-Marie Serreau",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36500",
-      "fait_en": "A subsidy of 12,000 euros supported \"Les Femmes savantes\" by Molière, presented at Théâtre 14 Jean-Marie Serreau.",
-      "pourquoi_en": "Molière on the bill, at the Jean-Marie Serreau venue"
-    }
-  ],
-  "montants": [
-    {
-      "seance": "FEVRIER 2002",
-      "montant": "500.000 euros",
-      "objet": "Depense de la convention de fonctionnement du Theatre 14 avec l'association Theatre Paris 14 (2002)",
-      "citation": "La dépense correspondante, soit 500.000 euros sera imputée à la rubrique 33, nature 6574, ligne P003",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58038"
-    },
-    {
-      "seance": "OCTOBRE 2002",
-      "montant": "397.177,50 euros H.T. / 475.024,29 euros T.T.C.",
-      "objet": "Nouveau montant du marche de renovation du Theatre 14 apres avenant n 1 (SNC SNSH)",
-      "citation": "portant le montant du marché à 397.177,50 euros H.T. soit 475.024,29 euros T.T.C.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95269"
-    },
-    {
-      "seance": "OCTOBRE 2007",
-      "montant": "26.500 euros",
-      "objet": "Valeur locative reelle estimee du Theatre 14, a valoriser dans les comptes de l'association (convention d'occupation 2007)",
-      "citation": "La valeur locative réelle estimée par la direction de l?urbanisme qui devra être valorisée dans ses comptes par l?association, est de : 26.500 euros.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53115"
-    },
-    {
-      "seance": "NOVEMBRE 2008",
-      "montant": "26.500 euros",
-      "objet": "Valeur locative reelle estimee du Theatre 14, a valoriser dans les comptes de l'association (convention d'occupation, delib. 2009 DAC 169)",
-      "citation": "La valeur locative réelle estimée par la direction de l?urbanisme qui devra être valorisée dans ses comptes par l?association, est de 26.500 euros.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61769"
-    },
-    {
-      "seance": "JUILLET 2008",
-      "montant": "9.000 euros",
-      "objet": "Subvention a l'association Acte 6 pour Jules Cesar, diffuse au Theatre 14 (2008)",
-      "citation": "La dépense correspondante, soit 9.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2008",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91498"
-    },
-    {
-      "seance": "JUILLET 2008",
-      "montant": "30.000 euros",
-      "objet": "Subvention a GRRR pour la 7e edition d'En compagnie(s) d'ete au Theatre 14 (2008)",
-      "citation": "La dépense correspondante, soit 30.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2008",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91336"
-    },
-    {
-      "seance": "SEPTEMBRE 2009",
-      "montant": "11.000 euros",
-      "objet": "Subvention a La Compagnie Les Larrons pour L'Alpenage de Knobst au Theatre 14 (2009)",
-      "citation": "La dépense correspondante, soit 11.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2009",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34402"
-    },
-    {
-      "seance": "SEPTEMBRE 2009",
-      "montant": "12.000 euros",
-      "objet": "Subvention a Les Compagnons de la Chimere pour Les Femmes savantes au Theatre 14 Jean-Marie Serreau (2009)",
-      "citation": "La dépense correspondante, soit 12.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2009",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36500"
-    },
-    {
-      "seance": "JUILLET 2010",
-      "montant": "30.000 euros",
-      "objet": "Subvention a GRRR pour la 9e edition d'En compagnies d'ete au Theatre 14 (2010)",
-      "citation": "Une subvention d?un montant de 30.000 euros est attribuée à l?association GRRR - Groupe Rires Rage et Résistance, 1, rue Duvergier (19e)",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79614"
-    }
-  ],
-  "bmo_extraits": [],
-  "bmo_recit": null,
-  "invest": [],
-  "marches": [
-    {
-      "numero_marche": "20191210020029",
-      "objet": "TRAVAUX RESTRUCTURATION THÉÂTRE 14-20 MARC SANGNIER PARIS 14",
-      "objet_clair": null,
-      "fournisseur": "REA CONCEPT",
-      "montant_max": 291808.96,
-      "date_notification": "2019-08-30",
-      "preuve": "L'objet nomme le lieu ET son adresse exacte : « TRAVAUX RESTRUCTURATION THÉÂTRE 14-20 MARC SANGNIER PARIS 14 ». L'adresse concorde avec celle établie par les délibérations : « Théâtre 14 situé 20, avenue Marc Sangnier (14e) » (2009 DAC 169). Travaux portant sur le bâtiment lui-même."
-    },
-    {
-      "numero_marche": "20191210001368",
-      "objet": "THEATRE 14 LOT 2 FAUTEUILS",
-      "objet_clair": null,
-      "fournisseur": "KLESLO",
-      "montant_max": 35000.0,
-      "date_notification": "2019-11-04",
-      "preuve": "L'objet nomme le lieu : « THEATRE 14 LOT 2 FAUTEUILS ». Marché d'équipement (fauteuils de salle) portant sur le lieu lui-même."
-    },
-    {
-      "numero_marche": "20242024S10634",
-      "objet": "MOE POUR EXTENSION DU THEATRE 14",
-      "objet_clair": "Études d'architecte pour agrandir le Théâtre 14",
-      "fournisseur": "STUDIO MIHA",
-      "montant_max": 30450.0,
-      "date_notification": "2024-10-01",
-      "preuve": "L'objet nomme le lieu et porte sur le bâtiment : « MOE POUR EXTENSION DU THEATRE 14 » (maîtrise d'œuvre pour l'extension). Le lieu_execution « Paris » est trop large pour prouver quoi que ce soit, mais l'objet suffit à rattacher."
-    },
-    {
-      "numero_marche": "20181210001273",
-      "objet": "MO MODERNISATION INSTALLATIONS GÉNIE CLIM THÉÂTRE 14",
-      "objet_clair": null,
-      "fournisseur": "ESPACE TEMPS",
-      "montant_max": 25000.0,
-      "date_notification": "2018-09-19",
-      "preuve": "L'objet nomme le lieu et porte sur ses installations techniques : « MO MODERNISATION INSTALLATIONS GÉNIE CLIM THÉÂTRE 14 » (maîtrise d'œuvre, génie climatique du bâtiment)."
-    },
-    {
-      "numero_marche": "20181320001429",
-      "objet": "MOE REORGANISATION ET REQUALIFICATION THEATRE 14",
-      "objet_clair": null,
-      "fournisseur": "X X L.ATELIER",
-      "montant_max": 25000.0,
-      "date_notification": "2018-10-24",
-      "preuve": "L'objet nomme le lieu et porte sur le bâtiment : « MOE REORGANISATION ET REQUALIFICATION THEATRE 14 » (maîtrise d'œuvre de réorganisation/requalification du bâtiment)."
-    }
-  ],
-  "mandate": null,
-  "sources": {
-    "delibs": {
-      "name": "Débat-Délibs — Conseil de Paris",
-      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Th%C3%A9%C3%A2tre+14"
-    },
-    "bmo": {
-      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Th%C3%A9%C3%A2tre+14%22%29"
-    },
-    "invest": {
-      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-      "url": "https://opendata.paris.fr/"
-    },
-    "wiki": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
-  },
-  "synthese_en": "In September 1999, the Conseil de Paris approved the principle of renovation works at Théâtre 14, avenue Marc-Sangnier (14th arrondissement), and authorized the signing of the corresponding contract; the principle of resurfacing the facades was approved in the same way in December 2001. In February 2002, the City authorized an agreement on the theatre's operations with the association Théâtre Paris 14, for an expenditure of 500,000 euros, then, in October 2002, an amendment raising the renovation contract, signed with SNC SNSH, to 397,177.50 euros excluding tax. From 2006, the City authorized, year by year, one-year occupancy agreements for the theatre — a term judged \"quite short\" in session by Ms Hélène Macé de Lépinay — accompanied by an estimated rental value of 26,500 euros that the association was to record in its accounts. Between 2006 and 2010, several subsidies financed shows hosted in the venue, including successive editions of the summer operation \"En compagnie(s) d'été\" run by the association GRRR (30,000 euros in both 2008 and 2010).",
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": 18,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (14 trouvés)",
+  "lecture_mode_en": "title naming the place (14 found)",
+  "n_lus": 14,
+  "n_lieu": 13
+ },
+ "subventions_exploitant": null,
+ "residents": [
+  {
+   "beneficiaire": "UNIVERSITES POPULAIRES DU THEATRE",
+   "montant_total": 1000.0,
+   "preuve": "Objet de subvention verbatim : « Université Populaire du Théâtre au Théâtre 14 en mai 2018 » — nomme explicitement le lieu. Activité accueillie DANS le lieu, sans le gérer : les délibérations montrent que le fonctionnement et l'occupation du « Théâtre 14 situé 20, avenue Marc Sangnier (14e) » relèvent de l'association « Théâtre Paris 14 » (2002 DAC 39, 2007 DAC 612, 2009 DAC 169), qui n'est pas ce bénéficiaire (SIRET 79961225400018).",
+   "preuve_en": "Verbatim subsidy purpose: \"Université Populaire du Théâtre at Théâtre 14 in May 2018\" — explicitly names the venue. Activity hosted INSIDE the venue, without managing it: the deliberations show that the operation and occupancy of \"Théâtre 14 located at 20, avenue Marc Sangnier (14th)\" fall to the association \"Théâtre Paris 14\" (2002 DAC 39, 2007 DAC 612, 2009 DAC 169), which is not this beneficiary (SIRET 79961225400018)."
   }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": "En septembre 1999, le Conseil de Paris approuve le principe de travaux de rénovation du Théâtre 14, avenue Marc-Sangnier (14e), et autorise la signature du marché correspondant ; le principe d'un ravalement des façades est approuvé sur le même mode en décembre 2001. En février 2002, la Ville autorise une convention relative au fonctionnement du théâtre avec l'association Théâtre Paris 14, pour une dépense de 500 000 euros, puis, en octobre 2002, un avenant portant le marché de rénovation, signé avec la SNC SNSH, à 397 177,50 euros H.T. À partir de 2006, la Ville autorise, d'année en année, des conventions d'occupation d'un an pour le théâtre — durée jugée « bien court » en séance par Mme Hélène Macé de Lépinay —, assorties d'une valeur locative estimée à 26 500 euros que l'association devra valoriser dans ses comptes. Entre 2006 et 2010, plusieurs subventions financent des spectacles accueillis dans la salle, dont les éditions successives de l'opération estivale « En compagnie(s) d'été » de l'association GRRR (30 000 euros en 2008 comme en 2010).",
+ "moments": [
+  {
+   "id": "83744",
+   "seance": "SEPTEMBRE 1999",
+   "fait": "Le Conseil de Paris approuve le principe de la rénovation du Théâtre 14 et autorise la signature du marché de travaux correspondant.",
+   "pourquoi": "Le point de départ : rénover la salle municipale",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83744",
+   "fait_en": "The Conseil de Paris approved the principle of renovating Théâtre 14 and authorized the signing of the corresponding works contract.",
+   "pourquoi_en": "The starting point: renovating the municipal venue"
+  },
+  {
+   "id": "58038",
+   "seance": "FEVRIER 2002",
+   "fait": "La Ville autorise une convention relative au fonctionnement du théâtre avec l'association Théâtre Paris 14, pour une dépense de 500 000 euros.",
+   "pourquoi": "500 000 euros pour le fonctionnement du théâtre",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58038",
+   "fait_en": "The City authorized an agreement on the theatre's operations with the association Théâtre Paris 14, for an expenditure of 500,000 euros.",
+   "pourquoi_en": "500,000 euros for the theatre's operations"
+  },
+  {
+   "id": "95269",
+   "seance": "OCTOBRE 2002",
+   "fait": "La Ville autorise un avenant portant le marché de rénovation, signé avec la SNC SNSH, à 397 177,50 euros H.T. (475 024,29 euros T.T.C.).",
+   "pourquoi": "Le montant du marché de rénovation porté à 397 177 euros H.T.",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95269",
+   "fait_en": "The City authorized an amendment raising the renovation contract, signed with SNC SNSH, to 397,177.50 euros excluding tax (475,024.29 euros including tax).",
+   "pourquoi_en": "The renovation contract raised to 397,177 euros excluding tax"
+  },
+  {
+   "id": "24846",
+   "seance": "JANVIER 2006",
+   "fait": "Lors du débat sur les conventions d'occupation des théâtres, Mme Hélène Macé de Lépinay juge « bien court » leur renouvellement annuel.",
+   "pourquoi": "Des conventions d'un an jugées trop courtes",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24846",
+   "fait_en": "During the debate on theatre occupancy agreements, Ms Hélène Macé de Lépinay judged their annual renewal \"quite short.\"",
+   "pourquoi_en": "One-year agreements judged too short"
+  },
+  {
+   "id": "53115",
+   "seance": "OCTOBRE 2007",
+   "fait": "La Ville autorise une convention d'un an pour l'occupation du Théâtre 14, dont la valeur locative est estimée à 26 500 euros.",
+   "pourquoi": "L'occupation du lieu formalisée par convention",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53115",
+   "fait_en": "The City authorized a one-year agreement for the occupancy of Théâtre 14, whose rental value was estimated at 26,500 euros.",
+   "pourquoi_en": "The venue's occupancy formalized by agreement"
+  },
+  {
+   "id": "91336",
+   "seance": "JUILLET 2008",
+   "fait": "Une subvention de 30 000 euros est attribuée à l'association GRRR pour la 7e édition d'« En compagnie(s) d'été » au Théâtre 14.",
+   "pourquoi": "Un festival d'été récurrent dans la salle",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91336",
+   "fait_en": "A subsidy of 30,000 euros was granted to the association GRRR for the 7th edition of \"En compagnie(s) d'été\" at Théâtre 14.",
+   "pourquoi_en": "A recurring summer festival at the venue"
+  },
+  {
+   "id": "36500",
+   "seance": "SEPTEMBRE 2009",
+   "fait": "Une subvention de 12 000 euros soutient « Les Femmes savantes » de Molière, présenté au Théâtre 14 Jean-Marie Serreau.",
+   "pourquoi": "Molière à l'affiche, salle Jean-Marie Serreau",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36500",
+   "fait_en": "A subsidy of 12,000 euros supported \"Les Femmes savantes\" by Molière, presented at Théâtre 14 Jean-Marie Serreau.",
+   "pourquoi_en": "Molière on the bill, at the Jean-Marie Serreau venue"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "FEVRIER 2002",
+   "montant": "500.000 euros",
+   "objet": "Depense de la convention de fonctionnement du Theatre 14 avec l'association Theatre Paris 14 (2002)",
+   "citation": "La dépense correspondante, soit 500.000 euros sera imputée à la rubrique 33, nature 6574, ligne P003",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58038"
+  },
+  {
+   "seance": "OCTOBRE 2002",
+   "montant": "397.177,50 euros H.T. / 475.024,29 euros T.T.C.",
+   "objet": "Nouveau montant du marche de renovation du Theatre 14 apres avenant n 1 (SNC SNSH)",
+   "citation": "portant le montant du marché à 397.177,50 euros H.T. soit 475.024,29 euros T.T.C.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95269"
+  },
+  {
+   "seance": "OCTOBRE 2007",
+   "montant": "26.500 euros",
+   "objet": "Valeur locative reelle estimee du Theatre 14, a valoriser dans les comptes de l'association (convention d'occupation 2007)",
+   "citation": "La valeur locative réelle estimée par la direction de l?urbanisme qui devra être valorisée dans ses comptes par l?association, est de : 26.500 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53115"
+  },
+  {
+   "seance": "NOVEMBRE 2008",
+   "montant": "26.500 euros",
+   "objet": "Valeur locative reelle estimee du Theatre 14, a valoriser dans les comptes de l'association (convention d'occupation, delib. 2009 DAC 169)",
+   "citation": "La valeur locative réelle estimée par la direction de l?urbanisme qui devra être valorisée dans ses comptes par l?association, est de 26.500 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61769"
+  },
+  {
+   "seance": "JUILLET 2008",
+   "montant": "9.000 euros",
+   "objet": "Subvention a l'association Acte 6 pour Jules Cesar, diffuse au Theatre 14 (2008)",
+   "citation": "La dépense correspondante, soit 9.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2008",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91498"
+  },
+  {
+   "seance": "JUILLET 2008",
+   "montant": "30.000 euros",
+   "objet": "Subvention a GRRR pour la 7e edition d'En compagnie(s) d'ete au Theatre 14 (2008)",
+   "citation": "La dépense correspondante, soit 30.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2008",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91336"
+  },
+  {
+   "seance": "SEPTEMBRE 2009",
+   "montant": "11.000 euros",
+   "objet": "Subvention a La Compagnie Les Larrons pour L'Alpenage de Knobst au Theatre 14 (2009)",
+   "citation": "La dépense correspondante, soit 11.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2009",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34402"
+  },
+  {
+   "seance": "SEPTEMBRE 2009",
+   "montant": "12.000 euros",
+   "objet": "Subvention a Les Compagnons de la Chimere pour Les Femmes savantes au Theatre 14 Jean-Marie Serreau (2009)",
+   "citation": "La dépense correspondante, soit 12.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2009",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36500"
+  },
+  {
+   "seance": "JUILLET 2010",
+   "montant": "30.000 euros",
+   "objet": "Subvention a GRRR pour la 9e edition d'En compagnies d'ete au Theatre 14 (2010)",
+   "citation": "Une subvention d?un montant de 30.000 euros est attribuée à l?association GRRR - Groupe Rires Rage et Résistance, 1, rue Duvergier (19e)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79614"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "1997": [
+   {
+    "reference": "1997 DAC 66",
+    "titre": "Subvention à l'association \"Achille Tonic Théâtre\" (14e). Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 1997",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78762"
+   }
+  ],
+  "1999": [
+   {
+    "reference": "1999 DPA 147",
+    "titre": "Approbation du principe de la réalisation des travaux de rénovation du \"Théâtre 14\" (14e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "SEPTEMBRE 1999",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83744"
+   }
+  ],
+  "2001": [
+   {
+    "reference": "2001 DPA 391",
+    "titre": "Approbation du principe de réalisation des travaux de ravalement des façades du Théâtre 14, 20, avenue Marc-Sangnier (14e) et des modalités d'attribution du marché de travaux sur appel d'offres correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "DECEMBRE 2001",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71916"
+   }
+  ],
+  "2002": [
+   {
+    "reference": "2002 DAC 39",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Théâtre Paris 14\" une convention relative au fonctionnement du \"Théâtre 14\", 20, rue Marc-Sangnier (14e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "FEVRIER 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58038"
+   },
+   {
+    "reference": "2002 DPA 247",
+    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché de travaux n° 00/26727, signé avec la SNC SNSH, relatif à la rénovation du théâtre 14, 20, avenue Marc-Sangnier (14e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "travaux"
+    ],
+    "seance": "OCTOBRE 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95269"
+   }
+  ],
+  "2006": [
+   {
+    "reference": "2006 DAC 228",
+    "titre": "Attribution d’une subvention de fonctionnement à l’association Dado, dont le siège social est situé 12, rue Gasnier-Guy (20e), pour un projet de spectacle “d’amour et d’Offenbach” au Théâtre 14. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80821"
+   },
+   {
+    "reference": "2006 DAC 58",
+    "titre": "2006, DAC 58 - Autorisation à M. le Maire de Paris de signer des conventions relatives à l’occupation du domaine public avec les théâtre Molières - Maison de la Poésie, théâtre Mouffetard, théâtre 13, théâtre 14, théâtre Sylvia-Monfort, théâtre de la Ville, théâtre Paris-Villette et 20e théâtre.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "JANVIER 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24846"
+   }
+  ],
+  "2007": [
+   {
+    "reference": "2007 DAC 612",
+    "titre": "Autorisation à M. le Maire de Paris de signer des conventions relatives à l’occupation des théâtres suivants : Théâtre Molière-Maison de la poésie situé 161, rue Saint-Martin (3e) ; Théâtre Mouffetard situé 73, rue Mouffetard (5e) ; Théâtre 13 situé 103A, boulevard Auguste Blanqui (13e) ; Théâtre 14 situé 20, avenue Marc Sangnier (14e) ; Théâtre Silvia Monfort situé 106, rue Brancion (15e) ; Théâtre Paris-Villette situé 211, avenue Jean Jaurès (19e) ; 20e Théâtre situé 7, rue des Platrières (20e",
+    "genres": [
+     "autre"
+    ],
+    "seance": "OCTOBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53115"
+   }
+  ],
+  "2008": [
+   {
+    "reference": "2008 DAC 100",
+    "titre": "Subvention à l’association “Acte 6” pour le spectacle Jules César diffusé au Théâtre 14 (14e) en 2008. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91498"
+   },
+   {
+    "reference": "2008 DAC 187",
+    "titre": "Signature d’une convention avec l’association GRRR “Groupe Rire, Rage, et Résistance” relative à l’attribution d’une subvention pour l’organisation de la 7e édition de l’opération “En compagnie(s) d’été” au Théâtre 14 (14e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91336"
+   },
+   {
+    "reference": "2008 DASES 188",
+    "titre": "G - Signature d’une convention avec l’association “Compagnie Alouette - ACM Ballet Théâtre” (14e) pour l’attribution d’une subvention. Montant : 9.000 euros. Mme Liliane CAPELLE, rapporteure.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUIN 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25676"
+   }
+  ],
+  "2009": [
+   {
+    "reference": "2009 DAC 169",
+    "titre": "Autorisation à M. le Maire de Paris de signer des conventions relatives à l’occupation des théâtres suivants : Maison de la poésie située 161, rue Saint-Martin (3e) ; Théâtre Mouffetard (5e) ; Théâtre 13 situé 103A, boulevard Auguste Blanqui (13e) ; Théâtre 14 situé 20, avenue Marc Sangnier (14e) ; Théâtre Silvia Monfort situé 106, rue Brancion (15e) ; Théâtre Paris-Villette situé 211, avenue Jean Jaurès (19e) ; 20ème Théâtre situé 7, rue des Platrières (20e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "autre"
+    ],
+    "seance": "NOVEMBRE 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61769"
+   },
+   {
+    "reference": "2009 DAC 199",
+    "titre": "Signature d’une convention avec l’association GRRR “Groupe Rire, Rage, et Résistance” relative à l’attribution d’une subvention pour l’organisation de la 8e édition de l’opération “En compagnie(s) d’été” au Théâtre 14 - Jean Marie Serreau (14e) en 2009. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MAI 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59608"
+   },
+   {
+    "reference": "2009 DAC 460",
+    "titre": "Subvention à l’association Les Compagnons de la Chimère pour le spectacle Les Femmes savantes présenté au Théâtre 14 Jean-Marie Serreau (14e) en 2009. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36500"
+   },
+   {
+    "reference": "2009 DAC 93",
+    "titre": "Subvention à l’association La Compagnie Les Larrons pour le spectacle “L’Alpenage de Knobst” présenté au Théâtre 14 (14e) en 2009. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "SEPTEMBRE 2009",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34402"
+   }
+  ],
+  "2010": [
+   {
+    "reference": "2010 DAC 438",
+    "titre": "Signature d’une convention avec l’association GRRR - Groupe Rire, Rage, et Résistance (19e) relative à l’attribution d’une subvention pour l’organisation de la 9e édition de l’opération En compagnies d’été - au Théâtre 14, Jean Marie Serreau (14e) en 2010. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUILLET 2010",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79614"
+   }
+  ]
+ },
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20191210020029",
+   "objet": "TRAVAUX RESTRUCTURATION THÉÂTRE 14-20 MARC SANGNIER PARIS 14",
+   "objet_clair": null,
+   "fournisseur": "REA CONCEPT",
+   "montant_max": 291808.96,
+   "date_notification": "2019-08-30",
+   "preuve": "L'objet nomme le lieu ET son adresse exacte : « TRAVAUX RESTRUCTURATION THÉÂTRE 14-20 MARC SANGNIER PARIS 14 ». L'adresse concorde avec celle établie par les délibérations : « Théâtre 14 situé 20, avenue Marc Sangnier (14e) » (2009 DAC 169). Travaux portant sur le bâtiment lui-même."
+  },
+  {
+   "numero_marche": "20191210001368",
+   "objet": "THEATRE 14 LOT 2 FAUTEUILS",
+   "objet_clair": null,
+   "fournisseur": "KLESLO",
+   "montant_max": 35000.0,
+   "date_notification": "2019-11-04",
+   "preuve": "L'objet nomme le lieu : « THEATRE 14 LOT 2 FAUTEUILS ». Marché d'équipement (fauteuils de salle) portant sur le lieu lui-même."
+  },
+  {
+   "numero_marche": "20242024S10634",
+   "objet": "MOE POUR EXTENSION DU THEATRE 14",
+   "objet_clair": "Études d'architecte pour agrandir le Théâtre 14",
+   "fournisseur": "STUDIO MIHA",
+   "montant_max": 30450.0,
+   "date_notification": "2024-10-01",
+   "preuve": "L'objet nomme le lieu et porte sur le bâtiment : « MOE POUR EXTENSION DU THEATRE 14 » (maîtrise d'œuvre pour l'extension). Le lieu_execution « Paris » est trop large pour prouver quoi que ce soit, mais l'objet suffit à rattacher."
+  },
+  {
+   "numero_marche": "20181210001273",
+   "objet": "MO MODERNISATION INSTALLATIONS GÉNIE CLIM THÉÂTRE 14",
+   "objet_clair": null,
+   "fournisseur": "ESPACE TEMPS",
+   "montant_max": 25000.0,
+   "date_notification": "2018-09-19",
+   "preuve": "L'objet nomme le lieu et porte sur ses installations techniques : « MO MODERNISATION INSTALLATIONS GÉNIE CLIM THÉÂTRE 14 » (maîtrise d'œuvre, génie climatique du bâtiment)."
+  },
+  {
+   "numero_marche": "20181320001429",
+   "objet": "MOE REORGANISATION ET REQUALIFICATION THEATRE 14",
+   "objet_clair": null,
+   "fournisseur": "X X L.ATELIER",
+   "montant_max": 25000.0,
+   "date_notification": "2018-10-24",
+   "preuve": "L'objet nomme le lieu et porte sur le bâtiment : « MOE REORGANISATION ET REQUALIFICATION THEATRE 14 » (maîtrise d'œuvre de réorganisation/requalification du bâtiment)."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Th%C3%A9%C3%A2tre+14"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Th%C3%A9%C3%A2tre+14%22%29"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In September 1999, the Conseil de Paris approved the principle of renovation works at Théâtre 14, avenue Marc-Sangnier (14th arrondissement), and authorized the signing of the corresponding contract; the principle of resurfacing the facades was approved in the same way in December 2001. In February 2002, the City authorized an agreement on the theatre's operations with the association Théâtre Paris 14, for an expenditure of 500,000 euros, then, in October 2002, an amendment raising the renovation contract, signed with SNC SNSH, to 397,177.50 euros excluding tax. From 2006, the City authorized, year by year, one-year occupancy agreements for the theatre — a term judged \"quite short\" in session by Ms Hélène Macé de Lépinay — accompanied by an estimated rental value of 26,500 euros that the association was to record in its accounts. Between 2006 and 2010, several subsidies financed shows hosted in the venue, including successive editions of the summer operation \"En compagnie(s) d'été\" run by the association GRRR (30,000 euros in both 2008 and 2010)."
 }

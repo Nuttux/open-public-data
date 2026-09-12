@@ -1,6 +1,6 @@
 {
   "year": 2019,
-  "generated_at": "2026-08-26T20:49:34.941262",
+  "generated_at": "2026-09-11T16:24:37.876016",
   "total_montant": 1304037463.0,
   "nb_beneficiaires": 12093,
   "data": [
@@ -646,7 +646,7 @@
       "source_thematique": "direction",
       "montant_total": 4617000.0,
       "nb_subventions": 1,
-      "objet_principal": "acompte 2019",
+      "objet_principal": "Subvention de fonctionnement 2019.",
       "siret": "31390568900078"
     },
     {
@@ -1546,7 +1546,7 @@
       "source_thematique": "direction",
       "montant_total": 1019150.0,
       "nb_subventions": 1,
-      "objet_principal": "acompte 2019 DAC",
+      "objet_principal": "Subvention de fonctionnement 2019",
       "siret": "43353723000040"
     },
     {
@@ -1771,7 +1771,7 @@
       "source_thematique": "direction",
       "montant_total": 849000.0,
       "nb_subventions": 1,
-      "objet_principal": "Subvention de fonctionnement",
+      "objet_principal": "Acompte 2019 DAC",
       "siret": "37978422600050"
     },
     {
@@ -2956,7 +2956,7 @@
       "source_thematique": "direction",
       "montant_total": 327880.0,
       "nb_subventions": 1,
-      "objet_principal": "SUBVENTION DE FONCTIONNEMENT",
+      "objet_principal": "acompte 2019 DAC",
       "siret": "39864093800021"
     },
     {
@@ -3556,7 +3556,7 @@
       "source_thematique": "pattern",
       "montant_total": 240000.0,
       "nb_subventions": 1,
-      "objet_principal": "Subvention d'aide au fonctionnement 2019",
+      "objet_principal": "acompte de subvention 2019 - dac",
       "siret": "82095968200023"
     },
     {
@@ -3886,7 +3886,7 @@
       "source_thematique": "direction",
       "montant_total": 210000.0,
       "nb_subventions": 1,
-      "objet_principal": "MUSEE EN HERBE FONCTIONNEMENT 2019",
+      "objet_principal": "acompte 2019 DAC",
       "siret": "31142870000034"
     },
     {
@@ -7486,7 +7486,7 @@
       "source_thematique": "default",
       "montant_total": 88500.0,
       "nb_subventions": 1,
-      "objet_principal": "Tenue de permanences juridiques gratuites par des bénévoles professionnels du droit et suivi de doss",
+      "objet_principal": "\"Accès au droit et santé mentale\" (ADSM)",
       "siret": "45101859200027"
     },
     {
@@ -24781,7 +24781,7 @@
       "source_thematique": "llm",
       "montant_total": 12000.0,
       "nb_subventions": 1,
-      "objet_principal": "Concours fictions courtes :\"Les droits de l'homme, Un article, un film\"",
+      "objet_principal": "Aide à la diffusion d'\"Allo Marianne\", application pédagogique et ludique sur les valeurs de la Répu",
       "siret": "81334851300033"
     },
     {
@@ -25441,7 +25441,7 @@
       "source_thematique": "llm",
       "montant_total": 11000.0,
       "nb_subventions": 1,
-      "objet_principal": "ATELIERS D¿ÉDUCATION AUX MÉDIAS ET PROJECTIONS-DÉBATS",
+      "objet_principal": "CPO SPV - TV CITE ROUGE - MISE EN VALEUR DE LA CITE CHAUFOURNIERS ET DE LEURS HABITANTS",
       "siret": "49981993600026"
     },
     {
@@ -33241,7 +33241,7 @@
       "source_thematique": "llm",
       "montant_total": 6000.0,
       "nb_subventions": 1,
-      "objet_principal": "Repérage et mise en valeur des porteurs de savoir-faire trad parmi la population migrante",
+      "objet_principal": "CPO SPV Repérage et mise en valeur des porteurs de savoir-faire trad parmi la population migrante",
       "siret": "79804858300024"
     },
     {
@@ -37081,7 +37081,7 @@
       "source_thematique": "direction",
       "montant_total": 5000.0,
       "nb_subventions": 1,
-      "objet_principal": "PARIS ILLUMINE PARIS 2019-2020",
+      "objet_principal": "PARIS ILLUMINE PARIS 20108-2019",
       "siret": "42414717100039"
     },
     {
@@ -38491,7 +38491,7 @@
       "source_thematique": "llm",
       "montant_total": 4000.0,
       "nb_subventions": 1,
-      "objet_principal": "subvention complémentaire",
+      "objet_principal": "Association Arpejeh (accompagner la réalisation des projets d'éudes de jeunes élèves et étudiants ha",
       "siret": "50464306500023"
     },
     {

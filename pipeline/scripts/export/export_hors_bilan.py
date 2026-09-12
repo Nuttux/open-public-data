@@ -39,7 +39,30 @@ MARTS_DATASET = marts_dataset()
 MLF_DATASET = os.environ.get("MLF_DATASET", MARTS_DATASET)
 DATA_DIR = data_dir()
 
-DEFAULT_YEARS = [2019, 2020, 2021, 2022, 2023, 2024]
+# Les exercices ne sont plus écrits à la main : la liste figée s'arrêtait à
+# 2024 et commençait à 2019, alors que la source publie de 2007 à 2025. Douze
+# exercices étaient perdus sans qu'aucun commentaire ne dise pourquoi
+# (constaté 2026-09-10). On lit désormais les exercices disponibles dans la
+# table, et la liste ci-dessous ne sert que de repli si la requête échoue.
+FALLBACK_YEARS = [2019, 2020, 2021, 2022, 2023, 2024]
+
+
+def annees_disponibles(client) -> list[int]:
+    """Les exercices que la source porte réellement, dans l'ordre croissant."""
+    sql = f"""
+    SELECT DISTINCT annee
+    FROM `{PROJECT_ID}.{MARTS_DATASET}.mart_hors_bilan`
+    WHERE annee IS NOT NULL
+    ORDER BY annee
+    """
+    try:
+        return [int(r.annee) for r in client.query(sql).result()]
+    except Exception as exc:  # noqa: BLE001
+        print(f"  ⚠ exercices illisibles ({type(exc).__name__}), repli sur la liste figée : {exc}")
+        return FALLBACK_YEARS
+
+
+DEFAULT_YEARS = FALLBACK_YEARS
 TOP_BENEFICIAIRES = 20
 TOP_PRETEURS = 10
 EMPRUNTS_PAR_BENEFICIAIRE = 25
@@ -482,9 +505,10 @@ def main():
     if args.year:
         years = [args.year]
     elif args.all_years:
-        years = DEFAULT_YEARS
+        years = annees_disponibles(client)
+        logger.info(f"exercices lus dans la source : {years[0]}→{years[-1]} ({len(years)})")
     else:
-        years = [max(DEFAULT_YEARS)]
+        years = [max(annees_disponibles(client))]
 
     # Chaîne de financement chargée une fois (indépendante de l'exercice).
     # Dégradation propre : si mart_logement_financement n'existe pas encore

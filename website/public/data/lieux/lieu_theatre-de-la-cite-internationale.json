@@ -1,275 +1,395 @@
 {
-  "generated_at": "2026-07-21T17:04:41.999226+00:00",
-  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
-  "slug": "theatre-de-la-cite-internationale",
-  "name": "Théâtre de la Cité internationale",
-  "kind_fr": "Théâtre",
-  "kind_en": "Theatre",
-  "famille": "culture",
-  "arrondissement": 14,
-  "lat": 48.820109,
-  "lon": 2.338625,
-  "photo": "/img/lieux/theatre-de-la-cite-internationale.jpg",
-  "photo_credit": {
-    "licence": null,
-    "auteur": null,
-    "url": "https://fr.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_de_la_Cit%C3%A9_internationale",
-    "source": "Wikipédia"
+ "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "theatre-de-la-cite-internationale",
+ "name": "Théâtre de la Cité internationale",
+ "kind_fr": "Théâtre",
+ "kind_en": "Theatre",
+ "famille": "culture",
+ "arrondissement": 14,
+ "lat": 48.820109,
+ "lon": 2.338625,
+ "photo": "/img/lieux/theatre-de-la-cite-internationale.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_de_la_Cit%C3%A9_internationale",
+  "source": "Wikipédia"
+ },
+ "seuil_commun": 2010,
+ "wiki": {
+  "extract": "Le théâtre de la Cité internationale est une salle de spectacles parisienne située 17, boulevard Jourdan, dans le XIVe arrondissement au sein de la Cité internationale universitaire de Paris.",
+  "url": "https://fr.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_de_la_Cit%C3%A9_internationale",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "Théâtre de la Cité internationale is a Parisian performance venue located at 17, boulevard Jourdan, in the 14th arrondissement, within the Cité internationale universitaire de Paris."
+ },
+ "stats": {
+  "n_delibs": 947,
+  "delibs_span": [
+   2002,
+   2008
+  ],
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (10 trouvés)",
+  "lecture_mode_en": "title naming the place (10 found)",
+  "n_lus": 10,
+  "n_lieu": 9
+ },
+ "subventions_exploitant": {
+  "nom_fiche": "THEATRE DE LA CITE INTERNATIONALE",
+  "total_eur": 10000.0,
+  "annees": [
+   "2013",
+   "2014"
+  ],
+  "rows": [
+   {
+    "annee": "2014",
+    "montant_eur": 5000.0,
+    "beneficiaire": "THEATRE DE LA CITE INTERNATIONALE",
+    "thematique": "Non classifié"
+   },
+   {
+    "annee": "2013",
+    "montant_eur": 5000.0,
+    "beneficiaire": "THEATRE DE LA CITE INTERNATIONALE",
+    "thematique": "Non classifié"
+   }
+  ]
+ },
+ "residents": [
+  {
+   "beneficiaire": "TSARA",
+   "montant_total": 9000,
+   "preuve": "Objet de la subvention (verbatim du candidat) : « Résidence de la compagnie Tsara au Théâtre de la Cité internationale pour le projet \"Contes d'État\" » — l'objet nomme explicitement le lieu, et décrit une activité accueillie DANS le théâtre : Tsara ne gère pas l'équipement, d'où le rôle « resident ». Les délibérations 2002-2008 montrent que la subvention de fonctionnement du théâtre était versée à la Fondation nationale « Cité internationale universitaire de Paris », 19 boulevard Jourdan (14e) — par exemple 2003 DAC 250 — et non à Tsara.",
+   "preuve_en": "Subsidy purpose (verbatim): \"Residency of the company Tsara at Théâtre de la Cité internationale for the project \\\"Contes d'État\\\"\" — explicitly names the venue; activity hosted INSIDE the theatre, the company does not manage it. The actual operator confirmed by the deliberations is the Fondation Nationale \"Cité internationale universitaire de Paris.\""
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": "Le Théâtre de la Cité internationale, dans le 14e arrondissement, est géré par la Fondation nationale « Cité internationale universitaire de Paris » (19, boulevard Jourdan), que la Ville de Paris soutient d'année en année. En octobre 2002, le Conseil de Paris attribue 120.000 euros pour participer au fonctionnement du théâtre ; en novembre 2003, il autorise une convention triennale d'objectifs et vote 100.000 euros pour 2003. Le Conseil vote ensuite, par avenants successifs, 150.000 euros en 2004 — année où la Ville finance un événement pour « l'ouverture de ses nouvelles salles » —, 130.000 euros en 2005, puis 186.000 euros en 2006, ce total incluant des aides fléchées vers la résidence de la compagnie Post Retroguardia Paco Decina et l'opération « Jeunes Talents Cirque ». En mars 2007, il autorise une nouvelle convention triennale 2007-2009 (155.000 euros pour 2007), à laquelle il ajoute en octobre 6.000 euros, au titre de la politique de la ville, pour les activités du théâtre dans les 13e et 14e arrondissements. La Ville subventionne aussi des spectacles accueillis dans ses murs, comme « l'Opérette » de la compagnie Air de Lune en 2008 (8.000 euros).",
+ "moments": [
+  {
+   "id": "95334",
+   "seance": "OCTOBRE 2002",
+   "fait": "Le Conseil de Paris attribue 120 000 euros à la Fondation « Cité internationale universitaire de Paris » pour participer au fonctionnement du théâtre en 2002.",
+   "pourquoi": "Le premier soutien municipal repéré au théâtre",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95334",
+   "fait_en": "The Conseil de Paris granted 120,000 euros to the Fondation \"Cité internationale universitaire de Paris\" to help fund the theatre's operations in 2002.",
+   "pourquoi_en": "The first municipal support to the theatre identified in the record"
+  },
+  {
+   "id": "93695",
+   "seance": "NOVEMBRE 2003",
+   "fait": "Le Conseil autorise le Maire à signer une convention triennale d'objectifs avec la Fondation et vote 100 000 euros pour le fonctionnement du théâtre en 2003.",
+   "pourquoi": "La Ville inscrit son soutien dans la durée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93695",
+   "fait_en": "The Council authorized the Mayor to sign a three-year objectives agreement with the Fondation and voted 100,000 euros for the theatre's operations in 2003.",
+   "pourquoi_en": "The City commits to sustained support"
+  },
+  {
+   "id": "21315",
+   "seance": "NOVEMBRE 2003",
+   "fait": "En séance, le projet de délibération DAC 250 (subvention de 100 000 euros au théâtre) est adopté après l'adoption d'un amendement n° 21 bis se substituant à l'amendement n° 21 déposé par l'Exécutif.",
+   "pourquoi": "La subvention votée après amendement en séance",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21315",
+   "fait_en": "In session, deliberation draft DAC 250 (a subsidy of 100,000 euros to the theatre) was adopted after amendment No. 21 bis was adopted in place of amendment No. 21 filed by the executive.",
+   "pourquoi_en": "The subsidy voted after an amendment in session"
+  },
+  {
+   "id": "64040",
+   "seance": "OCTOBRE 2004",
+   "fait": "Par un avenant, le Conseil attribue 150 000 euros pour le fonctionnement 2004, dont un événement pour l'ouverture de ses nouvelles salles et l'accueil de l'opération Jeunes Talents Cirque (24-26 septembre 2004).",
+   "pourquoi": "L'année de ses « nouvelles salles »",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64040",
+   "fait_en": "Through an amendment, the Council granted 150,000 euros for 2004 operations, including an event for the opening of its new venues and hosting the Jeunes Talents Cirque operation (24-26 September 2004).",
+   "pourquoi_en": "The year of its \"new venues\""
+  },
+  {
+   "id": "88828",
+   "seance": "MAI 2006",
+   "fait": "Par un avenant à la convention du 22 décembre 2003, le Conseil attribue 186 000 euros au total : 140 000 € de fonctionnement, 10 000 € pour la résidence de la compagnie Paco Decina, 30 000 € pour la 3e édition de « Jeunes Talents Cirque » et 6 000 € au titre de la politique de la ville.",
+   "pourquoi": "Le plus haut montant voté, cirque compris",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88828",
+   "fait_en": "Through an amendment to the agreement of 22 December 2003, the Council granted a total of 186,000 euros: 140,000 euros for operations, 10,000 euros for the residency of the company Paco Decina, 30,000 euros for the 3rd edition of \"Jeunes Talents Cirque,\" and 6,000 euros under urban policy funding.",
+   "pourquoi_en": "The highest amount voted, circus included"
+  },
+  {
+   "id": "31583",
+   "seance": "MARS 2007",
+   "fait": "Le Conseil autorise une nouvelle convention triennale d'objectifs 2007-2009 et attribue 155 000 euros pour 2007 (140 000 € de fonctionnement, 15 000 € pour la résidence de la compagnie Paco Decina).",
+   "pourquoi": "Le soutien pluriannuel est renouvelé",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31583",
+   "fait_en": "The Council authorized a new three-year objectives agreement for 2007-2009 and granted 155,000 euros for 2007 (140,000 euros for operations, 15,000 euros for the residency of the company Paco Decina).",
+   "pourquoi_en": "Multi-year support is renewed"
+  },
+  {
+   "id": "53803",
+   "seance": "OCTOBRE 2007",
+   "fait": "Par un avenant, le Conseil attribue 6 000 euros, au titre de la politique de la ville, pour les activités menées par le théâtre dans les 13e et 14e arrondissements en 2007.",
+   "pourquoi": "Le théâtre agit aussi hors ses murs",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53803",
+   "fait_en": "Through an amendment, the Council granted 6,000 euros, under urban policy funding, for activities carried out by the theatre in the 13th and 14th arrondissements in 2007.",
+   "pourquoi_en": "The theatre also operates outside its walls"
+  },
+  {
+   "id": "68562",
+   "seance": "JUIN 2008",
+   "fait": "Le Conseil attribue 8 000 euros à la compagnie Air de Lune pour « l'Opérette » d'après Valère Novarina, diffusée au Théâtre de la Cité Internationale du 14 janvier au 12 février 2008.",
+   "pourquoi": "Un spectacle accueilli, la compagnie subventionnée",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68562",
+   "fait_en": "The Council granted 8,000 euros to the company Air de Lune for \"l'Opérette\" after Valère Novarina, performed at Théâtre de la Cité Internationale from 14 January to 12 February 2008.",
+   "pourquoi_en": "A show hosted, the company subsidized"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "OCTOBRE 2002",
+   "montant": "120.000 euros",
+   "objet": "Participation au fonctionnement du théâtre en 2002",
+   "citation": "La dépense correspondante, soit 120.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2002",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95334"
+  },
+  {
+   "seance": "NOVEMBRE 2003",
+   "montant": "100.000 euros",
+   "objet": "Fonctionnement du théâtre en 2003",
+   "citation": "La dépense correspondante, soit 100.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2003",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93695"
+  },
+  {
+   "seance": "NOVEMBRE 2003",
+   "montant": "100.000 euros",
+   "objet": "Subvention annuelle pour le fonctionnement du théâtre (DAC 250)",
+   "citation": "l'attribution d'une subvention annuelle à la Fondation nationale dite \"Cité internationale universitaire de Paris\" pour le fonctionnement du théâtre de la cité internationale - montant 100.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21315"
+  },
+  {
+   "seance": "OCTOBRE 2004",
+   "montant": "150.000 euros",
+   "objet": "Fonctionnement 2004, événement d'ouverture des nouvelles salles et accueil de Jeunes Talents Cirque",
+   "citation": "La dépense correspondante, soit 150.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2004",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64040"
+  },
+  {
+   "seance": "MARS 2005",
+   "montant": "130.000 euros",
+   "objet": "Fonctionnement du théâtre en 2005",
+   "citation": "La dépense correspondante, soit 130.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2005",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26400"
+  },
+  {
+   "seance": "MAI 2006",
+   "montant": "140.000 euros",
+   "objet": "Fonctionnement du théâtre en 2006",
+   "citation": "Une subvention de fonctionnement de 140.000 euros est attribuée à la Fondation Nationale ?Cité internationale universitaire de Paris?, 19 boulevard Jourdan (14e), pour soutenir le fonctionnement du Théâtre de la Cité internationale en 2006",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88828"
+  },
+  {
+   "seance": "MAI 2006",
+   "montant": "10.000 euros",
+   "objet": "Résidence de la Compagnie Post Retroguardia Paco Decina en 2006",
+   "citation": "Une subvention de fonctionnement de 10.000 euros est attribuée à la Fondation Nationale ?Cité internationale universitaire de Paris? pour la résidence de la Compagnie Post Retroguardia Paco Decina en 2006",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88828"
+  },
+  {
+   "seance": "MAI 2006",
+   "montant": "30.000 euros",
+   "objet": "3e édition de l'opération « Jeunes Talents Cirque »",
+   "citation": "Une subvention de fonctionnement de 30.000 euros est attribuée à la Fondation Nationale ?Cité internationale universitaire de Paris? pour l?organisation de la 3e édition de l?opération ?Jeunes Talents Cirque?",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88828"
+  },
+  {
+   "seance": "MAI 2006",
+   "montant": "6.000 euros",
+   "objet": "Au titre de la politique de la ville",
+   "citation": "Une subvention de fonctionnement de 6.000 euros est attribuée à la Fondation Nationale ?Cité internationale universitaire de Paris? au titre de la politique de la ville.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88828"
+  },
+  {
+   "seance": "MAI 2006",
+   "montant": "186.000 euros",
+   "objet": "Dépense totale de l'avenant 2006",
+   "citation": "La dépense correspondante, soit 186.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2006",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88828"
+  },
+  {
+   "seance": "MARS 2007",
+   "montant": "140.000 euros",
+   "objet": "Fonctionnement du théâtre en 2007",
+   "citation": "Une subvention de fonctionnement de 140.000 euros est attribuée à la Fondation Nationale ?Cité Internationale Universitaire de Paris?, 19, boulevard Jourdan (14e), pour soutenir le fonctionnement du Théâtre de la Cité Internationale",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31583"
+  },
+  {
+   "seance": "MARS 2007",
+   "montant": "15.000 euros",
+   "objet": "Résidence de la Compagnie Post Retroguardia Paco Decina en 2007",
+   "citation": "Une subvention de fonctionnement de 15.000 euros est attribuée à la Fondation Nationale ?Cité Internationale Universitaire de Paris? pour la résidence de la Compagnie Post Retroguardia Paco Decina en 2007",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31583"
+  },
+  {
+   "seance": "MARS 2007",
+   "montant": "155.000 euros",
+   "objet": "Dépense totale pour 2007",
+   "citation": "La dépense correspondante, soit 155.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2007",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31583"
+  },
+  {
+   "seance": "OCTOBRE 2007",
+   "montant": "6.000 euros",
+   "objet": "Activités du théâtre dans les 13e et 14e arrondissements au titre de la politique de la ville",
+   "citation": "La dépense correspondante, soit 6.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2007",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53803"
+  },
+  {
+   "seance": "JUIN 2008",
+   "montant": "8.000 euros",
+   "objet": "Spectacle « l'Opérette » de la Compagnie Air de Lune, diffusé au théâtre",
+   "citation": "La dépense correspondante, soit 8.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2008",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68562"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "delibs_par_annee": {
+  "2002": [
+   {
+    "reference": "2002 DAC 327",
+    "titre": "Attribution d'une subvention de fonctionnement aux activités culturelles de la Fondation Nationale \"Cité Internationale Universitaire de Paris\", 19, boulevard Jourdan, 75690 Paris Cedex 14, pour le fonctionnement du Théâtre de la Cité internationale. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "OCTOBRE 2002",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95334"
+   }
+  ],
+  "2003": [
+   {
+    "reference": "2003 DAC 250",
+    "titre": "172 - 2003, DAC 250 - Subvention annuelle à la Fondation nationale dite \"Cité internationale universitaire de Paris\" (14e) pour le fonctionnement du \"Théâtre de la cité internationale\". - Montant : 100.000 euros",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21315"
+   },
+   {
+    "reference": "2003 DAC 250",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec la Fondation Nationale dite \"Cité Internationale Universitaire de Paris\" (19, boulevard Jourdan - 75690 Paris Cedex 14) une convention triennale d'objectifs relative à l'attribution d'une subvention annuelle pour le fonctionnement du Théâtre de la Cité internationale. MM. David ASSOULINE et Christophe GIRARD, rapporteurs.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "NOVEMBRE 2003",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93695"
+   }
+  ],
+  "2004": [
+   {
+    "reference": "2004 DAC 343",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec la Fondation Nationale dite \"Cité Internationale Universitaire de Paris\", 19 boulevard Jourdan (14e), un avenant à la convention triennale d'objectifs du 22 décembre 2003 relative à l'attribution d'une subvention de fonctionnement pour le \"Théâtre de la Cité internationale\". M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "OCTOBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64040"
+   },
+   {
+    "reference": "2004 DAC 356",
+    "titre": "Autorisation à M. le Maire de Paris de signer 4 avenants aux conventions relatives à l'attribution de subventions de fonctionnement pour les associations et la fondation suivantes : Maison de la Poésie (3e), Les Athévains (4e), Fondation nationale dite Cité internationale universitaire de Paris pour le Théâtre de la Cité internationale (14e) ; Théâtre Silvia Monfort (15e). M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "OCTOBRE 2004",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64268"
+   }
+  ],
+  "2005": [
+   {
+    "reference": "2005 DAC 29",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec la Fondation Nationale “Cité internationale universitaire de Paris”, 19, boulevard Jourdan (14e), un avenant à la convention triennale d’objectifs du 22 décembre 2003 relative à l’attribution d’une subvention de fonctionnement pour le “Théâtre de la Cité internationale”. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MARS 2005",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26400"
+   }
+  ],
+  "2006": [
+   {
+    "reference": "2006 DAC 79",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec la Fondation Nationale “Cité internationale universitaire de Paris” (14e) un avenant à la convention triennale d’objectifs du 22 décembre 2003 relative à l’attribution d’une subvention de fonctionnement pour le “Théâtre de la Cité internationale”. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MAI 2006",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88828"
+   }
+  ],
+  "2007": [
+   {
+    "reference": "2007 DAC 18",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec la Fondation Nationale “Cité Internationale Universitaire de Paris”, 19, boulevard Jourdan (14e), une convention triennale d’objectifs 2007-2009 relative à l’attribution d’une subvention de fonctionnement pour le “Théâtre de la Cité Internationale”. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "MARS 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31583"
+   },
+   {
+    "reference": "2007 DAC 318",
+    "titre": "Autorisation à M. le Maire de Paris de signer avec la Fondation Nationale “Cité Internationale Universitaire de Paris” (14e) un avenant à la convention triennale d’objectifs 2007-2009 relatif à l’attribution d’une subvention de fonctionnement pour le “Théâtre de la Cité Internationale” dans le cadre de la politique de la ville. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "OCTOBRE 2007",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53803"
+   }
+  ],
+  "2008": [
+   {
+    "reference": "2008 DAC 188",
+    "titre": "Subvention à l’association “Compagnie Air de Lune” pour le spectacle l’Opérette diffusé au Théâtre de la Cité Internationale (14e) en 2008. M. Christophe GIRARD, rapporteur.",
+    "genres": [
+     "subvention"
+    ],
+    "seance": "JUIN 2008",
+    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68562"
+   }
+  ]
+ },
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Th%C3%A9%C3%A2tre+de+la+Cit%C3%A9+internationale"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Th%C3%A9%C3%A2tre+de+la+Cit%C3%A9+internationale%22%29"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
   },
   "wiki": {
-    "extract": "Le théâtre de la Cité internationale est une salle de spectacles parisienne située 17, boulevard Jourdan, dans le XIVe arrondissement au sein de la Cité internationale universitaire de Paris.",
-    "url": "https://fr.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_de_la_Cit%C3%A9_internationale",
-    "source": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    },
-    "extract_en": "Théâtre de la Cité internationale is a Parisian performance venue located at 17, boulevard Jourdan, in the 14th arrondissement, within the Cité internationale universitaire de Paris."
-  },
-  "stats": {
-    "n_delibs": 947,
-    "delibs_span": [
-      2002,
-      2008
-    ],
-    "n_bmo_brut": 2000,
-    "n_bmo_verifies": null,
-    "invest_total_eur": 0,
-    "invest_annees": [],
-    "lecture_mode": "titre nommant le lieu (10 trouvés)",
-    "lecture_mode_en": "title naming the place (10 found)",
-    "n_lus": 10,
-    "n_lieu": 9
-  },
-  "subventions_exploitant": null,
-  "residents": [
-    {
-      "beneficiaire": "TSARA",
-      "montant_total": 9000,
-      "preuve": "Objet de la subvention (verbatim) : « Résidence de la compagnie Tsara au Théâtre de la Cité internationale pour le projet \"Contes d'État\" » — nomme explicitement le lieu ; activité accueillie DANS le théâtre, la compagnie ne le gère pas. L'exploitant réel confirmé par les délibérations est la Fondation Nationale « Cité internationale universitaire de Paris ».",
-      "preuve_en": "Subsidy purpose (verbatim): \"Residency of the company Tsara at Théâtre de la Cité internationale for the project \\\"Contes d'État\\\"\" — explicitly names the venue; activity hosted INSIDE the theatre, the company does not manage it. The actual operator confirmed by the deliberations is the Fondation Nationale \"Cité internationale universitaire de Paris.\""
-    }
-  ],
-  "kpi_montant": null,
-  "synthese_fr": "Le Théâtre de la Cité internationale, dans le 14e arrondissement, est géré par la Fondation nationale « Cité internationale universitaire de Paris » (19, boulevard Jourdan), que la Ville de Paris soutient d'année en année. En octobre 2002, le Conseil de Paris attribue 120.000 euros pour participer au fonctionnement du théâtre ; en novembre 2003, il autorise une convention triennale d'objectifs et vote 100.000 euros pour 2003. Le Conseil vote ensuite, par avenants successifs, 150.000 euros en 2004 — année où la Ville finance un événement pour « l'ouverture de ses nouvelles salles » —, 130.000 euros en 2005, puis 186.000 euros en 2006, ce total incluant des aides fléchées vers la résidence de la compagnie Post Retroguardia Paco Decina et l'opération « Jeunes Talents Cirque ». En mars 2007, il autorise une nouvelle convention triennale 2007-2009 (155.000 euros pour 2007), à laquelle il ajoute en octobre 6.000 euros, au titre de la politique de la ville, pour les activités du théâtre dans les 13e et 14e arrondissements. La Ville subventionne aussi des spectacles accueillis dans ses murs, comme « l'Opérette » de la compagnie Air de Lune en 2008 (8.000 euros).",
-  "moments": [
-    {
-      "id": "95334",
-      "seance": "OCTOBRE 2002",
-      "fait": "Le Conseil de Paris attribue 120 000 euros à la Fondation « Cité internationale universitaire de Paris » pour participer au fonctionnement du théâtre en 2002.",
-      "pourquoi": "Le premier soutien municipal repéré au théâtre",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95334",
-      "fait_en": "The Conseil de Paris granted 120,000 euros to the Fondation \"Cité internationale universitaire de Paris\" to help fund the theatre's operations in 2002.",
-      "pourquoi_en": "The first municipal support to the theatre identified in the record"
-    },
-    {
-      "id": "93695",
-      "seance": "NOVEMBRE 2003",
-      "fait": "Le Conseil autorise le Maire à signer une convention triennale d'objectifs avec la Fondation et vote 100 000 euros pour le fonctionnement du théâtre en 2003.",
-      "pourquoi": "La Ville inscrit son soutien dans la durée",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93695",
-      "fait_en": "The Council authorized the Mayor to sign a three-year objectives agreement with the Fondation and voted 100,000 euros for the theatre's operations in 2003.",
-      "pourquoi_en": "The City commits to sustained support"
-    },
-    {
-      "id": "21315",
-      "seance": "NOVEMBRE 2003",
-      "fait": "En séance, le projet de délibération DAC 250 (subvention de 100 000 euros au théâtre) est adopté après l'adoption d'un amendement n° 21 bis se substituant à l'amendement n° 21 déposé par l'Exécutif.",
-      "pourquoi": "La subvention votée après amendement en séance",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21315",
-      "fait_en": "In session, deliberation draft DAC 250 (a subsidy of 100,000 euros to the theatre) was adopted after amendment No. 21 bis was adopted in place of amendment No. 21 filed by the executive.",
-      "pourquoi_en": "The subsidy voted after an amendment in session"
-    },
-    {
-      "id": "64040",
-      "seance": "OCTOBRE 2004",
-      "fait": "Par un avenant, le Conseil attribue 150 000 euros pour le fonctionnement 2004, dont un événement pour l'ouverture de ses nouvelles salles et l'accueil de l'opération Jeunes Talents Cirque (24-26 septembre 2004).",
-      "pourquoi": "L'année de ses « nouvelles salles »",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64040",
-      "fait_en": "Through an amendment, the Council granted 150,000 euros for 2004 operations, including an event for the opening of its new venues and hosting the Jeunes Talents Cirque operation (24-26 September 2004).",
-      "pourquoi_en": "The year of its \"new venues\""
-    },
-    {
-      "id": "88828",
-      "seance": "MAI 2006",
-      "fait": "Par un avenant à la convention du 22 décembre 2003, le Conseil attribue 186 000 euros au total : 140 000 € de fonctionnement, 10 000 € pour la résidence de la compagnie Paco Decina, 30 000 € pour la 3e édition de « Jeunes Talents Cirque » et 6 000 € au titre de la politique de la ville.",
-      "pourquoi": "Le plus haut montant voté, cirque compris",
-      "vedette": true,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88828",
-      "fait_en": "Through an amendment to the agreement of 22 December 2003, the Council granted a total of 186,000 euros: 140,000 euros for operations, 10,000 euros for the residency of the company Paco Decina, 30,000 euros for the 3rd edition of \"Jeunes Talents Cirque,\" and 6,000 euros under urban policy funding.",
-      "pourquoi_en": "The highest amount voted, circus included"
-    },
-    {
-      "id": "31583",
-      "seance": "MARS 2007",
-      "fait": "Le Conseil autorise une nouvelle convention triennale d'objectifs 2007-2009 et attribue 155 000 euros pour 2007 (140 000 € de fonctionnement, 15 000 € pour la résidence de la compagnie Paco Decina).",
-      "pourquoi": "Le soutien pluriannuel est renouvelé",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31583",
-      "fait_en": "The Council authorized a new three-year objectives agreement for 2007-2009 and granted 155,000 euros for 2007 (140,000 euros for operations, 15,000 euros for the residency of the company Paco Decina).",
-      "pourquoi_en": "Multi-year support is renewed"
-    },
-    {
-      "id": "53803",
-      "seance": "OCTOBRE 2007",
-      "fait": "Par un avenant, le Conseil attribue 6 000 euros, au titre de la politique de la ville, pour les activités menées par le théâtre dans les 13e et 14e arrondissements en 2007.",
-      "pourquoi": "Le théâtre agit aussi hors ses murs",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53803",
-      "fait_en": "Through an amendment, the Council granted 6,000 euros, under urban policy funding, for activities carried out by the theatre in the 13th and 14th arrondissements in 2007.",
-      "pourquoi_en": "The theatre also operates outside its walls"
-    },
-    {
-      "id": "68562",
-      "seance": "JUIN 2008",
-      "fait": "Le Conseil attribue 8 000 euros à la compagnie Air de Lune pour « l'Opérette » d'après Valère Novarina, diffusée au Théâtre de la Cité Internationale du 14 janvier au 12 février 2008.",
-      "pourquoi": "Un spectacle accueilli, la compagnie subventionnée",
-      "vedette": false,
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68562",
-      "fait_en": "The Council granted 8,000 euros to the company Air de Lune for \"l'Opérette\" after Valère Novarina, performed at Théâtre de la Cité Internationale from 14 January to 12 February 2008.",
-      "pourquoi_en": "A show hosted, the company subsidized"
-    }
-  ],
-  "montants": [
-    {
-      "seance": "OCTOBRE 2002",
-      "montant": "120.000 euros",
-      "objet": "Participation au fonctionnement du théâtre en 2002",
-      "citation": "La dépense correspondante, soit 120.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2002",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95334"
-    },
-    {
-      "seance": "NOVEMBRE 2003",
-      "montant": "100.000 euros",
-      "objet": "Fonctionnement du théâtre en 2003",
-      "citation": "La dépense correspondante, soit 100.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2003",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93695"
-    },
-    {
-      "seance": "NOVEMBRE 2003",
-      "montant": "100.000 euros",
-      "objet": "Subvention annuelle pour le fonctionnement du théâtre (DAC 250)",
-      "citation": "l'attribution d'une subvention annuelle à la Fondation nationale dite \"Cité internationale universitaire de Paris\" pour le fonctionnement du théâtre de la cité internationale - montant 100.000 euros",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21315"
-    },
-    {
-      "seance": "OCTOBRE 2004",
-      "montant": "150.000 euros",
-      "objet": "Fonctionnement 2004, événement d'ouverture des nouvelles salles et accueil de Jeunes Talents Cirque",
-      "citation": "La dépense correspondante, soit 150.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2004",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64040"
-    },
-    {
-      "seance": "MARS 2005",
-      "montant": "130.000 euros",
-      "objet": "Fonctionnement du théâtre en 2005",
-      "citation": "La dépense correspondante, soit 130.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2005",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26400"
-    },
-    {
-      "seance": "MAI 2006",
-      "montant": "140.000 euros",
-      "objet": "Fonctionnement du théâtre en 2006",
-      "citation": "Une subvention de fonctionnement de 140.000 euros est attribuée à la Fondation Nationale ?Cité internationale universitaire de Paris?, 19 boulevard Jourdan (14e), pour soutenir le fonctionnement du Théâtre de la Cité internationale en 2006",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88828"
-    },
-    {
-      "seance": "MAI 2006",
-      "montant": "10.000 euros",
-      "objet": "Résidence de la Compagnie Post Retroguardia Paco Decina en 2006",
-      "citation": "Une subvention de fonctionnement de 10.000 euros est attribuée à la Fondation Nationale ?Cité internationale universitaire de Paris? pour la résidence de la Compagnie Post Retroguardia Paco Decina en 2006",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88828"
-    },
-    {
-      "seance": "MAI 2006",
-      "montant": "30.000 euros",
-      "objet": "3e édition de l'opération « Jeunes Talents Cirque »",
-      "citation": "Une subvention de fonctionnement de 30.000 euros est attribuée à la Fondation Nationale ?Cité internationale universitaire de Paris? pour l?organisation de la 3e édition de l?opération ?Jeunes Talents Cirque?",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88828"
-    },
-    {
-      "seance": "MAI 2006",
-      "montant": "6.000 euros",
-      "objet": "Au titre de la politique de la ville",
-      "citation": "Une subvention de fonctionnement de 6.000 euros est attribuée à la Fondation Nationale ?Cité internationale universitaire de Paris? au titre de la politique de la ville.",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88828"
-    },
-    {
-      "seance": "MAI 2006",
-      "montant": "186.000 euros",
-      "objet": "Dépense totale de l'avenant 2006",
-      "citation": "La dépense correspondante, soit 186.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2006",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88828"
-    },
-    {
-      "seance": "MARS 2007",
-      "montant": "140.000 euros",
-      "objet": "Fonctionnement du théâtre en 2007",
-      "citation": "Une subvention de fonctionnement de 140.000 euros est attribuée à la Fondation Nationale ?Cité Internationale Universitaire de Paris?, 19, boulevard Jourdan (14e), pour soutenir le fonctionnement du Théâtre de la Cité Internationale",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31583"
-    },
-    {
-      "seance": "MARS 2007",
-      "montant": "15.000 euros",
-      "objet": "Résidence de la Compagnie Post Retroguardia Paco Decina en 2007",
-      "citation": "Une subvention de fonctionnement de 15.000 euros est attribuée à la Fondation Nationale ?Cité Internationale Universitaire de Paris? pour la résidence de la Compagnie Post Retroguardia Paco Decina en 2007",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31583"
-    },
-    {
-      "seance": "MARS 2007",
-      "montant": "155.000 euros",
-      "objet": "Dépense totale pour 2007",
-      "citation": "La dépense correspondante, soit 155.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2007",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31583"
-    },
-    {
-      "seance": "OCTOBRE 2007",
-      "montant": "6.000 euros",
-      "objet": "Activités du théâtre dans les 13e et 14e arrondissements au titre de la politique de la ville",
-      "citation": "La dépense correspondante, soit 6.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2007",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53803"
-    },
-    {
-      "seance": "JUIN 2008",
-      "montant": "8.000 euros",
-      "objet": "Spectacle « l'Opérette » de la Compagnie Air de Lune, diffusé au théâtre",
-      "citation": "La dépense correspondante, soit 8.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2008",
-      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68562"
-    }
-  ],
-  "bmo_extraits": [],
-  "bmo_recit": null,
-  "invest": [],
-  "marches": [],
-  "mandate": null,
-  "sources": {
-    "delibs": {
-      "name": "Débat-Délibs — Conseil de Paris",
-      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Th%C3%A9%C3%A2tre+de+la+Cit%C3%A9+internationale"
-    },
-    "bmo": {
-      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Th%C3%A9%C3%A2tre+de+la+Cit%C3%A9+internationale%22%29"
-    },
-    "invest": {
-      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-      "url": "https://opendata.paris.fr/"
-    },
-    "wiki": {
-      "name": "Wikipédia",
-      "url": "https://fr.wikipedia.org/"
-    }
-  },
-  "synthese_en": "Théâtre de la Cité internationale, in the 14th arrondissement, is run by the Fondation nationale \"Cité internationale universitaire de Paris\" (19, boulevard Jourdan), which the City of Paris supports year after year. In October 2002, the Conseil de Paris granted 120,000 euros to help fund the theatre's operations; in November 2003, it authorized a three-year objectives agreement and voted 100,000 euros for 2003. The Council then voted, through successive amendments, 150,000 euros in 2004 — the year the City financed an event for \"the opening of its new venues\" — 130,000 euros in 2005, then 186,000 euros in 2006, this total including funding earmarked for the residency of the company Post Retroguardia Paco Decina and the \"Jeunes Talents Cirque\" operation. In March 2007, it authorized a new three-year agreement for 2007-2009 (155,000 euros for 2007), to which it added 6,000 euros in October, under urban policy funding, for the theatre's activities in the 13th and 14th arrondissements. The City also subsidized shows hosted within its walls, such as \"l'Opérette\" by the company Air de Lune in 2008 (8,000 euros).",
-  "license": {
-    "id": "ODbL-1.0",
-    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "share_alike": true,
-    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
-    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
-    "producer": "Qipu (qipu.org) — derived database"
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
   }
+ },
+ "synthese_en": "Théâtre de la Cité internationale, in the 14th arrondissement, is run by the Fondation nationale \"Cité internationale universitaire de Paris\" (19, boulevard Jourdan), which the City of Paris supports year after year. In October 2002, the Conseil de Paris granted 120,000 euros to help fund the theatre's operations; in November 2003, it authorized a three-year objectives agreement and voted 100,000 euros for 2003. The Council then voted, through successive amendments, 150,000 euros in 2004 — the year the City financed an event for \"the opening of its new venues\" — 130,000 euros in 2005, then 186,000 euros in 2006, this total including funding earmarked for the residency of the company Post Retroguardia Paco Decina and the \"Jeunes Talents Cirque\" operation. In March 2007, it authorized a new three-year agreement for 2007-2009 (155,000 euros for 2007), to which it added 6,000 euros in October, under urban policy funding, for the theatre's activities in the 13th and 14th arrondissements. The City also subsidized shows hosted within its walls, such as \"l'Opérette\" by the company Air de Lune in 2008 (8,000 euros)."
 }

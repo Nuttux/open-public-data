@@ -86,3 +86,118 @@ Pre-commit (optional — `--strict` is harsh for incremental development):
 #!/bin/sh
 python3 pipeline/scripts/audit/check_layering.py || exit 1
 ```
+
+## `audit_publication_coverage.py`
+
+Le crible de couverture. Contrairement à `run_data_quality_audit.py`, qui
+vérifie la cohérence interne de l'entrepôt, celui-ci part du catalogue
+opendata.paris.fr et croise trois colonnes : ce que la Ville publie, ce qu'on
+ingère, ce que le site sert. Il ne demande aucun accès BigQuery.
+
+Son contrôle central est générique : la Ville coupe ses séries au changement de
+plan comptable et republie la suite sous un autre identifiant. Le script retire
+les marqueurs de période des titres du catalogue, regroupe par souche, et
+signale tout jeu frère qu'on n'ingère pas. C'est ce contrôle qui manquait
+quand la série des autorisations de programme est restée coupée à 2017 pendant
+des mois (95 M€ absents des fiches lieu, corrigé le 2026-09-10).
+
+Il distingue nos erreurs (série coupée, exercices absents, écart de total à
+filtre égal) de celles de la Ville (série gelée, changement de format en cours
+de série, colonne abîmée, identifiant fautif).
+
+```bash
+python3 pipeline/scripts/audit/audit_publication_coverage.py
+python3 pipeline/scripts/audit/audit_publication_coverage.py --famille subventions
+python3 pipeline/scripts/audit/audit_publication_coverage.py --no-totaux --dry-run
+```
+
+Sorties : `website/public/data/audit_publication_coverage.json` (publiable) et
+`pipeline/docs/audit_publication_coverage.md` (lisible). Code de sortie 1 s'il
+reste une erreur, pour servir de porte en intégration continue.
+
+Ajouter une série : une entrée dans `FAMILLES`, avec les identifiants ODS
+ingérés, les indices de colonnes année/montant, où lire notre chiffre, et si
+possible le `filtre_source` qui reproduit le filtre de l'export — sans lui la
+comparaison de totaux reste indicative, et une alerte indicative ne bloque rien.
+
+## `audit_echantillon.py`
+
+Le contrôle par sondage. Le crible de couverture compare des totaux ; deux jeux
+peuvent avoir le même total et des lignes fausses. Celui-ci tire des lignes au
+hasard dans ce que le site publie et va rechercher chacune au portail, une
+requête par ligne. La graine du tirage est affichée pour rejouer exactement le
+même échantillon.
+
+```bash
+python3 pipeline/scripts/audit/audit_echantillon.py --n 100
+python3 pipeline/scripts/audit/audit_echantillon.py --serie subventions --n 200
+python3 pipeline/scripts/audit/audit_echantillon.py --graine 534782389   # rejeu
+```
+
+Ce qu'il ne prouve pas : rien sur les données reconstruites depuis les PDF
+(subventions 2020-2021, investissements localisés). Elles n'ont pas
+d'équivalent interrogeable au portail et sont exclues du tirage plutôt que
+déclarées bonnes.
+
+Trois pièges de méthode ont été trouvés en l'écrivant, tous du même genre :
+comparer notre ligne à un agrégat plus large de la source. Une livraison de
+logements réapparaît sur un autre exercice, une même livraison est publiée en
+plusieurs lignes chez nous quand elle mêle des financements, et `annee` est un
+champ DATE qu'il faut interroger avec `year()`. Chacun faisait crier au faux
+sur une donnée juste. Une alerte fausse fait perdre sa valeur à l'outil : les
+trois sont documentés dans le code à l'endroit exact où ils mordent.
+
+## `check_lieu_money_resolved.py`
+
+Le garde-fou déterministe entre le juge et l'export des fiches lieu.
+
+Le rattachement de l'argent à un lieu passe par un modèle, encadré par une
+vérification adverse elle aussi menée par un modèle. Le 2026-09-10, cette
+vérification a rattrapé des opérations budgétaires fabriquées par le juge, avec
+des montants au centime. Elle a fait son travail — mais une vérification qui
+dépend d'un modèle ne peut pas être la dernière barrière avant publication.
+
+Ce script est mécanique et sans jugement. Il contrôle le résolu contre les
+données PUBLIÉES, pas contre le fichier de candidats : la collecte est rejouée
+régulièrement, et comparer à un instantané de candidats produit des refus sur
+des lignes parfaitement fondées.
+
+```bash
+python3 pipeline/scripts/audit/check_lieu_money_resolved.py --check
+python3 pipeline/scripts/audit/check_lieu_money_resolved.py --fix
+```
+
+Règle de correction : le juge décide du RATTACHEMENT, jamais du montant. Une
+opération rattachée voit ses exercices réécrits depuis la table des opérations ;
+seules les lignes introuvables à la source sont retirées. Une première version
+supprimait l'opération entière dès qu'un exercice clochait, ce qui coûtait
+159,7 M€ parfaitement fondés à la Philharmonie.
+
+Deux pièges de comparaison sont encodés dans le script : les noms de projet
+sont tronqués à 90 caractères par la collecte (comparer par préfixe), et le
+montant d'une subvention affiché sur une fiche n'est pas celui du résolu mais
+un recalcul exercice par exercice fait à l'export.
+
+## Ce qui tourne à chaque PR, sans BigQuery
+
+Depuis le 2026-09-11, `.github/workflows/data-platform-audit.yml` lance sur
+chaque PR touchant `pipeline/` ou `website/public/` :
+
+- `audit_publication_coverage.py --no-totaux` — série coupée, exercices
+  manquants, jeu abandonné côté Ville ;
+- `audit_echantillon.py --n 20` — vingt lignes par série tirées au hasard et
+  recherchées au portail.
+
+Les deux distinguent trois sorties : 0 rien à signaler, 1 une erreur réelle
+chez nous, 3 « impossible de vérifier » (portail injoignable ou catalogue
+partiel). Le 3 sort en avertissement, jamais en échec : rougir les jours où la
+Ville est en panne, c'est ainsi qu'une porte perd son autorité.
+
+Et `export_lieux.py` refuse d'exporter tant que `check_lieu_money_resolved.py`
+trouve une ligne jugée sans contrepartie dans la source. Ce contrôle est
+appelé par l'export lui-même : on ne peut pas l'oublier.
+
+Règle de travail : dès qu'une PR touche une donnée publiée, on relance les
+deux audits en local avant de pousser, et on ajoute la série au registre
+`FAMILLES` si elle n'y est pas encore (avec son `filtre_source` si l'export
+filtre, sinon la comparaison de totaux reste indicative).

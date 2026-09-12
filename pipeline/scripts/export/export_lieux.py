@@ -22,6 +22,7 @@ import glob
 import json
 import re
 import shutil
+import sys
 import urllib.parse
 from datetime import datetime, timezone
 from pathlib import Path
@@ -305,6 +306,39 @@ def apply_en_translations(fiche: dict, slug: str) -> None:
             r["preuve_en"] = residents_en[r["beneficiaire"]]
 
 
+_SEUIL: int | None = None
+
+
+def seuil_commun() -> int:
+    """Le premier exercice où TOUS les flux d'argent d'un lieu existent.
+
+    Les deux flux ne commencent pas la même année, et ce n'est pas un choix :
+    la Ville publie la dépense d'investissement depuis 2009 et les subventions
+    depuis 2013 seulement. Additionner les deux « depuis 2009 » donnait un
+    total qu'aucune période ne produit, et deux lieux n'étaient pas comparables
+    puisque leur fenêtre dépendait des flux qu'ils portent.
+
+    Le chiffre de tête d'une fiche couvre donc la fenêtre commune, ici le
+    premier exercice de subvention publié. Ce qui tombe avant reste affiché,
+    nommé, sous les graphes — on ne cache pas 427 M€ de chantiers (39 % de
+    l'argent des fiches, dont les Halles et Jean-Bouin) pour faire un total
+    plus net.
+
+    Lu dans les données, jamais écrit en dur : le jour où la Ville republiera
+    ses subventions plus anciennes, le seuil descendra tout seul."""
+    global _SEUIL
+    if _SEUIL is None:
+        annees = []
+        for f in glob.glob(str(ROOT / "website/public/data/**/beneficiaires_*.json"), recursive=True):
+            if "/marseille/" in f or "search" in f:
+                continue
+            an = f[-9:-5]
+            if an.isdigit():
+                annees.append(int(an))
+        _SEUIL = min(annees) if annees else 2013
+    return _SEUIL
+
+
 def subvention_par_annee(names: list[str]) -> dict | None:
     """Ventile par exercice les subventions versées à des bénéficiaires CONFIRMÉS
     (noms résolus par le juge). La confirmation est faite en amont — ici on ne
@@ -413,15 +447,31 @@ def resolve_argent(slug: str) -> dict:
             "mandate_par_annee": par_annee,
             "total_mandate": round(sum(par_annee.values()), 2),
             "preuve": a.get("preuve"),
-            "source_url": ("https://opendata.paris.fr/explore/dataset/"
-                           "comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/"
-                           "?refine.autorisation_de_programme_cle=" + urllib.parse.quote(str(a.get("ap_cle") or ""))),
+            # Le mart cite le jeu qui porte l'exercice le plus récent de
+            # l'opération (M14 jusqu'en 2017, M57 ensuite) ; repli sur M14 pour
+            # un mart antérieur à la fusion des deux jeux.
+            "source_url": m.get("source_url") or (
+                "https://opendata.paris.fr/explore/dataset/"
+                "comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/"
+                "?refine.autorisation_de_programme_cle=" + urllib.parse.quote(str(a.get("ap_cle") or ""))),
         })
     ap_ops.sort(key=lambda o: -o["total_mandate"])
     mandate_par_annee: dict[str, float] = {}
     for o in ap_ops:
         for an, v in o["mandate_par_annee"].items():
             mandate_par_annee[an] = round(mandate_par_annee.get(an, 0) + v, 2)
+
+    # Le même chantier est publié DEUX fois pour les exercices couverts par les
+    # deux annexes du compte administratif : au niveau opération (AP/CP, série
+    # continue depuis 2009) et au niveau projet localisé (annexe IL). Vérifié
+    # 2026-09-10 sur les exercices 2022 : Théâtre de la Ville 9,56 M€ (AP) et
+    # 9,66 M€ (IL) sous le même libellé, Stade Jean Bouin et parc André Citroën
+    # au centime près. Les additionner double la dépense. Règle : pour un
+    # exercice couvert par la série AP du lieu, c'est elle qui fait foi ; les
+    # lignes IL de cet exercice sont écartées. Les exercices que l'AP ne couvre
+    # pas (au-delà du dernier publié, ou lieu sans opération rattachée) gardent
+    # leurs lignes IL.
+    invest = [p for p in invest if str(p.get("annee")) not in mandate_par_annee]
 
     return {"exploitant": exploitant, "residents": residents[:8],
             "investissements": invest, "invest_total_eur": sum(p["montant_eur"] for p in invest),
@@ -470,7 +520,32 @@ def invest_rows(pat: str, kind_fr: str) -> list[dict]:
     return out
 
 
+def garde_fou_resolus() -> int:
+    """Refuse d'exporter tant qu'une ligne jugée n'a pas sa contrepartie exacte
+    dans les données publiées. Le juge et sa vérification adverse sont des
+    modèles ; le 2026-09-10 ils avaient laissé passer quatre montants sans
+    source (les Halles à 11 230 € près, trois exercices inventés sur la
+    Philharmonie, une clé d'opération inconnue sur le Théâtre 13). Ce contrôle
+    est mécanique et tourne à chaque export, on ne peut pas l'oublier."""
+    sys.path.insert(0, str(ROOT / "pipeline" / "scripts" / "audit"))
+    from check_lieu_money_resolved import anomalies_du_lieu  # noqa: E402
+    anomalies = []
+    for p in sorted(CACHE.glob("*_money_resolved.json")):
+        anos, _ = anomalies_du_lieu(p.name[: -len("_money_resolved.json")])
+        anomalies.extend(anos)
+    if not anomalies:
+        return 0
+    print(f"EXPORT REFUSÉ : {len(anomalies)} ligne(s) jugée(s) sans contrepartie dans la "
+          f"source ({sum(a['montant'] for a in anomalies)/1e6:.2f} M€).", file=sys.stderr)
+    for a in anomalies[:10]:
+        print(f"   {a['slug']:<30} {a['type']:<12} {str(a['cle'])[:34]:<36} {a['faute']}", file=sys.stderr)
+    print("→ python pipeline/scripts/audit/check_lieu_money_resolved.py --fix", file=sys.stderr)
+    return 1
+
+
 def main() -> int:
+    if garde_fou_resolus():
+        return 1
     OUT.mkdir(parents=True, exist_ok=True)
     IMG.mkdir(parents=True, exist_ok=True)
     wiki = json.load(open(CACHE / "wiki_summaries.json")) if (CACHE / "wiki_summaries.json").exists() else {}
@@ -513,6 +588,12 @@ def main() -> int:
         # à part dans {slug}_saillance.json). N'altère pas les faits vérifiés — on
         # ne fait qu'ajouter un drapeau `vedette` que la fiche utilise pour plier
         # le reste. Sans fichier, tous restent vedette (repli chronologique côté UI).
+        # « Cliquer une année » : les délibérations qui ont décidé l'argent de cet
+        # exercice, rattachées mécaniquement (link_delibs_par_annee.py). Le titre
+        # est celui écrit par la Ville, publié verbatim — jamais un motif de nous.
+        dap = CACHE / f"{slug}_delibs_annee.json"
+        delibs_annee = json.load(open(dap)).get("annees") if dap.exists() else None
+
         sp = CACHE / f"{slug}_saillance.json"
         forte = set(json.load(open(sp)).get("forte", [])) if sp.exists() else None
         moments = [{**m, "fait": fr_num(m.get("fait")),
@@ -648,6 +729,9 @@ def main() -> int:
             "arrondissement": int(seed_row["arr"]), "lat": float(seed_row["lat"]), "lon": float(seed_row["lon"]),
             "photo": photo,
             "photo_credit": photo_credit,
+            # Fenêtre commune à toutes les fiches (cf. seuil_commun) : le chiffre
+            # de tête la couvre, ce qui est avant est montré à part.
+            "seuil_commun": seuil_commun(),
             "wiki": {"extract": w.get("extract"), "url": w.get("url"), "source": SOURCES["wiki"]},
             "stats": {
                 "n_delibs": len(delibs),
@@ -671,6 +755,7 @@ def main() -> int:
             "montants": montants,
             "bmo_extraits": bmo_extraits,
             "bmo_recit": bmo_recit,
+            "delibs_par_annee": delibs_annee,
             "invest": invest,
             "marches": argent["marches"],
             "mandate": ({"par_annee": argent["mandate_par_annee"],
@@ -691,8 +776,32 @@ def main() -> int:
         # contrats. L'ancienne option B (versé + plafonds, « identifié ») faisait
         # dire 143 M€ à la carte et 117,2 M€ à la fiche du Châtelet. Les deux
         # composantes restent exportées à part (depense_reelle_eur, engage_eur).
-        depense_reelle = ((subv["total_eur"] if subv else 0) + argent["invest_total_eur"]
-                          + argent["mandate_total_eur"])
+        # La métrique de carte doit couvrir la MÊME fenêtre pour les 182 lieux,
+        # sinon on classe côte à côte un lieu compté depuis 2009 et un autre
+        # depuis 2013, et le classement ne veut rien dire. On somme donc à
+        # partir du seuil commun, exactement comme le chiffre de tête de la
+        # fiche. Ce qui tombe avant reste publié dans la fiche, nommé, et dans
+        # `depense_reelle_avant_seuil_eur` ici.
+        seuil = seuil_commun()
+
+        def _depuis_seuil(par_annee: dict) -> float:
+            return sum(v or 0 for a, v in (par_annee or {}).items()
+                       if str(a).isdigit() and int(a) >= seuil)
+
+        def _avant_seuil(par_annee: dict) -> float:
+            return sum(v or 0 for a, v in (par_annee or {}).items()
+                       if str(a).isdigit() and int(a) < seuil)
+
+        subv_par_an = {r["annee"]: r["montant_eur"] for r in (subv["rows"] if subv else [])}
+        invest_par_an: dict = {}
+        for r in invest:
+            invest_par_an[str(r["annee"])] = invest_par_an.get(str(r["annee"]), 0) + r["montant_eur"]
+        travaux_par_an = dict(argent["mandate_par_annee"])
+        for a, v in invest_par_an.items():
+            travaux_par_an[a] = travaux_par_an.get(a, 0) + v
+
+        depense_reelle = _depuis_seuil(subv_par_an) + _depuis_seuil(travaux_par_an)
+        depense_avant = _avant_seuil(subv_par_an) + _avant_seuil(travaux_par_an)
         argent_total = depense_reelle if depense_reelle > 0 else argent["marches_total_eur"]
         depuis = int(bmo_extraits[0]["date"][:4]) if bmo_extraits else (years[0] if years else None)
         index.append({"slug": slug, "name": seed_row["name"], "kind_fr": seed_row["kind_fr"],
@@ -700,9 +809,9 @@ def main() -> int:
                       "lat": float(seed_row["lat"]), "lon": float(seed_row["lon"]),
                       "n_lieu": n_lieu, "n_moments": len(moments),
                       "argent_total_eur": round(argent_total),
-                      "depense_reelle_eur": round((subv["total_eur"] if subv else 0)
-                                                  + argent["invest_total_eur"]
-                                                  + argent["mandate_total_eur"]),
+                      "seuil_commun": seuil,
+                      "depense_reelle_eur": round(depense_reelle),
+                      "depense_reelle_avant_seuil_eur": round(depense_avant),
                       "engage_eur": round(argent["marches_total_eur"]),
                       "depuis": depuis, "photo": photo})
         print(f"{slug:<30} {len(delibs):>4} délibs | {len(moments)} moments | {len(montants)} montants | "
