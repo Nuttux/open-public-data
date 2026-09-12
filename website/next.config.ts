@@ -193,7 +193,14 @@ const nextConfig: NextConfig = {
     '/api/og/sf-block/**': ['./public/data/**', './public/img/us/**',
                             './public/img/lieux/**', './public/img/fr/**',
                             './public/img/br/**'],
-    '/fr/**': ['./public/data/us/**', './public/data/br/**'],
+    // The SF and Recife photos (55 MB + 3 MB) are opened on disk only by the
+    // share cards of their own city (localPhotoDataUri gets a place's own
+    // /img path; a French route hands it Paris or Marseille photos). They rode
+    // into every French route through theme-image's dynamic public/ read, and
+    // on 13 Sep the Paris lieu, contrat, fournisseur and association routes
+    // reached 273 MB — the merge of the lieux branch added ~60 MB of data.
+    '/fr/**': ['./public/data/us/**', './public/data/br/**',
+               './public/img/us/**', './public/img/br/**'],
     '/us/**': ['./public/data/br/**', './public/data/marseille/**',
                './public/data/subventions/**', './public/data/marches-publics/**',
                // 23.7 MB of French commune records. A San Francisco page has
