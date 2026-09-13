@@ -18,15 +18,26 @@ family), fetches them without cookies, and asserts:
   cache       Vercel edge cache HIT on a second request (informational)
   soft404     an unknown slug in the family returns 404, not 200
 
-Writes a CSV of every check and prints a scorecard per host and family. Exit 1
-when a hard rule fails (everything except cache and speed, which are reported).
+Writes a CSV of every check and prints a scorecard per host, each rule scored
+over the pages it applies to. Exit 1 when a hard rule fails (everything except
+cache and speed, which are reported).
 
-Runs in a few minutes: sitemap segments and page checks are fetched in parallel
-(--workers, default 4 — more trips Vercel's attack mitigation). Never run it in the background from a cloud routine —
-the session ends with its last message.
+A family is a URL SHAPE: the route the URL resolves to in website/src/app, its
+slugs collapsed into the route's placeholders — /fr/city/[slug]/fonction/[fonction]
+is one family, not one per commune. (Grouping by the path up to the slug made
+~5 500 families per host once every commune had fonction and nature pages, and a
+`--per-family 1` run took over 50 minutes.) A URL with no route in this checkout
+falls back to its path with the last segment collapsed.
+
+Runs in under a minute for the three hosts with `--per-family 1` against the
+edge-cached production site (13 Sep 2026: 192 pages, 29 s): sitemap
+segments and page checks are fetched in parallel (--workers, default 4, capped at
+4 — more trips Vercel's attack mitigation), and the status of a twin or
+breadcrumb link is fetched once per run. Never run it in the background from a
+cloud routine — the session ends with its last message.
 
 Usage:
-  python3 pipeline/scripts/seo/hygiene_check.py [--per-family 2] [--hosts www,fr,pt] [--out scratchpad/seo] [--workers 8]
+  python3 pipeline/scripts/seo/hygiene_check.py [--per-family 2] [--hosts www,fr,pt] [--out scratchpad/seo] [--workers 4]
 """
 from __future__ import annotations
 
@@ -42,17 +53,22 @@ import urllib.parse
 import urllib.request
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
+from functools import lru_cache
 from pathlib import Path
+from threading import Lock
 
 UA = "Mozilla/5.0 (compatible; QipuHygiene/1.0; +https://www.qipu.org)"
 HOSTS = {"www": "https://www.qipu.org", "fr": "https://fr.qipu.org", "pt": "https://pt.qipu.org"}
 ROOT = Path(__file__).resolve().parents[3]
+APP = ROOT / "website" / "src" / "app"
+MAX_WORKERS = 4  # more trips Vercel's bot mitigation
 
-# A family = the path shape up to the slug, e.g. /fr/city/paris/subventions/association.
+# The static segment an entity page hangs under (/fr/city/paris/subventions/association/[slug]):
+# those pages must carry the answer sentence, a Dataset and a see-also block.
 ENTITY_TAILS = ("association", "fournisseur", "contrat", "projet", "lieu", "bailleur", "poste", "theme", "categorie",
                 "chapitre", "instrument", "masse", "arrondissement", "payee", "dept", "place", "role", "family", "area",
                 "service", "character", "type", "authority", "category", "contract", "orgao", "tema", "modalidade",
-                "contratos", "lugares", "quem-recebe", "funcao")
+                "contratos", "lugares", "quem-recebe", "funcao", "fonction", "nature")
 
 
 def get(url: str, timeout: int = 60) -> tuple[int, bytes, dict[str, str], float]:
@@ -66,6 +82,21 @@ def get(url: str, timeout: int = 60) -> tuple[int, bytes, dict[str, str], float]
         return e.code, e.read() if e.fp else b"", {k.lower(): v for k, v in e.headers.items()}, time.time() - t
     except Exception:  # noqa: BLE001
         return 0, b"", {}, time.time() - t
+
+
+_status_cache: dict[str, int] = {}
+_status_lock = Lock()
+
+
+def status_of(url: str) -> int:
+    """HTTP status of a linked URL (a twin, a breadcrumb), fetched once per run."""
+    with _status_lock:
+        if url in _status_cache:
+            return _status_cache[url]
+    st = get(url)[0]
+    with _status_lock:
+        _status_cache[url] = st
+    return st
 
 
 def sitemap_urls(base: str, workers: int = 4) -> list[str]:
@@ -83,20 +114,92 @@ def sitemap_urls(base: str, workers: int = 4) -> list[str]:
     return urls
 
 
+def _is_param(name: str) -> bool:
+    return name.startswith("[") and name.endswith("]")
+
+
+def _is_catch_all(name: str) -> bool:
+    return name.startswith("[...") or name.startswith("[[...")
+
+
+@lru_cache(maxsize=None)
+def _route_children(d: str) -> tuple[str, ...]:
+    """Route segments directly under an app directory, with route groups flattened."""
+    out: list[str] = []
+    try:
+        entries = sorted(Path(d).iterdir())
+    except OSError:
+        return ()
+    for c in entries:
+        n = c.name
+        if not c.is_dir() or n.startswith(("@", "_", "(.")):  # parallel slots, private folders, intercepted routes
+            continue
+        if n.startswith("(") and n.endswith(")"):  # a route group adds no segment
+            out.extend(f"{c.name}/{g}" for g in _route_children(str(c)))
+            continue
+        out.append(n)
+    return tuple(out)
+
+
+def route_shape(path: str) -> list[str] | None:
+    """The app route `path` resolves to, as segments ([slug] kept), or None when none does."""
+    segs = [urllib.parse.unquote(s) for s in path.strip("/").split("/") if s]
+
+    def walk(d: Path, i: int) -> list[str] | None:
+        if i == len(segs):
+            return []
+        kids = _route_children(str(d))
+        name = lambda k: k.rsplit("/", 1)[-1]  # noqa: E731
+        for k in kids:  # a static segment wins over a parameter, as in Next
+            if name(k) == segs[i]:
+                rest = walk(d / k, i + 1)
+                if rest is not None:
+                    return [name(k)] + rest
+        for k in kids:
+            if _is_param(name(k)) and not _is_catch_all(name(k)):
+                rest = walk(d / k, i + 1)
+                if rest is not None:
+                    return [name(k)] + rest
+        for k in kids:
+            if _is_catch_all(name(k)):
+                return [name(k)]
+        return None
+
+    return walk(APP, 0) if APP.is_dir() else None
+
+
 def family_of(url: str) -> str:
+    """The URL's shape: its route with the slugs as placeholders."""
     path = urllib.parse.urlparse(url).path
+    shape = route_shape(path)
+    if shape is not None:
+        return "/" + "/".join(shape)
     seg = path.strip("/").split("/")
-    if len(seg) >= 2 and seg[-2] in ENTITY_TAILS:
-        return "/" + "/".join(seg[:-1])
-    if len(seg) >= 3 and seg[-3] in ENTITY_TAILS:  # dept/[slug]/character/[slug]
-        return "/" + "/".join(seg[:-1])
-    if len(seg) == 3 and seg[0] == "fr" and seg[1] == "city":  # the 35k commune pages are one family
-        return "/fr/city/<commune>"
-    return "/" + "/".join(seg[:4]) if len(seg) > 4 else path  # sections, browse
+    return "/" + "/".join(seg[:-1] + ["[*]"]) if len(seg) > 1 else path
+
+
+def _trailing_params(family: str) -> int:
+    n = 0
+    for s in reversed(family.strip("/").split("/")):
+        if not _is_param(s) or _is_catch_all(s):
+            break
+        n += 1
+    return n
 
 
 def is_entity(family: str) -> bool:
-    return family.rstrip("/").split("/")[-1] in ENTITY_TAILS
+    """An entity family: its last static segment, before the slug(s), is an entity tail."""
+    seg = family.strip("/").split("/")
+    seg = seg[: len(seg) - _trailing_params(family)]
+    return bool(seg) and seg[-1] in ENTITY_TAILS
+
+
+def unknown_url(sample: str, family: str) -> str:
+    """The sample URL with its slug replaced by one that cannot exist."""
+    p = urllib.parse.urlparse(sample)
+    seg = p.path.strip("/").split("/")
+    keep = seg[: len(seg) - _trailing_params(family)] if _trailing_params(family) else seg
+    return f"{p.scheme}://{p.netloc}/{'/'.join(keep)}/zz-not-a-real-slug-{random.randint(1000, 9999)}"
 
 
 def check(url: str, expect_entity: bool) -> dict[str, object]:
@@ -117,8 +220,7 @@ def check(url: str, expect_entity: bool) -> dict[str, object]:
     for tw in twins:
         if tw == url or tw.rstrip("/") == url.rstrip("/"):
             continue
-        s2, _, _, _ = get(tw)
-        ok_twins = ok_twins and s2 == 200
+        ok_twins = ok_twins and status_of(tw) == 200
     r["hreflang"] = bool(twins) and ok_twins
     blocks = re.findall(r'<script type="application/ld\+json">(.*?)</script>', html, re.S)
     types: list[str] = []
@@ -132,8 +234,7 @@ def check(url: str, expect_entity: bool) -> dict[str, object]:
         types.append(str(d.get("@type")))
         if d.get("@type") == "BreadcrumbList":
             for item in d.get("itemListElement", [])[:-1]:
-                s3, _, _, _ = get(item["item"])
-                crumbs_ok = crumbs_ok and s3 == 200
+                crumbs_ok = crumbs_ok and status_of(item["item"]) == 200
     r["jsonld"] = ("BreadcrumbList" in types) and (not expect_entity or "Dataset" in types) and crumbs_ok
     r["related"] = (not expect_entity) or bool(re.search(r'fx-related">.*?fx-v3-row fx-row-link', html, re.S))
     r["weight"] = len(body) < 300 * 1024
@@ -143,9 +244,8 @@ def check(url: str, expect_entity: bool) -> dict[str, object]:
     return r
 
 
-def soft404(family_url: str) -> bool:
-    st, _, _, _ = get(f"{family_url}/zz-not-a-real-slug-{random.randint(1000, 9999)}")
-    return st == 404
+def soft404(url: str) -> bool:
+    return get(url)[0] == 404
 
 
 def main() -> int:
@@ -154,8 +254,12 @@ def main() -> int:
     ap.add_argument("--hosts", default="www,fr,pt")
     ap.add_argument("--out", default=str(ROOT / "scratchpad" / "seo"))
     ap.add_argument("--seed", type=int, default=None)
-    ap.add_argument("--workers", type=int, default=4)
+    ap.add_argument("--workers", type=int, default=MAX_WORKERS, help=f"parallel requests, at most {MAX_WORKERS}")
     a = ap.parse_args()
+    if a.workers > MAX_WORKERS:
+        print(f"--workers {a.workers} → {MAX_WORKERS}: more trips Vercel's bot mitigation", file=sys.stderr)
+    a.workers = max(1, min(a.workers, MAX_WORKERS))
+    started = time.time()
     random.seed(a.seed)
     out = Path(a.out) / dt.date.today().strftime("%Y-%m-%d")
     out.mkdir(parents=True, exist_ok=True)
@@ -169,7 +273,7 @@ def main() -> int:
         fam: dict[str, list[str]] = defaultdict(list)
         for u in urls:
             fam[family_of(u)].append(u)
-        print(f"== {h}: {len(urls)} URLs in {len(fam)} families", flush=True)
+        print(f"== {h}: {len(urls)} URLs in {len(fam)} families (URL shapes)", flush=True)
         # The sample is drawn sequentially (reproducible with --seed), the checks run in parallel.
         jobs: list[tuple[str, bool, str]] = []
         for f, us in sorted(fam.items()):
@@ -194,24 +298,36 @@ def main() -> int:
             rows.append(r)
             flag = "OK " if not bad else "FAIL"
             print(f"  {flag} {r['ttfb_s']:>5}s {r['kb']:>4}KB {'HIT' if r['cache'] else 'miss'} {r['url']}{'  ← ' + ', '.join(bad) if bad else ''}")
-        entity_fams = sorted({f for f, entity, _ in jobs if entity})
+        # One unknown slug per entity family, built on the family's first sampled URL.
+        probes: dict[str, str] = {}
+        for f, entity, u in jobs:
+            if entity and f not in probes:
+                probes[f] = unknown_url(u, f)
         with ThreadPoolExecutor(max_workers=a.workers) as ex:
-            oks = list(ex.map(lambda f: soft404(f"{base}{f}"), entity_fams))
-        for f, ok in zip(entity_fams, oks):
-            rows.append({"host": h, "family": f, "url": f"{base}{f}/<unknown>", "status": 404 if ok else 200, "soft404": ok})
+            oks = list(ex.map(soft404, probes.values()))
+        for (f, probe), ok in zip(probes.items(), oks):
+            rows.append({"host": h, "family": f, "url": probe, "status": 404 if ok else 200, "soft404": ok})
             failed += not ok
             if not ok:
-                print(f"  FAIL soft 404 on {base}{f}/<unknown>")
+                print(f"  FAIL soft 404 on {probe}")
     keys = sorted({k for r in rows for k in r})
     with (out / "hygiene.csv").open("w", newline="", encoding="utf-8") as fp:
         w = csv.DictWriter(fp, fieldnames=keys)
         w.writeheader()
         w.writerows(rows)
     checked = [r for r in rows if "soft404" not in r]
-    print(f"\n{len(checked)} pages checked, {failed} failures → {out / 'hygiene.csv'}")
-    for k in hard + entity_hard + ["speed", "cache"]:
-        n = sum(1 for r in checked if r.get(k) is True)
-        print(f"  {k:10s} {n}/{len(checked)}")
+    probes = [r for r in rows if "soft404" in r]
+    print(f"\n{len(checked)} pages checked, {failed} failures in {(time.time() - started) / 60:.1f} min → {out / 'hygiene.csv'}")
+    # A rule is scored over the pages it applies to: the entity rules over entity pages only.
+    hosts = a.hosts.split(",")
+    print(f"  {'rule':10s} {'all':>9s}  " + "  ".join(f"{h:>9s}" for h in hosts))
+    for k in hard + entity_hard + ["speed", "cache", "soft404"]:
+        pool = probes if k == "soft404" else [r for r in checked if k not in entity_hard or r.get("entity")]
+
+        def score(rs: list[dict[str, object]]) -> str:
+            return f"{sum(1 for r in rs if r.get(k) is True)}/{len(rs)}"
+
+        print(f"  {k:10s} {score(pool):>9s}  " + "  ".join(f"{score([r for r in pool if r['host'] == h]):>9s}" for h in hosts))
     return 1 if failed else 0
 
 
