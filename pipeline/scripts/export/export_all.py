@@ -67,6 +67,11 @@ def main():
         # n'étaient réécrits qu'à la main (dernière fois le 2026-09-08). La liste
         # de la Ville s'arrête fin 2024 ; 2025 et 2026 viennent de la DECP.
         ("export_marches_data.py", "Marchés publics (Ville + DECP)"),
+        # Trois exports lus par le site et lancés par rien jusqu'ici (2026-09-13).
+        # Chacun vérifié : deux passages identiques, generated_at mis à part.
+        ("export_projet_marches.py", "Projets ↔ marchés (liens de la carte des investissements)"),
+        ("export_patrimoine_structure.py", "Structure de la dette et masses du bilan"),
+        ("export_logement_sru_arrondissements.py", "Logement social — taux SRU par arrondissement"),
         ("export_map_data.py", "Données Carte"),
         ("export_vote_vs_execute.py", "Voté vs Exécuté"),
         ("export_data_availability.py", "Data Availability"),
