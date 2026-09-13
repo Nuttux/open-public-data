@@ -42,7 +42,7 @@ export default function DetteClient({ dette }: { dette: EurostatDette | null }) 
     return (
       <div className="theme-fusion">
         <Navbar />
-        <main id="main-content" tabIndex={-1} className="fx-wrap" style={{ padding: "120px 0", minHeight: "60vh" }}>
+        <main id="main-content" tabIndex={-1} className="fx-wrap" style={{ paddingTop: 120, paddingBottom: 120, minHeight: "60vh" }}>
           <p>{t("dette.no_data")}</p>
         </main>
         <Footer />
@@ -108,7 +108,7 @@ export default function DetteClient({ dette }: { dette: EurostatDette | null }) 
       <main id="main-content" tabIndex={-1}>
         <h1 className="fx-sr-only">{t("dette.hero.title")}</h1>
         {/* Hero ─────────────────────────────────────────────────────── */}
-        <section className="fx-wrap" style={{ padding: "60px 0 40px" }}>
+        <section className="fx-wrap" style={{ paddingTop: 60, paddingBottom: 40 }}>
           <SectionHead
             number="01"
             kind={t("dette.section.kind")}
@@ -152,7 +152,7 @@ export default function DetteClient({ dette }: { dette: EurostatDette | null }) 
         </section>
 
         {/* Evolution line chart ─────────────────────────────────────── */}
-        <section className="fx-wrap" style={{ padding: "20px 0 40px" }}>
+        <section className="fx-wrap" style={{ paddingTop: 20, paddingBottom: 40 }}>
           <SectionHead
             number="02"
             kind={t("dette.evolution.kind")}
@@ -197,7 +197,7 @@ export default function DetteClient({ dette }: { dette: EurostatDette | null }) 
         </section>
 
         {/* Peer compare ─────────────────────────────────────────────── */}
-        <section className="fx-wrap" style={{ padding: "20px 0 80px" }}>
+        <section className="fx-wrap" style={{ paddingTop: 20, paddingBottom: 80 }}>
           <SectionHead
             number="03"
             kind={t("dette.peer.kind")}

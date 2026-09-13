@@ -150,7 +150,7 @@ export default function CommuneBudgetClient({
     <div className="theme-fusion">
       <Navbar />
       <main id="main-content" tabIndex={-1}>
-        <div className="fx-wrap fx-v3 fx-bud-v3" style={{ padding: "48px 0" }}>
+        <div className="fx-wrap fx-v3 fx-bud-v3" style={{ paddingTop: 48, paddingBottom: 48 }}>
           <SectionHead
             kind="budget"
             title={`${commune.nom} — ${t("fx.natbud.kicker")}`}

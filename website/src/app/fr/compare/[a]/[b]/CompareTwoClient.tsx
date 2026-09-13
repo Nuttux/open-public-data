@@ -31,7 +31,7 @@ export default function CompareTwoClient({ a, b, keys, year, sourceUrl }: { a: C
     <div className="theme-fusion">
       <Navbar />
       <main id="main-content" tabIndex={-1}>
-        <div className="fx-wrap fx-v3 fx-pv" style={{ padding: "48px 0" }}>
+        <div className="fx-wrap fx-v3 fx-pv" style={{ paddingTop: 48, paddingBottom: 48 }}>
           <p className="fx-pv-kicker">{a.dep_name}{a.dep_name !== b.dep_name ? ` · ${b.dep_name}` : ""} · {t("fx.pv.par_hab")}</p>
           <h1 className="fx-pv-title">{fill("fx.cmp2.title", { a: a.nom, b: b.nom })}</h1>
           <p className="fx-v3-h2sub">{fill("fx.cmp2.lede", { year })}</p>

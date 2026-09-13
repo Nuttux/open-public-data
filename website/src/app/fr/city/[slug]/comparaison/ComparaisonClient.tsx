@@ -38,7 +38,7 @@ export default function ComparaisonClient({ commune, data, sourceUrl }: Props) {
     <div className="theme-fusion">
       <Navbar />
       <main id="main-content" tabIndex={-1}>
-        <div className="fx-wrap" style={{ padding: "48px 0" }}>
+        <div className="fx-wrap" style={{ paddingTop: 48, paddingBottom: 48 }}>
           <SectionHead
             kind="budget"
             title={`${commune.nom} — ${t("fx.natcmp.kicker")}`}

@@ -99,7 +99,7 @@ export default function FournisseurLocalClient({ commune, f, nationalComplet, co
     <div className="theme-fusion">
       <Navbar />
       <main id="main-content" tabIndex={-1}>
-        <div className="fx-wrap fx-v3 fx-pv" style={{ padding: "48px 0" }}>
+        <div className="fx-wrap fx-v3 fx-pv" style={{ paddingTop: 48, paddingBottom: 48 }}>
           <p className="fx-pv-kicker">
             <Link href={`/fr/city/${commune.slug}#achats`} className="fx-pv-link">{fill("fx.fl.kicker", { nom: commune.nom, denom: deNom(commune.nom) })}</Link>
             {domaine ? ` · ${domaine.replace(/ & /g, en ? " and " : " et ")}` : ""}

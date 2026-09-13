@@ -107,10 +107,10 @@ function useFmt() {
   const euro = (eur: number, signed = false): string => {
     const abs = Math.abs(eur);
     const sign = signed ? { signDisplay: "exceptZero" as const } : {};
-    if (abs >= 1e9) return nf({ maximumFractionDigits: 2, minimumFractionDigits: 2, ...sign }).format(eur / 1e9) + " Md€";
-    if (abs >= 1e6) return nf({ maximumFractionDigits: 1, ...sign }).format(eur / 1e6) + " M€";
-    if (abs >= 1e3) return nf({ maximumFractionDigits: 0, ...sign }).format(eur / 1e3) + " k€";
-    return nf({ maximumFractionDigits: 0, ...sign }).format(eur) + " €";
+    if (abs >= 1e9) return nf({ maximumFractionDigits: 2, minimumFractionDigits: 2, ...sign }).format(eur / 1e9) + "\u00a0Md€";
+    if (abs >= 1e6) return nf({ maximumFractionDigits: 1, ...sign }).format(eur / 1e6) + "\u00a0M€";
+    if (abs >= 1e3) return nf({ maximumFractionDigits: 0, ...sign }).format(eur / 1e3) + "\u00a0k€";
+    return nf({ maximumFractionDigits: 0, ...sign }).format(eur) + "\u00a0€";
   };
   /** Montant découpé en (valeur, unité) pour les colonnes. */
   const split = (eur: number): { v: string; u: string } => {
@@ -523,7 +523,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
               <div className="fx-v3-hero-cap">
                 {availableYears.length > 1 ? (
                   <>
-                    {capBefore}
+                    <span className="fx-pv-nowrap">{capBefore}
                     <select
                       className="fx-pv-yearsel"
                       aria-label={t("fx.pv.annee_label")}
@@ -531,7 +531,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                       onChange={(e) => router.push(`/fr/city/${commune.slug}?year=${e.target.value}`, { scroll: false })}
                     >
                       {availableYears.map((y) => <option key={y} value={y}>{y}</option>)}
-                    </select>
+                    </select></span>
                     {capAfter}
                   </>
                 ) : (
@@ -621,6 +621,15 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                   <span className="fx-pv-fonc-h3-bande">{cg ? t("fx.pv.fonc.col_bande") : null}</span>
                   <span className="tnum">{euro(fonctions.total_ventile)}</span>
                 </h3>
+                {parts.some((f) => f.comparaison) ? (
+                  /* La bande ne se lit pas seule, surtout sur téléphone où elle
+                     n'a pas d'en-tête : sa clé est dite une fois, au-dessus. */
+                  <p className="fx-pv-fonc-legende">
+                    <span><i className="sw mid" aria-hidden="true" />{t("fx.pv.fonc.legende_mid")}</span>
+                    <span><i className="sw plus" aria-hidden="true" />{fill("fx.pv.fonc.legende_plus", { nom: commune.nom })}</span>
+                    <span><i className="sw moins" aria-hidden="true" />{t("fx.pv.fonc.legende_moins")}</span>
+                  </p>
+                ) : null}
                 <ul className="fx-pv-fonc-list">
                   {parts.map((f: FonctionPart) => {
                     const w = barWidth(f.montant);
@@ -649,6 +658,23 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                             {f.share != null && f.share > 0 ? `${Math.round(f.share * 100)}\u00a0%` : ""}
                             {f.comparaison ? <span className="med">{fill("fx.pv.fonc.med_court", { n: Math.round(f.comparaison.part_mediane) })}</span> : null}
                           </span>
+                          {f.comparaison ? (
+                            /* Sur t\u00e9l\u00e9phone, l'\u00e9cart est \u00e9crit sous la bande : \u00ab +3 pt \u00b7
+                               m\u00e9diane 28 % \u00bb. Masqu\u00e9 sur grand \u00e9cran, o\u00f9 la colonne
+                               \u00ab pairs \u00bb le dit d\u00e9j\u00e0. */
+                            <span className="ecart tnum">
+                              {Math.abs(f.comparaison.ecart_pt) < 0.5 ? (
+                                fill("fx.pv.fonc.ecart_egal", { n: Math.round(f.comparaison.part_mediane) })
+                              ) : (
+                                <>
+                                  <b className={f.comparaison.ecart_pt >= 0 ? "plus" : "moins"}>
+                                    {f.comparaison.ecart_pt >= 0 ? "+" : "\u2212"}{Math.round(Math.abs(f.comparaison.ecart_pt))}&nbsp;pt
+                                  </b>
+                                  {` \u00b7 ${fill("fx.pv.fonc.ecart_med", { n: Math.round(f.comparaison.part_mediane) })}`}
+                                </>
+                              )}
+                            </span>
+                          ) : null}
                         </Link>
                       </li>
                     );

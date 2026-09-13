@@ -71,7 +71,7 @@ export default function CitySlimClient({
 
       <main>
         {/* Hero ─────────────────────────────────────────────────────── */}
-        <section className="fx-wrap" style={{ padding: "60px 0 32px" }}>
+        <section className="fx-wrap" style={{ paddingTop: 60, paddingBottom: 32 }}>
           <SectionHead
             number="01"
             kind={t("city.section.kind")}
@@ -124,7 +124,7 @@ export default function CitySlimClient({
 
         {/* Capacité de désendettement (computed) */}
         {capDesend !== null && (
-          <section className="fx-wrap" style={{ padding: "0 0 36px" }}>
+          <section className="fx-wrap" style={{ paddingBottom: 36 }}>
             <div className="fx-cap-desend">
               <div className="fx-cap-desend-num tnum">
                 {capDesend.toLocaleString(numLocale(locale), {
@@ -157,7 +157,7 @@ export default function CitySlimClient({
         )}
 
         {/* Detail rows for the other 3 KPIs */}
-        <section className="fx-wrap" style={{ padding: "0 0 60px" }}>
+        <section className="fx-wrap" style={{ paddingBottom: 60 }}>
           <SectionHead
             number="02"
             kind={t("city.slim.detail.kind")}
@@ -198,7 +198,7 @@ export default function CitySlimClient({
         </section>
 
         {/* Limitations + cross-link to comparator + top 10 */}
-        <section className="fx-wrap" style={{ padding: "0 0 80px" }}>
+        <section className="fx-wrap" style={{ paddingBottom: 80 }}>
           <div
             style={{
               border: "1px solid var(--ink)",

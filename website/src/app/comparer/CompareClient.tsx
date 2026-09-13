@@ -295,7 +295,7 @@ export default function CompareClient({
       <main id="main-content" tabIndex={-1}>
         <h1 className="fx-sr-only">{t("compare.hero.title")}</h1>
         {/* Hero ─────────────────────────────────────────────────────── */}
-        <section className="fx-wrap" style={{ padding: "60px 0 32px" }}>
+        <section className="fx-wrap" style={{ paddingTop: 60, paddingBottom: 32 }}>
           <SectionHead
             number="01"
             kind={t("compare.section.kind")}
@@ -305,7 +305,7 @@ export default function CompareClient({
         </section>
 
         {/* Search picker + selected chips ───────────────────────────── */}
-        <section className="fx-wrap" style={{ padding: "0 0 24px" }}>
+        <section className="fx-wrap" style={{ paddingBottom: 24 }}>
           <div className="fx-compare-picker">
             <p className="fx-compare-picker-label">
               {t("compare.picker.label")} ({selected.length}/{MAX_SELECTED})
@@ -401,7 +401,7 @@ export default function CompareClient({
         </section>
 
         {/* Compare table ────────────────────────────────────────────── */}
-        <section className="fx-wrap" style={{ padding: "0 0 80px" }}>
+        <section className="fx-wrap" style={{ paddingBottom: 80 }}>
           {columns.length === 0 ? (
             <p style={{ color: "var(--muted)" }}>{t("compare.empty")}</p>
           ) : (

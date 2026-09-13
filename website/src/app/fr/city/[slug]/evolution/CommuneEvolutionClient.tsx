@@ -81,7 +81,7 @@ export default function CommuneEvolutionClient({
     <div className="theme-fusion">
       <Navbar />
       <main id="main-content" tabIndex={-1}>
-        <div className="fx-wrap" style={{ padding: "48px 0" }}>
+        <div className="fx-wrap" style={{ paddingTop: 48, paddingBottom: 48 }}>
           <SectionHead
             kind="analyses"
             title={`${commune.nom} — ${t("fx.natev.kicker")}`}

@@ -54,7 +54,7 @@ export default function CommuneMarchesClient({ commune, data, fournisseurs, sour
     <div className="theme-fusion">
       <Navbar />
       <main id="main-content" tabIndex={-1}>
-        <div className="fx-wrap fx-v3 fx-pv" style={{ padding: "48px 0" }}>
+        <div className="fx-wrap fx-v3 fx-pv" style={{ paddingTop: 48, paddingBottom: 48 }}>
           <p className="fx-pv-kicker"><Link href={`/fr/city/${commune.slug}#achats`} className="fx-pv-link">{fill("fx.nme.retour", { nom: commune.nom, denom: deNom(commune.nom) })}</Link> · {commune.dep_name}</p>
           <h1 className="fx-pv-title">{fill("fx.nme.title", { nom: commune.nom, denom: deNom(commune.nom) })}</h1>
           <p className="fx-v3-lead">{fill("fx.nme.lede", { nb: int.format(data.total.nb_marches), y0, y1, montant: euro(data.total.montant) })}</p>

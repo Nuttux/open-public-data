@@ -20291,3 +20291,48 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
   .theme-fusion .fx-pv-fonc-row { grid-template-columns: minmax(0, 1fr) 56px 80px 34px; gap: 8px; font-size: 13.5px; }
 }
 
+
+/* ── La bande de priorité, lisible sans survol (2026-09-13) ─────────────────
+   Une légende dite une fois au-dessus de la liste : le trait est la médiane
+   des communes de même taille, l'ocre une plus grande part, le bleu une plus
+   petite. Sur téléphone la bande passe sous la ligne, pleine largeur, et
+   l'écart s'écrit à côté : « +3 pt · médiane 28 % ». */
+.theme-fusion .fx-pv-fonc-legende { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 2px 0 12px; font-size: 12.5px; line-height: 1.45; color: var(--muted); }
+.theme-fusion .fx-pv-fonc-legende span { display: inline-flex; align-items: center; gap: 7px; }
+.theme-fusion .fx-pv-fonc-legende .sw { display: inline-block; width: 14px; height: 9px; flex: none; }
+.theme-fusion .fx-pv-fonc-legende .sw.plus { background: var(--ocre); }
+.theme-fusion .fx-pv-fonc-legende .sw.moins { background: var(--bleu); }
+.theme-fusion .fx-pv-fonc-legende .sw.mid { width: 1px; height: 14px; margin: 0 6px; background: var(--ink-2); }
+.theme-fusion .fx-pv-fonc-row .ecart { display: none; }
+@media (max-width: 700px) {
+  .theme-fusion .fx-pv-fonc-row { grid-template-columns: minmax(0, 1fr) auto 34px; column-gap: 10px; row-gap: 7px; padding: 11px 0; }
+  .theme-fusion .fx-pv-fonc-row > .n { grid-column: 1; grid-row: 1; }
+  .theme-fusion .fx-pv-fonc-row > .fx-v3-amt { grid-column: 2; grid-row: 1; }
+  .theme-fusion .fx-pv-fonc-row > .p { grid-column: 3; grid-row: 1; }
+  .theme-fusion .fx-pv-fonc-row > .bande { grid-column: 1; grid-row: 2; }
+  .theme-fusion .fx-pv-fonc-row > .ecart { grid-column: 2 / 4; grid-row: 2; display: block; font-size: 11.5px; line-height: 1; color: var(--muted); white-space: nowrap; text-align: right; }
+  .theme-fusion .fx-pv-fonc-row > .ecart b { font-weight: 700; }
+  .theme-fusion .fx-pv-fonc-row > .ecart b.plus { color: var(--ocre); }
+  .theme-fusion .fx-pv-fonc-row > .ecart b.moins { color: var(--bleu); }
+  /* Les lignes sans comparaison (reversé, non ventilé) : la barre passe dessous
+     et l'explication, que la colonne étroite écrasait, reprend toute la largeur. */
+  .theme-fusion .fx-pv-fonc-row > .bar { grid-column: 1 / -1; grid-row: 2; }
+  .theme-fusion .fx-pv-fonc-row .dont { display: block; }
+}
+
+/* ── Mobile, suite de l'audit (2026-09-13) ─────────────────────────────── */
+/* « Comparer » suit la grille : la grille pose déjà son filet et son espace,
+   le titre n'en rajoute pas un second (138 px de vide et deux traits). */
+.theme-fusion .fx-pv-grid + .fx-pv-section > .fx-v3-h2:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+/* Les deux colonnes « financement / ce qui est construit » : un souffle sous le
+   paragraphe, que l'intitulé en capitales touchait. */
+.theme-fusion .fx-pv-two { margin-top: 20px; }
+/* Le sélecteur d'année ne se sépare pas de « dépensés en ». */
+.theme-fusion .fx-pv-nowrap { white-space: nowrap; }
+/* Dans les fiches, un montant ne se coupe pas entre le nombre et son unité. */
+.theme-fusion .fx-fonc-lignes .l > .tnum { white-space: nowrap; }
+@media (max-width: 900px) {
+  /* Les titres gris servaient la grille à deux colonnes du grand écran ;
+     empilés sur téléphone, ils passaient pour une section désactivée. */
+  .theme-fusion .fx-pv-section .fx-v3-h2 { color: var(--ink); }
+}

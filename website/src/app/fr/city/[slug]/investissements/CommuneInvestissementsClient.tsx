@@ -53,7 +53,7 @@ export default function CommuneInvestissementsClient({
     <div className="theme-fusion">
       <Navbar />
       <main id="main-content" tabIndex={-1}>
-        <div className="fx-wrap" style={{ padding: "48px 0" }}>
+        <div className="fx-wrap" style={{ paddingTop: 48, paddingBottom: 48 }}>
           <SectionHead
             kind="investissements"
             title={`${commune.nom} — ${t("fx.natinv.kicker")}`}

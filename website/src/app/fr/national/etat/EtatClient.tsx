@@ -48,7 +48,7 @@ export default function EtatClient({
     return (
       <div className="theme-fusion">
         <Navbar />
-        <main id="main-content" tabIndex={-1} className="fx-wrap" style={{ padding: "120px 0", minHeight: "60vh" }}>
+        <main id="main-content" tabIndex={-1} className="fx-wrap" style={{ paddingTop: 120, paddingBottom: 120, minHeight: "60vh" }}>
           <p>{t("etat.no_data")}</p>
         </main>
         <Footer />
@@ -106,7 +106,7 @@ export default function EtatClient({
       <main id="main-content" tabIndex={-1}>
         <h1 className="fx-sr-only">{t("etat.hero.title")}</h1>
         {/* Hero ─────────────────────────────────────────────────────── */}
-        <section className="fx-wrap" style={{ padding: "60px 0 36px" }}>
+        <section className="fx-wrap" style={{ paddingTop: 60, paddingBottom: 36 }}>
           <SectionHead
             number="01"
             kind={t("etat.section.kind")}
@@ -156,7 +156,7 @@ export default function EtatClient({
         </section>
 
         {/* Mission breakdown ───────────────────────────────────────── */}
-        <section className="fx-wrap" style={{ padding: "20px 0 40px" }}>
+        <section className="fx-wrap" style={{ paddingTop: 20, paddingBottom: 40 }}>
           <SectionHead
             number="02"
             kind={t("etat.missions.kind")}

@@ -68,7 +68,7 @@ export default function CityClient({
     return (
       <div className="theme-fusion">
         <Navbar />
-        <main id="main-content" tabIndex={-1} className="fx-wrap" style={{ padding: "80px 0 120px", minHeight: "60vh" }}>
+        <main id="main-content" tabIndex={-1} className="fx-wrap" style={{ paddingTop: 80, paddingBottom: 120, minHeight: "60vh" }}>
           <SectionHead
             number="01"
             kind={t("city.section.kind")}
@@ -237,7 +237,7 @@ export default function CityClient({
 
       <main id="main-content" tabIndex={-1}>
         {/* Hero ─────────────────────────────────────────────────────── */}
-        <section className="fx-wrap" style={{ padding: "60px 0 32px" }}>
+        <section className="fx-wrap" style={{ paddingTop: 60, paddingBottom: 32 }}>
           <SectionHead
             number="01"
             kind={t("city.section.kind")}
@@ -311,7 +311,7 @@ export default function CityClient({
         </section>
 
         {/* Flow: revenues → city → expenses ─────────────────────────── */}
-        <section className="fx-wrap" style={{ padding: "20px 0 40px" }}>
+        <section className="fx-wrap" style={{ paddingTop: 20, paddingBottom: 40 }}>
           <SectionHead
             number="02"
             kind={t("city.flow.kind")}
@@ -333,7 +333,7 @@ export default function CityClient({
         </section>
 
         {/* Evolution ────────────────────────────────────────────────── */}
-        <section className="fx-wrap" style={{ padding: "20px 0 40px" }}>
+        <section className="fx-wrap" style={{ paddingTop: 20, paddingBottom: 40 }}>
           <SectionHead
             number="03"
             kind={t("city.evolution.kind")}
@@ -361,7 +361,7 @@ export default function CityClient({
 
         {/* Capacité de désendettement (indicateur santé financière) ─── */}
         {capDesend && (
-          <section className="fx-wrap" style={{ padding: "0 0 36px" }}>
+          <section className="fx-wrap" style={{ paddingBottom: 36 }}>
             <div className="fx-cap-desend">
               <div className="fx-cap-desend-num tnum">
                 {capDesend.years.toLocaleString(numLocale(locale), {
@@ -394,7 +394,7 @@ export default function CityClient({
         )}
 
         {/* Peer compare ─────────────────────────────────────────────── */}
-        <section className="fx-wrap" style={{ padding: "20px 0 80px" }}>
+        <section className="fx-wrap" style={{ paddingTop: 20, paddingBottom: 80 }}>
           <SectionHead
             number="04"
             kind={t("city.peers.kind")}
@@ -473,7 +473,7 @@ export default function CityClient({
 
           if (cityPoints.length === 0) return null;
           return (
-            <section className="fx-wrap" style={{ padding: "20px 0 80px" }}>
+            <section className="fx-wrap" style={{ paddingTop: 20, paddingBottom: 80 }}>
               <SectionHead
                 number="05"
                 kind={t("city.map.kind")}
@@ -516,7 +516,7 @@ export default function CityClient({
 
         {/* Marchés publics ─────────────────────────────────────────── */}
         {marches && marches.aggregates.total_count > 0 && (
-          <section className="fx-wrap" style={{ padding: "20px 0 80px" }}>
+          <section className="fx-wrap" style={{ paddingTop: 20, paddingBottom: 80 }}>
             <SectionHead
               number="06"
               kind={t("city.marches.kind")}

@@ -122,7 +122,7 @@ export default function FiscaliteClient({ fiscalite }: { fiscalite: EurostatFisc
     return (
       <div className="theme-fusion">
         <Navbar />
-        <main id="main-content" tabIndex={-1} className="fx-wrap" style={{ padding: "120px 0", minHeight: "60vh" }}>
+        <main id="main-content" tabIndex={-1} className="fx-wrap" style={{ paddingTop: 120, paddingBottom: 120, minHeight: "60vh" }}>
           <p>{t("fiscalite.no_data")}</p>
         </main>
         <Footer />
@@ -196,7 +196,7 @@ export default function FiscaliteClient({ fiscalite }: { fiscalite: EurostatFisc
       <main id="main-content" tabIndex={-1}>
         <h1 className="fx-sr-only">{t("fiscalite.hero.title")}</h1>
         {/* Hero ─────────────────────────────────────────────────────── */}
-        <section className="fx-wrap" style={{ padding: "60px 0 36px" }}>
+        <section className="fx-wrap" style={{ paddingTop: 60, paddingBottom: 36 }}>
           <SectionHead
             number="01"
             kind={t("fiscalite.section.kind")}
@@ -254,7 +254,7 @@ export default function FiscaliteClient({ fiscalite }: { fiscalite: EurostatFisc
         </section>
 
         {/* Breakdown ────────────────────────────────────────────────── */}
-        <section className="fx-wrap" style={{ padding: "20px 0 40px" }}>
+        <section className="fx-wrap" style={{ paddingTop: 20, paddingBottom: 40 }}>
           <SectionHead
             number="02"
             kind={t("fiscalite.breakdown.kind")}
@@ -287,7 +287,7 @@ export default function FiscaliteClient({ fiscalite }: { fiscalite: EurostatFisc
         </section>
 
         {/* Evolution ────────────────────────────────────────────────── */}
-        <section className="fx-wrap" style={{ padding: "20px 0 40px" }}>
+        <section className="fx-wrap" style={{ paddingTop: 20, paddingBottom: 40 }}>
           <SectionHead
             number="03"
             kind={t("fiscalite.evolution.kind")}
@@ -311,7 +311,7 @@ export default function FiscaliteClient({ fiscalite }: { fiscalite: EurostatFisc
         </section>
 
         {/* Peer compare ─────────────────────────────────────────────── */}
-        <section className="fx-wrap" style={{ padding: "20px 0 80px" }}>
+        <section className="fx-wrap" style={{ paddingTop: 20, paddingBottom: 80 }}>
           <SectionHead
             number="04"
             kind={t("fiscalite.peer.kind")}
