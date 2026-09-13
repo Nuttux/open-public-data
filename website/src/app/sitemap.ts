@@ -7,6 +7,7 @@ import { listAllCommunesMeta, loadAllCommunesGeneratedAt } from '@/lib/all-commu
 import fonctionsManifest from '@/data/communes-fonctions-manifest.json';
 import { marchesManifestSlugs } from '@/lib/commune-marches';
 import { MARCHES_EXPLORER_MIN } from '@/app/fr/city/[slug]/page-ville-data';
+import { comparePilotPaths } from '@/lib/compare-pairs';
 import { hasDedicatedRoutes } from '@/lib/cities';
 import { listDataDir } from '@/lib/data/read';
 import {
@@ -225,6 +226,16 @@ function marchesChunkCount(): number {
   return Math.max(1, Math.ceil(communeMarchesPaths().length / CHUNK_SIZE));
 }
 
+/**
+ * Deux communes face à face, en pilote borné (lib/compare-pairs.ts) : une
+ * comparaison par commune de 10 000 habitants ou plus, celle que sa page
+ * propose, sous sa seule adresse canonique. Les autres comparaisons restent
+ * hors sitemap.
+ */
+function comparePilotChunkCount(): number {
+  return Math.max(1, Math.ceil(comparePilotPaths().length / CHUNK_SIZE));
+}
+
 /** Segments of the shared layout below, the one www and fr are served in. */
 function globalSegmentCount(): number {
   return (
@@ -235,7 +246,8 @@ function globalSegmentCount(): number {
     brChunkCount() +
     fonctionChunkCount() +
     natureChunkCount() +
-    marchesChunkCount()
+    marchesChunkCount() +
+    comparePilotChunkCount()
   );
 }
 
@@ -251,8 +263,9 @@ export async function generateSitemaps() {
   // Segments N+M+F+1..+B      = Brazilian pages (Recife).
   // Segments ..+P             = commune × politique publique.
   // Segments ..+Q             = commune × forme de dépense.
-  // Segments ..+R             = explorateur des marchés d'une commune — en
-  //                             dernier, pour que les ids déjà soumis ne bougent pas.
+  // Segments ..+R             = explorateur des marchés d'une commune.
+  // Segments ..+C             = comparaisons du pilote — les familles nouvelles
+  //                             vont en dernier, pour que les ids déjà soumis ne bougent pas.
   // A packed host (PACKED_LOCALES) numbers its own segments from 0, so the
   // ids must cover whichever layout is longer.
   const count = Math.max(globalSegmentCount(), ...PACKED_LOCALES.map(packedChunkCount));
@@ -268,6 +281,7 @@ function entityFamilies(): Array<[number, () => string[]]> {
     [fonctionChunkCount(), fonctionPaths],
     [natureChunkCount(), naturePaths],
     [marchesChunkCount(), communeMarchesPaths],
+    [comparePilotChunkCount(), comparePilotPaths],
   ];
 }
 

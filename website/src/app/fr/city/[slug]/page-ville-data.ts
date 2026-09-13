@@ -11,6 +11,7 @@ import { loadMaire } from "@/lib/commune-maires";
 import { loadTaux, TAUX_SOURCE, type TauxCommune } from "@/lib/commune-taux";
 import { loadCommuneFonctions, FONCTIONS_SOURCE } from "@/lib/commune-fonctions";
 import type { RelatedBlock, RelatedRow } from "@/components/fiche/RelatedLinks";
+import { compareOptions, defaultOption } from "@/lib/compare-pairs";
 import type { CompareEntry, PageVilleProps } from "./PageVilleClient";
 
 export const SOURCES = {
@@ -33,23 +34,6 @@ function entry(slug: string): CompareEntry | null {
   for (const k of COMPARE_KEYS) kpis[k] = c.kpis?.[k]?.eur_hab ?? null;
   const tx = loadTaux(c.insee);
   return { slug: c.slug, nom: c.nom, pop: c.pop, kpis, taux: tx ? { annee: tx.annee, tfb: tx.tfb, mediane: tx.mediane } : null };
-}
-
-/**
- * Les communes qu'on propose face à celle-ci : le même département, classées
- * par proximité de population, avec un budget publié. La voisine par défaut
- * est la plus proche en taille.
- */
-export function compareOptions(slug: string, limit = 60): { slug: string; nom: string; pop: number }[] {
-  const me = findCommuneByAny(slug);
-  if (!me) return [];
-  return listAllCommunesMeta()
-    .filter((c) => c.dep_name === me.dep_name && c.slug !== slug && !hasDedicatedRoutes(c.slug))
-    .filter((c) => getCommuneCapabilities(c.slug).budget.nature)
-    .sort((a, b) => Math.abs(a.pop - me.pop) - Math.abs(b.pop - me.pop))
-    .slice(0, limit)
-    .map((c) => ({ slug: c.slug, nom: c.nom, pop: c.pop }))
-    .sort((a, b) => b.pop - a.pop);
 }
 
 export async function loadPageVille(slug: string, requestedYear?: number, en = false, vs?: string): Promise<Omit<PageVilleProps, "related"> & { related: RelatedBlock | null } | null> {
@@ -100,7 +84,9 @@ export async function loadPageVille(slug: string, requestedYear?: number, en = f
   const me = entry(slug);
   const options = compareOptions(slug);
   const idx = loadAllCommunesIndex();
-  const defaultOther = options.length ? options.slice().sort((a, b) => Math.abs(a.pop - commune.pop) - Math.abs(b.pop - commune.pop))[0] : null;
+  // La voisine par défaut, la plus proche en taille — la même que le pilote du
+  // sitemap déclare (lib/compare-pairs.ts).
+  const defaultOther = defaultOption(options, commune.pop);
   // `?vs=` : la commune que le lecteur a choisie, n'importe laquelle des
   // 34 900 — la liste du département n'est plus qu'une suggestion.
   const chosen = vs ? findCommuneByAny(vs) : null;

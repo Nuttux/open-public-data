@@ -5465,6 +5465,7 @@
    "./public/data/subventions/index.json"
   ],
   "/app/fr/compare/\\[a\\]/\\[b\\]/page": [
+   "./public/data/communes-all/_meta.json",
    "./public/data/communes-all/index.json"
   ],
   "/app/fr/national/budget/page": [
