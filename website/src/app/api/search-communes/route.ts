@@ -23,13 +23,15 @@ export async function GET(req: Request) {
   const q = norm(qRaw);
   const all = listAllCommunesMeta();
 
-  // Score: 3 = startsWith, 2 = word boundary match, 1 = substring
+  // Score: 5 = exact name (every homonym first: the four Saint-Denis before
+  // Saint-Denis-en-Val), 3 = startsWith, 2 = word boundary match, 1 = substring
   type Scored = { score: number; pop: number; entry: (typeof all)[number] };
   const matches: Scored[] = [];
   for (const c of all) {
     const name = norm(c.nom);
     let score = 0;
-    if (name.startsWith(q)) score = 3;
+    if (name === q) score = 5;
+    else if (name.startsWith(q)) score = 3;
     else if (name.includes(` ${q}`)) score = 2;
     else if (name.includes(q)) score = 1;
     // Match on INSEE code too (5 digits)

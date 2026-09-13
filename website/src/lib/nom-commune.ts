@@ -29,3 +29,16 @@ export function aNom(nom: string): string {
   if (/^Les\s/.test(nom)) return `aux ${nom.slice(4)}`;
   return `à ${nom}`;
 }
+
+/** Le slug d'une commune dont le nom est partagé porte son code INSEE
+ *  (sync_ofgl_all_communes.py) : « saint-denis-93066 », Corse « …-2a004 ». */
+const SUFFIXE_INSEE = /-\d[\dab]\d{3}$/i;
+
+/**
+ * « Saint-Denis (Seine-Saint-Denis) » quand plusieurs communes portent ce nom,
+ * « Pantin » sinon. Une liste qui écrit deux fois « Saint-Denis » ne laisse pas
+ * choisir : le département lève l'ambiguïté, là où on lit le nom.
+ */
+export function nomDistinct(c: { nom: string; slug: string; dep_name?: string | null }): string {
+  return c.dep_name && SUFFIXE_INSEE.test(c.slug) ? `${c.nom} (${c.dep_name})` : c.nom;
+}
