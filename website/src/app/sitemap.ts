@@ -5,7 +5,7 @@ import { brEntityPaths, frEntityPaths, frenchCitySectionPaths, sfBrowsePaths } f
 import { listCities } from '@/lib/cities';
 import { listAllCommunesMeta, loadAllCommunesGeneratedAt } from '@/lib/all-communes';
 import fonctionsManifest from '@/data/communes-fonctions-manifest.json';
-import { marchesManifestSlugs } from '@/lib/commune-marches';
+import { contratsSitemapSegments, loadContratsSitemapSegment, marchesManifestSlugs } from '@/lib/commune-marches';
 import { MARCHES_EXPLORER_MIN } from '@/app/fr/city/[slug]/page-ville-data';
 import { comparePilotPaths } from '@/lib/compare-pairs';
 import { hasDedicatedRoutes } from '@/lib/cities';
@@ -236,6 +236,22 @@ function comparePilotChunkCount(): number {
   return Math.max(1, Math.ceil(comparePilotPaths().length / CHUNK_SIZE));
 }
 
+/**
+ * Les fiches contrat des communes (~500 000 adresses). Les segments sont
+ * préparés à l'export (build_contrats_sitemap.py) et lus dans le bucket à
+ * la demande, un fichier par segment ; le manifeste engagé ne porte que leur
+ * nombre. Zéro segment tant qu'aucun export ne les a écrits — la famille est
+ * en dernier, les ids déjà soumis ne bougent pas.
+ */
+function contratsChunkCount(): number {
+  return contratsSitemapSegments();
+}
+/** Premier id des segments de contrats dans le plan partagé. */
+function contratsFirstId(): number {
+  return 1 + chunkCount() + entityFamilies().reduce((n, [count]) => n + count, 0);
+}
+const CONTRATS_SAMPLE_PATH = '/fr/city/pantin/marche/x';
+
 /** Segments of the shared layout below, the one www and fr are served in. */
 function globalSegmentCount(): number {
   return (
@@ -247,7 +263,8 @@ function globalSegmentCount(): number {
     fonctionChunkCount() +
     natureChunkCount() +
     marchesChunkCount() +
-    comparePilotChunkCount()
+    comparePilotChunkCount() +
+    contratsChunkCount()
   );
 }
 
@@ -264,8 +281,10 @@ export async function generateSitemaps() {
   // Segments ..+P             = commune × politique publique.
   // Segments ..+Q             = commune × forme de dépense.
   // Segments ..+R             = explorateur des marchés d'une commune.
-  // Segments ..+C             = comparaisons du pilote — les familles nouvelles
-  //                             vont en dernier, pour que les ids déjà soumis ne bougent pas.
+  // Segments ..+C             = comparaisons du pilote.
+  // Segments ..+K             = fiches contrat des communes (lues dans le bucket) —
+  //                             les familles nouvelles vont en dernier, pour que
+  //                             les ids déjà soumis ne bougent pas.
   // A packed host (PACKED_LOCALES) numbers its own segments from 0, so the
   // ids must cover whichever layout is longer.
   const count = Math.max(globalSegmentCount(), ...PACKED_LOCALES.map(packedChunkCount));
@@ -315,6 +334,9 @@ function globalIdsFor(locale: SiteLocale): number[] {
       for (let i = 1; i <= count; i++) ids.push(offset + i);
     }
     offset += count;
+  }
+  if (localesForPath(CONTRATS_SAMPLE_PATH).includes(locale)) {
+    for (let i = 1; i <= contratsChunkCount(); i++) ids.push(offset + i);
   }
   return ids;
 }
@@ -406,7 +428,7 @@ export default async function sitemap({
   // nothing from /us; the Portuguese host lists /br only.
   const locale = await readSiteLocale();
   const base = LOCALE_HOSTS[locale];
-  const entries = isPacked(locale) ? packedSegment(locale, id) : globalSegment(id);
+  const entries = isPacked(locale) ? packedSegment(locale, id) : await sharedSegment(id);
   return entries
     .filter(servedOn(locale))
     .map((e) => ({ ...e, url: `${base}${e.url.slice(SITE_URL.length)}` }));
@@ -484,6 +506,16 @@ function communeEntries(communes: CommuneMeta[]): MetadataRoute.Sitemap {
     // Lower priority for tail communes; higher for bigger pop.
     priority: c.pop > 50000 ? 0.4 : c.pop > 10000 ? 0.3 : 0.2,
   }));
+}
+
+/** One segment of the shared layout — the contract fiches come from the
+ *  bucket, everything else from the local data. */
+async function sharedSegment(id: number): Promise<MetadataRoute.Sitemap> {
+  const first = contratsFirstId();
+  if (id >= first && id < first + contratsChunkCount()) {
+    return (await loadContratsSitemapSegment(id - first)).map(entityEntry);
+  }
+  return globalSegment(id);
 }
 
 /** One segment of the shared layout. */
