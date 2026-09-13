@@ -93,6 +93,12 @@ jobs:
       - name: Run frontend fetch audit
         run: python pipeline/scripts/audit/check_frontend_fetches.py --strict
 
+      # Hors ligne, sans dépendance : rejoue les cas où une réponse Gallica
+      # appariait un fascicule avec la date de son voisin (Bulletin « de 1912 »
+      # parlant d'une démolition de 1967). Échoue si l'appariement régresse.
+      - name: Auto-test des dates du Bulletin municipal
+        run: python pipeline/scripts/sync/sync_gallica_bmo.py --self-test
+
   publication-coverage:
     # Le crible qui manquait le 2026-09-10 : l'audit qualité tourne DANS
     # l'entrepôt et ne peut pas voir ce qui n'y est jamais entré. Celui-ci part
