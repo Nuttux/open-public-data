@@ -3555,7 +3555,7 @@ const fr: Record<string, string> = {
   'fx.fonc.sens_egal': 'Comme ailleurs.',
   'fx.fonc.sens_un_peu_moins': 'Un peu moins qu’ailleurs.',
   'fx.fonc.sens_moins': 'Moins qu’ailleurs.',
-  'fx.pick.placeholder': 'Tapez le nom d’une commune',
+  'fx.pick.placeholder': 'Chercher une commune de France…',
   'fx.pick.suggest': 'Même département, taille proche',
   'fx.pick.results': 'Communes',
   'fx.pick.loading': 'Recherche…',

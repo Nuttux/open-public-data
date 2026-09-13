@@ -20369,3 +20369,8 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
   .theme-fusion .fx-picker-pop li { flex-direction: column; gap: 2px; }
   .theme-fusion .fx-picker-pop .meta { text-align: left; }
 }
+
+/* La commune comparée est dite en toutes lettres ; le champ, vide, sous elle. */
+.theme-fusion .fx-pv-pick-now { flex-basis: 100%; font-size: 15px; }
+.theme-fusion .fx-pv-pick-now b { font-weight: 700; }
+.theme-fusion .fx-pv-pick .fx-picker { flex-basis: 100%; }

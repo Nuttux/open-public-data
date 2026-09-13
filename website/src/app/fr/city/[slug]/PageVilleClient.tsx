@@ -917,7 +917,9 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
             <Reveal>{() => (<>
               <H2 id="comparer">{t("fx.pv.comparer")}</H2>
               <div className="fx-pv-pick">
-                <span>{fill("fx.pv.face_a", { nom: commune.nom })}</span>
+                <span className="fx-pv-pick-now">
+                  {fill("fx.pv.face_a", { nom: commune.nom })}{other ? <> <b>{other.nom}</b></> : null}
+                </span>
                 <CommunePicker
                   label={t("fx.pv.changer")}
                   exclude={commune.slug}

@@ -3558,7 +3558,7 @@ const en: Record<string, string> = {
   'fx.fonc.sens_egal': 'Same as elsewhere.',
   'fx.fonc.sens_un_peu_moins': 'Slightly less than elsewhere.',
   'fx.fonc.sens_moins': 'Less than elsewhere.',
-  'fx.pick.placeholder': 'Type a town’s name',
+  'fx.pick.placeholder': 'Search any town in France…',
   'fx.pick.suggest': 'Same département, similar size',
   'fx.pick.results': 'Towns',
   'fx.pick.loading': 'Searching…',

@@ -9,7 +9,12 @@ export type CommuneChoice = { slug: string; nom: string; pop: number; dep_name?:
  * Choisir une commune en tapant son nom — n'importe laquelle des 34 900, pas
  * seulement celles du département que proposait l'ancienne liste déroulante.
  *
- * Vide ou inchangé, le champ propose des communes de taille proche. Dès deux
+ * Le champ reste VIDE, avec « Comparer avec une autre commune de France… » :
+ * pré-rempli du nom de la commune comparée, il se lisait comme une valeur figée
+ * et personne ne devinait qu'on pouvait y taper (retour du 13 septembre). La
+ * commune comparée est dite au-dessus, par le parent.
+ *
+ * Vide, le champ propose des communes de taille proche. Dès deux
  * lettres, il interroge /api/search-communes (sans accents, code INSEE
  * compris). Clavier : flèches, Entrée, Échap. Le choix est rendu au parent,
  * qui décide où aller.
@@ -33,19 +38,14 @@ export default function CommunePicker({
   const int = new Intl.NumberFormat(locale === "en" ? "en-GB" : "fr-FR", { maximumFractionDigits: 0 });
   const id = useId();
   const inputRef = useRef<HTMLInputElement>(null);
-  const [q, setQ] = useState(current?.nom ?? "");
+  const [q, setQ] = useState("");
   const [open, setOpen] = useState(false);
   const [results, setResults] = useState<CommuneChoice[] | null>(null);
   const [loading, setLoading] = useState(false);
   const [active, setActive] = useState(0);
 
-  // Une nouvelle comparaison arrive du serveur : le champ reprend son nom.
-  useEffect(() => {
-    setQ(current?.nom ?? "");
-  }, [current?.slug, current?.nom]);
-
   const typed = q.trim();
-  const searching = typed.length >= 2 && typed !== current?.nom;
+  const searching = typed.length >= 2;
 
   useEffect(() => {
     if (!searching) {
@@ -59,7 +59,7 @@ export default function CommunePicker({
       fetch(`/api/search-communes?q=${encodeURIComponent(typed)}`, { signal: ctrl.signal })
         .then((r) => (r.ok ? r.json() : { results: [] }))
         .then((d: { results: CommuneChoice[] }) => {
-          setResults(d.results.filter((c) => c.slug !== exclude).slice(0, 8));
+          setResults(d.results.filter((c) => c.slug !== exclude && c.slug !== current?.slug).slice(0, 8));
           setActive(0);
           setLoading(false);
         })
@@ -73,14 +73,14 @@ export default function CommunePicker({
       clearTimeout(timer);
       ctrl.abort();
     };
-  }, [typed, searching, exclude]);
+  }, [typed, searching, exclude, current?.slug]);
 
   const list = searching ? results ?? [] : suggestions;
   const listId = `${id}-list`;
 
   const pick = (c: CommuneChoice) => {
     setOpen(false);
-    setQ(c.nom);
+    setQ("");
     inputRef.current?.blur();
     onPick(c);
   };
@@ -110,10 +110,7 @@ export default function CommunePicker({
         autoCorrect="off"
         spellCheck={false}
         enterKeyHint="search"
-        onFocus={(e) => {
-          setOpen(true);
-          e.currentTarget.select();
-        }}
+        onFocus={() => setOpen(true)}
         // Le clic sur une proposition passe avant la fermeture.
         onBlur={() => setTimeout(() => setOpen(false), 120)}
         onChange={(e) => {
@@ -135,7 +132,7 @@ export default function CommunePicker({
             }
           } else if (e.key === "Escape") {
             setOpen(false);
-            setQ(current?.nom ?? "");
+            setQ("");
           }
         }}
       />
