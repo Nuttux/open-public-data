@@ -19469,6 +19469,22 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-v3-years > button:hover i { filter: brightness(.85); }
 .theme-fusion .fx-v3-years > button.on i { box-shadow: inset 0 0 0 1px var(--ink); }
 .theme-fusion .fx-v3-years > button:focus-visible { outline: 2px solid var(--bleu); outline-offset: 2px; }
+/* Les deux bouts de l'axe portent leur montant : sans survol ni clic, le
+ * lecteur lit d'où la série part et où elle arrive. */
+.theme-fusion .fx-v3-years .yr .yv { color: var(--ink-2); }
+/* Au survol (souris seulement : sur un téléphone le survol reste collé après
+ * un tap, et le panneau donne déjà le montant), l'année et son montant
+ * au-dessus de la barre. Aux extrémités, ancrée au bord pour ne pas déborder. */
+@media (hover: hover) {
+  .theme-fusion .fx-v3-years > [data-tip]:hover::after {
+    content: attr(data-tip); position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%);
+    padding: 4px 7px; background: var(--ink); color: #fff; font-family: var(--f-mono); font-size: 11px; line-height: 1.2;
+    white-space: nowrap; pointer-events: none; z-index: 3;
+  }
+  .theme-fusion .fx-v3-years > [data-tip].tl:hover::after { left: 0; transform: none; }
+  .theme-fusion .fx-v3-years > [data-tip].tr:hover::after { left: auto; right: 0; transform: none; }
+}
+.theme-fusion .fx-v3-delib .hd .ct { color: var(--muted); }
 /* Le panneau des décisions : une ligne par délibération, la référence puis le
  * titre entier de la Ville. Pas de tableau, pas d'encadré — la grammaire de la
  * fiche est une suite de lignes. */
