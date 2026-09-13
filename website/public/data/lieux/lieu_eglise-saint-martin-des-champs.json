@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "generated_at": "2026-09-13T00:34:52.388738+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "eglise-saint-martin-des-champs",
  "name": "Église Saint-Martin-des-Champs",
@@ -18,20 +18,21 @@
  },
  "seuil_commun": 2010,
  "wiki": {
-  "extract": null,
-  "url": null,
+  "extract": "L'église Saint-Martin-des-Champs est située 36 rue Albert-Thomas dans le 10e arrondissement de Paris.",
+  "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Saint-Martin-des-Champs_de_Paris",
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Église Saint-Martin-des-Champs is located at 36 rue Albert-Thomas in the 10th arrondissement of Paris."
  },
  "stats": {
   "n_delibs": 805,
   "delibs_span": [
-   1995,
-   2026
+   1996,
+   1996
   ],
-  "n_bmo_brut": 0,
+  "n_bmo_brut": 1997,
   "n_bmo_verifies": null,
   "invest_total_eur": 2828495.0,
   "invest_annees": [
@@ -40,13 +41,24 @@
   "lecture_mode": "titre nommant le lieu (1 trouvés)",
   "lecture_mode_en": "title naming the place (1 found)",
   "n_lus": 1,
-  "n_lieu": null
+  "n_lieu": 1
  },
  "subventions_exploitant": null,
  "residents": [],
  "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
+ "synthese_fr": "En juillet 1996, le Conseil de Paris, siégeant en formation de Conseil municipal, approuve le principe de travaux de réfection des installations électriques et des installations d'éclairage de l'église Saint-Martin-des-Champs, au 36, rue Albert-Thomas (10e), sur un projet de délibération du Maire daté du 16 juillet 1996, rapporté par Mme Hélène MACE de LEPINAY au nom de la 4e Commission, vu l'avis du Conseil du 10e arrondissement en date du 8 juillet 1996. La délibération prévoit que ces travaux feront l'objet d'un marché sur appel d'offres ouvert, ou d'un marché négocié si l'appel d'offres est déclaré infructueux, après avis favorable de la Commission d'appel d'offres, et approuve l'acte d'engagement, le règlement de consultation et les cahiers des clauses administratives et techniques particulières. Le Conseil autorise le Maire à signer le marché avec l'attributaire désigné au terme de cette procédure ; la dépense correspondant à la tranche ferme sera imputée au budget d'investissement de la Ville (chapitre 900). Le texte approuve un principe et autorise une signature : il ne désigne pas l'attributaire et ne décrit pas les travaux comme réalisés.",
+ "moments": [
+  {
+   "id": "58288",
+   "seance": "JUILLET 1996",
+   "fait": "Le Conseil de Paris approuve le principe de la réfection des installations électriques et d'éclairage de l'église et autorise le Maire à signer le marché de travaux correspondant.",
+   "pourquoi": "principe de réfection électrique et d'éclairage approuvé ; marché sur appel d'offres ouvert, ou négocié si infructueux",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58288",
+   "fait_en": "The Council of Paris approves in principle the refurbishment of the church's electrical and lighting installations and authorises the Mayor to sign the corresponding works contract.",
+   "pourquoi_en": "electrical and lighting refurbishment approved in principle; contract through an open call for tenders, or negotiated if unsuccessful"
+  }
+ ],
  "montants": [],
  "bmo_extraits": [],
  "bmo_recit": null,
@@ -69,7 +81,7 @@
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22%C3%89glise+Saint-Martin-des-Champs%22%29"
   },
   "invest": {
    "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -79,5 +91,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In July 1996, the Council of Paris, sitting as the Municipal Council, approved in principle works to refurbish the electrical and lighting installations of the Église Saint-Martin-des-Champs, at 36, rue Albert-Thomas (10th arrondissement), on a draft deliberation from the Mayor dated 16 July 1996, presented by Mme Hélène MACE de LEPINAY on behalf of the 4th Commission, having regard to the opinion of the Council of the 10th arrondissement dated 8 July 1996. The deliberation provides that these works will be the subject of a contract awarded through an open call for tenders, or of a negotiated contract if the call for tenders is declared unsuccessful, after a favourable opinion from the Tender Commission, and approves the tender commitment form, the consultation rules and the special administrative and technical specifications. The Council authorises the Mayor to sign the contract with the contractor designated at the end of this procedure; the expenditure corresponding to the firm tranche will be charged to the City's capital budget (chapter 900). The text approves a principle and authorises a signature: it does not name the contractor and does not describe the works as completed."
 }

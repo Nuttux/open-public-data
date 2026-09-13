@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "generated_at": "2026-09-13T00:34:52.388738+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "espci-paris",
  "name": "ESPCI Paris",
@@ -18,27 +18,28 @@
  },
  "seuil_commun": 2010,
  "wiki": {
-  "extract": null,
-  "url": null,
+  "extract": "L’École supérieure de physique et de chimie industrielles de la ville de Paris, ou ESPCI Paris, est l'une des 204 écoles d'ingénieurs françaises accréditées au 1er septembre 2020 à délivrer un diplôme d'ingénieur. Elle est, avec l'École des ingénieurs de la ville de Paris (EIVP), l'une des deux écoles d'ingénieurs de la Ville de Paris.",
+  "url": "https://fr.wikipedia.org/wiki/%C3%89cole_sup%C3%A9rieure_de_physique_et_de_chimie_industrielles_de_la_ville_de_Paris",
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The École supérieure de physique et de chimie industrielles de la ville de Paris, or ESPCI Paris, is one of the 204 French engineering schools accredited as of 1 September 2020 to award an engineering degree. Along with the École des ingénieurs de la ville de Paris (EIVP), it is one of the City of Paris's two engineering schools."
  },
  "stats": {
   "n_delibs": 621,
   "delibs_span": [
-   2001,
-   2026
+   2012,
+   2012
   ],
-  "n_bmo_brut": 0,
+  "n_bmo_brut": 1,
   "n_bmo_verifies": null,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (1 trouvés)",
   "lecture_mode_en": "title naming the place (1 found)",
   "n_lus": 1,
-  "n_lieu": null
+  "n_lieu": 1
  },
  "subventions_exploitant": {
   "nom_fiche": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
@@ -141,8 +142,19 @@
  },
  "residents": [],
  "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
+ "synthese_fr": "En février 2012, le Conseil de Paris examine le projet de délibération DDEEES 32, portant sur un contrat d'objectifs et de moyens entre la Ville de Paris et l'École supérieure de physique et de chimie industrielles de la Ville de Paris (ESPCI ParisTech). Répondant au nom de la 2e Commission, l'adjoint Jean-Louis Missika décrit l'école comme une régie municipale « autonomisée par rapport à la Ville » ; selon lui, ce document définit « en quelque sorte » les droits et devoirs réciproques de la Ville et de l'école, et une série d'indicateurs permet d'évaluer la performance de l'ESPCI. Mme Marinette Bache et M. Jacques Bravo, maire du 9e arrondissement, prennent la parole en faveur du texte. Selon M. Bravo, l'école est surnommée « l'école des prix Nobel », en référence aux travaux des Curie et Joliot-Curie, de Langevin, de Pierre-Gilles de Gennes et de Georges Charpak. Mme Bache évoque aussi l'espace Pierre-Gilles de Gennes, qu'elle décrit comme un espace ouvert au public visant à rapprocher la science des citoyens.",
+ "moments": [
+  {
+   "id": "103883",
+   "seance": "FEVRIER 2012",
+   "fait": "Le Conseil de Paris examine le projet de délibération DDEEES 32 relatif à un contrat d'objectifs et de moyens entre la Ville et l'ESPCI ; selon l'adjoint Jean-Louis Missika, ce document définit « en quelque sorte » les droits et devoirs réciproques des deux parties, et une série d'indicateurs permet d'évaluer la performance de l'école.",
+   "pourquoi": "Contrat d'objectifs et de moyens entre la Ville et l'ESPCI (DDEEES 32)",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=103883",
+   "fait_en": "The Conseil de Paris examines draft deliberation DDEEES 32 concerning a contract of objectives and resources between the City and ESPCI; according to deputy mayor Jean-Louis Missika, this document defines, \"in a way\", the reciprocal rights and duties of the two parties, and a series of indicators makes it possible to assess the school's performance.",
+   "pourquoi_en": "Contract of objectives and resources between the City and ESPCI (DDEEES 32)"
+  }
+ ],
  "montants": [],
  "bmo_extraits": [],
  "bmo_recit": null,
@@ -157,7 +169,7 @@
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22ESPCI+Paris%22%29"
   },
   "invest": {
    "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -167,5 +179,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In February 2012, the Conseil de Paris examines draft deliberation DDEEES 32, concerning a contract of objectives and resources between the City of Paris and the École supérieure de physique et de chimie industrielles de la Ville de Paris (ESPCI ParisTech). Responding on behalf of the 2nd Committee, deputy mayor Jean-Louis Missika describes the school as a municipal agency (régie) \"made autonomous from the City\"; according to him, this document defines, \"in a way\", the reciprocal rights and duties of the City and the school, and a series of indicators makes it possible to assess ESPCI's performance. Ms Marinette Bache and Mr Jacques Bravo, mayor of the 9th arrondissement, speak in favour of the text. According to Mr Bravo, the school is nicknamed \"the school of Nobel Prizes\", in reference to the work of the Curies and the Joliot-Curies, of Langevin, of Pierre-Gilles de Gennes and of Georges Charpak. Ms Bache also mentions the Espace Pierre-Gilles de Gennes, which she describes as a space open to the public aimed at bringing science closer to citizens."
 }

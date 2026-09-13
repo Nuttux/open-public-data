@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "generated_at": "2026-09-13T00:34:52.388738+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "eglise-de-la-sainte-trinite",
  "name": "Église de la Sainte-Trinité",
@@ -23,16 +23,17 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Église de la Sainte-Trinité de Paris is a Roman Catholic religious building located on Place d'Estienne-d'Orves, in the 9th arrondissement of Paris, at the intersection of Rue Blanche, Rue de Clichy, Rue de la Chaussée-d'Antin, Rue Saint-Lazare and Rue de Châteaudun."
  },
  "stats": {
   "n_delibs": 906,
   "delibs_span": [
-   1995,
-   2026
+   2009,
+   2024
   ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
+  "n_bmo_brut": 818,
+  "n_bmo_verifies": 1,
   "invest_total_eur": 15231227.8,
   "invest_annees": [
    "2019",
@@ -43,13 +44,54 @@
   "lecture_mode": "tête du classement Solr (906 documents au total)",
   "lecture_mode_en": "top of the Solr ranking (906 documents total)",
   "n_lus": 42,
-  "n_lieu": null
+  "n_lieu": 4
  },
  "subventions_exploitant": null,
  "residents": [],
  "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
+ "synthese_fr": "En septembre 2009, le projet 2009 DAC 121 porte, selon son intitulé, sur une autorisation à M. le Maire de Paris d'autoriser l'Association diocésaine de Paris à déposer le permis de construire correspondant à l'aménagement d'une chapelle dans l'église ; l'intitulé ne dit pas si ce permis a été déposé ni si la chapelle a été aménagée. En juin 2018, le projet 2018 DAC 745 porte sur une convention d'occupation du domaine public relative à l'installation et à l'exploitation d'un espace d'affichage sur l'échafaudage de restauration de l'église de la Trinité (9e). En octobre 2022, le projet 2022 DAC 512 porte sur un avenant n° 1 à la CODP relative à l'exploitation d'un espace d'affichage sur l'échafaudage de restauration de l'église, avec la société JCDecaux. En février 2024, le projet 2024 DAC 398 porte sur une convention d'occupation du domaine public relative à un espace d'affichage publicitaire sur l'échafaudage de l'église. Aucun de ces intitulés ne cite de montant ni ne décrit les travaux de restauration eux-mêmes.",
+ "moments": [
+  {
+   "id": "34662",
+   "seance": "SEPTEMBRE 2009",
+   "fait": "Le projet 2009 DAC 121 porte sur une autorisation à M. le Maire de Paris d'autoriser l'Association diocésaine de Paris à déposer le permis de construire correspondant à l'aménagement d'une chapelle dans l'église.",
+   "pourquoi": "Autoriser le dépôt d'un permis pour aménager une chapelle",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34662",
+   "fait_en": "Project 2009 DAC 121 concerns an authorization for the Mayor of Paris to authorize the Diocesan Association of Paris to file the building permit application for the fitting-out of a chapel in the church.",
+   "pourquoi_en": "Authorizing the filing of a permit to fit out a chapel"
+  },
+  {
+   "id": "143091",
+   "seance": "JUIN 2018",
+   "fait": "Le projet 2018 DAC 745 porte sur une convention d'occupation du domaine public pour un espace d'affichage sur l'échafaudage de restauration de l'église.",
+   "pourquoi": "Un espace d'affichage sur l'échafaudage de restauration",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=143091",
+   "fait_en": "Project 2018 DAC 745 concerns a public domain occupancy agreement for a display space on the church's restoration scaffolding.",
+   "pourquoi_en": "A display space on the restoration scaffolding"
+  },
+  {
+   "id": "167290",
+   "seance": "OCTOBRE 2022",
+   "fait": "Le projet 2022 DAC 512 porte sur un avenant n° 1 à la CODP relative à l'exploitation d'un espace d'affichage sur l'échafaudage de restauration de l'église, avec la société JCDecaux.",
+   "pourquoi": "Un avenant n° 1 à la CODP, avec la société JCDecaux",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=167290",
+   "fait_en": "Project 2022 DAC 512 concerns Amendment No. 1 to the CODP for the operation of a display space on the church's restoration scaffolding, with the company JCDecaux.",
+   "pourquoi_en": "Amendment No. 1 to the CODP, with the company JCDecaux"
+  },
+  {
+   "id": "174306",
+   "seance": "FEVRIER 2024",
+   "fait": "Le projet 2024 DAC 398 porte sur une convention d'occupation du domaine public pour un espace d'affichage publicitaire sur l'échafaudage de l'église.",
+   "pourquoi": "En 2024, une convention d'affichage publicitaire sur l'échafaudage",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174306",
+   "fait_en": "Project 2024 DAC 398 concerns a public domain occupancy agreement for an advertising display space on the church's scaffolding.",
+   "pourquoi_en": "In 2024, an advertising display agreement on the scaffolding"
+  }
+ ],
  "montants": [],
  "bmo_extraits": [],
  "bmo_recit": null,
@@ -93,7 +135,7 @@
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22%C3%89glise+de+la+Sainte-Trinit%C3%A9%22%29"
   },
   "invest": {
    "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -103,5 +145,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In September 2009, project 2009 DAC 121 concerns, according to its title, an authorization for the Mayor of Paris to authorize the Diocesan Association of Paris to file the building permit application for the fitting-out of a chapel in the church; the title does not say whether this permit was filed or whether the chapel was fitted out. In June 2018, project 2018 DAC 745 concerns a public domain occupancy agreement for the installation and operation of a display space on the restoration scaffolding of the Église de la Trinité (9th). In October 2022, project 2022 DAC 512 concerns Amendment No. 1 to the CODP for the operation of a display space on the church's restoration scaffolding, with the company JCDecaux. In February 2024, project 2024 DAC 398 concerns a public domain occupancy agreement for an advertising display space on the church's scaffolding. None of these titles cites an amount or describes the restoration work itself."
 }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "generated_at": "2026-09-13T00:34:52.388738+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "halle-pajol",
  "name": "Halle Pajol",
@@ -18,33 +18,105 @@
  },
  "seuil_commun": 2010,
  "wiki": {
-  "extract": null,
-  "url": null,
+  "extract": "La ZAC Pajol est une zone d'aménagement concerté située rue Pajol au cœur du quartier de la Chapelle.",
+  "url": "https://fr.wikipedia.org/wiki/ZAC_Pajol",
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The ZAC Pajol is a concerted development zone (zone d'aménagement concerté) located on rue Pajol in the heart of the La Chapelle neighbourhood."
  },
  "stats": {
   "n_delibs": 1066,
   "delibs_span": [
-   1995,
-   2026
+   2007,
+   2020
   ],
-  "n_bmo_brut": 0,
+  "n_bmo_brut": 517,
   "n_bmo_verifies": null,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (9 trouvés)",
   "lecture_mode_en": "title naming the place (9 found)",
   "n_lus": 9,
-  "n_lieu": null
+  "n_lieu": 8
  },
  "subventions_exploitant": null,
  "residents": [],
  "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
+ "synthese_fr": "En décembre 2003, le Conseil de Paris approuve le principe de l'opération « Parquet Pajol », secteur Halle Pajol, et autorise le Maire à solliciter auprès de la Région une subvention dont la recette escomptée est de 60 000 euros. En décembre 2007, il approuve le principe des travaux de réhabilitation de la halle et de création d'un jardin public, puis, en mai 2008, l'attribution du marché de maîtrise d'œuvre à JOURDA Architectes Paris, associée à ECO CITE et IN SITU, et autorise le Maire à déposer les demandes de permis de démolir et de construire. En 2009 et 2010, il approuve les modalités de passation de marchés de prestations intellectuelles (dont l'assistance à maîtrise d'ouvrage), de travaux, d'assurances et de cellule de synthèse, et autorise le Maire à signer l'avenant n° 1 à la convention de groupement de commandes associant la Ville, la SEMAEST et la FUAJ. En février 2012, Mme Frédérique Pigeon déclare en séance que « la halle sera livrée fin 2012 » et qu'elle comprendra notamment une auberge de jeunesse de 330 lits et une bibliothèque, tandis qu'un vœu du groupe UMPPA sur le photovoltaïque donne lieu à un échange sur les panneaux photovoltaïques de la halle. En juillet 2020, le transfert à Enercoop du contrat de revente de l'électricité produite par l'installation photovoltaïque est débattu ; selon l'adjoint Jacques Baudrier, la centrale a été mise en service en 2013 et a produit 446 000 kilowattheures en 2019.",
+ "moments": [
+  {
+   "id": "69122",
+   "seance": "DECEMBRE 2003",
+   "fait": "Le Conseil approuve le principe de l'opération « Parquet Pajol », secteur Halle Pajol, et autorise le Maire à solliciter une subvention régionale, recette escomptée : 60 000 euros.",
+   "pourquoi": "Le Maire autorisé à solliciter la Région pour « Parquet Pajol »",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69122",
+   "fait_en": "The Council approves the principle of the “Parquet Pajol” operation, Halle Pajol sector, and authorizes the Mayor to apply for a regional grant, expected revenue: 60,000 euros.",
+   "pourquoi_en": "The Mayor authorized to apply to the Region for “Parquet Pajol”"
+  },
+  {
+   "id": "54809",
+   "seance": "DECEMBRE 2007",
+   "fait": "Le Conseil approuve le principe des travaux de réhabilitation de la halle et de création d'un jardin public, ainsi que la passation de cinq marchés de prestations intellectuelles.",
+   "pourquoi": "Le principe de la réhabilitation est approuvé",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54809",
+   "fait_en": "The Council approves the principle of works to rehabilitate the hall and create a public garden, as well as the award of five intellectual services contracts.",
+   "pourquoi_en": "The principle of the rehabilitation is approved"
+  },
+  {
+   "id": "69662",
+   "seance": "MAI 2008",
+   "fait": "Le Conseil approuve l'attribution de la maîtrise d'œuvre à JOURDA Architectes Paris, associée à ECO CITE et IN SITU, et autorise le Maire à signer ce marché et à déposer les demandes de permis de démolir et de construire.",
+   "pourquoi": "L'équipe de maîtrise d'œuvre est désignée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69662",
+   "fait_en": "The Council approves the award of the design and construction supervision contract to JOURDA Architectes Paris, in association with ECO CITE and IN SITU, and authorizes the Mayor to sign this contract and to file the applications for demolition and building permits.",
+   "pourquoi_en": "The design and construction supervision team is appointed"
+  },
+  {
+   "id": "6716",
+   "seance": "MAI 2008",
+   "fait": "M. Yves Contassot se félicite en séance du choix de confier la réhabilitation de la halle à Hélène Jourda, estimant que « l'on fait bien mieux que le Plan Climat en termes d'efficacité énergétique et de conception ».",
+   "pourquoi": "Un élu salue la conception énergétique retenue",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6716",
+   "fait_en": "Mr Yves Contassot welcomes, during the session, the choice to entrust the rehabilitation of the hall to Hélène Jourda, considering that “we are doing much better than the Climate Plan in terms of energy efficiency and design”.",
+   "pourquoi_en": "A councillor welcomes the energy design chosen"
+  },
+  {
+   "id": "44946",
+   "seance": "MARS 2010",
+   "fait": "Le Conseil approuve les modalités de passation des marchés de travaux et autorise le Maire à signer l'avenant n° 1 à la convention de groupement de commandes.",
+   "pourquoi": "Le mode de passation des marchés de travaux est approuvé",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44946",
+   "fait_en": "The Council approves the award procedures for the works contracts and authorizes the Mayor to sign amendment No. 1 to the joint procurement agreement.",
+   "pourquoi_en": "The award procedure for the works contracts is approved"
+  },
+  {
+   "id": "103898",
+   "seance": "FEVRIER 2012",
+   "fait": "Mme Frédérique Pigeon déclare que « la halle sera livrée fin 2012 » avec auberge de jeunesse et jardins ; sur un vœu UMPPA, l'adjointe s'exprimant au nom de la 8e Commission affirme que l'entreprise avec laquelle l'engagement sur les panneaux photovoltaïques de la halle avait été concrétisé après appel d'offres « a dû se retirer ».",
+   "pourquoi": "Une élue évoque une livraison fin 2012 ; panneaux solaires en débat",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=103898",
+   "fait_en": "Ms Frédérique Pigeon states that “the hall will be delivered at the end of 2012” with a youth hostel and gardens; on a UMPPA motion, the deputy mayor speaking on behalf of the 8th Committee asserts that the company with which the commitment on the hall's photovoltaic panels had been finalized following a call for tenders “had to withdraw”.",
+   "pourquoi_en": "A councillor mentions delivery at the end of 2012; solar panels under debate"
+  },
+  {
+   "id": "156163",
+   "seance": "JUILLET 2020",
+   "fait": "Le transfert à Enercoop du contrat de revente d'électricité est débattu : M. Jean-Noël Aqua (groupe Communiste et Citoyen) déclare « nous ne sommes pas convaincus par ce projet de délibération » et juge le service public « mieux à même de répondre aux enjeux posés » ; selon M. Jacques Baudrier, la centrale « a été mise en service en 2013 ».",
+   "pourquoi": "La centrale solaire, entre coopérative et service public",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156163",
+   "fait_en": "The transfer to Enercoop of the electricity resale contract is debated: Mr Jean-Noël Aqua (Communist and Citizen group) states “we are not convinced by this draft deliberation” and considers the public service “better placed to respond to the challenges at stake”; according to Mr Jacques Baudrier, the plant “was commissioned in 2013”.",
+   "pourquoi_en": "The solar plant, between cooperative and public service"
+  }
+ ],
  "montants": [],
  "bmo_extraits": [],
  "bmo_recit": null,
@@ -311,7 +383,7 @@
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Halle+Pajol%22%29"
   },
   "invest": {
    "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -321,5 +393,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In December 2003, the Council of Paris approves the principle of the “Parquet Pajol” operation, Halle Pajol sector, and authorizes the Mayor to apply to the Region for a grant with expected revenue of 60,000 euros. In December 2007, it approves the principle of works to rehabilitate the hall and create a public garden, then, in May 2008, the award of the design and construction supervision contract (maîtrise d'œuvre) to JOURDA Architectes Paris, in association with ECO CITE and IN SITU, and authorizes the Mayor to file the applications for demolition and building permits. In 2009 and 2010, it approves the award procedures for intellectual services contracts (including project owner support), works, insurance and design coordination (cellule de synthèse) contracts, and authorizes the Mayor to sign amendment No. 1 to the joint procurement agreement bringing together the City, SEMAEST and FUAJ. In February 2012, Ms Frédérique Pigeon states during the session that “the hall will be delivered at the end of 2012” and that it will include, among other things, a 330-bed youth hostel and a library, while a motion by the UMPPA group on photovoltaics gives rise to an exchange about the hall's photovoltaic panels. In July 2020, the transfer to Enercoop of the contract for the resale of electricity produced by the photovoltaic installation is debated; according to deputy mayor Jacques Baudrier, the plant was commissioned in 2013 and produced 446,000 kilowatt-hours in 2019."
 }

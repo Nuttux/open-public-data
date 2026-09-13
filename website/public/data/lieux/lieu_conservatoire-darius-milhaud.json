@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "generated_at": "2026-09-13T00:34:52.388738+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "conservatoire-darius-milhaud",
  "name": "Conservatoire Darius-Milhaud",
@@ -28,11 +28,11 @@
  "stats": {
   "n_delibs": 808,
   "delibs_span": [
-   1995,
-   2026
+   2001,
+   2001
   ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
+  "n_bmo_brut": 27,
+  "n_bmo_verifies": 12,
   "invest_total_eur": 14490025.0,
   "invest_annees": [
    "2019",
@@ -42,13 +42,24 @@
   "lecture_mode": "titre nommant le lieu (1 trouvés)",
   "lecture_mode_en": "title naming the place (1 found)",
   "n_lus": 1,
-  "n_lieu": null
+  "n_lieu": 1
  },
  "subventions_exploitant": null,
  "residents": [],
  "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
+ "synthese_fr": "En juin 2001, sur le rapport de Mme Sandrine Mazetier au nom de la 4e Commission, et vu l'avis du Conseil du 14e arrondissement en date du 5 juin 2001, le Conseil de Paris approuve le principe de la réalisation des travaux de ravalement des façades du conservatoire Darius-Milhaud, 24-26, rue Mouton-Duvernet (14e). La délibération prévoit que ces travaux feront l'objet d'un marché sur appel d'offres ouvert, ou d'un marché négocié si l'appel d'offres était déclaré infructueux, après avis favorable de la Commission d'appel d'offres, et approuve les actes d'engagement, le règlement de consultation et le cahier des clauses administratives particulières relatifs aux modalités d'attribution de ce marché. Le Conseil autorise le Maire de Paris à signer le marché avec l'attributaire désigné, après avis favorable de la Commission d'appel d'offres. Il s'agit de l'approbation d'un principe et d'une autorisation de signer, non de la signature du marché ni de la réalisation des travaux.",
+ "moments": [
+  {
+   "id": "28819",
+   "seance": "JUIN 2001",
+   "fait": "Le Conseil de Paris approuve le principe de la réalisation des travaux de ravalement des façades du conservatoire et autorise le Maire de Paris à signer le marché de travaux correspondant.",
+   "pourquoi": "Façades du conservatoire, 24-26, rue Mouton-Duvernet : ravalement approuvé en principe",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28819",
+   "fait_en": "The Council of Paris approves in principle the carrying out of facade restoration works on the conservatory and authorises the Mayor of Paris to sign the corresponding works contract.",
+   "pourquoi_en": "Conservatory facades, 24-26, rue Mouton-Duvernet: restoration approved in principle"
+  }
+ ],
  "montants": [],
  "bmo_extraits": [],
  "bmo_recit": null,
@@ -158,7 +169,7 @@
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Conservatoire+Darius-Milhaud%22%29"
   },
   "invest": {
    "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -168,5 +179,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In June 2001, on the report of Ms Sandrine Mazetier on behalf of the 4th Committee, and having regard to the opinion of the 14th arrondissement Council dated 5 June 2001, the Council of Paris approves in principle the carrying out of facade restoration works on the Darius-Milhaud conservatory, 24-26, rue Mouton-Duvernet (14th). The deliberation provides that these works will be the subject of a contract awarded through an open call for tenders, or of a negotiated contract should the call for tenders be declared unsuccessful, after a favourable opinion from the Tender Board (Commission d'appel d'offres), and approves the tender commitment forms, the consultation rules and the special administrative terms and conditions governing the award of this contract. The Council authorises the Mayor of Paris to sign the contract with the designated successful bidder, after a favourable opinion from the Tender Board. This is the approval of a principle and an authorisation to sign, not the signing of the contract nor the carrying out of the works."
 }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "generated_at": "2026-09-13T00:34:52.388738+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "conservatoire-maurice-ravel",
  "name": "Conservatoire Maurice-Ravel",
@@ -31,19 +31,19 @@
    1995,
    2026
   ],
-  "n_bmo_brut": 0,
+  "n_bmo_brut": 64,
   "n_bmo_verifies": null,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "tête du classement Solr (1309 documents au total)",
   "lecture_mode_en": "top of the Solr ranking (1309 documents total)",
   "n_lus": 43,
-  "n_lieu": null
+  "n_lieu": 0
  },
  "subventions_exploitant": null,
  "residents": [],
  "kpi_montant": null,
- "synthese_fr": null,
+ "synthese_fr": "Le Conservatoire Maurice-Ravel n'est nommé dans aucun des intitulés des délibérations et débats du Conseil de Paris présentés ici. Le plus grand nombre de ces textes porte sur des structures homonymes du 12e arrondissement, désignées selon les intitulés comme centre d'animation « Maurice-Ravel », centre d'animation et d'hébergement Maurice-Ravel (6, avenue Maurice-Ravel) ou Centre international de séjour « Maurice Ravel » : subventions (1997, 1998), versement de l'acompte sur la participation de la Ville de Paris aux dépenses de fonctionnement du centre d'animation puis solde de cette participation (2000), approbation du principe de passation d'une convention de délégation de service public pour le centre d'animation et d'hébergement et le centre d'hébergement Kellermann (1999, 2005), autorisation au Maire de Paris de signer une telle convention avec l'association « Centre international de séjour de Paris » (2000) puis avec la Ligue de l'enseignement (2006), avenant n° 1 à la convention du 27 décembre 2000 (2001), approbation du principe de la restructuration des cuisines (2001), autorisation au Maire de Paris de consentir au dépôt d'une demande de permis de construire pour l'aménagement du rez-de-chaussée (2003), et un débat de 2020 sur des exonérations partielles de redevances des délégataires des « CISP Kellermann et Maurice Ravel » du fait de la crise sanitaire. D'autres textes visent l'association « Paris football club 2000 », sise 6, avenue Maurice-Ravel (12e), le lycée et le lycée-collège Maurice-Ravel (20e), l'annexe du lycée Maurice-Ravel à Fontenay-sous-Bois (Val-de-Marne), d'autres conservatoires (Conservatoire à rayonnement régional de Paris, conservatoires Rachmaninoff, Erik Satie, Darius Milhaud, Frédéric Chopin et Gabriel Fauré, conservatoires des 8e et 17e) ou d'autres noms comportant « Maurice » (rue Maurice-Ripoche, gymnase Maurice Berlemont, rue Maurice Bouchor, rue Léon-Maurice Nordmann, hôpitaux de Saint-Maurice, cénotaphe à la mémoire de Maurice Audin, stèle en hommage à Maurice Audin, vœu relatif à une dénomination en hommage à Maurice Ronet, dénomination quai du Marché Neuf - Maurice Grimaud). Aucun fait, montant ou décision propre au Conservatoire Maurice-Ravel ne ressort de ces intitulés.",
  "moments": [],
  "montants": [],
  "bmo_extraits": [],
@@ -142,7 +142,7 @@
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Conservatoire+Maurice-Ravel%22%29"
   },
   "invest": {
    "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -152,5 +152,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "The Conservatoire Maurice-Ravel is not named in any of the titles of the Conseil de Paris deliberations and debates presented here. Most of these texts concern same-name facilities in the 12th arrondissement, referred to, depending on the title, as the “Maurice-Ravel” community center (centre d'animation), the Maurice-Ravel community and accommodation center (6, avenue Maurice-Ravel) or the “Maurice Ravel” Centre international de séjour: subsidies (1997, 1998); payment of the advance on the City of Paris's contribution to the community center's operating expenses, then of the balance of that contribution (2000); approval of the principle of entering into a public service delegation agreement for the community and accommodation center and the Kellermann accommodation center (1999, 2005); authorization for the Mayor of Paris to sign such an agreement with the association “Centre international de séjour de Paris” (2000), then with the Ligue de l'enseignement (2006); amendment No. 1 to the agreement of December 27, 2000 (2001); approval of the principle of restructuring the kitchens (2001); authorization for the Mayor of Paris to consent to the filing of a building permit application for the fitting-out of the ground floor (2003); and a 2020 debate on partial exemptions from the fees owed by the delegatees of the “CISP Kellermann et Maurice Ravel” due to the health crisis. Other texts concern the association “Paris football club 2000”, located at 6, avenue Maurice-Ravel (12th), the Maurice-Ravel high school and high school–middle school (20th), the annex of the Maurice-Ravel high school in Fontenay-sous-Bois (Val-de-Marne), other conservatories (the Conservatoire à rayonnement régional de Paris; the Rachmaninoff, Erik Satie, Darius Milhaud, Frédéric Chopin and Gabriel Fauré conservatories; the conservatories of the 8th and 17th arrondissements) or other names containing “Maurice” (rue Maurice-Ripoche, the Maurice Berlemont gymnasium, rue Maurice Bouchor, rue Léon-Maurice Nordmann, the Saint-Maurice hospitals, the cenotaph in memory of Maurice Audin, the stele in tribute to Maurice Audin, a motion concerning a naming in tribute to Maurice Ronet, the naming of quai du Marché Neuf - Maurice Grimaud). No fact, amount or decision specific to the Conservatoire Maurice-Ravel emerges from these titles."
 }

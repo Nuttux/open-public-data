@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "generated_at": "2026-09-13T00:34:52.388738+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "ecole-du-breuil",
  "name": "École du Breuil",
@@ -18,27 +18,28 @@
  },
  "seuil_commun": 2010,
  "wiki": {
-  "extract": null,
-  "url": null,
+  "extract": "L'école du Breuil est l'école d'horticulture de la ville de Paris. Elle est située à l'Est de Paris dans le bois de Vincennes, à côté de l'arboretum de Paris, l'un des quatre sites du Jardin botanique de Paris. Elle forme jeunes et adultes aux métiers de l'horticulture, du jardin, du paysage et de l'agriculture urbaine.",
+  "url": "https://fr.wikipedia.org/wiki/%C3%89cole_Du_Breuil",
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The École du Breuil is the horticulture school of the City of Paris. It is located in the east of Paris in the Bois de Vincennes, next to the Arboretum de Paris, one of the four sites of the Jardin botanique de Paris. It trains young people and adults in the trades of horticulture, gardening, landscaping and urban agriculture."
  },
  "stats": {
   "n_delibs": 1235,
   "delibs_span": [
-   1995,
-   2026
+   1996,
+   2024
   ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
+  "n_bmo_brut": 838,
+  "n_bmo_verifies": 12,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (43 trouvés)",
   "lecture_mode_en": "title naming the place (43 found)",
   "n_lus": 40,
-  "n_lieu": null
+  "n_lieu": 36
  },
  "subventions_exploitant": {
   "nom_fiche": "ECOLE DU BREUIL",
@@ -88,9 +89,189 @@
  },
  "residents": [],
  "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
+ "synthese_fr": "Entre 1996 et 2008, les délibérations sur l'École horticole de la Ville de Paris (École du Breuil) portent sur le statut et le recrutement de ses professeurs certifiés, sur les repas des élèves et sur le bâti : principe de l'aménagement de 2 salles de classe en 1996, autorisation de souscrire en 1997 un avenant ayant pour objet de prévoir un renforcement des structures portantes, puis, en 2000, principe de l'aménagement des combles de l'aile droite du bâtiment central et de la modernisation de 3 centres thermiques route de la Ferme. En juillet 2007, le Conseil de Paris approuve le principe de création et de gestion d'une Unité de Formation par Apprentissage « UFA école Du Breuil » au sein du Centre de Formation d'Apprentis des métiers de l'Agriculture. De décembre 2017 à juillet 2018, le projet de transformer l'école en régie dotée de la personnalité morale et de l'autonomie financière fait l'objet de plusieurs vœux et débats : en décembre 2017, le vœu de Mme SIMONNET demandant d'y renoncer est rejeté après un avis défavorable de l'adjointe Mme KOMITÈS, qui déclare « nous travaillons à la rénovation de ces locaux », puis, en 2018, des élus de plusieurs groupes jugent les locaux vétustes et disent leurs inquiétudes pour les personnels. À partir de décembre 2018, les dossiers de subvention visent la « régie personnalisée » de l'école : 4.650.000 euros de fonctionnement en décembre 2018, 4.400.000 euros de fonctionnement et 600 000 euros d'investissement en décembre 2019, puis 5.200.000 euros de fonctionnement et 200.000 euros d'investissement pour l'exercice 2025. D'autres dossiers portent sur l'agriculture urbaine puis sur les actions de formation en agriculture durable (250.000 euros en 2022, 200.000 euros en 2023, 250.000 euros pour 2024), et, en octobre 2023, un dossier de subvention complémentaire de fonctionnement de 200.000 euros est associé à un vœu du groupe Communiste et Citoyen relatif à la situation du personnel.",
+ "moments": [
+  {
+   "id": "39989",
+   "seance": "JUIN 1997",
+   "fait": "Le Conseil autorise le Maire à souscrire un avenant au marché signé avec la société ETPI pour l'aménagement de 2 salles de classe, afin de prévoir un renforcement des structures portantes.",
+   "pourquoi": "Avenant autorisé pour renforcer les structures portantes",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39989",
+   "fait_en": "The Council authorized the Mayor to enter into an amendment to the contract signed with the company ETPI for fitting out 2 classrooms, in order to provide for a reinforcement of the load-bearing structures.",
+   "pourquoi_en": "Amendment authorized to reinforce the load-bearing structures"
+  },
+  {
+   "id": "90513",
+   "seance": "JUILLET 2007",
+   "fait": "Le Conseil approuve le principe de création et de gestion d'une Unité de Formation par Apprentissage « UFA école Du Breuil » au sein du CFA des métiers de l'Agriculture et autorise le Maire à signer la convention avec l'ADAFA ; la dépense 2007 est évaluée à 81 000 euros.",
+   "pourquoi": "Une unité d'apprentissage aux métiers de l'agriculture",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90513",
+   "fait_en": "The Council approved the principle of creating and managing an apprenticeship training unit, “UFA école Du Breuil”, within the CFA (apprentice training center) for agricultural trades, and authorized the Mayor to sign the agreement with ADAFA; the 2007 expenditure is estimated at €81,000.",
+   "pourquoi_en": "An apprenticeship unit for agricultural trades"
+  },
+  {
+   "id": "140741",
+   "seance": "DECEMBRE 2017",
+   "fait": "Le vœu de Mme SIMONNET demandant de renoncer au changement de statut et de rénover et agrandir l'école est rejeté, après un avis défavorable de l'adjointe Mme KOMITÈS, qui répond sur l'agrandissement que l'école est dans un espace boisé classé du bois de Vincennes.",
+   "pourquoi": "Un vœu contre le changement de statut, rejeté",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140741",
+   "fait_en": "The motion by Ms SIMONNET asking to abandon the change of status and to renovate and enlarge the school was rejected, after an unfavorable opinion from deputy mayor Ms KOMITÈS, who replied on the enlargement point that the school is located in a protected woodland area (espace boisé classé) of the Bois de Vincennes.",
+   "pourquoi_en": "A motion against the change of status, rejected"
+  },
+  {
+   "id": "144055",
+   "seance": "JUILLET 2018",
+   "fait": "Le Conseil examine la création de la régie personnalisée école Du Breuil ; Mme GALLOIS juge que ce changement de statut n'apporte aucune réponse à la vétusté des locaux.",
+   "pourquoi": "Régie autonome en débat, état des locaux mis en cause",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144055",
+   "fait_en": "The Council examined the creation of the régie personnalisée École Du Breuil; Ms GALLOIS considered that this change of status offers no answer to the dilapidated state of the premises.",
+   "pourquoi_en": "Autonomous agency under debate, condition of the premises called into question"
+  },
+  {
+   "id": "147078",
+   "seance": "DECEMBRE 2018",
+   "fait": "Le Conseil examine une subvention de fonctionnement de 4 650 000 euros à la régie ; Mme PRIMET y décrit un manque d'agents et Mme MOREL annonce le premier conseil d'administration.",
+   "pourquoi": "Subvention de 4,65 M€ examinée, manque d'agents selon une élue",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=147078",
+   "fait_en": "The Council examined an operating grant of €4,650,000 to the régie; Ms PRIMET described a shortage of staff there and Ms MOREL announced the first board of directors meeting.",
+   "pourquoi_en": "€4.65M grant examined, staff shortage according to one elected official"
+  },
+  {
+   "id": "147571",
+   "seance": "FEVRIER 2019",
+   "fait": "Le Conseil examine une subvention d'investissement à la régie ; Mme MOREL en cite le montant, 500 000 euros, qui selon elle permettront d'engager des travaux d'éclairage, de menuiseries et de plancher, tout en qualifiant ces crédits de « rustines ».",
+   "pourquoi": "« Des rustines », selon une élue qui vote pour",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=147571",
+   "fait_en": "The Council examined an investment grant to the régie; Ms MOREL cited its amount, €500,000, which in her view will make it possible to begin lighting, joinery and flooring work, while describing these funds as “patches” (« rustines »).",
+   "pourquoi_en": "“Patches,” according to an elected official voting in favor"
+  },
+  {
+   "id": "164935",
+   "seance": "MAI 2022",
+   "fait": "Le dossier 2022 DEVE 18 porte sur une subvention de fonctionnement de 250 000 euros à l'école au titre de l'agriculture urbaine.",
+   "pourquoi": "Une subvention dédiée à l'agriculture urbaine",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164935",
+   "fait_en": "File 2022 DEVE 18 concerns an operating grant of €250,000 to the school for urban agriculture.",
+   "pourquoi_en": "A grant dedicated to urban agriculture"
+  },
+  {
+   "id": "179193",
+   "seance": "DECEMBRE 2024",
+   "fait": "Le dossier 2024 DEVE 96 porte sur 5 200 000 euros de fonctionnement et 200 000 euros d'investissement pour la régie personnalisée, exercice 2025.",
+   "pourquoi": "5,2 M€ de fonctionnement proposés pour 2025",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179193",
+   "fait_en": "File 2024 DEVE 96 concerns €5,200,000 in operating funding and €200,000 in investment funding for the régie personnalisée, 2025 financial year.",
+   "pourquoi_en": "€5.2M in operating funding proposed for 2025"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "JUILLET 2007",
+   "montant": "81.000 euros",
+   "objet": "dépense évaluée pour l'année 2007, à prélever au chapitre 012 des charges de personnel",
+   "citation": "Pour l?année 2007, la dépense correspondante, évaluée à 81.000 euros, sera prélevée au chapitre 012 des charges de personnel du budget de fonctionnement de la Ville de Paris.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90513"
+  },
+  {
+   "seance": "FEVRIER 2018",
+   "montant": "400.000 euros",
+   "objet": "montant inscrit au P.I.M. pour l'entretien de l'école selon Mme PRIMET, qui le juge insuffisant",
+   "citation": "400.000 euros inscrits au P.I.M. pour l'entretien de l'école, ce n'est pas suffisant.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140925"
+  },
+  {
+   "seance": "JUILLET 2018",
+   "montant": "15 millions d'euros",
+   "objet": "coût des travaux nécessaires selon un chiffrage des services de la Ville de 2011, cité par Mme GALLOIS",
+   "citation": "Un chiffrage des services de la Ville de 2011 estimait le coût des travaux nécessaires à 15 millions d?euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144055"
+  },
+  {
+   "seance": "JUILLET 2018",
+   "montant": "830.000 euros",
+   "objet": "sommes investies durant la mandature, selon Mme GALLOIS",
+   "citation": "ce n?est pas les 830.000 euros investis durant cette mandature qui ont permis de faire des progrès significatifs.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144055"
+  },
+  {
+   "seance": "DECEMBRE 2018",
+   "montant": "4.650.000 euros",
+   "objet": "subvention de fonctionnement à la régie personnalisée",
+   "citation": "Subvention de fonctionnement (4.650.000 euros) au bénéfice de la régie personnalisée de l’école Du Breuil.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=147078"
+  },
+  {
+   "seance": "FEVRIER 2019",
+   "montant": "500.000 euros",
+   "objet": "subvention d'investissement à la régie personnalisée, montant cité par Mme MOREL",
+   "citation": "nous voterons ce mois-ci la subvention d'investissement de 500.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=147571"
+  },
+  {
+   "seance": "DECEMBRE 2019",
+   "montant": "4.400.000 euros",
+   "objet": "subvention de fonctionnement à la régie personnalisée",
+   "citation": "Subvention de fonctionnement (4.400.000 euros) et d’investissement (600 000 euros) au bénéfice de la régie personnalisée de l’école Du Breuil.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=175706"
+  },
+  {
+   "seance": "DECEMBRE 2019",
+   "montant": "600 000 euros",
+   "objet": "subvention d'investissement à la régie personnalisée",
+   "citation": "Subvention de fonctionnement (4.400.000 euros) et d’investissement (600 000 euros) au bénéfice de la régie personnalisée de l’école Du Breuil.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=175706"
+  },
+  {
+   "seance": "MAI 2022",
+   "montant": "250.000 euros",
+   "objet": "subvention de fonctionnement au titre de l'agriculture urbaine",
+   "citation": "Subvention de fonctionnement (250.000 euros) à l'école Du Breuil au titre de l'agriculture urbaine.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164935"
+  },
+  {
+   "seance": "JUIN 2023",
+   "montant": "200.000 euros",
+   "objet": "subvention pour les actions de formation en agriculture durable",
+   "citation": "Subvention (200.000 euros) à l'école Du Breuil pour ses actions de formation en matière d'agriculture durable.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=169752"
+  },
+  {
+   "seance": "OCTOBRE 2023",
+   "montant": "200.000 euros",
+   "objet": "subvention complémentaire de fonctionnement à la régie personnalisée",
+   "citation": "Subvention complémentaire de fonctionnement (200.000 euros) à la régie personnalisée de l’école Du Breuil.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=171998"
+  },
+  {
+   "seance": "MAI 2024",
+   "montant": "250.000 euros",
+   "objet": "subvention de fonctionnement pour 2024, actions de formation en agriculture durable",
+   "citation": "Subvention de fonctionnement (250.000 euros) au bénéfice de la régie personnalisée école Du Breuil pour l’année 2024 au titre de ses actions de formation dans le domaine de l'agriculture durable.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176129"
+  },
+  {
+   "seance": "DECEMBRE 2024",
+   "montant": "5.200.000 euros",
+   "objet": "subvention de fonctionnement à la régie personnalisée pour l'exercice 2025",
+   "citation": "Subvention en fonctionnement (5.200.000 euros) et en investissement (200.000 euros) à la régie personnalisée école Du Breuil pour l'exercice 2025.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179193"
+  },
+  {
+   "seance": "DECEMBRE 2024",
+   "montant": "200.000 euros",
+   "objet": "subvention d'investissement à la régie personnalisée pour l'exercice 2025",
+   "citation": "Subvention en fonctionnement (5.200.000 euros) et en investissement (200.000 euros) à la régie personnalisée école Du Breuil pour l'exercice 2025.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179193"
+  }
+ ],
  "bmo_extraits": [],
  "bmo_recit": null,
  "delibs_par_annee": {
@@ -512,7 +693,7 @@
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22%C3%89cole+du+Breuil%22%29"
   },
   "invest": {
    "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -522,5 +703,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "Between 1996 and 2008, the Council deliberations on the École horticole de la Ville de Paris (École du Breuil) concerned the status and recruitment of its certified teachers, the students' meals and the buildings: approval in principle of fitting out 2 classrooms in 1996, authorization in 1997 to enter into an amendment intended to provide for a reinforcement of the load-bearing structures, then, in 2000, approval in principle of converting the attic of the right wing of the central building and of modernizing 3 heating plants on route de la Ferme. In July 2007, the Conseil de Paris approved the principle of creating and managing an apprenticeship training unit, “UFA école Du Breuil”, within the apprentice training center (CFA) for agricultural trades. From December 2017 to July 2018, the plan to turn the school into a régie (municipal agency) with legal personality and financial autonomy was the subject of several motions (vœux) and debates: in December 2017, the motion by Ms SIMONNET asking that the plan be abandoned was rejected after an unfavorable opinion from deputy mayor Ms KOMITÈS, who stated “we are working on renovating these premises”; then, in 2018, elected officials from several groups described the premises as dilapidated and voiced their concerns for the staff. From December 2018 onward, the grant files targeted the school's “régie personnalisée” (a municipal agency with its own legal personality): €4,650,000 in operating funding in December 2018, €4,400,000 in operating funding and €600,000 in investment funding in December 2019, then €5,200,000 in operating funding and €200,000 in investment funding for the 2025 financial year. Other files concerned urban agriculture and later training programs in sustainable agriculture (€250,000 in 2022, €200,000 in 2023, €250,000 for 2024), and, in October 2023, a file for a supplementary operating grant of €200,000 was linked to a motion from the Communist and Citizen group concerning the staff situation.",
+ "bmo_recit_en": "The Bulletin municipal mentions the École du Breuil at two moments, some thirty years apart. In February 1946, MM. Belvaux and Vicariot, general councillors (conseillers généraux), on behalf of the socialist group, drew the attention of the Préfet de la Seine to the situation of what the Bulletin then called the “école d'horticulture du Breuil”, regarding the funds intended for food grants (bourses alimentaires) for its students. In September 1977, the Bulletin announced the opening of a public competitive examination to fill two posts of teacher of manual and technical education, horticulture specialty, at the École Du Breuil, designated this time as “Horticulture et techniques du paysage” (Horticulture and landscape techniques), in Paris (12th arrondissement)."
 }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "generated_at": "2026-09-13T00:34:52.388738+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "centre-sportif-elisabeth",
  "name": "Centre sportif Élisabeth",
@@ -23,23 +23,104 @@
  "stats": {
   "n_delibs": 734,
   "delibs_span": [
-   1995,
-   2026
+   1998,
+   2012
   ],
-  "n_bmo_brut": 0,
+  "n_bmo_brut": 472,
   "n_bmo_verifies": null,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (13 trouvés)",
   "lecture_mode_en": "title naming the place (13 found)",
   "n_lus": 11,
-  "n_lieu": null
+  "n_lieu": 11
  },
  "subventions_exploitant": null,
  "residents": [],
  "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
+ "synthese_fr": "Entre 1998 et 2001, le Conseil de Paris approuve successivement le principe de plusieurs travaux au centre sportif Élisabeth (7-15, avenue Paul-Appell, 14e) : réfection du plateau supérieur du stade et rénovation du gymnase (1998), couverture des terrains de tennis n° 8 et 9 (2000), gazon synthétique sur le terrain de football et création d'un hall d'accueil (2001), et autorise à chaque fois le Maire à signer les marchés correspondants. En 1999, il autorise aussi le Maire à déposer une demande de permis de construire pour couvrir les terrains de tennis nos 1 et 2, puis approuve en 2002 le principe de la modernisation des fenêtres de deux appartements de fonction du centre. En 2003, il autorise le Maire à souscrire un avenant aux marchés sur appel d'offres concernant la création d'un hall d'accueil au centre et l'aménagement des tribunes extérieures et des salles annexes du gymnase du centre sportif Charles-Rigoulot (15e), puis 2 marchés pour l'amélioration des allées et du revêtement des tennis 8 et 9 ; en mai 2004, il autorise le Maire à souscrire un contrat de transaction avec la société AUTREMENT visant à l'indemniser des travaux supplémentaires réalisés au centre. En novembre 2010, une délibération porte sur le dépôt d'une demande de permis de construire pour la couverture de deux terrains de tennis, et en juin 2012 une autre sur l'ouverture au grand public, à titre gratuit, du bassin école pendant l'été.",
+ "moments": [
+  {
+   "id": "38098",
+   "seance": "MAI 1998",
+   "fait": "Le Conseil approuve le principe de la réfection du plateau supérieur du stade et de la rénovation du gymnase, et autorise le Maire à signer le marché de travaux.",
+   "pourquoi": "Stade et gymnase : principe des travaux approuvé",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38098",
+   "fait_en": "The Council approves the principle of resurfacing the stadium's upper playing area and renovating the gymnasium, and authorizes the Mayor to sign the works contract.",
+   "pourquoi_en": "Stadium and gymnasium: principle of the works approved"
+  },
+  {
+   "id": "28557",
+   "seance": "SEPTEMBRE 2000",
+   "fait": "Le Conseil approuve le principe de la couverture des terrains de tennis n° 8 et 9 et autorise le Maire à signer 3 marchés et à consentir le dépôt du permis de construire.",
+   "pourquoi": "Tennis 8 et 9 : principe de couverture approuvé",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28557",
+   "fait_en": "The Council approves the principle of roofing over tennis courts no. 8 and 9 and authorizes the Mayor to sign 3 contracts and to consent to the filing of the building permit application.",
+   "pourquoi_en": "Tennis courts 8 and 9: principle of roofing approved"
+  },
+  {
+   "id": "89833",
+   "seance": "MAI 2001",
+   "fait": "Le Conseil approuve le principe d'un gazon synthétique sur le terrain de football ; la délibération prévoit que ces travaux feront l'objet d'un marché sur appel d'offres ouvert et autorise le Maire à signer ce marché.",
+   "pourquoi": "Gazon synthétique : principe approuvé",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89833",
+   "fait_en": "The Council approves the principle of artificial turf on the football pitch; the deliberation provides that these works will be the subject of a contract awarded through an open call for tenders and authorizes the Mayor to sign that contract.",
+   "pourquoi_en": "Artificial turf: principle approved"
+  },
+  {
+   "id": "62586",
+   "seance": "JUILLET 2001",
+   "fait": "Le Conseil approuve le principe de la création d'un hall d'accueil et autorise le Maire à signer les marchés correspondants.",
+   "pourquoi": "Principe d'un hall d'accueil approuvé en 2001",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62586",
+   "fait_en": "The Council approves the principle of creating a reception hall and authorizes the Mayor to sign the corresponding contracts.",
+   "pourquoi_en": "Principle of a reception hall approved in 2001"
+  },
+  {
+   "id": "73756",
+   "seance": "AVRIL 2002",
+   "fait": "Le Conseil approuve le principe de la modernisation des fenêtres de deux appartements de fonction du centre sportif.",
+   "pourquoi": "Deux appartements de fonction au sein du centre",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73756",
+   "fait_en": "The Council approves the principle of modernizing the windows of two staff apartments at the sports centre.",
+   "pourquoi_en": "Two staff apartments within the centre"
+  },
+  {
+   "id": "45722",
+   "seance": "MAI 2004",
+   "fait": "Le Conseil autorise le Maire à souscrire un contrat de transaction avec la société AUTREMENT visant à l'indemniser de travaux supplémentaires réalisés au centre.",
+   "pourquoi": "Travaux supplémentaires : transaction autorisée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45722",
+   "fait_en": "The Council authorizes the Mayor to enter into a settlement agreement with the company AUTREMENT intended to compensate it for additional works carried out at the centre.",
+   "pourquoi_en": "Additional works: settlement authorized"
+  },
+  {
+   "id": "86137",
+   "seance": "NOVEMBRE 2010",
+   "fait": "Une délibération porte sur le dépôt d'une demande de permis de construire pour couvrir deux terrains de tennis.",
+   "pourquoi": "Permis de construire pour couvrir deux tennis",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=86137",
+   "fait_en": "A deliberation concerns the filing of a building permit application to roof over two tennis courts.",
+   "pourquoi_en": "Building permit to roof over two tennis courts"
+  },
+  {
+   "id": "106155",
+   "seance": "JUIN 2012",
+   "fait": "Une délibération porte sur l'ouverture au grand public, à titre gratuit, du bassin école pendant l'été 2012.",
+   "pourquoi": "Bassin école : délibération sur une ouverture gratuite",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=106155",
+   "fait_en": "A deliberation concerns opening the teaching pool to the general public, free of charge, during summer 2012.",
+   "pourquoi_en": "Teaching pool: deliberation on free opening"
+  }
+ ],
  "montants": [],
  "bmo_extraits": [],
  "bmo_recit": null,
@@ -165,7 +246,7 @@
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Centre+sportif+%C3%89lisabeth%22%29"
   },
   "invest": {
    "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -175,5 +256,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "Between 1998 and 2001, the Conseil de Paris successively approves the principle of several works at the Élisabeth sports centre (7-15 avenue Paul-Appell, 14th arrondissement): resurfacing of the stadium's upper playing area and renovation of the gymnasium (1998), roofing over tennis courts no. 8 and 9 (2000), artificial turf on the football pitch and creation of a reception hall (2001), and each time authorizes the Mayor to sign the corresponding contracts. In 1999, it also authorizes the Mayor to file a building permit application to roof over tennis courts no. 1 and 2, then in 2002 approves the principle of modernizing the windows of two staff apartments at the centre. In 2003, it authorizes the Mayor to enter into an amendment to the contracts awarded through calls for tenders concerning the creation of a reception hall at the centre and the fitting-out of the outdoor stands and ancillary rooms of the gymnasium at the Charles-Rigoulot sports centre (15th arrondissement), then 2 contracts for improving the paths and the surface of tennis courts 8 and 9; in May 2004, it authorizes the Mayor to enter into a settlement agreement with the company AUTREMENT intended to compensate it for additional works carried out at the centre. In November 2010, a deliberation concerns the filing of a building permit application to roof over two tennis courts, and in June 2012 another concerns opening the teaching pool to the general public, free of charge, during the summer."
 }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "generated_at": "2026-09-13T00:34:52.388738+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "eglise-saint-merri",
  "name": "Église Saint-Merri",
@@ -23,15 +23,16 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Église Saint-Merry, commonly called Saint-Merry, is a Catholic church located at no. 78 on the present-day rue Saint Martin and on the rue de la Verrerie, with the seat of the parish at no. 76, in the 4th arrondissement of Paris, near the Centre Georges-Pompidou."
  },
  "stats": {
   "n_delibs": 572,
   "delibs_span": [
-   1995,
-   2026
+   2000,
+   2008
   ],
-  "n_bmo_brut": 0,
+  "n_bmo_brut": 2000,
   "n_bmo_verifies": null,
   "invest_total_eur": 1122117.0,
   "invest_annees": [
@@ -40,14 +41,94 @@
   "lecture_mode": "titre nommant le lieu (5 trouvés)",
   "lecture_mode_en": "title naming the place (5 found)",
   "n_lus": 5,
-  "n_lieu": null
+  "n_lieu": 5
  },
  "subventions_exploitant": null,
  "residents": [],
  "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
+ "synthese_fr": "En octobre 2000, interrogée par M. Jean-Pierre Reveau sur l'état de l'église, l'adjointe Hélène Macé de Lépinay répond qu'une restauration de la charpente et de la toiture est en cours sous maîtrise d'ouvrage du ministère de la Culture, qu'une étude préalable à la restauration des extérieurs commandée par la Ville fin 1999 est en examen et devra aussi être approuvée par ce ministère, et que ces travaux « pourraient, ensuite » être programmés à partir de 2002. En juillet 2003, le Conseil de Paris approuve le principe et les modalités de passation d'un marché de maîtrise d'œuvre négocié sans mise en concurrence avec Jean-François Lagneau, architecte en chef des monuments historiques, en vue de la restauration des parties hautes de la façade Ouest, clocher compris, et du début des travées droites du chœur, et autorise le Maire à le signer. En septembre 2004, il approuve le principe d'une mise en conformité des installations électriques de l'église, et la passation du marché de travaux sous la forme d'un appel d'offres ouvert national. En juin 2005, il autorise le Maire à souscrire deux avenants pour des prestations complémentaires en vue de la restauration des parties hautes de la façade Ouest, l'un de 7 820 € TTC portant le montant total du marché de maçonnerie de l'entreprise Quelin à 808 655,20 € TTC, l'autre de 5 740,80 € TTC portant celui du marché de sculpture de Daniel Esmoingt à 37 036,53 € TTC (valeur novembre 2003). En mai 2008, il autorise le Maire à souscrire un avenant au marché électrique n° 06/41053 pour substituer la SAS Paris Forclum Ile De France - Etablissement de Melun à la SAS Bornhauser Molinari Melun, dont la dissolution avait été décidée par une déclaration du 27 septembre 2007.",
+ "moments": [
+  {
+   "id": "5193",
+   "seance": "OCTOBRE 2000",
+   "fait": "Interrogée par M. Jean-Pierre Reveau, l'adjointe Hélène Macé de Lépinay répond que les travaux de restauration des parties extérieures « pourraient », après approbation de l'étude préalable par le ministère de la Culture, être programmés à partir de 2002, et que le gardiennage relève selon elle de la paroisse affectataire.",
+   "pourquoi": "Ville ou paroisse : qui doit garder l'église ?",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5193",
+   "fait_en": "Questioned by Mr. Jean-Pierre Reveau, deputy mayor Hélène Macé de Lépinay replied that restoration work on the exterior \"could\", once the preliminary study had been approved by the Ministry of Culture, be scheduled from 2002 onwards, and that guarding the church was, in her view, the responsibility of the parish to which it is assigned (paroisse affectataire).",
+   "pourquoi_en": "City or parish: who should guard the church?"
+  },
+  {
+   "id": "70683",
+   "seance": "JUILLET 2003",
+   "fait": "Le Conseil approuve le principe et les modalités de passation d'un marché de maîtrise d'œuvre négocié sans mise en concurrence avec l'architecte en chef des monuments historiques Jean-François Lagneau, en vue de la restauration des parties hautes de la façade Ouest, clocher compris, et du début des travées droites du chœur, et autorise le Maire à le signer.",
+   "pourquoi": "Façade et clocher : signature d'un marché négocié autorisée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70683",
+   "fait_en": "The Council approved the principle and the award procedures of a project management contract negotiated without competitive tendering with Jean-François Lagneau, chief architect of historic monuments, for the restoration of the upper parts of the west façade, including the bell tower, and of the beginning of the straight bays of the choir, and authorized the Mayor to sign it.",
+   "pourquoi_en": "Façade and bell tower: signing of a negotiated contract authorized"
+  },
+  {
+   "id": "46799",
+   "seance": "SEPTEMBRE 2004",
+   "fait": "Le Conseil approuve le principe d'une mise en conformité des installations électriques de l'église et la passation du marché de travaux par appel d'offres ouvert national.",
+   "pourquoi": "Mise en conformité électrique : le principe approuvé",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46799",
+   "fait_en": "The Council approved the principle of bringing the church's electrical installations up to code and the award of the works contract through a national open call for tenders.",
+   "pourquoi_en": "Electrical compliance work: the principle approved"
+  },
+  {
+   "id": "83223",
+   "seance": "JUIN 2005",
+   "fait": "Le Conseil autorise le Maire à souscrire deux avenants pour prestations complémentaires : l'un portant le montant total du marché de maçonnerie de l'entreprise Quelin à 808 655,20 € TTC, l'autre celui du marché de sculpture de Daniel Esmoingt à 37 036,53 € TTC (valeur novembre 2003).",
+   "pourquoi": "Pierre de taille et sculpture : avenants autorisés sur la façade",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83223",
+   "fait_en": "The Council authorized the Mayor to sign two amendments for additional services: one bringing the total amount of the masonry contract held by the firm Quelin to €808,655.20 incl. VAT, the other that of the sculpture contract held by Daniel Esmoingt to €37,036.53 incl. VAT (November 2003 value).",
+   "pourquoi_en": "Dressed stone and sculpture: amendments authorized on the façade"
+  },
+  {
+   "id": "69604",
+   "seance": "MAI 2008",
+   "fait": "Le Conseil autorise le Maire à souscrire un avenant substituant la SAS Paris Forclum Ile De France - Etablissement de Melun à la SAS Bornhauser Molinari Melun sur le marché électrique n° 06/41053.",
+   "pourquoi": "Marché électrique : substitution de titulaire autorisée",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69604",
+   "fait_en": "The Council authorized the Mayor to sign an amendment substituting SAS Paris Forclum Ile De France - Etablissement de Melun for SAS Bornhauser Molinari Melun on electrical contract no. 06/41053.",
+   "pourquoi_en": "Electrical contract: change of contract holder authorized"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "JUIN 2005",
+   "montant": "7 820 € TTC",
+   "objet": "avenant n° 1 au marché n° 03/41168 de l'entreprise Quelin, lot n° 1 maçonnerie, pierre de taille (prestations complémentaires, façade Ouest)",
+   "citation": "avenant n° 1 au marché n° 03/41168, passé avec l?entreprise QUELIN pour le lot n° 1 : ?maçonnerie, pierre de taille? pour un montant de 7.820 euros TTC portant le montant total du marché à 808.655,20 euros TTC",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83223"
+  },
+  {
+   "seance": "JUIN 2005",
+   "montant": "808 655,20 € TTC",
+   "objet": "montant total du marché Quelin (lot n° 1) avec l'avenant n° 1 autorisé",
+   "citation": "pour un montant de 7.820 euros TTC portant le montant total du marché à 808.655,20 euros TTC",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83223"
+  },
+  {
+   "seance": "JUIN 2005",
+   "montant": "5 740,80 € TTC (valeur novembre 2003)",
+   "objet": "avenant n° 1 au marché de Daniel Esmoingt, lot n° 4 sculpture, restauration de sculpture (numéroté 04/41089 dans l'article premier, 04/41098 dans le titre et les visas)",
+   "citation": "avenant n° 1 au marché n° 04/41089 passé avec Daniel ESMOINGT pour le lot n° 4 : ?sculpture, restauration de sculpture?, pour un montant de 5.740,80 euros TTC (valeur novembre 2003)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83223"
+  },
+  {
+   "seance": "JUIN 2005",
+   "montant": "37 036,53 € TTC (valeur novembre 2003)",
+   "objet": "montant total du marché Esmoingt (lot n° 4) avec l'avenant n° 1 autorisé",
+   "citation": "pour un montant de 5.740,80 euros TTC (valeur novembre 2003) portant le montant total du marché à 37.036,53 euros TTC (valeur novembre 2003)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83223"
+  }
+ ],
  "bmo_extraits": [],
  "bmo_recit": null,
  "delibs_par_annee": {
@@ -142,7 +223,7 @@
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22%C3%89glise+Saint-Merri%22%29"
   },
   "invest": {
    "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -152,5 +233,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In October 2000, questioned by Mr. Jean-Pierre Reveau about the condition of the church, deputy mayor Hélène Macé de Lépinay replied that a restoration of the roof structure and roofing was under way with the Ministry of Culture as project owner, that a preliminary study for the restoration of the exterior, commissioned by the City at the end of 1999, was under review and would also have to be approved by that ministry, and that this work \"could, subsequently\" be scheduled from 2002 onwards. In July 2003, the Conseil de Paris approved the principle and the award procedures of a project management (maîtrise d'œuvre) contract negotiated without competitive tendering with Jean-François Lagneau, chief architect of historic monuments, for the restoration of the upper parts of the west façade, including the bell tower, and of the beginning of the straight bays of the choir, and authorized the Mayor to sign it. In September 2004, it approved the principle of bringing the church's electrical installations up to code, and the award of the works contract through a national open call for tenders. In June 2005, it authorized the Mayor to sign two amendments for additional services for the restoration of the upper parts of the west façade: one of €7,820 incl. VAT bringing the total amount of the masonry contract held by the firm Quelin to €808,655.20 incl. VAT, the other of €5,740.80 incl. VAT bringing that of the sculpture contract held by Daniel Esmoingt to €37,036.53 incl. VAT (November 2003 value). In May 2008, it authorized the Mayor to sign an amendment to electrical contract no. 06/41053 substituting SAS Paris Forclum Ile De France - Etablissement de Melun for SAS Bornhauser Molinari Melun, whose dissolution had been decided by a declaration of 27 September 2007."
 }

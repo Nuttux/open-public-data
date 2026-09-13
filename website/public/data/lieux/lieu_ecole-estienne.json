@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "generated_at": "2026-09-13T00:34:52.388738+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "ecole-estienne",
  "name": "École Estienne",
@@ -23,16 +23,17 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The École Estienne, the common name of the École supérieure des arts et industries graphiques (ESAIG), is a French public higher-education institution located at 18, boulevard Auguste-Blanqui in the 13th arrondissement of Paris, not far from the Butte-aux-Cailles. It trains young creators in the printing trades, communication design and the book arts crafts. It offers one of the 28 recognised programmes of the Réseau des écoles françaises de cinéma d'animation (RECA, French animation film schools network)."
  },
  "stats": {
   "n_delibs": 1293,
   "delibs_span": [
    1995,
-   2026
+   2013
   ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": 11,
   "invest_total_eur": 125634.0,
   "invest_annees": [
    "2021"
@@ -40,7 +41,7 @@
   "lecture_mode": "titre nommant le lieu (15 trouvés)",
   "lecture_mode_en": "title naming the place (15 found)",
   "n_lus": 14,
-  "n_lieu": null
+  "n_lieu": 14
  },
  "subventions_exploitant": {
   "nom_fiche": "LYCEE TECHNOLOGIQUE ESTIENNE E.S.A.",
@@ -138,9 +139,168 @@
  },
  "residents": [],
  "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
+ "synthese_fr": "En juillet 1995, le Conseil de Paris attribue une subvention de 12.000 F à l'Association amicale des anciens élèves de l'école Estienne, 18, boulevard Auguste-Blanqui (13e), pour l'opération « Stand de la Ville de Paris » dans le Salon du Livre 1995. De 2000 à 2004, il se prononce à plusieurs reprises sur des travaux à l'école : il autorise le Maire à solliciter de l'État une subvention complémentaire de 25.830 F relative aux travaux de sécurité (2000), puis approuve le principe de travaux de mise aux normes de l'éclairage et de sécurité et de réhabilitation d'un escalier de la cour intérieure et des appuis et bandeaux de façades (2001), de travaux de sécurité (2002) et, en décembre 2004, de travaux sur les sanitaires, les faux plafonds, la verrière et le local acide. En novembre 2003, il autorise aussi le Maire à signer avec la Caisse des écoles du 13e arrondissement une convention relative au service de restauration de l'école et à en fixer les tarifs par arrêté, et attribue une subvention de 1.500 euros à l'association foyer socio-éducatif des élèves. Deux autres points portent sur l'approbation du principe de travaux de modernisation du centre thermique (novembre 2003) et de réfection de l'étanchéité des toitures terrasses (février 2009). En juin 2013, lors de l'examen de deux vœux relatifs aux travaux de l'école, dont l'un déposé par l'Exécutif, M. Philippe Moine déclare qu'il est prévu de remplacer les verrières de la grande halle par des parois opaques et que professeurs et élèves sont très opposés à cette solution.",
+ "moments": [
+  {
+   "id": "675",
+   "seance": "JUILLET 1995",
+   "fait": "Le Conseil attribue une subvention de 12 000 F à l'Association amicale des anciens élèves de l'école Estienne pour l'opération « Stand de la Ville de Paris » dans le Salon du Livre 1995.",
+   "pourquoi": "Les anciens élèves et le Salon du Livre",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=675",
+   "fait_en": "The Council awards a grant of 12,000 F to the Association amicale des anciens élèves de l'école Estienne (alumni association) for the “Stand de la Ville de Paris” (City of Paris stand) operation at the 1995 Salon du Livre.",
+   "pourquoi_en": "The alumni and the Salon du Livre"
+  },
+  {
+   "id": "43278",
+   "seance": "MAI 2000",
+   "fait": "Le Conseil autorise le Maire à solliciter de l'État (Ministère de l'Education nationale) une subvention complémentaire de 25 830 F relative aux travaux de sécurité à l'école.",
+   "pourquoi": "Autorisation de solliciter l'État pour la sécurité",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43278",
+   "fait_en": "The Council authorises the Mayor to seek from the State (Ministry of National Education) a supplementary grant of 25,830 F relating to safety works at the school.",
+   "pourquoi_en": "Authorisation to seek State funding for safety"
+  },
+  {
+   "id": "28717",
+   "seance": "JUIN 2001",
+   "fait": "Le Conseil approuve le principe de travaux de réhabilitation d'un escalier de la cour intérieure et des appuis et bandeaux de façades, et autorise le Maire à signer le marché avec l'attributaire désigné.",
+   "pourquoi": "Escalier de cour, appuis et bandeaux de façades",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28717",
+   "fait_en": "The Council approves the principle of works to rehabilitate a staircase in the inner courtyard and the façade sills and string courses, and authorises the Mayor to sign the contract with the designated contractor.",
+   "pourquoi_en": "Courtyard staircase, façade sills and string courses"
+  },
+  {
+   "id": "94048",
+   "seance": "NOVEMBRE 2003",
+   "fait": "Le Conseil autorise le Maire à signer avec la Caisse des écoles du 13e une convention relative au service de restauration de l'école et à fixer par arrêté les tarifs du repas à compter du 5 janvier 2004, de 1,63 à 2,73 euros pour les élèves selon le nombre d'enfants demi-pensionnaires de la famille.",
+   "pourquoi": "Une convention et des tarifs pour la cantine",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94048",
+   "fait_en": "The Council authorises the Mayor to sign with the Caisse des écoles of the 13th an agreement on the school's catering service and to set by order the meal prices from 5 January 2004, from 1.63 to 2.73 euros for pupils depending on the number of half-board children in the family.",
+   "pourquoi_en": "An agreement and prices for the canteen"
+  },
+  {
+   "id": "93998",
+   "seance": "NOVEMBRE 2003",
+   "fait": "Le Conseil attribue une subvention de 1 500 euros à l'association foyer socio-éducatif des élèves de l'école.",
+   "pourquoi": "Une subvention au foyer des élèves",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93998",
+   "fait_en": "The Council awards a grant of 1,500 euros to the pupils' socio-educational association (association foyer socio-éducatif des élèves) of the school.",
+   "pourquoi_en": "A grant to the pupils' association"
+  },
+  {
+   "id": "87807",
+   "seance": "DECEMBRE 2004",
+   "fait": "Le Conseil approuve le principe de travaux de modernisation de la verrière de l'école et les modalités de passation du marché par appel d'offres ouvert ; trois autres délibérations de la même séance (2004 DPA 275) approuvent de même le principe de travaux sur les sanitaires, les faux plafonds et le local acide.",
+   "pourquoi": "Quatre principes de travaux approuvés à la même séance",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87807",
+   "fait_en": "The Council approves the principle of works to modernise the school's glazing and the procedure for awarding the contract by open call for tenders; three other deliberations at the same session (2004 DPA 275) likewise approve the principle of works on the toilets, the false ceilings and the acid room.",
+   "pourquoi_en": "Four works principles approved at the same session"
+  },
+  {
+   "id": "49953",
+   "seance": "FEVRIER 2009",
+   "fait": "Le point 2009 DPA 106, rapporté par M. Jean-Louis Missika, porte sur l'approbation du principe de travaux de réfection de l'étanchéité des toitures terrasses de l'école et des modalités de passation du marché.",
+   "pourquoi": "L'étanchéité des toitures terrasses à l'ordre du jour",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49953",
+   "fait_en": "Item 2009 DPA 106, presented by Mr. Jean-Louis Missika, concerns the approval of the principle of works to repair the waterproofing of the school's roof terraces and of the procedure for awarding the contract.",
+   "pourquoi_en": "Roof-terrace waterproofing on the agenda"
+  },
+  {
+   "id": "113300",
+   "seance": "JUIN 2013",
+   "fait": "Lors de l'examen des vœux n° 50 et 50 bis relatifs aux travaux de l'école, M. Philippe Moine déclare qu'il est prévu de remplacer les verrières de la grande halle par des parois opaques et que professeurs et élèves sont très opposés à cette solution.",
+   "pourquoi": "Verrières opaques : une opposition rapportée en séance",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=113300",
+   "fait_en": "During the examination of motions (vœux) no. 50 and 50 bis relating to works at the school, Mr. Philippe Moine states that it is planned to replace the glazing of the main hall with opaque panels and that teachers and students are very opposed to this solution.",
+   "pourquoi_en": "Opaque glazing: opposition reported in session"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "NOVEMBRE 2003",
+   "montant": "1.500 euros",
+   "objet": "subvention à l'association foyer socio-éducatif des élèves de l'école (budget de fonctionnement 2003)",
+   "citation": "Une subvention de 1.500 euros est attribuée à l'association foyer socio-éducatif des élèves de l'école ESTIENNE 18, boulevard Auguste-Blanqui (13ème) (D05306).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93998"
+  },
+  {
+   "seance": "JUILLET 1995",
+   "montant": "12.000 F",
+   "objet": "subvention à l'Association amicale des anciens élèves pour l'opération « Stand de la Ville de Paris » au Salon du Livre 1995",
+   "citation": "Une subvention de 12.000 F est attribuée à l'Association amicale des anciens élèves de l'école Estienne, 18, boulevard Auguste-Blanqui (13e), pour l'opération \"Stand de la Ville de Paris\" dans le Salon du Livre 1995.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=675"
+  },
+  {
+   "seance": "NOVEMBRE 2003",
+   "montant": "272.000 euros",
+   "objet": "dépense correspondante, estimée en année pleine (budget de fonctionnement 2004 et années ultérieures, sous réserve de la décision de financement)",
+   "citation": "estimée à 272.000 euros en année pleine, sera imputée sur la rubrique 251, chapitre 011, nature 604212, du budget de fonctionnement municipal pour 2004 et les années ultérieures, sous réserve de la décision de financement.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94048"
+  },
+  {
+   "seance": "NOVEMBRE 2003",
+   "montant": "143.700 euros",
+   "objet": "recette correspondante, estimée en année pleine (budget de fonctionnement 2004 et suivants)",
+   "citation": "la recette correspondante, estimée à 143.700 euros en année pleine, sera constatée sur la rubrique 231, chapitre 70, nature 70671, du budget de fonctionnement municipal pour 2004 et suivants.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94048"
+  },
+  {
+   "seance": "NOVEMBRE 2003",
+   "montant": "2,73 euros",
+   "objet": "tarif du repas que le Maire est autorisé à fixer par arrêté, à compter du 5 janvier 2004, pour les élèves des familles d'1 à 2 enfants demi-pensionnaires",
+   "citation": "tarifs applicables aux élèves - familles d'1 à 2 enfants* : 2,73 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94048"
+  },
+  {
+   "seance": "NOVEMBRE 2003",
+   "montant": "2,18 euros",
+   "objet": "tarif du repas que le Maire est autorisé à fixer par arrêté pour les élèves des familles de 3 enfants demi-pensionnaires",
+   "citation": "familles de 3 enfants* : 2,18 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94048"
+  },
+  {
+   "seance": "NOVEMBRE 2003",
+   "montant": "1,91 euros",
+   "objet": "tarif du repas que le Maire est autorisé à fixer par arrêté pour les élèves des familles de 4 enfants demi-pensionnaires",
+   "citation": "familles de 4 enfants* : 1,91 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94048"
+  },
+  {
+   "seance": "NOVEMBRE 2003",
+   "montant": "1,63 euros",
+   "objet": "tarif du repas que le Maire est autorisé à fixer par arrêté pour les élèves des familles de 5 enfants demi-pensionnaires et plus",
+   "citation": "familles de 5 enfants et +* : 1,63 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94048"
+  },
+  {
+   "seance": "NOVEMBRE 2003",
+   "montant": "4,09 euros",
+   "objet": "tarif du repas que le Maire est autorisé à fixer par arrêté pour les personnels de catégorie A",
+   "citation": "tarifs applicables aux personnels - catégorie A : 4,09 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94048"
+  },
+  {
+   "seance": "NOVEMBRE 2003",
+   "montant": "2,73 euros",
+   "objet": "tarif du repas que le Maire est autorisé à fixer par arrêté pour les personnels ATOS",
+   "citation": "personnels ATOS : 2,73 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94048"
+  },
+  {
+   "seance": "MAI 2000",
+   "montant": "25.830 F",
+   "objet": "subvention complémentaire de l'État que le Maire est autorisé à solliciter pour les travaux de sécurité (recette d'investissement)",
+   "citation": "M. le Maire de Paris est autorisé à solliciter auprès de M. le Préfet de la Région d'Ile-de-France, Préfet de Paris, au titre du Ministère de l'Education nationale, une subvention complémentaire de 25.830 F relative aux travaux de sécurité à l'école Estienne (13e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43278"
+  }
+ ],
  "bmo_extraits": [],
  "bmo_recit": null,
  "delibs_par_annee": {
@@ -395,7 +555,7 @@
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22%C3%89cole+Estienne%22%29"
   },
   "invest": {
    "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -405,5 +565,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In July 1995, the Conseil de Paris awards a grant of 12,000 F to the Association amicale des anciens élèves de l'école Estienne (alumni association), 18, boulevard Auguste-Blanqui (13th), for the “Stand de la Ville de Paris” (City of Paris stand) operation at the 1995 Salon du Livre. From 2000 to 2004, it rules on several occasions on works at the school: it authorises the Mayor to seek from the State a supplementary grant of 25,830 F relating to safety works (2000), then approves the principle of works to bring the lighting up to standard and safety works, and of the rehabilitation of a staircase in the inner courtyard and of the façade sills and string courses (2001), of safety works (2002) and, in December 2004, of works on the toilets, the false ceilings, the glazing and the acid room. In November 2003, it also authorises the Mayor to sign with the Caisse des écoles of the 13th arrondissement an agreement on the school's catering service and to set its prices by order, and awards a grant of 1,500 euros to the pupils' socio-educational association (association foyer socio-éducatif des élèves). Two other items concern the approval of the principle of works to modernise the heating plant (November 2003) and to repair the waterproofing of the roof terraces (February 2009). In June 2013, during the examination of two motions (vœux) relating to works at the school, one of which was tabled by the Executive, Mr. Philippe Moine states that it is planned to replace the glazing of the main hall with opaque panels and that teachers and students are very opposed to this solution.",
+ "bmo_recit_en": "The Bulletin municipal offers two glimpses of the École Estienne, seven years apart. On Sunday 25 July 1897, the prize-giving for the pupils of the “municipal Estienne school” takes place, presided over by Mr. Paul Bernard, municipal councillor and member of the school's supervisory committee. In 1904, the Council examines the request from Mr. Blanchard, a lithographer, concerning the acquisition of two coloured lithographs, “Naples” and “Florence”, presented as models of chromolithographs, and provides that these two pieces will be delivered to the École Estienne."
 }

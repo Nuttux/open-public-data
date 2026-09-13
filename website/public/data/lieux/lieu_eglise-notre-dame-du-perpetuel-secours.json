@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "generated_at": "2026-09-13T00:34:52.388738+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "eglise-notre-dame-du-perpetuel-secours",
  "name": "Église Notre-Dame-du-Perpétuel-Secours",
@@ -18,12 +18,13 @@
  },
  "seuil_commun": 2010,
  "wiki": {
-  "extract": null,
-  "url": null,
+  "extract": "La basilique Notre-Dame-du-Perpétuel-Secours de Paris est une basilique mineure catholique, l'une des cinq basiliques mineures de Paris, située 55, boulevard de Ménilmontant, dans le 11e arrondissement de Paris, élevée au rang de basilique mineure le 25 juin 1966 par le pape Paul VI, affiliée à la basilique Sainte-Marie-Majeure de Rome.",
+  "url": "https://fr.wikipedia.org/wiki/Basilique_Notre-Dame-du-Perp%C3%A9tuel-Secours_de_Paris",
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Basilica of Notre-Dame-du-Perpétuel-Secours in Paris is a Catholic minor basilica, one of the five minor basilicas in Paris, located at 55 boulevard de Ménilmontant in the 11th arrondissement of Paris. It was raised to the rank of minor basilica on 25 June 1966 by Pope Paul VI and is affiliated with the Basilica of Santa Maria Maggiore in Rome."
  },
  "stats": {
   "n_delibs": 1208,
@@ -31,19 +32,19 @@
    1995,
    2026
   ],
-  "n_bmo_brut": 0,
+  "n_bmo_brut": 891,
   "n_bmo_verifies": null,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "tête du classement Solr (1208 documents au total)",
   "lecture_mode_en": "top of the Solr ranking (1208 documents total)",
   "n_lus": 43,
-  "n_lieu": null
+  "n_lieu": 0
  },
  "subventions_exploitant": null,
  "residents": [],
  "kpi_montant": null,
- "synthese_fr": null,
+ "synthese_fr": "D'après leurs intitulés, aucun des documents du Conseil de Paris consultés ne porte sur l'église Notre-Dame-du-Perpétuel-Secours elle-même. La plupart concernent d'autres lieux dont le nom contient « Notre-Dame » : la cathédrale Notre-Dame de Paris et ses abords, notamment à la suite de son incendie d'avril 2019, les églises Notre-Dame-de-Lorette, Notre-Dame d'Auteuil, Notre Dame de la Croix, Notre Dame de l'Assomption ou Notre-Dame de Compassion, des rues parisiennes et des biens situés hors de Paris. Le seul intitulé qui reprend le nom « Notre Dame du Perpétuel Secours » est celui du projet de délibération 2008 DFPE 194, examiné en séance de juillet 2008 : « Signature d’un avenant à la convention passée avec l’”Association Familiale Catholique Notre Dame du Perpétuel Secours” pour l’attribution d’une subvention pour le fonctionnement du jardin d’enfants (11e) » ; cet intitulé ne mentionne pas l'église. Ces documents ne permettent d'établir aucun fait sur les travaux, le budget, la gestion ou les usages de l'édifice.",
  "moments": [],
  "montants": [],
  "bmo_extraits": [],
@@ -94,7 +95,7 @@
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22%C3%89glise+Notre-Dame-du-Perp%C3%A9tuel-Secours%22%29"
   },
   "invest": {
    "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -104,5 +105,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "Judging by their titles, none of the Conseil de Paris documents consulted concerns the Notre-Dame-du-Perpétuel-Secours church itself. Most relate to other places whose name contains \"Notre-Dame\": Notre-Dame de Paris cathedral and its surroundings, particularly in the wake of its April 2019 fire; the churches of Notre-Dame-de-Lorette, Notre-Dame d'Auteuil, Notre Dame de la Croix, Notre Dame de l'Assomption and Notre-Dame de Compassion; Paris streets; and properties located outside Paris. The only title that uses the name \"Notre Dame du Perpétuel Secours\" is that of draft deliberation 2008 DFPE 194, examined at the July 2008 session: \"Signing of an amendment to the agreement concluded with the 'Association Familiale Catholique Notre Dame du Perpétuel Secours' for the award of a subsidy for the operation of the kindergarten (11th arrondissement)\"; this title does not mention the church. These documents do not make it possible to establish any fact about the building's works, budget, management or uses."
 }

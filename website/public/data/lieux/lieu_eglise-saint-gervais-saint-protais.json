@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "generated_at": "2026-09-13T00:34:52.388738+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "eglise-saint-gervais-saint-protais",
  "name": "Église Saint-Gervais-Saint-Protais",
@@ -18,21 +18,22 @@
  },
  "seuil_commun": 2010,
  "wiki": {
-  "extract": null,
-  "url": null,
+  "extract": "L'église Saint-Gervais-Saint-Protais de Paris, généralement connue sous le nom d'église Saint-Gervais, est située sur la place Saint-Gervais, dans le quartier Saint-Gervais, auxquels elle donne leurs noms, dans le 4e arrondissement, à l'est de l'Hôtel de Ville.",
+  "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Saint-Gervais-Saint-Protais_de_Paris",
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Church of Saint-Gervais-Saint-Protais in Paris, generally known as the Church of Saint-Gervais, is located on Place Saint-Gervais, in the Saint-Gervais quarter, both of which take their names from it, in the 4th arrondissement, east of the Hôtel de Ville."
  },
  "stats": {
   "n_delibs": 452,
   "delibs_span": [
-   1995,
-   2026
+   1997,
+   2008
   ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
+  "n_bmo_brut": 68,
+  "n_bmo_verifies": 2,
   "invest_total_eur": 4353593.74,
   "invest_annees": [
    "2023",
@@ -41,14 +42,131 @@
   "lecture_mode": "titre nommant le lieu (13 trouvés)",
   "lecture_mode_en": "title naming the place (13 found)",
   "n_lus": 13,
-  "n_lieu": null
+  "n_lieu": 13
  },
  "subventions_exploitant": null,
  "residents": [],
  "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
+ "synthese_fr": "L'église Saint-Gervais-Saint-Protais, qu'une délibération de 1997 décrit comme un édifice cultuel appartenant à la Ville de Paris et classé parmi les Monuments historiques, fait l'objet de délibérations successives sur ses travaux, ses vitraux et ses verrières entre 1997 et 2008. En 1997, le Conseil autorise le Maire à signer avec l'État une convention de versement de fonds de concours pour des travaux urgents sur la façade, dépense évaluée à 333 500 F, ainsi qu'à souscrire un avenant ayant pour objet de porter le marché de nettoyage intérieur de 4 947 437,12 F à 5 159 272,54 F TTC ; en 1998, il approuve le principe de la réfection des installations électriques et de celle des planchers des chapelles Dorée et Saint-Joseph. Le principe de la restauration de la façade ouest, approuvé en 2000, est suivi de la souscription autorisée de deux avenants, en 2002 (avenant portant le montant total du marché de 2 226 686,34 à 2 509 382,23 euros HT) et en 2003 (avenant portant le marché du lot sculpture de 29 464,92 à 41 594,93 euros HT), puis, en 2004, d'un avenant autorisé ayant pour objet de substituer la société Quelin SA à Groux SA, déclaré sans incidence financière. Les vitraux et verrières forment un second fil : acceptation autorisée du don d'un vitrail en 2000, principe de la repose de la verrière de Salomon en 2001 et de la restauration de la verrière haute de la façade occidentale en 2002, acceptation autorisée du don d'une verrière contemporaine financée par l'Association diocésaine de Paris pour la baie de la tribune d'orgue en 2003, et en 2008 principe des travaux de réalisation et de pose de trois vitraux contemporains aux baies 112, 114 et 116, également financés par l'Association diocésaine.",
+ "moments": [
+  {
+   "id": "75207",
+   "seance": "SEPTEMBRE 1997",
+   "fait": "Le Conseil autorise le Maire à signer avec l'État une convention de versement de fonds de concours pour des travaux urgents sur la façade de l'église, édifice cultuel appartenant à la Ville et classé parmi les Monuments historiques ; dépense évaluée à 333 500 F.",
+   "pourquoi": "Travaux urgents sur la façade : une convention avec l'État",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75207",
+   "fait_en": "The Council authorizes the Mayor to sign with the State an agreement for the payment of contribution funds for urgent works on the façade of the church, a place of worship owned by the City and listed as a Historic Monument; expenditure estimated at 333,500 F.",
+   "pourquoi_en": "Urgent works on the façade: an agreement with the State"
+  },
+  {
+   "id": "75329",
+   "seance": "SEPTEMBRE 1997",
+   "fait": "Le Conseil approuve le principe et les modalités de travaux supplémentaires de nettoyage intérieur et autorise le Maire à souscrire un avenant au marché de l'entreprise Léon Noël, ayant pour objet de porter son montant de 4 947 437,12 F à 5 159 272,54 F TTC.",
+   "pourquoi": "Nettoyage intérieur : un avenant pour travaux supplémentaires",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75329",
+   "fait_en": "The Council approves the principle and terms of additional interior cleaning works and authorizes the Mayor to enter into an amendment to the contract of the company Léon Noël, intended to raise its amount from 4,947,437.12 F to 5,159,272.54 F incl. VAT.",
+   "pourquoi_en": "Interior cleaning: an amendment for additional works"
+  },
+  {
+   "id": "92577",
+   "seance": "SEPTEMBRE 1998",
+   "fait": "Le Conseil approuve le principe de la réfection des planchers des chapelles Dorée et Saint-Joseph et autorise le Maire à signer le marché sur appel d'offres ouvert.",
+   "pourquoi": "Les planchers des chapelles Dorée et Saint-Joseph",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92577",
+   "fait_en": "The Council approves the principle of refurbishing the floors of the Dorée and Saint-Joseph chapels and authorizes the Mayor to sign the contract awarded through an open call for tenders.",
+   "pourquoi_en": "The floors of the Dorée and Saint-Joseph chapels"
+  },
+  {
+   "id": "34837",
+   "seance": "JUIN 2000",
+   "fait": "Le Conseil approuve le principe de la restauration de la façade ouest et autorise le Maire à signer les marchés sur appel d'offres ouvert, en 3 tranches et 4 lots ; les dépenses des tranches conditionnelles relèvent d'un budget ultérieur, sous réserve de la décision de financement.",
+   "pourquoi": "Façade ouest : un marché en trois tranches et quatre lots",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34837",
+   "fait_en": "The Council approves the principle of restoring the west façade and authorizes the Mayor to sign the contracts awarded through an open call for tenders, in 3 phases and 4 lots; expenditure for the conditional phases falls under a later budget, subject to the funding decision.",
+   "pourquoi_en": "West façade: a contract in three phases and four lots"
+  },
+  {
+   "id": "73745",
+   "seance": "AVRIL 2002",
+   "fait": "Le Conseil approuve le principe et les modalités de prestations complémentaires sur la façade ouest et autorise le Maire à souscrire un avenant portant le montant total du marché de 2 226 686,34 à 2 509 382,23 euros HT (valeur juin 2000).",
+   "pourquoi": "Façade ouest : un avenant pour prestations complémentaires",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73745",
+   "fait_en": "The Council approves the principle and terms of additional services on the west façade and authorizes the Mayor to enter into an amendment raising the total contract amount from 2,226,686.34 to 2,509,382.23 euros excl. VAT (June 2000 value).",
+   "pourquoi_en": "West façade: an amendment for additional services"
+  },
+  {
+   "id": "89442",
+   "seance": "AVRIL 2003",
+   "fait": "Le Conseil autorise le Maire à accepter les modalités de mise en œuvre et le don d'une verrière contemporaine financée par l'Association diocésaine de Paris, dans la baie de la tribune d'orgue.",
+   "pourquoi": "Une verrière contemporaine en don pour la tribune d'orgue",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89442",
+   "fait_en": "The Council authorizes the Mayor to accept the implementation terms and the gift of a contemporary glass window funded by the Association diocésaine de Paris, in the organ-loft bay.",
+   "pourquoi_en": "A contemporary glass window donated for the organ loft"
+  },
+  {
+   "id": "45951",
+   "seance": "SEPTEMBRE 2004",
+   "fait": "Le Conseil autorise le Maire à souscrire un avenant substituant Quelin SA à Groux SA pour le lot sculpture de la façade ouest, motif indiqué : dissolution sans liquidation de Groux SA ; avenant déclaré sans incidence financière.",
+   "pourquoi": "Lot sculpture : un avenant pour substituer Quelin SA à Groux SA",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45951",
+   "fait_en": "The Council authorizes the Mayor to enter into an amendment substituting Quelin SA for Groux SA for the sculpture lot of the west façade, stated reason: dissolution without liquidation of Groux SA; amendment declared to have no financial impact.",
+   "pourquoi_en": "Sculpture lot: an amendment to substitute Quelin SA for Groux SA"
+  },
+  {
+   "id": "50804",
+   "seance": "AVRIL 2008",
+   "fait": "Le Conseil approuve le principe des travaux de réalisation et de pose de trois vitraux contemporains aux baies 112, 114 et 116, financés par l'Association diocésaine de Paris, et autorise le Maire à habiliter celle-ci à déposer une demande d'autorisation de travaux sur monument historique classé.",
+   "pourquoi": "Trois vitraux contemporains financés par l'Association diocésaine",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50804",
+   "fait_en": "The Council approves the principle of works to make and install three contemporary stained-glass windows in bays 112, 114 and 116, funded by the Association diocésaine de Paris, and authorizes the Mayor to empower the latter to file an application for authorization of works on a listed historic monument.",
+   "pourquoi_en": "Three contemporary stained-glass windows funded by the Association diocésaine"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "SEPTEMBRE 1997",
+   "montant": "333.500 F",
+   "objet": "dépense correspondant à la convention de fonds de concours pour les travaux urgents sur la façade, évaluée à ce montant et à imputer au budget d'investissement de la Ville de 1997",
+   "citation": "Art. 3.- La dépense correspondante, évaluée à 333.500 F, sera imputée au chapitre 900, sous-chapitre 900-40, article 2301, du budget d'investissement de la Ville de Paris de 1997.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75207"
+  },
+  {
+   "seance": "SEPTEMBRE 1997",
+   "montant": "5.159.272,54 F T.T.C.",
+   "objet": "montant du marché de nettoyage intérieur (entreprise Léon Noël) prévu par l'avenant dont la souscription est autorisée, contre 4.947.437,12 F jusque-là",
+   "citation": "de porter le montant du marché de 4.947.437,12 F à 5.159.272,54 F T.T.C.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75329"
+  },
+  {
+   "seance": "AVRIL 2002",
+   "montant": "2.509.382,23 euros H.T.",
+   "objet": "montant total du marché de restauration de la façade ouest (SNC Sachet et Brulet, S.A. H. Chevalier) prévu par l'avenant dont la souscription est autorisée, contre 2.226.686,34 euros H.T. jusque-là",
+   "citation": "ledit avenant ayant pour objet la réalisation des travaux supplémentaires mentionnés à l'article précédent et portant le montant total du marché de 2.226.686,34 euros H.T. à 2.509.382,23 euros H.T. (valeur juin 2000).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73745"
+  },
+  {
+   "seance": "NOVEMBRE 2003",
+   "montant": "12.130,01 euros H.T.",
+   "objet": "coût des travaux supplémentaires objet de l'avenant au marché du lot n° 3 (restauration de sculpture) passé avec l'entreprise Groux, avenant dont la souscription est autorisée",
+   "citation": "ledit avenant ayant pour objet la réalisation des travaux supplémentaires mentionnés à l'article précédent, d'un coût de 12.130,01 euros H.T.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94146"
+  },
+  {
+   "seance": "NOVEMBRE 2003",
+   "montant": "41.594,93 euros H.T.",
+   "objet": "montant total du marché Groux (lot n° 3) prévu par l'avenant dont la souscription est autorisée, contre 29.464,92 euros H.T. jusque-là",
+   "citation": "portant le montant total du marché de 29.464,92 euros H.T. à 41.594,93 euros H.T. (valeur juin 2000).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94146"
+  }
+ ],
  "bmo_extraits": [],
  "bmo_recit": null,
  "delibs_par_annee": {
@@ -322,7 +440,7 @@
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22%C3%89glise+Saint-Gervais-Saint-Protais%22%29"
   },
   "invest": {
    "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -332,5 +450,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "The Church of Saint-Gervais-Saint-Protais, which a 1997 deliberation describes as a place of worship owned by the City of Paris and listed as a Historic Monument, is the subject of successive deliberations on its works, its stained glass and its windows between 1997 and 2008. In 1997, the Council authorizes the Mayor to sign with the State an agreement for the payment of contribution funds for urgent works on the façade, an expenditure estimated at 333,500 F, as well as to enter into an amendment intended to raise the interior cleaning contract from 4,947,437.12 F to 5,159,272.54 F incl. VAT; in 1998, it approves the principle of refurbishing the electrical installations and the floors of the Dorée and Saint-Joseph chapels. The principle of restoring the west façade, approved in 2000, is followed by the authorized entry into two amendments, in 2002 (amendment raising the total contract amount from 2,226,686.34 to 2,509,382.23 euros excl. VAT) and in 2003 (amendment raising the sculpture lot contract from 29,464.92 to 41,594.93 euros excl. VAT), then, in 2004, by an authorized amendment intended to substitute Quelin SA for Groux SA, declared to have no financial impact. The stained glass and windows form a second thread: authorized acceptance of the gift of a stained-glass window in 2000, the principle of reinstalling the Solomon window in 2001 and of restoring the upper window of the west façade in 2002, authorized acceptance of the gift of a contemporary glass window funded by the Association diocésaine de Paris for the organ-loft bay in 2003, and in 2008 the principle of works to make and install three contemporary stained-glass windows in bays 112, 114 and 116, also funded by the Association diocésaine."
 }

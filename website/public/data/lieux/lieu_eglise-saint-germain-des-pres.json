@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "generated_at": "2026-09-13T00:34:52.388738+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "eglise-saint-germain-des-pres",
  "name": "Église Saint-Germain-des-Prés",
@@ -18,21 +18,22 @@
  },
  "seuil_commun": 2010,
  "wiki": {
-  "extract": null,
-  "url": null,
+  "extract": "L'abbaye Saint-Germain-des-Prés, qui comprend l'actuelle église Saint-Germain-des-Prés, est une ancienne abbaye bénédictine de Paris (France), située 3 place Saint-Germain-des-Prés dans l'actuel 6e arrondissement. Fondée au milieu du VIe siècle sous le nom de basilique Sainte-Croix et Saint-Vincent par le roi mérovingien Childebert Ier et saint Germain, évêque de Paris, elle doit son nom actuel à ce dernier.",
+  "url": "https://fr.wikipedia.org/wiki/Abbaye_de_Saint-Germain-des-Pr%C3%A9s",
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Abbey of Saint-Germain-des-Prés, which includes the present-day church of Saint-Germain-des-Prés, is a former Benedictine abbey in Paris (France), located at 3 place Saint-Germain-des-Prés in the present-day 6th arrondissement. Founded in the mid-6th century under the name of basilica of Sainte-Croix et Saint-Vincent by the Merovingian king Childebert I and Saint Germain, bishop of Paris, it owes its current name to the latter."
  },
  "stats": {
   "n_delibs": 771,
   "delibs_span": [
-   1995,
-   2026
+   1997,
+   2015
   ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": 2,
   "invest_total_eur": 3993236.77,
   "invest_annees": [
    "2018",
@@ -44,14 +45,101 @@
   "lecture_mode": "titre nommant le lieu (5 trouvés)",
   "lecture_mode_en": "title naming the place (5 found)",
   "n_lus": 5,
-  "n_lieu": null
+  "n_lieu": 5
  },
  "subventions_exploitant": null,
  "residents": [],
  "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
+ "synthese_fr": "En septembre 1997, le Conseil de Paris approuve le principe de la réfection des installations électriques de l'église Saint-Germain-des-Prés et autorise le Maire à signer le marché de travaux correspondant. En novembre 1998, il autorise le Maire à indemniser à l'amiable, à hauteur de 9.286 F TTC, l'assureur de la copropriété du 11-13, rue de l'Abbaye, pour des dommages subis le 12 juillet 1995 du fait d'un chêneau endommagé de l'église. En 2000, il autorise le Maire à accepter le parrainage de 1.000.000 F que la Société Giorgio Armani France propose pour la restauration de vitraux (mai), puis approuve le principe de la restauration des baies 13, 111 et 113 et autorise le Maire à signer les marchés (septembre). En mai 2015, une convention de mécénat avec le Fonds de dotation pour le rayonnement de l'église, en vue de sa restauration intérieure, est débattue en séance : selon M. Julliard, premier adjoint, la Ville prendra en charge environ 1,2 million d'euros, notamment pour l'assainissement du chevet, et l'opération, qui débute par des fouilles archéologiques au chevet, devrait prendre fin en 2020.",
+ "moments": [
+  {
+   "id": "75354",
+   "seance": "SEPTEMBRE 1997",
+   "fait": "Le Conseil approuve le principe de la réfection des installations électriques de l'église, prévoit que les travaux feront l'objet d'un marché sur appel d'offres ouvert et autorise le Maire à signer ce marché.",
+   "pourquoi": "Refaire l'électricité : principe approuvé, appel d'offres prévu",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75354",
+   "fait_en": "The Council approves in principle the renovation of the church's electrical installations, provides that the works will be the subject of a contract awarded through an open call for tenders, and authorizes the Mayor to sign this contract.",
+   "pourquoi_en": "Redoing the electrics: approved in principle, call for tenders planned"
+  },
+  {
+   "id": "62315",
+   "seance": "NOVEMBRE 1998",
+   "fait": "Le Conseil autorise le Maire à indemniser à l'amiable, à hauteur de 9 286 F TTC, l'assureur de la copropriété du 11-13, rue de l'Abbaye, pour des dommages subis en 1995 du fait d'un chêneau endommagé de l'église.",
+   "pourquoi": "Un chêneau de l'église, des dommages rue de l'Abbaye",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62315",
+   "fait_en": "The Council authorizes the Mayor to compensate out of court, up to 9,286 F including VAT, the insurer of the co-owned building at 11-13, rue de l'Abbaye, for damage sustained in 1995 due to a damaged gutter of the church.",
+   "pourquoi_en": "A church gutter, damage on rue de l'Abbaye"
+  },
+  {
+   "id": "43220",
+   "seance": "MAI 2000",
+   "fait": "Le Conseil autorise le Maire à accepter le parrainage de 1 000 000 F que la Société Giorgio Armani France propose pour la restauration de vitraux, et à signer la convention de parrainage.",
+   "pourquoi": "Un parrainage d'un million de francs proposé par Armani",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43220",
+   "fait_en": "The Council authorizes the Mayor to accept the 1,000,000 F sponsorship that the Société Giorgio Armani France offers for the restoration of stained-glass windows, and to sign the sponsorship agreement.",
+   "pourquoi_en": "A one-million-franc sponsorship offered by Armani"
+  },
+  {
+   "id": "28572",
+   "seance": "SEPTEMBRE 2000",
+   "fait": "Le Conseil approuve le principe de la restauration des baies 13, 111 et 113, prévoit un marché sur appel d'offres ouvert en une tranche unique de 3 lots, et autorise le Maire à signer lesdits marchés.",
+   "pourquoi": "Trois baies numérotées, un marché en trois lots",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28572",
+   "fait_en": "The Council approves in principle the restoration of window bays 13, 111 and 113, provides for a contract awarded through an open call for tenders in a single phase of 3 lots, and authorizes the Mayor to sign the said contracts.",
+   "pourquoi_en": "Three numbered window bays, a contract in three lots"
+  },
+  {
+   "id": "125365",
+   "seance": "MAI 2015",
+   "fait": "Débat sur la convention de mécénat avec le Fonds de dotation pour le rayonnement de l'église ; selon M. Julliard, la Ville prendra en charge environ 1,2 million d'euros, et l'opération, qui débute par des fouilles archéologiques au chevet, devrait prendre fin en 2020.",
+   "pourquoi": "Une convention de mécénat pour la restauration intérieure",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125365",
+   "fait_en": "Debate on the patronage agreement with the Fonds de dotation pour le rayonnement de l'église; according to Mr Julliard, the City will cover about 1.2 million euros, and the operation, which begins with archaeological excavations at the chevet, is expected to end in 2020.",
+   "pourquoi_en": "A patronage agreement for the interior restoration"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "MAI 2015",
+   "montant": "environ 1,2 million d'euros",
+   "objet": "Part que la Ville prendra en charge, notamment pour l'assainissement du chevet, en complément du fonds de dotation de la paroisse (selon M. Julliard, premier adjoint)",
+   "citation": "la paroisse qui s?est dotée de son propre fonds de dotation, qui permettra donc de compléter l?apport de la Ville qui prendra, elle, en charge environ 1,2 million d?euros, notamment pour l?assainissement du chevet de l?église",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125365"
+  },
+  {
+   "seance": "MAI 2015",
+   "montant": "plusieurs centaines de milliers d'euros",
+   "objet": "Sommes déjà réunies, selon M. Lecoq (maire du 6e), par le fonds de dotation créé par la communauté paroissiale ; il ajoute « voire sans doute davantage, mais le secret est bien gardé »",
+   "citation": "créé un fonds de dotation pour le rayonnement de l?église Saint-Germain-des-Prés qui a réuni et rassemblé déjà plusieurs centaines de milliers d?euros, voire sans doute davantage, mais le secret est bien gardé",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125365"
+  },
+  {
+   "seance": "MAI 2015",
+   "montant": "80 millions d'euros",
+   "objet": "Montant d'investissement public de la Ville de Paris cité par M. Julliard à propos du Plan Edifices cultuels ; ne concerne pas cette seule église",
+   "citation": "pour la réussite du Plan Edifices cultuels, c?est par ce travail partenarial que nous pourrons faire beaucoup plus que les 80 millions d?euros d?investissement public Ville de Paris",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125365"
+  },
+  {
+   "seance": "MAI 2000",
+   "montant": "1.000.000 F",
+   "objet": "Parrainage que la Société Giorgio Armani France propose pour la restauration de vitraux ; la délibération prévoit que la recette sera imputée au budget d'investissement 2000",
+   "citation": "M. le Maire de Paris est autorisé à accepter le parrainage d'un montant de 1.000.000 F que la Société Giorgio Armani France propose à la Ville de Paris pour la restauration de vitraux à l'église Saint-Germain-des-Prés (6e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43220"
+  },
+  {
+   "seance": "NOVEMBRE 1998",
+   "montant": "9.286 F TTC",
+   "objet": "Montant auquel le Maire est autorisé à indemniser à l'amiable l'Union des assurances de Paris, pour les dommages subis par l'immeuble du 11-13, rue de l'Abbaye du fait d'un chêneau endommagé de l'église",
+   "citation": "M. le Maire de Paris est autorisé à procéder à l'indemnisation amiable, à hauteur de 9.286 F T.T.C., de l'Union des assurances de Paris en réparation de dommages subis le 12 juillet 1995 par son client",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62315"
+  }
+ ],
  "bmo_extraits": [],
  "bmo_recit": null,
  "delibs_par_annee": {
@@ -201,7 +289,7 @@
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22%C3%89glise+Saint-Germain-des-Pr%C3%A9s%22%29"
   },
   "invest": {
    "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -211,5 +299,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In September 1997, the Conseil de Paris approves in principle the renovation of the electrical installations of the church of Saint-Germain-des-Prés and authorizes the Mayor to sign the corresponding works contract. In November 1998, it authorizes the Mayor to compensate out of court, up to 9,286 F including VAT, the insurer of the co-owned building at 11-13, rue de l'Abbaye, for damage sustained on 12 July 1995 due to a damaged gutter of the church. In 2000, it authorizes the Mayor to accept the 1,000,000 F sponsorship that the Société Giorgio Armani France offers for the restoration of stained-glass windows (May), then approves in principle the restoration of window bays 13, 111 and 113 and authorizes the Mayor to sign the contracts (September). In May 2015, a patronage agreement with the Fonds de dotation pour le rayonnement de l'église, with a view to the restoration of its interior, is debated in session: according to Mr Julliard, first deputy mayor, the City will cover about 1.2 million euros, notably for remediation work on the chevet, and the operation, which begins with archaeological excavations at the chevet, is expected to end in 2020.",
+ "bmo_recit_en": "In 1973, the Bulletin municipal publishes, under number 431, a text in which the Administration states that it has been studying for several years the enhancement of the surroundings of the church of Saint-Germain-des-Prés and the abbot's palace, in liaison with the departments of the Ministry of Cultural Affairs, which has undertaken the restoration of the listed buildings. This is a study in progress: in this passage, the archive does not mention any decision taken or any completed works."
 }

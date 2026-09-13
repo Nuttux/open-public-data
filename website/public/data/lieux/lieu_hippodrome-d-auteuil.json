@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "generated_at": "2026-09-13T00:34:52.388738+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "hippodrome-d-auteuil",
  "name": "Hippodrome d'Auteuil",
@@ -23,29 +23,79 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Auteuil racecourse (hippodrome d'Auteuil) is a horse-racing track located near the Porte d'Auteuil in Paris (France), regarded as the benchmark French racecourse for steeplechase and hurdle racing."
  },
  "stats": {
   "n_delibs": 580,
   "delibs_span": [
-   1995,
-   2026
+   1999,
+   2013
   ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
+  "n_bmo_brut": 637,
+  "n_bmo_verifies": 5,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (4 trouvés)",
   "lecture_mode_en": "title naming the place (4 found)",
   "n_lus": 4,
-  "n_lieu": null
+  "n_lieu": 4
  },
  "subventions_exploitant": null,
  "residents": [],
  "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
+ "synthese_fr": "En juin 1999, en réponse à une question de M. Jean-Yves Mano sur le cadre juridique de l'exploitation de l'hippodrome, l'adjoint Jean-François Legaret indique que le droit d'occupation a été consenti à la Société des steeple-chases de France par convention du 28 septembre 1972, pour 50 ans, et que la Ville continue de percevoir sur cette base la redevance due par la société France-Galop, jusqu'à la conclusion d'un nouveau projet de convention qui sera soumis au Conseil de Paris. En septembre 2008, le Conseil adopte le projet de délibération approuvant les modalités d'attribution du marché de maîtrise d'œuvre des pelouses centrales ; M. Pierre Gaboriau se dit inquiet du devenir des scolaires et des associations sportives du quartier, tandis que Mme Fabienne Giboudeaux présente le projet comme étant aussi un projet d'espace vert qui permettra la création d'un parc de 12 hectares. En juillet 2010, le Conseil débat du principe d'aménagement de ces pelouses et de l'autorisation de lancer les marchés de travaux : M. Jean-François Martins et un autre orateur annoncent voter contre, le premier estimant que le projet ne répond pas au cahier des charges nécessaire à la pratique du sport par les scolaires ; Mme Fabienne Giboudeaux répond que c'est aussi un parc redonné aux Parisiens et aux riverains. En novembre 2013, le Conseil examine l'attribution du nom de Billie Holiday à la pelouse B, M. David Alphand et Mme Laurence Dreyfuss proposant par vœu celui d'Alain Mimoun.",
+ "moments": [
+  {
+   "id": "20070",
+   "seance": "JUIN 1999",
+   "fait": "En réponse à une question de M. Jean-Yves Mano, l'adjoint Jean-François Legaret indique que la Ville continue de percevoir la redevance due par France-Galop sur la base de la convention du 28 septembre 1972, jusqu'à la conclusion d'un nouveau projet de convention qui sera soumis au Conseil de Paris.",
+   "pourquoi": "Qui exploite l'hippodrome, et à quel titre",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20070",
+   "fait_en": "In response to a question from Mr Jean-Yves Mano, deputy mayor Jean-François Legaret states that the City continues to collect the fee owed by France-Galop on the basis of the agreement of 28 September 1972, until a new draft agreement is concluded, which will be submitted to the Council of Paris.",
+   "pourquoi_en": "Who operates the racecourse, and on what legal basis"
+  },
+  {
+   "id": "6958",
+   "seance": "SEPTEMBRE 2008",
+   "fait": "Le Conseil de Paris adopte le projet de délibération approuvant les modalités d'attribution du marché de maîtrise d'œuvre des pelouses centrales, après l'intervention de M. Pierre Gaboriau, inquiet du devenir des scolaires et des associations sportives du quartier.",
+   "pourquoi": "Fixer les modalités d'attribution de la maîtrise d'œuvre des pelouses centrales",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6958",
+   "fait_en": "The Council of Paris adopts the draft resolution approving the award procedures for the project-management (maîtrise d'œuvre) contract for the central lawns, following remarks by Mr Pierre Gaboriau, who is concerned about what will become of schoolchildren and the neighbourhood's sports associations.",
+   "pourquoi_en": "Setting the award procedures for the project management of the central lawns"
+  },
+  {
+   "id": "13572",
+   "seance": "JUILLET 2010",
+   "fait": "Le Conseil débat du principe d'aménagement des pelouses centrales et de l'autorisation de lancer les marchés de travaux ; M. Jean-François Martins et un autre orateur annoncent voter contre, Mme Fabienne Giboudeaux répond que c'est aussi « un parc redonné aux Parisiens et aux riverains ».",
+   "pourquoi": "« Plaine de jeux » ou « parc » : deux lectures des pelouses centrales",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13572",
+   "fait_en": "The Council debates the principle of redeveloping the central lawns and the authorisation to launch the works contracts; Mr Jean-François Martins and another speaker announce they will vote against, and Ms Fabienne Giboudeaux replies that it is also “a park given back to Parisians and local residents”.",
+   "pourquoi_en": "“Playing fields” or “park”: two readings of the central lawns"
+  },
+  {
+   "id": "116556",
+   "seance": "NOVEMBRE 2013",
+   "fait": "Le Conseil examine l'attribution du nom de Billie Holiday à la pelouse B ; M. David Alphand et Mme Laurence Dreyfuss proposent par vœu le nom d'Alain Mimoun.",
+   "pourquoi": "Billie Holiday ou Alain Mimoun pour la pelouse B",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116556",
+   "fait_en": "The Council examines naming lawn B after Billie Holiday; Mr David Alphand and Ms Laurence Dreyfuss propose, by way of a motion (vœu), the name of Alain Mimoun.",
+   "pourquoi_en": "Billie Holiday or Alain Mimoun for lawn B"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "SEPTEMBRE 2008",
+   "montant": "200 000 € par an",
+   "objet": "contribution financière à la Ville que M. Pierre Gaboriau attribue aux joueurs du golf de proximité dont il regrette qu'on se passe",
+   "citation": "il est vraiment dommage de se passer de ce golf de proximité qui réunit de nombreux joueurs tous les jours, qui apportent une contribution financière de 200.000 euros par an à la Ville",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6958"
+  }
+ ],
  "bmo_extraits": [],
  "bmo_recit": null,
  "delibs_par_annee": {
@@ -282,7 +332,7 @@
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Hippodrome+d%27Auteuil%22%29"
   },
   "invest": {
    "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -292,5 +342,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In June 1999, in response to a question from Mr Jean-Yves Mano on the legal framework for operating the racecourse, deputy mayor Jean-François Legaret states that the right of occupation was granted to the Société des steeple-chases de France by an agreement dated 28 September 1972, for 50 years, and that on this basis the City continues to collect the fee owed by the company France-Galop, until a new draft agreement is concluded, which will be submitted to the Council of Paris. In September 2008, the Council adopts the draft resolution approving the award procedures for the project-management (maîtrise d'œuvre) contract for the central lawns; Mr Pierre Gaboriau expresses concern about what will become of schoolchildren and the neighbourhood's sports associations, while Ms Fabienne Giboudeaux presents the project as also being a green-space project that will create a 12-hectare park. In July 2010, the Council debates the principle of redeveloping these lawns and the authorisation to launch the works contracts: Mr Jean-François Martins and another speaker announce they will vote against, the former considering that the project does not meet the specifications needed for sport by schoolchildren; Ms Fabienne Giboudeaux replies that it is also a park given back to Parisians and local residents. In November 2013, the Council examines naming lawn B after Billie Holiday, with Mr David Alphand and Ms Laurence Dreyfuss proposing, by way of a motion (vœu), the name of Alain Mimoun.",
+ "bmo_recit_en": "In the Bulletin municipal, the Auteuil racecourse appears in connection with its admission prices: by a memorandum dated 10 November 1960, the Prefect of the Seine submits to the Council the request of the Société des steeple-chases de France to increase the price of certain admissions. The same matter provides, in connection with this increase, for an adjustment of the fee to be paid to the City of Paris."
 }

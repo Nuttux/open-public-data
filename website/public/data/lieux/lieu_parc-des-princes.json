@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "generated_at": "2026-09-13T00:34:52.388738+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-des-princes",
  "name": "Parc des Princes",
@@ -23,29 +23,210 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Parc des Princes is a stadium located in the Auteuil neighborhood of the 16th arrondissement of Paris, partly above the Boulevard Périphérique. Opened on July 18, 1897 under the name \"stade vélodrome du Parc des Princes\", near the former locality of the same name in Boulogne-Billancourt, it is today the fifth-largest stadium in France and the oldest still in operation."
  },
  "stats": {
   "n_delibs": 1039,
   "delibs_span": [
-   1995,
+   2002,
    2026
   ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": 10,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (55 trouvés)",
   "lecture_mode_en": "title naming the place (55 found)",
   "n_lus": 43,
-  "n_lieu": null
+  "n_lieu": 34
  },
  "subventions_exploitant": null,
  "residents": [],
  "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
+ "synthese_fr": "De 2005 à 2007, dans ce stade municipal géré par la SESE en vertu d'une convention de délégation de service public du 30 juin 1999, le Conseil de Paris approuve le principe de plusieurs travaux (toiture, sécurité électrique et incendie, génie climatique, centre de média) et la passation des marchés correspondants, ainsi que la passation du marché de rénovation des contrôles d'accès ; il autorise aussi le Maire à signer une convention pour la mise à disposition du stade durant la Coupe du monde de rugby 2007. En novembre 2009, il approuve le principe de la conclusion d'un bail emphytéotique administratif pour la rénovation et l'exploitation du stade ; en décembre 2013, il examine la résiliation amiable de la délégation et une convention d'occupation temporaire du domaine public avec la SESE, dont une question écrite de 2018 indique qu'elle prévoyait un engagement de l'exploitant sur un programme de rénovation d'environ 75 millions d'euros HT. Le stade fait aussi l'objet de questions et de vœux d'élus : sur les nuisances sonores pour les riverains évoquées par une élue (2005), les matchs de l'équipe féminine du PSG (2011), le fichier « stade » consacré aux supporters (2015), les redevances de l'exploitant et un projet de « naming » (2019). En décembre 2022, le groupe « Les Ecologistes » présente un vœu exprimant son refus de toute vente du stade. En février 2024, la Maire de Paris déclare avoir décidé d'arrêter la discussion avec le club sur la vente du stade et de poursuivre celle sur sa transformation. En avril 2026, le Maire de Paris déclare souhaiter explorer « vente ou bail emphytéotique » ; selon la réponse de l'adjoint Maxime Sauvage à une question écrite de mai 2026, le vœu 2026 V.24 adopté le 14 avril a entendu donner mandat au Maire pour engager ces discussions, sans arbitrage définitif à cette date entre la vente des emprises et un bail de longue durée.",
+ "moments": [
+  {
+   "id": "11658",
+   "seance": "OCTOBRE 2005",
+   "fait": "À une question de Mme Géraldine Martiano (U.D.F.) relative aux nuisances sonores subies, selon elle, par les riverains, l'adjoint Pascal Cherki répond qu'une charte signée en juillet 2000 prévoit que la SESE « s'engage à informer les associations et les riverains » du calendrier des manifestations.",
+   "pourquoi": "Les riverains, les concerts et une charte",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11658",
+   "fait_en": "In response to a question from Ms. Géraldine Martiano (U.D.F.) about noise nuisance suffered, according to her, by local residents, deputy mayor Pascal Cherki replied that a charter signed in July 2000 provides that SESE \"undertakes to inform associations and local residents\" of the schedule of events.",
+   "pourquoi_en": "Local residents, concerts and a charter"
+  },
+  {
+   "id": "91960",
+   "seance": "DECEMBRE 2006",
+   "fait": "Le Conseil autorise le Maire à signer une convention avec le G.I.P. Coupe du monde de rugby 2007 et la SESE pour la mise à disposition du stade durant la Coupe du monde de rugby, prévue du 7 septembre au 20 octobre 2007.",
+   "pourquoi": "Une convention pour la Coupe du monde de rugby",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91960",
+   "fait_en": "The Council authorized the Mayor to sign an agreement with the G.I.P. Coupe du monde de rugby 2007 and SESE making the stadium available during the Rugby World Cup, scheduled from September 7 to October 20, 2007.",
+   "pourquoi_en": "An agreement for the Rugby World Cup"
+  },
+  {
+   "id": "72792",
+   "seance": "JUIN 2007",
+   "fait": "Le Conseil autorise le Maire à souscrire un avenant au marché de rénovation des contrôles d'accès signé avec Laine Delau, portant son montant à 3 316 161,77 euros TTC (valeur octobre 2005).",
+   "pourquoi": "Contrôles d'accès : le montant du marché modifié par avenant",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72792",
+   "fait_en": "The Council authorized the Mayor to enter into an amendment to the access-control renovation contract signed with Laine Delau, bringing its amount to 3,316,161.77 euros including VAT (October 2005 value).",
+   "pourquoi_en": "Access controls: the contract amount changed by amendment"
+  },
+  {
+   "id": "116761",
+   "seance": "DECEMBRE 2013",
+   "fait": "Le Conseil examine conjointement la résiliation amiable de la délégation de service public signée avec la SESE et une convention d'occupation temporaire du domaine public pour l'exploitation privative du stade.",
+   "pourquoi": "Un nouveau contrat d'exploitation soumis au Conseil",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116761",
+   "fait_en": "The Council jointly examined the amicable termination of the public service delegation agreement signed with SESE and a temporary public-domain occupancy agreement for the exclusive private operation of the stadium.",
+   "pourquoi_en": "A new operating contract put before the Council"
+  },
+  {
+   "id": "125265",
+   "seance": "MAI 2015",
+   "fait": "Le groupe Communiste-Front de Gauche interroge la Maire et le Préfet de police sur le fichier « stade » consacré aux supporters ; le Préfet indique que le juge des référés du Conseil d'État en a provisoirement suspendu la mise en œuvre.",
+   "pourquoi": "Les supporters, la police et le fichier « stade »",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125265",
+   "fait_en": "The Communist-Front de Gauche group questioned the Mayor and the Prefect of Police about the \"stade\" file on supporters; the Prefect stated that the interim relief judge of the Conseil d'État had provisionally suspended its implementation.",
+   "pourquoi_en": "Supporters, the police and the \"stade\" file"
+  },
+  {
+   "id": "149979",
+   "seance": "JUIN 2019",
+   "fait": "Le groupe Écologiste de Paris demande la renégociation à la hausse des redevances versées par la S.E.S.E. ; selon Mme Sandrine Mées, l'article 20 de la convention fixait la part fixe annuelle de la redevance à 1 million d'euros, augmentant de 60 000 euros par an.",
+   "pourquoi": "La redevance de l'exploitant mise en débat",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=149979",
+   "fait_en": "The Écologiste de Paris group called for an upward renegotiation of the fees paid by S.E.S.E.; according to Ms. Sandrine Mées, Article 20 of the agreement set the fixed annual portion of the fee at 1 million euros, increasing by 60,000 euros per year.",
+   "pourquoi_en": "The operator's fee under debate"
+  },
+  {
+   "id": "174437",
+   "seance": "FEVRIER 2024",
+   "fait": "Introduisant le vœu de l'Exécutif, la Maire de Paris déclare avoir décidé d'arrêter la discussion avec le club sur la vente du stade et de poursuivre celle sur sa transformation.",
+   "pourquoi": "La Maire annonce l'arrêt de la discussion sur la vente",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174437",
+   "fait_en": "Introducing the Executive's motion, the Mayor of Paris stated that she had decided to end the discussion with the club on the sale of the stadium and to continue the one on its transformation.",
+   "pourquoi_en": "The Mayor announces the end of the discussion on the sale"
+  },
+  {
+   "id": "184986",
+   "seance": "AVRIL 2026",
+   "fait": "Le Maire de Paris déclare souhaiter explorer avec le PSG une vente ou un bail emphytéotique du stade et demande au Conseil « un mandat dans lequel la vente du Parc est une option à laquelle nous adhérons ».",
+   "pourquoi": "Vente ou bail : la reprise des discussions en 2026",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184986",
+   "fait_en": "The Mayor of Paris stated that he wished to explore with PSG a sale or an emphyteutic lease of the stadium and asked the Council for \"a mandate in which the sale of the Parc is an option we subscribe to\".",
+   "pourquoi_en": "Sale or lease: the resumption of discussions in 2026"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "MAI 2026",
+   "montant": "150 euros",
+   "objet": "seuil de valeur au-delà duquel le Code de déontologie de la Ville prévoit le refus des cadeaux et invitations, selon la question écrite",
+   "citation": "le refus des cadeaux, libÃ©ralitÃ©s ou invitations reÃ§us pendant le dÃ©roulement de toute procÃ©dure sensible, ainsi que de ceux dont la valeur est supÃ©rieure Ã 150 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=186179"
+  },
+  {
+   "seance": "JUIN 2019",
+   "montant": "1 million d'euros, augmentant de 60 000 euros par an",
+   "objet": "part fixe annuelle de la redevance prévue par l'article 20 de la convention d'occupation, selon Mme Sandrine Mées",
+   "citation": "la part fixe annuelle de la redevance ne correspondait qu?à un montant forfaitaire de 1 million d?euros, augmentant de 60.000 euros annuellement",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=149979"
+  },
+  {
+   "seance": "JUIN 2019",
+   "montant": "33 millions puis 90 millions d'euros",
+   "objet": "recettes de billetterie du PSG entre les saisons 2010-2011 et 2017-2018, selon un article du Parisien cité par Mme Sandrine Mées",
+   "citation": "un passage de 33 millions d?euros de recettes générées par la billetterie à 90 millions d?euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=149979"
+  },
+  {
+   "seance": "MAI 2015",
+   "montant": "1 100 euros",
+   "objet": "dédommagement que le club aurait été condamné à verser à une abonnée privée d'accès au stade, selon M. Nicolas Bonnet-Oulaldj",
+   "citation": "Le Tribunal d?instance du 16e arrondissement de Paris a d?ailleurs condamné le club à lui verser 1.100 euros de dédommagement",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125265"
+  },
+  {
+   "seance": "DECEMBRE 2018",
+   "montant": "75 millions d'euros HT environ",
+   "objet": "programme de travaux de rénovation sur lequel la S.E.S.E. s'engageait dans la convention d'occupation de 2013, selon la question écrite",
+   "citation": "La C.O.D.P. prévoyait un engagement de la S.E.S.E., à court terme, pour la mise en place d?un programme de travaux de rénovation du Parc des Princes d?un montant de 75 millions d?euros hors taxe environ",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146917"
+  },
+  {
+   "seance": "JUILLET 2012",
+   "montant": "9 millions d'euros",
+   "objet": "total des marchés de mise en conformité des installations techniques proposés, selon le calcul de M. David Alphand",
+   "citation": "nous propose donc d'engager un certain nombre de dépenses, 9 millions d'euros au total, Monsieur VUILLERMOZ (j'ai fait mon petit calcul en fonction du décompte lot par lot des marchés publics que vous nous proposez",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=107230"
+  },
+  {
+   "seance": "DECEMBRE 2013",
+   "montant": "300 000 euros",
+   "objet": "redevance de l'ancienne convention de délégation, indexée sur l'indice de la construction, selon M. David Alphand",
+   "citation": "jusqu'à présent : 300.000 euros de redevance indexés sur l'indice de la construction",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116761"
+  },
+  {
+   "seance": "MAI 2006",
+   "montant": "30 % du montant HT des travaux",
+   "objet": "subvention que le Maire est autorisé à solliciter auprès du Centre National pour le Développement du Sport",
+   "citation": "M. le Maire de Paris est autorisé à solliciter une subvention à hauteur de 30% du montant HT des travaux",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89067"
+  },
+  {
+   "seance": "MAI 2006",
+   "montant": "30 % du montant HT des travaux",
+   "objet": "subvention que le Maire est autorisé à solliciter auprès du Centre National pour le Développement du Sport",
+   "citation": "M. le Maire de Paris est autorisé à solliciter une subvention à hauteur de 30% du montant HT des travaux",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89180"
+  },
+  {
+   "seance": "MAI 2006",
+   "montant": "30 % du montant HT des travaux",
+   "objet": "subvention que le Maire est autorisé à solliciter auprès du Centre National pour le Développement du Sport",
+   "citation": "M. le Maire de Paris est autorisé à solliciter une subvention à hauteur de 30% du montant HT des travaux",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89055"
+  },
+  {
+   "seance": "MAI 2006",
+   "montant": "30 % du montant HT des travaux",
+   "objet": "subvention que le Maire est autorisé à solliciter auprès du Centre National pour le Développement du Sport",
+   "citation": "M. le Maire de Paris est autorisé à solliciter une subvention à hauteur de 30% du montant HT des travaux",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89219"
+  },
+  {
+   "seance": "MAI 2006",
+   "montant": "30 % du montant HT des travaux",
+   "objet": "subvention que le Maire est autorisé à solliciter auprès du Centre National pour le Développement du Sport",
+   "citation": "M. le Maire de Paris est autorisé à solliciter une subvention à hauteur de 30% du montant HT des travaux",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89156"
+  },
+  {
+   "seance": "JUIN 2007",
+   "montant": "3 316 161,77 euros TTC (valeur octobre 2005), soit 3 536 686,53 euros TTC (valeur mai 2007)",
+   "objet": "montant du marché de travaux de rénovation des contrôles d'accès après l'avenant n° 1",
+   "citation": "portant le montant du marché de travaux à 3.316.161,77 euros TTC, valeur octobre 2005, soit 3.536.686,53 euros TTC valeur mai 2007",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72792"
+  },
+  {
+   "seance": "FEVRIER 2007",
+   "montant": "30 % du montant HT",
+   "objet": "subvention que le Maire est autorisé à solliciter pour ces travaux",
+   "citation": "M. le Maire de Paris est autorisé à solliciter une subvention à hauteur de 30 % du montant HT",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26838"
+  }
+ ],
  "bmo_extraits": [],
  "bmo_recit": null,
  "delibs_par_annee": {
@@ -1035,7 +1216,7 @@
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Parc+des+Princes%22%29"
   },
   "invest": {
    "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -1045,5 +1226,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "From 2005 to 2007, in this municipal stadium managed by SESE under a public service delegation agreement of June 30, 1999, Conseil de Paris approved in principle several works (roof, electrical and fire safety, climate engineering, media center) and the award of the corresponding contracts, as well as the award of the contract to renovate the access controls; it also authorized the Mayor to sign an agreement making the stadium available during the 2007 Rugby World Cup. In November 2009, it approved in principle the conclusion of an administrative emphyteutic lease (bail emphytéotique administratif) for the renovation and operation of the stadium; in December 2013, it examined the amicable termination of the delegation and a temporary public-domain occupancy agreement with SESE, which, according to a 2018 written question, provided for a commitment by the operator to a renovation program of about 75 million euros excluding VAT. The stadium was also the subject of questions and motions from elected officials: on noise nuisance for local residents raised by a councillor (2005), the matches of the PSG women's team (2011), the \"stade\" file on supporters (2015), the operator's fees and a \"naming\" project (2019). In December 2022, the \"Les Ecologistes\" group presented a motion expressing its refusal of any sale of the stadium. In February 2024, the Mayor of Paris stated that she had decided to end the discussion with the club on the sale of the stadium and to continue the one on its transformation. In April 2026, the Mayor of Paris stated that he wished to explore \"sale or emphyteutic lease\"; according to deputy mayor Maxime Sauvage's answer to a written question of May 2026, motion 2026 V.24, adopted on April 14, was intended to give the Mayor a mandate to open these discussions, with no final decision as of that date between selling the land and a long-term lease."
 }

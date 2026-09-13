@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "generated_at": "2026-09-13T00:34:52.388738+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "eglise-saint-pierre-de-montrouge",
  "name": "Église Saint-Pierre-de-Montrouge",
@@ -18,20 +18,21 @@
  },
  "seuil_commun": 2010,
  "wiki": {
-  "extract": null,
-  "url": null,
+  "extract": "L'église Saint-Pierre-de-Montrouge est une église paroissiale construite dans la deuxième moitié du XIXe siècle sur les plans d'Émile Vaudremer au 82, avenue du Général-Leclerc dans le 14e arrondissement de Paris.",
+  "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Saint-Pierre_de_Montrouge",
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Église Saint-Pierre-de-Montrouge is a parish church built in the second half of the 19th century to plans by Émile Vaudremer at 82, avenue du Général-Leclerc in the 14th arrondissement of Paris."
  },
  "stats": {
   "n_delibs": 762,
   "delibs_span": [
-   1995,
-   2026
+   2000,
+   2001
   ],
-  "n_bmo_brut": 0,
+  "n_bmo_brut": 2000,
   "n_bmo_verifies": null,
   "invest_total_eur": 4072165.0,
   "invest_annees": [
@@ -43,13 +44,34 @@
   "lecture_mode": "titre nommant le lieu (2 trouvés)",
   "lecture_mode_en": "title naming the place (2 found)",
   "n_lus": 2,
-  "n_lieu": null
+  "n_lieu": 2
  },
  "subventions_exploitant": null,
  "residents": [],
  "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
+ "synthese_fr": "En juin 2000, vu l'avis du Conseil du 14e arrondissement du 13 juin 2000, le Conseil de Paris approuve le principe de travaux de mise en conformité des évacuations des eaux pluviales de l'église Saint-Pierre-de-Montrouge (14e). La même délibération prévoit que ces travaux feront l'objet d'un marché sur appel d'offres ouvert et autorise le Maire à signer ce marché — ou, si l'appel d'offres était déclaré infructueux, un marché négocié — après avis favorable de la Commission d'appel d'offres ; les dépenses correspondantes seront imputées au budget d'investissement de la Ville de Paris de 2000. En septembre 2001, le Conseil autorise le Maire à souscrire un avenant au marché de travaux attribué à la société « L'union travaux » (Société anonyme coopérative), en vue de lui substituer la société « L'union travaux S.N.C. », présentée comme repreneur de l'exécution de la totalité du marché. Selon cette délibération, le montant hors taxe du marché reste inchangé.",
+ "moments": [
+  {
+   "id": "34762",
+   "seance": "JUIN 2000",
+   "fait": "Le Conseil de Paris approuve le principe des travaux de mise en conformité des évacuations des eaux pluviales de l'église, prévoit un marché sur appel d'offres ouvert et autorise le Maire à le signer (ou un marché négocié si l'appel d'offres était déclaré infructueux), après avis favorable de la Commission d'appel d'offres.",
+   "pourquoi": "Approbation du principe des travaux et des modalités d'attribution du marché",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34762",
+   "fait_en": "The Council of Paris approves in principle works to bring the church's rainwater drainage into compliance, provides for a contract awarded through an open call for tenders and authorises the Mayor to sign it (or a negotiated contract if the call for tenders were declared unsuccessful), following a favourable opinion from the Tender Committee (Commission d'appel d'offres).",
+   "pourquoi_en": "Approval in principle of the works and of the contract award procedure"
+  },
+  {
+   "id": "84637",
+   "seance": "SEPTEMBRE 2001",
+   "fait": "Le Conseil de Paris autorise le Maire à souscrire un avenant au marché attribué à « L'union travaux » (Société anonyme coopérative), en vue de lui substituer « L'union travaux S.N.C. », repreneur de l'exécution de la totalité du marché, le montant hors taxe restant inchangé.",
+   "pourquoi": "Avenant de substitution de société, montant hors taxe inchangé",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84637",
+   "fait_en": "The Council of Paris authorises the Mayor to enter into an amendment to the contract awarded to \"L'union travaux\" (Société anonyme coopérative), in order to replace it with \"L'union travaux S.N.C.\", which is taking over performance of the entire contract, the amount excluding tax remaining unchanged.",
+   "pourquoi_en": "Amendment substituting the contractor company, amount excluding tax unchanged"
+  }
+ ],
  "montants": [],
  "bmo_extraits": [],
  "bmo_recit": null,
@@ -178,7 +200,7 @@
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22%C3%89glise+Saint-Pierre-de-Montrouge%22%29"
   },
   "invest": {
    "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -188,5 +210,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In June 2000, having regard to the opinion of the 14th arrondissement Council of 13 June 2000, the Council of Paris approved in principle works to bring the rainwater drainage of the Église Saint-Pierre-de-Montrouge (14th) into compliance. The same deliberation provided that these works would be the subject of a contract awarded through an open call for tenders and authorised the Mayor to sign that contract — or, if the call for tenders were declared unsuccessful, a negotiated contract — following a favourable opinion from the Tender Committee (Commission d'appel d'offres); the corresponding expenditure is to be charged to the City of Paris's 2000 investment budget. In September 2001, the Council authorised the Mayor to enter into an amendment to the works contract awarded to the company \"L'union travaux\" (Société anonyme coopérative), in order to replace it with the company \"L'union travaux S.N.C.\", presented as taking over performance of the entire contract. According to this deliberation, the contract amount excluding tax remains unchanged."
 }

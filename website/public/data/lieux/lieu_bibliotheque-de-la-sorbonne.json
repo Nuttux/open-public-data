@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "generated_at": "2026-09-13T00:34:52.388738+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "bibliotheque-de-la-sorbonne",
  "name": "Bibliothèque de la Sorbonne",
@@ -23,29 +23,123 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Sorbonne Library is an inter-university library attached, for its management, to Paris 1 Panthéon-Sorbonne University, and located at 17 rue de la Sorbonne, in the 5th arrondissement of Paris."
  },
  "stats": {
   "n_delibs": 899,
   "delibs_span": [
-   1995,
-   2026
+   2004,
+   2009
   ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": 3,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (7 trouvés)",
   "lecture_mode_en": "title naming the place (7 found)",
   "n_lus": 7,
-  "n_lieu": null
+  "n_lieu": 7
  },
  "subventions_exploitant": null,
  "residents": [],
  "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
+ "synthese_fr": "En décembre 2004, le Conseil de Paris approuve le principe des travaux de restructuration et de mise en sécurité de la bibliothèque de la Sorbonne, 46-48 rue Saint-Jacques, et les modalités de passation des marchés d'études, dont la maîtrise d'œuvre. Dans la même séance, un vœu relatif aux travaux indique que le site sera complètement fermé pendant les travaux et pose la question du lieu et des modalités du transfert de l'activité ; en séance, Mme Cohen-Solal indique que l'investissement pour la Ville atteint 14 millions d'euros. Selon la réponse faite en séance, ce n'est pas le Maire mais le Rectorat qui décide de la fermeture, et le Rectorat a retenu des travaux sur trois ans sur un site vide et fermé plutôt qu'une fermeture partielle et tournante avec des travaux étalés sur six ans. En avril 2006, le Conseil autorise le Maire à déposer les demandes de permis de démolir et de construire, puis en février 2008 à souscrire un avenant n°1 au marché de maîtrise d'œuvre pour prendre en compte la substitution d'un co-traitant. En juillet 2009, il autorise le Maire à souscrire un avenant n°2 portant ce marché de 1 298 762,71 à 1 492 934,51 euros (valeur décembre 2004) et approuve les modalités de passation du marché de travaux, par appel d'offres ouvert européen.",
+ "moments": [
+  {
+   "id": "87560",
+   "seance": "DECEMBRE 2004",
+   "fait": "Le Conseil approuve le principe des travaux de restructuration et de mise en sécurité, et les modalités de passation des marchés d'études (maîtrise d'œuvre, contrôle technique, coordination sécurité et protection de la santé des travailleurs, coordination du système de sécurité incendie).",
+   "pourquoi": "le principe approuvé, pas un chantier lancé",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87560",
+   "fait_en": "The Council approves the principle of the restructuring and safety-upgrade works, and the procedures for awarding the study contracts (project management, technical inspection, occupational health and safety coordination, fire safety system coordination).",
+   "pourquoi_en": "the principle approved, not a construction project launched"
+  },
+  {
+   "id": "10273",
+   "seance": "DECEMBRE 2004",
+   "fait": "En séance, M. Vuillermoz s'interroge sur le transfert de l'activité et des collections pendant la fermeture ; Mme Cohen-Solal indique que l'investissement pour la Ville atteint 14 millions d'euros ; selon la réponse faite en séance, le Rectorat a choisi, en concertation avec l'administration de la bibliothèque et les représentants de Paris I, des travaux sur trois ans sur un site vide et fermé plutôt qu'une fermeture partielle et tournante avec des travaux étalés sur six ans.",
+   "pourquoi": "trois ans sur site fermé ou six ans en fermeture partielle et tournante",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10273",
+   "fait_en": "During the session, Mr. Vuillermoz raises questions about the transfer of the library's activity and collections during the closure; Ms. Cohen-Solal states that the investment for the City amounts to €14 million; according to the reply given during the session, the Rectorat, in consultation with the library administration and representatives of Paris I, chose three years of works on an empty, closed site rather than a partial, rotating closure with works spread over six years.",
+   "pourquoi_en": "three years on a closed site or six years with a partial, rotating closure"
+  },
+  {
+   "id": "87687",
+   "seance": "DECEMBRE 2004",
+   "fait": "Le vœu indique que la bibliothèque assure 1 700 entrées par jour et que le site sera complètement fermé pendant les travaux, et écrit qu'il « semble essentiel de tout mettre en œuvre » pour qu'il n'y ait pas d'interruption de son fonctionnement et que les collections, l'accueil des publics, la consultation et l'activité des personnels ne soient pas éclatés géographiquement.",
+   "pourquoi": "où et comment transférer l'activité de la bibliothèque pendant la fermeture",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87687",
+   "fait_en": "The motion states that the library handles 1,700 visits per day and that the site will be completely closed during the works, and writes that it “seems essential to do everything possible” so that there is no interruption in its operation and so that the collections, public reception, consultation and staff activity are not geographically scattered.",
+   "pourquoi_en": "where and how to transfer the library's activity during the closure"
+  },
+  {
+   "id": "38521",
+   "seance": "AVRIL 2006",
+   "fait": "Le Conseil autorise le Maire à déposer les demandes de permis de démolir et de construire pour les travaux de restructuration et de mise en sécurité.",
+   "pourquoi": "feu vert pour demander les permis de démolir et de construire",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38521",
+   "fait_en": "The Council authorizes the Mayor to file the applications for demolition and building permits for the restructuring and safety-upgrade works.",
+   "pourquoi_en": "green light to apply for demolition and building permits"
+  },
+  {
+   "id": "76979",
+   "seance": "FEVRIER 2008",
+   "fait": "Le Conseil autorise le Maire à souscrire un avenant n°1 au marché de maîtrise d'œuvre, afin de prendre en compte la substitution de la SARL SCENERGIE au co-traitant n°4 SCENERGIE Thierry DARDELIN.",
+   "pourquoi": "un co-traitant substitué dans le groupement de maîtrise d'œuvre",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=76979",
+   "fait_en": "The Council authorizes the Mayor to sign amendment no. 1 to the project management contract, in order to take into account the substitution of SARL SCENERGIE for co-contractor no. 4 SCENERGIE Thierry DARDELIN.",
+   "pourquoi_en": "a co-contractor substituted within the project management consortium"
+  },
+  {
+   "id": "75027",
+   "seance": "JUILLET 2009",
+   "fait": "Le Conseil approuve les modalités de passation du marché de travaux par appel d'offres ouvert européen, et autorise le Maire, sous conditions, à lancer un marché négocié et à signer des décisions de poursuivre dans la limite du dixième de la masse initiale des travaux.",
+   "pourquoi": "en 2004 les modalités des marchés d'études, en 2009 celles du marché de travaux",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75027",
+   "fait_en": "The Council approves the procedure for awarding the works contract through an open European call for tenders, and authorizes the Mayor, under conditions, to launch a negotiated procedure and to sign decisions to continue the works (décisions de poursuivre) up to one tenth of the initial value of the works.",
+   "pourquoi_en": "in 2004 the procedures for the study contracts, in 2009 those for the works contract"
+  },
+  {
+   "id": "75007",
+   "seance": "JUILLET 2009",
+   "fait": "Le Conseil autorise le Maire à souscrire un avenant n°2 portant le marché de maîtrise d'œuvre de 1 298 762,71 à 1 492 934,51 euros (valeur décembre 2004).",
+   "pourquoi": "hausse du marché de maîtrise d'œuvre soumise au Conseil",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75007",
+   "fait_en": "The Council authorizes the Mayor to sign amendment no. 2 raising the project management contract from €1,298,762.71 to €1,492,934.51 (December 2004 value).",
+   "pourquoi_en": "increase in the project management contract submitted to the Council"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "DECEMBRE 2004",
+   "montant": "14 millions d'euros",
+   "objet": "investissement pour la Ville dans les travaux de restructuration et de mise aux normes, selon Mme Cohen-Solal en séance",
+   "citation": "notre Assemblée se prononce donc sur le principe de la réalisation des travaux de restructuration et de mise aux normes de la bibliothèque de la Sorbonne. L?investissement pour la Ville atteint 14 millions d?euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10273"
+  },
+  {
+   "seance": "JUILLET 2009",
+   "montant": "1 298 762,71 euros",
+   "objet": "montant du marché de maîtrise d'œuvre n° 05/26 032 avant l'avenant n°2 (valeur décembre 2004)",
+   "citation": "portant le montant du marché de maîtrise d??uvre de 1.298.762,71 euros à 1.492.934,51 euros en valeur décembre 2004",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75007"
+  },
+  {
+   "seance": "JUILLET 2009",
+   "montant": "1 492 934,51 euros",
+   "objet": "montant du marché de maîtrise d'œuvre n° 05/26 032 après l'avenant n°2 que le Maire est autorisé à souscrire (valeur décembre 2004)",
+   "citation": "de 1.298.762,71 euros à 1.492.934,51 euros en valeur décembre 2004, dont le texte est joint au présent projet de délibération",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75007"
+  }
+ ],
  "bmo_extraits": [],
  "bmo_recit": null,
  "delibs_par_annee": {
@@ -211,7 +305,7 @@
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Biblioth%C3%A8que+de+la+Sorbonne%22%29"
   },
   "invest": {
    "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -221,5 +315,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In December 2004, the Conseil de Paris approved the principle of restructuring and safety-upgrade works at the Sorbonne library, 46-48 rue Saint-Jacques, and the procedures for awarding the study contracts, including the project management contract (maîtrise d'œuvre). In the same session, a motion (vœu) on the works stated that the site would be completely closed during the works and raised the question of where and how the library's activity would be transferred; during the session, Ms. Cohen-Solal stated that the investment for the City amounted to €14 million. According to the reply given during the session, it is not the Mayor but the Rectorat that decides on the closure, and the Rectorat opted for three years of works on an empty, closed site rather than a partial, rotating closure with works spread over six years. In April 2006, the Council authorized the Mayor to file the applications for demolition and building permits, then in February 2008 to sign amendment no. 1 to the project management contract to take into account the substitution of a co-contractor. In July 2009, it authorized the Mayor to sign amendment no. 2 raising this contract from €1,298,762.71 to €1,492,934.51 (December 2004 value) and approved the procedure for awarding the works contract, through an open European call for tenders."
 }

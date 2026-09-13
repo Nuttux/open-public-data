@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "generated_at": "2026-09-13T00:34:52.388738+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-des-buttes-chaumont",
  "name": "Parc des Buttes-Chaumont",
@@ -24,7 +24,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   },
-  "extract_en": "The Parc des Buttes-Chaumont is a public garden located in the 19th arrondissement of Paris, in a north-eastern sector of Paris, in the Île-de-France region of France."
+  "extract_en": "The Parc des Buttes-Chaumont is a public garden located in the 19th arrondissement of Paris, a north-eastern sector of Paris, in the French region of Île-de-France."
  },
  "stats": {
   "n_delibs": 440,
@@ -56,8 +56,8 @@
    "pourquoi": "Le plan fondateur invoqué vingt ans après",
    "vedette": true,
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51155",
-   "fait_en": "The Council approved the principle of restoring the park and launching an international project-management competition, with no amount specified.",
-   "pourquoi_en": "The founding plan invoked twenty years later"
+   "fait_en": "The Council approved the principle of restoring the park and the launch of an international design competition (maîtrise d'œuvre), with no amount stated.",
+   "pourquoi_en": "The founding plan, invoked twenty years later"
   },
   {
    "id": "2890",
@@ -66,8 +66,8 @@
    "pourquoi": "Conflit fondateur entre concessions et parc",
    "vedette": true,
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2890",
-   "fait_en": "The \"Pavillon du lac\" agreement was contested in session: its Article 11 maintained car access and provided for compensating the operator if the City were to remove it, despite the unanimous motion of the Sites Commission on 8 June 1999.",
-   "pourquoi_en": "A founding conflict between concessions and the park"
+   "fait_en": "The \"Pavillon du lac\" agreement was contested in session: its Article 11 maintains car access and provides for compensating the operator if the City were to remove it, despite the unanimous motion of the Sites Commission of 8 June 1999.",
+   "pourquoi_en": "Founding conflict between concessions and the park"
   },
   {
    "id": "22909",
@@ -76,7 +76,7 @@
    "pourquoi": "Vie culturelle du parc et argent public",
    "vedette": true,
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22909",
-   "fait_en": "The small stage of the Guignol Anatole puppet theatre, destroyed by the storm of 26 December 1999, had to be rebuilt: an estimate of 206,127 francs excluding tax, of which 106,127 francs from insurance and 100,000 francs of announced exceptional grant.",
+   "fait_en": "The puppet booth of the Guignol Anatole theatre, destroyed by the storm of 26 December 1999, is to be rebuilt: a quote of 206,127 francs excluding tax, of which 106,127 francs from insurance and 100,000 francs as an announced exceptional grant.",
    "pourquoi_en": "The park's cultural life and public money"
   },
   {
@@ -86,8 +86,8 @@
    "pourquoi": "Une concession défaillante, des recettes perdues",
    "vedette": true,
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13178",
-   "fait_en": "The Pavillon du Lac had been unused since 2001: permit refused after an unfavourable opinion from the sites authority, a fee exemption, the agreement terminated in 2002, and a new call for candidates published in January 2004.",
-   "pourquoi_en": "A failing concession, lost revenue"
+   "fait_en": "The Pavillon du Lac has not been operated since 2001: permit refused after an unfavourable opinion from the sites commission, exemption from the concession fee, agreement terminated in 2002 and a new call for candidates published in January 2004.",
+   "pourquoi_en": "A failed concession, lost revenue"
   },
   {
    "id": "61514",
@@ -96,7 +96,7 @@
    "pourquoi": "Le sol instable, cause de tout le reste",
    "vedette": true,
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61514",
-   "fait_en": "The Council launched a tender for continuing the ground-stabilization works beneath the lake's circular path and beneath certain pavilions.",
+   "fait_en": "The Council launched a call for tenders to continue the ground consolidation works beneath the lake's circular road and beneath certain pavilions.",
    "pourquoi_en": "Unstable ground, the cause of everything else"
   },
   {
@@ -106,8 +106,8 @@
    "pourquoi": "Usages quotidiens et gouvernance du parc",
    "vedette": false,
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=111280",
-   "fait_en": "A motion asking for two off-leash areas for dogs was rejected; the deputy mayor noted that a park monitoring committee had been set up with the 19th arrondissement council.",
-   "pourquoi_en": "Everyday uses and the park's governance"
+   "fait_en": "A motion calling for two off-leash areas for dogs was rejected; the deputy mayor noted that a park monitoring committee had been set up with the 19th arrondissement town hall.",
+   "pourquoi_en": "Everyday uses and governance of the park"
   },
   {
    "id": "161060",
@@ -116,8 +116,8 @@
    "pourquoi": "Premier chiffrage public de la rénovation",
    "vedette": true,
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=161060",
-   "fait_en": "The executive replied to a motion on the state of the park: €12 million already committed, 5 hectares to be renovated out of 25, a BRGM study conducted in September 2021, and two years before the first works.",
-   "pourquoi_en": "First public costing of the renovation"
+   "fait_en": "The Executive replied to a motion on the condition of the park: €12 million already committed, 5 hectares to renovate out of 25, a BRGM study commissioned in September 2021, and two years before the first works.",
+   "pourquoi_en": "First public cost figures for the renovation"
   },
   {
    "id": "164858",
@@ -126,8 +126,8 @@
    "pourquoi": "La promesse de transparence non tenue",
    "vedette": false,
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164858",
-   "fait_en": "Seven months later, the councillor noted that the promised expert study had not been shared with her and asked for a public, costed works plan.",
-   "pourquoi_en": "The promise of transparency unfulfilled"
+   "fait_en": "Seven months later, the councillor noted that the promised expert study had not been provided to her and asked for a public, costed works plan.",
+   "pourquoi_en": "The transparency promise not kept"
   }
  ],
  "montants": [
@@ -183,25 +183,25 @@
  ],
  "bmo_extraits": [
   {
-   "date": "1898-12-25",
+   "date": "1883-08-09",
    "extrait": "Le parc des Buttes - Chaumont est mis à la disposition de la Caisse, qui y a récolté, en 1882, une somme … ",
    "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6248152b/f3.item",
-   "extrait_en": "The Parc des Buttes-Chaumont is made available to the Caisse, which collected a sum there in 1882 … "
+   "extrait_en": "The Parc des Buttes-Chaumont is made available to the Caisse, which collected there, in 1882, a sum(...)"
   },
   {
-   "date": "1900-10-21",
-   "extrait": "Le parc des Buttes - Chaumont est situé sur son territoire et la grande distance : place des Fêtes—porte d'Aubervilliers ne dispose d'aucun moyen de transport",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9636762g/f1.item",
-   "extrait_en": "The Parc des Buttes-Chaumont is located within its territory and the great distance: place des Fêtes—porte d'Aubervilliers has no means of transport"
-  },
-  {
-   "date": "1907-07-20",
+   "date": "1911-10-03",
    "extrait": "Travaux à exécuter pour la restauration du pont Fessart-Secrétan, dans le parc des Buttes - Chaumont  … secteur Est des Promenades, à l'adjudication, au rabais, sur soumissions cachetées, de l'entreprise",
    "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6495693x/f7.item",
-   "extrait_en": "Works to be carried out for the restoration of the Fessart-Secrétan bridge, in the Parc des Buttes-Chaumont … East sector of the Promenades, put out to tender, by public auction, on sealed bids, from the contractor"
+   "extrait_en": "Works to be carried out for the restoration of the Fessart-Secrétan bridge, in the Parc des Buttes-Chaumont (...)East sector of the Promenades, by award to the lowest bidder, on sealed tenders, of the contract"
+  },
+  {
+   "date": "1948-08-24",
+   "extrait": "Le parc des Buttes - Chaumont est situé sur son territoire et la grande distance : place des Fêtes—porte d'Aubervilliers ne dispose d'aucun moyen de transport",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9636762g/f1.item",
+   "extrait_en": "The Parc des Buttes-Chaumont is located within its territory and the long distance: place des Fêtes—porte d'Aubervilliers has no means of transport"
   }
  ],
- "bmo_recit": "Entre 1898 et 1907, le parc des Buttes-Chaumont n'apparaît que trois fois dans le Bulletin municipal officiel, et chaque fois pour un motif différent. En décembre 1898, le parc est mis à la disposition de la Caisse — que le Bulletin ne désigne pas autrement —, qui y avait déjà fait une recette en 1882. En octobre 1900, il est fait valoir que le parc se trouve sur le territoire concerné et que la grande distance entre la place des Fêtes et la porte d'Aubervilliers ne dispose d'aucun moyen de transport. En juillet 1907, les travaux de restauration du pont Fessart-Secrétan, dans le parc, relevant du secteur Est des Promenades, sont mis à l'adjudication, au rabais et sur soumissions cachetées ; l'archive s'arrête à cette mise en concurrence et ne dit pas ce qui en est advenu.",
+ "bmo_recit": "Le parc des Buttes-Chaumont n'apparaît dans le Bulletin municipal qu'à trois moments espacés. En 1883, le Bulletin indique que le parc est mis à la disposition de la Caisse, qui y a récolté une somme en 1882. En 1911, il publie l'adjudication, au rabais et sur soumissions cachetées, des travaux à exécuter pour la restauration du pont Fessart-Secrétan, dans le secteur Est des Promenades. En 1948, le parc est invoqué à propos de la desserte du quartier : l'auteur du texte fait valoir que le parc est situé sur son territoire et que la grande distance entre la place des Fêtes et la porte d'Aubervilliers ne dispose d'aucun moyen de transport.",
  "delibs_par_annee": {
   "1996": [
    {
@@ -754,6 +754,6 @@
    "url": "https://fr.wikipedia.org/"
   }
  },
- "synthese_en": "The documents reviewed begin with the park's contractual life: in May 1998, the City replied that Article 7 of the regulations allowed cars to enter to serve the three concession-run restaurants (Weber Café, Pavillon du Lac, Salon Puebla) and that giving that up would call the signed agreements into question, and in February 2000 the \"Pavillon du lac\" agreement was contested in session because it maintained this access and provided for compensating the operator if the City were to remove it. That same month, the Council approved the principle of restoring the park and launching an international project-management competition; in June 2000, a written question concerned the small stage of the Guignol Anatole puppet theatre, destroyed by the storm of 26 December 1999, for which an exceptional grant of 100,000 francs was announced. The Pavillon du Lac then remained closed: its concession-holder failed to obtain a permit after an unfavourable opinion from the Departmental Sites Commission on 16 January 2001, benefited from a fee exemption until the agreement's early termination in 2002, a new call for candidates was published in January 2004, and in April 2005 the Council authorized an agreement with S.A.R.L. \"Ça fait rêver\". Works arrived in successive batches — the Armand-Carrel pavilion (1999), the pavilion at 5 rue Botzaris and a suspended footbridge (2006, relaunched in 2008), ground stabilization beneath the lake's circular path (2008), hydraulic networks and roadworks (2010, 2011, 2012) — with no amount appearing in the excerpts from these deliberations. In October 2021, deputy mayor Christophe NAJDOVSKI reported €12 million already committed, 5 hectares still to be renovated out of 25, and a BRGM study conducted in September 2021; in May 2022, the councillor who had withdrawn her motion noted that this study had not been shared with her, and motions on the progress of the works, the gypsum quarries and unleashed dogs recurred in June and December 2025.",
- "bmo_recit_en": "Between 1898 and 1907, the Parc des Buttes-Chaumont appears only three times in the Bulletin municipal officiel, each time for a different reason. In December 1898, the park was made available to the Caisse — which the Bulletin does not otherwise identify — which had already generated revenue there in 1882. In October 1900, it was argued that the park lay within the area concerned and that the great distance between the place des Fêtes and the porte d'Aubervilliers had no means of transport. In July 1907, the restoration works on the Fessart-Secrétan bridge, in the park, falling under the East sector of the Promenades, were put out to tender, by public auction, on sealed bids; the archive stops at this point of putting the contract out to competition and does not say what became of it."
+ "synthese_en": "The documents reviewed begin with the park's contractual life: in May 1998, the City replied that Article 7 of the regulations lets cars enter to serve the three restaurants operated under concession (Weber Café, Pavillon du Lac, Salon Puebla) and that giving this up would call the signed agreements into question; in February 2000, the \"Pavillon du lac\" agreement was contested in session because it maintains this access and provides for compensating the operator if the City were to remove it. That same month, the Council approved the principle of restoring the park and the launch of an international design competition (maîtrise d'œuvre); in June 2000, a written question concerned the puppet booth of the Guignol Anatole theatre, destroyed by the storm of 26 December 1999, for which an exceptional grant of 100,000 francs was announced. The Pavillon du Lac then remained closed: its concession holder did not obtain a permit after the unfavourable opinion of the Departmental Sites Commission on 16 January 2001, received an exemption from the concession fee until the agreement's early termination in 2002, a new call for candidates was published in January 2004, and in April 2005 the Council authorized an agreement with S.A.R.L. \"Ça fait rêver\". Works came in successive batches — the Armand-Carrel pavilion (1999), the pavilion at 5 rue Botzaris and the suspension footbridge (2006, relaunched in 2008), ground consolidation beneath the lake's circular road (2008), hydraulic networks and roadways (2010, 2011, 2012) — without any amount appearing in the excerpts of these deliberations. In October 2021, deputy mayor Christophe NAJDOVSKI cited €12 million already committed, 5 hectares still to be renovated out of 25, and a BRGM study commissioned in September 2021; in May 2022, the councillor who had withdrawn her motion noted that this study had not been provided to her, and motions on the progress of the works, the gypsum quarries and off-leash dogs came back in June and December 2025.",
+ "bmo_recit_en": "The Parc des Buttes-Chaumont appears in the Bulletin municipal at only three widely spaced moments. In 1883, the Bulletin states that the park is made available to the Caisse, which collected a sum there in 1882. In 1911, it published the award, to the lowest bidder and on sealed tenders, of the works to be carried out for the restoration of the Fessart-Secrétan bridge, in the East sector of the Promenades. In 1948, the park was invoked in connection with transport service to the neighbourhood: the author of the text argues that the park is located within its territory and that the long distance between the place des Fêtes and the porte d'Aubervilliers has no means of transport."
 }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
+ "generated_at": "2026-09-13T00:34:52.388738+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "eglise-du-saint-esprit",
  "name": "Église du Saint-Esprit",
@@ -18,21 +18,22 @@
  },
  "seuil_commun": 2010,
  "wiki": {
-  "extract": null,
-  "url": null,
+  "extract": "L’église du Saint-Esprit est une église de confession catholique située dans le 12e arrondissement de Paris.",
+  "url": "https://fr.wikipedia.org/wiki/%C3%89glise_du_Saint-Esprit_de_Paris",
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Église du Saint-Esprit is a Catholic church located in the 12th arrondissement of Paris."
  },
  "stats": {
   "n_delibs": 622,
   "delibs_span": [
    1995,
-   2026
+   2025
   ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
+  "n_bmo_brut": 1999,
+  "n_bmo_verifies": 3,
   "invest_total_eur": 866126.0,
   "invest_annees": [
    "2019",
@@ -41,14 +42,73 @@
   "lecture_mode": "titre nommant le lieu (5 trouvés)",
   "lecture_mode_en": "title naming the place (5 found)",
   "n_lus": 5,
-  "n_lieu": null
+  "n_lieu": 5
  },
  "subventions_exploitant": null,
  "residents": [],
  "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
+ "synthese_fr": "En octobre 1995, le Conseil de Paris approuve le principe de la réfection des installations électriques de l'église du Saint-Esprit, 1, rue Cannebière (12e), et autorise le Maire à solliciter du Préfet de la Région d'Ile-de-France (Direction régionale des Affaires culturelles) une subvention de 1.000.000 F. En février 1996, il approuve le principe des travaux de réfection des installations électriques et d'éclairage et autorise le Maire à signer le marché correspondant ; en octobre 1996, il fait de même pour la rénovation des installations thermiques. Lors de la séance de mars 2023, le dossier 2023 DAC 341 porte sur la cession à titre gratuit de l'orgue de tribune de l'église Saint-Nicaise de Rouen en vue de son implantation dans l'église. En décembre 2025, le groupe Changer Paris dépose un vœu relatif au projet d'éclairage L.E.D. de l'église, présenté dans son intitulé comme « lauréat du budget participatif 2023 ».",
+ "moments": [
+  {
+   "id": "1251",
+   "seance": "OCTOBRE 1995",
+   "fait": "Le Conseil approuve le principe de la réfection des installations électriques et autorise le Maire à solliciter du Préfet de la Région d'Ile-de-France (Direction régionale des Affaires culturelles) une subvention de 1 000 000 F.",
+   "pourquoi": "Une subvention de 1.000.000 F à solliciter",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=1251",
+   "fait_en": "The Council approves in principle the refurbishment of the electrical installations and authorizes the Mayor to request from the Prefect of the Île-de-France Region (Regional Directorate of Cultural Affairs) a subsidy of 1,000,000 F.",
+   "pourquoi_en": "A 1,000,000 F subsidy to be requested"
+  },
+  {
+   "id": "38059",
+   "seance": "FEVRIER 1996",
+   "fait": "Le Conseil approuve le principe des travaux sur l'électricité et l'éclairage, fixe la procédure d'appel d'offres et autorise le Maire à signer le marché.",
+   "pourquoi": "Électricité et éclairage : principe approuvé, signature du marché autorisée",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38059",
+   "fait_en": "The Council approves in principle the electrical and lighting works, sets the tendering procedure and authorizes the Mayor to sign the contract.",
+   "pourquoi_en": "Electrical and lighting works: approved in principle, signing of the contract authorized"
+  },
+  {
+   "id": "55017",
+   "seance": "OCTOBRE 1996",
+   "fait": "Le Conseil approuve le principe de la rénovation des installations thermiques et autorise le Maire à signer le marché de travaux avec l'attributaire désigné.",
+   "pourquoi": "Même procédure, cette fois pour les installations thermiques",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55017",
+   "fait_en": "The Council approves in principle the renovation of the heating installations and authorizes the Mayor to sign the works contract with the designated successful bidder.",
+   "pourquoi_en": "Same procedure, this time for the heating installations"
+  },
+  {
+   "id": "168322",
+   "seance": "MARS 2023",
+   "fait": "Le dossier 2023 DAC 341 porte sur la cession à titre gratuit de l'orgue de tribune de Saint-Nicaise de Rouen en vue de son implantation dans l'église.",
+   "pourquoi": "Un dossier de cession gratuite de l'orgue de Saint-Nicaise de Rouen",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168322",
+   "fait_en": "Item 2023 DAC 341 concerns the transfer free of charge of the gallery organ of Saint-Nicaise in Rouen with a view to its installation in the church.",
+   "pourquoi_en": "An item on the free transfer of the Saint-Nicaise organ from Rouen"
+  },
+  {
+   "id": "183913",
+   "seance": "DECEMBRE 2025",
+   "fait": "Le groupe Changer Paris dépose un vœu relatif au projet d'éclairage L.E.D. de l'église, présenté dans l'intitulé comme « lauréat du budget participatif 2023 ».",
+   "pourquoi": "Éclairage L.E.D. de l'église : un vœu du groupe Changer Paris",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183913",
+   "fait_en": "The Changer Paris group files a motion (vœu) concerning the church's L.E.D. lighting project, described in the title as \"winner of the 2023 participatory budget\".",
+   "pourquoi_en": "L.E.D. lighting for the church: a motion from the Changer Paris group"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "OCTOBRE 1995",
+   "montant": "1.000.000 F",
+   "objet": "subvention que le Maire est autorisé à solliciter du Préfet de la Région d'Ile-de-France (Direction régionale des Affaires culturelles) pour la réalisation des travaux",
+   "citation": "Art. 2.- M. le Maire de Paris est autorisé à solliciter de M. le Préfet de la Région d'Ile-de-France (Direction régionale des Affaires culturelles) une subvention de 1.000.000 F.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=1251"
+  }
+ ],
  "bmo_extraits": [],
  "bmo_recit": null,
  "delibs_par_annee": null,
@@ -87,7 +147,7 @@
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22%C3%89glise+du+Saint-Esprit%22%29"
   },
   "invest": {
    "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -97,5 +157,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In October 1995, the Paris Council approved in principle the refurbishment of the electrical installations of the Église du Saint-Esprit, 1, rue Cannebière (12th arrondissement), and authorized the Mayor to request from the Prefect of the Île-de-France Region (Regional Directorate of Cultural Affairs) a subsidy of 1,000,000 F. In February 1996, it approved in principle the refurbishment of the electrical and lighting installations and authorized the Mayor to sign the corresponding contract; in October 1996, it did the same for the renovation of the heating installations. At the March 2023 session, item 2023 DAC 341 concerned the transfer free of charge of the gallery organ of the Église Saint-Nicaise in Rouen with a view to its installation in the church. In December 2025, the Changer Paris group filed a motion (vœu) concerning the church's L.E.D. lighting project, described in its title as \"winner of the 2023 participatory budget\"."
 }
