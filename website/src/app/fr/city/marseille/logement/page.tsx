@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import "@/app/fusion.css";
 import { loadLogementSocialData } from "@/lib/fusion-data";
-import { buildLocaleAwareMetadata } from "@/lib/seo";
+import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
+import { FrHubJsonLd, hubMetadataInput } from "@/lib/seo/sections/national";
+import { marseilleLogementHub } from "@/lib/seo/sections/marseille";
 import LogementSocialClient from "@/app/fr/city/paris/logement/LogementSocialClient";
 
 // POC v1 Marseille — réutilise LogementSocialClient Paris avec data Marseille.
@@ -17,17 +19,7 @@ import LogementSocialClient from "@/app/fr/city/paris/logement/LogementSocialCli
 //     le RPLS est un état du parc, pas un flux de production).
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildLocaleAwareMetadata({
-    title: "Logement social à Marseille",
-    description:
-      "Le parc social marseillais : taux SRU, parc par arrondissement, principaux bailleurs. Source : Métropole Aix-Marseille-Provence (RPLS atlas + sru-taux).",
-    en: {
-      title: "Marseille social housing",
-      description:
-        "Marseille's social-housing stock: SRU rate, stock per arrondissement, main social landlords. Source: Aix-Marseille-Provence Métropole (RPLS atlas + sru-taux).",
-    },
-    path: "/fr/city/marseille/logement",
-  });
+  return buildLocaleAwareMetadata(hubMetadataInput(marseilleLogementHub()));
 }
 
 export default async function LogementSocialMarseillePage({
@@ -41,5 +33,11 @@ export default async function LogementSocialMarseillePage({
   // No Marseille-specific blog posts yet — empty list filters out the
   // RelatedArticles section (handled inside LogementSocialClient).
   const posts: Parameters<typeof LogementSocialClient>[0]["posts"] = [];
-  return <LogementSocialClient sruArr={null} d={d} posts={posts} />;
+  const locale = await readLocale();
+  return (
+    <>
+      <FrHubJsonLd hub={marseilleLogementHub()} locale={locale} />
+      <LogementSocialClient sruArr={null} d={d} posts={posts} />
+    </>
+  );
 }

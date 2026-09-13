@@ -3,14 +3,15 @@ import "@/app/fusion.css";
 
 import PlacesClient from "./PlacesClient";
 import { loadSfPlacesIndex } from "@/lib/us/sf-places-data";
-import { sectionAlternates } from "@/lib/seo/page-answer";
+import { answerMetadata } from "@/lib/seo/page-answer";
+import { readSiteLocale } from "@/lib/seo";
+import { sfPlacesHub, SfHubJsonLd } from "@/lib/seo/sections/sf";
 
-export const metadata: Metadata = {
-  ...sectionAlternates("/us/city/sf/places", "en"),
-  title: "San Francisco — Places",
-  description:
-    "Parks, libraries, hospitals, piers: for each San Francisco place, the city money that reaches it and the historical documents held at the Internet Archive — every fact linked to its source.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await readSiteLocale();
+  const hub = sfPlacesHub();
+  return answerMetadata(hub.answer, hub.path, locale);
+}
 
 export default async function SfPlacesPage() {
   const places = loadSfPlacesIndex();
@@ -21,11 +22,14 @@ export default async function SfPlacesPage() {
   const nDepts = new Set(places.map((p) => p.owning_dept_code)).size;
 
   return (
+    <>
+    <SfHubJsonLd hub={sfPlacesHub()} />
     <PlacesClient
       places={places}
       totalDocs={totalDocs}
       totalFunds={totalFunds}
       nDepts={nDepts}
     />
+    </>
   );
 }

@@ -24,10 +24,10 @@ export async function generateMetadata({
   const commune = findCommuneByAny(slug);
   const nom = commune?.nom ?? slug;
   return buildLocaleAwareMetadata({
-    title: `${nom} â comparÃ©e aux communes de mÃªme taille`,
-    description: `Finances de ${nom} rapportÃ©es Ã  l'habitant, comparÃ©es Ã  la mÃ©diane des communes franÃ§aises de mÃªme strate de population. Source : OFGL.`,
+    title: `${nom} — comparée aux communes de même taille`,
+    description: `Finances de ${nom} rapportées à l'habitant, comparées à la médiane des communes françaises de même strate de population. Source : OFGL.`,
     en: {
-      title: `${nom} â compared with similar-sized communes`,
+      title: `${nom} — compared with similar-sized communes`,
       description: `${nom}'s finances per capita, set against the median of French communes in the same population band. Source: OFGL.`,
     },
     path: `/fr/city/${slug}/comparaison`,

@@ -9,7 +9,9 @@ import {
   loadSfBva,
   loadSfBvaDepartments,
 } from "@/lib/us/sf-budget-data";
-import { sectionAlternates } from "@/lib/seo/page-answer";
+import { answerMetadata } from "@/lib/seo/page-answer";
+import { readSiteLocale } from "@/lib/seo";
+import { sfBudgetHub, SfHubJsonLd } from "@/lib/seo/sections/sf";
 
 /**
  * /us/city/sf/budget — server component (ADR-0010 D3, EN-only). Loads the
@@ -21,12 +23,11 @@ import { sectionAlternates } from "@/lib/seo/page-answer";
  * `title.absolute`: no France brand template on US routes (Block 0
  * precedent — the US side has no public name yet).
  */
-export const metadata: Metadata = {
-  ...sectionAlternates("/us/city/sf/budget", "en"),
-  title: "San Francisco — Budget",
-  description:
-    "The San Francisco adopted budget, year by year: 7 service areas, 55 departments, spending and revenue types, and adopted-vs-executed — from the SF Controller's Annual Appropriation Ordinance database.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await readSiteLocale();
+  const hub = sfBudgetHub();
+  return answerMetadata(hub.answer, hub.path, locale);
+}
 
 export default async function SfBudgetPage({
   searchParams,
@@ -124,5 +125,10 @@ export default async function SfBudgetPage({
     source_pipeline: breakdown.source_pipeline,
   };
 
-  return <SfBudgetClient d={d} />;
+  return (
+    <>
+      <SfHubJsonLd hub={sfBudgetHub()} />
+      <SfBudgetClient d={d} />
+    </>
+  );
 }

@@ -2,21 +2,17 @@ import type { Metadata } from "next";
 import "@/app/fusion.css";
 import { loadQuiRecoitData, loadQuiRecoitIndex } from "@/lib/fusion-data";
 import { getPostsForPage } from "@/lib/page-articles";
-import { buildLocaleAwareMetadata } from "@/lib/seo";
+import { readLocale } from "@/lib/seo";
+import { parisSectionJsonLd, parisSectionMetadata, yearParam } from "@/lib/seo/sections/paris";
 import QuiRecoitClient from "./QuiRecoitClient";
 
-export async function generateMetadata(): Promise<Metadata> {
-  return buildLocaleAwareMetadata({
-    title: "Paris — Subventions",
-    description:
-      "Subventions versées par la Ville de Paris : bénéficiaires, thématiques, évolution. Données publiées en open data, reventilées et classifiées.",
-    en: {
-      title: "Paris — Grants",
-      description:
-        "Grants paid by the Ville de Paris: beneficiaries, themes, trends. Open-data figures reaggregated and classified.",
-    },
-    path: "/fr/city/paris/subventions",
-  });
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ year?: string }>;
+}): Promise<Metadata> {
+  const sp = await searchParams;
+  return parisSectionMetadata("subventions", yearParam(sp.year));
 }
 
 export default async function QuiRecoitPage({
@@ -29,5 +25,12 @@ export default async function QuiRecoitPage({
   const idx = loadQuiRecoitIndex();
   const d = loadQuiRecoitData(requestedYear);
   const posts = getPostsForPage("qui-recoit");
-  return <QuiRecoitClient idx={idx} d={d} posts={posts} />;
+  return (
+    <>
+      {parisSectionJsonLd("subventions", await readLocale(), requestedYear).map((o, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(o) }} />
+      ))}
+      <QuiRecoitClient idx={idx} d={d} posts={posts} />
+    </>
+  );
 }

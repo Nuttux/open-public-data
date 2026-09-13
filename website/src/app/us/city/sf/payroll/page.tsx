@@ -11,7 +11,9 @@ import type {
   PayrollFamilyDistribution,
   PayrollFamilyDistRow,
 } from "./payroll-types";
-import { sectionAlternates } from "@/lib/seo/page-answer";
+import { answerMetadata } from "@/lib/seo/page-answer";
+import { readSiteLocale } from "@/lib/seo";
+import { sfPayrollHub, SfHubJsonLd } from "@/lib/seo/sections/sf";
 
 /**
  * /us/city/sf/payroll — server component. Loads the payroll exports from
@@ -26,15 +28,11 @@ import { sectionAlternates } from "@/lib/seo/page-answer";
  * `title.absolute` — no France brand template; the US side has no public
  * brand yet (working title only).
  */
-export const metadata: Metadata = {
-  ...sectionAlternates("/us/city/sf/payroll", "en"),
-  title: "San Francisco — Payroll",
-  description:
-    "San Francisco's $6.9B city payroll: 13 years of compensation, the " +
-    "overtime pattern in 24/7 services, and what city work pays from " +
-    "custodian to chief — from the SF Controller's employee compensation " +
-    "data, aggregates only (no group under 5 people).",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await readSiteLocale();
+  const hub = sfPayrollHub();
+  return answerMetadata(hub.answer, hub.path, locale);
+}
 
 function readJson<T>(file: string): T {
   return readDataJson<T>(`us/sf/${file}`);
@@ -73,6 +71,8 @@ export default function SfPayrollPage() {
   }
 
   return (
+    <>
+    <SfHubJsonLd hub={sfPayrollHub()} />
     <PayrollClient
       byYear={byYear}
       byDept={byDept}
@@ -85,5 +85,6 @@ export default function SfPayrollPage() {
         attribution: famDistFile.attribution_note,
       }}
     />
+    </>
   );
 }

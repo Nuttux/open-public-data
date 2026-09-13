@@ -21,6 +21,7 @@ import { loadRecettesApu } from "@/lib/recettes-apu";
 import { listCrossCuttingThemes } from "@/lib/cross-cutting";
 import { RecettesPanel } from "@/components/fusion";
 import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
+import { FrHubJsonLd, hubMetadataInput, nationalBudgetHub } from "@/lib/seo/sections/national";
 import {
   buildProfileQueryString,
   parseDailyBreadProfile,
@@ -31,7 +32,7 @@ import en from "@/i18n/en";
 /**
  * /fr/national/budget — Budget Explorer impersonnel.
  *
- *  - hero "1 808 Md€/an"
+ *  - hero : total annuel S1311+S1313+S1314 (daily_bread.json)
  *  - recettes (3 piliers) + déficit + note méthode (repliée)
  *  - treemap visuel des ~30 plus grosses cellules
  *  - drill Sécu — 5 branches
@@ -46,19 +47,8 @@ import en from "@/i18n/en";
  */
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildLocaleAwareMetadata({
-    title:
-      "Le budget de la France 2025 — 1 808 Md€/an",
-    description:
-      "Explorer les dépenses publiques françaises (~1 808 Md€/an) : Sécurité sociale, État central, collectivités locales. Données Eurostat, PLF, OFGL — sans calcul personnel.",
-    en: {
-      title:
-        "The French budget 2025 — €1,808 bn/yr",
-      description:
-        "Explore French public expenditure (~€1,808 bn/yr): social security, central government, local authorities. Eurostat, PLF, OFGL data — no personal projection.",
-    },
-    path: "/fr/national/budget",
-  });
+  // Title/description figures computed from daily_bread.json, like the hero.
+  return buildLocaleAwareMetadata(hubMetadataInput(nationalBudgetHub()));
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────
@@ -343,6 +333,8 @@ export default async function FranceBudgetPage({
   const totalMd = totalAnnual / 1e9;
 
   return (
+    <>
+    <FrHubJsonLd hub={nationalBudgetHub()} locale={locale} />
     <div className="theme-fusion">
       <Navbar />
       <main id="main-content" tabIndex={-1}>
@@ -587,6 +579,7 @@ export default async function FranceBudgetPage({
       </main>
       <Footer />
     </div>
+    </>
   );
 }
 

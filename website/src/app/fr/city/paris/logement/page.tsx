@@ -2,21 +2,17 @@ import type { Metadata } from "next";
 import "@/app/fusion.css";
 import { loadLogementSocialData, loadSruArrondissements } from "@/lib/fusion-data";
 import { getPostsForPage } from "@/lib/page-articles";
-import { buildLocaleAwareMetadata } from "@/lib/seo";
+import { readLocale } from "@/lib/seo";
+import { parisSectionJsonLd, parisSectionMetadata, yearParam } from "@/lib/seo/sections/paris";
 import LogementSocialClient from "./LogementSocialClient";
 
-export async function generateMetadata(): Promise<Metadata> {
-  return buildLocaleAwareMetadata({
-    title: "Paris — Logement social",
-    description:
-      "Le parc social parisien, la loi SRU et la tension locative. Données publiques reventilées par arrondissement et par bailleur.",
-    en: {
-      title: "Paris — Social housing",
-      description:
-        "The Paris social-housing stock, the SRU law, and rental pressure. Public data reaggregated by arrondissement and operator.",
-    },
-    path: "/fr/city/paris/logement",
-  });
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ year?: string }>;
+}): Promise<Metadata> {
+  const sp = await searchParams;
+  return parisSectionMetadata("logement", yearParam(sp.year));
 }
 
 export default async function LogementSocialPage({
@@ -29,5 +25,12 @@ export default async function LogementSocialPage({
   const d = loadLogementSocialData(requestedYear);
   const sruArr = loadSruArrondissements();
   const posts = getPostsForPage("logement-social");
-  return <LogementSocialClient d={d} sruArr={sruArr} posts={posts} />;
+  return (
+    <>
+      {parisSectionJsonLd("logement", await readLocale(), requestedYear).map((o, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(o) }} />
+      ))}
+      <LogementSocialClient d={d} sruArr={sruArr} posts={posts} />
+    </>
+  );
 }

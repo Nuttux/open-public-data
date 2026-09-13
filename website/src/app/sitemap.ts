@@ -5,6 +5,9 @@ import { brEntityPaths, frEntityPaths, frenchCitySectionPaths, sfBrowsePaths } f
 import { listCities } from '@/lib/cities';
 import { listAllCommunesMeta, loadAllCommunesGeneratedAt } from '@/lib/all-communes';
 import fonctionsManifest from '@/data/communes-fonctions-manifest.json';
+import { marchesManifestSlugs } from '@/lib/commune-marches';
+import { MARCHES_EXPLORER_MIN } from '@/app/fr/city/[slug]/page-ville-data';
+import { hasDedicatedRoutes } from '@/lib/cities';
 import { listDataDir } from '@/lib/data/read';
 import {
   sfAuthorityFamilies,
@@ -205,6 +208,24 @@ function natureChunkCount(): number {
 }
 
 /**
+ * L'explorateur des marchés d'une commune, là où il existe : plus de
+ * MARCHES_EXPLORER_MIN marchés au manifeste — la règle même de la route, qui
+ * redirige les autres vers l'ancre #achats de la page ville. ~1 800 pages
+ * qu'aucun sitemap ne déclarait (seules les 9 grandes villes l'étaient).
+ */
+let _marchesPaths: string[] | null = null;
+function communeMarchesPaths(): string[] {
+  if (_marchesPaths) return _marchesPaths;
+  _marchesPaths = marchesManifestSlugs(MARCHES_EXPLORER_MIN)
+    .filter((slug) => !hasDedicatedRoutes(slug))
+    .map((slug) => `/fr/city/${slug}/marches`);
+  return _marchesPaths;
+}
+function marchesChunkCount(): number {
+  return Math.max(1, Math.ceil(communeMarchesPaths().length / CHUNK_SIZE));
+}
+
+/**
  * Generate one sitemap per chunk of ~5 000 URLs.
  * Returns sitemap segment ids; Next.js then calls `sitemap(id)` for each.
  */
@@ -215,13 +236,17 @@ export async function generateSitemaps() {
   // Segments N+M+1..N+M+F     = French entity fiches (Paris, Marseille).
   // Segments N+M+F+1..+B      = Brazilian pages (Recife).
   // Segments ..+P             = commune × politique publique.
+  // Segments ..+Q             = commune × forme de dépense.
+  // Segments ..+R             = explorateur des marchés d'une commune — en
+  //                             dernier, pour que les ids déjà soumis ne bougent pas.
   const n = chunkCount();
   const m = sfChunkCount();
   const f = frChunkCount();
   const b = brChunkCount();
   const p = fonctionChunkCount();
   const q = natureChunkCount();
-  return Array.from({ length: n + m + f + b + p + q + 1 }, (_, i) => ({ id: i }));
+  const r = marchesChunkCount();
+  return Array.from({ length: n + m + f + b + p + q + r + 1 }, (_, i) => ({ id: i }));
 }
 
 /** The entity families, in segment order after the communes chunks. */
@@ -232,6 +257,7 @@ function entityFamilies(): Array<[number, () => string[]]> {
     [brChunkCount(), brEntityPaths],
     [fonctionChunkCount(), fonctionPaths],
     [natureChunkCount(), naturePaths],
+    [marchesChunkCount(), communeMarchesPaths],
   ];
 }
 

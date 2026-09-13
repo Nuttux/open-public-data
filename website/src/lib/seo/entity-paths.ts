@@ -9,7 +9,6 @@
  * public/data is not hydrated a family is skipped, never the build.
  */
 import { cityJsonPath, listDataDir, readDataJsonOrNull } from "@/lib/data/read";
-import { listCities } from "@/lib/cities";
 import { canonicalBailleurSlug, loadLogementSocialData } from "@/lib/fusion-data";
 import { loadLieuxIndex } from "@/lib/lieux-data";
 import { loadPlacesIndex as loadMarseillePlaces } from "@/lib/marseille/marseille-places-data";
@@ -219,20 +218,15 @@ function recifePaths(): string[] {
 }
 
 /** Section pages of the French cities that have dedicated routes (Marseille…). */
-// Marseille has its own routes (app/fr/city/marseille/*); the other big cities
-// only have the generic sections under app/fr/city/[slug]/ — listing a section
-// a city does not have puts a 404 in the sitemap.
+// Marseille has its own routes (app/fr/city/marseille/*). The other big cities
+// have none left: since the page-ville refonte (2026-09-09) their budget,
+// investissements, evolution and comparaison tabs 308 to an anchor of the city
+// page, and a redirect in a sitemap is an error. Their marchés explorer is
+// listed with every other commune's (communeMarchesPaths, sitemap.ts).
 const MARSEILLE_SECTIONS = ["budget", "subventions", "marches", "investissements", "dette", "logement", "lieux"];
-const GENERIC_CITY_SECTIONS = ["budget", "marches", "investissements", "evolution", "comparaison"];
 
 function frenchCitySectionPaths(): string[] {
-  const out: string[] = [];
-  for (const c of listCities()) {
-    if (c.slug === "paris") continue;
-    const sections = c.slug === "marseille" ? MARSEILLE_SECTIONS : GENERIC_CITY_SECTIONS;
-    for (const s of sections) out.push(`/fr/city/${c.slug}/${s}`);
-  }
-  return out;
+  return MARSEILLE_SECTIONS.map((s) => `/fr/city/marseille/${s}`);
 }
 
 /** Browse indexes (lib/seo/browse.ts): index, letter/year pages and their pagination. */

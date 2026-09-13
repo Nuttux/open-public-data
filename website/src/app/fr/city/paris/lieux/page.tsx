@@ -6,20 +6,11 @@ import LieuxExplorer from "@/components/fusion/LieuxExplorer";
 import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
 import { loadLieuxIndex } from "@/lib/lieux-data";
 import { readLocale } from "@/lib/seo";
+import { parisSectionJsonLd, parisSectionMetadata } from "@/lib/seo/sections/paris";
 import { numLocale } from "@/lib/fmt";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const locale = await readLocale();
-  const title = locale === "en" ? "Places" : "Lieux";
-  const description = locale === "en"
-    ? "Pools, theatres, parks: for each place, the Conseil de Paris deliberations, municipal bulletin archives back to 1882, subsidies and investments — every fact linked to its source."
-    : "Piscines, théâtres, parcs : pour chaque lieu, les délibérations du Conseil de Paris, les archives du Bulletin municipal depuis 1882, subventions et investissements — chaque fait relié à sa source.";
-  return {
-    title,
-    description,
-    alternates: { canonical: "/fr/city/paris/lieux" },
-    openGraph: { title, description, type: "website" },
-  };
+  return parisSectionMetadata("lieux");
 }
 
 export default async function LieuxPage() {
@@ -34,6 +25,9 @@ export default async function LieuxPage() {
 
   return (
     <div className="theme-fusion">
+      {parisSectionJsonLd("lieux", locale).map((o, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(o) }} />
+      ))}
       <Navbar />
       <main id="main-content" tabIndex={-1}>
         <PageIntro

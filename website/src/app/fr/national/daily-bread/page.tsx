@@ -3,7 +3,8 @@ import { Suspense } from "react";
 import "@/app/fusion.css";
 import { loadDailyBread } from "@/lib/national-data";
 import { loadDrilldown, type BucketKey } from "@/lib/budget-drilldown";
-import { buildLocaleAwareMetadata } from "@/lib/seo";
+import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
+import { FrHubJsonLd, hubMetadataInput, nationalDailyBreadHub } from "@/lib/seo/sections/national";
 import DailyBreadClient from "./DailyBreadClient";
 
 // generateMetadata reads URL search params to build a personalised
@@ -44,17 +45,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const sp = (await searchParams) ?? {};
   const posterPath = buildPosterPath(sp);
-  const base = await buildLocaleAwareMetadata({
-    title: "Daily Bread — où va chaque mois de mon salaire",
-    description:
-      "Combien tu paies de prélèvements obligatoires par mois, et où ça part — Sécu, État, collectivités. Calcul personnalisé selon ton salaire, tes parts et ta commune.",
-    en: {
-      title: "Daily Bread — where each month of my salary goes",
-      description:
-        "How much you pay in compulsory levies per month, and where it goes — social security, central government, local. Personalised by salary, household and city.",
-    },
-    path: "/fr/national/daily-bread",
-  });
+  const base = await buildLocaleAwareMetadata(hubMetadataInput(nationalDailyBreadHub()));
   // Override OG/Twitter image to point to the per-profile poster (1080×1080).
   return {
     ...base,
@@ -134,9 +125,13 @@ export default async function DailyBreadPage() {
   };
   // Suspense boundary needed because the client uses useSearchParams() to
   // sync form state with the URL — Next.js requires a fallback for SSR/SSG.
+  const locale = await readLocale();
   return (
-    <Suspense fallback={null}>
-      <DailyBreadClient db={db} drilldownIndex={drilldownIndex} />
-    </Suspense>
+    <>
+      <FrHubJsonLd hub={nationalDailyBreadHub()} locale={locale} />
+      <Suspense fallback={null}>
+        <DailyBreadClient db={db} drilldownIndex={drilldownIndex} />
+      </Suspense>
+    </>
   );
 }
