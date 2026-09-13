@@ -6,7 +6,9 @@ Reads mart_marches_national (row-level, all commune buyers) and produces, for
 each commune with procurement, a JSON aggregate (total, by year, by CPV theme,
 top titulaires, biggest marchés + coverage note). Deterministic — no enrichment.
 
-  website/public/data/communes-marches/{slug}/marches.json   (→ private bucket)
+  website/public/data/communes-marches/{slug}/marches.json      (→ private bucket)
+  website/public/data/communes-marches/{slug}/fournisseurs.json  (→ private bucket)
+  website/public/data/communes-marches/{slug}/contrats.json      (→ private bucket, fiche contrat)
   website/src/data/communes-marches-manifest.json            (committed, slug→years)
 
 Coverage: DECP publishes marchés ≥ 40 k€ HT (~50-70% national). Shown, not hidden.
@@ -18,6 +20,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -64,7 +67,10 @@ def fetch(client, insees):
     sql = f"""
         SELECT code_insee, commune_nom, population, annee, date_notification, montant, categorie_cpv,
                type_procedure, objet, titulaire_nom, titulaire_siren,
-               titulaire_personne_physique, montant_invraisemblable, depenses_totales_commune, marche_id, duree_mois
+               titulaire_personne_physique, montant_invraisemblable, depenses_totales_commune, marche_id, duree_mois,
+               nature_marche, forme_prix, offres_recues, ccag, techniques, considerations_sociales,
+               considerations_environnementales, sous_traitance_declaree, lieu_execution_code, lieu_execution_type,
+               id_accord_cadre, nb_titulaires, nb_modifications
         FROM `{MART}` {where}
     """
     job = client.query(sql, job_config=bigquery.QueryJobConfig(query_parameters=params))
@@ -76,6 +82,39 @@ def fetch(client, insees):
 
 _APOS = re.compile(r"(?<=[A-Za-zÀ-ÿœŒ])\?(?=[A-Za-zÀ-ÿœŒ])")
 PERSONNES_LABEL = "Entrepreneurs individuels"
+SANS_SIRET_LABEL = "Titulaire sans SIRET"
+
+
+def titulaire_public(r: dict) -> tuple[str | None, str | None]:
+    """Le nom et le SIREN qu'on peut publier pour le titulaire d'une ligne.
+
+    Vie privée : un entrepreneur individuel (catégorie juridique 1000) est une
+    personne physique, jamais nommée. Un titulaire SANS SIRET ne peut pas être
+    vérifié dans SIRENE — le drapeau personne physique y vaudrait FALSE par
+    défaut et le nom d'un particulier passerait : il n'est pas nommé non plus.
+    """
+    if r.get("titulaire_personne_physique"):
+        return PERSONNES_LABEL, None
+    siren = r.get("titulaire_siren")
+    if not siren:
+        return SANS_SIRET_LABEL, None
+    return (r.get("titulaire_nom") or "").strip() or None, siren
+
+
+def contrat_id(marche_ids: list[str]) -> str:
+    """Identifiant court et stable d'un marché regroupé (ses lots) : empreinte du
+    plus petit uid DECP. L'uid seul ne sert pas d'adresse : jusqu'à 323
+    caractères, avec « * », accents et espaces."""
+    base = min(m for m in marche_ids if m) if any(marche_ids) else "".join(sorted(map(str, marche_ids)))
+    return hashlib.sha1(base.encode("utf-8")).hexdigest()[:8]
+
+
+def slugify(t: str, limit: int = 60) -> str:
+    t = unicodedata.normalize("NFKD", t).encode("ascii", "ignore").decode().lower()
+    t = re.sub(r"[^a-z0-9]+", "-", t).strip("-")
+    if len(t) > limit:
+        t = t[:limit].rsplit("-", 1)[0]
+    return t or "marche"
 
 # Le DECP consolidé a perdu des accents dans ~4 500 intitulés (caractère U+FFFD).
 # On répare les mots fréquents par dictionnaire ; ailleurs le caractère devient
@@ -332,20 +371,18 @@ def build(insee: str, meta: dict, rows: list[dict], now: str) -> dict | None:
         by_cat[cat]["nb"] += 1
         # Vie privée : un entrepreneur individuel est une personne physique,
         # agrégée sous un libellé commun, jamais nommée, jamais de fiche.
-        if r.get("titulaire_personne_physique"):
-            t = PERSONNES_LABEL
-        else:
-            t = (r["titulaire_nom"] or "").strip()
+        t, t_siren = titulaire_public(r)
         if t:
             by_titu[t]["montant"] += m
             by_titu[t]["nb"] += 1
-            if t != PERSONNES_LABEL and r.get("titulaire_siren"):
-                by_titu[t].setdefault("siren", r["titulaire_siren"])
+            if t_siren:
+                by_titu[t].setdefault("siren", t_siren)
     # Lots regroupés : une entrée par (objet, titulaire, année), montants sommés.
     lots: dict[tuple, dict] = {}
     for r in rows:
         k = _lot_key(r)
-        g = lots.setdefault(k, {"row": r, "montant": 0.0, "nb_lots": 0, "date": None})
+        g = lots.setdefault(k, {"row": r, "rows": [], "montant": 0.0, "nb_lots": 0, "date": None})
+        g["rows"].append(r)
         g["montant"] += r["montant"] or 0
         g["nb_lots"] += 1
         # Un marché alloti a une date par lot : on retient la plus récente, celle
@@ -353,6 +390,18 @@ def build(insee: str, meta: dict, rows: list[dict], now: str) -> dict | None:
         d = r.get("date_notification")
         if d and (g["date"] is None or str(d) > str(g["date"])):
             g["date"] = str(d)[:10]
+    # Chaque marché regroupé reçoit son identifiant, son adresse lisible et son
+    # rang dans l'année (1 = le plus gros notifié par la commune cette année-là).
+    par_annee_groupes: dict[int | None, list[dict]] = defaultdict(list)
+    for g in lots.values():
+        g["id"] = contrat_id([x.get("marche_id") for x in g["rows"]])
+        g["objet_clean"] = restore_nom(trim_objet(clean_objet(g["row"]["objet"]), 200), meta.get("nom"))
+        g["slug"] = f"{slugify(g['objet_clean'])}-{g['id']}"
+        par_annee_groupes[int(g["row"]["annee"]) if g["row"]["annee"] else None].append(g)
+    for groupes in par_annee_groupes.values():
+        groupes.sort(key=lambda g: -g["montant"])
+        for i, g in enumerate(groupes):
+            g["rang_annee"], g["nb_annee"] = i + 1, len(groupes)
     top_marches = sorted(lots.values(), key=lambda g: -g["montant"])[:15]
     # Dernière année publiée, à part : la page ville parle de l'année, pas du
     # cumul depuis 2018 (domaines et fournisseurs de cette année-là).
@@ -364,21 +413,21 @@ def build(insee: str, meta: dict, rows: list[dict], now: str) -> dict | None:
         m = r["montant"] or 0
         ly_cat[r["categorie_cpv"] or "Autres"]["montant"] += m
         ly_cat[r["categorie_cpv"] or "Autres"]["nb"] += 1
-        t = PERSONNES_LABEL if r.get("titulaire_personne_physique") else (r["titulaire_nom"] or "").strip()
+        t, t_siren = titulaire_public(r)
         if t:
             ly_titu[t]["montant"] += m
             ly_titu[t]["nb"] += 1
             ly_titu[t].setdefault("objet", restore_nom(trim_objet(clean_objet(r["objet"]), 120), meta.get("nom")))
-            if t != PERSONNES_LABEL and r.get("titulaire_siren"):
-                ly_titu[t].setdefault("siren", r["titulaire_siren"])
+            if t_siren:
+                ly_titu[t].setdefault("siren", t_siren)
     # Fiche fournisseur locale (bloc 3) : par SIREN, tous les marchés (lots
     # regroupés) que la commune lui a notifiés. Jamais pour une personne
     # physique : les entrepreneurs individuels n'ont pas de fiche.
     fourn: dict[str, dict] = {}
     for g in lots.values():
         r = g["row"]
-        siren = r.get("titulaire_siren")
-        if not siren or r.get("titulaire_personne_physique"):
+        _, siren = titulaire_public(r)
+        if not siren:
             continue
         f = fourn.setdefault(siren, {
             "siren": siren, "nom": (r["titulaire_nom"] or "").strip(), "montant": 0.0, "nb": 0,
@@ -391,7 +440,9 @@ def build(insee: str, meta: dict, rows: list[dict], now: str) -> dict | None:
             f["first_year"] = y if f["first_year"] is None else min(f["first_year"], y)
             f["last_year"] = y if f["last_year"] is None else max(f["last_year"], y)
         f["marches"].append({
-            "objet": restore_nom(trim_objet(clean_objet(r["objet"]), 200), meta.get("nom")),
+            "id": g["id"],
+            "slug": g["slug"],
+            "objet": g["objet_clean"],
             "montant": g["montant"],
             "nb_lots": g["nb_lots"],
             "annee": y,
@@ -401,7 +452,63 @@ def build(insee: str, meta: dict, rows: list[dict], now: str) -> dict | None:
         })
     for f in fourn.values():
         f["marches"].sort(key=lambda m: (-(m["annee"] or 0), -m["montant"]))
+
+    def oui(rows_: list[dict], col: str) -> bool | None:
+        vals = [x.get(col) for x in rows_ if x.get(col) is not None]
+        return any(vals) if vals else None
+
+    def premier(rows_: list[dict], col: str):
+        return next((x.get(col) for x in rows_ if x.get(col) not in (None, "")), None)
+
+    # La fiche contrat : un marché regroupé, tout ce que la DECP en dit.
+    contrats: dict[str, dict] = {}
+    for g in lots.values():
+        r, rs = g["row"], g["rows"]
+        nom, siren = titulaire_public(r)
+        offres = [int(x["offres_recues"]) for x in rs if x.get("offres_recues") is not None]
+        contrats[g["id"]] = {
+            "id": g["id"],
+            "slug": g["slug"],
+            "objet": g["objet_clean"],
+            "montant": g["montant"],
+            "annee": int(r["annee"]) if r["annee"] else None,
+            "date": g["date"],
+            "duree_mois": premier(rs, "duree_mois"),
+            "rang_annee": g["rang_annee"],
+            "nb_annee": g["nb_annee"],
+            "titulaire": nom,
+            "siren": siren,
+            "personne_physique": bool(r.get("titulaire_personne_physique")),
+            "nb_titulaires": max((int(x["nb_titulaires"]) for x in rs if x.get("nb_titulaires")), default=None),
+            "procedure": premier(rs, "type_procedure"),
+            "nature": premier(rs, "nature_marche"),
+            "categorie": r.get("categorie_cpv"),
+            "forme_prix": premier(rs, "forme_prix"),
+            "ccag": premier(rs, "ccag"),
+            "techniques": premier(rs, "techniques"),
+            # Accord-cadre : dit par la nature (« ACCORD-CADRE »), la technique d'achat,
+            # ou un marché subséquent qui pointe vers son accord.
+            "accord_cadre": bool(
+                any(x.get("id_accord_cadre") for x in rs)
+                or "ACCORD" in (premier(rs, "nature_marche") or "").upper()
+                or "accord-cadre" in (premier(rs, "techniques") or "").lower()
+            ),
+            "offres_recues": min(offres) if offres else None,
+            "offres_recues_max": max(offres) if offres else None,
+            "considerations_sociales": premier(rs, "considerations_sociales"),
+            "considerations_environnementales": premier(rs, "considerations_environnementales"),
+            "sous_traitance_declaree": oui(rs, "sous_traitance_declaree"),
+            "nb_modifications": max((int(x["nb_modifications"]) for x in rs if x.get("nb_modifications") is not None), default=None),
+            "lieu_execution": {"code": premier(rs, "lieu_execution_code"), "type": premier(rs, "lieu_execution_type")} if premier(rs, "lieu_execution_code") else None,
+            "nb_lots": g["nb_lots"],
+            "lots": [
+                {"montant": x["montant"], "date": str(x["date_notification"])[:10] if x.get("date_notification") else None, "offres_recues": x.get("offres_recues")}
+                for x in sorted(rs, key=lambda x: -(x["montant"] or 0))
+            ] if g["nb_lots"] > 1 else [],
+        }
+
     return {
+        "_contrats": contrats,
         "_fournisseurs": sorted(fourn.values(), key=lambda f: -f["montant"]),
         "generated_at": now,
         "source": SOURCE_LABEL,
@@ -439,13 +546,13 @@ def build(insee: str, meta: dict, rows: list[dict], now: str) -> dict | None:
         )[:15],
         "top_marches": [
             {
-                "objet": restore_nom(trim_objet(clean_objet(g["row"]["objet"]), 200), meta.get("nom")),
+                "id": g["id"],
+                "slug": g["slug"],
+                "objet": g["objet_clean"],
                 "montant": g["montant"],
                 "nb_lots": g["nb_lots"],
-                "titulaire": (
-                    PERSONNES_LABEL if g["row"].get("titulaire_personne_physique") else g["row"]["titulaire_nom"]
-                ),
-                "siren": None if g["row"].get("titulaire_personne_physique") else g["row"].get("titulaire_siren"),
+                "titulaire": titulaire_public(g["row"])[0],
+                "siren": titulaire_public(g["row"])[1],
                 "annee": g["row"]["annee"],
                 # La date de notification : sans elle, impossible de dire ce qui
                 # est nouveau depuis la dernière visite, donc impossible de notifier.
@@ -502,6 +609,7 @@ def main() -> int:
         out = OUT_ROOT / meta["slug"]
         out.mkdir(parents=True, exist_ok=True)
         fournisseurs = payload.pop("_fournisseurs")
+        contrats = payload.pop("_contrats")
         for f in fournisseurs:
             n = national.get(f["siren"])
             f["national"] = {"communes": len(n["communes"]), "montant": n["montant"], "nb": n["nb"]} if n else None
@@ -515,6 +623,13 @@ def main() -> int:
             open(out / "fournisseurs.json", "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"),
         )
         json.dump(payload, open(out / "marches.json", "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+        json.dump(
+            {
+                "generated_at": now, "source": SOURCE_LABEL, "source_url": SOURCE_URL,
+                "coverage_note": COVERAGE_NOTE, "commune": payload["commune"], "contrats": contrats,
+            },
+            open(out / "contrats.json", "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"),
+        )
         manifest[meta["slug"]] = {
             "years": [y["year"] for y in payload["by_year"]],
             "montant": round(payload["total"]["montant"]),

@@ -34,6 +34,20 @@ SELECT
     montant_invraisemblable,
     depenses_totales_commune,
     marche_id,
-    duree_mois
+    duree_mois,
+    -- Le détail de la fiche contrat (2026-09-13).
+    nature_marche,
+    forme_prix,
+    offres_recues,
+    ccag,
+    techniques,
+    considerations_sociales,
+    considerations_environnementales,
+    sous_traitance_declaree,
+    lieu_execution_code,
+    lieu_execution_type,
+    id_accord_cadre,
+    nb_titulaires,
+    nb_modifications
 FROM {{ ref('core_marches_national') }}
 WHERE montant > 0
