@@ -1,0 +1,34 @@
+{
+  "/api/og-chart": [
+    { "host": "www", "path": "/api/og-chart?chart=paris-budget-sankey" },
+    { "host": "www", "path": "/api/og-chart?chart=paris-subv-top-themes" },
+    { "host": "www", "path": "/api/og-chart?chart=paris-subv-top-benef" },
+    { "host": "www", "path": "/api/og-chart?chart=paris-marches-top-fournisseurs" },
+    { "host": "www", "path": "/api/og-chart?chart=paris-dette-capacite" },
+    { "host": "www", "path": "/api/og-chart?chart=paris-logement-tension" },
+    { "host": "www", "path": "/api/og-chart?chart=fr-daily-bread-composition" },
+    { "host": "www", "path": "/api/og-chart?chart=fr-fiscalite-categories" },
+    { "host": "www", "path": "/api/og-chart?chart=landing-per-capita" }
+  ],
+  "/api/og-poster": [
+    { "host": "fr", "path": "/api/og-poster?lang=fr&net=2500&c=pantin" },
+    { "host": "www", "path": "/api/og-poster?lang=en&net=2500" }
+  ],
+  "/api/og/stress": [
+    { "host": "fr", "path": "/api/og/stress" }
+  ],
+  "/api/og/sf-block/[id]": [
+    { "host": "www", "path": "/api/og/sf-block/0001" }
+  ],
+  "/api/commune/[slug]": [
+    { "host": "fr", "path": "/api/commune/pantin" },
+    { "host": "fr", "path": "/api/commune/bordeaux" }
+  ],
+  "/api/search-communes": [
+    { "host": "fr", "path": "/api/search-communes?q=pan" },
+    { "host": "fr", "path": "/api/search-communes?q=__warm" }
+  ],
+  "/api/budget/[year]/csv": [
+    { "host": "fr", "path": "/api/budget/2024/csv" }
+  ]
+}

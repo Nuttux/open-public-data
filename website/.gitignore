@@ -6,3 +6,6 @@
 # Playwright (e2e tests local artifacts)
 test-results/
 playwright-report/
+
+# scripts/trace: measured reads per route (regenerated)
+/.trace/

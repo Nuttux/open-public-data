@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { untracedPath } from "@/lib/untraced-path";
 
 /**
  * The single filesystem entry point for public/data JSON. Every server-side
@@ -10,8 +11,6 @@ import path from "node:path";
  * bounded (FIFO) so a long-lived process can't accumulate every vintage of
  * every dataset in RAM.
  */
-
-const DATA_ROOT = path.join(process.cwd(), "public", "data");
 const MAX_ENTRIES = 64;
 const cache = new Map<string, unknown>();
 
@@ -27,7 +26,7 @@ function remember<T>(key: string, value: T): T {
 /** Read + parse a JSON file relative to public/data. Memoized. Throws if absent. */
 export function readDataJson<T>(rel: string): T {
   if (cache.has(rel)) return cache.get(rel) as T;
-  const raw = fs.readFileSync(path.join(DATA_ROOT, rel), "utf8");
+  const raw = fs.readFileSync(untracedPath("public", "data", rel), "utf8");
   return remember(rel, JSON.parse(raw) as T);
 }
 
@@ -35,7 +34,7 @@ export function readDataJson<T>(rel: string): T {
 export function readDataJsonOrNull<T>(rel: string): T | null {
   if (cache.has(rel)) return cache.get(rel) as T | null;
   try {
-    const raw = fs.readFileSync(path.join(DATA_ROOT, rel), "utf8");
+    const raw = fs.readFileSync(untracedPath("public", "data", rel), "utf8");
     return remember(rel, JSON.parse(raw) as T);
   } catch {
     // Negative results are cached too: a missing vintage would otherwise be
@@ -57,7 +56,7 @@ export function readDataJsonOrNull<T>(rel: string): T | null {
 export function listDataDir(rel: string, ext = ".json"): string[] {
   try {
     return fs
-      .readdirSync(path.join(DATA_ROOT, rel))
+      .readdirSync(untracedPath("public", "data", rel))
       .filter((f) => f.endsWith(ext))
       .map((f) => f.slice(0, -ext.length))
       .sort();

@@ -1,11 +1,11 @@
 import fs from "fs";
-import path from "path";
 import overridesRaw from "@/data/commune-overrides.json";
 import { communeHasBudgetNature } from "@/lib/commune-budget";
 import { communeHasMarches } from "@/lib/commune-marches";
 import { communeHasInvestissements } from "@/lib/commune-investissements";
 import { communeHasEvolution } from "@/lib/commune-evolution";
 import { communeHasPeers } from "@/lib/commune-peers";
+import { untracedPath } from "@/lib/untraced-path";
 
 /**
  * Capability matrix — national-source-first, DATA-DERIVED.
@@ -25,8 +25,6 @@ import { communeHasPeers } from "@/lib/commune-peers";
  * marches / dette / fiscalite / subventions / investissements the same way.
  */
 
-const DATA_DIR = path.join(process.cwd(), "public", "data");
-
 type OverrideEntry = {
   hide?: string[];
   wip?: string[];
@@ -38,7 +36,7 @@ const OVERRIDES: Record<string, OverrideEntry> =
 
 function dataFileExists(rel: string): boolean {
   try {
-    return fs.existsSync(path.join(DATA_DIR, rel));
+    return fs.existsSync(untracedPath("public", "data", rel));
   } catch {
     return false;
   }

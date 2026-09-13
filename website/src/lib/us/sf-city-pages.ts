@@ -11,7 +11,6 @@
  * Only ever imported by server components and the sitemap.
  */
 import { readFileSync } from "node:fs";
-import path from "node:path";
 import { headers } from "next/headers";
 import {
   KIND_WORDING,
@@ -25,12 +24,11 @@ import {
   type HoodRecords,
 } from "@/components/us/city/block-records";
 import { compactMoney, fileStem, statusRank, statusWord } from "@/components/us/city/record-line";
-
-const DIR = path.join(process.cwd(), "public/data/us/sf/city/blocks");
+import { untracedPath } from "@/lib/untraced-path";
 const URL_BASE = "/data/us/sf/city/blocks";
 
 function readJson<T>(rel: string): T {
-  return JSON.parse(readFileSync(path.join(DIR, rel), "utf8")) as T;
+  return JSON.parse(readFileSync(untracedPath("public/data/us/sf/city/blocks", rel), "utf8")) as T;
 }
 
 /**

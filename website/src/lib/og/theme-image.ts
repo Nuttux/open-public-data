@@ -1,5 +1,5 @@
 import fs from "node:fs";
-import path from "node:path";
+import { untracedPath } from "@/lib/untraced-path";
 
 /**
  * Theme illustration for share cards.
@@ -96,7 +96,7 @@ const NOTE: Record<"fr" | "en" | "pt", string> = {
 
 function read(file: string): string | null {
   try {
-    const p = path.join(process.cwd(), "public", "img", "themes", file);
+    const p = untracedPath("public", "img", "themes", file);
     return `data:image/jpeg;base64,${fs.readFileSync(p).toString("base64")}`;
   } catch {
     return null;
@@ -125,7 +125,7 @@ export function themeImage(
 export function localPhotoDataUri(publicPath: string | null | undefined): string | null {
   if (!publicPath || !publicPath.startsWith("/img/")) return null;
   try {
-    const p = path.join(process.cwd(), "public", publicPath.replace(/^\//, ""));
+    const p = untracedPath("public", publicPath.replace(/^\//, ""));
     return `data:image/jpeg;base64,${fs.readFileSync(p).toString("base64")}`;
   } catch {
     return null;

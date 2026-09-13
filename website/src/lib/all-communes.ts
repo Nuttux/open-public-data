@@ -1,7 +1,5 @@
 import fs from "node:fs";
-import path from "node:path";
-
-const DATA_DIR = path.join(process.cwd(), "public", "data", "communes-all");
+import { untracedPath } from "@/lib/untraced-path";
 
 export type AllCommuneKpi = { montant: number; eur_hab: number };
 
@@ -49,7 +47,7 @@ let _metaCache: AllCommunesMeta | null = null;
 function loadIndex(): AllCommunesIndex | null {
   if (_indexCache) return _indexCache;
   try {
-    const raw = fs.readFileSync(path.join(DATA_DIR, "index.json"), "utf8");
+    const raw = fs.readFileSync(untracedPath("public", "data", "communes-all", "index.json"), "utf8");
     _indexCache = JSON.parse(raw) as AllCommunesIndex;
     return _indexCache;
   } catch {
@@ -60,7 +58,7 @@ function loadIndex(): AllCommunesIndex | null {
 function loadMeta(): AllCommunesMeta | null {
   if (_metaCache) return _metaCache;
   try {
-    const raw = fs.readFileSync(path.join(DATA_DIR, "_meta.json"), "utf8");
+    const raw = fs.readFileSync(untracedPath("public", "data", "communes-all", "_meta.json"), "utf8");
     _metaCache = JSON.parse(raw) as AllCommunesMeta;
     return _metaCache;
   } catch {

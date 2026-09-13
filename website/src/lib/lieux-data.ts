@@ -1,6 +1,6 @@
 import fs from "node:fs";
-import path from "node:path";
 import { readDataJsonOrNull } from "./data/read";
+import { untracedPath } from "@/lib/untraced-path";
 
 /**
  * Lieux v0 — chargement des fiches exportées par
@@ -179,8 +179,6 @@ export type LieuIndexEntry = {
   photo: string | null;
 };
 
-const DATA_DIR = path.join(process.cwd(), "public", "data", "lieux");
-
 function readJson<T>(file: string): T | null {
   return readDataJsonOrNull<T>(`lieux/${file}`);
 }
@@ -235,7 +233,7 @@ function indexBySlug(): Map<string, LieuIndexEntry> {
 function resolveLien(lien: LieuLien | null | undefined): LieuLien | null {
   if (!lien) return null;
   const idx = indexBySlug().get(lien.slug);
-  if (!idx || !fs.existsSync(path.join(DATA_DIR, `lieu_${lien.slug}.json`))) return null;
+  if (!idx || !fs.existsSync(untracedPath("public", "data", "lieux", `lieu_${lien.slug}.json`))) return null;
   return { ...lien, photo: idx.photo ?? null };
 }
 

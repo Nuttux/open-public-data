@@ -12,7 +12,10 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "gen:chat-context": "node scripts/generate-chat-context.mjs"
+    "gen:chat-context": "node scripts/generate-chat-context.mjs",
+    "trace:crawl": "node scripts/trace/crawl-reads.mjs",
+    "trace:includes": "node scripts/trace/build-includes.mjs",
+    "trace:check": "node scripts/trace/check-traces.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.90.0",

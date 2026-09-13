@@ -1,5 +1,5 @@
 import { readFileSync, readdirSync } from "node:fs";
-import path from "node:path";
+import { untracedPath } from "@/lib/untraced-path";
 
 /**
  * THE SERVER HALF OF THE CITY PAGE — read once, by both renderers.
@@ -53,7 +53,7 @@ interface BlockIndexShape {
 }
 
 function readJson<T>(rel: string): T {
-  const p = path.join(process.cwd(), "public", rel);
+  const p = untracedPath("public", rel);
   return JSON.parse(readFileSync(p, "utf8")) as T;
 }
 
@@ -142,7 +142,6 @@ let PROVENANCE: RecordProvenance | null = null;
  */
 function recordProvenance(): RecordProvenance {
   if (PROVENANCE) return PROVENANCE;
-  const root = path.join(process.cwd(), "public", "data/us/sf/city/blocks");
 
   /* ── §THE WALK IS A BUILD STEP, NOT A RENDER ONE ───────────────────────
      This counted the rows by opening 2,204 files across 52 MB. That is fine
@@ -188,18 +187,17 @@ function recordProvenance(): RecordProvenance {
   };
   // A shard is `block-<digits>.json` — a shape, not a blacklist, so a catalogue
   // file dropped in this directory later cannot join the walk.
-  for (const f of readdirSync(root)) {
+  for (const f of readdirSync(untracedPath("public", "data/us/sf/city/blocks"))) {
     if (!/^block-\d+\.json$/.test(f)) continue;
-    const shard = JSON.parse(readFileSync(path.join(root, f), "utf8")) as Record<
+    const shard = JSON.parse(readFileSync(untracedPath("public", "data/us/sf/city/blocks", f), "utf8")) as Record<
       string,
       { d?: ShardRow[] }
     >;
     for (const b of Object.values(shard)) eat(b.d ?? []);
   }
-  const street = path.join(root, "street");
-  for (const f of readdirSync(street)) {
+  for (const f of readdirSync(untracedPath("public", "data/us/sf/city/blocks", "street"))) {
     if (!f.endsWith(".json")) continue;
-    eat(JSON.parse(readFileSync(path.join(street, f), "utf8")) as ShardRow[]);
+    eat(JSON.parse(readFileSync(untracedPath("public", "data/us/sf/city/blocks", "street", f), "utf8")) as ShardRow[]);
   }
   PROVENANCE = {
     archive: { sources: A.sources.size, from: A.from, to: A.to, rows: A.rows },
