@@ -64,6 +64,24 @@ function withYear(s: string, year: number): string {
 }
 
 // ── France ──────────────────────────────────────────────────────────────────
+/**
+ * The data credit a page owes, in the form each licence asks for (licences
+ * checked on each portal, 13 Sep 2026): Paris Open Data is ODbL; communes rest
+ * on DGFiP / OFGL / DECP / INSEE under Licence Ouverte 2.0 (OFGL wants « calcul
+ * OFGL - source DGFiP », INSEE « Source : Insee ») ; Marseille's datasets are
+ * Licence Ouverte 2.0 ; national pages add Eurostat (CC BY 4.0, reprocessed).
+ * The footer used to say « Ville de Paris & data.gouv.fr (Etalab 2.0) » on every
+ * French page — the wrong licence for Paris, the wrong source elsewhere.
+ */
+function franceCreditKey(pathname: string): string {
+  if (pathname.startsWith("/fr/national")) return "fx.foot.credit.national";
+  const m = pathname.match(/^\/fr\/city\/([^/]+)/);
+  if (!m) return "fx.foot.license";
+  if (m[1] === "paris") return "fx.foot.credit.paris";
+  if (m[1] === "marseille") return "fx.foot.credit.marseille";
+  return "fx.foot.credit.communes";
+}
+
 function footerCitySlug(pathname: string): string {
   const m = pathname.match(/^\/fr\/city\/([^/]+)/);
   return m ? m[1] : "paris";
@@ -130,7 +148,7 @@ export function franceFooterModel(
     project,
     legalHeading: t("fx.foot.col.legal"),
     legal,
-    baseline: withYear(t("fx.foot.license"), year),
+    baseline: withYear(t(franceCreditKey(pathname)), year),
   };
 }
 
