@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useT } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
 import { useNumLocale } from "@/lib/use-fmt";
+import { nomDistinct } from "@/lib/nom-commune";
 
 type Hit = {
   insee: string;
@@ -184,7 +185,7 @@ function SearchModalInner() {
                     onClick={() => goTo(h)}
                     onMouseEnter={() => setActiveIdx(i)}
                   >
-                    <span className="fx-search-result-name">{h.nom}</span>
+                    <span className="fx-search-result-name">{nomDistinct(h)}</span>
                     <span className="fx-search-result-meta">
                       {h.dep_name} · {h.pop.toLocaleString(nl)} hab · INSEE {h.insee}
                     </span>

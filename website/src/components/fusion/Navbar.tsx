@@ -56,11 +56,20 @@ function currentFrSlug(pathname: string): string {
   return m ? m[1] : "paris";
 }
 
-export default function Navbar() {
+/**
+ * `scopePath` : pour une page qui n'appartient à aucun lieu, la barre choisit
+ * ses liens et son lieu courant d'après ce chemin plutôt que d'après l'adresse.
+ * Le choix entre communes homonymes vit sous /fr/city/<nom> sans être une
+ * ville : lue depuis l'adresse, la barre y proposait sept sections
+ * /fr/city/<nom>/… qui n'existent pas. L'adresse réelle reste la référence du
+ * lien actif et de la mesure d'audience.
+ */
+export default function Navbar({ scopePath }: { scopePath?: string } = {}) {
   const pathname = usePathname() ?? "/";
   const commune = useCommuneNav();
-  const navLinks = navLinksForPath(pathname, commune);
-  const frSlug = currentFrSlug(pathname);
+  const scope = scopePath ?? pathname;
+  const navLinks = navLinksForPath(scope, commune);
+  const frSlug = currentFrSlug(scope);
   const [menuOpen, setMenuOpen] = useState(false);
   const t = useT();
   const track = useTrack();

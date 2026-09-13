@@ -13,12 +13,14 @@ import ReplayOptIn from "./ReplayOptIn";
  * the shared <SiteFooter>. Session-replay consent lives in France's `optIn` slot.
  * Imported per-page by France clients; US/BR use RegistryFooter via their layout.
  */
-export default function Footer() {
+export default function Footer({ scopePath }: { scopePath?: string } = {}) {
   const t = useT();
   const pathname = usePathname() ?? "/";
   // National tail commune → its DATA-DERIVED sections (no Paris-shaped fallback).
   const commune = useCommuneNav();
   const year = new Date().getFullYear();
-  const model = franceFooterModel(pathname, t, year, commune);
+  // `scopePath` : même rôle que dans Navbar — une page qui n'est pas un lieu
+  // (le choix entre communes homonymes) prend le pied de page de ce chemin.
+  const model = franceFooterModel(scopePath ?? pathname, t, year, commune);
   return <SiteFooter model={model} optIn={<ReplayOptIn />} />;
 }

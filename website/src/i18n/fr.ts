@@ -3584,6 +3584,7 @@ const fr: Record<string, string> = {
   'fx.cc.lieu_dep': '{c} (département)',
   'fx.cc.lieu_region': 'région {c}',
   'fx.pick.placeholder': 'Chercher une commune de France…',
+  'fx.pick.actuelle': 'comparée',
   'fx.pick.suggest': 'Même département, taille proche',
   'fx.pick.results': 'Communes',
   'fx.pick.loading': 'Recherche…',
@@ -6497,6 +6498,9 @@ const fr: Record<string, string> = {
   'us.sf.related.place_same_kind': '{kind}, the same kind of place',
   'us.sf.related.hub_places': 'Every San Francisco place on the site',
   'us.sf.related.hub_places_sub': 'Parks, libraries, hospitals, piers, and the contract money paid for work at each',
+  'fx.homonymes.h1': '{nom} : laquelle ?',
+  'fx.homonymes.lead': '{n} communes portent ce nom. Population : OFGL.',
+  'fx.homonymes.hab': 'hab.',
 };
 
 export default fr;

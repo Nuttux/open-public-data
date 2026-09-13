@@ -56,7 +56,7 @@ function entry(slug: string): CompareEntry | null {
   const kpis: Record<string, number | null> = {};
   for (const k of COMPARE_KEYS) kpis[k] = c.kpis?.[k]?.eur_hab ?? null;
   const tx = loadTaux(c.insee);
-  return { slug: c.slug, nom: c.nom, pop: c.pop, kpis, taux: tx ? { annee: tx.annee, tfb: tx.tfb, mediane: tx.mediane } : null };
+  return { slug: c.slug, nom: c.nom, dep_name: c.dep_name, pop: c.pop, kpis, taux: tx ? { annee: tx.annee, tfb: tx.tfb, mediane: tx.mediane } : null };
 }
 
 function safe<T>(fn: () => T): T | null {

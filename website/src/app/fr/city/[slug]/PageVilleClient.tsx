@@ -10,7 +10,7 @@ import Footer from "@/components/fusion/Footer";
 import ChartSource from "@/components/fusion/ChartSource";
 import RelatedLinks, { type RelatedBlock } from "@/components/fiche/RelatedLinks";
 import { useT, useLocale } from "@/lib/localeContext";
-import { aNom, deNom } from "@/lib/nom-commune";
+import { aNom, deNom, nomDistinct } from "@/lib/nom-commune";
 import type { CommuneFonctions, FonctionLigne, FonctionPart } from "@/lib/commune-fonctions";
 import { makeFmt } from "@/lib/fmt";
 import type { BudgetPageData } from "@/lib/fusion-data";
@@ -59,6 +59,8 @@ export type CommuneMeta = {
 export type CompareEntry = {
   slug: string;
   nom: string;
+  /** Pour écrire « Saint-Denis (Seine-Saint-Denis) » quand le nom est partagé. */
+  dep_name: string;
   pop: number;
   /** € par habitant par indicateur OFGL (impots_locaux, encours_dette, epargne_brute…). */
   kpis: Record<string, number | null>;
@@ -918,7 +920,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
               <H2 id="comparer">{t("fx.pv.comparer")}</H2>
               <div className="fx-pv-pick">
                 <span className="fx-pv-pick-now">
-                  {fill("fx.pv.face_a", { nom: commune.nom })}{other ? <> <b>{other.nom}</b></> : null}
+                  {fill("fx.pv.face_a", { nom: commune.nom })}{other ? <> <b>{nomDistinct(other)}</b></> : null}
                 </span>
                 <CommunePicker
                   label={t("fx.pv.changer")}
