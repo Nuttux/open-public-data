@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useMemo } from "react";
+import { useNumLocale } from "@/lib/use-fmt";
 
 // ECharts is client-only — defer import so SSR doesn't try to render it.
 const ReactECharts = dynamic(() => import("echarts-for-react"), { ssr: false });
@@ -29,6 +30,7 @@ const CATEGORY_COLORS: Record<string, string> = {
  * ECharts so interactivity (tooltips, hover) comes for free.
  */
 export default function BudgetSankey({ nodes, links, central, height = 520 }: Props) {
+  const nl = useNumLocale();
   const option = useMemo(() => {
     const nodeSpec = nodes.map((n) => ({
       name: n.name,
@@ -63,7 +65,7 @@ export default function BudgetSankey({ nodes, links, central, height = 520 }: Pr
         formatter: (params: { dataType: string; name?: string; data?: { source?: string; target?: string; value?: number } }) => {
           if (params.dataType === "edge" && params.data) {
             const v = params.data.value ?? 0;
-            const fmt = new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 2 }).format(v / 1_000_000_000);
+            const fmt = new Intl.NumberFormat(nl, { maximumFractionDigits: 2 }).format(v / 1_000_000_000);
             return `${params.data.source} → ${params.data.target}<br/><b>${fmt} Md €</b>`;
           }
           return params.name ?? "";
@@ -95,7 +97,7 @@ export default function BudgetSankey({ nodes, links, central, height = 520 }: Pr
         },
       ],
     };
-  }, [nodes, links, central]);
+  }, [nodes, links, central, nl]);
 
   return (
     <div className="fx-sankey">

@@ -6,7 +6,7 @@
  * than in the dictionaries: they are server-side and locale-picked once.
  */
 import { readDataJsonOrNull } from "@/lib/data/read";
-import { fmtCompactEur } from "@/lib/fmt";
+import { makeFmt } from "@/lib/fmt";
 import { canonicalBailleurSlug, loadFournisseur, loadThemeSubventions } from "@/lib/fusion-data";
 import { trLabel } from "@/lib/label-translate";
 import { normalizeObjet } from "@/lib/objet-normalizer";
@@ -15,8 +15,10 @@ import type { RelatedBlock, RelatedRow } from "@/components/fiche/RelatedLinks";
 import { assocSlug } from "@/lib/assoc-slug";
 
 type L = "fr" | "en";
-const eur = (n: number) => {
-  const c = fmtCompactEur(n);
+const FMT = { fr: makeFmt("fr"), en: makeFmt("en") };
+/** Montant compact dans la langue de la fiche (« 4,76 Md € » / « 4.76 €B »). */
+const eur = (n: number, locale: L) => {
+  const c = FMT[locale].fmtCompactEur(n);
   return { v: c.value, u: c.unit };
 };
 
@@ -36,7 +38,7 @@ export function bailleurRelated(slug: string, locale: L): RelatedBlock | null {
       href: `/fr/city/paris/dette/bailleur/${canonicalBailleurSlug(b.name)}`,
       label: b.name,
       sub: locale === "en" ? `${b.count_emprunts.toLocaleString("en-GB")} loans guaranteed, end ${hb?.year}` : `${b.count_emprunts.toLocaleString("fr-FR")} emprunts garantis, fin ${hb?.year}`,
-      amount: eur(b.capital_restant),
+      amount: eur(b.capital_restant, locale),
     }));
   rows.push(
     { href: "/fr/city/paris/logement", label: locale === "en" ? "Social housing in Paris" : "Le logement social à Paris", sub: locale === "en" ? "The homes financed each year, by arrondissement and operator" : "Les logements financés chaque année, par arrondissement et par bailleur" },
@@ -66,7 +68,7 @@ export function instrumentRelated(key: string, year: number, locale: L): Related
       href: `/fr/city/paris/dette/instrument/${i.key}${year ? `?year=${year}` : ""}`,
       label: trLabel(i.label, locale),
       sub: locale === "en" ? `${Math.round(i.part * 100)}% of the financial debt at end ${year}` : `${Math.round(i.part * 100)} % de la dette financière fin ${year}`,
-      amount: eur(i.encours),
+      amount: eur(i.encours, locale),
     }));
   rows.push({ href: "/fr/city/paris/dette", label: locale === "en" ? "The City of Paris's debt" : "La dette de la Ville de Paris", sub: locale === "en" ? "All instruments, the balance sheet and the guarantees" : "Tous les instruments, le bilan et les garanties" });
   return { title: locale === "en" ? "See also" : "Voir aussi", sub: locale === "en" ? `The other instruments of the ${year} debt.` : `Les autres instruments de la dette ${year}.`, rows };
@@ -87,7 +89,7 @@ export function masseRelated(slug: string, year: number, locale: L): RelatedBloc
       href: `/fr/city/paris/dette/masse/${slugifyLabel(m.label)}${year ? `?year=${year}` : ""}`,
       label: trLabel(m.label, locale),
       sub: locale === "en" ? `${(m.share * 100).toFixed(1)}% of ${m.side === "actif" ? "assets" : "liabilities"}, ${year}` : `${(m.share * 100).toFixed(1).replace(".", ",")} % ${m.side === "actif" ? "de l'actif" : "du passif"}, ${year}`,
-      amount: eur(m.value),
+      amount: eur(m.value, locale),
     }));
   rows.push({ href: "/fr/city/paris/dette", label: locale === "en" ? "The City of Paris's balance sheet and debt" : "Le bilan et la dette de la Ville de Paris", sub: locale === "en" ? "Assets, liabilities, instruments and guarantees" : "Actif, passif, instruments et garanties" });
   return { title: locale === "en" ? "See also" : "Voir aussi", sub: locale === "en" ? `The other items on the same side of the ${year} balance sheet.` : `Les autres masses du même côté du bilan ${year}.`, rows };
@@ -106,7 +108,7 @@ export function chapitreRelated(slug: string, year: number, locale: L): RelatedB
       href: `/fr/city/paris/investissements/chapitre/${slugifyChapitre(c.label)}${year ? `?year=${year}` : ""}`,
       label: trLabel(c.label, locale),
       sub: locale === "en" ? `Investment chapter, ${y.year}` : `Chapitre d'investissement, ${y.year}`,
-      amount: eur(c.depenses),
+      amount: eur(c.depenses, locale),
     }));
   rows.push({ href: "/fr/city/paris/investissements", label: locale === "en" ? "The City of Paris's investments" : "Les investissements de la Ville de Paris", sub: locale === "en" ? "Every chapter, every arrondissement, the map of projects" : "Tous les chapitres, tous les arrondissements, la carte des projets" });
   return { title: locale === "en" ? "See also" : "Voir aussi", sub: locale === "en" ? `The other chapters of ${y.year} investment.` : `Les autres chapitres d'investissement ${y.year}.`, rows };
@@ -124,14 +126,14 @@ export function associationRelated(asso: { name: string; theme: string | null },
         href: `${base}/theme/${slug}`,
         label: locale === "en" ? `All ${trLabel(asso.theme, locale).toLowerCase()} grants, ${fiche.year}` : `Toutes les subventions ${asso.theme.toLowerCase()}, ${fiche.year}`,
         sub: locale === "en" ? `${fiche.nbBeneficiaires.toLocaleString("en-GB")} recipients that year` : `${fiche.nbBeneficiaires.toLocaleString("fr-FR")} bénéficiaires cette année-là`,
-        amount: eur(fiche.total),
+        amount: eur(fiche.total, locale),
       });
       for (const b of fiche.topBeneficiaires.filter((b) => b.name !== asso.name).slice(0, 4)) {
         rows.push({
           href: `${base}/association/${assocSlug(b.name)}`,
           label: b.name,
           sub: locale === "en" ? `Same theme, ${fiche.year}` : `Même thème, ${fiche.year}`,
-          amount: eur(b.amount),
+          amount: eur(b.amount, locale),
         });
       }
     }
@@ -161,14 +163,14 @@ export function contratRelated(
           // ce repli-ci l'avait oublié.
           label: (locale === "en" ? k.objetClairEn || k.objetClair : k.objetClair) || normalizeObjet(k.objet),
           sub: locale === "en" ? `Same supplier, ${k.year}` : `Même titulaire, ${k.year}`,
-          amount: eur(k.montant),
+          amount: eur(k.montant, locale),
         });
       }
       rows.push({
         href: `${base}/fournisseur/${siren}`,
         label: locale === "en" ? `Every contract of ${f.nom}` : `Tous les marchés de ${f.nom}`,
         sub: locale === "en" ? `${f.contratCount.toLocaleString("en-GB")} contracts with the City` : `${f.contratCount.toLocaleString("fr-FR")} marchés avec la Ville`,
-        amount: eur(f.totalAmount),
+        amount: eur(f.totalAmount, locale),
       });
     }
   }

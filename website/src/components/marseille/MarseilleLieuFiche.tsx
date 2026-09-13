@@ -4,13 +4,14 @@ import Link from "next/link";
 import { useLocale } from "@/lib/localeContext";
 import { FicheSection } from "@/components/fiche";
 import FicheKpis from "@/components/fusion/FicheKpis";
-import { fmtInt } from "@/lib/fmt";
+import { type Fmt } from "@/lib/fmt";
+import { useFmt } from "@/lib/use-fmt";
 import type { MarseillePlace, PlacesSource } from "@/lib/marseille/marseille-places-data";
 import { assocSlug } from "@/lib/assoc-slug";
 
-const eur = (n: number) =>
+const makeEur = ({ fmtDec, fmtInt }: Fmt) => (n: number) =>
   n >= 1e6
-    ? `${(n / 1e6).toFixed(1).replace(".", ",")} M€`
+    ? `${fmtDec(n / 1e6, 1)} M€`
     : n >= 1000
       ? `${fmtInt(Math.round(n / 1e3))} k€`
       : `${fmtInt(Math.round(n))} €`;
@@ -42,6 +43,9 @@ export default function MarseilleLieuFiche({
   place: MarseillePlace & { source: PlacesSource };
 }) {
   const { locale } = useLocale();
+  const fmt = useFmt();
+  const { fmtInt } = fmt;
+  const eur = makeEur(fmt);
   const en = locale === "en";
   const kind = en ? place.kind_en : place.kind_fr;
   const fam = FAMILY_LABEL[place.famille];

@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { fmtBillions, fmtDec, fmtMillions } from "@/lib/fmt";
 import { useT } from "@/lib/localeContext";
+import { useFmt } from "@/lib/use-fmt";
 
 /**
  * Table « Top emprunts par capital restant » partagée entre BailleurFiche et
@@ -46,6 +46,7 @@ type Props = {
 
 export default function EmpruntsTable({ emprunts, variant, beneficiaireHref }: Props) {
   const t = useT();
+  const { fmtDec, fmtBillions, fmtMillions } = useFmt();
 
   const mdLabel = t("fx.s.md_eur");
   const mLabel = t("fx.s.m_eur");

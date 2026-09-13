@@ -9,7 +9,7 @@ import ChartSource from "@/components/fusion/ChartSource";
 import RelatedLinks from "@/components/fiche/RelatedLinks";
 import { V3Amt, V3Row } from "@/components/fiche/v3";
 import { useT, useLocale } from "@/lib/localeContext";
-import { fmtDec } from "@/lib/fmt";
+import { useFmt } from "@/lib/use-fmt";
 import { trLabel } from "@/lib/label-translate";
 import { displayNomElu } from "@/lib/commune-maires";
 import type { PageVilleRicheProps, LinkRow } from "./page-ville-riche-data";
@@ -26,6 +26,7 @@ const COMPARE_KEYS = ["impots_locaux", "encours_dette", "epargne_brute"] as cons
 export default function VilleRicheClient(p: PageVilleRicheProps) {
   const { commune, budget, subventions, achats, construit, dette, lieux, maire, peers, compare, related } = p;
   const t = useT();
+  const { fmtDec } = useFmt();
   const { locale } = useLocale();
   const en = locale === "en";
   const tag = en ? "en-GB" : "fr-FR";

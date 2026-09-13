@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import type { DetteInstrument, PatrimoineStructure } from "@/lib/fusion-data";
-import { fill, fmtBillions, fmtDec, fmtMillions, fmtInt } from "@/lib/fmt";
+import { fill } from "@/lib/fmt";
 import { useCity } from "./CityContext";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
+import { useFmt } from "@/lib/use-fmt";
 
 type Props = {
   structure: PatrimoineStructure["structure_dette"];
@@ -14,6 +15,7 @@ type Props = {
 
 export default function DetteStructurePanel({ structure, year }: Props) {
   const t = useT();
+  const { fmtInt, fmtDec, fmtBillions } = useFmt();
   const { basePath } = useCity();
 
   const partFixePct = structure.taux.part_fixe * 100;
@@ -100,6 +102,7 @@ type RowProps = {
 
 function Row({ inst, maxValue, href, first }: RowProps) {
   const t = useT();
+  const { fmtBillions, fmtMillions } = useFmt();
   const { locale } = useLocale();
   const pct = Math.max(0, Math.min(100, (inst.encours / maxValue) * 100));
   const unit = inst.encours >= 1e9 ? t("fx.s.md_eur") : t("fx.s.m_eur");

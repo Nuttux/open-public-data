@@ -8,6 +8,7 @@
  * Rows are links to the arrondissement fiche.
  */
 import Link from "next/link";
+import { useNumLocale } from "@/lib/use-fmt";
 
 export type SruBarRow = {
   arr: number;
@@ -39,6 +40,7 @@ export default function SruDeviationBars({
   legendPast?: string;
   maxPct?: number;
 }) {
+  const nl = useNumLocale();
   const sorted = rows.slice().sort((a, b) => a.tauxPct - b.tauxPct);
   const pct = (v: number) => `${(v / maxPct) * 100}%`;
   const hasPast = sorted.some((r) => r.tauxPastPct != null);
@@ -191,7 +193,7 @@ export default function SruDeviationBars({
                   textAlign: "right",
                 }}
               >
-                {r.tauxPct.toLocaleString("fr-FR", { maximumFractionDigits: 1 })} %
+                {r.tauxPct.toLocaleString(nl, { maximumFractionDigits: 1 })} %
               </span>
             </Link>
           );

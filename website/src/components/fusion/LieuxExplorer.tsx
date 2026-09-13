@@ -3,6 +3,7 @@
 import { useEffect, useMemo } from "react";
 import type { LieuIndexEntry } from "@/lib/lieux-data";
 import { useT } from "@/lib/localeContext";
+import { useNumLocale } from "@/lib/use-fmt";
 import { clearDrawerStack } from "./DetailDrawer";
 import PlacesExplorer from "@/components/places/PlacesExplorer";
 import type { PlaceEntry, PlacesConfig } from "@/components/places/types";
@@ -24,9 +25,9 @@ const PARIS_BOUNDS: [[number, number], [number, number]] = [
   [48.9022, 2.4699],
 ];
 
-const fmtArgent = (v: number) =>
+const fmtArgent = (v: number, nl: string) =>
   v >= 1e6
-    ? `${(v / 1e6).toLocaleString("fr-FR", { maximumFractionDigits: 1 })} M€`
+    ? `${(v / 1e6).toLocaleString(nl, { maximumFractionDigits: 1 })} M€`
     : `${Math.round(v / 1e3)} k€`;
 
 const arrLabel = (n: number) => `${n}${n === 1 ? "er" : "e"}`;
@@ -39,6 +40,7 @@ const arrLabel = (n: number) => `${n}${n === 1 ? "er" : "e"}`;
  */
 export default function LieuxExplorer({ lieux }: { lieux: LieuIndexEntry[] }) {
   const t = useT();
+  const nl = useNumLocale();
 
   // On est sur la LISTE : aucune chaîne de drill-down en cours. On vide la pile
   // pour qu'une fiche ouverte d'ici n'affiche pas de pastille « ← Retour ».
@@ -59,12 +61,12 @@ export default function LieuxExplorer({ lieux }: { lieux: LieuIndexEntry[] }) {
           areaKey: l.arrondissement > 0 ? String(l.arrondissement) : "",
           areaLabel: l.arrondissement > 0 ? arrLabel(l.arrondissement) : "",
           metric: argent,
-          stat: argent > 0 ? fmtArgent(argent) : l.depuis ? `${t("fx.lieux.card_depuis")} ${l.depuis}` : "",
+          stat: argent > 0 ? fmtArgent(argent, nl) : l.depuis ? `${t("fx.lieux.card_depuis")} ${l.depuis}` : "",
           statTone: argent > 0 ? "money" : "accent",
-          tooltipStat: argent >= 1e6 ? ` · ${fmtArgent(argent)}` : "",
+          tooltipStat: argent >= 1e6 ? ` · ${fmtArgent(argent, nl)}` : "",
         };
       }),
-    [lieux, t],
+    [lieux, t, nl],
   );
 
   const config = useMemo<PlacesConfig>(
@@ -82,7 +84,7 @@ export default function LieuxExplorer({ lieux }: { lieux: LieuIndexEntry[] }) {
         { key: "name-asc", label: t("fx.lieux.sort.nom") },
       ],
       areaSort: "numeric",
-      locale: "fr-FR",
+      locale: nl,
       strings: {
         searchPlaceholder: t("fx.lieux.search"),
         sortLabel: t("fx.lieux.sort_label"),
@@ -105,7 +107,7 @@ export default function LieuxExplorer({ lieux }: { lieux: LieuIndexEntry[] }) {
         geoOutOfZone: (km) => t("fx.lieux.geo_hors_zone").replace("{km}", km),
       },
     }),
-    [t],
+    [t, nl],
   );
 
   return <PlacesExplorer entries={entries} config={config} />;

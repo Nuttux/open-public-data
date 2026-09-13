@@ -1,9 +1,9 @@
 "use client";
 
 import type { CityDebtSnapshot } from "@/lib/fusion-data";
-import { fmtDec, fmtInt } from "@/lib/fmt";
 import { useT } from "@/lib/localeContext";
 import { CAPACITE_DESENDETTEMENT_ALERTE_ANS } from "@/lib/methodology";
+import { useFmt } from "@/lib/use-fmt";
 
 const THRESHOLD = CAPACITE_DESENDETTEMENT_ALERTE_ANS;
 
@@ -14,6 +14,7 @@ type Props = {
 
 export default function CityComparator({ cities, highlightSlug = "paris" }: Props) {
   const t = useT();
+  const { fmtInt, fmtDec } = useFmt();
   if (!cities.length) return null;
 
   // Ordre décroissant par capacité de désendettement (le "pire" en haut)

@@ -1,13 +1,14 @@
 "use client";
 
 import type { MarcheCategorieFiche } from "@/lib/fusion-data";
-import { fill, fmtCompactEur, fmtInt } from "@/lib/fmt";
+import { fill } from "@/lib/fmt";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { isNamedTitulaire } from "@/lib/marches-shape";
 import { useT, useLocale } from "@/lib/localeContext";
 import { FicheBreakdown } from "@/components/fiche";
 import { V3Foot, V3Hero, V3Row, V3Section } from "@/components/fiche/v3";
 import { useCity } from "./CityContext";
+import { useFmt } from "@/lib/use-fmt";
 
 /**
  * Fiche catégorie de marchés v3 (2026-09-03) — UN chiffre (les plafonds
@@ -17,6 +18,7 @@ import { useCity } from "./CityContext";
  */
 export default function CategorieMarcheFiche({ fiche }: { fiche: MarcheCategorieFiche }) {
   const t = useT();
+  const { fmtInt, fmtCompactEur } = useFmt();
   const { locale } = useLocale();
   const { basePath } = useCity();
   const total = fmtCompactEur(fiche.total);

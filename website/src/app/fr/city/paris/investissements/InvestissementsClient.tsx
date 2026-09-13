@@ -22,11 +22,12 @@ import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/Re
 import PageHook from "@/components/fusion/PageHook";
 import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
 import { FicheMore } from "@/components/fiche";
-import { fill, fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
+import { fill } from "@/lib/fmt";
 import type { BlogPostMeta } from "@/lib/blog";
 import type { InvestissementsData } from "@/lib/fusion-data";
 import { slugifyChapitre } from "@/lib/projet-utils";
 import { useT, useLocale } from "@/lib/localeContext";
+import { useFmt } from "@/lib/use-fmt";
 import { trLabel } from "@/lib/label-translate";
 import { cityPopulation, citySlugFromPathname } from "@/lib/methodology";
 
@@ -60,6 +61,7 @@ export default function InvestissementsClient({
   enableDrilldowns?: boolean;
 }) {
   const t = useT();
+  const { fmtBillions, fmtDec, fmtInt, fmtMillions } = useFmt();
   const { locale } = useLocale();
   const trL = (s: string | undefined) => trLabel(s, locale);
   // Multi-cities awareness — derive city slug from URL so the same client

@@ -1,9 +1,10 @@
 "use client";
 
 import type { BondIssuance, DetteInstrument } from "@/lib/fusion-data";
-import { fill, fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
+import { fill } from "@/lib/fmt";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
+import { useFmt } from "@/lib/use-fmt";
 
 type Props = {
   instrument: DetteInstrument;
@@ -19,6 +20,7 @@ type Props = {
  */
 export default function InstrumentDetteFiche({ instrument, year, bondIssuances }: Props) {
   const t = useT();
+  const { fmtInt, fmtDec, fmtBillions, fmtMillions } = useFmt();
   const { locale } = useLocale();
 
   const unit = instrument.encours >= 1e9 ? t("fx.s.md_eur") : t("fx.s.m_eur");

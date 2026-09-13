@@ -1,6 +1,9 @@
+"use client";
+
 import type { ReactNode } from "react";
 import Link from "next/link";
 import BarTrack from "./BarTrack";
+import { useNumLocale } from "@/lib/use-fmt";
 
 export type FlowRow = {
   label: ReactNode;
@@ -31,15 +34,15 @@ type Props = {
   wrapLabels?: boolean;
 };
 
-const fmtBillions = (n: number) =>
-  new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 2 }).format(n / 1_000_000_000);
-
 /**
  * Dual-bars layout matching the budget mockup : Recettes on the left,
  * Dépenses on the right, sorted by value with a shared %-scale inside
  * each column. The "Total équilibré" badge sits below both columns.
  */
 export default function DualFlowBars({ left, right, center, callout, wrapLabels }: Props) {
+  const nl = useNumLocale();
+  const fmtBillions = (n: number) =>
+    new Intl.NumberFormat(nl, { maximumFractionDigits: 2 }).format(n / 1_000_000_000);
   // Single shared scale across BOTH columns so a 2.5 Md bar can never visually
   // read as long as a 7.3 Md bar — critical once the two columns stack on
   // mobile and sit in one continuous list.

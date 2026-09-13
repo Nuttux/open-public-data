@@ -1,6 +1,7 @@
 "use client";
 
 import { useT } from "@/lib/localeContext";
+import { useNumLocale } from "@/lib/use-fmt";
 
 type Point = {
   year: number;
@@ -53,6 +54,7 @@ export default function BudgetTimeline({
   ariaLabel,
 }: Props) {
   const t = useT();
+  const nl = useNumLocale();
   // viewBox: 1200x340. Padding: 60 left, 20 right, 40 top, 60 bottom (labels)
   const W = 1200;
   const H = 340;
@@ -124,7 +126,7 @@ export default function BudgetTimeline({
             <text key={i} x={LEFT - 10} y={yFor(t) + 4} textAnchor="end">
               {formatYTick
                 ? formatYTick(t)
-                : `${(Number.isInteger(t) ? t.toString() : t.toFixed(1)).replace(".", ",")} Md`}
+                : `${t.toLocaleString(nl, { minimumFractionDigits: Number.isInteger(t) ? 0 : 1, maximumFractionDigits: Number.isInteger(t) ? 0 : 1, useGrouping: false })} Md`}
             </text>
           ))}
         </g>

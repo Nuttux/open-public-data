@@ -1,12 +1,13 @@
 "use client";
 
 import type { ArrondissementGaranties } from "@/lib/fusion-data";
-import { cap, fill, fmtBillions, fmtDec, fmtMillions, numLocale } from "@/lib/fmt";
+import { cap, fill, numLocale } from "@/lib/fmt";
 import { slugifyBailleur } from "@/lib/projet-utils";
 import { useT, useLocale } from "@/lib/localeContext";
 import { useCity } from "./CityContext";
 import { FicheBreakdown } from "@/components/fiche";
 import { V3Amt, V3Fold, V3Hero, V3Row, V3Section, foldRest } from "@/components/fiche/v3";
+import { useFmt } from "@/lib/use-fmt";
 
 type Props = { arr: ArrondissementGaranties; year: number };
 const EMPRUNTS_CAP = 5;
@@ -19,6 +20,7 @@ const EMPRUNTS_CAP = 5;
  */
 export default function ArrondissementGarantiesFiche({ arr, year }: Props) {
   const t = useT();
+  const { fmtDec, fmtBillions, fmtMillions } = useFmt();
   const { locale } = useLocale();
   const { basePath } = useCity();
   const nInt = (n: number) => Number(n).toLocaleString(numLocale(locale));

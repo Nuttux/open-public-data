@@ -30,6 +30,42 @@ export function fmtCompactEur(n: number): { value: string; unit: string } {
 /** "fr" | "en" → Intl locale string used everywhere for number formatting. */
 export const numLocale = (locale: string) => (locale === "en" ? "en-GB" : "fr-FR");
 
+export type Fmt = {
+  fmtInt: (n: number) => string;
+  fmtDec: (n: number, digits?: number) => string;
+  fmtBillions: (n: number, digits?: number) => string;
+  fmtMillions: (n: number, digits?: number) => string;
+  fmtCompactEur: (n: number) => { value: string; unit: string };
+};
+
+/**
+ * The formatters above, bound to a UI locale. The bare exports are French
+ * only, and the English pages printed « 11,02 » and « 116,2 » through them.
+ * Client components take these from `useFmt()` (lib/use-fmt.ts); server code
+ * passes the locale it read. Units are the same as the i18n keys
+ * `fx.s.md_eur` / `fx.s.m_eur` in each language.
+ */
+export function makeFmt(locale: string): Fmt {
+  const tag = numLocale(locale);
+  const int = new Intl.NumberFormat(tag, { maximumFractionDigits: 0 });
+  const dec = (n: number, digits = 2) =>
+    new Intl.NumberFormat(tag, { minimumFractionDigits: digits, maximumFractionDigits: digits }).format(n);
+  const unit = locale === "en" ? { md: "€B", m: "€M", k: "€k", u: "€" } : { md: "Md €", m: "M €", k: "k €", u: "€" };
+  return {
+    fmtInt: (n) => int.format(n),
+    fmtDec: dec,
+    fmtBillions: (n, digits = 2) => dec(n / 1_000_000_000, digits),
+    fmtMillions: (n, digits = 0) => dec(n / 1_000_000, digits),
+    fmtCompactEur: (n) => {
+      const abs = Math.abs(n);
+      if (abs >= 1_000_000_000) return { value: dec(n / 1_000_000_000), unit: unit.md };
+      if (abs >= 1_000_000) return { value: dec(n / 1_000_000, 0), unit: unit.m };
+      if (abs >= 1_000) return { value: dec(n / 1_000, 0), unit: unit.k };
+      return { value: int.format(n), unit: unit.u };
+    },
+  };
+}
+
 const MOIS_EN: Record<string, string> = {
   JANVIER: "JANUARY", FEVRIER: "FEBRUARY", MARS: "MARCH", AVRIL: "APRIL",
   MAI: "MAY", JUIN: "JUNE", JUILLET: "JULY", AOUT: "AUGUST",

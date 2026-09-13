@@ -17,10 +17,11 @@ import Tip from "@/components/fusion/Tip";
 import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/RelatedArticles";
 import PageHook from "@/components/fusion/PageHook";
 import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
-import { fill, fmtDec, fmtInt } from "@/lib/fmt";
+import { fill } from "@/lib/fmt";
 import type { BlogPostMeta } from "@/lib/blog";
 import type { LogementSocialData, SruArrondissementsData } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
+import { useFmt } from "@/lib/use-fmt";
 import { trLabel } from "@/lib/label-translate";
 import { slugifyBailleur } from "@/lib/projet-utils";
 import { citySlugFromPathname } from "@/lib/methodology";
@@ -65,6 +66,7 @@ export default function LogementSocialClient({
   posts: BlogPostMeta[];
 }) {
   const t = useT();
+  const { fmtDec, fmtInt } = useFmt();
   const { locale } = useLocale();
   // Detect current city from URL — Paris uses the rich Choropleth + Tension
   // pipeline ; other cities (Marseille v1) drop §02/§05/§06 silently when

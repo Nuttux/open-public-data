@@ -12,7 +12,7 @@ import RelatedLinks, { type RelatedBlock } from "@/components/fiche/RelatedLinks
 import { useT, useLocale } from "@/lib/localeContext";
 import { aNom, deNom } from "@/lib/nom-commune";
 import type { CommuneFonctions, FonctionLigne, FonctionPart } from "@/lib/commune-fonctions";
-import { fmtDec } from "@/lib/fmt";
+import { makeFmt } from "@/lib/fmt";
 import type { BudgetPageData } from "@/lib/fusion-data";
 import type { EvolutionData } from "@/lib/commune-evolution";
 import type { InvestissementsData } from "@/lib/commune-investissements";
@@ -126,7 +126,7 @@ function useFmt() {
     }
     return { v: int.format(eur), u: "€" };
   };
-  const signedPct = (x: number) => `${x >= 0 ? "+" : "−"}${fmtDec(Math.abs(x), 1)} %`;
+  const signedPct = (x: number) => `${x >= 0 ? "+" : "−"}${makeFmt(locale).fmtDec(Math.abs(x), 1)} %`;
   return { euro, split, int, signedPct, locale };
 }
 

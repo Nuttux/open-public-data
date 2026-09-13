@@ -7,7 +7,13 @@
 
 import { useMemo } from "react";
 import { useT, useLocale } from "@/lib/localeContext";
-import { makeFmtEur, numLocale } from "@/lib/fmt";
+import { makeFmt, makeFmtEur, numLocale, type Fmt } from "@/lib/fmt";
+
+/** `fmtInt`, `fmtDec`, `fmtBillions`, `fmtMillions`, `fmtCompactEur` in the active UI locale. */
+export function useFmt(): Fmt {
+  const { locale } = useLocale();
+  return useMemo(() => makeFmt(locale), [locale]);
+}
 
 /** "en-GB" | "fr-FR" according to the active UI locale. */
 export function useNumLocale(): string {

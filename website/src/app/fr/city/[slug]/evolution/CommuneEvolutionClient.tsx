@@ -5,6 +5,7 @@ import Footer from "@/components/fusion/Footer";
 import SectionHead from "@/components/fusion/SectionHead";
 import ChartSource from "@/components/fusion/ChartSource";
 import { useT, useLocale } from "@/lib/localeContext";
+import { useNumLocale } from "@/lib/use-fmt";
 import type { EvolutionData, EvolutionPoint } from "@/lib/commune-evolution";
 
 type CommuneMeta = { slug: string; nom: string; dep_name: string; reg_name: string; pop: number };
@@ -16,6 +17,7 @@ const METRICS: { key: keyof EvolutionPoint; color: string; labelKey: string }[] 
 ];
 
 function TrendChart({ series }: { series: EvolutionPoint[]; labels: Record<string, string> }) {
+  const numTag = useNumLocale();
   const W = 820;
   const H = 300;
   const pad = { t: 16, r: 16, b: 28, l: 52 };
@@ -28,7 +30,7 @@ function TrendChart({ series }: { series: EvolutionPoint[]; labels: Record<strin
     pad.l + ((yr - years[0]) / Math.max(1, years[years.length - 1] - years[0])) * (W - pad.l - pad.r);
   const y = (v: number) => pad.t + (1 - (v - min) / (max - min)) * (H - pad.t - pad.b);
   const ticks = [min, min + (max - min) / 2, max];
-  const nf = new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 });
+  const nf = new Intl.NumberFormat(numTag, { maximumFractionDigits: 0 });
 
   return (
     <svg viewBox={`0 0 ${W} ${H}`} className="fx-evolchart" role="img">

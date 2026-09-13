@@ -2,10 +2,10 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { fmtDec } from "@/lib/fmt";
 import { useT } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
 import { useDebouncedTrack } from "@/lib/analytics-helpers";
+import { useFmt } from "@/lib/use-fmt";
 import {
   LEVERAGE_RECETTES_MAX,
   BORROW_RATIO_MAX,
@@ -134,6 +134,7 @@ const BORROW_RATIO = BORROW_RATIO_MAX;
 
 export default function StressTest({ dette, capaciteBaseline, tauxBaseline, year, urlSync }: Props) {
   const t = useT();
+  const { fmtDec } = useFmt();
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();

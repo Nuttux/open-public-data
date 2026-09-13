@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import type { PatrimoineMasse } from "@/lib/fusion-data";
-import { fill, fmtBillions, fmtDec, fmtMillions } from "@/lib/fmt";
+import { fill } from "@/lib/fmt";
 import { slugifyLabel } from "@/lib/projet-utils";
 import { useCity } from "./CityContext";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
+import { useFmt } from "@/lib/use-fmt";
 
 type Props = {
   masses: PatrimoineMasse[];
@@ -15,6 +16,7 @@ type Props = {
 
 export default function PatrimoineDrillList({ masses, year }: Props) {
   const t = useT();
+  const { fmtDec, fmtBillions, fmtMillions } = useFmt();
   const { locale } = useLocale();
   const { basePath } = useCity();
   const max = Math.max(...masses.map((m) => m.value), 1);

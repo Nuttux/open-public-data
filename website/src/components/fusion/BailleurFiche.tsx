@@ -1,10 +1,11 @@
 "use client";
 
 import type { BailleurFiche as BailleurFicheType } from "@/lib/fusion-data";
-import { cap, fill, fmtBillions, fmtDec, fmtInt, fmtMillions, numLocale } from "@/lib/fmt";
+import { cap, fill, numLocale } from "@/lib/fmt";
 import { useT, useLocale } from "@/lib/localeContext";
 import { FicheBreakdown } from "@/components/fiche";
 import { V3Amt, V3Fold, V3Foot, V3Hero, V3Lead, V3Row, V3Section, foldRest } from "@/components/fiche/v3";
+import { useFmt } from "@/lib/use-fmt";
 
 const EMPRUNTS_CAP = 5;
 
@@ -17,6 +18,7 @@ const EMPRUNTS_CAP = 5;
  */
 export default function BailleurFiche({ bailleur }: { bailleur: BailleurFicheType }) {
   const t = useT();
+  const { fmtInt, fmtDec, fmtBillions, fmtMillions } = useFmt();
   const { locale } = useLocale();
   const nInt = (n: number) => Number(n).toLocaleString(numLocale(locale));
   const mdLabel = t("fx.s.md_eur");

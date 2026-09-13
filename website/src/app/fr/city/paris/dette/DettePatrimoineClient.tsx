@@ -20,10 +20,11 @@ import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/Re
 import PageHook from "@/components/fusion/PageHook";
 import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
 import { slugifyBailleur } from "@/lib/projet-utils";
-import { fill, fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
+import { fill, numLocale } from "@/lib/fmt";
 import type { BlogPostMeta } from "@/lib/blog";
 import type { PatrimoineData, PatrimoineStructure, HorsBilanData, CityDebtSnapshot } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
+import { useFmt } from "@/lib/use-fmt";
 import { trLabel } from "@/lib/label-translate";
 import { cityPopulation, citySlugFromPathname, crcDebtYearsFor } from "@/lib/methodology";
 import { cityDataUrl } from "@/lib/city-paths";
@@ -44,6 +45,7 @@ export default function DettePatrimoineClient({
   posts: BlogPostMeta[];
 }) {
   const t = useT();
+  const { fmtBillions, fmtDec, fmtInt, fmtMillions } = useFmt();
   const { locale } = useLocale();
   const pathname = usePathname();
   const citySlug = citySlugFromPathname(pathname);
@@ -202,9 +204,9 @@ export default function DettePatrimoineClient({
               (deltaDetteDepuis2020Pct > 0
                 ? fill(t("fx.dp.hook.share.delta"), { pct: fmtDec(deltaDetteDepuis2020Pct, 0) })
                 : "") +
-              fill(t("fx.dp.hook.share.cap.ville"), { ans: fmtDec(d.capaciteDesendettement, 1).replace(".", ",") }) +
+              fill(t("fx.dp.hook.share.cap.ville"), { ans: fmtDec(d.capaciteDesendettement, 1) }) +
               (crcSnap
-                ? fill(t("fx.dp.hook.share.cap.crc"), { ans: fmtDec(crcSnap.value_crc_ans, 1).replace(".", ",") })
+                ? fill(t("fx.dp.hook.share.cap.crc"), { ans: fmtDec(crcSnap.value_crc_ans, 1) })
                 : "") +
               t("fx.dp.hook.share.tail")
             }
@@ -217,12 +219,12 @@ export default function DettePatrimoineClient({
               <>{t("fx.dp.hook.body.delta.before")}<b>+{fmtDec(deltaDetteDepuis2020Pct, 0)}{t("fx.dp.hook.body.delta.after")}</b></>
             ) : null}
             {t("fx.dp.hook.body.cap.before")}
-            <b>{fmtDec(d.capaciteDesendettement, 1).replace(".", ",")}{t("fx.dp.hook.body.cap.ans")}</b>
+            <b>{fmtDec(d.capaciteDesendettement, 1)}{t("fx.dp.hook.body.cap.ans")}</b>
             {t("fx.dp.hook.body.cap.ville")}
             {crcSnap ? (
               <>
                 {t("fx.dp.hook.body.cap.crc.before")}
-                <b>{fmtDec(crcSnap.value_crc_ans, 1).replace(".", ",")}{t("fx.dp.hook.body.cap.ans")}</b>
+                <b>{fmtDec(crcSnap.value_crc_ans, 1)}{t("fx.dp.hook.body.cap.ans")}</b>
                 {t("fx.dp.hook.body.cap.crc.after")}
               </>
             ) : null}
@@ -399,7 +401,7 @@ export default function DettePatrimoineClient({
             <>
               <p className="fx-hb-lead muted">
                 {fill(t("fx.det.s04c.hero_cap"), {
-                  count: horsBilan.totals.count_emprunts.toLocaleString("fr-FR"),
+                  count: horsBilan.totals.count_emprunts.toLocaleString(numLocale(locale)),
                   benef: horsBilan.totals.count_beneficiaires,
                 })}
               </p>
