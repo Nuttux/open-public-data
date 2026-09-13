@@ -7,6 +7,8 @@ import { answerMetadata } from "@/lib/seo/page-answer";
 import { recipientAnswer } from "@/lib/br/recife-answers";
 import { recifeLocale } from "@/lib/br/recife-locale";
 import PageJsonLd from "@/components/seo/PageJsonLd";
+import RelatedLinks from "@/components/fiche/RelatedLinks";
+import { recipientRelated } from "@/lib/br/recife-related";
 
 export async function generateMetadata({
   params,
@@ -38,6 +40,7 @@ export default async function RecebedorPage({ params }: { params: Promise<{ cnpj
       </div>
       <div className="fx-fiche fx-fiche-shell">
         <RecifeRecebedorFiche rec={detail} source={source} />
+        <RelatedLinks block={recipientRelated(rec, locale)} />
       </div>
     </main>
   );

@@ -6605,6 +6605,16 @@ const en: Record<string, string> = {
   'fx.related.lieu.peer_sub': 'Same arrondissement ({arr})',
   'fx.related.lieu.hub': 'Every place in Paris',
   'fx.related.lieu.hub_sub': 'The map of places, with what the City decided and paid for each',
+
+  // ── Veja também / See also — Recife (components/fiche/RelatedLinks.tsx, lib/br/recife-related.ts) ──
+  'br.recife.related.title': 'See also',
+  'br.recife.related.recipient_sub': 'The other main recipients of the same theme and of the same paying department.',
+  'br.recife.related.tema': 'Theme: {tema}',
+  'br.recife.related.tema_sub': '{n} recipient organisations',
+  'br.recife.related.same_tema': 'Same theme',
+  'br.recife.related.same_orgao': 'Paid by the same department: {orgao}',
+  'br.recife.related.hub_quem': 'Who receives money from the City of Recife',
+  'br.recife.related.hub_quem_sub': 'Every organisation paid, by theme and by year',
 };
 
 export default en;

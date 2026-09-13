@@ -392,6 +392,16 @@ const pt: Record<string, string> = {
   "privacy.replay.title": "Gravação de sessão (opcional)",
   "privacy.replay.on": "Ativada — obrigado, sua sessão é gravada de forma anônima e mascarada. Revogável a qualquer momento.",
   "privacy.replay.off": "Desativada — você pode nos ajudar a encontrar bugs e atritos de uso autorizando a gravação anônima da sua sessão. O que você digita é mascarado, sem compartilhamento com terceiros, hospedagem na UE, retenção de 30 dias.",
+
+  // ── Veja também / See also — Recife (components/fiche/RelatedLinks.tsx, lib/br/recife-related.ts) ──
+  "br.recife.related.title": "Veja também",
+  "br.recife.related.recipient_sub": "Os outros grandes recebedores do mesmo tema e do mesmo órgão pagador.",
+  "br.recife.related.tema": "Tema: {tema}",
+  "br.recife.related.tema_sub": "{n} organizações recebedoras",
+  "br.recife.related.same_tema": "Mesmo tema",
+  "br.recife.related.same_orgao": "Pago pelo mesmo órgão: {orgao}",
+  "br.recife.related.hub_quem": "Quem recebe dinheiro da Prefeitura do Recife",
+  "br.recife.related.hub_quem_sub": "Todas as organizações pagas, por tema e por ano",
 };
 
 export default pt;
