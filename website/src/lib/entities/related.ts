@@ -18,6 +18,7 @@ import { ordEn, ordFr } from "@/lib/entities/seo-text";
 import type { RelatedBlock, RelatedRow } from "@/components/fiche/RelatedLinks";
 import { assocSlug } from "@/lib/assoc-slug";
 import { lieuxVoisins, loadLieuxIndex, type LieuFicheData } from "@/lib/lieux-data";
+import { loadPlacesIndex as loadMarseillePlaces, type MarseillePlace } from "@/lib/marseille/marseille-places-data";
 
 type L = "fr" | "en";
 const FMT = { fr: makeFmt("fr"), en: makeFmt("en") };
@@ -490,4 +491,24 @@ export function arrondissementRelated(lens: ArrLens, key: number | "centre", loc
   const hub = { invest: `${ARR_BASE}/investissements`, logement: `${ARR_BASE}/logement`, garanties: `${ARR_BASE}/dette` }[lens];
   out.push({ href: hub, label: t(`fx.related.arr.hub_${lens}`), sub: t(`fx.related.arr.hub_${lens}_sub`) });
   return { title: t("fx.related.title"), sub: t("fx.related.arr.block_sub"), rows: out };
+}
+
+/**
+ * Place of the Marseille places export (its own shape, no money index): the
+ * other places of the same arrondissement, then of the same family, then the
+ * places map.
+ */
+export function marseilleLieuRelated(place: MarseillePlace, locale: L): RelatedBlock | null {
+  const t = relatedT(locale);
+  const base = "/fr/city/marseille";
+  const others = loadMarseillePlaces().filter((p) => p.slug !== place.slug);
+  const ord = (n: number) => (locale === "en" ? ordEn(n) : ordFr(n));
+  const sameArr = place.arrondissement ? others.filter((p) => p.arrondissement === place.arrondissement) : [];
+  const sameFam = others.filter((p) => p.famille === place.famille && !sameArr.includes(p));
+  const rows: RelatedRow[] = [
+    ...sameArr.map((p) => ({ href: `${base}/lieu/${p.slug}`, label: p.name, sub: t("fx.related.mlieu.same_arr", { kind: locale === "en" ? p.kind_en : p.kind_fr, arr: ord(place.arrondissement!) }) })),
+    ...sameFam.map((p) => ({ href: `${base}/lieu/${p.slug}`, label: p.name, sub: t("fx.related.mlieu.same_fam", { kind: locale === "en" ? p.kind_en : p.kind_fr }) })),
+  ].slice(0, 5);
+  rows.push({ href: `${base}/lieux`, label: t("fx.related.mlieu.hub"), sub: t("fx.related.mlieu.hub_sub") });
+  return { title: t("fx.related.title"), sub: t("fx.related.mlieu.block_sub"), rows };
 }

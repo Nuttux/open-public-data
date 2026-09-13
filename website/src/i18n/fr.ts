@@ -6395,6 +6395,11 @@ const fr: Record<string, string> = {
   'fx.related.commune.fonc_sub': '{pct} % du budget de fonctionnement en {year}',
   'fx.related.commune.nat_sub': '{pct} % du fonctionnement en {year}',
   'fx.related.commune.year_sub': 'Dépenses de fonctionnement, {year}',
+  'fx.related.mlieu.block_sub': 'Les autres lieux du même arrondissement, puis de la même famille.',
+  'fx.related.mlieu.same_arr': '{kind}, même arrondissement ({arr})',
+  'fx.related.mlieu.same_fam': '{kind}, même famille de lieux',
+  'fx.related.mlieu.hub': 'Tous les lieux publics de Marseille',
+  'fx.related.mlieu.hub_sub': 'Chaque lieu sur la carte, avec sa photo et sa note',
 
   // ── US · SF see also — EN-only (values mirrored verbatim in the other locale file) ──
   'us.sf.related.title': 'See also',

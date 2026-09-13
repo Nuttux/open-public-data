@@ -8,6 +8,8 @@ import Footer from "@/components/fusion/Footer";
 import MarseilleLieuFiche from "@/components/marseille/MarseilleLieuFiche";
 import { loadPlace, loadPlacesIndex } from "@/lib/marseille/marseille-places-data";
 import { readLocale } from "@/lib/seo";
+import RelatedLinks from "@/components/fiche/RelatedLinks";
+import { marseilleLieuRelated } from "@/lib/entities/related";
 
 type Params = { slug: string };
 
@@ -75,6 +77,7 @@ export default async function LieuPage({
         </section>
         <div className="fx-fiche-wrap">
           <MarseilleLieuFiche place={place} />
+          <RelatedLinks block={marseilleLieuRelated(place, locale)} />
         </div>
       </main>
       <Footer />

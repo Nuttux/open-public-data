@@ -6642,6 +6642,11 @@ const en: Record<string, string> = {
   'fx.related.commune.fonc_sub': '{pct}% of the operating budget in {year}',
   'fx.related.commune.nat_sub': '{pct}% of operating spending in {year}',
   'fx.related.commune.year_sub': 'Operating spending, {year}',
+  'fx.related.mlieu.block_sub': 'The other places of the same arrondissement, then of the same family.',
+  'fx.related.mlieu.same_arr': '{kind}, same arrondissement ({arr})',
+  'fx.related.mlieu.same_fam': '{kind}, same family of places',
+  'fx.related.mlieu.hub': 'Every public place in Marseille',
+  'fx.related.mlieu.hub_sub': 'Every place on the map, with its photo and its note',
 
   // ── Veja também / See also — Recife (components/fiche/RelatedLinks.tsx, lib/br/recife-related.ts) ──
   'br.recife.related.title': 'See also',
