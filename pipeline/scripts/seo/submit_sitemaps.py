@@ -2,9 +2,10 @@
 
 À lancer après un changement qui touche beaucoup de pages (refonte de gabarit,
 ré-export) : Google n'a aucune raison de revenir tant que personne ne lui dit
-que ça a bougé. Le script parcourt /sitemap/N.xml jusqu'au premier 404, saute
-les tranches vides (elles comptent comme des erreurs côté Google), et fait un
-PUT par tranche sur l'API Search Console.
+que ça a bougé. Le script prend les tranches que l'hôte déclare dans son
+robots.txt (celles qui contiennent ses URL), saute celles qui seraient vides
+(elles comptent comme des erreurs côté Google), et fait un PUT par tranche sur
+l'API Search Console.
 
 Authentification : les identifiants par défaut de gcloud (compte propriétaire
 des propriétés), avec le projet de quota. Il n'existe pas d'API pour demander
@@ -47,14 +48,14 @@ def main(hosts: list[str]) -> int:
     tok = token()
     for host in hosts:
         site = HOSTS[host]
-        n = 0
+        # La liste vient de robots.txt : un plafond fixe de tranches finit
+        # toujours par couper les dernières quand le site grandit.
+        _, robots = fetch(f"https://{host}/robots.txt")
+        feeds = re.findall(r"^Sitemap:\s*(\S+)", robots, re.M)
+        n = len(feeds)
         submitted = skipped = failed = 0
-        while n < 60:
-            feed = f"https://{host}/sitemap/{n}.xml?v={int(time.time())}"
-            code, body = fetch(feed)
-            if code == 404:
-                break
-            feed_clean = f"https://{host}/sitemap/{n}.xml"
+        for feed_clean in feeds:
+            code, body = fetch(f"{feed_clean}?v={int(time.time())}")
             locs = len(re.findall(r"<loc>", body))
             if code != 200 or locs == 0:
                 skipped += 1
@@ -64,8 +65,7 @@ def main(hosts: list[str]) -> int:
                     submitted += 1
                 else:
                     failed += 1
-                    print(f"  {host} sitemap/{n}.xml → HTTP {st}", file=sys.stderr)
-            n += 1
+                    print(f"  {feed_clean} → HTTP {st}", file=sys.stderr)
             time.sleep(0.3)
         print(f"{host:14s} tranches={n} soumises={submitted} vides ignorées={skipped} échecs={failed}")
     return 0

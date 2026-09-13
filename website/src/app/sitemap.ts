@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { SITE_URL, readSiteLocale } from '@/lib/seo';
-import { LOCALE_HOSTS, localesForPath } from '@/lib/site-locale';
+import { LOCALE_HOSTS, localesForPath, type SiteLocale } from '@/lib/site-locale';
 import { brEntityPaths, frEntityPaths, frenchCitySectionPaths, sfBrowsePaths } from '@/lib/seo/entity-paths';
 import { listCities } from '@/lib/cities';
 import { listAllCommunesMeta, loadAllCommunesGeneratedAt } from '@/lib/all-communes';
@@ -76,7 +76,9 @@ const SF_SECTIONS = [
  * reconstructing its keys here would duplicate the fiche loader's decoding for
  * no gain — those pages are reachable from their department fiche.
  */
+let _sfEntityPaths: string[] | null = null;
 function sfEntityPaths(): string[] {
+  if (_sfEntityPaths) return _sfEntityPaths;
   const out: string[] = [];
   const add = (prefix: string, slugs: () => string[]) => {
     try {
@@ -136,6 +138,9 @@ function sfEntityPaths(): string[] {
     /* as above */
   }
 
+  // Only a complete list is cached: an unhydrated first call must not pin an
+  // empty sitemap for the life of the function.
+  if (out.length) _sfEntityPaths = out;
   return out;
 }
 
@@ -219,6 +224,46 @@ export async function generateSitemaps() {
   return Array.from({ length: n + m + f + b + p + q + 1 }, (_, i) => ({ id: i }));
 }
 
+/** The entity families, in segment order after the communes chunks. */
+function entityFamilies(): Array<[number, () => string[]]> {
+  return [
+    [sfChunkCount(), sfEntityPaths],
+    [frChunkCount(), frEntityPaths],
+    [brChunkCount(), brEntityPaths],
+    [fonctionChunkCount(), fonctionPaths],
+    [natureChunkCount(), naturePaths],
+  ];
+}
+
+/**
+ * The segments that list at least one URL on `locale`'s host. Every family is
+ * one language set (a family is one path shape), so its first path decides for
+ * the whole range. robots.txt declared all 35 segments on every host, and
+ * Google counts an empty sitemap as an error: pt.qipu.org declared 34 empty
+ * ones, fr.qipu.org the 5 San Francisco ones.
+ */
+export function sitemapIdsFor(locale: SiteLocale): number[] {
+  const ids = [0];
+  const n = chunkCount();
+  if (localesForPath('/fr/city/lille').includes(locale)) {
+    for (let i = 1; i <= n; i++) ids.push(i);
+  }
+  let offset = n;
+  for (const [count, list] of entityFamilies()) {
+    let first: string | undefined;
+    try {
+      first = list()[0];
+    } catch {
+      /* data not hydrated — the segment is empty on every host */
+    }
+    if (first && localesForPath(first).includes(locale)) {
+      for (let i = 1; i <= count; i++) ids.push(offset + i);
+    }
+    offset += count;
+  }
+  return ids;
+}
+
 /**
  * Next hands this the segment id as a PROMISE of the route string, not the
  * number `generateSitemaps()` returned — see the generated handler in
@@ -252,7 +297,11 @@ export default async function sitemap({
 }
 
 async function segment(id: number): Promise<MetadataRoute.Sitemap> {
-  const now = new Date();
+  // lastmod is only written where a real date exists. Everything else used to
+  // carry `new Date()`, and the segments render per request: each fetch of a
+  // sitemap told the crawler its ~300 000 URLs had changed that very second.
+  // A site that does that has its lastmod ignored — for the pages whose date
+  // is real too. No date is honest; a wrong one costs the signal.
 
   // Commune pages change when their export is regenerated, not when a crawler
   // asks. Stamping them with `now` made every page claim it had just changed,
@@ -269,7 +318,6 @@ async function segment(id: number): Promise<MetadataRoute.Sitemap> {
     // Main pages + top-10 friendly slugs
     const main = MAIN_ROUTES.map(({ path, priority }) => ({
       url: `${SITE_URL}${path}`,
-      lastModified: now,
       changeFrequency: 'weekly' as const,
       priority,
     }));
@@ -277,19 +325,16 @@ async function segment(id: number): Promise<MetadataRoute.Sitemap> {
       .filter((c) => c.slug !== 'paris')
       .map((c) => ({
         url: `${SITE_URL}/fr/city/${c.slug}`,
-        lastModified: now,
-        changeFrequency: 'monthly' as const,
+          changeFrequency: 'monthly' as const,
         priority: 0.5,
       }));
     const sfRoutes = SF_SECTIONS.map(({ path, priority }) => ({
       url: `${SITE_URL}${path}`,
-      lastModified: now,
       changeFrequency: 'weekly' as const,
       priority,
     }));
     const frSections = frenchCitySectionPaths().map((path) => ({
       url: `${SITE_URL}${path}`,
-      lastModified: now,
       changeFrequency: 'weekly' as const,
       priority: 0.7,
     }));
@@ -299,23 +344,15 @@ async function segment(id: number): Promise<MetadataRoute.Sitemap> {
   // Entity chunks sit after the communes chunks: SF, then FR, then BR.
   const nCommuneChunks = chunkCount();
   if (id > nCommuneChunks) {
-    const families: Array<[number, () => string[]]> = [
-      [sfChunkCount(), sfEntityPaths],
-      [frChunkCount(), frEntityPaths],
-      [brChunkCount(), brEntityPaths],
-      [fonctionChunkCount(), fonctionPaths],
-      [natureChunkCount(), naturePaths],
-    ];
     let offset = nCommuneChunks;
-    for (const [count, list] of families) {
+    for (const [count, list] of entityFamilies()) {
       if (id <= offset + count) {
         const start = (id - offset - 1) * CHUNK_SIZE;
         return list()
           .slice(start, start + CHUNK_SIZE)
           .map((p) => ({
             url: `${SITE_URL}${p}`,
-            lastModified: now,
-            changeFrequency: 'monthly' as const,
+                  changeFrequency: 'monthly' as const,
             priority: 0.4,
           }));
       }
