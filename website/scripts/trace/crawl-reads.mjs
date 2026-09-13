@@ -269,7 +269,9 @@ async function main() {
   const todo = routes.filter((r) => (!ONLY || ONLY.test(r)) && specs[r].requests.length);
 
   const prev = fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, 'utf8')) : null;
-  const out = ONLY && prev?.build_id === BUILD_ID ? prev : { build_id: BUILD_ID, routes: {} };
+  // Une mesure partielle (ROUTES=…) s'ajoute aux autres routes, même d'un autre
+  // build : ce qu'une route lit dépend de son code, pas du numéro de build.
+  const out = ONLY && prev ? { ...prev, build_id: BUILD_ID } : { build_id: BUILD_ID, routes: {} };
   out.generated_at = new Date().toISOString();
 
   console.log(`${todo.length} routes à mesurer, ${PARALLEL} serveurs en parallèle`);

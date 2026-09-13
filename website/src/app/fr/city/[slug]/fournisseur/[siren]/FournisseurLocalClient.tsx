@@ -58,12 +58,12 @@ export default function FournisseurLocalClient({ commune, f, nationalComplet, co
 
           <V3Section title={fill("fx.fl.h2", { nom: f.nom, commune: commune.nom, acommune: aNom(commune.nom) })}>
             {shown.map((m, i) => (
-              <V3Row key={i} label={m.objet || "—"} sub={ligne(m)} amount={<V3Amt {...split(m.montant)} />} />
+              <V3Row key={i} href={m.slug ? `/fr/city/${commune.slug}/marche/${m.slug}` : null} label={m.objet || "—"} sub={ligne(m)} amount={<V3Amt {...split(m.montant)} />} />
             ))}
             {rest.length > 0 && (
               <V3Fold label={fill("fx.fl.voir_reste", { n: rest.length })} text>
                 {rest.map((m, i) => (
-                  <V3Row key={i} label={m.objet || "—"} sub={ligne(m)} amount={<V3Amt {...split(m.montant)} />} />
+                  <V3Row key={i} href={m.slug ? `/fr/city/${commune.slug}/marche/${m.slug}` : null} label={m.objet || "—"} sub={ligne(m)} amount={<V3Amt {...split(m.montant)} />} />
                 ))}
               </V3Fold>
             )}

@@ -26,12 +26,16 @@ export default function ContratFiche({
   fournisseurSirene,
   ranking,
   projet,
+  fournisseurHref: fournisseurHrefProp,
 }: {
   contrat: ContratFicheType;
   vulgarization?: MarcheVulgarization | null;
   fournisseurSirene?: SireneCompany | null;
   ranking?: ContratRanking | null;
   projet?: ContratProjetLink | null;
+  /** Lien vers la fiche du titulaire quand elle ne suit pas le schéma des villes
+   *  (communes : /fr/city/<slug>/fournisseur/<siren>) ; null = pas de fiche. */
+  fournisseurHref?: string | null;
 }) {
   const t = useT();
   const { locale } = useLocale();
@@ -46,8 +50,10 @@ export default function ContratFiche({
   const fmtMonth = (d: Date) => { try { return new Intl.DateTimeFormat(locStr, { month: "long", year: "numeric" }).format(d); } catch { return d.toISOString().slice(0, 7); } };
 
   const { v: vMax, u: uMax } = fmtEur(contrat.montantMax);
-  const hasFournisseurFiche = Boolean(contrat.fournisseurSiret && contrat.fournisseurSiret !== "#");
-  const fournisseurHref = `${basePath}/marches/fournisseur/${(contrat.fournisseurSiret ?? "").replace(/\s/g, "")}`;
+  const hasFournisseurFiche = fournisseurHrefProp !== undefined
+    ? Boolean(fournisseurHrefProp)
+    : Boolean(contrat.fournisseurSiret && contrat.fournisseurSiret !== "#");
+  const fournisseurHref = fournisseurHrefProp ?? `${basePath}/marches/fournisseur/${(contrat.fournisseurSiret ?? "").replace(/\s/g, "")}`;
   const dureeAnnees = contrat.dureeJours > 0 ? (contrat.dureeJours / 365).toFixed(1).replace(".", en ? "." : ",") : null;
 
   // Frise de vie : notifié → aujourd'hui → fin contractuelle. Précision au
@@ -174,7 +180,7 @@ export default function ContratFiche({
               fournisseurSirene?.libelle_activite ? cap(fournisseurSirene.libelle_activite) : null,
               fournisseurSirene?.commune ? `${t("fx.fiche.contrat.siege").toLowerCase()} ${fournisseurSirene.commune}${fournisseurSirene.code_postal ? ` (${fournisseurSirene.code_postal})` : ""}` : null,
               fournisseurSirene?.tranche_effectifs ? `${t("fx.fiche.contrat.effectif").toLowerCase()} ${fournisseurSirene.tranche_effectifs.toLowerCase()}` : null,
-              hasFournisseurFiche ? `SIRET ${contrat.fournisseurSiret}` : null,
+              hasFournisseurFiche && contrat.fournisseurSiret ? `${contrat.fournisseurSiret.replace(/\s/g, "").length === 9 ? "SIREN" : "SIRET"} ${contrat.fournisseurSiret}` : null,
             ].filter(Boolean).join(" · ")}
           />
         )}
@@ -209,9 +215,9 @@ export default function ContratFiche({
       )}
 
       <V3Foot>
-        {t("fx.fiche.contrat.num_marche")} <span className="mono">{contrat.numero}</span>
-        {contrat.perimetre && contrat.perimetre !== "—" ? <> · {t("fx.fiche.contrat.perimetre").toLowerCase()} {contrat.perimetre}</> : null}
-        {" · "}
+        {contrat.numero ? <>{t("fx.fiche.contrat.num_marche")} <span className="mono">{contrat.numero}</span></> : null}
+        {contrat.perimetre && contrat.perimetre !== "—" ? <>{contrat.numero ? " · " : ""}{t("fx.fiche.contrat.perimetre").toLowerCase()} {contrat.perimetre}</> : null}
+        {contrat.numero || (contrat.perimetre && contrat.perimetre !== "—") ? " · " : ""}
         <a href={sourceHref} target="_blank" rel="noopener noreferrer">{sourceLabel}</a>
       </V3Foot>
     </div>

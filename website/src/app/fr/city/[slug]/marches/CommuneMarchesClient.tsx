@@ -40,10 +40,10 @@ export default function CommuneMarchesClient({ commune, data, fournisseurs, sour
 
   // Tous les marchés, à plat, depuis les fiches fournisseurs (lots regroupés) ;
   // les entrepreneurs individuels n'y sont pas : on complète avec le total.
-  type Row = { objet: string; montant: number; annee: number | null; siren: string; nom: string; nb_lots: number };
+  type Row = { objet: string; montant: number; annee: number | null; siren: string; nom: string; nb_lots: number; slug?: string };
   const rows: Row[] = [];
   for (const f of fournisseurs?.fournisseurs ?? []) {
-    for (const m of f.marches) rows.push({ objet: m.objet, montant: m.montant, annee: m.annee, siren: f.siren, nom: displayFournisseur(f.nom), nb_lots: m.nb_lots });
+    for (const m of f.marches) rows.push({ objet: m.objet, montant: m.montant, annee: m.annee, siren: f.siren, nom: displayFournisseur(f.nom), nb_lots: m.nb_lots, slug: m.slug });
   }
   const years = Array.from(new Set(rows.map((r) => r.annee).filter((y): y is number => y != null))).sort((a, b) => b - a);
   const y0 = data.by_year[0]?.year ?? "";
@@ -84,12 +84,12 @@ export default function CommuneMarchesClient({ commune, data, fournisseurs, sour
             return (
               <V3Section key={y} title={fill("fx.nme.year_h", { year: y, nb: int.format(tot?.nb ?? ofYear.length), montant: euro(tot?.montant ?? ofYear.reduce((s, r) => s + r.montant, 0)) })}>
                 {shown.map((r, i) => (
-                  <V3Row key={i} href={`/fr/city/${commune.slug}/fournisseur/${r.siren}`} label={r.objet || "—"} sub={`${r.nom}${r.nb_lots > 1 ? ` · ${fill("fx.pv.lots", { n: r.nb_lots })}` : ""}`} amount={<V3Amt {...split(r.montant)} />} />
+                  <V3Row key={i} href={r.slug ? `/fr/city/${commune.slug}/marche/${r.slug}` : `/fr/city/${commune.slug}/fournisseur/${r.siren}`} label={r.objet || "—"} sub={`${r.nom}${r.nb_lots > 1 ? ` · ${fill("fx.pv.lots", { n: r.nb_lots })}` : ""}`} amount={<V3Amt {...split(r.montant)} />} />
                 ))}
                 {rest.length > 0 && (
                   <V3Fold label={fill("fx.nme.voir_annee", { n: rest.length, year: y })} text>
                     {rest.map((r, i) => (
-                      <V3Row key={i} href={`/fr/city/${commune.slug}/fournisseur/${r.siren}`} label={r.objet || "—"} sub={`${r.nom}${r.nb_lots > 1 ? ` · ${fill("fx.pv.lots", { n: r.nb_lots })}` : ""}`} amount={<V3Amt {...split(r.montant)} />} />
+                      <V3Row key={i} href={r.slug ? `/fr/city/${commune.slug}/marche/${r.slug}` : `/fr/city/${commune.slug}/fournisseur/${r.siren}`} label={r.objet || "—"} sub={`${r.nom}${r.nb_lots > 1 ? ` · ${fill("fx.pv.lots", { n: r.nb_lots })}` : ""}`} amount={<V3Amt {...split(r.montant)} />} />
                     ))}
                   </V3Fold>
                 )}

@@ -889,7 +889,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                   {marches.top_marches.slice(0, 5).map((m, i) => (
                     <div key={i} className="fx-pv-line">
                       <span>
-                        {m.objet || "—"}
+                        {m.slug ? <Link href={`/fr/city/${commune.slug}/marche/${m.slug}`} className="fx-pv-nm fx-pv-objet" prefetch={false}>{m.objet || "—"}</Link> : (m.objet || "—")}
                         <span className="fx-pv-sub2">
                           {m.siren && m.titulaire ? <Link href={`/fr/city/${commune.slug}/fournisseur/${m.siren}`} className="fx-pv-nm">{displayFournisseur(m.titulaire)}</Link> : m.titulaire}
                           {[m.annee, m.nb_lots && m.nb_lots > 1 ? fill("fx.pv.lots", { n: m.nb_lots }) : null].filter(Boolean).map((x) => ` · ${x}`).join("")}

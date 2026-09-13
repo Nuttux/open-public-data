@@ -1,34 +1,120 @@
 {
   "/api/og-chart": [
-    { "host": "www", "path": "/api/og-chart?chart=paris-budget-sankey" },
-    { "host": "www", "path": "/api/og-chart?chart=paris-subv-top-themes" },
-    { "host": "www", "path": "/api/og-chart?chart=paris-subv-top-benef" },
-    { "host": "www", "path": "/api/og-chart?chart=paris-marches-top-fournisseurs" },
-    { "host": "www", "path": "/api/og-chart?chart=paris-dette-capacite" },
-    { "host": "www", "path": "/api/og-chart?chart=paris-logement-tension" },
-    { "host": "www", "path": "/api/og-chart?chart=fr-daily-bread-composition" },
-    { "host": "www", "path": "/api/og-chart?chart=fr-fiscalite-categories" },
-    { "host": "www", "path": "/api/og-chart?chart=landing-per-capita" }
+    {
+      "host": "www",
+      "path": "/api/og-chart?chart=paris-budget-sankey"
+    },
+    {
+      "host": "www",
+      "path": "/api/og-chart?chart=paris-subv-top-themes"
+    },
+    {
+      "host": "www",
+      "path": "/api/og-chart?chart=paris-subv-top-benef"
+    },
+    {
+      "host": "www",
+      "path": "/api/og-chart?chart=paris-marches-top-fournisseurs"
+    },
+    {
+      "host": "www",
+      "path": "/api/og-chart?chart=paris-dette-capacite"
+    },
+    {
+      "host": "www",
+      "path": "/api/og-chart?chart=paris-logement-tension"
+    },
+    {
+      "host": "www",
+      "path": "/api/og-chart?chart=fr-daily-bread-composition"
+    },
+    {
+      "host": "www",
+      "path": "/api/og-chart?chart=fr-fiscalite-categories"
+    },
+    {
+      "host": "www",
+      "path": "/api/og-chart?chart=landing-per-capita"
+    }
   ],
   "/api/og-poster": [
-    { "host": "fr", "path": "/api/og-poster?lang=fr&net=2500&c=pantin" },
-    { "host": "www", "path": "/api/og-poster?lang=en&net=2500" }
+    {
+      "host": "fr",
+      "path": "/api/og-poster?lang=fr&net=2500&c=pantin"
+    },
+    {
+      "host": "www",
+      "path": "/api/og-poster?lang=en&net=2500"
+    }
   ],
   "/api/og/stress": [
-    { "host": "fr", "path": "/api/og/stress" }
+    {
+      "host": "fr",
+      "path": "/api/og/stress"
+    }
   ],
   "/api/og/sf-block/[id]": [
-    { "host": "www", "path": "/api/og/sf-block/0001" }
+    {
+      "host": "www",
+      "path": "/api/og/sf-block/0001"
+    }
   ],
   "/api/commune/[slug]": [
-    { "host": "fr", "path": "/api/commune/pantin" },
-    { "host": "fr", "path": "/api/commune/bordeaux" }
+    {
+      "host": "fr",
+      "path": "/api/commune/pantin"
+    },
+    {
+      "host": "fr",
+      "path": "/api/commune/bordeaux"
+    }
   ],
   "/api/search-communes": [
-    { "host": "fr", "path": "/api/search-communes?q=pan" },
-    { "host": "fr", "path": "/api/search-communes?q=__warm" }
+    {
+      "host": "fr",
+      "path": "/api/search-communes?q=pan"
+    },
+    {
+      "host": "fr",
+      "path": "/api/search-communes?q=__warm"
+    }
   ],
   "/api/budget/[year]/csv": [
-    { "host": "fr", "path": "/api/budget/2024/csv" }
+    {
+      "host": "fr",
+      "path": "/api/budget/2024/csv"
+    }
+  ],
+  "/fr/city/[slug]/marche/[contrat]": [
+    {
+      "host": "fr",
+      "path": "/fr/city/pantin/marche/accord-cadre-travaux-neufs-pour-les-amenagements-des-3dd8d7a7"
+    },
+    {
+      "host": "fr",
+      "path": "/fr/city/bordeaux/marche/accord-cadre-location-et-achat-de-batiments-modulaires-e731cbd9"
+    },
+    {
+      "host": "www",
+      "path": "/fr/city/bordeaux/marche/prestation-dhebergements-de-gardiennage-et-dentretien-des-5b535ae9"
+    }
+  ],
+  "/(...)fr/city/[slug]/marche/[contrat]": [
+    {
+      "host": "fr",
+      "path": "/fr/city/pantin/marche/accord-cadre-travaux-neufs-pour-les-amenagements-des-3dd8d7a7",
+      "headers": {
+        "RSC": "1",
+        "Next-Url": "/fr/city/pantin"
+      }
+    },
+    {
+      "host": "fr",
+      "path": "/fr/city/bordeaux/marche/accord-cadre-location-et-achat-de-batiments-modulaires-e731cbd9",
+      "headers": {
+        "RSC": "1",
+        "Next-Url": "/fr/city/bordeaux"
+      }
+    }
   ]
 }

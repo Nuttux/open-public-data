@@ -20374,3 +20374,11 @@ a.fx-pv-fonc-row:hover .n { text-decoration: underline; text-underline-offset: 3
 .theme-fusion .fx-pv-pick-now { flex-basis: 100%; font-size: 15px; }
 .theme-fusion .fx-pv-pick-now b { font-weight: 700; }
 .theme-fusion .fx-pv-pick .fx-picker { flex-basis: 100%; }
+
+/* ── Fiche contrat d'une commune (2026-09-13) ──────────────────────────── */
+.theme-fusion .fx-cc-title { font-size: clamp(24px, 3.4vw, 36px); line-height: 1.12; max-width: 30ch; }
+.theme-fusion .fx-cc-rang { font-size: 15px; color: var(--ink-2); margin: 10px 0 6px; max-width: 62ch; }
+.theme-fusion .fx-cc-val { color: var(--ink); text-align: right; max-width: 60%; }
+.theme-fusion .fx-cc-tous { margin: 28px 0 8px; }
+/* L'objet d'un marché, lien vers sa fiche, garde la taille de la ligne. */
+.theme-fusion .fx-pv-line .fx-pv-objet { font-size: inherit; color: var(--ink); }

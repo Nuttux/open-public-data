@@ -49,6 +49,9 @@ export type MarchesData = {
   by_category: { categorie: string; montant: number; nb: number }[];
   top_titulaires: { nom: string; montant: number; nb: number; siren?: string; personne_physique?: boolean }[];
   top_marches: {
+    /** Identifiant court du marché regroupé et son adresse lisible (fiche contrat). */
+    id?: string;
+    slug?: string;
     nb_lots?: number;
     siren?: string | null;
     objet: string;
@@ -68,6 +71,8 @@ export async function loadCommuneMarches(slug: string): Promise<MarchesData | nu
 /** Fiche fournisseur locale (bloc 3) : par SIREN, tous les marchés que la
  *  commune lui a notifiés, lots regroupés. Jamais de personne physique. */
 export type FournisseurLocalMarche = {
+  id?: string;
+  slug?: string;
   objet: string;
   montant: number;
   nb_lots: number;
@@ -101,4 +106,55 @@ export type FournisseursData = {
 export async function loadCommuneFournisseurs(slug: string): Promise<FournisseursData | null> {
   if (!communeHasMarches(slug)) return null;
   return readCommuneJson<FournisseursData>(`${PREFIX}/${slug}/fournisseurs.json`);
+}
+
+/**
+ * Fiche contrat (2026-09-13) : un marché regroupé (ses lots), tout ce que la
+ * DECP en dit. `titulaire` est déjà le nom PUBLIABLE : « Entrepreneurs
+ * individuels » pour une personne physique, « Titulaire sans SIRET » quand
+ * rien ne permet de vérifier que ce n'en est pas une — `siren` est alors null.
+ */
+export type ContratCommune = {
+  id: string;
+  slug: string;
+  objet: string;
+  montant: number;
+  annee: number | null;
+  date: string | null;
+  duree_mois: number | null;
+  /** 1 = le plus gros marché notifié par la commune cette année-là. */
+  rang_annee: number;
+  nb_annee: number;
+  titulaire: string | null;
+  siren: string | null;
+  personne_physique: boolean;
+  nb_titulaires: number | null;
+  procedure: string | null;
+  nature: string | null;
+  categorie: string | null;
+  forme_prix: string | null;
+  ccag: string | null;
+  techniques: string | null;
+  accord_cadre: boolean;
+  offres_recues: number | null;
+  offres_recues_max: number | null;
+  considerations_sociales: string | null;
+  considerations_environnementales: string | null;
+  sous_traitance_declaree: boolean | null;
+  nb_modifications: number | null;
+  lieu_execution: { code: string | null; type: string | null } | null;
+  nb_lots: number;
+  lots: { montant: number; date: string | null; offres_recues: number | null }[];
+};
+export type ContratsData = {
+  source: string;
+  source_url: string;
+  coverage_note: string;
+  commune: { insee: string; slug: string; nom: string };
+  contrats: Record<string, ContratCommune>;
+};
+
+export async function loadCommuneContrats(slug: string): Promise<ContratsData | null> {
+  if (!communeHasMarches(slug)) return null;
+  return readCommuneJson<ContratsData>(`${PREFIX}/${slug}/contrats.json`);
 }
