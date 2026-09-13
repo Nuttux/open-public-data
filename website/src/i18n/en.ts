@@ -1187,6 +1187,7 @@ const en: Record<string, string> = {
   'fx.foot.blurb': 'Independent project. Paris today — more cities coming.',
   'fx.foot.license': '© {year} Qipu · Data: City of Paris & data.gouv.fr (Etalab 2.0)',
   'fx.foot.col.project': 'The project',
+  'fx.foot.col.compare': 'The two communes',
   'fx.foot.col.legal': 'Legal & data',
   'fx.foot.mission': 'Public money, made legible. Independent, open source.',
   'fx.foot.find_city': 'Find your city →',

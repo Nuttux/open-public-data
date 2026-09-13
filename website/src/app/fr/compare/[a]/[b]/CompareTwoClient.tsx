@@ -76,7 +76,15 @@ export default function CompareTwoClient({ a, b, keys, year, sourceUrl }: { a: C
           <ChartSource source={`${t("fx.natcmp.source")} · ${year}`} dataHref={sourceUrl} methodAnchor="c-villes" />
         </div>
       </main>
-      <Footer />
+      <Footer
+        place={{
+          heading: t("fx.foot.col.compare"),
+          sections: [
+            { href: `/fr/city/${a.slug}`, label: a.nom },
+            { href: `/fr/city/${b.slug}`, label: b.nom },
+          ],
+        }}
+      />
     </div>
   );
 }

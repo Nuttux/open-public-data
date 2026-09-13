@@ -69,31 +69,54 @@ function footerCitySlug(pathname: string): string {
   return m ? m[1] : "paris";
 }
 
+/** La colonne « lieu » imposée par une page qui n'a pas une ville pour
+ *  cadre : la comparaison de deux communes, par exemple. Sans elle, une page
+ *  hors /fr/city retombe sur Paris et le pied de page propose « Lieux,
+ *  Budget, Subventions… » de Paris sous une comparaison Pantin–Bobigny. */
+export type FooterPlace = { heading: string; sections: FooterLink[] };
+
 export function franceFooterModel(
   pathname: string,
   t: T,
   year: number,
   commune?: CommuneNav | null,
+  place?: FooterPlace | null,
 ): FooterModel {
   const citySlug = footerCitySlug(pathname);
+  // Une page nationale (dette, État, prélèvements…) a pour cadre la France,
+  // pas Paris : sa colonne « lieu » liste les pages nationales.
+  if (!place && pathname.startsWith("/fr/national/")) {
+    place = {
+      heading: t("fx.macro.nav.kicker"),
+      sections: [
+        { href: "/fr/national/budget", label: t("fx.nav.link.budget_france") },
+        { href: "/fr/national/etat", label: t("fx.scope.france.etat") },
+        { href: "/fr/national/dette", label: t("fx.scope.france.dette") },
+        { href: "/fr/national/fiscalite", label: t("fx.scope.france.fiscalite") },
+        { href: "/fr/national/daily-bread", label: t("fx.nav.link.daily_bread") },
+      ],
+    };
+  }
   // National tail commune (not in the registry) → its own name + DATA-DERIVED
   // sections, so the footer never advertises a Paris-shaped link that 404s.
   const placeHeading =
-    commune?.nom ?? getPlace(citySlug)?.name ?? citySlug.charAt(0).toUpperCase() + citySlug.slice(1);
+    place?.heading ?? commune?.nom ?? getPlace(citySlug)?.name ?? citySlug.charAt(0).toUpperCase() + citySlug.slice(1);
 
   // Analyses is city editorial (it sits in the place's nav), so it belongs in
   // the place column — NOT "The project". Method stays project-level: a single
   // shared /methode ("how we work") is cheaper to maintain than per-city ones.
-  const sections = (commune
-    ? communeSectionLinks(commune.slug, commune.sections)
-    : citySectionLinks(citySlug)
-  ).map((l) => ({ href: l.href, label: t(l.labelKey) }));
-  if (!commune && cityHasAnalyses(citySlug))
+  const sections = place
+    ? [...place.sections]
+    : (commune
+      ? communeSectionLinks(commune.slug, commune.sections)
+      : citySectionLinks(citySlug)
+    ).map((l) => ({ href: l.href, label: t(l.labelKey) }));
+  if (!place && !commune && cityHasAnalyses(citySlug))
     sections.push({ href: "/analyses", label: t("fx.foot.link.analyses") });
   // Browse indexes (lib/seo/browse.ts): the crawler's route to every fiche —
   // footer → index → letter or year → page. Only for the cities that have
   // the underlying sections (Paris and Marseille today).
-  if (!commune && (citySlug === "paris" || citySlug === "marseille")) {
+  if (!place && !commune && (citySlug === "paris" || citySlug === "marseille")) {
     sections.push(
       { href: `/fr/city/${citySlug}/subventions/associations`, label: t("fx.foot.link.idx_assoc") },
       { href: `/fr/city/${citySlug}/marches/fournisseurs`, label: t("fx.foot.link.idx_fourn") },

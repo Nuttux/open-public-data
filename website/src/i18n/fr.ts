@@ -1187,6 +1187,7 @@ const fr: Record<string, string> = {
   'fx.foot.blurb': 'Projet indépendant. Aujourd’hui Paris — bientôt d’autres villes.',
   'fx.foot.license': '© {year} Qipu · Données Ville de Paris & data.gouv.fr (Etalab 2.0)',
   'fx.foot.col.project': 'Le projet',
+  'fx.foot.col.compare': 'Les deux communes',
   'fx.foot.col.legal': 'Légal & données',
   'fx.foot.mission': 'L’argent public, rendu lisible. Projet indépendant, open source.',
   'fx.foot.find_city': 'Trouver votre ville →',
