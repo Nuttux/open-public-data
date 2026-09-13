@@ -78,6 +78,17 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Liens courts des posts (LinkedIn, X…). LinkedIn remplace toute adresse
+      // de plus de 26 caractères par un lnkd.in qui cache le nom du site ;
+      // « qipu.org/chatelet » reste affiché tel quel. La redirection garde
+      // l'hôte, donc la langue (www → anglais, fr.qipu.org → français), et
+      // ajoute les UTM exigés pour attribuer la visite. Temporaire (307) :
+      // le lien peut être repointé sans que les navigateurs l'aient mémorisé.
+      {
+        source: '/chatelet',
+        destination: '/fr/city/paris/lieu/theatre-du-chatelet?utm_source=linkedin&utm_medium=social&utm_campaign=chatelet',
+        permanent: false,
+      },
       // Legacy domain. franceopendata.org still served the whole site with a
       // 200 (35 of 83 Google-referred human visits in Aug–Sep 2026): duplicate
       // content and authority split three ways. The old site was French, so
