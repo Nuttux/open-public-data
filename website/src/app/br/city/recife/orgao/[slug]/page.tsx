@@ -8,6 +8,8 @@ import { answerMetadata } from "@/lib/seo/page-answer";
 import { orgaoAnswer } from "@/lib/br/recife-answers";
 import { recifeLocale } from "@/lib/br/recife-locale";
 import PageJsonLd from "@/components/seo/PageJsonLd";
+import RelatedLinks from "@/components/fiche/RelatedLinks";
+import { orgaoRelated } from "@/lib/br/recife-related";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -35,6 +37,7 @@ export default async function OrgaoPage({ params }: { params: Promise<{ slug: st
       </div>
       <div className="fx-fiche fx-fiche-shell">
         <RecifeOrgaoFiche o={orgao} source={source} />
+        <RelatedLinks block={orgaoRelated(o, locale)} />
       </div>
     </main>
   );
