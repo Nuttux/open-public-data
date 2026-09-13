@@ -107,7 +107,8 @@ def bucket_for(path: Path):
 
 def stamp(path: Path, block: dict, check: bool) -> str:
     try:
-        payload = json.loads(path.read_text(encoding="utf-8"))
+        text = path.read_text(encoding="utf-8")
+        payload = json.loads(text)
     except Exception:
         return "unreadable"
     if not isinstance(payload, dict):
@@ -118,9 +119,13 @@ def stamp(path: Path, block: dict, check: bool) -> str:
     if check:
         return "would-change"
     payload["license"] = desired
-    path.write_text(
-        json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-    )
+    # Keep the file's own layout: a compact export stays compact. Re-indenting
+    # every commune and national file would inflate what each function ships.
+    if "\n " in text[:4000]:
+        out = json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
+    else:
+        out = json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + ("\n" if text.endswith("\n") else "")
+    path.write_text(out, encoding="utf-8")
     return "stamped"
 
 
@@ -143,7 +148,7 @@ def main() -> int:
             continue
         if block is None:
             continue
-        if args.existing_only and '"license"' not in path.read_text(encoding="utf-8")[:8000]:
+        if args.existing_only and '"license"' not in path.read_text(encoding="utf-8"):
             counts["skipped-unstamped"] = counts.get("skipped-unstamped", 0) + 1
             continue
         result = stamp(path, block, args.check)

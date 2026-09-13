@@ -1,280 +1,288 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "piscine-butte-aux-cailles",
- "name": "Piscine de la Butte-aux-Cailles",
- "kind_fr": "Piscine",
- "kind_en": "Swimming pool",
- "famille": "sport",
- "arrondissement": 13,
- "lat": 48.8265,
- "lon": 2.3524,
- "photo": "/img/lieux/piscine-butte-aux-cailles.jpg",
- "photo_credit": {
-  "licence": null,
-  "auteur": null,
-  "url": "https://fr.wikipedia.org/wiki/Piscine_de_la_Butte-aux-Cailles",
-  "source": "Wikipédia"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": "La piscine de la Butte-aux-Cailles est l'une des plus anciennes piscines de Paris, en France. Elle est située au 5, place Paul-Verlaine, dans le quartier de la Butte-aux-Cailles, dans le 13e arrondissement.",
-  "url": "https://fr.wikipedia.org/wiki/Piscine_de_la_Butte-aux-Cailles",
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "piscine-butte-aux-cailles",
+  "name": "Piscine de la Butte-aux-Cailles",
+  "kind_fr": "Piscine",
+  "kind_en": "Swimming pool",
+  "famille": "sport",
+  "arrondissement": 13,
+  "lat": 48.8265,
+  "lon": 2.3524,
+  "photo": "/img/lieux/piscine-butte-aux-cailles.jpg",
+  "photo_credit": {
+    "licence": null,
+    "auteur": null,
+    "url": "https://fr.wikipedia.org/wiki/Piscine_de_la_Butte-aux-Cailles",
+    "source": "Wikipédia"
   },
-  "extract_en": "The Butte-aux-Cailles swimming pool is one of the oldest swimming pools in Paris, France. It is located at 5 Place Paul-Verlaine, in the Butte-aux-Cailles neighborhood, in the 13th arrondissement."
- },
- "stats": {
-  "n_delibs": 989,
-  "delibs_span": [
-   1995,
-   2005
-  ],
-  "n_bmo_brut": 473,
-  "n_bmo_verifies": 18,
-  "invest_total_eur": 2544047.0,
-  "invest_annees": [
-   "2019",
-   "2021"
-  ],
-  "lecture_mode": "titre nommant le lieu (4 trouvés)",
-  "lecture_mode_en": "title naming the place (4 found)",
-  "n_lus": 3,
-  "n_lieu": 3
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": "Trois délibérations dont l'intitulé nomme la piscine de la Butte-aux-Cailles se rattachent à des séances isolées : juillet 1995, mai 1996 et juillet 2005. En juillet 1995, le Conseil de Paris autorise M. le Maire de Paris à signer avec l'entreprise « PISONI » un contrat de transaction tenant compte de l'avis du Comité consultatif interrégional de règlement amiable des litiges du 17 mars 1995, et à lui régler une indemnité de 2.770.946,47 F T.T.C. pour les sujétions extra-contractuelles supportées lors des travaux de réhabilitation ; la délibération vise un chantier antérieur — principe de restructuration approuvé par la délibération D. 899 du 26 juin 1989, avenant n° 1 au marché de travaux n° 89/25/275 attribué à « PISONI » par la délibération D. 1136 du 8 juillet 1991, puis indemnisation provisoire de cette entreprise par la délibération D. 1608 du 17 octobre 1994. En mai 1996, le Conseil approuve le principe de la réfection du bassin extérieur, 5 place Paul-Verlaine, ainsi que les modalités d'attribution du marché de travaux correspondant (appel d'offres ouvert, 3 lots), et autorise M. le Maire de Paris à le signer : aucun montant n'est chiffré, et la dépense n'est imputée au budget d'investissement que « sous réserve de la décision de financement ». Pour juillet 2005, l'intitulé de la délibération est la seule source disponible : il annonce la fixation des tarifs et des conditions d'accès aux équipements de mise en forme situés à la piscine, pour les usagers individuels, sans chiffrer aucun tarif.",
- "moments": [
-  {
-   "id": "530",
-   "seance": "JUILLET 1995",
-   "fait": "Le Conseil autorise M. le Maire de Paris à signer avec l'entreprise « PISONI » un contrat de transaction tenant compte de l'avis du Comité consultatif interrégional de règlement amiable des litiges du 17 mars 1995, et à lui régler une indemnité de 2 770 946,47 F T.T.C. pour les sujétions extra-contractuelles supportées lors des travaux de réhabilitation. Une indemnisation provisoire de la même entreprise avait été décidée en octobre 1994.",
-   "pourquoi": "Une indemnisation amiable que le Conseil autorise, après avis du comité de règlement des litiges.",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=530",
-   "fait_en": "The Council authorized the Mayor of Paris to sign with the company 'PISONI' a settlement agreement taking into account the opinion of the Interregional Advisory Committee for the Amicable Settlement of Disputes dated 17 March 1995, and to pay it compensation of 2,770,946.47 francs (all taxes included) for the extra-contractual burdens borne during the rehabilitation works. Provisional compensation for the same company had been decided in October 1994.",
-   "pourquoi_en": "An amicable settlement that the Council authorizes, following the opinion of the dispute-settlement committee."
-  },
-  {
-   "id": "33275",
-   "seance": "MAI 1996",
-   "fait": "Le Conseil approuve le principe de la réfection du bassin extérieur, 5 place Paul-Verlaine, et les modalités d'attribution du marché de travaux correspondant (appel d'offres ouvert, 3 lots), et autorise M. le Maire de Paris à le signer. Aucun montant n'est chiffré, et la dépense n'est imputée au budget d'investissement que « sous réserve de la décision de financement ».",
-   "pourquoi": "Le principe est approuvé ; le financement reste à décider.",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33275",
-   "fait_en": "The Council approved the principle of refurbishing the outdoor pool at 5 Place Paul-Verlaine, and the terms for awarding the corresponding works contract (open call for tenders, 3 lots), and authorized the Mayor of Paris to sign it. No amount was specified, and the expenditure was charged to the capital budget only 'subject to the financing decision.'",
-   "pourquoi_en": "The principle is approved; the financing is yet to be decided."
-  },
-  {
-   "id": "87101",
-   "seance": "JUILLET 2005",
-   "fait": "Une délibération dont l'intitulé annonce la fixation des tarifs et des conditions d'accès aux équipements de mise en forme situés à la piscine, pour les usagers individuels, sur rapport de M. Pascal CHERKI. Cet intitulé est la seule source disponible : il ne chiffre aucun tarif et n'indique pas l'issue du vote.",
-   "pourquoi": "L'intitulé annonce des tarifs, sans en chiffrer aucun.",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87101",
-   "fait_en": "A deliberation whose title announces the setting of rates and conditions of access to the fitness facilities located at the pool, for individual users, on a report by Mr Pascal CHERKI. This title is the only available source: it specifies no rate and does not indicate the outcome of the vote.",
-   "pourquoi_en": "The title announces rates, without specifying any of them."
-  }
- ],
- "montants": [
-  {
-   "seance": "JUILLET 1995",
-   "montant": "2.770.946,47 F T.T.C.",
-   "objet": "Indemnité que le Conseil autorise M. le Maire de Paris à régler à l'entreprise « PISONI » pour les sujétions extra-contractuelles supportées par celle-ci lors des travaux de réhabilitation ; la dépense sera imputée au budget de fonctionnement de la Ville de Paris de 1995 (chapitre 932, sous-chapitre 932-25, article 665). Une indemnisation provisoire de la même entreprise avait été décidée par la délibération D. 1608 du 17 octobre 1994.",
-   "citation": "M. le Maire de Paris est autorisé à procéder au règlement d'une indemnité de 2.770.946,47 F T.T.C. à l'entreprise \"PISONI\".",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=530"
-  }
- ],
- "bmo_extraits": [
-  {
-   "date": "1926-03-07",
-   "extrait": "Les frais de cette installation, évalués à 500 francs pour deux pommes de douches et par piscine , seront faits, pour la piscine de la Butte -aux- Cailles , sur les reliquats de l'opération et, pour les deux autres, sur le crédit d'entretien …  piscine de la Butte -aux- Cailles",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6291204t/f9.item",
-   "extrait_en": "The cost of this installation, estimated at 500 francs for two shower heads per pool, will be met, for the Butte-aux-Cailles pool, from the leftover funds of the operation, and for the other two, from the maintenance budget … Butte-aux-Cailles pool"
-  },
-  {
-   "date": "1929-10-16",
-   "extrait": "Les piscines Ledru-Rollin et Rouvet ont été démolies et sur leur emplacement des piscines modernes sont en construction … La piscine de la Butte -aux- Cailles , qui a été inaugurée en mai 1924 et a été la première mise en exploitation sur ce modèle, comporte un bassin d'une con",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6410284t/f2.item",
-   "extrait_en": "The Ledru-Rollin and Rouvet swimming pools have been demolished and modern pools are being built on their site … The Butte-aux-Cailles pool, which was inaugurated in May 1924 and was the first put into operation on this model, has a pool with a capa"
-  },
-  {
-   "date": "1938-01-10",
-   "extrait": "50. — Remplacement des châssis du hall de natation à la piscine de la Butte -aux- Cailles  … René Le Gall, au nom de la 6e Commission. — Messieurs, l'abondance des buées et les intempéries ont amené la détérioration des châssis des vitres donnant jour sur le hall de natation de",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6505960b/f13.item",
-   "extrait_en": "50. — Replacement of the window frames of the swimming hall at the Butte-aux-Cailles pool … René Le Gall, on behalf of the 6th Commission. — Gentlemen, the abundance of condensation and inclement weather have caused the deterioration of the window frames giving light to the swimming hall of"
-  },
-  {
-   "date": "1952-07-26",
-   "extrait": "N° 911. — Pour des raisons de sécurité, le plongeoir de quatre mètres existant à la piscine municipale de la Butte -aux- Cailles a été supprimé … Seine s'il peut leur assurer que le plongeoir supprimé à la piscine municipale de la Butte -aux- Cailles sera bientôt remplacé. ( Qu",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9786689d/f3.item",
-   "extrait_en": "No. 911. — For safety reasons, the existing four-meter diving board at the Butte-aux-Cailles municipal pool has been removed … Seine whether he can assure them that the diving board removed at the Butte-aux-Cailles municipal pool will soon be replaced. (Qu"
-  },
-  {
-   "date": "1963-04-19",
-   "extrait": "la procédure, qui normalement aurait dû être engagée dès le moment où le Conseil municipal a décidé de la création de cette piscine à la Butte -aux- Cailles , c'est-à-dire en mars 1961. aura donc demandé, de mars 1961 à la fin de 1964, trois longues années pendant lesquelles les ",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97106337/f42.item",
-   "extrait_en": "the procedure, which should normally have been initiated as soon as the Municipal Council decided to create this pool at the Butte-aux-Cailles, that is to say in March 1961, will thus have taken, from March 1961 to the end of 1964, three long years during which the "
-  },
-  {
-   "date": "1975-05-11",
-   "extrait": "de la piscine de la Butte -aux- Cailles par un très grand nombre de lettres émanant d’usagers de cette piscine  … Cette piscine étant alimentée en eau par un puit artésien ne nécessite qu’un chauffage complémentaire pour atteindre la température idéale … L’eau de cette piscin",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3210836q/f2.item",
-   "extrait_en": "of the Butte-aux-Cailles pool through a very large number of letters from users of this pool … As this pool is fed with water from an artesian well, it only requires supplementary heating to reach the ideal temperature … The water in this poo"
-  }
- ],
- "bmo_recit": "La piscine apparaît dans le Bulletin municipal dès l'entre-deux-guerres, par des questions d'équipement : en 1926, l'installation de pommes de douches, évaluée à 500 francs pour deux pommes, doit être financée sur les reliquats de l'opération, et en 1929 le Bulletin la présente comme inaugurée en mai 1924, première exploitée sur ce modèle, avec un bassin de 700 mètres cubes. L'entretien revient ensuite régulièrement : en 1938, les buées et les intempéries ayant détérioré les châssis vitrés du hall de natation, leur remplacement est rapporté au Conseil, et en 1952 le plongeoir de quatre mètres est supprimé pour des raisons de sécurité, une question adressée au préfet de la Seine demandant s'il sera bientôt remplacé. En 1963, un intervenant en séance déplore que la procédure liée à la création d'une piscine à la Butte-aux-Cailles, décidée en mars 1961, ait demandé trois longues années. En 1975 enfin, le Bulletin fait état d'un très grand nombre de lettres d'usagers et rappelle que la piscine, alimentée par un puits artésien, ne nécessite qu'un chauffage complémentaire.",
- "delibs_par_annee": {
-  "2010": [
-   {
-    "reference": "2010 DPA 75",
-    "titre": "Approbation du principe de modernisation des installations de la piscine de la Butte au Cailles, 5 place Paul Verlaine (13e) et des modalités de passation du marché de maîtrise d’œuvre, et du dépôt des demandes de permis de démolir et de construire. M. Jean VUILLERMOZ, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 2010",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39616"
-   }
-  ]
- },
- "invest": [
-  {
-   "annee": 2019,
-   "montant_eur": 352330.0,
-   "nom_projet": "Bains-douches Bains-douches 5, place Paul Verlaine - Rénovation des bains",
-   "preuve": "Le nom du projet porte l'adresse de la piscine : « Bains-douches Bains-douches 5, place Paul Verlaine - Rénovation des bains ». La délibération du Conseil de Paris de mai 1996 situe « la piscine de la Butte-aux-Cailles, 5, place Paul-Verlaine (13e) » : même adresse. Les bains-douches sont un service distinct logé sur ce site, et la Ville les budgète avec la piscine : libellé d'opération « PISCINE ET BD BUTTE AUX CAILLES » (DJS) et projet 2021 « Piscines et bassins école Piscine Butte aux Cailles - Rénovation des bains douches, réfect ». Réserve : le nom du projet ne nomme pas la piscine elle-même et le montant porte sur la partie bains-douches du site — confiance moyenne.",
-   "id": "2019_13_il_012"
-  },
-  {
-   "annee": 2021,
-   "montant_eur": 2191717.0,
-   "nom_projet": "Piscines et bassins école Piscine Butte aux Cailles - Rénovation des bains douches, réfect",
-   "preuve": "Le nom du projet nomme le lieu : « Piscines et bassins école Piscine Butte aux Cailles - Rénovation des bains douches, réfect » (le libellé est tronqué en fin de chaîne par la source). Le rattachement repose sur ce nom, pas sur la distance : le candidat relève 165 m, distance non probante ici puisque le nom désigne explicitement l'équipement. L'opération porte aussi sur les bains-douches du même site (voir piscine-butte-aux-cailles_perimetre.json).",
-   "id": null
-  }
- ],
- "marches": [
-  {
-   "numero_marche": "20242024S02607",
-   "objet": "MS CSPS PISCINE DE LA BUTTE-AUX-CAILLES",
-   "objet_clair": "Coordination de la sécurité du chantier de la piscine de la Butte-aux-Cailles.",
-   "fournisseur": "BUREAU D ETUDES ET DE CONSEILS EN",
-   "montant_max": 25979.33,
-   "date_notification": "2024-04-16",
-   "preuve": "L'objet nomme le lieu en toutes lettres : « MS CSPS PISCINE DE LA BUTTE-AUX-CAILLES ». Le lieu est l'objet du marché, pas un repère d'adresse, et l'objet ne cite aucun autre équipement. « CSPS » renvoie à la coordination « de sécurité et protection de la santé », formulation écrite en clair dans l'objet de l'autre marché rattaché (decp-2024S03906). Fournisseur « BUREAU D ETUDES ET DE CONSEILS EN » (SIRET 40353972900232), notifié le 2024-04-16, montant max 25 979,33 € — valeur reprise telle quelle du candidat."
-  },
-  {
-   "numero_marche": "decp-2024S03906",
-   "objet": "Contrôle technique de la construction pour des opérations nécessitant un coordinateur de sécurité et protection de la santé de catégories 1 ou 2  Modernisation et extension de la Piscine de la Butte-a",
-   "objet_clair": null,
-   "fournisseur": "ALPHA CONTROLE",
-   "montant_max": 16782.0,
-   "date_notification": "2024-05-23",
-   "preuve": "La seconde moitié de l'objet désigne une opération sur ce lieu : « Modernisation et extension de la Piscine de la Butte-aux-Cailles, 5 Place » (l'objet s'arrête là, tronqué par la source) ; l'adresse amorcée concorde avec la délibération de mai 1996, « la piscine de la Butte-aux-Cailles, 5, place Paul-Verlaine (13e) ». Le lieu est l'ouvrage contrôlé, pas un repère d'adresse. Réserve : la première moitié de l'objet est l'intitulé générique d'un accord-cadre (« Contrôle technique de la construction pour des opérations nécessitant un coordinateur de sécurité et protection de la santé de catégories 1 ou 2 ») ; le candidat ne permet pas de vérifier que le montant max de 16 782 € ne couvre que cette opération — confiance moyenne."
-  }
- ],
- "mandate": {
-  "par_annee": {
-   "2012": 351541.68,
-   "2013": 2961314.91,
-   "2014": 3186544.33,
-   "2015": 92144.96,
-   "2016": 434798.79,
-   "2017": 124555.23
-  },
-  "total_eur": 7150899.9,
-  "operations": [
-   {
-    "ap_cle": "1004019",
-    "ap_texte": "¨PISCINE ET BD BUTTE AUX CAILLES",
-    "mandate_par_annee": {
-     "2014": 2506150.79,
-     "2015": 19243.59,
-     "2016": 73838.38,
-     "2017": 9320.43
-    },
-    "total_mandate": 2608553.19,
-    "preuve": "Le libellé d'opération nomme le lieu : « ¨PISCINE ET BD BUTTE AUX CAILLES ». Le signal du candidat est une « partie distinctive (butte aux cailles) », indice faible pris seul ; il est confirmé ici par le type d'équipement inscrit dans le libellé lui-même (« PISCINE ») et par le porteur : direction DJS, mission « JEUNESSE ET SPORTS ». Ce n'est pas une enveloppe générique de direction : le libellé désigne un équipement nommé. Il mentionne aussi les « BD » (bains-douches) du même site, 5 place Paul-Verlaine : l'opération couvre l'ensemble piscine + bains-douches, sans ventilation dans la source (voir piscine-butte-aux-cailles_perimetre.json). Mandatements 2014-2017 recopiés à l'identique du candidat.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1004019"
-   },
-   {
-    "ap_cle": "B100/1004019",
-    "ap_texte": "¨PISCINE ET BD BUTTE AUX CAILLES",
-    "mandate_par_annee": {
-     "2012": 351541.68,
-     "2013": 2205222.37
-    },
-    "total_mandate": 2556764.05,
-    "preuve": "Le libellé d'opération nomme le lieu : « ¨PISCINE ET BD BUTTE AUX CAILLES », sous la clé B100/1004019. Le signal du candidat est une « partie distinctive (butte aux cailles) », indice faible pris seul ; il est confirmé ici par le type d'équipement inscrit dans le libellé lui-même (« PISCINE ») et par le porteur : direction DJS, mission « JEUNESSE ET SPORTS ». Ce n'est pas une enveloppe générique de direction : le libellé désigne un équipement nommé. Il mentionne aussi les « BD » (bains-douches) du même site, 5 place Paul-Verlaine : l'opération couvre l'ensemble piscine + bains-douches, sans ventilation dans la source (voir piscine-butte-aux-cailles_perimetre.json). Mandatements 2012-2013 recopiés à l'identique du candidat ; la source ne dit pas comment cette clé s'articule avec les autres clés portant le même libellé, aucun lien de tranche n'est affirmé ici.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1004019"
-   },
-   {
-    "ap_cle": "1304019",
-    "ap_texte": "PISCINE ET BD BUTTE AUX CAILLES",
-    "mandate_par_annee": {
-     "2014": 482753.43,
-     "2015": 72901.37,
-     "2016": 355098.09,
-     "2017": 97926.58
-    },
-    "total_mandate": 1008679.47,
-    "preuve": "Le libellé d'opération nomme le lieu : « PISCINE ET BD BUTTE AUX CAILLES », sous la clé 1304019. Le signal du candidat est une « partie distinctive (butte aux cailles) », indice faible pris seul ; il est confirmé ici par le type d'équipement inscrit dans le libellé lui-même (« PISCINE ») et par le porteur : direction DJS, mission « JEUNESSE ET SPORTS ». Ce n'est pas une enveloppe générique de direction : le libellé désigne un équipement nommé. Il mentionne aussi les « BD » (bains-douches) du même site, 5 place Paul-Verlaine : l'opération couvre l'ensemble piscine + bains-douches, sans ventilation dans la source (voir piscine-butte-aux-cailles_perimetre.json). Mandatements 2014-2017 recopiés à l'identique du candidat.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1304019"
-   },
-   {
-    "ap_cle": "B100/1204019",
-    "ap_texte": "PISCINE ET BD BUTTE AUX CAILLES",
-    "mandate_par_annee": {
-     "2013": 756092.54
-    },
-    "total_mandate": 756092.54,
-    "preuve": "Le libellé d'opération nomme le lieu : « PISCINE ET BD BUTTE AUX CAILLES », sous la clé B100/1204019. Le signal du candidat est une « partie distinctive (butte aux cailles) », indice faible pris seul ; il est confirmé ici par le type d'équipement inscrit dans le libellé lui-même (« PISCINE ») et par le porteur : direction DJS, mission « JEUNESSE ET SPORTS ». Ce n'est pas une enveloppe générique de direction : le libellé désigne un équipement nommé. Il mentionne aussi les « BD » (bains-douches) du même site, 5 place Paul-Verlaine : l'opération couvre l'ensemble piscine + bains-douches, sans ventilation dans la source (voir piscine-butte-aux-cailles_perimetre.json). Mandatement 2013 recopié à l'identique du candidat.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1204019"
-   },
-   {
-    "ap_cle": "1204019",
-    "ap_texte": "PISCINE ET BD BUTTE AUX CAILLES",
-    "mandate_par_annee": {
-     "2014": 197640.11,
-     "2016": 5862.32,
-     "2017": 17308.22
-    },
-    "total_mandate": 220810.65,
-    "preuve": "Le libellé d'opération nomme le lieu : « PISCINE ET BD BUTTE AUX CAILLES », sous la clé 1204019. Le signal du candidat est une « partie distinctive (butte aux cailles) », indice faible pris seul ; il est confirmé ici par le type d'équipement inscrit dans le libellé lui-même (« PISCINE ») et par le porteur : direction DJS, mission « JEUNESSE ET SPORTS ». Ce n'est pas une enveloppe générique de direction : le libellé désigne un équipement nommé. Il mentionne aussi les « BD » (bains-douches) du même site, 5 place Paul-Verlaine : l'opération couvre l'ensemble piscine + bains-douches, sans ventilation dans la source (voir piscine-butte-aux-cailles_perimetre.json). Mandatements 2014, 2016 et 2017 recopiés à l'identique du candidat.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1204019"
-   }
-  ],
-  "periode": [
-   "2012",
-   "2017"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=piscine+AND+Butte-aux-Cailles"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22piscine+de+la+Butte-aux-Cailles%22%29"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "La piscine de la Butte-aux-Cailles est l'une des plus anciennes piscines de Paris, en France. Elle est située au 5, place Paul-Verlaine, dans le quartier de la Butte-aux-Cailles, dans le 13e arrondissement.",
+    "url": "https://fr.wikipedia.org/wiki/Piscine_de_la_Butte-aux-Cailles",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    },
+    "extract_en": "The Butte-aux-Cailles swimming pool is one of the oldest swimming pools in Paris, France. It is located at 5 Place Paul-Verlaine, in the Butte-aux-Cailles neighborhood, in the 13th arrondissement."
+  },
+  "stats": {
+    "n_delibs": 989,
+    "delibs_span": [
+      1995,
+      2005
+    ],
+    "n_bmo_brut": 473,
+    "n_bmo_verifies": 18,
+    "invest_total_eur": 2544047.0,
+    "invest_annees": [
+      "2019",
+      "2021"
+    ],
+    "lecture_mode": "titre nommant le lieu (4 trouvés)",
+    "lecture_mode_en": "title naming the place (4 found)",
+    "n_lus": 3,
+    "n_lieu": 3
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "Trois délibérations dont l'intitulé nomme la piscine de la Butte-aux-Cailles se rattachent à des séances isolées : juillet 1995, mai 1996 et juillet 2005. En juillet 1995, le Conseil de Paris autorise M. le Maire de Paris à signer avec l'entreprise « PISONI » un contrat de transaction tenant compte de l'avis du Comité consultatif interrégional de règlement amiable des litiges du 17 mars 1995, et à lui régler une indemnité de 2.770.946,47 F T.T.C. pour les sujétions extra-contractuelles supportées lors des travaux de réhabilitation ; la délibération vise un chantier antérieur — principe de restructuration approuvé par la délibération D. 899 du 26 juin 1989, avenant n° 1 au marché de travaux n° 89/25/275 attribué à « PISONI » par la délibération D. 1136 du 8 juillet 1991, puis indemnisation provisoire de cette entreprise par la délibération D. 1608 du 17 octobre 1994. En mai 1996, le Conseil approuve le principe de la réfection du bassin extérieur, 5 place Paul-Verlaine, ainsi que les modalités d'attribution du marché de travaux correspondant (appel d'offres ouvert, 3 lots), et autorise M. le Maire de Paris à le signer : aucun montant n'est chiffré, et la dépense n'est imputée au budget d'investissement que « sous réserve de la décision de financement ». Pour juillet 2005, l'intitulé de la délibération est la seule source disponible : il annonce la fixation des tarifs et des conditions d'accès aux équipements de mise en forme situés à la piscine, pour les usagers individuels, sans chiffrer aucun tarif.",
+  "moments": [
+    {
+      "id": "530",
+      "seance": "JUILLET 1995",
+      "fait": "Le Conseil autorise M. le Maire de Paris à signer avec l'entreprise « PISONI » un contrat de transaction tenant compte de l'avis du Comité consultatif interrégional de règlement amiable des litiges du 17 mars 1995, et à lui régler une indemnité de 2 770 946,47 F T.T.C. pour les sujétions extra-contractuelles supportées lors des travaux de réhabilitation. Une indemnisation provisoire de la même entreprise avait été décidée en octobre 1994.",
+      "pourquoi": "Une indemnisation amiable que le Conseil autorise, après avis du comité de règlement des litiges.",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=530",
+      "fait_en": "The Council authorized the Mayor of Paris to sign with the company 'PISONI' a settlement agreement taking into account the opinion of the Interregional Advisory Committee for the Amicable Settlement of Disputes dated 17 March 1995, and to pay it compensation of 2,770,946.47 francs (all taxes included) for the extra-contractual burdens borne during the rehabilitation works. Provisional compensation for the same company had been decided in October 1994.",
+      "pourquoi_en": "An amicable settlement that the Council authorizes, following the opinion of the dispute-settlement committee."
+    },
+    {
+      "id": "33275",
+      "seance": "MAI 1996",
+      "fait": "Le Conseil approuve le principe de la réfection du bassin extérieur, 5 place Paul-Verlaine, et les modalités d'attribution du marché de travaux correspondant (appel d'offres ouvert, 3 lots), et autorise M. le Maire de Paris à le signer. Aucun montant n'est chiffré, et la dépense n'est imputée au budget d'investissement que « sous réserve de la décision de financement ».",
+      "pourquoi": "Le principe est approuvé ; le financement reste à décider.",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33275",
+      "fait_en": "The Council approved the principle of refurbishing the outdoor pool at 5 Place Paul-Verlaine, and the terms for awarding the corresponding works contract (open call for tenders, 3 lots), and authorized the Mayor of Paris to sign it. No amount was specified, and the expenditure was charged to the capital budget only 'subject to the financing decision.'",
+      "pourquoi_en": "The principle is approved; the financing is yet to be decided."
+    },
+    {
+      "id": "87101",
+      "seance": "JUILLET 2005",
+      "fait": "Une délibération dont l'intitulé annonce la fixation des tarifs et des conditions d'accès aux équipements de mise en forme situés à la piscine, pour les usagers individuels, sur rapport de M. Pascal CHERKI. Cet intitulé est la seule source disponible : il ne chiffre aucun tarif et n'indique pas l'issue du vote.",
+      "pourquoi": "L'intitulé annonce des tarifs, sans en chiffrer aucun.",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87101",
+      "fait_en": "A deliberation whose title announces the setting of rates and conditions of access to the fitness facilities located at the pool, for individual users, on a report by Mr Pascal CHERKI. This title is the only available source: it specifies no rate and does not indicate the outcome of the vote.",
+      "pourquoi_en": "The title announces rates, without specifying any of them."
+    }
+  ],
+  "montants": [
+    {
+      "seance": "JUILLET 1995",
+      "montant": "2.770.946,47 F T.T.C.",
+      "objet": "Indemnité que le Conseil autorise M. le Maire de Paris à régler à l'entreprise « PISONI » pour les sujétions extra-contractuelles supportées par celle-ci lors des travaux de réhabilitation ; la dépense sera imputée au budget de fonctionnement de la Ville de Paris de 1995 (chapitre 932, sous-chapitre 932-25, article 665). Une indemnisation provisoire de la même entreprise avait été décidée par la délibération D. 1608 du 17 octobre 1994.",
+      "citation": "M. le Maire de Paris est autorisé à procéder au règlement d'une indemnité de 2.770.946,47 F T.T.C. à l'entreprise \"PISONI\".",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=530"
+    }
+  ],
+  "bmo_extraits": [
+    {
+      "date": "1926-03-07",
+      "extrait": "Les frais de cette installation, évalués à 500 francs pour deux pommes de douches et par piscine , seront faits, pour la piscine de la Butte -aux- Cailles , sur les reliquats de l'opération et, pour les deux autres, sur le crédit d'entretien …  piscine de la Butte -aux- Cailles",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6291204t/f9.item",
+      "extrait_en": "The cost of this installation, estimated at 500 francs for two shower heads per pool, will be met, for the Butte-aux-Cailles pool, from the leftover funds of the operation, and for the other two, from the maintenance budget … Butte-aux-Cailles pool"
+    },
+    {
+      "date": "1929-10-16",
+      "extrait": "Les piscines Ledru-Rollin et Rouvet ont été démolies et sur leur emplacement des piscines modernes sont en construction … La piscine de la Butte -aux- Cailles , qui a été inaugurée en mai 1924 et a été la première mise en exploitation sur ce modèle, comporte un bassin d'une con",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6410284t/f2.item",
+      "extrait_en": "The Ledru-Rollin and Rouvet swimming pools have been demolished and modern pools are being built on their site … The Butte-aux-Cailles pool, which was inaugurated in May 1924 and was the first put into operation on this model, has a pool with a capa"
+    },
+    {
+      "date": "1938-01-10",
+      "extrait": "50. — Remplacement des châssis du hall de natation à la piscine de la Butte -aux- Cailles  … René Le Gall, au nom de la 6e Commission. — Messieurs, l'abondance des buées et les intempéries ont amené la détérioration des châssis des vitres donnant jour sur le hall de natation de",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6505960b/f13.item",
+      "extrait_en": "50. — Replacement of the window frames of the swimming hall at the Butte-aux-Cailles pool … René Le Gall, on behalf of the 6th Commission. — Gentlemen, the abundance of condensation and inclement weather have caused the deterioration of the window frames giving light to the swimming hall of"
+    },
+    {
+      "date": "1952-07-26",
+      "extrait": "N° 911. — Pour des raisons de sécurité, le plongeoir de quatre mètres existant à la piscine municipale de la Butte -aux- Cailles a été supprimé … Seine s'il peut leur assurer que le plongeoir supprimé à la piscine municipale de la Butte -aux- Cailles sera bientôt remplacé. ( Qu",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9786689d/f3.item",
+      "extrait_en": "No. 911. — For safety reasons, the existing four-meter diving board at the Butte-aux-Cailles municipal pool has been removed … Seine whether he can assure them that the diving board removed at the Butte-aux-Cailles municipal pool will soon be replaced. (Qu"
+    },
+    {
+      "date": "1963-04-19",
+      "extrait": "la procédure, qui normalement aurait dû être engagée dès le moment où le Conseil municipal a décidé de la création de cette piscine à la Butte -aux- Cailles , c'est-à-dire en mars 1961. aura donc demandé, de mars 1961 à la fin de 1964, trois longues années pendant lesquelles les ",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97106337/f42.item",
+      "extrait_en": "the procedure, which should normally have been initiated as soon as the Municipal Council decided to create this pool at the Butte-aux-Cailles, that is to say in March 1961, will thus have taken, from March 1961 to the end of 1964, three long years during which the "
+    },
+    {
+      "date": "1975-05-11",
+      "extrait": "de la piscine de la Butte -aux- Cailles par un très grand nombre de lettres émanant d’usagers de cette piscine  … Cette piscine étant alimentée en eau par un puit artésien ne nécessite qu’un chauffage complémentaire pour atteindre la température idéale … L’eau de cette piscin",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3210836q/f2.item",
+      "extrait_en": "of the Butte-aux-Cailles pool through a very large number of letters from users of this pool … As this pool is fed with water from an artesian well, it only requires supplementary heating to reach the ideal temperature … The water in this poo"
+    }
+  ],
+  "bmo_recit": "La piscine apparaît dans le Bulletin municipal dès l'entre-deux-guerres, par des questions d'équipement : en 1926, l'installation de pommes de douches, évaluée à 500 francs pour deux pommes, doit être financée sur les reliquats de l'opération, et en 1929 le Bulletin la présente comme inaugurée en mai 1924, première exploitée sur ce modèle, avec un bassin de 700 mètres cubes. L'entretien revient ensuite régulièrement : en 1938, les buées et les intempéries ayant détérioré les châssis vitrés du hall de natation, leur remplacement est rapporté au Conseil, et en 1952 le plongeoir de quatre mètres est supprimé pour des raisons de sécurité, une question adressée au préfet de la Seine demandant s'il sera bientôt remplacé. En 1963, un intervenant en séance déplore que la procédure liée à la création d'une piscine à la Butte-aux-Cailles, décidée en mars 1961, ait demandé trois longues années. En 1975 enfin, le Bulletin fait état d'un très grand nombre de lettres d'usagers et rappelle que la piscine, alimentée par un puits artésien, ne nécessite qu'un chauffage complémentaire.",
+  "delibs_par_annee": {
+    "2010": [
+      {
+        "reference": "2010 DPA 75",
+        "titre": "Approbation du principe de modernisation des installations de la piscine de la Butte au Cailles, 5 place Paul Verlaine (13e) et des modalités de passation du marché de maîtrise d’œuvre, et du dépôt des demandes de permis de démolir et de construire. M. Jean VUILLERMOZ, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 2010",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39616"
+      }
+    ]
+  },
+  "invest": [
+    {
+      "annee": 2019,
+      "montant_eur": 352330.0,
+      "nom_projet": "Bains-douches Bains-douches 5, place Paul Verlaine - Rénovation des bains",
+      "preuve": "Le nom du projet porte l'adresse de la piscine : « Bains-douches Bains-douches 5, place Paul Verlaine - Rénovation des bains ». La délibération du Conseil de Paris de mai 1996 situe « la piscine de la Butte-aux-Cailles, 5, place Paul-Verlaine (13e) » : même adresse. Les bains-douches sont un service distinct logé sur ce site, et la Ville les budgète avec la piscine : libellé d'opération « PISCINE ET BD BUTTE AUX CAILLES » (DJS) et projet 2021 « Piscines et bassins école Piscine Butte aux Cailles - Rénovation des bains douches, réfect ». Réserve : le nom du projet ne nomme pas la piscine elle-même et le montant porte sur la partie bains-douches du site — confiance moyenne.",
+      "id": "2019_13_il_012"
+    },
+    {
+      "annee": 2021,
+      "montant_eur": 2191717.0,
+      "nom_projet": "Piscines et bassins école Piscine Butte aux Cailles - Rénovation des bains douches, réfect",
+      "preuve": "Le nom du projet nomme le lieu : « Piscines et bassins école Piscine Butte aux Cailles - Rénovation des bains douches, réfect » (le libellé est tronqué en fin de chaîne par la source). Le rattachement repose sur ce nom, pas sur la distance : le candidat relève 165 m, distance non probante ici puisque le nom désigne explicitement l'équipement. L'opération porte aussi sur les bains-douches du même site (voir piscine-butte-aux-cailles_perimetre.json).",
+      "id": null
+    }
+  ],
+  "marches": [
+    {
+      "numero_marche": "20242024S02607",
+      "objet": "MS CSPS PISCINE DE LA BUTTE-AUX-CAILLES",
+      "objet_clair": "Coordination de la sécurité du chantier de la piscine de la Butte-aux-Cailles.",
+      "fournisseur": "BUREAU D ETUDES ET DE CONSEILS EN",
+      "montant_max": 25979.33,
+      "date_notification": "2024-04-16",
+      "preuve": "L'objet nomme le lieu en toutes lettres : « MS CSPS PISCINE DE LA BUTTE-AUX-CAILLES ». Le lieu est l'objet du marché, pas un repère d'adresse, et l'objet ne cite aucun autre équipement. « CSPS » renvoie à la coordination « de sécurité et protection de la santé », formulation écrite en clair dans l'objet de l'autre marché rattaché (decp-2024S03906). Fournisseur « BUREAU D ETUDES ET DE CONSEILS EN » (SIRET 40353972900232), notifié le 2024-04-16, montant max 25 979,33 € — valeur reprise telle quelle du candidat."
+    },
+    {
+      "numero_marche": "decp-2024S03906",
+      "objet": "Contrôle technique de la construction pour des opérations nécessitant un coordinateur de sécurité et protection de la santé de catégories 1 ou 2  Modernisation et extension de la Piscine de la Butte-a",
+      "objet_clair": null,
+      "fournisseur": "ALPHA CONTROLE",
+      "montant_max": 16782.0,
+      "date_notification": "2024-05-23",
+      "preuve": "La seconde moitié de l'objet désigne une opération sur ce lieu : « Modernisation et extension de la Piscine de la Butte-aux-Cailles, 5 Place » (l'objet s'arrête là, tronqué par la source) ; l'adresse amorcée concorde avec la délibération de mai 1996, « la piscine de la Butte-aux-Cailles, 5, place Paul-Verlaine (13e) ». Le lieu est l'ouvrage contrôlé, pas un repère d'adresse. Réserve : la première moitié de l'objet est l'intitulé générique d'un accord-cadre (« Contrôle technique de la construction pour des opérations nécessitant un coordinateur de sécurité et protection de la santé de catégories 1 ou 2 ») ; le candidat ne permet pas de vérifier que le montant max de 16 782 € ne couvre que cette opération — confiance moyenne."
+    }
+  ],
+  "mandate": {
+    "par_annee": {
+      "2012": 351541.68,
+      "2013": 2961314.91,
+      "2014": 3186544.33,
+      "2015": 92144.96,
+      "2016": 434798.79,
+      "2017": 124555.23
+    },
+    "total_eur": 7150899.9,
+    "operations": [
+      {
+        "ap_cle": "1004019",
+        "ap_texte": "¨PISCINE ET BD BUTTE AUX CAILLES",
+        "mandate_par_annee": {
+          "2014": 2506150.79,
+          "2015": 19243.59,
+          "2016": 73838.38,
+          "2017": 9320.43
+        },
+        "total_mandate": 2608553.19,
+        "preuve": "Le libellé d'opération nomme le lieu : « ¨PISCINE ET BD BUTTE AUX CAILLES ». Le signal du candidat est une « partie distinctive (butte aux cailles) », indice faible pris seul ; il est confirmé ici par le type d'équipement inscrit dans le libellé lui-même (« PISCINE ») et par le porteur : direction DJS, mission « JEUNESSE ET SPORTS ». Ce n'est pas une enveloppe générique de direction : le libellé désigne un équipement nommé. Il mentionne aussi les « BD » (bains-douches) du même site, 5 place Paul-Verlaine : l'opération couvre l'ensemble piscine + bains-douches, sans ventilation dans la source (voir piscine-butte-aux-cailles_perimetre.json). Mandatements 2014-2017 recopiés à l'identique du candidat.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1004019"
+      },
+      {
+        "ap_cle": "B100/1004019",
+        "ap_texte": "¨PISCINE ET BD BUTTE AUX CAILLES",
+        "mandate_par_annee": {
+          "2012": 351541.68,
+          "2013": 2205222.37
+        },
+        "total_mandate": 2556764.05,
+        "preuve": "Le libellé d'opération nomme le lieu : « ¨PISCINE ET BD BUTTE AUX CAILLES », sous la clé B100/1004019. Le signal du candidat est une « partie distinctive (butte aux cailles) », indice faible pris seul ; il est confirmé ici par le type d'équipement inscrit dans le libellé lui-même (« PISCINE ») et par le porteur : direction DJS, mission « JEUNESSE ET SPORTS ». Ce n'est pas une enveloppe générique de direction : le libellé désigne un équipement nommé. Il mentionne aussi les « BD » (bains-douches) du même site, 5 place Paul-Verlaine : l'opération couvre l'ensemble piscine + bains-douches, sans ventilation dans la source (voir piscine-butte-aux-cailles_perimetre.json). Mandatements 2012-2013 recopiés à l'identique du candidat ; la source ne dit pas comment cette clé s'articule avec les autres clés portant le même libellé, aucun lien de tranche n'est affirmé ici.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1004019"
+      },
+      {
+        "ap_cle": "1304019",
+        "ap_texte": "PISCINE ET BD BUTTE AUX CAILLES",
+        "mandate_par_annee": {
+          "2014": 482753.43,
+          "2015": 72901.37,
+          "2016": 355098.09,
+          "2017": 97926.58
+        },
+        "total_mandate": 1008679.47,
+        "preuve": "Le libellé d'opération nomme le lieu : « PISCINE ET BD BUTTE AUX CAILLES », sous la clé 1304019. Le signal du candidat est une « partie distinctive (butte aux cailles) », indice faible pris seul ; il est confirmé ici par le type d'équipement inscrit dans le libellé lui-même (« PISCINE ») et par le porteur : direction DJS, mission « JEUNESSE ET SPORTS ». Ce n'est pas une enveloppe générique de direction : le libellé désigne un équipement nommé. Il mentionne aussi les « BD » (bains-douches) du même site, 5 place Paul-Verlaine : l'opération couvre l'ensemble piscine + bains-douches, sans ventilation dans la source (voir piscine-butte-aux-cailles_perimetre.json). Mandatements 2014-2017 recopiés à l'identique du candidat.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1304019"
+      },
+      {
+        "ap_cle": "B100/1204019",
+        "ap_texte": "PISCINE ET BD BUTTE AUX CAILLES",
+        "mandate_par_annee": {
+          "2013": 756092.54
+        },
+        "total_mandate": 756092.54,
+        "preuve": "Le libellé d'opération nomme le lieu : « PISCINE ET BD BUTTE AUX CAILLES », sous la clé B100/1204019. Le signal du candidat est une « partie distinctive (butte aux cailles) », indice faible pris seul ; il est confirmé ici par le type d'équipement inscrit dans le libellé lui-même (« PISCINE ») et par le porteur : direction DJS, mission « JEUNESSE ET SPORTS ». Ce n'est pas une enveloppe générique de direction : le libellé désigne un équipement nommé. Il mentionne aussi les « BD » (bains-douches) du même site, 5 place Paul-Verlaine : l'opération couvre l'ensemble piscine + bains-douches, sans ventilation dans la source (voir piscine-butte-aux-cailles_perimetre.json). Mandatement 2013 recopié à l'identique du candidat.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1204019"
+      },
+      {
+        "ap_cle": "1204019",
+        "ap_texte": "PISCINE ET BD BUTTE AUX CAILLES",
+        "mandate_par_annee": {
+          "2014": 197640.11,
+          "2016": 5862.32,
+          "2017": 17308.22
+        },
+        "total_mandate": 220810.65,
+        "preuve": "Le libellé d'opération nomme le lieu : « PISCINE ET BD BUTTE AUX CAILLES », sous la clé 1204019. Le signal du candidat est une « partie distinctive (butte aux cailles) », indice faible pris seul ; il est confirmé ici par le type d'équipement inscrit dans le libellé lui-même (« PISCINE ») et par le porteur : direction DJS, mission « JEUNESSE ET SPORTS ». Ce n'est pas une enveloppe générique de direction : le libellé désigne un équipement nommé. Il mentionne aussi les « BD » (bains-douches) du même site, 5 place Paul-Verlaine : l'opération couvre l'ensemble piscine + bains-douches, sans ventilation dans la source (voir piscine-butte-aux-cailles_perimetre.json). Mandatements 2014, 2016 et 2017 recopiés à l'identique du candidat.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1204019"
+      }
+    ],
+    "periode": [
+      "2012",
+      "2017"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=piscine+AND+Butte-aux-Cailles"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22piscine+de+la+Butte-aux-Cailles%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "Three deliberations whose title names the Butte-aux-Cailles swimming pool relate to isolated sessions: July 1995, May 1996 and July 2005. In July 1995, Conseil de Paris authorized the Mayor of Paris to sign with the company 'PISONI' a settlement agreement taking into account the opinion of the Interregional Advisory Committee for the Amicable Settlement of Disputes dated 17 March 1995, and to pay it compensation of 2,770,946.47 francs (all taxes included) for the extra-contractual burdens it bore during the rehabilitation works; the deliberation concerns an earlier project — the restructuring principle approved by deliberation D. 899 of 26 June 1989, amendment No. 1 to works contract No. 89/25/275 awarded to 'PISONI' by deliberation D. 1136 of 8 July 1991, then provisional compensation of that company by deliberation D. 1608 of 17 October 1994. In May 1996, the Council approved the principle of refurbishing the outdoor pool at 5 Place Paul-Verlaine, along with the terms for awarding the corresponding works contract (open call for tenders, 3 lots), and authorized the Mayor of Paris to sign it: no amount was specified, and the expenditure was charged to the capital budget only 'subject to the financing decision.' For July 2005, the deliberation's title is the only available source: it announces the setting of rates and conditions of access to the fitness facilities located at the pool, for individual users, without specifying any rate.",
+  "bmo_recit_en": "The pool appears in the Bulletin municipal as early as the interwar period, in connection with facility matters: in 1926, the installation of shower heads, estimated at 500 francs for two heads, was to be funded from the leftover funds of the operation, and in 1929 the Bulletin presented it as having been inaugurated in May 1924, the first pool put into operation on this model, with a 700-cubic-meter pool. Maintenance then came up regularly: in 1938, after condensation and inclement weather had damaged the glazed window frames of the swimming hall, their replacement was reported to the Council, and in 1952 the four-meter diving board was removed for safety reasons, with a question addressed to the Prefect of the Seine asking whether it would soon be replaced. In 1963, a speaker in session lamented that the procedure related to creating a pool at the Butte-aux-Cailles, decided in March 1961, had taken three long years. Finally, in 1975, the Bulletin reported a very large number of letters from users and noted that the pool, fed by an artesian well, only requires supplementary heating.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- },
- "synthese_en": "Three deliberations whose title names the Butte-aux-Cailles swimming pool relate to isolated sessions: July 1995, May 1996 and July 2005. In July 1995, Conseil de Paris authorized the Mayor of Paris to sign with the company 'PISONI' a settlement agreement taking into account the opinion of the Interregional Advisory Committee for the Amicable Settlement of Disputes dated 17 March 1995, and to pay it compensation of 2,770,946.47 francs (all taxes included) for the extra-contractual burdens it bore during the rehabilitation works; the deliberation concerns an earlier project — the restructuring principle approved by deliberation D. 899 of 26 June 1989, amendment No. 1 to works contract No. 89/25/275 awarded to 'PISONI' by deliberation D. 1136 of 8 July 1991, then provisional compensation of that company by deliberation D. 1608 of 17 October 1994. In May 1996, the Council approved the principle of refurbishing the outdoor pool at 5 Place Paul-Verlaine, along with the terms for awarding the corresponding works contract (open call for tenders, 3 lots), and authorized the Mayor of Paris to sign it: no amount was specified, and the expenditure was charged to the capital budget only 'subject to the financing decision.' For July 2005, the deliberation's title is the only available source: it announces the setting of rates and conditions of access to the fitness facilities located at the pool, for individual users, without specifying any rate.",
- "bmo_recit_en": "The pool appears in the Bulletin municipal as early as the interwar period, in connection with facility matters: in 1926, the installation of shower heads, estimated at 500 francs for two heads, was to be funded from the leftover funds of the operation, and in 1929 the Bulletin presented it as having been inaugurated in May 1924, the first pool put into operation on this model, with a 700-cubic-meter pool. Maintenance then came up regularly: in 1938, after condensation and inclement weather had damaged the glazed window frames of the swimming hall, their replacement was reported to the Council, and in 1952 the four-meter diving board was removed for safety reasons, with a question addressed to the Prefect of the Seine asking whether it would soon be replaced. In 1963, a speaker in session lamented that the procedure related to creating a pool at the Butte-aux-Cailles, decided in March 1961, had taken three long years. Finally, in 1975, the Bulletin reported a very large number of letters from users and noted that the pool, fed by an artesian well, only requires supplementary heating."
 }

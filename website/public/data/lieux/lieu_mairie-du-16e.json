@@ -1,245 +1,253 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "mairie-du-16e",
- "name": "Mairie du 16e",
- "kind_fr": "Mairie",
- "kind_en": "Town hall",
- "famille": "services",
- "arrondissement": 16,
- "lat": 48.8637,
- "lon": 2.2769,
- "photo": "/img/lieux/mairie-du-16e.jpg",
- "photo_credit": {
-  "licence": "CC BY-SA 4.0",
-  "auteur": "Polymagou",
-  "url": "https://commons.wikimedia.org/wiki/File:Mairie_du_16e_arrondissement_de_Paris_6.jpg",
-  "source": "Wikimedia Commons"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": null,
-  "url": null,
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 930,
-  "delibs_span": [
-   1995,
-   2026
-  ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 157266.88,
-  "invest_annees": [
-   "2024"
-  ],
-  "lecture_mode": "titre nommant le lieu (24 trouvés)",
-  "lecture_mode_en": "title naming the place (24 found)",
-  "n_lus": 0,
-  "n_lieu": null
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": {
-  "1997": [
-   {
-    "reference": "1997 DPA 167",
-    "titre": "Autorisation à M. le Maire de Paris de signer des protocoles d'accord relatifs aux indemnisations de Mmes Véronique BOURGEOIS-NOURY, Claudie DUMARCHEZ-FABRE, Lou PERDU et MM. René ACH, Pierre DRUESNES et Miguel-Ange REYES, artistes, en réparation de dommages survenus à des oeuvres le 9 janvier 1997 à la mairie du 16e arrondissement. M. Alain DESTREM, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "NOVEMBRE 1997",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49461"
-   }
-  ],
-  "1999": [
-   {
-    "reference": "1999 DPA 143",
-    "titre": "Approbation du principe de la réfection de couverture de la mairie du 16e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 1999",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83659"
-   }
-  ],
-  "2000": [
-   {
-    "reference": "2000 DPA 3",
-    "titre": "Approbation du principe de la rénovation de la chaufferie de la mairie du 16e arrondissement et de la ventilation du stade Pierre-de-Coubertin (16e). - Approbation des modalités d'attribution des marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. M. Jean-François LEGARET et M. Dominique CANE, rapporteurs.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JANVIER 2000",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48498"
-   },
-   {
-    "reference": "2000 DPA 319",
-    "titre": "Approbation du principe de la rénovation totale de couvertures ainsi que l'aménagement de bureaux et de vestiaires à la mairie du 16e arrondissement. - Approbation des modalités d'attribution des marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. M. Jean-François LEGARET, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "DECEMBRE 2000",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40744"
-   }
-  ],
-  "2002": [
-   {
-    "reference": "2002 DPA 274",
-    "titre": "Approbation du principe de réalisation des travaux de modernisation des installations électriques, de modernisation de la couverture, et de réaménagement de la loge et de l'appartement du gardien à la Mairie du 16ème arrondissement sise 71, avenue Henri-Martin (16e) et des modalités de passation des marchés de travaux correspondants. - Autorisation à Monsieur le Maire de signer lesdits marchés. - Autorisation à Monsieur le Maire de Paris, de déposer la demande de permis de construire pour la réa",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUIN 2002",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55878"
-   }
-  ],
-  "2003": [
-   {
-    "reference": "2003 DPA 5",
-    "titre": "Approbation du principe de réalisation des travaux de modernisation de la couverture à la mairie du 16e arrondissement sise 71, avenue Henri-Martin (16e) et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de signer ledit marché. Mme Mireille FLAM, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "MARS 2003",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68815"
-   }
-  ],
-  "2004": [
-   {
-    "reference": "2004 DPA 107",
-    "titre": "Approbation du principe de réalisation des travaux de modernisation des menuiseries extérieures à la Mairie du 16e arrondissement, sise 71, avenue Henri-Martin (16e), et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "MAI 2004",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45860"
-   },
-   {
-    "reference": "2004 DPA 107",
-    "titre": "Approbation du principe de réalisation des travaux de mise en sécurité de la grille de clôture à la Mairie du 16e arrondissement et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "MAI 2004",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45893"
-   }
-  ],
-  "2009": [
-   {
-    "reference": "2009 DDEE 42",
-    "titre": "G Subvention à l’association “Accueil Social, Familial et Orientation des Sans Emploi” dans le cadre de la permanence “emploi” au sein de la mairie du 16e arrondissement. M. Christian SAUTTER, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "NOVEMBRE 2009",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36078"
-   }
-  ],
-  "2010": [
-   {
-    "reference": "2010 DDEEES 64",
-    "titre": "G Signature d’une convention avec l’Association de Préfiguration Régie de Quartier du 16ème arrondissement, domiciliée Mairie du 16ème, visant une aide à l’installation. Mme Seybah DAGOMA, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUILLET 2010",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78549"
-   }
-  ]
- },
- "invest": [
-  {
-   "annee": 2024,
-   "montant_eur": 157266.88,
-   "nom_projet": "Mairie Du 16e Arrondissement - Transformation d'un logement en bureaux",
-   "preuve": "Nom du projet : « Mairie Du 16e Arrondissement - Transformation d'un logement en bureaux » (74 m du lieu)",
-   "id": "2024_16_45_003"
-  }
- ],
- "marches": [
-  {
-   "numero_marche": "decp-2026T02925",
-   "objet": "MS - TVX - Lot 5 - SET 1 - Modernisation, avec changement d'énergie et passage du gaz à la vapeur, du centre thermique de la Mairie du 16ème arrondissement - 71 avenue Henri Martin 75016 Paris",
-   "objet_clair": null,
-   "fournisseur": "CRAM",
-   "montant_max": 368340.76,
-   "date_notification": "2026-03-17",
-   "preuve": "Objet cite explicitement « Mairie du 16ème arrondissement - 71 avenue Henri Martin 75016 Paris » (adresse du lieu) pour des travaux de modernisation du centre thermique"
+  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "mairie-du-16e",
+  "name": "Mairie du 16e",
+  "kind_fr": "Mairie",
+  "kind_en": "Town hall",
+  "famille": "services",
+  "arrondissement": 16,
+  "lat": 48.8637,
+  "lon": 2.2769,
+  "photo": "/img/lieux/mairie-du-16e.jpg",
+  "photo_credit": {
+    "licence": "CC BY-SA 4.0",
+    "auteur": "Polymagou",
+    "url": "https://commons.wikimedia.org/wiki/File:Mairie_du_16e_arrondissement_de_Paris_6.jpg",
+    "source": "Wikimedia Commons"
   },
-  {
-   "numero_marche": "20222022T08687",
-   "objet": "MODERNISATION DES MENUISERIES EXTÉRIEURES MAIRIE DU 16EME",
-   "objet_clair": null,
-   "fournisseur": "ART DU BOIS SABIR",
-   "montant_max": 289998.0,
-   "date_notification": "2022-11-18",
-   "preuve": "Objet : « MODERNISATION DES MENUISERIES EXTÉRIEURES MAIRIE DU 16EME » — travaux sur le bâtiment de la mairie"
-  },
-  {
-   "numero_marche": "20151660000002",
-   "objet": "CONCEPTION GRAPHIQUE POUR LA MAIRIE DU 16E",
-   "objet_clair": null,
-   "fournisseur": "ATTRIBUT COMMUNICATION ET DEVELOPP",
-   "montant_max": 100000.0,
-   "date_notification": "2015-01-23",
-   "preuve": "Objet : « CONCEPTION GRAPHIQUE POUR LA MAIRIE DU 16E » — prestation nommément destinée à la mairie"
-  },
-  {
-   "numero_marche": "20141660000028",
-   "objet": "FOURNITURE DE VINS DE CHAMPAGNE POUR LA MAIRIE DU 16E",
-   "objet_clair": null,
-   "fournisseur": "CHAMPAGNE PANNIER",
-   "montant_max": 80000.0,
-   "date_notification": "2014-11-06",
-   "preuve": "Objet : « FOURNITURE DE VINS DE CHAMPAGNE POUR LA MAIRIE DU 16E » — fourniture nommément destinée à la mairie"
-  },
-  {
-   "numero_marche": "20242024S08091",
-   "objet": "MOE HORS LOI MOP MODERNISATION CT MAIRIE DU 16ÈME",
-   "objet_clair": "Études pour moderniser le chauffage de la mairie du 16e arrondissement",
-   "fournisseur": "CPS BUREAU D'ETUDES",
-   "montant_max": 26250.0,
-   "date_notification": "2024-07-31",
-   "preuve": "Objet : « MOE HORS LOI MOP MODERNISATION CT MAIRIE DU 16ÈME » — maîtrise d'œuvre pour la modernisation du centre thermique de la mairie (cohérent avec decp-2026T02925)"
-  },
-  {
-   "numero_marche": "20161660000012",
-   "objet": "MARCHÉ DE CONCEPTION GRAPHIQUE MAIRIE DU 16EME",
-   "objet_clair": null,
-   "fournisseur": "CITRON'AILE",
-   "montant_max": 25000.0,
-   "date_notification": "2016-05-23",
-   "preuve": "Objet : « MARCHÉ DE CONCEPTION GRAPHIQUE MAIRIE DU 16EME » — prestation nommément destinée à la mairie"
-  }
- ],
- "mandate": null,
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+16e"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": null,
+    "url": null,
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "stats": {
+    "n_delibs": 930,
+    "delibs_span": [
+      1995,
+      2026
+    ],
+    "n_bmo_brut": 0,
+    "n_bmo_verifies": null,
+    "invest_total_eur": 157266.88,
+    "invest_annees": [
+      "2024"
+    ],
+    "lecture_mode": "titre nommant le lieu (24 trouvés)",
+    "lecture_mode_en": "title naming the place (24 found)",
+    "n_lus": 0,
+    "n_lieu": null
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": null,
+  "moments": [],
+  "montants": [],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": {
+    "1997": [
+      {
+        "reference": "1997 DPA 167",
+        "titre": "Autorisation à M. le Maire de Paris de signer des protocoles d'accord relatifs aux indemnisations de Mmes Véronique BOURGEOIS-NOURY, Claudie DUMARCHEZ-FABRE, Lou PERDU et MM. René ACH, Pierre DRUESNES et Miguel-Ange REYES, artistes, en réparation de dommages survenus à des oeuvres le 9 janvier 1997 à la mairie du 16e arrondissement. M. Alain DESTREM, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "NOVEMBRE 1997",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49461"
+      }
+    ],
+    "1999": [
+      {
+        "reference": "1999 DPA 143",
+        "titre": "Approbation du principe de la réfection de couverture de la mairie du 16e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 1999",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83659"
+      }
+    ],
+    "2000": [
+      {
+        "reference": "2000 DPA 3",
+        "titre": "Approbation du principe de la rénovation de la chaufferie de la mairie du 16e arrondissement et de la ventilation du stade Pierre-de-Coubertin (16e). - Approbation des modalités d'attribution des marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. M. Jean-François LEGARET et M. Dominique CANE, rapporteurs.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JANVIER 2000",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48498"
+      },
+      {
+        "reference": "2000 DPA 319",
+        "titre": "Approbation du principe de la rénovation totale de couvertures ainsi que l'aménagement de bureaux et de vestiaires à la mairie du 16e arrondissement. - Approbation des modalités d'attribution des marchés de travaux correspondants. - Autorisation à M. le Maire de Paris de signer lesdits marchés. M. Jean-François LEGARET, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "DECEMBRE 2000",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40744"
+      }
+    ],
+    "2002": [
+      {
+        "reference": "2002 DPA 274",
+        "titre": "Approbation du principe de réalisation des travaux de modernisation des installations électriques, de modernisation de la couverture, et de réaménagement de la loge et de l'appartement du gardien à la Mairie du 16ème arrondissement sise 71, avenue Henri-Martin (16e) et des modalités de passation des marchés de travaux correspondants. - Autorisation à Monsieur le Maire de signer lesdits marchés. - Autorisation à Monsieur le Maire de Paris, de déposer la demande de permis de construire pour la réa",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUIN 2002",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55878"
+      }
+    ],
+    "2003": [
+      {
+        "reference": "2003 DPA 5",
+        "titre": "Approbation du principe de réalisation des travaux de modernisation de la couverture à la mairie du 16e arrondissement sise 71, avenue Henri-Martin (16e) et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de signer ledit marché. Mme Mireille FLAM, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "MARS 2003",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68815"
+      }
+    ],
+    "2004": [
+      {
+        "reference": "2004 DPA 107",
+        "titre": "Approbation du principe de réalisation des travaux de modernisation des menuiseries extérieures à la Mairie du 16e arrondissement, sise 71, avenue Henri-Martin (16e), et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "MAI 2004",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45860"
+      },
+      {
+        "reference": "2004 DPA 107",
+        "titre": "Approbation du principe de réalisation des travaux de mise en sécurité de la grille de clôture à la Mairie du 16e arrondissement et des modalités de passation du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Mireille FLAM, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "MAI 2004",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45893"
+      }
+    ],
+    "2009": [
+      {
+        "reference": "2009 DDEE 42",
+        "titre": "G Subvention à l’association “Accueil Social, Familial et Orientation des Sans Emploi” dans le cadre de la permanence “emploi” au sein de la mairie du 16e arrondissement. M. Christian SAUTTER, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "NOVEMBRE 2009",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36078"
+      }
+    ],
+    "2010": [
+      {
+        "reference": "2010 DDEEES 64",
+        "titre": "G Signature d’une convention avec l’Association de Préfiguration Régie de Quartier du 16ème arrondissement, domiciliée Mairie du 16ème, visant une aide à l’installation. Mme Seybah DAGOMA, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUILLET 2010",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78549"
+      }
+    ]
+  },
+  "invest": [
+    {
+      "annee": 2024,
+      "montant_eur": 157266.88,
+      "nom_projet": "Mairie Du 16e Arrondissement - Transformation d'un logement en bureaux",
+      "preuve": "Nom du projet : « Mairie Du 16e Arrondissement - Transformation d'un logement en bureaux » (74 m du lieu)",
+      "id": "2024_16_45_003"
+    }
+  ],
+  "marches": [
+    {
+      "numero_marche": "decp-2026T02925",
+      "objet": "MS - TVX - Lot 5 - SET 1 - Modernisation, avec changement d'énergie et passage du gaz à la vapeur, du centre thermique de la Mairie du 16ème arrondissement - 71 avenue Henri Martin 75016 Paris",
+      "objet_clair": null,
+      "fournisseur": "CRAM",
+      "montant_max": 368340.76,
+      "date_notification": "2026-03-17",
+      "preuve": "Objet cite explicitement « Mairie du 16ème arrondissement - 71 avenue Henri Martin 75016 Paris » (adresse du lieu) pour des travaux de modernisation du centre thermique"
+    },
+    {
+      "numero_marche": "20222022T08687",
+      "objet": "MODERNISATION DES MENUISERIES EXTÉRIEURES MAIRIE DU 16EME",
+      "objet_clair": null,
+      "fournisseur": "ART DU BOIS SABIR",
+      "montant_max": 289998.0,
+      "date_notification": "2022-11-18",
+      "preuve": "Objet : « MODERNISATION DES MENUISERIES EXTÉRIEURES MAIRIE DU 16EME » — travaux sur le bâtiment de la mairie"
+    },
+    {
+      "numero_marche": "20151660000002",
+      "objet": "CONCEPTION GRAPHIQUE POUR LA MAIRIE DU 16E",
+      "objet_clair": null,
+      "fournisseur": "ATTRIBUT COMMUNICATION ET DEVELOPP",
+      "montant_max": 100000.0,
+      "date_notification": "2015-01-23",
+      "preuve": "Objet : « CONCEPTION GRAPHIQUE POUR LA MAIRIE DU 16E » — prestation nommément destinée à la mairie"
+    },
+    {
+      "numero_marche": "20141660000028",
+      "objet": "FOURNITURE DE VINS DE CHAMPAGNE POUR LA MAIRIE DU 16E",
+      "objet_clair": null,
+      "fournisseur": "CHAMPAGNE PANNIER",
+      "montant_max": 80000.0,
+      "date_notification": "2014-11-06",
+      "preuve": "Objet : « FOURNITURE DE VINS DE CHAMPAGNE POUR LA MAIRIE DU 16E » — fourniture nommément destinée à la mairie"
+    },
+    {
+      "numero_marche": "20242024S08091",
+      "objet": "MOE HORS LOI MOP MODERNISATION CT MAIRIE DU 16ÈME",
+      "objet_clair": "Études pour moderniser le chauffage de la mairie du 16e arrondissement",
+      "fournisseur": "CPS BUREAU D'ETUDES",
+      "montant_max": 26250.0,
+      "date_notification": "2024-07-31",
+      "preuve": "Objet : « MOE HORS LOI MOP MODERNISATION CT MAIRIE DU 16ÈME » — maîtrise d'œuvre pour la modernisation du centre thermique de la mairie (cohérent avec decp-2026T02925)"
+    },
+    {
+      "numero_marche": "20161660000012",
+      "objet": "MARCHÉ DE CONCEPTION GRAPHIQUE MAIRIE DU 16EME",
+      "objet_clair": null,
+      "fournisseur": "CITRON'AILE",
+      "montant_max": 25000.0,
+      "date_notification": "2016-05-23",
+      "preuve": "Objet : « MARCHÉ DE CONCEPTION GRAPHIQUE MAIRIE DU 16EME » — prestation nommément destinée à la mairie"
+    }
+  ],
+  "mandate": null,
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+16e"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- }
 }

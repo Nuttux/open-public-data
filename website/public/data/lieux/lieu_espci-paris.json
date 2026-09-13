@@ -1,171 +1,179 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "espci-paris",
- "name": "ESPCI Paris",
- "kind_fr": "École",
- "kind_en": "École",
- "famille": "services",
- "arrondissement": 5,
- "lat": 48.84146,
- "lon": 2.34681,
- "photo": "/img/lieux/espci-paris.jpg",
- "photo_credit": {
-  "licence": "CC BY-SA 3.0",
-  "auteur": "LPLT",
-  "url": "https://commons.wikimedia.org/wiki/File:ESPCI_de_Paris.JPG",
-  "source": "Wikimedia Commons"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": null,
-  "url": null,
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 621,
-  "delibs_span": [
-   2001,
-   2026
-  ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "titre nommant le lieu (1 trouvés)",
-  "lecture_mode_en": "title naming the place (1 found)",
-  "n_lus": 1,
-  "n_lieu": null
- },
- "subventions_exploitant": {
-  "nom_fiche": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-  "total_eur": 294663182.5,
-  "annees": [
-   "2010",
-   "2024"
-  ],
-  "rows": [
-   {
-    "annee": "2024",
-    "montant_eur": 19947600.0,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2023",
-    "montant_eur": 13357600.0,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2022",
-    "montant_eur": 14517600.0,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2021",
-    "montant_eur": 15057368.5,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2020",
-    "montant_eur": 21295000.0,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2019",
-    "montant_eur": 15300000.0,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2018",
-    "montant_eur": 38270000.0,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2017",
-    "montant_eur": 37100000.0,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2016",
-    "montant_eur": 30675000.0,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2014",
-    "montant_eur": 17995000.0,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2013",
-    "montant_eur": 23980014.0,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2012",
-    "montant_eur": 15700000.0,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2011",
-    "montant_eur": 16468000.0,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   },
-   {
-    "annee": "2010",
-    "montant_eur": 15000000.0,
-    "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
-    "thematique": "Éducation"
-   }
-  ],
-  "perimetre": "multi",
-  "note_publique": "Ces montants sont les subventions de fonctionnement et d'investissement versées par la Ville à la régie qui gère l'école : ils financent son activité d'enseignement et de recherche, pas seulement ses bâtiments du 10-22, rue Vauquelin. La Ville a par ailleurs financé en 2010 l'aménagement de locaux destinés à l'Institut Langevin de l'école sur le campus de Jussieu — une dépense versée à l'Établissement public du campus de Jussieu, donc absente du total ci-dessus.",
-  "autres_sites": [
-   "Locaux de l'Institut Langevin de l'ESPCI, campus de Jussieu (5e)"
-  ]
- },
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": null,
- "invest": [],
- "marches": [],
- "mandate": null,
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=ESPCI+Paris"
+  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "espci-paris",
+  "name": "ESPCI Paris",
+  "kind_fr": "École",
+  "kind_en": "École",
+  "famille": "services",
+  "arrondissement": 5,
+  "lat": 48.84146,
+  "lon": 2.34681,
+  "photo": "/img/lieux/espci-paris.jpg",
+  "photo_credit": {
+    "licence": "CC BY-SA 3.0",
+    "auteur": "LPLT",
+    "url": "https://commons.wikimedia.org/wiki/File:ESPCI_de_Paris.JPG",
+    "source": "Wikimedia Commons"
   },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": null,
+    "url": null,
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "stats": {
+    "n_delibs": 621,
+    "delibs_span": [
+      2001,
+      2026
+    ],
+    "n_bmo_brut": 0,
+    "n_bmo_verifies": null,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "titre nommant le lieu (1 trouvés)",
+    "lecture_mode_en": "title naming the place (1 found)",
+    "n_lus": 1,
+    "n_lieu": null
+  },
+  "subventions_exploitant": {
+    "nom_fiche": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+    "total_eur": 294663182.5,
+    "annees": [
+      "2010",
+      "2024"
+    ],
+    "rows": [
+      {
+        "annee": "2024",
+        "montant_eur": 19947600.0,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2023",
+        "montant_eur": 13357600.0,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2022",
+        "montant_eur": 14517600.0,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2021",
+        "montant_eur": 15057368.5,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2020",
+        "montant_eur": 21295000.0,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2019",
+        "montant_eur": 15300000.0,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2018",
+        "montant_eur": 38270000.0,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2017",
+        "montant_eur": 37100000.0,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2016",
+        "montant_eur": 30675000.0,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2014",
+        "montant_eur": 17995000.0,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2013",
+        "montant_eur": 23980014.0,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2012",
+        "montant_eur": 15700000.0,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2011",
+        "montant_eur": 16468000.0,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      },
+      {
+        "annee": "2010",
+        "montant_eur": 15000000.0,
+        "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+        "thematique": "Éducation"
+      }
+    ],
+    "perimetre": "multi",
+    "note_publique": "Ces montants sont les subventions de fonctionnement et d'investissement versées par la Ville à la régie qui gère l'école : ils financent son activité d'enseignement et de recherche, pas seulement ses bâtiments du 10-22, rue Vauquelin. La Ville a par ailleurs financé en 2010 l'aménagement de locaux destinés à l'Institut Langevin de l'école sur le campus de Jussieu — une dépense versée à l'Établissement public du campus de Jussieu, donc absente du total ci-dessus.",
+    "autres_sites": [
+      "Locaux de l'Institut Langevin de l'ESPCI, campus de Jussieu (5e)"
+    ]
+  },
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": null,
+  "moments": [],
+  "montants": [],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": null,
+  "invest": [],
+  "marches": [],
+  "mandate": null,
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=ESPCI+Paris"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- }
 }

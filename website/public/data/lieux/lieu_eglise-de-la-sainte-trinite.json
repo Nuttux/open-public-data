@@ -1,107 +1,115 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "eglise-de-la-sainte-trinite",
- "name": "Église de la Sainte-Trinité",
- "kind_fr": "Église",
- "kind_en": "Église",
- "famille": "culture",
- "arrondissement": 9,
- "lat": 48.877302,
- "lon": 2.331398,
- "photo": "/img/lieux/eglise-de-la-sainte-trinite.jpg",
- "photo_credit": {
-  "licence": null,
-  "auteur": null,
-  "url": "https://fr.wikipedia.org/wiki/%C3%89glise_de_la_Sainte-Trinit%C3%A9_de_Paris",
-  "source": "Wikipédia"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": "L’église de la Sainte-Trinité de Paris est un édifice religieux de culte catholique romain situé place d'Estienne-d'Orves, dans le 9e arrondissement de Paris, au croisement de la rue Blanche, de la rue de Clichy, de la rue de la Chaussée-d'Antin, de la rue Saint-Lazare et de la rue de Châteaudun.",
-  "url": "https://fr.wikipedia.org/wiki/%C3%89glise_de_la_Sainte-Trinit%C3%A9_de_Paris",
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 906,
-  "delibs_span": [
-   1995,
-   2026
-  ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 15231227.8,
-  "invest_annees": [
-   "2019",
-   "2022",
-   "2023",
-   "2024"
-  ],
-  "lecture_mode": "tête du classement Solr (906 documents au total)",
-  "lecture_mode_en": "top of the Solr ranking (906 documents total)",
-  "n_lus": 42,
-  "n_lieu": null
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": null,
- "invest": [
-  {
-   "annee": 2019,
-   "montant_eur": 544032.0,
-   "nom_projet": "Edifices cultuels Eglise de la Sainte Trinité - Restauration du massif d'entrée",
-   "preuve": "Le nom du projet nomme le lieu verbatim : « Edifices cultuels Eglise de la Sainte Trinité - Restauration du massif d'entrée ». Même opération (massif d'entrée) que la ligne 2023.",
-   "id": "2019_09_il_017"
+  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "eglise-de-la-sainte-trinite",
+  "name": "Église de la Sainte-Trinité",
+  "kind_fr": "Église",
+  "kind_en": "Église",
+  "famille": "culture",
+  "arrondissement": 9,
+  "lat": 48.877302,
+  "lon": 2.331398,
+  "photo": "/img/lieux/eglise-de-la-sainte-trinite.jpg",
+  "photo_credit": {
+    "licence": null,
+    "auteur": null,
+    "url": "https://fr.wikipedia.org/wiki/%C3%89glise_de_la_Sainte-Trinit%C3%A9_de_Paris",
+    "source": "Wikipédia"
   },
-  {
-   "annee": 2022,
-   "montant_eur": 6476861.0,
-   "nom_projet": "Eglise De La Trinite - Restauration du massif d'entrée",
-   "preuve": "« Eglise De La Trinite » est le nom court de ce lieu, employé tel quel par le Conseil de Paris pour ce bâtiment : « échafaudage de restauration de l'église de la Trinité (9e) » (2018 DAC 745, 2022 DAC 512). L'objet « Restauration du massif d'entrée » est identique à celui des lignes nommant explicitement la Sainte-Trinité, et le projet est à 110 m du lieu. L'homonyme du corpus (« église évangélique luthérienne de la Trinité », 172 bd Vincent-Auriol, 13e) est exclu par l'arrondissement et la distance.",
-   "id": "2022_09_24_010"
-  },
-  {
-   "annee": 2023,
-   "montant_eur": 3713587.41,
-   "nom_projet": "Eglise de la Sainte-Trinité - Travaux de rénovation du massif d'entrée",
-   "preuve": "Le nom du projet nomme le lieu verbatim : « Eglise de la Sainte-Trinité - Travaux de rénovation du massif d'entrée ». Le chantier est corroboré par les délibérations sur l'échafaudage de restauration de l'église de la Trinité (9e) : 2018 DAC 745, 2022 DAC 512, 2024 DAC 398.",
-   "id": "2023_09_24_019"
-  },
-  {
-   "annee": 2024,
-   "montant_eur": 4496747.39,
-   "nom_projet": "Eglise De La Trinite - Restauration du massif d'entrée",
-   "preuve": "Même opération que la ligne 2022 : « Eglise De La Trinite - Restauration du massif d'entrée », à 110 m du lieu. La délibération 2024 DAC 398 porte sur l'espace publicitaire installé sur « l'échafaudage de l'église la Trinité (9e) », ce qui atteste que le chantier était en cours cette année-là.",
-   "id": "2024_09_24_013"
-  }
- ],
- "marches": [],
- "mandate": null,
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89glise+de+la+Sainte-Trinit%C3%A9"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "L’église de la Sainte-Trinité de Paris est un édifice religieux de culte catholique romain situé place d'Estienne-d'Orves, dans le 9e arrondissement de Paris, au croisement de la rue Blanche, de la rue de Clichy, de la rue de la Chaussée-d'Antin, de la rue Saint-Lazare et de la rue de Châteaudun.",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89glise_de_la_Sainte-Trinit%C3%A9_de_Paris",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "stats": {
+    "n_delibs": 906,
+    "delibs_span": [
+      1995,
+      2026
+    ],
+    "n_bmo_brut": 0,
+    "n_bmo_verifies": null,
+    "invest_total_eur": 15231227.8,
+    "invest_annees": [
+      "2019",
+      "2022",
+      "2023",
+      "2024"
+    ],
+    "lecture_mode": "tête du classement Solr (906 documents au total)",
+    "lecture_mode_en": "top of the Solr ranking (906 documents total)",
+    "n_lus": 42,
+    "n_lieu": null
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": null,
+  "moments": [],
+  "montants": [],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": null,
+  "invest": [
+    {
+      "annee": 2019,
+      "montant_eur": 544032.0,
+      "nom_projet": "Edifices cultuels Eglise de la Sainte Trinité - Restauration du massif d'entrée",
+      "preuve": "Le nom du projet nomme le lieu verbatim : « Edifices cultuels Eglise de la Sainte Trinité - Restauration du massif d'entrée ». Même opération (massif d'entrée) que la ligne 2023.",
+      "id": "2019_09_il_017"
+    },
+    {
+      "annee": 2022,
+      "montant_eur": 6476861.0,
+      "nom_projet": "Eglise De La Trinite - Restauration du massif d'entrée",
+      "preuve": "« Eglise De La Trinite » est le nom court de ce lieu, employé tel quel par le Conseil de Paris pour ce bâtiment : « échafaudage de restauration de l'église de la Trinité (9e) » (2018 DAC 745, 2022 DAC 512). L'objet « Restauration du massif d'entrée » est identique à celui des lignes nommant explicitement la Sainte-Trinité, et le projet est à 110 m du lieu. L'homonyme du corpus (« église évangélique luthérienne de la Trinité », 172 bd Vincent-Auriol, 13e) est exclu par l'arrondissement et la distance.",
+      "id": "2022_09_24_010"
+    },
+    {
+      "annee": 2023,
+      "montant_eur": 3713587.41,
+      "nom_projet": "Eglise de la Sainte-Trinité - Travaux de rénovation du massif d'entrée",
+      "preuve": "Le nom du projet nomme le lieu verbatim : « Eglise de la Sainte-Trinité - Travaux de rénovation du massif d'entrée ». Le chantier est corroboré par les délibérations sur l'échafaudage de restauration de l'église de la Trinité (9e) : 2018 DAC 745, 2022 DAC 512, 2024 DAC 398.",
+      "id": "2023_09_24_019"
+    },
+    {
+      "annee": 2024,
+      "montant_eur": 4496747.39,
+      "nom_projet": "Eglise De La Trinite - Restauration du massif d'entrée",
+      "preuve": "Même opération que la ligne 2022 : « Eglise De La Trinite - Restauration du massif d'entrée », à 110 m du lieu. La délibération 2024 DAC 398 porte sur l'espace publicitaire installé sur « l'échafaudage de l'église la Trinité (9e) », ce qui atteste que le chantier était en cours cette année-là.",
+      "id": "2024_09_24_013"
+    }
+  ],
+  "marches": [],
+  "mandate": null,
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89glise+de+la+Sainte-Trinit%C3%A9"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- }
 }

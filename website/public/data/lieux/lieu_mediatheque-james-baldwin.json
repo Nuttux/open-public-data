@@ -1,147 +1,155 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "mediatheque-james-baldwin",
- "name": "Médiathèque James Baldwin",
- "kind_fr": "Bibliothèque",
- "kind_en": "Library",
- "famille": "culture",
- "arrondissement": 19,
- "lat": 48.876813,
- "lon": 2.396678,
- "photo": "/img/lieux/mediatheque-james-baldwin.jpg",
- "photo_credit": {
-  "licence": null,
-  "auteur": null,
-  "url": "https://fr.wikipedia.org/wiki/M%C3%A9diath%C3%A8que_James-Baldwin",
-  "source": "Wikipédia"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": "La médiathèque James-Baldwin est une médiathèque faisant partie des bibliothèques municipales de la ville de Paris, créée en 2024 dans le 19e arrondissement de Paris, à proximité de la place des fêtes. Elle a été nommée en référence à l'écrivain américain James Baldwin. Les spécialités documentaires de la médiathèque sont le féminisme, les cultures LGBTQIA+, l'écologie et l'exil et la culture sourde.",
-  "url": "https://fr.wikipedia.org/wiki/M%C3%A9diath%C3%A8que_James-Baldwin",
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "mediatheque-james-baldwin",
+  "name": "Médiathèque James Baldwin",
+  "kind_fr": "Bibliothèque",
+  "kind_en": "Library",
+  "famille": "culture",
+  "arrondissement": 19,
+  "lat": 48.876813,
+  "lon": 2.396678,
+  "photo": "/img/lieux/mediatheque-james-baldwin.jpg",
+  "photo_credit": {
+    "licence": null,
+    "auteur": null,
+    "url": "https://fr.wikipedia.org/wiki/M%C3%A9diath%C3%A8que_James-Baldwin",
+    "source": "Wikipédia"
   },
-  "extract_en": "The Médiathèque James-Baldwin is a médiathèque belonging to the City of Paris's municipal library network, created in 2024 in the 19th arrondissement of Paris, near the Place des Fêtes. It was named after the American writer James Baldwin. The médiathèque's documentary specialties are feminism, LGBTQIA+ cultures, ecology and exile, and deaf culture."
- },
- "stats": {
-  "n_delibs": 80,
-  "delibs_span": [
-   2019,
-   2021
-  ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 13162650.58,
-  "invest_annees": [
-   "2023",
-   "2024"
-  ],
-  "lecture_mode": "titre nommant le lieu (2 trouvés)",
-  "lecture_mode_en": "title naming the place (2 found)",
-  "n_lus": 2,
-  "n_lieu": 2
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": "En juin 2019, le groupe PCF-FG dépose le vœu n° 47 demandant qu'un lieu parisien porte le nom de James Baldwin, écrivain afro-américain lié à Paris, en référence à la recommandation 44 du rapport « Paris, ville phare de l'inclusion et de la diversité ». Présenté par Raphaëlle PRIMET, le vœu reçoit un avis favorable de l'adjointe Catherine VIEU-CHARIER et est adopté. Un an et demi plus tard, en février 2021, le Conseil examine le projet de délibération DAC 346 attribuant cette dénomination à la médiathèque de la rue Jean-Quarré, dans le 19e arrondissement. Le débat mobilise plusieurs inscrits, dont David ALPHAND, qui salue « un très beau projet de délibération » et rappelle l'attachement de Baldwin à Paris. Le vœu de 2019 met en avant l'écrivain comme une figure de la lutte pour les droits civiques et LGBTQI ; en 2021, David ALPHAND insiste surtout sur son talent littéraire et son attachement à Paris.",
- "moments": [
-  {
-   "id": "150026",
-   "seance": "JUIN 2019",
-   "fait": "Le Conseil adopte le vœu n° 47 (PCF-FG) demandant qu'un lieu parisien porte le nom de James Baldwin, avec un avis favorable de l'Exécutif.",
-   "pourquoi": "L'idée d'un hommage parisien est lancée",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=150026",
-   "fait_en": "The Council adopted motion no. 47 (PCF-FG) asking that a Paris location be named after James Baldwin, with a favorable opinion from the executive.",
-   "pourquoi_en": "The idea of a Paris tribute is launched"
-  },
-  {
-   "id": "157599",
-   "seance": "FEVRIER 2021",
-   "fait": "Le Conseil examine le projet de délibération DAC 346 attribuant la dénomination James Baldwin à la médiathèque de la rue Jean-Quarré (19e).",
-   "pourquoi": "L'hommage passe du principe de 2019 à un lieu précis",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157599",
-   "fait_en": "The Council examined draft deliberation DAC 346 assigning the name James Baldwin to the médiathèque on rue Jean-Quarré (19th arrondissement).",
-   "pourquoi_en": "The tribute moves from the 2019 principle to a specific place"
-  }
- ],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": null,
- "invest": [
-  {
-   "annee": 2023,
-   "montant_eur": 6540634.64,
-   "nom_projet": "Médiathèque James Baldwin et Maison des Réfugiés Création",
-   "preuve": "Nom du projet verbatim « Médiathèque James Baldwin et Maison des Réfugiés Création » : il nomme explicitement ce lieu (signal « nom » du candidat, point géocodé à 496 m). Mais l'opération couvre aussi la Maison des Réfugiés : le montant de 6 540 634,64 € ne porte pas sur la seule médiathèque, et la part attribuable à ce lieu n'est pas connue — d'où une confiance moyenne.",
-   "id": "2023_19_54_016"
-  },
-  {
-   "annee": 2024,
-   "montant_eur": 6622015.94,
-   "nom_projet": "Médiathèque James Baldwin",
-   "preuve": "Nom du projet verbatim « Médiathèque James Baldwin » : il nomme explicitement CE lieu. Identité confirmée par la délibération 2021 DAC 346 « Attribution de la dénomination James Baldwin à la médiathèque de la rue Jean-Quarré (19e) » — unique médiathèque parisienne portant ce nom. Le rattachement repose sur le nom (signal « nom » du candidat), pas sur la distance : le point géocodé du projet est à 1 446 m du lieu, incohérence de géolocalisation de la source qui n'infirme pas le nom.",
-   "id": "2024_19_54_014"
-  }
- ],
- "marches": [],
- "mandate": {
-  "par_annee": {
-   "2018": 262026.23,
-   "2019": 114974.9,
-   "2020": 726922.6,
-   "2021": 750889.53,
-   "2022": 347102.7
-  },
-  "total_eur": 2201915.96,
-  "operations": [
-   {
-    "ap_cle": "1704483",
-    "ap_texte": "Médiath James Baldwin 19",
-    "mandate_par_annee": {
-     "2018": 262026.23,
-     "2019": 114974.9,
-     "2020": 726922.6,
-     "2021": 750889.53,
-     "2022": 347102.7
-    },
-    "total_mandate": 2201915.96,
-    "preuve": "Libellé d'opération verbatim « Médiath James Baldwin 19 » : le candidat a été reconnu sur la partie distinctive « james baldwin », mais le libellé entier abrège « Médiathèque James Baldwin » et porte l'arrondissement 19 — ce n'est pas une enveloppe générique de direction. Confirmation par le type d'équipement : direction DAC, mission « AFFAIRES CULTURELLES ». La délibération 2021 DAC 346 confirme qu'il s'agit de l'unique médiathèque parisienne portant ce nom, rue Jean-Quarré (19e). Les mandatements 2018-2022 recouvrent la période de création de l'équipement, cohérente avec les opérations d'investissement « Création de la médiathèque Jean Quarré ».",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1704483"
-   }
-  ],
-  "periode": [
-   "2018",
-   "2022"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=James+Baldwin"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "La médiathèque James-Baldwin est une médiathèque faisant partie des bibliothèques municipales de la ville de Paris, créée en 2024 dans le 19e arrondissement de Paris, à proximité de la place des fêtes. Elle a été nommée en référence à l'écrivain américain James Baldwin. Les spécialités documentaires de la médiathèque sont le féminisme, les cultures LGBTQIA+, l'écologie et l'exil et la culture sourde.",
+    "url": "https://fr.wikipedia.org/wiki/M%C3%A9diath%C3%A8que_James-Baldwin",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    },
+    "extract_en": "The Médiathèque James-Baldwin is a médiathèque belonging to the City of Paris's municipal library network, created in 2024 in the 19th arrondissement of Paris, near the Place des Fêtes. It was named after the American writer James Baldwin. The médiathèque's documentary specialties are feminism, LGBTQIA+ cultures, ecology and exile, and deaf culture."
+  },
+  "stats": {
+    "n_delibs": 80,
+    "delibs_span": [
+      2019,
+      2021
+    ],
+    "n_bmo_brut": 0,
+    "n_bmo_verifies": null,
+    "invest_total_eur": 13162650.58,
+    "invest_annees": [
+      "2023",
+      "2024"
+    ],
+    "lecture_mode": "titre nommant le lieu (2 trouvés)",
+    "lecture_mode_en": "title naming the place (2 found)",
+    "n_lus": 2,
+    "n_lieu": 2
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "En juin 2019, le groupe PCF-FG dépose le vœu n° 47 demandant qu'un lieu parisien porte le nom de James Baldwin, écrivain afro-américain lié à Paris, en référence à la recommandation 44 du rapport « Paris, ville phare de l'inclusion et de la diversité ». Présenté par Raphaëlle PRIMET, le vœu reçoit un avis favorable de l'adjointe Catherine VIEU-CHARIER et est adopté. Un an et demi plus tard, en février 2021, le Conseil examine le projet de délibération DAC 346 attribuant cette dénomination à la médiathèque de la rue Jean-Quarré, dans le 19e arrondissement. Le débat mobilise plusieurs inscrits, dont David ALPHAND, qui salue « un très beau projet de délibération » et rappelle l'attachement de Baldwin à Paris. Le vœu de 2019 met en avant l'écrivain comme une figure de la lutte pour les droits civiques et LGBTQI ; en 2021, David ALPHAND insiste surtout sur son talent littéraire et son attachement à Paris.",
+  "moments": [
+    {
+      "id": "150026",
+      "seance": "JUIN 2019",
+      "fait": "Le Conseil adopte le vœu n° 47 (PCF-FG) demandant qu'un lieu parisien porte le nom de James Baldwin, avec un avis favorable de l'Exécutif.",
+      "pourquoi": "L'idée d'un hommage parisien est lancée",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=150026",
+      "fait_en": "The Council adopted motion no. 47 (PCF-FG) asking that a Paris location be named after James Baldwin, with a favorable opinion from the executive.",
+      "pourquoi_en": "The idea of a Paris tribute is launched"
+    },
+    {
+      "id": "157599",
+      "seance": "FEVRIER 2021",
+      "fait": "Le Conseil examine le projet de délibération DAC 346 attribuant la dénomination James Baldwin à la médiathèque de la rue Jean-Quarré (19e).",
+      "pourquoi": "L'hommage passe du principe de 2019 à un lieu précis",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157599",
+      "fait_en": "The Council examined draft deliberation DAC 346 assigning the name James Baldwin to the médiathèque on rue Jean-Quarré (19th arrondissement).",
+      "pourquoi_en": "The tribute moves from the 2019 principle to a specific place"
+    }
+  ],
+  "montants": [],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": null,
+  "invest": [
+    {
+      "annee": 2023,
+      "montant_eur": 6540634.64,
+      "nom_projet": "Médiathèque James Baldwin et Maison des Réfugiés Création",
+      "preuve": "Nom du projet verbatim « Médiathèque James Baldwin et Maison des Réfugiés Création » : il nomme explicitement ce lieu (signal « nom » du candidat, point géocodé à 496 m). Mais l'opération couvre aussi la Maison des Réfugiés : le montant de 6 540 634,64 € ne porte pas sur la seule médiathèque, et la part attribuable à ce lieu n'est pas connue — d'où une confiance moyenne.",
+      "id": "2023_19_54_016"
+    },
+    {
+      "annee": 2024,
+      "montant_eur": 6622015.94,
+      "nom_projet": "Médiathèque James Baldwin",
+      "preuve": "Nom du projet verbatim « Médiathèque James Baldwin » : il nomme explicitement CE lieu. Identité confirmée par la délibération 2021 DAC 346 « Attribution de la dénomination James Baldwin à la médiathèque de la rue Jean-Quarré (19e) » — unique médiathèque parisienne portant ce nom. Le rattachement repose sur le nom (signal « nom » du candidat), pas sur la distance : le point géocodé du projet est à 1 446 m du lieu, incohérence de géolocalisation de la source qui n'infirme pas le nom.",
+      "id": "2024_19_54_014"
+    }
+  ],
+  "marches": [],
+  "mandate": {
+    "par_annee": {
+      "2018": 262026.23,
+      "2019": 114974.9,
+      "2020": 726922.6,
+      "2021": 750889.53,
+      "2022": 347102.7
+    },
+    "total_eur": 2201915.96,
+    "operations": [
+      {
+        "ap_cle": "1704483",
+        "ap_texte": "Médiath James Baldwin 19",
+        "mandate_par_annee": {
+          "2018": 262026.23,
+          "2019": 114974.9,
+          "2020": 726922.6,
+          "2021": 750889.53,
+          "2022": 347102.7
+        },
+        "total_mandate": 2201915.96,
+        "preuve": "Libellé d'opération verbatim « Médiath James Baldwin 19 » : le candidat a été reconnu sur la partie distinctive « james baldwin », mais le libellé entier abrège « Médiathèque James Baldwin » et porte l'arrondissement 19 — ce n'est pas une enveloppe générique de direction. Confirmation par le type d'équipement : direction DAC, mission « AFFAIRES CULTURELLES ». La délibération 2021 DAC 346 confirme qu'il s'agit de l'unique médiathèque parisienne portant ce nom, rue Jean-Quarré (19e). Les mandatements 2018-2022 recouvrent la période de création de l'équipement, cohérente avec les opérations d'investissement « Création de la médiathèque Jean Quarré ».",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1704483"
+      }
+    ],
+    "periode": [
+      "2018",
+      "2022"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=James+Baldwin"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "In June 2019, the PCF-FG group filed motion no. 47 asking that a Paris location be named after James Baldwin, the African-American writer with ties to Paris, citing recommendation 44 of the report \"Paris, a beacon city for inclusion and diversity.\" Presented by Raphaëlle PRIMET, the motion received a favorable opinion from deputy mayor Catherine VIEU-CHARIER and was adopted. A year and a half later, in February 2021, the Council examined draft deliberation DAC 346 assigning this name to the médiathèque on rue Jean-Quarré, in the 19th arrondissement. The debate drew in several speakers, including David ALPHAND, who praised \"a very fine draft deliberation\" and recalled Baldwin's attachment to Paris. The 2019 motion presented the writer as a figure in the struggle for civil rights and LGBTQI rights; in 2021, David ALPHAND emphasized above all his literary talent and his attachment to Paris.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- },
- "synthese_en": "In June 2019, the PCF-FG group filed motion no. 47 asking that a Paris location be named after James Baldwin, the African-American writer with ties to Paris, citing recommendation 44 of the report \"Paris, a beacon city for inclusion and diversity.\" Presented by Raphaëlle PRIMET, the motion received a favorable opinion from deputy mayor Catherine VIEU-CHARIER and was adopted. A year and a half later, in February 2021, the Council examined draft deliberation DAC 346 assigning this name to the médiathèque on rue Jean-Quarré, in the 19th arrondissement. The debate drew in several speakers, including David ALPHAND, who praised \"a very fine draft deliberation\" and recalled Baldwin's attachment to Paris. The 2019 motion presented the writer as a figure in the struggle for civil rights and LGBTQI rights; in 2021, David ALPHAND emphasized above all his literary talent and his attachment to Paris."
 }

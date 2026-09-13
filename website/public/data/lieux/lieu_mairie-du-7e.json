@@ -1,212 +1,220 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "mairie-du-7e",
- "name": "Mairie du 7e",
- "kind_fr": "Mairie",
- "kind_en": "Town hall",
- "famille": "services",
- "arrondissement": 7,
- "lat": 48.8558,
- "lon": 2.3129,
- "photo": null,
- "photo_credit": null,
- "seuil_commun": 2010,
- "wiki": {
-  "extract": null,
-  "url": null,
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 775,
-  "delibs_span": [
-   1995,
-   2026
-  ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "titre nommant le lieu (9 trouvés)",
-  "lecture_mode_en": "title naming the place (9 found)",
-  "n_lus": 0,
-  "n_lieu": null
- },
- "subventions_exploitant": null,
- "residents": [
-  {
-   "beneficiaire": "INTEMPORELLES UN TEMPS POUR ELLES",
-   "montant_total": 2000.0,
-   "preuve": "Objet de la subvention : \"Animation d'évènements culturels pour la Mairie du 7ème\" (prestation d'animation décrite directement pour la Mairie du 7e, sans mention d'un dispositif de financement générique — mais \"pour\" reste ambigu quant au lieu réel de l'évènement)"
-  }
- ],
- "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": {
-  "2000": [
-   {
-    "reference": "2000 DPA 206",
-    "titre": "Approbation du principe de la réhabilitation du hall d'accueil, de l'escalier d'honneur et du palier du 1er étage de la mairie du 7e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUILLET 2000",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50567"
-   }
-  ],
-  "2001": [
-   {
-    "reference": "2001 DPA 225",
-    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché de travaux signé avec l'entreprise S.A GAR \"Rénovation vieux édifices\" relatif aux travaux de réhabilitation du hall d'accueil, de l'escalier d'honneur et du palier du premier étage de la Mairie du 7e arrondissement, 116, rue de Grenelle (7e). Mme Mireille FLAM, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "FEVRIER 2002",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57975"
-   }
-  ],
-  "2006": [
-   {
-    "reference": "2006 DPA 313",
-    "titre": "Approbation du principe de réalisation des travaux de rénovation du parquet de la salle des mariages de la Mairie du 7e arrondissement et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "DECEMBRE 2006",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92106"
-   }
-  ],
-  "2007": [
-   {
-    "reference": "2007 DAC 61",
-    "titre": "Attribution d’une subvention de fonctionnement de 2.000 euros à la Société d’Histoire et d’Archéologie du VIIe arrondissement de Paris, Mairie du 7e, 116, rue de Grenelle (7e). Mme Moïra GUILMART, rapporteure.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "MARS 2007",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31725"
-   },
-   {
-    "reference": "2007 DPA 181",
-    "titre": "Approbation du principe de réalisation des travaux de restauration des façades et d’amélioration de l’accessibilité aux handicapés à la Mairie du 7e arrondissement et des modalités de passation du marché de travaux correspondant. Mmes Mireille FLAM etPénélope KOMITÈS, rapporteures.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUILLET 2007",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90125"
-   }
-  ],
-  "2009": [
-   {
-    "reference": "2009 DPA 31",
-    "titre": "Signature d’un avenant n° 1 au marché de travaux signé avec le groupement conjoint Pierrenoël / Lagrange, relatif à la restauration des façades et l’amélioration de l’accessibilité aux personnes en situation de handicap à la Mairie du 7e arrondissement. Mme Maïté ERRECART et Mme Véronique DUBARRY, rapporteures.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "FEVRIER 2009",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49942"
-   }
-  ]
- },
- "invest": [],
- "marches": [
-  {
-   "numero_marche": "20232023S03197",
-   "objet": "TRAITEUR 2023 MAIRIE DU 7EME ARDT LOT1 BUFFETS-BPU",
-   "objet_clair": null,
-   "fournisseur": "SOCIETE SEILLER",
-   "montant_max": 150000.0,
-   "date_notification": "2023-05-02",
-   "preuve": "Objet du marché nomme explicitement \"MAIRIE DU 7EME ARDT\" — prestation traiteur (buffets) pour les réceptions de la mairie"
-  },
-  {
-   "numero_marche": "20232023S03196",
-   "objet": "TRAITEUR 2023 MAIRIE DU 7E ARDT LOT2 COCKTAILS/COCKTAILS DEJ",
-   "objet_clair": null,
-   "fournisseur": "SOCIETE SEILLER",
-   "montant_max": 150000.0,
-   "date_notification": "2023-05-02",
-   "preuve": "Objet du marché nomme explicitement \"MAIRIE DU 7E ARDT\" — prestation traiteur (cocktails) pour les réceptions de la mairie"
-  },
-  {
-   "numero_marche": "20181570001250",
-   "objet": "FOURNITURES DE MOBILIER POUR LA MAIRIE DU 7EME ARRDT",
-   "objet_clair": null,
-   "fournisseur": "EXPLOITATION BLANCHET DHUISMES",
-   "montant_max": 89999.0,
-   "date_notification": "2018-10-08",
-   "preuve": "Objet du marché : \"FOURNITURES DE MOBILIER POUR LA MAIRIE DU 7EME ARRDT\" — équipement destiné au bâtiment"
-  },
-  {
-   "numero_marche": "20201570000100",
-   "objet": "ACQUISITION DE MASQUES MAIRIE DU 7EME",
-   "objet_clair": null,
-   "fournisseur": "GRAND STAR",
-   "montant_max": 40000.0,
-   "date_notification": "2020-04-25",
-   "preuve": "Objet du marché : \"ACQUISITION DE MASQUES MAIRIE DU 7EME\" — achat pour cette mairie précise (nommée), et non un marché-cadre ville"
-  },
-  {
-   "numero_marche": "20222022F00063",
-   "objet": "LIVRES NON SCOLAIRES MAIRIE DU 7E ARRDT",
-   "objet_clair": null,
-   "fournisseur": "AGENCE LUDIQUE",
-   "montant_max": 40000.0,
-   "date_notification": "2022-01-11",
-   "preuve": "Objet du marché : \"LIVRES NON SCOLAIRES MAIRIE DU 7E ARRDT\" — fourniture destinée à cette mairie précise"
-  },
-  {
-   "numero_marche": "20222022F08850",
-   "objet": "COLIS DE NOEL 2022  MAIRIE DU 7EME ARRDT",
-   "objet_clair": null,
-   "fournisseur": "LES DUCS DE GASCOGNE",
-   "montant_max": 40000.0,
-   "date_notification": "2022-11-02",
-   "preuve": "Objet du marché : \"COLIS DE NOEL 2022 MAIRIE DU 7EME ARRDT\" — colis achetés pour cette mairie précise"
-  },
-  {
-   "numero_marche": "20222022F00079",
-   "objet": "COLIS ALIMENTAIRES MAIRIE DU 7E ARRDT",
-   "objet_clair": null,
-   "fournisseur": "OOKIES",
-   "montant_max": 40000.0,
-   "date_notification": "2022-01-11",
-   "preuve": "Objet du marché : \"COLIS ALIMENTAIRES MAIRIE DU 7E ARRDT\" — colis achetés pour cette mairie précise"
-  },
-  {
-   "numero_marche": "20201570000105",
-   "objet": "COLIS DE NOEL 2020 GARDIENNES ET AGENTS MAIRIE DU 7EME",
-   "objet_clair": null,
-   "fournisseur": "SOC EXPLOITA GRANDE EPICERIE PARIS",
-   "montant_max": 27097.71,
-   "date_notification": "2020-11-24",
-   "preuve": "Objet du marché : \"COLIS DE NOEL 2020 GARDIENNES ET AGENTS MAIRIE DU 7EME\" — colis destinés aux gardiennes et agents de cette mairie précise"
-  }
- ],
- "mandate": null,
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+7e"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "mairie-du-7e",
+  "name": "Mairie du 7e",
+  "kind_fr": "Mairie",
+  "kind_en": "Town hall",
+  "famille": "services",
+  "arrondissement": 7,
+  "lat": 48.8558,
+  "lon": 2.3129,
+  "photo": null,
+  "photo_credit": null,
+  "seuil_commun": 2010,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": null,
+    "url": null,
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "stats": {
+    "n_delibs": 775,
+    "delibs_span": [
+      1995,
+      2026
+    ],
+    "n_bmo_brut": 0,
+    "n_bmo_verifies": null,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "titre nommant le lieu (9 trouvés)",
+    "lecture_mode_en": "title naming the place (9 found)",
+    "n_lus": 0,
+    "n_lieu": null
+  },
+  "subventions_exploitant": null,
+  "residents": [
+    {
+      "beneficiaire": "INTEMPORELLES UN TEMPS POUR ELLES",
+      "montant_total": 2000.0,
+      "preuve": "Objet de la subvention : \"Animation d'évènements culturels pour la Mairie du 7ème\" (prestation d'animation décrite directement pour la Mairie du 7e, sans mention d'un dispositif de financement générique — mais \"pour\" reste ambigu quant au lieu réel de l'évènement)"
+    }
+  ],
+  "kpi_montant": null,
+  "synthese_fr": null,
+  "moments": [],
+  "montants": [],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": {
+    "2000": [
+      {
+        "reference": "2000 DPA 206",
+        "titre": "Approbation du principe de la réhabilitation du hall d'accueil, de l'escalier d'honneur et du palier du 1er étage de la mairie du 7e arrondissement. - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Jean-François LEGARET, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUILLET 2000",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50567"
+      }
+    ],
+    "2001": [
+      {
+        "reference": "2001 DPA 225",
+        "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché de travaux signé avec l'entreprise S.A GAR \"Rénovation vieux édifices\" relatif aux travaux de réhabilitation du hall d'accueil, de l'escalier d'honneur et du palier du premier étage de la Mairie du 7e arrondissement, 116, rue de Grenelle (7e). Mme Mireille FLAM, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "FEVRIER 2002",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57975"
+      }
+    ],
+    "2006": [
+      {
+        "reference": "2006 DPA 313",
+        "titre": "Approbation du principe de réalisation des travaux de rénovation du parquet de la salle des mariages de la Mairie du 7e arrondissement et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "DECEMBRE 2006",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92106"
+      }
+    ],
+    "2007": [
+      {
+        "reference": "2007 DAC 61",
+        "titre": "Attribution d’une subvention de fonctionnement de 2.000 euros à la Société d’Histoire et d’Archéologie du VIIe arrondissement de Paris, Mairie du 7e, 116, rue de Grenelle (7e). Mme Moïra GUILMART, rapporteure.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "MARS 2007",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31725"
+      },
+      {
+        "reference": "2007 DPA 181",
+        "titre": "Approbation du principe de réalisation des travaux de restauration des façades et d’amélioration de l’accessibilité aux handicapés à la Mairie du 7e arrondissement et des modalités de passation du marché de travaux correspondant. Mmes Mireille FLAM etPénélope KOMITÈS, rapporteures.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUILLET 2007",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90125"
+      }
+    ],
+    "2009": [
+      {
+        "reference": "2009 DPA 31",
+        "titre": "Signature d’un avenant n° 1 au marché de travaux signé avec le groupement conjoint Pierrenoël / Lagrange, relatif à la restauration des façades et l’amélioration de l’accessibilité aux personnes en situation de handicap à la Mairie du 7e arrondissement. Mme Maïté ERRECART et Mme Véronique DUBARRY, rapporteures.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "FEVRIER 2009",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49942"
+      }
+    ]
+  },
+  "invest": [],
+  "marches": [
+    {
+      "numero_marche": "20232023S03197",
+      "objet": "TRAITEUR 2023 MAIRIE DU 7EME ARDT LOT1 BUFFETS-BPU",
+      "objet_clair": null,
+      "fournisseur": "SOCIETE SEILLER",
+      "montant_max": 150000.0,
+      "date_notification": "2023-05-02",
+      "preuve": "Objet du marché nomme explicitement \"MAIRIE DU 7EME ARDT\" — prestation traiteur (buffets) pour les réceptions de la mairie"
+    },
+    {
+      "numero_marche": "20232023S03196",
+      "objet": "TRAITEUR 2023 MAIRIE DU 7E ARDT LOT2 COCKTAILS/COCKTAILS DEJ",
+      "objet_clair": null,
+      "fournisseur": "SOCIETE SEILLER",
+      "montant_max": 150000.0,
+      "date_notification": "2023-05-02",
+      "preuve": "Objet du marché nomme explicitement \"MAIRIE DU 7E ARDT\" — prestation traiteur (cocktails) pour les réceptions de la mairie"
+    },
+    {
+      "numero_marche": "20181570001250",
+      "objet": "FOURNITURES DE MOBILIER POUR LA MAIRIE DU 7EME ARRDT",
+      "objet_clair": null,
+      "fournisseur": "EXPLOITATION BLANCHET DHUISMES",
+      "montant_max": 89999.0,
+      "date_notification": "2018-10-08",
+      "preuve": "Objet du marché : \"FOURNITURES DE MOBILIER POUR LA MAIRIE DU 7EME ARRDT\" — équipement destiné au bâtiment"
+    },
+    {
+      "numero_marche": "20201570000100",
+      "objet": "ACQUISITION DE MASQUES MAIRIE DU 7EME",
+      "objet_clair": null,
+      "fournisseur": "GRAND STAR",
+      "montant_max": 40000.0,
+      "date_notification": "2020-04-25",
+      "preuve": "Objet du marché : \"ACQUISITION DE MASQUES MAIRIE DU 7EME\" — achat pour cette mairie précise (nommée), et non un marché-cadre ville"
+    },
+    {
+      "numero_marche": "20222022F00063",
+      "objet": "LIVRES NON SCOLAIRES MAIRIE DU 7E ARRDT",
+      "objet_clair": null,
+      "fournisseur": "AGENCE LUDIQUE",
+      "montant_max": 40000.0,
+      "date_notification": "2022-01-11",
+      "preuve": "Objet du marché : \"LIVRES NON SCOLAIRES MAIRIE DU 7E ARRDT\" — fourniture destinée à cette mairie précise"
+    },
+    {
+      "numero_marche": "20222022F08850",
+      "objet": "COLIS DE NOEL 2022  MAIRIE DU 7EME ARRDT",
+      "objet_clair": null,
+      "fournisseur": "LES DUCS DE GASCOGNE",
+      "montant_max": 40000.0,
+      "date_notification": "2022-11-02",
+      "preuve": "Objet du marché : \"COLIS DE NOEL 2022 MAIRIE DU 7EME ARRDT\" — colis achetés pour cette mairie précise"
+    },
+    {
+      "numero_marche": "20222022F00079",
+      "objet": "COLIS ALIMENTAIRES MAIRIE DU 7E ARRDT",
+      "objet_clair": null,
+      "fournisseur": "OOKIES",
+      "montant_max": 40000.0,
+      "date_notification": "2022-01-11",
+      "preuve": "Objet du marché : \"COLIS ALIMENTAIRES MAIRIE DU 7E ARRDT\" — colis achetés pour cette mairie précise"
+    },
+    {
+      "numero_marche": "20201570000105",
+      "objet": "COLIS DE NOEL 2020 GARDIENNES ET AGENTS MAIRIE DU 7EME",
+      "objet_clair": null,
+      "fournisseur": "SOC EXPLOITA GRANDE EPICERIE PARIS",
+      "montant_max": 27097.71,
+      "date_notification": "2020-11-24",
+      "preuve": "Objet du marché : \"COLIS DE NOEL 2020 GARDIENNES ET AGENTS MAIRIE DU 7EME\" — colis destinés aux gardiennes et agents de cette mairie précise"
+    }
+  ],
+  "mandate": null,
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+7e"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- }
 }

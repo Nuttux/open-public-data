@@ -1,572 +1,580 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "parc-de-bercy",
- "name": "Parc de Bercy",
- "kind_fr": "Parc",
- "kind_en": "Park",
- "famille": "vert",
- "arrondissement": 12,
- "lat": 48.8352,
- "lon": 2.3826,
- "photo": "/img/lieux/parc-de-bercy.jpg",
- "photo_credit": {
-  "licence": "CC BY-SA 3.0",
-  "auteur": "JLPC\n",
-  "url": "https://commons.wikimedia.org/wiki/File:Paris_Parc_Bercy_voie_pav%C3%A9e_2014.jpg",
-  "source": "Wikimedia Commons"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": "Le parc de Bercy est un ensemble de trois jardins situés dans le quartier de Bercy du 12e arrondissement de Paris, entre le Palais omnisports de Paris-Bercy et le centre commercial et de restauration Bercy Village, à l'emplacement des anciens entrepôts de Bercy.",
-  "url": "https://fr.wikipedia.org/wiki/Parc_de_Bercy",
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "parc-de-bercy",
+  "name": "Parc de Bercy",
+  "kind_fr": "Parc",
+  "kind_en": "Park",
+  "famille": "vert",
+  "arrondissement": 12,
+  "lat": 48.8352,
+  "lon": 2.3826,
+  "photo": "/img/lieux/parc-de-bercy.jpg",
+  "photo_credit": {
+    "licence": "CC BY-SA 3.0",
+    "auteur": "JLPC\n",
+    "url": "https://commons.wikimedia.org/wiki/File:Paris_Parc_Bercy_voie_pav%C3%A9e_2014.jpg",
+    "source": "Wikimedia Commons"
   },
-  "extract_en": "The Parc de Bercy is a set of three gardens located in the Bercy neighbourhood of the 12th arrondissement of Paris, between the Palais omnisports de Paris-Bercy and the Bercy Village shopping and dining centre, on the site of the former Bercy warehouses."
- },
- "stats": {
-  "n_delibs": 683,
-  "delibs_span": [
-   1996,
-   2025
-  ],
-  "n_bmo_brut": 2000,
-  "n_bmo_verifies": 18,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "titre nommant le lieu (86 trouvés)",
-  "lecture_mode_en": "title naming the place (86 found)",
-  "n_lus": 45,
-  "n_lieu": 31
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": "Les délibérations du Conseil de Paris suivent le parc de Bercy depuis son chantier des années 1990, aménagé sur d'anciens entrepôts vinicoles : le Conseil y vote série après série d'avenants, indemnise des marchés annulés ou repris (Orangerie, engazonnement Falleau) et s'entend affirmer par l'Exécutif que l'enveloppe initiale de 399,7 millions de francs (valeur 1992) « n'a pas été dépassée ». Autour de la grande terrasse s'ajoutent un dépôt archéologique baptisé « Les jardins de la Mémoire », des accès pour personnes à mobilité réduite dont un ascenseur retardé par des appels d'offres successifs infructueux, et la passerelle vers le quai François-Mauriac confiée à l'architecte Dietmar Feichtinger. Les usages se façonnent au fil des votes : manège, exposition, roller park couvert (indemnisé de 22 487,19 € pour travaux supplémentaires), buvette, puis la ferme en container « Agricool » reconduite à titre gratuit malgré l'opposition écologiste. À partir de 2017, le parc devient un enjeu de conflit : un vœu conteste l'« Arena 2 » qui amputerait 2,5 hectares, et l'installation d'une gare routière à Bercy-Seine transforme, selon des élus, le parc en « hall de gare » aux pelouses dégradées. La Ville annonce en 2023 vouloir fermer cette gare et reloger les autocars, intègre en 2024 l'entretien du parc et la fontaine Canyoneaustrate à la concession de l'Accor Arena, et donne en 2025 les noms des compositeurs Michel Magne et Georges Delerue à deux allées.",
- "moments": [
-  {
-   "id": "5328",
-   "seance": "JUIN 1999",
-   "fait": "Le Conseil équipe le dépôt archéologique « Les jardins de la Mémoire », sous la grande terrasse, qui abrite les vestiges des fouilles néolithiques de Bercy.",
-   "pourquoi": "Des pirogues de 6 500 ans sous le parc",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5328",
-   "fait_en": "The Council fitted out the archaeological repository \"Les jardins de la Mémoire\", beneath the great terrace, which houses the remains of the Neolithic excavations at Bercy.",
-   "pourquoi_en": "6,500-year-old dugout canoes beneath the park"
-  },
-  {
-   "id": "13359",
-   "seance": "JANVIER 2001",
-   "fait": "L'ascenseur d'accessibilité voté en 1997 n'est toujours pas construit : trois appels d'offres ont déjà échoué faute d'offres acceptables, et un quatrième vient d'être lancé.",
-   "pourquoi": "Quatre appels d'offres pour un ascenseur",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13359",
-   "fait_en": "The accessibility lift approved in 1997 still had not been built: three tenders had already failed for lack of acceptable bids, and a fourth had just been launched.",
-   "pourquoi_en": "Four tenders for a lift"
-  },
-  {
-   "id": "7073",
-   "seance": "JANVIER 2003",
-   "fait": "L'adjoint Denis Baupin annonce le calendrier de la passerelle vers le quai François-Mauriac (chantier 2004, livraison début 2006), confiée à l'architecte Dietmar Feichtinger.",
-   "pourquoi": "La passerelle signature enfin datée",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7073",
-   "fait_en": "Deputy mayor Denis Baupin announced the timetable for the footbridge to the quai François-Mauriac (construction in 2004, delivery in early 2006), entrusted to architect Dietmar Feichtinger.",
-   "pourquoi_en": "The signature footbridge finally gets a date"
-  },
-  {
-   "id": "22434",
-   "seance": "MARS 2007",
-   "fait": "Le Conseil autorise la couverture du roller park et adopte un vœu pour étudier une aire de jeux de ballons, le terrain de basket ayant cédé la place au roller.",
-   "pourquoi": "Le roller gagne, le basket perd",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22434",
-   "fait_en": "The Council authorized covering the roller park and adopted a motion to study a ball-games area, after the basketball court gave way to rollerskating.",
-   "pourquoi_en": "Rollerskating wins, basketball loses"
-  },
-  {
-   "id": "138128",
-   "seance": "SEPTEMBRE 2017",
-   "fait": "Un vœu de Danielle Simonnet demande une alternative à l'« Arena 2 », qui amputerait selon elle 2,5 hectares du parc pour les Jeux ; l'Exécutif y est défavorable.",
-   "pourquoi": "2,5 hectares de parc dans la balance",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138128",
-   "fait_en": "A motion by Danielle Simonnet asked for an alternative to the \"Arena 2\", which she said would take 2.5 hectares from the park for the Games; the executive opposed it.",
-   "pourquoi_en": "2.5 hectares of parkland at stake"
-  },
-  {
-   "id": "144116",
-   "seance": "JUILLET 2018",
-   "fait": "Le Conseil renouvelle à titre gratuit la convention de la ferme en container « Agricool », que les élus écologistes accusent de ne pas tenir ses promesses.",
-   "pourquoi": "Une ferme-vitrine gratuite qui fait débat",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144116",
-   "fait_en": "The Council renewed, free of charge, the agreement for the container farm \"Agricool\", which the Green-party elected officials accused of not keeping its promises.",
-   "pourquoi_en": "A free showcase farm sparks debate"
-  },
-  {
-   "id": "152315",
-   "seance": "SEPTEMBRE 2019",
-   "fait": "Un vœu, rejeté, dénonce le parc « devenu un hall de gare » depuis le transfert des autocars à Bercy-Seine ; la Ville dit avoir investi plus de 1 million d'euros dans sa rénovation.",
-   "pourquoi": "Le parc transformé en salle d'attente",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152315",
-   "fait_en": "A rejected motion denounced the park having \"become a train-station concourse\" since the coaches were moved to Bercy-Seine; the City said it had invested more than €1 million in its renovation.",
-   "pourquoi_en": "The park turned into a waiting room"
-  },
-  {
-   "id": "176389",
-   "seance": "JUIN 2024",
-   "fait": "À l'approche des Jeux, l'adjoint David Belliard indique que la Ville a décidé de fermer la gare Bercy-Seine, dont les flux dégradaient le parc.",
-   "pourquoi": "La Ville acte la fermeture de la gare",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176389",
-   "fait_en": "Ahead of the Games, deputy mayor David Belliard stated that the City had decided to close the Bercy-Seine coach station, whose traffic was degrading the park.",
-   "pourquoi_en": "The City decides to close the coach station"
-  }
- ],
- "montants": [
-  {
-   "seance": "JUILLET 1996",
-   "montant": "6.100.401 F",
-   "objet": "marché de construction de l'Orangerie du parc annulé par le tribunal administratif, réglé par transaction",
-   "citation": "l'annulation par le Tribunal administratif du marché d'un montant de 6.100.401 F dont elle avait été déclarée attributaire",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4122"
-  },
-  {
-   "seance": "OCTOBRE 1996",
-   "montant": "6.700.000 F",
-   "objet": "supplément de crédit soumis au vote au titre de la 4e série d'avenants (selon M. Rey)",
-   "citation": "nous allons voter un supplément de crédit de 6.700.000 F environ",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4368"
-  },
-  {
-   "seance": "OCTOBRE 1996",
-   "montant": "près de 8 millions de francs",
-   "objet": "surcoût attribué au retard du chantier (selon Mme Capelle)",
-   "citation": "Il en coûtera près de 8 millions de francs de plus aux Parisiens.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4368"
-  },
-  {
-   "seance": "NOVEMBRE 1996",
-   "montant": "7.400.000",
-   "objet": "marché initial d'engazonnement/plantations du parc, avec un avenant antérieur de près de 600.000 F (selon M. Rey)",
-   "citation": "un avenant financier a déjà été voté, de près de 600.000 F sur un marché initial de 7.400.000",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17618"
-  },
-  {
-   "seance": "NOVEMBRE 1997",
-   "montant": "2.360.000 F",
-   "objet": "aménagement d'un dépôt lapidaire sous la terrasse est (stockage d'œuvres du musée Carnavalet)",
-   "citation": "l'aménagement d'un dépôt lapidaire sous la terrasse côté est du parc pour un coût global de 2.360.000 F",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16626"
-  },
-  {
-   "seance": "NOVEMBRE 1997",
-   "montant": "399,7 millions de francs",
-   "objet": "enveloppe initiale de l'aménagement du parc, valeur juillet 1992 (selon l'adjointe M.-T. Junot)",
-   "citation": "l'enveloppe initiale concernant l'aménagement du Parc de Bercy a été fixée à 399,7 millions de francs, valeur juillet 1992. Cette enveloppe n'a pas été dépassée.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16626"
-  },
-  {
-   "seance": "MARS 1997",
-   "montant": "900.000 F",
-   "objet": "coût prévisionnel total de l'ascenseur et de l'élévateur d'accessibilité (jugé élevé par l'élue L. Schneiter)",
-   "citation": "La somme totale paraît un peu élevée (900.000 F)",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15454"
-  },
-  {
-   "seance": "MARS 1999",
-   "montant": "8 % du chiffre d'affaires hors taxes",
-   "objet": "redevance annuelle due à la Ville pour l'exploitation du manège enfantin",
-   "citation": "une redevance annuelle fixée à un taux révisable de 8 % du chiffre d'affaires hors taxes",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34298"
-  },
-  {
-   "seance": "JANVIER 2001",
-   "montant": "supérieure de 43 %",
-   "objet": "unique offre au 1er appel d'offres de l'ascenseur (juin 1998), au-dessus de l'estimation de l'administration",
-   "citation": "Un premier appel d'offres a alors été lancé en juin 1998, et déclaré infructueux compte tenu du prix de l'unique offre reçue, supérieure de 43 % à l'estimation de l'administration",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13359"
-  },
-  {
-   "seance": "JANVIER 2001",
-   "montant": "supérieure de 48,3 %",
-   "objet": "unique offre au 2e appel d'offres de l'ascenseur (décembre 1999)",
-   "citation": "un deuxième appel d'offres a été relancé en décembre 1999, lui aussi infructueux, une seule offre, supérieure de 48,3 % à l'estimation de l'administration, ayant été remise",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13359"
-  },
-  {
-   "seance": "MARS 2007",
-   "montant": "400.000 euros / 250.000 euros",
-   "objet": "couverture du roller park : crédits inscrits au BP 2007 et compléments demandés ultérieurement",
-   "citation": "400.000 euros et les 250.000 euros demandés ultérieurement sous réserve de la décision de financement",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31470"
-  },
-  {
-   "seance": "JUILLET 2008",
-   "montant": "22.487,19 euros TTC",
-   "objet": "indemnisation de la société SMC2 pour travaux supplémentaires sur la couverture du roller park",
-   "citation": "montant total de 22.487,19 euros TTC sera imputée au budget de fonctionnement 2008",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91131"
-  },
-  {
-   "seance": "JUILLET 2018",
-   "montant": "à titre gratuit",
-   "objet": "renouvellement de la convention d'occupation du domaine public accordée à Agricool (relevé par l'élue J. Morel)",
-   "citation": "convention d?occupation de l?espace public à titre gratuit",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144116"
-  },
-  {
-   "seance": "SEPTEMBRE 2019",
-   "montant": "plus de 1 million d'euros",
-   "objet": "réaménagement, rénovation et accessibilité des allées du parc (selon l'adjointe P. Komitès)",
-   "citation": "investi plus de 1 million d?euros pour son réaménagement, sa rénovation",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152315"
-  }
- ],
- "bmo_extraits": [
-  {
-   "date": "1892-03-24",
-   "extrait": "354. — Réglementation du travail dans les entrepôts de Bercy et Saint-Bernard … nO 29 de 1892), Délibère : Article premier. — Les ordres de service relatifs à l'ouverture des entrepôts de Bercy et Saint … 35 du règlement de l' entrepôt de Bercy",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64471172/f3.item",
-   "extrait_en": "354. — Regulation of work at the Bercy and Saint-Bernard warehouses … no. 29 of 1892), Resolves: Article one. — The service orders concerning the opening of the Bercy and Saint … 35 of the Bercy warehouse regulations"
-  },
-  {
-   "date": "1922-06-11",
-   "extrait": "2° A deux heures un quart : Entrepôts du Grand Bercy (aux magasins situés sur la berge, 87 à 92, et rue de Nuits, 35) : Environ 50,000 kilog. : cuivre, zinc, plomb, fer, fonte, tôle, caoutchouc, tapis, couvertures, vêtements, rideaux, baignoires, presses à copier, bois, fûts dive",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6447306z/f4.item",
-   "extrait_en": "2° At a quarter past two: Grand Bercy warehouses (at the premises located on the riverbank, 87 to 92, and rue de Nuits, 35): About 50,000 kilograms: copper, zinc, lead, iron, cast iron, sheet metal, rubber, carpets, blankets, clothing, curtains, bathtubs, copying presses, wood, various barrel"
-  },
-  {
-   "date": "1934-02-03",
-   "extrait": "Entrepôts de Bercy et Saint-Bernard. — Fourniture d'attèlages et enlèvement des ordures ménagères du 1er janvier 1934 au 31 décembre 1936",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6336212h/f8.item",
-   "extrait_en": "Bercy and Saint-Bernard warehouses. — Supply of draught teams and removal of household waste from 1 January 1934 to 31 December 1936"
-  },
-  {
-   "date": "1934-07-02",
-   "extrait": "3. — Application de la majoration des baux consentis à l' entrepôt Saint-Bernard antérieurement au 24 octobre 1919 … 4. — Déduction sur le montant global des loyers perçus aux entrepôts de Bercy et de Saint-Bernard d'une somme égale à la valeur de la fourniture d'eau de rivière",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6520855p/f32.item",
-   "extrait_en": "3. — Application of the increase in rents granted at the Saint-Bernard warehouse prior to 24 October 1919 … 4. — Deduction from the total amount of rents collected at the Bercy and Saint-Bernard warehouses of a sum equal to the value of the river-water supply"
-  }
- ],
- "bmo_recit": "Dans le Bulletin municipal, le lieu apparaît sous les traits des entrepôts de Bercy, dont le Conseil règle le fonctionnement quotidien. En 1892, il délibère ainsi sur la réglementation du travail dans les entrepôts de Bercy et Saint-Bernard, jusqu'aux ordres de service fixant leur ouverture. En 1922, le Bulletin annonce une vente aux enchères aux magasins du Grand Bercy, sur la berge et rue de Nuits : environ 50 000 kilos de cuivre, zinc, plomb, tapis, fûts et toiles goudronnées. En 1934, deux décisions d'intendance se succèdent : un marché de fourniture d'attelages et d'enlèvement des ordures ménagères des entrepôts pour les années 1934 à 1936, puis une déduction sur les loyers perçus aux entrepôts de Bercy et de Saint-Bernard, d'une somme égale à la valeur de la fourniture d'eau de rivière supprimée. Sur ce lieu, l'archive donne donc à voir l'ère des entrepôts, pas encore celle du parc.",
- "delibs_par_annee": {
-  "1996": [
-   {
-    "reference": "1996 D 1094",
-    "titre": "22 - 1996, D. 1094 - Autorisation à M. le Maire de Paris de souscrire un avenant au marché de maîtrise d'oeuvre, ainsi que des avenants aux marchés de travaux signés pour l'aménagement du parc de Bercy (12e).",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "OCTOBRE 1996",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4368"
-   },
-   {
-    "reference": "1996 D 1647",
-    "titre": "43- 1996, D. 1647 - Autorisation à M. le Maire de Paris de souscrire un avenant de substitution au marché signé avec la société \"Falleau S.A.\" pour l'aménagement du parc de Bercy (12e) (lot n° I.15 : mise en place de végétaux, engazonnement).",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "NOVEMBRE 1996",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17618"
-   },
-   {
-    "reference": "1996 D 841",
-    "titre": "54 - 1996, D. 841- Autorisation à M. le Maire de Paris de signer un contrat de transaction suite à l'annulation du marché signé avec les sociétés \"Urbaine de travaux\" et \"Meneguzzo\" pour la construction de l'Orangerie du parc de Bercy (12e).",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUILLET 1996",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4122"
-   }
-  ],
-  "1999": [
-   {
-    "reference": "1999 DAC 279",
-    "titre": "Approbation des modalités d'attribution d'un marché pour le déménagement et l'installation dans le dépôt archéologique, situé sous la grande terrasse du parc de Bercy \"Les jardins de la mémoire\" (12e) d'objets archéologiques entreposés au musée Carnavalet (3e) à l'Hôtel de Saint-Aignan (3e) et au 11 bis, rue Claude-Terrasse (16e). - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "OCTOBRE 1999",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42458"
-   },
-   {
-    "reference": "1999 DAC 48",
-    "titre": "46 - 1999, DAC 48 - Autorisation à M. le Maire de Paris de signer 2 marchés sur appel d'offres pour l'aménagement intérieur complémentaire du dépôt archéologique situé sous la grande terrasse du parc de Bercy \"Les jardins de la Mémoire\" (12e)",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUIN 1999",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5328"
-   },
-   {
-    "reference": "1999 DAC 48",
-    "titre": "Approbation des modalités d'attribution de 2 marchés sur appel d'offres pour l'aménagement intérieur complémentaire du dépôt archéologique situé sous la grande terrasse du parc de Bercy \"Les jardins de la Mémoire\" (12e). - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUIN 1999",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75801"
-   },
-   {
-    "reference": "1999 DVD 113",
-    "titre": "32 - 1999, DVD 113 - Autorisation à M. le Maire de Paris de signer avec M. FEICHTINGER, architecte, et le cabinet d'ingénieurs \"RFR\" un marché de maîtrise d'oeuvre pour la construction de la passerelle reliant la \"terrasse au bord de l'eau\" du parc de Bercy au quai François-Mauriac (12e et 13e)",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUILLET 1999",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24583"
-   },
-   {
-    "reference": "1999 DVD 113",
-    "titre": "Attribution du marché de maîtrise d'oeuvre pour la construction de la passerelle reliant la \"terrasse au bord de l'eau\" du parc de Bercy au quai François-Mauriac (12e et 13e). - Autorisation à M. le Maire de Paris de signer avec M. FEICHTINGER et le Cabinet d'ingénieurs R.F.R. ledit marché. M. Bernard PLASAIT, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUILLET 1999",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85683"
-   }
-  ],
-  "2000": [
-   {
-    "reference": "2000 DVD 15",
-    "titre": "Autorisation à M. le Maire de Paris de signer avec le SETRA une convention relative à la mission de conseil et d'assistance au maître d'ouvrage pendant les études nécessaires à la réalisation de la passerelle reliant la \"terrasse au bord de l'eau\" du parc de Bercy au quai François-Mauriac (12 et 13e). M. Bernard PLASAIT, rapporteur.",
-    "genres": [
-     "autre"
-    ],
-    "seance": "FEVRIER 2000",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51222"
-   },
-   {
-    "reference": "2000 DVD 99",
-    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant au marché de maîtrise d'oeuvre signé avec le groupement \"Feichtinger-R.F.R.\" pour la construction de la passerelle reliant la \"terrasse au bord de l'eau\" du parc de Bercy au quai François-Mauriac (12e et 13e). M. Bernard PLASAIT, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 2000",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28228"
-   },
-   {
-    "reference": "2000 DVD 99",
-    "titre": "23 - 2000, DVD 99 - Autorisation à M. le Maire de Paris de souscrire un avenant au marché de maîtrise d'oeuvre signé avec le groupement \"Feichtinger-R.F.R.\" pour la construction de la passerelle reliant la \"terrasse au bord de l'eau\" du parc de Bercy au quai François-Mauriac (12e et 13e)",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 2000",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10143"
-   }
-  ],
-  "2002": [
-   {
-    "reference": "2002 DPE 99",
-    "titre": "Approbation du principe et des modalités d'attribution d'un marché sur appel d'offres, ou négocié après appel d'offres infructueux, pour le passage en siphon de l'égout rue Joseph Kessel à Paris 12ème, dans le cadre de la création de la liaison souterraine entre les parties Ouest et Est du parc de Bercy.- Autorisation à M. le Maire de Paris de signer ledit marché. Mme Myriam CONSTANTIN, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "OCTOBRE 2002",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95301"
-   },
-   {
-    "reference": "2002 DVD 101",
-    "titre": "Réalisation de la passerelle \"Bercy-Tolbiac\" (12e et 13e). - Bilan de l'enquête publique et approbation de l'opération. - Autorisation à M. le Maire de Paris de souscrire un avenant n° 2 au marché de maîtrise d'œuvre pour la construction de la passerelle reliant la \"terrasse au bord de l'eau\" du parc de Bercy au quai François-Mauriac (12e et 13e). M. Denis BAUPIN, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUIN 2002",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55669"
-   }
-  ],
-  "2003": [
-   {
-    "reference": "2003 DVD 219",
-    "titre": "Autorisation à M. le Maire de Paris de signer 3 conventions pour la mise à disposition d'emplacements de stationnement pour autocars dans les parcs \"Carrousel-Louvre\", \"Georges-Pompidou\" et \"Saint-Emilion\" dans le cadre de la création d'un forfait de stationnement pour autocars. - Autorisation à M. le Maire de Paris de signer l'avenant n° 2 à la convention de concession du parc de stationnement \"Parc de Bercy\" dans le cadre de la création d'un forfait de stationnement pour autocars. M. Denis BAU",
-    "genres": [
-     "autre"
-    ],
-    "seance": "MAI 2003",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56999"
-   },
-   {
-    "reference": "2003 DVD 219",
-    "titre": "148 - 2003, DVD 219 - Autorisation à M. le Maire de Paris de signer 3 conventions pour la mise à disposition d'emplacements de stationnement pour autocars dans les parcs \"Carrousel-Louvre\", \"Georges-Pompidou\" et \"Saint-Emilion\" dans le cadre de la création d'un forfait de stationnement pour autocars. - Autorisation à M. le Maire de Paris de souscrire un avenant n° 2 à la convention de concession du parc de stationnement \"Parc de Bercy\" dans le cadre de la création d'un forfait de stationnement p",
-    "genres": [
-     "autre"
-    ],
-    "seance": "MAI 2003",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14596"
-   },
-   {
-    "reference": "2003 DVD 37",
-    "titre": "Réalisation de la passerelle \"Bercy-Tolbiac\" (12e et 13e). - Autorisation à M. le Maire de Paris de souscrire un avenant n° 3 au marché de maîtrise d'œuvre pour la construction de la passerelle reliant la \"terrasse au bord de l'eau\" du parc de Bercy au quai François-Mauriac (12e et 13e). M. Denis BAUPIN, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "MAI 2003",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56916"
-   },
-   {
-    "reference": "2003 DVD 37",
-    "titre": "145 - 2003, DVD 37 - Réalisation de la passerelle \"Bercy-Tolbiac\" (12e et 13e). - Autorisation à M. le Maire de Paris de souscrire un avenant n° 3 au marché de maîtrise d'oeuvre pour la construction de la passerelle reliant la \"terrasse au bord de l'eau\" du parc de Bercy au quai François-Mauriac (12e et 13e)",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "MAI 2003",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14593"
-   }
-  ],
-  "2007": [
-   {
-    "reference": "2007 DJS 231",
-    "titre": "2007, DJS 231 - Autorisation à M. le Maire de Paris de lancer la procédure de marché négocié suivant l’article 35-1-5° et de déposer une demande de permis de construire pour la création de la couverture du roller park du parc de Bercy (12e). Vœu déposé par le groupe “Les Verts” relatif à la création d’une aire de jeux de ballons dans le parc de Bercy.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "MARS 2007",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22434"
-   },
-   {
-    "reference": "2007 DJS 231",
-    "titre": "Autorisation à M. le Maire de Paris de lancer la procédure de marché négocié suivant l’article 35-I-5° et de déposer une demande de permis de construire pour la création de la couverture du roller park du Parc de Bercy (12e). M. Pascal CHERKI, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "MARS 2007",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31470"
-   }
-  ],
-  "2008": [
-   {
-    "reference": "2008 DJS 339",
-    "titre": "Signature d’un contrat de transaction avec la société SMC2 SARL visant à l’indemniser des travaux supplémentaires réalisés dans le cadre des travaux de création de la couverture du roller park du Parc de Bercy (12e). M. Jean VUILLERMOZ, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUILLET 2008",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91131"
-   },
-   {
-    "reference": "2008 DJS 446",
-    "titre": "Approbation de l’opération et demande de subvention auprès du Centre National pour le Développement du Sport concernant la mise en conformité de modules de roller au skate parc de Bercy (12e). M. Jean VUILLERMOZ, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "NOVEMBRE 2008",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61895"
-   }
-  ],
-  "2013": [
-   {
-    "reference": "2013 DDEEES 190",
-    "titre": "2013 DDEEES 190 - Convention d'occupation du domaine public pour l'exploitation d'une buvette-restauration sur place et à emporter située dans le parc de Bercy (12e).",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "OCTOBRE 2013",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116121"
-   }
-  ],
-  "2018": [
-   {
-    "reference": "2018 DEVE 85",
-    "titre": "2018 DEVE 85 - Installation d’un container maritime à usage de production agricole dans le parc de Bercy (12e). - Renouvellement de la convention avec la société \"Agricool\".",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUILLET 2018",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144116"
-   }
-  ]
- },
- "invest": [],
- "marches": [
-  {
-   "numero_marche": "20232023S08935",
-   "objet": "MANDAT MAÎTRISE D'OUVRAGE COUVERTURE EGP 12 PARC DE BERCY",
-   "objet_clair": null,
-   "fournisseur": "SPL PARISEINE",
-   "montant_max": 190000.0,
-   "date_notification": "2023-10-03",
-   "preuve": "L'objet nomme le lieu verbatim : « COUVERTURE EGP 12 PARC DE BERCY ». Le Conseil de Paris documente la couverture d'un équipement de glisse dans ce parc : « création de la couverture du roller park du parc de Bercy (12e) » (2007 DJS 231) et contrat de transaction avec SMC2 SARL pour « les travaux de création de la couverture du roller park du Parc de Bercy (12e) » (ctx doc 91131). Le sigle « EGP 12 » (espace de glisse parisien, 12e) n'est pas explicité dans les sources consultées, mais le marché porte bien sur le parc de Bercy."
-  },
-  {
-   "numero_marche": "20212021S02444",
-   "objet": "MOE RÉNOVATION ÉNERGÉTIQUE MAISON DU LAC PARC DE BERCY SAMO",
-   "objet_clair": null,
-   "fournisseur": "YLE",
-   "montant_max": 159595.0,
-   "date_notification": "2021-05-04",
-   "preuve": "L'objet nomme le lieu verbatim : « MAISON DU LAC PARC DE BERCY ». La Maison du Lac est un bâtiment situé dans le parc de Bercy, attesté par la délibération 1997 PJEV 26 (travaux d'adaptation du parc de Bercy aux personnes à mobilité réduite) : « Quant à la Maison du Lac, un ascenseur est déjà prévu… »."
-  },
-  {
-   "numero_marche": "20212021S03024",
-   "objet": "SA5 AMO AMELIORATION SECURITAIRE PARC DE BERCY",
-   "objet_clair": null,
-   "fournisseur": "AREP",
-   "montant_max": 109425.0,
-   "date_notification": "2021-05-31",
-   "preuve": "L'objet nomme le lieu verbatim : « AMELIORATION SECURITAIRE PARC DE BERCY ». Sujet corroboré par le vœu de l'Exécutif au Conseil de Paris (février 2022) « relatif à la sécurité dans le parc de Bercy et au déplacement de la gare routière »."
-  }
- ],
- "mandate": {
-  "par_annee": {
-   "2015": 30747.11,
-   "2016": 31532.26,
-   "2018": 49331.94,
-   "2019": 255359.33,
-   "2020": 180025.02,
-   "2021": 309934.81,
-   "2022": 72347.83
-  },
-  "total_eur": 929278.3,
-  "operations": [
-   {
-    "ap_cle": "1504705",
-    "ap_texte": "PARC DE BERCY (12E) - RENOVATION",
-    "mandate_par_annee": {
-     "2015": 30747.11,
-     "2016": 31532.26,
-     "2018": 49331.94,
-     "2019": 255359.33,
-     "2020": 180025.02,
-     "2021": 309934.81,
-     "2022": 72347.83
-    },
-    "total_mandate": 929278.3,
-    "preuve": "Le libellé de l'opération désigne ce lieu verbatim : « PARC DE BERCY (12E) - RENOVATION », mission « ESPACES VERTS ET ENV », direction DEVE (espaces verts), cohérent avec ce parc du 12e arrondissement.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1504705"
-   }
-  ],
-  "periode": [
-   "2015",
-   "2022"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=parc+AND+Bercy"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22entrep%C3%B4ts+de+Bercy%22%29"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "Le parc de Bercy est un ensemble de trois jardins situés dans le quartier de Bercy du 12e arrondissement de Paris, entre le Palais omnisports de Paris-Bercy et le centre commercial et de restauration Bercy Village, à l'emplacement des anciens entrepôts de Bercy.",
+    "url": "https://fr.wikipedia.org/wiki/Parc_de_Bercy",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    },
+    "extract_en": "The Parc de Bercy is a set of three gardens located in the Bercy neighbourhood of the 12th arrondissement of Paris, between the Palais omnisports de Paris-Bercy and the Bercy Village shopping and dining centre, on the site of the former Bercy warehouses."
+  },
+  "stats": {
+    "n_delibs": 683,
+    "delibs_span": [
+      1996,
+      2025
+    ],
+    "n_bmo_brut": 2000,
+    "n_bmo_verifies": 18,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "titre nommant le lieu (86 trouvés)",
+    "lecture_mode_en": "title naming the place (86 found)",
+    "n_lus": 45,
+    "n_lieu": 31
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "Les délibérations du Conseil de Paris suivent le parc de Bercy depuis son chantier des années 1990, aménagé sur d'anciens entrepôts vinicoles : le Conseil y vote série après série d'avenants, indemnise des marchés annulés ou repris (Orangerie, engazonnement Falleau) et s'entend affirmer par l'Exécutif que l'enveloppe initiale de 399,7 millions de francs (valeur 1992) « n'a pas été dépassée ». Autour de la grande terrasse s'ajoutent un dépôt archéologique baptisé « Les jardins de la Mémoire », des accès pour personnes à mobilité réduite dont un ascenseur retardé par des appels d'offres successifs infructueux, et la passerelle vers le quai François-Mauriac confiée à l'architecte Dietmar Feichtinger. Les usages se façonnent au fil des votes : manège, exposition, roller park couvert (indemnisé de 22 487,19 € pour travaux supplémentaires), buvette, puis la ferme en container « Agricool » reconduite à titre gratuit malgré l'opposition écologiste. À partir de 2017, le parc devient un enjeu de conflit : un vœu conteste l'« Arena 2 » qui amputerait 2,5 hectares, et l'installation d'une gare routière à Bercy-Seine transforme, selon des élus, le parc en « hall de gare » aux pelouses dégradées. La Ville annonce en 2023 vouloir fermer cette gare et reloger les autocars, intègre en 2024 l'entretien du parc et la fontaine Canyoneaustrate à la concession de l'Accor Arena, et donne en 2025 les noms des compositeurs Michel Magne et Georges Delerue à deux allées.",
+  "moments": [
+    {
+      "id": "5328",
+      "seance": "JUIN 1999",
+      "fait": "Le Conseil équipe le dépôt archéologique « Les jardins de la Mémoire », sous la grande terrasse, qui abrite les vestiges des fouilles néolithiques de Bercy.",
+      "pourquoi": "Des pirogues de 6 500 ans sous le parc",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5328",
+      "fait_en": "The Council fitted out the archaeological repository \"Les jardins de la Mémoire\", beneath the great terrace, which houses the remains of the Neolithic excavations at Bercy.",
+      "pourquoi_en": "6,500-year-old dugout canoes beneath the park"
+    },
+    {
+      "id": "13359",
+      "seance": "JANVIER 2001",
+      "fait": "L'ascenseur d'accessibilité voté en 1997 n'est toujours pas construit : trois appels d'offres ont déjà échoué faute d'offres acceptables, et un quatrième vient d'être lancé.",
+      "pourquoi": "Quatre appels d'offres pour un ascenseur",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13359",
+      "fait_en": "The accessibility lift approved in 1997 still had not been built: three tenders had already failed for lack of acceptable bids, and a fourth had just been launched.",
+      "pourquoi_en": "Four tenders for a lift"
+    },
+    {
+      "id": "7073",
+      "seance": "JANVIER 2003",
+      "fait": "L'adjoint Denis Baupin annonce le calendrier de la passerelle vers le quai François-Mauriac (chantier 2004, livraison début 2006), confiée à l'architecte Dietmar Feichtinger.",
+      "pourquoi": "La passerelle signature enfin datée",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7073",
+      "fait_en": "Deputy mayor Denis Baupin announced the timetable for the footbridge to the quai François-Mauriac (construction in 2004, delivery in early 2006), entrusted to architect Dietmar Feichtinger.",
+      "pourquoi_en": "The signature footbridge finally gets a date"
+    },
+    {
+      "id": "22434",
+      "seance": "MARS 2007",
+      "fait": "Le Conseil autorise la couverture du roller park et adopte un vœu pour étudier une aire de jeux de ballons, le terrain de basket ayant cédé la place au roller.",
+      "pourquoi": "Le roller gagne, le basket perd",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22434",
+      "fait_en": "The Council authorized covering the roller park and adopted a motion to study a ball-games area, after the basketball court gave way to rollerskating.",
+      "pourquoi_en": "Rollerskating wins, basketball loses"
+    },
+    {
+      "id": "138128",
+      "seance": "SEPTEMBRE 2017",
+      "fait": "Un vœu de Danielle Simonnet demande une alternative à l'« Arena 2 », qui amputerait selon elle 2,5 hectares du parc pour les Jeux ; l'Exécutif y est défavorable.",
+      "pourquoi": "2,5 hectares de parc dans la balance",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138128",
+      "fait_en": "A motion by Danielle Simonnet asked for an alternative to the \"Arena 2\", which she said would take 2.5 hectares from the park for the Games; the executive opposed it.",
+      "pourquoi_en": "2.5 hectares of parkland at stake"
+    },
+    {
+      "id": "144116",
+      "seance": "JUILLET 2018",
+      "fait": "Le Conseil renouvelle à titre gratuit la convention de la ferme en container « Agricool », que les élus écologistes accusent de ne pas tenir ses promesses.",
+      "pourquoi": "Une ferme-vitrine gratuite qui fait débat",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144116",
+      "fait_en": "The Council renewed, free of charge, the agreement for the container farm \"Agricool\", which the Green-party elected officials accused of not keeping its promises.",
+      "pourquoi_en": "A free showcase farm sparks debate"
+    },
+    {
+      "id": "152315",
+      "seance": "SEPTEMBRE 2019",
+      "fait": "Un vœu, rejeté, dénonce le parc « devenu un hall de gare » depuis le transfert des autocars à Bercy-Seine ; la Ville dit avoir investi plus de 1 million d'euros dans sa rénovation.",
+      "pourquoi": "Le parc transformé en salle d'attente",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152315",
+      "fait_en": "A rejected motion denounced the park having \"become a train-station concourse\" since the coaches were moved to Bercy-Seine; the City said it had invested more than €1 million in its renovation.",
+      "pourquoi_en": "The park turned into a waiting room"
+    },
+    {
+      "id": "176389",
+      "seance": "JUIN 2024",
+      "fait": "À l'approche des Jeux, l'adjoint David Belliard indique que la Ville a décidé de fermer la gare Bercy-Seine, dont les flux dégradaient le parc.",
+      "pourquoi": "La Ville acte la fermeture de la gare",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176389",
+      "fait_en": "Ahead of the Games, deputy mayor David Belliard stated that the City had decided to close the Bercy-Seine coach station, whose traffic was degrading the park.",
+      "pourquoi_en": "The City decides to close the coach station"
+    }
+  ],
+  "montants": [
+    {
+      "seance": "JUILLET 1996",
+      "montant": "6.100.401 F",
+      "objet": "marché de construction de l'Orangerie du parc annulé par le tribunal administratif, réglé par transaction",
+      "citation": "l'annulation par le Tribunal administratif du marché d'un montant de 6.100.401 F dont elle avait été déclarée attributaire",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4122"
+    },
+    {
+      "seance": "OCTOBRE 1996",
+      "montant": "6.700.000 F",
+      "objet": "supplément de crédit soumis au vote au titre de la 4e série d'avenants (selon M. Rey)",
+      "citation": "nous allons voter un supplément de crédit de 6.700.000 F environ",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4368"
+    },
+    {
+      "seance": "OCTOBRE 1996",
+      "montant": "près de 8 millions de francs",
+      "objet": "surcoût attribué au retard du chantier (selon Mme Capelle)",
+      "citation": "Il en coûtera près de 8 millions de francs de plus aux Parisiens.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4368"
+    },
+    {
+      "seance": "NOVEMBRE 1996",
+      "montant": "7.400.000",
+      "objet": "marché initial d'engazonnement/plantations du parc, avec un avenant antérieur de près de 600.000 F (selon M. Rey)",
+      "citation": "un avenant financier a déjà été voté, de près de 600.000 F sur un marché initial de 7.400.000",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17618"
+    },
+    {
+      "seance": "NOVEMBRE 1997",
+      "montant": "2.360.000 F",
+      "objet": "aménagement d'un dépôt lapidaire sous la terrasse est (stockage d'œuvres du musée Carnavalet)",
+      "citation": "l'aménagement d'un dépôt lapidaire sous la terrasse côté est du parc pour un coût global de 2.360.000 F",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16626"
+    },
+    {
+      "seance": "NOVEMBRE 1997",
+      "montant": "399,7 millions de francs",
+      "objet": "enveloppe initiale de l'aménagement du parc, valeur juillet 1992 (selon l'adjointe M.-T. Junot)",
+      "citation": "l'enveloppe initiale concernant l'aménagement du Parc de Bercy a été fixée à 399,7 millions de francs, valeur juillet 1992. Cette enveloppe n'a pas été dépassée.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16626"
+    },
+    {
+      "seance": "MARS 1997",
+      "montant": "900.000 F",
+      "objet": "coût prévisionnel total de l'ascenseur et de l'élévateur d'accessibilité (jugé élevé par l'élue L. Schneiter)",
+      "citation": "La somme totale paraît un peu élevée (900.000 F)",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15454"
+    },
+    {
+      "seance": "MARS 1999",
+      "montant": "8 % du chiffre d'affaires hors taxes",
+      "objet": "redevance annuelle due à la Ville pour l'exploitation du manège enfantin",
+      "citation": "une redevance annuelle fixée à un taux révisable de 8 % du chiffre d'affaires hors taxes",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34298"
+    },
+    {
+      "seance": "JANVIER 2001",
+      "montant": "supérieure de 43 %",
+      "objet": "unique offre au 1er appel d'offres de l'ascenseur (juin 1998), au-dessus de l'estimation de l'administration",
+      "citation": "Un premier appel d'offres a alors été lancé en juin 1998, et déclaré infructueux compte tenu du prix de l'unique offre reçue, supérieure de 43 % à l'estimation de l'administration",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13359"
+    },
+    {
+      "seance": "JANVIER 2001",
+      "montant": "supérieure de 48,3 %",
+      "objet": "unique offre au 2e appel d'offres de l'ascenseur (décembre 1999)",
+      "citation": "un deuxième appel d'offres a été relancé en décembre 1999, lui aussi infructueux, une seule offre, supérieure de 48,3 % à l'estimation de l'administration, ayant été remise",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13359"
+    },
+    {
+      "seance": "MARS 2007",
+      "montant": "400.000 euros / 250.000 euros",
+      "objet": "couverture du roller park : crédits inscrits au BP 2007 et compléments demandés ultérieurement",
+      "citation": "400.000 euros et les 250.000 euros demandés ultérieurement sous réserve de la décision de financement",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31470"
+    },
+    {
+      "seance": "JUILLET 2008",
+      "montant": "22.487,19 euros TTC",
+      "objet": "indemnisation de la société SMC2 pour travaux supplémentaires sur la couverture du roller park",
+      "citation": "montant total de 22.487,19 euros TTC sera imputée au budget de fonctionnement 2008",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91131"
+    },
+    {
+      "seance": "JUILLET 2018",
+      "montant": "à titre gratuit",
+      "objet": "renouvellement de la convention d'occupation du domaine public accordée à Agricool (relevé par l'élue J. Morel)",
+      "citation": "convention d?occupation de l?espace public à titre gratuit",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144116"
+    },
+    {
+      "seance": "SEPTEMBRE 2019",
+      "montant": "plus de 1 million d'euros",
+      "objet": "réaménagement, rénovation et accessibilité des allées du parc (selon l'adjointe P. Komitès)",
+      "citation": "investi plus de 1 million d?euros pour son réaménagement, sa rénovation",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152315"
+    }
+  ],
+  "bmo_extraits": [
+    {
+      "date": "1892-03-24",
+      "extrait": "354. — Réglementation du travail dans les entrepôts de Bercy et Saint-Bernard … nO 29 de 1892), Délibère : Article premier. — Les ordres de service relatifs à l'ouverture des entrepôts de Bercy et Saint … 35 du règlement de l' entrepôt de Bercy",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64471172/f3.item",
+      "extrait_en": "354. — Regulation of work at the Bercy and Saint-Bernard warehouses … no. 29 of 1892), Resolves: Article one. — The service orders concerning the opening of the Bercy and Saint … 35 of the Bercy warehouse regulations"
+    },
+    {
+      "date": "1922-06-11",
+      "extrait": "2° A deux heures un quart : Entrepôts du Grand Bercy (aux magasins situés sur la berge, 87 à 92, et rue de Nuits, 35) : Environ 50,000 kilog. : cuivre, zinc, plomb, fer, fonte, tôle, caoutchouc, tapis, couvertures, vêtements, rideaux, baignoires, presses à copier, bois, fûts dive",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6447306z/f4.item",
+      "extrait_en": "2° At a quarter past two: Grand Bercy warehouses (at the premises located on the riverbank, 87 to 92, and rue de Nuits, 35): About 50,000 kilograms: copper, zinc, lead, iron, cast iron, sheet metal, rubber, carpets, blankets, clothing, curtains, bathtubs, copying presses, wood, various barrel"
+    },
+    {
+      "date": "1934-02-03",
+      "extrait": "Entrepôts de Bercy et Saint-Bernard. — Fourniture d'attèlages et enlèvement des ordures ménagères du 1er janvier 1934 au 31 décembre 1936",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6336212h/f8.item",
+      "extrait_en": "Bercy and Saint-Bernard warehouses. — Supply of draught teams and removal of household waste from 1 January 1934 to 31 December 1936"
+    },
+    {
+      "date": "1934-07-02",
+      "extrait": "3. — Application de la majoration des baux consentis à l' entrepôt Saint-Bernard antérieurement au 24 octobre 1919 … 4. — Déduction sur le montant global des loyers perçus aux entrepôts de Bercy et de Saint-Bernard d'une somme égale à la valeur de la fourniture d'eau de rivière",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6520855p/f32.item",
+      "extrait_en": "3. — Application of the increase in rents granted at the Saint-Bernard warehouse prior to 24 October 1919 … 4. — Deduction from the total amount of rents collected at the Bercy and Saint-Bernard warehouses of a sum equal to the value of the river-water supply"
+    }
+  ],
+  "bmo_recit": "Dans le Bulletin municipal, le lieu apparaît sous les traits des entrepôts de Bercy, dont le Conseil règle le fonctionnement quotidien. En 1892, il délibère ainsi sur la réglementation du travail dans les entrepôts de Bercy et Saint-Bernard, jusqu'aux ordres de service fixant leur ouverture. En 1922, le Bulletin annonce une vente aux enchères aux magasins du Grand Bercy, sur la berge et rue de Nuits : environ 50 000 kilos de cuivre, zinc, plomb, tapis, fûts et toiles goudronnées. En 1934, deux décisions d'intendance se succèdent : un marché de fourniture d'attelages et d'enlèvement des ordures ménagères des entrepôts pour les années 1934 à 1936, puis une déduction sur les loyers perçus aux entrepôts de Bercy et de Saint-Bernard, d'une somme égale à la valeur de la fourniture d'eau de rivière supprimée. Sur ce lieu, l'archive donne donc à voir l'ère des entrepôts, pas encore celle du parc.",
+  "delibs_par_annee": {
+    "1996": [
+      {
+        "reference": "1996 D 1094",
+        "titre": "22 - 1996, D. 1094 - Autorisation à M. le Maire de Paris de souscrire un avenant au marché de maîtrise d'oeuvre, ainsi que des avenants aux marchés de travaux signés pour l'aménagement du parc de Bercy (12e).",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "OCTOBRE 1996",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4368"
+      },
+      {
+        "reference": "1996 D 1647",
+        "titre": "43- 1996, D. 1647 - Autorisation à M. le Maire de Paris de souscrire un avenant de substitution au marché signé avec la société \"Falleau S.A.\" pour l'aménagement du parc de Bercy (12e) (lot n° I.15 : mise en place de végétaux, engazonnement).",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "NOVEMBRE 1996",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17618"
+      },
+      {
+        "reference": "1996 D 841",
+        "titre": "54 - 1996, D. 841- Autorisation à M. le Maire de Paris de signer un contrat de transaction suite à l'annulation du marché signé avec les sociétés \"Urbaine de travaux\" et \"Meneguzzo\" pour la construction de l'Orangerie du parc de Bercy (12e).",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUILLET 1996",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4122"
+      }
+    ],
+    "1999": [
+      {
+        "reference": "1999 DAC 279",
+        "titre": "Approbation des modalités d'attribution d'un marché pour le déménagement et l'installation dans le dépôt archéologique, situé sous la grande terrasse du parc de Bercy \"Les jardins de la mémoire\" (12e) d'objets archéologiques entreposés au musée Carnavalet (3e) à l'Hôtel de Saint-Aignan (3e) et au 11 bis, rue Claude-Terrasse (16e). - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "OCTOBRE 1999",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42458"
+      },
+      {
+        "reference": "1999 DAC 48",
+        "titre": "46 - 1999, DAC 48 - Autorisation à M. le Maire de Paris de signer 2 marchés sur appel d'offres pour l'aménagement intérieur complémentaire du dépôt archéologique situé sous la grande terrasse du parc de Bercy \"Les jardins de la Mémoire\" (12e)",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUIN 1999",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5328"
+      },
+      {
+        "reference": "1999 DAC 48",
+        "titre": "Approbation des modalités d'attribution de 2 marchés sur appel d'offres pour l'aménagement intérieur complémentaire du dépôt archéologique situé sous la grande terrasse du parc de Bercy \"Les jardins de la Mémoire\" (12e). - Autorisation à M. le Maire de Paris de signer lesdits marchés. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUIN 1999",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75801"
+      },
+      {
+        "reference": "1999 DVD 113",
+        "titre": "32 - 1999, DVD 113 - Autorisation à M. le Maire de Paris de signer avec M. FEICHTINGER, architecte, et le cabinet d'ingénieurs \"RFR\" un marché de maîtrise d'oeuvre pour la construction de la passerelle reliant la \"terrasse au bord de l'eau\" du parc de Bercy au quai François-Mauriac (12e et 13e)",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUILLET 1999",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24583"
+      },
+      {
+        "reference": "1999 DVD 113",
+        "titre": "Attribution du marché de maîtrise d'oeuvre pour la construction de la passerelle reliant la \"terrasse au bord de l'eau\" du parc de Bercy au quai François-Mauriac (12e et 13e). - Autorisation à M. le Maire de Paris de signer avec M. FEICHTINGER et le Cabinet d'ingénieurs R.F.R. ledit marché. M. Bernard PLASAIT, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUILLET 1999",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85683"
+      }
+    ],
+    "2000": [
+      {
+        "reference": "2000 DVD 15",
+        "titre": "Autorisation à M. le Maire de Paris de signer avec le SETRA une convention relative à la mission de conseil et d'assistance au maître d'ouvrage pendant les études nécessaires à la réalisation de la passerelle reliant la \"terrasse au bord de l'eau\" du parc de Bercy au quai François-Mauriac (12 et 13e). M. Bernard PLASAIT, rapporteur.",
+        "genres": [
+          "autre"
+        ],
+        "seance": "FEVRIER 2000",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51222"
+      },
+      {
+        "reference": "2000 DVD 99",
+        "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant au marché de maîtrise d'oeuvre signé avec le groupement \"Feichtinger-R.F.R.\" pour la construction de la passerelle reliant la \"terrasse au bord de l'eau\" du parc de Bercy au quai François-Mauriac (12e et 13e). M. Bernard PLASAIT, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 2000",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28228"
+      },
+      {
+        "reference": "2000 DVD 99",
+        "titre": "23 - 2000, DVD 99 - Autorisation à M. le Maire de Paris de souscrire un avenant au marché de maîtrise d'oeuvre signé avec le groupement \"Feichtinger-R.F.R.\" pour la construction de la passerelle reliant la \"terrasse au bord de l'eau\" du parc de Bercy au quai François-Mauriac (12e et 13e)",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 2000",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10143"
+      }
+    ],
+    "2002": [
+      {
+        "reference": "2002 DPE 99",
+        "titre": "Approbation du principe et des modalités d'attribution d'un marché sur appel d'offres, ou négocié après appel d'offres infructueux, pour le passage en siphon de l'égout rue Joseph Kessel à Paris 12ème, dans le cadre de la création de la liaison souterraine entre les parties Ouest et Est du parc de Bercy.- Autorisation à M. le Maire de Paris de signer ledit marché. Mme Myriam CONSTANTIN, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "OCTOBRE 2002",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95301"
+      },
+      {
+        "reference": "2002 DVD 101",
+        "titre": "Réalisation de la passerelle \"Bercy-Tolbiac\" (12e et 13e). - Bilan de l'enquête publique et approbation de l'opération. - Autorisation à M. le Maire de Paris de souscrire un avenant n° 2 au marché de maîtrise d'œuvre pour la construction de la passerelle reliant la \"terrasse au bord de l'eau\" du parc de Bercy au quai François-Mauriac (12e et 13e). M. Denis BAUPIN, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUIN 2002",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55669"
+      }
+    ],
+    "2003": [
+      {
+        "reference": "2003 DVD 219",
+        "titre": "Autorisation à M. le Maire de Paris de signer 3 conventions pour la mise à disposition d'emplacements de stationnement pour autocars dans les parcs \"Carrousel-Louvre\", \"Georges-Pompidou\" et \"Saint-Emilion\" dans le cadre de la création d'un forfait de stationnement pour autocars. - Autorisation à M. le Maire de Paris de signer l'avenant n° 2 à la convention de concession du parc de stationnement \"Parc de Bercy\" dans le cadre de la création d'un forfait de stationnement pour autocars. M. Denis BAU",
+        "genres": [
+          "autre"
+        ],
+        "seance": "MAI 2003",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56999"
+      },
+      {
+        "reference": "2003 DVD 219",
+        "titre": "148 - 2003, DVD 219 - Autorisation à M. le Maire de Paris de signer 3 conventions pour la mise à disposition d'emplacements de stationnement pour autocars dans les parcs \"Carrousel-Louvre\", \"Georges-Pompidou\" et \"Saint-Emilion\" dans le cadre de la création d'un forfait de stationnement pour autocars. - Autorisation à M. le Maire de Paris de souscrire un avenant n° 2 à la convention de concession du parc de stationnement \"Parc de Bercy\" dans le cadre de la création d'un forfait de stationnement p",
+        "genres": [
+          "autre"
+        ],
+        "seance": "MAI 2003",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14596"
+      },
+      {
+        "reference": "2003 DVD 37",
+        "titre": "Réalisation de la passerelle \"Bercy-Tolbiac\" (12e et 13e). - Autorisation à M. le Maire de Paris de souscrire un avenant n° 3 au marché de maîtrise d'œuvre pour la construction de la passerelle reliant la \"terrasse au bord de l'eau\" du parc de Bercy au quai François-Mauriac (12e et 13e). M. Denis BAUPIN, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "MAI 2003",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56916"
+      },
+      {
+        "reference": "2003 DVD 37",
+        "titre": "145 - 2003, DVD 37 - Réalisation de la passerelle \"Bercy-Tolbiac\" (12e et 13e). - Autorisation à M. le Maire de Paris de souscrire un avenant n° 3 au marché de maîtrise d'oeuvre pour la construction de la passerelle reliant la \"terrasse au bord de l'eau\" du parc de Bercy au quai François-Mauriac (12e et 13e)",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "MAI 2003",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14593"
+      }
+    ],
+    "2007": [
+      {
+        "reference": "2007 DJS 231",
+        "titre": "2007, DJS 231 - Autorisation à M. le Maire de Paris de lancer la procédure de marché négocié suivant l’article 35-1-5° et de déposer une demande de permis de construire pour la création de la couverture du roller park du parc de Bercy (12e). Vœu déposé par le groupe “Les Verts” relatif à la création d’une aire de jeux de ballons dans le parc de Bercy.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "MARS 2007",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22434"
+      },
+      {
+        "reference": "2007 DJS 231",
+        "titre": "Autorisation à M. le Maire de Paris de lancer la procédure de marché négocié suivant l’article 35-I-5° et de déposer une demande de permis de construire pour la création de la couverture du roller park du Parc de Bercy (12e). M. Pascal CHERKI, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "MARS 2007",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31470"
+      }
+    ],
+    "2008": [
+      {
+        "reference": "2008 DJS 339",
+        "titre": "Signature d’un contrat de transaction avec la société SMC2 SARL visant à l’indemniser des travaux supplémentaires réalisés dans le cadre des travaux de création de la couverture du roller park du Parc de Bercy (12e). M. Jean VUILLERMOZ, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUILLET 2008",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91131"
+      },
+      {
+        "reference": "2008 DJS 446",
+        "titre": "Approbation de l’opération et demande de subvention auprès du Centre National pour le Développement du Sport concernant la mise en conformité de modules de roller au skate parc de Bercy (12e). M. Jean VUILLERMOZ, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "NOVEMBRE 2008",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61895"
+      }
+    ],
+    "2013": [
+      {
+        "reference": "2013 DDEEES 190",
+        "titre": "2013 DDEEES 190 - Convention d'occupation du domaine public pour l'exploitation d'une buvette-restauration sur place et à emporter située dans le parc de Bercy (12e).",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "OCTOBRE 2013",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116121"
+      }
+    ],
+    "2018": [
+      {
+        "reference": "2018 DEVE 85",
+        "titre": "2018 DEVE 85 - Installation d’un container maritime à usage de production agricole dans le parc de Bercy (12e). - Renouvellement de la convention avec la société \"Agricool\".",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUILLET 2018",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144116"
+      }
+    ]
+  },
+  "invest": [],
+  "marches": [
+    {
+      "numero_marche": "20232023S08935",
+      "objet": "MANDAT MAÎTRISE D'OUVRAGE COUVERTURE EGP 12 PARC DE BERCY",
+      "objet_clair": null,
+      "fournisseur": "SPL PARISEINE",
+      "montant_max": 190000.0,
+      "date_notification": "2023-10-03",
+      "preuve": "L'objet nomme le lieu verbatim : « COUVERTURE EGP 12 PARC DE BERCY ». Le Conseil de Paris documente la couverture d'un équipement de glisse dans ce parc : « création de la couverture du roller park du parc de Bercy (12e) » (2007 DJS 231) et contrat de transaction avec SMC2 SARL pour « les travaux de création de la couverture du roller park du Parc de Bercy (12e) » (ctx doc 91131). Le sigle « EGP 12 » (espace de glisse parisien, 12e) n'est pas explicité dans les sources consultées, mais le marché porte bien sur le parc de Bercy."
+    },
+    {
+      "numero_marche": "20212021S02444",
+      "objet": "MOE RÉNOVATION ÉNERGÉTIQUE MAISON DU LAC PARC DE BERCY SAMO",
+      "objet_clair": null,
+      "fournisseur": "YLE",
+      "montant_max": 159595.0,
+      "date_notification": "2021-05-04",
+      "preuve": "L'objet nomme le lieu verbatim : « MAISON DU LAC PARC DE BERCY ». La Maison du Lac est un bâtiment situé dans le parc de Bercy, attesté par la délibération 1997 PJEV 26 (travaux d'adaptation du parc de Bercy aux personnes à mobilité réduite) : « Quant à la Maison du Lac, un ascenseur est déjà prévu… »."
+    },
+    {
+      "numero_marche": "20212021S03024",
+      "objet": "SA5 AMO AMELIORATION SECURITAIRE PARC DE BERCY",
+      "objet_clair": null,
+      "fournisseur": "AREP",
+      "montant_max": 109425.0,
+      "date_notification": "2021-05-31",
+      "preuve": "L'objet nomme le lieu verbatim : « AMELIORATION SECURITAIRE PARC DE BERCY ». Sujet corroboré par le vœu de l'Exécutif au Conseil de Paris (février 2022) « relatif à la sécurité dans le parc de Bercy et au déplacement de la gare routière »."
+    }
+  ],
+  "mandate": {
+    "par_annee": {
+      "2015": 30747.11,
+      "2016": 31532.26,
+      "2018": 49331.94,
+      "2019": 255359.33,
+      "2020": 180025.02,
+      "2021": 309934.81,
+      "2022": 72347.83
+    },
+    "total_eur": 929278.3,
+    "operations": [
+      {
+        "ap_cle": "1504705",
+        "ap_texte": "PARC DE BERCY (12E) - RENOVATION",
+        "mandate_par_annee": {
+          "2015": 30747.11,
+          "2016": 31532.26,
+          "2018": 49331.94,
+          "2019": 255359.33,
+          "2020": 180025.02,
+          "2021": 309934.81,
+          "2022": 72347.83
+        },
+        "total_mandate": 929278.3,
+        "preuve": "Le libellé de l'opération désigne ce lieu verbatim : « PARC DE BERCY (12E) - RENOVATION », mission « ESPACES VERTS ET ENV », direction DEVE (espaces verts), cohérent avec ce parc du 12e arrondissement.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/table/?refine.autorisation_de_programme_cle=1504705"
+      }
+    ],
+    "periode": [
+      "2015",
+      "2022"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=parc+AND+Bercy"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22entrep%C3%B4ts+de+Bercy%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "Council deliberations have tracked the Parc de Bercy since its construction in the 1990s, laid out on former wine warehouses: the Council voted series after series of amendments there, compensated for contracts annulled or reassigned (the Orangerie, the Falleau turfing), and was told by the executive that the initial envelope of 399.7 million francs (1992 value) \"had not been exceeded\". Around the great terrace, further additions include an archaeological repository named \"Les jardins de la Mémoire\", accessibility features for people with reduced mobility including a lift delayed by successive unsuccessful tenders, and the footbridge to the quai François-Mauriac entrusted to architect Dietmar Feichtinger. Uses took shape vote after vote: a carousel, an exhibition, a covered roller park (compensated €22,487.19 for additional works), a refreshment stand, then the container farm \"Agricool\", renewed free of charge despite opposition from the Greens. From 2017 onward, the park became a point of conflict: a motion challenged the \"Arena 2\", which it said would take 2.5 hectares from the park, and the installation of a coach station at Bercy-Seine turned the park, according to some elected officials, into a \"train-station concourse\" with degraded lawns. The City announced in 2023 that it wanted to close this coach station and relocate the coaches, folded the park's maintenance and the Canyoneaustrate fountain into the Accor Arena concession in 2024, and in 2025 gave the names of composers Michel Magne and Georges Delerue to two footpaths.",
+  "bmo_recit_en": "In the Bulletin municipal, the place first appears in the guise of the Bercy warehouses that occupied the site. In 1892, the Council thus deliberated on regulating work at the Bercy and Saint-Bernard warehouses, down to the service orders setting their opening hours. In 1922, the Bulletin announced an auction at the Grand Bercy warehouses, on the riverbank and rue de Nuits: about 50,000 kilograms of copper, zinc, lead, carpets, barrels and tarred canvas. In 1934, two administrative decisions followed one another: a contract for supplying draught teams and collecting household waste from the warehouses for the years 1934 to 1936, then a deduction from the rents collected at the Bercy and Saint-Bernard warehouses, equal to the value of the river-water supply that had been discontinued. On this site, then, the archive shows us the era of the warehouses, not yet that of the park.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- },
- "synthese_en": "Council deliberations have tracked the Parc de Bercy since its construction in the 1990s, laid out on former wine warehouses: the Council voted series after series of amendments there, compensated for contracts annulled or reassigned (the Orangerie, the Falleau turfing), and was told by the executive that the initial envelope of 399.7 million francs (1992 value) \"had not been exceeded\". Around the great terrace, further additions include an archaeological repository named \"Les jardins de la Mémoire\", accessibility features for people with reduced mobility including a lift delayed by successive unsuccessful tenders, and the footbridge to the quai François-Mauriac entrusted to architect Dietmar Feichtinger. Uses took shape vote after vote: a carousel, an exhibition, a covered roller park (compensated €22,487.19 for additional works), a refreshment stand, then the container farm \"Agricool\", renewed free of charge despite opposition from the Greens. From 2017 onward, the park became a point of conflict: a motion challenged the \"Arena 2\", which it said would take 2.5 hectares from the park, and the installation of a coach station at Bercy-Seine turned the park, according to some elected officials, into a \"train-station concourse\" with degraded lawns. The City announced in 2023 that it wanted to close this coach station and relocate the coaches, folded the park's maintenance and the Canyoneaustrate fountain into the Accor Arena concession in 2024, and in 2025 gave the names of composers Michel Magne and Georges Delerue to two footpaths.",
- "bmo_recit_en": "In the Bulletin municipal, the place first appears in the guise of the Bercy warehouses that occupied the site. In 1892, the Council thus deliberated on regulating work at the Bercy and Saint-Bernard warehouses, down to the service orders setting their opening hours. In 1922, the Bulletin announced an auction at the Grand Bercy warehouses, on the riverbank and rue de Nuits: about 50,000 kilograms of copper, zinc, lead, carpets, barrels and tarred canvas. In 1934, two administrative decisions followed one another: a contract for supplying draught teams and collecting household waste from the warehouses for the years 1934 to 1936, then a deduction from the rents collected at the Bercy and Saint-Bernard warehouses, equal to the value of the river-water supply that had been discontinued. On this site, then, the archive shows us the era of the warehouses, not yet that of the park."
 }

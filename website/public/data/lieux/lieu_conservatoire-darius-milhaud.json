@@ -1,172 +1,180 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "conservatoire-darius-milhaud",
- "name": "Conservatoire Darius-Milhaud",
- "kind_fr": "Conservatoire",
- "kind_en": "Conservatoire",
- "famille": "culture",
- "arrondissement": 14,
- "lat": 48.827563,
- "lon": 2.308109,
- "photo": "/img/lieux/conservatoire-darius-milhaud.jpg",
- "photo_credit": {
-  "licence": "CC BY 2.0",
-  "auteur": "Guilhem Vellut from Paris, France",
-  "url": "https://commons.wikimedia.org/wiki/File:Conservatoire_Darius_Milhaud,_Place_Gilbert_Perroy,_Paris_5_December_2016.jpg",
-  "source": "Wikimedia Commons"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": null,
-  "url": null,
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 808,
-  "delibs_span": [
-   1995,
-   2026
-  ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 14490025.0,
-  "invest_annees": [
-   "2019",
-   "2020",
-   "2021"
-  ],
-  "lecture_mode": "titre nommant le lieu (1 trouvés)",
-  "lecture_mode_en": "title naming the place (1 found)",
-  "n_lus": 1,
-  "n_lieu": null
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": {
-  "1998": [
-   {
-    "reference": "1998 DPA 272",
-    "titre": "60 - 1998, DPA 272 - Autorisation à M. le Maire de Paris de signer un marché de maîtrise d'oeuvre en vue de la réalisation des travaux d'extension du conservatoire du 14e arrondissement (14e) et de déposer les demandes de permis de démolir et de construire correspondants",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "DECEMBRE 1998",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14423"
-   },
-   {
-    "reference": "1998 DPA 272",
-    "titre": "Approbation du principe de la réalisation des travaux d'extension du conservatoire du 14e arrondissement (14e). - Autorisation à M. le Maire de Paris de signer le marché de maîtrise d'oeuvre et de déposer les demandes de permis de démolir et de construire correspondants. Mme Hélène MACE de LEPINAY, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "DECEMBRE 1998",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57558"
-   }
-  ],
-  "1999": [
-   {
-    "reference": "1999 DPA 175",
-    "titre": "Approbation des modalités d'attribution du marché de travaux en vue de l'extension du Conservatoire du 14e arrondissement (14e). - Autorisation à M. le Maire de Paris de signer le marché de travaux correspondant. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 1999",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83747"
-   }
-  ],
-  "2001": [
-   {
-    "reference": "2001 DPA 81",
-    "titre": "Approbation du principe de la réalisation des travaux de ravalement des façades du conservatoire Darius-Milhaud (14e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Sandrine MAZETIER, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUIN 2001",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28819"
-   }
-  ],
-  "2002": [
-   {
-    "reference": "2002 DPA 210",
-    "titre": "Autorisation à M. le Maire de Paris, de souscrire un avenant au marché de maîtrise d'œuvre n° 98/26 627 signé avec Monsieur Jean-Paul PHILIPPON, architecte, relatif à l'extension du Conservatoire Darius Milhaud, sis 26, rue Mouton Duvernet (14e). M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUIN 2002",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55885"
-   }
-  ]
- },
- "invest": [
-  {
-   "annee": 2019,
-   "montant_eur": 12918730.0,
-   "nom_projet": "Conservatoire du 14ème - Construction, acquisition de collections, équipements audiovisuel",
-   "preuve": "Le libellé de l'opération reprend l'alias employé par la Ville pour ce conservatoire : « Conservatoire du 14ème ». L'équivalence est écrite par le Conseil de Paris — 2007 DAC 646 : « l'association du Conservatoire municipal du 14e arrondissement “Darius Milhaud”, ayant son siège social 26, rue Mouton Duvernet (14e) » ; même usage de l'alias dans 1999 DPA 175 (« extension du Conservatoire du 14e arrondissement ») et adresse confirmée par 2001 DPA 81 (« conservatoire Darius-Milhaud, 24-26, rue Mouton-Duvernet (14e) »). La ligne 2021 de la même série nomme le lieu verbatim. Confiance moyenne : le rattachement repose sur l'alias et non sur le nom propre, et la source ne localise cette ligne qu'à l'arrondissement (14e), sans adresse.",
-   "id": null
+  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "conservatoire-darius-milhaud",
+  "name": "Conservatoire Darius-Milhaud",
+  "kind_fr": "Conservatoire",
+  "kind_en": "Conservatoire",
+  "famille": "culture",
+  "arrondissement": 14,
+  "lat": 48.827563,
+  "lon": 2.308109,
+  "photo": "/img/lieux/conservatoire-darius-milhaud.jpg",
+  "photo_credit": {
+    "licence": "CC BY 2.0",
+    "auteur": "Guilhem Vellut from Paris, France",
+    "url": "https://commons.wikimedia.org/wiki/File:Conservatoire_Darius_Milhaud,_Place_Gilbert_Perroy,_Paris_5_December_2016.jpg",
+    "source": "Wikimedia Commons"
   },
-  {
-   "annee": 2020,
-   "montant_eur": 662993.0,
-   "nom_projet": "Conservatoire du 14ème - Construction, acquisition de collections, d'équipements audiovisu",
-   "preuve": "Même opération que la ligne 2019, un an plus tard : le libellé reprend l'alias « Conservatoire du 14ème », dont l'équivalence avec ce lieu est écrite par le Conseil de Paris (2007 DAC 646 : « l'association du Conservatoire municipal du 14e arrondissement “Darius Milhaud”, ayant son siège social 26, rue Mouton Duvernet (14e) »). Confiance moyenne : rattachement par l'alias, source localisée au seul arrondissement (14e).",
-   "id": null
-  },
-  {
-   "annee": 2021,
-   "montant_eur": 908302.0,
-   "nom_projet": "Enseignement artistique Conservatoire Darius Milhaud - Construction",
-   "preuve": "Le nom de l'opération nomme le lieu verbatim : « Enseignement artistique Conservatoire Darius Milhaud - Construction », ligne d'investissement localisée dans le 14e.",
-   "id": "2021_14_il_013"
-  }
- ],
- "marches": [
-  {
-   "numero_marche": "20232023T04332",
-   "objet": "VENTILATION CVC CONSERVATOIRE DARIUS MILHAUD 14EME",
-   "objet_clair": null,
-   "fournisseur": "LA LOUISIANE",
-   "montant_max": 231400.0,
-   "date_notification": "2023-06-01",
-   "preuve": "L'objet du marché nomme le lieu et son arrondissement : « VENTILATION CVC CONSERVATOIRE DARIUS MILHAUD 14EME » — travaux de chauffage-ventilation sur le bâtiment lui-même."
-  },
-  {
-   "numero_marche": "20222022S09527",
-   "objet": "REPRISE DES INSTALLATION CVC CONSERVATOIRE DARIUS MILHAUD",
-   "objet_clair": null,
-   "fournisseur": "SPHERE INGENIERIE",
-   "montant_max": 30000.0,
-   "date_notification": "2022-11-28",
-   "preuve": "L'objet du marché nomme le lieu : « REPRISE DES INSTALLATION CVC CONSERVATOIRE DARIUS MILHAUD » — prestation portant sur les installations du bâtiment."
-  }
- ],
- "mandate": null,
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Conservatoire+Darius-Milhaud"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": null,
+    "url": null,
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "stats": {
+    "n_delibs": 808,
+    "delibs_span": [
+      1995,
+      2026
+    ],
+    "n_bmo_brut": 0,
+    "n_bmo_verifies": null,
+    "invest_total_eur": 14490025.0,
+    "invest_annees": [
+      "2019",
+      "2020",
+      "2021"
+    ],
+    "lecture_mode": "titre nommant le lieu (1 trouvés)",
+    "lecture_mode_en": "title naming the place (1 found)",
+    "n_lus": 1,
+    "n_lieu": null
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": null,
+  "moments": [],
+  "montants": [],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": {
+    "1998": [
+      {
+        "reference": "1998 DPA 272",
+        "titre": "60 - 1998, DPA 272 - Autorisation à M. le Maire de Paris de signer un marché de maîtrise d'oeuvre en vue de la réalisation des travaux d'extension du conservatoire du 14e arrondissement (14e) et de déposer les demandes de permis de démolir et de construire correspondants",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "DECEMBRE 1998",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14423"
+      },
+      {
+        "reference": "1998 DPA 272",
+        "titre": "Approbation du principe de la réalisation des travaux d'extension du conservatoire du 14e arrondissement (14e). - Autorisation à M. le Maire de Paris de signer le marché de maîtrise d'oeuvre et de déposer les demandes de permis de démolir et de construire correspondants. Mme Hélène MACE de LEPINAY, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "DECEMBRE 1998",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57558"
+      }
+    ],
+    "1999": [
+      {
+        "reference": "1999 DPA 175",
+        "titre": "Approbation des modalités d'attribution du marché de travaux en vue de l'extension du Conservatoire du 14e arrondissement (14e). - Autorisation à M. le Maire de Paris de signer le marché de travaux correspondant. Mme Hélène MACÉ de LÉPINAY, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 1999",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83747"
+      }
+    ],
+    "2001": [
+      {
+        "reference": "2001 DPA 81",
+        "titre": "Approbation du principe de la réalisation des travaux de ravalement des façades du conservatoire Darius-Milhaud (14e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. Mme Sandrine MAZETIER, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUIN 2001",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28819"
+      }
+    ],
+    "2002": [
+      {
+        "reference": "2002 DPA 210",
+        "titre": "Autorisation à M. le Maire de Paris, de souscrire un avenant au marché de maîtrise d'œuvre n° 98/26 627 signé avec Monsieur Jean-Paul PHILIPPON, architecte, relatif à l'extension du Conservatoire Darius Milhaud, sis 26, rue Mouton Duvernet (14e). M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUIN 2002",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55885"
+      }
+    ]
+  },
+  "invest": [
+    {
+      "annee": 2019,
+      "montant_eur": 12918730.0,
+      "nom_projet": "Conservatoire du 14ème - Construction, acquisition de collections, équipements audiovisuel",
+      "preuve": "Le libellé de l'opération reprend l'alias employé par la Ville pour ce conservatoire : « Conservatoire du 14ème ». L'équivalence est écrite par le Conseil de Paris — 2007 DAC 646 : « l'association du Conservatoire municipal du 14e arrondissement “Darius Milhaud”, ayant son siège social 26, rue Mouton Duvernet (14e) » ; même usage de l'alias dans 1999 DPA 175 (« extension du Conservatoire du 14e arrondissement ») et adresse confirmée par 2001 DPA 81 (« conservatoire Darius-Milhaud, 24-26, rue Mouton-Duvernet (14e) »). La ligne 2021 de la même série nomme le lieu verbatim. Confiance moyenne : le rattachement repose sur l'alias et non sur le nom propre, et la source ne localise cette ligne qu'à l'arrondissement (14e), sans adresse.",
+      "id": null
+    },
+    {
+      "annee": 2020,
+      "montant_eur": 662993.0,
+      "nom_projet": "Conservatoire du 14ème - Construction, acquisition de collections, d'équipements audiovisu",
+      "preuve": "Même opération que la ligne 2019, un an plus tard : le libellé reprend l'alias « Conservatoire du 14ème », dont l'équivalence avec ce lieu est écrite par le Conseil de Paris (2007 DAC 646 : « l'association du Conservatoire municipal du 14e arrondissement “Darius Milhaud”, ayant son siège social 26, rue Mouton Duvernet (14e) »). Confiance moyenne : rattachement par l'alias, source localisée au seul arrondissement (14e).",
+      "id": null
+    },
+    {
+      "annee": 2021,
+      "montant_eur": 908302.0,
+      "nom_projet": "Enseignement artistique Conservatoire Darius Milhaud - Construction",
+      "preuve": "Le nom de l'opération nomme le lieu verbatim : « Enseignement artistique Conservatoire Darius Milhaud - Construction », ligne d'investissement localisée dans le 14e.",
+      "id": "2021_14_il_013"
+    }
+  ],
+  "marches": [
+    {
+      "numero_marche": "20232023T04332",
+      "objet": "VENTILATION CVC CONSERVATOIRE DARIUS MILHAUD 14EME",
+      "objet_clair": null,
+      "fournisseur": "LA LOUISIANE",
+      "montant_max": 231400.0,
+      "date_notification": "2023-06-01",
+      "preuve": "L'objet du marché nomme le lieu et son arrondissement : « VENTILATION CVC CONSERVATOIRE DARIUS MILHAUD 14EME » — travaux de chauffage-ventilation sur le bâtiment lui-même."
+    },
+    {
+      "numero_marche": "20222022S09527",
+      "objet": "REPRISE DES INSTALLATION CVC CONSERVATOIRE DARIUS MILHAUD",
+      "objet_clair": null,
+      "fournisseur": "SPHERE INGENIERIE",
+      "montant_max": 30000.0,
+      "date_notification": "2022-11-28",
+      "preuve": "L'objet du marché nomme le lieu : « REPRISE DES INSTALLATION CVC CONSERVATOIRE DARIUS MILHAUD » — prestation portant sur les installations du bâtiment."
+    }
+  ],
+  "mandate": null,
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Conservatoire+Darius-Milhaud"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- }
 }

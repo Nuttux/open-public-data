@@ -1,355 +1,363 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "musee-en-herbe",
- "name": "Musée en Herbe",
- "kind_fr": "Musée",
- "kind_en": "Musée",
- "famille": "culture",
- "arrondissement": 1,
- "lat": 48.860146,
- "lon": 2.342102,
- "photo": "/img/lieux/musee-en-herbe.jpg",
- "photo_credit": {
-  "licence": null,
-  "auteur": null,
-  "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_en_Herbe",
-  "source": "Wikipédia"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": "Le musée en Herbe est un musée parisien géré par une association loi de 1901, reconnue d'intérêt général, subventionnée par la mairie de Paris, soutenue ponctuellement par l'État, la région Île-de-France, des artistes et des particuliers.",
-  "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_en_Herbe",
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 707,
-  "delibs_span": [
-   1995,
-   2026
-  ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "titre nommant le lieu (19 trouvés)",
-  "lecture_mode_en": "title naming the place (19 found)",
-  "n_lus": 18,
-  "n_lieu": null
- },
- "subventions_exploitant": {
-  "nom_fiche": "MUSEE EN HERBE",
-  "total_eur": 3400602.0,
-  "annees": [
-   "2010",
-   "2024"
-  ],
-  "rows": [
-   {
-    "annee": "2024",
-    "montant_eur": 197850.0,
-    "beneficiaire": "MUSEE EN HERBE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2023",
-    "montant_eur": 205427.0,
-    "beneficiaire": "MUSEE EN HERBE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2022",
-    "montant_eur": 212620.0,
-    "beneficiaire": "MUSEE EN HERBE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2021",
-    "montant_eur": 201910.0,
-    "beneficiaire": "MUSEE EN HERBE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2020",
-    "montant_eur": 364275.0,
-    "beneficiaire": "MUSEE EN HERBE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2019",
-    "montant_eur": 210000.0,
-    "beneficiaire": "MUSEE EN HERBE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2018",
-    "montant_eur": 200000.0,
-    "beneficiaire": "MUSEE EN HERBE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2017",
-    "montant_eur": 200000.0,
-    "beneficiaire": "MUSEE EN HERBE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2016",
-    "montant_eur": 275000.0,
-    "beneficiaire": "MUSEE EN HERBE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2015",
-    "montant_eur": 315400.0,
-    "beneficiaire": "MUSEE EN HERBE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2014",
-    "montant_eur": 200000.0,
-    "beneficiaire": "MUSEE EN HERBE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2013",
-    "montant_eur": 220120.0,
-    "beneficiaire": "MUSEE EN HERBE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2012",
-    "montant_eur": 180000.0,
-    "beneficiaire": "MUSEE EN HERBE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2011",
-    "montant_eur": 209000.0,
-    "beneficiaire": "MUSEE EN HERBE",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2010",
-    "montant_eur": 209000.0,
-    "beneficiaire": "MUSEE EN HERBE",
-    "thematique": "Culture"
-   }
-  ],
-  "perimetre": "mono",
-  "note_publique": "Ce total regroupe les subventions versées par la Ville à l'association qui fait fonctionner le musée, année après année. L'association a occupé jusqu'à l'été 2009 un site au Jardin d'Acclimatation, bois de Boulogne (16e) ; toutes les années rattachées ici sont postérieures à son installation dans le 1er arrondissement.",
-  "autres_sites": []
- },
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": {
-  "2001": [
-   {
-    "reference": "2001 DAC 485",
-    "titre": "Autorisation à M. le Maire de Paris de signer une convention avec l'association \"Le Musée en Herbe\" situé dans le Jardin d'Acclimatation, Bois de Boulogne (16e). M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "autre"
-    ],
-    "seance": "DECEMBRE 2001",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29820"
-   }
-  ],
-  "2002": [
-   {
-    "reference": "2002 DAC 25",
-    "titre": "Autorisation à M. le Maire de Paris de signer une convention d'objectifs avec l'association \"Le Musée en Herbe\"(16e) relative à l'attribution d'une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "MARS 2002",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38945"
-   },
-   {
-    "reference": "2002 DAC 301",
-    "titre": "Autorisation à M. le Maire de Paris de signer un avenant à la convention d'objectifs établie entre la Ville de Paris et l'association \"Le Musée en Herbe\"situé dans le Jardin d'Acclimatation, Bois de Boulogne 75116 Paris pour le versement d'une subvention de fonctionnement complémentaire de 146.632 euros. M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "OCTOBRE 2002",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95388"
-   }
-  ],
-  "2003": [
-   {
-    "reference": "2003 DAC 149",
-    "titre": "Autorisation à M. le Maire de Paris de signer une convention d'objectifs relative à l'attribution d'une subvention de fonctionnement à l'association \"Le Musée en Herbe\"(16e). M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "MAI 2003",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56948"
-   }
-  ],
-  "2004": [
-   {
-    "reference": "2004 DAC 71",
-    "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Le Musée en Herbe\" une convention annuelle d'objectifs relative à l'attribution d'une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "AVRIL 2004",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52180"
-   }
-  ],
-  "2005": [
-   {
-    "reference": "2005 DAC 7",
-    "titre": "Autorisation à M. le Maire de Paris de signer une convention d’objectifs relative à l’attribution d’une subvention de fonctionnement de 315.000 euros à l’association “Le Musée en Herbe”situé dans le Jardin d’Acclimatation, Bois de Boulogne (16e). M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "AVRIL 2005",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43572"
-   }
-  ],
-  "2006": [
-   {
-    "reference": "2006 DAC 112",
-    "titre": "2006, DAC 112 - Autorisation à M. le Maire de Paris de signer une convention d’objectifs relative à l’attribution d’une subvention de fonctionnement de 315.000 euros avec l’association “Le Musée en Herbe” situé dans le Jardin d’acclimatation, bois de Boulogne.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "AVRIL 2006",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16936"
-   },
-   {
-    "reference": "2006 DAC 112",
-    "titre": "Autorisation à M. le Maire de Paris de signer une convention d’objectifs relative à l’attribution d’une subvention de fonctionnement de 315.000 euros entre la Ville de Paris et l’association “Le Musée en Herbe”situé dans le Jardin d’Acclimatation, bois de Boulogne (16e). M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "AVRIL 2006",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38495"
-   }
-  ],
-  "2007": [
-   {
-    "reference": "2007 DAC 219",
-    "titre": "Autorisation à M. le Maire de Paris de signer une convention d’objectifs relative à l’attribution d’une subvention de fonctionnement de 315.000 euros entre la Ville de Paris et l’association “Le Musée en Herbe” situé dans le Jardin d’Acclimatation, Bois de Boulogne 75116 Paris. M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "JUIN 2007",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72421"
-   }
-  ],
-  "2008": [
-   {
-    "reference": "2008 DAC 295",
-    "titre": "Signature d’un avenant à la convention passée avec l’association Le Musée en Herbe (16e), pour l’attribution du solde de la subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "OCTOBRE 2008",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42983"
-   }
-  ],
-  "2009": [
-   {
-    "reference": "2009 DAC 699",
-    "titre": "Signature d’un avenant à la convention passée avec l’association Le Musée en Herbe (1er) pour l’attribution du solde de la subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "OCTOBRE 2009",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93425"
-   },
-   {
-    "reference": "2009 DAC 699",
-    "titre": "2009, DAC 699 - Signature d'un avenant à la convention passée avec l'association \"Le Musée en Herbe (1er), pour l'attribution du solde de la subvention de fonctionnement. - Montant : 80.000 euros.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "OCTOBRE 2009",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14848"
-   }
-  ],
-  "2010": [
-   {
-    "reference": "2010 DAC 468",
-    "titre": "Signature d’un avenant à la convention passée avec l’association Le Musée en Herbe (1er), pour l’attribution d’une subvention. M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "SEPTEMBRE 2010",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39221"
-   },
-   {
-    "reference": "2010 DAC 468",
-    "titre": "2010, DAC 468 - Signature d'un avenant à la convention passée avec l'association Le Musée en Herbe (1er) pour l'attribution d'une subvention. Montant : 102.750 euros.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "SEPTEMBRE 2010",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11138"
-   }
-  ],
-  "2012": [
-   {
-    "reference": "2012 DAC 364",
-    "titre": "54 - 2012, DAC 364 - Subvention (75.500 euros) et avenant à convention avec l’association Le Musée en Herbe (1e). Vœu déposé par le groupe U.M.P.P.A. relatif à la subvention accordée au Musée en Herbe.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "JUIN 2012",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=106209"
-   }
-  ],
-  "2023": [
-   {
-    "reference": "2023 DAC 191",
-    "titre": "2023 DAC 191 - Subventions (183.000 euros) à l’association \"Le Musée en Herbe\", avenant à la convention annuelle d’objectifs, avenant à la convention d’investissement et convention d’investissement.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "OCTOBRE 2023",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=171938"
-   }
-  ],
-  "2025": [
-   {
-    "reference": "2025 DAC 190",
-    "titre": "2025 DAC 190 - Subventions (4.520.000 euros) et avenants à convention avec \"Paris Ateliers\", La Maison du geste et de l’image, Musée en herbe et \"Polynotes 75\".",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "JUIN 2025",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=181153"
-   }
-  ]
- },
- "invest": [],
- "marches": [],
- "mandate": null,
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mus%C3%A9e+en+Herbe"
+  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "musee-en-herbe",
+  "name": "Musée en Herbe",
+  "kind_fr": "Musée",
+  "kind_en": "Musée",
+  "famille": "culture",
+  "arrondissement": 1,
+  "lat": 48.860146,
+  "lon": 2.342102,
+  "photo": "/img/lieux/musee-en-herbe.jpg",
+  "photo_credit": {
+    "licence": null,
+    "auteur": null,
+    "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_en_Herbe",
+    "source": "Wikipédia"
   },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "Le musée en Herbe est un musée parisien géré par une association loi de 1901, reconnue d'intérêt général, subventionnée par la mairie de Paris, soutenue ponctuellement par l'État, la région Île-de-France, des artistes et des particuliers.",
+    "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_en_Herbe",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "stats": {
+    "n_delibs": 707,
+    "delibs_span": [
+      1995,
+      2026
+    ],
+    "n_bmo_brut": 0,
+    "n_bmo_verifies": null,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "titre nommant le lieu (19 trouvés)",
+    "lecture_mode_en": "title naming the place (19 found)",
+    "n_lus": 18,
+    "n_lieu": null
+  },
+  "subventions_exploitant": {
+    "nom_fiche": "MUSEE EN HERBE",
+    "total_eur": 3400602.0,
+    "annees": [
+      "2010",
+      "2024"
+    ],
+    "rows": [
+      {
+        "annee": "2024",
+        "montant_eur": 197850.0,
+        "beneficiaire": "MUSEE EN HERBE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2023",
+        "montant_eur": 205427.0,
+        "beneficiaire": "MUSEE EN HERBE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2022",
+        "montant_eur": 212620.0,
+        "beneficiaire": "MUSEE EN HERBE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2021",
+        "montant_eur": 201910.0,
+        "beneficiaire": "MUSEE EN HERBE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2020",
+        "montant_eur": 364275.0,
+        "beneficiaire": "MUSEE EN HERBE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2019",
+        "montant_eur": 210000.0,
+        "beneficiaire": "MUSEE EN HERBE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2018",
+        "montant_eur": 200000.0,
+        "beneficiaire": "MUSEE EN HERBE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2017",
+        "montant_eur": 200000.0,
+        "beneficiaire": "MUSEE EN HERBE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2016",
+        "montant_eur": 275000.0,
+        "beneficiaire": "MUSEE EN HERBE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2015",
+        "montant_eur": 315400.0,
+        "beneficiaire": "MUSEE EN HERBE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2014",
+        "montant_eur": 200000.0,
+        "beneficiaire": "MUSEE EN HERBE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2013",
+        "montant_eur": 220120.0,
+        "beneficiaire": "MUSEE EN HERBE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2012",
+        "montant_eur": 180000.0,
+        "beneficiaire": "MUSEE EN HERBE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2011",
+        "montant_eur": 209000.0,
+        "beneficiaire": "MUSEE EN HERBE",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2010",
+        "montant_eur": 209000.0,
+        "beneficiaire": "MUSEE EN HERBE",
+        "thematique": "Culture"
+      }
+    ],
+    "perimetre": "mono",
+    "note_publique": "Ce total regroupe les subventions versées par la Ville à l'association qui fait fonctionner le musée, année après année. L'association a occupé jusqu'à l'été 2009 un site au Jardin d'Acclimatation, bois de Boulogne (16e) ; toutes les années rattachées ici sont postérieures à son installation dans le 1er arrondissement.",
+    "autres_sites": []
+  },
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": null,
+  "moments": [],
+  "montants": [],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": {
+    "2001": [
+      {
+        "reference": "2001 DAC 485",
+        "titre": "Autorisation à M. le Maire de Paris de signer une convention avec l'association \"Le Musée en Herbe\" situé dans le Jardin d'Acclimatation, Bois de Boulogne (16e). M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "autre"
+        ],
+        "seance": "DECEMBRE 2001",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29820"
+      }
+    ],
+    "2002": [
+      {
+        "reference": "2002 DAC 25",
+        "titre": "Autorisation à M. le Maire de Paris de signer une convention d'objectifs avec l'association \"Le Musée en Herbe\"(16e) relative à l'attribution d'une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "MARS 2002",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38945"
+      },
+      {
+        "reference": "2002 DAC 301",
+        "titre": "Autorisation à M. le Maire de Paris de signer un avenant à la convention d'objectifs établie entre la Ville de Paris et l'association \"Le Musée en Herbe\"situé dans le Jardin d'Acclimatation, Bois de Boulogne 75116 Paris pour le versement d'une subvention de fonctionnement complémentaire de 146.632 euros. M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "OCTOBRE 2002",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95388"
+      }
+    ],
+    "2003": [
+      {
+        "reference": "2003 DAC 149",
+        "titre": "Autorisation à M. le Maire de Paris de signer une convention d'objectifs relative à l'attribution d'une subvention de fonctionnement à l'association \"Le Musée en Herbe\"(16e). M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "MAI 2003",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56948"
+      }
+    ],
+    "2004": [
+      {
+        "reference": "2004 DAC 71",
+        "titre": "Autorisation à M. le Maire de Paris de signer avec l'association \"Le Musée en Herbe\" une convention annuelle d'objectifs relative à l'attribution d'une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "AVRIL 2004",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52180"
+      }
+    ],
+    "2005": [
+      {
+        "reference": "2005 DAC 7",
+        "titre": "Autorisation à M. le Maire de Paris de signer une convention d’objectifs relative à l’attribution d’une subvention de fonctionnement de 315.000 euros à l’association “Le Musée en Herbe”situé dans le Jardin d’Acclimatation, Bois de Boulogne (16e). M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "AVRIL 2005",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43572"
+      }
+    ],
+    "2006": [
+      {
+        "reference": "2006 DAC 112",
+        "titre": "2006, DAC 112 - Autorisation à M. le Maire de Paris de signer une convention d’objectifs relative à l’attribution d’une subvention de fonctionnement de 315.000 euros avec l’association “Le Musée en Herbe” situé dans le Jardin d’acclimatation, bois de Boulogne.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "AVRIL 2006",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16936"
+      },
+      {
+        "reference": "2006 DAC 112",
+        "titre": "Autorisation à M. le Maire de Paris de signer une convention d’objectifs relative à l’attribution d’une subvention de fonctionnement de 315.000 euros entre la Ville de Paris et l’association “Le Musée en Herbe”situé dans le Jardin d’Acclimatation, bois de Boulogne (16e). M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "AVRIL 2006",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38495"
+      }
+    ],
+    "2007": [
+      {
+        "reference": "2007 DAC 219",
+        "titre": "Autorisation à M. le Maire de Paris de signer une convention d’objectifs relative à l’attribution d’une subvention de fonctionnement de 315.000 euros entre la Ville de Paris et l’association “Le Musée en Herbe” situé dans le Jardin d’Acclimatation, Bois de Boulogne 75116 Paris. M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "JUIN 2007",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72421"
+      }
+    ],
+    "2008": [
+      {
+        "reference": "2008 DAC 295",
+        "titre": "Signature d’un avenant à la convention passée avec l’association Le Musée en Herbe (16e), pour l’attribution du solde de la subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "OCTOBRE 2008",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42983"
+      }
+    ],
+    "2009": [
+      {
+        "reference": "2009 DAC 699",
+        "titre": "Signature d’un avenant à la convention passée avec l’association Le Musée en Herbe (1er) pour l’attribution du solde de la subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "OCTOBRE 2009",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93425"
+      },
+      {
+        "reference": "2009 DAC 699",
+        "titre": "2009, DAC 699 - Signature d'un avenant à la convention passée avec l'association \"Le Musée en Herbe (1er), pour l'attribution du solde de la subvention de fonctionnement. - Montant : 80.000 euros.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "OCTOBRE 2009",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14848"
+      }
+    ],
+    "2010": [
+      {
+        "reference": "2010 DAC 468",
+        "titre": "Signature d’un avenant à la convention passée avec l’association Le Musée en Herbe (1er), pour l’attribution d’une subvention. M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "SEPTEMBRE 2010",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39221"
+      },
+      {
+        "reference": "2010 DAC 468",
+        "titre": "2010, DAC 468 - Signature d'un avenant à la convention passée avec l'association Le Musée en Herbe (1er) pour l'attribution d'une subvention. Montant : 102.750 euros.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "SEPTEMBRE 2010",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11138"
+      }
+    ],
+    "2012": [
+      {
+        "reference": "2012 DAC 364",
+        "titre": "54 - 2012, DAC 364 - Subvention (75.500 euros) et avenant à convention avec l’association Le Musée en Herbe (1e). Vœu déposé par le groupe U.M.P.P.A. relatif à la subvention accordée au Musée en Herbe.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "JUIN 2012",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=106209"
+      }
+    ],
+    "2023": [
+      {
+        "reference": "2023 DAC 191",
+        "titre": "2023 DAC 191 - Subventions (183.000 euros) à l’association \"Le Musée en Herbe\", avenant à la convention annuelle d’objectifs, avenant à la convention d’investissement et convention d’investissement.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "OCTOBRE 2023",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=171938"
+      }
+    ],
+    "2025": [
+      {
+        "reference": "2025 DAC 190",
+        "titre": "2025 DAC 190 - Subventions (4.520.000 euros) et avenants à convention avec \"Paris Ateliers\", La Maison du geste et de l’image, Musée en herbe et \"Polynotes 75\".",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "JUIN 2025",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=181153"
+      }
+    ]
+  },
+  "invest": [],
+  "marches": [],
+  "mandate": null,
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mus%C3%A9e+en+Herbe"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- }
 }

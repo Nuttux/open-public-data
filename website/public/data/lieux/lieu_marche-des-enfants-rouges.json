@@ -1,377 +1,385 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "marche-des-enfants-rouges",
- "name": "Marché des Enfants-Rouges",
- "kind_fr": "Marché couvert",
- "kind_en": "Covered market",
- "famille": "services",
- "arrondissement": 3,
- "lat": 48.8628,
- "lon": 2.3623,
- "photo": "/img/lieux/marche-des-enfants-rouges.jpg",
- "photo_credit": {
-  "licence": null,
-  "auteur": null,
-  "url": "https://fr.wikipedia.org/wiki/March%C3%A9_des_Enfants-Rouges",
-  "source": "Wikipédia"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": "Le marché des Enfants-Rouges est le plus vieux marché couvert de Paris. Il est situé 39, rue de Bretagne, dans le 3e arrondissement de Paris.",
-  "url": "https://fr.wikipedia.org/wiki/March%C3%A9_des_Enfants-Rouges",
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "marche-des-enfants-rouges",
+  "name": "Marché des Enfants-Rouges",
+  "kind_fr": "Marché couvert",
+  "kind_en": "Covered market",
+  "famille": "services",
+  "arrondissement": 3,
+  "lat": 48.8628,
+  "lon": 2.3623,
+  "photo": "/img/lieux/marche-des-enfants-rouges.jpg",
+  "photo_credit": {
+    "licence": null,
+    "auteur": null,
+    "url": "https://fr.wikipedia.org/wiki/March%C3%A9_des_Enfants-Rouges",
+    "source": "Wikipédia"
   },
-  "extract_en": "The Marché des Enfants-Rouges is the oldest covered market in Paris. It is located at 39 rue de Bretagne, in the 3rd arrondissement of Paris."
- },
- "stats": {
-  "n_delibs": 1270,
-  "delibs_span": [
-   1996,
-   2021
-  ],
-  "n_bmo_brut": 2000,
-  "n_bmo_verifies": 3,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "titre nommant le lieu (15 trouvés)",
-  "lecture_mode_en": "title naming the place (15 found)",
-  "n_lus": 15,
-  "n_lieu": 12
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": "En mars 1996, le Conseil de Paris approuve le principe de la concession du marché couvert des Enfants-Rouges et autorise le Maire de Paris à procéder à la publicité d'un avis d'appel à candidatures en vue de la réalisation d'aménagements et de la gestion du marché. Le débat est vif : Mme Liliane CAPELLE (Mouvement des citoyens) affirme que la Ville envisageait encore l'année précédente la destruction de ce marché fondé en 1615 et inscrit à l'Inventaire supplémentaire des Monuments historiques par arrêté du 8 mars 1982, au profit d'une opération immobilière incluant un parc de stationnement souterrain, et l'intervention du maire du 3e, M. Pierre AIDENBAUM, soulève de vives protestations sur les bancs des groupes « Rassemblement pour Paris » et « Paris-Libertés ». En mars 1997, le Conseil autorise le Maire de Paris à signer avec la société « Promo métro » une convention de concession de 20 ans portant sur la réhabilitation et la gestion du marché : le maire du 3e invite l'Assemblée à voter unanimement, et Mme Martine DURLACH dit voter ce projet « bien que le mode de gestion choisi, c'est à dire l'attribution à une société privée, ne soit le meilleur », lui préférant la gestion directe par la mairie d'arrondissement ou le G.I.E. des marchés couverts. En avril 1997, le droit de place du marché est fixé à 90,50 F par mètre carré et par mois, barème appliqué aux seuls marchés Secrétan et des Enfants-Rouges, contre 44,85 F pour les autres marchés couverts. En juillet 1999, le Conseil autorise le Maire de Paris à signer avec Promo métro un contrat de transaction visant à l'indemniser à hauteur de 3.247.000 F H.T. des frais engagés au titre de travaux de confortation du sous-sol, hors du champ de la convention du 8 avril 1997. En septembre 2002, interrogée sur le devenir du marché, l'adjointe Mme Lyne COHEN-SOLAL indique qu'une modification du règlement est à l'étude pour y autoriser la vente par des producteurs fermiers que la Fédération des C.I.V.A.M. s'est engagée à recruter, en contrepartie du bail de neuf ans que la Ville lui a consenti sur l'immeuble communal mitoyen du 39 rue de Bretagne. Quatre autres délibérations ne sont connues que par leur intitulé, qui n'indique pas le sens du vote : un avenant au contrat de transaction souscrit avec Promo Métro (septembre 2001), une convention avec le Préfet de Paris afin de percevoir la subvention attribuée au titre du FISAC pour la réhabilitation du marché (septembre 2004), la cession par Promo Métro de la convention de délégation de service public à la société E.G.S. (avril 2005) et un nouveau règlement du marché (mai 2015). En avril 2021, le Conseil examine le principe du renouvellement de la délégation de service public ; Mme Alice TIMSIT (groupe Ecologiste de Paris) indique en séance que la nouvelle convention précise des missions de sortie du plastique à usage unique et de valorisation des déchets.",
- "moments": [
-  {
-   "id": "7510",
-   "seance": "MARS 1996",
-   "fait": "Le Conseil débat du principe de la concession : Mme Liliane CAPELLE (Mouvement des citoyens) affirme que la Ville envisageait encore l'année précédente la destruction du marché, inscrit à l'Inventaire supplémentaire des Monuments historiques par arrêté du 8 mars 1982, au profit d'une opération immobilière avec parc de stationnement souterrain ; l'intervention du maire du 3e, M. Pierre AIDENBAUM, soulève de vives protestations sur les bancs « Rassemblement pour Paris » et « Paris-Libertés ».",
-   "pourquoi": "Le passé du dossier est contesté en séance",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7510",
-   "fait_en": "The Council debated the principle of the concession: Ms Liliane CAPELLE (Mouvement des citoyens) stated that as recently as the previous year the City had still been considering demolishing the market, listed on the Supplementary Inventory of Historic Monuments by order of 8 March 1982, in favor of a property development with an underground parking structure; the remarks of the mayor of the 3rd arrondissement, Mr Pierre AIDENBAUM, prompted vigorous protests from the \"Rassemblement pour Paris\" and \"Paris-Libertés\" benches.",
-   "pourquoi_en": "the case's history is disputed in session"
-  },
-  {
-   "id": "13085",
-   "seance": "OCTOBRE 1996",
-   "fait": "Question du groupe socialiste sur les trois maisons murées en devanture du marché, où le maire du 3e propose un équipement socioculturel : l'adjointe répond qu'un centre d'animation n'est pas viable financièrement en deçà d'une certaine surface et que ces maisons ne dépassent pas 400 mètres carrés ; la question situe la réouverture « probablement à la mi-1997 ».",
-   "pourquoi": "La Ville oppose la surface des locaux au projet d'équipement",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13085",
-   "fait_en": "A question from the Socialist group about the three boarded-up houses at the market's front, where the mayor of the 3rd arrondissement proposed a socio-cultural facility: the deputy mayor replied that a community center was not financially viable below a certain floor area and that these houses did not exceed 400 square meters; the question placed the reopening \"probably in mid-1997.\"",
-   "pourquoi_en": "the City counters the facility project with the premises' floor area"
-  },
-  {
-   "id": "4586",
-   "seance": "MARS 1997",
-   "fait": "Débat sur la concession à « Promo métro » : le maire du 3e invite l'Assemblée à voter unanimement, tandis que Mme Martine DURLACH dit voter le projet tout en jugeant que l'attribution à une société privée n'est pas le meilleur mode de gestion et relève que les trois maisons murées devant le marché ne font pas partie de la concession.",
-   "pourquoi": "Un vote convergent, avec une réserve sur la gestion privée",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4586",
-   "fait_en": "Debate on the concession to \"Promo métro\": the mayor of the 3rd arrondissement invited the Assembly to vote unanimously, while Ms Martine DURLACH said she was voting for the project while judging that awarding it to a private company was not the best management method, and noted that the three boarded-up houses in front of the market were not part of the concession.",
-   "pourquoi_en": "a convergent vote, with a reservation about private management"
-  },
-  {
-   "id": "40194",
-   "seance": "AVRIL 1997",
-   "fait": "Le Conseil fixe les droits du marché à compter du 1er mai 1997 : droit de place de 90,50 F par mètre carré et par mois, contre 44,85 F dans les autres marchés couverts.",
-   "pourquoi": "Le marché entre dans le barème haut",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40194",
-   "fait_en": "The Council set the market's fees effective from 1 May 1997: a stall fee of 90.50 francs per square meter per month, against 44.85 francs in the other covered markets.",
-   "pourquoi_en": "the market enters the higher fee bracket"
-  },
-  {
-   "id": "85707",
-   "seance": "JUILLET 1999",
-   "fait": "Le Conseil autorise le Maire de Paris à signer avec « Promo métro » un contrat de transaction visant à l'indemniser de 3 247 000 F H.T. au titre de travaux de confortation du sous-sol, hors du champ de la convention du 8 avril 1997.",
-   "pourquoi": "Une indemnisation hors du champ de la convention",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85707",
-   "fait_en": "The Council authorized the Mayor of Paris to sign with \"Promo métro\" a settlement contract to compensate it 3,247,000 francs excluding tax for basement reinforcement works, outside the scope of the 8 April 1997 agreement.",
-   "pourquoi_en": "compensation outside the scope of the agreement"
-  },
-  {
-   "id": "6043",
-   "seance": "SEPTEMBRE 2002",
-   "fait": "Interrogée sur le devenir du marché, la Ville indique qu'une modification du règlement est à l'étude pour autoriser la vente sur le site par des producteurs fermiers que la Fédération des C.I.V.A.M., installée par bail dans l'immeuble communal mitoyen, s'est engagée à recruter.",
-   "pourquoi": "La Ville envisage d'ouvrir le marché à des producteurs fermiers",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6043",
-   "fait_en": "Asked about the market's future, the City indicated that an amendment to the regulations was under study to authorize sales on site by farming producers whom the Fédération des C.I.V.A.M., installed under lease in the adjoining municipal building, had committed to recruit.",
-   "pourquoi_en": "the City considers opening the market to farming producers"
-  },
-  {
-   "id": "43685",
-   "seance": "AVRIL 2005",
-   "fait": "Une délibération, connue par son seul intitulé, porte sur l'autorisation accordée à Promo Métro de céder la convention de délégation de service public à un nouveau gestionnaire, la société E.G.S.",
-   "pourquoi": "Un changement de délégataire est mis en délibération",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43685",
-   "fait_en": "A deliberation, known only by its title, concerned the authorization granted to Promo Métro to transfer the public service delegation agreement to a new operator, the company E.G.S.",
-   "pourquoi_en": "a change of delegate operator is put to deliberation"
-  },
-  {
-   "id": "158547",
-   "seance": "AVRIL 2021",
-   "fait": "Le Conseil examine le principe du renouvellement de la délégation de service public ; Mme Alice TIMSIT (groupe Ecologiste de Paris) indique que la nouvelle convention précise des missions de sortie du plastique à usage unique et de valorisation des déchets.",
-   "pourquoi": "Des missions environnementales sont mises en avant en séance",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=158547",
-   "fait_en": "The Council examined the principle of renewing the public service delegation; Ms Alice TIMSIT (Groupe Ecologiste de Paris) indicated that the new agreement specified obligations on phasing out single-use plastic and on waste recovery.",
-   "pourquoi_en": "environmental obligations are highlighted in session"
-  }
- ],
- "montants": [
-  {
-   "seance": "AVRIL 1997",
-   "montant": "90,50 F par mètre carré et par mois",
-   "objet": "droit de place fixé à compter du 1er mai 1997 pour les marchés Secrétan et des Enfants-Rouges, contre 44,85 F par mètre carré et par mois pour les autres marchés couverts",
-   "citation": "I - Marchés Secrétan et des Enfants-Rouges : - droit de place : 90,50 F par mètre carré et par mois ;",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40194"
-  },
-  {
-   "seance": "AVRIL 1997",
-   "montant": "54,60 F par mètre carré et par mois",
-   "objet": "droit de resserre applicable aux marchés Secrétan et des Enfants-Rouges à compter du 1er mai 1997",
-   "citation": "I - Marchés Secrétan et des Enfants-Rouges : - droit de place : 90,50 F par mètre carré et par mois ; - droit de resserre : 54,60 F par mètre carré et par mois ;",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40194"
-  },
-  {
-   "seance": "AVRIL 1997",
-   "montant": "22,10 F par mètre linéaire et par tenue de marché",
-   "objet": "droit de place acquitté par les commerçants volants sur les marchés Secrétan et des Enfants-Rouges",
-   "citation": "le droit de place acquitté par les commerçants volants est de 22,10 F par mètre linéaire et par tenue de marché",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40194"
-  },
-  {
-   "seance": "AVRIL 1997",
-   "montant": "100 F",
-   "objet": "redevance annuelle pour frais d'inscription prévue au barème des marchés Secrétan et des Enfants-Rouges",
-   "citation": "- redevance annuelle pour frais d'inscription : 100 F.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40194"
-  },
-  {
-   "seance": "JUILLET 1999",
-   "montant": "3.247.000 F H.T.",
-   "objet": "indemnisation de la société « Promo métro » pour les frais engagés au titre des travaux de confortation du sous-sol, prévue par le contrat de transaction que le Conseil autorise le Maire de Paris à signer, hors du champ de la convention du 8 avril 1997",
-   "citation": "visant à indemniser à hauteur d'une somme de 3.247.000 F H.T. la société \"Promo métro\" des frais engagés au titre des travaux de confortation du sous-sol.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85707"
-  }
- ],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": {
-  "1996": [
-   {
-    "reference": "1996 D 285",
-    "titre": "28 - 1996, D. 285- Approbation du principe de la concession du marché couvert des Enfants-Rouges (3e).- Autorisation à M. le Maire de Paris d'accomplir tous les actes préparatoires à la conclusion du contrat de concession dudit marché.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "MARS 1996",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7510"
-   }
-  ],
-  "1997": [
-   {
-    "reference": "1997 DFAECG 20",
-    "titre": "Relèvement, à compter du 1er mai 1997, des tarifs des droits et redevances perçus sur les marchés couverts de Paris et leurs abords et de la fixation des droits applicables sur le marché couvert des Enfants-Rouges. M. Gérard LEBAN, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "AVRIL 1997",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40194"
-   },
-   {
-    "reference": "1997 DFAECG 8",
-    "titre": "Autorisation à M. le Maire de Paris de signer avec la société \"Promo métro\" une convention relative à la concession du marché couvert des Enfants-Rouges (3e). M. Gérard LEBAN, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "MARS 1997",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68504"
-   },
-   {
-    "reference": "1997 DFAECG 8",
-    "titre": "33 - 1997, DFAECG 8 - Autorisation à M. le Maire de Paris de signer avec la société \" Promo métro \" une convention relative à la concession du marché couvert des Enfants-Rouges (3e).",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "MARS 1997",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4586"
-   }
-  ],
-  "1999": [
-   {
-    "reference": "1999 DFAE 66",
-    "titre": "Autorisation à M le Maire de Paris de signer avec la société \"Promo métro\", concessionnaire du marché des Enfants-Rouges (3e), un contrat de transaction visant à indemniser ladite société des travaux de confortation du sous-sol du marché, hors du champ de la convention du 8 avril 1997. M. Jean-Pierre PIERRE-BLOCH, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUILLET 1999",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85707"
-   }
-  ],
-  "2001": [
-   {
-    "reference": "2001 DFAE 1",
-    "titre": "Autorisation à Monsieur le Maire de Paris de souscrire un avenant au contrat de transaction signé avec la société Promo Métro, concessionnaire du marché des Enfants Rouges. Mme Lyne COHEN-SOLAL, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 2001",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84572"
-   }
-  ],
-  "2004": [
-   {
-    "reference": "2004 DDEE 46",
-    "titre": "Autorisation à M. le Maire de Paris de signer une convention avec M. le Préfet de Paris, afin de percevoir la subvention attribuée au titre du FISAC pour la réhabilitation du marché couvert des Enfants Rouges (3e). Mme Lyne COHEN-SOLAL, rapporteure.",
-    "genres": [
-     "subvention",
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 2004",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46803"
-   }
-  ],
-  "2005": [
-   {
-    "reference": "2005 DDEE 47",
-    "titre": "Autorisation accordée à la société Promo Métro de céder la convention de délégation de service public portant sur le marché des Enfants Rouges (3e) à un nouveau gestionnaire, la société E.G.S. Mme Lyne COHEN-SOLAL, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "AVRIL 2005",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43685"
-   }
-  ],
-  "2010": [
-   {
-    "reference": "2010 DDEEES 149",
-    "titre": ": Modification des conditions financières applicables aux commerçants des marchés couverts, à l’exception des marchés Enfants rouges (3e), Treilhard (8e) et Saint Didier (16e).",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUIN 2010",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48905"
-   },
-   {
-    "reference": "2010 DDEEES 149",
-    "titre": "2010, DDEEES 149 - Modification des conditions financières applicables aux commerçants des marchés couverts, à l'exception des marchés Enfants rouges (3e), Treilhard (8e) et Saint-Didier (16e).",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUIN 2010",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12905"
-   }
-  ],
-  "2015": [
-   {
-    "reference": "2015 DDEEES 33",
-    "titre": "2015 DDEEES 33 - Marché des Enfants Rouges (3e) - Nouveau règlement.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "MAI 2015",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125324"
-   }
-  ],
-  "2021": [
-   {
-    "reference": "2021 DAE 84",
-    "titre": "2021 DAE 84 - Marché couvert des Enfants Rouges (3e). - Principe du renouvellement de la délégation de service public.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "AVRIL 2021",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=158547"
-   }
-  ]
- },
- "invest": [],
- "marches": [
-  {
-   "numero_marche": "20141210010931",
-   "objet": "AMÉNAGEMENT DES ENTRÉES DU MARCHÉ DES ENFANTS ROUGES 75003",
-   "objet_clair": null,
-   "fournisseur": "PIERRENOEL",
-   "montant_max": 69152.5,
-   "date_notification": "2014-02-19",
-   "preuve": "L'objet nomme le lieu verbatim et porte sur le bâtiment lui-même : « AMÉNAGEMENT DES ENTRÉES DU MARCHÉ DES ENFANTS ROUGES 75003 ». Ce sont les entrées du marché qui sont aménagées, pas une voirie dont le marché serait le repère d'adresse. Le code 75003 concorde avec le marché couvert des Enfants-Rouges (3e) identifié dans les délibérations (« 2015 DDEEES 33 - Marché des Enfants Rouges (3e) - Nouveau règlement »)."
-  },
-  {
-   "numero_marche": "20212021S10110",
-   "objet": "MOE RAVALEMENT MUR PIGNON MARCHÉ DES ENFANTS ROUGES 3ÈME",
-   "objet_clair": null,
-   "fournisseur": "PUBLIC ARCHITECTE",
-   "montant_max": 30400.0,
-   "date_notification": "2021-12-20",
-   "preuve": "L'objet nomme le lieu verbatim : « MOE RAVALEMENT MUR PIGNON MARCHÉ DES ENFANTS ROUGES 3ÈME ». Maîtrise d'œuvre pour le ravalement d'un mur pignon du bâtiment, donc prestation portant sur ce lieu précis ; l'arrondissement (3ÈME) concorde avec le marché couvert des Enfants-Rouges (3e), bâtiment inscrit en totalité à l'Inventaire supplémentaire des Monuments historiques par arrêté du 8 mars 1982 (rappelé en séance lors de la délib. 1996 D. 285)."
-  }
- ],
- "mandate": {
-  "par_annee": {
-   "2014": 67106.58,
-   "2015": 100769.84
-  },
-  "total_eur": 167876.42,
-  "operations": [
-   {
-    "ap_cle": "1303515",
-    "ap_texte": "MARCHE DES ENFANTS ROUGES",
-    "mandate_par_annee": {
-     "2014": 56165.08,
-     "2015": 81480.25
-    },
-    "total_mandate": 137645.33,
-    "preuve": "Libellé de l'opération exactement « MARCHE DES ENFANTS ROUGES », portée par la DAE en mission « DEVELOPPEMENT ECO., » — la direction et la mission concordent avec un marché couvert municipal du 3e géré en DSP (délibérations 1997 DFAECG 8 « concession du marché couvert des Enfants-Rouges (3e) » et 2021 DAE 84 « Marché couvert des Enfants Rouges (3e). - Principe du renouvellement de la délégation de service public »).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1303515"
-   },
-   {
-    "ap_cle": "0703515",
-    "ap_texte": "MARCHE DES ENFANTS ROUGES",
-    "mandate_par_annee": {
-     "2014": 10941.5,
-     "2015": 19289.59
-    },
-    "total_mandate": 30231.09,
-    "preuve": "Libellé de l'opération exactement « MARCHE DES ENFANTS ROUGES », portée par la DAE en mission « DEVELOPPEMENT ECO., » — la direction et la mission concordent avec un marché couvert municipal du 3e géré en DSP (délibérations 1997 DFAECG 8 « concession du marché couvert des Enfants-Rouges (3e) » et 2021 DAE 84 « Marché couvert des Enfants Rouges (3e). - Principe du renouvellement de la délégation de service public »).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0703515"
-   }
-  ],
-  "periode": [
-   "2014",
-   "2015"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Enfants-Rouges"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22march%C3%A9+des+Enfants-Rouges%22%29"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "Le marché des Enfants-Rouges est le plus vieux marché couvert de Paris. Il est situé 39, rue de Bretagne, dans le 3e arrondissement de Paris.",
+    "url": "https://fr.wikipedia.org/wiki/March%C3%A9_des_Enfants-Rouges",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    },
+    "extract_en": "The Marché des Enfants-Rouges is the oldest covered market in Paris. It is located at 39 rue de Bretagne, in the 3rd arrondissement of Paris."
+  },
+  "stats": {
+    "n_delibs": 1270,
+    "delibs_span": [
+      1996,
+      2021
+    ],
+    "n_bmo_brut": 2000,
+    "n_bmo_verifies": 3,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "titre nommant le lieu (15 trouvés)",
+    "lecture_mode_en": "title naming the place (15 found)",
+    "n_lus": 15,
+    "n_lieu": 12
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "En mars 1996, le Conseil de Paris approuve le principe de la concession du marché couvert des Enfants-Rouges et autorise le Maire de Paris à procéder à la publicité d'un avis d'appel à candidatures en vue de la réalisation d'aménagements et de la gestion du marché. Le débat est vif : Mme Liliane CAPELLE (Mouvement des citoyens) affirme que la Ville envisageait encore l'année précédente la destruction de ce marché fondé en 1615 et inscrit à l'Inventaire supplémentaire des Monuments historiques par arrêté du 8 mars 1982, au profit d'une opération immobilière incluant un parc de stationnement souterrain, et l'intervention du maire du 3e, M. Pierre AIDENBAUM, soulève de vives protestations sur les bancs des groupes « Rassemblement pour Paris » et « Paris-Libertés ». En mars 1997, le Conseil autorise le Maire de Paris à signer avec la société « Promo métro » une convention de concession de 20 ans portant sur la réhabilitation et la gestion du marché : le maire du 3e invite l'Assemblée à voter unanimement, et Mme Martine DURLACH dit voter ce projet « bien que le mode de gestion choisi, c'est à dire l'attribution à une société privée, ne soit le meilleur », lui préférant la gestion directe par la mairie d'arrondissement ou le G.I.E. des marchés couverts. En avril 1997, le droit de place du marché est fixé à 90,50 F par mètre carré et par mois, barème appliqué aux seuls marchés Secrétan et des Enfants-Rouges, contre 44,85 F pour les autres marchés couverts. En juillet 1999, le Conseil autorise le Maire de Paris à signer avec Promo métro un contrat de transaction visant à l'indemniser à hauteur de 3.247.000 F H.T. des frais engagés au titre de travaux de confortation du sous-sol, hors du champ de la convention du 8 avril 1997. En septembre 2002, interrogée sur le devenir du marché, l'adjointe Mme Lyne COHEN-SOLAL indique qu'une modification du règlement est à l'étude pour y autoriser la vente par des producteurs fermiers que la Fédération des C.I.V.A.M. s'est engagée à recruter, en contrepartie du bail de neuf ans que la Ville lui a consenti sur l'immeuble communal mitoyen du 39 rue de Bretagne. Quatre autres délibérations ne sont connues que par leur intitulé, qui n'indique pas le sens du vote : un avenant au contrat de transaction souscrit avec Promo Métro (septembre 2001), une convention avec le Préfet de Paris afin de percevoir la subvention attribuée au titre du FISAC pour la réhabilitation du marché (septembre 2004), la cession par Promo Métro de la convention de délégation de service public à la société E.G.S. (avril 2005) et un nouveau règlement du marché (mai 2015). En avril 2021, le Conseil examine le principe du renouvellement de la délégation de service public ; Mme Alice TIMSIT (groupe Ecologiste de Paris) indique en séance que la nouvelle convention précise des missions de sortie du plastique à usage unique et de valorisation des déchets.",
+  "moments": [
+    {
+      "id": "7510",
+      "seance": "MARS 1996",
+      "fait": "Le Conseil débat du principe de la concession : Mme Liliane CAPELLE (Mouvement des citoyens) affirme que la Ville envisageait encore l'année précédente la destruction du marché, inscrit à l'Inventaire supplémentaire des Monuments historiques par arrêté du 8 mars 1982, au profit d'une opération immobilière avec parc de stationnement souterrain ; l'intervention du maire du 3e, M. Pierre AIDENBAUM, soulève de vives protestations sur les bancs « Rassemblement pour Paris » et « Paris-Libertés ».",
+      "pourquoi": "Le passé du dossier est contesté en séance",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7510",
+      "fait_en": "The Council debated the principle of the concession: Ms Liliane CAPELLE (Mouvement des citoyens) stated that as recently as the previous year the City had still been considering demolishing the market, listed on the Supplementary Inventory of Historic Monuments by order of 8 March 1982, in favor of a property development with an underground parking structure; the remarks of the mayor of the 3rd arrondissement, Mr Pierre AIDENBAUM, prompted vigorous protests from the \"Rassemblement pour Paris\" and \"Paris-Libertés\" benches.",
+      "pourquoi_en": "the case's history is disputed in session"
+    },
+    {
+      "id": "13085",
+      "seance": "OCTOBRE 1996",
+      "fait": "Question du groupe socialiste sur les trois maisons murées en devanture du marché, où le maire du 3e propose un équipement socioculturel : l'adjointe répond qu'un centre d'animation n'est pas viable financièrement en deçà d'une certaine surface et que ces maisons ne dépassent pas 400 mètres carrés ; la question situe la réouverture « probablement à la mi-1997 ».",
+      "pourquoi": "La Ville oppose la surface des locaux au projet d'équipement",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13085",
+      "fait_en": "A question from the Socialist group about the three boarded-up houses at the market's front, where the mayor of the 3rd arrondissement proposed a socio-cultural facility: the deputy mayor replied that a community center was not financially viable below a certain floor area and that these houses did not exceed 400 square meters; the question placed the reopening \"probably in mid-1997.\"",
+      "pourquoi_en": "the City counters the facility project with the premises' floor area"
+    },
+    {
+      "id": "4586",
+      "seance": "MARS 1997",
+      "fait": "Débat sur la concession à « Promo métro » : le maire du 3e invite l'Assemblée à voter unanimement, tandis que Mme Martine DURLACH dit voter le projet tout en jugeant que l'attribution à une société privée n'est pas le meilleur mode de gestion et relève que les trois maisons murées devant le marché ne font pas partie de la concession.",
+      "pourquoi": "Un vote convergent, avec une réserve sur la gestion privée",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4586",
+      "fait_en": "Debate on the concession to \"Promo métro\": the mayor of the 3rd arrondissement invited the Assembly to vote unanimously, while Ms Martine DURLACH said she was voting for the project while judging that awarding it to a private company was not the best management method, and noted that the three boarded-up houses in front of the market were not part of the concession.",
+      "pourquoi_en": "a convergent vote, with a reservation about private management"
+    },
+    {
+      "id": "40194",
+      "seance": "AVRIL 1997",
+      "fait": "Le Conseil fixe les droits du marché à compter du 1er mai 1997 : droit de place de 90,50 F par mètre carré et par mois, contre 44,85 F dans les autres marchés couverts.",
+      "pourquoi": "Le marché entre dans le barème haut",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40194",
+      "fait_en": "The Council set the market's fees effective from 1 May 1997: a stall fee of 90.50 francs per square meter per month, against 44.85 francs in the other covered markets.",
+      "pourquoi_en": "the market enters the higher fee bracket"
+    },
+    {
+      "id": "85707",
+      "seance": "JUILLET 1999",
+      "fait": "Le Conseil autorise le Maire de Paris à signer avec « Promo métro » un contrat de transaction visant à l'indemniser de 3 247 000 F H.T. au titre de travaux de confortation du sous-sol, hors du champ de la convention du 8 avril 1997.",
+      "pourquoi": "Une indemnisation hors du champ de la convention",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85707",
+      "fait_en": "The Council authorized the Mayor of Paris to sign with \"Promo métro\" a settlement contract to compensate it 3,247,000 francs excluding tax for basement reinforcement works, outside the scope of the 8 April 1997 agreement.",
+      "pourquoi_en": "compensation outside the scope of the agreement"
+    },
+    {
+      "id": "6043",
+      "seance": "SEPTEMBRE 2002",
+      "fait": "Interrogée sur le devenir du marché, la Ville indique qu'une modification du règlement est à l'étude pour autoriser la vente sur le site par des producteurs fermiers que la Fédération des C.I.V.A.M., installée par bail dans l'immeuble communal mitoyen, s'est engagée à recruter.",
+      "pourquoi": "La Ville envisage d'ouvrir le marché à des producteurs fermiers",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6043",
+      "fait_en": "Asked about the market's future, the City indicated that an amendment to the regulations was under study to authorize sales on site by farming producers whom the Fédération des C.I.V.A.M., installed under lease in the adjoining municipal building, had committed to recruit.",
+      "pourquoi_en": "the City considers opening the market to farming producers"
+    },
+    {
+      "id": "43685",
+      "seance": "AVRIL 2005",
+      "fait": "Une délibération, connue par son seul intitulé, porte sur l'autorisation accordée à Promo Métro de céder la convention de délégation de service public à un nouveau gestionnaire, la société E.G.S.",
+      "pourquoi": "Un changement de délégataire est mis en délibération",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43685",
+      "fait_en": "A deliberation, known only by its title, concerned the authorization granted to Promo Métro to transfer the public service delegation agreement to a new operator, the company E.G.S.",
+      "pourquoi_en": "a change of delegate operator is put to deliberation"
+    },
+    {
+      "id": "158547",
+      "seance": "AVRIL 2021",
+      "fait": "Le Conseil examine le principe du renouvellement de la délégation de service public ; Mme Alice TIMSIT (groupe Ecologiste de Paris) indique que la nouvelle convention précise des missions de sortie du plastique à usage unique et de valorisation des déchets.",
+      "pourquoi": "Des missions environnementales sont mises en avant en séance",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=158547",
+      "fait_en": "The Council examined the principle of renewing the public service delegation; Ms Alice TIMSIT (Groupe Ecologiste de Paris) indicated that the new agreement specified obligations on phasing out single-use plastic and on waste recovery.",
+      "pourquoi_en": "environmental obligations are highlighted in session"
+    }
+  ],
+  "montants": [
+    {
+      "seance": "AVRIL 1997",
+      "montant": "90,50 F par mètre carré et par mois",
+      "objet": "droit de place fixé à compter du 1er mai 1997 pour les marchés Secrétan et des Enfants-Rouges, contre 44,85 F par mètre carré et par mois pour les autres marchés couverts",
+      "citation": "I - Marchés Secrétan et des Enfants-Rouges : - droit de place : 90,50 F par mètre carré et par mois ;",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40194"
+    },
+    {
+      "seance": "AVRIL 1997",
+      "montant": "54,60 F par mètre carré et par mois",
+      "objet": "droit de resserre applicable aux marchés Secrétan et des Enfants-Rouges à compter du 1er mai 1997",
+      "citation": "I - Marchés Secrétan et des Enfants-Rouges : - droit de place : 90,50 F par mètre carré et par mois ; - droit de resserre : 54,60 F par mètre carré et par mois ;",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40194"
+    },
+    {
+      "seance": "AVRIL 1997",
+      "montant": "22,10 F par mètre linéaire et par tenue de marché",
+      "objet": "droit de place acquitté par les commerçants volants sur les marchés Secrétan et des Enfants-Rouges",
+      "citation": "le droit de place acquitté par les commerçants volants est de 22,10 F par mètre linéaire et par tenue de marché",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40194"
+    },
+    {
+      "seance": "AVRIL 1997",
+      "montant": "100 F",
+      "objet": "redevance annuelle pour frais d'inscription prévue au barème des marchés Secrétan et des Enfants-Rouges",
+      "citation": "- redevance annuelle pour frais d'inscription : 100 F.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40194"
+    },
+    {
+      "seance": "JUILLET 1999",
+      "montant": "3.247.000 F H.T.",
+      "objet": "indemnisation de la société « Promo métro » pour les frais engagés au titre des travaux de confortation du sous-sol, prévue par le contrat de transaction que le Conseil autorise le Maire de Paris à signer, hors du champ de la convention du 8 avril 1997",
+      "citation": "visant à indemniser à hauteur d'une somme de 3.247.000 F H.T. la société \"Promo métro\" des frais engagés au titre des travaux de confortation du sous-sol.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85707"
+    }
+  ],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": {
+    "1996": [
+      {
+        "reference": "1996 D 285",
+        "titre": "28 - 1996, D. 285- Approbation du principe de la concession du marché couvert des Enfants-Rouges (3e).- Autorisation à M. le Maire de Paris d'accomplir tous les actes préparatoires à la conclusion du contrat de concession dudit marché.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "MARS 1996",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7510"
+      }
+    ],
+    "1997": [
+      {
+        "reference": "1997 DFAECG 20",
+        "titre": "Relèvement, à compter du 1er mai 1997, des tarifs des droits et redevances perçus sur les marchés couverts de Paris et leurs abords et de la fixation des droits applicables sur le marché couvert des Enfants-Rouges. M. Gérard LEBAN, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "AVRIL 1997",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40194"
+      },
+      {
+        "reference": "1997 DFAECG 8",
+        "titre": "Autorisation à M. le Maire de Paris de signer avec la société \"Promo métro\" une convention relative à la concession du marché couvert des Enfants-Rouges (3e). M. Gérard LEBAN, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "MARS 1997",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68504"
+      },
+      {
+        "reference": "1997 DFAECG 8",
+        "titre": "33 - 1997, DFAECG 8 - Autorisation à M. le Maire de Paris de signer avec la société \" Promo métro \" une convention relative à la concession du marché couvert des Enfants-Rouges (3e).",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "MARS 1997",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4586"
+      }
+    ],
+    "1999": [
+      {
+        "reference": "1999 DFAE 66",
+        "titre": "Autorisation à M le Maire de Paris de signer avec la société \"Promo métro\", concessionnaire du marché des Enfants-Rouges (3e), un contrat de transaction visant à indemniser ladite société des travaux de confortation du sous-sol du marché, hors du champ de la convention du 8 avril 1997. M. Jean-Pierre PIERRE-BLOCH, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUILLET 1999",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85707"
+      }
+    ],
+    "2001": [
+      {
+        "reference": "2001 DFAE 1",
+        "titre": "Autorisation à Monsieur le Maire de Paris de souscrire un avenant au contrat de transaction signé avec la société Promo Métro, concessionnaire du marché des Enfants Rouges. Mme Lyne COHEN-SOLAL, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 2001",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84572"
+      }
+    ],
+    "2004": [
+      {
+        "reference": "2004 DDEE 46",
+        "titre": "Autorisation à M. le Maire de Paris de signer une convention avec M. le Préfet de Paris, afin de percevoir la subvention attribuée au titre du FISAC pour la réhabilitation du marché couvert des Enfants Rouges (3e). Mme Lyne COHEN-SOLAL, rapporteure.",
+        "genres": [
+          "subvention",
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 2004",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46803"
+      }
+    ],
+    "2005": [
+      {
+        "reference": "2005 DDEE 47",
+        "titre": "Autorisation accordée à la société Promo Métro de céder la convention de délégation de service public portant sur le marché des Enfants Rouges (3e) à un nouveau gestionnaire, la société E.G.S. Mme Lyne COHEN-SOLAL, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "AVRIL 2005",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43685"
+      }
+    ],
+    "2010": [
+      {
+        "reference": "2010 DDEEES 149",
+        "titre": ": Modification des conditions financières applicables aux commerçants des marchés couverts, à l’exception des marchés Enfants rouges (3e), Treilhard (8e) et Saint Didier (16e).",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUIN 2010",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48905"
+      },
+      {
+        "reference": "2010 DDEEES 149",
+        "titre": "2010, DDEEES 149 - Modification des conditions financières applicables aux commerçants des marchés couverts, à l'exception des marchés Enfants rouges (3e), Treilhard (8e) et Saint-Didier (16e).",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUIN 2010",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12905"
+      }
+    ],
+    "2015": [
+      {
+        "reference": "2015 DDEEES 33",
+        "titre": "2015 DDEEES 33 - Marché des Enfants Rouges (3e) - Nouveau règlement.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "MAI 2015",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125324"
+      }
+    ],
+    "2021": [
+      {
+        "reference": "2021 DAE 84",
+        "titre": "2021 DAE 84 - Marché couvert des Enfants Rouges (3e). - Principe du renouvellement de la délégation de service public.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "AVRIL 2021",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=158547"
+      }
+    ]
+  },
+  "invest": [],
+  "marches": [
+    {
+      "numero_marche": "20141210010931",
+      "objet": "AMÉNAGEMENT DES ENTRÉES DU MARCHÉ DES ENFANTS ROUGES 75003",
+      "objet_clair": null,
+      "fournisseur": "PIERRENOEL",
+      "montant_max": 69152.5,
+      "date_notification": "2014-02-19",
+      "preuve": "L'objet nomme le lieu verbatim et porte sur le bâtiment lui-même : « AMÉNAGEMENT DES ENTRÉES DU MARCHÉ DES ENFANTS ROUGES 75003 ». Ce sont les entrées du marché qui sont aménagées, pas une voirie dont le marché serait le repère d'adresse. Le code 75003 concorde avec le marché couvert des Enfants-Rouges (3e) identifié dans les délibérations (« 2015 DDEEES 33 - Marché des Enfants Rouges (3e) - Nouveau règlement »)."
+    },
+    {
+      "numero_marche": "20212021S10110",
+      "objet": "MOE RAVALEMENT MUR PIGNON MARCHÉ DES ENFANTS ROUGES 3ÈME",
+      "objet_clair": null,
+      "fournisseur": "PUBLIC ARCHITECTE",
+      "montant_max": 30400.0,
+      "date_notification": "2021-12-20",
+      "preuve": "L'objet nomme le lieu verbatim : « MOE RAVALEMENT MUR PIGNON MARCHÉ DES ENFANTS ROUGES 3ÈME ». Maîtrise d'œuvre pour le ravalement d'un mur pignon du bâtiment, donc prestation portant sur ce lieu précis ; l'arrondissement (3ÈME) concorde avec le marché couvert des Enfants-Rouges (3e), bâtiment inscrit en totalité à l'Inventaire supplémentaire des Monuments historiques par arrêté du 8 mars 1982 (rappelé en séance lors de la délib. 1996 D. 285)."
+    }
+  ],
+  "mandate": {
+    "par_annee": {
+      "2014": 67106.58,
+      "2015": 100769.84
+    },
+    "total_eur": 167876.42,
+    "operations": [
+      {
+        "ap_cle": "1303515",
+        "ap_texte": "MARCHE DES ENFANTS ROUGES",
+        "mandate_par_annee": {
+          "2014": 56165.08,
+          "2015": 81480.25
+        },
+        "total_mandate": 137645.33,
+        "preuve": "Libellé de l'opération exactement « MARCHE DES ENFANTS ROUGES », portée par la DAE en mission « DEVELOPPEMENT ECO., » — la direction et la mission concordent avec un marché couvert municipal du 3e géré en DSP (délibérations 1997 DFAECG 8 « concession du marché couvert des Enfants-Rouges (3e) » et 2021 DAE 84 « Marché couvert des Enfants Rouges (3e). - Principe du renouvellement de la délégation de service public »).",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1303515"
+      },
+      {
+        "ap_cle": "0703515",
+        "ap_texte": "MARCHE DES ENFANTS ROUGES",
+        "mandate_par_annee": {
+          "2014": 10941.5,
+          "2015": 19289.59
+        },
+        "total_mandate": 30231.09,
+        "preuve": "Libellé de l'opération exactement « MARCHE DES ENFANTS ROUGES », portée par la DAE en mission « DEVELOPPEMENT ECO., » — la direction et la mission concordent avec un marché couvert municipal du 3e géré en DSP (délibérations 1997 DFAECG 8 « concession du marché couvert des Enfants-Rouges (3e) » et 2021 DAE 84 « Marché couvert des Enfants Rouges (3e). - Principe du renouvellement de la délégation de service public »).",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0703515"
+      }
+    ],
+    "periode": [
+      "2014",
+      "2015"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Enfants-Rouges"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22march%C3%A9+des+Enfants-Rouges%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "In March 1996, Conseil de Paris approved the principle of granting a concession for the Marché des Enfants-Rouges covered market and authorized the Mayor of Paris to advertise a call for candidates for carrying out improvements and managing the market. Debate was heated: Ms Liliane CAPELLE (Mouvement des citoyens) stated that as recently as the previous year the City had still been considering the demolition of this market, founded in 1615 and listed on the Supplementary Inventory of Historic Monuments by order of 8 March 1982, in favor of a property development including an underground parking structure, and the remarks of the mayor of the 3rd arrondissement, Mr Pierre AIDENBAUM, prompted vigorous protests from the \"Rassemblement pour Paris\" and \"Paris-Libertés\" benches. In March 1997, the Council authorized the Mayor of Paris to sign with the company \"Promo métro\" a 20-year concession agreement covering the market's rehabilitation and management: the mayor of the 3rd arrondissement invited the Assembly to vote unanimously, and Ms Martine DURLACH said she was voting for the project \"although the management method chosen, that is, awarding it to a private company, is not the best one,\" saying she preferred direct management by the district town hall or by the G.I.E. of covered markets. In April 1997, the market's stall fee was set at 90.50 francs per square meter per month, a scale applied only to the Secrétan and Enfants-Rouges markets, against 44.85 francs for the other covered markets. In July 1999, the Council authorized the Mayor of Paris to sign with Promo métro a settlement contract to compensate it up to 3,247,000 francs excluding tax for costs incurred for basement reinforcement works, outside the scope of the 8 April 1997 agreement. In September 2002, asked about the market's future, deputy mayor Ms Lyne COHEN-SOLAL indicated that an amendment to the regulations was under study to allow sales there by farming producers whom the Fédération des C.I.V.A.M. had committed to recruit, in exchange for the nine-year lease the City had granted it on the adjoining municipal building at 39 rue de Bretagne. Four other deliberations are known only by their title, which does not indicate how the vote went: an amendment to the settlement contract entered into with Promo Métro (September 2001), an agreement with the Prefect of Paris to collect the grant awarded under the FISAC scheme for the market's rehabilitation (September 2004), the transfer by Promo Métro of the public service delegation agreement to the company E.G.S. (April 2005), and new market regulations (May 2015). In April 2021, the Council examined the principle of renewing the public service delegation; Ms Alice TIMSIT (Groupe Ecologiste de Paris) noted in session that the new agreement specified obligations on phasing out single-use plastic and on waste recovery.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- },
- "synthese_en": "In March 1996, Conseil de Paris approved the principle of granting a concession for the Marché des Enfants-Rouges covered market and authorized the Mayor of Paris to advertise a call for candidates for carrying out improvements and managing the market. Debate was heated: Ms Liliane CAPELLE (Mouvement des citoyens) stated that as recently as the previous year the City had still been considering the demolition of this market, founded in 1615 and listed on the Supplementary Inventory of Historic Monuments by order of 8 March 1982, in favor of a property development including an underground parking structure, and the remarks of the mayor of the 3rd arrondissement, Mr Pierre AIDENBAUM, prompted vigorous protests from the \"Rassemblement pour Paris\" and \"Paris-Libertés\" benches. In March 1997, the Council authorized the Mayor of Paris to sign with the company \"Promo métro\" a 20-year concession agreement covering the market's rehabilitation and management: the mayor of the 3rd arrondissement invited the Assembly to vote unanimously, and Ms Martine DURLACH said she was voting for the project \"although the management method chosen, that is, awarding it to a private company, is not the best one,\" saying she preferred direct management by the district town hall or by the G.I.E. of covered markets. In April 1997, the market's stall fee was set at 90.50 francs per square meter per month, a scale applied only to the Secrétan and Enfants-Rouges markets, against 44.85 francs for the other covered markets. In July 1999, the Council authorized the Mayor of Paris to sign with Promo métro a settlement contract to compensate it up to 3,247,000 francs excluding tax for costs incurred for basement reinforcement works, outside the scope of the 8 April 1997 agreement. In September 2002, asked about the market's future, deputy mayor Ms Lyne COHEN-SOLAL indicated that an amendment to the regulations was under study to allow sales there by farming producers whom the Fédération des C.I.V.A.M. had committed to recruit, in exchange for the nine-year lease the City had granted it on the adjoining municipal building at 39 rue de Bretagne. Four other deliberations are known only by their title, which does not indicate how the vote went: an amendment to the settlement contract entered into with Promo Métro (September 2001), an agreement with the Prefect of Paris to collect the grant awarded under the FISAC scheme for the market's rehabilitation (September 2004), the transfer by Promo Métro of the public service delegation agreement to the company E.G.S. (April 2005), and new market regulations (May 2015). In April 2021, the Council examined the principle of renewing the public service delegation; Ms Alice TIMSIT (Groupe Ecologiste de Paris) noted in session that the new agreement specified obligations on phasing out single-use plastic and on waste recovery."
 }

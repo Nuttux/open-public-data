@@ -1,425 +1,433 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "mairie-du-18e",
- "name": "Mairie du 18e",
- "kind_fr": "Mairie",
- "kind_en": "Town hall",
- "famille": "services",
- "arrondissement": 18,
- "lat": 48.8927,
- "lon": 2.3444,
- "photo": "/img/lieux/mairie-du-18e.jpg",
- "photo_credit": {
-  "licence": "CC BY-SA 4.0",
-  "auteur": "Artvill",
-  "url": "https://commons.wikimedia.org/wiki/File:Mairie_du_18e_arrondissement_de_Paris_Entr%C3%A9e_Biblioth%C3%A8que_municipale_2019_2.jpg",
-  "source": "Wikimedia Commons"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": null,
-  "url": null,
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 246,
-  "delibs_span": [
-   1996,
-   2009
-  ],
-  "n_bmo_brut": 1048,
-  "n_bmo_verifies": 2,
-  "invest_total_eur": 811731.45,
-  "invest_annees": [
-   "2023",
-   "2024"
-  ],
-  "lecture_mode": "titre nommant le lieu (12 trouvés)",
-  "lecture_mode_en": "title naming the place (12 found)",
-  "n_lus": 12,
-  "n_lieu": 12
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": "De 1996 à 2009, le Conseil de Paris statue à plusieurs reprises sur l'entretien et la transformation de la mairie du 18e, au 1, place Jules-Joffrin. En octobre 1996, le Conseil approuve le principe de créer dans le bâtiment un poste de commandement des îlotiers et autorise une convention de mandat de maîtrise d'ouvrage avec l'État (Ministère de l'Intérieur), au financement partagé. À partir de septembre 2001, il approuve le principe d'améliorer l'accueil et l'accessibilité du public : la maîtrise d'œuvre est attribuée à l'agence B+M Architecture et le Maire est autorisé à déposer les permis de démolir et de construire. L'opération se prolonge par des marchés de travaux — dont une première phase de modernisation électrique approuvée en 2002 — et par deux avenants de 2004 portant le marché de maîtrise d'œuvre à 187 978,51 € TTC et le marché de travaux à 654 353,79 € TTC. De 2006 à 2009, le Conseil approuve séparément plusieurs principes de travaux : alarme incendie, salle Poulbot, accueil et verrière du hall, mise aux normes électriques, puis des travaux de sécurité faisant suite à la Commission de Sécurité.",
- "moments": [
-  {
-   "id": "55056",
-   "seance": "OCTOBRE 1996",
-   "fait": "Le Conseil approuve le principe de créer un poste de commandement des îlotiers dans la mairie et autorise une convention de mandat de maîtrise d'ouvrage avec l'État (Ministère de l'Intérieur).",
-   "pourquoi": "Un poste de commandement des îlotiers, au financement partagé avec l'État",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55056",
-   "fait_en": "The Council approved the principle of creating a neighborhood police command post inside the town hall and authorized a project-management delegation agreement with the State (Ministry of the Interior).",
-   "pourquoi_en": "A neighborhood police command post, jointly funded with the State"
+  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "mairie-du-18e",
+  "name": "Mairie du 18e",
+  "kind_fr": "Mairie",
+  "kind_en": "Town hall",
+  "famille": "services",
+  "arrondissement": 18,
+  "lat": 48.8927,
+  "lon": 2.3444,
+  "photo": "/img/lieux/mairie-du-18e.jpg",
+  "photo_credit": {
+    "licence": "CC BY-SA 4.0",
+    "auteur": "Artvill",
+    "url": "https://commons.wikimedia.org/wiki/File:Mairie_du_18e_arrondissement_de_Paris_Entr%C3%A9e_Biblioth%C3%A8que_municipale_2019_2.jpg",
+    "source": "Wikimedia Commons"
   },
-  {
-   "id": "84611",
-   "seance": "SEPTEMBRE 2001",
-   "fait": "Le Conseil approuve le principe d'améliorer l'accueil et l'accessibilité du public, attribue la maîtrise d'œuvre à l'agence B+M Architecture et autorise le dépôt des permis de démolir et de construire.",
-   "pourquoi": "Le lancement du grand chantier d'accessibilité, permis compris",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84611",
-   "fait_en": "The Council approved the principle of improving public reception and accessibility, awarded project management to the B+M Architecture firm, and authorized filing the demolition and construction permits.",
-   "pourquoi_en": "Launch of the major accessibility project, permits included"
-  },
-  {
-   "id": "34012",
-   "seance": "FEVRIER 2004",
-   "fait": "Le Conseil autorise un avenant n°2 au marché de maîtrise d'œuvre avec B+M Architecture, portant ce marché à 187 978,51 € TTC.",
-   "pourquoi": "La maîtrise d'œuvre ajustée par un deuxième avenant",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34012",
-   "fait_en": "The Council authorized amendment no. 2 to the project management contract with B+M Architecture, raising this contract to €187,978.51 including tax.",
-   "pourquoi_en": "Project management adjusted by a second amendment"
-  },
-  {
-   "id": "46449",
-   "seance": "SEPTEMBRE 2004",
-   "fait": "Le Conseil autorise un avenant n°1 au marché de travaux avec la SNC Sachet et Brulet, portant ce marché à 654 353,79 € TTC et le délai d'exécution à 8 mois.",
-   "pourquoi": "Coût et délai du chantier de restructuration révisés",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46449",
-   "fait_en": "The Council authorized amendment no. 1 to the works contract with SNC Sachet et Brulet, raising this contract to €654,353.79 including tax and the execution period to 8 months.",
-   "pourquoi_en": "Cost and timeline of the restructuring works revised"
-  },
-  {
-   "id": "38600",
-   "seance": "AVRIL 2006",
-   "fait": "Le Conseil approuve le principe de remplacer l'alarme incendie et l'asservissement de la mairie.",
-   "pourquoi": "Renouveler l'alarme incendie de la mairie",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38600",
-   "fait_en": "The Council approved the principle of replacing the town hall's fire alarm and its control system.",
-   "pourquoi_en": "Renewing the town hall's fire alarm"
-  },
-  {
-   "id": "74488",
-   "seance": "SEPTEMBRE 2006",
-   "fait": "Le Conseil approuve le principe de travaux d'aménagement et de modernisation de la salle Poulbot, à l'intérieur de la mairie.",
-   "pourquoi": "Aménager et moderniser la salle Poulbot",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74488",
-   "fait_en": "The Council approved the principle of fitting-out and modernization works for the Poulbot room, inside the town hall.",
-   "pourquoi_en": "Fitting out and modernizing the Poulbot room"
-  },
-  {
-   "id": "66147",
-   "seance": "NOVEMBRE 2007",
-   "fait": "Le Conseil approuve le principe d'améliorer l'accueil du public dans le hall de la mairie.",
-   "pourquoi": "Repenser l'accueil du public dans le hall",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66147",
-   "fait_en": "The Council approved the principle of improving public reception in the town hall's lobby.",
-   "pourquoi_en": "Rethinking public reception in the lobby"
-  },
-  {
-   "id": "49940",
-   "seance": "FEVRIER 2009",
-   "fait": "Le Conseil approuve le principe de travaux de sécurité faisant suite à la Commission de Sécurité.",
-   "pourquoi": "La sécurité du bâtiment après la Commission de Sécurité",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49940",
-   "fait_en": "The Council approved the principle of security works following the Safety Commission's review.",
-   "pourquoi_en": "Building security after the Safety Commission's review"
-  }
- ],
- "montants": [
-  {
-   "seance": "FEVRIER 2004",
-   "montant": "187.978,51 euros T.T.C.",
-   "objet": "Avenant n°2 au marché de maîtrise d'œuvre n° 01/25613 (SARL B+M Architecture)",
-   "citation": "à la Mairie du 18e arrondissement sise 1, place Jules-Joffrin (18e), portant le montant du marché à 187.978,51 euros T.T.C.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34012"
-  },
-  {
-   "seance": "SEPTEMBRE 2004",
-   "montant": "654.353,79 euros T.T.C. (valeur janvier 2003), soit 657.396,45 euros T.T.C. (valeur mai 2004)",
-   "objet": "Avenant n°1 au marché de travaux n° 03/25119 (SNC Sachet et Brulet), délai porté à 8 mois",
-   "citation": "portant le montant du marché à 654.353,79 euros T.T.C., valeur janvier 2003, soit 657.396,45 euros T.T.C., valeur mai 2004, et le délai d'exécution à 8 mois",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46449"
-  }
- ],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": {
-  "2001": [
-   {
-    "reference": "2001 DPA 189",
-    "titre": "Approbation du principe de l'amélioration des conditions d'accueil et d'accessibilité du public à la mairie du 18e arrondissement. - Approbation des modalités d'attribution du marché de maîtrise d'œuvre correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché ainsi que les éventuels avenants de substitution ou de transfert s'y rapportant. - Autorisation à M. le Maire de Paris de déposer les demandes de permis de démolir et de construire relatives à cette opération. Mme Mireill",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 2001",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84611"
-   }
-  ],
-  "2002": [
-   {
-    "reference": "2002 DPA 256",
-    "titre": "Approbation du principe de réalisation d'une première phase de modernisation des installations électriques.- Approbation des modalités de passation des marchés de travaux d'amélioration des conditions d'accueil et d'accessibilité du public ainsi que de la première phase de modernisation des installations électriques à la Mairie du 18e arrondissement sise 1, place Jules Joffrin (18e).- Autorisation à M. le Maire de Paris de signer les dits marchés. Mme Mireille FLAM, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUILLET 2002",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88382"
-   }
-  ],
-  "2004": [
-   {
-    "reference": "2004 DPA 148",
-    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché de travaux signé avec la SNC Sachet et Brulet relatif à l'amélioration des conditions d'accueil et d'accessibilité du public à la Mairie du 18e arrondissement (phase 2 restructuration). Mme Mireille FLAM, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 2004",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46449"
-   },
-   {
-    "reference": "2004 DPA 158",
-    "titre": "Autorisation à Monsieur le Maire de Paris de souscrire un avenant n° 1 au marché de travaux signé avec la SNC Sachet et Brulet relatif à l'amélioration des conditions d'accueil et d'accessibilité du public à la Mairie du 18ème arrondissement. Mme Mireille FLAM, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUIN 2004",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94829"
-   },
-   {
-    "reference": "2004 DPA 42",
-    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 2 au marché de maîtrise d'œuvre signé avec la SARL B+M Architecture relatif à l'amélioration des conditions d'accueil et d'accessibilité du public à la Mairie du 18e arrondissement sise 1, place Jules-Joffrin (18e). Mme Mireille FLAM, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "FEVRIER 2004",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34012"
-   }
-  ],
-  "2006": [
-   {
-    "reference": "2006 DPA 191",
-    "titre": "Approbation du principe de réalisation des travaux d’aménagement et de modernisation de la salle Poulbot dans la Mairie du 18e sise 1, place Jules-Joffrin (18e), et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 2006",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74488"
-   },
-   {
-    "reference": "2006 DPA 70",
-    "titre": "Approbation du principe de réalisation des travaux de remplacement de l’alarme incendie et asservissement de la Mairie du 18e arrondissement, et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "AVRIL 2006",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38600"
-   }
-  ],
-  "2007": [
-   {
-    "reference": "2007 DPA 245",
-    "titre": "Approbation de principe de réalisation des travaux d’amélioration des conditions d’accueil du public dans le hall de la mairie du 18ème arrondissement et des modalités de passation du marché de travaux correspondant. Mmes Mireille FLAM et Pénélope KOMITÈS, rapporteures.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "NOVEMBRE 2007",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66147"
-   },
-   {
-    "reference": "2007 DPA 246",
-    "titre": "Approbation du principe de réalisation des travaux de mise aux normes des installations électriques à la mairie du 18ème arrondissement et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "NOVEMBRE 2007",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65508"
-   },
-   {
-    "reference": "2007 DPA 256",
-    "titre": "Approbation du principe de réalisation des travaux de modernisation de la verrière du hall de la Mairie du 18ème arrondissement et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "NOVEMBRE 2007",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66347"
-   }
-  ],
-  "2009": [
-   {
-    "reference": "2009 DPA 72",
-    "titre": "Approbation du principe de réalisation des travaux de sécurité, suite à la Commission de Sécurité à la Mairie du 18e arrondissement et des modalités de passation du marché de travaux correspondant. Mme Maïté ERRECART, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "FEVRIER 2009",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49940"
-   }
-  ]
- },
- "invest": [
-  {
-   "annee": 2023,
-   "montant_eur": 559882.61,
-   "nom_projet": "Mairie du 18ème arrondissement - Travaux de restructuration",
-   "preuve": "Le nom du projet nomme CE lieu verbatim : « Mairie du 18ème arrondissement - Travaux de restructuration » (signal: nom). La distance (956 m) reflète une géolocalisation imprécise, mais le nom lève l'ambiguïté : il n'y a qu'une mairie du 18e.",
-   "id": "2023_18_51_020"
-  },
-  {
-   "annee": 2023,
-   "montant_eur": 125019.08,
-   "nom_projet": "Mairie du 18ème arrondissement - Travaux dans le cadre du Schéma fonctionel et immobilier,",
-   "preuve": "Le nom du projet nomme CE lieu verbatim : « Mairie du 18ème arrondissement - Travaux dans le cadre du Schéma fonctionel et immobilier, » (signal: nom).",
-   "id": null
-  },
-  {
-   "annee": 2024,
-   "montant_eur": 126829.76,
-   "nom_projet": "Mairie du 18e arrondissement - Schéma fonctionel et immobilier",
-   "preuve": "Le nom du projet nomme CE lieu verbatim : « Mairie du 18e arrondissement - Schéma fonctionel et immobilier » (signal: nom). Identité et adresse du lieu confirmées par les délibérations (« Mairie du 18e sise 1, place Jules-Joffrin (18e) », 2006 DPA 191).",
-   "id": "2024_18_51_004"
-  }
- ],
- "marches": [
-  {
-   "numero_marche": "20181210001165",
-   "objet": "AMÉNAGEMENT DU PÉRISTYLE MAIRIE DU 18ÈME ARRONDISSEMENT",
-   "objet_clair": null,
-   "fournisseur": "EDILE CONSTRUCTION",
-   "montant_max": 165182.51,
-   "date_notification": "2018-08-27",
-   "preuve": "L'objet nomme le lieu et porte sur son bâti : « AMÉNAGEMENT DU PÉRISTYLE MAIRIE DU 18ÈME ARRONDISSEMENT ». Le péristyle est un élément architectural de la mairie sise 1, place Jules-Joffrin."
-  },
-  {
-   "numero_marche": "decp-2025F00696",
-   "objet": "Marché d’enlèvement de 2 classeurs rotatifs et pour la fourniture, l’installation, la mise en service, la maintenance de 2 nouveaux classeurs rotatifs destinés à la mairie du 18ème arrondissement.",
-   "objet_clair": null,
-   "fournisseur": "KARDEX FRANCE",
-   "montant_max": 135000.0,
-   "date_notification": "2025-01-28",
-   "preuve": "Équipement installé dans le bâtiment : « 2 nouveaux classeurs rotatifs destinés à la mairie du 18ème arrondissement ». Corroboré par le marché decp-2024T08025 : « renforcement du plancher de l'état civil dans le cadre du remplacement des classeurs rotatifs de la Mairie du 18ème arrondissement - 1 Place Jules Joffrin 75018 Paris »."
-  },
-  {
-   "numero_marche": "20181210000233",
-   "objet": "MODERNISATION DU SSI    MAIRIE DU 18E",
-   "objet_clair": null,
-   "fournisseur": "SOC ETUDES REALIS INSTALLATIONS SEC",
-   "montant_max": 106948.0,
-   "date_notification": "2018-02-21",
-   "preuve": "Travaux sur l'installation de sécurité incendie du bâtiment : « MODERNISATION DU SSI MAIRIE DU 18E ». Cohérent avec la délibération 2006 DPA 70 (« remplacement de l’alarme incendie et asservissement de la Mairie du 18e arrondissement sise 1, place Jules-Joffrin »)."
-  },
-  {
-   "numero_marche": "20181210029805",
-   "objet": "MS DIVERS TRX GÉNIE CLIMATIQUE MAIRIE DU 18E PL J.JOFFRIN",
-   "objet_clair": null,
-   "fournisseur": "CELSIO",
-   "montant_max": 75695.55,
-   "date_notification": "2018-06-04",
-   "preuve": "L'objet nomme le lieu ET son adresse : « MAIRIE DU 18E PL J.JOFFRIN », soit la place Jules-Joffrin confirmée par les délibérations (« Mairie du 18e arrondissement sise 1, place Jules Joffrin (18e) », 2002 DPA 256)."
-  },
-  {
-   "numero_marche": "20191680000073",
-   "objet": "REPAS SIMPLE ET REPAS ELABORE POUR LA MAIRIE DU 18EME",
-   "objet_clair": null,
-   "fournisseur": "SOCIETE SEILLER",
-   "montant_max": 50000.02,
-   "date_notification": "2018-12-11",
-   "preuve": "Prestation de restauration destinée au lieu : « REPAS SIMPLE ET REPAS ELABORE POUR LA MAIRIE DU 18EME » — réceptions de la mairie d'arrondissement ; le service sur place n'est pas explicité dans l'objet."
-  },
-  {
-   "numero_marche": "20191680000072",
-   "objet": "BUFFET SIMPLE ET BUFFET ELABORE POUR LA MAIRIE DU 18E",
-   "objet_clair": null,
-   "fournisseur": "LA RESIDENCE SOCIALE",
-   "montant_max": 50000.0,
-   "date_notification": "2018-12-11",
-   "preuve": "Prestation de réception destinée au lieu : « BUFFET SIMPLE ET BUFFET ELABORE POUR LA MAIRIE DU 18E » — buffets des réceptions de la mairie ; le service sur place n'est pas explicité dans l'objet."
-  },
-  {
-   "numero_marche": "20141210000222",
-   "objet": "MODERNISATION DU TGBT  MAIRIE DU 18E",
-   "objet_clair": null,
-   "fournisseur": "ERI",
-   "montant_max": 48250.0,
-   "date_notification": "2014-12-12",
-   "preuve": "Travaux sur le tableau général basse tension du bâtiment : « MODERNISATION DU TGBT MAIRIE DU 18E ». Cohérent avec les délibérations sur les installations électriques du site (2002 DPA 256 ; 2007 DPA 246 « mise aux normes des installations électriques à la mairie du 18ème arrondissement »)."
-  },
-  {
-   "numero_marche": "20171210001833",
-   "objet": "MODERNISATION DES SANITAIRES PUBLICS   MAIRIE DU 18E",
-   "objet_clair": null,
-   "fournisseur": "ALB-BAT GROUPE",
-   "montant_max": 45983.0,
-   "date_notification": "2017-12-04",
-   "preuve": "Travaux sur des locaux du bâtiment : « MODERNISATION DES SANITAIRES PUBLICS MAIRIE DU 18E »."
-  },
-  {
-   "numero_marche": "decp-2026T00919",
-   "objet": "Travaux de modernisation des anciens bureaux de l'antenne logement (DLH) à la Mairie du 18ème Arrondissement - 1 place Jules Juffrin 75018 Paris",
-   "objet_clair": null,
-   "fournisseur": "ERI",
-   "montant_max": 42481.1,
-   "date_notification": "2026-01-28",
-   "preuve": "L'objet donne l'adresse exacte du lieu : « à la Mairie du 18ème Arrondissement - 1 place Jules Juffrin 75018 Paris » (« Juffrin » sic pour Joffrin, adresse confirmée par les délibérations)."
-  },
-  {
-   "numero_marche": "20161210001390",
-   "objet": "CRÉATION D'UNE SALLE DE REPOS  À LA MAIRIE DU 18E",
-   "objet_clair": null,
-   "fournisseur": "ALB-BAT GROUPE",
-   "montant_max": 39302.0,
-   "date_notification": "2016-10-03",
-   "preuve": "Aménagement d'un local intérieur du bâtiment : « CRÉATION D'UNE SALLE DE REPOS À LA MAIRIE DU 18E »."
-  },
-  {
-   "numero_marche": "20131210008893",
-   "objet": "MODERNISATION DU LOCAL PRESSOIR DE LA MAIRIE DU 18E.",
-   "objet_clair": null,
-   "fournisseur": "SOC INDUSTR RATIONALIS ENTRET",
-   "montant_max": 39000.0,
-   "date_notification": "2013-03-21",
-   "preuve": "Travaux sur un local du bâtiment : « MODERNISATION DU LOCAL PRESSOIR DE LA MAIRIE DU 18E. »"
-  },
-  {
-   "numero_marche": "decp-2024S12980",
-   "objet": "Conception et organisation de la cérémonie des voeux de la Mairie du 18ème",
-   "objet_clair": null,
-   "fournisseur": "TWOBEVENTS TRAVEL SAS",
-   "montant_max": 20000.0,
-   "date_notification": "2024-12-12",
-   "preuve": "Événement propre au lieu : « Conception et organisation de la cérémonie des voeux de la Mairie du 18ème » — cérémonie de la mairie d'arrondissement ; la salle exacte n'est pas explicitée dans l'objet (lieu_execution : « Paris »)."
-  },
-  {
-   "numero_marche": "decp-2024T08025",
-   "objet": "Mission de BET pour le renforcement du plancher de l'état civil dans le cadre du remplacement des classeurs rotatifs de la Mairie du 18ème arrondissement - 1 Place Jules Joffrin 75018 Paris",
-   "objet_clair": null,
-   "fournisseur": "PRATEC",
-   "montant_max": 4250.0,
-   "date_notification": "2024-08-01",
-   "preuve": "L'objet vise la structure du bâtiment à son adresse exacte : « renforcement du plancher de l'état civil ... de la Mairie du 18ème arrondissement - 1 Place Jules Joffrin 75018 Paris »."
-  }
- ],
- "mandate": null,
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=mairie+AND+18e+AND+Jules-Joffrin"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22mairie+du+XVIIIe+arrondissement%22%29"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": null,
+    "url": null,
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "stats": {
+    "n_delibs": 246,
+    "delibs_span": [
+      1996,
+      2009
+    ],
+    "n_bmo_brut": 1048,
+    "n_bmo_verifies": 2,
+    "invest_total_eur": 811731.45,
+    "invest_annees": [
+      "2023",
+      "2024"
+    ],
+    "lecture_mode": "titre nommant le lieu (12 trouvés)",
+    "lecture_mode_en": "title naming the place (12 found)",
+    "n_lus": 12,
+    "n_lieu": 12
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "De 1996 à 2009, le Conseil de Paris statue à plusieurs reprises sur l'entretien et la transformation de la mairie du 18e, au 1, place Jules-Joffrin. En octobre 1996, le Conseil approuve le principe de créer dans le bâtiment un poste de commandement des îlotiers et autorise une convention de mandat de maîtrise d'ouvrage avec l'État (Ministère de l'Intérieur), au financement partagé. À partir de septembre 2001, il approuve le principe d'améliorer l'accueil et l'accessibilité du public : la maîtrise d'œuvre est attribuée à l'agence B+M Architecture et le Maire est autorisé à déposer les permis de démolir et de construire. L'opération se prolonge par des marchés de travaux — dont une première phase de modernisation électrique approuvée en 2002 — et par deux avenants de 2004 portant le marché de maîtrise d'œuvre à 187 978,51 € TTC et le marché de travaux à 654 353,79 € TTC. De 2006 à 2009, le Conseil approuve séparément plusieurs principes de travaux : alarme incendie, salle Poulbot, accueil et verrière du hall, mise aux normes électriques, puis des travaux de sécurité faisant suite à la Commission de Sécurité.",
+  "moments": [
+    {
+      "id": "55056",
+      "seance": "OCTOBRE 1996",
+      "fait": "Le Conseil approuve le principe de créer un poste de commandement des îlotiers dans la mairie et autorise une convention de mandat de maîtrise d'ouvrage avec l'État (Ministère de l'Intérieur).",
+      "pourquoi": "Un poste de commandement des îlotiers, au financement partagé avec l'État",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55056",
+      "fait_en": "The Council approved the principle of creating a neighborhood police command post inside the town hall and authorized a project-management delegation agreement with the State (Ministry of the Interior).",
+      "pourquoi_en": "A neighborhood police command post, jointly funded with the State"
+    },
+    {
+      "id": "84611",
+      "seance": "SEPTEMBRE 2001",
+      "fait": "Le Conseil approuve le principe d'améliorer l'accueil et l'accessibilité du public, attribue la maîtrise d'œuvre à l'agence B+M Architecture et autorise le dépôt des permis de démolir et de construire.",
+      "pourquoi": "Le lancement du grand chantier d'accessibilité, permis compris",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84611",
+      "fait_en": "The Council approved the principle of improving public reception and accessibility, awarded project management to the B+M Architecture firm, and authorized filing the demolition and construction permits.",
+      "pourquoi_en": "Launch of the major accessibility project, permits included"
+    },
+    {
+      "id": "34012",
+      "seance": "FEVRIER 2004",
+      "fait": "Le Conseil autorise un avenant n°2 au marché de maîtrise d'œuvre avec B+M Architecture, portant ce marché à 187 978,51 € TTC.",
+      "pourquoi": "La maîtrise d'œuvre ajustée par un deuxième avenant",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34012",
+      "fait_en": "The Council authorized amendment no. 2 to the project management contract with B+M Architecture, raising this contract to €187,978.51 including tax.",
+      "pourquoi_en": "Project management adjusted by a second amendment"
+    },
+    {
+      "id": "46449",
+      "seance": "SEPTEMBRE 2004",
+      "fait": "Le Conseil autorise un avenant n°1 au marché de travaux avec la SNC Sachet et Brulet, portant ce marché à 654 353,79 € TTC et le délai d'exécution à 8 mois.",
+      "pourquoi": "Coût et délai du chantier de restructuration révisés",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46449",
+      "fait_en": "The Council authorized amendment no. 1 to the works contract with SNC Sachet et Brulet, raising this contract to €654,353.79 including tax and the execution period to 8 months.",
+      "pourquoi_en": "Cost and timeline of the restructuring works revised"
+    },
+    {
+      "id": "38600",
+      "seance": "AVRIL 2006",
+      "fait": "Le Conseil approuve le principe de remplacer l'alarme incendie et l'asservissement de la mairie.",
+      "pourquoi": "Renouveler l'alarme incendie de la mairie",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38600",
+      "fait_en": "The Council approved the principle of replacing the town hall's fire alarm and its control system.",
+      "pourquoi_en": "Renewing the town hall's fire alarm"
+    },
+    {
+      "id": "74488",
+      "seance": "SEPTEMBRE 2006",
+      "fait": "Le Conseil approuve le principe de travaux d'aménagement et de modernisation de la salle Poulbot, à l'intérieur de la mairie.",
+      "pourquoi": "Aménager et moderniser la salle Poulbot",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74488",
+      "fait_en": "The Council approved the principle of fitting-out and modernization works for the Poulbot room, inside the town hall.",
+      "pourquoi_en": "Fitting out and modernizing the Poulbot room"
+    },
+    {
+      "id": "66147",
+      "seance": "NOVEMBRE 2007",
+      "fait": "Le Conseil approuve le principe d'améliorer l'accueil du public dans le hall de la mairie.",
+      "pourquoi": "Repenser l'accueil du public dans le hall",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66147",
+      "fait_en": "The Council approved the principle of improving public reception in the town hall's lobby.",
+      "pourquoi_en": "Rethinking public reception in the lobby"
+    },
+    {
+      "id": "49940",
+      "seance": "FEVRIER 2009",
+      "fait": "Le Conseil approuve le principe de travaux de sécurité faisant suite à la Commission de Sécurité.",
+      "pourquoi": "La sécurité du bâtiment après la Commission de Sécurité",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49940",
+      "fait_en": "The Council approved the principle of security works following the Safety Commission's review.",
+      "pourquoi_en": "Building security after the Safety Commission's review"
+    }
+  ],
+  "montants": [
+    {
+      "seance": "FEVRIER 2004",
+      "montant": "187.978,51 euros T.T.C.",
+      "objet": "Avenant n°2 au marché de maîtrise d'œuvre n° 01/25613 (SARL B+M Architecture)",
+      "citation": "à la Mairie du 18e arrondissement sise 1, place Jules-Joffrin (18e), portant le montant du marché à 187.978,51 euros T.T.C.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34012"
+    },
+    {
+      "seance": "SEPTEMBRE 2004",
+      "montant": "654.353,79 euros T.T.C. (valeur janvier 2003), soit 657.396,45 euros T.T.C. (valeur mai 2004)",
+      "objet": "Avenant n°1 au marché de travaux n° 03/25119 (SNC Sachet et Brulet), délai porté à 8 mois",
+      "citation": "portant le montant du marché à 654.353,79 euros T.T.C., valeur janvier 2003, soit 657.396,45 euros T.T.C., valeur mai 2004, et le délai d'exécution à 8 mois",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46449"
+    }
+  ],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": {
+    "2001": [
+      {
+        "reference": "2001 DPA 189",
+        "titre": "Approbation du principe de l'amélioration des conditions d'accueil et d'accessibilité du public à la mairie du 18e arrondissement. - Approbation des modalités d'attribution du marché de maîtrise d'œuvre correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché ainsi que les éventuels avenants de substitution ou de transfert s'y rapportant. - Autorisation à M. le Maire de Paris de déposer les demandes de permis de démolir et de construire relatives à cette opération. Mme Mireill",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 2001",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84611"
+      }
+    ],
+    "2002": [
+      {
+        "reference": "2002 DPA 256",
+        "titre": "Approbation du principe de réalisation d'une première phase de modernisation des installations électriques.- Approbation des modalités de passation des marchés de travaux d'amélioration des conditions d'accueil et d'accessibilité du public ainsi que de la première phase de modernisation des installations électriques à la Mairie du 18e arrondissement sise 1, place Jules Joffrin (18e).- Autorisation à M. le Maire de Paris de signer les dits marchés. Mme Mireille FLAM, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUILLET 2002",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88382"
+      }
+    ],
+    "2004": [
+      {
+        "reference": "2004 DPA 148",
+        "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 1 au marché de travaux signé avec la SNC Sachet et Brulet relatif à l'amélioration des conditions d'accueil et d'accessibilité du public à la Mairie du 18e arrondissement (phase 2 restructuration). Mme Mireille FLAM, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 2004",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46449"
+      },
+      {
+        "reference": "2004 DPA 158",
+        "titre": "Autorisation à Monsieur le Maire de Paris de souscrire un avenant n° 1 au marché de travaux signé avec la SNC Sachet et Brulet relatif à l'amélioration des conditions d'accueil et d'accessibilité du public à la Mairie du 18ème arrondissement. Mme Mireille FLAM, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUIN 2004",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94829"
+      },
+      {
+        "reference": "2004 DPA 42",
+        "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant n° 2 au marché de maîtrise d'œuvre signé avec la SARL B+M Architecture relatif à l'amélioration des conditions d'accueil et d'accessibilité du public à la Mairie du 18e arrondissement sise 1, place Jules-Joffrin (18e). Mme Mireille FLAM, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "FEVRIER 2004",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34012"
+      }
+    ],
+    "2006": [
+      {
+        "reference": "2006 DPA 191",
+        "titre": "Approbation du principe de réalisation des travaux d’aménagement et de modernisation de la salle Poulbot dans la Mairie du 18e sise 1, place Jules-Joffrin (18e), et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 2006",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74488"
+      },
+      {
+        "reference": "2006 DPA 70",
+        "titre": "Approbation du principe de réalisation des travaux de remplacement de l’alarme incendie et asservissement de la Mairie du 18e arrondissement, et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "AVRIL 2006",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38600"
+      }
+    ],
+    "2007": [
+      {
+        "reference": "2007 DPA 245",
+        "titre": "Approbation de principe de réalisation des travaux d’amélioration des conditions d’accueil du public dans le hall de la mairie du 18ème arrondissement et des modalités de passation du marché de travaux correspondant. Mmes Mireille FLAM et Pénélope KOMITÈS, rapporteures.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "NOVEMBRE 2007",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66147"
+      },
+      {
+        "reference": "2007 DPA 246",
+        "titre": "Approbation du principe de réalisation des travaux de mise aux normes des installations électriques à la mairie du 18ème arrondissement et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "NOVEMBRE 2007",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65508"
+      },
+      {
+        "reference": "2007 DPA 256",
+        "titre": "Approbation du principe de réalisation des travaux de modernisation de la verrière du hall de la Mairie du 18ème arrondissement et des modalités de passation du marché de travaux correspondant. Mme Mireille FLAM, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "NOVEMBRE 2007",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66347"
+      }
+    ],
+    "2009": [
+      {
+        "reference": "2009 DPA 72",
+        "titre": "Approbation du principe de réalisation des travaux de sécurité, suite à la Commission de Sécurité à la Mairie du 18e arrondissement et des modalités de passation du marché de travaux correspondant. Mme Maïté ERRECART, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "FEVRIER 2009",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49940"
+      }
+    ]
+  },
+  "invest": [
+    {
+      "annee": 2023,
+      "montant_eur": 559882.61,
+      "nom_projet": "Mairie du 18ème arrondissement - Travaux de restructuration",
+      "preuve": "Le nom du projet nomme CE lieu verbatim : « Mairie du 18ème arrondissement - Travaux de restructuration » (signal: nom). La distance (956 m) reflète une géolocalisation imprécise, mais le nom lève l'ambiguïté : il n'y a qu'une mairie du 18e.",
+      "id": "2023_18_51_020"
+    },
+    {
+      "annee": 2023,
+      "montant_eur": 125019.08,
+      "nom_projet": "Mairie du 18ème arrondissement - Travaux dans le cadre du Schéma fonctionel et immobilier,",
+      "preuve": "Le nom du projet nomme CE lieu verbatim : « Mairie du 18ème arrondissement - Travaux dans le cadre du Schéma fonctionel et immobilier, » (signal: nom).",
+      "id": null
+    },
+    {
+      "annee": 2024,
+      "montant_eur": 126829.76,
+      "nom_projet": "Mairie du 18e arrondissement - Schéma fonctionel et immobilier",
+      "preuve": "Le nom du projet nomme CE lieu verbatim : « Mairie du 18e arrondissement - Schéma fonctionel et immobilier » (signal: nom). Identité et adresse du lieu confirmées par les délibérations (« Mairie du 18e sise 1, place Jules-Joffrin (18e) », 2006 DPA 191).",
+      "id": "2024_18_51_004"
+    }
+  ],
+  "marches": [
+    {
+      "numero_marche": "20181210001165",
+      "objet": "AMÉNAGEMENT DU PÉRISTYLE MAIRIE DU 18ÈME ARRONDISSEMENT",
+      "objet_clair": null,
+      "fournisseur": "EDILE CONSTRUCTION",
+      "montant_max": 165182.51,
+      "date_notification": "2018-08-27",
+      "preuve": "L'objet nomme le lieu et porte sur son bâti : « AMÉNAGEMENT DU PÉRISTYLE MAIRIE DU 18ÈME ARRONDISSEMENT ». Le péristyle est un élément architectural de la mairie sise 1, place Jules-Joffrin."
+    },
+    {
+      "numero_marche": "decp-2025F00696",
+      "objet": "Marché d’enlèvement de 2 classeurs rotatifs et pour la fourniture, l’installation, la mise en service, la maintenance de 2 nouveaux classeurs rotatifs destinés à la mairie du 18ème arrondissement.",
+      "objet_clair": null,
+      "fournisseur": "KARDEX FRANCE",
+      "montant_max": 135000.0,
+      "date_notification": "2025-01-28",
+      "preuve": "Équipement installé dans le bâtiment : « 2 nouveaux classeurs rotatifs destinés à la mairie du 18ème arrondissement ». Corroboré par le marché decp-2024T08025 : « renforcement du plancher de l'état civil dans le cadre du remplacement des classeurs rotatifs de la Mairie du 18ème arrondissement - 1 Place Jules Joffrin 75018 Paris »."
+    },
+    {
+      "numero_marche": "20181210000233",
+      "objet": "MODERNISATION DU SSI    MAIRIE DU 18E",
+      "objet_clair": null,
+      "fournisseur": "SOC ETUDES REALIS INSTALLATIONS SEC",
+      "montant_max": 106948.0,
+      "date_notification": "2018-02-21",
+      "preuve": "Travaux sur l'installation de sécurité incendie du bâtiment : « MODERNISATION DU SSI MAIRIE DU 18E ». Cohérent avec la délibération 2006 DPA 70 (« remplacement de l’alarme incendie et asservissement de la Mairie du 18e arrondissement sise 1, place Jules-Joffrin »)."
+    },
+    {
+      "numero_marche": "20181210029805",
+      "objet": "MS DIVERS TRX GÉNIE CLIMATIQUE MAIRIE DU 18E PL J.JOFFRIN",
+      "objet_clair": null,
+      "fournisseur": "CELSIO",
+      "montant_max": 75695.55,
+      "date_notification": "2018-06-04",
+      "preuve": "L'objet nomme le lieu ET son adresse : « MAIRIE DU 18E PL J.JOFFRIN », soit la place Jules-Joffrin confirmée par les délibérations (« Mairie du 18e arrondissement sise 1, place Jules Joffrin (18e) », 2002 DPA 256)."
+    },
+    {
+      "numero_marche": "20191680000073",
+      "objet": "REPAS SIMPLE ET REPAS ELABORE POUR LA MAIRIE DU 18EME",
+      "objet_clair": null,
+      "fournisseur": "SOCIETE SEILLER",
+      "montant_max": 50000.02,
+      "date_notification": "2018-12-11",
+      "preuve": "Prestation de restauration destinée au lieu : « REPAS SIMPLE ET REPAS ELABORE POUR LA MAIRIE DU 18EME » — réceptions de la mairie d'arrondissement ; le service sur place n'est pas explicité dans l'objet."
+    },
+    {
+      "numero_marche": "20191680000072",
+      "objet": "BUFFET SIMPLE ET BUFFET ELABORE POUR LA MAIRIE DU 18E",
+      "objet_clair": null,
+      "fournisseur": "LA RESIDENCE SOCIALE",
+      "montant_max": 50000.0,
+      "date_notification": "2018-12-11",
+      "preuve": "Prestation de réception destinée au lieu : « BUFFET SIMPLE ET BUFFET ELABORE POUR LA MAIRIE DU 18E » — buffets des réceptions de la mairie ; le service sur place n'est pas explicité dans l'objet."
+    },
+    {
+      "numero_marche": "20141210000222",
+      "objet": "MODERNISATION DU TGBT  MAIRIE DU 18E",
+      "objet_clair": null,
+      "fournisseur": "ERI",
+      "montant_max": 48250.0,
+      "date_notification": "2014-12-12",
+      "preuve": "Travaux sur le tableau général basse tension du bâtiment : « MODERNISATION DU TGBT MAIRIE DU 18E ». Cohérent avec les délibérations sur les installations électriques du site (2002 DPA 256 ; 2007 DPA 246 « mise aux normes des installations électriques à la mairie du 18ème arrondissement »)."
+    },
+    {
+      "numero_marche": "20171210001833",
+      "objet": "MODERNISATION DES SANITAIRES PUBLICS   MAIRIE DU 18E",
+      "objet_clair": null,
+      "fournisseur": "ALB-BAT GROUPE",
+      "montant_max": 45983.0,
+      "date_notification": "2017-12-04",
+      "preuve": "Travaux sur des locaux du bâtiment : « MODERNISATION DES SANITAIRES PUBLICS MAIRIE DU 18E »."
+    },
+    {
+      "numero_marche": "decp-2026T00919",
+      "objet": "Travaux de modernisation des anciens bureaux de l'antenne logement (DLH) à la Mairie du 18ème Arrondissement - 1 place Jules Juffrin 75018 Paris",
+      "objet_clair": null,
+      "fournisseur": "ERI",
+      "montant_max": 42481.1,
+      "date_notification": "2026-01-28",
+      "preuve": "L'objet donne l'adresse exacte du lieu : « à la Mairie du 18ème Arrondissement - 1 place Jules Juffrin 75018 Paris » (« Juffrin » sic pour Joffrin, adresse confirmée par les délibérations)."
+    },
+    {
+      "numero_marche": "20161210001390",
+      "objet": "CRÉATION D'UNE SALLE DE REPOS  À LA MAIRIE DU 18E",
+      "objet_clair": null,
+      "fournisseur": "ALB-BAT GROUPE",
+      "montant_max": 39302.0,
+      "date_notification": "2016-10-03",
+      "preuve": "Aménagement d'un local intérieur du bâtiment : « CRÉATION D'UNE SALLE DE REPOS À LA MAIRIE DU 18E »."
+    },
+    {
+      "numero_marche": "20131210008893",
+      "objet": "MODERNISATION DU LOCAL PRESSOIR DE LA MAIRIE DU 18E.",
+      "objet_clair": null,
+      "fournisseur": "SOC INDUSTR RATIONALIS ENTRET",
+      "montant_max": 39000.0,
+      "date_notification": "2013-03-21",
+      "preuve": "Travaux sur un local du bâtiment : « MODERNISATION DU LOCAL PRESSOIR DE LA MAIRIE DU 18E. »"
+    },
+    {
+      "numero_marche": "decp-2024S12980",
+      "objet": "Conception et organisation de la cérémonie des voeux de la Mairie du 18ème",
+      "objet_clair": null,
+      "fournisseur": "TWOBEVENTS TRAVEL SAS",
+      "montant_max": 20000.0,
+      "date_notification": "2024-12-12",
+      "preuve": "Événement propre au lieu : « Conception et organisation de la cérémonie des voeux de la Mairie du 18ème » — cérémonie de la mairie d'arrondissement ; la salle exacte n'est pas explicitée dans l'objet (lieu_execution : « Paris »)."
+    },
+    {
+      "numero_marche": "decp-2024T08025",
+      "objet": "Mission de BET pour le renforcement du plancher de l'état civil dans le cadre du remplacement des classeurs rotatifs de la Mairie du 18ème arrondissement - 1 Place Jules Joffrin 75018 Paris",
+      "objet_clair": null,
+      "fournisseur": "PRATEC",
+      "montant_max": 4250.0,
+      "date_notification": "2024-08-01",
+      "preuve": "L'objet vise la structure du bâtiment à son adresse exacte : « renforcement du plancher de l'état civil ... de la Mairie du 18ème arrondissement - 1 Place Jules Joffrin 75018 Paris »."
+    }
+  ],
+  "mandate": null,
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=mairie+AND+18e+AND+Jules-Joffrin"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22mairie+du+XVIIIe+arrondissement%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "From 1996 to 2009, Conseil de Paris repeatedly ruled on the upkeep and transformation of the town hall of the 18th arrondissement, at 1 place Jules-Joffrin. In October 1996, the Council approved the principle of creating a neighborhood police command post inside the building and authorized a project-management delegation agreement with the State (Ministry of the Interior), under shared funding. Starting in September 2001, it approved the principle of improving public reception and accessibility: project management was awarded to the B+M Architecture firm and the Mayor was authorized to file the demolition and construction permits. The project continued through works contracts — including a first phase of electrical modernization approved in 2002 — and through two 2004 amendments raising the project management contract to €187,978.51 including tax and the works contract to €654,353.79 including tax. From 2006 to 2009, the Council separately approved several works principles: fire alarm, the Poulbot room, reception area and hall skylight, electrical code compliance, then security works following the Safety Commission's review.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- },
- "synthese_en": "From 1996 to 2009, Conseil de Paris repeatedly ruled on the upkeep and transformation of the town hall of the 18th arrondissement, at 1 place Jules-Joffrin. In October 1996, the Council approved the principle of creating a neighborhood police command post inside the building and authorized a project-management delegation agreement with the State (Ministry of the Interior), under shared funding. Starting in September 2001, it approved the principle of improving public reception and accessibility: project management was awarded to the B+M Architecture firm and the Mayor was authorized to file the demolition and construction permits. The project continued through works contracts — including a first phase of electrical modernization approved in 2002 — and through two 2004 amendments raising the project management contract to €187,978.51 including tax and the works contract to €654,353.79 including tax. From 2006 to 2009, the Council separately approved several works principles: fire alarm, the Poulbot room, reception area and hall skylight, electrical code compliance, then security works following the Safety Commission's review."
 }

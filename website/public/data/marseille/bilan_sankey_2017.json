@@ -53,5 +53,13 @@
     "url": "https://data.ofgl.fr/explore/dataset/ofgl-base-communes-consolidee/",
     "perimeter": "Comptes consolidés OFGL (M14 + M57 harmonisés)",
     "epargne_brute": 156558345.0
+  },
+  "license": {
+    "id": "Licence-Ouverte-2.0",
+    "url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+    "share_alike": false,
+    "notice": "Derived from French public open data under Licence Ouverte v2.0 (Etalab): attribution required, no share-alike.",
+    "attribution": "Ville de Marseille et Métropole Aix-Marseille-Provence (data.gouv.fr, data.ampmetropole.fr) ; calcul OFGL - source DGFiP — Licence Ouverte v2.0",
+    "producer": "Qipu (qipu.org) — derived database"
   }
 }

@@ -1,471 +1,479 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "cite-internationale-des-arts",
- "name": "Cité internationale des arts",
- "kind_fr": "Équipement culturel",
- "kind_en": "Cultural venue",
- "famille": "culture",
- "arrondissement": 4,
- "lat": 48.854149,
- "lon": 2.356738,
- "photo": "/img/lieux/cite-internationale-des-arts.jpg",
- "photo_credit": {
-  "licence": null,
-  "auteur": null,
-  "url": "https://fr.wikipedia.org/wiki/Cit%C3%A9_internationale_des_arts",
-  "source": "Wikipédia"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": "La Cité internationale des arts, fondation reconnue d'utilité publique, est une résidence d'artistes située à Paris (France), ayant pour mission de favoriser le travail de recherche et de création d'artistes contemporains internationaux dans toutes les disciplines : arts visuels, musique, spectacle vivant, architecture ou encore écriture.",
-  "url": "https://fr.wikipedia.org/wiki/Cit%C3%A9_internationale_des_arts",
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 1041,
-  "delibs_span": [
-   1995,
-   2026
-  ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "titre nommant le lieu (30 trouvés)",
-  "lecture_mode_en": "title naming the place (30 found)",
-  "n_lus": 30,
-  "n_lieu": null
- },
- "subventions_exploitant": {
-  "nom_fiche": "FOND CITE INTERNATIONALE ARTS",
-  "total_eur": 13886969.0,
-  "annees": [
-   "2010",
-   "2024"
-  ],
-  "rows": [
-   {
-    "annee": "2024",
-    "montant_eur": 1404773.0,
-    "beneficiaire": "FOND CITE INTERNATIONALE ARTS",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2023",
-    "montant_eur": 1234773.0,
-    "beneficiaire": "FOND CITE INTERNATIONALE ARTS",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2022",
-    "montant_eur": 1144188.0,
-    "beneficiaire": "CITE INTERNATIONALE DES ARTS",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2021",
-    "montant_eur": 900108.0,
-    "beneficiaire": "FONDATION CITE INTERNATIONALE ARTS",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2020",
-    "montant_eur": 1478438.0,
-    "beneficiaire": "FONDATION CITE INTERNATIONALE ARTS",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2019",
-    "montant_eur": 1023773.0,
-    "beneficiaire": "FONDATION CITE INTERNATIONALE ARTS",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2018",
-    "montant_eur": 870173.0,
-    "beneficiaire": "FONDATION CITE INTERNATIONALE ARTS",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2017",
-    "montant_eur": 856170.0,
-    "beneficiaire": "FONDATION CITE INTERNATIONALE ARTS",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2016",
-    "montant_eur": 690173.0,
-    "beneficiaire": "FONDATION CITE INTERNATIONALE ARTS",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2015",
-    "montant_eur": 649173.0,
-    "beneficiaire": "FONDATION CITE INTERNATIONALE ARTS",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2014",
-    "montant_eur": 749173.0,
-    "beneficiaire": "FONDATION CITE INTERNATIONALE ARTS",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2013",
-    "montant_eur": 749173.0,
-    "beneficiaire": "FONDATION CITE INTERNATIONALE ARTS",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2012",
-    "montant_eur": 729173.0,
-    "beneficiaire": "FONDATION CITE INTERNATIONALE ARTS",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2011",
-    "montant_eur": 709173.0,
-    "beneficiaire": "FONDATION CITE INTERNATIONALE ARTS",
-    "thematique": "Culture"
-   },
-   {
-    "annee": "2010",
-    "montant_eur": 698535.0,
-    "beneficiaire": "FONDATION CITE INTERNATIONALE ARTS",
-    "thematique": "Culture"
-   }
-  ],
-  "perimetre": "multi",
-  "note_publique": "La Fondation de la Cité internationale des arts gère aussi un site dans le 18e arrondissement (rue Norvins) : les subventions rattachées ici financent l'ensemble de la fondation, pas seulement le bâtiment du 4e.",
-  "autres_sites": [
-   "Site du 18e arrondissement (rue Norvins)"
-  ]
- },
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": {
-  "1998": [
-   {
-    "reference": "1998 DAC 139",
-    "titre": "Subvention d'investissement à la Cité internationale des arts (4e). Mme Hélène MACE de LEPINAY, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "OCTOBRE 1998",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64861"
-   }
-  ],
-  "2002": [
-   {
-    "reference": "2002 DAC 129",
-    "titre": "Autorisation à M. le Maire de Paris de signer une convention avec la Fondation de la Cité Internationale des Arts (4e), relative à l'attribution d'une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "MARS 2002",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38829"
-   },
-   {
-    "reference": "2002 DAC 129",
-    "titre": "50 - 2002, DAC 129 - Autorisation à M. le Maire de Paris de signer une convention relative à l'attribution d'une subvention de fonctionnement à la \"Fondation de la Cité internationale des arts\" (4e). - Montant : 668.711 euros",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "MARS 2002",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7434"
-   },
-   {
-    "reference": "2002 DAC 479",
-    "titre": "Autorisation à M. le Maire de Paris de signer un avenant à la convention d'objectifs relatif à l'attribution d'une subvention de fonctionnement à la Fondation de la Cité Internationale des Arts - 18, rue de l'Hôtel de Ville - 75004 Paris (D00342). M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "DECEMBRE 2002",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71525"
-   }
-  ],
-  "2003": [
-   {
-    "reference": "2003 DAC 421",
-    "titre": "Autorisation à M. le Maire de Paris de signer une convention d'objectifs relative à l'attribution d'une subvention de fonctionnement à la Fondation de la Cité internationale des Arts. M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "NOVEMBRE 2003",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94532"
-   },
-   {
-    "reference": "2003 DAC 421",
-    "titre": "197 - 2003, DAC 421 - Autorisation à M. le Maire de Paris de signer une convention d'objectifs relative à l'attribution d'une subvention de fonctionnement à la Fondation de la cité internationale des arts (4e). - Montant : 680.000 euros",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "NOVEMBRE 2003",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21207"
-   }
-  ],
-  "2004": [
-   {
-    "reference": "2004 DAC 153",
-    "titre": "79 - 2004, DAC 153 - Subvention de fonctionnement à la Fondation de la Cité internationale des arts (4e). - Montant : 761.200 euros",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "SEPTEMBRE 2004",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11256"
-   },
-   {
-    "reference": "2004 DAC 153",
-    "titre": "Autorisation à M. le Maire de Paris de signer une convention annuelle d'objectifs relatif à l'attribution d'une subvention de fonctionnement à la Fondation de la Cité Internationale des Arts (4e). M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "SEPTEMBRE 2004",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46685"
-   }
-  ],
-  "2005": [
-   {
-    "reference": "2005 DAC 66",
-    "titre": "Autorisation à M. le Maire de Paris de signer une convention annuelle d’objectifs relative à l’attribution d’une subvention de fonctionnement à la Fondation de la Cité Internationale des Arts - 18, rue de l’Hôtel de Ville (4e). M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "AVRIL 2005",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43593"
-   }
-  ],
-  "2006": [
-   {
-    "reference": "2006 DAC 106",
-    "titre": "Autorisation à M. le Maire de Paris de signer une convention annuelle d’objectifs relatif à l’attribution d’une subvention de fonctionnement à la Fondation de la Cité Internationale des Arts 18, rue de l’Hôtel de Ville (4e). M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "MAI 2006",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89065"
-   }
-  ],
-  "2007": [
-   {
-    "reference": "2007 DAC 104",
-    "titre": "Autorisation à M. le Maire de Paris de signer une convention annuelle d’objectifs relative à l’attribution d’une subvention de fonctionnement à la Fondation de la Cité Internationale des Arts, 18, rue de l’Hôtel de Ville (4e). M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "JUILLET 2007",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90586"
-   },
-   {
-    "reference": "2007 DASES 79",
-    "titre": "G - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil Général, de signer la convention pluriannuelle d’investissement fixant les conditions d’attribution d’une subvention d’investissement d’un montant de 100.000 euros à l’association “Regard’en France” - Cité Internationale des Arts - 18, rue de l’Hôtel de Ville (4e) pour financer le projet de création d’un Centre ressources “Théâtre Handicap” qui réunit des personnes porteuses de handicap et des personnes non",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "DECEMBRE 2007",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73317"
-   }
-  ],
-  "2008": [
-   {
-    "reference": "2008 DAC 221",
-    "titre": "Signature d’un avenant à la convention signée avec la “Fondation de la Cité Internationale des Arts” (4e) pour l’attribution d’une subvention. M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "SEPTEMBRE 2008",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67042"
-   },
-   {
-    "reference": "2008 DAC 496",
-    "titre": "Subvention à l’association “Ad’ Rêv” pour le spectacle A quoi je tiens présenté à la Cité Internationale des Arts (4e) en 2008. M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "NOVEMBRE 2008",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61536"
-   },
-   {
-    "reference": "2008 DLH 32",
-    "titre": "Avenant au bail des 24 juin et 7 juillet 1950 signé entre la Ville de Paris et la Cité Internationale des Arts, portant réduction de l’emprise du bail. M. Jean-Yves MANO, rapporteur.",
-    "genres": [
-     "autre"
-    ],
-    "seance": "FEVRIER 2008",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=76951"
-   }
-  ],
-  "2009": [
-   {
-    "reference": "2009 DAC 87",
-    "titre": "Signature d’un avenant à la convention annuelle d’objectifs signée avec la Fondation de la Cité Internationale des Arts (4e), pour l’attribution d’une subvention. M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "SEPTEMBRE 2009",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37302"
-   }
-  ],
-  "2010": [
-   {
-    "reference": "2010 DAC 383",
-    "titre": "Signature d’un avenant à la convention annuelle d’objectifs signée avec la Fondation de la Cité Internationale des Arts (4e), pour l’attribution d’une subvention. M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "OCTOBRE 2010",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23539"
-   }
-  ],
-  "2011": [
-   {
-    "reference": "2011 DAC 261",
-    "titre": "Signature d’un avenant à convention avec la Fondation de la Cité Internationale des Arts (4e), pour l’attribution d’une subvention. M. Christophe GIRARD, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "MAI 2011",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97619"
-   }
-  ],
-  "2017": [
-   {
-    "reference": "2017 DAC 212",
-    "titre": "2017 DAC 212 - Subventions (820.173 euros), avenant et convention avec la Fondation de la Cité internationale des arts (4e, 18e). Vœu déposé par le GEP relatif à l’accueil des artistes réfugiés.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "JUILLET 2017",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=137125"
-   }
-  ],
-  "2021": [
-   {
-    "reference": "2021 DAC 186",
-    "titre": "2021 DAC 186 - Subvention de fonctionnement (797.173 euros), avenant à la convention, subvention d’équipement (250.000 euros) et convention avec la Fondation de la Cité Internationale des Arts (Paris centre, 18e).",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "JUILLET 2021",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163867"
-   },
-   {
-    "reference": "2021 DGRI 41",
-    "titre": "2021 DGRI 41 - Conditions d’accueil de la résidente ICORN de la Ville de Paris. - Convention pluriannuelle tripartite 2021-2022 avec la Fondation Cité internationale des arts (CIA) et subvention (2.600 euros).",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "NOVEMBRE 2021",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164183"
-   }
-  ],
-  "2024": [
-   {
-    "reference": "2024 DAC 131",
-    "titre": "2024 DAC 131 - Budget participatif 2021 : subvention d’équipement (320.000 euros) et convention avec la Fondation de la Cité internationale des arts (Paris Centre).",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "MAI 2024",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176161"
-   }
-  ],
-  "2026": [
-   {
-    "reference": "2026 DGRI 6",
-    "titre": "2026 DGRI 6 - Subvention (9.380 euros) et convention tripartite avec la Fondation \"Cité internationale des arts\" pour l’accueil d’un résident ICORN (International Cities of Refuge Network) de la Ville de Paris.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "FEVRIER 2026",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184332"
-   }
-  ]
- },
- "invest": [],
- "marches": [],
- "mandate": {
-  "par_annee": {
-   "2009": 73118.04,
-   "2010": 8372.0,
-   "2011": 20775.99,
-   "2012": 16910.51,
-   "2013": 207012.78,
-   "2014": 68820.05,
-   "2015": 43580.55
+  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "cite-internationale-des-arts",
+  "name": "Cité internationale des arts",
+  "kind_fr": "Équipement culturel",
+  "kind_en": "Cultural venue",
+  "famille": "culture",
+  "arrondissement": 4,
+  "lat": 48.854149,
+  "lon": 2.356738,
+  "photo": "/img/lieux/cite-internationale-des-arts.jpg",
+  "photo_credit": {
+    "licence": null,
+    "auteur": null,
+    "url": "https://fr.wikipedia.org/wiki/Cit%C3%A9_internationale_des_arts",
+    "source": "Wikipédia"
   },
-  "total_eur": 438589.92,
-  "operations": [
-   {
-    "ap_cle": "B100/1303576",
-    "ap_texte": "CITE INTERNATIONALE DES ARTS",
-    "mandate_par_annee": {
-     "2013": 192265.52
-    },
-    "total_mandate": 192265.52,
-    "preuve": "Libellé d'opération verbatim « CITE INTERNATIONALE DES ARTS » (mission « ESPACES VERTS ET ENV », direction DEVE) : l'intitulé désigne nommément ce lieu. Mandatement 2013. Les terrains sont communaux : le bail « des 24 juin et 7 juillet 1950 » donne « à loyer à la Fondation de la cité Internationale des Arts un certain nombre d'immeubles et de terrains communaux situés dans le 4e arrondissement » (2008 DLH 32), bail réduit en février 2008 pour en distraire « l'emprise du jardin public Albert Schweitzer ». Réserve : le libellé ne distingue pas les deux implantations de la fondation (4e et 18e) ; la part revenant au bâtiment du 4e n'est pas isolable dans la source.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1303576"
-   },
-   {
-    "ap_cle": "B100/0703576",
-    "ap_texte": "CITE INTERNATIONALE DES ARTS",
-    "mandate_par_annee": {
-     "2009": 73118.04,
-     "2010": 8372.0,
-     "2011": 20775.99,
-     "2012": 16910.51,
-     "2013": 14747.26
-    },
-    "total_mandate": 133923.8,
-    "preuve": "Libellé d'opération verbatim « CITE INTERNATIONALE DES ARTS » (mission « ESPACES VERTS ET ENV », direction DEVE) : l'intitulé désigne nommément ce lieu. Mandatements 2009 à 2013. Les terrains sont communaux : le bail « des 24 juin et 7 juillet 1950 » donne « à loyer à la Fondation de la cité Internationale des Arts un certain nombre d'immeubles et de terrains communaux situés dans le 4e arrondissement » (2008 DLH 32), bail réduit en février 2008 pour en distraire « l'emprise du jardin public Albert Schweitzer ». Réserve : le libellé ne distingue pas les deux implantations de la fondation (4e et 18e) ; la part revenant au bâtiment du 4e n'est pas isolable dans la source.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0703576"
-   },
-   {
-    "ap_cle": "1303576",
-    "ap_texte": "CITE INTERNATIONALE DES ARTS",
-    "mandate_par_annee": {
-     "2014": 68820.05,
-     "2015": 43580.55
-    },
-    "total_mandate": 112400.6,
-    "preuve": "Libellé d'opération verbatim « CITE INTERNATIONALE DES ARTS » (mission « ESPACES VERTS ET ENV », direction DEVE) : l'intitulé désigne nommément ce lieu. Mandatements 2014-2015 ; même numéro d'opération 1303576 que la clé B100/1303576, mais sur des années disjointes (2013 d'un côté, 2014-2015 de l'autre) : pas de double compte. Les terrains sont communaux : le bail « des 24 juin et 7 juillet 1950 » donne « à loyer à la Fondation de la cité Internationale des Arts un certain nombre d'immeubles et de terrains communaux situés dans le 4e arrondissement » (2008 DLH 32), bail réduit en février 2008 pour en distraire « l'emprise du jardin public Albert Schweitzer ». Réserve : le libellé ne distingue pas les deux implantations de la fondation (4e et 18e) ; la part revenant au bâtiment du 4e n'est pas isolable dans la source.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1303576"
-   }
-  ],
-  "periode": [
-   "2009",
-   "2015"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Cit%C3%A9+internationale+des+arts"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "La Cité internationale des arts, fondation reconnue d'utilité publique, est une résidence d'artistes située à Paris (France), ayant pour mission de favoriser le travail de recherche et de création d'artistes contemporains internationaux dans toutes les disciplines : arts visuels, musique, spectacle vivant, architecture ou encore écriture.",
+    "url": "https://fr.wikipedia.org/wiki/Cit%C3%A9_internationale_des_arts",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "stats": {
+    "n_delibs": 1041,
+    "delibs_span": [
+      1995,
+      2026
+    ],
+    "n_bmo_brut": 0,
+    "n_bmo_verifies": null,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "titre nommant le lieu (30 trouvés)",
+    "lecture_mode_en": "title naming the place (30 found)",
+    "n_lus": 30,
+    "n_lieu": null
+  },
+  "subventions_exploitant": {
+    "nom_fiche": "FOND CITE INTERNATIONALE ARTS",
+    "total_eur": 13886969.0,
+    "annees": [
+      "2010",
+      "2024"
+    ],
+    "rows": [
+      {
+        "annee": "2024",
+        "montant_eur": 1404773.0,
+        "beneficiaire": "FOND CITE INTERNATIONALE ARTS",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2023",
+        "montant_eur": 1234773.0,
+        "beneficiaire": "FOND CITE INTERNATIONALE ARTS",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2022",
+        "montant_eur": 1144188.0,
+        "beneficiaire": "CITE INTERNATIONALE DES ARTS",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2021",
+        "montant_eur": 900108.0,
+        "beneficiaire": "FONDATION CITE INTERNATIONALE ARTS",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2020",
+        "montant_eur": 1478438.0,
+        "beneficiaire": "FONDATION CITE INTERNATIONALE ARTS",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2019",
+        "montant_eur": 1023773.0,
+        "beneficiaire": "FONDATION CITE INTERNATIONALE ARTS",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2018",
+        "montant_eur": 870173.0,
+        "beneficiaire": "FONDATION CITE INTERNATIONALE ARTS",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2017",
+        "montant_eur": 856170.0,
+        "beneficiaire": "FONDATION CITE INTERNATIONALE ARTS",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2016",
+        "montant_eur": 690173.0,
+        "beneficiaire": "FONDATION CITE INTERNATIONALE ARTS",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2015",
+        "montant_eur": 649173.0,
+        "beneficiaire": "FONDATION CITE INTERNATIONALE ARTS",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2014",
+        "montant_eur": 749173.0,
+        "beneficiaire": "FONDATION CITE INTERNATIONALE ARTS",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2013",
+        "montant_eur": 749173.0,
+        "beneficiaire": "FONDATION CITE INTERNATIONALE ARTS",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2012",
+        "montant_eur": 729173.0,
+        "beneficiaire": "FONDATION CITE INTERNATIONALE ARTS",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2011",
+        "montant_eur": 709173.0,
+        "beneficiaire": "FONDATION CITE INTERNATIONALE ARTS",
+        "thematique": "Culture"
+      },
+      {
+        "annee": "2010",
+        "montant_eur": 698535.0,
+        "beneficiaire": "FONDATION CITE INTERNATIONALE ARTS",
+        "thematique": "Culture"
+      }
+    ],
+    "perimetre": "multi",
+    "note_publique": "La Fondation de la Cité internationale des arts gère aussi un site dans le 18e arrondissement (rue Norvins) : les subventions rattachées ici financent l'ensemble de la fondation, pas seulement le bâtiment du 4e.",
+    "autres_sites": [
+      "Site du 18e arrondissement (rue Norvins)"
+    ]
+  },
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": null,
+  "moments": [],
+  "montants": [],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": {
+    "1998": [
+      {
+        "reference": "1998 DAC 139",
+        "titre": "Subvention d'investissement à la Cité internationale des arts (4e). Mme Hélène MACE de LEPINAY, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "OCTOBRE 1998",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64861"
+      }
+    ],
+    "2002": [
+      {
+        "reference": "2002 DAC 129",
+        "titre": "Autorisation à M. le Maire de Paris de signer une convention avec la Fondation de la Cité Internationale des Arts (4e), relative à l'attribution d'une subvention de fonctionnement. M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "MARS 2002",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38829"
+      },
+      {
+        "reference": "2002 DAC 129",
+        "titre": "50 - 2002, DAC 129 - Autorisation à M. le Maire de Paris de signer une convention relative à l'attribution d'une subvention de fonctionnement à la \"Fondation de la Cité internationale des arts\" (4e). - Montant : 668.711 euros",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "MARS 2002",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7434"
+      },
+      {
+        "reference": "2002 DAC 479",
+        "titre": "Autorisation à M. le Maire de Paris de signer un avenant à la convention d'objectifs relatif à l'attribution d'une subvention de fonctionnement à la Fondation de la Cité Internationale des Arts - 18, rue de l'Hôtel de Ville - 75004 Paris (D00342). M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "DECEMBRE 2002",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71525"
+      }
+    ],
+    "2003": [
+      {
+        "reference": "2003 DAC 421",
+        "titre": "Autorisation à M. le Maire de Paris de signer une convention d'objectifs relative à l'attribution d'une subvention de fonctionnement à la Fondation de la Cité internationale des Arts. M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "NOVEMBRE 2003",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94532"
+      },
+      {
+        "reference": "2003 DAC 421",
+        "titre": "197 - 2003, DAC 421 - Autorisation à M. le Maire de Paris de signer une convention d'objectifs relative à l'attribution d'une subvention de fonctionnement à la Fondation de la cité internationale des arts (4e). - Montant : 680.000 euros",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "NOVEMBRE 2003",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21207"
+      }
+    ],
+    "2004": [
+      {
+        "reference": "2004 DAC 153",
+        "titre": "79 - 2004, DAC 153 - Subvention de fonctionnement à la Fondation de la Cité internationale des arts (4e). - Montant : 761.200 euros",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "SEPTEMBRE 2004",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11256"
+      },
+      {
+        "reference": "2004 DAC 153",
+        "titre": "Autorisation à M. le Maire de Paris de signer une convention annuelle d'objectifs relatif à l'attribution d'une subvention de fonctionnement à la Fondation de la Cité Internationale des Arts (4e). M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "SEPTEMBRE 2004",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46685"
+      }
+    ],
+    "2005": [
+      {
+        "reference": "2005 DAC 66",
+        "titre": "Autorisation à M. le Maire de Paris de signer une convention annuelle d’objectifs relative à l’attribution d’une subvention de fonctionnement à la Fondation de la Cité Internationale des Arts - 18, rue de l’Hôtel de Ville (4e). M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "AVRIL 2005",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43593"
+      }
+    ],
+    "2006": [
+      {
+        "reference": "2006 DAC 106",
+        "titre": "Autorisation à M. le Maire de Paris de signer une convention annuelle d’objectifs relatif à l’attribution d’une subvention de fonctionnement à la Fondation de la Cité Internationale des Arts 18, rue de l’Hôtel de Ville (4e). M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "MAI 2006",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89065"
+      }
+    ],
+    "2007": [
+      {
+        "reference": "2007 DAC 104",
+        "titre": "Autorisation à M. le Maire de Paris de signer une convention annuelle d’objectifs relative à l’attribution d’une subvention de fonctionnement à la Fondation de la Cité Internationale des Arts, 18, rue de l’Hôtel de Ville (4e). M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "JUILLET 2007",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90586"
+      },
+      {
+        "reference": "2007 DASES 79",
+        "titre": "G - Autorisation à M. le Président du Conseil de Paris, siégeant en formation de Conseil Général, de signer la convention pluriannuelle d’investissement fixant les conditions d’attribution d’une subvention d’investissement d’un montant de 100.000 euros à l’association “Regard’en France” - Cité Internationale des Arts - 18, rue de l’Hôtel de Ville (4e) pour financer le projet de création d’un Centre ressources “Théâtre Handicap” qui réunit des personnes porteuses de handicap et des personnes non",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "DECEMBRE 2007",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73317"
+      }
+    ],
+    "2008": [
+      {
+        "reference": "2008 DAC 221",
+        "titre": "Signature d’un avenant à la convention signée avec la “Fondation de la Cité Internationale des Arts” (4e) pour l’attribution d’une subvention. M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "SEPTEMBRE 2008",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67042"
+      },
+      {
+        "reference": "2008 DAC 496",
+        "titre": "Subvention à l’association “Ad’ Rêv” pour le spectacle A quoi je tiens présenté à la Cité Internationale des Arts (4e) en 2008. M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "NOVEMBRE 2008",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61536"
+      },
+      {
+        "reference": "2008 DLH 32",
+        "titre": "Avenant au bail des 24 juin et 7 juillet 1950 signé entre la Ville de Paris et la Cité Internationale des Arts, portant réduction de l’emprise du bail. M. Jean-Yves MANO, rapporteur.",
+        "genres": [
+          "autre"
+        ],
+        "seance": "FEVRIER 2008",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=76951"
+      }
+    ],
+    "2009": [
+      {
+        "reference": "2009 DAC 87",
+        "titre": "Signature d’un avenant à la convention annuelle d’objectifs signée avec la Fondation de la Cité Internationale des Arts (4e), pour l’attribution d’une subvention. M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "SEPTEMBRE 2009",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37302"
+      }
+    ],
+    "2010": [
+      {
+        "reference": "2010 DAC 383",
+        "titre": "Signature d’un avenant à la convention annuelle d’objectifs signée avec la Fondation de la Cité Internationale des Arts (4e), pour l’attribution d’une subvention. M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "OCTOBRE 2010",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23539"
+      }
+    ],
+    "2011": [
+      {
+        "reference": "2011 DAC 261",
+        "titre": "Signature d’un avenant à convention avec la Fondation de la Cité Internationale des Arts (4e), pour l’attribution d’une subvention. M. Christophe GIRARD, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "MAI 2011",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97619"
+      }
+    ],
+    "2017": [
+      {
+        "reference": "2017 DAC 212",
+        "titre": "2017 DAC 212 - Subventions (820.173 euros), avenant et convention avec la Fondation de la Cité internationale des arts (4e, 18e). Vœu déposé par le GEP relatif à l’accueil des artistes réfugiés.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "JUILLET 2017",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=137125"
+      }
+    ],
+    "2021": [
+      {
+        "reference": "2021 DAC 186",
+        "titre": "2021 DAC 186 - Subvention de fonctionnement (797.173 euros), avenant à la convention, subvention d’équipement (250.000 euros) et convention avec la Fondation de la Cité Internationale des Arts (Paris centre, 18e).",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "JUILLET 2021",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163867"
+      },
+      {
+        "reference": "2021 DGRI 41",
+        "titre": "2021 DGRI 41 - Conditions d’accueil de la résidente ICORN de la Ville de Paris. - Convention pluriannuelle tripartite 2021-2022 avec la Fondation Cité internationale des arts (CIA) et subvention (2.600 euros).",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "NOVEMBRE 2021",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164183"
+      }
+    ],
+    "2024": [
+      {
+        "reference": "2024 DAC 131",
+        "titre": "2024 DAC 131 - Budget participatif 2021 : subvention d’équipement (320.000 euros) et convention avec la Fondation de la Cité internationale des arts (Paris Centre).",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "MAI 2024",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176161"
+      }
+    ],
+    "2026": [
+      {
+        "reference": "2026 DGRI 6",
+        "titre": "2026 DGRI 6 - Subvention (9.380 euros) et convention tripartite avec la Fondation \"Cité internationale des arts\" pour l’accueil d’un résident ICORN (International Cities of Refuge Network) de la Ville de Paris.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "FEVRIER 2026",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184332"
+      }
+    ]
+  },
+  "invest": [],
+  "marches": [],
+  "mandate": {
+    "par_annee": {
+      "2009": 73118.04,
+      "2010": 8372.0,
+      "2011": 20775.99,
+      "2012": 16910.51,
+      "2013": 207012.78,
+      "2014": 68820.05,
+      "2015": 43580.55
+    },
+    "total_eur": 438589.92,
+    "operations": [
+      {
+        "ap_cle": "B100/1303576",
+        "ap_texte": "CITE INTERNATIONALE DES ARTS",
+        "mandate_par_annee": {
+          "2013": 192265.52
+        },
+        "total_mandate": 192265.52,
+        "preuve": "Libellé d'opération verbatim « CITE INTERNATIONALE DES ARTS » (mission « ESPACES VERTS ET ENV », direction DEVE) : l'intitulé désigne nommément ce lieu. Mandatement 2013. Les terrains sont communaux : le bail « des 24 juin et 7 juillet 1950 » donne « à loyer à la Fondation de la cité Internationale des Arts un certain nombre d'immeubles et de terrains communaux situés dans le 4e arrondissement » (2008 DLH 32), bail réduit en février 2008 pour en distraire « l'emprise du jardin public Albert Schweitzer ». Réserve : le libellé ne distingue pas les deux implantations de la fondation (4e et 18e) ; la part revenant au bâtiment du 4e n'est pas isolable dans la source.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1303576"
+      },
+      {
+        "ap_cle": "B100/0703576",
+        "ap_texte": "CITE INTERNATIONALE DES ARTS",
+        "mandate_par_annee": {
+          "2009": 73118.04,
+          "2010": 8372.0,
+          "2011": 20775.99,
+          "2012": 16910.51,
+          "2013": 14747.26
+        },
+        "total_mandate": 133923.8,
+        "preuve": "Libellé d'opération verbatim « CITE INTERNATIONALE DES ARTS » (mission « ESPACES VERTS ET ENV », direction DEVE) : l'intitulé désigne nommément ce lieu. Mandatements 2009 à 2013. Les terrains sont communaux : le bail « des 24 juin et 7 juillet 1950 » donne « à loyer à la Fondation de la cité Internationale des Arts un certain nombre d'immeubles et de terrains communaux situés dans le 4e arrondissement » (2008 DLH 32), bail réduit en février 2008 pour en distraire « l'emprise du jardin public Albert Schweitzer ». Réserve : le libellé ne distingue pas les deux implantations de la fondation (4e et 18e) ; la part revenant au bâtiment du 4e n'est pas isolable dans la source.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0703576"
+      },
+      {
+        "ap_cle": "1303576",
+        "ap_texte": "CITE INTERNATIONALE DES ARTS",
+        "mandate_par_annee": {
+          "2014": 68820.05,
+          "2015": 43580.55
+        },
+        "total_mandate": 112400.6,
+        "preuve": "Libellé d'opération verbatim « CITE INTERNATIONALE DES ARTS » (mission « ESPACES VERTS ET ENV », direction DEVE) : l'intitulé désigne nommément ce lieu. Mandatements 2014-2015 ; même numéro d'opération 1303576 que la clé B100/1303576, mais sur des années disjointes (2013 d'un côté, 2014-2015 de l'autre) : pas de double compte. Les terrains sont communaux : le bail « des 24 juin et 7 juillet 1950 » donne « à loyer à la Fondation de la cité Internationale des Arts un certain nombre d'immeubles et de terrains communaux situés dans le 4e arrondissement » (2008 DLH 32), bail réduit en février 2008 pour en distraire « l'emprise du jardin public Albert Schweitzer ». Réserve : le libellé ne distingue pas les deux implantations de la fondation (4e et 18e) ; la part revenant au bâtiment du 4e n'est pas isolable dans la source.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1303576"
+      }
+    ],
+    "periode": [
+      "2009",
+      "2015"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Cit%C3%A9+internationale+des+arts"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- }
 }

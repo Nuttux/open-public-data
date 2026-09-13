@@ -1,457 +1,465 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "place-de-la-republique",
- "name": "Place de la République",
- "kind_fr": "Place",
- "kind_en": "Square",
- "famille": "urbain",
- "arrondissement": 3,
- "lat": 48.8676,
- "lon": 2.3637,
- "photo": "/img/lieux/place-de-la-republique.jpg",
- "photo_credit": {
-  "licence": null,
-  "auteur": null,
-  "url": "https://fr.wikipedia.org/wiki/Place_de_la_R%C3%A9publique_(Paris)",
-  "source": "Wikipédia"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": "La place de la République est une place de 3,4 ha située à la limite des 3e, 10e et 11e arrondissements de Paris.",
-  "url": "https://fr.wikipedia.org/wiki/Place_de_la_R%C3%A9publique_(Paris)",
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "place-de-la-republique",
+  "name": "Place de la République",
+  "kind_fr": "Place",
+  "kind_en": "Square",
+  "famille": "urbain",
+  "arrondissement": 3,
+  "lat": 48.8676,
+  "lon": 2.3637,
+  "photo": "/img/lieux/place-de-la-republique.jpg",
+  "photo_credit": {
+    "licence": null,
+    "auteur": null,
+    "url": "https://fr.wikipedia.org/wiki/Place_de_la_R%C3%A9publique_(Paris)",
+    "source": "Wikipédia"
   },
-  "extract_en": "The place de la République is a 3.4-hectare square located on the boundary between the 3rd, 10th and 11th arrondissements of Paris."
- },
- "stats": {
-  "n_delibs": 1591,
-  "delibs_span": [
-   2003,
-   2025
-  ],
-  "n_bmo_brut": 2000,
-  "n_bmo_verifies": 5,
-  "invest_total_eur": 241734.05,
-  "invest_annees": [
-   "2019",
-   "2023"
-  ],
-  "lecture_mode": "titre nommant le lieu (41 trouvés)",
-  "lecture_mode_en": "title naming the place (41 found)",
-  "n_lus": 41,
-  "n_lieu": 32
- },
- "subventions_exploitant": null,
- "residents": [
-  {
-   "beneficiaire": "A L ADRESSE DU JEU",
-   "montant_total": 316800.0,
-   "preuve": "L'objet de la subvention nomme le lieu et décrit une activité qui s'y déroule (verbatim : « Proposition d'activités ludiques aux familles place de la République avec la ludothèque à ciel ouver[t] »), SIRET 52850503500022. Rôle « résident » et non « exploitant » : l'association anime une activité sur la place, rien dans l'objet n'indique qu'elle gère la place elle-même. Réserve : aucune délibération du corpus consulté ne mentionne cette association ni la ludothèque à ciel ouvert ; le rattachement repose sur l'objet de la subvention seul."
-  }
- ],
- "kpi_montant": null,
- "synthese_fr": "En 2003, le Conseil de Paris autorise la restauration du monument à la gloire de la République, au centre de la place, quand des élus demandent déjà d'en écarter la circulation automobile. À partir de 2009, la Ville engage le réaménagement : désignation d'un jury, concertation présentée comme large, puis attribution en 2010 du marché de maîtrise d'œuvre à l'équipe TVK, autour d'un projet qui doit transformer le rond-point de la statue en espace piétonnier ; un coût de 17,5 millions d'euros, avancé dans la délibération, est contesté en séance par l'opposition. Inaugurée en 2013, la place se dote d'un café-pavillon destiné à l'animer et voit sa charge symbolique renforcée par les grands rassemblements qui suivent les attentats de janvier 2015. Elle devient ensuite le théâtre de tensions — mouvement Nuit Debout en 2016, évacuation d'un campement de migrants en 2020 — et fait l'objet de demandes répétées, jusqu'en 2025, sur son entretien, son éclairage et sa végétalisation.",
- "moments": [
-  {
-   "id": "3359",
-   "seance": "SEPTEMBRE 2003",
-   "fait": "Le Conseil autorise la restauration du monument à la gloire de la République, au centre de la place, et adopte deux vœux demandant d'étudier sa fermeture à la circulation automobile.",
-   "pourquoi": "Restaurer Marianne, premier appel à écarter les voitures",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3359",
-   "fait_en": "The Council authorized the restoration of the monument to the glory of the Republic, at the centre of the square, and adopted two motions calling for a study on closing it to car traffic.",
-   "pourquoi_en": "Restoring Marianne, the first call to keep out cars"
-  },
-  {
-   "id": "13258",
-   "seance": "AVRIL 2004",
-   "fait": "Un jardin de la place reçoit le nom de square André Tollet, en hommage au président du Comité parisien de la Libération.",
-   "pourquoi": "La Résistance entre dans le sol de la place",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13258",
-   "fait_en": "A garden on the square was named square André Tollet, in tribute to the chairman of the Comité parisien de la Libération.",
-   "pourquoi_en": "The Resistance enters the square's very ground"
-  },
-  {
-   "id": "5678",
-   "seance": "JUIN 2009",
-   "fait": "Mme Annick LEPETIT annonce l'installation du premier jury et le choix de cinq équipes d'architectes, parmi 72 candidatures, pour esquisser le réaménagement.",
-   "pourquoi": "Le concours d'architectes s'ouvre, 72 candidatures reçues",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5678",
-   "fait_en": "Ms Annick LEPETIT announced the appointment of the first jury and the selection of five architectural teams, out of 72 applications, to sketch out the redevelopment.",
-   "pourquoi_en": "The architectural competition opens, 72 applications received"
-  },
-  {
-   "id": "8614",
-   "seance": "MARS 2010",
-   "fait": "Le Conseil autorise la signature du marché de maîtrise d'œuvre avec l'équipe TVK ; le projet doit transformer le rond-point autour de la statue en espace piétonnier.",
-   "pourquoi": "TVK va refondre l'une des plus grandes places d'Europe",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8614",
-   "fait_en": "The Council authorized signing the project management contract with the TVK team; the project was to transform the roundabout around the statue into a pedestrian space.",
-   "pourquoi_en": "TVK to redesign one of Europe's largest squares"
-  },
-  {
-   "id": "12990",
-   "seance": "JUIN 2010",
-   "fait": "En approuvant les objectifs et la concertation, le Conseil affronte l'opposition, qui conteste le coût de 17,5 millions d'euros avancé en séance et réclame une expérimentation préalable.",
-   "pourquoi": "L'opposition conteste les 17,5 millions d'euros",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12990",
-   "fait_en": "In approving the objectives and the consultation process, the Council faced down the opposition, which disputed the €17.5 million cost put forward during the session and demanded a prior trial run.",
-   "pourquoi_en": "The opposition disputes the €17.5 million"
-  },
-  {
-   "id": "111210",
-   "seance": "FEVRIER 2013",
-   "fait": "Le Conseil confie au groupe S.O.S. le café-pavillon « Monde et Médias », qui doit ouvrir au printemps 2013 avec la livraison de la place.",
-   "pourquoi": "Animer la place neuve pour éviter un « lieu mort »",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=111210",
-   "fait_en": "The Council entrusted the \"Monde et Médias\" café pavilion to the S.O.S. group, due to open in spring 2013 when the square was handed over.",
-   "pourquoi_en": "Bringing the new square to life to avoid a \"dead space\""
-  },
-  {
-   "id": "129889",
-   "seance": "MAI 2016",
-   "fait": "Face au mouvement Nuit Debout installé depuis le 31 mars, plusieurs vœux cherchent à concilier droit de manifester et nuisances signalées par les riverains.",
-   "pourquoi": "Nuit Debout : manifester sans confisquer la place",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129889",
-   "fait_en": "Faced with the Nuit Debout movement, which had been camped there since 31 March, several motions sought to reconcile the right to demonstrate with the nuisances reported by local residents.",
-   "pourquoi_en": "Nuit Debout: demonstrating without taking over the square"
-  },
-  {
-   "id": "157211",
-   "seance": "DECEMBRE 2020",
-   "fait": "Plusieurs vœux dénoncent l'évacuation, le 23 novembre 2020, d'un campement de migrants installé place de la République et demandent une mise à l'abri systématique.",
-   "pourquoi": "Un campement de migrants évacué sous tension",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157211",
-   "fait_en": "Several motions denounced the eviction, on 23 November 2020, of a migrant camp set up at the place de la République, and called for systematic emergency shelter.",
-   "pourquoi_en": "A migrant camp evicted amid tension"
-  }
- ],
- "montants": [
-  {
-   "seance": "SEPTEMBRE 2003",
-   "montant": "450 000 euros",
-   "objet": "marché de restauration du monument à la gloire de la République, montant avancé en séance par Mme Charlotte NENNER",
-   "citation": "Considérant qu'il s'agit d'un marché important pour un montant total de 450.000 euros",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3359"
-  },
-  {
-   "seance": "SEPTEMBRE 2003",
-   "montant": "454 565 euros",
-   "objet": "coût total estimé (2003-2004) du marché de restauration du monument à la gloire de la République",
-   "citation": "dont le montant total pour 2003 et 2004 est estimé à 454.565 euros",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48063"
-  },
-  {
-   "seance": "JUIN 2010",
-   "montant": "17,5 millions d'euros",
-   "objet": "coût de l'opération de réaménagement, chiffre cité et contesté en séance par Mme Delphine BURKLI (opposition)",
-   "citation": "je m'interroge sur le montant très élevé, sans vraiment comprendre ce que représente la somme de 17,5 millions d'euros pour le contribuable parisien",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12990"
-  }
- ],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": {
-  "2001": [
-   {
-    "reference": "2001 DVD 66",
-    "titre": "23 - 2001, DVD 66 - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres pour l'aménagement des trottoirs : - du boulevard de la Madeleine et du boulevard des Capucines (tronçon de la place de la Madeleine à la place de l'Opéra) ; - du boulevard des Italiens (tronçon de la rue Favart au carrefour Richelieu-Drouot) ; - du boulevard Saint-Denis et du boulevard Saint-Martin (tronçon du boulevard Sébastopol à la place de la République)",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUIN 2001",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8080"
-   },
-   {
-    "reference": "2001 DVD 66",
-    "titre": "Projet de revalorisation des Grands Boulevards (1er, 2e, 3e, 8e, 9e et 10e arrondissements) - Approbation des modalités d'attribution d'un marché sur appel d'offres pour l'aménagement des trottoirs des boulevards de la Madeleine et des Capucines (tronçon de la place de la Madeleine à la place de l'Opéra), des Italiens (tronçon de la rue Favart au carrefour Richelieu-Drouot), Saint-Denis et Saint-Martin (tronçon du boulevard Sébastopol à la place de la République). - Autorisation à M. le Maire de",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUIN 2001",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28849"
-   }
-  ],
-  "2003": [
-   {
-    "reference": "2003 DAC 169",
-    "titre": "42 - 2003, DAC 169 - Autorisation à M. le Maire de Paris de signer un marché de travaux sur appel d'offres en vue de la restauration du monument à la gloire de la République, place de la République (10e).Vœu déposé par M. DREYFUS et les membres du groupe socialiste et radical de gauche relatif à la restauration du monument à la gloire de la République, place de la République.Vœu déposé par Melle NENNER relatif à la restauration du monument place de la République",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 2003",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3359"
-   },
-   {
-    "reference": "2003 DAC 169",
-    "titre": "Approbation du principe et des modalités d'attribution d'un marché de travaux sur appel d'offres ouvert en vue de la restauration du monument à la gloire de la République, place de la République (10e). - Autorisation à M. le Maire de Paris de signer le marché correspondant. Mme Sandrine MAZETIER, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 2003",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48197"
-   }
-  ],
-  "2009": [
-   {
-    "reference": "2009 DVD 178",
-    "titre": "Approbation du principe d’aménagement de la place de la République (3e, 10e et 11e) et des modalités de passation du marché de maîtrise d’œuvre correspondant suite à concours. - Approbation des objectifs du programme résultant de la première phase de concertation menée du 15 décembre 2008 au 15 mars 2009 sur l’aménagement de la place de la République (3e, 10e et 11e). Mme Annick LEPETIT, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUILLET 2009",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74876"
-   }
-  ],
-  "2010": [
-   {
-    "reference": "2010 DVD 112",
-    "titre": "Signature du marché de maîtrise d’œuvre pour l’aménagement de la place de la République (3e, 10e et 11e arrondissements) avec le groupement TREVELO ET VIGER-KOHLER (mandataire) , Martha Schwartz Partners, AREAL, ATEC, AIK Yann Kersalé. Mme Annick LEPETIT, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "MARS 2010",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45031"
-   },
-   {
-    "reference": "2010 DVD 112",
-    "titre": "2010, DVD 112 - Signature du marché de maîtrise d'oeuvre pour l'aménagement de la place de la République à Paris (3e, 10e et 11e) avec le groupement Treveloet Viger-Kohler (mandataire), Martha Schwartz Partners, AREAL, ATEC AIK YannKersalé. Vœu déposé par le groupe \"Les Verts\". Vœu déposé par le groupe U.M.P.P.A. Vœu déposé par l'Exécutif.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "MARS 2010",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8614"
-   }
-  ],
-  "2012": [
-   {
-    "reference": "2012 DLH 61",
-    "titre": "117 - 2012, DLH 61 - Approbation des modalités de lancement des marchés publics relatifs à la conduite de l’opération programmée d’amélioration de l’habitat développement durable et économie d’énergie (OPAH 2D2E) dans le secteur de la place de la République.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "MARS 2012",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104691"
-   }
-  ],
-  "2013": [
-   {
-    "reference": "2013 DDEEES 41",
-    "titre": "2013 DDEEES 41 - DVD 19 - Convention d'occupation du domaine public pour l'occupation du Café Monde et Médias, situé place de la République (3e, 10e et 11e).",
-    "genres": [
-     "autre"
-    ],
-    "seance": "FEVRIER 2013",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=111210"
-   }
-  ],
-  "2022": [
-   {
-    "reference": "2022 DAE 9",
-    "titre": "2022 DAE 9 - Convention d'occupation du domaine public pour l'occupation du café-restaurant \"Fluctuat Nec Mergitur\", situé place de la République (Centre, 10e, 11e).",
-    "genres": [
-     "autre"
-    ],
-    "seance": "FEVRIER 2022",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164554"
-   }
-  ],
-  "2025": [
-   {
-    "reference": "2025 DAE 151",
-    "titre": "2025 DAE 151 - Avenant de prolongation de la convention d'occupation du domaine public pour l'occupation du café-restaurant Fluctuat Nec Mergitur, situé place de la République (Paris Centre, 10e, 11e).",
-    "genres": [
-     "autre"
-    ],
-    "seance": "JUILLET 2025",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=182318"
-   }
-  ]
- },
- "invest": [
-  {
-   "annee": 2019,
-   "montant_eur": 203870.0,
-   "nom_projet": "Opérations d'aménagement Place de la République - Aménagement (plantations commémoratives)",
-   "preuve": "Le nom du projet nomme explicitement CE lieu en tête de libellé (verbatim : « Opérations d'aménagement Place de la République - Aménagement (plantations commémoratives) »). Le corpus de délibérations décrit la place comme « un lieu de rassemblements après les attentats de Charlie Hebdo et de l'Hyper casher », ce qui rend des plantations commémoratives sur ce site plausibles, sans qu'aucune délibération lue ne mentionne cette opération. Réserve forte : la distance au point de référence du lieu est de 2 296 m, incompatible avec l'emprise de la place — le rattachement repose sur le nom du projet seul, le point géographique de l'enregistrement n'étant pas cohérent.",
-   "id": "2019_03_il_012"
-  },
-  {
-   "annee": 2023,
-   "montant_eur": 37864.05,
-   "nom_projet": "Place de la république - Réfection des trottoirs",
-   "preuve": "Le nom du projet nomme explicitement CE lieu (verbatim : « Place de la république - Réfection des trottoirs ») et porte sur les trottoirs de la place elle-même, qui font partie de son emprise : les délibérations traitent « l'élargissement des trottoirs autour de la place » comme un élément de la place (2009 DVD 178). Distance de 155 m au point de référence, compatible avec un point situé sur cette très grande place (3e, 10e et 11e arrondissements). Limite : cette citation de 2009 documente le réaménagement de 2009-2013, pas l'opération de 2023 ; le rattachement repose sur le nom du projet seul.",
-   "id": "2023_00_9_026"
-  }
- ],
- "marches": [
-  {
-   "numero_marche": "20141300010870",
-   "objet": "CSP2-GESTION  ANIMATION LUDOKIOSQUE PLACE DE LA REPUBLIQUE",
-   "objet_clair": null,
-   "fournisseur": "ASS LUDOTHEQUES ILE DE FRANCE",
-   "montant_max": 600000.0,
-   "date_notification": "2014-03-27",
-   "preuve": "L'objet du marché nomme le lieu et porte sur la gestion et l'animation d'un équipement situé sur la place (verbatim : « CSP2-GESTION  ANIMATION LUDOKIOSQUE PLACE DE LA REPUBLIQUE ») : prestation qui s'y déroule, et non simple repère d'adresse ni marché-cadre de toute la Ville. SIRET du titulaire : 34852016400040. Réserves : aucune source consultée ne mentionne le ludokiosque ni son exploitation — les délibérations n'évoquent des « kiosques » que de façon générique dans le marché de maîtrise d'œuvre de la place (2010 DVD 112, autorisation de « déposer la demande de permis de construire pour la réalisation des kiosques »), sans qu'on puisse établir qu'il s'agit de celui-ci ; le rattachement repose sur l'objet seul. Le montant est un maximum contractuel, pas une dépense constatée."
-  }
- ],
- "mandate": {
-  "par_annee": {
-   "2009": 23058.67,
-   "2010": 1048555.32,
-   "2011": 2222098.01,
-   "2012": 9365843.57,
-   "2013": 10185603.51,
-   "2014": 920044.98,
-   "2015": 73955.25,
-   "2016": 57605.38
-  },
-  "total_eur": 23896764.69,
-  "operations": [
-   {
-    "ap_cle": "B100/1103923",
-    "ap_texte": "PLACE DE LA REPUBLIQUE",
-    "mandate_par_annee": {
-     "2011": 1084753.75,
-     "2012": 8604869.33,
-     "2013": 4594851.13
-    },
-    "total_mandate": 14284474.21,
-    "preuve": "Libellé de l'opération verbatim « PLACE DE LA REPUBLIQUE », mission « VOIRIE ET DEPLACEMEN », direction DVD. Le calendrier des mandatements (2011-2013, pic de 8,6 M€ en 2012) coïncide avec le chantier de réaménagement de la place mené par la DVD et inauguré en juin 2013, attesté par les délibérations du Conseil de Paris (vœu 2009 « réaménagement de la place de la République », vœu mars 2010 sur le « projet d'aménagement de la place de la République », marché de maîtrise d'œuvre 2010 DVD 112 ; « la place de la République, qui a été inaugurée en juin 2013 », séance de mai 2015).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1103923"
-   },
-   {
-    "ap_cle": "B100/1303923",
-    "ap_texte": "PLACE DE LA REPUBLIQUE",
-    "mandate_par_annee": {
-     "2013": 2749897.19
-    },
-    "total_mandate": 2749897.19,
-    "preuve": "Libellé verbatim « PLACE DE LA REPUBLIQUE », mission voirie, direction DVD ; mandatement 2013, année de livraison du réaménagement de la place (« inaugurée en juin 2013 » selon les délibérations). Même numéro d'opération racine (x03923) que les autres tranches du chantier.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1303923"
-   },
-   {
-    "ap_cle": "B100/1203923",
-    "ap_texte": "PLACE DE LA REPUBLIQUE",
-    "mandate_par_annee": {
-     "2012": 151261.41,
-     "2013": 2536774.7
-    },
-    "total_mandate": 2688036.11,
-    "preuve": "Libellé verbatim « PLACE DE LA REPUBLIQUE », mission voirie, direction DVD ; mandatements 2012-2013, en plein chantier de réaménagement de la place (travaux DVD documentés par les délibérations, livraison juin 2013). Même racine d'opération x03923.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1203923"
-   },
-   {
-    "ap_cle": "B100/0903923",
-    "ap_texte": "PLACE DE LA REPUBLIQUE",
-    "mandate_par_annee": {
-     "2009": 23058.67,
-     "2010": 986476.94,
-     "2011": 385686.49,
-     "2012": 193022.0,
-     "2013": 57441.28
-    },
-    "total_mandate": 1645685.38,
-    "preuve": "Libellé verbatim « PLACE DE LA REPUBLIQUE », mission voirie, direction DVD ; mandatements 2009-2013, cohérents avec la phase concertation/concours puis travaux du réaménagement (vœu juin 2009 « réaménagement de la place de la République : respect des engagements pris », vœu mars 2010 citant le « concours international d'architecture et d'urbanisme »).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903923"
-   },
-   {
-    "ap_cle": "B100/1003923",
-    "ap_texte": "PLACE DE LA REPUBLIQUE",
-    "mandate_par_annee": {
-     "2010": 62078.38,
-     "2011": 751657.77,
-     "2012": 416690.83,
-     "2013": 246639.21
-    },
-    "total_mandate": 1477066.19,
-    "preuve": "Libellé verbatim « PLACE DE LA REPUBLIQUE », mission voirie, direction DVD ; mandatements 2010-2013 couvrant la maîtrise d'œuvre (2010 DVD 112) et les travaux du réaménagement de la place. Même racine d'opération x03923.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1003923"
-   },
-   {
-    "ap_cle": "1103923",
-    "ap_texte": "PLACE DE LA REPUBLIQUE",
-    "mandate_par_annee": {
-     "2014": 535130.71,
-     "2015": 67028.67,
-     "2016": 25348.63
-    },
-    "total_mandate": 627508.01,
-    "preuve": "Libellé verbatim « PLACE DE LA REPUBLIQUE », mission voirie, direction DVD ; même numéro d'opération 1103923 que B100/1103923 (série budgétaire différente), mandatements 2014-2016 correspondant au solde post-livraison du réaménagement inauguré en juin 2013.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1103923"
-   },
-   {
-    "ap_cle": "1303923",
-    "ap_texte": "PLACE DE LA REPUBLIQUE",
-    "mandate_par_annee": {
-     "2014": 189615.48,
-     "2015": 6565.77,
-     "2016": 32530.14
-    },
-    "total_mandate": 228711.39,
-    "preuve": "Libellé verbatim « PLACE DE LA REPUBLIQUE », mission voirie, direction DVD ; même numéro d'opération 1303923 que B100/1303923, mandatements 2014-2016 (solde de la tranche 2013 du chantier).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1303923"
-   },
-   {
-    "ap_cle": "1203923",
-    "ap_texte": "PLACE DE LA REPUBLIQUE",
-    "mandate_par_annee": {
-     "2014": 187377.39,
-     "2015": -6.03,
-     "2016": -273.39
-    },
-    "total_mandate": 187097.97,
-    "preuve": "Libellé verbatim « PLACE DE LA REPUBLIQUE », mission voirie, direction DVD ; même numéro d'opération 1203923 que B100/1203923, mandatements 2014-2016 dont régularisations négatives (solde de la tranche 2012 du chantier).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1203923"
-   },
-   {
-    "ap_cle": "1003923",
-    "ap_texte": "PLACE DE LA REPUBLIQUE",
-    "mandate_par_annee": {
-     "2014": 7921.4,
-     "2015": 366.84
-    },
-    "total_mandate": 8288.24,
-    "preuve": "Libellé verbatim « PLACE DE LA REPUBLIQUE », mission voirie, direction DVD ; même numéro d'opération 1003923 que B100/1003923, solde 2014-2015 de la tranche 2010 du chantier de réaménagement.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1003923"
-   }
-  ],
-  "periode": [
-   "2009",
-   "2016"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=place+AND+R%C3%A9publique"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22place+du+Ch%C3%A2teau-d%27Eau%22%29"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "La place de la République est une place de 3,4 ha située à la limite des 3e, 10e et 11e arrondissements de Paris.",
+    "url": "https://fr.wikipedia.org/wiki/Place_de_la_R%C3%A9publique_(Paris)",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    },
+    "extract_en": "The place de la République is a 3.4-hectare square located on the boundary between the 3rd, 10th and 11th arrondissements of Paris."
+  },
+  "stats": {
+    "n_delibs": 1591,
+    "delibs_span": [
+      2003,
+      2025
+    ],
+    "n_bmo_brut": 2000,
+    "n_bmo_verifies": 5,
+    "invest_total_eur": 241734.05,
+    "invest_annees": [
+      "2019",
+      "2023"
+    ],
+    "lecture_mode": "titre nommant le lieu (41 trouvés)",
+    "lecture_mode_en": "title naming the place (41 found)",
+    "n_lus": 41,
+    "n_lieu": 32
+  },
+  "subventions_exploitant": null,
+  "residents": [
+    {
+      "beneficiaire": "A L ADRESSE DU JEU",
+      "montant_total": 316800.0,
+      "preuve": "L'objet de la subvention nomme le lieu et décrit une activité qui s'y déroule (verbatim : « Proposition d'activités ludiques aux familles place de la République avec la ludothèque à ciel ouver[t] »), SIRET 52850503500022. Rôle « résident » et non « exploitant » : l'association anime une activité sur la place, rien dans l'objet n'indique qu'elle gère la place elle-même. Réserve : aucune délibération du corpus consulté ne mentionne cette association ni la ludothèque à ciel ouvert ; le rattachement repose sur l'objet de la subvention seul."
+    }
+  ],
+  "kpi_montant": null,
+  "synthese_fr": "En 2003, le Conseil de Paris autorise la restauration du monument à la gloire de la République, au centre de la place, quand des élus demandent déjà d'en écarter la circulation automobile. À partir de 2009, la Ville engage le réaménagement : désignation d'un jury, concertation présentée comme large, puis attribution en 2010 du marché de maîtrise d'œuvre à l'équipe TVK, autour d'un projet qui doit transformer le rond-point de la statue en espace piétonnier ; un coût de 17,5 millions d'euros, avancé dans la délibération, est contesté en séance par l'opposition. Inaugurée en 2013, la place se dote d'un café-pavillon destiné à l'animer et voit sa charge symbolique renforcée par les grands rassemblements qui suivent les attentats de janvier 2015. Elle devient ensuite le théâtre de tensions — mouvement Nuit Debout en 2016, évacuation d'un campement de migrants en 2020 — et fait l'objet de demandes répétées, jusqu'en 2025, sur son entretien, son éclairage et sa végétalisation.",
+  "moments": [
+    {
+      "id": "3359",
+      "seance": "SEPTEMBRE 2003",
+      "fait": "Le Conseil autorise la restauration du monument à la gloire de la République, au centre de la place, et adopte deux vœux demandant d'étudier sa fermeture à la circulation automobile.",
+      "pourquoi": "Restaurer Marianne, premier appel à écarter les voitures",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3359",
+      "fait_en": "The Council authorized the restoration of the monument to the glory of the Republic, at the centre of the square, and adopted two motions calling for a study on closing it to car traffic.",
+      "pourquoi_en": "Restoring Marianne, the first call to keep out cars"
+    },
+    {
+      "id": "13258",
+      "seance": "AVRIL 2004",
+      "fait": "Un jardin de la place reçoit le nom de square André Tollet, en hommage au président du Comité parisien de la Libération.",
+      "pourquoi": "La Résistance entre dans le sol de la place",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13258",
+      "fait_en": "A garden on the square was named square André Tollet, in tribute to the chairman of the Comité parisien de la Libération.",
+      "pourquoi_en": "The Resistance enters the square's very ground"
+    },
+    {
+      "id": "5678",
+      "seance": "JUIN 2009",
+      "fait": "Mme Annick LEPETIT annonce l'installation du premier jury et le choix de cinq équipes d'architectes, parmi 72 candidatures, pour esquisser le réaménagement.",
+      "pourquoi": "Le concours d'architectes s'ouvre, 72 candidatures reçues",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5678",
+      "fait_en": "Ms Annick LEPETIT announced the appointment of the first jury and the selection of five architectural teams, out of 72 applications, to sketch out the redevelopment.",
+      "pourquoi_en": "The architectural competition opens, 72 applications received"
+    },
+    {
+      "id": "8614",
+      "seance": "MARS 2010",
+      "fait": "Le Conseil autorise la signature du marché de maîtrise d'œuvre avec l'équipe TVK ; le projet doit transformer le rond-point autour de la statue en espace piétonnier.",
+      "pourquoi": "TVK va refondre l'une des plus grandes places d'Europe",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8614",
+      "fait_en": "The Council authorized signing the project management contract with the TVK team; the project was to transform the roundabout around the statue into a pedestrian space.",
+      "pourquoi_en": "TVK to redesign one of Europe's largest squares"
+    },
+    {
+      "id": "12990",
+      "seance": "JUIN 2010",
+      "fait": "En approuvant les objectifs et la concertation, le Conseil affronte l'opposition, qui conteste le coût de 17,5 millions d'euros avancé en séance et réclame une expérimentation préalable.",
+      "pourquoi": "L'opposition conteste les 17,5 millions d'euros",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12990",
+      "fait_en": "In approving the objectives and the consultation process, the Council faced down the opposition, which disputed the €17.5 million cost put forward during the session and demanded a prior trial run.",
+      "pourquoi_en": "The opposition disputes the €17.5 million"
+    },
+    {
+      "id": "111210",
+      "seance": "FEVRIER 2013",
+      "fait": "Le Conseil confie au groupe S.O.S. le café-pavillon « Monde et Médias », qui doit ouvrir au printemps 2013 avec la livraison de la place.",
+      "pourquoi": "Animer la place neuve pour éviter un « lieu mort »",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=111210",
+      "fait_en": "The Council entrusted the \"Monde et Médias\" café pavilion to the S.O.S. group, due to open in spring 2013 when the square was handed over.",
+      "pourquoi_en": "Bringing the new square to life to avoid a \"dead space\""
+    },
+    {
+      "id": "129889",
+      "seance": "MAI 2016",
+      "fait": "Face au mouvement Nuit Debout installé depuis le 31 mars, plusieurs vœux cherchent à concilier droit de manifester et nuisances signalées par les riverains.",
+      "pourquoi": "Nuit Debout : manifester sans confisquer la place",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129889",
+      "fait_en": "Faced with the Nuit Debout movement, which had been camped there since 31 March, several motions sought to reconcile the right to demonstrate with the nuisances reported by local residents.",
+      "pourquoi_en": "Nuit Debout: demonstrating without taking over the square"
+    },
+    {
+      "id": "157211",
+      "seance": "DECEMBRE 2020",
+      "fait": "Plusieurs vœux dénoncent l'évacuation, le 23 novembre 2020, d'un campement de migrants installé place de la République et demandent une mise à l'abri systématique.",
+      "pourquoi": "Un campement de migrants évacué sous tension",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157211",
+      "fait_en": "Several motions denounced the eviction, on 23 November 2020, of a migrant camp set up at the place de la République, and called for systematic emergency shelter.",
+      "pourquoi_en": "A migrant camp evicted amid tension"
+    }
+  ],
+  "montants": [
+    {
+      "seance": "SEPTEMBRE 2003",
+      "montant": "450 000 euros",
+      "objet": "marché de restauration du monument à la gloire de la République, montant avancé en séance par Mme Charlotte NENNER",
+      "citation": "Considérant qu'il s'agit d'un marché important pour un montant total de 450.000 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3359"
+    },
+    {
+      "seance": "SEPTEMBRE 2003",
+      "montant": "454 565 euros",
+      "objet": "coût total estimé (2003-2004) du marché de restauration du monument à la gloire de la République",
+      "citation": "dont le montant total pour 2003 et 2004 est estimé à 454.565 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48063"
+    },
+    {
+      "seance": "JUIN 2010",
+      "montant": "17,5 millions d'euros",
+      "objet": "coût de l'opération de réaménagement, chiffre cité et contesté en séance par Mme Delphine BURKLI (opposition)",
+      "citation": "je m'interroge sur le montant très élevé, sans vraiment comprendre ce que représente la somme de 17,5 millions d'euros pour le contribuable parisien",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12990"
+    }
+  ],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": {
+    "2001": [
+      {
+        "reference": "2001 DVD 66",
+        "titre": "23 - 2001, DVD 66 - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres pour l'aménagement des trottoirs : - du boulevard de la Madeleine et du boulevard des Capucines (tronçon de la place de la Madeleine à la place de l'Opéra) ; - du boulevard des Italiens (tronçon de la rue Favart au carrefour Richelieu-Drouot) ; - du boulevard Saint-Denis et du boulevard Saint-Martin (tronçon du boulevard Sébastopol à la place de la République)",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUIN 2001",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8080"
+      },
+      {
+        "reference": "2001 DVD 66",
+        "titre": "Projet de revalorisation des Grands Boulevards (1er, 2e, 3e, 8e, 9e et 10e arrondissements) - Approbation des modalités d'attribution d'un marché sur appel d'offres pour l'aménagement des trottoirs des boulevards de la Madeleine et des Capucines (tronçon de la place de la Madeleine à la place de l'Opéra), des Italiens (tronçon de la rue Favart au carrefour Richelieu-Drouot), Saint-Denis et Saint-Martin (tronçon du boulevard Sébastopol à la place de la République). - Autorisation à M. le Maire de",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUIN 2001",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28849"
+      }
+    ],
+    "2003": [
+      {
+        "reference": "2003 DAC 169",
+        "titre": "42 - 2003, DAC 169 - Autorisation à M. le Maire de Paris de signer un marché de travaux sur appel d'offres en vue de la restauration du monument à la gloire de la République, place de la République (10e).Vœu déposé par M. DREYFUS et les membres du groupe socialiste et radical de gauche relatif à la restauration du monument à la gloire de la République, place de la République.Vœu déposé par Melle NENNER relatif à la restauration du monument place de la République",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 2003",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3359"
+      },
+      {
+        "reference": "2003 DAC 169",
+        "titre": "Approbation du principe et des modalités d'attribution d'un marché de travaux sur appel d'offres ouvert en vue de la restauration du monument à la gloire de la République, place de la République (10e). - Autorisation à M. le Maire de Paris de signer le marché correspondant. Mme Sandrine MAZETIER, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 2003",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48197"
+      }
+    ],
+    "2009": [
+      {
+        "reference": "2009 DVD 178",
+        "titre": "Approbation du principe d’aménagement de la place de la République (3e, 10e et 11e) et des modalités de passation du marché de maîtrise d’œuvre correspondant suite à concours. - Approbation des objectifs du programme résultant de la première phase de concertation menée du 15 décembre 2008 au 15 mars 2009 sur l’aménagement de la place de la République (3e, 10e et 11e). Mme Annick LEPETIT, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUILLET 2009",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74876"
+      }
+    ],
+    "2010": [
+      {
+        "reference": "2010 DVD 112",
+        "titre": "Signature du marché de maîtrise d’œuvre pour l’aménagement de la place de la République (3e, 10e et 11e arrondissements) avec le groupement TREVELO ET VIGER-KOHLER (mandataire) , Martha Schwartz Partners, AREAL, ATEC, AIK Yann Kersalé. Mme Annick LEPETIT, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "MARS 2010",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45031"
+      },
+      {
+        "reference": "2010 DVD 112",
+        "titre": "2010, DVD 112 - Signature du marché de maîtrise d'oeuvre pour l'aménagement de la place de la République à Paris (3e, 10e et 11e) avec le groupement Treveloet Viger-Kohler (mandataire), Martha Schwartz Partners, AREAL, ATEC AIK YannKersalé. Vœu déposé par le groupe \"Les Verts\". Vœu déposé par le groupe U.M.P.P.A. Vœu déposé par l'Exécutif.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "MARS 2010",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8614"
+      }
+    ],
+    "2012": [
+      {
+        "reference": "2012 DLH 61",
+        "titre": "117 - 2012, DLH 61 - Approbation des modalités de lancement des marchés publics relatifs à la conduite de l’opération programmée d’amélioration de l’habitat développement durable et économie d’énergie (OPAH 2D2E) dans le secteur de la place de la République.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "MARS 2012",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104691"
+      }
+    ],
+    "2013": [
+      {
+        "reference": "2013 DDEEES 41",
+        "titre": "2013 DDEEES 41 - DVD 19 - Convention d'occupation du domaine public pour l'occupation du Café Monde et Médias, situé place de la République (3e, 10e et 11e).",
+        "genres": [
+          "autre"
+        ],
+        "seance": "FEVRIER 2013",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=111210"
+      }
+    ],
+    "2022": [
+      {
+        "reference": "2022 DAE 9",
+        "titre": "2022 DAE 9 - Convention d'occupation du domaine public pour l'occupation du café-restaurant \"Fluctuat Nec Mergitur\", situé place de la République (Centre, 10e, 11e).",
+        "genres": [
+          "autre"
+        ],
+        "seance": "FEVRIER 2022",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164554"
+      }
+    ],
+    "2025": [
+      {
+        "reference": "2025 DAE 151",
+        "titre": "2025 DAE 151 - Avenant de prolongation de la convention d'occupation du domaine public pour l'occupation du café-restaurant Fluctuat Nec Mergitur, situé place de la République (Paris Centre, 10e, 11e).",
+        "genres": [
+          "autre"
+        ],
+        "seance": "JUILLET 2025",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=182318"
+      }
+    ]
+  },
+  "invest": [
+    {
+      "annee": 2019,
+      "montant_eur": 203870.0,
+      "nom_projet": "Opérations d'aménagement Place de la République - Aménagement (plantations commémoratives)",
+      "preuve": "Le nom du projet nomme explicitement CE lieu en tête de libellé (verbatim : « Opérations d'aménagement Place de la République - Aménagement (plantations commémoratives) »). Le corpus de délibérations décrit la place comme « un lieu de rassemblements après les attentats de Charlie Hebdo et de l'Hyper casher », ce qui rend des plantations commémoratives sur ce site plausibles, sans qu'aucune délibération lue ne mentionne cette opération. Réserve forte : la distance au point de référence du lieu est de 2 296 m, incompatible avec l'emprise de la place — le rattachement repose sur le nom du projet seul, le point géographique de l'enregistrement n'étant pas cohérent.",
+      "id": "2019_03_il_012"
+    },
+    {
+      "annee": 2023,
+      "montant_eur": 37864.05,
+      "nom_projet": "Place de la république - Réfection des trottoirs",
+      "preuve": "Le nom du projet nomme explicitement CE lieu (verbatim : « Place de la république - Réfection des trottoirs ») et porte sur les trottoirs de la place elle-même, qui font partie de son emprise : les délibérations traitent « l'élargissement des trottoirs autour de la place » comme un élément de la place (2009 DVD 178). Distance de 155 m au point de référence, compatible avec un point situé sur cette très grande place (3e, 10e et 11e arrondissements). Limite : cette citation de 2009 documente le réaménagement de 2009-2013, pas l'opération de 2023 ; le rattachement repose sur le nom du projet seul.",
+      "id": "2023_00_9_026"
+    }
+  ],
+  "marches": [
+    {
+      "numero_marche": "20141300010870",
+      "objet": "CSP2-GESTION  ANIMATION LUDOKIOSQUE PLACE DE LA REPUBLIQUE",
+      "objet_clair": null,
+      "fournisseur": "ASS LUDOTHEQUES ILE DE FRANCE",
+      "montant_max": 600000.0,
+      "date_notification": "2014-03-27",
+      "preuve": "L'objet du marché nomme le lieu et porte sur la gestion et l'animation d'un équipement situé sur la place (verbatim : « CSP2-GESTION  ANIMATION LUDOKIOSQUE PLACE DE LA REPUBLIQUE ») : prestation qui s'y déroule, et non simple repère d'adresse ni marché-cadre de toute la Ville. SIRET du titulaire : 34852016400040. Réserves : aucune source consultée ne mentionne le ludokiosque ni son exploitation — les délibérations n'évoquent des « kiosques » que de façon générique dans le marché de maîtrise d'œuvre de la place (2010 DVD 112, autorisation de « déposer la demande de permis de construire pour la réalisation des kiosques »), sans qu'on puisse établir qu'il s'agit de celui-ci ; le rattachement repose sur l'objet seul. Le montant est un maximum contractuel, pas une dépense constatée."
+    }
+  ],
+  "mandate": {
+    "par_annee": {
+      "2009": 23058.67,
+      "2010": 1048555.32,
+      "2011": 2222098.01,
+      "2012": 9365843.57,
+      "2013": 10185603.51,
+      "2014": 920044.98,
+      "2015": 73955.25,
+      "2016": 57605.38
+    },
+    "total_eur": 23896764.69,
+    "operations": [
+      {
+        "ap_cle": "B100/1103923",
+        "ap_texte": "PLACE DE LA REPUBLIQUE",
+        "mandate_par_annee": {
+          "2011": 1084753.75,
+          "2012": 8604869.33,
+          "2013": 4594851.13
+        },
+        "total_mandate": 14284474.21,
+        "preuve": "Libellé de l'opération verbatim « PLACE DE LA REPUBLIQUE », mission « VOIRIE ET DEPLACEMEN », direction DVD. Le calendrier des mandatements (2011-2013, pic de 8,6 M€ en 2012) coïncide avec le chantier de réaménagement de la place mené par la DVD et inauguré en juin 2013, attesté par les délibérations du Conseil de Paris (vœu 2009 « réaménagement de la place de la République », vœu mars 2010 sur le « projet d'aménagement de la place de la République », marché de maîtrise d'œuvre 2010 DVD 112 ; « la place de la République, qui a été inaugurée en juin 2013 », séance de mai 2015).",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1103923"
+      },
+      {
+        "ap_cle": "B100/1303923",
+        "ap_texte": "PLACE DE LA REPUBLIQUE",
+        "mandate_par_annee": {
+          "2013": 2749897.19
+        },
+        "total_mandate": 2749897.19,
+        "preuve": "Libellé verbatim « PLACE DE LA REPUBLIQUE », mission voirie, direction DVD ; mandatement 2013, année de livraison du réaménagement de la place (« inaugurée en juin 2013 » selon les délibérations). Même numéro d'opération racine (x03923) que les autres tranches du chantier.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1303923"
+      },
+      {
+        "ap_cle": "B100/1203923",
+        "ap_texte": "PLACE DE LA REPUBLIQUE",
+        "mandate_par_annee": {
+          "2012": 151261.41,
+          "2013": 2536774.7
+        },
+        "total_mandate": 2688036.11,
+        "preuve": "Libellé verbatim « PLACE DE LA REPUBLIQUE », mission voirie, direction DVD ; mandatements 2012-2013, en plein chantier de réaménagement de la place (travaux DVD documentés par les délibérations, livraison juin 2013). Même racine d'opération x03923.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1203923"
+      },
+      {
+        "ap_cle": "B100/0903923",
+        "ap_texte": "PLACE DE LA REPUBLIQUE",
+        "mandate_par_annee": {
+          "2009": 23058.67,
+          "2010": 986476.94,
+          "2011": 385686.49,
+          "2012": 193022.0,
+          "2013": 57441.28
+        },
+        "total_mandate": 1645685.38,
+        "preuve": "Libellé verbatim « PLACE DE LA REPUBLIQUE », mission voirie, direction DVD ; mandatements 2009-2013, cohérents avec la phase concertation/concours puis travaux du réaménagement (vœu juin 2009 « réaménagement de la place de la République : respect des engagements pris », vœu mars 2010 citant le « concours international d'architecture et d'urbanisme »).",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903923"
+      },
+      {
+        "ap_cle": "B100/1003923",
+        "ap_texte": "PLACE DE LA REPUBLIQUE",
+        "mandate_par_annee": {
+          "2010": 62078.38,
+          "2011": 751657.77,
+          "2012": 416690.83,
+          "2013": 246639.21
+        },
+        "total_mandate": 1477066.19,
+        "preuve": "Libellé verbatim « PLACE DE LA REPUBLIQUE », mission voirie, direction DVD ; mandatements 2010-2013 couvrant la maîtrise d'œuvre (2010 DVD 112) et les travaux du réaménagement de la place. Même racine d'opération x03923.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1003923"
+      },
+      {
+        "ap_cle": "1103923",
+        "ap_texte": "PLACE DE LA REPUBLIQUE",
+        "mandate_par_annee": {
+          "2014": 535130.71,
+          "2015": 67028.67,
+          "2016": 25348.63
+        },
+        "total_mandate": 627508.01,
+        "preuve": "Libellé verbatim « PLACE DE LA REPUBLIQUE », mission voirie, direction DVD ; même numéro d'opération 1103923 que B100/1103923 (série budgétaire différente), mandatements 2014-2016 correspondant au solde post-livraison du réaménagement inauguré en juin 2013.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1103923"
+      },
+      {
+        "ap_cle": "1303923",
+        "ap_texte": "PLACE DE LA REPUBLIQUE",
+        "mandate_par_annee": {
+          "2014": 189615.48,
+          "2015": 6565.77,
+          "2016": 32530.14
+        },
+        "total_mandate": 228711.39,
+        "preuve": "Libellé verbatim « PLACE DE LA REPUBLIQUE », mission voirie, direction DVD ; même numéro d'opération 1303923 que B100/1303923, mandatements 2014-2016 (solde de la tranche 2013 du chantier).",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1303923"
+      },
+      {
+        "ap_cle": "1203923",
+        "ap_texte": "PLACE DE LA REPUBLIQUE",
+        "mandate_par_annee": {
+          "2014": 187377.39,
+          "2015": -6.03,
+          "2016": -273.39
+        },
+        "total_mandate": 187097.97,
+        "preuve": "Libellé verbatim « PLACE DE LA REPUBLIQUE », mission voirie, direction DVD ; même numéro d'opération 1203923 que B100/1203923, mandatements 2014-2016 dont régularisations négatives (solde de la tranche 2012 du chantier).",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1203923"
+      },
+      {
+        "ap_cle": "1003923",
+        "ap_texte": "PLACE DE LA REPUBLIQUE",
+        "mandate_par_annee": {
+          "2014": 7921.4,
+          "2015": 366.84
+        },
+        "total_mandate": 8288.24,
+        "preuve": "Libellé verbatim « PLACE DE LA REPUBLIQUE », mission voirie, direction DVD ; même numéro d'opération 1003923 que B100/1003923, solde 2014-2015 de la tranche 2010 du chantier de réaménagement.",
+        "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1003923"
+      }
+    ],
+    "periode": [
+      "2009",
+      "2016"
+    ],
+    "source": {
+      "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+      "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+    }
+  },
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=place+AND+R%C3%A9publique"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22place+du+Ch%C3%A2teau-d%27Eau%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "In 2003, the Council of Paris authorized the restoration of the monument to the glory of the Republic, at the centre of the square, at a time when elected officials were already calling for cars to be kept away from it. From 2009, the City launched the redevelopment: a jury was appointed, a consultation was presented as extensive, and in 2010 the project management contract was awarded to the TVK team, for a project meant to transform the roundabout around the statue into a pedestrian space; a cost of €17.5 million, put forward in the deliberation, was disputed during the session by the opposition. Inaugurated in 2013, the square gained a café pavilion intended to bring it to life, and saw its symbolic weight reinforced by the large gatherings that followed the January 2015 attacks. It then became the scene of tensions — the Nuit Debout movement in 2016, the eviction of a migrant camp in 2020 — and was the subject of repeated requests, up to 2025, concerning its upkeep, lighting, and greening.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- },
- "synthese_en": "In 2003, the Council of Paris authorized the restoration of the monument to the glory of the Republic, at the centre of the square, at a time when elected officials were already calling for cars to be kept away from it. From 2009, the City launched the redevelopment: a jury was appointed, a consultation was presented as extensive, and in 2010 the project management contract was awarded to the TVK team, for a project meant to transform the roundabout around the statue into a pedestrian space; a cost of €17.5 million, put forward in the deliberation, was disputed during the session by the opposition. Inaugurated in 2013, the square gained a café pavilion intended to bring it to life, and saw its symbolic weight reinforced by the large gatherings that followed the January 2015 attacks. It then became the scene of tensions — the Nuit Debout movement in 2016, the eviction of a migrant camp in 2020 — and was the subject of repeated requests, up to 2025, concerning its upkeep, lighting, and greening."
 }

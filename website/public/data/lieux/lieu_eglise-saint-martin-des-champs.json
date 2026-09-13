@@ -1,83 +1,91 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "eglise-saint-martin-des-champs",
- "name": "Église Saint-Martin-des-Champs",
- "kind_fr": "Église",
- "kind_en": "Église",
- "famille": "culture",
- "arrondissement": 10,
- "lat": 48.87007,
- "lon": 2.362989,
- "photo": "/img/lieux/eglise-saint-martin-des-champs.jpg",
- "photo_credit": {
-  "licence": "CC BY 3.0",
-  "auteur": "\n\n\nThis illustration was made by Peter Potrowl.\nPlease credit this with : © Pete",
-  "url": "https://commons.wikimedia.org/wiki/File:%C3%89glise_Saint-Martin-des-Champs_(Paris)_1.jpg",
-  "source": "Wikimedia Commons"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": null,
-  "url": null,
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
-  }
- },
- "stats": {
-  "n_delibs": 805,
-  "delibs_span": [
-   1995,
-   2026
-  ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
-  "invest_total_eur": 2828495.0,
-  "invest_annees": [
-   "2021"
-  ],
-  "lecture_mode": "titre nommant le lieu (1 trouvés)",
-  "lecture_mode_en": "title naming the place (1 found)",
-  "n_lus": 1,
-  "n_lieu": null
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": null,
- "moments": [],
- "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": null,
- "invest": [
-  {
-   "annee": 2021,
-   "montant_eur": 2828495.0,
-   "nom_projet": "Eglise Saint-Martin-des-Champs - Restauration des toitures et des murs goutteraux de la ne",
-   "preuve": "Le nom du projet nomme le lieu verbatim : \"Eglise Saint-Martin-des-Champs - Restauration des toitures et des murs goutteraux de la ne[f]\". La source (investissements localises 2021, id 2021_10_il_017, source_pdf cdn.paris.fr/paris/2022/06/28/0d712de76bf95015e948204164b17823.pdf) porte arrondissement=10 et aucune adresse : la distance de 667 m est un artefact de geocodage au centroide du 10e, pas un ecart reel. La deliberation de juillet 1996 du Conseil de Paris confirme que la Ville est maitre d'ouvrage sur cette eglise, situee \"36, rue Albert-Thomas (10e)\" (travaux de refection des installations electriques et d'eclairage).",
-   "id": null
-  }
- ],
- "marches": [],
- "mandate": null,
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89glise+Saint-Martin-des-Champs"
+  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "eglise-saint-martin-des-champs",
+  "name": "Église Saint-Martin-des-Champs",
+  "kind_fr": "Église",
+  "kind_en": "Église",
+  "famille": "culture",
+  "arrondissement": 10,
+  "lat": 48.87007,
+  "lon": 2.362989,
+  "photo": "/img/lieux/eglise-saint-martin-des-champs.jpg",
+  "photo_credit": {
+    "licence": "CC BY 3.0",
+    "auteur": "\n\n\nThis illustration was made by Peter Potrowl.\nPlease credit this with : © Pete",
+    "url": "https://commons.wikimedia.org/wiki/File:%C3%89glise_Saint-Martin-des-Champs_(Paris)_1.jpg",
+    "source": "Wikimedia Commons"
   },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": null,
+    "url": null,
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "stats": {
+    "n_delibs": 805,
+    "delibs_span": [
+      1995,
+      2026
+    ],
+    "n_bmo_brut": 0,
+    "n_bmo_verifies": null,
+    "invest_total_eur": 2828495.0,
+    "invest_annees": [
+      "2021"
+    ],
+    "lecture_mode": "titre nommant le lieu (1 trouvés)",
+    "lecture_mode_en": "title naming the place (1 found)",
+    "n_lus": 1,
+    "n_lieu": null
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": null,
+  "moments": [],
+  "montants": [],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": null,
+  "invest": [
+    {
+      "annee": 2021,
+      "montant_eur": 2828495.0,
+      "nom_projet": "Eglise Saint-Martin-des-Champs - Restauration des toitures et des murs goutteraux de la ne",
+      "preuve": "Le nom du projet nomme le lieu verbatim : \"Eglise Saint-Martin-des-Champs - Restauration des toitures et des murs goutteraux de la ne[f]\". La source (investissements localises 2021, id 2021_10_il_017, source_pdf cdn.paris.fr/paris/2022/06/28/0d712de76bf95015e948204164b17823.pdf) porte arrondissement=10 et aucune adresse : la distance de 667 m est un artefact de geocodage au centroide du 10e, pas un ecart reel. La deliberation de juillet 1996 du Conseil de Paris confirme que la Ville est maitre d'ouvrage sur cette eglise, situee \"36, rue Albert-Thomas (10e)\" (travaux de refection des installations electriques et d'eclairage).",
+      "id": null
+    }
+  ],
+  "marches": [],
+  "mandate": null,
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%89glise+Saint-Martin-des-Champs"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- }
 }

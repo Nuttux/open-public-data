@@ -1,235 +1,243 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "place-du-tertre",
- "name": "Place du Tertre",
- "kind_fr": "Place",
- "kind_en": "Square",
- "famille": "urbain",
- "arrondissement": 18,
- "lat": 48.886518,
- "lon": 2.340671,
- "photo": "/img/lieux/place-du-tertre.jpg",
- "photo_credit": {
-  "licence": "CC0",
-  "auteur": "Pierre Blaché from Paris, France",
-  "url": "https://commons.wikimedia.org/wiki/File:Restaurants,_Place_du_Tertre,_Paris_30_September_2019.jpg",
-  "source": "Wikimedia Commons"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": "La place du Tertre est située sur la butte Montmartre, dans le quartier de Clignancourt du 18e arrondissement de Paris, en France, à 130 m d'altitude. Place principale de l’ancien village de Montmartre et célèbre dans le monde entier pour ses artistes peintres et ses terrasses, de nombreux artistes y dressent leurs chevalets chaque jour pour les touristes. Elle est un des lieux de Paris les plus visités.",
-  "url": "https://fr.wikipedia.org/wiki/Place_du_Tertre",
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "place-du-tertre",
+  "name": "Place du Tertre",
+  "kind_fr": "Place",
+  "kind_en": "Square",
+  "famille": "urbain",
+  "arrondissement": 18,
+  "lat": 48.886518,
+  "lon": 2.340671,
+  "photo": "/img/lieux/place-du-tertre.jpg",
+  "photo_credit": {
+    "licence": "CC0",
+    "auteur": "Pierre Blaché from Paris, France",
+    "url": "https://commons.wikimedia.org/wiki/File:Restaurants,_Place_du_Tertre,_Paris_30_September_2019.jpg",
+    "source": "Wikimedia Commons"
   },
-  "extract_en": "The Place du Tertre is located on the Montmartre hill, in the Clignancourt neighbourhood of the 18th arrondissement of Paris, France, at an altitude of 130 metres. The main square of the former village of Montmartre and famous worldwide for its painters and its terraces, many artists set up their easels there every day for tourists. It is one of the most visited places in Paris."
- },
- "stats": {
-  "n_delibs": 1126,
-  "delibs_span": [
-   2000,
-   2022
-  ],
-  "n_bmo_brut": 546,
-  "n_bmo_verifies": 18,
-  "invest_total_eur": 0,
-  "invest_annees": [],
-  "lecture_mode": "titre nommant le lieu (19 trouvés)",
-  "lecture_mode_en": "title naming the place (19 found)",
-  "n_lus": 19,
-  "n_lieu": 12
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": "Depuis 2000, la place du Tertre revient régulièrement devant le Conseil de Paris autour d'un même cœur : le « Carré aux artistes » et son encadrement. En novembre 2000, une question orale dénonce le désordre et les vendeurs non autorisés, tandis que l'adjoint au Maire et le Préfet rappellent le cadre issu de l'arrêté de 1990 et les 149 emplacements. La tarification des artistes est réformée en 2009 (redevance fixée à 1,52 € par m² et par jour), le règlement de l'activité est approuvé en 2010 ; en 2012, le Conseil examine l'instauration d'une épreuve de sélection des artistes. À partir de 2017, l'Exécutif annonce un budget d'un million d'euros pour transformer la place et ses abords et, sous l'effet de l'ordonnance du 19 avril 2017, engage une mise en concurrence des emplacements qui aboutit au nouveau règlement de 2021 et à la tarification de 2022. En marge, plusieurs délibérations portent sur des immeubles de la place (subventions à une association, cessions et échange de lots) sans concerner directement la place elle-même.",
- "moments": [
-  {
-   "id": "17129",
-   "seance": "NOVEMBRE 2000",
-   "fait": "Une question orale interroge le Maire et le Préfet en dénonçant le désordre et les vendeurs non autorisés du Carré aux artistes ; la réponse détaille le cadre réglementaire et les 149 emplacements.",
-   "pourquoi": "Le désordre du Carré déjà en débat",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17129",
-   "fait_en": "An oral question challenged the Mayor and the Prefect, denouncing the disorder and unauthorized vendors of the Carré aux artistes; the reply detailed the regulatory framework and the 149 pitches.",
-   "pourquoi_en": "The disorder of the Carré already under debate"
-  },
-  {
-   "id": "37200",
-   "seance": "SEPTEMBRE 2009",
-   "fait": "Le Conseil fixe la redevance d'occupation du domaine public sur la place à 1,52 € par m² et par jour.",
-   "pourquoi": "La redevance des artistes chiffrée au mètre carré",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37200",
-   "fait_en": "The Council set the public-domain occupancy fee on the square at €1.52 per square metre per day.",
-   "pourquoi_en": "The artists' fee set by the square metre"
-  },
-  {
-   "id": "79378",
-   "seance": "JUILLET 2010",
-   "fait": "Le Conseil approuve le nouveau règlement organisant l'activité artistique de la place, applicable à tous les artistes.",
-   "pourquoi": "La vie du Carré passe sous règlement",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79378",
-   "fait_en": "The Council approved the new regulation governing the square's artistic activity, applicable to all artists.",
-   "pourquoi_en": "The Carré's daily life comes under regulation"
-  },
-  {
-   "id": "109521",
-   "seance": "OCTOBRE 2012",
-   "fait": "Un vœu dénonce des reproductions importées vendues comme « made in Montmartre » ; l'Exécutif décrit un groupe de travail associant douanes et police.",
-   "pourquoi": "La contrefaçon menace les artistes de la place",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109521",
-   "fait_en": "A motion denounced imported reproductions sold as \"made in Montmartre\"; the executive described a working group involving customs and police.",
-   "pourquoi_en": "Counterfeiting threatens the square's artists"
-  },
-  {
-   "id": "138054",
-   "seance": "SEPTEMBRE 2017",
-   "fait": "Répondant à un vœu de piétonisation, l'adjoint annonce un budget d'un million d'euros dédié à la transformation de la place et de ses abords, travaux annoncés pour 2018.",
-   "pourquoi": "Un million d'euros dédié à la transformation",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138054",
-   "fait_en": "Responding to a motion on pedestrianization, the deputy mayor announced a budget of one million euros dedicated to transforming the square and its surroundings, with works announced for 2018.",
-   "pourquoi_en": "One million euros dedicated to the transformation"
-  },
-  {
-   "id": "140809",
-   "seance": "FEVRIER 2018",
-   "fait": "Le Conseil examine la création de huit emplacements de peintres rue Norvins, après une expérimentation menée en 2016.",
-   "pourquoi": "Huit nouveaux emplacements de peintres rue Norvins",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140809",
-   "fait_en": "The Council examined the creation of eight painters' pitches on Rue Norvins, following a trial carried out in 2016.",
-   "pourquoi_en": "Eight new painters' pitches on Rue Norvins"
-  },
-  {
-   "id": "159156",
-   "seance": "JUIN 2021",
-   "fait": "Le Conseil adopte un nouveau règlement et lance la mise en concurrence des emplacements imposée par l'ordonnance de 2017, avec des autorisations de sept ans.",
-   "pourquoi": "Les emplacements ouverts à la mise en concurrence",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=159156",
-   "fait_en": "The Council adopted a new regulation and launched the competitive tender for pitches required by the 2017 ordinance, with seven-year authorizations.",
-   "pourquoi_en": "Pitches opened to competitive tender"
-  },
-  {
-   "id": "164954",
-   "seance": "MAI 2022",
-   "fait": "Le Conseil adopte la nouvelle tarification des artistes ; l'adjointe indique qu'elle n'entraîne pas de hausse tarifaire.",
-   "pourquoi": "Nouvelle tarification, sans hausse selon l'adjointe",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164954",
-   "fait_en": "The Council adopted the new pricing for artists; the deputy mayor stated that it did not involve any price increase.",
-   "pourquoi_en": "New pricing, no increase according to the deputy mayor"
-  }
- ],
- "montants": [
-  {
-   "seance": "SEPTEMBRE 2009",
-   "montant": "hausse de 350 % (alléguée)",
-   "objet": "augmentation tarifaire dénoncée par Mme Fournier comme décidée sans concertation avec les artistes",
-   "citation": "l'on a appris aux artistes qu?il y avait une augmentation de 350 % sans qu'ils aient été associés à cette décision, ni même prévenus.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17281"
-  },
-  {
-   "seance": "SEPTEMBRE 2009",
-   "montant": "1,52 euro / m² / jour",
-   "objet": "redevance d'occupation du domaine public sur la place, base de calcul pour les artistes",
-   "citation": "Les tarifs d?occupation du domaine public sur la place du tertre servant de base au calcul de la redevance perçue par la direction du développement économique et de l?emploi sont fixées comme suit : 1,52 euro par mètres carrés et par jour.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37200"
-  },
-  {
-   "seance": "FEVRIER 2018",
-   "montant": "plus de 500.000 euros",
-   "objet": "coût, selon Mme Méhal, du projet de réaménagement de la place proposé par la mairie du 18e et présenté comme « en discussion »",
-   "citation": "puisque les travaux coûteront plus de 500.000 euros, une forme de crispation entre les artistes et les restaurateurs",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140809"
-  },
-  {
-   "seance": "SEPTEMBRE 2017",
-   "montant": "un million d'euros",
-   "objet": "budget dédié dans le plan d'investissement de la mandature à la transformation de la place et de ses abords",
-   "citation": "de dédier un budget d'un million d'euros dans le cadre du plan d'investissement de la mandature à cette transformation de la place du Tertre et de ses abords",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138054"
-  },
-  {
-   "seance": "JUILLET 2018",
-   "montant": "un million d'euros",
-   "objet": "budget dédié dans le plan d'investissement de la mandature à la transformation de la place et de ses abords (rappelé par Mme Solans)",
-   "citation": "de dédier un budget d?un million d?euros dans le cadre du plan d?investissement de la mandature, à la transformation de la place du Tertre et de ses abords",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144059"
-  }
- ],
- "bmo_extraits": [
-  {
-   "date": "1904-07-21",
-   "extrait": "6° De M. Le Grandais tendant à la pose d'un panneau pour l'affichage des actes administratifs place du Tertre (1904, C. 760 … tendant à l'établissement d'un poste-vigie place du Tertre (1904, C. 761 … Le Grandais demandant la mise en état de la place du Tertre et des rues voi",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64688039/f5.item",
-   "extrait_en": "6° From Mr Le Grandais, proposing the installation of a panel for posting administrative notices on the Place du Tertre (1904, C. 760 … proposing the establishment of a lookout post on the Place du Tertre (1904, C. 761 … Le Grandais requesting that the Place du Tertre and neighbouring streets be put in order"
-  },
-  {
-   "date": "1950-06-07",
-   "extrait": "En effet, en direction de la gare de Lyon, cet autobus s'arrête a l'angle du quai Saint-Bernard et de la place Valhubert, c'est-à-dire … N° 563. — Quatre bancs sont disposés place du Tertre",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k96636673/f2.item",
-   "extrait_en": "Indeed, heading toward the Gare de Lyon, this bus stops at the corner of the Quai Saint-Bernard and the Place Valhubert, that is to say … No. 563. — Four benches are placed on the Place du Tertre"
-  },
-  {
-   "date": "1959-01-17",
-   "extrait": "2° de M. René Thomas sur la circulation et le stationnement place du Tertre et dans les rues avoisinantes. (Orateurs : MM. Camille Denis, le Directeur de la circulation, le Secrétaire général de la Seine, Pecastaing, René Thomas et Mme Valmier … Réponse de l'Administration à un",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9718134d/f78.item",
-   "extrait_en": "2° From Mr René Thomas, on traffic and parking on the Place du Tertre and in the surrounding streets. (Speakers: Messrs Camille Denis, the Director of Traffic, the Secretary General of the Seine, Pecastaing, René Thomas and Ms Valmier … Reply from the Administration to a"
-  }
- ],
- "bmo_recit": "Dans le Bulletin municipal, la place du Tertre apparaît d'abord en 1904, quand le conseiller Le Grandais soumet au Conseil plusieurs propositions la concernant : la pose d'un panneau pour l'affichage des actes administratifs, l'établissement d'un poste-vigie, et la mise en état de la place et des rues voisines. Près d'un demi-siècle plus tard, en 1950, le Bulletin signale simplement que quatre bancs sont disposés sur la place. En 1959, elle revient devant le Conseil à l'occasion d'un débat sur la circulation et le stationnement sur la place et dans les rues avoisinantes, ouvert par une intervention de René Thomas et auquel prennent part plusieurs orateurs, dont le Directeur de la circulation. L'archive ne livre ainsi que quelques épisodes espacés, où le lieu se gère par petites touches : sa remise en état, son mobilier, la place laissée aux voitures.",
- "delibs_par_annee": {
-  "2002": [
-   {
-    "reference": "2002 DAEE 23",
-    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant à la convention d'objectifs avec le Syndicat d'Initiative de Montmartre - domicilié 21 place du Tertre (18e) - prévoyant l'attribution d'une subvention compensatrice de loyer de 33.539 euros au titre de l'exercice 2002. M. Jean-Bernard BROS, rapporteur.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "SEPTEMBRE 2002",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29505"
-   }
-  ],
-  "2005": [
-   {
-    "reference": "2005 DJS 39",
-    "titre": "Subvention à l’association “Les p’tits poulbots oeuvre des gosses de la Butte Montmartre”3, place du Tertre (18e). Mme Clémentine AUTAIN, rapporteure.",
-    "genres": [
-     "subvention"
-    ],
-    "seance": "FEVRIER 2005",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82464"
-   }
-  ]
- },
- "invest": [],
- "marches": [],
- "mandate": null,
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Place+du+Tertre"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Place+du+Tertre%22%29"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "La place du Tertre est située sur la butte Montmartre, dans le quartier de Clignancourt du 18e arrondissement de Paris, en France, à 130 m d'altitude. Place principale de l’ancien village de Montmartre et célèbre dans le monde entier pour ses artistes peintres et ses terrasses, de nombreux artistes y dressent leurs chevalets chaque jour pour les touristes. Elle est un des lieux de Paris les plus visités.",
+    "url": "https://fr.wikipedia.org/wiki/Place_du_Tertre",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    },
+    "extract_en": "The Place du Tertre is located on the Montmartre hill, in the Clignancourt neighbourhood of the 18th arrondissement of Paris, France, at an altitude of 130 metres. The main square of the former village of Montmartre and famous worldwide for its painters and its terraces, many artists set up their easels there every day for tourists. It is one of the most visited places in Paris."
+  },
+  "stats": {
+    "n_delibs": 1126,
+    "delibs_span": [
+      2000,
+      2022
+    ],
+    "n_bmo_brut": 546,
+    "n_bmo_verifies": 18,
+    "invest_total_eur": 0,
+    "invest_annees": [],
+    "lecture_mode": "titre nommant le lieu (19 trouvés)",
+    "lecture_mode_en": "title naming the place (19 found)",
+    "n_lus": 19,
+    "n_lieu": 12
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "Depuis 2000, la place du Tertre revient régulièrement devant le Conseil de Paris autour d'un même cœur : le « Carré aux artistes » et son encadrement. En novembre 2000, une question orale dénonce le désordre et les vendeurs non autorisés, tandis que l'adjoint au Maire et le Préfet rappellent le cadre issu de l'arrêté de 1990 et les 149 emplacements. La tarification des artistes est réformée en 2009 (redevance fixée à 1,52 € par m² et par jour), le règlement de l'activité est approuvé en 2010 ; en 2012, le Conseil examine l'instauration d'une épreuve de sélection des artistes. À partir de 2017, l'Exécutif annonce un budget d'un million d'euros pour transformer la place et ses abords et, sous l'effet de l'ordonnance du 19 avril 2017, engage une mise en concurrence des emplacements qui aboutit au nouveau règlement de 2021 et à la tarification de 2022. En marge, plusieurs délibérations portent sur des immeubles de la place (subventions à une association, cessions et échange de lots) sans concerner directement la place elle-même.",
+  "moments": [
+    {
+      "id": "17129",
+      "seance": "NOVEMBRE 2000",
+      "fait": "Une question orale interroge le Maire et le Préfet en dénonçant le désordre et les vendeurs non autorisés du Carré aux artistes ; la réponse détaille le cadre réglementaire et les 149 emplacements.",
+      "pourquoi": "Le désordre du Carré déjà en débat",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17129",
+      "fait_en": "An oral question challenged the Mayor and the Prefect, denouncing the disorder and unauthorized vendors of the Carré aux artistes; the reply detailed the regulatory framework and the 149 pitches.",
+      "pourquoi_en": "The disorder of the Carré already under debate"
+    },
+    {
+      "id": "37200",
+      "seance": "SEPTEMBRE 2009",
+      "fait": "Le Conseil fixe la redevance d'occupation du domaine public sur la place à 1,52 € par m² et par jour.",
+      "pourquoi": "La redevance des artistes chiffrée au mètre carré",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37200",
+      "fait_en": "The Council set the public-domain occupancy fee on the square at €1.52 per square metre per day.",
+      "pourquoi_en": "The artists' fee set by the square metre"
+    },
+    {
+      "id": "79378",
+      "seance": "JUILLET 2010",
+      "fait": "Le Conseil approuve le nouveau règlement organisant l'activité artistique de la place, applicable à tous les artistes.",
+      "pourquoi": "La vie du Carré passe sous règlement",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79378",
+      "fait_en": "The Council approved the new regulation governing the square's artistic activity, applicable to all artists.",
+      "pourquoi_en": "The Carré's daily life comes under regulation"
+    },
+    {
+      "id": "109521",
+      "seance": "OCTOBRE 2012",
+      "fait": "Un vœu dénonce des reproductions importées vendues comme « made in Montmartre » ; l'Exécutif décrit un groupe de travail associant douanes et police.",
+      "pourquoi": "La contrefaçon menace les artistes de la place",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109521",
+      "fait_en": "A motion denounced imported reproductions sold as \"made in Montmartre\"; the executive described a working group involving customs and police.",
+      "pourquoi_en": "Counterfeiting threatens the square's artists"
+    },
+    {
+      "id": "138054",
+      "seance": "SEPTEMBRE 2017",
+      "fait": "Répondant à un vœu de piétonisation, l'adjoint annonce un budget d'un million d'euros dédié à la transformation de la place et de ses abords, travaux annoncés pour 2018.",
+      "pourquoi": "Un million d'euros dédié à la transformation",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138054",
+      "fait_en": "Responding to a motion on pedestrianization, the deputy mayor announced a budget of one million euros dedicated to transforming the square and its surroundings, with works announced for 2018.",
+      "pourquoi_en": "One million euros dedicated to the transformation"
+    },
+    {
+      "id": "140809",
+      "seance": "FEVRIER 2018",
+      "fait": "Le Conseil examine la création de huit emplacements de peintres rue Norvins, après une expérimentation menée en 2016.",
+      "pourquoi": "Huit nouveaux emplacements de peintres rue Norvins",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140809",
+      "fait_en": "The Council examined the creation of eight painters' pitches on Rue Norvins, following a trial carried out in 2016.",
+      "pourquoi_en": "Eight new painters' pitches on Rue Norvins"
+    },
+    {
+      "id": "159156",
+      "seance": "JUIN 2021",
+      "fait": "Le Conseil adopte un nouveau règlement et lance la mise en concurrence des emplacements imposée par l'ordonnance de 2017, avec des autorisations de sept ans.",
+      "pourquoi": "Les emplacements ouverts à la mise en concurrence",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=159156",
+      "fait_en": "The Council adopted a new regulation and launched the competitive tender for pitches required by the 2017 ordinance, with seven-year authorizations.",
+      "pourquoi_en": "Pitches opened to competitive tender"
+    },
+    {
+      "id": "164954",
+      "seance": "MAI 2022",
+      "fait": "Le Conseil adopte la nouvelle tarification des artistes ; l'adjointe indique qu'elle n'entraîne pas de hausse tarifaire.",
+      "pourquoi": "Nouvelle tarification, sans hausse selon l'adjointe",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164954",
+      "fait_en": "The Council adopted the new pricing for artists; the deputy mayor stated that it did not involve any price increase.",
+      "pourquoi_en": "New pricing, no increase according to the deputy mayor"
+    }
+  ],
+  "montants": [
+    {
+      "seance": "SEPTEMBRE 2009",
+      "montant": "hausse de 350 % (alléguée)",
+      "objet": "augmentation tarifaire dénoncée par Mme Fournier comme décidée sans concertation avec les artistes",
+      "citation": "l'on a appris aux artistes qu?il y avait une augmentation de 350 % sans qu'ils aient été associés à cette décision, ni même prévenus.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17281"
+    },
+    {
+      "seance": "SEPTEMBRE 2009",
+      "montant": "1,52 euro / m² / jour",
+      "objet": "redevance d'occupation du domaine public sur la place, base de calcul pour les artistes",
+      "citation": "Les tarifs d?occupation du domaine public sur la place du tertre servant de base au calcul de la redevance perçue par la direction du développement économique et de l?emploi sont fixées comme suit : 1,52 euro par mètres carrés et par jour.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37200"
+    },
+    {
+      "seance": "FEVRIER 2018",
+      "montant": "plus de 500.000 euros",
+      "objet": "coût, selon Mme Méhal, du projet de réaménagement de la place proposé par la mairie du 18e et présenté comme « en discussion »",
+      "citation": "puisque les travaux coûteront plus de 500.000 euros, une forme de crispation entre les artistes et les restaurateurs",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140809"
+    },
+    {
+      "seance": "SEPTEMBRE 2017",
+      "montant": "un million d'euros",
+      "objet": "budget dédié dans le plan d'investissement de la mandature à la transformation de la place et de ses abords",
+      "citation": "de dédier un budget d'un million d'euros dans le cadre du plan d'investissement de la mandature à cette transformation de la place du Tertre et de ses abords",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138054"
+    },
+    {
+      "seance": "JUILLET 2018",
+      "montant": "un million d'euros",
+      "objet": "budget dédié dans le plan d'investissement de la mandature à la transformation de la place et de ses abords (rappelé par Mme Solans)",
+      "citation": "de dédier un budget d?un million d?euros dans le cadre du plan d?investissement de la mandature, à la transformation de la place du Tertre et de ses abords",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144059"
+    }
+  ],
+  "bmo_extraits": [
+    {
+      "date": "1904-07-21",
+      "extrait": "6° De M. Le Grandais tendant à la pose d'un panneau pour l'affichage des actes administratifs place du Tertre (1904, C. 760 … tendant à l'établissement d'un poste-vigie place du Tertre (1904, C. 761 … Le Grandais demandant la mise en état de la place du Tertre et des rues voi",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64688039/f5.item",
+      "extrait_en": "6° From Mr Le Grandais, proposing the installation of a panel for posting administrative notices on the Place du Tertre (1904, C. 760 … proposing the establishment of a lookout post on the Place du Tertre (1904, C. 761 … Le Grandais requesting that the Place du Tertre and neighbouring streets be put in order"
+    },
+    {
+      "date": "1950-06-07",
+      "extrait": "En effet, en direction de la gare de Lyon, cet autobus s'arrête a l'angle du quai Saint-Bernard et de la place Valhubert, c'est-à-dire … N° 563. — Quatre bancs sont disposés place du Tertre",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k96636673/f2.item",
+      "extrait_en": "Indeed, heading toward the Gare de Lyon, this bus stops at the corner of the Quai Saint-Bernard and the Place Valhubert, that is to say … No. 563. — Four benches are placed on the Place du Tertre"
+    },
+    {
+      "date": "1959-01-17",
+      "extrait": "2° de M. René Thomas sur la circulation et le stationnement place du Tertre et dans les rues avoisinantes. (Orateurs : MM. Camille Denis, le Directeur de la circulation, le Secrétaire général de la Seine, Pecastaing, René Thomas et Mme Valmier … Réponse de l'Administration à un",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9718134d/f78.item",
+      "extrait_en": "2° From Mr René Thomas, on traffic and parking on the Place du Tertre and in the surrounding streets. (Speakers: Messrs Camille Denis, the Director of Traffic, the Secretary General of the Seine, Pecastaing, René Thomas and Ms Valmier … Reply from the Administration to a"
+    }
+  ],
+  "bmo_recit": "Dans le Bulletin municipal, la place du Tertre apparaît d'abord en 1904, quand le conseiller Le Grandais soumet au Conseil plusieurs propositions la concernant : la pose d'un panneau pour l'affichage des actes administratifs, l'établissement d'un poste-vigie, et la mise en état de la place et des rues voisines. Près d'un demi-siècle plus tard, en 1950, le Bulletin signale simplement que quatre bancs sont disposés sur la place. En 1959, elle revient devant le Conseil à l'occasion d'un débat sur la circulation et le stationnement sur la place et dans les rues avoisinantes, ouvert par une intervention de René Thomas et auquel prennent part plusieurs orateurs, dont le Directeur de la circulation. L'archive ne livre ainsi que quelques épisodes espacés, où le lieu se gère par petites touches : sa remise en état, son mobilier, la place laissée aux voitures.",
+  "delibs_par_annee": {
+    "2002": [
+      {
+        "reference": "2002 DAEE 23",
+        "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant à la convention d'objectifs avec le Syndicat d'Initiative de Montmartre - domicilié 21 place du Tertre (18e) - prévoyant l'attribution d'une subvention compensatrice de loyer de 33.539 euros au titre de l'exercice 2002. M. Jean-Bernard BROS, rapporteur.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "SEPTEMBRE 2002",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29505"
+      }
+    ],
+    "2005": [
+      {
+        "reference": "2005 DJS 39",
+        "titre": "Subvention à l’association “Les p’tits poulbots oeuvre des gosses de la Butte Montmartre”3, place du Tertre (18e). Mme Clémentine AUTAIN, rapporteure.",
+        "genres": [
+          "subvention"
+        ],
+        "seance": "FEVRIER 2005",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82464"
+      }
+    ]
+  },
+  "invest": [],
+  "marches": [],
+  "mandate": null,
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Place+du+Tertre"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Place+du+Tertre%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "Since 2000, the Place du Tertre has come up regularly before Conseil de Paris around a single core issue: the \"Carré aux artistes\" (Painters' Square) and its regulation. In November 2000, an oral question denounced the disorder and unauthorized vendors there, while the deputy mayor and the Prefect recalled the framework set by the 1990 order and its 149 pitches. The pricing for artists was reformed in 2009 (the fee set at €1.52 per square metre per day), and the regulation of the activity was approved in 2010; in 2012, the Council examined introducing a selection test for artists. From 2017, the executive announced a budget of one million euros to transform the square and its surroundings and, under the effect of the ordinance of 19 April 2017, launched a competitive tender for the pitches, which resulted in the new regulation of 2021 and the 2022 pricing. On the margins, several deliberations concerned buildings on the square (grants to an association, sales and exchanges of lots) without directly involving the square itself.",
+  "bmo_recit_en": "In the municipal bulletin, the Place du Tertre first appears in 1904, when councillor Le Grandais submitted several proposals to the Council concerning it: putting up a panel for posting administrative notices, setting up a lookout post, and putting the square and neighbouring streets into a proper state. Nearly half a century later, in 1950, the Bulletin simply reports that four benches have been placed on the square. In 1959, it comes back before the Council on the occasion of a debate on traffic and parking on the square and in the surrounding streets, opened by a speech from René Thomas and joined by several speakers, including the Director of Traffic. The archive thus offers only a few scattered episodes, in which the place is managed in small strokes: putting it back in order, its street furniture, the room left for cars.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- },
- "synthese_en": "Since 2000, the Place du Tertre has come up regularly before Conseil de Paris around a single core issue: the \"Carré aux artistes\" (Painters' Square) and its regulation. In November 2000, an oral question denounced the disorder and unauthorized vendors there, while the deputy mayor and the Prefect recalled the framework set by the 1990 order and its 149 pitches. The pricing for artists was reformed in 2009 (the fee set at €1.52 per square metre per day), and the regulation of the activity was approved in 2010; in 2012, the Council examined introducing a selection test for artists. From 2017, the executive announced a budget of one million euros to transform the square and its surroundings and, under the effect of the ordinance of 19 April 2017, launched a competitive tender for the pitches, which resulted in the new regulation of 2021 and the 2022 pricing. On the margins, several deliberations concerned buildings on the square (grants to an association, sales and exchanges of lots) without directly involving the square itself.",
- "bmo_recit_en": "In the municipal bulletin, the Place du Tertre first appears in 1904, when councillor Le Grandais submitted several proposals to the Council concerning it: putting up a panel for posting administrative notices, setting up a lookout post, and putting the square and neighbouring streets into a proper state. Nearly half a century later, in 1950, the Bulletin simply reports that four benches have been placed on the square. In 1959, it comes back before the Council on the occasion of a debate on traffic and parking on the square and in the surrounding streets, opened by a speech from René Thomas and joined by several speakers, including the Director of Traffic. The archive thus offers only a few scattered episodes, in which the place is managed in small strokes: putting it back in order, its street furniture, the room left for cars."
 }

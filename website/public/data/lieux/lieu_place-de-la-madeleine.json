@@ -1,316 +1,324 @@
 {
- "generated_at": "2026-09-11T16:16:23.662384+00:00",
- "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
- "slug": "place-de-la-madeleine",
- "name": "Place de la Madeleine",
- "kind_fr": "Place",
- "kind_en": "Square",
- "famille": "urbain",
- "arrondissement": 8,
- "lat": 48.870779,
- "lon": 2.325,
- "photo": "/img/lieux/place-de-la-madeleine.jpg",
- "photo_credit": {
-  "licence": "CC0",
-  "auteur": "Jebulon",
-  "url": "https://commons.wikimedia.org/wiki/File:Madeleine_Paris.jpg",
-  "source": "Wikimedia Commons"
- },
- "seuil_commun": 2010,
- "wiki": {
-  "extract": "La place de la Madeleine est une place du 8e arrondissement de Paris.",
-  "url": "https://fr.wikipedia.org/wiki/Place_de_la_Madeleine",
-  "source": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+  "slug": "place-de-la-madeleine",
+  "name": "Place de la Madeleine",
+  "kind_fr": "Place",
+  "kind_en": "Square",
+  "famille": "urbain",
+  "arrondissement": 8,
+  "lat": 48.870779,
+  "lon": 2.325,
+  "photo": "/img/lieux/place-de-la-madeleine.jpg",
+  "photo_credit": {
+    "licence": "CC0",
+    "auteur": "Jebulon",
+    "url": "https://commons.wikimedia.org/wiki/File:Madeleine_Paris.jpg",
+    "source": "Wikimedia Commons"
   },
-  "extract_en": "The place de la Madeleine is a square in the 8th arrondissement of Paris."
- },
- "stats": {
-  "n_delibs": 1146,
-  "delibs_span": [
-   1996,
-   2019
-  ],
-  "n_bmo_brut": 2000,
-  "n_bmo_verifies": 18,
-  "invest_total_eur": 3478784.0,
-  "invest_annees": [
-   "2019",
-   "2020"
-  ],
-  "lecture_mode": "titre nommant le lieu (22 trouvés)",
-  "lecture_mode_en": "title naming the place (22 found)",
-  "n_lus": 22,
-  "n_lieu": 15
- },
- "subventions_exploitant": null,
- "residents": [],
- "kpi_montant": null,
- "synthese_fr": "En janvier 1996, la Ville met en vente par adjudication un lot communal d'un immeuble de la place ; la même année, un arrêté approuve le principe de sa rénovation totale et, en novembre, le Conseil autorise une convention avec la R.A.T.P. sur la participation de la régie aux travaux. Sur près de vingt-cinq ans, le Conseil de Paris approuve des tranches successives d'aménagement — le terre-plein est en 1998, le principe d'une 2e phase en mars 2000 — jusqu'à un réaménagement d'ensemble que l'adjoint Christophe NAJDOVSKI décrit comme « achevé » en novembre 2019. À plusieurs reprises, des élus relaient l'inquiétude des commerçants sur l'impact des travaux : dès 2000 par une question de M. Georges SARRE, puis en 2019 avec deux vœux du groupe LRI, l'un retiré, l'autre rejeté. En parallèle, la place fait l'objet de délibérations patrimoniales et économiques : protection du bâti au Plan d'occupation des sols en 1999, tarifs du marché aux fleurs en 2005, et débats répétés sur la restauration des lavatories Art nouveau classés depuis 2011.",
- "moments": [
-  {
-   "id": "17683",
-   "seance": "NOVEMBRE 1996",
-   "fait": "Mme SCHNEITER propose en séance de transformer la place en vaste zone piétonnière ; le maire du 8e M. LEBEL rejette vivement l'idée.",
-   "pourquoi": "quand la place piétonne divise déjà",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17683",
-   "fait_en": "Ms SCHNEITER proposed during the session turning the square into a large pedestrian zone; the mayor of the 8th arrondissement, Mr LEBEL, firmly rejected the idea.",
-   "pourquoi_en": "when the pedestrian square already divides opinion"
-  },
-  {
-   "id": "56089",
-   "seance": "JUIN 1998",
-   "fait": "Un avenant à la convention avec la R.A.T.P. ramène la dépense inscrite de 9 000 000 F à 7 700 000 F et vise la rénovation du passage Tronchet.",
-   "pourquoi": "la facture RATP revue à la baisse",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56089",
-   "fait_en": "An amendment to the agreement with the R.A.T.P. reduced the budgeted expenditure from 9,000,000 F to 7,700,000 F and covered the renovation of the passage Tronchet.",
-   "pourquoi_en": "the RATP bill revised downward"
-  },
-  {
-   "id": "31083",
-   "seance": "MARS 2000",
-   "fait": "Le Conseil approuve le principe de la 2e phase d'aménagement de la place et autorise le Maire à signer le marché de travaux.",
-   "pourquoi": "le grand chantier de la place voté",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31083",
-   "fait_en": "The Council approved the principle of the square's second redevelopment phase and authorized the Mayor to sign the works contract.",
-   "pourquoi_en": "the square's major works approved"
-  },
-  {
-   "id": "10026",
-   "seance": "SEPTEMBRE 2000",
-   "fait": "Interpellé sur le retard des travaux de voirie, M. PLASAIT détaille un planning établi en concertation avec les commerçants pour limiter la gêne.",
-   "pourquoi": "les commerçants craignent le chantier de rentrée",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10026",
-   "fait_en": "Questioned about the delay in road works, Mr PLASAIT detailed a schedule drawn up in consultation with shopkeepers to limit disruption.",
-   "pourquoi_en": "shopkeepers fear the back-to-school works"
-  },
-  {
-   "id": "43845",
-   "seance": "AVRIL 2005",
-   "fait": "Le Conseil autorise un contrat reliant par un couloir piétonnier un garage privé au parc de stationnement public situé sous la place.",
-   "pourquoi": "sous la place, un parking et ses passages",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43845",
-   "fait_en": "The Council authorized a contract linking a private garage to the public parking facility beneath the square by a pedestrian corridor.",
-   "pourquoi_en": "beneath the square, a car park and its passageways"
-  },
-  {
-   "id": "63123",
-   "seance": "SEPTEMBRE 2005",
-   "fait": "Le Conseil fixe à 0,64 € par m² et par jour le droit de place du marché aux fleurs de la Madeleine.",
-   "pourquoi": "le tarif du marché aux fleurs fixé",
-   "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63123",
-   "fait_en": "The Council set the pitch fee for the Madeleine flower market at €0.64 per m² per day.",
-   "pourquoi_en": "the flower market's rate set"
-  },
-  {
-   "id": "133321",
-   "seance": "NOVEMBRE 2016",
-   "fait": "Un vœu alerte sur la dégradation des lavatories Art nouveau, classés depuis 2011, et demande la restauration de leurs parements avant réouverture.",
-   "pourquoi": "l'avenir des lavatories Art nouveau classés",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=133321",
-   "fait_en": "A motion warned of the deterioration of the Art Nouveau public toilets, listed since 2011, and called for their facings to be restored before reopening.",
-   "pourquoi_en": "the future of the listed Art Nouveau public toilets"
-  },
-  {
-   "id": "152719",
-   "seance": "NOVEMBRE 2019",
-   "fait": "L'adjoint NAJDOVSKI présente le réaménagement de la place comme achevé et conteste tout lien avec les pertes commerciales ; le vœu du groupe LRI est rejeté.",
-   "pourquoi": "la place rénovée, les commerçants pas convaincus",
-   "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152719",
-   "fait_en": "Deputy mayor NAJDOVSKI presented the square's redevelopment as completed and disputed any link to commercial losses; the motion from the LRI group was rejected.",
-   "pourquoi_en": "the square renovated, shopkeepers unconvinced"
-  }
- ],
- "montants": [
-  {
-   "seance": "SEPTEMBRE 2005",
-   "montant": "0,64 euro",
-   "objet": "droit de place par m² et par jour au marché aux fleurs de la Madeleine",
-   "citation": "Fleurs Madeleine : Droit de place par mètre carré et par jour de tenue : 0,64 euro.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63123"
-  },
-  {
-   "seance": "JUIN 1998",
-   "montant": "9.000.000 F",
-   "objet": "dépenses initialement inscrites au budget d'investissement",
-   "citation": "Les dépenses de 9.000.000 F inscrites au chapitre 23, article 2315, rubrique 641, compte de provision 95-000-4-99-006, du budget d'investissement de la Ville de Paris, sont ramenés à 7.700.000 F.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56089"
-  },
-  {
-   "seance": "JUIN 1998",
-   "montant": "7.700.000 F",
-   "objet": "montant révisé à la baisse de ces dépenses",
-   "citation": "Les dépenses de 9.000.000 F inscrites au chapitre 23, article 2315, rubrique 641, compte de provision 95-000-4-99-006, du budget d'investissement de la Ville de Paris, sont ramenés à 7.700.000 F.",
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56089"
-  }
- ],
- "bmo_extraits": [],
- "bmo_recit": null,
- "delibs_par_annee": {
-  "1996": [
-   {
-    "reference": "1996 D 1578",
-    "titre": "37- 1996, D. 1578 - Autorisation à M. le Maire de Paris de signer avec la R.A.T.P. une convention relative à la participation de la régie aux travaux de rénovation de la place de la Madeleine (8e).",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "NOVEMBRE 1996",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17683"
-   }
-  ],
-  "1998": [
-   {
-    "reference": "1998 DVD 18",
-    "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant à la convention signée avec la R.A.T.P. relative à la participation de la Régie aux travaux de rénovation de la place de la Madeleine (8e). M. Bernard PLASAIT, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUIN 1998",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56089"
-   },
-   {
-    "reference": "1998 DVD 18",
-    "titre": "9- 1998, DVD 18 - Autorisation à M. le Maire de Paris, d'une part, de souscrire un avenant à la convention signée avec la R.A.T.P. pour la réalisation des travaux de remise en état de la place de la Madeleine et, d'autre part, de signer avec la R.A.T.P. une convention relative à l'entretien et à l'exploitation du passage Tronchet (8e).",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUIN 1998",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15248"
-   },
-   {
-    "reference": "1998 DVD 31",
-    "titre": "Approbation des modalités d'attribution d'un marché sur appel d'offres pour l'aménagement du terre-plein est de la place de la Madeleine (8e). - Autorisation à M. le Maire de Paris de signer ledit marché. M. Bernard PLASAIT, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "AVRIL 1998",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44124"
-   }
-  ],
-  "2000": [
-   {
-    "reference": "2000 DVD 43",
-    "titre": "Approbation du principe de la réalisation de la 2e phase d'aménagement de la place de la Madeleine (8e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Bernard PLASAIT, rapporteur.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "MARS 2000",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31083"
-   }
-  ],
-  "2001": [
-   {
-    "reference": "2001 DVD 66",
-    "titre": "23 - 2001, DVD 66 - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres pour l'aménagement des trottoirs : - du boulevard de la Madeleine et du boulevard des Capucines (tronçon de la place de la Madeleine à la place de l'Opéra) ; - du boulevard des Italiens (tronçon de la rue Favart au carrefour Richelieu-Drouot) ; - du boulevard Saint-Denis et du boulevard Saint-Martin (tronçon du boulevard Sébastopol à la place de la République)",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUIN 2001",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8080"
-   },
-   {
-    "reference": "2001 DVD 66",
-    "titre": "Projet de revalorisation des Grands Boulevards (1er, 2e, 3e, 8e, 9e et 10e arrondissements) - Approbation des modalités d'attribution d'un marché sur appel d'offres pour l'aménagement des trottoirs des boulevards de la Madeleine et des Capucines (tronçon de la place de la Madeleine à la place de l'Opéra), des Italiens (tronçon de la rue Favart au carrefour Richelieu-Drouot), Saint-Denis et Saint-Martin (tronçon du boulevard Sébastopol à la place de la République). - Autorisation à M. le Maire de",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "JUIN 2001",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28849"
-   }
-  ],
-  "2005": [
-   {
-    "reference": "2005 DDEE 114",
-    "titre": "Relèvement à compter du 1er septembre 2005 des droits et redevances perçus sur les marchés aux fleurs de la place de la Madeleine et de la place des Ternes. Mme Lyne COHEN-SOLAL, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 2005",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63123"
-   },
-   {
-    "reference": "2005 DDEE 89",
-    "titre": "Autorisation à M. le Maire de Paris de signer de nouvelles conventions d’occupation du domaine public sur les marchés aux fleurs de la place de la Madeleine et de la place des Ternes. Mme Lyne COHEN-SOLAL, rapporteure.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 2005",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63356"
-   },
-   {
-    "reference": "2005 DDEE 89",
-    "titre": "2005, DDEE 89 - Autorisation à M. le Maire de Paris de signer de nouvelles conventions d’occupation du domaine public sur les marchés aux fleurs de la place de la Madeleine et de la place des Ternes. Vœu déposé par M. François LEBEL, Mme Françoise de PANAFIEU et les membres du groupe U.M.P.",
-    "genres": [
-     "travaux"
-    ],
-    "seance": "SEPTEMBRE 2005",
-    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10394"
-   }
-  ]
- },
- "invest": [
-  {
-   "annee": 2019,
-   "montant_eur": 3077885.0,
-   "nom_projet": "Place de la Madeleine - Travaux de réaménagement",
-   "preuve": "Le nom du projet nomme le lieu verbatim : « Place de la Madeleine - Travaux de réaménagement » (2019, à 62 m du point du lieu). Le chantier est attesté au Conseil de Paris en septembre 2019 : « les difficultés qu'ils rencontrent depuis la réalisation, début avril, des travaux de réaménagement de la place de la Madeleine au niveau des angles Sud-est et Sud-ouest ». Un marché de travaux au même objet figure parmi les candidats (20181370001240, « AMÉNAGEMENT DE LA PLACE DE LA MADELEINE PARIS 8ÈME. », notifié le 2018-09-17).",
-   "id": "2019_08_il_017"
-  },
-  {
-   "annee": 2020,
-   "montant_eur": 400899.0,
-   "nom_projet": "Opérations d'aménagement Place de la Madeleine - Travaux de réaménagement",
-   "preuve": "Le nom du projet nomme le lieu verbatim : « Opérations d'aménagement Place de la Madeleine - Travaux de réaménagement » (2020, à 62 m du point du lieu). Le Conseil de Paris de novembre 2019 situe le chantier sur ce site : « La place de la Madeleine vient d'être achevée, elle a été réaménagée » (Christophe NAJDOVSKI).",
-   "id": "2020_08_il_016"
-  }
- ],
- "marches": [
-  {
-   "numero_marche": "20181370001240",
-   "objet": "CSP4.AMÉNAGEMENT DE LA PLACE DE LA MADELEINE PARIS 8ÈME.",
-   "objet_clair": null,
-   "fournisseur": "FAYOLLE ET FILS/FAYOLLE DESAMIANTAG",
-   "montant_max": 1267254.42,
-   "date_notification": "2018-09-17",
-   "preuve": "L'objet du marché nomme le lieu verbatim : « CSP4.AMÉNAGEMENT DE LA PLACE DE LA MADELEINE PARIS 8ÈME. » — travaux d'aménagement portant sur la place elle-même, et non simple repère d'adresse. Notifié le 2018-09-17, ce marché correspond au chantier décrit au Conseil de Paris : « le réaménagement de la place de la Madeleine commence » (vœu de décembre 2018), puis « La place de la Madeleine vient d'être achevée, elle a été réaménagée » (Christophe NAJDOVSKI, séance de novembre 2019)."
-  },
-  {
-   "numero_marche": "20171370007203",
-   "objet": "CSP4:MA SUB_AC:MISSION MOE AMENAGEMENT PLACE DE LA MADELEINE",
-   "objet_clair": null,
-   "fournisseur": "OMNIUM GENERAL D'INGENIERIE",
-   "montant_max": 222788.75,
-   "date_notification": "2017-01-23",
-   "preuve": "L'objet nomme le lieu verbatim et décrit une mission de maîtrise d'œuvre dédiée à ce site : « CSP4:MA SUB_AC:MISSION MOE AMENAGEMENT PLACE DE LA MADELEINE » (SIRET fournisseur 38400090700020), notifié le 2017-01-23. Le marché de travaux 20181370001240, au même objet d'aménagement de la place, est notifié vingt mois plus tard."
-  }
- ],
- "mandate": null,
- "sources": {
-  "delibs": {
-   "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Place+de+la+Madeleine"
-  },
-  "bmo": {
-   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Place+de+la+Madeleine%22%29"
-  },
-  "invest": {
-   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
-   "url": "https://opendata.paris.fr/"
-  },
+  "seuil_commun": 2010,
   "wiki": {
-   "name": "Wikipédia",
-   "url": "https://fr.wikipedia.org/"
+    "extract": "La place de la Madeleine est une place du 8e arrondissement de Paris.",
+    "url": "https://fr.wikipedia.org/wiki/Place_de_la_Madeleine",
+    "source": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    },
+    "extract_en": "The place de la Madeleine is a square in the 8th arrondissement of Paris."
+  },
+  "stats": {
+    "n_delibs": 1146,
+    "delibs_span": [
+      1996,
+      2019
+    ],
+    "n_bmo_brut": 2000,
+    "n_bmo_verifies": 18,
+    "invest_total_eur": 3478784.0,
+    "invest_annees": [
+      "2019",
+      "2020"
+    ],
+    "lecture_mode": "titre nommant le lieu (22 trouvés)",
+    "lecture_mode_en": "title naming the place (22 found)",
+    "n_lus": 22,
+    "n_lieu": 15
+  },
+  "subventions_exploitant": null,
+  "residents": [],
+  "kpi_montant": null,
+  "synthese_fr": "En janvier 1996, la Ville met en vente par adjudication un lot communal d'un immeuble de la place ; la même année, un arrêté approuve le principe de sa rénovation totale et, en novembre, le Conseil autorise une convention avec la R.A.T.P. sur la participation de la régie aux travaux. Sur près de vingt-cinq ans, le Conseil de Paris approuve des tranches successives d'aménagement — le terre-plein est en 1998, le principe d'une 2e phase en mars 2000 — jusqu'à un réaménagement d'ensemble que l'adjoint Christophe NAJDOVSKI décrit comme « achevé » en novembre 2019. À plusieurs reprises, des élus relaient l'inquiétude des commerçants sur l'impact des travaux : dès 2000 par une question de M. Georges SARRE, puis en 2019 avec deux vœux du groupe LRI, l'un retiré, l'autre rejeté. En parallèle, la place fait l'objet de délibérations patrimoniales et économiques : protection du bâti au Plan d'occupation des sols en 1999, tarifs du marché aux fleurs en 2005, et débats répétés sur la restauration des lavatories Art nouveau classés depuis 2011.",
+  "moments": [
+    {
+      "id": "17683",
+      "seance": "NOVEMBRE 1996",
+      "fait": "Mme SCHNEITER propose en séance de transformer la place en vaste zone piétonnière ; le maire du 8e M. LEBEL rejette vivement l'idée.",
+      "pourquoi": "quand la place piétonne divise déjà",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17683",
+      "fait_en": "Ms SCHNEITER proposed during the session turning the square into a large pedestrian zone; the mayor of the 8th arrondissement, Mr LEBEL, firmly rejected the idea.",
+      "pourquoi_en": "when the pedestrian square already divides opinion"
+    },
+    {
+      "id": "56089",
+      "seance": "JUIN 1998",
+      "fait": "Un avenant à la convention avec la R.A.T.P. ramène la dépense inscrite de 9 000 000 F à 7 700 000 F et vise la rénovation du passage Tronchet.",
+      "pourquoi": "la facture RATP revue à la baisse",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56089",
+      "fait_en": "An amendment to the agreement with the R.A.T.P. reduced the budgeted expenditure from 9,000,000 F to 7,700,000 F and covered the renovation of the passage Tronchet.",
+      "pourquoi_en": "the RATP bill revised downward"
+    },
+    {
+      "id": "31083",
+      "seance": "MARS 2000",
+      "fait": "Le Conseil approuve le principe de la 2e phase d'aménagement de la place et autorise le Maire à signer le marché de travaux.",
+      "pourquoi": "le grand chantier de la place voté",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31083",
+      "fait_en": "The Council approved the principle of the square's second redevelopment phase and authorized the Mayor to sign the works contract.",
+      "pourquoi_en": "the square's major works approved"
+    },
+    {
+      "id": "10026",
+      "seance": "SEPTEMBRE 2000",
+      "fait": "Interpellé sur le retard des travaux de voirie, M. PLASAIT détaille un planning établi en concertation avec les commerçants pour limiter la gêne.",
+      "pourquoi": "les commerçants craignent le chantier de rentrée",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10026",
+      "fait_en": "Questioned about the delay in road works, Mr PLASAIT detailed a schedule drawn up in consultation with shopkeepers to limit disruption.",
+      "pourquoi_en": "shopkeepers fear the back-to-school works"
+    },
+    {
+      "id": "43845",
+      "seance": "AVRIL 2005",
+      "fait": "Le Conseil autorise un contrat reliant par un couloir piétonnier un garage privé au parc de stationnement public situé sous la place.",
+      "pourquoi": "sous la place, un parking et ses passages",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43845",
+      "fait_en": "The Council authorized a contract linking a private garage to the public parking facility beneath the square by a pedestrian corridor.",
+      "pourquoi_en": "beneath the square, a car park and its passageways"
+    },
+    {
+      "id": "63123",
+      "seance": "SEPTEMBRE 2005",
+      "fait": "Le Conseil fixe à 0,64 € par m² et par jour le droit de place du marché aux fleurs de la Madeleine.",
+      "pourquoi": "le tarif du marché aux fleurs fixé",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63123",
+      "fait_en": "The Council set the pitch fee for the Madeleine flower market at €0.64 per m² per day.",
+      "pourquoi_en": "the flower market's rate set"
+    },
+    {
+      "id": "133321",
+      "seance": "NOVEMBRE 2016",
+      "fait": "Un vœu alerte sur la dégradation des lavatories Art nouveau, classés depuis 2011, et demande la restauration de leurs parements avant réouverture.",
+      "pourquoi": "l'avenir des lavatories Art nouveau classés",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=133321",
+      "fait_en": "A motion warned of the deterioration of the Art Nouveau public toilets, listed since 2011, and called for their facings to be restored before reopening.",
+      "pourquoi_en": "the future of the listed Art Nouveau public toilets"
+    },
+    {
+      "id": "152719",
+      "seance": "NOVEMBRE 2019",
+      "fait": "L'adjoint NAJDOVSKI présente le réaménagement de la place comme achevé et conteste tout lien avec les pertes commerciales ; le vœu du groupe LRI est rejeté.",
+      "pourquoi": "la place rénovée, les commerçants pas convaincus",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152719",
+      "fait_en": "Deputy mayor NAJDOVSKI presented the square's redevelopment as completed and disputed any link to commercial losses; the motion from the LRI group was rejected.",
+      "pourquoi_en": "the square renovated, shopkeepers unconvinced"
+    }
+  ],
+  "montants": [
+    {
+      "seance": "SEPTEMBRE 2005",
+      "montant": "0,64 euro",
+      "objet": "droit de place par m² et par jour au marché aux fleurs de la Madeleine",
+      "citation": "Fleurs Madeleine : Droit de place par mètre carré et par jour de tenue : 0,64 euro.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63123"
+    },
+    {
+      "seance": "JUIN 1998",
+      "montant": "9.000.000 F",
+      "objet": "dépenses initialement inscrites au budget d'investissement",
+      "citation": "Les dépenses de 9.000.000 F inscrites au chapitre 23, article 2315, rubrique 641, compte de provision 95-000-4-99-006, du budget d'investissement de la Ville de Paris, sont ramenés à 7.700.000 F.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56089"
+    },
+    {
+      "seance": "JUIN 1998",
+      "montant": "7.700.000 F",
+      "objet": "montant révisé à la baisse de ces dépenses",
+      "citation": "Les dépenses de 9.000.000 F inscrites au chapitre 23, article 2315, rubrique 641, compte de provision 95-000-4-99-006, du budget d'investissement de la Ville de Paris, sont ramenés à 7.700.000 F.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56089"
+    }
+  ],
+  "bmo_extraits": [],
+  "bmo_recit": null,
+  "delibs_par_annee": {
+    "1996": [
+      {
+        "reference": "1996 D 1578",
+        "titre": "37- 1996, D. 1578 - Autorisation à M. le Maire de Paris de signer avec la R.A.T.P. une convention relative à la participation de la régie aux travaux de rénovation de la place de la Madeleine (8e).",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "NOVEMBRE 1996",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17683"
+      }
+    ],
+    "1998": [
+      {
+        "reference": "1998 DVD 18",
+        "titre": "Autorisation à M. le Maire de Paris de souscrire un avenant à la convention signée avec la R.A.T.P. relative à la participation de la Régie aux travaux de rénovation de la place de la Madeleine (8e). M. Bernard PLASAIT, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUIN 1998",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56089"
+      },
+      {
+        "reference": "1998 DVD 18",
+        "titre": "9- 1998, DVD 18 - Autorisation à M. le Maire de Paris, d'une part, de souscrire un avenant à la convention signée avec la R.A.T.P. pour la réalisation des travaux de remise en état de la place de la Madeleine et, d'autre part, de signer avec la R.A.T.P. une convention relative à l'entretien et à l'exploitation du passage Tronchet (8e).",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUIN 1998",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15248"
+      },
+      {
+        "reference": "1998 DVD 31",
+        "titre": "Approbation des modalités d'attribution d'un marché sur appel d'offres pour l'aménagement du terre-plein est de la place de la Madeleine (8e). - Autorisation à M. le Maire de Paris de signer ledit marché. M. Bernard PLASAIT, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "AVRIL 1998",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44124"
+      }
+    ],
+    "2000": [
+      {
+        "reference": "2000 DVD 43",
+        "titre": "Approbation du principe de la réalisation de la 2e phase d'aménagement de la place de la Madeleine (8e). - Approbation des modalités d'attribution du marché de travaux correspondant. - Autorisation à M. le Maire de Paris de signer ledit marché. M. Bernard PLASAIT, rapporteur.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "MARS 2000",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31083"
+      }
+    ],
+    "2001": [
+      {
+        "reference": "2001 DVD 66",
+        "titre": "23 - 2001, DVD 66 - Autorisation à M. le Maire de Paris de signer un marché sur appel d'offres pour l'aménagement des trottoirs : - du boulevard de la Madeleine et du boulevard des Capucines (tronçon de la place de la Madeleine à la place de l'Opéra) ; - du boulevard des Italiens (tronçon de la rue Favart au carrefour Richelieu-Drouot) ; - du boulevard Saint-Denis et du boulevard Saint-Martin (tronçon du boulevard Sébastopol à la place de la République)",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUIN 2001",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8080"
+      },
+      {
+        "reference": "2001 DVD 66",
+        "titre": "Projet de revalorisation des Grands Boulevards (1er, 2e, 3e, 8e, 9e et 10e arrondissements) - Approbation des modalités d'attribution d'un marché sur appel d'offres pour l'aménagement des trottoirs des boulevards de la Madeleine et des Capucines (tronçon de la place de la Madeleine à la place de l'Opéra), des Italiens (tronçon de la rue Favart au carrefour Richelieu-Drouot), Saint-Denis et Saint-Martin (tronçon du boulevard Sébastopol à la place de la République). - Autorisation à M. le Maire de",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "JUIN 2001",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28849"
+      }
+    ],
+    "2005": [
+      {
+        "reference": "2005 DDEE 114",
+        "titre": "Relèvement à compter du 1er septembre 2005 des droits et redevances perçus sur les marchés aux fleurs de la place de la Madeleine et de la place des Ternes. Mme Lyne COHEN-SOLAL, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 2005",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63123"
+      },
+      {
+        "reference": "2005 DDEE 89",
+        "titre": "Autorisation à M. le Maire de Paris de signer de nouvelles conventions d’occupation du domaine public sur les marchés aux fleurs de la place de la Madeleine et de la place des Ternes. Mme Lyne COHEN-SOLAL, rapporteure.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 2005",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63356"
+      },
+      {
+        "reference": "2005 DDEE 89",
+        "titre": "2005, DDEE 89 - Autorisation à M. le Maire de Paris de signer de nouvelles conventions d’occupation du domaine public sur les marchés aux fleurs de la place de la Madeleine et de la place des Ternes. Vœu déposé par M. François LEBEL, Mme Françoise de PANAFIEU et les membres du groupe U.M.P.",
+        "genres": [
+          "travaux"
+        ],
+        "seance": "SEPTEMBRE 2005",
+        "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10394"
+      }
+    ]
+  },
+  "invest": [
+    {
+      "annee": 2019,
+      "montant_eur": 3077885.0,
+      "nom_projet": "Place de la Madeleine - Travaux de réaménagement",
+      "preuve": "Le nom du projet nomme le lieu verbatim : « Place de la Madeleine - Travaux de réaménagement » (2019, à 62 m du point du lieu). Le chantier est attesté au Conseil de Paris en septembre 2019 : « les difficultés qu'ils rencontrent depuis la réalisation, début avril, des travaux de réaménagement de la place de la Madeleine au niveau des angles Sud-est et Sud-ouest ». Un marché de travaux au même objet figure parmi les candidats (20181370001240, « AMÉNAGEMENT DE LA PLACE DE LA MADELEINE PARIS 8ÈME. », notifié le 2018-09-17).",
+      "id": "2019_08_il_017"
+    },
+    {
+      "annee": 2020,
+      "montant_eur": 400899.0,
+      "nom_projet": "Opérations d'aménagement Place de la Madeleine - Travaux de réaménagement",
+      "preuve": "Le nom du projet nomme le lieu verbatim : « Opérations d'aménagement Place de la Madeleine - Travaux de réaménagement » (2020, à 62 m du point du lieu). Le Conseil de Paris de novembre 2019 situe le chantier sur ce site : « La place de la Madeleine vient d'être achevée, elle a été réaménagée » (Christophe NAJDOVSKI).",
+      "id": "2020_08_il_016"
+    }
+  ],
+  "marches": [
+    {
+      "numero_marche": "20181370001240",
+      "objet": "CSP4.AMÉNAGEMENT DE LA PLACE DE LA MADELEINE PARIS 8ÈME.",
+      "objet_clair": null,
+      "fournisseur": "FAYOLLE ET FILS/FAYOLLE DESAMIANTAG",
+      "montant_max": 1267254.42,
+      "date_notification": "2018-09-17",
+      "preuve": "L'objet du marché nomme le lieu verbatim : « CSP4.AMÉNAGEMENT DE LA PLACE DE LA MADELEINE PARIS 8ÈME. » — travaux d'aménagement portant sur la place elle-même, et non simple repère d'adresse. Notifié le 2018-09-17, ce marché correspond au chantier décrit au Conseil de Paris : « le réaménagement de la place de la Madeleine commence » (vœu de décembre 2018), puis « La place de la Madeleine vient d'être achevée, elle a été réaménagée » (Christophe NAJDOVSKI, séance de novembre 2019)."
+    },
+    {
+      "numero_marche": "20171370007203",
+      "objet": "CSP4:MA SUB_AC:MISSION MOE AMENAGEMENT PLACE DE LA MADELEINE",
+      "objet_clair": null,
+      "fournisseur": "OMNIUM GENERAL D'INGENIERIE",
+      "montant_max": 222788.75,
+      "date_notification": "2017-01-23",
+      "preuve": "L'objet nomme le lieu verbatim et décrit une mission de maîtrise d'œuvre dédiée à ce site : « CSP4:MA SUB_AC:MISSION MOE AMENAGEMENT PLACE DE LA MADELEINE » (SIRET fournisseur 38400090700020), notifié le 2017-01-23. Le marché de travaux 20181370001240, au même objet d'aménagement de la place, est notifié vingt mois plus tard."
+    }
+  ],
+  "mandate": null,
+  "sources": {
+    "delibs": {
+      "name": "Débat-Délibs — Conseil de Paris",
+      "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Place+de+la+Madeleine"
+    },
+    "bmo": {
+      "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Place+de+la+Madeleine%22%29"
+    },
+    "invest": {
+      "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+      "url": "https://opendata.paris.fr/"
+    },
+    "wiki": {
+      "name": "Wikipédia",
+      "url": "https://fr.wikipedia.org/"
+    }
+  },
+  "synthese_en": "In January 1996, the City put a municipally owned unit in a building on the square up for sale by auction; that same year, an order approved the principle of its full renovation, and in November the Council authorized an agreement with the R.A.T.P. on the transit authority's contribution to the works. Over nearly twenty-five years, the Council of Paris approved successive phases of redevelopment — the eastern median in 1998, the principle of a second phase in March 2000 — culminating in an overall redevelopment that deputy mayor Christophe NAJDOVSKI described as \"completed\" in November 2019. On several occasions, elected officials relayed shopkeepers' concerns about the impact of the works: as early as 2000 through a question from Mr Georges SARRE, then in 2019 with two motions from the LRI group, one withdrawn and the other rejected. At the same time, the square was the subject of heritage and economic deliberations: protection of the buildings under the Plan d'occupation des sols in 1999, pricing for the flower market in 2005, and repeated debates on restoring the Art Nouveau public toilets, listed since 2011.",
+  "license": {
+    "id": "ODbL-1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "share_alike": true,
+    "notice": "Derived database licensed under ODbL 1.0. Redistributing a database derived from this file requires releasing it under ODbL 1.0.",
+    "attribution": "Ville de Paris (Paris Open Data), sous licence ODbL; données d'État sous Licence Ouverte 2.0 (Etalab)",
+    "producer": "Qipu (qipu.org) — derived database"
   }
- },
- "synthese_en": "In January 1996, the City put a municipally owned unit in a building on the square up for sale by auction; that same year, an order approved the principle of its full renovation, and in November the Council authorized an agreement with the R.A.T.P. on the transit authority's contribution to the works. Over nearly twenty-five years, the Council of Paris approved successive phases of redevelopment — the eastern median in 1998, the principle of a second phase in March 2000 — culminating in an overall redevelopment that deputy mayor Christophe NAJDOVSKI described as \"completed\" in November 2019. On several occasions, elected officials relayed shopkeepers' concerns about the impact of the works: as early as 2000 through a question from Mr Georges SARRE, then in 2019 with two motions from the LRI group, one withdrawn and the other rejected. At the same time, the square was the subject of heritage and economic deliberations: protection of the buildings under the Plan d'occupation des sols in 1999, pricing for the flower market in 2005, and repeated debates on restoring the Art Nouveau public toilets, listed since 2011."
 }
