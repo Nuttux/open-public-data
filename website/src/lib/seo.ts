@@ -172,6 +172,25 @@ export function websiteJsonLd() {
 }
 
 /**
+ * The licence a page's data carries at its source, vérifiée sur chaque portail
+ * le 13 septembre 2026 :
+ *   - DataSF (/us) : PDDL — budget, paiements, contrats, rémunérations ;
+ *   - Recife (/br) et Paris Open Data : ODbL ;
+ *   - toute autre commune (/fr/city/…) : DGFiP, OFGL et DECP, Licence Ouverte v2.0.
+ * Marseille et le national mêlent des sources : leurs pages passent la licence
+ * explicitement, ou n'en déclarent aucune. L'ancien défaut, ODbL partout,
+ * prêtait la licence de Paris à des données qui ne l'ont pas.
+ */
+export function licenseForPath(path: string): string | undefined {
+  if (path === '/us' || path.startsWith('/us/')) return 'https://opendatacommons.org/licenses/pddl/1-0/';
+  if (path === '/br' || path.startsWith('/br/')) return 'https://opendatacommons.org/licenses/odbl/1-0/';
+  if (path === '/fr/city/paris' || path.startsWith('/fr/city/paris/')) return 'https://opendatacommons.org/licenses/odbl/1-0/';
+  if (path.startsWith('/fr/city/marseille')) return undefined;
+  if (path.startsWith('/fr/city/')) return 'https://www.etalab.gouv.fr/licence-ouverte-open-licence';
+  return undefined;
+}
+
+/**
  * GEO: Dataset schema — the most cited schema type for data journalism
  * when AI engines look for structured public-finance data.
  */
@@ -205,10 +224,7 @@ export function datasetJsonLd(input: {
     spatialCoverage: input.spatialCoverage
       ? { '@type': 'Place', name: input.spatialCoverage }
       : undefined,
-    // Sans licence explicite, celle de la source (page /licence) : DataSF publie
-    // en domaine public (PDDL, vérifié sur les jeux budget, paiements, contrats et
-    // rémunérations) ; Paris et Recife en ODbL.
-    license: input.license ?? (input.path.startsWith('/us') ? 'https://opendatacommons.org/licenses/pddl/1-0/' : 'https://opendatacommons.org/licenses/odbl/'),
+    license: input.license ?? licenseForPath(input.path),
     creator: { '@type': 'Organization', name: input.creator ?? 'Ville de Paris' },
     publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
     isAccessibleForFree: true,
