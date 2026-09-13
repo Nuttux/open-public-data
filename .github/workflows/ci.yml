@@ -66,6 +66,10 @@ jobs:
         run: npm run lint
 
       - name: Typecheck
+        # tsc dépasse le tas par défaut de Node (2 Go) depuis le 13 septembre 2026 :
+        # « JavaScript heap out of memory », exit 134 (run 34726875711).
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
         run: npm run typecheck
 
       - name: Unit tests (Vitest)
