@@ -6581,6 +6581,30 @@ const en: Record<string, string> = {
   'br.recife.contrato.mod_gloss.compra':
     'Direct purchase: a low-value direct acquisition, with no tender process.',
   'br.recife.contrato.source': 'Source: Contracts — City of Recife.',
+
+  // ── See also (components/fiche/RelatedLinks.tsx, resolved server-side by lib/related-t.ts) ──
+  'fx.related.title': 'See also',
+  'fx.related.marches.hub': 'Public contracts of the City of {city}',
+  'fx.related.marches.hub_sub': 'Every contract, by year, category and supplier',
+  'fx.related.fourn.block_sub': 'The other suppliers in its main contract category: {cat}.',
+  'fx.related.fourn.peer_sub': 'Same category, {year}',
+  'fx.related.fourn.category': 'Contracts in the "{cat}" category',
+  'fx.related.fourn.category_sub': 'Its largest contracts and main suppliers',
+  'fx.related.projet.block_sub_arr': 'The other projects of the {arr} arrondissement in {year}, and the pages that group them.',
+  'fx.related.projet.block_sub_paris': 'The other Paris-wide projects of the same chapter in {year}, and the pages that group them.',
+  'fx.related.projet.peer_arr_sub': 'Same arrondissement ({arr}), {year}',
+  'fx.related.projet.peer_chap_sub': 'Same chapter, Paris-wide, {year}',
+  'fx.related.projet.list_arr': 'Every {year} project in the {arr} arrondissement',
+  'fx.related.projet.list_paris': 'Every Paris-wide project in {year}',
+  'fx.related.projet.list_sub': 'The full list, one page per project',
+  'fx.related.projet.arr': 'Investment in the {arr} arrondissement',
+  'fx.related.projet.arr_sub': 'The arrondissement total and its largest projects',
+  'fx.related.projet.chap': 'The {chap} chapter',
+  'fx.related.projet.chap_sub': 'City investment chapter, {year}',
+  'fx.related.lieu.block_sub': 'The other places of the {arr} arrondissement, and the City\'s investment in that arrondissement.',
+  'fx.related.lieu.peer_sub': 'Same arrondissement ({arr})',
+  'fx.related.lieu.hub': 'Every place in Paris',
+  'fx.related.lieu.hub_sub': 'The map of places, with what the City decided and paid for each',
 };
 
 export default en;

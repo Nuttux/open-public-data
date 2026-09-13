@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { loadLieuxIndex } from "@/lib/lieux-data";
+import { lieuxVoisins } from "@/lib/lieux-data";
 import { readLocale } from "@/lib/seo";
 
 /**
@@ -29,14 +29,10 @@ export default async function LieuxVoisins({
   arrondissement: number;
 }) {
   const locale = await readLocale();
-  const all = loadLieuxIndex().filter((l) => l.slug !== slug);
-  let voisins = all.filter((l) => l.famille === famille);
-  let titre = locale === "en" ? "Same kind" : "Même famille";
-  if (voisins.length < 2) {
-    voisins = all.filter((l) => l.arrondissement === arrondissement && arrondissement > 0);
-    titre = locale === "en" ? "Same district" : "Même arrondissement";
-  }
-  voisins = voisins.sort((a, b) => (b.n_lieu ?? 0) - (a.n_lieu ?? 0)).slice(0, 4);
+  const { voisins, by } = lieuxVoisins(slug, famille, arrondissement);
+  const titre = by === "famille"
+    ? (locale === "en" ? "Same kind" : "Même famille")
+    : (locale === "en" ? "Same district" : "Même arrondissement");
   if (!voisins.length) return null;
 
   return (

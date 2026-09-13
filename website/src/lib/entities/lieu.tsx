@@ -5,6 +5,7 @@ import LieuxVoisins from "@/components/fusion/LieuxVoisins";
 import type { EntityPageConfig } from "@/lib/entity-page";
 import { loadLieu, loadLieuxIndex } from "@/lib/lieux-data";
 import { dataDate, int, ordEn, ordFr, sourceLine, type SeoAnswer } from "@/lib/entities/seo-text";
+import { lieuRelated } from "@/lib/entities/related";
 
 type D = { lieu: NonNullable<ReturnType<typeof loadLieu>> };
 
@@ -92,6 +93,7 @@ export const lieuConfig: EntityPageConfig<D> = {
     };
   },
   seo: ({ lieu }, locale) => lieuAnswer(lieu, locale),
+  related: ({ lieu }, locale) => lieuRelated(lieu, locale),
   page: {
     // Pas de section fx-page-header : la fiche lieu rend son back-link,
     // kicker et h1 directement dans le fx-fiche-wrap (layout pré-refacto).

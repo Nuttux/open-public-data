@@ -6334,6 +6334,30 @@ const fr: Record<string, string> = {
   'fx.lieu.moments_more1': 'Voir un autre moment',
   'fx.lieux.card_argent': 'argent de la Ville identifié',
   'fx.lieux.card_depuis': 'archives depuis',
+
+  // ── See also (components/fiche/RelatedLinks.tsx, resolved server-side by lib/related-t.ts) ──
+  'fx.related.title': 'Voir aussi',
+  'fx.related.marches.hub': 'Les marchés publics de la Ville de {city}',
+  'fx.related.marches.hub_sub': 'Tous les contrats, par année, catégorie et titulaire',
+  'fx.related.fourn.block_sub': 'Les autres titulaires de sa principale catégorie de marchés : {cat}.',
+  'fx.related.fourn.peer_sub': 'Même catégorie, {year}',
+  'fx.related.fourn.category': 'Les marchés de la catégorie « {cat} »',
+  'fx.related.fourn.category_sub': 'Ses plus gros contrats et ses principaux titulaires',
+  'fx.related.projet.block_sub_arr': 'Les autres projets du {arr} arrondissement en {year}, et les pages qui les regroupent.',
+  'fx.related.projet.block_sub_paris': 'Les autres projets à l’échelle de Paris du même chapitre en {year}, et les pages qui les regroupent.',
+  'fx.related.projet.peer_arr_sub': 'Même arrondissement ({arr}), {year}',
+  'fx.related.projet.peer_chap_sub': 'Même chapitre, tout Paris, {year}',
+  'fx.related.projet.list_arr': 'Tous les projets {year} du {arr} arrondissement',
+  'fx.related.projet.list_paris': 'Tous les projets {year} à l’échelle de Paris',
+  'fx.related.projet.list_sub': 'La liste complète, une page par projet',
+  'fx.related.projet.arr': 'Les investissements du {arr} arrondissement',
+  'fx.related.projet.arr_sub': 'Le total de l’arrondissement et ses plus gros projets',
+  'fx.related.projet.chap': 'Le chapitre {chap}',
+  'fx.related.projet.chap_sub': 'Chapitre d’investissement de la Ville, {year}',
+  'fx.related.lieu.block_sub': 'Les autres lieux du {arr} arrondissement, et l’investissement de la Ville dans cet arrondissement.',
+  'fx.related.lieu.peer_sub': 'Même arrondissement ({arr})',
+  'fx.related.lieu.hub': 'Tous les lieux de Paris',
+  'fx.related.lieu.hub_sub': 'La carte des lieux, avec ce que la Ville a décidé et payé pour chacun',
 };
 
 export default fr;

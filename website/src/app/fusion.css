@@ -20086,9 +20086,14 @@ a.fx-pv-row--fiche:hover .n { text-decoration: underline; text-underline-offset:
 .theme-fusion .fx-pv .fx-v3-h2sub { margin-top: 8px; }
 .theme-fusion .fx-pv .fx-v3-lead { margin-bottom: 18px; }
 .theme-fusion .fx-pv .fx-v3-foot { margin-top: 18px; }
-/* La liste « Voir aussi » ferme la page : elle garde le même écart. */
+/* La liste « Voir aussi » ferme la fiche. Sur les fiches d'entité elle suit
+   souvent la note de source (fx-v3-foot, sans marge basse) : sans écart, son
+   titre collait à la note. */
+.theme-fusion .fx-related { margin-top: 56px; }
+/* Sur la page commune, elle garde l'écart des autres sections. */
 .theme-fusion .fx-pv .fx-related { margin-top: 64px; }
 @media (max-width: 820px) {
+  .theme-fusion .fx-related { margin-top: 40px; }
   .theme-fusion .fx-pv .fx-v3-h2 { margin-top: 48px; padding-top: 20px; }
   .theme-fusion .fx-pv .fx-related { margin-top: 44px; }
 }

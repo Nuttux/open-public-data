@@ -7,6 +7,7 @@ import { loadProjet, resolveProjetPhoto } from "@/lib/fusion-data";
 import { lieuForProjet } from "@/lib/lieux-data";
 import { trLabel } from "@/lib/label-translate";
 import { eur, ordFr, ordEn, dataDate, sourceLine, clip } from "@/lib/entities/seo-text";
+import { projetRelated } from "@/lib/entities/related";
 
 type D = {
   projet: NonNullable<ReturnType<typeof loadProjet>>;
@@ -74,6 +75,7 @@ export const projetConfig: EntityPageConfig<D> = {
     answer: `En ${p.year}, la Ville de Paris a inscrit ${amt} pour « ${name} » (${chap.toLowerCase()}${arr ? `, ${arr}` : ""}). ${sourceLine("fr", "Ville de Paris, investissements localisés du compte administratif", date)}`,
   };
   },
+  related: ({ projet }, locale) => projetRelated(projet, locale),
   page: {
     header: ({ projet }, locale) => {
       const displayName = locale === "en" && projet.name_en ? projet.name_en : projet.name;
