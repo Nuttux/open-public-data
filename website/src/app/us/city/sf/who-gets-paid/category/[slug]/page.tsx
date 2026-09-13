@@ -9,6 +9,8 @@ import { loadSfCategoryLinks } from "@/lib/us/sf-category-links";
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { categoryAnswer } from "@/lib/us/sf-answers";
 import PageJsonLd from "@/components/seo/PageJsonLd";
+import RelatedLinks from "@/components/fiche/RelatedLinks";
+import { sfCategoryRelated } from "@/lib/us/sf-related";
 
 type Params = { slug: string };
 
@@ -60,6 +62,7 @@ export default async function SfCategoryPage({
       </section>
       <div className="fx-fiche-wrap">
         <SfCategoryFiche d={d} vendorSlugMap={vendorSlugMap} deptHrefs={deptHrefs} />
+        <RelatedLinks block={sfCategoryRelated(d)} />
       </div>
     </main>
   );

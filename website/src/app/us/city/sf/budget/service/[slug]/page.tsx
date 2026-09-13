@@ -14,6 +14,8 @@ import { fmtUsdCompact } from "@/lib/us/format";
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { budgetServiceAnswer } from "@/lib/us/sf-answers";
 import PageJsonLd from "@/components/seo/PageJsonLd";
+import RelatedLinks from "@/components/fiche/RelatedLinks";
+import { sfServiceRelated } from "@/lib/us/sf-related";
 
 type Params = { slug: string };
 type SP = { year?: string; side?: string };
@@ -78,6 +80,7 @@ export default async function SfServicePage({
       </section>
       <div className="fx-fiche-wrap">
         <SfServiceFiche s={s} />
+        <RelatedLinks block={sfServiceRelated(s)} />
       </div>
     </main>
   );

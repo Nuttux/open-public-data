@@ -5,6 +5,7 @@ import "@/app/fusion.css";
 
 import CityFichePage from "@/components/us/city/CityFichePage";
 import PageJsonLd from "@/components/seo/PageJsonLd";
+import { sfCityPageRelated } from "@/lib/us/sf-related";
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { cityPageAnswer, listStreetPages, streetPage } from "@/lib/us/sf-city-pages";
 
@@ -51,7 +52,7 @@ export default async function SfStreetPage({ params }: { params: Promise<Params>
           />
         </div>
       </section>
-      <CityFichePage page={page} />
+      <CityFichePage page={page} related={await sfCityPageRelated(page)} />
     </main>
   );
 }

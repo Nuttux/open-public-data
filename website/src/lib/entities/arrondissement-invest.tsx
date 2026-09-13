@@ -6,6 +6,7 @@ import { numLocale, sufOrdinal } from "@/lib/fmt";
 import { loadArrondissement } from "@/lib/fusion-data";
 import { loadLieuxIndex } from "@/lib/lieux-data";
 import { eur, pct, int, ordFr, ordEn, dataDate, sourceLine } from "@/lib/entities/seo-text";
+import { arrondissementRelated } from "@/lib/entities/related";
 
 type D = {
   arr: NonNullable<ReturnType<typeof loadArrondissement>>;
@@ -89,6 +90,7 @@ export const arrondissementInvestConfig: EntityPageConfig<D> = {
     answer: `${ordFr(a.arr)} arrondissement : en ${a.year}, la Ville de Paris y a localisé ${int(a.nbProjets, "fr")} projets d'investissement pour ${amt}, ${ordFr(a.rank)} arrondissement sur 20 (${share} du total localisé). ${sourceLine("fr", "Ville de Paris, investissements localisés du compte administratif", date)}`,
   };
   },
+  related: ({ arrNum }, locale) => arrondissementRelated("invest", arrNum, locale),
   page: {
     header: ({ arr }) => (
       <>

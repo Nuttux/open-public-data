@@ -8,6 +8,8 @@ import { loadSfPlace, loadSfPlacesIndex } from "@/lib/us/sf-places-data";
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { placeAnswer } from "@/lib/us/sf-answers";
 import PageJsonLd from "@/components/seo/PageJsonLd";
+import RelatedLinks from "@/components/fiche/RelatedLinks";
+import { sfPlaceRelated } from "@/lib/us/sf-related";
 
 type Params = { slug: string };
 
@@ -54,6 +56,7 @@ export default async function SfPlacePage({ params }: { params: Promise<Params> 
       </section>
       <div className="fx-fiche-wrap">
         <SfPlaceFiche place={place} />
+        <RelatedLinks block={sfPlaceRelated(place)} />
       </div>
     </main>
   );

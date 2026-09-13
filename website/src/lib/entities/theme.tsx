@@ -6,6 +6,7 @@ import { getCity } from "@/lib/cities";
 import { loadThemeSubventions } from "@/lib/fusion-data";
 import { trLabel } from "@/lib/label-translate";
 import { eur, pct, int, cityDataDate, sourceLine, cityPortal, clip } from "@/lib/entities/seo-text";
+import { themeRelated } from "@/lib/entities/related";
 
 type D = { fiche: NonNullable<ReturnType<typeof loadThemeSubventions>> };
 
@@ -77,6 +78,7 @@ export function makeThemeConfig(city: string): EntityPageConfig<D> {
         answer: `En ${f.year}, la Ville de ${cityNom} a versé ${amt} de subventions en ${f.theme.toLowerCase()} à ${int(f.nbBeneficiaires, "fr")} bénéficiaires (${int(f.nbSubventions, "fr")} subventions), soit ${pct(f.shareOfTotalPct, "fr")} des subventions de l'année. ${sourceLine("fr", src, date)}`,
       };
     },
+    related: ({ fiche }, locale) => themeRelated(fiche, city, locale),
     page: {
       header: ({ fiche }) => (
         <>

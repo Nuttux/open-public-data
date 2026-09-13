@@ -4,6 +4,7 @@ import type { EntityPageConfig } from "@/lib/entity-page";
 import { loadBudgetPoste } from "@/lib/fusion-data";
 import { trLabel } from "@/lib/label-translate";
 import { eur, pct, int, ordFr, ordEn, sourceLine, clip } from "@/lib/entities/seo-text";
+import { posteRelated } from "@/lib/entities/related";
 
 type D = {
   poste: NonNullable<ReturnType<typeof loadBudgetPoste>>;
@@ -73,6 +74,7 @@ export const posteConfig: EntityPageConfig<D> = {
     answer: `En ${p.year}, ${p.label} ${dep ? "coûte" : "rapporte"} ${amt}, soit ${share} des ${dep ? "dépenses" : "recettes"} ${voted ? "votées" : "exécutées"} de la Ville de Paris (${ordFr(p.rank)} poste sur ${p.nbPostes}), ${perHab} € par habitant. ${sourceLine("fr", "opendata.paris.fr (comptes administratifs et budgets primitifs, M57)", null)}`,
   };
   },
+  related: ({ poste }, locale) => posteRelated(poste, "paris", locale),
   page: {
     header: ({ poste, year }) => (
       <>

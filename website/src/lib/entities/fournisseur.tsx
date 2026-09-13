@@ -8,6 +8,8 @@ import { loadFournisseur, loadSirene } from "@/lib/fusion-data";
 import { lieuForBeneficiaire } from "@/lib/lieux-data";
 import { trLabel } from "@/lib/label-translate";
 import { eur, int, periodLead, cityDataDate, sourceLine, cityPortal, titleName } from "@/lib/entities/seo-text";
+import { fournisseurRelated } from "@/lib/entities/related";
+import { slugifyLabel } from "@/lib/projet-utils";
 
 type D = {
   fournisseur: NonNullable<ReturnType<typeof loadFournisseur>>;
@@ -21,7 +23,12 @@ type D = {
  * `city`. The lieu link is a Paris-only enrichment (gated), so a second city
  * degrades to the plain supplier history — never a broken link.
  */
-export function makeFournisseurConfig(city: string): EntityPageConfig<D> {
+export function makeFournisseurConfig(
+  city: string,
+  /** Href of the city's contract-category fiche, when the city has that route
+   *  (only the route file that owns the sibling category route passes it). */
+  categoryHref?: (category: string) => string,
+): EntityPageConfig<D> {
   const cityNom = getCity(city)?.nom ?? "la Ville";
   const base = `/fr/city/${city}/marches`;
   const isParis = city === "paris";
@@ -85,6 +92,7 @@ export function makeFournisseurConfig(city: string): EntityPageConfig<D> {
       answer: `${periodLead(f.yearsActive, "fr")} ${f.nom} a obtenu ${int(n, "fr")} marché${n > 1 ? "s" : ""} public${n > 1 ? "s" : ""} de la Ville de ${cityNom}, pour ${amt} au total (montants maximaux notifiés)${cat ? `, surtout en ${cat.toLowerCase()}` : ""}. ${sourceLine("fr", src, date)}`,
     };
   },
+  related: ({ fournisseur }, locale) => fournisseurRelated(fournisseur, city, locale, categoryHref),
   page: {
     header: ({ fournisseur }) => (
       <>
@@ -128,4 +136,7 @@ export function makeFournisseurConfig(city: string): EntityPageConfig<D> {
 }
 
 /** Paris supplier page — the original config, now via the factory. */
-export const fournisseurConfig: EntityPageConfig<D> = makeFournisseurConfig("paris");
+export const fournisseurConfig: EntityPageConfig<D> = makeFournisseurConfig(
+  "paris",
+  (category) => `/fr/city/paris/marches/categorie/${slugifyLabel(category)}`,
+);

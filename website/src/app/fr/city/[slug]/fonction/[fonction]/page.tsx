@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import "@/app/fusion.css";
-import { buildLocaleAwareMetadata } from "@/lib/seo";
+import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
+import RelatedLinks from "@/components/fiche/RelatedLinks";
+import { communeFonctionRelated } from "@/lib/commune-related";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import FonctionFiche from "@/components/fusion/FonctionFiche";
@@ -63,6 +65,7 @@ export default async function FonctionPage({ params }: { params: Promise<{ slug:
           <p className="fx-fonc-kicker">{r.doc.commune.nom}</p>
           <h1 className="fx-fonc-titre">{r.fonction.libelle}</h1>
           <FonctionFiche doc={r.doc} fonction={r.fonction} />
+          <RelatedLinks block={communeFonctionRelated(r.doc, r.fonction, await readLocale())} />
         </div>
       </main>
       <Footer />

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { CityPage } from "@/lib/us/sf-city-pages";
+import RelatedLinks, { type RelatedBlock } from "@/components/fiche/RelatedLinks";
 
 /**
  * ONE PAGE FOR A NEIGHBOURHOOD OR A STREET, AS A DOCUMENT.
@@ -10,7 +11,7 @@ import type { CityPage } from "@/lib/us/sf-city-pages";
  * send. Every line links to the scanned page it comes from, and the map is
  * one press away with the same fiche open.
  */
-export default function CityFichePage({ page }: { page: CityPage }) {
+export default function CityFichePage({ page, related }: { page: CityPage; related?: RelatedBlock | null }) {
   const p = page;
   const max = p.decades.reduce((m, d) => Math.max(m, d.n), 0);
   return (
@@ -113,6 +114,8 @@ export default function CityFichePage({ page }: { page: CityPage }) {
           <Link href="/us/city/sf/the-city">The whole city</Link>
         </p>
       </section>
+
+      <RelatedLinks block={related} />
     </div>
   );
 }
