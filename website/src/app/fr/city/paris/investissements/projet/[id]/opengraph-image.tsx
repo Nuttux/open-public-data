@@ -8,6 +8,12 @@ export const alt = "Projet d'investissement — Qipu";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
+/** Coupe un texte au dernier mot entier avant `n` caractères. Satori plante sur
+ *  `display: -webkit-box` dès que le texte se découpe en plusieurs morceaux
+ *  (glyphe absent de la police par défaut) : la coupe se fait donc ici, et le
+ *  bloc reste en flex. */
+const clip = (s: string, n: number) => (s.length > n ? `${s.slice(0, n - 1).replace(/\s+\S*$/, "")}…` : s);
+
 const suf = (n: number) => (n === 1 ? "er" : "ᵉ");
 
 const fmtEur = (n: number) => {
@@ -107,7 +113,7 @@ export default async function OG({ params }: { params: Promise<{ id: string }> }
           }}
         >
           <span>Investissement · Ville de Paris</span>
-          <span style={{ color: "#b8551c" }}>· {typo}</span>
+          {typo && typo !== "—" ? <span style={{ color: "#b8551c" }}>· {typo}</span> : null}
           <span>· {arr}</span>
         </div>
 
@@ -120,13 +126,11 @@ export default async function OG({ params }: { params: Promise<{ id: string }> }
             lineHeight: 1.05,
             letterSpacing: -2,
             maxWidth: 1050,
-            display: "-webkit-box",
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: "vertical",
+            display: "flex",
             overflow: "hidden",
           }}
         >
-          {nom}
+          {clip(nom, 75)}
         </div>
 
         {hook && (
@@ -137,33 +141,31 @@ export default async function OG({ params }: { params: Promise<{ id: string }> }
               lineHeight: 1.35,
               color: "#444",
               maxWidth: 1000,
-              display: "-webkit-box",
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: "vertical",
-              overflow: "hidden",
+              display: "flex",
+            overflow: "hidden",
             }}
           >
-            {hook}
+            {clip(hook, 150)}
           </div>
         )}
 
-        <div style={{ flex: 1 }} />
+        <div style={{ display: "flex", flex: 1 }} />
 
         <div style={{ display: "flex", alignItems: "flex-end", gap: 64 }}>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ fontSize: 16, color: "#666", letterSpacing: 2, textTransform: "uppercase" }}>
+            <div style={{ display: "flex", fontSize: 16, color: "#666", letterSpacing: 2, textTransform: "uppercase" }}>
               Montant voté
             </div>
-            <div style={{ fontSize: 96, fontWeight: 800, color: "#111", letterSpacing: -2, lineHeight: 1 }}>
+            <div style={{ display: "flex", fontSize: 96, fontWeight: 800, color: "#111", letterSpacing: -2, lineHeight: 1 }}>
               {total}
             </div>
           </div>
           {year && (
             <div style={{ display: "flex", flexDirection: "column" }}>
-              <div style={{ fontSize: 16, color: "#666", letterSpacing: 2, textTransform: "uppercase" }}>
+              <div style={{ display: "flex", fontSize: 16, color: "#666", letterSpacing: 2, textTransform: "uppercase" }}>
                 Exercice
               </div>
-              <div style={{ fontSize: 96, fontWeight: 800, color: "#111", letterSpacing: -2, lineHeight: 1 }}>
+              <div style={{ display: "flex", fontSize: 96, fontWeight: 800, color: "#111", letterSpacing: -2, lineHeight: 1 }}>
                 {year}
               </div>
             </div>
@@ -229,3 +231,4 @@ export default async function OG({ params }: { params: Promise<{ id: string }> }
     { ...size },
   );
 }
+

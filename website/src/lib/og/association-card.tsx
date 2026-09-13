@@ -3,6 +3,12 @@ import { ImageResponse } from "next/og";
 import { getCity } from "@/lib/cities";
 import { loadAssociation, loadSubventionVulgarization } from "@/lib/fusion-data";
 
+/** Coupe un texte au dernier mot entier avant `n` caractères. Satori plante sur
+ *  `display: -webkit-box` dès que le texte se découpe en plusieurs morceaux
+ *  (glyphe absent de la police par défaut) : la coupe se fait donc ici, et le
+ *  bloc reste en flex. */
+const clip = (s: string, n: number) => (s.length > n ? `${s.slice(0, n - 1).replace(/\s+\S*$/, "")}…` : s);
+
 export const ogSize = { width: 1200, height: 630 };
 
 const fmtEur = (n: number) => {
@@ -97,13 +103,11 @@ export async function renderAssociationOg(city: string, slug: string) {
             lineHeight: 1.05,
             letterSpacing: -2,
             maxWidth: 1050,
-            display: "-webkit-box",
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: "vertical",
+            display: "flex",
             overflow: "hidden",
           }}
         >
-          {nom}
+          {clip(nom, 70)}
         </div>
 
         {hook && (
@@ -114,41 +118,39 @@ export async function renderAssociationOg(city: string, slug: string) {
               lineHeight: 1.35,
               color: "#444",
               maxWidth: 1000,
-              display: "-webkit-box",
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: "vertical",
-              overflow: "hidden",
+              display: "flex",
+            overflow: "hidden",
             }}
           >
-            {hook}
+            {clip(hook, 150)}
           </div>
         )}
 
-        <div style={{ flex: 1 }} />
+        <div style={{ display: "flex", flex: 1 }} />
 
         <div style={{ display: "flex", alignItems: "flex-end", gap: 56 }}>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ fontSize: 16, color: "#666", letterSpacing: 2, textTransform: "uppercase" }}>
+            <div style={{ display: "flex", fontSize: 16, color: "#666", letterSpacing: 2, textTransform: "uppercase" }}>
               Cumul reçu
             </div>
-            <div style={{ fontSize: 96, fontWeight: 800, color: "#111", letterSpacing: -2, lineHeight: 1 }}>
+            <div style={{ display: "flex", fontSize: 96, fontWeight: 800, color: "#111", letterSpacing: -2, lineHeight: 1 }}>
               {total}
             </div>
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ fontSize: 16, color: "#666", letterSpacing: 2, textTransform: "uppercase" }}>
+            <div style={{ display: "flex", fontSize: 16, color: "#666", letterSpacing: 2, textTransform: "uppercase" }}>
               Subventions
             </div>
-            <div style={{ fontSize: 96, fontWeight: 800, color: "#111", letterSpacing: -2, lineHeight: 1 }}>
+            <div style={{ display: "flex", fontSize: 96, fontWeight: 800, color: "#111", letterSpacing: -2, lineHeight: 1 }}>
               {nb}
             </div>
           </div>
           {years && (
             <div style={{ display: "flex", flexDirection: "column" }}>
-              <div style={{ fontSize: 16, color: "#666", letterSpacing: 2, textTransform: "uppercase" }}>
+              <div style={{ display: "flex", fontSize: 16, color: "#666", letterSpacing: 2, textTransform: "uppercase" }}>
                 Actif
               </div>
-              <div style={{ fontSize: 42, fontWeight: 700, color: "#111", letterSpacing: -0.5, lineHeight: 1 }}>
+              <div style={{ display: "flex", fontSize: 42, fontWeight: 700, color: "#111", letterSpacing: -0.5, lineHeight: 1 }}>
                 {years}
               </div>
             </div>
@@ -174,3 +176,4 @@ export async function renderAssociationOg(city: string, slug: string) {
     { ...ogSize },
   );
 }
+
