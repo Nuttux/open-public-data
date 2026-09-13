@@ -1542,6 +1542,13 @@ export { slugifyBailleur };
 const BAILLEUR_SLUG_ALIASES: Record<string, string> = {
   "immobiliere-3f-i3f": "3f-residences",
   "icf-habitat-la-sabliere": "icf-habitat",
+  // Nom éditorial → nom de l'annexe hors bilan, dont l'URL est celle déjà
+  // liée depuis la page dette : sans ces lignes, chaque entité avait deux
+  // fiches, dont une sans ses emprunts garantis.
+  "batigere-habitat-idf": "batigere-habitat-ile-de-france",
+  "paris-metropole-amenagement": "paris-metropole-amenagem",
+  "fondation-sciences-po": "fondation-nationale-sciencespo",
+  "fondation-rothschild": "fondation-opth-a-rothschild",
 };
 
 export function canonicalBailleurSlug(name: string): string {
