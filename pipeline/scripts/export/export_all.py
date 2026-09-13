@@ -63,6 +63,10 @@ def main():
         ("export_evolution_data.py", "Évolution temporelle"),
         ("export_bilan_data.py", "Bilan Comptable"),
         ("export_subventions_data.py", "Subventions"),
+        # Absent de cette liste depuis sa création : les marchés de Paris
+        # n'étaient réécrits qu'à la main (dernière fois le 2026-09-08). La liste
+        # de la Ville s'arrête fin 2024 ; 2025 et 2026 viennent de la DECP.
+        ("export_marches_data.py", "Marchés publics (Ville + DECP)"),
         ("export_map_data.py", "Données Carte"),
         ("export_vote_vs_execute.py", "Voté vs Exécuté"),
         ("export_data_availability.py", "Data Availability"),

@@ -33,6 +33,10 @@ PROJECT_ID = "open-data-france-484717"
 DATASET = marts_dataset()
 OUTPUT_DIR = data_dir() / "marches-publics"
 
+# Les enveloppes sont arrondies au centime : une somme flottante BigQuery varie
+# au 12e chiffre d'un passage à l'autre, et ce bruit publiait un « changement »
+# chaque lundi sans donnée nouvelle.
+
 # Top N catégories à garder (le reste → "Autres")
 TOP_CATEGORIES = 12
 
@@ -172,7 +176,7 @@ def export_index(client: bigquery.Client):
     for row in client.query(query).result():
         totals_by_year[row.annee] = {
             "nb_marches": row.nb,
-            "enveloppe_max_totale": float(row.total),
+            "enveloppe_max_totale": round(float(row.total), 2),
         }
 
     index = {
@@ -202,7 +206,7 @@ def export_marches_year(client: bigquery.Client, year: int):
     output = {
         "year": year,
         "generated_at": datetime.now().isoformat(),
-        "enveloppe_max_totale": total,
+        "enveloppe_max_totale": round(total, 2),
         "nb_marches": len(data),
         "note": "montant_max = enveloppe pluriannuelle (plafond contractuel), pas une dépense annuelle.",
         "data": data,
