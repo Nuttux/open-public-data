@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useLocale, useT } from "@/lib/localeContext";
 import { sensDe } from "@/lib/ecart-mots";
+import { deNom } from "@/lib/nom-commune";
 import type { CommuneFonctions, FonctionLigne, FonctionPart } from "@/lib/commune-fonctions";
 
 /**
@@ -130,7 +131,7 @@ export default function FonctionFiche({
 
       {!embedded ? (
         <p className="fx-fonc-retour">
-          <Link href={`/fr/city/${doc.commune.slug}#a-quoi-sert`}>{fill("fx.fonc.retour", { nom })}</Link>
+          <Link href={`/fr/city/${doc.commune.slug}#a-quoi-sert`}>{fill("fx.fonc.retour", { nom, de_nom: deNom(nom) })}</Link>
         </p>
       ) : null}
     </div>

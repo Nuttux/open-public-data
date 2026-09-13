@@ -8,7 +8,7 @@ import ContratFiche from "@/components/fusion/ContratFiche";
 import { CityProvider } from "@/components/fusion/CityContext";
 import { V3Amt, V3Foot, V3Row, V3Section } from "@/components/fiche/v3";
 import { useT, useLocale } from "@/lib/localeContext";
-import { deNom } from "@/lib/nom-commune";
+import { aNom, deNom } from "@/lib/nom-commune";
 import type { ContratFiche as ContratFicheType } from "@/lib/fusion-data";
 import type { ContratLocal } from "./load";
 
@@ -141,7 +141,7 @@ export default function ContratCommuneClient({ commune, c, autres, coverageNote,
       ) : null}
 
       {autres.length ? (
-        <V3Section title={fill("fx.cc.h_autres", { qui: c.titulaire ?? "", nom: commune.nom })}>
+        <V3Section title={fill("fx.cc.h_autres", { qui: c.titulaire ?? "", nom: commune.nom, a_nom: aNom(commune.nom) })}>
           {autres.map((a) => (
             <V3Row key={a.slug} href={`/fr/city/${commune.slug}/marche/${a.slug}`} label={a.objet} sub={a.annee ? String(a.annee) : undefined} amount={<V3Amt {...split(a.montant)} />} />
           ))}
