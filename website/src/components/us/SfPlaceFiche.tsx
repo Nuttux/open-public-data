@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import type { SfPlaceFicheData, SfPlaceDoc } from "@/lib/us/sf-places-data";
-import { loadSfPlacesIndex } from "@/lib/us/sf-places-data";
+import { loadSfPlacesIndex, sfPlaceHeadline } from "@/lib/us/sf-places-data";
 import { deptSlug } from "@/lib/us/sf-budget-slugs";
 import { fmtUsd, fmtUsdCompact } from "@/lib/us/format";
 import { FicheArchiveShelf, FicheMore, type FicheArchiveDoc } from "@/components/fiche";
@@ -392,16 +392,8 @@ export default function SfPlaceFiche({ place }: { place: SfPlaceFicheData }) {
   // labelled by its own measure) — replaces the old dept-budget KPI that read
   // identically on every same-department fiche. Falls back to nothing when the
   // place has no place-level money (its story is then the archive + facility).
-  const cap = place.capital;
-  const headlineCandidates = [
-    cap?.measure_totals.bond_expended
-      ? { value: cap.measure_totals.bond_expended, label: "voter-bond capital spent on work here" }
-      : null,
-    cap?.payees_total_paid
-      ? { value: cap.payees_total_paid, label: "paid to contractors for work here" }
-      : null,
-  ].filter((x): x is { value: number; label: string } => x != null && x.value > 0);
-  const headline = headlineCandidates.sort((a, b) => b.value - a.value)[0] ?? null;
+  // The page <title> reads the same figure (sfPlaceHeadline).
+  const headline = sfPlaceHeadline(place.capital);
 
   const familyAll = loadSfPlacesIndex().filter((p) => p.slug !== place.slug);
   let related = familyAll.filter((p) => p.family === place.family);

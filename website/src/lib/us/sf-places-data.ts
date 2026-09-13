@@ -155,6 +155,33 @@ export type SfPlaceCapital = {
   payees_total_paid: number;
 } | null;
 
+/** The ONE place-specific money figure a place fiche leads with. */
+export type SfPlaceHeadline = {
+  value: number;
+  measure: "bond_expended" | "contract_paid";
+  /** As the fiche prints it under the figure. */
+  label: string;
+};
+
+/**
+ * The largest place-level figure across ledgers, labelled by its own measure
+ * (never summed: a bond pays the contract that does the work) — null when the
+ * place has no place-level money. The department budget is never a candidate:
+ * it reads the same on every fiche of that department. Shared by the fiche's
+ * headline (SfPlaceFiche) and its <title> (lib/us/sf-answers.ts placeAnswer),
+ * so the title can only carry the figure the page shows.
+ */
+export function sfPlaceHeadline(
+  cap: Pick<NonNullable<SfPlaceCapital>, "measure_totals" | "payees_total_paid"> | null,
+): SfPlaceHeadline | null {
+  const candidates: SfPlaceHeadline[] = [];
+  const bond = cap?.measure_totals.bond_expended ?? 0;
+  if (bond > 0) candidates.push({ value: bond, measure: "bond_expended", label: "voter-bond capital spent on work here" });
+  const paid = cap?.payees_total_paid ?? 0;
+  if (paid > 0) candidates.push({ value: paid, measure: "contract_paid", label: "paid to contractors for work here" });
+  return candidates.sort((a, b) => b.value - a.value)[0] ?? null;
+}
+
 export type SfPlaceFicheData = {
   slug: string;
   name: string;

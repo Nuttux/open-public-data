@@ -4,7 +4,7 @@ import LieuFiche from "@/components/fusion/LieuFiche";
 import LieuxVoisins from "@/components/fusion/LieuxVoisins";
 import type { EntityPageConfig } from "@/lib/entity-page";
 import { loadLieu, loadLieuxIndex } from "@/lib/lieux-data";
-import { dataDate, int, ordEn, ordFr, sourceLine, type SeoAnswer } from "@/lib/entities/seo-text";
+import { clip, dataDate, eur, int, ordEn, ordFr, sourceLine, type SeoAnswer } from "@/lib/entities/seo-text";
 
 type D = { lieu: NonNullable<ReturnType<typeof loadLieu>> };
 
@@ -34,20 +34,32 @@ function lieuAnswer(lieu: D["lieu"], locale: "fr" | "en"): SeoAnswer {
   const nBmo = lieu.bmo_extraits?.length ?? 0;
   const depuis = lieu.seuil_commun;
   const bits: string[] = [];
+  // Titre : le nom, puis le premier chiffre de la phrase (l'argent, sinon les
+  // délibérations) ; sans l'un ni l'autre, l'arrondissement que la fiche affiche.
+  const name = clip(lieu.name, 38);
+  const arr = lieu.arrondissement > 0 ? (locale === "en" ? ordEn(lieu.arrondissement) : ordFr(lieu.arrondissement)) : null;
   if (locale === "en") {
-    if (euros > 0) bits.push(`${money(euros, "en")} of City money${depuis ? ` since ${depuis}` : ""}`);
+    if (euros > 0) bits.push(`${eur(euros, "en")} of City money${depuis ? ` since ${depuis}` : ""}`);
     if (n > 0) bits.push(`${int(n, "en")} Paris Council deliberation${n > 1 ? "s" : ""}`);
     if (nBmo > 0) bits.push("municipal bulletin extracts");
     return {
-      title: `${lieu.name}: what the City of Paris decided and invested there`,
+      title: euros > 0
+        ? `${name}: ${eur(euros, "en")} of City money (Paris)`
+        : n > 0
+          ? `${name}: ${int(n, "en")} Paris Council deliberation${n > 1 ? "s" : ""}`
+          : `${name}, Paris${arr ? ` ${arr} arrondissement` : ""}`,
       answer: `${lieu.name} (${kind.toLowerCase()}${where}): ${liste(bits, "en")}, every fact linked to its source. ${sourceLine("en", src, date)}`,
     };
   }
-  if (euros > 0) bits.push(`${money(euros, "fr")} d’argent public${depuis ? ` depuis ${depuis}` : ""}`);
+  if (euros > 0) bits.push(`${eur(euros, "fr")} d’argent public${depuis ? ` depuis ${depuis}` : ""}`);
   if (n > 0) bits.push(`${int(n, "fr")} délibération${n > 1 ? "s" : ""} du Conseil de Paris`);
   if (nBmo > 0) bits.push("des extraits du Bulletin municipal officiel");
   return {
-    title: `${lieu.name} : ce que la Ville de Paris y a décidé et investi`,
+    title: euros > 0
+      ? `${name} : ${eur(euros, "fr")} d’argent public (Paris)`
+      : n > 0
+        ? `${name} : ${int(n, "fr")} délibération${n > 1 ? "s" : ""} du Conseil de Paris`
+        : `${name}, Paris${arr ? ` ${arr}` : ""}`,
     answer: `${lieu.name} (${kind.toLowerCase()}${where}) : ${liste(bits, "fr")}, chaque fait relié à sa source. ${sourceLine("fr", src, date)}`,
   };
 }
@@ -60,13 +72,6 @@ function liste(bits: string[], locale: "fr" | "en"): string {
   return bits.slice(0, -1).join(", ") + et + bits[bits.length - 1];
 }
 
-/** Un montant arrondi, lisible dans une phrase. */
-function money(n: number, locale: "fr" | "en"): string {
-  const l = locale === "en" ? "en-GB" : "fr-FR";
-  if (n >= 1e9) return `${new Intl.NumberFormat(l, { maximumFractionDigits: 1 }).format(n / 1e9)} ${locale === "en" ? "bn €" : "Md €"}`;
-  if (n >= 1e6) return `${new Intl.NumberFormat(l, { maximumFractionDigits: 1 }).format(n / 1e6)} M €`;
-  return `${new Intl.NumberFormat(l, { maximumFractionDigits: 0 }).format(n / 1000)} k €`;
-}
 
 export const lieuConfig: EntityPageConfig<D> = {
   load: ({ slug }) => {

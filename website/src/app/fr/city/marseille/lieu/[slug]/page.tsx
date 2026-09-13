@@ -31,9 +31,7 @@ export async function generateMetadata({
   }
   const canonical = `/fr/city/marseille/lieu/${place.slug}`;
   const kind = locale === "en" ? place.kind_en : place.kind_fr;
-  const title = locale === "en"
-    ? `${place.name} — Marseille · Qipu`
-    : `${place.name} — Marseille · Qipu`;
+  const title = `${place.name} — Marseille`;
   const description = locale === "en" ? place.desc_en : place.desc_fr;
   return {
     title,
