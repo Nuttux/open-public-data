@@ -14,6 +14,8 @@ import { fmtUsdCompact } from "@/lib/us/format";
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { budgetCharacterAnswer } from "@/lib/us/sf-answers";
 import PageJsonLd from "@/components/seo/PageJsonLd";
+import RelatedLinks from "@/components/fiche/RelatedLinks";
+import { sfCharacterRelated } from "@/lib/us/sf-related";
 
 type Params = { slug: string };
 type SP = { year?: string; side?: string };
@@ -77,6 +79,7 @@ export default async function SfCharacterPage({
       </section>
       <div className="fx-fiche-wrap">
         <SfCharacterFiche c={c} />
+        <RelatedLinks block={sfCharacterRelated(c)} />
       </div>
     </main>
   );

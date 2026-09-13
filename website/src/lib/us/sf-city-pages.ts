@@ -352,6 +352,70 @@ export async function streetPage(slug: string): Promise<CityPage | null> {
   };
 }
 
+/* ── SEE ALSO ────────────────────────────────────────────────────────────── */
+
+export interface RelatedCityPage {
+  readonly slug: string;
+  readonly name: string;
+  readonly count: string;
+  /** decisions on record, for ordering */
+  readonly n?: number;
+  /** a street that opens on the same block of the map as this one */
+  readonly sameBlock?: boolean;
+}
+
+/**
+ * The neighbourhoods next to this one in the ranking by decisions on record —
+ * the hood-facts file the page itself opens, nothing more.
+ */
+export async function hoodNeighbourPages(slug: string, max = 5): Promise<RelatedCityPage[]> {
+  const facts = await hoodFacts();
+  const ranked = (facts?.hoods ?? []).slice().sort((a, b) => b.record.n - a.record.n);
+  const at = ranked.findIndex((h) => hoodSlug(h.name) === slug);
+  if (at < 0) return [];
+  const out: RelatedCityPage[] = [];
+  for (let d = 1; out.length < max && (at - d >= 0 || at + d < ranked.length); d++) {
+    for (const i of [at - d, at + d]) {
+      const h = ranked[i];
+      if (h && out.length < max) out.push({ slug: hoodSlug(h.name), name: h.name, count: h.record.n.toLocaleString("en-US"), n: h.record.n });
+    }
+  }
+  return out.sort((a, b) => (b.n ?? 0) - (a.n ?? 0));
+}
+
+/**
+ * The streets that open on the same block of the map as this one, then its
+ * neighbours in the ranking by decisions on record — both read off the street
+ * index the page opens, so no neighbourhood record is loaded for a street.
+ */
+export async function streetRelatedPages(slug: string, max = 4): Promise<RelatedCityPage[]> {
+  const streets = await streetIndex();
+  if (!streets) return [];
+  const cap = await streetCap();
+  const live = Object.entries(streets.n).filter(([, n]) => n > 0);
+  const file = live.find(([f]) => streetSlug(f) === slug)?.[0];
+  if (!file) return [];
+  const page = (f: string, sameBlock = false): RelatedCityPage => ({ slug: streetSlug(f), name: streetLabelFromFile(f), count: countLabel(streets.n[f], cap), n: streets.n[f], sameBlock });
+  const block = streets.b?.[file];
+  const out: RelatedCityPage[] = block
+    ? live.filter(([f]) => f !== file && streets.b?.[f] === block).sort((a, b) => b[1] - a[1]).slice(0, max).map(([f]) => page(f, true))
+    : [];
+  const ranked = live.sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+  const at = ranked.findIndex(([f]) => f === file);
+  const taken = new Set([file, ...out.map((p) => p.slug)]);
+  for (let d = 1; out.length < max && (at - d >= 0 || at + d < ranked.length); d++) {
+    for (const i of [at - d, at + d]) {
+      const f = ranked[i]?.[0];
+      if (f && out.length < max && !taken.has(f) && !taken.has(streetSlug(f))) {
+        taken.add(f);
+        out.push(page(f));
+      }
+    }
+  }
+  // Same-block streets first, then the ranking neighbours, each by record size.
+  return out.sort((a, b) => Number(b.sameBlock) - Number(a.sameBlock) || (b.n ?? 0) - (a.n ?? 0));
+}
+
 /* ── THE ANSWER, FOR THE TITLE AND THE DESCRIPTION ───────────────────────── */
 
 export function cityPageAnswer(p: CityPage): { title: string; answer: string } {

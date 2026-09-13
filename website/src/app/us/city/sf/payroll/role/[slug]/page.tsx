@@ -8,6 +8,8 @@ import { loadSfPayrollRole, sfPayrollRoleSlugs } from "@/lib/us/sf-payroll-entit
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { payrollRoleAnswer } from "@/lib/us/sf-answers";
 import PageJsonLd from "@/components/seo/PageJsonLd";
+import RelatedLinks from "@/components/fiche/RelatedLinks";
+import { sfPayrollRoleRelated } from "@/lib/us/sf-related";
 
 type Params = { slug: string };
 
@@ -50,6 +52,7 @@ export default async function SfPayrollRolePage({ params }: { params: Promise<Pa
       </section>
       <div className="fx-fiche-wrap">
         <SfPayrollRoleFiche d={d} />
+        <RelatedLinks block={sfPayrollRoleRelated(d)} />
       </div>
     </main>
   );

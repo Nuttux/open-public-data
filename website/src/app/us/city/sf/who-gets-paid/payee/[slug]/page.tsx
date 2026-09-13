@@ -9,6 +9,8 @@ import { loadSfCategorySlugMap, loadSfDeptHrefs } from "@/lib/us/sf-category-lin
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { payeeAnswer } from "@/lib/us/sf-answers";
 import PageJsonLd from "@/components/seo/PageJsonLd";
+import RelatedLinks from "@/components/fiche/RelatedLinks";
+import { sfPayeeRelated } from "@/lib/us/sf-related";
 
 type Params = { slug: string };
 
@@ -55,6 +57,7 @@ export default async function SfPayeePage({ params }: { params: Promise<Params> 
           categorySlugs={loadSfCategorySlugMap()}
           deptHrefs={loadSfDeptHrefs()}
         />
+        <RelatedLinks block={sfPayeeRelated(payee)} />
       </div>
     </main>
   );

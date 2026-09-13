@@ -15,6 +15,8 @@ import { deptSlug } from "@/lib/us/sf-budget-slugs";
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { budgetDeptCharacterAnswer } from "@/lib/us/sf-answers";
 import PageJsonLd from "@/components/seo/PageJsonLd";
+import RelatedLinks from "@/components/fiche/RelatedLinks";
+import { sfDeptCharacterRelated } from "@/lib/us/sf-related";
 
 type Params = { slug: string; charSlug: string };
 type SP = { year?: string; side?: string };
@@ -82,6 +84,7 @@ export default async function SfDeptCharacterPage({
       </section>
       <div className="fx-fiche-wrap">
         <SfDeptCharacterFiche d={d} vendorSlugMap={vendorSlugMap} />
+        <RelatedLinks block={sfDeptCharacterRelated(d)} />
       </div>
     </main>
   );

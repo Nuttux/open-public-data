@@ -9,6 +9,8 @@ import { typeLabel } from "../../us-sf-contracts-types";
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { contractTypeAnswer } from "@/lib/us/sf-answers";
 import PageJsonLd from "@/components/seo/PageJsonLd";
+import RelatedLinks from "@/components/fiche/RelatedLinks";
+import { sfContractTypeRelated } from "@/lib/us/sf-related";
 
 type Params = { slug: string };
 
@@ -52,6 +54,7 @@ export default async function SfContractTypePage({ params }: { params: Promise<P
       </section>
       <div className="fx-fiche-wrap">
         <SfContractTypeFiche d={d} />
+        <RelatedLinks block={sfContractTypeRelated(d)} />
       </div>
     </main>
   );

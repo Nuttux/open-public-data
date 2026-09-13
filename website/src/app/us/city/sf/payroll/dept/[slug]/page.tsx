@@ -8,6 +8,8 @@ import { loadSfPayrollDept, sfPayrollDeptSlugs } from "@/lib/us/sf-payroll-entit
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { payrollDeptAnswer } from "@/lib/us/sf-answers";
 import PageJsonLd from "@/components/seo/PageJsonLd";
+import RelatedLinks from "@/components/fiche/RelatedLinks";
+import { sfPayrollDeptRelated } from "@/lib/us/sf-related";
 
 type Params = { slug: string };
 
@@ -52,6 +54,7 @@ export default async function SfPayrollDeptPage({ params }: { params: Promise<Pa
       </section>
       <div className="fx-fiche-wrap">
         <SfPayrollDeptFiche d={d} />
+        <RelatedLinks block={sfPayrollDeptRelated(d)} />
       </div>
     </main>
   );
