@@ -548,7 +548,11 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
                   <span key={i}>
                     {i > 0 ? " " : ""}
                     {cap(fill(t("fx.lieu.avant_seuil"), {
-                      m: eurTxt(h.montant), l: h.label, a: Math.min(...ys), b: Math.max(...ys), s: seuil,
+                      m: eurTxt(h.montant), l: h.label, s: seuil,
+                      // « 2009–2009 » s'affichait quand tout tombait la même année.
+                      p: Math.min(...ys) === Math.max(...ys)
+                        ? fill(t("fx.lieu.periode_un"), { a: Math.min(...ys) })
+                        : fill(t("fx.lieu.periode_deux"), { a: Math.min(...ys), b: Math.max(...ys) }),
                     }))}
                   </span>
                 );
