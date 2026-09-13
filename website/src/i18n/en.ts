@@ -6615,6 +6615,21 @@ const en: Record<string, string> = {
   'br.recife.related.same_orgao': 'Paid by the same department: {orgao}',
   'br.recife.related.hub_quem': 'Who receives money from the City of Recife',
   'br.recife.related.hub_quem_sub': 'Every organisation paid, by theme and by year',
+
+  // ── US · SF see also — EN-only (values mirrored verbatim in the other locale file) ──
+  'us.sf.related.title': 'See also',
+  'us.sf.related.contract_sub': 'The contractor\'s other contracts and payments, and the department and contract type this one belongs to.',
+  'us.sf.related.contract_fallback': 'Contract {no}',
+  'us.sf.related.same_prime': 'Same contractor',
+  'us.sf.related.same_prime_dept': 'Same contractor, {dept}',
+  'us.sf.related.payee': 'What the City paid {name}',
+  'us.sf.related.payee_sub': 'Payments to this vendor, year by year and by paying department',
+  'us.sf.related.dept_contracts': '{dept}: every active contract',
+  'us.sf.related.dept_contracts_sub': 'What the department buys, and from whom',
+  'us.sf.related.type': '{type}: every contract of this type',
+  'us.sf.related.type_sub': 'Agreed amount across the supplier register',
+  'us.sf.related.same_dept_type': 'Same department and contract type',
+  'us.sf.related.same_dept_type_prime': 'Same department and contract type, {prime}',
 };
 
 export default en;
