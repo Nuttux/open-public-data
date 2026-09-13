@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T00:34:52.388738+00:00",
+ "generated_at": "2026-09-13T00:47:48.531499+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "cite-internationale-des-arts",
  "name": "Cité internationale des arts",
@@ -17,6 +17,7 @@
   "source": "Wikipédia"
  },
  "seuil_commun": 2010,
+ "premier_exercice_investissement": 2009,
  "wiki": {
   "extract": "La Cité internationale des arts, fondation reconnue d'utilité publique, est une résidence d'artistes située à Paris (France), ayant pour mission de favoriser le travail de recherche et de création d'artistes contemporains internationaux dans toutes les disciplines : arts visuels, musique, spectacle vivant, architecture ou encore écriture.",
   "url": "https://fr.wikipedia.org/wiki/Cit%C3%A9_internationale_des_arts",

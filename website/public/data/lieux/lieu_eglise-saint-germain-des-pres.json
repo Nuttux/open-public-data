@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T00:34:52.388738+00:00",
+ "generated_at": "2026-09-13T00:47:48.531499+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "eglise-saint-germain-des-pres",
  "name": "Église Saint-Germain-des-Prés",
@@ -17,6 +17,7 @@
   "source": "Wikimedia Commons"
  },
  "seuil_commun": 2010,
+ "premier_exercice_investissement": 2009,
  "wiki": {
   "extract": "L'abbaye Saint-Germain-des-Prés, qui comprend l'actuelle église Saint-Germain-des-Prés, est une ancienne abbaye bénédictine de Paris (France), située 3 place Saint-Germain-des-Prés dans l'actuel 6e arrondissement. Fondée au milieu du VIe siècle sous le nom de basilique Sainte-Croix et Saint-Vincent par le roi mérovingien Childebert Ier et saint Germain, évêque de Paris, elle doit son nom actuel à ce dernier.",
   "url": "https://fr.wikipedia.org/wiki/Abbaye_de_Saint-Germain-des-Pr%C3%A9s",

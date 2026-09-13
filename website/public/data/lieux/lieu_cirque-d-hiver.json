@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T00:34:52.388738+00:00",
+ "generated_at": "2026-09-13T00:47:48.531499+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "cirque-d-hiver",
  "name": "Cirque d'Hiver",
@@ -17,6 +17,7 @@
   "source": "Wikipédia"
  },
  "seuil_commun": 2010,
+ "premier_exercice_investissement": 2009,
  "wiki": {
   "extract": "Le cirque d'hiver de Paris, souvent appelé simplement le Cirque d'Hiver, ou encore le Cirque d'hiver Bouglione depuis son achat par la famille Bouglione en 1934, est une salle de spectacle située 110 rue Amelot dans le 11e arrondissement de Paris. Construit en 1852 par l'architecte Jacques Hittorff, il a été successivement appelé « cirque Napoléon » puis « Cirque national ». Il est inscrit au titre des monuments historiques depuis le 10 février 1975.",
   "url": "https://fr.wikipedia.org/wiki/Cirque_d'Hiver_(Paris)",

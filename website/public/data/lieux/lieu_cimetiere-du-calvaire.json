@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T00:34:52.388738+00:00",
+ "generated_at": "2026-09-13T00:47:48.531499+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "cimetiere-du-calvaire",
  "name": "Cimetière du Calvaire",
@@ -17,6 +17,7 @@
   "source": "Wikimedia Commons"
  },
  "seuil_commun": 2010,
+ "premier_exercice_investissement": 2009,
  "wiki": {
   "extract": "Situé au sommet de la butte Montmartre, le cimetière du Calvaire, ou cimetière de Saint-Pierre-du-Calvaire, est avec celui de Charonne l'un des deux derniers cimetières parisiens jouxtant une église paroissiale.\nAvec une superficie d'environ 600 m2, il est le plus petit de tous les cimetières parisiens.",
   "url": "https://fr.wikipedia.org/wiki/Cimeti%C3%A8re_du_Calvaire",

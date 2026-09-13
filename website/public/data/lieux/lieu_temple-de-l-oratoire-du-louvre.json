@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T00:34:52.388738+00:00",
+ "generated_at": "2026-09-13T00:47:48.531499+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "temple-de-l-oratoire-du-louvre",
  "name": "Temple de l'Oratoire du Louvre",
@@ -17,6 +17,7 @@
   "source": "Wikimedia Commons"
  },
  "seuil_commun": 2010,
+ "premier_exercice_investissement": 2009,
  "wiki": {
   "extract": "Le temple protestant de l’Oratoire du Louvre est un lieu de culte situé 145 rue Saint-Honoré dans le 1er arrondissement de Paris. C'est une ancienne église catholique, siège de la Congrégation de l'Oratoire de France, élevée par Louis XIII au titre de chapelle royale du palais du Louvre en 1624. Désaffectée à la Révolution française, elle devient en 1811 sous Napoléon Ier le siège du consistoire réformé de Paris. La paroisse est membre de l'Église protestante unie de France, engagée dans le christianisme social et la théologie libérale.",
   "url": "https://fr.wikipedia.org/wiki/Temple_protestant_de_l'Oratoire_du_Louvre",

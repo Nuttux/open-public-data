@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T00:34:52.388738+00:00",
+ "generated_at": "2026-09-13T00:47:48.531499+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "cimetiere-de-belleville",
  "name": "Cimetière de Belleville",
@@ -17,6 +17,7 @@
   "source": "Wikimedia Commons"
  },
  "seuil_commun": 2010,
+ "premier_exercice_investissement": 2009,
  "wiki": {
   "extract": "Le cimetière de Belleville est situé dans le quartier de quartier de Belleville à l'angle de la rue de Belleville et de la rue du Télégraphe dans le 20e arrondissement de Paris. Ce cimetière de 1,80 hectare de superficie accueille 3 210 concessions.",
   "url": "https://fr.wikipedia.org/wiki/Cimeti%C3%A8re_de_Belleville",

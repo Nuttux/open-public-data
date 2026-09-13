@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T00:34:52.388738+00:00",
+ "generated_at": "2026-09-13T00:47:48.531499+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "ecole-estienne",
  "name": "École Estienne",
@@ -17,6 +17,7 @@
   "source": "Wikipédia"
  },
  "seuil_commun": 2010,
+ "premier_exercice_investissement": 2009,
  "wiki": {
   "extract": "L’école Estienne, dénomination courante de l’École supérieure des arts et industries graphiques (ESAIG), est un établissement français d’enseignement supérieur public situé au 18, boulevard Auguste-Blanqui dans le 13e arrondissement de Paris, non loin de la Butte-aux-Cailles. Elle forme de jeunes créateurs dans les métiers de l’imprimerie, du design de communication et des métiers d’art du livre. Elle offre l'une des 28 formations reconnues du Réseau des écoles françaises de cinéma d’animation (RECA).",
   "url": "https://fr.wikipedia.org/wiki/%C3%89cole_Estienne",

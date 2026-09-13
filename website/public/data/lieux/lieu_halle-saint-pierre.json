@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T00:34:52.388738+00:00",
+ "generated_at": "2026-09-13T00:47:48.531499+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "halle-saint-pierre",
  "name": "Halle Saint-Pierre",
@@ -17,6 +17,7 @@
   "source": "Wikipédia"
  },
  "seuil_commun": 2010,
+ "premier_exercice_investissement": 2009,
  "wiki": {
   "extract": "La Halle Saint-Pierre est un musée consacré à l'art naïf, l'art brut, l'art singulier et l'art outsider. Il est situé à Paris, au pied de la butte Montmartre dans une ancienne halle de style Baltard, ayant autrefois abrité un marché, une école, puis un garage du service municipal de la propreté.",
   "url": "https://fr.wikipedia.org/wiki/Halle_Saint-Pierre",

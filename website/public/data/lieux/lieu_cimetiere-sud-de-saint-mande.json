@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T00:34:52.388738+00:00",
+ "generated_at": "2026-09-13T00:47:48.531499+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "cimetiere-sud-de-saint-mande",
  "name": "Cimetière Sud de Saint-Mandé",
@@ -17,6 +17,7 @@
   "source": "Wikimedia Commons"
  },
  "seuil_commun": 2010,
+ "premier_exercice_investissement": 2009,
  "wiki": {
   "extract": "Le cimetière Sud de Saint-Mandé est un cimetière situé au 25, rue du Général-Archinard entre l'avenue du Général-Messimy et le boulevard périphérique dans le quartier de Bel-Air du 12e arrondissement de Paris. Il est historiquement rattaché, et dépend encore aujourd'hui, de la commune de Saint-Mandé située au-delà du boulevard périphérique. Le cimetière s'étend sur 3,03 hectares et accueille environ 4 000 à 5 000 concessions.",
   "url": "https://fr.wikipedia.org/wiki/Cimeti%C3%A8re_Sud_de_Saint-Mand%C3%A9",

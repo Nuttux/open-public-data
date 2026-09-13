@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T00:34:52.388738+00:00",
+ "generated_at": "2026-09-13T00:47:48.531499+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "eglise-de-la-madeleine",
  "name": "Église de la Madeleine",
@@ -17,6 +17,7 @@
   "source": "Wikipédia"
  },
  "seuil_commun": 2010,
+ "premier_exercice_investissement": 2009,
  "wiki": {
   "extract": "L’église de la Madeleine est une église paroissiale catholique située sur la place de la Madeleine, dans le 8e arrondissement de Paris. Elle constitue une illustration du style architectural néo-classique, notamment grâce à son portique octostyle et aux 52 colonnes corinthiennes qui la ceinturent.",
   "url": "https://fr.wikipedia.org/wiki/%C3%89glise_de_la_Madeleine",

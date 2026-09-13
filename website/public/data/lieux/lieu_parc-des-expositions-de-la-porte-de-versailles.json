@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T00:34:52.388738+00:00",
+ "generated_at": "2026-09-13T00:47:48.531499+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-des-expositions-de-la-porte-de-versailles",
  "name": "Parc des expositions de la Porte de Versailles",
@@ -17,6 +17,7 @@
   "source": "Wikimedia Commons"
  },
  "seuil_commun": 2010,
+ "premier_exercice_investissement": 2009,
  "wiki": {
   "extract": "Le parc des expositions de la porte de Versailles, ou Paris Expo Porte de Versailles, est le deuxième plus grand parc des expositions français après le parc des expositions de Paris-Nord Villepinte. Il est situé sur les territoires du quartier Saint-Lambert du 15e arrondissement de Paris et des communes d'Issy-les-Moulineaux et de Vanves, dans les Hauts-de-Seine. Il s'étend des deux côtés du boulevard périphérique, de la porte d'Issy, à l'ouest, à la porte de la Plaine, à l'est, l'entrée principale se situant place de la Porte-de-Versailles, à la jonction de deux des boulevards des Maréchaux : Lefebvre et Victor. Le parc des expositions est géré par la société Viparis depuis 1987.",
   "url": "https://fr.wikipedia.org/wiki/Paris_Expo_Porte_de_Versailles",

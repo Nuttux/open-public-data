@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T00:34:52.388738+00:00",
+ "generated_at": "2026-09-13T00:47:48.531499+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "ecole-des-ingenieurs-de-la-ville-de-paris",
  "name": "École des ingénieurs de la ville de Paris",
@@ -17,6 +17,7 @@
   "source": "Wikipédia"
  },
  "seuil_commun": 2010,
+ "premier_exercice_investissement": 2009,
  "wiki": {
   "extract": "L’École des ingénieurs de la ville de Paris (EIVP) est l'une des 204 écoles d'ingénieurs françaises accréditées au 1er septembre 2020 à délivrer un diplôme d'ingénieur. En janvier 2020, l'EIVP est l'un des fondateurs de l'université Gustave-Eiffel qui se classe parmi les premières universités françaises en génie civil et dans les domaines des transports.",
   "url": "https://fr.wikipedia.org/wiki/%C3%89cole_des_ing%C3%A9nieurs_de_la_ville_de_Paris",
