@@ -188,10 +188,10 @@ if should_run dbt; then
         fi
         # Exclusions optionnelles via env var (utilisé en CI pour skip
         # marseille WIP qui n'a pas de source raw publiée).
-        DBT_EXCLUDE_FLAG=""
-        if [[ -n "${DBT_RUN_EXCLUDE:-}" ]]; then
-            DBT_EXCLUDE_FLAG="--exclude $DBT_RUN_EXCLUDE"
-        fi
+        # Les communes de France ont leur propre tâche (run_national.sh) : leurs
+        # modèles lisent ~10 Go par passage et un échec national ne doit jamais
+        # bloquer la publication de Paris.
+        DBT_EXCLUDE_FLAG="--exclude path:models/national path:tests/cat4_accounting_balance/assert_budget_national_reconciliation.sql ${DBT_RUN_EXCLUDE:-}"
         run_step "dbt run" bash -c "cd '$PIPELINE_DIR' && dbt run $DBT_TARGET_FLAG $DBT_EXCLUDE_FLAG"
         # Les tests dbt (unicité, réconciliation core ↔ staging, freshness,
         # valeurs acceptées…) ne tournent qu'en --strict : c'est le juge qui

@@ -2,12 +2,18 @@ version: 2
 
 models:
   - name: core_budget_national
-    description: "Budget national dénormalisé - agrégé par (ville, année, catégorie M57)"
+    description: "Budget national par nature (flux signés) - grain (insee, siren, année, section, sens, groupe, catégorie). Axe NATURE (M14/M57), pas fonction."
     columns:
-      - name: commune_slug
+      - name: code_insee
+        tests: [not_null]
+      - name: siren
         tests: [not_null]
       - name: annee
         tests: [not_null]
+      - name: sens_flux
+        tests:
+          - accepted_values:
+              values: ['Depense', 'Recette']
 
   - name: core_bilan_national
     description: "Bilan patrimonial national - actif/passif par ville et année"

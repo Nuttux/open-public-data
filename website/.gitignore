@@ -9,3 +9,14 @@ playwright-report/
 
 # scripts/trace: measured reads per route (regenerated)
 /.trace/
+
+# Exports nationaux par commune (pipeline/run_national.sh et les export_*_national.py) :
+# un dossier par commune, servi par le bucket privé gs://qipu-communes-budget et lu
+# côté serveur. Seuls les manifestes (src/data/communes-*-manifest.json) sont commités.
+# communes/ et communes-all/ (l'index) restent suivis.
+/public/data/communes-budget/
+/public/data/communes-evolution/
+/public/data/communes-investissements/
+/public/data/communes-marches/
+/public/data/communes-chantiers/
+/public/data/communes-fonctions/

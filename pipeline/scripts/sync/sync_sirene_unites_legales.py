@@ -1,0 +1,107 @@
+#!/usr/bin/env python3
+"""
+National ingest — SIRENE unités légales → raw_national.sirene_unites_legales.
+
+Pourquoi : savoir si un titulaire de marché public est une personne physique
+(entrepreneur individuel, catégorie juridique 1000) pour ne jamais lui faire
+une fiche ni l'afficher nommément (règle vie privée du site, même règle que
+pour les bénéficiaires de subventions).
+
+Source : INSEE, base Sirene, fichier StockUniteLegale (parquet, data.gouv.fr),
+licence ouverte. ~25 M unités légales. On ne garde que les colonnes utiles au
+site ; la table raw reste une copie fidèle de ces colonnes.
+
+Usage :
+    python scripts/sync/sync_sirene_unites_legales.py            # télécharge puis charge
+    python scripts/sync/sync_sirene_unites_legales.py --file /tmp/stock-stockunitelegale-parquet.parquet
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import subprocess
+import sys
+import urllib.request
+from pathlib import Path
+
+import pyarrow.parquet as pq
+import pyarrow.csv as pcsv
+
+PROJECT_ID = "open-data-france-484717"
+DATASET_ID = "raw_national"
+TABLE = "sirene_unites_legales"
+DATASET_API = "https://www.data.gouv.fr/api/1/datasets/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/"
+
+COLUMNS = [
+    "siren",
+    "categorieJuridiqueUniteLegale",
+    "etatAdministratifUniteLegale",
+    "denominationUniteLegale",
+    "activitePrincipaleUniteLegale",
+    "categorieEntreprise",
+]
+BQ_SCHEMA = (
+    "siren:STRING,categorie_juridique:STRING,etat_administratif:STRING,"
+    "denomination:STRING,activite_principale:STRING,categorie_entreprise:STRING"
+)
+
+ROOT = Path(__file__).resolve().parents[2]
+CACHE_DIR = ROOT / "cache" / "wip" / "national" / "sirene"
+
+
+def latest_parquet_url() -> str:
+    with urllib.request.urlopen(DATASET_API, timeout=60) as r:
+        d = json.load(r)
+    for res in d["resources"]:
+        t = res.get("title") or ""
+        if "StockUniteLegale" in t and "Historique" not in t and res.get("format") == "parquet":
+            return res["url"]
+    raise SystemExit("StockUniteLegale parquet introuvable sur data.gouv")
+
+
+def download(url: str) -> Path:
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    out = CACHE_DIR / "stock-stockunitelegale.parquet"
+    print(f"  téléchargement → {out}")
+    urllib.request.urlretrieve(url, out)
+    print(f"  {out.stat().st_size / 1e6:.0f} MB")
+    return out
+
+
+def to_csv(parquet: Path) -> Path:
+    """Projette les colonnes utiles en CSV (bq load n'accepte pas de projection parquet)."""
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    out = CACHE_DIR / "sirene_unites_legales.csv"
+    table = pq.read_table(parquet, columns=COLUMNS)
+    table = table.rename_columns(
+        ["siren", "categorie_juridique", "etat_administratif", "denomination",
+         "activite_principale", "categorie_entreprise"]
+    )
+    pcsv.write_csv(table, out)
+    print(f"  {table.num_rows:,} unités légales → {out.name} ({out.stat().st_size / 1e6:.0f} MB)")
+    return out
+
+
+def bq_load(csv_path: Path) -> None:
+    cmd = [
+        "bq", "load", "--replace", "--source_format=CSV", "--skip_leading_rows=1",
+        "--allow_quoted_newlines", f"--project_id={PROJECT_ID}",
+        f"{DATASET_ID}.{TABLE}", str(csv_path), BQ_SCHEMA,
+    ]
+    print("  bq load (replace) …")
+    subprocess.run(cmd, check=True)
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--file", type=Path, help="parquet StockUniteLegale déjà téléchargé")
+    args = ap.parse_args()
+    parquet = args.file or download(latest_parquet_url())
+    csv_path = to_csv(parquet)
+    bq_load(csv_path)
+    print(f"✓ {PROJECT_ID}.{DATASET_ID}.{TABLE}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

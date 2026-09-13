@@ -1,0 +1,194 @@
+# =============================================================================
+# Refresh national — les communes de France, chaque semaine, sans intervention.
+#
+# Séparé du refresh de Paris (enrich-pipeline.yml, le lundi) : les modèles
+# nationaux lisent ~10 Go par passage et un échec national ne doit jamais
+# bloquer la publication de Paris.
+#
+# Chaque mardi :
+#   refresh : pipeline/run_national.sh --cadence=weekly
+#             DECP nouvelle ? → dbt (marchés) + tests → export --all →
+#             contrôle du manifeste → envoi au bucket privé (lu par le site).
+#             DECP inchangée → rien d'autre ne tourne.
+#   publish : le manifeste (website/src/data/communes-marches-manifest.json)
+#             passe par une branche data/, le gate du site (ci.yml), puis un
+#             fast-forward de main → Vercel. Main a bougé → PR.
+#   notify  : un mail en cas d'échec seulement.
+#
+# Prérequis (une fois) : le compte de service de GCP_SERVICE_ACCOUNT doit
+# pouvoir écrire dans gs://qipu-communes-budget (roles/storage.objectUser sur
+# le bucket). Sans lui, l'envoi échoue et rien n'est publié.
+# =============================================================================
+name: Refresh national (communes)
+
+on:
+  schedule:
+    - cron: "0 5 * * 2"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Reconstruire même si la DECP n'a pas changé"
+        type: boolean
+        default: false
+      upload:
+        description: "Envoyer au bucket et publier le manifeste"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+concurrency:
+  group: data-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    name: DECP → dbt → export → bucket
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    outputs:
+      changed: ${{ steps.detect.outputs.changed }}
+      branch: ${{ steps.push.outputs.branch }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install requests pyarrow google-cloud-bigquery db-dtypes dbt-core dbt-bigquery
+
+      - name: Authenticate to GCP (Workload Identity Federation)
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      - name: gcloud et bq
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Configure dbt profile
+        run: |
+          mkdir -p ~/.dbt
+          cat > ~/.dbt/profiles.yml <<EOF
+          paris_open_data:
+            target: prod
+            outputs:
+              prod:
+                type: bigquery
+                method: oauth
+                project: open-data-france-484717
+                dataset: dbt_paris
+                location: EU
+                threads: 4
+                timeout_seconds: 900
+          EOF
+          cd pipeline && dbt deps
+
+      - name: run_national.sh --cadence=weekly
+        env:
+          PYTHON: python
+          DBT_PROFILES_DIR: /home/runner/.dbt
+        run: |
+          FLAGS="--cadence=weekly --target=prod"
+          if [[ "${{ inputs.force }}" == "true" ]]; then FLAGS="$FLAGS --force"; fi
+          if [[ "${{ inputs.upload }}" == "false" ]]; then FLAGS="$FLAGS --no-upload"; fi
+          bash pipeline/run_national.sh $FLAGS
+
+      - name: Detect manifest change
+        id: detect
+        run: |
+          git add website/src/data/communes-marches-manifest.json
+          if git diff --cached --quiet || [[ "${{ inputs.upload }}" == "false" ]]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Manifeste inchangé (ou envoi désactivé) : rien à publier."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            git diff --cached --stat
+          fi
+
+      - name: Push data branch
+        id: push
+        if: steps.detect.outputs.changed == 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          BRANCH="data/national-$(date -u +%Y%m%d)-${{ github.run_id }}"
+          git checkout -b "$BRANCH"
+          git commit -m "data(communes): marchés publics DECP du $(date -u +%Y-%m-%d)" -m "Refresh national automatique : nouvelle DECP consolidée chargée, modèles et tests dbt passés, export envoyé au bucket, manifeste contrôlé face à la version précédente."
+          git push origin "$BRANCH"
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+
+  gate-site:
+    name: Gate — le site construit et sert
+    needs: refresh
+    if: needs.refresh.outputs.changed == 'true'
+    uses: ./.github/workflows/ci.yml
+    with:
+      ref: ${{ needs.refresh.outputs.branch }}
+      run_e2e: true
+
+  publish:
+    name: Publish (fast-forward main → Vercel)
+    needs: [refresh, gate-site]
+    if: needs.refresh.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Fast-forward main
+        env:
+          BRANCH: ${{ needs.refresh.outputs.branch }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin "$BRANCH"
+          if git merge --ff-only "origin/$BRANCH"; then
+            git push origin main
+            git push origin --delete "$BRANCH"
+            echo "✓ manifeste publié sur main → Vercel déploie"
+          else
+            gh pr create --base main --head "$BRANCH" \
+              --title "$(git log -1 --format=%s "origin/$BRANCH")" \
+              --body "Main a avancé pendant le refresh national : fast-forward impossible. Les données sont déjà dans le bucket ; ce manifeste met à jour les compteurs du site. Merger après relecture."
+          fi
+
+  notify:
+    name: Mail en cas d'échec
+    needs: [refresh, gate-site, publish]
+    if: failure()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Send
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          MAIL_TO: ${{ vars.REFRESH_EMAIL_TO || 'daniel@qipu.org' }}
+          MAIL_FROM: ${{ vars.REFRESH_EMAIL_FROM || 'Qipu refresh <onboarding@resend.dev>' }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [[ -z "$RESEND_API_KEY" ]]; then echo "::warning::RESEND_API_KEY absent : mail non envoyé."; exit 0; fi
+          python3 - <<'EOF' > /tmp/mail.json
+          import json, os
+          print(json.dumps({
+              "from": os.environ["MAIL_FROM"], "to": [os.environ["MAIL_TO"]],
+              "subject": "🔴 Qipu — le refresh national des communes a échoué",
+              "text": "Le refresh hebdomadaire des marchés publics des communes s'est arrêté.\n"
+                      "Rien n'a été publié qui n'ait passé ses contrôles : le site garde les données précédentes.\n\n"
+                      f"Le run : {os.environ['RUN_URL']}\n",
+          }))
+          EOF
+          curl -s -X POST https://api.resend.com/emails -H "Authorization: Bearer $RESEND_API_KEY" -H "Content-Type: application/json" --data @/tmp/mail.json

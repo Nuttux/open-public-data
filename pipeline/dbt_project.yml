@@ -34,6 +34,16 @@ clean-targets:
 # =============================================================================
 seeds:
   paris_public_open_data:
+    # Nomenclature comptable par nature (M14/M57) et libellés simples des comptes,
+    # pour le budget national des communes. "60"/"10" restent des chaînes.
+    seed_comptes_libelles_simples:
+      +column_types:
+        compte: string
+    seed_nomenclature_comptes:
+      +column_types:
+        nature_prefix: string
+        classe: string
+        is_ordre: boolean
     +schema: seeds
     
     # -------------------------------------------------------------------------
@@ -610,8 +620,18 @@ models:
     # its siren/dep/reg/geo columns restored before sync_national.py runs.
     # Kept as the roadmap seam for multi-scale expansion (cf. ADR-0011).
     # -------------------------------------------------------------------------
+    # Les communes de France (DGFiP, OFGL, DECP, REI, RNE, Fonds vert, SIRENE).
+    # Désactivé au niveau du dossier : chaque modèle s'active lui-même
+    # (config(enabled=true)). Datasets à part, dbt_paris_national_* en prod :
+    # le refresh de Paris les exclut (run_all.sh), la tâche nationale les bâtit.
     national:
       +enabled: false
+      staging:
+        +schema: national_staging
+      core:
+        +schema: national_analytics
+      marts:
+        +schema: national_marts
 
     # -------------------------------------------------------------------------
     # US models (Treasury Fiscal Data, Census) — dbt_us_* dataset family
