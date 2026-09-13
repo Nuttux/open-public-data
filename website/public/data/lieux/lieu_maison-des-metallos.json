@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T00:47:48.531499+00:00",
+ "generated_at": "2026-09-13T11:15:42.363539+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "maison-des-metallos",
  "name": "Maison des Métallos",
@@ -44,7 +44,7 @@
  },
  "subventions_exploitant": {
   "nom_fiche": "MAISON DES METALLOS",
-  "total_eur": 19296508.32,
+  "total_eur": 20864653.65,
   "annees": [
    "2014",
    "2024"
@@ -106,7 +106,7 @@
    },
    {
     "annee": "2015",
-    "montant_eur": 505000.0,
+    "montant_eur": 2073145.33,
     "beneficiaire": "MAISON DES METALLOS",
     "thematique": "Culture"
    },

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T00:47:48.531499+00:00",
+ "generated_at": "2026-09-13T11:15:42.363539+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "ecole-boulle",
  "name": "École Boulle",
@@ -46,7 +46,7 @@
  },
  "subventions_exploitant": {
   "nom_fiche": "LYCEE DES METIERS BOULLE E.S.A.A.",
-  "total_eur": 24335903.0,
+  "total_eur": 25997384.0,
   "annees": [
    "2010",
    "2024"
@@ -109,6 +109,12 @@
    {
     "annee": "2016",
     "montant_eur": 1732140.0,
+    "beneficiaire": "LYCEE DES METIERS BOULLE E.S.A.A.",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2015",
+    "montant_eur": 1661481.0,
     "beneficiaire": "LYCEE DES METIERS BOULLE E.S.A.A.",
     "thematique": "Éducation"
    },

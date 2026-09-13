@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T00:47:48.531499+00:00",
+ "generated_at": "2026-09-13T11:15:42.363539+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "ecole-des-ingenieurs-de-la-ville-de-paris",
  "name": "École des ingénieurs de la ville de Paris",
@@ -44,7 +44,7 @@
  },
  "subventions_exploitant": {
   "nom_fiche": "REGIE ECOLE INGENIEURS VILLE PARIS",
-  "total_eur": 66301980.0,
+  "total_eur": 71336430.0,
   "annees": [
    "2010",
    "2024"
@@ -101,6 +101,12 @@
    {
     "annee": "2016",
     "montant_eur": 4975410.0,
+    "beneficiaire": "REGIE ECOLE INGENIEURS VILLE PARIS",
+    "thematique": "Éducation"
+   },
+   {
+    "annee": "2015",
+    "montant_eur": 5034450.0,
     "beneficiaire": "REGIE ECOLE INGENIEURS VILLE PARIS",
     "thematique": "Éducation"
    },

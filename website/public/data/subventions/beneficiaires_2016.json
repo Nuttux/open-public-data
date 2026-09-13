@@ -1,6 +1,6 @@
 {
   "year": 2016,
-  "generated_at": "2026-09-11T16:24:45.181770",
+  "generated_at": "2026-09-13T13:14:39.758396",
   "total_montant": 1260982793.3899999,
   "nb_beneficiaires": 3215,
   "data": [
@@ -661,7 +661,7 @@
       "source_thematique": "direction",
       "montant_total": 4614000.0,
       "nb_subventions": 2,
-      "objet_principal": "fonctionnement-Solde 2016",
+      "objet_principal": "fonctionnement-Acompte 2016",
       "siret": "31390568900078"
     },
     {
@@ -1681,7 +1681,7 @@
       "source_thematique": "direction",
       "montant_total": 940000.0,
       "nb_subventions": 1,
-      "objet_principal": "Festival Paris quartier d'été 2016-Solde 2016",
+      "objet_principal": "Festival Paris quartier d'été 2016-Acompte 2016 DAC 603",
       "siret": "37978422600043"
     },
     {
@@ -1754,7 +1754,7 @@
       "thematique": "Social - Solidarité",
       "sous_categorie": "Hébergement et insertion des personnes en difficulté",
       "source_thematique": "llm",
-      "montant_total": 900141.65,
+      "montant_total": 900141.6499999999,
       "nb_subventions": 7,
       "objet_principal": null,
       "siret": null
@@ -2611,7 +2611,7 @@
       "source_thematique": "direction",
       "montant_total": 475310.0,
       "nb_subventions": 1,
-      "objet_principal": "fonctionnement 2016 DAC 27",
+      "objet_principal": "Acompte 2016 Délibération 2015 DAC 603",
       "siret": "34112346100046"
     },
     {
@@ -3016,7 +3016,7 @@
       "source_thematique": "direction",
       "montant_total": 365000.0,
       "nb_subventions": 2,
-      "objet_principal": "fonctionnement - Acompte 2016 Délibération 2015 DAC 603",
+      "objet_principal": "fonctionnement - Solde 2016 DAC 24",
       "siret": "32618492600011"
     },
     {
@@ -5161,7 +5161,7 @@
       "source_thematique": "direction",
       "montant_total": 150000.0,
       "nb_subventions": 1,
-      "objet_principal": "fonctionnement 2016 - Acompte 2015 DAC 603",
+      "objet_principal": "fonctionnement 2016 - Solde 2016 DAC 198",
       "siret": "49396355700027"
     },
     {
@@ -13186,7 +13186,7 @@
       "source_thematique": "llm",
       "montant_total": 30000.0,
       "nb_subventions": 1,
-      "objet_principal": "fonctionnement",
+      "objet_principal": "Permanence Droits Sociaux d'Act Up-Paris",
       "siret": "39489556900033"
     },
     {
@@ -16891,7 +16891,7 @@
       "source_thematique": "pattern",
       "montant_total": 20800.0,
       "nb_subventions": 1,
-      "objet_principal": "Fonctionnement",
+      "objet_principal": "FONCTIONNEMENT au titre de 2017",
       "siret": "42486753900027"
     },
     {
@@ -17131,7 +17131,7 @@
       "source_thematique": "llm",
       "montant_total": 20000.0,
       "nb_subventions": 1,
-      "objet_principal": "OUTILS D'APPRENTISSAGE LINGUISTIQUE A DESTINATION DES MIGRANTS",
+      "objet_principal": "Médiatiser et valoriser la prise de parole des migrants",
       "siret": "49372134400031"
     },
     {
@@ -19351,7 +19351,7 @@
       "source_thematique": "direction",
       "montant_total": 16500.0,
       "nb_subventions": 1,
-      "objet_principal": "URBAN FILMS FESTIVAL",
+      "objet_principal": "La Médiathèque de cultures urbaines",
       "siret": "44323364800015"
     },
     {
@@ -24316,7 +24316,7 @@
       "source_thematique": "direction",
       "montant_total": 10000.0,
       "nb_subventions": 1,
-      "objet_principal": "fonctionnement",
+      "objet_principal": "EQUIPEMENT",
       "siret": "50895539000010"
     },
     {
@@ -28951,7 +28951,7 @@
       "source_thematique": "direction",
       "montant_total": 7000.0,
       "nb_subventions": 2,
-      "objet_principal": "Paris Collèges Familles- collège Michelet",
+      "objet_principal": "Dispositif Paris Collèges Familles- collège Rouault",
       "siret": "42423937400046"
     },
     {
@@ -33856,7 +33856,7 @@
       "source_thematique": "llm",
       "montant_total": 4500.0,
       "nb_subventions": 1,
-      "objet_principal": "LUDICONTE",
+      "objet_principal": "Atelier de jeu pour l'apprentissage du français - Territoire Belleville, Amandiers Pelleport",
       "siret": "80306608300012"
     },
     {
@@ -39481,7 +39481,7 @@
       "source_thematique": "direction",
       "montant_total": 2100.0,
       "nb_subventions": 1,
-      "objet_principal": "fonctionnement au titre de 2017",
+      "objet_principal": "Fonctionnement +Organisation Tournoi de Tennis : PITT : Paris International Tounament",
       "siret": "51419824100010"
     },
     {
@@ -41071,7 +41071,7 @@
       "source_thematique": "direction",
       "montant_total": 2000.0,
       "nb_subventions": 1,
-      "objet_principal": "Organisation d'un événement artistique dans le 14ème arrondissement de Paris dans le cadre de Paris",
+      "objet_principal": "bloche m9",
       "siret": "79970320200017"
     },
     {

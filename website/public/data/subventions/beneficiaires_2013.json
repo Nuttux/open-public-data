@@ -1,6 +1,6 @@
 {
   "year": 2013,
-  "generated_at": "2026-09-11T16:24:51.535014",
+  "generated_at": "2026-09-13T13:14:46.231988",
   "total_montant": 1265816522.23,
   "nb_beneficiaires": 3206,
   "data": [
@@ -13696,7 +13696,7 @@
       "source_thematique": "direction",
       "montant_total": 30000.0,
       "nb_subventions": 2,
-      "objet_principal": "Masques Educatifs - Projet d¿association au sein d¿un collège",
+      "objet_principal": "RÉSIDENCE D'ARTISTE AU COLLÈGE CESAIRE - Le monde merveilleux des masques",
       "siret": "44116591700051"
     },
     {
@@ -24436,7 +24436,7 @@
       "source_thematique": "direction",
       "montant_total": 10000.0,
       "nb_subventions": 1,
-      "objet_principal": "LES PLANS D'AVRIL 2013",
+      "objet_principal": "amendement Bloche Festival Les Plans d'avril",
       "siret": "45046463100024"
     },
     {
@@ -33031,7 +33031,7 @@
       "source_thematique": "default",
       "montant_total": 5000.0,
       "nb_subventions": 1,
-      "objet_principal": "ATELIERS D'EXPRESSIONS CULTURELLES EN DIRECTION DES JEUNES",
+      "objet_principal": "FETES MULTICULTURELLES",
       "siret": "44304088600014"
     },
     {
@@ -41536,7 +41536,7 @@
       "source_thematique": "default",
       "montant_total": 2000.0,
       "nb_subventions": 1,
-      "objet_principal": ": LE THÉÂTRE AU SERVICE DES ENFANTS",
+      "objet_principal": "Action Linguistique et Culturelle à Destination des Migrant-es. ex:Théâtre au Service des Mamans",
       "siret": "45002852700031"
     },
     {

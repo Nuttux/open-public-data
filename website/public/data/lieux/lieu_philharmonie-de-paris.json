@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T00:47:48.531499+00:00",
+ "generated_at": "2026-09-13T11:15:42.363539+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "philharmonie-de-paris",
  "name": "Philharmonie de Paris",
@@ -44,7 +44,7 @@
  },
  "subventions_exploitant": {
   "nom_fiche": "LA CITE DE LA MUSIQUE",
-  "total_eur": 127421585.47,
+  "total_eur": 127430945.47,
   "annees": [
    "2013",
    "2024"
@@ -106,7 +106,7 @@
    },
    {
     "annee": "2015",
-    "montant_eur": 5000.0,
+    "montant_eur": 14360.0,
     "beneficiaire": "LA CITE DE LA MUSIQUE",
     "thematique": "Culture"
    },
