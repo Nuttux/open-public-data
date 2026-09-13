@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "ecole-des-ingenieurs-de-la-ville-de-paris",
   "name": "École des ingénieurs de la ville de Paris",
@@ -17,32 +17,34 @@
     "source": "Wikipédia"
   },
   "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
     "extract": "L’École des ingénieurs de la ville de Paris (EIVP) est l'une des 204 écoles d'ingénieurs françaises accréditées au 1er septembre 2020 à délivrer un diplôme d'ingénieur. En janvier 2020, l'EIVP est l'un des fondateurs de l'université Gustave-Eiffel qui se classe parmi les premières universités françaises en génie civil et dans les domaines des transports.",
     "url": "https://fr.wikipedia.org/wiki/%C3%89cole_des_ing%C3%A9nieurs_de_la_ville_de_Paris",
     "source": {
       "name": "Wikipédia",
       "url": "https://fr.wikipedia.org/"
-    }
+    },
+    "extract_en": "The École des ingénieurs de la ville de Paris (EIVP) is one of the 204 French engineering schools accredited as of 1 September 2020 to award an engineering degree. In January 2020, EIVP was one of the founders of Université Gustave-Eiffel, which ranks among the leading French universities in civil engineering and in the fields of transport."
   },
   "stats": {
     "n_delibs": 377,
     "delibs_span": [
       2000,
-      2026
+      2020
     ],
-    "n_bmo_brut": 0,
-    "n_bmo_verifies": null,
+    "n_bmo_brut": 2000,
+    "n_bmo_verifies": 1,
     "invest_total_eur": 0,
     "invest_annees": [],
     "lecture_mode": "titre nommant le lieu (37 trouvés)",
     "lecture_mode_en": "title naming the place (37 found)",
     "n_lus": 36,
-    "n_lieu": null
+    "n_lieu": 32
   },
   "subventions_exploitant": {
     "nom_fiche": "REGIE ECOLE INGENIEURS VILLE PARIS",
-    "total_eur": 66301980.0,
+    "total_eur": 71336430.0,
     "annees": [
       "2010",
       "2024"
@@ -103,6 +105,12 @@
         "thematique": "Éducation"
       },
       {
+        "annee": "2015",
+        "montant_eur": 5034450.0,
+        "beneficiaire": "REGIE ECOLE INGENIEURS VILLE PARIS",
+        "thematique": "Éducation"
+      },
+      {
         "annee": "2014",
         "montant_eur": 4899800.0,
         "beneficiaire": "REGIE ECOLE INGENIEURS VILLE PARIS",
@@ -139,9 +147,287 @@
   },
   "residents": [],
   "kpi_montant": null,
-  "synthese_fr": null,
-  "moments": [],
-  "montants": [],
+  "synthese_fr": "En novembre 2000, un dossier du Conseil de Paris porte sur la fixation des missions, de l'organisation et du fonctionnement de l'École des ingénieurs de la Ville de Paris, « École supérieure d'ingénieurs du génie urbain ». En novembre 2001, deux dossiers portent sur ses concours d'entrée ; pour le concours externe, le Conseil délibère que les modalités d'organisation, la nature et les programmes des épreuves sont identiques à celles du concours externe de recrutement des élèves ingénieurs des travaux publics de l'État, et que les épreuves seront adaptées aux différentes formes de handicap. En juillet 2005, le Conseil crée une régie à autonomie financière et personnalité morale chargée de la gestion de l'école ; les délibérations suivantes visent la délibération 2005 DASCO 213, qui transfère à cette régie, à compter du 1er janvier 2006, la gestion des services publics correspondant aux missions de l'école, « jusqu'alors administrée en régie directe ». Le Conseil fixe ensuite les subventions de fonctionnement de la régie : au plus 1.757.000 euros pour 2007, 1.844.026 euros pour 2009 et 1.600.000 euros pour 2010, année pour laquelle il décide en outre, en juillet puis en novembre 2010, deux subventions complémentaires de 905.645 et 633.335 euros. En juillet 2007, il fixe à 202.580,42 euros la dotation initiale en nature de la régie, en remplacement de l'article de la délibération de 2005 qui l'accordait. En mars 2011, un dossier porte sur une garantie de la Ville, à hauteur de 50 %, d'un emprunt à contracter par la SNI pour financer les travaux de restructuration de l'hôtel d'activités Rébeval (19e) afin d'y accueillir l'école. Les intitulés plus récents portent sur une subvention de 60.000 euros et une convention (2015), un contrat d'objectifs et de moyens avec la Ville (2018) et des modifications des statuts (2020).",
+  "moments": [
+    {
+      "id": "30258",
+      "seance": "NOVEMBRE 2001",
+      "fait": "Le Conseil de Paris délibère que les modalités d'organisation, la nature et les programmes des épreuves du concours externe d'entrée à l'EIVP sont identiques à celles du concours externe de recrutement des élèves ingénieurs des travaux publics de l'État, et que les épreuves seront adaptées aux différentes formes de handicap et organisées dans des lieux accessibles.",
+      "pourquoi": "Des épreuves d'entrée à adapter aux différentes formes de handicap",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30258",
+      "fait_en": "The Conseil de Paris resolves that the organisational arrangements, the nature and the syllabuses of the tests of the external entrance examination for EIVP are identical to those of the external recruitment examination for student engineers of the State public works corps (ingénieurs des travaux publics de l'État), and that the tests will be adapted to the different forms of disability and held in accessible venues.",
+      "pourquoi_en": "Entrance tests to be adapted to the different forms of disability"
+    },
+    {
+      "id": "87277",
+      "seance": "JUILLET 2005",
+      "fait": "Création d'une régie à autonomie financière et personnalité morale chargée de la gestion de l'école : l'intitulé couvre aussi l'approbation des statuts, la fixation de la dotation initiale, la nomination des membres du conseil d'administration et la désignation du directeur.",
+      "pourquoi": "L'école confiée à une régie dotée de la personnalité morale",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87277",
+      "fait_en": "Creation of a municipal agency (régie) with financial autonomy and legal personality responsible for managing the school: the title also covers approval of the statutes, setting of the initial endowment, appointment of the members of the board of directors and designation of the director.",
+      "pourquoi_en": "The school entrusted to an agency with legal personality"
+    },
+    {
+      "id": "17969",
+      "seance": "DECEMBRE 2006",
+      "fait": "Un vœu déposé par M. Jean-Yves Autexier et les membres du groupe du Mouvement républicain et citoyen porte sur l'accès des élèves de l'EIVP aux cantines de la Ville ; l'intitulé n'indique pas son issue.",
+      "pourquoi": "L'accès des élèves aux cantines de la Ville",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17969",
+      "fait_en": "A motion (vœu) tabled by Mr Jean-Yves Autexier and the members of the Mouvement républicain et citoyen group concerns access for EIVP students to the City's canteens; the title does not indicate its outcome.",
+      "pourquoi_en": "Students' access to the City's canteens"
+    },
+    {
+      "id": "90297",
+      "seance": "JUILLET 2007",
+      "fait": "Le Conseil fixe à 202 580,42 euros la dotation initiale en nature de la régie EIVP : biens incorporels, matériel informatique et de bureau, mobilier, en valeur nette comptable au 31 décembre 2006.",
+      "pourquoi": "Les biens composant la dotation de la régie EIVP",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90297",
+      "fait_en": "The Council sets the initial in-kind endowment of the EIVP agency at €202,580.42: intangible assets, IT and office equipment, furniture, at net book value as of 31 December 2006.",
+      "pourquoi_en": "The assets making up the EIVP agency's endowment"
+    },
+    {
+      "id": "81888",
+      "seance": "NOVEMBRE 2009",
+      "fait": "L'intitulé porte sur la signature d'une convention avec l'EIVP pour l'attribution d'une subvention destinée à la création d'un Institut des Métropoles Durables ; le montant n'y figure pas.",
+      "pourquoi": "Une subvention pour créer un Institut des Métropoles Durables",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81888",
+      "fait_en": "The title concerns the signing of an agreement with EIVP for the award of a grant intended for the creation of an Institut des Métropoles Durables; the amount is not stated in it.",
+      "pourquoi_en": "A grant to create an Institut des Métropoles Durables"
+    },
+    {
+      "id": "79534",
+      "seance": "JUILLET 2010",
+      "fait": "Le Conseil de Paris délibère qu'une subvention complémentaire de fonctionnement de 905 645 euros sera versée à la régie EIVP au titre de 2010 ; la dépense sera inscrite au budget de fonctionnement de la Ville sous réserve de la décision de financement.",
+      "pourquoi": "Un complément de 905.645 euros pour 2010",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79534",
+      "fait_en": "The Conseil de Paris resolves that a supplementary operating grant of €905,645 will be paid to the EIVP agency for 2010; the expenditure will be entered in the City's operating budget subject to the funding decision.",
+      "pourquoi_en": "A €905,645 supplement for 2010"
+    },
+    {
+      "id": "96645",
+      "seance": "MARS 2011",
+      "fait": "L'intitulé porte sur une garantie de la Ville de Paris, à hauteur de 50 %, d'un emprunt à contracter par la SNI pour financer la restructuration de l'hôtel d'activités Rébeval (19e) afin d'y accueillir l'EIVP.",
+      "pourquoi": "Une garantie d'emprunt pour accueillir l'école à Rébeval",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96645",
+      "fait_en": "The title concerns a guarantee by the City of Paris, up to 50%, of a loan to be taken out by SNI to finance the restructuring of the Rébeval business centre (hôtel d'activités, 19th arrondissement) so that it can house EIVP.",
+      "pourquoi_en": "A loan guarantee to house the school at Rébeval"
+    },
+    {
+      "id": "143924",
+      "seance": "JUILLET 2018",
+      "fait": "L'intitulé (2018 DAE 205) porte sur un contrat d'objectifs et de moyens entre la Ville de Paris et l'EIVP ; son contenu n'y est pas détaillé.",
+      "pourquoi": "Un contrat d'objectifs et de moyens avec la Ville",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=143924",
+      "fait_en": "The title (2018 DAE 205) concerns a contract of objectives and resources between the City of Paris and EIVP; its content is not detailed in it.",
+      "pourquoi_en": "A contract of objectives and resources with the City"
+    }
+  ],
+  "montants": [
+    {
+      "seance": "MAI 2015",
+      "montant": "60.000 euros",
+      "objet": "Subvention à l'École des ingénieurs de la Ville de Paris, avec une convention (objet non précisé dans l'intitulé)",
+      "citation": "2015 SG 3 G - Subvention (60.000 euros) et convention avec l’École des Ingénieurs de la Ville de Paris.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125318"
+    },
+    {
+      "seance": "NOVEMBRE 2010",
+      "montant": "633.335 euros",
+      "objet": "Subvention complémentaire de fonctionnement à verser à la régie EIVP au titre de 2010",
+      "citation": "Article 1 : Une subvention complémentaire de fonctionnement d?un montant de 633.335 euros sera versée au titre de 2010 à la Régie EIVP.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85776"
+    },
+    {
+      "seance": "NOVEMBRE 2010",
+      "montant": "680.000 euros",
+      "objet": "Recette à inscrire au budget de fonctionnement de la Ville, exercice 2010 (fonction 23, nature 7087), dans la même délibération ; son origine n'est pas précisée dans le texte",
+      "citation": "Article 3 : Une recette d?un montant de 680.000 euros sera inscrite au budget de fonctionnement de la Ville de Paris, exercice 2010, fonction 23, nature 7087.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85776"
+    },
+    {
+      "seance": "JUILLET 2010",
+      "montant": "905.645 euros",
+      "objet": "Subvention complémentaire de fonctionnement à verser à la régie EIVP au titre de 2010",
+      "citation": "Article 1 : Une subvention complémentaire de fonctionnement d?un montant de 905.645 euros sera versée au titre de 2010 à la Régie EIVP.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79534"
+    },
+    {
+      "seance": "DECEMBRE 2009",
+      "montant": "1.600.000 euros",
+      "objet": "Montant total de la subvention de fonctionnement 2010 de la régie EIVP",
+      "citation": "Le montant total de la subvention de fonctionnement qui sera versée à la Régie EIVP est fixé à 1.600.000 euros.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32524"
+    },
+    {
+      "seance": "DECEMBRE 2009",
+      "montant": "400.000 euros",
+      "objet": "Montant de chacun des quatre acomptes trimestriels de la subvention de fonctionnement 2010",
+      "citation": "La subvention sera versée en quatre acomptes trimestriels égaux à 25% du montant de la subvention, soit 400.000 euros par acompte.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32524"
+    },
+    {
+      "seance": "DECEMBRE 2009",
+      "montant": "40.000 euros",
+      "objet": "Montant total de la subvention d'équipement 2010 de la régie EIVP",
+      "citation": "Le montant total de la subvention d?équipement qui sera versée à la Régie EIVP est fixé à 40.000 euros.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32524"
+    },
+    {
+      "seance": "NOVEMBRE 2008",
+      "montant": "1.844.026 euros",
+      "objet": "Montant total de la subvention de fonctionnement 2009 de la régie EIVP",
+      "citation": "Le montant total de la subvention de fonctionnement qui sera versée à la Régie EIVP est fixé à 1.844.026 euros.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61407"
+    },
+    {
+      "seance": "NOVEMBRE 2008",
+      "montant": "737 610 euros",
+      "objet": "Premier acompte (40 %) de la subvention de fonctionnement, à verser au 1er trimestre 2009",
+      "citation": "Un premier acompte égal à 40 % du montant de la subvention, soit 737 610 euros, sera versé à la régie EIVP au 1er trimestre 2009.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61407"
+    },
+    {
+      "seance": "NOVEMBRE 2008",
+      "montant": "1.106.416 euros",
+      "objet": "Solde de la subvention de fonctionnement 2009, à verser en trois fois",
+      "citation": "Le versement du solde de la subvention, soit un montant de 1.106.416 euros, sera versé à la Régie EIVP en 3 fois au cours des 3 derniers trimestres 2009 pour un montant trimestriel égal à 368.805 euros.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61407"
+    },
+    {
+      "seance": "NOVEMBRE 2008",
+      "montant": "368.805 euros",
+      "objet": "Montant trimestriel de chacun des trois versements prévus pour le solde, sur les trois derniers trimestres 2009",
+      "citation": "Le versement du solde de la subvention, soit un montant de 1.106.416 euros, sera versé à la Régie EIVP en 3 fois au cours des 3 derniers trimestres 2009 pour un montant trimestriel égal à 368.805 euros.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61407"
+    },
+    {
+      "seance": "NOVEMBRE 2008",
+      "montant": "30 000 euros",
+      "objet": "Montant total de la subvention d'équipement 2009 de la régie EIVP",
+      "citation": "Le montant total de la subvention d?équipement qui sera versée à la Régie EIVP est fixé à 30 000 euros.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61407"
+    },
+    {
+      "seance": "JUILLET 2007",
+      "montant": "202.580,42 euros",
+      "objet": "Dotation initiale en nature de la régie EIVP (valeur nette comptable au 31/12/2006 des biens composant la dotation)",
+      "citation": "Le montant de la dotation initiale en nature, en vue de transférer à la Régie EIVP les biens corporels et incorporels nécessaires à l?exercice de ses missions, est fixé à 202.580,42 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90297"
+    },
+    {
+      "seance": "JUILLET 2007",
+      "montant": "442.042,01 euros",
+      "objet": "Coût TTC d'acquisition total des biens composant la dotation (tableau de répartition de la dotation)",
+      "citation": "Total 442.042,01 239.461,58 202.580,42",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90297"
+    },
+    {
+      "seance": "JUILLET 2007",
+      "montant": "239.461,58 euros",
+      "objet": "Amortissements constatés au 31/12/2006 sur l'ensemble des biens composant la dotation",
+      "citation": "Total 442.042,01 239.461,58 202.580,42",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90297"
+    },
+    {
+      "seance": "JUILLET 2007",
+      "montant": "133.254,27 euros",
+      "objet": "Biens incorporels (nature 205) : coût TTC d'acquisition",
+      "citation": "Biens incorporels (nature 205) 2 133.254,27 88.892,03 44.362,24",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90297"
+    },
+    {
+      "seance": "JUILLET 2007",
+      "montant": "88.892,03 euros",
+      "objet": "Biens incorporels (nature 205) : amortissements constatés au 31/12/2006",
+      "citation": "Biens incorporels (nature 205) 2 133.254,27 88.892,03 44.362,24",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90297"
+    },
+    {
+      "seance": "JUILLET 2007",
+      "montant": "44.362,24 euros",
+      "objet": "Biens incorporels (nature 205) : valeur nette comptable au 31/12/2006",
+      "citation": "Biens incorporels (nature 205) 2 133.254,27 88.892,03 44.362,24",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90297"
+    },
+    {
+      "seance": "JUILLET 2007",
+      "montant": "242.735,46 euros",
+      "objet": "Matériel informatique et matériel de bureau (nature 2183) : coût TTC d'acquisition",
+      "citation": "Matériel informatique et matériel de bureau (nature 2183) 5 242.735,46 137.269,67 105.465,78",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90297"
+    },
+    {
+      "seance": "JUILLET 2007",
+      "montant": "137.269,67 euros",
+      "objet": "Matériel informatique et matériel de bureau (nature 2183) : amortissements constatés au 31/12/2006",
+      "citation": "Matériel informatique et matériel de bureau (nature 2183) 5 242.735,46 137.269,67 105.465,78",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90297"
+    },
+    {
+      "seance": "JUILLET 2007",
+      "montant": "105.465,78 euros",
+      "objet": "Matériel informatique et matériel de bureau (nature 2183) : valeur nette comptable au 31/12/2006",
+      "citation": "Matériel informatique et matériel de bureau (nature 2183) 5 242.735,46 137.269,67 105.465,78",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90297"
+    },
+    {
+      "seance": "JUILLET 2007",
+      "montant": "66.052,28 euros",
+      "objet": "Mobilier (nature 2184) : coût TTC d'acquisition",
+      "citation": "Mobilier (nature 2184) 10 66.052,28 13.299,88 52.752,40",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90297"
+    },
+    {
+      "seance": "JUILLET 2007",
+      "montant": "13.299,88 euros",
+      "objet": "Mobilier (nature 2184) : amortissements constatés au 31/12/2006",
+      "citation": "Mobilier (nature 2184) 10 66.052,28 13.299,88 52.752,40",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90297"
+    },
+    {
+      "seance": "JUILLET 2007",
+      "montant": "52.752,40 euros",
+      "objet": "Mobilier (nature 2184) : valeur nette comptable au 31/12/2006",
+      "citation": "Mobilier (nature 2184) 10 66.052,28 13.299,88 52.752,40",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90297"
+    },
+    {
+      "seance": "DECEMBRE 2006",
+      "montant": "1.757.000 euros",
+      "objet": "Montant maximal de la subvention de fonctionnement 2007 de la régie EIVP",
+      "citation": "Le montant maximal de la subvention de fonctionnement qui sera versé à la Régie EIVP est fixé à 1.757.000 euros.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92039"
+    },
+    {
+      "seance": "DECEMBRE 2006",
+      "montant": "1.405.600 euros",
+      "objet": "Premier acompte (80 %) de la subvention de fonctionnement, à verser au 1er semestre 2007",
+      "citation": "Un premier acompte égale à 80 % du montant de la subvention, soit 1.405.600 euros, sera versé à la régie EIVP au 1er semestre 2007.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92039"
+    },
+    {
+      "seance": "DECEMBRE 2006",
+      "montant": "351.400 euros",
+      "objet": "Solde de la subvention de fonctionnement 2007, à verser sur présentation d'un rapport portant sur l'utilisation des subventions de 2006 et l'exécution du budget 2007 au 1er semestre",
+      "citation": "Le solde de la subvention, soit un montant de 351.400 euros, sera versé à la Régie EIVP sur présentation d?un rapport comprenant un compte rendu de l?utilisation des subventions (fonctionnement et investissement) octroyées au titre de l?année 2006 et un compte rendu financier décrivant la situation de l?exécution du budget 2007 au terme du 1er semestre 2007 ainsi que les perspectives qui en découlent.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92039"
+    },
+    {
+      "seance": "DECEMBRE 2006",
+      "montant": "38 000 euros",
+      "objet": "Montant de la subvention d'équipement 2007 de la régie EIVP",
+      "citation": "Le montant de la subvention d?équipement qui sera versée à la Régie EIVP est fixé à 38 000 euros.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92039"
+    }
+  ],
   "bmo_extraits": [],
   "bmo_recit": null,
   "delibs_par_annee": {
@@ -361,7 +647,7 @@
     },
     "bmo": {
       "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22%C3%89cole+des+ing%C3%A9nieurs+de+la+ville+de+Paris%22%29"
     },
     "invest": {
       "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -372,6 +658,7 @@
       "url": "https://fr.wikipedia.org/"
     }
   },
+  "synthese_en": "In November 2000, a Conseil de Paris item concerns setting the missions, organisation and operation of the École des ingénieurs de la Ville de Paris, \"École supérieure d'ingénieurs du génie urbain\". In November 2001, two items concern its entrance competitive examinations; for the external examination, the Council resolves that the organisational arrangements, the nature and the syllabuses of the tests are identical to those of the external recruitment examination for student engineers of the State public works corps (ingénieurs des travaux publics de l'État), and that the tests will be adapted to the different forms of disability. In July 2005, the Council creates a municipal agency (régie) with financial autonomy and legal personality responsible for managing the school; subsequent deliberations refer to deliberation 2005 DASCO 213, which transfers to this agency, from 1 January 2006, the management of the public services corresponding to the school's missions, \"until then administered under direct management\". The Council then sets the agency's operating grants: at most €1,757,000 for 2007, €1,844,026 for 2009 and €1,600,000 for 2010, a year for which it also decides, in July and then in November 2010, two supplementary grants of €905,645 and €633,335. In July 2007, it sets the agency's initial in-kind endowment at €202,580.42, replacing the article of the 2005 deliberation that granted it. In March 2011, an item concerns a City guarantee, up to 50%, of a loan to be taken out by SNI to finance restructuring works on the Rébeval business centre (hôtel d'activités, 19th arrondissement) so that it can house the school. More recent titles concern a €60,000 grant and an agreement (2015), a contract of objectives and resources with the City (2018) and amendments to the statutes (2020).",
   "license": {
     "id": "ODbL-1.0",
     "url": "https://opendatacommons.org/licenses/odbl/1-0/",

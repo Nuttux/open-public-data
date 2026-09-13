@@ -1,6 +1,6 @@
 {
   "year": 2014,
-  "generated_at": "2026-09-11T16:24:49.504410",
+  "generated_at": "2026-09-13T13:14:43.963572",
   "total_montant": 1362113353.96,
   "nb_beneficiaires": 3046,
   "data": [
@@ -44,7 +44,7 @@
       "thematique": "Logement",
       "sous_categorie": "Office public de l'habitat - logement social",
       "source_thematique": "llm",
-      "montant_total": 75801867.83,
+      "montant_total": 75801867.83000001,
       "nb_subventions": 4,
       "objet_principal": null,
       "siret": null
@@ -104,7 +104,7 @@
       "thematique": "Non classifié",
       "sous_categorie": null,
       "source_thematique": "default",
-      "montant_total": 27533797.85,
+      "montant_total": 27533797.849999998,
       "nb_subventions": 3,
       "objet_principal": null,
       "siret": null
@@ -13891,7 +13891,7 @@
       "source_thematique": "direction",
       "montant_total": 25600.0,
       "nb_subventions": 1,
-      "objet_principal": "appel à projet AREatelier learn and smile  : anglais en musique",
+      "objet_principal": "atelier eveil musical",
       "siret": "43963691100018"
     },
     {

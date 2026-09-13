@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "piscine-butte-aux-cailles",
   "name": "Piscine de la Butte-aux-Cailles",
@@ -17,6 +17,7 @@
     "source": "Wikipédia"
   },
   "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
     "extract": "La piscine de la Butte-aux-Cailles est l'une des plus anciennes piscines de Paris, en France. Elle est située au 5, place Paul-Verlaine, dans le quartier de la Butte-aux-Cailles, dans le 13e arrondissement.",
     "url": "https://fr.wikipedia.org/wiki/Piscine_de_la_Butte-aux-Cailles",
@@ -32,7 +33,7 @@
       1995,
       2005
     ],
-    "n_bmo_brut": 473,
+    "n_bmo_brut": 493,
     "n_bmo_verifies": 18,
     "invest_total_eur": 2544047.0,
     "invest_annees": [

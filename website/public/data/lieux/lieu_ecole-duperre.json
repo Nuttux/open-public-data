@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "ecole-duperre",
   "name": "École Duperré",
@@ -17,22 +17,24 @@
     "source": "Wikipédia"
   },
   "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
     "extract": "L’École supérieure des arts appliqués Duperré, ou école Duperré, est une école supérieure d'art située au 11, rue Dupetit-Thouars dans le 3e arrondissement de Paris.",
     "url": "https://fr.wikipedia.org/wiki/%C3%89cole_Duperr%C3%A9",
     "source": {
       "name": "Wikipédia",
       "url": "https://fr.wikipedia.org/"
-    }
+    },
+    "extract_en": "The École supérieure des arts appliqués Duperré, or école Duperré, is an art school of higher education located at 11, rue Dupetit-Thouars in the 3rd arrondissement of Paris."
   },
   "stats": {
     "n_delibs": 1291,
     "delibs_span": [
-      1995,
-      2026
+      2003,
+      2024
     ],
-    "n_bmo_brut": 0,
-    "n_bmo_verifies": null,
+    "n_bmo_brut": 1052,
+    "n_bmo_verifies": 12,
     "invest_total_eur": 183990.0,
     "invest_annees": [
       "2020"
@@ -40,11 +42,11 @@
     "lecture_mode": "titre nommant le lieu (2 trouvés)",
     "lecture_mode_en": "title naming the place (2 found)",
     "n_lus": 2,
-    "n_lieu": null
+    "n_lieu": 2
   },
   "subventions_exploitant": {
     "nom_fiche": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
-    "total_eur": 9611859.0,
+    "total_eur": 10108039.0,
     "annees": [
       "2010",
       "2024"
@@ -105,6 +107,12 @@
         "thematique": "Éducation"
       },
       {
+        "annee": "2015",
+        "montant_eur": 496180.0,
+        "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
+        "thematique": "Éducation"
+      },
+      {
         "annee": "2014",
         "montant_eur": 630160.0,
         "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
@@ -138,8 +146,29 @@
   },
   "residents": [],
   "kpi_montant": null,
-  "synthese_fr": null,
-  "moments": [],
+  "synthese_fr": "En juillet 2003, le dossier 2003 DASCO 143, dont Mme Danièle Pourtaud est rapporteure, porte sur une autorisation à M. le Maire de Paris de signer avec la Caisse des écoles du 3e arrondissement une convention pour la fourniture de repas à l'école Duperré et de fixer les tarifs applicables aux usagers de sa cantine à compter du 1er septembre 2003. En novembre 2024, le dossier 2024 DAC 144 porte sur une convention d'occupation temporaire du domaine public, annexée d'une convention de cession de droits patrimoniaux, avec l'École Duperré. Les intitulés de ces deux dossiers ne précisent ni le montant des tarifs, ni l'emplacement occupé, ni l'objet des droits cédés, ni la décision prise.",
+  "moments": [
+    {
+      "id": "70272",
+      "seance": "JUILLET 2003",
+      "fait": "D'après son intitulé, le dossier 2003 DASCO 143 porte sur une autorisation à M. le Maire de Paris de signer avec la Caisse des écoles du 3e arrondissement une convention pour la fourniture de repas à l'école Duperré et de fixer les tarifs de sa cantine à compter du 1er septembre 2003.",
+      "pourquoi": "Convention de fourniture de repas et tarifs de la cantine",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70272",
+      "fait_en": "According to its title, file 2003 DASCO 143 concerns an authorization for the Mayor of Paris to sign with the Caisse des écoles of the 3rd arrondissement an agreement for the supply of meals to the école Duperré and to set the rates of its canteen from 1 September 2003.",
+      "pourquoi_en": "Meal supply agreement and canteen rates"
+    },
+    {
+      "id": "178578",
+      "seance": "NOVEMBRE 2024",
+      "fait": "D'après son intitulé, le dossier 2024 DAC 144 porte sur une convention d'occupation temporaire du domaine public, annexée d'une convention de cession de droits patrimoniaux, avec l'École Duperré.",
+      "pourquoi": "Occupation du domaine public et cession de droits patrimoniaux",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178578",
+      "fait_en": "According to its title, file 2024 DAC 144 concerns a temporary public-domain occupancy agreement, with an annexed agreement assigning economic rights (droits patrimoniaux), with the École Duperré.",
+      "pourquoi_en": "Public-domain occupancy and assignment of economic rights"
+    }
+  ],
   "montants": [],
   "bmo_extraits": [],
   "bmo_recit": null,
@@ -213,7 +242,7 @@
     },
     "bmo": {
       "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22%C3%89cole+Duperr%C3%A9%22%29"
     },
     "invest": {
       "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -224,6 +253,7 @@
       "url": "https://fr.wikipedia.org/"
     }
   },
+  "synthese_en": "In July 2003, file 2003 DASCO 143, for which Ms Danièle Pourtaud is rapporteur, concerns an authorization for the Mayor of Paris to sign with the Caisse des écoles of the 3rd arrondissement an agreement for the supply of meals to the école Duperré and to set the rates applicable to users of its canteen from 1 September 2003. In November 2024, file 2024 DAC 144 concerns a temporary public-domain occupancy agreement, with an annexed agreement assigning economic rights (droits patrimoniaux), with the École Duperré. The titles of these two files specify neither the amount of the rates, nor the location occupied, nor the subject of the rights assigned, nor the decision taken.",
   "license": {
     "id": "ODbL-1.0",
     "url": "https://opendatacommons.org/licenses/odbl/1-0/",

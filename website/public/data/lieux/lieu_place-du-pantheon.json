@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "place-du-pantheon",
   "name": "Place du Panthéon",
@@ -17,9 +17,10 @@
     "source": "Wikimedia Commons"
   },
   "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
-    "extract": null,
-    "url": null,
+    "extract": "La place du Panthéon est une place du 5e arrondissement de Paris, s'étendant devant le Panthéon.",
+    "url": "https://fr.wikipedia.org/wiki/Place_du_Panth%C3%A9on",
     "source": {
       "name": "Wikipédia",
       "url": "https://fr.wikipedia.org/"

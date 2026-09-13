@@ -1,6 +1,6 @@
 {
   "year": 2019,
-  "generated_at": "2026-09-11T16:24:37.876016",
+  "generated_at": "2026-09-13T13:14:32.165438",
   "total_montant": 1304037463.0,
   "nb_beneficiaires": 12093,
   "data": [
@@ -1546,7 +1546,7 @@
       "source_thematique": "direction",
       "montant_total": 1019150.0,
       "nb_subventions": 1,
-      "objet_principal": "Subvention de fonctionnement 2019",
+      "objet_principal": "acompte 2019 DAC",
       "siret": "43353723000040"
     },
     {
@@ -1771,7 +1771,7 @@
       "source_thematique": "direction",
       "montant_total": 849000.0,
       "nb_subventions": 1,
-      "objet_principal": "Acompte 2019 DAC",
+      "objet_principal": "Subvention de fonctionnement",
       "siret": "37978422600050"
     },
     {
@@ -2086,7 +2086,7 @@
       "source_thematique": "direction",
       "montant_total": 637000.0,
       "nb_subventions": 1,
-      "objet_principal": "subvention d'aide au fonctionnement 2019",
+      "objet_principal": "acompte 2019 DAC",
       "siret": "35377356700014"
     },
     {
@@ -2371,7 +2371,7 @@
       "source_thematique": "direction",
       "montant_total": 478000.0,
       "nb_subventions": 1,
-      "objet_principal": "Acompte 2019 DAC",
+      "objet_principal": "Demande de subvention de fonctionnement pour le Mouffetard - Théâtre des arts de la marionnette",
       "siret": "34112346100046"
     },
     {
@@ -2986,7 +2986,7 @@
       "source_thematique": "pattern",
       "montant_total": 325870.0,
       "nb_subventions": 1,
-      "objet_principal": "Subvention de fonctionnement 2019",
+      "objet_principal": "Acompte 2019 DAC",
       "siret": "78424378400013"
     },
     {
@@ -3556,7 +3556,7 @@
       "source_thematique": "pattern",
       "montant_total": 240000.0,
       "nb_subventions": 1,
-      "objet_principal": "acompte de subvention 2019 - dac",
+      "objet_principal": "Subvention d'aide au fonctionnement 2019",
       "siret": "82095968200023"
     },
     {
@@ -4546,7 +4546,7 @@
       "source_thematique": "pattern",
       "montant_total": 160000.0,
       "nb_subventions": 1,
-      "objet_principal": "acompte de subvention 2019",
+      "objet_principal": "Demande de subvention Bureau de la musique 2019",
       "siret": "78434004400030"
     },
     {
@@ -5266,7 +5266,7 @@
       "source_thematique": "direction",
       "montant_total": 135000.0,
       "nb_subventions": 1,
-      "objet_principal": "Art'R lieu de fabrique itinérant pour les Arts de la Rue à Paris et en Île-de-France",
+      "objet_principal": "acompte 2019 DAC",
       "siret": "48232562800022"
     },
     {
@@ -7486,7 +7486,7 @@
       "source_thematique": "default",
       "montant_total": 88500.0,
       "nb_subventions": 1,
-      "objet_principal": "\"Accès au droit et santé mentale\" (ADSM)",
+      "objet_principal": "Tenue de permanences juridiques gratuites par des bénévoles professionnels du droit et suivi de doss",
       "siret": "45101859200027"
     },
     {
@@ -13726,7 +13726,7 @@
       "source_thematique": "llm",
       "montant_total": 36000.0,
       "nb_subventions": 1,
-      "objet_principal": "Parcours linguistique à visée professionnelle",
+      "objet_principal": "ALLEZ LES FILLES ! PREVENTION DE LA MARGINALISATION ET DU DECROCHAGE SCOLAIRE PAR LE SPORT",
       "siret": "40292544000024"
     },
     {
@@ -14056,7 +14056,7 @@
       "source_thematique": "direction",
       "montant_total": 35000.0,
       "nb_subventions": 1,
-      "objet_principal": "subvention de fonctionnement pour les activités 2019 de la ktha compagnie et pour le projet Bea_BA",
+      "objet_principal": "Bea_BA (Bureau d'Entre Accompagnement Banane-Amandiers)",
       "siret": "43514736800045"
     },
     {
@@ -25441,7 +25441,7 @@
       "source_thematique": "llm",
       "montant_total": 11000.0,
       "nb_subventions": 1,
-      "objet_principal": "CPO SPV - TV CITE ROUGE - MISE EN VALEUR DE LA CITE CHAUFOURNIERS ET DE LEURS HABITANTS",
+      "objet_principal": "ATELIERS D¿ÉDUCATION AUX MÉDIAS ET PROJECTIONS-DÉBATS",
       "siret": "49981993600026"
     },
     {
@@ -31036,7 +31036,7 @@
       "source_thematique": "llm",
       "montant_total": 7000.0,
       "nb_subventions": 1,
-      "objet_principal": "2-De mômes et d'Opérettes",
+      "objet_principal": "3-Défilé pour la planète",
       "siret": "48909505900015"
     },
     {
@@ -33241,7 +33241,7 @@
       "source_thematique": "llm",
       "montant_total": 6000.0,
       "nb_subventions": 1,
-      "objet_principal": "CPO SPV Repérage et mise en valeur des porteurs de savoir-faire trad parmi la population migrante",
+      "objet_principal": "Repérage et mise en valeur des porteurs de savoir-faire trad parmi la population migrante",
       "siret": "79804858300024"
     },
     {
@@ -47701,7 +47701,7 @@
       "source_thematique": "direction",
       "montant_total": 2000.0,
       "nb_subventions": 1,
-      "objet_principal": "Exposition collective Objectif Femmes à la Mairie du 9ème arrond. en octobre 2019.",
+      "objet_principal": "5ème édition de ParisArtistes#.Parcours à la découverte d'artistes dans la capitale.bloch",
       "siret": "79970320200017"
     },
     {

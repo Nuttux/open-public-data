@@ -1,6 +1,6 @@
 {
   "year": 2023,
-  "generated_at": "2026-09-11T16:24:28.031669",
+  "generated_at": "2026-09-13T13:14:21.267518",
   "total_montant": 1201008578.0,
   "nb_beneficiaires": 5167,
   "data": [
@@ -2446,7 +2446,7 @@
       "source_thematique": "direction",
       "montant_total": 420500.0,
       "nb_subventions": 1,
-      "objet_principal": "Acompte 2023 DAC",
+      "objet_principal": "Subvention de fonctionnement du théâtre deL'étoile du nord 2023",
       "siret": "32618492600011"
     },
     {
@@ -3646,7 +3646,7 @@
       "source_thematique": "direction",
       "montant_total": 209000.0,
       "nb_subventions": 1,
-      "objet_principal": "Demande de subvention de fonctionnement pour l'année 2023",
+      "objet_principal": "Acompte 2023 DAC",
       "siret": "48957504300034"
     },
     {
@@ -4051,7 +4051,7 @@
       "source_thematique": "direction",
       "montant_total": 181000.0,
       "nb_subventions": 1,
-      "objet_principal": "Acompte 2023 DAC",
+      "objet_principal": "Subvention de fonctionnement pourfinancement des opérations Ecole et Cinémaet Mon 1er Cinéma",
       "siret": "48154244700018"
     },
     {
@@ -4726,7 +4726,7 @@
       "source_thematique": "direction",
       "montant_total": 147000.0,
       "nb_subventions": 1,
-      "objet_principal": "Acompte 2023 DAC",
+      "objet_principal": "subvention de fonctionnement",
       "siret": "30666486300033"
     },
     {
@@ -7051,7 +7051,7 @@
       "source_thematique": "direction",
       "montant_total": 87500.0,
       "nb_subventions": 1,
-      "objet_principal": "Acompte 2023 DAC",
+      "objet_principal": "PRINTEMPS DES RUES 2023",
       "siret": "41778123400048"
     },
     {
@@ -9631,7 +9631,7 @@
       "source_thematique": "direction",
       "montant_total": 54500.0,
       "nb_subventions": 1,
-      "objet_principal": "Soutien au festival Circulation(s) 2023",
+      "objet_principal": "Rencontres photographiques du 10e - édition 2023",
       "siret": "48534098800032"
     },
     {
@@ -10966,7 +10966,7 @@
       "source_thematique": "direction",
       "montant_total": 45000.0,
       "nb_subventions": 1,
-      "objet_principal": "PERMANENCE DROITS SOCIAUX",
+      "objet_principal": "PREVENTION VIH-SIDA, HEPATITES, IST",
       "siret": "39489556900033"
     },
     {
@@ -11116,7 +11116,7 @@
       "source_thematique": "direction",
       "montant_total": 44700.0,
       "nb_subventions": 1,
-      "objet_principal": "Education par le Sport - Dansons l'Avenir !",
+      "objet_principal": "RÉSIDENCE EN COLLÈGE : DanceKeat School Olympics / Apprends-moi ta danse Olympics/RAC2023",
       "siret": "52516272300056"
     },
     {
@@ -11146,7 +11146,7 @@
       "source_thematique": "direction",
       "montant_total": 44500.0,
       "nb_subventions": 1,
-      "objet_principal": "24ème édition du festival des Arts de la rue Coulée Douce",
+      "objet_principal": "Acompte 2023 DAC",
       "siret": "38943016600030"
     },
     {
@@ -16366,7 +16366,7 @@
       "source_thematique": "default",
       "montant_total": 26000.0,
       "nb_subventions": 1,
-      "objet_principal": "Découverte positive des métiers - Collèges Georges Rouault et Suzanne Lacore",
+      "objet_principal": "Projet Découverte positive des métiers - Collège Lucie et Raymond Aubrac",
       "siret": "84162962900020"
     },
     {
@@ -17746,7 +17746,7 @@
       "source_thematique": "direction",
       "montant_total": 22350.0,
       "nb_subventions": 1,
-      "objet_principal": "Journées de formation sur la transition écologique et les enjeux alimentaires liés au plan climat",
+      "objet_principal": "Aide à la sensibilisation alimentaire, sociale et solidaire dans les écoles et lieux écocitoyens.",
       "siret": "87896603500031"
     },
     {
@@ -21406,7 +21406,7 @@
       "source_thematique": "llm",
       "montant_total": 16000.0,
       "nb_subventions": 1,
-      "objet_principal": "L'illusion du choix 11ème",
+      "objet_principal": "L'illusion du choix 20ème",
       "siret": "43998280200035"
     },
     {
@@ -29146,7 +29146,7 @@
       "source_thematique": "default",
       "montant_total": 8700.0,
       "nb_subventions": 1,
-      "objet_principal": "LA CARAVANE QUI PARLE 2023",
+      "objet_principal": "SALON DU LIVRE JEUNESSE SOLIDAIRE DU 18E",
       "siret": "79311882900019"
     },
     {
@@ -29191,7 +29191,7 @@
       "source_thematique": "llm",
       "montant_total": 8500.0,
       "nb_subventions": 1,
-      "objet_principal": "Ateliers d'architecture",
+      "objet_principal": "DE MÔMES ET DE CHOEURS",
       "siret": "48909505900015"
     },
     {
@@ -31996,7 +31996,7 @@
       "source_thematique": "direction",
       "montant_total": 8000.0,
       "nb_subventions": 1,
-      "objet_principal": "Ana Houna - soutien aux structures accompagnant  les artistes en exil proches des zones de conflit",
+      "objet_principal": "Fonds Zodeh - soutien à la structuration des équipes artistiques et culturelles de la région ANMO",
       "siret": "85135637800014"
     },
     {
@@ -32161,7 +32161,7 @@
       "source_thematique": "llm",
       "montant_total": 8000.0,
       "nb_subventions": 1,
-      "objet_principal": "4 - Fêtes de quartier Moskova -  Printemps des poètes",
+      "objet_principal": "1-Fêtes de quartier Moskova - Talus d'hiver",
       "siret": "43035574300021"
     },
     {
@@ -42721,7 +42721,7 @@
       "source_thematique": "llm",
       "montant_total": 4000.0,
       "nb_subventions": 1,
-      "objet_principal": "CPO - COMPAGNIE VARSORIO - PAROLES DE FEMMES",
+      "objet_principal": "CPO - COMPAGNIE VARSORIO - THÉÂTRE, MASQUES ET LIEN SOCIAL",
       "siret": "44116591700069"
     },
     {
@@ -43471,7 +43471,7 @@
       "source_thematique": "direction",
       "montant_total": 4000.0,
       "nb_subventions": 1,
-      "objet_principal": "CARNAVAL Ô LES MASQUES",
+      "objet_principal": "CARNAVAL Ô LES MASQUES 19ème",
       "siret": "85181147100016"
     },
     {

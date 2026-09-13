@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "eglise-notre-dame-de-lorette",
   "name": "Église Notre-Dame-de-Lorette",
@@ -17,22 +17,24 @@
     "source": "Wikipédia"
   },
   "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
     "extract": "L’église Notre-Dame-de-Lorette de Paris est une église située dans le 9e arrondissement de Paris. Datant du XIXe siècle, d'architecture néoclassique, elle est dédiée à Notre-Dame de Lorette et classée comme monument historique.",
     "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Notre-Dame-de-Lorette_de_Paris",
     "source": {
       "name": "Wikipédia",
       "url": "https://fr.wikipedia.org/"
-    }
+    },
+    "extract_en": "The Église Notre-Dame-de-Lorette de Paris is a church located in the 9th arrondissement of Paris. Dating from the 19th century and built in the neoclassical style, it is dedicated to Our Lady of Loreto and is listed as a historic monument."
   },
   "stats": {
     "n_delibs": 798,
     "delibs_span": [
-      1995,
-      2026
+      2003,
+      2025
     ],
-    "n_bmo_brut": 0,
-    "n_bmo_verifies": null,
+    "n_bmo_brut": 425,
+    "n_bmo_verifies": 3,
     "invest_total_eur": 864960.7,
     "invest_annees": [
       "2024"
@@ -40,13 +42,34 @@
     "lecture_mode": "titre nommant le lieu (2 trouvés)",
     "lecture_mode_en": "title naming the place (2 found)",
     "n_lus": 2,
-    "n_lieu": null
+    "n_lieu": 2
   },
   "subventions_exploitant": null,
   "residents": [],
   "kpi_montant": null,
-  "synthese_fr": null,
-  "moments": [],
+  "synthese_fr": "En novembre 2003, le Conseil de Paris approuve le principe de travaux de restauration et de protection des arases des bas-côtés de l'église Notre-Dame-de-Lorette (9e), ainsi que la passation de la mission de maîtrise d'œuvre correspondante sous la forme d'un marché négocié sans mise en concurrence, et autorise le Maire de Paris à signer ce marché. La délibération vise l'avis du Conseil du 9e arrondissement du 13 novembre 2003 et prévoit que la dépense correspondante sera imputée sur le budget d'investissement de la Ville de Paris de 2003. En octobre 2025, le groupe Communiste et Citoyen dépose un vœu relatif à l'effacement de la devise républicaine sur l'église ; son intitulé ne dit ni ce que le vœu demande ni la suite qui lui a été donnée.",
+  "moments": [
+    {
+      "id": "94358",
+      "seance": "NOVEMBRE 2003",
+      "fait": "Le Conseil approuve le principe des travaux de restauration et de protection des arases des bas-côtés de l'église, ainsi que la passation, sans mise en concurrence, du marché de maîtrise d'œuvre correspondant, et autorise le Maire à le signer.",
+      "pourquoi": "Principe des travaux sur les arases des bas-côtés",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94358",
+      "fait_en": "The Council approves the principle of the works to restore and protect the wall heads (arases) of the church's side aisles, as well as the award, without competitive tendering, of the corresponding project management (maîtrise d'œuvre) contract, and authorizes the Mayor to sign it.",
+      "pourquoi_en": "Principle of the works on the wall heads of the side aisles"
+    },
+    {
+      "id": "183330",
+      "seance": "OCTOBRE 2025",
+      "fait": "Le groupe Communiste et Citoyen dépose un vœu relatif à l'effacement de la devise républicaine sur l'église.",
+      "pourquoi": "Un vœu relatif à l'effacement de la devise républicaine",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183330",
+      "fait_en": "The Communiste et Citoyen group tables a motion (vœu) concerning the effacement of the republican motto on the church.",
+      "pourquoi_en": "A motion concerning the effacement of the republican motto"
+    }
+  ],
   "montants": [],
   "bmo_extraits": [],
   "bmo_recit": null,
@@ -168,7 +191,7 @@
     },
     "bmo": {
       "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22%C3%89glise+Notre-Dame-de-Lorette%22%29"
     },
     "invest": {
       "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -179,6 +202,7 @@
       "url": "https://fr.wikipedia.org/"
     }
   },
+  "synthese_en": "In November 2003, the Conseil de Paris approves the principle of works to restore and protect the wall heads (arases) of the side aisles of the Notre-Dame-de-Lorette church (9th), as well as the award of the corresponding project management (maîtrise d'œuvre) assignment as a negotiated contract without competitive tendering, and authorizes the Mayor of Paris to sign that contract. The deliberation cites the opinion of the 9th arrondissement Council of 13 November 2003 and provides that the corresponding expenditure will be charged to the City of Paris's 2003 capital budget. In October 2025, the Communiste et Citoyen group tables a motion (vœu) concerning the effacement of the republican motto on the church; its title says neither what the motion asks for nor what action was taken on it.",
   "license": {
     "id": "ODbL-1.0",
     "url": "https://opendatacommons.org/licenses/odbl/1-0/",

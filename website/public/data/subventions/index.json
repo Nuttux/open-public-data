@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T16:24:23.125531",
+  "generated_at": "2026-09-13T13:14:16.180661",
   "source": "dbt marts (mart_subventions_treemap, mart_subventions_beneficiaires)",
   "availableYears": [
     2024,
@@ -56,8 +56,8 @@
       "nb_subventions": 3648
     },
     "2015": {
-      "montant_total": 1149891407.5600002,
-      "nb_subventions": 3504
+      "montant_total": 1149891407.56,
+      "nb_subventions": 2864
     },
     "2014": {
       "montant_total": 1362113353.9600003,
@@ -86,9 +86,9 @@
       "Logement",
       "Culture",
       "Éducation",
-      "Non classifié",
       "Économie",
       "Administration",
+      "Non classifié",
       "Transport",
       "Social - Petite enfance",
       "Sport",

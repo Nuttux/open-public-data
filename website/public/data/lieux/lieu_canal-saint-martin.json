@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "canal-saint-martin",
   "name": "Canal Saint-Martin",
@@ -17,6 +17,7 @@
     "source": "Wikipédia"
   },
   "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
     "extract": "Le canal Saint-Martin, long de 4,55 km, est situé pour l'essentiel dans les 10e et 11e arrondissements de Paris. Il relie le bassin de la Villette — et au-delà le canal de l'Ourcq — au port de l'Arsenal qui communique avec la Seine. C'est un canal de petit gabarit destiné, à l'origine, à l'adduction d'eau potable dans la capitale. Inauguré en 1825, il comporte neuf écluses et deux ponts tournants pour une dénivellation totale de 25 m.",
     "url": "https://fr.wikipedia.org/wiki/Canal_Saint-Martin",
@@ -24,7 +25,7 @@
       "name": "Wikipédia",
       "url": "https://fr.wikipedia.org/"
     },
-    "extract_en": "The canal Saint-Martin, 4.55 km long, is located mainly in the 10th and 11th arrondissements of Paris. It links the bassin de la Villette — and beyond it the canal de l'Ourcq — to the port de l'Arsenal, which connects to the Seine. It is a small-gauge canal originally intended to supply the capital with drinking water. Inaugurated in 1825, it has nine locks and two swing bridges for a total elevation change of 25 m."
+    "extract_en": "The canal Saint-Martin, 4.55 km long, lies mostly in the 10th and 11th arrondissements of Paris. It links the bassin de la Villette — and beyond it the canal de l'Ourcq — to the port de l'Arsenal, which connects with the Seine. It is a small-gauge canal originally intended to supply the capital with drinking water. Inaugurated in 1825, it has nine locks and two swing bridges for a total drop of 25 m."
   },
   "stats": {
     "n_delibs": 746,
@@ -59,8 +60,8 @@
       "pourquoi": "mettre le canal en lumière, à quel prix",
       "vedette": true,
       "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2886",
-      "fait_en": "The Council authorized the contract for illuminating the canal's covered vault; a councillor from the 11th arrondissement disputed \"prestige works\" costed at \"more than two million\".",
-      "pourquoi_en": "Lighting up the canal, at what price"
+      "fait_en": "The Council authorised the contract for illuminating the canal's covered vault; a councillor from the 11th arrondissement challenged \"prestige works\" costed at \"more than two million\".",
+      "pourquoi_en": "putting the canal in the spotlight, at what price"
     },
     {
       "id": "50877",
@@ -69,8 +70,8 @@
       "pourquoi": "reconstruire les bassins historiques du canal",
       "vedette": true,
       "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50877",
-      "fait_en": "The Council approved the principle of rebuilding the Louis-Blanc and Récollets basins and authorized signing the project management contracts.",
-      "pourquoi_en": "Rebuilding the canal's historic basins"
+      "fait_en": "The Council approved the principle of rebuilding the Louis-Blanc and Récollets basins and authorised the signing of the project management contracts.",
+      "pourquoi_en": "rebuilding the canal's historic basins"
     },
     {
       "id": "94460",
@@ -79,8 +80,8 @@
       "pourquoi": "un lieu culturel s'installe au bord du canal",
       "vedette": true,
       "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94460",
-      "fait_en": "The Council authorized an occupancy agreement with the association La Caserne Éphémère on the canal's public waterway domain, at the Louis-Blanc basin.",
-      "pourquoi_en": "A cultural venue sets up along the canal"
+      "fait_en": "The Council authorised an occupancy agreement with the association La Caserne Ephémère on the canal's public waterway domain, at the Louis-Blanc basin.",
+      "pourquoi_en": "a cultural venue sets up by the canal"
     },
     {
       "id": "11636",
@@ -89,8 +90,8 @@
       "pourquoi": "riverains contre la rançon de l'attractivité festive",
       "vedette": false,
       "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11636",
-      "fait_en": "A question from the U.M.P. group denounced nuisances affecting local residents; the deputy mayor detailed enhanced street cleaning and referred noise and alcohol issues to the Prefecture.",
-      "pourquoi_en": "Local residents against the price of festive appeal"
+      "fait_en": "A U.M.P. question denounced the nuisances affecting local residents; the deputy mayor detailed the stepped-up street cleaning and referred noise and alcohol to the Prefecture.",
+      "pourquoi_en": "local residents versus the price of festive appeal"
     },
     {
       "id": "9744",
@@ -99,8 +100,8 @@
       "pourquoi": "le canal, refuge d'un campement de sans-abri",
       "vedette": false,
       "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9744",
-      "fait_en": "A motion from the Greens demanded assurance that no eviction of the encampment along the canal would take place without providing shelter; the prefect said he was not planning one.",
-      "pourquoi_en": "The canal, a refuge for a homeless encampment"
+      "fait_en": "A motion (vœu) from the Greens demanded assurance that no eviction of the encampment along the canal would take place without accommodation; the prefect said he was not considering any.",
+      "pourquoi_en": "the canal, refuge for a homeless encampment"
     },
     {
       "id": "67618",
@@ -109,8 +110,8 @@
       "pourquoi": "vider le canal pour l'entretenir",
       "vedette": true,
       "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67618",
-      "fait_en": "The Council approved the principle of a project management assignment for dewatering (draining) the canal.",
-      "pourquoi_en": "Draining the canal to maintain it"
+      "fait_en": "The Council approved the principle of a project management assignment for the chômage (draining) of the canal.",
+      "pourquoi_en": "emptying the canal to maintain it"
     },
     {
       "id": "174185",
@@ -119,8 +120,8 @@
       "pourquoi": "le grand réaménagement annoncé pour 2026",
       "vedette": true,
       "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174185",
-      "fait_en": "A motion called for applying for the Quiet label; the deputy mayor detailed the noise-reduction measures of a redevelopment of the canal announced for 2026.",
-      "pourquoi_en": "The major redevelopment announced for 2026"
+      "fait_en": "A motion (vœu) called for an application for the Quiet label; the deputy mayor detailed the anti-noise measures of a redevelopment of the canal announced for 2026.",
+      "pourquoi_en": "the major redevelopment announced for 2026"
     },
     {
       "id": "176215",
@@ -129,8 +130,8 @@
       "pourquoi": "se baigner dans le canal, l'été des Jeux",
       "vedette": true,
       "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176215",
-      "fait_en": "The Council unanimously approved free access to summer 2024 swimming spots, including those in the designated area of the canal Saint-Martin.",
-      "pourquoi_en": "Swimming in the canal, in the summer of the Games"
+      "fait_en": "The Council unanimously approved free swimming in summer 2024, including in the designated area of the canal Saint-Martin.",
+      "pourquoi_en": "swimming in the canal, the summer of the Games"
     }
   ],
   "montants": [
@@ -144,25 +145,25 @@
   ],
   "bmo_extraits": [
     {
-      "date": "1883-07-07",
-      "extrait": "Canal Saint - Martin . — 10 jours de chômage, du 1er juillet au 11 juillet …  Canal Saint - Martin . —",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6247490r/f2.item",
-      "extrait_en": "Canal Saint-Martin. — 10 days of closure, from 1 July to 11 July … Canal Saint-Martin. —"
-    },
-    {
-      "date": "1894-06-24",
+      "date": "1905-08-08",
       "extrait": "1376. — Mise en adjudication de la concession du touage dans le quatrième bief du canal Saint - Martin (M. Paris, rapporteur … juin 1905, par lequel M. le Préfet de la Seine propose la mise e",
       "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6334659p/f14.item",
-      "extrait_en": "1376. — Putting the towage concession in the fourth reach of the canal Saint-Martin out to tender (Mr Paris, rapporteur) … June 1905, by which the Prefect of the Seine proposes the"
+      "extrait_en": "1376. — Putting out to tender the towage concession in the fourth reach of the canal Saint-Martin (Mr Paris, rapporteur (...) June 1905, by which the Prefect of the Seine proposes putting"
     },
     {
-      "date": "1962-11-18",
+      "date": "1909-05-14",
+      "extrait": "Canal Saint - Martin . — 10 jours de chômage, du 1er juillet au 11 juillet …  Canal Saint - Martin . —",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6247490r/f2.item",
+      "extrait_en": "Canal Saint-Martin. — 10 days of chômage (closure), from 1 July to 11 July (...) Canal Saint-Martin. —"
+    },
+    {
+      "date": "1923-11-16",
       "extrait": "Préfet de la Seine sur les raisons pour lesquelles le service de batellerie a été si longtemps interrompu sur le canal Saint - Martin et sur les mesures que l'Administration a prises pour &",
       "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6433647d/f2.item",
-      "extrait_en": "Prefect of the Seine on the reasons why the barge-towing service was interrupted for so long on the canal Saint-Martin, and on the measures the Administration has taken to &"
+      "extrait_en": "Prefect of the Seine on the reasons why the barge service was interrupted for so long on the canal Saint-Martin and on the measures the Administration has taken to"
     }
   ],
-  "bmo_recit": "Au Bulletin municipal officiel, le canal Saint-Martin apparaît d'abord comme un ouvrage à exploiter et à entretenir. En juillet 1883, le Bulletin annonce dix jours de chômage du canal, du 1er au 11 juillet. En juin 1894, il enregistre la mise en adjudication de la concession du touage dans le quatrième bief, sur rapport de M. Paris : la concession est alors ouverte à la concurrence, et non encore attribuée. Le canal ne reparaît qu'en novembre 1962, lorsque le Préfet de la Seine est interrogé sur les raisons pour lesquelles le service de batellerie a été si longtemps interrompu et sur les mesures prises par l'Administration. Trois passages seulement, mais qui suivent tous la même ligne : celle d'une voie d'eau dont on règle l'arrêt, l'exploitation, puis le trafic interrompu.",
+  "bmo_recit": "Le Bulletin municipal évoque le canal Saint-Martin sous l'angle de la navigation, à travers trois épisodes. En juin 1905, le Préfet de la Seine propose de mettre en adjudication la concession du touage dans le quatrième bief du canal, affaire dont M. Paris est le rapporteur. En 1909, le Bulletin annonce pour le canal dix jours de chômage, du 1er au 11 juillet. En 1923, la question est portée devant le Préfet de la Seine : pourquoi le service de batellerie a-t-il été si longtemps interrompu sur le canal, et quelles mesures l'Administration a-t-elle prises ?",
   "delibs_par_annee": {
     "2000": [
       {
@@ -570,8 +571,8 @@
       "url": "https://fr.wikipedia.org/"
     }
   },
-  "synthese_en": "In the deliberations of the Conseil de Paris, the canal Saint-Martin first appears as a construction site: at the turn of the 2000s, the City undertook the reconstruction of the Louis-Blanc and Récollets basins, the manufacture of lock gates, and the artistic illumination of its covered vault, this last expense being disputed in session by a councillor from the 11th arrondissement. The public waterway domain then became a platform for occupations — Point Éphémère and firefighters at the Louis-Blanc basin, the 10th arrondissement's association hall — while the banks concentrated tensions over use: noise nuisance and cleanliness denounced by local residents, homeless encampments and hunger strikers in 2007. Recurring questions also concern Sunday pedestrianization of the quays and cycling links. On several occasions, the City approved dewatering the canal (draining it dry) for maintenance — a dewatering planned for late 2001, then a project management assignment approved in 2008 — and the question of algae came back up in 2019. More recently, the canal has been presented as the setting for a redevelopment project announced for delivery in 2026, and for summer swimming made free during the summer of the 2024 Games.",
-  "bmo_recit_en": "In the Bulletin municipal officiel, the canal Saint-Martin first appears as a waterway to be operated and maintained. As early as July 1883, the Bulletin announced ten days of closure (dewatering) of the canal, from 1 to 11 July. In June 1894, it recorded the canal's towage concession in the fourth reach being put out to tender, on the report of Mr Paris: the concession was then open to competition, and not yet awarded. The canal does not reappear until November 1962, when the Prefect of the Seine was questioned about the reasons why the barge-towing service had been interrupted for so long, and about the measures taken by the Administration. Only three passages, but all following the same line: that of a waterway whose closure, operation, and then interrupted traffic are being regulated.",
+  "synthese_en": "In the deliberations of the Conseil de Paris, the canal Saint-Martin first appears as a construction site: around the turn of the 2000s, the City undertook the reconstruction of the Louis-Blanc and Récollets basins, the manufacture of lock gates and the artistic illumination of its covered vault, this last expense being challenged in session by a councillor from the 11th arrondissement. The public waterway domain then became a base for occupancies — Point Éphémère and firefighters at the Louis-Blanc basin, the Maison des associations of the 10th arrondissement — while the banks concentrated tensions over use: noise nuisance and cleanliness denounced by local residents, encampments of homeless people and hunger strikers in 2007. Recurring questions also concern the Sunday pedestrianisation of the quays and cycling links. On several occasions, the City approved the chômage (draining) of the canal for maintenance — for a chômage planned for late 2001, then a project management assignment approved in 2008 — and the issue of algae came back in 2019. More recently, the canal has been presented as the setting for a redevelopment project announced for delivery in 2026 and for summer swimming made free during the summer of the 2024 Games.",
+  "bmo_recit_en": "The Bulletin municipal discusses the canal Saint-Martin from the angle of navigation, through three episodes. In June 1905, the Prefect of the Seine proposed putting the towage concession in the fourth reach of the canal out to tender, a matter on which Mr Paris was the rapporteur. In 1909, the Bulletin announced ten days of chômage (closure) for the canal, from 1 to 11 July. In 1923, the question was put to the Prefect of the Seine: why had the barge service been interrupted for so long on the canal, and what measures had the Administration taken?",
   "license": {
     "id": "ODbL-1.0",
     "url": "https://opendatacommons.org/licenses/odbl/1-0/",

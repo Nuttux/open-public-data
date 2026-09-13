@@ -4,13 +4,18 @@
   "points": [
     {
       "name": "CENTRE ACTION SOCIALE VILLE PARIS",
-      "amount": 1710400.0,
+      "amount": 315498591.7,
       "theme": "Social - Solidarité"
     },
     {
       "name": "PARIS HABITAT-OPH",
-      "amount": 13505942.81,
+      "amount": 45842923.75,
       "theme": "Logement"
+    },
+    {
+      "name": "PARIS MUSEES",
+      "amount": 62025000.0,
+      "theme": "Culture"
     },
     {
       "name": "REGIE IMMOBILIERE DE LA VILLE DE PA",
@@ -19,13 +24,13 @@
     },
     {
       "name": "REGIE AUTONOME TRANSPORTS PARISIENS",
-      "amount": 37331834.98,
+      "amount": 47922098.28,
       "theme": "Transport"
     },
     {
-      "name": "Nom3950",
-      "amount": 313788191.7,
-      "theme": "Non classifié"
+      "name": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+      "amount": 20979400.0,
+      "theme": "Éducation"
     },
     {
       "name": "THEATRE MUSICAL DE PARIS",
@@ -43,6 +48,11 @@
       "theme": "Non classifié"
     },
     {
+      "name": "PREFECTURE DE POLICE DE PARIS",
+      "amount": 4189971.55,
+      "theme": "Sécurité"
+    },
+    {
       "name": "THEATRE DE LA VILLE",
       "amount": 11824000.0,
       "theme": "Culture"
@@ -54,12 +64,17 @@
     },
     {
       "name": "CAISSE DES ECOLES DU 18E ARRONDISSE",
-      "amount": 1090026.0,
+      "amount": 10039192.0,
       "theme": "Éducation"
     },
     {
       "name": "CAISSE ECOLES 19 EME ARRON PARIS",
-      "amount": 676527.0,
+      "amount": 8599336.0,
+      "theme": "Éducation"
+    },
+    {
+      "name": "CAISSE ECOLES 20 EME ARRON PARIS",
+      "amount": 8942794.0,
       "theme": "Éducation"
     },
     {
@@ -68,24 +83,24 @@
       "theme": "Logement"
     },
     {
-      "name": "CAISSE ECOLES 20 EME ARRON PARIS",
-      "amount": 886722.0,
-      "theme": "Éducation"
-    },
-    {
       "name": "AGOSPAP",
       "amount": 7839538.0,
       "theme": "Social - Solidarité"
     },
     {
       "name": "104 CENT QUATRE",
-      "amount": 4599000.0,
+      "amount": 8954000.0,
       "theme": "Culture"
     },
     {
       "name": "CAISSE DES ECOLES DU 13E ARRONDISSE",
-      "amount": 134699.0,
+      "amount": 7104564.0,
       "theme": "Éducation"
+    },
+    {
+      "name": "SNCF RESEAU",
+      "amount": 12483052.49,
+      "theme": "Transport"
     },
     {
       "name": "ELOGIE",
@@ -99,8 +114,13 @@
     },
     {
       "name": "LA CITE DE LA MUSIQUE",
-      "amount": 5000.0,
+      "amount": 14360.0,
       "theme": "Culture"
+    },
+    {
+      "name": "CAISSE DES ECOLES 15EME ARRONDISSEM",
+      "amount": 7101459.0,
+      "theme": "Éducation"
     },
     {
       "name": "ATELIER PARISIEN D URBANISME",
@@ -108,8 +128,8 @@
       "theme": "Administration"
     },
     {
-      "name": "CAISSE DES ECOLES 15EME ARRONDISSEM",
-      "amount": 390453.0,
+      "name": "CAISSE DES ECOLES DU 11E ARRONDISSE",
+      "amount": 5906438.0,
       "theme": "Éducation"
     },
     {
@@ -123,6 +143,11 @@
       "theme": "Social - Petite enfance"
     },
     {
+      "name": "CAISSE DES ECOLES DU 17E ARRONDISSE",
+      "amount": 5270764.0,
+      "theme": "Éducation"
+    },
+    {
       "name": "CRESCENDO",
       "amount": 4254469.0,
       "theme": "Social - Petite enfance"
@@ -133,13 +158,13 @@
       "theme": "Logement"
     },
     {
-      "name": "CAISSE DES ECOLES DU 11E ARRONDISSE",
-      "amount": 437660.0,
+      "name": "CAISSE DES ECOLES DU 14E ARRONDISSE",
+      "amount": 5307509.0,
       "theme": "Éducation"
     },
     {
-      "name": "CAISSE DES ECOLES DU 17E ARRONDISSE",
-      "amount": 355614.0,
+      "name": "CAISSE ECOLES 12 EME ARRON PARIS",
+      "amount": 5275478.0,
       "theme": "Éducation"
     },
     {
@@ -148,23 +173,28 @@
       "theme": "Logement"
     },
     {
-      "name": "CAISSE DES ECOLES DU 14E ARRONDISSE",
-      "amount": 150978.0,
+      "name": "REGIE ECOLE INGENIEURS VILLE PARIS",
+      "amount": 5034450.0,
       "theme": "Éducation"
     },
     {
-      "name": "CAISSE ECOLES 12 EME ARRON PARIS",
-      "amount": 251279.0,
-      "theme": "Éducation"
+      "name": "AGENCE NATIONALE DE L'HABITAT",
+      "amount": 1080000.0,
+      "theme": "Logement"
     },
     {
-      "name": "Nom3948",
-      "amount": 62025000.0,
-      "theme": "Non classifié"
+      "name": "CAISSE DES ECOLES DU 10E ARRONDISSE",
+      "amount": 4148136.0,
+      "theme": "Éducation"
     },
     {
       "name": "OFFICE DE TOURISME ET DES CONGRES P",
       "amount": 6640000.0,
+      "theme": "Économie"
+    },
+    {
+      "name": "Bénéficiaires non nommés par la Ville — Entreprises (61 lignes)",
+      "amount": 60021620.129999995,
       "theme": "Économie"
     },
     {
@@ -183,11 +213,6 @@
       "theme": "Logement"
     },
     {
-      "name": "CAISSE DES ECOLES DU 10E ARRONDISSE",
-      "amount": 471720.0,
-      "theme": "Éducation"
-    },
-    {
       "name": "ORCHESTRE DE PARIS",
       "amount": 5703200.0,
       "theme": "Culture"
@@ -203,6 +228,11 @@
       "theme": "Logement"
     },
     {
+      "name": "CAISSE ECOLES 16 EME ARRON PARIS",
+      "amount": 3698836.0,
+      "theme": "Éducation"
+    },
+    {
       "name": "EMMAUS SOLIDARITE",
       "amount": 12700.0,
       "theme": "Social - Solidarité"
@@ -216,6 +246,11 @@
       "name": "SOC ECONOMIE MIXTE AMENAGEMENT",
       "amount": 9009600.0,
       "theme": "Économie"
+    },
+    {
+      "name": "Bénéficiaires non nommés par la Ville — Associations (523 lignes)",
+      "amount": 35641439.69000001,
+      "theme": "Non classifié"
     },
     {
       "name": "LA MAISON KANGOUROU",
@@ -253,6 +288,11 @@
       "theme": "Culture"
     },
     {
+      "name": "CENTRE REGIONAL OEUVRES UNIV SCOLAI",
+      "amount": 2748400.0,
+      "theme": "Éducation"
+    },
+    {
       "name": "THEATRE DU ROND POINT",
       "amount": 2067637.0,
       "theme": "Culture"
@@ -263,18 +303,13 @@
       "theme": "Économie"
     },
     {
-      "name": "Nom3971",
-      "amount": 32336980.94,
-      "theme": "Non classifié"
-    },
-    {
       "name": "L HABITAT SOCIAL FRANCAIS",
       "amount": 628105.0,
       "theme": "Logement"
     },
     {
-      "name": "CENTRE REGIONAL OEUVRES UNIV SCOLAI",
-      "amount": 1025000.0,
+      "name": "CAISSE ECOLES 5 EME ARRONDISSEMENT",
+      "amount": 2239486.0,
       "theme": "Éducation"
     },
     {
@@ -288,14 +323,14 @@
       "theme": "Culture"
     },
     {
-      "name": "CAISSE ECOLES 5 EME ARRONDISSEMENT",
-      "amount": 108907.0,
-      "theme": "Éducation"
-    },
-    {
       "name": "BATIGERE ILE DE FRANCE SA D'HLM",
       "amount": 3351820.8,
       "theme": "Logement"
+    },
+    {
+      "name": "CAISSE DES ECOLES DU 9E ARRONDISSEM",
+      "amount": 1923556.0,
+      "theme": "Éducation"
     },
     {
       "name": "SOC ECONOMIE MIXTE AMENAGEMENT EST",
@@ -308,9 +343,19 @@
       "theme": "Économie"
     },
     {
+      "name": "MAISON PRATIQUES ARTISTIQUES AMATEU",
+      "amount": 2712500.0,
+      "theme": "Culture"
+    },
+    {
       "name": "SA D'H L M FRANCE HABITATION",
       "amount": 8927070.0,
       "theme": "Logement"
+    },
+    {
+      "name": "LYCEE DES METIERS BOULLE E.S.A.A.",
+      "amount": 1661481.0,
+      "theme": "Éducation"
     },
     {
       "name": "ASSOCIATION AURORE",
@@ -343,19 +388,14 @@
       "theme": "Administration"
     },
     {
-      "name": "Nom3943",
-      "amount": 20979400.0,
-      "theme": "Non classifié"
+      "name": "MAISON DES METALLOS",
+      "amount": 2073145.33,
+      "theme": "Culture"
     },
     {
       "name": "BNP PARIBAS",
       "amount": 471931.14,
       "theme": "Économie"
-    },
-    {
-      "name": "MAISON DES METALLOS",
-      "amount": 505000.0,
-      "theme": "Culture"
     },
     {
       "name": "INSTITUT DES CULTURES D ISLAM",
@@ -383,6 +423,16 @@
       "theme": "Non classifié"
     },
     {
+      "name": "EPCS CAMPUS CONDORCET",
+      "amount": 2000000.0,
+      "theme": "Éducation"
+    },
+    {
+      "name": "CAISSE DES ECOLES DU 7EME ARRONDISS",
+      "amount": 1165035.0,
+      "theme": "Éducation"
+    },
+    {
       "name": "MAISON DE LA POESIE",
       "amount": 1035959.0,
       "theme": "Culture"
@@ -393,19 +443,14 @@
       "theme": "Logement"
     },
     {
-      "name": "CAISSE DES ECOLES DU 7EME ARRONDISS",
-      "amount": 213613.0,
-      "theme": "Éducation"
+      "name": "UNIVERSITE PARIS 6 PIERRE ET MARIE",
+      "amount": 2739600.0,
+      "theme": "Administration"
     },
     {
       "name": "CREDIT FONCIER DE FRANCE",
       "amount": 202949.56,
       "theme": "Logement"
-    },
-    {
-      "name": "UNIVERSITE PARIS 6 PIERRE ET MARIE",
-      "amount": 2500000.0,
-      "theme": "Administration"
     },
     {
       "name": "EMMAUS HABITAT",
@@ -418,14 +463,19 @@
       "theme": "Éducation"
     },
     {
+      "name": "SYND MIXTE AUTOLIB",
+      "amount": 2650000.0,
+      "theme": "Administration"
+    },
+    {
       "name": "APATE",
       "amount": 675315.0,
       "theme": "Social - Petite enfance"
     },
     {
-      "name": "Nom3974",
-      "amount": 12483052.49,
-      "theme": "Non classifié"
+      "name": "LYCEE TECHNOLOGIQUE ESTIENNE E.S.A.",
+      "amount": 1046102.0,
+      "theme": "Éducation"
     },
     {
       "name": "LERICHEMONT",
@@ -433,14 +483,24 @@
       "theme": "Économie"
     },
     {
+      "name": "CAISSE DES ECOLES DU 6E ARRONDISSEM",
+      "amount": 1139543.0,
+      "theme": "Éducation"
+    },
+    {
+      "name": "CAISSE ECOLES 4 EME ARRONDISSEMENT",
+      "amount": 1239414.0,
+      "theme": "Éducation"
+    },
+    {
       "name": "CRECHE GAN MENAHEM",
       "amount": 846304.0,
       "theme": "Social - Petite enfance"
     },
     {
-      "name": "Nom4532",
-      "amount": 11635890.0,
-      "theme": "Économie"
+      "name": "CAISSE DES ECOLES DU 3E ARRONDISSEM",
+      "amount": 1394406.0,
+      "theme": "Éducation"
     },
     {
       "name": "FESTIVAL D AUTOMNE A PARIS",
@@ -448,9 +508,9 @@
       "theme": "Culture"
     },
     {
-      "name": "CAISSE DES ECOLES DU 6E ARRONDISSEM",
-      "amount": 155723.0,
-      "theme": "Éducation"
+      "name": "UNION SYNDICATS CFDT PARIS",
+      "amount": 681320.0,
+      "theme": "Administration"
     },
     {
       "name": "PUC VOLLEY BALL",
@@ -483,19 +543,24 @@
       "theme": "Sport"
     },
     {
-      "name": "Nom3979",
-      "amount": 10590263.3,
-      "theme": "Non classifié"
+      "name": "CAISSE DES ECOLES DU 8E ARRONDISSEM",
+      "amount": 1057835.0,
+      "theme": "Éducation"
     },
     {
-      "name": "CAISSE DES ECOLES DU 3E ARRONDISSEM",
-      "amount": 120183.0,
+      "name": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
+      "amount": 496180.0,
       "theme": "Éducation"
     },
     {
       "name": "FONDATION CITE INTERNATIONALE ARTS",
       "amount": 649173.0,
       "theme": "Culture"
+    },
+    {
+      "name": "9 BD DU PALAIS",
+      "amount": 1302957.94,
+      "theme": "Non classifié"
     },
     {
       "name": "SOCIETE D'ECONOMIE MIXTE PARIS SEIN",
@@ -510,6 +575,11 @@
     {
       "name": "IERFAS",
       "amount": 627697.0,
+      "theme": "Éducation"
+    },
+    {
+      "name": "CAISSE DES ECOLES DU 2E ARRONDISSEM",
+      "amount": 1110175.0,
       "theme": "Éducation"
     },
     {
@@ -533,6 +603,11 @@
       "theme": "Social - Solidarité"
     },
     {
+      "name": "CTRE NAT DE LA RECHERCHE SCIENTIFIQ",
+      "amount": 636220.0,
+      "theme": "Éducation"
+    },
+    {
       "name": "MAISON GESTE IMAGE CTRE RECHERC EDU",
       "amount": 865000.0,
       "theme": "Culture"
@@ -543,13 +618,8 @@
       "theme": "Sport"
     },
     {
-      "name": "Nom3968",
-      "amount": 8949166.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "CAISSE DES ECOLES DU 2E ARRONDISSEM",
-      "amount": 147219.0,
+      "name": "UNIVERSITE PARIS DIDEROT - PARIS 7",
+      "amount": 341920.0,
       "theme": "Éducation"
     },
     {
@@ -573,11 +643,6 @@
       "theme": "Culture"
     },
     {
-      "name": "Nom4556",
-      "amount": 8173465.0,
-      "theme": "Économie"
-    },
-    {
       "name": "ASS GAN YAEL CRECHE JARDIN ENF",
       "amount": 685690.0,
       "theme": "Social - Petite enfance"
@@ -588,19 +653,9 @@
       "theme": "Logement"
     },
     {
-      "name": "Nom3970",
-      "amount": 8056072.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ESTRELIA",
       "amount": 628062.0,
       "theme": "Social - Petite enfance"
-    },
-    {
-      "name": "Nom3969",
-      "amount": 7922809.0,
-      "theme": "Non classifié"
     },
     {
       "name": "CENTR ISRAELITE MONTMARTRE",
@@ -608,29 +663,14 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "Nom4574",
-      "amount": 7554271.2,
-      "theme": "Économie"
-    },
-    {
       "name": "CRECHE LAIQUE ST FARGEAU",
       "amount": 518849.8,
       "theme": "Social - Petite enfance"
     },
     {
-      "name": "Nom4543",
-      "amount": 7217998.0,
-      "theme": "Économie"
-    },
-    {
       "name": "PARIS UNIVERSITE CLUB",
       "amount": 433569.0,
       "theme": "Sport"
-    },
-    {
-      "name": "Nom3963",
-      "amount": 6969865.0,
-      "theme": "Non classifié"
     },
     {
       "name": "SOLIHA PARIS HAUTS DE SEINE VAL D O",
@@ -651,11 +691,6 @@
       "name": "BANQUE POPULAIRE RIVES DE PARIS",
       "amount": 333096.75,
       "theme": "Économie"
-    },
-    {
-      "name": "Nom3965",
-      "amount": 6711006.0,
-      "theme": "Non classifié"
     },
     {
       "name": "LA BANQUE POSTALE",
@@ -698,6 +733,11 @@
       "theme": "Social - Solidarité"
     },
     {
+      "name": "INST NATIONAL SANTE RECHERCHE MEDIC",
+      "amount": 263500.0,
+      "theme": "Santé"
+    },
+    {
       "name": "ASS DES CITES DU SECOURS CATHOLIQUE",
       "amount": 492186.07,
       "theme": "Social - Solidarité"
@@ -738,14 +778,14 @@
       "theme": "Environnement"
     },
     {
+      "name": "UNION DEPARTEM. SYNDICATS CGT FO PA",
+      "amount": 355074.0,
+      "theme": "Administration"
+    },
+    {
       "name": "THEATRE DE LA MARIONNETTE A PARIS",
       "amount": 494708.0,
       "theme": "Culture"
-    },
-    {
-      "name": "Nom3961",
-      "amount": 5468778.0,
-      "theme": "Non classifié"
     },
     {
       "name": "ASS GAN YOSSEF CRECHE JARDIN D ENFA",
@@ -768,34 +808,14 @@
       "theme": "Logement"
     },
     {
-      "name": "Nom3964",
-      "amount": 5156531.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "SYND INTERDEP PARC SPORTS CHOISY",
       "amount": 452124.5,
       "theme": "Sport"
     },
     {
-      "name": "Nom3944",
-      "amount": 5034450.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3962",
-      "amount": 5024199.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "INSTITUT PASTEUR",
       "amount": 278000.0,
       "theme": "Santé"
-    },
-    {
-      "name": "Nom3967",
-      "amount": 4915150.0,
-      "theme": "Non classifié"
     },
     {
       "name": "EMMAUS DEFI - FONDATEUR ABBE PIERRE",
@@ -816,6 +836,11 @@
       "name": "SALLE SAINT BRUNO",
       "amount": 239040.0,
       "theme": "Social - Solidarité"
+    },
+    {
+      "name": "UNION DEPARTENTALE SYNDICAT CFTC PA",
+      "amount": 361014.0,
+      "theme": "Administration"
     },
     {
       "name": "RESTAUS DU COEUR LES RELAIS COEUR P",
@@ -848,6 +873,11 @@
       "theme": "Économie"
     },
     {
+      "name": "ECOLE NORMALE SUPERIEURE",
+      "amount": 119000.0,
+      "theme": "Éducation"
+    },
+    {
       "name": "LE CREDIT LYONNAIS",
       "amount": 1019994.81,
       "theme": "Autre"
@@ -858,14 +888,14 @@
       "theme": "Économie"
     },
     {
-      "name": "Nom3977",
-      "amount": 4355000.0,
-      "theme": "Non classifié"
+      "name": "UNION DEPARTEMENTALE DE PARIS CFE-C",
+      "amount": 310804.0,
+      "theme": "Administration"
     },
     {
-      "name": "Nom3844",
-      "amount": 4189971.55,
-      "theme": "Non classifié"
+      "name": "CENTRE NATIONAL CHANSON VARIETES JA",
+      "amount": 122500.0,
+      "theme": "Culture"
     },
     {
       "name": "SOLIDARITE SIDA",
@@ -923,26 +953,6 @@
       "theme": "Environnement"
     },
     {
-      "name": "Nom3966",
-      "amount": 3698836.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3960",
-      "amount": 3676416.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4425",
-      "amount": 3510000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4541",
-      "amount": 3500000.0,
-      "theme": "Économie"
-    },
-    {
       "name": "UNION DEPARTEMENTALE UNSA DE PARIS",
       "amount": 371646.0,
       "theme": "Administration"
@@ -958,6 +968,11 @@
       "theme": "Social - Solidarité"
     },
     {
+      "name": "UNION SYNDICALE SOLIDAIRES PARIS",
+      "amount": 244980.0,
+      "theme": "Administration"
+    },
+    {
       "name": "RESEAU MOM'ARTRE",
       "amount": 200234.0,
       "theme": "Social - Petite enfance"
@@ -968,9 +983,9 @@
       "theme": "Culture"
     },
     {
-      "name": "Nom4400",
-      "amount": 3390000.0,
-      "theme": "Non classifié"
+      "name": "ETS PUBLIC PARC GRANDE HALLE VILLET",
+      "amount": 184915.0,
+      "theme": "Culture"
     },
     {
       "name": "CAISSE REGLEMENTS PECUNIAIRES",
@@ -981,6 +996,11 @@
       "name": "ASS LE DAUPHIN BLEU",
       "amount": 355002.0,
       "theme": "Social - Petite enfance"
+    },
+    {
+      "name": "UNIVERSITE DE PARIS 5 RENE DESCARTE",
+      "amount": 75600.0,
+      "theme": "Administration"
     },
     {
       "name": "COMITE CHAMPS ELYSEES",
@@ -1008,11 +1028,6 @@
       "theme": "Administration"
     },
     {
-      "name": "Nom4551",
-      "amount": 3059563.52,
-      "theme": "Économie"
-    },
-    {
       "name": "ASSOCIATION LES PETITS DU CANARD",
       "amount": 250516.0,
       "theme": "Social - Petite enfance"
@@ -1035,6 +1050,11 @@
     {
       "name": "PARIS BIBLIOTHEQUE",
       "amount": 360500.0,
+      "theme": "Non classifié"
+    },
+    {
+      "name": "ATELIER GD PARIS PROJETS ARCHI URBA",
+      "amount": 500000.0,
       "theme": "Non classifié"
     },
     {
@@ -1093,14 +1113,14 @@
       "theme": "Social - Solidarité"
     },
     {
+      "name": "CAISSE ECOLES 1ER ARRONDISSEMENT PA",
+      "amount": 701157.0,
+      "theme": "Administration"
+    },
+    {
       "name": "RELAIS MENILMONTANT",
       "amount": 276417.5,
       "theme": "Social - Solidarité"
-    },
-    {
-      "name": "Nom3946",
-      "amount": 2712500.0,
-      "theme": "Non classifié"
     },
     {
       "name": "ACCOMPAG GLOBAL CONTRE EXCLUSION",
@@ -1116,11 +1136,6 @@
       "name": "ASSOCIATION OZAR HATORAH",
       "amount": 267466.0,
       "theme": "Éducation"
-    },
-    {
-      "name": "Nom3947",
-      "amount": 2650000.0,
-      "theme": "Non classifié"
     },
     {
       "name": "BETONSALON",
@@ -1193,11 +1208,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "CAISSE ECOLES 1ER ARRONDISSEMENT PA",
-      "amount": 128512.0,
-      "theme": "Administration"
-    },
-    {
       "name": "CREDIT DU NORD",
       "amount": 44876.48,
       "theme": "Autre"
@@ -1208,19 +1218,9 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "Nom3955",
-      "amount": 2130579.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASSOCIATION CRECHE AVENIR",
       "amount": 113727.0,
       "theme": "Social - Petite enfance"
-    },
-    {
-      "name": "Nom4469",
-      "amount": 2110000.0,
-      "theme": "Non classifié"
     },
     {
       "name": "FONDS REGIONAL ART CONTEMPORAI",
@@ -1231,11 +1231,6 @@
       "name": "ARBRE BLEU",
       "amount": 151474.0,
       "theme": "Social - Petite enfance"
-    },
-    {
-      "name": "Nom4550",
-      "amount": 2065387.44,
-      "theme": "Économie"
     },
     {
       "name": "OEUV CHAUSS MAI-CENT ETU ACT SOC IN",
@@ -1258,19 +1253,9 @@
       "theme": "Culture"
     },
     {
-      "name": "Nom4577",
-      "amount": 2001358.98,
-      "theme": "Économie"
-    },
-    {
       "name": "LA DALLE AUX CHAPS",
       "amount": 200000.0,
       "theme": "Culture"
-    },
-    {
-      "name": "Nom4578",
-      "amount": 2000493.0,
-      "theme": "Économie"
     },
     {
       "name": "FAC HABITAT",
@@ -1278,19 +1263,9 @@
       "theme": "Économie"
     },
     {
-      "name": "Nom3852",
-      "amount": 2000000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4583",
-      "amount": 2000000.0,
-      "theme": "Économie"
-    },
-    {
-      "name": "Nom4566",
-      "amount": 1997222.0,
-      "theme": "Économie"
+      "name": "INSTITUT FRANCAIS",
+      "amount": 140000.0,
+      "theme": "International"
     },
     {
       "name": "SOC GESTION MAINTENAN AMENAGEM CONS",
@@ -1343,11 +1318,6 @@
       "theme": "Sport"
     },
     {
-      "name": "Nom3959",
-      "amount": 1923556.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASS LES CROCOS CRECHE PARENTAL",
       "amount": 148567.67,
       "theme": "Social - Petite enfance"
@@ -1373,6 +1343,11 @@
       "theme": "Social - Solidarité"
     },
     {
+      "name": "UNIVERSITE PARIS 1 PANTHEON-SORBONN",
+      "amount": 217065.5,
+      "theme": "Éducation"
+    },
+    {
       "name": "INST INTERDEP DU PARC DU TREMBLAY",
       "amount": 300000.0,
       "theme": "Sport"
@@ -1381,6 +1356,11 @@
       "name": "ASSOCIATION ORCHESTRE CONCERTS LAMO",
       "amount": 154000.0,
       "theme": "Culture"
+    },
+    {
+      "name": "CTRE NAT DE LA RECHERCHE SCIENTIF",
+      "amount": 511000.0,
+      "theme": "Éducation"
     },
     {
       "name": "INSTITUT D EDUC ET PRATIQUES CITOY",
@@ -1413,8 +1393,8 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "Nom3869",
-      "amount": 1723400.0,
+      "name": "Bénéficiaires non nommés par la Ville — Fondations (12 lignes)",
+      "amount": 1724851.75,
       "theme": "Non classifié"
     },
     {
@@ -1423,19 +1403,14 @@
       "theme": "Culture"
     },
     {
-      "name": "Nom3891",
-      "amount": 1661481.0,
-      "theme": "Non classifié"
+      "name": "UNION SYNDICATS CGT PARIS",
+      "amount": 111662.0,
+      "theme": "Administration"
     },
     {
       "name": "LOISIRS PLURIEL DU 19EME",
       "amount": 98500.0,
       "theme": "Social - Solidarité"
-    },
-    {
-      "name": "UNIVERSITE PARIS 1 PANTHEON-SORBONN",
-      "amount": 31945.5,
-      "theme": "Éducation"
     },
     {
       "name": "OHEL ESTHER",
@@ -1453,19 +1428,9 @@
       "theme": "Culture"
     },
     {
-      "name": "Nom4263",
-      "amount": 1640241.82,
-      "theme": "Non classifié"
-    },
-    {
       "name": "PETIT BAIN",
       "amount": 110000.0,
       "theme": "Culture"
-    },
-    {
-      "name": "Nom4558",
-      "amount": 1625516.79,
-      "theme": "Économie"
     },
     {
       "name": "CHAMPIONNET SPORTS",
@@ -1478,7 +1443,7 @@
       "theme": "Sport"
     },
     {
-      "name": "Nom3836",
+      "name": "SYNDICAT COPROPRIETE",
       "amount": 1609076.69,
       "theme": "Non classifié"
     },
@@ -1500,11 +1465,6 @@
     {
       "name": "MUSIQUE NOUVELLE EN LIBERTE",
       "amount": 50000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3980",
-      "amount": 1568145.33,
       "theme": "Non classifié"
     },
     {
@@ -1583,19 +1543,14 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "Nom4436",
-      "amount": 1430120.0,
-      "theme": "Non classifié"
+      "name": "CONSEIL DEP DE L'ACCES AU DROIT",
+      "amount": 87000.0,
+      "theme": "Administration"
     },
     {
       "name": "ASSOCIATION PLUS LOIN",
       "amount": 103700.0,
       "theme": "Social - Solidarité"
-    },
-    {
-      "name": "Nom4587",
-      "amount": 1408562.0,
-      "theme": "Économie"
     },
     {
       "name": "ASS GENERALE DES FAMILLES",
@@ -1606,6 +1561,11 @@
       "name": "REPUBLIQUE ENFANTS",
       "amount": 95413.0,
       "theme": "Social - Petite enfance"
+    },
+    {
+      "name": "CONSERVATOIRE NATIONAL ARTS ET METI",
+      "amount": 225000.0,
+      "theme": "Éducation"
     },
     {
       "name": "ASS FAMILIAL CATHOLIQU ST HONORE D'",
@@ -1628,11 +1588,6 @@
       "theme": "Éducation"
     },
     {
-      "name": "CONSEIL DEP DE L'ACCES AU DROIT",
-      "amount": 12000.0,
-      "theme": "Administration"
-    },
-    {
       "name": "DE L'INFANS A L'ENFANT",
       "amount": 112500.0,
       "theme": "Social - Petite enfance"
@@ -1648,14 +1603,14 @@
       "theme": "Social - Petite enfance"
     },
     {
-      "name": "Nom3845",
-      "amount": 1302957.94,
-      "theme": "Non classifié"
-    },
-    {
       "name": "LES POUSSINS D'ANNAM",
       "amount": 149402.0,
       "theme": "Social - Petite enfance"
+    },
+    {
+      "name": "UNIVERSITE DE PARIS IV PARIS-SORBON",
+      "amount": 153600.0,
+      "theme": "Administration"
     },
     {
       "name": "REMISES GRACIEUSES ACCORDEES PAR LE CONSEIL DEPARTEMENTAL",
@@ -1666,11 +1621,6 @@
       "name": "ESPERANCE SPORTIVE PARISIENNE",
       "amount": 90000.0,
       "theme": "Sport"
-    },
-    {
-      "name": "Nom3953",
-      "amount": 1274223.0,
-      "theme": "Non classifié"
     },
     {
       "name": "THEATRE AUX MAINS NUES",
@@ -1693,14 +1643,14 @@
       "theme": "Culture"
     },
     {
+      "name": "UNIVERSITE PARIS III SORBONNE NOUVE",
+      "amount": 208400.0,
+      "theme": "Éducation"
+    },
+    {
       "name": "ASS INITIAT RENC ET SOLID 10",
       "amount": 100527.0,
       "theme": "Social - Solidarité"
-    },
-    {
-      "name": "Nom3954",
-      "amount": 1239414.0,
-      "theme": "Non classifié"
     },
     {
       "name": "CRECHE PARENTALE LES PETITS LOUPS",
@@ -1723,11 +1673,6 @@
       "theme": "Culture"
     },
     {
-      "name": "Nom4001",
-      "amount": 1206650.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "CTRE INFORMAT DROITS FEMMES PARIS",
       "amount": 73500.0,
       "theme": "Social - Solidarité"
@@ -1748,11 +1693,6 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "Nom4014",
-      "amount": 1184300.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASS AYYEM ZAMEN",
       "amount": 83700.0,
       "theme": "Social - Solidarité"
@@ -1761,6 +1701,11 @@
       "name": "ASSOCIATION PIROUETT",
       "amount": 98205.0,
       "theme": "Social - Petite enfance"
+    },
+    {
+      "name": "LYCEE TECHNOLOGIQUE LUCAS DE NEHOU",
+      "amount": 128586.0,
+      "theme": "Éducation"
     },
     {
       "name": "LIGUE FRCAISE DEFENSE DROITS DE L'H",
@@ -1818,11 +1763,6 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "Nom4581",
-      "amount": 1124973.12,
-      "theme": "Économie"
-    },
-    {
       "name": "SPORTING CLUB UNIVERS FRANCE",
       "amount": 75000.0,
       "theme": "Sport"
@@ -1878,11 +1818,6 @@
       "theme": "Sport"
     },
     {
-      "name": "Nom3860",
-      "amount": 1080000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "FACE PARIS",
       "amount": 2000.0,
       "theme": "Économie"
@@ -1908,11 +1843,6 @@
       "theme": "Culture"
     },
     {
-      "name": "Nom3958",
-      "amount": 1057835.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASS PARIS TOUT-P'TITS",
       "amount": 100000.0,
       "theme": "Non classifié"
@@ -1923,6 +1853,11 @@
       "theme": "Social - Petite enfance"
     },
     {
+      "name": "LYCEE TECHNOLOGIQUE M VOX-ART-DESSI",
+      "amount": 143936.0,
+      "theme": "Éducation"
+    },
+    {
       "name": "L'ARAIGNEE GENTILLE",
       "amount": 125342.0,
       "theme": "Culture"
@@ -1931,11 +1866,6 @@
       "name": "AOUT SECOURS ALIMENTAIRE",
       "amount": 1000.0,
       "theme": "Social - Solidarité"
-    },
-    {
-      "name": "Nom3892",
-      "amount": 1046102.0,
-      "theme": "Non classifié"
     },
     {
       "name": "POLYNOTES 75",
@@ -1956,6 +1886,11 @@
       "name": "CRECHE PARENTALE DU SENTIER",
       "amount": 53894.0,
       "theme": "Social - Petite enfance"
+    },
+    {
+      "name": "LYCEE PROFESSIONNEL CAMILLE JENATZY",
+      "amount": 147653.0,
+      "theme": "Éducation"
     },
     {
       "name": "LES ATHEVAINS",
@@ -1983,6 +1918,11 @@
       "theme": "Social - Petite enfance"
     },
     {
+      "name": "ECOLE PRATIQUE DES HAUTES ETUDES",
+      "amount": 63040.0,
+      "theme": "Éducation"
+    },
+    {
       "name": "ASS ECOLE SCHOOL FOR TODAY",
       "amount": 94034.31,
       "theme": "Éducation"
@@ -1991,6 +1931,11 @@
       "name": "SINGA FRANCE",
       "amount": 3000.0,
       "theme": "Social - Solidarité"
+    },
+    {
+      "name": "LYCEE PROFESSIONNEL THEOPHILE GAUTI",
+      "amount": 119494.0,
+      "theme": "Éducation"
     },
     {
       "name": "PARIS BASKET 18E",
@@ -2015,11 +1960,6 @@
     {
       "name": "ECOLE PARENTS EDUCATEURS",
       "amount": 180238.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3956",
-      "amount": 983820.0,
       "theme": "Non classifié"
     },
     {
@@ -2068,11 +2008,6 @@
       "theme": "Social - Petite enfance"
     },
     {
-      "name": "Nom3952",
-      "amount": 962956.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "OBSERVAT LOYERS AGGLO PARISIENNE",
       "amount": 100100.0,
       "theme": "Logement"
@@ -2081,11 +2016,6 @@
       "name": "COLOMBBUS",
       "amount": 25408.0,
       "theme": "Économie"
-    },
-    {
-      "name": "Nom3957",
-      "amount": 951422.0,
-      "theme": "Non classifié"
     },
     {
       "name": "SECOURS CATHOLIQUE",
@@ -2138,6 +2068,11 @@
       "theme": "Éducation"
     },
     {
+      "name": "SOC PUBLIQUE LOCALE CARREAU TEMPLE",
+      "amount": 23000.0,
+      "theme": "Culture"
+    },
+    {
       "name": "COLLEGE BORIS VIAN",
       "amount": 26494.0,
       "theme": "Éducation"
@@ -2146,6 +2081,11 @@
       "name": "ENTREPRENEURS DU MONDE",
       "amount": 115000.0,
       "theme": "International"
+    },
+    {
+      "name": "LYCEE TECHNOLOGIQUE JACQUES MONOD",
+      "amount": 159576.0,
+      "theme": "Éducation"
     },
     {
       "name": "CTRE NAL DRAMAT CONTEMP - THEAT OUV",
@@ -2201,11 +2141,6 @@
       "name": "COLLEGE FRANCOIS VILLON",
       "amount": 18435.0,
       "theme": "Éducation"
-    },
-    {
-      "name": "Nom4166",
-      "amount": 866627.0,
-      "theme": "Non classifié"
     },
     {
       "name": "LE PICOULET MISSION POPULAIRE XIE",
@@ -2333,9 +2268,9 @@
       "theme": "Économie"
     },
     {
-      "name": "Nom4176",
-      "amount": 759000.0,
-      "theme": "Non classifié"
+      "name": "INALCO",
+      "amount": 73480.0,
+      "theme": "Éducation"
     },
     {
       "name": "SOCIETARIAT B P VAL FRANCE",
@@ -2403,6 +2338,11 @@
       "theme": "Sport"
     },
     {
+      "name": "UNIVERSITE PARIS DAUPHINE",
+      "amount": 241885.89,
+      "theme": "Éducation"
+    },
+    {
       "name": "COMPAGNIE RESONANCES",
       "amount": 51820.0,
       "theme": "Culture"
@@ -2420,16 +2360,6 @@
     {
       "name": "ASSOCIATION D'ICI - D'AILLEURS",
       "amount": 55809.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4188",
-      "amount": 718800.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4520",
-      "amount": 717589.36,
       "theme": "Non classifié"
     },
     {
@@ -2508,14 +2438,14 @@
       "theme": "Éducation"
     },
     {
-      "name": "Nom3841",
-      "amount": 681320.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "COLLEGE GERMAINE TILLION",
       "amount": 23921.0,
       "theme": "Éducation"
+    },
+    {
+      "name": "OBSERVATOIRE DE PARIS",
+      "amount": 65000.0,
+      "theme": "Administration"
     },
     {
       "name": "ASSOCIATION FOYER JORBALAN",
@@ -2558,6 +2488,11 @@
       "theme": "Autre"
     },
     {
+      "name": "LYCEE PROFESSIONNEL MARIA DERAISMES",
+      "amount": 102955.0,
+      "theme": "Éducation"
+    },
+    {
       "name": "COLLEGE THOMAS MANN",
       "amount": 33936.0,
       "theme": "Éducation"
@@ -2576,11 +2511,6 @@
       "name": "COLLEGE GUSTAVE FLAUBERT",
       "amount": 19800.0,
       "theme": "Éducation"
-    },
-    {
-      "name": "Nom4427",
-      "amount": 650000.0,
-      "theme": "Non classifié"
     },
     {
       "name": "HOME SWEET MOMES",
@@ -2658,6 +2588,11 @@
       "theme": "Sport"
     },
     {
+      "name": "LYCEE PROFESSIONNEL RENE CASSIN",
+      "amount": 80513.0,
+      "theme": "Éducation"
+    },
+    {
       "name": "ERE DE JEU",
       "amount": 63980.0,
       "theme": "Social - Petite enfance"
@@ -2708,14 +2643,14 @@
       "theme": "Éducation"
     },
     {
+      "name": "LYCEE PROFESSIONNEL GASTON BACHELAR",
+      "amount": 103815.0,
+      "theme": "Éducation"
+    },
+    {
       "name": "TENNIS CLUB DU 12 ARRDT",
       "amount": 49100.0,
       "theme": "Sport"
-    },
-    {
-      "name": "Nom4530",
-      "amount": 600327.75,
-      "theme": "Non classifié"
     },
     {
       "name": "ASS POUR DIALOGUE & ORIENTATION SCO",
@@ -2726,16 +2661,6 @@
       "name": "ASSOC GLAZ'ART",
       "amount": 55000.0,
       "theme": "Culture"
-    },
-    {
-      "name": "Nom4256",
-      "amount": 600000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "UNIVERSITE PARIS DAUPHINE",
-      "amount": 111565.89,
-      "theme": "Éducation"
     },
     {
       "name": "PARIS CINE",
@@ -2823,11 +2748,6 @@
       "theme": "Sport"
     },
     {
-      "name": "Nom3951",
-      "amount": 572645.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASS DEP PUPILLES ENSEIGNEMENT PUBLI",
       "amount": 40500.0,
       "theme": "Éducation"
@@ -2908,11 +2828,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom3862",
-      "amount": 553000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "D UNE LANGUE A L AUTRE DULALA",
       "amount": 38050.0,
       "theme": "Éducation"
@@ -2923,9 +2838,9 @@
       "theme": "Culture"
     },
     {
-      "name": "Nom4575",
-      "amount": 551672.64,
-      "theme": "Économie"
+      "name": "LYCEE PROFESSIONNEL PIERRE LESCOT",
+      "amount": 75343.0,
+      "theme": "Éducation"
     },
     {
       "name": "EVOLUTION SPORTIVE ET CULTURELLE XV",
@@ -3093,11 +3008,6 @@
       "theme": "Culture"
     },
     {
-      "name": "Nom3865",
-      "amount": 511000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ARS LONGA",
       "amount": 13000.0,
       "theme": "Culture"
@@ -3143,11 +3053,6 @@
       "theme": "Éducation"
     },
     {
-      "name": "Nom3986",
-      "amount": 500000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASS PREVENTION ACCUEIL SOUTIEN ORIE",
       "amount": 49000.0,
       "theme": "Social - Solidarité"
@@ -3161,11 +3066,6 @@
       "name": "OMBRE EN LUMIERE",
       "amount": 29675.0,
       "theme": "Culture"
-    },
-    {
-      "name": "Nom3890",
-      "amount": 496180.0,
-      "theme": "Non classifié"
     },
     {
       "name": "CINEVOG SARL",
@@ -3298,6 +3198,11 @@
       "theme": "Éducation"
     },
     {
+      "name": "ECOLE NAT SUP ARCHITECTURE LA VILLE",
+      "amount": 79680.0,
+      "theme": "Administration"
+    },
+    {
       "name": "JAURES PANTIN PETIT",
       "amount": 15450.0,
       "theme": "Éducation"
@@ -3326,6 +3231,11 @@
       "name": "COURANT D'ART FRAIS",
       "amount": 29700.0,
       "theme": "Non classifié"
+    },
+    {
+      "name": "LYCEE TECHNOLOGIQUE FRANCOIS TRUFFA",
+      "amount": 73903.0,
+      "theme": "Éducation"
     },
     {
       "name": "BRADY SPECTACLES",
@@ -3363,19 +3273,9 @@
       "theme": "Économie"
     },
     {
-      "name": "Nom4563",
-      "amount": 464038.0,
-      "theme": "Économie"
-    },
-    {
       "name": "ASSOC REEL SYMBOL IMAGINAIRE LA RES",
       "amount": 52008.0,
       "theme": "Culture"
-    },
-    {
-      "name": "Nom4535",
-      "amount": 459623.2,
-      "theme": "Économie"
     },
     {
       "name": "ASS AUTREMONDE",
@@ -3391,6 +3291,11 @@
       "name": "FEDERAT NAL ANC COMB ALGERIE (FNACA)",
       "amount": 36850.0,
       "theme": "International"
+    },
+    {
+      "name": "LYCEE PROFESSIONNEL SUZANNE VALADON",
+      "amount": 60664.0,
+      "theme": "Éducation"
     },
     {
       "name": "COLLEGE CAMILLE SEE",
@@ -3426,11 +3331,6 @@
       "name": "COLLEGE FRANCOIS COUPERIN",
       "amount": 28475.0,
       "theme": "Éducation"
-    },
-    {
-      "name": "Nom4197",
-      "amount": 448577.0,
-      "theme": "Non classifié"
     },
     {
       "name": "COLLEGE LUCIE AUBRAC",
@@ -3491,6 +3391,11 @@
       "name": "PARIS EST MOUV'",
       "amount": 26919.0,
       "theme": "Sport"
+    },
+    {
+      "name": "UNIVERSITE PARIS II PANTHEON ASSAS",
+      "amount": 64320.0,
+      "theme": "Administration"
     },
     {
       "name": "COLLEGE FLORA TRISTAN",
@@ -3561,11 +3466,6 @@
       "name": "SPORTING CLUB NORD PARISIEN",
       "amount": 30000.0,
       "theme": "Sport"
-    },
-    {
-      "name": "Nom4423",
-      "amount": 420000.0,
-      "theme": "Non classifié"
     },
     {
       "name": "COLLEGE SONIA DELAUNAY",
@@ -3693,11 +3593,6 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "Nom4384",
-      "amount": 392700.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "LE LUCERNAIRE FORUM",
       "amount": 25000.0,
       "theme": "Économie"
@@ -3726,6 +3621,16 @@
       "name": "FEDERATION NATIONALE SOLIDARITE FEM",
       "amount": 15000.0,
       "theme": "Social - Solidarité"
+    },
+    {
+      "name": "LYCEE PROFESSIONNEL CHARLES DE GAUL",
+      "amount": 77128.0,
+      "theme": "Éducation"
+    },
+    {
+      "name": "LYCEE PROFESSIONNEL CLAUDE ANTHIME",
+      "amount": 70915.0,
+      "theme": "Éducation"
     },
     {
       "name": "COLLEGE JEAN DE LA FONTAINE",
@@ -3778,19 +3683,14 @@
       "theme": "Éducation"
     },
     {
-      "name": "Nom4133",
-      "amount": 378471.5,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4321",
-      "amount": 377930.44,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASS ART CULTURE ET FOI",
       "amount": 33500.0,
       "theme": "Culture"
+    },
+    {
+      "name": "Bénéficiaires non nommés par la Ville — Autres (10 lignes)",
+      "amount": 377432.74000000005,
+      "theme": "Non classifié"
     },
     {
       "name": "OLYMPIQUE MONTMARTRE SPORTS",
@@ -3816,11 +3716,6 @@
       "name": "ASS PARIS AMICALE CAMOU",
       "amount": 36000.0,
       "theme": "Social - Solidarité"
-    },
-    {
-      "name": "Nom4312",
-      "amount": 373695.0,
-      "theme": "Non classifié"
     },
     {
       "name": "SYNDICAT INITIATIVE DU VIEUX MONTMA",
@@ -3893,19 +3788,9 @@
       "theme": "Culture"
     },
     {
-      "name": "Nom4193",
-      "amount": 365000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "LIG INTER CONTR RACISM ANTISEM",
       "amount": 28500.0,
       "theme": "Social - Solidarité"
-    },
-    {
-      "name": "Nom4083",
-      "amount": 362400.0,
-      "theme": "Non classifié"
     },
     {
       "name": "ATOUTS COURS",
@@ -3916,11 +3801,6 @@
       "name": "MUSIQUE ENSEMBLE XXEME",
       "amount": 22000.0,
       "theme": "Culture"
-    },
-    {
-      "name": "Nom3839",
-      "amount": 361014.0,
-      "theme": "Non classifié"
     },
     {
       "name": "COLLEGE COLETTE BESSON",
@@ -3946,11 +3826,6 @@
       "name": "CINELOUXOR",
       "amount": 30000.0,
       "theme": "Culture"
-    },
-    {
-      "name": "Nom3837",
-      "amount": 355074.0,
-      "theme": "Non classifié"
     },
     {
       "name": "COLLEGE CHARLEMAGNE",
@@ -4038,11 +3913,6 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "Nom3903",
-      "amount": 341920.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "LA CYCLOFFICINE DE PARIS",
       "amount": 13000.0,
       "theme": "Transport"
@@ -4056,11 +3926,6 @@
       "name": "COLLEGE VICTOR HUGO",
       "amount": 23224.0,
       "theme": "Éducation"
-    },
-    {
-      "name": "Nom4122",
-      "amount": 340900.0,
-      "theme": "Non classifié"
     },
     {
       "name": "ASSOCIATION L'INITIATIVE",
@@ -4188,11 +4053,6 @@
       "theme": "Éducation"
     },
     {
-      "name": "Nom4224",
-      "amount": 320000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASS JEUNESSE DE ST VINCENT PAUL",
       "amount": 31219.75,
       "theme": "Éducation"
@@ -4210,16 +4070,6 @@
     {
       "name": "ASSOCIATION LES FAUBOURGS NUMERIQUE",
       "amount": 13000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4582",
-      "amount": 318805.0,
-      "theme": "Économie"
-    },
-    {
-      "name": "Nom4283",
-      "amount": 318787.0,
       "theme": "Non classifié"
     },
     {
@@ -4263,11 +4113,6 @@
       "theme": "Autre"
     },
     {
-      "name": "Nom3838",
-      "amount": 310804.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "MOUVE ENTRAIDE TIERS MONDE COO",
       "amount": 32000.0,
       "theme": "International"
@@ -4285,11 +4130,6 @@
     {
       "name": "LIGUE DE PARIS DE TENNIS F.F.T.",
       "amount": 50000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4449",
-      "amount": 310000.0,
       "theme": "Non classifié"
     },
     {
@@ -4376,11 +4216,6 @@
       "name": "CTE DEP DE ROLLER SPORTS DE PARIS",
       "amount": 26000.0,
       "theme": "Sport"
-    },
-    {
-      "name": "Nom4552",
-      "amount": 295279.0,
-      "theme": "Économie"
     },
     {
       "name": "ASSO ESPRIT SAVOIR SPORT ET EQUITE",
@@ -4523,6 +4358,11 @@
       "theme": "Social - Solidarité"
     },
     {
+      "name": "ATELIERS PLURICULTURELS",
+      "amount": 21200.0,
+      "theme": "Culture"
+    },
+    {
       "name": "ASSOCIATION JEUNESSE-EDUCATION",
       "amount": 39900.0,
       "theme": "Non classifié"
@@ -4583,9 +4423,14 @@
       "theme": "Économie"
     },
     {
-      "name": "ATELIERS PLURICULTURELS",
-      "amount": 10500.0,
-      "theme": "Culture"
+      "name": "ECOLE NAT SUP ARCHITECTURE VAL SEIN",
+      "amount": 51360.0,
+      "theme": "Administration"
+    },
+    {
+      "name": "AGCE FR EXPERTISE TECH INTERNATIONA",
+      "amount": 130000.0,
+      "theme": "Non classifié"
     },
     {
       "name": "ACCESSIJEUX",
@@ -4630,6 +4475,11 @@
     {
       "name": "COLLEGE VICTOR DURUY",
       "amount": 5982.0,
+      "theme": "Éducation"
+    },
+    {
+      "name": "COLLEGE DE FRANCE",
+      "amount": 65000.0,
       "theme": "Éducation"
     },
     {
@@ -4678,11 +4528,6 @@
       "theme": "Économie"
     },
     {
-      "name": "Nom4121",
-      "amount": 256947.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "FONDATION DE LA RESISTANCE",
       "amount": 17000.0,
       "theme": "Culture"
@@ -4701,16 +4546,6 @@
       "name": "COLLEGE BUFFON",
       "amount": 24504.0,
       "theme": "Éducation"
-    },
-    {
-      "name": "Nom4015",
-      "amount": 250000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4220",
-      "amount": 250000.0,
-      "theme": "Non classifié"
     },
     {
       "name": "LES CINQ PARNASSIENS",
@@ -4768,11 +4603,6 @@
       "theme": "International"
     },
     {
-      "name": "Nom3840",
-      "amount": 244980.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "COMPAGNIE TAMERANTONG",
       "amount": 13700.0,
       "theme": "Culture"
@@ -4781,11 +4611,6 @@
       "name": "CTE FETES ACTION SOC 6EME ARRT PARI",
       "amount": 20382.0,
       "theme": "Social"
-    },
-    {
-      "name": "Nom4234",
-      "amount": 244151.55,
-      "theme": "Non classifié"
     },
     {
       "name": "ATHLETIC CLUB PARIS 15",
@@ -4835,11 +4660,6 @@
     {
       "name": "ASS CINEMA CLE - USAGE MONDE",
       "amount": 25000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3902",
-      "amount": 239600.0,
       "theme": "Non classifié"
     },
     {
@@ -4993,11 +4813,6 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "Nom3928",
-      "amount": 225000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "PARIS SCIENCES LETTRES - QUARTIER L",
       "amount": 225000.0,
       "theme": "Non classifié"
@@ -5031,11 +4846,6 @@
       "name": "REUILLY NATION SPORTS",
       "amount": 29000.0,
       "theme": "Sport"
-    },
-    {
-      "name": "Nom4561",
-      "amount": 223074.0,
-      "theme": "Économie"
     },
     {
       "name": "COLLEGE MOLIERE",
@@ -5098,11 +4908,6 @@
       "theme": "Culture"
     },
     {
-      "name": "Nom4360",
-      "amount": 215000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASSOCIATION DES USAGERS DES TRANSPO",
       "amount": 20000.0,
       "theme": "Transport"
@@ -5138,6 +4943,11 @@
       "theme": "Social - Solidarité"
     },
     {
+      "name": "CCI REGION PARIS ILE FRANCE",
+      "amount": 10240.0,
+      "theme": "Non classifié"
+    },
+    {
       "name": "COLLEGE ROGNONI",
       "amount": 10657.0,
       "theme": "Éducation"
@@ -5163,19 +4973,9 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "Nom4054",
-      "amount": 210666.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASSOCIATION SLAM PRODUCTIONS",
       "amount": 13000.0,
       "theme": "Culture"
-    },
-    {
-      "name": "Nom4332",
-      "amount": 210000.0,
-      "theme": "Non classifié"
     },
     {
       "name": "ROARATORIO",
@@ -5198,11 +4998,6 @@
       "theme": "Sport"
     },
     {
-      "name": "Nom3899",
-      "amount": 208400.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASSOCIATION QUARTIER LIBRE XI",
       "amount": 19600.0,
       "theme": "Social"
@@ -5223,14 +5018,14 @@
       "theme": "Social - Solidarité"
     },
     {
+      "name": "EPCS SORBONNE PARIS CITE",
+      "amount": 160000.0,
+      "theme": "Administration"
+    },
+    {
       "name": "JUDO FRANCE PARIS",
       "amount": 18475.0,
       "theme": "Sport"
-    },
-    {
-      "name": "Nom3831",
-      "amount": 203777.4,
-      "theme": "Non classifié"
     },
     {
       "name": "DIFE KAKO",
@@ -5278,23 +5073,8 @@
       "theme": "Sport"
     },
     {
-      "name": "Nom4191",
-      "amount": 200000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4328",
-      "amount": 200000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ROBOT LAB.",
       "amount": 200000.0,
-      "theme": "Économie"
-    },
-    {
-      "name": "Nom4590",
-      "amount": 199379.95,
       "theme": "Économie"
     },
     {
@@ -5378,11 +5158,6 @@
       "theme": "Culture"
     },
     {
-      "name": "Nom4462",
-      "amount": 188000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "COLLEGE PIERRE JEAN DE BERANGER",
       "amount": 6453.0,
       "theme": "Éducation"
@@ -5421,16 +5196,6 @@
       "name": "RAINBOW SUBMARINE",
       "amount": 10000.0,
       "theme": "Culture"
-    },
-    {
-      "name": "Nom3897",
-      "amount": 185120.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3972",
-      "amount": 184915.0,
-      "theme": "Non classifié"
     },
     {
       "name": "ACCUEIL TOUT PETITS BON CONSEI",
@@ -5508,11 +5273,6 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "Nom4475",
-      "amount": 177000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "CONTACT PARIS ILE DE FRANCE",
       "amount": 13500.0,
       "theme": "Social - Solidarité"
@@ -5538,16 +5298,6 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "Nom4013",
-      "amount": 175000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4082",
-      "amount": 175000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "EUROVIA ILE DE FRANCE",
       "amount": 174414.72,
       "theme": "Économie"
@@ -5561,11 +5311,6 @@
       "name": "OSEZ LE FEMINISME",
       "amount": 15000.0,
       "theme": "Social - Solidarité"
-    },
-    {
-      "name": "Nom4560",
-      "amount": 170858.43,
-      "theme": "Économie"
     },
     {
       "name": "ATELIERS VILLES",
@@ -5611,11 +5356,6 @@
       "name": "VIADUC DES ARTS PARIS",
       "amount": 22800.0,
       "theme": "Économie"
-    },
-    {
-      "name": "Nom4324",
-      "amount": 169052.0,
-      "theme": "Non classifié"
     },
     {
       "name": "ASSOCIATION DE MEDIATION INTERCULTU",
@@ -5673,11 +5413,6 @@
       "theme": "Environnement"
     },
     {
-      "name": "Nom4277",
-      "amount": 165414.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "PARIS AQUATIQUE",
       "amount": 13000.0,
       "theme": "Sport"
@@ -5701,11 +5436,6 @@
       "name": "MAISON DES ANCIENS DE 2 D B",
       "amount": 10000.0,
       "theme": "Social - Solidarité"
-    },
-    {
-      "name": "Nom4392",
-      "amount": 163000.0,
-      "theme": "Non classifié"
     },
     {
       "name": "FLE ET COMPAGNIE",
@@ -5753,16 +5483,6 @@
       "theme": "Éducation"
     },
     {
-      "name": "Nom3850",
-      "amount": 160000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4070",
-      "amount": 160000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "COLLE INDEPE LOCATAIRE RES TANGER",
       "amount": 2000.0,
       "theme": "Logement"
@@ -5776,11 +5496,6 @@
       "name": "CONNAITRE PROTEGER NATURE VAL DE SE",
       "amount": 9180.0,
       "theme": "Environnement"
-    },
-    {
-      "name": "Nom3874",
-      "amount": 159576.0,
-      "theme": "Non classifié"
     },
     {
       "name": "SOS CASAMANCE",
@@ -5841,11 +5556,6 @@
       "name": "CTRE INFOR ETUDE MIGRAT INTERNAT",
       "amount": 13000.0,
       "theme": "International"
-    },
-    {
-      "name": "Nom4529",
-      "amount": 155772.39,
-      "theme": "Non classifié"
     },
     {
       "name": "MA C A O",
@@ -5911,11 +5621,6 @@
       "name": "ROC 14",
       "amount": 10500.0,
       "theme": "Culture"
-    },
-    {
-      "name": "Nom3900",
-      "amount": 153600.0,
-      "theme": "Non classifié"
     },
     {
       "name": "OFFICE MVT SPORTIF 14EME ARR",
@@ -6008,14 +5713,14 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom3873",
-      "amount": 147653.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "TREMPLIN THEATRE",
       "amount": 13400.0,
       "theme": "Culture"
+    },
+    {
+      "name": "ECOLE NAT SUP ARCHIT PARIS BELLEVIL",
+      "amount": 34720.0,
+      "theme": "Administration"
     },
     {
       "name": "JUDO PARIS CENTRE",
@@ -6045,11 +5750,6 @@
     {
       "name": "LE PARISOLIDAIRE",
       "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4303",
-      "amount": 144900.0,
       "theme": "Non classifié"
     },
     {
@@ -6086,11 +5786,6 @@
       "name": "COMPAGNIE VARSORIO",
       "amount": 7500.0,
       "theme": "Culture"
-    },
-    {
-      "name": "Nom3880",
-      "amount": 143936.0,
-      "theme": "Non classifié"
     },
     {
       "name": "ASSOCIATION DES TUNISIENS EN FRANCE",
@@ -6165,11 +5860,6 @@
     {
       "name": "CASSANDRE-HORSCHAMP",
       "amount": 20000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3978",
-      "amount": 140000.0,
       "theme": "Non classifié"
     },
     {
@@ -6313,16 +6003,6 @@
       "theme": "Économie"
     },
     {
-      "name": "Nom4094",
-      "amount": 131600.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3856",
-      "amount": 131500.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ARCO IRIS",
       "amount": 32343.04,
       "theme": "Éducation"
@@ -6343,29 +6023,9 @@
       "theme": "Social - Petite enfance"
     },
     {
-      "name": "Nom3940",
-      "amount": 130320.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASS FORMATION INTEGRATION FAMILLES",
       "amount": 12200.0,
       "theme": "Social - Solidarité"
-    },
-    {
-      "name": "Nom4463",
-      "amount": 130084.71,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3981",
-      "amount": 130000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4028",
-      "amount": 130000.0,
-      "theme": "Non classifié"
     },
     {
       "name": "UNION FOYERS JEUNES TRAVAILL IDF",
@@ -6403,11 +6063,6 @@
       "theme": "Sport"
     },
     {
-      "name": "Nom3877",
-      "amount": 128586.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "PASSING CLUB",
       "amount": 10000.0,
       "theme": "Social - Solidarité"
@@ -6438,8 +6093,8 @@
       "theme": "Sport"
     },
     {
-      "name": "Nom4030",
-      "amount": 125000.0,
+      "name": "ECOLE NATIONALE SUPERIEURE MINES PA",
+      "amount": 69960.0,
       "theme": "Non classifié"
     },
     {
@@ -6513,11 +6168,6 @@
       "theme": "Administration"
     },
     {
-      "name": "Nom3976",
-      "amount": 122500.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "TREIZE TER",
       "amount": 10502.0,
       "theme": "Culture"
@@ -6563,11 +6213,6 @@
       "theme": "Éducation"
     },
     {
-      "name": "Nom4538",
-      "amount": 120437.0,
-      "theme": "Économie"
-    },
-    {
       "name": "ACCOMPAG LIEU ACCUEIL CARREF EDUC &",
       "amount": 20000.0,
       "theme": "Non classifié"
@@ -6595,16 +6240,6 @@
     {
       "name": "ASSOC JARDIN D ENFANT L O N U",
       "amount": 12168.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3922",
-      "amount": 119494.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3927",
-      "amount": 119000.0,
       "theme": "Non classifié"
     },
     {
@@ -6708,11 +6343,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom3842",
-      "amount": 111662.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASSOCIATION LE PERISCOPE",
       "amount": 835.0,
       "theme": "Culture"
@@ -6731,6 +6361,11 @@
       "name": "COURIR POUR LEPLAISIR",
       "amount": 8000.0,
       "theme": "Sport"
+    },
+    {
+      "name": "INST ETUDES POLITIQ PARIS-SCIENC PO",
+      "amount": 56000.0,
+      "theme": "Non classifié"
     },
     {
       "name": "OCTAVE ET ARPEGE",
@@ -6763,16 +6398,6 @@
       "theme": "International"
     },
     {
-      "name": "Nom4185",
-      "amount": 110000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4211",
-      "amount": 110000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "PARIS BASKET 15",
       "amount": 3800.0,
       "theme": "Sport"
@@ -6803,6 +6428,11 @@
       "theme": "Social - Solidarité"
     },
     {
+      "name": "ECOLE NAT SUP ARCHITECTURE MALAQUAI",
+      "amount": 19200.0,
+      "theme": "Administration"
+    },
+    {
       "name": "ETHNOLOGUES EN HERBE",
       "amount": 2000.0,
       "theme": "Culture"
@@ -6811,11 +6441,6 @@
       "name": "CLUB NAUTIQUE DOMREMY 13",
       "amount": 7000.0,
       "theme": "Sport"
-    },
-    {
-      "name": "Nom4579",
-      "amount": 107500.0,
-      "theme": "Économie"
     },
     {
       "name": "CTRE DOCUM EDUCA ACTION MANIP MENTA",
@@ -6828,13 +6453,13 @@
       "theme": "Non classifié"
     },
     {
-      "name": "AFRIKEVENTS",
-      "amount": 17000.0,
-      "theme": "Non classifié"
+      "name": "MUSEUM NATIONAL D HISTOIRE NATURELL",
+      "amount": 44340.0,
+      "theme": "Administration"
     },
     {
-      "name": "Nom4076",
-      "amount": 106000.0,
+      "name": "AFRIKEVENTS",
+      "amount": 17000.0,
       "theme": "Non classifié"
     },
     {
@@ -6848,11 +6473,6 @@
       "theme": "Sport"
     },
     {
-      "name": "Nom4568",
-      "amount": 105681.0,
-      "theme": "Économie"
-    },
-    {
       "name": "VUE D ENSEMBLE",
       "amount": 7000.0,
       "theme": "Sport"
@@ -6861,11 +6481,6 @@
       "name": "ASIAD",
       "amount": 3000.0,
       "theme": "Social - Solidarité"
-    },
-    {
-      "name": "Nom4480",
-      "amount": 105000.0,
-      "theme": "Non classifié"
     },
     {
       "name": "ASC 21 MILTON",
@@ -6893,11 +6508,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom3886",
-      "amount": 103815.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "LIGUE D IMPROVISATION FRANCAISE",
       "amount": 2000.0,
       "theme": "Culture"
@@ -6908,19 +6518,9 @@
       "theme": "Culture"
     },
     {
-      "name": "Nom3871",
-      "amount": 102955.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "FONDATION ALLIANCE FRANCAISE",
       "amount": 12500.0,
       "theme": "International"
-    },
-    {
-      "name": "Nom4194",
-      "amount": 102370.0,
-      "theme": "Non classifié"
     },
     {
       "name": "SECTION OLYMPIQUE SAINT MEDARD",
@@ -6988,24 +6588,9 @@
       "theme": "Santé"
     },
     {
-      "name": "Nom4016",
-      "amount": 100000.0,
+      "name": "GIP CAFES CULTURES",
+      "amount": 50000.0,
       "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4161",
-      "amount": 100000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4555",
-      "amount": 100000.0,
-      "theme": "Économie"
-    },
-    {
-      "name": "Nom4569",
-      "amount": 99479.6,
-      "theme": "Économie"
     },
     {
       "name": "MAINS AGILES",
@@ -7038,11 +6623,6 @@
       "theme": "Sport"
     },
     {
-      "name": "Nom4163",
-      "amount": 98200.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "FRICHTI CONCEPT",
       "amount": 3000.0,
       "theme": "Social - Solidarité"
@@ -7066,11 +6646,6 @@
       "name": "TRAJECTOIRES",
       "amount": 10500.0,
       "theme": "Social - Solidarité"
-    },
-    {
-      "name": "Nom4376",
-      "amount": 97193.5,
-      "theme": "Non classifié"
     },
     {
       "name": "EN CORPS",
@@ -7168,11 +6743,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4536",
-      "amount": 94850.25,
-      "theme": "Économie"
-    },
-    {
       "name": "SOC FRANCAISE PHOTOGRAPHIE",
       "amount": 6000.0,
       "theme": "Culture"
@@ -7190,11 +6760,6 @@
     {
       "name": "RUE DE L'AVENIR",
       "amount": 7500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4466",
-      "amount": 93980.0,
       "theme": "Non classifié"
     },
     {
@@ -7218,11 +6783,6 @@
       "theme": "Éducation"
     },
     {
-      "name": "Nom4591",
-      "amount": 92866.62,
-      "theme": "Économie"
-    },
-    {
       "name": "REPI 2000",
       "amount": 3000.0,
       "theme": "Autre"
@@ -7243,11 +6803,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom3996",
-      "amount": 91803.86,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ENTENTE SPORTIVE ET CULTURELLE XIE",
       "amount": 12400.0,
       "theme": "Sport"
@@ -7255,11 +6810,6 @@
     {
       "name": "H F ILE-DE-FRANCE",
       "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4025",
-      "amount": 91500.0,
       "theme": "Non classifié"
     },
     {
@@ -7318,16 +6868,6 @@
       "theme": "Sport"
     },
     {
-      "name": "Nom4586",
-      "amount": 88792.44,
-      "theme": "Économie"
-    },
-    {
-      "name": "Nom4511",
-      "amount": 88719.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASS NAT CONSEIL ENFANTS ET JEUNES",
       "amount": 5900.0,
       "theme": "Éducation"
@@ -7356,11 +6896,6 @@
       "name": "HABITAT CITE",
       "amount": 9000.0,
       "theme": "Logement"
-    },
-    {
-      "name": "Nom4231",
-      "amount": 87800.0,
-      "theme": "Non classifié"
     },
     {
       "name": "CINE HISTOIRE",
@@ -7398,11 +6933,6 @@
       "theme": "Autre"
     },
     {
-      "name": "Nom4544",
-      "amount": 85500.0,
-      "theme": "Économie"
-    },
-    {
       "name": "ASS FR DES VICTIMES DU TERRORISME",
       "amount": 4000.0,
       "theme": "Social - Solidarité"
@@ -7413,16 +6943,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4042",
-      "amount": 85000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4478",
-      "amount": 85000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASSOCIATION FORT DE CAFE",
       "amount": 4500.0,
       "theme": "Non classifié"
@@ -7430,11 +6950,6 @@
     {
       "name": "COMITE REGIONAL HANDISPORT ILE DE F",
       "amount": 20000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4223",
-      "amount": 84000.0,
       "theme": "Non classifié"
     },
     {
@@ -7503,11 +7018,6 @@
       "theme": "Économie"
     },
     {
-      "name": "Nom4515",
-      "amount": 82000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "PARABOLE",
       "amount": 4000.0,
       "theme": "Social - Solidarité"
@@ -7543,9 +7053,9 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "Nom3889",
-      "amount": 80513.0,
-      "theme": "Non classifié"
+      "name": "SDC DU 5 SQUARE AUGUSTE RENOIR 7",
+      "amount": 50000.0,
+      "theme": "Administration"
     },
     {
       "name": "ASSOCIATION EBONY & IVORY",
@@ -7563,31 +7073,6 @@
       "theme": "Sport"
     },
     {
-      "name": "Nom3822",
-      "amount": 80000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3988",
-      "amount": 80000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4020",
-      "amount": 80000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4284",
-      "amount": 80000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4542",
-      "amount": 80000.0,
-      "theme": "Économie"
-    },
-    {
       "name": "SAEML PARISIENNE DE PHOTOGRAPHIE",
       "amount": 80000.0,
       "theme": "Économie"
@@ -7601,11 +7086,6 @@
       "name": "THEO THEATRE",
       "amount": 33821.5,
       "theme": "Éducation"
-    },
-    {
-      "name": "Nom3905",
-      "amount": 79680.0,
-      "theme": "Non classifié"
     },
     {
       "name": "ARTISTIC",
@@ -7628,19 +7108,9 @@
       "theme": "Culture"
     },
     {
-      "name": "Nom4559",
-      "amount": 79046.55,
-      "theme": "Économie"
-    },
-    {
       "name": "COMPAGNIE R.L.",
       "amount": 14000.0,
       "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4548",
-      "amount": 79000.0,
-      "theme": "Économie"
     },
     {
       "name": "GPT COMMERC AV VERS AUTEUIL PT JOUR",
@@ -7653,19 +7123,9 @@
       "theme": "Sport"
     },
     {
-      "name": "Nom4262",
-      "amount": 78250.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "CREDIT COOPERATIF",
       "amount": 1527.02,
       "theme": "Économie"
-    },
-    {
-      "name": "Nom4147",
-      "amount": 78225.0,
-      "theme": "Non classifié"
     },
     {
       "name": "VAGABOND VIBES",
@@ -7708,11 +7168,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom3882",
-      "amount": 77128.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASS SPORTIVE BELLEVILLE",
       "amount": 10000.0,
       "theme": "Sport"
@@ -7738,11 +7193,6 @@
       "theme": "Éducation"
     },
     {
-      "name": "Nom4344",
-      "amount": 76180.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASOC ARTISTES ARTISANS D ART XI (4A",
       "amount": 5000.0,
       "theme": "Culture"
@@ -7758,16 +7208,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom3901",
-      "amount": 75600.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3913",
-      "amount": 75343.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "A L'ETAGE DE L'ETABLISIENNE",
       "amount": 75000.0,
       "theme": "Non classifié"
@@ -7775,6 +7215,11 @@
     {
       "name": "ASSOCIATION GEVALOR",
       "amount": 40000.0,
+      "theme": "Non classifié"
+    },
+    {
+      "name": "CTRE NAT DE LA RECHER SCIENTIFIQUE",
+      "amount": 75000.0,
       "theme": "Non classifié"
     },
     {
@@ -7795,21 +7240,6 @@
     {
       "name": "MUSEE DE LA RESISTANCE NATIONALE",
       "amount": 50000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3863",
-      "amount": 75000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3984",
-      "amount": 75000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4521",
-      "amount": 75000.0,
       "theme": "Non classifié"
     },
     {
@@ -7843,11 +7273,6 @@
       "theme": "Administration"
     },
     {
-      "name": "Nom3921",
-      "amount": 73903.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "PRO BONO LAB",
       "amount": 3500.0,
       "theme": "Économie"
@@ -7856,11 +7281,6 @@
       "name": "ASS COLLECTIF JEUNE CINEMA",
       "amount": 5500.0,
       "theme": "Culture"
-    },
-    {
-      "name": "Nom3931",
-      "amount": 73480.0,
-      "theme": "Non classifié"
     },
     {
       "name": "LE FAUBOURG SAINT-GERMAIN",
@@ -7898,11 +7318,6 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "Nom4540",
-      "amount": 72331.4,
-      "theme": "Économie"
-    },
-    {
       "name": "L'USAGE DU MONDE AU 21E SIECLE",
       "amount": 1000.0,
       "theme": "Non classifié"
@@ -7916,11 +7331,6 @@
       "name": "INDISCIPLINAIRE(S)",
       "amount": 10000.0,
       "theme": "Culture"
-    },
-    {
-      "name": "Nom4123",
-      "amount": 71600.0,
-      "theme": "Non classifié"
     },
     {
       "name": "FORANIM",
@@ -7940,16 +7350,6 @@
     {
       "name": "PAROLES D'HOMMES ET DE FEMMES",
       "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4181",
-      "amount": 70925.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3875",
-      "amount": 70915.0,
       "theme": "Non classifié"
     },
     {
@@ -8003,34 +7403,9 @@
       "theme": "Culture"
     },
     {
-      "name": "GIP CAFES CULTURES",
-      "amount": 20000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "MEMOIRE 2000",
       "amount": 5000.0,
       "theme": "Culture"
-    },
-    {
-      "name": "Nom4079",
-      "amount": 70000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4238",
-      "amount": 70000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4250",
-      "amount": 70000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4288",
-      "amount": 70000.0,
-      "theme": "Non classifié"
     },
     {
       "name": "PREMIERE URGENCE AIDE MED INTERNAT",
@@ -8041,11 +7416,6 @@
       "name": "ASTERYA",
       "amount": 9500.0,
       "theme": "Autre"
-    },
-    {
-      "name": "Nom3932",
-      "amount": 69960.0,
-      "theme": "Non classifié"
     },
     {
       "name": "AVRON CONCEPT",
@@ -8108,11 +7478,6 @@
       "theme": "Économie"
     },
     {
-      "name": "Nom3855",
-      "amount": 68000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ORGANISATION DE FEMMES EGALITE",
       "amount": 5000.0,
       "theme": "Social - Solidarité"
@@ -8125,11 +7490,6 @@
     {
       "name": "RTF SPORT CULTURE-RENC TUNI FRAN SP",
       "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4052",
-      "amount": 67954.0,
       "theme": "Non classifié"
     },
     {
@@ -8163,16 +7523,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4557",
-      "amount": 67222.89,
-      "theme": "Économie"
-    },
-    {
-      "name": "Nom4375",
-      "amount": 67182.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "AFRICOLOR",
       "amount": 5000.0,
       "theme": "Culture"
@@ -8183,8 +7533,8 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "Nom4129",
-      "amount": 67000.0,
+      "name": "Bénéficiaires non nommés par la Ville — Etablissements publics (39 lignes)",
+      "amount": 66950.0,
       "theme": "Non classifié"
     },
     {
@@ -8238,16 +7588,6 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "Nom3929",
-      "amount": 65000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3934",
-      "amount": 65000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "PARIS UNLIMITED SPEED",
       "amount": 10000.0,
       "theme": "Non classifié"
@@ -8273,11 +7613,6 @@
       "theme": "Culture"
     },
     {
-      "name": "Nom3898",
-      "amount": 64320.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASSOCIATION CULTURELLE ET SPORTIVE",
       "amount": 12500.0,
       "theme": "Sport"
@@ -8286,16 +7621,6 @@
       "name": "LE PANDA ROUX",
       "amount": 6900.0,
       "theme": "Éducation"
-    },
-    {
-      "name": "Nom3854",
-      "amount": 64000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4118",
-      "amount": 64000.0,
-      "theme": "Non classifié"
     },
     {
       "name": "TENNIS CLUB DE LUTECE",
@@ -8311,11 +7636,6 @@
       "name": "KOLNOAH",
       "amount": 7000.0,
       "theme": "Culture"
-    },
-    {
-      "name": "Nom3930",
-      "amount": 63040.0,
-      "theme": "Non classifié"
     },
     {
       "name": "ALPHA IV",
@@ -8398,11 +7718,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom3907",
-      "amount": 60664.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASSOCIATION NATIONALE LE REFUGE",
       "amount": 6000.0,
       "theme": "Social - Solidarité"
@@ -8461,21 +7776,6 @@
       "name": "L'IMMEDIAT",
       "amount": 15000.0,
       "theme": "Culture"
-    },
-    {
-      "name": "Nom4073",
-      "amount": 60000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4107",
-      "amount": 60000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4398",
-      "amount": 60000.0,
-      "theme": "Non classifié"
     },
     {
       "name": "PARIS POLAR",
@@ -8593,11 +7893,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4412",
-      "amount": 57500.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ZORBA PRODUCTION",
       "amount": 7500.0,
       "theme": "Culture"
@@ -8626,16 +7921,6 @@
       "name": "CTRE MUSIQUE DE CHAMBRE DE PARIS",
       "amount": 7000.0,
       "theme": "Culture"
-    },
-    {
-      "name": "Nom3926",
-      "amount": 56000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4248",
-      "amount": 56000.0,
-      "theme": "Non classifié"
     },
     {
       "name": "ALPHABET FAMILLES",
@@ -8698,26 +7983,6 @@
       "theme": "Culture"
     },
     {
-      "name": "Nom4255",
-      "amount": 55000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4397",
-      "amount": 55000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4460",
-      "amount": 55000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4499",
-      "amount": 55000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "LES TOILES ENCHANTEES",
       "amount": 15000.0,
       "theme": "Non classifié"
@@ -8743,6 +8008,11 @@
       "theme": "Social - Solidarité"
     },
     {
+      "name": "POLE RECHERCHE ENSEIGNEMENT SUP PAR",
+      "amount": 22400.0,
+      "theme": "Non classifié"
+    },
+    {
       "name": "ASS ECOLE DE TENNIS DU 12E",
       "amount": 6900.0,
       "theme": "Sport"
@@ -8758,44 +8028,9 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom3864",
-      "amount": 54000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4414",
-      "amount": 54000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4534",
-      "amount": 54000.0,
-      "theme": "Économie"
-    },
-    {
-      "name": "Nom4545",
-      "amount": 54000.0,
-      "theme": "Économie"
-    },
-    {
-      "name": "Nom4572",
-      "amount": 54000.0,
-      "theme": "Économie"
-    },
-    {
       "name": "RESEAU CHRETIEN IMMIGRES",
       "amount": 4000.0,
       "theme": "Social - Solidarité"
-    },
-    {
-      "name": "Nom4031",
-      "amount": 53851.44,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4589",
-      "amount": 53785.8,
-      "theme": "Économie"
     },
     {
       "name": "L'AIRE A MOTS",
@@ -8825,16 +8060,6 @@
     {
       "name": "LES QUATRE HORIZONS",
       "amount": 8000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4115",
-      "amount": 53000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4442",
-      "amount": 53000.0,
       "theme": "Non classifié"
     },
     {
@@ -8895,11 +8120,6 @@
     {
       "name": "ASS INTER FILM",
       "amount": 6500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3866",
-      "amount": 51360.0,
       "theme": "Non classifié"
     },
     {
@@ -8968,46 +8188,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom3827",
-      "amount": 50000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3832",
-      "amount": 50000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3975",
-      "amount": 50000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4022",
-      "amount": 50000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4213",
-      "amount": 50000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4247",
-      "amount": 50000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4537",
-      "amount": 50000.0,
-      "theme": "Économie"
-    },
-    {
-      "name": "Nom4553",
-      "amount": 50000.0,
-      "theme": "Économie"
-    },
-    {
       "name": "NOUV ASS RENDEZ-VOUS MARSOULAN",
       "amount": 4400.0,
       "theme": "Non classifié"
@@ -9020,11 +8200,6 @@
     {
       "name": "ASSO SPORTIVE DUMAS-VOLTAIRE",
       "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4184",
-      "amount": 49328.48,
       "theme": "Non classifié"
     },
     {
@@ -9113,11 +8288,6 @@
       "theme": "Sport"
     },
     {
-      "name": "Nom4562",
-      "amount": 47442.56,
-      "theme": "Économie"
-    },
-    {
       "name": "ESPACE THERAPEUTIQUE ACCOMPAG PSYCH",
       "amount": 3200.0,
       "theme": "Santé"
@@ -9141,6 +8311,11 @@
       "name": "GRPE RECHERCH ACTION JEUNE ADOLESCE",
       "amount": 12000.0,
       "theme": "Éducation"
+    },
+    {
+      "name": "UNIVERSITE DE PARIS VIII.PARIS VINC",
+      "amount": 2000.0,
+      "theme": "Administration"
     },
     {
       "name": "GRAND CINEMA DU PALAIS DES GLACES",
@@ -9168,11 +8343,6 @@
       "theme": "Culture"
     },
     {
-      "name": "Nom4584",
-      "amount": 46480.56,
-      "theme": "Économie"
-    },
-    {
       "name": "HISTOIRE ET VIES DU 10EME",
       "amount": 3600.0,
       "theme": "Culture"
@@ -9196,11 +8366,6 @@
       "name": "ELLE TOURNE PAGE MAISON LIVRE ECRIT",
       "amount": 3500.0,
       "theme": "Culture"
-    },
-    {
-      "name": "Nom4112",
-      "amount": 45690.4,
-      "theme": "Non classifié"
     },
     {
       "name": "PARTAGE 5.6.7",
@@ -9243,26 +8408,6 @@
       "theme": "Autre"
     },
     {
-      "name": "Nom3994",
-      "amount": 45000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4146",
-      "amount": 45000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4242",
-      "amount": 45000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4243",
-      "amount": 45000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "RENCONTRE INTERN FILM PATRIM",
       "amount": 45000.0,
       "theme": "Non classifié"
@@ -9281,11 +8426,6 @@
       "name": "ASS SPORTIVE JUDO CLUB BAUDRICOURT",
       "amount": 3500.0,
       "theme": "Sport"
-    },
-    {
-      "name": "Nom4257",
-      "amount": 44615.87,
-      "theme": "Non classifié"
     },
     {
       "name": "VOXE",
@@ -9311,11 +8451,6 @@
       "name": "COMPAGNIE LES PASSAGERS",
       "amount": 9000.0,
       "theme": "Culture"
-    },
-    {
-      "name": "Nom4299",
-      "amount": 44000.0,
-      "theme": "Non classifié"
     },
     {
       "name": "LA PLUME NOIRE",
@@ -9388,21 +8523,6 @@
       "theme": "Culture"
     },
     {
-      "name": "Nom4271",
-      "amount": 42000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4440",
-      "amount": 42000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4500",
-      "amount": 42000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASSOC A TIRE D'AILES",
       "amount": 2500.0,
       "theme": "Culture"
@@ -9428,14 +8548,9 @@
       "theme": "International"
     },
     {
-      "name": "Nom4046",
-      "amount": 41300.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4470",
-      "amount": 41079.5,
-      "theme": "Non classifié"
+      "name": "CONSERVATOIRE NAT SUP MUSIQUE ET DA",
+      "amount": 4800.0,
+      "theme": "Administration"
     },
     {
       "name": "CHOEUR MARAIS ENSEMBLE VOCAL MARAIS",
@@ -9445,11 +8560,6 @@
     {
       "name": "LES FAMILLES ET AMIS DES DEPORTES D",
       "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4531",
-      "amount": 41000.0,
       "theme": "Non classifié"
     },
     {
@@ -9503,11 +8613,6 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "Nom3859",
-      "amount": 40500.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "AQUA B DEVELOPPEMENT 75",
       "amount": 3000.0,
       "theme": "Environnement"
@@ -9553,6 +8658,11 @@
       "theme": "Économie"
     },
     {
+      "name": "Bénéficiaires non nommés par la Ville — Commune (1 lignes)",
+      "amount": 40000.0,
+      "theme": "Non classifié"
+    },
+    {
       "name": "LES CAPRICES",
       "amount": 40000.0,
       "theme": "Économie"
@@ -9581,46 +8691,6 @@
       "name": "LUX LAVOMATIQUE",
       "amount": 40000.0,
       "theme": "Économie"
-    },
-    {
-      "name": "Nom3848",
-      "amount": 40000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4010",
-      "amount": 40000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4088",
-      "amount": 40000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4228",
-      "amount": 40000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4253",
-      "amount": 40000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4285",
-      "amount": 40000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4450",
-      "amount": 40000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4512",
-      "amount": 40000.0,
-      "theme": "Non classifié"
     },
     {
       "name": "L'ORCHESTRE - ATELIER OSTINATO",
@@ -9718,11 +8788,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4240",
-      "amount": 38929.34,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASS DES COMMERCANTS LOUVRE RIVOLI",
       "amount": 5100.0,
       "theme": "Économie"
@@ -9731,11 +8796,6 @@
       "name": "AS DEVELOP ECO  SOCIAL AFRIQUE FRAN",
       "amount": 9000.0,
       "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4592",
-      "amount": 38208.51,
-      "theme": "Économie"
     },
     {
       "name": "UNION SPORTIVE MAISON BLANCH",
@@ -9813,19 +8873,9 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4421",
-      "amount": 37000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "FREE DANCE SONG",
       "amount": 3700.0,
       "theme": "Culture"
-    },
-    {
-      "name": "Nom4554",
-      "amount": 36939.0,
-      "theme": "Économie"
     },
     {
       "name": "COMPAGNIES DES LUCIOLES",
@@ -9948,31 +8998,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4173",
-      "amount": 35000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4387",
-      "amount": 35000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4418",
-      "amount": 35000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4508",
-      "amount": 35000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4509",
-      "amount": 35000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "PHONOPLANETE",
       "amount": 3500.0,
       "theme": "Culture"
@@ -9993,18 +9018,8 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom3906",
-      "amount": 34720.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASS NATION DEVELOP DU SPORT",
       "amount": 2200.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4078",
-      "amount": 34448.04,
       "theme": "Non classifié"
     },
     {
@@ -10033,29 +9048,9 @@
       "theme": "Sport"
     },
     {
-      "name": "Nom4049",
-      "amount": 34000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4325",
-      "amount": 34000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4336",
-      "amount": 34000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "OCTOPUS",
       "amount": 5000.0,
       "theme": "Autre"
-    },
-    {
-      "name": "Nom4041",
-      "amount": 33990.0,
-      "theme": "Non classifié"
     },
     {
       "name": "COMPAGNIE THEATRALE CLARANCE",
@@ -10158,16 +9153,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4337",
-      "amount": 32000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4456",
-      "amount": 32000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "QUILOMBO PROJECTION",
       "amount": 4000.0,
       "theme": "Non classifié"
@@ -10181,11 +9166,6 @@
       "name": "ASALP",
       "amount": 800.0,
       "theme": "Autre"
-    },
-    {
-      "name": "Nom4086",
-      "amount": 31842.0,
-      "theme": "Non classifié"
     },
     {
       "name": "FRANCE AMERIQUE LATINE",
@@ -10246,11 +9226,6 @@
       "name": "COORDINAT FR LOBBY EUROPEEN FEMMES",
       "amount": 3000.0,
       "theme": "International"
-    },
-    {
-      "name": "Nom4092",
-      "amount": 31000.0,
-      "theme": "Non classifié"
     },
     {
       "name": "VILLE EN HERBES",
@@ -10338,99 +9313,9 @@
       "theme": "Économie"
     },
     {
-      "name": "Nom3843",
+      "name": "MINISTERE DES OUTRE-MER",
       "amount": 30000.0,
       "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3985",
-      "amount": 30000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4000",
-      "amount": 30000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4004",
-      "amount": 30000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4172",
-      "amount": 30000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4187",
-      "amount": 30000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4207",
-      "amount": 30000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4252",
-      "amount": 30000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4313",
-      "amount": 30000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4326",
-      "amount": 30000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4348",
-      "amount": 30000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4349",
-      "amount": 30000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4404",
-      "amount": 30000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4405",
-      "amount": 30000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4439",
-      "amount": 30000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4507",
-      "amount": 30000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4510",
-      "amount": 30000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4522",
-      "amount": 30000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4565",
-      "amount": 30000.0,
-      "theme": "Économie"
     },
     {
       "name": "THEATRE DE LA VERANDA",
@@ -10456,11 +9341,6 @@
       "name": "SOCIETE AUTOLIB'",
       "amount": 21358.5,
       "theme": "Économie"
-    },
-    {
-      "name": "Nom4496",
-      "amount": 29666.0,
-      "theme": "Non classifié"
     },
     {
       "name": "L'ARTISANIE",
@@ -10498,11 +9378,6 @@
       "theme": "Éducation"
     },
     {
-      "name": "Nom3861",
-      "amount": 29220.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ADA XIII ASS DEVELOP AMENAG 13",
       "amount": 1500.0,
       "theme": "Environnement"
@@ -10533,16 +9408,6 @@
       "theme": "International"
     },
     {
-      "name": "Nom3990",
-      "amount": 29000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4451",
-      "amount": 29000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "PRAXINOSCOPE THEATRE",
       "amount": 8000.0,
       "theme": "Non classifié"
@@ -10553,8 +9418,8 @@
       "theme": "Autre"
     },
     {
-      "name": "Nom4525",
-      "amount": 28870.0,
+      "name": "PROVINCE SUD",
+      "amount": 3600.0,
       "theme": "Non classifié"
     },
     {
@@ -10573,19 +9438,9 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "Nom4415",
-      "amount": 28350.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ROBOTICE",
       "amount": 28350.0,
       "theme": "Éducation"
-    },
-    {
-      "name": "Nom4564",
-      "amount": 28237.77,
-      "theme": "Économie"
     },
     {
       "name": "CHAMPS ELYSEES 20E",
@@ -10606,16 +9461,6 @@
       "name": "AMICALE CONS ANC CONSEIL PARIS SEIN",
       "amount": 3000.0,
       "theme": "Administration"
-    },
-    {
-      "name": "Nom4209",
-      "amount": 28000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4227",
-      "amount": 28000.0,
-      "theme": "Non classifié"
     },
     {
       "name": "PAPIER GACHE",
@@ -10688,16 +9533,6 @@
       "theme": "International"
     },
     {
-      "name": "Nom4044",
-      "amount": 27000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4171",
-      "amount": 27000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "RELAIS FAMILLE",
       "amount": 7000.0,
       "theme": "Non classifié"
@@ -10706,11 +9541,6 @@
       "name": "DAUPHIN SUBAQUATIQUE CLUB",
       "amount": 2400.0,
       "theme": "Sport"
-    },
-    {
-      "name": "Nom4528",
-      "amount": 26964.25,
-      "theme": "Non classifié"
     },
     {
       "name": "BATISSEUSES DE PAIX",
@@ -10778,11 +9608,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4097",
-      "amount": 26071.03,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ARZAZOU",
       "amount": 1000.0,
       "theme": "Éducation"
@@ -10841,11 +9666,6 @@
       "name": "PASSERELLE LYCEE UNIVERSITE SOLIDAI",
       "amount": 5000.0,
       "theme": "Éducation"
-    },
-    {
-      "name": "Nom4580",
-      "amount": 25988.0,
-      "theme": "Économie"
     },
     {
       "name": "LES FRONTRUNNERS DE PARIS",
@@ -10953,46 +9773,6 @@
       "theme": "Culture"
     },
     {
-      "name": "Nom4012",
-      "amount": 25000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4039",
-      "amount": 25000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4080",
-      "amount": 25000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4152",
-      "amount": 25000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4155",
-      "amount": 25000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4204",
-      "amount": 25000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4304",
-      "amount": 25000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4498",
-      "amount": 25000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "POLE AUDIO CINEMA MULTIME NORD PARI",
       "amount": 5000.0,
       "theme": "Non classifié"
@@ -11006,11 +9786,6 @@
       "name": "SPORTING CLUB BELLEVILLOIS",
       "amount": 1000.0,
       "theme": "Sport"
-    },
-    {
-      "name": "Nom4490",
-      "amount": 24810.0,
-      "theme": "Non classifié"
     },
     {
       "name": "MIXAGE FOU",
@@ -11098,21 +9873,6 @@
       "theme": "Culture"
     },
     {
-      "name": "Nom3997",
-      "amount": 24000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4085",
-      "amount": 24000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4428",
-      "amount": 24000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "OKADA MEDIA",
       "amount": 3000.0,
       "theme": "Culture"
@@ -11125,16 +9885,6 @@
     {
       "name": "PROCHE ORIENT CE QUE PEUT LE CINEMA",
       "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4230",
-      "amount": 23700.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4448",
-      "amount": 23700.0,
       "theme": "Non classifié"
     },
     {
@@ -11153,21 +9903,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4102",
-      "amount": 23500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4333",
-      "amount": 23500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4487",
-      "amount": 23500.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "CARTE BLANCHE 2001",
       "amount": 2650.0,
       "theme": "Autre"
@@ -11176,11 +9911,6 @@
       "name": "ASSO SPORT ET LOISIRS",
       "amount": 2900.0,
       "theme": "Sport"
-    },
-    {
-      "name": "Nom4452",
-      "amount": 23269.92,
-      "theme": "Non classifié"
     },
     {
       "name": "TRAM",
@@ -11218,26 +9948,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom3833",
-      "amount": 23000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4066",
-      "amount": 23000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4334",
-      "amount": 23000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4264",
-      "amount": 22927.81,
-      "theme": "Non classifié"
-    },
-    {
       "name": "LE VILLAGE DE LEVIS",
       "amount": 5000.0,
       "theme": "Économie"
@@ -11245,16 +9955,6 @@
     {
       "name": "ASS NAL DES ANCIENS DU R.I.C.M.",
       "amount": 2550.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4105",
-      "amount": 22770.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4037",
-      "amount": 22700.0,
       "theme": "Non classifié"
     },
     {
@@ -11268,23 +9968,8 @@
       "theme": "Sport"
     },
     {
-      "name": "Nom3849",
-      "amount": 22400.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4454",
-      "amount": 22400.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "DES JEUNES ET DES LETTRES",
       "amount": 1974.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4395",
-      "amount": 22167.09,
       "theme": "Non classifié"
     },
     {
@@ -11318,11 +10003,6 @@
       "theme": "Culture"
     },
     {
-      "name": "Nom4150",
-      "amount": 22000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "CLUB CHASSEURS EXPLORA -S MARINS FC",
       "amount": 2000.0,
       "theme": "Non classifié"
@@ -11345,11 +10025,6 @@
     {
       "name": "LA COLLINE DU XXEME",
       "amount": 5100.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4432",
-      "amount": 21516.39,
       "theme": "Non classifié"
     },
     {
@@ -11398,21 +10073,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4318",
-      "amount": 21000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4379",
-      "amount": 21000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4461",
-      "amount": 21000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "INTERNATIONAL TENNIS CLUB",
       "amount": 5000.0,
       "theme": "Sport"
@@ -11448,11 +10108,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4416",
-      "amount": 20400.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASSOCIATION SPORTIVE DIDEROT",
       "amount": 1600.0,
       "theme": "Sport"
@@ -11461,11 +10116,6 @@
       "name": "COMPAGNIE QUI PORTE QUOI",
       "amount": 3272.5,
       "theme": "Éducation"
-    },
-    {
-      "name": "Nom4494",
-      "amount": 20130.0,
-      "theme": "Non classifié"
     },
     {
       "name": "10:15 PRODUCTIONS",
@@ -11548,101 +10198,6 @@
       "theme": "Économie"
     },
     {
-      "name": "Nom3857",
-      "amount": 20000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4005",
-      "amount": 20000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4029",
-      "amount": 20000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4087",
-      "amount": 20000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4095",
-      "amount": 20000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4120",
-      "amount": 20000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4127",
-      "amount": 20000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4138",
-      "amount": 20000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4183",
-      "amount": 20000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4222",
-      "amount": 20000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4289",
-      "amount": 20000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4327",
-      "amount": 20000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4362",
-      "amount": 20000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4378",
-      "amount": 20000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4386",
-      "amount": 20000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4435",
-      "amount": 20000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4518",
-      "amount": 20000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4523",
-      "amount": 20000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4588",
-      "amount": 20000.0,
-      "theme": "Économie"
-    },
-    {
       "name": "NONON FILMS",
       "amount": 10000.0,
       "theme": "Économie"
@@ -11676,6 +10231,11 @@
       "name": "DES RARES TALENTS",
       "amount": 4000.0,
       "theme": "Culture"
+    },
+    {
+      "name": "RESEAU CANOPE",
+      "amount": 20000.0,
+      "theme": "Non classifié"
     },
     {
       "name": "S.A.P.N.A.(SOUTH ASIA PARIS NEW ART",
@@ -11713,11 +10273,6 @@
       "theme": "Économie"
     },
     {
-      "name": "Nom4308",
-      "amount": 19708.48,
-      "theme": "Non classifié"
-    },
-    {
       "name": "SPORT ADAPTE DU SUD EST DE PARIS",
       "amount": 1300.0,
       "theme": "Sport"
@@ -11748,11 +10303,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom3867",
-      "amount": 19200.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASS SPORTIVE DU LYC CLAUDE MONET",
       "amount": 2500.0,
       "theme": "Sport"
@@ -11775,11 +10325,6 @@
     {
       "name": "ARCAAD",
       "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4355",
-      "amount": 19000.0,
       "theme": "Non classifié"
     },
     {
@@ -11858,11 +10403,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4310",
-      "amount": 18500.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "GENERIQUE BATAAR",
       "amount": 2500.0,
       "theme": "Éducation"
@@ -11913,21 +10453,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4258",
-      "amount": 18000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4343",
-      "amount": 18000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4546",
-      "amount": 18000.0,
-      "theme": "Économie"
-    },
-    {
       "name": "OFFICE FORMATION ANIMATEURS CTRE VA",
       "amount": 2000.0,
       "theme": "Éducation"
@@ -11960,6 +10485,11 @@
     {
       "name": "ASS DES COMMERCANTS BELLEVILLOIS",
       "amount": 6200.0,
+      "theme": "Non classifié"
+    },
+    {
+      "name": "MUSEE NATIONAL PICASSO PARIS",
+      "amount": 7500.0,
       "theme": "Non classifié"
     },
     {
@@ -12008,11 +10538,6 @@
       "theme": "Éducation"
     },
     {
-      "name": "Nom4411",
-      "amount": 17210.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASSOCIATION SITEBAD",
       "amount": 1800.0,
       "theme": "Autre"
@@ -12043,16 +10568,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4077",
-      "amount": 17000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4178",
-      "amount": 17000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "NOUS N'ABANDONNERONS JAMAIS L'ESPOI",
       "amount": 12000.0,
       "theme": "Non classifié"
@@ -12061,6 +10576,11 @@
       "name": "PANDRATA CIRCLE",
       "amount": 4000.0,
       "theme": "Non classifié"
+    },
+    {
+      "name": "SYND EN VUE ETUDE AMENA ET ENTRE",
+      "amount": 3080.0,
+      "theme": "Administration"
     },
     {
       "name": "VIVE VOIX",
@@ -12108,11 +10628,6 @@
       "theme": "Éducation"
     },
     {
-      "name": "Nom4567",
-      "amount": 16664.0,
-      "theme": "Économie"
-    },
-    {
       "name": "ASS COMITE DEPART PARISIEN ECHECS",
       "amount": 2500.0,
       "theme": "Sport"
@@ -12121,11 +10636,6 @@
       "name": "SOCIETE NOUVELLE ARTISTIC VOLTAIRE",
       "amount": 895.0,
       "theme": "Économie"
-    },
-    {
-      "name": "Nom4445",
-      "amount": 16424.8,
-      "theme": "Non classifié"
     },
     {
       "name": "ASS SPORTS ET LOISIRS SAINT-VINCENT",
@@ -12193,11 +10703,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4023",
-      "amount": 16000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASC 3 BELZUNCE",
       "amount": 4600.0,
       "theme": "Éducation"
@@ -12208,11 +10713,6 @@
       "theme": "Sport"
     },
     {
-      "name": "Nom4306",
-      "amount": 15900.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "COMITE FNACA PARIS 3EME",
       "amount": 1200.0,
       "theme": "Administration"
@@ -12221,11 +10721,6 @@
       "name": "ASSO SPORTIVE FRANKLIN",
       "amount": 1500.0,
       "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4570",
-      "amount": 15700.0,
-      "theme": "Économie"
     },
     {
       "name": "ASS SPORTIVE DU LYCEE RACINE",
@@ -12338,96 +10833,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4007",
-      "amount": 15000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4050",
-      "amount": 15000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4104",
-      "amount": 15000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4208",
-      "amount": 15000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4219",
-      "amount": 15000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4232",
-      "amount": 15000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4254",
-      "amount": 15000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4278",
-      "amount": 15000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4294",
-      "amount": 15000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4364",
-      "amount": 15000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4390",
-      "amount": 15000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4422",
-      "amount": 15000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4426",
-      "amount": 15000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4453",
-      "amount": 15000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4464",
-      "amount": 15000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4472",
-      "amount": 15000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4497",
-      "amount": 15000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4502",
-      "amount": 15000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "PASSEPORT AVENIR",
       "amount": 5000.0,
       "theme": "Non classifié"
@@ -12475,11 +10880,6 @@
     {
       "name": "BOUCLES D'EBENE",
       "amount": 2500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4101",
-      "amount": 14500.0,
       "theme": "Non classifié"
     },
     {
@@ -12538,36 +10938,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4059",
-      "amount": 14000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4158",
-      "amount": 14000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4286",
-      "amount": 14000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4295",
-      "amount": 14000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4388",
-      "amount": 14000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4393",
-      "amount": 14000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "SORS DE TERRE",
       "amount": 4000.0,
       "theme": "Non classifié"
@@ -12600,11 +10970,6 @@
     {
       "name": "GENERATION CITOYENNE DU 19EME",
       "amount": 1000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4368",
-      "amount": 13700.0,
       "theme": "Non classifié"
     },
     {
@@ -12691,11 +11056,6 @@
       "name": "ARZAPAR",
       "amount": 8000.0,
       "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4533",
-      "amount": 13417.91,
-      "theme": "Économie"
     },
     {
       "name": "LE T.I.R. ET LA LYRE",
@@ -12803,16 +11163,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4245",
-      "amount": 13000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4465",
-      "amount": 13000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "LE PHALENE",
       "amount": 5000.0,
       "theme": "Non classifié"
@@ -12856,11 +11206,6 @@
       "name": "FED NAL ANC COMBAT AL MA (F.N.A.C.A",
       "amount": 1100.0,
       "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4585",
-      "amount": 12600.0,
-      "theme": "Économie"
     },
     {
       "name": "CLUB NATATION ADAPTEE LES DAUPHINS",
@@ -12918,7 +11263,7 @@
       "theme": "Sport"
     },
     {
-      "name": "Nom3846",
+      "name": "Bénéficiaires non nommés par la Ville — Etat (1 lignes)",
       "amount": 12102.0,
       "theme": "Non classifié"
     },
@@ -12983,21 +11328,6 @@
       "theme": "Autre"
     },
     {
-      "name": "Nom4153",
-      "amount": 12000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4180",
-      "amount": 12000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4274",
-      "amount": 12000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "RESSORTISSANTS SIRA DOUNDOU VILLAGE",
       "amount": 1000.0,
       "theme": "International"
@@ -13018,17 +11348,12 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4338",
-      "amount": 11750.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "FED NA ANC COMBA ALGERIE MAROC TUNI",
       "amount": 800.0,
       "theme": "International"
     },
     {
-      "name": "Nom3834",
+      "name": "SYND.COPR. DU 17 RUE POLONCEAU 7501",
       "amount": 11700.0,
       "theme": "Non classifié"
     },
@@ -13045,11 +11370,6 @@
     {
       "name": "UNION SPORTIVE PARIS 19",
       "amount": 2600.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3983",
-      "amount": 11555.34,
       "theme": "Non classifié"
     },
     {
@@ -13103,11 +11423,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4524",
-      "amount": 11400.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ESCRIME DES QUAIS DE SEINE",
       "amount": 500.0,
       "theme": "Sport"
@@ -13116,16 +11431,6 @@
       "name": "FACT.",
       "amount": 11250.0,
       "theme": "Économie"
-    },
-    {
-      "name": "Nom4527",
-      "amount": 11088.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4514",
-      "amount": 11069.46,
-      "theme": "Non classifié"
     },
     {
       "name": "CERIS",
@@ -13166,41 +11471,6 @@
       "name": "LA MAIN D OEUVRES",
       "amount": 7000.0,
       "theme": "Culture"
-    },
-    {
-      "name": "Nom4089",
-      "amount": 11000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4237",
-      "amount": 11000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4261",
-      "amount": 11000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4279",
-      "amount": 11000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4409",
-      "amount": 11000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4429",
-      "amount": 11000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4519",
-      "amount": 11000.0,
-      "theme": "Non classifié"
     },
     {
       "name": "PASSIFLORA",
@@ -13263,11 +11533,6 @@
       "theme": "Éducation"
     },
     {
-      "name": "Nom3826",
-      "amount": 10700.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASSOCIATION D'AIKIDO DES AMANDIERS",
       "amount": 1000.0,
       "theme": "Non classifié"
@@ -13281,11 +11546,6 @@
       "name": "9E HIST ETUDE PATRIMOINE HIST 9EME",
       "amount": 500.0,
       "theme": "Culture"
-    },
-    {
-      "name": "Nom4201",
-      "amount": 10500.0,
-      "theme": "Non classifié"
     },
     {
       "name": "ASS SPORTIVE DES JOURS HEUREUX",
@@ -13333,19 +11593,9 @@
       "theme": "Sport"
     },
     {
-      "name": "Nom3853",
-      "amount": 10240.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "LES MOUETTES DES ECLUSES",
       "amount": 900.0,
       "theme": "Sport"
-    },
-    {
-      "name": "Nom4359",
-      "amount": 10200.0,
-      "theme": "Non classifié"
     },
     {
       "name": "ASS TOUR BLANCHE ECHECS",
@@ -13418,217 +11668,12 @@
       "theme": "Non classifié"
     },
     {
+      "name": "DEPARTEMENT DE LA SEINE SAINT DENIS",
+      "amount": 10000.0,
+      "theme": "Non classifié"
+    },
+    {
       "name": "FONDATION NICOLAS HULOT NATURE & HO",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3828",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3847",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4021",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4036",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4047",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4064",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4065",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4099",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4100",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4108",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4131",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4145",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4156",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4168",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4174",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4192",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4203",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4221",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4233",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4241",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4251",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4266",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4287",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4300",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4314",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4329",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4339",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4356",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4365",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4380",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4382",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4396",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4406",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4407",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4433",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4443",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4455",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4458",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4468",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4481",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4486",
-      "amount": 10000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4492",
       "amount": 10000.0,
       "theme": "Non classifié"
     },
@@ -13723,11 +11768,6 @@
       "theme": "Sport"
     },
     {
-      "name": "Nom4026",
-      "amount": 9750.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "FORUM INTER PAIX RECONC MOYEN ORIEN",
       "amount": 9700.0,
       "theme": "Non classifié"
@@ -13753,14 +11793,14 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "RAJE PARIS",
-      "amount": 2500.0,
+      "name": "CONFEDERATION PAYSANNE",
+      "amount": 3000.0,
       "theme": "Environnement"
     },
     {
-      "name": "Nom3973",
-      "amount": 9360.0,
-      "theme": "Non classifié"
+      "name": "RAJE PARIS",
+      "amount": 2500.0,
+      "theme": "Environnement"
     },
     {
       "name": "ASSOC SPORTIVE LYCEE JULES FERRY",
@@ -13796,11 +11836,6 @@
       "name": "ENFANCE ET ATTENTION",
       "amount": 9024.0,
       "theme": "Éducation"
-    },
-    {
-      "name": "Nom4345",
-      "amount": 9018.0,
-      "theme": "Non classifié"
     },
     {
       "name": "AKELIO ACCOMPAGNEMENT",
@@ -13868,26 +11903,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4008",
-      "amount": 9000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4060",
-      "amount": 9000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4119",
-      "amount": 9000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4438",
-      "amount": 9000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "L'OEIL DU HUIT",
       "amount": 3000.0,
       "theme": "Culture"
@@ -13908,11 +11923,6 @@
       "theme": "Culture"
     },
     {
-      "name": "Nom4476",
-      "amount": 8956.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "TWIRLING CLUB LA PARISIENNE",
       "amount": 1000.0,
       "theme": "Sport"
@@ -13925,11 +11935,6 @@
     {
       "name": "CTE ENTENT ASS ANC COMBAT VICTIM GU",
       "amount": 1100.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4051",
-      "amount": 8750.0,
       "theme": "Non classifié"
     },
     {
@@ -13951,16 +11956,6 @@
       "name": "FE NAL AN COMB ALGERIE MAROC TUNISI",
       "amount": 700.0,
       "theme": "International"
-    },
-    {
-      "name": "Nom4236",
-      "amount": 8700.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4576",
-      "amount": 8678.0,
-      "theme": "Économie"
     },
     {
       "name": "ASS SPORTIVE DU COLL LOUISE MICHEL",
@@ -14001,16 +11996,6 @@
       "name": "COLLECTIF DU BONHEUR INTERIEUR BRUT",
       "amount": 8500.0,
       "theme": "Culture"
-    },
-    {
-      "name": "Nom3829",
-      "amount": 8500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4149",
-      "amount": 8500.0,
-      "theme": "Non classifié"
     },
     {
       "name": "RES ECHANGES RECIPROQUES SAVOIR 9EM",
@@ -14123,56 +12108,6 @@
       "theme": "Culture"
     },
     {
-      "name": "Nom3991",
-      "amount": 8000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4048",
-      "amount": 8000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4071",
-      "amount": 8000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4134",
-      "amount": 8000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4205",
-      "amount": 8000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4214",
-      "amount": 8000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4292",
-      "amount": 8000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4311",
-      "amount": 8000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4441",
-      "amount": 8000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4501",
-      "amount": 8000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ONE WEEK",
       "amount": 8000.0,
       "theme": "Culture"
@@ -14273,26 +12208,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom3851",
-      "amount": 7500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3993",
-      "amount": 7500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4182",
-      "amount": 7500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4403",
-      "amount": 7500.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "LA VITRINE DES ARTISTES",
       "amount": 2000.0,
       "theme": "Non classifié"
@@ -14313,11 +12228,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4281",
-      "amount": 7400.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "FOOT-CLUB AFRICA",
       "amount": 1100.0,
       "theme": "Non classifié"
@@ -14333,14 +12243,14 @@
       "theme": "Non classifié"
     },
     {
+      "name": "INRAP",
+      "amount": 7200.0,
+      "theme": "Non classifié"
+    },
+    {
       "name": "NAT SOUVENIR DARDANELLES FRONT ORIE",
       "amount": 500.0,
       "theme": "International"
-    },
-    {
-      "name": "Nom3868",
-      "amount": 7200.0,
-      "theme": "Non classifié"
     },
     {
       "name": "ESPOIR JEUNESSE LILAS",
@@ -14361,11 +12271,6 @@
       "name": "ASS SPORTIVE LYCEE D'ALEMBERT",
       "amount": 1000.0,
       "theme": "Éducation"
-    },
-    {
-      "name": "Nom4549",
-      "amount": 7039.0,
-      "theme": "Économie"
     },
     {
       "name": "ASSOCIATION SPORTIVE SAINT MARCEL",
@@ -14428,66 +12333,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom3998",
-      "amount": 7000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4017",
-      "amount": 7000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4027",
-      "amount": 7000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4198",
-      "amount": 7000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4235",
-      "amount": 7000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4259",
-      "amount": 7000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4302",
-      "amount": 7000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4370",
-      "amount": 7000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4446",
-      "amount": 7000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4447",
-      "amount": 7000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4513",
-      "amount": 7000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4517",
-      "amount": 7000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "OPERA FUOCO",
       "amount": 7000.0,
       "theme": "Culture"
@@ -14510,11 +12355,6 @@
     {
       "name": "ASS TENNIS CLUB DES SOURDS DE PARI",
       "amount": 450.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4526",
-      "amount": 6840.0,
       "theme": "Non classifié"
     },
     {
@@ -14603,11 +12443,6 @@
       "theme": "Éducation"
     },
     {
-      "name": "Nom4444",
-      "amount": 6470.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASS NAT COMBATTANTS VOLONT RESISTAN",
       "amount": 700.0,
       "theme": "Non classifié"
@@ -14631,11 +12466,6 @@
       "name": "LOISIRS ET PROGRES",
       "amount": 800.0,
       "theme": "Éducation"
-    },
-    {
-      "name": "Nom4539",
-      "amount": 6300.0,
-      "theme": "Économie"
     },
     {
       "name": "THEATRE DE L'EQUIPEE",
@@ -14738,91 +12568,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4006",
-      "amount": 6000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4019",
-      "amount": 6000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4038",
-      "amount": 6000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4063",
-      "amount": 6000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4096",
-      "amount": 6000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4130",
-      "amount": 6000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4151",
-      "amount": 6000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4169",
-      "amount": 6000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4179",
-      "amount": 6000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4189",
-      "amount": 6000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4196",
-      "amount": 6000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4301",
-      "amount": 6000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4347",
-      "amount": 6000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4351",
-      "amount": 6000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4357",
-      "amount": 6000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4363",
-      "amount": 6000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4385",
-      "amount": 6000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "RN COLLECTIVITES HABITAT PARTICIPAT",
       "amount": 3000.0,
       "theme": "Non classifié"
@@ -14893,11 +12638,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4135",
-      "amount": 5750.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "SPORT QUILLES ROUERGAT CLUB BELLEVI",
       "amount": 700.0,
       "theme": "Sport"
@@ -14939,11 +12679,6 @@
     },
     {
       "name": "GRAD-GUINEE (GROUPE DE REFLEXION ET",
-      "amount": 5500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4195",
       "amount": 5500.0,
       "theme": "Non classifié"
     },
@@ -15021,11 +12756,6 @@
       "name": "LES MOUSTIQUES",
       "amount": 500.0,
       "theme": "Sport"
-    },
-    {
-      "name": "Nom3982",
-      "amount": 5100.0,
-      "theme": "Non classifié"
     },
     {
       "name": "ASS COLLECTIF LOGEMENT PARIS 14",
@@ -15178,341 +12908,6 @@
       "theme": "Économie"
     },
     {
-      "name": "Nom3825",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3999",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4002",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4024",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4034",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4040",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4057",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4062",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4068",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4069",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4075",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4093",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4098",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4103",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4110",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4114",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4154",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4175",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4177",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4200",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4202",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4216",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4218",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4225",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4229",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4239",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4244",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4246",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4249",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4267",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4269",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4275",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4276",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4293",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4296",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4297",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4316",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4317",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4330",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4331",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4341",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4346",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4352",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4353",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4367",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4369",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4381",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4383",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4389",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4394",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4401",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4417",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4424",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4431",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4437",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4457",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4459",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4467",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4477",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4482",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4483",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4485",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4489",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4491",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4506",
-      "amount": 5000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4547",
-      "amount": 5000.0,
-      "theme": "Économie"
-    },
-    {
-      "name": "Nom4573",
-      "amount": 5000.0,
-      "theme": "Économie"
-    },
-    {
       "name": "PHOEBUS",
       "amount": 5000.0,
       "theme": "Culture"
@@ -15573,11 +12968,6 @@
       "theme": "Éducation"
     },
     {
-      "name": "Nom3933",
-      "amount": 4800.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "NOMAD'ECHECS CLUB",
       "amount": 2500.0,
       "theme": "Non classifié"
@@ -15585,16 +12975,6 @@
     {
       "name": "DANIELLA",
       "amount": 950.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4410",
-      "amount": 4750.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4132",
-      "amount": 4700.0,
       "theme": "Non classifié"
     },
     {
@@ -15683,7 +13063,7 @@
       "theme": "Autre"
     },
     {
-      "name": "Nom3835",
+      "name": "SYND.COPR. DU 20 RUE CAVE 75018 PAR",
       "amount": 4200.0,
       "theme": "Non classifié"
     },
@@ -15696,11 +13076,6 @@
       "name": "SILENCE, ON COURT!",
       "amount": 4140.0,
       "theme": "Éducation"
-    },
-    {
-      "name": "Nom4307",
-      "amount": 4066.73,
-      "theme": "Non classifié"
     },
     {
       "name": "A PLEINE COUTURE",
@@ -15773,121 +13148,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom3893",
-      "amount": 4000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3995",
-      "amount": 4000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4009",
-      "amount": 4000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4033",
-      "amount": 4000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4045",
-      "amount": 4000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4058",
-      "amount": 4000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4084",
-      "amount": 4000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4090",
-      "amount": 4000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4113",
-      "amount": 4000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4126",
-      "amount": 4000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4148",
-      "amount": 4000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4215",
-      "amount": 4000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4290",
-      "amount": 4000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4320",
-      "amount": 4000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4335",
-      "amount": 4000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4354",
-      "amount": 4000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4366",
-      "amount": 4000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4372",
-      "amount": 4000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4408",
-      "amount": 4000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4430",
-      "amount": 4000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4474",
-      "amount": 4000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4504",
-      "amount": 4000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4571",
-      "amount": 4000.0,
-      "theme": "Économie"
-    },
-    {
       "name": "RANDONNEURS ET AJISTES DU XX EME",
       "amount": 500.0,
       "theme": "Non classifié"
@@ -15903,11 +13163,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom3858",
-      "amount": 3840.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "AU VELO BRANCHE",
       "amount": 1595.8,
       "theme": "Sport"
@@ -15915,16 +13170,6 @@
     {
       "name": "ASSOCIATION SPORTIVE POITOU",
       "amount": 500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4473",
-      "amount": 3650.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3987",
-      "amount": 3600.0,
       "theme": "Non classifié"
     },
     {
@@ -15948,43 +13193,8 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4074",
-      "amount": 3500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4128",
-      "amount": 3500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4265",
-      "amount": 3500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4273",
-      "amount": 3500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4361",
-      "amount": 3500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4434",
-      "amount": 3500.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASS SPORTIVE DES VETERANS DE PARIS",
       "amount": 450.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4268",
-      "amount": 3425.0,
       "theme": "Non classifié"
     },
     {
@@ -15998,11 +13208,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4056",
-      "amount": 3200.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "ASSOCIATION DES PARENTS D'ELEVES",
       "amount": 950.0,
       "theme": "Non classifié"
@@ -16011,11 +13216,6 @@
       "name": "LE LAPIN OUVRIER",
       "amount": 1350.0,
       "theme": "Environnement"
-    },
-    {
-      "name": "Nom3949",
-      "amount": 3080.0,
-      "theme": "Non classifié"
     },
     {
       "name": "AIDE A INSERT SOC PERS.EN DIFFIC",
@@ -16098,121 +13298,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom3830",
-      "amount": 3000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4003",
-      "amount": 3000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4032",
-      "amount": 3000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4043",
-      "amount": 3000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4111",
-      "amount": 3000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4116",
-      "amount": 3000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4117",
-      "amount": 3000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4136",
-      "amount": 3000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4160",
-      "amount": 3000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4164",
-      "amount": 3000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4226",
-      "amount": 3000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4272",
-      "amount": 3000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4291",
-      "amount": 3000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4298",
-      "amount": 3000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4319",
-      "amount": 3000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4350",
-      "amount": 3000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4358",
-      "amount": 3000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4373",
-      "amount": 3000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4402",
-      "amount": 3000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4419",
-      "amount": 3000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4471",
-      "amount": 3000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4479",
-      "amount": 3000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4488",
-      "amount": 3000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "READY OR NOT",
       "amount": 3000.0,
       "theme": "Non classifié"
@@ -16268,76 +13353,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom3824",
-      "amount": 2500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4143",
-      "amount": 2500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4159",
-      "amount": 2500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4165",
-      "amount": 2500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4167",
-      "amount": 2500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4170",
-      "amount": 2500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4212",
-      "amount": 2500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4260",
-      "amount": 2500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4280",
-      "amount": 2500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4340",
-      "amount": 2500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4371",
-      "amount": 2500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4374",
-      "amount": 2500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4420",
-      "amount": 2500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4484",
-      "amount": 2500.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "SOCIETE DES AMIS DU PAYS VABRAIS",
       "amount": 2500.0,
       "theme": "Culture"
@@ -16348,11 +13363,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom4081",
-      "amount": 2400.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "LES VETERANS DU PARIS HOCKEY CLUB",
       "amount": 800.0,
       "theme": "Sport"
@@ -16360,11 +13370,6 @@
     {
       "name": "ASS LOCATAIRES GROUPE MODIGLIANI",
       "amount": 1000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4091",
-      "amount": 2300.0,
       "theme": "Non classifié"
     },
     {
@@ -16418,106 +13423,6 @@
       "theme": "Non classifié"
     },
     {
-      "name": "Nom3942",
-      "amount": 2000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3989",
-      "amount": 2000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4011",
-      "amount": 2000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4035",
-      "amount": 2000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4053",
-      "amount": 2000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4072",
-      "amount": 2000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4109",
-      "amount": 2000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4137",
-      "amount": 2000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4142",
-      "amount": 2000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4217",
-      "amount": 2000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4309",
-      "amount": 2000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4315",
-      "amount": 2000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4322",
-      "amount": 2000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4342",
-      "amount": 2000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4399",
-      "amount": 2000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4413",
-      "amount": 2000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4493",
-      "amount": 2000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4503",
-      "amount": 2000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4505",
-      "amount": 2000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4516",
-      "amount": 2000.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "PARIS LABEL FRANCE SARL",
       "amount": 2000.0,
       "theme": "Économie"
@@ -16543,28 +13448,8 @@
       "theme": "Économie"
     },
     {
-      "name": "Nom4061",
-      "amount": 1750.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4186",
-      "amount": 1750.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4270",
-      "amount": 1750.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "LES AMI ( E)S DU JARDIN DE LA FELIC",
       "amount": 1200.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4018",
-      "amount": 1700.0,
       "theme": "Non classifié"
     },
     {
@@ -16619,36 +13504,6 @@
     },
     {
       "name": "LES LOCATAIRES DU SIX 7, BD NEY",
-      "amount": 1500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3992",
-      "amount": 1500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4055",
-      "amount": 1500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4106",
-      "amount": 1500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4190",
-      "amount": 1500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4210",
-      "amount": 1500.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4377",
       "amount": 1500.0,
       "theme": "Non classifié"
     },
@@ -16719,41 +13574,6 @@
     },
     {
       "name": "ENTRAIDE DE L'EGLISE PROTESTANTE",
-      "amount": 1000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3823",
-      "amount": 1000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4067",
-      "amount": 1000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4144",
-      "amount": 1000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4206",
-      "amount": 1000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4282",
-      "amount": 1000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4305",
-      "amount": 1000.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom4323",
       "amount": 1000.0,
       "theme": "Non classifié"
     },
@@ -17078,191 +13898,6 @@
       "theme": "Économie"
     },
     {
-      "name": "Nom3870",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3872",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3876",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3878",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3879",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3881",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3883",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3884",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3885",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3887",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3888",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3894",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3895",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3896",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3904",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3908",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3909",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3910",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3911",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3912",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3914",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3915",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3916",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3917",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3918",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3919",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3920",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3923",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3924",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3925",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3935",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3936",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3937",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3938",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3939",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3941",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
-      "name": "Nom3945",
-      "amount": 350.0,
-      "theme": "Non classifié"
-    },
-    {
       "name": "LES FILS  A  MAMAN",
       "amount": 329.98,
       "theme": "Économie"
@@ -17291,11 +13926,6 @@
       "name": "TOQUEVILLE",
       "amount": 214.17,
       "theme": "Économie"
-    },
-    {
-      "name": "Nom4391",
-      "amount": 190.53,
-      "theme": "Non classifié"
     },
     {
       "name": "MARNATH PRODUCTION",

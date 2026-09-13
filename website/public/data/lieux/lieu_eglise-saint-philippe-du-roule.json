@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "eglise-saint-philippe-du-roule",
   "name": "Église Saint-Philippe-du-Roule",
@@ -17,22 +17,24 @@
     "source": "Wikipédia"
   },
   "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
     "extract": "L'église Saint-Philippe-du-Roule a été construite à la fin du XVIIIe siècle et remaniée deux fois au cours du XIXe. Son histoire est liée aux différentes étapes de l'édification de ce quartier auquel elle a donné son nom.",
     "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Saint-Philippe-du-Roule",
     "source": {
       "name": "Wikipédia",
       "url": "https://fr.wikipedia.org/"
-    }
+    },
+    "extract_en": "The église Saint-Philippe-du-Roule was built at the end of the 18th century and remodeled twice during the 19th. Its history is tied to the successive stages in the building of this neighborhood, to which it gave its name."
   },
   "stats": {
     "n_delibs": 652,
     "delibs_span": [
-      1995,
-      2026
+      2002,
+      2002
     ],
-    "n_bmo_brut": 0,
-    "n_bmo_verifies": null,
+    "n_bmo_brut": 764,
+    "n_bmo_verifies": 4,
     "invest_total_eur": 5610876.35,
     "invest_annees": [
       "2019",
@@ -45,13 +47,24 @@
     "lecture_mode": "titre nommant le lieu (1 trouvés)",
     "lecture_mode_en": "title naming the place (1 found)",
     "n_lus": 1,
-    "n_lieu": null
+    "n_lieu": 1
   },
   "subventions_exploitant": null,
   "residents": [],
   "kpi_montant": null,
-  "synthese_fr": null,
-  "moments": [],
+  "synthese_fr": "En juin 2002, le Conseil de Paris, sur le rapport de Mme Sandrine Mazetier et vu l'avis du Conseil du 8e arrondissement du 3 juin 2002, approuve le principe et les modalités de travaux de restauration des couvertures et des charpentes de l'église Saint-Philippe-du-Roule. La délibération prévoit que ces travaux feront l'objet d'un marché sur appel d'offres ouvert en 4 lots séparés, approuve le règlement de consultation, le cahier des clauses administratives particulières et les actes d'engagement, et autorise le Maire de Paris à signer lesdits marchés. Elle approuve un principe et autorise une signature : elle ne rend compte ni de l'attribution des marchés ni de l'exécution des travaux.",
+  "moments": [
+    {
+      "id": "55723",
+      "seance": "JUIN 2002",
+      "fait": "Le Conseil approuve le principe et les modalités de travaux de restauration des couvertures et des charpentes, par un marché sur appel d'offres ouvert en 4 lots séparés, et autorise le Maire à signer lesdits marchés.",
+      "pourquoi": "Couvertures et charpentes : principe des travaux de restauration approuvé",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55723",
+      "fait_en": "The Council approved the principle and terms of restoration works on the roof coverings and roof frames, through a contract awarded by open call for tenders in 4 separate lots, and authorized the Mayor to sign the said contracts.",
+      "pourquoi_en": "Roof coverings and roof frames: principle of restoration works approved"
+    }
+  ],
   "montants": [],
   "bmo_extraits": [],
   "bmo_recit": null,
@@ -121,7 +134,7 @@
     },
     "bmo": {
       "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22%C3%89glise+Saint-Philippe-du-Roule%22%29"
     },
     "invest": {
       "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -132,6 +145,8 @@
       "url": "https://fr.wikipedia.org/"
     }
   },
+  "synthese_en": "In June 2002, the Conseil de Paris, on the report of Ms Sandrine Mazetier and having regard to the opinion of the 8th arrondissement council of 3 June 2002, approved the principle and terms of restoration works on the roof coverings and roof frames of the église Saint-Philippe-du-Roule. The deliberation provides that these works will be the subject of a contract awarded through an open call for tenders in 4 separate lots, approves the consultation rules, the special administrative terms and conditions and the tender commitment forms, and authorizes the Mayor of Paris to sign the said contracts. It approves a principle and authorizes a signature: it gives no account of the award of the contracts or of the execution of the works.",
+  "bmo_recit_en": "The église Saint-Philippe-du-Roule appears in the Bulletin municipal in 1883, in the course of a dispute between neighbors: a procedure seeking the removal of open windows and of chimney flues projecting onto a property on the faubourg Saint-Honoré, in which mention is made of large windows lighting a chapel of the church, set less than 1 m away. The Council deliberates on it, though the available text does not reveal the outcome of its decision. In 1919, the church appears in a list of works, for the replacement of wire-mesh window frames. These two mentions, thirty-six years apart, both concern the building itself.",
   "license": {
     "id": "ODbL-1.0",
     "url": "https://opendatacommons.org/licenses/odbl/1-0/",

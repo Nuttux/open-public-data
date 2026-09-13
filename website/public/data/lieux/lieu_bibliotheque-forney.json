@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "bibliotheque-forney",
   "name": "Bibliothèque Forney",
@@ -17,6 +17,7 @@
     "source": "Wikipédia"
   },
   "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
     "extract": "La bibliothèque Forney fait partie du réseau des bibliothèques patrimoniales et spécialisées de la Ville de Paris, ses collections s’étant développées autour des arts décoratifs, des métiers d’art et de leurs techniques, des beaux-arts et des arts graphiques. Elle organise régulièrement des expositions.",
     "url": "https://fr.wikipedia.org/wiki/Biblioth%C3%A8que_Forney",

@@ -140,8 +140,8 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
   const showBars = subvTotal > 0 && travauxTotal > 0;
 
   /* La fenêtre commune. Les deux flux ne commencent pas la même année : la
-   * Ville publie l'investissement depuis 2009 et les subventions depuis 2013.
-   * Additionner les deux « depuis 2009 » donnait un total qu'aucune période ne
+   * Ville publie l'investissement plus tôt que les subventions.
+   * Additionner les deux depuis le premier exercice d'investissement donnait un total qu'aucune période ne
    * produit, et deux lieux n'étaient pas comparables entre eux. Le chiffre de
    * tête couvre donc la fenêtre où les deux flux existent ; ce qui tombe avant
    * est montré juste sous les graphes, nommé, jamais retiré. */
@@ -164,7 +164,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
   ]);
   /* L'axe commun. Les deux lignes d'argent ne couvrent pas les mêmes
    * exercices, et ce n'est pas un choix : la Ville publie les subventions à
-   * partir de 2013 et la dépense d'investissement à partir de 2009. Dessiner
+   * partir d'une année plus tardive que la dépense d'investissement. Dessiner
    * chaque graphe sur ses propres années met côte à côte deux axes différents,
    * que l'œil compare quand même. On les pose sur le MÊME axe, du premier au
    * dernier exercice de la fiche.
@@ -200,7 +200,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
    * position, même largeur de barre, même année en dessous.
    *
    * Le seuil est celui du chiffre de tête (le premier exercice de subvention
-   * publié, 2013). Faire commencer l'axe plus tôt donnait un tiers de graphe
+   * publié, lu dans les données). Faire commencer l'axe plus tôt donnait un tiers de graphe
    * vide avant la première barre de subvention et posait la question « pourquoi
    * cette année-là » à chaque lecture ; ce qui tombe avant est dit en une ligne
    * sous les graphes, avec sa période.
@@ -548,11 +548,21 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
                   <span key={i}>
                     {i > 0 ? " " : ""}
                     {cap(fill(t("fx.lieu.avant_seuil"), {
-                      m: eurTxt(h.montant), l: h.label, a: Math.min(...ys), b: Math.max(...ys), s: seuil,
+                      m: eurTxt(h.montant), l: h.label,
+                      // « 2009–2009 » s'affichait quand tout tombait la même année.
+                      p: Math.min(...ys) === Math.max(...ys)
+                        ? fill(t("fx.lieu.periode_un"), { a: Math.min(...ys) })
+                        : fill(t("fx.lieu.periode_deux"), { a: Math.min(...ys), b: Math.max(...ys) }),
                     }))}
                   </span>
                 );
               })}
+              {/* La note de source une seule fois, et l'année lue dans l'export :
+                * elle se répétait à chaque ligne hors total, avec « 2009 » codé
+                * en dur dans la traduction. */}
+              {lieu.premier_exercice_investissement ? (
+                <> {fill(t("fx.lieu.avant_seuil_source"), { i: lieu.premier_exercice_investissement, s: seuil })}</>
+              ) : null}
             </p>
           )}
 
@@ -611,11 +621,3 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
     </div>
   );
 }
-
-// nudge 1789140718
-
-// nudge 1789140752
-
-// nudge 1789140932
-
-// nudge 1789142305

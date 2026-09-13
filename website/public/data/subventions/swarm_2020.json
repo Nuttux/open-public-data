@@ -63,14 +63,14 @@
       "theme": "Éducation"
     },
     {
-      "name": "ICF LA SABLIERE SA D'HLM",
-      "amount": 12325872.0,
-      "theme": "Logement"
-    },
-    {
       "name": "CAISSE ECOLES 20 EME ARRON PARIS",
       "amount": 8082691.6,
       "theme": "Éducation"
+    },
+    {
+      "name": "ICF LA SABLIERE SA D'HLM",
+      "amount": 12325872.0,
+      "theme": "Logement"
     },
     {
       "name": "AGOSPAP",
@@ -88,19 +88,14 @@
       "theme": "Éducation"
     },
     {
-      "name": "FORUM DES IMAGES",
-      "amount": 8520000.0,
-      "theme": "Culture"
-    },
-    {
-      "name": "ATELIER PARISIEN D URBANISME",
-      "amount": 6763000.0,
-      "theme": "Administration"
-    },
-    {
       "name": "SNCF RESEAU",
       "amount": 599749.12,
       "theme": "Transport"
+    },
+    {
+      "name": "FORUM DES IMAGES",
+      "amount": 8520000.0,
+      "theme": "Culture"
     },
     {
       "name": "CAISSE DES ECOLES 15EME ARRONDISSEM",
@@ -108,9 +103,19 @@
       "theme": "Éducation"
     },
     {
+      "name": "ATELIER PARISIEN D URBANISME",
+      "amount": 6763000.0,
+      "theme": "Administration"
+    },
+    {
       "name": "SM AUTOLIB' ET VELIB' METROPOLE",
       "amount": 23820891.02,
       "theme": "Transport"
+    },
+    {
+      "name": "CAISSE DES ECOLES DU 11E ARRONDISSE",
+      "amount": 5940189.75,
+      "theme": "Éducation"
     },
     {
       "name": "IMMOBILIERE 3F",
@@ -123,6 +128,11 @@
       "theme": "Social - Petite enfance"
     },
     {
+      "name": "CAISSE DES ECOLES DU 17E ARRONDISSE",
+      "amount": 5766712.8,
+      "theme": "Éducation"
+    },
+    {
       "name": "CRESCENDO",
       "amount": 5056809.21,
       "theme": "Social - Petite enfance"
@@ -130,21 +140,6 @@
     {
       "name": "ADOMA",
       "amount": 2373317.0,
-      "theme": "Logement"
-    },
-    {
-      "name": "CAISSE DES ECOLES DU 11E ARRONDISSE",
-      "amount": 5940189.75,
-      "theme": "Éducation"
-    },
-    {
-      "name": "CAISSE DES ECOLES DU 17E ARRONDISSE",
-      "amount": 5766712.8,
-      "theme": "Éducation"
-    },
-    {
-      "name": "SOC REQUALICATION QUARTIERS ANCIENS",
-      "amount": 6230234.0,
       "theme": "Logement"
     },
     {
@@ -158,9 +153,9 @@
       "theme": "Éducation"
     },
     {
-      "name": "Ste LIVRAISON OUVRAGES OLYMPIQUES",
-      "amount": 19571000.0,
-      "theme": "Sport"
+      "name": "SOC REQUALICATION QUARTIERS ANCIENS",
+      "amount": 6230234.0,
+      "theme": "Logement"
     },
     {
       "name": "REGIE ECOLE INGENIEURS VILLE PARIS",
@@ -168,9 +163,19 @@
       "theme": "Éducation"
     },
     {
+      "name": "Ste LIVRAISON OUVRAGES OLYMPIQUES",
+      "amount": 19571000.0,
+      "theme": "Sport"
+    },
+    {
       "name": "AGENCE NATIONALE DE L'HABITAT",
       "amount": 4700000.0,
       "theme": "Logement"
+    },
+    {
+      "name": "CAISSE DES ECOLES DU 10E ARRONDISSE",
+      "amount": 4300832.52,
+      "theme": "Éducation"
     },
     {
       "name": "ORCHESTRE DE CHAMBRE DE PARIS",
@@ -181,11 +186,6 @@
       "name": "PARIS ATELIERS",
       "amount": 3867700.0,
       "theme": "Culture"
-    },
-    {
-      "name": "CAISSE DES ECOLES DU 10E ARRONDISSE",
-      "amount": 4300832.52,
-      "theme": "Éducation"
     },
     {
       "name": "REGIE IMMOBIL. DE LA VILLE DE PARIS",
@@ -203,14 +203,14 @@
       "theme": "Culture"
     },
     {
-      "name": "EMMAUS SOLIDARITE",
-      "amount": 4430213.04,
-      "theme": "Social - Solidarité"
-    },
-    {
       "name": "CAISSE ECOLES 16 EME ARRON PARIS",
       "amount": 3215901.0,
       "theme": "Éducation"
+    },
+    {
+      "name": "EMMAUS SOLIDARITE",
+      "amount": 4430213.04,
+      "theme": "Social - Solidarité"
     },
     {
       "name": "PAVILLON DE L'ARSENAL",
@@ -228,6 +228,11 @@
       "theme": "Culture"
     },
     {
+      "name": "CENTRE REGIONAL OEUVRES UNIV SCOLAI",
+      "amount": 4634440.0,
+      "theme": "Éducation"
+    },
+    {
       "name": "THEATRE DU ROND POINT",
       "amount": 2479500.0,
       "theme": "Culture"
@@ -243,8 +248,8 @@
       "theme": "Logement"
     },
     {
-      "name": "CENTRE REGIONAL OEUVRES UNIV SCOLAI",
-      "amount": 4634440.0,
+      "name": "CAISSE ECOLES 5 EME ARRONDISSEMENT",
+      "amount": 2130438.0,
       "theme": "Éducation"
     },
     {
@@ -268,8 +273,8 @@
       "theme": "Logement"
     },
     {
-      "name": "CAISSE ECOLES 5 EME ARRONDISSEMENT",
-      "amount": 2130438.0,
+      "name": "CAISSE DES ECOLES DU 9E ARRONDISSEM",
+      "amount": 1667615.0,
       "theme": "Éducation"
     },
     {
@@ -278,9 +283,19 @@
       "theme": "Économie"
     },
     {
+      "name": "MAISON PRATIQUES ARTISTIQUES AMATEU",
+      "amount": 2593025.0,
+      "theme": "Culture"
+    },
+    {
       "name": "BPIFRANCE REGIONS",
       "amount": 4000000.0,
       "theme": "Économie"
+    },
+    {
+      "name": "LYCEE DES METIERS BOULLE E.S.A.A.",
+      "amount": 1691500.0,
+      "theme": "Éducation"
     },
     {
       "name": "ASSOCIATION AURORE",
@@ -293,11 +308,6 @@
       "theme": "Social - Petite enfance"
     },
     {
-      "name": "CAISSE DES ECOLES DU 9E ARRONDISSEM",
-      "amount": 1667615.0,
-      "theme": "Éducation"
-    },
-    {
       "name": "ANTIN RESIDENCES SA HABITAT",
       "amount": 1220047.0,
       "theme": "Logement"
@@ -306,16 +316,6 @@
       "name": "SAMU-SOCIAL DE PARIS",
       "amount": 2719836.12,
       "theme": "Social - Solidarité"
-    },
-    {
-      "name": "LYCEE DES METIERS BOULLE E.S.A.A.",
-      "amount": 1691500.0,
-      "theme": "Éducation"
-    },
-    {
-      "name": "MAISON PRATIQUES ARTISTIQUES AMATEU",
-      "amount": 2593025.0,
-      "theme": "Culture"
     },
     {
       "name": "L HABITATION CONFORTABLE",
@@ -353,14 +353,14 @@
       "theme": "Santé"
     },
     {
-      "name": "SORBONNE UNIVERSITE",
-      "amount": 7395000.0,
-      "theme": "Éducation"
-    },
-    {
       "name": "MAISON DES METALLOS",
       "amount": 2155073.12,
       "theme": "Culture"
+    },
+    {
+      "name": "SORBONNE UNIVERSITE",
+      "amount": 7395000.0,
+      "theme": "Éducation"
     },
     {
       "name": "RATP HABITAT",
@@ -398,6 +398,16 @@
       "theme": "Économie"
     },
     {
+      "name": "EPCS CAMPUS CONDORCET",
+      "amount": 3200000.0,
+      "theme": "Éducation"
+    },
+    {
+      "name": "CAISSE DES ECOLES DU 7EME ARRONDISS",
+      "amount": 924153.0,
+      "theme": "Éducation"
+    },
+    {
       "name": "BATIGERE EN ILE DE FRANCE",
       "amount": 1995184.9,
       "theme": "Logement"
@@ -411,16 +421,6 @@
       "name": "GRPT PARISIEN INTER-BAILL SURVEILL",
       "amount": 850000.0,
       "theme": "Logement"
-    },
-    {
-      "name": "CAISSE DES ECOLES DU 7EME ARRONDISS",
-      "amount": 924153.0,
-      "theme": "Éducation"
-    },
-    {
-      "name": "EPCS CAMPUS CONDORCET",
-      "amount": 3200000.0,
-      "theme": "Éducation"
     },
     {
       "name": "FONDATION DE L'ARMEE DU SALUT",
@@ -453,9 +453,19 @@
       "theme": "Non classifié"
     },
     {
+      "name": "LYCEE TECHNOLOGIQUE ESTIENNE E.S.A.",
+      "amount": 849100.0,
+      "theme": "Éducation"
+    },
+    {
       "name": "MADLINE",
       "amount": 2514900.0,
       "theme": "Logement"
+    },
+    {
+      "name": "CAISSE DES ECOLES DU 6E ARRONDISSEM",
+      "amount": 832900.0,
+      "theme": "Éducation"
     },
     {
       "name": "CRECHE GAN MENAHEM",
@@ -463,19 +473,19 @@
       "theme": "Social - Petite enfance"
     },
     {
+      "name": "CAISSE DES ECOLES DU 3E ARRONDISSEM",
+      "amount": 988614.0,
+      "theme": "Éducation"
+    },
+    {
       "name": "FESTIVAL D AUTOMNE A PARIS",
       "amount": 831976.0,
       "theme": "Culture"
     },
     {
-      "name": "LYCEE TECHNOLOGIQUE ESTIENNE E.S.A.",
-      "amount": 849100.0,
-      "theme": "Éducation"
-    },
-    {
-      "name": "CAISSE DES ECOLES DU 6E ARRONDISSEM",
-      "amount": 832900.0,
-      "theme": "Éducation"
+      "name": "UNION SYNDICATS CFDT PARIS",
+      "amount": 834800.0,
+      "theme": "Administration"
     },
     {
       "name": "PUC VOLLEY BALL",
@@ -488,11 +498,6 @@
       "theme": "Économie"
     },
     {
-      "name": "UNION SYNDICATS CFDT PARIS",
-      "amount": 834800.0,
-      "theme": "Administration"
-    },
-    {
       "name": "THEATRE PARIS VILLETTE",
       "amount": 1089350.0,
       "theme": "Culture"
@@ -503,8 +508,13 @@
       "theme": "Sport"
     },
     {
-      "name": "CAISSE DES ECOLES DU 3E ARRONDISSEM",
-      "amount": 988614.0,
+      "name": "CAISSE DES ECOLES DU 8E ARRONDISSEM",
+      "amount": 1225081.0,
+      "theme": "Éducation"
+    },
+    {
+      "name": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
+      "amount": 724600.0,
       "theme": "Éducation"
     },
     {
@@ -520,6 +530,11 @@
     {
       "name": "IERFAS",
       "amount": 583412.0,
+      "theme": "Éducation"
+    },
+    {
+      "name": "CAISSE DES ECOLES DU 2E ARRONDISSEM",
+      "amount": 1072282.0,
       "theme": "Éducation"
     },
     {
@@ -543,13 +558,8 @@
       "theme": "Social - Solidarité"
     },
     {
-      "name": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
-      "amount": 724600.0,
-      "theme": "Éducation"
-    },
-    {
-      "name": "CAISSE DES ECOLES DU 8E ARRONDISSEM",
-      "amount": 1225081.0,
+      "name": "CTRE NAT DE LA RECHERCHE SCIENTIFIQ",
+      "amount": 420000.0,
       "theme": "Éducation"
     },
     {
@@ -568,19 +578,9 @@
       "theme": "Sport"
     },
     {
-      "name": "CAISSE DES ECOLES DU 2E ARRONDISSEM",
-      "amount": 1072282.0,
-      "theme": "Éducation"
-    },
-    {
       "name": "UNION DEPARTEMEN ASS FAMILIAL PARIS",
       "amount": 2645910.56,
       "theme": "Social - Solidarité"
-    },
-    {
-      "name": "CTRE NAT DE LA RECHERCHE SCIENTIFIQ",
-      "amount": 420000.0,
-      "theme": "Éducation"
     },
     {
       "name": "L AGENCE PARISIENNE DU CLIMAT",
@@ -688,6 +688,11 @@
       "theme": "Social - Solidarité"
     },
     {
+      "name": "INST NATIONAL SANTE RECHERCHE MEDIC",
+      "amount": 350000.0,
+      "theme": "Santé"
+    },
+    {
       "name": "ASS DES CITES DU SECOURS CATHOLIQUE",
       "amount": 1058600.15,
       "theme": "Social - Solidarité"
@@ -708,14 +713,14 @@
       "theme": "Éducation"
     },
     {
-      "name": "INST NATIONAL SANTE RECHERCHE MEDIC",
-      "amount": 350000.0,
-      "theme": "Santé"
-    },
-    {
       "name": "ASS GESTION RESEAU MESUR POLLUT ATM",
       "amount": 690283.0,
       "theme": "Environnement"
+    },
+    {
+      "name": "UNION DEPARTEM. SYNDICATS CGT FO PA",
+      "amount": 407977.0,
+      "theme": "Administration"
     },
     {
       "name": "THEATRE DE LA MARIONNETTE A PARIS",
@@ -731,11 +736,6 @@
       "name": "ARFOG-LAFAYETTE",
       "amount": 222819.98,
       "theme": "Social - Solidarité"
-    },
-    {
-      "name": "UNION DEPARTEM. SYNDICATS CGT FO PA",
-      "amount": 407977.0,
-      "theme": "Administration"
     },
     {
       "name": "FONDATION CASIP-COJASOR",
@@ -793,6 +793,11 @@
       "theme": "Économie"
     },
     {
+      "name": "UNION DEPARTENTALE SYNDICAT CFTC PA",
+      "amount": 221793.0,
+      "theme": "Administration"
+    },
+    {
       "name": "RESTAUS DU COEUR LES RELAIS COEUR P",
       "amount": 721316.56,
       "theme": "Social - Solidarité"
@@ -823,6 +828,11 @@
       "theme": "International"
     },
     {
+      "name": "ECOLE NORMALE SUPERIEURE",
+      "amount": 100000.0,
+      "theme": "Éducation"
+    },
+    {
       "name": "LE CREDIT LYONNAIS",
       "amount": 9432.72,
       "theme": "Autre"
@@ -833,24 +843,19 @@
       "theme": "Économie"
     },
     {
-      "name": "UNION DEPARTENTALE SYNDICAT CFTC PA",
-      "amount": 221793.0,
-      "theme": "Administration"
-    },
-    {
       "name": "FONCIERE D'HABITAT ET HUMANISME",
       "amount": 632366.0,
       "theme": "Logement"
     },
     {
-      "name": "ECOLE NORMALE SUPERIEURE",
-      "amount": 100000.0,
-      "theme": "Éducation"
-    },
-    {
       "name": "CENTRE REGIONAL DE COORDINATION",
       "amount": 750000.0,
       "theme": "Santé"
+    },
+    {
+      "name": "UNION DEPARTEMENTALE DE PARIS CFE-C",
+      "amount": 418396.0,
+      "theme": "Administration"
     },
     {
       "name": "SOLIDARITE SIDA",
@@ -908,11 +913,6 @@
       "theme": "Culture"
     },
     {
-      "name": "UNION DEPARTEMENTALE DE PARIS CFE-C",
-      "amount": 418396.0,
-      "theme": "Administration"
-    },
-    {
       "name": "CONST ARCHITECT URBAIN ENVIRONNEMEN",
       "amount": 65482.0,
       "theme": "Environnement"
@@ -953,6 +953,11 @@
       "theme": "Social - Solidarité"
     },
     {
+      "name": "UNION SYNDICALE SOLIDAIRES PARIS",
+      "amount": 243625.0,
+      "theme": "Administration"
+    },
+    {
       "name": "ASSOCIATION ESTRELIA",
       "amount": 420491.0,
       "theme": "Social - Petite enfance"
@@ -965,6 +970,11 @@
     {
       "name": "MUSEE EN HERBE",
       "amount": 364275.0,
+      "theme": "Culture"
+    },
+    {
+      "name": "ETS PUBLIC PARC GRANDE HALLE VILLET",
+      "amount": 188915.0,
       "theme": "Culture"
     },
     {
@@ -991,16 +1001,6 @@
       "name": "COMITE DEP OLYMPIQUE ET SPORTIF DE",
       "amount": 255600.0,
       "theme": "Sport"
-    },
-    {
-      "name": "ETS PUBLIC PARC GRANDE HALLE VILLET",
-      "amount": 188915.0,
-      "theme": "Culture"
-    },
-    {
-      "name": "UNION SYNDICALE SOLIDAIRES PARIS",
-      "amount": 243625.0,
-      "theme": "Administration"
     },
     {
       "name": "CAISSE ECOLES 1ER ARR  PARIS",
@@ -1298,6 +1298,11 @@
       "theme": "Culture"
     },
     {
+      "name": "INSTITUT FRANCAIS",
+      "amount": 140000.0,
+      "theme": "International"
+    },
+    {
       "name": "INSTITUTIONS GANONE YAD",
       "amount": 144725.0,
       "theme": "Éducation"
@@ -1363,14 +1368,14 @@
       "theme": "Sport"
     },
     {
-      "name": "INSTITUT FRANCAIS",
-      "amount": 140000.0,
-      "theme": "International"
-    },
-    {
       "name": "ARCHIPELIA",
       "amount": 149427.0,
       "theme": "Social - Solidarité"
+    },
+    {
+      "name": "UNIVERSITE PARIS 1 PANTHEON-SORBONN",
+      "amount": 5000.0,
+      "theme": "Éducation"
     },
     {
       "name": "EPT DE BASSIN SEINE GRANDS LACS",
@@ -1386,6 +1391,11 @@
       "name": "ASSOC NOTRE DAME DE BON SECOURS",
       "amount": 458387.6,
       "theme": "Santé"
+    },
+    {
+      "name": "CTRE NAT DE LA RECHERCHE SCIENTIF",
+      "amount": 50000.0,
+      "theme": "Éducation"
     },
     {
       "name": "CTRE INTERNATIONAL CREATIONS THEATR",
@@ -1423,14 +1433,14 @@
       "theme": "Culture"
     },
     {
+      "name": "UNION SYNDICATS CGT PARIS",
+      "amount": 111650.0,
+      "theme": "Administration"
+    },
+    {
       "name": "LOISIRS PLURIEL DU 19EME",
       "amount": 122500.0,
       "theme": "Social - Solidarité"
-    },
-    {
-      "name": "UNIVERSITE PARIS 1 PANTHEON-SORBONN",
-      "amount": 5000.0,
-      "theme": "Éducation"
     },
     {
       "name": "OHEL ESTHER",
@@ -1466,11 +1476,6 @@
       "name": "CENTRE EPINETTES FAMIL INSERTION AC",
       "amount": 47490.75,
       "theme": "Social - Solidarité"
-    },
-    {
-      "name": "UNION SYNDICATS CGT PARIS",
-      "amount": 111650.0,
-      "theme": "Administration"
     },
     {
       "name": "CLUB ATHLETIQUE DE PARIS",
@@ -1553,6 +1558,11 @@
       "theme": "Social - Solidarité"
     },
     {
+      "name": "CONSEIL DEP DE L'ACCES AU DROIT",
+      "amount": 102000.0,
+      "theme": "Administration"
+    },
+    {
       "name": "INCUBATEUR AU FEMININ",
       "amount": 75000.0,
       "theme": "Économie"
@@ -1578,6 +1588,11 @@
       "theme": "Social - Petite enfance"
     },
     {
+      "name": "CONSERVATOIRE NATIONAL ARTS ET METI",
+      "amount": 80000.0,
+      "theme": "Éducation"
+    },
+    {
       "name": "STRATA'J'M PARIS",
       "amount": 175190.0,
       "theme": "Culture"
@@ -1596,11 +1611,6 @@
       "name": "ASSOC MOSAIQUE L ATELIER DES ENFANT",
       "amount": 104041.41,
       "theme": "Éducation"
-    },
-    {
-      "name": "CONSEIL DEP DE L'ACCES AU DROIT",
-      "amount": 102000.0,
-      "theme": "Administration"
     },
     {
       "name": "CRECHE PARENTALE FARANDOLE",
@@ -1626,11 +1636,6 @@
       "name": "THEATRE AUX MAINS NUES",
       "amount": 111500.0,
       "theme": "Culture"
-    },
-    {
-      "name": "CTRE NAT DE LA RECHERCHE SCIENTIF",
-      "amount": 50000.0,
-      "theme": "Éducation"
     },
     {
       "name": "FEDERATION ENVIE",
@@ -1708,6 +1713,11 @@
       "theme": "Social - Petite enfance"
     },
     {
+      "name": "LYCEE TECHNOLOGIQUE LUCAS DE NEHOU",
+      "amount": 86399.75,
+      "theme": "Éducation"
+    },
+    {
       "name": "LIGUE FRCAISE DEFENSE DROITS DE L'H",
       "amount": 83000.0,
       "theme": "Social - Solidarité"
@@ -1731,11 +1741,6 @@
       "name": "ASSOCIATION LES ENFANCES",
       "amount": 87315.0,
       "theme": "Social - Petite enfance"
-    },
-    {
-      "name": "CONSERVATOIRE NATIONAL ARTS ET METI",
-      "amount": 80000.0,
-      "theme": "Éducation"
     },
     {
       "name": "CENTRE COROT - ENTRAIDE D'AUTEUIL",
@@ -1883,6 +1888,11 @@
       "theme": "Social - Petite enfance"
     },
     {
+      "name": "LYCEE TECHNOLOGIQUE M VOX-ART-DESSI",
+      "amount": 127570.75,
+      "theme": "Éducation"
+    },
+    {
       "name": "AOUT SECOURS ALIMENTAIRE",
       "amount": 190000.0,
       "theme": "Social - Solidarité"
@@ -1908,14 +1918,14 @@
       "theme": "Sport"
     },
     {
-      "name": "LYCEE TECHNOLOGIQUE LUCAS DE NEHOU",
-      "amount": 86399.75,
-      "theme": "Éducation"
-    },
-    {
       "name": "CRECHE PARENTALE DU SENTIER",
       "amount": 36955.0,
       "theme": "Social - Petite enfance"
+    },
+    {
+      "name": "LYCEE PROFESSIONNEL CAMILLE JENATZY",
+      "amount": 107160.75,
+      "theme": "Éducation"
     },
     {
       "name": "CONSEIL DEPARTEMENT PARENTS D'ELEVE",
@@ -1948,6 +1958,11 @@
       "theme": "Social - Petite enfance"
     },
     {
+      "name": "ECOLE PRATIQUE DES HAUTES ETUDES",
+      "amount": 105000.0,
+      "theme": "Éducation"
+    },
+    {
       "name": "OZAR HATORAH PARIS TREIZE CRECHE",
       "amount": 155859.0,
       "theme": "Social - Petite enfance"
@@ -1961,6 +1976,11 @@
       "name": "SINGA FRANCE",
       "amount": 139928.0,
       "theme": "Social - Solidarité"
+    },
+    {
+      "name": "LYCEE PROFESSIONNEL THEOPHILE GAUTI",
+      "amount": 147430.75,
+      "theme": "Éducation"
     },
     {
       "name": "PARIS BASKET 18E",
@@ -2028,11 +2048,6 @@
       "theme": "Économie"
     },
     {
-      "name": "ECOLE PRATIQUE DES HAUTES ETUDES",
-      "amount": 105000.0,
-      "theme": "Éducation"
-    },
-    {
       "name": "INSTITUT NATIONAL DE LA SANTE",
       "amount": 53500.0,
       "theme": "Santé"
@@ -2093,19 +2108,24 @@
       "theme": "Éducation"
     },
     {
-      "name": "COLLEGE BORIS VIAN",
-      "amount": 450260.0,
-      "theme": "Éducation"
+      "name": "SOC PUBLIQUE LOCALE CARREAU TEMPLE",
+      "amount": 43500.0,
+      "theme": "Culture"
     },
     {
-      "name": "LYCEE TECHNOLOGIQUE M VOX-ART-DESSI",
-      "amount": 127570.75,
+      "name": "COLLEGE BORIS VIAN",
+      "amount": 450260.0,
       "theme": "Éducation"
     },
     {
       "name": "ENTREPRENEURS DU MONDE",
       "amount": 127500.0,
       "theme": "International"
+    },
+    {
+      "name": "LYCEE TECHNOLOGIQUE JACQUES MONOD",
+      "amount": 91647.75,
+      "theme": "Éducation"
     },
     {
       "name": "TRAVAIL ET VIE",
@@ -2125,21 +2145,6 @@
     {
       "name": "OFFICE CENTR COOPERAT ECOLE PARIS",
       "amount": 105000.0,
-      "theme": "Éducation"
-    },
-    {
-      "name": "SOC PUBLIQUE LOCALE CARREAU TEMPLE",
-      "amount": 43500.0,
-      "theme": "Culture"
-    },
-    {
-      "name": "LYCEE PROFESSIONNEL THEOPHILE GAUTI",
-      "amount": 147430.75,
-      "theme": "Éducation"
-    },
-    {
-      "name": "LYCEE PROFESSIONNEL CAMILLE JENATZY",
-      "amount": 107160.75,
       "theme": "Éducation"
     },
     {
@@ -2308,6 +2313,11 @@
       "theme": "Social - Petite enfance"
     },
     {
+      "name": "INALCO",
+      "amount": 55000.0,
+      "theme": "Éducation"
+    },
+    {
       "name": "L ILE AUX TRESORS",
       "amount": 48938.0,
       "theme": "Social - Petite enfance"
@@ -2335,11 +2345,6 @@
     {
       "name": "ASSOCIATION L'ILE AUX LANGUE",
       "amount": 86900.0,
-      "theme": "Éducation"
-    },
-    {
-      "name": "LYCEE TECHNOLOGIQUE JACQUES MONOD",
-      "amount": 91647.75,
       "theme": "Éducation"
     },
     {
@@ -2508,11 +2513,6 @@
       "theme": "Sport"
     },
     {
-      "name": "INALCO",
-      "amount": 55000.0,
-      "theme": "Éducation"
-    },
-    {
       "name": "YES WE CAMP",
       "amount": 98000.0,
       "theme": "Économie"
@@ -2561,6 +2561,11 @@
       "name": "SOC EXPL CHAMPOLLION",
       "amount": 61200.0,
       "theme": "Autre"
+    },
+    {
+      "name": "LYCEE PROFESSIONNEL MARIA DERAISMES",
+      "amount": 58495.75,
+      "theme": "Éducation"
     },
     {
       "name": "COLLEGE THOMAS MANN",
@@ -2668,6 +2673,11 @@
       "theme": "Sport"
     },
     {
+      "name": "LYCEE PROFESSIONNEL RENE CASSIN",
+      "amount": 72837.75,
+      "theme": "Éducation"
+    },
+    {
       "name": "GABY SOURIRE",
       "amount": 17200.0,
       "theme": "Social - Solidarité"
@@ -2746,6 +2756,11 @@
       "name": "LES CANAUX",
       "amount": 259000.0,
       "theme": "Économie"
+    },
+    {
+      "name": "LYCEE PROFESSIONNEL GASTON BACHELAR",
+      "amount": 56302.75,
+      "theme": "Éducation"
     },
     {
       "name": "LES POUSSINS D'ANNAM",
@@ -2933,11 +2948,6 @@
       "theme": "Économie"
     },
     {
-      "name": "LYCEE PROFESSIONNEL MARIA DERAISMES",
-      "amount": 58495.75,
-      "theme": "Éducation"
-    },
-    {
       "name": "KONEXIO",
       "amount": 56000.0,
       "theme": "Économie"
@@ -2981,6 +2991,11 @@
       "name": "RESOQUARTIER",
       "amount": 60000.0,
       "theme": "Économie"
+    },
+    {
+      "name": "LYCEE PROFESSIONNEL PIERRE LESCOT",
+      "amount": 59396.75,
+      "theme": "Éducation"
     },
     {
       "name": "EVOLUTION SPORTIVE ET CULTURELLE XV",
@@ -3041,11 +3056,6 @@
       "name": "FRANCAIS LANGUE D'ACCUEIL",
       "amount": 55200.0,
       "theme": "Social - Solidarité"
-    },
-    {
-      "name": "LYCEE PROFESSIONNEL RENE CASSIN",
-      "amount": 72837.75,
-      "theme": "Éducation"
     },
     {
       "name": "ASSOCIATION CENTRE MANDAPA",
@@ -3223,11 +3233,6 @@
       "theme": "Éducation"
     },
     {
-      "name": "LYCEE PROFESSIONNEL GASTON BACHELAR",
-      "amount": 56302.75,
-      "theme": "Éducation"
-    },
-    {
       "name": "ASSOC OEUVRES DES OTAGES",
       "amount": 179700.73,
       "theme": "International"
@@ -3388,11 +3393,6 @@
       "theme": "Éducation"
     },
     {
-      "name": "LYCEE PROFESSIONNEL PIERRE LESCOT",
-      "amount": 59396.75,
-      "theme": "Éducation"
-    },
-    {
       "name": "ASS ARTISTIQUE CONCERT COLONNE",
       "amount": 110000.0,
       "theme": "Culture"
@@ -3501,6 +3501,11 @@
       "name": "FEDERAT NAL ANC COMB ALGERIE (FNACA)",
       "amount": 30000.0,
       "theme": "International"
+    },
+    {
+      "name": "LYCEE PROFESSIONNEL SUZANNE VALADON",
+      "amount": 61024.75,
+      "theme": "Éducation"
     },
     {
       "name": "BANQUE ALIMENTAIRE PARIS ILE DE FRA",
@@ -3793,11 +3798,6 @@
       "theme": "Éducation"
     },
     {
-      "name": "LYCEE PROFESSIONNEL SUZANNE VALADON",
-      "amount": 61024.75,
-      "theme": "Éducation"
-    },
-    {
       "name": "UA16 ES16",
       "amount": 37500.0,
       "theme": "Administration"
@@ -3836,6 +3836,16 @@
       "name": "FEDERATION NATIONALE SOLIDARITE FEM",
       "amount": 28000.0,
       "theme": "Social - Solidarité"
+    },
+    {
+      "name": "LYCEE PROFESSIONNEL CHARLES DE GAUL",
+      "amount": 61928.75,
+      "theme": "Éducation"
+    },
+    {
+      "name": "LYCEE PROFESSIONNEL CLAUDE ANTHIME",
+      "amount": 35533.75,
+      "theme": "Éducation"
     },
     {
       "name": "COLLEGE JEAN DE LA FONTAINE",
@@ -4383,11 +4393,6 @@
       "theme": "Éducation"
     },
     {
-      "name": "LYCEE PROFESSIONNEL CLAUDE ANTHIME",
-      "amount": 35533.75,
-      "theme": "Éducation"
-    },
-    {
       "name": "KABUBU - L'AMITIE PAR LE SPORT",
       "amount": 30000.0,
       "theme": "Non classifié"
@@ -4436,11 +4441,6 @@
       "name": "DELIDEMO",
       "amount": 28250.0,
       "theme": "Autre"
-    },
-    {
-      "name": "LYCEE PROFESSIONNEL CHARLES DE GAUL",
-      "amount": 61928.75,
-      "theme": "Éducation"
     },
     {
       "name": "MOUVE ENTRAIDE TIERS MONDE COO",
@@ -4788,6 +4788,11 @@
       "theme": "Social - Solidarité"
     },
     {
+      "name": "ATELIERS PLURICULTURELS",
+      "amount": 22700.0,
+      "theme": "Culture"
+    },
+    {
       "name": "PARIS JEAN BOUIN",
       "amount": 93400.0,
       "theme": "Sport"
@@ -4891,11 +4896,6 @@
       "name": "INNOVATION FACTORY",
       "amount": 25000.0,
       "theme": "Économie"
-    },
-    {
-      "name": "ATELIERS PLURICULTURELS",
-      "amount": 22700.0,
-      "theme": "Culture"
     },
     {
       "name": "ACCESSIJEUX",

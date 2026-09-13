@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "mediatheque-francoise-sagan",
   "name": "Médiathèque Françoise-Sagan",
@@ -17,19 +17,21 @@
     "source": "Wikipédia"
   },
   "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
     "extract": "La médiathèque Françoise-Sagan est une bibliothèque municipale de la ville de Paris créée en 2015 sur le site de l'hôpital Saint-Lazare, rue Léon-Schwartzenberg dans le quartier de la Porte-Saint-Denis du 10e arrondissement, à proximité du boulevard de Magenta et de la gare de l’Est.",
     "url": "https://fr.wikipedia.org/wiki/M%C3%A9diath%C3%A8que_Fran%C3%A7oise-Sagan",
     "source": {
       "name": "Wikipédia",
       "url": "https://fr.wikipedia.org/"
-    }
+    },
+    "extract_en": "The Françoise-Sagan media library is a municipal library of the City of Paris created in 2015 on the site of the Saint-Lazare hospital, rue Léon-Schwartzenberg, in the Porte-Saint-Denis quarter of the 10th arrondissement, near boulevard de Magenta and the Gare de l’Est."
   },
   "stats": {
     "n_delibs": 1711,
     "delibs_span": [
-      1995,
-      2026
+      2011,
+      2011
     ],
     "n_bmo_brut": 0,
     "n_bmo_verifies": null,
@@ -38,13 +40,24 @@
     "lecture_mode": "tête du classement Solr (1711 documents au total)",
     "lecture_mode_en": "top of the Solr ranking (1711 documents total)",
     "n_lus": 44,
-    "n_lieu": null
+    "n_lieu": 1
   },
   "subventions_exploitant": null,
   "residents": [],
   "kpi_montant": null,
-  "synthese_fr": null,
-  "moments": [],
+  "synthese_fr": "Au Conseil de Paris, un texte de la séance de mai 2011, référencé 2011 DAC 328 (M. Christophe Girard rapporteur), s'intitule « Sollicitation de l’octroi d’une subvention auprès de la Région Ile-de-France pour la construction de la médiathèque Saint Lazare (10e) ». Cet intitulé n'indique ni le montant de la subvention, ni le vote, ni la suite donnée à la sollicitation. Le nom de Françoise Sagan figure par ailleurs dans des vœux qui ne visent pas d'équipement : en novembre 2005, un vœu déposé par M. Christophe Girard relatif à un hommage à Françoise Sagan et un vœu relatif à l'attribution de son nom à une voie parisienne ; en novembre 2009, un vœu déposé par le groupe U.M.P.P.A. relatif à la dénomination d'une rue ou place « Françoise Sagan » dans le 17e arrondissement.",
+  "moments": [
+    {
+      "id": "97774",
+      "seance": "MAI 2011",
+      "fait": "Texte 2011 DAC 328, M. Christophe Girard rapporteur, intitulé « Sollicitation de l’octroi d’une subvention auprès de la Région Ile-de-France pour la construction de la médiathèque Saint Lazare (10e) ».",
+      "pourquoi": "sollicitation d'une subvention auprès de la Région Ile-de-France pour la construction ; montant et suite non indiqués",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97774",
+      "fait_en": "Text 2011 DAC 328, Mr Christophe Girard rapporteur, titled “Request for the granting of a subsidy from the Île-de-France Region for the construction of the Saint Lazare media library (10th)”.",
+      "pourquoi_en": "request for a subsidy from the Île-de-France Region for the construction; amount and outcome not indicated"
+    }
+  ],
   "montants": [],
   "bmo_extraits": [],
   "bmo_recit": null,
@@ -160,6 +173,7 @@
       "url": "https://fr.wikipedia.org/"
     }
   },
+  "synthese_en": "At the Council of Paris, a text from the May 2011 session, referenced 2011 DAC 328 (Mr Christophe Girard, rapporteur), is titled “Request for the granting of a subsidy from the Île-de-France Region for the construction of the Saint Lazare media library (10th)”. This title indicates neither the amount of the subsidy, nor the vote, nor the outcome of the request. Françoise Sagan’s name also appears in motions (vœux) that do not concern any facility: in November 2005, a motion tabled by Mr Christophe Girard concerning a tribute to Françoise Sagan and a motion concerning the naming of a Paris street after her; in November 2009, a motion tabled by the U.M.P.P.A. group concerning the naming of a “Françoise Sagan” street or square in the 17th arrondissement.",
   "license": {
     "id": "ODbL-1.0",
     "url": "https://opendatacommons.org/licenses/odbl/1-0/",

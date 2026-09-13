@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "piscine-des-amiraux",
   "name": "Piscine des Amiraux",
@@ -17,6 +17,7 @@
     "source": "Wikipédia"
   },
   "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
     "extract": "L'immeuble et la piscine des Amiraux sont un immeuble d'habitation abritant une piscine publique, construits par Henri Sauvage entre 1922 et 1927 dans le 18e arrondissement de Paris, rues des Amiraux et Hermann-Lachapelle. Ils constituent un élément de la recherche architecturale pour construire des habitations à bon marché mais « hygiéniques ».",
     "url": "https://fr.wikipedia.org/wiki/Immeuble_et_piscine_des_Amiraux",
@@ -24,7 +25,7 @@
       "name": "Wikipédia",
       "url": "https://fr.wikipedia.org/"
     },
-    "extract_en": "The Amiraux building and swimming pool are a residential building housing a public swimming pool, built by Henri Sauvage between 1922 and 1927 in the 18th arrondissement of Paris, on Rue des Amiraux and Rue Hermann-Lachapelle. They form part of the architectural research aimed at building affordable but 'hygienic' housing."
+    "extract_en": "The Amiraux building and swimming pool are a residential building housing a public swimming pool, built by Henri Sauvage between 1922 and 1927 in the 18th arrondissement of Paris, on Rue des Amiraux and Rue Hermann-Lachapelle. They are part of the architectural research into building low-cost housing (habitations à bon marché) that was nonetheless “hygienic”."
   },
   "stats": {
     "n_delibs": 39,
@@ -32,7 +33,7 @@
       1997,
       2021
     ],
-    "n_bmo_brut": 740,
+    "n_bmo_brut": 759,
     "n_bmo_verifies": 8,
     "invest_total_eur": 0,
     "invest_annees": [],
@@ -53,8 +54,8 @@
       "pourquoi": "mobilisation d'usagers, recul tarifaire obtenu",
       "vedette": true,
       "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16564",
-      "fait_en": "After the pool rate increase voted in September 1997, users demonstrated outside the Amiraux pool and collected more than 2,000 signatures, securing the reinstatement of the quarterly subscription.",
-      "pourquoi_en": "User mobilization wins a rate rollback"
+      "fait_en": "After the increase in swimming pool admission prices voted in September 1997, users demonstrated outside the Amiraux pool and collected more than 2,000 signatures, obtaining the reinstatement of the quarterly pass.",
+      "pourquoi_en": "user mobilization, price rollback obtained"
     },
     {
       "id": "107210",
@@ -63,8 +64,8 @@
       "pourquoi": "lancement de la restauration patrimoniale",
       "vedette": true,
       "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=107210",
-      "fait_en": "The Council approved the principle of restoration and code-compliance works for the pool, with a project management contract and authorizations concerning buildings listed as historic monuments.",
-      "pourquoi_en": "The heritage restoration is launched"
+      "fait_en": "The Council approved in principle the restoration works on the pool and its upgrade to current standards, with a project-management contract and authorizations concerning buildings listed as historic monuments.",
+      "pourquoi_en": "launch of the heritage restoration"
     },
     {
       "id": "118679",
@@ -73,8 +74,8 @@
       "pourquoi": "passage à la phase travaux",
       "vedette": false,
       "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=118679",
-      "fait_en": "The Council approved the terms for awarding the works contracts for restructuring and bringing the pool up to code.",
-      "pourquoi_en": "Moving into the works phase"
+      "fait_en": "The Council approved the procurement procedures for the works contracts to restructure the pool and bring it up to current standards.",
+      "pourquoi_en": "move to the works phase"
     },
     {
       "id": "143081",
@@ -83,8 +84,8 @@
       "pourquoi": "seul montant chiffré pour la piscine",
       "vedette": true,
       "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=143081",
-      "fait_en": "The executive put the Amiraux pool's share of the 2018 renovation operations at €3.2 million.",
-      "pourquoi_en": "The only figure given for the pool"
+      "fait_en": "The executive put the Amiraux pool's share of the 2018 fiscal year's renovation operations at €3.2 million.",
+      "pourquoi_en": "only figure given for the pool"
     },
     {
       "id": "148298",
@@ -93,8 +94,8 @@
       "pourquoi": "rénovation achevée, constatée en séance",
       "vedette": true,
       "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=148298",
-      "fait_en": "The Amiraux pool was described as having undergone a complete renovation under the Nager à Paris plan.",
-      "pourquoi_en": "Renovation completed, noted in session"
+      "fait_en": "The Amiraux pool is described as having undergone a complete renovation under the Nager à Paris plan.",
+      "pourquoi_en": "renovation completed, noted in session"
     },
     {
       "id": "164005",
@@ -103,8 +104,8 @@
       "pourquoi": "reconnaissance patrimoniale de la restauration",
       "vedette": true,
       "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164005",
-      "fait_en": "The pool was cited as an example of a restoration carried out identically, reconciling ecology and heritage.",
-      "pourquoi_en": "Heritage recognition for the restoration"
+      "fait_en": "The pool is cited as an example of a like-for-like restoration, reconciling ecology and heritage.",
+      "pourquoi_en": "heritage recognition of the restoration"
     }
   ],
   "montants": [
@@ -118,31 +119,31 @@
   ],
   "bmo_extraits": [
     {
-      "date": "1965-01-07",
-      "extrait": "Piscine des Amiraux : Vitrerie. — MM. Thomas et Harrisson. — Prix forfaitaire, 24.400 francs",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6435422h/f7.item",
-      "extrait_en": "Amiraux pool: Glazing. — Messrs Thomas and Harrisson. — Lump-sum price, 24,400 francs"
+      "date": "1927-12-17",
+      "extrait": "Sur le second crédit de 10 millions ont été imputées les dépenses pour la construction de la piscine des- Amiraux , des bains douches avenue Mathurin-Moreau. et rue Saint-Merri, pour un total de 7.383.726 fr … La",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64354213/f16.item",
+      "extrait_en": "Charged to the second appropriation of 10 million were the expenses for the construction of the Amiraux pool, the public baths on Avenue Mathurin-Moreau and Rue Saint-Merri, for a total of 7,383,726 fr(...)"
     },
     {
-      "date": "1969-02-19",
+      "date": "1927-12-18",
+      "extrait": "Piscine des Amiraux : Vitrerie. — MM. Thomas et Harrisson. — Prix forfaitaire, 24.400 francs",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6435422h/f7.item",
+      "extrait_en": "Amiraux pool: Glazing. — Messrs Thomas and Harrisson. — Fixed price, 24,400 francs"
+    },
+    {
+      "date": "1927-12-29",
+      "extrait": "Piscine rue des Amiraux : Canalisations. — MM. Botte père et fils. — Prix forfaitaire, 58.000 francs. ---' SERVICE MÉTÉOROLOGIQUE … ",
+      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6435431g/f8.item",
+      "extrait_en": "Pool, Rue des Amiraux: Piping. — Messrs Botte père et fils. — Fixed price, 58,000 francs. — METEOROLOGICAL SERVICE(...)"
+    },
+    {
+      "date": "1972-06-16",
       "extrait": "Michel Salles, Claude Estier et Pierre Seince. — Question orale sans débat à M. le Préfet de Paris sur les conditions de fonctionnement de la piscine des Amiraux",
       "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3213241w/f2.item",
       "extrait_en": "Michel Salles, Claude Estier and Pierre Seince. — Oral question without debate to the Prefect of Paris on the operating conditions of the Amiraux pool"
-    },
-    {
-      "date": "1973-07-01",
-      "extrait": "Piscine rue des Amiraux : Canalisations. — MM. Botte père et fils. — Prix forfaitaire, 58.000 francs. ---' SERVICE MÉTÉOROLOGIQUE … ",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6435431g/f8.item",
-      "extrait_en": "Amiraux street pool: Piping. — Messrs Botte père et fils. — Lump-sum price, 58,000 francs. ---' METEOROLOGICAL SERVICE … "
-    },
-    {
-      "date": "1976-06-12",
-      "extrait": "Sur le second crédit de 10 millions ont été imputées les dépenses pour la construction de la piscine des- Amiraux , des bains douches avenue Mathurin-Moreau. et rue Saint-Merri, pour un total de 7.383.726 fr … La",
-      "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64354213/f16.item",
-      "extrait_en": "Against the second credit of 10 million were charged the expenses for the construction of the Amiraux pool, the bath-houses on Avenue Mathurin-Moreau and Rue Saint-Merri, for a total of 7,383,726 francs … The"
     }
   ],
-  "bmo_recit": "Le Bulletin municipal ne garde trace de la piscine des Amiraux que sur une douzaine d'années, de 1965 à 1976, et surtout à travers des décisions d'entretien. En janvier 1965, un marché de vitrerie est attribué à MM. Thomas et Harrisson au prix forfaitaire de 24.400 francs ; en juillet 1973, un marché de canalisations revient à MM. Botte père et fils pour 58.000 francs. Entre les deux, en février 1969, Michel Salles, Claude Estier et Pierre Seince adressent au Préfet de Paris une question orale sans débat sur les conditions de fonctionnement de la piscine, dont le Bulletin ne retient que l'intitulé. En juin 1976, l'équipement réapparaît dans un compte de crédits : sur un second crédit de 10 millions ont été imputées les dépenses de construction de la piscine des Amiraux ainsi que de bains-douches avenue Mathurin-Moreau et rue Saint-Merri, pour un total de 7.383.726 francs.",
+  "bmo_recit": "Le Bulletin municipal mentionne la piscine des Amiraux à deux moments. En décembre 1927, il indique que les dépenses de sa construction ont été imputées sur un second crédit de 10 millions, avec celles des bains-douches de l'avenue Mathurin-Moreau et de la rue Saint-Merri, pour un total de 7.383.726 francs pour l'ensemble. Le même mois, il publie deux marchés à prix forfaitaire pour la piscine : la vitrerie, au nom de MM. Thomas et Harrisson, pour 24.400 francs, et les canalisations, au nom de MM. Botte père et fils, pour 58.000 francs. La piscine reparaît en 1972, dans une question orale sans débat de Michel Salles, Claude Estier et Pierre Seince adressée au Préfet de Paris sur ses conditions de fonctionnement.",
   "delibs_par_annee": null,
   "invest": [],
   "marches": [
@@ -265,8 +266,8 @@
       "url": "https://fr.wikipedia.org/"
     }
   },
-  "synthese_en": "From 1995 to 2003, the Amiraux pool appears only in the inventories of facilities entrusted to the 18th arrondissement council (along with the Amiraux bath-house at 6 Rue Hermann-Lachapelle), while most other mentions of 'Amiraux' refer to the street (schools, the 'Amiraux-Boinod' garden) or to the city's policy district of the same name, 'Amiraux-Simplon'. As early as 1997, the facility was a site of mobilization: users demonstrated outside the pool against a rate increase and collected more than 2,000 signatures, securing the reinstatement of the quarterly subscription. Starting in 2012, Conseil de Paris undertook the restoration and code compliance of the pool — the principle and the project management contract in July 2012, with authorizations concerning buildings listed as historic monuments, a grant application to the CNDS (National Centre for the Development of Sport) in September 2012, works contracts in February 2014, grant applications to the Region in 2015 including the 'protected architectural heritage' scheme — as part of the 'Nager à Paris' plan. In 2017-2019, the executive cited it among the renovated pools delivered, put its share of the 2018 renovation operations at €3.2 million, and referred to a 'complete renovation'. In 2021, its 'identical' restoration was presented as an example of reconciling ecology and heritage; in 2011, the City had also named the green space at 5 Rue des Amiraux the 'Jardin Henri Sauvage'.",
-  "bmo_recit_en": "The Bulletin municipal only records the Amiraux pool over about a dozen years, from 1965 to 1976, mostly through maintenance decisions. In January 1965, a glazing contract was awarded to Messrs Thomas and Harrisson at a lump-sum price of 24,400 francs; in July 1973, a piping contract went to Messrs Botte père et fils for 58,000 francs. In between, in February 1969, Michel Salles, Claude Estier and Pierre Seince addressed an oral question without debate to the Prefect of Paris on the pool's operating conditions, of which the Bulletin records only the title. In June 1976, the facility reappears in a credit account: against a second credit of 10 million were charged the construction expenses for the Amiraux pool as well as bath-houses on Avenue Mathurin-Moreau and Rue Saint-Merri, for a total of 7,383,726 francs.",
+  "synthese_en": "From 1995 to 2003, the Amiraux swimming pool appears only in the inventories of facilities entrusted to the 18th arrondissement council (together with the Amiraux public baths at 6 Rue Hermann-Lachapelle), while most other “Amiraux” mentions refer to the street (schools, the “Amiraux-Boinod” garden) or to the urban-policy priority neighborhood of the same name, “Amiraux-Simplon”. As early as 1997, the facility was a site of mobilization: users demonstrated outside the pool against the increase in admission prices and collected more than 2,000 signatures, obtaining the reinstatement of the quarterly pass. From 2012, the Conseil de Paris undertook the restoration of the pool and its upgrade to current standards — approval in principle and the project-management contract in July 2012, with authorizations concerning buildings listed as historic monuments; a grant application to the CNDS (National Centre for the Development of Sport) in September 2012; works contracts in February 2014; grant applications to the Region in 2015, including under the “protected architectural heritage” scheme — as part of the “Nager à Paris” (Swimming in Paris) plan. In 2017-2019, the executive cited it among the renovated pools that had been delivered, put its share of the 2018 renovation operations at €3.2 million and referred to a “complete renovation”. In 2021, its like-for-like (“à l'identique”) restoration was presented as an example of reconciling ecology and heritage; separately, in 2011, the City had named the green space at 5 Rue des Amiraux “Jardin Henri Sauvage”.",
+  "bmo_recit_en": "The Bulletin municipal mentions the Amiraux swimming pool at two points in time. In December 1927, it states that the expenses for its construction were charged to a second appropriation of 10 million, together with those for the public baths on Avenue Mathurin-Moreau and Rue Saint-Merri, for a total of 7,383,726 francs for the whole. The same month, it publishes two fixed-price contracts for the pool: glazing, in the name of Messrs Thomas and Harrisson, for 24,400 francs, and piping, in the name of Messrs Botte père et fils, for 58,000 francs. The pool reappears in 1972, in an oral question without debate from Michel Salles, Claude Estier and Pierre Seince addressed to the Prefect of Paris on its operating conditions.",
   "license": {
     "id": "ODbL-1.0",
     "url": "https://opendatacommons.org/licenses/odbl/1-0/",

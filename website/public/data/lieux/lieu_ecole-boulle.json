@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "ecole-boulle",
   "name": "École Boulle",
@@ -17,22 +17,24 @@
     "source": "Wikimedia Commons"
   },
   "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
-    "extract": null,
-    "url": null,
+    "extract": "L'École Boulle est un établissement public d'enseignement de la Mairie de Paris, qui est à la fois une école supérieure des arts appliqués et un lycée des métiers d'art, de l'architecture intérieure et du design. Elle est située au 9-21, rue Pierre-Bourdan dans le 12e arrondissement de Paris (France). Elle est nommée ainsi par référence à l'ébéniste André-Charles Boulle.",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89cole_Boulle",
     "source": {
       "name": "Wikipédia",
       "url": "https://fr.wikipedia.org/"
-    }
+    },
+    "extract_en": "The École Boulle is a public educational institution of the City of Paris, which is both a higher school of applied arts and a vocational high school for art crafts, interior architecture and design. It is located at 9-21 rue Pierre-Bourdan in the 12th arrondissement of Paris (France). It is named after the cabinetmaker André-Charles Boulle."
   },
   "stats": {
     "n_delibs": 1292,
     "delibs_span": [
-      1995,
-      2026
+      1996,
+      2017
     ],
-    "n_bmo_brut": 0,
-    "n_bmo_verifies": null,
+    "n_bmo_brut": 2000,
+    "n_bmo_verifies": 12,
     "invest_total_eur": 29763.0,
     "invest_annees": [
       "2021"
@@ -40,11 +42,11 @@
     "lecture_mode": "titre nommant le lieu (42 trouvés)",
     "lecture_mode_en": "title naming the place (42 found)",
     "n_lus": 40,
-    "n_lieu": null
+    "n_lieu": 40
   },
   "subventions_exploitant": {
     "nom_fiche": "LYCEE DES METIERS BOULLE E.S.A.A.",
-    "total_eur": 24335903.0,
+    "total_eur": 25997384.0,
     "annees": [
       "2010",
       "2024"
@@ -111,6 +113,12 @@
         "thematique": "Éducation"
       },
       {
+        "annee": "2015",
+        "montant_eur": 1661481.0,
+        "beneficiaire": "LYCEE DES METIERS BOULLE E.S.A.A.",
+        "thematique": "Éducation"
+      },
+      {
         "annee": "2014",
         "montant_eur": 1452680.0,
         "beneficiaire": "LYCEE DES METIERS BOULLE E.S.A.A.",
@@ -144,9 +152,175 @@
   },
   "residents": [],
   "kpi_montant": null,
-  "synthese_fr": null,
-  "moments": [],
-  "montants": [],
+  "synthese_fr": "En avril 1997, une question du groupe socialiste affirme que les plans d'une vaste restructuration de l'école Boulle sont prêts mais que rien n'a été entrepris ; en mars 1999, Mme Michèle BLUMENTHAL invoque en séance l'avis défavorable de la Commission de sécurité du 12 mars, avis qui, selon l'adjoint M. Jean de GAULLE, valait si les prescriptions n'étaient pas rapidement suivies d'effets et a été suivi d'un avis favorable le 2 avril. De 1998 à 2000, le Conseil approuve le principe de plusieurs travaux (menuiseries extérieures, anciens ateliers maquette, sol de la cour basse) et les documents de consultation d'un marché de mise aux normes des machines outils, tandis qu'en mars 2000 l'adjoint M. Vincent REINA attribue la baisse contestée de la subvention de fonctionnement à la décision du Conseil de diminuer de 2 % l'ensemble des subventions du budget 2000. Pour l'extension, la Ville a préempté le 19 mai 1999 les biens des 19-21, rue Pierre-Bourdan selon M. Vincent REINA, et en avril 2002 le Conseil autorise le Maire à attribuer à la société Parosud une indemnité transactionnelle de 121.959 euros, la délibération indiquant que la Ville s'oppose à l'expulsion du collectif d'artistes ayant squatté l'immeuble. Les visas d'une délibération de 2008 mentionnent l'approbation en avril 2005 du principe des travaux de restructuration et d'extension ; en février 2007, le Conseil approuve le principe des travaux de restructuration, d'extension et de mise en sécurité et le marché de maîtrise d'œuvre est attribué, suite à concours, au groupement de Pascal SIRVIN, puis une délibération de juin 2008 porte sur les modalités de passation des marchés de travaux. En mai 2011, le Conseil approuve le principe d'indemniser le syndic de l'immeuble du 1-3, rue Pierre Bourdan pour un préjudice subi lors des travaux de réhabilitation et d'extension, et en janvier 2017 un projet de délibération porte sur la conception d'un mémorial cinéraire au cimetière du Père-Lachaise et une convention de partenariat pédagogique avec l'école.",
+  "moments": [
+    {
+      "id": "19388",
+      "seance": "AVRIL 1997",
+      "fait": "Une question de M. Patrick BLOCHE et du groupe socialiste affirme que les plans d'une vaste restructuration de l'école sont prêts mais que rien n'a encore été entrepris, et demande un calendrier et des moyens financiers.",
+      "pourquoi": "Plans prêts, travaux absents selon le groupe socialiste",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19388",
+      "fait_en": "A question from Mr. Patrick BLOCHE and the Socialist group asserts that the plans for a major restructuring of the school are ready but that nothing has yet been undertaken, and asks for a timetable and financial resources.",
+      "pourquoi_en": "Plans ready, no works, according to the Socialist group"
+    },
+    {
+      "id": "5525",
+      "seance": "MARS 1999",
+      "fait": "Lors de l'examen du projet de délibération sur la transformation des anciens ateliers maquette en salles de classe, Mme Michèle BLUMENTHAL déclare que le conseil d'administration de l'école a voté sa fermeture et invoque l'avis défavorable de la Commission de sécurité du 12 mars 1999.",
+      "pourquoi": "Selon une élue : avis de sécurité défavorable, fermeture votée",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5525",
+      "fait_en": "During the review of the draft deliberation on converting the former model-making workshops into classrooms, Ms. Michèle BLUMENTHAL states that the school's board of directors voted to close it and cites the unfavorable opinion of the Safety Commission of March 12, 1999.",
+      "pourquoi_en": "According to a council member: unfavorable safety opinion, closure voted"
+    },
+    {
+      "id": "16374",
+      "seance": "MARS 2000",
+      "fait": "Deux groupes protestent contre la baisse de la subvention de fonctionnement 2000 ; l'adjoint M. Vincent REINA l'attribue à la décision du Conseil de diminuer de 2 % l'ensemble des subventions et indique que sa reconstitution sera soumise au budget modificatif.",
+      "pourquoi": "Subvention en baisse : deux groupes interpellent le Maire",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16374",
+      "fait_en": "Two groups protest against the cut in the 2000 operating subsidy; deputy mayor Mr. Vincent REINA attributes it to the Council's decision to reduce all subsidies by 2% and states that its restoration will be submitted in the supplementary budget.",
+      "pourquoi_en": "Subsidy cut: two groups question the Mayor"
+    },
+    {
+      "id": "73563",
+      "seance": "AVRIL 2002",
+      "fait": "Le Conseil autorise le Maire à attribuer à la société Parosud une indemnité transactionnelle de 121 959 euros (800 000 F), à la suite d'un accord dans le cadre de l'acquisition de l'immeuble 19-21, rue Pierre-Bourdan en vue de l'extension de l'école ; les considérants indiquent que la Ville souhaite favoriser la création artistique et s'oppose en conséquence à l'expulsion du collectif d'artistes ayant squatté l'immeuble.",
+      "pourquoi": "Indemnité à Parosud, la Ville s'opposant à l'expulsion des artistes",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73563",
+      "fait_en": "The Council authorizes the Mayor to award the company Parosud a settlement payment of 121,959 euros (800,000 F), following an agreement in connection with the acquisition of the building at 19-21 rue Pierre-Bourdan for the school's extension; the recitals state that the City wishes to support artistic creation and consequently opposes the eviction of the artists' collective that had squatted the building.",
+      "pourquoi_en": "Payment to Parosud, with the City opposing the artists' eviction"
+    },
+    {
+      "id": "14304",
+      "seance": "FEVRIER 2005",
+      "fait": "M. Christophe NAJDOVSKI présente un vœu demandant au Maire d'intervenir auprès du Recteur pour ajourner le transfert du BTS productique bois et ameublement au lycée Bourseul ; Mme Danièle POURTAUD répond que la décision a été prise en concertation entre le Rectorat et la Région.",
+      "pourquoi": "Transfert du BTS bois : un vœu pour l'ajourner",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14304",
+      "fait_en": "Mr. Christophe NAJDOVSKI presents a motion (vœu) asking the Mayor to intervene with the Rector to postpone the transfer of the BTS in wood and furniture production to the Bourseul high school; Ms. Danièle POURTAUD replies that the decision was made jointly by the Rectorate and the Region.",
+      "pourquoi_en": "Transfer of the wood BTS: a motion to postpone it"
+    },
+    {
+      "id": "26630",
+      "seance": "FEVRIER 2007",
+      "fait": "Le Conseil approuve le principe des travaux de restructuration, d'extension et de mise en sécurité de l'école, attribue suite à concours le marché de maîtrise d'œuvre au groupement de Pascal SIRVIN, et autorise le Maire à signer ce marché et à déposer les demandes de permis de démolir et de construire.",
+      "pourquoi": "Maîtrise d'œuvre attribuée suite à un concours",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26630",
+      "fait_en": "The Council approves in principle the restructuring, extension and safety upgrade works for the school, awards the project management contract, following a design competition, to the consortium led by Pascal SIRVIN, and authorizes the Mayor to sign this contract and to file the demolition and building permit applications.",
+      "pourquoi_en": "Project management contract awarded following a competition"
+    },
+    {
+      "id": "97675",
+      "seance": "MAI 2011",
+      "fait": "Le Conseil approuve le principe d'indemniser la société FONCIA FRANCO SUISSE, syndic de l'immeuble du 1-3, rue Pierre Bourdan, pour le préjudice subi lors des travaux de réhabilitation et d'extension de l'école, et autorise le Maire à signer le contrat de transaction.",
+      "pourquoi": "Préjudice du chantier : principe d'indemnisation du syndic",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97675",
+      "fait_en": "The Council approves in principle compensating the company FONCIA FRANCO SUISSE, managing agent of the building at 1-3 rue Pierre Bourdan, for the harm suffered during the rehabilitation and extension works on the school, and authorizes the Mayor to sign the settlement agreement.",
+      "pourquoi_en": "Harm from the works: compensation of the managing agent approved in principle"
+    },
+    {
+      "id": "134743",
+      "seance": "JANVIER 2017",
+      "fait": "Un projet de délibération porte sur l'étude et la conception d'un mémorial cinéraire au cimetière du Père-Lachaise et une convention de partenariat pédagogique avec l'école Boulle ; selon l'adjointe Mme Pénélope KOMITÈS, il doit permettre de créer avec l'école un espace de mémoire pour les familles.",
+      "pourquoi": "Partenariat pédagogique pour un mémorial au Père-Lachaise",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134743",
+      "fait_en": "A draft deliberation concerns the study and design of a cinerary memorial at Père-Lachaise cemetery and an educational partnership agreement with the École Boulle; according to deputy mayor Ms. Pénélope KOMITÈS, it is intended to create, with the school, a space of remembrance for families.",
+      "pourquoi_en": "Educational partnership for a memorial at Père-Lachaise"
+    }
+  ],
+  "montants": [
+    {
+      "seance": "SEPTEMBRE 2010",
+      "montant": "1,90 euros par repas",
+      "objet": "Contribution de la Ville de Paris au service de restauration de l'école Boulle, pour 2010 et 2011",
+      "citation": "La contribution au service de restauration de l?école Boulle est fixée à 1,90 euros par repas.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39724"
+    },
+    {
+      "seance": "DECEMBRE 2004",
+      "montant": "600.000 euros",
+      "objet": "Subvention de fonctionnement 2005 attribuée au lycée professionnel des métiers de l'ameublement pour le fonctionnement de l'école supérieure municipale des arts appliqués Boulle",
+      "citation": "Une subvention de 600.000 euros est attribuée au lycée professionnel des métiers de l?ameublement, sis 9, rue Pierre-Bourdan (12e), pour le fonctionnement en 2005 de l?école supérieure municipale des arts appliqués Boulle",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87889"
+    },
+    {
+      "seance": "SEPTEMBRE 2002",
+      "montant": "50.000 euros",
+      "objet": "Subvention complémentaire de fonctionnement à l'École Boulle (montant connu par l'intitulé de la délibération)",
+      "citation": "Attribution d'une subvention complémentaire de fonctionnement de 50.000 euros à l'Ecole BOULLE (12e).",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29405"
+    },
+    {
+      "seance": "OCTOBRE 1996",
+      "montant": "5.000 F",
+      "objet": "Subvention au Foyer socio-éducatif de l'école Boulle pour la 12e édition du « Raid aéronautique des grandes écoles » (budget de fonctionnement 1996)",
+      "citation": "Une subvention de 5.000 F est attribuée au Foyer socio-éducatif de l'école Boulle, 57, rue de Reuilly (12e), pour la 12e édition du \"Raid aéronautique des grandes écoles\".",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55250"
+    },
+    {
+      "seance": "MARS 1999",
+      "montant": "143 millions de francs TTC",
+      "objet": "Estimation du programme général de rénovation et d'extension, réalisable en 7 ans, selon la réponse de l'adjoint M. Jean de GAULLE (estimation, pas un montant voté)",
+      "citation": "Sur un programme général de rénovation et d'extension estimé actuellement à 143 millions de francs TTC, réalisable en 7 ans",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5546"
+    },
+    {
+      "seance": "MARS 1999",
+      "montant": "75 millions de francs",
+      "objet": "Part des dépenses irréductibles de maintenance et de conformité dans ce programme, selon la même réponse (estimation, pas un montant voté)",
+      "citation": "le montant des dépenses irréductibles de maintenance et de conformité s'élève à 75 millions de francs",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5546"
+    },
+    {
+      "seance": "MAI 2000",
+      "montant": "20,8 millions de francs H.T.",
+      "objet": "Prix global de la déclaration d'intention d'aliéner déposée le 21 avril 1999 par la société Parosud pour les biens rue Pierre-Bourdan, selon la réponse de l'adjoint M. Vincent REINA",
+      "citation": "Suite à la déclaration d'intention d'aliéner du 21 avril 1999 déposée par la société \"Parosud\", au prix global de 20,8 millions de francs H.T.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18698"
+    },
+    {
+      "seance": "MAI 2000",
+      "montant": "15,75 millions de francs H.T.",
+      "objet": "Prix de la préemption exercée par la Ville le 19 mai 1999, que la société Parosud n'a pas accepté, selon la même réponse",
+      "citation": "la Ville de Paris a préempté, le 19 mai 1999 au prix de 15,75 millions de francs H.T., en valeur libre, correspondant à l'estimation des Services fonciers",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18698"
+    },
+    {
+      "seance": "MAI 2000",
+      "montant": "17,5 millions de francs H.T.",
+      "objet": "Valeur des biens fixée par le Tribunal de grande instance le 21 janvier 2000, jugement dont Parosud a fait appel, selon la même réponse",
+      "citation": "le Tribunal de grande instance a fixé, le 21 janvier 2000, la valeur de ces biens à 17,5 millions de francs H.T.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18698"
+    },
+    {
+      "seance": "JUIN 1999",
+      "montant": "300.000 F",
+      "objet": "Crédit d'étude inscrit à la D.M.1 soumise au vote du Conseil de juillet 1999, selon la réponse de l'adjoint M. Jean de GAULLE (inscription annoncée avant le vote)",
+      "citation": "un crédit d'étude de 300.000 F a été inscrit à la D.M.1 qui sera soumise au vote du Conseil de Paris de juillet",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20128"
+    },
+    {
+      "seance": "AVRIL 2002",
+      "montant": "121.959 euros (800.000 F)",
+      "objet": "Indemnité transactionnelle que le Maire est autorisé à attribuer à la société Parosud, dans le cadre de l'acquisition par fixation judiciaire de l'immeuble 19-21, rue Pierre-Bourdan et d'un lot de copropriété, en vue de l'extension de l'école Boulle",
+      "citation": "Son montant est fixé à 121.959 euros (800.000 F).",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73563"
+    },
+    {
+      "seance": "MARS 1999",
+      "montant": "150 millions de francs",
+      "objet": "Chiffre avancé en 1997 pour la rénovation prévue par le projet de restructuration, selon Mme Michèle BLUMENTHAL en séance (propos, pas un montant voté)",
+      "citation": "Le chiffre de 150 millions de francs était avancé pour cette rénovation. Ce coût pourrait être inférieur, si un immeuble situé rue Pierre-Bourdan était intégré au projet.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5525"
+    }
+  ],
   "bmo_extraits": [],
   "bmo_recit": null,
   "delibs_par_annee": {
@@ -523,7 +697,7 @@
     },
     "bmo": {
       "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22%C3%89cole+Boulle%22%29"
     },
     "invest": {
       "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -534,6 +708,8 @@
       "url": "https://fr.wikipedia.org/"
     }
   },
+  "synthese_en": "In April 1997, a question from the Socialist group asserts that the plans for a major restructuring of the École Boulle are ready but that nothing has been undertaken; in March 1999, Ms. Michèle BLUMENTHAL cites during the session the unfavorable opinion issued by the Safety Commission on March 12, an opinion which, according to deputy mayor Mr. Jean de GAULLE, applied if the requirements were not promptly acted upon, and which was followed by a favorable opinion on April 2. From 1998 to 2000, the Council approves in principle several works (exterior joinery, former model-making workshops, lower courtyard floor) and the tender documents for a contract to bring machine tools up to standard, while in March 2000 deputy mayor Mr. Vincent REINA attributes the disputed cut in the operating subsidy to the Council's decision to reduce all subsidies in the 2000 budget by 2%. For the extension, the City exercised its pre-emption right over the properties at 19-21 rue Pierre-Bourdan on May 19, 1999, according to Mr. Vincent REINA, and in April 2002 the Council authorizes the Mayor to award the company Parosud a settlement payment of 121,959 euros, the deliberation stating that the City opposes the eviction of the artists' collective that had squatted the building. The legal references (visas) of a 2008 deliberation mention the approval in principle, in April 2005, of the restructuring and extension works; in February 2007, the Council approves in principle the restructuring, extension and safety upgrade works, and the project management contract is awarded, following a design competition, to the consortium led by Pascal SIRVIN; a June 2008 deliberation then concerns the procedures for awarding the works contracts. In May 2011, the Council approves in principle compensating the managing agent of the building at 1-3 rue Pierre Bourdan for harm suffered during the rehabilitation and extension works, and in January 2017 a draft deliberation concerns the design of a cinerary memorial at Père-Lachaise cemetery and an educational partnership agreement with the school.",
+  "bmo_recit_en": "The Bulletin municipal of August 11, 1897 mentions the École Boulle, described as a school of vocational education in the arts and furniture industries, at 57 rue de Reuilly. It announces an exhibition of student work open at the school from August 1 to 23, every day from 9 o'clock to 6 o'clock. This is a practical notice, with no Council decision.",
   "license": {
     "id": "ODbL-1.0",
     "url": "https://opendatacommons.org/licenses/odbl/1-0/",

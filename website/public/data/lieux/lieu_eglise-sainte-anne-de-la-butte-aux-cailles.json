@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "eglise-sainte-anne-de-la-butte-aux-cailles",
   "name": "Église Sainte-Anne de la Butte-aux-Cailles",
@@ -17,21 +17,23 @@
     "source": "Wikimedia Commons"
   },
   "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
-    "extract": null,
-    "url": null,
+    "extract": "L’église Sainte-Anne de la Butte-aux-Cailles, ou anciennement Sainte-Anne de la Maison-Blanche, est un édifice religieux catholique situé dans le 13e arrondissement de Paris, dans le quartier de la Butte-aux-Cailles, au croisement des rues de Tolbiac et Bobillot.",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Sainte-Anne_de_la_Butte-aux-Cailles",
     "source": {
       "name": "Wikipédia",
       "url": "https://fr.wikipedia.org/"
-    }
+    },
+    "extract_en": "The Église Sainte-Anne de la Butte-aux-Cailles, formerly Sainte-Anne de la Maison-Blanche, is a Catholic religious building located in the 13th arrondissement of Paris, in the Butte-aux-Cailles neighbourhood, at the intersection of Rue de Tolbiac and Rue Bobillot."
   },
   "stats": {
     "n_delibs": 858,
     "delibs_span": [
-      1995,
-      2026
+      2001,
+      2004
     ],
-    "n_bmo_brut": 0,
+    "n_bmo_brut": 280,
     "n_bmo_verifies": null,
     "invest_total_eur": 8160233.0,
     "invest_annees": [
@@ -41,13 +43,54 @@
     "lecture_mode": "titre nommant le lieu (4 trouvés)",
     "lecture_mode_en": "title naming the place (4 found)",
     "n_lus": 4,
-    "n_lieu": null
+    "n_lieu": 4
   },
   "subventions_exploitant": null,
   "residents": [],
   "kpi_montant": null,
-  "synthese_fr": null,
-  "moments": [],
+  "synthese_fr": "En septembre 2001, le Conseil de Paris approuve le principe et les modalités de la mise en sécurité et de la restructuration du narthex de l'église Sainte-Anne de la Butte-aux-Cailles, et autorise le Maire à signer les marchés correspondants, prévus sur appel d'offres ouverts en trois lots. En mars 2004, il approuve le principe d'une opération d'aménagement des cryptes et autorise le Maire à déposer les permis de démolir et de construire et à signer une convention avec l'Association Diocésaine de Paris portant sur la prise en charge par celle-ci d'une partie du coût. Lors de ce débat, M. Jérôme Coumet présente le projet comme un moyen « d'utiliser des espaces à moindre frais » et « de mobiliser différents acteurs pour redécouvrir la salle polyvalente » ; selon lui, la salle aura également un cadre laïque, au-delà des activités liées à la paroisse. En juin 2004, le Conseil autorise le Maire à signer une convention avec la Région Île-de-France relative à la prise en charge par la Région d'une partie du coût de cette opération.",
+  "moments": [
+    {
+      "id": "84801",
+      "seance": "SEPTEMBRE 2001",
+      "fait": "Le Conseil approuve le principe et les modalités de la mise en sécurité et de la restructuration du narthex, et autorise le Maire à signer les marchés, prévus sur appel d'offres ouverts en trois lots.",
+      "pourquoi": "Narthex : principe de mise en sécurité approuvé, marchés sur appel d'offres",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84801",
+      "fait_en": "The Council approves the principle and terms of the safety upgrade and restructuring of the narthex, and authorizes the Mayor to sign the contracts, to be awarded through open calls for tender in three lots.",
+      "pourquoi_en": "Narthex: principle of safety upgrade approved, contracts through calls for tender"
+    },
+    {
+      "id": "57809",
+      "seance": "MARS 2004",
+      "fait": "Le Conseil approuve le principe de l'aménagement des cryptes et autorise le Maire à déposer les permis de démolir et de construire et à signer une convention avec l'Association Diocésaine de Paris sur la prise en charge par celle-ci d'une partie du coût.",
+      "pourquoi": "Cryptes : principe approuvé, signature d'une convention avec l'Association diocésaine autorisée",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57809",
+      "fait_en": "The Council approves the principle of the crypt refurbishment and authorizes the Mayor to file the demolition and building permit applications and to sign an agreement with the Association Diocésaine de Paris under which the association covers part of the cost.",
+      "pourquoi_en": "Crypts: principle approved, signing of an agreement with the diocesan association authorized"
+    },
+    {
+      "id": "11752",
+      "seance": "MARS 2004",
+      "fait": "En séance, M. Jérôme Coumet présente l'aménagement des cryptes comme un moyen « d'utiliser des espaces à moindre frais » et « de mobiliser différents acteurs pour redécouvrir la salle polyvalente » ; selon lui, la salle aura également un cadre laïque au-delà des activités liées à la paroisse.",
+      "pourquoi": "Selon M. Coumet, une salle polyvalente avec un cadre laïque",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11752",
+      "fait_en": "In session, Mr. Jérôme Coumet presents the crypt refurbishment as a way \"to use spaces at lower cost\" and \"to bring together different actors to rediscover the multipurpose hall\"; according to him, the hall will also have a secular setting beyond the activities linked to the parish.",
+      "pourquoi_en": "According to Mr. Coumet, a multipurpose hall with a secular setting"
+    },
+    {
+      "id": "95004",
+      "seance": "JUIN 2004",
+      "fait": "Le Conseil autorise le Maire à signer une convention avec la Région Île-de-France relative à la prise en charge par la Région d'une partie du coût de l'aménagement des cryptes.",
+      "pourquoi": "Après la convention diocésaine, signature d'une convention avec la Région autorisée",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95004",
+      "fait_en": "The Council authorizes the Mayor to sign an agreement with the Île-de-France Region under which the Region covers part of the cost of the crypt refurbishment.",
+      "pourquoi_en": "After the diocesan agreement, signing of an agreement with the Region authorized"
+    }
+  ],
   "montants": [],
   "bmo_extraits": [],
   "bmo_recit": null,
@@ -141,7 +184,7 @@
     },
     "bmo": {
       "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22%C3%89glise+Sainte-Anne+de+la+Butte-aux-Cailles%22%29"
     },
     "invest": {
       "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -152,6 +195,7 @@
       "url": "https://fr.wikipedia.org/"
     }
   },
+  "synthese_en": "In September 2001, the Conseil de Paris approved the principle and terms of the safety upgrade and restructuring of the narthex of the Église Sainte-Anne de la Butte-aux-Cailles, and authorized the Mayor to sign the corresponding contracts, to be awarded through open calls for tender in three lots. In March 2004, it approved the principle of a crypt refurbishment project and authorized the Mayor to file the demolition and building permit applications and to sign an agreement with the Association Diocésaine de Paris under which the association would cover part of the cost. During that debate, Mr. Jérôme Coumet presented the project as a way \"to use spaces at lower cost\" and \"to bring together different actors to rediscover the multipurpose hall\"; according to him, the hall would also have a secular setting, beyond the activities linked to the parish. In June 2004, the Council authorized the Mayor to sign an agreement with the Île-de-France Region under which the Region would cover part of the cost of this project.",
   "license": {
     "id": "ODbL-1.0",
     "url": "https://opendatacommons.org/licenses/odbl/1-0/",

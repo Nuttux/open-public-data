@@ -1,56 +1,64 @@
 {
   "year": 2015,
-  "generated_at": "2026-09-10T19:40:12.573087",
-  "total_montant": 1149891407.5600002,
+  "generated_at": "2026-09-13T13:14:40.439889",
+  "total_montant": 1149891407.56,
   "nb_thematiques": 16,
   "data": [
     {
       "annee": 2015,
-      "thematique": "Non classifié",
-      "nb_beneficiaires": 1416,
-      "nb_subventions": 1418,
-      "montant_total": 665189713.0200002,
-      "pct_total": 57.85
-    },
-    {
-      "annee": 2015,
-      "thematique": "Économie",
-      "nb_beneficiaires": 319,
-      "nb_subventions": 322,
-      "montant_total": 158680832.55,
-      "pct_total": 13.8
+      "thematique": "Social - Solidarité",
+      "nb_beneficiaires": 213,
+      "nb_subventions": 227,
+      "montant_total": 349360323.08,
+      "pct_total": 30.38
     },
     {
       "annee": 2015,
       "thematique": "Culture",
-      "nb_beneficiaires": 474,
-      "nb_subventions": 479,
-      "montant_total": 90482146.68,
-      "pct_total": 7.87
+      "nb_beneficiaires": 479,
+      "nb_subventions": 488,
+      "montant_total": 161493267.01,
+      "pct_total": 14.04
+    },
+    {
+      "annee": 2015,
+      "thematique": "Économie",
+      "nb_beneficiaires": 259,
+      "nb_subventions": 262,
+      "montant_total": 158680832.54999998,
+      "pct_total": 13.8
+    },
+    {
+      "annee": 2015,
+      "thematique": "Éducation",
+      "nb_beneficiaires": 345,
+      "nb_subventions": 367,
+      "montant_total": 131072643.85000002,
+      "pct_total": 11.4
     },
     {
       "annee": 2015,
       "thematique": "Logement",
-      "nb_beneficiaires": 33,
-      "nb_subventions": 34,
-      "montant_total": 85449582.36,
-      "pct_total": 7.43
+      "nb_beneficiaires": 34,
+      "nb_subventions": 36,
+      "montant_total": 118866563.3,
+      "pct_total": 10.34
+    },
+    {
+      "annee": 2015,
+      "thematique": "Non classifié",
+      "nb_beneficiaires": 752,
+      "nb_subventions": 758,
+      "montant_total": 103197151.71000002,
+      "pct_total": 8.97
     },
     {
       "annee": 2015,
       "thematique": "Transport",
-      "nb_beneficiaires": 5,
-      "nb_subventions": 5,
-      "montant_total": 38247432.849999994,
-      "pct_total": 3.33
-    },
-    {
-      "annee": 2015,
-      "thematique": "Social - Solidarité",
-      "nb_beneficiaires": 213,
-      "nb_subventions": 226,
-      "montant_total": 35572131.38,
-      "pct_total": 3.09
+      "nb_beneficiaires": 6,
+      "nb_subventions": 7,
+      "montant_total": 61320748.64,
+      "pct_total": 5.33
     },
     {
       "annee": 2015,
@@ -62,19 +70,11 @@
     },
     {
       "annee": 2015,
-      "thematique": "Éducation",
-      "nb_beneficiaires": 313,
-      "nb_subventions": 315,
-      "montant_total": 17156016.85,
-      "pct_total": 1.49
-    },
-    {
-      "annee": 2015,
       "thematique": "Administration",
-      "nb_beneficiaires": 45,
-      "nb_subventions": 45,
-      "montant_total": 9712938.0,
-      "pct_total": 0.84
+      "nb_beneficiaires": 52,
+      "nb_subventions": 53,
+      "montant_total": 11902792.0,
+      "pct_total": 1.04
     },
     {
       "annee": 2015,
@@ -86,26 +86,34 @@
     },
     {
       "annee": 2015,
+      "thematique": "Sécurité",
+      "nb_beneficiaires": 4,
+      "nb_subventions": 4,
+      "montant_total": 4339971.55,
+      "pct_total": 0.38
+    },
+    {
+      "annee": 2015,
       "thematique": "International",
-      "nb_beneficiaires": 68,
-      "nb_subventions": 68,
-      "montant_total": 3054541.6,
-      "pct_total": 0.27
+      "nb_beneficiaires": 69,
+      "nb_subventions": 69,
+      "montant_total": 3194541.6,
+      "pct_total": 0.28
     },
     {
       "annee": 2015,
       "thematique": "Santé",
-      "nb_beneficiaires": 26,
-      "nb_subventions": 29,
-      "montant_total": 1756225.12,
-      "pct_total": 0.15
+      "nb_beneficiaires": 27,
+      "nb_subventions": 32,
+      "montant_total": 2019725.12,
+      "pct_total": 0.18
     },
     {
       "annee": 2015,
       "thematique": "Environnement",
-      "nb_beneficiaires": 61,
-      "nb_subventions": 62,
-      "montant_total": 1744903.0,
+      "nb_beneficiaires": 62,
+      "nb_subventions": 63,
+      "montant_total": 1747903.0,
       "pct_total": 0.15
     },
     {
@@ -123,14 +131,6 @@
       "nb_subventions": 11,
       "montant_total": 198782.0,
       "pct_total": 0.02
-    },
-    {
-      "annee": 2015,
-      "thematique": "Sécurité",
-      "nb_beneficiaires": 3,
-      "nb_subventions": 3,
-      "montant_total": 150000.0,
-      "pct_total": 0.01
     }
   ],
   "license": {

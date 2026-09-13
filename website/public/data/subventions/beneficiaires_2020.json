@@ -1,6 +1,6 @@
 {
   "year": 2020,
-  "generated_at": "2026-09-11T16:24:34.776194",
+  "generated_at": "2026-09-13T13:14:29.289558",
   "total_montant": 1343546179.42,
   "nb_beneficiaires": 4231,
   "data": [
@@ -646,7 +646,7 @@
       "source_thematique": "direction",
       "montant_total": 4737400.0,
       "nb_subventions": 1,
-      "objet_principal": "Subvention de fonctionnement (complément de prix) 2020",
+      "objet_principal": "ACOMPTE 2020 DAC",
       "siret": "31390568900078"
     },
     {
@@ -2596,7 +2596,7 @@
       "source_thematique": "direction",
       "montant_total": 427880.0,
       "nb_subventions": 1,
-      "objet_principal": "SUBVENTION DE FONCTIONNEMENT",
+      "objet_principal": "ACOMPTE 2020 DAC",
       "siret": "39864093800021"
     },
     {
@@ -3376,7 +3376,7 @@
       "source_thematique": "pattern",
       "montant_total": 291000.0,
       "nb_subventions": 1,
-      "objet_principal": "Subvention d'aide au fonctionnement 2020",
+      "objet_principal": "ACOMPTE 2020 DAC",
       "siret": "82095968200023"
     },
     {
@@ -4891,7 +4891,7 @@
       "source_thematique": "direction",
       "montant_total": 150000.0,
       "nb_subventions": 1,
-      "objet_principal": "ACOMPTE 2020 DAC",
+      "objet_principal": "Subvention de fonctionnement",
       "siret": "30666486300033"
     },
     {
@@ -6196,7 +6196,7 @@
       "source_thematique": "direction",
       "montant_total": 111500.0,
       "nb_subventions": 1,
-      "objet_principal": "ACOMPTE 2020 DAC",
+      "objet_principal": "DS Fonctionnement 2020",
       "siret": "32341933300030"
     },
     {
@@ -7006,7 +7006,7 @@
       "source_thematique": "direction",
       "montant_total": 100000.0,
       "nb_subventions": 1,
-      "objet_principal": "Plan de relance ESS : UMG subvention de fonctionnement",
+      "objet_principal": "Aide à l'investissement de matériel pour Un Monde Gourmand.",
       "siret": "48752765700042"
     },
     {
@@ -7081,7 +7081,7 @@
       "source_thematique": "default",
       "montant_total": 98500.0,
       "nb_subventions": 1,
-      "objet_principal": "Actions des bénévoles auprès des publics exclus : permanences juridiques, prises en charge",
+      "objet_principal": "fonctionnement du dispositif \"Accès au droit et santé mentale\" (ADSM)",
       "siret": "45101859200027"
     },
     {
@@ -8071,7 +8071,7 @@
       "source_thematique": "direction",
       "montant_total": 83000.0,
       "nb_subventions": 1,
-      "objet_principal": "POLYNOTES, école associative de musique.Fonctionnement et développement de l'activité 2020",
+      "objet_principal": "ACOMPTE 2020 DAC",
       "siret": "39187280100041"
     },
     {
@@ -17071,7 +17071,7 @@
       "source_thematique": "direction",
       "montant_total": 27750.0,
       "nb_subventions": 1,
-      "objet_principal": "Demande d'une subvention au titre de la Jeunesse complément 2020",
+      "objet_principal": "Demande d'une subvention au titre de la Jeunesse- aide au fonctionnement 2020",
       "siret": "42384579100015"
     },
     {
@@ -18571,7 +18571,7 @@
       "source_thematique": "direction",
       "montant_total": 24000.0,
       "nb_subventions": 1,
-      "objet_principal": "RESIDENCE EN COLLEGE : Découvrir, comprendre et s'initier aux arts urbains 2020",
+      "objet_principal": "Jungle Hermite / Commun espace",
       "siret": "51157318000045"
     },
     {
@@ -27481,7 +27481,7 @@
       "source_thematique": "llm",
       "montant_total": 10000.0,
       "nb_subventions": 1,
-      "objet_principal": "Développement des activités et des nouveaux projets de l'association ART'SIGN",
+      "objet_principal": "Développement des activités du service d'accessibilité en LSF de l'association ART'SIGN",
       "siret": "49008480300025"
     },
     {
@@ -27946,7 +27946,7 @@
       "source_thematique": "direction",
       "montant_total": 10000.0,
       "nb_subventions": 1,
-      "objet_principal": "Financement du projet \"Quand l'Art se conjugue\"",
+      "objet_principal": "RESIDENCE EN COLLEGE : Le Flow des Mots - (Dé)connexions x (Dés)informations 2020",
       "siret": "81897796900026"
     },
     {
@@ -28816,7 +28816,7 @@
       "source_thematique": "direction",
       "montant_total": 10000.0,
       "nb_subventions": 1,
-      "objet_principal": "DUO ENTENTE - RESIDENCE DE CREATION ET DIFFUSION EN 2020",
+      "objet_principal": "BENJAMIN SANZ « DIRECTIONS » QUINTET CREATION ET DIFFUSION SUR LE TERRITOIRE PARISIEN EN 2020",
       "siret": "79485417400024"
     },
     {
@@ -32251,7 +32251,7 @@
       "source_thematique": "llm",
       "montant_total": 7000.0,
       "nb_subventions": 1,
-      "objet_principal": "De Mômes et d'opérette : Des grottes de Lascaux aux grafs de lascards.",
+      "objet_principal": "PLACE DU VILLAGE : en route pour la planète",
       "siret": "48909505900015"
     },
     {
@@ -33871,7 +33871,7 @@
       "source_thematique": "direction",
       "montant_total": 6000.0,
       "nb_subventions": 1,
-      "objet_principal": "Projet \"Nos cantines engagées pour le climat\"",
+      "objet_principal": "Campagne L¿Addition, + d¿actions pour la transition !",
       "siret": "49809337600032"
     },
     {
@@ -40501,7 +40501,7 @@
       "source_thematique": "direction",
       "montant_total": 4000.0,
       "nb_subventions": 1,
-      "objet_principal": "Aide exceptionnelle",
+      "objet_principal": "Financement 22e édition Très Court International Film Festival",
       "siret": "81818556300033"
     },
     {
@@ -45976,7 +45976,7 @@
       "source_thematique": "direction",
       "montant_total": 2000.0,
       "nb_subventions": 1,
-      "objet_principal": "Financement d¿ateliers théâtre forum contre les dangers du monde numérique pour adolescent.es",
+      "objet_principal": "Complémt Financemt d¿ateliers théâtre forum contre les dangers du monde numérique pour adolescent.es",
       "siret": "53088219000024"
     },
     {

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "philharmonie-de-paris",
   "name": "Philharmonie de Paris",
@@ -17,6 +17,7 @@
     "source": "Wikipédia"
   },
   "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
     "extract": "La Philharmonie de Paris, inaugurée le 14 janvier 2015, est un centre culturel français composé d'une salle de concert de 2 400 places, dite « Pierre Boulez », d'espaces d'exposition, d'ateliers pédagogiques et de salles de répétitions.",
     "url": "https://fr.wikipedia.org/wiki/Philharmonie_de_Paris",
@@ -32,7 +33,7 @@
       2006,
       2025
     ],
-    "n_bmo_brut": 46,
+    "n_bmo_brut": 50,
     "n_bmo_verifies": 12,
     "invest_total_eur": 0,
     "invest_annees": [],
@@ -43,7 +44,7 @@
   },
   "subventions_exploitant": {
     "nom_fiche": "LA CITE DE LA MUSIQUE",
-    "total_eur": 127421585.47,
+    "total_eur": 127430945.47,
     "annees": [
       "2013",
       "2024"
@@ -105,7 +106,7 @@
       },
       {
         "annee": "2015",
-        "montant_eur": 5000.0,
+        "montant_eur": 14360.0,
         "beneficiaire": "LA CITE DE LA MUSIQUE",
         "thematique": "Culture"
       },

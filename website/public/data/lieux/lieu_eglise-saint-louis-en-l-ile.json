@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "eglise-saint-louis-en-l-ile",
   "name": "Église Saint-Louis-en-l'Île",
@@ -17,22 +17,24 @@
     "source": "Wikipédia"
   },
   "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
     "extract": "L’église Saint-Louis-en-l’Île est située sur l’île Saint-Louis à l'angle de la rue Saint-Louis-en-l’Île et de la rue Poulletier. Cet édifice a été construit en plusieurs étapes de 1624 à 1726. Son saint patron est Saint Louis, roi de France.",
     "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Saint-Louis-en-l'%C3%8Ele",
     "source": {
       "name": "Wikipédia",
       "url": "https://fr.wikipedia.org/"
-    }
+    },
+    "extract_en": "The Église Saint-Louis-en-l'Île is located on the Île Saint-Louis at the corner of rue Saint-Louis-en-l'Île and rue Poulletier. The building was constructed in several stages from 1624 to 1726. Its patron saint is Saint Louis, King of France."
   },
   "stats": {
     "n_delibs": 595,
     "delibs_span": [
-      1995,
-      2026
+      1997,
+      2003
     ],
-    "n_bmo_brut": 0,
-    "n_bmo_verifies": null,
+    "n_bmo_brut": 2000,
+    "n_bmo_verifies": 2,
     "invest_total_eur": 3609971.32,
     "invest_annees": [
       "2021",
@@ -43,13 +45,54 @@
     "lecture_mode": "titre nommant le lieu (4 trouvés)",
     "lecture_mode_en": "title naming the place (4 found)",
     "n_lus": 4,
-    "n_lieu": null
+    "n_lieu": 4
   },
   "subventions_exploitant": null,
   "residents": [],
   "kpi_montant": null,
-  "synthese_fr": null,
-  "moments": [],
+  "synthese_fr": "En juin 1997, le Conseil de Paris approuve le principe de travaux de construction d'un nouvel orgue de tribune à l'église Saint-Louis-en-l'Île et autorise le Maire à signer le marché correspondant. En juin 1999, il approuve de la même manière le principe de la restauration des couvertures de la chapelle Sainte-Claire de l'église, avec autorisation de signer le marché de travaux. En septembre 2001, il autorise le Maire à lancer un appel d'offres ouvert en vue de travaux de mise en sécurité des façades sur rue. En avril 2003, il l'autorise à signer avec l'État (ministère de la Culture) une convention de versement de fonds de concours en vue de la restauration des couvertures de l'église (tranche ferme). Ces intitulés approuvent des principes et autorisent des signatures ou le lancement d'un appel d'offres : ils n'établissent ni la signature des marchés ou de la convention, ni l'exécution des travaux.",
+  "moments": [
+    {
+      "id": "40142",
+      "seance": "JUIN 1997",
+      "fait": "Le Conseil de Paris approuve le principe de travaux de construction d'un nouvel orgue de tribune et autorise le Maire à signer le marché de travaux.",
+      "pourquoi": "Nouvel orgue de tribune : principe approuvé, marché autorisé",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40142",
+      "fait_en": "The Council of Paris approves the principle of construction works for a new gallery organ and authorizes the Mayor to sign the works contract.",
+      "pourquoi_en": "New gallery organ: principle approved, contract authorized"
+    },
+    {
+      "id": "75818",
+      "seance": "JUIN 1999",
+      "fait": "Le Conseil de Paris approuve le principe de la restauration des couvertures de la chapelle Sainte-Claire et autorise le Maire à signer le marché de travaux.",
+      "pourquoi": "Couvertures de la chapelle Sainte-Claire : principe approuvé",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75818",
+      "fait_en": "The Council of Paris approves the principle of restoring the roofs of the Sainte-Claire chapel and authorizes the Mayor to sign the works contract.",
+      "pourquoi_en": "Roofs of the Sainte-Claire chapel: principle approved"
+    },
+    {
+      "id": "84370",
+      "seance": "SEPTEMBRE 2001",
+      "fait": "Le Conseil de Paris autorise le Maire à lancer un appel d'offres ouvert en vue de travaux de mise en sécurité des façades sur rue.",
+      "pourquoi": "Façades sur rue : appel d'offres autorisé",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84370",
+      "fait_en": "The Council of Paris authorizes the Mayor to launch an open call for tenders for works to make the street-facing façades safe.",
+      "pourquoi_en": "Street-facing façades: call for tenders authorized"
+    },
+    {
+      "id": "89661",
+      "seance": "AVRIL 2003",
+      "fait": "Le Conseil de Paris autorise le Maire à signer avec l'État (ministère de la Culture) une convention de versement de fonds de concours pour la restauration des couvertures (tranche ferme).",
+      "pourquoi": "Convention avec l'État : signature autorisée",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89661",
+      "fait_en": "The Council of Paris authorizes the Mayor to sign with the State (Ministry of Culture) an agreement for the payment of a financial contribution (fonds de concours) for the restoration of the roofs (firm phase).",
+      "pourquoi_en": "Agreement with the State: signature authorized"
+    }
+  ],
   "montants": [],
   "bmo_extraits": [],
   "bmo_recit": null,
@@ -216,7 +259,7 @@
     },
     "bmo": {
       "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22%C3%89glise+Saint-Louis-en-l%27%C3%8Ele%22%29"
     },
     "invest": {
       "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -227,6 +270,8 @@
       "url": "https://fr.wikipedia.org/"
     }
   },
+  "synthese_en": "In June 1997, the Council of Paris approves the principle of construction works for a new gallery organ at the Église Saint-Louis-en-l'Île and authorizes the Mayor to sign the corresponding contract. In June 1999, it likewise approves the principle of restoring the roofs of the church's Sainte-Claire chapel, with authorization to sign the works contract. In September 2001, it authorizes the Mayor to launch an open call for tenders for works to make the street-facing façades safe. In April 2003, it authorizes the Mayor to sign with the State (Ministry of Culture) an agreement for the payment of a financial contribution (fonds de concours) towards the restoration of the church's roofs (firm phase). These titles approve principles and authorize signatures or the launch of a call for tenders: they establish neither that the contracts or the agreement were signed, nor that the works were carried out.",
+  "bmo_recit_en": "In 1925, the Église Saint-Louis-en-l'Île appears in the Bulletin municipal within a list of works concerning several churches, alongside Saint-Germain-de-Charonne: for this church, an overhaul of the tile roof and the repair of chimney stacks, costed at 3,000 francs. The archive shows only this single episode, a roof maintenance job among other works of the same kind.",
   "license": {
     "id": "ODbL-1.0",
     "url": "https://opendatacommons.org/licenses/odbl/1-0/",

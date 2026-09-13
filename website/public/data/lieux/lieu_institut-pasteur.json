@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "institut-pasteur",
   "name": "Institut Pasteur",
@@ -17,28 +17,30 @@
     "source": "Wikipédia"
   },
   "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
     "extract": "L'institut Pasteur est une fondation française privée à but non lucratif, sise à Paris, qui se consacre à l'étude de la biologie, des micro-organismes, des maladies et des vaccins.",
     "url": "https://fr.wikipedia.org/wiki/Institut_Pasteur",
     "source": {
       "name": "Wikipédia",
       "url": "https://fr.wikipedia.org/"
-    }
+    },
+    "extract_en": "The Institut Pasteur is a private, non-profit French foundation based in Paris, dedicated to the study of biology, micro-organisms, diseases and vaccines."
   },
   "stats": {
     "n_delibs": 1051,
     "delibs_span": [
-      1995,
-      2026
+      1998,
+      2011
     ],
-    "n_bmo_brut": 0,
-    "n_bmo_verifies": null,
+    "n_bmo_brut": 2000,
+    "n_bmo_verifies": 12,
     "invest_total_eur": 0,
     "invest_annees": [],
     "lecture_mode": "titre nommant le lieu (26 trouvés)",
     "lecture_mode_en": "title naming the place (26 found)",
     "n_lus": 26,
-    "n_lieu": null
+    "n_lieu": 26
   },
   "subventions_exploitant": {
     "nom_fiche": "INSTITUT PASTEUR",
@@ -142,9 +144,371 @@
   },
   "residents": [],
   "kpi_montant": null,
-  "synthese_fr": null,
-  "moments": [],
-  "montants": [],
+  "synthese_fr": "En octobre 1998, le Conseil de Paris autorise le Maire à indemniser à l'amiable l'Institut Pasteur, à hauteur de 130 779,65 F, pour un dégât des eaux dont la délibération attribue la responsabilité à la Ville. De 2003 à 2011, le Conseil lui attribue des subventions : 15 000 euros en 2003 pour son projet de réseau d'excellence, puis, de 2004 à 2010, des subventions encadrées par des conventions de financement de quatre ans et des avenants annuels, en vue de soutenir de jeunes équipes de recherche (troubles du langage, activation lymphocytaire T, tissus lymphoïdes, virus à ARN, barrières de l'hôte), avec des premières subventions comprises entre 90 000 et 96 900 euros. En février 2007, il émet un avis favorable sur la demande de renouvellement de dérogation au repos dominical présentée par l'Institut Pasteur pour les salariés de l'établissement du 25-28, rue du Docteur Roux. En septembre 2008, siégeant en formation de Conseil général, il attribue 3 millions d'euros TTC pour la construction d'un nouveau centre de recherche sur la biologie intégrative des maladies émergentes et autorise son Président à signer la convention, la somme devant être imputée au budget d'investissement du Département sous réserve des décisions de financement. Il attribue enfin 3 000 euros en 2010, puis deux subventions de 8 000 euros chacune en 2011, que les titres des délibérations rattachent à l'organisation d'un congrès et de deux conférences scientifiques.",
+  "moments": [
+    {
+      "id": "64841",
+      "seance": "OCTOBRE 1998",
+      "fait": "Le Conseil autorise le Maire à indemniser à l'amiable l'Institut Pasteur, à hauteur de 130 779,65 F, pour un dégât des eaux dont la délibération attribue la responsabilité à la Ville de Paris.",
+      "pourquoi": "Un dégât des eaux mis au compte de la Ville",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64841",
+      "fait_en": "The Council authorized the Mayor to compensate the Institut Pasteur by amicable settlement, in the amount of 130,779.65 francs, for water damage for which the deliberation held the Ville de Paris responsible.",
+      "pourquoi_en": "Water damage attributed to the City"
+    },
+    {
+      "id": "70224",
+      "seance": "JUILLET 2003",
+      "fait": "Le Conseil attribue une subvention de fonctionnement de 15 000 euros à l'Institut Pasteur, pour son projet de réseau d'excellence selon le titre, et autorise le Maire à signer la convention.",
+      "pourquoi": "Une convention pour un réseau d'excellence",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70224",
+      "fait_en": "The Council awarded an operating grant of 15,000 euros to the Institut Pasteur, for its network-of-excellence project according to the title, and authorized the Mayor to sign the agreement.",
+      "pourquoi_en": "An agreement for a network of excellence"
+    },
+    {
+      "id": "11277",
+      "seance": "SEPTEMBRE 2004",
+      "fait": "Lors de l'examen de la subvention de 95 000 euros à l'Institut Pasteur, Mme Catherine Gégout prend la parole ; selon elle, six projets de délibération concernent de jeunes équipes de l'INSERM et des Instituts Curie et Pasteur, et un jury scientifique a retenu six équipes parmi les 108 ayant répondu à l'appel à projets.",
+      "pourquoi": "108 équipes candidates, six retenues, selon Mme Gégout",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11277",
+      "fait_en": "During the review of the 95,000-euro grant to the Institut Pasteur, Ms. Catherine Gégout took the floor; according to her, six draft deliberations concern young teams from INSERM and the Instituts Curie and Pasteur, and a scientific jury selected six teams out of the 108 that responded to the call for projects.",
+      "pourquoi_en": "108 candidate teams, six selected, according to Ms. Gégout"
+    },
+    {
+      "id": "26847",
+      "seance": "FEVRIER 2007",
+      "fait": "Le Conseil émet un avis favorable sur la demande de renouvellement de dérogation ponctuelle au repos dominical présentée par l'Institut Pasteur pour les salariés du 25-28, rue du Docteur Roux ; la délibération prévoit qu'une copie de l'avis sera adressée au Préfet.",
+      "pourquoi": "Déroger au repos dominical : le Conseil donne son avis",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26847",
+      "fait_en": "The Council issued a favorable opinion on the request submitted by the Institut Pasteur to renew a one-off exemption from the Sunday rest rule for employees at 25-28, rue du Docteur Roux; the deliberation provides that a copy of the opinion will be sent to the Préfet.",
+      "pourquoi_en": "Exemption from Sunday rest: the Council gives its opinion"
+    },
+    {
+      "id": "66007",
+      "seance": "NOVEMBRE 2007",
+      "fait": "Le Conseil attribue 65 000 euros au titre de 2007 à l'Institut Pasteur afin de permettre l'achèvement de la recherche menée par Thomas Bourgeron sur la génétique des troubles du langage et de la communication (autisme, dysphasie, dyslexie), et autorise le Maire à signer l'avenant n° 3.",
+      "pourquoi": "Quatrième annuité d'une étude génétique des troubles du langage",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66007",
+      "fait_en": "The Council awarded 65,000 euros for 2007 to the Institut Pasteur to allow the completion of the research conducted by Thomas Bourgeron on the genetics of language and communication disorders (autism, dysphasia, dyslexia), and authorized the Mayor to sign amendment no. 3.",
+      "pourquoi_en": "Fourth annual installment of a genetic study of language disorders"
+    },
+    {
+      "id": "37812",
+      "seance": "SEPTEMBRE 2008",
+      "fait": "Siégeant en formation de Conseil général, le Conseil attribue 3 millions d'euros TTC à l'Institut Pasteur pour la construction d'un nouveau centre de recherche sur la biologie intégrative des maladies émergentes et autorise son Président à signer la convention, la somme devant être imputée au budget d'investissement du Département sous réserve des décisions de financement.",
+      "pourquoi": "Trois millions pour construire un centre de recherche",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37812",
+      "fait_en": "Sitting as the Conseil général, the Council awarded 3 million euros including tax to the Institut Pasteur for the construction of a new research center on the integrative biology of emerging diseases and authorized its President to sign the agreement, the sum to be charged to the Département's capital budget subject to funding decisions.",
+      "pourquoi_en": "Three million to build a research center"
+    },
+    {
+      "id": "66999",
+      "seance": "SEPTEMBRE 2008",
+      "fait": "Le Conseil autorise le Maire à signer avec l'Institut Pasteur une convention de financement de 4 années et attribue 96 900 euros pour 2008 à l'Institut Pasteur pour l'équipe de Marco Vignuzzi, dont la délibération situe le laboratoire au Département de virologie, bâtiment Lwoff.",
+      "pourquoi": "Virus à ARN : une équipe du bâtiment Lwoff",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66999",
+      "fait_en": "The Council authorized the Mayor to sign a 4-year funding agreement with the Institut Pasteur and awarded 96,900 euros for 2008 to the Institut Pasteur for Marco Vignuzzi's team, whose laboratory the deliberation places in the Department of Virology, Lwoff building.",
+      "pourquoi_en": "RNA viruses: a team in the Lwoff building"
+    },
+    {
+      "id": "97014",
+      "seance": "MARS 2011",
+      "fait": "Le Conseil attribue 8 000 euros à l'Institut Pasteur, subvention que le titre rattache à l'organisation de la 11e édition de la conférence JOBIM.",
+      "pourquoi": "Biologie, informatique, mathématiques : une conférence soutenue",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97014",
+      "fait_en": "The Council awarded 8,000 euros to the Institut Pasteur, a grant that the title links to the organization of the 11th edition of the JOBIM conference.",
+      "pourquoi_en": "Biology, computer science, mathematics: a conference supported"
+    }
+  ],
+  "montants": [
+    {
+      "seance": "MARS 2011",
+      "montant": "8.000 euros",
+      "objet": "Subvention pour l'organisation de la 3e Conférence internationale sur les progrès de la recherche sur les cellules souches (objet selon le titre)",
+      "citation": "Article 1 : Une subvention d?un montant de 8.000 euros est attribuée à l?Institut Pasteur.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96565"
+    },
+    {
+      "seance": "MARS 2011",
+      "montant": "8.000 euros",
+      "objet": "Subvention pour l'organisation de la 11e édition de la conférence JOBIM (objet selon le titre)",
+      "citation": "Article 1 : Une subvention d?un montant de 8.000 euros est attribuée à l?Institut Pasteur.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97014"
+    },
+    {
+      "seance": "MAI 2010",
+      "montant": "3.000 euros",
+      "objet": "Subvention pour l'organisation du 2e congrès joint des Sociétés française et japonaise de Biologie du Développement (objet selon le titre)",
+      "citation": "Article 1 : Une subvention d?un montant de 3.000 euros est attribuée à l?Institut Pasteur.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35694"
+    },
+    {
+      "seance": "SEPTEMBRE 2010",
+      "montant": "70.000 euros",
+      "objet": "Subvention 2010 à l'Institut Pasteur pour l'équipe de Marco Vignuzzi (avenant n° 2)",
+      "citation": "Article 1 : Une subvention de 70.000 euros est attribuée pour 2010 à l?Institut Pasteur sis 25-28, rue du Docteur Roux (15e) (Tiers : W00156) afin de permettre à l?équipe de Marco VIGNUZZI",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39587"
+    },
+    {
+      "seance": "SEPTEMBRE 2010",
+      "montant": "96.900 euros",
+      "objet": "Rappel : première subvention 2008 attribuée par la délibération 2008 ASES 117",
+      "citation": "Vu l?article 2 de la même délibération attribuant une première subvention de 96.900 euros à l?Institut Pasteur au titre de l?année 2008",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39587"
+    },
+    {
+      "seance": "SEPTEMBRE 2008",
+      "montant": "3 millions d’euros (3.000.000 euros) TTC",
+      "objet": "Subvention d'investissement du Département de Paris pour la construction d'un nouveau centre de recherche sur la biologie intégrative des maladies émergentes",
+      "citation": "Une subvention de 3 millions d?euros (3.000.000 euros) TTC est attribuée à l?Institut Pasteur sis 25, rue du docteur Roux (15e), pour la construction d?un nouveau centre de recherche sur la biologie intégrative des maladies émergentes.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37812"
+    },
+    {
+      "seance": "OCTOBRE 2008",
+      "montant": "65.625 euros",
+      "objet": "Subvention 2008 à l'Institut Pasteur pour l'équipe de Philippe Bousso (avenant n° 3)",
+      "citation": "Une subvention de 65.625 euros est attribuée, au titre de 2008, à l?Institut Pasteur 25-28, rue du Docteur Roux 75724 Paris (Tiers n° W 00156) afin de permettre à l?équipe conduite par Philippe Bousso, d?achever sa recherche",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42708"
+    },
+    {
+      "seance": "OCTOBRE 2008",
+      "montant": "93.750 euros",
+      "objet": "Rappel : première subvention 2005 attribuée par la délibération 2005 ASES 111",
+      "citation": "Vu l?article 2 de la même délibération attribuant une première subvention de 93.750 euros à l?Institut Pasteur au titre de l?année 2005",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42708"
+    },
+    {
+      "seance": "JUILLET 2003",
+      "montant": "15.000 euros",
+      "objet": "Subvention de fonctionnement pour le projet de réseau d'excellence de l'Institut Pasteur (objet selon le titre)",
+      "citation": "Article premier.- Une subvention d'un montant de 15.000 euros est attribuée à l'Institut Pasteur. Art. 2.- M. le Maire de Paris est autorisé à signer avec l'Institut Pasteur la convention",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70224"
+    },
+    {
+      "seance": "OCTOBRE 2009",
+      "montant": "70.000 euros",
+      "objet": "Subvention 2009 à l'Institut Pasteur pour l'équipe de Marco Vignuzzi (avenant n° 1)",
+      "citation": "Article 2 Une subvention de 70.000 euros est attribuée, pour 2009, à l'Institut Pasteur - 25/28, rue du Docteur Roux (15e) (Tiers : W 00156) afin de permettre à l'équipe de Marco VIGNUZZI",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93449"
+    },
+    {
+      "seance": "OCTOBRE 2009",
+      "montant": "96.900 euros",
+      "objet": "Rappel : première subvention 2008 attribuée par la délibération 2008 ASES 117",
+      "citation": "Vu l'article 2 de la même délibération attribuant une première subvention de 96.900 euros à l'Institut Pasteur, au titre de l'année 2008",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93449"
+    },
+    {
+      "seance": "SEPTEMBRE 2004",
+      "montant": "95.000 euros",
+      "objet": "Subvention contractuelle à l'Institut Pasteur examinée en séance (DASES 272)",
+      "citation": "l'attribution d'une subvention contractuelle de 95.000 euros à l'Institut Pasteur pour la réalisation de l'étude génétique des troubles du langage et de la communication",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11277"
+    },
+    {
+      "seance": "SEPTEMBRE 2004",
+      "montant": "5 x 95.000 euros et 1 x 75.000 euros",
+      "objet": "Propos de Mme Gégout en séance : six projets de délibération, dont cinq de 95 000 euros chacun et un de 75 000 euros, reconduits selon elle à 70 % sur chacune des trois années suivantes",
+      "citation": "nous sommes devant 6 projets de délibération, dont 5 pour un montant de 95.000 euros chacun et un de 75.000, qui seront reconduits à 70 % sur chacune des trois années suivantes",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11277"
+    },
+    {
+      "seance": "NOVEMBRE 2009",
+      "montant": "90.000 euros",
+      "objet": "Première subvention (2009) à l'Institut Pasteur pour l'équipe de Marc Lecuit",
+      "citation": "Article 2 : Une subvention de 90.000 euros est attribuée pour 2009 à l?Institut Pasteur 25 - 28, rue du Docteur Roux, 75724 (15e) (Tiers : W 00156) afin de permettre à l?équipe de Marc LECUIT",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81843"
+    },
+    {
+      "seance": "SEPTEMBRE 2004",
+      "montant": "95.000 euros",
+      "objet": "Subvention 2004 pour l'étude génétique des troubles du langage et de la communication",
+      "citation": "Article premier.- Une subvention d'un montant de 95.000 euros est attribuée au titre de 2004 à l'Institut Pasteur pour mener à bien la recherche intitulée",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46960"
+    },
+    {
+      "seance": "OCTOBRE 2010",
+      "montant": "62.000 euros",
+      "objet": "Subvention 2010 à l'Institut Pasteur pour l'équipe de Marc Lecuit (avenant n° 1)",
+      "citation": "Article 1 : Une subvention de 62.000 euros est attribuée pour 2010 à l?Institut Pasteur sis 25-28, rue du Docteur Roux, 75724 (15e) (Tiers : W00156) afin de permettre à l?équipe de Marc LECUIT",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23362"
+    },
+    {
+      "seance": "OCTOBRE 2010",
+      "montant": "90.000 euros",
+      "objet": "Rappel : première subvention 2009 attribuée par la délibération 2009 DASES 32",
+      "citation": "Vu l?article 2 de la même délibération attribuant une première subvention de 90.000 euros à l?Institut Pasteur au titre de l?année 2009",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23362"
+    },
+    {
+      "seance": "OCTOBRE 2010",
+      "montant": "62.000 euros",
+      "objet": "Subvention 2010 à l'Institut Pasteur pour l'équipe de Marc Lecuit (avenant n° 1)",
+      "citation": "Article 1 : Une subvention de 62.000 euros est attribuée pour 2010 à l?Institut Pasteur sis 25-28, rue du Docteur Roux, 75724 (15e) (Tiers : W00156) afin de permettre à l?équipe de Marc LECUIT",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=86492"
+    },
+    {
+      "seance": "OCTOBRE 2010",
+      "montant": "90.000 euros",
+      "objet": "Rappel : première subvention 2009 attribuée par la délibération 2009 DASES 32",
+      "citation": "Vu l?article 2 de la même délibération attribuant une première subvention de 90.000 euros à l?Institut Pasteur au titre de l?année 2009",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=86492"
+    },
+    {
+      "seance": "JUILLET 2009",
+      "montant": "62.000 euros",
+      "objet": "Subvention 2009 à l'Institut Pasteur pour l'équipe de Gérard Eberl (avenant n° 3)",
+      "citation": "Une subvention de 62.000 euros est attribuée, au titre de 2009, à l?INSTITUT PASTEUR, 25-28, rue du Docteur Roux (15e) (n° Tiers : W 00156) afin de permettre à l?équipe de Gérard EBERL, Chargé de recherche, de terminer ses travaux de recherche",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74653"
+    },
+    {
+      "seance": "JUILLET 2009",
+      "montant": "90.625 euros",
+      "objet": "Rappel : première subvention 2006 attribuée par la délibération 2006 DASES 103",
+      "citation": "Vu l?article 2 de la même délibération attribuant une première subvention de 90.625 euros à l?Institut Pasteur au titre de l?année 2006",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74653"
+    },
+    {
+      "seance": "NOVEMBRE 2008",
+      "montant": "62.000 euros",
+      "objet": "Subvention 2008 à l'Institut Pasteur pour l'équipe de Gérard Eberl (avenant n° 2)",
+      "citation": "Article premier.- Une subvention de 62.000 euros est attribuée, au titre de 2008, à l?Institut Pasteur, 25-28 rue du Docteur Roux (15e) (n° Tiers : W 00156) afin de permettre à l?équipe de Gérard EBERL",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61708"
+    },
+    {
+      "seance": "NOVEMBRE 2008",
+      "montant": "90.625 euros",
+      "objet": "Rappel : première subvention 2006 attribuée par la délibération 2006 DASES 103",
+      "citation": "Vu l?article 2 de la même délibération attribuant une première subvention de 90.625 euros à l?Institut Pasteur au titre de l?année 2006",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61708"
+    },
+    {
+      "seance": "SEPTEMBRE 2008",
+      "montant": "96.900 euros",
+      "objet": "Première subvention (2008) à l'Institut Pasteur pour l'équipe de Marco Vignuzzi",
+      "citation": "Art. 2.- Une subvention de 96.900 euros est attribuée, pour 2008, à l?Institut PASTEUR, sis 25-28, rue du Docteur Roux (15e) (Tiers W00156) afin de permettre à l?équipe de Marco VIGNUZZI",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66999"
+    },
+    {
+      "seance": "SEPTEMBRE 2005",
+      "montant": "65.000 euros",
+      "objet": "Subvention 2005 à l'Institut Pasteur pour l'équipe de Thomas Bourgeron",
+      "citation": "Article premier.- Une subvention de 65.000 euros est attribuée, en 2005, à l?Institut Pasteur afin de permettre la poursuite de la recherche menée par Thomas Bourgeron",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63478"
+    },
+    {
+      "seance": "SEPTEMBRE 2005",
+      "montant": "95.000 euros",
+      "objet": "Rappel : première subvention 2004 attribuée par la délibération ASES 272",
+      "citation": "Vu l?article 1er de la même délibération attribuant une première subvention de 95.000 euros à l?Institut Pasteur au titre de l?année 2004",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63478"
+    },
+    {
+      "seance": "OCTOBRE 2006",
+      "montant": "90.625 euros",
+      "objet": "Première subvention (2006) à l'Institut Pasteur pour l'équipe de Gérard Eberl",
+      "citation": "Art. 2.- Une subvention de 90.625 euros est attribuée, pour 2006, à l?Institut Pasteur - Direction Financière 25-28 rue du Docteur Roux - 75724 Paris (tiers : W00156) afin de permettre à l?équipe de Gérard EBERL",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35477"
+    },
+    {
+      "seance": "NOVEMBRE 2007",
+      "montant": "65.000 euros",
+      "objet": "Subvention 2007 (4e annuité selon le titre) à l'Institut Pasteur pour l'équipe de Thomas Bourgeron",
+      "citation": "Article premier.- Une subvention de 65.000 euros est attribuée, au titre de 2007, à l?Institut Pasteur (Tiers : W00156) afin de permettre l?achèvement de la recherche menée par Thomas Bourgeron",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66007"
+    },
+    {
+      "seance": "NOVEMBRE 2007",
+      "montant": "95.000 euros",
+      "objet": "Rappel : première subvention 2004 attribuée par la délibération ASES 272",
+      "citation": "Vu l?article 1er de la même délibération attribuant une première subvention de 95.000 euros à l?Institut Pasteur au titre de l?année 2004",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66007"
+    },
+    {
+      "seance": "JUILLET 2007",
+      "montant": "62.000 euros",
+      "objet": "Subvention 2007 à l'Institut Pasteur pour l'équipe de Gérard Eberl (avenant n° 1)",
+      "citation": "Article premier.- Une subvention de 62.000 euros est attribuée, pour 2007, à l?Institut Pasteur, 25-28 rue du Docteur Roux (15e) (n° Tiers : W 00156) afin de permettre à l?équipe de Gérard EBERL",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90104"
+    },
+    {
+      "seance": "JUILLET 2007",
+      "montant": "90.625 euros",
+      "objet": "Rappel : première subvention 2006 attribuée par la délibération 2006 DASES 103",
+      "citation": "Vu l?article 2 de la même délibération attribuant une première subvention de 90.625 euros à l?Institut Pasteur au titre de l?année 2006",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90104"
+    },
+    {
+      "seance": "DECEMBRE 2006",
+      "montant": "65.000 euros",
+      "objet": "Subvention 2006 à l'Institut Pasteur pour l'équipe de Thomas Bourgeron (2e avenant)",
+      "citation": "Article premier.- Une subvention de 65.000 euros est attribuée, pour 2006, à l?Institut Pasteur (Tiers : W00156) afin de permettre la poursuite de la recherche menée par Thomas Bourgeron",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91981"
+    },
+    {
+      "seance": "DECEMBRE 2006",
+      "montant": "95.000 euros",
+      "objet": "Rappel : première subvention 2004 attribuée par la délibération ASES 272",
+      "citation": "Vu l?article 1er de la même délibération attribuant une première subvention de 95.000 euros à l?Institut Pasteur au titre de l?année 2004",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91981"
+    },
+    {
+      "seance": "NOVEMBRE 2007",
+      "montant": "65.625 euros",
+      "objet": "Subvention 2007 à l'Institut Pasteur pour l'équipe de Philippe Bousso (avenant n° 2)",
+      "citation": "Article premier.- Une subvention de 65.625 euros est attribuée, au titre de 2007, à l?Institut Pasteur 25-28, rue du Docteur Roux 75724 Paris (Tiers n° W 00156) afin de permettre la poursuite de la recherche menée par Philippe BOUSSO",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65707"
+    },
+    {
+      "seance": "NOVEMBRE 2007",
+      "montant": "93.750 euros",
+      "objet": "Rappel : première subvention 2005 attribuée par la délibération 2005 ASES 111",
+      "citation": "Vu l?article 2 de la même délibération attribuant une première subvention de 93.750 euros à l?Institut Pasteur au titre de l?année 2005",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65707"
+    },
+    {
+      "seance": "NOVEMBRE 2007",
+      "montant": "65.625 euros",
+      "objet": "Rappel : deuxième subvention 2006 (délibération 2006 ASES 100 et 1er avenant)",
+      "citation": "ayant permis à l?Institut Pasteur de recevoir une deuxième subvention de 65.625 euros au titre de l?année 2006",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65707"
+    },
+    {
+      "seance": "OCTOBRE 2006",
+      "montant": "65.625 euros",
+      "objet": "Subvention 2006 à l'Institut Pasteur pour l'équipe de Philippe Bousso",
+      "citation": "Article premier.- Une subvention de 65.625 euros est attribuée, pour 2006, à l?Institut Pasteur, 25-28 rue du Docteur Roux - 75724 - Paris (Tiers: W 00156) afin de permettre la poursuite de la recherche menée par P. Bousso",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35449"
+    },
+    {
+      "seance": "OCTOBRE 2006",
+      "montant": "93.750 euros",
+      "objet": "Rappel : première subvention 2005 attribuée par la délibération 2005 DASES 111",
+      "citation": "Vu l?article 2 de la même délibération attribuant une première subvention de 93.750 euros à l?Institut Pasteur au titre de l?année 2005",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35449"
+    },
+    {
+      "seance": "SEPTEMBRE 2005",
+      "montant": "93.750 euros",
+      "objet": "Première subvention (2005) à l'Institut Pasteur pour l'équipe de Philippe Bousso",
+      "citation": "Art. 2.- Une subvention de 93.750 euros est attribuée, pour 2005, à l?Institut Pasteur afin de permettre à l?équipe de Philippe Bousso, Chargé de recherches Inserm CR2, d?entreprendre la réalisation de son projet.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63422"
+    },
+    {
+      "seance": "OCTOBRE 1998",
+      "montant": "130.779,65 F",
+      "objet": "Indemnisation amiable des dommages causés à l'Institut Pasteur lors d'un dégât des eaux",
+      "citation": "M. le Maire de Paris est autorisé à procéder à l'indemnisation amiable de l'Institut Pasteur, à hauteur de 130.779,65 F, en réparation des dommages causés à ce dernier lors d'un dégât des eaux dont la responsabilité incombe à la Ville",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64841"
+    }
+  ],
   "bmo_extraits": [],
   "bmo_recit": null,
   "delibs_par_annee": {
@@ -410,7 +774,7 @@
     },
     "bmo": {
       "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Institut+Pasteur%22%29"
     },
     "invest": {
       "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -421,6 +785,8 @@
       "url": "https://fr.wikipedia.org/"
     }
   },
+  "synthese_en": "In October 1998, the Conseil de Paris authorized the Mayor to compensate the Institut Pasteur by amicable settlement, in the amount of 130,779.65 francs, for water damage for which the deliberation held the City responsible. From 2003 to 2011, the Council awarded it grants: 15,000 euros in 2003 for its network-of-excellence project, then, from 2004 to 2010, grants governed by four-year funding agreements and annual amendments, intended to support young research teams (language disorders, T-lymphocyte activation, lymphoid tissues, RNA viruses, host barriers), with initial grants ranging from 90,000 to 96,900 euros. In February 2007, it issued a favorable opinion on the request submitted by the Institut Pasteur to renew an exemption from the Sunday rest rule for employees of the establishment at 25-28, rue du Docteur Roux. In September 2008, sitting as the Conseil général, it awarded 3 million euros including tax for the construction of a new research center on the integrative biology of emerging diseases and authorized its President to sign the agreement, the sum to be charged to the Département's capital budget subject to funding decisions. Finally, it awarded 3,000 euros in 2010, then two grants of 8,000 euros each in 2011, which the titles of the deliberations link to the organization of a congress and two scientific conferences.",
+  "bmo_recit_en": "The Institut Pasteur appears in the Bulletin municipal in the late 1880s, in connection with people who had been bitten. In 1889, the Bulletin reports that a child living in Paris, young S., was taken to the Institut Pasteur after a bite and is \"today in good health.\" In 1891, another text states that a girl was treated there from November 24 to December 3, and observes that \"at present almost all persons bitten by rabid animals or animals suspected of rabies go to the Institut Pasteur.\" In both of these mentions, the Institut is not the subject of a decision: it is cited as the place where people come to be treated.",
   "license": {
     "id": "ODbL-1.0",
     "url": "https://opendatacommons.org/licenses/odbl/1-0/",

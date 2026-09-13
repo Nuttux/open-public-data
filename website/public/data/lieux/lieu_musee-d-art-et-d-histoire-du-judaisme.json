@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "musee-d-art-et-d-histoire-du-judaisme",
   "name": "Musée d'art et d'histoire du Judaïsme",
@@ -17,28 +17,30 @@
     "source": "Wikipédia"
   },
   "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
     "extract": "Le musée d'Art et d'Histoire du judaïsme (mahJ) est installé dans l'hôtel de Saint-Aignan dans le quartier du Marais.",
     "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_d'Art_et_d'Histoire_du_juda%C3%AFsme",
     "source": {
       "name": "Wikipédia",
       "url": "https://fr.wikipedia.org/"
-    }
+    },
+    "extract_en": "The Musée d'Art et d'Histoire du judaïsme (mahJ) is housed in the Hôtel de Saint-Aignan in the Marais district."
   },
   "stats": {
     "n_delibs": 667,
     "delibs_span": [
       1995,
-      2026
+      2004
     ],
-    "n_bmo_brut": 0,
+    "n_bmo_brut": 4,
     "n_bmo_verifies": null,
     "invest_total_eur": 0,
     "invest_annees": [],
     "lecture_mode": "titre nommant le lieu (12 trouvés)",
     "lecture_mode_en": "title naming the place (12 found)",
     "n_lus": 12,
-    "n_lieu": null
+    "n_lieu": 12
   },
   "subventions_exploitant": {
     "nom_fiche": "MUSEE D ART ET D HISTOIRE DU JUDAIS",
@@ -142,9 +144,168 @@
   },
   "residents": [],
   "kpi_montant": null,
-  "synthese_fr": null,
-  "moments": [],
-  "montants": [],
+  "synthese_fr": "En juillet 1995, le Conseil de Paris approuve les pièces d'un marché sur appel d'offres restreint pour la restauration (3e partie) de l'Hôtel de Saint-Aignan, 71 rue du Temple, destiné à recevoir le musée, et autorise le Maire à signer ce marché. En novembre 1997, il approuve un programme audiovisuel et informatique du musée au coût prévisionnel de 5.000.000 F H.T. et autorise le Maire à souscrire un avenant n° 8 à la convention de délégation de maîtrise d'ouvrage signée avec l'État (Ministère de la Culture et de la Communication) le 3 juillet 1992 et à solliciter de l'État une subvention de 2.500.000 F ; par une autre délibération, il autorise le Maire à souscrire des avenants ayant pour objet l'augmentation du montant de marchés de maîtrise d'œuvre et de travaux pour l'aménagement du musée. En février 1999, il autorise le Maire à signer avec l'association « Musée d'art et d'histoire du judaïsme » une convention d'occupation du domaine public de l'hôtel ; en séance, Mme Moreau demande s'il est « indispensable » que la gestion de ce musée et de la Maison européenne de la photographie soit déléguée à des associations, et Mme Macé de Lépinay répond : « Vous ne pouvez pas demander que le musée soit géré en régie par la Ville. Ce n'est un musée ni municipal ni national, même s'il est contrôlé par la Direction des Musées de France ». En décembre 1999, le Maire demande au Conseil l'autorisation de souscrire des avenants aux marchés de maîtrise d'œuvre, de contrôle technique, de coordination sécurité santé et de travaux liés à l'aménagement du musée et à la restauration de l'hôtel ; en septembre 2000, le Conseil autorise le Maire à souscrire un avenant substituant la société « NETWORK ESSENTIAL SYSTEM » à la société « AVS AZUR » sur le marché d'installation des équipements audiovisuels de l'auditorium. En avril 2002, lors de l'examen de la subvention de fonctionnement, M. Bohbot affirme en séance que le musée « n'est pas encore tout à fait terminé » et que la réalisation du jardin attenant, côté impasse Bertaud, est attendue selon lui depuis l'inauguration de 1998. De 2002 à 2004, le Conseil autorise chaque année le Maire à signer avec l'association une convention d'objectifs relative à une subvention de fonctionnement (2.630.959 euros en 2002, complétés de 56 231 euros par un avenant approuvé en décembre, puis 2.687.581 euros en 2003 et en 2004), la délibération de 2004 autorisant aussi la signature d'un avenant prorogeant la mise à disposition de l'hôtel.",
+  "moments": [
+    {
+      "id": "545",
+      "seance": "JUILLET 1995",
+      "fait": "Le Conseil approuve les pièces d'un marché sur appel d'offres restreint pour la « 3e partie » de la restauration de l'Hôtel de Saint-Aignan destiné à recevoir le musée, et autorise le Maire à signer ce marché.",
+      "pourquoi": "les règles de l'appel d'offres pour restaurer l'hôtel",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=545",
+      "fait_en": "The Council approves the documents for a restricted tender contract for « part 3 » of the restoration of the Hôtel de Saint-Aignan intended to house the museum, and authorizes the Mayor to sign this contract.",
+      "pourquoi_en": "the tender rules for restoring the hôtel"
+    },
+    {
+      "id": "49372",
+      "seance": "NOVEMBRE 1997",
+      "fait": "Le Conseil approuve le programme audiovisuel et informatique du musée (coût prévisionnel 5 000 000 F H.T.) et autorise le Maire à solliciter de l'État une subvention de 2 500 000 F.",
+      "pourquoi": "autorisation de demander à l'État la moitié du coût hors taxes",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49372",
+      "fait_en": "The Council approves the museum's audiovisual and IT program (estimated cost 5,000,000 F excl. tax) and authorizes the Mayor to request a subsidy of 2,500,000 F from the State.",
+      "pourquoi_en": "authorization to ask the State for half of the cost excluding tax"
+    },
+    {
+      "id": "49404",
+      "seance": "NOVEMBRE 1997",
+      "fait": "Le Conseil autorise le Maire à souscrire des avenants aux marchés des architectes Bizouard et Pin, de Bouygues et de Serete constructions, ayant pour objet l'augmentation de leur montant.",
+      "pourquoi": "des avenants autorisés pour augmenter le montant des marchés",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49404",
+      "fait_en": "The Council authorizes the Mayor to enter into amendments to the contracts of architects Bizouard and Pin, of Bouygues and of Serete constructions, whose purpose is to increase their amount.",
+      "pourquoi_en": "amendments authorized to increase the amount of the contracts"
+    },
+    {
+      "id": "23212",
+      "seance": "FEVRIER 1999",
+      "fait": "Mme Moreau demande en séance s'il est « indispensable » que la gestion de ce musée et de la Maison européenne de la photographie soit déléguée à des associations ; Mme Macé de Lépinay répond : « Vous ne pouvez pas demander que le musée soit géré en régie par la Ville. Ce n'est un musée ni municipal ni national, même s'il est contrôlé par la Direction des Musées de France ».",
+      "pourquoi": "gestion par une association : la question posée en séance",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23212",
+      "fait_en": "Ms. Moreau asks in session whether it is « indispensable » that the management of this museum and of the Maison européenne de la photographie be delegated to associations; Ms. Macé de Lépinay replies: « You cannot ask for the museum to be run directly by the City. It is a museum that is neither municipal nor national, even though it is overseen by the Direction des Musées de France ».",
+      "pourquoi_en": "management by an association: the question raised in session"
+    },
+    {
+      "id": "28480",
+      "seance": "SEPTEMBRE 2000",
+      "fait": "Le Conseil autorise le Maire à souscrire un avenant ayant pour effet de substituer la société « NETWORK ESSENTIAL SYSTEM » à « AVS AZUR » sur le marché d'équipements audiovisuels de l'auditorium.",
+      "pourquoi": "avenant de substitution d'entreprise pour l'auditorium",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28480",
+      "fait_en": "The Council authorizes the Mayor to enter into an amendment whose effect is to substitute the company « NETWORK ESSENTIAL SYSTEM » for « AVS AZUR » on the contract for the auditorium's audiovisual equipment.",
+      "pourquoi_en": "amendment substituting a company for the auditorium"
+    },
+    {
+      "id": "2548",
+      "seance": "AVRIL 2002",
+      "fait": "M. Bohbot affirme en séance que le musée « n'est pas encore tout à fait terminé » et que la réalisation du jardin attenant, côté impasse Bertaud, est attendue depuis l'inauguration de 1998.",
+      "pourquoi": "le jardin attendu depuis 1998, selon M. Bohbot",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2548",
+      "fait_en": "Mr. Bohbot asserts in session that the museum « is not yet quite finished » and that the creation of the adjoining garden, on the impasse Bertaud side, has been awaited since the 1998 opening.",
+      "pourquoi_en": "the garden awaited since 1998, according to Mr. Bohbot"
+    },
+    {
+      "id": "70923",
+      "seance": "DECEMBRE 2002",
+      "fait": "Le Conseil approuve un avenant de subvention complémentaire de 56 231 euros portant la subvention 2002 de 2 630 959 à 2 687 190 euros, et autorise le Maire à le signer.",
+      "pourquoi": "un complément de subvention approuvé en décembre",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70923",
+      "fait_en": "The Council approves an amendment for a supplementary subsidy of 56,231 euros bringing the 2002 subsidy from 2,630,959 to 2,687,190 euros, and authorizes the Mayor to sign it.",
+      "pourquoi_en": "a supplementary subsidy approved in December"
+    },
+    {
+      "id": "59984",
+      "seance": "JUILLET 2004",
+      "fait": "Le Conseil autorise le Maire à signer la convention d'objectifs relative à une subvention de fonctionnement (2 687 581 euros sur le budget 2004) et l'avenant n° 1 prorogeant la mise à disposition de l'Hôtel de Saint-Aignan, avec une recette correspondante de 670 776 euros.",
+      "pourquoi": "subvention et occupation de l'hôtel dans une même délibération",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59984",
+      "fait_en": "The Council authorizes the Mayor to sign the objectives agreement relating to an operating subsidy (2,687,581 euros from the 2004 budget) and amendment no. 1 extending the provision of the Hôtel de Saint-Aignan, with corresponding revenue of 670,776 euros.",
+      "pourquoi_en": "subsidy and occupancy of the hôtel in a single deliberation"
+    }
+  ],
+  "montants": [
+    {
+      "seance": "NOVEMBRE 1997",
+      "montant": "5.000.000 F H.T. (5.030.000 F T.T.C.)",
+      "objet": "coût prévisionnel du programme audiovisuel et informatique du musée",
+      "citation": "ainsi que son coût prévisionnel fixé à la somme de 5.000.000 F H.T. (valeur juillet 1997), soit 5.030.000 F T.T.C.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49372"
+    },
+    {
+      "seance": "NOVEMBRE 1997",
+      "montant": "2.500.000 F",
+      "objet": "subvention que le Maire est autorisé à solliciter de l'État pour ce programme",
+      "citation": "autorisé à solliciter de l'Etat une subvention de 2.500.000 F, au titre du programme audiovisuel et informatique du musée d'art et d'histoire du judaïsme, subvention égale à 50 % du montant hors-taxes de ce programme",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49372"
+    },
+    {
+      "seance": "FEVRIER 1999",
+      "montant": "12,5 millions (unité non précisée)",
+      "objet": "subventions de fonctionnement du musée, selon Mme Moreau",
+      "citation": "reçoivent des subventions de fonctionnement importantes (24 millions pour la Maison européenne de la Photographie et 12,5 pour le musée d'Art et d'Histoire du Judaïsme)",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23212"
+    },
+    {
+      "seance": "AVRIL 2002",
+      "montant": "2.630.959 euros",
+      "objet": "subvention de fonctionnement soumise au Conseil (intitulé du projet de délibération)",
+      "citation": "Montant : 2.630.959 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2548"
+    },
+    {
+      "seance": "AVRIL 2002",
+      "montant": "près de 3 millions d'euros",
+      "objet": "subvention de fonctionnement, telle que décrite par M. Bohbot",
+      "citation": "l'objet de la délibération consiste à attribuer une subvention de fonctionnement de près de 3 millions d'euros au Musée d'art et d'histoire du judaïsme afin de lui permettre de poursuivre son action",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2548"
+    },
+    {
+      "seance": "AVRIL 2002",
+      "montant": "2.630.959 euros",
+      "objet": "subvention de fonctionnement 2002",
+      "citation": "La dépense correspondante, soit 2.630.959 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2002",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73607"
+    },
+    {
+      "seance": "DECEMBRE 2002",
+      "montant": "56.231 euros",
+      "objet": "subvention de fonctionnement complémentaire 2002",
+      "citation": "relatif à l'attribution d'une subvention de fonctionnement complémentaire de 56 231 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70923"
+    },
+    {
+      "seance": "DECEMBRE 2002",
+      "montant": "2.687.190 euros",
+      "objet": "montant total de la subvention 2002 après avenant (contre 2.630.959 euros)",
+      "citation": "portant le montant de subvention versée en 2002 à l'association \"Le Musée d'Art et d'Histoire du Judaïsme\" de 2.630.959 euros à 2.687.190 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70923"
+    },
+    {
+      "seance": "JUILLET 2003",
+      "montant": "2.687.581 euros",
+      "objet": "subvention de fonctionnement 2003",
+      "citation": "La dépense correspondante, soit 2.687.581 euros, sera imputée sur le budget de fonctionnement 2003",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70456"
+    },
+    {
+      "seance": "JUILLET 2004",
+      "montant": "2.687.581 euros",
+      "objet": "subvention de fonctionnement 2004",
+      "citation": "La dépense correspondante, soit 2.687.581 euros, sera imputée sur le budget de fonctionnement 2004",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59984"
+    },
+    {
+      "seance": "JUILLET 2004",
+      "montant": "670.776 euros",
+      "objet": "recette liée à l'avenant à la convention d'occupation du domaine public",
+      "citation": "La recette correspondante, soit 670.776 euros, sera constatée au chapitre 70, rubrique 322, nature 70323",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59984"
+    }
+  ],
   "bmo_extraits": [],
   "bmo_recit": null,
   "delibs_par_annee": {
@@ -434,7 +595,7 @@
     },
     "bmo": {
       "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Mus%C3%A9e+d%27art+et+d%27histoire+du+Juda%C3%AFsme%22%29"
     },
     "invest": {
       "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -445,6 +606,7 @@
       "url": "https://fr.wikipedia.org/"
     }
   },
+  "synthese_en": "In July 1995, the Paris Council approves the documents for a restricted tender contract for the restoration (part 3) of the Hôtel de Saint-Aignan, 71 rue du Temple, intended to house the museum, and authorizes the Mayor to sign this contract. In November 1997, it approves an audiovisual and IT program for the museum with an estimated cost of 5,000,000 F excl. tax and authorizes the Mayor to enter into amendment no. 8 to the delegated project ownership agreement signed with the State (Ministry of Culture and Communication) on July 3, 1992, and to request a subsidy of 2,500,000 F from the State; in another deliberation, it authorizes the Mayor to enter into amendments whose purpose is to increase the amount of design-supervision and works contracts for the fitting-out of the museum. In February 1999, it authorizes the Mayor to sign with the association « Musée d'art et d'histoire du judaïsme » a public property occupancy agreement for the hôtel; during the session, Ms. Moreau asks whether it is « indispensable » that the management of this museum and of the Maison européenne de la photographie be delegated to associations, and Ms. Macé de Lépinay replies: « You cannot ask for the museum to be run directly by the City. It is a museum that is neither municipal nor national, even though it is overseen by the Direction des Musées de France ». In December 1999, the Mayor asks the Council for authorization to enter into amendments to the design-supervision, technical inspection, health and safety coordination and works contracts relating to the fitting-out of the museum and the restoration of the hôtel; in September 2000, the Council authorizes the Mayor to enter into an amendment substituting the company « NETWORK ESSENTIAL SYSTEM » for the company « AVS AZUR » on the contract for installing the auditorium's audiovisual equipment. In April 2002, during the review of the operating subsidy, Mr. Bohbot asserts in session that the museum « is not yet quite finished » and that the creation of the adjoining garden, on the impasse Bertaud side, has, according to him, been awaited since the 1998 opening. From 2002 to 2004, the Council authorizes the Mayor each year to sign with the association an objectives agreement relating to an operating subsidy (2,630,959 euros in 2002, supplemented by 56,231 euros through an amendment approved in December, then 2,687,581 euros in 2003 and in 2004), the 2004 deliberation also authorizing the signing of an amendment extending the provision of the hôtel.",
   "license": {
     "id": "ODbL-1.0",
     "url": "https://opendatacommons.org/licenses/odbl/1-0/",

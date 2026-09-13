@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "eglise-saint-joseph-des-nations",
   "name": "Église Saint-Joseph-des-Nations",
@@ -17,34 +17,47 @@
     "source": "Wikipédia"
   },
   "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
     "extract": "L'église Saint-Joseph-des-Nations est un édifice religieux catholique situé au 161 rue Saint-Maur dans le 11e arrondissement de Paris (France).",
     "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Saint-Joseph-des-Nations",
     "source": {
       "name": "Wikipédia",
       "url": "https://fr.wikipedia.org/"
-    }
+    },
+    "extract_en": "The Église Saint-Joseph-des-Nations is a Catholic religious building located at 161 rue Saint-Maur in the 11th arrondissement of Paris (France)."
   },
   "stats": {
     "n_delibs": 666,
     "delibs_span": [
-      1995,
-      2026
+      2002,
+      2002
     ],
-    "n_bmo_brut": 0,
+    "n_bmo_brut": 2000,
     "n_bmo_verifies": null,
     "invest_total_eur": 0,
     "invest_annees": [],
     "lecture_mode": "titre nommant le lieu (1 trouvés)",
     "lecture_mode_en": "title naming the place (1 found)",
     "n_lus": 1,
-    "n_lieu": null
+    "n_lieu": 1
   },
   "subventions_exploitant": null,
   "residents": [],
   "kpi_montant": null,
-  "synthese_fr": null,
-  "moments": [],
+  "synthese_fr": "En mars 2002, Mme Liliane Capelle, M. Georges Sarre et les membres du groupe du Mouvement des citoyens interrogent le Maire de Paris sur la salle dite « du chevet » de l'église, 154 rue Saint-Maur, dont les murs, selon eux, présentent « un aspect très dégradé », avec « de gros problèmes d'humidité » pour les personnes accueillies ; ils souhaitent qu'une étude des travaux à effectuer soit menée rapidement. Dans sa réponse, Mme Sandrine Mazetier, adjointe, indique que la salle « présente effectivement un aspect très dégradé » et que le Bureau des Affaires cultuelles et historiques procède à des travaux de réfection de toiture au niveau du transept droit. Selon cette réponse, ces travaux doivent être suivis de travaux d'aménagement financés par l'Association Diocésaine de Paris, prévoyant notamment le réaménagement intérieur de la salle du chevet. L'adjointe indique que le Bureau examine les possibilités techniques d'assainir les abords immédiats et d'aménager des issues de secours, travaux qui « pourraient être réalisés dès 2002 » si les disponibilités budgétaires le permettent, et estime qu'une restauration extérieure complète « conviendrait » dans les années à venir.",
+  "moments": [
+    {
+      "id": "7480",
+      "seance": "MARS 2002",
+      "fait": "Question de Mme Capelle, M. Sarre et du groupe du Mouvement des citoyens sur la salle du chevet ; l'adjointe Sandrine Mazetier répond que des travaux de toiture du transept droit sont en cours et que des travaux d'aménagement financés par l'Association Diocésaine de Paris, dont le réaménagement intérieur de la salle, doivent suivre.",
+      "pourquoi": "Humidité signalée par des élus ; travaux annoncés en réponse",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7480",
+      "fait_en": "Question from Ms Capelle, Mr Sarre and the Mouvement des citoyens group about the chevet hall; deputy mayor Sandrine Mazetier replies that roof works on the right transept are under way and that fit-out works funded by the Association Diocésaine de Paris, including the interior refurbishment of the hall, are to follow.",
+      "pourquoi_en": "Damp reported by elected officials; works announced in reply"
+    }
+  ],
   "montants": [],
   "bmo_extraits": [],
   "bmo_recit": null,
@@ -117,7 +130,7 @@
     },
     "bmo": {
       "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22%C3%89glise+Saint-Joseph-des-Nations%22%29"
     },
     "invest": {
       "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -128,6 +141,7 @@
       "url": "https://fr.wikipedia.org/"
     }
   },
+  "synthese_en": "In March 2002, Ms Liliane Capelle, Mr Georges Sarre and the members of the Mouvement des citoyens group question the Mayor of Paris about the so-called \"chevet\" hall of the church, 154 rue Saint-Maur, whose walls, according to them, are \"in a very dilapidated state\", with \"major damp problems\" for the people using it; they ask for a study of the necessary works to be carried out promptly. In her reply, Ms Sandrine Mazetier, deputy mayor, states that the hall \"is indeed in a very dilapidated state\" and that the Bureau des Affaires cultuelles et historiques is carrying out roof repair works on the right transept. According to this reply, these works are to be followed by fit-out works funded by the Association Diocésaine de Paris, including in particular the interior refurbishment of the chevet hall. The deputy mayor states that the Bureau is examining the technical options for draining the immediate surroundings and fitting emergency exits, works that \"could be carried out as early as 2002\" if budget availability allows, and considers that a complete exterior restoration \"would be appropriate\" in the coming years.",
   "license": {
     "id": "ODbL-1.0",
     "url": "https://opendatacommons.org/licenses/odbl/1-0/",

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "cite-internationale-des-arts",
   "name": "Cité internationale des arts",
@@ -17,13 +17,15 @@
     "source": "Wikipédia"
   },
   "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
     "extract": "La Cité internationale des arts, fondation reconnue d'utilité publique, est une résidence d'artistes située à Paris (France), ayant pour mission de favoriser le travail de recherche et de création d'artistes contemporains internationaux dans toutes les disciplines : arts visuels, musique, spectacle vivant, architecture ou encore écriture.",
     "url": "https://fr.wikipedia.org/wiki/Cit%C3%A9_internationale_des_arts",
     "source": {
       "name": "Wikipédia",
       "url": "https://fr.wikipedia.org/"
-    }
+    },
+    "extract_en": "The Cité internationale des arts, a foundation recognized as being of public utility, is an artists' residence located in Paris (France), whose mission is to support the research and creative work of international contemporary artists in all disciplines: visual arts, music, performing arts, architecture and writing."
   },
   "stats": {
     "n_delibs": 1041,
@@ -31,14 +33,14 @@
       1995,
       2026
     ],
-    "n_bmo_brut": 0,
-    "n_bmo_verifies": null,
+    "n_bmo_brut": 2000,
+    "n_bmo_verifies": 1,
     "invest_total_eur": 0,
     "invest_annees": [],
     "lecture_mode": "titre nommant le lieu (30 trouvés)",
     "lecture_mode_en": "title naming the place (30 found)",
     "n_lus": 30,
-    "n_lieu": null
+    "n_lieu": 29
   },
   "subventions_exploitant": {
     "nom_fiche": "FOND CITE INTERNATIONALE ARTS",
@@ -147,9 +149,301 @@
   },
   "residents": [],
   "kpi_montant": null,
-  "synthese_fr": null,
-  "moments": [],
-  "montants": [],
+  "synthese_fr": "Les délibérations du Conseil de Paris citent un bail des 24 juin et 7 juillet 1950 par lequel la Ville donne à loyer à la Fondation de la Cité internationale des arts des immeubles et terrains communaux du 4e arrondissement ; en 1999 puis en 2008, le Conseil autorise le Maire à souscrire des avenants destinés à en retirer d'abord l'immeuble du 58, rue de l'Hôtel-de-Ville, dont il approuve le principe de la mise en vente par lot, puis les volumes 101 à 105, le projet de délibération visant l'emprise du jardin public Albert Schweitzer, le tréfonds non bâti et les tunnels des lignes A et D du RER. En 1998, une subvention d'investissement de 800.000 F est attribuée pour aider à la réalisation de travaux de mise aux normes d'hygiène et de sécurité dans 132 ateliers-logements du bâtiment A ; le Conseil attribue ensuite à la Fondation une subvention de fonctionnement de 668.711 euros en 2002, 851.000 euros en 2004 et 845.000 euros de 2005 à 2007, puis, en autorisant la signature d'avenants, la porte à 709.173 euros en 2009 et en 2011. En séance, Mme de Clermont-Tonnerre relève en 2002 ce qu'elle estime être une inexactitude sur l'échéance du bail et juge en 2003 imprécise la rédaction du projet de subvention, M. Girard répondant que son montant tient compte de la non-augmentation effective du loyer de la rue Norvins. En 2017 et 2018, Mme Atallah indique que 1.200 artistes ont été accueillis en 2016 sur deux sites, dans le Marais et à Montmartre, et, évoquant les 20 ateliers dont la Ville dispose à la Cité, demande quel serait le projet pour les 10 que ne vise pas, selon elle, la délibération de 2018 ; les titres des délibérations de 2021 à 2026 annoncent une subvention d'équipement de 250.000 euros, une autre de 320.000 euros au titre du Budget participatif 2021 et des conventions pour l'accueil de résidents ICORN.",
+  "moments": [
+    {
+      "id": "64861",
+      "seance": "OCTOBRE 1998",
+      "fait": "Le Conseil attribue une subvention d'investissement de 800 000 F pour aider à la réalisation des travaux de mise aux normes d'hygiène et de sécurité de 132 ateliers-logements du bâtiment A.",
+      "pourquoi": "132 ateliers-logements à mettre aux normes",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64861",
+      "fait_en": "The Council awards an investment grant of 800,000 francs to help carry out works to bring 132 studio-residences in building A up to hygiene and safety standards.",
+      "pourquoi_en": "132 studio-residences to bring up to standard"
+    },
+    {
+      "id": "83663",
+      "seance": "SEPTEMBRE 1999",
+      "fait": "Le Conseil autorise le Maire à souscrire un avenant aux fins de retirer le 58, rue de l'Hôtel-de-Ville du bail de la Fondation et approuve le principe de la mise en vente par lot de cet immeuble.",
+      "pourquoi": "58, rue de l'Hôtel-de-Ville : principe de vente approuvé",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83663",
+      "fait_en": "The Council authorizes the Mayor to sign an amendment removing 58, rue de l'Hôtel-de-Ville from the Fondation's lease and approves in principle the sale of this building by lots.",
+      "pourquoi_en": "58, rue de l'Hôtel-de-Ville: sale approved in principle"
+    },
+    {
+      "id": "7434",
+      "seance": "MARS 2002",
+      "fait": "Mme de Clermont-Tonnerre estime inexacte la date du bail donnée dans l'exposé des motifs : selon elle, il court de mars 1962 à mars 2060 ; la présidence indique que la date sera modifiée dans la délibération, sans vote.",
+      "pourquoi": "2048 ou 2060 : l'échéance du bail en débat",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7434",
+      "fait_en": "Mme de Clermont-Tonnerre considers the lease date given in the explanatory statement inaccurate: according to her, it runs from March 1962 to March 2060; the chair indicates that the date will be amended in the deliberation, without a vote.",
+      "pourquoi_en": "2048 or 2060: the lease expiry date under debate"
+    },
+    {
+      "id": "21207",
+      "seance": "NOVEMBRE 2003",
+      "fait": "Mme de Clermont-Tonnerre juge imprécise la rédaction du projet de subvention de 680 000 euros ; selon M. Girard, ce montant tient compte de la non-augmentation effective du loyer de la rue Norvins.",
+      "pourquoi": "le loyer de la rue Norvins s'invite au débat",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21207",
+      "fait_en": "Mme de Clermont-Tonnerre deems the wording of the 680,000-euro grant proposal imprecise; according to M. Girard, this amount takes into account the fact that the rent for rue Norvins was not actually increased.",
+      "pourquoi_en": "The rue Norvins rent enters the debate"
+    },
+    {
+      "id": "76951",
+      "seance": "FEVRIER 2008",
+      "fait": "Le Conseil autorise le Maire à souscrire un avenant au bail de 1950 aux fins d'en retirer les volumes 101 à 105 ; le projet de délibération visait l'emprise du jardin public Albert Schweitzer, le tréfonds non bâti et les tunnels des RER A et D.",
+      "pourquoi": "un avenant pour sortir jardin et tunnels du RER du bail",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=76951",
+      "fait_en": "The Council authorizes the Mayor to sign an amendment to the 1950 lease removing volumes 101 to 105 from it; the draft deliberation referred to the footprint of the Albert Schweitzer public garden, the unbuilt subsoil and the tunnels of RER A and D.",
+      "pourquoi_en": "An amendment to take the garden and RER tunnels out of the lease"
+    },
+    {
+      "id": "137125",
+      "seance": "JUILLET 2017",
+      "fait": "Lors de l'examen de subventions de 820 173 euros et d'un vœu sur l'accueil des artistes réfugiés, Mme Atallah indique que 1 200 artistes ont été accueillis en 2016 dans 326 ateliers-logements, dans le Marais et à Montmartre.",
+      "pourquoi": "1.200 artistes en un an, selon Mme Atallah",
+      "vedette": true,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=137125",
+      "fait_en": "During the examination of grants of 820,173 euros and of a motion on hosting refugee artists, Mme Atallah states that 1,200 artists were hosted in 2016 in 326 studio-residences, in the Marais and in Montmartre.",
+      "pourquoi_en": "1,200 artists in one year, according to Mme Atallah"
+    },
+    {
+      "id": "144042",
+      "seance": "JUILLET 2018",
+      "fait": "Sur le versement de bourses de la Ville aux artistes étrangers résidant à la Cité, Mme Atallah, qui intervient aussi en tant qu'administratrice de la Cité, demande quel serait le projet pour la gestion de 10 des 20 ateliers de la Ville, le projet de délibération ne portant selon elle que sur les 10 autres.",
+      "pourquoi": "quel projet pour les 20 ateliers de la Ville",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144042",
+      "fait_en": "On the payment of City bursaries to foreign artists residing at the Cité, Mme Atallah, who is also speaking as a board member of the Cité, asks what the plan would be for managing 10 of the City's 20 studios, the draft deliberation covering, according to her, only the other 10.",
+      "pourquoi_en": "What plan for the City's 20 studios"
+    },
+    {
+      "id": "163867",
+      "seance": "JUILLET 2021",
+      "fait": "Le titre de la délibération réunit une subvention de fonctionnement de 797 173 euros et une subvention d'équipement de 250 000 euros pour la Fondation (Paris centre, 18e).",
+      "pourquoi": "fonctionnement et équipement dans une même délibération",
+      "vedette": false,
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163867",
+      "fait_en": "The title of the deliberation combines an operating grant of 797,173 euros and an equipment grant of 250,000 euros for the Fondation (Paris Centre, 18th).",
+      "pourquoi_en": "Operating and equipment grants in a single deliberation"
+    }
+  ],
+  "montants": [
+    {
+      "seance": "FEVRIER 2026",
+      "montant": "9.380 euros",
+      "objet": "Subvention à la Fondation pour l'accueil d'un résident ICORN de la Ville de Paris",
+      "citation": "Subvention (9.380 euros) et convention tripartite avec la Fondation \"Cité internationale des arts\" pour l’accueil d’un résident ICORN",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184332"
+    },
+    {
+      "seance": "MAI 2024",
+      "montant": "320.000 euros",
+      "objet": "Subvention d'équipement à la Fondation au titre du Budget participatif 2021",
+      "citation": "Budget participatif 2021 : subvention d’équipement (320.000 euros) et convention avec la Fondation de la Cité internationale des arts (Paris Centre).",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176161"
+    },
+    {
+      "seance": "NOVEMBRE 2021",
+      "montant": "2.600 euros",
+      "objet": "Subvention liée à la convention tripartite 2021-2022 pour l'accueil de la résidente ICORN de la Ville de Paris",
+      "citation": "Convention pluriannuelle tripartite 2021-2022 avec la Fondation Cité internationale des arts (CIA) et subvention (2.600 euros).",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164183"
+    },
+    {
+      "seance": "JUILLET 2021",
+      "montant": "797.173 euros",
+      "objet": "Subvention de fonctionnement à la Fondation, avec avenant à la convention",
+      "citation": "Subvention de fonctionnement (797.173 euros), avenant à la convention",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163867"
+    },
+    {
+      "seance": "JUILLET 2021",
+      "montant": "250.000 euros",
+      "objet": "Subvention d'équipement à la Fondation, avec convention",
+      "citation": "subvention d’équipement (250.000 euros) et convention avec la Fondation de la Cité Internationale des Arts (Paris centre, 18e)",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163867"
+    },
+    {
+      "seance": "JUILLET 2017",
+      "montant": "820.173 euros",
+      "objet": "Subventions à la Fondation, avec avenant et convention (4e, 18e)",
+      "citation": "Subventions (820.173 euros), avenant et convention avec la Fondation de la Cité internationale des arts (4e, 18e).",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=137125"
+    },
+    {
+      "seance": "MAI 2011",
+      "montant": "709.173 euros",
+      "objet": "Subvention de fonctionnement 2011 à la Fondation, portée à ce montant (depuis 349.268 euros) par la délibération, qui autorise le Maire à signer un avenant à la convention",
+      "citation": "au titre de l?année 2011 est portée de 349.268 à 709.173 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97619"
+    },
+    {
+      "seance": "MAI 2011",
+      "montant": "359.905 euros",
+      "objet": "Dépense correspondant à l'avenant 2011",
+      "citation": "La dépense correspondante, soit 359.905 euros, sera imputée sur le budget de fonctionnement de l?année 2011",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97619"
+    },
+    {
+      "seance": "OCTOBRE 2010",
+      "montant": "698.535 euros",
+      "objet": "Subvention de fonctionnement 2010 à la Fondation, portée à ce montant (depuis 354.586 euros) par la délibération, qui autorise le Maire à signer un avenant à la convention",
+      "citation": "au titre de l?année 2010 est portée de 354.586 euros à 698.535 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23539"
+    },
+    {
+      "seance": "OCTOBRE 2010",
+      "montant": "343.949 euros",
+      "objet": "Dépense correspondant à l'avenant 2010",
+      "citation": "La dépense correspondante soit 343.949 euros sera imputée sur le budget de fonctionnement de l?année 2010",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23539"
+    },
+    {
+      "seance": "OCTOBRE 2010",
+      "montant": "698.535 euros",
+      "objet": "Subvention de fonctionnement 2010 à la Fondation, portée à ce montant (depuis 354.586 euros) par la délibération, qui autorise le Maire à signer un avenant à la convention",
+      "citation": "au titre de l?année 2010 est portée de 354.586 euros à 698.535 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=86669"
+    },
+    {
+      "seance": "OCTOBRE 2010",
+      "montant": "343.949 euros",
+      "objet": "Dépense correspondant à l'avenant 2010",
+      "citation": "La dépense correspondante soit 343.949 euros sera imputée sur le budget de fonctionnement de l?année 2010",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=86669"
+    },
+    {
+      "seance": "NOVEMBRE 2008",
+      "montant": "2.000 euros",
+      "objet": "Subvention à l'association Ad' Rêv (et non à la Fondation) pour le spectacle « A quoi je tiens » présenté à la Cité",
+      "citation": "La dépense correspondante, soit 2.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2008",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61536"
+    },
+    {
+      "seance": "SEPTEMBRE 2008",
+      "montant": "286.673 euros",
+      "objet": "Subvention de fonctionnement 2008 à la Fondation, avec avenant à la convention annuelle d'objectifs",
+      "citation": "La dépense correspondante, soit 286.673 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2008",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67042"
+    },
+    {
+      "seance": "SEPTEMBRE 2009",
+      "montant": "709.173 euros",
+      "objet": "Subvention de fonctionnement 2009 à la Fondation, portée à ce montant (depuis 354.587 euros) par la délibération, qui autorise le Maire à signer un avenant à la convention",
+      "citation": "au titre de l?année 2009 est portée de 354.587 euros à 709.173 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37302"
+    },
+    {
+      "seance": "SEPTEMBRE 2009",
+      "montant": "354.586 euros",
+      "objet": "Dépense correspondant à l'avenant 2009",
+      "citation": "La dépense correspondante, soit 354.586 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2009",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37302"
+    },
+    {
+      "seance": "SEPTEMBRE 2004",
+      "montant": "761.200 euros",
+      "objet": "Montant affiché dans le titre du débat 2004 DAC 153, avant l'examen de l'amendement n° 41 dont le contenu n'est pas cité ; la délibération 2004 DAC 153 indique une dépense de 851.000 euros",
+      "citation": "Subvention de fonctionnement à la Fondation de la Cité internationale des arts (4e). - Montant : 761.200 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11256"
+    },
+    {
+      "seance": "OCTOBRE 1998",
+      "montant": "800.000 F",
+      "objet": "Subvention d'investissement pour aider aux travaux de mise aux normes d'hygiène et de sécurité de 132 ateliers-logements du bâtiment A",
+      "citation": "Une subvention d'investissement de 800.000 F est attribuée à la Cité internationale des arts",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64861"
+    },
+    {
+      "seance": "JUILLET 2007",
+      "montant": "845.000 euros",
+      "objet": "Subvention de fonctionnement 2007 à la Fondation",
+      "citation": "La dépense correspondante, soit 845.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2007",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90586"
+    },
+    {
+      "seance": "NOVEMBRE 2003",
+      "montant": "680.000 euros",
+      "objet": "Subvention de fonctionnement 2003 à la Fondation",
+      "citation": "La dépense correspondante, soit 680.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2003",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94532"
+    },
+    {
+      "seance": "SEPTEMBRE 2004",
+      "montant": "851.000 euros",
+      "objet": "Subvention de fonctionnement 2004 à la Fondation",
+      "citation": "La dépense correspondante, soit 851.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2004",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46685"
+    },
+    {
+      "seance": "MAI 2006",
+      "montant": "845.000 euros",
+      "objet": "Subvention de fonctionnement 2006 à la Fondation",
+      "citation": "La dépense correspondante, soit 845.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2006",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89065"
+    },
+    {
+      "seance": "MARS 2002",
+      "montant": "668.711 euros",
+      "objet": "Subvention de fonctionnement 2002 à la Fondation",
+      "citation": "Art. 2.- Une subvention de 668.711 euros est attribuée à la Fondation de la Cité Internationale des Arts.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38829"
+    },
+    {
+      "seance": "NOVEMBRE 2003",
+      "montant": "680.000 euros",
+      "objet": "Subvention de fonctionnement 2003 à la Fondation, objet du débat",
+      "citation": "une subvention de fonctionnement à la Fondation de la cité internationale des arts pour un montant de 680.000 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21207"
+    },
+    {
+      "seance": "NOVEMBRE 2003",
+      "montant": "40.000 euros",
+      "objet": "Baisse de la subvention 2003 qui résulterait, selon Mme de Clermont-Tonnerre, de l'absence de délibération complémentaire",
+      "citation": "Si tel ne devait pas être le cas, la cité des arts verrait alors sa subvention 2003 arbitrairement diminuée de 40.000 euros.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21207"
+    },
+    {
+      "seance": "NOVEMBRE 2003",
+      "montant": "668.711 euros",
+      "objet": "Première subvention 2002, citée par M. Girard",
+      "citation": "En 2002, à une première subvention de 668.711 euros avait été ajoutée une autre complémentaire de 54.864 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21207"
+    },
+    {
+      "seance": "NOVEMBRE 2003",
+      "montant": "54.864 euros",
+      "objet": "Subvention complémentaire 2002, selon M. Girard (la délibération 2002 DAC 479 indique pour l'avenant de 2002 une dépense de 54.684 euros)",
+      "citation": "En 2002, à une première subvention de 668.711 euros avait été ajoutée une autre complémentaire de 54.864 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21207"
+    },
+    {
+      "seance": "AVRIL 2005",
+      "montant": "845.000 euros",
+      "objet": "Subvention de fonctionnement 2005 à la Fondation",
+      "citation": "La dépense correspondante, soit 845.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2005",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43593"
+    },
+    {
+      "seance": "MARS 2002",
+      "montant": "668.711 euros",
+      "objet": "Subvention de fonctionnement 2002 à la Fondation, objet du débat",
+      "citation": "la subvention à la Fondation de la Cité internationale des arts pour un montant de 668.711 euros",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7434"
+    },
+    {
+      "seance": "DECEMBRE 2002",
+      "montant": "54.684 euros",
+      "objet": "Dépense liée à l'avenant 2002 à la convention d'objectifs avec la Fondation",
+      "citation": "La dépense correspondante, soit 54.684 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2002.",
+      "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71525"
+    }
+  ],
   "bmo_extraits": [],
   "bmo_recit": null,
   "delibs_par_annee": {
@@ -457,7 +751,7 @@
     },
     "bmo": {
       "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-      "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+      "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Cit%C3%A9+internationale+des+arts%22%29"
     },
     "invest": {
       "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
@@ -468,6 +762,7 @@
       "url": "https://fr.wikipedia.org/"
     }
   },
+  "synthese_en": "The deliberations of the Conseil de Paris cite a lease dated 24 June and 7 July 1950 under which the City leases municipal buildings and land in the 4th arrondissement to the Fondation de la Cité internationale des arts; in 1999 and then in 2008, the Council authorizes the Mayor to sign amendments to remove from it first the building at 58, rue de l'Hôtel-de-Ville, whose sale by lots it approves in principle, then volumes 101 to 105, the draft deliberation referring to the footprint of the Albert Schweitzer public garden, the unbuilt subsoil and the tunnels of RER lines A and D. In 1998, an investment grant of 800,000 francs is awarded to help carry out works to bring 132 studio-residences in building A up to hygiene and safety standards; the Council then awards the Fondation an operating grant of 668,711 euros in 2002, 851,000 euros in 2004 and 845,000 euros from 2005 to 2007, then, by authorizing the signature of amendments, sets it at 709,173 euros in 2009 and in 2011. In session, Mme de Clermont-Tonnerre points out in 2002 what she considers an inaccuracy regarding the expiry date of the lease and in 2003 deems the wording of the grant proposal imprecise, M. Girard replying that its amount takes into account the fact that the rent for rue Norvins was not actually increased. In 2017 and 2018, Mme Atallah states that 1,200 artists were hosted in 2016 on two sites, in the Marais and in Montmartre, and, referring to the 20 studios the City has at the Cité, asks what the plan would be for the 10 that, according to her, the 2018 deliberation does not cover; the titles of the deliberations from 2021 to 2026 announce an equipment grant of 250,000 euros, another of 320,000 euros under the 2021 Participatory Budget, and agreements for hosting ICORN residents.",
   "license": {
     "id": "ODbL-1.0",
     "url": "https://opendatacommons.org/licenses/odbl/1-0/",

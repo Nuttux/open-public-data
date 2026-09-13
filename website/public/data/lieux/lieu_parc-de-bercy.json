@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "parc-de-bercy",
   "name": "Parc de Bercy",
@@ -17,6 +17,7 @@
     "source": "Wikimedia Commons"
   },
   "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
     "extract": "Le parc de Bercy est un ensemble de trois jardins situés dans le quartier de Bercy du 12e arrondissement de Paris, entre le Palais omnisports de Paris-Bercy et le centre commercial et de restauration Bercy Village, à l'emplacement des anciens entrepôts de Bercy.",
     "url": "https://fr.wikipedia.org/wiki/Parc_de_Bercy",

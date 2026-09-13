@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T16:16:23.662384+00:00",
+  "generated_at": "2026-09-13T11:15:42.363539+00:00",
   "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
   "slug": "theatre-de-la-ville",
   "name": "Théâtre de la Ville",
@@ -17,6 +17,7 @@
     "source": "Wikipédia"
   },
   "seuil_commun": 2010,
+  "premier_exercice_investissement": 2009,
   "wiki": {
     "extract": "Le théâtre de la Ville - Sarah-Bernhardt est un théâtre parisien situé 2, place du Châtelet dans 4e arrondissement. Il est devenu à partir du début des années 1980 un lieu majeur de promotion et de reconnaissance internationale de la danse contemporaine et de ses jeunes créateurs. Il possède également, depuis 1996, une deuxième salle, dans le nord de Paris, le théâtre des Abbesses.",
     "url": "https://fr.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_de_la_Ville_-_Sarah-Bernhardt",
@@ -32,7 +33,7 @@
       1996,
       2024
     ],
-    "n_bmo_brut": 2544,
+    "n_bmo_brut": 3788,
     "n_bmo_verifies": 1,
     "invest_total_eur": 0,
     "invest_annees": [],
