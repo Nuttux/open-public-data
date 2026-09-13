@@ -131,7 +131,16 @@ export default function proxy(req: NextRequest) {
   const card = /\/((?:opengraph|twitter)-image(?:-[\w-]+)?|icon|apple-icon)$/.exec(pathname);
   if (card) {
     const page = pathname.slice(0, card.index) || '/';
-    const movedPage = parsePath(page) ? null : legacyToNew(page, langForLegacyHost(host));
+    const segs = page.split('/').filter(Boolean);
+    const parsedPage = parsePath(page);
+    // A translated site page's card lives under the route's French key (/en/method → /en/methode/…).
+    if (!onLegacyHost && parsedPage?.kind === 'site' && SITE_PAGE_SLUGS[parsedPage.page][parsedPage.lang] !== parsedPage.page) {
+      const route = ['', parsedPage.lang, parsedPage.page, ...parsedPage.rest, card[1]].join('/');
+      return NextResponse.rewrite(new URL(route + req.nextUrl.search, req.url));
+    }
+    // …which is also the address Next writes in og:image: serve it as is.
+    if (!onLegacyHost && LANGS.includes(segs[0] as Lang) && segs[1] in SITE_PAGE_SLUGS) return NextResponse.next();
+    const movedPage = parsedPage ? null : (misspelledSitePage(page) ?? legacyToNew(page, langForLegacyHost(host)));
     if (movedPage || onLegacyHost) {
       return redirectTo(req, target, `${(movedPage ?? page).replace(/\/$/, '')}/${card[1]}`, 308, true);
     }
