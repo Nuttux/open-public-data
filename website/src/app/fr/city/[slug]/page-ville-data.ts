@@ -52,7 +52,7 @@ export function compareOptions(slug: string, limit = 60): { slug: string; nom: s
     .sort((a, b) => b.pop - a.pop);
 }
 
-export async function loadPageVille(slug: string, requestedYear?: number, en = false): Promise<Omit<PageVilleProps, "related"> & { related: RelatedBlock | null } | null> {
+export async function loadPageVille(slug: string, requestedYear?: number, en = false, vs?: string): Promise<Omit<PageVilleProps, "related"> & { related: RelatedBlock | null } | null> {
   const commune = findCommuneByAny(slug);
   if (!commune) return null;
   const caps = getCommuneCapabilities(slug);
@@ -101,7 +101,11 @@ export async function loadPageVille(slug: string, requestedYear?: number, en = f
   const options = compareOptions(slug);
   const idx = loadAllCommunesIndex();
   const defaultOther = options.length ? options.slice().sort((a, b) => Math.abs(a.pop - commune.pop) - Math.abs(b.pop - commune.pop))[0] : null;
-  const compare = me && idx ? { me, other: defaultOther ? entry(defaultOther.slug) : null, options, year: idx.year } : null;
+  // `?vs=` : la commune que le lecteur a choisie, n'importe laquelle des
+  // 34 900 — la liste du département n'est plus qu'une suggestion.
+  const chosen = vs ? findCommuneByAny(vs) : null;
+  const otherSlug = chosen && chosen.slug !== commune.slug ? chosen.slug : defaultOther?.slug;
+  const compare = me && idx ? { me, other: otherSlug ? entry(otherSlug) : null, options, year: idx.year } : null;
 
   // « Voir aussi » : les communes du même département au budget publié, les
   // plus peuplées d'abord — jamais un lien vers une page qui n'existe pas.

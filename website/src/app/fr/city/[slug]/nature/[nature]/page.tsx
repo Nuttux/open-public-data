@@ -31,17 +31,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const nom = r.doc.commune.nom;
   const c = r.nature.comparaison;
   const top = r.nature.fonctions[0];
-  const pt = (v: number, en: boolean) => `${v >= 0 ? "+" : "−"}${Math.abs(v).toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 1 })} pt`;
   const titreFr = `${r.nature.libelle} ${aNom(nom)} : ${euroCourt(r.nature.montant, false)} en ${r.doc.annee}`;
   const titreEn = `${r.nature.libelle_en} in ${nom}: ${euroCourt(r.nature.montant, true)} in ${r.doc.annee}`;
   const descFr = [
     top ? `D'abord pour ${top.libelle.toLowerCase()} (${euroCourt(top.montant, false)}).` : "",
-    c ? `${nom} y consacre ${c.part.toLocaleString("fr-FR", { maximumFractionDigits: 1 })} % de son fonctionnement, contre ${c.part_mediane.toLocaleString("fr-FR", { maximumFractionDigits: 1 })} % pour la médiane des communes de ${r.doc.strate?.libelle ?? "sa taille"} (${pt(c.ecart_pt, false)}).` : "",
+    c ? `${nom} y consacre ${c.part.toLocaleString("fr-FR", { maximumFractionDigits: 1 })} % de son fonctionnement, contre ${c.part_mediane.toLocaleString("fr-FR", { maximumFractionDigits: 1 })} % en général dans les communes de ${r.doc.strate?.libelle ?? "sa taille"}.` : "",
     "Dans quelles politiques publiques, et quels comptes, source DGFiP.",
   ].filter(Boolean).join(" ");
   const descEn = [
     top ? `Mostly for ${top.libelle_en.toLowerCase()} (${euroCourt(top.montant, true)}).` : "",
-    c ? `${nom} devotes ${c.part.toLocaleString("en-GB", { maximumFractionDigits: 1 })}% of its operations to this, against ${c.part_mediane.toLocaleString("en-GB", { maximumFractionDigits: 1 })}% for the median of towns of ${r.doc.strate?.libelle_en ?? "its size"} (${pt(c.ecart_pt, true)}).` : "",
+    c ? `${nom} devotes ${c.part.toLocaleString("en-GB", { maximumFractionDigits: 1 })}% of its operations to this, against ${c.part_mediane.toLocaleString("en-GB", { maximumFractionDigits: 1 })}% typically for towns of ${r.doc.strate?.libelle_en ?? "its size"}.` : "",
     "Which public policies it goes to, and which accounts, from DGFiP data.",
   ].filter(Boolean).join(" ");
   return buildLocaleAwareMetadata({ title: titreFr, description: descFr, en: { title: titreEn, description: descEn }, path: `/fr/city/${slug}/nature/${nature}` });

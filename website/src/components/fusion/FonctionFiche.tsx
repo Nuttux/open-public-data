@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useLocale, useT } from "@/lib/localeContext";
+import { sensDe } from "@/lib/ecart-mots";
 import type { CommuneFonctions, FonctionLigne, FonctionPart } from "@/lib/commune-fonctions";
 
 /**
@@ -68,9 +69,7 @@ export default function FonctionFiche({
           {/* La PRIORITÉ d'abord — la part du budget, qui ne dépend pas de la
               richesse de la commune. Le niveau en euros vient après, en second. */}
           <p className="fx-fonc-verdict">
-            <b className={c.ecart_pt >= 0 ? "plus" : "moins"}>
-              {c.ecart_pt >= 0 ? "+" : "−"}{Math.abs(c.ecart_pt).toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 1 })}&nbsp;pt
-            </b>{" "}
+            <b className={c.ecart_pt >= 0 ? "plus" : "moins"}>{t(`fx.fonc.sens_${sensDe(c.ecart_pt)}`)}</b>{" "}
             {fill("fx.fonc.verdict_part", {
               nom, part: c.part.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 1 }),
               med: c.part_mediane.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 1 }),

@@ -32,17 +32,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const c = r.fonction.comparaison;
   const strateFr = r.doc.strate?.libelle ?? "sa taille";
   const strateEn = r.doc.strate?.libelle_en ?? "its size";
-  const pt = (v: number, en: boolean) => `${v >= 0 ? "+" : "−"}${Math.abs(v).toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 1 })} pt`;
   // Le titre RÉPOND, avec les chiffres de la page — la règle SEO du site. La
   // description dit la PRIORITÉ (part du budget), pas les euros : c'est la
   // lecture qui ne dépend pas de la richesse de la commune.
   const titreFr = `${r.fonction.libelle} ${aNom(nom)} : ${euroCourt(r.fonction.montant, false)} en ${r.doc.annee}`;
   const titreEn = `${r.fonction.libelle_en} in ${nom}: ${euroCourt(r.fonction.montant, true)} in ${r.doc.annee}`;
   const descFr = c
-    ? `${nom} y consacre ${c.part.toLocaleString("fr-FR", { maximumFractionDigits: 1 })} % de son budget de fonctionnement, contre ${c.part_mediane.toLocaleString("fr-FR", { maximumFractionDigits: 1 })} % pour la médiane des communes de ${strateFr} (${pt(c.ecart_pt, false)}). Le détail par domaine et par nature de dépense, source DGFiP.`
+    ? `${nom} y consacre ${c.part.toLocaleString("fr-FR", { maximumFractionDigits: 1 })} % de son budget de fonctionnement, contre ${c.part_mediane.toLocaleString("fr-FR", { maximumFractionDigits: 1 })} % en général dans les communes de ${strateFr}. Le détail par domaine et par nature de dépense, source DGFiP.`
     : `Le détail par domaine et par nature de dépense, à partir des balances comptables de la DGFiP.`;
   const descEn = c
-    ? `${nom} devotes ${c.part.toLocaleString("en-GB", { maximumFractionDigits: 1 })}% of its operating budget to this, against ${c.part_mediane.toLocaleString("en-GB", { maximumFractionDigits: 1 })}% for the median of towns of ${strateEn} (${pt(c.ecart_pt, true)}). Breakdown by area and by type of spending, from DGFiP accounts.`
+    ? `${nom} devotes ${c.part.toLocaleString("en-GB", { maximumFractionDigits: 1 })}% of its operating budget to this, against ${c.part_mediane.toLocaleString("en-GB", { maximumFractionDigits: 1 })}% typically for towns of ${strateEn}. Breakdown by area and by type of spending, from DGFiP accounts.`
     : `Breakdown by area and by type of spending, from DGFiP accounting balances.`;
   return buildLocaleAwareMetadata({
     title: titreFr,

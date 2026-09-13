@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, useTransition, type ReactNode } from "react";
 import { useCountUp } from "@/lib/use-count-up";
 import { useRevealOnScroll } from "@/lib/use-reveal-on-scroll";
 import Navbar from "@/components/fusion/Navbar";
@@ -18,6 +18,7 @@ import type { EvolutionData } from "@/lib/commune-evolution";
 import type { InvestissementsData } from "@/lib/commune-investissements";
 import type { MarchesData } from "@/lib/commune-marches";
 import { displayFournisseur } from "@/lib/fournisseur-display";
+import CommunePicker from "@/components/fusion/CommunePicker";
 import type { PeerComparison } from "@/lib/commune-peers";
 import type { ChantiersData } from "@/lib/commune-chantiers";
 import { displayNomElu, type Maire } from "@/lib/commune-maires";
@@ -474,7 +475,13 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
   const tfRate = (x: number) => x.toLocaleString(en ? "en-GB" : "fr-FR", { maximumFractionDigits: 2 });
 
   /* ── 6. Comparer ── */
-  const [otherSlug, setOtherSlug] = useState(compare?.other?.slug ?? "");
+  const [cmpPending, startCmp] = useTransition();
+  /** L'URL de la page avec un paramètre changé, les autres conservés (année, comparaison). */
+  const withParam = (key: string, value: string) => {
+    const sp = new URLSearchParams(typeof window === "undefined" ? "" : window.location.search);
+    sp.set(key, value);
+    return `/fr/city/${commune.slug}?${sp.toString()}`;
+  };
   const other = compare?.other ?? null;
 
   const H2 = ({ id, children, sub }: { id: string; children: React.ReactNode; sub?: React.ReactNode }) => (
@@ -528,7 +535,7 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                       className="fx-pv-yearsel"
                       aria-label={t("fx.pv.annee_label")}
                       value={year}
-                      onChange={(e) => router.push(`/fr/city/${commune.slug}?year=${e.target.value}`, { scroll: false })}
+                      onChange={(e) => router.push(withParam("year", e.target.value), { scroll: false })}
                     >
                       {availableYears.map((y) => <option key={y} value={y}>{y}</option>)}
                     </select></span>
@@ -659,18 +666,16 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
                             {f.comparaison ? <span className="med">{fill("fx.pv.fonc.med_court", { n: Math.round(f.comparaison.part_mediane) })}</span> : null}
                           </span>
                           {f.comparaison ? (
-                            /* Sur t\u00e9l\u00e9phone, l'\u00e9cart est \u00e9crit sous la bande : \u00ab +3 pt \u00b7
-                               m\u00e9diane 28 % \u00bb. Masqu\u00e9 sur grand \u00e9cran, o\u00f9 la colonne
-                               \u00ab pairs \u00bb le dit d\u00e9j\u00e0. */
+                            /* Sur téléphone, l'écart est écrit sous la bande, en mots : « moins
+                               qu'ailleurs (21 %) ». Masqué sur grand écran, où la colonne
+                               « ailleurs » le dit déjà. */
                             <span className="ecart tnum">
                               {Math.abs(f.comparaison.ecart_pt) < 0.5 ? (
                                 fill("fx.pv.fonc.ecart_egal", { n: Math.round(f.comparaison.part_mediane) })
                               ) : (
                                 <>
-                                  <b className={f.comparaison.ecart_pt >= 0 ? "plus" : "moins"}>
-                                    {f.comparaison.ecart_pt >= 0 ? "+" : "\u2212"}{Math.round(Math.abs(f.comparaison.ecart_pt))}&nbsp;pt
-                                  </b>
-                                  {` \u00b7 ${fill("fx.pv.fonc.ecart_med", { n: Math.round(f.comparaison.part_mediane) })}`}
+                                  <b className={f.comparaison.ecart_pt > 0 ? "plus" : "moins"}>{t(f.comparaison.ecart_pt > 0 ? "fx.pv.fonc.ecart_plus" : "fx.pv.fonc.ecart_moins")}</b>
+                                  {` ${fill("fx.pv.fonc.ecart_ailleurs", { n: Math.round(f.comparaison.part_mediane) })}`}
                                 </>
                               )}
                             </span>
@@ -913,22 +918,20 @@ export default function PageVilleClient({ commune, budget, evolution, invest, ma
               <H2 id="comparer">{t("fx.pv.comparer")}</H2>
               <div className="fx-pv-pick">
                 <span>{fill("fx.pv.face_a", { nom: commune.nom })}</span>
-                <select
-                  aria-label={t("fx.pv.changer")}
-                  value={otherSlug}
-                  onChange={(e) => {
-                    setOtherSlug(e.target.value);
-                    if (e.target.value) router.push(`/fr/compare/${commune.slug}/${e.target.value}`);
-                  }}
-                >
-                  {!other ? <option value="">{t("fx.pv.changer")}</option> : null}
-                  {compare.options.map((o) => (
-                    <option key={o.slug} value={o.slug}>{o.nom} · {int.format(o.pop)} {t("fx.natbud.hab")}</option>
-                  ))}
-                </select>
+                <CommunePicker
+                  label={t("fx.pv.changer")}
+                  exclude={commune.slug}
+                  current={other ? { slug: other.slug, nom: other.nom, pop: other.pop } : null}
+                  suggestions={compare.options
+                    .filter((o) => o.slug !== other?.slug)
+                    .sort((a, b) => Math.abs(a.pop - commune.pop) - Math.abs(b.pop - commune.pop))
+                    .slice(0, 6)
+                    .map((o) => ({ ...o, dep_name: commune.dep_name }))}
+                  onPick={(c) => startCmp(() => router.push(withParam("vs", c.slug), { scroll: false }))}
+                />
               </div>
               {other ? (
-                <div className="fx-pv-vs">
+                <div className={`fx-pv-vs${cmpPending ? " is-pending" : ""}`} aria-busy={cmpPending}>
                   <div className="legend"><span><i className="a" />{commune.nom}</span><span><i className="b" />{other.nom}</span></div>
                   {COMPARE_KEYS.map((k) => {
                     const a = compare.me.kpis[k];

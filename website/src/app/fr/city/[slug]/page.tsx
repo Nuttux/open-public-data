@@ -108,7 +108,7 @@ export default async function CityPage({
   searchParams,
 }: {
   params: Promise<{ slug: string }>;
-  searchParams: Promise<{ year?: string }>;
+  searchParams: Promise<{ year?: string; vs?: string }>;
 }) {
   const { slug } = await params;
 
@@ -151,7 +151,7 @@ export default async function CityPage({
     if (caps.budget.nature) {
       const sp = await searchParams;
       const locale = await readLocale();
-      const pv = await loadPageVille(slim.slug, sp.year ? Number(sp.year) : undefined, locale === "en");
+      const pv = await loadPageVille(slim.slug, sp.year ? Number(sp.year) : undefined, locale === "en", sp.vs);
       if (pv) return <PageVilleClient {...pv} />;
     }
     return (

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useLocale, useT } from "@/lib/localeContext";
+import { sensDe } from "@/lib/ecart-mots";
 import type { CommuneFonctions, FonctionLigne, NatureFamille } from "@/lib/commune-fonctions";
 
 /**
@@ -66,7 +67,7 @@ export default function CommuneNatureFiche({
         <section className="fx-fonc-bloc">
           <h3>{t("fx.fonc.h_compare")}</h3>
           <p className="fx-fonc-verdict">
-            <b className={c.ecart_pt >= 0 ? "plus" : "moins"}>{c.ecart_pt >= 0 ? "+" : "−"}{dec1(Math.abs(c.ecart_pt))}&nbsp;pt</b>{" "}
+            <b className={c.ecart_pt >= 0 ? "plus" : "moins"}>{t(`fx.fonc.sens_${sensDe(c.ecart_pt)}`)}</b>{" "}
             {fill("fx.fonc.verdict_part", { nom, part: dec1(c.part), med: dec1(c.part_mediane), strate: en ? doc.strate.libelle_en : doc.strate.libelle })}
           </p>
           <div className="fx-fonc-regle" aria-hidden="true">
