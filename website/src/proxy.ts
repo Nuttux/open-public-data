@@ -123,6 +123,21 @@ export default function proxy(req: NextRequest) {
   const target = canonicalHost(host);
   const onLegacyHost = target !== host.toLowerCase();
   const { pathname, searchParams } = req.nextUrl;
+
+  // Share cards and icons of a page (/fr/opengraph-image, …/twitter-image) sit
+  // under the page's own address and have no extension. They follow their page:
+  // an address stays, a legacy page moves with its card. Without this, the
+  // landing's /fr/opengraph-image read as the legacy French tree and moved.
+  const card = /\/((?:opengraph|twitter)-image(?:-[\w-]+)?|icon|apple-icon)$/.exec(pathname);
+  if (card) {
+    const page = pathname.slice(0, card.index) || '/';
+    const movedPage = parsePath(page) ? null : legacyToNew(page, langForLegacyHost(host));
+    if (movedPage || onLegacyHost) {
+      return redirectTo(req, target, `${(movedPage ?? page).replace(/\/$/, '')}/${card[1]}`, 308, true);
+    }
+    return NextResponse.next();
+  }
+
   const langParam = searchParams.get('lang') as Lang | null;
   const askedLang = langParam && LANGS.includes(langParam) ? langParam : null;
 
