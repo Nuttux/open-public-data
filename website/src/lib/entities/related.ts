@@ -10,7 +10,8 @@ import { cityJsonPath, readDataJsonOrNull } from "@/lib/data/read";
 import { makeFmt } from "@/lib/fmt";
 import { getCity } from "@/lib/cities";
 import { relatedInt, relatedT } from "@/lib/related-t";
-import { canonicalBailleurSlug, getProjetNameEn, loadArrondissementGaranties, loadArrondissementLogement, PARIS_CENTRE_SLUG, type BudgetPosteFiche, type MarcheCategorieFiche, type ThemeSubventionsFiche, loadArrondissement, loadChapitre, loadFournisseur, loadThemeSubventions, type FournisseurFiche, type ProjetFiche } from "@/lib/fusion-data";
+import { NATURE_GROUPS, NATURE_LABELS } from "@/lib/budget-natures";
+import { canonicalBailleurSlug, getProjetNameEn, loadBudgetNature, type BudgetNatureFiche, loadArrondissementGaranties, loadArrondissementLogement, PARIS_CENTRE_SLUG, type BudgetPosteFiche, type MarcheCategorieFiche, type ThemeSubventionsFiche, loadArrondissement, loadChapitre, loadFournisseur, loadThemeSubventions, type FournisseurFiche, type ProjetFiche } from "@/lib/fusion-data";
 import { trLabel } from "@/lib/label-translate";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { serviceToM57, slugifyChapitre, slugifyLabel } from "@/lib/projet-utils";
@@ -511,4 +512,24 @@ export function marseilleLieuRelated(place: MarseillePlace, locale: L): RelatedB
   ].slice(0, 5);
   rows.push({ href: `${base}/lieux`, label: t("fx.related.mlieu.hub"), sub: t("fx.related.mlieu.hub_sub") });
   return { title: t("fx.related.title"), sub: t("fx.related.mlieu.block_sub"), rows };
+}
+
+/** Kind of spending (Paris budget): the other kinds of the same year, then the budget page. */
+export function natureRelated(n: BudgetNatureFiche, locale: L): RelatedBlock | null {
+  const t = relatedT(locale);
+  const base = "/fr/city/paris/budget";
+  const rows: RelatedRow[] = NATURE_GROUPS
+    .filter((g) => g.key !== n.key)
+    .map((g) => loadBudgetNature(g.key, n.year))
+    .filter((x): x is BudgetNatureFiche => x != null && x.total > 0)
+    .sort((a, b) => b.total - a.total)
+    .slice(0, 5)
+    .map((x) => ({
+      href: `${base}/nature/${x.key}?year=${n.year}`,
+      label: NATURE_LABELS[x.key][locale],
+      sub: t("fx.related.nature.peer_sub", { year: n.year }),
+      amount: eur(x.total, locale),
+    }));
+  rows.push({ href: `${base}?year=${n.year}`, label: t("fx.related.poste.hub", { city: "Paris", year: n.year }), sub: t("fx.related.poste.hub_sub") });
+  return { title: t("fx.related.title"), sub: t("fx.related.nature.block_sub", { year: n.year }), rows };
 }

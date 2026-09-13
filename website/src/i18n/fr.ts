@@ -6400,6 +6400,8 @@ const fr: Record<string, string> = {
   'fx.related.mlieu.same_fam': '{kind}, même famille de lieux',
   'fx.related.mlieu.hub': 'Tous les lieux publics de Marseille',
   'fx.related.mlieu.hub_sub': 'Chaque lieu sur la carte, avec sa photo et sa note',
+  'fx.related.nature.block_sub': 'Les autres natures de dépense du budget {year}.',
+  'fx.related.nature.peer_sub': 'Nature de dépense, {year}',
 
   // ── US · SF see also — EN-only (values mirrored verbatim in the other locale file) ──
   'us.sf.related.title': 'See also',

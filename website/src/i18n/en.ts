@@ -6647,6 +6647,8 @@ const en: Record<string, string> = {
   'fx.related.mlieu.same_fam': '{kind}, same family of places',
   'fx.related.mlieu.hub': 'Every public place in Marseille',
   'fx.related.mlieu.hub_sub': 'Every place on the map, with its photo and its note',
+  'fx.related.nature.block_sub': 'The other kinds of spending in the {year} budget.',
+  'fx.related.nature.peer_sub': 'Kind of spending, {year}',
 
   // ── Veja também / See also — Recife (components/fiche/RelatedLinks.tsx, lib/br/recife-related.ts) ──
   'br.recife.related.title': 'See also',

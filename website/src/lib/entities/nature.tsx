@@ -4,6 +4,7 @@ import type { EntityPageConfig } from "@/lib/entity-page";
 import { loadBudgetNature } from "@/lib/fusion-data";
 import { NATURE_LABELS } from "@/lib/budget-natures";
 import { eur, pct, int, ordFr, ordEn, sourceLine } from "@/lib/entities/seo-text";
+import { natureRelated } from "@/lib/entities/related";
 
 type D = {
   nature: NonNullable<ReturnType<typeof loadBudgetNature>>;
@@ -73,6 +74,7 @@ export const natureConfig: EntityPageConfig<D> = {
       answer: `En ${n.year}, ${les} représentent ${amt}, soit ${share} des dépenses ${voted ? "votées" : "exécutées"} de la Ville de Paris (${rankFr} nature de dépense sur ${n.nbNatures}), ${perHab} € par habitant${top ? `, la plus grosse part allant à ${top.label} (${eur(top.value, locale)})` : ""}. ${sourceLine("fr", "opendata.paris.fr (comptes administratifs et budgets primitifs, M57)", null)}`,
     };
   },
+  related: ({ nature }, locale) => natureRelated(nature, locale),
   page: {
     header: ({ nature, year }, locale) => (
       <>
