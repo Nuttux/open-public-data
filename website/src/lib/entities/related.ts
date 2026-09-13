@@ -9,8 +9,8 @@
 import { cityJsonPath, readDataJsonOrNull } from "@/lib/data/read";
 import { makeFmt } from "@/lib/fmt";
 import { getCity } from "@/lib/cities";
-import { relatedT } from "@/lib/related-t";
-import { canonicalBailleurSlug, getProjetNameEn, loadArrondissement, loadChapitre, loadFournisseur, loadThemeSubventions, type FournisseurFiche, type ProjetFiche } from "@/lib/fusion-data";
+import { relatedInt, relatedT } from "@/lib/related-t";
+import { canonicalBailleurSlug, getProjetNameEn, loadArrondissementGaranties, loadArrondissementLogement, PARIS_CENTRE_SLUG, type BudgetPosteFiche, type MarcheCategorieFiche, type ThemeSubventionsFiche, loadArrondissement, loadChapitre, loadFournisseur, loadThemeSubventions, type FournisseurFiche, type ProjetFiche } from "@/lib/fusion-data";
 import { trLabel } from "@/lib/label-translate";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { serviceToM57, slugifyChapitre, slugifyLabel } from "@/lib/projet-utils";
@@ -334,4 +334,160 @@ export function lieuRelated(lieu: LieuFicheData, locale: L): RelatedBlock | null
     sub: arr > 0 ? t("fx.related.lieu.block_sub", { arr: ord }) : null,
     rows,
   };
+}
+
+/**
+ * Contract category (Paris): the other categories of the same year, the list
+ * of that year's contracts and the hub. A category slug resolves on the most
+ * recent year that carries it, so the row says which year its amount is for.
+ */
+export function categorieRelated(f: MarcheCategorieFiche, locale: L): RelatedBlock | null {
+  const t = relatedT(locale);
+  const base = "/fr/city/paris/marches";
+  const file = readDataJsonOrNull<{ data?: MarcheLite[]; marches?: MarcheLite[] }>(`marches-publics/marches_${f.year}.json`);
+  const cats = new Map<string, { label: string; amount: number; n: number }>();
+  for (const r of file?.data ?? file?.marches ?? []) {
+    const label = r.categorie_libelle || r.nature || "Autres";
+    const slug = slugifyLabel(label);
+    if (slug === f.slug) continue;
+    const cur = cats.get(slug) ?? { label, amount: 0, n: 0 };
+    cur.amount += Number(r.montant_max ?? 0);
+    cur.n += 1;
+    cats.set(slug, cur);
+  }
+  const rows: RelatedRow[] = [...cats.entries()]
+    .filter(([, c]) => c.amount > 0)
+    .sort((a, b) => b[1].amount - a[1].amount)
+    .slice(0, 4)
+    .map(([slug, c]) => ({
+      href: `${base}/categorie/${slug}`,
+      label: trLabel(c.label, locale),
+      sub: t("fx.related.categorie.peer_sub", { n: relatedInt(c.n, locale), year: f.year }),
+      amount: eur(c.amount, locale),
+    }));
+  rows.push({ href: `${base}/contrats/${f.year}`, label: t("fx.related.marches.year", { year: f.year }), sub: t("fx.related.marches.year_sub") });
+  rows.push({ href: base, label: t("fx.related.marches.hub", { city: "Paris" }), sub: t("fx.related.marches.hub_sub") });
+  return { title: t("fx.related.title"), sub: t("fx.related.categorie.block_sub", { year: f.year }), rows };
+}
+
+/**
+ * Grants theme: the other themes of the same year (the loader folds every
+ * "Social - …" theme into the "social" fiche, so those are not listed as its
+ * neighbours), and the hub.
+ */
+export function themeRelated(f: ThemeSubventionsFiche, city: string, locale: L): RelatedBlock | null {
+  const t = relatedT(locale);
+  const base = `/fr/city/${city}/subventions`;
+  const file = readDataJsonOrNull<{ data: { beneficiaire: string; thematique?: string | null; montant_total: number }[] }>(cityJsonPath(city, `subventions/beneficiaires_${f.year}.json`));
+  const themes = new Map<string, { label: string; amount: number; names: Set<string> }>();
+  for (const r of file?.data ?? []) {
+    if (!r.thematique) continue;
+    const slug = slugifyLabel(r.thematique);
+    if (slug === f.slug || (f.slug === "social" && r.thematique.toLowerCase().startsWith("social"))) continue;
+    const cur = themes.get(slug) ?? { label: r.thematique, amount: 0, names: new Set<string>() };
+    cur.amount += r.montant_total;
+    cur.names.add(r.beneficiaire);
+    themes.set(slug, cur);
+  }
+  const rows: RelatedRow[] = [...themes.entries()]
+    .filter(([, x]) => x.amount > 0)
+    .sort((a, b) => b[1].amount - a[1].amount)
+    .slice(0, 5)
+    .map(([slug, x]) => ({
+      href: `${base}/theme/${slug}`,
+      label: trLabel(x.label, locale),
+      sub: t("fx.related.theme.peer_sub", { n: relatedInt(x.names.size, locale), year: f.year }),
+      amount: eur(x.amount, locale),
+    }));
+  rows.push({ href: base, label: t("fx.related.subv.hub", { city: getCity(city)?.nom ?? city }), sub: t("fx.related.subv.hub_sub") });
+  return { title: t("fx.related.title"), sub: t("fx.related.theme.block_sub", { year: f.year }), rows };
+}
+
+/**
+ * Budget item: the other items on the same side of the same year's budget
+ * (read off the sankey the item route resolves against, same year pinned in
+ * the link), then the budget page.
+ */
+export function posteRelated(p: BudgetPosteFiche, city: string, locale: L): RelatedBlock | null {
+  const t = relatedT(locale);
+  const base = `/fr/city/${city}/budget`;
+  const sk = readDataJsonOrNull<{ nodes?: { name: string; category?: string }[]; links: { source: string; target: string; value: number }[] }>(cityJsonPath(city, `budget_sankey_${p.year}.json`));
+  const central = sk?.nodes?.find((n) => n.category === "central")?.name;
+  const rows: RelatedRow[] = [];
+  if (sk && central) {
+    const siblings = sk.links
+      .filter((l) => (p.kind === "depense" ? l.source === central : l.target === central) && l.value > 0)
+      .map((l) => ({ label: p.kind === "depense" ? l.target : l.source, value: l.value }))
+      .filter((x) => slugifyLabel(x.label) !== p.slug)
+      .sort((a, b) => b.value - a.value)
+      .slice(0, 5);
+    for (const x of siblings) {
+      rows.push({
+        href: `${base}/poste/${slugifyLabel(x.label)}?year=${p.year}`,
+        label: trLabel(x.label, locale),
+        sub: t(p.kind === "depense" ? "fx.related.poste.peer_dep" : "fx.related.poste.peer_rec", { year: p.year }),
+        amount: eur(x.value, locale),
+      });
+    }
+  }
+  rows.push({ href: `${base}?year=${p.year}`, label: t("fx.related.poste.hub", { city: getCity(city)?.nom ?? city, year: p.year }), sub: t("fx.related.poste.hub_sub") });
+  return { title: t("fx.related.title"), sub: t(p.kind === "depense" ? "fx.related.poste.block_sub_dep" : "fx.related.poste.block_sub_rec", { year: p.year }), rows };
+}
+
+type ArrLens = "invest" | "logement" | "garanties";
+const ARR_BASE = "/fr/city/paris";
+/** 1–4 are merged into "Paris Centre" by the housing and guarantee fiches. */
+const CENTRE = [1, 2, 3, 4];
+/** The page of arrondissement `n` in a lens, when its loader resolves it. */
+function arrHref(lens: ArrLens, n: number): string | null {
+  if (lens === "invest") return loadArrondissement(n) ? `${ARR_BASE}/investissements/arrondissement/${n}` : null;
+  if (lens === "logement") return loadArrondissementLogement(String(n)) ? `${ARR_BASE}/logement/arrondissement/${n}` : null;
+  return loadArrondissementGaranties(n) ? `${ARR_BASE}/dette/garanties/arrondissement/${n}` : null;
+}
+/** Paris Centre's page in a lens, when that lens has one. */
+function centreHref(lens: ArrLens): string | null {
+  if (lens === "logement") return loadArrondissementLogement(PARIS_CENTRE_SLUG) ? `${ARR_BASE}/logement/arrondissement/${PARIS_CENTRE_SLUG}` : null;
+  if (lens === "garanties") return loadArrondissementGaranties(0) ? `${ARR_BASE}/dette/garanties/arrondissement/0` : null;
+  return null;
+}
+
+/**
+ * Arrondissement fiche (investment, social housing, guaranteed loans): the
+ * same arrondissement in the two other lenses, the previous and next
+ * arrondissements that have a page in this lens, and the lens hub. Every href
+ * is resolved through the loader of its route — the three lenses do not cover
+ * the same arrondissements (Paris Centre is merged in two of them).
+ */
+export function arrondissementRelated(lens: ArrLens, key: number | "centre", locale: L): RelatedBlock | null {
+  const t = relatedT(locale);
+  const where = (k: number | "centre") => (k === "centre" ? t("fx.related.arr.centre") : t("fx.related.arr.where", { arr: locale === "en" ? ordEn(k) : ordFr(k) }));
+  const row = (l: ArrLens, href: string, k: number | "centre", sub?: string): RelatedRow => ({ href, label: t(`fx.related.arr.${l}`, { where: where(k) }), sub: sub ?? t(`fx.related.arr.${l}_sub`) });
+  const rows: RelatedRow[] = [];
+  for (const other of (["invest", "logement", "garanties"] as ArrLens[]).filter((l) => l !== lens)) {
+    if (key === "centre") {
+      const c = centreHref(other);
+      if (c) rows.push(row(other, c, "centre"));
+      else for (const n of CENTRE) { const h = arrHref(other, n); if (h) rows.push(row(other, h, n)); }
+    } else {
+      const h = arrHref(other, key);
+      const c = !h && CENTRE.includes(key) ? centreHref(other) : null;
+      if (h) rows.push(row(other, h, key));
+      else if (c) rows.push(row(other, c, "centre"));
+    }
+  }
+  // The lens's own list, in the order its hub shows it: Paris Centre first
+  // where the lens merges 1–4, then the arrondissements that have a page.
+  const merged = lens !== "invest" && centreHref(lens) != null;
+  const seq: (number | "centre")[] = [
+    ...(merged ? ["centre" as const] : []),
+    ...[...Array(20).keys()].map((i) => i + 1).filter((n) => !(merged && CENTRE.includes(n)) && arrHref(lens, n)),
+  ];
+  const at = seq.indexOf(merged && key !== "centre" && CENTRE.includes(key) ? "centre" : key);
+  const hrefOf = (k: number | "centre") => (k === "centre" ? centreHref(lens)! : arrHref(lens, k)!);
+  const out = rows.slice(0, 4);
+  if (at > 0) out.push(row(lens, hrefOf(seq[at - 1]), seq[at - 1], t("fx.related.arr.prev")));
+  if (at >= 0 && at < seq.length - 1) out.push(row(lens, hrefOf(seq[at + 1]), seq[at + 1], t("fx.related.arr.next")));
+  const hub = { invest: `${ARR_BASE}/investissements`, logement: `${ARR_BASE}/logement`, garanties: `${ARR_BASE}/dette` }[lens];
+  out.push({ href: hub, label: t(`fx.related.arr.hub_${lens}`), sub: t(`fx.related.arr.hub_${lens}_sub`) });
+  return { title: t("fx.related.title"), sub: t("fx.related.arr.block_sub"), rows: out };
 }

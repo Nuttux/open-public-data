@@ -3,6 +3,7 @@ import type { EntityPageConfig } from "@/lib/entity-page";
 import { fmtBillions, fmtInt, fmtMillions } from "@/lib/fmt";
 import { loadArrondissementGaranties } from "@/lib/fusion-data";
 import { eur, int, dataDate, sourceLine } from "@/lib/entities/seo-text";
+import { arrondissementRelated } from "@/lib/entities/related";
 
 type D = NonNullable<ReturnType<typeof loadArrondissementGaranties>> & {
   /** Année explicitement demandée via ?year= — propagée dans les liens. */
@@ -78,6 +79,7 @@ export const arrondissementGarantiesConfig: EntityPageConfig<D> = {
     answer: `${whereFr(arr.arr)} : fin ${year}, la Ville de Paris y garantit ${amt} d'emprunts (${int(n, "fr")} emprunt${n > 1 ? "s" : ""}), essentiellement pour le logement social. ${sourceLine("fr", "opendata.paris.fr (dette garantie)", date)}`,
   };
   },
+  related: ({ arr }, locale) => arrondissementRelated("garanties", arr.arr === 0 ? "centre" : arr.arr, locale),
   page: {
     header: ({ arr, year }) => (
       <>

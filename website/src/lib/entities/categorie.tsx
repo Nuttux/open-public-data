@@ -5,6 +5,7 @@ import type { EntityPageConfig } from "@/lib/entity-page";
 import { loadMarcheCategorie } from "@/lib/fusion-data";
 import { trLabel } from "@/lib/label-translate";
 import { eur, pct, int, dataDate, sourceLine, clip } from "@/lib/entities/seo-text";
+import { categorieRelated } from "@/lib/entities/related";
 
 type D = { fiche: NonNullable<ReturnType<typeof loadMarcheCategorie>> };
 
@@ -65,6 +66,7 @@ export const categorieConfig: EntityPageConfig<D> = {
     answer: `En ${f.year}, la Ville de Paris a notifié ${int(f.nbContrats, "fr")} marchés de ${f.category.toLowerCase()} à ${int(f.nbTitulaires, "fr")} titulaires, pour ${amt} (montants maximaux), soit ${pct(f.shareOfTotalPct, "fr")} des marchés de l'année. ${sourceLine("fr", "DECP via opendata.paris.fr", date)}`,
   };
   },
+  related: ({ fiche }, locale) => categorieRelated(fiche, locale),
   page: {
     header: ({ fiche }) => (
       <>
