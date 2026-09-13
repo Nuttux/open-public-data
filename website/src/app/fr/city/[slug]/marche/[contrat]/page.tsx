@@ -4,6 +4,7 @@ import "@/app/fusion.css";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
 import ContratCommuneClient from "./ContratCommuneClient";
 import { loadContratLocal } from "./load";
+import { contratIndexable } from "@/lib/contrat-indexable";
 
 /**
  * Fiche contrat d'une commune (2026-09-13) : la fiche contrat de Paris, sur la
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const qui = c.siren && c.titulaire ? c.titulaire : null;
   const offresFr = c.offres_recues != null ? ` ${c.offres_recues} offre${c.offres_recues > 1 ? "s" : ""} reçue${c.offres_recues > 1 ? "s" : ""}.` : "";
   const offresEn = c.offres_recues != null ? ` ${c.offres_recues} bid${c.offres_recues > 1 ? "s" : ""} received.` : "";
-  return buildLocaleAwareMetadata({
+  const meta = await buildLocaleAwareMetadata({
     title: `${clip(c.objet, 70)} : ${court(c.montant, false)}, ${commune.nom}${c.annee ? ` ${c.annee}` : ""}`,
     description: `Marché public notifié par ${commune.nom}${c.date ? ` le ${new Date(c.date).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })}` : ""}${qui ? `, attribué à ${qui}` : ""} : ${court(c.montant, false)}${c.procedure ? `, ${c.procedure.toLowerCase()}` : ""}.${offresFr} Source DECP.`,
     en: {
@@ -36,6 +37,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     },
     path: `/fr/city/${commune.slug}/marche/${c.slug}`,
   });
+  // Lot minuscule ou objet réduit à un code : la page reste pour qui la cherche,
+  // sans être proposée aux moteurs. Les liens restent suivis (fournisseur,
+  // autres marchés), contrairement au noindex du helper qui coupe tout.
+  return contratIndexable(c) ? meta : { ...meta, robots: { index: false, follow: true } };
 }
 
 export default async function ContratCommunePage({ params }: { params: Promise<{ slug: string; contrat: string }> }) {

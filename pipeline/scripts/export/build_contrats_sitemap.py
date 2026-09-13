@@ -15,6 +15,14 @@ requête de sitemap est exclu. Ce script lit une fois les fichiers exportés et
       clé « contrats_sitemap » : {segments, urls} — le site sait combien de
       segments annoncer sans toucher au bucket au build.
 
+Seules les fiches solides sont déclarées : les CINQ plus gros contrats de chaque
+commune dont l'objet est lisible — ceux-là mêmes que la page de la commune met
+en avant et lie. Soumettre les ~480 000 fiches d'un coup, dont 111 000 sous
+40 000 € ou à l'objet illisible (« Pantin- - | 2019088 | 1-Lot 8 »), ferait de
+ces pages maigres la majorité des adresses du site aux yeux de Google. Les
+autres fiches restent en ligne et atteignables par les liens ; les plus faibles
+portent noindex (règle jumelle : website/src/lib/contrat-indexable.ts).
+
 Ordre stable (communes puis contrats par adresse) : deux passages sur les
 mêmes données donnent les mêmes fichiers, donc les mêmes numéros de segment.
 
@@ -25,6 +33,7 @@ Appelé par export_marches_national.py --all.
 from __future__ import annotations
 
 import json
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -33,6 +42,21 @@ PIPELINE_ROOT = Path(__file__).resolve().parents[2]
 OUT_ROOT = PIPELINE_ROOT.parent / "website" / "public" / "data" / "communes-marches"
 MANIFEST_FILE = PIPELINE_ROOT.parent / "website" / "src" / "data" / "communes-marches-manifest.json"
 SEGMENT_SIZE = 5000
+PAR_COMMUNE = 5          # les N plus gros contrats lisibles d'une commune
+MONTANT_MIN = 40_000     # sous ce montant, la fiche est noindex (règle jumelle TS)
+LETTRES_MIN = 15         # un objet de moins de 15 lettres est illisible
+
+
+def objet_lisible(objet: str | None) -> bool:
+    """Même règle que objetLisible() dans website/src/lib/contrat-indexable.ts."""
+    o = objet or ""
+    if len(re.sub(r"[^A-Za-zÀ-ÖØ-öø-ÿŒœ]", "", o)) < LETTRES_MIN:
+        return False
+    return not re.search(r"\|\s*\d{5,}\s*\|", o)
+
+
+def indexable(c: dict) -> bool:
+    return float(c.get("montant") or 0) >= MONTANT_MIN and objet_lisible(c.get("objet"))
 
 
 def collect_paths(root: Path = OUT_ROOT) -> list[str]:
@@ -42,7 +66,11 @@ def collect_paths(root: Path = OUT_ROOT) -> list[str]:
         if not f.exists():
             continue
         contrats = json.load(open(f, encoding="utf-8")).get("contrats", {})
-        out.extend(f"/fr/city/{commune_dir.name}/marche/{c['slug']}" for c in sorted(contrats.values(), key=lambda c: c["slug"]) if c.get("slug"))
+        solides = sorted(
+            (c for c in contrats.values() if c.get("slug") and indexable(c)),
+            key=lambda c: (-float(c.get("montant") or 0), c["slug"]),
+        )[:PAR_COMMUNE]
+        out.extend(f"/fr/city/{commune_dir.name}/marche/{c['slug']}" for c in sorted(solides, key=lambda c: c["slug"]))
     return out
 
 
@@ -55,6 +83,7 @@ def write_segments(paths: list[str], root: Path = OUT_ROOT, manifest_file: Path 
     for k in range(n_seg):
         (seg_dir / f"contrats-{k:03d}.txt").write_text("\n".join(paths[k * SEGMENT_SIZE:(k + 1) * SEGMENT_SIZE]) + "\n", encoding="utf-8")
     summary = {"segments": n_seg, "urls": len(paths), "segment_size": SEGMENT_SIZE,
+               "regle": f"{PAR_COMMUNE} plus gros contrats par commune, objet lisible, >= {MONTANT_MIN} EUR",
                "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds")}
     json.dump(summary, open(seg_dir / "index.json", "w", encoding="utf-8"))
     if manifest_file.exists():
