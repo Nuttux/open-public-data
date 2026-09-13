@@ -2899,7 +2899,23 @@ function loadInvestissementsDataCity(
   // Backwards-compatible: rows without the flag are kept as-is.
   const allRows = file.data ?? [];
   const projects = allRows.filter((p) => (p as { is_project?: boolean }).is_project !== false);
-  const total = projects.reduce((s, p) => s + (p.montant ?? 0), 0);
+  const projectsSum = projects.reduce((s, p) => s + (p.montant ?? 0), 0);
+
+  // Le total d'investissement de la ville, hors remboursement de la dette —
+  // la même définition que Paris. Il vient de l'OFGL (communes/<ville>.json) :
+  // « Dépenses d'investissement » moins « Remboursements d'emprunts », soit
+  // l'agrégat OFGL « Dépenses d'investissement hors remb » (Marseille 2024 :
+  // 434,9 − 157,5 = 277,3 M€, vérifié sur data.ofgl.fr). La page affichait
+  // jusque-là la somme des 10 projets extraits du PDF (72,8 M€) comme
+  // « investissement total », à côté d'un « premier chapitre » de 93 M€.
+  type OfglPoint = { year: number; montant: number };
+  const ofgl = readJsonOrNull<{ city?: { series?: Record<string, OfglPoint[]> } }>(`communes/${city}.json`)?.city?.series;
+  const horsRemb = new Map<number, number>();
+  for (const p of ofgl?.depenses_investissement ?? []) {
+    const remb = ofgl?.remboursements_emprunts?.find((r) => r.year === p.year);
+    if (remb) horsRemb.set(p.year, p.montant - remb.montant);
+  }
+  const total = horsRemb.get(year) ?? projectsSum;
   const nbGeo = projects.filter((p) => (p as { lat?: number | null }).lat != null).length;
 
   // Photos cache (4/10 réelles, 6 fallback "ecole" générique).
@@ -2976,13 +2992,11 @@ function loadInvestissementsDataCity(
   const top10Sum = sortedByAmount.slice(0, 10).reduce((s, p) => s + (p.montant ?? 0), 0);
   const top10ProjetsPct = total > 0 ? (top10Sum / total) * 100 : 0;
 
-  const yearsSummary = (
-    trends?.years ?? [
-      { year, depenses_total: total, depenses_hors_dette: total, par_chapitre: [] },
-    ]
-  )
-    .map((y) => ({ year: y.year, total: y.depenses_total, horsDette: y.depenses_hors_dette }))
-    .sort((a, b) => a.year - b.year);
+  const yearsSummary = horsRemb.size
+    ? [...horsRemb.entries()].map(([y, v]) => ({ year: y, total: v, horsDette: v })).sort((a, b) => a.year - b.year)
+    : (trends?.years ?? [{ year, depenses_total: total, depenses_hors_dette: total, par_chapitre: [] }])
+        .map((y) => ({ year: y.year, total: y.depenses_total, horsDette: y.depenses_hors_dette }))
+        .sort((a, b) => a.year - b.year);
 
   const projectsAmount = projects.reduce((s, p) => s + (Number(p.montant) || 0), 0);
 
@@ -2994,17 +3008,12 @@ function loadInvestissementsDataCity(
     nbProjets: projects.length,
     nbGeo,
     pctGeo: file.stats?.pct_geo ?? 0,
-    // Villes hors Paris : le fichier ville porte déjà les projets et le total
-    // sur le même périmètre, donc la couverture est de 100 % par construction.
-    // On la calcule quand même plutôt que de la coder à 100 : si un jour un
-    // export ville passe par une extraction partielle, le chiffre le dira.
     projetsAmount: projectsAmount,
     projetsCoveragePct: total > 0 ? (projectsAmount / total) * 100 : 0,
-    byChapitre: (file.byChapitre ?? []).map((c) => ({
-      label: c.label,
-      amount: c.amount,
-      count: c.count,
-    })),
+    // Pas de ventilation par chapitre : celle du fichier additionnait les lignes
+    // du PDF, sous-totaux de thématique compris, et dépassait le total. Aucune
+    // source ne ventile l'investissement de la ville ; la section ne s'affiche pas.
+    byChapitre: [],
     top10ProjetsPct,
     byArrondissement: byArrondissementFiltered,
     topProjets,

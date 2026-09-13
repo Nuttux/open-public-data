@@ -5,7 +5,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import { useT, useLocale } from "@/lib/localeContext";
-import { numLocale } from "@/lib/fmt";
+import { numLocale, fill } from "@/lib/fmt";
 import { useCountUp } from "@/lib/use-count-up";
 import { useRevealOnScroll } from "@/lib/use-reveal-on-scroll";
 import type { DailyBreadConstants } from "@/lib/national-data";
@@ -258,8 +258,20 @@ const ETAT_TOP_ALIAS_AGG: Record<string, string> = {
 export default function DailyBreadClient({
   db,
   drilldownIndex,
+  keyFigures,
 }: {
   db: DailyBreadConstants | null;
+  /** « À retenir » (page.tsx, recettes_apu.json). null : les trois cartes ne s'affichent pas. */
+  keyFigures?: {
+    deficitEur: number;
+    deficitPct: number;
+    deficitYear: number;
+    cotisEur: number | null;
+    cotisSharePct: number | null;
+    psrEur: number;
+    psrNetEur: number;
+    sources: string[];
+  } | null;
   /** Index compact des keys de drilldown.json (level2 + level3 par parent).
    *  Construit côté server (page.tsx) ; sert ici à filtrer les alias en ne
    *  rendant cliquable QUE ce que l'Agent P a effectivement publié. */
@@ -1827,36 +1839,42 @@ export default function DailyBreadClient({
                         )}
                       </p>
                       <p className="db-disp-key-figure-label">
-                        {t("db.disp.keyfigures.total")}
+                        {fill(t("db.disp.keyfigures.total"), { year: db?.apu_subsectors?.year ?? "" })}
                       </p>
                     </div>
-                    <div className="db-disp-key-figure">
-                      <p className="db-disp-key-figure-num tnum">
-                        ~175 Md€
-                      </p>
-                      <p className="db-disp-key-figure-label">
-                        {t("db.disp.keyfigures.deficit")}
-                      </p>
-                    </div>
-                    <div className="db-disp-key-figure">
-                      <p className="db-disp-key-figure-num tnum">
-                        ~215 Md€
-                      </p>
-                      <p className="db-disp-key-figure-label">
-                        {t("db.disp.keyfigures.cotisations_employeurs")}
-                      </p>
-                    </div>
-                    <div className="db-disp-key-figure">
-                      <p className="db-disp-key-figure-num tnum">
-                        ~23,3 Md€
-                      </p>
-                      <p className="db-disp-key-figure-label">
-                        {t("db.disp.keyfigures.psr_ue")}
-                      </p>
-                    </div>
+                    {keyFigures && (
+                      <div className="db-disp-key-figure">
+                        <p className="db-disp-key-figure-num tnum">
+                          {fmtBnEur(keyFigures.deficitEur, locale)}
+                        </p>
+                        <p className="db-disp-key-figure-label">
+                          {fill(t("db.disp.keyfigures.deficit"), { year: keyFigures.deficitYear, pct: fmtEur(keyFigures.deficitPct, locale, 1) })}
+                        </p>
+                      </div>
+                    )}
+                    {keyFigures?.cotisEur != null && (
+                      <div className="db-disp-key-figure">
+                        <p className="db-disp-key-figure-num tnum">
+                          {fmtBnEur(keyFigures.cotisEur, locale)}
+                        </p>
+                        <p className="db-disp-key-figure-label">
+                          {fill(t("db.disp.keyfigures.cotisations_employeurs"), { share: keyFigures.cotisSharePct != null ? fmtEur(keyFigures.cotisSharePct, locale, 0) : "—" })}
+                        </p>
+                      </div>
+                    )}
+                    {keyFigures && (
+                      <div className="db-disp-key-figure">
+                        <p className="db-disp-key-figure-num tnum">
+                          {fmtBnEur(keyFigures.psrEur, locale)}
+                        </p>
+                        <p className="db-disp-key-figure-label">
+                          {fill(t("db.disp.keyfigures.psr_ue"), { net: fmtBnEur(keyFigures.psrNetEur, locale) })}
+                        </p>
+                      </div>
+                    )}
                   </div>
                   <p className="db-disp-key-figures-src">
-                    {t("db.disp.keyfigures.sources")}
+                    {fill(t("db.disp.keyfigures.sources"), { sources: (keyFigures?.sources ?? []).join(", ") })}
                   </p>
                 </div>
               )}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import "@/app/fusion.css";
 import { loadDailyBread } from "@/lib/national-data";
+import { loadRecettesApu } from "@/lib/recettes-apu";
 import { loadDrilldown, type BucketKey } from "@/lib/budget-drilldown";
 import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
 import { FrHubJsonLd, hubMetadataInput, nationalDailyBreadHub } from "@/lib/seo/sections/national";
@@ -126,11 +127,27 @@ export default async function DailyBreadPage() {
   // Suspense boundary needed because the client uses useSearchParams() to
   // sync form state with the URL — Next.js requires a fallback for SSR/SSG.
   const locale = await readLocale();
+  // « À retenir » : déficit, cotisations employeurs, contribution à l'UE, lus
+  // dans recettes_apu.json (seed sourcé) — ils étaient écrits en dur dans le client.
+  const rec = loadRecettesApu();
+  const cotis = rec?.institutions.S1314.items.find((i) => i.key === "secu_cotis_employeurs");
+  const keyFigures = rec
+    ? {
+        deficitEur: rec.macro.deficit_md_eur * 1e9,
+        deficitPct: rec.macro.deficit_pct_pib,
+        deficitYear: rec.macro.year,
+        cotisEur: cotis?.annual_eur ?? null,
+        cotisSharePct: cotis && rec.institutions.S1314.annual_eur > 0 ? (cotis.annual_eur / rec.institutions.S1314.annual_eur) * 100 : null,
+        psrEur: rec.europe.psr_ue_brut_md_eur * 1e9,
+        psrNetEur: rec.europe.contribution_nette_md_eur * 1e9,
+        sources: [...new Set([rec.macro.source, cotis?.source, rec.europe.psr_source].filter((x): x is string => Boolean(x)))],
+      }
+    : null;
   return (
     <>
       <FrHubJsonLd hub={nationalDailyBreadHub()} locale={locale} />
       <Suspense fallback={null}>
-        <DailyBreadClient db={db} drilldownIndex={drilldownIndex} />
+        <DailyBreadClient db={db} drilldownIndex={drilldownIndex} keyFigures={keyFigures} />
       </Suspense>
     </>
   );

@@ -187,7 +187,9 @@ export default function DettePatrimoineClient({
             variant="card"
             cite={
               <>
-                {fill(t("fx.dp.hook.cite.bilan"), { year: d.year })}
+                {/* Hors Paris, dette et capacité de désendettement viennent de l'OFGL,
+                    pas d'un bilan de la Ville : la citation le dit. */}
+                {fill(t(citySlug === "paris" ? "fx.dp.hook.cite.bilan" : "fx.dp.hook.cite.ofgl"), { year: d.year })}
                 {crcSnap ? (
                   <>
                     {" · "}{t("fx.dp.hook.cite.crc")}
@@ -204,7 +206,7 @@ export default function DettePatrimoineClient({
               (deltaDetteDepuis2020Pct > 0
                 ? fill(t("fx.dp.hook.share.delta"), { pct: fmtDec(deltaDetteDepuis2020Pct, 0) })
                 : "") +
-              fill(t("fx.dp.hook.share.cap.ville"), { ans: fmtDec(d.capaciteDesendettement, 1) }) +
+              fill(t(citySlug === "paris" ? "fx.dp.hook.share.cap.ville" : "fx.dp.hook.share.cap.ofgl"), { ans: fmtDec(d.capaciteDesendettement, 1) }) +
               (crcSnap
                 ? fill(t("fx.dp.hook.share.cap.crc"), { ans: fmtDec(crcSnap.value_crc_ans, 1) })
                 : "") +
@@ -220,7 +222,7 @@ export default function DettePatrimoineClient({
             ) : null}
             {t("fx.dp.hook.body.cap.before")}
             <b>{fmtDec(d.capaciteDesendettement, 1)}{t("fx.dp.hook.body.cap.ans")}</b>
-            {t("fx.dp.hook.body.cap.ville")}
+            {t(citySlug === "paris" ? "fx.dp.hook.body.cap.ville" : "fx.dp.hook.body.cap.ofgl")}
             {crcSnap ? (
               <>
                 {t("fx.dp.hook.body.cap.crc.before")}

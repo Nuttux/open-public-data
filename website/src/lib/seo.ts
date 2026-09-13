@@ -205,7 +205,10 @@ export function datasetJsonLd(input: {
     spatialCoverage: input.spatialCoverage
       ? { '@type': 'Place', name: input.spatialCoverage }
       : undefined,
-    license: input.license ?? 'https://opendatacommons.org/licenses/odbl/',
+    // Sans licence explicite, celle de la source (page /licence) : DataSF publie
+    // en domaine public (PDDL, vérifié sur les jeux budget, paiements, contrats et
+    // rémunérations) ; Paris et Recife en ODbL.
+    license: input.license ?? (input.path.startsWith('/us') ? 'https://opendatacommons.org/licenses/pddl/1-0/' : 'https://opendatacommons.org/licenses/odbl/'),
     creator: { '@type': 'Organization', name: input.creator ?? 'Ville de Paris' },
     publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
     isAccessibleForFree: true,

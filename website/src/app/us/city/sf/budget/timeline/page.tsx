@@ -9,16 +9,22 @@ import { fmtUsdCompact } from "@/lib/us/format";
 import { sectionAlternates } from "@/lib/seo/page-answer";
 
 /**
- * /us/city/sf/budget/timeline — the SF 150-year financial time machine. Server
+ * /us/city/sf/budget/timeline — the SF long-run financial time machine. Server
  * component (EN-only, ADR-0010 D3): loads timeline.json (export_sf_timeline.py)
  * and hands it to the client chart. No France brand template on US routes.
  */
-export const metadata: Metadata = {
-  ...sectionAlternates("/us/city/sf/budget/timeline", "en"),
-  title: "San Francisco — 150 years of city money",
-  description:
-    "A scrubbable timeline of total San Francisco city finances from the 1880s to today — fusing the modern budget with figures transcribed verbatim from Internet-Archive-scanned municipal reports, every point traceable to its source and readable in today's dollars.",
-};
+// The span is the data's: the title said « 150 years » over a series that
+// runs 1888–2025.
+export function generateMetadata(): Metadata {
+  const years = loadSfTimeline().points.map((p) => p.year);
+  const first = Math.min(...years);
+  const last = Math.max(...years);
+  return {
+    ...sectionAlternates("/us/city/sf/budget/timeline", "en"),
+    title: `San Francisco city money since ${first}`,
+    description: `A scrubbable timeline of total San Francisco city finances from ${first} to ${last} — fusing the modern budget with figures transcribed verbatim from Internet-Archive-scanned municipal reports, every point traceable to its source and readable in today's dollars.`,
+  };
+}
 
 export default function SfBudgetTimelinePage() {
   const data = loadSfTimeline();
@@ -34,12 +40,12 @@ export default function SfBudgetTimelinePage() {
         kicker={<Link href="/us/city/sf/budget">San Francisco · Budget</Link>}
         title={
           <>
-            150 years of city money, <em>one timeline</em>
+            City money since {first.year}, <em>one timeline</em>
           </>
         }
         lede={
           <>
-            Total city finances from the 1880s to today. The modern years come from the adopted
+            Total city finances from {first.year} to {last.year}. The modern years come from the adopted
             budget; the older ones are transcribed <em>verbatim</em> from scanned municipal reports
             at the Internet Archive, each linked to its page.
           </>
