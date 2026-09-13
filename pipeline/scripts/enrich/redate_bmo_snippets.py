@@ -30,8 +30,17 @@ change pas, on s'en sert pour recalculer la clé.
 En fin de passe, le script liste les lieux dont un extrait GARDÉ change
 d'année : leur récit d'archive cite ces années et doit être réécrit.
 
+Deux sources de dates :
+  - par défaut, l'archive brute resynchronisée de chaque lieu (`{slug}_bmo.jsonl`) ;
+    un fascicule introuvable y perd sa date ;
+  - `--notice`, les notices Gallica lues fascicule par fascicule
+    (`bmo_dates_notice.json`, produit par sync_gallica_notice_dates.py). Elles ne
+    couvrent que les fascicules publiés : un extrait hors notice n'est ni publié
+    ni modifié.
+
 Usage :
-    python pipeline/scripts/enrich/redate_bmo_snippets.py --dry-run
+    python pipeline/scripts/enrich/redate_bmo_snippets.py --notice --dry-run
+    python pipeline/scripts/enrich/redate_bmo_snippets.py --notice
     python pipeline/scripts/enrich/redate_bmo_snippets.py [--only slug-a,slug-b]
 """
 from __future__ import annotations
@@ -66,10 +75,23 @@ def dates_par_ark(slug: str) -> dict[str, str]:
     return out
 
 
-def redate(rows: list[dict], dates: dict[str, str], stats: dict) -> list[dict]:
+def dates_notice() -> dict[str, str]:
+    p = CACHE / "bmo_dates_notice.json"
+    if not p.exists():
+        return {}
+    return {ark: v.get("date") or "" for ark, v in json.load(p.open()).items()}
+
+
+def redate(rows: list[dict], dates: dict[str, str], stats: dict, strict: bool = True) -> list[dict]:
+    """strict : un fascicule absent de `dates` perd sa date (source exhaustive,
+    l'archive brute du lieu). Non strict : il est laissé tel quel (source
+    partielle, les notices des seuls fascicules publiés)."""
     for r in rows:
         ark = r.get("ark") or ""
         ancienne = r.get("issue_date") or ""
+        if not strict and ark not in dates:
+            stats["hors_source"] = stats.get("hors_source", 0) + 1
+            continue
         if ark in dates and dates[ark]:
             nouvelle = dates[ark]
             if nouvelle != ancienne:
@@ -91,7 +113,14 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--only", help="slugs à traiter, séparés par des virgules")
     ap.add_argument("--dry-run", action="store_true", help="mesure sans rien écrire")
+    ap.add_argument("--notice", action="store_true",
+                    help="dates lues dans les notices Gallica (bmo_dates_notice.json)")
     args = ap.parse_args()
+    notice = dates_notice() if args.notice else None
+    if args.notice and not notice:
+        print("ERR --notice : bmo_dates_notice.json absent ou vide", file=sys.stderr)
+        return 1
+    strict = not args.notice
 
     slugs = sorted(p.name[: -len("_bmo_snippets.jsonl")] for p in CACHE.glob("*_bmo_snippets.jsonl"))
     if args.only:
@@ -102,7 +131,7 @@ def main() -> int:
     stats_en = {"reclees": 0, "abandonnees": 0}
     recits_a_refaire: list[str] = []
     for slug in slugs:
-        dates = dates_par_ark(slug)
+        dates = notice if notice is not None else dates_par_ark(slug)
         if not dates:
             print(f"--  {slug}: pas d'archive brute, sauté", file=sys.stderr)
             continue
@@ -110,7 +139,7 @@ def main() -> int:
 
         sp = CACHE / f"{slug}_bmo_snippets.jsonl"
         snips = [json.loads(l) for l in sp.open() if l.strip()]
-        snips = redate(snips, dates, stats)
+        snips = redate(snips, dates, stats, strict)
 
         kp = CACHE / f"{slug}_bmo_keep.json"
         keep_doc = json.load(kp.open()) if kp.exists() else None
@@ -118,7 +147,7 @@ def main() -> int:
             # Les extraits gardés portent une copie de la date : c'est elle que
             # lit l'écriture du récit. Même correction, sans compter deux fois.
             annees_avant = {(k.get("ark"), k.get("page")): (k.get("issue_date") or "")[:4] for k in keep_doc["keep"]}
-            redate(keep_doc["keep"], dates, {"changees": 0, "identiques": 0, "non_confirmees": 0})
+            redate(keep_doc["keep"], dates, {"changees": 0, "identiques": 0, "non_confirmees": 0}, strict)
             if any((k.get("issue_date") or "")[:4] != annees_avant.get((k.get("ark"), k.get("page")))
                    for k in keep_doc["keep"]):
                 recits_a_refaire.append(slug)
