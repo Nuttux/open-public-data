@@ -174,6 +174,7 @@ export function marseilleDetteHub(): FrHub {
     },
     dataset: {
       creator: "OFGL",
+      license: "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
       spatialCoverage: SPATIAL,
       temporalCoverage: span(d.availableYears),
       dateModified: day(date),

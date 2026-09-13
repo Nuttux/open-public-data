@@ -39,6 +39,8 @@ export type FrHub = {
   /** null for pages whose answer is not a figure from a dataset. */
   dataset: {
     creator: string;
+    /** The source's licence URL; omitted when the page mixes sources. */
+    license?: string;
     spatialCoverage: string;
     temporalCoverage?: string;
     dateModified?: string;
@@ -117,6 +119,8 @@ export function nationalDetteHub(): FrHub {
     },
     dataset: {
       creator: "Eurostat",
+      // Eurostat : CC BY 4.0 (avis de copyright, vérifié le 13/09/2026).
+      license: "https://creativecommons.org/licenses/by/4.0/",
       spatialCoverage: "France",
       temporalCoverage: first ? `${first.slice(0, 4)}/${d.latest_quarter.slice(0, 4)}` : undefined,
       dateModified: day(d.fetched_at),
@@ -164,6 +168,7 @@ export function nationalEtatHub(): FrHub {
     },
     dataset: {
       creator: "Ministère de l’Économie et des Finances",
+      license: "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
       spatialCoverage: "France",
       temporalCoverage: years.length ? `${Math.min(...years)}/${Math.max(...years)}` : String(e.exercice),
       dateModified: day(e.fetched_at),
@@ -217,6 +222,8 @@ export function nationalFiscaliteHub(): FrHub {
     },
     dataset: {
       creator: "Eurostat",
+      // Eurostat : CC BY 4.0 (avis de copyright, vérifié le 13/09/2026).
+      license: "https://creativecommons.org/licenses/by/4.0/",
       spatialCoverage: "France",
       temporalCoverage: firstYear ? `${firstYear}/${y}` : String(y),
       dateModified: day(f.fetched_at),
@@ -270,6 +277,8 @@ export function nationalBudgetHub(): FrHub {
     },
     dataset: {
       creator: "Eurostat",
+      // Eurostat : CC BY 4.0 (avis de copyright, vérifié le 13/09/2026).
+      license: "https://creativecommons.org/licenses/by/4.0/",
       spatialCoverage: "France",
       temporalCoverage: String(y),
       dateModified: day(fetchedAt),
@@ -350,6 +359,7 @@ export function FrHubJsonLd({ hub, locale }: { hub: FrHub; locale: Lang }): Reac
             temporalCoverage: hub.dataset.temporalCoverage,
             spatialCoverage: hub.dataset.spatialCoverage,
             creator: hub.dataset.creator,
+            license: hub.dataset.license,
           }),
           url: `${host}${hub.path}`,
           inLanguage: locale === "fr" ? "fr-FR" : "en",
