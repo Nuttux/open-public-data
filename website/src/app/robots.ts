@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { readSiteLocale } from '@/lib/seo';
-import { LOCALE_HOSTS } from '@/lib/site-locale';
+import { LOCALE_HOSTS, TRILINGUAL_PATHS } from '@/lib/site-locale';
 import { INDEXNOW_KEY } from '@/lib/seo/indexnow';
 import { sitemapIdsFor } from '@/app/sitemap';
 
@@ -29,8 +29,23 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
   const base = LOCALE_HOSTS[locale];
   const rule =
     locale === 'pt'
-      ? // The IndexNow key must stay fetchable on the host it vouches for.
-        { userAgent: '*', allow: ['/br', '/br/', `/${INDEXNOW_KEY}.txt`], disallow: ['/'] }
+      ? {
+          userAgent: '*',
+          allow: [
+            '/br',
+            '/br/',
+            // The sitemaps this file declares. Under `Disallow: /` they were
+            // blocked too: Search Console left every pt segment "pending, never
+            // downloaded", and 14 752 live URLs drew no impression.
+            '/sitemap/',
+            // The pages outside /br that pt serves in Portuguese (one is listed
+            // in its sitemap).
+            ...TRILINGUAL_PATHS,
+            // The IndexNow key must stay fetchable on the host it vouches for.
+            `/${INDEXNOW_KEY}.txt`,
+          ],
+          disallow: ['/'],
+        }
       : locale === 'fr'
         ? { userAgent: '*', allow: '/', disallow: ['/api/', '/v2', '/v2/', '/us', '/us/', '/br', '/br/'] }
         : { userAgent: '*', allow: '/', disallow: ['/api/', '/v2', '/v2/'] };
