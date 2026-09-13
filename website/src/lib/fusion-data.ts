@@ -3168,7 +3168,13 @@ export function loadInvestissementsData(
   // Pareto : top 10 projets en montant vs total
   const sortedByAmount = projets.slice().sort((a, b) => Number(b.montant ?? 0) - Number(a.montant ?? 0));
   const top10Sum = sortedByAmount.slice(0, 10).reduce((s, p) => s + Number(p.montant ?? 0), 0);
-  const top10ProjetsPct = latest.depenses_total > 0 ? (top10Sum / latest.depenses_total) * 100 : 0;
+  // Le total d'investissement est celui HORS dette : le remboursement du capital
+  // des emprunts et les dotations/participations sont des dépenses de la section
+  // d'investissement en M57, pas des investissements. C'est ce que dit
+  // l'infobulle du chiffre, et c'est la somme des chapitres affichés à côté ;
+  // `depenses_total` (2,12 Md€ en 2024 contre 1,73 Md€) les incluait.
+  const invTotal = latest.depenses_hors_dette ?? latest.depenses_total;
+  const top10ProjetsPct = invTotal > 0 ? (top10Sum / invTotal) * 100 : 0;
 
   // Ce que l'extraction projet-par-projet couvre réellement du compte
   // administratif de l'exercice. Cf. le commentaire sur projetsCoveragePct.
@@ -3177,14 +3183,14 @@ export function loadInvestissementsData(
   return {
     year,
     availableYears: usableYears,
-    total: latest.depenses_total,
+    total: invTotal,
     totalHorsDette: latest.depenses_hors_dette,
     nbProjets: projets.length,
     nbGeo,
     pctGeo: projets.length > 0 ? (nbGeo / projets.length) * 100 : 0,
     projetsAmount: projetsAmount,
     projetsCoveragePct:
-      latest.depenses_total > 0 ? (projetsAmount / latest.depenses_total) * 100 : 0,
+      invTotal > 0 ? (projetsAmount / invTotal) * 100 : 0,
     byChapitre: [...m57Agg.entries()]
       .map(([label, v]) => ({ label, amount: v.amount, count: v.count }))
       .sort((a, b) => b.amount - a.amount),
@@ -3197,7 +3203,7 @@ export function loadInvestissementsData(
     // on connaît le MONTANT total voté depuis investissement_tendances.json).
     yearsSummary: trends.years.map((y) => ({
       year: y.year,
-      total: y.depenses_total,
+      total: y.depenses_hors_dette ?? y.depenses_total,
       horsDette: y.depenses_hors_dette,
     })),
   };

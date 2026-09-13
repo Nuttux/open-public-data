@@ -1933,7 +1933,7 @@ const fr: Record<string, string> = {
   'fx.inv.s02.kpi.projets.tip': "Opérations d'investissement identifiées dans les annexes du compte administratif : travaux neufs, rénovations, acquisitions. Chaque projet correspond à une ligne AP (Autorisation de Programme).",
   'fx.inv.s02.kpi.geo': 'Géolocalisés',
   'fx.inv.s02.kpi.couverture': 'Couvert par les opérations',
-  'fx.inv.s02.kpi.couverture.tip': "Les {nb} opérations extraites pèsent {amount} M€, soit {pct} % des {total} Md€ investis sur l'exercice. Le reste du total (dotations centrales, opérations transverses, remboursements) n'est pas ventilé opération par opération dans les annexes. Sur ces {nb} opérations, {pctGeo} % sont géolocalisées : c'est ce que montre la carte.",
+  'fx.inv.s02.kpi.couverture.tip': "Les {nb} opérations extraites pèsent {amount} M€, soit {pct} % des {total} Md€ investis sur l'exercice. Le reste du total (opérations transverses, acquisitions et crédits centraux) n'est pas ventilé opération par opération dans les annexes. Sur ces {nb} opérations, {pctGeo} % sont géolocalisées : c'est ce que montre la carte.",
   'fx.inv.lede.coverage': "soit {amount} M€ — {pct} % des {total} Md€ investis cette année",
   'fx.inv.s02.kpi.geo_delta': '{n} projets',
   'fx.inv.s02.kpi.geo.tip': "Projets dont l'adresse ou la zone a pu être identifiée (voirie + Base Adresse Nationale). Les projets transverses — non localisables — sont exclus de la carte.",

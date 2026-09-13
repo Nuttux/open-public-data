@@ -1,8 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { useCountUp } from "@/lib/use-count-up";
-import { useRevealOnScroll } from "@/lib/use-reveal-on-scroll";
+import { useCountUpOnReveal } from "@/lib/use-count-up-on-reveal";
 
 type Locale = "fr" | "en";
 type Mode = "bnEur" | "rawMd";
@@ -34,8 +33,8 @@ type Props = {
  * frontière server→client. Cette variante est dédiée au cas Md€ (la plus
  * répandue dans Budget Explorer) sans casser les call sites existants.
  *
- * Régression zéro : SSR rend la valeur cible (le hook démarre l'animation
- * uniquement quand `revealed` bascule à `true` côté client, sinon snap).
+ * Le HTML serveur porte la valeur cible ; l'animation ne rejoue que pour un
+ * compteur hors écran au montage (lib/use-count-up-on-reveal.ts).
  */
 export default function BnEurCountUp({
   value,
@@ -47,9 +46,8 @@ export default function BnEurCountUp({
   className,
 }: Props) {
   const ref = useRef<HTMLSpanElement>(null);
-  const revealed = useRevealOnScroll(ref, { threshold });
-  const target = revealed ? value : startValue;
-  const animated = useCountUp(target, durationMs);
+  // Server HTML carries the real figure (lib/use-count-up-on-reveal.ts).
+  const animated = useCountUpOnReveal(ref, value, { threshold, startValue, durationMs });
 
   let display: string;
   if (mode === "bnEur") {

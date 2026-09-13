@@ -236,17 +236,15 @@ function investissements(year?: number): ParisSectionSeo {
   return {
     path: PATH("investissements"),
     fr: {
-      title: `Investissements de Paris ${d.year} : ${int(d.nbProjets, "fr")} projets`,
+      title: `Investissements de Paris ${d.year} : ${amount(d.total, "fr")}`,
       answer:
-        // Le total de tête de la page inclut encore dette et dotations : tant que
-        // ce n'est pas corrigé, la phrase s'en tient aux projets.
-        `En ${d.year}, les annexes du compte administratif de la Ville de Paris détaillent ${int(d.nbProjets, "fr")} projets d'investissement, avec leur montant, leur thème et leur arrondissement. ` +
+        `En ${d.year}, d'après le compte administratif, la Ville de Paris a investi ${amount(d.total, "fr")}, hors remboursement de la dette ; les ${int(d.nbProjets, "fr")} projets détaillés dans ses annexes en représentent ${pct(d.projetsCoveragePct, "fr", 0)}. ` +
         sourceLine("fr", "compte administratif et annexes d'investissement de la Ville de Paris (opendata.paris.fr)", iso),
     },
     en: {
-      title: `Paris capital projects ${d.year}: ${int(d.nbProjets, "en")} listed`,
+      title: `Paris capital investment ${d.year}: ${amount(d.total, "en")}`,
       answer:
-        `In ${d.year}, the appendices of the City of Paris administrative account itemise ${int(d.nbProjets, "en")} capital projects, with their amount, theme and district. ` +
+        `In ${d.year}, according to its administrative account, the City of Paris invested ${amount(d.total, "en")}, excluding debt repayment; the ${int(d.nbProjets, "en")} projects itemised in its appendices account for ${pct(d.projetsCoveragePct, "en", 0)} of it. ` +
         sourceLine("en", "City of Paris administrative account and investment appendices (opendata.paris.fr)", iso),
     },
     label: { fr: "Investissements de la Ville de Paris", en: "City of Paris capital investment" },

@@ -1935,7 +1935,7 @@ const en: Record<string, string> = {
   'fx.inv.s02.kpi.projets_delta': 'In CA appendices',
   'fx.inv.s02.kpi.geo': 'Geolocated',
   'fx.inv.s02.kpi.couverture': 'Covered by named operations',
-  'fx.inv.s02.kpi.couverture.tip': 'The {nb} extracted operations account for €{amount}M, or {pct}% of the €{total}bn invested in the year. The rest of the total (central allocations, cross-cutting operations, repayments) is not broken down operation by operation in the annexes. Of those {nb} operations, {pctGeo}% are geolocated: that is what the map shows.',
+  'fx.inv.s02.kpi.couverture.tip': 'The {nb} extracted operations account for €{amount}M, or {pct}% of the €{total}bn invested in the year. The rest of the total (cross-cutting operations, central acquisitions and credits) is not broken down operation by operation in the annexes. Of those {nb} operations, {pctGeo}% are geolocated: that is what the map shows.',
   'fx.inv.lede.coverage': 'accounting for €{amount}M — {pct}% of the €{total}bn invested this year',
   'fx.inv.s02.kpi.geo_delta': '{n} projects',
   'fx.inv.s02.kpi.top_chap': 'Top chapter',
