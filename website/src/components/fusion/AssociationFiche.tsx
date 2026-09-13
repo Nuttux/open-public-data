@@ -13,7 +13,7 @@ import { FicheBreakdown } from "@/components/fiche";
 import type { FicheBreakdownRow } from "@/components/fiche";
 import { V3Amt, V3Fold, V3Foot, V3Hero, V3Lead, V3Row, V3Section, foldRest } from "@/components/fiche/v3";
 import YearBars from "./YearBars";
-import AnneesRail from "./AnneesRail";
+import AnneesRail, { RAIL_MIN } from "./AnneesRail";
 
 /** Source réelle des subventions : dataset "versées annexe CA" (les noms de
  * l'export en sont issus verbatim, le refine matche donc exactement).
@@ -45,7 +45,6 @@ function secteursTxt(s?: string | null): string | null {
   return t || null;
 }
 
-const YEARS_CAP = 5;
 const LIGNES_CAP = 5;
 
 /**
@@ -139,7 +138,6 @@ export default function AssociationFiche({
   const singleDirection = byDirection.length === 1 ? byDirection[0].key : null;
 
   const yearsDesc = asso.byYear.slice().reverse();
-  const years = foldRest(yearsDesc, YEARS_CAP);
   const lignes = foldRest(asso.lignes, LIGNES_CAP);
   const LigneRow = (l: AssociationFicheType["lignes"][number], i: number) => {
     const src = isParis ? subvSourceUrl(asso.name, l.year) : { href: cityDatagouvUrl, isPdf: false };
@@ -182,12 +180,14 @@ export default function AssociationFiche({
 
       {asso.byYear.length > 1 && (
         <V3Section title={t("fx.fiche.asso.h.annees")}>
-          <AnneesRail rows={yearsDesc.map((y) => ({ year: y.year, amount: y.amount }))}
-                      delibs={asso.delibsParAnnee ?? null} />
-          {yearBars(years.shown)}
-          {years.rest.length > 0 && (
-            <V3Fold text label={fill(t("fx.fiche.asso.fold_annees"), { n: years.rest.length })}>{yearBars(years.rest)}</V3Fold>
-          )}
+          {/* Le rail porte les montants (bouts de l'axe, survol, clic) : la liste
+              année par année le redoublait. Elle ne reste que là où il n'y a
+              pas assez d'exercices pour dessiner une forme. */}
+          {yearsDesc.length >= RAIL_MIN ? (
+            <AnneesRail rows={yearsDesc.map((y) => ({ year: y.year, amount: y.amount, count: y.count }))}
+                        delibs={asso.delibsParAnnee ?? null}
+                        countText={(r) => ((r.count ?? 0) > 1 ? fill(t("fx.fiche.theme.subv_n"), { n: r.count ?? 0 }) : null)} />
+          ) : yearBars(yearsDesc)}
         </V3Section>
       )}
 

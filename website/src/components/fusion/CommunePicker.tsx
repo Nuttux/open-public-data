@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import { useLocale, useT } from "@/lib/localeContext";
+import { nomDistinct } from "@/lib/nom-commune";
 
 export type CommuneChoice = { slug: string; nom: string; pop: number; dep_name?: string };
 
@@ -59,7 +60,10 @@ export default function CommunePicker({
       fetch(`/api/search-communes?q=${encodeURIComponent(typed)}`, { signal: ctrl.signal })
         .then((r) => (r.ok ? r.json() : { results: [] }))
         .then((d: { results: CommuneChoice[] }) => {
-          setResults(d.results.filter((c) => c.slug !== exclude && c.slug !== current?.slug).slice(0, 8));
+          // La commune déjà comparée RESTE dans les résultats (marquée) : la
+          // retirer faisait disparaître Saint-Denis (Seine-Saint-Denis) quand
+          // c'était elle, et l'autre Saint-Denis passait pour la seule.
+          setResults(d.results.filter((c) => c.slug !== exclude).slice(0, 8));
           setActive(0);
           setLoading(false);
         })
@@ -73,7 +77,7 @@ export default function CommunePicker({
       clearTimeout(timer);
       ctrl.abort();
     };
-  }, [typed, searching, exclude, current?.slug]);
+  }, [typed, searching, exclude]);
 
   const list = searching ? results ?? [] : suggestions;
   const listId = `${id}-list`;
@@ -151,8 +155,12 @@ export default function CommunePicker({
                 onMouseEnter={() => setActive(i)}
                 onClick={() => pick(c)}
               >
-                <span className="nom">{c.nom}</span>
-                <span className="meta">{[c.dep_name, `${int.format(c.pop)} ${t("fx.natbud.hab")}`].filter(Boolean).join(" · ")}</span>
+                <span className="nom">{nomDistinct(c)}</span>
+                <span className="meta">{[
+                  nomDistinct(c) === c.nom ? c.dep_name : null,
+                  `${int.format(c.pop)} ${t("fx.natbud.hab")}`,
+                  c.slug === current?.slug ? t("fx.pick.actuelle") : null,
+                ].filter(Boolean).join(" · ")}</span>
               </li>
             ))}
           </ul>

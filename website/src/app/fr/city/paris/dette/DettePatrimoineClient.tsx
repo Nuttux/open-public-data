@@ -103,7 +103,7 @@ export default function DettePatrimoineClient({
           { id: "sec-hors-bilan", label: t("fx.det.toc.hors_bilan") },
           { id: "sec-regles", label: t("fx.det.toc.regles") },
           // La section Analyses n'existe pas sans article ni teaser (voir plus bas).
-          ...(posts.length > 0 || citySlug === "paris" ? [{ id: "sec-analyses", label: t("fx.toc.analyses") }] : []),
+          ...(posts.length > 0 ? [{ id: "sec-analyses", label: t("fx.toc.analyses") }] : []),
           { id: "sec-sources", label: t("fx.det.toc.sources") },
         ]}
       />

@@ -7,7 +7,7 @@ import { useCity } from "./CityContext";
 import { FicheBreakdown } from "@/components/fiche";
 import { V3Foot, V3Hero, V3Section } from "@/components/fiche/v3";
 import YearBars from "./YearBars";
-import AnneesRail from "./AnneesRail";
+import AnneesRail, { RAIL_MIN } from "./AnneesRail";
 import { assocSlug } from "@/lib/assoc-slug";
 import { useFmt } from "@/lib/use-fmt";
 
@@ -54,8 +54,9 @@ export default function ThemeFiche({ fiche }: { fiche: ThemeSubventionsFiche }) 
 
       {evo.length > 1 && (
         <V3Section title={t("fx.fiche.theme.h.annees")}>
-          <AnneesRail rows={evo.map((y) => ({ year: y.year, amount: y.amount }))} />
-          <YearBars rows={evo} barColor={color} countLabel={(y) => <span className="muted">{fill(t("fx.fiche.theme.subv_n"), { n: fmtInt(y.count ?? 0) })}</span>} />
+          {evo.length >= RAIL_MIN
+            ? <AnneesRail rows={evo} countText={(r) => fill(t("fx.fiche.theme.subv_n"), { n: fmtInt(r.count ?? 0) })} />
+            : <YearBars rows={evo} barColor={color} countLabel={(y) => <span className="muted">{fill(t("fx.fiche.theme.subv_n"), { n: fmtInt(y.count ?? 0) })}</span>} />}
         </V3Section>
       )}
 

@@ -167,7 +167,7 @@ export default function BudgetClient({ index, d, posts }: Props) {
       <PageTOC
         items={[
           { id: "sec-flux", label: t("fx.toc.flux") },
-          { id: "sec-analyses", label: t("fx.toc.analyses") },
+          ...(posts.length > 0 ? [{ id: "sec-analyses", label: t("fx.toc.analyses") }] : []),
           { id: "sec-sources", label: t("fx.toc.sources") },
         ]}
       />

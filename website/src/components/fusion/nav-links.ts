@@ -1,3 +1,5 @@
+import { ANALYSES_PUBLIC } from "@/lib/analyses-visibility";
+
 export type NavLink = {
   href: string;
   labelKey: string;
@@ -42,9 +44,10 @@ export function citySectionLinks(citySlug: string): NavLink[] {
   }));
 }
 
-// Whether a city surfaces the (currently Paris-only) editorial Analyses.
+// Whether a city surfaces the (currently Paris-only) editorial Analyses —
+// never while the section is unpublished (lib/analyses-visibility.ts).
 export function cityHasAnalyses(citySlug: string): boolean {
-  return citySlug === "paris";
+  return ANALYSES_PUBLIC && citySlug === "paris";
 }
 
 // Top-nav links scoped to a city — preserves the active city slug so

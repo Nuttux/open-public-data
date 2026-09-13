@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import "../fusion.css";
 
 import { Navbar, Footer } from "@/components/fusion";
+import { notFound } from "next/navigation";
 import { getAllPosts } from "@/lib/blog";
+import { ANALYSES_PUBLIC } from "@/lib/analyses-visibility";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
 import AnalysesClient from "./AnalysesClient";
 
@@ -50,6 +52,7 @@ function inferCategory(tags?: string[], categoryMeta?: string): string {
 }
 
 export default function AnalysesPage() {
+  if (!ANALYSES_PUBLIC) notFound();
   const rawPosts = getAllPosts();
   const posts = rawPosts.map((p) => ({
     ...p,

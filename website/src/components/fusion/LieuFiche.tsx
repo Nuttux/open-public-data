@@ -1,7 +1,7 @@
 "use client";
 
+import AnneesRail from "./AnneesRail";
 import type { ReactNode } from "react";
-import { useState } from "react";
 import type { LieuFicheData } from "@/lib/lieux-data";
 import Link from "next/link";
 import { useT, useLocale } from "@/lib/localeContext";
@@ -225,82 +225,17 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
    * L'année est celle du VOTE, pas celle du paiement — les deux diffèrent
    * souvent d'un exercice. La légende le dit, elle ne le masque pas. */
   const delibs = lieu.delibs_par_annee || null;
-  const [ouvert, setOuvert] = useState<{ annee: number; tone: string } | null>(null);
   /* Les délibérations sont rattachées au LIEU, pas au type d'argent. Chaque
    * ligne ne montre donc que celles de son genre : sans ce tri, une subvention
-   * de fonctionnement s'affichait sous « Travaux et rénovation ». */
+   * de fonctionnement s'affichait sous « Travaux et rénovation ». Le rail est
+   * celui des fiches association, fournisseur et thème (AnneesRail), posé ici
+   * sur l'axe commun aux deux lignes. */
   const genrePour = (tone: "x" | "w") => (tone === "x" ? "subvention" : "travaux");
-  const delibsDe = (y: number, tone: "x" | "w") =>
-    (delibs?.[String(y)] || []).filter((d) => (d.genres || []).includes(genrePour(tone)));
-
-  const Years = ({ series, tone }: { series: { year: number; value: number }[]; tone: "x" | "w" }) => {
-    const dans = series.filter((r) => !axe || r.year >= axe.de);
-    if (dans.length < 3 || !axe) return null;
-    const max = Math.max(...dans.map((r) => r.value), 1);
-    const parAn = new Map(dans.map((r) => [r.year, r.value]));
-    const annees: number[] = [];
-    for (let y = axe.de; y <= axe.a; y++) annees.push(y);
-    const sel = ouvert && ouvert.tone === tone ? ouvert.annee : null;
-    const lignes = sel !== null ? delibsDe(sel, tone) : [];
-    return (
-      <>
-        <div className={`fx-v3-years ${tone} clic`}>
-          {annees.map((y, i) => {
-            const v = parAn.get(y);
-            const n = delibsDe(y, tone).length;
-            const corps = (
-              <>
-                {v === undefined ? <em /> : <i style={{ height: Math.max(2, Math.round((v / max) * 40)) }} />}
-                {n > 0 && <b aria-hidden="true" />}
-                {(i === 0 || i === annees.length - 1) && <span className={i === 0 ? "yr" : "yr end"}>{y}</span>}
-              </>
-            );
-            const titre = v === undefined
-              ? `${y} · ${t("fx.lieu.years.non_publie")}`
-              : `${y} · ${eurTxt(v)}`;
-            // TOUTE année porte le clic, pas seulement celles qui ont une
-            // décision : le panneau donne d'abord le montant de l'exercice.
-            // Un survol ne sert à rien sur un téléphone, et obliger à déplier
-            // une liste de quinze lignes pour lire un chiffre était du travail
-            // demandé au lecteur pour rien.
-            if (v === undefined) {
-              return <div key={y} className="hors" title={titre}>{corps}</div>;
-            }
-            return (
-              <button key={y} type="button" className={sel === y ? "on" : ""}
-                      aria-expanded={sel === y} aria-label={titre}
-                      title={n ? `${titre} · ${fill(t("fx.lieu.delib.n"), { n })}` : titre}
-                      onClick={() => setOuvert(sel === y ? null : { annee: y, tone })}>
-                {corps}
-              </button>
-            );
-          })}
-        </div>
-        {sel === null && <p className="fx-v3-aide">{t("fx.lieu.delib.aide")}</p>}
-        {sel !== null && (
-          <div className="fx-v3-delib">
-            <p className="hd">
-              <span className="an mono">{sel}</span>
-              <span className="mt">{eurTxt(parAn.get(sel) ?? 0)}</span>
-              {lignes.length > 0
-                ? fill(t("fx.lieu.delib.titre"), { n: lignes.length })
-                : t("fx.lieu.delib.aucune")}
-            </p>
-            {lignes.map((d) => (
-              <a key={d.reference + d.titre.slice(0, 20)} className="dl"
-                 href={d.source_url || undefined} target="_blank" rel="noopener noreferrer">
-                <span className="ref mono">{d.reference}</span>
-                <span className="ti">{d.titre}</span>
-              </a>
-            ))}
-            {lignes.length > 0 && (
-              <p className="fx-v3-foot" style={{ marginTop: 10 }}>{t("fx.lieu.delib.note")}</p>
-            )}
-          </div>
-        )}
-      </>
-    );
-  };
+  const Years = ({ series, tone }: { series: { year: number; value: number }[]; tone: "x" | "w" }) =>
+    axe ? (
+      <AnneesRail rows={series.map((r) => ({ year: r.year, amount: r.value }))} tone={tone}
+                  delibs={delibs} genre={genrePour(tone)} from={axe.de} to={axe.a} format={eurTxt} />
+    ) : null;
 
   /* ── Les décisions : vedettes d'abord, récentes d'abord ──────────────── */
   type Moment = LieuFicheData["moments"][number];

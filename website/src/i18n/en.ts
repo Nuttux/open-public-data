@@ -2757,7 +2757,7 @@ const en: Record<string, string> = {
   'fx.fiche.asso.par_direction': 'Who funds it',
   'fx.fiche.asso.direction_unknown': '{amount} paid with no department named in the source.',
   'fx.fiche.asso.par_theme': 'By theme',
-  'fx.fiche.asso.objet_identique': 'Identical across all {n} years:',
+  'fx.fiche.asso.objet_identique': 'The same stated purpose in all {n} years:',
   'fx.fiche.asso.subventions': 'Grants',
   'fx.fiche.asso.actif_depuis': 'Active since',
   'fx.fiche.asso.derniere_annee': 'Last year',
@@ -3588,6 +3588,7 @@ const en: Record<string, string> = {
   'fx.cc.lieu_dep': '{c} (département)',
   'fx.cc.lieu_region': 'region {c}',
   'fx.pick.placeholder': 'Search any town in France…',
+  'fx.pick.actuelle': 'compared',
   'fx.pick.suggest': 'Same département, similar size',
   'fx.pick.results': 'Towns',
   'fx.pick.loading': 'Searching…',
@@ -6258,6 +6259,7 @@ const en: Record<string, string> = {
   'fx.lieu.hero.verse_one': 'paid by the City for this place in {y}',
   'fx.lieu.delib.aucune': 'No matching decision in the Conseil de Paris archive.',
   'fx.lieu.delib.aide': 'Click a year for its amount and the Conseil de Paris decision.',
+  'fx.v3.years.aide': 'Click a year to see its amount.',
   'fx.lieu.delib.titre': 'What the Conseil de Paris voted that year ({n})',
   'fx.lieu.delib.n': '{n} decision(s) — click',
   'fx.lieu.delib.note': 'Decision titles exactly as the City wrote them. The year is the year of the vote: payment often falls in the following year.',
@@ -6777,6 +6779,9 @@ const en: Record<string, string> = {
   'us.sf.related.place_same_kind': '{kind}, the same kind of place',
   'us.sf.related.hub_places': 'Every San Francisco place on the site',
   'us.sf.related.hub_places_sub': 'Parks, libraries, hospitals, piers, and the contract money paid for work at each',
+  'fx.homonymes.h1': 'Which {nom}?',
+  'fx.homonymes.lead': '{n} towns share this name. Population: OFGL.',
+  'fx.homonymes.hab': 'inhab.',
 };
 
 export default en;

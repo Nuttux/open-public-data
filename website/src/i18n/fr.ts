@@ -2754,7 +2754,7 @@ const fr: Record<string, string> = {
   'fx.fiche.asso.par_direction': 'Qui la finance',
   'fx.fiche.asso.direction_unknown': "{amount} versés sans direction identifiée dans la source.",
   'fx.fiche.asso.par_theme': 'Par thématique',
-  'fx.fiche.asso.objet_identique': "Identique sur les {n} exercices :",
+  'fx.fiche.asso.objet_identique': "Le même objet les {n} années :",
   'fx.fiche.asso.subventions': 'Subventions',
   'fx.fiche.asso.actif_depuis': 'Actif depuis',
   'fx.fiche.asso.derniere_annee': 'Dernière année',
@@ -3585,6 +3585,7 @@ const fr: Record<string, string> = {
   'fx.cc.lieu_dep': '{c} (département)',
   'fx.cc.lieu_region': 'région {c}',
   'fx.pick.placeholder': 'Chercher une commune de France…',
+  'fx.pick.actuelle': 'comparée',
   'fx.pick.suggest': 'Même département, taille proche',
   'fx.pick.results': 'Communes',
   'fx.pick.loading': 'Recherche…',
@@ -6264,6 +6265,7 @@ const fr: Record<string, string> = {
   'fx.lieu.hero.verse_one': 'versés par la Ville pour ce lieu en {y}',
   'fx.lieu.delib.aucune': 'Aucune décision correspondante dans l’archive du Conseil de Paris.',
   'fx.lieu.delib.aide': 'Cliquer une année pour voir son montant et la décision du Conseil de Paris.',
+  'fx.v3.years.aide': 'Cliquer une année pour voir son montant.',
   'fx.lieu.delib.titre': 'Ce que le Conseil de Paris a voté cette année-là ({n})',
   'fx.lieu.delib.n': '{n} délibération(s) — cliquer',
   'fx.lieu.delib.note': 'Titres des délibérations tels que la Ville les a écrits. L’année est celle du vote : le paiement tombe souvent l’exercice suivant.',
@@ -6497,6 +6499,9 @@ const fr: Record<string, string> = {
   'us.sf.related.place_same_kind': '{kind}, the same kind of place',
   'us.sf.related.hub_places': 'Every San Francisco place on the site',
   'us.sf.related.hub_places_sub': 'Parks, libraries, hospitals, piers, and the contract money paid for work at each',
+  'fx.homonymes.h1': '{nom} : laquelle ?',
+  'fx.homonymes.lead': '{n} communes portent ce nom. Population : OFGL.',
+  'fx.homonymes.hab': 'hab.',
 };
 
 export default fr;
