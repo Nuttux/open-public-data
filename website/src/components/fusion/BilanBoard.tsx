@@ -1,12 +1,13 @@
 "use client";
 
 import type { PatrimoineMasse } from "@/lib/fusion-data";
-import { fill, fmtBillions, fmtDec, fmtMillions } from "@/lib/fmt";
+import { fill } from "@/lib/fmt";
 import { slugifyLabel } from "@/lib/projet-utils";
 import BalanceStack, { type BalanceSegment } from "./BalanceStack";
 import { useCity } from "./CityContext";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
+import { useFmt } from "@/lib/use-fmt";
 
 // Turn an i18n string with <b>...</b> tags into React nodes.
 function renderRich(s: string) {
@@ -26,6 +27,7 @@ type Props = {
 
 export default function BilanBoard({ year, actif, passif, totals }: Props) {
   const t = useT();
+  const { fmtDec, fmtBillions, fmtMillions } = useFmt();
   const { locale } = useLocale();
   const { basePath } = useCity();
 

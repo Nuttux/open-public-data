@@ -1,10 +1,11 @@
 "use client";
 
 import type { PatrimoineMasse } from "@/lib/fusion-data";
-import { fill, fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
+import { fill } from "@/lib/fmt";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 import { PARIS_POPULATION } from "@/lib/methodology";
+import { useFmt } from "@/lib/use-fmt";
 
 type Props = {
   masse: PatrimoineMasse;
@@ -20,6 +21,7 @@ type Props = {
  */
 export default function MasseFiche({ masse }: Props) {
   const t = useT();
+  const { fmtInt, fmtDec, fmtBillions, fmtMillions } = useFmt();
   const { locale } = useLocale();
 
   const unit = masse.value >= 1e9 ? t("fx.s.md_eur") : t("fx.s.m_eur");

@@ -5,20 +5,12 @@ import { Navbar, Footer } from "@/components/fusion";
 import MarseillePlacesExplorer from "@/components/marseille/MarseillePlacesExplorer";
 import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
 import { loadPlacesIndex } from "@/lib/marseille/marseille-places-data";
-import { readLocale } from "@/lib/seo";
+import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
+import { FrHubJsonLd, hubMetadataInput } from "@/lib/seo/sections/national";
+import { marseilleLieuxHub } from "@/lib/seo/sections/marseille";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const locale = await readLocale();
-  const title = locale === "en" ? "Places" : "Lieux";
-  const description = locale === "en"
-    ? "Public and heritage places of Marseille — museums, libraries, parks, stadium, monuments — mapped, with a free-licence photo and a short factual note for each."
-    : "Lieux publics et patrimoniaux de Marseille — musées, bibliothèques, parcs, stade, monuments — cartographiés, avec pour chacun une photo sous licence libre et une note factuelle.";
-  return {
-    title,
-    description,
-    alternates: { canonical: "/fr/city/marseille/lieux" },
-    openGraph: { title, description, type: "website" },
-  };
+  return buildLocaleAwareMetadata(hubMetadataInput(marseilleLieuxHub()));
 }
 
 export default async function LieuxPage() {
@@ -27,6 +19,8 @@ export default async function LieuxPage() {
   const nbArr = new Set(places.map((p) => p.arrondissement).filter(Boolean)).size;
 
   return (
+    <>
+    <FrHubJsonLd hub={marseilleLieuxHub()} locale={locale} />
     <div className="theme-fusion">
       <Navbar />
       <main id="main-content" tabIndex={-1}>
@@ -58,5 +52,6 @@ export default async function LieuxPage() {
       </main>
       <Footer />
     </div>
+    </>
   );
 }

@@ -20,11 +20,12 @@ import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/Re
 import PageHook from "@/components/fusion/PageHook";
 import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
 import LensBar from "@/components/fusion/LensBar";
-import { fill, fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
+import { fill } from "@/lib/fmt";
 import type { BlogPostMeta } from "@/lib/blog";
 import type { QuiRecoitData } from "@/lib/fusion-data";
 import { slugifyLabel } from "@/lib/projet-utils";
 import { useT } from "@/lib/localeContext";
+import { useFmt } from "@/lib/use-fmt";
 
 type QuiRecoitIndex = { availableYears: number[]; previewYears?: number[] };
 
@@ -54,6 +55,7 @@ export default function QuiRecoitClient({
   posts: BlogPostMeta[];
 }) {
   const t = useT();
+  const { fmtBillions, fmtDec, fmtInt, fmtMillions } = useFmt();
   const pathname = usePathname();
   const citySlug = citySlugFromPathname(pathname);
   const cityBasePath = `/fr/city/${citySlug}/subventions`;

@@ -200,6 +200,22 @@ export function loadLieuxIndex(): LieuIndexEntry[] {
   }));
 }
 
+/**
+ * The places shown under a place fiche's "same kind" block (LieuxVoisins):
+ * the same family first, else the same arrondissement, most documented first.
+ * Shared so the "see also" block can leave these out rather than repeat them.
+ */
+export function lieuxVoisins(slug: string, famille: string, arrondissement: number): { voisins: LieuIndexEntry[]; by: "famille" | "arrondissement" } {
+  const all = loadLieuxIndex().filter((l) => l.slug !== slug);
+  let voisins = all.filter((l) => l.famille === famille);
+  let by: "famille" | "arrondissement" = "famille";
+  if (voisins.length < 2) {
+    voisins = all.filter((l) => l.arrondissement === arrondissement && arrondissement > 0);
+    by = "arrondissement";
+  }
+  return { voisins: voisins.sort((a, b) => (b.n_lieu ?? 0) - (a.n_lieu ?? 0)).slice(0, 4), by };
+}
+
 export function loadLieu(slug: string): LieuFicheData | null {
   if (!/^[a-z0-9-]+$/.test(slug)) return null;
   return readJson<LieuFicheData>(`lieu_${slug}.json`);

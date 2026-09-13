@@ -7,7 +7,9 @@ import {
   type VoteExecuteData,
 } from "@/lib/fusion-data";
 import { getPostsForPage } from "@/lib/page-articles";
-import { buildLocaleAwareMetadata } from "@/lib/seo";
+import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
+import { FrHubJsonLd, hubMetadataInput } from "@/lib/seo/sections/national";
+import { marseilleBudgetHub } from "@/lib/seo/sections/marseille";
 import BudgetClient from "@/app/fr/city/paris/budget/BudgetClient";
 
 // POC v1 Marseille — réutilise BudgetClient Paris avec data Marseille.
@@ -18,17 +20,7 @@ import BudgetClient from "@/app/fr/city/paris/budget/BudgetClient";
 //   - Quelques mentions "Paris" peuvent subsister dans BudgetClient (à déparisifier post-POC)
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildLocaleAwareMetadata({
-    title: "Le budget de Marseille",
-    description:
-      "Recettes, dépenses et exécution du budget de la Ville de Marseille. Flux complet, détail par catégorie de flux. Source : comptes administratifs M57 (data.gouv.fr).",
-    en: {
-      title: "Marseille budget",
-      description:
-        "Revenue, spending and execution of the Ville de Marseille budget. Full flow, breakdown by flow category. Source: M57 administrative accounts (data.gouv.fr).",
-    },
-    path: "/fr/city/marseille/budget",
-  });
+  return buildLocaleAwareMetadata(hubMetadataInput(marseilleBudgetHub()));
 }
 
 type SP = { year?: string };
@@ -53,5 +45,11 @@ export default async function BudgetPage({
   };
   const posts = getPostsForPage("budget");
 
-  return <BudgetClient index={index} d={d} voteExec={voteExec} posts={posts} />;
+  const locale = await readLocale();
+  return (
+    <>
+      <FrHubJsonLd hub={marseilleBudgetHub()} locale={locale} />
+      <BudgetClient index={index} d={d} voteExec={voteExec} posts={posts} />
+    </>
+  );
 }

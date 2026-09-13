@@ -22,11 +22,12 @@ import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/Re
 import PageHook from "@/components/fusion/PageHook";
 import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
 import { FicheMore } from "@/components/fiche";
-import { fill, fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
+import { fill } from "@/lib/fmt";
 import type { BlogPostMeta } from "@/lib/blog";
 import type { InvestissementsData } from "@/lib/fusion-data";
 import { slugifyChapitre } from "@/lib/projet-utils";
 import { useT, useLocale } from "@/lib/localeContext";
+import { useFmt } from "@/lib/use-fmt";
 import { trLabel } from "@/lib/label-translate";
 import { cityPopulation, citySlugFromPathname } from "@/lib/methodology";
 
@@ -60,6 +61,7 @@ export default function InvestissementsClient({
   enableDrilldowns?: boolean;
 }) {
   const t = useT();
+  const { fmtBillions, fmtDec, fmtInt, fmtMillions } = useFmt();
   const { locale } = useLocale();
   const trL = (s: string | undefined) => trLabel(s, locale);
   // Multi-cities awareness — derive city slug from URL so the same client
@@ -88,7 +90,7 @@ export default function InvestissementsClient({
       <PageTOC
         items={[
           { id: "sec-territoire", label: t("fx.inv.s05.kind") },
-          { id: "sec-chapitre", label: t("fx.toc.chapitres") },
+          ...(d.byChapitre.length > 0 ? [{ id: "sec-chapitre", label: t("fx.toc.chapitres") }] : []),
           { id: "sec-evolution", label: t("fx.toc.evolution") },
           { id: "sec-projets", label: t("fx.toc.projets") },
           { id: "sec-analyses", label: t("fx.toc.analyses") },
@@ -314,7 +316,7 @@ export default function InvestissementsClient({
             return (
               <PageHook
                 variant="card"
-                cite={fill(t("fx.inv.hook.cite"), { year: d.year })}
+                cite={fill(t(isParis ? "fx.inv.hook.cite" : "fx.inv.hook.cite.ofgl"), { year: d.year })}
                 shareText={fill(t("fx.inv.hook.share"), { ...baseVars, topPart })}
               >
                 <span dangerouslySetInnerHTML={{ __html: fill(t("fx.inv.hook.body.intro"), baseVars) }} />
@@ -330,6 +332,7 @@ export default function InvestissementsClient({
       {/* « Par exemple » — même grammaire que la page marchés : trois
        * projets réels, règles fixes, photo dédiée exigée (cf. loader). */}
 
+      {d.byChapitre.length > 0 && (
       <section className="fx-section" id="sec-chapitre">
         <div className="fx-wrap">
           <SectionHead
@@ -363,6 +366,7 @@ export default function InvestissementsClient({
           />
         </div>
       </section>
+      )}
 
       <section className="fx-section" id="sec-evolution">
         <div className="fx-wrap">
@@ -370,7 +374,7 @@ export default function InvestissementsClient({
             title={
               <>
                 {t("fx.inv.s06.title.before")}
-                <em>{fill(t("fx.inv.s06.title.em"), { year: d.year })}</em>
+                <em>{fill(t("fx.inv.s06.title.em"), { y0: ytrend[0]?.year ?? d.year, year: ytrend[ytrend.length - 1]?.year ?? d.year })}</em>
               </>
             }
           />
@@ -383,8 +387,8 @@ export default function InvestissementsClient({
             activeYear={d.year}
           />
           <ChartSource
-            source={t("fx.inv.s05.source.cite")}
-            dataHref={isParis ? "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/" : undefined}
+            source={t(isParis ? "fx.inv.s05.source.cite" : "fx.inv.s05.source.cite.ofgl")}
+            dataHref={isParis ? "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/" : "https://data.ofgl.fr/explore/dataset/ofgl-base-communes-consolidee/"}
             methodAnchor="investissements"
           />
           <p className="fx-note">

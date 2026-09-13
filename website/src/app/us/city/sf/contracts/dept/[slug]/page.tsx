@@ -9,6 +9,8 @@ import { loadSfContractDept, sfContractDeptSlugs } from "../../data";
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { contractDeptAnswer } from "@/lib/us/sf-answers";
 import PageJsonLd from "@/components/seo/PageJsonLd";
+import RelatedLinks from "@/components/fiche/RelatedLinks";
+import { sfContractDeptRelated } from "@/lib/us/sf-related";
 
 type Params = { slug: string };
 
@@ -60,6 +62,7 @@ export default async function SfDeptContractsPage({ params }: { params: Promise<
       </section>
       <div className="fx-fiche-wrap">
         <SfDeptContractsFiche d={d} />
+        <RelatedLinks block={sfContractDeptRelated(d)} />
       </div>
     </main>
   );

@@ -1,9 +1,10 @@
 "use client";
 
-import { fill, fmtDec, fmtInt } from "@/lib/fmt";
+import { fill } from "@/lib/fmt";
 import { useT } from "@/lib/localeContext";
 import Tip from "@/components/fusion/Tip";
 import BarTrack from "./BarTrack";
+import { useFmt } from "@/lib/use-fmt";
 
 type ArrRow = {
   arr: number;
@@ -45,6 +46,7 @@ export default function TensionParArrondissement({
   methodology,
 }: Props) {
   const t = useT();
+  const { fmtInt, fmtDec } = useFmt();
   const maxRatio = Math.max(...parArrondissement.map((a) => a.ratio));
   // Sorted by tension desc — most tense first
   const sorted = [...parArrondissement].sort((a, b) => b.ratio - a.ratio);

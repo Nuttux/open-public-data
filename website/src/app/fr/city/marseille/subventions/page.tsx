@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import "@/app/fusion.css";
 import { loadQuiRecoitData, loadQuiRecoitIndex } from "@/lib/fusion-data";
-import { buildLocaleAwareMetadata } from "@/lib/seo";
+import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
+import { FrHubJsonLd, hubMetadataInput } from "@/lib/seo/sections/national";
+import { marseilleSubventionsHub } from "@/lib/seo/sections/marseille";
 import QuiRecoitClient from "@/app/fr/city/paris/subventions/QuiRecoitClient";
 
 // POC v1 Marseille subventions — réutilise QuiRecoitClient avec data Marseille.
@@ -17,17 +19,7 @@ import QuiRecoitClient from "@/app/fr/city/paris/subventions/QuiRecoitClient";
 //   - Pas d'articles éditoriaux Marseille (posts: []).
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildLocaleAwareMetadata({
-    title: "Qui reçoit l'argent public à Marseille ?",
-    description:
-      "Subventions versées par la Ville de Marseille (2017-2022) : bénéficiaires, montants, évolution. Source : data.gouv.fr (SCDL).",
-    en: {
-      title: "Who receives public money in Marseille?",
-      description:
-        "Grants paid by the Ville de Marseille (2017-2022): beneficiaries, amounts, trends. Source: data.gouv.fr (SCDL).",
-    },
-    path: "/fr/city/marseille/subventions",
-  });
+  return buildLocaleAwareMetadata(hubMetadataInput(marseilleSubventionsHub()));
 }
 
 export default async function QuiRecoitPage({
@@ -42,5 +34,11 @@ export default async function QuiRecoitPage({
   // No Marseille-specific blog posts yet — empty list filters out the
   // RelatedArticles section (handled inside QuiRecoitClient).
   const posts: Parameters<typeof QuiRecoitClient>[0]["posts"] = [];
-  return <QuiRecoitClient idx={idx} d={d} posts={posts} />;
+  const locale = await readLocale();
+  return (
+    <>
+      <FrHubJsonLd hub={marseilleSubventionsHub()} locale={locale} />
+      <QuiRecoitClient idx={idx} d={d} posts={posts} />
+    </>
+  );
 }

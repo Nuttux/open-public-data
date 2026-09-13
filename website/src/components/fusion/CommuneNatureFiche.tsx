@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useLocale, useT } from "@/lib/localeContext";
 import { sensDe } from "@/lib/ecart-mots";
+import { deNom } from "@/lib/nom-commune";
 import type { CommuneFonctions, FonctionLigne, NatureFamille } from "@/lib/commune-fonctions";
 
 /**
@@ -127,7 +128,7 @@ export default function CommuneNatureFiche({
       </p>
 
       {!embedded ? (
-        <p className="fx-fonc-retour"><Link href={`/fr/city/${doc.commune.slug}#depenses`}>{fill("fx.nat.retour", { nom })}</Link></p>
+        <p className="fx-fonc-retour"><Link href={`/fr/city/${doc.commune.slug}#depenses`}>{fill("fx.nat.retour", { nom, de_nom: deNom(nom) })}</Link></p>
       ) : null}
     </div>
   );

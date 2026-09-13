@@ -7,6 +7,7 @@ import { loadProjet, resolveProjetPhoto } from "@/lib/fusion-data";
 import { lieuForProjet } from "@/lib/lieux-data";
 import { trLabel } from "@/lib/label-translate";
 import { eur, ordFr, ordEn, dataDate, sourceLine, clip } from "@/lib/entities/seo-text";
+import { projetRelated } from "@/lib/entities/related";
 
 type D = {
   projet: NonNullable<ReturnType<typeof loadProjet>>;
@@ -65,15 +66,16 @@ export const projetConfig: EntityPageConfig<D> = {
   const arr = p.arrondissement > 0 ? `${locale === "en" ? ordEn(p.arrondissement) : ordFr(p.arrondissement)} arrondissement` : null;
   if (locale === "en") {
     return {
-      title: `${clip(name, 60)}: ${amt} invested by the City of Paris (${p.year})`,
+      title: `${clip(name, 42)}: ${amt} invested (Paris, ${p.year})`,
       answer: `In ${p.year}, the City of Paris budgeted ${amt} for "${name}" (${chap.toLowerCase()}${arr ? `, ${arr}` : ""}). ${sourceLine("en", "City of Paris, localised investments in the administrative account", date)}`,
     };
   }
   return {
-    title: `${clip(name, 60)} : ${amt} investis par la Ville de Paris (${p.year})`,
+    title: `${clip(name, 42)} : ${amt} investis (Paris, ${p.year})`,
     answer: `En ${p.year}, la Ville de Paris a inscrit ${amt} pour « ${name} » (${chap.toLowerCase()}${arr ? `, ${arr}` : ""}). ${sourceLine("fr", "Ville de Paris, investissements localisés du compte administratif", date)}`,
   };
   },
+  related: ({ projet }, locale) => projetRelated(projet, locale),
   page: {
     header: ({ projet }, locale) => {
       const displayName = locale === "en" && projet.name_en ? projet.name_en : projet.name;

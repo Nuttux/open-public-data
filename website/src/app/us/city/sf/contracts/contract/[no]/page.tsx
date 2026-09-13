@@ -10,6 +10,8 @@ import { contractPrimePayeeSlug } from "@/lib/us/sf-payees-data";
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { contractAnswer } from "@/lib/us/sf-answers";
 import PageJsonLd from "@/components/seo/PageJsonLd";
+import RelatedLinks from "@/components/fiche/RelatedLinks";
+import { sfContractRelated } from "@/lib/us/sf-related";
 
 type Params = { no: string };
 
@@ -86,6 +88,7 @@ export default async function SfContractPage({ params }: { params: Promise<Param
           primePayeeSlug={primePayeeSlug}
           deptContractsHref={deptContractsHref}
         />
+        <RelatedLinks block={sfContractRelated(fiche)} />
       </div>
     </main>
   );

@@ -2,21 +2,17 @@ import type { Metadata } from "next";
 import "@/app/fusion.css";
 import { loadFournisseursRanking, loadMarchesIndex, loadMarchesPageData } from "@/lib/fusion-data";
 import { getPostsForPage } from "@/lib/page-articles";
-import { buildLocaleAwareMetadata } from "@/lib/seo";
+import { readLocale } from "@/lib/seo";
+import { parisSectionJsonLd, parisSectionMetadata, yearParam } from "@/lib/seo/sections/paris";
 import MarchesPublicsClient from "./MarchesPublicsClient";
 
-export async function generateMetadata(): Promise<Metadata> {
-  return buildLocaleAwareMetadata({
-    title: "Paris — Marchés publics",
-    description:
-      "Contrats attribués par la Ville de Paris : titulaires, catégories CPV, volumes. Enveloppes pluriannuelles, pas des dépenses annuelles.",
-    en: {
-      title: "Paris — Public contracts",
-      description:
-        "Contracts awarded by the Ville de Paris: contractors, CPV categories, volumes. Multi-year envelopes, not annual spend.",
-    },
-    path: "/fr/city/paris/marches",
-  });
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ year?: string }>;
+}): Promise<Metadata> {
+  const sp = await searchParams;
+  return parisSectionMetadata("marches", yearParam(sp.year));
 }
 
 export default async function MarchesPublicsPage({
@@ -30,5 +26,12 @@ export default async function MarchesPublicsPage({
   const d = loadMarchesPageData(requestedYear);
   const ranking = loadFournisseursRanking();
   const posts = getPostsForPage("marches-publics");
-  return <MarchesPublicsClient idx={idx} d={d} ranking={ranking} posts={posts} />;
+  return (
+    <>
+      {parisSectionJsonLd("marches", await readLocale(), requestedYear).map((o, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(o) }} />
+      ))}
+      <MarchesPublicsClient idx={idx} d={d} ranking={ranking} posts={posts} />
+    </>
+  );
 }

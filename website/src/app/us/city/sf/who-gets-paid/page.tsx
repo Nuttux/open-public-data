@@ -11,7 +11,9 @@ import { loadSfSpendingSection } from "@/lib/us/sf-spending";
 import { loadSfPaymentBreakdowns } from "@/lib/us/sf-payment-breakdowns";
 import WhoGetsPaidClient from "./WhoGetsPaidClient";
 import type { WgpFile, WgpMeta, WgpYearStatus } from "./wgp-types";
-import { sectionAlternates } from "@/lib/seo/page-answer";
+import { answerMetadata } from "@/lib/seo/page-answer";
+import { readSiteLocale } from "@/lib/seo";
+import { sfPayeesHub, SfHubJsonLd } from "@/lib/seo/sections/sf";
 
 /**
  * /us/city/sf/who-gets-paid — server component. Loads the pipeline export
@@ -24,12 +26,11 @@ import { sectionAlternates } from "@/lib/seo/page-answer";
  * the export — recently-closed years are selectable but banner-labeled as
  * preliminary while the Controller's close runs).
  */
-export const metadata: Metadata = {
-  ...sectionAlternates("/us/city/sf/who-gets-paid", "en"),
-  title: "San Francisco — Payees",
-  description:
-    "Every payment through San Francisco's financial system, ranked and classified: service providers, nonprofits, fiscal agents, grant-funded dollars — from the Controller's weekly vendor-payments ledger.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await readSiteLocale();
+  const hub = sfPayeesHub();
+  return answerMetadata(hub.answer, hub.path, locale);
+}
 
 function readJson<T>(file: string): T {
   return readDataJson<T>(`us/sf/${file}`);
@@ -182,6 +183,8 @@ export default async function WhoGetsPaidPage({
   const breakdowns = loadSfPaymentBreakdowns(fy);
 
   return (
+    <>
+    <SfHubJsonLd hub={sfPayeesHub()} />
     <WhoGetsPaidClient
       fy={fy}
       spending={spending}
@@ -194,5 +197,6 @@ export default async function WhoGetsPaidPage({
       vendorSlugMap={vendorSlugMap}
       searchSeeds={searchSeeds}
     />
+    </>
   );
 }

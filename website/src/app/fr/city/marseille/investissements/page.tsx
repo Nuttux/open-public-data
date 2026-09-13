@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import "@/app/fusion.css";
 import { loadInvestissementsData } from "@/lib/fusion-data";
-import { buildLocaleAwareMetadata } from "@/lib/seo";
+import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
+import { FrHubJsonLd, hubMetadataInput } from "@/lib/seo/sections/national";
+import { marseilleInvestissementsHub } from "@/lib/seo/sections/marseille";
 import InvestissementsClient from "@/app/fr/city/paris/investissements/InvestissementsClient";
 
 // Marseille investissements — reuses the Paris InvestissementsClient (now
@@ -19,17 +21,7 @@ import InvestissementsClient from "@/app/fr/city/paris/investissements/Investiss
 //     cartes et tuiles non-cliquables (jamais de 404). P3.2 option a.
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildLocaleAwareMetadata({
-    title: "Investissements de Marseille",
-    description:
-      "Projets d'investissement de la Ville de Marseille classés par thématique et arrondissement. Source : rapports de présentation des comptes administratifs (PDF marseille.fr).",
-    en: {
-      title: "Marseille investments",
-      description:
-        "Ville de Marseille investment projects, classified by theme and district. Source: administrative account presentation reports (PDF marseille.fr).",
-    },
-    path: "/fr/city/marseille/investissements",
-  });
+  return buildLocaleAwareMetadata(hubMetadataInput(marseilleInvestissementsHub()));
 }
 
 type SP = { year?: string };
@@ -42,5 +34,11 @@ export default async function InvestissementsPage({
   const sp = await searchParams;
   const requestedYear = sp.year ? Number(sp.year) : undefined;
   const d = loadInvestissementsData(requestedYear, "marseille");
-  return <InvestissementsClient d={d} posts={[]} enableDrilldowns={false} />;
+  const locale = await readLocale();
+  return (
+    <>
+      <FrHubJsonLd hub={marseilleInvestissementsHub()} locale={locale} />
+      <InvestissementsClient d={d} posts={[]} enableDrilldowns={false} />
+    </>
+  );
 }

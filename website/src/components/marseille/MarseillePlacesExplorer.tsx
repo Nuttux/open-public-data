@@ -5,10 +5,10 @@ import { useT, useLocale } from "@/lib/localeContext";
 import PlacesExplorer from "@/components/places/PlacesExplorer";
 import type { PlaceEntry, PlacesConfig, PlaceFamily } from "@/components/places/types";
 import type { MarseillePlace } from "@/lib/marseille/marseille-places-data";
-import { fmtInt } from "@/lib/fmt";
+import { makeFmt, numLocale, type Fmt } from "@/lib/fmt";
 
-const eur = (n: number) =>
-  n >= 1e6 ? `${(n / 1e6).toFixed(1).replace(".", ",")} M€` : `${fmtInt(Math.round(n / 1e3))} k€`;
+const eur = (n: number, fmt: Fmt) =>
+  n >= 1e6 ? `${fmt.fmtDec(n / 1e6, 1)} M€` : `${fmt.fmtInt(Math.round(n / 1e3))} k€`;
 
 // Marseille place families → colours (repo palette, validated for the fusion bg).
 const FAMILLES: { key: string; color: string; fr: string; en: string }[] = [
@@ -41,6 +41,7 @@ export default function MarseillePlacesExplorer({
 }) {
   const t = useT();
   const { locale } = useLocale();
+  const fmt = useMemo(() => makeFmt(locale), [locale]);
 
   const families = useMemo<PlaceFamily[]>(
     () => FAMILLES.map((f) => ({ key: f.key, label: locale === "en" ? f.en : f.fr, color: f.color })),
@@ -67,12 +68,12 @@ export default function MarseillePlacesExplorer({
           areaLabel: arrLabel,
           metric: subv ? subv.montant_total : undefined,
           stat: subv
-            ? `${eur(subv.montant_total)} ${locale === "en" ? "in grants" : "de subventions"}`
+            ? `${eur(subv.montant_total, fmt)} ${locale === "en" ? "in grants" : "de subventions"}`
             : "",
           statTone: subv ? "money" : undefined,
         };
       }),
-    [places, locale],
+    [places, locale, fmt],
   );
 
   const config = useMemo<PlacesConfig>(
@@ -90,7 +91,7 @@ export default function MarseillePlacesExplorer({
         { key: "metric-desc", label: t("fx.lieux.sort.montant") },
       ],
       areaSort: "numeric",
-      locale: "fr-FR",
+      locale: numLocale(locale),
       strings: {
         searchPlaceholder: t("fx.lieux.search"),
         sortLabel: t("fx.lieux.sort_label"),
@@ -106,7 +107,7 @@ export default function MarseillePlacesExplorer({
         tooltipCta: t("fx.lieux.tooltip_cta"),
       },
     }),
-    [families, t],
+    [families, t, locale],
   );
 
   return <PlacesExplorer entries={entries} config={config} />;

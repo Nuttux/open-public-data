@@ -8,6 +8,7 @@
  */
 import { fmtBrlCompact, fmtShare, titleCasePt } from "@/lib/br/format";
 import { isoDate, n, sourceSentence, type PageAnswer } from "@/lib/seo/page-answer";
+import { clip } from "@/lib/entities/seo-text";
 
 export type RecifeLocale = "pt" | "en";
 
@@ -51,14 +52,14 @@ export function recipientAnswer(
   const org = r.principal_orgao ? titleCasePt(r.principal_orgao) : null;
   if (locale === "en") {
     return {
-      title: `${r.nome}: ${amt} paid by the City of Recife${span(first, last)}`,
+      title: `${clip(titleCasePt(r.nome), 38)}: ${amt} paid by Recife`,
       answer: `${lead("en", first, last)} the Prefeitura do Recife paid ${amt} to ${r.nome}${org ? `, mostly through ${org}` : ""}${
         r.n_contratos > 0 ? `, with ${n("contract", r.n_contratos)} on file` : ""
       }. ${src("en", r.source)}`.trim(),
     };
   }
   return {
-    title: `${r.nome}: ${amt} pagos pela Prefeitura do Recife${span(first, last)}`,
+    title: `${clip(titleCasePt(r.nome), 38)}: ${amt} da Prefeitura do Recife`,
     answer: `${lead("pt", first, last)} a Prefeitura do Recife pagou ${amt} a ${r.nome}${org ? `, principalmente pelo órgão ${org}` : ""}${
       r.n_contratos > 0 ? `, em ${n("contrato", r.n_contratos, "pt")}` : ""
     }. ${src("pt", r.source)}`.trim(),
@@ -170,17 +171,20 @@ export function contratoAnswer(
   const amt = c.valor != null ? fmtBrlCompact(c.valor) : null;
   const org = c.orgao ? titleCasePt(c.orgao) : null;
   const obj = c.objeto ? c.objeto.trim().replace(/\.$/u, "") : null;
-  const objShort = obj && obj.length > 60 ? `${obj.slice(0, 60).replace(/[\s,;:–-]+$/u, "")}…` : obj;
+  // « ADESAO A ATA DE RP N. 070/2023 PE. N. 022/2023 » : une référence de
+  // procédure, pas un objet. Le titre prend alors le fournisseur, ce qu'on cherche.
+  const objTitle = obj && (obj.match(/\d/g) ?? []).length < 6 ? obj : null;
+  const who = c.fornecedor ? clip(titleCasePt(c.fornecedor), 38) : null;
   if (locale === "en") {
     return {
-      title: `${objShort ? `${objShort}: ` : ""}${amt ? `${amt} ` : ""}Recife contract ${ref}${c.fornecedor ? ` with ${c.fornecedor}` : ""}${c.ano ? ` (${c.ano})` : ""}`,
+      title: objTitle ? `${clip(objTitle, 55)}: ${amt ? `${amt} ` : ""}contract (Recife${c.ano ? `, ${c.ano}` : ""})` : who ? `Recife contract with ${who}${amt ? `: ${amt}` : ""}${c.ano ? ` (${c.ano})` : ""}` : `Recife contract ${ref}${amt ? `: ${amt}` : ""}${c.ano ? ` (${c.ano})` : ""}`,
       answer: `${c.ano ? `In ${c.ano}, ` : ""}the City of Recife${org ? ` (${org})` : ""} signed contract ${ref}${c.fornecedor ? ` with ${c.fornecedor}` : ""}${amt ? ` for ${amt}` : ""} by ${titleCasePt(c.modalidade).toLowerCase()}${
         obj ? `: ${obj}` : ""
       }. ${c.is_ativo ? "Still in force. " : ""}${src("en", source)}`,
     };
   }
   return {
-    title: `${objShort ? `${objShort}: ` : ""}contrato ${ref} do Recife${amt ? ` de ${amt}` : ""}${c.fornecedor ? ` com ${c.fornecedor}` : ""}${c.ano ? ` (${c.ano})` : ""}`,
+    title: objTitle ? `${clip(objTitle, 55)}: contrato${amt ? ` de ${amt}` : ""} (Recife${c.ano ? `, ${c.ano}` : ""})` : who ? `Contrato do Recife com ${who}${amt ? `: ${amt}` : ""}${c.ano ? ` (${c.ano})` : ""}` : `Contrato ${ref} do Recife${amt ? `: ${amt}` : ""}${c.ano ? ` (${c.ano})` : ""}`,
     answer: `${c.ano ? `Em ${c.ano}, ` : ""}a Prefeitura do Recife${org ? ` (${org})` : ""} firmou o contrato ${ref}${c.fornecedor ? ` com ${c.fornecedor}` : ""}${amt ? ` no valor de ${amt}` : ""} por ${titleCasePt(c.modalidade).toLowerCase()}${
       obj ? `: ${obj}` : ""
     }. ${c.is_ativo ? "Ainda vigente. " : ""}${src("pt", source)}`,
@@ -208,15 +212,27 @@ export function lugarAnswer(
         ? `${n("works contract", p.n_obras)}${p.obras_total ? ` worth ${fmtBrlCompact(p.obras_total)}` : ""}`
         : `${n("contrato de obra", p.n_obras, "pt", "contratos de obra")}${p.obras_total ? ` no valor de ${fmtBrlCompact(p.obras_total)}` : ""}`
       : null;
+  // Name, then the works figure the sentence states; a place with no works on
+  // file has no figure to put in its title, only what and where it is.
+  const name = clip(titleCasePt(p.nome), 38);
+  const plain = kind ? `${name} (${kind}, Recife)` : `${name}, Recife`;
   if (locale === "en") {
     const desc = p.descricao_en || p.descricao;
     return {
-      title: `${p.nome}: what the City of Recife spends and decided here`,
+      title: p.obras_total
+        ? `${name}: ${fmtBrlCompact(p.obras_total)} in works contracts (Recife)`
+        : p.n_obras
+          ? `${name}: ${n("works contract", p.n_obras)} (Recife)`
+          : plain,
       answer: `${desc ? `${desc.trim().replace(/\.$/u, "")}. ` : ""}${p.nome}${kind ? ` (${kind}${where})` : where}: ${works ? `${works}, ` : ""}the city money that reaches it, each figure linked to its source. ${src("en", null)}`,
     };
   }
   return {
-    title: `${p.nome}: o que a Prefeitura do Recife gasta e decide aqui`,
+    title: p.obras_total
+      ? `${name}: ${fmtBrlCompact(p.obras_total)} em contratos de obra (Recife)`
+      : p.n_obras
+        ? `${name}: ${n("contrato de obra", p.n_obras, "pt", "contratos de obra")} (Recife)`
+        : plain,
     answer: `${p.descricao ? `${p.descricao.trim().replace(/\.$/u, "")}. ` : ""}${p.nome}${kind ? ` (${kind}${where})` : where}: ${works ? `${works}, ` : ""}o dinheiro da Prefeitura que chega até aqui, cada número ligado à sua fonte. ${src("pt", null)}`,
   };
 }

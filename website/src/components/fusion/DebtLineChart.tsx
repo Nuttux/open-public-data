@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 
 import ReactECharts from "./EChart";
+import { useNumLocale } from "@/lib/use-fmt";
 
 export type DebtSeriesProp = {
   code: string;
@@ -35,10 +36,10 @@ const COLORS = {
   D91: "#a67638",
 } as const;
 
-const formatVal = (v: number | null | undefined, mode: "pct" | "billions") => {
+const formatVal = (v: number | null | undefined, mode: "pct" | "billions", nl: string) => {
   if (v == null) return "—";
-  if (mode === "pct") return `${v.toLocaleString("fr-FR", { maximumFractionDigits: 1, minimumFractionDigits: 1 })} %`;
-  return `${(v / 1000).toLocaleString("fr-FR", { maximumFractionDigits: 0 })} Mds €`;
+  if (mode === "pct") return `${v.toLocaleString(nl, { maximumFractionDigits: 1, minimumFractionDigits: 1 })} %`;
+  return `${(v / 1000).toLocaleString(nl, { maximumFractionDigits: 0 })} Mds €`;
 };
 
 export default function DebtLineChart({
@@ -47,6 +48,7 @@ export default function DebtLineChart({
   unitMode,
   height = 460,
 }: Props) {
+  const nl = useNumLocale();
   const option = useMemo(() => {
     // X axis: union of all timestamps, sorted
     const allTimes = Array.from(
@@ -102,7 +104,7 @@ export default function DebtLineChart({
           const lines = arr.map(
             (p) =>
               `<span style="display:inline-block;width:10px;height:10px;background:${p.color};margin-right:6px;border-radius:1px"></span>` +
-              `${p.seriesName} <b>${formatVal(p.value, unitMode)}</b>`,
+              `${p.seriesName} <b>${formatVal(p.value, unitMode, nl)}</b>`,
           );
           return `<div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#5f6672;margin-bottom:6px">${t}</div>${lines.join("<br/>")}`;
         },
@@ -138,14 +140,14 @@ export default function DebtLineChart({
           color: "#5f6672",
           formatter: (v: number) =>
             unitMode === "billions"
-              ? `${(v / 1000).toLocaleString("fr-FR", { maximumFractionDigits: 0 })}`
-              : `${v.toLocaleString("fr-FR", { maximumFractionDigits: 0 })}`,
+              ? `${(v / 1000).toLocaleString(nl, { maximumFractionDigits: 0 })}`
+              : `${v.toLocaleString(nl, { maximumFractionDigits: 0 })}`,
         },
         splitLine: { lineStyle: { color: "#e4e6ea" } },
       },
       series: seriesSpec,
     };
-  }, [series, unitLabel, unitMode]);
+  }, [series, unitLabel, unitMode, nl]);
 
   return (
     <ReactECharts

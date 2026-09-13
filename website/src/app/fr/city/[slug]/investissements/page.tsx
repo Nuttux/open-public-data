@@ -7,6 +7,7 @@ import { hasDedicatedRoutes } from "@/lib/cities";
 import { getCommuneCapabilities } from "@/lib/commune-capabilities";
 import { loadCommuneInvestissements } from "@/lib/commune-investissements";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
+import { deNom } from "@/lib/nom-commune";
 import CommuneInvestissementsClient from "./CommuneInvestissementsClient";
 
 // Per-request data (private bucket) + the locale cookie → render dynamically,
@@ -25,10 +26,10 @@ export async function generateMetadata({
   const commune = findCommuneByAny(slug);
   const nom = commune?.nom ?? slug;
   return buildLocaleAwareMetadata({
-    title: `Investissements de ${nom} â dÃ©penses d'Ã©quipement`,
-    description: `DÃ©penses d'Ã©quipement et financement de l'investissement de ${nom}. Source : balances comptables DGFiP.`,
+    title: `Investissements ${deNom(nom)} — dépenses d'équipement`,
+    description: `Dépenses d'équipement et financement de l'investissement ${deNom(nom)}. Source : balances comptables DGFiP.`,
     en: {
-      title: `${nom} investment â capital expenditure`,
+      title: `${nom} investment — capital expenditure`,
       description: `Capital spending and investment financing of ${nom}. Source: DGFiP balance-sheet accounts.`,
     },
     path: `/fr/city/${slug}/investissements`,

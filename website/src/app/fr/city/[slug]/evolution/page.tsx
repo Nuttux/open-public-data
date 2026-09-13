@@ -7,6 +7,7 @@ import { hasDedicatedRoutes } from "@/lib/cities";
 import { getCommuneCapabilities } from "@/lib/commune-capabilities";
 import { loadCommuneEvolution } from "@/lib/commune-evolution";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
+import { deNom } from "@/lib/nom-commune";
 import CommuneEvolutionClient from "./CommuneEvolutionClient";
 
 // Per-request data (private bucket) + the locale cookie → render dynamically,
@@ -24,10 +25,10 @@ export async function generateMetadata({
   const commune = findCommuneByAny(slug);
   const nom = commune?.nom ?? slug;
   return buildLocaleAwareMetadata({
-    title: `${nom} â Ã©volution des finances (7 ans)`,
-    description: `Trajectoire financiÃ¨re de ${nom} sur 7 ans : dÃ©penses, recettes, dette. Source : OFGL.`,
+    title: `${nom} — évolution des finances (7 ans)`,
+    description: `Trajectoire financière ${deNom(nom)} sur 7 ans : dépenses, recettes, dette. Source : OFGL.`,
     en: {
-      title: `${nom} â finances over time (7 years)`,
+      title: `${nom} — finances over time (7 years)`,
       description: `${nom}'s financial trajectory over 7 years: spending, revenue, debt. Source: OFGL.`,
     },
     path: `/fr/city/${slug}/evolution`,

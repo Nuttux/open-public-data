@@ -21,8 +21,8 @@ import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/Re
 import PageHook from "@/components/fusion/PageHook";
 import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
 import LensBar from "@/components/fusion/LensBar";
-import { useFmtEur } from "@/lib/use-fmt";
-import { fill, fmtBillions, fmtDec, fmtInt } from "@/lib/fmt";
+import { useFmt, useFmtEur } from "@/lib/use-fmt";
+import { fill } from "@/lib/fmt";
 import type { BlogPostMeta } from "@/lib/blog";
 import type { MarchesPageData , FournisseursRankingData } from "@/lib/fusion-data";
 import { useT } from "@/lib/localeContext";
@@ -57,6 +57,7 @@ export default function MarchesPublicsClient({
   posts: BlogPostMeta[];
 }) {
   const t = useT();
+  const { fmtBillions, fmtDec, fmtInt } = useFmt();
   // Marseille reuses this client with its own data but without extra props —
   // derive the city from the URL so the lazy contract fetch hits the right
   // /data/<city>/marches-publics/ files.

@@ -10,6 +10,7 @@
  *   - the date is the export's `generated_at`, never "today".
  */
 import { cityJsonPath, readDataJsonOrNull } from "@/lib/data/read";
+import { displayFournisseur } from "@/lib/fournisseur-display";
 
 export type SeoLocale = "fr" | "en";
 
@@ -108,6 +109,16 @@ export function sourceLine(locale: SeoLocale, source: string, date: string | nul
 /** The open-data portal the French fiches cite: Paris has its own, the others go through data.gouv.fr. */
 export function cityPortal(city: string): string {
   return city === "paris" ? "opendata.paris.fr" : "data.gouv.fr";
+}
+
+/**
+ * A company name as it goes into a <title>: DECP registry names come in
+ * capitals (« MAINTENANCE INDUSTRIE ») and are shown in title case, as the
+ * supplier pages already do. Not for associations or social landlords, whose
+ * capitals are acronyms (AGOSPAP would read « Agospap ») — clip those only.
+ */
+export function titleName(s: string, max = 38): string {
+  return clip(displayFournisseur(s), max);
 }
 
 /** Clip a data label for a title without cutting a word in half. */

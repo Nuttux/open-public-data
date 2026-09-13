@@ -13,11 +13,11 @@ import YearPicker from "@/components/fusion/YearPicker";
 import ExportRow from "@/components/fusion/ExportRow";
 import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/RelatedArticles";
 import PageIntro from "@/components/fusion/PageIntro";
-import { fmtBillions, fmtDec, fmtInt } from "@/lib/fmt";
 import type { BlogPostMeta } from "@/lib/blog";
 import type { BudgetPageData, VoteExecuteData } from "@/lib/fusion-data";
 import { slugifyLabel } from "@/lib/projet-utils";
 import { useT, useLocale, type Locale } from "@/lib/localeContext";
+import { useFmt } from "@/lib/use-fmt";
 import { trLabel } from "@/lib/label-translate";
 import { cityPopulation, citySlugFromPathname } from "@/lib/methodology";
 import fonctionLabels from "@/data/budget-fonction-labels.json";
@@ -81,6 +81,7 @@ const FLOW_GROUPS = NATURE_GROUPS.filter((g) => g.key !== "autres");
  */
 export default function BudgetClient({ index, d, posts }: Props) {
   const t = useT();
+  const { fmtBillions, fmtDec, fmtInt } = useFmt();
   const { locale } = useLocale();
   const pathname = usePathname();
   const citySlug = citySlugFromPathname(pathname);

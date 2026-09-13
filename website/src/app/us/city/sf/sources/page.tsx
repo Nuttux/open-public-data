@@ -11,7 +11,9 @@ import { loadSfContractsOverview } from "../contracts/data";
 import type { WgpFile, WgpMeta } from "../who-gets-paid/wgp-types";
 import type { PayrollByYear } from "../payroll/payroll-types";
 import SfSourcesClient, { type SfSourcesPageData } from "./SfSourcesClient";
-import { sectionAlternates } from "@/lib/seo/page-answer";
+import { answerMetadata } from "@/lib/seo/page-answer";
+import { readSiteLocale } from "@/lib/seo";
+import { sfSourcesHub, SfHubJsonLd } from "@/lib/seo/sections/sf";
 
 /**
  * /us/city/sf/sources — server component (ADR-0010 D3, EN-only). The single
@@ -23,12 +25,11 @@ import { sectionAlternates } from "@/lib/seo/page-answer";
  * (that is only for the root-level @drawer intercepts). `title.absolute`:
  * no France brand template on US routes.
  */
-export const metadata: Metadata = {
-  ...sectionAlternates("/us/city/sf/sources", "en"),
-  title: "San Francisco — Sources",
-  description:
-    "Where every figure on San Francisco's budget, payees, contracts and payroll pages comes from — the source datasets, perimeters, privacy rules and methodology, in one place.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await readSiteLocale();
+  const hub = sfSourcesHub();
+  return answerMetadata(hub.answer, hub.path, locale);
+}
 
 export default function SfSourcesPage() {
   // ── Budget: default to the latest closed year (the budget page's default). ──
@@ -94,5 +95,10 @@ export default function SfSourcesPage() {
     payroll,
   };
 
-  return <SfSourcesClient d={d} />;
+  return (
+    <>
+      <SfHubJsonLd hub={sfSourcesHub()} />
+      <SfSourcesClient d={d} />
+    </>
+  );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import type { ThemeSubventionsFiche } from "@/lib/fusion-data";
-import { fill, fmtCompactEur, fmtInt } from "@/lib/fmt";
+import { fill } from "@/lib/fmt";
 import { useT } from "@/lib/localeContext";
 import { useCity } from "./CityContext";
 import { FicheBreakdown } from "@/components/fiche";
@@ -9,6 +9,7 @@ import { V3Foot, V3Hero, V3Section } from "@/components/fiche/v3";
 import YearBars from "./YearBars";
 import AnneesRail from "./AnneesRail";
 import { assocSlug } from "@/lib/assoc-slug";
+import { useFmt } from "@/lib/use-fmt";
 
 const THEME_COLORS: Record<string, string> = {
   "Social": "#c12323", "Logement": "#546583", "Éducation": "#2a3680", "Culture": "#a67638", "Sport": "#3a8f4a",
@@ -28,6 +29,7 @@ function colorFor(theme: string): string {
  */
 export default function ThemeFiche({ fiche }: { fiche: ThemeSubventionsFiche }) {
   const t = useT();
+  const { fmtInt, fmtCompactEur } = useFmt();
   const { basePath } = useCity();
   const total = fmtCompactEur(fiche.total);
   const color = colorFor(fiche.theme);

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { notFound, permanentRedirect } from "next/navigation";
 import { MARCHES_EXPLORER_MIN } from "../page-ville-data";
-import { marchesManifestCount } from "@/lib/commune-marches";
+import { marchesManifestCount, marchesManifestEntry } from "@/lib/commune-marches";
+import { deNom } from "@/lib/nom-commune";
 import "@/app/fusion.css";
 
 import { findCommuneByAny } from "@/lib/all-communes";
@@ -26,14 +27,42 @@ export async function generateMetadata({
   const { slug } = await params;
   const commune = findCommuneByAny(slug);
   const nom = commune?.nom ?? slug;
+  const path = `/fr/city/${slug}/marches`;
+  // Le titre répond avec les chiffres de l'en-tête de la page : le manifeste
+  // engagé porte le même total, sans lire le bucket pour la balise <title>.
+  const m = marchesManifestEntry(slug);
+  // Une série finie depuis plus de deux ans ne va pas dans le titre (voir
+  // lib/seo/sections/marseille.ts, isRecent) : titre descriptif, sans chiffre.
+  if (!m || m.nb === 0 || m.years.length === 0 || Math.max(...m.years) < new Date().getFullYear() - 2) {
+    return buildLocaleAwareMetadata({
+      title: `Les marchés publics ${deNom(nom)}`,
+      description: `Montants, fournisseurs et domaines des marchés publics ${deNom(nom)}. Source : DECP consolidé (data.gouv.fr).`,
+      en: {
+        title: `The public contracts of ${nom}`,
+        description: `Amounts, suppliers and categories of ${nom}'s public contracts. Source: consolidated DECP (data.gouv.fr).`,
+      },
+      path,
+    });
+  }
+  const y0 = Math.min(...m.years);
+  const y1 = Math.max(...m.years);
+  // Même arrondi que l'en-tête (CommuneMarchesClient, split()).
+  const amount = (tag: string) => {
+    const a = Math.abs(m.montant);
+    if (a >= 1e9) return `${(m.montant / 1e9).toLocaleString(tag, { maximumFractionDigits: 2 })} Md€`;
+    if (a >= 1e6) return `${(m.montant / 1e6).toLocaleString(tag, { maximumFractionDigits: a >= 1e8 ? 0 : 1 })} M€`;
+    return `${Math.round(m.montant / 1e3).toLocaleString(tag)} k€`;
+  };
+  const nbFr = m.nb.toLocaleString("fr-FR");
+  const nbEn = m.nb.toLocaleString("en-GB");
   return buildLocaleAwareMetadata({
-    title: `MarchÃ©s publics de ${nom} â commande publique (DECP)`,
-    description: `Montants, fournisseurs et domaines des marchÃ©s publics de ${nom}. Source : DECP consolidÃ© (data.gouv.fr).`,
+    title: `Marchés publics ${deNom(nom)} : ${nbFr} marchés, ${amount("fr-FR")}`,
+    description: `${nom} a notifié ${nbFr} marchés publics de ${y0} à ${y1}, pour ${amount("fr-FR")} de contrats : fournisseurs, domaines et montants, année par année. Source : DECP consolidé (data.gouv.fr).`,
     en: {
-      title: `${nom} public procurement â awarded contracts (DECP)`,
-      description: `Amounts, suppliers and categories of ${nom} public contracts. Source: consolidated DECP (data.gouv.fr).`,
+      title: `${nom} public contracts: ${nbEn} awarded, ${amount("en-GB")}`,
+      description: `${nom} awarded ${nbEn} public contracts from ${y0} to ${y1}, worth ${amount("en-GB")}: suppliers, categories and amounts, year by year. Source: consolidated DECP (data.gouv.fr).`,
     },
-    path: `/fr/city/${slug}/marches`,
+    path,
   });
 }
 

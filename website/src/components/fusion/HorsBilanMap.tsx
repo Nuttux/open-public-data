@@ -2,8 +2,8 @@
 
 import ParisChoropleth from "./ParisChoropleth";
 import { useCity } from "./CityContext";
-import { fmtBillions, fmtMillions } from "@/lib/fmt";
 import { useT } from "@/lib/localeContext";
+import { useFmt } from "@/lib/use-fmt";
 
 type ArrItem = {
   arr: number;
@@ -28,6 +28,7 @@ const CENTRAL_ARRS = [1, 2, 3, 4];
 
 export default function HorsBilanMap({ byArrondissement, nonLocalised, totalCapital, year }: Props) {
   const t = useT();
+  const { fmtBillions, fmtMillions } = useFmt();
   const { basePath } = useCity();
 
   const items = byArrondissement

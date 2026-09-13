@@ -9,6 +9,8 @@ import { BudgetBackKicker } from "@/components/fusion/EntityPageHeaders";
 import { loadBudgetPoste } from "@/lib/fusion-data";
 import { readLocale } from "@/lib/seo";
 import { trLabel } from "@/lib/label-translate";
+import RelatedLinks from "@/components/fiche/RelatedLinks";
+import { posteRelated } from "@/lib/entities/related";
 
 type Params = { slug: string };
 type SP = { year?: string };
@@ -84,6 +86,7 @@ export default async function PostePage({
       </section>
       <div className="fx-fiche-wrap">
         <PosteFiche poste={poste} />
+        <RelatedLinks block={posteRelated(poste, "marseille", await readLocale())} />
       </div>
       </main>
       <Footer />

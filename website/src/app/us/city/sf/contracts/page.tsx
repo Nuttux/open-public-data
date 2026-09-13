@@ -7,7 +7,9 @@ import {
   loadSfContractsActive,
   loadSfContractsOverview,
 } from "./data";
-import { sectionAlternates } from "@/lib/seo/page-answer";
+import { answerMetadata } from "@/lib/seo/page-answer";
+import { readSiteLocale } from "@/lib/seo";
+import { sfContractsHub, SfHubJsonLd } from "@/lib/seo/sections/sf";
 import { contractLabel } from "./us-sf-contracts-types";
 
 /**
@@ -16,12 +18,11 @@ import { contractLabel } from "./us-sf-contracts-types";
  * signature contracts) and hands them to the client. EN-only (ADR-0010 D3);
  * `title.absolute` because the US side has no public brand yet.
  */
-export const metadata: Metadata = {
-  ...sectionAlternates("/us/city/sf/contracts", "en"),
-  title: "San Francisco — Contracts",
-  description:
-    "San Francisco's supplier-contract register: what's active today, who the City buys from, what it buys, which departments sign, the sole-source lens and per-contract payment curves — from the SF Controller's open data.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await readSiteLocale();
+  const hub = sfContractsHub();
+  return answerMetadata(hub.answer, hub.path, locale);
+}
 
 /**
  * What the page needs from the 5 000 active rows, summed here once. The rows
@@ -71,11 +72,14 @@ export default function SfContractsPage() {
   const active = digest(loadSfContractsActive());
 
   return (
+    <>
+    <SfHubJsonLd hub={sfContractsHub()} />
     <SfContractsClient
       overview={overview}
       active={active}
       primes={loadSfContractPrimes()}
       deptBars={loadSfContractDeptBars()}
     />
+    </>
   );
 }

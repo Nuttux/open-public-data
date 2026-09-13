@@ -3,14 +3,15 @@ import Link from "next/link";
 import "@/app/fusion.css";
 
 import PageIntro from "@/components/fusion/PageIntro";
-import { sectionAlternates } from "@/lib/seo/page-answer";
+import { answerMetadata } from "@/lib/seo/page-answer";
+import { readSiteLocale } from "@/lib/seo";
+import { usCountryHub, SfHubJsonLd } from "@/lib/seo/sections/sf";
 
-export const metadata: Metadata = {
-  ...sectionAlternates("/us", "en"),
-  title: "Public money in the United States",
-  description:
-    "United States public finance, followed to the source: the federal dollar and, at city scale, San Francisco's budget, payments, contracts, payroll and places.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await readSiteLocale();
+  const hub = usCountryHub();
+  return answerMetadata(hub.answer, hub.path, locale);
+}
 
 export default function UsRootPage() {
   const scopes = [
@@ -27,6 +28,7 @@ export default function UsRootPage() {
   ];
   return (
     <main id="main-content" tabIndex={-1}>
+      <SfHubJsonLd hub={usCountryHub()} />
       <PageIntro
         kicker="United States"
         title={

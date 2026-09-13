@@ -4,6 +4,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useT } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
+import { useNumLocale } from "@/lib/use-fmt";
 
 type Hit = {
   insee: string;
@@ -13,7 +14,6 @@ type Hit = {
   pop: number;
 };
 
-const fmtInt = (n: number) => n.toLocaleString("fr-FR");
 
 /**
  * Global search modal — opened from a navbar button or Cmd/Ctrl+K shortcut.
@@ -29,6 +29,7 @@ function SearchModalInner() {
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
   const t = useT();
+  const nl = useNumLocale();
   const track = useTrack();
 
   // Global keyboard: Cmd+K / Ctrl+K to open, Esc to close
@@ -185,7 +186,7 @@ function SearchModalInner() {
                   >
                     <span className="fx-search-result-name">{h.nom}</span>
                     <span className="fx-search-result-meta">
-                      {h.dep_name} · {fmtInt(h.pop)} hab · INSEE {h.insee}
+                      {h.dep_name} · {h.pop.toLocaleString(nl)} hab · INSEE {h.insee}
                     </span>
                   </button>
                 </li>

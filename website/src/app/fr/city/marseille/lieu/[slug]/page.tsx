@@ -8,6 +8,8 @@ import Footer from "@/components/fusion/Footer";
 import MarseilleLieuFiche from "@/components/marseille/MarseilleLieuFiche";
 import { loadPlace, loadPlacesIndex } from "@/lib/marseille/marseille-places-data";
 import { readLocale } from "@/lib/seo";
+import RelatedLinks from "@/components/fiche/RelatedLinks";
+import { marseilleLieuRelated } from "@/lib/entities/related";
 
 type Params = { slug: string };
 
@@ -31,9 +33,7 @@ export async function generateMetadata({
   }
   const canonical = `/fr/city/marseille/lieu/${place.slug}`;
   const kind = locale === "en" ? place.kind_en : place.kind_fr;
-  const title = locale === "en"
-    ? `${place.name} — Marseille · Qipu`
-    : `${place.name} — Marseille · Qipu`;
+  const title = `${place.name} — Marseille`;
   const description = locale === "en" ? place.desc_en : place.desc_fr;
   return {
     title,
@@ -75,6 +75,7 @@ export default async function LieuPage({
         </section>
         <div className="fx-fiche-wrap">
           <MarseilleLieuFiche place={place} />
+          <RelatedLinks block={marseilleLieuRelated(place, locale)} />
         </div>
       </main>
       <Footer />

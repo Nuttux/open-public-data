@@ -102,12 +102,12 @@ export function makeContratConfig(city: string): EntityPageConfig<D> {
     const src = `DECP via ${cityPortal(city)}`;
     if (locale === "en") {
       return {
-        title: `${clip(objet, 50)}: ${amt} contract awarded to ${clip(c.fournisseur, 40)} (City of ${cityNom}, ${c.year})`,
+        title: `${clip(objet, 55)}: ${amt} contract (${cityNom}, ${c.year})`,
         answer: `In ${c.year}, the City of ${cityNom} awarded contract ${c.numero}, "${objet}"${kind ? ` (${kind})` : ""}, to ${c.fournisseur} for a maximum of ${amt}. ${sourceLine("en", src, date)}`,
       };
     }
     return {
-      title: `${clip(objet, 50)} : marché de ${amt} attribué à ${clip(c.fournisseur, 40)} (Ville de ${cityNom}, ${c.year})`,
+      title: `${clip(objet, 55)} : marché de ${amt} (${cityNom}, ${c.year})`,
       answer: `En ${c.year}, la Ville de ${cityNom} a notifié à ${c.fournisseur} le marché ${c.numero}, « ${objet} »${kind ? ` (${kind})` : ""}, pour une enveloppe maximale de ${amt}. ${sourceLine("fr", src, date)}`,
     };
   },

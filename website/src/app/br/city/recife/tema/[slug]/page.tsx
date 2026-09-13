@@ -7,6 +7,8 @@ import { answerMetadata } from "@/lib/seo/page-answer";
 import { temaAnswer } from "@/lib/br/recife-answers";
 import { recifeLocale } from "@/lib/br/recife-locale";
 import PageJsonLd from "@/components/seo/PageJsonLd";
+import RelatedLinks from "@/components/fiche/RelatedLinks";
+import { temaRelated } from "@/lib/br/recife-related";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -34,6 +36,7 @@ export default async function TemaPage({ params }: { params: Promise<{ slug: str
       </div>
       <div className="fx-fiche fx-fiche-shell">
         <RecifeTemaFiche tm={tema} temaMethod={tema_method} source={source} />
+        <RelatedLinks block={temaRelated(tm, locale)} />
       </div>
     </main>
   );

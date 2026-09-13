@@ -7,7 +7,9 @@ import {
   loadHorsBilanTrajectory,
   loadCitiesDebtSnapshot,
 } from "@/lib/fusion-data";
-import { buildLocaleAwareMetadata } from "@/lib/seo";
+import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
+import { FrHubJsonLd, hubMetadataInput } from "@/lib/seo/sections/national";
+import { marseilleDetteHub } from "@/lib/seo/sections/marseille";
 import DettePatrimoineClient from "@/app/fr/city/paris/dette/DettePatrimoineClient";
 
 // POC v1 Marseille dette/patrimoine — réutilise DettePatrimoineClient Paris
@@ -25,17 +27,7 @@ import DettePatrimoineClient from "@/app/fr/city/paris/dette/DettePatrimoineClie
 //   - Pas de drill-down bailleur Marseille → routes /bailleur skipées du POC
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildLocaleAwareMetadata({
-    title: "Dette de Marseille",
-    description:
-      "Encours de dette et trajectoire financière de la Ville de Marseille. Source : OFGL (base consolidée des communes).",
-    en: {
-      title: "Marseille debt",
-      description:
-        "Debt outstanding and financial trajectory of the Ville de Marseille. Source: OFGL (consolidated communes dataset).",
-    },
-    path: "/fr/city/marseille/dette",
-  });
+  return buildLocaleAwareMetadata(hubMetadataInput(marseilleDetteHub()));
 }
 
 export default async function MarseilleDettePage({
@@ -56,14 +48,18 @@ export default async function MarseilleDettePage({
   // No Marseille-specific blog posts yet — empty list filters out the
   // RelatedArticles section (placeholders rendered as preview only).
   const posts: Parameters<typeof DettePatrimoineClient>[0]["posts"] = [];
+  const locale = await readLocale();
   return (
-    <DettePatrimoineClient
-      d={d}
-      structure={structure}
-      horsBilan={horsBilan}
-      horsBilanTrajectory={horsBilanTrajectory}
-      citiesSnapshot={citiesSnapshot}
-      posts={posts}
-    />
+    <>
+      <FrHubJsonLd hub={marseilleDetteHub()} locale={locale} />
+      <DettePatrimoineClient
+        d={d}
+        structure={structure}
+        horsBilan={horsBilan}
+        horsBilanTrajectory={horsBilanTrajectory}
+        citiesSnapshot={citiesSnapshot}
+        posts={posts}
+      />
+    </>
   );
 }

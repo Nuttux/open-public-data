@@ -96,6 +96,7 @@ export function hasValor(n: number | null | undefined): boolean {
   return n != null && n > 0;
 }
 
+const ROMAN = /^m*(c[md]|d?c{0,3})(x[cl]|l?x{0,3})(i[xv]|v?i{0,3})$/;
 const TITLE_SMALL = new Set(["e", "de", "da", "do", "dos", "das", "a", "o", "as", "os",
   "ao", "aos", "à", "às", "em", "no", "na", "nos", "nas", "para", "por", "com", "sem", "sob"]);
 /** De-shout an ALL-CAPS administrative string to Title Case (pt-BR), keeping
@@ -110,6 +111,8 @@ export function titleCasePt(s: string | null | undefined): string {
   if (!letters || upper.length / letters.length < 0.7) return s; // already mixed-case
   return s.toLocaleLowerCase("pt-BR").split(/\s+/)
     .map((w, i) => (i > 0 && TITLE_SMALL.has(w)) ? w
+      // Roman numerals keep their capitals: "PAPA JOAO XXIII" → "Papa Joao XXIII".
+      : w.length > 1 && ROMAN.test(w) ? w.toLocaleUpperCase("pt-BR")
       : w ? w[0].toLocaleUpperCase("pt-BR") + w.slice(1) : w)
     .join(" ");
 }

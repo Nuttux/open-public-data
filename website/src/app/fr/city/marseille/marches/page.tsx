@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import "@/app/fusion.css";
 import { loadMarchesIndex, loadMarchesPageData } from "@/lib/fusion-data";
-import { buildLocaleAwareMetadata } from "@/lib/seo";
+import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
+import { FrHubJsonLd, hubMetadataInput } from "@/lib/seo/sections/national";
+import { marseilleMarchesHub } from "@/lib/seo/sections/marseille";
 import MarchesPublicsClient from "@/app/fr/city/paris/marches/MarchesPublicsClient";
 
 // POC v1 Marseille marches — réutilise MarchesPublicsClient avec data Marseille.
@@ -14,17 +16,7 @@ import MarchesPublicsClient from "@/app/fr/city/paris/marches/MarchesPublicsClie
 //   - Backfill DECP national 2021+ = phase 2 (voir index.json note)
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildLocaleAwareMetadata({
-    title: "Marchés publics de Marseille",
-    description:
-      "Contrats attribués par la Ville de Marseille en 2020 : titulaires, montants, objets et catégories CPV. Source : data.gouv.fr (SCDL Ville).",
-    en: {
-      title: "Marseille public contracts",
-      description:
-        "Contracts awarded by the Ville de Marseille in 2020: contractors, amounts, objects, and CPV categories. Source: data.gouv.fr (SCDL Ville).",
-    },
-    path: "/fr/city/marseille/marches",
-  });
+  return buildLocaleAwareMetadata(hubMetadataInput(marseilleMarchesHub()));
 }
 
 export default async function MarchesPublicsPage({
@@ -39,5 +31,11 @@ export default async function MarchesPublicsPage({
   // No Marseille-specific blog posts yet — empty list filters out the
   // RelatedArticles section (handled inside MarchesPublicsClient).
   const posts: Parameters<typeof MarchesPublicsClient>[0]["posts"] = [];
-  return <MarchesPublicsClient ranking={null} idx={idx} d={d} posts={posts} />;
+  const locale = await readLocale();
+  return (
+    <>
+      <FrHubJsonLd hub={marseilleMarchesHub()} locale={locale} />
+      <MarchesPublicsClient ranking={null} idx={idx} d={d} posts={posts} />
+    </>
+  );
 }

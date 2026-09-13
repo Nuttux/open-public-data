@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { useRevealOnScroll } from "@/lib/use-reveal-on-scroll";
 import BarTrack from "./BarTrack";
+import { useNumLocale } from "@/lib/use-fmt";
 
 export type BarRowItem = {
   label: ReactNode;
@@ -45,7 +46,6 @@ type Props = {
   className?: string;
 };
 
-const fr = new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 2 });
 
 /**
  * Horizontal breakdown bars — label | fill | value. Used for the "scale"
@@ -67,6 +67,8 @@ export default function BarRow({
   className,
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
+  const nl = useNumLocale();
+  const fr = useMemo(() => new Intl.NumberFormat(nl, { maximumFractionDigits: 2 }), [nl]);
   // `useRevealOnScroll` no-ops gracefully when reveal=false : we still call
   // the hook (rules of hooks) but ignore its result. Cheap : observer is only
   // installed if the ref attaches.

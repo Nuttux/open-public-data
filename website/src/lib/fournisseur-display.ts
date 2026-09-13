@@ -3,7 +3,7 @@
  * loaders de communes tirent le client GCS, qui ne se bundle pas côté navigateur).
  */
 
-const SIGLES = new Set(["SA", "SAS", "SASU", "SARL", "SNC", "SCI", "SCOP", "SEM", "SPL", "EURL", "EPIC", "EDF", "GDF", "RATP", "SNCF", "CCAS", "OPH", "BTP", "TP", "IDF", "GIE", "OPAC", "OPHLM", "HLM", "UGAP", "ONF", "APAVE", "AFPA", "CNRS", "INRAE", "PACA", "AURA", "BFC", "CVL"]);
+const SIGLES = new Set(["SA", "SAS", "SASU", "SARL", "SNC", "SCI", "SCOP", "SEM", "SPL", "EURL", "EPIC", "EDF", "GDF", "RATP", "SNCF", "CCAS", "OPH", "BTP", "TP", "IDF", "GIE", "OPAC", "OPHLM", "HLM", "UGAP", "ONF", "APAVE", "AFPA", "CNRS", "INRAE", "PACA", "AURA", "BFC", "CVL", "LTDA", "EIRELI", "EPP", "MEI"]);
 const MINUSCULES = new Set(["de", "du", "des", "et", "la", "le", "les", "en", "sur", "sous", "au", "aux", "d", "l", "pour", "par"]);
 
 /** Affichage d'une raison sociale DECP (souvent en capitales) : casse de

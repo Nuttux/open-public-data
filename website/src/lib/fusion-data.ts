@@ -1542,6 +1542,13 @@ export { slugifyBailleur };
 const BAILLEUR_SLUG_ALIASES: Record<string, string> = {
   "immobiliere-3f-i3f": "3f-residences",
   "icf-habitat-la-sabliere": "icf-habitat",
+  // Nom éditorial → nom de l'annexe hors bilan, dont l'URL est celle déjà
+  // liée depuis la page dette : sans ces lignes, chaque entité avait deux
+  // fiches, dont une sans ses emprunts garantis.
+  "batigere-habitat-idf": "batigere-habitat-ile-de-france",
+  "paris-metropole-amenagement": "paris-metropole-amenagem",
+  "fondation-sciences-po": "fondation-nationale-sciencespo",
+  "fondation-rothschild": "fondation-opth-a-rothschild",
 };
 
 export function canonicalBailleurSlug(name: string): string {
@@ -2899,7 +2906,23 @@ function loadInvestissementsDataCity(
   // Backwards-compatible: rows without the flag are kept as-is.
   const allRows = file.data ?? [];
   const projects = allRows.filter((p) => (p as { is_project?: boolean }).is_project !== false);
-  const total = projects.reduce((s, p) => s + (p.montant ?? 0), 0);
+  const projectsSum = projects.reduce((s, p) => s + (p.montant ?? 0), 0);
+
+  // Le total d'investissement de la ville, hors remboursement de la dette —
+  // la même définition que Paris. Il vient de l'OFGL (communes/<ville>.json) :
+  // « Dépenses d'investissement » moins « Remboursements d'emprunts », soit
+  // l'agrégat OFGL « Dépenses d'investissement hors remb » (Marseille 2024 :
+  // 434,9 − 157,5 = 277,3 M€, vérifié sur data.ofgl.fr). La page affichait
+  // jusque-là la somme des 10 projets extraits du PDF (72,8 M€) comme
+  // « investissement total », à côté d'un « premier chapitre » de 93 M€.
+  type OfglPoint = { year: number; montant: number };
+  const ofgl = readJsonOrNull<{ city?: { series?: Record<string, OfglPoint[]> } }>(`communes/${city}.json`)?.city?.series;
+  const horsRemb = new Map<number, number>();
+  for (const p of ofgl?.depenses_investissement ?? []) {
+    const remb = ofgl?.remboursements_emprunts?.find((r) => r.year === p.year);
+    if (remb) horsRemb.set(p.year, p.montant - remb.montant);
+  }
+  const total = horsRemb.get(year) ?? projectsSum;
   const nbGeo = projects.filter((p) => (p as { lat?: number | null }).lat != null).length;
 
   // Photos cache (4/10 réelles, 6 fallback "ecole" générique).
@@ -2976,13 +2999,11 @@ function loadInvestissementsDataCity(
   const top10Sum = sortedByAmount.slice(0, 10).reduce((s, p) => s + (p.montant ?? 0), 0);
   const top10ProjetsPct = total > 0 ? (top10Sum / total) * 100 : 0;
 
-  const yearsSummary = (
-    trends?.years ?? [
-      { year, depenses_total: total, depenses_hors_dette: total, par_chapitre: [] },
-    ]
-  )
-    .map((y) => ({ year: y.year, total: y.depenses_total, horsDette: y.depenses_hors_dette }))
-    .sort((a, b) => a.year - b.year);
+  const yearsSummary = horsRemb.size
+    ? [...horsRemb.entries()].map(([y, v]) => ({ year: y, total: v, horsDette: v })).sort((a, b) => a.year - b.year)
+    : (trends?.years ?? [{ year, depenses_total: total, depenses_hors_dette: total, par_chapitre: [] }])
+        .map((y) => ({ year: y.year, total: y.depenses_total, horsDette: y.depenses_hors_dette }))
+        .sort((a, b) => a.year - b.year);
 
   const projectsAmount = projects.reduce((s, p) => s + (Number(p.montant) || 0), 0);
 
@@ -2994,17 +3015,12 @@ function loadInvestissementsDataCity(
     nbProjets: projects.length,
     nbGeo,
     pctGeo: file.stats?.pct_geo ?? 0,
-    // Villes hors Paris : le fichier ville porte déjà les projets et le total
-    // sur le même périmètre, donc la couverture est de 100 % par construction.
-    // On la calcule quand même plutôt que de la coder à 100 : si un jour un
-    // export ville passe par une extraction partielle, le chiffre le dira.
     projetsAmount: projectsAmount,
     projetsCoveragePct: total > 0 ? (projectsAmount / total) * 100 : 0,
-    byChapitre: (file.byChapitre ?? []).map((c) => ({
-      label: c.label,
-      amount: c.amount,
-      count: c.count,
-    })),
+    // Pas de ventilation par chapitre : celle du fichier additionnait les lignes
+    // du PDF, sous-totaux de thématique compris, et dépassait le total. Aucune
+    // source ne ventile l'investissement de la ville ; la section ne s'affiche pas.
+    byChapitre: [],
     top10ProjetsPct,
     byArrondissement: byArrondissementFiltered,
     topProjets,
@@ -3168,7 +3184,13 @@ export function loadInvestissementsData(
   // Pareto : top 10 projets en montant vs total
   const sortedByAmount = projets.slice().sort((a, b) => Number(b.montant ?? 0) - Number(a.montant ?? 0));
   const top10Sum = sortedByAmount.slice(0, 10).reduce((s, p) => s + Number(p.montant ?? 0), 0);
-  const top10ProjetsPct = latest.depenses_total > 0 ? (top10Sum / latest.depenses_total) * 100 : 0;
+  // Le total d'investissement est celui HORS dette : le remboursement du capital
+  // des emprunts et les dotations/participations sont des dépenses de la section
+  // d'investissement en M57, pas des investissements. C'est ce que dit
+  // l'infobulle du chiffre, et c'est la somme des chapitres affichés à côté ;
+  // `depenses_total` (2,12 Md€ en 2024 contre 1,73 Md€) les incluait.
+  const invTotal = latest.depenses_hors_dette ?? latest.depenses_total;
+  const top10ProjetsPct = invTotal > 0 ? (top10Sum / invTotal) * 100 : 0;
 
   // Ce que l'extraction projet-par-projet couvre réellement du compte
   // administratif de l'exercice. Cf. le commentaire sur projetsCoveragePct.
@@ -3177,14 +3199,14 @@ export function loadInvestissementsData(
   return {
     year,
     availableYears: usableYears,
-    total: latest.depenses_total,
+    total: invTotal,
     totalHorsDette: latest.depenses_hors_dette,
     nbProjets: projets.length,
     nbGeo,
     pctGeo: projets.length > 0 ? (nbGeo / projets.length) * 100 : 0,
     projetsAmount: projetsAmount,
     projetsCoveragePct:
-      latest.depenses_total > 0 ? (projetsAmount / latest.depenses_total) * 100 : 0,
+      invTotal > 0 ? (projetsAmount / invTotal) * 100 : 0,
     byChapitre: [...m57Agg.entries()]
       .map(([label, v]) => ({ label, amount: v.amount, count: v.count }))
       .sort((a, b) => b.amount - a.amount),
@@ -3197,7 +3219,7 @@ export function loadInvestissementsData(
     // on connaît le MONTANT total voté depuis investissement_tendances.json).
     yearsSummary: trends.years.map((y) => ({
       year: y.year,
-      total: y.depenses_total,
+      total: y.depenses_hors_dette ?? y.depenses_total,
       horsDette: y.depenses_hors_dette,
     })),
   };

@@ -1,7 +1,8 @@
 import type { MetadataRoute } from 'next';
 import { readSiteLocale } from '@/lib/seo';
-import { LOCALE_HOSTS } from '@/lib/site-locale';
-import { generateSitemaps } from '@/app/sitemap';
+import { LOCALE_HOSTS, TRILINGUAL_PATHS } from '@/lib/site-locale';
+import { INDEXNOW_KEY } from '@/lib/seo/indexnow';
+import { sitemapIdsFor } from '@/app/sitemap';
 
 /**
  * Robots directives
@@ -16,11 +17,11 @@ import { generateSitemaps } from '@/app/sitemap';
  * /sitemap.xml for its own convention, so an index cannot be served there;
  * robots.txt accepts one Sitemap line per segment instead.
  *
- * The list is derived from the same `generateSitemaps()` that produces the
- * segments, so the two cannot drift apart.
+ * The list is derived from the same family layout that produces the segments,
+ * so the two cannot drift apart — and each host declares only the segments
+ * that hold its URLs: an empty sitemap is an error in Search Console.
  */
 export default async function robots(): Promise<MetadataRoute.Robots> {
-  const segments = await generateSitemaps();
   // Per host (lib/site-locale.ts): the French host has no /us or /br, the
   // Portuguese host serves /br only — proxy.ts redirects the rest, and telling
   // crawlers up front saves them the hop.
@@ -28,13 +29,29 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
   const base = LOCALE_HOSTS[locale];
   const rule =
     locale === 'pt'
-      ? { userAgent: '*', allow: ['/br', '/br/'], disallow: ['/'] }
+      ? {
+          userAgent: '*',
+          allow: [
+            '/br',
+            '/br/',
+            // The sitemaps this file declares. Under `Disallow: /` they were
+            // blocked too: Search Console left every pt segment "pending, never
+            // downloaded", and 14 752 live URLs drew no impression.
+            '/sitemap/',
+            // The pages outside /br that pt serves in Portuguese (one is listed
+            // in its sitemap).
+            ...TRILINGUAL_PATHS,
+            // The IndexNow key must stay fetchable on the host it vouches for.
+            `/${INDEXNOW_KEY}.txt`,
+          ],
+          disallow: ['/'],
+        }
       : locale === 'fr'
         ? { userAgent: '*', allow: '/', disallow: ['/api/', '/v2', '/v2/', '/us', '/us/', '/br', '/br/'] }
         : { userAgent: '*', allow: '/', disallow: ['/api/', '/v2', '/v2/'] };
   return {
     rules: [rule],
-    sitemap: segments.map(({ id }) => `${base}/sitemap/${id}.xml`),
+    sitemap: sitemapIdsFor(locale).map((id) => `${base}/sitemap/${id}.xml`),
     host: base,
   };
 }

@@ -3,10 +3,11 @@
 import Link from "next/link";
 import type { ArrondissementLogementData } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
-import { fill, fmtDec, fmtInt, sufOrdinal } from "@/lib/fmt";
+import { fill, sufOrdinal } from "@/lib/fmt";
 import { useCity } from "./CityContext";
 import { FicheBreakdown } from "@/components/fiche";
 import { V3Hero, V3Row, V3Section } from "@/components/fiche/v3";
+import { useFmt } from "@/lib/use-fmt";
 
 /**
  * Fiche arrondissement · logement social v3 (2026-09-03) — UN chiffre (les
@@ -22,6 +23,7 @@ export default function ArrondissementLogementFiche({
   topN?: number;
 }) {
   const t = useT();
+  const { fmtInt, fmtDec } = useFmt();
   const { locale } = useLocale();
   const { basePath } = useCity();
   const shown = data.projects.slice(0, topN);

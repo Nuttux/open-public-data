@@ -8,7 +8,9 @@
  * adopted budget) and the Internet Archive for places.
  */
 import { fmtUsd, fmtUsdCompact, fmtShare } from "@/lib/us/format";
-import { isoDate, n, sourceSentence, yearSpan, type PageAnswer } from "@/lib/seo/page-answer";
+import { isoDate, n, sourceSentence, type PageAnswer } from "@/lib/seo/page-answer";
+import { clip, titleName } from "@/lib/entities/seo-text";
+import { sfPlaceHeadline, type SfPlaceCapital } from "@/lib/us/sf-places-data";
 
 const SRC_PAYMENTS = "SF Controller vendor payments (open data)";
 const SRC_PAYROLL = "SF Controller employee compensation (open data)";
@@ -26,7 +28,6 @@ export function payeeAnswer(p: {
   n_contracts_held: number;
   as_of?: string;
 }): PageAnswer {
-  const span = yearSpan(p.first_year, p.last_year);
   const amt = fmtUsdCompact(p.total_paid_usd);
   const lead =
     p.first_year != null && p.last_year != null && p.first_year !== p.last_year
@@ -36,7 +37,7 @@ export function payeeAnswer(p: {
         : "";
   const dept = p.top_departments[0];
   return {
-    title: `${p.name}: ${amt} paid by San Francisco${span ? ` (${span})` : ""}`,
+    title: `${titleName(p.name)}: ${amt} paid by San Francisco`,
     answer: `${lead} the City and County of San Francisco paid ${amt} to ${p.name}${dept ? `, mostly through ${dept}` : ""}${
       p.n_contracts_held > 0 ? `, with ${n("contract", p.n_contracts_held)} on file` : ""
     }. ${src(SRC_PAYMENTS, p.as_of)}`.trim(),
@@ -250,19 +251,41 @@ export function placeAnswer(p: {
     payroll_line: { total_compensation_usd: number; n_employees: number; fiscal_year: number } | null;
     contracts: unknown[];
   };
-  capital: { n_items: number } | null;
+  capital: (Pick<NonNullable<SfPlaceCapital>, "measure_totals" | "payees_total_paid"> & { n_items: number }) | null;
   documents: unknown[];
 }): PageAnswer {
+  // The fiche's own headline figure (sfPlaceHeadline) — never the department
+  // budget, which reads the same on every fiche of that department.
+  const head = sfPlaceHeadline(p.capital);
+  const nContracts = p.money.contracts.length;
+  const nCapital = p.capital?.n_items ?? 0;
   const bits: string[] = [];
+  if (head) bits.push(`${fmtUsdCompact(head.value)} ${head.label}`);
   if (p.money.budget_line) bits.push(`${fmtUsdCompact(p.money.budget_line.total_usd)} budgeted for its department in FY${p.money.budget_line.fiscal_year}`);
   if (p.money.payroll_line && p.money.payroll_line.n_employees > 0) bits.push(`${n("employee", p.money.payroll_line.n_employees)} on the payroll`);
-  if (p.money.contracts.length > 0) bits.push(n("contract", p.money.contracts.length));
-  if (p.capital && p.capital.n_items > 0) bits.push(n("capital project", p.capital.n_items));
+  if (nContracts > 0) bits.push(n("contract", nContracts));
+  if (nCapital > 0) bits.push(n("capital project", nCapital));
   if (p.documents.length > 0) bits.push(`${n("city document", p.documents.length)} at the Internet Archive`);
   const facts = bits.length ? `${bits.join(", ")}, every figure linked to its source.` : "the city money that reaches it and the documents that mention it, every fact linked to its source.";
   const summary = p.summary_en ? `${p.summary_en.trim().replace(/\.$/u, "")}. ` : "";
+  // Name, then the one figure the fiche leads with; without place-level money,
+  // the first count the sentence below states. The city is named once: not
+  // again after "San Francisco City Hall".
+  const name = clip(p.name, 42);
+  const city = /San Francisco/i.test(name) ? "" : " (San Francisco)";
+  const what = head
+    ? `${fmtUsdCompact(head.value)} ${head.measure === "bond_expended" ? "of voter-bond capital spent" : "paid to contractors"}`
+    : nContracts > 0
+      ? n("contract", nContracts)
+      : nCapital > 0
+        ? n("capital project", nCapital)
+        : p.documents.length > 0
+          ? n("city document", p.documents.length)
+          : null;
   return {
-    title: `${p.name}: what San Francisco spends and decided on it`,
-    answer: `${summary}${p.name} (${p.kind.toLowerCase()}, run by the ${p.owning_dept.name}): ${facts} ${src("SF Controller open data and the Internet Archive")}`,
+    title: what ? `${name}: ${what}${city}` : city ? `${name}, San Francisco` : name,
+    // The figures first, so the description a search engine cuts at ~160
+    // characters still carries the title's figure; the grounded summary follows.
+    answer: `${p.name} (${p.kind.toLowerCase()}, run by the ${p.owning_dept.name}): ${facts} ${summary}${src("SF Controller open data and the Internet Archive")}`,
   };
 }

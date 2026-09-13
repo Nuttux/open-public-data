@@ -1,7 +1,8 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { useMemo, type ReactNode } from "react";
 import BarTrack from "./BarTrack";
+import { useNumLocale } from "@/lib/use-fmt";
 
 export type CofogCompareRow = {
   code: string;
@@ -24,11 +25,13 @@ type Props = {
   className?: string;
 };
 
-const fmt = new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 1, minimumFractionDigits: 1 });
-const fmtSigned = new Intl.NumberFormat("fr-FR", {
-  maximumFractionDigits: 1,
-  minimumFractionDigits: 1,
-  signDisplay: "exceptZero",
+const makeFmts = (nl: string) => ({
+  fmt: new Intl.NumberFormat(nl, { maximumFractionDigits: 1, minimumFractionDigits: 1 }),
+  fmtSigned: new Intl.NumberFormat(nl, {
+    maximumFractionDigits: 1,
+    minimumFractionDigits: 1,
+    signDisplay: "exceptZero",
+  }),
 });
 
 /**
@@ -49,6 +52,8 @@ export default function CofogCompareBars({
   gapLabel = "Écart",
   className,
 }: Props) {
+  const nl = useNumLocale();
+  const { fmt, fmtSigned } = useMemo(() => makeFmts(nl), [nl]);
   const ref =
     max ??
     (Math.max(...rows.flatMap((r) => [r.fr, r.eu]), 0) || 1);

@@ -8,6 +8,8 @@ import { loadSfContractAuthority, sfAuthorityFamilies } from "../../data";
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { contractAuthorityAnswer } from "@/lib/us/sf-answers";
 import PageJsonLd from "@/components/seo/PageJsonLd";
+import RelatedLinks from "@/components/fiche/RelatedLinks";
+import { sfAuthorityRelated } from "@/lib/us/sf-related";
 
 type Params = { family: string };
 
@@ -52,6 +54,7 @@ export default async function SfAuthorityPage({ params }: { params: Promise<Para
       </section>
       <div className="fx-fiche-wrap">
         <SfAuthorityFiche d={d} />
+        <RelatedLinks block={sfAuthorityRelated(d)} />
       </div>
     </main>
   );

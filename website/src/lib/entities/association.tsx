@@ -11,7 +11,7 @@ import {
 } from "@/lib/fusion-data";
 import { lieuForBeneficiaire } from "@/lib/lieux-data";
 import { trLabel } from "@/lib/label-translate";
-import { eur, int, span, periodLead, cityDataDate, sourceLine, cityPortal } from "@/lib/entities/seo-text";
+import { eur, int, periodLead, cityDataDate, sourceLine, cityPortal, clip } from "@/lib/entities/seo-text";
 import { associationRelated } from "@/lib/entities/related";
 import { assocSlug } from "@/lib/assoc-slug";
 
@@ -78,7 +78,6 @@ export function makeAssociationConfig(city: string): EntityPageConfig<D> {
     },
     seo: ({ asso: a }, locale) => {
       const amt = eur(a.totalAmount, locale);
-      const sp = span(a.yearsActive);
       const theme = a.theme ? trLabel(a.theme, locale) : null;
       const date = cityDataDate(city, "subventions/index.json", locale);
       const n = a.subventionCount;
@@ -87,12 +86,12 @@ export function makeAssociationConfig(city: string): EntityPageConfig<D> {
         : (locale === "en" ? `${cityPortal(city)} (grants paid by the City of ${cityNom})` : `${cityPortal(city)} (subventions versées par la Ville de ${cityNom})`);
       if (locale === "en") {
         return {
-          title: `${a.name}: ${amt} in grants from the City of ${cityNom}${sp ? ` (${sp})` : ""}`,
+          title: `${clip(a.name, 38)}: ${amt} in ${cityNom} city grants`,
           answer: `${periodLead(a.yearsActive, "en")} the City of ${cityNom} paid ${amt} to ${a.name} in ${int(n, "en")} grant${n > 1 ? "s" : ""}${theme ? `, mainly in ${theme.toLowerCase()}` : ""}. ${sourceLine("en", src, date)}`,
         };
       }
       return {
-        title: `${a.name} : ${amt} de subventions de la Ville de ${cityNom}${sp ? ` (${sp})` : ""}`,
+        title: `${clip(a.name, 38)} : ${amt} de subventions de ${cityNom}`,
         answer: `${periodLead(a.yearsActive, "fr")} la Ville de ${cityNom} a versé ${amt} à ${a.name} en ${int(n, "fr")} subvention${n > 1 ? "s" : ""}${theme ? `, principalement en ${theme.toLowerCase()}` : ""}. ${sourceLine("fr", src, date)}`,
       };
     },

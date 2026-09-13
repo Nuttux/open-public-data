@@ -8,6 +8,8 @@ import { loadSfPayrollFamily, sfPayrollFamilySlugs } from "@/lib/us/sf-payroll-f
 import { answerMetadata } from "@/lib/seo/page-answer";
 import { payrollFamilyAnswer } from "@/lib/us/sf-answers";
 import PageJsonLd from "@/components/seo/PageJsonLd";
+import RelatedLinks from "@/components/fiche/RelatedLinks";
+import { sfPayrollFamilyRelated } from "@/lib/us/sf-related";
 
 type Params = { slug: string };
 
@@ -50,6 +52,7 @@ export default async function SfPayrollFamilyPage({ params }: { params: Promise<
       </section>
       <div className="fx-fiche-wrap">
         <SfPayrollFamilyFiche d={d} />
+        <RelatedLinks block={sfPayrollFamilyRelated(d)} />
       </div>
     </main>
   );

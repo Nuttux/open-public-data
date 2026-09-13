@@ -20,10 +20,11 @@ import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/Re
 import PageHook from "@/components/fusion/PageHook";
 import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
 import { slugifyBailleur } from "@/lib/projet-utils";
-import { fill, fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
+import { fill, numLocale } from "@/lib/fmt";
 import type { BlogPostMeta } from "@/lib/blog";
 import type { PatrimoineData, PatrimoineStructure, HorsBilanData, CityDebtSnapshot } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
+import { useFmt } from "@/lib/use-fmt";
 import { trLabel } from "@/lib/label-translate";
 import { cityPopulation, citySlugFromPathname, crcDebtYearsFor } from "@/lib/methodology";
 import { cityDataUrl } from "@/lib/city-paths";
@@ -44,6 +45,7 @@ export default function DettePatrimoineClient({
   posts: BlogPostMeta[];
 }) {
   const t = useT();
+  const { fmtBillions, fmtDec, fmtInt, fmtMillions } = useFmt();
   const { locale } = useLocale();
   const pathname = usePathname();
   const citySlug = citySlugFromPathname(pathname);
@@ -62,6 +64,10 @@ export default function DettePatrimoineClient({
     },
   ];
   const net = d.fondsPropres;
+  // Une ville sans bilan publié (Marseille : seul l'encours OFGL est connu) a
+  // des fonds propres et un actif INCONNUS, pas nuls — l'export met 0 et un
+  // actif égal à la dette. Ces lignes-là ne s'affichent pas.
+  const hasBilan = d.fondsPropres > 0;
   const detteParHab = d.detteFinanciere / population;
 
   // Évolution de la dette depuis 2020 pour le hook viral (fallback 0 si
@@ -96,7 +102,8 @@ export default function DettePatrimoineClient({
           { id: "sec-trajectoire", label: t("fx.det.toc.trajectoire") },
           { id: "sec-hors-bilan", label: t("fx.det.toc.hors_bilan") },
           { id: "sec-regles", label: t("fx.det.toc.regles") },
-          { id: "sec-analyses", label: t("fx.toc.analyses") },
+          // La section Analyses n'existe pas sans article ni teaser (voir plus bas).
+          ...(posts.length > 0 || citySlug === "paris" ? [{ id: "sec-analyses", label: t("fx.toc.analyses") }] : []),
           { id: "sec-sources", label: t("fx.det.toc.sources") },
         ]}
       />
@@ -137,11 +144,13 @@ export default function DettePatrimoineClient({
         }
         stats={
           <>
-            <IntroStat
-              value={<AnimatedNumber value={net} format={(n) => fmtBillions(n)} />}
-              unit={t("fx.s.md_eur")}
-              label={fill(t("fx.det.s02.hero_label"), { year: d.year })}
-            />
+            {hasBilan && (
+              <IntroStat
+                value={<AnimatedNumber value={net} format={(n) => fmtBillions(n)} />}
+                unit={t("fx.s.md_eur")}
+                label={fill(t("fx.det.s02.hero_label"), { year: d.year })}
+              />
+            )}
             <IntroStat
               value={<AnimatedNumber value={d.detteFinanciere} format={(n) => fmtBillions(n)} />}
               unit={t("fx.s.md_eur")}
@@ -178,7 +187,9 @@ export default function DettePatrimoineClient({
             variant="card"
             cite={
               <>
-                {fill(t("fx.dp.hook.cite.bilan"), { year: d.year })}
+                {/* Hors Paris, dette et capacité de désendettement viennent de l'OFGL,
+                    pas d'un bilan de la Ville : la citation le dit. */}
+                {fill(t(citySlug === "paris" ? "fx.dp.hook.cite.bilan" : "fx.dp.hook.cite.ofgl"), { year: d.year })}
                 {crcSnap ? (
                   <>
                     {" · "}{t("fx.dp.hook.cite.crc")}
@@ -195,9 +206,9 @@ export default function DettePatrimoineClient({
               (deltaDetteDepuis2020Pct > 0
                 ? fill(t("fx.dp.hook.share.delta"), { pct: fmtDec(deltaDetteDepuis2020Pct, 0) })
                 : "") +
-              fill(t("fx.dp.hook.share.cap.ville"), { ans: fmtDec(d.capaciteDesendettement, 1).replace(".", ",") }) +
+              fill(t(citySlug === "paris" ? "fx.dp.hook.share.cap.ville" : "fx.dp.hook.share.cap.ofgl"), { ans: fmtDec(d.capaciteDesendettement, 1) }) +
               (crcSnap
-                ? fill(t("fx.dp.hook.share.cap.crc"), { ans: fmtDec(crcSnap.value_crc_ans, 1).replace(".", ",") })
+                ? fill(t("fx.dp.hook.share.cap.crc"), { ans: fmtDec(crcSnap.value_crc_ans, 1) })
                 : "") +
               t("fx.dp.hook.share.tail")
             }
@@ -210,12 +221,12 @@ export default function DettePatrimoineClient({
               <>{t("fx.dp.hook.body.delta.before")}<b>+{fmtDec(deltaDetteDepuis2020Pct, 0)}{t("fx.dp.hook.body.delta.after")}</b></>
             ) : null}
             {t("fx.dp.hook.body.cap.before")}
-            <b>{fmtDec(d.capaciteDesendettement, 1).replace(".", ",")}{t("fx.dp.hook.body.cap.ans")}</b>
-            {t("fx.dp.hook.body.cap.ville")}
+            <b>{fmtDec(d.capaciteDesendettement, 1)}{t("fx.dp.hook.body.cap.ans")}</b>
+            {t(citySlug === "paris" ? "fx.dp.hook.body.cap.ville" : "fx.dp.hook.body.cap.ofgl")}
             {crcSnap ? (
               <>
                 {t("fx.dp.hook.body.cap.crc.before")}
-                <b>{fmtDec(crcSnap.value_crc_ans, 1).replace(".", ",")}{t("fx.dp.hook.body.cap.ans")}</b>
+                <b>{fmtDec(crcSnap.value_crc_ans, 1)}{t("fx.dp.hook.body.cap.ans")}</b>
                 {t("fx.dp.hook.body.cap.crc.after")}
               </>
             ) : null}
@@ -236,7 +247,7 @@ export default function DettePatrimoineClient({
               />
             </>
           ) : (
-            <p className="fx-note">{fill(t("fx.dp.bilan.actif_unavailable"), { label: t("fx.det.s03.actif") })}</p>
+            <p className="fx-note">{fill(t("fx.dp.bilan.actif_unavailable"), { label: fill(t("fx.det.s03.actif"), { year: d.year }) })}</p>
           )}
         </div>
       </section>
@@ -334,7 +345,7 @@ export default function DettePatrimoineClient({
                 <div
                   style={{
                     display: "grid",
-                    gridTemplateColumns: "repeat(3, 1fr)",
+                    gridTemplateColumns: `repeat(${hasBilan ? 3 : 1}, 1fr)`,
                     gap: 1,
                     background: "var(--ink)",
                     border: "1px solid var(--ink)",
@@ -345,8 +356,8 @@ export default function DettePatrimoineClient({
                     { k: "actif", val: last.actif, val0: first.actif, labelKey: "fx.det.s04d.legend.actif" },
                     { k: "fp", val: last.fondsPropres, val0: first.fondsPropres, labelKey: "fx.det.s04d.legend.fp" },
                     { k: "dette", val: last.dette, val0: first.dette, labelKey: "fx.det.s04d.legend.dette" },
-                  ] as const).map((r) => {
-                    const delta = ((r.val - r.val0) / r.val0) * 100;
+                  ] as const).filter((r) => hasBilan || r.k === "dette").map((r) => {
+                    const delta = r.val0 > 0 ? ((r.val - r.val0) / r.val0) * 100 : null;
                     return (
                       <div key={r.k} style={{ background: "var(--bg)", padding: "18px 20px" }}>
                         <div style={{ fontFamily: "var(--f-mono)", fontSize: 10.5, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 6 }}>
@@ -356,16 +367,20 @@ export default function DettePatrimoineClient({
                           {fmtBillions(r.val)}
                           <span style={{ fontSize: ".5em", color: "var(--muted)", fontWeight: 500, marginLeft: 4 }}>{t("fx.s.md_eur")}</span>
                         </div>
-                        <div style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--ink-2)", marginTop: 8, letterSpacing: ".02em" }}>
-                          {delta >= 0 ? "+" : "−"} {fmtDec(Math.abs(delta), 0)} {fill(t("fx.dp.traj.delta_vs"), { year: first.year })}
-                        </div>
+                        {delta != null && (
+                          <div style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--ink-2)", marginTop: 8, letterSpacing: ".02em" }}>
+                            {delta >= 0 ? "+" : "−"} {fmtDec(Math.abs(delta), 0)} {fill(t("fx.dp.traj.delta_vs"), { year: first.year })}
+                          </div>
+                        )}
                       </div>
                     );
                   })}
                 </div>
-                <p className="fx-note" style={{ marginTop: 18 }}>
-                  {fill(t("fx.det.s04d.note"), { ratio: fmtDec(ratio, 0), year: d.year, ratio0: fmtDec(ratio0, 0), y0: first.year })}
-                </p>
+                {hasBilan && (
+                  <p className="fx-note" style={{ marginTop: 18 }}>
+                    {fill(t("fx.det.s04d.note"), { ratio: fmtDec(ratio, 0), year: d.year, ratio0: fmtDec(ratio0, 0), y0: first.year })}
+                  </p>
+                )}
               </>
             );
           })()}
@@ -388,7 +403,7 @@ export default function DettePatrimoineClient({
             <>
               <p className="fx-hb-lead muted">
                 {fill(t("fx.det.s04c.hero_cap"), {
-                  count: horsBilan.totals.count_emprunts.toLocaleString("fr-FR"),
+                  count: horsBilan.totals.count_emprunts.toLocaleString(numLocale(locale)),
                   benef: horsBilan.totals.count_beneficiaires,
                 })}
               </p>
@@ -565,7 +580,9 @@ export default function DettePatrimoineClient({
         </div>
       </section>
 
-      <RelatedArticles posts={posts} placeholders={DET_PLACEHOLDERS} />
+      {/* Les teasers d'articles à venir parlent de Paris (« 17 Md€ nets ») : la
+          réécriture par ville en faisait une affirmation sur une autre ville. */}
+      <RelatedArticles posts={posts} placeholders={citySlug === "paris" ? DET_PLACEHOLDERS : []} />
 
       <section className="fx-footer-sources" id="sec-sources">
         <div className="fx-wrap">

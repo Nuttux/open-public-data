@@ -7,6 +7,8 @@ import { answerMetadata } from "@/lib/seo/page-answer";
 import { contratoAnswer } from "@/lib/br/recife-answers";
 import { recifeLocale } from "@/lib/br/recife-locale";
 import PageJsonLd from "@/components/seo/PageJsonLd";
+import RelatedLinks from "@/components/fiche/RelatedLinks";
+import { contratoRelated } from "@/lib/br/recife-related";
 
 export async function generateMetadata({
   params,
@@ -37,6 +39,7 @@ export default async function ContratoPage({ params }: { params: Promise<{ id: s
       </div>
       <div className="fx-fiche fx-fiche-shell">
         <RecifeContratoFiche c={found.contrato} source={found.source} />
+        <RelatedLinks block={contratoRelated(found.contrato, locale)} />
       </div>
     </main>
   );

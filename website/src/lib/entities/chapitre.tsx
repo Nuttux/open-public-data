@@ -4,7 +4,7 @@ import type { EntityPageConfig } from "@/lib/entity-page";
 import { numLocale } from "@/lib/fmt";
 import { loadChapitre } from "@/lib/fusion-data";
 import { trLabel } from "@/lib/label-translate";
-import { eur, int, ordFr, ordEn, dataDate, sourceLine } from "@/lib/entities/seo-text";
+import { eur, int, ordFr, ordEn, dataDate, sourceLine, clip } from "@/lib/entities/seo-text";
 import { chapitreRelated } from "@/lib/entities/related";
 
 type D = { chap: NonNullable<ReturnType<typeof loadChapitre>> };
@@ -58,12 +58,12 @@ export const chapitreConfig: EntityPageConfig<D> = {
   const date = dataDate("investissement_tendances.json", locale);
   if (locale === "en") {
     return {
-      title: `${label} investments in Paris, ${c.year}: ${amt}, ${int(c.nbProjets, "en")} projects`,
+      title: `Paris ${clip(label, 30)} investment ${c.year}: ${amt}`,
       answer: `In ${c.year}, the City of Paris budgeted ${amt} of investment in the ${label.toLowerCase()} chapter (${ordEn(c.rank)} of ${c.nbChapitres} chapters), with ${int(c.nbProjets, "en")} localised projects. ${sourceLine("en", "City of Paris, administrative account (M57) and localised investments", date)}`,
     };
   }
   return {
-    title: `Investissements ${c.label} à Paris en ${c.year} : ${amt}, ${int(c.nbProjets, "fr")} projets`,
+    title: `Investissements ${clip(c.label, 30)} à Paris ${c.year} : ${amt}`,
     answer: `En ${c.year}, la Ville de Paris a inscrit ${amt} d'investissements au chapitre ${c.label.toLowerCase()} (${ordFr(c.rank)} chapitre sur ${c.nbChapitres}), avec ${int(c.nbProjets, "fr")} projets localisés. ${sourceLine("fr", "Ville de Paris, compte administratif (M57) et investissements localisés", date)}`,
   };
   },

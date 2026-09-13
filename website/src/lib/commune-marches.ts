@@ -26,6 +26,16 @@ export function marchesManifestCount(slug: string): number {
   return M.communes[slug]?.nb ?? 0;
 }
 
+/** Les communes du manifeste qui ont plus de `min` marchés. */
+export function marchesManifestSlugs(min: number): string[] {
+  return Object.entries(M.communes).filter(([, e]) => e.nb > min).map(([slug]) => slug);
+}
+
+/** Le manifeste d'une commune (années, montant, nombre), null si aucune page. */
+export function marchesManifestEntry(slug: string): { years: number[]; montant: number; nb: number } | null {
+  return M.communes[slug] ?? null;
+}
+
 export function communeHasMarches(slug: string): boolean {
   const e = M.communes[slug];
   return Boolean(e && e.nb > 0);

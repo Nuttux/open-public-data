@@ -1,8 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { useCountUp } from "@/lib/use-count-up";
-import { useRevealOnScroll } from "@/lib/use-reveal-on-scroll";
+import { useCountUpOnReveal } from "@/lib/use-count-up-on-reveal";
 
 type Props = {
   value: number;
@@ -30,9 +29,8 @@ export default function CountUpOnReveal({
   className,
 }: Props) {
   const ref = useRef<HTMLSpanElement>(null);
-  const revealed = useRevealOnScroll(ref, { threshold });
-  const target = revealed ? value : startValue;
-  const animated = useCountUp(target, durationMs);
+  // Server HTML carries the real figure (lib/use-count-up-on-reveal.ts).
+  const animated = useCountUpOnReveal(ref, value, { threshold, startValue, durationMs });
   return (
     <span ref={ref} className={className}>
       {format(animated)}

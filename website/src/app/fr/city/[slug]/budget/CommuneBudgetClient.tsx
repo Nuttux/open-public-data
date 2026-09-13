@@ -7,7 +7,7 @@ import SectionHead from "@/components/fusion/SectionHead";
 import ChartSource from "@/components/fusion/ChartSource";
 import BudgetSankey from "@/components/fusion/BudgetSankey";
 import { useT, useLocale } from "@/lib/localeContext";
-import { fmtDec } from "@/lib/fmt";
+import { useFmt } from "@/lib/use-fmt";
 import type { BudgetPageData } from "@/lib/fusion-data";
 import RelatedLinks, { type RelatedBlock } from "@/components/fiche/RelatedLinks";
 
@@ -89,6 +89,7 @@ export default function CommuneBudgetClient({
   related,
 }: Props) {
   const t = useT();
+  const { fmtDec } = useFmt();
   const { locale } = useLocale();
   const euro = useEuro();
   const fill = (key: string, vars: Record<string, string | number>) => {

@@ -7,21 +7,17 @@ import {
   loadVoteExecute,
 } from "@/lib/fusion-data";
 import { getPostsForPage } from "@/lib/page-articles";
-import { buildLocaleAwareMetadata } from "@/lib/seo";
+import { readLocale } from "@/lib/seo";
+import { parisSectionJsonLd, parisSectionMetadata, yearParam } from "@/lib/seo/sections/paris";
 import BudgetClient from "./BudgetClient";
 
-export async function generateMetadata(): Promise<Metadata> {
-  return buildLocaleAwareMetadata({
-    title: "Paris — Budget",
-    description:
-      "Recettes, dépenses et exécution du budget de la Ville de Paris. Flux complet, détail par thématique, évolution 2019-2026. Source : comptes administratifs M57.",
-    en: {
-      title: "Paris — Budget",
-      description:
-        "Revenue, spending and execution of the Ville de Paris budget. Full flow, breakdown by theme, 2019–2026 trend. Source: M57 administrative accounts.",
-    },
-    path: "/fr/city/paris/budget",
-  });
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ year?: string }>;
+}): Promise<Metadata> {
+  const sp = await searchParams;
+  return parisSectionMetadata("budget", yearParam(sp.year));
 }
 
 type SP = { year?: string };
@@ -38,5 +34,12 @@ export default async function BudgetPage({
   const voteExec = loadVoteExecute();
   const posts = getPostsForPage("budget");
 
-  return <BudgetClient index={index} d={d} voteExec={voteExec} posts={posts} />;
+  return (
+    <>
+      {parisSectionJsonLd("budget", await readLocale(), requestedYear).map((o, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(o) }} />
+      ))}
+      <BudgetClient index={index} d={d} voteExec={voteExec} posts={posts} />
+    </>
+  );
 }
