@@ -212,15 +212,27 @@ export function lugarAnswer(
         ? `${n("works contract", p.n_obras)}${p.obras_total ? ` worth ${fmtBrlCompact(p.obras_total)}` : ""}`
         : `${n("contrato de obra", p.n_obras, "pt", "contratos de obra")}${p.obras_total ? ` no valor de ${fmtBrlCompact(p.obras_total)}` : ""}`
       : null;
+  // Name, then the works figure the sentence states; a place with no works on
+  // file has no figure to put in its title, only what and where it is.
+  const name = clip(titleCasePt(p.nome), 38);
+  const plain = kind ? `${name} (${kind}, Recife)` : `${name}, Recife`;
   if (locale === "en") {
     const desc = p.descricao_en || p.descricao;
     return {
-      title: `${p.nome}: what the City of Recife spends and decided here`,
+      title: p.obras_total
+        ? `${name}: ${fmtBrlCompact(p.obras_total)} in works contracts (Recife)`
+        : p.n_obras
+          ? `${name}: ${n("works contract", p.n_obras)} (Recife)`
+          : plain,
       answer: `${desc ? `${desc.trim().replace(/\.$/u, "")}. ` : ""}${p.nome}${kind ? ` (${kind}${where})` : where}: ${works ? `${works}, ` : ""}the city money that reaches it, each figure linked to its source. ${src("en", null)}`,
     };
   }
   return {
-    title: `${p.nome}: o que a Prefeitura do Recife gasta e decide aqui`,
+    title: p.obras_total
+      ? `${name}: ${fmtBrlCompact(p.obras_total)} em contratos de obra (Recife)`
+      : p.n_obras
+        ? `${name}: ${n("contrato de obra", p.n_obras, "pt", "contratos de obra")} (Recife)`
+        : plain,
     answer: `${p.descricao ? `${p.descricao.trim().replace(/\.$/u, "")}. ` : ""}${p.nome}${kind ? ` (${kind}${where})` : where}: ${works ? `${works}, ` : ""}o dinheiro da Prefeitura que chega até aqui, cada número ligado à sua fonte. ${src("pt", null)}`,
   };
 }
